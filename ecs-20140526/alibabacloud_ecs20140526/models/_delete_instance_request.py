@@ -17,37 +17,28 @@ class DeleteInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         terminate_subscription: bool = None,
     ):
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and unavailable ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # 
-        # - false (default): performs a dry run and performs the actual request. If the request passes the dry run, the instance is released.
+        # - true: Sends a check request without releasing the instance. The system checks whether the required parameters are specified, the request format is valid, business requirements are met, and ECS resources are sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - false (default): Sends a normal request. After the request passes the check, the instance is directly deleted.
         self.dry_run = dry_run
-        # Specifies whether to forcefully release the ECS instance in the **Running** (`Running`) state. Valid values:
+        # Specifies whether to forcefully release a **running** (`Running`) instance.
         # 
-        # - true: forcefully releases the ECS instance in the **Running** (`Running`) state.
-        # 
-        # - false: normally releases the ECS instance. This value is valid only if the instance is in the **Stopped** (`Stopped`) state.
+        # - true: Forcefully releases a **running** (`Running`) instance.
+        # - false: Releases the instance in the normal way. The instance must be in the **Stopped** (`Stopped`) state.
         # 
         # Default value: false.
-        # 
-        # \\*\\*
-        # 
-        # **Warning** When Force is set to true, this operation is equivalent to a power-off operation. Temporary data in the memory and storage of the instance is erased and cannot be restored.
+        # >Warning: A forceful release is equivalent to a power-off. Temporary data in the instance memory and storage is erased and cannot be recovered..
         self.force = force
-        # Specifies whether to forcefully stop the ECS instance in the **Running** (`Running`) state before the instance is released. This parameter takes effect only when `Force` is set to true. Valid values:
+        # Specifies whether to use the forced shutdown policy when releasing a **running** (`Running`) instance. This parameter takes effect only when `Force=true`. Valid values:
         # 
-        # - true: forcefully stops and releases the ECS instance. In this case, this operation is equivalent to a power-off operation. The instance directly enters the resource release process.
-        # 
-        #   \\*\\*
-        # 
-        #   **Warning** A forceful stop and release is equivalent to a power-off operation. Temporary data in the memory and storage of the instance is erased and cannot be restored.
-        # 
-        # - false: stops the ECS instance in the normal stop process and then releases the instance. In this case, the release process takes several minutes to complete. You can configure business drainage actions to reduce the noise of the business system on operating system shutdown.
+        # - true: Forcefully shuts down and releases the instance. This is equivalent to a typical power-off operation. The instance directly enters the resource release process.
+        # >Warning: A forceful release is equivalent to a power-off. Temporary data in the instance memory and storage is erased and cannot be recovered.
+        # - false: Before the instance is released, the system preferentially performs a standard shutdown process. This mode causes the instance release to take several minutes. You can configure service draining actions during the operating system shutdown to reduce noise in your business systems.
         # 
         # Default value: true.
         self.force_stop = force_stop
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -55,11 +46,10 @@ class DeleteInstanceRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to release the expired subscription instance. Valid values:
+        # Specifies whether to release an expired subscription instance.
         # 
-        # - true
-        # 
-        # - false
+        # - true: Releases the instance.
+        # - false: Does not release the instance.
         # 
         # Default value: false.
         self.terminate_subscription = terminate_subscription

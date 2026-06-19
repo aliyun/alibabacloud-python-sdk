@@ -26,55 +26,49 @@ class DescribeImageComponentsRequest(DaraModel):
         system_type: str = None,
         tag: List[main_models.DescribeImageComponentsRequestTag] = None,
     ):
-        # The type of the image component.
+        # The component type.
         # 
         # Valid values:
-        # 
         # - Build
-        # 
-        # - Test
+        # - Test.
         self.component_type = component_type
-        # The version number of the image component in the \\<major>.\\<minor>.\\<patch> format. You can set \\<major>, \\<minor>, and \\<patch> to non-negative integers, or set one of \\<major>, \\<minor>, and \\<patch> to the wildcard (\\*) and the other two to non-negative integers.
-        # 
-        # > This parameter takes effect only if you specify Name.
+        # The component version number in the format of major.minor.patch. All values are non-negative integers. You can also use the wildcard character (*) to replace one of the values for fuzzy matching.
+        # >This parameter takes effect only when Name is specified.
         self.component_version = component_version
-        # The IDs of image components. Valid values of N: 1 to 20.
+        # The ID of the image component to query. Valid values of N: 1 to 20.
         self.image_component_id = image_component_id
-        # The maximum number of entries per page. Valid values: 1 to 500.
+        # The maximum number of entries per page for paging. Valid values: 1 to 500.
         # 
         # Default value: 50.
         self.max_results = max_results
-        # The name of the image component. You must specify an exact name to search for the image component.
+        # The image component name. Only exact match is supported.
         self.name = name
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+        # The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
         self.next_token = next_token
-        # The type of the image component. Valid values:
+        # The image component type. Valid values:
         # 
-        # - SELF: the custom component that you created.
-        # 
-        # - ALIYUN: the system component provided by Alibaba Cloud.
+        # - SELF: custom image components that you created.
+        # - ALIYUN: system components provided by Alibaba Cloud.
         self.owner = owner
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the image component. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        # The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
-        # > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the operating system supported by the image component.
+        # The operating system supported by the component.
         # 
         # Valid values:
-        # 
         # - Linux
-        # 
-        # - Windows
+        # - Windows.
         self.system_type = system_type
-        # The tags of the image component.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -195,9 +189,9 @@ class DescribeImageComponentsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. Valid values of N: 1 to 20.
+        # The tag key. Valid values of N: 1 to 20.
         self.key = key
-        # The value of tag N. Valid values of N: 1 to 20.
+        # The tag value. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

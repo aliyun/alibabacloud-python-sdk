@@ -22,36 +22,34 @@ class DescribeKeyPairsRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeKeyPairsRequestTag] = None,
     ):
-        # Specifies whether to include PublicKey in the response. Default value: false.
+        # Specifies whether to include PublicKey in the response.
+        # Default value: false.
         self.include_public_key = include_public_key
-        # The fingerprint of the key pair. The message-digest algorithm 5 (MD5) is used based on the public key fingerprint format defined in RFC 4716. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
+        # The fingerprint of the key pair. The fingerprint uses the message-digest algorithm 5 (MD5) based on the public key fingerprint format defined in RFC 4716. For more information, see [RFC 4716](https://tools.ietf.org/html/rfc4716).
         self.key_pair_finger_print = key_pair_finger_print
-        # The name of the key pair. You can use the asterisk (\\*) symbol as a wildcard in regular expressions to perform a fuzzy search for key pairs. Sample patterns:
+        # The name of the key pair. You can use regular expressions for fuzzy search, with the asterisk (*) to match child table expressions. Examples:
         # 
-        # - `*SshKey`: queries key pairs whose names end with SshKey, including the key pair named SshKey.
-        # 
-        # - `SshKey*`: queries key pairs whose names start with SshKey, including the key pair named SshKey.
-        # 
-        # - `*SshKey*`: queries key pairs whose names include SshKey, including the key pair named SshKey.
-        # 
-        # - `SshKey`: queries the key pair named SshKey.
+        # - `*SshKey`: searches for key pair names that end with SshKey, including SshKey.
+        # - `SshKey*`: searches for key pair names that start with SshKey, including SshKey.
+        # - `*SshKey*`: searches for key pair names that contain SshKey, including SshKey.
+        # - `SshKey`: exact match of SshKey.
         self.key_pair_name = key_pair_name
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number of the key pair list. Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50.
+        # The number of entries per page in paging queries. Settings: Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the key pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the key pairs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        # The ID of the resource group to which the key pairs belong. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
-        # > Resources in the default resource group are displayed in the response regardless of how this parameter is set.
+        # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -152,11 +150,11 @@ class DescribeKeyPairsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the key pair. Valid values of N: 1 to 20.
+        # The tag key of the key pair. Valid values of N: 1 to 20.
         # 
-        # If a single tag is specified to query resources, up to 1,000 resources that are bound with this tag can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that are bound with all these tags can be displayed in the response. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count of resources that are attached with all specified tags cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         self.key = key
-        # The value of tag N of the key pair. Valid values of N: 1 to 20.
+        # The tag value of the key pair. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

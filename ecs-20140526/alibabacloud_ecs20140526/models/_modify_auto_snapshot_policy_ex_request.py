@@ -24,60 +24,55 @@ class ModifyAutoSnapshotPolicyExRequest(DaraModel):
         retention_days: int = None,
         time_points: str = None,
     ):
-        # The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+        # The retention period of cross-region snapshot replicas. Unit: days. Valid values:
         # 
-        # - -1: The snapshot copy is retained until it is deleted.
-        # 
-        # - 1 to 65535: The snapshot copy is retained for a specified number of days.
+        # - -1: permanently retained.
+        # - 1 to 65535: the specified number of days for which snapshot replicas are retained.
         # 
         # Default value: -1.
         self.copied_snapshots_retention_days = copied_snapshots_retention_days
-        # The encryption configurations for cross-region snapshot replication.
+        # The encryption parameter for cross-region snapshot replication.
         self.copy_encryption_configuration = copy_encryption_configuration
-        # Specifies whether to enable cross-region replication for the automatic snapshot.
+        # Specifies whether to allow automatic cross-region replication.
         # 
-        # - true: enables cross-region replication for the automatic snapshot.
-        # 
-        # - false: disables cross-region replication for the automatic snapshot.
+        # - true: allowed.
+        # - false: not allowed.
         self.enable_cross_region_copy = enable_cross_region_copy
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The destination region to which to copy the snapshot. You can specify only a single destination region.
+        # The destination region for cross-region snapshot replication. You can set one destination region.
         self.target_copy_regions = target_copy_regions
-        # The ID of the automatic snapshot policy. You can call the [DescribeAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25530.html) operation to query available automatic snapshot policies.
+        # The ID of the automatic snapshot policy. You can call [DescribeAutoSnapshotPolicyEx](https://help.aliyun.com/document_detail/25530.html) to query available automatic snapshot policies.
         # 
         # This parameter is required.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The name of the automatic snapshot policy. If this parameter is not specified, the original name of the automatic snapshot policy is retained.
+        # The name of the automatic snapshot policy. If this parameter is left empty, the name is not modified.
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
-        # The region ID of the automatic snapshot policy. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the automatic snapshot policy. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The days of the week on which to create automatic snapshots. Valid values are 1 to 7, which correspond to the days of the week. For example, a value of 1 indicates Monday.
+        # The days of the week on which automatic snapshots are created. Unit: days. The cycle is weekly. Valid values: 1 to 7. For example, 1 indicates Monday.
         # 
-        # To schedule multiple automatic snapshots to be created in a week, you can specify multiple days.
+        # To create multiple automatic snapshots within a week, specify multiple days:
         # 
-        # - You can specify up to seven days over a one-week period.
-        # 
-        # - You must set this parameter to a JSON array such as `["1", "2" ... "7"]`. Separate the values in the array with commas (,).
+        # - You can specify up to 7 days.
+        # - Specify multiple days in a JSON array in the format of `"1", "2", … "7"`. Separate the days with commas (,).
         self.repeat_weekdays = repeat_weekdays
-        # The retention period of the automatic snapshot. Unit: days. Valid values:
+        # The retention period of automatic snapshots. Unit: days. Valid values:
         # 
-        # - -1: The automatic snapshot is permanently retained.
-        # 
-        # - 1 to 65536: The auto snapshot is retained for the specified number of days.
+        # - -1: permanently retained.
+        # - 1 to 65536: the specified number of days for which snapshots are retained.
         # 
         # Default value: -1.
         self.retention_days = retention_days
-        # The points in time of the day at which to create automatic snapshots. The time must be in UTC+8. Unit: hours. Valid values are 0 to 23, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, a value of 1 indicates 01:00:00.
+        # The points in time at which automatic snapshots are created. The time is displayed in UTC+8. Unit: hours. Valid values: 0 to 23, which correspond to the 24 points in time from 00:00 to 23:00. For example, 1 indicates 01:00.
         # 
-        # To schedule multiple automatic snapshots to be created in a day, you can specify multiple hours.
+        # To create multiple automatic snapshots within a day, specify multiple points in time:
         # 
         # - You can specify up to 24 points in time.
-        # 
-        # - You must set this parameter to a JSON array such as `["0", "1", ... "23"]`. Separate the points in time with commas (,).
+        # - Specify multiple points in time in a JSON array in the format of `"0", "1", … "23"`. Separate the points in time with commas (,).
         self.time_points = time_points
 
     def validate(self):
@@ -185,13 +180,12 @@ class ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration(DaraModel):
         self.arn = arn
         # Specifies whether to enable encryption for cross-region snapshot replication. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: enabled. 
+        # - false: disabled. 
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the KMS key used for encryption in cross-region snapshot replication.
+        # The key ID of the KMS key used for encrypted cross-region snapshot replication.
         self.kmskey_id = kmskey_id
 
     def validate(self):

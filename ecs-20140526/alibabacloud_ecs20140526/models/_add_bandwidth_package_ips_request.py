@@ -16,20 +16,13 @@ class AddBandwidthPackageIpsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the bandwidth package.
-        # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # A token that you can specify to ensure the idempotency of the request. The token must be unique across requests. It can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The number of public IP addresses to add to the bandwidth package. Valid values: 1 to 256.
-        # 
         # This parameter is required.
         self.ip_count = ip_count
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the bandwidth package is located. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

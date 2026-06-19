@@ -18,32 +18,31 @@ class CreatePlanMaintenanceWindowRequest(DaraModel):
         target_resource: main_models.CreatePlanMaintenanceWindowRequestTargetResource = None,
         time_period: main_models.CreatePlanMaintenanceWindowRequestTimePeriod = None,
     ):
-        # Specifies whether to enable the maintenance window.
+        # Specifies whether to enable or disable the O&M window.
         # 
-        # - **true**: Enables the maintenance window.
-        # 
-        # - **false**: Disables the maintenance window.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         # 
         # This parameter is required.
         self.enable = enable
         self.min_maintenance_interval = min_maintenance_interval
-        # The name of the maintenance window. The name can be up to 200 characters long.
+        # The name of the O&M window. You can specify a custom name. The name can be up to 200 characters in length.
         # 
         # This parameter is required.
         self.plan_window_name = plan_window_name
-        # The ID of the region. You can call the DescribeRegions operation to query the latest list of Alibaba Cloud regions.
+        # The region ID. You can call DescribeRegions to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The maintenance operation supported by the maintenance window.
+        # The O&M operations supported by the O&M window.
         # 
         # This parameter is required.
         self.support_maintenance_action = support_maintenance_action
-        # The resources to which the maintenance window applies.
+        # The resources on which the O&M window takes effect.
         # 
         # This parameter is required.
         self.target_resource = target_resource
-        # The recurring schedule for the maintenance window.
+        # The recurring cycle of the O&M window.
         # 
         # This parameter is required.
         self.time_period = time_period
@@ -115,11 +114,11 @@ class CreatePlanMaintenanceWindowRequestTimePeriod(DaraModel):
         period_unit: str = None,
         range_list: List[main_models.CreatePlanMaintenanceWindowRequestTimePeriodRangeList] = None,
     ):
-        # Specifies how often the maintenance window recurs.
+        # The cycle type. Valid values: Daily and Weekly.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The time ranges of the recurring maintenance window. All times are in UTC.
+        # The time ranges of the recurring cycle of the O&M window (in UTC).
         # 
         # This parameter is required.
         self.range_list = range_list
@@ -164,21 +163,16 @@ class CreatePlanMaintenanceWindowRequestTimePeriodRangeList(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The end time of the maintenance window.
+        # The end time of the O&M window.
         # 
-        # - If `PeriodUnit` is set to `Weekly`, use the format `Day,HH:mm`. Valid values for `Day` are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
-        # 
-        # - If `PeriodUnit` is set to `Daily`, use the format `HH:mm`.
-        # 
-        # - The time is in `HH:mm` format, where `HH` is the hour (00-23) and `mm` is the minute. Only `00` is supported for the minute.
+        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
+        # - If PeriodUnit is set to Daily, the format is 22:00.
+        # - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute, which currently supports only 00.
         self.end_time = end_time
-        # The start time of the maintenance window.
-        # 
-        # - If `PeriodUnit` is set to `Weekly`, use the format `Day,HH:mm`. Valid values for `Day` are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
-        # 
-        # - If `PeriodUnit` is set to `Daily`, use the format `HH:mm`.
-        # 
-        # - The time is in `HH:mm` format, where `HH` is the hour (00-23) and `mm` is the minute. Only `00` is supported for the minute.
+        # The start time of the O&M window.
+        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
+        # - If PeriodUnit is set to Daily, the format is 22:00.
+        # - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute, which currently supports only 00.
         self.start_time = start_time
 
     def validate(self):
@@ -214,13 +208,13 @@ class CreatePlanMaintenanceWindowRequestTargetResource(DaraModel):
         scope: str = None,
         tags: List[main_models.CreatePlanMaintenanceWindowRequestTargetResourceTags] = None,
     ):
-        # The ID of the resource group. This parameter is required if `Scope` is set to `ResourceGroup`.
+        # The ID of the resource group. This parameter is required when Scope is set to ResourceGroup.
         self.resource_group_id = resource_group_id
-        # The scope of resources to which the maintenance window applies.
+        # The type of resources for which the O&M window is configured.
         # 
         # This parameter is required.
         self.scope = scope
-        # The tags of the resources to which the maintenance window applies. This parameter is required if `Scope` is set to `Tag`.
+        # The tags on which the O&M window takes effect. This parameter is required when Scope is set to Tag.
         self.tags = tags
 
     def validate(self):
@@ -269,9 +263,9 @@ class CreatePlanMaintenanceWindowRequestTargetResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag on which the O&M window takes effect.
         self.key = key
-        # The tag value.
+        # The value of the tag on which the O&M window takes effect.
         self.value = value
 
     def validate(self):

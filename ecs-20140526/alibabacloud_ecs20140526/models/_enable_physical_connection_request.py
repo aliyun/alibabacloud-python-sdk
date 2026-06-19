@@ -16,27 +16,16 @@ class EnablePhysicalConnectionRequest(DaraModel):
         resource_owner_id: int = None,
         user_cidr: str = None,
     ):
-        # A client token that ensures the request is idempotent.
-        # 
-        # Your client generates this token, which must be unique for each request. The token can contain only ASCII characters and must not exceed 64 characters in length.
-        # 
         # This parameter is required.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the physical connection.
-        # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
-        # The ID of the region where the physical connection is located.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the latest list of regions.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IPv4 CIDR block of the gateway device in your data center.
         self.user_cidr = user_cidr
 
     def validate(self):

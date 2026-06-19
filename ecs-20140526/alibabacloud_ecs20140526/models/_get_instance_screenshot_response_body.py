@@ -15,7 +15,7 @@ class GetInstanceScreenshotResponseBody(DaraModel):
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
-        # The Base64-encoded instance screenshot in the JPG format.
+        # The instance screenshot in JPG image format, returned as a Base64-encoded image.
         self.screenshot = screenshot
 
     def validate(self):

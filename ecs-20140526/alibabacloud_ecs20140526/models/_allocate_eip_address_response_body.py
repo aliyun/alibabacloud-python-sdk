@@ -11,11 +11,8 @@ class AllocateEipAddressResponseBody(DaraModel):
         eip_address: str = None,
         request_id: str = None,
     ):
-        # The unique ID of the allocation.
         self.allocation_id = allocation_id
-        # The allocated elastic IP address.
         self.eip_address = eip_address
-        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

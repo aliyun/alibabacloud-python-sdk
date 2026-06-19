@@ -20,7 +20,7 @@ class DeleteImagePipelineRequest(DaraModel):
         self.image_pipeline_id = image_pipeline_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the image template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

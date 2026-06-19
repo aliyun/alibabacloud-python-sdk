@@ -31,25 +31,24 @@ class DescribeTaskAttributeResponseBody(DaraModel):
         # The time when the task was completed.
         self.finished_time = finished_time
         self.operation_progress_set = operation_progress_set
-        # The region ID of the task.
+        # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The number of completed tasks.
+        # The number of successful tasks.
         self.success_count = success_count
-        # Indicates whether the task can be canceled by calling the [CancelTask](https://help.aliyun.com/document_detail/25624.html) operation. Valid values:
-        # 
-        # - true
-        # 
-        # - false
+        # Indicates whether the task can be canceled ([CancelTask](https://help.aliyun.com/document_detail/25624.html)). Valid values: 
+        #          
+        # - true: The task can be canceled. 
+        # - false: The task cannot be canceled.
         self.support_cancel = support_cancel
-        # The name of the operation that generated the task.
+        # The name of the API operation associated with the task.
         self.task_action = task_action
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The progress of the task.
+        # The task progress.
         self.task_process = task_process
-        # The status of the task.
+        # The task status.
         self.task_status = task_status
         # The total number of tasks.
         self.total_count = total_count

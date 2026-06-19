@@ -14,9 +14,8 @@ class DescribeInstanceTypesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # A collection of instance types.
         self.instance_types = instance_types
-        # The token used to retrieve the next page of results.
+        # The pagination token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

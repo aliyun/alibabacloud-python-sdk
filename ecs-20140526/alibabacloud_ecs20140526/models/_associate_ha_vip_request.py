@@ -16,20 +16,13 @@ class AssociateHaVipRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # A client-generated token that ensures request idempotency. This token must be unique across requests and can contain only ASCII characters.
         self.client_token = client_token
-        # The ID of the HaVip.
-        # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
-        # The ID of the ECS instance to associate with the HaVip.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the HaVip is located. To obtain the latest list of regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

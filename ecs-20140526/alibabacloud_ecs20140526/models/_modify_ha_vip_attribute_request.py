@@ -16,18 +16,12 @@ class ModifyHaVipAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # A client-generated token used to ensure the idempotence of the request. Make sure that the token is unique across requests. The token can contain only ASCII characters and be no more than 64 characters long.
         self.client_token = client_token
-        # The new description of the HaVip. The description must be 2 to 256 characters long and must not start with `http://` or `https://`.
         self.description = description
-        # The ID of the HaVip that you want to modify.
-        # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the HaVip is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the latest list of regions.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

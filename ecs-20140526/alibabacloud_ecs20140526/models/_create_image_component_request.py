@@ -25,48 +25,43 @@ class CreateImageComponentRequest(DaraModel):
         system_type: str = None,
         tag: List[main_models.CreateImageComponentRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The type of the image component. Only image building components and image test components are supported.
+        # The component type. Image build components and test components are supported.
         # 
         # Valid values:
-        # 
         # - Build
-        # 
         # - Test
         # 
         # Default value: Build.
-        # 
-        # > Image building components can be used only in image building templates. Image test components can be used only in image test templates.
+        # > Build components can be used only in build templates. Test components can be used only in test templates.
         self.component_type = component_type
-        # The version number of the image component, which is used together with the name of the image component. The version number is in the \\<major>.\\<minor>.\\<patch> format. Set \\<major>, \\<minor>, and \\<patch> to non-negative integers.
+        # The version number of the component, which is used together with the component name. The format is major.minor.patch, and all values are non-negative integers.
         # 
-        # Default value: (x + 1).0.0, in which x is the maximum major version number of the image component.
+        # Default value: (x+1).0.0, where x is the current maximum major version number of the component.
         self.component_version = component_version
-        # The content of the image component. The image component consists of multiple commands. The command content cannot exceed 16 KB in size. For information about the commands supported by Image Builder and the formats of the commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+        # The component content, which consists of multiple commands. The content cannot exceed 16 KB. For more information about supported commands and command formats, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
         self.content = content
-        # The description. The description must be 2 to 256 characters in length and cannot start with [http:// or https://](http://https://%E3%80%82).
+        # The description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         self.description = description
-        # The name of the image component. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The component name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with http:// or https://. The name can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # > If you do not specify `Name`, the return value of `ImageComponentId` is used.
+        # > If you do not specify Name, the ImageComponentId return value is used by default.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the enterprise resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the operating system supported by the image component.
+        # The operating system supported by the component.
         # 
         # Valid values:
-        # 
         # - Linux
-        # 
         # - Windows
         # 
         # Default value: Linux.
@@ -186,9 +181,9 @@ class CreateImageComponentRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag key cannot start with acs: or aliyun.
+        # The key of the tag. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
         self.key = key
-        # The value of tag N. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag value cannot start with acs:.
+        # The value of the tag. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with acs:. The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

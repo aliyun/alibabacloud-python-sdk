@@ -15,7 +15,7 @@ class DescribeAutoSnapshotPolicyAssociationsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.auto_snapshot_policy_associations = auto_snapshot_policy_associations
-        # The returned pagination token which can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

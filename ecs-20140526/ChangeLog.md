@@ -1,3 +1,7 @@
+2026-06-19 Version: 7.8.6
+- Update API DescribeDisks: add response parameters Body.Disks.$.DataSource.
+
+
 2026-06-15 Version: 7.8.5
 - Update API CreatePlanMaintenanceWindow: add request parameters MinMaintenanceInterval.
 - Update API DescribePlanMaintenanceWindows: add response parameters Body.PlanMaintenanceWindowList.$.MinMaintenanceInterval.

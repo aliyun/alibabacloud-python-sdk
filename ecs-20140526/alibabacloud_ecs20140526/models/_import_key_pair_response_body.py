@@ -11,7 +11,7 @@ class ImportKeyPairResponseBody(DaraModel):
         key_pair_name: str = None,
         request_id: str = None,
     ):
-        # The fingerprint of the key pair. The MD5 message-digest algorithm is used based on the public key fingerprint format defined in RFC 4716.
+        # The fingerprint of the key pair. The public key fingerprint format is defined in RFC 4716 and uses the MD5 message digest algorithm.
         self.key_pair_finger_print = key_pair_finger_print
         # The name of the key pair.
         self.key_pair_name = key_pair_name

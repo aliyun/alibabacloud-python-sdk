@@ -19,7 +19,7 @@ class DescribeHpcClustersResponseBody(DaraModel):
         self.hpc_clusters = hpc_clusters
         # The page number of the HPC cluster list.
         self.page_number = page_number
-        # The number of entries per page that was set when the request was made.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

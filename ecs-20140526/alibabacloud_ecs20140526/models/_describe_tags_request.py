@@ -21,58 +21,47 @@ class DescribeTagsRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.DescribeTagsRequestTag] = None,
     ):
-        # > This parameter is deprecated. We recommend that you use other parameters to ensure compatibility.
+        # > This parameter is about to be deprecated. To ensure compatibility, use other parameters.
         self.category = category
         self.owner_id = owner_id
         # The page number of the tag list.
         # 
-        # Starts from 1.
+        # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The number of entries per page for a paged query.
         # 
         # Maximum value: 100.
         # 
         # Default value: 50.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to obtain the latest list of Alibaba Cloud regions.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource. For example, if the `ResourceType` is `instance`, this parameter specifies the instance ID.
+        # The ID of the resource to which the tag is attached. For example, if the resource type (ResourceType) is instance, the resource ID is the instance ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # - `instance`: an ECS instance.
+        # - instance: ECS instance.
+        # - disk: cloud disk.
+        # - snapshot: snapshot.
+        # - image: image.
+        # - securitygroup: security group.
+        # - volume: storage volume.
+        # - eni: network interface controller (NIC).
+        # - ddh: dedicated host.
+        # - keypair: SSH key pair.
+        # - launchtemplate: launch template.
+        # - reservedinstance: reserved instance.
+        # - snapshotpolicy: automatic snapshot policy.
         # 
-        # - `disk`: a disk.
-        # 
-        # - `snapshot`: a snapshot.
-        # 
-        # - `image`: an image.
-        # 
-        # - `securitygroup`: a security group.
-        # 
-        # - `volume`: a volume.
-        # 
-        # - `eni`: an elastic network interface.
-        # 
-        # - `ddh`: a dedicated host.
-        # 
-        # - `keypair`: an SSH key pair.
-        # 
-        # - `launchtemplate`: a launch template.
-        # 
-        # - `reservedinstance`: a reserved instance.
-        # 
-        # - `snapshotpolicy`: a snapshot policy.
-        # 
-        # All values must be in lowercase.
+        # All valid values are in lowercase.
         self.resource_type = resource_type
-        # A list of tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -163,11 +152,9 @@ class DescribeTagsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
-        # 
-        # > We recommend that you use the `Tag.N.Key` parameter to ensure compatibility.
+        # The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
         self.key = key
-        # The tag value. The value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

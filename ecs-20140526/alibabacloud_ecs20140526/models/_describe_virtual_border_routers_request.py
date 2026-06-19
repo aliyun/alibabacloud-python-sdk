@@ -18,15 +18,10 @@ class DescribeVirtualBorderRoutersRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The filter conditions.
         self.filter = filter
         self.owner_id = owner_id
-        # The page number. Pages are numbered starting from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
         self.page_size = page_size
-        # The ID of the region where the Virtual Border Router (VBR) is located. You can call the `DescribeRegions` operation to obtain the most recent list of regions.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -102,9 +97,7 @@ class DescribeVirtualBorderRoutersRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter key. Set the value to `VbrId`.
         self.key = key
-        # The filter value. The value must be an array of VBR IDs.
         self.value = value
 
     def validate(self):

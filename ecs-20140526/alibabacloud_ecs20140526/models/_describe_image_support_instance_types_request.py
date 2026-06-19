@@ -20,16 +20,15 @@ class DescribeImageSupportInstanceTypesRequest(DaraModel):
     ):
         # The scenario in which the image is used. Valid values:
         # 
-        # - CreateEcs (default): instance creation
-        # 
-        # - ChangeOS: replacement of the system disk or operating system
+        # - CreateEcs (default): instance creation.
+        # - ChangeOS: replacement of the system disk or operating system.
         self.action_type = action_type
-        # The number of vCPUs of the instance type.
+        # The list of filter conditions for querying resources.
         self.filter = filter
-        # The region ID of the image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The image ID.
         self.image_id = image_id
         self.owner_id = owner_id
-        # Details about the instance types that are supported by the image.
+        # The region ID of the image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -106,9 +105,14 @@ class DescribeImageSupportInstanceTypesRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Filter N used to filter instance types.
+        # The filter condition key. Currently, only filtering by image ID is supported. Valid values:
+        # - imageId: filters by image ID.
+        # - filter: filters by image ID.
+        # 
+        # > This parameter is not effective and will be deprecated soon.
         self.key = key
-        # The ID of the image.
+        # The filter condition value.
+        # > This parameter is not effective and will be deprecated soon.
         self.value = value
 
     def validate(self):

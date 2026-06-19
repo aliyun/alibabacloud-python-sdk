@@ -34,19 +34,17 @@ class DescribeSecurityGroupsRequest(DaraModel):
     ):
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # - true: performs only a dry run. The system checks your AccessKey pair, the permissions of the RAM user, and the required parameters. If the request passes the dry run, the DryRunOperation error code is returned. Otherwise, an error message is returned.
-        # 
-        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The system checks the request for potential issues, including AccessKey validity, RAM user authorization, and required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+        # - false: performs a dry run and performs the actual request. If the check succeeds, a 2XX HTTP status code is returned and the resource status is queried.
         # 
         # Default value: false.
         self.dry_run = dry_run
         # > This parameter is deprecated.
         self.fuzzy_query = fuzzy_query
-        # Specifies whether to query the capacity of the security group. If you set this parameter to True, the `EcsCount` and `AvailableInstanceAmount` values in the response are valid.
-        # 
+        # Specifies whether to query the capacity information of the security group. When set to True, the `EcsCount` and `AvailableInstanceAmount` values in the response are valid.
         # > This parameter is deprecated.
         self.is_query_ecs_count = is_query_ecs_count
-        # The maximum number of entries per page. If you specify this parameter, both `MaxResults` and `NextToken` are used for a paged query.
+        # The maximum number of entries per page for a paged query. Once this parameter is set, the query uses the combination of `MaxResults` and `NextToken` parameters.
         # 
         # Maximum value: 100.
         # 
@@ -54,51 +52,47 @@ class DescribeSecurityGroupsRequest(DaraModel):
         self.max_results = max_results
         # The network type of the security group. Valid values:
         # 
-        # - vpc
-        # 
-        # - classic
+        # - vpc: Virtual Private Cloud (VPC).
+        # - classic: classic network.
         self.network_type = network_type
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The query token. Set the value to the NextToken value returned in the previous call to this operation. You do not need to set this parameter for the first call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter is about to be deprecated. We recommend that you use NextToken and MaxResults for paged queries.
         self.page_number = page_number
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter is about to be deprecated. We recommend that you use NextToken and MaxResults for paged queries.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the latest region list of Alibaba Cloud.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the security group belongs. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the most recent resource group list.
+        # The ID of the resource group to which the security group belongs. When you use this parameter to filter resources, the number of resources cannot exceed 1000. You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query the list of resource groups.
         # 
-        # > Resources in the default resource group are displayed in the response regardless of how this parameter is configured.
+        # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The security group IDs. Set this parameter to a JSON array that consists of up to 100 security group IDs. Separate the security group IDs with commas (,).
+        # The list of security group IDs. A maximum of 100 security group IDs are supported at a time. The IDs are separated by commas (,) in the format of a JSON array.
         self.security_group_ids = security_group_ids
         # The name of the security group.
         self.security_group_name = security_group_name
         # The type of the security group. Valid values:
+        # - normal: basic security group.
+        # - enterprise: advanced security group.
         # 
-        # - normal: basic security group
-        # 
-        # - enterprise: advanced security group
-        # 
-        # > If you do not specify this parameter, both basic and advanced security groups are queried.
+        # > If you do not specify this parameter, all types of security groups are queried.
         self.security_group_type = security_group_type
-        # Specifies whether to query managed security groups. Valid values:
+        # Specifies whether the security group is managed. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The security group is managed.
+        # - false: The security group is not managed.
         self.service_managed = service_managed
-        # The tags to add to the security groups.
+        # The list of tags.
         self.tag = tag
-        # The ID of the virtual private cloud (VPC) to which the security group belongs.
+        # The ID of the VPC to which the security group belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -255,11 +249,11 @@ class DescribeSecurityGroupsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the security group. Valid values of N: 1 to 20.
+        # The tag key of the security group. Valid values of N: 1 to 20.
         # 
-        # Up to 1,000 resources that match the tags specified can be returned in the response. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # When you use a single tag to filter resources, the number of resources with the tag cannot exceed 1000. When you use multiple tags to filter resources, the number of resources bound with all specified tags cannot exceed 1000. If the number of resources exceeds 1000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query.
         self.key = key
-        # The value of tag N to add to the security group. Valid values of N: 1 to 20.
+        # The tag value of the security group. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

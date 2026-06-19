@@ -17,7 +17,7 @@ class DescribeDiskMonitorDataResponseBody(DaraModel):
         self.monitor_data = monitor_data
         # The request ID.
         self.request_id = request_id
-        # The total number of monitoring data entries returned.
+        # The number of entries returned for disk usage information, which is the number of periods.
         self.total_count = total_count
 
     def validate(self):

@@ -22,16 +22,16 @@ class DescribeImageSharePermissionResponseBody(DaraModel):
         self.accounts = accounts
         # The ID of the custom image.
         self.image_id = image_id
-        # The page number.
+        # The page number of the returned results.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The region ID of the custom image.
+        # The region ID of the image.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
         self.share_groups = share_groups
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

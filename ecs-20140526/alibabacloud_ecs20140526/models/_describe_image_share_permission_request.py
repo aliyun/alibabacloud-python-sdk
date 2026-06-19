@@ -22,19 +22,19 @@ class DescribeImageSharePermissionRequest(DaraModel):
         self.image_id = image_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The page number of the returned results.
         # 
-        # Pages start from page 1.
+        # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in the returned results.
         # 
-        # Valid values: 1 to 100.
+        # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

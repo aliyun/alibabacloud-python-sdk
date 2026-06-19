@@ -11,13 +11,13 @@ class CreateDiskResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the disk.
+        # The disk ID.
         self.disk_id = disk_id
-        # The ID of the order.
+        # The generated order ID.
         # 
-        # > This parameter is returned only when you create a subscription disk.
+        # > The order ID is returned only when a subscription disk is created.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

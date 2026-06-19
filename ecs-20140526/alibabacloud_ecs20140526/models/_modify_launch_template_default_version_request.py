@@ -16,13 +16,13 @@ class ModifyLaunchTemplateDefaultVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The default version number of the instance launch template.
+        # The version number of the launch template to be set as the default version.
         # 
         # This parameter is required.
         self.default_version_number = default_version_number
-        # The ID of the launch template. You must specify the LaunchTemplateId or LaunchTemplateName parameter to determine an instance launch template.
+        # The ID of the launch template. You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
         self.launch_template_id = launch_template_id
-        # The name of the instance launch template. You must specify the LaunchTemplateId or LaunchTemplateName parameter to determine an instance launch template.
+        # The name of the launch template. You must specify LaunchTemplateId or LaunchTemplateName to determine the template.
         self.launch_template_name = launch_template_name
         self.owner_account = owner_account
         self.owner_id = owner_id

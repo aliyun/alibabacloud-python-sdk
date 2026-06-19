@@ -19,26 +19,14 @@ class DescribeAccessPointsRequest(DaraModel):
         resource_owner_id: int = None,
         type: str = None,
     ):
-        # The filters to apply to the query results.
         self.filter = filter
         self.owner_id = owner_id
-        # The page number.
-        # 
-        # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return per page.
-        # 
-        # Valid values: 1 to 100.
-        # 
-        # Default value: 10.
         self.page_size = page_size
-        # The ID of the region where the access points are located. Call the `DescribeRegions` operation to query the latest list of regions.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the access point. Set the value to `ecs`.
         self.type = type
 
     def validate(self):
@@ -117,12 +105,7 @@ class DescribeAccessPointsRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter key. Valid values:
-        # 
-        # - `AccessPointId`: Filter by access point ID.
-        # - `AccessPointName`: Filter by access point name.
         self.key = key
-        # The filter values.
         self.value = value
 
     def validate(self):

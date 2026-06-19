@@ -15,16 +15,11 @@ class DeleteNetworkInterfacePermissionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to forcibly delete the permission. Set this parameter to `true` to force the deletion.
         self.force = force
-        # The ID of the permission for the elastic network interface.
-        # 
         # This parameter is required.
         self.network_interface_permission_id = network_interface_permission_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the elastic network interface is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

@@ -16,15 +16,10 @@ class DescribeRouteTablesResponseBody(DaraModel):
         route_tables: main_models.DescribeRouteTablesResponseBodyRouteTables = None,
         total_count: int = None,
     ):
-        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
         self.page_size = page_size
-        # The request ID.
         self.request_id = request_id
-        # Details about the route tables.
         self.route_tables = route_tables
-        # The total number of matching entries.
         self.total_count = total_count
 
     def validate(self):

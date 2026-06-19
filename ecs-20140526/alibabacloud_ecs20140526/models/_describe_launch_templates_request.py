@@ -22,41 +22,40 @@ class DescribeLaunchTemplatesRequest(DaraModel):
         template_resource_group_id: str = None,
         template_tag: List[main_models.DescribeLaunchTemplatesRequestTemplateTag] = None,
     ):
-        # The IDs of launch templates.
+        # An array of one or more launch template IDs.
         # 
-        # - You can query up to 100 launch templates.
+        # - You can query up to 100 launch templates at a time.
         # 
-        # - You must specify LaunchTemplateId or LaunchTemplateName to specify a launch template.
+        # - You must specify LaunchTemplateId or LaunchTemplateName to determine the templates.
         self.launch_template_id = launch_template_id
-        # The names of launch templates.
+        # An array of one or more launch template names.
         # 
-        # - You can query up to 100 launch templates.
+        # - You can query up to 100 launch templates at a time.
         # 
-        # - You must specify LaunchTemplateId or LaunchTemplateName to specify a launch template.
+        # - You must specify LaunchTemplateId or LaunchTemplateName to determine the templates.
         self.launch_template_name = launch_template_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Page starts from page 1.
+        # The page number of the launch template list. Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paginated query.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the launch template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the resource group to which the launch template belongs. If you specify this parameter to query resources, up to 1,000 resources that belong to the specified resource group can be returned.
+        # The ID of the resource group to which the launch template belongs. When you use this parameter to filter resources, the number of resources cannot exceed 1000.
         # 
-        # > The default resource group is not supported.
+        # > Filtering by the default resource group is not supported.
         self.template_resource_group_id = template_resource_group_id
-        # The tags of the launch template.
-        # 
-        # > You can only call API operations to add tags to and query the tags of a launch template. You cannot add tags to or view the tags of a launch template in the ECS console.
+        # The list of tag key-value pairs of the launch template.
+        # > Currently, you can create and query launch template tags only by calling API operations. The console does not support creating or viewing launch template tags.
         self.template_tag = template_tag
 
     def validate(self):
@@ -153,11 +152,11 @@ class DescribeLaunchTemplatesRequestTemplateTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the launch template. Valid values of N: 1 to 20.
+        # The tag key of the launch template. Valid values of N: 1 to 20.
         # 
-        # If you specify a single tag to query resources, up to 1,000 resources to which the tag is added are returned. If you specify multiple tags to query resources, up to 1,000 resources to which all specified tags are added are returned. To query more than 1,000 resources that have specified tags added, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # If you use a single tag to filter resources, the number of resources with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the number of resources that are bound with all the specified tags cannot exceed 1000. If the number of resources exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query them.
         self.key = key
-        # The value of tag N of the launch template. Valid values of N: 1 to 20.
+        # The tag value of the launch template. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):

@@ -22,26 +22,15 @@ class DescribeRouteTablesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 50. Default value: 10.
         self.page_size = page_size
-        # The region ID. You can call the [`DescribeRegions`](https://www.alibabacloud.com/help/en/doc-detail/40654.htm) operation to query the latest list of regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table.
         self.route_table_id = route_table_id
-        # The name of the route table.
         self.route_table_name = route_table_name
-        # The ID of the router associated with the route table.
         self.router_id = router_id
-        # The type of the router associated with the route table. Valid values:
-        # 
-        # - `VRouter`: VPC router
-        # - `VBR`: virtual border router
         self.router_type = router_type
-        # The ID of the VRouter.
         self.vrouter_id = vrouter_id
 
     def validate(self):

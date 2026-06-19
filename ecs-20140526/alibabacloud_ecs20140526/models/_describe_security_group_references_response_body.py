@@ -13,7 +13,7 @@ class DescribeSecurityGroupReferencesResponseBody(DaraModel):
         request_id: str = None,
         security_group_references: main_models.DescribeSecurityGroupReferencesResponseBodySecurityGroupReferences = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.security_group_references = security_group_references
 

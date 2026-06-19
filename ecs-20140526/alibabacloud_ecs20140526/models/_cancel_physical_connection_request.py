@@ -16,21 +16,15 @@ class CancelPhysicalConnectionRequest(DaraModel):
         resource_owner_id: int = None,
         user_cidr: str = None,
     ):
-        # A client-generated token to ensure the idempotence of the request. This token must be unique for each request. It can contain only ASCII characters and must not exceed 64 characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the Express Connect circuit.
-        # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
-        # The ID of the region where the Express Connect circuit is deployed. You can call the `DescribeRegions` operation to obtain the latest list of regions.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The client-side CIDR block of the physical connection.
         self.user_cidr = user_cidr
 
     def validate(self):

@@ -17,22 +17,15 @@ class CreateHaVipRequest(DaraModel):
         resource_owner_id: int = None,
         v_switch_id: str = None,
     ):
-        # A client-generated token that ensures the idempotence of the request. The token must be unique across requests, contain only ASCII characters, and be no more than 64 characters long.
         self.client_token = client_token
-        # The description of the HaVip. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
         self.description = description
-        # The IP address of the HaVip. The IP address must be available and fall within the CIDR block of the vSwitch. If this parameter is not specified, an available IP address is randomly allocated from the CIDR block of the vSwitch.
         self.ip_address = ip_address
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region in which to create the HaVip. You can call the operation to get the latest list of regions.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the vSwitch to which the HaVip belongs.
-        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
 

@@ -16,24 +16,24 @@ class ModifyPlanMaintenanceWindowShrinkRequest(DaraModel):
         target_resource_shrink: str = None,
         time_period_shrink: str = None,
     ):
-        # Specifies whether to enable the maintenance window. If this parameter is not specified, the enabled status remains unchanged.
+        # Specifies whether to enable or disable the O&M window. Leave this parameter empty if no modification is needed.
         self.enable = enable
         self.min_maintenance_interval = min_maintenance_interval
-        # The ID of the maintenance window to modify.
+        # The ID of the O&M window to modify. This parameter is required.
         # 
         # This parameter is required.
         self.plan_window_id = plan_window_id
-        # The new name of the maintenance window. If this parameter is not specified, the name remains unchanged.
+        # The name of the O&M window. Leave this parameter empty if no modification is needed.
         self.plan_window_name = plan_window_name
-        # The ID of the region where the instance is located. You can call the DescribeRegions operation to query the most recent list of Alibaba Cloud regions.
+        # The region ID of the instance. You can call DescribeRegions to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The maintenance action for the maintenance window. If this parameter is not specified, the action remains unchanged.
+        # The supported O&M actions. Leave this parameter empty if no modification is needed.
         self.support_maintenance_action = support_maintenance_action
-        # The resources to which the maintenance window applies. If this parameter is not specified, the target resources remain unchanged.
+        # The resource to which the O&M window applies. Leave this parameter empty if no modification is needed.
         self.target_resource_shrink = target_resource_shrink
-        # The recurrence schedule for the maintenance window. If this parameter is not specified, the schedule remains unchanged.
+        # The recurring cycle of the O&M window. Leave this parameter empty if no modification is needed.
         self.time_period_shrink = time_period_shrink
 
     def validate(self):

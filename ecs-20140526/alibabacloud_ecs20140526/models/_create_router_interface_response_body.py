@@ -11,11 +11,8 @@ class CreateRouterInterfaceResponseBody(DaraModel):
         request_id: str = None,
         router_interface_id: str = None,
     ):
-        # The order ID. This parameter is returned only for subscription-based router interfaces.
         self.order_id = order_id
-        # The request ID.
         self.request_id = request_id
-        # The router interface ID.
         self.router_interface_id = router_interface_id
 
     def validate(self):

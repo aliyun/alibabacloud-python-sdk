@@ -19,7 +19,7 @@ class ImportKeyPairRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.ImportKeyPairRequestTag] = None,
     ):
-        # The name of the key pair. The name must be unique. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http\\:// or https\\://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the key pair. The name must be unique. The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with http:// or https://. The name can contain characters that are categorized as letter in Unicode, including letters, Chinese characters, and digits. The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
         # 
         # This parameter is required.
         self.key_pair_name = key_pair_name
@@ -28,7 +28,7 @@ class ImportKeyPairRequest(DaraModel):
         # 
         # This parameter is required.
         self.public_key_body = public_key_body
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -36,7 +36,7 @@ class ImportKeyPairRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags to add to the key pair.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -115,9 +115,9 @@ class ImportKeyPairRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the key pair. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag key cannot start with acs: or aliyun.
+        # The key of tag N of the key pair. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
         self.key = key
-        # The value of tag N to add to the key pair. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain [http:// or https://](http://https://%E3%80%82). The tag value cannot start with acs:.
+        # The value of tag N of the key pair. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

@@ -13,9 +13,7 @@ class DescribeEipMonitorDataResponseBody(DaraModel):
         eip_monitor_datas: main_models.DescribeEipMonitorDataResponseBodyEipMonitorDatas = None,
         request_id: str = None,
     ):
-        # The EIP monitoring data.
         self.eip_monitor_datas = eip_monitor_datas
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

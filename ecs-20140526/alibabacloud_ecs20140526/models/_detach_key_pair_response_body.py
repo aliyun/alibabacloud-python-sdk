@@ -16,14 +16,14 @@ class DetachKeyPairResponseBody(DaraModel):
         results: main_models.DetachKeyPairResponseBodyResults = None,
         total_count: str = None,
     ):
-        # The number of instances from which the SSH key pair failed to be unbound.
+        # The number of instances from which the key pair failed to be unbound.
         self.fail_count = fail_count
         # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.results = results
-        # The total number of instances from which you want to unbind the SSH key pair.
+        # The total number of instances from which the key pair is unbound.
         self.total_count = total_count
 
     def validate(self):

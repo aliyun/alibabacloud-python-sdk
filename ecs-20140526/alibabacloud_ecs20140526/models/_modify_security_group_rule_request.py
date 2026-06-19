@@ -32,91 +32,72 @@ class ModifySecurityGroupRuleRequest(DaraModel):
         source_port_range: str = None,
         source_prefix_list_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the security group rule. The description must be 1 to 512 characters in length.
         self.description = description
-        # The destination IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+        # The destination IPv4 Classless Inter-Domain Routing (CIDR) block. CIDR format and IPv4 format IP address range are supported.
         # 
-        # By default, this parameter is left empty.
+        # Default value: null.
         self.dest_cidr_ip = dest_cidr_ip
-        # Network Layer /transport layer protocol. Two types of assignments are supported:
-        # 
-        # 1. The case-insensitive protocol name. Valid values:
-        # 
+        # The network-layer or transport-layer protocol. Two types of values are supported:
+        # 1. Case-insensitive protocol names. Valid values:
         # - ICMP
-        # 
         # - GRE
-        # 
         # - TCP
-        # 
         # - UDP
-        # 
-        # - ALL: supports all protocols.
-        # 
-        # 2. The value of the IANA-compliant protocol number, which is an integer from 0 to 255. List of regions currently available:
-        # 
-        # - Philippines (Manila)
-        # 
+        # - ALL: all protocols are supported.
+        # 2. Protocol numbers that comply with IANA specifications, which are integers from 0 to 255. The following regions currently support this feature:
+        # - Philippines
         # - UK (London)
-        # 
-        # - Malaysia (Kuala Lumpur)
-        # 
+        # - Malaysia
         # - China (Hohhot)
-        # 
         # - China (Qingdao)
-        # 
-        # - US (Silicon Valley)
-        # 
-        # - Singapore
+        # - US (Virginia)
+        # - Singapore.
         self.ip_protocol = ip_protocol
-        # The destination IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
+        # Settings for the destination IPv6 CIDR block. CIDR format and IPv6 format IP address range are supported.
         # 
-        # > Only the IP addresses of instances in VPCs are supported. You cannot specify both Ipv6DestCidrIp and `DestCidrIp`.
+        # > Only VPC-type IP addresses are supported. This parameter and `DestCidrIp` cannot be specified at the same time.
         # 
-        # By default, this parameter is left empty.
+        # Default value: null.
         self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
-        # The source IPv6 CIDR block. IPv6 CIDR blocks and IPv6 addresses are supported.
+        # Settings for the source IPv6 CIDR block for the access permissions. Classless Inter-Domain Routing (CIDR) format and IPv6 format IP address range are supported.
         # 
-        # > Only the IP addresses of instances in virtual private clouds (VPCs) are supported. You cannot specify both Ipv6SourceCidrIp and `SourceCidrIp`.
+        # > Only VPC-type IP addresses are supported. This parameter and `SourceCidrIp` cannot be specified at the same time.
         # 
-        # By default, this parameter is left empty.
+        # Default value: null.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The type of the network interface controller (NIC).
+        # The network interface controller (NIC) type.
         # 
-        # > You cannot modify this parameter when you modify a security group rule by specifying the ID of the rule. If you want to change the NIC type of a security group rule, you can create a security group rule of a desired NIC type and delete the existing rule.
+        # > When you modify a rule by specifying the security group rule ID, this parameter cannot be modified. To change this value, add a new rule and then delete the current rule.
         self.nic_type = nic_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The action of the security group rule. Valid values:
-        # 
-        # - accept: allows access.
-        # 
-        # - drop: denies access and returns no responses.
+        # The access permissions. Valid values: 
+        #          
+        # - accept: accepts access.
+        # - drop: deny access and does not return a rejection response.
         # 
         # Default value: accept.
         self.policy = policy
-        # The range of destination ports that correspond to the transport layer protocol. Valid values:
-        # 
-        # - If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
-        # 
-        # - If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # 
-        # - If you set IpProtocol to GRE, the port number range is -1/-1.
-        # 
-        # - If you set IpProtocol to ALL, the port number range is -1/-1.
+        # The range of destination ports that correspond to the transport-layer protocol. Valid values: 
+        #          
+        # - TCP/UDP: valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+        # - ICMP: -1/-1.
+        # - GRE: -1/-1.
+        # - ALL: -1/-1.
         self.port_range = port_range
-        # The ID of the port list. You can call the `DescribePortRangeLists` operation to query the IDs of available port lists.
-        # 
-        # - If you specify PortRange, this parameter is ignored.
-        # 
-        # - If a security group is in the classic network, you cannot configure port lists in the rules of the security group. For information about the limits on security groups and port lists, see [Security group limits](~~25412#SecurityGroupQuota1~~).
+        # Settings for the port address book ID.
+        # You can invoke `DescribePortRangeLists` to query available port address book IDs.
+        # - This parameter is ignored if you specify the PortRange parameter.
+        # - Port address books are not supported for security groups with the classic network type. For more information about the limits of security groups and port address books, see [Security group limits](~~25412#SecurityGroupQuota1~~).
         self.port_range_list_id = port_range_list_id
         # The priority of the security group rule. Valid values: 1 to 100.
         # 
         # Default value: 1.
         self.priority = priority
-        # The region ID of the security group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the target security group. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -126,43 +107,37 @@ class ModifySecurityGroupRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The ID of the security group rule. You can call the [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/2679845.html) operation to query the IDs of security group rules in a security group.
+        # The security group rule ID. You can call [DescribeSecurityGroupAttribute](https://help.aliyun.com/document_detail/2679845.html) to query security group rule IDs.
         self.security_group_rule_id = security_group_rule_id
-        # The source IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
+        # Settings for the source IPv4 CIDR block for the access permissions. Classless Inter-Domain Routing (CIDR) format and IPv4 format IP address range are supported.
         # 
-        # By default, this parameter is left empty.
+        # Default value: null.
         self.source_cidr_ip = source_cidr_ip
-        # The source security group ID. You must specify either `SourceGroupId` or `SourceCidrIp` or specify both of them.
+        # Settings for the ID of the source security group for the access permissions. Specify at least one of `SourceGroupId` and `SourceCidrIp`.
         # 
-        # - If `SourceGroupId` is specified but `SourceCidrIp` is not specified, the value of `NicType` must be set to intranet.
-        # 
-        # - If both `SourceGroupId` and `SourceCidrIp` are specified, the value of `SourceCidrIp` prevails by default.
+        # - If `SourceGroupId` is specified but `SourceCidrIp` is not, the `NicType` parameter can only be set to intranet.
+        # - If both `SourceGroupId` and `SourceCidrIp` are specified, `SourceCidrIp` takes precedence by default.
         self.source_group_id = source_group_id
-        # The Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts.
-        # 
-        # - If both `SourceGroupOwnerId` and `SourceGroupOwnerAccount` are empty, access permissions are configured for another security group managed by your account.
-        # 
-        # - If `SourceCidrIp` is specified, `SourceGroupOwnerAccount` is ignored.
+        # The Alibaba Cloud account that owns the source security group when you configure a cross-account security group rule. 
+        #          
+        # - If neither `SourceGroupOwnerAccount` nor `SourceGroupOwnerID` is set, the rule is configured for access permissions of another security group within your account.
+        # - If the parameter `SourceCidrIp` is specified, the parameter `SourceGroupOwnerAccount` is ignored.
         self.source_group_owner_account = source_group_owner_account
-        # The ID of the Alibaba Cloud account that manages the source security group when you configure a security group rule across accounts.
-        # 
-        # - If both `SourceGroupOwnerId` and `SourceGroupOwnerAccount` are empty, access permissions are configured for another security group managed by your account.
-        # 
-        # - If `SourceCidrIp` is specified, `SourceGroupOwnerId` is ignored.
+        # The Alibaba Cloud account that owns the source security group when you configure a cross-account security group rule. 
+        #          
+        # - If neither `SourceGroupOwnerId` nor `SourceGroupOwnerAccount` is set, the rule is configured for access permissions of another security group within your account.
+        # - If the parameter `SourceCidrIp` is specified, the parameter `SourceGroupOwnerId` is ignored.
         self.source_group_owner_id = source_group_owner_id
-        # The range of source ports that correspond to the transport layer protocol. Valid values:
-        # 
-        # - If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
-        # 
-        # - If you set IpProtocol to ICMP, the port number range is -1/-1.
-        # 
-        # - If you set IpProtocol to GRE, the port number range is -1/-1.
-        # 
-        # - If you set IpProtocol to ALL, the port number range is -1/-1.
+        # The range of source ports that correspond to the transport-layer protocol. Valid values: 
+        #          
+        # - TCP/UDP: valid values are 1 to 65535. Separate the start port and the end port with a forward slash (/). Example: 1/200.
+        # - ICMP: -1/-1.
+        # - GRE: -1/-1.
+        # - ALL: -1/-1.
         self.source_port_range = source_port_range
-        # The ID of the source prefix list to which you want to control access. You can call the [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) operation to query the IDs of available prefix lists.
+        # Settings for the ID of the source prefix list for the access permissions. You can invoke [DescribePrefixLists](https://help.aliyun.com/document_detail/205046.html) to query available prefix list IDs.
         # 
-        # If you specify `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId`, this parameter is ignored.
+        # This parameter is ignored if you specify one of the `SourceCidrIp`, `Ipv6SourceCidrIp`, or `SourceGroupId` parameters.
         self.source_prefix_list_id = source_prefix_list_id
 
     def validate(self):

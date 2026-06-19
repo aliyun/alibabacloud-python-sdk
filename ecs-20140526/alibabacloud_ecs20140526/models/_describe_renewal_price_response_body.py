@@ -13,9 +13,9 @@ class DescribeRenewalPriceResponseBody(DaraModel):
         price_info: main_models.DescribeRenewalPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # A data type composed of price information (PriceInfo), including pricing and discount rule details.
+        # The price information, including the price and discount rule details.
         self.price_info = price_info
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,7 +53,7 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
         related_price: main_models.DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice = None,
         rules: main_models.DescribeRenewalPriceResponseBodyPriceInfoRules = None,
     ):
-        # Price.
+        # The price.
         self.price = price
         self.related_price = related_price
         self.rules = rules
@@ -257,18 +257,18 @@ class DescribeRenewalPriceResponseBodyPriceInfoPrice(DaraModel):
         original_price: float = None,
         trade_price: float = None,
     ):
-        # Currency unit.
+        # The currency unit.
         # 
-        # China site (aliyun.com): CNY.
+        # China site: CNY.
         # 
-        # International site (alibabacloud.com): USD.
+        # International site: USD.
         self.currency = currency
         self.detail_infos = detail_infos
-        # Discounted price.
+        # The discount.
         self.discount_price = discount_price
-        # Original price.
+        # The original price.
         self.original_price = original_price
-        # Final price, calculated as the original price minus discounts.
+        # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):

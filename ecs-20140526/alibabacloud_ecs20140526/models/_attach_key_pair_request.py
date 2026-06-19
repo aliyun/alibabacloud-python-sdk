@@ -14,7 +14,7 @@ class AttachKeyPairRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IDs of instances to which you want to bind the SSH key pair. The value can be a JSON array that consists of up to 50 instance IDs. Separate multiple instance IDs with commas (,).
+        # The IDs of the instances to which you want to bind the SSH key pair. The value can be a JSON array that consists of up to 50 instance IDs. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
@@ -23,7 +23,7 @@ class AttachKeyPairRequest(DaraModel):
         # This parameter is required.
         self.key_pair_name = key_pair_name
         self.owner_id = owner_id
-        # The region ID of the SSH key pair. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the SSH key pair. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list of Alibaba Cloud.
         # 
         # This parameter is required.
         self.region_id = region_id

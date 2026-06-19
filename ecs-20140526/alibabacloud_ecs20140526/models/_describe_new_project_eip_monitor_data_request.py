@@ -17,24 +17,16 @@ class DescribeNewProjectEipMonitorDataRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of the EIP.
-        # 
         # This parameter is required.
         self.allocation_id = allocation_id
-        # The end of the query time range. The time must be in UTC and formatted as `YYYY-MM-DDThh:mm:ssZ`.
-        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The aggregation period of the monitoring data. Unit: seconds. Valid values: 60, 300, and 900.
         self.period = period
-        # The ID of the region where the Elastic IP address (EIP) is located.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start of the query time range. The time must be in UTC and formatted as `YYYY-MM-DDThh:mm:ssZ`.
-        # 
         # This parameter is required.
         self.start_time = start_time
 

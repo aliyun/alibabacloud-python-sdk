@@ -18,17 +18,16 @@ class DescribeDisksResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.disks = disks
-        # The token returned to retrieve the next page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # > This parameter is deprecated. We recommend that you use the `NextToken `and `MaxResults `parameters for pagination.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_number = page_number
-        # > This parameter is deprecated. We recommend that you use the `NextToken `and `MaxResults `parameters for pagination.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
-        # 
-        # > When you use the`MaxResults` and`NextToken` parameters for pagination, the value of `TotalCount` is invalid.
+        # > When you use MaxResults and NextToken parameters for paging query, the returned TotalCount parameter value is invalid.
         self.total_count = total_count
 
     def validate(self):
@@ -128,6 +127,7 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         bursting_enabled: bool = None,
         category: str = None,
         creation_time: str = None,
+        data_source: main_models.DescribeDisksResponseBodyDisksDiskDataSource = None,
         delete_auto_snapshot: bool = None,
         delete_with_instance: bool = None,
         description: str = None,
@@ -179,6 +179,7 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         self.bursting_enabled = bursting_enabled
         self.category = category
         self.creation_time = creation_time
+        self.data_source = data_source
         self.delete_auto_snapshot = delete_auto_snapshot
         self.delete_with_instance = delete_with_instance
         self.description = description
@@ -226,6 +227,8 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
     def validate(self):
         if self.attachments:
             self.attachments.validate()
+        if self.data_source:
+            self.data_source.validate()
         if self.mount_instances:
             self.mount_instances.validate()
         if self.operation_locks:
@@ -260,6 +263,9 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+
+        if self.data_source is not None:
+            result['DataSource'] = self.data_source.to_map()
 
         if self.delete_auto_snapshot is not None:
             result['DeleteAutoSnapshot'] = self.delete_auto_snapshot
@@ -415,6 +421,10 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+
+        if m.get('DataSource') is not None:
+            temp_model = main_models.DescribeDisksResponseBodyDisksDiskDataSource()
+            self.data_source = temp_model.from_map(m.get('DataSource'))
 
         if m.get('DeleteAutoSnapshot') is not None:
             self.delete_auto_snapshot = m.get('DeleteAutoSnapshot')
@@ -785,6 +795,41 @@ class DescribeDisksResponseBodyDisksDiskMountInstancesMountInstance(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        return self
+
+class DescribeDisksResponseBodyDisksDiskDataSource(DaraModel):
+    def __init__(
+        self,
+        id: str = None,
+        type: str = None,
+    ):
+        self.id = id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

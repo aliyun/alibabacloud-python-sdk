@@ -14,13 +14,10 @@ class ReleaseEipAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The allocation ID of the EIP to release.
-        # 
         # This parameter is required.
         self.allocation_id = allocation_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the EIP is located. You can call the `DescribeRegions` operation to get the latest list of regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

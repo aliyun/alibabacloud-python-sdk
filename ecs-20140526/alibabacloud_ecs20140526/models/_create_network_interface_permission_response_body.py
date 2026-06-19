@@ -11,7 +11,7 @@ class CreateNetworkInterfacePermissionResponseBody(DaraModel):
         network_interface_permission: main_models.CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission = None,
         request_id: str = None,
     ):
-        # Details of the network interface permission.
+        # The information about the ENI permission.
         self.network_interface_permission = network_interface_permission
         # The request ID.
         self.request_id = request_id
@@ -54,25 +54,22 @@ class CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission(Dar
         permission_state: str = None,
         service_name: str = None,
     ):
-        # The account ID of the Alibaba Cloud Partner (certified ISV).
+        # The ID of the Alibaba Cloud partner (certified ISV) account.
         self.account_id = account_id
-        # The elastic network interface ID.
+        # The ENI ID.
         self.network_interface_id = network_interface_id
-        # The network interface permission ID.
+        # The ENI permission ID.
         self.network_interface_permission_id = network_interface_permission_id
-        # The permission for the elastic network interface.
+        # The ENI permission.
         self.permission = permission
-        # The state of the network interface permission. Possible values:
+        # The ENI permission state. Valid values:
         # 
         # - Pending: The permission is being granted.
-        # 
-        # - Granted: The permission is granted.
-        # 
+        # - Granted: The permission has been granted.
         # - Revoking: The permission is being revoked.
-        # 
-        # - Revoked: The permission is revoked.
+        # - Revoked: The permission has been revoked.
         self.permission_state = permission_state
-        # The name of the Alibaba Cloud service that is granted the permission.
+        # The Alibaba Cloud service name.
         self.service_name = service_name
 
     def validate(self):

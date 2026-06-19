@@ -16,12 +16,9 @@ class DeleteVSwitchRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VSwitch. You can call the ~~DescribeRegions~~ operation to query the most recent list of regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VSwitch that you want to delete.
-        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
 

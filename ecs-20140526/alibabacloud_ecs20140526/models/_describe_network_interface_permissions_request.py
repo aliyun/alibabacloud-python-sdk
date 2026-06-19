@@ -19,25 +19,25 @@ class DescribeNetworkInterfacePermissionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The network interface ID. You must specify either `NetworkInterfaceId` or `NetworkInterfacePermissionId.N` to determine the query scope.
+        # The ID of the network interface controller (NIC). You must specify NetworkInterfaceId or NetworkInterfacePermissionId.N to determine the query scope.
         self.network_interface_id = network_interface_id
-        # An array of network interface permission IDs. The array can contain 1 to 100 IDs.
+        # The list of network interface controller (NIC) permission IDs. Number of elements in the list: 1 to 100.
         self.network_interface_permission_id = network_interface_permission_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number to return.
+        # The page number of the network interface controller (NIC) permission list.
         # 
-        # Starting value: 1
+        # Minimum value: 1
         # 
-        # Default value: 1
+        # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
         # Maximum value: 100
         # 
-        # Default value: 10
+        # Default value: 10.
         self.page_size = page_size
-        # The ID of the region for the network interface permission. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to obtain the latest list of Alibaba Cloud regions.
+        # The region of the network interface controller (NIC) permissions. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

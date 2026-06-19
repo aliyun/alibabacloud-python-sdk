@@ -18,45 +18,70 @@ class ModifyInstanceAutoRenewAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Specifies whether to enable auto-renewal.
+        # Specifies whether to automatically renew the instance before it expires.
         # 
-        # - true
-        # 
-        # - false
+        # - true: enables auto-renewal.
+        # - false: disables auto-renewal.
         # 
         # Default value: false.
         self.auto_renew = auto_renew
-        # The auto-renewal period of the instance.
+        # The auto-renewal duration of the instance.
         # 
-        # - Valid values of `Duration` when `PeriodUnit` is set to `Year`: 1, 2, 3, 4, and 5.
+        # <props="china">
+        # - When `PeriodUnit` is set to `Year`, the valid values of `Duration` are: {"1", "2", "3", "4", "5"}
+        # - When `PeriodUnit` is set to `Month`, the valid values of `Duration` are: {"1", "2", "3", "6", "12", "24", "36", "48", "60"}
+        # - When `PeriodUnit` is set to `Week`, the valid values of `Duration` are: {"1", "2", "3", "4"}
         # 
-        # - Valid values of `Duration` when `PeriodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
+        # 
+        # 
+        # <props="intl">
+        # - When `PeriodUnit` is set to `Year`, the valid values of `Duration` are: {"1", "2", "3", "4", "5"}
+        # - When `PeriodUnit` is set to `Month`, the valid values of `Duration` are: {"1", "2", "3", "6", "12", "24", "36", "48", "60"}
+        # 
+        # 
+        # 
+        # <props="partner">
+        # - When `PeriodUnit` is set to `Year`, the valid values of `Duration` are: {"1", "2", "3", "4", "5"}
+        # - When `PeriodUnit` is set to `Month`, the valid values of `Duration` are: {"1", "2", "3", "6", "12", "24", "36", "48", "60"}
         self.duration = duration
-        # The ID of the instance. You can specify up to 100 subscription instance IDs. Separate the instance IDs with commas (,).
+        # Instance ID. You can specify up to 100 subscription instances at a time. Separate multiple instance IDs with commas (,).
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The unit of the renewal period (`Duration`). Valid values:
+        # The unit of the renewal duration, that is, the unit of the `Duration` parameter. Valid values:
         # 
+        # <props="china">
+        # - Week
         # - Month (default)
+        # - Year
         # 
+        # 
+        # 
+        # <props="intl">
+        # - Month (default)
+        # - Year
+        # 
+        # 
+        # 
+        # <props="partner">
+        # - Month (default)
         # - Year
         self.period_unit = period_unit
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The auto-renewal status of the instance. Valid values:
         # 
-        # - AutoRenewal: Auto-renewal is enabled for the instance.
+        # - AutoRenewal: enables auto-renewal.
         # 
-        # - Normal: Auto-renewal is disabled for the instance.
+        # - Normal: disables auto-renewal.
         # 
-        # - NotRenewal: The instance is not renewed. The system no longer sends an expiration notification but sends only a renewal notification three days before the instance expires. You can change the value of this parameter from NotRenewal to `Normal` for an instance, and then manually renew the instance. Alternatively, you can set the RenewalStatus parameter to AutoRenewal.
+        # - NotRenewal: does not renew the instance. After this value is set, the system no longer sends expiration reminders and only sends a non-renewal reminder three days before the instance expires. ECS instances that are set to not renew can be changed to pending renewal (`Normal`), and then manually renewed or set to auto-renewal.
         # 
-        # > `RenewalStatus` takes precedence over `AutoRenew`. If you do not specify `RenewalStatus`, `AutoRenew` is used by default.
+        # > The `RenewalStatus` parameter takes precedence over the `AutoRenew` parameter. If the `RenewalStatus` parameter is not specified, the `AutoRenew` parameter takes effect by default.
         self.renewal_status = renewal_status
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

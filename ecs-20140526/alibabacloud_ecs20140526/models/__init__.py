@@ -1441,6 +1441,7 @@ from ._describe_disks_request import DescribeDisksRequestFilter
 from ._describe_disks_request import DescribeDisksRequestTag
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskAttachmentsAttachment
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskAttachments
+from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskDataSource
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskMountInstancesMountInstance
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskMountInstances
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskOperationLocksOperationLock
@@ -3509,6 +3510,7 @@ __all__ = [
     DescribeDisksRequestTag,
     DescribeDisksResponseBodyDisksDiskAttachmentsAttachment,
     DescribeDisksResponseBodyDisksDiskAttachments,
+    DescribeDisksResponseBodyDisksDiskDataSource,
     DescribeDisksResponseBodyDisksDiskMountInstancesMountInstance,
     DescribeDisksResponseBodyDisksDiskMountInstances,
     DescribeDisksResponseBodyDisksDiskOperationLocksOperationLock,

@@ -17,15 +17,15 @@ class DeleteLaunchTemplateRequest(DaraModel):
     ):
         # The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
         # 
-        # You must specify `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template.
+        # You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
         self.launch_template_id = launch_template_id
         # The name of the launch template.
         # 
-        # You must specify `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template.
+        # You must specify `LaunchTemplateId` or `LaunchTemplateName` to determine the launch template.
         self.launch_template_name = launch_template_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the launch template. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the launch template. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

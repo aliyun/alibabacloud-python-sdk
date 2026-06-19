@@ -21,15 +21,14 @@ class GetInstanceConsoleOutputRequest(DaraModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to remove formatting symbols from the returned command output. Valid values:
+        # Specifies whether to remove formatting symbols from the returned text. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: removes formatting symbols.
+        # - false: does not remove formatting symbols.
         # 
         # Default value: false.
         self.remove_symbols = remove_symbols

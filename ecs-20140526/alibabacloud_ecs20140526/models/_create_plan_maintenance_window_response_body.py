@@ -10,7 +10,7 @@ class CreatePlanMaintenanceWindowResponseBody(DaraModel):
         plan_window_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the maintenance window.
+        # The ID of the created O&M window.
         self.plan_window_id = plan_window_id
         # The request ID.
         self.request_id = request_id
