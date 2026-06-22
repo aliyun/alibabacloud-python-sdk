@@ -3,6 +3,11 @@
 - Update API UpdateProject: add request parameters DatasetConfig.
 
 
+2026-06-22 Version: 4.8.4
+- Update API CreateProject: add request parameters DatasetConfig.
+- Update API UpdateProject: add request parameters DatasetConfig.
+
+
 2026-05-26 Version: 4.8.3
 - Update API DetectImageCropping: add request parameters InclusionHints.
 - Update API DetectImageCropping: add response parameters Body.MatchedInclusionHints.
