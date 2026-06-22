@@ -1,3 +1,7 @@
+2026-06-22 Version: 8.0.0
+- Update API DescribeRegions: delete response parameters Body.regions.
+
+
 2026-06-17 Version: 7.2.2
 - Update API CreateDomain: add request parameters body.domainScope.
 - Update API GetDomain: add response parameters Body.data.domainScope.

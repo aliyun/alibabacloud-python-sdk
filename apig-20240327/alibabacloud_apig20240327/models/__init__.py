@@ -555,10 +555,7 @@ from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigEnvironme
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigOperationDeployments
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfig
 from ._deploy_http_api_response_body import DeployHttpApiResponseBodyData
-from ._describe_regions_response_body import DescribeRegionsResponseBodyDataRegions
 from ._describe_regions_response_body import DescribeRegionsResponseBodyData
-from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegion
-from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._export_http_api_request import ExportHttpApiRequestExtensionConfig
 from ._export_http_api_response_body import ExportHttpApiResponseBodyData
 from ._get_consumer_response_body import GetConsumerResponseBodyData
@@ -1254,10 +1251,7 @@ __all__ = [
     DeployHttpApiRequestRestApiConfigOperationDeployments,
     DeployHttpApiRequestRestApiConfig,
     DeployHttpApiResponseBodyData,
-    DescribeRegionsResponseBodyDataRegions,
     DescribeRegionsResponseBodyData,
-    DescribeRegionsResponseBodyRegionsRegion,
-    DescribeRegionsResponseBodyRegions,
     ExportHttpApiRequestExtensionConfig,
     ExportHttpApiResponseBodyData,
     GetConsumerResponseBodyData,
