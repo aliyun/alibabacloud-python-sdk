@@ -1,0 +1,97 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class PeekMessageResponseBody(DaraModel):
+    def __init__(
+        self,
+        dequeue_count: int = None,
+        enqueue_time: int = None,
+        first_dequeue_time: int = None,
+        message_body: str = None,
+        message_body_md5: str = None,
+        message_group_id: str = None,
+        message_id: str = None,
+        priority: int = None,
+        user_properties: str = None,
+    ):
+        self.dequeue_count = dequeue_count
+        self.enqueue_time = enqueue_time
+        self.first_dequeue_time = first_dequeue_time
+        self.message_body = message_body
+        self.message_body_md5 = message_body_md5
+        self.message_group_id = message_group_id
+        self.message_id = message_id
+        self.priority = priority
+        self.user_properties = user_properties
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dequeue_count is not None:
+            result['DequeueCount'] = self.dequeue_count
+
+        if self.enqueue_time is not None:
+            result['EnqueueTime'] = self.enqueue_time
+
+        if self.first_dequeue_time is not None:
+            result['FirstDequeueTime'] = self.first_dequeue_time
+
+        if self.message_body is not None:
+            result['MessageBody'] = self.message_body
+
+        if self.message_body_md5 is not None:
+            result['MessageBodyMD5'] = self.message_body_md5
+
+        if self.message_group_id is not None:
+            result['MessageGroupId'] = self.message_group_id
+
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
+        if self.user_properties is not None:
+            result['UserProperties'] = self.user_properties
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DequeueCount') is not None:
+            self.dequeue_count = m.get('DequeueCount')
+
+        if m.get('EnqueueTime') is not None:
+            self.enqueue_time = m.get('EnqueueTime')
+
+        if m.get('FirstDequeueTime') is not None:
+            self.first_dequeue_time = m.get('FirstDequeueTime')
+
+        if m.get('MessageBody') is not None:
+            self.message_body = m.get('MessageBody')
+
+        if m.get('MessageBodyMD5') is not None:
+            self.message_body_md5 = m.get('MessageBodyMD5')
+
+        if m.get('MessageGroupId') is not None:
+            self.message_group_id = m.get('MessageGroupId')
+
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+
+        if m.get('UserProperties') is not None:
+            self.user_properties = m.get('UserProperties')
+
+        return self
+
