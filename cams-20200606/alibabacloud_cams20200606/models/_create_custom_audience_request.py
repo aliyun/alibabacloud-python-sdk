@@ -18,19 +18,33 @@ class CreateCustomAudienceRequest(DaraModel):
         resource_owner_id: int = None,
         upload_type: str = None,
     ):
+        # The Meta ad account ID.
+        # 
         # This parameter is required.
         self.ad_account_id = ad_account_id
+        # The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
+        # 
+        # <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The description.
         self.description = description
+        # The file path.
         self.file_path = file_path
+        # The name of the custom audience.
+        # 
         # This parameter is required.
         self.name = name
         self.owner_id = owner_id
+        # The Page ID for Messenger.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The upload method.
+        # 
         # This parameter is required.
         self.upload_type = upload_type
 

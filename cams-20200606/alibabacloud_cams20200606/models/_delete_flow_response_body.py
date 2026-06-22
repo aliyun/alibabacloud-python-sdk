@@ -13,7 +13,7 @@ class DeleteFlowResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # If OK is returned, the request was successful.
+        # A value of OK indicates that the request was successful.
         self.code = code
         # The error message.
         self.message = message

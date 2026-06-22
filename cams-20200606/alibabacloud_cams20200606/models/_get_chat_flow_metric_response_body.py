@@ -16,17 +16,11 @@ class GetChatFlowMetricResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details of access denial.
         self.access_denied_detail = access_denied_detail
-        # Status code.
         self.code = code
-        # Returned data object.
         self.data = data
-        # Error message.
         self.message = message
-        # Unique request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Values: true: success; false: failure.
         self.success = success
 
     def validate(self):

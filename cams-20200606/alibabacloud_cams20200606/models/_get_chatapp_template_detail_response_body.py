@@ -20,8 +20,9 @@ class GetChatappTemplateDetailResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code.
         # 
-        # *   Example: OK. This value indicates that the request is successful.
-        # *   Other codes indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - Example: OK. This value indicates that the request is successful.
+        # 
+        # - Other codes indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
@@ -96,28 +97,41 @@ class GetChatappTemplateDetailResponseBodyData(DaraModel):
         self.allow_send = allow_send
         # The review status of the message template. Valid values:
         # 
-        # *   **pass**: The message template is approved.
-        # *   **fail**: The message template is rejected.
-        # *   **auditing**: The message template is being reviewed.
-        # *   **unaudit**: The review is suspended.
+        # - **pass**: The message template is approved.
+        # 
+        # - **fail**: The message template is rejected.
+        # 
+        # - **auditing**: The message template is being reviewed.
+        # 
+        # - **unaudit**: The review is suspended.
         self.audit_status = audit_status
         # The category of the template when the returned value of TemplateType is WHATSAPP. Valid values:
         # 
-        # *   **UTILITY**: a transactional template
-        # *   **MARKETING**: a marketing template
-        # *   **AUTHENTICATION**: an identity authentication template
+        # - **UTILITY**: a transactional template
+        # 
+        # - **MARKETING**: a marketing template
+        # 
+        # - **AUTHENTICATION**: an identity authentication template
         # 
         # The category of the template when the returned value of the TemplateType parameter is VIBER. Valid values:
         # 
-        # *   **text**: a template that contains only text
-        # *   **image**: a template that contains only images
-        # *   **text_image_button**: a template that contains text, images, and buttons
-        # *   **text_button**: a template that contains text and buttons
-        # *   **document**: a template that contains only files
-        # *   **video**: a template that contains only videos
-        # *   **text_video**: a template that contains text and videos
-        # *   **text_video_button**: a template that contains text, videos, and buttons
-        # *   **text_image**: a template that contains text and images
+        # - **text**: a template that contains only text
+        # 
+        # - **image**: a template that contains only images
+        # 
+        # - **text_image_button**: a template that contains text, images, and buttons
+        # 
+        # - **text_button**: a template that contains text and buttons
+        # 
+        # - **document**: a template that contains only files
+        # 
+        # - **video**: a template that contains only videos
+        # 
+        # - **text_video**: a template that contains text and videos
+        # 
+        # - **text_video_button**: a template that contains text, videos, and buttons
+        # 
+        # - **text_image**: a template that contains text and images
         # 
         # > If Category is set to text_video_button, users cannot open a web page by clicking the button. Users can open only the video in the message. In this case, you do not need to specify the Url parameter for the URL button in the template.
         self.category = category
@@ -140,9 +154,11 @@ class GetChatappTemplateDetailResponseBodyData(DaraModel):
         self.template_code = template_code
         # The type of the message template. Valid values:
         # 
-        # *   **WHATSAPP**
-        # *   **VIBER**
-        # *   LINE (developing)
+        # - **WHATSAPP**
+        # 
+        # - **VIBER**
+        # 
+        # - LINE (developing)
         self.template_type = template_type
 
     def validate(self):
@@ -272,15 +288,15 @@ class GetChatappTemplateDetailResponseBodyDataComponents(DaraModel):
         self.add_secret_recommendation = add_secret_recommendation
         # The buttons. This parameter is returned only if the Type sub-parameter of the Components parameter is set to **BUTTONS**.
         # 
-        # >  ####
+        # > ####
         # 
-        # *   A marketing or utility WhatsApp message template can contain up to 10 buttons.
+        # - A marketing or utility WhatsApp message template can contain up to 10 buttons.
         # 
-        # *   A WhatsApp message template can contain only one phone call button.
+        # - A WhatsApp message template can contain only one phone call button.
         # 
-        # *   A WhatsApp message template can contain up to two URL buttons.
+        # - A WhatsApp message template can contain up to two URL buttons.
         # 
-        # *   In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
+        # - In a WhatsApp message template, a quick reply button cannot be used together with a phone call button or a URL button.
         self.buttons = buttons
         # The description of the document.
         self.caption = caption
@@ -312,20 +328,25 @@ class GetChatappTemplateDetailResponseBodyDataComponents(DaraModel):
         self.thumb_url = thumb_url
         # The component type. Valid values:
         # 
-        # *   **BODY**
-        # *   **HEADER**
-        # *   **FOOTER**
-        # *   **BUTTONS**
-        # *   **CAROUSEL**
-        # *   **LIMITED_TIME_OFFER**
+        # - **BODY**
         # 
-        # > 
+        # - **HEADER**
         # 
-        # *   In a WhatsApp message template, a **Body** component cannot exceed 1,024 characters in length. A **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
+        # - **FOOTER**
         # 
-        # *   **FOOTER**, **CAROUSEL**, and **LIMITED_TIME_OFFER** components are not supported in Viber message templates.
+        # - **BUTTONS**
         # 
-        # *   In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed below the text in the message received on a device.
+        # - **CAROUSEL**
+        # 
+        # - **LIMITED_TIME_OFFER**
+        # 
+        # >
+        # 
+        # - In a WhatsApp message template, a **Body** component cannot exceed 1,024 characters in length. A **HEADER** or **FOOTER** component cannot exceed 60 characters in length.
+        # 
+        # - **FOOTER**, **CAROUSEL**, and **LIMITED_TIME_OFFER** components are not supported in Viber message templates.
+        # 
+        # - In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER** component. If a Viber message contains text and an image, the image is placed below the text in the message received on a device.
         self.type = type
         # The URL of the media resource.
         self.url = url
@@ -694,24 +715,29 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(DaraModel):
         self.text = text
         # The button type. Valid values:
         # 
-        # *   **PHONE_NUMBER**: phone call button
-        # *   **URL**: URL button
-        # *   **QUICK_REPLY**: quick reply button
-        # *   **COPY_CODE**: copy code button
-        # *   **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
+        # - **PHONE_NUMBER**: phone call button
         # 
-        # > 
+        # - **URL**: URL button
         # 
-        # *   If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If Type is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If Type is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
+        # - **QUICK_REPLY**: quick reply button
         # 
-        # *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
+        # - **COPY_CODE**: copy code button
+        # 
+        # - **ONE_TAP**: one-tap autofill button if Category is set to AUTHENTICATION
+        # 
+        # >
+        # 
+        # - If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If Type is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If Type is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
+        # 
+        # - You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
         self.type = type
         # The URL to which you are redirected when you click the URL button.
         self.url = url
         # The URL type. Valid values:
         # 
-        # *   **static**
-        # *   **dynamic**
+        # - **static**
+        # 
+        # - **dynamic**
         self.url_type = url_type
 
     def validate(self):

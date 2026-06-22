@@ -2,27 +2,37 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, Any
-
 from darabonba.model import DaraModel
 
-class CreateChatFlowResponseBody(DaraModel):
+class SubmitVerifyCodeResultResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        data: Dict[str, Any] = None,
+        data: str = None,
         message: str = None,
         request_id: str = None,
-        response: Dict[str, Any] = None,
         success: bool = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - A value of `OK` indicates that the request was successful.
+        # 
+        # - See the [error code list](https://help.aliyun.com/document_detail/196974.html) for other error codes.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
-        self.response = response
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -48,9 +58,6 @@ class CreateChatFlowResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
-        if self.response is not None:
-            result['Response'] = self.response
-
         if self.success is not None:
             result['Success'] = self.success
 
@@ -72,9 +79,6 @@ class CreateChatFlowResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-
-        if m.get('Response') is not None:
-            self.response = m.get('Response')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')

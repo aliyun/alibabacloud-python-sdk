@@ -16,17 +16,11 @@ class ListFlowVersionResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Details of access denied.
         self.access_denied_detail = access_denied_detail
-        # Status code.
         self.code = code
-        # Error message.
         self.message = message
-        # Request ID.
         self.request_id = request_id
-        # Content of the returned data.
         self.response = response
-        # Whether the operation was successful. Values: true: success; false: failure.
         self.success = success
 
     def validate(self):

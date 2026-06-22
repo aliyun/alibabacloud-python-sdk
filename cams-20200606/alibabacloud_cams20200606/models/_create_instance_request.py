@@ -18,18 +18,29 @@ class CreateInstanceRequest(DaraModel):
         office_address: str = None,
         resource_group_id: str = None,
     ):
+        # The channel type.
+        # 
         # This parameter is required.
         self.channel_type = channel_type
+        # The contact email address.
         self.contact_mail = contact_mail
+        # The country code.
         self.country_id = country_id
-        # FacebookBmId
+        # The ID of the Facebook Business Manager (BM).
         self.facebook_bm_id = facebook_bm_id
+        # The description of the instance.
         self.instance_description = instance_description
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # Specifies whether to confirm the audit.
         self.is_confirm_audit = is_confirm_audit
+        # The URL of the ISV terms file.
         self.isv_terms = isv_terms
+        # The office address of the business.
         self.office_address = office_address
+        # The ID of the resource group that contains the instance.
         self.resource_group_id = resource_group_id
 
     def validate(self):

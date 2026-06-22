@@ -13,21 +13,23 @@ class DeleteChatappTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The status code of the request.
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: successful.
+        # 
+        # - **false**: failed.
         self.success = success
 
     def validate(self):

@@ -16,17 +16,11 @@ class CreateChatFlowLogSettingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Access denied details.
         self.access_denied_detail = access_denied_detail
-        # Status code.
         self.code = code
-        # Returned data.
         self.data = data
-        # Error message.
         self.message = message
-        # Request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Values: true for success, false for failure.
         self.success = success
 
     def validate(self):

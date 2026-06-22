@@ -17,11 +17,25 @@ class ListChatGroupParticipantsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other values, see the [error code list](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -82,7 +96,9 @@ class ListChatGroupParticipantsResponseBodyData(DaraModel):
         list: List[main_models.ListChatGroupParticipantsResponseBodyDataList] = None,
         total: int = None,
     ):
+        # The list of group members.
         self.list = list
+        # The total number of participants.
         self.total = total
 
     def validate(self):
@@ -124,6 +140,7 @@ class ListChatGroupParticipantsResponseBodyDataList(DaraModel):
         self,
         participant_number: str = None,
     ):
+        # The phone number of the group member.
         self.participant_number = participant_number
 
     def validate(self):

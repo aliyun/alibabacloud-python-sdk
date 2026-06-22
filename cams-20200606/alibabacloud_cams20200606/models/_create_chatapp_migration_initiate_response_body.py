@@ -14,18 +14,19 @@ class CreateChatappMigrationInitiateResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The information about the request denial..
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The status code of the request.
         # 
-        # *   A value of OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,11 +82,12 @@ class CreateChatappMigrationInitiateResponseBodyData(DaraModel):
         phone_number: str = None,
         status: str = None,
     ):
-        # The ID of the mobile number.
+        # The ID of the phone number.
         self.id = id
-        # The mobile number.
+        # The phone number.
         self.phone_number = phone_number
-        # The state of the mobile number. Only MIGRATING may be returned, which indicates that the mobile number is being migrated.
+        # The status of the phone number.
+        # Valid value: MIGRATING: The phone number is being migrated.
         self.status = status
 
     def validate(self):

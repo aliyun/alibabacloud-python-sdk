@@ -19,8 +19,9 @@ class QueryWabaBusinessInfoResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the call is successful.
+        # 
+        # - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The business information about the WABA.
         self.data = data
@@ -30,8 +31,9 @@ class QueryWabaBusinessInfoResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):

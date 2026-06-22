@@ -13,9 +13,13 @@ class SyncMessageCampaignRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the Meta ad account.
+        # 
         # This parameter is required.
         self.ad_account_id = ad_account_id
         self.owner_id = owner_id
+        # The ID of the Messenger page.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account

@@ -16,14 +16,26 @@ class ListChatGroupParticipantsShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business number. You can call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the business number.
+        # 
         # This parameter is required.
         self.business_number = business_number
+        # The channel type. Valid value:
+        # 
+        # - **WHATSAPP**
+        # 
+        # > This operation supports only the WhatsApp channel.
         self.channel_type = channel_type
+        # This is the instance ID for direct customers or the SpaceId for ISV sub-customers. You can find the ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The group ID. You can call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the group ID.
+        # 
         # This parameter is required.
         self.group_id = group_id
         self.owner_id = owner_id
+        # The paging information.
         self.page_shrink = page_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

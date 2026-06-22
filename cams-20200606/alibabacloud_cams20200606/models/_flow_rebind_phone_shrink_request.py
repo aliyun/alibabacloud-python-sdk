@@ -17,27 +17,17 @@ class FlowRebindPhoneShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         waba_id: str = None,
     ):
-        # Message channel code
-        # 
         # This parameter is required.
         self.channel_code = channel_code
-        # Message channel type
-        # 
         # This parameter is required.
         self.channel_type = channel_type
-        # Flow code.
-        # 
         # This parameter is required.
         self.flow_code = flow_code
-        # Flow version
         self.flow_version = flow_version
         self.owner_id = owner_id
-        # Phone numbers or PageIds under the channel instance, etc.
         self.phone_numbers_shrink = phone_numbers_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # WABA account ID, or PageId for other channel types, etc.
-        # 
         # This parameter is required.
         self.waba_id = waba_id
 

@@ -15,11 +15,25 @@ class QueryInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error code list](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The data object returned on a successful request.
         self.data = data
+        # The response message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,19 +105,33 @@ class QueryInstanceResponseBodyData(DaraModel):
         resource_region_id: str = None,
         submit_time: str = None,
     ):
+        # The channel type.
         self.channel_type = channel_type
+        # The contact email address.
         self.contact_mail = contact_mail
+        # The country ID.
+        # 
+        # > For a list of country codes, see [Country codes](https://help.aliyun.com/document_detail/608210.html).
         self.country_id = country_id
+        # The customer type.
         self.cust_type = cust_type
-        # FacebookBmId
+        # The Facebook Business Manager ID.
         self.facebook_bm_id = facebook_bm_id
+        # The description of the instance.
         self.instance_description = instance_description
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The ISV terms.
         self.isv_terms = isv_terms
+        # The office address.
         self.office_address = office_address
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The region ID of the resource.
         self.resource_region_id = resource_region_id
+        # The submission time.
         self.submit_time = submit_time
 
     def validate(self):

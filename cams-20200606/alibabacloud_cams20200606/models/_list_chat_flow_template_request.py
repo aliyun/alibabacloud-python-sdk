@@ -16,26 +16,14 @@ class ListChatFlowTemplateRequest(DaraModel):
         resource_owner_id: int = None,
         trigger_type: str = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
-        # 
         # This parameter is required.
         self.biz_code = biz_code
-        # Search keyword.
         self.keyword = keyword
         self.owner_id = owner_id
-        # Page number
         self.page_no = page_no
-        # Number of records per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Trigger type, with the following enum values:
-        # 
-        # - TriggeredManually
-        # - TriggeredByWhatsApp
-        # - TriggeredByInstagram
-        # - TriggeredByViber
-        # - TriggeredByMessenger
         self.trigger_type = trigger_type
 
     def validate(self):

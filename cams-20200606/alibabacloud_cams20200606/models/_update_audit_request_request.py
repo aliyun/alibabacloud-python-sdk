@@ -18,12 +18,19 @@ class UpdateAuditRequestRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Viber audit items.
+        # 
         # This parameter is required.
         self.audit_record = audit_record
+        # The audit result.
         self.audit_result = audit_result
+        # The Space ID of the ISV sub-customer or the instance ID. View it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The request number.
+        # 
         # This parameter is required.
         self.request_no = request_no
         self.resource_owner_account = resource_owner_account
@@ -123,38 +130,69 @@ class UpdateAuditRequestRequestAuditRecord(DaraModel):
         suspension_date: str = None,
         web_address: str = None,
     ):
+        # Age limit.
         self.age_limit = age_limit
+        # Application reason.
         self.apply_reason = apply_reason
+        # Business account name.
         self.business_account_name = business_account_name
+        # Business license registration number.
         self.business_license_registration_number = business_license_registration_number
+        # Company addresses.
         self.company_address = company_address
+        # Company English name.
         self.company_english_name = company_english_name
+        # Company legal name.
         self.company_legal_name = company_legal_name
+        # Company legal person name.
         self.company_legal_person = company_legal_person
+        # Company profile.
         self.company_profile = company_profile
+        # Company registered country or region.
         self.company_registered_country = company_registered_country
+        # Company phone numbers.
         self.company_tel = company_tel
+        # Complete address of headquarters.
         self.complete_address_of_headquarters = complete_address_of_headquarters
+        # Contact mailbox.
         self.contact_email = contact_email
+        # Contact mailbox.
         self.contact_mail = contact_mail
+        # Contact name.
         self.contact_name = contact_name
+        # Contact phone number.
         self.contact_phone = contact_phone
+        # Contact position.
         self.contact_position = contact_position
+        # Enable auto-reply (this field is deprecated).
         self.enable_auto_reply = enable_auto_reply
+        # Industry description.
         self.industry_description = industry_description
+        # Industry involved.
         self.industry_involved = industry_involved
+        # Letter of guarantee (download address).
         self.letter_guarantee = letter_guarantee
-        # logo
+        # Logo
         self.logo = logo
+        # Local destination countries or regions.
         self.message_destination_country = message_destination_country
+        # International destination countries and regions.
         self.message_destination_international_country = message_destination_international_country
+        # Commercial message dialogue introduction.
         self.message_dialogue_introduction = message_dialogue_introduction
+        # Commercial message enable date (GMT).
         self.message_enable_date = message_enable_date
+        # Commercial message dialogue name.
         self.message_session_name = message_session_name
+        # Supplementary material address.
         self.other_letter_guarantee = other_letter_guarantee
+        # Recovery date.
         self.recovery_date = recovery_date
+        # Reply content (deprecated).
         self.reply_content = reply_content
+        # Deprecated.
         self.suspension_date = suspension_date
+        # Company website.
         self.web_address = web_address
 
     def validate(self):
@@ -386,7 +424,9 @@ class UpdateAuditRequestRequestAuditRecordCompanyTel(DaraModel):
         company_tel_number: str = None,
         company_tel_title: str = None,
     ):
+        # Company phone number.
         self.company_tel_number = company_tel_number
+        # Phone number title.
         self.company_tel_title = company_tel_title
 
     def validate(self):
@@ -421,7 +461,9 @@ class UpdateAuditRequestRequestAuditRecordCompanyAddress(DaraModel):
         company_address: str = None,
         company_address_title: str = None,
     ):
+        # Company address.
         self.company_address = company_address
+        # Company address title.
         self.company_address_title = company_address_title
 
     def validate(self):

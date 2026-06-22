@@ -45,7 +45,7 @@ class ModifyPhoneBusinessProfileRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The industry.
         # 
-        # >  Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
+        # > Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
         self.vertical = vertical
         # The URLs of the websites.
         self.websites = websites

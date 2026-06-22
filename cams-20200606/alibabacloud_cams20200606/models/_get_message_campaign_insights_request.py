@@ -15,13 +15,21 @@ class GetMessageCampaignInsightsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The Meta ad account ID.
+        # 
         # This parameter is required.
         self.ad_account_id = ad_account_id
+        # The ID of the campaign.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The Space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of the direct customers. This is the channel ID. You can find the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The Page ID.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account

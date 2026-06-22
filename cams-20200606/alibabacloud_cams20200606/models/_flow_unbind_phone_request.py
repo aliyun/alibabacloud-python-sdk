@@ -17,16 +17,11 @@ class FlowUnbindPhoneRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Message channel type
         self.channel_type = channel_type
-        # Flow code.
-        # 
         # This parameter is required.
         self.flow_code = flow_code
-        # Flow version
         self.flow_version = flow_version
         self.owner_id = owner_id
-        # Phone numbers or PageIds under the channel instance, etc.
         self.phone_numbers = phone_numbers
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

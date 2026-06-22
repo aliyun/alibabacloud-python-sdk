@@ -14,18 +14,19 @@ class GetMigrationVerifyCodeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The request status code.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,9 +81,9 @@ class GetMigrationVerifyCodeResponseBodyData(DaraModel):
         id: str = None,
         phone_number: str = None,
     ):
-        # The ID of the number.
+        # The phone number ID.
         self.id = id
-        # Phone number.
+        # The phone number.
         self.phone_number = phone_number
 
     def validate(self):

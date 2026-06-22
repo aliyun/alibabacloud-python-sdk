@@ -21,19 +21,31 @@ class AddCustomAudienceUserRequest(DaraModel):
         resource_owner_id: int = None,
         users: List[main_models.AddCustomAudienceUserRequestUsers] = None,
     ):
+        # The ID of the Meta ad account.
+        # 
         # This parameter is required.
         self.ad_account_id = ad_account_id
+        # Indicates whether this is the last batch of data.
         self.batch_last_flag = batch_last_flag
+        # The space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of a direct customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The ID of the custom audience.
+        # 
         # This parameter is required.
         self.custom_audience_id = custom_audience_id
+        # The estimated total number of users.
         self.estimated_num_total = estimated_num_total
         self.owner_id = owner_id
+        # The Page ID for Messenger.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # A list of users.
+        # 
         # This parameter is required.
         self.users = users
 
@@ -125,7 +137,9 @@ class AddCustomAudienceUserRequestUsers(DaraModel):
         email: str = None,
         phone: str = None,
     ):
+        # The email address.
         self.email = email
+        # The phone number.
         self.phone = phone
 
     def validate(self):

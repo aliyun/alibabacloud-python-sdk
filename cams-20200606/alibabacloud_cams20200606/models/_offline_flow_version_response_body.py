@@ -16,17 +16,11 @@ class OfflineFlowVersionResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Access denied details; this field is only returned when RAM verification fails.
         self.access_denied_detail = access_denied_detail
-        # Status code.
         self.code = code
-        # Error message.
         self.message = message
-        # Request ID.
         self.request_id = request_id
-        # Content of the returned data.
         self.response = response
-        # Indicates whether the operation was successful. true means success, false means failure.
         self.success = success
 
     def validate(self):

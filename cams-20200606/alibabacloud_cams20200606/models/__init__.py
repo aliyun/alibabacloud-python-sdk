@@ -479,6 +479,9 @@ from ._send_chatapp_message_request import SendChatappMessageRequest
 from ._send_chatapp_message_shrink_request import SendChatappMessageShrinkRequest
 from ._send_chatapp_message_response_body import SendChatappMessageResponseBody
 from ._send_chatapp_message_response import SendChatappMessageResponse
+from ._submit_verify_code_result_request import SubmitVerifyCodeResultRequest
+from ._submit_verify_code_result_response_body import SubmitVerifyCodeResultResponseBody
+from ._submit_verify_code_result_response import SubmitVerifyCodeResultResponse
 from ._sync_business_app_history_request import SyncBusinessAppHistoryRequest
 from ._sync_business_app_history_response_body import SyncBusinessAppHistoryResponseBody
 from ._sync_business_app_history_response import SyncBusinessAppHistoryResponse
@@ -1190,6 +1193,9 @@ __all__ = [
     SendChatappMessageShrinkRequest,
     SendChatappMessageResponseBody,
     SendChatappMessageResponse,
+    SubmitVerifyCodeResultRequest,
+    SubmitVerifyCodeResultResponseBody,
+    SubmitVerifyCodeResultResponse,
     SyncBusinessAppHistoryRequest,
     SyncBusinessAppHistoryResponseBody,
     SyncBusinessAppHistoryResponse,

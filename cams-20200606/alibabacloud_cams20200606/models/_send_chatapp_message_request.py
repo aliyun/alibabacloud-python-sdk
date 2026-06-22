@@ -45,139 +45,358 @@ class SendChatappMessageRequest(DaraModel):
         ttl: int = None,
         type: str = None,
     ):
+        # The Meta ad account ID.
+        # 
+        # > This parameter is for internal testing, is not generally available, and can be ignored.
         self.ad_account_id = ad_account_id
+        # The message category for direct WhatsApp sending.
+        # 
+        # >Warning: 
+        # 
+        # Specify this parameter only if you are a Meta-invited customer. Otherwise, the message may fail to send.
         self.category = category
         # The channel type. Valid values:
         # 
-        # *   **whatsapp**
-        # *   **viber**
-        # *   **line** (under development)
+        # - **whatsapp**
+        # 
+        # - **messenger**
+        # 
+        # - **instagram**
+        # 
+        # - **telegram**
+        # 
+        # <props="intl">
+        # 
+        # - **viber**
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # The message content.
+        # The message content, in a JSON-formatted string.
         # 
-        # **Notes on WhatsApp messages:**
+        # **Notes for WhatsApp messages:**
         # 
-        # *   If you set **messageType** to **text**, you must specify **text** and must not specify **Caption**.
-        # *   If you set **messageType** to **image**, you must specify **Link**.
-        # *   If you set **messageType** to **video**, you must specify **Link**.
-        # *   If you set **messageType** to **audio**, **Link** is required and **Caption** is invalid.
-        # *   If you set **messageType** to **document**, **Link** and **FileName** are required and **Caption** is invalid.
-        # *   If you set **messageType** to **interactive**, you must specify **type** and **action**.
-        # *   If you set **messageType** to **contacts**, you must specify **name**.
-        # *   If you set **messageType** to **location**, you must specify **longitude** and **latitude**.
-        # *   If you set **messageType** to **sticker**, you must specify **Link**, and **Caption** and **FileName** are invalid.
-        # *   If you set **messageType** to **reaction**, you must specify **messageId** and **emoji**.
+        # - If `MessageType` is `text`, the `text` field is required, and the `Caption` field is not supported.
         # 
-        # **Notes on Viber messages:**
+        # - If `MessageType` is `image`, the `Link` field is required.
         # 
-        # *   If you set **messageType** to **text**, you must specify **text**.
-        # *   If you set **messageType** to **image**, you must specify **link**.
-        # *   If you set **messageType** to **video**, you must specify **link**, **thumbnail**, **fileSize**, and **duration**.
-        # *   If you set **messageType** to **document**, you must specify **link**, **fileName**, and **fileType**.
-        # *   If you set **messageType** to **text_button**, you must specify **text**, **caption**, and **action**.
-        # *   If you set **messageType** to **text_image_button**, you must specify **text**, **link**, **caption**, and **action**.
-        # *   If you set **messageType** to **text_video**, you must specify **text**, **link**, **thumbnail**, **fileSize**, and **duration**.
-        # *   If you set **messageType** to **text_video_button**, you must specify **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption**. In addition, you must not specify **action**.
+        # - If `MessageType` is `video`, the `Link` field is required.
+        # 
+        # - If `MessageType` is `audio`, the `Link` field is required. The `Caption` field is not supported.
+        # 
+        # - If `MessageType` is `document`, the `Link` and `FileName` fields are required. The `Caption` field is not supported.
+        # 
+        # - If `MessageType` is `interactive`, the `type` and `action` fields are required.
+        # 
+        # - If `MessageType` is `contacts`, the `name` field is required.
+        # 
+        # - If `MessageType` is `location`, the `longitude` and `latitude` fields are required.
+        # 
+        # - If `MessageType` is `sticker`, the `Link` field is required. The `Caption` and `FileName` fields are not supported.
+        # 
+        # - If `MessageType` is `reaction`, the `messageId` and `emoji` fields are required.
+        # 
+        # **Notes for Messenger messages:**
+        # 
+        # - If `MessageType` is `text`, the `text` field is required.
+        # 
+        # - If `MessageType` is `image`, `video`, `audio`, or `document`, the `link` field is required.
+        # 
+        # **Notes for Instagram messages:**
+        # 
+        # - If `MessageType` is `text`, the `text` field is required.
+        # 
+        # - If `MessageType` is `image`, `video`, or `audio`, the `link` field is required.
+        # 
+        # <props="intl">
+        # 
+        # **Notes for Viber messages:**
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `text`, the `text` field is required.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `image`, the `link` field is required.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `video`, the `link`, `thumbnail`, `fileSize`, and `duration` fields are required.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `document`, the `link`, `fileName`, and `fileType` fields are required.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `text_button`, the `text`, `caption`, and `action` fields are required.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `text_image_button`, the `text`, `link`, `caption`, and `action` fields are required.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `text_video`, the `text`, `link`, `thumbnail`, `fileSize`, and `duration` fields are required.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If `MessageType` is `text_video_button`, the `text`, `link`, `thumbnail`, `fileSize`, `duration`, and `caption` fields are required. The `action` field is not supported.
         self.content = content
-        # The ID of the reply message.
+        # The ID of the message to which you are replying.
         self.context_message_id = context_message_id
-        # The space ID of the user.
+        # The Space ID of the ISV\\"s sub-account. For a direct customer, this is the Instance ID. You can find the ID on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
-        # 
-        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # **Deprecated.** Use `CustSpaceId` instead. The WABA ID of an ISV\\"s customer. For a direct customer, this is the Instance ID. You can find the ID on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
         self.cust_waba_id = cust_waba_id
-        # The content of the fallback message.
+        # The custom content of the fallback message. This parameter is available only on the International Site and can be ignored if you are using the China site.
         self.fall_back_content = fall_back_content
-        # Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the **message fails to be sent** or **the message receipt that indicates the message is not delivered to clients** is received. Unit: seconds. Valid values: 60 to 43200.
+        # The duration after which a fallback is triggered. This parameter is available only on the International Site and can be ignored if you are using the China site.<props="intl"> If a delivery receipt is not returned within the specified period, a fallback is triggered. If this parameter is omitted, a fallback is triggered only if the message fails to send or a failed delivery receipt is returned. Unit: seconds. The value must be between 60 and 43200.
         self.fall_back_duration = fall_back_duration
-        # The ID of the fallback policy. You can create a fallback policy and view the information in the Chat App Message Service console.
+        # The ID of the fallback strategy. This parameter is available only on the International Site and can be ignored if you are using the China site.<props="intl"> You can find the strategy ID on the [**Fallback Policy**](https://chatapp.console.alibabacloud.com/FallbackStrategy) page.
         self.fall_back_id = fall_back_id
-        # The fallback rule. Valid values:
+        # The fallback rule. This parameter is available only on the International Site and can be ignored if you are using the China site.
+        # <props="intl">Valid values:
         # 
-        # *   **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
-        # *   **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
+        # <props="intl">
+        # 
+        # - **undelivered**: A fallback is triggered if message delivery fails. The template and parameters must be valid at the time of sending. Blocked templates or phone numbers are not validated. This is the default rule if the parameter is empty.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **sentFailed**: A fallback is triggered if the message fails parameter validation, such as for the template or template parameters. Only the existence of `channelType`, `type`, `messageType`, `to`, and `from` is strictly validated.
         self.fall_back_rule = fall_back_rule
-        # The Flow action.
+        # The Flow message object.
         self.flow_action = flow_action
-        # The mobile phone number of the message sender.
+        # The sender\\"s number or ID.
         # 
-        # >  You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the Chat App Message Service console.
+        # - If `ChannelType` is **whatsapp**, this is the phone number registered with WhatsApp. You can find the number on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **WABA Management** > **Phone Number Management** page.
+        # 
+        # - If `ChannelType` is **messenger**, this is the Facebook Page ID. You can find this ID on your <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Facebook Page** page.
+        # 
+        # - If `ChannelType` is **instagram**, this is the Instagram professional account ID (Account ID). You can find the ID on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Professional Account** page.
+        # 
+        # <props="intl">
+        # 
+        # - If `ChannelType` is **viber**, this is the Viber service ID (Service ID). You can find the ID on the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Service Number Management** page.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
+        # **Deprecated.** A verification code used to authorize an ISV\\"s sub-account. You can ignore this parameter.
         self.isv_code = isv_code
-        # The type of the Viber message. This parameter is required if ChannelType is set to viber. Valid values:
+        # The Viber message type. This parameter is available only on the International Site and can be ignored if you are using the China site.
+        # <props="intl">Valid values:
         # 
-        # *   **promotion**
-        # *   **transaction**
+        # <props="intl">
+        # 
+        # - **promotion**: A promotional or marketing message.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **transaction**: A notification message.
         self.label = label
-        # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The language of the message template. For a list of supported languages and their corresponding codes, see [language code](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
+        # The ID of the message campaign.
+        # 
+        # > This parameter is for internal testing, is not generally available, and can be ignored.
         self.message_campaign_id = message_campaign_id
-        # The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
+        # The message type to use when `Type` is set to `message`. The valid values vary based on the channel type:
         # 
-        # **Valid values of MessageType when you set the ChannelType parameter to whatsapp:**
+        # <details>
         # 
-        # *   **text**: a text message.
-        # *   **image**: an image message.
-        # *   **video**: a video message.
-        # *   **audio**: an audio message.
-        # *   **document**: a document message.
-        # *   **interactive**: an interactive message.
-        # *   **contacts**: a contact message.
-        # *   **location**: a location message.
-        # *   **sticker**: a sticker message.
-        # *   **reaction**: a reaction message.
+        # <summary>
         # 
-        # **Valid values of MessageType when you set the ChannelType parameter to viber:**
+        # WHATSAPP
         # 
-        # *   **text**: a text message.
-        # *   **image**: an image message.
-        # *   **video**: a video message.
-        # *   **document**: a document message.
-        # *   **text_button**: a message that contains the text and button media objects.
-        # *   **text_image_button**: a message that contains multiple media objects, including the text, image, and button.
-        # *   **text_video**: a message that contains the text and video media objects.
-        # *   **text_video_button**: a message that contains multiple media objects, including text, video, and button.
-        # *   **text_image**: a message that contains the text and image media objects.
+        # </summary>
         # 
-        # > For more information, see [Parameters of a message template](https://help.aliyun.com/document_detail/454530.html).
+        # - `text`: A text message.
+        # 
+        # - `image`: An image message.
+        # 
+        # - `video`: A video message.
+        # 
+        # - `audio`: An audio message.
+        # 
+        # - `document`: A document message.
+        # 
+        # - `interactive`: An interactive message.
+        # 
+        # - `location`: A location message.
+        # 
+        # - `contacts`: A contacts message.
+        # 
+        # - `reaction`: A reaction message.
+        # 
+        # - `sticker`: A sticker message.
+        # 
+        # - `typing_indicator`: A typing indicator message.
+        # 
+        # - `pin`: A message to pin or unpin. This type is available only for group messages.
+        # 
+        # - `carousel`: A carousel message.
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # VIBER
+        # 
+        # </summary>
+        # 
+        # - `text`: A text message.
+        # 
+        # - `image`: An image message.
+        # 
+        # - `text_image_button`: A message with text, an image, and a button.
+        # 
+        # - `text_button`: A message with text and a button.
+        # 
+        # - `document`: A document message.
+        # 
+        # - `video`: A video message.
+        # 
+        # - `text_video`: A message with text and a video.
+        # 
+        # - `text_video_button`: A message with text, a video, and a button.
+        # 
+        # - `text_image`: A message with text and an image.
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # MESSENGER / INSTAGRAM
+        # 
+        # </summary>
+        # 
+        # - `text`: A text message.
+        # 
+        # - `image`: An image message.
+        # 
+        # - `video`: A video message.
+        # 
+        # - `document`: A document message.
+        # 
+        # - `audio`: An audio message.
+        # 
+        # - `interactive`: An interactive message.
+        # 
+        # - `couponTemplate`: A coupon template message.
+        # 
+        # - `regularTemplate`: A regular template message.
+        # 
+        # - `quickReply`: A quick reply message.
+        # 
+        # - `buttonTemplate`: A button template message.
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # TELEGRAM
+        # 
+        # </summary>
+        # 
+        # - `text`: A text message.
+        # 
+        # - `image`: An image message.
+        # 
+        # - `video`: A video message.
+        # 
+        # - `audio`: An audio message.
+        # 
+        # - `document`: A document message.
+        # 
+        # - `location`: A location message.
+        # 
+        # - `gif`: An animated GIF message.
+        # 
+        # - `sticker`: A sticker message.
+        # 
+        # </details>
         self.message_type = message_type
         self.owner_id = owner_id
-        # The payload of the button.
+        # An array of custom data strings that are sent to your webhook when a user clicks a corresponding button.
         self.payload = payload
-        # The information about the products included in the WhatsApp catalog message or multi-product message (MPM).
+        # Product information that you have uploaded to Meta. This parameter applies to WhatsApp channels only.
         self.product_action = product_action
+        # The recipient type. Valid values:
+        # 
+        # - `individual`: A single recipient.
+        # 
+        # - `group`: A group.
         self.recipient_type = recipient_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag information of the Viber message.
+        # A custom tag for the Viber message.
         self.tag = tag
-        # The task ID.
+        # A custom task ID.
         self.task_id = task_id
-        # The code of the message template. This parameter is required only if you set the Type parameter to **template**.
+        # The message template code. You can find the code on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Template Design** page.
         self.template_code = template_code
-        # The name of the message template.
+        # The template name. You can find the template name on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Template Design** page.
         self.template_name = template_name
-        # The variables of the message template.
+        # The parameters for the message template.
         self.template_params = template_params
-        # The mobile phone number of the message receiver.
+        # The recipient\\"s number or ID.
+        # 
+        # - If `ChannelType` is **whatsapp**, this is the recipient\\"s phone number.
+        # 
+        # - If `ChannelType` is **messenger**, this is a Page-Scoped User ID (PSID) generated when a user interacts with your Facebook Page.
+        # 
+        # - If `ChannelType` is **instagram**, this is an Instagram-Scoped User ID (IGSID) generated when a user interacts with your Instagram business or creator account.
+        # 
+        # <props="intl">
+        # 
+        # - If `ChannelType` is **viber**, this is the recipient\\"s phone number.
         # 
         # This parameter is required.
         self.to = to
+        # The token type.
+        # 
+        # > This parameter is for internal testing, is not generally available, and can be ignored.
         self.token_type = token_type
-        # The tracking data of the Viber message.
+        # Custom tracking data for a Viber message. This parameter is available only on the International Site and can be ignored if you are using the China site.
         self.tracking_data = tracking_data
-        # The timeout period for sending the Viber message. Valid values: 30 to 1209600. Unit: seconds.
+        # The time-to-live (TTL) for a Viber message. This parameter is available only on the International Site and can be ignored if you are using the China site.<props="intl"> Unit: seconds. The value must be between 30 and 1209600.
         self.ttl = ttl
         # The message type. Valid values:
         # 
-        # *   **template**: the template message. A template message is sent based on a template that is created and approved in the Chat App Message Service console. You can send template messages based on your business requirements.
-        # *   **message**: the custom message. You can send a custom WhatsApp message to a user only within 24 hours after you receive the last message from the user. This limit does not apply to custom Viber messages.
+        # - `template`: A message template approved in the console. You can send this type of message at any time.
+        # 
+        # - `message`: A message of any format. You can send this type of message only within 24 hours of receiving the last message from a user.
+        # 
+        # >Notice: 
+        # 
+        # If you set `Type` to `template`, you must set the `TemplateCode` parameter. If you set `Type` to `message`, you must set the `MessageType` parameter.
         # 
         # This parameter is required.
         self.type = type
@@ -411,9 +630,9 @@ class SendChatappMessageRequestProductAction(DaraModel):
         sections: List[main_models.SendChatappMessageRequestProductActionSections] = None,
         thumbnail_product_retailer_id: str = None,
     ):
-        # The products. Up to 30 products and 10 categories can be added.
+        # A list of product categories. You can specify up to 10 categories and a total of 30 products.
         self.sections = sections
-        # The retailer ID of the product.
+        # The product catalog ID. You can get this ID by calling the [ListProductCatalog](https://help.aliyun.com/document_detail/2539783.html) operation.
         self.thumbnail_product_retailer_id = thumbnail_product_retailer_id
 
     def validate(self):
@@ -456,9 +675,9 @@ class SendChatappMessageRequestProductActionSections(DaraModel):
         product_items: List[main_models.SendChatappMessageRequestProductActionSectionsProductItems] = None,
         title: str = None,
     ):
-        # The products.
+        # A list of product information.
         self.product_items = product_items
-        # The name of the category.
+        # The category name. You can find the name on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Catalog Management** > **Product Management** page, or obtain it by calling the [ListProduct](https://help.aliyun.com/document_detail/2557786.html) operation.
         self.title = title
 
     def validate(self):
@@ -500,7 +719,7 @@ class SendChatappMessageRequestProductActionSectionsProductItems(DaraModel):
         self,
         product_retailer_id: str = None,
     ):
-        # The retailer ID of the product.
+        # The product ID. You can find the ID on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Catalog Management** > **Product Management** page, or obtain it by calling the [ListProduct](https://help.aliyun.com/document_detail/2557786.html) operation.
         self.product_retailer_id = product_retailer_id
 
     def validate(self):
@@ -529,9 +748,9 @@ class SendChatappMessageRequestFlowAction(DaraModel):
         flow_action_data: Dict[str, Any] = None,
         flow_token: str = None,
     ):
-        # The default parameter of the Flow.
+        # A collection of default flow parameters.
         self.flow_action_data = flow_action_data
-        # The Flow token.
+        # The custom flow token.
         self.flow_token = flow_token
 
     def validate(self):

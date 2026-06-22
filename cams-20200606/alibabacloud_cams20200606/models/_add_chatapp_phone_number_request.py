@@ -16,24 +16,26 @@ class AddChatappPhoneNumberRequest(DaraModel):
         resource_owner_id: int = None,
         verified_name: str = None,
     ):
-        # You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        # The country code.
         # 
         # This parameter is required.
         self.cc = cc
-        # Adds a phone number for a WhatsApp Business account (WABA).
+        # The Space ID of the Independent Software Vendor (ISV) sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
-        # AddChatappPhoneNumber
+        # The phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
-        # cams:ChatappPhoneNumberRegister
+        # The pre-verified phone number.
+        # 
+        # > This parameter is deprecated.
         self.pre_validate_id = pre_validate_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Private
+        # The name of the phone number.
         # 
         # This parameter is required.
         self.verified_name = verified_name

@@ -13,10 +13,11 @@ class GetPreValidatePhoneIdResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The request status code.
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://www.alibabacloud.com/help/en/cams/latest/api-error-codes).
         self.code = code
         # The returned data.
         self.data = data
@@ -73,7 +74,7 @@ class GetPreValidatePhoneIdResponseBodyData(DaraModel):
     ):
         # The phone number.
         self.phone_number = phone_number
-        # The ID of the phone number.
+        # The phone number ID.
         self.phone_number_id = phone_number_id
 
     def validate(self):

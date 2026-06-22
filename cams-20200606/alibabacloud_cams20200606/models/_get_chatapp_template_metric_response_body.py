@@ -18,9 +18,13 @@ class GetChatappTemplateMetricResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The value OK indicates that the request was successful.
+        # The status code of the request. Valid values:
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The returned data.
+        # The list of returned data.
         self.data = data
         # The error message.
         self.message = message
@@ -91,19 +95,19 @@ class GetChatappTemplateMetricResponseBodyData(DaraModel):
         start: int = None,
         template_code: str = None,
     ):
-        # The statistics on button clicks.
+        # The statistics about button clicks.
         self.cliented = cliented
         # The number of delivered messages.
         self.delivered_count = delivered_count
-        # The end of the time range you queried.
+        # The end time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
         self.end = end
-        # The template language.
+        # The language of the template.
         self.language = language
         # The number of read messages.
         self.read_count = read_count
         # The number of sent messages.
         self.sent_count = sent_count
-        # The beginning of the time range you queried.
+        # The start time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
         self.start = start
         # The template code.
         self.template_code = template_code
@@ -185,17 +189,17 @@ class GetChatappTemplateMetricResponseBodyDataCliented(DaraModel):
         count: int = None,
         type: str = None,
     ):
-        # The text on the button.
+        # The button text.
         self.button_content = button_content
         # The number of clicks.
         self.count = count
-        # The button type.
+        # The button type. Valid values:
         # 
-        # Valid values:
+        # - phone_number_button: The call button.
         # 
-        # *   phone_number_button
-        # *   url_button
-        # *   quick_relpy_button
+        # - url_button: The URL button.
+        # 
+        # - quick_reply_button: The auto-reply button.
         self.type = type
 
     def validate(self):

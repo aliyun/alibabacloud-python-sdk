@@ -27,8 +27,7 @@ class ListProductCatalogRequest(DaraModel):
         self.business_id = business_id
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
-        # The fields. Separate multiple fields with commas (,).
-        # see  [catalog fields](https://help.aliyun.com/document_detail/2579419.html)
+        # The fields. Separate multiple fields with commas (,). see [catalog fields](https://help.aliyun.com/document_detail/2579419.html)
         self.fields = fields
         # The number of catalogs to be queried. Valid values: 1 to 1000.
         self.limit = limit

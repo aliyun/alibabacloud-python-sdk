@@ -17,11 +17,25 @@ class GetMessageCampaignInsightsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error description.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -96,15 +110,25 @@ class GetMessageCampaignInsightsResponseBodyData(DaraModel):
         marketing_messages_read_rate: str = None,
         marketing_messages_spend: str = None,
     ):
+        # The start time.
         self.date_start = date_start
+        # The end time.
         self.date_stop = date_stop
+        # The average cost per delivered message.
         self.marketing_messages_cost_per_delivered = marketing_messages_cost_per_delivered
+        # The average cost per message link click. This metric excludes messages sent to Europe, Argentina, Türkiye, South Korea, and Japan.
         self.marketing_messages_cost_per_link_btn_click = marketing_messages_cost_per_link_btn_click
+        # The number of messages that are sent by the business and successfully delivered to users. Some messages may fail to deliver if a user\\"s device is unavailable. This metric excludes messages delivered to Europe and Japan. In some cases, this metric is an estimate. The value may differ from the data on your bill due to minor discrepancies during data processing.
         self.marketing_messages_delivered = marketing_messages_delivered
+        # The message delivery rate.
         self.marketing_messages_delivery_rate = marketing_messages_delivery_rate
+        # The number of times users click or tap a marketing message that take users to an on-Meta or off-Meta destination, as specified by the advertiser. This metric excludes messages sent to Europe, Argentina, Türkiye, South Korea, and Japan.
         self.marketing_messages_link_btn_click = marketing_messages_link_btn_click
+        # The percentage of delivered messages that received a link click. This metric excludes messages sent to Europe, Argentina, Türkiye, South Korea, and Japan.
         self.marketing_messages_link_btn_click_rate = marketing_messages_link_btn_click_rate
+        # The number of read messages divided by the number of delivered messages. The read status of some messages may not be captured if a customer disables read receipts. This metric excludes messages sent to Europe and Japan.
         self.marketing_messages_read_rate = marketing_messages_read_rate
+        # The total amount spent on a campaign, message group, or message during over its lifetime.
         self.marketing_messages_spend = marketing_messages_spend
 
     def validate(self):

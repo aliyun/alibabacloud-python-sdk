@@ -12,7 +12,7 @@ class GetChatappUploadAuthorizationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
+        # The space ID of ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id

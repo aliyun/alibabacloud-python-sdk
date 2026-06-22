@@ -16,17 +16,11 @@ class DeleteChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Access denied details, this field is returned only when RAM verification fails.
         self.access_denied_detail = access_denied_detail
-        # Error code
         self.code = code
-        # Error message.
         self.message = message
-        # Unique request ID.
         self.request_id = request_id
-        # Response data
         self.response = response
-        # Whether the call was successful.
         self.success = success
 
     def validate(self):

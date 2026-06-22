@@ -13,15 +13,23 @@ class AddChatappPhoneNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # com.alicom.access.oxs.client.channel.aliyun.flow.AyFlowExecuteService
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The phone number.
+        # The status code of the request.
+        # 
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # com.alicom.access.oxs.client.channel.aliyun.flow.dto.AyCommonApiRequest
+        # The error message.
         self.message = message
-        # formData
+        # The request ID.
         self.request_id = request_id
-        # 13800000000
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: successful.
+        # 
+        # - **false**: failed.
         self.success = success
 
     def validate(self):

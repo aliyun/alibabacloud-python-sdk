@@ -17,17 +17,28 @@ class WhatsappCallShrinkRequest(DaraModel):
         session_shrink: str = None,
         user_number: str = None,
     ):
+        # The business number.
+        # 
         # This parameter is required.
         self.business_number = business_number
+        # The action to perform on the call.
+        # 
         # This parameter is required.
         self.call_action = call_action
+        # The call ID.
         self.call_id = call_id
+        # The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
+        # 
+        # <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The call negotiation information.
         self.session_shrink = session_shrink
+        # The user\\"s number.
         self.user_number = user_number
 
     def validate(self):

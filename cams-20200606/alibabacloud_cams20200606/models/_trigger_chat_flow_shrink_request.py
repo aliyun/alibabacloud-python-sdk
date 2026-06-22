@@ -17,22 +17,22 @@ class TriggerChatFlowShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         uuid: str = None,
     ):
-        # The declared occurrence time of the event, usually the time when the request was constructed, in milliseconds timestamp.
+        # The time when the event occurs. This is when the flow is triggered and is typically the time when the request is created. This is a UNIX timestamp in milliseconds.
         self.claim_time_millis = claim_time_millis
-        # Input parameters in Key-Value format. The Key must match the input strategy configured at the start node of your flow.
+        # The input parameters in a key-value format. The keys must match the input parameter policy configured in the start node of the flow. To view the variable names in the start node, go to the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the name of the flow, and open the orchestration canvas.
         self.data_shrink = data_shrink
-        # The time when the event should be discarded, i.e., the expiration time. If this field is specified, the message will be discarded if it exceeds this time, in milliseconds timestamp.
+        # The time when the event expires. If you specify this parameter, the trigger is canceled if the request is not processed before this time. This is a UNIX timestamp in milliseconds.
         self.discard_time_millis = discard_time_millis
-        # Flow code.
+        # The code of the flow. View the flow code on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         # 
         # This parameter is required.
         self.flow_code = flow_code
-        # External system transaction number, used to associate with external business system transactions. You can retrieve this parameter within the flow after triggering.
+        # A custom serial number from an external system. Use this parameter to associate the trigger with an external business process. After the flow is triggered, you can retrieve this parameter from within the flow.
         self.out_id = out_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Unique event ID used for idempotent triggers. Do not include any business semantics; you can retrieve this parameter within the flow after triggering.
+        # A custom unique ID for the event, used to ensure idempotence. Do not include business semantics in the ID. After the flow is triggered, you can retrieve this parameter from within the flow.
         self.uuid = uuid
 
     def validate(self):

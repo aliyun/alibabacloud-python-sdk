@@ -14,18 +14,19 @@ class ModifyChatappTemplateResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The request status code.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates a successful request.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,9 +81,9 @@ class ModifyChatappTemplateResponseBodyData(DaraModel):
         template_code: str = None,
         template_name: str = None,
     ):
-        # The code of the message template.
+        # The template code.
         self.template_code = template_code
-        # The name of the message template.
+        # The template name.
         self.template_name = template_name
 
     def validate(self):

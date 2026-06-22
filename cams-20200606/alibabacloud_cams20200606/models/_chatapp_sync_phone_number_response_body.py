@@ -21,8 +21,9 @@ class ChatappSyncPhoneNumberResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the call is successful.
+        # 
+        # - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -32,8 +33,9 @@ class ChatappSyncPhoneNumberResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**: The call was successful.
-        # *   **false**: The call failed.
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -117,12 +119,14 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(DaraModel):
         # 
         # Valid values:
         # 
-        # *   REVOKED: The review application is revoked.
-        # *   MORE_INFORMATION_REQUESTED: More information needs to be provided.
-        # *   VERIFIED: The phone number passes the verification.
-        # *   REJECTED: The phone number fails to pass the verification.
+        # - REVOKED: The review application is revoked.
+        # 
+        # - MORE_INFORMATION_REQUESTED: More information needs to be provided.
+        # 
+        # - VERIFIED: The phone number passes the verification.
+        # 
+        # - REJECTED: The phone number fails to pass the verification.
         self.code_verification_status = code_verification_status
-        # Indicates whether it is a WhatsApp Official Business Account (OBA).
         self.is_official = is_official
         # The number of phone numbers to which messages can be sent in a day.
         self.messaging_limit_tier = messaging_limit_tier
@@ -136,25 +140,37 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(DaraModel):
         # 
         # Valid values:
         # 
-        # *   RED
-        # *   YELLOW
-        # *   GREEN
+        # - RED
+        # 
+        # - YELLOW
+        # 
+        # - GREEN
         self.quality_rating = quality_rating
         # The state of the phone number.
         # 
         # Valid values:
         # 
-        # *   MIGRATED
-        # *   FLAGGED
-        # *   DISCONNECTED
-        # *   UNVERIFIED
-        # *   BANNED
-        # *   RATE_LIMITED
-        # *   PENDING
-        # *   CONNECTED
-        # *   UNKNOWN
-        # *   DELETED
-        # *   RESTRICTED
+        # - MIGRATED
+        # 
+        # - FLAGGED
+        # 
+        # - DISCONNECTED
+        # 
+        # - UNVERIFIED
+        # 
+        # - BANNED
+        # 
+        # - RATE_LIMITED
+        # 
+        # - PENDING
+        # 
+        # - CONNECTED
+        # 
+        # - UNKNOWN
+        # 
+        # - DELETED
+        # 
+        # - RESTRICTED
         self.status = status
         # The callback URL to which status reports are sent by using HTTP callbacks.
         self.status_callback_url = status_callback_url

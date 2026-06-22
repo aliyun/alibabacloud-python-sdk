@@ -14,15 +14,15 @@ class CreateChatappMigrationInitiateRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The code of the country or region.
+        # The country code.
         # 
         # This parameter is required.
         self.country_code = country_code
-        # The space ID of the user within the ISV account.
+        # The Space ID of the Independent Software Vendor (ISV) sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The mobile number without the country code or region code.
+        # The phone number. Do not include the country code.
         # 
         # This parameter is required.
         self.mobile_number = mobile_number

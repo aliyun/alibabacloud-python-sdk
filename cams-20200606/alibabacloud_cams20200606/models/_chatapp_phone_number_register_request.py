@@ -13,7 +13,7 @@ class ChatappPhoneNumberRegisterRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The space ID of the user under the independent software vendor (ISV) account.
+        # The Space ID of the Independent Software Vendor (ISV) sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id

@@ -1,3 +1,7 @@
+2026-06-22 Version: 5.2.0
+- Support API SubmitVerifyCodeResult.
+
+
 2026-05-07 Version: 5.1.1
 - Generated python 2020-06-06 for cams.
 

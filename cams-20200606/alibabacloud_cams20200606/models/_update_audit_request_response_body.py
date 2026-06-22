@@ -16,11 +16,25 @@ class UpdateAuditRequestResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Access denied details.
         self.access_denied_detail = access_denied_detail
+        # Request status code.
+        # 
+        # - OK indicates a successful request.
+        # 
+        # - For other error codes, see [Error Codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # Returns the RequestNo.
         self.data = data
+        # Error message.
         self.message = message
+        # The ID of this API call request. Alibaba Cloud generates this unique identifier for the request. Use it to troubleshoot and locate issues.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):

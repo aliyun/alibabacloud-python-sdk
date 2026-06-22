@@ -14,7 +14,7 @@ class GetPreValidatePhoneIdRequest(DaraModel):
         # 
         # This parameter is required.
         self.phone_number = phone_number
-        # The verification code provided when you purchased the pre-registered phone number.
+        # The verification code provided when you purchased the pre-validated phone number.
         # 
         # This parameter is required.
         self.verify_code = verify_code

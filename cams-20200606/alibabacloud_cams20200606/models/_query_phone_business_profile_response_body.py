@@ -19,21 +19,23 @@ class QueryPhoneBusinessProfileResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The status code of the request.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - OK indicates that the request is successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call is successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: successful.
+        # 
+        # - **false**: failed.
         self.success = success
 
     def validate(self):
@@ -99,7 +101,7 @@ class QueryPhoneBusinessProfileResponseBodyData(DaraModel):
         vertical: str = None,
         websites: List[str] = None,
     ):
-        # Regarding.
+        # The business profile.
         self.about = about
         # The address.
         self.address = address
@@ -111,7 +113,7 @@ class QueryPhoneBusinessProfileResponseBodyData(DaraModel):
         self.profile_picture_url = profile_picture_url
         # The industry.
         self.vertical = vertical
-        # The website.
+        # The websites.
         self.websites = websites
 
     def validate(self):

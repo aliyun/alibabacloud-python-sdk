@@ -15,11 +15,11 @@ class UpdatePhoneMessageQrdlResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # The result returns OK as normal.
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
-        # Error description information.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -80,17 +80,17 @@ class UpdatePhoneMessageQrdlResponseBodyData(DaraModel):
         qr_image_url: str = None,
         qrdl_code: str = None,
     ):
-        # Deep link address.
+        # The deep link URL.
         self.deep_link_url = deep_link_url
-        # Generate image types.
+        # The type of the generated image.
         self.generate_qr_image = generate_qr_image
-        # Number.
+        # The phone number.
         self.phone_number = phone_number
-        # Message content.
+        # The message content.
         self.prefilled_message = prefilled_message
-        # QR code address.
+        # The URL of the QR code.
         self.qr_image_url = qr_image_url
-        # QR code encoding.
+        # The code.
         self.qrdl_code = qrdl_code
 
     def validate(self):

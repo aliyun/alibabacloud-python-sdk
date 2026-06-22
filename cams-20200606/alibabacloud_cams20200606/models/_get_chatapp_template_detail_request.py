@@ -19,7 +19,7 @@ class GetChatappTemplateDetailRequest(DaraModel):
         self.cust_space_id = cust_space_id
         # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
         # 
-        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
         # The independent software vendor (ISV) verification code. This parameter is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
@@ -33,9 +33,11 @@ class GetChatappTemplateDetailRequest(DaraModel):
         self.template_name = template_name
         # The type of the message template. Valid values:
         # 
-        # *   **WHATSAPP**
-        # *   **VIBER**
-        # *   LINE (developing)
+        # - **WHATSAPP**
+        # 
+        # - **VIBER**
+        # 
+        # - LINE (developing)
         self.template_type = template_type
 
     def validate(self):

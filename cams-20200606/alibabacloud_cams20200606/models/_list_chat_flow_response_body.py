@@ -16,17 +16,11 @@ class ListChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Access denied details, this field is returned only when RAM verification fails.
         self.access_denied_detail = access_denied_detail
-        # System error code. For more details on error codes, please refer to the error code documentation.
         self.code = code
-        # Error message.
         self.message = message
-        # Request ID.
         self.request_id = request_id
-        # Response data
         self.response = response
-        # Whether the request was successful.
         self.success = success
 
     def validate(self):

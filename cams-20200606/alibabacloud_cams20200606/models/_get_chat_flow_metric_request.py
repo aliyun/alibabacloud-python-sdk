@@ -21,25 +21,17 @@ class GetChatFlowMetricRequest(DaraModel):
         resource_owner_id: int = None,
         to: int = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
         self.biz_extend = biz_extend
-        # Flow code.
         self.flow_code = flow_code
-        # Flow version.
         self.flow_version = flow_version
-        # Start timestamp in seconds.
         self.from_ = from_
-        # Metric name.
-        # 
         # This parameter is required.
         self.metric_name = metric_name
         self.metric_param = metric_param
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # End timestamp in seconds.
         self.to = to
 
     def validate(self):

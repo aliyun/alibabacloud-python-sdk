@@ -15,12 +15,19 @@ class UpdateAuditRequestShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Viber audit items.
+        # 
         # This parameter is required.
         self.audit_record_shrink = audit_record_shrink
+        # The audit result.
         self.audit_result = audit_result
+        # The Space ID of the ISV sub-customer or the instance ID. View it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The request number.
+        # 
         # This parameter is required.
         self.request_no = request_no
         self.resource_owner_account = resource_owner_account

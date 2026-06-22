@@ -18,18 +18,28 @@ class ListMessageCampaignShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
+        # The ID of the Meta ad account.
         self.ad_account_id = ad_account_id
+        # The ID of the budget.
         self.campaign_id = campaign_id
+        # The name of the campaign.
         self.campaign_name = campaign_name
+        # The Space ID of the ISV sub-customer or the instance ID of the direct customer. You can view this ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The pagination parameters.
+        # 
         # This parameter is required.
         self.page_shrink = page_shrink
+        # The Page ID for Messenger.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the budget.
         self.status = status
 
     def validate(self):

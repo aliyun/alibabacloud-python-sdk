@@ -18,24 +18,21 @@ class QueryChatappPhoneNumbersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The request status code.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         self.data = data
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The phone numbers.
+        # The list of phone numbers.
         self.phone_numbers = phone_numbers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -122,67 +119,29 @@ class QueryChatappPhoneNumbersResponseBodyPhoneNumbers(DaraModel):
     ):
         self.calling_configure = calling_configure
         # The verification status of the phone number.
-        # 
-        # Valid values:
-        # 
-        # *   REVOKED: The review application is revoked.
-        # *   MORE_INFORMATION_REQUESTED: More information needs to be provided.
-        # *   VERIFIED: The phone number passes the verification.
-        # *   REJECTED: The phone number fails to pass the verification.
         self.code_verification_status = code_verification_status
-        # Indicates whether it is a WhatsApp Official Business Account (OBA).
         self.is_official = is_official
-        # The number of phone numbers to which messages can be sent in a day.
-        # 
-        # Valid values:
-        # 
-        # *   TIER_100K: 100,000
-        # *   TIER_UNLIMITED: unlimited
-        # *   TIER_250: 250
-        # *   TIER_1K: 1,000
-        # *   TIER_50: 50
-        # *   TIER_10K: 10,000
+        # The messaging limit tier of the phone number.
         self.messaging_limit_tier = messaging_limit_tier
-        # The review status of the name.
+        # The status of the name.
         self.name_status = name_status
-        # The review status of the new display name of the enterprise.
+        # The review status of the new name.
         self.new_name_status = new_name_status
         # The phone number.
         self.phone_number = phone_number
         # The quality rating of the phone number.
-        # 
-        # Valid values:
-        # 
-        # *   RED: low
-        # *   YELLOW: medium
-        # *   UNKNOWN: unknown
-        # *   GREEN: high
         self.quality_rating = quality_rating
-        # The state of the phone number.
-        # 
-        # Valid values:
-        # 
-        # *   MIGRATED
-        # *   FLAGGED
-        # *   DISCONNECTED
-        # *   UNVERIFIED
-        # *   BANNED
-        # *   RATE_LIMITED
-        # *   PENDING
-        # *   CONNECTED
-        # *   UNKNOWN
-        # *   DELETED
-        # *   RESTRICTED
+        # The status of the phone number.
         self.status = status
-        # The URL that receives the status reports.
+        # The callback URL for delivery receipts.
         self.status_callback_url = status_callback_url
-        # The status report queue.
+        # The queue for delivery receipts of mobile terminated messages.
         self.status_queue = status_queue
-        # The URL that receives the MO messages.
+        # The callback URL for mobile originated messages.
         self.up_callback_url = up_callback_url
-        # The mobile originated (MO) message queue.
+        # The queue for mobile originated messages.
         self.up_queue = up_queue
-        # The display name of the enterprise to which the phone number belongs.
+        # The name used for the request.
         self.verified_name = verified_name
 
     def validate(self):

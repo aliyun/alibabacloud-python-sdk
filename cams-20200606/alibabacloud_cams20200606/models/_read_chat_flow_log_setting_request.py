@@ -12,7 +12,6 @@ class ReadChatFlowLogSettingRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Process code.
         self.flow_code = flow_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

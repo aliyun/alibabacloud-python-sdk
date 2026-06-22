@@ -13,11 +13,11 @@ class UpdatePhoneEncryptionPublicKeyResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # The result returns OK as normal.
+        # The status code of the request. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # Error description information.
+        # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

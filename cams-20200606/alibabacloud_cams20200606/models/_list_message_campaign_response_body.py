@@ -18,12 +18,27 @@ class ListMessageCampaignResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -102,13 +117,21 @@ class ListMessageCampaignResponseBodyData(DaraModel):
         page_id: str = None,
         status: str = None,
     ):
+        # The ID of the Meta ad account.
         self.ad_account_id = ad_account_id
+        # The budget.
         self.budget = budget
+        # The budget type.
         self.budget_type = budget_type
+        # The campaign ID.
         self.campaign_id = campaign_id
+        # The name of the campaign.
         self.campaign_name = campaign_name
+        # The time when the campaign was created.
         self.create_time = create_time
+        # The Page ID for Messenger.
         self.page_id = page_id
+        # The status of the campaign.
         self.status = status
 
     def validate(self):

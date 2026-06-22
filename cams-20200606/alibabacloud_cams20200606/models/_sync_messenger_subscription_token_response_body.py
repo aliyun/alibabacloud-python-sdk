@@ -14,11 +14,25 @@ class SyncMessengerSubscriptionTokenResponseBody(DaraModel):
         success: bool = None,
         task_code: str = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
+        # The task code.
         self.task_code = task_code
 
     def validate(self):

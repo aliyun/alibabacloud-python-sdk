@@ -15,20 +15,22 @@ class UpdateAccountWebhookRequest(DaraModel):
         resource_owner_id: int = None,
         status_callback_url: str = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
+        # The space ID of the ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         # Specifies whether to use HTTP callbacks to receive message receipts. Valid values:
         # 
-        # *   Y: indicates that HTTP callbacks are used to receive receipts.
-        # *   N: indicates that HTTP callbacks are not used to receive receipts.
+        # - Y: indicates that HTTP callbacks are used to receive receipts.
+        # 
+        # - N: indicates that HTTP callbacks are not used to receive receipts.
         self.http_flag = http_flag
         self.owner_id = owner_id
         # Specifies whether to use Message Service (MNS) queues to receive receipts. Valid values:
         # 
-        # *   Y: indicates that MNS queues are used to receive receipts.
-        # *   N: indicates that MNS queues are not used to receive receipts.
+        # - Y: indicates that MNS queues are used to receive receipts.
+        # 
+        # - N: indicates that MNS queues are not used to receive receipts.
         self.queue_flag = queue_flag
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

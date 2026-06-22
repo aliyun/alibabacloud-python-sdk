@@ -17,11 +17,25 @@ class GetViberByRequestNoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Access denial details.
         self.access_denied_detail = access_denied_detail
+        # The status code of the request.
+        # 
+        # - `OK`: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The unique ID for the request. You can use this Aliyun-generated ID for troubleshooting.
         self.request_id = request_id
+        # Indicates if the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -94,20 +108,33 @@ class GetViberByRequestNoResponseBodyData(DaraModel):
         state: str = None,
         subscriber_code: str = None,
     ):
+        # The audit record details.
         self.audit_record = audit_record
+        # The audit result.
         self.audit_result = audit_result
+        # The audit time.
         self.audit_time = audit_time
+        # The creator of the resource.
         self.creator = creator
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modifier = gmt_modifier
-        # ID。
+        # The ID of the resource.
         self.id = id
+        # The Viber service ID.
         self.maap_service_no = maap_service_no
+        # The user who last modified the resource.
         self.modifier = modifier
+        # The audit comment.
         self.reason = reason
+        # The unique number for the application request.
         self.request_no = request_no
+        # The type of the request.
         self.request_type = request_type
+        # The status of the request.
         self.state = state
+        # The subscriber code.
         self.subscriber_code = subscriber_code
 
     def validate(self):
@@ -247,39 +274,71 @@ class GetViberByRequestNoResponseBodyDataAuditRecord(DaraModel):
         suspension_date: str = None,
         web_address: str = None,
     ):
+        # The age restriction.
         self.age_limit = age_limit
+        # The reason for the application.
         self.apply_reason = apply_reason
+        # The name of the business account.
         self.business_account_name = business_account_name
+        # The business license registration number.
         self.business_license_registration_number = business_license_registration_number
+        # The company addresses.
         self.company_address = company_address
+        # The English name of the company.
         self.company_english_name = company_english_name
+        # The legal name of the company.
         self.company_legal_name = company_legal_name
+        # The name of the company\\"s legal representative.
         self.company_legal_person = company_legal_person
+        # The company profile.
         self.company_profile = company_profile
+        # The country or region where the company is registered.
         self.company_registered_country = company_registered_country
+        # The company telephone numbers.
         self.company_tel = company_tel
+        # The complete address of the company\\"s headquarters.
         self.complete_address_of_headquarters = complete_address_of_headquarters
+        # The contact person\\"s email address.
         self.contact_email = contact_email
+        # The contact email address.
         self.contact_mail = contact_mail
+        # The contact person\\"s name.
         self.contact_name = contact_name
+        # The contact person\\"s phone number.
         self.contact_phone = contact_phone
+        # The contact person\\"s position.
         self.contact_position = contact_position
+        # Indicates whether auto-reply is enabled.
         self.enable_auto_reply = enable_auto_reply
+        # A description of the industry.
         self.industry_description = industry_description
+        # The company\\"s industry.
         self.industry_involved = industry_involved
+        # The URL of the letter of guarantee.
         self.letter_guarantee = letter_guarantee
+        # The logo URLs.
         self.logo = logo
+        # The local destination countries or regions.
         self.message_destination_country = message_destination_country
+        # The international destination countries or regions.
         self.message_destination_international_country = message_destination_international_country
+        # A brief introduction to the business messaging conversation.
         self.message_dialogue_introduction = message_dialogue_introduction
+        # The date business messaging is enabled.
         self.message_enable_date = message_enable_date
+        # The name of the business messaging conversation.
         self.message_session_name = message_session_name
+        # The recovery status.
         self.now_recovery = now_recovery
+        # The URL for supplementary information.
         self.other_letter_guarantee = other_letter_guarantee
+        # The date of recovery.
         self.recovery_date = recovery_date
+        # The content of the auto-reply message.
         self.reply_content = reply_content
-        # SuspensionDate
+        # The suspension date.
         self.suspension_date = suspension_date
+        # The company website.
         self.web_address = web_address
 
     def validate(self):
@@ -517,7 +576,9 @@ class GetViberByRequestNoResponseBodyDataAuditRecordCompanyTel(DaraModel):
         company_tel_number: str = None,
         company_tel_title: str = None,
     ):
+        # The company telephone number.
         self.company_tel_number = company_tel_number
+        # The title for the telephone number.
         self.company_tel_title = company_tel_title
 
     def validate(self):
@@ -552,7 +613,9 @@ class GetViberByRequestNoResponseBodyDataAuditRecordCompanyAddress(DaraModel):
         company_address: str = None,
         company_address_title: str = None,
     ):
+        # The company address.
         self.company_address = company_address
+        # The title of the company address.
         self.company_address_title = company_address_title
 
     def validate(self):

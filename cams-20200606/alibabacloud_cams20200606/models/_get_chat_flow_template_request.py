@@ -13,11 +13,8 @@ class GetChatFlowTemplateRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
-        # 
         # This parameter is required.
         self.biz_code = biz_code
-        # Template ID
         self.id = id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

@@ -16,21 +16,11 @@ class ListBindingRelationsForFlowVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Access denied details.
         self.access_denied_detail = access_denied_detail
-        # Error code. For more information, see [Error Codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # Returned data list.
         self.data = data
-        # Error message.
         self.message = message
-        # Request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Values:
-        # 
-        # - true: Success.
-        # 
-        # - false: Failure.
         self.success = success
 
     def validate(self):

@@ -21,6 +21,9 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-southeast-1': 'cams.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cams', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -13873,6 +13876,84 @@ class Client(OpenApiClient):
     ) -> main_models.SendChatappMessageResponse:
         runtime = RuntimeOptions()
         return await self.send_chatapp_message_with_options_async(request, runtime)
+
+    def submit_verify_code_result_with_options(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.message_id):
+            query['MessageId'] = request.message_id
+        if not DaraCore.is_null(request.result):
+            query['Result'] = request.result
+        if not DaraCore.is_null(request.to):
+            query['To'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVerifyCodeResult',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVerifyCodeResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_verify_code_result_with_options_async(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.message_id):
+            query['MessageId'] = request.message_id
+        if not DaraCore.is_null(request.result):
+            query['Result'] = request.result
+        if not DaraCore.is_null(request.to):
+            query['To'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVerifyCodeResult',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVerifyCodeResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_verify_code_result(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        runtime = RuntimeOptions()
+        return self.submit_verify_code_result_with_options(request, runtime)
+
+    async def submit_verify_code_result_async(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_verify_code_result_with_options_async(request, runtime)
 
     def sync_business_app_history_with_options(
         self,

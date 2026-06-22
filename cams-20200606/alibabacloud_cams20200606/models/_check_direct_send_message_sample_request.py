@@ -14,10 +14,20 @@ class CheckDirectSendMessageSampleRequest(DaraModel):
         text: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The SpaceId of an ISV sub-customer or the instance ID of a direct customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The body of an interactive message.
         self.interactive = interactive
+        # The body of a text message.
         self.text = text
+        # The type of the direct message content. Valid values:
+        # 
+        # - interactive
+        # 
+        # - text
+        # 
         # This parameter is required.
         self.type = type
 

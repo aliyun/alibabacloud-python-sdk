@@ -14,8 +14,12 @@ class AddAuditViberOpenShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The audit record.
         self.audit_record_shrink = audit_record_shrink
+        # The audit result.
         self.audit_result = audit_result
+        # The Space ID of the ISV sub-customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id

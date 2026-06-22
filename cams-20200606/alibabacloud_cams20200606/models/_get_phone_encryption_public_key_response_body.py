@@ -15,14 +15,11 @@ class GetPhoneEncryptionPublicKeyResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # The response code.
-        # 
-        # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
-        # Error description information.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -82,10 +79,11 @@ class GetPhoneEncryptionPublicKeyResponseBodyData(DaraModel):
     ):
         # The public key.
         self.encryption_public_key = encryption_public_key
-        # The validity state of the public key. Valid values:
+        # The status of the public key. Valid values:
         # 
-        # *   MISMATCH: The public key is invalid.
-        # *   VALID: The public key is valid.
+        # - MISMATCH: The public key is invalid.
+        # 
+        # - VALID: The public key is valid.
         self.encryption_public_key_status = encryption_public_key_status
         # The phone number.
         self.phone_number = phone_number

@@ -10,7 +10,9 @@ class ListWhatAppTemplateRequest(DaraModel):
         cust_space_id: str = None,
         hetu_params: str = None,
     ):
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer.
         self.cust_space_id = cust_space_id
+        # This parameter is reserved for internal use.
         self.hetu_params = hetu_params
 
     def validate(self):

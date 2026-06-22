@@ -23,12 +23,14 @@ class ListChatappTemplateShrinkRequest(DaraModel):
     ):
         # The review state of the template. Valid values:
         # 
-        # *   **pass**: The template is approved.
-        # *   **fail**: The template is rejected.
-        # *   **auditing**: The template is being reviewed.
-        # *   **unaudit**: The review is suspended.
+        # - **pass**: The template is approved.
+        # 
+        # - **fail**: The template is rejected.
+        # 
+        # - **auditing**: The template is being reviewed.
+        # 
+        # - **unaudit**: The review is suspended.
         self.audit_status = audit_status
-        # The category of the message template.
         self.category = category
         # The code of the message template.
         self.code = code
@@ -36,7 +38,7 @@ class ListChatappTemplateShrinkRequest(DaraModel):
         self.cust_space_id = cust_space_id
         # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
         # 
-        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
         # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
         self.isv_code = isv_code
@@ -51,8 +53,9 @@ class ListChatappTemplateShrinkRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The type of the message template.
         # 
-        # *   **WHATSAPP**
-        # *   **VIBER**
+        # - **WHATSAPP**
+        # 
+        # - **VIBER**
         self.template_type = template_type
 
     def validate(self):

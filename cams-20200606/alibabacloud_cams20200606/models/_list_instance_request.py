@@ -16,13 +16,31 @@ class ListInstanceRequest(DaraModel):
         resource_group_id: str = None,
         submit_time: str = None,
     ):
+        # The channel type. Valid values:
+        # 
+        # - **whatsapp**
+        # 
+        # - **messenger**
+        # 
+        # - **instagram**
+        # 
+        # <props="intl">
+        # 
+        # - **viber**
         self.channel_type = channel_type
+        # The filter string for the query.
         self.filter_str = filter_str
+        # The instance ID. Use this parameter for non-Alibaba Cloud hosts only.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The page number to return.
         self.page_index = page_index
+        # The number of items to return per page.
         self.page_size = page_size
+        # The ID of the resource group that contains the instance.
         self.resource_group_id = resource_group_id
+        # The submission time, in `YYYY-MM-DD HH:MM:SS` format.
         self.submit_time = submit_time
 
     def validate(self):

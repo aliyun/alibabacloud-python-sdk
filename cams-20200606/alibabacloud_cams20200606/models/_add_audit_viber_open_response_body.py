@@ -16,11 +16,25 @@ class AddAuditViberOpenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Detailed information about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response status code.
+        # 
+        # - `OK`: The request succeeded.
+        # 
+        # - For other values, see [Error Codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The response data.
         self.data = data
+        # A message describing the result of the request.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Whether the request succeeded.
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

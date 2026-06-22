@@ -20,54 +20,42 @@ class ModifyChatappTemplateShrinkRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The category of the Viber message template. Valid values:
-        # 
-        # *   **text**: the template that contains only text
-        # *   **image**: the template that contains only images
-        # *   **text_image_button**: the template that contains text, images, and buttons
-        # *   **text_button**: the template that contains text and buttons
-        # *   **document**: the template that contains only documents
-        # *   **video**: the template that contains only videos
-        # *   **text_video**: the template that contains text and videos
-        # *   **text_video_button**: the template that contains text, videos, and buttons
-        # *   **text_image**: the template that contains text and images
-        # 
-        # > This parameter applies only to Viber message templates.
+        # The templatetype is immutable.
         self.category = category
         self.category_change_paused = category_change_paused
-        # The components of the message template.
+        # A list of message template components.
         # 
-        # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, you do not need to set the Text sub-parameter of the Components parameter because the value is automatically generated.
+        # > When Category is AUTHENTICATION, Components cannot contain a node with Type set to HEADER. If Type is BODY or FOOTER, the Text content is empty and is automatically generated.
         # 
         # This parameter is required.
         self.components_shrink = components_shrink
-        # The space ID of the user within the ISV account.
+        # The Space ID of the ISV sub-customer, or the instance ID of a direct customer.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # The WhatsApp Business Account (WABA) ID of the independent software vendor (ISV) customer.
         # 
-        # > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # > This parameter is deprecated. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The examples of variables that are used when you create the message template.
+        # The template example.
         self.example_shrink = example_shrink
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+        # The ISV verification code. This code is used to verify that the RAM user is authorized by the ISV.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The template language. For a list of language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         # 
         # This parameter is required.
         self.language = language
-        # Validity period of authentication template message sending in WhatsApp
+        # The time-to-live (TTL) of the template message in seconds.
         # 
-        # >This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
+        # - For AUTHENTICATION templates, the value ranges from 30 to 900.
+        # 
+        # - For UTILITY templates, the value ranges from 30 to 43,200.
         self.message_send_ttl_seconds = message_send_ttl_seconds
         # The message template code.
         self.template_code = template_code
-        # Template name.
+        # The template name.
         self.template_name = template_name
-        # The type of the message template.
+        # The template type.
         # 
-        # *   **WHATSAPP**
-        # *   **VIBER**
-        # *   LINE: the Line message template. This type of message template will be released later.
+        # - **WHATSAPP**
         self.template_type = template_type
 
     def validate(self):

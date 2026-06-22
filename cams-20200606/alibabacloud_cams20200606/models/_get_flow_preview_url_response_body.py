@@ -15,9 +15,9 @@ class GetFlowPreviewUrlResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # If OK is returned, the request was successful.
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The returned data.
+        # The returned data object.
         self.data = data
         # The error message.
         self.message = message
@@ -77,11 +77,11 @@ class GetFlowPreviewUrlResponseBodyData(DaraModel):
         preview_url: str = None,
         preview_url_expires: int = None,
     ):
-        # The Flow ID.
+        # The flow ID.
         self.flow_id = flow_id
         # The temporary preview URL.
         self.preview_url = preview_url
-        # The time when the preview URL expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The expiration time of the preview URL.
         self.preview_url_expires = preview_url_expires
 
     def validate(self):

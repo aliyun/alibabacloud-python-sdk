@@ -17,16 +17,28 @@ class AddChatGroupRequest(DaraModel):
         resource_owner_id: int = None,
         subject: str = None,
     ):
+        # The phone number associated with the business account.
+        # 
         # This parameter is required.
         self.business_number = business_number
+        # The channel type. Valid value:
+        # 
+        # - **WHATSAPP**
+        # 
+        # > Currently, only the WhatsApp channel type is supported.
         self.channel_type = channel_type
+        # The SpaceId or instance ID of the ISV sub-customer, which is the channel ID. Find it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The group description.
         self.description = description
+        # The link to the WhatsApp group.
         self.group_link = group_link
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The group title.
         self.subject = subject
 
     def validate(self):

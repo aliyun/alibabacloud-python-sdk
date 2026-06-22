@@ -16,11 +16,8 @@ class ReadChatFlowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
         self.biz_extend = biz_extend
-        # Flow code.
         self.flow_code = flow_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

@@ -14,17 +14,11 @@ class UpdateChatFlowLogSettingRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
-        # Flow code.
         self.flow_code = flow_code
-        # Setting ID.
         self.id = id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Log enable status, enum values:
-        # - ENABLED: Enabled, enables log writing
-        # - DISABLED: Create or retain related resources, but do not enable log writing
-        # - DELETED: Delete, and decide whether to delete related resources based on options
         self.status = status
 
     def validate(self):

@@ -18,26 +18,25 @@ class ListProductRequest(DaraModel):
         resource_owner_id: int = None,
         waba_id: str = None,
     ):
-        # The cursor that points to the end of the page of the returned data.
+        # The cursor that points to the start of the next page of results.
         self.after = after
-        # The cursor that points to the beginning of the page of the returned data.
+        # The cursor that points to the end of the previous page of results.
         self.before = before
-        # The catalog ID.
+        # The catalog ID. You can get it from the Meta platform.
         # 
         # This parameter is required.
         self.catalog_id = catalog_id
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The Space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
-        # The fields. Separate multiple fields with commas (,).
-        # 
-        #  see [product fields](https://help.aliyun.com/document_detail/2579419.html)
+        # A list of fields to return. Separate multiple fields with a comma (,).
+        # For more information, see [Product fields](https://help.aliyun.com/document_detail/2579419.html).
         self.fields = fields
-        # The number of products to be queried. Valid values: 1 to 1000.
+        # The number of items to return. Valid values: 1 to 1000.
         self.limit = limit
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the WhatsApp Business account (WABA).
+        # The WhatsApp Business Account (WABA) ID.
         # 
         # This parameter is required.
         self.waba_id = waba_id

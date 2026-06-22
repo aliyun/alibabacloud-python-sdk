@@ -18,18 +18,13 @@ class ReadFlowVersionRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
         self.biz_extend = biz_extend
-        # Flow code.
         self.flow_code = flow_code
-        # Flow version
         self.flow_version = flow_version
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Flow version status.
         self.status = status
 
     def validate(self):

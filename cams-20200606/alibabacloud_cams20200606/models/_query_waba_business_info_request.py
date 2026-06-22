@@ -13,7 +13,7 @@ class QueryWabaBusinessInfoRequest(DaraModel):
         resource_owner_id: int = None,
         waba_id: str = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
+        # The space ID of ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id

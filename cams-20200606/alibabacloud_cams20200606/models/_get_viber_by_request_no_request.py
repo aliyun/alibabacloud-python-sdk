@@ -13,8 +13,11 @@ class GetViberByRequestNoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The Space ID of an ISV sub-customer or the Instance ID of a direct customer.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_no = request_no
         self.resource_owner_account = resource_owner_account

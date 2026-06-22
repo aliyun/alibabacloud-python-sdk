@@ -18,16 +18,11 @@ class OfflineFlowVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
         self.biz_extend = biz_extend
-        # Flow code.
         self.flow_code = flow_code
-        # Flow version
         self.flow_version = flow_version
         self.owner_id = owner_id
-        # Flow remarks
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

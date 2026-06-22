@@ -17,23 +17,25 @@ class QueryChatappBindWabaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The request status code.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of `OK` indicates the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful:
         # 
-        # *   **true**
-        # *   **false**
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -103,36 +105,34 @@ class QueryChatappBindWabaResponseBodyData(DaraModel):
         name: str = None,
         primary_business_location: str = None,
     ):
-        # The review state of the WhatsApp Business account (WABA).
+        # The account review status. Valid values:
         # 
-        # >  Valid values:
+        # - `PENDING`: The account is under review.
         # 
-        # *   PENDING: The WABA is to be reviewed.
+        # - `APPROVED`: The account is approved.
         # 
-        # *   APPROVED: The WABA was approved.
+        # - `REJECTED`: The account is rejected.
         # 
-        # *   REJECTED: The WABA was rejected.
-        # 
-        # *   DISABLED: The WABA was forbidden.
+        # - `DISABLED`: The account is disabled.
         self.account_review_status = account_review_status
-        # WABA related information.
+        # Details about the WABA account.
         self.auth_international_rate_eligibility = auth_international_rate_eligibility
-        # The business ID.
+        # The Business platform ID.
         self.business_id = business_id
-        # The business name.
+        # The Business platform name.
         self.business_name = business_name
         # The currency.
         self.currency = currency
-        # The ID of the WhatsApp Business account.
+        # The WABA account ID.
         self.id = id
         self.is_on_biz_app = is_on_biz_app
-        # The Marketing Messaging Lite status.
+        # The MML status.
         self.marketing_message_lite_status = marketing_message_lite_status
-        # The namespace of the message template.
+        # The template namespace.
         self.message_template_namespace = message_template_namespace
-        # The name of the WhatsApp Business account.
+        # The WABA account name.
         self.name = name
-        # The start time when the authentication-international rate applies.
+        # The international rate capability qualification.
         self.primary_business_location = primary_business_location
 
     def validate(self):

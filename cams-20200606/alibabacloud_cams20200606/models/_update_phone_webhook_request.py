@@ -22,8 +22,10 @@ class UpdatePhoneWebhookRequest(DaraModel):
         # This parameter is required.
         self.cust_space_id = cust_space_id
         # Whether to use HTTP to receive receipts. Value:
-        # *   Y: Yes.
-        # *   N: No.
+        # 
+        # - Y: Yes.
+        # 
+        # - N: No.
         self.http_flag = http_flag
         self.owner_id = owner_id
         # phone number.
@@ -31,8 +33,10 @@ class UpdatePhoneWebhookRequest(DaraModel):
         # This parameter is required.
         self.phone_number = phone_number
         # Whether to use queue method to receive receipts. Value:
-        # *   Y: Yes.
-        # *   N: No.
+        # 
+        # - Y: Yes.
+        # 
+        # - N: No.
         self.queue_flag = queue_flag
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

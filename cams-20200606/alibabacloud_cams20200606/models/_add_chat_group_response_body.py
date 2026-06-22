@@ -14,11 +14,25 @@ class AddChatGroupResponseBody(DaraModel):
         success: bool = None,
         unique_code: str = None,
     ):
+        # Details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response status code. Valid values:
+        # 
+        # - `OK`: The request was successful.
+        # 
+        # - For other error codes, see the [error code list](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The response message.
         self.message = message
+        # The unique identifier for the request.
         self.request_id = request_id
+        # Indicates if the API call succeeded. Valid values:
+        # 
+        # - **true**: The API call was successful.
+        # 
+        # - **false**: The API call failed.
         self.success = success
+        # The unique request code.
         self.unique_code = unique_code
 
     def validate(self):
