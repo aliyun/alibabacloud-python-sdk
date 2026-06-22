@@ -10,9 +10,9 @@ class AddControlPolicyResponseBody(DaraModel):
         acl_uuid: str = None,
         request_id: str = None,
     ):
-        # The unique ID of the access control policy for the Internet firewall.
+        # The unique identity ID of the access control policy for the Internet Border firewall.
         self.acl_uuid = acl_uuid
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

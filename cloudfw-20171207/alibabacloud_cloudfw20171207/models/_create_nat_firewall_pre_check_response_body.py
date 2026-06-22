@@ -10,9 +10,9 @@ class CreateNatFirewallPreCheckResponseBody(DaraModel):
         pre_check_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the precheck.
+        # The dry run ID.
         self.pre_check_id = pre_check_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -18,29 +18,28 @@ class CreateTrFirewallV2RoutePolicyRequest(DaraModel):
         policy_type: str = None,
         src_candidate_list: List[main_models.CreateTrFirewallV2RoutePolicyRequestSrcCandidateList] = None,
     ):
-        # The list of destination network instances.
+        # The list of secondary traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
-        # The ID of the VPC firewall instance.
+        # The VPC border firewall instance ID.
         self.firewall_id = firewall_id
-        # The language of the response. Valid values:
+        # The language type for receiving messages. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
-        # The description of the routing policy.
+        # The traffic redirection description.
         self.policy_description = policy_description
-        # The name of the routing policy.
+        # The traffic redirection name.
         self.policy_name = policy_name
-        # The traffic redirection scenario of the Enterprise Edition transit router. Valid values:
+        # The traffic redirection scenario type for the VPC border firewall with Cloud Enterprise Network Enterprise Edition. Valid values:
         # 
-        # - **fullmesh**: full-mesh
+        # - **fullmesh**: Multi-point interconnection
         # 
-        # - **one_to_one**: point-to-point
+        # - **one_to_one**: Point-to-point
         # 
-        # - **end_to_end**: point-to-multipoint
+        # - **end_to_end**: Point-to-multipoint
         self.policy_type = policy_type
-        # The list of source network instances.
+        # The list of primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list
 
     def validate(self):
@@ -122,9 +121,9 @@ class CreateTrFirewallV2RoutePolicyRequestSrcCandidateList(DaraModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
-        # The ID of the network instance.
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
-        # The type of the network instance.
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -159,9 +158,9 @@ class CreateTrFirewallV2RoutePolicyRequestDestCandidateList(DaraModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
-        # The ID of the network instance.
+        # The ID of the traffic redirection instance.
         self.candidate_id = candidate_id
-        # The type of the network instance.
+        # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):

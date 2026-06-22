@@ -14,11 +14,11 @@ class DescribeRegionInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of data.
+        # The data list.
         self.data_list = data_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -67,9 +67,9 @@ class DescribeRegionInfoResponseBodyDataList(DaraModel):
         region_id: str = None,
         region_name: str = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The name of the region.
+        # The region name.
         self.region_name = region_name
 
     def validate(self):

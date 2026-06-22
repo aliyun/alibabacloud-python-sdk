@@ -10,9 +10,9 @@ class CreateSlsLogDispatchRequest(DaraModel):
         sls_region_id: str = None,
         ttl: int = None,
     ):
-        # The region ID of the Simple Log Service project.
+        # The SLS region ID.
         self.sls_region_id = sls_region_id
-        # The log retention period. Unit: days.
+        # The storage duration of logs. Unit: days.
         self.ttl = ttl
 
     def validate(self):

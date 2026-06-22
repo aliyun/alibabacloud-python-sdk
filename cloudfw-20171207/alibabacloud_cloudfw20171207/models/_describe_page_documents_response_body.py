@@ -16,13 +16,13 @@ class DescribePageDocumentsResponseBody(DaraModel):
         more: main_models.DescribePageDocumentsResponseBodyMore = None,
         request_id: str = None,
     ):
-        # The list of documents.
+        # The document list.
         self.docs = docs
-        # The URL of the image.
+        # The image URL.
         self.image_url = image_url
         # The application module.
         self.module = module
-        # Additional information.
+        # The list of additional resources.
         self.more = more
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class DescribePageDocumentsResponseBodyMore(DaraModel):
     ):
         # The title.
         self.title = title
-        # The URL of the document.
+        # The document path.
         self.url = url
 
     def validate(self):
@@ -127,7 +127,7 @@ class DescribePageDocumentsResponseBodyDocs(DaraModel):
     ):
         # The title.
         self.title = title
-        # The URL of the document.
+        # The document path.
         self.url = url
 
     def validate(self):

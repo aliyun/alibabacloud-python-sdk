@@ -28,36 +28,29 @@ class CreatePrivateDnsEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.access_instance_name = access_instance_name
-        # The type of the Cloud Firewall. Valid values:
-        # 
+        # The type of cloud firewall. Valid values:
         # - **internet**
-        # 
         # - **vpc**
-        # 
         # - **nat**
         # 
         # This parameter is required.
         self.firewall_type = firewall_type
         # The IP protocol. Valid values:
-        # 
         # - **TCP**
-        # 
         # - **UDP**
         self.ip_protocol = ip_protocol
-        # The UID of the member account.
+        # The UID of the Alibaba Cloud member account.
         self.member_uid = member_uid
         # The port number.
         self.port = port
-        # The primary DNS server.
+        # The primary DNS.
         self.primary_dns = primary_dns
         # The ID of the primary vSwitch.
         self.primary_vswitch_id = primary_vswitch_id
         # The IP address of the primary vSwitch.
         self.primary_vswitch_ip = primary_vswitch_ip
-        # The type of the private DNS. Valid values:
-        # 
+        # The type of private DNS. Valid values:
         # - **PrivateZone**
-        # 
         # - **Custom** (default)
         # 
         # This parameter is required.
@@ -66,13 +59,13 @@ class CreatePrivateDnsEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_no = region_no
-        # The standby DNS server.
+        # The standby DNS.
         self.standby_dns = standby_dns
         # The ID of the standby vSwitch.
         self.standby_vswitch_id = standby_vswitch_id
         # The IP address of the standby vSwitch.
         self.standby_vswitch_ip = standby_vswitch_ip
-        # The ID of the VPC instance.
+        # The VPC instance ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

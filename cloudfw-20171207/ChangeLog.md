@@ -1,3 +1,9 @@
+2026-06-22 Version: 9.1.0
+- Support API DescribePostpayBill.
+- Support API DescribePrepayBillTotal.
+- Update API CreateSecurityProxy: add request parameters FwVswitchZoneId.
+
+
 2026-06-17 Version: 9.0.0
 - Support API DescribeIPSRules.
 - Update API DescribeACLProtectTrend: add request parameters FirewallType.

@@ -4,34 +4,37 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeSdlEventSdListRequest(DaraModel):
+class DescribePostpayBillRequest(DaraModel):
     def __init__(
         self,
         current_page: int = None,
-        dst_ip: str = None,
-        end_time: int = None,
+        end_time: str = None,
+        interval: int = None,
         lang: str = None,
         page_size: int = None,
-        src_ip: str = None,
-        start_time: int = None,
-        uuid: str = None,
+        start_time: str = None,
     ):
-        # The current page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The destination IP address.
-        self.dst_ip = dst_ip
-        # The end time. The value is a UNIX timestamp in seconds.
+        # The end time of the query, expressed as a UNIX timestamp in seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The language type of the received message.
+        # The time interval for querying data. This is an enumerated value. Valid values:
+        # 
+        # - 3600: queries hourly data.
+        # - 86400: queries daily data.
+        self.interval = interval
+        # The language. This is an enumerated value.
+        # Default value: zh.
+        # Valid values: en.
         self.lang = lang
-        # The number of entries per page.
+        # The maximum number of entries per page in a paged query. Default value: 10.
         self.page_size = page_size
-        # The source IP address.
-        self.src_ip = src_ip
-        # The start time. The value is a UNIX timestamp in seconds.
+        # The start time of the query, expressed as a UNIX timestamp in seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
-        # The unique identifier ID.
-        self.uuid = uuid
 
     def validate(self):
         pass
@@ -44,11 +47,11 @@ class DescribeSdlEventSdListRequest(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
-        if self.dst_ip is not None:
-            result['DstIp'] = self.dst_ip
-
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.interval is not None:
+            result['Interval'] = self.interval
 
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -56,14 +59,8 @@ class DescribeSdlEventSdListRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
-        if self.src_ip is not None:
-            result['SrcIp'] = self.src_ip
-
         if self.start_time is not None:
             result['StartTime'] = self.start_time
-
-        if self.uuid is not None:
-            result['Uuid'] = self.uuid
 
         return result
 
@@ -72,11 +69,11 @@ class DescribeSdlEventSdListRequest(DaraModel):
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
 
-        if m.get('DstIp') is not None:
-            self.dst_ip = m.get('DstIp')
-
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
@@ -84,14 +81,8 @@ class DescribeSdlEventSdListRequest(DaraModel):
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
 
-        if m.get('SrcIp') is not None:
-            self.src_ip = m.get('SrcIp')
-
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
-
-        if m.get('Uuid') is not None:
-            self.uuid = m.get('Uuid')
 
         return self
 

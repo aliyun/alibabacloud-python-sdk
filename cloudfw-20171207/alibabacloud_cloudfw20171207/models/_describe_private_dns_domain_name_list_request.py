@@ -19,9 +19,9 @@ class DescribePrivateDnsDomainNameListRequest(DaraModel):
         self.access_instance_id = access_instance_id
         # The domain name.
         self.domain_name = domain_name
-        # The page number.
+        # The page number of the current page.
         self.page_no = page_no
-        # The number of the page to return.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         # 

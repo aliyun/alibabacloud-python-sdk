@@ -14,7 +14,7 @@ class DescribeAccessInstanceRegionListRequest(DaraModel):
         self.access_instance_status = access_instance_status
         # The type of the synchronization node. Valid values:
         # 
-        # - **PrivateDns**: private DNS.
+        # - **PrivateDns**: Private DNS resolution.
         # 
         # - **AckClusterConnector**: ACK cluster connector.
         self.access_instance_type = access_instance_type

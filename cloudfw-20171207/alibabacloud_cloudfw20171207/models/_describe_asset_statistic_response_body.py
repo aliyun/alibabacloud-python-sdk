@@ -15,13 +15,13 @@ class DescribeAssetStatisticResponseBody(DaraModel):
         request_id: str = None,
         resource_spec_statistic: main_models.DescribeAssetStatisticResponseBodyResourceSpecStatistic = None,
     ):
-        # Whether automatic traffic diversion is enabled. Valid values:- **true**: enabled- **false**: disabled
+        # Indicates whether automatic traffic redirection is enabled. Valid values:- **true**: Enabled.- **false**: Disabled.
         self.auto_resource_enable = auto_resource_enable
-        # Specifications for general instances in version 2.0.
+        # The general instance specifications for version 2.0.
         self.general_instance_spec_statistic = general_instance_spec_statistic
-        # ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Resource specification usage statistics.
+        # The consumed quota statistics information.
         self.resource_spec_statistic = resource_spec_statistic
 
     def validate(self):
@@ -75,13 +75,13 @@ class DescribeAssetStatisticResponseBodyResourceSpecStatistic(DaraModel):
         sensitive_data_ip_num_spec: int = None,
         sensitive_data_ip_num_used: int = None,
     ):
-        # Maximum number of public IP addresses that can be protected.
+        # The quota for protected public IP addresses.
         self.ip_num_spec = ip_num_spec
-        # Number of public IP addresses with protection enabled.
+        # The number of public IP addresses with protection enabled.
         self.ip_num_used = ip_num_used
-        # The number of IP specifications for sensitive data.
+        # The quota for sensitive data IP addresses.
         self.sensitive_data_ip_num_spec = sensitive_data_ip_num_spec
-        # Number of public IP addresses currently scanned for sensitive data.
+        # The number of sensitive data IP addresses with protection enabled.
         self.sensitive_data_ip_num_used = sensitive_data_ip_num_used
 
     def validate(self):
@@ -134,21 +134,21 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic(DaraModel):
         total_nat_general_instance_used_cnt: int = None,
         total_vfw_general_instance_used_cnt: int = None,
     ):
-        # Internet-facing firewall instance usage by region.
+        # The region-specific statistics for the Internet firewall.
         self.cfw_general_instance_region_statistic = cfw_general_instance_region_statistic
-        # Total Internet-facing firewall instances by region.
+        # The region-specific statistics for all Internet firewall instances.
         self.cfw_total_general_instance_region_statistic = cfw_total_general_instance_region_statistic
-        # Total number of Internet-facing firewall instances.
+        # The total number of instances for the Internet firewall.
         self.total_cfw_general_instance_cnt = total_cfw_general_instance_cnt
-        # Number of Internet-facing firewall instances with protection enabled.
+        # The number of instances with the Internet firewall enabled.
         self.total_cfw_general_instance_used_cnt = total_cfw_general_instance_used_cnt
-        # Total number of general instances used.
+        # The total quota.
         self.total_general_instance_used_cnt = total_general_instance_used_cnt
-        # Total number of NAT firewall instances.
+        # The total number of instances for the NAT firewall.
         self.total_nat_general_instance_cnt = total_nat_general_instance_cnt
-        # Number of NAT firewall instances with protection enabled.
+        # The number of instances with the NAT firewall enabled.
         self.total_nat_general_instance_used_cnt = total_nat_general_instance_used_cnt
-        # Number of VPC firewall instances with protection enabled.
+        # The number of instances with the VPC firewall enabled.
         self.total_vfw_general_instance_used_cnt = total_vfw_general_instance_used_cnt
 
     def validate(self):
@@ -236,9 +236,9 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwTotalGene
         member_list: List[str] = None,
         region_no: str = None,
     ):
-        # List of member accounts in the region.
+        # The list of members in the region.
         self.member_list = member_list
-        # Region information
+        # The region information.
         self.region_no = region_no
 
     def validate(self):
@@ -273,9 +273,9 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralIn
         member_list: List[str] = None,
         region_no: str = None,
     ):
-        # List of member accounts in the region.
+        # The list of members in the region.
         self.member_list = member_list
-        # Region information
+        # The region information.
         self.region_no = region_no
 
     def validate(self):

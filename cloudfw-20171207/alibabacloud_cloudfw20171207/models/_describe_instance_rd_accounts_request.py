@@ -15,19 +15,19 @@ class DescribeInstanceRdAccountsRequest(DaraModel):
         page_size: str = None,
         source_ip: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page.
         self.current_page = current_page
-        # The language of the request and response.
+        # The language type for the request and response messages.
         self.lang = lang
-        # The description of the member account.
+        # The remarks of the Cloud Firewall member accounts.
         self.member_desc = member_desc
-        # The display name of the member account.
+        # The name of the Cloud Firewall member accounts.
         self.member_display_name = member_display_name
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_uid = member_uid
-        # The number of the page to return.
+        # The number of entries per page.
         self.page_size = page_size
-        # The source IP address of the request.
+        # The IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

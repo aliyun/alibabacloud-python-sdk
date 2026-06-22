@@ -20,23 +20,23 @@ class DescribeACLProtectTrendResponseBody(DaraModel):
         total_protect_cnt: int = None,
         trend_list: List[main_models.DescribeACLProtectTrendResponseBodyTrendList] = None,
     ):
-        # The number of inbound sessions blocked by access control policies for internet traffic.
+        # The number of inbound interceptions by Internet access control.
         self.in_protect_cnt = in_protect_cnt
         # This parameter is deprecated.
         self.inter_vpcprotect_cnt = inter_vpcprotect_cnt
-        # The interval between data points. Unit: seconds.
+        # The interval at which data is returned. Unit: seconds. A result is returned at each interval.
         self.interval = interval
-        # The number of outbound sessions blocked by access control policies for internet traffic.
+        # The number of outbound interceptions by Internet access control.
         self.out_protect_cnt = out_protect_cnt
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of sessions that trigger the alert action in access control policies in the query time range.
+        # The cumulative total of AlertCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the entire time period.
         self.total_alert_cnt = total_alert_cnt
-        # The total number of sessions that are allowed by access control policies in the query time range.
+        # The cumulative total of PassCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and were allowed during the entire time period.
         self.total_pass_cnt = total_pass_cnt
-        # The total number of sessions blocked by access control policies for internet traffic.
+        # The total number of Internet access control interceptions.
         self.total_protect_cnt = total_protect_cnt
-        # The trend of sessions blocked by access control policies for internet traffic.
+        # The list of Internet access control intercept trend data.
         self.trend_list = trend_list
 
     def validate(self):
@@ -123,13 +123,13 @@ class DescribeACLProtectTrendResponseBodyTrendList(DaraModel):
         protect_cnt: int = None,
         time: int = None,
     ):
-        # The total number of sessions that trigger the alert action in access control policies at the specified point in time.
+        # The total number of sessions that matched an ACL policy and triggered the monitor (alert) action at this point in time.
         self.alert_cnt = alert_cnt
-        # The total number of sessions that are allowed by access control policies at the specified point in time.
+        # The total number of sessions that matched an ACL policy and were allowed at this point in time.
         self.pass_cnt = pass_cnt
-        # The number of sessions blocked by access control policies for internet traffic on the current day.
+        # The number of Internet access control interceptions on the day.
         self.protect_cnt = protect_cnt
-        # The timestamp that indicates the start of the query time range. Unit: seconds.
+        # The timestamp of 00:00 on each day. Unit: seconds. Indicates the date.
         self.time = time
 
     def validate(self):

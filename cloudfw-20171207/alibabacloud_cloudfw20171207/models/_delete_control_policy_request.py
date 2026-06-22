@@ -14,16 +14,15 @@ class DeleteControlPolicyRequest(DaraModel):
     ):
         # The unique ID of the access control policy.
         # 
-        # To delete an access control policy, you must provide its ID. Call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to obtain the ID.
+        # To delete an access control policy, you must provide the unique ID of the policy. You can call the [DescribeControlPolicy](https://help.aliyun.com/document_detail/138866.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The traffic direction that the access control policy controls.
+        # The traffic direction controlled by the access control policy.
         # 
         # Valid values:
         # 
         # - **in**: inbound traffic.
-        # 
         # - **out**: outbound traffic.
         self.direction = direction
         # The language of the request and response.
@@ -31,8 +30,7 @@ class DeleteControlPolicyRequest(DaraModel):
         # Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
         # The source IP address of the traffic.
         self.source_ip = source_ip

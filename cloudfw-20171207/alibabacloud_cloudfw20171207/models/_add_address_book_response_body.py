@@ -10,7 +10,7 @@ class AddAddressBookResponseBody(DaraModel):
         group_uuid: str = None,
         request_id: str = None,
     ):
-        # The unique ID of the address book that is created.
+        # The unique ID of the address book that is returned after the address book is successfully added.
         self.group_uuid = group_uuid
         # The request ID.
         self.request_id = request_id

@@ -17,11 +17,11 @@ class DescribePrivateDnsDomainNameListResponseBody(DaraModel):
     ):
         # The list of domain names.
         self.domain_name_list = domain_name_list
-        # The page number.
+        # The page number of the current page.
         self.page_no = page_no
-        # The number of entries on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of private DNS domain names.
         self.total_count = total_count

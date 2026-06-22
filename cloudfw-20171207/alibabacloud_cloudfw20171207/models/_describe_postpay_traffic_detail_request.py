@@ -17,42 +17,39 @@ class DescribePostpayTrafficDetailRequest(DaraModel):
         start_time: str = None,
         traffic_type: str = None,
     ):
-        # The page number of the page to return.
+        # The page number in a paged query.
         # Default value: 1.
         self.current_page = current_page
-        # Set the end time for the query. Use the YYYYMMDD date format.
+        # The end time of the query. Specify the value in the YYYYMMDD format.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The language of the request and response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # The field to use for sorting. Valid values:
+        # The field by which to sort the results. Valid values:
         # 
         # - **resourceId**: resource ID.
-        # 
         # - **trafficDay**: date.
         self.order = order
-        # The number of entries to return on each page. Default value: 10. Maximum value: 50.
+        # The number of entries per page in a paged query. Default value: 10. Maximum value: 50.
         self.page_size = page_size
         # The region information.
         self.region_no = region_no
         # The IP address or instance ID of the asset.
         self.search_item = search_item
-        # Set the start time for the query. Use the YYYYMMDD date format.
+        # The start time of the query. Specify the value in the YYYYMMDD format.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The type of the firewall border for which to query traffic. This parameter is required. Valid values:
-        # 
-        # - **EIP_TRAFFIC**: traffic on the Internet border.
-        # 
-        # - **NatGateway_TRAFFIC**: traffic on the NAT border.
-        # 
-        # - **VPC_TRAFFIC**: traffic on the VPC border.
+        # The type of traffic boundary for statistics. This parameter is required. Valid values:
+        #           
+        # - **EIP_TRAFFIC**: Internet border traffic.
+        #   
+        # - **NatGateway_TRAFFIC**: NAT border traffic.
+        # - **VPC_TRAFFIC**: VPC border traffic.
         # 
         # This parameter is required.
         self.traffic_type = traffic_type

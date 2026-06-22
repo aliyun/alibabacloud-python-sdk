@@ -9,10 +9,9 @@ class DescribeResourceTypeAutoEnableRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the message that you receive. Valid values:
+        # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
 

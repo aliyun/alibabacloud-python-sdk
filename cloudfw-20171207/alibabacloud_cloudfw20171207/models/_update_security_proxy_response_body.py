@@ -12,7 +12,7 @@ class UpdateSecurityProxyResponseBody(DaraModel):
     ):
         # The application module.
         self.module = module
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

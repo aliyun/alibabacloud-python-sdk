@@ -16,7 +16,7 @@ class DescribeSecurityProxyResponseBody(DaraModel):
     ):
         # The list of NAT firewalls.
         self.proxy_list = proxy_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -81,13 +81,13 @@ class DescribeSecurityProxyResponseBodyProxyList(DaraModel):
     ):
         # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # The details of the exception.
+        # The error details.
         self.detail = detail
-        # The UID of the Cloud Firewall member account.
+        # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT Gateway.
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
         # The ID of the NAT firewall.
         self.proxy_id = proxy_id
@@ -97,29 +97,24 @@ class DescribeSecurityProxyResponseBodyProxyList(DaraModel):
         self.region_no = region_no
         # The list of SNAT IP addresses.
         self.snat_ip_list = snat_ip_list
-        # The status of the Cloud Firewall. Valid values:
-        # 
-        # - **configuring**: The firewall is being created.
-        # 
-        # - **deleting**: The firewall is being deleted.
-        # 
-        # - **normal**: The firewall is running.
-        # 
-        # - **abnormal**: The firewall is not running as expected.
-        # 
-        # - **opening**: The firewall is being enabled.
-        # 
-        # - **closing**: The firewall is being disabled.
-        # 
-        # - **closed**: The firewall is disabled.
+        # The status of Cloud Firewall. Valid values:
+        # - **configuring**: Being created.
+        # - **deleting**: Being deleted.
+        # - **normal**: Normal.
+        # - **abnormal**: Abnormal.
+        # - **opening**: Being enabled.
+        # - **closing**: Being disabled.
+        # - **closed**: Disabled.
         self.status = status
-        # Indicates whether the strict mode is enabled. 1: The strict mode is enabled. 0: The strict mode is disabled.
+        # Indicates whether strict mode is enabled. Valid values:
+        # - 1: Strict mode is enabled.
+        # - 0: Strict mode is disabled.
         self.strict_mode = strict_mode
-        # The ID of the vSwitch to which the Cloud Firewall instance belongs.
+        # The ID of the vSwitch to which the Cloud Firewall interface belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC instance.
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
-        # The instance name of the VPC.
+        # The name of the VPC instance.
         self.vpc_name = vpc_name
 
     def validate(self):

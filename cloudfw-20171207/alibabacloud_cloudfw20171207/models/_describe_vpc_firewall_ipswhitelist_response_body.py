@@ -13,9 +13,9 @@ class DescribeVpcFirewallIPSWhitelistResponseBody(DaraModel):
         request_id: str = None,
         whitelists: List[main_models.DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the IPS whitelist for the VPC firewall.
+        # The details of the VPC border firewall IPS whitelist.
         self.whitelists = whitelists
 
     def validate(self):
@@ -61,23 +61,19 @@ class DescribeVpcFirewallIPSWhitelistResponseBodyWhitelists(DaraModel):
         white_list_value: List[str] = None,
         white_type: int = None,
     ):
-        # The type of the list. Valid values:
-        # 
-        # - **1**: custom
-        # 
-        # - **2**: address book
+        # The list type. Valid values:
+        # - **1**: user-defined type
+        # - **2**: address book type.
         self.list_type = list_type
-        # The value of the list.
+        # The value of the corresponding list type.
         self.list_value = list_value
-        # The instance ID of the VPC firewall.
+        # The instance ID of the VPC border firewall.
         self.vpc_firewall_id = vpc_firewall_id
-        # The content of the list.
+        # The content of the list type array.
         self.white_list_value = white_list_value
-        # The type of the whitelist. Valid values:
-        # 
-        # - **1**: destination
-        # 
-        # - **2**: source
+        # The whitelist type. Valid values:
+        # - **1**: destination type
+        # - **2**: source type.
         self.white_type = white_type
 
     def validate(self):

@@ -11,6 +11,7 @@ class CreateSecurityProxyRequest(DaraModel):
     def __init__(
         self,
         firewall_switch: str = None,
+        fw_vswitch_zone_id: str = None,
         lang: str = None,
         nat_gateway_id: str = None,
         nat_route_entry_list: List[main_models.CreateSecurityProxyRequestNatRouteEntryList] = None,
@@ -23,54 +24,50 @@ class CreateSecurityProxyRequest(DaraModel):
         vswitch_id: str = None,
     ):
         # The security protection switch. Valid values:
-        # 
-        # - **open**: on
-        # 
-        # - **close**: off
+        # - **open**: enabled
+        # - **close**: disabled.
         self.firewall_switch = firewall_switch
-        # The language of the response. Valid values:
+        # The zone of the firewall vSwitch.
+        self.fw_vswitch_zone_id = fw_vswitch_zone_id
+        # The language of the content within the response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The list of routes of the NAT Gateway that you want to switch.
+        # The list of routes to be switched for the NAT gateway.
         # 
         # This parameter is required.
         self.nat_route_entry_list = nat_route_entry_list
-        # The name of the NAT firewall. The name must be 4 to 50 characters in length. It can contain letters, digits, Chinese characters, and underscores (_). The name cannot start with an underscore (_).
+        # The name of the NAT firewall. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
         # 
         # This parameter is required.
         self.proxy_name = proxy_name
         # The region ID of the VPC.
         # 
-        # > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         # 
         # This parameter is required.
         self.region_no = region_no
         # Specifies whether to enable strict mode.
         # 
-        # - 1: enables strict mode
-        # 
-        # - 0: disables strict mode
+        # - 1: Enable strict mode.
+        # - 0: Disable strict mode.
         self.strict_mode = strict_mode
-        # The ID of the VPC instance.
+        # The instance ID of the VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # Specifies whether to use the automatic vSwitch selection feature. Valid values:
-        # 
+        # Specifies whether to use the automatic vSwitch mode. Valid values:
         # - **true**: automatic mode
-        # 
-        # - **false**: manual mode
+        # - **false**: manual mode.
         self.vswitch_auto = vswitch_auto
-        # The CIDR block of the vSwitch. This parameter is required if you use the automatic vSwitch selection feature.
+        # The CIDR block of the vSwitch. This parameter is required when the vSwitch is in automatic mode.
         self.vswitch_cidr = vswitch_cidr
-        # The ID of the vSwitch. This parameter is required if you use the manual vSwitch selection feature.
+        # The vSwitch ID. This parameter is required when the vSwitch is in manual mode.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -86,6 +83,9 @@ class CreateSecurityProxyRequest(DaraModel):
             result = _map
         if self.firewall_switch is not None:
             result['FirewallSwitch'] = self.firewall_switch
+
+        if self.fw_vswitch_zone_id is not None:
+            result['FwVswitchZoneId'] = self.fw_vswitch_zone_id
 
         if self.lang is not None:
             result['Lang'] = self.lang
@@ -125,6 +125,9 @@ class CreateSecurityProxyRequest(DaraModel):
         m = m or dict()
         if m.get('FirewallSwitch') is not None:
             self.firewall_switch = m.get('FirewallSwitch')
+
+        if m.get('FwVswitchZoneId') is not None:
+            self.fw_vswitch_zone_id = m.get('FwVswitchZoneId')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
@@ -173,15 +176,15 @@ class CreateSecurityProxyRequestNatRouteEntryList(DaraModel):
         # 
         # This parameter is required.
         self.destination_cidr = destination_cidr
-        # The next hop of the original NAT Gateway.
+        # The next hop address of the original NAT gateway.
         # 
         # This parameter is required.
         self.next_hop_id = next_hop_id
-        # The network type of the next hop. Set the value to NatGateway.
+        # The network type of the next hop. Valid values: NatGateway.
         # 
         # This parameter is required.
         self.next_hop_type = next_hop_type
-        # The route table that contains the default route of the NAT Gateway.
+        # The route table that contains the default route of the NAT gateway.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

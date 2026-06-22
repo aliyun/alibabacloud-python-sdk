@@ -14,14 +14,13 @@ class DescribeRegionInfoRequest(DaraModel):
         # The language of the request and response. Valid values:
         # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
-        # The source tracking code.
+        # The tracing code.
         # 
         # This parameter is required.
         self.source_code = source_code
-        # The source IP address of the visitor.
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

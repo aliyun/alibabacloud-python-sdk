@@ -1855,6 +1855,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
+        if not DaraCore.is_null(request.fw_vswitch_zone_id):
+            query['FwVswitchZoneId'] = request.fw_vswitch_zone_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.nat_gateway_id):
@@ -1903,6 +1905,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
+        if not DaraCore.is_null(request.fw_vswitch_zone_id):
+            query['FwVswitchZoneId'] = request.fw_vswitch_zone_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.nat_gateway_id):
@@ -12864,6 +12868,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_policy_prior_used_with_options_async(request, runtime)
 
+    def describe_postpay_bill_with_options(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePostpayBillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePostpayBill',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePostpayBillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_postpay_bill_with_options_async(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePostpayBillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePostpayBill',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePostpayBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_postpay_bill(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+    ) -> main_models.DescribePostpayBillResponse:
+        runtime = RuntimeOptions()
+        return self.describe_postpay_bill_with_options(request, runtime)
+
+    async def describe_postpay_bill_async(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+    ) -> main_models.DescribePostpayBillResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_postpay_bill_with_options_async(request, runtime)
+
     def describe_postpay_enabled_protection_with_options(
         self,
         request: main_models.DescribePostpayEnabledProtectionRequest,
@@ -13365,6 +13459,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePrefixListsResponse:
         runtime = RuntimeOptions()
         return await self.describe_prefix_lists_with_options_async(request, runtime)
+
+    def describe_prepay_bill_total_with_options(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_type):
+            query['BillType'] = request.bill_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrepayBillTotal',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrepayBillTotalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_prepay_bill_total_with_options_async(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_type):
+            query['BillType'] = request.bill_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrepayBillTotal',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrepayBillTotalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_prepay_bill_total(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        runtime = RuntimeOptions()
+        return self.describe_prepay_bill_total_with_options(request, runtime)
+
+    async def describe_prepay_bill_total_async(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_prepay_bill_total_with_options_async(request, runtime)
 
     def describe_private_dns_domain_name_list_with_options(
         self,

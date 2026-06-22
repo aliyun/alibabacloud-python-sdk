@@ -13,7 +13,7 @@ class CreateAclCheckRequest(DaraModel):
         check_names: List[str] = None,
         lang: str = None,
     ):
-        # The type of the ACL check.
+        # The ACL check type.
         # 
         # This parameter is required.
         self.acl_type = acl_type

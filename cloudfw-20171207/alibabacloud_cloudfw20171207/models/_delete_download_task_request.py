@@ -16,7 +16,7 @@ class DeleteDownloadTaskRequest(DaraModel):
         # 
         # - **en**: English.
         self.lang = lang
-        # The ID of the file download task.
+        # The task ID of the file download task.
         self.task_id = task_id
 
     def validate(self):

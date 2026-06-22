@@ -10,13 +10,12 @@ class DescribeAclRuleCountRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language type. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # The source IP address of the requester.
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

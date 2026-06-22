@@ -10,9 +10,11 @@ class CreateInstanceSyncTaskRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The language type.
+        # The language type. Valid values:
+        # - **en**: English.
+        # - **zh**: Chinese.
         self.lang = lang
-        # The source IP address of the visitor.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

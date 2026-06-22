@@ -20,23 +20,23 @@ class BatchCopyVpcFirewallControlPolicyRequest(DaraModel):
         self.lang = lang
         # The source IP address of the request.
         self.source_ip = source_ip
-        # The ID of the policy group for the source VPC firewall. Valid values:
+        # The ID of the access control policy group for the source virtual private cloud (VPC) firewall of this operation. Valid values:
         # 
-        # - If the VPC firewall protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC, use the ID of the CEN instance. The network instance can be a VPC, a Virtual Border Router (VBR), or a Cloud Connect Network (CCN) instance.
+        # - If the VPC firewall protects traffic between a network instance in a Cloud Enterprise Network (CEN) instance (network instances include VPCs, VBRs, and CCNs) and a specified VPC, the policy group ID is the CEN instance ID.
         # 
-        # - If the VPC firewall protects traffic between two VPCs connected by an Express Connect circuit, use the ID of the VPC firewall instance.
+        # - If the VPC firewall protects traffic between two VPCs that are connected through Express Connect, the policy group ID is the VPC firewall instance ID.
         # 
-        # > Call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
+        # > You can invoke the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.source_vpc_firewall_id = source_vpc_firewall_id
-        # The ID of the policy group for the destination VPC firewall. Valid values:
+        # The ID of the access control policy group for the destination virtual private cloud (VPC) firewall of this operation. Valid values:
         # 
-        # - If the VPC firewall protects traffic between a network instance in a Cloud Enterprise Network (CEN) and a specified VPC, use the ID of the CEN instance. The network instance can be a VPC, a Virtual Border Router (VBR), or a Cloud Connect Network (CCN) instance.
+        # - If the VPC firewall protects traffic between a network instance in a Cloud Enterprise Network (CEN) instance (network instances include VPCs, VBRs, and CCNs) and a specified VPC, the policy group ID is the CEN instance ID.
         # 
-        # - If the VPC firewall protects traffic between two VPCs connected by an Express Connect circuit, use the ID of the VPC firewall instance.
+        # - If the VPC firewall protects traffic between two VPCs that are connected through Express Connect, the policy group ID is the VPC firewall instance ID.
         # 
-        # > Call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
+        # > You can invoke the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.target_vpc_firewall_id = target_vpc_firewall_id

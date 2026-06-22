@@ -9,7 +9,7 @@ class ModifySensitiveSwitchResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID of the returned result.
         self.request_id = request_id
 
     def validate(self):

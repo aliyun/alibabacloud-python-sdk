@@ -14,11 +14,11 @@ class DescribeSdlEventSdListResponseBody(DaraModel):
         sdl_event_sensitive_data_list: List[main_models.DescribeSdlEventSdListResponseBodySdlEventSensitiveDataList] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # A list of sensitive data from the data breach.
+        # The list of sensitive data involved in data leaks.
         self.sdl_event_sensitive_data_list = sdl_event_sensitive_data_list
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -73,11 +73,11 @@ class DescribeSdlEventSdListResponseBodySdlEventSensitiveDataList(DaraModel):
     ):
         # The sensitive data.
         self.sensitive_data = sensitive_data
-        # The number of times the sensitive data appears.
+        # The number of occurrences of the sensitive data.
         self.sensitive_data_cnt = sensitive_data_cnt
-        # The sensitivity level of the data.
+        # The level of the sensitive data.
         self.sensitive_level = sensitive_level
-        # The type of sensitive data.
+        # The type of the sensitive data.
         self.sensitive_type = sensitive_type
         # The source IP address.
         self.src_ip = src_ip

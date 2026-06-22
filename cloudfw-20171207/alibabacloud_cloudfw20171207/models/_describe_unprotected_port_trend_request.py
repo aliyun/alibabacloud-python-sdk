@@ -12,13 +12,15 @@ class DescribeUnprotectedPortTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
-        # The end time. Use a UNIX timestamp in seconds.
+        # The end time. Specify a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language of the response message.
+        # The language of the response. Valid values:
+        # - **en**: English
+        # - **zh**: Chinese.
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the request.
         self.source_ip = source_ip
-        # The start time. Use a UNIX timestamp in seconds.
+        # The start time. Specify a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

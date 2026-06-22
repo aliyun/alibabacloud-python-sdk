@@ -11,21 +11,20 @@ class DescribeVpcFirewallIPSWhitelistRequest(DaraModel):
         member_uid: int = None,
         vpc_firewall_id: str = None,
     ):
-        # The language of the request and response messages.
+        # The language of the request and response.
         # 
         # Valid values:
         # 
         # - **zh** (default): Chinese
         # 
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # The UID of the Cloud Firewall member account.
+        # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
         # The instance ID of the VPC firewall. Valid values:
         # 
-        # - If the VPC firewall protects a network instance in a Cloud Enterprise Network (CEN) instance, set the value to the ID of the CEN instance. For a CEN instance of Basic Edition, you can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance ID. For a CEN instance of Enterprise Edition, you can call the [DescribeTrFirewallsV2List](https://help.aliyun.com/document_detail/2384695.html) operation to query the instance ID.
-        # 
-        # - If the VPC firewall protects traffic between two VPCs that are connected by an Express Connect circuit, set the value to the instance ID of the VPC firewall. You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance ID of the VPC firewall.
+        # - If the VPC firewall protects network instances in a Cloud Enterprise Network (CEN) instance, the instance ID is the CEN instance ID. For CEN Basic Edition, call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the CEN instance ID. For CEN Enterprise Edition, call the [DescribeTrFirewallsV2List](https://help.aliyun.com/document_detail/2384695.html) operation to query the CEN instance ID.
+        # - If the VPC firewall protects traffic between two VPCs connected through Express Connect, the instance ID is the VPC firewall instance ID. Call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the VPC firewall instance ID.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

@@ -10,9 +10,9 @@ class DescribeVpcFirewallAssetRegionListRequest(DaraModel):
         member_uid: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_uid = member_uid
-        # The instance ID of the VPC border firewall.
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):

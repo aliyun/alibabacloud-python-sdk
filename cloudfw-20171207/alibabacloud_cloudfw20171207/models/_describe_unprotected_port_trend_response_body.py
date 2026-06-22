@@ -14,11 +14,11 @@ class DescribeUnprotectedPortTrendResponseBody(DaraModel):
         interval: int = None,
         request_id: str = None,
     ):
-        # The list of data.
+        # The data list.
         self.data_list = data_list
         # The time interval.
         self.interval = interval
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class DescribeUnprotectedPortTrendResponseBodyDataList(DaraModel):
         count: int = None,
         time: int = None,
     ):
-        # The number of blocks.
+        # The number of blocked requests.
         self.count = count
         # The timestamp.
         self.time = time

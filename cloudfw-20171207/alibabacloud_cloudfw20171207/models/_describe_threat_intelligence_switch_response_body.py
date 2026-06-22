@@ -16,9 +16,9 @@ class DescribeThreatIntelligenceSwitchResponseBody(DaraModel):
     ):
         # The list of threat intelligence categories.
         self.category_list = category_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -73,23 +73,23 @@ class DescribeThreatIntelligenceSwitchResponseBodyCategoryList(DaraModel):
     ):
         # The action of the rule. Valid values:
         # 
-        # **alert**: Monitor.
+        #  **alert**: monitor mode.
         # 
-        # **drop**: Block.
+        #  **drop**: Block Mode.
         self.action = action
-        # The description of the category.
+        # The category description.
         self.category_describe = category_describe
         # The ID of the threat intelligence category.
         self.category_id = category_id
-        # The name of the category.
+        # The category name.
         self.category_name = category_name
         # The ID of the parent threat intelligence category.
         self.category_parent_id = category_parent_id
-        # The status of the switch. Valid values:
+        # The enabling status. Valid values:
         # 
-        # **1**: enabled.
+        #  **1**: enabled.
         # 
-        # **0**: disabled.
+        #  **0**: disabled.
         self.enable_status = enable_status
 
     def validate(self):

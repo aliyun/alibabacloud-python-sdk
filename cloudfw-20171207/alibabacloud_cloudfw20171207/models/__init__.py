@@ -430,6 +430,9 @@ from ._describe_policy_advanced_config_response import DescribePolicyAdvancedCon
 from ._describe_policy_prior_used_request import DescribePolicyPriorUsedRequest
 from ._describe_policy_prior_used_response_body import DescribePolicyPriorUsedResponseBody
 from ._describe_policy_prior_used_response import DescribePolicyPriorUsedResponse
+from ._describe_postpay_bill_request import DescribePostpayBillRequest
+from ._describe_postpay_bill_response_body import DescribePostpayBillResponseBody
+from ._describe_postpay_bill_response import DescribePostpayBillResponse
 from ._describe_postpay_enabled_protection_request import DescribePostpayEnabledProtectionRequest
 from ._describe_postpay_enabled_protection_response_body import DescribePostpayEnabledProtectionResponseBody
 from ._describe_postpay_enabled_protection_response import DescribePostpayEnabledProtectionResponse
@@ -451,6 +454,9 @@ from ._describe_postpay_user_vpc_status_response import DescribePostpayUserVpcSt
 from ._describe_prefix_lists_request import DescribePrefixListsRequest
 from ._describe_prefix_lists_response_body import DescribePrefixListsResponseBody
 from ._describe_prefix_lists_response import DescribePrefixListsResponse
+from ._describe_prepay_bill_total_request import DescribePrepayBillTotalRequest
+from ._describe_prepay_bill_total_response_body import DescribePrepayBillTotalResponseBody
+from ._describe_prepay_bill_total_response import DescribePrepayBillTotalResponse
 from ._describe_private_dns_domain_name_list_request import DescribePrivateDnsDomainNameListRequest
 from ._describe_private_dns_domain_name_list_response_body import DescribePrivateDnsDomainNameListResponseBody
 from ._describe_private_dns_domain_name_list_response import DescribePrivateDnsDomainNameListResponse
@@ -945,8 +951,10 @@ from ._describe_outgoing_risk_trend_response_body import DescribeOutgoingRiskTre
 from ._describe_outgoing_tag_response_body import DescribeOutgoingTagResponseBodyTagList
 from ._describe_page_documents_response_body import DescribePageDocumentsResponseBodyDocs
 from ._describe_page_documents_response_body import DescribePageDocumentsResponseBodyMore
+from ._describe_postpay_bill_response_body import DescribePostpayBillResponseBodyBillList
 from ._describe_postpay_traffic_detail_response_body import DescribePostpayTrafficDetailResponseBodyTrafficList
 from ._describe_prefix_lists_response_body import DescribePrefixListsResponseBodyPrefixList
+from ._describe_prepay_bill_total_response_body import DescribePrepayBillTotalResponseBodyBillList
 from ._describe_private_dns_endpoint_list_response_body import DescribePrivateDnsEndpointListResponseBodyAccessInstanceList
 from ._describe_private_dns_statistics_response_body import DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList
 from ._describe_region_info_response_body import DescribeRegionInfoResponseBodyDataList
@@ -1495,6 +1503,9 @@ __all__ = [
     DescribePolicyPriorUsedRequest,
     DescribePolicyPriorUsedResponseBody,
     DescribePolicyPriorUsedResponse,
+    DescribePostpayBillRequest,
+    DescribePostpayBillResponseBody,
+    DescribePostpayBillResponse,
     DescribePostpayEnabledProtectionRequest,
     DescribePostpayEnabledProtectionResponseBody,
     DescribePostpayEnabledProtectionResponse,
@@ -1516,6 +1527,9 @@ __all__ = [
     DescribePrefixListsRequest,
     DescribePrefixListsResponseBody,
     DescribePrefixListsResponse,
+    DescribePrepayBillTotalRequest,
+    DescribePrepayBillTotalResponseBody,
+    DescribePrepayBillTotalResponse,
     DescribePrivateDnsDomainNameListRequest,
     DescribePrivateDnsDomainNameListResponseBody,
     DescribePrivateDnsDomainNameListResponse,
@@ -2010,8 +2024,10 @@ __all__ = [
     DescribeOutgoingTagResponseBodyTagList,
     DescribePageDocumentsResponseBodyDocs,
     DescribePageDocumentsResponseBodyMore,
+    DescribePostpayBillResponseBodyBillList,
     DescribePostpayTrafficDetailResponseBodyTrafficList,
     DescribePrefixListsResponseBodyPrefixList,
+    DescribePrepayBillTotalResponseBodyBillList,
     DescribePrivateDnsEndpointListResponseBodyAccessInstanceList,
     DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList,
     DescribeRegionInfoResponseBodyDataList,
