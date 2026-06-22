@@ -1,3 +1,8 @@
+2026-06-22 Version: 3.4.0
+- Support API DeleteNodeGroup.
+- Support API UpdateNodeGroupAttributes.
+
+
 2025-11-26 Version: 3.3.0
 - Support API UpdateClusterAutoRenew.
 - Update API ExportApplicationConfigs: add request parameters ConfigScope.

@@ -1,0 +1,58 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class GetNodeGroupRequest(DaraModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        node_group_id: str = None,
+        region_id: str = None,
+    ):
+        # The ID of the cluster.
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        # The ID of the node group.
+        # 
+        # This parameter is required.
+        self.node_group_id = node_group_id
+        # The ID of the region in which the cluster resides.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        return self
+
