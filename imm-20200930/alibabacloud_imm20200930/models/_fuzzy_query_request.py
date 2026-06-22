@@ -34,16 +34,17 @@ class FuzzyQueryRequest(DaraModel):
         self.next_token = next_token
         # The sorting method. Valid values:
         # 
-        # *   asc: ascending order.
-        # *   desc (default): descending order.
+        # - asc: ascending order.
         # 
-        # > 
+        # - desc (default): descending order.
         # 
-        # *   Separate multiple sorting methods with commas (,). Example: asc,desc.
+        # >
         # 
-        # *   The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
+        # - Separate multiple sorting methods with commas (,). Example: asc,desc.
         # 
-        # *   If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
+        # - The number of values for Order must be less than or equal to the number of values for Sort. For example, if you set Sort to Size,Filename, you can set Order only to desc or asc.
+        # 
+        # - If the number of values for Order is less than the number of values for Sort, the unsorted fields are default to the value of asc. For example, if you set Sort to Size,Filename and Order to asc, the Filename field is default to the value of asc.
         self.order = order
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -55,9 +56,11 @@ class FuzzyQueryRequest(DaraModel):
         self.query = query
         # The sort fields. For more information, see [Supported fields and operators](https://help.aliyun.com/document_detail/2743991.html).
         # 
-        # *   Separate multiple sort fields with commas (,). Example: `Size,Filename`.
-        # *   You can specify up to five sort fields.
-        # *   The priority order of sorting is determined based on the order of the sort fields.
+        # - Separate multiple sort fields with commas (,). Example: `Size,Filename`.
+        # 
+        # - You can specify up to five sort fields.
+        # 
+        # - The priority order of sorting is determined based on the order of the sort fields.
         self.sort = sort
         # The fields that you want to include in the response. To help reduce the size of the response, include only necessary metadata fields.
         # 

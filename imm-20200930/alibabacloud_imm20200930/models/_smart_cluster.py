@@ -26,29 +26,29 @@ class SmartCluster(DaraModel):
         update_time: str = None,
     ):
         self.cluster_type = cluster_type
-        # The time when the cluster was created.
+        # The creation time.
         self.create_time = create_time
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # The description of the cluster.
+        # The group description.
         self.description = description
-        # The name of the cluster.
+        # The group name.
         self.name = name
-        # The ID of the cluster.
+        # The smart cluster ID.
         self.object_id = object_id
-        # The status of the cluster.
+        # The group status. Valid values are `Succeeded`, `Failed`, and `Running`.
         self.object_status = object_status
-        # The type of the cluster.
+        # The group type. The value is always `smart-cluster`.
         self.object_type = object_type
         # The user ID.
         self.owner_id = owner_id
-        # The name of the project.
+        # The project name.
         self.project_name = project_name
         self.reason = reason
         # The clustering rule.
         self.rule = rule
         self.rules = rules
-        # The time when the cluster was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

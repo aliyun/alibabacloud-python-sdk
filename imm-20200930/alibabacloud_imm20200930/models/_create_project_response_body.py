@@ -11,7 +11,7 @@ class CreateProjectResponseBody(DaraModel):
         project: main_models.Project = None,
         request_id: str = None,
     ):
-        # The project.
+        # The project information. Click Project for details.
         self.project = project
         # The request ID.
         self.request_id = request_id

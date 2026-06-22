@@ -12,35 +12,34 @@ class GetTaskRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # Specifies whether to return original request parameters specified to create the task.
+        # Specifies whether to return the original request parameters used to create the task. Valid values:
+        # - true
+        # - false (default)
         # 
-        # *   true
-        # *   false (default)
+        # This parameter takes effect only for the following task types:
         # 
-        # This parameter applies only to the following tasks:
-        # 
-        # *   MediaConvert
-        # *   VideoLabelClassification
-        # *   FaceClustering
-        # *   FileCompression
-        # *   ArchiveFileInspection
-        # *   FileUncompression
-        # *   PointCloudCompress
-        # *   ImageToPDF
-        # *   StoryCreation
-        # *   LocationDateClustering
-        # *   ImageSplicing
-        # *   FacesSearching
+        # - MediaConvert
+        # - VideoLabelClassification
+        # - FaceClustering
+        # - FileCompression
+        # - ArchiveFileInspection
+        # - FileUncompression
+        # - PointCloudCompress
+        # - ImageToPDF
+        # - StoryCreation
+        # - LocationDateClustering
+        # - ImageSplicing
+        # - FacesSearching.
         self.request_definition = request_definition
-        # The ID of the task. You can obtain the ID of a task after you create the task.
+        # The ID of the task that you want to query. This value is returned when you create the task.
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The type of the task. For information about valid values, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
+        # The type of the task. For valid values, see [Task type list](https://help.aliyun.com/document_detail/2743993.html).
         # 
         # This parameter is required.
         self.task_type = task_type

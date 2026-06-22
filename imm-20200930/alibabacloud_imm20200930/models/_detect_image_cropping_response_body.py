@@ -14,8 +14,9 @@ class DetectImageCroppingResponseBody(DaraModel):
         matched_inclusion_hints: List[str] = None,
         request_id: str = None,
     ):
-        # The image cropping suggestions.
+        # The array of image cropping information.
         self.croppings = croppings
+        # The list of objects included in the cropping region, corresponding to the InclusionHints input parameter. This field is empty if no objects are included.
         self.matched_inclusion_hints = matched_inclusion_hints
         # The request ID.
         self.request_id = request_id

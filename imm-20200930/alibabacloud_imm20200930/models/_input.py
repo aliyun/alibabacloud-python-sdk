@@ -10,7 +10,7 @@ class Input(DaraModel):
         self,
         oss: main_models.InputOSS = None,
     ):
-        # The input data source from Object Storage Service (OSS).
+        # The OSS data source.
         self.oss = oss
 
     def validate(self):

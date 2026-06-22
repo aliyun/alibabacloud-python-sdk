@@ -10,7 +10,9 @@ class DocumentParseKeywordOption(DaraModel):
         count: int = None,
         extract: bool = None,
     ):
+        # The number of keywords to extract. The value must be an integer from 0 to 10.
         self.count = count
+        # Specifies whether to extract keywords.
         self.extract = extract
 
     def validate(self):

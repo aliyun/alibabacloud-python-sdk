@@ -11,9 +11,9 @@ class UpdateDatasetResponseBody(DaraModel):
         dataset: main_models.Dataset = None,
         request_id: str = None,
     ):
-        # 数据集。
+        # The dataset.
         self.dataset = dataset
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -21,8 +21,9 @@ class GetDatasetRequest(DaraModel):
         self.project_name = project_name
         # Specifies whether to enable real-time retrieval of file statistics. Default value: false.
         # 
-        # *   If you set the value to true, FileCount and TotalFileSize in the response return true and valid values.
-        # *   If you set the value to false, FileCount and TotalFileSize in the response return invalid values or 0.
+        # - If you set the value to true, FileCount and TotalFileSize in the response return true and valid values.
+        # 
+        # - If you set the value to false, FileCount and TotalFileSize in the response return invalid values or 0.
         self.with_statistics = with_statistics
 
     def validate(self):

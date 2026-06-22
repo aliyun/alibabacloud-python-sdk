@@ -45,8 +45,9 @@ class QueryStoriesRequest(DaraModel):
         self.object_id = object_id
         # The sort order. Valid values:
         # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
+        # - asc: in ascending order.
+        # 
+        # - desc: in descending order.
         self.order = order
         # The name of the project.[](~~478153~~)
         # 
@@ -54,10 +55,13 @@ class QueryStoriesRequest(DaraModel):
         self.project_name = project_name
         # The sort field. Valid values:
         # 
-        # *   CreateTime: sorts by story creation time.
-        # *   StoryName: sorts by story name.
-        # *   StoryStartTime: sorts by story start time.
-        # *   StoryEndTime: sorts by story end time.
+        # - CreateTime: sorts by story creation time.
+        # 
+        # - StoryName: sorts by story name.
+        # 
+        # - StoryStartTime: sorts by story start time.
+        # 
+        # - StoryEndTime: sorts by story end time.
         self.sort = sort
         # The time range for the creation time of the last photo or video in the story.
         self.story_end_time_range = story_end_time_range
@@ -71,8 +75,9 @@ class QueryStoriesRequest(DaraModel):
         self.story_type = story_type
         # Specifies whether to return empty stories. Valid values:
         # 
-        # *   true (The default value)
-        # *   false
+        # - true (The default value)
+        # 
+        # - false
         self.with_empty_stories = with_empty_stories
 
     def validate(self):

@@ -13,9 +13,13 @@ class DocumentParseOption(DaraModel):
         question: main_models.DocumentParseQuestionOption = None,
         summary: main_models.DocumentParseSummaryOption = None,
     ):
+        # Document parsing keyword extraction options
         self.keyword = keyword
+        # Document parsing guidance options
         self.narrator = narrator
+        # Document parsing question generation options
         self.question = question
+        # Document parsing summary options
         self.summary = summary
 
     def validate(self):

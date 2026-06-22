@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class UpdateProjectShrinkRequest(DaraModel):
     def __init__(
         self,
+        dataset_config_shrink: str = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
         dataset_max_file_count: int = None,
@@ -19,35 +20,34 @@ class UpdateProjectShrinkRequest(DaraModel):
         tag_shrink: str = None,
         template_id: str = None,
     ):
+        self.dataset_config_shrink = dataset_config_shrink
         # The maximum number of bindings for each dataset. Valid values: 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
         # The maximum number of metadata entities in each dataset.
-        # 
-        # >  This is a precautionary setting that does not impose practical limitations.
+        # >This is a reserved parameter and is not enforced during use.
         self.dataset_max_entity_count = dataset_max_entity_count
         # The maximum number of files in each dataset. Valid values: 1 to 100000000.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships in a dataset.
-        # 
-        # >  This is a precautionary setting that does not impose practical limitations.
+        # The maximum number of metadata relationships in each dataset.
+        # >This is a reserved parameter and is not enforced during use.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum size of files in each dataset. If the maximum size is exceeded, indexes can no longer be added. Unit: bytes.
+        # The maximum total file size in each dataset. After the limit is exceeded, no more indexes can be added. Unit: bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The description of the project. The description must be 1 to 256 characters in length.
+        # The project description. The description must be 1 to 256 characters in length.
         self.description = description
         # The maximum number of datasets in the project. Valid values: 1 to 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The project name. For information about how to obtain the project name, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The name of the Resource Access Management (RAM) role. You must grant the RAM role to Intelligent Media Management (IMM) before IMM can access other cloud resources such as Object Storage Service (OSS).
+        # The service role that grants Intelligent Media Management (IMM) permissions to access other cloud resources such as Object Storage Service (OSS).
         # 
-        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+        # To customize a service role, create a regular service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
         self.service_role = service_role
-        # The tags.
+        # The list of tags.
         self.tag_shrink = tag_shrink
-        # The ID of the workflow template. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+        # The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):
@@ -58,6 +58,9 @@ class UpdateProjectShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dataset_config_shrink is not None:
+            result['DatasetConfig'] = self.dataset_config_shrink
+
         if self.dataset_max_bind_count is not None:
             result['DatasetMaxBindCount'] = self.dataset_max_bind_count
 
@@ -95,6 +98,9 @@ class UpdateProjectShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DatasetConfig') is not None:
+            self.dataset_config_shrink = m.get('DatasetConfig')
+
         if m.get('DatasetMaxBindCount') is not None:
             self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
 

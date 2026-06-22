@@ -10,7 +10,7 @@ class CreateTriggerResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The ID of the trigger.
+        # The data ingestion ID.
         self.id = id
         # The request ID.
         self.request_id = request_id

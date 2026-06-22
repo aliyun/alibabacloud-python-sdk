@@ -14,9 +14,13 @@ class FigureClusterConfig(DaraModel):
         enabled_features: List[str] = None,
         min_entity_count: int = None,
     ):
+        # Whether to automatically group similar figures into clusters.
         self.auto_clustering = auto_clustering
+        # Whether to automatically generate metadata for each cluster, such as a representative cover image.
         self.auto_generate = auto_generate
+        # An array of strings specifying the clustering strategies to use.
         self.enabled_features = enabled_features
+        # The minimum number of figures required to form a cluster.
         self.min_entity_count = min_entity_count
 
     def validate(self):

@@ -11,7 +11,7 @@ class GetVideoModerationResultRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The project name.[](~~478153~~)
+        # The project name.
         # 
         # This parameter is required.
         self.project_name = project_name

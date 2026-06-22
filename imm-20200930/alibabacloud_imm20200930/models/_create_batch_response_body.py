@@ -10,7 +10,7 @@ class CreateBatchResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The ID of the batch processing task.
+        # The batch processing task ID.
         self.id = id
         # The request ID.
         self.request_id = request_id

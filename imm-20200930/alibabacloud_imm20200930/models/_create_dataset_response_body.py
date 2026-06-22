@@ -11,9 +11,9 @@ class CreateDatasetResponseBody(DaraModel):
         dataset: main_models.Dataset = None,
         request_id: str = None,
     ):
-        # Dataset information.
+        # The dataset information.
         self.dataset = dataset
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

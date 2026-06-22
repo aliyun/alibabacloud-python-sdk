@@ -25,51 +25,53 @@ class CreateStoryShrinkRequest(DaraModel):
         tags_shrink: str = None,
         user_data: str = None,
     ):
-        # The address of the story. IMM filters candidate photos to generate a story based on the value of this parameter. This parameter takes effect only if you set StoryType to TravelMemory.
+        # The address information for the story. IMM filters photos whose shooting locations match the specified address to generate the story. This parameter takes effect only when StoryType is set to TravelMemory.
         # 
-        # >  If the caller of the operation is located in Hong Kong (China), Macao (China), Taiwan (China), or another region outside the Chinese mainland, the system cannot convert the GPS information in the Chinese mainland into the textual address version.
+        # > Due to regulatory requirements, parsing GPS information into addresses is not supported in Hong Kong (China), Macao (China), Taiwan (China), or regions outside of mainland China.
         self.address_shrink = address_shrink
-        # The custom ID. A custom ID of a generated story may differ from the value of ObjectID and can be utilized for subsequent retrieval and sorting of stories.
+        # A custom identifier for the story. This ID can be different from ObjectId. You can use this ID to retrieve or sort stories.
         self.custom_id = custom_id
-        # The custom labels. Labels specify the custom information of the story. This enables retrieval based on your business requirements.
+        # The custom labels. These labels contain custom information about the story and can be used for retrieval.
         self.custom_labels_shrink = custom_labels_shrink
-        # The name of the dataset. For information about how to obtain the name of a dataset, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
+        # The name of the dataset. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The maximum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than the value of MinFileCount. To provide the desired effect, the algorithm limits the maximum number of photo files to 1,500. If you set MaxFileCount to a value greater than 1,500, this parameter does not take effect.
+        # The maximum number of photos in the generated story. The actual number of photos is between the values of MinFileCount and MaxFileCount. The value must be an integer greater than the value of MinFileCount. To ensure the quality of the generated story, the internal algorithm limits the maximum number of photos to 1,500. If you set MaxFileCount to a value greater than 1,500, the setting does not take effect.
         self.max_file_count = max_file_count
-        # The minimum number of photo files in the story. The actual number of photo files ranges from the value of MinFileCount to the value of MaxFileCount. The value of this parameter must be an integer greater than 1. If the actual number of candidate photos is less than the value of this parameter, a null story is returned.
+        # The minimum number of photos in the generated story. The actual number of photos is between the values of MinFileCount and MaxFileCount. The value must be an integer greater than 1. If the number of available candidate photos is less than this value, an empty story is returned.
         self.min_file_count = min_file_count
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification configuration. For more information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification_shrink = notification_shrink
-        # The topic name of the asynchronous reverse notification.
+        # The name of the topic for asynchronous notifications.
         self.notify_topic_name = notify_topic_name
-        # The ID of the story. This parameter is optional. If you leave this parameter empty, IMM assigns a unique identifier to the story. You can query and update a story based on its ID. You can also manually create an ID for a story. After you create an ID for a story, you must specify this parameter to pass the ID into the system. This way, IMM can record the ID as the unique identifier of the story. If you pass an existing ID into the system, IMM updates the story that corresponds to the ID.
+        # The ID for the story object. This parameter is optional. If you do not specify an ID, IMM generates one. You can use the story ID to query or update the story. If you specify an ID that already exists, the corresponding story is updated.
         self.object_id = object_id
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The name of the project. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The end time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
+        # The end time of the photo collection for the story. This parameter and StoryStartTime define a time range. IMM filters candidate photos within this time range to generate the story. The value must be a string in the RFC 3339 format.
         self.story_end_time = story_end_time
         # The name of the story.
         self.story_name = story_name
-        # The start time of the photo collection for which you want to create the story. StoryStartTime and StoryEndTime form a time interval based on which IMM filters candidate photos to generate a story. The value must be a string in the RFC3339 format.
+        # The start time of the photo collection for the story. This parameter and StoryEndTime define a time range. IMM filters candidate photos within this time range to generate the story. The value must be a string in the RFC 3339 format.
         self.story_start_time = story_start_time
-        # The subtype of the story. For information about valid subtypes, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # The subtype of the story to generate. For more information about story subtypes and their valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         self.story_sub_type = story_sub_type
-        # The type of the story. For information about valid types, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
+        # The type of the story to generate. For more information about story types and their valid values, see [Story types and subtypes](https://help.aliyun.com/document_detail/2743998.html).
         # 
         # This parameter is required.
         self.story_type = story_type
-        # The tags. You can specify this parameter in one of the following scenarios:
+        # This parameter provides a tagging mechanism that can be used in the following scenarios:
         # 
-        # *   Specify tags as custom data, which is returned in messages provided by Simple Message Queue.
-        # *   Search for tasks by tag.
-        # *   Specify tags as variables in destination URIs.
+        # - Set custom data that is returned in MNS messages.
+        # 
+        # - Use as a search condition to search for tasks.
+        # 
+        # - Use as a variable in TargetURI.
         self.tags_shrink = tags_shrink
-        # The custom information, which is returned as asynchronous notifications to facilitate notification management in your system. The maximum information length is 2,048 bytes.
+        # The custom information that is returned in an asynchronous notification message. You can use this information to associate the notification message with your services. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):

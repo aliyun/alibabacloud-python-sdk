@@ -11,6 +11,7 @@ class Project(DaraModel):
     def __init__(
         self,
         create_time: str = None,
+        dataset_config: main_models.DatasetConfig = None,
         dataset_count: int = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
@@ -29,53 +30,57 @@ class Project(DaraModel):
         total_file_size: int = None,
         update_time: str = None,
     ):
-        # The timestamp when the project was created. The timestamp is in the RFC3339Nano format.
+        # The timestamp when the project was created, in RFC3339Nano format.
         self.create_time = create_time
+        self.dataset_config = dataset_config
         # The current number of datasets in the project.
         self.dataset_count = dataset_count
-        # The maximum number of bindings that a dataset can have. Valid values: 1 to 10. Default value: 10.
+        # The maximum number of bindings per dataset. Valid values: 1 to 10. Default value: 10.
         self.dataset_max_bind_count = dataset_max_bind_count
-        # The maximum number of metadata entities in a dataset. Default value: 10000000000.
+        # The maximum number of metadata entities per dataset. Default value: 10000000000.
         # 
-        # >  This parameter is reserved and does not actually apply a limit.
+        # > This field is reserved for future use and is not enforced.
         self.dataset_max_entity_count = dataset_max_entity_count
-        # The maximum number of files in a dataset. Valid values: 1 to 100000000. Default value: 100000000.
+        # The maximum number of files per dataset. Valid values: 1 to 100000000. Default value: 100000000.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships in a dataset. Default value: 100000000000.
+        # The maximum number of metadata relationships per dataset. Default value: 100000000000.
         # 
-        # >  This parameter is reserved and does not actually apply a limit.
+        # > This field is reserved for future use and is not enforced.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total file size for a dataset. If the total file size exceeds this limit, indexes can no longer be added. Default value: 90000000000000000. Unit: bytes.
+        # The maximum total file size per dataset, in bytes. After this limit is exceeded, no more indexes can be added. Default value: 90000000000000000.
         self.dataset_max_total_file_size = dataset_max_total_file_size
         # The project description.
         self.description = description
-        # The maximum number of tasks that the project can process per second. This corresponds to the maximum number of operators that can run in parallel in the project. Default value: 100.
+        # The maximum number of tasks that the project can process per second. This specifies the maximum number of operators that can run in parallel at the same time across the project. Default value: 100.
         # 
-        # *   If the number of synchronous tasks that run in parallel exceeds this limit, the task execution time will be extended until a timeout occurs.
-        # *   If the number of asynchronous tasks that run in parallel exceeds this limit, the tasks will be queued. This causes delayed task completion. If a task remains in the queue for longer than the specified time limit (usually dozens of seconds), the task will fail.
+        # - Synchronous tasks: if the number of concurrent tasks exceeds this limit, task execution time increases until a timeout occurs.
+        # 
+        # - Asynchronous tasks: if the number of concurrent tasks exceeds this limit, tasks are queued for a period of time, which delays task completion. If the queuing time also exceeds the limit (typically tens of minutes), the task returns a failure.
         self.engine_concurrency = engine_concurrency
         # The current number of files in the project.
         self.file_count = file_count
-        # The maximum number of datasets that a project can contain. Valid values: 1 to 1000000000. Default value: 1000000000.
+        # The maximum number of datasets in the project. Valid values: 1 to 1000000000. Default value: 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
-        # The name of the project.
+        # The project name.
         self.project_name = project_name
-        # The maximum number of requests that can be processed by the project per second. This corresponds to the maximum number of API operations that can be called in the project per second. Default value: 100.
+        # The maximum number of requests that the project can process per second. This specifies the maximum number of API calls allowed per second for all APIs in the project. Default value: 100.
         self.project_queries_per_second = project_queries_per_second
         # The service role.
         self.service_role = service_role
-        # The tag list.
+        # The list of tags.
         self.tags = tags
-        # The ID of the workflow template.
+        # The workflow template ID.
         self.template_id = template_id
-        # The current total size of files in the project. Unit: bytes.
+        # The current total file size in the project, in bytes.
         self.total_file_size = total_file_size
-        # The timestamp when the project was last modified. The timestamp is in the RFC3339Nano format.
+        # The timestamp when the project was last modified, in RFC3339Nano format.
         # 
-        # >  If a project is not modified after it is created, the timestamp when the project was created is the same as the timestamp when the project was last modified.
+        # > If the project has not been updated since creation, this timestamp is the same as the creation timestamp.
         self.update_time = update_time
 
     def validate(self):
+        if self.dataset_config:
+            self.dataset_config.validate()
         if self.tags:
             for v1 in self.tags:
                  if v1:
@@ -88,6 +93,9 @@ class Project(DaraModel):
             result = _map
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.dataset_config is not None:
+            result['DatasetConfig'] = self.dataset_config.to_map()
 
         if self.dataset_count is not None:
             result['DatasetCount'] = self.dataset_count
@@ -148,6 +156,10 @@ class Project(DaraModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('DatasetConfig') is not None:
+            temp_model = main_models.DatasetConfig()
+            self.dataset_config = temp_model.from_map(m.get('DatasetConfig'))
 
         if m.get('DatasetCount') is not None:
             self.dataset_count = m.get('DatasetCount')
@@ -211,9 +223,9 @@ class ProjectTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # 标签键。
         self.tag_key = tag_key
-        # The tag value.
+        # 标签值。
         self.tag_value = tag_value
 
     def validate(self):

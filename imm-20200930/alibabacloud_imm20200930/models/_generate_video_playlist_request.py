@@ -23,60 +23,63 @@ class GenerateVideoPlaylistRequest(DaraModel):
         targets: List[main_models.GenerateVideoPlaylistRequestTargets] = None,
         user_data: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**
+        # **If you do not have special requirements, leave this parameter empty.**
         # 
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The chained authorization configuration. This parameter is not required. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # The OSS path of the master playlist.
+        # The OSS URI of the Master Playlist.
         # 
-        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that is suffixed with .m3u8.
+        # The OSS URI must be in the format of oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket that is in the same region as the current project. ${Object} is the full path of the file with the .m3u8 file name extension.
         # 
-        # >  If a playlist contains subtitles or multiple outputs, the MasterURI parameter is required and the URI of subtitle files or outputs must be in the directory specified by the MasterURI parameter or its subdirectory.
+        # > If the playlist has subtitle inputs or multiple target outputs, MasterURI is required. The subtitle URI or target URI must be in the same directory as or a subdirectory of the directory specified by MasterURI.
         self.master_uri = master_uri
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The message notification configuration. For more information, click Notification. For more information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The overwrite policy when the media playlist exists. Valid values:
+        # The policy to overwrite an existing Media Playlist. Valid values:
         # 
-        # *   overwrite (default): overwrites an existing media playlist.
-        # *   skip-existing: skips generation and retains the existing media playlist.
+        # - overwrite (default): Overwrites the existing Media Playlist.
+        # 
+        # - skip-existing: Skips the generation and retains the existing Media Playlist.
         self.overwrite_policy = overwrite_policy
-        # The project name.[](~~478153~~)
+        # The project name. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The period of time during which the playlist is generated. Unit: seconds.
+        # The duration for which the playlist is generated. Unit: seconds (s). Valid values:
         # 
-        # *   If you set this parameter to 0 (default) or leave this parameter empty, a playlist is generated until the end time of the source video.
-        # *   If you set this parameter to a value greater than 0, a playlist is generated for the specified period of time from the start time that you specify.
+        # - 0 (default) or empty: continues to the end of the source video.
         # 
-        # >  If you set this parameter to a value that exceeds the end time of a source video, use the default value.
+        # - Greater than 0: lasts for the specified duration from the start time.
+        # 
+        # > If the specified duration extends beyond the end of the source video, the default value is used.
         self.source_duration = source_duration
-        # The time when the playlist starts to generate. Unit: seconds.
+        # The start time for generating the playlist. Unit: seconds (s). Valid values:
         # 
-        # *   If you set this parameter to 0 (default) or leave this parameter empty, the start time of the source video is used as the time when a playlist starts to generate.
-        # *   If you set this parameter to a value greater than 0, the time when a playlist starts to generate is the specified point in time.
+        # - 0 (default) or empty: starts from the beginning of the source video.
         # 
-        # >  If you use this parameter together with the **SourceDuration** parameter, a playlist can be generated based on the partial content of a source video.
+        # - Greater than 0: starts from the specified time point in the source video.
+        # 
+        # > You can set this parameter together with the **SourceDuration** parameter to generate a playlist for a specific part of the source video.
         self.source_start_time = source_start_time
-        # The subtitle files. By default, this parameter is left empty. Up to two subtitle files are supported.
+        # The list of subtitles to add. The default value is empty. You can add up to two subtitles.
         self.source_subtitles = source_subtitles
-        # The OSS path of the video file.
+        # The OSS URI of the video.
         # 
-        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+        # The OSS URI must be in the format of oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket that is in the same region as the current project. ${Object} is the full path of the file, including the file name extension.
         # 
-        # >  Only OSS buckets of the Standard storage class are supported. OSS buckets for which hotlink protection whitelists are configured are not supported.
+        # > Only OSS Standard storage buckets are supported. Buckets with hotlink protection whitelists are not supported.
         # 
         # This parameter is required.
         self.source_uri = source_uri
-        # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
+        # Adds OSS object [tags](https://help.aliyun.com/document_detail/106678.html) to the generated TS files. You can use tags to control the lifecycle of OSS files.
         self.tags = tags
-        # The array of live transcoding playlists. The maximum length of the array is 6. Each element corresponds to at most one video media playlist and one or more subtitle media playlists.
+        # An array of live transcoding playlists. The maximum array length is 6. Each target corresponds to a maximum of one video Media Playlist and one or more subtitle Media Playlists.
         # 
-        # >  If the array contains more than one element, the **MasterURI** parameter cannot be left empty.
+        # > If you configure more than one target, the **MasterURI** parameter must not be empty.
         # 
         # This parameter is required.
         self.targets = targets
-        # The custom user information, which is returned in asynchronous notifications to help you handle the notifications in the system. The maximum length of a notification is 2048 bytes.
+        # The custom information. This information is returned in the asynchronous notification message to help you associate the message with your services. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -201,45 +204,47 @@ class GenerateVideoPlaylistRequestTargets(DaraModel):
         uri: str = None,
         video: main_models.TargetVideo = None,
     ):
-        # The audio processing configuration. If you set this parameter to null (default), audio processing is disabled. The generated TS files do not contain audio streams.
+        # The parameter settings for audio processing. An empty value (default) disables audio processing. The output TS file will not contain an audio stream.
         # 
-        # >  The Audio and Subtitle parameters in the same element are mutually exclusive. If the Audio parameter is configured, the Subtitle parameter is ignored. The Audio and Video parameters can be configured at the same time. You can also configure only the Audio parameter to generate only audio.
+        # > The Audio and Subtitle fields within the same target are mutually exclusive. If the Audio field is set, the Subtitle field is ignored. You can set both Audio and Video. Audio specifies the audio information in the output video. You can also set only Audio to generate only audio information.
         self.audio = audio
-        # The playback duration of a single TS file. Unit: seconds. Default value: 10. Valid values: 5 to 15.
+        # The playback duration of a single TS file. Unit: seconds (s). Default value: 10. Value range: [5, 15].
         self.duration = duration
-        # The array of the durations of the pre-transcoded TS files. The maximum length of the array is 6. By default, this parameter is left empty. This parameter is independent of the **Duration** parameter.
+        # An array of durations for the initial transcoded TS files. The maximum array length is 6. The default value is empty. This parameter is independent of the **Duration** parameter.
         self.initial_segments = initial_segments
-        # The pre-transcoding duration. Unit: seconds. Default value: 30.
+        # The initial transcoding duration. Unit: seconds (s). Default value: 30.
         # 
-        # *   If you set this parameter to 0, pre-transcoding is disabled.
-        # *   If you set this parameter to a value that is less than 0 or greater than the duration of a source video, the entire video is pre-transcoded.
-        # *   If you set this parameter to a value that is within the middle of the playback duration of a TS file, the transcoding continues until the end of the playback duration.
+        # - If you set this parameter to 0, pre-transcoding is not performed.
         # 
-        # >  This parameter reduces the time required to start the first playback, which enhances the viewing experience. If you want to use live transcoding in traditional video-on-demand scenarios, you can pre-transcode entire videos.
+        # - If you set this parameter to a value less than 0 or a value that exceeds the source video length, the entire video is initially transcoded.
+        # 
+        # - If the specified duration ends in the middle of a TS file, transcoding continues to the end of that TS file.
+        # 
+        # > This parameter is mainly used to reduce the waiting time for the first playback and improve the user experience. To replace a traditional VOD scenario, you can try initially transcoding the entire video.
         self.initial_transcode = initial_transcode
-        # The subtitle processing configuration.
+        # The parameter settings for subtitle processing.
         # 
-        # >  The Subtitle and Video or Audio parameters in the same element are mutually exclusive. You must configure the Subtitle parameter independently to generate subtitles.
+        # > The Subtitle field is mutually exclusive with the Video and Audio fields within the same target. Subtitles can be generated only when the Subtitle field is set independently.
         self.subtitle = subtitle
-        # The [tags](https://help.aliyun.com/document_detail/106678.html) that you want to add to a TS file in OSS. You can use tags to manage the lifecycles of TS files in OSS.
+        # Adds OSS object [tags](https://help.aliyun.com/document_detail/106678.html) to the generated TS files. You can use OSS tags to control the lifecycle of OSS files.
         # 
-        # >  The combination of the value of the Tags parameter and the value of the Tags parameter in the upper level is used as the tag value of the current output. If the value of the Tags parameter in the current level is the same as the value of the Tags parameter in the upper level, the value of the Tags parameter in the current level is used.
+        # > The tags for the current target are the union of the tags defined at this level and the tags defined at the parent level. If a tag has the same name, the value at the current level is used.
         self.tags = tags
-        # The number of TS files that are pre-transcoded when the live transcoding is triggered. By default, a 2-minute video is pre-transcoded.
+        # The number of TS files to transcode ahead when live transcoding is triggered. By default, 2 minutes of video is transcoded ahead.
         # 
-        # *   Example: If you set the **Duration** parameter to 10, the value of the **TranscodeAhead** parameter is 12 by default. You can configure this parameter to manage the number of pre-transcoded files. Valid values: 10 to 30.
+        # - Example: If **Duration** is 10, the default value of **TranscodeAhead** is 12. You can specify this parameter to control the number of asynchronous forward transcodes. The value must be in the range of [10, 30].
         self.transcode_ahead = transcode_ahead
-        # The prefix of the OSS path that is used to store the live transcoding files. The live transcoding files include a M3U8 file and multiple TS files.
+        # The OSS URI prefix for the output files of live transcoding. The output files include M3U8 files and TS files.
         # 
-        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the prefix of the full path that does not contain the file name extension.
+        # The OSS URI must be in the format of oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket that is in the same region as the current project. ${Object} is the prefix of the full path of the file, without the file name extension.
         # 
-        # *   Example: If the URI is oss://test-bucket/test-object/output-video, the output-video.m3u8 file and multiple output-video-${token}-${index}.ts files are generated in the oss://test-bucket/test-object/ directory. ${token} is a unique string generated based on the transcoding parameters. The ${token} parameter is included in the response of the operation. ${index} is the serial number of the generated TS files that are numbered starting from 0.
+        # - Example: If URI is oss\\://test-bucket/test-object/output-video, one oss\\://test-bucket/test-object/output-video.m3u8 file and multiple oss\\://test-bucket/test-object/output-video-${token}-${index}.ts files are generated. ${token} is a unique string generated based on the transcoding parameters and is included in the API response. ${index} is the sequence number of the generated TS file, starting from 0.
         # 
-        # >  If the **MasterURI** parameter is not left empty, the path specified by this parameter must be in the directory specified by the **MasterURI** parameter or its subdirectory.
+        # > If the **MasterURI** parameter is not empty, the URI must be in the same directory as or a subdirectory of the directory specified by **MasterURI**.
         self.uri = uri
-        # The video processing configuration. If you set this parameter to null (default), video processing is disabled. The generated TS files do not contain video streams.
+        # The parameter settings for video processing. An empty value (default) disables video processing. The output TS file will not contain a video stream.
         # 
-        # >  The Video and Subtitle parameters in the same element are mutually exclusive. If the Video parameter is configured, the Subtitle parameter is ignored.
+        # > The Video and Subtitle fields within the same target are mutually exclusive. If the Video field is set, the Subtitle field is ignored.
         self.video = video
 
     def validate(self):
@@ -324,13 +329,13 @@ class GenerateVideoPlaylistRequestSourceSubtitles(DaraModel):
         language: str = None,
         uri: str = None,
     ):
-        # The subtitle language. If you configure this parameter, the value must comply with the ISO 639-2 standard. By default, this parameter is left empty.
+        # The language of the subtitle. The value must comply with the ISO 639-2 standard. The default value is empty.
         self.language = language
-        # The OSS path of the subtitle file.
+        # The OSS URI of the subtitle file to embed.
         # 
-        # The OSS path must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file.
+        # The OSS URI must be in the format of oss\\://${Bucket}/${Object}. ${Bucket} is the name of the OSS bucket that is in the same region as the current project. ${Object} is the full path of the file.
         # 
-        # >  The **MasterURI** parameter cannot be left empty, and the OSS path `oss://${Bucket}/${Object}` of a subtitle file must be in the directory specified by the **MasterURI** parameter or its subdirectory.
+        # > The **MasterURI** parameter must not be empty. The OSS URI of the subtitle file to embed, `oss://${Bucket}/${Object}`, must be in the same directory as or a subdirectory of the directory specified by **MasterURI**.
         # 
         # This parameter is required.
         self.uri = uri

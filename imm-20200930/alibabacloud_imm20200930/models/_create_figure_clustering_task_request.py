@@ -16,19 +16,19 @@ class CreateFigureClusteringTaskRequest(DaraModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
-        # The name of the dataset.[](~~478160~~)
+        # The dataset name. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification configuration. For more information, see Notification. For more information about the message format, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The name of the project.[](~~478153~~)
+        # The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
+        # Custom tags that you can use to search for and filter asynchronous tasks.
         self.tags = tags
-        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+        # Custom user data that is returned in the asynchronous notification message. You can use this data to associate the notification message with your services. The maximum length is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):

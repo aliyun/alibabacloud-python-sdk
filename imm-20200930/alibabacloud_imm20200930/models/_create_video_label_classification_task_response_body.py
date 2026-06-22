@@ -11,11 +11,11 @@ class CreateVideoLabelClassificationTaskResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The event ID of the current task. You can use [EventBridge](https://www.alibabacloud.com/en/product/eventbridge) to query the ID and obtain the task information notification.
+        # The event ID of the task. You can use this ID to query task information notifications in the [EventBridge](https://www.aliyun.com/product/aliware/eventbridge) service.
         self.event_id = event_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the current task. You can call the [GetTask](~~GetTask~~) operation to view the task information or the [GetVideoLabelClassificationResult](https://help.aliyun.com/document_detail/478224.html) operation to obtain the result of the video label detection task.
+        # The ID of the task. You can use the [GetTask](https://help.aliyun.com/document_detail/478241.html) operation to view task information or the [GetVideoLabelClassificationResult](https://help.aliyun.com/document_detail/478224.html) operation to obtain the results of the video label detection task.
         self.task_id = task_id
 
     def validate(self):

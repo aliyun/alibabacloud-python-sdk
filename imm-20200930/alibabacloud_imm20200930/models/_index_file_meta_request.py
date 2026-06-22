@@ -14,21 +14,21 @@ class IndexFileMetaRequest(DaraModel):
         project_name: str = None,
         user_data: str = None,
     ):
-        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # The name of the dataset. To get the dataset name, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The file for which you want to create a metadata index. The value must be in the JSON format.
+        # The file to be indexed, in JSON format. For more information, see the struct definition.
         # 
         # This parameter is required.
         self.file = file
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The message notification configuration. For more information, see Notification. For the format of the asynchronous notification message, see the Metadata Indexing section in [Asynchronous notification message formats](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The name of the project. To get the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The custom user information, which is returned in an asynchronous notification. The maximum length of a notification is 2048 bytes.
+        # Custom information that is returned in the asynchronous notification message. This helps you associate the notification with your services. The maximum length is 2048 bytes.
         self.user_data = user_data
 
     def validate(self):

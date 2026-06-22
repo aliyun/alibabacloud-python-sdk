@@ -27,38 +27,39 @@ class Dataset(DaraModel):
         update_time: str = None,
         workflow_parameters: List[main_models.WorkflowParameter] = None,
     ):
-        # The current number of OSS buckets that are bound to the dataset.
+        # Number of OSS buckets currently attached to the dataset.
         self.bind_count = bind_count
-        # The timestamp when the dataset was created. The timestamp must be in the RFC3339Nano format.
+        # Timestamp of dataset creation in RFC3339Nano format.
         self.create_time = create_time
+        # Dataset configuration.
         self.dataset_config = dataset_config
-        # The maximum number of bindings for the dataset.
+        # Maximum number of bindings per dataset.
         self.dataset_max_bind_count = dataset_max_bind_count
-        # The maximum number of metadata entities for the dataset.
+        # Maximum number of metadata entities in the dataset.
         self.dataset_max_entity_count = dataset_max_entity_count
-        # The maximum number of files for the dataset.
+        # Maximum number of files in the dataset.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships for the dataset.
+        # Maximum number of metadata relations in the dataset.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total size of files in the dataset. Unit: bytes.
+        # Maximum total file size in the dataset, in bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The name of the dataset.
+        # Dataset name.
         self.dataset_name = dataset_name
-        # The dataset description.
+        # Dataset description.
         self.description = description
-        # The current number of files in the dataset.
+        # Current number of files in the dataset.
         self.file_count = file_count
-        # The name of the project.
+        # Project name.
         self.project_name = project_name
-        # The ID of the workflow template.
+        # Workflow template ID.
         self.template_id = template_id
-        # The total size of files in the dataset. Unit: bytes.
+        # Total file size in the dataset, in bytes.
         self.total_file_size = total_file_size
-        # The timestamp when the dataset was last modified. The timestamp must be in the RFC3339Nano format.
+        # Timestamp of the last dataset update in RFC3339Nano format.
         # 
-        # >  If a dataset has never been modified after it was created, the timestamp when the dataset was last modified is the same as the timestamp when the dataset was created.
+        # > If the dataset has never been updated since creation, the update timestamp equals the creation timestamp.
         self.update_time = update_time
-        # 自定义参数
+        # Custom parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):

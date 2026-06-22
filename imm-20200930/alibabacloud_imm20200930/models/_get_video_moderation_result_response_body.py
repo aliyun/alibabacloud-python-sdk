@@ -23,33 +23,33 @@ class GetVideoModerationResultResponseBody(DaraModel):
         task_type: str = None,
         user_data: str = None,
     ):
-        # The error code of the task.
+        # The task error code.
         self.code = code
-        # The end time of the task.
+        # The time when the task ended. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.end_time = end_time
         # The event ID.
         self.event_id = event_id
-        # The error message of the task.
+        # The task error message.
         self.message = message
-        # The result of the image compliance detection task.
+        # The content moderation details.
         self.moderation_result = moderation_result
         # The project name.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id
-        # The start time of the task.
+        # The time when the task started. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.start_time = start_time
         # The task status. Valid values:
         # 
-        # *   Running: The task is running.
-        # *   Succeeded: The task is successful.
-        # *   Failed: The task failed.
+        # - Running: The task is running.
+        # - Succeeded: The task succeeded.
+        # - Failed: The task failed.
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
-        # The user-defined data.
+        # The custom user data.
         self.user_data = user_data
 
     def validate(self):
@@ -150,15 +150,15 @@ class GetVideoModerationResultResponseBodyModerationResult(DaraModel):
     ):
         # The category list.
         self.categories = categories
-        # The information about video and motion detection frames.
+        # The frame-related information for video and animated image moderation.
         self.frames = frames
-        # The recommended operation. Valid values:
+        # The moderation result suggestion. Valid values:
         # 
-        # *   pass: The image has passed the check. No action is required.
-        # *   review: The image contains suspected violations and requires human review.
-        # *   block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
+        # - **block**: Violation detected.
+        # - **review**: Suspected violation.
+        # - **pass**: Passed.
         self.suggestion = suggestion
-        # The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
+        # The file URI. The storage address of the OSS file. The address follows the format `oss://${bucketname}/${objectname}`, where `bucketname` is the name of an OSS bucket in the same region as the current project, and `objectname` is the file path.
         self.uri = uri
 
     def validate(self):
@@ -207,9 +207,9 @@ class GetVideoModerationResultResponseBodyModerationResultFrames(DaraModel):
         block_frames: List[main_models.GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames] = None,
         total_count: int = None,
     ):
-        # The information about violated frames.
+        # The frames that contain violations.
         self.block_frames = block_frames
-        # The total number of detected frames.
+        # The total number of frames inspected.
         self.total_count = total_count
 
     def validate(self):
@@ -253,11 +253,11 @@ class GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames(Dara
         offset: int = None,
         rate: float = None,
     ):
-        # The label of the violation.
+        # The violation label.
         self.label = label
         # The offset of the frame.
         self.offset = offset
-        # The confidence level of the violation.
+        # The confidence score of the violation.
         self.rate = rate
 
     def validate(self):

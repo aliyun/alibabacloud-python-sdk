@@ -15,10 +15,10 @@ class SmartClusterRule(DaraModel):
         sensitivity: float = None,
     ):
         self.base_uris = base_uris
-        # Keywords
+        # An array of keywords for clustering.
         self.keywords = keywords
         self.rule_type = rule_type
-        # Sensitivity
+        # The sensitivity for clustering, ranging from 0.0 to 1.0.
         self.sensitivity = sensitivity
 
     def validate(self):

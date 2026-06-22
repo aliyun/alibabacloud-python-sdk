@@ -13,15 +13,15 @@ class GetOSSBucketAttachmentResponseBody(DaraModel):
         request_id: str = None,
         update_time: str = None,
     ):
-        # The time when the dataset was created.
+        # The time when the dataset was created. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.create_time = create_time
-        # The description of the dataset.
+        # The dataset description.
         self.description = description
-        # The name of the project.
+        # The name of the bound project.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id
-        # The time when the dataset was last updated.
+        # The time when the dataset was last updated. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.update_time = update_time
 
     def validate(self):

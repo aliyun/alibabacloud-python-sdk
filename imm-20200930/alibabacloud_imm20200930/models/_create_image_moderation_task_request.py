@@ -20,29 +20,29 @@ class CreateImageModerationTaskRequest(DaraModel):
         tags: Dict[str, Any] = None,
         user_data: str = None,
     ):
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The chained authorization configuration. This parameter is optional. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # The time interval between two consecutive frames in a GIF or long image. Default value: 1.
+        # The frame capture frequency. This parameter is used for GIF and long image detection. The default value is 1.
         self.interval = interval
-        # The maximum number of frames that can be captured in a GIF or long image. Default value: 1.
+        # The maximum number of frames to capture. This parameter is used for GIF and long image detection. The default value is 1.
         self.max_frames = max_frames
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification configuration. For more information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The project name. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The scenarios in which you want to apply the image moderation task.
+        # The image detection scenarios.
         self.scenes = scenes
-        # The URI of the Object Storage Service (OSS) bucket in which you store the image.
+        # The OSS URI of the image.
         # 
-        # Specify the value in the `oss://<Bucket>/<Object>` format. `<Bucket>` specifies the name of the OSS bucket that resides in the same region as the current project. `<Object>` specifies the complete path to the image file that has an extension.
+        # The URI must follow the `oss://<Bucket>/<Object>` format. `<Bucket>` is the name of the OSS bucket that is in the same region as the project. `<Object>` is the full path of the file, including the file name extension.
         # 
         # This parameter is required.
         self.source_uri = source_uri
-        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
+        # The custom tags. You can use tags to search for and filter asynchronous tasks.
         self.tags = tags
-        # The user data, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the user data is 2,048 bytes.
+        # The custom information. This information is returned in the asynchronous notification message to help you associate the message with your system. The value can be up to 2,048 bytes long.
         self.user_data = user_data
 
     def validate(self):

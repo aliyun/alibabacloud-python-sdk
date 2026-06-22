@@ -18,19 +18,19 @@ class GenerateVideoPlaylistResponseBody(DaraModel):
         token: str = None,
         video_playlist: List[main_models.GenerateVideoPlaylistResponseBodyVideoPlaylist] = None,
     ):
-        # The audio media playlist files.
+        # The list of audio Media Playlist files.
         self.audio_playlist = audio_playlist
-        # The total duration of the generated video.
+        # The total duration of the output video.
         self.duration = duration
-        # The OSS path of the master playlist.
+        # The OSS URI of the Master Playlist.
         self.master_uri = master_uri
         # The request ID.
         self.request_id = request_id
-        # The subtitle media playlist files.
+        # The list of subtitle Media Playlist files.
         self.subtitle_playlist = subtitle_playlist
-        # The token of the master playlist.
+        # The token of the Master Playlist.
         self.token = token
-        # The video media playlist files.
+        # The list of video Media Playlist files.
         self.video_playlist = video_playlist
 
     def validate(self):
@@ -127,11 +127,11 @@ class GenerateVideoPlaylistResponseBodyVideoPlaylist(DaraModel):
         self.frame_rate = frame_rate
         # The video resolution.
         self.resolution = resolution
-        # The token of the video media playlist. You can use this parameter to generate the path of a TS file.
+        # The token generated for the video Media Playlist. You can use this parameter to construct the URI of the generated TS file.
         # 
-        # >  You can generate the path of a transcoded TS file based on the value of this parameter. The path must be in the oss://${Bucket}/${Object}-${Token}-${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token, and ${Index} specifies the serial number of a TS file.
+        # > You can use the returned token value to construct the URI of the transcoded TS file. The format is oss\\://${Bucket}/${Object}-${Token}-${Index}.ts. oss\\://${Bucket}/${Object} is the target URI specified in the request parameters. ${Token} is the returned parameter. ${Index} is the sequence number of the TS file.
         self.token = token
-        # The OSS path of the video media playlist.
+        # The OSS URI of the video Media Playlist.
         self.uri = uri
 
     def validate(self):
@@ -180,17 +180,17 @@ class GenerateVideoPlaylistResponseBodySubtitlePlaylist(DaraModel):
         token: str = None,
         uri: str = None,
     ):
-        # The serial number of the subtitle stream. The value starts from 0.
+        # The sequence number of the subtitle stream, starting from 0.
         self.index = index
         # The language of the subtitle stream.
         # 
-        # >  The language is derived from the subtitle stream information in the OSS path specified by the SourceURI parameter for a source video. If no language information exists in the source video, null is returned.
+        # > The language is obtained from the subtitle stream information of the source video specified by SourceURI. If the source video does not contain language information, this parameter is empty.
         self.language = language
-        # The token of the subtitle media playlist. You can use this parameter to generate the path of a subtitle file.
+        # The token generated for the subtitle Media Playlist. You can use this parameter to construct the URI of the generated subtitle file.
         # 
-        # >  You can generate the path of a transcoded subtitle file based on the returned token value. The path must be in the oss://${Bucket}/${Object}-${Token}_${Index}.ts format. oss://${Bucket}/${Object} specifies the URI specified by input parameters for output files. ${Token} specifies the returned token value, and ${Index} specifies the serial number of a subtitle file.
+        # > You can use the returned token value to construct the URI of the transcoded subtitle file. The format is oss\\://${Bucket}/${Object}-${Token}_${Index}.ts. oss\\://${Bucket}/${Object} is the subtitle URI specified in the request parameters. ${Token} is the returned parameter. ${Index} is the sequence number of the subtitle.
         self.token = token
-        # The OSS path of the subtitle media playlist.
+        # The OSS URI of the subtitle Media Playlist.
         self.uri = uri
 
     def validate(self):
@@ -240,9 +240,9 @@ class GenerateVideoPlaylistResponseBodyAudioPlaylist(DaraModel):
     ):
         # The number of audio channels.
         self.channels = channels
-        # The token of the audio media playlist. You can use this parameter to generate the path of a TS file.
+        # The token generated for the audio Media Playlist. You can use this parameter to construct the URI of the generated TS file.
         self.token = token
-        # The OSS path of the audio media playlist.
+        # The OSS URI of the audio Media Playlist.
         self.uri = uri
 
     def validate(self):

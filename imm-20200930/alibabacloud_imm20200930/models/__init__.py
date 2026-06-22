@@ -14,6 +14,7 @@ from ._binding import Binding
 from ._body import Body
 from ._boundary import Boundary
 from ._car import Car
+from ._chapter_summary import ChapterSummary
 from ._clip import Clip
 from ._cluster_for_req import ClusterForReq
 from ._codes import Codes
@@ -27,11 +28,18 @@ from ._data_ingestion import DataIngestion
 from ._dataset import Dataset
 from ._dataset_config import DatasetConfig
 from ._dataset_task_status import DatasetTaskStatus
+from ._document_chapter_summarize_option import DocumentChapterSummarizeOption
+from ._document_chapter_summary import DocumentChapterSummary
 from ._document_parse_keyword_option import DocumentParseKeywordOption
 from ._document_parse_narrator_option import DocumentParseNarratorOption
 from ._document_parse_option import DocumentParseOption
 from ._document_parse_question_option import DocumentParseQuestionOption
 from ._document_parse_summary_option import DocumentParseSummaryOption
+from ._document_read_keyword_option import DocumentReadKeywordOption
+from ._document_read_narrator_option import DocumentReadNarratorOption
+from ._document_read_option import DocumentReadOption
+from ._document_read_question_option import DocumentReadQuestionOption
+from ._document_read_summary_option import DocumentReadSummaryOption
 from ._element import Element
 from ._element_content import ElementContent
 from ._element_relation import ElementRelation
@@ -43,10 +51,17 @@ from ._figure_cluster_for_req import FigureClusterForReq
 from ._file import File
 from ._file_smart_cluster import FileSmartCluster
 from ._function_call import FunctionCall
+from ._get_document_analysis_option import GetDocumentAnalysisOption
+from ._get_video_analysis_option import GetVideoAnalysisOption
+from ._guiding_question import GuidingQuestion
 from ._head_pose import HeadPose
 from ._hyperparameters import Hyperparameters
+from ._illustration import Illustration
 from ._image import Image
 from ._image_insight import ImageInsight
+from ._image_insights_caption_config import ImageInsightsCaptionConfig
+from ._image_insights_config import ImageInsightsConfig
+from ._image_reverse_image_config import ImageReverseImageConfig
 from ._image_score import ImageScore
 from ._image_url import ImageURL
 from ._input import Input
@@ -54,6 +69,7 @@ from ._input_file import InputFile
 from ._input_oss import InputOSS
 from ._insights import Insights
 from ._insights_config import InsightsConfig
+from ._insights_label import InsightsLabel
 from ._kdtree_option import KdtreeOption
 from ._key_value_pair import KeyValuePair
 from ._label import Label
@@ -67,6 +83,8 @@ from ._notification import Notification
 from ._ocrcontents import OCRContents
 from ._octree_option import OctreeOption
 from ._optimization import Optimization
+from ._pptdetails import PPTDetails
+from ._paper_description import PaperDescription
 from ._person_reference_config import PersonReferenceConfig
 from ._point_int_64 import PointInt64
 from ._project import Project
@@ -74,6 +92,7 @@ from ._property import Property
 from ._reference_file import ReferenceFile
 from ._region_type import RegionType
 from ._resource import Resource
+from ._reverse_image_config import ReverseImageConfig
 from ._rocket_mq import RocketMQ
 from ._row import Row
 from ._runtime import Runtime
@@ -89,6 +108,7 @@ from ._spec import Spec
 from ._story import Story
 from ._stream_options import StreamOptions
 from ._subtitle_stream import SubtitleStream
+from ._summary import Summary
 from ._target_audio import TargetAudio
 from ._target_image import TargetImage
 from ._target_subtitle import TargetSubtitle
@@ -97,10 +117,22 @@ from ._task_info import TaskInfo
 from ._time_range import TimeRange
 from ._tool_call import ToolCall
 from ._training_specification import TrainingSpecification
+from ._transcript import Transcript
 from ._trim_policy import TrimPolicy
 from ._video_insight import VideoInsight
 from ._video_insights_caption_config import VideoInsightsCaptionConfig
 from ._video_insights_config import VideoInsightsConfig
+from ._video_insights_highlight_label_config import VideoInsightsHighlightLabelConfig
+from ._video_insights_label_config import VideoInsightsLabelConfig
+from ._video_insights_multi_stream_config import VideoInsightsMultiStreamConfig
+from ._video_insights_system_label_config import VideoInsightsSystemLabelConfig
+from ._video_insights_user_defined_label_config import VideoInsightsUserDefinedLabelConfig
+from ._video_read_keyword_option import VideoReadKeywordOption
+from ._video_read_option import VideoReadOption
+from ._video_read_pptoption import VideoReadPPTOption
+from ._video_read_question_option import VideoReadQuestionOption
+from ._video_read_summary_option import VideoReadSummaryOption
+from ._video_reverse_image_config import VideoReverseImageConfig
 from ._video_stream import VideoStream
 from ._weboffice_permission import WebofficePermission
 from ._weboffice_user import WebofficeUser
@@ -585,6 +617,7 @@ __all__ = [
     Body,
     Boundary,
     Car,
+    ChapterSummary,
     Clip,
     ClusterForReq,
     Codes,
@@ -598,11 +631,18 @@ __all__ = [
     Dataset,
     DatasetConfig,
     DatasetTaskStatus,
+    DocumentChapterSummarizeOption,
+    DocumentChapterSummary,
     DocumentParseKeywordOption,
     DocumentParseNarratorOption,
     DocumentParseOption,
     DocumentParseQuestionOption,
     DocumentParseSummaryOption,
+    DocumentReadKeywordOption,
+    DocumentReadNarratorOption,
+    DocumentReadOption,
+    DocumentReadQuestionOption,
+    DocumentReadSummaryOption,
     Element,
     ElementContent,
     ElementRelation,
@@ -614,10 +654,17 @@ __all__ = [
     File,
     FileSmartCluster,
     FunctionCall,
+    GetDocumentAnalysisOption,
+    GetVideoAnalysisOption,
+    GuidingQuestion,
     HeadPose,
     Hyperparameters,
+    Illustration,
     Image,
     ImageInsight,
+    ImageInsightsCaptionConfig,
+    ImageInsightsConfig,
+    ImageReverseImageConfig,
     ImageScore,
     ImageURL,
     Input,
@@ -625,6 +672,7 @@ __all__ = [
     InputOSS,
     Insights,
     InsightsConfig,
+    InsightsLabel,
     KdtreeOption,
     KeyValuePair,
     Label,
@@ -638,6 +686,8 @@ __all__ = [
     OCRContents,
     OctreeOption,
     Optimization,
+    PPTDetails,
+    PaperDescription,
     PersonReferenceConfig,
     PointInt64,
     Project,
@@ -645,6 +695,7 @@ __all__ = [
     ReferenceFile,
     RegionType,
     Resource,
+    ReverseImageConfig,
     RocketMQ,
     Row,
     Runtime,
@@ -660,6 +711,7 @@ __all__ = [
     Story,
     StreamOptions,
     SubtitleStream,
+    Summary,
     TargetAudio,
     TargetImage,
     TargetSubtitle,
@@ -668,10 +720,22 @@ __all__ = [
     TimeRange,
     ToolCall,
     TrainingSpecification,
+    Transcript,
     TrimPolicy,
     VideoInsight,
     VideoInsightsCaptionConfig,
     VideoInsightsConfig,
+    VideoInsightsHighlightLabelConfig,
+    VideoInsightsLabelConfig,
+    VideoInsightsMultiStreamConfig,
+    VideoInsightsSystemLabelConfig,
+    VideoInsightsUserDefinedLabelConfig,
+    VideoReadKeywordOption,
+    VideoReadOption,
+    VideoReadPPTOption,
+    VideoReadQuestionOption,
+    VideoReadSummaryOption,
+    VideoReverseImageConfig,
     VideoStream,
     WebofficePermission,
     WebofficeUser,

@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateProjectShrinkRequest(DaraModel):
     def __init__(
         self,
+        dataset_config_shrink: str = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
         dataset_max_file_count: int = None,
@@ -19,39 +20,40 @@ class CreateProjectShrinkRequest(DaraModel):
         tag_shrink: str = None,
         template_id: str = None,
     ):
+        self.dataset_config_shrink = dataset_config_shrink
         # The maximum number of bindings for each dataset. Valid values: 1 to 10. Default value: 10.
         self.dataset_max_bind_count = dataset_max_bind_count
         # The maximum number of metadata entities in each dataset. Default value: 10000000000.
-        # 
-        # >  This is a precautionary setting that does not impose practical limitations.
+        # >This parameter is reserved for future use and is not enforced.
         self.dataset_max_entity_count = dataset_max_entity_count
         # The maximum number of files in each dataset. Valid values: 1 to 100000000. Default value: 10000000000.
         self.dataset_max_file_count = dataset_max_file_count
         # The maximum number of metadata relationships in each dataset. Default value: 100000000000.
-        # 
-        # >  This is a precautionary setting that does not impose practical limitations.
+        # >This parameter is reserved for future use and is not enforced.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum size of files in each dataset. If the maximum size is exceeded, no indexes can be added. Unit: bytes. Default value: 90000000000000000.
+        # The maximum total file size in each dataset. After the limit is exceeded, no more indexes can be added. Unit: bytes. Default value: 90000000000000000.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The description of the project. The description must be 1 to 256 characters in length. You can leave this parameter empty.
+        # The project description. The description can be 1 to 256 characters in length. Default value: empty.
         self.description = description
         # The maximum number of datasets in the project. Valid values: 1 to 1000000000. Default value: 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
-        # The name of the project. The name must meet the following requirements:
+        # The project name. The naming rules are as follows:
         # 
-        # *   The name must be 1 to 128 characters in length
-        # *   and can contain only letters, digits, hyphens (-), and underscores (_).
-        # *   The name must start with a letter or an underscores (_).
+        # - The name must be 1 to 128 characters in length.
+        # 
+        # - The name can contain letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - The name must start with a letter or an underscore (_).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The name of the Resource Access Management (RAM) role. You must attach the RAM role to IMM to allow IMM to access other cloud resources, such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
+        # The service role that grants IMM permissions to access other Alibaba Cloud resources such as Object Storage Service (OSS). Default value: `AliyunIMMDefaultRole`.
         # 
-        # You can also create a custom role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/477257.html).
+        # To customize a service role, create a regular service role in the Resource Access Management (RAM) console and grant permissions to the role. For more information, see [Grant permissions to a role](https://help.aliyun.com/document_detail/477258.html).
         self.service_role = service_role
-        # The tags.
+        # The list of tags.
         self.tag_shrink = tag_shrink
-        # The ID of the workflow template. You can leave this parameter empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
+        # The workflow template ID. Default value: empty. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html).
         self.template_id = template_id
 
     def validate(self):
@@ -62,6 +64,9 @@ class CreateProjectShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dataset_config_shrink is not None:
+            result['DatasetConfig'] = self.dataset_config_shrink
+
         if self.dataset_max_bind_count is not None:
             result['DatasetMaxBindCount'] = self.dataset_max_bind_count
 
@@ -99,6 +104,9 @@ class CreateProjectShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DatasetConfig') is not None:
+            self.dataset_config_shrink = m.get('DatasetConfig')
+
         if m.get('DatasetMaxBindCount') is not None:
             self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
 

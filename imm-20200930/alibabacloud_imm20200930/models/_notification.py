@@ -12,15 +12,17 @@ class Notification(DaraModel):
         mns: main_models.MNS = None,
         rocket_mq: main_models.RocketMQ = None,
     ):
-        # The Object Storage Service (OSS) URI of the object that stores task notifications. Task information is written to the object in the JSON format. In most cases, you can receive notifications only by using [EventBridge](https://help.aliyun.com/document_detail/161886.html), [Simple Message Queue](https://help.aliyun.com/document_detail/27412.html), or [ApsaraMQ for RocketMQ](https://help.aliyun.com/document_detail/29530.html). For tasks that have a large amount of task information, such as archive file inspection tasks and decompression tasks, you can use an OSS object to store detailed task information.
+        # Use an Object Storage Service (OSS) file to receive task notifications. If you provide the URI of this file, detailed task execution information is written to the file in a JSON structure. Normally, you receive notifications through [EventBridge](https://help.aliyun.com/document_detail/161886.html), [MNS](https://help.aliyun.com/document_detail/27412.html), or [RocketMQ](https://help.aliyun.com/document_detail/29530.html). However, some tasks generate large amounts of information, such as archive previews or decompression tasks. For these tasks, provide this file to get the complete execution results.
         # 
-        # The OSS URI follows the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # The OSS URI format is oss\\://${Bucket}/${Object}. `${Bucket}` is the name of an OSS bucket in the same region as the current project. `${Object}` is the full path of the file, including the file name extension.
         # 
-        # >  The object is not a messaging method. It serves only as a container for detailed task information. Task status information is sent as a message, whereas the object stores detailed task information.
+        # >Notice: 
+        # 
+        # This file is not a notification method. It only serves as a medium to receive detailed task execution information. Task status is sent through standard message notifications. This file contains only the detailed execution information.
         self.extended_message_uri = extended_message_uri
-        # The SMQ notification settings.
+        # The MNS notification parameter object.
         self.mns = mns
-        # The ApsaraMQ for RocketMQ notification settings.
+        # The RocketMQ notification parameter object.
         self.rocket_mq = rocket_mq
 
     def validate(self):

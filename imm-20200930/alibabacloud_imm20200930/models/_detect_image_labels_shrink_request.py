@@ -22,7 +22,7 @@ class DetectImageLabelsShrinkRequest(DaraModel):
         self.project_name = project_name
         # The URI of the Object Storage Service (OSS) bucket in which you store the image.
         # 
-        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
+        # Specify the value in the oss\\://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the image file that has an extension.
         # 
         # This parameter is required.
         self.source_uri = source_uri

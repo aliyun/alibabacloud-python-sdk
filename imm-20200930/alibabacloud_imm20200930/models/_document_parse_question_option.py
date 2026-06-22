@@ -10,7 +10,9 @@ class DocumentParseQuestionOption(DaraModel):
         count: int = None,
         extract: bool = None,
     ):
+        # Number of questions (range: 0 to 10)
         self.count = count
+        # Whether to extract
         self.extract = extract
 
     def validate(self):

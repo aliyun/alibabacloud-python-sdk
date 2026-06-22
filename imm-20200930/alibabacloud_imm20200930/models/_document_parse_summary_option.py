@@ -10,7 +10,9 @@ class DocumentParseSummaryOption(DaraModel):
         chapter_summarize: bool = None,
         summarize: bool = None,
     ):
+        # Document chapter summary
         self.chapter_summarize = chapter_summarize
+        # Article summary
         self.summarize = summarize
 
     def validate(self):

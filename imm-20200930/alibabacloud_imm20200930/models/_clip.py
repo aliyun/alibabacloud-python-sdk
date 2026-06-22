@@ -11,6 +11,7 @@ class Clip(DaraModel):
         self,
         time_range: List[int] = None,
     ):
+        # The time range of the event clip
         self.time_range = time_range
 
     def validate(self):

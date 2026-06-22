@@ -13,7 +13,7 @@ class CreateDecodeBlindWatermarkTaskResponseBody(DaraModel):
     ):
         # The event ID.
         self.event_id = event_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The task ID.
         self.task_id = task_id

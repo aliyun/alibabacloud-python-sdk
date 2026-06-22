@@ -19,7 +19,7 @@ class CreateBindingRequest(DaraModel):
         self.project_name = project_name
         # The URI of the OSS bucket to which you bind the dataset.
         # 
-        # Specify the value in the oss://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
+        # Specify the value in the oss\\://${Bucket} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project.
         # 
         # This parameter is required.
         self.uri = uri

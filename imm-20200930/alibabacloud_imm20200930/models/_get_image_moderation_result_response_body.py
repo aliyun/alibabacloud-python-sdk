@@ -25,31 +25,31 @@ class GetImageModerationResultResponseBody(DaraModel):
     ):
         # The error code of the task.
         self.code = code
-        # The end time of the task.
+        # The end time of the task. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.end_time = end_time
         # The event ID.
         self.event_id = event_id
         # The error message of the task.
         self.message = message
-        # The result of the image compliance detection task.
+        # The content moderation result.
         self.moderation_result = moderation_result
-        # The name of the project.
+        # The project name.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id
-        # The start time of the task.
+        # The start time of the task. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.start_time = start_time
-        # The task status. Valid values:
+        # The running status of the task. Valid values:
         # 
-        # *   Running
-        # *   Succeeded
-        # *   Failed
+        # - Running: The task is running.
+        # - Succeeded: The task is completed successfully.
+        # - Failed: The task failed.
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
-        # The custom information.
+        # The custom user data.
         self.user_data = user_data
 
     def validate(self):
@@ -148,17 +148,19 @@ class GetImageModerationResultResponseBodyModerationResult(DaraModel):
         suggestion: str = None,
         uri: str = None,
     ):
-        # List of categories.
+        # The list of categories.
         self.categories = categories
-        # The information about video and motion detection frames.
+        # The frame information for video or animated image moderation.
         self.frames = frames
-        # The recommended operation. Valid values:
+        # The recommended action. Valid values:
         # 
-        # *   pass: The image has passed the check. No action is required.
-        # *   review: The image contains suspected violations and requires human review.
-        # *   block: The image contains violations. Further actions, such as deleting or blocking the image, are recommended.
+        # - pass: The image is normal. No further action is required.
+        # 
+        # - review: The moderation result is uncertain. Manual review is required.
+        # 
+        # - block: The image violates content policies. Further action is recommended, such as deleting or restricting the image.
         self.suggestion = suggestion
-        # The OSS URI of the file. The URI follows the oss://${bucketname}/${objectname} format. bucketname indicates the name of an OSS bucket that is in the same region as the current project, and objectname is the file path.
+        # The storage location of the OSS file. The address follows the format oss://${bucketname}/${objectname}, where bucketname is the name of an OSS bucket in the same region as the current project, and objectname is the file path.
         self.uri = uri
 
     def validate(self):
@@ -207,9 +209,9 @@ class GetImageModerationResultResponseBodyModerationResultFrames(DaraModel):
         block_frames: List[main_models.GetImageModerationResultResponseBodyModerationResultFramesBlockFrames] = None,
         total_count: int = None,
     ):
-        # The violated frames.
+        # The frames that violate content policies.
         self.block_frames = block_frames
-        # The total number of detected frames.
+        # The total number of frames that were moderated.
         self.total_count = total_count
 
     def validate(self):

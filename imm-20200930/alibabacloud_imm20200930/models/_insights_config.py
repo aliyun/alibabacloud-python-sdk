@@ -8,13 +8,18 @@ from darabonba.model import DaraModel
 class InsightsConfig(DaraModel):
     def __init__(
         self,
+        image: main_models.ImageInsightsConfig = None,
         language: str = None,
         video: main_models.VideoInsightsConfig = None,
     ):
+        self.image = image
+        # The language of the source content.
         self.language = language
         self.video = video
 
     def validate(self):
+        if self.image:
+            self.image.validate()
         if self.video:
             self.video.validate()
 
@@ -23,6 +28,9 @@ class InsightsConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.image is not None:
+            result['Image'] = self.image.to_map()
+
         if self.language is not None:
             result['Language'] = self.language
 
@@ -33,6 +41,10 @@ class InsightsConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Image') is not None:
+            temp_model = main_models.ImageInsightsConfig()
+            self.image = temp_model.from_map(m.get('Image'))
+
         if m.get('Language') is not None:
             self.language = m.get('Language')
 
