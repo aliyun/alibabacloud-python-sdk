@@ -12,25 +12,21 @@ class ListSasContainerWebDefenseRuleRequest(DaraModel):
         logical_exp: str = None,
         page_size: int = None,
     ):
-        # The search conditions for assets. The value of this parameter is in the JSON format and contains the following fields:
-        # 
-        # *   **name**: the name of the search condition.
-        # 
-        # *   **value**: the value of the search condition.
-        # 
-        # *   **logicalExp**: the logical relation for multiple search conditions. Valid values:
-        # 
-        #     *   **OR**: The search conditions use a logical **OR**.
-        #     *   **AND**: The search conditions use a logical **AND**.
+        # The conditions for searching assets. This parameter is in JSON format and contains the following fields:
+        # - **name**: The search item.
+        # - **value**: The value of the search item.
+        # - **logicalExp**: The logical relationship among multiple search item values. Valid values:
+        #     - **OR**: The search item values are evaluated by using the OR operator.
+        #     - **AND**: The search item values are evaluated by using the AND operator.
         self.criteria = criteria
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the current page in a paged query. Minimum value: 1. Default value: 1.
         self.current_page = current_page
-        # The logical relation for multiple search conditions. Valid values:
+        # The logical relationship among multiple search conditions. Valid values:
         # 
-        # *   **OR**: The search conditions use a logical **OR**.
-        # *   **AND**: The search conditions use a logical **AND**.
+        # - **OR**: The search conditions are evaluated by using the OR operator.
+        # - **AND**: The search conditions are evaluated by using the AND operator.
         self.logical_exp = logical_exp
-        # The number of entries per page. Default value: **20**.
+        # The number of entries per page in a paged query. Default value: **20**, which indicates that 20 entries are displayed per page.
         self.page_size = page_size
 
     def validate(self):

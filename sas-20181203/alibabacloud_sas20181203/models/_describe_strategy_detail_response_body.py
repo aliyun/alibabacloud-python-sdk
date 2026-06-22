@@ -13,9 +13,9 @@ class DescribeStrategyDetailResponseBody(DaraModel):
         request_id: str = None,
         strategy: main_models.DescribeStrategyDetailResponseBodyStrategy = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The information about the baseline check policy.
+        # The information about the policy.
         self.strategy = strategy
 
     def validate(self):
@@ -61,43 +61,41 @@ class DescribeStrategyDetailResponseBodyStrategy(DaraModel):
         target_type: str = None,
         type: int = None,
     ):
-        # The type of the baseline check policy that you want to query. Valid values:
+        # The type of the policy. Valid values:
         # 
-        # *   **common**: standard baseline check policy
-        # *   **custom**: custom baseline check policy
+        # - **common**: Standard policy.
+        # - **custom**: Custom policy.
         self.custom_type = custom_type
-        # The check interval of the policy.
+        # The detection cycle of the policy.
         self.cycle_days = cycle_days
-        # The time period during which the check starts. Valid values:
+        # The detection cycle of the policy. Valid values:
         # 
-        # *   **0**: 00:00 to 06:00
-        # *   **6**: 06:00 to 12:00
-        # *   **12**: 12:00 to 18:00
-        # *   **18**: 18:00 to 24:00
+        # - **0**: 00:00 to 06:00
+        # - **6**: 06:00 to 12:00
+        # - **12**: 12:00 to 18:00
+        # - **18**: 18:00 to 24:00.
         self.cycle_start_time = cycle_start_time
-        # The end time of the check. Specify the time in the HH:mm:ss format.
+        # The end time of the baseline check policy execution.
         self.end_time = end_time
-        # The ID of the baseline check policy.
+        # The ID of the policy.
         self.id = id
-        # The name of the baseline check policy.
+        # The Policy Name.
         self.name = name
-        # The subtype of the baselines. 
-        # 
-        # > You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to query the subtypes of baselines.
+        # The subtype of the baseline check item.
         self.risk_sub_type_name = risk_sub_type_name
-        # The information about the whitelist of risk items.
+        # The list of risk item whitelists.
         self.risk_type_white_list_query_result_list = risk_type_white_list_query_result_list
-        # The start time of the check. Specify the time in the HH:mm:ss format.
+        # The start time of the baseline check policy.
         self.start_time = start_time
-        # The method that is used to apply the baseline check policy. Valid values:
+        # The method used to add assets to the policy. Valid values:
         # 
-        # *   **groupId**: asset groups
-        # *   **uuid**: assets
+        # - **groupId**: Assets are added by asset group.
+        # - **uuid**: Assets are added individually.
         self.target_type = target_type
-        # The type of the baseline check policy. Valid values:
+        # The type of the policy. Valid values:
         # 
-        # *   **1**: standard policies
-        # *   **2**: custom policies
+        # - **1**: system-added policy. The policy name is the default policy.
+        # - **2**: user-added policy.
         self.type = type
 
     def validate(self):
@@ -198,14 +196,14 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
     ):
         # The alias of the check item.
         self.alias = alias
-        # Indicates whether the check item is selected. Valid values:
+        # Indicates whether the risk item is selected. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Selected.
+        # - **false**: Not selected.
         self.on = on
-        # The information about sub-check items.
+        # The list of sub-risk items.
         self.sub_types = sub_types
-        # The name of the check item.
+        # The check item.
         self.type_name = type_name
 
     def validate(self):
@@ -265,18 +263,19 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
     ):
         # The alias of the check item.
         self.alias = alias
-        # The details of custom check items.
+        # The list of custom check item details.
         self.check_details = check_details
-        # Indicates whether the sub-check item is selected. Valid values:
+        # Indicates whether the sub-risk item is selected. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Selected.
+        # - **false**: Not selected.
         self.on = on
-        # The operating system type of the server. Valid values:
-        # *   **windows**
-        # *   **linux**
+        # The supported operating system. Valid values:
+        # 
+        # - **windows**
+        # - **linux**.
         self.supported_os = supported_os
-        # The type of the sub-check item.
+        # The type name of the sub-check item.
         self.type_name = type_name
 
     def validate(self):
@@ -345,7 +344,7 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         self.check_id = check_id
         # The check item.
         self.check_item = check_item
-        # The details of rules.
+        # The list of rule information.
         self.rules = rules
 
     def validate(self):
@@ -405,16 +404,16 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
     ):
         # The default value of the rule.
         self.default_value = default_value
-        # Indicates whether the rule can be selected. Valid values:
+        # Indicates whether the rule is optional. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Optional.
+        # - **0**: Not optional.
         self.optional = optional
-        # The rule parameters.
+        # The list of rule parameters.
         self.param_list = param_list
         # The description of the rule.
         self.rule_desc = rule_desc
-        # The rule ID.
+        # The ID of the rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -481,7 +480,7 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         param_type: int = None,
         value: str = None,
     ):
-        # The options that can be selected for the rule parameter if the value of ParamType is set to 2.
+        # The options for the rule parameter when the parameter type is selection.
         self.enum_value = enum_value
         # The maximum value of the rule parameter.
         self.max_value = max_value
@@ -495,8 +494,8 @@ class DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList
         self.param_name = param_name
         # The type of the rule parameter. Valid values:
         # 
-        # *   **1**: input
-        # *   **2**: selection
+        # - **1**: input
+        # - **2**: selection.
         self.param_type = param_type
         # The configured value of the rule parameter.
         self.value = value

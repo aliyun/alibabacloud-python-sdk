@@ -11,7 +11,7 @@ class InstallAegisForLingjunRequest(DaraModel):
         self,
         uuids: List[str] = None,
     ):
-        # List of unique UUIDs for Lingjun bare metal.
+        # The list of unique UUIDs for Lingjun bare metal servers.
         self.uuids = uuids
 
     def validate(self):

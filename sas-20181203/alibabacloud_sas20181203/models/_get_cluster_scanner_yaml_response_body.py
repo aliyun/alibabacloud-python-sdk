@@ -16,23 +16,23 @@ class GetClusterScannerYamlResponseBody(DaraModel):
         tls_key_base_64: str = None,
         webhook_open: int = None,
     ):
-        # Base64 encoded CA certificate.
+        # The CA certificate in Base64 encoding.
         self.ca_cert_base_64 = ca_cert_base_64
-        # Cluster environment information.
+        # The cluster environment context.
         self.cluster_env_info = cluster_env_info
-        # The ID of the cluster that you want to scan.
+        # The ID of the container cluster.
         self.cluster_id = cluster_id
-        # The name of the image.
+        # The container image information.
         self.image = image
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # Base64 encoded webhook certificate.
+        # The webhook certificate in Base64 encoding.
         self.tls_cert_base_64 = tls_cert_base_64
-        # Base64 encoded webhook private key.
+        # The webhook private key in Base64 encoding.
         self.tls_key_base_64 = tls_key_base_64
-        # Indicates whether the incremental scan switch is enabled. Values:
-        # - **0**: Not enabled
-        # - **1**: Enabled
+        # Indicates whether incremental scanning is enabled. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.webhook_open = webhook_open
 
     def validate(self):

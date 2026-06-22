@@ -11,16 +11,16 @@ class GetAttackPathEventDetailRequest(DaraModel):
         event_source: str = None,
         lang: str = None,
     ):
-        # Event ID.
-        # > You can call [ListAttackPathEvent](~~ListAttackPathEvent~~) to query the event ID.
+        # The event ID.
+        # > You can call [ListAttackPathEvent](~~ListAttackPathEvent~~) to query event IDs.
         self.event_id = event_id
-        # Data source. The default value is **default**. Values:
-        #  - **caasm**: Attack surface
-        #  - **default**: Attack path
+        # The data source. Default value: **default**. Valid values:
+        # - **caasm**: attack surface
+        # - **default**: attack path.
         self.event_source = event_source
-        # The language type for request and response, default is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

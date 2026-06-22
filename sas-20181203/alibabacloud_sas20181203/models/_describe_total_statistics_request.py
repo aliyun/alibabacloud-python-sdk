@@ -11,16 +11,14 @@ class DescribeTotalStatisticsRequest(DaraModel):
         group_id: int = None,
         remark: str = None,
     ):
-        # The source of data. Default value: **aqs**. Valid values:
-        # 
-        # *   **sas**: Security Center
-        # *   **aqs**: Server Guard
+        # The source of the data request. Default value: **aqs**. Valid values:
+        # - **sas**: The data request comes from Security Center.
+        # - **aqs**: The data request comes from Server Guard.
         self.from_ = from_
-        # The ID of the asset group.
-        # 
-        # > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to query the IDs of asset groups.
+        # The ID of the asset group to query.
+        # > You can call the [DescribeAllGroups](https://help.aliyun.com/document_detail/130972.html) operation to obtain this parameter.
         self.group_id = group_id
-        # The name or public IP address of the asset.
+        # The asset name or public IP address.
         self.remark = remark
 
     def validate(self):

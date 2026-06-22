@@ -23,56 +23,64 @@ class ListObjectScanEventRequest(DaraModel):
         time_end: int = None,
         time_start: int = None,
     ):
-        # Batch operation type. Valid values:
-        # - **sha256**: Same file content
-        # - **eventName**: Same alert type
+        # The batch operation type. Valid values:
+        # 
+        # - **sha256**: same file content
+        # 
+        # - **eventName**: same alerting type.
         self.batch_type = batch_type
-        # The name of the OSS bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The page number.
+        # The page number of the current page when you perform a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Event ID.
+        # The event ID.
         self.event_id = event_id
-        # The name of the alert.
+        # The alert name.
         self.event_name = event_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The MD5 hash value of the file.
+        # The MD5 hash of the file.
         self.md_5 = md_5
-        # The key of the file that is stored in an OSS bucket.
+        # The storage key of the file in the OSS bucket.
         self.oss_key = oss_key
-        # The number of entries per page.
+        # The maximum number of entries to return on each page when you perform a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the alert that is generated for the package to which the subfile belongs.
+        # If the file is a sub-file within a compressed archive, **ParentEventId** specifies the event ID of the alert for the compressed archive itself.
+        # 
+        # To retrieve and query alert events for sub-files within a compressed archive:
+        # 
+        # 1. Call this operation and check the **HasSubEvent** response parameter. If the value is **true**, the corresponding **EventId** is the event ID of the alert for the compressed archive itself.
+        # 2. Call this operation again and pass the **EventId** value to **ParentEventId** to view the alert events for the sub-files within the compressed archive.
         self.parent_event_id = parent_event_id
-        # The risk level of the alert. Valid values:
+        # The risk level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: high risk
+        # 
+        # - **medium**: medium risk
+        # 
+        # - **low**: low risk.
         self.risk_level = risk_level
-        # The method that is used to detect the malicious file. Valid values:
-        # 
-        # *   **API**: uses API operations.
-        # *   **OSS**: uses Object Storage Service (OSS) file check.
+        # The data source. Valid values:
+        # - **API**: API detection
+        # - **OSS**: OSS detection.
         self.source = source
-        # Event status. The values are as follows:
-        # - **0**: Unprocessed 
-        # - **1**: I have processed manually 
-        # - **2**: Whitelisted 
-        # - **3**: Ignored 
-        # - **4**: Access denied
+        # The event status. Valid values:
+        # 
+        # - 0: unhandled 
+        # - 1: manually handled
+        # - 2: whitelisted
+        # - 3: ignored
+        # - 4: access denied.
         self.status = status
-        # The end of the time range during which the exception is detected.
+        # The end time of the time range during which the exception event occurred.
         self.time_end = time_end
-        # The beginning of the time range during which the exception is detected.
+        # The start time of the time range during which the exception event occurred.
         self.time_start = time_start
 
     def validate(self):

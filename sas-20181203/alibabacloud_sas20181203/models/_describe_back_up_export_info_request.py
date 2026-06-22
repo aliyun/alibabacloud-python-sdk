@@ -12,20 +12,20 @@ class DescribeBackUpExportInfoRequest(DaraModel):
         lang: str = None,
         page_size: int = None,
     ):
-        # The page number.
+        # The page number of the current page in a paged query. Default value: 1.
         self.current_page = current_page
-        # The type of archived information. Valid values:
+        # The type of archive data to export. Valid values:
         # 
-        # *   **suspiciousExport**: alert event
+        # - **suspiciousExport**: security alerts.
         # 
         # This parameter is required.
         self.export_type = export_type
-        # The language of the content within the request and response. Valid values:
+        # The language type for requests and responses. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page. Default value: 20.
+        # The maximum number of entries to return on each page in a paged query. Default value: 1.
         self.page_size = page_size
 
     def validate(self):

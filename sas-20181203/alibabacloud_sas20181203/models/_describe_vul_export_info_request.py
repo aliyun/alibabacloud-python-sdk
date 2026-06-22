@@ -10,7 +10,7 @@ class DescribeVulExportInfoRequest(DaraModel):
         export_id: int = None,
         resource_directory_account_id: int = None,
     ):
-        # The ID of the task.
+        # The ID of the vulnerability export task.
         # 
         # This parameter is required.
         self.export_id = export_id

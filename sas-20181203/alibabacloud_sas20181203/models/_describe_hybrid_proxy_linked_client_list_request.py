@@ -14,17 +14,17 @@ class DescribeHybridProxyLinkedClientListRequest(DaraModel):
         remark: str = None,
         uuid: str = None,
     ):
-        # The name of the proxy cluster. You can query the name of the proxy cluster in the Security Center console.
+        # The name of the proxy cluster. You can view the proxy cluster name in the console.
         self.cluster_name = cluster_name
-        # The page number.
+        # The page number of the current page when paging is used.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page when paging is used.
         self.page_size = page_size
-        # The UUID of the proxy node. You can call the DescribeHybridProxyList operation to query the UUID of the proxy node.
+        # The UUID of the proxy node. You can call the DescribeHybridProxyList operation to obtain this value.
         self.proxy_uuid = proxy_uuid
-        # The description of the proxy cluster.
+        # The remarks.
         self.remark = remark
-        # The UUID of the server on which the Security Center agent is installed. You can query the UUID by querying asset information.
+        # The unique key of the Security Center agent. You can call an asset query operation to obtain the UUID of the Security Center agent installed on the server.
         self.uuid = uuid
 
     def validate(self):

@@ -16,9 +16,9 @@ class DescribePropertyPortItemResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # An array that consists of the ports returned.
+        # The port information.
         self.property_items = property_items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class DescribePropertyPortItemResponseBodyPropertyItems(DaraModel):
         port: str = None,
         proto: str = None,
     ):
-        # The number of servers that use the port.
+        # The number of servers associated with the port.
         self.count = count
-        # The number of the listening port.
+        # The listening port number.
         self.port = port
-        # The network protocol of the port.
+        # The network protocol associated with the port.
         self.proto = proto
 
     def validate(self):
@@ -118,13 +118,13 @@ class DescribePropertyPortItemResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paged query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page to display in a paged query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries to display on each page in a paged query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

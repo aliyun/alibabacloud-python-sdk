@@ -11,7 +11,7 @@ class QueryIncidentTracingSubNodesCountRequest(DaraModel):
         self,
         vertex_id_and_type_list: List[List[str]] = None,
     ):
-        # The key-value pairs that consist of node IDs and node types. A key-value pair is an array.
+        # List of key-value pairs composed of node IDs and types, where key-value pairs exist in the form of arrays
         self.vertex_id_and_type_list = vertex_id_and_type_list
 
     def validate(self):

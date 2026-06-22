@@ -10,8 +10,9 @@ class CreateUnknownThreatDetectStrategyResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The strategy ID.
         self.id = id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

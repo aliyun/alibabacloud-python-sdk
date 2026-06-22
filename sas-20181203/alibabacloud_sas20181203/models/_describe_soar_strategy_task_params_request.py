@@ -9,8 +9,8 @@ class DescribeSoarStrategyTaskParamsRequest(DaraModel):
         self,
         strategy_task_id: int = None,
     ):
-        # Strategy task ID.
-        # > You can obtain this parameter by calling the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) interface.
+        # The ID of the policy task.
+        # >Call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain this parameter.
         self.strategy_task_id = strategy_task_id
 
     def validate(self):

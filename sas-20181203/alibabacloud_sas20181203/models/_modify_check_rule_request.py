@@ -17,23 +17,23 @@ class ModifyCheckRuleRequest(DaraModel):
         rule_type: str = None,
         scope_type: str = None,
     ):
-        # The list of instances to be added in this rule update. This parameter does not need to be passed if there are no instances to add.
+        # The list of instances to add in this rule update. If no instances need to be added, you do not need to specify this parameter.
         self.add_instance_list = add_instance_list
-        # The list of instances to be removed in this rule update. This parameter does not need to be passed if there are no instances to remove.
+        # The list of instances to delete in this rule update. If no instances need to be deleted, you do not need to specify this parameter.
         self.delete_instance_list = delete_instance_list
-        # Remarks.
+        # The remarks.
         self.remark = remark
-        # Rule ID.
-        # > You can obtain this parameter by calling the [ListCheckRule](https://help.aliyun.com/document_detail/2590599.html) API.
+        # The rule ID.
+        # > You can call the [ListCheckRule](https://help.aliyun.com/document_detail/2590599.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # Rule type. Default is **WHITE**. Values:
-        # - **WHITE**: Add to whitelist
+        # The rule type. Default value: **WHITE**. Valid values:
+        # - **WHITE**: whitelist.
         self.rule_type = rule_type
-        # The scope of effect for modifying the rule:
-        # - **INSTANCE**: Instance
-        # - **ITEM**: Check item
+        # The scope of the rule. Valid values:
+        # - **INSTNACE**: instance
+        # - **ITEM**: check item.
         self.scope_type = scope_type
 
     def validate(self):

@@ -2534,6 +2534,8 @@ class Client(OpenApiClient):
             query['NtmVersion'] = request.ntm_version
         if not DaraCore.is_null(request.pre_bind_order_id):
             query['PreBindOrderId'] = request.pre_bind_order_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.un_bind):
             query['UnBind'] = request.un_bind
         req = open_api_util_models.OpenApiRequest(
@@ -2580,6 +2582,8 @@ class Client(OpenApiClient):
             query['NtmVersion'] = request.ntm_version
         if not DaraCore.is_null(request.pre_bind_order_id):
             query['PreBindOrderId'] = request.pre_bind_order_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.un_bind):
             query['UnBind'] = request.un_bind
         req = open_api_util_models.OpenApiRequest(
@@ -42940,6 +42944,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cloud_asset_types):
             query['CloudAssetTypes'] = request.cloud_asset_types
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_util_models.OpenApiRequest(
@@ -42970,6 +42976,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cloud_asset_types):
             query['CloudAssetTypes'] = request.cloud_asset_types
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_util_models.OpenApiRequest(
@@ -53506,6 +53514,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.logical_exp):
             query['LogicalExp'] = request.logical_exp
         if not DaraCore.is_null(request.page_size):
@@ -53546,6 +53556,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.logical_exp):
             query['LogicalExp'] = request.logical_exp
         if not DaraCore.is_null(request.page_size):

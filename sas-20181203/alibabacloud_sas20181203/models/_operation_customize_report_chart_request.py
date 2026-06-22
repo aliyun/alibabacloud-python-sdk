@@ -10,15 +10,13 @@ class OperationCustomizeReportChartRequest(DaraModel):
         chart_ids: str = None,
         report_id: int = None,
     ):
-        # The ID of the chart that is included in the report. Separate multiple IDs with commas (,).
-        # 
-        # >  You can call the [DescribeChartList](~~DescribeChartList~~) operation to query the ID.
+        # The IDs of report chart configurations. Separate multiple IDs with commas (,).
+        # >Call [DescribeChartList](~~DescribeChartList~~) to obtain this parameter.
         # 
         # This parameter is required.
         self.chart_ids = chart_ids
-        # The ID of the report.
-        # 
-        # >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+        # The report ID.
+        # >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
         # 
         # This parameter is required.
         self.report_id = report_id

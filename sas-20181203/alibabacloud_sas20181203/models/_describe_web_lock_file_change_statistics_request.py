@@ -10,9 +10,9 @@ class DescribeWebLockFileChangeStatisticsRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
         self.page_size = page_size
 
     def validate(self):

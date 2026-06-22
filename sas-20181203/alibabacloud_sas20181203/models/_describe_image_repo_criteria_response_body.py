@@ -13,9 +13,9 @@ class DescribeImageRepoCriteriaResponseBody(DaraModel):
         criteria_list: List[main_models.DescribeImageRepoCriteriaResponseBodyCriteriaList] = None,
         request_id: str = None,
     ):
-        # An array consisting of the filter conditions that are supported by the image repository.
+        # The list of supported search criteria for image repositories.
         self.criteria_list = criteria_list
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,29 +59,28 @@ class DescribeImageRepoCriteriaResponseBodyCriteriaList(DaraModel):
         type: str = None,
         values: str = None,
     ):
-        # The name of the search condition. Valid values:
+        # The name of the search criterion. Valid values:
         # 
-        # *   **instanceId**: the ID of the image instance.
-        # *   **repoName**: the name of the image repository.
-        # *   **repoId**: the ID of the image repository.
-        # *   **repoNamespace**: the namespace of the image repository.
-        # *   **regionId**: the region in which the image resides.
-        # *   **vulStatus**: indicates whether vulnerabilities exist.
-        # *   **alarmStatus**: indicates whether security alerts exist.
-        # *   **hcStatus**: indicates whether baseline risks exist.
-        # *   **riskStatus**: indicates whether risks exist.
-        # *   **registryType**: the type of the image repository.
-        # *   **ImageId**: the image ID.
-        # *   **tag**: the image tag.
+        # - **instanceId**: image instance ID.
+        # - **repoName**: repository name.
+        # - **repoId**: repository ID.
+        # - **repoNamespace**: repository namespace.
+        # - **regionId**: image region.
+        # - **vulStatus**: whether vulnerabilities exist.
+        # - **alarmStatus**: whether security alerts exist.
+        # - **hcStatus**: whether baseline risks exist.
+        # - **riskStatus**: whether risks exist.
+        # - **registryType**: repository type.
+        # - **imageId**: image ID.
+        # - **tag**: image tag.
         self.name = name
-        # The type of the search condition. Valid values:
+        # The type of the search criterion. Valid values:
         # 
-        # *   **input**: The search condition needs to be specified.
-        # *   **select**: The search condition is an option that can be selected from the drop-down list.
+        # - **input**: requires manual input of the search field.
+        # - **select**: requires selecting a subtype from a drop-down list.
         self.type = type
-        # The values of the search condition. This parameter is returned only if the value of **Type** is set to **select**.
-        # 
-        # > If the value of **Type** is set to **input**, the return value of this parameter is empty.
+        # The available options when **Type** (the type of the search criterion) is **select** (selection type).
+        # > When **Type** (the type of the search criterion) is **input** (input type), this parameter returns an empty value.
         self.values = values
 
     def validate(self):

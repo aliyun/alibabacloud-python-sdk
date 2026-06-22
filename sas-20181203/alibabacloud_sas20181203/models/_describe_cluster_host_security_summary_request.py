@@ -16,30 +16,30 @@ class DescribeClusterHostSecuritySummaryRequest(DaraModel):
     ):
         # The ID of the container cluster.
         self.cluster_id = cluster_id
-        # The key of the condition that is used to query containers. Valid values:
+        # The container search field. Valid values:
         # 
-        # *   **instanceId**: the instance ID
-        # *   **appName**: the name of the application
-        # *   **clusterId**: the ID of the cluster
-        # *   **regionId**: the region ID
-        # *   **nodeName**: the name of the node
-        # *   **namespace**: the namespace
-        # *   **clusterName**: the name of the cluster
-        # *   **image**: the name of the image
-        # *   **imageRepoName**: the name of the image repository
-        # *   **imageRepoNamespace**: the namespace to which the image repository belongs
-        # *   **imageRepoTag**: the tag that is added to the image repository
-        # *   **imageDigest**: the digest of the image
+        # - **instanceId**: instance ID.
+        # - **appName**: application name.
+        # - **clusterId**: cluster ID.
+        # - **regionId**: region.
+        # - **nodeName**: node name.
+        # - **namespace**: namespace.
+        # - **clusterName**: cluster name.
+        # - **image**: image name.
+        # - **imageRepoName**: image repository name.
+        # - **imageRepoNamespace**: image repository namespace.
+        # - **imageRepoTag**: image tag.
+        # - **imageDigest**: image digest.
         self.container_field_name = container_field_name
-        # The value of the condition that is used to query containers.
+        # The value of the container search field.
         self.container_field_value = container_field_value
         self.resource_owner_id = resource_owner_id
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The type of the query. Valid values:
+        # The query type. Valid values:
         # 
-        # *   **containerId**
-        # *   **uuid**
+        # - **containerId**: container ID.
+        # - **uuid**: asset ID.
         self.target_type = target_type
 
     def validate(self):

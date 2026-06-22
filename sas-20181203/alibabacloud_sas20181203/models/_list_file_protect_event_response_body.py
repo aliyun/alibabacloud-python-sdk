@@ -14,11 +14,11 @@ class ListFileProtectEventResponseBody(DaraModel):
         page_info: main_models.ListFileProtectEventResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The events.
+        # The list of events.
         self.event_list = event_list
-        # The pagination information.
+        # The pagination information of the query result.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class ListFileProtectEventResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries returned per page in a paging query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -132,54 +132,57 @@ class ListFileProtectEventResponseBodyEventList(DaraModel):
         status: int = None,
         uuid: str = None,
     ):
-        # The severity of the alert. Valid values:
+        # The alert notification level. Valid values:
         # 
-        # *   0: no alerts
-        # *   1: reminder
-        # *   2: suspicious
-        # *   3: high-risk
+        # - 0: no alert
+        # 
+        # - 1: reminder
+        # 
+        # - 2: suspicious
+        # 
+        # - 3: high-risk.
         self.alert_level = alert_level
         # The command line of the event.
         self.cmd_line = cmd_line
-        # The path to the file that is managed by the process.
+        # The file path on which the process operates.
         self.file_path = file_path
         # The time when the event was handled.
         self.handle_time = handle_time
-        # The ID of the event.
+        # The event ID.
         self.id = id
-        # The instance name of the server.
+        # The name of the server instance.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
-        # The private IP address of the server.
+        # The private IP address of the asset.
         self.intranet_ip = intranet_ip
-        # The time when the event last occurred.
+        # The most recent time when the event occurred.
         self.latest_time = latest_time
         # The operation performed by the process on the file.
         self.operation = operation
-        # The type of the operating system. Valid values:
+        # The operating system type. Valid values:
         # 
-        # *   **windows**: Windows
-        # *   **linux**: Linux
+        # - **windows**: Windows
+        # - **linux**: Linux.
         self.platform = platform
-        # The path to the process.
+        # The process path.
         self.proc_path = proc_path
-        # The permissions required to start the process.
+        # The process permission.
         self.proc_permission = proc_permission
-        # The ID of the process.
+        # The process ID of the event.
         self.process_id = process_id
-        # The description.
+        # The remarks.
         self.remark = remark
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The status of the event. Valid values:
+        # The event status. Valid values:
         # 
-        # *   0: unhandled
-        # *   1: handled
-        # *   2: added to the whitelist
-        # *   3: ignored
+        # - 0: Unhandled. 
+        # - 1: Manually handled.
+        # - 2: Whitelisted.
+        # - 3: Ignored.
         self.status = status
-        # The UUID of the server that is associated with the process.
+        # The UUID of the server associated with the process.
         self.uuid = uuid
 
     def validate(self):

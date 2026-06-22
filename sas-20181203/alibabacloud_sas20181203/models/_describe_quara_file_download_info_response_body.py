@@ -15,19 +15,19 @@ class DescribeQuaraFileDownloadInfoResponseBody(DaraModel):
         tag: str = None,
         uuid: str = None,
     ):
-        # The URL that is used to download the file. The URL is valid for five minutes.
+        # The download URL. The URL is valid for 5 minutes.
         self.download_url = download_url
-        # The MD5 hash value of the quarantined file.
+        # The MD5 hash of the file.
         self.md_5 = md_5
         # The file path.
         self.path = path
         # The ID of the quarantined file.
         self.quara_file_id = quara_file_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The tag that is added to the related alert.
+        # The tag of the alert record.
         self.tag = tag
-        # The UUID of the server.
+        # The unique identifier of the asset.
         self.uuid = uuid
 
     def validate(self):

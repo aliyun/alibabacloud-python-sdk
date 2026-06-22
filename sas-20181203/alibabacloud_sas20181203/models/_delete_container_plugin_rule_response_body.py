@@ -10,12 +10,11 @@ class DeleteContainerPluginRuleResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the container plug-in is manually deleted. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the container escape prevention rule is deleted. Valid values:
+        # - **true**: The rule is deleted.
+        # - **false**: The rule failed to be deleted.
         self.data = data
-        # The request ID.
+        # The unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
 
     def validate(self):

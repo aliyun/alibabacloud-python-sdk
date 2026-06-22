@@ -16,29 +16,27 @@ class DescribeImageEventOperationPageRequest(DaraModel):
         page_size: int = None,
         source: str = None,
     ):
-        # The page number.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
-        # The keyword of the alert item.
+        # The keyword of the alert metric.
         self.event_key = event_key
-        # The name of the alert item.
+        # The name of the alert metric.
         self.event_name = event_name
-        # The alert type.
-        # 
-        # *   Set the value to **sensitiveFile**.
+        # The alerting type. Valid values:
+        # - **sensitiveFile**: sensitive file tampering.
         self.event_type = event_type
         # The ID of the alert handling rule.
         self.id = id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the content in the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page.
+        # The maximum number of entries to return on each page in a paged query.
         self.page_size = page_size
         # The source of the alert handling rule. Valid values:
-        # 
-        # *   **default**: image.
-        # *   **agentless**: agentless detection.
+        # - **default**: image
+        # - **agentless**: agentless detection.
         self.source = source
 
     def validate(self):

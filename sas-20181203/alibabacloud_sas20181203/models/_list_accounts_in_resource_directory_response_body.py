@@ -13,9 +13,9 @@ class ListAccountsInResourceDirectoryResponseBody(DaraModel):
         accounts: List[main_models.ListAccountsInResourceDirectoryResponseBodyAccounts] = None,
         request_id: str = None,
     ):
-        # The members in the resource directory.
+        # The list of member accounts in the resource directory.
         self.accounts = accounts
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -74,72 +74,75 @@ class ListAccountsInResourceDirectoryResponseBodyAccounts(DaraModel):
     ):
         # The Alibaba Cloud account ID of the member.
         self.account_id = account_id
-        # This parameter is deprecated and should be ignored.
+        # This parameter is deprecated and does not need to be used.
         self.buy_sas = buy_sas
-        # Whether a yearly or monthly subscription of Cloud Security Center is purchased. Values:
-        # - **true**: Yes
-        # - **false**: No
+        # Indicates whether a Security Center subscription instance is purchased. Valid values:
+        # - **true**
+        # - **false**.
         self.buy_sas_new = buy_sas_new
-        # Subscription type. Values:
-        # * **0**: Prepaid
-        # * **1**: Pay-As-You-Go
+        # The billing method. Valid values:
+        # * **0**: upfront
+        # * **1**: pay-as-you-go.
         self.charge_type = charge_type
-        # The name of the member.
+        # The account name.
         self.display_name = display_name
         # The ID of the folder in the resource directory.
         self.folder_id = folder_id
-        # Instance purchase type. Values:
-        # - **0**: Self-purchased
-        # - **1**: Multi-account allocation
+        # The instance purchase type. Valid values:
+        # - **0**: self-purchased
+        # - **1**: allocated through multi-account management.
         self.instance_buy_type = instance_buy_type
-        # Indicates whether the member is an administrator account of the resource directory. Valid values:
+        # Indicates whether the account is the management account of the resource directory. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**
+        # 
+        # - **no**.
         self.is_ma_account = is_ma_account
-        # Indicates whether the member is marked as followed.
+        # Indicates whether the account is marked as followed.
         self.is_marked = is_marked
-        # Indicates whether the member is a delegated administrator account of Security Center. Valid values:
+        # Indicates whether the account is a delegated administrator account of Security Center. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**
+        # 
+        # - **no**.
         self.is_sas_da_account = is_sas_da_account
-        # Indicates whether the member is an account of the threat analysis and response feature. Valid values:
+        # Indicates whether the account is a management account of Cloud Threat Detection and Response (CTDR). Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**
+        # 
+        # - **no**.
         self.is_siem_control_account = is_siem_control_account
-        # Indicates whether the member is a delegated administrator account of the threat analysis and response feature. Valid values:
+        # Indicates whether the account is a delegated administrator account of Cloud Threat Detection and Response (CTDR). Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**
+        # 
+        # - **no**.
         self.is_siem_da_account = is_siem_da_account
-        # Post-paid module switch. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The pay-as-you-go module switch. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled.
         self.post_basic_service = post_basic_service
-        # The switch status of the pay-as-you-go module. The value is a JSON string. Valid values:
-        # 
-        # *   Key:
-        # 
-        #     *   **VUL**: vulnerability fixing module
-        #     *   **CSPM**: cloud service configuration check module
-        #     *   **AGENTLESS**: agentless detection module
-        #     *   **SERVERLESS**: serverless asset module
-        # 
-        # *   Value: A value of 0 specifies disabled. A value of 1 specifies enabled.
-        # 
-        # >  If you do not specify a value for a module, the original value of the module is retained.
+        # The status of pay-as-you-go module switches, in JsonString format. Valid values:
+        # - Key:
+        #   - **VUL**: vulnerability management module
+        #   - **CSPM**: Cloud Security Posture Management (CSPM) module
+        #   - **AGENTLESS**: agentless detection module
+        #   - **SERVERLESS**: serverless asset module
+        #   - **CTDR**: Cloud Threat Detection and Response (CTDR) module
+        #   - **RASP**: Runtime Application Self-Protection (RASP) module
+        #   - **SDK**: malicious file detection SDK module
+        #   - **POST_HOST**: host and container security module
+        # - Value: 0 indicates disabled. 1 indicates enabled.
         self.post_pay_module_switch = post_pay_module_switch
-        # Cloud Security Center Instance ID.
+        # The Security Center instance ID.
         self.sale_instance = sale_instance
-        # The edition of Security Center that you use. Valid value:
+        # The purchased edition of Security Center. Valid values:
         # 
-        # *   **0** or **1**: Basic
-        # *   **2** or **3**: Enterprise
-        # *   **5**: Advanced
-        # *   **6**: Anti-virus
-        # *   **7**: Ultimate
+        # - **0** or **1**: Free Edition
+        # - **2** or **3**: Enterprise Edition  
+        # - **5**: Premium Edition  
+        # - **6**: Anti-virus Edition 
+        # - **7**: Ultimate Edition.
         self.sas_version = sas_version
 
     def validate(self):

@@ -16,17 +16,17 @@ class VerifyCheckCustomConfigShrinkRequest(DaraModel):
         repair_configs: List[main_models.VerifyCheckCustomConfigShrinkRequestRepairConfigs] = None,
         type: str = None,
     ):
-        # Check item ID.
+        # The ID of the check item.
         self.check_id = check_id
-        # Custom check item to validate input parameters.
+        # The input parameters for custom check item validation.
         self.custom_check_config_shrink = custom_check_config_shrink
-        # List of custom configuration items for the check item.
+        # The list of custom parameter configuration items for the check item.
         self.custom_configs = custom_configs
-        # Repair parameters supported by the check item\\"s repair function.
+        # The repair parameters supported by the repair feature of the check item.
         self.repair_configs = repair_configs
-        # Situation Awareness parameter validation types: 
-        # - **REPAIR_CONFIG**: Repair and custom parameter validation (default) 
-        # - **CHECK_ITEM_CONFIG**: Custom check item validation
+        # The validation type for Threat Detection Service parameters. Valid values:
+        # - **REPAIR_CONFIG**: repair and custom parameter validation (default).
+        # - **CHECK_ITEM_CONFIG**: custom check item validation.
         self.type = type
 
     def validate(self):
@@ -98,13 +98,13 @@ class VerifyCheckCustomConfigShrinkRequestRepairConfigs(DaraModel):
         operation: str = None,
         value: str = None,
     ):
-        # ID of the repair process during the repair.
+        # The ID of the repair flow that corresponds to the repair operation.
         self.flow_id = flow_id
-        # Name of the repair parameter for the check item, unique within the same check item.
+        # The name of the repair parameter for the check item. The name is unique within the check item.
         self.name = name
-        # Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+        # The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
         self.operation = operation
-        # User-configured value string for the repair parameter of the check item.
+        # The user-configured value string of the repair configuration item for the check item.
         self.value = value
 
     def validate(self):
@@ -152,11 +152,11 @@ class VerifyCheckCustomConfigShrinkRequestCustomConfigs(DaraModel):
         operation: str = None,
         value: str = None,
     ):
-        # Name of the custom configuration item for the check item, unique within the same check item.
+        # The name of the custom configuration item for the check item. The name is unique within the check item.
         self.name = name
-        # Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+        # The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
         self.operation = operation
-        # User-configured value string for the custom configuration item of the check item.
+        # The user-configured value string of the custom configuration item for the check item.
         self.value = value
 
     def validate(self):

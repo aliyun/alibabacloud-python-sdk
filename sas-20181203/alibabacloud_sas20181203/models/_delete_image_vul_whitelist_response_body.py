@@ -16,10 +16,9 @@ class DeleteImageVulWhitelistResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # Indicates whether the image vulnerability whitelist is deleted. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the operation is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,10 +26,9 @@ class DeleteImageVulWhitelistResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the API call is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

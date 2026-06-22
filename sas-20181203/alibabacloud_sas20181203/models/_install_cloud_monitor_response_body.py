@@ -13,18 +13,18 @@ class InstallCloudMonitorResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the request fails.
+        # The error code returned when the operation failed.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned.
+        # The detailed information about the error code.
         self.message = message
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The operation was successful.
+        # - **false**: The operation failed.
         self.success = success
 
     def validate(self):

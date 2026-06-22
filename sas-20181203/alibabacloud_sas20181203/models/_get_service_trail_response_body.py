@@ -11,9 +11,9 @@ class GetServiceTrailResponseBody(DaraModel):
         request_id: str = None,
         service_trail: main_models.GetServiceTrailResponseBodyServiceTrail = None,
     ):
-        # The request ID.
+        # The ID of the request. The system generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The configurations of the service trail.
+        # The service trail configuration.
         self.service_trail = service_trail
 
     def validate(self):
@@ -51,14 +51,14 @@ class GetServiceTrailResponseBodyServiceTrail(DaraModel):
         create_time: int = None,
         update_time: int = None,
     ):
-        # The status of the service trail. Valid values:
+        # The enabling status of the service trail. Valid values:
         # 
-        # *   **on:**
-        # *   **off:**
+        # - **on**: Enabled.
+        # - **off**: Shutdown.
         self.config = config
-        # The timestamp generated when the service trail was created. Unit: milliseconds.
+        # The timestamp when the service trail was created. Unit: milliseconds.
         self.create_time = create_time
-        # The timestamp generated when the service trail was last updated. Unit: milliseconds.
+        # The timestamp when the service trail was last updated. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

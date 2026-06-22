@@ -26,13 +26,15 @@ class ListSystemClientRulesRequest(DaraModel):
         self.current_page = current_page
         # Specifies whether to query only container images. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: no
+        # 
+        # - **1**: yes
         self.is_container = is_container
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries to return on each page.
         # 
@@ -44,9 +46,11 @@ class ListSystemClientRulesRequest(DaraModel):
         self.rule_types = rule_types
         # The type of the OS. Valid values:
         # 
-        # *   **2**: Windows
-        # *   **1**: Linux
-        # *   **0**: all types
+        # - **2**: Windows
+        # 
+        # - **1**: Linux
+        # 
+        # - **0**: all types
         self.system_type = system_type
 
     def validate(self):

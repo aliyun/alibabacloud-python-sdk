@@ -13,9 +13,9 @@ class GetAegisContainerPluginRuleResponseBody(DaraModel):
         data: main_models.GetAegisContainerPluginRuleResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The request ID, which is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -65,27 +65,26 @@ class GetAegisContainerPluginRuleResponseBodyData(DaraModel):
         self.gmt_create = gmt_create
         # The timestamp when the rule was modified. Unit: milliseconds.
         self.gmt_modified = gmt_modified
-        # The action mode of the rule. Valid values:
-        # 
-        # *   **0**: allows escape behavior.
-        # *   **1**: triggers alerts.
-        # *   **2**: blocks escape behavior.
+        # The rule action mode. Valid values:
+        # - **0**: allow
+        # - **1**: alert
+        # - **2**: block
         self.mode = mode
-        # The description of the rule.
+        # The rule description.
         self.rule_description = rule_description
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The template ID of the rule.
+        # The rule template ID.
         self.rule_template_id = rule_template_id
-        # The template name of the rule.
+        # The rule template name.
         self.rule_template_name = rule_template_name
-        # The rule items.
+        # The list of selected rule items.
         self.selected_policy = selected_policy
-        # The ID of the switch.
+        # The ID of the corresponding switch.
         self.switch_id = switch_id
-        # The images that are added to the whitelist.
+        # The list of whitelisted images.
         self.white_images = white_images
 
     def validate(self):

@@ -25,20 +25,45 @@ class ListFileProtectClientEventRequest(DaraModel):
         status: str = None,
         uuid: str = None,
     ):
+        # The list of alert notification levels.
         self.alert_levels = alert_levels
+        # The page number of the current page when paging is used in a paged query.
         self.current_page = current_page
+        # The end timestamp.
         self.end_time = end_time
+        # The file path.
         self.file_path = file_path
+        # The ID of the asset instance.
         self.instance_id = instance_id
+        # The name of the asset instance.
         self.instance_name = instance_name
+        # The public IP address.
         self.internet_ip = internet_ip
+        # The private IP address.
         self.intranet_ip = intranet_ip
+        # The type of operation performed on the file. Valid values:
+        # 
+        # - **DELETE**: deletes the file.
+        # - **WRITE**: writes to the file.
+        # - **READ**: reads the file.
+        # - **RENAME**: renames the file.
+        # - **CHOWN**: changes the file owner and associated group.
         self.operation = operation
+        # The maximum number of entries per page when paging is used in a paged query.
         self.page_size = page_size
+        # The process path.
         self.proc_path = proc_path
+        # The name of the configuration rule.
         self.rule_name = rule_name
+        # The start time.
         self.start_time = start_time
+        # The event status. Valid values:
+        # - **0**: Unhandled.
+        # - **1**: Handled.
+        # - **2**: Whitelisted.
         self.status = status
+        # The UUID of the server to query.
+        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid = uuid
 
     def validate(self):

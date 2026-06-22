@@ -16,7 +16,7 @@ class DescribeImageEventOperationConditionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The return code of the call.
         self.code = code
         # The returned data.
         self.data = data
@@ -24,10 +24,9 @@ class DescribeImageEventOperationConditionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -83,13 +82,12 @@ class DescribeImageEventOperationConditionResponseBodyData(DaraModel):
         operations: List[main_models.DescribeImageEventOperationConditionResponseBodyDataOperations] = None,
         scenarios: List[str] = None,
     ):
-        # The alert type.
-        # 
-        # *   Only **sensitiveFile** may be returned.
+        # The alerting type. Valid values:
+        # - **sensitiveFile**: sensitive file.
         self.event_type = event_type
-        # The operations.
+        # The list of operations.
         self.operations = operations
-        # The application scopes of the rules.
+        # The rule scope.
         self.scenarios = scenarios
 
     def validate(self):
@@ -141,11 +139,10 @@ class DescribeImageEventOperationConditionResponseBodyDataOperations(DaraModel):
     ):
         # The rule conditions.
         self.conditions = conditions
-        # The operation code.
-        # 
-        # *   Only **whitelist** may be returned, which indicates that the alert event is added to the whitelist.
+        # The operation code. Valid values:
+        # - **whitelist**: whitelist.
         self.operation_code = operation_code
-        # The name of the operation.
+        # The operation name.
         self.operation_name = operation_name
 
     def validate(self):
@@ -195,14 +192,13 @@ class DescribeImageEventOperationConditionResponseBodyDataOperationsConditions(D
         condition_name: str = None,
         supported_mis_type: List[str] = None,
     ):
-        # The keyword of the condition. Valid values:
-        # 
-        # *   **MD5**
-        # *   **PATH**
+        # The condition key. Valid values:
+        # - **MD5**: MD5.
+        # - **PATH**: path.
         self.condition_key = condition_key
-        # The name of the condition.
+        # The condition name.
         self.condition_name = condition_name
-        # The matching types.
+        # The match type.
         self.supported_mis_type = supported_mis_type
 
     def validate(self):

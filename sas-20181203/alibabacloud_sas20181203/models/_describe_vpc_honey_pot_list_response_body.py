@@ -16,9 +16,9 @@ class DescribeVpcHoneyPotListResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of the honeypots.
+        # The information about cloud honeypot instances.
         self.vpc_honey_pot_dtolist = vpc_honey_pot_dtolist
 
     def validate(self):
@@ -82,47 +82,42 @@ class DescribeVpcHoneyPotListResponseBodyVpcHoneyPotDTOList(DaraModel):
     ):
         # The CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # The time at which the VPC was created. Unit: milliseconds.
+        # The time when the VPC was created. Unit: milliseconds.
         self.create_time = create_time
-        # The status of the server on which the honeypot is deployed. Valid values:
-        # 
-        # *   **Pending**: The server is being created.
-        # *   **Running**: The server is running.
-        # *   **Starting**: The server is being started.
-        # *   **Stopping**: The server is being stopped.
-        # *   **Stopped**: The server is stopped.
+        # The status of the Elastic Compute Service (ECS) instance that corresponds to the cloud honeypot instance. Valid values:
+        # - **Pending**: being created
+        # - **Running**: running
+        # - **Starting**: starting
+        # - **Stopping**: stopping
+        # - **Stopped**: stopped
         self.honey_pot_ecs_instance_status = honey_pot_ecs_instance_status
-        # The ID of the elastic network interface (ENI) used by the honeypot in the VPC.
+        # The ID of the elastic network interface (ENI) that the cloud honeypot created in the VPC.
         self.honey_pot_eni_instance_id = honey_pot_eni_instance_id
-        # Indicates whether the cloud honeypot feature is enabled for the VPC. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # Indicates whether the VPC has cloud honeypot enabled. Valid values:
+        # - **true**: enabled
+        # - **false**: disabled
         self.honey_pot_existence = honey_pot_existence
-        # The status of the honeypot. Valid values:
-        # 
-        # *   **pending**: The honeypot is being created.
-        # *   **deleting**: The honeypot is being deleted.
-        # *   **off**: The honeypot is disabled.
-        # *   **suspending**: The honeypot is suspended.
-        # *   **on**: The honeypot is enabled.
+        # The status of the cloud honeypot instance. Valid values:
+        # - **pending**: being created
+        # - **deleting**: being deleted
+        # - **off**: disabled
+        # - **suspending**: being suspended
+        # - **on**: enabled
         self.honey_pot_instance_status = honey_pot_instance_status
-        # The ID of the vSwitch to which the ENI used by the honeypot is connected.
+        # The ID of the vSwitch to which the ENI used by the cloud honeypot belongs.
         self.honey_pot_vpc_switch_id = honey_pot_vpc_switch_id
-        # The ID of the VPC.
+        # The ID of the VPC in which the cloud honeypot instance resides.
         self.vpc_id = vpc_id
-        # The name of the VPC.
+        # The name of the VPC in which the cloud honeypot instance resides.
         self.vpc_name = vpc_name
-        # The region ID of the VPC.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the VPC in which the cloud honeypot instance resides.
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.vpc_region_id = vpc_region_id
         # The status of the VPC. Valid values:
-        # 
-        # *   **Available**: The VPC is normal and available.
-        # *   **Pending**: The VPC is being configured.
+        # - **Available**: normal
+        # - **Pending**: being configured
         self.vpc_status = vpc_status
-        # An array that consists of the vSwitches in the VPC.
+        # The information about vSwitches in the VPC.
         self.vpc_switch_id_list = vpc_switch_id_list
 
     def validate(self):
@@ -273,13 +268,13 @@ class DescribeVpcHoneyPotListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

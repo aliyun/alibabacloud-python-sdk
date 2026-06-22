@@ -13,9 +13,9 @@ class ListAssetSelectionSelectedTargetResponseBody(DaraModel):
         data: List[main_models.ListAssetSelectionSelectedTargetResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The data details.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListAssetSelectionSelectedTargetResponseBodyData(DaraModel):
         target_id: str = None,
         target_name: str = None,
     ):
-        # The ID of the asset.
+        # The asset ID. When selecting by machine, the value is the UUID of the machine. When selecting by group, the value is the group ID. When selecting by VPC, the value is the VPC ID.
         self.target_id = target_id
-        # The name of the asset.
+        # The asset name.
         self.target_name = target_name
 
     def validate(self):

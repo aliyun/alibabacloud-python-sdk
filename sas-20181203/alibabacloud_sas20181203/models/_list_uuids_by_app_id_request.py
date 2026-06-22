@@ -14,18 +14,17 @@ class ListUuidsByAppIdRequest(DaraModel):
         page_size: int = None,
         resource_directory_uid: int = None,
     ):
-        # The ID of the SAE application.
+        # The SAE application ID.
         self.app_id = app_id
         # The region ID.
         self.app_region_id = app_region_id
-        # The page number.
+        # The page number of the current page in a paged query. Paging starts from page 1.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page.
+        # The number of entries per page in a paged query. Paging is performed based on this value.
         self.page_size = page_size
         # The UID of the resource directory.
         self.resource_directory_uid = resource_directory_uid

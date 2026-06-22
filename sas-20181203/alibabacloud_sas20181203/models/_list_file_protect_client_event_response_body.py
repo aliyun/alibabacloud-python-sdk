@@ -14,7 +14,9 @@ class ListFileProtectClientEventResponseBody(DaraModel):
         page_info: main_models.ListFileProtectClientEventResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The file monitoring events.
         self.event_list = event_list
+        # The pagination information of the query result.
         self.page_info = page_info
         # Id of the request
         self.request_id = request_id
@@ -69,8 +71,11 @@ class ListFileProtectClientEventResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the current page when paging is used in a paged query.
         self.current_page = current_page
+        # The maximum number of entries per page when paging is used in a paged query.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -130,26 +135,72 @@ class ListFileProtectClientEventResponseBodyEventList(DaraModel):
         status: int = None,
         uuid: str = None,
     ):
+        # The alert notification level. Valid values:
+        # 
+        # - 0: no alert
+        # 
+        # - 1: reminder
+        # 
+        # - 2: suspicious
+        # 
+        # - 3: high-risk.
         self.alert_level = alert_level
+        # The command line of the event.
         self.cmd_line = cmd_line
+        # The number of times the event occurred.
         self.count = count
+        # The file path.
         self.file_path = file_path
+        # The timestamp when the event was first detected. Unit: milliseconds.
         self.first_time = first_time
+        # The time when the event was handled.
         self.handle_time = handle_time
+        # The event ID.
         self.id = id
+        # The name of the server instance.
         self.instance_name = instance_name
+        # The public IP address of the instance.
         self.internet_ip = internet_ip
+        # The private IP address of the instance.
         self.intranet_ip = intranet_ip
+        # The most recent time the event occurred.
         self.latest_time = latest_time
+        # The type of operation performed on the file. Valid values:
+        # 
+        # - **DELETE**: deletes the file.
+        # - **WRITE**: writes to the file.
+        # - **READ**: reads the file.
+        # - **RENAME**: renames the file.
+        # - **CHOWN**: changes the file owner and associated group.
         self.operation = operation
+        # The operating system type. Valid values:
+        # 
+        # - **windows**: Windows
+        # - **linux**: Linux.
         self.platform = platform
+        # The process path.
         self.proc_path = proc_path
+        # The process permission.
         self.proc_permission = proc_permission
+        # The process ID of the event.
         self.process_id = process_id
+        # The remarks.
         self.remark = remark
+        # The rule action. Valid values:
+        # 
+        # - **block**: Block.
+        # 
+        # - **monitor**: Monitor.
         self.rule_action = rule_action
+        # The rule name.
         self.rule_name = rule_name
+        # The event status. Valid values:
+        # 
+        # - 0: unhandled 
+        # - 1: handled
+        # - 2: whitelisted.
         self.status = status
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):

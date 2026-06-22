@@ -20,21 +20,55 @@ class UpdateFileProtectClientRuleRequest(DaraModel):
         rule_name: str = None,
         status: int = None,
     ):
+        # The alert notification level. Valid values:
+        # 
+        # - 0: no alert
+        # 
+        # - 1: reminder
+        # 
+        # - 2: suspicious
+        # 
+        # - 3: high-risk.
         self.alert_level = alert_level
+        # The list of users excluded from file protection.
         self.exclude_users = exclude_users
+        # The list of operations performed on the file.
+        # 
         # This parameter is required.
         self.file_ops = file_ops
+        # The list of monitored file paths. Wildcards are supported.
+        # 
         # This parameter is required.
         self.file_paths = file_paths
+        # The list of protected file types.
         self.file_types = file_types
+        # The unique ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The list of process listening paths. Wildcards are supported.
+        # 
         # This parameter is required.
         self.proc_paths = proc_paths
+        # The action of the rule. Valid values:
+        # 
+        # - **block**: Block.
+        # 
+        # - **monitor**: Monitor.
+        # 
+        # - **pass**: Allow.
+        # 
         # This parameter is required.
         self.rule_action = rule_action
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The status of the rule. Valid values:
+        # 
+        # - **0**: disabled
+        # - **1**: enabled.
+        # 
         # This parameter is required.
         self.status = status
 

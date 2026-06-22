@@ -11,18 +11,17 @@ class DeleteSearchConditionRequest(DaraModel):
         source_ip: str = None,
         type: str = None,
     ):
-        # The name of the frequently used search condition.
-        # 
-        # >  You can call the [DescribeSearchCondition](~~DescribeSearchCondition~~) operation to query frequently used search conditions.
+        # The name of the saved search condition.
+        # > Call the [DescribeSearchCondition](~~DescribeSearchCondition~~) operation to obtain the name.
         # 
         # This parameter is required.
         self.name = name
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The type of the asset. Default value: ecs. Valid values:
+        # The asset type. Default value: ecs. Valid values:
         # 
-        # *   **ecs**: an Elastic Compute Service (ECS) instance.
-        # *   **cloud_product**: an Alibaba Cloud service.
+        # -  **ecs**: host asset
+        # -  **cloud_product**: cloud service.
         self.type = type
 
     def validate(self):

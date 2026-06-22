@@ -12,27 +12,23 @@ class DescribeImageRequest(DaraModel):
         image_repo_id: str = None,
         image_tag: str = None,
     ):
-        # The instance ID of the image.
-        # 
-        # >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of instances.
+        # The image instance ID.
+        # > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.image_instance_id = image_instance_id
         # The region ID of the image.
-        # 
-        # >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of regions.
+        # > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.image_region_id = image_region_id
-        # The ID of the image repository.
-        # 
-        # >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the IDs of image repositories.
+        # The image repository ID.
+        # > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.image_repo_id = image_repo_id
-        # The tag that is added to the image.
-        # 
-        # >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query tags.
+        # The image tag.
+        # > You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.image_tag = image_tag

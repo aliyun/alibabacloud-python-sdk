@@ -15,7 +15,7 @@ class DescribeCanFixVulListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the vulnerability.
+        # The vulnerability information returned.
         self.vul_records = vul_records
 
     def validate(self):
@@ -91,31 +91,31 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
-        # Indicates whether the vulnerability can be fixed in the Security Center console. Valid values:
+        # Indicates whether the vulnerability can be fixed in the console. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**: Fixable.
+        # - **no**: Not fixable.
         self.can_fix = can_fix
-        # Indicates whether the packages of the software that has the vulnerability can be upgraded by using Security Center. Valid values:
+        # Specifies whether the software package that causes the vulnerability can be upgraded through Security Center. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.can_update = can_update
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
         # The container ID.
         self.container_id = container_id
-        # The extended information about the vulnerability.
+        # The extended content of the vulnerability information.
         self.extend_content_json = extend_content_json
-        # The timestamp generated when the vulnerability was first detected. Unit: milliseconds.
+        # The timestamp when the vulnerability was first detected. Unit: milliseconds.
         self.first_ts = first_ts
-        # The name of the image.
+        # The image name.
         self.image = image
-        # The unique identifier of the image.
+        # The unique identifier of the container image.
         self.image_digest = image_digest
-        # The name of the instance.
+        # The instance name.
         # 
         # The name must be 3 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.instance_name = instance_name
@@ -123,64 +123,62 @@ class DescribeCanFixVulListResponseBodyVulRecords(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the asset.
         self.intranet_ip = intranet_ip
-        # The timestamp generated when the vulnerability was last detected. Unit: milliseconds.
+        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
         self.last_ts = last_ts
-        # The image layers.
+        # The list of container image layers.
         self.layers = layers
         # The source of the malicious file. Valid values:
         # 
-        # *   **agentless**
-        # *   **image**
-        # *   **container**
+        # - **agentless**: Agentless detection.
+        # - **image**: Image.
+        # - **container**: Container.
         self.malicious_source = malicious_source
-        # The timestamp generated when the vulnerability status was modified. Unit: milliseconds.
+        # The timestamp when the vulnerability status was modified. Unit: milliseconds.
         self.modify_ts = modify_ts
         # The name of the vulnerability.
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # The priority to fix the vulnerability. Valid values:
+        # The priority level of the vulnerability fix. Valid values:
         # 
-        # *   **asap**: high
-        # *   **later**: medium
-        # *   **nntf**: low
+        # - **asap**: High.
+        # - **later**: Medium.
+        # - **nntf**: Low.
         # 
-        # >  We recommend that you fix high-level vulnerabilities as soon as possible.
+        # > Fix vulnerabilities with the **High** priority level as soon as possible.
         self.necessity = necessity
-        # The name of the container group.
+        # The name of the pod.
         self.pod = pod
-        # The vulnerability ID.
+        # The ID of the vulnerability.
         self.primary_id = primary_id
-        # The CVE IDs related to the vulnerability. Multiple CVE IDs are separated by commas (,).
+        # The list of CVEs associated with the vulnerability. Multiple values are separated by commas (,).
         self.related = related
-        # The name of the image repository.
+        # The name of the container image repository.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
+        # The namespace of the container image repository.
         self.repo_namespace = repo_namespace
-        # The timestamp generated when the scan task was performed. Unit: milliseconds.
+        # The timestamp of the scan. Unit: milliseconds.
         self.scan_time = scan_time
-        # The status of the vulnerability. Valid values:
-        # 
-        # *   **1**: The vulnerability is unfixed.
-        # *   **4**: The vulnerability is being fixed.
-        # *   **7**: The vulnerability is fixed.
+        # The fix status of the vulnerability. Valid values:
+        # - **1**: Unfixed.
+        # - **4**: Being fixed.
+        # - **7**: Fixed.
         self.status = status
-        # The tag that is added to the image.
+        # The tag of the container image.
         self.tag = tag
-        # The ID of the asset that is scanned.
+        # The ID of the scan target.
         self.target_id = target_id
-        # The name of the asset that is scanned.
+        # The name of the scan target.
         self.target_name = target_name
-        # The type of the asset that is scanned. Valid values:
+        # The object type of the scan target. Valid values:
         # 
-        # *   **IMAGE**
-        # *   **ECS_IMAGE**
-        # *   **ECS_SNAPSHOT**
+        # - **IMAGE**: Container image.
+        # - **ECS_IMAGE**: Host image.
+        # - **ECS_SNAPSHOT**: Snapshot.
         self.target_type = target_type
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   **cve**: system vulnerability
-        # *   **sca**: application vulnerability
+        # The vulnerability type. Valid values:
+        # - **cve**: system vulnerability
+        # - **sca**: application vulnerability.
         self.type = type
         # The UUID of the container image.
         self.uuid = uuid
@@ -408,9 +406,9 @@ class DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson(DaraModel):
     ):
         # The name of the operating system.
         self.os = os
-        # The version of the operating system in the image.
+        # The release version of the operating system corresponding to the container image.
         self.os_release = os_release
-        # The RPM packages.
+        # The list of RPM packages.
         self.rpm_entity_list = rpm_entity_list
 
     def validate(self):
@@ -465,19 +463,19 @@ class DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList(
         update_cmd: str = None,
         version: str = None,
     ):
-        # The complete version number of the software package.
+        # The full version number of the software package.
         self.full_version = full_version
-        # The SHA-256 value of the digest of the image layer.
+        # The SHA256 value of the container image layer digest.
         self.layer = layer
-        # The information about the detected vulnerability.
+        # The details of the vulnerability match.
         self.match_detail = match_detail
-        # The rule that is used to detect the vulnerability.
+        # The rule hits.
         self.match_list = match_list
         # The name of the software package.
         self.name = name
-        # The path of the software that has the vulnerability.
+        # The path of the software that contains the vulnerability.
         self.path = path
-        # The command that is used to fix the vulnerability.
+        # The command to fix the vulnerability.
         self.update_cmd = update_cmd
         # The version number of the software package.
         self.version = version

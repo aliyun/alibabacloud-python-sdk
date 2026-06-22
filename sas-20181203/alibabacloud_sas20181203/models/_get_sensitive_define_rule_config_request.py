@@ -10,15 +10,15 @@ class GetSensitiveDefineRuleConfigRequest(DaraModel):
         lang: str = None,
         source: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # 
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source of the check rules. Valid values:
-        # 
-        # *   **image**: image.
-        # *   **agentless**: agentless detection.
+        # The source of the sensitive file check item. Valid values:
+        # - **image**: image
+        # - **agentless**: agentless.
         self.source = source
 
     def validate(self):

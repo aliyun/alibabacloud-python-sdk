@@ -17,15 +17,15 @@ class DescribeWebPathResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the paths to the web directories.
+        # The list of web paths.
         self.config_list = config_list
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paged query. Paging is used to display results.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paged query. Paging is used to display results.
         self.page_size = page_size
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The China Chinese Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -95,14 +95,14 @@ class DescribeWebPathResponseBodyConfigList(DaraModel):
         web_path: str = None,
         web_path_type: str = None,
     ):
-        # An array consisting of the servers on which the web directories are scanned.
+        # The list of servers on which the web directory takes effect.
         self.target_list = target_list
-        # The path to the web directory.
+        # The web directory.
         self.web_path = web_path
-        # The path type of the web directory. Valid values:
+        # The type of the web path. Valid values:
         # 
-        # *   **def**: automatically identified
-        # *   **customize**: manually added
+        # - **def**: automatically identified by the system.
+        # - **customize**: manually added.
         self.web_path_type = web_path_type
 
     def validate(self):
@@ -151,11 +151,11 @@ class DescribeWebPathResponseBodyConfigListTargetList(DaraModel):
         target: str = None,
         target_type: str = None,
     ):
-        # The object.
+        # The target object.
         self.target = target
-        # The object type. Valid values:
+        # The target type. Valid values:
         # 
-        # *   **uuid**
+        # - **uuid**.
         self.target_type = target_type
 
     def validate(self):

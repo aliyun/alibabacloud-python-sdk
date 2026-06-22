@@ -10,9 +10,8 @@ class DeleteCustomBlockRecordRequest(DaraModel):
         id: int = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the IP address blocking policy.
-        # 
-        # > You can call the [DescribeCustomBlockRecords](~~DescribeCustomBlockRecords~~) operation to query the ID.
+        # The ID of the record to delete.
+        # > Call the [DescribeCustomBlockRecords](~~DescribeCustomBlockRecords~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.id = id

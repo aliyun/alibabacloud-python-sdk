@@ -9,10 +9,10 @@ class OpenSensitiveFileScanRequest(DaraModel):
         self,
         switch_on: str = None,
     ):
-        # Specifies whether to enable or disable sensitive file scan. Valid values:
+        # The switch operation. Valid values:
         # 
-        # *   **on**: enables sensitive file scan
-        # *   **off**: disables sensitive file scan
+        # - **on**: Enable.
+        # - **off**: Disable.
         self.switch_on = switch_on
 
     def validate(self):

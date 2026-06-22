@@ -13,24 +13,23 @@ class OperateWebLockFileEventsRequest(DaraModel):
         event_ids: List[int] = None,
         operation_code: str = None,
     ):
-        # Specifies whether to handle all alert events that are generated for web tamper proofing. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**: no
+        # Specifies whether to handle all alert events. Valid values:
+        # - **1**: yes
+        # - **0**: no.
         # 
         # This parameter is required.
         self.deal_all = deal_all
-        # The IDs of alert events.
+        # The list of alert event IDs.
         # 
         # This parameter is required.
         self.event_ids = event_ids
-        # The operation that you want to perform on the alert events. Valid values:
+        # The method to handle the alert event. Valid values:
         # 
-        # *   **mark_mis_info**: marks the alert events as false positives
-        # *   **rm_mark_mis_info**: cancels marking the alerts events as false positives
-        # *   **offline_handled**: marks the alert events as handled offline
-        # *   **whitelist**: adds the alert events to the whitelist
-        # *   **rm_whitelist**: cancels adding the alert events to the whitelist
+        # - **mark_mis_info**: marks the alert as a false positive
+        # - **rm_mark_mis_info**: unmarks the false positive
+        # - **offline_handled**: handled offline
+        # - **whitelist**: adds to the whitelist
+        # - **rm_whitelist**: removes from the whitelist.
         # 
         # This parameter is required.
         self.operation_code = operation_code

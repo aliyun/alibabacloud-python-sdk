@@ -18,33 +18,33 @@ class ListAgentlessRiskUuidRequest(DaraModel):
         target_name: str = None,
         target_type: int = None,
     ):
-        # The page number.
+        # The page number of the current page when using paging.
         self.current_page = current_page
-        # The instance ID of the asset.
+        # The ID of the asset instance.
         self.instance_id = instance_id
-        # The instance name of the asset.
+        # The name of the asset instance.
         self.instance_name = instance_name
-        # The public IP address of the asset that you want to query.
+        # The public IP address of the asset to query.
         self.internet_ip = internet_ip
-        # The private IP address of the asset that you want to query.
+        # The private IP address of the asset to query.
         self.intranet_ip = intranet_ip
-        # The name of the instance.
+        # The instance name.
         self.machine_name = machine_name
-        # The number of entries per page.
+        # The maximum number of entries per page when using paging.
         self.page_size = page_size
         # Specifies whether risks exist. Valid values:
         # 
-        # *   **true**: Risks exist.
-        # *   **false**: Risks do not exist.
+        # - **true**: Risks exist.
+        # - **false**: Risks do not exist.
         self.risk = risk
-        # The name of the detection object.
+        # The name of the detection target.
         self.target_name = target_name
-        # Specifies the type of the object being inspected. Valid values:
+        # The object type of the detection target. Valid values:
         # 
-        # *   **1**: Host Snapshot.
-        # *   **2**: Host Image.
-        # *   **3**: User Snapshot.
-        # *   **4**: User Image.
+        # - **1**: host snapshot
+        # - **2**: host image
+        # - **3**: user snapshot
+        # - **4**: user custom image
         self.target_type = target_type
 
     def validate(self):

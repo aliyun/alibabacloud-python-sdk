@@ -14,19 +14,18 @@ class ListPodRiskRequest(DaraModel):
         page_size: int = None,
         pod_name: str = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The ID of the container cluster.
-        # 
-        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of container clusters.
+        # The ID of the container cluster to query.
+        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The number of the page to return.
+        # The page number of the current page when paging is used.
         self.current_page = current_page
-        # The namespace of the Kubernetes cluster.
+        # The Kubernetes cluster namespace.
         self.namespace = namespace
-        # The number of entries to return on each page. Default value: 20.
+        # The number of entries per page when paging is used. Default value: 20.
         self.page_size = page_size
-        # The name of the pod.
+        # The pod name.
         self.pod_name = pod_name
 
     def validate(self):

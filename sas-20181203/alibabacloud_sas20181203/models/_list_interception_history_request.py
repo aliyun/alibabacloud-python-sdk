@@ -18,24 +18,24 @@ class ListInterceptionHistoryRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # The ID of the container cluster.
+        # The ID of the container cluster to query.
         self.cluster_id = cluster_id
-        # The number of the page to return.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The end of the time range to query. The value is a UNIX timestamp.
+        # The end timestamp of the query.
         self.end_time = end_time
-        # The name of the alert.
+        # The alert name.
         self.history_name = history_name
-        # The types of exceptions.
+        # The types of exception events.
         self.interception_types = interception_types
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page.
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
-        # The start of the time range to query. The value is a UNIX timestamp.
+        # The start timestamp of the query.
         self.start_time = start_time
 
     def validate(self):

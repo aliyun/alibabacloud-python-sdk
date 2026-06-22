@@ -23,41 +23,37 @@ class UpdateHoneypotProbeBindRequest(DaraModel):
         service_ip_list: List[str] = None,
         set_status: int = None,
     ):
-        # The unique ID of the honeypot to which the probe is bound.
+        # The unique ID of the bound service.
         self.bind_id = bind_id
-        # The ports that are bound to the probe.
+        # The list of bound ports.
         self.bind_port_list = bind_port_list
-        # The operation that the probe performs. Valid values:
+        # The service binding type. Valid values:
         # 
-        # *   **forward_honey**: forward traffic to a honeypot
-        # *   **scan_port**: monitor and scan
+        # - **forward_honey**: forward to honeypot
+        # - **scan_port**: listen for scans.
         self.bind_type = bind_type
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number of the page to return. Minimum value: **1**. Default value: **1**.
         self.current_page = current_page
         # The honeypot ID.
-        # 
-        # >  You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain the IDs of honeypots.
+        # > You can call the [ListHoneypot](~~ListHoneypot~~) operation to obtain this value.
         self.honeypot_id = honeypot_id
-        # The port ID of the probe service.
+        # The probe service port ID.
         self.id = id
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page when using paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by paging.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The ports that are monitored.
+        # The listening port range.
         self.ports = ports
         # The probe ID.
-        # 
-        # >  You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+        # >You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to obtain this parameter.
         self.probe_id = probe_id
-        # The IP addresses that are monitored.
+        # The list of listening IP addresses.
         self.service_ip_list = service_ip_list
-        # The status of the port.
+        # The listening port status setting.
         self.set_status = set_status
 
     def validate(self):
@@ -165,26 +161,26 @@ class UpdateHoneypotProbeBindRequestBindPortList(DaraModel):
         start_port: int = None,
         target_port: int = None,
     ):
-        # Specifies whether to bind a port. Valid values:
+        # Specifies whether to bind the port. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # - **false**: No.
         self.bind_port = bind_port
-        # The end port on which the probe monitors.
+        # The end port that the probe listens on.
         self.end_port = end_port
         # Specifies whether the port is fixed. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: No.
+        # - **1**: Yes.
         self.fixed = fixed
-        # The UUID of the port.
+        # The unique identifier of the bound port.
         self.id = id
-        # The type of the protocol. Valid values:
+        # The protocol type. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**
+        # - **udp**.
         self.proto = proto
-        # The start port on which the probe monitors.
+        # The start port that the probe listens on.
         self.start_port = start_port
         # The destination port.
         self.target_port = target_port

@@ -11,17 +11,16 @@ class DescribeCustomizeReportConfigDetailRequest(DaraModel):
         report_id: int = None,
         source_ip: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The ID of the report.\\
-        # You can call the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation to query the ID.
+        # The report ID.\\
+        # The ReportId returned by calling the [DescribeCustomizeReportList](https://help.aliyun.com/document_detail/271655.html) operation.
         # 
         # This parameter is required.
         self.report_id = report_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

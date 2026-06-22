@@ -11,17 +11,18 @@ class ExecStrategyRequest(DaraModel):
         lang: str = None,
         strategy_id: int = None,
     ):
-        # Set the action for this execution, default is **exec**. Values:
-        # - **exec**: Execute. - **terminate**: Terminate.
-        self.exec_action = exec_action
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The action to perform. Default value: **exec**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **exec**: exec.
+        # - **terminate**: stop.
+        self.exec_action = exec_action
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # 
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
         # The ID of the baseline check policy.
-        # 
-        # >  You can call the [DescribeStrategy](~~DescribeStrategy~~) operation to query the IDs of baseline check policies.
+        # >You can call the [DescribeStrategy](~~DescribeStrategy~~) operation to obtain this parameter.
         self.strategy_id = strategy_id
 
     def validate(self):

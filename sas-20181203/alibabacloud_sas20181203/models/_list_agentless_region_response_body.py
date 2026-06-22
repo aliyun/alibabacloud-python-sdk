@@ -14,11 +14,11 @@ class ListAgentlessRegionResponseBody(DaraModel):
         request_id: str = None,
         vendor_region_list: List[main_models.ListAgentlessRegionResponseBodyVendorRegionList] = None,
     ):
-        # The information about the regions.
+        # The region list information.
         self.region_list = region_list
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The information about the regions.
+        # The region list information.
         self.vendor_region_list = vendor_region_list
 
     def validate(self):
@@ -67,15 +67,15 @@ class ListAgentlessRegionResponseBodyVendorRegionList(DaraModel):
         region_id: str = None,
         vendor: int = None,
     ):
-        # The region ID of the instance.
+        # The region in which the server resides.
         self.region_id = region_id
-        # The type of the server. Valid values:
+        # The server vendor. Valid values:
         # 
-        # - **0**: Alibaba Cloud
-        # - **3**: Tencent Cloud
-        # - **4**: Huawei Cloud
-        # - **5**: Azure
-        # - **7**: AWS
+        # - **0**: Alibaba Cloud.
+        # - **3**: Tencent Cloud.
+        # - **4**: Huawei Cloud.
+        # - **5**: Azure.
+        # - **7**: AWS.
         self.vendor = vendor
 
     def validate(self):

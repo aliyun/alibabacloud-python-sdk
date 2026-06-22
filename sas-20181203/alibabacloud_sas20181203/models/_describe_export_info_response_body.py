@@ -17,29 +17,29 @@ class DescribeExportInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of exported entries.
+        # The number of data entries that have been exported.
         self.current_count = current_count
         # The status of the export task.
         # 
         # Valid values:
         # 
-        # *   **init**: The task is being initialized.
-        # *   **exporting**: The task is in progress.
-        # *   **success**: The task is complete.
+        # - **init**: export initialization
+        # - **exporting**: export in progress
+        # - **success**: export successful.
         self.export_status = export_status
         # The name of the exported Excel file.
         self.file_name = file_name
         # The ID of the export task.
         self.id = id
-        # The URL at which you can download the exported Excel file.
+        # The download URL of the exported Excel file.
         self.link = link
-        # The message that shows the task result. The value is fixed as **success**, which indicates that the task is complete.
+        # The message returned for the export result. Fixed value: **success**. This value indicates that the export is successful.
         self.message = message
-        # The progress percentage of the export task.
+        # The export progress percentage (%).
         self.progress = progress
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of entries in the exported Excel file.
+        # The total number of data entries in the exported Excel file.
         self.total_count = total_count
 
     def validate(self):

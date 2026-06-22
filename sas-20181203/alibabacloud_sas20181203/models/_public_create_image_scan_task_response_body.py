@@ -11,9 +11,9 @@ class PublicCreateImageScanTaskResponseBody(DaraModel):
         data: main_models.PublicCreateImageScanTaskResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned if the call is successful.
+        # The data returned when the operation is successful.
         self.data = data
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -57,36 +57,36 @@ class PublicCreateImageScanTaskResponseBodyData(DaraModel):
         task_id: str = None,
         total_count: int = None,
     ):
-        # Indicates whether you can create more image scan tasks. Valid values:
+        # Indicates whether more scan tasks can be created. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: More scan tasks can be created.
+        # - **false**: No more scan tasks can be created.
         # 
-        # > By default, a maximum of 10 image scan tasks can be running at the same time. If 10 image scan tasks are running, you cannot create an image scan task by calling this operation. You must wait for at least one of the 10 existing image scan tasks to complete before you can create an image scan task.
+        # > By default, up to 10 scan tasks can exist at the same time. If the number of scan tasks exceeds 10, creating a scan task by calling this operation fails. Wait until an existing scan task is completed before creating a new scan task.
         self.can_create = can_create
-        # The timestamp when the image information was collected. Unit: milliseconds.
+        # The timestamp when image information was collected, in milliseconds.
         self.collect_time = collect_time
-        # The timestamp when the image scan task started to run. Unit: milliseconds.
+        # The timestamp when the scan task started running, in milliseconds.
         self.exec_time = exec_time
         # The number of images that have been scanned.
         self.finish_count = finish_count
-        # The progress of the image scan task in percentage.
+        # The progress percentage of the scan task.
         self.progress = progress
-        # The result of the image scan task. Valid values:
+        # The execution result of the scan task. Valid values:
         # 
-        # *   **SUCCESS**: The task is successful.
-        # *   **TASK_NOT_SUPPORT_REGION**: The images are deployed in a region that is not supported by container image scan.
+        # - **SUCCESS**: The scan task succeeded.
+        # - **TASK_NOT_SUPPORT_REGION**: The image is in a region that does not support scanning.
         # 
-        # > For more information about the regions supported by container image scan, see the "Regions supported by container image scan" section in this topic.
+        # > For the regions that support image security scanning, see the table of supported regions after the response parameters table in this topic.
         self.result = result
-        # The status of the image scan task. Valid values:
+        # The status of the scan task. Valid values:
         # 
-        # *   **INIT**: The task is being initialized.
-        # *   **PRE_ANALYZER**: The task is being pre-processed.
-        # *   **SUCCESS**: The task is successful.
-        # *   **FAIL**: The task fails.
+        # - **INIT**: Initializing.
+        # - **PRE_ANALYZER**: Pre-analyzing.
+        # - **SUCCESS**: Succeeded.
+        # - **FAIL**: Failed.
         self.status = status
-        # The ID of the image scan task.
+        # The ID of the scan task.
         self.task_id = task_id
         # The total number of images to scan.
         self.total_count = total_count

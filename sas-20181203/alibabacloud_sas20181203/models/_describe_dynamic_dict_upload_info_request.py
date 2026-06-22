@@ -9,7 +9,7 @@ class DescribeDynamicDictUploadInfoRequest(DaraModel):
         self,
         source_ip: str = None,
     ):
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

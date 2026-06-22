@@ -14,9 +14,11 @@ class ListUnknownThreatDetectProcessResponseBody(DaraModel):
         page_info: main_models.ListUnknownThreatDetectProcessResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array of process details.
         self.data = data
+        # The pagination information.
         self.page_info = page_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -70,9 +72,13 @@ class ListUnknownThreatDetectProcessResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries on the current page.
         self.count = count
+        # The current page number.
         self.current_page = current_page
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -126,14 +132,27 @@ class ListUnknownThreatDetectProcessResponseBodyData(DaraModel):
         remark: str = None,
         sha_256: str = None,
     ):
+        # The analysis result. Valid values:
+        # 
+        # - **black**: A malicious process.
+        # 
+        # - **white**: A normal process.
+        # 
+        # - **abnormal**: An abnormal process.
         self.analyze_result = analyze_result
         self.explanation_en = explanation_en
         self.explanation_zh = explanation_zh
+        # The timestamp of the first occurrence.
         self.first_time = first_time
+        # The MD5 hash of the file.
         self.md_5 = md_5
+        # The process ID.
         self.process_id = process_id
+        # The process path.
         self.process_path = process_path
+        # Remarks about the process.
         self.remark = remark
+        # The SHA-256 hash of the file.
         self.sha_256 = sha_256
 
     def validate(self):

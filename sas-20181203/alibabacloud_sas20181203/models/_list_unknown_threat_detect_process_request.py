@@ -19,16 +19,31 @@ class ListUnknownThreatDetectProcessRequest(DaraModel):
         sha_256: str = None,
         uuid: str = None,
     ):
+        # The analysis result. Valid values:
+        # 
+        # - **black**: abnormal process
+        # 
+        # - **white**: normal process
         self.analyze_result = analyze_result
+        # The page number to return.
         self.current_page = current_page
+        # The end of the time range for the first detection, in milliseconds.
         self.first_time_end = first_time_end
+        # The start of the time range for the first detection, in milliseconds.
         self.first_time_start = first_time_start
+        # The MD5 value of the file.
         self.md_5 = md_5
+        # The number of entries to return per page.
         self.page_size = page_size
+        # The file path.
         self.path = path
+        # The process path.
         self.process_path = process_path
+        # The server name or IP address.
         self.remark = remark
+        # The SHA-256 value of the file.
         self.sha_256 = sha_256
+        # The UUID of the server to query.
         self.uuid = uuid
 
     def validate(self):

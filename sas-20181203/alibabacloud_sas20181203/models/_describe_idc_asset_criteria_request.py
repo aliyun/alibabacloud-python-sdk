@@ -10,15 +10,14 @@ class DescribeIdcAssetCriteriaRequest(DaraModel):
         status: int = None,
         value: str = None,
     ):
-        # The status of the IP address. Valid values:
-        # 
-        # *   **0**: The IP address is valid.
-        # *   **1**: The IP address is ignored.
-        # *   *2*: The IP address is invalid.
-        # *   *3*: The IP address is expired.
-        # *   *4*: The probe that is used to scan the IP address does not exist.
+        # Indicates whether the corresponding IP address is valid. Valid values:
+        # - **0**: valid
+        # - **1**: ignored
+        # - **2**: invalid
+        # - **3**: expired
+        # - **4**: probe does not exist.
         self.status = status
-        # The keyword that is used to match assets in fuzzy mode.
+        # The fuzzy match value entered when querying assets.
         self.value = value
 
     def validate(self):

@@ -10,7 +10,7 @@ class DescribeDomainSecureScoreResponseBody(DaraModel):
         request_id: str = None,
         security_score: int = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The security score of the website.
         self.security_score = security_score

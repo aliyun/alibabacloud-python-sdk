@@ -26,10 +26,13 @@ class ListCheckItemsRequest(DaraModel):
         # Specifies the page number to display when performing a paginated query. The starting value is **1**, and the default value is **1**.
         self.current_page = current_page
         # The language type for requests and responses. The default value is **zh**. Values:
+        # 
         # - **zh**: Chinese
+        # 
         # - **en**: English
         self.lang = lang
         # Specifies the maximum number of data entries to display per page when performing a paginated query. The default number of data entries displayed per page is 20, and if the PageSize parameter is empty, it will default to returning 20 data entries.
+        # 
         # > It is recommended that the PageSize value is not left empty.
         self.page_size = page_size
         # The status of the check item.

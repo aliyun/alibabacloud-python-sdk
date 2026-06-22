@@ -14,11 +14,34 @@ class ListFileProtectClientRuleRequest(DaraModel):
         rule_action: str = None,
         rule_name: str = None,
     ):
+        # The alert notification level. Valid values:
+        # 
+        # - 0: no alert
+        # 
+        # - 1: reminder
+        # 
+        # - 2: suspicious
+        # 
+        # - 3: high-risk.
         self.alert_level = alert_level
+        # The page number of the current page in a paged query.
         self.current_page = current_page
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
+        # The operating system type. Valid values:
+        # 
+        # - **windows**: Windows
+        # - **linux**: Linux.
         self.platform = platform
+        # The rule action. Valid values:
+        # 
+        # - **block**: blocks the request.
+        # 
+        # - **monitor**: monitors the request.
+        # 
+        # - **pass**: allows the request.
         self.rule_action = rule_action
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):

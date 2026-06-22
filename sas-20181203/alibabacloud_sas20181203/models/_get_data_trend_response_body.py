@@ -13,9 +13,9 @@ class GetDataTrendResponseBody(DaraModel):
         data: main_models.GetDataTrendResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class GetDataTrendResponseBodyData(DaraModel):
         date_str_list: List[str] = None,
         item_list: List[main_models.GetDataTrendResponseBodyDataItemList] = None,
     ):
-        # The statistical timestamps of the trend data.
+        # The list of statistical timestamps for the trend data.
         self.date_list = date_list
-        # The statistical dates and time for the trend data.
+        # The list of statistical date strings for the trend data.
         self.date_str_list = date_str_list
-        # The returned data.
+        # The list of returned data.
         self.item_list = item_list
 
     def validate(self):
@@ -106,16 +106,15 @@ class GetDataTrendResponseBodyDataItemList(DaraModel):
         count_list: List[int] = None,
         key_name: str = None,
     ):
-        # The statistical values of the trend data.
+        # The list of statistical values for the trend data.
         self.count_list = count_list
-        # The type of the security data. Valid values:
-        # 
-        # *   **HC_NEW**: the number of new baseline risks.
-        # *   **HC_OPERATE**: the number of handled baseline risks.
-        # *   **VUL_NEW**: the number of new vulnerabilities.
-        # *   **VUL_OPERATE**: the number of handled vulnerabilities.
-        # *   **SUSP_NEW**: the number of new alerts.
-        # *   **SUSP_OPERATE**: the number of handled alerts.
+        # The type of security data. Valid values:
+        # - **HC_NEW**: number of new baseline risks
+        # - **HC_OPERATE**: number of handled baseline risks
+        # - **VUL_NEW**: number of new vulnerability risks
+        # - **VUL_OPERATE**: number of handled vulnerability risks
+        # - **SUSP_NEW**: number of new alert risks
+        # - **SUSP_OPERATE**: number of handled alert risks.
         self.key_name = key_name
 
     def validate(self):

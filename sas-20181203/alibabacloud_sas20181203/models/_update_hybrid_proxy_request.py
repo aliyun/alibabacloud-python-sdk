@@ -9,7 +9,7 @@ class UpdateHybridProxyRequest(DaraModel):
         self,
         proxy_uuid: str = None,
     ):
-        # The UUID of the Security Center agent.
+        # The UUID of the proxy client.
         # 
         # This parameter is required.
         self.proxy_uuid = proxy_uuid

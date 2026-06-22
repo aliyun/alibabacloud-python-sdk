@@ -14,19 +14,18 @@ class DescribeSyncAssetTaskLogDetailRequest(DaraModel):
         start_time: int = None,
         task_name: str = None,
     ):
-        # The page number. Default value: 1. Pages start from page 1.
+        # The page number from which to start displaying query results. Default value: 1, which indicates that query results are displayed starting from page 1.
         self.current_page = current_page
-        # The end timestamp of the task.
+        # The timestamp of the end time.
         self.end_time = end_time
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to display on each page when you perform a paginated query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > We recommend that you do not leave PageSize empty.
         self.page_size = page_size
-        # The ID of the IDC scan task. You can call the [DescribeSyncAssetTaskList](https://help.aliyun.com/document_detail/141932.html) operation to obtain the ID.
+        # The ID of the IDC scan task that you want to query. You can call the [DescribeSyncAssetTaskList](https://help.aliyun.com/document_detail/141932.html) operation to obtain the ID of an abnormal task.
         self.root_task_id = root_task_id
-        # The start timestamp of the task.
+        # The timestamp of the start time.
         self.start_time = start_time
-        # The name of the IDC scan task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

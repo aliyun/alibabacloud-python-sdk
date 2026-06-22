@@ -9,7 +9,7 @@ class GetSasContainerWebDefenseRuleCriteriaRequest(DaraModel):
         self,
         value: str = None,
     ):
-        # The value of the search condition. Fuzzy match is supported.
+        # The value of the query criterion. Fuzzy match is supported.
         self.value = value
 
     def validate(self):

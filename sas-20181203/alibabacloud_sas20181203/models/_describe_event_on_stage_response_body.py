@@ -13,9 +13,9 @@ class DescribeEventOnStageResponseBody(DaraModel):
         request_id: str = None,
         security_event_stage_response: main_models.DescribeEventOnStageResponseBodySecurityEventStageResponse = None,
     ):
-        # The ID of the request.
+        # The unique identifier that Alibaba Cloud generated for the request.
         self.request_id = request_id
-        # The platforms that are supported by the feature of container threat detection.
+        # The platforms supported by threat detection.
         self.security_event_stage_response = security_event_stage_response
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeEventOnStageResponseBodySecurityEventStageResponse(DaraModel):
         self,
         security_event_on_stag: Dict[str, Any] = None,
     ):
-        # The platform that is supported by the feature of container threat detection. Valid values:
+        # The platforms supported by threat detection.
         # 
-        # *   **container**
-        # *   **linux**
-        # *   **windows**
+        # - **container**: container
+        # - **linux**: linux
+        # - **windows**: windows.
         self.security_event_on_stag = security_event_on_stag
 
     def validate(self):

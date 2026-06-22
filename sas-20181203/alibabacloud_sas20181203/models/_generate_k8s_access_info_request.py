@@ -19,39 +19,38 @@ class GenerateK8sAccessInfoRequest(DaraModel):
         group_id: int = None,
         vendor: str = None,
     ):
-        # This parameter is deprecated.
+        # This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_api_name = aliyun_yundun_gateway_api_name
-        # This parameter is deprecated.
+        # This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_pop_name = aliyun_yundun_gateway_pop_name
-        # This parameter is deprecated.
+        # This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_project_name = aliyun_yundun_gateway_project_name
-        # The Simple Log Service Logstore that is used to store the audit logs.
+        # The SLS Logstore of the audit log.
         self.audit_log_store = audit_log_store
-        # The Simple Log Service project that is used to store the audit logs.
+        # The SLS project of the audit log.
         self.audit_project = audit_project
-        # The ID of the region in which the audit logs are stored.
+        # The region of the audit log.
         self.audit_region_id = audit_region_id
         # The name of the Kubernetes cluster.
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # CPU architectures are divided into ARM architecture and x86 architecture.
+        # The CPU architecture, which can be ARM or x86.
         self.cpu_arch = cpu_arch
-        # The time at which the container ends to be added.
+        # The expiration time for container access.
         # 
         # This parameter is required.
         self.expire_date = expire_date
-        # The group ID.
+        # The queried group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The service provider of the cloud asset. Valid values:
-        # 
-        # *   **Tencent**
-        # *   **HUAWEICLOUD**
-        # *   **Azure**
-        # *   **AWS**
-        # *   **Others**
+        # The cloud asset vendor. Valid values:
+        # - **Tencent**
+        # - **HUAWEICLOUD**
+        # - **Azure**
+        # - **AWS** 
+        # - **Other cloud assets**
         # 
         # This parameter is required.
         self.vendor = vendor

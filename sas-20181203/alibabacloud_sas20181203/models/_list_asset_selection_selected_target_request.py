@@ -12,11 +12,11 @@ class ListAssetSelectionSelectedTargetRequest(DaraModel):
         selection_key: str = None,
         target_list: List[str] = None,
     ):
-        # The unique ID of the asset.
+        # The unique identifier of the asset selection.
         # 
         # This parameter is required.
         self.selection_key = selection_key
-        # The details of queries.
+        # The query list.
         self.target_list = target_list
 
     def validate(self):

@@ -9,7 +9,7 @@ class InstallAegisForLingjunShrinkRequest(DaraModel):
         self,
         uuids_shrink: str = None,
     ):
-        # List of unique UUIDs for Lingjun bare metal.
+        # The list of unique UUIDs for Lingjun bare metal servers.
         self.uuids_shrink = uuids_shrink
 
     def validate(self):

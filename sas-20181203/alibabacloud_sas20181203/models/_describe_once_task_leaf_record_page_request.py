@@ -19,32 +19,31 @@ class DescribeOnceTaskLeafRecordPageRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page in a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end timestamp of the sub-task.
+        # The timestamp of the end time.
         self.end_time = end_time
-        # The number of entries to return on each page. Default value: 20
+        # The maximum number of entries per page in a paged query. Default value: 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Specifies whether extension information is associated.
+        # Specifies whether to associate extended information.
         # 
         # This parameter is required.
         self.relate_info = relate_info
-        # The source of the request.
+        # The request source.
         self.source = source
-        # The start timestamp of the sub-task.
+        # The timestamp of the start time.
         self.start_time = start_time
-        # The status information.
+        # The list of statuses.
         self.status_list = status_list
-        # The ID of the sub-task.
+        # The ID of the task to retrieve.
         self.task_id = task_id
-        # The type of the sub-task. Valid values:
-        # 
-        # *   **IMAGE_SCAN**: image scan task
-        # *   **IMAGE_REGISTRY_PULL**: image asset synchronization task
+        # The task type. Valid values:
+        # - **IMAGE_SCAN**: image scanning
+        # - **IMAGE_REGISTRY_PULL**: image asset synchronization.
         # 
         # This parameter is required.
         self.task_type = task_type

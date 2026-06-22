@@ -28,25 +28,52 @@ class UpdateFileProtectClientEventRequest(DaraModel):
         status: str = None,
         uuid: str = None,
     ):
+        # The list of alert notification levels.
         self.alert_levels = alert_levels
+        # The timestamp of the end time.
         self.end_time = end_time
+        # The list of excluded event IDs.
         self.exclude_id_list = exclude_id_list
+        # The file path.
         self.file_path = file_path
+        # The list of event IDs.
         self.id_list = id_list
+        # The ID of the asset instance.
         self.instance_id = instance_id
+        # The name of the asset instance.
         self.instance_name = instance_name
+        # The public IP address.
         self.internet_ip = internet_ip
+        # The internal IP address.
         self.intranet_ip = intranet_ip
+        # The new status. Valid values:
+        # 
+        # - **0**: Unhandled.
+        # - **1**: Handled.
+        # - **2**: Whitelisted.
+        # 
         # This parameter is required.
         self.new_status = new_status
+        # The type of the operation.
         self.operation = operation
+        # The process path.
         self.proc_path = proc_path
+        # The remarks.
         self.remark = remark
+        # The rule name.
         self.rule_name = rule_name
+        # Specifies whether to select all.
+        # 
         # This parameter is required.
         self.select_all = select_all
+        # The start time.
         self.start_time = start_time
+        # The event status. Valid values:
+        # - **0**: Unhandled.
+        # - **1**: Handled.
+        # - **2**: Whitelisted.
         self.status = status
+        # The UUID of the protected server.
         self.uuid = uuid
 
     def validate(self):

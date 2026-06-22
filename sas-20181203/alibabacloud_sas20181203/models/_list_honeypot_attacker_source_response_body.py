@@ -32,8 +32,9 @@ class ListHoneypotAttackerSourceResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -178,9 +179,11 @@ class ListHoneypotAttackerSourceResponseBodyList(DaraModel):
         self.last_time = last_time
         # The risk level. Valid values:
         # 
-        # *   **2**: low
-        # *   **3**: medium
-        # *   **4**: high
+        # - **2**: low
+        # 
+        # - **3**: medium
+        # 
+        # - **4**: high
         self.risk_level = risk_level
         # The source IP address of the attack.
         self.src_ip = src_ip

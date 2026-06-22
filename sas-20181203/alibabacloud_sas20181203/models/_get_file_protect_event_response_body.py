@@ -71,10 +71,13 @@ class GetFileProtectEventResponseBodyData(DaraModel):
     ):
         # The severity of alerts. Valid values:
         # 
-        # *   0: does not generate alerts
-        # *   1: sends notifications
-        # *   2: suspicious
-        # *   3: high-risk
+        # - 0: does not generate alerts
+        # 
+        # - 1: sends notifications
+        # 
+        # - 2: suspicious
+        # 
+        # - 3: high-risk
         self.alert_level = alert_level
         # The event command line.
         self.cmd_line = cmd_line
@@ -100,8 +103,9 @@ class GetFileProtectEventResponseBodyData(DaraModel):
         self.operation = operation
         # The type of the operating system. Valid values:
         # 
-        # *   **windows**: Windows
-        # *   **linux**: Linux
+        # - **windows**: Windows
+        # 
+        # - **linux**: Linux
         self.platform = platform
         # The path to the process.
         self.proc_path = proc_path
@@ -113,9 +117,11 @@ class GetFileProtectEventResponseBodyData(DaraModel):
         self.rule_name = rule_name
         # The status of the event. Valid values:
         # 
-        # *   0: not handled
-        # *   1: handled
-        # *   2: added to the whitelist
+        # - 0: not handled
+        # 
+        # - 1: handled
+        # 
+        # - 2: added to the whitelist
         self.status = status
         # User ID of the user who started the current process.
         self.user_id = user_id

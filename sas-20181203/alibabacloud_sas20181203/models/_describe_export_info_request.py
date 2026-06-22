@@ -11,14 +11,12 @@ class DescribeExportInfoRequest(DaraModel):
         resource_directory_account_id: int = None,
     ):
         # The ID of the export task.
-        # 
-        # > You can call the [ExportRecord](~~ExportRecord~~) operation to query the IDs of export tasks.
+        # > You can obtain this parameter by calling the [ExportRecord](~~ExportRecord~~) operation to initiate an export.
         # 
         # This parameter is required.
         self.export_id = export_id
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The ID of the member account in the resource directory.
+        # > You can obtain this parameter by invoking the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

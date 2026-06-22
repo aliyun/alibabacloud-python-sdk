@@ -9,9 +9,8 @@ class GetVirusScanConfigRequest(DaraModel):
         self,
         task_type: str = None,
     ):
-        # The type of the task. Valid values:
-        # 
-        # *   **VIRUS_VUL_SCHEDULE_SCAN**: a virus scan task.
+        # The task type. Valid values:
+        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
         self.task_type = task_type
 
     def validate(self):

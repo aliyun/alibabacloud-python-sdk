@@ -25,51 +25,48 @@ class UpdateOpaStrategyNewShrinkRequest(DaraModel):
         un_scaned_image: bool = None,
         white_list: List[str] = None,
     ):
-        # The risks that you want to detect by using the rule.
+        # The alert content details included in the policy.
         self.alarm_detail_shrink = alarm_detail_shrink
         # The cluster ID.
         # 
-        # > This parameter is deprecated. You can use the Scopes parameter to specify a scope in which cluster parameters take effect.
+        # >Notice: This parameter is deprecated. Use the Scopes parameter to specify the scope of clusters to which the policy applies..
         self.cluster_id = cluster_id
         # The cluster name.
-        # 
-        # > This parameter is deprecated.
+        # >Notice: This parameter is deprecated..
         self.cluster_name = cluster_name
-        # The rule description.
+        # The policy description.
         self.description = description
-        # The image names.
+        # The list of image names included in the policy.
         self.image_name = image_name
-        # The image tags.
+        # The list of image tags included in the policy.
         self.label = label
-        # Specifies whether the rule supports malicious Internet images. Valid values:
+        # Specifies whether the policy supports Internet malicious images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.malicious_image = malicious_image
-        # The action that is performed when the rule is hit. Valid values:
+        # The action to take when the policy is hit. Valid values:
         # 
-        # *   **1**: alert
-        # *   **2**: block
-        # *   **3**: allow
+        # - **1**: Alert.
+        # - **2**: Block.
+        # - **3**: Allow.
         self.rule_action = rule_action
-        # The application scope.
+        # The scope of the policy.
         self.scopes = scopes
-        # The ID of the rule.
-        # 
-        # >  You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the ID.
+        # The policy ID.
+        # >Call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
         self.strategy_id = strategy_id
-        # The rule name.
+        # The policy name.
         self.strategy_name = strategy_name
-        # The ID of the rule template.
-        # 
-        # >  You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
+        # The policy template ID.
+        # >Call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to obtain this parameter.
         self.strategy_template_id = strategy_template_id
-        # Specifies whether the rule supports unscanned images. Valid values:
+        # Specifies whether the policy supports unscanned images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.un_scaned_image = un_scaned_image
-        # The whitelists.
+        # The whitelist.
         self.white_list = white_list
 
     def validate(self):
@@ -186,22 +183,20 @@ class UpdateOpaStrategyNewShrinkRequestScopes(DaraModel):
         cluster_id: str = None,
         namespace_list: List[str] = None,
     ):
-        # The ID of the cluster node to which the rule is applied.
-        # 
-        # >  You can call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to query the ID of the cluster node to which the rule is applied.
+        # The policy instance ID in the cluster.
+        # > Call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to obtain this parameter.
         self.ack_policy_instance_id = ack_policy_instance_id
         # Specifies whether all namespaces are included. Valid values:
         # 
-        # *   **0**: Not all namespaces are included.
-        # *   **1**: All namespaces are included.
+        # - **0**: No.
+        # - **1**: Yes.
         self.all_namespace = all_namespace
-        # The cluster ID.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the cluster ID.
+        # The ID of the container cluster.
+        # > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The namespaces.
+        # The list of namespaces.
         # 
-        # > This parameter is valid only when the AllNamespace parameter is set to 0.
+        # >Notice: This parameter takes effect only when AllNamespace is set to 0..
         self.namespace_list = namespace_list
 
     def validate(self):

@@ -9,10 +9,10 @@ class CreateServiceTrailRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region ID of the instance. Valid values:
+        # The region ID of the instance to query. Valid values:
         # 
-        # *   **cn-hangzhou**: International
-        # *   **ap-southeast-1**: Singapore
+        # - **cn-hangzhou** (default): Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
 
     def validate(self):

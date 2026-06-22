@@ -23,62 +23,54 @@ class DescribeCheckWarningSummaryRequest(DaraModel):
         type_name: str = None,
         uuids: str = None,
     ):
-        # The ID of the container cluster.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+        # The ID of the container cluster to query.
+        # > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The name of the container field. Valid values:
+        # The container field. Valid values:
         # 
-        # *   **clusterId**: the ID of the cluster
-        # *   **image**: the name of the image
-        # *   **imageId**: the ID of the image
-        # *   **namespace**: the namespace
+        # - **clusterId**: cluster ID
+        # - **image**: image name
+        # - **imageId**: image ID
+        # - **namespace**: namespace.
         self.container_field_name = container_field_name
         # The value of the container field.
         self.container_field_value = container_field_value
-        # The number of the page to return.
+        # The page number for a paged query.
         self.current_page = current_page
-        # The ID of the asset group.
-        # 
-        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
+        # The group ID of the server to query.
+        # > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the group ID of the server.
         self.group_id = group_id
-        # The language of the content within the request and the response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page.
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
-        # The name of the risk item.
+        # The name of the baseline check risk item.
         self.risk_name = risk_name
         # The status of the baseline check. Valid values:
-        # 
-        # *   **1**: failed
-        # *   **3**: passed
+        # - **1**: failed 
+        # - **3**: passed.
         self.risk_status = risk_status
         # The source IP address of the request.
         self.source_ip = source_ip
         # The status of the check item. Valid values:
-        # 
-        # *   **1**: failed
-        # *   **2**: verifying
-        # *   **3**: passed
-        # *   **5**: expired
-        # *   **6**: ignored
+        # - **1**: failed
+        # - **2**: verifying 
+        # - **3**: passed 
+        # - **5**: expired 
+        # - **6**: ignored.
         self.status = status
         # The ID of the baseline check policy.
         self.strategy_id = strategy_id
-        # The type of the query condition. Valid values:
-        # 
-        # *   **uuid**: the ID of an asset
+        # The query type. Valid values:
+        # - **uuid**: asset ID.
         self.target_type = target_type
-        # The level-1 type of check items.
-        # 
-        # >  You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to query the level-1 types of check items.
+        # The level-1 type of the baseline.
+        # > Call the [DescribeRiskType](~~DescribeRiskType~~) operation to obtain this parameter.
         self.type_name = type_name
         # The UUID of the asset.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of assets.
+        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuids = uuids
 
     def validate(self):

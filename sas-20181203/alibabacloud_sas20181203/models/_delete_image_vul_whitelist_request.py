@@ -10,12 +10,11 @@ class DeleteImageVulWhitelistRequest(DaraModel):
         ids: str = None,
         lang: str = None,
     ):
-        # The ID of the whitelist. Separate multiple IDs with commas (,).
+        # The vulnerability whitelist IDs. Separate multiple IDs with commas (,).
         self.ids = ids
         # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

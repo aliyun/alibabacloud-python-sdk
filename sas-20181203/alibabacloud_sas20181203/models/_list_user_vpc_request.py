@@ -9,7 +9,7 @@ class ListUserVpcRequest(DaraModel):
         self,
         k_8s_region_id: str = None,
     ):
-        # Region.
+        # The region.
         # 
         # This parameter is required.
         self.k_8s_region_id = k_8s_region_id

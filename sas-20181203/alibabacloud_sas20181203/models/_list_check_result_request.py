@@ -40,79 +40,111 @@ class ListCheckResultRequest(DaraModel):
         self.current_page = current_page
         # Specifies whether the check item supports custom parameters. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.custom_param = custom_param
         # The instance IDs of the cloud services that you want to query. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
         # The asset type of the cloud services. Valid values:
         # 
-        # *   **ECS**: Elastic Compute Service (ECS)
-        # *   **SLB**: Server Load Balancer (SLB)
-        # *   **RDS**: ApsaraDB RDS
-        # *   **MONGODB**: ApsaraDB for MongoDB (MongoDB)
-        # *   **KVSTORE**: ApsaraDB for Redis (Redis)
-        # *   **ACR**: Container Registry
-        # *   **CSK**: Container Service for Kubernetes (ACK)
-        # *   **VPC**: Virtual Private Cloud (VPC)
-        # *   **ACTIONTRAIL**: ActionTrail
-        # *   **CDN**: Alibaba Cloud CDN (CDN)
-        # *   **CAS**: Certificate Management Service (formerly SSL Certificates Service)
-        # *   **RDC**: Apsara Devops
-        # *   **RAM**: Resource Access Management (RAM)
-        # *   **DDOS**: Anti-DDoS
-        # *   **WAF**: Web Application Firewall (WAF)
-        # *   **OSS**: Object Storage Service (OSS)
-        # *   **POLARDB**: PolarDB
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
-        # *   **MSE**: Microservices Engine (MSE)
-        # *   **NAS**: File Storage NAS (NAS)
-        # *   **SDDP**: Sensitive Data Discovery and Protection (SDDP)
-        # *   **EIP**: Elastic IP Address (EIP)
+        # - **ECS**: Elastic Compute Service (ECS)
+        # 
+        # - **SLB**: Server Load Balancer (SLB)
+        # 
+        # - **RDS**: ApsaraDB RDS
+        # 
+        # - **MONGODB**: ApsaraDB for MongoDB (MongoDB)
+        # 
+        # - **KVSTORE**: ApsaraDB for Redis (Redis)
+        # 
+        # - **ACR**: Container Registry
+        # 
+        # - **CSK**: Container Service for Kubernetes (ACK)
+        # 
+        # - **VPC**: Virtual Private Cloud (VPC)
+        # 
+        # - **ACTIONTRAIL**: ActionTrail
+        # 
+        # - **CDN**: Alibaba Cloud CDN (CDN)
+        # 
+        # - **CAS**: Certificate Management Service (formerly SSL Certificates Service)
+        # 
+        # - **RDC**: Apsara Devops
+        # 
+        # - **RAM**: Resource Access Management (RAM)
+        # 
+        # - **DDOS**: Anti-DDoS
+        # 
+        # - **WAF**: Web Application Firewall (WAF)
+        # 
+        # - **OSS**: Object Storage Service (OSS)
+        # 
+        # - **POLARDB**: PolarDB
+        # 
+        # - **POSTGRESQL**: ApsaraDB RDS for PostgreSQL
+        # 
+        # - **MSE**: Microservices Engine (MSE)
+        # 
+        # - **NAS**: File Storage NAS (NAS)
+        # 
+        # - **SDDP**: Sensitive Data Discovery and Protection (SDDP)
+        # 
+        # - **EIP**: Elastic IP Address (EIP)
         self.instance_types = instance_types
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # Specifies whether fixing is supported. Valid values:
         # 
-        # *   **SUPPORT_REPAIR**
-        # *   **NOT_SUPPORT_REPAIR**
+        # - **SUPPORT_REPAIR**
+        # 
+        # - **NOT_SUPPORT_REPAIR**
         self.operation_types = operation_types
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
         # The region ID of the instance. Valid values:
         # 
-        # *   **cn-hangzhou**: International
-        # *   **ap-southeast-1**: Singapore
+        # - **cn-hangzhou**: International
+        # 
+        # - **ap-southeast-1**: Singapore
         self.region_id = region_id
         # The IDs of the requirements.
         self.requirement_ids = requirement_ids
         # The Alibaba Cloud account ID of the member in the resource directory.
         # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # > You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
         self.resource_directory_account_id = resource_directory_account_id
         # The risk levels of check items. Separate multiple risk levels with commas (,). Valid values:
         # 
-        # *   **HIGH**
-        # *   **MEDIUM**
-        # *   **LOW**
+        # - **HIGH**
+        # 
+        # - **MEDIUM**
+        # 
+        # - **LOW**
         self.risk_levels = risk_levels
         # The types of the conditions based on which check items are sorted. Valid values:
         # 
-        # *   **RISK_LEVEL**: risk level
-        # *   **STATUS**: status
+        # - **RISK_LEVEL**: risk level
+        # 
+        # - **STATUS**: status
         self.sort_types = sort_types
         # The standard IDs.
         self.standard_ids = standard_ids
         # The statuses of check items. Separate multiple statuses with commas (,). Valid values:
         # 
-        # *   **PASS**
-        # *   **NOT_PASS**
-        # *   **CHECKING**
-        # *   **NOT_CHECK**
-        # *   **WHITELIST**
+        # - **PASS**
+        # 
+        # - **NOT_PASS**
+        # 
+        # - **CHECKING**
+        # 
+        # - **NOT_CHECK**
+        # 
+        # - **WHITELIST**
         self.statuses = statuses
         # Delete the custom category in a custom inspection item.
         self.task_sources = task_sources
@@ -120,10 +152,13 @@ class ListCheckResultRequest(DaraModel):
         self.types = types
         # The cloud service providers. Valid values:
         # 
-        # *   **ALIYUN**: Alibaba Cloud
-        # *   **TENCENT**: Tencent Cloud
-        # *   **AWS**: Amazon Web Services (AWS)
-        # *   **MICROSOFT**: Microsoft Azure
+        # - **ALIYUN**: Alibaba Cloud
+        # 
+        # - **TENCENT**: Tencent Cloud
+        # 
+        # - **AWS**: Amazon Web Services (AWS)
+        # 
+        # - **MICROSOFT**: Microsoft Azure
         self.vendors = vendors
 
     def validate(self):

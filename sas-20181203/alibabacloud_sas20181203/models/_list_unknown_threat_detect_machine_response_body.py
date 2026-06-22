@@ -14,9 +14,11 @@ class ListUnknownThreatDetectMachineResponseBody(DaraModel):
         page_info: main_models.ListUnknownThreatDetectMachineResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # An array of instance details.
         self.data = data
+        # The pagination information.
         self.page_info = page_info
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -70,9 +72,13 @@ class ListUnknownThreatDetectMachineResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of entries on the current page.
         self.count = count
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -129,15 +135,33 @@ class ListUnknownThreatDetectMachineResponseBodyData(DaraModel):
         uuid: str = None,
     ):
         self.effect_days = effect_days
+        # The instance name.
         self.instance_name = instance_name
+        # The public IP address.
         self.internet_ip = internet_ip
+        # The private IP address.
         self.intranet_ip = intranet_ip
         self.plugin_status = plugin_status
+        # The process count.
         self.process_count = process_count
+        # The instance status. Valid values:
+        # 
+        # - **monitoring**: The instance is being monitored for threats.
+        # 
+        # - **blocking**: The instance is blocking unauthorized processes.
+        # 
+        # - **studying**: The instance is in a learning phase.
         self.status = status
+        # The whitelist mode. Valid values:
+        # 
+        # - **hash**: process hash
+        # 
+        # - **path**: process path
         self.study_mode = study_mode
         self.study_remain_days = study_remain_days
+        # The timestamp when the learning phase started. Unit: seconds.
         self.study_start_time = study_start_time
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):

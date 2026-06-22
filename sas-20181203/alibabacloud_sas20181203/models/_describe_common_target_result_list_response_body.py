@@ -13,9 +13,9 @@ class DescribeCommonTargetResultListResponseBody(DaraModel):
         request_id: str = None,
         target_config: main_models.DescribeCommonTargetResultListResponseBodyTargetConfig = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
-        # The information about the configuration item.
+        # The configuration information.
         self.target_config = target_config
 
     def validate(self):
@@ -56,30 +56,29 @@ class DescribeCommonTargetResultListResponseBodyTargetConfig(DaraModel):
         total_count: str = None,
         type: str = None,
     ):
-        # The identifier that indicates whether the configuration item is applied to the server. Valid values:
+        # The asset configuration flag. Valid values:
         # 
-        # *   **add**: applied
-        # *   **del**: not applied
+        # - **add**: The configuration takes effect on the asset.
+        # - **del**: The configuration does not take effect on the asset.
         self.flag = flag
-        # The default identifier.
+        # The default flag for asset configuration.
         self.target_default = target_default
-        # An array that consists of the IDs of the server groups or the UUIDs of the servers.
-        # 
-        # >  If **uuid** is returned for the **TargetType** parameter, **UUIDs** of the servers are returned. If **groupId** is returned for the **TargetType** parameter, IDs of the server groups are returned.
+        # The group ID or asset UUID on which the configuration takes effect.
+        # > If **TargetType** returns **uuid**, this field indicates the **UUID** of the asset. If **TargetType** returns **groupId**, this field indicates the group ID.
         self.target_list = target_list
-        # The type of the server to which the configuration item is applied. Valid values:
+        # The selection mode for the assets on which the configuration takes effect. Valid values:
         # 
-        # *   **uuid**: a server
-        # *   **groupId**: a server group
+        # - **uuid**: Added by individual asset.
+        # - **groupId**: Added by server group.
         self.target_type = target_type
         # The total number of entries returned.
         self.total_count = total_count
-        # The type of the configuration item. Valid values:
+        # The configuration type. Valid values:
         # 
-        # *   **webshell_timescan**: webshell detection and removal
-        # *   **aliscriptengine**: in-depth detection engine
-        # *   **alidetect**: installation scope of local file detection
-        # *   **alidetect-scan-enable**: detection scope of local file detection
+        # - **webshell_timescan**: web shell scan.
+        # - **aliscriptengine**: deep detection engine.
+        # - **alidetect**: installation scope of the local file detection engine.
+        # - **alidetect-scan-enable**: detection scope of the local file detection engine.
         self.type = type
 
     def validate(self):

@@ -12,12 +12,11 @@ class GetOssBucketScanStatisticRequest(DaraModel):
         bucket_name_list: List[str] = None,
         source: str = None,
     ):
-        # The names of the buckets.
+        # The list of bucket names.
         self.bucket_name_list = bucket_name_list
         # The data source. Valid values:
-        # 
-        # *   **API**: API operations.
-        # *   **OSS**: Object Storage Service (OSS) file check.
+        # - **API**: API-based scan.
+        # - **OSS**: OSS-based scan.
         self.source = source
 
     def validate(self):

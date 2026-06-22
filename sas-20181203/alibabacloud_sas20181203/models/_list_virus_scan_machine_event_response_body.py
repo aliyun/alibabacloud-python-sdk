@@ -14,11 +14,11 @@ class ListVirusScanMachineEventResponseBody(DaraModel):
         page_info: main_models.ListVirusScanMachineEventResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The details of the alert event.
+        # The details of the alert events.
         self.data = data
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class ListVirusScanMachineEventResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of alert events returned.
         self.total_count = total_count
 
     def validate(self):
@@ -122,25 +122,24 @@ class ListVirusScanMachineEventResponseBodyData(DaraModel):
         last_time_stamp: int = None,
         level: str = None,
     ):
-        # The details of the exception.
+        # The details of the exception event.
         self.details = details
         # The ID of the alert event.
         self.event_id = event_id
-        # The name of the alert event. The value indicates a subtype.
+        # The name (subtype) of the alert event.
         self.event_name = event_name
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
         # The public IP address.
         self.internet_ip = internet_ip
         # The private IP address.
         self.intranet_ip = intranet_ip
-        # The timestamp when the alert event was last generated. Unit: milliseconds.
+        # The timestamp of the last occurrence, in milliseconds.
         self.last_time_stamp = last_time_stamp
         # The risk level of the alert event. Valid values:
-        # 
-        # *   **serious**
-        # *   **suspicious**
-        # *   **remind**
+        # - **serious**: Critical.
+        # - **suspicious**: Suspicious.
+        # - **remind**: Reminder.
         self.level = level
 
     def validate(self):
@@ -221,20 +220,21 @@ class ListVirusScanMachineEventResponseBodyDataDetails(DaraModel):
         type: str = None,
         value_display: str = None,
     ):
-        # The display type of the value for ValueDisplay. Valid value:
-        # 
-        # *   **download_url**, which indicates a download URL.
+        # The display type of valueDisplay.
+        # Valid values:
+        # - **download_url**: download link.
         self.info_type = info_type
         # The display name of the alert event.
         self.name_display = name_display
-        # The format in which the details of the exception are displayed.
+        # The display format of the exception event details.
         # 
         # Valid values:
         # 
-        # *   **text**
-        # *   **html**
+        # - **text**: plain text
+        # - **html**: rich text.
         self.type = type
-        # The attribute information about the exception. The information includes the logon time or location of an alert triggered by an unusual logon, and the trojan file path or trojan type of an alert.
+        # The additional attribute information of the exception event.
+        # For example, the logon time or logon location of an unusual logon alert, or the trojan file path or trojan type of an alert.
         self.value_display = value_display
 
     def validate(self):

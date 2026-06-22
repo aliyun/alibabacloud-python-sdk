@@ -15,14 +15,12 @@ class DeleteVulAutoRepairConfigRequest(DaraModel):
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The IDs of the configurations.
-        # 
-        # >  You can call the [ListVulAutoRepairConfig](~~ListVulAutoRepairConfig~~) operation to query the IDs.
+        # The list of configuration IDs to delete.
+        # > You can call the [ListVulAutoRepairConfig](~~ListVulAutoRepairConfig~~) operation to obtain configuration IDs.
         self.config_id_list = config_id_list
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   cve: Linux software vulnerability
-        # *   sys: Windows system vulnerability
+        # The type of the vulnerability. Valid values: 
+        # - cve: Linux software vulnerability 
+        # - sys: Windows system vulnerability.
         self.type = type
 
     def validate(self):

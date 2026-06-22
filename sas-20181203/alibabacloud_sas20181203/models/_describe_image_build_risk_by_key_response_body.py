@@ -16,18 +16,17 @@ class DescribeImageBuildRiskByKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The status code of the API call.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The detailed information about the error code.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -82,9 +81,9 @@ class DescribeImageBuildRiskByKeyResponseBodyData(DaraModel):
         list: List[main_models.DescribeImageBuildRiskByKeyResponseBodyDataList] = None,
         page_info: main_models.DescribeImageBuildRiskByKeyResponseBodyDataPageInfo = None,
     ):
-        # The risks.
+        # The list of build risks.
         self.list = list
-        # The pagination information.
+        # The paging query parameters.
         self.page_info = page_info
 
     def validate(self):
@@ -131,11 +130,10 @@ class DescribeImageBuildRiskByKeyResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the current page in a paged query. Default value: **1**.
         self.current_page = current_page
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -186,29 +184,28 @@ class DescribeImageBuildRiskByKeyResponseBodyDataList(DaraModel):
         risk_key_name: str = None,
         risk_level: str = None,
     ):
-        # The suggestion on how to handle the risk.
+        # The remediation suggestion.
         self.advice = advice
-        # The description of the suggestion on how to handle the risk.
+        # The description of the build risk remediation suggestion.
         self.description = description
-        # The image build command.
+        # The build command of the image layer.
         self.layer_cmd = layer_cmd
-        # The digest of the image.
+        # The digest of the image layer.
         self.layer_digest = layer_digest
-        # The prompt message on the risk.
+        # The risk prompt.
         self.promt = promt
-        # The type key of the risk rule.
+        # The category key of the build risk rule.
         self.risk_class = risk_class
-        # The type name of the risk rule.
+        # The category name of the build risk rule.
         self.risk_class_name = risk_class_name
-        # The key of the risk rule.
+        # The key of the build risk rule.
         self.risk_key = risk_key
-        # The name of the risk rule.
+        # The name of the build risk rule.
         self.risk_key_name = risk_key_name
         # The risk level. Valid values:
-        # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: high.
+        # - **medium**: medium.
+        # - **low**: low.
         self.risk_level = risk_level
 
     def validate(self):

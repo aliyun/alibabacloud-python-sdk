@@ -31,80 +31,75 @@ class DescribeCustomizeReportConfigDetailResponseBody(DaraModel):
         target_uids: str = None,
         title: str = None,
     ):
-        # The ID of the chart that is included in the report. Multiple IDs are separated by commas (,).
+        # The report chart configuration IDs, separated by commas.
         self.chart_ids = chart_ids
-        # The grouping type. Valid values:
-        # 
-        # *   **ALIYUN_RG**
-        # *   **SAS_GROUP**
+        # The group type. Valid values:
+        # - **ALIYUN_RG**: ALIYUN_RG.
+        # - **SAS_GROUP**: SAS_GROUP.
         self.group_type = group_type
-        # Indicates whether the report is the default report. Valid values:
-        # 
-        # *   **0**: no.
-        # *   **1**: yes.
+        # Indicates whether the report is a default report. Valid values:
+        # - **0**: Not a default report.
+        # - **1**: A default report.
         self.is_default = is_default
-        # Whether the new account is connected by default. Values:
-        # - **true**: Yes.
-        # - **false**: No.
-        # > Only supported in version 2.0.0.
+        # Specifies whether newly added accounts are included by default. Valid values:
+        # 
+        # - **true**: Included.
+        # - **false**: Not included.
+        # > Only version 2.0.0 supports this parameter.
         self.member_account_sync_flag = member_account_sync_flag
-        # The time when the report is pinned.
+        # The pinned time.
         self.pinned_time = pinned_time
-        # The email address of the recipient. Multiple email addresses are separated by commas (,).
+        # The recipient email addresses, separated by commas.
         self.recipients = recipients
-        # The most recent days for report statistics.
+        # The number of recent days covered by the report statistics.
         self.report_days = report_days
-        # The end date on which the report is sent.
+        # The end date for report delivery.
         self.report_end_date = report_end_date
-        # The ID of the report.
+        # The report ID.
         self.report_id = report_id
-        # The language of the report. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.report_lang = report_lang
-        # The time range in which the report is sent. Valid values:
-        # 
-        # *   **1**: 00:00 to 06:00.
-        # *   **2**: 06:00 to 12:00.
-        # *   **3**: 12:00 to 18:00.
-        # *   **4**: 18:00 to 24:00.
+        # The report delivery time range. Valid values:
+        # - **1**: 0:00 to 6:00.
+        # - **2**: 6:00 to 12:00.
+        # - **3**: 12:00 to 18:00.
+        # - **4**: 18:00 to 24:00.
         self.report_send_type = report_send_type
-        # The start date on which the report is sent.
+        # The start date for report delivery.
         self.report_start_date = report_start_date
-        # The status of the report. Valid values:
-        # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # The report status. Valid values:
+        #  - **0**: Disabled.
+        #  - **1**: Enabled.
         self.report_status = report_status
-        # The type of the report. Valid values:
+        # The report type. Valid values:
         # 
-        # *   **0**: daily report.
-        # *   **1**: weekly report.
-        # *   **2**: monthly report.
-        # *   **3**: report whose statistics are collected in a custom time range.
+        # - **0**: Daily report.
+        # - **1**: Weekly report.
+        # - **2**: Monthly report.
+        # - **3**: Custom period.
         self.report_type = report_type
         # The request ID.
         self.request_id = request_id
-        # The end time at which the report is sent. The value is in the HH:mm:ss format.
+        # The delivery end time, in the format of HH:mm:ss.
         self.send_end_time = send_end_time
-        # The exact day within the sending period.
+        # The specific execution dates within the delivery period.
         self.send_period_days = send_period_days
-        # The interval at which the report is sent. Valid values:
-        # 
-        # *   **DAY**
-        # *   **WEEK**
-        # *   **MONTH**
+        # The delivery period type. Valid values:
+        # - **DAY**: day.
+        # - **WEEK**: week.
+        # - **MONTH**: month.
         self.send_period_type = send_period_type
-        # The start time at which the report is sent. The value is in the HH:mm:ss format.
+        # The delivery start time, in the format of HH:mm:ss.
         self.send_start_time = send_start_time
-        # The time at which the report is sent. The value is in the HH:mm:ss format.
+        # The delivery time, in the format of HH:mm:ss.
         self.send_time = send_time
-        # The groups.
+        # The targets within the group.
         self.target_groups = target_groups
-        # The ID of the Alibaba Cloud account. Multiple IDs are separated by commas (,).
+        # The list of target UIDs, separated by commas.
         self.target_uids = target_uids
-        # The title of the report.
+        # The title.
         self.title = title
 
     def validate(self):

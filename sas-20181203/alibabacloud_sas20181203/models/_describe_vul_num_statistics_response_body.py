@@ -21,31 +21,31 @@ class DescribeVulNumStatisticsResponseBody(DaraModel):
         vul_later_sum: int = None,
         vul_nntf_sum: int = None,
     ):
-        # The number of application vulnerabilities that are detected on the asset by using the web scanner.
+        # The number of application vulnerability entries detected by the scanner on your assets.
         self.app_cnt = app_cnt
-        # The number of application vulnerabilities that are detected on the asset by using the web scanner.
+        # The number of application vulnerabilities detected by the scanner on your assets.
         self.app_num = app_num
-        # The number of Web-CMS vulnerabilities that are handled.
+        # The total number of handled CMS vulnerabilities.
         self.cms_dealed_total_num = cms_dealed_total_num
-        # The number of Web-CMS vulnerabilities that are detected on the asset.
+        # The number of Web-CMS vulnerabilities on your assets.
         self.cms_num = cms_num
-        # The number of Linux software vulnerabilities that are detected on the asset.
+        # The number of Linux software vulnerabilities on your assets.
         self.cve_num = cve_num
-        # The number of urgent vulnerabilities that are detected on the asset.
+        # The number of urgent vulnerabilities on your assets.
         self.emg_num = emg_num
         # The request ID.
         self.request_id = request_id
-        # The number of middleware vulnerabilities that are detected on the asset.
+        # The number of middleware vulnerabilities on your assets.
         self.sca_num = sca_num
-        # The number of Windows system vulnerabilities that are detected on the asset.
+        # The number of Windows system vulnerabilities on your assets.
         self.sys_num = sys_num
-        # The number of vulnerabilities that have the high priority.
+        # The number of vulnerabilities with a high fix priority.
         self.vul_asap_sum = vul_asap_sum
-        # The number of vulnerabilities that are handled.
+        # This field is deprecated.
         self.vul_dealed_total_num = vul_dealed_total_num
-        # The number of vulnerabilities that have the medium priority.
+        # The number of vulnerabilities with a medium fix priority.
         self.vul_later_sum = vul_later_sum
-        # The number of vulnerabilities that have the low priority.
+        # The number of vulnerabilities with a low fix priority.
         self.vul_nntf_sum = vul_nntf_sum
 
     def validate(self):

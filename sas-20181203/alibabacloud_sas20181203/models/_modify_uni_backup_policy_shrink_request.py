@@ -17,40 +17,37 @@ class ModifyUniBackupPolicyShrinkRequest(DaraModel):
         retention: int = None,
         speed_limiter: int = None,
     ):
-        # The name of the database account.
+        # The username of the database account.
         self.account_name = account_name
         # The password of the database account.
         self.account_password = account_password
-        # The policy for full backup. The value of this parameter is a JSON string that contains the following fields:
+        # The full backup policy. The value is in JSON format and contains the following fields:
         # 
-        # *   **start**: the start time of a backup task
-        # *   **interval**: the interval of backup tasks
-        # *   **type**: the unit of the interval
-        # *   **days**: the days of a week on which a backup task is performed
+        # - **start**: the backup start time.
+        # - **interval**: the interval.
+        # - **type**: the unit of the interval.
+        # - **days**: the days of the week on which the backup is performed.
         self.full_plan_shrink = full_plan_shrink
-        # The policy for incremental backup. The value of this parameter is a JSON string that contains the following fields:
-        # 
-        # *   **start**: the start time of a backup task
-        # *   **interval**: the interval of backup tasks
-        # *   **type**: the unit of the interval
-        # *   **days**: the days of a week on which a backup task is performed
+        # The incremental backup policy. The value is in JSON format and contains the following fields:
+        # - **start**: the backup start time.
+        # - **interval**: the interval.
+        # - **type**: the unit of the interval.
+        # - **days**: the days of the week on which the backup is performed.
         self.inc_plan_shrink = inc_plan_shrink
-        # The ID of the anti-ransomware policy.
-        # 
-        # > You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+        # The ID of the anti-ransomware backup policy for databases.
+        # >You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The name of the anti-ransomware policy.
+        # The name of the anti-ransomware backup policy for databases.
         self.policy_name = policy_name
-        # The status of the anti-ransomware policy. Valid values:
-        # 
-        # *   **enabled**
-        # *   **disabled**
+        # The status of the policy. Valid values:
+        # - **enabled**: The policy is enabled.
+        # - **disabled**: The policy is disabled.
         self.policy_status = policy_status
-        # The retention period of the backup snapshot.
+        # The number of days for which backup snapshots are retained.
         self.retention = retention
-        # The maximum network bandwidth that is allowed during data backup. Unit: bytes.
+        # The network bandwidth throttling for backup network bandwidth. Unit: bytes.
         self.speed_limiter = speed_limiter
 
     def validate(self):

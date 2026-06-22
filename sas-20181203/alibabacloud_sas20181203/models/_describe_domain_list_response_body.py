@@ -14,11 +14,11 @@ class DescribeDomainListResponseBody(DaraModel):
         page_info: main_models.DescribeDomainListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the information about domain names.
+        # The list of domain name asset information.
         self.domain_list_response_list = domain_list_response_list
-        # The pagination information.
+        # The pagination information of the query result.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeDomainListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of domain names displayed on the current page in a paged query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries returned per page. Default value: **10**.
+        # The number of domain names displayed on each page in a paged query. Default value: **10**, which indicates that 10 domain names are displayed on each page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of domain names returned.
         self.total_count = total_count
 
     def validate(self):
@@ -125,9 +125,9 @@ class DescribeDomainListResponseBodyDomainListResponseList(DaraModel):
         domain: str = None,
         ip_list: str = None,
     ):
-        # The name of the domain or website.
+        # The domain name or website name.
         self.domain = domain
-        # The IP addresses of the domain name.
+        # The IP address information associated with the domain name.
         self.ip_list = ip_list
 
     def validate(self):

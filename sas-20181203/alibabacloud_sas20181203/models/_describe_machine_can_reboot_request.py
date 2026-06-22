@@ -10,12 +10,11 @@ class DescribeMachineCanRebootRequest(DaraModel):
         type: str = None,
         uuid: str = None,
     ):
-        # The type of the vulnerabilities. Valid values:
-        # 
-        # *   cve: Linux software vulnerabilities
-        # *   sys: Windows system vulnerabilities
+        # The type of vulnerability that requires a restart to fix. Valid values:
+        # - cve: Linux software vulnerability
+        # - sys: Windows system vulnerability.
         self.type = type
-        # The UUID of the server.
+        # The UUID of the server to restart.
         self.uuid = uuid
 
     def validate(self):

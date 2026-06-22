@@ -14,17 +14,17 @@ class GetDefenceCountResponseBody(DaraModel):
         tamper_proof_15days: int = None,
         tamper_proof_total: int = None,
     ):
-        # The number of handled alerts of the precise defense type in the last 15 days.
+        # The number of alerts handled by accurate access control in the last 15 days.
         self.defence_count_15days = defence_count_15days
-        # The number of handled alerts of the precision defense type.
+        # The total number of alerts handled by accurate access control.
         self.defence_count_total = defence_count_total
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of handled security alerts of Cloud Security Center.
+        # The number of security alerts that have been handled in Security Center.
         self.suspicious_dealt_count = suspicious_dealt_count
-        # The number of handled alerts of the web tamper proofing type in the last 15 days.
+        # The number of alerting events handled by web tamper-proofing in the last 15 days.
         self.tamper_proof_15days = tamper_proof_15days
-        # The number of handled alerts of the web tamper proofing type.
+        # The total number of alerting events handled by web tamper-proofing.
         self.tamper_proof_total = tamper_proof_total
 
     def validate(self):

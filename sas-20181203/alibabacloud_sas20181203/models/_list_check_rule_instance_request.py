@@ -15,14 +15,14 @@ class ListCheckRuleInstanceRequest(DaraModel):
         page_size: int = None,
         rule_id: int = None,
     ):
-        # The page number of the current page when performing a paginated query.
+        # The page number to return when paging is used.
         self.current_page = current_page
-        # Instance list.
+        # The list of instances.
         self.instance_list = instance_list
-        # The maximum number of items per page in a paginated query. The default value is **20**.
+        # The maximum number of entries to return per page when paging is used. Default value: **20**.
         self.page_size = page_size
-        # Rule ID.
-        # > You can call the [LisCheckRule](https://help.aliyun.com/document_detail/2590599.html) interface to get this parameter.
+        # The rule ID.
+        # > Call the [LisCheckRule](https://help.aliyun.com/document_detail/2590599.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.rule_id = rule_id
@@ -79,11 +79,11 @@ class ListCheckRuleInstanceRequestInstanceList(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # Asset instance ID.
-        # > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) interface to get this parameter.
+        # The instance ID of the asset.
+        # > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
         self.instance_id = instance_id
-        # The region where the asset is located.
-        # > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) interface to get this parameter.
+        # The region where the asset resides.
+        # > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
         self.region_id = region_id
 
     def validate(self):

@@ -16,9 +16,9 @@ class ListOperationProcessDetailResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The information about the operation subtasks.
+        # The list of operation subtask information.
         self.process_details = process_details
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,31 +78,30 @@ class ListOperationProcessDetailResponseBodyProcessDetails(DaraModel):
         status_code: int = None,
         task_id: str = None,
     ):
-        # The subtype of the asset associated with the operation subtask.
+        # The asset subtype associated with the operation subtask.
         self.asset_sub_type = asset_sub_type
-        # The type of the asset associated with the operation subtask.
+        # The asset type associated with the operation subtask.
         self.asset_type = asset_type
-        # The vendor of the asset associated with the operation subtask.
+        # The asset vendor associated with the operation subtask.
         self.asset_vendor = asset_vendor
-        # The check items associated with the operation subtask.
+        # The list of check items associated with the operation subtask.
         self.checks = checks
-        # The timestamp when the task was created. Unit: milliseconds.
+        # The timestamp when the task was created, in milliseconds.
         self.create_time = create_time
-        # The ID of the operation subtask.
+        # The operation subtask ID.
         self.detail_task_id = detail_task_id
-        # The end timestamp of the operation subtask. Unit: milliseconds.
+        # The timestamp when the operation subtask ended, in milliseconds.
         self.end_time = end_time
-        # The start timestamp of the operation subtask. Unit: milliseconds.
+        # The timestamp when the operation subtask started, in milliseconds.
         self.start_time = start_time
-        # The subtask status code. Enumerated values:
-        # 
-        # *   0: not started.
-        # *   1: running.
-        # *   2: successful.
-        # *   3: times out.
-        # *   4: failed.
+        # The operation subtask status code. Valid values:
+        # - 0: not started.
+        # - 1: checking.
+        # - 2: succeeded.
+        # - 3: timed out.
+        # - 4: failed.
         self.status_code = status_code
-        # The ID of the operation subtask.
+        # The operation subtask ID.
         self.task_id = task_id
 
     def validate(self):
@@ -232,11 +231,11 @@ class ListOperationProcessDetailResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count

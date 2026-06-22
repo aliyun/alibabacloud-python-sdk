@@ -10,11 +10,11 @@ class QueryGroupIdByGroupNameRequest(DaraModel):
         group_name: str = None,
         source_ip: str = None,
     ):
-        # The name of the asset group.
+        # The name of the group to query.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

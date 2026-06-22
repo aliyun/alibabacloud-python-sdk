@@ -16,9 +16,9 @@ class DescribeOnceTaskResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
-        # An array that consists of the tasks.
+        # The list of client task query results.
         self.task_manage_response_list = task_manage_response_list
 
     def validate(self):
@@ -80,58 +80,55 @@ class DescribeOnceTaskResponseBodyTaskManageResponseList(DaraModel):
         task_status_text: str = None,
         task_type: str = None,
     ):
-        # The execution details of the task. The value of this parameter is in the JSON format.
+        # The task execution details. This parameter is in JSON format.
         # 
-        # *   **causeCode**: the returned code for the cause.
-        # *   **causeMsg**: the returned message for the cause.
-        # *   **resCode**: the returned code for troubleshooting.
-        # *   **resMsg**: the returned message for troubleshooting.
-        # *   **problemType**: the type of the issue.
-        # *   **dispatchType**: the task delivery method.
-        # *   **uuid**: the UUID of the server.
-        # *   **instanceId**: the instance ID of the server.
-        # *   **internetIp**: the public IP address of the server.
-        # *   **intranetIp**: the private IP address of the server.
-        # *   **instanceName**: the instance name of the server.
-        # *   **url**: the download URL of the troubleshooting log.
+        # - **causeCode**: the return code of the troubleshooting cause.
+        # - **causeMsg**: the return message of the troubleshooting cause.
+        # - **resCode**: the troubleshooting return code.
+        # - **resMsg**: the troubleshooting return message.
+        # - **problemType**: the problem type.
+        # - **dispatchType**: the task dispatch method.
+        # - **uuid**: the server UUID.
+        # - **instanceId**: the ID of the server instance.
+        # - **internetIp**: the public IP address of the server.
+        # - **intranetIp**: the private IP address of the server.
+        # - **instanceName**: the name of the server instance.
+        # - **url**: the download URL of the troubleshooting log.
         self.detail_data = detail_data
-        # The number of tasks that fail to be executed.
+        # The number of tasks that failed to be executed.
         self.fail_count = fail_count
-        # The progress of the task. Unit: percent (%).
+        # The task progress, in percentage.
         self.progress = progress
-        # The execution result of the task.
+        # The task execution result.
         self.result_info = result_info
-        # The number of tasks that are executed.
+        # The number of tasks that are executed successfully.
         self.success_count = success_count
-        # The timestamp that indicates the time when the task ends. Unit: milliseconds.
+        # The timestamp when the task actually ends. Unit: milliseconds.
         self.task_end_time = task_end_time
         # The task ID.
         self.task_id = task_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
-        # The timestamp that indicates the time when the task starts. Unit: milliseconds.
+        # The timestamp when the task actually starts. Unit: milliseconds.
         self.task_start_time = task_start_time
-        # The status of the task. Valid values:
-        # 
-        # *   **1**: The task is started.
-        # *   **2**: The task is complete.
-        # *   **3**: The task fails.
-        # *   **4**: The task times out.
+        # The task status. Valid values:
+        # - **1**: Started.
+        # - **2**: Completed.
+        # - **3**: Failed.
+        # - **4**: Timed out.
         self.task_status = task_status
-        # The text description of the status for the task. Valid values:
-        # 
-        # *   **INIT**: The task is pending start.
-        # *   **START**: The task is started.
-        # *   **DISPATCH**: The self-check command is issued.
-        # *   **SUCCESS**: The self-check is complete.
-        # *   **FAIL**: The task fails.
-        # *   **TIMEOUT**: The task times out.
+        # The text representation of the task status. Valid values:
+        # - **INIT**: Pending.
+        # - **START**: Started.
+        # - **DISPATCH**: Self-check command dispatched.
+        # - **SUCCESS**: Self-check completed.
+        # - **FAIL**: Execution failed.
+        # - **TIMEOUT**: Timed out.
         self.task_status_text = task_status_text
-        # The type of the task. Valid values:
-        # 
-        # *   **CLIENT_PROBLEM_CHECK**: a task of the Security Center client
-        # *   **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
-        # *   **ASSET_SECURITY_CHECK**: a task for asset information collection
+        # The task type. Valid values:
+        # - **CLIENT_PROBLEM_CHECK**: client task
+        # - **CLIENT_DEV_OPS**: cloud O&M task
+        # - **ASSET_SECURITY_CHECK**: asset information collection task.
         self.task_type = task_type
 
     def validate(self):
@@ -228,13 +225,13 @@ class DescribeOnceTaskResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of client tasks displayed on the current page in a paged query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries returned per page. Default value: **20**.
+        # The number of client tasks per page in a paged query. Default value: **20**.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of client tasks returned.
         self.total_count = total_count
 
     def validate(self):

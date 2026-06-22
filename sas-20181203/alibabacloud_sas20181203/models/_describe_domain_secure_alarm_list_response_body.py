@@ -14,9 +14,9 @@ class DescribeDomainSecureAlarmListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The security alerts in your website assets.
+        # The list of security alerts for website assets.
         self.alarm_list = alarm_list
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -99,75 +99,72 @@ class DescribeDomainSecureAlarmListResponseBodyAlarmList(DaraModel):
         self.alarm_event_name_original = alarm_event_name_original
         # The type of the alert event.
         self.alarm_event_type = alarm_event_type
-        # The unique ID of the alert event.
+        # The unique identifier of the alert event.
         self.alarm_unique_info = alarm_unique_info
         # Indicates whether automatic defense is enabled.
         self.auto_breaking = auto_breaking
-        # Indicates whether the alert event can be handled online, such as quarantining the source file of the malicious process, adding the alert event to the whitelist, and ignoring the alert event. Valid values:
+        # Indicates whether the alert event can be handled online, such as blocking, adding to a whitelist, or ignoring. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Can be handled online.
+        # - **false**: Cannot be handled online.
         self.can_be_deal_on_line = can_be_deal_on_line
-        # Indicates whether you can cancel marking the alert event as a false positive. Valid values:
+        # Indicates whether the alert event can be unmarked as a false positive. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Can be unmarked.
+        # - **false**: Cannot be unmarked.
         self.can_cancel_fault = can_cancel_fault
-        # Indicates whether the safeguard mode for major activities is supported.
+        # Indicates whether the alert event contains the critical event protection mode.
         self.contain_hw_mode = contain_hw_mode
         # The data source of the alert event.
         self.data_source = data_source
-        # Indicates whether the alert event is handled. Valid values:
-        # 
-        # *   **N**: unhandled
-        # *   **Y**: handled
+        # Indicates whether the alert event has been handled. Valid values:
+        # - **N**: Pending.
+        # - **Y**: Handled.
         self.dealed = dealed
         # The description of the alert event.
         self.description = description
-        # The timestamp generated when the alert event was last detected. Unit: milliseconds.
+        # The timestamp of the most recent occurrence of the alert event. Unit: milliseconds.
         self.end_time = end_time
-        # The time of the last modification.
+        # The time when the alert event was last modified.
         self.gmt_modified = gmt_modified
         # Indicates whether the alert event has tracing information. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Has tracing information.
+        # - **false**: Does not have tracing information.
         self.has_trace_info = has_trace_info
-        # The instance ID of the affected asset.
+        # The ID of the asset instance affected by the alert event.
         self.instance_id = instance_id
-        # The instance name of the affected asset.
+        # The name of the asset instance affected by the alert event.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
-        # The private IP address of the affected instance.
+        # The private IP address of the asset instance affected by the alert event.
         self.intranet_ip = intranet_ip
         # The risk level of the alert event. Valid values:
-        # 
-        # *   **serious**
-        # *   **suspicious**
-        # *   **remind**
+        # - **serious**: Critical.
+        # - **suspicious**: Suspicious.
+        # - **remind**: Reminder.
         self.level = level
-        # The handling result code of the alert event.
+        # The result code of the alert event handling.
         self.operate_error_code = operate_error_code
-        # The timestamp generated when the alert event was handled. Unit: milliseconds.
+        # The timestamp when the alert event was handled. Unit: milliseconds.
         self.operate_time = operate_time
-        # The edition of Security Center in which the alert event can be detected. Valid values:
-        # 
-        # *   **0**: Basic edition.
-        # *   **1**: Advanced edition.
-        # *   **2**: Enterprise edition.
+        # The edition of Security Center that supports the detection of the alert event. Valid values:
+        # - **0**: Basic edition.
+        # - **1**: Advanced edition.
+        # - **2**: Enterprise edition.
         self.sale_version = sale_version
-        # The ID of the associated alert event.
+        # The IDs of the alert events associated with the alert event.
         self.security_event_ids = security_event_ids
-        # The solution to the alert event.
+        # The solution for the alert event.
         self.solution = solution
-        # The stage at which the attack or intrusion is detected.
+        # The stage of the attack or intrusion.
         self.stages = stages
-        # The timestamp generated when the alert event was first detected. Unit: milliseconds.
+        # The start timestamp of the alert event. Unit: milliseconds.
         self.start_time = start_time
-        # The total number of security alerts in your website assets.
+        # The total number of security alerts for your website assets.
         self.suspicious_event_count = suspicious_event_count
-        # The unique ID of the associated instance.
+        # The unique identifier of the instance associated with the alert event.
         self.uuid = uuid
 
     def validate(self):

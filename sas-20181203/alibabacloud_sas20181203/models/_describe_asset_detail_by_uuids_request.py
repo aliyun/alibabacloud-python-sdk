@@ -11,18 +11,16 @@ class DescribeAssetDetailByUuidsRequest(DaraModel):
         resource_directory_account_id: int = None,
         uuids: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the content in the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the IDs of Alibaba Cloud accounts.
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The UUIDs of the instances. Separate multiple UUIDs with commas (,).
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of instances.
+        # The UUIDs of the asset instances. Separate multiple UUIDs with commas (,).
+        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.uuids = uuids

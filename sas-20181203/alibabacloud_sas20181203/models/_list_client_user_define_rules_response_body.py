@@ -76,8 +76,9 @@ class ListClientUserDefineRulesResponseBodyUserDefineRuleList(DaraModel):
     ):
         # The action of the rule. Valid values:
         # 
-        # *   **0**: allow
-        # *   **1**: block
+        # - **0**: allow
+        # 
+        # - **1**: block
         self.action_type = action_type
         # The ID of the rule.
         self.id = id
@@ -85,21 +86,29 @@ class ListClientUserDefineRulesResponseBodyUserDefineRuleList(DaraModel):
         self.name = name
         # The type of the operating system. Valid values:
         # 
-        # *   **windows**: Windows
-        # *   **linux**: Linux
-        # *   **all**: all types
+        # - **windows**: Windows
+        # 
+        # - **linux**: Linux
+        # 
+        # - **all**: all types
         self.platform = platform
         # The switch ID of the rule.
         self.switch_id = switch_id
         # The type of the rule. Valid values:
         # 
-        # *   **1**: Process hash
-        # *   **2**: Command line
-        # *   **3**: Process Network
-        # *   **4**: File Read and Write
-        # *   **5**: Operation on Registry
-        # *   **6**: Dynamic-link Library Loading
-        # *   **7**: File Renaming
+        # - **1**: Process hash
+        # 
+        # - **2**: Command line
+        # 
+        # - **3**: Process Network
+        # 
+        # - **4**: File Read and Write
+        # 
+        # - **5**: Operation on Registry
+        # 
+        # - **6**: Dynamic-link Library Loading
+        # 
+        # - **7**: File Renaming
         self.type = type
 
     def validate(self):

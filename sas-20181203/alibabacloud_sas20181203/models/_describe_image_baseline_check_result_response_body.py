@@ -14,9 +14,9 @@ class DescribeImageBaselineCheckResultResponseBody(DaraModel):
         page_info: main_models.DescribeImageBaselineCheckResultResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the check results of image baselines.
+        # The details of the image baseline check results.
         self.baseline_result = baseline_result
-        # The pagination information.
+        # The paging information.
         self.page_info = page_info
         # The ID of the request.
         self.request_id = request_id
@@ -72,11 +72,11 @@ class DescribeImageBaselineCheckResultResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page when using paging.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page when using paging.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page when using paging.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -134,34 +134,32 @@ class DescribeImageBaselineCheckResultResponseBodyBaselineResult(DaraModel):
         middle_risk_item_count: int = None,
         status: int = None,
     ):
-        # The key of the image baseline type.
+        # The type key of the baseline item.
         self.baseline_class_alias = baseline_class_alias
         # The number of baseline check items.
         self.baseline_item_count = baseline_item_count
-        # The alias of the image baseline.
+        # The alias of the baseline item.
         self.baseline_name_alias = baseline_name_alias
-        # The key of the image baseline.
+        # The name key of the baseline item.
         self.baseline_name_key = baseline_name_key
-        # The severity of the image baseline. Valid values:
-        # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # The risk level of the baseline. Valid values:
+        # - **high**: high risk
+        # - **medium**: medium risk
+        # - **low**: low risk.
         self.baseline_name_level = baseline_name_level
-        # The timestamp generated when the first scan was performed. Unit: milliseconds.
+        # The timestamp of the first scan, in milliseconds.
         self.first_scan_time = first_scan_time
-        # The number of high-risk images that are affected.
+        # The number of associated high-risk images.
         self.high_risk_item_count = high_risk_item_count
-        # The timestamp generated when the last scan was performed. Unit: milliseconds.
+        # The timestamp of the most recent scan, in milliseconds.
         self.last_scan_time = last_scan_time
-        # The number of low-risk images that are affected.
+        # The number of associated low-risk images.
         self.low_risk_item_count = low_risk_item_count
-        # The number of medium-risk images that are affected.
+        # The number of associated medium-risk images.
         self.middle_risk_item_count = middle_risk_item_count
-        # The status of the baseline risks. Valid values:
-        # 
-        # *   **0**: unfixed
-        # *   **1**: fixed
+        # The fix status of the baseline risk. Valid values:
+        # - **0**: Unfixed.
+        # - **1**: Fixed.
         self.status = status
 
     def validate(self):

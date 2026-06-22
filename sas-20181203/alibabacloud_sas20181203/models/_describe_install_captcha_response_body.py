@@ -11,13 +11,12 @@ class DescribeInstallCaptchaResponseBody(DaraModel):
         deadline: str = None,
         request_id: str = None,
     ):
-        # The installation verification code for you to manually install the Security Center agent.
+        # The installation verification code for manually installing the Security Center Agent.
         self.captcha_code = captcha_code
-        # The validity period of the installation verification code.
-        # 
-        # >  The installation verification code is valid only within the validity period. An expired installation verification code cannot be used to install the agent.
+        # The expiration date of the installation verification code.
+        # > The installation verification code can be used only within its validity period. An expired installation verification code cannot be used.
         self.deadline = deadline
-        # The ID of the request.
+        # The unique identifier that Alibaba Cloud generated for the request.
         self.request_id = request_id
 
     def validate(self):

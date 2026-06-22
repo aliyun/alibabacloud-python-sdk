@@ -28,77 +28,77 @@ class GetAuthSummaryResponseBody(DaraModel):
         request_id: str = None,
         version_summary: List[main_models.GetAuthSummaryResponseBodyVersionSummary] = None,
     ):
-        # Indicates whether you can purchase protection quota on demand when you purchase Security Center. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether on-demand authorization purchase is allowed during initial purchase. Valid values:
+        # - **0**: Not allowed.
+        # - **1**: Allowed.
         self.allow_partial_buy = allow_partial_buy
-        # Indicates whether you can purchase protection quota on demand after an upgrade. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether upgrading to on-demand authorization purchase is allowed during an upgrade. Valid values:
+        # - **0**: Not allowed.
+        # - **1**: Allowed.
         self.allow_upgrade_partial_buy = allow_upgrade_partial_buy
-        # Indicates whether all bound assets can be immediately unbound. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether you can immediately unbind all bound assets. Valid values:
+        # - **0**: No.
+        # - **1**: Yes.
         self.allow_user_unbind = allow_user_unbind
-        # Indicates whether automatic binding is enabled. Valid values:
+        # Indicates whether new subscription assets are automatically bound when the host and container security subscription service is activated. Valid values:
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
-        # Cluster node need to check the machine version,  Value:
-        # 
-        # - **0** : Not required
-        # 
-        # - **1** : Required
+        # Indicates whether the cluster node requires machine version verification. Valid values:
+        # - **0**: Not required.
+        # - **1**: Required.
         self.cluster_node_check = cluster_node_check
-        # Indicates whether the protection quota is supported for all assets. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether all assets are authorized by default. Valid values:
+        # - **0**: No.
+        # - **1**: Yes.
         self.default_auth_to_all = default_auth_to_all
-        # Indicates whether pre-bound assets exist. If you select assets to bind when you purchase Security Center, pre-bound assets exist. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether a pre-bindingasset configuration exists. Pre-binding refers to the asset binding configuration that is selected in advance during purchase. Valid values:
+        # - **0**: No.
+        # - **1**: Yes.
         self.has_pre_bind_setting = has_pre_bind_setting
-        # The most advanced edition that is used. Valid values:
-        # 
-        # *   **1**: Basic edition
-        # *   **3**: Enterprise edition
-        # *   **5**: Advanced edition
-        # *   **6**: Anti-virus edition
-        # *   **7**: Ultimate edition
-        # *   **10**: Value-added Plan edition
-        # 
-        # >  If you purchase Security Center Multi-edition, the value indicates the most advanced edition that is used. Otherwise, the value indicates the specific edition that is purchased.
+        # The highest edition of Security Center that is purchased. Valid values:
+        # - **1**: Free Edition.
+        # - **3**: Enterprise Edition.
+        # - **5**: Premium Edition.
+        # - **6**: Anti-virus Edition.
+        # - **7**: Ultimate Edition.
+        # - **10**: Only value-added services are purchased.
+        # > If a single edition is purchased, this value indicates the corresponding edition. If multiple editions are purchased, this value indicates the highest edition among the sub-editions.
         self.highest_version = highest_version
-        # Binding effective status, value:
-        # 
-        # - **NORMAL** : Effective
-        # 
-        # - **INVALID_NODE_VERSION**: Invalid
+        # The binding validity status. Valid values:
+        # - **NORMAL**: valid.
+        # - **INVALID_NODE_VERSION**: invalid.
         self.invalid_bind_status = invalid_bind_status
-        # Indicates whether Security Center Multi-edition is purchased. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # Indicates whether multiple versions exist. Valid values:
+        # - **0**: No.
+        # - **1**: Yes.
         self.is_multi_version = is_multi_version
-        # The statistics of the protection quota for assets.
+        # The asset authorization statistics information.
         self.machine = machine
-        # Activate the pay-as-you-go service protection version for hosts and container security, which is the highest protection version among all bound hosts. Values:   - **1**: Free Edition  - **3**: Enterprise Edition - **5**: Advanced Edition - **6**: Antivirus Edition     - **7**: Flagship Edition
+        # The protection edition of the host and container security pay-as-you-go service. This value indicates the highest protection edition among all bound hosts. Valid values:  
+        # - **1**: Free Edition. 
+        # - **3**: Enterprise Edition.
+        # - **5**: Premium Edition.
+        # - **6**: Anti-virus Edition.    
+        # - **7**: Ultimate Edition.
         self.post_paid_highest_version = post_paid_highest_version
-        # The pay-as-you-go service for host and container security adds an automatic binding identifier for new hosts, with values: - **0**: Off - **1**: On
+        # Indicates whether new hosts are automatically bound for the host and container security pay-as-you-go service. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.post_paid_host_auto_bind = post_paid_host_auto_bind
-        # The version for the pay-as-you-go service of host and container security to automatically bind new assets, with values: - **1**: Free Edition - **3**: Enterprise Edition - **5**: Advanced Edition - **6**: Antivirus Edition - **7**: Flagship Edition
+        # The edition to which new assets are automatically bound for the host and container security pay-as-you-go service. Valid values:
+        # - **1**: Free Edition. 
+        # - **3**: Enterprise Edition.
+        # - **5**: Premium Edition.
+        # - **6**: Anti-virus Edition.    
+        # - **7**: Ultimate Edition.
         self.post_paid_host_auto_bind_version = post_paid_host_auto_bind_version
-        # Statistics on pay-as-you-go service authorization for host and container security.
+        # The service authorization statistics for the host and container security pay-as-you-go service.
         self.post_paid_version_summary = post_paid_version_summary
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The quota consumption statistics.
+        # The authorization usage statistics information.
         self.version_summary = version_summary
 
     def validate(self):
@@ -252,55 +252,50 @@ class GetAuthSummaryResponseBodyVersionSummary(DaraModel):
         used_ecs_count: int = None,
         version: int = None,
     ):
-        # The type of the quota that is consumed. Valid values:
-        # 
-        # *   ASSET: quota of servers.
-        # *   CORE: quota of server cores.
-        # *   ASSET_AND_CORE: both.
+        # The type of authorization consumed during binding. Valid values:
+        # - ASSET: consumes authorized asset count.
+        # - CORE: consumes authorized core count.
+        # - ASSET_AND_CORE: consumes both authorized asset count and authorized core count.
         self.auth_bind_type = auth_bind_type
-        # The index of the current edition. The smaller the value, the higher the edition. The index is used for sorting.
+        # The index of the current edition. A larger value indicates a higher edition. This parameter is used for sorting. Valid values:
+        # - **1**: Free Edition. 
+        # - **2**: Anti-virus Edition.    
+        # - **3**: Premium Edition.
+        # - **4**: Enterprise Edition.
+        # - **5**: Ultimate Edition.
         self.index = index
-        # The total quota of server cores.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to CORE or ASSET_AND_CORE.
+        # The total number of authorized cores.
+        # > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
         self.total_core_auth_count = total_core_auth_count
-        # The total quota of servers in the current edition.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to ASSET or ASSET_AND_CORE.
+        # The total number of authorized assets for the current edition.
+        # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.total_count = total_count
-        # The total quota of servers.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to ASSET or ASSET_AND_CORE.
+        # The total number of authorized assets.
+        # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.total_ecs_auth_count = total_ecs_auth_count
-        # The remaining quota of servers.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to ASSET or ASSET_AND_CORE.
+        # The number of unused authorized assets.
+        # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.un_used_count = un_used_count
-        # The remaining quota of server cores.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to CORE or ASSET_AND_CORE.
+        # The number of unused authorized cores.
+        # > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
         self.unused_core_auth_count = unused_core_auth_count
-        # The remaining quota of servers.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to ASSET or ASSET_AND_CORE.
+        # The number of unused authorized assets.
+        # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.unused_ecs_auth_count = unused_ecs_auth_count
-        # The consumed quota of server cores.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to CORE or ASSET_AND_CORE.
+        # The number of authorized cores that are used.
+        # > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
         self.used_core_count = used_core_count
-        # The used quota of servers.
-        # 
-        # >  This parameter takes effect only if AuthBindType is set to ASSET or ASSET_AND_CORE.
+        # The number of authorized assets that are used.
+        # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.used_ecs_count = used_ecs_count
-        # The edition of purchased Security Center. Valid values:
-        # 
-        # *   **1**: Basic edition
-        # *   **3**: Enterprise edition
-        # *   **5**: Advanced edition
-        # *   **6**: Anti-virus edition
-        # *   **7**: Ultimate edition
-        # *   **8**: Multi-edition
-        # *   **10**: Value-added Plan edition
+        # The purchased edition of Security Center. Valid values:  
+        # - **1**: Free Edition. 
+        # - **3**: Enterprise Edition.
+        # - **5**: Premium Edition.
+        # - **6**: Anti-virus Edition.    
+        # - **7**: Ultimate Edition.   
+        # - **8**: Multi-version.   
+        # - **10**: Only value-added services are purchased.
         self.version = version
 
     def validate(self):
@@ -392,15 +387,30 @@ class GetAuthSummaryResponseBodyPostPaidVersionSummary(DaraModel):
         used_ecs_count: int = None,
         version: int = None,
     ):
-        # The type of authorization consumed during binding, with values: - **ASSET**: Consumes the number of authorized devices - **CORE**: Consumes the number of authorized cores - **ASSET_AND_CORE**: Consumes both the number of authorized devices and cores.
+        # The type of authorization consumed during binding. Valid values:
+        # - **ASSET**: consumes authorized asset count.
+        # - **CORE**: consumes authorized core count.
+        # - **ASSET_AND_CORE**: consumes both authorized asset count and authorized core count.
         self.auth_bind_type = auth_bind_type
-        # Current version index, the higher the number, the newer the version, used for sorting. Values: - **1**: Free Edition - **2**: Anti-virus Edition - **3**: Advanced Edition - **4**: Enterprise Edition - **5**: Flagship Edition
+        # The index of the current edition. A larger value indicates a higher edition. This parameter is used for sorting. Valid values:
+        # - **1**: Free Edition. 
+        # - **2**: Anti-virus Edition.    
+        # - **3**: Premium Edition.
+        # - **4**: Enterprise Edition.
+        # - **5**: Ultimate Edition.
         self.index = index
-        # Number of authorized cores used. > This parameter is valid when AuthBindType is set to CORE or ASSET_AND_CORE.
+        # The number of authorized cores that are used.
+        # > This parameter is valid only when AuthBindType is set to CORE or ASSET_AND_CORE.
         self.used_core_count = used_core_count
-        # Number of authorized devices used. > This parameter is valid when AuthBindType is ASSET or ASSET_AND_CORE.
+        # The number of authorized assets that are used.
+        # > This parameter is valid only when AuthBindType is set to ASSET or ASSET_AND_CORE.
         self.used_ecs_count = used_ecs_count
-        # Bound host assets with postpaid versions, values:   - **1**: Free version  - **3**: Enterprise version - **5**: Advanced version - **6**: Anti-virus version     - **7**: Flagship version
+        # The pay-as-you-go edition that is bound to host assets. Valid values:  
+        # - **1**: Free Edition. 
+        # - **3**: Enterprise Edition.
+        # - **5**: Premium Edition.
+        # - **6**: Anti-virus Edition.    
+        # - **7**: Ultimate Edition.
         self.version = version
 
     def validate(self):
@@ -461,17 +471,17 @@ class GetAuthSummaryResponseBodyMachine(DaraModel):
         un_bind_core_count: int = None,
         un_bind_ecs_count: int = None,
     ):
-        # The number of cores of the assets that are bound to Security Center.
+        # The number of cores of assets that are bound with authorization.
         self.bind_core_count = bind_core_count
-        # The number of the assets that are bound to Security Center.
+        # The number of bound assets.
         self.bind_ecs_count = bind_ecs_count
-        # Bind the number of cores for postpaid authorization assets.
+        # The number of cores of assets that are bound with pay-as-you-go authorization.
         self.post_paid_bind_core_count = post_paid_bind_core_count
-        # The number of assets bound to the postpaid authorization.
+        # The number of assets that are bound with pay-as-you-go authorization.
         self.post_paid_bind_ecs_count = post_paid_bind_ecs_count
-        # The number of cores of the assets that are at risk.
+        # The number of cores of assets that have security risks.
         self.risk_core_count = risk_core_count
-        # The number of the assets that are at risk.
+        # The number of assets that have security risks.
         self.risk_ecs_count = risk_ecs_count
         # The total number of asset cores.
         self.total_core_count = total_core_count

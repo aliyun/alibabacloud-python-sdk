@@ -14,7 +14,7 @@ class GetOpaClusterNamespaceListRequest(DaraModel):
     ):
         # The ID of the cluster that you want to query.
         # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
         self.cluster_id = cluster_id
         # The page number.
         self.current_page = current_page

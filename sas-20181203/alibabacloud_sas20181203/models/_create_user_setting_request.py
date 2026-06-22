@@ -11,11 +11,11 @@ class CreateUserSettingRequest(DaraModel):
         invalid_warning_keep_days: int = None,
         source_ip: str = None,
     ):
-        # The severities of alerts.
+        # The list of alert notification levels.
         self.alert_levels = alert_levels
-        # The number of days during which you want to retain invalid alerts.
+        # The number of days to retain false positive alerts.
         self.invalid_warning_keep_days = invalid_warning_keep_days
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

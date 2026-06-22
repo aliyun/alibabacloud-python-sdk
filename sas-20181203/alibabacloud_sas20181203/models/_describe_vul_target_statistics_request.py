@@ -9,12 +9,12 @@ class DescribeVulTargetStatisticsRequest(DaraModel):
         self,
         type: str = None,
     ):
-        # The type of the vulnerability. Valid values:
+        # The type of vulnerability to query. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **emg**: urgent vulnerability
+        # - **cve**: Linux software vulnerability
+        # - **sys**: Windows system vulnerability
+        # - **cms**: Web-CMS vulnerability
+        # - **emg**: emergency vulnerability.
         self.type = type
 
     def validate(self):

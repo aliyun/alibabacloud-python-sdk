@@ -14,11 +14,11 @@ class DescribeIdcProbeScanResultListResponseBody(DaraModel):
         page_info: main_models.DescribeIdcProbeScanResultListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The instances.
+        # The list of instances.
         self.instances = instances
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeIdcProbeScanResultListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -135,35 +135,34 @@ class DescribeIdcProbeScanResultListResponseBodyInstances(DaraModel):
         scanned_ip: str = None,
         valid_port: str = None,
     ):
-        # The status of the client of the instance on which the probe is installed. Valid values:
+        # The online status of the probe instance client. Valid values:
         # 
-        # *   **online**: The Security Center agent on the asset is **enabled**.
-        # *   **offline**: The Security Center agent on the asset is **disabled**.
+        # - **online**: The Agent client on the asset is enabled.
+        # - **offline**: The Agent client on the asset is disabled.
         self.client_status = client_status
-        # The name of the IDC.
+        # The name of the IDC server room.
         self.idc_name = idc_name
-        # The CIDR blocks.
+        # The IP segment list.
         self.ip_segment = ip_segment
-        # The timestamp when the last scan was performed. Unit: milliseconds.
+        # The timestamp of the latest scan, in milliseconds.
         self.last_scan_time = last_scan_time
         # The operating system type of the asset. Valid values:
-        # 
-        # *   **windows**
-        # *   **linux**
+        # - **windows**
+        # - **linux**.
         self.os = os
-        # The private IP address of the associated instance.
+        # The public IP address of the associated machine instance.
         self.probe_internet_ip = probe_internet_ip
-        # The private IP address of the associated instance.
+        # The private IP address of the associated machine instance.
         self.probe_intranet_ip = probe_intranet_ip
-        # The name of the associated instance.
+        # The name of the associated machine instance.
         self.probe_machine_name = probe_machine_name
-        # The UUID of the associated instance.
+        # The UUID of the associated machine instance.
         self.probe_uuid = probe_uuid
-        # The ID of the scan result.
+        # The scan result ID.
         self.scan_result_id = scan_result_id
-        # The IP address that is scanned.
+        # The scanned IP address.
         self.scanned_ip = scanned_ip
-        # The port that is scanned.
+        # The scanned port.
         self.valid_port = valid_port
 
     def validate(self):

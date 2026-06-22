@@ -11,7 +11,7 @@ class DescribeImageFixCycleConfigResponseBody(DaraModel):
         data: main_models.DescribeImageFixCycleConfigResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -52,19 +52,19 @@ class DescribeImageFixCycleConfigResponseBodyData(DaraModel):
         image_fix_target: str = None,
         image_time_range: int = None,
     ):
-        # The cycle of the scheduled fix. Unit: day.
+        # The scheduled fix cycle. Unit: days.
         self.image_fix_cycle = image_fix_cycle
-        # Indicates whether the scheduled fix of image risks is enabled.
+        # The scheduled image fix switch. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.image_fix_switch = image_fix_switch
-        # The range of the scheduled fix. The value of this parameter is in the JSON format and contains the following fields:
+        # The scope of the scheduled image fix. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **type**: The type of the image risk. The value is fixed to repo.
-        # *   **target**: The content of the image risk. The value is in the format of Namespace/Image repository.
+        # - **type**: The target type. The value is fixed as repo.
+        # - **target**: The target content. Format: namespace/image repository.
         self.image_fix_target = image_fix_target
-        # The time range during which the image was modified. Unit: day.
+        # The time range during which the image was modified. Unit: days.
         self.image_time_range = image_time_range
 
     def validate(self):

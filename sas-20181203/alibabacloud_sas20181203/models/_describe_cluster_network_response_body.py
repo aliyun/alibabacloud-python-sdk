@@ -113,35 +113,43 @@ class DescribeClusterNetworkResponseBodyClusterNetworkNode(DaraModel):
     ):
         # The status of the microsegmentation switch. Valid values:
         # 
-        # *   **0**: off.
-        # *   **1**: on.
+        # - **0**: off.
+        # 
+        # - **1**: on.
         self.cnnf_switch = cnnf_switch
         # The ID of the node.
         self.id = id
         # The network type. Valid values:
         # 
-        # *   **0**: classic network.
-        # *   **1**: virtual private cloud (VPC).
+        # - **0**: classic network.
+        # 
+        # - **1**: virtual private cloud (VPC).
         self.interception_type = interception_type
         # The name of the node.
         self.name = name
         # The status of the network topology switch. Valid values:
         # 
-        # *   **ON**
-        # *   **OFF**
+        # - **ON**
+        # 
+        # - **OFF**
         self.net_topo_switch = net_topo_switch
         # The risk level. Valid values:
         # 
-        # *   **3**: high.
-        # *   **2**: medium.
-        # *   **1**: low.
-        # *   **0**: secure.
-        # *   **-1**: unknown.
+        # - **3**: high.
+        # 
+        # - **2**: medium.
+        # 
+        # - **1**: low.
+        # 
+        # - **0**: secure.
+        # 
+        # - **-1**: unknown.
         self.risk_level = risk_level
         # The type of the node. Valid values:
         # 
-        # *   **cluster**: a cluster.
-        # *   **internet**: a network node outside the cluster.
+        # - **cluster**: a cluster.
+        # 
+        # - **internet**: a network node outside the cluster.
         self.type = type
 
     def validate(self):
@@ -214,7 +222,7 @@ class DescribeClusterNetworkResponseBodyClusterNetworkEdge(DaraModel):
         self.dst_node_id = dst_node_id
         # The type of the destination node. Valid values:
         # 
-        # *   Set the value to **cluster**.
+        # - Set the value to **cluster**.
         self.dst_node_type = dst_node_type
         # The ID of the topology edge.
         self.id = id
@@ -224,8 +232,9 @@ class DescribeClusterNetworkResponseBodyClusterNetworkEdge(DaraModel):
         self.src_node_id = src_node_id
         # The type of the source node. Valid values:
         # 
-        # *   **cluster**: a cluster.
-        # *   **internet**: a network node outside the cluster
+        # - **cluster**: a cluster.
+        # 
+        # - **internet**: a network node outside the cluster
         self.src_node_type = src_node_type
 
     def validate(self):

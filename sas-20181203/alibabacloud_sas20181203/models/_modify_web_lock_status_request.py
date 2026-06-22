@@ -12,23 +12,23 @@ class ModifyWebLockStatusRequest(DaraModel):
         status: str = None,
         uuid: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for requests and responses. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # Specifies whether to enable or disable web tamper proofing for the specified server. Valid values:
+        # The protection status of the server. Valid values:
+        # - **on**: Enables protection.
+        # - **off**: Shuts down protection.    
         # 
-        # *   **on**: enables web tamper proofing
-        # *   **off**: disables web tamper proofing
-        # 
-        # > After you disable web tamper proofing for the specified server, one quota is released.
+        # > After you shut down web tamper-proofing for the server, a tamper-proofing authorization quota is released.
         # 
         # This parameter is required.
         self.status = status
-        # The UUID of the server for which you want to enable or disable web tamper proofing. You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # The UUID of the server for which you want to modify the brute-force attacks prevention status.
+        # You can invoke the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
         # 
         # This parameter is required.
         self.uuid = uuid

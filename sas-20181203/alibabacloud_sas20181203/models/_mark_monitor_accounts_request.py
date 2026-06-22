@@ -9,7 +9,7 @@ class MarkMonitorAccountsRequest(DaraModel):
         self,
         account_ids: str = None,
     ):
-        # The IDs of the members.
+        # The list of member account IDs.
         # 
         # This parameter is required.
         self.account_ids = account_ids

@@ -16,13 +16,33 @@ class ListUnknownThreatDetectMachineRequest(DaraModel):
         study_time_start: int = None,
         uuid: str = None,
     ):
+        # The page number to return.
         self.current_page = current_page
+        # The maximum number of entries to return per page.
         self.page_size = page_size
+        # The server name or IP address.
         self.remark = remark
+        # The status of the machine. Valid values:
+        # 
+        # - **monitoring**: Monitoring
+        # 
+        # - **blocking**: Blocking
+        # 
+        # - **studying**: Learning
+        # 
+        # - **study_finish**: Learning complete
         self.status = status
+        # The whitelist mode. Valid values:
+        # 
+        # - **hash**: process hash
+        # 
+        # - **path**: process path
         self.study_mode = study_mode
+        # The end of the time range for model creation, specified as a timestamp in milliseconds.
         self.study_time_end = study_time_end
+        # The start of the time range for model creation, specified as a timestamp in milliseconds.
         self.study_time_start = study_time_start
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):

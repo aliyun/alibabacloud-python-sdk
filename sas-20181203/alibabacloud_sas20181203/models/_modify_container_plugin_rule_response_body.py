@@ -11,7 +11,7 @@ class ModifyContainerPluginRuleResponseBody(DaraModel):
         data: main_models.ModifyContainerPluginRuleResponseBodyData = None,
         request_id: str = None,
     ):
-        # The defense rule against container escapes.
+        # The list of container escape prevention rules.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -51,11 +51,11 @@ class ModifyContainerPluginRuleResponseBodyData(DaraModel):
         rule_name: str = None,
         switch_id: str = None,
     ):
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The switch ID.
+        # The corresponding switch ID.
         self.switch_id = switch_id
 
     def validate(self):

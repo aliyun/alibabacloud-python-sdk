@@ -14,7 +14,7 @@ class DeleteHybridProxyRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The UUID of the proxy node that you want to remove. The value starts with inet-proxy.
+        # The UUID of the proxy server to delete. The value starts with inet-proxy-.
         # 
         # This parameter is required.
         self.uuid = uuid

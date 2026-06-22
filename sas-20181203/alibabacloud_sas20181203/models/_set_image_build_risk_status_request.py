@@ -11,17 +11,15 @@ class SetImageBuildRiskStatusRequest(DaraModel):
         risk_key: str = None,
         status: int = None,
     ):
-        # The UUIDs of images. Separate multiple UUIDs with commas (,).
-        # 
-        # >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to query the UUIDs of images.
+        # The image UUIDs. Separate multiple UUIDs with commas (,).
+        # >Call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
         self.image_uuids = image_uuids
-        # The keyword of the image build command risk.
+        # The risk keyword.
         self.risk_key = risk_key
-        # The status of the image build command risk. Valid values:
-        # 
-        # *   **0**: unhandled.
-        # *   **1**: ignored.
-        # *   **2**: false positive.
+        # The status. Valid values:
+        # - **0**: Unhandled.
+        # - **1**: Ignored.
+        # - **2**: False positive.
         self.status = status
 
     def validate(self):

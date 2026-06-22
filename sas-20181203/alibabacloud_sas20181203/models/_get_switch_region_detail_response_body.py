@@ -13,9 +13,9 @@ class GetSwitchRegionDetailResponseBody(DaraModel):
         data: main_models.GetSwitchRegionDetailResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request. The China Chinese mainland generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
         self.request_id = request_id
 
     def validate(self):
@@ -57,19 +57,27 @@ class GetSwitchRegionDetailResponseBodyData(DaraModel):
         need_switch: bool = None,
         region_status: List[main_models.GetSwitchRegionDetailResponseBodyDataRegionStatus] = None,
     ):
-        # The time when the permissions were modified.
+        # The time when the authorization operation was modified.
         self.gmt_is_agree_modified = gmt_is_agree_modified
         # The notification time.
         self.gmt_noticed = gmt_noticed
-        # Indicates whether the migration is approved.
+        # Indicates whether the migration is agreed to.
         self.is_agree = is_agree
-        # Indicates whether the notification is sent.
+        # Indicates whether the notification has been sent.
         self.is_noticed = is_noticed
-        # Specifies whether to notify the account.
+        # Indicates whether a pop-up notification needs to be displayed to the user.
+        # 
+        # - **true**: A pop-up notification needs to be displayed.
+        # 
+        # - **false**: No pop-up notification needs to be displayed.
         self.need_notice = need_notice
-        # Specifies whether to switch.
+        # Indicates whether a switchover to the new console is required.
+        # 
+        # - **true**: A switchover to the new console is required.
+        # 
+        # - **false**: The legacy console is still in use.
         self.need_switch = need_switch
-        # The status of the switching to the region.
+        # The switchover status of the region.
         self.region_status = region_status
 
     def validate(self):
@@ -146,14 +154,13 @@ class GetSwitchRegionDetailResponseBodyDataRegionStatus(DaraModel):
     ):
         # The number of ECS instances.
         self.ecs_count = ecs_count
-        # The time when the migration is scheduled.
+        # The planned migration time.
         self.gmt_plan_switch_time = gmt_plan_switch_time
-        # The region in which the server resides.
+        # The region where the server resides.
         self.region_id = region_id
         # The migration status. Valid values:
-        # 
-        # *   **0**: pending
-        # *   **1**: successful
+        # - **0**: waiting for migration
+        # - **1**: switchover succeeded.
         self.status = status
 
     def validate(self):

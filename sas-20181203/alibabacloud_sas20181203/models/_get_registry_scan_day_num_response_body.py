@@ -11,9 +11,9 @@ class GetRegistryScanDayNumResponseBody(DaraModel):
         request_id: str = None,
         scan_day_num_config: main_models.GetRegistryScanDayNumResponseBodyScanDayNumConfig = None,
     ):
-        # The request ID.
+        # The request ID. China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The configuration of the scan period.
+        # The scan day configuration.
         self.scan_day_num_config = scan_day_num_config
 
     def validate(self):
@@ -50,9 +50,9 @@ class GetRegistryScanDayNumResponseBodyScanDayNumConfig(DaraModel):
         day_num_list: str = None,
         scan_day_num: int = None,
     ):
-        # The selectable day options.
+        # The list of available day options.
         self.day_num_list = day_num_list
-        # The scan period. Unit: days.
+        # The scan time range. Unit: days.
         self.scan_day_num = scan_day_num
 
     def validate(self):

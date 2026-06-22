@@ -12,22 +12,20 @@ class ModifyWebLockDeleteConfigRequest(DaraModel):
         source_ip: str = None,
         uuid: str = None,
     ):
-        # The ID of the protected directory that you want to delete.
-        # 
-        # > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to query the IDs of protected directories.
+        # The ID of the protected directory to delete.
+        # > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to obtain the ID of the protected directory.
         # 
         # This parameter is required.
         self.id = id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for requests and responses. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUID of the server for which you want to delete the protected directory.
-        # 
-        # > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to query the UUIDs of servers.
+        # The UUID of the server from which you want to delete the protected directory.
+        # > You can call the [DescribeWebLockConfigList](~~DescribeWebLockConfigList~~) operation to obtain the UUID of the server.
         # 
         # This parameter is required.
         self.uuid = uuid

@@ -16,18 +16,18 @@ class DescribeImageEventOperationPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code returned.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The API call was successful.
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):
@@ -82,9 +82,9 @@ class DescribeImageEventOperationPageResponseBodyData(DaraModel):
         list: List[main_models.DescribeImageEventOperationPageResponseBodyDataList] = None,
         page_info: main_models.DescribeImageEventOperationPageResponseBodyDataPageInfo = None,
     ):
-        # The alert handling rules.
+        # The list of alert handling rules.
         self.list = list
-        # The pagination information.
+        # The paged query parameters.
         self.page_info = page_info
 
     def validate(self):
@@ -131,9 +131,9 @@ class DescribeImageEventOperationPageResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries to return on each page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -183,37 +183,32 @@ class DescribeImageEventOperationPageResponseBodyDataList(DaraModel):
         scenarios: str = None,
         source: str = None,
     ):
-        # The rule conditions. The value is in the JSON format. Valid values of keys:
-        # 
-        # *   **condition**: the matching condition.
-        # *   **type**: the matching type.
-        # *   **value**: the matching value.
+        # The rule conditions in JSON format. Valid keys:
+        # - **condition**: the matching condition.
+        # - **type**: the matching type.
+        # - **value**: the matching value.
         self.conditions = conditions
-        # The keyword of the alert item.
+        # The keyword of the alert metric.
         self.event_key = event_key
-        # The name of the alert item.
+        # The name of the alert metric.
         self.event_name = event_name
-        # The alert type.
-        # 
-        # *   Only **sensitiveFile** may be returned.
+        # The alerting type. Valid values:
+        # - **sensitiveFile**: sensitive file tampering.
         self.event_type = event_type
         # The primary key of the alert handling rule.
         self.id = id
         # The remarks.
         self.note = note
-        # The operation code.
-        # 
-        # *   Only **whitelist** may be returned, which means that the alert item is added to the whitelist.
+        # The operation code. Valid values:
+        # - **whitelist**: whitelist.
         self.operation_code = operation_code
-        # The application scope of the rule. The value is in the JSON format. Valid values of keys:
-        # 
-        # *   **type**
-        # *   **value**
+        # The rule scope in JSON format. Valid keys:
+        # - **type**: the scope type.
+        # - **value**: the scope value.
         self.scenarios = scenarios
-        # The source of the whitelist. Valid values:
-        # 
-        # *   **image**: image.
-        # *   **agentless**: agentless detection.
+        # The source of the alert handling rule. Valid values:
+        # - **default**: image
+        # - **agentless**: agentless.
         self.source = source
 
     def validate(self):

@@ -11,9 +11,9 @@ class DescribeImageSecurityScanCountResponseBody(DaraModel):
         data: main_models.DescribeImageSecurityScanCountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -52,13 +52,13 @@ class DescribeImageSecurityScanCountResponseBodyData(DaraModel):
         image_malicious_file_count: int = None,
         image_sca_vul_count: int = None,
     ):
-        # The number of image baseline risks detected on the current asset.
+        # The number of image baseline risks in the current asset.
         self.image_baseline_count = image_baseline_count
-        # The number of image system vulnerabilities returned on the current page.
+        # The number of image system vulnerabilities on the current page.
         self.image_cve_vul_count = image_cve_vul_count
-        # The number of malicious image samples returned on the current page.
+        # The number of malicious image samples on the current page.
         self.image_malicious_file_count = image_malicious_file_count
-        # The number of image application vulnerabilities returned on the current page.
+        # The number of image application vulnerabilities displayed on the current page.
         self.image_sca_vul_count = image_sca_vul_count
 
     def validate(self):

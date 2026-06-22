@@ -14,19 +14,18 @@ class ListImageRiskRequest(DaraModel):
         namespace: str = None,
         page_size: int = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The ID of the container cluster.
-        # 
-        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the ID of the container cluster.
+        # The ID of the container cluster to query.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The number of the page to return.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The name of the image.
+        # The image name.
         self.image_name = image_name
-        # The name of the namespace to which the repository belongs.
+        # The image namespace.
         self.namespace = namespace
-        # The number of entries to return on each page. Default value: 20.
+        # The maximum number of entries per page in a paging query. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

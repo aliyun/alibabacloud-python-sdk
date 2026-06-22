@@ -13,25 +13,23 @@ class ListAgentlessRelateMaliciousRequest(DaraModel):
         page_size: str = None,
         scenario: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page in a paging query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The ID of the event.
+        # The event ID.
         self.event_id = event_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page.
+        # The maximum number of entries per page in a paging query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The scenarios of batch handling. Valid values:
-        # 
-        # *   same_file_md5: the same MD5 hash value.
-        # *   default: the same alert type. This is the default value.
+        # The scenario for batch processing. Valid values:
+        # - same_file_md5: same file MD5.
+        # - default (default value): same alerting type.
         self.scenario = scenario
 
     def validate(self):

@@ -15,21 +15,20 @@ class InstallCloudMonitorRequest(DaraModel):
         instance_id_list: List[str] = None,
         uuid_list: List[str] = None,
     ):
-        # The AccessKey ID that is required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to query the AccessKey ID.
+        # The AccessKey required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to obtain this parameter.
         # 
-        # > This parameter is required only when you install the CloudMonitor agent on servers that are not deployed on Alibaba Cloud.
+        # > This parameter is required only when you install the CloudMonitor agent on a non-Alibaba Cloud server.
         self.agent_access_key = agent_access_key
-        # The AccessKey secret that is required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to query the AccessKey secret.
-        # 
-        # > This parameter is required only when you install the CloudMonitor agent on servers that are not deployed on Alibaba Cloud.
+        # The AccessSecret required to install the CloudMonitor agent. You can call the [DescribeMonitoringAgentAccessKey](https://help.aliyun.com/document_detail/114948.html) operation to obtain this parameter.
+        # > This parameter is required only when you install the CloudMonitor agent on a non-Alibaba Cloud server.
         self.agent_secret_key = agent_secret_key
-        # The version of the CloudMonitor agent that you want to install on the servers. For more information about the latest version of the CloudMonitor agent, see [Overview](https://help.aliyun.com/document_detail/183431.html).
+        # The version of the CloudMonitor agent to install. You can obtain the latest CloudMonitor agent version from [Plugin overview](https://help.aliyun.com/document_detail/183431.html).
         # 
         # This parameter is required.
         self.argus_version = argus_version
-        # The IDs of the servers on which you want to install the CloudMonitor agent. Separate multiple IDs with commas (,).
+        # The list of instance IDs of the servers on which you want to install the CloudMonitor agent. Separate multiple IDs with commas (,).
         self.instance_id_list = instance_id_list
-        # The UUIDs of the servers on which you want to install the CloudMonitor agent. Separate multiple UUIDs with commas (,).
+        # The list of UUIDs of the servers on which you want to install the CloudMonitor agent. Separate multiple UUIDs with commas (,).
         self.uuid_list = uuid_list
 
     def validate(self):

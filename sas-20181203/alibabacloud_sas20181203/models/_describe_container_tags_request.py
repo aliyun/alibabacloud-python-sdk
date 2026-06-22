@@ -27,10 +27,13 @@ class DescribeContainerTagsRequest(DaraModel):
         self.current_page = current_page
         # The name of the attribute that is used for the query. Valid values:
         # 
-        # *   **namespace**: the namespace
-        # *   **appName**: the application name
-        # *   **image**: the image
-        # *   **tag**: the tag
+        # - **namespace**: the namespace
+        # 
+        # - **appName**: the application name
+        # 
+        # - **image**: the image
+        # 
+        # - **tag**: the tag
         # 
         # This parameter is required.
         self.field_name = field_name

@@ -18,119 +18,38 @@ class ModifyCycleTaskRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The ID of the task configuration.
-        # 
-        # >  You can call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to query the IDs of task configurations.
+        # The ID of the configuration.
+        # >Call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.config_id = config_id
         # Specifies whether to enable the task. Valid values:
-        # 
-        # *   **1**: enables the task.
-        # *   **0**: disables the task.
+        # - **1**: enabled.
+        # - **0**: disabled.
         self.enable = enable
-        # The time when the task first started.
+        # The first execution time.
         self.first_date_str = first_date_str
-        # The interval at which the task is run.
+        # The interval period.
         self.interval_period = interval_period
-        # The additional information.
+        # The extended information field.
         self.param = param
-        # The unit of the scan interval. Valid values:
-        # 
-        # *   **day**
-        # *   **hour**
+        # The unit of the scan cycle. Valid values:
+        # - **day**: day.
+        # - **hour**: hour.
         self.period_unit = period_unit
-        # The end time of the task. The time must be a time frame.
+        # The task end time, in hours.
         self.target_end_time = target_end_time
-        # The start time of the task. The start time must be a time frame.
+        # The task start time, in hours.
         self.target_start_time = target_start_time
-        # The name of the task. Valid values:
-        # 
-        # *   **VIRUS_VUL_SCHEDULE_SCAN**: virus detection task
-        # *   **IMAGE_SCAN**: image scan task
-        # *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
-        # 
-        # Valid values:
-        # 
-        # *   VIRUS_VUL_SCHEDULE_SCAN
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     virus detection task
-        # 
-        #     <!-- -->
-        # 
-        # *   IMAGE_SCAN
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     image scan task
-        # 
-        #     <!-- -->
-        # 
-        # *   EMG_VUL_SCHEDULE_SCAN
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     urgent vulnerability scan task
-        # 
-        #     <!-- -->
+        # The node name. Valid values:
+        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
+        # - **IMAGE_SCAN**: image scan.
+        # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
         self.task_name = task_name
-        # The type of the task. Valid values:
-        # 
-        # *   **VIRUS_VUL_SCHEDULE_SCAN**: virus detection task
-        # *   **IMAGE_SCAN**: image scan task
-        # *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
-        # 
-        # Valid values:
-        # 
-        # *   VIRUS_VUL_SCHEDULE_SCAN
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     virus detection task
-        # 
-        #     <!-- -->
-        # 
-        # *   IMAGE_SCAN
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     image scan task
-        # 
-        #     <!-- -->
-        # 
-        # *   EMG_VUL_SCHEDULE_SCAN
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     urgent vulnerability scan task
-        # 
-        #     <!-- -->
+        # The node type. Valid values:
+        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
+        # - **IMAGE_SCAN**: image scan.
+        # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
         self.task_type = task_type
 
     def validate(self):

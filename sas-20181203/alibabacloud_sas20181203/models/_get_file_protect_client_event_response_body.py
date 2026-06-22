@@ -11,6 +11,7 @@ class GetFileProtectClientEventResponseBody(DaraModel):
         data: main_models.GetFileProtectClientEventResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data details.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -70,28 +71,60 @@ class GetFileProtectClientEventResponseBodyData(DaraModel):
         user_name: str = None,
         uuid: str = None,
     ):
+        # The alert notification level. Valid values:
+        # 
+        # - 0: no alert
+        # - 1: reminder
+        # - 2: suspicious
+        # - 3: high-risk.
         self.alert_level = alert_level
+        # The command line of the event.
         self.cmd_line = cmd_line
+        # The number of times the alert occurred.
         self.count = count
+        # The file path.
         self.file_path = file_path
+        # The process permissions.
         self.file_permission = file_permission
+        # The timestamp when the event first occurred.
         self.first_time = first_time
+        # The time when the event was handled.
         self.handle_time = handle_time
+        # The event ID.
         self.id = id
+        # The instance name.
         self.instance_name = instance_name
+        # The public IP address of the associated instance.
         self.internet_ip = internet_ip
+        # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
+        # The time when the event most recently occurred.
         self.latest_time = latest_time
+        # The operation that the process performed on the file.
         self.operation = operation
+        # The operating system type.
         self.platform = platform
+        # The process path.
         self.proc_path = proc_path
+        # The process ID of the event.
         self.process_id = process_id
+        # The remarks.
         self.remark = remark
+        # The action of the blocking rule.
         self.rule_action = rule_action
+        # The rule name.
         self.rule_name = rule_name
+        # The event status. Valid values:
+        # 
+        # - 0: unhandled 
+        # - 1: handled
+        # - 2: whitelisted.
         self.status = status
+        # The user ID of the event.
         self.user_id = user_id
+        # The username of the event.
         self.user_name = user_name
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):

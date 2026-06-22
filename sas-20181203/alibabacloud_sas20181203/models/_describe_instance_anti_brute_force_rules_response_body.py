@@ -16,9 +16,9 @@ class DescribeInstanceAntiBruteForceRulesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
-        # An array consisting of the servers to which a defense rule is applied.
+        # The list of servers on which brute-force attacks defense rules take effect.
         self.rules = rules
 
     def validate(self):
@@ -71,11 +71,11 @@ class DescribeInstanceAntiBruteForceRulesResponseBodyRules(DaraModel):
         name: str = None,
         uuid: str = None,
     ):
-        # The ID of the defense rule.
+        # The ID of the brute-force attacks defense rule.
         self.id = id
-        # The name of the defense rule.
+        # The name of the brute-force attacks defense rule.
         self.name = name
-        # The UUID of the server to which the defense rule is applied.
+        # The UUID of the server on which the brute-force attacks defense rule takes effect.
         self.uuid = uuid
 
     def validate(self):
@@ -118,13 +118,13 @@ class DescribeInstanceAntiBruteForceRulesResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of servers returned on the current page.
+        # The number of servers on which brute-force attacks defense rules take effect on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The total number of servers returned.
+        # The total number of servers on which brute-force attacks defense rules take effect.
         self.total_count = total_count
 
     def validate(self):

@@ -25,51 +25,48 @@ class UpdateOpaStrategyNewRequest(DaraModel):
         un_scaned_image: bool = None,
         white_list: List[str] = None,
     ):
-        # The risks that you want to detect by using the rule.
+        # The alert content details included in the policy.
         self.alarm_detail = alarm_detail
         # The cluster ID.
         # 
-        # > This parameter is deprecated. You can use the Scopes parameter to specify a scope in which cluster parameters take effect.
+        # >Notice: This parameter is deprecated. Use the Scopes parameter to specify the scope of clusters to which the policy applies..
         self.cluster_id = cluster_id
         # The cluster name.
-        # 
-        # > This parameter is deprecated.
+        # >Notice: This parameter is deprecated..
         self.cluster_name = cluster_name
-        # The rule description.
+        # The policy description.
         self.description = description
-        # The image names.
+        # The list of image names included in the policy.
         self.image_name = image_name
-        # The image tags.
+        # The list of image tags included in the policy.
         self.label = label
-        # Specifies whether the rule supports malicious Internet images. Valid values:
+        # Specifies whether the policy supports Internet malicious images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.malicious_image = malicious_image
-        # The action that is performed when the rule is hit. Valid values:
+        # The action to take when the policy is hit. Valid values:
         # 
-        # *   **1**: alert
-        # *   **2**: block
-        # *   **3**: allow
+        # - **1**: Alert.
+        # - **2**: Block.
+        # - **3**: Allow.
         self.rule_action = rule_action
-        # The application scope.
+        # The scope of the policy.
         self.scopes = scopes
-        # The ID of the rule.
-        # 
-        # >  You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the ID.
+        # The policy ID.
+        # >Call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
         self.strategy_id = strategy_id
-        # The rule name.
+        # The policy name.
         self.strategy_name = strategy_name
-        # The ID of the rule template.
-        # 
-        # >  You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
+        # The policy template ID.
+        # >Call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to obtain this parameter.
         self.strategy_template_id = strategy_template_id
-        # Specifies whether the rule supports unscanned images. Valid values:
+        # Specifies whether the policy supports unscanned images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.un_scaned_image = un_scaned_image
-        # The whitelists.
+        # The whitelist.
         self.white_list = white_list
 
     def validate(self):
@@ -189,22 +186,20 @@ class UpdateOpaStrategyNewRequestScopes(DaraModel):
         cluster_id: str = None,
         namespace_list: List[str] = None,
     ):
-        # The ID of the cluster node to which the rule is applied.
-        # 
-        # >  You can call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to query the ID of the cluster node to which the rule is applied.
+        # The policy instance ID in the cluster.
+        # > Call the [GetOpaStrategyDetailNew](~~GetOpaStrategyDetailNew~~) operation to obtain this parameter.
         self.ack_policy_instance_id = ack_policy_instance_id
         # Specifies whether all namespaces are included. Valid values:
         # 
-        # *   **0**: Not all namespaces are included.
-        # *   **1**: All namespaces are included.
+        # - **0**: No.
+        # - **1**: Yes.
         self.all_namespace = all_namespace
-        # The cluster ID.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the cluster ID.
+        # The ID of the container cluster.
+        # > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The namespaces.
+        # The list of namespaces.
         # 
-        # > This parameter is valid only when the AllNamespace parameter is set to 0.
+        # >Notice: This parameter takes effect only when AllNamespace is set to 0..
         self.namespace_list = namespace_list
 
     def validate(self):
@@ -254,15 +249,15 @@ class UpdateOpaStrategyNewRequestAlarmDetail(DaraModel):
         sensitive_file: main_models.UpdateOpaStrategyNewRequestAlarmDetailSensitiveFile = None,
         vul: main_models.UpdateOpaStrategyNewRequestAlarmDetailVul = None,
     ):
-        # The baseline risks.
+        # The baseline risk information.
         self.baseline = baseline
-        # The configuration of image build risk.
+        # The risky image build command information.
         self.build_risk = build_risk
-        # The malicious sample risks.
+        # The malicious sample information.
         self.malicious_file = malicious_file
-        # The configuration of sensitive file.
+        # The sensitive file information.
         self.sensitive_file = sensitive_file
-        # The vulnerability risks.
+        # The vulnerability item information.
         self.vul = vul
 
     def validate(self):
@@ -330,11 +325,11 @@ class UpdateOpaStrategyNewRequestAlarmDetailVul(DaraModel):
         risk_class: List[main_models.UpdateOpaStrategyNewRequestAlarmDetailVulRiskClass] = None,
         risk_level: List[str] = None,
     ):
-        # The vulnerabilities.
+        # The vulnerability list.
         self.item = item
-        # Risk type of vulnerability.
+        # The list of vulnerability types.
         self.risk_class = risk_class
-        # The risk levels.
+        # The list of risk levels.
         self.risk_level = risk_level
 
     def validate(self):
@@ -392,15 +387,13 @@ class UpdateOpaStrategyNewRequestAlarmDetailVulRiskClass(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the vulnerability types. Valid values:
-        # 
-        # *   **cve**: system vulnerability
-        # *   **app**: application vulnerability
+        # The vulnerability type ID. Valid values:
+        # - **cve**: system vulnerability
+        # - **app**: application vulnerability.
         self.id = id
-        # The name of the vulnerability. Valid values:
-        # 
-        # *   **system vulnerability**
-        # *   **application vulnerability**
+        # The vulnerability type name. Valid values:
+        # - **system vulnerability**
+        # - **application vulnerability**
         self.name = name
 
     def validate(self):
@@ -435,13 +428,11 @@ class UpdateOpaStrategyNewRequestAlarmDetailVulItem(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the vulnerability.
-        # 
-        # >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the ID.
+        # The vulnerability ID.
+        # > Call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query this value.
         self.id = id
-        # The name of the vulnerability.
-        # 
-        # >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the name.
+        # The vulnerability name.
+        # > Call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query this value.
         self.name = name
 
     def validate(self):
@@ -476,9 +467,9 @@ class UpdateOpaStrategyNewRequestAlarmDetailSensitiveFile(DaraModel):
         item: List[main_models.UpdateOpaStrategyNewRequestAlarmDetailSensitiveFileItem] = None,
         risk_level: List[str] = None,
     ):
-        # The configuration of sensitive file.
+        # The list of sensitive file check items.
         self.item = item
-        # The risk levels.
+        # The list of risk levels.
         self.risk_level = risk_level
 
     def validate(self):
@@ -521,13 +512,11 @@ class UpdateOpaStrategyNewRequestAlarmDetailSensitiveFileItem(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the sensitive files.
-        # 
-        # >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+        # The sensitive file type ID.
+        # > Call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query this value.
         self.id = id
-        # The name of the sensitive files.
-        # 
-        # >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+        # The sensitive file type name.
+        # > Call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query this value.
         self.name = name
 
     def validate(self):
@@ -562,9 +551,9 @@ class UpdateOpaStrategyNewRequestAlarmDetailMaliciousFile(DaraModel):
         item: List[main_models.UpdateOpaStrategyNewRequestAlarmDetailMaliciousFileItem] = None,
         risk_level: List[str] = None,
     ):
-        # The malicious samples.
+        # The malicious sample list.
         self.item = item
-        # The risk levels.
+        # The list of risk levels.
         self.risk_level = risk_level
 
     def validate(self):
@@ -607,13 +596,11 @@ class UpdateOpaStrategyNewRequestAlarmDetailMaliciousFileItem(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the malicious sample.
-        # 
-        # >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the ID.
+        # The malicious sample ID.
+        # > Call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query this value.
         self.id = id
-        # The name of the malicious sample.
-        # 
-        # >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the name.
+        # The malicious sample name.
+        # > Call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query this value.
         self.name = name
 
     def validate(self):
@@ -648,9 +635,9 @@ class UpdateOpaStrategyNewRequestAlarmDetailBuildRisk(DaraModel):
         item: List[main_models.UpdateOpaStrategyNewRequestAlarmDetailBuildRiskItem] = None,
         risk_level: List[str] = None,
     ):
-        # The configuration of image build risk.
+        # The list of risk items.
         self.item = item
-        # The risk levels.
+        # The list of risk levels.
         self.risk_level = risk_level
 
     def validate(self):
@@ -693,13 +680,11 @@ class UpdateOpaStrategyNewRequestAlarmDetailBuildRiskItem(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the image build risk.
-        # 
-        # >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+        # The risky image build command type ID.
+        # > Call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query this value.
         self.id = id
-        # The name of the image build risk.
-        # 
-        # >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+        # The risky image build command type name.
+        # > Call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query this value.
         self.name = name
 
     def validate(self):
@@ -734,9 +719,9 @@ class UpdateOpaStrategyNewRequestAlarmDetailBaseline(DaraModel):
         item: List[main_models.UpdateOpaStrategyNewRequestAlarmDetailBaselineItem] = None,
         risk_level: List[str] = None,
     ):
-        # The baseline check items.
+        # The baseline item information.
         self.item = item
-        # The risk levels.
+        # The list of risk levels.
         self.risk_level = risk_level
 
     def validate(self):
@@ -779,13 +764,11 @@ class UpdateOpaStrategyNewRequestAlarmDetailBaselineItem(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the baseline check item.
-        # 
-        # >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the ID.
+        # The baseline check item ID.
+        # > Call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query this value.
         self.id = id
-        # The name of the baseline check item.
-        # 
-        # >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the name.
+        # The baseline check item name.
+        # > Call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query this value.
         self.name = name
 
     def validate(self):

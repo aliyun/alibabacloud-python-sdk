@@ -15,19 +15,18 @@ class ListVulAutoRepairConfigRequest(DaraModel):
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page in a paged query. Default value: **10**, which indicates that 10 auto-fix vulnerability configurations are displayed per page.
         self.page_size = page_size
         # The type of the vulnerability. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
+        # - **cve**: Linux software vulnerability
+        # - **sys**: Windows system vulnerability.
         self.type = type
 
     def validate(self):

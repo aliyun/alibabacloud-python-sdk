@@ -15,7 +15,7 @@ class GetRdTreeResponseBody(DaraModel):
     ):
         # The processing result.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class GetRdTreeResponseBodyData(DaraModel):
         folder_id: str = None,
         folder_name: str = None,
     ):
-        # The subfolder.
+        # The child folders.
         self.children = children
         # The ID of the folder in the resource directory.
         self.folder_id = folder_id
-        # The name of the folder.
+        # The folder name.
         self.folder_name = folder_name
 
     def validate(self):

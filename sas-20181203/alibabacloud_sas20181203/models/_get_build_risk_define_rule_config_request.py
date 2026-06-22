@@ -9,10 +9,9 @@ class GetBuildRiskDefineRuleConfigRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # The language type for the request and response messages. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

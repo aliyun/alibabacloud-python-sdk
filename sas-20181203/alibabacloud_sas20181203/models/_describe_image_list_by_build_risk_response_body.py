@@ -16,18 +16,17 @@ class DescribeImageListByBuildRiskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The detailed information about the error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -82,7 +81,7 @@ class DescribeImageListByBuildRiskResponseBodyData(DaraModel):
         list: List[main_models.DescribeImageListByBuildRiskResponseBodyDataList] = None,
         page_info: main_models.DescribeImageListByBuildRiskResponseBodyDataPageInfo = None,
     ):
-        # The images.
+        # The list of images.
         self.list = list
         # The pagination information.
         self.page_info = page_info
@@ -131,11 +130,10 @@ class DescribeImageListByBuildRiskResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the current page in paging query. Default value: **1**.
         self.current_page = current_page
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -189,29 +187,28 @@ class DescribeImageListByBuildRiskResponseBodyDataList(DaraModel):
     ):
         # The digest value of the image.
         self.digest = digest
-        # The timestamp generated when the first scan was performed. Unit: milliseconds.
+        # The timestamp of the first scan. Unit: milliseconds.
         self.first_scan_time = first_scan_time
         # The instance ID of the image repository.
         self.instance_id = instance_id
-        # The timestamp generated when the last scan was performed. Unit: milliseconds.
+        # The timestamp of the most recent scan. Unit: milliseconds.
         self.last_scan_time = last_scan_time
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The name of the image repository.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
+        # The namespace of the image repository.
         self.repo_namespace = repo_namespace
         # The risk level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**
+        # - **medium**
+        # - **low**.
         self.risk_level = risk_level
-        # The status of the alert event. Valid values:
-        # 
-        # *   **0**: unhandled.
-        # *   **1**: ignored.
-        # *   **2**: false positive.
+        # The status of the alert event to query. Valid values:
+        # - **0**: Unhandled.
+        # - **1**: Ignored.
+        # - **2**: False positive.
         self.status = status
         # The tag of the image.
         self.tag = tag

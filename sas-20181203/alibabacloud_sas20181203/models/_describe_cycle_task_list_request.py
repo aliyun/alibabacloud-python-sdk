@@ -13,25 +13,22 @@ class DescribeCycleTaskListRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The ID of the task configuration.
-        # 
-        # >  You can call the [CreateCycleTask](~~CreateCycleTask~~) operation to query the IDs of task configurations.
+        # The ID of the configuration.
+        # >Call the [CreateCycleTask](~~CreateCycleTask~~) operation to obtain this parameter.
         self.config_id = config_id
-        # The number of the page to return.
+        # The page number of the current page when using paging.
         self.current_page = current_page
-        # The number of entries to return on each page.
+        # The maximum number of entries per page when using paging. Default value: 20.
         self.page_size = page_size
-        # The name of the task. Valid values:
-        # 
-        # *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
-        # *   **IMAGE_SCAN**: image scan task
-        # *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+        # The node name. Valid values:
+        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
+        # - **IMAGE_SCAN**: image scan.
+        # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
         self.task_name = task_name
-        # The type of the task. Valid values:
-        # 
-        # *   **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
-        # *   **IMAGE_SCAN**: image scan task
-        # *   **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+        # The node type. Valid values:
+        # - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
+        # - **IMAGE_SCAN**: image scan.
+        # - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
         self.task_type = task_type
 
     def validate(self):

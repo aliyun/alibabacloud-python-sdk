@@ -16,9 +16,9 @@ class ListOperationProcessResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The information about the operation tasks.
+        # The list of operation task information.
         self.processes = processes
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -79,37 +79,37 @@ class ListOperationProcessResponseBodyProcesses(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
-        # The time when the task was created. Unit: milliseconds.
+        # The creation time of the task. Unit: milliseconds.
         self.create_time = create_time
-        # Number of completed subtasks
+        # The number of completed subtasks.
         self.detail_task_ready_count = detail_task_ready_count
-        # Total number of subtasks.
+        # The total number of subtasks.
         self.detail_task_total_count = detail_task_total_count
         # The end time of the task. Unit: milliseconds.
         self.end_time = end_time
-        # The number of tasks that are complete.
+        # The number of completed items.
         self.finish_count = finish_count
         # The start time of the task. Unit: milliseconds.
         self.start_time = start_time
-        # The task status code. Valid values:
+        # The check task status code. Valid values:
         # 
-        # *   0: not started.
-        # *   1: running.
-        # *   2: complete.
-        # *   3: times out.
+        # - 0: not started.
+        # - 1: checking.
+        # - 2: check completed.
+        # - 3: timed out.
         self.status_code = status_code
         # The ID of the operation task.
         self.task_id = task_id
-        # Task source. Values: 
-        # - **YAO_CHI**: YaoChi.
+        # The task source. Valid values:
+        # 
+        # - **YAO_CHI**: ApsaraDB.
         self.task_source = task_source
         # The task type. Valid values:
-        # 
-        # *   CHECK_ALL: full check.
-        # *   CHECK_POLICY: policy-based check for which check items are configured.
-        # *   CHECK_SCHEDULE: scheduled check.
-        # *   CHECK_ITEM: specific check item-based check.
-        # *   CHECK_INSTANCE: specific check item-based check on specific instances.
+        # - CHECK_ALL: full check.
+        # - CHECK_POLICY: check performed based on check items in the configured policy.
+        # - CHECK_SCHEDULE: scheduled check.
+        # - CHECK_ITEM: check performed based on specified check items.
+        # - CHECK_INSTANCE: check performed based on specified check items and instances.
         self.task_type = task_type
         # The total number of entries returned.
         self.total_count = total_count
@@ -202,9 +202,9 @@ class ListOperationProcessResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number.
+        # The page number of the current page to display in a paged query. This parameter is used for paging.
         self.current_page = current_page
         # The number of entries per page.
         self.page_size = page_size

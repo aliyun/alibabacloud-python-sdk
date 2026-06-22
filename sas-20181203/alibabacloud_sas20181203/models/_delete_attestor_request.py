@@ -11,10 +11,10 @@ class DeleteAttestorRequest(DaraModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
-        # The name of the witness.
+        # The name of the attestor.
         self.name = name
         self.resource_owner_id = resource_owner_id
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

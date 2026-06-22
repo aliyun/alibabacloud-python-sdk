@@ -14,9 +14,9 @@ class DescribeImageBaselineItemListResponseBody(DaraModel):
         page_info: main_models.DescribeImageBaselineItemListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of baseline check items.
+        # The list of image baseline data.
         self.baseline_item_infos = baseline_item_infos
-        # The pagination information.
+        # The pagination information of the query results.
         self.page_info = page_info
         # The ID of the request.
         self.request_id = request_id
@@ -72,11 +72,11 @@ class DescribeImageBaselineItemListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paged query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -131,29 +131,27 @@ class DescribeImageBaselineItemListResponseBodyBaselineItemInfos(DaraModel):
         status: int = None,
         white_list: int = None,
     ):
-        # The alias of the baseline type.
+        # The alias of the baseline category.
         self.baseline_class_alias = baseline_class_alias
-        # The key of the baseline type.
+        # The key of the baseline category.
         self.baseline_class_key = baseline_class_key
-        # The alias of the baseline check item.
+        # The alias of the baseline sub-item.
         self.baseline_item_alias = baseline_item_alias
-        # The key of the baseline check item.
+        # The key of the baseline sub-item.
         self.baseline_item_key = baseline_item_key
-        # The alias of the baseline.
+        # The alias of the baseline name.
         self.baseline_name_alias = baseline_name_alias
         # The key of the baseline name.
         self.baseline_name_key = baseline_name_key
-        # The status of the baseline risks. Valid values:
-        # 
-        # *   **0**: unfixed
-        # *   **1**: fixed
-        # *   **2**: pending verification
-        # *   **3**: fixing failed
+        # The fix status of the baseline risk. Valid values:
+        # - **0**: unfixed
+        # - **1**: fixed
+        # - **2**: pending verification
+        # - **3**: fix failed.
         self.status = status
-        # Indicates whether the baseline check item is added to the whitelist. Valid values:
-        # 
-        # *   **0**: The baseline check item is not added to the whitelist.
-        # *   **1**: The baseline check item is added to the whitelist.
+        # The whitelist status of the baseline check item. Valid values:
+        # - **0**: not whitelisted
+        # - **1**: whitelisted.
         self.white_list = white_list
 
     def validate(self):

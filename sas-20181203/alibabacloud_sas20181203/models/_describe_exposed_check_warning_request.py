@@ -11,18 +11,15 @@ class DescribeExposedCheckWarningRequest(DaraModel):
         type_name: str = None,
         uuids: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The type of the baseline.
-        # 
-        # >  You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to obtain the types of baselines from the response parameter **TypeName**.
+        # The type to which the baseline belongs.
+        # > The **TypeName** field returned by calling the [DescribeRiskType](~~DescribeRiskType~~) operation.
         self.type_name = type_name
-        # The UUID of the server. Separate multiple UUIDs with commas (,).
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # The UUID of the server to query. Separate multiple UUIDs with commas (,).
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of a server.
         self.uuids = uuids
 
     def validate(self):

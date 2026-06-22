@@ -10,15 +10,14 @@ class DescribeAccessKeyLeakDetailRequest(DaraModel):
         id: int = None,
         resource_directory_account_id: int = None,
     ):
-        # The ID of the AccessKey pair leak event.
+        # The ID of the AccessKey pair leak event to query.
         # 
-        # > You can call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to obtain the event ID.
+        # > Call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.id = id
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the ID.
+        # The ID of the member account in the resource directory (Alibaba Cloud account).
+        # > Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

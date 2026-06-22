@@ -13,7 +13,7 @@ class ListVulGlobalConfigResponseBody(DaraModel):
         request_id: str = None,
         vul_global_config_list: List[main_models.ListVulGlobalConfigResponseBodyVulGlobalConfigList] = None,
     ):
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The configurations.
         self.vul_global_config_list = vul_global_config_list

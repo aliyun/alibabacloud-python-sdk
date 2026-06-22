@@ -14,11 +14,11 @@ class DescribeImageFixTaskResponseBody(DaraModel):
         page_info: main_models.DescribeImageFixTaskResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The tasks returned.
+        # The details of the image repair tasks.
         self.build_tasks = build_tasks
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The request ID, which is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeImageFixTaskResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of tasks returned on the current page.
+        # The number of image repair tasks on the current page.
         self.count = count
-        # The page number of the returned page. Default value: **1**
+        # The page number of the results returned. Default value: **1**, which indicates that the results start from page 1.
         self.current_page = current_page
-        # The number of entries returned per page. Default value: **20**
+        # The number of entries per page in a paginated query. Default value: **20**, which indicates that up to 20 entries are returned per page.
         self.page_size = page_size
-        # The total number of tasks returned.
+        # The total number of image repair tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -136,35 +136,35 @@ class DescribeImageFixTaskResponseBodyBuildTasks(DaraModel):
         task_type: str = None,
         vul_alias: str = None,
     ):
-        # The ID of the task.
+        # The ID of the image repair task.
         self.build_task_id = build_task_id
-        # The timestamp when the task starts. Unit: milliseconds.
+        # The timestamp when the repair task started. Unit: milliseconds.
         self.finish_time = finish_time
-        # The timestamp when the task ends. Unit: milliseconds.
+        # The timestamp when the repair task ended. Unit: milliseconds.
         self.fix_time = fix_time
-        # The version of the image after image risks are fixed.
+        # The tag of the repaired image.
         self.new_tag = new_tag
-        # The UUID of the image after image risks are fixed.
+        # The UUID of the repaired image.
         self.new_uuid = new_uuid
-        # The version of the image.
+        # The tag of the original image.
         self.old_tag = old_tag
-        # The UUID of the image.
+        # The UUID of the original image.
         self.old_uuid = old_uuid
-        # The region of the image.
+        # The region ID of the image.
         self.region_id = region_id
         # The name of the image repository.
         self.repo_name = repo_name
         # The namespace of the image.
         self.repo_namespace = repo_namespace
-        # The status of the task. Valid values:
+        # The status of the image repair task. Valid values:
         # 
-        # *   **1**: The task is running.
-        # *   **2**: The task is successful.
-        # *   **3**: The task failed.
+        # - **1**: Repairing
+        # - **2**: Repaired
+        # - **3**: Repair failed
         self.status = status
-        # The type of the task. The value is fixed as IMAGE_REPAIR. The value indicates a task that fixes image risks.
+        # The type of the image repair task. The value is fixed as IMAGE_REPAIR, which indicates image repair.
         self.task_type = task_type
-        # The alias of the fixed vulnerability.
+        # The name of the vulnerability that was repaired.
         self.vul_alias = vul_alias
 
     def validate(self):

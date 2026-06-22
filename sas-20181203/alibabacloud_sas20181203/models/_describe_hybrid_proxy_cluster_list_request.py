@@ -13,9 +13,9 @@ class DescribeHybridProxyClusterListRequest(DaraModel):
     ):
         # The name of the proxy cluster.
         self.cluster_name = cluster_name
-        # The page number.
+        # The page number of the current page to display in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries to display on each page in a paged query.
         self.page_size = page_size
 
     def validate(self):

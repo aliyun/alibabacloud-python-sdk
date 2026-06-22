@@ -13,25 +13,35 @@ class ListAegisContainerPluginRuleRequest(DaraModel):
         page_size: int = None,
         rule_type: int = None,
     ):
-        # The query condition.
+        # The query conditions. The format is as follows:
+        # ```json
+        # [
+        #   {
+        #     "name": "ruleName",
+        #     "value": "test"
+        #   }
+        # ]
+        # ```
+        # **- name**: The condition name. The following conditions are supported:
+        # - **ruleName**: The rule name.
+        # 
+        # **- value**: The condition value.
         self.criteria = criteria
-        # The page number.
+        # The page number of the current page in a paginated query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # Specifies the language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page.
+        # The number of entries to return on each page in a paginated query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The type of the rule. Valid values:
-        # 
-        # *   **0**: custom
-        # *   **1**: system
+        # The rule type. Valid values:
+        # - **0**: User-defined.
+        # - **1**: System built-in.
         self.rule_type = rule_type
 
     def validate(self):

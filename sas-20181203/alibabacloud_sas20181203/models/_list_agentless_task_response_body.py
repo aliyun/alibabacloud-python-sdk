@@ -14,11 +14,11 @@ class ListAgentlessTaskResponseBody(DaraModel):
         page_info: main_models.ListAgentlessTaskResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The tasks.
+        # The task list.
         self.list = list
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class ListAgentlessTaskResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page in a paged query. Paging starts from page 1.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paged query. Paging is performed based on this value.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -132,55 +132,54 @@ class ListAgentlessTaskResponseBodyList(DaraModel):
         task_name: str = None,
         uuid: str = None,
     ):
-        # The end timestamp of the task. Unit: milliseconds.
+        # The end timestamp of the task, in milliseconds.
         self.end_time = end_time
         # The instance ID of the asset.
         self.instance_id = instance_id
-        # The name of the asset.
+        # The name of the asset instance.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
         # The private IP address of the server.
         self.intranet_ip = intranet_ip
-        # The amount of data detected. Unit: MB.
+        # The amount of detected data, in MB.
         self.measure_space = measure_space
-        # The progress of the task.
+        # The task progress.
         self.progress = progress
-        # The execution progress of the check items.
+        # The execution progress of the check item.
         self.progress_by_project = progress_by_project
         # The download URL of the report.
         self.report_download_url = report_download_url
-        # The status of the report. Valid values:
-        # 
-        # *   **PREPARED**: preparing
-        # *   **RUNNING**: running
-        # *   **SUCCESS**: succeeded
-        # *   **TIMEOUT**: timed out
-        # *   **FAILED**: failed
+        # The report status. Valid values:
+        #  - **PREPARED**: Preparing.
+        #  - **RUNNING**: Running.
+        #  - **SUCCESS**: Succeeded.
+        #  - **TIMEOUT**: Timed out.
+        #  - **FAILED**: Failed.
         self.report_status = report_status
-        # The result of the detection.
+        # The detection result.
         self.result = result
-        # The start timestamp of the task. Unit: milliseconds.
+        # The start timestamp of the task, in milliseconds.
         self.start_time = start_time
-        # The status of the detection task.
+        # The detection status. Valid values:
         # 
-        # *   **1**: The detection task is in progress.
-        # *   **2**: The detection task is complete.
-        # *   **3**: The detection task fails.
-        # *   **4**: The detection task times out.
+        # - **1**: Detecting.
+        # - **2**: Completed.
+        # - **3**: Failed.
+        # - **4**: Timed out.
         self.status = status
-        # The name of the asset that is detected.
+        # The name of the scan target.
         self.target_name = target_name
-        # The type of the asset that is detected. Valid values:
+        # The object type. Valid values:
         # 
-        # *   **1**: snapshot
-        # *   **2**: image
+        # - **1**: snapshot
+        # - **2**: image.
         self.target_type = target_type
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
         # The name of the detection task.
         self.task_name = task_name
-        # The UUID of the asset.
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):

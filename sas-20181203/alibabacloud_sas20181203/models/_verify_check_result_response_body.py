@@ -11,9 +11,9 @@ class VerifyCheckResultResponseBody(DaraModel):
         data: main_models.VerifyCheckResultResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51,14 +51,14 @@ class VerifyCheckResultResponseBodyData(DaraModel):
         task_id: str = None,
         throttling_time_second: int = None,
     ):
-        # The operation code of the cloud service configuration task. Valid values:
+        # The operation code of the cloud service configuration check task. Valid values:
         # 
-        # *   **Throttling**: frequency limit
-        # *   **ActionTrialUnauthorized**: an error that is related to unauthorized operations
+        # - **Throttling**: Rate limited.
+        # - **ActionTrialUnauthorized**: Unauthorized error.
         self.operate_code = operate_code
         # The task ID.
         self.task_id = task_id
-        # The throttling duration. Unit: seconds
+        # The rate limit duration. Unit: seconds.
         self.throttling_time_second = throttling_time_second
 
     def validate(self):

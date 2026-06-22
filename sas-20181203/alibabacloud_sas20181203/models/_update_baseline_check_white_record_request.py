@@ -19,28 +19,25 @@ class UpdateBaselineCheckWhiteRecordRequest(DaraModel):
     ):
         # The ID of the check item.
         # 
-        # >  You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to query the IDs of check items.
+        # > Call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.
         self.check_id = check_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The reason why the check item is added to the whitelist.
+        # The reason for adding the whitelist entry.
         self.reason = reason
         # The ID of the whitelist record.
         self.record_id = record_id
-        # A list of asset UUIDs from which container names need to be removed from the whitelist.
+        # The list of asset UUIDs for which container names are to be removed from the whitelist.
         self.remove_container_uuids = remove_container_uuids
         # The data source. Valid values:
-        # 
-        # *   **default**: server
-        # *   **agentless**: agentless detection
+        # - **default**: host
+        # - **agentless**: agentless.
         self.source = source
-        # The type of the assets on which the whitelist rule takes effect. Valid values:
-        # 
-        # *   **all_instance**: all servers
-        # *   **instance**: specific servers
+        # The type of the target on which the whitelist takes effect. Valid values:
+        # - **all_instance**: all servers
+        # - **instance**: specific servers.
         self.target_type = target_type
 
     def validate(self):

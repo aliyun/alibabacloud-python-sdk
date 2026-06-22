@@ -10,8 +10,7 @@ class ListVulGlobalConfigRequest(DaraModel):
         config_key: str = None,
     ):
         # The key of the configuration item. Valid values:
-        # 
-        # *   **vul_scan_ip_list**: The IP addresses that are detected.
+        # - **vul_scan_ip_list**: the collection of vulnerability scanning IP addresses.
         self.config_key = config_key
 
     def validate(self):

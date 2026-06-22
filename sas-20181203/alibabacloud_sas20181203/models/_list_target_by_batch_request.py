@@ -12,19 +12,19 @@ class ListTargetByBatchRequest(DaraModel):
         operation_base: int = None,
         page_size: int = None,
     ):
-        # The ID of the release batch.
+        # The publish batch ID.
         self.batch_id = batch_id
-        # The page number of the current page in a paginated query.
+        # The page number of the current page to display in a paged query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Asset selection dimension. Values:
+        # The asset selection dimension. Valid values:
         # 
-        # - **0**: Machine instance
-        # - **1**: Machine group
-        # - **2**: VPC instance ID
+        # - **0**: machine instance
+        # - **1**: machine group
+        # - **2**: VPC-connected instance ID
         self.operation_base = operation_base
-        # The maximum number of items to return per page in a paginated query.
+        # The maximum number of entries to display per page in a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size

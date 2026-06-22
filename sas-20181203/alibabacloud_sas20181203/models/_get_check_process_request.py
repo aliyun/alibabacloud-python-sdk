@@ -9,9 +9,8 @@ class GetCheckProcessRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the task.
-        # 
-        # > You can call the [SubmitCheck](~~SubmitCheck~~) operation to query the ID.
+        # The ID of the cloud service configuration check task to query.
+        # > You can call the [SubmitCheck](~~SubmitCheck~~) operation to obtain this parameter.
         self.task_id = task_id
 
     def validate(self):

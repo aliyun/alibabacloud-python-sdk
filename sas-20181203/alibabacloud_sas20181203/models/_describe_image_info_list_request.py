@@ -10,8 +10,7 @@ class DescribeImageInfoListRequest(DaraModel):
         uuids: str = None,
     ):
         # The UUID of the server. Separate multiple UUIDs with commas (,).
-        # 
-        # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of servers.
+        # > Call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.uuids = uuids

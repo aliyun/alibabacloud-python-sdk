@@ -14,11 +14,11 @@ class DescribeTargetResponseBody(DaraModel):
         targets: List[main_models.DescribeTargetResponseBodyTargets] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the server.
+        # The machine settings for the vulnerability type.
         self.targets = targets
-        # The total number of entries returned.
+        # The total number of machine configuration entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -68,14 +68,14 @@ class DescribeTargetResponseBodyTargets(DaraModel):
         target: str = None,
         target_type: str = None,
     ):
-        # The flag that is added to the server. This parameter can be empty.
+        # The flag. This parameter can be empty.
         self.flag = flag
-        # The UUID of the server or the ID of the server group.
+        # The target. The value is a machine UUID or a machine group ID.
         self.target = target
-        # The type of the object. Valid values:
+        # The target type. Valid values:
         # 
-        # *   **uuid**: a server
-        # *   **groupId**: a server group
+        # - **uuid**: added by individual asset
+        # - **groupId**: added by server group.
         self.target_type = target_type
 
     def validate(self):

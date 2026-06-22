@@ -9,7 +9,7 @@ class DescribeImageLatestScanTaskRequest(DaraModel):
         self,
         digest: str = None,
     ):
-        # The digest value of the image.
+        # The digest of the image.
         # 
         # This parameter is required.
         self.digest = digest

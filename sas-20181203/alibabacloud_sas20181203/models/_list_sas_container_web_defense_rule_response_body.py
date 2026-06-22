@@ -14,11 +14,11 @@ class ListSasContainerWebDefenseRuleResponseBody(DaraModel):
         page_info: main_models.ListSasContainerWebDefenseRuleResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The rules for container tamper-proofing.
+        # The list of container file defense rules.
         self.container_web_defense_rule_list = container_web_defense_rule_list
-        # The pagination information.
+        # The pagination information of the query result.
         self.page_info = page_info
-        # The request ID, which is used to query logs and troubleshoot issues.
+        # The request ID. It is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class ListSasContainerWebDefenseRuleResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paged query.
         self.count = count
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -133,22 +133,22 @@ class ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleList(Dara
     ):
         # The user ID.
         self.ali_uid = ali_uid
-        # The number of the applications.
+        # The number of configured applications.
         self.apptotal_count = apptotal_count
         # The creation time. Unit: milliseconds.
         self.gmt_create = gmt_create
         # The timestamp when the alert event was last modified. Unit: milliseconds.
         self.gmt_modified = gmt_modified
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The paths that are protected.
+        # The list of rule defense paths.
         self.path_conf_dtolist = path_conf_dtolist
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The status of the rule. Valid values:
+        # The rule status. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.rule_status = rule_status
 
     def validate(self):
@@ -235,31 +235,29 @@ class ListSasContainerWebDefenseRuleResponseBodyContainerWebDefenseRuleListPathC
         include_file_type: str = None,
         process_path_list: List[str] = None,
     ):
-        # The backup paths.
+        # The backup path.
         self.backup_path = backup_path
-        # The prevention mode. Valid values:
-        # 
-        # *   **block**
-        # *   **audit**
+        # The action to take. Valid values:
+        # - **block**: Block.
+        # - **audit**: Alert.
         self.defense_mode = defense_mode
-        # The protected path.
+        # The defense path.
         self.defense_path = defense_path
-        # The file that is excluded.
+        # The excluded file.
         self.exclude_file = exclude_file
-        # The path to the file that is excluded.
+        # The excluded file path.
         self.exclude_file_path = exclude_file_path
-        # The type of the file that is excluded.
+        # The excluded file type.
         self.exclude_file_type = exclude_file_type
-        # The protection mode. Valid values:
-        # 
-        # *   **0**: basic mode (whitelist)
-        # *   **1**: complex mode (blacklist)
+        # The defense mode. Valid values:
+        # - **0**: Basic pattern (whitelist).
+        # - **1**: Advanced pattern (blacklist).
         self.guard_type = guard_type
-        # The file that is included.
+        # The included file.
         self.include_file = include_file
-        # The type of the file that is included.
+        # The type of the included file.
         self.include_file_type = include_file_type
-        # The processes that are added to the whitelist.
+        # The list of whitelisted processes.
         self.process_path_list = process_path_list
 
     def validate(self):

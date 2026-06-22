@@ -35,113 +35,103 @@ class DescribeCanFixVulListRequest(DaraModel):
         type: str = None,
         uuids: str = None,
     ):
-        # The alias of the vulnerability that is specified in Common Vulnerabilities and Exposures (CVE).
+        # The alias in the vulnerability advisory.
         self.alias_name = alias_name
-        # The cluster ID.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+        # The ID of the container cluster.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The name of the container cluster.
         self.cluster_name = cluster_name
         # The container ID.
         self.container_id = container_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the current page in a paging query. The value starts from 1. Default value: 1.
         self.current_page = current_page
         # Specifies whether the vulnerability is handled. Valid values:
         # 
-        # **y**: The vulnerability is handled. **n**: The vulnerability is not handled.
+        # **y**: Handled.
+        # **n**: Not handled.
         self.dealed = dealed
-        # The unique identifier of the image.
+        # The unique identifier of the container image.
         self.digest = digest
-        # The name of the image.
+        # The name of the container image.
         self.image = image
-        # The ID of the container image.
-        # 
-        # >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the ID of the container image from **InstanceId** in the response.
+        # The container image instance ID.
+        # > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId** response parameter.
         self.instance_id = instance_id
         # The name of the vulnerability.
         self.name = name
-        # The namespace of the cluster.
-        # 
-        # >  You can call the [GetOpaClusterNamespaceList](~~GetOpaClusterNamespaceList~~) operation to query the namespaces of clusters.
+        # The cluster namespace.
+        # > You can call the [GetOpaClusterNamespaceList](~~GetOpaClusterNamespaceList~~) operation to query this value.
         self.namespace = namespace
-        # The priority to fix the vulnerability. Separate multiple priorities with commas (,). Valid values:
+        # The priority levels of vulnerabilities to query. Separate multiple levels with commas (,). Valid values:
         # 
-        # *   **asap**: high
-        # *   **later**: medium
-        # *   **nntf**: low
+        # - **asap**: high
+        # - **later**: medium
+        # - **nntf**: low.
         self.necessity = necessity
-        # The number of entries per page. Default value: 20.
+        # The maximum number of entries per page in a paging query. Default value: 20.
         self.page_size = page_size
-        # The name of the container group.
+        # The name of the pod.
         self.pod = pod
         # The region ID of the image repository. Valid values:
-        # 
-        # *   **cn-beijing**: China (Beijing)
-        # *   **cn-zhangjiakou**: China (Zhangjiakou)
-        # *   **cn-hangzhou**: China (Hangzhou)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **cn-hongkong**: China (Hong Kong)
-        # *   **ap-southeast-1**: Singapore
-        # *   **ap-southeast-5**: Indonesia (Jakarta)
-        # *   **us-east-1**: US (Virginia)
-        # *   **us-west-1**: US (Silicon Valley)
-        # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **eu-west-1**: UK (London)
+        # - **cn-beijing**: China (Beijing)
+        # - **cn-zhangjiakou**: China (Zhangjiakou)
+        # - **cn-hangzhou**: China (Hangzhou)
+        # - **cn-shanghai**: China (Shanghai)
+        # - **cn-shenzhen**: China (Shenzhen)
+        # - **cn-hongkong**: Hong Kong (China)
+        # - **ap-southeast-1**: Singapore
+        # - **ap-southeast-5**: Indonesia (Jakarta)
+        # - **us-east-1**: US (Virginia)
+        # - **us-west-1**: US (Silicon Valley)
+        # - **eu-central-1**: Germany (Frankfurt)
+        # - **eu-west-1**: UK (London).
         self.region_id = region_id
         # The ID of the image repository.
-        # 
-        # >  You can call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry and obtain the ID of the image repository from **RepoId** in the response.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry and obtain the value of the **RepoId** response parameter.
         self.repo_id = repo_id
-        # The ID of the container image.
-        # 
-        # >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the ID of the container image from **InstanceId** in the response.
+        # The container image instance ID.
+        # > Invoke the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation of Container Registry and obtain the container image instance ID from the **InstanceId** response parameter.
         self.repo_instance_id = repo_instance_id
         # The name of the image repository.
-        # 
-        # >  Fuzzy match is supported.
+        # > Fuzzy match is supported.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
-        # 
-        # >  Fuzzy match is supported.
+        # The namespace of the image repository.
+        # > Fuzzy match is supported.
         self.repo_namespace = repo_namespace
         # The region ID of the image repository. Valid values:
-        # 
-        # *   **cn-beijing**: China (Beijing)
-        # *   **cn-zhangjiakou**: China (Zhangjiakou)
-        # *   **cn-hangzhou**: China (Hangzhou)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **cn-hongkong**: China (Hong Kong)
-        # *   **ap-southeast-1**: Singapore
-        # *   **ap-southeast-5**: Indonesia (Jakarta)
-        # *   **us-east-1**: US (Virginia)
-        # *   **us-west-1**: US (Silicon Valley)
-        # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **eu-west-1**: UK (London)
+        # - **cn-beijing**: China (Beijing)
+        # - **cn-zhangjiakou**: China (Zhangjiakou)
+        # - **cn-hangzhou**: China (Hangzhou)
+        # - **cn-shanghai**: China (Shanghai)
+        # - **cn-shenzhen**: China (Shenzhen)
+        # - **cn-hongkong**: Hong Kong (China)
+        # - **ap-southeast-1**: Singapore
+        # - **ap-southeast-5**: Indonesia (Jakarta)
+        # - **us-east-1**: US (Virginia)
+        # - **us-west-1**: US (Silicon Valley)
+        # - **eu-central-1**: Germany (Frankfurt)
+        # - **eu-west-1**: UK (London).
         self.repo_region_id = repo_region_id
-        # The type of the asset that you want to scan. Valid values:
+        # The scan scope. Valid values:
         # 
-        # *   **image**
-        # *   **container**
+        # - **image**: Image.
+        # - **container**: Container.
         self.scan_range = scan_range
-        # The status of the vulnerability. Valid values:
-        # 
-        # *   **1**: The vulnerability is unfixed.
-        # *   **4**: The vulnerability is being fixed.
-        # *   **7**:The vulnerability is fixed.
+        # The fix status of the vulnerability. Valid values:
+        # - **1**: Unfixed.
+        # - **4**: Being fixed.
+        # - **7**: Fixed.
         self.status_list = status_list
-        # The tag to add to the image.
+        # The tag of the container image.
         self.tag = tag
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   **cve**: system vulnerability
-        # *   **sca**: application vulnerability
+        # The vulnerability type. Valid values:
+        # - **cve**: system vulnerability
+        # - **sca**: application vulnerability.
         # 
         # This parameter is required.
         self.type = type
-        # The UUID of the image. Separate multiple UUIDs with commas (,).
+        # The UUIDs of images. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):

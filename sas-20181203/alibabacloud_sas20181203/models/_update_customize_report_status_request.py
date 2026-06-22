@@ -11,18 +11,16 @@ class UpdateCustomizeReportStatusRequest(DaraModel):
         report_id: int = None,
         report_status: int = None,
     ):
-        # The time when the report is pinned. Unit: milliseconds.
+        # The pinning time. Unit: milliseconds.
         self.pinned_time = pinned_time
-        # The ID of the report.
-        # 
-        # >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+        # The report ID.
+        # >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
         # 
         # This parameter is required.
         self.report_id = report_id
-        # The status of the report. Valid values:
-        # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # The report status. Valid values:
+        #  - **0**: Disabled.
+        #  - **1**: Enabled.
         # 
         # This parameter is required.
         self.report_status = report_status

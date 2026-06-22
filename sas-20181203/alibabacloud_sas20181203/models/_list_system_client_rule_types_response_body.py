@@ -12,9 +12,9 @@ class ListSystemClientRuleTypesResponseBody(DaraModel):
         request_id: str = None,
         rule_types: List[str] = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # An array that consists of the rule types.
+        # The list of rule types.
         self.rule_types = rule_types
 
     def validate(self):

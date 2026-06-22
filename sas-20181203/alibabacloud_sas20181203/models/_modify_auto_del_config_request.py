@@ -9,11 +9,13 @@ class ModifyAutoDelConfigRequest(DaraModel):
         self,
         days: int = None,
     ):
-        # The number of days after which a detected vulnerability is automatically deleted. Unit: days. Valid values:
+        # The automatic deletion time for expired vulnerabilities. Valid values:
         # 
-        # *   7
-        # *   30
-        # *   90
+        # - 7
+        # - 30
+        # - 90
+        # 
+        # Unit: days.
         self.days = days
 
     def validate(self):

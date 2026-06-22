@@ -9,7 +9,7 @@ class DescribeLogShipperStatusRequest(DaraModel):
         self,
         from_: str = None,
     ):
-        # The ID of the request source. Set the value to **sas**.
+        # The request source identifier. Set this parameter to **sas**.
         self.from_ = from_
 
     def validate(self):

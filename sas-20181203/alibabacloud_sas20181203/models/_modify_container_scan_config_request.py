@@ -13,14 +13,13 @@ class ModifyContainerScanConfigRequest(DaraModel):
     ):
         # The name of the container application.
         self.app_names = app_names
-        # The cluster ID.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+        # The ID of the container cluster.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

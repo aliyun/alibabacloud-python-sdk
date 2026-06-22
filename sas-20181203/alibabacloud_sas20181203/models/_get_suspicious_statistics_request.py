@@ -10,13 +10,12 @@ class GetSuspiciousStatisticsRequest(DaraModel):
         group_id_list: str = None,
         source_ip: str = None,
     ):
-        # The ID of the asset group. Separate multiple IDs with commas (,).
-        # 
-        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of asset groups.
+        # The IDs of the asset groups that you want to query. Separate multiple asset group IDs with commas (,).
+        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.group_id_list = group_id_list
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

@@ -11,9 +11,9 @@ class DescribeContainerStatisticsResponseBody(DaraModel):
         data: main_models.DescribeContainerStatisticsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The alert statistics of container assets.
+        # The detailed alert statistics of container assets.
         self.data = data
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
         self.request_id = request_id
 
     def validate(self):
@@ -54,17 +54,17 @@ class DescribeContainerStatisticsResponseBodyData(DaraModel):
         total_node: int = None,
         has_risk_node: int = None,
     ):
-        # The number of alerts whose risk level is **Reminder**.
+        # The number of alerts with the **Reminder** risk level.
         self.remind_alarm_count = remind_alarm_count
-        # The number of alerts whose risk level is **Urgent**.
+        # The number of alerts with the **Urgent** risk level.
         self.serious_alarm_count = serious_alarm_count
-        # The number of alerts whose risk level is **Suspicious**.
+        # The number of alerts with the **Suspicious** risk level.
         self.suspicious_alarm_count = suspicious_alarm_count
-        # The total number of alerts that are generated in the current container cluster.
+        # The total number of security alerts in the container cluster.
         self.total_alarm_count = total_alarm_count
-        # The total number of nodes in the current container cluster.
+        # The total number of nodes in the container cluster.
         self.total_node = total_node
-        # The number of nodes on which alerts are generated in the current container cluster.
+        # The number of nodes that have alerts in the container cluster.
         self.has_risk_node = has_risk_node
 
     def validate(self):

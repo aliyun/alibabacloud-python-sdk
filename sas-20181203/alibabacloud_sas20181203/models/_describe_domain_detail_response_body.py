@@ -21,11 +21,11 @@ class DescribeDomainDetailResponseBody(DaraModel):
         self.alarm_count = alarm_count
         # The domain name.
         self.domain = domain
-        # An array that consists of the details about the domain asset.
+        # The asset information related to the domain name.
         self.domain_detail_items = domain_detail_items
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. The China value is a unique identifier that Alibaba Cloud generates for the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The name of the root domain that corresponds to the domain.
+        # The root domain name that corresponds to the domain name.
         self.root_domain = root_domain
         # The total number of vulnerabilities in your website assets.
         self.vul_count = vul_count
@@ -98,13 +98,13 @@ class DescribeDomainDetailResponseBodyDomainDetailItems(DaraModel):
         intranet_ip: str = None,
         uuid: str = None,
     ):
-        # The type of the domain asset. Valid values:
+        # The Asset Type of the asset under the domain name. Valid values:
         # 
-        # *   **0**: an Elastic Compute Service (ECS) instance
-        # *   **1**: a Server Load Balancer (SLB) instance
-        # *   **2**: a Network Address Translation (NAT) gateway
-        # *   **3**: an ApsaraDB RDS instance
-        # *   **4**: an ApsaraDB for MongoDB instance
+        # - **0**: ECS
+        # - **1**: load balancing
+        # - **2**: NAT gateway
+        # - **3**: RDS database
+        # - **4**: MongoDB database
         self.asset_type = asset_type
         # The instance ID of the asset.
         self.instance_id = instance_id
@@ -114,7 +114,7 @@ class DescribeDomainDetailResponseBodyDomainDetailItems(DaraModel):
         self.internet_ip = internet_ip
         # The private IP address of the asset.
         self.intranet_ip = intranet_ip
-        # The instance UUID of the domain asset.
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):

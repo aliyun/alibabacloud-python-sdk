@@ -12,16 +12,15 @@ class ListK8sAccessInfoRequest(DaraModel):
         aliyun_yundun_gateway_project_name: str = None,
         lang: str = None,
     ):
-        # This parameter is deprecated.
+        # This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_api_name = aliyun_yundun_gateway_api_name
-        # This parameter is deprecated.
+        # This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_pop_name = aliyun_yundun_gateway_pop_name
-        # This parameter is deprecated.
+        # This parameter is deprecated and does not need to be specified.
         self.aliyun_yundun_gateway_project_name = aliyun_yundun_gateway_project_name
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for requests and responses. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

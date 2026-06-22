@@ -14,15 +14,15 @@ class GetCheckTimeDimensionStatisticRequest(DaraModel):
         statistic_type: str = None,
         vendors: List[str] = None,
     ):
-        # End time, in timestamp format.
+        # The end time in timestamp format.
         self.end_time_stamp = end_time_stamp
-        # Start time, in timestamp format.
+        # The start time in timestamp format.
         self.start_time_stamp = start_time_stamp
-        # Type of statistical data. Values:
+        # The type of data statistics. Valid values:
         # - **CheckPassRate**: Check item pass rate.
         # - **AssetPassRate**: Asset pass rate.
         self.statistic_type = statistic_type
-        # List of cloud vendors.
+        # The list of cloud service providers.
         self.vendors = vendors
 
     def validate(self):

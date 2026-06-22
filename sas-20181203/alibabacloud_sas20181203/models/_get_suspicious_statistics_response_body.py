@@ -13,15 +13,15 @@ class GetSuspiciousStatisticsResponseBody(DaraModel):
         suspicious_count: int = None,
         total_count: int = None,
     ):
-        # The number of alerts whose Emergency level is Reminder.
+        # The number of security alerts whose alert level is Reminder.
         self.remind_count = remind_count
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of alerts whose Emergency level is Urgent.
+        # The number of security alerts whose alert level is Urgent.
         self.serious_count = serious_count
-        # The number of alerts whose Emergency level is Suspicious.
+        # The number of security alerts whose alert level is Suspicious.
         self.suspicious_count = suspicious_count
-        # The total number of alerts.
+        # The total number of security alerts.
         self.total_count = total_count
 
     def validate(self):

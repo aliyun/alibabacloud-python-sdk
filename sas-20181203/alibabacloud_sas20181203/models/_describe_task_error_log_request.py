@@ -9,9 +9,9 @@ class DescribeTaskErrorLogRequest(DaraModel):
         self,
         build_task_id: str = None,
     ):
-        # The ID of the task.
+        # The ID of the image fix task.
         # 
-        # >  You can call the DescribeImageFixTask operation to query the IDs of tasks.
+        # > Call the [DescribeImageFixTask](~~DescribeImageFixTask~~) operation to query image vulnerability fix tasks and obtain the BuildTaskId.
         # 
         # This parameter is required.
         self.build_task_id = build_task_id

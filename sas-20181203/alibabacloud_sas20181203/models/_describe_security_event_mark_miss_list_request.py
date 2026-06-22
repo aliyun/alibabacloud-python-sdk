@@ -14,20 +14,20 @@ class DescribeSecurityEventMarkMissListRequest(DaraModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The name of the alert event. The value indicates a subtype.
+        # The alert event name (child class).
         self.event_name = event_name
-        # The number of entries per page. Default value: **20**.
+        # The number of whitelist rules to display on each page in a paged query. Default value: **20**, which indicates that 20 whitelist rules are displayed on each page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The condition that is used to query alert events by asset. You can enter an IP address, a public IP address, an internal IP address, or an asset name for fuzzy match.
+        # The asset search keyword. You can enter the IP address, public IP address, private IP address, or asset name for fuzzy matching.
         self.remark = remark
         self.resource_owner_id = resource_owner_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

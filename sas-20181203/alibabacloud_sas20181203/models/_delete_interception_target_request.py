@@ -9,7 +9,8 @@ class DeleteInterceptionTargetRequest(DaraModel):
         self,
         target_ids: str = None,
     ):
-        # The IDs of the network objects that you want to remove. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the IDs of the network objects.
+        # The list of network object IDs to delete.
+        # > You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.target_ids = target_ids

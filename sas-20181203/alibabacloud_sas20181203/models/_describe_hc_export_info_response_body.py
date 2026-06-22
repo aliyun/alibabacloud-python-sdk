@@ -17,26 +17,27 @@ class DescribeHcExportInfoResponseBody(DaraModel):
         result_status: str = None,
         total_count: int = None,
     ):
-        # The number of exported entries.
+        # The number of data entries that have been exported.
         self.current_count = current_count
         # The name of the exported file.
         self.file_name = file_name
-        # The time when the export task was created.
+        # The time when the task was created.
         self.gmt_create = gmt_create
         # The ID of the export task.
         self.id = id
-        # The download URL for the exported file.
+        # The download link of the exported file.
         self.link = link
-        # The progress percentage of the export task.
+        # The export progress in percentage (%).
         self.progress = progress
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The status of the export task. Valid values:
         # 
-        # *   **exporting**: The task is in progress.
-        # *   **success**: The task is complete.
+        # - **exporting**: The export is in progress.
+        # 
+        # - **success**: The export is successful.
         self.result_status = result_status
-        # The total number of exported entries.
+        # The total number of data entries to be exported.
         self.total_count = total_count
 
     def validate(self):

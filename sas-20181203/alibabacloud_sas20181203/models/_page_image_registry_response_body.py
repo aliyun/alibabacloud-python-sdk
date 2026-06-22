@@ -14,11 +14,11 @@ class PageImageRegistryResponseBody(DaraModel):
         page_info: main_models.PageImageRegistryResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of image repositories.
+        # The image repository list data.
         self.list = list
-        # The pagination information.
+        # The pagination information for the paged query.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class PageImageRegistryResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -143,56 +143,54 @@ class PageImageRegistryResponseBodyList(DaraModel):
         vpc_id: str = None,
         white_list: str = None,
     ):
-        # The IP address blacklist.
+        # The blacklist.
         self.black_list = black_list
-        # The domain name of the image repository.
+        # The domain name of the repository.
         self.domain_name = domain_name
-        # The time when the image repository was created. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The creation time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
-        # The time when the image repository was updated. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The update time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_modified = gmt_modified
-        # The ID of the image repository.
+        # The unique ID of the image repository.
         self.id = id
-        # The number of images that are stored in the image repository.
+        # The number of images in the repository.
         self.image_count = image_count
-        # The information about the Jenkins environment.
+        # The Jenkins environment context.
         self.jenkins_env = jenkins_env
         # The network type. Valid values:
-        # 
-        # *   **1**: Internet.
-        # *   **2**: virtual private cloud (VPC).
+        # - **1**: public network
+        # - **2**: VPC.
         self.net_type = net_type
         # The password.
         self.password = password
-        # The number of days for which assets are retained.
+        # The number of days that assets are retained.
         self.persistence_day = persistence_day
-        # The type of the protocol. Valid values:
-        # 
-        # *   **1**: HTTP.
-        # *   **2**: HTTPS.
+        # The protocol type. Valid values:
+        # - **1**: HTTP
+        # - **2**: HTTPS.
         self.protocol_type = protocol_type
-        # The region ID of the image repository.
+        # The region ID of the repository.
         self.region_id = region_id
-        # The IP address of the image repository.
+        # The IP address of the repository.
         self.registry_host_ip = registry_host_ip
         # The alias of the image repository.
         self.registry_name = registry_name
-        # The type of the image repository. Valid values:
+        # The image repository type. Valid values:
         # 
-        # *   **acr**: Container Registry.
-        # *   **harbor**: Harbor.
-        # *   **quay**: Quay.
-        # *   **CI/CD**: Jenkins.
+        # - **acr**: ACR
+        # - **harbor**: Harbor
+        # - **quay**: Quay
+        # - **CI/CD**: Jenkins.
         self.registry_type = registry_type
         # The authentication token of the user.
         self.token = token
-        # The number of scan tasks that are performed per hour.
+        # The number of scan tasks per hour.
         self.trans_per_hour = trans_per_hour
         # The username.
         self.user_name = user_name
-        # The VPC ID.
+        # The instance ID of the VPC.
         self.vpc_id = vpc_id
-        # The IP address whitelist.
+        # The whitelist.
         self.white_list = white_list
 
     def validate(self):

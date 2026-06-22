@@ -13,7 +13,7 @@ class GetDockerhubImageRiskRankInfoResponseBody(DaraModel):
         request_id: str = None,
         risk_rank_info: main_models.GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfo = None,
     ):
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The risk information.
         self.risk_rank_info = risk_rank_info
@@ -52,9 +52,9 @@ class GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfo(DaraModel):
         baseline: List[main_models.GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoBaseline] = None,
         vul_asap: List[main_models.GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoVulAsap] = None,
     ):
-        # The baseline risks.
+        # The baseline risk information.
         self.baseline = baseline
-        # The risk information of high-risk vulnerabilities.
+        # The risk information about high-priority vulnerabilities.
         self.vul_asap = vul_asap
 
     def validate(self):
@@ -116,7 +116,7 @@ class GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoVulAsap(DaraModel):
     ):
         # The digest value of the image.
         self.digest = digest
-        # The number of risks detected on the image repository.
+        # The number of risks in the image repository.
         self.hc_count = hc_count
         # The image ID.
         self.image_id = image_id
@@ -124,13 +124,13 @@ class GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoVulAsap(DaraModel):
         self.image_size = image_size
         # The name of the image repository.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
+        # The namespace of the image repository.
         self.repo_namespace = repo_namespace
-        # The risk statistics of all hosts, images, and containers.
+        # The risk statistics information for all hosts, images, and containers.
         self.risk_level_detail = risk_level_detail
         # The tag of the image.
         self.tag = tag
-        # The UUID of the record.
+        # The unique identifier of the record.
         self.uuid = uuid
         # The number of vulnerabilities.
         self.vul_count = vul_count
@@ -225,21 +225,21 @@ class GetDockerhubImageRiskRankInfoResponseBodyRiskRankInfoBaseline(DaraModel):
     ):
         # The digest value of the image.
         self.digest = digest
-        # The number of baseline risks detected on the image repository.
+        # The number of baseline risks in the image repository.
         self.hc_count = hc_count
         # The ID of the image.
         self.image_id = image_id
         # The image size.
         self.image_size = image_size
-        # The name of the Container Registry repository.
+        # The name of the container image repository.
         self.repo_name = repo_name
-        # The namespace to which the repository belongs.
+        # The repository namespace.
         self.repo_namespace = repo_namespace
-        # The risk statistics of all hosts, images, and containers.
+        # The risk statistics information for all hosts, images, and containers.
         self.risk_level_detail = risk_level_detail
-        # The tag of the image.
+        # The image tag.
         self.tag = tag
-        # The UUID of the record.
+        # The unique identifier of the record.
         self.uuid = uuid
         # The number of detected vulnerabilities.
         self.vul_count = vul_count

@@ -12,20 +12,20 @@ class ListUuidsByWebPathRequest(DaraModel):
         type: str = None,
         web_path: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page to display in a paging query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The number of entries to return on each page.
+        # The maximum number of entries to display on each page in a paging query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The path type of the web directory. Valid values:
+        # The type of the web path. Valid values:
         # 
-        # *   **def**: automatically identified
-        # *   **customize**: manually added
+        # - **def**: automatically identified by the system
+        # - **customize**: manually added.
         self.type = type
-        # The path to the web directory.
+        # The web path.
         self.web_path = web_path
 
     def validate(self):

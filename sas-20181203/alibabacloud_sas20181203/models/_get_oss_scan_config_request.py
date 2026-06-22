@@ -10,7 +10,7 @@ class GetOssScanConfigRequest(DaraModel):
         bucket_name: str = None,
         id: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
         # The policy ID.
         self.id = id

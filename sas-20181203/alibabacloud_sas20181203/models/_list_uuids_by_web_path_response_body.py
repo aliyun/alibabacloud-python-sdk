@@ -14,11 +14,11 @@ class ListUuidsByWebPathResponseBody(DaraModel):
         page_info: main_models.ListUuidsByWebPathResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the protected assets.
+        # The list of protected assets.
         self.list = list
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class ListUuidsByWebPathResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries displayed on the current page in a paging query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries displayed on each page in a paging query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count

@@ -13,18 +13,18 @@ class DeleteHoneypotPresetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of a failure.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code of the request.
         self.http_status_code = http_status_code
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

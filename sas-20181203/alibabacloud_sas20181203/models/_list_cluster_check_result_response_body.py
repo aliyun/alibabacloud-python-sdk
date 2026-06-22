@@ -148,27 +148,44 @@ class ListClusterCheckResultResponseBodyChecks(DaraModel):
         # Name of the check item.
         self.check_show_name = check_show_name
         # Source type of the security check item:
-        #  - **CUSTOM**：User-defined
-        #  - **SYSTEM**：Predefined by the Security Platform
+        # 
+        # - **CUSTOM**:User-defined
+        # 
+        # - **SYSTEM**:Predefined by the Security Platform
         self.check_type = check_type
         # Subtype of the cloud product asset. Values:
         # 
         # - When **InstanceType** is **ECS**, this parameter can take the following values:
-        #     - **INSTANCE**
-        #     - **DISK**
-        #     - **SECURITY_GROUP**
+        # 
+        #   - **INSTANCE**
+        # 
+        #   - **DISK**
+        # 
+        #   - **SECURITY_GROUP**
+        # 
         # - When **InstanceType** is **ACR**, this parameter can take the following values:
-        #     - **REPOSITORY_ENTERPRISE**
-        #     - **REPOSITORY_PERSON**
+        # 
+        #   - **REPOSITORY_ENTERPRISE**
+        # 
+        #   - **REPOSITORY_PERSON**
+        # 
         # - When **InstanceType** is **RAM**, this parameter can take the following values:
-        #     - **ALIAS**
-        #     - **USER**
-        #     - **POLICY**
-        #     - **GROUP**
+        # 
+        #   - **ALIAS**
+        # 
+        #   - **USER**
+        # 
+        #   - **POLICY**
+        # 
+        #   - **GROUP**
+        # 
         # - When **InstanceType** is **WAF**, this parameter can take the following values:
-        #     - **DOMAIN**
+        # 
+        #   - **DOMAIN**
+        # 
         # - For other **InstanceType** values, this parameter can take the following value:
-        #     - **INSTANCE**
+        # 
+        #   - **INSTANCE**
         self.instance_sub_type = instance_sub_type
         # Asset type of the cloud product.
         self.instance_type = instance_type
@@ -176,31 +193,35 @@ class ListClusterCheckResultResponseBodyChecks(DaraModel):
         self.last_check_time = last_check_time
         # Risk level of the check item. Possible values:
         # 
-        # - **HIGH**：High
-        # - **MEDIUM**：Medium
-        # - **LOW**：Low
+        # - **HIGH**:High
+        # 
+        # - **MEDIUM**:Medium
+        # 
+        # - **LOW**:Low
         self.risk_level = risk_level
         # Status of the check item. Values:
         # 
         # - **PASS**: Passed
+        # 
         # - **NOT_PASS**: Not passed
+        # 
         # - **CHECKING**: Checking
+        # 
         # - **NOT_CHECK**: Not checked
+        # 
         # - **WHITELIST**: Whitelisted
         self.status = status
         # Whether the check depends on TRIAL permissions.
         self.trial_permission = trial_permission
         # Whether the check item requires enabling data delivery of operation audit for more than 30 days to build a behavior baseline.
-        # - **1**：Required
-        # - **0**：Not Required
+        # 
+        # - **1**:Required
+        # 
+        # - **0**:Not Required
         self.trial_permission_type = trial_permission_type
         # Vendor of the asset. Values:
         # 
-        # 0: Alibaba Cloud
-        # 3: Other cloud
-        # 4: Other cloud
-        # 5: Other cloud
-        # 7: Other cloud
+        # 0: Alibaba Cloud 3: Other cloud 4: Other cloud 5: Other cloud 7: Other cloud
         self.vendor = vendor
 
     def validate(self):

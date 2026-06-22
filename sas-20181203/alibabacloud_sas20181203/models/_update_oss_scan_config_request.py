@@ -25,38 +25,37 @@ class UpdateOssScanConfigRequest(DaraModel):
         scan_day_list: List[int] = None,
         start_time: str = None,
     ):
-        # Specifies whether to match the prefixes of all objects.
+        # Specifies whether to match all file prefixes.
         self.all_key_prefix = all_key_prefix
-        # The names of the buckets.
+        # The list of bucket names.
         self.bucket_name_list = bucket_name_list
-        # The maximum number of objects that can be extracted from a package. Valid values: 1 to 1000. If the value is reached, the decompression operation immediately finishes. The detection of extracted objects is not affected.
+        # The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. If the maximum number of decompressed files is exceeded, the decompression operation stops. The detection of already decompressed files is not affected.
         self.decompress_max_file_count = decompress_max_file_count
-        # The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the value is reached, the decompression operation immediately finishes. The detection of extracted objects is not affected.
+        # The maximum number of decompression layers for nested compressed files. Minimum value: 1. Maximum value: 5. If the maximum number of decompression layers is exceeded, the decompression operation stops. The detection of already decompressed files is not affected.
         self.decompress_max_layer = decompress_max_layer
-        # The decryption methods.
+        # The list of decryption types.
         self.decryption_list = decryption_list
-        # Specifies whether to enable the bucket check policy. Valid values:
-        # 
-        # *   **1**: enables the bucket check policy.
-        # *   **0**: disables the bucket check policy.
+        # Specifies whether to enable the scan policy. Valid values:
+        # - **1**: Enable.
+        # - **0**: Disable.
         self.enable = enable
-        # The end time of the check. Specify the time in the HH:mm:ss format.
+        # The scan end time in the HH:mm:ss format.
         self.end_time = end_time
-        # The policy ID.
+        # The scan policy ID.
         self.id = id
-        # The prefixes of the objects.
+        # The prefix list of files.
         self.key_prefix_list = key_prefix_list
-        # The suffixes of the objects that you want to check.
+        # The list of file suffixes.
         self.key_suffix_list = key_suffix_list
-        # The timestamp. The objects whose last modification time is later than the specified value are detected. Unit: milliseconds.
+        # Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
         self.last_modified_start_time = last_modified_start_time
-        # The policy name.
+        # The scan policy name.
         self.name = name
-        # Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
+        # Specifies whether to enable real-time incremental detection. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
         self.real_time_incr = real_time_incr
-        # The time when the check is performed. The value specifies the days of the week.
+        # The scan days. The number indicates the day of the week.
         self.scan_day_list = scan_day_list
-        # The start time of the check. Specify the time in the HH:mm:ss format.
+        # The scan start time in the HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

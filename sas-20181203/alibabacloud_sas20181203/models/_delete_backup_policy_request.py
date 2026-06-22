@@ -10,16 +10,15 @@ class DeleteBackupPolicyRequest(DaraModel):
         id: int = None,
         policy_version: str = None,
     ):
-        # The ID of the anti-ransomware policy that you want to delete.
-        # 
-        # >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+        # The ID of the mitigation policies that you want to delete.
+        # >Invoke the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.id = id
-        # The version of the anti-ransomware policy that you want to delete. You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the versions of anti-ransomware policies. Valid values:
+        # The version of the mitigation policies that you want to delete. You can invoke the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query this parameter. Valid values:
         # 
-        # *   **1.0.0**
-        # *   **2.0.0**
+        # - **1.0.0**: The mitigation policies version is 1.0.0.
+        # - **2.0.0**: The mitigation policies version is 2.0.0.
         self.policy_version = policy_version
 
     def validate(self):

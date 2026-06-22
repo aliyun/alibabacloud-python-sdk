@@ -9,6 +9,9 @@ class DescribeClientProblemTypeRequest(DaraModel):
         self,
         lang: str = None,
     ):
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

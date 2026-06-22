@@ -25,57 +25,57 @@ class ModifyServerlessAuthToMachineRequest(DaraModel):
         un_bind_app_list: List[str] = None,
         un_bind_uuid_list: List[str] = None,
     ):
-        # Application query condition.
+        # The application query conditions.
         self.app_criteria = app_criteria
-        # Instance type. Values:
-        # - **SERVERLESS**: Serverless asset
+        # The instance type. Valid values:
+        # - **SERVERLESS**: Serverless asset.
         self.auth_item = auth_item
-        # Enable auto-binding. Values:
+        # Specifies whether to enable automatic binding. Valid values:
         # 
-        # - **0**: Off
-        # - **1**: On
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
-        # Whether to bind all. Default is **false**. Values:
+        # Specifies whether to bind all assets. Default value: **false**. Valid values:
         # 
-        # - **true**: Yes
-        # - **false**: No
+        # - **true**: Bind all assets.
+        # - **false**: Do not bind all assets.
         self.bind_all = bind_all
-        # List of application IDs to be bound.
+        # The list of application IDs to bind.
         # 
-        # > Obtained through the [ListMachineApps](~~ListMachineApps~~) interface.
+        # > Retrieve the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
         self.bind_app_list = bind_app_list
-        # Type of asset to operate on. Values:
-        # - **INSTANCE**: Instance
-        # - **APP**: Application
+        # The Asset Type for the operation. Valid values:
+        # - **INSTANCE**: instance.
+        # - **APP**: application.
         self.bind_asset_type = bind_asset_type
-        # List of asset UUIDs to be bound.
+        # The list of asset UUIDs to bind.
         self.bind_uuid_list = bind_uuid_list
-        # Set the conditions for searching assets. This parameter is in JSON format, and case sensitivity should be noted when entering parameters.
-        # > Supports searching assets using instance ID, instance name, VPC ID, region, public IP address, etc. You can call the [DescribeCriteria](~~DescribeCriteria~~) interface to query supported search conditions.
+        # The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when specifying this parameter.
+        # > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query supported search conditions.
         self.criteria = criteria
-        # Set the logical relationship between multiple search conditions. Values:
-        # - **OR**: Indicates an **or** relationship between multiple conditions.
-        # - **AND**: Indicates an **and** relationship between multiple conditions.
+        # The logical relationship among multiple search conditions. Valid values:
+        # - **OR**: The search conditions are evaluated with a logical OR.
+        # - **AND**: The search conditions are evaluated with a logical AND.
         self.logical_exp = logical_exp
-        # NTM version code, used for pre-binding.
+        # The NTM version code for pre-binding.
         self.ntm_version = ntm_version
-        # Whether it is a pre-bind operation. Values:
+        # Specifies whether to perform a pre-binding operation. Valid values:
         # 
-        # - **0**: No
-        # - **1**: Yes
+        # - **0**: No.
+        # - **1**: Yes.
         # 
         # 
-        # > After enabling pre-binding, the specified server will automatically bind the corresponding version\\"s authorization count after the purchase is completed.
+        # > After pre-binding is enabled, the corresponding edition authorization quota is automatically bound to the specified servers after the purchase is completed.
         self.pre_bind = pre_bind
-        # Pre-bind order ID.
+        # The pre-binding order ID.
         self.pre_bind_order_id = pre_bind_order_id
-        # UID of the associated resource directory.
+        # The UID of the resource directory.
         self.resource_directory_uid = resource_directory_uid
-        # List of application IDs to be unbound.
+        # The list of application IDs to unbind.
         # 
-        # > Obtained through the [ListMachineApps](~~ListMachineApps~~) interface.
+        # > Retrieve the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
         self.un_bind_app_list = un_bind_app_list
-        # List of asset UUIDs to be unbound.
+        # The list of asset UUIDs to unbind.
         self.un_bind_uuid_list = un_bind_uuid_list
 
     def validate(self):

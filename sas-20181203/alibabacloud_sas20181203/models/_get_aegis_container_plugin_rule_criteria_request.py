@@ -10,12 +10,11 @@ class GetAegisContainerPluginRuleCriteriaRequest(DaraModel):
         lang: str = None,
         value: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for requesting and receiving messages. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The value of the search condition.
+        # The matching condition value of the plugin.
         self.value = value
 
     def validate(self):

@@ -12,14 +12,14 @@ class DescribeSoarStrategyTaskResultRequest(DaraModel):
         page_size: int = None,
         strategy_task_id: int = None,
     ):
-        # Condition parameters for task scheduling.
+        # The condition parameter for task scheduling.
         self.condition = condition
-        # The current page number during paginated queries.
+        # The page number of the current page for a paged query.
         self.current_page = current_page
-        # The maximum number of entries to display per page during paginated queries.
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
-        # Strategy task ID.
-        # > You can obtain this parameter by calling the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) interface.
+        # The ID of the policy task.
+        # >Call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain this parameter.
         self.strategy_task_id = strategy_task_id
 
     def validate(self):

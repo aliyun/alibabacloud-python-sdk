@@ -14,11 +14,11 @@ class ListHoneypotEventsResponseBody(DaraModel):
         page_info: main_models.ListHoneypotEventsResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The intrusion events.
+        # The list of honeypot attack events.
         self.honeypot_events = honeypot_events
-        # The pagination information.
+        # The paging information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -74,17 +74,17 @@ class ListHoneypotEventsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paging query.
         self.count = count
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The key of the last data entry.
+        # The key of the last entry.
         self.last_row_key = last_row_key
-        # The value of the NextToken parameter that is returned by using the NextToken method.
+        # The NextToken value returned when the NextToken-based pagination method is used.
         self.next_token = next_token
-        # The number of entries per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -162,28 +162,28 @@ class ListHoneypotEventsResponseBodyHoneypotEvents(DaraModel):
         self.alarm_event_id = alarm_event_id
         # The destination IP address of the attack.
         self.dst_ip = dst_ip
-        # The timestamp at which the event was first detected.
+        # The timestamp of the first occurrence.
         self.first_time = first_time
         # The name of the honeypot.
         self.honeypot_name = honeypot_name
-        # The timestamp at which the event was last detected.
+        # The timestamp of the most recent occurrence.
         self.last_time = last_time
         # The region.
         self.location = location
-        # The extended values that correspond to the field key.
+        # The list of extended field key-value pairs.
         self.merge_field_list = merge_field_list
         # The protocol. Valid values:
         # 
-        # *   **tcp**
-        # *   **udp**
+        # - **tcp**.
+        # - **udp**.
         self.protocol = protocol
         # The risk level. Valid values:
         # 
-        # *   **2**: low
-        # *   **3**: medium
-        # *   **4**: high
+        # - **2**: Low risk.
+        # - **3**: Medium risk.
+        # - **4**: High risk.
         self.risk_level = risk_level
-        # The ID of the intrusion event.
+        # The unique ID of the attack event.
         self.security_event_id = security_event_id
         # The source IP address of the attack.
         self.src_ip = src_ip
@@ -296,11 +296,11 @@ class ListHoneypotEventsResponseBodyHoneypotEventsMergeFieldList(DaraModel):
         field_type: str = None,
         field_value: str = None,
     ):
-        # The supplementary information about the field.
+        # The supplementary information of the field.
         self.field_ext_info = field_ext_info
         # The key of the field.
         self.field_key = field_key
-        # The type of the field.
+        # The field type.
         self.field_type = field_type
         # The value of the field key.
         self.field_value = field_value

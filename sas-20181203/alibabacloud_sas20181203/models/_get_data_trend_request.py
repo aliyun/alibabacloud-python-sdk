@@ -12,28 +12,27 @@ class GetDataTrendRequest(DaraModel):
         interval: int = None,
         start_timestamp: int = None,
     ):
-        # The type of the security data that you want to query. Valid values:
-        # 
-        # *   **HC_NEW**: the number of new baseline risks.
-        # *   **HC_OPERATE**: the number of handled baseline risks.
-        # *   **VUL_NEW**: the number of new vulnerabilities.
-        # *   **VUL_OPERATE**: the number of handled vulnerabilities.
-        # *   **SUSP_NEW**: the number of new alerts.
-        # *   **SUSP_OPERATE**: the number of handled alerts.
+        # The type of security data to query. Valid values:
+        # - **HC_NEW**: number of new baseline risks
+        # - **HC_OPERATE**: number of handled baseline risks
+        # - **VUL_NEW**: number of new vulnerability risks
+        # - **VUL_OPERATE**: number of handled vulnerability risks
+        # - **SUSP_NEW**: number of new alert risks
+        # - **SUSP_OPERATE**: number of handled alert risks.
         # 
         # This parameter is required.
         self.biz_types = biz_types
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end timestamp of the query. Unit: milliseconds.
         # 
         # This parameter is required.
         self.end_timestamp = end_timestamp
-        # The interval of the data that you want to query. Unit: milliseconds.
+        # The interval for querying data. Unit: milliseconds.
         # 
-        # >  The minimum value is 1000.
+        # > Minimum value: 1000.
         # 
         # This parameter is required.
         self.interval = interval
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start timestamp of the query. Unit: milliseconds.
         # 
         # This parameter is required.
         self.start_timestamp = start_timestamp

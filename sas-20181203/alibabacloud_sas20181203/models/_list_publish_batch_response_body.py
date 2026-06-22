@@ -14,11 +14,11 @@ class ListPublishBatchResponseBody(DaraModel):
         page_info: main_models.ListPublishBatchResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The information about the release batches.
+        # The details of the batch release tasks.
         self.batch_list = batch_list
-        # The page information.
+        # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The request ID. The China Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class ListPublishBatchResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the current page when paging is used.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page when paging is used.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -125,31 +125,30 @@ class ListPublishBatchResponseBodyBatchList(DaraModel):
     ):
         # The ID of the release batch.
         self.batch_id = batch_id
-        # The interval between two release batches. Unit: hours.
+        # The interval between the completion of the current batch and the start of the next batch. Unit: hours.
         self.batch_interval = batch_interval
         # The name of the release batch.
         self.batch_name = batch_name
-        # The current batch number during a batch release.
+        # The number of the current batch in a phased release.
         self.batch_no = batch_no
-        # The progress of the release batch. This parameter indicates the number of servers that are upgraded in the release batch.
+        # The release progress of the current batch, indicating the number of machines that have been released.
         self.batch_process = batch_process
-        # The total number of batches.
+        # The total number of batches in the release.
         self.batch_total = batch_total
-        # The asset selection dimension. Valid values:
+        # The dimension for asset selection. Valid values:
         # 
-        # *   **0**: instance.
-        # *   **1**: machine group.
-        # *   **2**: Virtual Private Cloud (VPC) ID.
+        # - **0**: machine instance
+        # - **1**: machine group
+        # - **2**: VPC-connected instance ID.
         self.operation_base = operation_base
-        # The publish status of the Security Center agent. Valid values:
-        # 
-        # *   **0**: not started.
-        # *   **1**: publishing.
-        # *   **2**: published.
-        # *   **3**: publish suspended.
-        # *   **4**: forcibly upgrading.
+        # The release status of the client. Valid values:
+        # - **0**: not started
+        # - **1**: releasing
+        # - **2**: release completed
+        # - **3**: release paused
+        # - **4**: force upgrading.
         self.status = status
-        # The destination version of the Security Center agent.
+        # The target version to upgrade to.
         self.version = version
 
     def validate(self):

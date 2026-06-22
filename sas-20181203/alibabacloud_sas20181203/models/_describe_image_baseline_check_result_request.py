@@ -18,33 +18,35 @@ class DescribeImageBaselineCheckResultRequest(DaraModel):
         risk_level: str = None,
         scan_range: List[str] = None,
     ):
-        # The search condition for the image baseline.
+        # The query condition for the baseline.
         self.criteria = criteria
-        # The type of the search condition. Valid values:
+        # The query type of the baseline to query. Valid values:
         # 
-        # *   **BaselineNameAlias**: baseline name
-        # *   **BaselineClassAlias**: baseline category
+        # - **BaselineNameAlias**: baseline name
+        # 
+        # - **BaselineClassAlias**: baseline category.
         self.criteria_type = criteria_type
-        # The number of the page to return. Default value: 1.
+        # The page number of the current page when using paging. Default value: 20, which indicates the first page.
         self.current_page = current_page
         # The UUID of the image.
         # 
         # This parameter is required.
         self.image_uuid = image_uuid
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page. Default value: **20**.
+        # The number of entries per page when using paging. Default value: **20**, which indicates that 20 logon configuration entries are displayed per page.
         self.page_size = page_size
-        # The severity of the image baseline that you want to query. Separate multiple severities with commas (,). By default, all valid values are used. Valid values:
+        # The risk level of the baseline to query. Separate multiple levels with commas (,). By default, all levels are included. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: high risk
+        # 
+        # - **medium**: medium risk
+        # 
+        # - **low**: low risk.
         self.risk_level = risk_level
-        # The types of the assets that you want to scan.
+        # The scan scope.
         self.scan_range = scan_range
 
     def validate(self):

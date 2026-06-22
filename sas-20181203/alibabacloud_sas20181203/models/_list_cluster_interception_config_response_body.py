@@ -14,11 +14,11 @@ class ListClusterInterceptionConfigResponseBody(DaraModel):
         page_info: main_models.ListClusterInterceptionConfigResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the configurations of the cluster.
+        # The list of cluster configuration information.
         self.cluster_config_list = cluster_config_list
-        # The pagination information.
+        # The paging information for a paged query.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListClusterInterceptionConfigResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of cluster interception rules on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paged query.
         self.currrent_page = currrent_page
-        # The number of entries returned per page.
+        # The number of cluster interception rules per page in a paged query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of cluster interception rules.
         self.total_count = total_count
 
     def validate(self):
@@ -131,35 +131,33 @@ class ListClusterInterceptionConfigResponseBodyClusterConfigList(DaraModel):
         support_cnnf: bool = None,
         total_rule_count: int = None,
     ):
-        # The status of the container firewall feature. Valid values:
-        # 
-        # *   **-1**: unknown
-        # *   **0**: abnormal
-        # *   **1**: normal
-        # *   **2**: normal to be confirmed
+        # The container firewall status of the cluster. Valid values:
+        # - **-1**: unknown
+        # - **0**: abnormal
+        # - **1**: normal
+        # - **2**: normal pending confirmation.
         self.cluster_cnnfstatus = cluster_cnnfstatus
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The type of the cluster. Valid values:
+        # The cluster type. Valid values:
         # 
-        # *   **ManagedKubernetes**: managed Kubernetes cluster
-        # *   **NotManagedKubernetes**: non-managed Kubernetes cluster
-        # *   **PrivateKubernetes**: private cluster
-        # *   **kubernetes**: dedicated Kubernetes cluster
-        # *   **ask**: dedicated serverless Kubernetes (ASK) cluster
+        # - **ManagedKubernetes**: managed Kubernetes
+        # - **NotManagedKubernetes**: non-managed Kubernetes
+        # - **PrivateKubernetes**: private cluster
+        # - **kubernetes**: dedicated Kubernetes
+        # - **ask**: dedicated ASK.
         self.cluster_type = cluster_type
-        # The status of the defense rule. Valid values:
-        # 
-        # *   **0**: disabled
-        # *   **1**: enabled
+        # The status of the rule interception switch. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled.
         self.interception_switch = interception_switch
-        # The number of defense rules that are in effect.
+        # The number of active rules.
         self.open_rule_count = open_rule_count
-        # Indicates whether the container firewall feature is supported.
+        # Indicates whether the container firewall is supported.
         self.support_cnnf = support_cnnf
-        # The total number of defense rules.
+        # The total number of rules.
         self.total_rule_count = total_rule_count
 
     def validate(self):

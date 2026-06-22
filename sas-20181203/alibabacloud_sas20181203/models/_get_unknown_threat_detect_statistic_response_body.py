@@ -11,6 +11,7 @@ class GetUnknownThreatDetectStatisticResponseBody(DaraModel):
         data: main_models.GetUnknownThreatDetectStatisticResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -54,10 +55,15 @@ class GetUnknownThreatDetectStatisticResponseBodyData(DaraModel):
         studying_machine_count: int = None,
     ):
         self.block_event_machine_count = block_event_machine_count
+        # The number of servers under control.
         self.block_machine_count = block_machine_count
+        # The total number of servers.
         self.machine_count = machine_count
+        # The number of servers in warning status.
         self.monitor_machine_count = monitor_machine_count
+        # The number of servers with the service enabled.
         self.open_machine_count = open_machine_count
+        # The number of servers in learning status.
         self.studying_machine_count = studying_machine_count
 
     def validate(self):

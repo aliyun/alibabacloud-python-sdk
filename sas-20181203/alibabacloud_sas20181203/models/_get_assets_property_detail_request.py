@@ -21,40 +21,41 @@ class GetAssetsPropertyDetailRequest(DaraModel):
         use_next_token: bool = None,
         uuid: str = None,
     ):
-        # The type of asset fingerprint to be queried, with a default value of **sca**. Values:
+        # The type of Asset Fingerprints to query. Default value: **sca**. Valid values:
         # 
-        # - **lkm**: Kernel module
-        # - **autorun**: Startup item
-        # - **web_server**: Web site
+        # - **lkm**: kernel module
+        # - **autorun**: startup item
+        # - **web_server**: web site.
         # 
         # This parameter is required.
         self.biz = biz
-        # Set the page number from which to start displaying the query results. The default value is **1**, indicating that the display starts from the first page.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The aggregated item name of the asset fingerprint to be queried.
-        # > Call the [GetAssetsPropertyItem](~~GetAssetsPropertyItem~~) API to obtain this parameter.
+        # The aggregation item name of the Asset Fingerprints to query.
+        # > Call the [GetAssetsPropertyItem](~~GetAssetsPropertyItem~~) operation to obtain this parameter.
         self.item_name = item_name
-        # The language type for the request and response. Values:
+        # The language type of the request and response messages. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Used to mark the current read position. Leave it empty to start from the beginning.
-        # > Do not fill in for the first call; the response will include the NextToken for the second call. Each subsequent call\\"s response will contain the NextToken for the next call.
+        # The token that marks the starting position for the query. Leave this parameter empty to query from the beginning.
+        # 
+        # > Do not specify this parameter for the first call. The response includes the NextToken value for the next call. Each subsequent response contains the NextToken value for the following call.
         self.next_token = next_token
-        # Specify the maximum number of data entries per page in a paginated query. The default number of data entries per page is 20. If the PageSize parameter is empty, 20 data entries will be returned by default.
-        # > It is recommended that the PageSize value is not empty.
+        # The maximum number of entries per page for a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # Server name or IP.
+        # The server name or IP address.
         self.remark = remark
-        # A set of conditions for querying asset fingerprint details.
+        # The collection of search criteria for querying Asset Fingerprints details.
         self.search_criteria_list = search_criteria_list
-        # Whether to use the NextToken method to fetch the list of vulnerabilities. If this parameter is used, TotalCount will not be returned. Values:
+        # Specifies whether to use the NextToken method to retrieve the vulnerability list. If this parameter is used, TotalCount is no longer returned. Valid values:
         # 
         # - **true**: Use the NextToken method.
         # - **false**: Do not use the NextToken method.
         self.use_next_token = use_next_token
-        # The UUID of the asset to be queried.
-        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) API to obtain this parameter.
+        # The UUID of the asset to query.
+        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid = uuid
 
     def validate(self):
@@ -145,15 +146,15 @@ class GetAssetsPropertyDetailRequestSearchCriteriaList(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the condition to be queried. Values are as follows:
-        # - **remarkItemName**: The aggregated item name of the asset fingerprint, supporting fuzzy matching
+        # The name of the search criterion. Valid values:
+        # - **remarkItemName**: the aggregation item name of Asset Fingerprints. Fuzzy match is supported.
         # 
         # 
-        # >-   - When **Biz** is **web_server**, **remarkItemName** represents the domain name as the search condition.
-        # >-   - When **Biz** is **lkm**, **remarkItemName** represents the module name as the search condition.
-        # >-   - When **Biz** is **autorun**, **remarkItemName** represents the startup item path as the search condition.
+        # >-   - When **Biz** is set to **web_server**, **remarkItemName** indicates the domain name.
+        # >-   - When **Biz** is set to **lkm**, **remarkItemName** indicates the module name.
+        # >-   - When **Biz** is set to **autorun**, **remarkItemName** indicates the startup item path.
         self.name = name
-        # The value of the condition to be queried.
+        # The value of the search criterion.
         self.value = value
 
     def validate(self):

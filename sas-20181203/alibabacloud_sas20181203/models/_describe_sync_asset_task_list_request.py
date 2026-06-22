@@ -13,17 +13,16 @@ class DescribeSyncAssetTaskListRequest(DaraModel):
         start_time: int = None,
         task_name: str = None,
     ):
-        # The page number. Default value: 1. Pages start from page 1.
+        # The page number of the page to return. Default value: 1, which indicates that the first page is returned.
         self.current_page = current_page
-        # The timestamp when the IDC scan task ends. Unit: milliseconds.
+        # The end timestamp of the IDC scan task to query. Unit: milliseconds.
         self.end_time = end_time
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paged query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The timestamp when the IDC scan task starts. Unit: milliseconds.
+        # The start timestamp of the IDC scan task to query. Unit: milliseconds.
         self.start_time = start_time
-        # The name of the IDC scan task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

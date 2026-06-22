@@ -13,9 +13,9 @@ class DescribeSimilarEventScenariosResponseBody(DaraModel):
         request_id: str = None,
         scenarios: List[main_models.DescribeSimilarEventScenariosResponseBodyScenarios] = None,
     ):
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
-        # The scenarios in which alerts triggered by the same rule or rules of the same type are handled.
+        # The list of handling scenarios for alerts of the same type.
         self.scenarios = scenarios
 
     def validate(self):
@@ -57,12 +57,11 @@ class DescribeSimilarEventScenariosResponseBodyScenarios(DaraModel):
         self,
         code: str = None,
     ):
-        # The code of the scenario. Valid values:
-        # 
-        # *   **default**: the same alert type
-        # *   **same_file_content**: the same file content rule.
-        # *   **same_ip**: the same IP address rule.
-        # *   **same_url**: the same URL rule.
+        # The code of the handling scenario. Valid values:
+        # - **default**: same alerting type
+        # - **same_file_content**: same file content rule
+        # - **same_ip**: same IP rule
+        # - **same_url**: same URL rule.
         self.code = code
 
     def validate(self):

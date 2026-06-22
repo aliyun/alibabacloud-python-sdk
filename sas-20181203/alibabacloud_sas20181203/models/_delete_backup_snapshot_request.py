@@ -14,14 +14,13 @@ class DeleteBackupSnapshotRequest(DaraModel):
         backup_snapshot_list: List[main_models.DeleteBackupSnapshotRequestBackupSnapshotList] = None,
         retain_latest_snapshot: bool = None,
     ):
-        # The regions for backup.
+        # The backup regions.
         self.backup_region_id_list = backup_region_id_list
         # The backup snapshots.
         self.backup_snapshot_list = backup_snapshot_list
         # Specifies whether to retain the latest snapshot. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # - **true**: retains the latest snapshot.
+        # - **false**: does not retain the latest snapshot.
         self.retain_latest_snapshot = retain_latest_snapshot
 
     def validate(self):
@@ -74,42 +73,40 @@ class DeleteBackupSnapshotRequestBackupSnapshotList(DaraModel):
         source_type: str = None,
         vault_id: str = None,
     ):
-        # The ID of the Cloud Backup client.
+        # The ID of the backup client.
         # 
-        # >  You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to query the ID.
+        # > You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.client_id = client_id
-        # The ID of the server.
+        # The ID of the server instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which Security Center is deployed. Valid values:
+        # The region of the Security Center instance. Valid values:
         # 
-        # *   **cn-hangzhou**: China (Hangzhou).
-        # *   **ap-southeast-1**: Singapore.
-        # *   **cn-beijing**: China (Beijing).
+        # - **cn-hangzhou**: China (Hangzhou).
+        # - **ap-southeast-1**: Singapore.
+        # - **cn-beijing**: China (Beijing).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the snapshot that you want to delete.
-        # 
-        # >  You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to query the ID.
+        # The ID of the snapshot to delete.
+        # >You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
         # The type of the data source. Valid values:
         # 
-        # *   **ECS_FILE**: Elastic Compute Service (ECS) files.
-        # *   **OSS**: Object Storage Service (OSS) buckets.
-        # *   **NAS**: File Storage NAS (NAS) file systems.
-        # *   **OTS_TABLE**: Tablestore instances.
+        # - **ECS_FILE**: backup snapshot of ECS files.
+        # - **OSS**: backup snapshot of Alibaba Cloud OSS.
+        # - **NAS**: backup snapshot of Alibaba Cloud NAS.
+        # - **OTS_TABLE**: backup snapshot of Alibaba Cloud Tablestore.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The ID of the backup vault that is used in the restoration task.
-        # 
-        # >  You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to query the ID.
+        # The ID of the backup vault for the restoration task.
+        # >You can call the [DescribeSnapshots](~~DescribeSnapshots~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.vault_id = vault_id

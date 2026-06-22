@@ -11,9 +11,9 @@ class DescribeClientConfSetupResponseBody(DaraModel):
         client_conf: main_models.DescribeClientConfSetupResponseBodyClientConf = None,
         request_id: str = None,
     ):
-        # The configurations of the Security Center agent.
+        # The resource configuration information of the client.
         self.client_conf = client_conf
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51,15 +51,14 @@ class DescribeClientConfSetupResponseBodyClientConf(DaraModel):
         strategy_tag: str = None,
         strategy_tag_value: str = None,
     ):
-        # The configurations of the usage for the Security Center agent.
+        # The resource configuration information used by the client.
         self.config = config
-        # The tag that is added to the configuration.
+        # The policy tag.
         self.strategy_tag = strategy_tag
-        # The value of the tag. Valid values:
-        # 
-        # *   major
-        # *   advanced
-        # *   basic
+        # The policy value. Valid values:
+        # - major
+        # - advanced
+        # - basic.
         self.strategy_tag_value = strategy_tag_value
 
     def validate(self):

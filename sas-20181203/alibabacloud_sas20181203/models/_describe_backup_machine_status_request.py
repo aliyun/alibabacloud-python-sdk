@@ -11,20 +11,18 @@ class DescribeBackupMachineStatusRequest(DaraModel):
         policy_version: str = None,
         uuid: str = None,
     ):
-        # The ID of the anti-ransomware policy.
-        # 
-        # >  You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+        # The ID of the anti-ransomware backup policy.
+        # >You can call the [DescribeBackupPolicies](~~DescribeBackupPolicies~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The version of the anti-ransomware policy. Valid values:
+        # The version of the protection policy. Valid values:
         # 
-        # *   **1.0.0**
-        # *   **2.0.0**
+        # - **1.0.0**: The version of the protection policy is 1.0.0.
+        # - **2.0.0**: The version of the protection policy is 2.0.0.
         self.policy_version = policy_version
-        # The UUID of the server.
-        # 
-        # >  You can call the [DescribeBackupPolicy](~~DescribeBackupPolicy~~) operation to query the UUIDs of servers.
+        # The UUID of the server to query.
+        # >You can call the [DescribeBackupPolicy](~~DescribeBackupPolicy~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.uuid = uuid

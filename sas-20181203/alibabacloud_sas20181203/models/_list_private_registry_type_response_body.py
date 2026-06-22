@@ -13,9 +13,9 @@ class ListPrivateRegistryTypeResponseBody(DaraModel):
         registry_type_infos: List[main_models.ListPrivateRegistryTypeResponseBodyRegistryTypeInfos] = None,
         request_id: str = None,
     ):
-        # An array that consists of image repository types.
+        # The information about image repository types.
         self.registry_type_infos = registry_type_infos
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The China Chinese Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -60,12 +60,12 @@ class ListPrivateRegistryTypeResponseBodyRegistryTypeInfos(DaraModel):
     ):
         # The number of image repositories.
         self.count = count
-        # The name of the image repository type. Valid values:
+        # The type of the image repository. Valid values:
         # 
-        # *   **acr**: Container Registry
-        # *   **harbor**: Harbor
-        # *   **quay**: Quay
-        # *   **CI/CD**: Jenkins
+        # - **acr**: ACR.
+        # - **harbor**: Harbor.
+        # - **quay**: Quay.
+        # - **CI/CD**: Jenkins.
         self.registry_type = registry_type
 
     def validate(self):

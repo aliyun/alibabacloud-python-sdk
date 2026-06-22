@@ -20,35 +20,33 @@ class DescribeNsasSuspEventTypeRequest(DaraModel):
         support_operate_code_list: List[str] = None,
         uuids: str = None,
     ):
-        # The name of the container field. Valid values:
+        # The container field. Valid values:
         # 
-        # *   **clusterId**: the ID of the cluster
+        # - **clusterId**: cluster ID.
         self.container_field_name = container_field_name
         # The value of the container field.
         self.container_field_value = container_field_value
-        # The ID of the request source. Set the value to **sas**, which indicates that the request is sent from Security Center.
+        # The source of the request. Set the value to **sas**, which indicates that the request is sent from Security Center.
         self.from_ = from_
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The type of the accounts that you want to query. Default value: **0**. Valid values:
-        # 
-        # *   **0**: the current account.
-        # *   **1**: all accounts.
+        # The multi-account query type. Default value: **0**. Valid values:
+        # - **0**: queries data of the current account.
+        # - **1**: queries data of all accounts.
         self.multi_account_action_type = multi_account_action_type
-        # The name of the alert type.
+        # The name of the security alerting Alarm Metric.
         self.name = name
         # The name of the server.
         self.remark = remark
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # List of supported alarm operation types.
+        # The list of operation types supported by the alert.
         self.support_operate_code_list = support_operate_code_list
-        # The UUIDs of servers. Separate multiple UUIDs with commas (,).
-        # 
-        # > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of servers.
+        # The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+        # > Call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain this parameter.
         self.uuids = uuids
 
     def validate(self):

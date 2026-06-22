@@ -11,9 +11,9 @@ class DescribeLogShipperStatusResponseBody(DaraModel):
         log_shipper_status: main_models.DescribeLogShipperStatusResponseBodyLogShipperStatus = None,
         request_id: str = None,
     ):
-        # The status information.
+        # The log delivery status collection.
         self.log_shipper_status = log_shipper_status
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -56,44 +56,45 @@ class DescribeLogShipperStatusResponseBodyLogShipperStatus(DaraModel):
         sls_project_status: str = None,
         sls_service_status: str = None,
     ):
-        # Indicates whether Security Center is authorized to access Log Service. Valid values:
+        # The service authorization status of the log analysis feature. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**: authorized
+        # - **no**: not authorized.
         self.auth_status = auth_status
-        # Indicates whether the log analysis feature is purchased. Valid values:
+        # The purchase status of the log analysis feature. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**: purchased
+        # - **no**: not purchased.
         self.buy_status = buy_status
-        # The version of the log analysis field. Valid values:
-        # - SAS_V1
-        # - SAS_V2
+        # The version of the log delivery fields for log analysis. Valid values:
+        # 
+        # - **SAS_V1**
+        # - **SAS_V2**.
         self.etl_meta_version = etl_meta_version
-        # The status of the log analysis feature. Valid values:
+        # The enabling status of log analysis. Valid values:
         # 
-        # *   **yes**: enabled
-        # *   **no**: disabled
+        # - **yes**: enabled
+        # - **no**: not enabled.
         self.open_status = open_status
-        # Indicates whether the pay-as-you-go billing method is used. Valid values:
+        # The pay-as-you-go activation status of the log analysis feature. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**: activated
+        # - **no**: not activated.
         self.post_paid_open_status = post_paid_open_status
-        # Indicates whether the log analysis feature supports the pay-as-you-go billing method. Valid values:
+        # The pay-as-you-go support status of the log analysis feature. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**: supported
+        # - **no**: not supported.
         self.post_paid_support_status = post_paid_support_status
-        # The status of the dedicated Log Service project. Valid values:
+        # The status of the log project used by the log analysis feature. Valid values:
         # 
-        # *   **Normal**: normal
-        # *   **Disable**: disabled
+        # - **Normal**: Normal.
+        # - **Disable**: Disabled.
         self.sls_project_status = sls_project_status
-        # Indicates whether Log Service is activated. Valid values:
+        # The activation status of Simple Log Service (SLS). Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**: activated
+        # - **no**: not activated.
         self.sls_service_status = sls_service_status
 
     def validate(self):

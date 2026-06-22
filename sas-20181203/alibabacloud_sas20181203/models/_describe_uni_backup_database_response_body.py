@@ -14,11 +14,11 @@ class DescribeUniBackupDatabaseResponseBody(DaraModel):
         page_info: main_models.DescribeUniBackupDatabaseResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the information about the databases.
+        # The list of database details.
         self.database_list = database_list
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeUniBackupDatabaseResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of databases on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of databases per page in a paging query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of databases.
         self.total_count = total_count
 
     def validate(self):
@@ -133,40 +133,38 @@ class DescribeUniBackupDatabaseResponseBodyDatabaseList(DaraModel):
         policy_id: int = None,
         status: str = None,
     ):
-        # The status of the anti-ransomware agent. Valid values:
-        # 
-        # *   **UNKNOWN**: unknown
-        # *   **INSTALLED**: installed
-        # *   **INSTALL_FAILED**: installation failed
-        # *   **UNINSTALL_FAILED**: uninstallation failed
+        # The status of the database client agent. Valid values:
+        # - **UNKNOWN**: unknown.
+        # - **INSTALLED**: installed.
+        # - **INSTALL_FAILED**: installation failed.
+        # - **UNINSTALL_FAILED**: uninstallation failed.
         self.agent_status = agent_status
-        # The service from which the database is created. Valid values:
-        # 
-        # *   **HBR**: HBR
-        # *   **AEGIS**: Security Center
+        # The method used to create the database. Valid values:
+        # - **HBR**: Cloud Backup.
+        # - **AEGIS**: Security Center.
         self.created_by_product = created_by_product
         # The name of the database.
         self.database_name = database_name
         # The type of the database. Valid values:
         # 
-        # *   **MYSQL**
-        # *   **MSSQL**
-        # *   **Oracle**
+        # - **MYSQL**
+        # - **MSSQL**
+        # - **Oracle**.
         self.database_type = database_type
-        # The version of the database engine.
+        # The version of the database.
         self.database_version = database_version
-        # The ID of the server.
+        # The instance ID of the server.
         self.instance_id = instance_id
         # The name of the instance to which the database belongs.
         self.instance_name = instance_name
-        # The UUID of the Hybrid Backup Recovery (HBR) agent that is used to back up the data of the database.
+        # The unique identifier of the database backup client on the server.
         self.instance_uuid = instance_uuid
-        # The ID of the anti-ransomware policy.
+        # The ID of the anti-ransomware backup policy for the database.
         self.policy_id = policy_id
-        # The status of the ECS instance. Valid values:
+        # The instance status of the ECS instance. Valid values:
         # 
-        # *   **Stopped**
-        # *   **Running**
+        # - **Stopped**: stopped.
+        # - **Running**: running.
         self.status = status
 
     def validate(self):

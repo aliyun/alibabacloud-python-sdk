@@ -14,11 +14,11 @@ class ListAgentlessRelateMaliciousResponseBody(DaraModel):
         page_info: main_models.ListAgentlessRelateMaliciousResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The list of hosts that are associated with the risk.
+        # The list of servers with associated risks.
         self.list = list
-        # The pagination information.
+        # The paging information for the paging query.
         self.page_info = page_info
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListAgentlessRelateMaliciousResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -144,52 +144,52 @@ class ListAgentlessRelateMaliciousResponseBodyList(DaraModel):
         target_type: str = None,
         uuid: str = None,
     ):
-        # The details of the alert events.
+        # The alert event details.
         self.details = details
-        # The URL to download the malicious image sample.
+        # The download URL of the malicious sample.
         self.download_url = download_url
         # The file path.
         self.file_path = file_path
-        # The timestamp when the first scan was performed. Unit: milliseconds.
+        # The timestamp of the first scan. Unit: milliseconds.
         self.first_scan_timestamp = first_scan_timestamp
-        # The highlighted JSON string.
+        # The highlighted text, in JSON string format.
         self.high_light = high_light
         # The event ID.
         self.id = id
-        # The name of the asset.
+        # The name of the asset instance.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
         # The private IP address of the server.
         self.intranet_ip = intranet_ip
-        # The timestamp when the last scan was performed. Unit: milliseconds.
+        # The timestamp of the latest scan. Unit: milliseconds.
         self.latest_scan_timestamp = latest_scan_timestamp
-        # The severity of the malicious file. Valid values:
+        # The severity level. Valid values:
         # 
-        # *   serious
-        # *   suspicious
-        # *   remind
+        # - serious: urgent
+        # - suspicious: suspicious
+        # - remind: reminder.
         self.level = level
-        # The MD5 hash value of the malicious file.
+        # The MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
         # The name of the malicious file.
         self.malicious_name = malicious_name
-        # The type of the virus.
+        # The virus type.
         self.malicious_type = malicious_type
-        # The handling result of the alert.
+        # The alert handling result.
         self.operate_result = operate_result
-        # The timestamp when the alert is handled. Unit: milliseconds.
+        # The timestamp when the alert was handled. Unit: milliseconds.
         self.operate_timestamp = operate_timestamp
-        # The partition of the disk.
+        # The disk partition.
         self.partition = partition
-        # The ID of the task object.
+        # The ID of the task target.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the task target.
         self.target_name = target_name
-        # The type of the task object. Valid values:
+        # The object type. Valid values:
         # 
-        # *   **1**: snapshot.
-        # *   **2**: image.
+        # - **1**: snapshot
+        # - **2**: image.
         self.target_type = target_type
         # The UUID of the server.
         self.uuid = uuid
@@ -350,13 +350,13 @@ class ListAgentlessRelateMaliciousResponseBodyListDetails(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the detailed item.
+        # The name of the alert event detail item.
         self.name = name
-        # The name key of the detailed item.
+        # The name key of the alert event detail item.
         self.name_key = name_key
-        # The type of the detailed item.
+        # The type of the alert event detail item.
         self.type = type
-        # The value of the detailed item.
+        # The value of the alert event detail item.
         self.value = value
 
     def validate(self):

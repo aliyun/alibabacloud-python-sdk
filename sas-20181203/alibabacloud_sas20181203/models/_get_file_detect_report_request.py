@@ -19,23 +19,29 @@ class GetFileDetectReportRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   **ThreatTypes**: the type of the threat intelligence event
-        # *   **Intelligences**: the threat intelligence event
-        # *   **ThreatLevel**: the level of the threat intelligence event
-        # *   **Basic**: the basic information about the report (the scan result)
-        # *   **Sandbox**: the cloud sandbox check report
+        # - **ThreatTypes**: the type of the threat intelligence event
+        # 
+        # - **Intelligences**: the threat intelligence event
+        # 
+        # - **ThreatLevel**: the level of the threat intelligence event
+        # 
+        # - **Basic**: the basic information about the report (the scan result)
+        # 
+        # - **Sandbox**: the cloud sandbox check report
         self.field = field
         # The hash value of the file to be detected.
         self.file_hash = file_hash
         # The language of the content within the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The data source type. Valid values:
         # 
-        # *   **machine**: host alerts
-        # *   **object_scan**: file detection alerts
+        # - **machine**: host alerts
+        # 
+        # - **object_scan**: file detection alerts
         self.source_type = source_type
 
     def validate(self):

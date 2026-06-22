@@ -10,8 +10,7 @@ class DeleteSoarStrategyTaskRequest(DaraModel):
         strategy_task_id: int = None,
     ):
         # The ID of the policy task that is in the waiting state.
-        # 
-        # >  You can call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain the ID.
+        # >Call the [DescribeSoarStrategyTasks](https://help.aliyun.com/document_detail/2837958.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.strategy_task_id = strategy_task_id

@@ -12,18 +12,16 @@ class QueryAttackCountRequest(DaraModel):
         source_ip: str = None,
         uuids: str = None,
     ):
-        # The ID of the request source. Set the value to sas.
+        # The source identifier of the request. Set this parameter to sas.
         self.from_ = from_
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUID of the asset.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of assets.
+        # The UUID of the server. Separate multiple UUIDs with commas (,).
+        # > Call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to obtain this parameter.
         self.uuids = uuids
 
     def validate(self):

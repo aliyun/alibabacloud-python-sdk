@@ -9,13 +9,13 @@ class DescribePropertyUsageTopRequest(DaraModel):
         self,
         type: str = None,
     ):
-        # The type of the asset fingerprint. Valid value:
+        # The Asset Fingerprints type. Valid values:
         # 
-        # *   **port**: port
-        # *   **process**: process
-        # *   **software**: software
-        # *   **user**: account
-        # *   **sca**: middleware
+        # - **port**: port
+        # - **process**: process
+        # - **software**: software
+        # - **user**: account
+        # - **sca**: middleware.
         # 
         # This parameter is required.
         self.type = type

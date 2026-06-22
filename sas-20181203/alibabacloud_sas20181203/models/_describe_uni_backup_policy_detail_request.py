@@ -9,9 +9,8 @@ class DescribeUniBackupPolicyDetailRequest(DaraModel):
         self,
         policy_id: str = None,
     ):
-        # The ID of the anti-ransomware policy.
-        # 
-        # > You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+        # The ID of the anti-ransomware backup policy for databases.
+        # >You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id

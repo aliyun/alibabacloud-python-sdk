@@ -9,7 +9,7 @@ class ListDockerhubImageRequest(DaraModel):
         self,
         query: str = None,
     ):
-        # The query condition for images. You can query images in the `[namespace/]repoName[:version]` format. Conditions in `[]` are optional.
+        # The image query condition. The format is `[namespace/]repoName[:version]`. The query conditions in `[]` are optional.
         # 
         # This parameter is required.
         self.query = query

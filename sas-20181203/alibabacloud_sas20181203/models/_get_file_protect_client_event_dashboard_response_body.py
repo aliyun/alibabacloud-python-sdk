@@ -13,6 +13,7 @@ class GetFileProtectClientEventDashboardResponseBody(DaraModel):
         data: main_models.GetFileProtectClientEventDashboardResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -55,11 +56,17 @@ class GetFileProtectClientEventDashboardResponseBodyData(DaraModel):
         recent_file_change_count: int = None,
         server_count: int = None,
     ):
+        # The tamper-proofing event statistics grouped by file path.
         self.file_path_stats = file_path_stats
+        # The event statistics grouped by file type.
         self.file_type_stats = file_type_stats
+        # The number of file tamper-proofing events for today.
         self.one_day_file_change_count = one_day_file_change_count
+        # The event statistics grouped by process name.
         self.process_name_stats = process_name_stats
+        # The number of file tamper-proofing events in the last 15 days.
         self.recent_file_change_count = recent_file_change_count
+        # The number of affected servers.
         self.server_count = server_count
 
     def validate(self):
@@ -144,7 +151,9 @@ class GetFileProtectClientEventDashboardResponseBodyDataProcessNameStats(DaraMod
         key: str = None,
         num: int = None,
     ):
+        # The process name.
         self.key = key
+        # The number of events.
         self.num = num
 
     def validate(self):
@@ -179,7 +188,9 @@ class GetFileProtectClientEventDashboardResponseBodyDataFileTypeStats(DaraModel)
         key: str = None,
         num: int = None,
     ):
+        # The file type name.
         self.key = key
+        # The count.
         self.num = num
 
     def validate(self):
@@ -214,7 +225,9 @@ class GetFileProtectClientEventDashboardResponseBodyDataFilePathStats(DaraModel)
         key: str = None,
         num: int = None,
     ):
+        # The file path.
         self.key = key
+        # The total number of events.
         self.num = num
 
     def validate(self):

@@ -15,27 +15,24 @@ class DescribeWebLockBindListRequest(DaraModel):
         status: str = None,
         uuid: str = None,
     ):
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number of the current page in a paging query. Minimum value: 1. Default value: 1.
         self.current_page = current_page
-        # The language of the content within the request and the response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page. Default value: 20.
+        # The maximum number of entries per page in a paging query. Default value: 20.
         self.page_size = page_size
-        # The string that allows you to search for servers in fuzzy match mode. You can enter a server name or IP address.
+        # The fuzzy match field for the server. The value can be a server name or IP address.
         self.remark = remark
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The protection status of the server that you want to query. Valid values:
-        # 
-        # *   **on**: protected
-        # *   **off**: unprotected
+        # The protection status of the servers that you want to query. Valid values:
+        # - **on**: Protection is enabled.
+        # - **off**: Protection is disabled.
         self.status = status
         # The UUID of the asset that you want to query.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUID.
+        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid = uuid
 
     def validate(self):

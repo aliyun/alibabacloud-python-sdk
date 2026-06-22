@@ -18,26 +18,24 @@ class DescribeAgentlessSensitiveFileByKeyRequest(DaraModel):
         sensitive_file_key: str = None,
         status: str = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The UUID of the asset that is scanned. You can query the UUID on the Host or Cloud Product page. If you scan a host, set this parameter to the UUID of the scanned host. If you scan a snapshot or a custom image, set this parameter to the ID of the scanned snapshot or image.
+        # The UUID of the asset to scan. You can obtain this value from the Host Assets and Cloud Products page. In host security detection scenarios, this parameter specifies the UUID of the host to scan. In snapshot security detection and custom image security detection scenarios, this parameter specifies the ID of the image or snapshot to scan.
         self.image_uuid = image_uuid
-        # The instance ID of the asset that is scanned. To query the instance ID, go to the Task Management page, click Details of a task, and then view the value of Check On.
+        # The instance ID of the asset to query. You can obtain this value from Node Management > Details > Detection Objects.
         self.instance_id = instance_id
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The name or IP address of the asset.
+        # The asset name or IP address.
         self.remark = remark
-        # The types of the assets that are scanned.
+        # The collection of scan ranges.
         self.scan_range = scan_range
         # The type of the sensitive file.
         self.sensitive_file_key = sensitive_file_key
-        # The status of the baseline risk. Valid values:
-        # 
-        # *   **0**: unfixed.
-        # *   **1**: fixed.
+        # The fix status of the baseline risk. Valid values:
+        # - **0**: unfixed
+        # - **1**: fixed.
         self.status = status
 
     def validate(self):

@@ -34,8 +34,9 @@ class ListCheckInstanceResultRequest(DaraModel):
         self.instance_name_key = instance_name_key
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries per page. Maximum value: 100.
         self.page_size = page_size

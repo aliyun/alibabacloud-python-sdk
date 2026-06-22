@@ -17,17 +17,17 @@ class DescribeVulWhitelistResponseBody(DaraModel):
         total_count: int = None,
         vul_whitelists: List[main_models.DescribeVulWhitelistResponseBodyVulWhitelists] = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in paging.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in paging.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of entries per page in paging.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # An array that consists of information about the whitelist of vulnerabilities.
+        # The list of whitelisted vulnerabilities.
         self.vul_whitelists = vul_whitelists
 
     def validate(self):
@@ -101,32 +101,31 @@ class DescribeVulWhitelistResponseBodyVulWhitelists(DaraModel):
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
         # The name of the vulnerability.
         self.name = name
-        # The reason why the vulnerability is added to the whitelist.
+        # The reason for adding the vulnerability to the whitelist.
         self.reason = reason
-        # The application scope of the rule. The value is a JSON string that contains the following fields:
+        # The scope of the rule. The value is a JSON string that contains the following fields:
         # 
-        # *   **type**: the type of the assets to which the rule is applied. Valid values:
+        # - **type**: The applicable type. Valid values:
         # 
-        #     *   **Uuid**: server
-        #     *   **GroupId**: server group
+        #      - **Uuid**: host
+        #      - **GroupId**: group
         # 
-        # *   **groupIds**: the ID of the server group
+        # - **groupIds**: The IDs of the applicable asset groups.
+        # - **uuids**: The UUIDs of the applicable assets.
         # 
-        # *   **uuids**: the UUID of the server
-        # 
-        # > If this field is empty, the rule is applied to all assets.
+        # > If this value is empty, the rule applies to all assets.
         self.target_info = target_info
-        # The type of the vulnerability.
+        # The vulnerability type.
         self.type = type
-        # The information about the vulnerability. The value of this parameter is in the JSON format. Valid values:
+        # The vulnerability information. The value is in JSON format.
         # 
-        # *   **name**: the name of the vulnerability
-        # *   **type**: the type of the vulnerability.
-        # *   **aliasName**: the alias of the vulnerability
+        # - **name**: The name of the vulnerability.
+        # - **type**: The type of the vulnerability.
+        # - **aliasName**: The alias of the vulnerability.
         self.whitelist = whitelist
 
     def validate(self):

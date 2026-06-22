@@ -16,17 +16,17 @@ class VerifyCheckCustomConfigRequest(DaraModel):
         repair_configs: List[main_models.VerifyCheckCustomConfigRequestRepairConfigs] = None,
         type: str = None,
     ):
-        # Check item ID.
+        # The ID of the check item.
         self.check_id = check_id
-        # Custom check item to validate input parameters.
+        # The input parameters for custom check item validation.
         self.custom_check_config = custom_check_config
-        # List of custom configuration items for the check item.
+        # The list of custom parameter configuration items for the check item.
         self.custom_configs = custom_configs
-        # Repair parameters supported by the check item\\"s repair function.
+        # The repair parameters supported by the repair feature of the check item.
         self.repair_configs = repair_configs
-        # Situation Awareness parameter validation types: 
-        # - **REPAIR_CONFIG**: Repair and custom parameter validation (default) 
-        # - **CHECK_ITEM_CONFIG**: Custom check item validation
+        # The validation type for Threat Detection Service parameters. Valid values:
+        # - **REPAIR_CONFIG**: repair and custom parameter validation (default).
+        # - **CHECK_ITEM_CONFIG**: custom check item validation.
         self.type = type
 
     def validate(self):
@@ -101,13 +101,13 @@ class VerifyCheckCustomConfigRequestRepairConfigs(DaraModel):
         operation: str = None,
         value: str = None,
     ):
-        # ID of the repair process during the repair.
+        # The ID of the repair flow that corresponds to the repair operation.
         self.flow_id = flow_id
-        # Name of the repair parameter for the check item, unique within the same check item.
+        # The name of the repair parameter for the check item. The name is unique within the check item.
         self.name = name
-        # Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+        # The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
         self.operation = operation
-        # User-configured value string for the repair parameter of the check item.
+        # The user-configured value string of the repair configuration item for the check item.
         self.value = value
 
     def validate(self):
@@ -155,11 +155,11 @@ class VerifyCheckCustomConfigRequestCustomConfigs(DaraModel):
         operation: str = None,
         value: str = None,
     ):
-        # Name of the custom configuration item for the check item, unique within the same check item.
+        # The name of the custom configuration item for the check item. The name is unique within the check item.
         self.name = name
-        # Operation type for the custom configuration item of the check item. Only pass DELETE when deleting; no need to pass for creation or update.
+        # The operation type of the custom configuration item for the check item. Set this parameter to DELETE only for deletion operations. You do not need to specify this parameter for creation or update operations.
         self.operation = operation
-        # User-configured value string for the custom configuration item of the check item.
+        # The user-configured value string of the custom configuration item for the check item.
         self.value = value
 
     def validate(self):
@@ -203,42 +203,43 @@ class VerifyCheckCustomConfigRequestCustomCheckConfig(DaraModel):
         instance_type: str = None,
         vendor: str = None,
     ):
-        # Define rules for custom inspection items.
+        # The definition rule of the custom check item.
         self.check_rule = check_rule
-        # Asset instance that requires testing rules
+        # The asset instance on which you want to test the rule.
         self.cloud_asset_instance = cloud_asset_instance
-        # Asset subtype of the cloud product
+        # The asset subtype of the cloud service.
         self.instance_sub_type = instance_sub_type
-        # Asset types of cloud products. Values:
-        # - **ECS**: Elastic Compute Service 
-        # - **SLB**: Server Load Balancer 
-        # - **RDS**: Relational Database Service 
-        # - **MONGODB**: MongoDB Database 
-        # - **KVSTORE**: Redis Database 
-        # - **ACR**: Container Registry 
-        # - **CSK**: CSK 
-        # - **VPC**: Virtual Private Cloud 
-        # - **ACTIONTRAIL**: Action Trail 
-        # - **CDN**: Content Delivery Network 
-        # - **CAS**: Digital Certificate Management Service [formerly SSL Certificates] 
-        # - **RDC**: DevOps 
-        # - **RAM**: Resource Access Management 
-        # - **DDOS**: Distributed Denial of Service 
-        # - **WAF**: Web Application Firewall 
-        # - **OSS**: Object Storage Service 
-        # - **POLARDB**: POLARDB 
-        # - **POSTGRESQL**: PostgreSQL 
-        # - **MSE**: MSE 
-        # - **NAS**: Network Attached Storage 
-        # - **SDDP**: Sensitive Data Discovery and Protection 
-        # - **EIP**: Elastic IP
+        # The asset type of the cloud service. Valid values:
+        # 
+        # - **ECS**: server
+        # - **SLB**: load balancing
+        # - **RDS**: ApsaraDB RDS database
+        # - **MONGODB**: ApsaraDB for MongoDB database
+        # - **KVSTORE**: ApsaraDB for Redis database
+        # - **ACR**: ACR
+        # - **CSK**: CSK
+        # - **VPC**: VPC
+        # - **ACTIONTRAIL**: ActionTrail
+        # - **CDN**: CDN
+        # - **CAS**: Certificate Management Service (formerly SSL Certificates Service)
+        # - **RDC**: Apsara Devops
+        # - **RAM**: RAM
+        # - **DDOS**: distributed deny of service
+        # - **WAF**: WAF
+        # - **OSS**: access control
+        # - **POLARDB**: POLARDB
+        # - **POSTGRESQL**: PostgreSQL
+        # - **MSE**: MSE
+        # - **NAS**: NAS
+        # - **SDDP**: SDDP
+        # - **EIP**: EIP.
         self.instance_type = instance_type
-        # Cloud asset vendor. Values: 
-        # - **ALIYUN**: Alibaba Cloud 
-        # - **Tencent**: Tencent Cloud 
-        # - **HUAWEICLOUD**: Huawei Cloud 
-        # - **Azure**: Microsoft 
-        # - **AWS**: Amazon Web Services (AWS)
+        # The cloud asset vendor. Valid values:
+        # - **ALIYUN**: Alibaba Cloud
+        # - **Tencent**: Tencent Cloud
+        # - **HUAWEICLOUD**: Huawei Cloud
+        # - **Azure**: Microsoft Azure
+        # - **AWS**: Amazon Web Services (AWS).
         self.vendor = vendor
 
     def validate(self):
@@ -293,7 +294,7 @@ class VerifyCheckCustomConfigRequestCustomCheckConfigCloudAssetInstance(DaraMode
         instance_id: str = None,
         region_id: str = None,
     ):
-        # Instance ID of the asset.
+        # The instance ID of the asset.
         self.instance_id = instance_id
         # The region ID of the instance.
         self.region_id = region_id

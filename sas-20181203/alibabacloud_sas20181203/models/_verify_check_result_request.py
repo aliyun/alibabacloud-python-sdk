@@ -13,11 +13,13 @@ class VerifyCheckResultRequest(DaraModel):
         instance_ids: List[str] = None,
         task_source: str = None,
     ):
-        # The IDs of the check items.
+        # The list of check item IDs.
         self.check_ids = check_ids
-        # List of instance IDs for the check item assets.
+        # The list of instance IDs of the assets associated with the check items.
         self.instance_ids = instance_ids
-        # The source of task.
+        # The task source. Valid values:
+        # 
+        # - **YAO_CHI**: ApsaraDB console.
         self.task_source = task_source
 
     def validate(self):

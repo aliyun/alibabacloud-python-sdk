@@ -10,9 +10,9 @@ class GetAttackEventDetailRequest(DaraModel):
         id: str = None,
         lang: str = None,
     ):
-        # The unique identifier ID for the alert event.
+        # The unique ID of the alert event.
         self.id = id
-        # The language type for requesting and receiving messages. Values:
+        # The language of the request and response. Valid values:
         # - **zh**: Chinese.
         # - **en**: English.
         self.lang = lang

@@ -17,17 +17,17 @@ class DescribeClientProblemTypeResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number.
+        # The current page number displayed in the returned results.
         self.current_page = current_page
-        # The number of entries per page. Default value: **20**.
+        # The maximum number of entries per page in a paged query. Default value: **20**.
         self.page_size = page_size
-        # The issue types.
+        # The list of diagnostic types.
         self.problem_types = problem_types
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the client issue list.
         self.total_count = total_count
 
     def validate(self):
@@ -95,11 +95,11 @@ class DescribeClientProblemTypeResponseBodyProblemTypes(DaraModel):
         problem_id: str = None,
         problem_type: str = None,
     ):
-        # The description of the issue type.
+        # The description of the diagnostic issue category.
         self.problem_detail = problem_detail
-        # The ID of the issue type.
+        # The ID of the diagnostic issue category.
         self.problem_id = problem_id
-        # The name of the issue type.
+        # The name of the diagnostic issue category.
         self.problem_type = problem_type
 
     def validate(self):

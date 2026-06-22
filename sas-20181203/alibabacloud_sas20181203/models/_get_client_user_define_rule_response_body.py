@@ -11,9 +11,9 @@ class GetClientUserDefineRuleResponseBody(DaraModel):
         request_id: str = None,
         user_define_rule_detail: main_models.GetClientUserDefineRuleResponseBodyUserDefineRuleDetail = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The information about the custom defense rule.
+        # The rule details.
         self.user_define_rule_detail = user_define_rule_detail
 
     def validate(self):
@@ -68,10 +68,10 @@ class GetClientUserDefineRuleResponseBodyUserDefineRuleDetail(DaraModel):
         registry_key: str = None,
         type: int = None,
     ):
-        # The action of the custom defense rule. Valid values:
+        # The action type. Valid values:
         # 
-        # *   **0**: allow
-        # *   **1**: block
+        # - **0**: added to the whitelist
+        # - **1**: added to the blacklist.
         self.action_type = action_type
         # The command line.
         self.cmdline = cmdline
@@ -79,49 +79,49 @@ class GetClientUserDefineRuleResponseBodyUserDefineRuleDetail(DaraModel):
         self.domain = domain
         # The file path.
         self.file_path = file_path
-        # The time when the custom defense rule was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the custom defense rule was last modified.
+        # The most recent modification time.
         self.gmt_modified = gmt_modified
         # The IP address.
         self.ip = ip
-        # The ID of the custom defense rule.
+        # The rule ID.
         self.id = id
-        # The hash values of processes.
+        # The list of process hashes.
         self.md_5list = md_5list
-        # The name of the custom defense rule.
+        # The rule name.
         self.name = name
         # The new file path after the file is renamed.
         self.new_file_path = new_file_path
         # The parent command line.
         self.parent_cmdline = parent_cmdline
-        # The path to the parent process.
+        # The parent process path.
         self.parent_proc_path = parent_proc_path
-        # The type of the operating system. Valid values:
+        # The operating system type. Valid values:
         # 
-        # *   **linux**
-        # *   **windows**
-        # *   **all**
+        # - **linux**
+        # - **windows**
+        # - **all**.
         self.platform = platform
         # The port number.
         self.port = port
         # The port number. Valid values: 1 to 65535.
         self.port_str = port_str
-        # The path to the process.
+        # The process path.
         self.proc_path = proc_path
         # The registry value.
         self.registry_content = registry_content
         # The registry key.
         self.registry_key = registry_key
-        # The type of the custom defense rule. Valid values:
+        # The rule type. Valid values:
         # 
-        # *   **1**: Process hash
-        # *   **2**: Command line
-        # *   **3**: Process Network
-        # *   **4**: File Read and Write
-        # *   **5**: Operation on Registry
-        # *   **6**: Dynamic-link Library Loading
-        # *   **7**: File Renaming
+        # - **1**: process hash
+        # - **2**: command line
+        # - **3**: process network
+        # - **4**: file read/write
+        # - **5**: registry operation
+        # - **6**: dynamic-link library loading
+        # - **7**: file rename.
         self.type = type
 
     def validate(self):

@@ -10,11 +10,10 @@ class ListPluginForUuidShrinkRequest(DaraModel):
         types_shrink: str = None,
         uuid: str = None,
     ):
-        # The plug-in types.
+        # The list of plugin types.
         self.types_shrink = types_shrink
         # The UUID of the server.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.uuid = uuid

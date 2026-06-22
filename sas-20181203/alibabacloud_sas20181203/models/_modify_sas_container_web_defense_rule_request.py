@@ -14,13 +14,13 @@ class ModifySasContainerWebDefenseRuleRequest(DaraModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
-        # The paths that are protected.
+        # The list of defense paths for the rule.
         self.path_conf_dtolist = path_conf_dtolist
-        # The ID of the rule.
+        # The rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):
@@ -78,39 +78,37 @@ class ModifySasContainerWebDefenseRuleRequestPathConfDTOList(DaraModel):
         path_conf_id: int = None,
         process_path_list: List[str] = None,
     ):
-        # The backup paths.
+        # The backup path.
         self.backup_path = backup_path
-        # The prevention mode. Valid values:
-        # 
-        # *   **block**
-        # *   **audit**
+        # The action to perform. Valid values:
+        # - **block**: Block.
+        # - **audit**: Alert.
         # 
         # This parameter is required.
         self.defense_mode = defense_mode
-        # The path that is protected.
+        # The defense path.
         # 
         # This parameter is required.
         self.defense_path = defense_path
-        # The files that are excluded.
+        # The excluded file.
         self.exclude_file = exclude_file
-        # The paths to the files that are excluded.
+        # The excluded file path.
         self.exclude_file_path = exclude_file_path
-        # The types of the files that are excluded.
+        # The excluded file type.
         self.exclude_file_type = exclude_file_type
-        # The protection mode. Valid values:
-        # 
-        # *   **0**: basic mode (whitelist)
-        # *   **1**: complex mode (blacklist)
+        # The Defense mode. Valid values:
+        # - **0**: Basic pattern (whitelist). 
+        # - **1**: Complex pattern (blacklist).
         # 
         # This parameter is required.
         self.guard_type = guard_type
-        # The files that are included.
+        # The included file.
         self.include_file = include_file
-        # The type of the files that are included.
+        # The included file type.
         self.include_file_type = include_file_type
         # The path ID.
         self.path_conf_id = path_conf_id
-        # The processes that are added to the whitelist.
+        # The list of whitelisted processes.
         self.process_path_list = process_path_list
 
     def validate(self):

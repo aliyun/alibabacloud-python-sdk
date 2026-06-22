@@ -1,3 +1,25 @@
+2026-06-22 Version: 9.3.3
+- Update API BindAuthToMachine: add request parameters ResourceDirectoryAccountId.
+- Update API DescribeVersionConfig: add response parameters Body.CspmInstanceCapacity.
+- Update API DescribeVersionConfig: add response parameters Body.HybridPaidModuleSwitchMap.
+- Update API DescribeVersionConfig: add response parameters Body.HybridPaidStatus.
+- Update API DescribeVersionConfig: add response parameters Body.HybridSwitch.
+- Update API DescribeVersionConfig: add response parameters Body.NewPostPaidCspm.
+- Update API GetCheckSale: add response parameters Body.CheckSale.InstanceConsumeCount.
+- Update API GetCheckSale: add response parameters Body.CheckSale.InstanceHybridPostLatestCycledResourceCount.
+- Update API GetCheckSale: add response parameters Body.CheckSale.InstancePostConsumeCount.
+- Update API GetCheckSale: add response parameters Body.CheckSale.InstancePurchaseCount.
+- Update API GetCloudAssetSummary: add request parameters IsSaleData.
+- Update API GetCloudAssetSummary: add response parameters Body.GroupedFields.InstanceSaleCountTotal.
+- Update API GetCloudAssetSummary: add response parameters Body.GroupedFields.CloudAssetSummaryMetas.$.InstanceSaleCount.
+- Update API GetCloudAssetSummary: add response parameters Body.GroupedFields.CloudAssetSummaryMetas.$.IsInstanceSale.
+- Update API ListCloudAssetInstances: add request parameters IsSaleData.
+- Update API ListCloudAssetInstances: add response parameters Body.Instances.$.AssetUuid.
+- Update API ListCloudAssetInstances: add response parameters Body.Instances.$.SaleCspm.
+- Update API ListCloudAssetInstances: add response parameters Body.Instances.$.SaleType.
+- Update API ListUnknownThreatDetectEvent: add response parameters Body.Data.$.HandleType.
+
+
 2026-06-01 Version: 9.3.2
 - Update API AddClientUserDefineRule: add request parameters TargetDefault.
 - Update API GetUnknownThreatDetectStatistic: add response parameters Body.Data.BlockEventMachineCount.

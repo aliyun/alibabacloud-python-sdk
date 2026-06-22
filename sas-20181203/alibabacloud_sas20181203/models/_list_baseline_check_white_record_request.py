@@ -17,25 +17,23 @@ class ListBaselineCheckWhiteRecordRequest(DaraModel):
         record_ids: List[int] = None,
         source: str = None,
     ):
-        # The IDs of check items.
+        # The list of check item IDs.
         self.check_ids = check_ids
-        # The name of the check item. Fuzzy match is supported.
+        # The check item name for fuzzy match.
         self.check_item_fuzzy = check_item_fuzzy
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the current page when using paging. The value starts from 1. Default value: 1.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for requests and responses. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page.
+        # The number of entries per page when using paging.
         self.page_size = page_size
-        # The IDs of the whitelist rules.
+        # The list of whitelist record IDs.
         self.record_ids = record_ids
-        # The data source. If you leave this parameter empty, the default value is used. Valid values:
-        # 
-        # *   **default**: server
-        # *   **agentless**: agentless detection
+        # The data source. If this parameter is left empty, host data is queried by default. Valid values:
+        # - **default**: host
+        # - **agentless**: agentless.
         self.source = source
 
     def validate(self):

@@ -14,8 +14,11 @@ class AddUnknownThreatDetectProcessRequest(DaraModel):
         process_list: List[main_models.AddUnknownThreatDetectProcessRequestProcessList] = None,
         uuid_list: List[str] = None,
     ):
+        # A list of associated event IDs.
         self.event_id_list = event_id_list
+        # The list of processes to add.
         self.process_list = process_list
+        # The UUIDs of assets on which the processes are located.
         self.uuid_list = uuid_list
 
     def validate(self):
@@ -66,9 +69,13 @@ class AddUnknownThreatDetectProcessRequestProcessList(DaraModel):
         remark: str = None,
         sha_256: str = None,
     ):
+        # The MD5 hash of the process file.
         self.md_5 = md_5
+        # The path to the process executable.
         self.process_path = process_path
+        # A remark for the process.
         self.remark = remark
+        # The SHA-256 hash of the process file.
         self.sha_256 = sha_256
 
     def validate(self):

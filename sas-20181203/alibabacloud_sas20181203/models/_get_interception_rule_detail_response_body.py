@@ -62,10 +62,13 @@ class GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail(DaraModel):
         self.dst_target = dst_target
         # The interception mode. Valid values:
         # 
-        # *   **0**: monitor
-        # *   **1**: block
-        # *   **2**: alert
-        # *   **3**: allow
+        # - **0**: monitor
+        # 
+        # - **1**: block
+        # 
+        # - **2**: alert
+        # 
+        # - **3**: allow
         self.intercept_type = intercept_type
         # The priority of the rule. Valid values: 1 to 1000. A smaller value indicates a higher priority.
         self.order_index = order_index
@@ -75,13 +78,15 @@ class GetInterceptionRuleDetailResponseBodyInterceptionRuleDetail(DaraModel):
         self.rule_name = rule_name
         # The status of the defense rule. Valid values:
         # 
-        # *   **1**: The rule is enabled.
-        # *   **0**: The rule is disabled.
+        # - **1**: The rule is enabled.
+        # 
+        # - **0**: The rule is disabled.
         self.rule_switch = rule_switch
         # The type of the rule. Valid values:
         # 
-        # *   **suggest**: a suggestion rule
-        # *   **customize**: a custom rule
+        # - **suggest**: a suggestion rule
+        # 
+        # - **customize**: a custom rule
         self.rule_type = rule_type
         # The source network object.
         self.src_target = src_target

@@ -11,17 +11,16 @@ class GetAppNetworkRequest(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The ID of the cluster to which the container belongs.
-        # 
-        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+        # The ID of the container cluster to query.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The end timestamp of the query. Unit: milliseconds.
+        # The timestamp of the end time. Unit: milliseconds.
         # 
-        # > The days between the start timestamp and the end timestamp cannot exceed **seven** days.
+        # > The difference between the start timestamp and the end timestamp cannot exceed **7** days.
         self.end_time = end_time
-        # The start timestamp of the query. Unit: milliseconds.
+        # The timestamp of the start time. Unit: milliseconds.
         # 
-        # > The days between the start timestamp and the end timestamp cannot exceed **seven** days.
+        # > The difference between the start timestamp and the end timestamp cannot exceed **7** days.
         self.start_time = start_time
 
     def validate(self):

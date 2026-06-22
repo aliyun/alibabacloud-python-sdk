@@ -69,6 +69,10 @@ class AddClientUserDefineRuleRequest(DaraModel):
         self.registry_content = registry_content
         # The registry key.
         self.registry_key = registry_key
+        # Whether machines are automatically added to the rule. Default value: add. Valid values:  
+        # 
+        # - **add**: Added by default  
+        # - **del**: Not added by default
         self.target_default = target_default
         # The type of the custom defense rule. Valid values:
         # 

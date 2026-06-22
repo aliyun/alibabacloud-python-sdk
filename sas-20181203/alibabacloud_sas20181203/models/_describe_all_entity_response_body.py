@@ -13,9 +13,9 @@ class DescribeAllEntityResponseBody(DaraModel):
         entity_list: List[main_models.DescribeAllEntityResponseBodyEntityList] = None,
         request_id: str = None,
     ):
-        # An array that consists of servers.
+        # The list of instances.
         self.entity_list = entity_list
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -65,18 +65,17 @@ class DescribeAllEntityResponseBodyEntityList(DaraModel):
     ):
         # The ID of the asset group.
         self.group_id = group_id
-        # The name of the server.
+        # The name of the server instance.
         self.instance_name = instance_name
-        # The public IP address of the server.
+        # The public IP address.
         self.internet_ip = internet_ip
-        # The private IP address of the server.
+        # The private IP address.
         self.intranet_ip = intranet_ip
         # The IP address of the server.
         self.ip = ip
         # The operating system of the server. Valid values:
-        # 
-        # *   **linux**
-        # *   **windows**
+        # - **linux**
+        # - **windows**.
         self.os = os
         # The UUID of the server.
         self.uuid = uuid

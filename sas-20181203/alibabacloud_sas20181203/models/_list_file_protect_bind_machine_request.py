@@ -10,7 +10,9 @@ class ListFileProtectBindMachineRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # The page number of the current page for a paged query.
         self.current_page = current_page
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
 
     def validate(self):

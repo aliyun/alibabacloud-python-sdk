@@ -9,11 +9,13 @@ class ModifyConcernNecessityRequest(DaraModel):
         self,
         concern_necessity: str = None,
     ):
-        # The priorities to fix the vulnerabilities. Valid values:
+        # The list of vulnerability fix necessity levels.
         # 
-        # *   asap: high
-        # *   later: medium
-        # *   nntf: low
+        # - asap: High
+        # 
+        # - later: Medium
+        # 
+        # - nntf: Low
         self.concern_necessity = concern_necessity
 
     def validate(self):

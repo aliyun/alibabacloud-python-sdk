@@ -21,16 +21,18 @@ class StartBaselineSecurityCheckRequest(DaraModel):
         self.item_ids = item_ids
         # The language of the content within the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         self.resource_owner_id = resource_owner_id
         # The source IP address of the request.
         self.source_ip = source_ip
         # The type of the check task. Valid values:
         # 
-        # *   **check**
-        # *   **verify**
+        # - **check**
+        # 
+        # - **verify**
         # 
         # This parameter is required.
         self.type = type

@@ -67,79 +67,97 @@ class GetInstanceAuthRangeResponseBodyInstanceAuthRange(DaraModel):
         # Advanced version count. Values:
         # 
         # - **1-2000000000**: Range
+        # 
         # - **1**: Step
         self.advanced_count = advanced_count
         # Anti-ransomware capacity. Values:
         # 
         # - **1-9000000000**: Range
+        # 
         # - **10**: Step
         self.anti_ransomware_capacity = anti_ransomware_capacity
         # Anti-ransomware service. Values:
+        # 
         # - **0**: Not enabled
+        # 
         # - **1**: Enabled
         self.anti_ransomware_service = anti_ransomware_service
         # Anti-virus core count. Values:
         # 
         # - **1-2000000000**: Range
+        # 
         # - **1**: Step
         self.anti_virus_core = anti_virus_core
         # Flagship version core count. Values:
         # 
         # - **1-2000000000**: Range
+        # 
         # - **1**: Step
         self.container_core = container_core
         # Flagship version count. Values:
         # 
         # - **1-2000000000**: Range
+        # 
         # - **1**: Step
         self.container_count = container_count
         # Number of cloud platform configuration check scans. Value:
         # 
-        # - **15000-9999999999**：Range
-        # - **55000**：Step
+        # - **15000-9999999999**:Range
+        # 
+        # - **55000**:Step
         self.cspm_capacity = cspm_capacity
         # Enterprise version count. Range:
+        # 
         # - **Value**: 1-2000000000
+        # 
         # - **Step**: 1
         self.enterprise_count = enterprise_count
         # Number of authorized honeypots. Value:
         # 
-        # - **20-500**：Range
-        # - **1**：Step
+        # - **20-500**:Range
+        # 
+        # - **1**:Step
         self.honeypot_capacity = honeypot_capacity
         # Image scan authorization count. Values:
         # 
         # - **1-200000**: Range
+        # 
         # - **20**: Step
         self.image_scan_capacity = image_scan_capacity
         # Application protection count. Values:
         # 
         # - **1-100000000**: Range
+        # 
         # - **1**: Step
         self.rasp_capacity = rasp_capacity
         # Number of authorized malicious file detection SDKs. Value:
         # 
-        # - **10-9999999999**：Range
-        # - **10**：Step
+        # - **10-9999999999**:Range
+        # 
+        # - **10**:Step
         self.sdk_capacity = sdk_capacity
         # Log storage capacity. Values:
         # 
         # - **1-600000000**: Range
+        # 
         # - **10**: Step
         self.sls_capacity = sls_capacity
         # Threat analysis capacity. Values:
         # 
         # - **1-9999999999**: Range
+        # 
         # - **1000**: Step
         self.threat_analysis_capacity = threat_analysis_capacity
         # Threat analysis and response log access traffic. Values:
         # 
         # - **1-9999999999**: Range
+        # 
         # - **100**: Step
         self.threat_analysis_flow = threat_analysis_flow
         # Web tamper-proof authorization count. Values:
         # 
         # - **1-9999**: Range
+        # 
         # - **1**: Step
         self.web_lock_capacity = web_lock_capacity
 

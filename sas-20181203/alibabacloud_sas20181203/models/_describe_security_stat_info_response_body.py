@@ -17,20 +17,19 @@ class DescribeSecurityStatInfoResponseBody(DaraModel):
         success: bool = None,
         vulnerability: main_models.DescribeSecurityStatInfoResponseBodyVulnerability = None,
     ):
-        # The detailed statistics of attacks.
+        # The statistics of attack events.
         self.attack_event = attack_event
-        # The detailed statistics of baseline risk items.
+        # The statistics of baseline issues.
         self.health_check = health_check
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The detailed statistics of unhandled alerts.
+        # The statistics of pending security alerts.
         self.security_event = security_event
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # Indicates whether the query is successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
-        # The detailed statistics of unfixed vulnerabilities.
+        # The statistics information of unfixed vulnerabilities.
         self.vulnerability = vulnerability
 
     def validate(self):
@@ -109,27 +108,27 @@ class DescribeSecurityStatInfoResponseBodyVulnerability(DaraModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
-        # The number of **high-risk** unfixed vulnerabilities on the current day.
+        # The number of unfixed vulnerabilities with **high** priority on the current day.
         self.asap_count = asap_count
-        # The numbers of high-risk unfixed vulnerabilities at all points in time.
+        # The collection of high-priority unfixed vulnerability counts at each statistical time point.
         self.asap_list = asap_list
-        # The points in time when data of unfixed vulnerabilities is collected in the trend chart.
+        # The collection of statistical time points in the unfixed vulnerability trend chart.
         self.date_array = date_array
-        # The number of **medium-risk** unfixed vulnerabilities on the current day.
+        # The number of unfixed vulnerabilities with **medium** priority on the current day.
         self.later_count = later_count
-        # The numbers of medium-risk unfixed vulnerabilities at all points in time.
+        # The collection of medium-priority unfixed vulnerability counts at each statistical time point.
         self.later_list = later_list
-        # The risk levels of unfixed vulnerabilities.
+        # The collection of vulnerability priority levels included in the statistics for unfixed vulnerabilities.
         self.levels_on = levels_on
-        # The number of **low-risk** unfixed vulnerabilities on the current day.
+        # The number of unfixed vulnerabilities with **low** priority on the current day.
         self.nntf_count = nntf_count
-        # The numbers of low-risk unfixed vulnerabilities at all points in time.
+        # The collection of low-priority unfixed vulnerability counts at each statistical time point.
         self.nntf_list = nntf_list
-        # The time periods during which data of unfixed vulnerabilities is collected.
+        # The collection of statistical time periods for unfixed vulnerabilities.
         self.time_array = time_array
-        # The total number of unfixed vulnerabilities on the current day.
+        # The number of unfixed vulnerabilities on the current day.
         self.total_count = total_count
-        # The numbers of unfixed vulnerabilities at all points in time.
+        # The collection of unfixed vulnerability counts at each statistical time point.
         self.value_array = value_array
 
     def validate(self):
@@ -227,27 +226,27 @@ class DescribeSecurityStatInfoResponseBodySecurityEvent(DaraModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
-        # The points in time when data of unhandled alerts is collected in the trend chart.
+        # The collection of statistical time points in the pending alert trend chart.
         self.date_array = date_array
-        # The risk levels of unhandled alerts.
+        # The collection of alert severity levels included in the statistics for pending alerts.
         self.levels_on = levels_on
-        # The number of **remind** alerts on the current day.
+        # The number of alerts with the **Reminder** severity level detected on the current day.
         self.remind_count = remind_count
-        # The numbers of remind alerts at all points in time.
+        # The collection of Reminder-level alert counts at each statistical time point.
         self.remind_list = remind_list
-        # The number of **serious** alerts on the current day.
+        # The number of alerts with the **Urgent** severity level on the current day.
         self.serious_count = serious_count
-        # The numbers of serious alerts at all points in time.
+        # The collection of Urgent-level alert counts at each statistical time point.
         self.serious_list = serious_list
-        # The number of **suspicious** alerts on the current day.
+        # The number of alerts with the **Suspicious** severity level on the current day.
         self.suspicious_count = suspicious_count
-        # The numbers of suspicious alerts at all points in time.
+        # The collection of Suspicious-level alert counts at each statistical time point.
         self.suspicious_list = suspicious_list
-        # The time periods during which data of the same alert is collected.
+        # The collection of statistical time periods for alerts.
         self.time_array = time_array
-        # The total number of unhandled alerts on the current day.
+        # The total number of pending alerts on the current day.
         self.total_count = total_count
-        # The numbers of unhandled alerts at all points in time.
+        # The collection of pending alert counts at each statistical time point.
         self.value_array = value_array
 
     def validate(self):
@@ -345,27 +344,27 @@ class DescribeSecurityStatInfoResponseBodyHealthCheck(DaraModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
-        # The points in time when data of baseline risk items is collected in the trend chart.
+        # The collection of statistical time points in the baseline issue trend chart.
         self.date_array = date_array
-        # The number of baseline risk items that have the high-risk level on the current day.
+        # The number of high-risk baseline issues on the current day.
         self.high_count = high_count
-        # The numbers of baseline risk items that have the high-risk level at all points in time.
+        # The collection of high-risk baseline counts at each statistical time point.
         self.high_list = high_list
-        # The risk levels of baseline risk items.
+        # The collection of baseline risk levels included in the statistics.
         self.levels_on = levels_on
-        # The number of baseline risk items that have the low-risk level on the current day.
+        # The number of low-risk baseline issues on the current day.
         self.low_count = low_count
-        # The numbers of baseline risk items that have the low-risk level at all points in time.
+        # The collection of low-risk baseline issue counts at each statistical time point.
         self.low_list = low_list
-        # The number of baseline risk items that have the medium-risk level on the current day.
+        # The number of medium-risk baseline issues on the current day.
         self.medium_count = medium_count
-        # The numbers of baseline risk items that have the medium-risk level at all points in time.
+        # The collection of medium-risk baseline issue counts at each statistical time point.
         self.medium_list = medium_list
-        # The time periods during which data of baseline risk items is collected.
+        # The collection of statistical time periods for baselines.
         self.time_array = time_array
-        # The total number of baseline risk items on the current day.
+        # The total number of baseline issues on the current day.
         self.total_count = total_count
-        # The total number of baseline risk items at all points in time.
+        # The collection of total baseline counts at each statistical time point.
         self.value_array = value_array
 
     def validate(self):
@@ -455,11 +454,11 @@ class DescribeSecurityStatInfoResponseBodyAttackEvent(DaraModel):
         total_count: int = None,
         value_array: List[str] = None,
     ):
-        # The points in time when the number of attacks is collected in the trend chart.
+        # The collection of statistical time points in the attack count trend chart.
         self.date_array = date_array
-        # The total number of attacks on the current day.
+        # The number of attacks on the current day.
         self.total_count = total_count
-        # The numbers of attacks at all points in time.
+        # The collection of attack counts at each statistical time point.
         self.value_array = value_array
 
     def validate(self):

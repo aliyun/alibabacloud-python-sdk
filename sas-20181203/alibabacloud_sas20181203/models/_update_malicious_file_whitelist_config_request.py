@@ -17,35 +17,30 @@ class UpdateMaliciousFileWhitelistConfigRequest(DaraModel):
         target_type: str = None,
         target_value: str = None,
     ):
-        # The ID of the whitelist rule. If you do not specify this parameter, a whitelist rule is created.
+        # The rule ID. This parameter is optional. If you do not specify this parameter, a whitelist rule is created.
         self.config_id = config_id
-        # The name of the alert.
-        # 
-        # *   Set the value to ALL, which indicates all alert types.
+        # The alerting name. Valid values:
+        # - ALL: all Alarm Metric.
         self.event_name = event_name
-        # The field that you want to use in the whitelist rule.
+        # The field to be whitelisted.
         self.field = field
-        # The value of the field that you want to use in the whitelist rule.
+        # The value of the field to be whitelisted.
         self.field_value = field_value
-        # The logical operator that you want to use in the whitelist rule.
-        # 
-        # *   Set the value to strEqual, which indicates the equality operator (=).
+        # The operator used for rule matching. Valid values:
+        # - strEqual: string equals.
         self.operator = operator
-        # Remark.
+        # The remarks.
         self.remark = remark
-        # The feature to which this operation belongs.
-        # 
-        # *   Set the value to agentless, which indicates the agentless detection feature.
+        # The business source. Valid values:
+        # - agentless: agentless detection.
         self.source = source
-        # The type of the assets on which you want the whitelist rule to take effect. Valid values:
-        # 
-        # *   ALL: all assets
-        # *   SELECTION_KEY: selected assets
+        # The type of the target scope. Valid values:
+        # - ALL: all assets
+        # - SELECTION_KEY: assets selected by using the asset selection component.
         self.target_type = target_type
-        # The assets on which you want the whitelist rule to take effect. Valid values:
-        # 
-        # *   ALL: all assets
-        # *   Others: selected assets
+        # The target scope. Valid values:
+        # - ALL: all assets
+        # - Other values: the key of the asset scope selected by using the asset selection component.
         self.target_value = target_value
 
     def validate(self):

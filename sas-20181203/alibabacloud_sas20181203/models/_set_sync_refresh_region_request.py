@@ -14,18 +14,17 @@ class SetSyncRefreshRegionRequest(DaraModel):
         vendor: str = None,
     ):
         # The access type of the multi-cloud site. Valid values:
-        # 
-        # *   **0**: The current site is not the default site of multi-cloud site. You can specify the current site as the default site of the multi-cloud site.
-        # *   **1**: The current site is the default site of multi-cloud site.
+        # - **0**: no default site is configured, and you can select regions as needed.
+        # - **1**: the current site is already the default site.
         self.default_region = default_region
-        # The regions from which you want to synchronize assets at the current site.
+        # The list of regions to be synchronized for the current site.
         self.region_ids = region_ids
-        # The cloud service provider. Valid values:
+        # The cloud asset vendor. Valid values:
         # 
-        # *   **Tencent**: Tencent Cloud
-        # *   **HUAWEICLOUD**: Huawei Cloud
-        # *   **Azure**: Microsoft Azure
-        # *   **AWS**: Amazon Web Services (AWS)
+        # - **Tencent**: Tencent Cloud.
+        # - **HUAWEICLOUD**: Huawei Cloud.
+        # - **Azure**: Azure.
+        # - **AWS**: AWS.
         self.vendor = vendor
 
     def validate(self):

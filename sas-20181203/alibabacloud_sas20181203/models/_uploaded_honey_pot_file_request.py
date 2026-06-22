@@ -15,13 +15,12 @@ class UploadedHoneyPotFileRequest(DaraModel):
         node_id: str = None,
         template_extra: str = None,
     ):
-        # The file key that you use to upload the file.
-        # 
-        # >  The key is in the format of HONEYPOT_FILE/{Timestamp}_{Custom file name}.
+        # The FileKey used to upload the file.
+        # > Format: HONEYPOT_FILE/{timestamp}_{custom_file_name}.
         # 
         # This parameter is required.
         self.file_key = file_key
-        # The name of the file that you want to upload.
+        # The name of the uploaded file.
         # 
         # This parameter is required.
         self.file_name = file_name
@@ -33,16 +32,15 @@ class UploadedHoneyPotFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.honeypot_image_name = honeypot_image_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The ID of the management node to which the honeypot belongs.
-        # 
-        # >  You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain the IDs of management nodes. operation to query the management node ID.
+        # The ID of the honeypot management node.
+        # > Call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this value.
         self.node_id = node_id
-        # The prompt template that corresponds to the file.
+        # The template prompt corresponding to the uploaded file.
         # 
         # This parameter is required.
         self.template_extra = template_extra

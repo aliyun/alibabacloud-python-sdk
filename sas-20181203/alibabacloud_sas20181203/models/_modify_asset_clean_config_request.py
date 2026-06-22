@@ -12,7 +12,7 @@ class ModifyAssetCleanConfigRequest(DaraModel):
         self,
         asset_clean_configs: List[main_models.ModifyAssetCleanConfigRequestAssetCleanConfigs] = None,
     ):
-        # The asset cleanup configurations.
+        # The list of asset cleanup configurations.
         self.asset_clean_configs = asset_clean_configs
 
     def validate(self):
@@ -50,16 +50,16 @@ class ModifyAssetCleanConfigRequestAssetCleanConfigs(DaraModel):
         status: int = None,
         type: int = None,
     ):
-        # The number of days before hosts whose provider cannot be identified are automatically cleaned after they enter the offline state. Valid value: an integer that ranges from 1 to 30.
+        # The number of offline days after which non-Alibaba Cloud hosts are automatically cleaned up. Valid values: integers from 1 to 30.
         self.clean_days = clean_days
-        # Specifies whether to enable the feature of cleaning the offline hosts whose provider cannot be identified. Valid values:
+        # Specifies whether to enable automatic cleanup of offline non-Alibaba Cloud hosts. Valid values:
         # 
-        # *   **0**: disables the feature.
-        # *   **1**: enables the feature.
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.status = status
-        # The type of hosts that you want to clean.
+        # The type of host to clean up. Valid values:
         # 
-        # Set the value to **1**, which indicates hosts whose provider cannot be identified.
+        # - **1**: non-Alibaba Cloud host.
         self.type = type
 
     def validate(self):

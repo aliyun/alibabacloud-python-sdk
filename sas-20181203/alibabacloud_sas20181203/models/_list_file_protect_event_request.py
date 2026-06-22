@@ -23,44 +23,43 @@ class ListFileProtectEventRequest(DaraModel):
         status: str = None,
         uuid: str = None,
     ):
-        # The severities of alerts.
+        # The list of alert notification levels.
         self.alert_levels = alert_levels
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The end timestamp of the query.
+        # The timestamp of the end time.
         self.end_time = end_time
-        # The instance ID of the asset.
+        # The ID of the asset instance.
         self.instance_id = instance_id
-        # The name of the server.
+        # The name of the server to query.
         self.instance_name = instance_name
-        # The public IP address of the server.
+        # The public IP address of the asset to query.
         self.internet_ip = internet_ip
-        # The private IP address of the server.
+        # The private IP address of the asset to query.
         self.intranet_ip = intranet_ip
-        # Type of operation on a file. eg:
+        # The type of operation performed on the file. Valid values:
         # 
-        # - **DELETE**: delete the file.
-        # - **WRITE**: write the file.
-        # - **READ**: read the file.
-        # - **RENAME**: rename the file.
-        # - **CHOWN**: set the file owner and file association group operations.
+        # - **DELETE**: deletes the file.
+        # - **WRITE**: writes to the file.
+        # - **READ**: reads the file.
+        # - **RENAME**: renames the file.
+        # - **CHOWN**: changes the file owner and associated group.
         self.operation = operation
-        # The number of entries per page.
+        # The maximum number of entries to return on each page in a paging query.
         self.page_size = page_size
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The start timestamp of the query.
+        # The timestamp of the start time.
         self.start_time = start_time
-        # The status of the event. Valid values:
+        # The event status. Valid values:
         # 
-        # *   0: unhandled
-        # *   1: handled
-        # *   2: added to the whitelist
-        # *   3: ignored
+        # - 0: Unhandled. 
+        # - 1: Manually handled.
+        # - 2: Whitelisted.
+        # - 3: Ignored.
         self.status = status
-        # The UUID of the server.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUID of the server.
+        # The UUID of the server to query.
+        # >You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid = uuid
 
     def validate(self):

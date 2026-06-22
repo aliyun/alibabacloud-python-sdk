@@ -13,7 +13,7 @@ class DescribeClusterHostSecuritySummaryResponseBody(DaraModel):
         cluster_host_event: main_models.DescribeClusterHostSecuritySummaryResponseBodyClusterHostEvent = None,
         request_id: str = None,
     ):
-        # The alert details of the hosts.
+        # The host alert details.
         self.cluster_host_event = cluster_host_event
         # The request ID.
         self.request_id = request_id
@@ -53,11 +53,11 @@ class DescribeClusterHostSecuritySummaryResponseBodyClusterHostEvent(DaraModel):
         baseline_event: List[main_models.DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventBaselineEvent] = None,
         vul_event: List[main_models.DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventVulEvent] = None,
     ):
-        # The alert details of the host.
+        # The host alert details.
         self.alarm_event = alarm_event
-        # The baseline details of the host.
+        # The host baseline details.
         self.baseline_event = baseline_event
-        # The vulnerability details of the host.
+        # The host vulnerability details.
         self.vul_event = vul_event
 
     def validate(self):
@@ -126,11 +126,10 @@ class DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventVulEvent(Dar
     ):
         # The number of vulnerabilities.
         self.count = count
-        # The risk level of the vulnerability. Valid values:
-        # 
-        # *   **asap**: high. You must fix the vulnerability at the earliest opportunity.
-        # *   **nntf**: medium. You can fix the vulnerability based on your business requirements.
-        # *   **later**: low. You can ignore the vulnerability.
+        # The warning level. Valid values:
+        # - **asap**: high. Fix the vulnerability at the earliest opportunity.
+        # - **nntf**: medium. The vulnerability can be temporarily left unfixed.
+        # - **later**: low. The vulnerability can be left unfixed.
         self.risk_level = risk_level
 
     def validate(self):
@@ -167,11 +166,10 @@ class DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventBaselineEven
     ):
         # The number of baselines.
         self.count = count
-        # The risk level of the baseline. Valid values:
-        # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # The baseline risk level. Valid values:
+        # - **high**: high risk.
+        # - **medium**: medium risk.
+        # - **low**: low risk.
         self.risk_level = risk_level
 
     def validate(self):
@@ -208,11 +206,10 @@ class DescribeClusterHostSecuritySummaryResponseBodyClusterHostEventAlarmEvent(D
     ):
         # The number of alerts.
         self.count = count
-        # The alert level. Valid values:
-        # 
-        # *   **serious**
-        # *   **suspicious**
-        # *   **remind**
+        # The warning level. Valid values:
+        # - **serious**: urgent.
+        # - **suspicious**: suspicious.
+        # - **remind**: reminder.
         self.risk_level = risk_level
 
     def validate(self):

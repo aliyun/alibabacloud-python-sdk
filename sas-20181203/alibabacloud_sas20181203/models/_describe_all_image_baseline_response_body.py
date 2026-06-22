@@ -13,9 +13,9 @@ class DescribeAllImageBaselineResponseBody(DaraModel):
         image_baselines: main_models.DescribeAllImageBaselineResponseBodyImageBaselines = None,
         request_id: str = None,
     ):
-        # The baselines that are used in image baseline checks.
+        # The details of the image baseline check list.
         self.image_baselines = image_baselines
-        # The ID of the request, which is used to query logs and troubleshoot issues.
+        # The ID of the request. The ID is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class DescribeAllImageBaselineResponseBodyImageBaselines(DaraModel):
         self,
         baseline_class_list: List[main_models.DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList] = None,
     ):
-        # An array that consists of baseline types.
+        # The list of baseline categories.
         self.baseline_class_list = baseline_class_list
 
     def validate(self):
@@ -89,11 +89,11 @@ class DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassList(DaraMo
         baseline_name_list: List[main_models.DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselineNameList] = None,
         class_key: str = None,
     ):
-        # The alias of the baseline type.
+        # The alias of the baseline category.
         self.alias = alias
-        # The information about the baseline.
+        # The list of baseline main items.
         self.baseline_name_list = baseline_name_list
-        # The key of the baseline type.
+        # The type key of the baseline category.
         self.class_key = class_key
 
     def validate(self):
@@ -144,13 +144,13 @@ class DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselin
         class_key: str = None,
         name_key: str = None,
     ):
-        # The alias of the baseline.
+        # The alias of the baseline main item.
         self.alias = alias
-        # The information about the baseline check item.
+        # The list of baseline sub-items.
         self.baseline_item_list = baseline_item_list
-        # The key of the type for the baseline.
+        # The type key of the baseline main item.
         self.class_key = class_key
-        # The key of the name for the baseline.
+        # The name key of the baseline main item.
         self.name_key = name_key
 
     def validate(self):
@@ -207,13 +207,13 @@ class DescribeAllImageBaselineResponseBodyImageBaselinesBaselineClassListBaselin
         item_key: str = None,
         name_key: str = None,
     ):
-        # The alias of the baseline check item.
+        # The alias of the baseline sub-item.
         self.alias = alias
-        # The key of the type for the baseline.
+        # The type key of the baseline main item.
         self.class_key = class_key
-        # The key of the name for the baseline check item.
+        # The name key of the baseline sub-item.
         self.item_key = item_key
-        # The key of the name for the baseline.
+        # The name key of the baseline main item.
         self.name_key = name_key
 
     def validate(self):

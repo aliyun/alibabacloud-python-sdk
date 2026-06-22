@@ -11,9 +11,9 @@ class GetClusterCheckItemWarningStatisticsResponseBody(DaraModel):
         data: main_models.GetClusterCheckItemWarningStatisticsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The statistics on risk items by risk level.
+        # The baseline check statistics grouped by risk level (high, medium, and low).
         self.data = data
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +51,11 @@ class GetClusterCheckItemWarningStatisticsResponseBodyData(DaraModel):
         low_warning_count: int = None,
         medium_warning_count: int = None,
     ):
-        # The number of high-risk items.
+        # The number of high-risk check items.
         self.high_warning_count = high_warning_count
-        # The number of low-risk items.
+        # The number of low-risk check items.
         self.low_warning_count = low_warning_count
-        # The number of medium-risk items.
+        # The number of medium-risk check items.
         self.medium_warning_count = medium_warning_count
 
     def validate(self):

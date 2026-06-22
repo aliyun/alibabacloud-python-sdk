@@ -13,24 +13,22 @@ class UpdateImageVulWhitelistTargetRequest(DaraModel):
         source: str = None,
         target: str = None,
     ):
-        # The whitelist ID.
+        # The ID of the vulnerability whitelist.
         self.id = id
         # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The reason why you add the vulnerability to the whitelist.
+        # The reason for adding the whitelist.
         self.reason = reason
         # The source of the whitelist. Valid values:
-        # 
-        # *   **image**
-        # *   **agentless**
+        # - **image**: image
+        # - **agentless**: agentless.
         self.source = source
-        # The vulnerability that you want to add to the whitelist. The value of this parameter is in the JSON format and contains the following fields:
+        # The operation target. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **type**: The type of the vulnerability. The value is fixed to repo.
-        # *   **target**: The content of the vulnerability. The value is in the format of Namespace/Image repository.
+        # - **type**: The target type. Set to repo.
+        # - **target**: The target content. Format: namespace/image repository.
         self.target = target
 
     def validate(self):

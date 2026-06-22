@@ -13,9 +13,9 @@ class ListK8sAccessInfoResponseBody(DaraModel):
         k_8s_access_infos: List[main_models.ListK8sAccessInfoResponseBodyK8sAccessInfos] = None,
         request_id: str = None,
     ):
-        # The information about the Kubernetes clusters.
+        # The list of K8s access information.
         self.k_8s_access_infos = k_8s_access_infos
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -69,31 +69,31 @@ class ListK8sAccessInfoResponseBodyK8sAccessInfos(DaraModel):
         install_key: str = None,
         vendor: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud UID of the user.
         self.ali_uid = ali_uid
-        # The Simple Log Service Logstore that is used to store the audit logs.
+        # The Simple Log Service Logstore for audit logs.
         self.audit_log_store = audit_log_store
-        # The Simple Log Service project that is used to store the audit logs.
+        # The Simple Log Service project for audit logs.
         self.audit_project = audit_project
-        # The ID of the region in which the server is deployed.
+        # The region ID of the server.
         self.audit_region_id = audit_region_id
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # CPU architecture, divided into ARM and x86 architectures.
+        # The CPU architecture. Valid values: ARM architecture and x86 architecture.
         self.cpu_arch = cpu_arch
         # The expiration time.
         self.expire_date = expire_date
-        # The ID of the server group.
+        # The server group ID.
         self.group_id = group_id
-        # The name of the server group.
+        # The server group name.
         self.group_name = group_name
-        # The UUID of the access information.
+        # The unique ID of the access information.
         self.id = id
-        # The installation key of the Kubernetes cluster.
+        # The K8s installation key.
         self.install_key = install_key
-        # The service provider.
+        # The vendor.
         self.vendor = vendor
 
     def validate(self):

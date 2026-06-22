@@ -10,15 +10,14 @@ class ModifyAssetImportantRequest(DaraModel):
         important_code: int = None,
         uuid_list: str = None,
     ):
-        # The importance of the asset. Valid values:
+        # The importance level. Valid values:
         # 
-        # *   **0**: test
-        # *   **1**: normal
-        # *   **2**: important
+        # - **0**: test
+        # - **1**: normal
+        # - **2**: important.
         self.important_code = important_code
-        # The UUIDs of servers. Separate multiple UUIDs with commas (,).
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # The UUIDs of the servers. Separate multiple UUIDs with commas (,).
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid_list = uuid_list
 
     def validate(self):

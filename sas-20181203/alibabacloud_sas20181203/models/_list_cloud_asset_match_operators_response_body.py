@@ -14,7 +14,7 @@ class ListCloudAssetMatchOperatorsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # List of operator types
+        # The operator type.
         self.match_type_operators = match_type_operators
         # The request ID.
         self.request_id = request_id
@@ -70,7 +70,7 @@ class ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperators(DaraModel):
         match_operators: List[main_models.ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators] = None,
         type: str = None,
     ):
-        # List of operators
+        # The list of operators.
         self.match_operators = match_operators
         # The type used by the operator. Values:
         # - LIST 
@@ -236,7 +236,8 @@ class ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators(D
         # 7. LONG_LT: less than 
         # 8. LONG_LTE: less than or equal to<details>
         self.name = name
-        # Operator display name. Values: - For LIST type: 
+        # Operator display name. Values: 
+        # - For LIST type: 
         # 1. Contains: includes 
         # 2. SizeGreaterThan: size greater than 
         # 3. SizeLessThan: size less than 
@@ -256,8 +257,8 @@ class ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators(D
         # 2. Equals: equals 
         # 3. In: in the list 
         # 4. NotEquals: does not equal 
-        # 5. >: greater than 
-        # 6. >=: greater than or equal to 
+        # 5. `>`: greater than 
+        # 6. `>=`: greater than or equal to 
         # 7. <: less than 
         # 8. <=: less than or equal to
         # - For DOUBLE type: 
@@ -265,8 +266,8 @@ class ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators(D
         # 2. Equals: equals 
         # 3. In: in the list 
         # 4. NotEquals: does not equal 
-        # 5. >: greater than 
-        # 6. >=: greater than or equal to 
+        # 5. `>`: greater than 
+        # 6. `>=`: greater than or equal to 
         # 7. <: less than 
         # 8. <=: less than or equal to (Note: There seems to be a repetition here, likely meant to be \\"<=\\" for \\"less than or equal to\\")
         # - For INTEGER type: 
@@ -274,8 +275,8 @@ class ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators(D
         # 2. Equals: equals 
         # 3. In: in the list 
         # 4. NotEquals: does not equal 
-        # 5. >: greater than 
-        # 6. >=: greater than or equal to 
+        # 5. `>`: greater than 
+        # 6. `>=`: greater than or equal to 
         # 7. <: less than 
         # 8. <=: less than or equal to
         # - For LONG type: 
@@ -292,8 +293,8 @@ class ListCloudAssetMatchOperatorsResponseBodyMatchTypeOperatorsMatchOperators(D
         # 2. Equals: equals 
         # 3. In: in the list 
         # 4. NotEquals: does not equal 
-        # 5. >: greater than 
-        # 6. >=: greater than or equal to 
+        # 5. `>`: greater than 
+        # 6. `>=`: greater than or equal to 
         # 7. <: less than 
         # 8. <=: less than or equal to
         self.show_name = show_name

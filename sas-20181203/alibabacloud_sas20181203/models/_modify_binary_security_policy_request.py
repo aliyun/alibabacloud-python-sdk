@@ -15,27 +15,27 @@ class ModifyBinarySecurityPolicyRequest(DaraModel):
         source_ip: str = None,
         status: str = None,
     ):
-        # Cluster information.
+        # The cluster information.
         # 
         # This parameter is required.
         self.clusters = clusters
-        # Policy name.
+        # The policy name.
         self.name = name
-        # Policy content. JSON format, Key values:
-        # - **policyMode**: Type of policy, default is requireAttestor.
-        # - **requiredAttestors**: Required attestors.
+        # The policy content in JSON format. Valid keys:
+        # - **policyMode**: The policy type. Default value: requireAttestor.
+        # - **requiredAttestors**: The required attestors.
         # 
         # This parameter is required.
         self.policy = policy
-        # Remark.
+        # The remarks.
         self.remark = remark
         self.resource_owner_id = resource_owner_id
         # The IP address of the access source.
         self.source_ip = source_ip
-        # Set to enable or disable the policy. Values:
+        # Settings to enable or disable the policy. Valid values:
         # 
-        # - **enabled**: Enable the protection policy.
-        # - **disabled**: Disable the protection policy.
+        # - **enabled**: Enables the mitigation policies.
+        # - **disabled**: Disables the mitigation policies.
         self.status = status
 
     def validate(self):

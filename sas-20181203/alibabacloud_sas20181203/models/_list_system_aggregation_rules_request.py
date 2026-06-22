@@ -17,30 +17,29 @@ class ListSystemAggregationRulesRequest(DaraModel):
         rule_types: List[int] = None,
         system_type: int = None,
     ):
-        # The IDs of the aggregation types.
+        # The rule cluster ID.
         self.aggregation_ids = aggregation_ids
-        # The number of the page to return.
+        # The page number of the current page in a paging query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page.
+        # The maximum number of entries per page in a paging query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The types of the rules.
+        # The list of rule types.
         self.rule_types = rule_types
-        # The type of the operating system. Valid values:
+        # The operating system type. Valid values:
         # 
-        # *   **2**: Windows
-        # *   **1**: Linux
-        # *   **0**: all
+        # - **2**: Windows
+        # - **1**: Linux
+        # - **0**: all.
         self.system_type = system_type
 
     def validate(self):

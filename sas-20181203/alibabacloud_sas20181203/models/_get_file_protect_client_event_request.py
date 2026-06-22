@@ -9,6 +9,7 @@ class GetFileProtectClientEventRequest(DaraModel):
         self,
         id: int = None,
     ):
+        # The unique ID of the alert event.
         self.id = id
 
     def validate(self):

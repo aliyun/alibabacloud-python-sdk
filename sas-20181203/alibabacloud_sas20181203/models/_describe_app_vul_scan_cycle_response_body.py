@@ -10,11 +10,11 @@ class DescribeAppVulScanCycleResponseBody(DaraModel):
         cycle: str = None,
         request_id: str = None,
     ):
-        # The scan cycle for application vulnerabilities.
+        # The application vulnerability scanning epoch. Valid values:
         # 
-        # *   1week
-        # *   2weeks
-        # *   3days
+        # - 1week
+        # - 2weeks
+        # - 3days
         self.cycle = cycle
         # The ID of the request.
         self.request_id = request_id

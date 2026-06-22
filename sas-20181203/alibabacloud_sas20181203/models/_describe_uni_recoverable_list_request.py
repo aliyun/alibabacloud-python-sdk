@@ -12,17 +12,15 @@ class DescribeUniRecoverableListRequest(DaraModel):
         page_size: int = None,
         policy_id: int = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates the first page.
         self.current_page = current_page
-        # The name of the database.
+        # The database name.
         self.database = database
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page when using paging. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The ID of the anti-ransomware policy.
-        # 
-        # > You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the IDs of anti-ransomware policies.
+        # The ID of the anti-ransomware backup policy for the database.
+        # >You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id

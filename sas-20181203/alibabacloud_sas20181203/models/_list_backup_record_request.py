@@ -16,23 +16,21 @@ class ListBackupRecordRequest(DaraModel):
         page_size: int = None,
         status_list: List[str] = None,
     ):
-        # The timestamp when the backup task ended. Unit: milliseconds.
+        # The backup end time. The value is a timestamp in milliseconds.
         self.backup_end_time = backup_end_time
-        # The timestamp when the backup task started. Unit: milliseconds.
+        # The backup start time. The value is a timestamp in milliseconds.
         self.backup_start_time = backup_start_time
-        # The page number. Default value: **1**. Pages start from page 1.
+        # The page number of the page to return. Default value: **1**, which indicates the first page.
         self.current_page = current_page
-        # The information that you want to use to identify the servers protected by the anti-ransomware policy. You can enter the IP address or ID of a server.
+        # The identification information of the server protected by the anti-ransomware policy that you want to query. You can enter the IP address or instance ID of the server.
         self.machine_remark = machine_remark
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The backup task status. Valid values:
-        # 
-        # *   **BACKUP_COMPLETE**: The backup task is successful.
-        # *   **BACKUP_FAILED**: The backup task failed.
-        # *   **PARTIAL_COMPLETE**: The backup task is partially successful.
+        # The list of backup task statuses. Valid values:
+        # - **BACKUP_COMPLETE**: backup succeeded
+        # - **BACKUP_FAILED**: backup failed
+        # - **PARTIAL_COMPLETE**: partial backup succeeded.
         self.status_list = status_list
 
     def validate(self):

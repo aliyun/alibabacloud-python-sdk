@@ -15,15 +15,15 @@ class ListOpaClusterStrategyNewRequest(DaraModel):
         page_size: int = None,
         strategy_name: List[str] = None,
     ):
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The image names.
+        # The list of image names.
         self.image_name = image_name
-        # The tags that are added to the container.
+        # The list of labels.
         self.label = label
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # The rule names.
+        # The policy name.
         self.strategy_name = strategy_name
 
     def validate(self):

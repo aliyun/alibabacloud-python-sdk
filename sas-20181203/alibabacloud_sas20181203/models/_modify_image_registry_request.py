@@ -15,14 +15,17 @@ class ModifyImageRegistryRequest(DaraModel):
         trans_per_hour: int = None,
         user_name: str = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
-        # The ID of the image repository. You can call the listImageRegistry operation to query the ID of the image repository.
+        # The image registry ID. Call the [ListImageRegistry](https://help.aliyun.com/document_detail/471986.html) operation to obtain this ID.
         self.id = id
         # The password.
         self.password = password
+        # The port number.
         self.port = port
+        # The registry IP address.
         self.registry_host_ip = registry_host_ip
-        # The number of images that are scanned per hour.
+        # The number of images to scan per hour.
         self.trans_per_hour = trans_per_hour
         # The username.
         self.user_name = user_name

@@ -14,11 +14,11 @@ class DescribeHybridProxyLinkedClientListResponseBody(DaraModel):
         page_info: main_models.DescribeHybridProxyLinkedClientListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The returned list.
         self.list = list
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeHybridProxyLinkedClientListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries on the current page when paging is used.
         self.count = count
-        # The page number.
+        # The page number of the current page when paging is used.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page when paging is used.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -148,15 +148,15 @@ class DescribeHybridProxyLinkedClientListResponseBodyList(DaraModel):
         self.intranet_ip = intranet_ip
         # The name of the operating system.
         self.os = os
-        # The name of the operating system for your asset.
+        # The operating system name of the asset.
         self.os_name = os_name
-        # The ID of the region in which the server resides.
+        # The region ID of the server.
         self.region_id = region_id
-        # The name of the region in which the server resides.
+        # The region name of the server.
         self.region_name = region_name
-        # The status of the Security Center agent.
+        # The status of the client.
         self.status = status
-        # The name of the tag added to the server.
+        # The tag name of the asset.
         self.tag = tag
         # The UUID of the server.
         self.uuid = uuid

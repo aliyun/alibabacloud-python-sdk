@@ -14,11 +14,11 @@ class DescribeGroupedContainerInstancesResponseBody(DaraModel):
         page_info: main_models.DescribeGroupedContainerInstancesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The information about the container.
+        # The list of container asset information returned.
         self.grouped_container_instance_list = grouped_container_instance_list
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class DescribeGroupedContainerInstancesResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of container assets returned on the current page.
+        # The number of container assets displayed on the current page in a paging query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page. Default value: **20**.
+        # The number of container assets displayed on each page in a paging query. Default value: **20**, which indicates that 20 container assets are displayed on each page.
         self.page_size = page_size
         # The total number of container assets returned.
         self.total_count = total_count
@@ -150,33 +150,31 @@ class DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList(
         sync_status: int = None,
         vul_count: int = None,
     ):
-        # The number of alerts that are detected for the current pod, application, namespace, or cluster.
+        # The number of alerts detected in the current pod, application, namespace, or cluster.
         self.alarm_count = alarm_count
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The ID of the cluster.
         self.cluster_id = cluster_id
         # The name of the cluster.
         self.cluster_name = cluster_name
         # The type of the cluster. Valid values:
-        # 
-        # *   **Kubernetes**: dedicated Kubernetes cluster.
-        # *   **ManagedKubernetes**: standard managed cluster (edge cluster).
-        # *   **Ask**: serverless Kubernetes (ASK) cluster.
+        # - **Kubernetes**: dedicated Kubernetes cluster
+        # - **ManagedKubernetes**: standard managed cluster (edge cluster)
+        # - **Ask**: standard serverless cluster.
         self.cluster_type = cluster_type
-        # The timestamp when the cluster was created. Unit: milliseconds.
+        # The timestamp when the cluster was created, in milliseconds.
         self.create_time = create_time
-        # The status of the cluster. Valid values:
-        # 
-        # *   **running**: The cluster is running.
-        # *   **stopped**: The cluster is stopped.
-        # *   **deleted**: The cluster is deleted.
-        # *   **delete_failed**: The cluster failed to be deleted.
-        # *   **failed**: The cluster failed to be created.
+        # The running status of the cluster. Valid values:
+        # - **running**: The cluster is running.
+        # - **stopped**: The cluster is stopped.
+        # - **deleted**: The cluster is deleted.
+        # - **delete_failed**: The cluster failed to be deleted.
+        # - **failed**: The cluster failed to be created.
         self.custer_state = custer_state
-        # The number of baseline risks that are detected for the current pod, application, namespace, or cluster.
+        # The total number of baseline checks detected in the current pod, application, namespace, or cluster.
         self.hc_count = hc_count
-        # The IP address of the host in the container cluster.
+        # The host IP address of the container cluster.
         self.host_ip = host_ip
         # The container image.
         self.image = image
@@ -186,46 +184,43 @@ class DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList(
         self.image_repo_name = image_repo_name
         # The namespace of the image repository.
         self.image_repo_namespace = image_repo_namespace
-        # The tag that is added to the image repository.
+        # The tag of the image repository.
         self.image_repo_tag = image_repo_tag
         # The UUID of the image.
         self.image_uuid = image_uuid
-        # The number of pods, applications, clusters, or namespaces.
+        # The number of pods, applications, clusters, or namespaces returned.
         self.instance_count = instance_count
-        # The ID of the server.
+        # The ID of the server instance.
         self.instance_id = instance_id
         # The namespace of the cluster.
         self.namespace = namespace
-        # The name of the pod.
+        # The pod name.
         self.pod = pod
         # The IP address of the pod.
         self.pod_ip = pod_ip
-        # The region ID of the instance.
+        # The ID of the region in which the instance resides.
         self.region_id = region_id
-        # The number of at-risk instances.
+        # The number of instances that are at risk.
         self.risk_instance_count = risk_instance_count
         # The risk level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: high
+        # - **medium**: medium
+        # - **low**: low.
         self.risk_level = risk_level
-        # Indicates whether risks were detected. Valid values:
-        # 
-        # *   **NO**
-        # *   **YES**
+        # The risk status. Valid values:
+        # - **NO**: No risk.
+        # - **YES**: At risk.
         self.risk_status = risk_status
-        # Indicates whether the synchronization of cluster audit logs is enabled. Valid values:
-        # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # The log audit synchronization switch for the cluster. Valid values:
+        # - **0**: disabled
+        # - **1**: enabled.
         self.sync_open = sync_open
-        # The status of the synchronization of cluster audit logs. Valid values:
-        # 
-        # *   **0**: The synchronization failed.
-        # *   **1**: The synchronization is successful.
+        # The log audit synchronization status for the cluster. Valid values:
+        # - **0**: synchronization failed
+        # - **1**: synchronization succeeded.
         self.sync_status = sync_status
-        # The number of vulnerabilities that are detected for the current pod, application, namespace, or cluster.
+        # The number of vulnerabilities detected in the current pod, application, namespace, or cluster.
         self.vul_count = vul_count
 
     def validate(self):

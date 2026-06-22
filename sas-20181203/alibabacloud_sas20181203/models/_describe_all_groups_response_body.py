@@ -16,9 +16,9 @@ class DescribeAllGroupsResponseBody(DaraModel):
     ):
         # The total number of server groups.
         self.count = count
-        # The grouping information about the servers.
+        # The server group information.
         self.groups = groups
-        # The ID of the request.
+        # The unique identifier that Alibaba Cloud generated for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -69,9 +69,8 @@ class DescribeAllGroupsResponseBodyGroups(DaraModel):
         group_name: str = None,
     ):
         # The type of the server group. Valid values:
-        # 
-        # *   **0**: default group
-        # *   **1**: other groups
+        # - **0**: default group
+        # - **1**: other group.
         self.group_flag = group_flag
         # The ID of the server group.
         self.group_id = group_id

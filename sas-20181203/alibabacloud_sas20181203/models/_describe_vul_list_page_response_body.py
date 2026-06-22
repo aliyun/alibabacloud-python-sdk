@@ -81,13 +81,15 @@ class DescribeVulListPageResponseBodyData(DaraModel):
         self.id = id
         # Indicates whether the vulnerability was detected based on version comparison. Valid values:
         # 
-        # *   1: The vulnerability was detected based on version comparison.
-        # *   0: The vulnerability was not detected based on version comparison.
+        # - 1: The vulnerability was detected based on version comparison.
+        # 
+        # - 0: The vulnerability was not detected based on version comparison.
         self.is_aegis = is_aegis
         # Indicates whether the vulnerability was detected based on proof of concept (POC) verification. Valid values:
         # 
-        # *   1: The vulnerability was detected based on POC verification.
-        # *   0: The vulnerability was not detected based on POC verification.
+        # - 1: The vulnerability was detected based on POC verification.
+        # 
+        # - 0: The vulnerability was not detected based on POC verification.
         self.is_sas = is_sas
         # The ID of the vulnerability.
         self.other_id = other_id

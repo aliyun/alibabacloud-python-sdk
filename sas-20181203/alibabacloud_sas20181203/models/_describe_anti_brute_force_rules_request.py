@@ -14,14 +14,14 @@ class DescribeAntiBruteForceRulesRequest(DaraModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
-        # Set which page of the returned results to start displaying the query results. The default value is **1**, indicating that the display starts from the first page.
+        # The page number of the page to return. Default value: **1**, which indicates the first page.
         self.current_page = current_page
-        # The ID of the anti-brute force rule.
-        # > You can obtain this parameter by calling the [DescribeAntiBruteForceRules](~~DescribeAntiBruteForceRules~~) interface.
+        # The ID of the brute-force attacks prevention rule.
+        # >You can invoke the [DescribeAntiBruteForceRules](~~DescribeAntiBruteForceRules~~) operation to obtain this parameter.
         self.id = id
-        # The name of the brute force rule.
+        # The name of the brute-force attacks prevention rule.
         self.name = name
-        # The maximum number of data entries displayed per page during a paginated query.
+        # The maximum number of entries to return on each page in a paged query. This parameter is used for paging.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
         # The IP address of the access source.

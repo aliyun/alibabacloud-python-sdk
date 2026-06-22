@@ -11,10 +11,10 @@ class DescribeContainerServiceK8sClusterKritisStatusRequest(DaraModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
         self.resource_owner_id = resource_owner_id
-        # The source IP address.
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

@@ -14,15 +14,15 @@ class ListPublishBatchRequest(DaraModel):
     ):
         # The name of the release batch.
         self.batch_name = batch_name
-        # The page number.
+        # The page number of the current page when paging is used.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page when paging is used.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The destination version of the Security Center agent.
+        # The target version to upgrade to.
         # 
         # This parameter is required.
         self.upgrade_version = upgrade_version

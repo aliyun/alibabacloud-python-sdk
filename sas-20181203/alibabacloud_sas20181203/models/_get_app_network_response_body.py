@@ -13,9 +13,9 @@ class GetAppNetworkResponseBody(DaraModel):
         app_network: main_models.GetAppNetworkResponseBodyAppNetwork = None,
         request_id: str = None,
     ):
-        # The information about the application network topology.
+        # The application network topology information.
         self.app_network = app_network
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class GetAppNetworkResponseBodyAppNetwork(DaraModel):
         namespace: List[main_models.GetAppNetworkResponseBodyAppNetworkNamespace] = None,
         node: List[main_models.GetAppNetworkResponseBodyAppNetworkNode] = None,
     ):
-        # The information about the topology edge.
+        # The topology edge information.
         self.edge = edge
         # The namespace.
         self.namespace = namespace
-        # The information about the application node.
+        # The application node information.
         self.node = node
 
     def validate(self):
@@ -128,26 +128,25 @@ class GetAppNetworkResponseBodyAppNetworkNode(DaraModel):
         risk_level: str = None,
         type: str = None,
     ):
-        # The list of the container IDs.
+        # The list of container IDs.
         self.container_ids = container_ids
-        # The ID of the node.
+        # The node ID.
         self.id = id
-        # The name of the node.
+        # The node name.
         self.name = name
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
         # The risk level. Valid values:
         # 
-        # *   **3**: high
-        # *   **2**: medium
-        # *   **1**: low
-        # *   **0**: warning
-        # *   **-1**: unknown
+        # - **3**: High.
+        # - **2**: Medium.
+        # - **1**: Low.
+        # - **0**: Safe.
+        # - **-1**: Unknown.
         self.risk_level = risk_level
-        # The type of the node. Valid values:
-        # 
-        # *   **app**: an application
-        # *   **internet**: a network node in another cluster
+        # The node type. Valid values:
+        # - **app**: application
+        # - **internet**: external network node.
         self.type = type
 
     def validate(self):
@@ -206,9 +205,9 @@ class GetAppNetworkResponseBodyAppNetworkNamespace(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The ID of the namespace.
+        # The namespace ID.
         self.id = id
-        # The name of the custom namespace.
+        # The namespace name.
         self.name = name
 
     def validate(self):
@@ -247,23 +246,21 @@ class GetAppNetworkResponseBodyAppNetworkEdge(DaraModel):
         src_node_id: str = None,
         src_node_type: str = None,
     ):
-        # The ID of the destination node.
+        # The destination node ID.
         self.dst_node_id = dst_node_id
-        # The type of the destination node. Valid values:
-        # 
-        # *   **app**: an application
-        # *   **internet**: a network node in another cluster
+        # The destination node type. Valid values:
+        # - **app**: application.
+        # - **internet**: external network node.
         self.dst_node_type = dst_node_type
-        # The ID of the edge.
+        # The edge ID.
         self.id = id
-        # The number of the destination port.
+        # The destination port number.
         self.port = port
-        # The ID of the source node.
+        # The source node ID.
         self.src_node_id = src_node_id
-        # The type of the source node. Valid values:
-        # 
-        # *   **app**: an application
-        # *   **internet**: a network node in another cluster
+        # The source node type. Valid values:
+        # - **app**: application.
+        # - **internet**: external network node.
         self.src_node_type = src_node_type
 
     def validate(self):

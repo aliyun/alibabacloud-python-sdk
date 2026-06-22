@@ -11,6 +11,7 @@ class DeleteUnknownThreatDetectStrategyRequest(DaraModel):
         self,
         id_list: List[int] = None,
     ):
+        # The list of policy IDs.
         self.id_list = id_list
 
     def validate(self):

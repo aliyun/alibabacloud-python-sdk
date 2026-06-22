@@ -15,23 +15,22 @@ class FindContainerNetworkConnectShrinkRequest(DaraModel):
         src_node_shrink: str = None,
         start_time: int = None,
     ):
-        # The type of the information that you want to query. Valid values:
+        # The query type of the element to query. Valid values:
         # 
-        # *   **EDGE**: connection information
+        # - **EDGE**: connection information.
         self.criteria_type = criteria_type
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The information about the destination node.
+        # The destination node information, which is used to filter destination nodes.
         self.dst_node_shrink = dst_node_shrink
-        # The end time of the network connection.
+        # The end time of the network connectivity.
         self.end_time = end_time
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paged query. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The information about the source node.
+        # The source node information, which is used to filter source nodes.
         self.src_node_shrink = src_node_shrink
-        # The start time of the network connection.
+        # The start time of the network connectivity.
         self.start_time = start_time
 
     def validate(self):

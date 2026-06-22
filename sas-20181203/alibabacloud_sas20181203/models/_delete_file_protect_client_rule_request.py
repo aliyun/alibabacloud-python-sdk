@@ -17,12 +17,35 @@ class DeleteFileProtectClientRuleRequest(DaraModel):
         rule_name: str = None,
         select_all: bool = None,
     ):
+        # The alert notification level. Valid values:
+        # 
+        # - 0: no alert
+        # 
+        # - 1: reminder
+        # 
+        # - 2: suspicious
+        # 
+        # - 3: high-risk.
         self.alert_level = alert_level
+        # The list of excluded policy IDs.
         self.exclude_id_list = exclude_id_list
+        # The list of policy IDs.
         self.id_list = id_list
+        # The type of the operating system. Valid values:
+        # 
+        # - **windows**: Windows
+        # - **linux**: Linux.
         self.platform = platform
+        # The action to take when the rule is triggered. Valid values:
+        # 
+        # - **monitor**: Alert.
+        # - **block**: Block.
+        # - **pass**: Allow.
         self.rule_action = rule_action
+        # The name of the rule.
         self.rule_name = rule_name
+        # Specifies whether to select all rules.
+        # 
         # This parameter is required.
         self.select_all = select_all
 

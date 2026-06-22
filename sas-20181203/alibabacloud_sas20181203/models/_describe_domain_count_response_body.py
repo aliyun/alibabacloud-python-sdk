@@ -12,13 +12,13 @@ class DescribeDomainCountResponseBody(DaraModel):
         sub_domains_count: int = None,
         total_domains_count: int = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of root domains.
+        # The number of root domains in the assets.
         self.root_domains_count = root_domains_count
-        # The number of subdomains.
+        # The number of subdomains in the assets.
         self.sub_domains_count = sub_domains_count
-        # The total number of entries returned.
+        # The total number of domain name assets returned.
         self.total_domains_count = total_domains_count
 
     def validate(self):

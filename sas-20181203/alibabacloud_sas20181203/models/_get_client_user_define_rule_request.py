@@ -9,7 +9,7 @@ class GetClientUserDefineRuleRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The ID of the custom defense rule.
+        # The ID of the custom rule.
         # 
         # This parameter is required.
         self.id = id
