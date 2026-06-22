@@ -21,7 +21,14 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-zhangjiakou': 'agentloop.cn-zhangjiakou.aliyuncs.com',
+            'cn-shanghai': 'agentloop.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'agentloop.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'agentloop.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'agentloop.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentloop', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -41,89 +48,97 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
-    def add_mem_0memories_with_options(
+    def add_dataset_data_with_options(
         self,
-        request: main_models.AddMem0MemoriesRequest,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.AddDatasetDataRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
-    ) -> main_models.AddMem0MemoriesResponse:
+    ) -> main_models.AddDatasetDataResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
+        if not DaraCore.is_null(request.data_array):
+            body['dataArray'] = request.data_array
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
-            action = 'AddMem0Memories',
+            action = 'AddDatasetData',
             version = '2026-05-20',
             protocol = 'HTTPS',
-            pathname = f'/v1/memories',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/rows',
             method = 'POST',
-            auth_type = 'Anonymous',
+            auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
             body_type = 'json'
         )
         return DaraCore.from_map(
-            main_models.AddMem0MemoriesResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+            main_models.AddDatasetDataResponse(),
+            self.call_api(params, req, runtime)
         )
 
-    async def add_mem_0memories_with_options_async(
+    async def add_dataset_data_with_options_async(
         self,
-        request: main_models.AddMem0MemoriesRequest,
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.AddDatasetDataRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
-    ) -> main_models.AddMem0MemoriesResponse:
+    ) -> main_models.AddDatasetDataResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
+        if not DaraCore.is_null(request.data_array):
+            body['dataArray'] = request.data_array
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
-            action = 'AddMem0Memories',
+            action = 'AddDatasetData',
             version = '2026-05-20',
             protocol = 'HTTPS',
-            pathname = f'/v1/memories',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/dataset/{DaraURL.percent_encode(dataset_name)}/rows',
             method = 'POST',
-            auth_type = 'Anonymous',
+            auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
             body_type = 'json'
         )
         return DaraCore.from_map(
-            main_models.AddMem0MemoriesResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+            main_models.AddDatasetDataResponse(),
+            await self.call_api_async(params, req, runtime)
         )
 
-    def add_mem_0memories(
+    def add_dataset_data(
         self,
-        request: main_models.AddMem0MemoriesRequest,
-    ) -> main_models.AddMem0MemoriesResponse:
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.AddDatasetDataRequest,
+    ) -> main_models.AddDatasetDataResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.add_mem_0memories_with_options(request, headers, runtime)
+        return self.add_dataset_data_with_options(agent_space, dataset_name, request, headers, runtime)
 
-    async def add_mem_0memories_async(
+    async def add_dataset_data_async(
         self,
-        request: main_models.AddMem0MemoriesRequest,
-    ) -> main_models.AddMem0MemoriesResponse:
+        agent_space: str,
+        dataset_name: str,
+        request: main_models.AddDatasetDataRequest,
+    ) -> main_models.AddDatasetDataResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.add_mem_0memories_with_options_async(request, headers, runtime)
+        return await self.add_dataset_data_with_options_async(agent_space, dataset_name, request, headers, runtime)
 
     def create_agent_space_with_options(
         self,
@@ -825,214 +840,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_dataset_with_options_async(agent_space, dataset_name, request, headers, runtime)
 
-    def delete_mem_0memories_with_options(
-        self,
-        tmp_req: main_models.DeleteMem0MemoriesRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteMem0MemoriesResponse:
-        tmp_req.validate()
-        request = main_models.DeleteMem0MemoriesShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.metadata):
-            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'metadata', 'json')
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.agent_id):
-            query['agent_id'] = request.agent_id
-        if not DaraCore.is_null(request.app_id):
-            query['app_id'] = request.app_id
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.metadata_shrink):
-            query['metadata'] = request.metadata_shrink
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        if not DaraCore.is_null(request.run_id):
-            query['run_id'] = request.run_id
-        if not DaraCore.is_null(request.user_id):
-            query['user_id'] = request.user_id
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteMem0Memories',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories',
-            method = 'DELETE',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteMem0MemoriesResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    async def delete_mem_0memories_with_options_async(
-        self,
-        tmp_req: main_models.DeleteMem0MemoriesRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteMem0MemoriesResponse:
-        tmp_req.validate()
-        request = main_models.DeleteMem0MemoriesShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.metadata):
-            request.metadata_shrink = Utils.array_to_string_with_specified_style(tmp_req.metadata, 'metadata', 'json')
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.agent_id):
-            query['agent_id'] = request.agent_id
-        if not DaraCore.is_null(request.app_id):
-            query['app_id'] = request.app_id
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.metadata_shrink):
-            query['metadata'] = request.metadata_shrink
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        if not DaraCore.is_null(request.run_id):
-            query['run_id'] = request.run_id
-        if not DaraCore.is_null(request.user_id):
-            query['user_id'] = request.user_id
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteMem0Memories',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories',
-            method = 'DELETE',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteMem0MemoriesResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    def delete_mem_0memories(
-        self,
-        request: main_models.DeleteMem0MemoriesRequest,
-    ) -> main_models.DeleteMem0MemoriesResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.delete_mem_0memories_with_options(request, headers, runtime)
-
-    async def delete_mem_0memories_async(
-        self,
-        request: main_models.DeleteMem0MemoriesRequest,
-    ) -> main_models.DeleteMem0MemoriesResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.delete_mem_0memories_with_options_async(request, headers, runtime)
-
-    def delete_mem_0memory_with_options(
-        self,
-        memory_id: str,
-        request: main_models.DeleteMem0MemoryRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteMem0MemoryResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteMem0Memory',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories/{DaraURL.percent_encode(memory_id)}',
-            method = 'DELETE',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteMem0MemoryResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    async def delete_mem_0memory_with_options_async(
-        self,
-        memory_id: str,
-        request: main_models.DeleteMem0MemoryRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.DeleteMem0MemoryResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DeleteMem0Memory',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories/{DaraURL.percent_encode(memory_id)}',
-            method = 'DELETE',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DeleteMem0MemoryResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    def delete_mem_0memory(
-        self,
-        memory_id: str,
-        request: main_models.DeleteMem0MemoryRequest,
-    ) -> main_models.DeleteMem0MemoryResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.delete_mem_0memory_with_options(memory_id, request, headers, runtime)
-
-    async def delete_mem_0memory_async(
-        self,
-        memory_id: str,
-        request: main_models.DeleteMem0MemoryRequest,
-    ) -> main_models.DeleteMem0MemoryResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.delete_mem_0memory_with_options_async(memory_id, request, headers, runtime)
-
     def delete_pipeline_with_options(
         self,
         agent_space: str,
@@ -1584,198 +1391,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_dataset_with_options_async(agent_space, dataset_name, request, headers, runtime)
-
-    def get_mem_0memories_with_options(
-        self,
-        request: main_models.GetMem0MemoriesRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.GetMem0MemoriesResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.enable_graph):
-            query['enable_graph'] = request.enable_graph
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetMem0Memories',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v2/memories',
-            method = 'POST',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'array'
-        )
-        return DaraCore.from_map(
-            main_models.GetMem0MemoriesResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    async def get_mem_0memories_with_options_async(
-        self,
-        request: main_models.GetMem0MemoriesRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.GetMem0MemoriesResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.enable_graph):
-            query['enable_graph'] = request.enable_graph
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetMem0Memories',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v2/memories',
-            method = 'POST',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'array'
-        )
-        return DaraCore.from_map(
-            main_models.GetMem0MemoriesResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    def get_mem_0memories(
-        self,
-        request: main_models.GetMem0MemoriesRequest,
-    ) -> main_models.GetMem0MemoriesResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.get_mem_0memories_with_options(request, headers, runtime)
-
-    async def get_mem_0memories_async(
-        self,
-        request: main_models.GetMem0MemoriesRequest,
-    ) -> main_models.GetMem0MemoriesResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.get_mem_0memories_with_options_async(request, headers, runtime)
-
-    def get_mem_0memory_with_options(
-        self,
-        memory_id: str,
-        request: main_models.GetMem0MemoryRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.GetMem0MemoryResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetMem0Memory',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories/{DaraURL.percent_encode(memory_id)}',
-            method = 'GET',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetMem0MemoryResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    async def get_mem_0memory_with_options_async(
-        self,
-        memory_id: str,
-        request: main_models.GetMem0MemoryRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.GetMem0MemoryResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetMem0Memory',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories/{DaraURL.percent_encode(memory_id)}',
-            method = 'GET',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetMem0MemoryResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    def get_mem_0memory(
-        self,
-        memory_id: str,
-        request: main_models.GetMem0MemoryRequest,
-    ) -> main_models.GetMem0MemoryResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.get_mem_0memory_with_options(memory_id, request, headers, runtime)
-
-    async def get_mem_0memory_async(
-        self,
-        memory_id: str,
-        request: main_models.GetMem0MemoryRequest,
-    ) -> main_models.GetMem0MemoryResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.get_mem_0memory_with_options_async(memory_id, request, headers, runtime)
 
     def get_pipeline_with_options(
         self,
@@ -2397,106 +2012,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.search_context_with_options_async(agent_space, context_store_name, request, headers, runtime)
 
-    def search_mem_0memories_with_options(
-        self,
-        request: main_models.SearchMem0MemoriesRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.SearchMem0MemoriesResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.enable_graph):
-            query['enable_graph'] = request.enable_graph
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'SearchMem0Memories',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v2/memories/search',
-            method = 'POST',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'array'
-        )
-        return DaraCore.from_map(
-            main_models.SearchMem0MemoriesResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    async def search_mem_0memories_with_options_async(
-        self,
-        request: main_models.SearchMem0MemoriesRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.SearchMem0MemoriesResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.enable_graph):
-            query['enable_graph'] = request.enable_graph
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'SearchMem0Memories',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v2/memories/search',
-            method = 'POST',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'array'
-        )
-        return DaraCore.from_map(
-            main_models.SearchMem0MemoriesResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    def search_mem_0memories(
-        self,
-        request: main_models.SearchMem0MemoriesRequest,
-    ) -> main_models.SearchMem0MemoriesResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.search_mem_0memories_with_options(request, headers, runtime)
-
-    async def search_mem_0memories_async(
-        self,
-        request: main_models.SearchMem0MemoriesRequest,
-    ) -> main_models.SearchMem0MemoriesResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.search_mem_0memories_with_options_async(request, headers, runtime)
-
     def update_agent_space_with_options(
         self,
         agent_space: str,
@@ -2785,106 +2300,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_dataset_with_options_async(agent_space, dataset_name, request, headers, runtime)
 
-    def update_mem_0memory_with_options(
-        self,
-        memory_id: str,
-        request: main_models.UpdateMem0MemoryRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.UpdateMem0MemoryResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'UpdateMem0Memory',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories/{DaraURL.percent_encode(memory_id)}',
-            method = 'PUT',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.UpdateMem0MemoryResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    async def update_mem_0memory_with_options_async(
-        self,
-        memory_id: str,
-        request: main_models.UpdateMem0MemoryRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.UpdateMem0MemoryResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        if not DaraCore.is_null(request.context_store_id):
-            query['context_store_id'] = request.context_store_id
-        if not DaraCore.is_null(request.org_id):
-            query['org_id'] = request.org_id
-        if not DaraCore.is_null(request.project_id):
-            query['project_id'] = request.project_id
-        body = {}
-        if not DaraCore.is_null(request.body):
-            body['body'] = request.body
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'UpdateMem0Memory',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/memories/{DaraURL.percent_encode(memory_id)}',
-            method = 'PUT',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.UpdateMem0MemoryResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    def update_mem_0memory(
-        self,
-        memory_id: str,
-        request: main_models.UpdateMem0MemoryRequest,
-    ) -> main_models.UpdateMem0MemoryResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.update_mem_0memory_with_options(memory_id, request, headers, runtime)
-
-    async def update_mem_0memory_async(
-        self,
-        memory_id: str,
-        request: main_models.UpdateMem0MemoryRequest,
-    ) -> main_models.UpdateMem0MemoryResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.update_mem_0memory_with_options_async(memory_id, request, headers, runtime)
-
     def update_pipeline_with_options(
         self,
         agent_space: str,
@@ -2992,79 +2407,3 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
-
-    def validate_mem_0apikey_with_options(
-        self,
-        request: main_models.ValidateMem0APIKeyRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.ValidateMem0APIKeyResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ValidateMem0APIKey',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/ping',
-            method = 'GET',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ValidateMem0APIKeyResponse(),
-            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    async def validate_mem_0apikey_with_options_async(
-        self,
-        request: main_models.ValidateMem0APIKeyRequest,
-        headers: Dict[str, str],
-        runtime: RuntimeOptions,
-    ) -> main_models.ValidateMem0APIKeyResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.agent_space):
-            query['agentSpace'] = request.agent_space
-        req = open_api_util_models.OpenApiRequest(
-            headers = headers,
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ValidateMem0APIKey',
-            version = '2026-05-20',
-            protocol = 'HTTPS',
-            pathname = f'/v1/ping',
-            method = 'GET',
-            auth_type = 'Anonymous',
-            style = 'ROA',
-            req_body_type = 'json',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ValidateMem0APIKeyResponse(),
-            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
-        )
-
-    def validate_mem_0apikey(
-        self,
-        request: main_models.ValidateMem0APIKeyRequest,
-    ) -> main_models.ValidateMem0APIKeyResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return self.validate_mem_0apikey_with_options(request, headers, runtime)
-
-    async def validate_mem_0apikey_async(
-        self,
-        request: main_models.ValidateMem0APIKeyRequest,
-    ) -> main_models.ValidateMem0APIKeyResponse:
-        runtime = RuntimeOptions()
-        headers = {}
-        return await self.validate_mem_0apikey_with_options_async(request, headers, runtime)

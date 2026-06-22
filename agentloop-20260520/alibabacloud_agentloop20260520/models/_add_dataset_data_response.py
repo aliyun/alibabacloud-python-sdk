@@ -4,21 +4,23 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_agentloop20260520 import models as main_models
 from darabonba.model import DaraModel
 
-class DeleteMem0MemoriesResponse(DaraModel):
+class AddDatasetDataResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: dict = None,
+        body: main_models.AddDatasetDataResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
         self.body = body
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         result = dict()
@@ -32,7 +34,7 @@ class DeleteMem0MemoriesResponse(DaraModel):
             result['statusCode'] = self.status_code
 
         if self.body is not None:
-            result['body'] = self.body
+            result['body'] = self.body.to_map()
 
         return result
 
@@ -45,7 +47,8 @@ class DeleteMem0MemoriesResponse(DaraModel):
             self.status_code = m.get('statusCode')
 
         if m.get('body') is not None:
-            self.body = m.get('body')
+            temp_model = main_models.AddDatasetDataResponseBody()
+            self.body = temp_model.from_map(m.get('body'))
 
         return self
 
