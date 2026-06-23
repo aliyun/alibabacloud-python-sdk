@@ -1,3 +1,7 @@
+2026-06-23 Version: 1.10.2
+- Update API ValidateEmail: add request parameters ProbeType.
+
+
 2026-06-15 Version: 1.10.1
 - Update API BatchSendMail: add request parameters Receivers.
 - Update API BatchSendMail: add request parameters TemplateContent.

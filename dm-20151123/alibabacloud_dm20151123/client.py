@@ -29,7 +29,13 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-east-1': 'dm.us-east-1.aliyuncs.com',
+            'eu-central-1': 'dm.eu-central-1.aliyuncs.com',
+            'cn-hangzhou': 'dm.aliyuncs.com',
+            'ap-southeast-1': 'dm.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dm', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -7218,6 +7224,8 @@ class Client(OpenApiClient):
             query['CheckGraylist'] = request.check_graylist
         if not DaraCore.is_null(request.email):
             query['Email'] = request.email
+        if not DaraCore.is_null(request.probe_type):
+            query['ProbeType'] = request.probe_type
         if not DaraCore.is_null(request.timeout):
             query['Timeout'] = request.timeout
         req = open_api_util_models.OpenApiRequest(
@@ -7250,6 +7258,8 @@ class Client(OpenApiClient):
             query['CheckGraylist'] = request.check_graylist
         if not DaraCore.is_null(request.email):
             query['Email'] = request.email
+        if not DaraCore.is_null(request.probe_type):
+            query['ProbeType'] = request.probe_type
         if not DaraCore.is_null(request.timeout):
             query['Timeout'] = request.timeout
         req = open_api_util_models.OpenApiRequest(
