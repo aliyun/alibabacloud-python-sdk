@@ -10,7 +10,9 @@ class UnifiedRewrite(DaraModel):
         enabled: bool = None,
         time_range: str = None,
     ):
+        # Indicates whether rewriting is enabled.
         self.enabled = enabled
+        # The rewritten timeRange.
         self.time_range = time_range
 
     def validate(self):

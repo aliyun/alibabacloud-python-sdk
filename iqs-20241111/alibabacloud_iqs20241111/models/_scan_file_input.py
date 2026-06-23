@@ -12,8 +12,11 @@ class ScanFileInput(DaraModel):
         image_url: str = None,
         scan_file_input_config: main_models.ScanFileInputConfig = None,
     ):
+        # The Base64 encoding of the image.
         self.image_base_64 = image_base_64
+        # The URL of the image.
         self.image_url = image_url
+        # The scan parameters.
         self.scan_file_input_config = scan_file_input_config
 
     def validate(self):

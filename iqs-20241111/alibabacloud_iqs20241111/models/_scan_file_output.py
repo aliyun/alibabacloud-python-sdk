@@ -14,8 +14,11 @@ class ScanFileOutput(DaraModel):
         scan_file_info_list: List[main_models.ScanFileInfo] = None,
         search_information: main_models.UnifiedSearchInformation = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of scan result objects.
         self.scan_file_info_list = scan_file_info_list
+        # The search execution information.
         self.search_information = search_information
 
     def validate(self):

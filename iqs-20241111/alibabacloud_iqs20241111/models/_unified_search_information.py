@@ -9,6 +9,7 @@ class UnifiedSearchInformation(DaraModel):
         self,
         search_time: int = None,
     ):
+        # The search duration, in ms.
         self.search_time = search_time
 
     def validate(self):

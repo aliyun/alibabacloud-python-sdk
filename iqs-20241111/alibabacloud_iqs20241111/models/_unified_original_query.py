@@ -10,7 +10,9 @@ class UnifiedOriginalQuery(DaraModel):
         query: str = None,
         time_range: str = None,
     ):
+        # The request query.
         self.query = query
+        # The publish time range.
         self.time_range = time_range
 
     def validate(self):

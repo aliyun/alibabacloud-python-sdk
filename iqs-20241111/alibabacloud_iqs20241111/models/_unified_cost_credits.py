@@ -11,7 +11,9 @@ class UnifiedCostCredits(DaraModel):
         search: main_models.SearchCredits = None,
         value_added: main_models.ValueAddedCredits = None,
     ):
+        # The basic search service metering.
         self.search = search
+        # The value-added service metering.
         self.value_added = value_added
 
     def validate(self):

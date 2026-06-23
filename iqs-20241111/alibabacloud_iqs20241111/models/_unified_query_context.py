@@ -12,8 +12,11 @@ class UnifiedQueryContext(DaraModel):
         original_query: main_models.UnifiedOriginalQuery = None,
         rewrite: main_models.UnifiedRewrite = None,
     ):
+        # The search engine used.
         self.engine_type = engine_type
+        # The initial request.
         self.original_query = original_query
+        # The rewritten result.
         self.rewrite = rewrite
 
     def validate(self):

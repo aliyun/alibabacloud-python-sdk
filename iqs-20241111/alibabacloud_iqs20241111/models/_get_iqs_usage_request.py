@@ -12,7 +12,9 @@ class GetIqsUsageRequest(DaraModel):
         start_date: str = None,
     ):
         self.caller_id = caller_id
+        # End Date.
         self.end_date = end_date
+        # Start Date.
         self.start_date = start_date
 
     def validate(self):

@@ -10,6 +10,7 @@ class MultimodalSearchRequest(DaraModel):
         self,
         body: main_models.MultimodalSearchBody = None,
     ):
+        # Query parameters and site blocking parameters
         self.body = body
 
     def validate(self):

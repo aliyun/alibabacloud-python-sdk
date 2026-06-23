@@ -10,7 +10,9 @@ class ValueAddedCredits(DaraModel):
         advanced: int = None,
         summary: int = None,
     ):
+        # The value-added package - enhanced search.
         self.advanced = advanced
+        # The value-added package - enhanced summary.
         self.summary = summary
 
     def validate(self):

@@ -12,9 +12,13 @@ class ScanFileInfo(DaraModel):
         image_base_64: str = None,
         width: int = None,
     ):
+        # The image rotation angle.
         self.angle = angle
+        # The image height.
         self.height = height
+        # The Base64 encoding of the image.
         self.image_base_64 = image_base_64
+        # The image width.
         self.width = width
 
     def validate(self):

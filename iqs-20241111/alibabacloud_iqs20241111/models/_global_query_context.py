@@ -10,6 +10,7 @@ class GlobalQueryContext(DaraModel):
         self,
         original_query: main_models.GlobalQueryContextOriginalQuery = None,
     ):
+        # The initial query condition.
         self.original_query = original_query
 
     def validate(self):
@@ -41,8 +42,11 @@ class GlobalQueryContextOriginalQuery(DaraModel):
         query: str = None,
         time_range: str = None,
     ):
+        # 页码
         self.page = page
+        # 查询关键字
         self.query = query
+        # 时间范围
         self.time_range = time_range
 
     def validate(self):

@@ -12,7 +12,9 @@ class AiSearchResponseBody(DaraModel):
         payload: str = None,
         request_id: str = None,
     ):
+        # The header of the response.
         self.header = header
+        # The payload of the response. The value is a JSON structure that varies by event type.
         self.payload = payload
         # Id of the request
         self.request_id = request_id
@@ -59,9 +61,13 @@ class AiSearchResponseBodyHeader(DaraModel):
         query_context: main_models.AiSearchResponseBodyHeaderQueryContext = None,
         response_time: int = None,
     ):
+        # The event name.
         self.event = event
+        # The event ID.
         self.event_id = event_id
+        # The query context.
         self.query_context = query_context
+        # The response time, in milliseconds.
         self.response_time = response_time
 
     def validate(self):
@@ -110,7 +116,9 @@ class AiSearchResponseBodyHeaderQueryContext(DaraModel):
         original_query: main_models.AiSearchResponseBodyHeaderQueryContextOriginalQuery = None,
         rewrite: main_models.AiSearchResponseBodyHeaderQueryContextRewrite = None,
     ):
+        # The original query.
         self.original_query = original_query
+        # The rewritten query.
         self.rewrite = rewrite
 
     def validate(self):
@@ -150,7 +158,9 @@ class AiSearchResponseBodyHeaderQueryContextRewrite(DaraModel):
         enabled: bool = None,
         time_range: str = None,
     ):
+        # Indicates whether query rewriting is enabled.
         self.enabled = enabled
+        # The rewritten time range.
         self.time_range = time_range
 
     def validate(self):
@@ -187,9 +197,13 @@ class AiSearchResponseBodyHeaderQueryContextOriginalQuery(DaraModel):
         query: str = None,
         time_range: str = None,
     ):
+        # The industry.
         self.industry = industry
+        # The page number.
         self.page = page
+        # The query condition.
         self.query = query
+        # The time range.
         self.time_range = time_range
 
     def validate(self):

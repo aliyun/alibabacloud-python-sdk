@@ -21,15 +21,26 @@ class GenericSearchShrinkRequest(DaraModel):
     ):
         self.advanced_params_shrink = advanced_params_shrink
         self.enable_rerank = enable_rerank
+        # The industry. After you specify an industry, only site content related to the specified industry is recalled. Separate multiple industries with commas.
         self.industry = industry
+        # The page number. Pages start from 1.
         self.page = page
+        # The search keyword.
+        # 
         # This parameter is required.
         self.query = query
         self.return_main_text = return_main_text
         self.return_markdown_text = return_markdown_text
         self.return_rich_main_body = return_rich_main_body
         self.return_summary = return_summary
+        # The session ID for multi-turn interaction.
         self.session_id = session_id
+        # The time range for filtering results. Valid values:
+        # - OneDay: last day
+        # - OneWeek: last week
+        # - OneMonth: last month
+        # - OneYear: last year
+        # - NoLimit: no limit.
         self.time_range = time_range
 
     def validate(self):

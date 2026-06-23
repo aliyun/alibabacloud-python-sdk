@@ -15,9 +15,13 @@ class MultimodalSearchOutput(DaraModel):
         request_id: str = None,
         search_information: main_models.SearchInformation = None,
     ):
+        # Image List
         self.image_items = image_items
+        # Query context information
         self.query_context = query_context
+        # Request ID
         self.request_id = request_id
+        # Search basic information
         self.search_information = search_information
 
     def validate(self):

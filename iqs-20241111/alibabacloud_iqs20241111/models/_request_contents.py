@@ -13,10 +13,14 @@ class RequestContents(DaraModel):
         rich_main_body: bool = None,
         summary: bool = None,
     ):
+        # Specifies whether to return the main text. Default value: false.
         self.main_text = main_text
+        # Specifies whether to return markdown. Default value: false.
         self.markdown_text = markdown_text
+        # Specifies whether to enable Rerank and return the RerankScore. Default value: true.
         self.rerank_score = rerank_score
         self.rich_main_body = rich_main_body
+        # Specifies whether to return an enhanced summary. Default value: false. The summary feature is billed separately.
         self.summary = summary
 
     def validate(self):
