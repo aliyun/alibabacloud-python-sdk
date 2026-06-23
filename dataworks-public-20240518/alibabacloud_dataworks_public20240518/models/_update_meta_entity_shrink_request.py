@@ -12,9 +12,14 @@ class UpdateMetaEntityShrinkRequest(DaraModel):
         custom_attributes_shrink: str = None,
         id: str = None,
     ):
+        # The entity attributes. Complex values must be serialized into a JSON string.
         self.attributes_shrink = attributes_shrink
+        # The comment on the entity.
         self.comment = comment
+        # The custom attribute values. Each key specifies a custom attribute, and its value is an array that can contain at most one item. To delete an attribute value, provide an empty array.
         self.custom_attributes_shrink = custom_attributes_shrink
+        # The ID of the entity to update. The entity name, entity type, and parent-child relationship are determined by the ID and cannot be modified using this operation.
+        # 
         # This parameter is required.
         self.id = id
 

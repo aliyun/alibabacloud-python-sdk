@@ -25,9 +25,11 @@ class ListRoutesRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
         # 
-        # *   Id (Desc/Asc): the route ID
-        # *   DestinationCidr (Desc/Asc): the destination CIDR block of the route
-        # *   CreateTime (Desc/Asc): the time when the route is created
+        # - Id (Desc/Asc): the route ID
+        # 
+        # - DestinationCidr (Desc/Asc): the destination CIDR block of the route
+        # 
+        # - CreateTime (Desc/Asc): the time when the route is created
         # 
         # Default value: CreateTime Asc.
         self.sort_by = sort_by

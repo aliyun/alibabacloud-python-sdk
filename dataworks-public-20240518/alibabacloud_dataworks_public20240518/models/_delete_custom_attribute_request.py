@@ -9,6 +9,8 @@ class DeleteCustomAttributeRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the custom attribute.
+        # 
         # This parameter is required.
         self.id = id
 

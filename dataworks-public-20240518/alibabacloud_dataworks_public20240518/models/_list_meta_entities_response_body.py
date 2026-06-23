@@ -14,9 +14,11 @@ class ListMetaEntitiesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Pagination information.
         self.paging_info = paging_info
-        # RequestId
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -61,9 +63,13 @@ class ListMetaEntitiesResponseBodyPagingInfo(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # A list of metadata entities.
         self.meta_entities = meta_entities
+        # The token used to retrieve the next page of results. If this parameter is empty, no more results are available.
         self.next_token = next_token
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

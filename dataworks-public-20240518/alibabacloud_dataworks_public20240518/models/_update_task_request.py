@@ -40,8 +40,9 @@ class UpdateTaskRequest(DaraModel):
         self.description = description
         # The project environment.
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The task ID.
         # 
@@ -51,8 +52,9 @@ class UpdateTaskRequest(DaraModel):
         self.inputs = inputs
         # The instance generation mode.
         # 
-        # *   T+1: the next day
-        # *   Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
+        # - T+1: the next day
+        # 
+        # - Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
         self.instance_mode = instance_mode
         # Name.
         self.name = name
@@ -64,9 +66,11 @@ class UpdateTaskRequest(DaraModel):
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun.
-        # *   FailureAllowed: The task can be rerun only after it fails.
-        # *   AllAllowed: The task can always be rerun.
+        # - AllDenied: The task cannot be rerun.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails.
+        # 
+        # - AllAllowed: The task can always be rerun.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -258,23 +262,27 @@ class UpdateTaskRequestTrigger(DaraModel):
         self.cron = cron
         # Cycle type. This parameter takes effect only when Type is set to Scheduler and the cron expression specifies hourly scheduling. Default value: Daily
         # 
-        # *   Daily: Schedules jobs on a daily basis.
-        # *   NotDaily: Schedules jobs on an hourly basis.
+        # - Daily: Schedules jobs on a daily basis.
+        # 
+        # - NotDaily: Schedules jobs on an hourly basis.
         self.cycle_type = cycle_type
         # The expiration time of periodic triggering. Takes effect only when type is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The time when periodic triggering takes effect. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
         self.start_time = start_time
         # The triggering type. Valid values:
         # 
-        # *   Scheduler: periodically triggered
-        # *   Manual
+        # - Scheduler: periodically triggered
+        # 
+        # - Manual
         self.type = type
 
     def validate(self):
@@ -514,10 +522,13 @@ class UpdateTaskRequestOutputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant value.
-        # *   PassThrough: node output.
-        # *   System: variable.
-        # *   NodeOutput: script output.
+        # - Constant: constant value.
+        # 
+        # - PassThrough: node output.
+        # 
+        # - System: variable.
+        # 
+        # - NodeOutput: script output.
         # 
         # This parameter is required.
         self.type = type
@@ -631,10 +642,13 @@ class UpdateTaskRequestInputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant value.
-        # *   PassThrough: node output.
-        # *   System: variable.
-        # *   NodeOutput: script output.
+        # - Constant: constant value.
+        # 
+        # - PassThrough: node output.
+        # 
+        # - System: variable.
+        # 
+        # - NodeOutput: script output.
         # 
         # This parameter is required.
         self.type = type
@@ -682,10 +696,13 @@ class UpdateTaskRequestDependencies(DaraModel):
     ):
         # The dependency type. Valid values:
         # 
-        # *   CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
-        # *   CrossCycleDependsOnSelf: Depends on itself across cycles.
-        # *   CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
-        # *   Normal: Depends on nodes in the same cycle.
+        # - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
+        # 
+        # - CrossCycleDependsOnSelf: Depends on itself across cycles.
+        # 
+        # - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
+        # 
+        # - Normal: Depends on nodes in the same cycle.
         # 
         # This parameter is required.
         self.type = type

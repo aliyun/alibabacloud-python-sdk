@@ -12,8 +12,11 @@ class ListAgentsRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.ListAgentsRequestParams = None,
     ):
+        # The request ID passed in by the caller. The value is returned as-is in the response.
         self.id = id
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
+        # The parameters for this request.
         self.params = params
 
     def validate(self):
@@ -57,8 +60,11 @@ class ListAgentsRequestParams(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The exact agent name to filter by. If not specified, all agents are returned.
         self.agent_name = agent_name
+        # The number of entries per page. Default value: 50.
         self.max_results = max_results
+        # The token for the next page, following the Alibaba Cloud OpenAPI convention. Do not specify this parameter for the first page. For subsequent pages, pass in the nextToken value returned in the previous response.
         self.next_token = next_token
 
     def validate(self):

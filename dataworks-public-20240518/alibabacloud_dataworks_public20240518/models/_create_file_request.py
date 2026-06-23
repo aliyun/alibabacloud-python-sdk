@@ -52,8 +52,9 @@ class CreateFileRequest(DaraModel):
         self.apply_schedule_immediately = apply_schedule_immediately
         # Specifies whether to enable automatic parsing for the file. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # This parameter corresponds to the Analyze Code setting in Properties > Dependencies for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
@@ -71,25 +72,33 @@ class CreateFileRequest(DaraModel):
         self.content = content
         # Specifies whether to automatically create the directory specified by FileFolderPath if the directory does not exist. Valid values:
         # 
-        # *   true: If the directory does not exist, automatically create it.
-        # *   false: If the directory does not exist, the call fails.
+        # - true: If the directory does not exist, automatically create it.
+        # 
+        # - false: If the directory does not exist, the call fails.
         self.create_folder_if_not_exists = create_folder_if_not_exists
         # The cron expression for scheduled execution. This parameter corresponds to the Cron Expression setting in Scheduling > Scheduling Time for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console). After you configure Scheduling Cycle and Scheduled Time, DataWorks automatically generates a cron expression.
         # 
         # Examples:
         # 
-        # *   Scheduled at 05:30 every day: `00 30 05 * * ?`
-        # *   Scheduled at the 15th minute of every hour: `00 15 00-23/1 * * ?`
-        # *   Scheduled every 10 minutes: `00 00/10 * * * ?`
-        # *   Scheduled every 10 minutes between 08:00 and 17:00 every day: `00 00-59/10 8-17 * * * ?`
-        # *   Scheduled at 00:20 on the 1st day of every month: `00 20 00 1 * ?`
-        # *   Scheduled every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
-        # *   Scheduled at 00:05 on every Tuesday and Friday: `00 05 00 * * 2,5`
+        # - Scheduled at 05:30 every day: `00 30 05 * * ?`
+        # 
+        # - Scheduled at the 15th minute of every hour: `00 15 00-23/1 * * ?`
+        # 
+        # - Scheduled every 10 minutes: `00 00/10 * * * ?`
+        # 
+        # - Scheduled every 10 minutes between 08:00 and 17:00 every day: `00 00-59/10 8-17 * * * ?`
+        # 
+        # - Scheduled at 00:20 on the 1st day of every month: `00 20 00 1 * ?`
+        # 
+        # - Scheduled every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
+        # 
+        # - Scheduled at 00:05 on every Tuesday and Friday: `00 05 00 * * 2,5`
         # 
         # Due to the rules of the DataWorks scheduling system, cron expressions have the following restrictions:
         # 
-        # *   The minimum scheduling interval is 5 minutes.
-        # *   The earliest scheduling time each day is 00:05.
+        # - The minimum scheduling interval is 5 minutes.
+        # 
+        # - The earliest scheduling time each day is 00:05.
         self.cron_express = cron_express
         # The type of scheduling cycle. Valid values: NOT_DAY (minute, hour) and DAY (day, week, month).
         # 
@@ -101,12 +110,17 @@ class CreateFileRequest(DaraModel):
         self.dependent_node_id_list = dependent_node_id_list
         # The dependency mode on the previous cycle. Valid values:
         # 
-        # *   SELF: Depends on the current node.
-        # *   CHILD: Depends on the child nodes.
-        # *   USER_DEFINE: Depends on other nodes.
-        # *   NONE: No dependencies. Does not depend on the previous cycle.
-        # *   USER_DEFINE_AND_SELF: Depends on both the current node and other nodes in the previous cycle.
-        # *   CHILD_AND_SELF: Depends on both the current node and its child nodes in the previous cycle.
+        # - SELF: Depends on the current node.
+        # 
+        # - CHILD: Depends on the child nodes.
+        # 
+        # - USER_DEFINE: Depends on other nodes.
+        # 
+        # - NONE: No dependencies. Does not depend on the previous cycle.
+        # 
+        # - USER_DEFINE_AND_SELF: Depends on both the current node and other nodes in the previous cycle.
+        # 
+        # - CHILD_AND_SELF: Depends on both the current node and its child nodes in the previous cycle.
         self.dependent_type = dependent_type
         # The timestamp (in milliseconds) when automatic scheduling stops.
         # 
@@ -126,8 +140,9 @@ class CreateFileRequest(DaraModel):
         self.file_type = file_type
         # Specifies whether to inherit the dry-run status from the previous cycle. Valid values:
         # 
-        # *   true: Inherit the dry-run status from the previous cycle.
-        # *   false: Do not inherit the dry-run status from the previous cycle.
+        # - true: Inherit the dry-run status from the previous cycle.
+        # 
+        # - false: Do not inherit the dry-run status from the previous cycle.
         self.ignore_parent_skip_running_property = ignore_parent_skip_running_property
         # The custom image ID.
         self.image_id = image_id
@@ -157,9 +172,11 @@ class CreateFileRequest(DaraModel):
         self.project_identifier = project_identifier
         # The rerun policy. Valid values:
         # 
-        # *   ALL_ALLOWED: Reruns are allowed regardless of whether the task succeeds or fails.
-        # *   FAILURE_ALLOWED: Reruns are allowed only when the task fails.
-        # *   ALL_DENIED: Reruns are not allowed regardless of whether the task succeeds or fails.
+        # - ALL_ALLOWED: Reruns are allowed regardless of whether the task succeeds or fails.
+        # 
+        # - FAILURE_ALLOWED: Reruns are allowed only when the task fails.
+        # 
+        # - ALL_DENIED: Reruns are not allowed regardless of whether the task succeeds or fails.
         # 
         # This parameter corresponds to the Support for Rerun setting in Scheduling > Scheduling Policies for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.rerun_mode = rerun_mode
@@ -169,10 +186,13 @@ class CreateFileRequest(DaraModel):
         self.resource_group_identifier = resource_group_identifier
         # The scheduling type. Valid values:
         # 
-        # *   NORMAL: Normal scheduled task.
-        # *   MANUAL: Manually triggered node. Not scheduled for daily execution. Corresponds to nodes in manually triggered workflows.
-        # *   PAUSE: Paused task.
-        # *   SKIP: Dry-run task. Scheduled for daily execution but is directly marked as successful when scheduling starts.
+        # - NORMAL: Normal scheduled task.
+        # 
+        # - MANUAL: Manually triggered node. Not scheduled for daily execution. Corresponds to nodes in manually triggered workflows.
+        # 
+        # - PAUSE: Paused task.
+        # 
+        # - SKIP: Dry-run task. Scheduled for daily execution but is directly marked as successful when scheduling starts.
         self.scheduler_type = scheduler_type
         # The timestamp (in milliseconds) when automatic scheduling starts.
         # 
@@ -184,8 +204,9 @@ class CreateFileRequest(DaraModel):
         self.start_immediately = start_immediately
         # Specifies whether to skip execution. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # This parameter corresponds to the Skip Execution option in Properties > Schedule > Recurrence for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop

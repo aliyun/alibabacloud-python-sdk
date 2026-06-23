@@ -19,17 +19,43 @@ class ListMyApplicationsRequest(DaraModel):
         start_time: int = None,
         statuses: List[str] = None,
     ):
+        # The resource type.
+        # 
         # This parameter is required.
         self.def_schema = def_schema
+        # The end time of the application, specified as a Unix timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # A token that you can use in a subsequent request to retrieve the next page of results.
         self.next_token = next_token
+        # The number of entries to return on each page. Default value: 10. Maximum value: 200.
         self.page_size = page_size
+        # The search criteria for the resource.
         self.resource = resource
+        # The name of the leaf node that specifies the resource type. You can specify multiple resource types. Note that different leaf node names can map to the same business logic.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The start time of the application, specified as a Unix timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The approval statuses for filtering. Valid values:
+        # 
+        # - `WaitApproval`: Pending approval
+        # 
+        # - `Confirmed`: Pending authorization
+        # 
+        # - `RejectApproval`: Approval rejected
+        # 
+        # - `AuthorizeSucceed`: Authorization succeeded
+        # 
+        # - `AuthorizeFailed`: Authorization failed
+        # 
+        # - `Deleted`: The application was deleted.
+        # 
+        # - `Canceled`: The application was canceled.
         self.statuses = statuses
 
     def validate(self):
@@ -103,8 +129,11 @@ class ListMyApplicationsRequestResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
+        # The name of the resource schema (`ResourceSchema.name`) required for resource parsing.
         self.def_schema = def_schema
+        # The version of the resource schema (`ResourceSchema.version`) required for resource parsing.
         self.def_version = def_version
+        # The resource metadata. The content is constrained by the `ResourceSchema`.
         self.meta_data = meta_data
 
     def validate(self):

@@ -9,6 +9,27 @@ class ListProcessDefinitionsRequest(DaraModel):
         self,
         type: str = None,
     ):
+        # The type of the process definition. Valid values:
+        # 
+        # - MaxCompute
+        # 
+        # - DataService
+        # 
+        # - Extension
+        # 
+        # - Hologres
+        # 
+        # - EMR (You cannot create custom definitions for this type.)
+        # 
+        # - DataAssetGovernance (You cannot create custom definitions for this type.)
+        # 
+        # - Lindorm (You cannot create custom definitions for this type.)
+        # 
+        # - DlfNext (You cannot create custom definitions for this type.)
+        # 
+        # - DlfV1 (You cannot create custom definitions for this type.)
+        # 
+        # - StarRocks (You cannot create custom definitions for this type.)
         self.type = type
 
     def validate(self):

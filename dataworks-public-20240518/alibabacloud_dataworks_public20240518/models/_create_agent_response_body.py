@@ -11,7 +11,9 @@ class CreateAgentResponseBody(DaraModel):
         agent: main_models.CreateAgentResponseBodyAgent = None,
         request_id: str = None,
     ):
+        # Details of the created Agent.
         self.agent = agent
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,10 +51,15 @@ class CreateAgentResponseBodyAgent(DaraModel):
         gmt_modified_time: str = None,
         name: str = None,
     ):
+        # The creation time (millisecond timestamp).
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The last modification time (millisecond timestamp).
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
+        # The name of the Agent.
         self.name = name
 
     def validate(self):

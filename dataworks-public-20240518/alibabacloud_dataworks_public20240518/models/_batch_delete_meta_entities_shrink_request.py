@@ -9,6 +9,8 @@ class BatchDeleteMetaEntitiesShrinkRequest(DaraModel):
         self,
         ids_shrink: str = None,
     ):
+        # An array of IDs for the meta entities to delete. You can specify up to 10 IDs in a single request. All entities in the batch must have the same EntityType.
+        # 
         # This parameter is required.
         self.ids_shrink = ids_shrink
 

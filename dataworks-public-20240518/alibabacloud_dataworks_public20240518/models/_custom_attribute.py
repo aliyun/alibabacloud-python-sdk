@@ -20,15 +20,33 @@ class CustomAttribute(DaraModel):
         type: str = None,
         value_enums: List[str] = None,
     ):
+        # Description of the custom attribute. It must be fewer than 256 characters.
         self.comment = comment
+        # Creation time as a millisecond UNIX timestamp.
         self.create_time = create_time
+        # Indicates whether this attribute is displayed on the page. Default is true.
         self.display_enabled = display_enabled
+        # Display name for the custom attribute. It must be fewer than 128 characters.
         self.display_name = display_name
+        # List of applicable entity types. Supports exact entity types and wildcard patterns such as `*-table` and `*-column`, for example:
+        # 
+        # - dataworks-project
+        # 
+        # - dataworks-dataset
+        # 
+        # - maxcompute-table
+        # 
+        # - maxcompute-column
         self.entity_types = entity_types
+        # Custom attribute ID. It must match the regular expression ^custom-attribute:[A-Za-z][A-Za-z0-9_]{0,98}$. The part after `custom-attribute:` must be fewer than 100 characters.
         self.id = id
+        # Modification time as a millisecond UNIX timestamp.
         self.modify_time = modify_time
+        # Indicates whether this attribute can be used as a filter on the search page (only affects search in Data Map). Only ENUM attributes can be set to true. Default is false.
         self.search_filter_enabled = search_filter_enabled
+        # Custom attribute type. Supported types are ENUM, TEXT, and HYPERLINK.
         self.type = type
+        # Enumeration values. Required when Type is ENUM. Not supported for TEXT or HYPERLINK types.
         self.value_enums = value_enums
 
     def validate(self):

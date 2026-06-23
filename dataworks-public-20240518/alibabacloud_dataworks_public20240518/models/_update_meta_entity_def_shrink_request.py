@@ -13,11 +13,17 @@ class UpdateMetaEntityDefShrinkRequest(DaraModel):
         new_attribute_defs_shrink: str = None,
         update_attribute_defs_shrink: str = None,
     ):
+        # The new description.
         self.description = description
+        # The new display name. The maximum length is 32 characters.
         self.display_name = display_name
+        # The entity type.
+        # 
         # This parameter is required.
         self.entity_type = entity_type
+        # The new attribute definitions. New attributes must be optional.
         self.new_attribute_defs_shrink = new_attribute_defs_shrink
+        # The updates to existing attribute definitions. You can modify only the display name and description. You can also add enumerated values for attributes of the ENUM type.
         self.update_attribute_defs_shrink = update_attribute_defs_shrink
 
     def validate(self):

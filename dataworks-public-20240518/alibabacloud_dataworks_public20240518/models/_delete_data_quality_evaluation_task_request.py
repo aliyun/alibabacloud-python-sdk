@@ -12,9 +12,9 @@ class DeleteDataQualityEvaluationTaskRequest(DaraModel):
     ):
         # The ID of the data quality monitor.
         self.id = id
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace management page to obtain the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
         # 
-        # This parameter is used to determine the DataWorks workspaces used for this API call.
+        # This parameter specifies the DataWorks workspace used for this API call.
         self.project_id = project_id
 
     def validate(self):

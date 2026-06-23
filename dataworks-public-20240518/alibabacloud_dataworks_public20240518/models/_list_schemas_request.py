@@ -24,8 +24,9 @@ class ListSchemasRequest(DaraModel):
         self.name = name
         # The order in which schemas are sorted. Default value: Asc. Valid values:
         # 
-        # *   Asc: ascending order
-        # *   Desc: descending order
+        # - Asc: ascending order
+        # 
+        # - Desc: descending order
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -35,16 +36,19 @@ class ListSchemasRequest(DaraModel):
         # 
         # Configure the `ParentMetaEntityId` parameter in the `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}` format. If a level does not exist, leave the level empty.
         # 
-        # >  If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
+        # > If you want to query the information about a MaxCompute schema, specify an empty string at the Instance ID level as a placeholder and a MaxCompute project name at the Database name level. Make sure that the schema feature is enabled for the MaxCompute project.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
         # The field used for sorting. Default value: CreateTime. Valid values:
         # 
-        # *   CreateTime
-        # *   ModifyTime
-        # *   Name
-        # *   Type
+        # - CreateTime
+        # 
+        # - ModifyTime
+        # 
+        # - Name
+        # 
+        # - Type
         self.sort_by = sort_by
         # The types. Exact match is supported. If this parameter is left empty, all types are queried.
         self.types = types

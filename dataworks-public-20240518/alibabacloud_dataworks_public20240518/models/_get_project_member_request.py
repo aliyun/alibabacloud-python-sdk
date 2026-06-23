@@ -10,13 +10,13 @@ class GetProjectMemberRequest(DaraModel):
         project_id: int = None,
         user_id: str = None,
     ):
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks Workspace. You can sign in to the [DataWorks Console](https://dataworks.console.aliyun.com/workspace/list) and go to the Workspace Management page to obtain the Workspace ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter is used to identify the DataWorks workspace that you want to access.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The ID of the account used by the member in the workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/product/ms_menu), choose More > Management Center in the left-side navigation pane, select the desired workspace on the Management Center page, and then click Go to Management Center. In the left-side navigation pane of the SettingCenter page, click Tenant Members and Roles. On the Tenant Members and Roles page, view the ID of the account used by the member in the workspace.
+        # The ID of the user. To find the ID, sign in to the [DataWorks Console](https://dataworks.console.aliyun.com/product/ms_menu), go to the Management Center, select the target Workspace, and open the Tenant Members and Roles page.
         # 
         # This parameter is required.
         self.user_id = user_id

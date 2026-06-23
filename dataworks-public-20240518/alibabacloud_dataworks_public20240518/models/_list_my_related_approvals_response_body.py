@@ -13,7 +13,9 @@ class ListMyRelatedApprovalsResponseBody(DaraModel):
         data: main_models.ListMyRelatedApprovalsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The paginated results.
         self.data = data
+        # The request ID, a universally unique identifier (UUID).
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListMyRelatedApprovalsResponseBodyData(DaraModel):
         next_token: str = None,
         page_size: int = None,
     ):
+        # The details of the approval requests.
         self.data = data
+        # Indicates whether more results are available.
         self.has_more = has_more
+        # The token to use to retrieve the next page of results.
         self.next_token = next_token
+        # The number of entries per page. Default: 10. Maximum: 200.
         self.page_size = page_size
 
     def validate(self):
@@ -113,11 +119,31 @@ class ListMyRelatedApprovalsResponseBodyDataData(DaraModel):
         reason: str = None,
         status: str = None,
     ):
+        # The time when the request was submitted, in milliseconds since the Unix epoch.
         self.application_time = application_time
+        # The content of the request.
         self.contents = contents
+        # The resource type.
         self.def_schema = def_schema
+        # The process instance ID.
         self.process_instance_id = process_instance_id
+        # The reason for the request.
         self.reason = reason
+        # The approval status. Valid values:
+        # 
+        # - WaitApproval: Waiting for approval.
+        # 
+        # - Confirmed: Pending authorization.
+        # 
+        # - RejectApproval: Approval rejected.
+        # 
+        # - AuthorizeSucceed: Authorization succeeded.
+        # 
+        # - AuthorizeFailed: Authorization failed.
+        # 
+        # - Deleted: Deleted.
+        # 
+        # - Canceled: Canceled.
         self.status = status
 
     def validate(self):
@@ -196,19 +222,47 @@ class ListMyRelatedApprovalsResponseBodyDataDataContents(DaraModel):
         tenant_id: str = None,
         update_time: int = None,
     ):
+        # The permissions requested for the resource.
         self.access_types = access_types
+        # The authorization method.
         self.auth_method = auth_method
+        # The time when the entry was created, in milliseconds since the Unix epoch.
         self.create_time = create_time
+        # The resource type.
         self.def_schema = def_schema
+        # The permission\\"s expiration time, in milliseconds since the Unix epoch.
         self.expiration_time = expiration_time
+        # The permissions granted for the resource after the final approval.
         self.final_access_types = final_access_types
+        # The grantee.
         self.grantee = grantee
+        # The unique ID of the request content.
         self.id = id
+        # The ID of the approval process instance for the request.
         self.process_instance_id = process_instance_id
+        # The resource declaration.
         self.resource = resource
+        # The name of the resource type at the leaf-node level.
         self.resource_name = resource_name
+        # The approval status. Valid values:
+        # 
+        # - WaitApproval: Waiting for approval.
+        # 
+        # - Confirmed: Pending authorization.
+        # 
+        # - RejectApproval: Approval rejected.
+        # 
+        # - AuthorizeSucceed: Authorization succeeded.
+        # 
+        # - AuthorizeFailed: Authorization failed.
+        # 
+        # - Deleted: Deleted.
+        # 
+        # - Canceled: Canceled.
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The time when the entry was last updated, in milliseconds since the Unix epoch.
         self.update_time = update_time
 
     def validate(self):
@@ -321,8 +375,11 @@ class ListMyRelatedApprovalsResponseBodyDataDataContentsResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
+        # The name of the ResourceSchema required to parse the resource.
         self.def_schema = def_schema
+        # The version of the ResourceSchema required to parse the resource.
         self.def_version = def_version
+        # The resource metadata. The content is constrained by the ResourceSchema.
         self.meta_data = meta_data
 
     def validate(self):
@@ -363,7 +420,39 @@ class ListMyRelatedApprovalsResponseBodyDataDataContentsGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
+        # The principal ID.
+        # 
+        # Note: The format of this ID depends on the PrincipalType:
+        # 
+        # - RamUser: The user ID.
+        # 
+        # - RamRole: The user ID, prefixed with `ROLE_`.
+        # 
+        # - DataworksTenantMember: The user ID.
+        # 
+        # - DataworksTenantRole: The role code in the Dataworks tenant.
+        # 
+        # - DataworksProjectRole: The role code in the Dataworks workspace.
+        # 
+        # - DataworksProjectMember: The user ID.
+        # 
+        # - DlfRole: The name of the DlfNext role.
         self.principal_id = principal_id
+        # The principal type. Valid values:
+        # 
+        # - RamRole
+        # 
+        # - RamUser
+        # 
+        # - DataworksTenantMember
+        # 
+        # - DataworksTenantRole
+        # 
+        # - DataworksProjectMember
+        # 
+        # - DataworksProjectRole
+        # 
+        # - DlfRole
         self.principal_type = principal_type
 
     def validate(self):

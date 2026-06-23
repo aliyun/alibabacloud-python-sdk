@@ -13,7 +13,9 @@ class ListSkillsResponseBody(DaraModel):
         paging_info: main_models.ListSkillsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListSkillsResponseBodyPagingInfo(DaraModel):
         skills: List[main_models.ListSkillsResponseBodyPagingInfoSkills] = None,
         total_count: int = None,
     ):
+        # The maximum number of results returned in this response.
         self.max_results = max_results
+        # The token for the next page of results. This parameter is null or empty if all results have been returned.
         self.next_token = next_token
+        # The list of Skills.
         self.skills = skills
+        # The total number of results that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -113,12 +119,19 @@ class ListSkillsResponseBodyPagingInfoSkills(DaraModel):
         name: str = None,
         visibility: str = None,
     ):
+        # **The creator ID.**
         self.creator_id = creator_id
+        # **The Skill description.**
         self.description = description
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # **The modifier ID.**
         self.modifier_id = modifier_id
+        # **The Skill name.**
         self.name = name
+        # **The visibility level.**
         self.visibility = visibility
 
     def validate(self):

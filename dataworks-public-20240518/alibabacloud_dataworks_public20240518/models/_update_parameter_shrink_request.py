@@ -12,10 +12,15 @@ class UpdateParameterShrinkRequest(DaraModel):
         owner: str = None,
         properties_shrink: str = None,
     ):
+        # The parameter description.
         self.description = description
+        # The parameter ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The owner\\"s account ID.
         self.owner = owner
+        # The parameter value configuration. This parameter is required for the production environment. If you specify the same environment multiple times, only the first configuration is used.
         self.properties_shrink = properties_shrink
 
     def validate(self):

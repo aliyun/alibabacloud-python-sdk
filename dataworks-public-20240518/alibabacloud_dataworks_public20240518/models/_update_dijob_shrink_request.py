@@ -18,28 +18,29 @@ class UpdateDIJobShrinkRequest(DaraModel):
         table_mappings_shrink: str = None,
         transformation_rules_shrink: str = None,
     ):
-        # This parameter is deprecated. Use the Id parameter instead.
+        # This parameter is deprecated. Use the `Id` parameter instead.
         self.dijob_id = dijob_id
-        # The task description.
+        # The description of the synchronization job.
         self.description = description
+        # The job configuration in script mode.
         self.file_spec = file_spec
-        # The ID of the synchronization task.
+        # The ID of the synchronization job.
         self.id = id
-        # The task-level settings, including DDL handling policies, column data type mapping between source and destination, and runtime parameters.
+        # The settings for the synchronization job. This includes DDL handling settings, data type mappings for columns between the source and destination, and runtime parameters.
         self.job_settings_shrink = job_settings_shrink
-        # The task owner.
+        # The owner of the synchronization job.
         self.owner = owner
-        # The DataWorks workspace ID. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to obtain the ID.
+        # The ID of the DataWorks workspace. You can call the [ListProjects](https://help.aliyun.com/document_detail/178393.html) operation to get the workspace ID.
         self.project_id = project_id
         # The resource settings.
         self.resource_settings_shrink = resource_settings_shrink
-        # The list of synchronization object transformation mappings. Each element describes a set of source object selection rules and the transformation rules applied to those objects.
+        # A list of object transformation mappings. Each mapping specifies a set of selection rules for source objects and a list of transformation rules that apply to the selected objects.
         # 
-        # >  [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
+        # > [ { "SourceObjectSelectionRules":[ { "ObjectType":"Database", "Action":"Include", "ExpressionType":"Exact", "Expression":"biz_db" }, { "ObjectType":"Schema", "Action":"Include", "ExpressionType":"Exact", "Expression":"s1" }, { "ObjectType":"Table", "Action":"Include", "ExpressionType":"Exact", "Expression":"table1" } ], "TransformationRuleNames":[ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema" } ] } ]
         self.table_mappings_shrink = table_mappings_shrink
-        # The list of synchronization object transformation rule definitions.
+        # A list of transformation rule definitions.
         # 
-        # >  [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
+        # > [ { "RuleName":"my_database_rename_rule", "RuleActionType":"Rename", "RuleTargetType":"Schema", "RuleExpression":"{"expression":"${srcDatasoureName}_${srcDatabaseName}"}" } ]
         self.transformation_rules_shrink = transformation_rules_shrink
 
     def validate(self):

@@ -9,6 +9,8 @@ class GetMcpServerRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the MCP Server to retrieve.
+        # 
         # This parameter is required.
         self.name = name
 

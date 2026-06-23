@@ -77,9 +77,11 @@ class GetMetaCollectionResponseBodyMetaCollection(DaraModel):
         self.parent_id = parent_id
         # The collection type. Valid values:
         # 
-        # *   Category
-        # *   Album
-        # *   AlbumCategory: Album subcategory.
+        # - Category
+        # 
+        # - Album
+        # 
+        # - AlbumCategory: Album subcategory.
         self.type = type
 
     def validate(self):

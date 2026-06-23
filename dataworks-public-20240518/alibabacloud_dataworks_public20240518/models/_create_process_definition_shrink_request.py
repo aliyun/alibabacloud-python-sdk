@@ -17,18 +17,42 @@ class CreateProcessDefinitionShrinkRequest(DaraModel):
         sub_type: str = None,
         type: str = None,
     ):
+        # The list of approval nodes.
+        # 
         # This parameter is required.
         self.approval_nodes_shrink = approval_nodes_shrink
+        # The idempotency token. We recommend that you use a UUID.
         self.client_token = client_token
+        # The description of the process definition.
+        # 
         # This parameter is required.
         self.description = description
+        # Specifies whether to enable the process definition.
         self.enabled = enabled
+        # The name of the process definition.
+        # 
         # This parameter is required.
         self.name = name
+        # The notification service declarations.
         self.notification_services_shrink = notification_services_shrink
+        # The list of condition rules.
+        # 
         # This parameter is required.
         self.rule_conditions_shrink = rule_conditions_shrink
+        # The subtype. Valid values:
+        # 
+        # - Table
+        # - Column
+        # - Database
+        # - Schema
+        # - Default
         self.sub_type = sub_type
+        # The type of the process definition. Valid values:
+        # 
+        # 1. MaxCompute
+        # 2. DataService
+        # 3. Extension
+        # 4. Hologres
         self.type = type
 
     def validate(self):

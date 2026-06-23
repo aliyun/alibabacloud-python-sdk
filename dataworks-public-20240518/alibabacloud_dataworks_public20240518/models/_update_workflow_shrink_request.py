@@ -29,8 +29,9 @@ class UpdateWorkflowShrinkRequest(DaraModel):
         self.description = description
         # The project environment.
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The workflow ID.
         # 
@@ -38,8 +39,9 @@ class UpdateWorkflowShrinkRequest(DaraModel):
         self.id = id
         # The instance generation mode.
         # 
-        # *   T+1: the next day
-        # *   Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
+        # - T+1: the next day
+        # 
+        # - Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
         self.instance_mode = instance_mode
         # The name of the workflow.
         # 

@@ -18,15 +18,17 @@ class ListComputeResourcesShrinkRequest(DaraModel):
     ):
         # The environment type of the computing resource. Valid values:
         # 
-        # *   Dev
-        # *   Prod
+        # - Dev
+        # 
+        # - Prod
         self.env_type = env_type
         # The name of the computing resource.
         self.name = name
         # The sort direction of the computing resource list. Valid values:
         # 
-        # *   Desc: descending order.
-        # *   Asc: ascending order.
+        # - Desc: descending order.
+        # 
+        # - Asc: ascending order.
         # 
         # Default value: Desc
         self.order = order
@@ -40,10 +42,13 @@ class ListComputeResourcesShrinkRequest(DaraModel):
         self.project_id = project_id
         # The field to sort the computing resource list by. Supported fields include name, creation time, and computing resource ID.
         # 
-        # *   CreateTime: Sorts by creation time
-        # *   Id: Sorts by computing resource ID
-        # *   Name: Sorts by computing resource name.
-        # *   CreateTimeWithDefaultFirst: Sorts based on whether it is the default resource and by creation time, with the default computing resource listed first.
+        # - CreateTime: Sorts by creation time
+        # 
+        # - Id: Sorts by computing resource ID
+        # 
+        # - Name: Sorts by computing resource name.
+        # 
+        # - CreateTimeWithDefaultFirst: Sorts based on whether it is the default resource and by creation time, with the default computing resource listed first.
         # 
         # Default value: CreateTime
         self.sort_by = sort_by

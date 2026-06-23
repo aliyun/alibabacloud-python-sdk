@@ -17,15 +17,25 @@ class ListMetaEntitiesShrinkRequest(DaraModel):
         order: str = None,
         sort_by: str = None,
     ):
+        # Conditions for filtering entities by entity attributes. The `AND` operator is used between different filters, and the `OR` operator is used for multiple values within a single filter.
         self.attribute_filters_shrink = attribute_filters_shrink
+        # Filters entities by comment. This is a token-based match.
         self.comment = comment
+        # Conditions for filtering entities by custom attributes. The `AND` operator is used between different filters, and the `OR` operator is used for multiple values within a single filter. This parameter supports only `ENUM` custom attributes.
         self.custom_attribute_filters_shrink = custom_attribute_filters_shrink
+        # The type of the entity to list.
+        # 
         # This parameter is required.
         self.entity_type = entity_type
+        # The maximum number of results to return per page. Default value: 10. Maximum value: 100.
         self.max_results = max_results
+        # Filters entities by name. This is a containment match.
         self.name = name
+        # The pagination token that specifies the next page of results. To retrieve the first page, do not specify this parameter. To retrieve subsequent pages, set this parameter to the `NextToken` value from the previous response.
         self.next_token = next_token
+        # The sort order. Valid values: `Asc` and `Desc`.
         self.order = order
+        # The field to use for sorting the results.
         self.sort_by = sort_by
 
     def validate(self):

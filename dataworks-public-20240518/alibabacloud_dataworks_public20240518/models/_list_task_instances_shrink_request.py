@@ -34,6 +34,7 @@ class ListTaskInstancesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.bizdate = bizdate
+        # The filter. It is in JSON format, and multiple filter conditions are combined with a logical AND. Currently supported fields include: `startedTimeStart`, `startedTimeEnd`, `finishedTimeStart`, `finishedTimeEnd`, `createTimeStart`, `createTimeEnd`.
         self.filter = filter
         # The ID of the instance. The instance may be rerun. If the instance is rerun and you configure this parameter, the system returns the historical information of the instance, including the rerun information. You can use the RunNumber parameter to distinguish each entry in the historical information.
         self.id = id
@@ -47,8 +48,9 @@ class ListTaskInstancesShrinkRequest(DaraModel):
         self.page_size = page_size
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
         # The DataWorks workspace ID.
         # 
@@ -58,26 +60,31 @@ class ListTaskInstancesShrinkRequest(DaraModel):
         self.runtime_resource = runtime_resource
         # The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
         # 
-        # *   `TriggerTime (Desc/Asc)`
+        # - `TriggerTime (Desc/Asc)`
         # 
-        # *   `StartedTime (Desc/Asc)`
+        # - `StartedTime (Desc/Asc)`
         # 
-        # *   `FinishedTime (Desc/Asc)`
+        # - `FinishedTime (Desc/Asc)`
         # 
-        # *   `CreateTime (Desc/Asc)`
+        # - `CreateTime (Desc/Asc)`
         # 
-        # *   `Id (Desc/Asc)`
+        # - `Id (Desc/Asc)`
         # 
-        #     Default value: `Id Desc`.
+        #   Default value: `Id Desc`.
         self.sort_by = sort_by
         # The status of the task instance.
         # 
-        # *   `NotRun`: Not started
-        # *   `Running`
-        # *   `Failure`
-        # *   `Success`
-        # *   `WaitTime`: Awaiting scheduled time
-        # *   `WaitResource`: Awaiting resources
+        # - `NotRun`: Not started
+        # 
+        # - `Running`
+        # 
+        # - `Failure`
+        # 
+        # - `Success`
+        # 
+        # - `WaitTime`: Awaiting scheduled time
+        # 
+        # - `WaitResource`: Awaiting resources
         self.status = status
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -89,15 +96,19 @@ class ListTaskInstancesShrinkRequest(DaraModel):
         self.task_type = task_type
         # The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.trigger_recurrence = trigger_recurrence
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.trigger_type = trigger_type
+        # The unified workflow instance ID. For all task instances under a specific data timestamp within a single trigger, this field has the same value.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -105,12 +116,17 @@ class ListTaskInstancesShrinkRequest(DaraModel):
         self.workflow_instance_id = workflow_instance_id
         # The type of the workflow instance. Valid values:
         # 
-        # *   SmokeTest: Testing
-        # *   Manual: Manually triggered node
-        # *   SupplementData: Data backfill
-        # *   ManualWorkflow: Manually triggered workflow
-        # *   Normal: Scheduled execution
-        # *   TriggerWorkflow: Triggered Workflow
+        # - SmokeTest: Testing
+        # 
+        # - Manual: Manually triggered node
+        # 
+        # - SupplementData: Data backfill
+        # 
+        # - ManualWorkflow: Manually triggered workflow
+        # 
+        # - Normal: Scheduled execution
+        # 
+        # - TriggerWorkflow: Triggered Workflow
         self.workflow_instance_type = workflow_instance_type
 
     def validate(self):

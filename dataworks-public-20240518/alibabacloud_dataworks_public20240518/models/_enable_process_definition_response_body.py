@@ -9,6 +9,7 @@ class EnableProcessDefinitionResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # **request ID**
         self.request_id = request_id
 
     def validate(self):

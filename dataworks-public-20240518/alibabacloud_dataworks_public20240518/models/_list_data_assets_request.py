@@ -22,13 +22,15 @@ class ListDataAssetsRequest(DaraModel):
         self.data_asset_ids = data_asset_ids
         # The type of the data asset. Valid values:
         # 
-        # *   ACS::DataWorks::Table
-        # *   ACS::DataWorks::Task
+        # - ACS::DataWorks::Table
+        # 
+        # - ACS::DataWorks::Task
         self.data_asset_type = data_asset_type
         # The environment of the workspace to which the data asset belongs. Valid values:
         # 
-        # *   Dev: development environment
-        # *   Prod: production environment
+        # - Dev: development environment
+        # 
+        # - Prod: production environment
         self.env_type = env_type
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -38,8 +40,9 @@ class ListDataAssetsRequest(DaraModel):
         self.project_id = project_id
         # The tags that are added to data assets. This parameter specifies a filter condition.
         # 
-        # *   You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
-        # *   If you do not configure this parameter, tag-based filtering is not performed.
+        # - You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
+        # 
+        # - If you do not configure this parameter, tag-based filtering is not performed.
         # 
         # This parameter is required.
         self.tags = tags

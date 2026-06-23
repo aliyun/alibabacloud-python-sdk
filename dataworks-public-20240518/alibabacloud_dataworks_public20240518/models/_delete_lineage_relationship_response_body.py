@@ -14,8 +14,9 @@ class DeleteLineageRelationshipResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: success.
-        # *   false: failure.
+        # - true: success.
+        # 
+        # - false: failure.
         self.success = success
 
     def validate(self):

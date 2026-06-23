@@ -10,7 +10,10 @@ class StopProcessInstanceRequest(DaraModel):
         client_token: str = None,
         process_instance_id: str = None,
     ):
+        # A token to ensure that the request is idempotent. We recommend that you use a universally unique identifier (UUID).
         self.client_token = client_token
+        # The process instance ID. This operation supports approval forms from both the old and new versions of Security Center.
+        # 
         # This parameter is required.
         self.process_instance_id = process_instance_id
 

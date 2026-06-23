@@ -14,9 +14,11 @@ class UpdateIDEEventResultRequest(DaraModel):
     ):
         # The check status of the extension for this extension point event. Valid values:
         # 
-        # *   OK: The extension passed the check for this event.
-        # *   FAIL: The extension failed the check for this event. You need to review and resolve the error promptly to avoid affecting subsequent program execution.
-        # *   WARN: The extension passed the check for this event, but with warnings.
+        # - OK: The extension passed the check for this event.
+        # 
+        # - FAIL: The extension failed the check for this event. You need to review and resolve the error promptly to avoid affecting subsequent program execution.
+        # 
+        # - WARN: The extension passed the check for this event, but with warnings.
         self.check_result = check_result
         # A summary of the check result for this extension point event. This message is displayed on your current development page. When the check fails or has warnings, you can use this summary to quickly identify the cause.
         self.check_result_tip = check_result_tip

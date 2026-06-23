@@ -14,9 +14,14 @@ class ApplyResourceAccessPermissionRequest(DaraModel):
         client_token: str = None,
         reason: str = None,
     ):
+        # A list of permission requests.
+        # 
         # This parameter is required.
         self.apply_contents = apply_contents
+        # The idempotency parameter, which prevents duplicate operations from repeated calls.
         self.client_token = client_token
+        # The reason for the request.
+        # 
         # This parameter is required.
         self.reason = reason
 
@@ -69,12 +74,23 @@ class ApplyResourceAccessPermissionRequestApplyContents(DaraModel):
         grantee: main_models.ApplyResourceAccessPermissionRequestApplyContentsGrantee = None,
         resource: main_models.ApplyResourceAccessPermissionRequestApplyContentsResource = None,
     ):
+        # The requested permissions.
+        # 
+        # Note: The supported permission types vary by resource level and are constrained by the `ResourceSchema` of the corresponding resource type.
+        # 
         # This parameter is required.
         self.access_types = access_types
+        # The authorization method.
+        # 
+        # Note: This parameter is supported only for `SEVERLESS_STARROCKS` resources. Valid values are `ranger` and `starrocksManager`.
         self.auth_method = auth_method
+        # The permission expiration time, as a Unix timestamp in milliseconds.
         self.expiration_time = expiration_time
+        # The principal to which permissions are granted.
+        # 
         # This parameter is required.
         self.grantee = grantee
+        # The resource for which permissions are requested.
         self.resource = resource
 
     def validate(self):
@@ -133,9 +149,13 @@ class ApplyResourceAccessPermissionRequestApplyContentsResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
+        # The resource type.
+        # 
         # This parameter is required.
         self.def_schema = def_schema
+        # The version of `ResourceSchema` that is required to parse the resource.
         self.def_version = def_version
+        # The resource metadata. The content is constrained by `ResourceSchema`.
         self.meta_data = meta_data
 
     def validate(self):
@@ -176,8 +196,24 @@ class ApplyResourceAccessPermissionRequestApplyContentsGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
+        # The ID of the principal. The value of this parameter depends on the `PrincipalType`:
+        # 
+        # - `RamUser`: The Dataworks user ID.
+        # 
+        # - `RamRole`: The Dataworks user ID, prefixed with `ROLE_`.
+        # 
+        # - `DlfRole`: The DlfNext role name.
+        # 
         # This parameter is required.
         self.principal_id = principal_id
+        # The principal type. Valid values:
+        # 
+        # - RamRole
+        # 
+        # - RamUser
+        # 
+        # - DlfRole
+        # 
         # This parameter is required.
         self.principal_type = principal_type
 

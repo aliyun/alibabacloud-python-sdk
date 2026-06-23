@@ -46,8 +46,9 @@ class RerunWorkflowInstancesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Success
-        # *   Failure
+        # - Success
+        # 
+        # - Failure
         self.status = status
         # The type of the workflow instance. Valid values:
         # 

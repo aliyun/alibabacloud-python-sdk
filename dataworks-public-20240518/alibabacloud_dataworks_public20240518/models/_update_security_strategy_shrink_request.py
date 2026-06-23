@@ -14,13 +14,21 @@ class UpdateSecurityStrategyShrinkRequest(DaraModel):
         name: str = None,
         workspaces_shrink: str = None,
     ):
+        # A client token to ensure request idempotence.
         self.client_token = client_token
+        # The policy content, which is constrained by the `SecurityStrategySchema`.
+        # 
         # This parameter is required.
         self.content_shrink = content_shrink
+        # **The policy description.**
         self.description = description
+        # **The policy ID.**
+        # 
         # This parameter is required.
         self.id = id
+        # **The policy name.**
         self.name = name
+        # **A list of associated workspace IDs.**
         self.workspaces_shrink = workspaces_shrink
 
     def validate(self):

@@ -13,7 +13,9 @@ class GetParameterResponseBody(DaraModel):
         parameter: main_models.GetParameterResponseBodyParameter = None,
         request_id: str = None,
     ):
+        # The details of the parameter.
         self.parameter = parameter
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,18 +63,37 @@ class GetParameterResponseBodyParameter(DaraModel):
         type: str = None,
         version: int = None,
     ):
+        # The time when the parameter was created.
         self.create_time = create_time
+        # The creator of the parameter.
         self.create_user = create_user
+        # The description of the parameter.
         self.description = description
+        # The ID of the parameter.
         self.id = id
+        # The time when the parameter was last modified.
         self.modify_time = modify_time
+        # The modifier of the parameter.
         self.modify_user = modify_user
+        # The name of the parameter.
         self.name = name
+        # The owner of the parameter.
         self.owner = owner
+        # The ID of the workspace.
         self.project_id = project_id
+        # The value configurations of the parameter.
         self.properties = properties
+        # The scope of the parameter.
         self.scope = scope
+        # The type of the parameter. Valid values:
+        # 
+        # - `PlainConstant`: a constant in plaintext.
+        # 
+        # - `SecretConstant`: a constant in ciphertext.
+        # 
+        # - `Variable`: a variable.
         self.type = type
+        # The version of the parameter.
         self.version = version
 
     def validate(self):
@@ -181,7 +202,13 @@ class GetParameterResponseBodyParameterProperties(DaraModel):
         env_type: str = None,
         value: str = None,
     ):
+        # The project environment. Valid values:
+        # 
+        # - `Prod`: production.
+        # 
+        # - `Dev`: development.
         self.env_type = env_type
+        # The value of the parameter.
         self.value = value
 
     def validate(self):

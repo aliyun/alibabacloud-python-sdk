@@ -13,12 +13,13 @@ class UpdateTableBusinessMetadataRequest(DaraModel):
         id: str = None,
         readme: str = None,
     ):
+        # The values of custom attributes. The key specifies the identifier of a custom attribute, and the value is an array that can contain at most one item. To delete the value for an attribute, pass an empty array. To update only custom attributes, omit the `Readme` parameter to prevent its existing value from being cleared. To leave the custom attributes unchanged, pass an empty object `{}`.
         self.custom_attributes = custom_attributes
-        # The table ID. You can refer to the format of the table ID returned by the ListTables operation.
+        # The table ID. For the required format, see the response of the `ListTables` operation.
         # 
         # This parameter is required.
         self.id = id
-        # The usage notes. The rich text format is supported.
+        # The Readme of the table, which supports rich text format.
         self.readme = readme
 
     def validate(self):

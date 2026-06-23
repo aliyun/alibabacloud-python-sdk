@@ -18,17 +18,43 @@ class ListMyRelatedApprovalsShrinkRequest(DaraModel):
         start_time: int = None,
         statuses_shrink: str = None,
     ):
+        # The permissions.
         self.access_types_shrink = access_types_shrink
+        # The resource type.
+        # 
         # This parameter is required.
         self.def_schema = def_schema
+        # The end of the application time range, specified as a millisecond timestamp.
         self.end_time = end_time
+        # Filters approvals by the specified principal.
         self.grantee_shrink = grantee_shrink
+        # The pagination token that acts as a cursor to retrieve the next page of results.
         self.next_token = next_token
+        # The number of entries to return on each page. Default value: 10. Maximum value: 200.
         self.page_size = page_size
+        # The resource declaration.
         self.resource_shrink = resource_shrink
+        # The resource type, specified as a leaf node name. Multiple values are supported because a single business semantic can be mapped to multiple leaf node names.
+        # 
         # This parameter is required.
         self.resource_type_shrink = resource_type_shrink
+        # The start of the application time range, specified as a millisecond timestamp.
         self.start_time = start_time
+        # Filters the results by approval status. Valid values:
+        # 
+        # - `WaitApproval`: Pending approval
+        # 
+        # - `Confirmed`: Pending authorization
+        # 
+        # - `RejectApproval`: Approval rejected
+        # 
+        # - `AuthorizeSucceed`: Authorization succeeded
+        # 
+        # - `AuthorizeFailed`: Authorization failed
+        # 
+        # - `Deleted`: Deleted
+        # 
+        # - `Canceled`: Withdrawn
         self.statuses_shrink = statuses_shrink
 
     def validate(self):

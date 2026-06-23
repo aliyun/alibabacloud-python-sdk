@@ -25,35 +25,35 @@ class CreateResourceGroupRequest(DaraModel):
     ):
         # The ID of the Alibaba Cloud resource group.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # The tags.
+        # The list of Alibaba Cloud tags.
         self.aliyun_resource_tags = aliyun_resource_tags
-        # Specifies whether to enable auto-renewal.
+        # Specifies whether to enable auto-renewal for the subscription.
         self.auto_renew_enabled = auto_renew_enabled
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token to ensure the idempotence of the request.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The name of the serverless resource group. The name can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_). The name must start with a letter.
+        # The name of the general-purpose resource group. It must be up to 128 characters long, start with a letter, and contain only letters, digits, and underscores (_).
         # 
         # This parameter is required.
         self.name = name
         # The subscription duration.
         self.payment_duration = payment_duration
-        # The unit of the subscription duration. Valid values: Month and Year.
+        # The unit of the subscription duration. Valid values: `Month` and `Year`.
         self.payment_duration_unit = payment_duration_unit
-        # The billing method of the serverless resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+        # The billing method of the resource group. `PrePaid` indicates subscription, and `PostPaid` indicates pay-as-you-go.
         # 
         # This parameter is required.
         self.payment_type = payment_type
-        # The description of the serverless resource group. The description can be a maximum of 128 characters in length and can contain letters, digits, and underscores (_).
+        # The remark for the general-purpose resource group. It can be up to 128 characters long and can contain letters, Chinese characters, digits, and underscores (_).
         self.remark = remark
-        # The specifications of the serverless resource group. Unit: CU. This parameter is required only if you set the PaymentType parameter to PrePaid.
+        # The specification of the resource group, in CUs. This parameter is required when `PaymentType` is set to `PrePaid`.
         self.spec = spec
-        # The ID of the virtual private cloud (VPC) with which the serverless resource group is associated by default.
+        # The ID of the VPC to be bound by default.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch with which the serverless resource group is associated by default.
+        # The ID of the vSwitch to be bound by default.
         # 
         # This parameter is required.
         self.vswitch_id = vswitch_id

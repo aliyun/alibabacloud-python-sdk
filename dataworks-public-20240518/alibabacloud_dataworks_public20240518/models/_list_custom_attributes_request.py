@@ -15,12 +15,19 @@ class ListCustomAttributesRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The comment on the custom attribute. The service performs a fuzzy search based on this parameter\\"s value.
         self.comment = comment
+        # The display name of the custom attribute. The service performs a partial match based on this parameter\\"s value.
         self.display_name = display_name
+        # The entity types to which the custom attribute applies. To specify multiple entity types, separate them with commas (,), for example, `*-table,*-column`. This parameter supports specific entity types, such as `hms-table` and `emr-table`, and wildcard types, such as `*-table` and `*-column`.
         self.entity_types = entity_types
+        # The sort order. Valid values: Asc and Desc.
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The field to sort by. Valid values: CreateTime and ModifyTime.
         self.sort_by = sort_by
 
     def validate(self):

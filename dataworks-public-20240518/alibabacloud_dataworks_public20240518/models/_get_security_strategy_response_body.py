@@ -13,7 +13,9 @@ class GetSecurityStrategyResponseBody(DaraModel):
         request_id: str = None,
         security_strategy: main_models.GetSecurityStrategyResponseBodySecurityStrategy = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The security policy.
         self.security_strategy = security_strategy
 
     def validate(self):
@@ -63,20 +65,35 @@ class GetSecurityStrategyResponseBodySecurityStrategy(DaraModel):
         updater: str = None,
         workspaces: List[int] = None,
     ):
+        # The content of the security policy. Its structure is defined by the `SecurityStrategySchema`.
         self.content = content
+        # The scope where the policy is effective. Valid values: `Workspace` or `Tenant`.
         self.control_dw_scope = control_dw_scope
+        # The control module.
         self.control_module = control_module
+        # The control submodule.
         self.control_sub_module = control_sub_module
+        # The time when the security policy was created.
         self.create_time = create_time
+        # The ID of the creator.
         self.creator = creator
+        # The policy description.
         self.description = description
+        # Whether the security policy is enabled.
         self.enabled = enabled
+        # The policy ID.
         self.id = id
+        # The policy name.
         self.name = name
+        # The source ID of the default system policy.
         self.origin_policy_id = origin_policy_id
+        # The name of the schema template.
         self.schema_name = schema_name
+        # The time when the security policy was last updated.
         self.update_time = update_time
+        # The ID of the last updater.
         self.updater = updater
+        # The list of associated workspace IDs.
         self.workspaces = workspaces
 
     def validate(self):
@@ -198,14 +215,25 @@ class GetSecurityStrategyResponseBodySecurityStrategyContent(DaraModel):
         system_policy_display_name: str = None,
         system_policy_name: str = None,
     ):
+        # The scope where the policy is effective. Valid values:
         self.control_dw_scope = control_dw_scope
+        # The control module. This value corresponds to `controlModule` in the associated `SecurityStrategySchema`.
         self.control_module = control_module
+        # The control submodule. This value corresponds to `controlSubModule` in the associated `SecurityStrategySchema`.
         self.control_sub_module = control_sub_module
+        # A list of controllers.
+        # 
+        # **Note:** The available controllers depend on the selected schema. See the documentation for your schema for a list of valid controllers.
         self.controllers = controllers
+        # The `displayName` field from the associated `SecurityStrategySchema`.
         self.display_name = display_name
+        # The `displayNameEn` field from the associated `SecurityStrategySchema`.
         self.display_name_en = display_name_en
+        # The `name` field from the associated `SecurityStrategySchema`.
         self.name = name
+        # The display name of the system policy.
         self.system_policy_display_name = system_policy_display_name
+        # The name of the system policy. If specified, a default policy is automatically created.
         self.system_policy_name = system_policy_name
 
     def validate(self):
@@ -302,19 +330,33 @@ class GetSecurityStrategyResponseBodySecurityStrategyContentControllers(DaraMode
         standard_edition_interval_value: List[int] = None,
         user_config_value: Any = None,
     ):
+        # The default value for Basic Edition.
         self.basic_edition_default_value = basic_edition_default_value
+        # The valid value range for Basic Edition, specified as an array `[min, max]`.
         self.basic_edition_interval_value = basic_edition_interval_value
+        # The identifier for the controller. For valid values, see the documentation for the relevant schema.
         self.controller = controller
+        # The value type of the controller. Valid values are `Boolean`, `Integer`, `Long`, and `String`.
         self.controller_value_type = controller_value_type
+        # The display name.
         self.display_name = display_name
+        # The display name in English.
         self.display_name_en = display_name_en
+        # Whether the controller is enabled.
         self.enable = enable
+        # The default value for Enterprise Edition.
         self.enterprise_edition_default_value = enterprise_edition_default_value
+        # The valid value range for Enterprise Edition, specified as an array `[min, max]`.
         self.enterprise_edition_interval_value = enterprise_edition_interval_value
+        # The default value for Professional Edition.
         self.professional_edition_default_value = professional_edition_default_value
+        # The valid value range for Professional Edition, specified as an array `[min, max]`.
         self.professional_edition_interval_value = professional_edition_interval_value
+        # The default value for Standard Edition.
         self.standard_edition_default_value = standard_edition_default_value
+        # The valid value range for Standard Edition, specified as an array `[min, max]`.
         self.standard_edition_interval_value = standard_edition_interval_value
+        # The value configured by the user. The data type of this value is specified by the `ControllerValueType` parameter.
         self.user_config_value = user_config_value
 
     def validate(self):

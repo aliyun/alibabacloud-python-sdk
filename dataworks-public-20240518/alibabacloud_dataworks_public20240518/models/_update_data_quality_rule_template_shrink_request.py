@@ -14,23 +14,23 @@ class UpdateDataQualityRuleTemplateShrinkRequest(DaraModel):
         project_id: int = None,
         sampling_config_shrink: str = None,
     ):
-        # The check settings for sample data.
+        # The settings for sample validation.
         self.checking_config_shrink = checking_config_shrink
-        # The code for the template.
+        # The code of the rule template.
         # 
         # This parameter is required.
         self.code = code
-        # The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+        # The category directory in which the custom template is stored. Levels are separated by forward slashes (/). The name of each level can be up to 1024 characters in length and cannot contain whitespace characters or forward slashes (/).
         self.directory_path = directory_path
-        # The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+        # The name of the rule template. The name can contain digits, letters, Chinese characters, and half-width and full-width punctuation marks. The name can be up to 512 characters in length.
         self.name = name
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter specifies the DataWorks workspace used for this API call.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The sampling settings.
+        # The settings required for sample collection.
         self.sampling_config_shrink = sampling_config_shrink
 
     def validate(self):

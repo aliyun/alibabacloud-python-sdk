@@ -17,13 +17,21 @@ class UpdateSecurityStrategyRequest(DaraModel):
         name: str = None,
         workspaces: List[int] = None,
     ):
+        # A client token to ensure request idempotence.
         self.client_token = client_token
+        # The policy content, which is constrained by the `SecurityStrategySchema`.
+        # 
         # This parameter is required.
         self.content = content
+        # **The policy description.**
         self.description = description
+        # **The policy ID.**
+        # 
         # This parameter is required.
         self.id = id
+        # **The policy name.**
         self.name = name
+        # **A list of associated workspace IDs.**
         self.workspaces = workspaces
 
     def validate(self):
@@ -83,6 +91,10 @@ class UpdateSecurityStrategyRequestContent(DaraModel):
         self,
         controllers: List[main_models.UpdateSecurityStrategyRequestContentControllers] = None,
     ):
+        # A list of controllers.
+        # 
+        # Note: The valid controllers depend on the selected schema. For more information, see the controller definition and the list of controllers for each schema.
+        # 
         # This parameter is required.
         self.controllers = controllers
 
@@ -132,19 +144,33 @@ class UpdateSecurityStrategyRequestContentControllers(DaraModel):
         standard_edition_interval_value: List[int] = None,
         user_config_value: Any = None,
     ):
+        # The default value for the Basic edition.
         self.basic_edition_default_value = basic_edition_default_value
+        # The value range for the Basic edition, specified as `[min, max]`.
         self.basic_edition_interval_value = basic_edition_interval_value
+        # The controller identifier. For valid values, see the list of controllers for each schema.
         self.controller = controller
+        # The data type of the controller\\"s value. Valid values: `Boolean`, `Integer`, `Long`, and `String`.
         self.controller_value_type = controller_value_type
+        # The display name.
         self.display_name = display_name
+        # The English display name.
         self.display_name_en = display_name_en
+        # Indicates whether the controller is enabled.
         self.enable = enable
+        # The default value for the Enterprise edition.
         self.enterprise_edition_default_value = enterprise_edition_default_value
+        # The value range for the Enterprise edition, specified as `[min, max]`.
         self.enterprise_edition_interval_value = enterprise_edition_interval_value
+        # The default value for the Professional edition.
         self.professional_edition_default_value = professional_edition_default_value
+        # The value range for the Professional edition, specified as `[min, max]`.
         self.professional_edition_interval_value = professional_edition_interval_value
+        # The default value for the Standard edition.
         self.standard_edition_default_value = standard_edition_default_value
+        # The value range for the Standard edition, specified as `[min, max]`.
         self.standard_edition_interval_value = standard_edition_interval_value
+        # The user-configured value. The type of this value is determined by the `ControllerValueType` parameter.
         self.user_config_value = user_config_value
 
     def validate(self):

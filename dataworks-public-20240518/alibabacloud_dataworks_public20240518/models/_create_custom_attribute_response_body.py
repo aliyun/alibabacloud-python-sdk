@@ -11,9 +11,11 @@ class CreateCustomAttributeResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The creation result.
         self.result = result
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

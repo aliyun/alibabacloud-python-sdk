@@ -180,8 +180,9 @@ class ListComputeResourcesResponseBodyPagingInfoComputeResourcesComputeResource(
         self.connection_properties = connection_properties
         # The specific connection configuration details for the computing resource, including the connection address, access identity, and environment information. envType, which specifies the computing resource environment, is a property of this object. Valid values:
         # 
-        # *   Dev
-        # *   Prod Different types of computing resources have different attribute specifications under different configuration modes (ConnectionPropertiesMode).
+        # - Dev
+        # 
+        # - Prod Different types of computing resources have different attribute specifications under different configuration modes (ConnectionPropertiesMode).
         self.connection_properties_mode = connection_properties_mode
         # The creation time (timestamp).
         self.create_time = create_time

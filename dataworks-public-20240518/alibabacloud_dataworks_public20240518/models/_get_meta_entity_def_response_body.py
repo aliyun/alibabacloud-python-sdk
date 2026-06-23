@@ -12,9 +12,11 @@ class GetMetaEntityDefResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The custom entity definition.
         self.meta_entity_def = meta_entity_def
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

@@ -12,9 +12,11 @@ class UpdateMetaEntityResponseBody(DaraModel):
         result: main_models.UpdateMetaEntityResponseBodyResult = None,
         success: bool = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The result of the update operation.
         self.result = result
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -57,7 +59,9 @@ class UpdateMetaEntityResponseBodyResult(DaraModel):
         id: str = None,
         success: bool = None,
     ):
+        # The ID of the entity.
         self.id = id
+        # Indicates whether the update was successful.
         self.success = success
 
     def validate(self):

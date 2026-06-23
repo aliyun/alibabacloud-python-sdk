@@ -12,6 +12,8 @@ class BatchCreateMetaEntitiesRequest(DaraModel):
         self,
         entities: List[main_models.BatchCreateMetaEntitiesRequestEntities] = None,
     ):
+        # An entity list. You can create up to five entities in a batch. All entities in the batch must have the same `EntityType`.
+        # 
         # This parameter is required.
         self.entities = entities
 
@@ -52,11 +54,23 @@ class BatchCreateMetaEntitiesRequestEntities(DaraModel):
         entity_type: str = None,
         name: str = None,
     ):
+        # The entity attributes. Complex values must be serialized into a JSON string.
         self.attributes = attributes
+        # The comment for the entity.
         self.comment = comment
+        # The custom attribute values. The key is the identifier of the custom attribute, and the value is a single-element list.
+        # >Notice: The custom attributes used here must be created in advance by using the CreateCustomAttribute API. For example, after you create a custom attribute with the ID `custom-attribute:owner_name`, you can configure the custom attribute by setting this parameter to {\\"owner_name\\": [\\"Bob\\"]}.
         self.custom_attributes = custom_attributes
+        # The entity type. All entities in a batch must have the same type. The following types are supported:
+        # 
+        # - Custom types, such as `custom_entity-biz_api`.
+        # 
+        # - Extended table types. For example, if you have registered the `custom_dw-table` metadata entity type, you can create objects of the corresponding `custom_dw-database` (database) and `custom_dw-table` (table) types.
+        # 
         # This parameter is required.
         self.entity_type = entity_type
+        # The entity name. The name can contain uppercase letters, lowercase letters, digits, and underscores (_). It must start with a letter and not exceed 64 characters.
+        # 
         # This parameter is required.
         self.name = name
 

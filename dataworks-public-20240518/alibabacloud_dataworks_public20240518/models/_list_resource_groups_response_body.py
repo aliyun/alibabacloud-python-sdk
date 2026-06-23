@@ -16,9 +16,9 @@ class ListResourceGroupsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -67,9 +67,9 @@ class ListResourceGroupsResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The resource groups returned.
+        # The list of resource groups.
         self.resource_group_list = resource_group_list
-        # All data entries
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -136,51 +136,65 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupList(DaraModel):
         spec: main_models.ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec = None,
         status: str = None,
     ):
-        # Alibaba Cloud Resource Group ID
+        # The Alibaba Cloud resource group ID.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # Alibaba Cloud tag list
+        # A list of Alibaba Cloud tags.
         self.aliyun_resource_tags = aliyun_resource_tags
-        # The creation time, which is a 64-bit timestamp.
+        # The creation time of the resource group, as a 64-bit timestamp.
         self.create_time = create_time
-        # The ID of the user who created the resource group.
+        # The user ID of the creator.
         self.create_user = create_user
-        # Default VPC ID bound to a common resource group
+        # The ID of the default Virtual Private Cloud (VPC) bound to the general-purpose resource group.
         self.default_vpc_id = default_vpc_id
-        # The default switch ID bound to the common resource group.
+        # The ID of the default vSwitch bound to the general-purpose resource group.
         self.default_vswicth_id = default_vswicth_id
-        # Unique identifier of a resource group
+        # The unique identifier of the resource group.
         self.id = id
         # The name of the resource group.
         self.name = name
-        # The order instance ID of the resource group.
+        # The ID of the order for the resource group.
         self.order_instance_id = order_instance_id
-        # The billing method of the resource group. Valid values: PrePaid and PostPaid. The value PrePaid indicates the subscription billing method, and the value PostPaid indicates the pay-as-you-go billing method.
+        # The billing method of the resource group. `PrePaid` indicates subscription and `PostPaid` indicates pay-as-you-go.
         self.payment_type = payment_type
-        # Remarks for resource groups
+        # The description of the resource group.
         self.remark = remark
-        # Resource group types:
+        # The type of the resource group. Valid values:
         # 
-        # *   CommonV2: Serverless resource group
-        # *   ExclusiveDataIntegration: Exclusive resource group for Data Integration
-        # *   ExclusiveScheduler: Exclusive resource group for scheduling
-        # *   ExclusiveDataService: Exclusive resource group for DataService Studio
+        # - `CommonV2`: The new general-purpose resource group.
+        # 
+        # - `ExclusiveDataIntegration`: The exclusive resource group for data integration.
+        # 
+        # - `ExclusiveScheduler`: The exclusive resource group for scheduling.
+        # 
+        # - `ExclusiveDataService`: The exclusive resource group for data services.
         self.resource_group_type = resource_group_type
-        # Resource Group specifications
+        # The specifications of the resource group.
         self.spec = spec
         # The status of the resource group. Valid values:
         # 
-        # *   Normal: The resource group is running or in use.
-        # *   Stop: The resource group is expired.
-        # *   Deleted: The resource group is released or destroyed.
-        # *   Creating: The resource group is being created.
-        # *   CreateFailed: The resource group fails to be created.
-        # *   Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
-        # *   UpdateFailed: The resource group fails to be scaled out or upgraded.
-        # *   Deleting: The resource group is being released or destroyed.
-        # *   DeleteFailed: The resource group fails to be released or destroyed.
-        # *   Timeout: The operations that are performed on the resource group time out.
-        # *   Freezed: The resource group is frozen.
-        # *   Starting: The resource group is being started.
+        # - `Normal`: Running.
+        # 
+        # - `Stop`: Frozen due to expiration.
+        # 
+        # - `Deleted`: Released.
+        # 
+        # - `Creating`: Creation in progress.
+        # 
+        # - `CreateFailed`: Creation failed.
+        # 
+        # - `Updating`: Update in progress.
+        # 
+        # - `UpdateFailed`: Update failed.
+        # 
+        # - `Deleting`: Release in progress.
+        # 
+        # - `DeleteFailed`: Release failed.
+        # 
+        # - `Timeout`: The operation timed out.
+        # 
+        # - `Freezed`: Frozen.
+        # 
+        # - `Starting`: Starting.
         self.status = status
 
     def validate(self):
@@ -298,9 +312,9 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupListSpec(DaraModel):
         amount: int = None,
         standard: str = None,
     ):
-        # Quantity
+        # The number of resource units.
         self.amount = amount
-        # Specification details
+        # The resource specifications.
         self.standard = standard
 
     def validate(self):
@@ -335,9 +349,9 @@ class ListResourceGroupsResponseBodyPagingInfoResourceGroupListAliyunResourceTag
         key: str = None,
         value: str = None,
     ):
-        # Tag Key
+        # The tag key.
         self.key = key
-        # Tag Value
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -37,8 +37,9 @@ class UpdateTaskShrinkRequest(DaraModel):
         self.description = description
         # The project environment.
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The task ID.
         # 
@@ -48,8 +49,9 @@ class UpdateTaskShrinkRequest(DaraModel):
         self.inputs_shrink = inputs_shrink
         # The instance generation mode.
         # 
-        # *   T+1: the next day
-        # *   Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
+        # - T+1: the next day
+        # 
+        # - Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
         self.instance_mode = instance_mode
         # Name.
         self.name = name
@@ -61,9 +63,11 @@ class UpdateTaskShrinkRequest(DaraModel):
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun.
-        # *   FailureAllowed: The task can be rerun only after it fails.
-        # *   AllAllowed: The task can always be rerun.
+        # - AllDenied: The task cannot be rerun.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails.
+        # 
+        # - AllAllowed: The task can always be rerun.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times

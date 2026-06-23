@@ -121,16 +121,19 @@ class GetTaskInstanceResponseBodyTaskInstance(DaraModel):
         self.priority = priority
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
+        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to run.
         self.rerun_mode = rerun_mode
         # The number of times the instance is run. By default, the value starts from 1.
         self.run_number = run_number
@@ -144,14 +147,21 @@ class GetTaskInstanceResponseBodyTaskInstance(DaraModel):
         self.started_time = started_time
         # The status of the instance. Valid values:
         # 
-        # *   NotRun: The instance is not run.
-        # *   Running: The instance is running.
-        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
-        # *   CheckingCondition: Branch conditions are being checked for the instance.
-        # *   WaitResource: The instance is waiting for resources.
-        # *   Failure: The instance fails to be run.
-        # *   Success: The instance is successfully run.
-        # *   Checking: Data quality is being checked for the instance.
+        # - NotRun: The instance is not run.
+        # 
+        # - Running: The instance is running.
+        # 
+        # - WaitTime: The instance is waiting for the scheduling time to arrive.
+        # 
+        # - CheckingCondition: Branch conditions are being checked for the instance.
+        # 
+        # - WaitResource: The instance is waiting for resources.
+        # 
+        # - Failure: The instance fails to be run.
+        # 
+        # - Success: The instance is successfully run.
+        # 
+        # - Checking: Data quality is being checked for the instance.
         self.status = status
         # The tags of the task.
         self.tags = tags
@@ -167,17 +177,21 @@ class GetTaskInstanceResponseBodyTaskInstance(DaraModel):
         self.timeout = timeout
         # The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.trigger_recurrence = trigger_recurrence
         # The scheduling time.
         self.trigger_time = trigger_time
         # The method to trigger instance scheduling. The value of the Trigger.Type parameter in the response of the GetTask operation is used. Valid values:
         # 
-        # *   Scheduler
-        # *   Manual
+        # - Scheduler
+        # 
+        # - Manual
         self.trigger_type = trigger_type
+        # Unified workflow instance ID. All task instances triggered under the same data timestamp share the same value for this field.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The timestamp for when it started waiting for resources.
         self.waiting_resource_time = waiting_resource_time
@@ -189,12 +203,17 @@ class GetTaskInstanceResponseBodyTaskInstance(DaraModel):
         self.workflow_instance_id = workflow_instance_id
         # The type of the workflow instance. Valid values:
         # 
-        # *   SmokeTest
-        # *   SupplementData
-        # *   Manual
-        # *   ManualWorkflow
-        # *   Normal
-        # *   ManualFlow
+        # - SmokeTest
+        # 
+        # - SupplementData
+        # 
+        # - Manual
+        # 
+        # - ManualWorkflow
+        # 
+        # - Normal
+        # 
+        # - ManualFlow
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name
@@ -695,10 +714,13 @@ class GetTaskInstanceResponseBodyTaskInstanceOutputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant
-        # *   PassThrough: node output
-        # *   System: variable
-        # *   NodeOutput: script output
+        # - Constant: constant
+        # 
+        # - PassThrough: node output
+        # 
+        # - System: variable
+        # 
+        # - NodeOutput: script output
         self.type = type
         # The value of the variable.
         self.value = value
@@ -810,10 +832,13 @@ class GetTaskInstanceResponseBodyTaskInstanceInputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant
-        # *   PassThrough: node output
-        # *   System: variable
-        # *   NodeOutput: script output
+        # - Constant: constant
+        # 
+        # - PassThrough: node output
+        # 
+        # - System: variable
+        # 
+        # - NodeOutput: script output
         self.type = type
         # The value of the variable.
         self.value = value

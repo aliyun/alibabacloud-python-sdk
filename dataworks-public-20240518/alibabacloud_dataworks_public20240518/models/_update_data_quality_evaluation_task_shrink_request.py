@@ -19,38 +19,36 @@ class UpdateDataQualityEvaluationTaskShrinkRequest(DaraModel):
         target_shrink: str = None,
         trigger_shrink: str = None,
     ):
-        # The list of monitoring rules that are associated with the monitor.
+        # List of data quality rules associated with the data quality monitoring.
         self.data_quality_rules_shrink = data_quality_rules_shrink
-        # The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+        # Data source ID. You can call [ListDataSources](https://help.aliyun.com/document_detail/211431.html) to obtain the data source ID.
         self.data_source_id = data_source_id
-        # The description of the monitor.
+        # Description of the quality monitoring task
         self.description = description
-        # The hook.
+        # Callback settings
         self.hooks_shrink = hooks_shrink
-        # The ID of the monitor.
+        # Data quality monitoring ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the monitor.
+        # Name of the quality monitoring task
         self.name = name
-        # The configurations of alert notifications.
+        # Notification subscription configuration
         self.notifications_shrink = notifications_shrink
-        # The ID of the DataWorks workspace.
+        # Workspace ID
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
+        # Extended configuration. A JSON-formatted string. Takes effect only for EMR-type data quality monitoring.
         # 
-        # *   queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
-        # 
-        # *   sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
-        # 
-        #     *   HIVE_SQL
-        #     *   SPARK_SQL
+        # - queue: The YARN queue used when executing EMR data quality validation. Defaults to the queue configured for the current project.
+        # - sqlEngine: The SQL engine used when executing EMR data validation.
+        #   + HIVE_SQL
+        #   + SPARK_SQL
         self.runtime_conf = runtime_conf
-        # The monitored object of the data quality monitoring task.
+        # Data quality monitoring object
         self.target_shrink = target_shrink
-        # The trigger configuration of the monitor.
+        # Trigger configuration of the data quality validation task
         self.trigger_shrink = trigger_shrink
 
     def validate(self):

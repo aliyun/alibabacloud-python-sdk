@@ -9,6 +9,8 @@ class DeleteMcpServerRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the MCP Server to delete.
+        # 
         # This parameter is required.
         self.name = name
 

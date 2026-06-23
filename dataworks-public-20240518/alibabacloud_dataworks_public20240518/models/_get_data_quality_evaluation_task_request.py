@@ -9,7 +9,7 @@ class GetDataQualityEvaluationTaskRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The ID of the data quality monitor.
+        # Data quality monitoring ID.
         self.id = id
 
     def validate(self):

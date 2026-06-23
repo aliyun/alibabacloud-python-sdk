@@ -13,7 +13,9 @@ class ListProcessDefinitionsResponseBody(DaraModel):
         paging_info: main_models.ListProcessDefinitionsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListProcessDefinitionsResponseBodyPagingInfo(DaraModel):
         process_definitions: List[main_models.ListProcessDefinitionsResponseBodyPagingInfoProcessDefinitions] = None,
         total_count: int = None,
     ):
+        # A list of process definitions. For more information, see the `ProcessDefinition` object.
         self.process_definitions = process_definitions
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,14 +104,59 @@ class ListProcessDefinitionsResponseBodyPagingInfoProcessDefinitions(DaraModel):
         sub_type: str = None,
         type: str = None,
     ):
+        # The description of the process definition.
         self.description = description
+        # Indicates whether the process definition is enabled.
         self.enabled = enabled
+        # The ID of the process definition.
         self.id = id
+        # Indicates whether this is a default system policy. System policies have restricted update capabilities.
         self.is_system = is_system
+        # The name of the process definition.
         self.name = name
+        # The priority. A smaller value indicates a higher priority.
         self.priority = priority
+        # The phases in which the rule is effective. Valid values:
+        # 
+        # - `Deployment`: The policy is checked when an application is submitted.
+        # 
+        # - `Running`: The policy is checked during process execution to determine if approval can be skipped. (Supported only for the MaxCompute type)
         self.scopes = scopes
+        # The subtype. Valid values:
+        # 
+        # - Table
+        # 
+        # - Column
+        # 
+        # - Database
+        # 
+        # - Schema
+        # 
+        # - Default
         self.sub_type = sub_type
+        # The type of the process definition. Valid values:
+        # 
+        # - MaxCompute
+        # 
+        # - DataService
+        # 
+        # - Extension
+        # 
+        # - Hologres
+        # 
+        # - DlfV1 (You cannot create custom definitions for this type.)
+        # 
+        # - EMR (You cannot create custom definitions for this type.)
+        # 
+        # - DataAssetGovernance (You cannot create custom definitions for this type.)
+        # 
+        # - Lindorm (You cannot create custom definitions for this type.)
+        # 
+        # - StarRocks (You cannot create custom definitions for this type.)
+        # 
+        # - DlfNext (You cannot create custom definitions for this type.)
+        # 
+        # - DataWorks (You cannot create custom definitions for this type.)
         self.type = type
 
     def validate(self):

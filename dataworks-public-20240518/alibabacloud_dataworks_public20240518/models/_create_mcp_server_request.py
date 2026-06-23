@@ -15,10 +15,15 @@ class CreateMcpServerRequest(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateMcpServerRequestVisibilityScope = None,
     ):
+        # The connection configuration for the MCP Server.
         self.config = config
+        # The name of the MCP Server. The name must be unique at the tenant level. It must start with a lowercase letter and contain only characters from `a-z`, `0-9`, `_`, and `-`.
+        # 
         # This parameter is required.
         self.name = name
+        # The visibility level.
         self.visibility = visibility
+        # The visibility scope. The required fields depend on the value of the `Visibility` parameter.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -70,7 +75,9 @@ class CreateMcpServerRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The project IDs to which the MCP Server is visible. This parameter is required only when `Visibility` is set to `PROJECT`.
         self.project_ids = project_ids
+        # The user IDs to which the MCP Server is visible. This parameter is required only when `Visibility` is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):
@@ -106,8 +113,11 @@ class CreateMcpServerRequestConfig(DaraModel):
         transport: str = None,
         url: str = None,
     ):
+        # The custom request headers, specified as key-value pairs. You cannot override reserved headers.
         self.custom_headers = custom_headers
+        # The transport protocol.
         self.transport = transport
+        # The service address of the MCP Server. It must start with `https://`.
         self.url = url
 
     def validate(self):

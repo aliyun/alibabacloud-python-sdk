@@ -23,18 +23,40 @@ class ListImagesRequest(DaraModel):
         supported_modules: List[str] = None,
         supported_task_types: List[str] = None,
     ):
+        # The accessibility:
+        # 
+        # - Public: Visible to all members.
+        # 
+        # - Private: Visible only to the creator.
         self.accessibility = accessibility
+        # The image name, used for fuzzy search.
         self.name = name
+        # Specifies whether the image is an official image.
         self.official = official
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The list of workspace IDs.
         self.project_ids = project_ids
+        # The list of image provider types.
         self.provider_types = provider_types
+        # Specifies whether to search all images.
         self.search_all = search_all
+        # The list of sort fields. You can sort by scheduled time, start time, and other fields. The format is "SortField+SortOrder(Desc/Asc)", where Asc is the default and can be omitted. Valid values of sort fields:
+        # 
+        # - CreateTime (Desc/Asc): The creation time.
+        # 
+        # - Name (Desc/Asc): The image name.
+        #   Default value: CreateTime Asc.
         self.sort_by = sort_by
+        # The list of image publish stages to query.
         self.stages = stages
+        # The list of image statuses to query.
         self.statuses = statuses
+        # The list of supported modules.
         self.supported_modules = supported_modules
+        # The list of supported task types.
         self.supported_task_types = supported_task_types
 
     def validate(self):

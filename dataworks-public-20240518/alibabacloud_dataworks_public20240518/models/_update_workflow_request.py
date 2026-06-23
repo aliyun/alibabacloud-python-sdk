@@ -32,8 +32,9 @@ class UpdateWorkflowRequest(DaraModel):
         self.description = description
         # The project environment.
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The workflow ID.
         # 
@@ -41,8 +42,9 @@ class UpdateWorkflowRequest(DaraModel):
         self.id = id
         # The instance generation mode.
         # 
-        # *   T+1: the next day
-        # *   Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
+        # - T+1: the next day
+        # 
+        # - Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
         self.instance_mode = instance_mode
         # The name of the workflow.
         # 
@@ -205,8 +207,9 @@ class UpdateWorkflowRequestTrigger(DaraModel):
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodically triggered
-        # *   Manual
+        # - Scheduler: periodically triggered
+        # 
+        # - Manual
         # 
         # This parameter is required.
         self.type = type
@@ -285,8 +288,9 @@ class UpdateWorkflowRequestTasks(DaraModel):
         self.description = description
         # The project environment.
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The ID of the task. Specifying this field triggers a full update for the corresponding task. If left unspecified, a new task will be created.
         self.id = id
@@ -306,9 +310,11 @@ class UpdateWorkflowRequestTasks(DaraModel):
         self.rerun_interval = rerun_interval
         # Configuration for whether the task can be rerun.
         # 
-        # *   AllDenied: The task cannot be rerun.
-        # *   FailureAllowed: The task can be rerun only after it fails.
-        # *   AllAllowed: The task can always be rerun.
+        # - AllDenied: The task cannot be rerun.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails.
+        # 
+        # - AllAllowed: The task can always be rerun.
         # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
@@ -510,16 +516,19 @@ class UpdateWorkflowRequestTasksTrigger(DaraModel):
     ):
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         # 
         # This parameter is required.
         self.recurrence = recurrence
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodically triggered
-        # *   Manual
+        # - Scheduler: periodically triggered
+        # 
+        # - Manual
         self.type = type
 
     def validate(self):
@@ -737,10 +746,13 @@ class UpdateWorkflowRequestTasksOutputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant value.
-        # *   PassThrough: node output.
-        # *   System: variable.
-        # *   NodeOutput: script output.
+        # - Constant: constant value.
+        # 
+        # - PassThrough: node output.
+        # 
+        # - System: variable.
+        # 
+        # - NodeOutput: script output.
         # 
         # This parameter is required.
         self.type = type
@@ -854,10 +866,13 @@ class UpdateWorkflowRequestTasksInputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant value.
-        # *   PassThrough: node output.
-        # *   System: variable.
-        # *   NodeOutput: script output.
+        # - Constant: constant value.
+        # 
+        # - PassThrough: node output.
+        # 
+        # - System: variable.
+        # 
+        # - NodeOutput: script output.
         # 
         # This parameter is required.
         self.type = type
@@ -905,10 +920,13 @@ class UpdateWorkflowRequestTasksDependencies(DaraModel):
     ):
         # The dependency type. Valid values:
         # 
-        # *   CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
-        # *   CrossCycleDependsOnSelf: Depends on itself across cycles.
-        # *   CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
-        # *   Normal: Depends on nodes in the same cycle.
+        # - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
+        # 
+        # - CrossCycleDependsOnSelf: Depends on itself across cycles.
+        # 
+        # - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
+        # 
+        # - Normal: Depends on nodes in the same cycle.
         # 
         # This parameter is required.
         self.type = type
@@ -1089,10 +1107,13 @@ class UpdateWorkflowRequestDependencies(DaraModel):
     ):
         # The dependency type. Valid values:
         # 
-        # *   CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
-        # *   CrossCycleDependsOnSelf: Depends on itself across cycles.
-        # *   CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
-        # *   Normal: Depends on nodes in the same cycle.
+        # - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
+        # 
+        # - CrossCycleDependsOnSelf: Depends on itself across cycles.
+        # 
+        # - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
+        # 
+        # - Normal: Depends on nodes in the same cycle.
         # 
         # This parameter is required.
         self.type = type

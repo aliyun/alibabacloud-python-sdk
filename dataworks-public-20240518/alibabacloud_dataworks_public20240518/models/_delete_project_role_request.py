@@ -10,8 +10,14 @@ class DeleteProjectRoleRequest(DaraModel):
         code: str = None,
         project_id: int = None,
     ):
+        # The unique identifier of the custom role.
+        # 
         # This parameter is required.
         self.code = code
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter specifies the DataWorks workspace on which the API operation is performed.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

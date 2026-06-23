@@ -21,15 +21,26 @@ class MetaEntity(DaraModel):
         name: str = None,
         owner_id: str = None,
     ):
+        # Entity attributes. Complex values are represented as JSON strings.
         self.attributes = attributes
+        # Comment
         self.comment = comment
+        # Creation time as a millisecond-level timestamp
         self.create_time = create_time
+        # Custom attribute values. The key is the custom attribute identifier. The value is a list of attribute values.
         self.custom_attributes = custom_attributes
+        # Entity type
         self.entity_type = entity_type
+        # Entity ID
         self.id = id
+        # Attribute definition of the custom entity.
+        # >Notice: For historical reasons, this property is not returned and its value is empty. We recommend that you use the GetMetaEntityDef API to obtain the entity type definition.
         self.meta_entity_def = meta_entity_def
+        # Modification time as a millisecond-level timestamp
         self.modify_time = modify_time
+        # Entity name
         self.name = name
+        # Owner ID. The default value is the Alibaba Cloud UID of the creator.
         self.owner_id = owner_id
 
     def validate(self):

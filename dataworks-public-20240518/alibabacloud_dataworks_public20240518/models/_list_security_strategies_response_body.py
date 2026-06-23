@@ -13,7 +13,9 @@ class ListSecurityStrategiesResponseBody(DaraModel):
         paging_info: main_models.ListSecurityStrategiesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination result.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListSecurityStrategiesResponseBodyPagingInfo(DaraModel):
         security_strategies: List[main_models.ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategies] = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The page size. Default value: 20.
         self.page_size = page_size
+        # The list of security policies.
         self.security_strategies = security_strategies
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -122,20 +128,35 @@ class ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategies(DaraModel):
         updater: str = None,
         workspaces: List[int] = None,
     ):
+        # The policy content. The content is constrained by `SecurityStrategySchema`.
         self.content = content
+        # The control scope. Valid values: `Workspace` and `Tenant`.
         self.control_dw_scope = control_dw_scope
+        # The control module.
         self.control_module = control_module
+        # The control submodule.
         self.control_sub_module = control_sub_module
+        # The creation time.
         self.create_time = create_time
+        # The user ID of the creator.
         self.creator = creator
+        # The policy description.
         self.description = description
+        # Whether the policy is enabled.
         self.enabled = enabled
+        # The policy ID.
         self.id = id
+        # The policy name.
         self.name = name
+        # The source ID of the system default policy.
         self.origin_policy_id = origin_policy_id
+        # The name of the schema template.
         self.schema_name = schema_name
+        # The time of the last update.
         self.update_time = update_time
+        # The ID of the user who last updated the policy.
         self.updater = updater
+        # The associated workspace IDs.
         self.workspaces = workspaces
 
     def validate(self):
@@ -257,14 +278,23 @@ class ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContent(Dara
         system_policy_display_name: str = None,
         system_policy_name: str = None,
     ):
+        # The control scope.
         self.control_dw_scope = control_dw_scope
+        # The control module. This value is from the `controlModule` property of the associated `SecurityStrategySchema`.
         self.control_module = control_module
+        # The control submodule. This value is from the `controlSubModule` property of the associated `SecurityStrategySchema`.
         self.control_sub_module = control_sub_module
+        # A list of control items. The available items depend on the schema. For details, see the `Controller` definition and the list of control items for each schema.
         self.controllers = controllers
+        # The `displayName` of the associated `SecurityStrategySchema`.
         self.display_name = display_name
+        # The `displayNameEn` of the associated `SecurityStrategySchema`.
         self.display_name_en = display_name_en
+        # The `name` of the associated `SecurityStrategySchema`.
         self.name = name
+        # The display name of the system policy.
         self.system_policy_display_name = system_policy_display_name
+        # The name of the system policy. If this property is not empty, the system automatically creates a default policy.
         self.system_policy_name = system_policy_name
 
     def validate(self):
@@ -361,19 +391,33 @@ class ListSecurityStrategiesResponseBodyPagingInfoSecurityStrategiesContentContr
         standard_edition_interval_value: List[int] = None,
         user_config_value: Any = None,
     ):
+        # The default value for Basic Edition.
         self.basic_edition_default_value = basic_edition_default_value
+        # The valid value range for Basic Edition, specified as [min, max].
         self.basic_edition_interval_value = basic_edition_interval_value
+        # The identifier of the control item. For valid values, see the list of control items for each schema.
         self.controller = controller
+        # The data type of the value. Valid values: `Boolean`, `Integer`, `Long`, and `String`.
         self.controller_value_type = controller_value_type
+        # The display name.
         self.display_name = display_name
+        # The display name in English.
         self.display_name_en = display_name_en
+        # Whether the control item is enabled.
         self.enable = enable
+        # The default value for Enterprise Edition.
         self.enterprise_edition_default_value = enterprise_edition_default_value
+        # The valid value range for Enterprise Edition, specified as [min, max].
         self.enterprise_edition_interval_value = enterprise_edition_interval_value
+        # The default value for Professional Edition.
         self.professional_edition_default_value = professional_edition_default_value
+        # The valid value range for Professional Edition, specified as [min, max].
         self.professional_edition_interval_value = professional_edition_interval_value
+        # The default value for Standard Edition.
         self.standard_edition_default_value = standard_edition_default_value
+        # The valid value range for Standard Edition, specified as [min, max].
         self.standard_edition_interval_value = standard_edition_interval_value
+        # The value set for the control item. The data type of this value is specified by `ControllerValueType`.
         self.user_config_value = user_config_value
 
     def validate(self):

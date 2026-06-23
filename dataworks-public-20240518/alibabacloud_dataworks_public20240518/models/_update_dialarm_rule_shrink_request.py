@@ -29,11 +29,15 @@ class UpdateDIAlarmRuleShrinkRequest(DaraModel):
         self.id = id
         # The metric type in the alert rule. Valid values:
         # 
-        # *   Heartbeat
-        # *   FailoverCount
-        # *   Delay
-        # *   DdlReport
-        # *   ResourceUtilization
+        # - Heartbeat
+        # 
+        # - FailoverCount
+        # 
+        # - Delay
+        # 
+        # - DdlReport
+        # 
+        # - ResourceUtilization
         self.metric_type = metric_type
         # The name of the alert rule.
         self.name = name

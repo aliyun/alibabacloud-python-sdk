@@ -9,6 +9,8 @@ class DeleteProcessDefinitionRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # **The ID of the process definition to delete.**
+        # 
         # This parameter is required.
         self.id = id
 

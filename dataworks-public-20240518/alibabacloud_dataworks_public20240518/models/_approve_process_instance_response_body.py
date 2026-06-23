@@ -9,6 +9,7 @@ class ApproveProcessInstanceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

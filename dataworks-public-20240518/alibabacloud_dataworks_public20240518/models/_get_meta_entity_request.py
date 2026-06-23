@@ -9,6 +9,8 @@ class GetMetaEntityRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The entity ID.
+        # 
         # This parameter is required.
         self.id = id
 

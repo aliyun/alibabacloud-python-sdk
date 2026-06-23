@@ -13,7 +13,9 @@ class ListMyApplicationsResponseBody(DaraModel):
         data: main_models.ListMyApplicationsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The paginated results.
         self.data = data
+        # A unique identifier (UUID) generated for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListMyApplicationsResponseBodyData(DaraModel):
         next_token: str = None,
         page_size: int = None,
     ):
+        # The list of application details.
         self.data = data
+        # Indicates whether more results are available.
         self.has_more = has_more
+        # The cursor to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The page size. Default value: 10. Maximum value: 200.
         self.page_size = page_size
 
     def validate(self):
@@ -113,11 +119,31 @@ class ListMyApplicationsResponseBodyDataData(DaraModel):
         reason: str = None,
         status: str = None,
     ):
+        # The time the application was submitted, in Unix timestamp format (milliseconds).
         self.application_time = application_time
+        # The content of the application.
         self.contents = contents
+        # The resource type.
         self.def_schema = def_schema
+        # The process instance ID.
         self.process_instance_id = process_instance_id
+        # The reason for the application.
         self.reason = reason
+        # The approval status. Valid values:
+        # 
+        # - `WaitApproval`: Pending approval
+        # 
+        # - `Confirmed`: Pending authorization
+        # 
+        # - `RejectApproval`: Rejected
+        # 
+        # - `AuthorizeSucceed`: Authorization succeeded
+        # 
+        # - `AuthorizeFailed`: Authorization failed
+        # 
+        # - `Deleted`: Deleted
+        # 
+        # - `Canceled`: Canceled
         self.status = status
 
     def validate(self):
@@ -196,19 +222,47 @@ class ListMyApplicationsResponseBodyDataDataContents(DaraModel):
         tenant_id: str = None,
         update_time: int = None,
     ):
+        # The permissions requested for the resource.
         self.access_types = access_types
+        # The authorization method.
         self.auth_method = auth_method
+        # The time when the item was created, in Unix timestamp format (milliseconds).
         self.create_time = create_time
+        # The resource type.
         self.def_schema = def_schema
+        # When the permission expires, in Unix timestamp format (milliseconds).
         self.expiration_time = expiration_time
+        # The granted permissions.
         self.final_access_types = final_access_types
+        # **The principal to be granted the permission.**
         self.grantee = grantee
+        # The unique ID of the application item.
         self.id = id
+        # The ID of the approval process instance for the application.
         self.process_instance_id = process_instance_id
+        # **The requested resource.**
         self.resource = resource
+        # The category of the resource. For example, `table`.
         self.resource_name = resource_name
+        # The approval status. Valid values:
+        # 
+        # - `WaitApproval`: Pending approval
+        # 
+        # - `Confirmed`: Pending authorization
+        # 
+        # - `RejectApproval`: Rejected
+        # 
+        # - `AuthorizeSucceed`: Authorization succeeded
+        # 
+        # - `AuthorizeFailed`: Authorization failed
+        # 
+        # - `Deleted`: Deleted
+        # 
+        # - `Canceled`: Canceled
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The time when the item was last updated, in Unix timestamp format (milliseconds).
         self.update_time = update_time
 
     def validate(self):
@@ -321,8 +375,11 @@ class ListMyApplicationsResponseBodyDataDataContentsResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
+        # **The name of the `ResourceSchema` used to parse the resource.**
         self.def_schema = def_schema
+        # **The version of the `ResourceSchema` used to parse the resource.**
         self.def_version = def_version
+        # **The resource metadata. Its format is defined by the `ResourceSchema`.**
         self.meta_data = meta_data
 
     def validate(self):
@@ -363,7 +420,37 @@ class ListMyApplicationsResponseBodyDataDataContentsGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
+        # The ID of the principal. The value of this parameter varies based on the value of `PrincipalType`:
+        # 
+        # - `RamUser`: The DataWorks user ID.
+        # 
+        # - `RamRole`: The DataWorks user ID, prefixed with `ROLE_`.
+        # 
+        # - `DataworksTenantMember`: The DataWorks user ID.
+        # 
+        # - `DataworksTenantRole`: The DataWorks tenant role code.
+        # 
+        # - `DataworksProjectRole`: The DataWorks workspace role code.
+        # 
+        # - `DataworksProjectMember`: The DataWorks user ID.
+        # 
+        # - `DlfRole`: The DlfNext role name.
         self.principal_id = principal_id
+        # The type of the principal. Valid values:
+        # 
+        # - `RamRole`
+        # 
+        # - `RamUser`
+        # 
+        # - `DataworksTenantMember`
+        # 
+        # - `DataworksTenantRole`
+        # 
+        # - `DataworksProjectMember`
+        # 
+        # - `DataworksProjectRole`
+        # 
+        # - `DlfRole`
         self.principal_type = principal_type
 
     def validate(self):

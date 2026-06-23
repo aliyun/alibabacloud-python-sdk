@@ -25,8 +25,9 @@ class SubmitFileRequest(DaraModel):
         self.project_identifier = project_identifier
         # Whether to skip the pre-deployment check after the file is submitted:
         # 
-        # *   false: Do not skip. After the file is submitted, the system automatically triggers the pre-deployment check. The file becomes available for deployment only after the check is passed.
-        # *   true: Skip. After the file is submitted, the system does not trigger the pre-deployment check. The file can proceed directly to deployment.
+        # - false: Do not skip. After the file is submitted, the system automatically triggers the pre-deployment check. The file becomes available for deployment only after the check is passed.
+        # 
+        # - true: Skip. After the file is submitted, the system does not trigger the pre-deployment check. The file can proceed directly to deployment.
         self.skip_all_deploy_file_extensions = skip_all_deploy_file_extensions
 
     def validate(self):

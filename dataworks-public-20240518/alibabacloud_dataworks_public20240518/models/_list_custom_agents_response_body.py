@@ -13,7 +13,9 @@ class ListCustomAgentsResponseBody(DaraModel):
         paging_info: main_models.ListCustomAgentsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The paging information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListCustomAgentsResponseBodyPagingInfo(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The list of custom agents.
         self.agents = agents
+        # The maximum number of entries returned in this response.
         self.max_results = max_results
+        # The token to retrieve the next page of results. This parameter is empty when there are no more results to return.
         self.next_token = next_token
+        # The total number of entries that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -115,15 +121,25 @@ class ListCustomAgentsResponseBodyPagingInfoAgents(DaraModel):
         name: str = None,
         visibility: str = None,
     ):
+        # The ID of the user who created the agent.
         self.creator_id = creator_id
+        # A description of the custom agent.
         self.description = description
+        # The display name of the custom agent.
         self.display_name = display_name
+        # The time when the agent was created, provided in milliseconds since the Unix epoch.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The time when the agent was last modified, provided in milliseconds since the Unix epoch.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the user who last modified the agent.
         self.modifier_id = modifier_id
+        # The name of the custom agent.
         self.name = name
+        # The visibility level of the custom agent.
         self.visibility = visibility
 
     def validate(self):

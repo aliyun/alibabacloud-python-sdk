@@ -13,9 +13,9 @@ class ListDataQualityRuleTemplatesResponseBody(DaraModel):
         paging_info: main_models.ListDataQualityRuleTemplatesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # The paginated query result of data quality rule templates.
         self.paging_info = paging_info
-        # The request ID.
+        # The API request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The templates.
+        # The list of rule templates.
         self.data_quality_rule_templates = data_quality_rule_templates
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of entries
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -120,21 +120,21 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates
         sampling_config: main_models.ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplatesSamplingConfig = None,
         visible_scope: str = None,
     ):
-        # Sample verification settings
+        # The sample verification settings.
         self.checking_config = checking_config
-        # Rule template Code
+        # The code of the rule template.
         self.code = code
-        # The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+        # The category directory in which the custom template is stored. Levels are separated by forward slashes (/). Each level name can be up to 1,024 characters in length and cannot contain whitespace characters or slashes.
         self.directory_path = directory_path
-        # The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+        # The name of the rule template. It can be a combination of digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 512 characters in length.
         self.name = name
-        # DataWorks workspace ID
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # Settings required for sample collection
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
-        # Available range of templates:
-        # - Tenant: all tenants are available
-        # - Project: only available in the current Project
+        # The available scope of the template:
+        # - Tenant: available to all tenants
+        # - Project: available only in the current project
         self.visible_scope = visible_scope
 
     def validate(self):
@@ -205,26 +205,26 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates
         metric_parameters: str = None,
         setting_config: str = None,
     ):
-        # The name of the sampled metric.
-        # - Count: number of table rows
-        # - Min: minimum value of the field
-        # - Max: The maximum value of the field.
-        # - Avg: field mean
-        # - DistinctCount: number of unique field values
-        # - DistinctPercent: the ratio of the number of unique field values to the number of data rows.
-        # - DuplicatedCount: number of duplicate field values
-        # - DuplicatedPercent: the ratio of the number of duplicate field values to the number of data rows.
-        # - TableSize: table size
-        # - NullValueCount: number of rows with empty fields
-        # - NullValuePercent: the proportion of fields that are empty.
-        # - GroupCount: aggregate each value by field value and the corresponding number of data rows
-        # - CountNotIn: the enumerated value does not match the number of rows.
-        # - CountDistinctNotIn: the number of unique values that the enumerated values do not match.
-        # - UserDefinedSql: use custom SQL to collect samples
+        # The name of the sampling metric.
+        # - Count: the number of table rows
+        # - Min: the minimum value of the field
+        # - Max: the maximum value of the field
+        # - Avg: the average value of the field
+        # - DistinctCount: the number of unique values of the field
+        # - DistinctPercent: the ratio of the number of unique values of the field to the number of data rows
+        # - DuplicatedCount: the number of duplicate values of the field
+        # - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows
+        # - TableSize: the size of the table
+        # - NullValueCount: the number of rows in which the field is null
+        # - NullValuePercent: the ratio of rows in which the field is null
+        # - GroupCount: each value and the corresponding number of data rows after aggregation by field value
+        # - CountNotIn: the number of rows in which the enumeration value does not match
+        # - CountDistinctNotIn: the number of unique values in which the enumeration value does not match
+        # - UserDefinedSql: collect samples by using custom SQL
         self.metric = metric
-        # Parameters required for sample collection
+        # The parameters required for sample collection.
         self.metric_parameters = metric_parameters
-        # Before executing the sample statement, insert some runtime parameter setting statements, which can be up to 1000 characters in length. Currently, only MaxCompute are supported.
+        # The runtime parameter setting statements that are inserted and executed before the sampling statement is executed. This parameter can be up to 1,000 characters in length. Currently, only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -265,9 +265,9 @@ class ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates
         referenced_samples_filter: str = None,
         type: str = None,
     ):
-        # Some types of thresholds need to query some reference samples, and then summarize the values of the reference samples to obtain the threshold for comparison. Here, an expression is used to represent the query method of the reference samples.
+        # Some types of thresholds require reference samples to be queried, and then the values of the reference samples are aggregated to obtain the threshold for comparison. An expression is used here to indicate the query method of the reference samples.
         self.referenced_samples_filter = referenced_samples_filter
-        # Threshold Calculation method
+        # The threshold calculation method.
         # - Fixed
         # - Fluctation
         # - FluctationDiscreate

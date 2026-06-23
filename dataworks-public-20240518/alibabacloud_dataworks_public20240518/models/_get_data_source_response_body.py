@@ -64,16 +64,19 @@ class GetDataSourceResponseBodyDataSource(DaraModel):
     ):
         # The connection configurations of the data source, including the connection address, access identity, and environment information. The envType parameter specifies the environment in which the data source is used. Valid values of the envType parameter:
         # 
-        # *   Dev: development environment
-        # *   Prod: production environment
+        # - Dev: development environment
+        # 
+        # - Prod: production environment
         # 
         # The parameters that you need to configure for the data source vary based on the mode in which the data source is added. For more information, see [Data source connection information (ConnectionProperties)](https://help.aliyun.com/document_detail/2852465.html).
         self.connection_properties = connection_properties
         # The mode in which the data source is added. The mode varies based on the data source type. Valid values:
         # 
-        # *   InstanceMode: instance mode
-        # *   UrlMode: connection string mode
-        # *   CdhMode: CDH cluster mode
+        # - InstanceMode: instance mode
+        # 
+        # - UrlMode: connection string mode
+        # 
+        # - CdhMode: CDH cluster mode
         self.connection_properties_mode = connection_properties_mode
         # The time when the data source was added. This value is a UNIX timestamp.
         self.create_time = create_time

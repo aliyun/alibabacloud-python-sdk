@@ -72,7 +72,9 @@ class ListDataSourceSharedRulesResponseBodyDataSourceSharedRules(DaraModel):
         # The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
         self.data_source_id = data_source_id
         # The environment to which the target data source belongs. The values are as follows:
+        # 
         # - Dev: the development environment.
+        # 
         # - Prod: the production environment.
         self.env_type = env_type
         # The rule ID.

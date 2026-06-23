@@ -13,9 +13,9 @@ class ListDataQualityEvaluationTasksResponseBody(DaraModel):
         paging_info: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # The pagination information.
+        # 质量校验任务分页查询结果
         self.paging_info = paging_info
-        # The request ID.
+        # API请求ID
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfo(DaraModel):
         page_size: str = None,
         total_count: str = None,
     ):
-        # The data quality monitoring tasks.
+        # 质量校验任务
         self.data_quality_evaluation_tasks = data_quality_evaluation_tasks
-        # The page number.
+        # 页码
         self.page_number = page_number
-        # The number of entries per page.
+        # 页大小
         self.page_size = page_size
-        # The total number of entries returned.
+        # 总条数
         self.total_count = total_count
 
     def validate(self):
@@ -124,23 +124,23 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         trigger: main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger = None,
     ):
         self.data_source_id = data_source_id
-        # The description of the data quality monitoring task. The description can be up to 65,535 characters in length.
+        # 数据质量校验任务描述，最长65535个字符
         self.description = description
-        # The callback configurations of the task during the instance lifecycle. Blocking an auto triggered node is a type of callback event. Only this type is supported.
+        # 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
         self.hooks = hooks
-        # The ID of the data quality monitoring task.
+        # 数据质量校验任务ID
         self.id = id
-        # The name of the data quality monitoring task. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+        # 数据质量校验任务名称，数字、英文字母、汉字、半角全角标点符号组合，最长255个字符。
         self.name = name
-        # The configurations for alert notifications.
+        # 告警配置
         self.notifications = notifications
-        # The DataWorks workspace ID.
+        # DataWorks工作空间ID
         self.project_id = project_id
-        # The configuration of the data source. The value of the queue field is default, and that of the sqlEngine field can be set to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL. The value default indicates the YARN queue for E-MapReduce (EMR) tasks.
+        # 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时SQL引擎指定为SPARK_SQL|KYUUBI|PRESTO_SQL|HIVE_SQL
         self.runtime_conf = runtime_conf
-        # The monitored object of the task.
+        # 数据质量校验任务的监控对象
         self.target = target
-        # The trigger configuration of the task.
+        # 数据质量校验任务的触发配置
         self.trigger = trigger
 
     def validate(self):
@@ -240,11 +240,12 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # The IDs of the auto triggered nodes of which the instances are successfully run. This parameter takes effect only if the Type parameter is set to ByScheduledTaskInstance.
+        # type=ByScheduledTaskInstance时生效
+        # ,具体指明哪些调度节点的实例执行成功后可以触发
         self.task_ids = task_ids
-        # The trigger condition of the task. Valid values:
+        # 何种事件可以触发质量校验任务执行
         # 
-        # *   ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
+        # - ByScheduledTaskInstance：调度实例运行成功
         self.type = type
 
     def validate(self):
@@ -281,23 +282,22 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         table_guid: str = None,
         type: str = None,
     ):
-        # The type of the database to which the table belongs. Valid values:
-        # 
-        # *   maxcompute
-        # *   emr
-        # *   cdh
-        # *   hologres
-        # *   analyticdb_for_postgresql
-        # *   analyticdb_for_mysql
-        # *   starrocks
+        # 表类型的数据集，表所属的数据库类型
+        # - maxcompute
+        # - emr
+        # - cdh
+        # - hologres
+        # - analyticdb_for_postgresql
+        # - analyticdb_for_mysql
+        # - starrocks
         self.database_type = database_type
-        # The configuration of the partitioned table.
+        # 分区表的分区设置
         self.partition_spec = partition_spec
-        # The ID of the table in Data Map.
+        # 表在数据地图中的唯一ID
         self.table_guid = table_guid
-        # The type of the monitored object. Valid values:
+        # 监控对象类型
         # 
-        # *   Table
+        # - Table
         self.type = type
 
     def validate(self):
@@ -344,9 +344,9 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         condition: str = None,
         notifications: List[main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications] = None,
     ):
-        # The trigger condition of the alert notification.
+        # Notification触发条件
         self.condition = condition
-        # The configurations for the alert notification.
+        # 具体的告警设置
         self.notifications = notifications
 
     def validate(self):
@@ -389,9 +389,9 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         notification_channels: List[main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[main_models.ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # The alert notification methods.
+        # 告警方式配置
         self.notification_channels = notification_channels
-        # The alert recipients.
+        # 告警接收人配置
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -444,17 +444,16 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The extended information in the JSON format. For example, the DingTalk chatbot can remind all members in a DingTalk group by using the at sign (@).
+        # 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
         self.extension = extension
-        # The type of the alert recipient. Valid values:
-        # 
-        # *   AliUid: Alibaba Cloud account ID
-        # *   WebhookUrl: URL of a custom webhook
-        # *   DingdingUrl: DingTalk chatbot URL
-        # *   FeishuUrl: Lark chatbot URL
-        # *   WeixinUrl: WeCom chatbot URL
+        # 告警接收人类型
+        # - AliUid - 阿里云账号Uid
+        # - WebhookUrl - 自定义 webhook URL
+        # - DingdingUrl - 钉钉机器人Url
+        # - FeishuUrl - 飞书机器人Url
+        # - WeixinUrl - 企微机器人Url
         self.receiver_type = receiver_type
-        # The alert recipients.
+        # 告警接收人具体值
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -494,7 +493,7 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         self,
         channels: List[str] = None,
     ):
-        # The alert notification methods.
+        # 告警方式
         self.channels = channels
 
     def validate(self):
@@ -523,11 +522,10 @@ class ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationT
         condition: str = None,
         type: str = None,
     ):
-        # The trigger configuration of the callback event.
+        # Hook触发条件
         self.condition = condition
-        # The type of the callback event. Valid values:
-        # 
-        # *   BlockTaskInstance. The value indicates that an auto triggered node is blocked.
+        # 后续处理动作类型
+        # - BlockTaskInstance：阻塞DataWorks任务实例执行
         self.type = type
 
     def validate(self):

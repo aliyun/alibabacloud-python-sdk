@@ -133,9 +133,11 @@ class ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles(Dar
     ):
         # The change type, which is an integer. Valid values:
         # 
-        # *   0: addition
-        # *   1: update
-        # *   2: deletion
+        # - 0: addition
+        # 
+        # - 1: update
+        # 
+        # - 2: deletion
         self.change_type = change_type
         # The comment for committing.
         self.comment = comment
@@ -167,31 +169,49 @@ class ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles(Dar
         self.smoke_test_status = smoke_test_status
         # The status of the code file of the current version. Valid values:
         # 
-        # *   2: Commit check in progress.
-        # *   3: Commit check passed.
-        # *   4: Commit check failed.
-        # *   10: Committing.
-        # *   11: Committed.
-        # *   20: Approved.
-        # *   21: Rejected.
-        # *   22: Warning detected during checking.
-        # *   23: Under code review.
-        # *   24: Code review rejected.
-        # *   80: Deployment package created.
-        # *   100: Deploying.
-        # *   101: Deployed to the production environment.
-        # *   200: Cancelled.
+        # - 2: Commit check in progress.
+        # 
+        # - 3: Commit check passed.
+        # 
+        # - 4: Commit check failed.
+        # 
+        # - 10: Committing.
+        # 
+        # - 11: Committed.
+        # 
+        # - 20: Approved.
+        # 
+        # - 21: Rejected.
+        # 
+        # - 22: Warning detected during checking.
+        # 
+        # - 23: Under code review.
+        # 
+        # - 24: Code review rejected.
+        # 
+        # - 80: Deployment package created.
+        # 
+        # - 100: Deploying.
+        # 
+        # - 101: Deployed to the production environment.
+        # 
+        # - 200: Cancelled.
         self.status = status
         # The DataWorks tenant ID.
         self.tenant_id = tenant_id
         # The module to which the file belongs. Valid values:
         # 
-        # *   NORMAL: The file is used for DataStudio.
-        # *   MANUAL: The file is used for a manually triggered node.
-        # *   MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # *   SKIP: The file is used for a dry-run node in DataStudio.
-        # *   ADHOCQUERY: The file is used for an ad hoc query.
-        # *   COMPONENT: The file is used for a script template.
+        # - NORMAL: The file is used for DataStudio.
+        # 
+        # - MANUAL: The file is used for a manually triggered node.
+        # 
+        # - MANUAL_BIZ: The file is used for a manually triggered workflow.
+        # 
+        # - SKIP: The file is used for a dry-run node in DataStudio.
+        # 
+        # - ADHOCQUERY: The file is used for an ad hoc query.
+        # 
+        # - COMPONENT: The file is used for a script template.
         self.use_type = use_type
 
     def validate(self):

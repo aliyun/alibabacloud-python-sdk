@@ -22,46 +22,58 @@ class ListWorkflowInstancesShrinkRequest(DaraModel):
         unified_workflow_instance_id: int = None,
         workflow_id: int = None,
     ):
-        # The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
+        # The business date. This is generally 00:00:00 of the day before the scheduled instance trigger time, in millisecond-level timestamp format, such as 1743350400000.
         # 
         # This parameter is required.
         self.biz_date = biz_date
         self.env_type = env_type
+        # The filter. In JSON format, multiple filter conditions have an AND relationship. Currently supported fields are: `status, executionDate`.
         self.filter = filter
-        # The IDs of the workflow instances. You can query multiple instances at a time by instance ID.
+        # The list of workflow instance IDs. You can use this parameter to query multiple workflow instances at a time.
         self.ids_shrink = ids_shrink
-        # The instance name. Fuzzy match is supported.
+        # The name. Fuzzy match is supported.
         self.name = name
-        # The account ID of the workflow instance owner.
+        # The account ID of the owner.
         self.owner = owner
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The workspace ID.
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The fields used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
+        # The list of sort fields. Sorting by trigger time, start time, and other fields is supported. The format is "sort field + sort order (Desc/Asc)" (Asc can be omitted). Valid values of the sort field:
         # 
-        # *   TriggerTime (Desc/Asc)
-        # *   StartedTime (Desc/Asc)
-        # *   FinishedTime (Desc/Asc)
-        # *   CreateTime (Desc/Asc)
-        # *   Id (Desc/Asc)
+        # - TriggerTime (Desc/Asc)
         # 
-        # Default value: Id Desc.
+        # - StartedTime (Desc/Asc)
+        # 
+        # - FinishedTime (Desc/Asc)
+        # 
+        # - CreateTime (Desc/Asc)
+        # 
+        # - Id (Desc/Asc)
+        # 
+        # Default value: Id Desc
         self.sort_by = sort_by
+        # The list of tags. Results are returned if any one of the specified tags is matched.
         self.tags_shrink = tags_shrink
-        # The type of the workflow instance. Valid values:
+        # The type of the workflow instance.
         # 
-        # *   Normal: Scheduled execution
-        # *   Manual: Manually triggered node
-        # *   SmokeTest: Smoke test
-        # *   SupplementData: Data backfill
-        # *   ManualWorkflow: Manually triggered workflow
-        # *   TriggerWorkflow: Triggered Workflow
+        # - Normal: Periodic scheduling
+        # 
+        # - Manual: Manual task
+        # 
+        # - SmokeTest: Testing
+        # 
+        # - SupplementData: Backfill data
+        # 
+        # - ManualWorkflow: Manual workflow
+        # 
+        # - TriggerWorkflow: Trigger-based workflow
         self.type = type
+        # The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id

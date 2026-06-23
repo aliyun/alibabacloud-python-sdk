@@ -12,7 +12,7 @@ class CreateDataSourceSharedRuleResponseBody(DaraModel):
     ):
         # The sharing rule ID.
         self.id = id
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

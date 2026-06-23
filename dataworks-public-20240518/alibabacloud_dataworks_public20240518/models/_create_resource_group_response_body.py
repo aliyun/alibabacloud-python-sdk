@@ -12,9 +12,9 @@ class CreateResourceGroupResponseBody(DaraModel):
         resource_group_order: main_models.CreateResourceGroupResponseBodyResourceGroupOrder = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The information about the order that is used to create the serverless resource group.
+        # Information about the resource group creation order.
         self.resource_group_order = resource_group_order
         # Indicates whether the request was successful.
         self.success = success
@@ -60,11 +60,11 @@ class CreateResourceGroupResponseBodyResourceGroupOrder(DaraModel):
         order_id: int = None,
         order_instance_id: str = None,
     ):
-        # The ID of the serverless resource group.
+        # The unique identifier of the general-purpose resource group.
         self.id = id
-        # The ID of the order that is used to create the serverless resource group.
+        # The ID of the resource group creation order.
         self.order_id = order_id
-        # The instance ID of the order that is used to create the serverless resource group.
+        # The instance ID of the resource group creation order.
         self.order_instance_id = order_instance_id
 
     def validate(self):

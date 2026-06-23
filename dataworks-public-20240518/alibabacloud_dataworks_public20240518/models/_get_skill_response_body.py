@@ -13,7 +13,9 @@ class GetSkillResponseBody(DaraModel):
         request_id: str = None,
         skill: main_models.GetSkillResponseBodySkill = None,
     ):
+        # The unique ID for the request.
         self.request_id = request_id
+        # The returned Skill object.
         self.skill = skill
 
     def validate(self):
@@ -58,17 +60,29 @@ class GetSkillResponseBodySkill(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.GetSkillResponseBodySkillVisibilityScope = None,
     ):
+        # **The content of the SKILL.md file.**
         self.body = body
+        # A temporary download link for `bundle.zip`, which does not require authentication and will expire.
         self.bundle_url = bundle_url
+        # The ID of the user who created the Skill.
         self.creator_id = creator_id
+        # **The Skill description.**
         self.description = description
+        # The time the Skill was created, provided as a UNIX timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The time the Skill was last modified, provided as a UNIX timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the user who last modified the Skill.
         self.modifier_id = modifier_id
+        # **The name of the Skill.**
         self.name = name
+        # **The visibility level.**
         self.visibility = visibility
+        # **The visibility scope.**
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -153,7 +167,9 @@ class GetSkillResponseBodySkillVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # **A list of project IDs that can access the Skill.**
         self.project_ids = project_ids
+        # A list of user IDs that can access the Skill.
         self.user_ids = user_ids
 
     def validate(self):

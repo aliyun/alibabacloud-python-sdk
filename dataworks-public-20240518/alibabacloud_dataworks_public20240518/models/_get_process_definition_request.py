@@ -9,6 +9,8 @@ class GetProcessDefinitionRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the process definition.
+        # 
         # This parameter is required.
         self.id = id
 

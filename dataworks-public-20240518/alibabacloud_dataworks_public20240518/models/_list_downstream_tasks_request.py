@@ -24,8 +24,9 @@ class ListDownstreamTasksRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
 
     def validate(self):

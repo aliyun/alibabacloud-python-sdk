@@ -9,6 +9,8 @@ class GetSkillRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The unique name of the Skill.
+        # 
         # This parameter is required.
         self.name = name
 

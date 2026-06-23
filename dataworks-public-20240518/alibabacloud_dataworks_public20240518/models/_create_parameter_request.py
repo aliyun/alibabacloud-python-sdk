@@ -18,16 +18,34 @@ class CreateParameterRequest(DaraModel):
         scope: str = None,
         type: str = None,
     ):
+        # The description of the parameter.
         self.description = description
+        # The parameter name. It must be unique within the workspace, be prefixed with `workspace.`, and not exceed 255 characters. The part of the name after the prefix must start with a letter and can contain only letters, digits, and underscores (_).
+        # 
         # This parameter is required.
         self.name = name
+        # The account ID of the owner.
+        # 
         # This parameter is required.
         self.owner = owner
+        # The workspace ID. This parameter is required when `Scope` is set to `Project`.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The value configurations for the parameter. A configuration for the production environment is required. If you provide duplicate configurations for an environment, only the first one is used.
+        # 
         # This parameter is required.
         self.properties = properties
+        # The scope of the parameter. The default value is `Project`. No other values are currently supported.
         self.scope = scope
+        # The type of the parameter.
+        # 
+        # - `PlainConstant`: plaintext constant.
+        # 
+        # - `SecretConstant`: secret constant.
+        # 
+        # - `Variable`: variable.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -101,7 +119,13 @@ class CreateParameterRequestProperties(DaraModel):
         env_type: str = None,
         value: str = None,
     ):
+        # The environment.
+        # 
+        # - `Prod`: production environment
+        # 
+        # - `Dev`: development environment
         self.env_type = env_type
+        # The value of the parameter. The value can contain Chinese characters, letters, digits, and the following special characters: /, :, ., [, ], ,, \\, \\", ", _, =, ?, space, carriage return, line feed, +, -, \\*, %, &, @, !, $, #, {, and }.
         self.value = value
 
     def validate(self):

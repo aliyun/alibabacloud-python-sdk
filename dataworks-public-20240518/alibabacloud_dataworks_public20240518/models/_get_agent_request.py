@@ -9,6 +9,8 @@ class GetAgentRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the skill to retrieve.
+        # 
         # This parameter is required.
         self.name = name
 

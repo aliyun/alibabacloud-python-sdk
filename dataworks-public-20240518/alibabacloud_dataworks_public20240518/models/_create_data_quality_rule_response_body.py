@@ -12,7 +12,7 @@ class CreateDataQualityRuleResponseBody(DaraModel):
     ):
         # The ID of the rule.
         self.id = id
-        # The request ID.
+        # The ID of the API request.
         self.request_id = request_id
 
     def validate(self):

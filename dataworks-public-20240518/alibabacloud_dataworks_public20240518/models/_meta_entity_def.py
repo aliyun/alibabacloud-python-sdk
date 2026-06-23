@@ -19,13 +19,21 @@ class MetaEntityDef(DaraModel):
         modify_time: int = None,
         name: str = None,
     ):
+        # A list of entity attribute definition objects.
         self.attribute_defs = attribute_defs
+        # The time when the definition was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The entity type.
         self.entity_type = entity_type
+        # The extension mode. Valid values: NONE and TABLE. NONE indicates a custom type. TABLE indicates that the type extends a table type.
         self.extend = extend
+        # The time when the definition was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.modify_time = modify_time
+        # The name of the type definition.
         self.name = name
 
     def validate(self):

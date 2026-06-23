@@ -13,8 +13,9 @@ class ListAgentSessionArtifactsResponseBody(DaraModel):
         json_rpc_response: main_models.ListAgentSessionArtifactsResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
+        # The JSON-RPC response.
         self.json_rpc_response = json_rpc_response
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,8 +53,11 @@ class ListAgentSessionArtifactsResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult = None,
     ):
+        # The ID passed by the caller. The value is returned as-is in the response.
         self.id = id
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
+        # The paginated information of artifacts.
         self.result = result
 
     def validate(self):
@@ -97,8 +101,11 @@ class ListAgentSessionArtifactsResponseBodyJsonRpcResponseResult(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The list of artifacts.
         self.artifacts = artifacts
+        # The actual number of entries returned per page.
         self.max_results = max_results
+        # The token for the next page. The value is null if there are no more pages.
         self.next_token = next_token
 
     def validate(self):
@@ -148,8 +155,11 @@ class ListAgentSessionArtifactsResponseBodyJsonRpcResponseResultArtifacts(DaraMo
         artifact_path: str = None,
         artifact_type: str = None,
     ):
+        # The name of the artifact.
         self.artifact_name = artifact_name
+        # The path of the artifact.
         self.artifact_path = artifact_path
+        # The type of the artifact, which is typically the file extension.
         self.artifact_type = artifact_type
 
     def validate(self):

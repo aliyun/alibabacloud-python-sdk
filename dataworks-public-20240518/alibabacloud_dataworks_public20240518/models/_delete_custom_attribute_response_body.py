@@ -13,7 +13,9 @@ class DeleteCustomAttributeResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The result of the deletion.
         self.result = result
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

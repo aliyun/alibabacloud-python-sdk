@@ -14,29 +14,35 @@ class ListPipelineRunsRequest(DaraModel):
         project_id: int = None,
         status: str = None,
     ):
-        # The ID of the user who creates the processes. This parameter specifies a filter condition.
+        # Filters the results by the creator of the pipeline.
         self.creator = creator
+        # The ID of the artifact.
         self.object_id = object_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. The default value is 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can obtain this ID from the Workspace Management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter specifies the DataWorks workspace to use for the API call.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The status of the processes. This parameter specifies a filter condition.
+        # Filters the results by the current status of the pipeline.
         # 
         # Valid values:
         # 
-        # *   Init
-        # *   Running
-        # *   Success
-        # *   Fail
-        # *   Termination
-        # *   Cancel
+        # - `Init`: initializing
+        # 
+        # - `Running`: running
+        # 
+        # - `Success`: succeeded
+        # 
+        # - `Fail`: failed
+        # 
+        # - `Termination`: terminated
+        # 
+        # - `Cancel`: canceled
         self.status = status
 
     def validate(self):

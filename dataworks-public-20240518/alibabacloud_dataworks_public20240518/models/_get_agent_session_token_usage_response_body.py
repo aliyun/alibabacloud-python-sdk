@@ -11,8 +11,9 @@ class GetAgentSessionTokenUsageResponseBody(DaraModel):
         json_rpc_response: main_models.GetAgentSessionTokenUsageResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
+        # The JSON-RPC result.
         self.json_rpc_response = json_rpc_response
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,8 +51,11 @@ class GetAgentSessionTokenUsageResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.GetAgentSessionTokenUsageResponseBodyJsonRpcResponseResult = None,
     ):
+        # The ID provided by the requester, which is echoed in the response.
         self.id = id
+        # The JSON-RPC version. The value is always 2.0.
         self.jsonrpc = jsonrpc
+        # Token usage result.
         self.result = result
 
     def validate(self):
@@ -97,10 +101,15 @@ class GetAgentSessionTokenUsageResponseBodyJsonRpcResponseResult(DaraModel):
         thoughts_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The cumulative number of cache-hit tokens.
         self.cached_tokens = cached_tokens
+        # **Cumulative number of completion tokens generated.**
         self.completion_tokens = completion_tokens
+        # **Cumulative number of prompt tokens consumed.**
         self.prompt_tokens = prompt_tokens
+        # Cumulative number of tokens used for thoughts.
         self.thoughts_tokens = thoughts_tokens
+        # The cumulative number of all tokens.
         self.total_tokens = total_tokens
 
     def validate(self):

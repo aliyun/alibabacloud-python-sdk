@@ -18,13 +18,21 @@ class UpdateProcessDefinitionRequest(DaraModel):
         notification_services: List[main_models.UpdateProcessDefinitionRequestNotificationServices] = None,
         rule_conditions: List[main_models.UpdateProcessDefinitionRequestRuleConditions] = None,
     ):
+        # A list of approval nodes. This parameter does not apply to system policies.
         self.approval_nodes = approval_nodes
+        # An idempotent parameter. It ensures that retried requests do not result in duplicate operations.
         self.client_token = client_token
+        # The description of the process definition.
         self.description = description
+        # The ID of the process definition.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the process definition.
         self.name = name
+        # The notification service configurations.
         self.notification_services = notification_services
+        # A list of rule conditions. This parameter does not apply to system policies.
         self.rule_conditions = rule_conditions
 
     def validate(self):
@@ -116,8 +124,25 @@ class UpdateProcessDefinitionRequestRuleConditions(DaraModel):
         scope: str = None,
         type: str = None,
     ):
+        # The conditional expression. Format: ((#type==\\"typeValue\\")). For example: ((#odpsProject==\\"PX_BEIJING_TEST\\")).
         self.expression = expression
+        # The phase in which the rule takes effect. Valid values:
+        # 
+        # - **Deployment**: Determines whether the approval policy applies when an application is submitted.
+        # 
+        # - **Running**: Determines whether to skip the approval during the approval process. This phase is supported only for MaxCompute.
         self.scope = scope
+        # The type of the condition. Valid values:
+        # 
+        # - `odpsProject`
+        # 
+        # - `hologresInstanceId`
+        # 
+        # - `sensibleLevel`
+        # 
+        # - `tableGuid`
+        # 
+        # - `projectId`
         self.type = type
 
     def validate(self):
@@ -159,8 +184,19 @@ class UpdateProcessDefinitionRequestNotificationServices(DaraModel):
         extension: str = None,
         receiver: str = None,
     ):
+        # The notification channel. Valid values:
+        # 
+        # - Mail
+        # 
+        # - Sms
+        # 
+        # - DingRobot
+        # 
+        # - Weixin
         self.channel = channel
+        # Additional information in JSON format. For example, use {"atAll":"true"} to specify whether to notify all members.
         self.extension = extension
+        # The webhook URL. This parameter is required when `Channel` is set to `DingRobot` or `Weixin`.
         self.receiver = receiver
 
     def validate(self):
@@ -203,9 +239,51 @@ class UpdateProcessDefinitionRequestApprovalNodes(DaraModel):
         extension_properties: Dict[str, Any] = None,
         name: str = None,
     ):
+        # The approver type for the node. Valid values:
+        # 
+        # - `DataWorksProjectRole`: A workspace role.
+        # 
+        # - `DataWorksProjectMember`: A workspace member.
+        # 
+        # - `TableAdministrator`: A table administrator.
+        # 
+        # - `TableOrProjectAdministrator`: The administrator of the table or project.
+        # 
+        # - `AliyunResourceOwner`: An Alibaba Cloud account.
+        # 
+        # - `MaxComputeRole`: A MaxCompute administrator.
+        # 
+        # - `DLFAdmin`: A DlfLegacy administrator.
+        # 
+        # - `DLFNextAdmin`: A DLFNext administrator.
+        # 
+        # - `TenantRole`: A tenant role.
+        # 
+        # - `EmrAdministrator`: An EMR administrator.
+        # 
+        # - `LindormAdministrator`: A Lindorm administrator.
+        # 
+        # - `AliyunRamUser`: A RAM user.
         self.account_type = account_type
+        # Specifies the approvers. The required value depends on the `AccountType`:
+        # 
+        # - If `AccountType` is `DataWorksProjectMember`, this parameter specifies the user IDs of workspace members.
+        # 
+        # - If `AccountType` is `DataWorksProjectRole`, this parameter specifies the codes of workspace roles.
+        # 
+        # - If `AccountType` is `MaxComputeRole`, this parameter specifies the MaxCompute roles.
+        # 
+        # - If `AccountType` is `TenantRole`, this parameter specifies the codes of tenant roles.
+        # 
+        # - If `AccountType` is `AliyunRamUser`, this parameter specifies the user IDs of RAM users.
         self.assignees = assignees
+        # Additional properties that are required for specific `AccountType` values:
+        # 
+        # - If `AccountType` is `DataWorksProjectMember`: The key is `projectId` and the value is the user ID of a workspace member. Use commas (,) to separate multiple user IDs.
+        # 
+        # - If `AccountType` is `MaxComputeRole`: The key is the MaxCompute project name and the value is the role name in MaxCompute. Use commas (,) to separate multiple role names.
         self.extension_properties = extension_properties
+        # The name of the node.
         self.name = name
 
     def validate(self):

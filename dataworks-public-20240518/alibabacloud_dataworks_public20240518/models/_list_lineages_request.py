@@ -17,14 +17,27 @@ class ListLineagesRequest(DaraModel):
         src_entity_id: str = None,
         src_entity_name: str = None,
     ):
+        # The ID of the destination entity. This can be a table or column ID returned by the `ListTables` or `ListColumns` API, or the ID of a custom entity.
         self.dst_entity_id = dst_entity_id
+        # The name of the destination entity. This parameter supports fuzzy matching.
         self.dst_entity_name = dst_entity_name
+        # Specifies whether to include lineage relationships. Default: false.
         self.need_attach_relationship = need_attach_relationship
+        # The sort order. Default: `Asc`. Valid values:
+        # 
+        # - `Asc`: ascending
+        # 
+        # - `Desc`: descending
         self.order = order
+        # The page number to retrieve. Default: 1.
         self.page_number = page_number
+        # The number of entries per page. Default: 10. Maximum: 100.
         self.page_size = page_size
+        # The field to sort the results by. The default is `Name`, which sorts by entity name.
         self.sort_by = sort_by
+        # The ID of the source entity. This can be a table or column ID returned by the `ListTables` or `ListColumns` API, or the ID of a custom entity.
         self.src_entity_id = src_entity_id
+        # The name of the source entity. This parameter supports fuzzy matching.
         self.src_entity_name = src_entity_name
 
     def validate(self):

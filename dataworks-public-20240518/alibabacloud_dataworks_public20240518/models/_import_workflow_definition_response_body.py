@@ -68,23 +68,27 @@ class ImportWorkflowDefinitionResponseBodyAsyncJob(DaraModel):
         self.progress = progress
         # The response.
         # 
-        # >  The workflow ID is returned.
+        # > The workflow ID is returned.
         self.response = response
         # The status of the asynchronous task.
         # 
         # Valid values:
         # 
-        # *   Running: The asynchronous task is running.
-        # *   Success: The asynchronous task is complete.
-        # *   Fail: The asynchronous task fails.
-        # *   Cancel: The asynchronous task is canceled.
+        # - Running: The asynchronous task is running.
+        # 
+        # - Success: The asynchronous task is complete.
+        # 
+        # - Fail: The asynchronous task fails.
+        # 
+        # - Cancel: The asynchronous task is canceled.
         self.status = status
         # The type of the asynchronous task.
         # 
         # Valid values:
         # 
-        # *   Create: The asynchronous task is used to create an object.
-        # *   Cancel: The asynchronous task is used to cancel an operation.
+        # - Create: The asynchronous task is used to create an object.
+        # 
+        # - Cancel: The asynchronous task is used to cancel an operation.
         self.type = type
 
     def validate(self):

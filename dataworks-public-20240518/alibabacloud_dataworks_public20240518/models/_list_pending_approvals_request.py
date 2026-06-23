@@ -20,16 +20,27 @@ class ListPendingApprovalsRequest(DaraModel):
         resource_type: List[str] = None,
         start_time: int = None,
     ):
+        # The access types.
         self.access_types = access_types
+        # The resource schema type.
+        # 
         # This parameter is required.
         self.def_schema = def_schema
+        # The end time of the query range, specified as a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # The grantee object used to filter results.
         self.grantee = grantee
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
+        # The number of entries to return per page. Default: 10. Maximum: 200.
         self.page_size = page_size
+        # The criteria to filter resources.
         self.resource = resource
+        # The resource type, which corresponds to a leaf node name. You can specify multiple values. A business context can map to multiple leaf node names.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The start time of the query range, specified as a Unix timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -112,8 +123,11 @@ class ListPendingApprovalsRequestResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
+        # The `name` of the `ResourceSchema` used to parse the resource.
         self.def_schema = def_schema
+        # The `version` of the `ResourceSchema` used to parse the resource.
         self.def_version = def_version
+        # The resource metadata. Its content is constrained by the `ResourceSchema`.
         self.meta_data = meta_data
 
     def validate(self):
@@ -154,7 +168,9 @@ class ListPendingApprovalsRequestGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
+        # The ID of the principal.
         self.principal_id = principal_id
+        # The type of principal.
         self.principal_type = principal_type
 
     def validate(self):

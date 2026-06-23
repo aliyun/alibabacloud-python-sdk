@@ -11,7 +11,7 @@ class GetLineageRelationshipResponseBody(DaraModel):
         lineage_relationship: main_models.LineageRelationship = None,
         request_id: str = None,
     ):
-        # The lineage structure.
+        # The lineage relationship object.
         self.lineage_relationship = lineage_relationship
         # The request ID.
         self.request_id = request_id

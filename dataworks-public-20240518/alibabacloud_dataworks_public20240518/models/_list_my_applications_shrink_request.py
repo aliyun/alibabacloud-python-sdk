@@ -16,17 +16,43 @@ class ListMyApplicationsShrinkRequest(DaraModel):
         start_time: int = None,
         statuses_shrink: str = None,
     ):
+        # The resource type.
+        # 
         # This parameter is required.
         self.def_schema = def_schema
+        # The end time of the application, specified as a Unix timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # A token that you can use in a subsequent request to retrieve the next page of results.
         self.next_token = next_token
+        # The number of entries to return on each page. Default value: 10. Maximum value: 200.
         self.page_size = page_size
+        # The search criteria for the resource.
         self.resource_shrink = resource_shrink
+        # The name of the leaf node that specifies the resource type. You can specify multiple resource types. Note that different leaf node names can map to the same business logic.
+        # 
         # This parameter is required.
         self.resource_type_shrink = resource_type_shrink
+        # The start time of the application, specified as a Unix timestamp in milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The approval statuses for filtering. Valid values:
+        # 
+        # - `WaitApproval`: Pending approval
+        # 
+        # - `Confirmed`: Pending authorization
+        # 
+        # - `RejectApproval`: Approval rejected
+        # 
+        # - `AuthorizeSucceed`: Authorization succeeded
+        # 
+        # - `AuthorizeFailed`: Authorization failed
+        # 
+        # - `Deleted`: The application was deleted.
+        # 
+        # - `Canceled`: The application was canceled.
         self.statuses_shrink = statuses_shrink
 
     def validate(self):

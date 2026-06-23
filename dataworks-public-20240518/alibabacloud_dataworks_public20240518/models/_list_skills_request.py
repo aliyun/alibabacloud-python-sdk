@@ -14,9 +14,13 @@ class ListSkillsRequest(DaraModel):
         q: str = None,
         visibility: List[str] = None,
     ):
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The pagination token for the next page of results. Omit this for the first request. For subsequent requests, set this to the `NextToken` from the previous response.
         self.next_token = next_token
+        # The search keyword for a fuzzy match on Skill names.
         self.q = q
+        # Filters the results by visibility level. You can specify multiple values.
         self.visibility = visibility
 
     def validate(self):

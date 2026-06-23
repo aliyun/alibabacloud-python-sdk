@@ -10,7 +10,9 @@ class EnableProcessDefinitionRequest(DaraModel):
         client_token: str = None,
         id: str = None,
     ):
+        # The idempotence token. A UUID is recommended.
         self.client_token = client_token
+        # **process definition ID**
         self.id = id
 
     def validate(self):

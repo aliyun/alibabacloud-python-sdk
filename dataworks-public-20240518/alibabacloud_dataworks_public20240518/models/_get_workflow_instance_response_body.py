@@ -77,8 +77,9 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(DaraModel):
         self.create_user = create_user
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -98,26 +99,39 @@ class GetWorkflowInstanceResponseBodyWorkflowInstance(DaraModel):
         self.started_time = started_time
         # The status of the workflow instance. Valid values:
         # 
-        # *   NotRun: The instance is not run.
-        # *   Running: The instance is running.
-        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
-        # *   CheckingCondition: Branch conditions are being checked for the instance.
-        # *   WaitResource: The instance is waiting for resources.
-        # *   Failure: The instance fails to be run.
-        # *   Success: The instance is successfully run.
-        # *   Checking: Data quality is being checked for the instance.
+        # - NotRun: The instance is not run.
+        # 
+        # - Running: The instance is running.
+        # 
+        # - WaitTime: The instance is waiting for the scheduling time to arrive.
+        # 
+        # - CheckingCondition: Branch conditions are being checked for the instance.
+        # 
+        # - WaitResource: The instance is waiting for resources.
+        # 
+        # - Failure: The instance fails to be run.
+        # 
+        # - Success: The instance is successfully run.
+        # 
+        # - Checking: Data quality is being checked for the instance.
         self.status = status
         # The task tag.
         self.tags = tags
         # The type of the workflow instance. Valid values:
         # 
-        # *   Normal: Scheduled execution
-        # *   Manual: Manually triggered node
-        # *   SmokeTest: Testing
-        # *   SupplementData: Data backfill
-        # *   ManualWorkflow: Manually triggered workflow
-        # *   TriggerWorkflow: Triggered Workflow
+        # - Normal: Scheduled execution
+        # 
+        # - Manual: Manually triggered node
+        # 
+        # - SmokeTest: Testing
+        # 
+        # - SupplementData: Data backfill
+        # 
+        # - ManualWorkflow: Manually triggered workflow
+        # 
+        # - TriggerWorkflow: Triggered Workflow
         self.type = type
+        # The unified pipeline instance ID. For all pipeline instances triggered under the same data timestamp in a single trigger, this field value is identical.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id

@@ -63,11 +63,13 @@ class ListSchemasResponseBodyPagingInfo(DaraModel):
         schemas: List[main_models.Schema] = None,
         total_count: int = None,
     ):
+        # Page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The schemas.
         self.schemas = schemas
+        # Total number of entries.
         self.total_count = total_count
 
     def validate(self):

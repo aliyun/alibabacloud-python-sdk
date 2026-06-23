@@ -13,7 +13,9 @@ class GetProcessInstanceResponseBody(DaraModel):
         process_instance: main_models.GetProcessInstanceResponseBodyProcessInstance = None,
         request_id: str = None,
     ):
+        # Details of the approval process instance.
         self.process_instance = process_instance
+        # The request ID. Use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,15 +60,33 @@ class GetProcessInstanceResponseBodyProcessInstance(DaraModel):
         status: str = None,
         title: str = None,
     ):
+        # The user ID of the applicant.
         self.applicator = applicator
+        # The username of the applicant\\"s Alibaba Cloud account.
         self.applicator_name = applicator_name
+        # The approval policy applied to this process instance.
         self.approval_process_definition = approval_process_definition
+        # The approval tasks.
         self.approval_tasks = approval_tasks
+        # The authorization failure message.
+        # 
+        # **Note**: This parameter is returned only if the authorization fails.
         self.auth_error_message = auth_error_message
+        # The process instance ID.
         self.id = id
+        # The reason for the request.
         self.reason = reason
+        # The time when the approval process started.
         self.start_time = start_time
+        # The status of the process instance. Valid values:
+        # 
+        # - `Completed`: The request is approved.
+        # 
+        # - `Running`: The request is in the approval process.
+        # 
+        # - `Aborted`: The request is withdrawn.
         self.status = status
+        # The name of the process instance.
         self.title = title
 
     def validate(self):
@@ -168,15 +188,35 @@ class GetProcessInstanceResponseBodyProcessInstanceApprovalTasks(DaraModel):
         status: str = None,
         task_candidates: List[main_models.GetProcessInstanceResponseBodyProcessInstanceApprovalTasksTaskCandidates] = None,
     ):
+        # The approval comment.
         self.approval_comment = approval_comment
+        # The approval decision. Valid values:
+        # 
+        # - `Agree`
+        # 
+        # - `Deny`
         self.approval_decision = approval_decision
+        # The approval node from the corresponding approval policy.
         self.approval_node = approval_node
+        # The user ID of the actual approver.
         self.assignee = assignee
+        # The name of the actual approver.
         self.assignee_name = assignee_name
+        # The time when the task was completed.
         self.complete_time = complete_time
+        # The time when the task was created.
         self.create_time = create_time
+        # The approval task ID.
         self.id = id
+        # The status of the task. Valid values:
+        # 
+        # - `Completed`: The task is complete.
+        # 
+        # - `Pending`: The task is pending.
+        # 
+        # - `Aborted`: The task is aborted.
         self.status = status
+        # The candidate approvers for the task.
         self.task_candidates = task_candidates
 
     def validate(self):
@@ -270,7 +310,9 @@ class GetProcessInstanceResponseBodyProcessInstanceApprovalTasksTaskCandidates(D
         member_name: str = None,
         member_user_id: str = None,
     ):
+        # The name of the approver.
         self.member_name = member_name
+        # The user ID of the approver.
         self.member_user_id = member_user_id
 
     def validate(self):
@@ -307,9 +349,49 @@ class GetProcessInstanceResponseBodyProcessInstanceApprovalTasksApprovalNode(Dar
         id: str = None,
         name: str = None,
     ):
+        # The type of the approver for the node. Valid values:
+        # 
+        # - `DataWorksProjectRole`: A workspace role
+        # 
+        # - `DataWorksProjectMember`: A workspace member
+        # 
+        # - `TableAdministrator`: A table administrator
+        # 
+        # - `TableOrProjectAdministrator`: A table or workspace administrator
+        # 
+        # - `AliyunResourceOwner`: An Alibaba Cloud account
+        # 
+        # - `MaxComputeRole`: A MaxCompute role
+        # 
+        # - `DLFAdmin`: A DlfLegacy administrator
+        # 
+        # - `DLFNextAdmin`: A DLFNext administrator
+        # 
+        # - `TenantRole`: A tenant role
+        # 
+        # - `EmrAdministrator`: An Emr administrator
+        # 
+        # - `LindormAdministrator`: A Lindorm administrator
+        # 
+        # - `AliyunRamUser`: A RAM user
         self.account_type = account_type
+        # The specified approvers.
+        # 
+        # The contents of this parameter depend on the `AccountType` value:
+        # 
+        # - If `AccountType` is `DataWorksProjectMember`, this parameter contains the user IDs of workspace members.
+        # 
+        # - If `AccountType` is `DataWorksProjectRole`, this parameter contains the codes of workspace roles.
+        # 
+        # - If `AccountType` is `MaxComputeRole`, this parameter contains the MaxCompute roles.
+        # 
+        # - If `AccountType` is `TenantRole`, this parameter contains the codes of tenant roles.
+        # 
+        # - If `AccountType` is `AliyunRamUser`, this parameter contains the user IDs of RAM users.
         self.assignees = assignees
+        # The node ID.
         self.id = id
+        # The node name.
         self.name = name
 
     def validate(self):
@@ -363,14 +445,55 @@ class GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinition(Dar
         sub_type: str = None,
         type: str = None,
     ):
+        # The approval nodes.
         self.approval_nodes = approval_nodes
+        # The description of the approval policy.
         self.description = description
+        # Indicates whether the policy is enabled.
         self.enabled = enabled
+        # The approval policy ID.
         self.id = id
+        # The name of the approval policy.
         self.name = name
+        # The notification services.
         self.notification_services = notification_services
+        # The rules that determine when the approval policy takes effect.
         self.rule_conditions = rule_conditions
+        # The subtype of the approval policy. Valid values:
+        # 
+        # - `Table`
+        # 
+        # - `Column`
+        # 
+        # - `Database`
+        # 
+        # - `Schema`
+        # 
+        # - `Default`
         self.sub_type = sub_type
+        # The type of the approval policy. Valid values:
+        # 
+        # - `MaxCompute`
+        # 
+        # - `DataService`
+        # 
+        # - `DlfV1` (Custom creation is not supported)
+        # 
+        # - `Extension`
+        # 
+        # - `Hologres`
+        # 
+        # - `Emr` (Custom creation is not supported)
+        # 
+        # - `DataAssetGovernance` (Custom creation is not supported)
+        # 
+        # - `Lindorm` (Custom creation is not supported)
+        # 
+        # - `StarRocks` (Custom creation is not supported)
+        # 
+        # - `DlfNext` (Custom creation is not supported)
+        # 
+        # - `DataWorks` (Custom creation is not supported)
         self.type = type
 
     def validate(self):
@@ -474,8 +597,25 @@ class GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionRule
         scope: str = None,
         type: str = None,
     ):
+        # The expression of the rule condition. Format: `((#type==\\"typeValue\\"))`.
         self.expression = expression
+        # The rule scope. Valid values:
+        # 
+        # - `Deployment`: Determines whether the policy applies when a request is submitted.
+        # 
+        # - `Running`: Determines whether to skip approval while the process instance runs. This value is supported only for MaxCompute approval policies.
         self.scope = scope
+        # The type of the rule condition. Valid values:
+        # 
+        # - `odpsProject`: Applies to a specific MaxCompute project.
+        # 
+        # - `hologresInstanceId`: Applies to a specific Hologres instance.
+        # 
+        # - `sensibleLevel`: Applies to a specific security level.
+        # 
+        # - `tableGuid`: Applies to a specific table.
+        # 
+        # - `projectId`: Applies to a specific workspace.
         self.type = type
 
     def validate(self):
@@ -517,8 +657,19 @@ class GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionNoti
         extension: str = None,
         receiver: str = None,
     ):
+        # The notification channel. Valid values:
+        # 
+        # - `Mail`
+        # 
+        # - `Sms`
+        # 
+        # - `DingRobot`
+        # 
+        # - `Weixin`
         self.channel = channel
+        # Additional information in JSON format. For example, `{"atAll":"true"}` indicates whether to @all members.
         self.extension = extension
+        # If `Channel` is set to `DingRobot` or `Weixin`, the value of this parameter must be the webhook URL.
         self.receiver = receiver
 
     def validate(self):
@@ -562,10 +713,51 @@ class GetProcessInstanceResponseBodyProcessInstanceApprovalProcessDefinitionAppr
         id: str = None,
         name: str = None,
     ):
+        # The type of the approver for the node. Valid values:
+        # 
+        # - `DataWorksProjectRole`: A workspace role
+        # 
+        # - `DataWorksProjectMember`: A workspace member
+        # 
+        # - `TableAdministrator`: A table administrator
+        # 
+        # - `TableOrProjectAdministrator`: A table or workspace administrator
+        # 
+        # - `AliyunResourceOwner`: An Alibaba Cloud account
+        # 
+        # - `MaxComputeRole`: A MaxCompute role
+        # 
+        # - `DLFAdmin`: A DlfLegacy administrator
+        # 
+        # - `DLFNextAdmin`: A DLFNext administrator
+        # 
+        # - `TenantRole`: A tenant role
+        # 
+        # - `EmrAdministrator`: An Emr administrator
+        # 
+        # - `LindormAdministrator`: A Lindorm administrator
+        # 
+        # - `AliyunRamUser`: A RAM user
         self.account_type = account_type
+        # The specified approvers.
+        # 
+        # The contents of this parameter depend on the `AccountType` value:
+        # 
+        # - If `AccountType` is `DataWorksProjectMember`, this parameter contains the user IDs of workspace members.
+        # 
+        # - If `AccountType` is `DataWorksProjectRole`, this parameter contains the codes of workspace roles.
+        # 
+        # - If `AccountType` is `MaxComputeRole`, this parameter contains the MaxCompute roles.
+        # 
+        # - If `AccountType` is `TenantRole`, this parameter contains the codes of tenant roles.
+        # 
+        # - If `AccountType` is `AliyunRamUser`, this parameter contains the user IDs of RAM users.
         self.assignees = assignees
+        # The extended description of the approval node.
         self.extension_properties = extension_properties
+        # The node ID.
         self.id = id
+        # The node name.
         self.name = name
 
     def validate(self):

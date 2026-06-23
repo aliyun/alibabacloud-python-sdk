@@ -15,25 +15,27 @@ class ListColumnsRequest(DaraModel):
         sort_by: str = None,
         table_id: str = None,
     ):
-        # The comment. Fuzzy match is supported.
+        # The column comment. Supports fuzzy match.
         self.comment = comment
-        # The name. Fuzzy match is supported.
+        # The column name. Supports fuzzy match.
         self.name = name
-        # The sort order. Default value: Asc. Valid values:
+        # The sort order. Default: Asc. Valid values:
         # 
-        # *   Asc
-        # *   Desc
+        # - Asc
+        # 
+        # - Desc
         self.order = order
-        # The page number. Default value: 1.
+        # The page number. Default: 1.
         self.page_number = page_number
-        # The number of records per page. Default value: 10. Maximum value: 100.
+        # The page size. Default: 10. Maximum: 100.
         self.page_size = page_size
-        # The sort field. Default value: Position. Valid values:
+        # The sort field. Default: Position. Valid values:
         # 
-        # *   Name
-        # *   Position
+        # - Name
+        # 
+        # - Position
         self.sort_by = sort_by
-        # The table ID. You can refer to the return result of the ListTables operation. and the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The table ID. Call the ListTables operation or refer to [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html) to obtain this value.
         # 
         # This parameter is required.
         self.table_id = table_id

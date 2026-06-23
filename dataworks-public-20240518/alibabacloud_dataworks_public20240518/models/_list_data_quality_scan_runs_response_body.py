@@ -13,7 +13,7 @@ class ListDataQualityScanRunsResponseBody(DaraModel):
         page_info: main_models.ListDataQualityScanRunsResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The page information.
+        # The pagination information.
         self.page_info = page_info
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class ListDataQualityScanRunsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of data quality monitor run records.
+        # The list of data quality scan runs.
         self.data_quality_scan_runs = data_quality_scan_runs
-        # The page number of the results. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of records per page. Default value: 10.
+        # The number of entries per page. The default value is 10.
         self.page_size = page_size
-        # The total number of records returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -118,21 +118,25 @@ class ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns(DaraModel):
         parameters: List[main_models.ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters] = None,
         status: str = None,
     ):
-        # The time when the data quality monitor starts running.
+        # The start time of the data quality scan run.
         self.create_time = create_time
-        # The time when the data quality monitor stops.
+        # The end time of the data quality scan run.
         self.finish_time = finish_time
-        # The ID of the data quality monitor running record.
+        # The ID of the data quality scan run.
         self.id = id
-        # The parameters configured for the instance.
+        # The parameters used for the run.
         self.parameters = parameters
-        # The status of the instance.
+        # The status of the data quality scan run. Valid values:
         # 
-        # *   Pass
-        # *   Running
-        # *   Error
-        # *   Warn
-        # *   Fail
+        # - Pass
+        # 
+        # - Running
+        # 
+        # - Error
+        # 
+        # - Warn
+        # 
+        # - Fail
         self.status = status
 
     def validate(self):

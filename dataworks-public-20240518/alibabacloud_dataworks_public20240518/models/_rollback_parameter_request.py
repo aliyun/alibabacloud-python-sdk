@@ -10,8 +10,12 @@ class RollbackParameterRequest(DaraModel):
         id: int = None,
         rollback_version: int = None,
     ):
+        # The parameter ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The rollback version.
+        # 
         # This parameter is required.
         self.rollback_version = rollback_version
 

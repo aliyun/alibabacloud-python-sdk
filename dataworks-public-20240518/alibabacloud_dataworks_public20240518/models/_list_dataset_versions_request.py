@@ -24,8 +24,9 @@ class ListDatasetVersionsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Asc: Ascending.
-        # *   Desc: Descending.
+        # - Asc: Ascending.
+        # 
+        # - Desc: Descending.
         self.order = order
         # The page number. Default: 1.
         self.page_number = page_number
@@ -35,9 +36,11 @@ class ListDatasetVersionsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   ModifyTime: Modification time.
-        # *   CreateTime: Creation time.
-        # *   VersionNumber: Version number.
+        # - ModifyTime: Modification time.
+        # 
+        # - CreateTime: Creation time.
+        # 
+        # - VersionNumber: Version number.
         self.sort_by = sort_by
 
     def validate(self):

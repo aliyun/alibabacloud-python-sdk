@@ -1,3 +1,8 @@
+2026-06-23 Version: 8.8.2
+- Update API ApproveProcessInstance: add request parameters NewExpiration.
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.
+
+
 2026-06-09 Version: 8.8.1
 - Generated python 2024-05-18 for dataworks-public.
 

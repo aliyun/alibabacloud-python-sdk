@@ -21,17 +21,43 @@ class ListMyRelatedApprovalsRequest(DaraModel):
         start_time: int = None,
         statuses: List[str] = None,
     ):
+        # The permissions.
         self.access_types = access_types
+        # The resource type.
+        # 
         # This parameter is required.
         self.def_schema = def_schema
+        # The end of the application time range, specified as a millisecond timestamp.
         self.end_time = end_time
+        # Filters approvals by the specified principal.
         self.grantee = grantee
+        # The pagination token that acts as a cursor to retrieve the next page of results.
         self.next_token = next_token
+        # The number of entries to return on each page. Default value: 10. Maximum value: 200.
         self.page_size = page_size
+        # The resource declaration.
         self.resource = resource
+        # The resource type, specified as a leaf node name. Multiple values are supported because a single business semantic can be mapped to multiple leaf node names.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The start of the application time range, specified as a millisecond timestamp.
         self.start_time = start_time
+        # Filters the results by approval status. Valid values:
+        # 
+        # - `WaitApproval`: Pending approval
+        # 
+        # - `Confirmed`: Pending authorization
+        # 
+        # - `RejectApproval`: Approval rejected
+        # 
+        # - `AuthorizeSucceed`: Authorization succeeded
+        # 
+        # - `AuthorizeFailed`: Authorization failed
+        # 
+        # - `Deleted`: Deleted
+        # 
+        # - `Canceled`: Withdrawn
         self.statuses = statuses
 
     def validate(self):
@@ -120,8 +146,11 @@ class ListMyRelatedApprovalsRequestResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
+        # The `name` of the `ResourceSchema` used to parse the resource.
         self.def_schema = def_schema
+        # The `version` of the `ResourceSchema` used to parse the resource.
         self.def_version = def_version
+        # The resource metadata. The `ResourceSchema` defines its content.
         self.meta_data = meta_data
 
     def validate(self):
@@ -162,7 +191,37 @@ class ListMyRelatedApprovalsRequestGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
+        # The ID of the principal. The format varies based on the value of `PrincipalType`.
+        # 
+        # - If `PrincipalType` is `RamUser`, this parameter is the Dataworks user ID.
+        # 
+        # - If `PrincipalType` is `RamRole`, this parameter is a Dataworks user ID that starts with `ROLE_`.
+        # 
+        # - If `PrincipalType` is `DataworksTenantMember`, this parameter is the Dataworks user ID.
+        # 
+        # - If `PrincipalType` is `DataworksTenantRole`, this parameter is the Dataworks tenant `roleCode`.
+        # 
+        # - If `PrincipalType` is `DataworksProjectRole`, this parameter is the Dataworks workspace `roleCode`.
+        # 
+        # - If `PrincipalType` is `DataworksProjectMember`, this parameter is the Dataworks user ID.
+        # 
+        # - If `PrincipalType` is `DlfRole`, this parameter is the DlfNext role name.
         self.principal_id = principal_id
+        # The type of the principal. Valid values:
+        # 
+        # - `RamRole`
+        # 
+        # - `RamUser`
+        # 
+        # - `DataworksTenantMember`
+        # 
+        # - `DataworksTenantRole`
+        # 
+        # - `DataworksProjectMember`
+        # 
+        # - `DataworksProjectRole`
+        # 
+        # - `DlfRole`
         self.principal_type = principal_type
 
     def validate(self):

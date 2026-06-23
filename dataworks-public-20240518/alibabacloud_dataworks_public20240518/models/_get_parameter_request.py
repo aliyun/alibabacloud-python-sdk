@@ -9,6 +9,8 @@ class GetParameterRequest(DaraModel):
         self,
         id: int = None,
     ):
+        # The ID of the parameter.
+        # 
         # This parameter is required.
         self.id = id
 

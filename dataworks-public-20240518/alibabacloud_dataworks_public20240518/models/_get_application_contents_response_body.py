@@ -13,7 +13,9 @@ class GetApplicationContentsResponseBody(DaraModel):
         data: main_models.GetApplicationContentsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The process instance and its associated application contents.
         self.data = data
+        # The request ID. Use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,11 +56,31 @@ class GetApplicationContentsResponseBodyData(DaraModel):
         reason: str = None,
         status: str = None,
     ):
+        # The time when the application was submitted. This value is a millisecond-precision timestamp.
         self.application_time = application_time
+        # A list of the application contents.
         self.contents = contents
+        # The resource type.
         self.def_schema = def_schema
+        # The process instance ID.
         self.process_instance_id = process_instance_id
+        # The reason for the application.
         self.reason = reason
+        # The approval status. Valid values:
+        # 
+        # - `WaitApproval`: The application is pending approval.
+        # 
+        # - `Confirmed`: The application is pending authorization.
+        # 
+        # - `RejectApproval`: The application was rejected.
+        # 
+        # - `AuthorizeSucceed`: Authorization was successful.
+        # 
+        # - `AuthorizeFailed`: Authorization failed.
+        # 
+        # - `Deleted`: The application was deleted.
+        # 
+        # - `Canceled`: The application was canceled.
         self.status = status
 
     def validate(self):
@@ -137,19 +159,47 @@ class GetApplicationContentsResponseBodyDataContents(DaraModel):
         tenant_id: str = None,
         update_time: int = None,
     ):
+        # A list of the permissions requested for the resource.
         self.access_types = access_types
+        # The authorization method.
         self.auth_method = auth_method
+        # The time when the content item was created. This value is a millisecond-precision timestamp.
         self.create_time = create_time
+        # The resource type.
         self.def_schema = def_schema
+        # The time when the permissions expire. This value is a millisecond-precision timestamp.
         self.expiration_time = expiration_time
+        # A list of the permissions granted in the final approval.
         self.final_access_types = final_access_types
+        # The grantee.
         self.grantee = grantee
+        # The unique ID of the application content item.
         self.id = id
+        # The ID of the approval process instance for the application.
         self.process_instance_id = process_instance_id
+        # The resource declaration.
         self.resource = resource
+        # The specific type of the resource, such as a table.
         self.resource_name = resource_name
+        # The approval status. Valid values:
+        # 
+        # - `WaitApproval`: The item is pending approval.
+        # 
+        # - `Confirmed`: The item is pending authorization.
+        # 
+        # - `RejectApproval`: The item was rejected.
+        # 
+        # - `AuthorizeSucceed`: Authorization was successful.
+        # 
+        # - `AuthorizeFailed`: Authorization failed.
+        # 
+        # - `Deleted`: The item was deleted during the approval process.
+        # 
+        # - `Canceled`: The item was canceled.
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The time when the content item was last updated. This value is a millisecond-precision timestamp.
         self.update_time = update_time
 
     def validate(self):
@@ -262,8 +312,11 @@ class GetApplicationContentsResponseBodyDataContentsResource(DaraModel):
         def_version: str = None,
         meta_data: str = None,
     ):
+        # The name of the `ResourceSchema` that defines how to parse this resource.
         self.def_schema = def_schema
+        # The version of the `ResourceSchema` that defines how to parse this resource.
         self.def_version = def_version
+        # The resource metadata. The structure of the metadata is defined by the `ResourceSchema`.
         self.meta_data = meta_data
 
     def validate(self):
@@ -304,7 +357,21 @@ class GetApplicationContentsResponseBodyDataContentsGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
+        # The ID of the principal. The format of the ID varies based on the `PrincipalType` value:
+        # 
+        # - If `PrincipalType` is `RamUser`, this parameter specifies the ID of a DataWorks user.
+        # 
+        # - If `PrincipalType` is `RamRole`, this parameter specifies the ID of a role in DataWorks. The ID must be prefixed with `ROLE_`.
+        # 
+        # - If `PrincipalType` is `DlfRole`, this parameter specifies the name of a DlfNext role.
         self.principal_id = principal_id
+        # The principal type. Valid values:
+        # 
+        # - `RamUser`
+        # 
+        # - `RamRole`
+        # 
+        # - `DlfRole`
         self.principal_type = principal_type
 
     def validate(self):

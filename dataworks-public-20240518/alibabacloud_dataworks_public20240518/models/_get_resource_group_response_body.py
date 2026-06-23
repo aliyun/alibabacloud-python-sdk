@@ -97,27 +97,41 @@ class GetResourceGroupResponseBodyResourceGroup(DaraModel):
         self.remark = remark
         # The type of the resource group. Valid values:
         # 
-        # *   CommonV2: Serverless resource group.
-        # *   ExclusiveDataIntegration: Exclusive resource group for Data Integration.
-        # *   ExclusiveScheduler: Exclusive resource group for scheduling.
-        # *   ExclusiveDataService: Exclusive resource group for DataService Studio.
+        # - CommonV2: Serverless resource group.
+        # 
+        # - ExclusiveDataIntegration: Exclusive resource group for Data Integration.
+        # 
+        # - ExclusiveScheduler: Exclusive resource group for scheduling.
+        # 
+        # - ExclusiveDataService: Exclusive resource group for DataService Studio.
         self.resource_group_type = resource_group_type
         # The specifications of the resource group.
         self.spec = spec
         # The status of the resource group. Valid values:
         # 
-        # *   Normal: The resource group is running or in use.
-        # *   Stop: The resource group is expired.
-        # *   Deleted: The resource group is released or destroyed.
-        # *   Creating: The resource group is being created.
-        # *   CreateFailed: The resource group fails to be created.
-        # *   Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
-        # *   UpdateFailed: The resource group fails to be scaled out or upgraded.
-        # *   Deleting: The resource group is being released or destroyed.
-        # *   DeleteFailed: The resource group fails to be released or destroyed.
-        # *   Timeout: The operations that are performed on the resource group time out.
-        # *   Freezed: The resource group is frozen.
-        # *   Starting: The resource group is being started.
+        # - Normal: The resource group is running or in use.
+        # 
+        # - Stop: The resource group is expired.
+        # 
+        # - Deleted: The resource group is released or destroyed.
+        # 
+        # - Creating: The resource group is being created.
+        # 
+        # - CreateFailed: The resource group fails to be created.
+        # 
+        # - Updating: The resource group is being scaled in or out, or the configurations of the resource group are being changed.
+        # 
+        # - UpdateFailed: The resource group fails to be scaled out or upgraded.
+        # 
+        # - Deleting: The resource group is being released or destroyed.
+        # 
+        # - DeleteFailed: The resource group fails to be released or destroyed.
+        # 
+        # - Timeout: The operations that are performed on the resource group time out.
+        # 
+        # - Freezed: The resource group is frozen.
+        # 
+        # - Starting: The resource group is being started.
         self.status = status
 
     def validate(self):

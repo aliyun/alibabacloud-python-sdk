@@ -26,13 +26,15 @@ class ListProjectsShrinkRequest(DaraModel):
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
         # Specifies whether the development environment is enabled. Valid values:
         # 
-        # *   true: The development environment is enabled. In this case, the development environment is isolated from the production environment in a workspace.
-        # *   false: The development environment is disabled. In this case, only the production environment is used in a workspace.
+        # - true: The development environment is enabled. In this case, the development environment is isolated from the production environment in a workspace.
+        # 
+        # - false: The development environment is disabled. In this case, only the production environment is used in a workspace.
         self.dev_environment_enabled = dev_environment_enabled
         # Specifies whether the Develop role is disabled. Valid values:
         # 
-        # *   false (default)
-        # *   true
+        # - false (default)
+        # 
+        # - true
         self.dev_role_disabled = dev_role_disabled
         # The IDs of the DataWorks workspaces.
         self.ids_shrink = ids_shrink
@@ -44,20 +46,29 @@ class ListProjectsShrinkRequest(DaraModel):
         self.page_size = page_size
         # Specifies whether scheduling of Platform for AI (PAI) tasks is enabled. Valid values:
         # 
-        # *   true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
-        # *   false: Scheduling of PAI tasks is disabled.
+        # - true: Scheduling of PAI tasks is enabled. In this case, you can create a PAI node in a DataWorks workspace and configure scheduling properties for the node to implement periodic scheduling of PAI tasks.
+        # 
+        # - false: Scheduling of PAI tasks is disabled.
         self.pai_task_enabled = pai_task_enabled
         # The status of the workspaces. Valid values:
         # 
-        # *   Available
-        # *   Initializing
-        # *   InitFailed
-        # *   Forbidden
-        # *   Deleting
-        # *   DeleteFailed
-        # *   Frozen
-        # *   Updating
-        # *   UpdateFailed
+        # - Available
+        # 
+        # - Initializing
+        # 
+        # - InitFailed
+        # 
+        # - Forbidden
+        # 
+        # - Deleting
+        # 
+        # - DeleteFailed
+        # 
+        # - Frozen
+        # 
+        # - Updating
+        # 
+        # - UpdateFailed
         self.status = status
 
     def validate(self):

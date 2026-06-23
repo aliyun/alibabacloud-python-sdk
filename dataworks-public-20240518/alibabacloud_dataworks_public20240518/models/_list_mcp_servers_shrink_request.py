@@ -12,9 +12,13 @@ class ListMcpServersShrinkRequest(DaraModel):
         q: str = None,
         visibility_shrink: str = None,
     ):
+        # The maximum number of results to return per page.
         self.max_results = max_results
+        # The next page token from a previous response. Use this token to retrieve the next page of results. Leave this parameter empty for the first request.
         self.next_token = next_token
+        # The search keyword for a fuzzy search on MCP Server names.
         self.q = q
+        # The visibility level for filtering the results.
         self.visibility_shrink = visibility_shrink
 
     def validate(self):

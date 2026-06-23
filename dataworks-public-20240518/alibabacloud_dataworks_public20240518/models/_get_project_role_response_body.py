@@ -13,7 +13,7 @@ class GetProjectRoleResponseBody(DaraModel):
         project_role: main_models.GetProjectRoleResponseBodyProjectRole = None,
         request_id: str = None,
     ):
-        # The role in the DataWorks workspace.
+        # The details of the workspace role.
         self.project_role = project_role
         # The request ID.
         self.request_id = request_id
@@ -55,17 +55,21 @@ class GetProjectRoleResponseBodyProjectRole(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
-        # The code of the role in the DataWorks workspace.
+        # The code of the workspace role.
         self.code = code
+        # The permissions for the modules in the workspace.
         self.module_permissions = module_permissions
-        # The name of the role in the DataWorks workspace.
+        # The name of the workspace role.
         self.name = name
-        # The DataWorks workspace ID.
-        self.project_id = project_id
-        # The type of the role in the DataWorks workspace. Valid values:
+        # The ID of the DataWorks workspace.
         # 
-        # *   UserCustom: user-defined role
-        # *   System: system role
+        # Note: A fixed value of -1 is returned for a system role.
+        self.project_id = project_id
+        # The type of the workspace role. Valid values:
+        # 
+        # - UserCustom: a custom role
+        # 
+        # - System: a system role
         self.type = type
 
     def validate(self):
@@ -127,8 +131,11 @@ class GetProjectRoleResponseBodyProjectRoleModulePermissions(DaraModel):
         module_name: str = None,
         permission_type: str = None,
     ):
+        # The module ID.
         self.module_id = module_id
+        # The module name.
         self.module_name = module_name
+        # The permission type.
         self.permission_type = permission_type
 
     def validate(self):

@@ -10,7 +10,9 @@ class DisableProcessDefinitionRequest(DaraModel):
         client_token: str = None,
         id: str = None,
     ):
+        # An idempotence token used to make the request idempotent. A universally unique identifier (UUID) is recommended.
         self.client_token = client_token
+        # The process definition ID.
         self.id = id
 
     def validate(self):

@@ -9,6 +9,8 @@ class GetProcessInstanceRequest(DaraModel):
         self,
         process_instance_id: str = None,
     ):
+        # The ID of the process instance.
+        # 
         # This parameter is required.
         self.process_instance_id = process_instance_id
 

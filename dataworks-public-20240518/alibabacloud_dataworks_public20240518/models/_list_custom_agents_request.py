@@ -14,9 +14,13 @@ class ListCustomAgentsRequest(DaraModel):
         q: str = None,
         visibility: List[str] = None,
     ):
+        # The maximum number of entries to return on a single page.
         self.max_results = max_results
+        # The pagination token. Omit this parameter for the first request. For subsequent requests, use the `NextToken` value from the previous response to retrieve the next page.
         self.next_token = next_token
+        # The search keyword for a fuzzy match by agent name.
         self.q = q
+        # Filters the results by visibility level. You can specify multiple levels.
         self.visibility = visibility
 
     def validate(self):

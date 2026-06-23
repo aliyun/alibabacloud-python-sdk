@@ -28,8 +28,9 @@ class DeleteFileResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
         # 
-        # *   true: success.
-        # *   false: failure.
+        # - true: success.
+        # 
+        # - false: failure.
         self.success = success
 
     def validate(self):

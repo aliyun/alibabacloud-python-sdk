@@ -20,8 +20,9 @@ class ListWorkflowDefinitionsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   CycleWorkflow
-        # *   ManualWorkflow
+        # - CycleWorkflow
+        # 
+        # - ManualWorkflow
         self.owner = owner
         # The page number of the data to retrieve, used for pagination.
         self.page_number = page_number
@@ -37,8 +38,9 @@ class ListWorkflowDefinitionsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   CycleWorkflow
-        # *   ManualWorkflow
+        # - CycleWorkflow
+        # 
+        # - ManualWorkflow
         self.type = type
 
     def validate(self):

@@ -38,10 +38,13 @@ class ListDeploymentPackagesRequest(DaraModel):
         self.project_identifier = project_identifier
         # The status of the deployment package. Valid values:
         # 
-        # *   0: It is ready.
-        # *   1: It was successfully deployed.
-        # *   2: It failed to be deployed.
-        # *   6: It was rejected.
+        # - 0: It is ready.
+        # 
+        # - 1: It was successfully deployed.
+        # 
+        # - 2: It failed to be deployed.
+        # 
+        # - 6: It was rejected.
         self.status = status
 
     def validate(self):

@@ -10,7 +10,7 @@ class DissociateProjectFromResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

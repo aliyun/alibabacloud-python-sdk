@@ -18,13 +18,23 @@ class MetaEntityAttributeDef(DaraModel):
         search_filter_enabled: bool = None,
         type: str = None,
     ):
+        # Enumeration values. Required when Type is ENUM.
         self.allowed_values = allowed_values
+        # Attribute description
         self.description = description
+        # Indicates whether the attribute appears on the product page. Default is true.
         self.display_enabled = display_enabled
+        # Display name. It can be up to 32 characters long.
         self.display_name = display_name
+        # Indicates whether the value is optional. Default is true.>Notice:  Validation occurs when creating an entity. If this value is false and no value is provided during creation, validation fails and an error is returned.
         self.is_optional = is_optional
+        # Attribute identifier. It can contain letters, digits, and underscores. It must start with a letter or digit and be up to 64 characters long.
         self.name = name
+        # Indicates whether the attribute can be used as a filter on the search page. Default is false.
+        # 
+        # Only attributes of type STRING, DATE, ENUM, ARRAY, INT, or BOOLEAN support this setting.
         self.search_filter_enabled = search_filter_enabled
+        # Attribute type. Supported types include STRING, TEXT, INT, FLOAT, BOOLEAN, DATE, ARRAY, ENUM, and JSON.
         self.type = type
 
     def validate(self):

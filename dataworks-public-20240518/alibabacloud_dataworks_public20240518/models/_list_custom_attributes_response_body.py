@@ -14,9 +14,11 @@ class ListCustomAttributesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The paging information.
         self.paging_info = paging_info
-        # RequestId
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -61,9 +63,13 @@ class ListCustomAttributesResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of custom attribute objects.
         self.custom_attributes = custom_attributes
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

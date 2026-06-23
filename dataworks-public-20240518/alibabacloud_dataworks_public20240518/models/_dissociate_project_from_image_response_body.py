@@ -11,8 +11,11 @@ class DissociateProjectFromImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Whether the image was successfully disassociated from the workspace.
         self.data = data
+        # The request ID. Use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):

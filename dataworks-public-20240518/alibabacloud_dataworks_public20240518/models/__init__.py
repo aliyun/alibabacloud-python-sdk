@@ -1210,6 +1210,7 @@ from ._create_agent_response_body import CreateAgentResponseBodyAgent
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaAgent
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaConfigSessionTags
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaConfig
+from ._create_agent_session_request import CreateAgentSessionRequestParamsMetaInitialConfigOptions
 from ._create_agent_session_request import CreateAgentSessionRequestParamsMeta
 from ._create_agent_session_request import CreateAgentSessionRequestParams
 from ._create_agent_session_response_body import CreateAgentSessionResponseBodyJsonRpcResponseResult
@@ -3222,6 +3223,7 @@ __all__ = [
     CreateAgentSessionRequestParamsMetaAgent,
     CreateAgentSessionRequestParamsMetaConfigSessionTags,
     CreateAgentSessionRequestParamsMetaConfig,
+    CreateAgentSessionRequestParamsMetaInitialConfigOptions,
     CreateAgentSessionRequestParamsMeta,
     CreateAgentSessionRequestParams,
     CreateAgentSessionResponseBodyJsonRpcResponseResult,

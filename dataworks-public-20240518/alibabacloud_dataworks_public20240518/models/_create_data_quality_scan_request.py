@@ -165,8 +165,9 @@ class CreateDataQualityScanRequestTrigger(DaraModel):
         # 
         # Valid values:
         # 
-        # *   ByManual: Manual trigger. This is the default setting.
-        # *   BySchedule: Triggered by a scheduled task instance.
+        # - ByManual: Manual trigger. This is the default setting.
+        # 
+        # - BySchedule: Triggered by a scheduled task instance.
         self.type = type
 
     def validate(self):
@@ -292,7 +293,7 @@ class CreateDataQualityScanRequestHooks(DaraModel):
         # 
         # Valid values:
         # 
-        # *   BlockTaskInstance: Blocks the scheduling of the task instance.
+        # - BlockTaskInstance: Blocks the scheduling of the task instance.
         self.type = type
 
     def validate(self):
@@ -332,8 +333,9 @@ class CreateDataQualityScanRequestComputeResource(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Prod: production environment .
-        # *   Dev: development environment.
+        # - Prod: production environment .
+        # 
+        # - Dev: development environment.
         self.env_type = env_type
         # The name of the compute engine, which is a unique identifier.
         self.name = name
@@ -385,9 +387,11 @@ class CreateDataQualityScanRequestComputeResourceRuntime(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Hive: Hive SQL
-        # *   Spark: Spark SQL
-        # *   Kyuubi
+        # - Hive: Hive SQL
+        # 
+        # - Spark: Spark SQL
+        # 
+        # - Kyuubi
         self.engine = engine
         # Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported.
         self.hive_conf = hive_conf

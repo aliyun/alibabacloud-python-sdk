@@ -24,8 +24,9 @@ class GetDIJobLogRequest(DaraModel):
         self.instance_id = instance_id
         # The type of the node. This parameter is applicable only to the tasks that are run on serverless resource groups. Valid values:
         # 
-        # *   **MASTER**: the master node, which is used to query the logs of JobManagers.
-        # *   **WORKER**: the worker node, which is used to query the logs of TaskManagers.
+        # - **MASTER**: the master node, which is used to query the logs of JobManagers.
+        # 
+        # - **WORKER**: the worker node, which is used to query the logs of TaskManagers.
         self.node_type = node_type
         # The page number of the pagination query. The value is a positive integer greater than or equal to 1.
         self.page_number = page_number

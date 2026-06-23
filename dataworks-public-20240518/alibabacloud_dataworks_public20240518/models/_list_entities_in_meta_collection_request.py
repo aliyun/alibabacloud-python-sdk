@@ -28,8 +28,9 @@ class ListEntitiesInMetaCollectionRequest(DaraModel):
         self.id = id
         # The sort order. Valid values:
         # 
-        # *   Asc (default): ascending order.
-        # *   Desc
+        # - Asc (default): ascending order.
+        # 
+        # - Desc
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -37,8 +38,9 @@ class ListEntitiesInMetaCollectionRequest(DaraModel):
         self.page_size = page_size
         # The sort field. Valid values:
         # 
-        # *   Name (default)
-        # *   CreateTime
+        # - Name (default)
+        # 
+        # - CreateTime
         self.sort_by = sort_by
 
     def validate(self):

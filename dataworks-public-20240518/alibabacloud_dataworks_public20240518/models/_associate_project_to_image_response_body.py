@@ -11,8 +11,11 @@ class AssociateProjectToImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result of the API request.
         self.data = data
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

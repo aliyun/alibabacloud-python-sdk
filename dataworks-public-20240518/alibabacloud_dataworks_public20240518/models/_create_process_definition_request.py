@@ -20,18 +20,42 @@ class CreateProcessDefinitionRequest(DaraModel):
         sub_type: str = None,
         type: str = None,
     ):
+        # The list of approval nodes.
+        # 
         # This parameter is required.
         self.approval_nodes = approval_nodes
+        # The idempotency token. We recommend that you use a UUID.
         self.client_token = client_token
+        # The description of the process definition.
+        # 
         # This parameter is required.
         self.description = description
+        # Specifies whether to enable the process definition.
         self.enabled = enabled
+        # The name of the process definition.
+        # 
         # This parameter is required.
         self.name = name
+        # The notification service declarations.
         self.notification_services = notification_services
+        # The list of condition rules.
+        # 
         # This parameter is required.
         self.rule_conditions = rule_conditions
+        # The subtype. Valid values:
+        # 
+        # - Table
+        # - Column
+        # - Database
+        # - Schema
+        # - Default
         self.sub_type = sub_type
+        # The type of the process definition. Valid values:
+        # 
+        # 1. MaxCompute
+        # 2. DataService
+        # 3. Extension
+        # 4. Hologres
         self.type = type
 
     def validate(self):
@@ -135,8 +159,19 @@ class CreateProcessDefinitionRequestRuleConditions(DaraModel):
         scope: str = None,
         type: str = None,
     ):
+        # The condition expression in the format of ((#type==\\"typeValue\\")). Example: ((#odpsProject==\\"PX_BEIJING_TEST\\")).
         self.expression = expression
+        # The stage at which the rule takes effect:
+        # - `Deployment`: used to determine whether the approval policy matches when a request is submitted.
+        # - `Running`: used to determine whether approval is exempted during the execution of the approval process. This value is supported only for the MaxCompute type.
         self.scope = scope
+        # The condition type. Valid values:
+        # 
+        # - `odpsProject`
+        # - `hologresInstanceId`
+        # - `sensibleLevel`
+        # - `tableGuid`
+        # - `projectId`
         self.type = type
 
     def validate(self):
@@ -178,8 +213,16 @@ class CreateProcessDefinitionRequestNotificationServices(DaraModel):
         extension: str = None,
         receiver: str = None,
     ):
+        # The notification channel. Valid values:
+        # 
+        # - Mail
+        # - Sms
+        # - DingRobot
+        # - Weixin
         self.channel = channel
+        # The extension information in JSON format. Example: `{"atAll":"true"}`, which specifies whether to mention all members.
         self.extension = extension
+        # The WebhookUrl that must be specified when Channel is set to DingRobot or Weixin.
         self.receiver = receiver
 
     def validate(self):
@@ -222,9 +265,36 @@ class CreateProcessDefinitionRequestApprovalNodes(DaraModel):
         extension_properties: Dict[str, Any] = None,
         name: str = None,
     ):
+        # The type of approver for the node:
+        # - DataWorksProjectRole: workspace role.
+        # - DataWorksProjectMember: workspace member.
+        # - TableAdministrator: table owner.
+        # - TableOrProjectAdministrator: table or workspace administrator.
+        # - AliyunResourceOwner: Alibaba Cloud account.
+        # - MaxComputeRole: MaxCompute administrator.
+        # - DLFAdmin: DLF Legacy administrator.
+        # - DLFNextAdmin: DLF Next administrator.
+        # - TenantRole: tenant role.
+        # - EmrAdministrator: EMR administrator.
+        # - LindormAdministrator: Lindorm administrator.
+        # - AliyunRamUser: RAM user.
         self.account_type = account_type
+        # The semantics of this parameter varies based on the value of `AccountType`:
+        # - DataWorksProjectMember: the user ID of the workspace member.
+        # - DataWorksProjectRole: the code of the workspace role. If a custom workspace role is required, set this parameter to "custom-role" and further configure the role in ExtensionProperties.
+        # - MaxComputeRole: the MaxCompute role.
+        # - TenantRole: the code of the tenant role.
+        # - AliyunRamUser: the RAM user ID.
         self.assignees = assignees
+        # The additional declarations required based on the value of `AccountType`:
+        # 
+        # - DataWorksProjectMember: specify different workspace member user IDs. The key is the workspace ID, and the value is the user ID of the workspace member. Separate multiple user IDs with commas (,).
+        # 
+        # - DataWorksProjectRole: specify different custom workspace role codes. The key is the workspace ID, and the value is the custom workspace role code. Separate multiple role codes with commas (,).
+        # 
+        # - MaxComputeRole: specify the roles under a MaxCompute project. The key is the MaxCompute project name, and the value is the role name in MaxCompute. Separate multiple role names with commas (,).
         self.extension_properties = extension_properties
+        # The name of the node.
         self.name = name
 
     def validate(self):

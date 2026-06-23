@@ -10,13 +10,13 @@ class GetPipelineRunRequest(DaraModel):
         id: str = None,
         project_id: int = None,
     ):
-        # The ID of the process.
+        # The unique identifier of the Publishing Pipeline.
         # 
         # This parameter is required.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can find this ID on the Workspace Management page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter specifies the DataWorks workspace for the API call.
         # 
         # This parameter is required.
         self.project_id = project_id

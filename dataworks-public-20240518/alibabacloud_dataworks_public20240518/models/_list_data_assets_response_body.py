@@ -123,8 +123,9 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
         self.data_asset_tag_mappings = data_asset_tag_mappings
         # The environment of the workspace to which the data asset belongs. Valid values:
         # 
-        # *   Dev: development environment
-        # *   Prod: production environment
+        # - Dev: development environment
+        # 
+        # - Prod: production environment
         self.env_type = env_type
         # The data asset ID.
         self.id = id
@@ -134,8 +135,9 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
         self.project_id = project_id
         # The type of the data asset. Valid values:
         # 
-        # *   ACS::DataWorks::Table
-        # *   ACS::DataWorks::Task
+        # - ACS::DataWorks::Table
+        # 
+        # - ACS::DataWorks::Task
         self.type = type
 
     def validate(self):
@@ -216,8 +218,9 @@ class ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings(DaraMod
         self.key = key
         # The way in which the mapping between the data asset and the tag is created. Valid values:
         # 
-        # *   System
-        # *   UserDefined
+        # - System
+        # 
+        # - UserDefined
         self.tag_source = tag_source
         # The tag value.
         self.value = value

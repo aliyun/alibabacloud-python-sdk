@@ -18,14 +18,21 @@ class LoadAgentSessionResponseBody(DaraModel):
         result: Any = None,
         timestamp: int = None,
     ):
+        # The error object of the SSE frame. This field is present when an error occurs.
         self.error = error
+        # The client-generated request ID, returned from the request.
         self.id = id
+        # The JSON-RPC version. The value is `2.0`.
         self.jsonrpc = jsonrpc
+        # The method of the SSE frame.
         self.method = method
+        # The parameters of the SSE frame.
         self.params = params
-        # Id of the request
+        # The unique request ID generated for this request.
         self.request_id = request_id
+        # The result object of the SSE frame. This field is present when the operation is successful.
         self.result = result
+        # The timestamp.
         self.timestamp = timestamp
 
     def validate(self):

@@ -22,17 +22,32 @@ class CreateAgentRequest(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateAgentRequestVisibilityScope = None,
     ):
+        # The list of sub-Agents that can be called by this Agent.
         self.callable_agents = callable_agents
+        # The description of the Agent.
         self.description = description
+        # The display name of the Agent.
         self.display_name = display_name
+        # Extended metadata (key-value pairs).
         self.metadata = metadata
+        # The model configuration.
         self.model = model
+        # The name of the Agent. It must be unique under the current account.
+        # 
         # This parameter is required.
         self.name = name
+        # The list of skills.
         self.skills = skills
+        # The system prompt.
         self.system_prompt = system_prompt
+        # The list of tools.
         self.tools = tools
+        # The visibility level.<br>
+        # `TENANT`: Visible within the account.<br>
+        # `PROJECT`: Visible to specified projects.<br>
+        # `USER`: Visible to specified users.
         self.visibility = visibility
+        # The visibility scope. The corresponding field is selected based on Visibility.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -123,7 +138,9 @@ class CreateAgentRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # The list of visible project IDs. Takes effect when Visibility is `PROJECT`.
         self.project_ids = project_ids
+        # The list of visible user IDs. Takes effect when Visibility is `USER`.
         self.user_ids = user_ids
 
     def validate(self):

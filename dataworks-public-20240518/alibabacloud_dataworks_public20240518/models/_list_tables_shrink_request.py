@@ -16,65 +16,73 @@ class ListTablesShrinkRequest(DaraModel):
         sort_by: str = None,
         table_types_shrink: str = None,
     ):
-        # The comment. Supports fuzzy matching.
+        # The comment on the table. Fuzzy matching is supported.
         self.comment = comment
-        # The name. Supports fuzzy matching.
+        # The name of the table. Fuzzy matching is supported.
         self.name = name
-        # The order in which the tables are sorted. Default value: Asc. Valid values:
+        # The sort order. Default value: `Asc`. Valid values:
         # 
-        # *   Asc
-        # *   Desc
+        # - `Asc`: ascending
+        # 
+        # - `Desc`: descending
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of records per page. Default value: 10. Maximum value: 100.
+        # The page size. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The parent metadata entity ID. You can refer to the responses of the ListDatabases or ListSchemas operation and [Description of concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # The ID of the parent metadata entity. You can obtain this ID from the response of the ListDatabases or ListSchemas operation. For details, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # *   The parent metadata entity is a database: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
-        # *   The parent metadata entity is a database schema: The format of `ParentMetaEntityId` is `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database Name}:${Schema Name}`. Use an empty string (\\`""\\`) as a placeholder for any non-existent level.
+        # - The value can be the database to which the table belongs. The format is `${EntityType}:${instance ID or URL-encoded connection string}:${data catalog identifier}:${database name}`. Use an empty string as a placeholder for a hierarchy level that does not exist.
         # 
-        # > 
+        # - The value can also be the schema to which the table belongs. The format is `${EntityType}:${instance ID or URL-encoded connection string}:${data catalog identifier}:${database name}:${schema name}`. Use an empty string as a placeholder for a hierarchy level that does not exist.
         # 
-        # *   The schema level in `ParentMetaEntityId` is supported only for database services, such as `MaxCompute (with schema enabled), Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle`.
+        # > * You can specify a schema in `ParentMetaEntityId` only if the database type supports schemas, such as `maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle`. For the maxcompute type, the three-layer model must be enabled. Otherwise, you can only specify a database.
+        # >
+        # > * For `maxcompute` and `dlf` data types, use an empty string as a placeholder for the instance ID. For the maxcompute data type, the database name is the MaxCompute project name.
+        # >
+        # > * For the `starrocks` type, the data catalog identifier is the catalog name. For the `dlf` type, the data catalog identifier is the catalog ID. Other types do not support the catalog level, so you can use an empty string as a placeholder.
         # 
-        # *   For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name is the same as the project name.
+        # The following list shows the `ParentMetaEntityId` format for several common data source types:
         # 
-        # *   For StarRocks, the catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level and you can use an empty string as a placeholder.
+        # - `maxcompute-project:::project_name`
         # 
-        # Examples of common ParentMetaEntityId formats
+        # - `maxcompute-schema:::project_name:schema_name` (Only when the three-layer model is enabled for the project)
         # 
-        # *   `maxcompute-project:::project_name`
-        # *   `maxcompute-schema:::project_name:schema_name` (for MaxCompute projects with schema enabled)
-        # *   `dlf-database::catalog_id:database_name`
-        # *   `hms-database:instance_id::database_name`
-        # *   `holo-schema:instance_id::database_name:schema_name`
-        # *   `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
+        # - `dlf-database::catalog_id:database_name`
         # 
-        # > 
+        # - `hms-database:instance_id::database_name`
         # 
-        # *   `instance_id`: The instance ID, which is required when the data source is registered in instance mode.
+        # - `holo-schema:instance_id::database_name:schema_name`
         # 
-        # *   `encoded_jdbc_url`: The URLEncoded JDBC connection string, which is requiredwhen the data source is registered using a connection string.
+        # - `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
         # 
-        # *   `catalog_id`: The DLF catalog ID.
-        # 
-        # *   `project_name`: The MaxCompute project name.
-        # 
-        # *   `database_name`: The database name.
-        # 
-        # *   `schema_name`: The schema name.
+        # > In these formats:
+        # >
+        # > - `instance_id`: The instance ID. This parameter is required if the data source is registered in instance mode.
+        # >
+        # > - `encoded_jdbc_url`: The URL-encoded JDBC connection string. This parameter is required if the data source is registered by using a connection string.
+        # >
+        # > - `catalog_id`: The ID of the DLF data catalog.
+        # >
+        # > - `project_name`: The name of the MaxCompute project.
+        # >
+        # > - `database_name`: The name of the database.
+        # >
+        # > - `schema_name`: The name of the schema.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
-        # The sort field. Default value: CreateTime. Valid values:
+        # The sort field. Default value: `CreateTime`. Valid values:
         # 
-        # *   CreateTime
-        # *   ModifyTime
-        # *   Name
-        # *   TableType
+        # - `CreateTime`: creation time
+        # 
+        # - `ModifyTime`: modification time
+        # 
+        # - `Name`: name
+        # 
+        # - `TableType`: table type
         self.sort_by = sort_by
-        # The list of table types to query. If it\\"s left empty, all types will be queried.
+        # A list of table types to query. If you omit this parameter, tables of all types are returned.
         self.table_types_shrink = table_types_shrink
 
     def validate(self):

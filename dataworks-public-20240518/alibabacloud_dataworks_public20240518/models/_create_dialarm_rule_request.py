@@ -31,11 +31,15 @@ class CreateDIAlarmRuleRequest(DaraModel):
         self.enabled = enabled
         # The metric type in the alert rule. Valid values:
         # 
-        # *   Heartbeat
-        # *   FailoverCount
-        # *   Delay
-        # *   DdlReport
-        # *   ResourceUtilization
+        # - Heartbeat
+        # 
+        # - FailoverCount
+        # 
+        # - Delay
+        # 
+        # - DdlReport
+        # 
+        # - ResourceUtilization
         # 
         # This parameter is required.
         self.metric_type = metric_type
@@ -142,14 +146,17 @@ class CreateDIAlarmRuleRequestTriggerConditions(DaraModel):
         self.duration = duration
         # The severity level. Valid values:
         # 
-        # *   Warning
-        # *   Critical
+        # - Warning
+        # 
+        # - Critical
         self.severity = severity
         # The alert threshold.
         # 
-        # *   If the alert rule is for task status, you do not need to specify a threshold.
-        # *   If the alert rule is for failovers, you must specify the number of failovers.
-        # *   If the alert rule is for latency, you must specify the latency duration, in seconds.
+        # - If the alert rule is for task status, you do not need to specify a threshold.
+        # 
+        # - If the alert rule is for failovers, you must specify the number of failovers.
+        # 
+        # - If the alert rule is for latency, you must specify the latency duration, in seconds.
         self.threshold = threshold
 
     def validate(self):
@@ -278,8 +285,9 @@ class CreateDIAlarmRuleRequestNotificationSettingsNotificationReceivers(DaraMode
         self.receiver_type = receiver_type
         # The recipient.
         # 
-        # *   If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
-        # *   If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
+        # - If the ReceiverType parameter is set to AliyunUid, set this parameter to the Alibaba Cloud account ID of a user.
+        # 
+        # - If the ReceiverType parameter is set to DingToken, set this parameter to the token of a DingTalk chatbot.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -316,15 +324,19 @@ class CreateDIAlarmRuleRequestNotificationSettingsNotificationChannels(DaraModel
     ):
         # The alert notification method. Valid values:
         # 
-        # *   Mail
-        # *   Phone
-        # *   Sms
-        # *   Ding
+        # - Mail
+        # 
+        # - Phone
+        # 
+        # - Sms
+        # 
+        # - Ding
         self.channels = channels
         # The severity level. Valid values:
         # 
-        # *   Warning
-        # *   Critical
+        # - Warning
+        # 
+        # - Critical
         self.severity = severity
 
     def validate(self):

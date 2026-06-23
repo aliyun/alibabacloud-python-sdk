@@ -10,7 +10,7 @@ class UpdateTableBusinessMetadataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

@@ -42,9 +42,11 @@ class UpdateUdfFileRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   ALL_ALLOWD
-        # *   FAILURE_ALLOWED
-        # *   ALL_DENIED
+        # - ALL_ALLOWD
+        # 
+        # - FAILURE_ALLOWED
+        # 
+        # - ALL_DENIED
         self.parameter_description = parameter_description
         # The DataWorks workspace ID. To find this, click the wrench icon in the upper-right corner and navigate to the workspace management page.
         self.project_id = project_id

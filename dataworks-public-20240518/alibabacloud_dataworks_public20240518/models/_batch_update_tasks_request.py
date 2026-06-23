@@ -75,8 +75,9 @@ class BatchUpdateTasksRequestTasks(DaraModel):
         self.description = description
         # The project environment.
         # 
-        # *   Prod: Production
-        # *   Dev: Development
+        # - Prod: Production
+        # 
+        # - Dev: Development
         self.env_type = env_type
         # The task ID.
         # 
@@ -90,9 +91,11 @@ class BatchUpdateTasksRequestTasks(DaraModel):
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun.
-        # *   FailureAllowed: The task can be rerun only after it fails.
-        # *   AllAllowed: The task can always be rerun.
+        # - AllDenied: The task cannot be rerun.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails.
+        # 
+        # - AllAllowed: The task can always be rerun.
         self.rerun_mode = rerun_mode
         # The number of retry attempts. Takes effect when the task is configured to allow reruns.
         self.rerun_times = rerun_times
@@ -229,16 +232,19 @@ class BatchUpdateTasksRequestTasksTrigger(DaraModel):
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The time when periodic triggering takes effect. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodically triggered
-        # *   Manual
+        # - Scheduler: periodically triggered
+        # 
+        # - Manual
         self.type = type
 
     def validate(self):

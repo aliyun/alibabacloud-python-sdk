@@ -10,8 +10,12 @@ class AssociateProjectToImageRequest(DaraModel):
         id: str = None,
         project_id: int = None,
     ):
+        # The image ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

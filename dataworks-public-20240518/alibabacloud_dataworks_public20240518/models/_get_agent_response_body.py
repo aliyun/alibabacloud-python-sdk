@@ -13,7 +13,9 @@ class GetAgentResponseBody(DaraModel):
         agent: main_models.GetAgentResponseBodyAgent = None,
         request_id: str = None,
     ):
+        # The agent details.
         self.agent = agent
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,23 +66,41 @@ class GetAgentResponseBodyAgent(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.GetAgentResponseBodyAgentVisibilityScope = None,
     ):
+        # A list of callable sub-agents.
         self.callable_agents = callable_agents
+        # The creator ID.
         self.creator_id = creator_id
+        # **The description.**
         self.description = description
+        # **The display name.**
         self.display_name = display_name
+        # The creation time, as a Unix timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The last modification time, as a Unix timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
+        # **Additional metadata.**
         self.metadata = metadata
+        # **The model configuration.**
         self.model = model
+        # The ID of the last modifier.
         self.modifier_id = modifier_id
+        # **The agent name.**
         self.name = name
+        # The runtime dependencies.
         self.required_runtime = required_runtime
+        # A list of skills.
         self.skills = skills
+        # **The system prompt.**
         self.system_prompt = system_prompt
+        # **A list of tools.**
         self.tools = tools
+        # **The visibility level.**
         self.visibility = visibility
+        # The visibility scope.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -231,7 +251,9 @@ class GetAgentResponseBodyAgentVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        # A list of project IDs that can view the agent.
         self.project_ids = project_ids
+        # A list of user IDs that can view the agent.
         self.user_ids = user_ids
 
     def validate(self):
@@ -268,9 +290,13 @@ class GetAgentResponseBodyAgentTools(DaraModel):
         mcp_items: List[str] = None,
         mcp_server_name: str = None,
     ):
+        # **The name of the built-in tool. This parameter applies only when `Kind` is set to `builtin`.**
         self.builtin_name = builtin_name
+        # **The tool type.**
         self.kind = kind
+        # **The selected MCP tool items. This parameter applies only when `Kind` is set to `mcp`.**
         self.mcp_items = mcp_items
+        # **The name of the associated MCP server. This parameter applies only when `Kind` is set to `mcp`.**
         self.mcp_server_name = mcp_server_name
 
     def validate(self):
@@ -317,7 +343,9 @@ class GetAgentResponseBodyAgentSkills(DaraModel):
         name: str = None,
         version: int = None,
     ):
+        # The skill name.
         self.name = name
+        # The skill version.
         self.version = version
 
     def validate(self):
@@ -356,11 +384,17 @@ class GetAgentResponseBodyAgentModel(DaraModel):
         temperature: float = None,
         top_p: float = None,
     ):
+        # Additional configuration for the model.
         self.config = config
+        # The maximum number of tokens to generate in one response.
         self.max_tokens = max_tokens
+        # The model name.
         self.model_name = model_name
+        # Indicates whether streaming output is enabled.
         self.stream = stream
+        # The temperature.
         self.temperature = temperature
+        # The top-p.
         self.top_p = top_p
 
     def validate(self):
@@ -421,9 +455,13 @@ class GetAgentResponseBodyAgentCallableAgents(DaraModel):
         source: str = None,
         version: int = None,
     ):
+        # The sub-agent display name.
         self.display_name = display_name
+        # The sub-agent name.
         self.name = name
+        # The sub-agent source.
         self.source = source
+        # The sub-agent version.
         self.version = version
 
     def validate(self):

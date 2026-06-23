@@ -13,7 +13,7 @@ class GetDataQualityEvaluationTaskResponseBody(DaraModel):
         data_quality_evaluation_task: main_models.GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask = None,
         request_id: str = None,
     ):
-        # The details of the monitor.
+        # Data quality monitoring details.
         self.data_quality_evaluation_task = data_quality_evaluation_task
         # Id of the request
         self.request_id = request_id
@@ -60,32 +60,32 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask(DaraMode
         target: main_models.GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget = None,
         trigger: main_models.GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger = None,
     ):
-        # The ID of the data source used for the monitor.
+        # Data source ID used by the quality monitoring task.
         self.data_source_id = data_source_id
-        # The description of the monitor.
+        # Description of the quality monitoring task.
         self.description = description
-        # The hook.
+        # Callback settings.
         self.hooks = hooks
-        # The ID of the data quality monitor.
+        # Data quality monitoring ID.
         self.id = id
-        # The name of the monitor.
+        # Name of the quality monitoring task.
         # 
         # This parameter is required.
         self.name = name
-        # The configurations of alert notifications.
+        # Notification subscription configuration.
         self.notifications = notifications
-        # The workspace ID.
+        # Workspace ID.
         self.project_id = project_id
-        # Extended configuration, JSON-formatted string, takes effect only for EMR-type data quality monitoring.
+        # Extended configuration. A JSON-formatted string. Only takes effect for EMR-type data quality monitoring.
         # 
-        # - queue: the yarn queue used when performing EMR data quality verification. The default queue is the queue configured for this project.
-        # - sqlEngine: SQL engine used when performing EMR data verification
-        #     - HIVE_ SQL
-        #     - SPARK_ SQL
+        # - queue: The YARN queue used when executing EMR data quality validation. Defaults to the queue configured for the current project.
+        # - sqlEngine: The SQL engine used when executing EMR data validation.
+        #   + HIVE_SQL
+        #   + SPARK_SQL
         self.runtime_conf = runtime_conf
-        # The monitored object of the monitor.
+        # Data quality monitoring object.
         self.target = target
-        # The trigger configuration of the monitor.
+        # Trigger configuration of the data quality validation task.
         self.trigger = trigger
 
     def validate(self):
@@ -185,13 +185,13 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTrigger(D
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # The IDs of scheduling tasks. This parameter is valid only if you set Type to ByScheduledTaskInstance.
+        # List of scheduled task IDs. Valid when Type is ByScheduledTaskInstance.
         self.task_ids = task_ids
-        # The trigger type of the monitor. Valid values:
+        # Quality monitoring trigger type:
         # 
-        # *   ByManual: The monitor is manually triggered.
-        # *   ByScheduledTaskInstance: The monitor is triggered by associated scheduling tasks.
-        # *   ByQualityNode: The monitor is triggered by created data quality monitoring nodes.
+        # - ByManual: Manual trigger
+        # - ByScheduledTaskInstance: Scheduled task trigger
+        # - ByQualityNode: Quality node trigger
         self.type = type
 
     def validate(self):
@@ -228,22 +228,20 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskTarget(Da
         table_guid: str = None,
         type: str = None,
     ):
-        # The type of the database to which the table belongs. Valid values:
-        # 
-        # *   maxcompute
-        # *   hologres
-        # *   cdh
-        # *   analyticdb_for_mysql
-        # *   starrocks
-        # *   emr
-        # *   analyticdb_for_postgresql
+        # Database type to which the table belongs:
+        # - maxcompute
+        # - hologres
+        # - cdh
+        # - analyticdb_for_mysql
+        # - starrocks
+        # - emr
+        # - analyticdb_for_postgresql
         self.database_type = database_type
-        # Data quality monitoring partition range settings.
+        # Partition range setting for data quality monitoring.
         self.partition_spec = partition_spec
-        # The ID of the table in Data Map.
+        # Unique ID of the table in Data Map.
         self.table_guid = table_guid
-        # The type of the monitoring object.
-        # 
+        # Monitoring object type.
         # - Table: Table.
         self.type = type
 
@@ -291,12 +289,12 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         condition: str = None,
         notifications: List[main_models.GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotifications] = None,
     ):
-        # The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
+        # Notification trigger condition. When this condition is met, the message notification is triggered. Currently, only two types of conditional expressions are supported:
         # 
-        # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
-        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+        # - Specify a single group of rule severity type and rule validation status, e.g., `${severity} == "High" AND ${status} == "Critical"`, which means the condition is met if any executed rule with severity High has a validation result of Critical.
+        # - Specify multiple groups of rule severity types and rule validation statuses, e.g., `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`, which means the condition is met if any executed rule has severity High with validation result Critical, or severity Normal with validation result Critical, or severity Normal with validation result Error. The severity enum in the conditional expression is consistent with the severity enum in DataQualityRule, and the status enum is consistent with the status in DataQualityResult.
         self.condition = condition
-        # The configurations of alert notifications.
+        # Notification settings.
         self.notifications = notifications
 
     def validate(self):
@@ -339,9 +337,9 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         notification_channels: List[main_models.GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[main_models.GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # The alert notification methods.
+        # Notification method.
         self.notification_channels = notification_channels
-        # The configurations of alert recipients.
+        # Alert receiver settings.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -394,21 +392,13 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The extended information.
+        # Extended information.
         self.extension = extension
-        # The additional parameters that are required when alerts are sent. The parameters are JSON-formatted strings. The following keys are supported:
+        # Additional parameter settings when sending alerts. JSON format. Supported keys are as follows:
         # 
-        # *   atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
-        # 
-        # Valid values:
-        # 
-        # *   WebhookUrl
-        # *   FeishuUrl
-        # *   DingdingUrl
-        # *   WeixinUrl
-        # *   AliUid
+        # - atAll: Whether to @everyone in the group when sending DingTalk alerts. Takes effect when ReceiverType is DingdingUrl.
         self.receiver_type = receiver_type
-        # The alert recipients.
+        # Alert receiver.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -448,7 +438,7 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotificat
         self,
         channels: List[str] = None,
     ):
-        # The alert notification methods.
+        # Notification method.
         self.channels = channels
 
     def validate(self):
@@ -477,14 +467,14 @@ class GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks(Dar
         condition: str = None,
         type: str = None,
     ):
-        # The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
+        # Hook trigger condition. When this condition is met, the hook action is triggered. Currently, only two types of conditional expressions are supported:
         # 
-        # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
-        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+        # - Specify a single group of rule severity type and rule validation status, e.g., `${severity} == "High" AND ${status} == "Critical"`, which means the condition is met if any executed rule with severity High has a validation result of Critical.
+        # - Specify multiple groups of rule severity types and rule validation statuses, e.g., `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`, which means the condition is met if any executed rule has severity High with validation result Critical, or severity Normal with validation result Critical, or severity Normal with validation result Error. The severity enum in the conditional expression is consistent with the severity enum in DataQualityRule, and the status enum is consistent with the status in DataQualityResult.
         self.condition = condition
-        # The hook type. Only one hook type is supported.
+        # Hook type. Currently, only one type is supported:
         # 
-        # *   BlockTaskInstance: Blocks the running of scheduling tasks. A monitor is triggered by scheduling tasks. After a monitor finishes running, the monitor determines whether to block the running of scheduling tasks based on the hook condition.
+        # - BlockTaskInstance: Blocks the scheduled task from continuing to run. When data quality monitoring is triggered by a scheduled task, after the data quality monitoring completes, Hook.Condition is used to determine whether to block the scheduled task from continuing to run.
         self.type = type
 
     def validate(self):

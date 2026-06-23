@@ -13,7 +13,9 @@ class ListMcpServersResponseBody(DaraModel):
         paging_info: main_models.ListMcpServersResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The paging information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListMcpServersResponseBodyPagingInfo(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The maximum number of results returned on the current page.****
         self.max_results = max_results
+        # A list of MCP Server objects.
         self.mcp_servers = mcp_servers
+        # The token for the next page of results. A null value indicates that all results have been returned.****
         self.next_token = next_token
+        # The total count of entries that match the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -114,14 +120,23 @@ class ListMcpServersResponseBodyPagingInfoMcpServers(DaraModel):
         name: str = None,
         visibility: str = None,
     ):
+        # The connection configuration of the MCP Server.
         self.config = config
+        # The creator ID.
         self.creator_id = creator_id
+        # The creation time, as a millisecond timestamp.****
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The last modified time, as a millisecond timestamp.****
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the user who last modified the server.
         self.modifier_id = modifier_id
+        # The name of the MCP Server.
         self.name = name
+        # The visibility level.****
         self.visibility = visibility
 
     def validate(self):
@@ -189,8 +204,11 @@ class ListMcpServersResponseBodyPagingInfoMcpServersConfig(DaraModel):
         transport: str = None,
         url: str = None,
     ):
+        # The custom headers.
         self.custom_headers = custom_headers
+        # The transport protocol.
         self.transport = transport
+        # The service address of the MCP Server.
         self.url = url
 
     def validate(self):

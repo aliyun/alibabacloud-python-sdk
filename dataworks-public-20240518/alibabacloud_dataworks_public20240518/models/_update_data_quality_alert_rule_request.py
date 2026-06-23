@@ -171,14 +171,21 @@ class UpdateDataQualityAlertRuleRequestNotificationReceivers(DaraModel):
         self.extension = extension
         # The type of alert recipients.
         # 
-        # *   AliUid
-        # *   WebhookUrl
-        # *   DingdingUrl
-        # *   WeixinUrl
-        # *   FeishuUrl
-        # *   TaskOwner
-        # *   DataQualityScanOwner
-        # *   ShiftSchedule
+        # - AliUid
+        # 
+        # - WebhookUrl
+        # 
+        # - DingdingUrl
+        # 
+        # - WeixinUrl
+        # 
+        # - FeishuUrl
+        # 
+        # - TaskOwner
+        # 
+        # - DataQualityScanOwner
+        # 
+        # - ShiftSchedule
         # 
         # This parameter is required.
         self.receiver_type = receiver_type

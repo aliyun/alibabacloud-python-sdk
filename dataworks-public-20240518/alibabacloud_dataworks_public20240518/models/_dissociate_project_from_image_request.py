@@ -10,8 +10,12 @@ class DissociateProjectFromImageRequest(DaraModel):
         id: str = None,
         project_id: int = None,
     ):
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.id = id
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

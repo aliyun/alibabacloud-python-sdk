@@ -14,8 +14,11 @@ class CreateAgentSessionRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.CreateAgentSessionRequestParams = None,
     ):
+        # The request ID provided by the client. This ID is returned in the response without modification.
         self.id = id
+        # The JSON-RPC version. The value is fixed at `2.0`.
         self.jsonrpc = jsonrpc
+        # The business parameters.
         self.params = params
 
     def validate(self):
@@ -57,6 +60,7 @@ class CreateAgentSessionRequestParams(DaraModel):
         self,
         meta: main_models.CreateAgentSessionRequestParamsMeta = None,
     ):
+        # The extended metadata, which includes information such as agent binding, session source, and session tags.
         self.meta = meta
 
     def validate(self):
@@ -86,15 +90,21 @@ class CreateAgentSessionRequestParamsMeta(DaraModel):
         self,
         agent: main_models.CreateAgentSessionRequestParamsMetaAgent = None,
         config: main_models.CreateAgentSessionRequestParamsMetaConfig = None,
+        initial_config_options: main_models.CreateAgentSessionRequestParamsMetaInitialConfigOptions = None,
     ):
+        # The agent configuration for this session. The value must be one of the agents returned by the `ListAgents` API.
         self.agent = agent
+        # The configuration parameters for the session, such as filters based on session source and session tags.
         self.config = config
+        self.initial_config_options = initial_config_options
 
     def validate(self):
         if self.agent:
             self.agent.validate()
         if self.config:
             self.config.validate()
+        if self.initial_config_options:
+            self.initial_config_options.validate()
 
     def to_map(self):
         result = dict()
@@ -106,6 +116,9 @@ class CreateAgentSessionRequestParamsMeta(DaraModel):
 
         if self.config is not None:
             result['Config'] = self.config.to_map()
+
+        if self.initial_config_options is not None:
+            result['InitialConfigOptions'] = self.initial_config_options.to_map()
 
         return result
 
@@ -119,6 +132,45 @@ class CreateAgentSessionRequestParamsMeta(DaraModel):
             temp_model = main_models.CreateAgentSessionRequestParamsMetaConfig()
             self.config = temp_model.from_map(m.get('Config'))
 
+        if m.get('InitialConfigOptions') is not None:
+            temp_model = main_models.CreateAgentSessionRequestParamsMetaInitialConfigOptions()
+            self.initial_config_options = temp_model.from_map(m.get('InitialConfigOptions'))
+
+        return self
+
+class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
+    def __init__(
+        self,
+        execution_lane: str = None,
+        mode: str = None,
+    ):
+        self.execution_lane = execution_lane
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.execution_lane is not None:
+            result['ExecutionLane'] = self.execution_lane
+
+        if self.mode is not None:
+            result['Mode'] = self.mode
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecutionLane') is not None:
+            self.execution_lane = m.get('ExecutionLane')
+
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+
         return self
 
 class CreateAgentSessionRequestParamsMetaConfig(DaraModel):
@@ -127,7 +179,9 @@ class CreateAgentSessionRequestParamsMetaConfig(DaraModel):
         session_source: str = None,
         session_tags: List[main_models.CreateAgentSessionRequestParamsMetaConfigSessionTags] = None,
     ):
+        # The identifier for the session source. This allows you to search for sessions by their source. For example, if you use an agent on multiple pages, such as Page A and Page B, you can use this parameter to filter and display only the sessions created on Page A. The identifier can be up to 128 characters and can contain letters, digits, hyphens (-), and underscores (_).
         self.session_source = session_source
+        # A list of session tags. You can use these tags to search and filter sessions.
         self.session_tags = session_tags
 
     def validate(self):
@@ -169,6 +223,7 @@ class CreateAgentSessionRequestParamsMetaConfigSessionTags(DaraModel):
         self,
         session_tag_code: str = None,
     ):
+        # The session tag. You can use session tags to filter sessions. For example, if your application calls the API with a fixed RAM sub-account but maintains its own user account system, you can pass a user\\"s account ID as a tag. This allows you to filter the session list by your internal account IDs. The tag can be up to 128 characters and can contain letters, digits, hyphens (-), and underscores (_).
         self.session_tag_code = session_tag_code
 
     def validate(self):
@@ -196,6 +251,7 @@ class CreateAgentSessionRequestParamsMetaAgent(DaraModel):
         self,
         agent_name: str = None,
     ):
+        # The agent name to bind to the session. This parameter is required.
         self.agent_name = agent_name
 
     def validate(self):

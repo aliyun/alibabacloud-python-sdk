@@ -15,10 +15,18 @@ class CreateProjectRoleRequest(DaraModel):
         name: str = None,
         project_id: int = None,
     ):
+        # The client token.
         self.client_token = client_token
+        # The list of DataWorks module permissions.
         self.module_permissions = module_permissions
+        # The role name.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter specifies the DataWorks workspace on which the API operation is performed.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -74,7 +82,51 @@ class CreateProjectRoleRequestModulePermissions(DaraModel):
         module_id: int = None,
         permission_type: str = None,
     ):
+        # The DataWorks module ID. Valid values:
+        # 
+        # - 2: HoloStudio
+        # 
+        # - 3: StreamStudio
+        # 
+        # - 4: Deployment management
+        # 
+        # - 6: Data Security Guard
+        # 
+        # - 7: Data Map
+        # 
+        # - 8: Data Service
+        # 
+        # - 9: Data Integration
+        # 
+        # - 10: Data Modeling (DataBlau DDM)
+        # 
+        # - 11: Data Studio
+        # 
+        # - 12: Data Quality
+        # 
+        # - 13: Data Governance
+        # 
+        # - 14: Operation Center
+        # 
+        # - 15: Resource optimization
+        # 
+        # - 16: Migration Assistant
+        # 
+        # - 17: Data Analysis
+        # 
+        # - 18: Approval center
+        # 
+        # - 19: Security Center
+        # 
+        # - 20: Intelligent Data Modeling
         self.module_id = module_id
+        # The permission type. Valid values:
+        # 
+        # - Write: Read-only
+        # 
+        # - Read: Edit
+        # 
+        # - NotSet: Not controlled
         self.permission_type = permission_type
 
     def validate(self):

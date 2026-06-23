@@ -13,10 +13,15 @@ class MetaEntityWriteResult(DaraModel):
         name: str = None,
         success: bool = None,
     ):
+        # The entity type.
         self.entity_type = entity_type
+        # The error message if the operation fails for the entity.
         self.error_message = error_message
+        # The entity ID.
         self.id = id
+        # The entity name.
         self.name = name
+        # Indicates whether the operation succeeded for the entity.
         self.success = success
 
     def validate(self):

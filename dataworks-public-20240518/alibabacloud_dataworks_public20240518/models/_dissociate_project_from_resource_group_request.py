@@ -10,11 +10,11 @@ class DissociateProjectFromResourceGroupRequest(DaraModel):
         project_id: int = None,
         resource_group_id: str = None,
     ):
-        # The ID of the workspace from which you want to disassociate the resource group.
+        # The ID of the workspace to disassociate.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The ID of the resource group.
+        # The unique identifier of the resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

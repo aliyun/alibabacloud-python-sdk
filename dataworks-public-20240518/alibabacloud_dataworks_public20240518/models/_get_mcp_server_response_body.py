@@ -13,7 +13,9 @@ class GetMcpServerResponseBody(DaraModel):
         mcp_server: main_models.GetMcpServerResponseBodyMcpServer = None,
         request_id: str = None,
     ):
+        # The MCP Server configuration.
         self.mcp_server = mcp_server
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,14 +57,23 @@ class GetMcpServerResponseBodyMcpServer(DaraModel):
         name: str = None,
         visibility: str = None,
     ):
+        # The connection configuration for the MCP Server.
         self.config = config
+        # The creator ID.
         self.creator_id = creator_id
+        # The creation time, provided as a timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The modification time, provided as a timestamp in milliseconds.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified_time = gmt_modified_time
+        # The modifier ID.
         self.modifier_id = modifier_id
+        # The MCP Server name.
         self.name = name
+        # The visibility level. Valid values: TENANT (visible within the account), PROJECT (visible to specified projects), and USER (visible to specified users).
         self.visibility = visibility
 
     def validate(self):
@@ -130,8 +141,11 @@ class GetMcpServerResponseBodyMcpServerConfig(DaraModel):
         transport: str = None,
         url: str = None,
     ):
+        # The custom headers.
         self.custom_headers = custom_headers
+        # The transport protocol.
         self.transport = transport
+        # The service address of the MCP Server.
         self.url = url
 
     def validate(self):

@@ -9,6 +9,8 @@ class DeleteSkillRequest(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the Skill to delete.
+        # 
         # This parameter is required.
         self.name = name
 

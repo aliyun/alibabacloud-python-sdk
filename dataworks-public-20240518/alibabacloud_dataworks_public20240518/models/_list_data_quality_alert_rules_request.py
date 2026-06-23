@@ -29,8 +29,9 @@ class ListDataQualityAlertRulesRequest(DaraModel):
         self.project_id = project_id
         # The list of sorting fields. Supports fields such as last modified time and creation time. Format: "SortField+SortOrder (Desc/Asc)", where Asc is the default. Valid values:
         # 
-        # *   CreateTime (Desc/Asc)
-        # *   Id (Desc/Asc)
+        # - CreateTime (Desc/Asc)
+        # 
+        # - Id (Desc/Asc)
         self.sort_by = sort_by
 
     def validate(self):

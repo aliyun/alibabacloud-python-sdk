@@ -11,8 +11,11 @@ class ListAgentSessionArtifactsShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
+        # The ID passed by the caller. The value is returned as-is in the response.
         self.id = id
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
+        # The business parameters.
         self.params_shrink = params_shrink
 
     def validate(self):

@@ -9,6 +9,8 @@ class DeleteSecurityStrategyRequest(DaraModel):
         self,
         id: int = None,
     ):
+        # The ID of the security strategy.
+        # 
         # This parameter is required.
         self.id = id
 

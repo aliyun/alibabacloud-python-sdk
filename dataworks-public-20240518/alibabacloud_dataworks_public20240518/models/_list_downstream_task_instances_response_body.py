@@ -179,8 +179,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         self.description = description
         # The environment in which the data source is used. Valid values:
         # 
-        # *   Dev
-        # *   Prod
+        # - Dev
+        # 
+        # - Prod
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -204,9 +205,11 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # - AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
         self.rerun_mode = rerun_mode
         # The number of times the instance is run. By default, the value starts from 1.
         self.run_number = run_number
@@ -218,20 +221,29 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         self.started_time = started_time
         # The status of the instance. Valid values:
         # 
-        # *   NotRun: The instance is not run.
-        # *   Running: The instance is running.
-        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
-        # *   CheckingCondition: Branch conditions are being checked for the instance.
-        # *   WaitResource: The instance is waiting for resources.
-        # *   Failure: The instance fails to be run.
-        # *   Success: The instance is successfully run.
-        # *   Checking: Data quality is being checked for the instance.
-        # *   WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
+        # - NotRun: The instance is not run.
+        # 
+        # - Running: The instance is running.
+        # 
+        # - WaitTime: The instance is waiting for the scheduling time to arrive.
+        # 
+        # - CheckingCondition: Branch conditions are being checked for the instance.
+        # 
+        # - WaitResource: The instance is waiting for resources.
+        # 
+        # - Failure: The instance fails to be run.
+        # 
+        # - Success: The instance is successfully run.
+        # 
+        # - Checking: Data quality is being checked for the instance.
+        # 
+        # - WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
         self.status = status
         # The scheduling dependency type. Valid values:
         # 
-        # *   Normal: same-cycle scheduling dependency
-        # *   CrossCycle: cross-cycle scheduling dependency
+        # - Normal: same-cycle scheduling dependency
+        # 
+        # - CrossCycle: cross-cycle scheduling dependency
         self.step_type = step_type
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -247,9 +259,11 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.trigger_recurrence = trigger_recurrence
         # The scheduling time.
         self.trigger_time = trigger_time
@@ -257,8 +271,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.trigger_type = trigger_type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -268,12 +283,17 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   SmokeTest
-        # *   SupplementData
-        # *   Manual
-        # *   ManualWorkflow
-        # *   Normal
-        # *   ManualFlow
+        # - SmokeTest
+        # 
+        # - SupplementData
+        # 
+        # - Manual
+        # 
+        # - ManualWorkflow
+        # 
+        # - Normal
+        # 
+        # - ManualFlow
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name
@@ -623,8 +643,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances(D
     ):
         # The scheduling dependency type. Valid values:
         # 
-        # *   Normal
-        # *   CrossCycle
+        # - Normal
+        # 
+        # - CrossCycle
         self.dependency_type = dependency_type
         # The information about a task instance.
         self.task_instance = task_instance
@@ -707,8 +728,9 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         self.description = description
         # The environment in which the data source is used. Valid values:
         # 
-        # *   Dev
-        # *   Prod
+        # - Dev
+        # 
+        # - Prod
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
@@ -738,15 +760,23 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         self.started_time = started_time
         # The status of the instance. Valid values:
         # 
-        # *   NotRun: The instance is not run.
-        # *   Running: The instance is running.
-        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
-        # *   CheckingCondition: Branch conditions are being checked for the instance.
-        # *   WaitResource: The instance is waiting for resources.
-        # *   Failure: The instance fails to be run.
-        # *   Success: The instance is successfully run.
-        # *   Checking: Data quality is being checked for the instance.
-        # *   WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
+        # - NotRun: The instance is not run.
+        # 
+        # - Running: The instance is running.
+        # 
+        # - WaitTime: The instance is waiting for the scheduling time to arrive.
+        # 
+        # - CheckingCondition: Branch conditions are being checked for the instance.
+        # 
+        # - WaitResource: The instance is waiting for resources.
+        # 
+        # - Failure: The instance fails to be run.
+        # 
+        # - Success: The instance is successfully run.
+        # 
+        # - Checking: Data quality is being checked for the instance.
+        # 
+        # - WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
         self.status = status
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -760,16 +790,19 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         self.timeout = timeout
         # The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.trigger_recurrence = trigger_recurrence
         # The scheduling time.
         self.trigger_time = trigger_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.trigger_type = trigger_type
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -777,11 +810,15 @@ class ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstancesTa
         self.workflow_instance_id = workflow_instance_id
         # The type of the workflow instance. Valid values:
         # 
-        # *   Normal
-        # *   Manual
-        # *   SmokeTest
-        # *   SupplementData
-        # *   ManualWorkflow
+        # - Normal
+        # 
+        # - Manual
+        # 
+        # - SmokeTest
+        # 
+        # - SupplementData
+        # 
+        # - ManualWorkflow
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name

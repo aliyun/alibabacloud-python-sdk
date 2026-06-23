@@ -13,15 +13,16 @@ class AttachDataQualityRulesToEvaluationTaskRequest(DaraModel):
         data_quality_rule_ids: List[int] = None,
         project_id: int = None,
     ):
-        # The ID of the data quality monitoring task that is associated with the rule.
+        # The ID of the associated data quality monitoring task.
         # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
-        # The IDs of the monitoring rules.
+        # The list of data quality rule IDs.
         # 
         # This parameter is required.
         self.data_quality_rule_ids = data_quality_rule_ids
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
+        # This parameter specifies the DataWorks workspace in which the API operation is performed.
         # 
         # This parameter is required.
         self.project_id = project_id

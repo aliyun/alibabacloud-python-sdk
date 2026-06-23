@@ -16,9 +16,11 @@ class CreateDataSourceSharedRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # Share data sources to the target project environment, including
-        # - Dev (Development Environment)
-        # - Prod (production environment)
+        # The environment of the target workspace to which the data source is shared. Valid values:
+        # 
+        # - Dev: development environment
+        # 
+        # - Prod: production environment
         # 
         # This parameter is required.
         self.env_type = env_type

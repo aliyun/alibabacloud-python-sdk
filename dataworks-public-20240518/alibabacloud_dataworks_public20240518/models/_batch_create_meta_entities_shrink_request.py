@@ -9,6 +9,8 @@ class BatchCreateMetaEntitiesShrinkRequest(DaraModel):
         self,
         entities_shrink: str = None,
     ):
+        # An entity list. You can create up to five entities in a batch. All entities in the batch must have the same `EntityType`.
+        # 
         # This parameter is required.
         self.entities_shrink = entities_shrink
 

@@ -14,8 +14,11 @@ class ListAgentSessionsRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.ListAgentSessionsRequestParams = None,
     ):
+        # The ID provided by the caller. The value is returned as-is.
         self.id = id
+        # The JSON-RPC version. The value must be `2.0`.
         self.jsonrpc = jsonrpc
+        # Business parameters.
         self.params = params
 
     def validate(self):
@@ -63,12 +66,19 @@ class ListAgentSessionsRequestParams(DaraModel):
         session_title: str = None,
         tag_list: List[str] = None,
     ):
+        # Filters sessions by the **agent name**. You must specify at least one of this parameter and `SessionSourceList`.
         self.agent_name = agent_name
+        # The maximum number of results to return per page. Default value: 50.
         self.max_results = max_results
+        # The token for the next page of results. Set this parameter to `1` to retrieve the first page of results.
         self.next_token = next_token
+        # Filters sessions by session ID.
         self.session_id = session_id
+        # Filters sessions by the **list of session sources**. You must specify at least one of this parameter and `AgentName`.
         self.session_source_list = session_source_list
+        # Filters sessions by session title using a fuzzy match.
         self.session_title = session_title
+        # Filters sessions by a list of session tag codes.
         self.tag_list = tag_list
 
     def validate(self):

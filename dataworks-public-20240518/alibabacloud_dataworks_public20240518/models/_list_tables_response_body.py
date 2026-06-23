@@ -14,7 +14,7 @@ class ListTablesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The pagination result.
+        # The pagination information.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -65,11 +65,11 @@ class ListTablesResponseBodyPagingInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The page size.
         self.page_size = page_size
-        # The list of data tables.
+        # The list of tables.
         self.tables = tables
-        # The total number of records returned.
+        # The total count of entries.
         self.total_count = total_count
 
     def validate(self):

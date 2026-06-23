@@ -15,12 +15,19 @@ class ListMetaEntityDefsRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # A keyword to search for in the description. The system performs a fuzzy match.
         self.description = description
+        # The display name of the type definition. This parameter supports partial matching.
         self.display_name = display_name
+        # Filters the results by extension mode. Valid values: `NONE` and `TABLE`.
         self.extend = extend
+        # The sort order. Valid values: `Asc` and `Desc`.
         self.order = order
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
+        # The sort field. Valid values: `Name`, `CreateTime`, and `ModifyTime`.
         self.sort_by = sort_by
 
     def validate(self):
