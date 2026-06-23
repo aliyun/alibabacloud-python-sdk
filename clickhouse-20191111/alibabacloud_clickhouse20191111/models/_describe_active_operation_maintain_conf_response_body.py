@@ -12,8 +12,15 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
         has_config: int = None,
         request_id: str = None,
     ):
+        # The active O\\&M configuration items.
         self.config = config
+        # Indicates whether a configuration is set.
+        # 
+        # - 1: A configuration is set.
+        # 
+        # - 0: No configuration is set.
         self.has_config = has_config
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,12 +68,27 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
+        # The time when the configuration was created.
         self.created_time = created_time
+        # The day of the cycle.
+        # 
+        # - If CycleType is Month, this parameter returns one or more numbers from 1 to 28 that indicate the day of the month. Multiple numbers are separated by commas (,).
+        # 
+        # - If CycleType is Week, this parameter returns one or more numbers from 1 to 7 that indicate the day of the week. Multiple numbers are separated by commas (,).
         self.cycle_time = cycle_time
+        # The cycle type.
+        # 
+        # - Month
+        # 
+        # - Week
         self.cycle_type = cycle_type
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
+        # The time when the configuration was last modified.
         self.modified_time = modified_time
+        # The status of the configuration. A value of 1 indicates that the configuration is enabled. A value of 2 indicates that the configuration is disabled.
         self.status = status
 
     def validate(self):

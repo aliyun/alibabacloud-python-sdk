@@ -21,36 +21,41 @@ class DescribeProcessListRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to find information about all clusters in the destination region, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the query statement.
+        # The ID of the query.
         self.initial_query_id = initial_query_id
-        # The account that is used to log on to the database.
+        # The database account.
         self.initial_user = initial_user
-        # The keyword that is used to query.
+        # The keyword for the query.
         self.keyword = keyword
-        # Sorting by the specified column name. Valid values:
+        # The column to use for sorting. Valid values:
         # 
-        # *   elapsed: the cumulative execution time
-        # *   written_rows: the number of written rows
-        # *   read_rows: the number of read rows
-        # *   memory_usage: the memory usage
+        # - elapsed: The total running time.
+        # 
+        # - written_rows: The number of rows written.
+        # 
+        # - read_rows: The number of rows read.
+        # 
+        # - memory_usage: The amount of memory used.
         self.order = order
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return per page. Default value: 30. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **30** (Default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The minimum query duration. The minimum value is **1000**, and the default value is **1000**. Unit: milliseconds. Queries that last longer than this duration are returned in response parameters.
+        # The shortest query duration. The minimum value is **1000**. The default value is **1000**. The unit is milliseconds. The response returns queries that run longer than this duration.
         self.query_duration_ms = query_duration_ms
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to find the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

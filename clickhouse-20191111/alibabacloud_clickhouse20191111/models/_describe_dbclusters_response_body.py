@@ -17,17 +17,19 @@ class DescribeDBClustersResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.dbclusters = dbclusters
-        # The total number of returned pages.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned per page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (Default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries that are returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

@@ -11,7 +11,7 @@ class ModifyDBClusterResponseBody(DaraModel):
         dbcluster: main_models.ModifyDBClusterResponseBodyDBCluster = None,
         request_id: str = None,
     ):
-        # The clusters.
+        # The cluster.
         self.dbcluster = dbcluster
         # The request ID.
         self.request_id = request_id

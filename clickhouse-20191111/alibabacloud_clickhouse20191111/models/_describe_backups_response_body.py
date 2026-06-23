@@ -16,19 +16,21 @@ class DescribeBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The backup sets.
+        # The list of backup sets.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -97,34 +99,37 @@ class DescribeBackupsResponseBodyItems(DaraModel):
         dbcluster_id: str = None,
         expire_date: str = None,
     ):
-        # The end time of the backup task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+        # The end time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
         self.backup_end_time = backup_end_time
-        # The backup task ID.
+        # The data backup task ID.
         self.backup_id = backup_id
-        # The backup method. Valid values: Only **Physical** is returned. This value indicates that a physical backup was performed.
+        # The backup method. The value is always **Physical**, which indicates a physical backup.
         self.backup_method = backup_method
-        # The number of nodes in the cluster.
+        # The number of cluster nodes.
         # 
-        # *   If the cluster is of Single-replica Edition, the value ranges from 1 to 48.
-        # *   If the cluster is of Double-replica Edition, the value ranges from 1 to 24.
+        # - For a single-replica edition cluster, the value is an integer from 1 to 48.
+        # 
+        # - For a double-replica edition cluster, the value is an integer from 1 to 24.
         self.backup_set_info = backup_set_info
-        # The size of the backup set. Unit: MB.
+        # The backup size. Unit: MB.
         self.backup_size = backup_size
-        # The start time of the backup task. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+        # The start time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
         self.backup_start_time = backup_start_time
         # The backup status. Valid values:
         # 
-        # *   **Success**
-        # *   **Failure**
+        # - **Success**: The backup is successful.
+        # 
+        # - **Failure**: The backup failed.
         self.backup_status = backup_status
         # The backup type. Valid values:
         # 
-        # *   **FullBackup**
-        # *   **IncrementalBackup**
+        # - **FullBackup**: full backup.
+        # 
+        # - **IncrementalBackup**: incremental backup.
         self.backup_type = backup_type
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The time when the backup set expired. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC.
+        # The expiration time of the backup set. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
         self.expire_date = expire_date
 
     def validate(self):

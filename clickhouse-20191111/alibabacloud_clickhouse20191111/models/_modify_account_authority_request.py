@@ -21,15 +21,15 @@ class ModifyAccountAuthorityRequest(DaraModel):
         total_databases: str = None,
         total_dictionaries: str = None,
     ):
-        # The name of the database account.
+        # The database account.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The databases to which you want to grant permissions. Separate databases with commas (,).
+        # The list of databases to authorize. Separate multiple database names with commas (,).
         # 
         # This parameter is required.
         self.allow_databases = allow_databases
-        # The dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        # The list of dictionaries to authorize. Separate multiple dictionary names with commas (,).
         # 
         # This parameter is required.
         self.allow_dictionaries = allow_dictionaries
@@ -39,15 +39,17 @@ class ModifyAccountAuthorityRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # Specifies whether to grant DDL permissions to the database account. Valid values:
         # 
-        # *   **true**: grants DDL permissions to the database account.
-        # *   **false**: does not grant DDL permissions to the database account.
+        # - **true**: Allows DDL operations.
+        # 
+        # - **false**: Denies DDL operations.
         # 
         # This parameter is required.
         self.ddl_authority = ddl_authority
-        # Specifies whether to grant DML permissions to the database account. Valid values:
+        # The DML permissions granted to the database account. Valid values:
         # 
-        # *   **all**
-        # *   **readonly,modify**
+        # - **all**: Grants read, write, and modify permissions.
+        # 
+        # - **readonly,modify**: Grants read and modify permissions.
         # 
         # This parameter is required.
         self.dml_authority = dml_authority
@@ -57,9 +59,9 @@ class ModifyAccountAuthorityRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # All databases. Separate databases with commas (,).
+        # All databases in the cluster. Separate multiple database names with commas (,).
         self.total_databases = total_databases
-        # All dictionaries. Separate dictionaries with commas (,).
+        # All dictionaries in the cluster. Separate multiple dictionary names with commas (,).
         self.total_dictionaries = total_dictionaries
 
     def validate(self):

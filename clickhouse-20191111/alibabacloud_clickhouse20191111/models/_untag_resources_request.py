@@ -21,27 +21,31 @@ class UntagResourcesRequest(DaraModel):
     ):
         # Specifies whether to remove all tags from the cluster. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**
         # 
-        # >  This parameter is valid only when **TagKey.N** is left empty.
+        # - **false** (default)
+        # 
+        # > This parameter is valid only when the **TagKey.N** parameter is empty.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **CLUSTER**.
+        # The resource type. Set the value to **DBCLUSTER**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
 
     def validate(self):

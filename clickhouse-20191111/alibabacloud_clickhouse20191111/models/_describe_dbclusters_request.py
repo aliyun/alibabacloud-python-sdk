@@ -23,31 +23,37 @@ class DescribeDBClustersRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeDBClustersRequestTag] = None,
     ):
-        # The description of the cluster.
+        # The cluster description.
         self.dbcluster_description = dbcluster_description
         # The cluster ID.
         # 
-        # >  If you do not specify this parameter, the information about all clusters is queried.
+        # > If you do not specify this parameter, information about all clusters is queried by default.
         self.dbcluster_ids = dbcluster_ids
         # The state of the cluster. Valid values:
         # 
-        # *   **Preparing**: The cluster is being prepared.
-        # *   **Creating**: The cluster is being created.
-        # *   **Running**: The cluster is running.
-        # *   **Deleting**: The cluster is being deleted.
-        # *   **SCALING_OUT**: The storage capacity of the cluster is being expanded.
+        # - **Preparing**: The cluster is being prepared.
+        # 
+        # - **Creating**: The cluster is being created.
+        # 
+        # - **Running**: The cluster is running.
+        # 
+        # - **Deleting**: The cluster is being deleted.
+        # 
+        # - **SCALING_OUT**: The cluster is being scaled out.
         self.dbcluster_status = dbcluster_status
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries to return per page. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (Default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -158,9 +164,9 @@ class DescribeDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag name.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

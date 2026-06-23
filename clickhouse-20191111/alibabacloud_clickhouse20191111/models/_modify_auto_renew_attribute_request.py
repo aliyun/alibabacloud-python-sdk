@@ -17,14 +17,33 @@ class ModifyAutoRenewAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID. To specify multiple cluster IDs, separate them with commas (,).
+        # 
         # This parameter is required.
         self.dbcluster_ids = dbcluster_ids
+        # The renewal duration. The default value is **1**.
+        # 
+        # - If you set \\`PeriodUnit\\` to **Month**, valid values are integers from 1 to 11.
+        # 
+        # - If you set \\`PeriodUnit\\` to **Year**, valid values are 1, 2, 3, and 5.
+        # 
+        # > A longer subscription period offers a better price. For example, a one-year subscription is more cost-effective than a 10-month or 11-month subscription.
         self.duration = duration
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The unit of the renewal duration specified by the \\`Duration\\` parameter. Valid values: Month and Year.
         self.period_unit = period_unit
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The renewal method. Valid values:
+        # 
+        # - **AutoRenewal**: Auto-renewal.
+        # 
+        # - **Normal**: Manual renewal.
+        # 
+        # - **NotRenewal**: The cluster is not renewed after it expires.
         self.renewal_status = renewal_status
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

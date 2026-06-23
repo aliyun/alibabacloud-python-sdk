@@ -11,9 +11,12 @@ class DescribeEventMetaInfoRequest(DaraModel):
         security_token: str = None,
         source_code: str = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.security_token = security_token
+        # The codes of O\\&M event types. Separate multiple codes with commas.
         self.source_code = source_code
 
     def validate(self):

@@ -24,49 +24,52 @@ class TransferVersionRequest(DaraModel):
         target_db_cluster_id: str = None,
         target_password: str = None,
     ):
-        # The ID of the source ApsaraDB for ClickHouse cluster.
+        # The ID of the source cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The time window during which write operations are stopped.
+        # The time windows during which writes are disabled.
         self.disable_write_windows = disable_write_windows
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (Default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The ID of the region. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent list of regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The database account that is used to log on to the database in the source ApsaraDB for ClickHouse cluster.
+        # The source account.
         # 
         # This parameter is required.
         self.source_account = source_account
-        # The name of the self-managed ClickHouse cluster. You can execute the `SELECT * FROM system.clusters` statement to query the cluster name.
+        # The name of the self-managed ClickHouse cluster.
+        # To obtain the name, execute `SELECT * FROM system.clusters`.
         self.source_cluster_name = source_cluster_name
-        # The password that corresponds to the database account for logging on to the database in the source ApsaraDB for ClickHouse cluster.
+        # The password of the source account.
         # 
         # This parameter is required.
         self.source_password = source_password
-        # The endpoint and TCP port of the self-managed ClickHouse cluster.
+        # The addresses and TCP ports of the shards in the self-managed ClickHouse cluster.
         self.source_shards = source_shards
-        # The database account that is used to log on to the database in the destination ApsaraDB for ClickHouse cluster.
+        # The destination account.
         # 
         # This parameter is required.
         self.target_account = target_account
-        # The ID of the destination ApsaraDB for ClickHouse cluster.
+        # The ID of the destination cluster.
         # 
         # This parameter is required.
         self.target_db_cluster_id = target_db_cluster_id
-        # The password that corresponds to the database account for logging on to the database in the destination ApsaraDB for ClickHouse cluster.
+        # The password of the destination account.
         # 
         # This parameter is required.
         self.target_password = target_password

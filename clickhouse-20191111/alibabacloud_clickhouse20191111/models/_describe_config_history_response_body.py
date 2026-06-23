@@ -13,7 +13,7 @@ class DescribeConfigHistoryResponseBody(DaraModel):
         config_history_items: List[main_models.DescribeConfigHistoryResponseBodyConfigHistoryItems] = None,
         request_id: str = None,
     ):
-        # The change records of the configuration parameters.
+        # The change history of the configuration parameters.
         self.config_history_items = config_history_items
         # The request ID.
         self.request_id = request_id
@@ -63,16 +63,17 @@ class DescribeConfigHistoryResponseBodyConfigHistoryItems(DaraModel):
     ):
         # The ID of the change record.
         self.change_id = change_id
-        # The user ID (UID) of the Alibaba Cloud account.
+        # The UID of the Alibaba Cloud account.
         self.owner_id = owner_id
-        # The reason for the setting modification of the configuration parameters.
+        # The reason for the parameter change.
         self.reason = reason
-        # Indicates whether the setting modification of the configuration parameters took effect. Valid values:
+        # Indicates whether the parameter change took effect. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The change took effect.
+        # 
+        # - **false**: The change did not take effect.
         self.success = success
-        # The time when the values of the configuration parameters were changed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the change was made. Use the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.time = time
 
     def validate(self):

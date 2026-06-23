@@ -25,34 +25,37 @@ class CreateAccountAndAuthorityRequest(DaraModel):
     ):
         # The description of the database account.
         # 
-        # *   The description cannot start with http:// or https://.
-        # *   The description must be 0 to 256 characters in length.
-        self.account_description = account_description
-        # The database account.
+        # - Cannot start with `http://` or `https://`.
         # 
-        # *   The name must be unique within the cluster.
-        # *   The name can contain lowercase letters, digits, and underscores (_).
-        # *   The name must start with a lowercase letter and end with a lowercase letter or digit.
-        # *   The name must be 2 to 64 characters in length.
+        # - Must be 0 to 256 characters in length.
+        self.account_description = account_description
+        # The name of the database account.
+        # 
+        # - Must be unique within the cluster.
+        # 
+        # - Can contain only lowercase letters, digits, and underscores (_).
+        # 
+        # - Must start with a lowercase letter and end with a lowercase letter or a digit.
+        # 
+        # - Must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The password of your database account.
+        # The password for the database account.
         # 
-        # > 
+        # > - Must contain characters from at least three of the following types: uppercase letters, lowercase letters, digits, and special characters.
         # 
-        # *   The password contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+        # - The supported special characters are `!@#$%^&*()_+-=`.
         # 
-        # *   The password can contain the following special characters: ! @ # $ % ^ & \\* ( ) _ + - =
-        # *   The password must be 8 to 32 characters in length.
+        # - Must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The databases to which you want to grant permissions. Separate databases with commas (,).
+        # The databases to which the account has permissions. Separate multiple database names with commas (,).
         # 
         # This parameter is required.
         self.allow_databases = allow_databases
-        # The dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        # The dictionaries to which the account has permissions. Separate multiple dictionary names with commas (,).
         # 
         # This parameter is required.
         self.allow_dictionaries = allow_dictionaries
@@ -60,29 +63,31 @@ class CreateAccountAndAuthorityRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to grant the DDL permissions to the database account. Valid values:
+        # Specifies whether to grant DDL permissions to the database account. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: DDL operations are allowed.
+        # 
+        # - **false**: DDL operations are denied.
         # 
         # This parameter is required.
         self.ddl_authority = ddl_authority
-        # Specifies whether to grant DML permissions to the database account. Valid values:
+        # Specifies the DML permissions for the database account. Valid values:
         # 
-        # *   **all**
-        # *   **readOnly,modify**
+        # - **all**: read, write, and settings permissions.
+        # 
+        # - **readOnly,modify**: read and settings permissions.
         # 
         # This parameter is required.
         self.dml_authority = dml_authority
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # All databases. Separate databases with commas (,).
+        # All databases in the cluster. Separate multiple database names with commas (,).
         self.total_databases = total_databases
-        # All dictionaries. Separate dictionaries with commas (,).
+        # All dictionaries in the cluster. Separate multiple dictionary names with commas (,).
         self.total_dictionaries = total_dictionaries
 
     def validate(self):

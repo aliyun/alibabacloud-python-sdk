@@ -20,57 +20,65 @@ class DescribeDBClusterPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in UTC using the `yyyy-MM-ddTHH:mmZ` format.
         # 
-        # >  The end time must be later than the start time. The interval cannot be more than 32 days.
+        # > The end time must be later than the start time. The maximum time range cannot exceed 32 days.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The performance metrics that you want to query. Separate multiple performance metrics with commas (,). You can query up to five performance metrics at a time. You can query the following performance metrics:
+        # The performance metrics that you want to query. Separate multiple metric names with a comma (,). You can query up to five performance metrics at a time. The following performance metrics are supported:
         # 
-        # >  The **Key** parameter is required.
+        # > **Key** is required.
         # 
-        # *   **CPU**:
+        # - **CPU**:
         # 
-        #     *   **CPU_USAGE**: the CPU utilization
+        #   - **CPU_USAGE**: The CPU utilization.
         # 
-        # *   **Memory**:
+        # - **Memory**:
         # 
-        #     *   **MEM_USAGE**: the memory usage
-        #     *   **MEM_USAGE_SIZE**: the used memory. Unit: MB
+        #   - **MEM_USAGE**: The memory utilization.
         # 
-        # *   **Disk**:
+        #   - **MEM_USAGE_SIZE**: The memory usage in MB.
         # 
-        #     *   **DISK_USAGE**: the disk usage
-        #     *   **DISK_USAGE_SIZE**: the size of the used disks. Unit: MB
-        #     *   **IOPS**: the disk Input/Output Operations per Second (IOPS)
+        # - **Disk**:
         # 
-        # *   **Connection**:
+        #   - **DISK_USAGE**: The disk utilization.
         # 
-        #     *   **CONN_USAGE**: the database connection usage
-        #     *   **CONN_USAGE_COUNT**: the number of database connections used
+        #   - **DISK_USAGE_SIZE**: The disk usage in MB.
         # 
-        # *   **Write**:
+        #   - **IOPS**: The disk input/output operations per second (IOPS).
         # 
-        #     *   **TPS**: the number of rows written per second
-        #     *   **INSERT_SIZE**: the amount of data written per second. Unit: MB
+        # - **Connection**:
         # 
-        # *   **Query**:
+        #   - **CONN_USAGE**: The database connection utilization.
         # 
-        #     *   **QPS**: the queries per second
-        #     *   **AVG_SEEK**: the average number of random seek calls
+        #   - **CONN_USAGE_COUNT**: The number of database connections.
         # 
-        # *   **WAIT**:
+        # - **Write**:
         # 
-        #     *   **ZK_WAIT**: the average ZooKeeper wait time. Unit: ms
-        #     *   **IO_WAIT**: the average I/O wait time. Unit: ms
-        #     *   **CPU_WAIT**: the average CPU wait time. Unit: ms
+        #   - **TPS**: The number of rows written per second (TPS).
+        # 
+        #   - **INSERT_SIZE**: The write size per second in MB.
+        # 
+        # - **Query**:
+        # 
+        #   - **QPS**: The queries per second (QPS).
+        # 
+        #   - **AVG_SEEK**: The number of random SEEK calls.
+        # 
+        # - **WAIT**:
+        # 
+        #   - **ZK_WAIT**: The average wait time of ZooKeeper (ZK) in ms.
+        # 
+        #   - **IO_WAIT**: The average I/O wait time in ms.
+        # 
+        #   - **CPU_WAIT**: The average CPU wait time in ms.
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+        # The beginning of the time range to query. Specify the time in UTC using the `yyyy-MM-ddTHH:mmZ` format.
         # 
         # This parameter is required.
         self.start_time = start_time

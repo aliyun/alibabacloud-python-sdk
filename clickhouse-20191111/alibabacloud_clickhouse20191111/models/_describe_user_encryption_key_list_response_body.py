@@ -13,7 +13,9 @@ class DescribeUserEncryptionKeyListResponseBody(DaraModel):
         kms_keys: List[main_models.DescribeUserEncryptionKeyListResponseBodyKmsKeys] = None,
         request_id: str = None,
     ):
+        # The list of KMS keys.
         self.kms_keys = kms_keys
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,6 +57,7 @@ class DescribeUserEncryptionKeyListResponseBodyKmsKeys(DaraModel):
         self,
         key_id: str = None,
     ):
+        # The key ID.
         self.key_id = key_id
 
     def validate(self):

@@ -15,6 +15,7 @@ class CheckScaleOutBalancedRequest(DaraModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        scaling_type: str = None,
     ):
         # The cluster ID.
         # 
@@ -22,20 +23,20 @@ class CheckScaleOutBalancedRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of pages to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return per page. Default value: 30. Valid values:
-        # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # The number of entries per page. Valid values:
+        # - **30** (default)
+        # - **50**
+        # - **100**.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.scaling_type = scaling_type
 
     def validate(self):
         pass
@@ -69,6 +70,9 @@ class CheckScaleOutBalancedRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.scaling_type is not None:
+            result['ScalingType'] = self.scaling_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -96,6 +100,9 @@ class CheckScaleOutBalancedRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('ScalingType') is not None:
+            self.scaling_type = m.get('ScalingType')
 
         return self
 

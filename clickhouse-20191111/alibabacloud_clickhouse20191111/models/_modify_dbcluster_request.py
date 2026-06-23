@@ -19,56 +19,69 @@ class ModifyDBClusterRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The specifications of the cluster.
+        # The cluster specifications.
         # 
-        # *   Valid values when the cluster is of Single-replica Edition:
+        # - For single-replica editions, valid values are:
         # 
-        #     *   **S8**
-        #     *   **S16**
-        #     *   **S32**
-        #     *   **S64**
-        #     *   **S104**
+        #   - **S8**
         # 
-        # *   Valid values when the cluster is of Double-replica Edition:
+        #   - **S16**
         # 
-        #     *   **C8**
-        #     *   **C16**
-        #     *   **C32**
-        #     *   **C64**
-        #     *   **C104**
+        #   - **S32**
+        # 
+        #   - **S64**
+        # 
+        #   - **S104**
+        # 
+        # - For dual-replica editions, valid values are:
+        # 
+        #   - **C8**
+        # 
+        #   - **C16**
+        # 
+        #   - **C32**
+        # 
+        #   - **C64**
+        # 
+        #   - **C104**
         # 
         # This parameter is required.
         self.dbcluster_class = dbcluster_class
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The number of nodes in the cluster.
+        # The number of nodes.
         # 
-        # *   If the cluster is of Single-replica Edition, the value must be an integer that ranges from 1 to 48.
-        # *   If the cluster is of Double-replica Edition, the value must be an integer that ranges from 1 to 24.
+        # - For single-replica editions, the valid values are integers from 1 to 48.
+        # 
+        # - For dual-replica editions, the valid values are integers from 1 to 24.
         # 
         # This parameter is required.
         self.dbnode_group_count = dbnode_group_count
-        # The storage capacity of a single node of the cluster. Unit: GB.
+        # The storage space of a single node. Unit: GB.
         # 
         # Valid values: 100 to 32000.
         # 
-        # >  This value is a multiple of 100.
+        # > The step size is 100 GB.
         # 
         # This parameter is required.
         self.dbnode_storage = dbnode_storage
-        # The storage type of the cluster. Valid values:
+        # The storage class. Valid values:
         # 
-        # *   **CloudESSD**: The cluster uses an Enterprise SSD (ESSD) of performance level 1 (PL1).
-        # *   **CloudESSD_PL2**: The cluster uses an ESSD of PL2.
-        # *   **CloudESSD_PL3**: The cluster uses an ESSD of PL3.
-        # *   **CloudEfficiency**: The cluster uses an ultra disk.
-        # *   **CloudSSD**: The cluster uses a standard SSD.
+        # - **CloudESSD**: ESSD PL1 disk.
+        # 
+        # - **CloudESSD_PL2**: ESSD PL2 disk.
+        # 
+        # - **CloudESSD_PL3**: ESSD PL3 disk.
+        # 
+        # - **CloudEfficiency**: ultra disk.
+        # 
+        # - **CloudSSD**: standard SSD.
         self.db_node_storage_type = db_node_storage_type
-        # The time window during which write operations are stopped. Separate the start time and end time with commas (,). Specify the time in the ISO 8601 standard.
+        # The write-inaccessible window. Separate the start time and the end time with a comma. Use the ISO 8601 format for the time.
         self.disable_write_windows = disable_write_windows
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

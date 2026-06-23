@@ -14,8 +14,11 @@ class DescribeEventMetaInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The metadata of O\\&M tasks.
         self.items = items
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -64,7 +67,9 @@ class DescribeEventMetaInfoResponseBodyItems(DaraModel):
         code: str = None,
         source_code: str = None,
     ):
+        # The code of the O\\&M task.
         self.code = code
+        # The type of the O\\&M task.
         self.source_code = source_code
 
     def validate(self):

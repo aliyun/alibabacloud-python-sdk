@@ -10,9 +10,9 @@ class CheckServiceLinkedRoleResponseBody(DaraModel):
         has_service_linked_role: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether a service-linked role is created for ApsaraDB for ClickHouse.
+        # Indicates whether the service-linked role exists.
         self.has_service_linked_role = has_service_linked_role
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

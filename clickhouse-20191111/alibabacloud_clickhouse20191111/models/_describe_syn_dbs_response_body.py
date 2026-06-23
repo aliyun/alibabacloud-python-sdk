@@ -16,15 +16,15 @@ class DescribeSynDbsResponseBody(DaraModel):
         syn_dbs: List[main_models.DescribeSynDbsResponseBodySynDbs] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about data synchronization between the ApsaraDB for ClickHouse cluster and an ApsaraDB RDS for MySQL instance.
+        # The synchronized data.
         self.syn_dbs = syn_dbs
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -89,21 +89,23 @@ class DescribeSynDbsResponseBodySynDbs(DaraModel):
         syn_db: str = None,
         syn_status: bool = None,
     ):
-        # *   When the value **true** is returned for the **SynStatus** parameter, the system does not return the ErrorMsg parameter.
-        # *   When the value **false** is returned for the **SynStatus** parameter, the system returns for the ErrorMsg parameter the cause why the data synchronization failed.
+        # - This parameter is not returned if **SynStatus** is **true**.
+        # 
+        # - If **SynStatus** is **false**, this parameter indicates the reason for the synchronization failure.
         self.error_msg = error_msg
-        # The ID of the ApsaraDB RDS for MySQL instance.
+        # The instance ID of the ApsaraDB RDS for MySQL instance.
         self.rds_id = rds_id
-        # The database account that is used to log on to the ApsaraDB RDS for MySQL instance.
+        # The database account for the ApsaraDB RDS for MySQL instance.
         self.rds_user_name = rds_user_name
         # The internal endpoint of the ApsaraDB RDS for MySQL instance.
         self.rds_vpc_url = rds_vpc_url
-        # The name of the database in the ApsaraDB RDS for MySQL instance.
+        # The database in the ApsaraDB RDS for MySQL instance.
         self.syn_db = syn_db
-        # Indicates whether the data synchronization succeeded. Valid values:
+        # Indicates whether the synchronization was successful. Valid values:
         # 
-        # *   **true**: The data synchronization succeeded.
-        # *   **false**: The data synchronization failed.
+        # - **true**: The synchronization was successful.
+        # 
+        # - **false**: The synchronization failed.
         self.syn_status = syn_status
 
     def validate(self):

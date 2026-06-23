@@ -11,14 +11,15 @@ class CheckMonitorAlertResponseBody(DaraModel):
         request_id: str = None,
         state: str = None,
     ):
-        # The parameters that are used to configure the monitoring and alerting feature.
+        # The parameters for alert monitoring.
         self.parameter = parameter
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the monitoring and alerting feature is enabled. Valid values:
+        # Indicates whether the alert monitoring feature is enabled. Valid values:
         # 
-        # *   **enable**: The monitoring and alerting feature is enabled.
-        # *   **disable**: The monitoring and alerting feature is disabled.
+        # - **enable**: The feature is enabled.
+        # 
+        # - **disable**: The feature is disabled.
         self.state = state
 
     def validate(self):

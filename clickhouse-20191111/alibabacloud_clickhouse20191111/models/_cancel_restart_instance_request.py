@@ -17,21 +17,27 @@ class CancelRestartInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         restart_time: str = None,
     ):
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in a specific region. The information includes the cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of pages.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return per page. Default value: 30. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   30
-        # *   50
-        # *   100
+        # - 30 (default)
+        # 
+        # - 50
+        # 
+        # - 100
         self.page_size = page_size
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The scheduled restart time. The time must be in the \\`yyyy-MM-ddTHH:mmZ\\` format and in UTC.
         self.restart_time = restart_time
 
     def validate(self):

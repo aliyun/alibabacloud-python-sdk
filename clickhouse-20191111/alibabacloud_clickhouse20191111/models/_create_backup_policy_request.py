@@ -17,7 +17,7 @@ class CreateBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backup retention period. The default retention period is seven days. Valid values: 7 to 730. Unit: day.
+        # The backup retention period in days. The value must be an integer from 7 to 730. The default value is 7.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
         # 
@@ -25,25 +25,31 @@ class CreateBackupPolicyRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The day of a week when the system regularly backs up data. If you specify multiple days of a week, separate them with commas (,). Valid values:
+        # The backup cycle. If you specify multiple days, separate them with commas. Valid values:
         # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
+        # - **Monday**
+        # 
+        # - **Tuesday**
+        # 
+        # - **Wednesday**
+        # 
+        # - **Thursday**
+        # 
+        # - **Friday**
+        # 
+        # - **Saturday**
+        # 
+        # - **Sunday**
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The backup window. Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+        # The backup time in UTC. The format is HH:mmZ-HH:mmZ.
         # 
-        # For example, if you set the backup window to 00:00Z-01:00Z, the data of the cluster can be backed up from 08:00 (UTC+8) to 09:00 (UTC+8).
+        # Example: 00:00Z-01:00Z. This means that data backup can be performed from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

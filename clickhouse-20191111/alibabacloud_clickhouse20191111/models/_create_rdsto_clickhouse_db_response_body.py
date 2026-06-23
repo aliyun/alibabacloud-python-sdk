@@ -14,17 +14,19 @@ class CreateRDSToClickhouseDbResponseBody(DaraModel):
         request_id: str = None,
         status: int = None,
     ):
-        # If the value of the **Status** parameter is -1, the cause of the creation failure is returned.
+        # The reason for the creation failure. This parameter is returned only if the value of the Status parameter is **-1**.
         self.error_msg = error_msg
-        # Duplicate tables in the synchronization task.
+        # The duplicate tables in the sync task.
         self.repeated_dbs = repeated_dbs
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the synchronization task was created. Valid values:
+        # Indicates whether the task was created. Valid values:
         # 
-        # *   **1**: Created.
-        # *   **0**: Creation failed. The tables in the synchronization task are duplicate. The duplicate tables are returned for the **RepeatedDbs** parameter.
-        # *   **-1**: Creation failed. The cause why the creation failed is returned for the **ErrorMsg** parameter.
+        # - **1**: The task was created.
+        # 
+        # - **0**: The task failed to be created because of duplicate tables. The duplicate tables are returned in the **RepeatedDbs** parameter.
+        # 
+        # - **-1**: The task failed to be created. The error message is returned in the **ErrorMsg** parameter.
         self.status = status
 
     def validate(self):
