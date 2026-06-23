@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_smqproxy20260409.
 
-Created on 22/06/2026
+Created on 23/06/2026
 
 @author: Alibaba Cloud SDK
 """

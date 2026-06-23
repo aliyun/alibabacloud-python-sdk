@@ -11,6 +11,7 @@ from ._batch_receive_message_request import BatchReceiveMessageRequest
 from ._batch_receive_message_response_body import BatchReceiveMessageResponseBody
 from ._batch_receive_message_response import BatchReceiveMessageResponse
 from ._batch_send_message_request import BatchSendMessageRequest
+from ._batch_send_message_response_body import BatchSendMessageResponseBody
 from ._batch_send_message_response import BatchSendMessageResponse
 from ._change_message_visibility_request import ChangeMessageVisibilityRequest
 from ._change_message_visibility_response_body import ChangeMessageVisibilityResponseBody
@@ -21,15 +22,18 @@ from ._peek_message_request import PeekMessageRequest
 from ._peek_message_response_body import PeekMessageResponseBody
 from ._peek_message_response import PeekMessageResponse
 from ._publish_message_request import PublishMessageRequest
+from ._publish_message_response_body import PublishMessageResponseBody
 from ._publish_message_response import PublishMessageResponse
 from ._receive_message_request import ReceiveMessageRequest
 from ._receive_message_response_body import ReceiveMessageResponseBody
 from ._receive_message_response import ReceiveMessageResponse
 from ._send_message_request import SendMessageRequest
+from ._send_message_response_body import SendMessageResponseBody
 from ._send_message_response import SendMessageResponse
 from ._batch_peek_message_response_body import BatchPeekMessageResponseBodyMessages
 from ._batch_receive_message_response_body import BatchReceiveMessageResponseBodyMessages
 from ._batch_send_message_request import BatchSendMessageRequestMessages
+from ._batch_send_message_response_body import BatchSendMessageResponseBodyMessages
 from ._publish_message_request import PublishMessageRequestMessageAttributes
 
 __all__ = [
@@ -42,6 +46,7 @@ __all__ = [
     BatchReceiveMessageResponseBody,
     BatchReceiveMessageResponse,
     BatchSendMessageRequest,
+    BatchSendMessageResponseBody,
     BatchSendMessageResponse,
     ChangeMessageVisibilityRequest,
     ChangeMessageVisibilityResponseBody,
@@ -52,14 +57,17 @@ __all__ = [
     PeekMessageResponseBody,
     PeekMessageResponse,
     PublishMessageRequest,
+    PublishMessageResponseBody,
     PublishMessageResponse,
     ReceiveMessageRequest,
     ReceiveMessageResponseBody,
     ReceiveMessageResponse,
     SendMessageRequest,
+    SendMessageResponseBody,
     SendMessageResponse,
     BatchPeekMessageResponseBodyMessages,
     BatchReceiveMessageResponseBodyMessages,
     BatchSendMessageRequestMessages,
+    BatchSendMessageResponseBodyMessages,
     PublishMessageRequestMessageAttributes
 ]

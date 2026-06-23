@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_smqproxy20260409 import models as main_models
 from darabonba.model import DaraModel
 
 class PublishMessageResponse(DaraModel):
@@ -11,12 +12,15 @@ class PublishMessageResponse(DaraModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        body: main_models.PublishMessageResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.body = body
 
     def validate(self):
-        pass
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         result = dict()
@@ -29,6 +33,9 @@ class PublishMessageResponse(DaraModel):
         if self.status_code is not None:
             result['statusCode'] = self.status_code
 
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +45,10 @@ class PublishMessageResponse(DaraModel):
 
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+
+        if m.get('body') is not None:
+            temp_model = main_models.PublishMessageResponseBody()
+            self.body = temp_model.from_map(m.get('body'))
 
         return self
 
