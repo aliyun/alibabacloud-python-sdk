@@ -576,6 +576,7 @@ from ._get_gateway_response_body import GetGatewayResponseBodyDataVpc
 from ._get_gateway_response_body import GetGatewayResponseBodyDataZonesVSwitch
 from ._get_gateway_response_body import GetGatewayResponseBodyDataZones
 from ._get_gateway_response_body import GetGatewayResponseBodyData
+from ._get_gateway_quota_rule_response_body import GetGatewayQuotaRuleResponseBodyDataConsumers
 from ._get_gateway_quota_rule_response_body import GetGatewayQuotaRuleResponseBodyData
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems
 from ._get_gateway_quota_rule_subject_usage_response_body import GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails
@@ -1272,6 +1273,7 @@ __all__ = [
     GetGatewayResponseBodyDataZonesVSwitch,
     GetGatewayResponseBodyDataZones,
     GetGatewayResponseBodyData,
+    GetGatewayQuotaRuleResponseBodyDataConsumers,
     GetGatewayQuotaRuleResponseBodyData,
     GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems,
     GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails,

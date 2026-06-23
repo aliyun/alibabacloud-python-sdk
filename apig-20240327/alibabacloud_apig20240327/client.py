@@ -87,6 +87,8 @@ class Client(OpenApiClient):
             body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.overwrite):
             body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_multiplier):
+            body['periodMultiplier'] = request.period_multiplier
         if not DaraCore.is_null(request.period_type):
             body['periodType'] = request.period_type
         if not DaraCore.is_null(request.quota_dimension):
@@ -138,6 +140,8 @@ class Client(OpenApiClient):
             body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.overwrite):
             body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_multiplier):
+            body['periodMultiplier'] = request.period_multiplier
         if not DaraCore.is_null(request.period_type):
             body['periodType'] = request.period_type
         if not DaraCore.is_null(request.quota_dimension):
@@ -7988,12 +7992,16 @@ class Client(OpenApiClient):
             body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.overwrite):
             body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_multiplier):
+            body['periodMultiplier'] = request.period_multiplier
         if not DaraCore.is_null(request.period_type):
             body['periodType'] = request.period_type
         if not DaraCore.is_null(request.quota_limit):
             body['quotaLimit'] = request.quota_limit
         if not DaraCore.is_null(request.timezone):
             body['timezone'] = request.timezone
+        if not DaraCore.is_null(request.window_alignment):
+            body['windowAlignment'] = request.window_alignment
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -8030,12 +8038,16 @@ class Client(OpenApiClient):
             body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.overwrite):
             body['overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.period_multiplier):
+            body['periodMultiplier'] = request.period_multiplier
         if not DaraCore.is_null(request.period_type):
             body['periodType'] = request.period_type
         if not DaraCore.is_null(request.quota_limit):
             body['quotaLimit'] = request.quota_limit
         if not DaraCore.is_null(request.timezone):
             body['timezone'] = request.timezone
+        if not DaraCore.is_null(request.window_alignment):
+            body['windowAlignment'] = request.window_alignment
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

@@ -10,17 +10,20 @@ class ResetGatewayQuotaRuleRequest(DaraModel):
         conflict_hash: str = None,
         dry_run: bool = None,
         overwrite: bool = None,
+        period_multiplier: int = None,
         period_type: str = None,
         quota_limit: int = None,
         timezone: str = None,
+        window_alignment: str = None,
     ):
         self.conflict_hash = conflict_hash
         self.dry_run = dry_run
         self.overwrite = overwrite
+        self.period_multiplier = period_multiplier
         self.period_type = period_type
-        # This parameter is required.
         self.quota_limit = quota_limit
         self.timezone = timezone
+        self.window_alignment = window_alignment
 
     def validate(self):
         pass
@@ -39,6 +42,9 @@ class ResetGatewayQuotaRuleRequest(DaraModel):
         if self.overwrite is not None:
             result['overwrite'] = self.overwrite
 
+        if self.period_multiplier is not None:
+            result['periodMultiplier'] = self.period_multiplier
+
         if self.period_type is not None:
             result['periodType'] = self.period_type
 
@@ -47,6 +53,9 @@ class ResetGatewayQuotaRuleRequest(DaraModel):
 
         if self.timezone is not None:
             result['timezone'] = self.timezone
+
+        if self.window_alignment is not None:
+            result['windowAlignment'] = self.window_alignment
 
         return result
 
@@ -61,6 +70,9 @@ class ResetGatewayQuotaRuleRequest(DaraModel):
         if m.get('overwrite') is not None:
             self.overwrite = m.get('overwrite')
 
+        if m.get('periodMultiplier') is not None:
+            self.period_multiplier = m.get('periodMultiplier')
+
         if m.get('periodType') is not None:
             self.period_type = m.get('periodType')
 
@@ -69,6 +81,9 @@ class ResetGatewayQuotaRuleRequest(DaraModel):
 
         if m.get('timezone') is not None:
             self.timezone = m.get('timezone')
+
+        if m.get('windowAlignment') is not None:
+            self.window_alignment = m.get('windowAlignment')
 
         return self
 

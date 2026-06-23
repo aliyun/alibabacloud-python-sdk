@@ -1,3 +1,17 @@
+2026-06-23 Version: 9.0.0
+- Update API AddGatewayQuotaRule: add request parameters body.periodMultiplier.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictPeriodType.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictType.
+- Update API AddGatewayQuotaRule: update response parameters Body.data.accepted' type has changed.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.consumers.
+- Update API ResetGatewayQuotaRule: add request parameters body.periodMultiplier.
+- Update API ResetGatewayQuotaRule: add request parameters body.windowAlignment.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictPeriodType.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictType.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictPeriodType.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictType.
+
+
 2026-06-22 Version: 8.0.0
 - Update API DescribeRegions: delete response parameters Body.regions.
 

@@ -63,7 +63,7 @@ class AddGatewayQuotaRuleResponseBody(DaraModel):
 class AddGatewayQuotaRuleResponseBodyData(DaraModel):
     def __init__(
         self,
-        accepted: str = None,
+        accepted: bool = None,
         conflict_preview: main_models.AddGatewayQuotaRuleResponseBodyDataConflictPreview = None,
         dry_run: bool = None,
         rule_id: str = None,
@@ -167,9 +167,13 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
 class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
     def __init__(
         self,
+        conflict_period_type: str = None,
+        conflict_type: str = None,
         consumer_id: str = None,
         consumer_name: str = None,
     ):
+        self.conflict_period_type = conflict_period_type
+        self.conflict_type = conflict_type
         self.consumer_id = consumer_id
         self.consumer_name = consumer_name
 
@@ -181,6 +185,12 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.conflict_period_type is not None:
+            result['conflictPeriodType'] = self.conflict_period_type
+
+        if self.conflict_type is not None:
+            result['conflictType'] = self.conflict_type
+
         if self.consumer_id is not None:
             result['consumerId'] = self.consumer_id
 
@@ -191,6 +201,12 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('conflictPeriodType') is not None:
+            self.conflict_period_type = m.get('conflictPeriodType')
+
+        if m.get('conflictType') is not None:
+            self.conflict_type = m.get('conflictType')
+
         if m.get('consumerId') is not None:
             self.consumer_id = m.get('consumerId')
 

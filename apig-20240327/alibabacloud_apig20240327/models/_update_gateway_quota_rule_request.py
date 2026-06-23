@@ -23,10 +23,8 @@ class UpdateGatewayQuotaRuleRequest(DaraModel):
         self.consumer_group_ids = consumer_group_ids
         self.dry_run = dry_run
         self.overwrite = overwrite
-        # This parameter is required.
         self.quota_limit = quota_limit
         self.remove_ids = remove_ids
-        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):

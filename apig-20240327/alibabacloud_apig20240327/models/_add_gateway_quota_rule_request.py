@@ -14,6 +14,7 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         consumer_ids: List[str] = None,
         dry_run: bool = None,
         overwrite: bool = None,
+        period_multiplier: int = None,
         period_type: str = None,
         quota_dimension: str = None,
         quota_limit: int = None,
@@ -26,6 +27,7 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         self.consumer_ids = consumer_ids
         self.dry_run = dry_run
         self.overwrite = overwrite
+        self.period_multiplier = period_multiplier
         # This parameter is required.
         self.period_type = period_type
         # This parameter is required.
@@ -59,6 +61,9 @@ class AddGatewayQuotaRuleRequest(DaraModel):
 
         if self.overwrite is not None:
             result['overwrite'] = self.overwrite
+
+        if self.period_multiplier is not None:
+            result['periodMultiplier'] = self.period_multiplier
 
         if self.period_type is not None:
             result['periodType'] = self.period_type
@@ -96,6 +101,9 @@ class AddGatewayQuotaRuleRequest(DaraModel):
 
         if m.get('overwrite') is not None:
             self.overwrite = m.get('overwrite')
+
+        if m.get('periodMultiplier') is not None:
+            self.period_multiplier = m.get('periodMultiplier')
 
         if m.get('periodType') is not None:
             self.period_type = m.get('periodType')

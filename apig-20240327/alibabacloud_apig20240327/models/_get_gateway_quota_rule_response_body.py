@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_apig20240327 import models as main_models
 from darabonba.model import DaraModel
 
@@ -63,6 +65,7 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self,
         base_timestamp: int = None,
         consumer_count: int = None,
+        consumers: List[main_models.GetGatewayQuotaRuleResponseBodyDataConsumers] = None,
         period_type: str = None,
         quota_dimension: str = None,
         quota_limit: int = None,
@@ -74,6 +77,7 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
     ):
         self.base_timestamp = base_timestamp
         self.consumer_count = consumer_count
+        self.consumers = consumers
         self.period_type = period_type
         self.quota_dimension = quota_dimension
         self.quota_limit = quota_limit
@@ -84,7 +88,10 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         self.window_alignment = window_alignment
 
     def validate(self):
-        pass
+        if self.consumers:
+            for v1 in self.consumers:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -96,6 +103,11 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
 
         if self.consumer_count is not None:
             result['consumerCount'] = self.consumer_count
+
+        result['consumers'] = []
+        if self.consumers is not None:
+            for k1 in self.consumers:
+                result['consumers'].append(k1.to_map() if k1 else None)
 
         if self.period_type is not None:
             result['periodType'] = self.period_type
@@ -131,6 +143,12 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         if m.get('consumerCount') is not None:
             self.consumer_count = m.get('consumerCount')
 
+        self.consumers = []
+        if m.get('consumers') is not None:
+            for k1 in m.get('consumers'):
+                temp_model = main_models.GetGatewayQuotaRuleResponseBodyDataConsumers()
+                self.consumers.append(temp_model.from_map(k1))
+
         if m.get('periodType') is not None:
             self.period_type = m.get('periodType')
 
@@ -154,6 +172,41 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
 
         if m.get('windowAlignment') is not None:
             self.window_alignment = m.get('windowAlignment')
+
+        return self
+
+class GetGatewayQuotaRuleResponseBodyDataConsumers(DaraModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
 
         return self
 

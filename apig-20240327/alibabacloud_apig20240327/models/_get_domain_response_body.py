@@ -118,7 +118,7 @@ class GetDomainResponseBodyData(DaraModel):
         self.http_2option = http_2option
         # The certification authority.
         self.issuer = issuer
-        # Indicates whether mutual TLS (mTLS) authentication is enabled.
+        # Indicates whether mTLS mutual authentication is enabled.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         self.name = name
@@ -126,10 +126,11 @@ class GetDomainResponseBodyData(DaraModel):
         self.not_after_timstamp = not_after_timstamp
         # The certificate effective period.
         self.not_before_timestamp = not_before_timestamp
-        # The protocol type supported by the domain name. Valid values:
+        # The protocol type supported by the domain name.
         # 
-        # - HTTP: only HTTP is supported.
-        # - HTTPS: only HTTPS is supported.
+        # Valid values:
+        # - HTTP: Only the HTTP protocol is supported.
+        # - HTTPS: Only the HTTPS protocol is supported.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id
