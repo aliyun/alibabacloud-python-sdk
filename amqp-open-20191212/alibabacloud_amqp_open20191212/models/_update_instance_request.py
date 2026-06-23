@@ -27,56 +27,77 @@ class UpdateInstanceRequest(DaraModel):
     ):
         # The client token.
         self.client_token = client_token
+        # The deployment architecture of the Serverless instance. Valid values:
+        # 
+        # - shared: A shared architecture. This applies to reserved plus elastic (shared) and pay-as-you-go instances.
+        # 
+        # - dedicated: A dedicated architecture. This applies to reserved plus elastic (dedicated) instances.
         self.edition = edition
-        # 实例是否开通数据存储加密功能
+        # This feature is for dedicated instances only. Specifies whether to enable data encryption.
+        # 
+        # - You cannot change the EncryptedInstance and KmsKeyId properties of a dedicated instance. This includes changing its encryption status or downgrading it to a shared instance. Do not include the EncryptedInstance and KmsKeyId parameters when you call UpdateInstance to upgrade or downgrade a dedicated instance.
+        # 
+        # - The EncryptedInstance and KmsKeyId parameters are used only when you upgrade a shared instance to an encrypted dedicated instance.
         self.encrypted_instance = encrypted_instance
         # The ID of the ApsaraMQ for RabbitMQ instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The instance edition. Valid values for subscription instances:
+        # The instance type. This parameter is required for subscription instances. Valid values:
         # 
-        # *   professional: Professional Edition
-        # *   enterprise: Enterprise Edition
-        # *   vip: Enterprise Platinum Edition.
+        # - professional: Professional Edition
         # 
-        # If your instance is a pay-as-you-go instance, you do not need to configure this parameter.
+        # - enterprise: Enterprise Edition
+        # 
+        # - vip: Platinum Edition
+        # 
+        # You do not need to specify this parameter for pay-as-you-go instances.
         self.instance_type = instance_type
-        # 使用同地域下KMS密钥ID
-        self.kms_key_id = kms_key_id
-        # The maximum number of connections that can be created on the instance.
-        self.max_connections = max_connections
-        # The peak TPS for accessing the instance over the Internet.
-        self.max_eip_tps = max_eip_tps
-        # The peak transactions per second (TPS) for accessing the instance in a virtual private cloud (VPC).
-        self.max_private_tps = max_private_tps
-        # The type of the configuration change. Valid values:
+        # This feature is for dedicated instances only. This parameter is required if EncryptedInstance is set to true.
+        # It specifies the ID of the KMS key used for data encryption.
+        # The key must meet the following requirements:
         # 
-        # *   UPGRADE
-        # *   DOWNGRADE
+        # - The KMS key must be in the same region as the ApsaraMQ for RabbitMQ instance.
+        # 
+        # - The key cannot be a service key.
+        # 
+        # - The key must be active.
+        # 
+        # - The key must be a symmetric key.
+        # 
+        # - The key must be used for encryption and decryption.
+        # 
+        # - If the KMS key expires or is deleted, data reads and writes will fail, and the ApsaraMQ for RabbitMQ instance will become unavailable.
+        self.kms_key_id = kms_key_id
+        # The maximum number of connections.
+        self.max_connections = max_connections
+        # The peak TPS for public network traffic.
+        self.max_eip_tps = max_eip_tps
+        # The peak transactions per second (TPS) for private network traffic.
+        self.max_private_tps = max_private_tps
+        # The type of specification change. Valid values:
+        # 
+        # - UPGRADE: Upgrade
+        # 
+        # - DOWNGRADE: Downgrade
         # 
         # This parameter is required.
         self.modify_type = modify_type
+        # The provisioned TPS capacity for a reserved plus elastic instance.
         self.provisioned_capacity = provisioned_capacity
-        # The maximum number of queues that can be created on the instance.
+        # The maximum number of queues.
         self.queue_capacity = queue_capacity
-        # The billing method of the serverless instance. Valid values:
+        # The billing method of the pay-as-you-go (Serverless) instance. Valid value:
         # 
-        # *   onDemand: You are charged based on your actual usage.
+        # - onDemand: Pay-as-you-go
         self.serverless_charge_type = serverless_charge_type
-        # The size of the storage space that can be used to store messages.
+        # The message storage capacity. Unit: GB.
         self.storage_size = storage_size
-        # Specifies whether elastic IP addresses (EIPs) are supported.
+        # Specifies whether to enable Internet access.
         self.support_eip = support_eip
         # Specifies whether to enable the message trace feature.
         self.support_tracing = support_tracing
-        # The retention period of message traces.
-        # 
-        # Valid values:
-        # 
-        # *   3
-        # *   7
-        # *   15
+        # The retention period for message traces. Unit: days.
         self.tracing_storage_time = tracing_storage_time
 
     def validate(self):

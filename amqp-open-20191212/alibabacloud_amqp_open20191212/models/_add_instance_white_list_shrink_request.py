@@ -11,10 +11,18 @@ class AddInstanceWhiteListShrinkRequest(DaraModel):
         white_list_item_shrink: str = None,
         white_list_type: int = None,
     ):
+        # The ID of the instance receiving the whitelist entry.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The IP addresses or VPC IDs to add to the whitelist. Specify IP addresses as CIDR blocks.
+        # 
         # This parameter is required.
         self.white_list_item_shrink = white_list_item_shrink
+        # The type of the whitelist. Set this parameter to `2` if `WhiteListItem` contains IP addresses, or to `1` if it contains VPC IDs.
+        # 
+        # You can add a VPC whitelist only to instances that have an `anytunnel` VPC endpoint. Newer instances use the `privateLink` endpoint type, which does not support this feature.
+        # 
         # This parameter is required.
         self.white_list_type = white_list_type
 

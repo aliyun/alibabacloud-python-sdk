@@ -13,7 +13,7 @@ class ListInstancesResponseBody(DaraModel):
         data: main_models.ListInstancesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -53,11 +53,11 @@ class ListInstancesResponseBodyData(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The instances.
+        # A list of instances.
         self.instances = instances
-        # The maximum number of entries returned.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+        # The token for the next page of results. If this field is empty, it means all results have been returned.
         self.next_token = next_token
 
     def validate(self):
@@ -132,68 +132,88 @@ class ListInstancesResponseBodyDataInstances(DaraModel):
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
-        # Indicates whether the instance is automatically renewed.
+        # Indicates whether auto-renewal is enabled for the instance.
         self.auto_renew_instance = auto_renew_instance
-        # The endpoint that is used to access the instance over the classic network. This parameter is no longer available.
+        # The classic network endpoint. This parameter is deprecated.
         self.classic_endpoint = classic_endpoint
+        # The deployment architecture, which is applicable only to Serverless Edition instances. Valid values:
+        # 
+        # - shared: A shared architecture, used for reserved, elastic (shared), and pay-as-you-go instances.
+        # 
+        # - dedicated: A dedicated architecture, used for reserved and elastic (dedicated) instances.
         self.edition = edition
-        # Indicates whether the encryption at rest feature is enabled for the instance.
+        # Indicates whether storage encryption is enabled for the instance.
         self.encrypted_instance = encrypted_instance
-        # The timestamp that indicates when the instance expires. Unit: milliseconds.
+        # The expiration timestamp of the instance, in milliseconds.
         self.expire_time = expire_time
-        # The instance ID
+        # The instance ID.
         self.instance_id = instance_id
         # The instance name.
         self.instance_name = instance_name
-        # The instance type.
+        # The instance type. Valid values:
         # 
-        # *   PROFESSIONAL: Professional Edition
-        # *   ENTERPRISE: Enterprise Edition
-        # *   VIP: Enterprise Platinum Edition
+        # - professional: Professional Edition
+        # 
+        # - enterprise: Enterprise Edition
+        # 
+        # - vip: Platinum Edition
+        # 
+        # <props="china">
+        # 
+        # - serverless: Serverless Edition
         self.instance_type = instance_type
-        # The ID of the Key Management Service (KMS) key used for the data disk.
+        # The ID of the KMS key used for data disk encryption.
         self.kms_key_id = kms_key_id
+        # The port listener mode of the instance. `tcp_and_ssl` enables both port `5672` and port `5671`, while `ssl_only` enables only port `5671`.
         self.listener_mode = listener_mode
-        # The maximum number of Internet-based transactions per second (TPS) for the instance.
+        # The peak transactions per second (TPS) of the instance over the public network.
         self.max_eip_tps = max_eip_tps
-        # The maximum number of queues on the instance.
+        # The maximum number of queues for the instance.
         self.max_queue = max_queue
-        # The maximum number of VPC-based TPS for the instance.
+        # The peak transactions per second (TPS) of the instance over the private network.
         self.max_tps = max_tps
-        # The maximum number of vhosts on the instance.
+        # The maximum number of vhosts for the instance.
         self.max_vhost = max_vhost
-        # The timestamp that indicates when the order was created. Unit: milliseconds.
+        # The creation timestamp of the order, in milliseconds.
         self.order_create_time = order_create_time
         # The billing method. Valid values:
         # 
-        # *   PrePaid: the subscription billing method.
-        # *   POST_PAID: the pay-as-you-go billing method.
+        # - PRE_PAID: The instance uses the subscription billing method.
+        # 
+        # - POST_PAID: The instance uses the pay-as-you-go billing method.
         self.order_type = order_type
-        # The virtual private cloud (VPC) endpoint of the instance.
+        # The VPC endpoint of the instance.
         self.private_endpoint = private_endpoint
+        # The reserved TPS capacity for reserved and elastic instances.
         self.provisioned_capacity = provisioned_capacity
         # The public endpoint of the instance.
         self.public_endpoint = public_endpoint
-        # The ID of the resource group to which the instance belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The ID of the security group to which the instance belongs. This security group is used for PrivateLink endpoint creation.
         self.security_group_id = security_group_id
         self.serverless_switch = serverless_switch
         # The instance status. Valid values:
         # 
-        # *   DEPLOYING: The instance is being deployed.
-        # *   EXPIRED: The instance is expired.
-        # *   SERVING: The instance is running.
-        # *   RELEASED: The instance is released.
-        self.status = status
-        # The disk size. Unit: GB.
+        # - DEPLOYING: The instance is being deployed.
         # 
-        # >  For Professional Edition instances and Enterprise Edition instances, this parameter is unavailable and \\*\\*-1\\*\\* is returned.
+        # - EXPIRED: The instance has expired.
+        # 
+        # - SERVING: The instance is running.
+        # 
+        # - RELEASED: The instance is released.
+        self.status = status
+        # The storage capacity of the disk. Unit: GB.
+        # 
+        # > This parameter returns a value of **-1** for Professional Edition and Enterprise Edition instances, to which it does not apply.
         self.storage_size = storage_size
-        # Indicates whether the instance supports elastic IP addresses (EIPs).
+        # Indicates whether the instance supports EIPs.
         self.support_eip = support_eip
-        # The tags that are added to the instance.
+        # The tags attached to the instance.
         self.tags = tags
+        # The ID of the VPC in which the instance resides. This VPC is used for PrivateLink endpoint creation.
         self.vpc_id = vpc_id
+        # The IDs of the VSwitches to which the instance is connected. These VSwitches are used for PrivateLink endpoint creation.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):

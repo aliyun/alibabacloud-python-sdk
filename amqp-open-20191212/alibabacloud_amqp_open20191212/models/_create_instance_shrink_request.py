@@ -40,129 +40,172 @@ class CreateInstanceShrinkRequest(DaraModel):
         vswitch_ids_shrink: str = None,
     ):
         self.auth_model = auth_model
-        # Specifies whether to enable auto-renewal. Valid values:
+        # The renewal method. Valid values:
         # 
-        # *   true: enables auto-renewal.
-        # *   false: disables auto-renewal. If you select this value, you must manually renew the instance.
+        # - `true`: Enables auto-renewal.
+        # 
+        # - `false`: Disables auto-renewal.
         self.auto_renew = auto_renew
-        # The auto-renewal period. The unit of the auto-renewal period is specified by RenewalDurationUnit. Default value: Month.
+        # The auto-renewal duration. The `RenewalDurationUnit` parameter specifies the unit, which defaults to month.
         # 
-        # >  This parameter takes effect only if you set AutoRenew to true. Default value: 1.
+        # > This parameter is required if you set `AutoRenew` to `true`. The default value is 1.
         self.auto_renew_period = auto_renew_period
-        # The client token.
+        # The client token used to ensure request idempotence.
         self.client_token = client_token
+        # The deployment architecture for the serverless instance. Valid values:
+        # 
+        # - `shared`: The shared architecture, which is applicable to reserved and elastic (shared) instances and pay-as-you-go instances.
+        # 
+        # - `dedicated`: The dedicated architecture, which is applicable to reserved and elastic (dedicated) instances.
         self.edition = edition
-        # Specifies whether to enable storage encryption for the instance. This parameter is available only for exclusive instances.
+        # This parameter is applicable only to dedicated instances. Specifies whether to enable data-at-rest encryption for the instance.
         self.encrypted_instance = encrypted_instance
-        # The name of the instance. We recommend that you specify a name that does not exceed 64 characters in length.
+        # The name of the instance. The name can be up to 64 characters long.
         self.instance_name = instance_name
-        # The instance edition. Valid values if you create a subscription instance:
+        # The instance type.
+        # This parameter is required for subscription instances. Valid values:
         # 
-        # *   professional: Professional Edition.
-        # *   enterprise: Enterprise Edition
-        # *   vip: Enterprise Platinum Edition
+        # - `professional`: Professional Edition
         # 
-        # If you create a serverless instance, you do not need to specify this parameter.
+        # - `enterprise`: Enterprise Edition
+        # 
+        # - `vip`: Platinum Edition
+        # 
+        # You do not need to specify this parameter for serverless instances.
         self.instance_type = instance_type
-        # The ID of the Key Management Service (KMS)-managed key used for storage encryption. This parameter is available only for exclusive instances and required only if you set EncryptedInstance to true. The key must meet the following conditions:
+        # This parameter applies only to dedicated instances and is required if `EncryptedInstance` is set to `true`. It specifies the ID of the KMS key used for data-at-rest encryption. The key must meet the following requirements:
         # 
-        # *   The key cannot be a service key.
-        # *   The key must be in the Enabled state.
-        # *   The key must be a symmetric key.
-        # *   The key must be used for encryption and decryption.
-        # *   After the key is expired or deleted, you cannot read or write data and exceptions can occur in the ApsaraMQ for RabbitMQ instance.
+        # - The key cannot be a service key.
+        # 
+        # - The key must be in the Enabled state.
+        # 
+        # - The key must be a symmetric key, not an asymmetric key.
+        # 
+        # - The key usage must be for encryption and decryption.
+        # 
+        # - If the KMS key expires or is deleted, data reads and writes will become unavailable, and the ApsaraMQ for RabbitMQ instance may become inoperable.
         self.kms_key_id = kms_key_id
+        # Specifies whether to enable only the TLS-encrypted port. This parameter applies only to reserved and elastic (dedicated) instances, and Platinum Edition instances.
         self.listener_mode = listener_mode
-        # The maximum number of connections that can be established to the instance.
+        # The maximum number of connections.
         # 
-        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+        # For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
         self.max_connections = max_connections
-        # The maximum number of Internet-based TPS on the instance.
+        # The peak transactions per second (TPS) of the instance over the public network.
         # 
-        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+        # For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
         self.max_eip_tps = max_eip_tps
-        # The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance.
+        # The peak transactions per second (TPS) of the instance over a private network.
         # 
-        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+        # For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
         self.max_private_tps = max_private_tps
         # The billing method of the instance. Valid values:
         # 
-        # *   Subscription: subscription instance
-        # *   PayAsYouGo: serverless instance
+        # - `Subscription`: The subscription-based billing method.
+        # 
+        # - `PayAsYouGo`: The pay-as-you-go method for serverless instances.
         # 
         # This parameter is required.
         self.payment_type = payment_type
-        # The subscription period. The unit of the subscription period is specified by periodCycle.
+        # The subscription duration. The `PeriodCycle` parameter specifies the unit.
         # 
-        # >  This parameter takes effect only if you set PaymentType to Subscription. Default value: 1.
+        # > This parameter is required if you set `PaymentType` to `Subscription`. The default value is 1.
         self.period = period
-        # The unit of the subscription period. Valid values:
+        # The unit of the subscription duration. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - `Month`: month
         # 
-        # This parameter is valid only if you set PaymentType to Subscription. Default value: Month.
+        # - `Year`: year
+        # 
+        # This parameter is required if you set `PaymentType` to `Subscription`. The default value is `Month`.
         self.period_cycle = period_cycle
+        # The provisioned TPS capacity for a reserved and elastic instance.
         self.provisioned_capacity = provisioned_capacity
-        # The number of queues on the instance.
+        # The queue capacity of the instance.
         # 
-        # Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+        # For information about the valid values, see the instance specifications on the [ApsaraMQ for RabbitMQ](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre) product page.
         self.queue_capacity = queue_capacity
-        # The renewal status. This parameter is the same as AutoRenew. You can configure one of these parameters. Valid value:
+        # The renewal status. This parameter is equivalent to `AutoRenew`. Valid value:
         # 
-        # *   AutoRenewal
+        # - `AutoRenewal`: Enables auto-renewal.
         # 
-        # >  If you configure both this parameter and AutoRenew, the value of this parameter is used.
+        # > Both `AutoRenew` and `RenewStatus` specify the renewal method. If you specify both parameters, the value of `RenewStatus` takes precedence.
         self.renew_status = renew_status
-        # The unit of the auto-renewal period. Valid values:
+        # The unit of the auto-renewal duration. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - `Month`: month
+        # 
+        # - `Year`: year
         self.renewal_duration_unit = renewal_duration_unit
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The ID of the security group. This security group is used for the PrivateLink-based endpoint. The security group must meet the following requirements:
+        # 
+        # 1. Add an inbound rule to allow traffic on TCP ports 5672 and 5671.
+        # 
+        # 2. Managed security groups are not supported.
+        # 
+        # 3. The security group must belong to the specified VPC.
+        # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The billing method of the serverless instance. Valid value:
+        # The billing type of the serverless instance. Valid value:
         # 
-        # *   onDemand: You are charged based on your actual usage.
+        # - `onDemand`: pay-as-you-go
         self.serverless_charge_type = serverless_charge_type
         self.serverless_switch = serverless_switch
-        # The storage capacity. Unit: GB. Valid values:
+        # The message storage space. Unit: GB. Valid values:
         # 
-        # *   Professional Edition and Enterprise Edition instances: Set the value to 0.
+        # - Professional Edition and Enterprise Edition instances: The value is fixed at 0.
         # 
-        # >  The value 0 specifies that storage space is available for Professional Edition and Enterprise Edition instances, but no storage fees are generated.
+        # > A value of 0 means storage is not charged for Professional Edition and Enterprise Edition instances; it does not mean the instances lack storage space.
         # 
-        # *   Enterprise Platinum Edition instances: Set the value to m × 100, where m is an integer that ranges from 7 to 28.
+        # - Platinum Edition instances: m × 100, where m is an integer from 7 to 28.
         self.storage_size = storage_size
-        # Specifies whether elastic IP addresses (EIPs) are supported. Valid values:
+        # Specifies whether to enable access over the public network. Valid values:
         # 
-        # *   True
-        # *   False
+        # - `true`: Enables access over the public network.
+        # 
+        # - `false`: Disables access over the public network.
         self.support_eip = support_eip
         # Specifies whether to enable the message trace feature. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: Enables the message trace feature.
         # 
-        # > 
+        # - `false`: Disables the message trace feature.
         # 
-        # *   Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you create an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
+        # > * The message trace feature is included for 15 days at no charge on Platinum Edition instances. For these instances, you must enable this feature and set the retention period to 15 days.
         # 
-        # *   For instances of other editions, you can set this parameter to true or false.
+        # - For other instance types, you can enable or disable this feature.
         self.support_tracing = support_tracing
+        # The resource tags.
         self.tags_shrink = tags_shrink
-        # The retention period of messages. Unit: days. Valid values:
+        # The retention period of message traces. Unit: days. Valid values:
         # 
-        # *   3
-        # *   7
-        # *   15
+        # - `3`
         # 
-        # This parameter is valid only if you set SupportTracing to true.
+        # - `7`
+        # 
+        # - `15`
+        # 
+        # This parameter is required if you set `SupportTracing` to `true`.
         self.tracing_storage_time = tracing_storage_time
+        # The ID of the VPC. This parameter is used to create a PrivateLink-based endpoint.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The vSwitch IDs used to create a PrivateLink-based endpoint when you create the instance. The vSwitches must meet the following requirements:
+        # 
+        # 1. You must specify two vSwitches that reside in different availability zones, except for regions that have only a single availability zone.
+        # 
+        # 2. The vSwitches must belong to the specified VPC.
+        # 
+        # 3. The vSwitches must be in the Available state.
+        # 
+        # 4. Each vSwitch must have at least 20 available IP addresses.
+        # 
+        # 5. The availability zones for the specified vSwitches must support NLB instance creation.
+        # 
         # This parameter is required.
         self.vswitch_ids_shrink = vswitch_ids_shrink
 

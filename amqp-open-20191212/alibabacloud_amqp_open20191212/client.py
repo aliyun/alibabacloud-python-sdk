@@ -21,6 +21,32 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'amqp-open.us-west-1.aliyuncs.com',
+            'us-east-1': 'amqp-open.us-east-1.aliyuncs.com',
+            'me-central-1': 'amqp-open.me-central-1.aliyuncs.com',
+            'eu-central-1': 'amqp-open.eu-central-1.aliyuncs.com',
+            'cn-zhengzhou-jva': 'amqp-open.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'amqp-open.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'amqp-open.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'amqp-open.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'amqp-open.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'amqp-open.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'amqp-open.cn-qingdao.aliyuncs.com',
+            'cn-huhehaote': 'amqp-open.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'amqp-open.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'amqp-open.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'amqp-open.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'amqp-open.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'amqp-open.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'amqp-open.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'amqp-open.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'amqp-open.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'amqp-open.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'amqp-open.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'amqp-open.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'amqp-open.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('amqp-open', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2347,3 +2373,81 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateInstanceNameResponse:
         runtime = RuntimeOptions()
         return await self.update_instance_name_with_options_async(request, runtime)
+
+    def update_instance_serverless_switch_with_options(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.serverless_switch):
+            query['ServerlessSwitch'] = request.serverless_switch
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceServerlessSwitch',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceServerlessSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_serverless_switch_with_options_async(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.serverless_switch):
+            query['ServerlessSwitch'] = request.serverless_switch
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceServerlessSwitch',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceServerlessSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_serverless_switch(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        runtime = RuntimeOptions()
+        return self.update_instance_serverless_switch_with_options(request, runtime)
+
+    async def update_instance_serverless_switch_async(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        runtime = RuntimeOptions()
+        return await self.update_instance_serverless_switch_with_options_async(request, runtime)

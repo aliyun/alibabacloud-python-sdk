@@ -16,11 +16,17 @@ class RemoveInstanceWhiteListResponseBody(DaraModel):
         status_code: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 indicates the request was successful.
         self.code = code
+        # The data returned for the request.
         self.data = data
+        # The error message returned if the request fails.
         self.message = message
+        # The unique ID for the request.
         self.request_id = request_id
+        # The HTTP status code. A value of 200 indicates the request was successful.
         self.status_code = status_code
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -21,49 +21,57 @@ class CreateQueueRequest(DaraModel):
     ):
         # Specifies whether to automatically delete the queue. Valid values:
         # 
-        # *   true: The queue is automatically deleted. After the last consumer unsubscribes from the queue, the queue is automatically deleted.
-        # *   false: The queue is not automatically deleted.
+        # - true: The queue is automatically deleted after the last consumer unsubscribes from it.
+        # 
+        # - false: The queue is not automatically deleted.
         self.auto_delete_state = auto_delete_state
-        # The validity period after which the queue is automatically deleted. If the queue is not accessed within the specified period of time, the queue is automatically deleted.
+        # The auto-expiration time for the queue. The queue is automatically deleted if it is not accessed within the specified time period.
         # 
         # Unit: milliseconds.
         # 
-        # >  You can use the feature that corresponds to this parameter only after you enable the feature. To enable the feature, [submit a ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex).
+        # > This feature must be enabled before you can use this parameter. To enable the feature, <props="china">[submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex)<props="intl">[submit a ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex).
         self.auto_expire_state = auto_expire_state
-        # The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
+        # The dead-letter exchange. This type of exchange is used to receive rejected messages.
         # 
-        # If a consumer rejects a message that cannot be redelivered, ApsaraMQ for RabbitMQ routes the message to the specified dead-letter exchange. Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange for storage.
+        # If a consumer rejects a message and the message is not requeued, ApsaraMQ for RabbitMQ routes the message to the specified dead-letter exchange. The dead-letter exchange then routes the message to a bound queue for storage.
         self.dead_letter_exchange = dead_letter_exchange
-        # The dead-letter routing key. The key must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # The dead-letter routing key.
+        # The key can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The key must be 1 to 255 characters in length.
         self.dead_letter_routing_key = dead_letter_routing_key
-        # Specifies whether the exchange is an exclusive exchange. Valid values:
+        # Specifies whether the queue is an exclusive queue. Valid values:
         # 
-        # *   true: The exchange is an exclusive exchange. Only the connection that declares the exclusive exchange can use the exclusive exchange. After the connection is closed, the exclusive exchange is automatically deleted.
-        # *   false: The exchange is not an exclusive exchange.
+        # - true: The queue is an exclusive queue. An exclusive queue can be used only by the connection that declares it. The queue is automatically deleted after the connection is closed.
+        # 
+        # - false: The queue is not an exclusive queue.
         self.exclusive_state = exclusive_state
-        # The ID of the ApsaraMQ for RabbitMQ instance on which you want to create a queue.
+        # The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # This parameter is unavailable in the current version of ApsaraMQ for RabbitMQ.
+        # This parameter is not supported in the current version.
         # 
-        # The maximum number of messages that can be stored in the queue. If this threshold is exceeded, the earliest stored messages in the queue are deleted.
+        # The maximum number of messages that can be stored in the queue. If this limit is exceeded, the earliest messages in the queue are deleted.
         self.max_length = max_length
-        # Queue priorities are not supported. The value does not affect the call or return results.
+        # The priority of the queue. The recommended value is an integer from 1 to 10.
+        # 
+        # > This parameter is used for message priority. It is supported only by dedicated instances and can be used only after the message priority feature is enabled. To enable the feature, <props="china">[submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex)<props="intl">[submit a ticket](https://ticket-intl.console.aliyun.com/#/ticket/createIndex).
         self.maximum_priority = maximum_priority
-        # The message time to live (TTL) of the queue.
+        # The time to live (TTL) of a message in the queue.
         # 
-        # *   If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-        # *   The message TTL must be set to a non-negative integer. The maximum message TTL is one day. Unit: milliseconds. For example, if the message TTL is 1,000 milliseconds, the message can be retained for up to 1 second in the queue.
+        # - A message expires if its retention time in the queue exceeds the configured TTL.
+        # 
+        # - The message TTL must be a non-negative integer. The maximum value is 1 day. The unit is milliseconds. For example, if the value is 1000, the message can be stored in the queue for a maximum of 1 second.
         self.message_ttl = message_ttl
-        # The name of the queue that you want to create.
+        # The name of the queue to create.
         # 
-        # *   The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
-        # *   After the queue is created, you cannot change the name of the queue. If you want to change the name of the queue, delete the queue and create another queue.
+        # - The queue name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
+        # 
+        # - After a queue is created, its name cannot be changed. To change the name, delete the queue and create a new one.
         # 
         # This parameter is required.
         self.queue_name = queue_name
-        # The name of the vhost to which the queue that you want to create belongs. The name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
+        # The name of the vhost to which the queue belongs.
+        # The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         # 
         # This parameter is required.
         self.virtual_host = virtual_host

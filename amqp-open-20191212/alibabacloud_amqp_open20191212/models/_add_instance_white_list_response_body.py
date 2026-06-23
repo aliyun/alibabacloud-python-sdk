@@ -16,12 +16,17 @@ class AddInstanceWhiteListResponseBody(DaraModel):
         status_code: str = None,
         success: bool = None,
     ):
+        # The status code. A value of `200` indicates a successful request.
         self.code = code
+        # Data returned by the operation.
         self.data = data
+        # The message returned with the response. This is typically an error message if the request fails.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP status code for the response. A value of `200` indicates success.
         self.status_code = status_code
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

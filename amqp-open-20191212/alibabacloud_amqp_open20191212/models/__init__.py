@@ -89,6 +89,9 @@ from ._update_instance_response import UpdateInstanceResponse
 from ._update_instance_name_request import UpdateInstanceNameRequest
 from ._update_instance_name_response_body import UpdateInstanceNameResponseBody
 from ._update_instance_name_response import UpdateInstanceNameResponse
+from ._update_instance_serverless_switch_request import UpdateInstanceServerlessSwitchRequest
+from ._update_instance_serverless_switch_response_body import UpdateInstanceServerlessSwitchResponseBody
+from ._update_instance_serverless_switch_response import UpdateInstanceServerlessSwitchResponse
 from ._create_account_response_body import CreateAccountResponseBodyData
 from ._create_instance_request import CreateInstanceRequestTags
 from ._get_instance_response_body import GetInstanceResponseBodyDataTags
@@ -202,6 +205,9 @@ __all__ = [
     UpdateInstanceNameRequest,
     UpdateInstanceNameResponseBody,
     UpdateInstanceNameResponse,
+    UpdateInstanceServerlessSwitchRequest,
+    UpdateInstanceServerlessSwitchResponseBody,
+    UpdateInstanceServerlessSwitchResponse,
     CreateAccountResponseBodyData,
     CreateInstanceRequestTags,
     GetInstanceResponseBodyDataTags,

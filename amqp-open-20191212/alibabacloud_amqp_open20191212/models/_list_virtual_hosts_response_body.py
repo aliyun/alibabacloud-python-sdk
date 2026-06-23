@@ -53,11 +53,11 @@ class ListVirtualHostsResponseBodyData(DaraModel):
         next_token: str = None,
         virtual_hosts: List[main_models.ListVirtualHostsResponseBodyDataVirtualHosts] = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of results returned.
         self.max_results = max_results
-        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+        # The token that is used to retrieve the next page of results. If this parameter is not returned, all data has been returned.
         self.next_token = next_token
-        # The vhosts.
+        # The list of vhosts.
         self.virtual_hosts = virtual_hosts
 
     def validate(self):
@@ -105,7 +105,7 @@ class ListVirtualHostsResponseBodyDataVirtualHosts(DaraModel):
         self,
         name: str = None,
     ):
-        # The vhost name.
+        # The name of the vhost.
         self.name = name
 
     def validate(self):

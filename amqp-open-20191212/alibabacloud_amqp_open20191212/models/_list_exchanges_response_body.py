@@ -57,10 +57,11 @@ class ListExchangesResponseBodyData(DaraModel):
         self.exchanges = exchanges
         # The maximum number of entries returned.
         self.max_results = max_results
-        # The token that marks the end of the current returned page.``
+        # The token that marks the start of the next query.
         # 
-        # *   If the value of this parameter is empty, the next query is not required and the token used to start the next query is unavailable.``
-        # *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.``
+        # - If this parameter is empty, no more data is available.
+        # 
+        # - If a value is returned, use the value as the `NextToken` value in the next call to continue the query.
         self.next_token = next_token
 
     def validate(self):
@@ -114,18 +115,19 @@ class ListExchangesResponseBodyDataExchanges(DaraModel):
         name: str = None,
         vhost_name: str = None,
     ):
-        # The attributes. This parameter is unavailable in the current version.
+        # The attributes of the exchange. This parameter is not supported.
         self.attributes = attributes
-        # Indicates whether the exchange was automatically deleted.
+        # Indicates whether the exchange is an auto-delete exchange.
         self.auto_delete_state = auto_delete_state
-        # The timestamp that indicates when the exchange was created. Unit: milliseconds.
+        # The time when the exchange was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The exchange type.
+        # The type of the exchange.
         self.exchange_type = exchange_type
+        # Indicates whether the exchange is an internal exchange.
         self.internal = internal
-        # The exchange name.
+        # The name of the exchange.
         self.name = name
-        # The vhost name.
+        # The name of the vhost to which the exchange belongs.
         self.vhost_name = vhost_name
 
     def validate(self):

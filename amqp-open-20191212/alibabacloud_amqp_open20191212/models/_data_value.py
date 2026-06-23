@@ -16,20 +16,21 @@ class DataValue(DaraModel):
         create_timestamp: int = None,
         remark: str = None,
     ):
-        # The Alibaba Cloud account ID or Resource Access Management (RAM) user to which the AccessKey pair that is used to create the static username and password belongs.
+        # The ID of the Alibaba Cloud account or RAM user that created the static username and password.
         self.master_uid = master_uid
         # The ID of the ApsaraMQ for RabbitMQ instance.
         self.c_instance_id = c_instance_id
-        # The AccessKey ID that is used to create the static username and password.
+        # The AccessKey ID that was used to create the static username and password.
         self.access_key = access_key
         # The static username.
         self.user_name = user_name
         # The static password.
         self.password = password
-        # The timestamp that indicates when the static username and password were deleted. Unit: milliseconds.
+        # The UNIX timestamp when the static username and password were deleted. Unit: milliseconds.
         self.deleted = deleted
-        # The timestamp that indicates when the static username and password were created. Unit: milliseconds.
+        # The UNIX timestamp when the static username and password were created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        # The remark.
         self.remark = remark
 
     def validate(self):

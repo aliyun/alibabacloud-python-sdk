@@ -10,8 +10,14 @@ class ListInstanceWhiteListRequest(DaraModel):
         instance_id: str = None,
         white_list_type: int = None,
     ):
+        # The ID of the instance whose whitelist to query.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The type of whitelist to query.
+        # 
+        # VPC whitelists apply only to instances whose VPC endpoint is of the `anytunnel` type. The latest instance versions use a `PrivateLink` VPC endpoint and do not support VPC whitelists.
+        # 
         # This parameter is required.
         self.white_list_type = white_list_type
 

@@ -14,7 +14,7 @@ class CreateAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
         # The returned data.
         self.data = data
@@ -22,7 +22,7 @@ class CreateAccountResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,16 +84,17 @@ class CreateAccountResponseBodyData(DaraModel):
         remark: str = None,
         user_name: str = None,
     ):
-        # The AccessKey ID that is used to create the password.
+        # The AccessKey ID that is used to create the username and password.
         self.access_key = access_key
-        # The timestamp that indicates when the password was created. Unit: milliseconds.
+        # The timestamp when the username and password were created. Unit: milliseconds.
         self.create_time_stamp = create_time_stamp
         # The ID of the ApsaraMQ for RabbitMQ instance.
         self.instance_id = instance_id
-        # The Alibaba Cloud account ID or RAM user to which the AccessKey pair that is used to create the static username and password belongs.
+        # The ID of the Alibaba Cloud account or RAM user that owns the AccessKey. The AccessKey is used to create the static username and password.
         self.master_uid = master_uid
         # The created static password.
         self.password = password
+        # The remarks.
         self.remark = remark
         # The created static username.
         self.user_name = user_name

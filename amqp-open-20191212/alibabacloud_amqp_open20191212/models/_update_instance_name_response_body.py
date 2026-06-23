@@ -13,15 +13,15 @@ class UpdateInstanceNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned HTTP status code.
+        # The status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The error message that is returned when an error occurs during the update of the instance name.
+        # The error message returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned message that indicates the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

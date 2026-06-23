@@ -10,11 +10,11 @@ class DeleteVirtualHostRequest(DaraModel):
         instance_id: str = None,
         virtual_host: str = None,
     ):
-        # The ID of the ApsaraMQ for RabbitMQ instance to which the vhost you want to delete belongs.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the vhost that you want to delete.
+        # The name of the vhost to delete.
         # 
         # This parameter is required.
         self.virtual_host = virtual_host

@@ -2,31 +2,26 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Any
-
 from darabonba.model import DaraModel
 
-class ListInstanceWhiteListResponseBody(DaraModel):
+class UpdateInstanceServerlessSwitchResponseBody(DaraModel):
     def __init__(
         self,
-        code: str = None,
-        data: Any = None,
+        code: int = None,
+        data: bool = None,
         message: str = None,
         request_id: str = None,
-        status_code: str = None,
         success: bool = None,
     ):
-        # The return code. A value of `200` indicates a successful request.
+        # The status code.
         self.code = code
-        # The returned data, which is an array of whitelist entries. Each object in the array contains an `id` (a sequence number used for deletion) and a `value` (the actual entry, such as an IP address range or a VPC ID).
+        # The returned data.
         self.data = data
-        # The error message returned on a failed request.
+        # The returned message.
         self.message = message
-        # The unique ID of the request. Use this ID to troubleshoot issues.
+        # Id of the request
         self.request_id = request_id
-        # The HTTP status code. A value of `200` indicates a successful request.
-        self.status_code = status_code
-        # Indicates whether the request was successful.
+        # The request result.
         self.success = success
 
     def validate(self):
@@ -49,9 +44,6 @@ class ListInstanceWhiteListResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
-        if self.status_code is not None:
-            result['StatusCode'] = self.status_code
-
         if self.success is not None:
             result['Success'] = self.success
 
@@ -70,9 +62,6 @@ class ListInstanceWhiteListResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-
-        if m.get('StatusCode') is not None:
-            self.status_code = m.get('StatusCode')
 
         if m.get('Success') is not None:
             self.success = m.get('Success')

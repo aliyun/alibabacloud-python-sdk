@@ -16,9 +16,9 @@ class UpdateInstanceResponseBody(DaraModel):
         status_code: str = None,
         success: str = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The returned data, which includes orderId and instanceId. Sample returned data:
+        # The returned data. It includes the order ID and instance ID. For example:
         # 
         # ```json
         # "Data": {
@@ -29,9 +29,9 @@ class UpdateInstanceResponseBody(DaraModel):
         self.data = data
         # The returned message.
         self.message = message
-        # The request ID.
+        # The request ID. Each request has a unique ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The response code.
+        # The status code.
         self.status_code = status_code
         # Indicates whether the request was successful.
         self.success = success

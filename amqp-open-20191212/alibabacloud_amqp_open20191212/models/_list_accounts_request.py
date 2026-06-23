@@ -9,7 +9,7 @@ class ListAccountsRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The ID of the ApsaraMQ for RabbitMQ instance for which you want to query the static username and password.
+        # The ID of the ApsaraMQ for RabbitMQ instance whose static usernames and passwords you want to list.
         self.instance_id = instance_id
 
     def validate(self):

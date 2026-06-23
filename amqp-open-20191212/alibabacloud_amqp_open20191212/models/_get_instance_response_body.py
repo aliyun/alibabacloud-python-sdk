@@ -13,7 +13,9 @@ class GetInstanceResponseBody(DaraModel):
         data: main_models.GetInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The unique ID generated for the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -79,36 +81,108 @@ class GetInstanceResponseBodyData(DaraModel):
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
+        # Indicates whether auto-renewal is enabled for the instance.
         self.auto_renew_instance = auto_renew_instance
+        # The classic network endpoint. This parameter is deprecated.
         self.classic_endpoint = classic_endpoint
+        # The deployment architecture. Valid values:
+        # 
+        # - shared: shared architecture, which is suitable for reserved and elastic (shared) instances and pay-as-you-go instances.
+        # 
+        # - dedicated: dedicated architecture, which is suitable for reserved and elastic (dedicated) instances.
         self.edition = edition
+        # Indicates whether storage encryption is enabled for the instance data.
         self.encrypted_instance = encrypted_instance
+        # The timestamp that indicates when the instance expires, in milliseconds.
+        # 
+        # > The value is a long integer. Handle it with care in certain programming languages to prevent precision loss.
         self.expire_time = expire_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance. A length of 64 characters or less is recommended.
         self.instance_name = instance_name
+        # The instance type.
+        # 
+        # - PROFESSIONAL: Professional Edition
+        # 
+        # - ENTERPRISE: Enterprise Edition
+        # 
+        # - VIP: Platinum Edition
+        # 
+        # - SERVERLESS: Serverless Edition
         self.instance_type = instance_type
+        # The KMS key ID of the cloud disk.
         self.kms_key_id = kms_key_id
+        # The listener mode. A value of tcp_and_ssl enables both port 5672 and 5671, while ssl_only enables only port 5671.
         self.listener_mode = listener_mode
+        # The maximum number of connections.
+        # 
+        # For valid values, see the [ApsaraMQ for RabbitMQ purchase page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_connections = max_connections
+        # The peak public TPS.
+        # 
+        # For valid values, see the [ApsaraMQ for RabbitMQ purchase page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
         self.max_eip_tps = max_eip_tps
+        # The maximum number of queues for the instance.
         self.max_queue = max_queue
+        # The peak private TPS.
         self.max_tps = max_tps
+        # The maximum number of vhosts for the instance.
         self.max_vhost = max_vhost
+        # The timestamp that indicates when the order was created, in milliseconds.
+        # 
+        # > The value is a long integer. Handle it with care in certain programming languages to prevent precision loss.
         self.order_create_time = order_create_time
+        # The billing method.
+        # 
+        # - PRE_PAID: subscription
+        # 
+        # - POST_PAID: pay-as-you-go
         self.order_type = order_type
+        # The VPC endpoint of the instance.
         self.private_endpoint = private_endpoint
+        # The reserved TPS capacity for reserved and elastic instances.
         self.provisioned_capacity = provisioned_capacity
+        # The public endpoint of the instance.
         self.public_endpoint = public_endpoint
+        # The ID of the resource group for the instance.
         self.resource_group_id = resource_group_id
+        # The security group ID used to create a PrivateLink endpoint for the instance.
         self.security_group_id = security_group_id
         self.serverless_switch = serverless_switch
+        # The instance status. Valid values:
+        # 
+        # - DEPLOYING: The instance is being deployed.
+        # 
+        # - EXPIRED: The instance has expired.
+        # 
+        # - SERVING: The instance is in service.
+        # 
+        # - RELEASED: The instance has been released.
         self.status = status
+        # The disk capacity. Unit: GB.
+        # 
+        # > For Professional and Enterprise Edition instances, this parameter returns **-1**.
         self.storage_size = storage_size
+        # Indicates whether the instance supports EIPs.
         self.support_eip = support_eip
+        # Indicates whether the message trace feature is enabled.
         self.support_tracing = support_tracing
+        # The list of tags.
         self.tags = tags
+        # The retention period of message traces. Unit: days. Valid values:
+        # 
+        # - 3: 3 days
+        # 
+        # - 7: 7 days
+        # 
+        # - 15: 15 days
+        # 
+        # This parameter applies only when `SupportTracing` is set to true.
         self.tracing_storage_time = tracing_storage_time
+        # The VPC ID used to create a PrivateLink endpoint for the instance.
         self.vpc_id = vpc_id
+        # The VSwitch IDs used to create a PrivateLink endpoint for the instance.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -325,7 +399,9 @@ class GetInstanceResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

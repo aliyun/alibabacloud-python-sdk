@@ -53,9 +53,9 @@ class ListQueuesResponseBodyData(DaraModel):
         next_token: str = None,
         queues: List[main_models.ListQueuesResponseBodyDataQueues] = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of results returned.
         self.max_results = max_results
-        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+        # The token that is used to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
         # The queues.
         self.queues = queues
@@ -114,17 +114,17 @@ class ListQueuesResponseBodyDataQueues(DaraModel):
     ):
         # The attributes.
         self.attributes = attributes
-        # Indicates whether the queue was automatically deleted.
+        # The auto-delete status.
         self.auto_delete_state = auto_delete_state
         # The time when the queue was created.
         self.create_time = create_time
         # Indicates whether the queue is an exclusive queue.
         self.exclusive_state = exclusive_state
-        # The time when messages in the queue were last consumed.
+        # The last time a message was consumed from the queue.
         self.last_consume_time = last_consume_time
         # The queue name.
         self.name = name
-        # The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
+        # The ID of the instance to which the queue belongs.
         self.owner_id = owner_id
         # The vhost name.
         self.vhost_name = vhost_name

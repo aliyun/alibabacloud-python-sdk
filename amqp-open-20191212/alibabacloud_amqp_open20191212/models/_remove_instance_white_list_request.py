@@ -11,10 +11,18 @@ class RemoveInstanceWhiteListRequest(DaraModel):
         white_list_item_id: int = None,
         white_list_type: int = None,
     ):
+        # The ID of the instance from which to remove a whitelist entry.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Call the ListInstanceWhiteList operation to obtain this ID.
+        # 
         # This parameter is required.
         self.white_list_item_id = white_list_item_id
+        # The type of the whitelist item. Specify 2 for an IP address or 1 for a VPC ID.
+        # 
+        # A VPC whitelist only applies to instances with the anytunnel VPC endpoint type. Newer instances use PrivateLink for their VPC endpoints and do not support VPC whitelists.
+        # 
         # This parameter is required.
         self.white_list_type = white_list_type
 

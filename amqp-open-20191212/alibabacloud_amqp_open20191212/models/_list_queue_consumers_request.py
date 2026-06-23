@@ -17,17 +17,17 @@ class ListQueueConsumersRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+        # The token that marks the end of the current page of results. To retrieve the next page, include this token in the next request. If this is your first request or the last page is returned, the value is an empty string.
         self.next_token = next_token
-        # The number of data entries to return. If you do not configure this parameter, the default value 1 is used.
+        # The number of entries to return. If you do not set this parameter, the default value is 1.
         # 
         # Valid values: 1 to 100.
         self.query_count = query_count
-        # The name of the queue for which you want to query online consumers.
+        # The queue name.
         # 
         # This parameter is required.
         self.queue = queue
-        # The virtual host (vhost) name.
+        # The vhost name.
         # 
         # This parameter is required.
         self.virtual_host = virtual_host
