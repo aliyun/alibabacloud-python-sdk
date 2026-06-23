@@ -13,7 +13,7 @@ class ListEiamInstancesResponseBody(DaraModel):
         instances: List[main_models.ListEiamInstancesResponseBodyInstances] = None,
         request_id: str = None,
     ):
-        # The instance list.
+        # The list of instances.
         self.instances = instances
         # The request ID.
         self.request_id = request_id
@@ -66,29 +66,23 @@ class ListEiamInstancesResponseBodyInstances(DaraModel):
         ssodomain: str = None,
         start_time: int = None,
     ):
-        # The instance description.
+        # The description of the instance.
         self.description = description
-        # The private domain name of the instance Developer API.
+        # The private domain name of the developer API for the instance.
         self.developer_apiprivate_domain = developer_apiprivate_domain
-        # The public domain of the instance Developer API.
+        # The public domain name of the developer API for the instance.
         self.developer_apipublic_domain = developer_apipublic_domain
         # The instance ID.
         self.instance_id = instance_id
         # The instance status.
         self.instance_status = instance_status
         # The instance version.
-        # 
-        # Valid values:
-        # 
-        # - EIAM 2.0
-        # 
-        # - EIAM 1.0
         self.instance_version = instance_version
-        # The private domain of the instance OpenAPI.
+        # The private domain name of the OpenAPI for the instance.
         self.open_apiprivate_domain = open_apiprivate_domain
-        # The public domain of the instance OpenAPI.
+        # The public domain name of the OpenAPI for the instance.
         self.open_apipublic_domain = open_apipublic_domain
-        # The single sign-on (SSO) domain of the instance.
+        # The SSO domain name of the instance.
         self.ssodomain = ssodomain
         # The time when the instance was created.
         self.start_time = start_time

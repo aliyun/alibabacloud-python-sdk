@@ -20,7 +20,7 @@ class BindUserAuthnSourceMappingRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The external mapping ID.
+        # The external association ID.
         # 
         # This parameter is required.
         self.user_external_id = user_external_id

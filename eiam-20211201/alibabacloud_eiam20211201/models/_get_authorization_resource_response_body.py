@@ -54,17 +54,17 @@ class GetAuthorizationResourceResponseBodyAuthorizationResource(DaraModel):
         cloud_account_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the resource entity that is associated with the authorized resource.
+        # The ID of the resource entity associated with the authorized resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # The type of the resource entity that is associated with the authorized resource. Valid value:
+        # The type of the resource entity associated with the authorized resource. Valid values:
         # 
-        # - cloud_account_role: a cloud role
+        # - cloud_account_role: cloud role.
         self.authorization_resource_entity_type = authorization_resource_entity_type
         # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
         # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # The ID of the Alibaba Cloud account to which the resource entity that is associated with the authorized resource belongs.
+        # The ID of the cloud account to which the resource entity associated with the authorized resource belongs.
         self.cloud_account_id = cloud_account_id
         # The instance ID.
         self.instance_id = instance_id

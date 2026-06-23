@@ -17,17 +17,17 @@ class ListCustomPrivacyPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of custom privacy policies.
+        # The list of custom terms.
         self.custom_privacy_policies = custom_privacy_policies
-        # The number of entries to return on each page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The token that is used to retrieve the previous page of results.
+        # The pagination token returned by this call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -98,17 +98,17 @@ class ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies(DaraModel):
         status: str = None,
         user_consent_type: str = None,
     ):
-        # The ID of the custom privacy policy.
+        # The custom term ID.
         self.custom_privacy_policy_id = custom_privacy_policy_id
-        # The name of the custom privacy policy.
+        # The custom term name.
         self.custom_privacy_policy_name = custom_privacy_policy_name
-        # The default language of the policy. The value is the LanguageCode returned by the ListLanguages operation.
+        # The default language term entry. The value is obtained from the LanguageCode field returned by the ListLanguages operation.
         self.default_language_code = default_language_code
         # The instance ID.
         self.instance_id = instance_id
-        # The status of the custom privacy policy.
+        # The custom term status.
         self.status = status
-        # The user consent type for the policy.
+        # The consent type of the custom term.
         self.user_consent_type = user_consent_type
 
     def validate(self):

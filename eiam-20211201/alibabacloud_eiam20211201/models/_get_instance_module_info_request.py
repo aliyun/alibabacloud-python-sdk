@@ -14,7 +14,7 @@ class GetInstanceModuleInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The identifier of the primary module.
+        # The identifier of the first-level module.
         # 
         # This parameter is required.
         self.module_key = module_key

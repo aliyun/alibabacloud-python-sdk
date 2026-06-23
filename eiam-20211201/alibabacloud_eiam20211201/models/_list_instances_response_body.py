@@ -16,9 +16,9 @@ class ListInstancesResponseBody(DaraModel):
     ):
         # The list of instance information.
         self.instances = instances
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -76,7 +76,7 @@ class ListInstancesResponseBodyInstances(DaraModel):
         service_managed: bool = None,
         status: str = None,
     ):
-        # The creation time of the instance, in Unix timestamp format, in milliseconds.
+        # The time when the instance was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         self.cross_region_replication = cross_region_replication
         self.cross_region_replication_role = cross_region_replication_role
@@ -85,14 +85,14 @@ class ListInstancesResponseBodyInstances(DaraModel):
         # The description of the instance.
         self.description = description
         self.instance_failover_status = instance_failover_status
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The service code of the cloud service that manages the instance.
+        # The service code of the Alibaba Cloud service that manages the instance.
         self.managed_service_code = managed_service_code
         self.replication_configuration = replication_configuration
-        # Indicates whether the instance is managed by a cloud service.
+        # Indicates whether the instance is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
-        # Instance status. Valid values:
+        # The instance status. Valid values:
         # - creating: Being created.
         # - running: Running.
         self.status = status

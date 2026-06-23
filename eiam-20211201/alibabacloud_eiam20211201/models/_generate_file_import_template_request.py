@@ -14,7 +14,10 @@ class GenerateFileImportTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The synchronization target type.
+        # The synchronization target type. Valid values:
+        # - identity_provider: identity provider
+        # - application: application
+        # - eiam_v2_user_import: IDaaS 2.0 user import.
         # 
         # This parameter is required.
         self.target_type = target_type

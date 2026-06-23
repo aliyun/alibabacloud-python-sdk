@@ -10,7 +10,7 @@ class EnableConditionalAccessPolicyRequest(DaraModel):
         conditional_access_policy_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the conditional access policy.
+        # The conditional access policy ID.
         # 
         # This parameter is required.
         self.conditional_access_policy_id = conditional_access_policy_id

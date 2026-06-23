@@ -10,7 +10,7 @@ class GetInstanceTrialStatusResponseBody(DaraModel):
         request_id: str = None,
         trial_status: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The trial status of the instance.
         self.trial_status = trial_status

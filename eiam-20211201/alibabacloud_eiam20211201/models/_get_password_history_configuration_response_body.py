@@ -11,7 +11,7 @@ class GetPasswordHistoryConfigurationResponseBody(DaraModel):
         password_history_configuration: main_models.GetPasswordHistoryConfigurationResponseBodyPasswordHistoryConfiguration = None,
         request_id: str = None,
     ):
-        # The password history configurations.
+        # The password history check configuration.
         self.password_history_configuration = password_history_configuration
         # The request ID.
         self.request_id = request_id
@@ -50,12 +50,11 @@ class GetPasswordHistoryConfigurationResponseBodyPasswordHistoryConfiguration(Da
         password_history_max_retention: int = None,
         password_history_status: str = None,
     ):
-        # The maximum number of recent passwords that are retained.
+        # The maximum number of recent password records to retain.
         self.password_history_max_retention = password_history_max_retention
-        # Indicates whether the password history feature is enabled. Valid values:
-        # 
-        # *   enabled
-        # *   disabled
+        # The status of the password history configuration. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_history_status = password_history_status
 
     def validate(self):

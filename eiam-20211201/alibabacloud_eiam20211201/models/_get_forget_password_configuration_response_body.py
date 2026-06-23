@@ -55,13 +55,13 @@ class GetForgetPasswordConfigurationResponseBodyOpenForgetPasswordConfiguration(
         enable_sms: bool = None,
         forget_password_status: str = None,
     ):
-        # The list of authentication channels for the forgot password feature. This parameter is required when ForgetPasswordStatus is set to enabled. Valid values: email, sms, totp (one-time password), and web_authn (WebAuthn).
+        # The list of authentication channels for forgot password. This parameter is required when ForgetPasswordStatus is set to enabled. Valid values: email, sms (SMS), totp (OTP), and web_authn (WebAuthn).
         self.authentication_channels = authentication_channels
         # Indicates whether the forgot password feature is enabled. This parameter is deprecated. Use the ForgetPasswordStatus parameter instead.
         self.enable = enable
-        # Indicates whether email is enabled as an authentication method for the forgot password feature. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
+        # Indicates whether email is enabled as an authentication method for forgot password. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
         self.enable_email = enable_email
-        # Indicates whether SMS is enabled as an authentication method for the forgot password feature. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
+        # Indicates whether SMS is enabled as an authentication method for forgot password. This parameter is deprecated. Use the AuthenticationChannels parameter instead.
         self.enable_sms = enable_sms
         # The status of the forgot password configuration. Valid values: enabled and disabled.
         self.forget_password_status = forget_password_status

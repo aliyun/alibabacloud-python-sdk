@@ -17,17 +17,17 @@ class ListBrandsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of brands.
+        # The list of brand data.
         self.brands = brands
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The token that is used to retrieve the previous page of results.
+        # The pagination token returned by this call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):

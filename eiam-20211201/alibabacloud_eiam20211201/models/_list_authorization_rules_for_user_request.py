@@ -16,15 +16,15 @@ class ListAuthorizationRulesForUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return on a single page.
+        # The maximum number of entries per page.
         # 
-        # - The default value is 20.
+        # - Default value: 20.
         # 
-        # - The maximum value is 100.
+        # - Maximum value: 100.
         self.max_results = max_results
-        # The token that specifies the start of the next page for a paged query.
+        # The pagination token that indicates the start position of the next page.
         # 
-        # - If you do not specify this parameter, the query starts from the first page.
+        # - If this parameter is not specified, the query starts from the first page.
         self.next_token = next_token
         # The account ID.
         # 

@@ -13,13 +13,12 @@ class CreateAuthorizationResourceRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
-        # The ID of the resource entity that is associated with the authorization resource.
+        # The ID of the resource entity associated with the authorization resource.
         # 
         # This parameter is required.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # The type of the resource entity that is associated with the authorization resource. Valid value:
-        # 
-        # - cloud_account_role: indicates a cloud role.
+        # The type of the resource entity associated with the authorization resource. Valid values:
+        # - cloud_account_role: cloud role.
         # 
         # This parameter is required.
         self.authorization_resource_entity_type = authorization_resource_entity_type
@@ -27,7 +26,7 @@ class CreateAuthorizationResourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The client token can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token

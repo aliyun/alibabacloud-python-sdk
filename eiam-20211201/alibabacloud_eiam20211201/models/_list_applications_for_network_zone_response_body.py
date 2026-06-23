@@ -19,15 +19,15 @@ class ListApplicationsForNetworkZoneResponseBody(DaraModel):
     ):
         # The list of applications.
         self.applications = applications
-        # The number of entries returned on each page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token returned for the next query.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The token returned for the previous query.
+        # The pagination token returned by this call.
         self.previous_token = previous_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -95,11 +95,11 @@ class ListApplicationsForNetworkZoneResponseBodyApplications(DaraModel):
         application_name: str = None,
         instance_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
-        # The name of the application.
+        # The application name.
         self.application_name = application_name
-        # The ID of the IDaaS EIAM instance.
+        # The IDaaS EIAM instance ID.
         self.instance_id = instance_id
 
     def validate(self):

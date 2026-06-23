@@ -11,7 +11,7 @@ class GetLoginRedirectApplicationForBrandResponseBody(DaraModel):
         brand_login_redirect_application: main_models.GetLoginRedirectApplicationForBrandResponseBodyBrandLoginRedirectApplication = None,
         request_id: str = None,
     ):
-        # The information about the post-logon redirect application for the brand.
+        # The brand logon redirect application information.
         self.brand_login_redirect_application = brand_login_redirect_application
         # The request ID.
         self.request_id = request_id

@@ -13,9 +13,9 @@ class GetConditionalAccessPolicyResponseBody(DaraModel):
         conditional_access_policy: main_models.GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy = None,
         request_id: str = None,
     ):
-        # The details of the conditional access policy.
+        # Details of the conditional access policy.
         self.conditional_access_policy = conditional_access_policy
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,31 +63,31 @@ class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy(DaraModel):
         priority: int = None,
         status: str = None,
     ):
-        # The ID of the conditional access policy.
+        # Conditional access policy ID.
         self.conditional_access_policy_id = conditional_access_policy_id
-        # The name of the conditional access policy.
+        # Conditional access policy name.
         self.conditional_access_policy_name = conditional_access_policy_name
-        # The type of the conditional access policy.
+        # Conditional access policy type.
         self.conditional_access_policy_type = conditional_access_policy_type
-        # The content of the conditional access policy.
+        # Conditional access policy content.
         self.conditions_config = conditions_config
-        # The time when the policy was created.
+        # Creation time.
         self.create_time = create_time
-        # The action of the conditional access policy.
+        # Execution action of the conditional access policy.
         self.decision_config = decision_config
-        # The execution type of the conditional access policy.
+        # Execution type of the conditional access policy.
         self.decision_type = decision_type
-        # The description of the conditional access policy.
+        # Conditional access policy description.
         self.description = description
-        # The policy enforcement point of the conditional access policy.
+        # Evaluation point of the conditional access policy.
         self.evaluate_at = evaluate_at
-        # The instance ID.
+        # Instance ID.
         self.instance_id = instance_id
-        # The time when the policy was last updated.
+        # Update time.
         self.last_updated_time = last_updated_time
-        # The priority.
+        # Priority.
         self.priority = priority
-        # The status of the conditional access policy.
+        # Enabled or disabled status of the conditional access policy.
         self.status = status
 
     def validate(self):
@@ -196,15 +196,15 @@ class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfi
         mfa_authentication_methods: List[str] = None,
         mfa_type: str = None,
     ):
-        # Indicates whether session reuse is enabled.
+        # Whether session reuse is enabled.
         self.active_session_reuse_status = active_session_reuse_status
-        # The decision action of the conditional access policy.
+        # Decision action of the conditional access policy.
         self.effect = effect
-        # The interval in seconds at which re-authentication is required for the conditional access policy.
+        # Re-authentication interval (seconds) of the conditional access policy.
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
-        # The MFA methods that are allowed by the conditional access policy.
+        # Allowed MFA types of the conditional access policy.
         self.mfa_authentication_methods = mfa_authentication_methods
-        # The multi-factor authentication (MFA) type of the conditional access policy.
+        # MFA authentication type of the conditional access policy.
         self.mfa_type = mfa_type
 
     def validate(self):
@@ -258,11 +258,11 @@ class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsCon
         network_zones: main_models.GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigNetworkZones = None,
         users: main_models.GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfigUsers = None,
     ):
-        # The applications to which the conditional access policy applies.
+        # Target applications of the conditional access policy.
         self.applications = applications
-        # The network zones of the conditional access policy.
+        # Network zones of the conditional access policy.
         self.network_zones = network_zones
-        # The users to whom the conditional access policy applies.
+        # Target users of the conditional access policy.
         self.users = users
 
     def validate(self):
@@ -315,17 +315,17 @@ class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsCon
         include_organizational_units: List[str] = None,
         include_users: List[str] = None,
     ):
-        # The excluded user groups.
+        # Excluded user groups.
         self.exclude_groups = exclude_groups
-        # The excluded organizations.
+        # Excluded organizations.
         self.exclude_organizational_units = exclude_organizational_units
-        # The excluded users.
+        # Excluded users.
         self.exclude_users = exclude_users
-        # The selected user groups.
+        # Included user groups.
         self.include_groups = include_groups
-        # The selected organizations.
+        # Included organizations.
         self.include_organizational_units = include_organizational_units
-        # The selected users.
+        # Included users.
         self.include_users = include_users
 
     def validate(self):
@@ -384,9 +384,9 @@ class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsCon
         exclude_network_zones: List[str] = None,
         include_network_zones: List[str] = None,
     ):
-        # The excluded network zones.
+        # Excluded network ranges.
         self.exclude_network_zones = exclude_network_zones
-        # The selected network zones.
+        # Included network ranges.
         self.include_network_zones = include_network_zones
 
     def validate(self):
@@ -421,9 +421,9 @@ class GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsCon
         exclude_applications: List[str] = None,
         include_applications: List[str] = None,
     ):
-        # The excluded applications.
+        # Excluded applications.
         self.exclude_applications = exclude_applications
-        # The selected applications.
+        # Included applications.
         self.include_applications = include_applications
 
     def validate(self):

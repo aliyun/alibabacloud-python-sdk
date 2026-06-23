@@ -15,7 +15,7 @@ class SetInstanceGlobalizationConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language.
+        # The language type.
         # 
         # This parameter is required.
         self.language = language

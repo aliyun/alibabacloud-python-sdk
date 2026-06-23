@@ -13,7 +13,7 @@ class SetInstanceControlConfigurationRequest(DaraModel):
         control_elements: List[main_models.SetInstanceControlConfigurationRequestControlElements] = None,
         instance_id: str = None,
     ):
-        # The control items for the instance.
+        # The instance control elements.
         self.control_elements = control_elements
         # The instance ID.
         # 
@@ -61,11 +61,11 @@ class SetInstanceControlConfigurationRequestControlElements(DaraModel):
         human_verification_config: main_models.SetInstanceControlConfigurationRequestControlElementsHumanVerificationConfig = None,
         status: str = None,
     ):
-        # The name of the control item.
+        # The name of the instance control element.
         self.element_name = element_name
-        # The CAPTCHA configuration.
+        # The CAPTCHA authenticate configuration.
         self.human_verification_config = human_verification_config
-        # The status of the control item.
+        # The status of the instance control element.
         self.status = status
 
     def validate(self):

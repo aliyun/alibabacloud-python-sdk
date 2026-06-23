@@ -10,7 +10,7 @@ class DisableBrandRequest(DaraModel):
         brand_id: str = None,
         instance_id: str = None,
     ):
-        # The branding ID.
+        # The brand ID.
         # 
         # This parameter is required.
         self.brand_id = brand_id

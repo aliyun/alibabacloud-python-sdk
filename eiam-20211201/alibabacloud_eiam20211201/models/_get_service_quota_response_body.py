@@ -11,7 +11,7 @@ class GetServiceQuotaResponseBody(DaraModel):
         request_id: str = None,
         service_quota: main_models.GetServiceQuotaResponseBodyServiceQuota = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The service quota.
         self.service_quota = service_quota

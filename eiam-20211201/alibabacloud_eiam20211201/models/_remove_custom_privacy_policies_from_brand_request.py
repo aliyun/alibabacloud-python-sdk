@@ -13,11 +13,11 @@ class RemoveCustomPrivacyPoliciesFromBrandRequest(DaraModel):
         custom_privacy_policy_ids: List[str] = None,
         instance_id: str = None,
     ):
-        # The branding ID.
+        # The brand ID.
         # 
         # This parameter is required.
         self.brand_id = brand_id
-        # A list of policy IDs.
+        # The list of term IDs.
         # 
         # This parameter is required.
         self.custom_privacy_policy_ids = custom_privacy_policy_ids

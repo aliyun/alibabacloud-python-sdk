@@ -20,15 +20,15 @@ class ListAuthorizationRulesForApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return on each page.
+        # The maximum number of entries per page.
         # 
         # - Default value: 20.
         # 
-        # - Valid values: 1 to 100.
+        # - Maximum value: 100.
         self.max_results = max_results
-        # The token that is used to start the next page of results.
+        # The token that marks the starting position of the next page.
         # 
-        # - If you omit this parameter, the query starts from the first page.
+        # - If you do not specify this parameter, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):

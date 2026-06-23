@@ -13,7 +13,7 @@ class ListDomainProxyTokensResponseBody(DaraModel):
         domain_proxy_tokens: List[main_models.ListDomainProxyTokensResponseBodyDomainProxyTokens] = None,
         request_id: str = None,
     ):
-        # The list of proxy tokens for the domain name.
+        # A list of domain proxy token objects.
         self.domain_proxy_tokens = domain_proxy_tokens
         # The request ID.
         self.request_id = request_id
@@ -64,25 +64,24 @@ class ListDomainProxyTokensResponseBodyDomainProxyTokens(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The time when the proxy token for the domain name was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time of the domain proxy token, in Unix timestamp format, in milliseconds.
         self.create_time = create_time
         # The domain ID.
         self.domain_id = domain_id
-        # The proxy token for the domain name.
+        # The domain proxy token.
         self.domain_proxy_token = domain_proxy_token
-        # The ID of the proxy token for the domain name.
+        # The domain proxy token ID.
         self.domain_proxy_token_id = domain_proxy_token_id
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the proxy token for the domain name was last used. This value is a UNIX timestamp. Unit: milliseconds.
+        # The most recent usage time of the domain proxy token, in Unix timestamp format, in milliseconds.
         self.last_used_time = last_used_time
-        # The status of the token. Valid values:
-        # 
+        # The token status. Valid values:
         # - enabled: The token is enabled.
         # 
         # - disabled: The token is disabled.
         self.status = status
-        # The time when the proxy token for the domain name was last updated. This value is a UNIX timestamp. Unit: milliseconds.
+        # The most recent update time of the domain proxy token, in Unix timestamp format, in milliseconds.
         self.update_time = update_time
 
     def validate(self):

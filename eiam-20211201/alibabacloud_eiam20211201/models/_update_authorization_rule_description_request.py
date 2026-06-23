@@ -16,11 +16,11 @@ class UpdateAuthorizationRuleDescriptionRequest(DaraModel):
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # A client token used to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The token can contain only ASCII characters and must be 64 characters or less in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The description of the authorization rule. The description can be up to 128 characters long.
+        # The description of the authorization rule. The description can be up to 128 characters in length.
         self.description = description
         # The instance ID.
         # 

@@ -19,13 +19,13 @@ class ListNetworkZonesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # A collection of network IDs.
+        # The collection of network zone IDs.
         self.network_zone_ids = network_zone_ids
-        # The token that is used to retrieve the next page of results.
+        # The pagination token.
         self.next_token = next_token
-        # The token that is used to retrieve the previous page of results.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
 
     def validate(self):

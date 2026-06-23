@@ -51,7 +51,7 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration(Da
         self,
         control_elements: List[main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElements] = None,
     ):
-        # The list of control elements.
+        # The instance control configuration.
         self.control_elements = control_elements
 
     def validate(self):
@@ -89,11 +89,11 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationCon
         human_verification_config: main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig = None,
         status: str = None,
     ):
-        # The element name.
+        # The name of the instance control item.
         self.element_name = element_name
-        # The human verification configuration.
+        # The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) authenticate configuration.
         self.human_verification_config = human_verification_config
-        # The status of the control element.
+        # The status of the instance control item.
         self.status = status
 
     def validate(self):
@@ -135,7 +135,7 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationCon
         self,
         human_verification_type: str = None,
     ):
-        # The human verification type.
+        # The CAPTCHA type.
         self.human_verification_type = human_verification_type
 
     def validate(self):

@@ -12,9 +12,9 @@ class ListEiamInstancesRequest(DaraModel):
         instance_ids: List[str] = None,
         instance_region_id: str = None,
     ):
-        # The instance ID list.
+        # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The region in which the instance resides.
+        # The region to which the instances belong.
         self.instance_region_id = instance_region_id
 
     def validate(self):

@@ -63,25 +63,25 @@ class GetInstanceResponseBodyInstance(DaraModel):
         service_managed: bool = None,
         status: str = None,
     ):
-        # The time when the instance was created, in Unix timestamp format, measured in milliseconds.
+        # The time when the instance was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
         self.cross_region_replication = cross_region_replication
         self.cross_region_replication_role = cross_region_replication_role
-        # The default endpoint of the instance. This field is no longer maintained. Use the DomainConfig related fields or refer to the domain list query API instead.
+        # The default domain name of the instance. This field is no longer maintained. Use the DomainConfig fields or refer to the query domain name list operation instead.
         self.default_endpoint = default_endpoint
         # The description of the instance.
         self.description = description
-        # The domain-related configuration of the instance.
+        # The domain name configuration of the instance.
         self.domain_config = domain_config
-        # The egress public IP address ranges of the instance. For example, during AD account synchronization, the EIAM instance accesses your AD service through these public IP address ranges.
+        # The public egress CIDR blocks of the instance. For example, during Active Directory (AD) account synchronization, the EIAM instance accesses your AD server through these public CIDR blocks.
         self.egress_addresses = egress_addresses
         self.instance_failover_status = instance_failover_status
         # The instance ID.
         self.instance_id = instance_id
-        # The service code of the cloud service that manages the instance.
+        # The ServiceCode of the Alibaba Cloud service that manages the instance.
         self.managed_service_code = managed_service_code
         self.replication_configuration = replication_configuration
-        # Indicates whether the instance is managed by a cloud service.
+        # Indicates whether the instance is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
         # The instance status. Valid values:
         # - creating: Being created.
@@ -254,11 +254,11 @@ class GetInstanceResponseBodyInstanceDomainConfig(DaraModel):
         init_domain: str = None,
         init_domain_auto_redirect_status: str = None,
     ):
-        # The default domain of the instance.
+        # The default domain name of the instance.
         self.default_domain = default_domain
-        # The initialization domain of the instance.
+        # The initialization domain name of the instance.
         self.init_domain = init_domain
-        # The auto-redirect status of the initialization domain. Valid values:
+        # The automatic redirect status of the initialization domain name. Valid values:
         # - enabled: Enabled.
         # 
         # - disabled: Disabled.
@@ -302,9 +302,9 @@ class GetInstanceResponseBodyInstanceDefaultEndpoint(DaraModel):
         endpoint: str = None,
         status: str = None,
     ):
-        # The endpoint address of the instance.
+        # The domain name of the instance.
         self.endpoint = endpoint
-        # The status of the instance endpoint. Valid values:
+        # The status of the instance domain name. Valid values:
         # - resolved: Resolved.
         # - unresolved: Not resolved.
         self.status = status

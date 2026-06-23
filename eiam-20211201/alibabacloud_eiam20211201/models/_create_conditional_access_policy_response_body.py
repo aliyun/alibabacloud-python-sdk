@@ -10,7 +10,7 @@ class CreateConditionalAccessPolicyResponseBody(DaraModel):
         conditional_access_policy_id: str = None,
         request_id: str = None,
     ):
-        # Conditional Access Policy ID
+        # Conditional access policy ID.
         self.conditional_access_policy_id = conditional_access_policy_id
         # Request ID.
         self.request_id = request_id

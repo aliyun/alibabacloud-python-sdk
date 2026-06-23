@@ -16,23 +16,23 @@ class CreateNetworkAccessEndpointRequest(DaraModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
-        # Idempotent token.
+        # Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
         self.client_token = client_token
-        # The region ID of the VPC.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Private network endpoint name.
+        # Network access endpoint name.
         # 
         # This parameter is required.
         self.network_access_endpoint_name = network_access_endpoint_name
-        # The IDs of vSwitches.
+        # List of specified vSwitches connected to the network access endpoint.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC.
+        # VPC ID connected to the network access endpoint.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The region ID of the outbound VPC.
+        # Region of the VPC ID connected to the network access endpoint.
         # 
         # This parameter is required.
         self.vpc_region_id = vpc_region_id

@@ -14,7 +14,7 @@ class ListConditionalAccessPoliciesForUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the user associated with the conditional access policy.
+        # The user ID associated with the conditional access policy.
         # 
         # This parameter is required.
         self.user_id = user_id

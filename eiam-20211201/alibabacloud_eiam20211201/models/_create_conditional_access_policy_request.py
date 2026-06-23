@@ -21,33 +21,33 @@ class CreateConditionalAccessPolicyRequest(DaraModel):
         instance_id: str = None,
         priority: int = None,
     ):
-        # Idempotent token.
+        # Idempotency token.
         self.client_token = client_token
-        # Conditional access policy name
+        # Conditional access policy name.
         # 
         # This parameter is required.
         self.conditional_access_policy_name = conditional_access_policy_name
-        # Type of the conditional access policy, with the following options:
+        # Conditional access policy type. Valid values:
         # 
-        # arn:alibaba:idaas:authn:access:policy:system: System policy.
+        # arn:alibaba:idaas:authn:access:policy:system: system policy.
         # 
         # This parameter is required.
         self.conditional_access_policy_type = conditional_access_policy_type
-        # Condition content configuration for the conditional access policy
+        # Conditional access policy condition configuration.
         self.conditions_config = conditions_config
-        # Action configuration for the conditional access policy
+        # Conditional access policy action configuration.
         self.decision_config = decision_config
-        # Execution type of the conditional access policy, with the following options:
+        # Conditional access policy execution type. Valid values:
         # 
-        # enforcement: Enforce the policy.
+        # enforcement: enforcement policy.
         # 
         # This parameter is required.
         self.decision_type = decision_type
-        # Description of the conditional access policy
+        # Conditional access policy description.
         self.description = description
-        # Execution point of the conditional access policy, with the following options:
+        # Conditional access policy evaluation point. Valid values:
         # 
-        # - arn:alibaba:idaas:authn:access:rule:eval_at:after_step1: Allow.
+        # - arn:alibaba:idaas:authn:access:rule:eval_at:after_step1: allow.
         # 
         # This parameter is required.
         self.evaluate_at = evaluate_at
@@ -55,7 +55,9 @@ class CreateConditionalAccessPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Priority of the conditional access policy, lower values indicate higher priority Minimum value: 1 Maximum value: 100
+        # Conditional access policy priority. A smaller value indicates a higher priority.
+        # Minimum value: 1.
+        # Maximum value: 100.
         self.priority = priority
 
     def validate(self):
@@ -146,35 +148,28 @@ class CreateConditionalAccessPolicyRequestDecisionConfig(DaraModel):
         mfa_authentication_methods: List[str] = None,
         mfa_type: str = None,
     ):
-        # Whether to enable session reuse
+        # Specifies whether to enable session reuse.
         self.active_session_reuse_status = active_session_reuse_status
-        # Decision action for the conditional access policy, with the following options:
+        # Conditional access policy decision action. Valid values:
         # 
-        # - allow: Allow.
-        # 
-        # - deny: Deny.
+        # - allow: allow.
+        # - deny: deny.
         self.effect = effect
-        # Re-authentication interval (in seconds) for the conditional access policy
+        # Conditional access policy re-authentication interval (seconds).
         # 
-        # - Maximum MFA re-authentication interval: 86400
-        # 
-        # - Minimum MFA re-authentication interval: 300
+        # - Maximum MFA authentication interval: 86400.
+        # - Minimum MFA authentication interval: 300.
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
-        # Allowed MFA types for the conditional access policy, with the following options:
-        # 
-        # - ia_otp_sms: SMS verification code
-        # 
-        # - ia_otp_email: Email verification code
-        # 
-        # - ia_totp: OTP dynamic password
-        # 
-        # - ia_webauthn: WebAuthn
+        # MFA types allowed by the conditional access policy. Valid values:
+        # - ia_otp_sms: SMS verification code.
+        # - ia_otp_email: email verification code.
+        # - ia_totp: OTP dynamic password.
+        # - ia_webauthn: WebAuthn.
         self.mfa_authentication_methods = mfa_authentication_methods
-        # MFA type for the conditional access policy, with the following options:
+        # Conditional access policy MFA type. Valid values:
         # 
-        # - directly_access: Direct access
-        # 
-        # - mfa_required: MFA required
+        # - directly_access: direct access.
+        # - mfa_required: MFA required.
         self.mfa_type = mfa_type
 
     def validate(self):
@@ -228,11 +223,11 @@ class CreateConditionalAccessPolicyRequestConditionsConfig(DaraModel):
         network_zones: main_models.CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones = None,
         users: main_models.CreateConditionalAccessPolicyRequestConditionsConfigUsers = None,
     ):
-        # Target applications for the conditional access policy
+        # Conditional access policy target applications.
         self.applications = applications
-        # Network zones for conditional access policy
+        # Conditional access policy network zones.
         self.network_zones = network_zones
-        # Target users of the conditional access policy
+        # Conditional access policy target users.
         self.users = users
 
     def validate(self):
@@ -285,17 +280,17 @@ class CreateConditionalAccessPolicyRequestConditionsConfigUsers(DaraModel):
         include_organizational_units: List[str] = None,
         include_users: List[str] = None,
     ):
-        # Excluded user groups
+        # Excluded user groups.
         self.exclude_groups = exclude_groups
-        # Excluded organizations
+        # Excluded organizational units.
         self.exclude_organizational_units = exclude_organizational_units
-        # Excluded users
+        # Excluded users.
         self.exclude_users = exclude_users
-        # Included user groups
+        # Included user groups.
         self.include_groups = include_groups
-        # Included organizations
+        # Included organizational units.
         self.include_organizational_units = include_organizational_units
-        # Selected user
+        # Included users.
         self.include_users = include_users
 
     def validate(self):
@@ -354,9 +349,9 @@ class CreateConditionalAccessPolicyRequestConditionsConfigNetworkZones(DaraModel
         exclude_network_zones: List[str] = None,
         include_network_zones: List[str] = None,
     ):
-        # Excluded network zones
+        # Excluded network zones.
         self.exclude_network_zones = exclude_network_zones
-        # Included network zones
+        # Included network zones.
         self.include_network_zones = include_network_zones
 
     def validate(self):
@@ -391,9 +386,9 @@ class CreateConditionalAccessPolicyRequestConditionsConfigApplications(DaraModel
         exclude_applications: List[str] = None,
         include_applications: List[str] = None,
     ):
-        # Excluded applications
+        # Excluded applications.
         self.exclude_applications = exclude_applications
-        # Included applications
+        # Included applications.
         self.include_applications = include_applications
 
     def validate(self):

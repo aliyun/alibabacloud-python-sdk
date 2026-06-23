@@ -13,7 +13,7 @@ class GetCustomFieldResponseBody(DaraModel):
         custom_field: main_models.GetCustomFieldResponseBodyCustomField = None,
         request_id: str = None,
     ):
-        # Custom field information.
+        # The custom field information.
         self.custom_field = custom_field
         # The request ID.
         self.request_id = request_id
@@ -67,17 +67,17 @@ class GetCustomFieldResponseBodyCustomField(DaraModel):
         update_time: int = None,
         user_permission: str = None,
     ):
-        # The creation time of the custom field, in UNIX timestamp format in milliseconds.
+        # The time when the extended field was created, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The default value of the field.
         self.default_value = default_value
-        # The description of the custom field.
+        # The description of the extended field.
         self.description = description
         # Indicates whether the field is encrypted.
         self.encrypted = encrypted
         # The entity type to which the field belongs.
         self.entity_type = entity_type
-        # Field value configuration items.
+        # The field value configuration items.
         self.field_data_config = field_data_config
         # The data type.
         self.field_data_type = field_data_type
@@ -93,13 +93,13 @@ class GetCustomFieldResponseBodyCustomField(DaraModel):
         self.instance_id = instance_id
         # Indicates whether the field is required.
         self.required = required
-        # The status of the custom field.
+        # The status of the extended field.
         self.status = status
         # Indicates whether the field is unique.
         self.unique = unique
-        # The last update time of the custom field, in UNIX timestamp format in milliseconds.
+        # The time when the extended field was last updated, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
-        # User-side (portal) permissions.
+        # The user-side (portal-side) permission.
         self.user_permission = user_permission
 
     def validate(self):
@@ -225,7 +225,7 @@ class GetCustomFieldResponseBodyCustomFieldFieldDataConfig(DaraModel):
         self,
         items: List[main_models.GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems] = None,
     ):
-        # A list of field configuration items.
+        # The list of field configuration items.
         self.items = items
 
     def validate(self):

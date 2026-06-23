@@ -452,6 +452,9 @@ from ._get_authorization_resource_response import GetAuthorizationResourceRespon
 from ._get_authorization_rule_request import GetAuthorizationRuleRequest
 from ._get_authorization_rule_response_body import GetAuthorizationRuleResponseBody
 from ._get_authorization_rule_response import GetAuthorizationRuleResponse
+from ._get_authorization_server_request import GetAuthorizationServerRequest
+from ._get_authorization_server_response_body import GetAuthorizationServerResponseBody
+from ._get_authorization_server_response import GetAuthorizationServerResponse
 from ._get_brand_request import GetBrandRequest
 from ._get_brand_response_body import GetBrandResponseBody
 from ._get_brand_response import GetBrandResponse
@@ -632,6 +635,9 @@ from ._list_authorization_rules_for_group_response import ListAuthorizationRules
 from ._list_authorization_rules_for_user_request import ListAuthorizationRulesForUserRequest
 from ._list_authorization_rules_for_user_response_body import ListAuthorizationRulesForUserResponseBody
 from ._list_authorization_rules_for_user_response import ListAuthorizationRulesForUserResponse
+from ._list_authorization_servers_request import ListAuthorizationServersRequest
+from ._list_authorization_servers_response_body import ListAuthorizationServersResponseBody
+from ._list_authorization_servers_response import ListAuthorizationServersResponse
 from ._list_brands_request import ListBrandsRequest
 from ._list_brands_response_body import ListBrandsResponseBody
 from ._list_brands_response import ListBrandsResponse
@@ -947,6 +953,12 @@ from ._update_authorization_rule_group_attachment_response import UpdateAuthoriz
 from ._update_authorization_rule_user_attachment_request import UpdateAuthorizationRuleUserAttachmentRequest
 from ._update_authorization_rule_user_attachment_response_body import UpdateAuthorizationRuleUserAttachmentResponseBody
 from ._update_authorization_rule_user_attachment_response import UpdateAuthorizationRuleUserAttachmentResponse
+from ._update_authorization_server_request import UpdateAuthorizationServerRequest
+from ._update_authorization_server_response_body import UpdateAuthorizationServerResponseBody
+from ._update_authorization_server_response import UpdateAuthorizationServerResponse
+from ._update_authorization_server_description_request import UpdateAuthorizationServerDescriptionRequest
+from ._update_authorization_server_description_response_body import UpdateAuthorizationServerDescriptionResponseBody
+from ._update_authorization_server_description_response import UpdateAuthorizationServerDescriptionResponse
 from ._update_brand_request import UpdateBrandRequest
 from ._update_brand_response_body import UpdateBrandResponseBody
 from ._update_brand_response import UpdateBrandResponse
@@ -1122,6 +1134,8 @@ from ._get_application_template_response_body import GetApplicationTemplateRespo
 from ._get_application_template_response_body import GetApplicationTemplateResponseBodyApplicationTemplate
 from ._get_authorization_resource_response_body import GetAuthorizationResourceResponseBodyAuthorizationResource
 from ._get_authorization_rule_response_body import GetAuthorizationRuleResponseBodyAuthorizationRule
+from ._get_authorization_server_response_body import GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint
+from ._get_authorization_server_response_body import GetAuthorizationServerResponseBodyAuthorizationServer
 from ._get_brand_response_body import GetBrandResponseBodyBrand
 from ._get_client_public_key_response_body import GetClientPublicKeyResponseBodyClientPublicKey
 from ._get_cloud_account_response_body import GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason
@@ -1289,6 +1303,7 @@ from ._list_authorization_rules_for_group_response_body import ListAuthorization
 from ._list_authorization_rules_for_group_response_body import ListAuthorizationRulesForGroupResponseBodyAuthorizationRules
 from ._list_authorization_rules_for_user_response_body import ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod
 from ._list_authorization_rules_for_user_response_body import ListAuthorizationRulesForUserResponseBodyAuthorizationRules
+from ._list_authorization_servers_response_body import ListAuthorizationServersResponseBodyAuthorizationServers
 from ._list_brands_response_body import ListBrandsResponseBodyBrands
 from ._list_client_public_keys_response_body import ListClientPublicKeysResponseBodyClientPublicKeys
 from ._list_cloud_account_roles_request import ListCloudAccountRolesRequestFilter
@@ -1945,6 +1960,9 @@ __all__ = [
     GetAuthorizationRuleRequest,
     GetAuthorizationRuleResponseBody,
     GetAuthorizationRuleResponse,
+    GetAuthorizationServerRequest,
+    GetAuthorizationServerResponseBody,
+    GetAuthorizationServerResponse,
     GetBrandRequest,
     GetBrandResponseBody,
     GetBrandResponse,
@@ -2125,6 +2143,9 @@ __all__ = [
     ListAuthorizationRulesForUserRequest,
     ListAuthorizationRulesForUserResponseBody,
     ListAuthorizationRulesForUserResponse,
+    ListAuthorizationServersRequest,
+    ListAuthorizationServersResponseBody,
+    ListAuthorizationServersResponse,
     ListBrandsRequest,
     ListBrandsResponseBody,
     ListBrandsResponse,
@@ -2440,6 +2461,12 @@ __all__ = [
     UpdateAuthorizationRuleUserAttachmentRequest,
     UpdateAuthorizationRuleUserAttachmentResponseBody,
     UpdateAuthorizationRuleUserAttachmentResponse,
+    UpdateAuthorizationServerRequest,
+    UpdateAuthorizationServerResponseBody,
+    UpdateAuthorizationServerResponse,
+    UpdateAuthorizationServerDescriptionRequest,
+    UpdateAuthorizationServerDescriptionResponseBody,
+    UpdateAuthorizationServerDescriptionResponse,
     UpdateBrandRequest,
     UpdateBrandResponseBody,
     UpdateBrandResponse,
@@ -2615,6 +2642,8 @@ __all__ = [
     GetApplicationTemplateResponseBodyApplicationTemplate,
     GetAuthorizationResourceResponseBodyAuthorizationResource,
     GetAuthorizationRuleResponseBodyAuthorizationRule,
+    GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint,
+    GetAuthorizationServerResponseBodyAuthorizationServer,
     GetBrandResponseBodyBrand,
     GetClientPublicKeyResponseBodyClientPublicKey,
     GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason,
@@ -2782,6 +2811,7 @@ __all__ = [
     ListAuthorizationRulesForGroupResponseBodyAuthorizationRules,
     ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod,
     ListAuthorizationRulesForUserResponseBodyAuthorizationRules,
+    ListAuthorizationServersResponseBodyAuthorizationServers,
     ListBrandsResponseBodyBrands,
     ListClientPublicKeysResponseBodyClientPublicKeys,
     ListCloudAccountRolesRequestFilter,

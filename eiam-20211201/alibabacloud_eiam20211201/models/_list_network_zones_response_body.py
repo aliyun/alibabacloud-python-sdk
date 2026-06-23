@@ -18,13 +18,13 @@ class ListNetworkZonesResponseBody(DaraModel):
     ):
         # The list of network zones.
         self.network_zones = network_zones
-        # The token that is used to retrieve the next page of results.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The token that is used to retrieve the previous page of results.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -91,19 +91,19 @@ class ListNetworkZonesResponseBodyNetworkZones(DaraModel):
         network_zone_type: str = None,
         vpc_id: str = None,
     ):
-        # The description of the network zone.
+        # The network zone description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The IPv4 CIDR blocks.
+        # The IPv4 CIDR blocks of the network zone.
         self.ipv_4cidrs = ipv_4cidrs
-        # The IPv6 CIDR blocks.
+        # The IPv6 CIDR blocks of the network zone.
         self.ipv_6cidrs = ipv_6cidrs
         # The network zone ID.
         self.network_zone_id = network_zone_id
         # The network zone name.
         self.network_zone_name = network_zone_name
-        # The type of the network zone.
+        # The network zone type.
         self.network_zone_type = network_zone_type
         # The VPC ID.
         self.vpc_id = vpc_id

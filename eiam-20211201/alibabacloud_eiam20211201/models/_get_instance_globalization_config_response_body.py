@@ -11,7 +11,7 @@ class GetInstanceGlobalizationConfigResponseBody(DaraModel):
         globalization_config: main_models.GetInstanceGlobalizationConfigResponseBodyGlobalizationConfig = None,
         request_id: str = None,
     ):
-        # The language and time zone configuration for the instance.
+        # The language and time zone configuration of the instance.
         self.globalization_config = globalization_config
         # The request ID.
         self.request_id = request_id

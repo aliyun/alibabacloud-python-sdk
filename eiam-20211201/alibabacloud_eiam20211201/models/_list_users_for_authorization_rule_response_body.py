@@ -16,15 +16,15 @@ class ListUsersForAuthorizationRuleResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersForAuthorizationRuleResponseBodyUsers] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page in a paged query. This is the paging size.
         self.max_results = max_results
-        # The token returned from the current call. Use this token to start the next paged query.
+        # The token returned for the next page of results. Use this token in the next request to retrieve the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
-        # The list of accounts.
+        # The list of account data.
         self.users = users
 
     def validate(self):
@@ -91,13 +91,11 @@ class ListUsersForAuthorizationRuleResponseBodyUsers(DaraModel):
         self.instance_id = instance_id
         # The account ID.
         self.user_id = user_id
-        # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
+        # The time range of the validity period. This parameter takes effect only when ValidityType is set to time_bound.
         self.validity_period = validity_period
-        # The type of the validity period for the relationship. Valid values:
-        # 
+        # The validity type of the relationship. Valid values:
         # - permanent: permanent
-        # 
-        # - time_bound: custom time range
+        # - time_bound: custom time range.
         self.validity_type = validity_type
 
     def validate(self):
@@ -146,9 +144,9 @@ class ListUsersForAuthorizationRuleResponseBodyUsersValidityPeriod(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end time of the validity period. This is a UNIX timestamp in milliseconds.
+        # The end time of the validity period, in UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
-        # The start time of the validity period. This is a UNIX timestamp in milliseconds.
+        # The start time of the validity period, in UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

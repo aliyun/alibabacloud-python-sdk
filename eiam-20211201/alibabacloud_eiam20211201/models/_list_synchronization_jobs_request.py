@@ -23,49 +23,49 @@ class ListSynchronizationJobsRequest(DaraModel):
         target_ids: List[str] = None,
         target_type: str = None,
     ):
-        # The direction of the sync task. Valid values:
+        # Synchronization job direction. Valid values:
         # 
-        # - ingress: Inbound.
+        # - ingress: inbound
         # 
-        # - egress: Outbound.
+        # - egress: outbound
         self.direction = direction
-        # The synchronization end time. The value is a UNIX timestamp. Unit: milliseconds.
+        # Synchronization end time in Unix timestamp format, in milliseconds.
         self.end_time = end_time
-        # The filter parameters.
+        # Filter parameters
         self.filters = filters
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page. The maximum value is 100.
+        # Number of rows per page for paginated queries. Maximum value: 100.
         self.max_results = max_results
-        # The token to retrieve the next page of results. If no more pages exist, this parameter is not returned.
+        # Token for querying the next page. This parameter is not returned when there are no more pages.
         self.next_token = next_token
-        # The page number. The value starts from 1.
+        # Page number, starting from 1.
         self.page_number = page_number
-        # The number of entries per page. The maximum value is 100.
+        # Page size. Maximum value: 100.
         self.page_size = page_size
-        # The synchronization start time. The value is a UNIX timestamp. Unit: milliseconds.
+        # Synchronization start time in Unix timestamp format, in milliseconds.
         self.start_time = start_time
-        # The status of the sync task. Valid values:
+        # Synchronization job status. Valid values:
         # 
-        # - pending: The task is pending.
+        # - pending: initial state
         # 
-        # - running: The task is running.
+        # - running: running
         # 
-        # - failed: The task failed.
+        # - failed: failed
         # 
-        # - partial_success: The task is partially successful.
+        # - partial_success: partially succeeded
         # 
-        # - success: The task is successful.
+        # - success: succeeded
         self.status = status
-        # A list of synchronization target IDs. For example, \\`[idp_111XXXX,idp_222XXXX]\\`.
+        # List of synchronization target IDs. [idp_111XXXX,idp_222XXXX]
         self.target_ids = target_ids
-        # The type of the synchronization target. Valid values:
+        # Synchronization target type. Valid values:
         # 
-        # - identity_provider: Identity provider.
+        # - identity_provider: identity provider
         # 
-        # - application: Application.
+        # - application: application
         self.target_type = target_type
 
     def validate(self):
@@ -168,9 +168,9 @@ class ListSynchronizationJobsRequestFilters(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The name of the dynamic parameter.
+        # Dynamic parameter name
         self.key = key
-        # The values of the dynamic parameter.
+        # Dynamic parameter values
         self.values = values
 
     def validate(self):

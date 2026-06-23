@@ -10,11 +10,11 @@ class DeleteBrandRequest(DaraModel):
         brand_id: str = None,
         instance_id: str = None,
     ):
-        # The brand ID.
+        # Brand ID.
         # 
         # This parameter is required.
         self.brand_id = brand_id
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

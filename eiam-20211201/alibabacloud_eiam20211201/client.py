@@ -12016,6 +12016,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_authorization_rule_with_options_async(request, runtime)
 
+    def get_authorization_server_with_options(
+        self,
+        request: main_models.GetAuthorizationServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthorizationServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_server_id):
+            query['AuthorizationServerId'] = request.authorization_server_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthorizationServer',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthorizationServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_authorization_server_with_options_async(
+        self,
+        request: main_models.GetAuthorizationServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthorizationServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_server_id):
+            query['AuthorizationServerId'] = request.authorization_server_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthorizationServer',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthorizationServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_authorization_server(
+        self,
+        request: main_models.GetAuthorizationServerRequest,
+    ) -> main_models.GetAuthorizationServerResponse:
+        runtime = RuntimeOptions()
+        return self.get_authorization_server_with_options(request, runtime)
+
+    async def get_authorization_server_async(
+        self,
+        request: main_models.GetAuthorizationServerRequest,
+    ) -> main_models.GetAuthorizationServerResponse:
+        runtime = RuntimeOptions()
+        return await self.get_authorization_server_with_options_async(request, runtime)
+
     def get_brand_with_options(
         self,
         request: main_models.GetBrandRequest,
@@ -16651,6 +16725,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListAuthorizationRulesForUserResponse:
         runtime = RuntimeOptions()
         return await self.list_authorization_rules_for_user_with_options_async(request, runtime)
+
+    def list_authorization_servers_with_options(
+        self,
+        request: main_models.ListAuthorizationServersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationServersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationServers',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorization_servers_with_options_async(
+        self,
+        request: main_models.ListAuthorizationServersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationServersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationServers',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorization_servers(
+        self,
+        request: main_models.ListAuthorizationServersRequest,
+    ) -> main_models.ListAuthorizationServersResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorization_servers_with_options(request, runtime)
+
+    async def list_authorization_servers_async(
+        self,
+        request: main_models.ListAuthorizationServersRequest,
+    ) -> main_models.ListAuthorizationServersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorization_servers_with_options_async(request, runtime)
 
     def list_brands_with_options(
         self,
@@ -25483,6 +25635,186 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAuthorizationRuleUserAttachmentResponse:
         runtime = RuntimeOptions()
         return await self.update_authorization_rule_user_attachment_with_options_async(request, runtime)
+
+    def update_authorization_server_with_options(
+        self,
+        request: main_models.UpdateAuthorizationServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_server_id):
+            query['AuthorizationServerId'] = request.authorization_server_id
+        if not DaraCore.is_null(request.authorization_server_name):
+            query['AuthorizationServerName'] = request.authorization_server_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.issuer_domain):
+            query['IssuerDomain'] = request.issuer_domain
+        if not DaraCore.is_null(request.issuer_mode):
+            query['IssuerMode'] = request.issuer_mode
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationServer',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_server_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationServerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_server_id):
+            query['AuthorizationServerId'] = request.authorization_server_id
+        if not DaraCore.is_null(request.authorization_server_name):
+            query['AuthorizationServerName'] = request.authorization_server_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.issuer_domain):
+            query['IssuerDomain'] = request.issuer_domain
+        if not DaraCore.is_null(request.issuer_mode):
+            query['IssuerMode'] = request.issuer_mode
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationServer',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_server(
+        self,
+        request: main_models.UpdateAuthorizationServerRequest,
+    ) -> main_models.UpdateAuthorizationServerResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_server_with_options(request, runtime)
+
+    async def update_authorization_server_async(
+        self,
+        request: main_models.UpdateAuthorizationServerRequest,
+    ) -> main_models.UpdateAuthorizationServerResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_server_with_options_async(request, runtime)
+
+    def update_authorization_server_description_with_options(
+        self,
+        request: main_models.UpdateAuthorizationServerDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationServerDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_server_id):
+            query['AuthorizationServerId'] = request.authorization_server_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationServerDescription',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationServerDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_server_description_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationServerDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationServerDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_server_id):
+            query['AuthorizationServerId'] = request.authorization_server_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationServerDescription',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationServerDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_server_description(
+        self,
+        request: main_models.UpdateAuthorizationServerDescriptionRequest,
+    ) -> main_models.UpdateAuthorizationServerDescriptionResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_server_description_with_options(request, runtime)
+
+    async def update_authorization_server_description_async(
+        self,
+        request: main_models.UpdateAuthorizationServerDescriptionRequest,
+    ) -> main_models.UpdateAuthorizationServerDescriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_server_description_with_options_async(request, runtime)
 
     def update_brand_with_options(
         self,

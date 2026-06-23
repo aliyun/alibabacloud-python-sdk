@@ -16,15 +16,15 @@ class ListAuthorizationResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of authorized resources.
+        # The list of authorization resources.
         self.authorization_resources = authorization_resources
-        # The number of entries per page.
+        # The number of entries per page in the paged query. This is the paging size.
         self.max_results = max_results
-        # The token to retrieve the next page of results. This parameter is returned when the results are paged.
+        # The pagination token returned in this call. Use this token for the next page query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -89,17 +89,16 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResources(DaraModel):
         cloud_account_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the associated resource entity.
+        # The resource entity ID associated with the authorization resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # The type of the associated resource entity. Valid values:
-        # 
-        # - cloud_account_role: A cloud role.
+        # The resource entity type associated with the authorization resource. Valid values:
+        # - cloud_account_role: cloud role.
         self.authorization_resource_entity_type = authorization_resource_entity_type
-        # The authorized resource ID.
+        # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
         # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # The ID of the Alibaba Cloud account that owns the associated resource entity.
+        # The cloud account ID to which the resource entity associated with the authorization resource belongs.
         self.cloud_account_id = cloud_account_id
         # The instance ID.
         self.instance_id = instance_id

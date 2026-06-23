@@ -53,11 +53,11 @@ class GetInstanceModuleInfoResponseBodyModule(DaraModel):
         module_key: str = None,
         module_status: str = None,
     ):
-        # The information about the secondary modules.
+        # The second-level module information.
         self.features = features
-        # The identifier of the primary module.
+        # The identifier of the first-level module.
         self.module_key = module_key
-        # The status of the primary module.
+        # The status of the first-level module.
         self.module_status = module_status
 
     def validate(self):
@@ -106,9 +106,9 @@ class GetInstanceModuleInfoResponseBodyModuleFeatures(DaraModel):
         feature_key: str = None,
         feature_status: str = None,
     ):
-        # The identifier of the secondary module.
+        # The identifier of the second-level module.
         self.feature_key = feature_key
-        # The status of the secondary module.
+        # The status of the second-level module.
         self.feature_status = feature_status
 
     def validate(self):

@@ -9,7 +9,7 @@ class DisableInitDomainAutoRedirectRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

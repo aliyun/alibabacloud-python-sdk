@@ -10,7 +10,7 @@ class CreateDomainProxyTokenResponseBody(DaraModel):
         domain_proxy_token_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the proxy token of the domain name.
+        # The domain proxy token ID.
         self.domain_proxy_token_id = domain_proxy_token_id
         # The request ID.
         self.request_id = request_id

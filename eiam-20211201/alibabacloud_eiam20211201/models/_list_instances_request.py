@@ -17,20 +17,20 @@ class ListInstancesRequest(DaraModel):
         status: str = None,
     ):
         self.cross_region_replication = cross_region_replication
-        # The edition of the license. Valid values:
-        # - free: Free edition.
-        # - trial: Trial edition.
-        # - scalability: Scalability edition.
-        # - standard: Standard edition.
-        # - enterprise: Enterprise edition.
+        # The license edition. Valid values:
+        # - free: Free Edition.
+        # - trial: Trial Edition.
+        # - scalability: Capability Expansion Edition.
+        # - standard: Standard Edition.
+        # - enterprise: Enterprise Edition.
         self.edition = edition
-        # Instance ID list.
+        # The list of instance IDs.
         self.instance_ids = instance_ids
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Instance status. Valid values:
+        # The instance status. Valid values:
         # - creating: Being created.
         # - running: Running.
         self.status = status

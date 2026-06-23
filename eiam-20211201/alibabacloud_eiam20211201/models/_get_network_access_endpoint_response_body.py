@@ -13,9 +13,9 @@ class GetNetworkAccessEndpointResponseBody(DaraModel):
         network_access_endpoint: main_models.GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint = None,
         request_id: str = None,
     ):
-        # Network endpoint information.
+        # The network access endpoint information.
         self.network_access_endpoint = network_access_endpoint
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,43 +63,39 @@ class GetNetworkAccessEndpointResponseBodyNetworkAccessEndpoint(DaraModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
-        # The time when the baseline was created.
+        # The time when the network access endpoint was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Public egress ip address range of the dedicated network endpoint This field is returned only when NetworkEndpointType is set to private.
+        # The private egress IP addresses of the dedicated network access endpoint. This parameter is returned only when NetworkEndpointType is set to private.
         self.egress_private_ip_addresses = egress_private_ip_addresses
-        # Public egress ip address range of the shared network endpoint This field is returned only when networkEndpointType is set to shared.
+        # The public egress IP addresses of the shared network access endpoint. This parameter is returned only when NetworkEndpointType is set to shared.
         self.egress_public_ip_addresses = egress_public_ip_addresses
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The unique identifier of the network access endpoint.
+        # The dedicated network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # Private network endpoint name.
+        # The name of the dedicated network access endpoint.
         self.network_access_endpoint_name = network_access_endpoint_name
-        # Type of the Network Endpoint Possible values:
+        # The type of the network access endpoint. Valid values:
         # 
-        # shared: Shared network endpoint
-        # 
-        # private: Dedicated network endpoint
+        # - shared: shared network access endpoint.
+        # - private: dedicated network access endpoint.
         self.network_access_endpoint_type = network_access_endpoint_type
-        # The ID of the destination security group.
+        # The ID of the security group used by the dedicated network access endpoint.
         self.security_group_id = security_group_id
-        # Status of the Network Endpoint Possible values:
+        # The status of the network access endpoint. Valid values:
         # 
-        # pending: Pending initialization
-        # 
-        # creating: Being created
-        # 
-        # running: Running
-        # 
-        # deleting: Being deleted
+        # - pending: pending initialization.
+        # - creating: being created.
+        # - running: running.
+        # - deleting: being deleted.
         self.status = status
-        # The time when the endpoint was updated.
+        # The time when the dedicated network access endpoint was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # List of specified vSwitches associated with the dedicated network endpoint connection.
+        # The list of vSwitches to which the dedicated network access endpoint is connected.
         self.v_switch_ids = v_switch_ids
-        # The ID of the virtual private cloud (VPC).
+        # The ID of the VPC to which the dedicated network access endpoint is connected.
         self.vpc_id = vpc_id
-        # The region ID of the outbound virtual private cloud (VPC).
+        # The region of the VPC to which the dedicated network access endpoint is connected.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):

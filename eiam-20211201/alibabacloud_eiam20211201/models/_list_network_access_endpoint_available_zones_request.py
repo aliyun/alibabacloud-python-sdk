@@ -9,7 +9,7 @@ class ListNetworkAccessEndpointAvailableZonesRequest(DaraModel):
         self,
         nae_region_id: str = None,
     ):
-        # The ID of the region that supports exclusive network endpoints.
+        # The ID of the region supported by dedicated network endpoints.
         # 
         # This parameter is required.
         self.nae_region_id = nae_region_id

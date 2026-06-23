@@ -14,7 +14,7 @@ class DeleteNetworkAccessEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Network Access Endpoint ID.
+        # The ID of the dedicated network access endpoint. Only network access endpoints whose NetworkEndpointType is private can be deleted.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id

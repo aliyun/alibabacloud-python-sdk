@@ -15,12 +15,11 @@ class SetPasswordHistoryConfigurationRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of recent passwords that can be retained. This parameter must be specified when PasswordHistoryStatus is set to enabled.
+        # The number of recent password records to retain. This parameter is required when PasswordHistoryStatus is set to enabled.
         self.password_history_max_retention = password_history_max_retention
-        # Specifies whether to enable the password history feature. Valid values:
-        # 
-        # *   enabled
-        # *   disabled
+        # The status of the password history configuration. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         # 
         # This parameter is required.
         self.password_history_status = password_history_status

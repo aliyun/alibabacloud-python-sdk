@@ -10,7 +10,7 @@ class DisableCustomPrivacyPolicyRequest(DaraModel):
         custom_privacy_policy_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the custom privacy policy.
+        # The ID of the custom term.
         # 
         # This parameter is required.
         self.custom_privacy_policy_id = custom_privacy_policy_id

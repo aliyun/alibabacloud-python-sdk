@@ -12,17 +12,17 @@ class CheckInstanceModuleStatusRequest(DaraModel):
         module_key: str = None,
         sub_feature_key: str = None,
     ):
-        # The identifier for the secondary module.
+        # The secondary module identifier.
         self.feature_key = feature_key
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The identifier for the primary module.
+        # The primary module identifier.
         # 
         # This parameter is required.
         self.module_key = module_key
-        # The identifier for the tertiary module.
+        # The tertiary module identifier.
         self.sub_feature_key = sub_feature_key
 
     def validate(self):

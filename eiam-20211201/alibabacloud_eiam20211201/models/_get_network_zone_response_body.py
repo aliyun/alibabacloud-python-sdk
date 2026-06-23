@@ -58,19 +58,19 @@ class GetNetworkZoneResponseBodyNetworkZone(DaraModel):
         network_zone_type: str = None,
         vpc_id: str = None,
     ):
-        # The description of the network zone.
+        # The network zone description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The IPv4 CIDR blocks.
+        # The IPv4 CIDR blocks of the network zone.
         self.ipv_4cidrs = ipv_4cidrs
-        # The IPv6 CIDR blocks.
+        # The IPv6 CIDR blocks of the network zone.
         self.ipv_6cidrs = ipv_6cidrs
         # The network zone ID.
         self.network_zone_id = network_zone_id
-        # The name of the network zone.
+        # The network zone name.
         self.network_zone_name = network_zone_name
-        # The type of the network zone.
+        # The network zone type.
         self.network_zone_type = network_zone_type
         # The VPC ID.
         self.vpc_id = vpc_id

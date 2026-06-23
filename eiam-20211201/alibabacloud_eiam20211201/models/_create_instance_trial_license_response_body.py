@@ -10,7 +10,7 @@ class CreateInstanceTrialLicenseResponseBody(DaraModel):
         license_id: str = None,
         request_id: str = None,
     ):
-        # The unique ID of the license.
+        # The unique identifier of the License.
         self.license_id = license_id
         # The request ID.
         self.request_id = request_id

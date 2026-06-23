@@ -10,9 +10,9 @@ class CreateNetworkAccessEndpointResponseBody(DaraModel):
         network_access_endpoint_id: str = None,
         request_id: str = None,
     ):
-        # The unique identifier of the network access endpoint.
+        # Network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
