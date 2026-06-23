@@ -20,14 +20,12 @@ class ListApiKeysResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # apiKey
         self.api_keys = api_keys
         self.code = code
         self.http_status_code = http_status_code
         self.max_results = max_results
         self.message = message
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total_count = total_count
