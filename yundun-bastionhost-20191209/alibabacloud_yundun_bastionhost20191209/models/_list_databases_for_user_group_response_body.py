@@ -14,11 +14,11 @@ class ListDatabasesForUserGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The databases returned.
+        # The list of databases that are queried.
         self.databases = databases
-        # The request ID.
+        # The unique ID that Alibaba Cloud generates for the request.
         self.request_id = request_id
-        # The total number of databases returned.
+        # The total number of databases that are queried.
         self.total_count = total_count
 
     def validate(self):
@@ -77,43 +77,49 @@ class ListDatabasesForUserGroupResponseBodyDatabases(DaraModel):
         source: str = None,
         source_instance_id: str = None,
     ):
-        # The address type of the database. Valid values:
+        # The type of the database address. Valid values:
         # 
-        # *   **Public**
-        # *   **Private**
+        # - **Public**: public address
+        # 
+        # - **Private**: private address
         self.active_address_type = active_address_type
-        # The remarks of the database.
+        # The description of the database instance.
         self.comment = comment
-        # The total number of database accounts returned.
+        # The total number of database accounts that are queried.
         self.database_account_count = database_account_count
-        # The ID of the database to which the database account belongs.
+        # The ID of the database instance to which the database account belongs.
         self.database_id = database_id
-        # The name of the database.
+        # The name of the database instance.
         self.database_name = database_name
         # The port of the database.
         self.database_port = database_port
-        # The internal address of the database. The value is a domain name or an IP address.
+        # The private endpoint of the database, which can be a domain name or an IP address.
         self.database_private_address = database_private_address
-        # The public address of the database. The value is a domain name or an IP address.
+        # The public address of the database, which can be a domain name or an IP address.
         self.database_public_address = database_public_address
-        # The database engine. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **Oracle**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
-        self.database_type = database_type
-        # The ID of the network domain where the database resides.
-        self.network_domain_id = network_domain_id
         # The type of the database. Valid values:
         # 
-        # *   **Local**: on-premises database.
-        # *   **Rds**: ApsaraDB RDS instance.
-        # *   **PolarDB**: PolarDB cluster.
-        self.source = source
-        # The ID of the ApsaraDB RDS instance or PolarDB cluster.
+        # - **MySQL**
         # 
-        # > No value is returned for this parameter if **Source** is set to **Local**.
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQLServer**
+        self.database_type = database_type
+        # The ID of the network domain to which the database belongs.
+        self.network_domain_id = network_domain_id
+        # The source of the database. Valid values:
+        # 
+        # - **Local**: local database instance
+        # 
+        # - **Rds**: RDS database instance
+        # 
+        # - **PolarDB**: PolarDB database instance
+        self.source = source
+        # The ID of the RDS instance or PolarDB instance that corresponds to the database.
+        # 
+        # > If **Source** is set to **Local**, this parameter is empty.
         self.source_instance_id = source_instance_id
 
     def validate(self):

@@ -31,6 +31,7 @@ class MoveDatabasesToNetworkDomainRequest(DaraModel):
         # This parameter is required.
         self.network_domain_id = network_domain_id
         # The region ID of the bastion host.
+        # 
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 

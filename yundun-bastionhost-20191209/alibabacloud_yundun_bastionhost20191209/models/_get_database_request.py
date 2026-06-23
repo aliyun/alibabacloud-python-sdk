@@ -13,7 +13,7 @@ class GetDatabaseRequest(DaraModel):
     ):
         # The ID of the database to query.
         # 
-        # >  You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+        # > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
         # 
         # This parameter is required.
         self.database_id = database_id

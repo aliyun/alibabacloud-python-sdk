@@ -14,11 +14,11 @@ class ListOperationDatabasesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The databases returned.
+        # The databases.
         self.databases = databases
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of databases.
         self.total_count = total_count
 
     def validate(self):
@@ -77,44 +77,51 @@ class ListOperationDatabasesResponseBodyDatabases(DaraModel):
         source_instance_region_id: str = None,
         source_instance_state: str = None,
     ):
-        # The address type of the database. Valid values:
+        # The endpoint type of the database. Valid values:
         # 
-        # *   **Public**
-        # *   **Private**
+        # - **Public**: a public endpoint
+        # 
+        # - **Private**: a private endpoint
         self.active_address_type = active_address_type
-        # The remarks of the database.
+        # The comment on the database.
         self.comment = comment
-        # The database ID.
+        # The ID of the database.
         self.database_id = database_id
-        # The database name.
+        # The name of the database.
         self.database_name = database_name
-        # The port of the database.
+        # The database port.
         self.database_port = database_port
-        # The private address of the database.
+        # The private endpoint of the database.
         self.database_private_address = database_private_address
-        # The public address of the database.
+        # The public endpoint of the database.
         self.database_public_address = database_public_address
-        # The database engine. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **Oracle**
-        # *   **SQLServer**
-        self.database_type = database_type
         # The database type. Valid values:
         # 
-        # *   **Local**: on-premises database.
-        # *   **Rds**: ApsaraDB RDS instance.
-        # *   **PolarDB**: PolarDB cluster.
-        self.source = source
-        # The ID of the ApsaraDB RDS instance.
-        self.source_instance_id = source_instance_id
-        # The region ID of the ApsaraDB RDS instance.
-        self.source_instance_region_id = source_instance_region_id
-        # The database status. Valid values:
+        # - **MySQL**
         # 
-        # *   **Normal**
-        # *   **Release**
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
+        # 
+        # - **SQLServer**
+        self.database_type = database_type
+        # The source of the database.
+        # 
+        # - **Local**: a local database
+        # 
+        # - **Rds**: an ApsaraDB RDS database
+        # 
+        # - **PolarDB**: a PolarDB database
+        self.source = source
+        # The ID of the source instance.
+        self.source_instance_id = source_instance_id
+        # The region ID of the source instance.
+        self.source_instance_region_id = source_instance_region_id
+        # The status of the source instance:
+        # 
+        # - **Normal**: The instance is running.
+        # 
+        # - **Release**: The instance is released.
         self.source_instance_state = source_instance_state
 
     def validate(self):

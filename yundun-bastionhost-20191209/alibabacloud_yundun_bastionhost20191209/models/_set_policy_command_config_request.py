@@ -23,7 +23,7 @@ class SetPolicyCommandConfigRequest(DaraModel):
         self.command_config = command_config
         # The bastion host ID.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -35,7 +35,7 @@ class SetPolicyCommandConfigRequest(DaraModel):
         self.policy_id = policy_id
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -132,8 +132,9 @@ class SetPolicyCommandConfigRequestCommandConfigDeny(DaraModel):
     ):
         # The type of command control. Valid values:
         # 
-        # *   **black**: blacklist mode.
-        # *   **white**: whitelist mode.
+        # - **black**: blacklist mode.
+        # 
+        # - **white**: whitelist mode.
         # 
         # This parameter is required.
         self.acl_type = acl_type

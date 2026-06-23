@@ -20,7 +20,7 @@ class SetPolicyAssetScopeRequest(DaraModel):
     ):
         # The databases to which the control policy applies.
         # 
-        # >  This parameter is required if ScopeType is set to Database. You can specify up to 500 databases.
+        # > This parameter is required if ScopeType is set to Database. You can specify up to 500 databases.
         self.databases = databases
         # The asset groups to which the control policy applies.
         # 
@@ -38,7 +38,7 @@ class SetPolicyAssetScopeRequest(DaraModel):
         self.instance_id = instance_id
         # The ID of the control policy that you want to modify.
         # 
-        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
         # 
         # This parameter is required.
         self.policy_id = policy_id
@@ -48,10 +48,13 @@ class SetPolicyAssetScopeRequest(DaraModel):
         self.region_id = region_id
         # The scope of assets to which the control policy applies. Valid values:
         # 
-        # * **All**: The control policy applies to all assets.
-        # * **Host**: The control policy applies to specified hosts.
-        # * **Database**: The control policy applies to specified databases.
-        # * **HostGroup**: The control policy applies to specified asset groups.
+        # - **All**: The control policy applies to all assets.
+        # 
+        # - **Host**: The control policy applies to specified hosts.
+        # 
+        # - **Database**: The control policy applies to specified databases.
+        # 
+        # - **HostGroup**: The control policy applies to specified asset groups.
         # 
         # This parameter is required.
         self.scope_type = scope_type
@@ -147,8 +150,9 @@ class SetPolicyAssetScopeRequestHosts(DaraModel):
     ):
         # The scope of host accounts to which the control policy applies. Valid values:
         # 
-        # * **All**: The control policy applies to all accounts of the host.
-        # * **AccountId**: The control policy applies specified accounts of the host.
+        # - **All**: The control policy applies to all accounts of the host.
+        # 
+        # - **AccountId**: The control policy applies specified accounts of the host.
         self.account_scope_type = account_scope_type
         # The host accounts to which the control policy applies.
         # 
@@ -202,8 +206,9 @@ class SetPolicyAssetScopeRequestHostGroups(DaraModel):
         self.account_names = account_names
         # The scope of asset accounts to which the control policy applies. Valid values:
         # 
-        # * **All**: The control policy applies to all accounts in the asset group.
-        # * **AccountName**: The control policy applies to specified accounts in the asset group.
+        # - **All**: The control policy applies to all accounts in the asset group.
+        # 
+        # - **AccountName**: The control policy applies to specified accounts in the asset group.
         self.account_scope_type = account_scope_type
         # The asset group ID.
         self.host_group_id = host_group_id
@@ -249,12 +254,13 @@ class SetPolicyAssetScopeRequestDatabases(DaraModel):
     ):
         # The scope of database accounts to which the control policy applies. Valid values:
         # 
-        # *   **All**: The control policy applies to all database accounts of the database.
-        # *   **AccountId**: The control policy applies to specified database accounts of the database.
+        # - **All**: The control policy applies to all database accounts of the database.
+        # 
+        # - **AccountId**: The control policy applies to specified database accounts of the database.
         self.account_scope_type = account_scope_type
         # The database accounts to which the control policy applies.
         # 
-        # >  This parameter is required if AccountScopeType is set to AccountId.
+        # > This parameter is required if AccountScopeType is set to AccountId.
         self.database_account_ids = database_account_ids
         # The database ID.
         self.database_id = database_id

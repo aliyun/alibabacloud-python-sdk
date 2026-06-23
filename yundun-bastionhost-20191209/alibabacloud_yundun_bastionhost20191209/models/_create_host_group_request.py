@@ -20,13 +20,13 @@ class CreateHostGroupRequest(DaraModel):
         self.host_group_name = host_group_name
         # The ID of the bastion host on which you want to create an asset group.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host on which you want to create an asset group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

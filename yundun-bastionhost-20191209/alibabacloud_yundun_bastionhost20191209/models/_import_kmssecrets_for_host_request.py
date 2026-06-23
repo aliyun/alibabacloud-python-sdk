@@ -15,10 +15,21 @@ class ImportKMSSecretsForHostRequest(DaraModel):
         region_id: str = None,
         secrets: List[main_models.ImportKMSSecretsForHostRequestSecrets] = None,
     ):
+        # The ID of the host to import the KMS secrets to.
+        # 
+        # > Only ECS hosts can import KMS secrets. You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain this parameter.
+        # 
         # This parameter is required.
         self.host_id = host_id
+        # The ID of the Bastionhost instance.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         self.instance_id = instance_id
+        # The region ID of the Bastionhost instance.
+        # 
+        # > For more information about region IDs and names, see [Regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The KMS secrets to import.
         self.secrets = secrets
 
     def validate(self):
@@ -73,7 +84,11 @@ class ImportKMSSecretsForHostRequestSecrets(DaraModel):
         secret_name: str = None,
         secret_type: str = None,
     ):
+        # The name of the KMS secret.
         self.secret_name = secret_name
+        # The type of the KMS secret. Valid values:
+        # 
+        # - **ECS**: an ECS credential.
         self.secret_type = secret_type
 
     def validate(self):

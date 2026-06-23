@@ -13,19 +13,19 @@ class GetHostRequest(DaraModel):
     ):
         # The ID of the host that you want to query. You can specify only one host ID.
         # 
-        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
         # 
         # This parameter is required.
         self.host_id = host_id
         # The ID of the bastion host in which you want to query the host.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to query the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

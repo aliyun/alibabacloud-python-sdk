@@ -19,29 +19,29 @@ class ListHostGroupsForUserRequest(DaraModel):
         self.host_group_name = host_group_name
         # The ID of the bastion host whose user you want to query.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The category of the host groups to query. Valid values:
         # 
-        # *   **Authorized** (default): queries the host groups that the user is authorized to manage.
-        # *   **Unauthorized**: queries the host groups that the user is not authorized to manage.
+        # - **Authorized** (default): queries the host groups that the user is authorized to manage.
+        # 
+        # - **Unauthorized**: queries the host groups that the user is not authorized to manage.
         self.mode = mode
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.\\
-        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The number of entries per page.<br> Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # >  We recommend that you do not leave this parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host whose user you want to query.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The user ID.
         # 
-        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

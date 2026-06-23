@@ -65,8 +65,9 @@ class GetHostResponseBodyHost(DaraModel):
     ):
         # The address type of the host. Valid values:
         # 
-        # *   **Public**: a public address
-        # *   **Private**: a private address
+        # - **Public**: a public address
+        # 
+        # - **Private**: a private address
         self.active_address_type = active_address_type
         # The description of the host.
         self.comment = comment
@@ -82,32 +83,39 @@ class GetHostResponseBodyHost(DaraModel):
         self.network_domain_id = network_domain_id
         # The operating system of the host. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
         # The preferred key exchange algorithm of the host. The value of this parameter is returned if OSType is set to Linux. Valid values:
         # 
-        # *   **default**
-        # *   **diffie-hellman-group1-sha1**
-        # *   **diffie-hellman-group14-sha1**
-        # *   **diffie-hellman-group-exchange-sha1**
+        # - **default**
+        # 
+        # - **diffie-hellman-group1-sha1**
+        # 
+        # - **diffie-hellman-group14-sha1**
+        # 
+        # - **diffie-hellman-group-exchange-sha1**
         self.pref_kex = pref_kex
         # The protocol information about the host.
         self.protocols = protocols
         # The source of the host. Valid values:
         # 
-        # *   **Local**: a host in a data center
-        # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+        # - **Local**: a host in a data center
+        # 
+        # - **Ecs**: an Elastic Compute Service (ECS) instance
+        # 
+        # - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
         self.source = source
         # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
         # 
-        # >  If **Local** is returned for the **Source** parameter, no value is returned for this parameter.
+        # > If **Local** is returned for the **Source** parameter, no value is returned for this parameter.
         self.source_instance_id = source_instance_id
         # The status of the host. Valid values:
         # 
-        # *   **Normal**: normal
-        # *   **Release**: released
+        # - **Normal**: normal
+        # 
+        # - **Release**: released
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -223,8 +231,9 @@ class GetHostResponseBodyHostProtocols(DaraModel):
         self.port = port
         # The protocol that is used to connect to the host. Valid values:
         # 
-        # *   **SSH**
-        # *   **RDP**
+        # - **SSH**
+        # 
+        # - **RDP**
         self.protocol_name = protocol_name
 
     def validate(self):

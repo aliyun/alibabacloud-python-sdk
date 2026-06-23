@@ -13,16 +13,18 @@ class GetDatabaseAccountRequest(DaraModel):
     ):
         # The ID of the database account to query.
         # 
-        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
         # 
         # This parameter is required.
         self.database_account_id = database_account_id
         # The bastion host ID.
+        # 
         # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the bastion host.
+        # 
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 

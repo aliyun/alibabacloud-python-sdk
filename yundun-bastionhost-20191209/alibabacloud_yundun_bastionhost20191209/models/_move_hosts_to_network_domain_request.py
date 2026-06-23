@@ -26,7 +26,7 @@ class MoveHostsToNetworkDomainRequest(DaraModel):
         self.instance_id = instance_id
         # The ID of the network domain to which you want to add hosts.
         # 
-        # >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
         # 
         # This parameter is required.
         self.network_domain_id = network_domain_id

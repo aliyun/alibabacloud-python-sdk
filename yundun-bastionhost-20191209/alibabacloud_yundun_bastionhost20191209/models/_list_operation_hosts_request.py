@@ -18,43 +18,45 @@ class ListOperationHostsRequest(DaraModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The address of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+        # The address of the host. You can specify a domain name or an IP address. Only exact matches are supported.
         self.host_address = host_address
-        # The name of the host that you want to query. Only exact match is supported.
+        # The name of the host. Only exact matches are supported.
         self.host_name = host_name
-        # The ID of the bastion host.
+        # The ID of the Bastionhost instance.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The operating system of the host that you want to query. Valid values:
+        # The operating system of the host. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
-        # The page number. Default value: 1.
+        # The number of the page to return. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page.\\
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The number of entries to return on each page.<br> The maximum value is 100. The default value is 20. If you do not specify this parameter, the default value is used.<br>
         # 
-        # >  We recommend that you do not leave this parameter empty.
+        # > Specify a value for this parameter.
         self.page_size = page_size
-        # The region ID of the bastion host.
+        # The ID of the region where the Bastionhost instance resides.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the host that you want to query. Valid values:
+        # The source of the host. Valid values:
         # 
-        # *   **Local**
-        # *   **Ecs**
+        # - **Local**: a local host
+        # 
+        # - **Ecs**: an ECS instance
         self.source = source
-        # The ID of the Elastic Compute Service (ECS) instance. Exact match is supported.
+        # The ID of the ECS instance. Only exact matches are supported.
         self.source_instance_id = source_instance_id
-        # The status of the host that you want to query. Valid values:
+        # The state of the host. Valid values:
         # 
-        # *   **Normal**
-        # *   **Release**
+        # - **Normal**: The host is running.
+        # 
+        # - **Release**: The host is released.
         self.source_instance_state = source_instance_state
 
     def validate(self):

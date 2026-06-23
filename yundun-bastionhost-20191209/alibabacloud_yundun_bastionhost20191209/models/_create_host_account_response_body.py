@@ -10,7 +10,7 @@ class CreateHostAccountResponseBody(DaraModel):
         host_account_id: str = None,
         request_id: str = None,
     ):
-        # The operation that you want to perform. Set the value to **CreateHostAccount**.
+        # The ID of the host account.
         self.host_account_id = host_account_id
         # The ID of the request.
         self.request_id = request_id

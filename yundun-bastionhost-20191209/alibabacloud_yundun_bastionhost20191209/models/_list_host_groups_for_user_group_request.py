@@ -25,12 +25,13 @@ class ListHostGroupsForUserGroupRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies the category of the host group that you want to query. Valid values:
         # 
-        # *   **Authorized**: queries the host groups that the user group is authorized to manage. This is the default value.
-        # *   **Unauthorized**: queries the host groups that the user group is not authorized to manage.
+        # - **Authorized**: queries the host groups that the user group is authorized to manage. This is the default value.
+        # 
+        # - **Unauthorized**: queries the host groups that the user group is not authorized to manage.
         self.mode = mode
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.\\
+        # The number of entries to return on each page.<br>
         # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.

@@ -21,64 +21,69 @@ class CreateHostRequest(DaraModel):
         source: str = None,
         source_instance_id: str = None,
     ):
-        # The endpoint type of the host that you want to create. Valid values:
+        # The address type of the host. Valid values:
         # 
-        # *   **Public**: public endpoint
-        # *   **Private**: internal endpoint
+        # - **Public**: a public address
+        # 
+        # - **Private**: a private address
         # 
         # This parameter is required.
         self.active_address_type = active_address_type
-        # The description of the host that you want to create. The value can be up to 500 characters in length.
+        # The comment for the host. The comment can be up to 500 characters in length.
         self.comment = comment
-        # The name of the host that you want to create. The name can be up to 128 characters in length.
+        # The name of the host. The name can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.host_name = host_name
-        # The internal endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
+        # The private address of the host. You can use a domain name or an IP address.
         # 
-        # > This parameter is required if the **ActiveAddressType** parameter is set to **Private**.
+        # > This parameter is required when **ActiveAddressType** is set to **Private**.
         self.host_private_address = host_private_address
-        # The public endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
+        # The public address of the host. You can use a domain name or an IP address.
         # 
-        # > This parameter is required if the **ActiveAddressType** parameter is set to **Public**.
+        # > This parameter is required when **ActiveAddressType** is set to **Public**.
         self.host_public_address = host_public_address
-        # The ID of the bastion host in which you want to create the host.
+        # The ID of the Bastionhost instance where you want to create the host.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the Alibaba Cloud account to which the ECS instance belongs.
         self.instance_member_id = instance_member_id
-        # The ID of the region to which the ECS instance or the host in an ApsaraDB MyBase dedicated cluster belongs.
+        # The region ID of the ECS instance or the host in the dedicated cluster.
         # 
-        # > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
+        # > This parameter is required when **Source** is set to **Ecs** or **Rds**.
         self.instance_region_id = instance_region_id
-        # The ID of the network domain to which the host to be imported belongs.
+        # The ID of the network domain to which the host belongs.
         # 
-        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+        # > Call the [ListNetworkDomains ](https://help.aliyun.com/document_detail/2758827.html)operation to obtain this parameter.
         self.network_domain_id = network_domain_id
-        # The operating system of the host that you want to create. Valid values:
+        # The operating system of the host. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         # 
         # This parameter is required.
         self.ostype = ostype
-        # The region ID of the bastion host to which you want to import the host.
+        # The region ID of the Bastionhost instance where you want to create the host.
         # 
-        # > For information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The source of the host that you want to create. Valid values:
+        # The source of the host. Valid values:
         # 
-        # *   **Local**: a host in a data center
-        # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+        # - **Local**: a local host
+        # 
+        # - **Ecs**: an ECS instance
+        # 
+        # - **Rds**: a host in an ApsaraDB RDS dedicated cluster
         # 
         # This parameter is required.
         self.source = source
-        # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
+        # The ID of the ECS instance or the host in the dedicated cluster.
         # 
-        # > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
+        # > This parameter is required when **Source** is set to **Ecs** or **Rds**.
         self.source_instance_id = source_instance_id
 
     def validate(self):

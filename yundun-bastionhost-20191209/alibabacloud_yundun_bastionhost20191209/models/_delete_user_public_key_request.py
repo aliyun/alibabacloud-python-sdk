@@ -13,13 +13,13 @@ class DeleteUserPublicKeyRequest(DaraModel):
     ):
         # The ID of the Bastionhost instance to which the users to be queried belong.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the Bastionhost instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The public key ID.
         # 
-        # >  You can call the [ListUserPublicKeys](https://help.aliyun.com/document_detail/477555.html) operation to query the public key ID.
+        # > You can call the [ListUserPublicKeys](https://help.aliyun.com/document_detail/477555.html) operation to query the public key ID.
         # 
         # This parameter is required.
         self.public_key_id = public_key_id

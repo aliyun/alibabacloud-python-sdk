@@ -10,7 +10,9 @@ class CreateOperationTicketResponseBody(DaraModel):
         operation_ticket_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the O\\&M ticket.
         self.operation_ticket_id = operation_ticket_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

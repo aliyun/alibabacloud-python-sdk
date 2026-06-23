@@ -18,7 +18,7 @@ class ListDatabaseAccountsRequest(DaraModel):
         self.database_account_name = database_account_name
         # The ID of the database whose database accounts you want to query.
         # 
-        # >  You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
+        # > You can call the [ListDatabases](https://help.aliyun.com/document_detail/2758822.html) operation to query the database ID.
         self.database_id = database_id
         # The bastion host ID.
         # 
@@ -28,7 +28,7 @@ class ListDatabaseAccountsRequest(DaraModel):
         self.instance_id = instance_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\\
+        # The number of entries per page.<br>
         # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.

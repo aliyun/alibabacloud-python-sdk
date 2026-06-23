@@ -12,10 +12,21 @@ class ImportKMSSecretsForHostShrinkRequest(DaraModel):
         region_id: str = None,
         secrets_shrink: str = None,
     ):
+        # The ID of the host to import the KMS secrets to.
+        # 
+        # > Only ECS hosts can import KMS secrets. You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain this parameter.
+        # 
         # This parameter is required.
         self.host_id = host_id
+        # The ID of the Bastionhost instance.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         self.instance_id = instance_id
+        # The region ID of the Bastionhost instance.
+        # 
+        # > For more information about region IDs and names, see [Regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The KMS secrets to import.
         self.secrets_shrink = secrets_shrink
 
     def validate(self):

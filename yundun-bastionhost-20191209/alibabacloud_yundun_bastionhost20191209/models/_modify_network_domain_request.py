@@ -34,8 +34,9 @@ class ModifyNetworkDomainRequest(DaraModel):
         self.network_domain_name = network_domain_name
         # The new connection mode of the network domain. Valid values:
         # 
-        # *   **Direct**
-        # *   **Proxy**
+        # - **Direct**
+        # 
+        # - **Proxy**
         self.network_domain_type = network_domain_type
         # The information about the proxy servers in the network domain.
         self.proxies = proxies
@@ -122,8 +123,9 @@ class ModifyNetworkDomainRequestProxies(DaraModel):
         self.address = address
         # The node type of the proxy server to modify. Valid values:
         # 
-        # *   **Master**: primary proxy server.
-        # *   **Slave**: secondary proxy server.
+        # - **Master**: primary proxy server.
+        # 
+        # - **Slave**: secondary proxy server.
         self.node_type = node_type
         # The new password of the proxy server account.
         self.password = password
@@ -131,9 +133,11 @@ class ModifyNetworkDomainRequestProxies(DaraModel):
         self.port = port
         # The new proxy mode. Valid values:
         # 
-        # *   **SSHProxy**
-        # *   **HTTPProxy**
-        # *   **Socks5Proxy**
+        # - **SSHProxy**
+        # 
+        # - **HTTPProxy**
+        # 
+        # - **Socks5Proxy**
         self.proxy_type = proxy_type
         # The new username of the proxy server account.
         self.user = user

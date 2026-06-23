@@ -80,7 +80,10 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'yundun-bastionhost.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'yundun-bastionhost.aliyuncs.com',
             'eu-west-1-oxs': 'yundun-bastionhost.aliyuncs.com',
-            'rus-west-1-pop': 'yundun-bastionhost.aliyuncs.com'
+            'rus-west-1-pop': 'yundun-bastionhost.aliyuncs.com',
+            'cn-zhengzhou-jva': 'yundun-bastionhost.aliyuncs.com',
+            'ap-southeast-6': 'bastionhost.ap-southeast-6.aliyuncs.com',
+            'ap-northeast-2': 'bastionhost.ap-northeast-2.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('yundun-bastionhost', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -596,6 +599,84 @@ class Client(OpenApiClient):
     ) -> main_models.AddUsersToGroupResponse:
         runtime = RuntimeOptions()
         return await self.add_users_to_group_with_options_async(request, runtime)
+
+    def allow_operation_task_approval_with_options(
+        self,
+        request: main_models.AllowOperationTaskApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllowOperationTaskApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.approve_id):
+            query['ApproveId'] = request.approve_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllowOperationTaskApproval',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllowOperationTaskApprovalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allow_operation_task_approval_with_options_async(
+        self,
+        request: main_models.AllowOperationTaskApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllowOperationTaskApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.approve_id):
+            query['ApproveId'] = request.approve_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllowOperationTaskApproval',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllowOperationTaskApprovalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allow_operation_task_approval(
+        self,
+        request: main_models.AllowOperationTaskApprovalRequest,
+    ) -> main_models.AllowOperationTaskApprovalResponse:
+        runtime = RuntimeOptions()
+        return self.allow_operation_task_approval_with_options(request, runtime)
+
+    async def allow_operation_task_approval_async(
+        self,
+        request: main_models.AllowOperationTaskApprovalRequest,
+    ) -> main_models.AllowOperationTaskApprovalResponse:
+        runtime = RuntimeOptions()
+        return await self.allow_operation_task_approval_with_options_async(request, runtime)
 
     def attach_database_accounts_to_user_with_options(
         self,
@@ -4900,6 +4981,88 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateAssetOperationTokenResponse:
         runtime = RuntimeOptions()
         return await self.generate_asset_operation_token_with_options_async(request, runtime)
+
+    def get_auto_ops_task_with_options(
+        self,
+        request: main_models.GetAutoOpsTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoOpsTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutoOpsTask',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutoOpsTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_ops_task_with_options_async(
+        self,
+        request: main_models.GetAutoOpsTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoOpsTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAutoOpsTask',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAutoOpsTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_ops_task(
+        self,
+        request: main_models.GetAutoOpsTaskRequest,
+    ) -> main_models.GetAutoOpsTaskResponse:
+        runtime = RuntimeOptions()
+        return self.get_auto_ops_task_with_options(request, runtime)
+
+    async def get_auto_ops_task_async(
+        self,
+        request: main_models.GetAutoOpsTaskRequest,
+    ) -> main_models.GetAutoOpsTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.get_auto_ops_task_with_options_async(request, runtime)
 
     def get_database_with_options(
         self,
@@ -9343,6 +9506,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def list_todo_ops_task_approvals_with_options(
+        self,
+        request: main_models.ListTodoOpsTaskApprovalsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTodoOpsTaskApprovalsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.schedule_type):
+            query['ScheduleType'] = request.schedule_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTodoOpsTaskApprovals',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTodoOpsTaskApprovalsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_todo_ops_task_approvals_with_options_async(
+        self,
+        request: main_models.ListTodoOpsTaskApprovalsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTodoOpsTaskApprovalsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.schedule_type):
+            query['ScheduleType'] = request.schedule_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTodoOpsTaskApprovals',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTodoOpsTaskApprovalsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_todo_ops_task_approvals(
+        self,
+        request: main_models.ListTodoOpsTaskApprovalsRequest,
+    ) -> main_models.ListTodoOpsTaskApprovalsResponse:
+        runtime = RuntimeOptions()
+        return self.list_todo_ops_task_approvals_with_options(request, runtime)
+
+    async def list_todo_ops_task_approvals_async(
+        self,
+        request: main_models.ListTodoOpsTaskApprovalsRequest,
+    ) -> main_models.ListTodoOpsTaskApprovalsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_todo_ops_task_approvals_with_options_async(request, runtime)
+
     def list_user_groups_with_options(
         self,
         request: main_models.ListUserGroupsRequest,
@@ -11794,6 +12047,84 @@ class Client(OpenApiClient):
     ) -> main_models.RejectApproveCommandResponse:
         runtime = RuntimeOptions()
         return await self.reject_approve_command_with_options_async(request, runtime)
+
+    def reject_operation_task_approval_with_options(
+        self,
+        request: main_models.RejectOperationTaskApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectOperationTaskApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.approve_id):
+            query['ApproveId'] = request.approve_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RejectOperationTaskApproval',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RejectOperationTaskApprovalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reject_operation_task_approval_with_options_async(
+        self,
+        request: main_models.RejectOperationTaskApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectOperationTaskApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.approve_id):
+            query['ApproveId'] = request.approve_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RejectOperationTaskApproval',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RejectOperationTaskApprovalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reject_operation_task_approval(
+        self,
+        request: main_models.RejectOperationTaskApprovalRequest,
+    ) -> main_models.RejectOperationTaskApprovalResponse:
+        runtime = RuntimeOptions()
+        return self.reject_operation_task_approval_with_options(request, runtime)
+
+    async def reject_operation_task_approval_async(
+        self,
+        request: main_models.RejectOperationTaskApprovalRequest,
+    ) -> main_models.RejectOperationTaskApprovalResponse:
+        runtime = RuntimeOptions()
+        return await self.reject_operation_task_approval_with_options_async(request, runtime)
 
     def reject_operation_ticket_with_options(
         self,

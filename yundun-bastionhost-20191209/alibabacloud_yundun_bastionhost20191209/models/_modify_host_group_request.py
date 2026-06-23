@@ -17,7 +17,7 @@ class ModifyHostGroupRequest(DaraModel):
         self.comment = comment
         # The ID of the asset group that you want to modify.
         # 
-        # >  You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](https://help.aliyun.com/document_detail/201307.html) operation to query the ID of the host group.
         # 
         # This parameter is required.
         self.host_group_id = host_group_id
@@ -31,7 +31,7 @@ class ModifyHostGroupRequest(DaraModel):
         self.instance_id = instance_id
         # The region ID of the bastion host whose asset group you want to modify.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

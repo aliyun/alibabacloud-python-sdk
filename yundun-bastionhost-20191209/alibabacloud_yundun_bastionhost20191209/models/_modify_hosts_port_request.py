@@ -15,13 +15,13 @@ class ModifyHostsPortRequest(DaraModel):
     ):
         # The ID of the host for which you want to change the port. The value is a JSON string. You can add up to 100 host IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the IDs of hosts.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the IDs of hosts.
         # 
         # This parameter is required.
         self.host_ids = host_ids
         # The ID of the bastion host for which you want to change the port of the host.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -31,14 +31,15 @@ class ModifyHostsPortRequest(DaraModel):
         self.port = port
         # The protocol that is used to connect to the host. Valid values:
         # 
-        # *   **SSH**
-        # *   **RDP**
+        # - **SSH**
+        # 
+        # - **RDP**
         # 
         # This parameter is required.
         self.protocol_name = protocol_name
         # The region ID of the bastion host for which you want to change the port of the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

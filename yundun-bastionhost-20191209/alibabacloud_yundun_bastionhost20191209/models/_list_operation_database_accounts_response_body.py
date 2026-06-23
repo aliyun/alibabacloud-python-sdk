@@ -84,8 +84,9 @@ class ListOperationDatabaseAccountsResponseBodyDatabaseAccounts(DaraModel):
         self.has_password = has_password
         # The logon attribute. One of the following values is returned if the database engine is Oracle:
         # 
-        # *   **SERVICENAME**
-        # *   **SID**
+        # - **SERVICENAME**
+        # 
+        # - **SID**
         self.login_attribute = login_attribute
         # The protocol that is used by the database account.
         self.protocol_name = protocol_name

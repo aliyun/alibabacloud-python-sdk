@@ -17,36 +17,39 @@ class ListDatabasesForUserGroupRequest(DaraModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The address of the database to query. Only exact match is supported.
+        # The address of the database that you want to query. Only term query is supported.
         self.database_address = database_address
-        # The name of the database to query.
+        # The name of the database instance that you want to query.
         self.database_name = database_name
-        # The engine of the database to query. Valid values:
+        # The type of the database that you want to query. Valid values:
         # 
-        # *   **MySQL**
-        # *   **Oracle**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
+        # - **MySQL**
+        # 
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQLServer**
         self.database_type = database_type
-        # The bastion host ID.
+        # The ID of the Bastionhost instance.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the network domain.
         self.network_domain_id = network_domain_id
-        # The page number. Default value: 1.
+        # The page number of the paged query. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\\
-        # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The maximum number of entries to return on each page for a paged query.<br> The maximum value of the PageSize parameter is 100. By default, 20 entries are returned on each page. If you leave the PageSize parameter empty, 20 entries are returned.
         # 
-        # > We recommend that you do not leave this parameter empty.
+        # > We recommend that you do not leave the PageSize parameter empty.
         self.page_size = page_size
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         # 
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user group to query.
+        # The ID of the user group for which you want to query authorized databases.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id

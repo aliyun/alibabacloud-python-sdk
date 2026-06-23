@@ -15,16 +15,17 @@ class ConfigInstanceWhiteListRequest(DaraModel):
         white_list: List[str] = None,
         white_list_policies: List[main_models.ConfigInstanceWhiteListRequestWhiteListPolicies] = None,
     ):
-        # The ID of the bastion host for which you want to configure a whitelist of public IP addresses.
+        # The ID of the Bastionhost instance to configure.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > To obtain the instance ID, call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         self.region_id = region_id
-        # The IP address whitelist that you want to configure.
+        # The list of IP addresses to add to the whitelist.
         self.white_list = white_list
+        # The policies for the public IP address whitelist.
         self.white_list_policies = white_list_policies
 
     def validate(self):
@@ -79,7 +80,9 @@ class ConfigInstanceWhiteListRequestWhiteListPolicies(DaraModel):
         description: str = None,
         entry: str = None,
     ):
+        # The description of this whitelist rule.
         self.description = description
+        # The IP addresses to add to the whitelist. You can specify up to 50 IP addresses, separated by a comma.
         self.entry = entry
 
     def validate(self):

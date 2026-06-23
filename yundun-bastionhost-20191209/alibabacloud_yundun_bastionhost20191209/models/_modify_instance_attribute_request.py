@@ -11,19 +11,19 @@ class ModifyInstanceAttributeRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The description of the bastion host.
+        # The description of the Bastionhost instance.
         # 
-        # > The description must be up to 30 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+        # > The description can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). Maximum 30 characters.
         self.description = description
-        # The ID of the bastion host.
+        # The ID of the Bastionhost instance.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

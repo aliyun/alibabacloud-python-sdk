@@ -19,11 +19,11 @@ class DisableRuleRequest(DaraModel):
         self.instance_id = instance_id
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the authorization rule to be disabled.
         # 
-        # >  You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID to be disabled.
+        # > You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID to be disabled.
         # 
         # This parameter is required.
         self.rule_id = rule_id

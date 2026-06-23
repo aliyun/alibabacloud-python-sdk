@@ -35,8 +35,9 @@ class ListHostsRequest(DaraModel):
         self.instance_id = instance_id
         # The operating system of the host that you want to query. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
@@ -50,16 +51,19 @@ class ListHostsRequest(DaraModel):
         self.region_id = region_id
         # The source of the host that you want to query. Valid values:
         # 
-        # *   **Local**: a host in a data center
-        # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+        # - **Local**: a host in a data center
+        # 
+        # - **Ecs**: an Elastic Compute Service (ECS) instance
+        # 
+        # - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
         self.source = source
         # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster that you want to query. Only exact match is supported.
         self.source_instance_id = source_instance_id
         # The status of the host that you want to query. Valid values:
         # 
-        # *   **Normal**: normal
-        # *   **Release**: released
+        # - **Normal**: normal
+        # 
+        # - **Release**: released
         self.source_instance_state = source_instance_state
 
     def validate(self):

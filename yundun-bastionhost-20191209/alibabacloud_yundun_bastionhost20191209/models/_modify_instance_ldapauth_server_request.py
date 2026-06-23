@@ -36,14 +36,15 @@ class ModifyInstanceLDAPAuthServerRequest(DaraModel):
         self.filter = filter
         # The bastion host ID.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to support SSL. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_ssl = is_ssl
         # The field that is used to indicate the logon name of a user on the LDAP server.
         self.login_name_mapping = login_name_mapping
@@ -59,7 +60,7 @@ class ModifyInstanceLDAPAuthServerRequest(DaraModel):
         self.port = port
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The address of the LDAP server.
         # 

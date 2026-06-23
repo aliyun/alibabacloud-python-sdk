@@ -62,9 +62,9 @@ class GetPolicyAssetScopeResponseBodyAssetScope(DaraModel):
         self.hosts = hosts
         # The scope of assets to which the control policy applies.
         # 
-        # *   If **All** is returned for this parameter, the control policy applies to all assets.
+        # - If **All** is returned for this parameter, the control policy applies to all assets.
         # 
-        # *   If no value is returned for this parameter, the control policy applies to the assets specified in the return values of Databases, HostGroups, and Hosts.
+        # - If no value is returned for this parameter, the control policy applies to the assets specified in the return values of Databases, HostGroups, and Hosts.
         self.scope_type = scope_type
 
     def validate(self):
@@ -140,8 +140,9 @@ class GetPolicyAssetScopeResponseBodyAssetScopeHosts(DaraModel):
     ):
         # The scope of host accounts to which the control policy applies. Valid values:
         # 
-        # *   **All**: The control policy applies to all accounts of the host.
-        # *   **AccountId**: The control policy applies to specified accounts of the host.
+        # - **All**: The control policy applies to all accounts of the host.
+        # 
+        # - **AccountId**: The control policy applies to specified accounts of the host.
         self.account_scope_type = account_scope_type
         # The host accounts to which the control policy applies.
         self.host_account_ids = host_account_ids
@@ -191,8 +192,9 @@ class GetPolicyAssetScopeResponseBodyAssetScopeHostGroups(DaraModel):
         self.account_names = account_names
         # The scope of asset accounts to which the control policy applies. Valid values:
         # 
-        # *   **All**: The control policy applies to all accounts in the asset group.
-        # *   **AccountName**: The control policy applies to specified accounts in the asset group.
+        # - **All**: The control policy applies to all accounts in the asset group.
+        # 
+        # - **AccountName**: The control policy applies to specified accounts in the asset group.
         self.account_scope_type = account_scope_type
         # The asset group ID.
         self.host_group_id = host_group_id
@@ -238,8 +240,9 @@ class GetPolicyAssetScopeResponseBodyAssetScopeDatabases(DaraModel):
     ):
         # The scope of database accounts to which the control policy applies. Valid values:
         # 
-        # *   **All**: The control policy applies to all database accounts of the database.
-        # *   **AccountId**: The control policy applies to specified database accounts of the database.
+        # - **All**: The control policy applies to all database accounts of the database.
+        # 
+        # - **AccountId**: The control policy applies to specified database accounts of the database.
         self.account_scope_type = account_scope_type
         # The IDs of database accounts to which the control policy applies.
         self.database_account_ids = database_account_ids

@@ -74,8 +74,9 @@ class ListHostsForUserResponseBodyHosts(DaraModel):
     ):
         # The endpoint type of the host. Valid values:
         # 
-        # *   **Public**: public endpoint
-        # *   **Private**: internal endpoint
+        # - **Public**: public endpoint
+        # 
+        # - **Private**: internal endpoint
         self.active_address_type = active_address_type
         # The description of the host.
         self.comment = comment
@@ -89,8 +90,9 @@ class ListHostsForUserResponseBodyHosts(DaraModel):
         self.host_public_address = host_public_address
         # The operating system of the host. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
 
     def validate(self):

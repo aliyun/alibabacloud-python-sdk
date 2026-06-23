@@ -36,7 +36,7 @@ class CreateUserPublicKeyRequest(DaraModel):
         self.region_id = region_id
         # The ID of the user for whom you want to create a public key.
         # 
-        # >  You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
+        # > You can call the [ListUsers](https://help.aliyun.com/document_detail/204522.html) operation to query the user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

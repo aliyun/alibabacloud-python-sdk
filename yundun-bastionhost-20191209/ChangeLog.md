@@ -1,3 +1,10 @@
+2026-06-23 Version: 1.6.0
+- Support API AllowOperationTaskApproval.
+- Support API GetAutoOpsTask.
+- Support API ListTodoOpsTaskApprovals.
+- Support API RejectOperationTaskApproval.
+
+
 2026-04-22 Version: 1.5.1
 - Update API GetPolicy: add response parameters Body.Policy.ProtocolConfig.RDP.DiskRedirectionDownload.
 - Update API GetPolicy: add response parameters Body.Policy.ProtocolConfig.RDP.DiskRedirectionUpload.

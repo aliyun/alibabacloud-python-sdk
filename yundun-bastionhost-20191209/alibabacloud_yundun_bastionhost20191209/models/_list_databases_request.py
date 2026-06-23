@@ -18,10 +18,13 @@ class ListDatabasesRequest(DaraModel):
     ):
         # The engine of the database to query. Valid values:
         # 
-        # *   **MySQL**
-        # *   **Oracle**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
+        # - **MySQL**
+        # 
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQLServer**
         self.database_type = database_type
         # The ID of the asset group to query. This operation returns the databases in the asset group.
         # 
@@ -48,9 +51,11 @@ class ListDatabasesRequest(DaraModel):
         self.region_id = region_id
         # The type of the database to query. Valid values:
         # 
-        # * **Local**: on-premises database.
-        # * **Rds**: ApsaraDB for RDS instance.
-        # * **PolarDB**: PolarDB cluster
+        # - **Local**: on-premises database.
+        # 
+        # - **Rds**: ApsaraDB for RDS instance.
+        # 
+        # - **PolarDB**: PolarDB cluster
         self.source = source
 
     def validate(self):

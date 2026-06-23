@@ -61,13 +61,16 @@ class GetDatabaseAccountResponseBodyDatabaseAccount(DaraModel):
         self.database_schema = database_schema
         # Indicates whether the database account has a password.
         # Valid values:
-        # * true
-        # * false
+        # 
+        # - true
+        # 
+        # - false
         self.has_password = has_password
         # The logon attribute. A value is returned for this parameter if the database engine is Oracle. Valid values:
         # 
-        # *   SERVICENAME
-        # *   SID
+        # - SERVICENAME
+        # 
+        # - SID
         self.login_attribute = login_attribute
 
     def validate(self):

@@ -10,7 +10,11 @@ class CreateExportConfigJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the configuration backup export task.
+        # 
+        # > You can call the GetExportConfigJob operation to obtain the details of this task. Make sure to record the task ID.
         self.job_id = job_id
+        # The unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
 
     def validate(self):

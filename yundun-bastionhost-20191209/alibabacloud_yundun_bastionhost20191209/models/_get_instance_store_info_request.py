@@ -10,8 +10,15 @@ class GetInstanceStoreInfoRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the Bastionhost instance.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region ID of the Bastionhost instance.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

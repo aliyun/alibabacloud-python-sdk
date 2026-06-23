@@ -12,9 +12,11 @@ class DescribeInstanceAttributeRequest(DaraModel):
     ):
         # The ID of the Bastionhost instance.
         # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the ID of the Bastionhost instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region.
+        # The ID of the region in which the Bastionhost instance resides.
         self.region_id = region_id
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The information about regions where you can create bastion hosts.
+        # The regions that support Bastionhost instances.
         self.regions = regions
-        # The ID of request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

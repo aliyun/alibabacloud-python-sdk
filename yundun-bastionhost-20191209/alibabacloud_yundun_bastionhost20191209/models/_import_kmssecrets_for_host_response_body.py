@@ -14,9 +14,11 @@ class ImportKMSSecretsForHostResponseBody(DaraModel):
         results: List[main_models.ImportKMSSecretsForHostResponseBodyResults] = None,
         success_count: int = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The import result for each secret.
         self.results = results
+        # The number of secrets that were successfully imported.
         self.success_count = success_count
 
     def validate(self):
@@ -66,8 +68,11 @@ class ImportKMSSecretsForHostResponseBodyResults(DaraModel):
         message: str = None,
         secret_name: str = None,
     ):
+        # The status code.
         self.code = code
+        # The result message.
         self.message = message
+        # The name of the secret.
         self.secret_name = secret_name
 
     def validate(self):

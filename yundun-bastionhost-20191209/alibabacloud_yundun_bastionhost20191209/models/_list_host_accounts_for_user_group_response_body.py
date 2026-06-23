@@ -78,13 +78,15 @@ class ListHostAccountsForUserGroupResponseBodyHostAccounts(DaraModel):
         self.host_id = host_id
         # Indicates whether the user group is authorized to manage the host account. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.is_authorized = is_authorized
         # The protocol that is used by the host. Valid values:
         # 
-        # *   **SSH**
-        # *   **RDP**
+        # - **SSH**
+        # 
+        # - **RDP**
         self.protocol_name = protocol_name
 
     def validate(self):

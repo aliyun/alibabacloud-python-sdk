@@ -13,22 +13,21 @@ class ListUserPublicKeysRequest(DaraModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the bastion host on which you want to query all public keys of the user.
+        # The ID of the Bastionhost instance where the user whose public keys you want to query resides.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > You can call the [describeinstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: 1.
+        # The page number of the paged query. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.\\
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
+        # The maximum number of entries to return on each page for a paged query.<br> The maximum value of the PageSize parameter is 100. Default value: 20. If this parameter is empty, 20 entries are returned by default.
         # 
-        # > We recommend that you do not leave this parameter empty.
+        # > We recommend that you do not leave the PageSize parameter empty.
         self.page_size = page_size
-        # The region ID of the bastion host on which you want to query all public keys of the user.
+        # The region ID of the Bastionhost instance where the user resides.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The ID of the user whose public keys you want to query.
         self.user_id = user_id

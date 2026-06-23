@@ -16,39 +16,39 @@ class ListHostAccountsRequest(DaraModel):
         protocol_name: str = None,
         region_id: str = None,
     ):
-        # The name of the host account that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
+        # The name of the host account that you want to query. The name can be up to 128 characters in length. This parameter supports only term queries.
         self.host_account_name = host_account_name
-        # The ID of the specified host whose accounts you want to query.
+        # The ID of the host for which you want to query host accounts.
         # 
-        # >  You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to query the ID of the host.
+        # > You can call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to obtain the host ID.
         # 
         # This parameter is required.
         self.host_id = host_id
-        self.host_ids = host_ids
-        # The ID of the bastion host in which you want to query accounts of the specified host.
+        # The array of host IDs for which you want to query host accounts.
         # 
-        # >  You can call the DescribeInstances operation to query the ID of the bastion host.
+        # > This parameter takes effect only when the value of the HostId parameter is 0. If the HostId parameter is specified with a non-zero value, this parameter is ignored.
+        self.host_ids = host_ids
+        # The ID of the Bastionhost instance.
+        # 
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries to return on each page.<br> The maximum value of the PageSize parameter is 100. The default value is 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The protocol used by the host whose accounts you want to query.
+        # The protocol of the host account that you want to query.<br> Valid values:
         # 
-        # Valid values:
+        # - SSH
         # 
-        # *   SSH
-        # *   RDP
+        # - RDP
         self.protocol_name = protocol_name
-        # The region ID of the bastion host in which you want to query accounts of the specified host.
+        # The region ID of the Bastionhost instance.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

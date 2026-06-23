@@ -14,12 +14,27 @@ class ListImportableKMSSecretsForHostRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The ID of the host.
+        # 
+        # > Call the [ListHosts](https://help.aliyun.com/document_detail/200665.html) operation to get this ID.
+        # 
         # This parameter is required.
         self.host_id = host_id
+        # The ID of the bastion host instance.
+        # 
+        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to get this ID.
         self.instance_id = instance_id
+        # The name of the secret to search for. Fuzzy matching is supported.
         self.keyword = keyword
+        # The number of entries to return on each page. Default value: 20.
         self.max_results = max_results
+        # The token to retrieve the next page of results.
+        # 
+        # > You do not need to specify this parameter for the first request. For subsequent requests, use the `NextToken` value from the previous response.
         self.next_token = next_token
+        # The region ID of the bastion host.
+        # 
+        # > For details about the mapping between region IDs and region names, see [Regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

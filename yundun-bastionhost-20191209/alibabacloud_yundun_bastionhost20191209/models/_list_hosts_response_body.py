@@ -78,8 +78,9 @@ class ListHostsResponseBodyHosts(DaraModel):
     ):
         # The address type of the host. Valid values:
         # 
-        # *   **Public**: a public address
-        # *   **Private**: a private address
+        # - **Public**: a public address
+        # 
+        # - **Private**: a private address
         self.active_address_type = active_address_type
         # The description of the host.
         self.comment = comment
@@ -95,14 +96,17 @@ class ListHostsResponseBodyHosts(DaraModel):
         self.host_public_address = host_public_address
         # The operating system of the host. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
         # The source of the host. Valid values:
         # 
-        # *   **Local**: a host in a data center
-        # *   **Ecs**: an ECS instance
-        # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
+        # - **Local**: a host in a data center
+        # 
+        # - **Ecs**: an ECS instance
+        # 
+        # - **Rds**: a host in an ApsaraDB MyBase dedicated cluster
         self.source = source
         # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
         # 
@@ -110,8 +114,9 @@ class ListHostsResponseBodyHosts(DaraModel):
         self.source_instance_id = source_instance_id
         # The status of the host. Valid values:
         # 
-        # *   **Normal**: normal
-        # *   **Release**: released
+        # - **Normal**: normal
+        # 
+        # - **Release**: released
         self.source_instance_state = source_instance_state
 
     def validate(self):

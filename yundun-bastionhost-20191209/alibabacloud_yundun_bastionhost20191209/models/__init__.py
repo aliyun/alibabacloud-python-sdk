@@ -20,6 +20,9 @@ from ._add_instance_rd_member_response import AddInstanceRdMemberResponse
 from ._add_users_to_group_request import AddUsersToGroupRequest
 from ._add_users_to_group_response_body import AddUsersToGroupResponseBody
 from ._add_users_to_group_response import AddUsersToGroupResponse
+from ._allow_operation_task_approval_request import AllowOperationTaskApprovalRequest
+from ._allow_operation_task_approval_response_body import AllowOperationTaskApprovalResponseBody
+from ._allow_operation_task_approval_response import AllowOperationTaskApprovalResponse
 from ._attach_database_accounts_to_user_request import AttachDatabaseAccountsToUserRequest
 from ._attach_database_accounts_to_user_response_body import AttachDatabaseAccountsToUserResponseBody
 from ._attach_database_accounts_to_user_response import AttachDatabaseAccountsToUserResponse
@@ -170,6 +173,9 @@ from ._enable_rule_response import EnableRuleResponse
 from ._generate_asset_operation_token_request import GenerateAssetOperationTokenRequest
 from ._generate_asset_operation_token_response_body import GenerateAssetOperationTokenResponseBody
 from ._generate_asset_operation_token_response import GenerateAssetOperationTokenResponse
+from ._get_auto_ops_task_request import GetAutoOpsTaskRequest
+from ._get_auto_ops_task_response_body import GetAutoOpsTaskResponseBody
+from ._get_auto_ops_task_response import GetAutoOpsTaskResponse
 from ._get_database_request import GetDatabaseRequest
 from ._get_database_response_body import GetDatabaseResponseBody
 from ._get_database_response import GetDatabaseResponse
@@ -324,6 +330,9 @@ from ._list_tag_keys_response import ListTagKeysResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_todo_ops_task_approvals_request import ListTodoOpsTaskApprovalsRequest
+from ._list_todo_ops_task_approvals_response_body import ListTodoOpsTaskApprovalsResponseBody
+from ._list_todo_ops_task_approvals_response import ListTodoOpsTaskApprovalsResponse
 from ._list_user_groups_request import ListUserGroupsRequest
 from ._list_user_groups_response_body import ListUserGroupsResponseBody
 from ._list_user_groups_response import ListUserGroupsResponse
@@ -402,6 +411,9 @@ from ._move_resource_group_response import MoveResourceGroupResponse
 from ._reject_approve_command_request import RejectApproveCommandRequest
 from ._reject_approve_command_response_body import RejectApproveCommandResponseBody
 from ._reject_approve_command_response import RejectApproveCommandResponse
+from ._reject_operation_task_approval_request import RejectOperationTaskApprovalRequest
+from ._reject_operation_task_approval_response_body import RejectOperationTaskApprovalResponseBody
+from ._reject_operation_task_approval_response import RejectOperationTaskApprovalResponse
 from ._reject_operation_ticket_request import RejectOperationTicketRequest
 from ._reject_operation_ticket_response_body import RejectOperationTicketResponseBody
 from ._reject_operation_ticket_response import RejectOperationTicketResponse
@@ -470,6 +482,7 @@ from ._verify_instance_ldapauth_server_response import VerifyInstanceLDAPAuthSer
 from ._add_databases_to_group_response_body import AddDatabasesToGroupResponseBodyResults
 from ._add_hosts_to_group_response_body import AddHostsToGroupResponseBodyResults
 from ._add_users_to_group_response_body import AddUsersToGroupResponseBodyResults
+from ._allow_operation_task_approval_response_body import AllowOperationTaskApprovalResponseBodyResults
 from ._attach_database_accounts_to_user_request import AttachDatabaseAccountsToUserRequestDatabases
 from ._attach_database_accounts_to_user_response_body import AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts
 from ._attach_database_accounts_to_user_response_body import AttachDatabaseAccountsToUserResponseBodyResults
@@ -512,6 +525,7 @@ from ._detach_host_group_accounts_from_user_response_body import DetachHostGroup
 from ._detach_host_group_accounts_from_user_group_response_body import DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames
 from ._detach_host_group_accounts_from_user_group_response_body import DetachHostGroupAccountsFromUserGroupResponseBodyResults
 from ._generate_asset_operation_token_response_body import GenerateAssetOperationTokenResponseBodyAssetOperationToken
+from ._get_auto_ops_task_response_body import GetAutoOpsTaskResponseBodyTask
 from ._get_database_response_body import GetDatabaseResponseBodyDatabase
 from ._get_database_account_response_body import GetDatabaseAccountResponseBodyDatabaseAccount
 from ._get_host_response_body import GetHostResponseBodyHostProtocols
@@ -585,6 +599,7 @@ from ._list_rules_response_body import ListRulesResponseBodyRules
 from ._list_tag_keys_response_body import ListTagKeysResponseBodyTagKeys
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_todo_ops_task_approvals_response_body import ListTodoOpsTaskApprovalsResponseBodyApproves
 from ._list_user_groups_response_body import ListUserGroupsResponseBodyUserGroups
 from ._list_user_public_keys_response_body import ListUserPublicKeysResponseBodyPublicKeys
 from ._list_users_response_body import ListUsersResponseBodyUsers
@@ -597,6 +612,7 @@ from ._modify_rule_request import ModifyRuleRequestHostGroups
 from ._modify_rule_request import ModifyRuleRequestHosts
 from ._move_databases_to_network_domain_response_body import MoveDatabasesToNetworkDomainResponseBodyResults
 from ._move_hosts_to_network_domain_response_body import MoveHostsToNetworkDomainResponseBodyResults
+from ._reject_operation_task_approval_response_body import RejectOperationTaskApprovalResponseBodyResults
 from ._remove_databases_from_group_response_body import RemoveDatabasesFromGroupResponseBodyResults
 from ._remove_hosts_from_group_response_body import RemoveHostsFromGroupResponseBodyResults
 from ._remove_users_from_group_response_body import RemoveUsersFromGroupResponseBodyResults
@@ -635,6 +651,9 @@ __all__ = [
     AddUsersToGroupRequest,
     AddUsersToGroupResponseBody,
     AddUsersToGroupResponse,
+    AllowOperationTaskApprovalRequest,
+    AllowOperationTaskApprovalResponseBody,
+    AllowOperationTaskApprovalResponse,
     AttachDatabaseAccountsToUserRequest,
     AttachDatabaseAccountsToUserResponseBody,
     AttachDatabaseAccountsToUserResponse,
@@ -785,6 +804,9 @@ __all__ = [
     GenerateAssetOperationTokenRequest,
     GenerateAssetOperationTokenResponseBody,
     GenerateAssetOperationTokenResponse,
+    GetAutoOpsTaskRequest,
+    GetAutoOpsTaskResponseBody,
+    GetAutoOpsTaskResponse,
     GetDatabaseRequest,
     GetDatabaseResponseBody,
     GetDatabaseResponse,
@@ -939,6 +961,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListTodoOpsTaskApprovalsRequest,
+    ListTodoOpsTaskApprovalsResponseBody,
+    ListTodoOpsTaskApprovalsResponse,
     ListUserGroupsRequest,
     ListUserGroupsResponseBody,
     ListUserGroupsResponse,
@@ -1017,6 +1042,9 @@ __all__ = [
     RejectApproveCommandRequest,
     RejectApproveCommandResponseBody,
     RejectApproveCommandResponse,
+    RejectOperationTaskApprovalRequest,
+    RejectOperationTaskApprovalResponseBody,
+    RejectOperationTaskApprovalResponse,
     RejectOperationTicketRequest,
     RejectOperationTicketResponseBody,
     RejectOperationTicketResponse,
@@ -1085,6 +1113,7 @@ __all__ = [
     AddDatabasesToGroupResponseBodyResults,
     AddHostsToGroupResponseBodyResults,
     AddUsersToGroupResponseBodyResults,
+    AllowOperationTaskApprovalResponseBodyResults,
     AttachDatabaseAccountsToUserRequestDatabases,
     AttachDatabaseAccountsToUserResponseBodyResultsDatabaseAccounts,
     AttachDatabaseAccountsToUserResponseBodyResults,
@@ -1127,6 +1156,7 @@ __all__ = [
     DetachHostGroupAccountsFromUserGroupResponseBodyResultsHostAccountNames,
     DetachHostGroupAccountsFromUserGroupResponseBodyResults,
     GenerateAssetOperationTokenResponseBodyAssetOperationToken,
+    GetAutoOpsTaskResponseBodyTask,
     GetDatabaseResponseBodyDatabase,
     GetDatabaseAccountResponseBodyDatabaseAccount,
     GetHostResponseBodyHostProtocols,
@@ -1200,6 +1230,7 @@ __all__ = [
     ListTagKeysResponseBodyTagKeys,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
+    ListTodoOpsTaskApprovalsResponseBodyApproves,
     ListUserGroupsResponseBodyUserGroups,
     ListUserPublicKeysResponseBodyPublicKeys,
     ListUsersResponseBodyUsers,
@@ -1212,6 +1243,7 @@ __all__ = [
     ModifyRuleRequestHosts,
     MoveDatabasesToNetworkDomainResponseBodyResults,
     MoveHostsToNetworkDomainResponseBodyResults,
+    RejectOperationTaskApprovalResponseBodyResults,
     RemoveDatabasesFromGroupResponseBodyResults,
     RemoveHostsFromGroupResponseBodyResults,
     RemoveUsersFromGroupResponseBodyResults,

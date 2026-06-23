@@ -15,34 +15,35 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to delete all tags that are added to the bastion host.
+        # Specifies whether to remove all tags from the Bastionhost instance.
         # 
-        # *   If you specify TagKey.N, the value of this parameter can only be **false**, which indicates that only a specified tag is deleted.
-        # *   If you do not specify TagKey.N and the value of this parameter is **true**, all tags are deleted. If you do not specify TagKey.N and the value of this parameter is **false**, no tags are deleted.
+        # - If you specify \\`TagKey.N\\`, you must set \\`All\\` to **false** to remove specific tags.
+        # 
+        # - If you do not specify \\`TagKey.N\\`, set \\`All\\` to **true** to remove all tags. If you set \\`All\\` to **false**, no tags are removed.
         self.all = all
-        # The region ID of the bastion host to query.
+        # The ID of the region where the Bastionhost instance resides.
         # 
         # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # An array that consists of IDs of bastion hosts.
+        # The ID of the instance.
         # 
-        # Valid values: 1 to 20.
+        # The value of N can be from 1 to 20.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the ID of the Bastionhost instance.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource.
         # 
-        # Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
+        # The only valid value is **INSTANCE**. This value indicates a Bastionhost instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The key of tag N.
+        # The key of the tag.
         # 
-        # Valid values of N: 1 to 20.
+        # The value of N can be from 1 to 20.
         self.tag_key = tag_key
 
     def validate(self):

@@ -15,8 +15,9 @@ class ModifyInstanceTwoFactorRequest(DaraModel):
     ):
         # Specifies whether to enable two-factor authentication. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.enable_two_factor = enable_two_factor
         # The ID of the bastion host.
         # 
@@ -32,11 +33,15 @@ class ModifyInstanceTwoFactorRequest(DaraModel):
         self.skip_two_factor_time = skip_two_factor_time
         # The method used to send a verification code for two-factor authentication. If EnableTwoFactor is set to true, you must specify at least one method. Valid values:
         # 
-        # *   **sms:** text message.
-        # *   **email**: email.
-        # *   **dingtalk**: notice in DingTalk.
-        # *   **totp**: one-time password (OTP) token.
-        # *   **gmusbkey**: SM-based USB key.
+        # - **sms:** text message.
+        # 
+        # - **email**: email.
+        # 
+        # - **dingtalk**: notice in DingTalk.
+        # 
+        # - **totp**: one-time password (OTP) token.
+        # 
+        # - **gmusbkey**: SM-based USB key.
         self.two_factor_methods = two_factor_methods
 
     def validate(self):

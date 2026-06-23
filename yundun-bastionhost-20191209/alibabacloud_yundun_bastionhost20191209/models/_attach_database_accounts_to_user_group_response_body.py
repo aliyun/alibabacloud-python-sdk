@@ -13,9 +13,9 @@ class AttachDatabaseAccountsToUserGroupResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.AttachDatabaseAccountsToUserGroupResponseBodyResults] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The result of the call.
+        # The results of the call.
         self.results = results
 
     def validate(self):
@@ -61,15 +61,15 @@ class AttachDatabaseAccountsToUserGroupResponseBodyResults(DaraModel):
         message: str = None,
         user_group_id: str = None,
     ):
-        # The error code returned. If OK is returned, the authorization was successful. If another error code is returned, the authorization failed.
+        # The error code. If the value is \\`OK\\`, the authorization was successful. Other values indicate that the authorization failed.
         self.code = code
-        # A list that shows the authorization results of the database accounts.
+        # A list of database account information.
         self.database_accounts = database_accounts
-        # The database ID.
+        # The ID of the database instance.
         self.database_id = database_id
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The user group ID.
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -131,11 +131,11 @@ class AttachDatabaseAccountsToUserGroupResponseBodyResultsDatabaseAccounts(DaraM
         database_account_id: str = None,
         message: str = None,
     ):
-        # The error code returned. If OK is returned, the authorization was successful. If another error code is returned, the authorization failed.
+        # The error code. If the value is \\`OK\\`, the authorization was successful. Other values indicate that the authorization failed.
         self.code = code
-        # The database account ID.
+        # The ID of the database account.
         self.database_account_id = database_account_id
-        # The error message returned.
+        # The error message.
         self.message = message
 
     def validate(self):

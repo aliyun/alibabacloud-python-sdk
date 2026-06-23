@@ -80,8 +80,9 @@ class ListDatabaseAccountsResponseBodyDatabaseAccounts(DaraModel):
         self.database_schema = database_schema
         # Indicates whether the database account has a password. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.has_password = has_password
 
     def validate(self):

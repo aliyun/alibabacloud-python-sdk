@@ -23,7 +23,7 @@ class DeleteRuleRequest(DaraModel):
         self.region_id = region_id
         # The ID of the authorization rule that you want to delete.
         # 
-        # >  You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
+        # > You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id
