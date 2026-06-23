@@ -9,7 +9,7 @@ class ActivateVersionManagementRequest(DaraModel):
         self,
         site_id: int = None,
     ):
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

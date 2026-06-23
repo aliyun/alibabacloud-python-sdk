@@ -62,7 +62,7 @@ class DescribeRatePlanPriceGapResponseBodyPriceModel(DaraModel):
         # - USD: US Dollar.
         # - CNY: Chinese Yuan.
         self.currency = currency
-        # The discount amount of the order.
+        # The order discount amount.
         self.discount_price = discount_price
         # The instance ID.
         self.instance_id = instance_id
@@ -71,7 +71,7 @@ class DescribeRatePlanPriceGapResponseBodyPriceModel(DaraModel):
         self.rule = rule
         # The target plan code.
         self.target_plan_code = target_plan_code
-        # The original order price, which equals the actual transaction price plus the discount amount.
+        # The original order price. Original order price = actual transaction price + discount amount.
         self.total_price = total_price
 
     def validate(self):

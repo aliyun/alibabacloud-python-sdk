@@ -11,9 +11,14 @@ class PublishRoutineCodeVersionRequest(DaraModel):
         env: str = None,
         name: str = None,
     ):
+        # The version number of the code to publish.
         self.code_version = code_version
+        # The environment name.
+        # 
         # This parameter is required.
         self.env = env
+        # The name of the Edge Routine.
+        # 
         # This parameter is required.
         self.name = name
 

@@ -29,32 +29,32 @@ class CreateWaitingRoomShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.cookie_name = cookie_name
-        # The custom waiting room page content. This parameter is required when the waiting room type is custom. The content must be Base64-encoded.
+        # The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
         self.custom_page_html = custom_page_html
         # The description of the waiting room.
         self.description = description
-        # Disable session renewal. Valid values:
+        # Specifies whether to disable session renewal. Valid values:
         # 
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.disable_session_renewal_enable = disable_session_renewal_enable
-        # The waiting room switch. Valid values:
+        # Specifies whether to enable the waiting room. Valid values:
         # 
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         # 
         # This parameter is required.
         self.enable = enable
-        # The hostnames and paths.
+        # The hostname and path configurations.
         # 
         # This parameter is required.
         self.host_name_and_path_shrink = host_name_and_path_shrink
-        # JSON response. After this feature is enabled, a JSON response is returned if the Accept request header contains "application/json". Valid values:
+        # Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
         # 
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.json_response_enable = json_response_enable
-        # The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
+        # The language of the waiting room page. This parameter is required when the waiting room type is set to default. Valid values:
         # - **enus**: English.
         # - **zhcn**: Simplified Chinese.
         # - **zhhk**: Traditional Chinese.
@@ -67,17 +67,17 @@ class CreateWaitingRoomShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.new_users_per_minute = new_users_per_minute
-        # Queue all. Valid values:
+        # Specifies whether to queue all visitors. Valid values:
         # 
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.queue_all_enable = queue_all_enable
         # The queuing method. Valid values:
         # 
-        # - **random**: random.
-        # - **fifo**: first-in, first-out.
-        # - **passthrough**: passthrough.
-        # - **reject-all**: reject all.
+        # - **random**: Random.
+        # - **fifo**: First in, first out.
+        # - **passthrough**: Passthrough.
+        # - **reject-all**: Reject all.
         # 
         # This parameter is required.
         self.queuing_method = queuing_method
@@ -85,7 +85,7 @@ class CreateWaitingRoomShrinkRequest(DaraModel):
         # 
         # - **200**
         # - **202**
-        # - **429**
+        # - **429**.
         # 
         # This parameter is required.
         self.queuing_status_code = queuing_status_code
@@ -93,7 +93,7 @@ class CreateWaitingRoomShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.session_duration = session_duration
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -103,8 +103,8 @@ class CreateWaitingRoomShrinkRequest(DaraModel):
         self.total_active_users = total_active_users
         # The type of the waiting room. Valid values:
         # 
-        # - **default**: default type.
-        # - **custom**: custom type.
+        # - **default**: Default type.
+        # - **custom**: Custom type.
         # 
         # This parameter is required.
         self.waiting_room_type = waiting_room_type

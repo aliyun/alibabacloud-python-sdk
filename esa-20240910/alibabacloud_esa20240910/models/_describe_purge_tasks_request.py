@@ -16,41 +16,34 @@ class DescribePurgeTasksRequest(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The content to purge. Exact match is supported.
+        # The query content. Exact match is used.
         self.content = content
         # The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
+        # 
         # > The end time must be later than the start time.
         self.end_time = end_time
-        # The page number. Valid values: 1 to 100000.
+        # The page number to return. Valid values: **1 to 100000**.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20. Valid values: 1 to 50.
+        # The number of entries per page. Default value: **20**. Maximum value: **50**. Valid values: any integer from **1** to **50**.
         self.page_size = page_size
-        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
         # The start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The task status. Valid values:
+        # The task execution status. Valid values:
         # 
         # - **Complete**: The task is complete.
-        # 
         # - **Refreshing**: The task is in progress.
-        # 
         # - **Failed**: The task failed.
         self.status = status
         # The task type. Valid values:
-        # 
-        # - **file** (default): purges the cache by file.
-        # 
-        # - **cachetag**: purges the cache by cache tag.
-        # 
-        # - **directory**: purges the cache by directory.
-        # 
-        # - **ignoreParams**: purges the cache by URL with specified parameters ignored.
-        # 
-        # - **hostname**: purges the cache by hostname.
-        # 
-        # - **purgeall**: purges all cache.
+        # - **file** (default): file refresh.
+        # - **cachetag**: cache tag refresh.
+        # - **directory**: directory refresh.
+        # - **ignoreParams**: parameter-stripped refresh.
+        # - **hostname**: hostname refresh.
+        # - **purgeall**: refresh all cached content of the site.
         self.type = type
 
     def validate(self):

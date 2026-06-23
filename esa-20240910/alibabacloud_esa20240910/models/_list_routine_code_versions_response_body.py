@@ -100,7 +100,7 @@ class ListRoutineCodeVersionsResponseBodyCodeVersions(DaraModel):
         self.code_version = code_version
         # The configuration items of the code version.
         self.conf_options = conf_options
-        # The time when the code version was created.
+        # The time when the code version was created, in RFC 3339 format in the UTC time zone.
         self.create_time = create_time
         # The deployment environment. Valid values:
         # - **staging**: staging environment.

@@ -22,9 +22,9 @@ class DescribePurgeTasksResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The tasks.
+        # The task list.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,15 +90,15 @@ class DescribePurgeTasksResponseBodyTasks(DaraModel):
         task_id: str = None,
         type: str = None,
     ):
-        # The purged content.
+        # The refresh object.
         self.content = content
-        # The time when the task was created.
+        # The creation time, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
         self.create_time = create_time
-        # The error description returned when the purge task failed.
+        # The error description returned when the refresh task fails.
         self.description = description
-        # The progress of the task, in percentage.
+        # The task completion progress in percentage.
         self.process = process
-        # The task status.
+        # The task status. Valid values:
         # 
         # - **Complete**: The task is complete.
         # 
@@ -108,19 +108,13 @@ class DescribePurgeTasksResponseBodyTasks(DaraModel):
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The type of the purge task. Valid values:
-        # 
-        # - **file** (default): purges the cache by file.
-        # 
-        # - **cachetag**: purges the cache by cache tag.
-        # 
-        # - **directory**: purges the cache by directory.
-        # 
-        # - **ignoreParams**: purges the cache by URL with specified parameters ignored.
-        # 
-        # - **hostname**: purges the cache by hostname.
-        # 
-        # - **purgeall**: purges all cache.
+        # The refresh task type. Valid values:
+        # - **file** (default): file refresh.
+        # - **cachetag**: cache tag refresh.
+        # - **directory**: directory refresh.
+        # - **ignoreParams**: parameter-stripped refresh.
+        # - **hostname**: hostname refresh.
+        # - **purgeall**: refresh all cached content of the site.
         self.type = type
 
     def validate(self):

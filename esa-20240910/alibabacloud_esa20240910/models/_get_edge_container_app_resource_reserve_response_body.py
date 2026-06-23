@@ -16,15 +16,15 @@ class GetEdgeContainerAppResourceReserveResponseBody(DaraModel):
         request_id: str = None,
         reserve_set: List[main_models.GetEdgeContainerAppResourceReserveResponseBodyReserveSet] = None,
     ):
-        # The end time of the reservation. The input is UTC time. It takes +8 hours to enter Beijing time. For example, if the current time is 2006-01-02 06:04:05 , you need to enter "2006-01-02T14:04:05Z".
+        # The reservation expiration time. This parameter uses UTC time. To convert from UTC+8, add 8 hours. For example, if the current UTC+8 time is 2006-01-02 06:04:05, enter "2006-01-02T14:04:05Z".
         self.duration_time = duration_time
-        # Whether to enable resource reservation.
+        # Indicates whether resource reservation is enabled.
         self.enable = enable
-        # Whether to enable resource reservation permanently.
+        # Indicates whether the reservation is permanently enabled.
         self.forever = forever
         # The request ID.
         self.request_id = request_id
-        # Reserved resource list.
+        # The list of reserved resources.
         self.reserve_set = reserve_set
 
     def validate(self):
@@ -86,53 +86,51 @@ class GetEdgeContainerAppResourceReserveResponseBodyReserveSet(DaraModel):
         region: str = None,
         replicas: int = None,
     ):
-        # The following ISPs are supported. You do not need to enter this field for overseas and special administrative regions. ISP:
-        # 
-        # *   China Mobile: cmcc
-        # *   China Telecom: chinanet
-        # *   China Unicom: unicom
+        # The following Internet service providers (ISPs) are supported. This parameter is not required for regions outside the Chinese mainland.
+        # Valid values:
+        # - cmcc: China Mobile
+        # - chinanet: China Telecom
+        # - unicom: China Unicom.
         self.isp = isp
-        # Chinese mainland:
+        # The Chinese mainland:
+        # - East China: huadong
+        # - South China: huanan
+        # - Central China: huazhong
+        # - North China: huabei
+        # - Northwest China: xibei
+        # - Southwest China: xinan
+        # - Northeast China: dongbei
         # 
-        # *   East China: huadong
-        # *   South China: huanan
-        # *   Central China: huazhong
-        # *   North China: huabei
-        # *   Northwest: xibei
-        # *   Southwest: xinan
-        # *   Northeast China: dongbei
-        # 
-        # Special Administrative Regions and Overseas:
-        # 
-        # *   Taiwan, China: tw
-        # *   Macau China: mo
-        # *   Hong Kong, China: hk
-        # *   Japan: jp
-        # *   United States: us
-        # *   Thailand: th
-        # *   Korea: kr
-        # *   Russia: ru
-        # *   Singapore: sg
-        # *   France: fr
-        # *   Spain: es
-        # *   Italy: it
-        # *   Sweden: se
-        # *   UAE: ae
-        # *   Indonesia: id
-        # *   Chile: cl
-        # *   Philippines: ph
-        # *   Malaysia: my
-        # *   Vietnam: vn
-        # *   Argentina: ar
-        # *   Australia: au
-        # *   Brazil: br
-        # *   Colombia: co
-        # *   Germany: de
-        # *   UK: gb
-        # *   Peru: pe
-        # *   Saudi Arabia: sa
-        # *   Netherlands: nl
-        # *   South Africa: za
+        # Special administrative regions and outside China:
+        # - Taiwan (China): tw
+        # - Macao (China): mo
+        # - Hong Kong (China): hk
+        # - Japan: jp
+        # - United States: us
+        # - Thailand: th
+        # - South Korea: kr
+        # - Russia: ru
+        # - Singapore: sg
+        # - France: fr
+        # - Spain: es
+        # - Italy: it
+        # - Sweden: se
+        # - United Arab Emirates: ae
+        # - Indonesia: id
+        # - Chile: cl
+        # - Philippines: ph
+        # - Malaysia: my
+        # - Vietnam: vn
+        # - Argentina: ar
+        # - Australia: au
+        # - Brazil: br
+        # - Colombia: co
+        # - Germany: de
+        # - United Kingdom: gb
+        # - Peru: pe
+        # - Saudi Arabia: sa
+        # - Netherlands: nl
+        # - South Africa: za.
         self.region = region
         # The number of container replicas.
         self.replicas = replicas

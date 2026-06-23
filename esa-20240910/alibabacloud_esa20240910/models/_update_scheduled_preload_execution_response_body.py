@@ -17,33 +17,28 @@ class UpdateScheduledPreloadExecutionResponseBody(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The end time of the scheduled preload plan.
+        # The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.end_time = end_time
-        # The ID of the preload plan.
+        # The prefetch plan ID.
         self.id = id
-        # The execution interval for each batch in the scheduled preload plan, in seconds.
+        # The execution interval between each batch of the scheduled prefetch plan, in seconds.
         self.interval = interval
-        # The ID of the preload task.
+        # The prefetch task ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # The number of URLs in each scheduled preload batch.
+        # The number of URLs to prefetch per batch.
         self.slice_len = slice_len
-        # The start time of the scheduled preload plan.
+        # The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.start_time = start_time
-        # The status of the scheduled preload plan. Valid values:
-        # 
-        # - **waiting**: The plan is waiting to be executed.
-        # 
-        # - **running**: The plan is being executed.
-        # 
-        # - **finished**: The plan is executed.
-        # 
-        # - **failed**: The execution failed.
-        # 
-        # - **stopped**: The execution is paused.
+        # The status of the scheduled prefetch plan. Valid values:
+        # - **waiting**: Waiting to be executed.
+        # - **running**: Being executed.
+        # - **finished**: Execution completed.
+        # - **failed**: Execution failed.
+        # - **stopped**: Execution paused.
         self.status = status
 
     def validate(self):

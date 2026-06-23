@@ -16,29 +16,29 @@ class PurgeCachesRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # Content to be refreshed.
+        # The refresh content.
         self.content = content
-        # Used for refreshing cached resources in edge computing, such as allowing the refresh of content cached using the CacheAPI interface of an edge function.
+        # Specifies whether to refresh edge computing cached resources. For example, this allows you to refresh content cached by the Edge Routine CacheAPI API operation using the edge function.
         self.edge_compute_purge = edge_compute_purge
-        # Indicates whether to refresh all resources under the directory when the content from the origin and the source resource are inconsistent. The default is false.
-        # - **true**: Refreshes all resources under the specified directory.
-        # - **false**: Refreshes only the changed resources under the specified directory.
+        # Specifies whether to refresh all resources under the corresponding directory when the back-to-origin content is inconsistent with the origin server resources. Default value: false.
+        # - **true**: Refreshes all resources under the corresponding directory.
+        # - **false**: Refreshes only the changed resources under the corresponding directory.
         # 
         # > 
-        # >  Applies to: Directory refresh, cachetag refresh, ignoreParams refresh, hostname refresh, and purge all cache of the site.
+        # >  This parameter takes effect for directory refresh, cache tag refresh, parameter-ignored refresh, hostname refresh, and full site refresh.
         self.force = force
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The type of refresh task. Possible values:
-        # - **file** (default): File refresh.
-        # - **cachekey**: Cachekey refresh.
-        # - **cachetag**: Cachetag refresh.
-        # - **directory**: Directory refresh.
-        # - **ignoreParams**: Ignore parameters refresh. Ignoring parameters means removing the ? and everything after it in the request URL. When performing an ignore parameters refresh, the user first submits the URL without parameters through the interface. The submitted URLs to be refreshed will then be matched against the cached resource URLs with the parameters removed. If the cached resource URL, after removing the parameters, matches the URL to be refreshed, the CDN node will refresh the cached resources.
-        # - **hostname**: Hostname refresh.
-        # - **purgeall**: Purge all cache under the site.
+        # The type of the refresh node. Valid values:
+        # - **file** (default): file refresh.
+        # - **cachekey**: cache key refresh.
+        # - **cachetag**: cache label refresh.
+        # - **directory**: folder refresh.
+        # - **ignoreParams**: parameter-ignored refresh. This refers to removing the question mark (?) and all parameters after it from the request URL. When you commit a parameter-stripped URL through this API operation, the committed URL is matched against cached resource URLs after their parameters are also stripped. If a cached resource URL matches the committed URL after parameter stripping, the point of presence executes the refresh on the cached resource.
+        # - **hostname**: hostname refresh.
+        # - **purgeall**: refreshes all cached content under the site.
         # 
         # This parameter is required.
         self.type = type
@@ -100,19 +100,19 @@ class PurgeCachesRequestContent(DaraModel):
         ignore_params: List[str] = None,
         purge_all: bool = None,
     ):
-        # List of cachekeys to be refreshed, required when the type is cachekey.
+        # The list of cache keys to refresh. This parameter is required when Type is set to cachekey.
         self.cache_keys = cache_keys
-        # List of cachetags to be refreshed, required when the type is cachetag.
+        # The list of cache tags to refresh. This parameter is required when Type is set to cachetag.
         self.cache_tags = cache_tags
-        # List of directories to be refreshed, required when the type is directory.
+        # The list of directories to refresh. This parameter is required when Type is set to directory.
         self.directories = directories
-        # List of files to be refreshed, required when the type is file.
+        # The list of files to refresh. This parameter is required when Type is set to file.
         self.files = files
-        # List of hostnames to be refreshed, required when the type is hostname.
+        # The list of hostnames to refresh. This parameter is required when Type is set to hostname.
         self.hostnames = hostnames
-        # List of files with ignored parameters, required when the type is ignoreParams.
+        # The list of files with parameters ignored. This parameter is required when Type is set to ignoreParams.
         self.ignore_params = ignore_params
-        # Flag for purging all content. Default is false, set to true when the type is purgeall.
+        # Specifies whether to refresh the entire site. Default value: false. Set this parameter to true when Type is set to purgeall.
         self.purge_all = purge_all
 
     def validate(self):
@@ -185,20 +185,25 @@ class PurgeCachesRequestContentCacheKeys(DaraModel):
         headers: Dict[str, str] = None,
         url: str = None,
     ):
-        # When refreshing, specify the header information corresponding to the cache key. When the custom cache key feature switch is enabled, the cache key will be generated based on the specified header for refreshing.
+        # The header information corresponding to the cache key specified during the refresh. When the custom cache key feature is enabled, the cache key is generated based on the specified headers for the refresh.
         # 
-        # **UserGeo: Country/Region**
+        # **UserGeo: country/region**
+        # 
         # - Country/region codes follow the ISO 3166-2 standard.
         # 
-        # **UserDeviceType: Device Type, currently there are three enum values**
-        # - desktop
-        #  - tablet
-        #  - mobile
+        # **UserDeviceType: device type. Valid values:**
         # 
-        # **UserLanguage: Language**
-        # - Language codes follow the ISO 639-1 or BCP47 standards. For example, input \\"zh\\" to refresh content in Chinese.
+        # - desktop
+        # 
+        # - tablet
+        # 
+        # - mobile
+        # 
+        # **UserLanguage: language**
+        # 
+        # - Language codes follow the ISO 639-1 or BCP 47 standard. For example, set this to zh to refresh content in Chinese.
         self.headers = headers
-        # URL address to be refreshed.
+        # The URL to refresh.
         self.url = url
 
     def validate(self):

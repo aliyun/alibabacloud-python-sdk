@@ -12,7 +12,7 @@ class BlockObjectResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the task. A task ID is returned when you create a block task.
+        # The task ID. This ID is returned when you create a block task.
         self.task_id = task_id
 
     def validate(self):

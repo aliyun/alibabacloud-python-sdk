@@ -9,7 +9,8 @@ class ListEdgeContainerAppImageSecretsRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # Application ID, which can be obtained using the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) interface.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
+        # >Notice: The AppId format is the prefix app- followed by a numeric suffix, with a total length of 20 to 64 characters (example: app-8806886***83794688). Call ListEdgeContainerApps to obtain an existing AppId, or call CreateEdgeContainerApp to create an application first.</notice>.
         # 
         # This parameter is required.
         self.app_id = app_id

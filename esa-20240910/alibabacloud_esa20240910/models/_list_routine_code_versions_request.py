@@ -12,7 +12,7 @@ class ListRoutineCodeVersionsRequest(DaraModel):
         page_size: int = None,
         search_key_word: str = None,
     ):
-        # The name of the Edge Routine program.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name
@@ -20,7 +20,7 @@ class ListRoutineCodeVersionsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 20.
         self.page_size = page_size
-        # The keyword for fuzzy match.
+        # The keyword for fuzzy matching.
         self.search_key_word = search_key_word
 
     def validate(self):

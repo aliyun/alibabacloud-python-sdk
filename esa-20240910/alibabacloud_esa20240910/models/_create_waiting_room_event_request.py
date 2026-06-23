@@ -28,19 +28,19 @@ class CreateWaitingRoomEventRequest(DaraModel):
         waiting_room_id: str = None,
         waiting_room_type: str = None,
     ):
-        # The custom waiting room page content. This parameter is required when the waiting room type is custom. The content must use Base64 encoding.
+        # The custom waiting room page content. This parameter is required when the waiting room type is set to custom. The content must use Base64 encoding.
         self.custom_page_html = custom_page_html
         # The description of the waiting room.
         self.description = description
         # Specifies whether to disable session renewal. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.disable_session_renewal_enable = disable_session_renewal_enable
         # The waiting room switch. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: enabled.
+        # - **off**: disabled.
         # 
         # This parameter is required.
         self.enable = enable
@@ -50,10 +50,10 @@ class CreateWaitingRoomEventRequest(DaraModel):
         self.end_time = end_time
         # Specifies whether to enable JSON response. When enabled, requests with an Accept header containing "application/json" return JSON data. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.json_response_enable = json_response_enable
-        # The language of the waiting room page. This parameter is required when the waiting room type is default. Valid values:
+        # The language of the waiting room page. This parameter is required when the waiting room type is set to default. Valid values:
         # 
         # - **enus**: English.
         # - **zhcn**: Simplified Chinese.
@@ -69,8 +69,8 @@ class CreateWaitingRoomEventRequest(DaraModel):
         self.new_users_per_minute = new_users_per_minute
         # Specifies whether to enable pre-queuing. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.pre_queue_enable = pre_queue_enable
         # The pre-queuing start timestamp, which must be at least 5 minutes earlier than the event start timestamp, such as 1705044735.
         self.pre_queue_start_time = pre_queue_start_time
@@ -93,8 +93,8 @@ class CreateWaitingRoomEventRequest(DaraModel):
         self.queuing_status_code = queuing_status_code
         # Specifies whether to enable random pre-queuing. Valid values:
         # 
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.random_pre_queue_enable = random_pre_queue_enable
         # The session duration, in minutes.
         # 
@@ -114,7 +114,7 @@ class CreateWaitingRoomEventRequest(DaraModel):
         self.total_active_users = total_active_users
         # The waiting room ID. You can call the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) operation to obtain the waiting room ID. The waiting room must belong to the site specified by SiteId.
         self.waiting_room_id = waiting_room_id
-        # The waiting room type. Valid values:
+        # The type of the waiting room. Valid values:
         # 
         # - **default**: default type.
         # - **custom**: custom type.

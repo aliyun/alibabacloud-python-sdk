@@ -25,29 +25,29 @@ class ResetScheduledPreloadJobResponseBody(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The time when the task was created.
+        # The time when the job was created, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
         self.created_at = created_at
-        # The list of domain names to prefetch.
+        # The list of preload domains.
         self.domains = domains
         # The error message.
         self.error_info = error_info
-        # The OSS address of the failed file.
+        # The OSS URL of the failed file.
         self.failed_file_oss = failed_file_oss
-        # The ID of the URL list file, which is used for downloading.
+        # The file ID of the URL list, which is used for downloading.
         self.file_id = file_id
-        # The task ID.
+        # The job ID.
         self.id = id
         # The URL insertion method.
         self.insert_way = insert_way
-        # The task name.
+        # The job name.
         self.name = name
         # The request ID.
         self.request_id = request_id
         # The site ID.
         self.site_id = site_id
-        # The number of URLs that have been submitted to the system for prefetch.
+        # The number of URLs that have been submitted to the system for preloading.
         self.task_submitted = task_submitted
-        # The task type, such as refresh or prefetch.
+        # The task type (refresh/preload).
         self.task_type = task_type
         # The total number of URLs.
         self.url_count = url_count

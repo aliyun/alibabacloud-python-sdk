@@ -427,6 +427,12 @@ from ._describe_ddo_sall_event_list_response import DescribeDDoSAllEventListResp
 from ._describe_ddo_sbps_list_request import DescribeDDoSBpsListRequest
 from ._describe_ddo_sbps_list_response_body import DescribeDDoSBpsListResponseBody
 from ._describe_ddo_sbps_list_response import DescribeDDoSBpsListResponse
+from ._describe_ddo_sbps_max_request import DescribeDDoSBpsMaxRequest
+from ._describe_ddo_sbps_max_response_body import DescribeDDoSBpsMaxResponseBody
+from ._describe_ddo_sbps_max_response import DescribeDDoSBpsMaxResponse
+from ._describe_ddo_sevent_max_request import DescribeDDoSEventMaxRequest
+from ._describe_ddo_sevent_max_response_body import DescribeDDoSEventMaxResponseBody
+from ._describe_ddo_sevent_max_response import DescribeDDoSEventMaxResponse
 from ._describe_ddo_sl7qps_list_request import DescribeDDoSL7QpsListRequest
 from ._describe_ddo_sl7qps_list_response_body import DescribeDDoSL7QpsListResponseBody
 from ._describe_ddo_sl7qps_list_response import DescribeDDoSL7QpsListResponse
@@ -691,6 +697,9 @@ from ._get_routine_access_token_response import GetRoutineAccessTokenResponse
 from ._get_routine_code_version_request import GetRoutineCodeVersionRequest
 from ._get_routine_code_version_response_body import GetRoutineCodeVersionResponseBody
 from ._get_routine_code_version_response import GetRoutineCodeVersionResponse
+from ._get_routine_code_version_info_request import GetRoutineCodeVersionInfoRequest
+from ._get_routine_code_version_info_response_body import GetRoutineCodeVersionInfoResponseBody
+from ._get_routine_code_version_info_response import GetRoutineCodeVersionInfoResponse
 from ._get_routine_route_request import GetRoutineRouteRequest
 from ._get_routine_route_response_body import GetRoutineRouteResponseBody
 from ._get_routine_route_response import GetRoutineRouteResponse
@@ -1000,6 +1009,9 @@ from ._list_waiting_room_rules_response import ListWaitingRoomRulesResponse
 from ._list_waiting_rooms_request import ListWaitingRoomsRequest
 from ._list_waiting_rooms_response_body import ListWaitingRoomsResponseBody
 from ._list_waiting_rooms_response import ListWaitingRoomsResponse
+from ._open_edge_container_request import OpenEdgeContainerRequest
+from ._open_edge_container_response_body import OpenEdgeContainerResponseBody
+from ._open_edge_container_response import OpenEdgeContainerResponse
 from ._open_er_service_request import OpenErServiceRequest
 from ._open_er_service_response_body import OpenErServiceResponseBody
 from ._open_er_service_response import OpenErServiceResponse
@@ -1500,6 +1512,7 @@ from ._get_record_response_body import GetRecordResponseBodyRecordModel
 from ._get_routine_response_body import GetRoutineResponseBodyEnvsCodeDeployCodeVersions
 from ._get_routine_response_body import GetRoutineResponseBodyEnvsCodeDeploy
 from ._get_routine_response_body import GetRoutineResponseBodyEnvs
+from ._get_routine_code_version_info_response_body import GetRoutineCodeVersionInfoResponseBodyConfOptions
 from ._get_routine_user_info_response_body import GetRoutineUserInfoResponseBodyRoutines
 from ._get_site_response_body import GetSiteResponseBodySiteModel
 from ._get_site_custom_log_response_body import GetSiteCustomLogResponseBodyLogCustomField
@@ -2083,6 +2096,12 @@ __all__ = [
     DescribeDDoSBpsListRequest,
     DescribeDDoSBpsListResponseBody,
     DescribeDDoSBpsListResponse,
+    DescribeDDoSBpsMaxRequest,
+    DescribeDDoSBpsMaxResponseBody,
+    DescribeDDoSBpsMaxResponse,
+    DescribeDDoSEventMaxRequest,
+    DescribeDDoSEventMaxResponseBody,
+    DescribeDDoSEventMaxResponse,
     DescribeDDoSL7QpsListRequest,
     DescribeDDoSL7QpsListResponseBody,
     DescribeDDoSL7QpsListResponse,
@@ -2347,6 +2366,9 @@ __all__ = [
     GetRoutineCodeVersionRequest,
     GetRoutineCodeVersionResponseBody,
     GetRoutineCodeVersionResponse,
+    GetRoutineCodeVersionInfoRequest,
+    GetRoutineCodeVersionInfoResponseBody,
+    GetRoutineCodeVersionInfoResponse,
     GetRoutineRouteRequest,
     GetRoutineRouteResponseBody,
     GetRoutineRouteResponse,
@@ -2656,6 +2678,9 @@ __all__ = [
     ListWaitingRoomsRequest,
     ListWaitingRoomsResponseBody,
     ListWaitingRoomsResponse,
+    OpenEdgeContainerRequest,
+    OpenEdgeContainerResponseBody,
+    OpenEdgeContainerResponse,
     OpenErServiceRequest,
     OpenErServiceResponseBody,
     OpenErServiceResponse,
@@ -3156,6 +3181,7 @@ __all__ = [
     GetRoutineResponseBodyEnvsCodeDeployCodeVersions,
     GetRoutineResponseBodyEnvsCodeDeploy,
     GetRoutineResponseBodyEnvs,
+    GetRoutineCodeVersionInfoResponseBodyConfOptions,
     GetRoutineUserInfoResponseBodyRoutines,
     GetSiteResponseBodySiteModel,
     GetSiteCustomLogResponseBodyLogCustomField,

@@ -12,7 +12,7 @@ class PreloadCachesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The prefetch task ID.
+        # The task ID. A task ID is returned when you create a prefetch task.
         self.task_id = task_id
 
     def validate(self):

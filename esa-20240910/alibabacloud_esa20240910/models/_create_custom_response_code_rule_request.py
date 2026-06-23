@@ -16,35 +16,31 @@ class CreateCustomResponseCodeRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Response page.
+        # The response page.
         # 
         # This parameter is required.
         self.page_id = page_id
-        # Response code.
+        # The response code.
         # 
         # This parameter is required.
         self.return_code = return_code
-        # Rule content. Use a conditional expression to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
-        # 
+        # The rule content. Conditional expressions are used to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
         # - Match all incoming requests: Set the value to true.
-        # 
-        # - Match specific requests: Set the value to a custom expression, such as: (http.host eq "video.example.com").
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
-        # Rule switch. Do not set this parameter when adding a global configuration. Valid values:
-        # 
-        # - on: Enable.
-        # 
-        # - off: Disable.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. Do not set this parameter when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. A smaller value indicates higher priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to get it.
+        # The site ID. You can call [ListSites](https://help.aliyun.com/document_detail/2850189.html) to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site configuration version number. For sites with version management enabled, use this parameter to specify the site version where the configuration takes effect. The default is version 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

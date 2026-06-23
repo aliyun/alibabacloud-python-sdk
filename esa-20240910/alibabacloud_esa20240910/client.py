@@ -11509,6 +11509,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_ddo_sbps_list_with_options_async(request, runtime)
 
+    def describe_ddo_sbps_max_with_options(
+        self,
+        request: main_models.DescribeDDoSBpsMaxRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSBpsMaxResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSBpsMax',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSBpsMaxResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_sbps_max_with_options_async(
+        self,
+        request: main_models.DescribeDDoSBpsMaxRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSBpsMaxResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSBpsMax',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSBpsMaxResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_sbps_max(
+        self,
+        request: main_models.DescribeDDoSBpsMaxRequest,
+    ) -> main_models.DescribeDDoSBpsMaxResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ddo_sbps_max_with_options(request, runtime)
+
+    async def describe_ddo_sbps_max_async(
+        self,
+        request: main_models.DescribeDDoSBpsMaxRequest,
+    ) -> main_models.DescribeDDoSBpsMaxResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ddo_sbps_max_with_options_async(request, runtime)
+
+    def describe_ddo_sevent_max_with_options(
+        self,
+        request: main_models.DescribeDDoSEventMaxRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSEventMaxResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSEventMax',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSEventMaxResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_sevent_max_with_options_async(
+        self,
+        request: main_models.DescribeDDoSEventMaxRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSEventMaxResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSEventMax',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSEventMaxResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_sevent_max(
+        self,
+        request: main_models.DescribeDDoSEventMaxRequest,
+    ) -> main_models.DescribeDDoSEventMaxResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ddo_sevent_max_with_options(request, runtime)
+
+    async def describe_ddo_sevent_max_async(
+        self,
+        request: main_models.DescribeDDoSEventMaxRequest,
+    ) -> main_models.DescribeDDoSEventMaxResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ddo_sevent_max_with_options_async(request, runtime)
+
     def describe_ddo_sl7qps_list_with_options(
         self,
         request: main_models.DescribeDDoSL7QpsListRequest,
@@ -17652,6 +17796,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetRoutineCodeVersionResponse:
         runtime = RuntimeOptions()
         return await self.get_routine_code_version_with_options_async(request, runtime)
+
+    def get_routine_code_version_info_with_options(
+        self,
+        request: main_models.GetRoutineCodeVersionInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRoutineCodeVersionInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code_version):
+            body['CodeVersion'] = request.code_version
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRoutineCodeVersionInfo',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRoutineCodeVersionInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_routine_code_version_info_with_options_async(
+        self,
+        request: main_models.GetRoutineCodeVersionInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRoutineCodeVersionInfoResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.code_version):
+            body['CodeVersion'] = request.code_version
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRoutineCodeVersionInfo',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRoutineCodeVersionInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_routine_code_version_info(
+        self,
+        request: main_models.GetRoutineCodeVersionInfoRequest,
+    ) -> main_models.GetRoutineCodeVersionInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_routine_code_version_info_with_options(request, runtime)
+
+    async def get_routine_code_version_info_async(
+        self,
+        request: main_models.GetRoutineCodeVersionInfoRequest,
+    ) -> main_models.GetRoutineCodeVersionInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_routine_code_version_info_with_options_async(request, runtime)
 
     def get_routine_route_with_options(
         self,
@@ -25000,6 +25218,76 @@ class Client(OpenApiClient):
     ) -> main_models.ListWaitingRoomsResponse:
         runtime = RuntimeOptions()
         return await self.list_waiting_rooms_with_options_async(request, runtime)
+
+    def open_edge_container_with_options(
+        self,
+        request: main_models.OpenEdgeContainerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenEdgeContainerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenEdgeContainer',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenEdgeContainerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_edge_container_with_options_async(
+        self,
+        request: main_models.OpenEdgeContainerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenEdgeContainerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenEdgeContainer',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenEdgeContainerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_edge_container(
+        self,
+        request: main_models.OpenEdgeContainerRequest,
+    ) -> main_models.OpenEdgeContainerResponse:
+        runtime = RuntimeOptions()
+        return self.open_edge_container_with_options(request, runtime)
+
+    async def open_edge_container_async(
+        self,
+        request: main_models.OpenEdgeContainerRequest,
+    ) -> main_models.OpenEdgeContainerResponse:
+        runtime = RuntimeOptions()
+        return await self.open_edge_container_with_options_async(request, runtime)
 
     def open_er_service_with_options(
         self,

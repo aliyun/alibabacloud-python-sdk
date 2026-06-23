@@ -18,31 +18,27 @@ class CreateHttpIncomingResponseHeaderModificationRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Specifies the modifications for a response header. The supported operations are `add`, `del`, and `modify`.
+        # The response header modifications. Three operation types are supported: add, delete, and modify.
         # 
         # This parameter is required.
         self.response_header_modification = response_header_modification
-        # The conditional expression used to match an incoming request. This parameter is not required when adding a Global configuration. Two scenarios are supported:
-        # 
-        # - To match all incoming requests, set the value to `true`.
-        # 
-        # - To match specific requests, use a custom expression. For example: `(http.host eq "video.example.com")`
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Indicates if the Rule is enabled. This parameter is not required when adding a Global configuration. Valid values:
-        # 
-        # - `on`: Enables the Rule.
-        # 
-        # - `off`: Disables the Rule.
+        # The rule switch. You do not need to set this parameter when you add a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The Rule name. This parameter is not required when adding a Global configuration.
+        # The rule name. You do not need to set this parameter when you add a global configuration.
         self.rule_name = rule_name
-        # The Rule execution order. A smaller value indicates a higher priority, and the Rule is executed sooner.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The unique identifier for the Site. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The configuration Version for the Site. If version management is enabled, this parameter specifies the target Version. Defaults to 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):
@@ -117,27 +113,23 @@ class CreateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModif
         type: str = None,
         value: str = None,
     ):
-        # The name of the response header.
+        # The response header name.
         # 
         # This parameter is required.
         self.name = name
-        # The operation to perform on the header. Valid values:
+        # The operation type. Valid values:
         # 
-        # - `add`: Adds the header.
-        # 
-        # - `del`: Deletes the header.
-        # 
-        # - `modify`: Modifies the header.
+        # - add: adds a response header.
+        # - del: deletes a response header.
+        # - modify: modifies a response header.
         # 
         # This parameter is required.
         self.operation = operation
-        # The type of the header value. Valid values:
-        # 
-        # - `static`: The `Value` is a fixed string.
-        # 
-        # - `dynamic`: The `Value` can contain variables.
+        # The value type. Valid values:
+        # - static: static pattern.
+        # - dynamic: dynamic pattern.
         self.type = type
-        # The value of the response header.
+        # The response header value.
         self.value = value
 
     def validate(self):

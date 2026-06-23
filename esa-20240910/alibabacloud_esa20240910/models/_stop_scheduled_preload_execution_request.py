@@ -9,7 +9,7 @@ class StopScheduledPreloadExecutionRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The prefetch plan ID.
+        # The prefetch plan ID. You can obtain this value from the SuccessExecutions[].Id field returned by CreateScheduledPreloadExecutions. Before calling this operation, create a prefetch job by calling CreateScheduledPreloadJob, and then create an execution plan by calling CreateScheduledPreloadExecutions.
         # 
         # This parameter is required.
         self.id = id

@@ -23,29 +23,25 @@ class CreateScheduledPreloadJobResponseBody(DaraModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The time the task was created.
+        # The time when the task was created, in ISO 8601 format (for example, 2024-01-01T00:00:00+08:00).
         self.created_at = created_at
-        # The list of domains to preload.
+        # The list of prefetch domains.
         self.domains = domains
-        # The error message. Multiple error codes are separated by commas.
-        # 
+        # The error information. Multiple errors are separated by commas:
         # - **InvalidUrl**: The URL format is invalid.
-        # 
-        # - **InvalidDomain**: Domain ownership verification failed.
-        # 
-        # - **QuotaExcess**: The quota is exceeded.
-        # 
+        # - **InvalidDomain**: The domain ownership verification failed.
+        # - **QuotaExcess**: The quota limit has been exceeded.
         # - **OtherErrors**: Other errors.
         self.error_info = error_info
-        # The OSS URL for the file that lists the failed URLs.
+        # The OSS address of the failed file.
         self.failed_file_oss = failed_file_oss
-        # The ID of the file containing the list of URLs. Use this ID to download the file.
+        # The URL list file ID, used for downloading.
         self.file_id = file_id
         # The task ID.
         self.id = id
-        # The URL submission method.
+        # The URL insertion method.
         self.insert_way = insert_way
         # The task name.
         self.name = name
@@ -53,13 +49,13 @@ class CreateScheduledPreloadJobResponseBody(DaraModel):
         self.request_id = request_id
         # The site ID.
         self.site_id = site_id
-        # The number of tasks submitted. A value of 1 indicates that the task was created.
+        # The number of URLs that have been submitted to the system for prefetch tasks.
         self.task_submitted = task_submitted
-        # The task type. Valid values are refresh or preload.
+        # The task type (refresh/prefetch).
         self.task_type = task_type
-        # The total number of URLs provided in the request.
+        # The total number of URLs.
         self.url_count = url_count
-        # The number of URLs accepted for preloading.
+        # The number of submitted URLs.
         self.url_submitted = url_submitted
 
     def validate(self):

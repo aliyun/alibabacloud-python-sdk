@@ -14,11 +14,11 @@ class ListScheduledPreloadExecutionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of execution plans.
+        # The execution information.
         self.executions = executions
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of execution plans.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -73,31 +73,26 @@ class ListScheduledPreloadExecutionsResponseBodyExecutions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The end time of the execution plan.
+        # The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.end_time = end_time
-        # The ID of the execution plan.
+        # The ID of the prefetch plan.
         self.id = id
-        # The execution interval between batches, in seconds.
+        # The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
         self.interval = interval
-        # The ID of the scheduled preload task.
+        # The ID of the prefetch task.
         self.job_id = job_id
-        # The number of URLs to preload in each batch.
+        # The number of URLs in each batch of the scheduled prefetch.
         self.slice_len = slice_len
-        # The start time of the execution plan.
+        # The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.start_time = start_time
-        # The status of the execution plan. Valid values:
-        # 
-        # - **waiting**: Pending execution.
-        # 
-        # - **running**: Executing.
-        # 
-        # - **finished**: Completed.
-        # 
-        # - **failed**: Failed.
-        # 
-        # - **stopped**: Paused.
+        # The status of the scheduled prefetch plan. Valid values:
+        # - **waiting**: Waiting to be executed.
+        # - **running**: Being executed.
+        # - **finished**: Execution completed.
+        # - **failed**: Execution failed.
+        # - **stopped**: Execution paused.
         self.status = status
 
     def validate(self):

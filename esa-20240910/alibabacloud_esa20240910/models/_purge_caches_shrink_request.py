@@ -13,29 +13,29 @@ class PurgeCachesShrinkRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # Content to be refreshed.
+        # The refresh content.
         self.content_shrink = content_shrink
-        # Used for refreshing cached resources in edge computing, such as allowing the refresh of content cached using the CacheAPI interface of an edge function.
+        # Specifies whether to refresh edge computing cached resources. For example, this allows you to refresh content cached by the Edge Routine CacheAPI API operation using the edge function.
         self.edge_compute_purge = edge_compute_purge
-        # Indicates whether to refresh all resources under the directory when the content from the origin and the source resource are inconsistent. The default is false.
-        # - **true**: Refreshes all resources under the specified directory.
-        # - **false**: Refreshes only the changed resources under the specified directory.
+        # Specifies whether to refresh all resources under the corresponding directory when the back-to-origin content is inconsistent with the origin server resources. Default value: false.
+        # - **true**: Refreshes all resources under the corresponding directory.
+        # - **false**: Refreshes only the changed resources under the corresponding directory.
         # 
         # > 
-        # >  Applies to: Directory refresh, cachetag refresh, ignoreParams refresh, hostname refresh, and purge all cache of the site.
+        # >  This parameter takes effect for directory refresh, cache tag refresh, parameter-ignored refresh, hostname refresh, and full site refresh.
         self.force = force
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The type of refresh task. Possible values:
-        # - **file** (default): File refresh.
-        # - **cachekey**: Cachekey refresh.
-        # - **cachetag**: Cachetag refresh.
-        # - **directory**: Directory refresh.
-        # - **ignoreParams**: Ignore parameters refresh. Ignoring parameters means removing the ? and everything after it in the request URL. When performing an ignore parameters refresh, the user first submits the URL without parameters through the interface. The submitted URLs to be refreshed will then be matched against the cached resource URLs with the parameters removed. If the cached resource URL, after removing the parameters, matches the URL to be refreshed, the CDN node will refresh the cached resources.
-        # - **hostname**: Hostname refresh.
-        # - **purgeall**: Purge all cache under the site.
+        # The type of the refresh node. Valid values:
+        # - **file** (default): file refresh.
+        # - **cachekey**: cache key refresh.
+        # - **cachetag**: cache label refresh.
+        # - **directory**: folder refresh.
+        # - **ignoreParams**: parameter-ignored refresh. This refers to removing the question mark (?) and all parameters after it from the request URL. When you commit a parameter-stripped URL through this API operation, the committed URL is matched against cached resource URLs after their parameters are also stripped. If a cached resource URL matches the committed URL after parameter stripping, the point of presence executes the refresh on the cached resource.
+        # - **hostname**: hostname refresh.
+        # - **purgeall**: refreshes all cached content under the site.
         # 
         # This parameter is required.
         self.type = type

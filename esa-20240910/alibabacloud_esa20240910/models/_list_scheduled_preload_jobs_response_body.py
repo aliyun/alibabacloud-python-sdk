@@ -14,11 +14,11 @@ class ListScheduledPreloadJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # List of prefetch job details.
+        # The list of prefetch task information.
         self.jobs = jobs
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of records after filtering.
+        # The total number of records after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -80,35 +80,35 @@ class ListScheduledPreloadJobsResponseBodyJobs(DaraModel):
         url_count: int = None,
         url_submitted: int = None,
     ):
-        # Alibaba Cloud account ID.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # Job creation time.
+        # The task creation time in ISO 8601 format (e.g., 2024-01-01T00:00:00+Z).
         self.created_at = created_at
-        # List of domains to prefetch.
+        # The list of prefetch domains.
         self.domains = domains
-        # Error message.
+        # The error information.
         self.error_info = error_info
-        # Number of prefetch schedules.
+        # The number of prefetch plans.
         self.execution_count = execution_count
-        # The OSS address of the failed file.
+        # The OSS URL of the failed file.
         self.failed_file_oss = failed_file_oss
-        # URL list file ID (used for downloading).
+        # The URL list file ID (used for downloading).
         self.file_id = file_id
-        # Job ID.
+        # The task ID.
         self.id = id
-        # URL insertion method.
+        # The URL insertion method.
         self.insert_way = insert_way
-        # Job name.
+        # The task name.
         self.name = name
-        # Site ID
+        # Site ID.
         self.site_id = site_id
-        # Number of URLs submitted to the system for prefetching.
+        # The number of URLs that have been submitted to the system for prefetch.
         self.task_submitted = task_submitted
-        # Task type (refresh or prefetch).
+        # The task type (refresh/prefetch).
         self.task_type = task_type
-        # Total number of URLs.
+        # The total number of URLs.
         self.url_count = url_count
-        # Number of URLs submitted.
+        # The number of submitted URLs.
         self.url_submitted = url_submitted
 
     def validate(self):

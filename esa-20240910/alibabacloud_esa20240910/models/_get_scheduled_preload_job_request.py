@@ -9,7 +9,7 @@ class GetScheduledPreloadJobRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The task ID of the scheduled preload job.
+        # The ID of the scheduled prefetch task.
         # 
         # This parameter is required.
         self.id = id

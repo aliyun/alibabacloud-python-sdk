@@ -11,11 +11,11 @@ class UpdateEdgeContainerAppLogRiverResponseBody(DaraModel):
         request_id: str = None,
         stdout: bool = None,
     ):
-        # The log path of the container.
+        # The log file of the container.
         self.path = path
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the standard output of the container is collected.
+        # Specifies whether to enable standard output collection for the container.
         self.stdout = stdout
 
     def validate(self):

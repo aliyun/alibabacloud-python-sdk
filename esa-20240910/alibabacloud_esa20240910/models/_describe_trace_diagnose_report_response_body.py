@@ -33,7 +33,7 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         self.client_info = client_info
         # Client IP.
         self.client_ip = client_ip
-        # Creation time. Format: yyyy-MM-dd HH:mm:ss, timezone: +08:00.
+        # Creation time. Format: yyyy-MM-dd HH:mm:ss. Time zone: +08:00.
         self.create_time = create_time
         # Diagnostic ID.
         self.diagnose_id = diagnose_id
@@ -45,17 +45,17 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         self.domain = domain
         # Expiration time. Timestamp in seconds.
         self.expire_time = expire_time
-        # Remaining available diagnosis count.
+        # Remaining available diagnostic attempts.
         self.remain_diagnose_times = remain_diagnose_times
         # Diagnostic report details.
         self.report = report
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
         # Report generation status.
         # 
-        # 0: Success.
-        # 1: Failure.
-        # 2: Timeout.
+        # 0: Successful.
+        # 1: Failed.
+        # 2: Timed out.
         # 3: Running.
         # 4: Waiting.
         self.state = state

@@ -10,7 +10,7 @@ class CreateHttpIncomingResponseHeaderModificationRuleResponseBody(DaraModel):
         config_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the created rule.
+        # The configuration ID.
         self.config_id = config_id
         # The request ID.
         self.request_id = request_id
