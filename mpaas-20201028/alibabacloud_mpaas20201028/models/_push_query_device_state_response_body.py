@@ -17,7 +17,6 @@ class PushQueryDeviceStateResponseBody(DaraModel):
         self.code = code
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 

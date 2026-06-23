@@ -11281,6 +11281,10 @@ class Client(OpenApiClient):
             body['CpExtra'] = request.cp_extra
         if not DaraCore.is_null(request.custom_id):
             body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.item_id):
+            body['ItemId'] = request.item_id
+        if not DaraCore.is_null(request.item_title):
+            body['ItemTitle'] = request.item_title
         if not DaraCore.is_null(request.mini_program_id):
             body['MiniProgramId'] = request.mini_program_id
         if not DaraCore.is_null(request.open_uid):
@@ -11331,6 +11335,10 @@ class Client(OpenApiClient):
             body['CpExtra'] = request.cp_extra
         if not DaraCore.is_null(request.custom_id):
             body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.item_id):
+            body['ItemId'] = request.item_id
+        if not DaraCore.is_null(request.item_title):
+            body['ItemTitle'] = request.item_title
         if not DaraCore.is_null(request.mini_program_id):
             body['MiniProgramId'] = request.mini_program_id
         if not DaraCore.is_null(request.open_uid):

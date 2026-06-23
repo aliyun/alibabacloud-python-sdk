@@ -14,7 +14,6 @@ class DeleteTemplateResponseBody(DaraModel):
     ):
         self.code = code
         self.msg = msg
-        # Id of the request
         self.request_id = request_id
         self.success = success
 

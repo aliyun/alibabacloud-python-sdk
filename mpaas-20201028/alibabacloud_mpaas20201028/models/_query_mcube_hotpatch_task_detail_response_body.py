@@ -71,7 +71,6 @@ class QueryMcubeHotpatchTaskDetailResponseBodyQueryHotpatchTaskDetailResult(Dara
     ):
         self.error_code = error_code
         self.hotpatch_task_detail = hotpatch_task_detail
-        # Id of the request
         self.request_id = request_id
         self.result_msg = result_msg
         self.success = success

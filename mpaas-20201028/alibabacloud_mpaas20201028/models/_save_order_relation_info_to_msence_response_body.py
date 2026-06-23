@@ -15,7 +15,6 @@ class SaveOrderRelationInfoToMsenceResponseBody(DaraModel):
         success: bool = None,
     ):
         self.mpaas_save_order_relation_response = mpaas_save_order_relation_response
-        # Id of the request
         self.request_id = request_id
         self.result_code = result_code
         self.result_msg = result_msg

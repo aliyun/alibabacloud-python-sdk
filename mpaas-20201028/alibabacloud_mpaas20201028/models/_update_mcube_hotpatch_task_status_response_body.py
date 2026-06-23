@@ -68,7 +68,6 @@ class UpdateMcubeHotpatchTaskStatusResponseBodyUpdateHotpatchTaskStatusResult(Da
         success: bool = None,
     ):
         self.error_code = error_code
-        # Id of the request
         self.request_id = request_id
         self.result = result
         self.result_msg = result_msg

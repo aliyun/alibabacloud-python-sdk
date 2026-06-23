@@ -24,7 +24,6 @@ class ListTemplatePageResponseBody(DaraModel):
         self.data = data
         self.msg = msg
         self.page_size = page_size
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.total_size = total_size

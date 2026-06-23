@@ -15,7 +15,6 @@ class GetAuthTokenToMsenceResponseBody(DaraModel):
         success: bool = None,
     ):
         self.mpaas_system_oauth_token_response = mpaas_system_oauth_token_response
-        # Id of the request
         self.request_id = request_id
         self.result_code = result_code
         self.result_msg = result_msg

@@ -15,15 +15,10 @@ class QueryMscpRiskInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Code
         self.code = code
-        # Data
         self.data = data
-        # Msg
         self.msg = msg
-        # Id of the request
         self.request_id = request_id
-        # Success
         self.success = success
 
     def validate(self):

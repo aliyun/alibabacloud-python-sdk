@@ -14,6 +14,8 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
         client_type: str = None,
         cp_extra: str = None,
         custom_id: str = None,
+        item_id: str = None,
+        item_title: str = None,
         mini_program_id: str = None,
         open_uid: str = None,
         platform_id: str = None,
@@ -27,6 +29,8 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
         self.client_type = client_type
         self.cp_extra = cp_extra
         self.custom_id = custom_id
+        self.item_id = item_id
+        self.item_title = item_title
         self.mini_program_id = mini_program_id
         self.open_uid = open_uid
         self.platform_id = platform_id
@@ -61,6 +65,12 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
 
         if self.custom_id is not None:
             result['CustomId'] = self.custom_id
+
+        if self.item_id is not None:
+            result['ItemId'] = self.item_id
+
+        if self.item_title is not None:
+            result['ItemTitle'] = self.item_title
 
         if self.mini_program_id is not None:
             result['MiniProgramId'] = self.mini_program_id
@@ -101,6 +111,12 @@ class SaveOrderRelationInfoToMsenceRequest(DaraModel):
 
         if m.get('CustomId') is not None:
             self.custom_id = m.get('CustomId')
+
+        if m.get('ItemId') is not None:
+            self.item_id = m.get('ItemId')
+
+        if m.get('ItemTitle') is not None:
+            self.item_title = m.get('ItemTitle')
 
         if m.get('MiniProgramId') is not None:
             self.mini_program_id = m.get('MiniProgramId')

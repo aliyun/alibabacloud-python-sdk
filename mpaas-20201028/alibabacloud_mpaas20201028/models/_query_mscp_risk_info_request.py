@@ -13,15 +13,10 @@ class QueryMscpRiskInfoRequest(DaraModel):
         terminal_type: str = None,
         workspace_id: str = None,
     ):
-        # ApdidToken
         self.apdid_token = apdid_token
-        # AppId
         self.app_id = app_id
-        # TenantId
         self.tenant_id = tenant_id
-        # TerminalType
         self.terminal_type = terminal_type
-        # WorkspaceId
         self.workspace_id = workspace_id
 
     def validate(self):

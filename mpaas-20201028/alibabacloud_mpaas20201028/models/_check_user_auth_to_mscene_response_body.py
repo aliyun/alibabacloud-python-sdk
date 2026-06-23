@@ -15,7 +15,6 @@ class CheckUserAuthToMsceneResponseBody(DaraModel):
         success: bool = None,
     ):
         self.mpaas_user_auth_check_response = mpaas_user_auth_check_response
-        # Id of the request
         self.request_id = request_id
         self.result_code = result_code
         self.result_msg = result_msg
