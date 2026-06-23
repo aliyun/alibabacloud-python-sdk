@@ -10,12 +10,13 @@ class GetClusterAuditProjectResponseBody(DaraModel):
         audit_enabled: bool = None,
         sls_project_name: str = None,
     ):
-        # Indicates whether the cluster auditing feature is enabled for the cluster. 
+        # Indicates whether the API server audit feature is enabled for the cluster. Valid values:
         # 
-        # * `true`: The cluster auditing feature is enabled for the cluster. 
-        # * `false`: The cluster auditing feature is disabled for the cluster.
+        # - `true`: Enabled.
+        # 
+        # - `false`: Not enabled.
         self.audit_enabled = audit_enabled
-        # The SLS project in which the audit logs of the API server are stored.
+        # The SLS project that stores the API server audit logs of the cluster.
         self.sls_project_name = sls_project_name
 
     def validate(self):

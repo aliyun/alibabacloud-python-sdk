@@ -10,9 +10,16 @@ class ListClusterChecksRequest(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # The targets to check.
+        # The check target to filter.
         self.target = target
-        # The check method.
+        # The check type. Valid values:
+        # - ClusterMigrate: cluster migration.
+        # 
+        # - MasterUpgrade: cluster control plane upgrade.
+        # 
+        # - NodePoolUpgrade: node pool upgrade.
+        # 
+        # - ClusterUpgrade: cluster upgrade.
         self.type = type
 
     def validate(self):

@@ -12,7 +12,7 @@ class QuotasValue(DaraModel):
         adjustable: bool = None,
         unit: str = None,
     ):
-        # The value of the quota. If the quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The quota value. To request a quota increase beyond the current value, submit a request on the [Quota Center](https://quotas.console.aliyun.com/products/csk/quotas) page.
         self.quota = quota
         # The quota code.
         self.operation_code = operation_code

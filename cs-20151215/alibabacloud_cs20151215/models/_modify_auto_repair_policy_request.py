@@ -15,7 +15,7 @@ class ModifyAutoRepairPolicyRequest(DaraModel):
     ):
         # The name of the self-healing rule.
         self.name = name
-        # A list of self-healing sub-rules.
+        # The list of self-healing sub-rules.
         self.rules = rules
 
     def validate(self):
@@ -58,9 +58,9 @@ class ModifyAutoRepairPolicyRequestRules(DaraModel):
         incidents: List[main_models.ModifyAutoRepairPolicyRequestRulesIncidents] = None,
         repair_procedure: List[main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedure] = None,
     ):
-        # A list of identified incidents.
+        # The list of identified faults.
         self.incidents = incidents
-        # A list of repair procedures.
+        # The repair procedure.
         self.repair_procedure = repair_procedure
 
     def validate(self):
@@ -113,11 +113,11 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedure(DaraModel):
         intervention: main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention = None,
         name: str = None,
     ):
-        # Configuration parameters for the procedure.
+        # The parameter settings of the flow.
         self.config = config
-        # The configuration for the manual intervention procedure.
+        # The configuration for manual intervention in the procedure.
         self.intervention = intervention
-        # The procedure name.
+        # The name of the procedure.
         self.name = name
 
     def validate(self):
@@ -162,13 +162,13 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention(DaraModel):
         inquiring_label: main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
-        # The label configuration for authorization confirmation. Add this label to the node to authorize ACK to proceed with this stage. After the stage completes, ACK automatically removes the inquiry and confirmation labels. If you do not add this label in time, ACK will not proceed with this or subsequent stages, leaving the node in an unhealthy state.
+        # The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to perform the operations in this phase. After completing the phase operations, ACK automatically removes the authorization inquiry and authorization confirmation labels for this phase. If you do not promptly add the following labels for authorization, ACK does not perform the actions in this phase or subsequent phases, and the node may remain in a damaged state.
         self.approved_label = approved_label
         # Specifies whether to enable manual approval.
         self.enable = enable
-        # The label configuration for the authorization inquiry. At this stage, ACK adds this label to the node and waits for your authorization before proceeding.
+        # The label configuration for authorization inquiry. When this phase is reached, ACK adds the following labels to your node and waits for you to authorize the execution of the phase action.
         self.inquiring_label = inquiring_label
-        # The approval type.
+        # The type of approval.
         self.type = type
 
     def validate(self):
@@ -220,9 +220,9 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabe
         key: str = None,
         value: str = None,
     ):
-        # The label `key`.
+        # The label key value.
         self.key = key
-        # The label `value`.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -257,9 +257,9 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
         key: str = None,
         value: str = None,
     ):
-        # The label `key`.
+        # The label key value.
         self.key = key
-        # The label `value`.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -294,9 +294,9 @@ class ModifyAutoRepairPolicyRequestRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The incident name.
+        # The fault name.
         self.name = name
-        # The incident type.
+        # The type of manual approval.
         self.type = type
 
     def validate(self):

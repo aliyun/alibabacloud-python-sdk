@@ -15,7 +15,7 @@ class GetClusterDiagnosisCheckItemsResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The check item.
+        # The check items.
         self.check_items = check_items
         # The status code.
         self.code = code
@@ -86,23 +86,17 @@ class GetClusterDiagnosisCheckItemsResponseBodyCheckItems(DaraModel):
         self.desc = desc
         # The display name.
         self.display = display
-        # The name of the group to which the check item belongs.
+        # The check item group.
         self.group = group
-        # The severity level of the check result.
-        # 
-        # Valid values:
-        # 
-        # *   normal
-        # *   warning
-        # *   error
+        # The assessment result of the check item.
         self.level = level
-        # The check result.
+        # The check result message.
         self.message = message
-        # The name of the check item.
+        # The check item name.
         self.name = name
         # The reference value.
         self.refer = refer
-        # The value of the check item.
+        # The check item value.
         self.value = value
 
     def validate(self):

@@ -10,7 +10,7 @@ class CreateAutoRepairPolicyResponseBody(DaraModel):
         policy_id: str = None,
         request_id: str = None,
     ):
-        # The auto-repair policy ID.
+        # The self-healing rule ID.
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id

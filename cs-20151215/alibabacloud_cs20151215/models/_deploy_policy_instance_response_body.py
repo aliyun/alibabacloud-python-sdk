@@ -11,7 +11,7 @@ class DeployPolicyInstanceResponseBody(DaraModel):
         self,
         instances: List[str] = None,
     ):
-        # The names of the deployed policy instances.
+        # The list of policy instances.
         self.instances = instances
 
     def validate(self):

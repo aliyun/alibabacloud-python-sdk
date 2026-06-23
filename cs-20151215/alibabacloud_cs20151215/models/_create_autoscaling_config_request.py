@@ -26,103 +26,90 @@ class CreateAutoscalingConfigRequest(DaraModel):
         unneeded_duration: str = None,
         utilization_threshold: str = None,
     ):
-        # The cool-down duration for scale-in events. This is the time interval from when the system detects a node is eligible for a scale-in to when the scale-in operation is executed.
+        # The scale-down trigger delay. The time interval between detecting a scale-down need (reaching the scale-down threshold) and actually performing the scale-down operation (reducing the number of Pods).
         # 
-        # Valid values: 1 to 60. Unit: minutes.
+        # Valid values: [1,60]. Unit: minutes.
         # 
         # Default value: 10.
         self.cool_down_duration = cool_down_duration
-        # Specifies whether `cluster-autoscaler` evicts DaemonSet Pods from nodes during a scale-in event. Valid values:
-        # 
-        # - `true`: Perform eviction.
-        # 
-        # - `false`: Do not perform eviction.
+        # Specifies whether cluster-autoscaler evicts DaemonSet Pods on nodes during scale-down. Valid values:
+        # - `true`: DaemonSet Pods are evicted.
+        # - `false`: DaemonSet Pods are not evicted.
         self.daemonset_eviction_for_nodes = daemonset_eviction_for_nodes
-        # The strategy for selecting a node pool for a scale-out when multiple node pools are available. Valid values:
-        # 
-        # - `least-waste`: The default strategy. The scaler selects the node pool that will have the least idle resources after a scale-out.
-        # 
-        # - `random`: The scaler selects a random node pool from the list of eligible node pools.
-        # 
-        # - `priority`: The scaler selects the node pool that has the highest priority. You must configure the priority of each scaling group by using the `priorities` parameter.
+        # The node pool scale-out order policy. Valid values:
+        # - `least-waste`: The default policy. If multiple node pools are available for scale-out, the node pool with the least resource waste is selected.
+        # - `random`: The random policy. If multiple node pools are available for scale-out, a random node pool is selected.
+        # - `priority`: The priority policy. If multiple node pools are available for scale-out, the node pool with the highest priority is selected based on the custom scaling group order you defined. Node pool priorities are defined by the `priorities` parameter.
         self.expander = expander
-        # The GPU utilization threshold for a scale-in on GPU nodes, which is the ratio of requested resources to total allocatable resources on a node.
+        # The GPU scale-down threshold. The ratio of requested resources to total resources on a node.
         # 
-        # A GPU node is eligible for a scale-in only if its CPU, memory, and GPU utilization all fall below this threshold.
+        # A GPU node can be scaled down only when this ratio falls below the configured threshold, meaning the CPU, memory, and GPU utilization of the node are all below the GPU scale-down threshold.
         # 
-        # Valid values: [0.1, 1].
+        # Valid values: [0.1~1].
         # 
-        # Default value: 0.3 (30%).
+        # Default value: 0.3, which indicates 30%.
         self.gpu_utilization_threshold = gpu_utilization_threshold
-        # The maximum duration in seconds that `cluster-autoscaler` waits for Pods to terminate during a node drain for a scale-in event.
+        # The timeout period that cluster-autoscaler waits for Pod termination during node draining in scale-down scenarios.
         # 
         # Unit: seconds.
         # 
         # Default value: 14400.
         self.max_graceful_termination_sec = max_graceful_termination_sec
-        # The minimum number of Pods that must remain for any ReplicaSet after a scale-in operation. Nodes will not be scaled-in if doing so would violate this minimum.
+        # The minimum number of Pods allowed in each ReplicaSet before a node can be scaled down.
         # 
         # Default value: 0.
         self.min_replica_count = min_replica_count
-        # Configures the priorities for scaling groups. This is used when the `expander` strategy is set to `priority`. After you create a node pool and enable autoscaling for it, you can configure the priority of its associated scaling group. For more information, see [Enable node autoscaling](https://help.aliyun.com/document_detail/119099.html).
+        # The priority configuration for automatic scaling. After you create a node pool with auto scaling enabled, you can choose whether to configure a priority policy and priority settings by using [Enable node auto scaling](https://help.aliyun.com/document_detail/119099.html) to assign priorities to the scaling groups of specified auto scaling node pools.
         # 
-        # The priority must be a positive integer from 1 to 100. A larger value indicates a higher priority.
+        # Valid values: [1, 100]. The value must be a positive integer. A larger value indicates a higher priority.
         self.priorities = priorities
-        # Specifies whether to delete the Kubernetes Node object after a node is successfully scaled-in using fast scaling mode. For more information, see [Scaling modes](https://help.aliyun.com/document_detail/119099.html). Default value: false. Valid values:
+        # Specifies whether to delete the corresponding Kubernetes Node object after a node is successfully scaled down in swift mode. For more information about swift mode, see [Scaling modes](https://help.aliyun.com/document_detail/119099.html). Default value: false. Valid values:
         # 
-        # - `true`: The Node object is deleted after the instance is stopped. We do not recommend this setting because it can cause data inconsistencies in Kubernetes.
-        # 
-        # - `false`: The Node object is retained after the instance is stopped.
+        # - `true`: The Kubernetes Node object is deleted after the node is stopped in swift mode. Setting this parameter to true is not recommended because it may cause Kubernetes object data inconsistency.
+        # - `false`: The Kubernetes Node object is retained after the node is stopped in swift mode.
         self.recycle_node_deletion_enabled = recycle_node_deletion_enabled
-        # Specifies whether to allow node scale-in operations. Valid values:
-        # 
-        # - `true`: Allows scale-in operations.
-        # 
-        # - `false`: Disables scale-in operations.
+        # Specifies whether to allow node scale-down. Valid values:
+        # - `true`: Scale-down is allowed.
+        # - `false`: Scale-down is not allowed.
         self.scale_down_enabled = scale_down_enabled
-        # Controls whether `cluster-autoscaler` performs a scale-out operation when there are no ready nodes in the cluster. Default value: true. Valid values:
+        # Specifies whether cluster-autoscaler performs scale-out when the number of Ready nodes in the cluster is 0. Default value: true. Valid values:
         # 
-        # - `true`: A scale-out operation is performed.
-        # 
-        # - `false`: No scale-out operation is performed.
+        # - `true`: Scale-out is performed.
+        # - `false`: Scale-out is not performed.
         self.scale_up_from_zero = scale_up_from_zero
-        # The type of scaler to use. In clusters that run Kubernetes 1.24 or later, the default is goatscaler. In clusters that run an earlier version, the default is cluster-autoscaler. Valid values:
+        # The type of the auto scaling component. For clusters of version 1.24 and later, the default value is goatscaler. For earlier versions, the default value is cluster-autoscaler. Valid values:
         # 
-        # - `goatscaler`: The proprietary scaler for fast scaling.
+        # - `goatscaler`: instant scaling.
         # 
-        # - `cluster-autoscaler`: The standard Kubernetes cluster autoscaler.
+        # - `cluster-autoscaler`: automatic scaling.
         self.scaler_type = scaler_type
-        # The frequency at which the system checks for scaling conditions.
+        # The scaling sensitivity, which adjusts the interval at which the system evaluates scaling decisions.
         # 
         # Valid values: 15, 30, 60, 120, 180, and 300. Unit: seconds.
         # 
         # Default value: 60.
         self.scan_interval = scan_interval
-        # Controls whether `cluster-autoscaler` can scale-in nodes that run Pods using local storage (for example, with `emptyDir` or `hostPath` volumes). Valid values:
-        # 
-        # - `true`: Prevents these nodes from being scaled-in.
-        # 
-        # - `false`: Allows these nodes to be scaled-in.
+        # Specifies whether cluster-autoscaler skips scaling down nodes that run Pods with local storage (such as EmptyDir or HostPath). Valid values:
+        # - `true`: Nodes are not scaled down.
+        # - `false`: Nodes are scaled down.
         self.skip_nodes_with_local_storage = skip_nodes_with_local_storage
-        # Controls whether `cluster-autoscaler` can scale-in nodes that run Pods from the `kube-system` namespace. This setting does not affect DaemonSet or mirror Pods. Valid values:
-        # 
-        # - `true`: Prevents these nodes from being scaled-in.
-        # 
-        # - `false`: Allows these nodes to be scaled-in.
+        # Specifies whether cluster-autoscaler skips scaling down nodes that run Pods in the kube-system namespace. This feature does not apply to DaemonSet Pods or Mirror Pods. Valid values:
+        # - `true`: Nodes are not scaled down.
+        # - `false`: Nodes are scaled down.
         self.skip_nodes_with_system_pods = skip_nodes_with_system_pods
-        # The stabilization window. This is the period after a scale-out event during which the scaler does not perform scale-in operations.
+        # The cool-down period. The time interval after the most recent scale-out during which the auto scaling component does not perform scale-down operations. Nodes added during scale-out can only be evaluated for scale-down after the cool-down period expires.
         # 
-        # Valid values: 1 to 60. Unit: minutes.
+        # Valid values: [1,60]. Unit: minutes.
         # 
         # Default value: 10.
         self.unneeded_duration = unneeded_duration
-        # The utilization threshold for a scale-in, which is the ratio of requested resources to the total allocatable resources on a node.
+        # The scale-down threshold. The ratio of requested resources to total resources on a node.
         # 
-        # A node is eligible for a scale-in only when both its CPU and memory utilization fall below this threshold.
+        # A node can be scaled down only when this ratio falls below the configured threshold, meaning both the CPU and memory resources utilization of the node are below the scale-down threshold.
         # 
-        # Valid values: [0.1, 1].
+        # Valid values: [0.1~1].
         # 
-        # Default value: 0.5 (50%).
+        # Default value: 0.5, which indicates 50%.
         self.utilization_threshold = utilization_threshold
 
     def validate(self):

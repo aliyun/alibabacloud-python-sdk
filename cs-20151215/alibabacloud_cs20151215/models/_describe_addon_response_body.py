@@ -20,23 +20,23 @@ class DescribeAddonResponseBody(DaraModel):
         supported_actions: List[str] = None,
         version: str = None,
     ):
-        # The CPU architecture supported by the component.
+        # CPU architectures supported by the component.
         self.architecture = architecture
-        # The category of the component.
+        # Component category.
         self.category = category
-        # The custom parameter schema of the component.
+        # Custom parameter schema of the component.
         self.config_schema = config_schema
-        # Indicates whether the component is automatically installed by default.
+        # Whether it is installed by default.
         self.install_by_default = install_by_default
-        # Indicates whether the component is fully managed.
+        # Whether it is a managed component.
         self.managed = managed
-        # The name of the component.
+        # Component name.
         self.name = name
-        # The latest version information of the component.
+        # Information about the latest component versions.
         self.newer_versions = newer_versions
-        # The operations supported by the component.
+        # Operations supported by the component.
         self.supported_actions = supported_actions
-        # The version of the component.
+        # Component version.
         self.version = version
 
     def validate(self):
@@ -122,12 +122,13 @@ class DescribeAddonResponseBodyNewerVersions(DaraModel):
         upgradable: bool = None,
         version: str = None,
     ):
-        # The minimum cluster version required by the component version.
+        # The minimum cluster version required by this component version.
         self.minimum_cluster_version = minimum_cluster_version
-        # Indicates whether the component can be updated to the version.
+        # Whether the component can be upgraded to this version.
         # 
-        # *   true: yes
-        # *   false: no
+        # - true: Upgrade is supported.
+        # 
+        # - false: Upgrade is not supported.
         self.upgradable = upgradable
         # The latest version number of the component.
         self.version = version

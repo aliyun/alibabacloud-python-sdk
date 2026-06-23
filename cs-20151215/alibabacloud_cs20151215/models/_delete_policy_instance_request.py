@@ -9,7 +9,7 @@ class DeletePolicyInstanceRequest(DaraModel):
         self,
         instance_name: str = None,
     ):
-        # The ID of the policy instance.
+        # The instance ID of the policy rule.
         self.instance_name = instance_name
 
     def validate(self):

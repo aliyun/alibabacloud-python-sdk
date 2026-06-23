@@ -13,12 +13,13 @@ class DescribeNodePoolVulsResponseBody(DaraModel):
         vul_records: List[main_models.DescribeNodePoolVulsResponseBodyVulRecords] = None,
         vuls_fix_service_purchased: bool = None,
     ):
-        # The vulnerability list of all node pools.
+        # The list of node pool vulnerabilities.
         self.vul_records = vul_records
-        # Indicates whether the CVE vulnerability patching service provided by Security Center is purchased.
+        # Indicates whether the Security Center CVE fix service has been purchased.
         # 
-        # *   true: yes
-        # *   false: no
+        # - true: Purchased.
+        # 
+        # - false: Not purchased.
         self.vuls_fix_service_purchased = vuls_fix_service_purchased
 
     def validate(self):
@@ -62,9 +63,9 @@ class DescribeNodePoolVulsResponseBodyVulRecords(DaraModel):
         node_name: str = None,
         vul_list: List[main_models.DescribeNodePoolVulsResponseBodyVulRecordsVulList] = None,
     ):
-        # The ID of the node.
+        # The node instance ID.
         self.instance_id = instance_id
-        # The node name. This name is the identifier of the node in the cluster.
+        # The node name, which is the identifier of the node within the cluster.
         self.node_name = node_name
         # The list of vulnerabilities.
         self.vul_list = vul_list
@@ -119,23 +120,17 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(DaraModel):
         need_reboot: bool = None,
         package_list: List[main_models.DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList] = None,
     ):
-        # The alias of the vulnerability.
+        # The vulnerability alias.
         self.alias_name = alias_name
-        # A list of CVE names corresponding to the vulnerabilities.
+        # The list of CVEs associated with the vulnerability.
         self.cve_list = cve_list
-        # The name of the vulnerability.
+        # The vulnerability name.
         self.name = name
-        # The severity level of the vulnerability.
-        # 
-        # Valid values:
-        # 
-        # *   nntf: You can ignore the vulnerability.
-        # *   later: You can fix the vulnerability later.
-        # *   asap: You need to fix the vulnerability at the earliest opportunity.
+        # The vulnerability severity level.
         self.necessity = necessity
         # Indicates whether a restart is required.
         self.need_reboot = need_reboot
-        # List of packages affected by the vulnerability.
+        # The list of packages affected by the vulnerability.
         self.package_list = package_list
 
     def validate(self):
@@ -201,7 +196,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList(DaraModel):
         self,
         name: str = None,
     ):
-        # Package name.
+        # The package name.
         self.name = name
 
     def validate(self):

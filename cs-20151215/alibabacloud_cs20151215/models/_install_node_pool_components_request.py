@@ -14,11 +14,11 @@ class InstallNodePoolComponentsRequest(DaraModel):
         node_names: List[str] = None,
         rolling_policy: main_models.InstallNodePoolComponentsRequestRollingPolicy = None,
     ):
-        # A list of node components to be installed.
+        # The list of node components.
         self.components = components
-        # A list of specific node names where the component should be installed. If not specified, the component will be installed on all nodes in the node pool.
+        # The list of node names for the rolling update. By default, all nodes are included.
         self.node_names = node_names
-        # Configuration for the rolling update process.
+        # The rolling update configuration.
         self.rolling_policy = rolling_policy
 
     def validate(self):
@@ -71,11 +71,11 @@ class InstallNodePoolComponentsRequestRollingPolicy(DaraModel):
         max_parallelism: int = None,
         pause_policy: str = None,
     ):
-        # The time interval between update batches, in seconds.
+        # The interval between batches during the upgrade. Unit: seconds.
         self.batch_interval = batch_interval
-        # The maximum number of nodes that can be updated concurrently in each batch. Default: 1.
+        # The maximum number of nodes that can be processed in parallel per batch. Default value: 1.
         self.max_parallelism = max_parallelism
-        # The strategy for automatic pausing during the update process. Valid values: NotPause, FirstBatchPause, EveryBatchPause.
+        # The automatic pause policy during the node upgrade process.
         self.pause_policy = pause_policy
 
     def validate(self):
@@ -117,13 +117,13 @@ class InstallNodePoolComponentsRequestComponents(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The configuration details for the component.
+        # The component configuration.
         self.config = config
-        # The name of the component.
+        # The component name.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the component.
+        # The component version.
         self.version = version
 
     def validate(self):
@@ -165,7 +165,7 @@ class InstallNodePoolComponentsRequestComponentsConfig(DaraModel):
         self,
         custom_config: Dict[str, str] = None,
     ):
-        # Custom parameters for the component.
+        # The custom configuration of the component.
         self.custom_config = custom_config
 
     def validate(self):

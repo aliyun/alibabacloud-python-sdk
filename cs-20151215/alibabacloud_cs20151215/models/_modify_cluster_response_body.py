@@ -11,11 +11,11 @@ class ModifyClusterResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The cluster ID.
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The task ID.
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -20,7 +20,7 @@ class DescribeClusterTasksResponseBody(DaraModel):
         self.page_info = page_info
         # The request ID.
         self.request_id = request_id
-        # The tasks.
+        # The task array.
         self.tasks = tasks
 
     def validate(self):
@@ -82,17 +82,17 @@ class DescribeClusterTasksResponseBodyTasks(DaraModel):
         task_type: str = None,
         updated: str = None,
     ):
-        # The time when the task was created.
+        # The creation time.
         self.created = created
-        # The error message.
+        # The node fault error message.
         self.error = error
-        # The task state.
+        # The task status.
         self.state = state
         # The task ID.
         self.task_id = task_id
         # The task type.
         self.task_type = task_type
-        # The time when the task was updated.
+        # The update time.
         self.updated = updated
 
     def validate(self):
@@ -193,9 +193,9 @@ class DescribeClusterTasksResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):

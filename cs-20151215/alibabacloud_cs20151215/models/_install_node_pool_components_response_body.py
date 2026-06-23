@@ -11,9 +11,9 @@ class InstallNodePoolComponentsResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the asynchronous task. You can use this ID to track the installation progress.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The task ID.
         self.task_id = task_id

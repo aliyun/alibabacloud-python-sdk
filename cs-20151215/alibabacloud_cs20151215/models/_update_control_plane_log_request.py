@@ -14,17 +14,17 @@ class UpdateControlPlaneLogRequest(DaraModel):
         log_project: str = None,
         log_ttl: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.aliuid = aliuid
-        # The control plane components for which you want to enable log collection.
+        # The list of components for which control plane logging is enabled.
         self.components = components
-        # The name of the Simple Log Service Project that you want to use to store the logs of control plane components.
+        # The name of the SLS project used to store control plane component logs.
         # 
         # Default value: k8s-log-$Cluster ID.
         self.log_project = log_project
-        # The retention period of the log data stored in the Logstore. Valid values: 1 to 3000. Unit: days.
+        # The retention period of logs in the SLS Logstore. Valid values: 1 to 3000. Unit: days.
         # 
-        # Default value: 30.
+        # Default value: 30 days.
         self.log_ttl = log_ttl
 
     def validate(self):

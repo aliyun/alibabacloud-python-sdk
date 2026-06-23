@@ -12,7 +12,7 @@ class ModifyClusterTagsRequest(DaraModel):
         self,
         body: List[main_models.Tag] = None,
     ):
-        # The data of the tags that you want to modify.
+        # The data to be modified.
         self.body = body
 
     def validate(self):

@@ -65,14 +65,14 @@ class DeleteAlertContactGroupResponseBody(DaraModel):
         msg: str = None,
         contact_group_id: str = None,
     ):
-        # The deletion status.
+        # Deletion status.
         # 
-        # *   true: The alert contact group was deleted.
-        # *   false: The alert contact group failed to be deleted.
+        # * true: Deletion successful.
+        # * false: Deletion failed.
         self.status = status
-        # The error message returned if the call fails.
+        # The message returned when execution fails.
         self.msg = msg
-        # The alert contact group ID.
+        # Alert contact group ID.
         self.contact_group_id = contact_group_id
 
     def validate(self):

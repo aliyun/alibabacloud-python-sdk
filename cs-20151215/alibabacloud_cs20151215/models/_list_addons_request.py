@@ -14,17 +14,28 @@ class ListAddonsRequest(DaraModel):
         profile: str = None,
         region_id: str = None,
     ):
-        # The cluster ID. If you specify a cluster ID, only components used in the specified cluster are queried. Other parameters are ignored.
+        # The cluster ID.
+        # If you specify a cluster ID, the system queries the list of available components for the specified cluster, and all other parameters are ignored.
         self.cluster_id = cluster_id
-        # The specifications of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # The cluster specification.
+        # If cluster_id is specified, this parameter is ignored.
+        # The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.cluster_spec = cluster_spec
-        # The type of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # The cluster type.
+        # If cluster_id is specified, this parameter is ignored.
+        # The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.cluster_type = cluster_type
-        # The version of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # The cluster version.
+        # If cluster_id is specified, this parameter is ignored.
+        # The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.cluster_version = cluster_version
-        # The subtype of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # The cluster subtype.
+        # If cluster_id is specified, this parameter is ignored.
+        # The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.profile = profile
-        # The region of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # The region.
+        # If cluster_id is specified, this parameter is ignored.
+        # The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.region_id = region_id
 
     def validate(self):

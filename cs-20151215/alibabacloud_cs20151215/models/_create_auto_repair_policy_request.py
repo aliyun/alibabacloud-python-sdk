@@ -15,13 +15,13 @@ class CreateAutoRepairPolicyRequest(DaraModel):
         resource_type: str = None,
         rules: List[main_models.CreateAutoRepairPolicyRequestRules] = None,
     ):
-        # The name of the auto repair policy.
+        # The name of the self-healing rule.
         self.name = name
-        # The resource subtype to which the auto repair policy applies.
+        # The resource subtype that the self-healing rule can be bound to.
         self.resource_sub_type = resource_sub_type
-        # The resource type to which the auto repair policy applies.
+        # The resource type that the self-healing rule can be bound to.
         self.resource_type = resource_type
-        # The sub-rules for the auto repair policy.
+        # The list of self-healing sub-rules.
         self.rules = rules
 
     def validate(self):
@@ -76,7 +76,7 @@ class CreateAutoRepairPolicyRequestRules(DaraModel):
         incidents: List[main_models.CreateAutoRepairPolicyRequestRulesIncidents] = None,
         repair_procedure: List[main_models.CreateAutoRepairPolicyRequestRulesRepairProcedure] = None,
     ):
-        # The incidents that the rule detects.
+        # The list of identified faults.
         self.incidents = incidents
         # The repair procedure.
         self.repair_procedure = repair_procedure
@@ -131,11 +131,11 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedure(DaraModel):
         intervention: main_models.CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention = None,
         name: str = None,
     ):
-        # Configuration parameters for the repair step.
+        # The configuration parameters of the repair procedure.
         self.config = config
-        # Settings for manual intervention.
+        # The configuration for manual intervention in the procedure.
         self.intervention = intervention
-        # The name of the repair step.
+        # The name of the procedure.
         self.name = name
 
     def validate(self):
@@ -180,13 +180,13 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention(DaraModel):
         inquiring_label: main_models.CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
-        # The label that grants authorization for the repair step. To approve the step, add this label to the node. After the action is complete, ACK automatically removes both the inquiry and approval labels for this step. If this label is not added promptly, the repair procedure halts and the node remains impaired.
+        # The label configuration for authorization confirmation. When you add the following label to the node, you authorize ACK to execute the action in this stage. After completing the action in this stage, ACK automatically removes the authorization inquiry and authorization confirmation labels for this stage. If you do not add the following label to authorize the action promptly, ACK does not execute the action in this stage or subsequent actions, and the node may remain in a damaged state.
         self.approved_label = approved_label
         # Specifies whether to enable manual approval.
         self.enable = enable
-        # The label used to request authorization for the repair step. When this step begins, ACK applies this label to the node and waits for approval before performing the action.
+        # The label configuration for authorization inquiry. When this stage is reached, ACK adds the following label to your node and waits for you to authorize the execution of the action in this stage.
         self.inquiring_label = inquiring_label
-        # The manual approval type.
+        # The type of manual approval.
         self.type = type
 
     def validate(self):
@@ -238,9 +238,9 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabe
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The key of the label.
         self.key = key
-        # The label value.
+        # The value of the label.
         self.value = value
 
     def validate(self):
@@ -275,9 +275,9 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
         key: str = None,
         value: str = None,
     ):
-        # The label key.
+        # The key of the label.
         self.key = key
-        # The label value.
+        # The value of the label.
         self.value = value
 
     def validate(self):
@@ -312,9 +312,9 @@ class CreateAutoRepairPolicyRequestRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The incident name.
+        # The name of the fault.
         self.name = name
-        # The incident type.
+        # The type of the fault.
         self.type = type
 
     def validate(self):

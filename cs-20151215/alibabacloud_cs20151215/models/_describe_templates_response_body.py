@@ -15,7 +15,7 @@ class DescribeTemplatesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The list of returned templates.
+        # The list of templates.
         self.templates = templates
 
     def validate(self):
@@ -69,34 +69,33 @@ class DescribeTemplatesResponseBodyTemplates(DaraModel):
         template_with_hist_id: str = None,
         updated: str = None,
     ):
-        # The access control policy of the template. Valid values:
+        # The access permissions for the deployment template. Valid values:
         # 
-        # *   `private`: The template is private.
-        # *   `public`: The template is public.
-        # *   `shared`: The template can be shared.
-        # 
-        # Default value: `private`.
+        # - `private`: private.
+        # - `public`: public.
+        # - `shared`: shared.
         self.acl = acl
-        # The time when the template was created.
+        # The time when the orchestration template was created.
         self.created = created
-        # The description of the template.
+        # The description of the orchestration template.
         self.description = description
-        # The ID of the template.
+        # The ID of the orchestration template.
         self.id = id
-        # The name of the template.
+        # The name of the orchestration template.
         self.name = name
-        # The label of the template. By default, the value is the name of the template.
+        # The tag of the orchestration template. If not explicitly specified, the tag defaults to the template name.
         self.tags = tags
-        # The template content in the YAML format.
+        # The template content in YAML format.
         self.template = template
-        # The type of template. This parameter can be set to a custom value.
+        # The templatetype.
         # 
-        # *   If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
-        # *   If the parameter is set to `compose`, the template is displayed on the Container Service - Swarm page in the console. However, Container Service for Swarm is deprecated.
+        # - If the value is set to kubernetes, the template is displayed on the Orchestration Templates page in the console.
+        # 
+        # - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
         self.template_type = template_type
-        # The ID of the parent template. The value of `template_with_hist_id` is the same for each template version. This allows you to manage different template versions.
+        # The ID of the parent template associated with the template. This parameter is used to implement template versioning. Different versions of the same template share the same `template_with_hist_id` value.
         self.template_with_hist_id = template_with_hist_id
-        # The time when the template was updated.
+        # The time when the orchestration template was last updated.
         self.updated = updated
 
     def validate(self):
@@ -180,9 +179,9 @@ class DescribeTemplatesResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of entries per page.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count

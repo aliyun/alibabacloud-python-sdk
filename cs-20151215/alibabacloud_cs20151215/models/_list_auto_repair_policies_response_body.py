@@ -12,7 +12,7 @@ class ListAutoRepairPoliciesResponseBody(DaraModel):
         self,
         items: List[main_models.ListAutoRepairPoliciesResponseBodyItems] = None,
     ):
-        # A list of auto-repair rules.
+        # The auto-repair policies.
         self.items = items
 
     def validate(self):
@@ -53,17 +53,17 @@ class ListAutoRepairPoliciesResponseBodyItems(DaraModel):
         resource_type: str = None,
         rules: List[main_models.ListAutoRepairPoliciesResponseBodyItemsRules] = None,
     ):
-        # The ID of the auto-repair rule.
+        # The ID of the auto-repair policy.
         self.id = id
-        # The name of the auto-repair rule.
+        # The name of the auto-repair policy.
         self.name = name
-        # The IDs of the resources that the auto-repair rule affects.
+        # The list of resources bound to the auto-repair policy.
         self.resource_ids = resource_ids
-        # The resource sub-type that the auto-repair rule affects.
+        # The subtype of resource bound to the auto-repair policy.
         self.resource_sub_type = resource_sub_type
-        # The resource type that the auto-repair rule affects.
+        # The type of resource bound to the auto-repair policy.
         self.resource_type = resource_type
-        # A list of auto-repair sub-rules.
+        # The list of auto-repair sub-rules.
         self.rules = rules
 
     def validate(self):
@@ -130,7 +130,7 @@ class ListAutoRepairPoliciesResponseBodyItemsRules(DaraModel):
         incidents: List[main_models.ListAutoRepairPoliciesResponseBodyItemsRulesIncidents] = None,
         repair_procedure: List[main_models.ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure] = None,
     ):
-        # A list of identified incidents.
+        # The list of identified incidents.
         self.incidents = incidents
         # The repair procedure.
         self.repair_procedure = repair_procedure
@@ -185,11 +185,11 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure(DaraModel):
         intervention: main_models.ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention = None,
         name: str = None,
     ):
-        # The configuration parameters for the procedure step.
+        # The configuration parameters of the procedure.
         self.config = config
-        # The manual intervention settings for this procedure step.
+        # The configuration for manual intervention.
         self.intervention = intervention
-        # The name of the procedure step.
+        # The name of the procedure.
         self.name = name
 
     def validate(self):
@@ -234,13 +234,13 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention(Da
         inquiring_label: main_models.ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
-        # The configuration for the approval label. Applying this label to the node authorizes Container Service for Kubernetes (ACK) to execute the action for this repair step. After the step is complete, ACK automatically removes both the inquiry and approval labels. If the approval label is not applied promptly, the repair process will not proceed, and the node may remain in an unhealthy state.
+        # The label configuration for confirming authorization. When you add the following label to a node, it indicates that you authorize ACK to execute the action of this phase. After completing the action of this phase, ACK automatically removes the authorization inquiry label and the confirmation label corresponding to this phase. If you do not add the following label to authorize the action in time, ACK will not execute the action of this phase or any subsequent actions, and the node may remain in a damaged state.
         self.approved_label = approved_label
-        # Determines whether manual approval is required for the repair step.
+        # Specifies whether to enable manual approval.
         self.enable = enable
-        # The configuration for the authorization inquiry label. When this repair step starts, Container Service for Kubernetes (ACK) applies this label to the node and pauses, awaiting approval before executing the step\\"s action.
+        # The label configuration for authorization inquiry. When this phase is entered, ACK adds the following label to your node and waits for your authorization to execute the action of this phase.
         self.inquiring_label = inquiring_label
-        # The manual approval type.
+        # The type of manual approval.
         self.type = type
 
     def validate(self):
@@ -292,9 +292,9 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInq
         key: str = None,
         value: str = None,
     ):
-        # The key of the label.
+        # The label `key`.
         self.key = key
-        # The value of the label.
+        # The taint `value`.
         self.value = value
 
     def validate(self):
@@ -329,9 +329,9 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApp
         key: str = None,
         value: str = None,
     ):
-        # The key of the label.
+        # The label `key`.
         self.key = key
-        # The value of the label.
+        # The label `value`.
         self.value = value
 
     def validate(self):
@@ -366,7 +366,7 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The incident name.
+        # The name of the incident.
         self.name = name
         # The diagnosis type.
         self.type = type

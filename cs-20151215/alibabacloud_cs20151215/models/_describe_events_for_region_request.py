@@ -19,9 +19,9 @@ class DescribeEventsForRegionRequest(DaraModel):
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The maximum number of results to return on each page.
         # 
-        # Valid values: 1 to 100.
+        # Valid values: [1,100].
         # 
         # Default value: 50.
         self.page_size = page_size

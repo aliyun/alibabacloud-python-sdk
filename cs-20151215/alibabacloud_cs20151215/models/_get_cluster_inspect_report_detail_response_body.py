@@ -19,24 +19,23 @@ class GetClusterInspectReportDetailResponseBody(DaraModel):
         status: str = None,
         summary: main_models.GetClusterInspectReportDetailResponseBodySummary = None,
     ):
-        # The results.
+        # The list of results.
         self.check_item_results = check_item_results
         # The completion time of the inspection report.
         self.end_time = end_time
-        # The token that is used to display the returned tags on multiple pages.
+        # The pagination token.
         self.next_token = next_token
-        # The ID of the inspection report.
+        # The inspection report ID.
         self.report_id = report_id
         # The request ID.
         self.request_id = request_id
         # The start time of the inspection report.
         self.start_time = start_time
-        # The status of the inspection report. Valid values:
-        # 
-        # *   completed: The inspection report is generated.
-        # *   running: The inspection report is generating.
+        # The generation status of the inspection report. Valid values:
+        # - completed: Completed.
+        # - running: In progress.
         self.status = status
-        # Overview of inspection reports.
+        # The inspection report summary.
         self.summary = summary
 
     def validate(self):
@@ -121,15 +120,15 @@ class GetClusterInspectReportDetailResponseBodySummary(DaraModel):
         normal_count: int = None,
         warn_count: int = None,
     ):
-        # The number of check items whose inspection result is advice.
+        # The number of check items with a result of advice.
         self.advice_count = advice_count
-        # Check the status code of the inspection task.
+        # The status code of the check task result.
         self.code = code
-        # The number of check items whose inspection result is error.
+        # The number of check items with a result of error.
         self.error_count = error_count
-        # The number of check items whose inspection result is normal.
+        # The number of check items with a result of normal.
         self.normal_count = normal_count
-        # The number of check items whose inspection result is warning.
+        # The number of check items with a result of warning.
         self.warn_count = warn_count
 
     def validate(self):
@@ -190,37 +189,34 @@ class GetClusterInspectReportDetailResponseBodyCheckItemResults(DaraModel):
         targets: List[str] = None,
     ):
         # The category of the inspection item. Valid values:
-        # 
-        # *   security: Security compliance
-        # *   performance: Performance efficiency
-        # *   stability: Business stability
-        # *   limitation: Service limits
-        # *   cost: Cost optimization
+        # - security: security and compliance
+        # - performance: performance and efficiency 
+        # - stability: business stability
+        # - limitation: service limits 
+        # - cost: cost optimization.
         self.category = category
         # The unique identifier of the inspection item.
         self.check_item_uid = check_item_uid
-        # The description of the inspection item.
+        # The description of the check item.
         self.description = description
-        # The fixing suggestion.
+        # The fix suggestion.
         self.fix = fix
         # The level of the inspection item. Valid values:
-        # 
-        # *   advice: Suggestions
-        # *   warning: Low severity
-        # *   error: Medium severity
-        # *   critical: High severity
+        # - advice: suggestion
+        # - warning: low-risk
+        # - error: medium-risk
+        # - critical: high-risk.
         self.level = level
-        # The name of the inspection item.
+        # The name of the check item.
         self.name = name
-        # The inspection results. Valid values:
-        # 
-        # *   true: The inspection item is abnormal.
-        # *   false: The inspection item is normal.
-        # *   disable: The inspection item is not enabled.
+        # The check result. Valid values:
+        # - true: The check item is abnormal.
+        # - false: The check item is normal.
+        # - disable: The check item is not enabled.
         self.result = result
-        # The resource type of the inspection object.
+        # The resource type of the check target.
         self.target_type = target_type
-        # The inspection objects.
+        # The list of check targets.
         self.targets = targets
 
     def validate(self):

@@ -9,7 +9,7 @@ class RunClusterInspectRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # The idempotency token that ensures an API request completes no more than one time.
+        # The idempotence token.
         self.client_token = client_token
 
     def validate(self):

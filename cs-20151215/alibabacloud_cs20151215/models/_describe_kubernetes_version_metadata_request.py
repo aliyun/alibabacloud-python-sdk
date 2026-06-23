@@ -15,53 +15,52 @@ class DescribeKubernetesVersionMetadataRequest(DaraModel):
         region: str = None,
         runtime: str = None,
     ):
-        # The cluster type that you want to use. Valid values:
+        # The cluster type. Valid values:
         # 
-        # *   `Kubernetes`: ACK dedicated cluster.
-        # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Pro clusters, ACK Basic clusters, ACK Serverless Pro clusters, ACK Serverless Basic clusters, ACK Edge Pro clusters, and ACK Edge Basic clusters.
-        # *   `ExternalKubernetes`: registered cluster.
+        # - `Kubernetes`: ACK dedicated cluster.
+        # - `ManagedKubernetes`: ACK managed cluster, including ACK Pro cluster, ACK Basic cluster, ACK Serverless Pro cluster, ACK Serverless Basic cluster, ACK Edge Pro cluster, and ACK Edge Basic cluster.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
-        # The Kubernetes version of the cluster. The Kubernetes versions supported by ACK are the same as the Kubernetes versions supported by open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not configure this parameter, the latest Kubernetes version is used.
+        # The cluster version, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
         # 
-        # For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
+        # For more information about the Kubernetes versions supported by ACK, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
         self.kubernetes_version = kubernetes_version
         # The query mode. Valid values:
+        # - `supported`: queries supported versions.
+        # - `creatable`: queries creatable versions.
         # 
-        # *   `supported`: queries all supported Kubernetes versions.
-        # *   `creatable`: queries only Kubernetes versions of clusters that you can create.
+        # If you specify `KubernetesVersion`, the query mode is ignored.
         # 
-        # If you specify `KubernetesVersion`, this parameter does not take effect.
-        # 
-        # If you do not specify a query mode, Kubernetes versions of clusters that you can create are returned.
+        # If you do not specify the query mode, creatable versions are returned by default.
         self.mode = mode
-        # The scenario where clusters are used. Valid values:
+        # The cluster type for specific scenarios. Valid values:
         # 
-        # *   `Default`: non-edge computing scenarios
-        # *   `Edge`: edge computing scenarios
-        # *   `Serverless`: serverless scenarios.
+        # - `Default`: non-edge scenario cluster.
+        # - `Edge`: edge scenario cluster.
+        # - `Serverless`: ACK Serverless cluster.
         # 
         # Default value: `Default`.
         self.profile = profile
-        # Specifies whether to query the Kubernetes versions available for updates. This parameter takes effect only when the KubernetesVersion parameter is specified.
+        # Specifies whether to query upgradable versions for the specified cluster version. This parameter takes effect only when the KubernetesVersion parameter is specified.
         # 
-        # *   true: queries the Kubernetes versions available for updates.
-        # *   false: does not query the Kubernetes versions available for updates.
+        # - true: queries upgradable versions.
+        # 
+        # - false: does not query upgradable versions.
         self.query_upgradable_version = query_upgradable_version
-        # The region ID of the cluster.
+        # The ID of the region where the cluster is deployed.
         # 
         # This parameter is required.
         self.region = region
-        # The container runtime type that you want to use. You can specify a runtime type to query only OS images that support the runtime type. Valid values:
+        # The runtime type. You can specify the runtime type to filter the system images that are supported by the runtime. Valid values:
         # 
-        # *   `docker`: Docker
-        # *   `containerd`: containerd
-        # *   `Sandboxed-Container.runv`: Sandboxed-Container
+        # - `docker`: Docker runtime.
+        # - `containerd`: containerd runtime.
+        # - `Sandboxed-Container.runv`: sandboxed container.
         # 
-        # If you specify a runtime type, only the OS images that support the specified runtime type are returned.
+        # If you specify the runtime type, the image versions supported by the specified runtime are returned.
         # 
-        # Otherwise, all OS images are returned.
+        # If you do not specify the runtime type, all images are returned by default.
         self.runtime = runtime
 
     def validate(self):

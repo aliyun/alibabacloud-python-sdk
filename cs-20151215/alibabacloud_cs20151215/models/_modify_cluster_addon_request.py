@@ -9,7 +9,7 @@ class ModifyClusterAddonRequest(DaraModel):
         self,
         config: str = None,
     ):
-        # The custom parameter settings that you want to use.
+        # The custom parameter settings.
         self.config = config
 
     def validate(self):

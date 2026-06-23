@@ -11,20 +11,21 @@ class ListClusterKubeconfigStatesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Whether to query the KubeConfig list of service roles for cloud products within the cluster.  
+        # Specifies whether to query the KubeConfig list of cloud service roles in the cluster. Valid values:
         # 
-        # - true: Query the KubeConfig list of service roles for cloud products within the cluster.  
-        # - false: Query the KubeConfig list of Resource Access Management (RAM) users or roles within the cluster.
+        # - true: queries the KubeConfig list of cloud service roles in the cluster.
+        # - false: queries the KubeConfig list of Resource Access Management (RAM) users or roles in the cluster.
         self.cloud_service_kube_config = cloud_service_kube_config
         # The page number.
         # 
-        # *   Valid values: ≥ 1.
-        # *   Default value: 1.
-        self.page_number = page_number
-        # The number of entries per page.
+        # - Valid values: 1 or greater.
         # 
-        # *   Valid values: 10 to 50.
-        # *   Default value: 10
+        # - Default value: 1.
+        self.page_number = page_number
+        # The number of records per page.
+        # - Valid values: 1 to 50.
+        # 
+        # - Default value: 10.
         self.page_size = page_size
 
     def validate(self):

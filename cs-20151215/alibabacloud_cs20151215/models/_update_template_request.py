@@ -13,18 +13,21 @@ class UpdateTemplateRequest(DaraModel):
         template: str = None,
         template_type: str = None,
     ):
-        # The description of the template.
+        # The description of the deployment template.
         self.description = description
-        # The name of the template.
+        # The name of the deployment template.
         self.name = name
-        # The label of the template.
+        # The tags of the deployment template.
         self.tags = tags
-        # The YAML content of the template.
+        # The template content in YAML format.
         self.template = template
-        # The type of template. This parameter can be set to a custom value.
+        # The templatetype.
         # 
-        # *   If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
-        # *   If the parameter is set to `compose`, the template is displayed on the Container Service - Swarm page in the console. Container Service for Swarm is deprecated.
+        # - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
+        # 
+        # - If you leave this parameter empty or set it to other values, the template is not displayed on the Orchestration Templates page in the console.
+        # 
+        # Settings this parameter to `kubernetes` is recommended.
         self.template_type = template_type
 
     def validate(self):

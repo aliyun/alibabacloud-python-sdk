@@ -13,20 +13,15 @@ class RunClusterCheckRequest(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # The cluster check parameters.
+        # The check options.
         self.options = options
         # The check target.
         # 
-        # If you set `type=NodePoolUpgrade`, you must set this parameter to the node pool ID. Otherwise, this parameter is optional.
+        # If the type parameter is set to NodePoolUpgrade, this parameter must be set to the node pool ID.
+        # 
+        # If other check types are selected, this parameter does not need to be set.
         self.target = target
         # The check type.
-        # 
-        # Valid values:
-        # 
-        # *   ClusterMigrate: cluster migration.
-        # *   MasterUpgrade: control plane upgrade.
-        # *   NodePoolUpgrade: node pool upgrade.
-        # *   ClusterUpgrade: cluster upgrade.
         # 
         # This parameter is required.
         self.type = type

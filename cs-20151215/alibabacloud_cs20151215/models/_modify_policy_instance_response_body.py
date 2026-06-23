@@ -11,7 +11,7 @@ class ModifyPolicyInstanceResponseBody(DaraModel):
         self,
         instances: List[str] = None,
     ):
-        # The list of policy instances that are updated.
+        # The list of updated instances.
         self.instances = instances
 
     def validate(self):

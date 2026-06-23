@@ -23,37 +23,36 @@ class Nodepool(DaraModel):
         scaling_group: main_models.NodepoolScalingGroup = None,
         tee_config: main_models.NodepoolTeeConfig = None,
     ):
-        # The auto-scaling configurations for the node pool.
+        # The auto scaling configuration of the node pool.
         self.auto_scaling = auto_scaling
-        # This parameter is deprecated. Use desired_size instead.
+        # [This field is deprecated. Use desired_size instead.]
         # 
         # The number of nodes in the node pool.
         self.count = count
-        # This parameter is deprecated.
+        # [This field is deprecated.]
         # 
-        # The edge node pool configurations.
+        # The edge node pool configuration.
         self.interconnect_config = interconnect_config
-        # The network type of the edge node pool. This parameter is only meaningful for node pools of type `edge`. Valid values:
+        # The network type of the edge node pool. This value is valid only for node pools whose `type` is `edge`. Valid values:
         # 
-        # - `basic`: Basic.
-        # 
-        # - `private`: Private. Supported in versions 1.22 and later.
+        # - `basic`: basic.
+        # - `private`: dedicated. Supported in version 1.22 and later.
         self.interconnect_mode = interconnect_mode
-        # The cluster configurations.
+        # The cluster-related configuration.
         self.kubernetes_config = kubernetes_config
-        # The managed node pool configurations.
+        # The managed node pool configuration.
         self.management = management
-        # The maximum number of nodes that the edge node pool can contain. This parameter must be greater than or equal to 0. A value of 0 indicates no extra limit (limited only by the total number of nodes the cluster can accommodate, with no additional limit on the node pool itself). The value of this parameter for an edge node pool is often greater than 0. For ess type node pools and default edge type node pools, this parameter is 0.
+        # The maximum number of nodes allowed in the edge node pool. This parameter must be greater than or equal to 0. A value of 0 indicates no additional limit. The node pool is limited only by the maximum number of nodes that the cluster can contain. Edge node pools typically have a value greater than 0. ESS-type node pools and default edge-type node pools have a value of 0.
         self.max_nodes = max_nodes
         # The list of node components.
         self.node_components = node_components
-        # The node configurations.
+        # The node configuration.
         self.node_config = node_config
-        # The node pool configurations.
+        # The node pool configuration.
         self.nodepool_info = nodepool_info
-        # The configurations of the scaling group for the node pool.
+        # The scaling group configuration of the node pool.
         self.scaling_group = scaling_group
-        # The confidential computing node pool configurations.
+        # The confidential computing node pool configuration.
         self.tee_config = tee_config
 
     def validate(self):
@@ -179,7 +178,7 @@ class NodepoolTeeConfig(DaraModel):
         self,
         tee_enable: bool = None,
     ):
-        # Specifies whether it is a confidential computing node pool.
+        # 是否为加密计算节点池。
         # 
         # This parameter is required.
         self.tee_enable = tee_enable
@@ -253,227 +252,197 @@ class NodepoolScalingGroup(DaraModel):
         tags: List[main_models.NodepoolScalingGroupTags] = None,
         vswitch_ids: List[str] = None,
     ):
-        # Specifies whether to enable auto-renewal for the node pool. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`. Valid values:
+        # 节点池是否开启自动续费，当`instance_charge_type`取值为`PrePaid`时才生效，取值：
         # 
-        # - `true`: Enables auto-renewal.
+        # - `true`：自动续费。
+        # - `false`：不自动续费。
         # 
-        # - `false`: Disables auto-renewal.
-        # 
-        # Default value: `true`.
+        # 默认值：`true`。
         self.auto_renew = auto_renew
-        # The auto-renewal period for the node pool. This parameter is required and takes effect only when `instance_charge_type` is set to `PrePaid`.
+        # 节点池自动续费周期。当`instance_charge_type`取值为`PrePaid`时才生效，且为必选值。
         # 
-        # If `PeriodUnit=Month`, valid values are 1, 2, 3, 6, and 12.
+        # 当`PeriodUnit=Month`时，取值范围：{1, 2, 3, 6, 12}。
         # 
-        # Default value: 1.
+        # 默认值：1。
         self.auto_renew_period = auto_renew_period
-        # When `multi_az_policy` is set to `COST_OPTIMIZED`, specifies whether to automatically attempt to create on-demand instances to meet the required number of ECS instances if enough spot instances cannot be created due to price or inventory reasons. Valid values:
+        # 当`multi_az_policy`取值为`COST_OPTIMIZED`时，如果因价格、库存等原因无法创建足够的抢占式实例，是否允许自动尝试创建按量实例满足ECS实例数量要求。取值：
         # 
-        # - `true`: Allows automatically attempting to create on-demand instances to meet the required number of ECS instances.
-        # 
-        # - `false`: Does not allow automatically attempting to create on-demand instances to meet the required number of ECS instances.
+        # - `true`：允许自动尝试创建按量实例满足ECS实例数量要求。
+        # - `false`：不允许自动尝试创建按量实例满足ECS实例数量要求。
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The data disk configurations for the nodes in the node pool.
+        # 节点池节点数据盘配置。
         self.data_disks = data_disks
-        # The deployment set ID.
+        # 部署集ID。
         self.deploymentset_id = deploymentset_id
-        # The desired number of nodes in the node pool.
+        # 节点池期望节点数量。
         self.desired_size = desired_size
-        # The block device initialization configurations.
+        # 块设备初始化配置。
         self.disk_init = disk_init
-        # The ID of the custom image. By default, the system-provided image is used.
+        # 自定义镜像ID，默认使用系统提供的镜像。
         self.image_id = image_id
-        # The type of OS image. You must specify this parameter or the platform parameter. Valid values:
+        # 操作系统镜像类型，和platform参数二选一，取值范围：
         # 
-        # - `AliyunLinux`: Alinux2 image.
-        # 
-        # - `AliyunLinux3`: Alinux3 image.
-        # 
-        # - `AliyunLinux3Arm64`: Alinux3 image for ARM.
-        # 
-        # - `AliyunLinuxUEFI`: Alinux2 image for UEFI.
-        # 
-        # - `CentOS`: CentOS image.
-        # 
-        # - `Windows`: Windows image.
-        # 
-        # - `WindowsCore`: Windows Core image.
-        # 
-        # - `ContainerOS`: Container-optimized image.
+        # - `AliyunLinux`：Alinux2镜像。
+        # - `AliyunLinux3`：Alinux3镜像。
+        # - `AliyunLinux3Arm64`：Alinux3镜像ARM版。
+        # - `AliyunLinuxUEFI`：Alinux2镜像UEFI版。
+        # - `CentOS`：CentOS镜像。
+        # - `Windows`：Windows镜像。
+        # - `WindowsCore`：WindowsCore镜像。
+        # - `ContainerOS`：容器优化镜像。
         self.image_type = image_type
-        # The billing method of the nodes in the node pool. Valid values:
+        # 节点池节点付费类型，取值：
         # 
-        # - `PrePaid`: Subscription.
+        # - `PrePaid`：预付费。
+        # - `PostPaid`：按量付费。
         # 
-        # - `PostPaid`: Pay-as-you-go.
-        # 
-        # Default value: `PostPaid`.
+        # 默认值：`PostPaid`。
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
-        # The metadata access configuration for the ECS instance.
-        # This feature is currently available only to whitelisted users. Submit a ticket to request access.
+        # ECS 实例的元数据访问配置。
+        # 目前仅白名单开放，需提交工单申请。
         self.instance_metadata_options = instance_metadata_options
-        # The instance types.
+        # 实例规格。
         # 
         # This parameter is required.
         self.instance_types = instance_types
-        # The billing method for the public IP address. Valid values:
+        # 公网IP收费类型。取值：
         # 
-        # - `PayByBandwidth`: Pay-by-bandwidth.
-        # 
-        # - `PayByTraffic`: Pay-by-traffic.
+        # - `PayByBandwidth`：按固定带宽计费。
+        # - `PayByTraffic`：按使用流量计费。
         self.internet_charge_type = internet_charge_type
-        # The maximum outbound bandwidth of the public IP address for the node. Unit: Mbit/s. Value range: [1, 100].
+        # 节点公网IP出带宽最大值，单位为Mbps（Mega bit per second），取值范围：[1,100]
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The name of the key pair. You must specify this parameter or `login_password`.
+        # 密钥对名称，和`login_password`二选一。
         # 
-        # > If you create a managed node pool, you can only specify `key_pair`.
+        # > 如果创建托管节点池，则只支持`key_pair`。
         self.key_pair = key_pair
-        # Specifies whether to log on to the created ECS instances as a non-root user.
+        # 弹出的ECS实例是否使用以非root用户登录。
         self.login_as_non_root = login_as_non_root
-        # The SSH logon password. You must specify this parameter or `key_pair`. The password must be 8 to 30 characters long and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # SSH登录密码，和`key_pair`二选一。密码规则为8~30个字符，且至少同时包含三项（大小写字母、数字和特殊符号）。
         self.login_password = login_password
-        # The scaling policy for ECS instances in a multi-zone scaling group. Valid values:
+        # 多可用区伸缩组ECS实例扩缩容策略。取值：
         # 
-        # - `PRIORITY`: Scales instances based on the virtual switches (VSwitchIds.N) you define. If an ECS instance cannot be created in the zone of the higher-priority virtual switch, the system automatically uses the next-priority virtual switch to create the instance.
+        # - `PRIORITY`：根据您定义的虚拟交换机（VSwitchIds.N）扩缩容。当优先级较高的虚拟交换机所在可用区无法创建ECS实例时，自动使用下一优先级的虚拟交换机创建ECS实例。
         # 
-        # - `COST_OPTIMIZED`: Attempts to create instances with the lowest vCPU unit price. When multiple instance types are specified for a spot instance in the scaling configuration, the system prioritizes creating the corresponding spot instance. You can use the `CompensateWithOnDemand` parameter to specify whether to automatically try creating on-demand instances if spot instances cannot be created due to inventory or other reasons.
+        # - `COST_OPTIMIZED`：按vCPU单价从低到高进行尝试创建。当伸缩配置设置了抢占式计费方式的多实例规格时，优先创建对应抢占式实例。您可以继续通过`CompensateWithOnDemand`参数指定当抢占式实例由于库存等原因无法创建时，是否自动尝试以按量付费的方式创建。
         # 
-        #   > `COST_OPTIMIZED` takes effect only when multiple instance types are set in the scaling configuration or when spot instances are selected.
+        #   >`COST_OPTIMIZED`仅在伸缩配置设置了多实例规格或者选用了抢占式实例的情况下生效。
         # 
-        # - `BALANCE`: Evenly distributes ECS instances across the specified multiple zones in the scaling group. If the zones become unbalanced due to inventory shortages or other reasons, you can use the RebalanceInstances API to balance the resources. For more information, see [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html).
+        # - `BALANCE`：在伸缩组指定的多可用区之间均匀分配ECS实例。如果由于库存不足等原因可用区之间变得不平衡，您可以通过API RebalanceInstances平衡资源。更多信息，请参见[RebalanceInstances](https://help.aliyun.com/document_detail/71516.html)。
         # 
-        # Default value: `PRIORITY`.
+        # 默认值：`PRIORITY`。
         self.multi_az_policy = multi_az_policy
-        # The minimum number of on-demand instances required by the scaling group. Value range: [0, 1000]. When the number of on-demand instances is less than this value, on-demand instances will be created first.
+        # 伸缩组所需要按量实例个数的最小值，取值范围：[0,1000]。当按量实例个数少于该值时，将优先创建按量实例。
         self.on_demand_base_capacity = on_demand_base_capacity
-        # The percentage of on-demand instances among the instances that exceed the minimum on-demand instance count (`on_demand_base_capacity`). Value range: [0, 100].
+        # 伸缩组满足最小按量实例数（`on_demand_base_capacity`）要求后，超出的实例中按量实例应占的比例。取值范围：[0,100]。
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
-        # The subscription duration of the nodes in the node pool. This parameter is required and takes effect only when `instance_charge_type` is set to `PrePaid`. If `period_unit` is set to Month, valid values for `period` are 1, 2, 3, 6, and 12.
+        # 节点池节点包年包月时长，当`instance_charge_type`取值为`PrePaid`时才生效且为必选值，取值范围：`period_unit`取值为Month时，`period`取值范围：{ 1, 2, 3, 6, 12}。
         # 
-        # Default value: 1.
+        # 默认值：1。
         self.period = period
-        # The billing cycle of the nodes in the node pool. You must specify this parameter when `instance_charge_type` is set to `PrePaid`.
+        # 节点池节点付费周期，当`instance_charge_type`取值为`PrePaid`时需要指定周期。
         # 
-        # `Month`: The billing cycle is measured in months.
+        # `Month`：目前只支持以月为单位。
         self.period_unit = period_unit
-        # The OS distribution. Valid values:
+        # 操作系统发行版。取值：
         # 
         # - `CentOS`
-        # 
         # - `AliyunLinux`
-        # 
         # - `Windows`
-        # 
         # - `WindowsCore`
         # 
-        # Default value: `AliyunLinux`.
+        # 默认值：`AliyunLinux`。
         self.platform = platform
-        # The private node pool configurations.
+        # 私有节点池配置。
         self.private_pool_options = private_pool_options
-        # The name of the Worker RAM role.
-        # >Notice: This parameter is supported only for ACK managed clusters of v1.22 or later when creating a node pool.
+        # Worker RAM角色名称。
+        # >Notice: 仅1.22及以上版本的ACK托管集群支持在创建节点池时配置该参数
         self.ram_role_name = ram_role_name
-        # The list of RDS instances.
+        # RDS实例列表。
         self.rds_instances = rds_instances
-        # The resource pool and resource pool policy used when creating an instance. Note the following when setting this parameter:
-        # This parameter is effective only when creating pay-as-you-go instances.
-        # This parameter cannot be set at the same time as private_pool_options.match_criteria and private_pool_options.id.
+        # 创建实例时使用的资源池及资源池策略。当您设置该参数后，需要注意：
+        # 该参数只在创建按量付费实例时生效。
+        # 该参数不能与private_pool_options.match_criteria、private_pool_options.id同时设置。
         self.resource_pool_options = resource_pool_options
-        # The scaling group mode. Valid values:
+        # 伸缩组模式，取值：
         # 
-        # - `release`: Standard mode. Creates and releases ECS instances to meet resource demands.
+        # - `release`：标准模式，根据申请资源值的使用量，通过创建、释放ECS的方式进行伸缩。
+        # - `recycle`：极速模式，通过创建、停机、启动的方式进行伸缩，提高再次伸缩的速度（停机时计算资源不收费，只收取存储费用，本地盘机型除外）。
         # 
-        # - `recycle`: Fast mode. Creates, stops, and starts ECS instances to accelerate scaling. When an instance is stopped, you are not charged for its compute resources, but you are still charged for storage fees. This does not apply to instance types with local disks.
-        # 
-        # Default value: `release`.
+        # 默认值：`release`。
         self.scaling_policy = scaling_policy
-        # The ID of the security group for the node pool. You must specify this parameter or `security_group_ids`. We recommend using `security_group_ids`.
+        # 节点池安全组ID，与`security_group_ids`二选一，推荐使用`security_group_ids`。
         self.security_group_id = security_group_id
-        # The list of security group IDs. You must specify this parameter or `security_group_id`. We recommend using `security_group_ids`. If both `security_group_id` and `security_group_ids` are specified, `security_group_ids` takes precedence.
+        # 安全组ID列表，与`security_group_id`二选一，推荐使用`security_group_ids`，当同时指定`security_group_id`和`security_group_ids`将优先使用`security_group_ids`。
         self.security_group_ids = security_group_ids
-        # Specifies the number of available instance types. The scaling group will create spot instances in a balanced manner across multiple types with the lowest cost. Value range: [1, 10].
+        # 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：[1,10]。
         self.spot_instance_pools = spot_instance_pools
-        # Specifies whether to enable replenishment for spot instances. When enabled, the scaling group will attempt to create new instances to replace spot instances that are about to be reclaimed. Valid values:
+        # 是否开启补齐抢占式实例。开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值：
         # 
-        # - `true`: Enables replenishment for spot instances.
-        # 
-        # - `false`: Disables replenishment for spot instances.
+        # - `true`：开启补齐抢占式实例。
+        # - `false`：不开启补齐抢占式实例。
         self.spot_instance_remedy = spot_instance_remedy
-        # The market price range configuration for a single spot instance type.
+        # 当前单台抢占式实例规格市场价格区间配置。
         self.spot_price_limit = spot_price_limit
-        # The preemption policy for the spot instance. Valid values:
+        # 抢占式实例类型，取值：
+        # - NoSpot：非抢占式实例。
+        # - SpotWithPriceLimit：设置抢占实例价格上限。
+        # - SpotAsPriceGo：系统自动出价，跟随当前市场实际价格。
         # 
-        # - NoSpot: A regular on-demand instance.
-        # 
-        # - SpotWithPriceLimit: Sets the maximum hourly price for the spot instance.
-        # 
-        # - SpotAsPriceGo: The system automatically bids, following the current market price.
-        # 
-        # For more information, see [Spot instances](https://help.aliyun.com/document_detail/157759.html).
+        # 更多信息，请参见[抢占式实例](https://help.aliyun.com/document_detail/157759.html)。
         self.spot_strategy = spot_strategy
-        # Specifies whether to enable performance burst for the system disk of the nodes. Valid values:
+        # 节点系统盘是否开启Burst（性能突发）。 取值：
         # 
-        # - true: Yes.
+        # - true：是。
+        # - false：否。
         # 
-        # - false: No.
-        # 
-        # This parameter can be set only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # 当`SystemDiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](https://help.aliyun.com/document_detail/368372.html)。
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
-        # Multiple disk types for the system disk. When a disk type with a higher priority is unavailable, the system automatically tries the next lower-priority disk type to create the system disk. Valid values:
+        # 系统盘的多磁盘类型。当无法使用高优先级的磁盘类型时，自动尝试下一优先级的磁盘类型创建系统盘。取值范围：
         # 
-        # - cloud: Basic disk.
-        # 
-        # - cloud_efficiency: Ultra disk.
-        # 
-        # - cloud_ssd: Standard SSD.
-        # 
-        # - cloud_essd: ESSD.
+        # - cloud：普通云盘。
+        # - cloud_efficiency：高效云盘。
+        # - cloud_ssd：SSD云盘。
+        # - cloud_essd：ESSD云盘。
         self.system_disk_categories = system_disk_categories
-        # The type of the system disk for the nodes. Valid values:
+        # 节点系统盘类型，取值：
         # 
-        # - `cloud_efficiency`: Ultra disk.
+        # - `cloud_efficiency`：高效云盘。
+        # - `cloud_ssd`：SSD云盘。
+        # - `cloud_essd`：ESSD云盘。
+        # - `cloud_auto`：ESSD AutoPL云盘。
+        # - `cloud_essd_entry`：ESSD Entry云盘。
         # 
-        # - `cloud_ssd`: Standard SSD.
-        # 
-        # - `cloud_essd`: ESSD.
-        # 
-        # - `cloud_auto`: ESSD AutoPL disk.
-        # 
-        # - `cloud_essd_entry`: ESSD Entry disk.
-        # 
-        # Default value: `cloud_efficiency`.
+        # 默认值：`cloud_efficiency`。
         self.system_disk_category = system_disk_category
-        # The encryption algorithm used by the system disk of the node. Valid value: aes-256.
+        # 节点系统盘采用的加密算法。取值范围：aes-256。
         self.system_disk_encrypt_algorithm = system_disk_encrypt_algorithm
-        # Specifies whether to encrypt the system disk. Valid values: true: Encrypts the disk. false: Does not encrypt the disk.
+        # 是否加密系统盘。取值范围：true：加密。false：不加密。
         self.system_disk_encrypted = system_disk_encrypted
-        # The KMS key ID used by the system disk of the node.
+        # 节点系统盘使用的KMS密钥ID。
         self.system_disk_kms_key_id = system_disk_kms_key_id
-        # The performance level of the system disk for the nodes. This parameter is only effective for ESSDs.
+        # 节点系统盘磁盘性能，只对ESSD磁盘生效。
         # 
-        # - PL0: Medium concurrent I/O performance, stable read and write latency.
-        # 
-        # - PL1: Medium concurrent I/O performance, stable read and write latency.
-        # 
-        # - PL2: High concurrent I/O performance, stable read and write latency.
-        # 
-        # - PL3: Extremely high concurrent I/O performance, extremely stable read and write latency.
+        # - PL0：并发极限I/O性能中等，读写时延较为稳定。
+        # - PL1：并发极限I/O性能中等，读写时延较为稳定。
+        # - PL2：并发极限I/O性能较高，读写时延稳定。
+        # - PL3：并发极限I/O性能极高，读写时延极稳定。
         self.system_disk_performance_level = system_disk_performance_level
-        # The pre-configured read and write IOPS of the system disk for the nodes. Possible values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50,000}.
+        # 节点系统盘预配置的读写IOPS。可能值：0~min{50,000, 1000\\*容量-基准性能}。 基准性能=min{1,800+50\\*容量, 50000}。
         # 
-        # This parameter can be set only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # 当`SystemDiskCategory`为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](https://help.aliyun.com/document_detail/368372.html)。
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
-        # The size of the system disk for the nodes. Unit: GiB.
+        # 节点系统盘大小，单位：GiB。
         # 
-        # Value range: [40, 500].
+        # 取值范围：[40,500]。
         self.system_disk_size = system_disk_size
-        # Adds tags only to ECS instances.
+        # 仅为ECS实例添加标签。
         # 
-        # Tag keys cannot be repeated and can be up to 128 characters long. Tag keys and values cannot start with "aliyun" or "acs:", or contain "https\\://"" or "http\\://".
+        # 标签键不可以重复，最大长度为128个字符；标签键和标签值都不能以“aliyun”、“acs:”开头，或包含“https://”、“http://”。
         self.tags = tags
-        # The virtual switch ID.
+        # 虚拟交换机ID。
         # 
         # This parameter is required.
         self.vswitch_ids = vswitch_ids
@@ -812,9 +781,9 @@ class NodepoolScalingGroupTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The name of the tag.
+        # 标签的名称。
         self.key = key
-        # The tag value.
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -849,9 +818,9 @@ class NodepoolScalingGroupSpotPriceLimit(DaraModel):
         instance_type: str = None,
         price_limit: str = None,
     ):
-        # The spot instance type.
+        # 抢占式实例规格。
         self.instance_type = instance_type
-        # The maximum price for a single instance.
+        # 单台实例上限价格。
         self.price_limit = price_limit
 
     def validate(self):
@@ -886,13 +855,13 @@ class NodepoolScalingGroupResourcePoolOptions(DaraModel):
         private_pool_ids: List[str] = None,
         strategy: str = None,
     ):
-        # The list of private pool IDs, which are the IDs of elastic assurance services or capacity reservation services. This parameter can only pass Target mode private pool IDs. The value of N ranges from 1 to 20.
+        # 私有池 ID列表。即弹性保障服务 ID 或容量预定服务 ID。该参数只能传入 Target 模式私有池 ID。N 的取值范围：1~20。
         self.private_pool_ids = private_pool_ids
-        # The resource pool policy used when creating an instance. Resource pools include private pools generated by elastic assurance services or capacity reservation services, along with public pools, for instance startup. Valid values:
-        # PrivatePoolFirst: Private pool first. When this policy is selected and resource_pool_options.private_pool_ids is specified, the specified private pool is used first. If no private pool is specified or the specified private pool has insufficient capacity, the system automatically matches an open-type private pool. If no eligible private pool is found, the instance is created from the public pool.
-        # PrivatePoolOnly: Private pool only. When this policy is selected, you must specify resource_pool_options.private_pool_ids. If the specified private pool has insufficient capacity, the instance fails to start.
-        # None: Do not use a resource pool policy.
-        # Default value: None.
+        # 创建实例时使用的资源池策略。资源池包括弹性保障服务或容量预定服务生效后生成的私有池以及公共池，供实例启动时选择。取值范围：
+        # PrivatePoolFirst：私有池优先。选择此种策略时， 当指定了 resource_pool_options.private_pool_ids，优先使用指定的私有池。如果未指定私有池或指定的私有池容量不足，将自动匹配开放类型的私有池。如果没有符合条件的私有池，则使用公共池创建实例。
+        # PrivatePoolOnly：仅限私有池。选择此种策略时，必须指定 resource_pool_options.private_pool_ids。如果指定的私有池容量不足，则实例会启动失败。
+        # None：不使用资源池策略。
+        # 默认值：None。
         self.strategy = strategy
 
     def validate(self):
@@ -927,15 +896,15 @@ class NodepoolScalingGroupPrivatePoolOptions(DaraModel):
         id: str = None,
         match_criteria: str = None,
     ):
-        # The private node pool ID.
+        # 私有节点池ID。
         self.id = id
-        # The private node pool type, which is the capacity option for the private pool where the instance is launched. An elastic assurance service or capacity reservation service generates a private pool capacity for instance startup. Valid values:
+        # 私有节点池类型，实例启动的私有池容量选项。弹性保障服务或容量预定服务在生效后会生成私有池容量，供实例启动时选择。取值：
         # 
-        # - `Open`: Open mode. Automatically matches open-type private pool capacity. If no eligible private pool capacity is available, it uses public pool resources to start.
+        # - `Open`：开放模式。将自动匹配开放类型的私有池容量。如果没有符合条件的私有池容量，则使用公共池资源启动。
         # 
-        # - `Target`: Specified mode. Uses the specified private pool capacity to start the instance. If the private pool capacity is unavailable, the instance fails to start.
+        # - `Target`：指定模式。使用指定的私有池容量启动实例，如果该私有池容量不可用，则实例会启动失败。
         # 
-        # - `None`: No mode used. The instance will not use private pool capacity to start.
+        # - `None`：不使用模式。实例启动将不使用私有池容量。
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -971,17 +940,16 @@ class NodepoolNodepoolInfo(DaraModel):
         resource_group_id: str = None,
         type: str = None,
     ):
-        # The name of the node pool.
+        # 节点池名称。
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the resource group to which the node pool belongs.
+        # 节点池所在资源ID。
         self.resource_group_id = resource_group_id
-        # The type of the node pool. Valid values:
+        # 节点池类型，取值范围：
         # 
-        # - `ess`: A regular node pool.
-        # 
-        # - `edge`: An edge node pool.
+        # - `ess`：节点池。
+        # - `edge`：边缘节点池。
         self.type = type
 
     def validate(self):
@@ -1021,7 +989,7 @@ class NodepoolNodeConfig(DaraModel):
         self,
         kubelet_configuration: main_models.KubeletConfig = None,
     ):
-        # The Kubelet parameter settings.
+        # Kubelet参数配置。
         self.kubelet_configuration = kubelet_configuration
 
     def validate(self):
@@ -1053,11 +1021,11 @@ class NodepoolNodeComponents(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The configuration of the node component.
+        # 节点组件配置。
         self.config = config
-        # The name of the node component.
+        # 节点组件名称。
         self.name = name
-        # The version of the node component.
+        # 节点组件版本
         self.version = version
 
     def validate(self):
@@ -1099,7 +1067,7 @@ class NodepoolNodeComponentsConfig(DaraModel):
         self,
         custom_config: Dict[str, str] = None,
     ):
-        # The custom configuration of the node component.
+        # 节点组件自定义配置。
         self.custom_config = custom_config
 
     def validate(self):
@@ -1136,29 +1104,27 @@ class NodepoolManagement(DaraModel):
         upgrade_config: main_models.NodepoolManagementUpgradeConfig = None,
     ):
         self.auto_fault_diagnosis = auto_fault_diagnosis
-        # Auto repair. This takes effect only when `enable=true`.
+        # 自动修复，仅当`enable=true`时生效。
         # 
-        # - `true`: Enables auto repair.
-        # 
-        # - `false`: Disables auto repair.
+        # - `true`：自动修复。
+        # - `false`：不自动修复。
         self.auto_repair = auto_repair
-        # The auto-repair policy for nodes.
+        # 自动修复节点策略。
         self.auto_repair_policy = auto_repair_policy
-        # Specifies whether to enable auto-upgrade.
+        # 是否自动升级。
         self.auto_upgrade = auto_upgrade
-        # The auto-upgrade policy.
+        # 自动升级策略。
         self.auto_upgrade_policy = auto_upgrade_policy
-        # Specifies whether to automatically fix CVEs.
+        # 是否自动修复CVE。
         self.auto_vul_fix = auto_vul_fix
-        # The auto-fix policy for CVEs.
+        # 自动修复CVE策略。
         self.auto_vul_fix_policy = auto_vul_fix_policy
-        # Specifies whether to enable the managed node pool. Valid values:
+        # 是否开启托管版节点池，取值：
         # 
-        # - `true`: Enables the managed node pool.
-        # 
-        # - `false`: Disables the managed node pool. Other related configurations take effect only when `enable=true`.
+        # - `true`：开启托管节点池。
+        # - `false`：不开启托管节点池，只有当`enable=true`时，其他相关配置才生效。
         self.enable = enable
-        # The auto-upgrade configurations. This takes effect only when `enable=true`.
+        # 自动升级配置，仅当`enable=true`时生效。
         self.upgrade_config = upgrade_config
 
     def validate(self):
@@ -1248,19 +1214,18 @@ class NodepoolManagementUpgradeConfig(DaraModel):
         surge: int = None,
         surge_percentage: int = None,
     ):
-        # Specifies whether to enable auto-upgrade. Valid values:
+        # 是否启用自动升级，取值：
         # 
-        # - `true`: Enables auto-upgrade.
-        # 
-        # - `false`: Disables auto-upgrade.
+        # - `true`：启用自动升级。
+        # - `false`：不启用自动升级。
         self.auto_upgrade = auto_upgrade
-        # The maximum number of unavailable nodes. Value range: [1, 1000].
+        # 最大不可用节点数量，取值范围：[1,1000\\]。
         # 
-        # Default value: 1.
+        # 默认值：1。
         self.max_unavailable = max_unavailable
-        # The number of extra nodes.
+        # 额外节点数量。
         self.surge = surge
-        # The percentage of extra nodes. You must specify this parameter or `surge`.
+        # 额外节点比例，和`surge`二选一。
         self.surge_percentage = surge_percentage
 
     def validate(self):
@@ -1307,9 +1272,9 @@ class NodepoolManagementAutoVulFixPolicy(DaraModel):
         restart_node: bool = None,
         vul_level: str = None,
     ):
-        # Specifies whether to allow restarting nodes.
+        # 是否允许重启节点。
         self.restart_node = restart_node
-        # The vulnerability levels that are allowed to be automatically fixed, separated by commas.
+        # 允许自动修复的漏洞级别，以逗号分隔。
         self.vul_level = vul_level
 
     def validate(self):
@@ -1343,7 +1308,7 @@ class NodepoolManagementAutoUpgradePolicy(DaraModel):
         self,
         auto_upgrade_kubelet: bool = None,
     ):
-        # Specifies whether to allow auto-upgrading the kubelet.
+        # 是否允许自动升级kubelet。
         self.auto_upgrade_kubelet = auto_upgrade_kubelet
 
     def validate(self):
@@ -1371,7 +1336,7 @@ class NodepoolManagementAutoRepairPolicy(DaraModel):
         self,
         restart_node: bool = None,
     ):
-        # Specifies whether to allow restarting nodes.
+        # 是否允许重启节点。
         self.restart_node = restart_node
 
     def validate(self):
@@ -1406,51 +1371,45 @@ class NodepoolKubernetesConfig(DaraModel):
         taints: List[main_models.Taint] = None,
         user_data: str = None,
     ):
-        # Specifies whether to install Cloud Monitor on ECS nodes. After installation, you can view monitoring information about the created ECS instances in the Cloud Monitor console. We recommend that you enable this feature. Valid values:
+        # 是否在ECS节点上安装云监控，安装后可以在云监控控制台查看所创建ECS实例的监控信息，推荐开启。取值：
         # 
-        # - `true`: Installs Cloud Monitor on ECS nodes.
+        # - `true`：在ECS节点上安装云监控。
+        # - `false`：不在ECS节点上安装云监控。
         # 
-        # - `false`: Does not install Cloud Monitor on ECS nodes.
-        # 
-        # Default value: `false`.
+        # 默认值：`false`。
         self.cms_enabled = cms_enabled
-        # The CPU management policy for the node. The following policies are supported for clusters of Kubernetes v1.12.6 or later:
+        # 节点CPU管理策略。当集群版本在1.12.6及以上时支持以下两种策略：
         # 
-        # - `static`: Allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
+        # - `static`：允许为节点上具有某些资源特征Pod增强其CPU亲和性和独占性。
+        # - `none`：表示启用现有的默认CPU亲和性方案。
         # 
-        # - `none`: Indicates that the existing default CPU affinity scheme is enabled.
-        # 
-        # Default value: `none`.
+        # 默认值：`none`。
         self.cpu_policy = cpu_policy
-        # The node labels. Adds labels to the nodes of the Kubernetes cluster.
+        # 节点标签，为Kubernetes集群节点添加标签。
         self.labels = labels
-        # The node name consists of three parts: a prefix, the node IP address, and a suffix.
+        # 节点名称由三部分组成：前缀 + 节点 IP + 后缀：
         # 
-        # - The prefix and suffix can each consist of one or more parts separated by periods (.). Each part can contain lowercase letters, digits, and hyphens (-). The node name must start and end with a lowercase letter or a digit.
+        # - 前缀和后缀均可由“.”分隔的一个或多个部分构成，每个部分可以使用小写字母、数字和“-”，节点名称首尾必须为小写字母和数字；
+        # - 节点 IP为完整的节点私网 IP 地址；
         # 
-        # - The node IP address is the complete private IP address of the node.
-        # 
-        # The parameter consists of four parts separated by commas. For example, if you pass the string "customized,aliyun,ip,com", the node name is aliyun.192.168.xxx.xxx.com. In this example, "customized" and "ip" are fixed strings, "aliyun" is the prefix, and "com" is the suffix.
+        # 传参包含四个部分，由逗号分隔，例如：参数传入"customized,aliyun,ip,com"字符串（其中“customized”和"ip"为固定的字符串，aliyun为前缀，com为后缀），则节点的名称为：aliyun.192.168.xxx.xxx.com。
         self.node_name_mode = node_name_mode
-        # The container runtime. Valid values:
+        # 容器运行时。取值：
+        # - `containerd`：推荐使用，支持所有集群版本。
+        # - `Sandboxed-Container.runv`：安全沙箱容器，提供更高的隔离性，支持1.24版本及以下集群。
+        # - `docker`：支持1.22版本及以下集群。
         # 
-        # - `containerd`: Recommended. This option is supported for all cluster versions.
-        # 
-        # - `Sandboxed-Container.runv`: A sandboxed container that provides higher isolation. This option is supported for clusters of Kubernetes v1.24 or earlier.
-        # 
-        # - `docker`: This option is supported for clusters of Kubernetes v1.22 or earlier.
-        # 
-        # Default value: `containerd`
+        # 默认值：`containerd`
         # 
         # This parameter is required.
         self.runtime = runtime
-        # The container runtime version.
+        # 容器运行时版本。
         # 
         # This parameter is required.
         self.runtime_version = runtime_version
-        # The taint configurations.
+        # 污点配置。
         self.taints = taints
-        # The custom data of the node.
+        # 节点自定义数据。
         self.user_data = user_data
 
     def validate(self):
@@ -1541,25 +1500,25 @@ class NodepoolInterconnectConfig(DaraModel):
         cen_id: str = None,
         improved_period: str = None,
     ):
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # The network bandwidth of the enhanced edge node pool. Unit: Mbit/s.
+        # 边缘增强型节点池的网络带宽，单位：Mbps。
         self.bandwidth = bandwidth
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # The CCN instance ID (CCNID) bound to the enhanced edge node pool.
+        # 边缘增强型节点池绑定的云连接网实例ID(CCNID)。
         self.ccn_id = ccn_id
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # The region where the CCN instance bound to the enhanced edge node pool is located.
+        # 边缘增强型节点池绑定的云连接网实例所属的地域。
         self.ccn_region_id = ccn_region_id
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # The CEN instance ID (CENID) bound to the enhanced edge node pool.
+        # 边缘增强型节点池绑定的云企业网实例ID(CENID)。
         self.cen_id = cen_id
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # The subscription duration of the enhanced edge node pool. Unit: month.
+        # 边缘增强型节点池的购买时长，单位：月。
         self.improved_period = improved_period
 
     def validate(self):
@@ -1617,59 +1576,53 @@ class NodepoolAutoScaling(DaraModel):
         min_instances: int = None,
         type: str = None,
     ):
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # The peak bandwidth of the EIP. Unit: Mbit/s.
+        # EIP带宽峰值。单位：Mbps。
         self.eip_bandwidth = eip_bandwidth
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # The billing method of the EIP. Valid values:
+        # EIP计费类型，取值：
         # 
-        # - `PayByBandwidth`: Pay-by-bandwidth.
+        # - `PayByBandwidth`：按固定带宽计费。
+        # - `PayByTraffic`：按使用流量计费。
         # 
-        # - `PayByTraffic`: Pay-by-traffic.
-        # 
-        # Default value: PayByBandwidth.
+        # 默认值：PayByBandwidth。
         self.eip_internet_charge_type = eip_internet_charge_type
-        # Specifies whether to enable auto-scaling.
+        # 是否启用自动伸缩。
         # 
-        # - `true`: Enables auto-scaling for the node pool.
+        # - `true`：开启节点池自动伸缩功能。
+        # - `false`：不开启自动伸缩，当取值为false时，`auto_scaling`内的其他配置参数将不生效。
         # 
-        # - `false`: Disables auto-scaling. If you set this parameter to false, other parameters in the `auto_scaling` object do not take effect.
-        # 
-        # Default value: `false`.
+        # 默认值：`false`。
         # 
         # This parameter is required.
         self.enable = enable
-        # This parameter is deprecated.
+        # 【该字段已废弃】
         # 
-        # Specifies whether to associate an EIP. Valid values:
+        # 是否绑定EIP，取值：
         # 
-        # - `true`: Associates an EIP.
+        # - `true`：绑定EIP。
+        # - `false`：不绑定EIP。
         # 
-        # - `false`: Does not associate an EIP.
-        # 
-        # Default value: `false`.
+        # 默认值：`false`。
         self.is_bond_eip = is_bond_eip
-        # The maximum number of instances in the scaling group.
+        # 自动伸缩组最大实例数。
         # 
         # This parameter is required.
         self.max_instances = max_instances
-        # The minimum number of instances in the scaling group.
+        # 自动伸缩组最小实例数。
         # 
         # This parameter is required.
         self.min_instances = min_instances
-        # The type of auto-scaling, which is determined by the instance type. Valid values:
+        # 自动伸缩类型，按照自动伸缩实例类型划分。取值：
         # 
-        # - `cpu`: Standard instances.
+        # - `cpu`：普通实例型。
+        # - `gpu`：GPU实例型。
+        # - `gpushare`：GPU共享型。
+        # - `spot`：抢占式实例型。
         # 
-        # - `gpu`: GPU-accelerated instances.
-        # 
-        # - `gpushare`: Shared GPU instances.
-        # 
-        # - `spot`: Spot instances.
-        # 
-        # Default value: `cpu`.
+        # 默认值：`cpu`。
         self.type = type
 
     def validate(self):

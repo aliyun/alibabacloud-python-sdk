@@ -53,47 +53,40 @@ class GrantPermissionsRequestBody(DaraModel):
         role_name: str = None,
         role_type: str = None,
     ):
-        # The ID of the target cluster.
+        # The ID of the cluster to be authorized.
         # 
-        # - If you set the `role_type` parameter to `all-clusters`, set this parameter to an empty string.
+        # - If the value of the `role_type` parameter is `all-clusters`, set this parameter to an empty string.
         # 
         # This parameter is required.
         self.cluster = cluster
-        # Set to true if `role_name` specifies a custom ClusterRole.
+        # Specifies whether the authorization is a custom authorization, which means `role_name` uses a custom ClusterRole name.
         self.is_custom = is_custom
-        # Set to true if you are granting permissions to a RAM role.
+        # Specifies whether the authorization is for a RAM role.
         self.is_ram_role = is_ram_role
-        # The name of the namespace. This parameter is required only when `role_type` is set to `namespace`.
+        # The namespace name. This parameter is empty by default for cluster-level authorization.
         self.namespace = namespace
-        # The name of the role to grant. Valid values:
+        # The name of the preset role. Valid values:
         # 
-        # - `admin`: The administrator role.
-        # 
-        # - `admin-view`: The read-only administrator role.
-        # 
-        # - `ops`: The operations role.
-        # 
-        # - `dev`: The developer role.
-        # 
-        # - `restricted`: The restricted role.
-        # 
-        # - The name of a custom ClusterRole.
+        # - `admin`: administrator.
+        # - `admin-view`: read-only administrator.
+        # - `ops`: O&M engineer.
+        # - `dev`: developer.
+        # - `restricted`: restricted user.
+        # - Custom ClusterRole name.
         # 
         # >Notice: 
         # 
-        # - The `admin`, `admin-view`, and `ops` roles cannot be granted at the namespace scope.
-        # 
-        # - The `admin-view` role is not currently supported for the all-clusters scope.
+        # - `admin`, `admin-view`, `ops`: cannot be granted at the namespace level.
+        # - `admin-view`: cannot be granted at the all-clusters level.
+        # .
         # 
         # This parameter is required.
         self.role_name = role_name
-        # The authorization scope. Valid values:
+        # The authorization type. Valid values:
         # 
-        # - `cluster`: Grants permissions at the cluster scope.
-        # 
-        # - `namespace`: Grants permissions at the namespace scope.
-        # 
-        # - `all-clusters`: Grants permissions at the all-clusters scope.
+        # - `cluster`: cluster level.
+        # - `namespace`: namespace level.
+        # - `all-clusters`: all-clusters level.
         # 
         # This parameter is required.
         self.role_type = role_type

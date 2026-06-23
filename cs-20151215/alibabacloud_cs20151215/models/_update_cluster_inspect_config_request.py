@@ -13,11 +13,11 @@ class UpdateClusterInspectConfigRequest(DaraModel):
         enabled: bool = None,
         schedule_time: str = None,
     ):
-        # The list of disabled inspection check items.
+        # The list of disabled inspection items.
         self.disabled_check_items = disabled_check_items
-        # Specifies whether to enable cluster inspection.
+        # Specifies whether to enable inspection.
         self.enabled = enabled
-        # The inspection period defined using RFC5545 Recurrence Rule. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT or UNTIL is not supported.
+        # The inspection schedule defined by using the RFC 5545 Recurrence Rule syntax. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT and UNTIL are not supported.
         self.schedule_time = schedule_time
 
     def validate(self):

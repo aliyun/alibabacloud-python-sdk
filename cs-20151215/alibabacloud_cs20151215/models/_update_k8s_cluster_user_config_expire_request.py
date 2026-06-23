@@ -10,13 +10,13 @@ class UpdateK8sClusterUserConfigExpireRequest(DaraModel):
         expire_hour: int = None,
         user: str = None,
     ):
-        # Specifies the expiration time of the kubeconfig file. Unit: hours.
+        # The custom expiration time. Unit: hours.
         # 
-        # Valid values: [1, 1876000]. The maximum value is 100 years.
+        # Valid values: [1, 876000]. The maximum value is equivalent to 100 years.
         # 
         # This parameter is required.
         self.expire_hour = expire_hour
-        # The RAM user ID.
+        # The Resource Access Management (RAM) user ID.
         # 
         # This parameter is required.
         self.user = user

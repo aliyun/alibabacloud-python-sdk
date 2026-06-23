@@ -10,16 +10,18 @@ class UpdateClusterAuditLogConfigRequest(DaraModel):
         disable: bool = None,
         sls_project_name: str = None,
     ):
-        # Enable or disable audit logging.
+        # Specifies whether to disable the cluster audit log feature. Valid values:
+        # - false: enables the audit log feature or updates the audit log configuration.
         # 
-        # *   false: enables audit logging or updates the audit logging configurations.
-        # *   true: disables audit logging.
+        # - true: disables the audit log feature.
         self.disable = disable
-        # The [Simple Log Service project](https://help.aliyun.com/document_detail/48873.html) to which the [Logstore](https://help.aliyun.com/document_detail/48873.html) storing the cluster audit logs belongs.
+        # The [SLS Project](https://help.aliyun.com/document_detail/48873.html) that contains the [Logstore](https://help.aliyun.com/document_detail/48874.html) for cluster audit logs.
         # 
-        # *   Default value: k8s-log-{clusterid}.
-        # *   After the cluster audit log feature is enabled, a Logstore is created in the specified Simple Log Service project to store cluster audit logs.
-        # *   If you want to change the project after audit logging is enabled for the cluster, you can use this parameter to specify another project. You can perform this operation only in ACK managed clusters.
+        # - Default value: k8s-log-{clusterid}.
+        # 
+        # - After you enable the cluster audit log feature, a Logstore for cluster audit logs is created in the specified SLS Project.
+        # 
+        # - If you need to change the SLS Project after enabling the cluster audit log feature, use this parameter to specify a new SLS Project. Only ACK managed clusters support changing the SLS Project.
         self.sls_project_name = sls_project_name
 
     def validate(self):

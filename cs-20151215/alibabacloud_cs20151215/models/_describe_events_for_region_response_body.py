@@ -14,9 +14,8 @@ class DescribeEventsForRegionResponseBody(DaraModel):
         next_token: str = None,
         page_info: main_models.DescribeEventsForRegionResponseBodyPageInfo = None,
     ):
-        # A list of events.
+        # The list of events.
         self.events = events
-        # The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
         # The pagination information.
         self.page_info = page_info
@@ -73,9 +72,9 @@ class DescribeEventsForRegionResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The maximum number of results displayed on each page.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -123,13 +122,13 @@ class DescribeEventsForRegionResponseBodyEvents(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The event data.
+        # The event description.
         self.data = data
         # The event ID.
         self.event_id = event_id
         # The event source.
         self.source = source
-        # The event subject.
+        # The object associated with the event.
         self.subject = subject
         # The time when the event occurred.
         self.time = time
@@ -203,9 +202,9 @@ class DescribeEventsForRegionResponseBodyEventsData(DaraModel):
     ):
         # The event level.
         self.level = level
-        # The event message.
+        # The event details.
         self.message = message
-        # The reason for the event.
+        # The event status.
         self.reason = reason
 
     def validate(self):

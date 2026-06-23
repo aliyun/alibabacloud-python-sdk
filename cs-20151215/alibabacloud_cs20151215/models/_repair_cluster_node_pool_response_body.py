@@ -12,7 +12,7 @@ class RepairClusterNodePoolResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

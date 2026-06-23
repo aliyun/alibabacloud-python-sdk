@@ -71,23 +71,23 @@ class DescribeKubernetesVersionMetadataResponseBody(DaraModel):
         creatable: bool = None,
         upgradable_versions: List[str] = None,
     ):
-        # Features of the queried Kubernetes version.
+        # The feature capabilities of the Kubernetes version.
         self.capabilities = capabilities
-        # The OS images that are returned.
+        # The list of system images.
         self.images = images
         # The metadata of the Kubernetes version.
         self.meta_data = meta_data
         # The container runtime configurations.
         self.runtimes = runtimes
-        # The Kubernetes version supported by ACK. For more information, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
+        # The Kubernetes version released by ACK. For more information about versions, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
         self.version = version
         # The release date of the Kubernetes version.
         self.release_date = release_date
         # The expiration date of the Kubernetes version.
         self.expiration_date = expiration_date
-        # Indicates whether you can create clusters that run the Kubernetes version.
+        # Indicates whether the Kubernetes version can be used to create clusters.
         self.creatable = creatable
-        # The list of available Kubernetes versions for updates.
+        # The list of upgradable versions.
         self.upgradable_versions = upgradable_versions
 
     def validate(self):
@@ -187,44 +187,43 @@ class DescribeKubernetesVersionMetadataResponseBodyImages(DaraModel):
         image_category: str = None,
         architecture: str = None,
     ):
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The OS platform. You can obtain the terminal ID by calling one of the following operations:
-        # 
-        # *   `AliyunLinux`
-        # *   `CentOS`
-        # *   `Windows`
-        # *   `WindowsCore`
+        # The operating system platform. Valid values:
+        # - `AliyunLinux`
+        # - `CentOS`
+        # - `Windows`
+        # - `WindowsCore`
         self.platform = platform
-        # The version of the image.
+        # The image version.
         self.os_version = os_version
-        # The type of operating system distribution that you want to use. We recommend that you use this parameter to specify the node operating system. You can obtain the terminal ID by calling one of the following operations:
+        # The type of the operating system distribution. We recommend that you use this field to specify the node operating system. Valid values:
         # 
-        # *   `CentOS`
-        # *   `AliyunLinux`
-        # *   `AliyunLinux Qboot`
-        # *   `AliyunLinuxUEFI`
-        # *   `AliyunLinux3`
-        # *   `Windows`
-        # *   `WindowsCore`
-        # *   `AliyunLinux3Arm64`
-        # *   `ContainerOS`
+        # - `CentOS`
+        # - `AliyunLinux`
+        # - `AliyunLinux Qboot`
+        # - `AliyunLinuxUEFI`
+        # - `AliyunLinux3`
+        # - `Windows`
+        # - `WindowsCore`
+        # - `AliyunLinux3Arm64`
+        # - `ContainerOS`
         self.image_type = image_type
-        # The type of OS. Examples:
+        # The operating system type. Examples:
         # 
-        # *   `Windows`
-        # *   `Linux`
+        # - `Windows`
+        # - `Linux`
         self.os_type = os_type
-        # The type of image. Valid values:
+        # The image category. Partial valid values:
         # 
-        # *   `system`: public image
-        # *   `self`: custom image
-        # *   `others`: shared image from other Alibaba Cloud accounts
-        # *   `marketplace`: image from the marketplace
+        # - `system`: public image.
+        # - `self`: custom image.
+        # - `others`: shared image from other users.
+        # - `marketplace`: Alibaba Cloud Marketplace image.
         self.image_category = image_category
-        # The architecture of the image.
+        # The image architecture.
         self.architecture = architecture
 
     def validate(self):

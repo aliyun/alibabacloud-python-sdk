@@ -12,21 +12,21 @@ class DescribeClusterAddonInstanceResponseBody(DaraModel):
         state: str = None,
         version: str = None,
     ):
-        # The configuration of the component.
+        # The component configuration.
         self.config = config
-        # The name of the component.
+        # The component name.
         self.name = name
-        # The status of the component. Valid values:
+        # The component status. Valid values:
         # 
-        # *   initial: The component is being installed.
-        # *   active: The component has been installed.
-        # *   unhealthy: The component is in an abnormal state.
-        # *   upgrading: The component is undergoing an upgrade.
-        # *   updating: Component configuration changes are being applied.
-        # *   deleting: The component is being uninstalled.
-        # *   deleted: The component has been deleted.
+        # - initial: installing
+        # - active: installed
+        # - unhealthy: abnormal
+        # - upgrading: upgrading
+        # - updating: updating
+        # - deleting: uninstalling
+        # - deleted: deleted.
         self.state = state
-        # The version of the component.
+        # The component version.
         self.version = version
 
     def validate(self):

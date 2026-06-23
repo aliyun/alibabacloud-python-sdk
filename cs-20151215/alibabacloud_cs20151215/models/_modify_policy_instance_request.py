@@ -14,16 +14,16 @@ class ModifyPolicyInstanceRequest(DaraModel):
         namespaces: List[str] = None,
         parameters: Dict[str, Any] = None,
     ):
-        # The action of the policy. Valid values:
+        # The governance action of the rule. Valid values:
         # 
-        # *   `deny`: Deployments that match the policy are denied.
-        # *   `warn`: Alerts are generated for deployments that match the policy.
+        # - `deny`: Blocks non-compliant deployments.
+        # - `warn`: Generates an alert.
         self.action = action
-        # The ID of the policy instance.
+        # The instance ID of the policy rule.
         self.instance_name = instance_name
-        # The namespaces to which the policy is applied. The policy is applied to all namespaces if this parameter is left empty.
+        # The namespaces to which the policy applies. If this parameter is empty, the policy applies to all namespaces.
         self.namespaces = namespaces
-        # The parameters of the policy instance. For more information, see [Predefined security policies of ACK](https://help.aliyun.com/document_detail/359819.html).
+        # The configuration parameters of the current rule instance. For more information about parameter settings rules, see [Container security policy rules](https://help.aliyun.com/document_detail/359819.html).
         self.parameters = parameters
 
     def validate(self):

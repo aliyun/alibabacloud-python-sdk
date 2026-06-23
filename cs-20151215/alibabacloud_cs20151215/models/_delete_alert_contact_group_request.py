@@ -11,7 +11,7 @@ class DeleteAlertContactGroupRequest(DaraModel):
         self,
         contact_group_ids: List[int] = None,
     ):
-        # The list of alert contact group IDs.
+        # List of alert contact group IDs.
         # 
         # This parameter is required.
         self.contact_group_ids = contact_group_ids

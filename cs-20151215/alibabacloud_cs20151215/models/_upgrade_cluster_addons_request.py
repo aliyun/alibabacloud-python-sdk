@@ -52,22 +52,21 @@ class UpgradeClusterAddonsRequestBody(DaraModel):
         policy: str = None,
         version: str = None,
     ):
-        # The name of the component.
+        # The component name.
         # 
         # This parameter is required.
         self.component_name = component_name
-        # The custom component settings that you want to use. The value is a JSON string.
+        # The custom parameters of the component, encoded as a JSON string.
         self.config = config
-        # The version to which the component can be updated. You can call the `DescribeClusterAddonsVersion` operation to query the version to which the component can be updated.
+        # The target version to which you want to upgrade. You can call the `DescribeAddon` operation to query the versions to which the component can be upgraded.
         # 
         # This parameter is required.
         self.next_version = next_version
-        # The update policy. Valid values:
-        # 
-        # *   overwrite
-        # *   canary
+        # The component upgrade policy. Valid values:
+        # - overwrite: overwrites the existing version.
+        # - canary: performs a canary upgrade.
         self.policy = policy
-        # The current version of the component.
+        # The current component version.
         self.version = version
 
     def validate(self):

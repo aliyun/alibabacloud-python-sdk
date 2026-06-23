@@ -10,18 +10,14 @@ class DescribeClusterUserKubeconfigRequest(DaraModel):
         private_ip_address: bool = None,
         temporary_duration_minutes: int = None,
     ):
-        # Specifies whether to obtain the kubeconfig file that is used to connect to the cluster over the internal network. You can obtain the terminal ID by calling one of the following operations:
+        # Specifies whether to obtain the internal network connection configuration. Valid values:
+        # - `true`: Obtains only the internal network connection credential.
+        # - `false`: Obtains only the public network connection credential. 
         # 
-        # *   `true`: obtains the kubeconfig file that is used to connect to the master instance over the internal network.
-        # *   `false`: obtains the kubeconfig file that is used to connect to the master instance over the Internet.
-        # 
-        # Default value: `false`
+        # Default value: `false`.
         self.private_ip_address = private_ip_address
-        # The validity period of the temporary kubeconfig file. Unit: minutes. Valid values: 15 to 4320 (3 days).
-        # 
-        # **
-        # 
-        # **Usage notes** If you do not specify this parameter, the system specifies a longer validity period. The validity period is returned in the `expiration` parameter.
+        # The validity period of the temporary KubeConfig. Unit: minutes. Valid values: 15 (15 minutes) to 4320 (3 days).
+        # >If you do not set this parameter, the system automatically determines a longer validity period. The specific expiration time is determined by the value of the `expiration` field in the response.
         self.temporary_duration_minutes = temporary_duration_minutes
 
     def validate(self):

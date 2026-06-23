@@ -13,7 +13,7 @@ class CreateClusterDiagnosisResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The diagnostic ID.
+        # The diagnosis ID.
         self.diagnosis_id = diagnosis_id
         # The request ID.
         self.request_id = request_id

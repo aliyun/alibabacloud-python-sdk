@@ -9,7 +9,7 @@ class DescribeClusterNodePoolsRequest(DaraModel):
         self,
         nodepool_name: str = None,
     ):
-        # The name of the node pool.
+        # The node pool name.
         self.nodepool_name = nodepool_name
 
     def validate(self):

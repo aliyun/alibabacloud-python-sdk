@@ -10,9 +10,9 @@ class StartAlertRequest(DaraModel):
         alert_rule_group_name: str = None,
         alert_rule_name: str = None,
     ):
-        # The name of the alert rule group.
+        # The alert rule group name.
         self.alert_rule_group_name = alert_rule_group_name
-        # The name of the alert rule.
+        # The alert rule name.
         self.alert_rule_name = alert_rule_name
 
     def validate(self):

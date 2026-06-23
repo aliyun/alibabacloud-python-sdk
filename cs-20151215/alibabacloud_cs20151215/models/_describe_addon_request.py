@@ -15,19 +15,30 @@ class DescribeAddonRequest(DaraModel):
         region_id: str = None,
         version: str = None,
     ):
-        # The ID of the cluster. If you specify a cluster ID, only components used in the cluster are queried. Other parameters are ignored.
+        # Cluster ID.
+        # When a cluster ID is specified, the list of available components for the cluster is queried, and other parameters are ignored.
         self.cluster_id = cluster_id
-        # The specifications of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # Cluster specification.
+        # If cluster_id is specified, this parameter is ignored.
+        # The five parameters region_id, cluster_type, profile, cluster_spec, and cluster_version must be specified together.
         self.cluster_spec = cluster_spec
-        # The type of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # Cluster type.
+        # If cluster_id is specified, this parameter is ignored.
+        # The five parameters region_id, cluster_type, profile, cluster_spec, and cluster_version must be specified together.
         self.cluster_type = cluster_type
-        # The version of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # Cluster version.
+        # If cluster_id is specified, this parameter is ignored.
+        # The five parameters region_id, cluster_type, profile, cluster_spec, and cluster_version must be specified together.
         self.cluster_version = cluster_version
-        # The subtype of the cluster. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # Cluster subtype.
+        # If cluster_id is specified, this parameter is ignored.
+        # The five parameters region_id, cluster_type, profile, cluster_spec, and cluster_version must be specified together.
         self.profile = profile
-        # The region ID. If cluster_id is specified, this parameter is ignored. You must specify the region_id, cluster_type, profile, cluster_spec, and cluster_version parameters at the same time.
+        # Region.
+        # If cluster_id is specified, this parameter is ignored.
+        # The five parameters region_id, cluster_type, profile, cluster_spec, and cluster_version must be specified together.
         self.region_id = region_id
-        # The version of the component. If you do not specify this parameter, the latest version of the component is queried.
+        # Component version. If not specified, the latest available version of the component is queried.
         self.version = version
 
     def validate(self):

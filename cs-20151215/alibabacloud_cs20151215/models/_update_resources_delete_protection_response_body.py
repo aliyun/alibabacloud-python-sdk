@@ -15,15 +15,15 @@ class UpdateResourcesDeleteProtectionResponseBody(DaraModel):
         resource_type: str = None,
         resources: List[str] = None,
     ):
-        # The namespace to which the resource belongs.
+        # The namespace of the resource.
         self.namespace = namespace
-        # Indicates the status of deletion protection. A value of true indicates that deletion protection is enabled and a value of false indicates that deletion protection is disabled.
+        # The deletion protection status of the resource.
         self.protection = protection
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The type of resource for which deletion protection is enabled or disabled.
+        # The resource type.
         self.resource_type = resource_type
-        # The list of resources whose deletion protection status is updated.
+        # The list of resources for which the deletion protection status is updated.
         self.resources = resources
 
     def validate(self):

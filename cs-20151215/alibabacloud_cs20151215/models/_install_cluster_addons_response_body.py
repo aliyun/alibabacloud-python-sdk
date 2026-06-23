@@ -11,11 +11,11 @@ class InstallClusterAddonsResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 任务ID。
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

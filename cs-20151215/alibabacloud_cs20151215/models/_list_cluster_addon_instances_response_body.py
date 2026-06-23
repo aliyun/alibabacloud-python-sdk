@@ -12,7 +12,7 @@ class ListClusterAddonInstancesResponseBody(DaraModel):
         self,
         addons: List[main_models.ListClusterAddonInstancesResponseBodyAddons] = None,
     ):
-        # A list of components that are installed in the cluster.
+        # The list of installed component instances.
         self.addons = addons
 
     def validate(self):
@@ -52,14 +52,13 @@ class ListClusterAddonInstancesResponseBodyAddons(DaraModel):
     ):
         # The component name.
         self.name = name
-        # The status of the component. Valid values:
-        # 
-        # *   active: The component is installed.
-        # *   updating: The component is being modified.
-        # *   upgrading: The component is being updated.
-        # *   deleting: The component is being uninstalled.
+        # The component status. Valid values:
+        # - active: installed
+        # - updating: being modified
+        # - upgrading: being upgraded
+        # - deleting: being uninstalled.
         self.state = state
-        # The version of the component.
+        # The component version.
         self.version = version
 
     def validate(self):

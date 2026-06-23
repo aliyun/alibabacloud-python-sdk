@@ -12,7 +12,7 @@ class CheckServiceRoleResponseBody(DaraModel):
         self,
         roles: List[main_models.CheckServiceRoleResponseBodyRoles] = None,
     ):
-        # The check results.
+        # The service role check results.
         self.roles = roles
 
     def validate(self):
@@ -50,16 +50,11 @@ class CheckServiceRoleResponseBodyRoles(DaraModel):
         message: str = None,
         name: str = None,
     ):
-        # Indicates whether the service role is assigned to ACK.
-        # 
-        # Valid values:
-        # 
-        # *   true: The role is assigned to ACK.
-        # *   false: The role is not assigned to ACK.
+        # Indicates whether the service role has been granted.
         self.granted = granted
-        # The message that is displayed for a role that is not assigned to ACK.
+        # The prompt message returned when the service role is not granted.
         self.message = message
-        # The name of the service role.
+        # The service role name.
         self.name = name
 
     def validate(self):

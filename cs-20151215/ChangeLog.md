@@ -1,3 +1,9 @@
+2026-06-23 Version: 6.7.1
+- Update API DescribeClusterNodes: add request parameters nodeIps.
+- Update API DescribeClusterNodes: add request parameters nodeLabels.
+- Update API DescribeClusterNodes: add request parameters nodeNames.
+
+
 2026-06-11 Version: 6.7.0
 - Support API RunNodeOperation.
 

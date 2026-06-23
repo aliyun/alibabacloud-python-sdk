@@ -18,13 +18,13 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
     ):
         # The containerd runtime configuration.
         self.containerd_config = containerd_config
-        # The kubelet configurations.
+        # The kubelet parameter configuration.
         self.kubelet_config = kubelet_config
-        # List of nodes to upgrade.
+        # The list of specified nodes to upgrade.
         self.node_names = node_names
-        # The OS configuration.
+        # The operating system parameter configuration.
         self.os_config = os_config
-        # The rolling policy configuration.
+        # The rolling update configuration.
         self.rolling_policy = rolling_policy
 
     def validate(self):
@@ -87,7 +87,11 @@ class ModifyNodePoolNodeConfigRequestRollingPolicy(DaraModel):
         self,
         max_parallelism: int = None,
     ):
-        # The maximum number of unavailable nodes.
+        # Node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
+        # 
+        # Valid values: [1,10].
+        # 
+        # Default value: 10.
         self.max_parallelism = max_parallelism
 
     def validate(self):
@@ -116,9 +120,9 @@ class ModifyNodePoolNodeConfigRequestOsConfig(DaraModel):
         hugepage: main_models.Hugepage = None,
         sysctl: Dict[str, Any] = None,
     ):
-        # Hugepage configuration.
+        # The Hugepage configuration.
         self.hugepage = hugepage
-        # The sysctl configuration.
+        # The custom sysctl parameter configuration.
         self.sysctl = sysctl
 
     def validate(self):

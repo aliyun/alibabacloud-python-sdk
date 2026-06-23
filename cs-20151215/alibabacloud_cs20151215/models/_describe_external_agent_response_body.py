@@ -9,7 +9,7 @@ class DescribeExternalAgentResponseBody(DaraModel):
         self,
         config: str = None,
     ):
-        # The agent configurations in the YAML format.
+        # The agent configuration in YAML format.
         self.config = config
 
     def validate(self):

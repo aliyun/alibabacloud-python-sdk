@@ -10,15 +10,17 @@ class ListUserKubeConfigStatesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number.
+        # The current page number.
         # 
-        # *   Valid values: ≥ 1.
-        # *   Default value: 1.
+        # - Valid values: greater than or equal to 1.
+        # 
+        # - Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of results returned per page.
         # 
-        # *   Value values: 1 to 100.
-        # *   Default value: 50.
+        # - Valid values: 1 to 100.
+        # 
+        # - Default value: 50.
         self.page_size = page_size
 
     def validate(self):

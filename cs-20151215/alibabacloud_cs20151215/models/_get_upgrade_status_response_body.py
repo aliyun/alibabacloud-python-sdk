@@ -14,26 +14,26 @@ class GetUpgradeStatusResponseBody(DaraModel):
         upgrade_step: str = None,
         upgrade_task: main_models.GetUpgradeStatusResponseBodyUpgradeTask = None,
     ):
-        # The error message returned during the update.
+        # The error message during the cluster upgrade.
         self.error_message = error_message
         # The ID of the precheck report.
         self.precheck_report_id = precheck_report_id
-        # The status of the update. Valid values:
+        # The current upgrade status of the cluster. Valid values:
         # 
-        # *   `success`: The update is successful.
-        # *   `fail`: The update failed.
-        # *   `pause`: The update is paused.
-        # *   `running`: The update is in progress.
+        # - `success`: The upgrade is successful.
+        # - `fail`: The upgrade has failed.
+        # - `pause`: The upgrade is paused.
+        # - `running`: The upgrade is in progress.
         self.status = status
-        # The current phase of the update. Valid values:
+        # The current upgrade phase of the cluster. Valid values:
         # 
-        # *   `not_start`: The update is not started.
-        # *   `prechecking`: The precheck is in progress.
-        # *   `upgrading`: The cluster is being updated.
-        # *   `pause`: The update is paused.
-        # *   `success`: The update is successful.
+        # - `not_start`: Not started.
+        # - `prechecking`: Prechecking is in progress.
+        # - `upgrading`: The upgrade is in progress.
+        # - `pause`: The upgrade is paused.
+        # - `success`: The upgrade is successful.
         self.upgrade_step = upgrade_step
-        # The details of the update task.
+        # The upgrade task details.
         self.upgrade_task = upgrade_task
 
     def validate(self):
@@ -88,13 +88,12 @@ class GetUpgradeStatusResponseBodyUpgradeTask(DaraModel):
         message: str = None,
         status: str = None,
     ):
-        # The description of the update task.
+        # The description of the upgrade task.
         self.message = message
-        # The status of the update task. Valid values:
-        # 
-        # *   `running`: The update task is being executed.
-        # *   `Success`: The update task is successfully executed.
-        # *   `Failed`: The update task failed.
+        # The upgrade task status. Valid values:
+        # - `running`: The task is running.
+        # - `Success`: The task is successful.
+        # - `Failed`: The task has failed.
         self.status = status
 
     def validate(self):

@@ -14,9 +14,9 @@ class DescribeEventsResponseBody(DaraModel):
         next_token: str = None,
         page_info: main_models.DescribeEventsResponseBodyPageInfo = None,
     ):
-        # A list of events.
+        # The event details.
         self.events = events
-        # The token to retrieve the next page of results. If this parameter is absent from the response, all results have been returned.
+        # The query token. This value is the next_token value returned by the previous API call.
         self.next_token = next_token
         # The pagination information.
         self.page_info = page_info
@@ -71,11 +71,11 @@ class DescribeEventsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # The page number for the paged query.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The maximum number of results per page.
         self.page_size = page_size
-        # The total number of entries that match the query.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -123,49 +123,33 @@ class DescribeEventsResponseBodyEvents(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The event details.
+        # The event description.
         self.data = data
         # The event ID.
         self.event_id = event_id
-        # The source of the event.
+        # The event source.
         self.source = source
-        # The object that the event is about.
+        # The event subject.
         self.subject = subject
-        # The event timestamp.
+        # The event start time.
         self.time = time
         # The event type. Valid values:
-        # 
-        # - `cluster_create`: A cluster is created.
-        # 
-        # - `cluster_scaleout`: A cluster is scaled out.
-        # 
-        # - `cluster_attach`: An existing node is added.
-        # 
-        # - `cluster_delete`: A cluster is deleted.
-        # 
-        # - `cluster_upgrade`: A cluster is upgraded.
-        # 
-        # - `cluster_migrate`: A cluster is migrated.
-        # 
-        # - `cluster_node_delete`: A node is removed.
-        # 
-        # - `cluster_node_drain`: A node is drained.
-        # 
-        # - `cluster_modify`: A cluster is modified.
-        # 
-        # - `cluster_configuration_modify`: The control plane configuration of a cluster is modified.
-        # 
-        # - `cluster_addon_install`: An add-on is installed.
-        # 
-        # - `cluster_addon_upgrade`: An add-on is upgraded.
-        # 
-        # - `cluster_addon_uninstall`: An add-on is uninstalled.
-        # 
-        # - `runtime_upgrade`: The runtime is upgraded.
-        # 
-        # - `nodepool_upgrade`: A node pool is upgraded.
-        # 
-        # - `nodepool_update`: A node pool is updated.
+        # - `cluster_create`: creates a cluster.
+        # - `cluster_scaleout`: scales out a cluster.
+        # - `cluster_attach`: adds existing nodes.
+        # - `cluster_delete`: deletes a cluster.
+        # - `cluster_upgrade`: upgrades a cluster.
+        # - `cluster_migrate`: migrates a cluster.
+        # - `cluster_node_delete`: removes nodes.
+        # - `cluster_node_drain`: drains nodes.
+        # - `cluster_modify`: modifies a cluster.
+        # - `cluster_configuration_modify`: modifies cluster management configurations.
+        # - `cluster_addon_install`: installs a component.
+        # - `cluster_addon_upgrade`: upgrades a component.
+        # - `cluster_addon_uninstall`: uninstalls a component.
+        # - `runtime_upgrade`: upgrades the runtime.
+        # - `nodepool_upgrade`: upgrades a node pool.
+        # - `nodepool_update`: updates a node pool.
         self.type = type
 
     def validate(self):
@@ -233,17 +217,14 @@ class DescribeEventsResponseBodyEventsData(DaraModel):
         message: str = None,
         reason: str = None,
     ):
-        # The severity level of the event. Valid values:
-        # 
-        # - info: An informational message.
-        # 
-        # - warning: A warning.
-        # 
-        # - error: An error.
+        # The event level. Valid values:
+        # - info: informational.
+        # - warning: warning.
+        # - error: error.
         self.level = level
-        # A human-readable description of the event.
+        # The event details.
         self.message = message
-        # A brief, machine-readable string that describes the reason for the event.
+        # The event status.
         self.reason = reason
 
     def validate(self):

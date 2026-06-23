@@ -15,7 +15,7 @@ class ListClusterKubeconfigStatesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page = page
-        # The status list of the kubeconfig files associated with the cluster.
+        # The list of KubeConfig states associated with the cluster.
         self.states = states
 
     def validate(self):
@@ -69,37 +69,41 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         cloud_service_roles: List[main_models.ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles] = None,
         revokable: bool = None,
     ):
-        # The displayed name or role name of the RAM user.
+        # The display name of the Resource Access Management (RAM) user or the role name.
         self.account_display_name = account_display_name
-        # The ID of an Alibaba Cloud account, RAM user, or RAM role.
+        # The Alibaba Cloud account, Resource Access Management (RAM) user, or role ID.
         self.account_id = account_id
-        # The logon name or role name of the RAM user.
+        # The logon name of the Resource Access Management (RAM) user or the role name.
         self.account_name = account_name
-        # The status of the account.
+        # The account status. Valid values:
         # 
-        # *   Active: The account is active.
-        # *   InActive: The account is locked.
-        # *   Deleted: The account is deleted.
+        # - Active: The account is active.
+        # 
+        # - InActive: The account is frozen.
+        # 
+        # - Deleted: The account is deleted.
         self.account_state = account_state
-        # The type of the account.
+        # The account type. Valid values:
         # 
-        # *   RootAccount: Alibaba Cloud account.
-        # *   RamUser: RAM user.
-        # *   RamRole: RAM role.
+        # - RootAccount: Alibaba Cloud account.
+        # - RamUser: Resource Access Management (RAM) user.
+        # - RamRole: RAM role.
         self.account_type = account_type
-        # The expiration time of the client certificate for the kubeconfig file.
+        # The expiration time of the KubeConfig client certificate.
         self.cert_expire_time = cert_expire_time
-        # The status of the client certificate for the kubeconfig file.
+        # The status of the KubeConfig client certificate. Valid values:
         # 
-        # *   Unexpired: The certificate is not expired.
-        # *   Expired: The certificate is expired.
-        # *   Unknown: The status of the certificate is unknown.
+        # - Unexpired: The certificate has not expired.
+        # 
+        # - Expired: The certificate has expired.
+        # 
+        # - Unknown: The certificate status is unknown (abnormal state).
         self.cert_state = cert_state
-        # Cloud service name.
+        # The name of the cloud service.
         self.cloud_service_name = cloud_service_name
-        # List of cluster roles associated with the cluster cloud product service roles.
+        # The list of cluster roles associated with the cloud service role.
         self.cloud_service_roles = cloud_service_roles
-        # Indicates whether the client certificate for the kubeconfig file can be revoked.
+        # Indicates whether the KubeConfig client certificate can be revoked.
         self.revokable = revokable
 
     def validate(self):
@@ -192,16 +196,16 @@ class ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles(DaraModel):
         role_namespace: str = None,
         type: str = None,
     ):
-        # Indicates whether the content matches the default cluster role template.  
+        # Indicates whether the content matches the default cluster role template. Valid values:
         # 
-        # - true: Matches  
-        # - false: Does not match
+        # - true: The content matches the default template.
+        # - false: The content does not match the default template.
         self.is_default_template = is_default_template
-        # Name of the cluster role associated with the cluster cloud product service role.
+        # The name of the cluster role associated with the cloud service role.
         self.role_name = role_name
-        # Namespace of the cluster role associated with the cluster cloud product service role.
+        # The namespace of the cluster role associated with the cloud service role.
         self.role_namespace = role_namespace
-        # The type of the cluster role associated with the cloud service role of the cluster.
+        # The type of the cluster role associated with the cloud service role.
         self.type = type
 
     def validate(self):
@@ -251,9 +255,9 @@ class ListClusterKubeconfigStatesResponseBodyPage(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of records per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):

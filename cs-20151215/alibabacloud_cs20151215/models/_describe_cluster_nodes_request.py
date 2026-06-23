@@ -8,30 +8,36 @@ class DescribeClusterNodesRequest(DaraModel):
     def __init__(
         self,
         instance_ids: str = None,
+        node_ips: str = None,
+        node_labels: str = None,
+        node_names: str = None,
         nodepool_id: str = None,
         page_number: str = None,
         page_size: str = None,
         state: str = None,
     ):
-        # The IDs of the nodes that you want to query. Separate multiple node IDs with commas (,).
+        # The instance IDs of nodes. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
+        self.node_ips = node_ips
+        self.node_labels = node_labels
+        self.node_names = node_names
         # The node pool ID.
         self.nodepool_id = nodepool_id
-        # The page number.
+        # The page number of the current query.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100.
+        # The maximum number of records that can be displayed on each page. Valid values: [1, 100].
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The node state that you want to use to filter nodes. Valid values:
+        # The status of cluster nodes. Used to filter by node running status. Valid values:
         # 
-        # *   `all`: query nodes in the following four states.
-        # *   `running`: query nodes in the running state.
-        # *   `removing`: query nodes that are being removed.
-        # *   `initial`: query nodes that are being initialized.
-        # *   `failed`: query nodes that fail to be created.
+        # - `all`: does not filter by running status. All nodes are returned.
+        # - `running`: running nodes.
+        # - `removing`: nodes that are being removed.
+        # - `initial`: nodes that are being initialized.
+        # - `failed`: nodes that failed to be created.
         # 
         # Default value: `all`.
         self.state = state
@@ -46,6 +52,15 @@ class DescribeClusterNodesRequest(DaraModel):
             result = _map
         if self.instance_ids is not None:
             result['instanceIds'] = self.instance_ids
+
+        if self.node_ips is not None:
+            result['nodeIps'] = self.node_ips
+
+        if self.node_labels is not None:
+            result['nodeLabels'] = self.node_labels
+
+        if self.node_names is not None:
+            result['nodeNames'] = self.node_names
 
         if self.nodepool_id is not None:
             result['nodepool_id'] = self.nodepool_id
@@ -65,6 +80,15 @@ class DescribeClusterNodesRequest(DaraModel):
         m = m or dict()
         if m.get('instanceIds') is not None:
             self.instance_ids = m.get('instanceIds')
+
+        if m.get('nodeIps') is not None:
+            self.node_ips = m.get('nodeIps')
+
+        if m.get('nodeLabels') is not None:
+            self.node_labels = m.get('nodeLabels')
+
+        if m.get('nodeNames') is not None:
+            self.node_names = m.get('nodeNames')
 
         if m.get('nodepool_id') is not None:
             self.nodepool_id = m.get('nodepool_id')

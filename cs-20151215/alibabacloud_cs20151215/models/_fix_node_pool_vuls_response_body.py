@@ -9,7 +9,7 @@ class FixNodePoolVulsResponseBody(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the CVE patching task.
+        # The fix task ID.
         self.task_id = task_id
 
     def validate(self):

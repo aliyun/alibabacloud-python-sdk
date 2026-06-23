@@ -24,83 +24,104 @@ class AttachInstancesRequest(DaraModel):
         tags: List[main_models.Tag] = None,
         user_data: str = None,
     ):
-        # The CPU management policy of the node. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
+        # The CPU management policy of the node. The following policies are supported for clusters of version 1.12.6 or later:
         # 
-        # *   `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
-        # *   `none`: uses default CPU affinity.
+        # - `static`: Allows pods with certain resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
+        # - `none`: Uses the existing default CPU affinity scheme.
         # 
-        # Default value: `none`
+        # Default value: `none`.
         # 
-        # >  This parameter is not supported if you specify `nodepool_id`.
+        # > After you specify `nodepool_id`, this parameter is not supported.
         self.cpu_policy = cpu_policy
-        # Specifies whether to store container data and images on data disks. Valid value:
+        # Specifies whether to store container data and images on a data cloud disk. Valid values:
         # 
-        # *   `true`: stores container data and images on data disks.
-        # *   `false`: does not store container data or images on data disks.
+        # - `true`: Stores container data and images on a data cloud disk.
+        # 
+        # - `false`: Does not store container data and images on a data cloud disk.
         # 
         # Default value: `false`.
         # 
-        # How data disks are attached:
         # 
-        # *   If the ECS instance is already attached with data disks and the file system of the last data disk is not initialized, the system automatically formats this data disk to ext4. Then, the system uses the disk to store the data in the /var/lib/docker and /var/lib/kubelet directories.
-        # *   If no data disk is attached to the ECS instance, the system does not purchase a new data disk.
+        # Data cloud disk mounting rules:
         # 
-        # >  If you choose to store container data and images on data disks and a data disk is already attached to the ECS instance, the original data on this data disk is cleared. You can back up the disk to prevent data loss.
+        # - If the ECS instance has data cloud disks mounted and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk to EXT4 to store the content of /var/lib/docker and /var/lib/kubelet (the default data directories for the Docker container runtime and the kubelet component, respectively).
+        # - If the ECS instance has no data cloud disks mounted, no new data cloud disk is mounted.
+        # > If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks mounted, existing data on the data cloud disk is lost. Back up your data in advance.
         self.format_disk = format_disk
-        # The custom image ID. If you do not specify this parameter, the default system image is used.
+        # The custom image ID.
         # 
-        # > 
+        # - If you specify a custom image ID, the system cloud disk image of the instance is replaced with the custom image.
         # 
-        # *   If you specify a custom image, the custom image is used to deploy the operating system on the system disk of the node.
+        # - If you do not specify this parameter, the default system image is used.
         # 
-        # *   This parameter is not supported if you specify `nodepool_id`.
+        # > After you specify `nodepool_id`, this parameter is not supported.
         self.image_id = image_id
-        # The ECS instances that you want to add.
+        # The list of ECS instances to be added.
         # 
         # This parameter is required.
         self.instances = instances
-        # Specifies whether the node that you want to add is an Edge Node Service (ENS) node. Valid value:
+        # Specifies whether the node to be added is an edge node, that is, an Edge Node Service (ENS) node. Valid values:
         # 
-        # *   `true`: the node that you want to add is an ENS node.
-        # *   `false`: the node that you want to add is not an ENS node.
+        # - `true`: The node to be added is an edge node.
+        # 
+        # - `false`: The node to be added is not an edge node.
         # 
         # Default value: `false`.
         # 
-        # >  If the node that you want to add is an ENS node, you must set the value to `true`. This allows you to identify the node.
+        # > If the node is an edge node, set this parameter to `true` to identify the node type as an ENS node.
         self.is_edge_worker = is_edge_worker
-        # Specifies whether to retain the instance name. Valid value:
+        # Specifies whether to retain the original instance name. Valid values:
         # 
-        # *   `true`: retains the instance name.
-        # *   `false`: does not retain the instance name.
+        # - `true`: Retains the instance name.
+        # 
+        # - `false`: Does not retain the instance name.
         # 
         # Default value: `false`.
         self.keep_instance_name = keep_instance_name
-        # The name of the key pair used to log on to the ECS instances. You must specify this parameter or `login_password`.
-        # 
-        # >  This parameter is not supported if you specify `nodepool_id`.
+        # The name of the key pair for the instances to be added. Specify either key_pair or password. You can also leave both parameters empty.
+        # > After you specify `nodepool_id`, this parameter is not supported.
         self.key_pair = key_pair
-        # The ID of the node pool to which the node is added. If you do not specify this parameter, the node is added to the default node pool.
+        # The node pool ID. If you do not specify this parameter, the node is added to the default node pool.
         self.nodepool_id = nodepool_id
-        # The SSH logon password used to log on to the ECS instances. You must specify this parameter or `key_pair`. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The password cannot contain backslashes (\\\\) or double quotation marks (").
+        # The SSH logon password for the instances to be added. Specify either key_pair or password. You can also leave both parameters empty.
         # 
-        # The password is encrypted during data transfer to ensure security.
+        # The password must meet the following requirements:
+        # - The password must be 8 to 30 characters in length.
+        # - The password must contain uppercase letters, lowercase letters, digits, and special characters at the same time.
+        # - The password cannot contain backslashes (\\) or double quotation marks (").
+        # 
+        # The password is encrypted during transmission for security purposes.
         self.password = password
-        # A list of ApsaraDB RDS instances.
+        # The list of ApsaraDB RDS instances.
         self.rds_instances = rds_instances
         # The container runtime.
+        # > After you specify `nodepool_id`, this parameter is not supported.
         # 
-        # >  This parameter is not supported if you specify `nodepool_id`.
+        # name: The name of the container runtime. ACK supports the following three container runtimes:
+        # 
+        # - containerd: Recommended. Supported by all cluster versions.
+        # - Sandboxed-Container.runv: Sandboxed container that provides higher isolation. Supported by clusters of version 1.24 or earlier.
+        # - docker: Supported by clusters of version 1.22 or earlier.
+        # 
+        # Default value: containerd.
+        # 
+        # containerd: The container runtime version. Default value: the latest version.
+        # 
+        # For more information about changes to the sandboxed container runtime, see [Release notes for the sandboxed container runtime](https://help.aliyun.com/document_detail/160312.html).
         self.runtime = runtime
-        # The labels that you want to add to the node. When you add labels to a node, the following rules apply:
+        # The node labels. Label definition rules:
         # 
-        # *   A label is a case-sensitive key-value pair. You can add up to 20 labels.
-        # *   The key must be unique and cannot exceed 64 characters in length. The value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+        # - Labels are case-sensitive key-value pairs. You can set up to 20 labels.
+        # - Label keys cannot be duplicate and can be up to 64 characters in length.
+        # - Label values can be empty and can be up to 128 characters in length.
+        # - Label keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`.
         # 
-        # >  This parameter is not supported if you specify `nodepool_id`.
+        # For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+        # > After you specify `nodepool_id`, this parameter is not supported.
         self.tags = tags
-        # The user-defined data on the node. For more information, see [Use instance user data to automatically run commands or scripts on instance startup](https://help.aliyun.com/document_detail/49121.html).
+        # The instance user data of the node. For more information, see [Generate instance user data](https://help.aliyun.com/document_detail/49121.html).
         # 
-        # >  This parameter is not supported if you specify `nodepool_id`.
+        # > After you specify `nodepool_id`, this parameter is not supported.
         self.user_data = user_data
 
     def validate(self):

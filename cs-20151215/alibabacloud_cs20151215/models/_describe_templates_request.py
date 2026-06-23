@@ -11,20 +11,21 @@ class DescribeTemplatesRequest(DaraModel):
         page_size: int = None,
         template_type: str = None,
     ):
-        # The page number.
+        # The page number to return when paginating query results.
         # 
         # Default value: 1.
         self.page_num = page_num
-        # The number of entries per page.
+        # The number of entries per page when paginating query results.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The type of template. This parameter can be set to a custom value.
+        # The templatetype.
         # 
-        # *   If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
-        # *   If you set the parameter to `compose`, the template is not displayed on the Templates page in the console.
+        # - If the value is set to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
         # 
-        # Default value: `kubernetes`.
+        # - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
+        # 
+        # Set this parameter to `kubernetes`.
         self.template_type = template_type
 
     def validate(self):

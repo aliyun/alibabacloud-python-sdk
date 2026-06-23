@@ -13,7 +13,7 @@ class DescribeClustersRequest(DaraModel):
     ):
         # The cluster type.
         self.cluster_type = cluster_type
-        # The cluster name based on which the system performs fuzzy searches among the clusters that belong to the current Alibaba Cloud account.
+        # Perform a fuzzy match query based on the cluster name.
         self.name = name
         self.resource_group_id = resource_group_id
 

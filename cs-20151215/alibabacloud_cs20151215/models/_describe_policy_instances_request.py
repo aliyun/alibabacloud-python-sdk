@@ -10,9 +10,9 @@ class DescribePolicyInstancesRequest(DaraModel):
         instance_name: str = None,
         policy_name: str = None,
     ):
-        # The name of the policy instance that you want to query.
+        # The name of the policy instance.
         self.instance_name = instance_name
-        # The name of the policy that you want to query.
+        # The name of the policy governance rule.
         self.policy_name = policy_name
 
     def validate(self):
