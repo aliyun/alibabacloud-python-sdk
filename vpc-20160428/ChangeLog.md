@@ -1,3 +1,7 @@
+2026-06-23 Version: 7.1.2
+- Update API DeleteRouteTargetGroup: add request parameters ForceDelete.
+
+
 2026-04-29 Version: 7.1.1
 - Update API CreateNatGateway: add request parameters AvailabilityMode.
 - Update API DescribeNatGateways: add request parameters AvailabilityMode.

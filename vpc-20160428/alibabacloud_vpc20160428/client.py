@@ -58,7 +58,42 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'vpc.cn-zhangjiakou.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'vpc-nebula.cn-qingdao-nebula.aliyuncs.com',
             'eu-west-1-oxs': 'vpc-nebula.cn-shenzhen-cloudstone.aliyuncs.com',
-            'rus-west-1-pop': 'vpc.aliyuncs.com'
+            'rus-west-1-pop': 'vpc.aliyuncs.com',
+            'us-west-1': 'vpc.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'vpc.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'vpc.us-east-1.aliyuncs.com',
+            'na-south-1': 'vpc.na-south-1.aliyuncs.com',
+            'me-east-1': 'vpc.me-east-1.aliyuncs.com',
+            'me-central-1': 'vpc.me-central-1.aliyuncs.com',
+            'eu-west-2': 'vpc.eu-west-2.aliyuncs.com',
+            'eu-west-1': 'vpc.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'vpc.eu-central-1.aliyuncs.com',
+            'cn-zhongwei': 'vpc.cn-zhongwei.aliyuncs.com',
+            'cn-zhengzhou-jva': 'vpc.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'vpc.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'vpc.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'vpc.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen': 'vpc.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'vpc.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'vpc.cn-qingdao.aliyuncs.com',
+            'cn-nanjing': 'vpc.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'vpc.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'vpc.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'vpc.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-heyuan': 'vpc.cn-heyuan.aliyuncs.com',
+            'cn-guangzhou': 'vpc.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'vpc.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'vpc.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'vpc.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'vpc.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'vpc.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'vpc.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'vpc.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'vpc.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'vpc.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'vpc.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-2': 'vpc.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'vpc.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vpc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -15142,6 +15177,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.force_delete):
+            query['ForceDelete'] = request.force_delete
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.route_target_group_id):
@@ -15176,6 +15213,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.force_delete):
+            query['ForceDelete'] = request.force_delete
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.route_target_group_id):

@@ -18,7 +18,7 @@ class CreateNatGatewayResponseBody(DaraModel):
     ):
         self.forward_table_ids = forward_table_ids
         self.full_nat_table_ids = full_nat_table_ids
-        # The ID of the NAT gateway.
+        # The instance ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The request ID.
         self.request_id = request_id

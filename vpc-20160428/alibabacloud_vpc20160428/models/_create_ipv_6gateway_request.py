@@ -25,9 +25,9 @@ class CreateIpv6GatewayRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The description of the IPv6 gateway.
         # 
@@ -40,17 +40,19 @@ class CreateIpv6GatewayRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPv6 gateway belongs.
+        # 
+        # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The tags of the resource.
         self.tag = tag
-        # The ID of the VPC in which you want to create the IPv6 gateway.
+        # The ID of the VPC for which you want to enable IPv6 and create the IPv6 gateway.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -155,13 +157,13 @@ class CreateIpv6GatewayRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

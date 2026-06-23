@@ -20,14 +20,14 @@ class DescribeIpv6EgressOnlyRulesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
+        # The ID of the IPv6 address for which the IPv6 egress-only rule is configured.
         self.instance_id = instance_id
-        # The type of the instance to which you want to apply the egress-only rule. Valid values:
+        # The type of the instance for which you want to configure an IPv6 egress-only rule. Valid values:
         # 
-        # *   IPv6Address (default)
-        # *   IPv6Prefix
+        # - IPv6Address (default): The instance is a single IPv6 address.
+        # - IPv6Prefix: The instance is an IPv6 CIDR block.
         self.instance_type = instance_type
-        # The ID of the egress-only rule that you want to query.
+        # The ID of the IPv6 egress-only rule to query.
         self.ipv_6egress_only_rule_id = ipv_6egress_only_rule_id
         # The ID of the IPv6 gateway.
         # 
@@ -37,11 +37,11 @@ class DescribeIpv6EgressOnlyRulesRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

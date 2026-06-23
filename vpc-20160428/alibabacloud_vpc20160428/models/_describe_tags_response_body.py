@@ -14,12 +14,11 @@ class DescribeTagsResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.DescribeTagsResponseBodyTagResources = None,
     ):
-        # The token that is used for the next query. Valid values:
-        # 
-        # *   If the value of **NextToken** is not returned, it indicates that no next query is to be sent.
-        # *   If a value of **NextToken** is returned, the value is the token that is used for the subsequent query.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.tag_resources = tag_resources
 

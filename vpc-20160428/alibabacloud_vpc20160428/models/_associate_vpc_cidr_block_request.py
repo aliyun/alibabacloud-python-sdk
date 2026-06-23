@@ -21,53 +21,54 @@ class AssociateVpcCidrBlockRequest(DaraModel):
         secondary_cidr_mask: int = None,
         vpc_id: str = None,
     ):
-        # The IPv6 CIDR block that you want to add to the VPC.
+        # The specified IPv6 CIDR block of the VPC.
         # 
-        # >  You can specify only one of **SecondaryCidrBlock** and **Ipv6CidrBlock**.
+        # > You cannot specify both **SecondaryCidrBlock** and **Ipv6CidrBlock**.
         self.ipv_6cidr_block = ipv_6cidr_block
         # The version of the IP address. Valid values:
         # 
-        # *   **IPV4**: the IPv4 address.
-        # *   **IPV6**: the IPv6 address. If you set **IpVersion** to **IPV6** and do not specify **SecondaryCidrBlock**, you can add a secondary IPv6 CIDR block to the VPC.
+        # - **IPV4**: IPv4 address.
+        # - **IPV6**: IPv6 address. When **IpVersion** is set to **IPV6** and **SecondaryCidrBlock** is not specified, a secondary IPv6 CIDR block is added to the VPC.
         self.ip_version = ip_version
-        # The ID of the IPAM pool.
+        # The instance ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
-        # Add an IPv6 CIDR block from the IPAM pool to the VPC by entering a mask.
+        # The subnet mask used to add an IPv6 CIDR block from an IPAM pool to the VPC.
         # 
-        # >  To add an IPv6 CIDR block to a VPC, specify at least one of the IPv6CidrBlock and Ipv6CidrMask parameters.
+        # > When you use an IPAM pool to add a secondary IPv6 CIDR block to the VPC, you must specify at least one of IPv6CidrBlock and Ipv6CidrMask.
         self.ipv_6cidr_mask = ipv_6cidr_mask
-        # The type of the IPv6 CIDR block. Valid values:
+        # The type of the IPv6 CIDR block of the VPC. Valid values:
         # 
-        # *   **BGP** (default)
-        # *   **ChinaMobile**
-        # *   **ChinaUnicom**
-        # *   **ChinaTelecom**
+        # - **BGP** (default): Alibaba Cloud BGP IPv6.
+        # - **ChinaMobile**: China Mobile (single ISP).
+        # - **ChinaUnicom**: China Unicom (single ISP).
+        # - **ChinaTelecom**: China Telecom (single ISP).
         # 
-        # >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+        # > If your account is included in the China single-ISP bandwidth whitelist, you can set this parameter to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         self.ipv_6isp = ipv_6isp
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VPC to which you want to add a secondary CIDR block.
+        # The region ID of the VPC to which you want to add a secondary CIDR block. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IPv4 CIDR block to be added. Take note of the following requirements:
+        # The secondary IPv4 CIDR block to add. The CIDR block must meet the following requirements:
         # 
-        # *   You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
-        # *   You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
+        # - Use a private IPv4 address specified in RFC 1918 as the secondary IPv4 CIDR block of the VPC. The subnet mask is recommended to be 16 to 28 bits in length. Examples: 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
+        # - You can use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the virtual private cloud (VPC).
         # 
-        # The CIDR block must meet the following requirements:
+        # Configuration limits:
         # 
-        # *   The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        # *   The CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block of the VPC.
+        # - The CIDR block cannot start with 0. The subnet mask is recommended to be 16 to 28 bits in length.
         # 
-        # >  You must and can specify only one of **SecondaryCidrBlock** and **IPv6CidrBlock**.
+        # - The secondary CIDR block cannot overlap with the primary CIDR block or existing secondary CIDR blocks of the VPC.
+        # 
+        # > If you do not use an IPAM pool to add a secondary CIDR block to the VPC, you must specify either the **SecondaryCidrBlock** parameter or the **Ipv6CidrBlock** parameter, but not both.
         self.secondary_cidr_block = secondary_cidr_block
-        # Add an IPv4 CIDR block from the IPAM pool to the VPC by specifying a mask.
+        # The subnet mask used to add a secondary IPv4 CIDR block from an IPAM pool to the VPC.
         # 
-        # >  If you use an IPAM pool, you must specify at least one of SecondaryCidrBlock and SecondaryCidrMask.
+        # > When you use an IPAM pool to add a secondary IPv4 CIDR block to the VPC, you must specify at least one of SecondaryCidrBlock and SecondaryCidrMask.
         self.secondary_cidr_mask = secondary_cidr_mask
         # The ID of the VPC to which you want to add a secondary CIDR block.
         # 

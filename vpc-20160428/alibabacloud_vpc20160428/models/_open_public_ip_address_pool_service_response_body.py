@@ -11,9 +11,9 @@ class OpenPublicIpAddressPoolServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The error code.
+        # The status code.
         self.code = code
-        # The response messages.
+        # The message returned when the IP address pool feature is activated.
         self.message = message
         # The request ID.
         self.request_id = request_id

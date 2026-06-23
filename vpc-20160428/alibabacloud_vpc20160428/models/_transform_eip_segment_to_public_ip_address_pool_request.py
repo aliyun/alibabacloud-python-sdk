@@ -16,27 +16,27 @@ class TransformEipSegmentToPublicIpAddressPoolRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** is different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The description of the IP address pool.
+        # The description of the IP address pool instance.
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the contiguous EIP group to be migrated.
+        # The instance ID of the contiguous EIP group to migrate.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the IP address pool.
+        # The name of the IP address pool instance.
         # 
         # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
-        # The ID of the region to which the contiguous EIP group belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the contiguous EIP group. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the address pool belongs.
+        # The resource group ID of the IP address pool.
         self.resource_group_id = resource_group_id
 
     def validate(self):

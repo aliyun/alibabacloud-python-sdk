@@ -27,13 +27,13 @@ class DescribeVpnConnectionsRequest(DaraModel):
         self.customer_gateway_id = customer_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned on each page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page for paging queries. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
-        # The ID of the region where the IPsec-VPN connection is created.
+        # The region ID of the IPsec-VPN connection. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -43,15 +43,13 @@ class DescribeVpnConnectionsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag value.
+        # The list of tags bound to the IPsec-VPN connection.
         # 
-        # The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
+        # You can specify up to 20 tags at a time.
         self.tag = tag
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
-        # The ID of the VPN gateway.
+        # The instance ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -154,17 +152,17 @@ class DescribeVpnConnectionsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The tag key cannot be an empty string.
+        # The tag key. If you specify this parameter, the value cannot be an empty string.
         # 
-        # It can be at most 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys in each call.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be an empty string and cannot exceed 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # Each tag key corresponds to one tag value. You can specify at most 20 tag values in each call.
+        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

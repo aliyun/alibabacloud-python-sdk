@@ -19,25 +19,25 @@ class AddBgpNetworkRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
+        # The CIDR block of the VPC or vSwitch that needs to be interconnected with the on-premises data center.
         # 
         # This parameter is required.
         self.dst_cidr_block = dst_cidr_block
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the virtual border router (VBR) group.
+        # The region where the VBR group resides.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the router that is associated with the router interface.
+        # The ID of the vRouter associated with the router interface.
         # 
         # This parameter is required.
         self.router_id = router_id

@@ -10,9 +10,9 @@ class CreateExpressConnectTrafficQosResponseBody(DaraModel):
         qos_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the QoS policy.
+        # The QoS policy ID.
         self.qos_id = qos_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

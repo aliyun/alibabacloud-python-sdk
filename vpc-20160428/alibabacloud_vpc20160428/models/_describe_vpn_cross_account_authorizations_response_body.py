@@ -16,15 +16,15 @@ class DescribeVpnCrossAccountAuthorizationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The cross-account authorization information about the IPsec-VPN connection.
+        # The list of cross-account authorization information for the IPsec-VPN connection.
         self.cross_account_authorizations = cross_account_authorizations
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -91,17 +91,17 @@ class DescribeVpnCrossAccountAuthorizationsResponseBodyCrossAccountAuthorization
     ):
         # The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
         self.ali_uid = ali_uid
-        # The ID of the CEN instance.
+        # The instance ID of the CEN instance to which the IPsec-VPN connection authorization is granted.
         self.bind_instance = bind_instance
-        # The type of resource that can be associated with the IPsec-VPN connection.
+        # The type of resource to which the IPsec-VPN connection is authorized.
         # 
-        # Only **CEN** can be returned, which indicates that the IPsec-VPN connection is authorized to be associated with the transit router of a Cloud Enterprise Network (CEN) instance that belongs to another Alibaba Cloud account.
+        # The value is **CEN** only, which indicates that the IPsec-VPN connection is authorized to a cross-account Cloud Enterprise Network (CEN) instance. The IPsec-VPN connection can be attached to a transit router instance under the cross-account CEN instance.
         self.bind_product = bind_product
-        # The ID of the Alibaba Cloud account whose resources the IPsec-VPN connection is authorized to be associated with.
+        # The ID of the Alibaba Cloud account to which the IPsec-VPN connection is authorized.
         self.bind_uid = bind_uid
-        # The time when the authorization for the IPsec-VPN connection was created.
+        # The timestamp when the cross-account authorization was created for the IPsec-VPN connection.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the UNIX format and represents the total number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the cross-account authorization was created.
         self.creation_time = creation_time
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id

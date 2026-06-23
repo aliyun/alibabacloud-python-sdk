@@ -26,7 +26,12 @@ class CreatePhysicalConnectionOccupancyOrderRequest(DaraModel):
         # *   **true**: yes Make sure that you have a sufficient balance in your account. Otherwise, your order becomes invalid and is automatically canceled.
         # *   **false**: disables automatic payment. This is the default value.
         self.auto_pay = auto_pay
+        # Whether to enable auto-renewal. Valid values:
+        # 
+        # - **false** (**default**): disable auto-renewal.
+        # - **true**: enable auto-renewal.
         self.auto_renew = auto_renew
+        # The auto-renewal duration. Unit: months. Valid values: **0** to **2147483647**. Default Value: **1**.
         self.auto_renew_duration = auto_renew_duration
         # The client token that is used to ensure the idempotence of the request.
         # 

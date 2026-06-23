@@ -19,24 +19,24 @@ class DescribeVpnRouteEntriesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the VPN gateway is created.
+        # The region ID of the VPN gateway instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the route entry. Valid values:
+        # The destination type of the routing entry. Valid values:
         # 
-        # *   **Custom**: custom
-        # *   **System**: system
+        # - **custom** (default): queries the destination routes of the VPN gateway instance.
+        # - **bgp**: queries the BGP routes of the VPN gateway instance.
         self.route_entry_type = route_entry_type
-        # The ID of the VPN gateway.
+        # The instance ID of the VPN gateway.
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id

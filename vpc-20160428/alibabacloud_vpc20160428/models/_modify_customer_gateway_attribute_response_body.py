@@ -15,13 +15,13 @@ class ModifyCustomerGatewayAttributeResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The timestamp generated when the customer gateway was created.
+        # The timestamp when the customer gateway was created.
         self.create_time = create_time
-        # The ID of the customer gateway.
+        # The instance ID of the customer gateway.
         self.customer_gateway_id = customer_gateway_id
         # The description of the customer gateway.
         self.description = description
-        # The public IP address of the gateway device in the data center.
+        # The public IP address of the on-premises data center gateway device.
         self.ip_address = ip_address
         # The name of the customer gateway.
         self.name = name
@@ -29,7 +29,7 @@ class ModifyCustomerGatewayAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
 
     def validate(self):

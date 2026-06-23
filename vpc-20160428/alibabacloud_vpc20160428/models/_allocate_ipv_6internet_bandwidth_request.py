@@ -21,26 +21,45 @@ class AllocateIpv6InternetBandwidthRequest(DaraModel):
     ):
         # The Internet bandwidth of the IPv6 address. Unit: Mbit/s.
         # 
-        # *   If you set **InternetChargeType** to **PayByTraffic**, valid values are **1** to **1000**.
-        # *   If you set **InternetChargeType** to **PayByBandwidth**, valid values are **1** to **2000**.
+        # <props="china">
+        # 
+        # - If **InternetChargeType** is set to **PayByTraffic**, the valid values are **1** to **1000**.
+        # - If **InternetChargeType** is set to **PayByBandwidth**, the valid values are **1** to **2000**.
+        # - If **InternetChargeType** is set to **PayByOld95**, the valid values are **1** to **2000**.
+        # 
+        # 
+        # <props="intl">
+        #  
+        # - If **InternetChargeType** is set to **PayByTraffic**, the valid values are **1** to **1000**.
+        # - If **InternetChargeType** is set to **PayByBandwidth**, the valid values are **1** to **2000**.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the API request. After the request passes the check, a 2XX HTTP status code is returned and the route table is associated. This is the default value.
+        # - **true**: performs a dry run without associating a prefix list with a route table. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # 
+        # - **false** (default): sends a normal request. If the check succeeds, a 2xx HTTP status code is returned and the prefix list is associated with the route table.
         self.dry_run = dry_run
-        # The metering method of the Internet bandwidth for the IPv6 address. Valid values:
+        # The billing method for IPv6 Internet bandwidth. Valid values:
         # 
-        # *   **PayByTraffic**: pay-by-data-transfer
-        # *   **PayByBandwidth** (default): pay-by-bandwidth
+        # <props="china">
+        # 
+        # - **PayByTraffic**: pay-by-data-transfer.
+        # - **PayByBandwidth** (default): pay-by-bandwidth.
+        # - **PayByOld95**: traditional 95th percentile billing. IPv6 Internet bandwidth does not support traditional 95th percentile billing by default. To use this billing method, contact your account manager.
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **PayByTraffic**: pay-by-data-transfer.
+        # - **PayByBandwidth** (default): pay-by-bandwidth.
         self.internet_charge_type = internet_charge_type
         # The ID of the IPv6 address.
         # 
@@ -50,7 +69,7 @@ class AllocateIpv6InternetBandwidthRequest(DaraModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

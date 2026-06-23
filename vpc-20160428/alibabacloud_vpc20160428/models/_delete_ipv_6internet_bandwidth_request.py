@@ -17,24 +17,27 @@ class DeleteIpv6InternetBandwidthRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+        # > -.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without actually deleting the IPsec server. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error message is returned. If the check passes, `DryRunOperation` is returned.
+        # 
+        # - **false** (default): performs a dry run and then sends the request. If the check passes, the IPsec server is deleted.
         self.dry_run = dry_run
         # The ID of the IPv6 address.
         # 
-        # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
+        # > You must specify either **Ipv6AddressId** or **Ipv6InternetBandwidthId**.
         self.ipv_6address_id = ipv_6address_id
-        # The instance ID of the Internet bandwidth of the IPv6 address.
+        # The Internet bandwidth instance ID of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IPv6 gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

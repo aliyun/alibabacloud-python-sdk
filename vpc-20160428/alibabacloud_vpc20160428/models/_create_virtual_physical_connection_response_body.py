@@ -12,7 +12,7 @@ class CreateVirtualPhysicalConnectionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the hosted connection.
+        # The instance ID of the shared Express Connect circuits.
         self.virtual_physical_connection = virtual_physical_connection
 
     def validate(self):

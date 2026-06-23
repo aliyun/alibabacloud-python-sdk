@@ -15,12 +15,11 @@ class ListGatewayRouteTableEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The details of the routes in the gateway route table.
+        # The details of route entries in the gateway route table.
         self.gateway_route_entry_models = gateway_route_entry_models
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -84,29 +83,29 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels(DaraModel)
         next_hops: List[main_models.ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops] = None,
         status: str = None,
     ):
-        # The name of the route entry.
+        # The description of the route entry.
         self.description = description
-        # The destination CIDR block of the route.
+        # The destination CIDR block of the route entry.
         self.destination_cidr_block = destination_cidr_block
         # The name of the route entry.
         # 
-        # The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The ID of the next hop.
+        # The instance ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The type of the next hop. Valid values:
+        # The next hop type. Valid values:
         # 
-        # *   **EcsInstance**: Elastic Compute Service (ECS) instance
-        # *   **NetworkInterface**: elastic network interfaces (ENIs).
-        # *   **Local**: local next hop
+        # - **EcsInstance**: ECS instance.
+        # - **NetworkInterface**: elastic network interfaces (ENIs).
+        # - **Local**: local.
         self.next_hop_type = next_hop_type
-        # The information about the next hop.
+        # The next hop information.
         self.next_hops = next_hops
-        # The status of the route entry. Valid values:
+        # The status of the route entry.
         # 
-        # *   **Pending**
-        # *   **Available**
-        # *   **Modifying**
+        # - **Pending**: being configured.
+        # - **Available**: available.
+        # - **Modifying**: being modified.
         self.status = status
 
     def validate(self):
@@ -183,23 +182,23 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops(Da
     ):
         # Indicates whether the route is available. Valid values:
         # 
-        # *   **0**: unavailable
-        # *   **1**: available
+        # - **0**: unavailable.
+        # - **1**: available.
         self.enabled = enabled
-        # The ID of the next hop.
+        # The instance ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The type of the next hop. Valid values:
+        # The next hop type. Valid values:
         # 
-        # *   **Instance** (default): an ECS instance
-        # *   **HaVip**: a high-availability virtual IP address (HaVip).
-        # *   **VpnGateway**: a VPN gateway
-        # *   **NatGateway**: a NAT gateway
-        # *   **NetworkInterface**: a secondary ENI
-        # *   **RouterInterface**: a router interface
-        # *   **IPv6Gateway**: an IPv6 gateway
-        # *   **Attachment**: a transit router
+        # - **Instance** (default): ECS instance.
+        # - **HaVip**: high-availability virtual IP address (HaVip).
+        # - **VpnGateway**: VPN gateway.
+        # - **NatGateway**: NAT gateway.
+        # - **NetworkInterface**: secondary elastic network interfaces (ENIs).
+        # - **RouterInterface**: vRouter interface.
+        # - **IPv6Gateway**: IPv6 gateway.
+        # - **Attachment**: transit router.
         self.next_hop_type = next_hop_type
-        # The weight of the route.
+        # The weight of the route entry.
         self.weight = weight
 
     def validate(self):

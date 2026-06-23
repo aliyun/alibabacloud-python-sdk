@@ -21,29 +21,29 @@ class DescribeCustomerGatewaysRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeCustomerGatewaysRequestTag] = None,
     ):
-        # The ID of the customer gateway.
+        # The instance ID of the customer gateway. 
         # 
-        # > If you do not specify a customer gateway ID, the system queries all customer gateways in the current region by default.
+        # > If you do not specify the instance ID of a customer gateway, the system queries information about all customer gateways in the current region by default.
         self.customer_gateway_id = customer_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the customer gateway is deployed.
+        # The region ID of the customer gateway. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the customer gateway belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group list.
+        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group IDs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags to be added to the customer gateway.
+        # The list of tags bound to the customer gateway.
         self.tag = tag
 
     def validate(self):
@@ -134,17 +134,17 @@ class DescribeCustomerGatewaysRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. The tag key cannot be an empty string.
+        # The tag key. If you specify this parameter, the value cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys at a time.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         # 
-        # The tag value can be up to 128 characters in length. It can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
+        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

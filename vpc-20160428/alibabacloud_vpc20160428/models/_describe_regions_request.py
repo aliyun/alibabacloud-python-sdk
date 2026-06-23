@@ -14,14 +14,15 @@ class DescribeRegionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response. Valid values: 
+        #           
+        # - **zh-CN** (default): Chinese.
         # 
-        # *   **zh-CN** (default): Chinese
-        # *   **en-US**: English
+        # - **en-US**: English.
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The service type. Default value: **VPC**.
+        # The product type. Default value: **VPC**.
         self.product_type = product_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

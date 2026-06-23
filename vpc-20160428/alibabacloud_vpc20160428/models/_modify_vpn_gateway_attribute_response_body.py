@@ -27,76 +27,78 @@ class ModifyVpnGatewayAttributeResponseBody(DaraModel):
         vpc_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
+        # Indicates whether BGP routes are automatically propagated to the VPC. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: automatic propagation is enabled.
+        # 
+        # - **false**: automatic propagation is not enabled.
         self.auto_propagate = auto_propagate
-        # The payment status of the VPN gateway. Valid values:
+        # The billing status of the VPN gateway instance. Valid values:
         # 
-        # *   **Normal**
-        # *   **FinancialLocked**
+        # - **Normal**: Normal.
+        # - **FinancialLocked**: locked due to overdue payment.
         self.business_status = business_status
-        # The time when the VPN gateway was created. Unit: milliseconds.
+        # The timestamp when the VPN gateway instance was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the VPN gateway instance was created.
         self.create_time = create_time
-        # The description of the VPN gateway.
+        # The description of the VPN gateway instance.
         self.description = description
-        # The second IP address assigned by the system to create an IPsec-VPN connection.
+        # The second IP address assigned by the system to the VPN gateway instance for creating IPsec-VPN connections.
         # 
-        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        # This parameter is returned only for VPN gateway instances that support dual-tunnel IPsec-VPN connections.
         self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # The ID of the second vSwitch associated with the VPN gateway.
+        # The ID of the second vSwitch associated with the VPN gateway instance.
         # 
-        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        # This parameter is returned only for VPN gateway instances that support dual-tunnel IPsec-VPN connections.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # Indicates whether BGP is enabled for the VPN gateway. Valid values:
+        # The enabling status of the BGP feature for the VPN gateway. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enabled.
+        # 
+        # - **false**: not enabled.
         self.enable_bgp = enable_bgp
-        # The time when the VPN gateway expires. Unit: milliseconds.
+        # The timestamp when the VPN gateway instance expires. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the VPN gateway instance expires.
         self.end_time = end_time
-        # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+        # - If the VPN gateway instance supports single-tunnel IPsec-VPN connections, this address is the IP address of the VPN gateway instance and can be used to create IPsec-VPN connections or SSL-VPN connections.
         # 
-        # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+        # - If the VPN gateway instance supports dual-tunnel IPsec-VPN connections, this address is the first IP address used to create IPsec-VPN connections and cannot be used to create SSL-VPN connections.
         # 
-        #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+        #     If the VPN gateway instance supports dual-tunnel IPsec-VPN connections, the system assigns two IPsec IP addresses to the VPN gateway instance for creating dual-tunnel IPsec-VPN connections.
         self.internet_ip = internet_ip
-        # The private IP address of the vSwitch that is used by the system when the VPN gateway is deployed.
+        # The private IP address of the vSwitch occupied by the system when the VPN gateway instance was deployed.
         # 
-        # The parameter is returned only for VPN gateways that support single-tunnel IPsec-VPN connections. The IPsec-VPN feature must be enabled.
+        # This parameter is returned only for VPN gateway instances that support single-tunnel IPsec-VPN connections and have the IPsec-VPN feature enabled.
         self.intranet_ip = intranet_ip
-        # The name of the VPN gateway.
+        # The name of the VPN gateway instance.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the VPN gateway belongs.
+        # The ID of the resource group to which the VPN gateway instance belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
         self.resource_group_id = resource_group_id
-        # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
+        # The bandwidth specification of the VPN gateway instance. Unit: Mbit/s.
         self.spec = spec
         # The IP address of the SSL-VPN connection.
         # 
-        # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        # This parameter is returned only when the SSL-VPN feature is enabled for a VPN gateway instance that supports dual-tunnel IPsec-VPN connections and uses the public network type.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The status of the VPN gateway. Valid values:
         # 
-        # *   **init**
-        # *   **provisioning**
-        # *   **active**
-        # *   **updating**
-        # *   **deleting**
+        # - **init**: initializing.
+        # - **provisioning**: preparing.
+        # - **active**: Normal.
+        # - **updating**: updating.
+        # - **deleting**: deleting.
         self.status = status
-        # The ID of the vSwitch associated with the VPN gateway.
+        # The ID of the vSwitch associated with the VPN gateway instance.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the VPN gateway belongs.
+        # The ID of the VPC to which the VPN gateway instance belongs.
         self.vpc_id = vpc_id
-        # The ID of the VPN gateway.
+        # The ID of the VPN gateway instance.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

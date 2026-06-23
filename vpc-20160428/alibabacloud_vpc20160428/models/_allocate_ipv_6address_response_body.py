@@ -14,11 +14,11 @@ class AllocateIpv6AddressResponseBody(DaraModel):
     ):
         # The IPv6 address.
         self.ipv_6address = ipv_6address
-        # The ID of the IPv6 address.
+        # The instance ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

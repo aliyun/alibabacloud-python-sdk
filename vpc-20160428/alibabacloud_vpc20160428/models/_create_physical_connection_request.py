@@ -31,61 +31,89 @@ class CreatePhysicalConnectionRequest(DaraModel):
         type: str = None,
         bandwidth: int = None,
     ):
-        # The access point ID of the Express Connect circuit.
+        # The ID of the access point where the Express Connect circuit is located.
         # 
         # This parameter is required.
         self.access_point_id = access_point_id
-        # The circuit code of the Express Connect circuit. The circuit code is provided by the connectivity provider.
+        # The circuit code provided by the carrier for the Express Connect circuit.
         self.circuit_code = circuit_code
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The description of the Express Connect circuit.
+        # The description of the Express Connect circuit. 
         # 
-        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
-        # The advanced features of the device.
+        # The list of device advanced capabilities.
         self.device_advanced_capacity = device_advanced_capacity
-        # The connectivity provider of the Express Connect circuit. Valid values:
+        # The carrier that provides the Express Connect circuit. Valid values:
         # 
-        # *   **CT**: China Telecom.
-        # *   **CU**: China Unicom.
-        # *   **CM**: China Mobile.
-        # *   **CO**: other connectivity providers in the Chinese mainland.
-        # *   **Equinix**: Equinix.
-        # *   **Other**: other connectivity providers outside the Chinese mainland.
+        # - **CT**: China Telecom.
+        # 
+        # - **CU**: China Unicom.
+        # 
+        # - **CM**: China Mobile.
+        # 
+        # - **CO**: Other carriers in China. 
+        # 
+        # - **Equinix**: Equinix.
+        # 
+        # - **Other**: Other carriers outside China.
         # 
         # This parameter is required.
         self.line_operator = line_operator
-        # The name of the Express Connect circuit.
+        # The name of the Express Connect circuit.  
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
+        # The optical module model supported by the Express Connect circuit access point. Valid values:
+        # - 1000Base-LX : 
+        #   - `SFP-GE-LR-SM1310,10KM`
+        #   - `SFP-GE-ER-SM1310,40KM`
+        #   - `SFP-GE-ZR-SM1550,80KM`
+        # - 10GBase-LR : 
+        #   - `SFP-10G-LR-SM1310,10KM`
+        #   - `SFP-10G-ER-SM1550,40KM` 
+        #   - `SFP-10G-ZR-SM1550,80KM`  
+        # - 40GBase-LR : 
+        #   - `QSFP-40G-LR4-WDM1300,10KM`
+        #   - `QSFP-40G-ER4-WDM1300,40KM`
+        #   - `QSFP-40G-ZR4-WDM1300,80KM`
+        # - 100GBase-LR : 
+        #   - `QSFP28-100G-LR4-WDM1300,10KM`
+        #   - `QSFP28-100G-ER4-WDM1300,40KM`
+        #   - `QSFP28-100G-ZR4-WDM1300,80KM`.
         self.optical_module_model = optical_module_model
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The geographical location of the data center.
+        # The geographical location of the on-premises data center.
         self.peer_location = peer_location
-        # The port type. Valid values:
+        # The port type of the Express Connect circuit. Valid values:
         # 
-        # *   **100Base-T**: 100 Mbit/s copper Ethernet port
-        # *   **1000Base-T**: 1,000 Mbit/s copper Ethernet port
-        # *   **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
-        # *   **10GBase-T**: 10,000 Mbit/s copper Ethernet port
-        # *   **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
-        # *   **40GBase-LR**: 40,000 Mbit/s single-mode optical port
-        # *   **100GBase-LR**: 100,000 Mbit/s single-mode optical port
+        # - **100Base-T**: 100M Ethernet port.
         # 
-        # >  To use ports 40GBase-LR and 100GBase-LR, you must first contact your account manager.
+        # - **1000Base-T**: 1 GE electrical port.
+        # 
+        # - **1000Base-LX**: GE single-mode optical port (10 km).
+        # 
+        # - **10GBase-T**: 10 GE electrical port.
+        # 
+        # - **10GBase-LR**: 10 GE single-mode optical port (10 km).
+        # 
+        # - **40GBase-LR**: 40 GE single-mode optical port.
+        # 
+        # - **100GBase-LR**: 100 GE single-mode optical port.
+        # 
+        # > 40GBase-LR and 100GBase-LR are created based on the actual port availability in the backend. Contact your account manager for port availability details.
         self.port_type = port_type
-        # The ID of the redundant Express Connect circuit. The redundant Express Connect circuit must be in the **Allocated**, **Confirmed**, or **Enabled** state.
+        # The instance ID of the redundant Express Connect circuit. The redundant circuit must be in the **Allocated**, **Confirmed**, or **Enabled** state.
         self.redundant_physical_connection_id = redundant_physical_connection_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -93,11 +121,11 @@ class CreatePhysicalConnectionRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag list.
+        # The list of tags.
         self.tag = tag
-        # The type of Express Connect circuit. Default value: **VPC**.
+        # The type of the Express Connect circuit. Default value: **VPC**.
         self.type = type
-        # The maximum bandwidth of the hosted connection. Unit: Mbit/s.
+        # The bandwidth of the shared Express Connect circuits. Unit: Mbit/s.
         # 
         # Valid values: **50**, **100**, **200**, **300**, **400**, **500**, **1000**, **2000**, **4000**, **5000**, **8000**, and **10000**.
         self.bandwidth = bandwidth
@@ -250,13 +278,13 @@ class CreatePhysicalConnectionRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value to add to the resource. You can specify up to 20 tag values The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

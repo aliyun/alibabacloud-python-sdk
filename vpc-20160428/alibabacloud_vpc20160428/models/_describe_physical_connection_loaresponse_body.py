@@ -13,9 +13,9 @@ class DescribePhysicalConnectionLOAResponseBody(DaraModel):
         physical_connection_loatype: main_models.DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType = None,
         request_id: str = None,
     ):
-        # The LOA information about the Express Connect circuit.
+        # Information about the physical connection\\"s LOA.
         self.physical_connection_loatype = physical_connection_loatype
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,49 +64,63 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(DaraMod
         si: str = None,
         status: str = None,
     ):
-        # The name of the construction company.
+        # The localized name of the company.
         self.company_localized_name = company_localized_name
-        # The name of the organization that requires the Express Connect circuit.
+        # The name of the company that requires the physical connection.
         self.company_name = company_name
-        # The time when construction starts.
+        # The time when construction personnel enter the site.
         self.construction_time = construction_time
+        # The description of the LOA.
         self.description = description
-        # The ID of the Express Connect circuit.
+        # The instance ID of the physical connection.
         self.instance_id = instance_id
-        # The circuit code provided by the connectivity provider.
+        # The line code assigned by the line service provider.
         self.line_code = line_code
-        # The label of the cable in the data center.
+        # The line label for the in-building cable at the data center.
         self.line_label = line_label
-        # The contact information about line O\\&M.
+        # The contact information of the line O\\&M personnel.
         self.line_spcontact_info = line_spcontact_info
-        # The ISP. Valid values:
+        # The line service provider. Valid values:
         # 
-        # *   **China Telecom**
-        # *   **China Unicom**
-        # *   **China Mobile**
-        # *   **Other ISPs in China**
+        # - **China Telecom**
+        # 
+        # - **China Unicom**
+        # 
+        # - **China Mobile**
+        # 
+        # - **Other**
         self.line_service_provider = line_service_provider
-        # The type of the Express Connect circuit. Valid values:
+        # The line type of the physical connection. Valid values:
         # 
-        # *   **MSTP**
-        # *   **MPLSVPN**
-        # *   **FIBRE**
-        # *   **Other**
+        # - **MSTP**
+        # 
+        # - **MPLSVPN**
+        # 
+        # - **FIBRE**
+        # 
+        # - **Other**
         self.line_type = line_type
-        # The download URL of the LOA file.
+        # The URL to download the LOA file.
         self.loa_url = loa_url
+        # Information about the construction personnel.
         self.pminfo = pminfo
-        # The on-site construction company.
+        # The system integrator (SI).
         self.si = si
         # The status of the LOA. Valid values:
         # 
-        # *   **Applying**: The LOA is pending for approval.
-        # *   **Accept**: The LOA is approved.
-        # *   **Available**: The LOA is available.
-        # *   **Rejected**: The LOA is rejected.
-        # *   **Completing**: The Express Connect circuit is under construction.
-        # *   **Complete**: The Express Connect circuit is installed.
-        # *   **Deleted**: The LOA is deleted.
+        # - **Applying**: The LOA application is in progress.
+        # 
+        # - **Accept**: The LOA application is approved.
+        # 
+        # - **Available**: The LOA is available.
+        # 
+        # - **Rejected**: The LOA application is rejected.
+        # 
+        # - **Completing**: The construction of the physical connection is in progress.
+        # 
+        # - **Complete**: The construction of the physical connection is complete.
+        # 
+        # - **Deleted**: The LOA is deleted.
         self.status = status
 
     def validate(self):

@@ -22,44 +22,46 @@ class ModifyTunnelAttributeResponseBody(DaraModel):
         tunnel_ipsec_config: main_models.ModifyTunnelAttributeResponseBodyTunnelIpsecConfig = None,
         zone_no: str = None,
     ):
-        # The ID of the customer gateway associated with the customer gateway.
+        # The instance ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Indicates whether DPD is enabled. Valid values:
+        # Indicates whether the Dead Peer Detection (DPD) feature is enabled.
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: disabled.
+        # 
+        # - **true**: enabled.
         self.enable_dpd = enable_dpd
         # Indicates whether NAT traversal is enabled. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: disabled.
+        # 
+        # - **true**: enabled.
         self.enable_nat_traversal = enable_nat_traversal
-        # The tunnel IP address.
+        # The IP address of the tunnel.
         self.internet_ip = internet_ip
-        # The peer CA certificate when a VPN gateway that uses an SM certificate is used to create the IPsec connection.
+        # The CA certificate of the peer when an IPsec-VPN connection is created with a Chinese SM VPN gateway.
         self.remote_ca_certificate = remote_ca_certificate
         # The request ID.
         self.request_id = request_id
-        # The tunnel role. Valid values:
+        # The role of the tunnel.
         # 
-        # *   **master**
-        # *   **slave**
+        # - **master**: the active tunnel.
+        # - **slave**: the standby tunnel.
         self.role = role
-        # The tunnel status. Valid values:
+        # The status of the tunnel.
         # 
-        # *   **active**
-        # *   **updating**
-        # *   **deleting**
+        # - **active**: available.
+        # - **updating**: being updated.
+        # - **deleting**: being deleted.
         self.state = state
-        # The BGP configuration.
+        # The BGP configuration of the tunnel.
         self.tunnel_bgp_config = tunnel_bgp_config
         # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # The Phase 1 configuration.
+        # The IKE phase (Phase 1) configuration of the tunnel.
         self.tunnel_ike_config = tunnel_ike_config
-        # The configurations of IPsec Phase 2.
+        # The IPsec phase (Phase 2) configuration of the tunnel.
         self.tunnel_ipsec_config = tunnel_ipsec_config
-        # The tunnel zone.
+        # The zone of the tunnel.
         self.zone_no = zone_no
 
     def validate(self):
@@ -238,23 +240,23 @@ class ModifyTunnelAttributeResponseBodyTunnelIkeConfig(DaraModel):
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode.
         # 
-        # *   **main:** This mode offers higher security during negotiations.
-        # *   **aggressive**: This mode is faster and has a higher success rate.
+        # - **main**: main mode. This mode offers high security during negotiations.
+        # - **aggressive**: aggressive mode. This mode supports fast negotiations and a higher success rate.
         self.ike_mode = ike_mode
         # The DH group.
         self.ike_pfs = ike_pfs
-        # The IKE version.
+        # The IKE protocol version.
         # 
-        # *   **ikev1**
-        # *   **ikev2**
+        # - **ikev1**
+        # - **ikev2**
         # 
-        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for scenarios with multiple CIDR blocks.
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
         self.ike_version = ike_version
-        # The tunnel identifier. The identifier supports FQDNs and IP addresses. The default value is the tunnel IP address.
+        # The identifier of the local end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the current tunnel.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The peer identifier. The identifier supports FQDNs and IP addresses. The default identifier is the IP address of the customer gateway associated with the tunnel.
+        # The identifier of the peer end of the tunnel. It supports FQDN and IP formats. Default value: the IP address of the customer gateway instance associated with the tunnel.
         self.remote_id = remote_id
 
     def validate(self):
@@ -335,20 +337,21 @@ class ModifyTunnelAttributeResponseBodyTunnelBgpConfig(DaraModel):
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # Indicates whether the BGP feature is enabled. Valid values:
+        # The enabling status of BGP.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.enable_bgp = enable_bgp
-        # The local ASN.
+        # The autonomous system number (ASN) of the local end of the tunnel.
         self.local_asn = local_asn
-        # The BGP IP address of the tunnel.
+        # The BGP IP address of the local end of the tunnel.
         self.local_bgp_ip = local_bgp_ip
-        # The peer ASN.
+        # The autonomous system number (ASN) of the peer end of the tunnel.
         self.peer_asn = peer_asn
-        # The BGP IP address of the peer.
+        # The BGP IP address of the peer end of the tunnel.
         self.peer_bgp_ip = peer_bgp_ip
-        # The CIDR block to which the tunnel BGP IP address belongs.
+        # The CIDR block of the tunnel BGP IP address.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):

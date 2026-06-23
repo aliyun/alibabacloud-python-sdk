@@ -16,13 +16,13 @@ class CreateNatIpResponseBody(DaraModel):
         nat_ips: List[main_models.CreateNatIpResponseBodyNatIps] = None,
         request_id: str = None,
     ):
-        # The IPv4Prefix returned by the previous API is obsolete.
+        # The IPv4 prefix returned by the legacy operation. This parameter is deprecated.
         self.ipv_4prefix = ipv_4prefix
-        # The NAT IP address.
+        # The created NAT IP address.
         self.nat_ip = nat_ip
-        # The ID of the NAT IP address.
+        # The instance ID of the created NAT IP address.
         self.nat_ip_id = nat_ip_id
-        # The NatIp parameter that is returned after you create a NatIp. If you use IPv4Prefix to create a NatIp, the information about all NatIp is returned. We recommend that you use this parameter to obtain the information about a NatIp when you create a NatIp.
+        # The NAT IP address information returned after the NAT IP address is created. When you create a NAT IP address by using an IPv4 prefix, all NAT IP address information is returned. When you create a single NAT IP address, we recommend that you use this parameter to obtain the NAT IP address information.
         self.nat_ips = nat_ips
         # The request ID.
         self.request_id = request_id
@@ -86,11 +86,11 @@ class CreateNatIpResponseBodyNatIps(DaraModel):
         nat_ip: str = None,
         nat_ip_id: str = None,
     ):
-        # The Ipv4Prefix of the created NatIpList list is returned when Ipv4Preix is created.
+        # The IPv4 prefix in the list of NAT IP addresses created by using an IPv4 prefix.
         self.ipv_4prefix = ipv_4prefix
-        # Returns the NatIp address of the created NatIpList list when Ipv4Preix is created.
+        # The NAT IP address in the list of NAT IP addresses created by using an IPv4 prefix.
         self.nat_ip = nat_ip
-        # Returns the NatIpId of the created NatIpList list when Ipv4Preix is created.
+        # The NAT IP address ID in the list of NAT IP addresses created by using an IPv4 prefix.
         self.nat_ip_id = nat_ip_id
 
     def validate(self):

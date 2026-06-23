@@ -18,7 +18,15 @@ class ModifyVSwitchCidrReservationAttributeRequest(DaraModel):
         v_switch_cidr_reservation_id: str = None,
         v_switch_cidr_reservation_name: str = None,
     ):
+        # A client token used to ensure the idempotence of the request.
+        # 
+        # Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run of the request. Valid values:
+        # - **true**: Sends a dry run request without creating any resource (performing the API operation). The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, the error code `DryRunOperation` is returned.
+        # - **false** (default): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id

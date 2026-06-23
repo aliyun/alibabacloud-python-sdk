@@ -31,114 +31,125 @@ class AllocateEipAddressProRequest(DaraModel):
         security_protection_types: List[str] = None,
         tag: List[main_models.AllocateEipAddressProRequestTag] = None,
     ):
-        # Specifies whether to enable automatic payment. Default value: true. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **false**: Automatic payment is disabled. After an order is generated, you must go to the Order Center to complete the payment.
-        # *   **true**: Automatic payment is enabled. After an order is generated, the payment is automatically completed.
+        # - **false**: Disables automatic payment. You must go to the Order Center to pay for the order.
         # 
-        # This parameter is required if **InstanceChargeType** is set to **PrePaid**. This parameter is optional if **InstanceChargeType** is set to **PostPaid**.
+        # - **true**: Enables automatic payment. The payment is completed automatically.
+        # 
+        # This parameter is required only when **InstanceChargeType** is set to **PrePaid**.
         self.auto_pay = auto_pay
-        # The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+        # The peak bandwidth of the EIP. Unit: Mbps.
         # 
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
-        # *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+        # - If **InstanceChargeType** is **PostPaid** (pay-as-you-go) and **InternetChargeType** is **PayByBandwidth**, **Bandwidth** can be from **1** to **500**.
         # 
-        # Default value: **5** Mbit /s.
+        # - If **InstanceChargeType** is **PostPaid** (pay-as-you-go) and **InternetChargeType** is **PayByTraffic**, **Bandwidth** can be from **1** to **200**.
+        # 
+        # - If **InstanceChargeType** is **PrePaid** (subscription), **Bandwidth** can be from **1** to **1000**.
+        # 
+        # Default value: **5**.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request.
+        # A token used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You must ensure that this token is unique across requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** differs for each API request.
         self.client_token = client_token
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        # - **BGP** (default): BGP (Multi-ISP) line. All regions support EIPs that use BGP (Multi-ISP) lines.
         # 
-        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](https://help.aliyun.com/document_detail/32321.html)
+        # - **BGP_PRO**: BGP (Multi-ISP) Pro line. This line type is available only in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
-        # *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
         # 
-        #     *   **ChinaTelecom**
-        #     *   **ChinaUnicom**
-        #     *   **ChinaMobile**
-        #     *   **ChinaTelecom_L2**
-        #     *   **ChinaUnicom_L2**
-        #     *   **ChinaMobile_L2**
+        # - If your account is on the allowlist for single-ISP bandwidth, you can also select one of the following values:
         # 
-        # *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
+        #   - **ChinaTelecom**
+        # 
+        #   - **ChinaUnicom**
+        # 
+        #   - **ChinaMobile**
+        # 
+        #   - **ChinaTelecom_L2**
+        # 
+        #   - **ChinaUnicom_L2**
+        # 
+        #   - **ChinaMobile_L2**
+        # 
+        # - For China (Hangzhou) Finance Cloud users, this parameter is required and must be set to **BGP_FinanceCloud**.
         self.isp = isp
         # The billing method of the EIP. Valid values:
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid** (default): pay-as-you-go
+        # - **PrePaid**: subscription
         # 
-        # Set the value of **InternetChargeType** to **PayByBandwidth** if **InstanceChargeType** is set to **PrePaid**.
+        # - **PostPaid** (default): pay-as-you-go
         # 
-        # Valid values when **InstanceChargeType** is set to **PostPaid**: **PayByBandwidth** or **PayByTraffic**.
+        # If **InstanceChargeType** is set to **PrePaid**, **InternetChargeType** must be set to **PayByBandwidth**.
+        # 
+        # If **InstanceChargeType** is set to **PostPaid**, you can set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
         self.instance_charge_type = instance_charge_type
-        # The EIP ID.
+        # The ID of the EIP to be allocated.
         # 
-        # Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+        # You can specify either **IpAddress** or **InstanceId**. If you do not specify either parameter, the system randomly allocates an EIP.
         self.instance_id = instance_id
         # The metering method of the EIP. Valid values:
         # 
-        # *   **PayByBandwidth** (default): pay-by-bandwidth.
-        # *   **PayByTraffic**: pay-by-data-transfer.
+        # - **PayByBandwidth** (default): pay-by-bandwidth
         # 
-        # If **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+        # - **PayByTraffic**: pay-by-traffic
         # 
-        # If **InstanceChargeType** is set to **PostPaid**, **InternetChargeType** can be set to **PayByBandwidth** or **PayByTraffic**.
+        # If **InstanceChargeType** is set to **PrePaid**, **InternetChargeType** must be set to **PayByBandwidth**.
+        # 
+        # If **InstanceChargeType** is set to **PostPaid**, you can set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
         self.internet_charge_type = internet_charge_type
-        # The IP address of the EIP.
+        # The IP address of the EIP to be allocated.
         # 
-        # Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+        # You can specify either **IpAddress** or **InstanceId**. If you do not specify either parameter, the system randomly allocates an EIP.
         self.ip_address = ip_address
-        # The network type. By default, this value is set to **public**, which specifies the public network type.
+        # The network type. The only valid value is **public** (default), which indicates the public network.
         self.netmode = netmode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration.
+        # The subscription period.
         # 
-        # *   Valid values when **PricingCycle** is set to **Month**: **1 to 9**.****
-        # *   Valid values when **PricingCycle** is set to **Year**: **1 to 3**.****
+        # - If **PricingCycle** is **Month**, **Period** can be from **1** to **9**.
         # 
-        # This parameter is required if **InstanceChargeType** is set to **PrePaid**.
+        # - If **PricingCycle** is **Year**, **Period** can be from **1** to **3**.
         # 
-        # Leave this parameter empty if **InstanceChargeType** is set to **PostPaid**.
+        # This parameter is required when **InstanceChargeType** is set to **PrePaid**.
+        # 
+        # If `InstanceChargeType` is set to `PostPaid`, this parameter is not required.
         self.period = period
         # The billing cycle of the subscription EIP. Valid values:
         # 
-        # *   **Month** (default)
-        # *   **Year**
+        # - **Month** (default): Billed monthly.
         # 
-        # This parameter is required if **InstanceChargeType** is set to **PrePaid**. This parameter is optional if **InstanceChargeType** is set to **PostPaid**.
+        # - **Year**: Billed annually.
+        # 
+        # This parameter is required only when **InstanceChargeType** is set to **PrePaid** (subscription).
         self.pricing_cycle = pricing_cycle
-        # The ID of the IP address pool.
+        # The ID of the IP address pool from which to allocate the EIP.
         # 
-        # The EIP is allocated from the IP address pool.
-        # 
-        # By default, the IP address pool feature is unavailable. If you need to use this feature, contact your account manager.
+        # This feature is disabled by default. To use this feature, apply for the required permissions in Quota Center. For more information, see [Increase quotas by using Quota Center](https://help.aliyun.com/document_detail/108213.html).
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The ID of the region to which the EIP belongs.
+        # The ID of the region where the EIP is to be allocated.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the EIP belongs.
+        # The ID of the resource group for the EIP.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The editions of Anti-DDoS.
+        # The security protection level.
         # 
-        # *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
-        # *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+        # - If you do not specify this parameter, DDoS Protection (Basic) is enabled by default.
         # 
-        # You can configure Anti-DDoS editions for up to 10 EIPs.
+        # - Set the value to **AntiDDoS_Enhanced** to enable DDoS Protection (Enhanced).
         self.security_protection_types = security_protection_types
+        # The tags to add to the EIP.
         self.tag = tag
 
     def validate(self):
@@ -289,7 +300,9 @@ class AllocateEipAddressProRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

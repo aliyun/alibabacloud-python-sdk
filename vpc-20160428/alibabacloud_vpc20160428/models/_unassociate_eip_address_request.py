@@ -19,7 +19,7 @@ class UnassociateEipAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP that you want to disassociate.
+        # The ID of the EIP to disassociate.
         # 
         # This parameter is required.
         self.allocation_id = allocation_id
@@ -27,28 +27,36 @@ class UnassociateEipAddressRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
+        # Specifies whether to forcefully disassociate the EIP when the EIP is associated with a NAT gateway that has DNAT or SNAT entries configured. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false** (default): does not forcefully disassociate the EIP.
+        # 
+        # - **true**: forcefully disassociates the EIP.
         self.force = force
-        # The ID of the instance from which you want to disassociate the EIP.
+        # The instance ID of the cloud resource from which to disassociate the EIP.
+        # You can enter the instance ID of a NAT gateway, Classic Load Balancer (CLB) instance, ECS instance, secondary elastic network interface controller (NIC), high availability virtual IP address instance, or an IP address.
         self.instance_id = instance_id
-        # The type of instance from which you want to disassociate the EIP. Valid values:
+        # The type of the cloud resource from which to disassociate the EIP. Valid values: 
         # 
-        # *   **EcsInstance** (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC)
-        # *   **SlbInstance**: a Server Load Balancer (SLB) instance in a VPC
-        # *   **NetworkInterface**: a secondary elastic network interface (ENI) in a VPC
-        # *   **Nat**: a NAT gateway
-        # *   **HaVip**: a high-availability virtual IP address (HAVIP)
+        # - **EcsInstance** (default): an ECS instance in a virtual private cloud (VPC).   
+        # 
+        # - **SlbInstance**: a load balancing instance in a virtual private cloud (VPC).   
+        # 
+        # - **NetworkInterface**: a secondary elastic network interface controller (NIC) in a virtual private cloud (VPC).
+        # 
+        # - **Nat**: a NAT gateway.  
+        # 
+        # - **HaVip**: a high availability virtual IP address.
+        # - **IpAddress**: an IP address.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The private IP address of the ECS instance or the secondary ENI from which you want to disassociate the EIP.
+        # The private IP address of the ECS instance or secondary elastic network interface controller (NIC) instance from which to disassociate the EIP.
         self.private_ip_address = private_ip_address
-        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the EIP to disassociate.
+        #  You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

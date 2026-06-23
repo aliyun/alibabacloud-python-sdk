@@ -21,34 +21,35 @@ class CreateVbrHaRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The description of the VBR failover group.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values: Valid Values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, `DRYRUN.SUCCESS` is returned.
+        # 
+        # - **false** (default): sends the request. After the request passes the check, the instance is started.
         self.dry_run = dry_run
         # The name of the VBR failover group.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the other VBR in the VBR failover group.
+        # The instance ID of the other VBR in the VBR failover group.
         # 
         # This parameter is required.
         self.peer_vbr_id = peer_vbr_id
-        # The ID of the region in which the VBR is deployed.
+        # The region ID of the VBR.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VBR.
+        # The instance ID of the VBR.
         # 
         # This parameter is required.
         self.vbr_id = vbr_id

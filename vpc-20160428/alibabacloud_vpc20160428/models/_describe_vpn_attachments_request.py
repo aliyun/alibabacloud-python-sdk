@@ -17,19 +17,19 @@ class DescribeVpnAttachmentsRequest(DaraModel):
         resource_owner_id: int = None,
         vpn_connection_id: str = None,
     ):
-        # The type of resource that is associated with the IPsec-VPN connection. Default value: **CEN**.
+        # The type of resource to which the IPsec-VPN connection is attached. Default value: **CEN**.
         # 
-        # Set the value to **CEN**, which specifies to query IPsec-VPN connections associated with the transit router.
+        # The value can only be **CEN**, which indicates that the system queries IPsec-VPN connections that are associated with transit router instances.
         self.attach_type = attach_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page when paging is used. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
-        # The ID of the region where the IPsec-VPN connection is established.
+        # The region ID of the IPsec-VPN connection.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -37,7 +37,7 @@ class DescribeVpnAttachmentsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the IPsec-VPN connection.
         # 
-        # >  If you do not specify an IPsec-VPN connection ID, all IPsec-VPN connections associated with a transit router in the region are queried.
+        # > If you do not specify the IPsec-VPN connection ID, the system queries information about all IPsec-VPN connections that are associated with transit router instances in the current region.
         self.vpn_connection_id = vpn_connection_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class CreateNatIpCidrResponseBody(DaraModel):
         nat_ip_cidr_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the NAT CIDR block.
+        # The instance ID of the NAT CIDR block.
         self.nat_ip_cidr_id = nat_ip_cidr_id
         # The request ID.
         self.request_id = request_id

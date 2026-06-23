@@ -18,16 +18,38 @@ class UpdateEnhancedVpnGatewayRequest(DaraModel):
         resource_owner_id: int = None,
         vpn_gateway_id: str = None,
     ):
+        # Specifies whether to enable automatic route propagation for the enhanced VPN gateway. Valid values:
+        # 
+        # - **true**<br>
+        #   The enhanced VPN gateway automatically learns system routes from the system route table of the VPC and propagates routes from the on-premises data center to the system route table of the VPC.<br>
+        # 
+        # - **false**<br>
+        #   Automatic route propagation is disabled. Before you disable this feature, make sure that BGP dynamic routing is disabled for all IPsec-VPN connections of the enhanced VPN gateway.<br>
         self.auto_propagate = auto_propagate
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can generate a token from your client to make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify a `ClientToken`, the system automatically uses the `RequestId` of the API request as the `ClientToken`. Each API request has a different `RequestId`.
         self.client_token = client_token
+        # The new description of the enhanced VPN gateway.
+        # 
+        # The description must be 1 to 100 characters in length.
         self.description = description
+        # The new name of the enhanced VPN gateway.
+        # 
+        # The name must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the enhanced VPN gateway is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the enhanced VPN gateway.
+        # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 

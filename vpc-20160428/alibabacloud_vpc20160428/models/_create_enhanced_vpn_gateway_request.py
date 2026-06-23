@@ -22,22 +22,63 @@ class CreateEnhancedVpnGatewayRequest(DaraModel):
         vpc_id: str = None,
         vpn_type: str = None,
     ):
+        # A client token used to ensure request idempotence.
+        # 
+        # You can generate this token from your client. Make sure that the token is unique for each request. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. Each request may have a different **RequestId**.
         self.client_token = client_token
+        # The ID of the second vSwitch to associate with the enhanced VPN gateway for high availability.
+        # 
+        # -
+        # 
+        # - For zone-level disaster recovery, the two vSwitches must be in different availability zones within the same VPC.
+        # 
+        # - In regions with only one availability zone, zone-level disaster recovery is not supported. To ensure high availability, specify two different vSwitches from that zone. You can also specify the same vSwitch for both the **VSwitchId** and **DisasterRecoveryVSwitchId** parameters.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
+        # The type of the enhanced VPN gateway. Valid value:
+        # 
+        # - **Enhanced.SiteToSite**: an enhanced site-to-site VPN gateway that supports only the IPsec feature.
+        # 
         # This parameter is required.
         self.gateway_type = gateway_type
+        # The name of the enhanced VPN gateway. If you do not specify this parameter, the gateway ID is used as the name.
+        # 
+        # The name must be 2 to 100 characters long, start with a letter, and not start with http\\:// or https\\://. It can contain only letters, digits, underscores (_), hyphens (-), and periods (.).
         self.name = name
+        # The network type of the VPN gateway. Valid value:
+        # 
+        # - **public** (default): a public VPN gateway.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where you want to create the enhanced VPN gateway.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to get the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group to which you want to assign the enhanced VPN gateway.
+        # 
+        # - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
+        # 
+        # - If you do not specify this parameter, the enhanced VPN gateway is added to the Default Resource Group.
+        # 
+        # - Associated IPsec connections are automatically added to the same resource group as the enhanced VPN gateway. You cannot directly change the resource group of an IPsec connection. If you change the resource group of the gateway, the resource group of its associated IPsec connections is also updated.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the vSwitch to associate with the enhanced VPN gateway.
+        # 
+        # -
         self.v_switch_id = v_switch_id
+        # The ID of the VPC where you want to create the enhanced VPN gateway.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The type of the enhanced VPN gateway. Valid value:
+        # 
+        # - **Normal** (default): standard type.
         self.vpn_type = vpn_type
 
     def validate(self):

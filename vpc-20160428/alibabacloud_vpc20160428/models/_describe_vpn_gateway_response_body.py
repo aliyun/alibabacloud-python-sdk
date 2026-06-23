@@ -40,136 +40,148 @@ class DescribeVpnGatewayResponseBody(DaraModel):
         vpn_gateway_id: str = None,
         vpn_type: str = None,
     ):
-        # Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
+        # Indicates whether the routing automatic propagation feature is enabled for the VPN gateway. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.auto_propagate = auto_propagate
         # The payment status of the VPN gateway. Valid values:
         # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        self.business_status = business_status
-        # The billing method. Valid value:
+        # - **Normal**: Normal.
         # 
-        # **POSTPAY**: pay-as-you-go
+        # - **FinancialLocked**: locked due to overdue payment.
+        self.business_status = business_status
+        # The billing method. Value:
+        # 
+        # <props="intl">**POSTPAY**: pay-as-you-go billing method.
+        # 
+        # <props="partner">**POSTPAY**: pay-as-you-go billing method.
+        # 
+        # <props="china">**Prepay**: subscription.
         self.charge_type = charge_type
         # The timestamp when the VPN gateway was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX time format, which represents the total number of milliseconds elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
-        # The second IP address assigned by the system to create an IPsec-VPN connection.
+        # The second IP address assigned by the system to the VPN gateway instance for creating IPsec-VPN connections.
         # 
-        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        # This parameter is returned only for VPN gateway instances that support creating dual-tunnel IPsec-VPN connections.
         self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # The ID of the second vSwitch associated with the VPN gateway.
+        # The ID of the second vSwitch associated with the VPN gateway instance.
         # 
-        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        # This parameter is returned only for VPN gateway instances that support creating dual-tunnel IPsec-VPN connections.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # Indicates whether BGP is enabled for the VPN gateway. Valid values:
+        # The enabling status of the BGP feature for the VPN gateway. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.enable_bgp = enable_bgp
-        # The timestamp when the VPN gateway expires. Unit: milliseconds.
+        # The expiration timestamp of the VPN gateway. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX time format, which represents the total number of milliseconds elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
         self.eni_instance_ids = eni_instance_ids
-        # Type of VPN gateway:
-        # - **Traditional**: Traditional-type VPN gateway, supports both IPSec and SSL.
-        # - **Enhanced.SiteToSite**: Enhanced Site-to-Site VPN gateway, only supports IPSec.
+        # The type of the VPN gateway. Valid values:
+        # - **Traditional**: traditional VPN gateway that supports both IPsec and SSL features.
+        # - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN gateway that supports only the IPsec feature.
         self.gateway_type = gateway_type
-        # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+        # - If the VPN gateway instance supports creating single-tunnel IPsec-VPN connections, this address is the IP address of the VPN gateway instance and can be used to create IPsec-VPN connections or SSL-VPN connections.
         # 
-        # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+        # - If the VPN gateway instance supports creating dual-tunnel IPsec-VPN connections, this address is the first IP address used to create IPsec-VPN connections and cannot be used to create SSL-VPN connections.
         # 
-        #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+        #     If the VPN gateway instance supports creating dual-tunnel IPsec-VPN connections, the system assigns two IPsec IP addresses to the VPN gateway instance for creating dual-tunnel IPsec-VPN connections.
         self.internet_ip = internet_ip
         # Indicates whether the IPsec-VPN feature is enabled. Valid values:
         # 
-        # *   **enable**
-        # *   **disable**
+        # - **enable**: enabled.
+        # 
+        # - **disable**: disabled.
         self.ipsec_vpn = ipsec_vpn
         # The name of the VPN gateway.
         self.name = name
         # The network type of the VPN gateway.
         # 
-        # *   **public**
-        # *   **private**
+        # - **public**: public VPN gateway.
+        # - **private**: private VPN gateway.
         self.network_type = network_type
         # The request ID.
         self.request_id = request_id
-        # The information about pending orders.
+        # The pending order data.
         # 
-        # > This set of parameters is returned only when **IncludeReservationData** is set to **true**.
+        # >This parameter is returned only when **IncludeReservationData** is set to **true**.
         self.reservation_data = reservation_data
         # The ID of the resource group to which the VPN gateway belongs.
         # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
-        # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
+        # The bandwidth specification of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
         # The maximum number of concurrent SSL-VPN connections.
         self.ssl_max_connections = ssl_max_connections
-        # The status of the SSL-VPN feature. Valid values:
+        # The enabling status of the SSL-VPN feature. Valid values:
         # 
-        # *   **enable**
-        # *   **disable**
+        # - **enable**: enabled.
+        # 
+        # - **disable**: disabled.
         self.ssl_vpn = ssl_vpn
         # The IP address of the SSL-VPN connection.
         # 
-        # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        # This parameter is returned only when the SSL-VPN feature is enabled on a VPN gateway instance of the public network type that supports creating dual-tunnel IPsec-VPN connections.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The status of the VPN gateway. Valid values:
         # 
-        # *   **init**
-        # *   **provisioning**
-        # *   **active**
-        # *   **updating**
-        # *   **deleting**
+        # - **init**: initializing.
+        # 
+        # - **provisioning**: preparing.
+        # 
+        # - **active**: Normal.
+        # 
+        # - **updating**: updating.
+        # 
+        # - **deleting**: deleting.
         self.status = status
-        # The tag that is automatically generated for the VPN gateway. The tag consists of the following parameters:
+        # The labels automatically generated by the system for the VPN gateway.
         # 
-        # *   **VpnEnableBgp**: indicates whether the VPN gateway supports BGP. Valid values:
-        # 
-        #     *   **true**
-        #     *   **false**
-        # 
-        # *   **VisuallySsl**: indicates whether the VPN gateway allows you to view the connection information of SSL clients. Valid values:
-        # 
-        #     *   **true**
-        #     *   **false**
-        # 
-        # *   **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes. Valid values:
-        # 
-        #     *   **true**
-        #     *   **false**
-        # 
-        # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded. Valid values:
-        # 
-        #     *   **true**
-        #     *   **false**
-        # 
-        # *   **description**: the description of the VPN gateway. This parameter is only for internal use.
-        # 
-        # *   **VpnVersion**: the version of the VPN gateway.
-        # 
-        # *   **IDaaSNewVersion**: indicates whether the VPN gateway can be associated with an EIAM 2.0 instance.
-        # 
-        #     *   **true**
-        #     *   **false**
+        # - **VpnEnableBgp**: indicates whether the VPN gateway supports the BGP feature.
+        #     - **true**: Supported.
+        #     - **false**: Not supported.
+        # - **VisuallySsl**: indicates whether the VPN gateway supports viewing connection information of SSL clients.
+        #     - **true**: Supported.
+        #     - **false**: Not supported.
+        # - **PbrPriority**: indicates whether the VPN gateway supports configuring policy priority for policy-based routing.
+        #     - **true**: Supported.
+        #     - **false**: Not supported.
+        # - **VpnNewImage**: indicates whether the VPN gateway is a new-generation VPN gateway.
+        #     - **true**: Yes.
+        #     - **false**: No.
+        # - **description**: the description of the VPN gateway, which is used only for internal system purposes.
+        # - **VpnVersion**: the version number of the VPN gateway.
+        # - **IDaaSNewVersion**: indicates whether the VPN gateway supports attaching to an EIAM 2.0 instance.
+        #     - **true**: Supported.
+        #     - **false**: Not supported.
         self.tag = tag
         self.tags = tags
         # The ID of the vSwitch to which the VPN gateway belongs.
         self.v_switch_id = v_switch_id
         # The ID of the VPC to which the VPN gateway belongs.
         self.vpc_id = vpc_id
-        # The ID of the VPN gateway.
+        # The instance ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
-        # The type of VPN gateway. Only **Normal** may be returned, which indicates a standard VPN gateway.
+        # <props="intl">The type of the VPN gateway. Value: **Normal**, which indicates a standard VPN gateway.
+        # 
+        # <props="china">
+        # 
+        # The type of the VPN gateway. Valid values:
+        # 
+        # - **Normal**: standard.
+        # 
+        # - **NationalStandard**: Chinese SM algorithm-based.
+        # 
+        # .
         self.vpn_type = vpn_type
 
     def validate(self):
@@ -409,9 +421,7 @@ class DescribeVpnGatewayResponseBodyTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # 标签键。
         self.key = key
-        # 标签值。
         self.value = value
 
     def validate(self):
@@ -451,34 +461,39 @@ class DescribeVpnGatewayResponseBodyReservationData(DaraModel):
         reservation_ssl: str = None,
         status: str = None,
     ):
-        # If the order type is **TEMP_UPGRADE** (temporary upgrade), this parameter specifies the time when the temporary upgrade expires.
+        # If the pending order type is **TEMP_UPGRADE** (temporary upgrade), this parameter indicates the revert time for the temporary upgrade.
         # 
-        # If the order type is **RENEWCHANGE** (renewal with a specification change) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with a specification change takes effect.
+        # If the pending order type is **RENEWCHANGE** (renewal with specification change) or **RENEW** (renewal), this parameter indicates the effective period when the renewal or renewal with specification change takes effect.
         self.reservation_end_time = reservation_end_time
-        # The IPsec-VPN status of the pending order. Valid values:
+        # The enabling status of the IPsec-VPN feature for the pending order. Valid values:
         # 
-        # *   **enable**
-        # *   **disable**
+        # - **enable**: enabled.
+        # 
+        # - **disable**: disabled.
         self.reservation_ipsec = reservation_ipsec
         # The maximum number of concurrent SSL-VPN connections of the pending order.
         self.reservation_max_connections = reservation_max_connections
         # The type of the pending order. Valid values:
         # 
-        # *   **RENEWCHANGE**: renewal with upgrade or downgrade
-        # *   **TEMP_UPGRADE**: temporary upgrade
-        # *   **RENEW**: renewal
-        self.reservation_order_type = reservation_order_type
-        # The bandwidth of the pending order. Unit: Mbit/s.
-        self.reservation_spec = reservation_spec
-        # The SSL-VPN status of the pending order. Valid values:
+        # - **RENEWCHANGE**: renewal with specification change.
         # 
-        # *   **enable**
-        # *   **disable**
+        # - **TEMP_UPGRADE**: temporary upgrade.
+        # 
+        # - **RENEW**: renewal.
+        self.reservation_order_type = reservation_order_type
+        # The bandwidth specification of the pending order. Unit: Mbit/s.
+        self.reservation_spec = reservation_spec
+        # The enabling status of the SSL-VPN feature for the pending order. Valid values:
+        # 
+        # - **enable**: enabled.
+        # 
+        # - **disable**: disabled.
         self.reservation_ssl = reservation_ssl
         # The status of the pending order. Valid values:
         # 
-        # *   **1**: indicates that the order of the renewal or specification change has not taken effect.
-        # *   **2**: indicates that the order is an order for temporary upgrade and the order has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
+        # - **1**: The renewal or renewal with specification change order has not taken effect.
+        # 
+        # - **2**: The temporary upgrade order has taken effect. After the restoration time is reached, the system restores the VPN gateway to the specification before the temporary upgrade. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the specifications before the temporary upgrade.
         self.status = status
 
     def validate(self):

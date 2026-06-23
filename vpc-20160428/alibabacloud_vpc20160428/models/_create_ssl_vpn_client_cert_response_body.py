@@ -11,11 +11,11 @@ class CreateSslVpnClientCertResponseBody(DaraModel):
         request_id: str = None,
         ssl_vpn_client_cert_id: str = None,
     ):
-        # The name of the SSL client certificate.
+        # The name of the SSL-VPN client certificate.
         self.name = name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the SSL client certificate.
+        # The ID of the SSL-VPN client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
 
     def validate(self):

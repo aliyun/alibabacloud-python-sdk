@@ -13,18 +13,19 @@ class UpdateVirtualBorderBandwidthResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The response code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the modification was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Successful.
+        # 
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

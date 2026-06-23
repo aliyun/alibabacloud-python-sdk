@@ -26,61 +26,63 @@ class ModifyForwardEntryRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        # 
-        # - false (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without modifying the DNAT entry. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the DNAT entry is modified.
         self.dry_run = dry_run
-        # *   When you modify DNAT entries of Internet NAT gateways, this parameter specifies the elastic IP addresses (EIPs) that are used to access the Internet.
-        # *   When you modify DNAT entries of Virtual Private Cloud (VPC) NAT gateways, this parameter specifies the NAT IP addresses that are accessed by external networks.
+        # - If you modify a DNAT entry of an Internet NAT gateway, this parameter specifies the public IP address used to provide public network access.
+        # 
+        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the NAT IP address accessed by the external network.
         self.external_ip = external_ip
-        # *   The external port that is used to forward traffic when you modify DNAT entries of Internet NAT gateways.
+        # - If you modify a DNAT entry of an Internet NAT gateway, this parameter specifies the external port or port range used for port forwarding in the DNAT entry.
+        #     - The port range must be within **1** to **65535**.
+        #     - To specify a port range, separate the start and end ports with a forward slash (/), such as `10/20`.
+        #     - If you modify both **ExternalPort** and **InternalPort**, and **ExternalPort** is set to a port range, **InternalPort** must also be set to a port range with the same number of ports. For example, if **ExternalPort** is set to `10/20`, **InternalPort** must be set to `80/90`.
         # 
-        #     *   Valid values: **1** to **65535**.
-        #     *   If you want to modify the port range, separate port numbers with a forward slash (/), such as `10/20`.
-        #     *   If you need to modify **ExternalPort** and **InternalPort** at the same time, and **ExternalPort** specifies a port range, make sure that **InternalPort** also specifies a port range, and both ranges specify the same number of ports. For example, you can set **ExternalPort** to `10/20` and **InternalPort** to `80/90`.
-        # 
-        # *   The port that is accessed by external networks when you modify DNAT entries of VPC NAT gateways. Valid values: **1** to **65535**.
+        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the port accessed by the external network. Valid values: **1** to **65535**.
         self.external_port = external_port
-        # The ID of the DNAT entry.
+        # The ID of the DNAT entry to be modified.
         # 
         # This parameter is required.
         self.forward_entry_id = forward_entry_id
         # The new name of the DNAT entry.
         # 
-        # The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table to which the DNAT entry belongs.
         # 
         # This parameter is required.
         self.forward_table_id = forward_table_id
-        # *   The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you modify DNAT entries of Internet NAT gateways.
-        # *   The private IP address that uses DNAT entries to communicate when you modify DNAT entries of VPC NAT gateways.
-        self.internal_ip = internal_ip
-        # *   The internal port or port range that is used to forward traffic when you modify DNAT entries of Internet NAT gateways. Valid values: **1** to **65535**.
-        # *   The port of the destination ECS instance to be mapped when you modify DNAT entries of VPC NAT gateways. Valid values: **1** to **65535**.
-        self.internal_port = internal_port
-        # The protocol. Valid values:
+        # - If you modify a DNAT entry of an Internet NAT gateway, this parameter specifies the private IP address of the ECS instance that communicates with the Internet through the DNAT entry.
         # 
-        # *   **TCP**
-        # *   **UDP**
-        # *   **Any**
+        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the private IP address that needs to communicate through the DNAT rule.
+        self.internal_ip = internal_ip
+        # - If you modify a DNAT entry of an Internet NAT gateway, this parameter specifies the internal port or port range used for port forwarding in the DNAT entry. Valid values: **1** to **65535**.
+        # 
+        # - If you modify a DNAT entry of a VPC NAT gateway, this parameter specifies the port of the destination ECS instance to be mapped. Valid values: **1** to **65535**.
+        self.internal_port = internal_port
+        # The protocol type. Valid values:
+        #            
+        # - **TCP**: forwards TCP packets.
+        #    
+        # - **UDP**: forwards UDP packets.
+        #    
+        # - **Any**: forwards packets of all protocols.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to remove limits on the port range. Valid values:
+        # Specifies whether to enable port breaking. Valid values:
         # 
-        # *   **true**
-        # *   **false** If an SNAT entry and a DNAT entry use the same public IP address, and you want to specify a port number greater than `1024`, set `PortBreak` to `true`.
+        # - **true**: enables port breaking.
+        # - **false**: does not enable port breaking. If a DNAT entry and an SNAT entry use the same public IP address and you want to configure a port number greater than `1024`, set `PortBreak` to `true`.
         self.port_break = port_break
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

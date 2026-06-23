@@ -11,7 +11,7 @@ class ListBusinessAccessPointsRequest(DaraModel):
     ):
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         self.region_id = region_id
 
     def validate(self):

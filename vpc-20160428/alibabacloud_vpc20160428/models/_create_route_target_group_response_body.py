@@ -10,9 +10,9 @@ class CreateRouteTargetGroupResponseBody(DaraModel):
         request_id: str = None,
         route_target_group_id: str = None,
     ):
-        # ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The ID of the route target group instance.
+        # The instance ID of the route target group.
         self.route_target_group_id = route_target_group_id
 
     def validate(self):

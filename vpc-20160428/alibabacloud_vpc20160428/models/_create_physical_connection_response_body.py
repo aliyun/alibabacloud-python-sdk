@@ -10,7 +10,7 @@ class CreatePhysicalConnectionResponseBody(DaraModel):
         physical_connection_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Express Connect circuit.
+        # The instance ID of the Express Connect circuit.
         self.physical_connection_id = physical_connection_id
         # The request ID.
         self.request_id = request_id

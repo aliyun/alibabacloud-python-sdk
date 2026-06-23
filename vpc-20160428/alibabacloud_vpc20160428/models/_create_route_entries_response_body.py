@@ -16,15 +16,15 @@ class CreateRouteEntriesResponseBody(DaraModel):
         route_entry_ids: List[str] = None,
         success_count: int = None,
     ):
-        # The number of custom route entries that failed to be added.
+        # The number of custom routes that failed to be added.
         self.failed_count = failed_count
-        # The details about the custom route entry that failed to be added.
+        # The details about the custom routes that failed to be added.
         self.failed_route_entries = failed_route_entries
         # The request ID.
         self.request_id = request_id
-        # The information about the ID of the custom route entry that was successfully added.
+        # The information about the IDs of the custom routes that are successfully added.
         self.route_entry_ids = route_entry_ids
-        # The number of custom route entries that were successfully added.
+        # The number of custom routes that are successfully added.
         self.success_count = success_count
 
     def validate(self):
@@ -87,13 +87,13 @@ class CreateRouteEntriesResponseBodyFailedRouteEntries(DaraModel):
         failed_message: str = None,
         next_hop: str = None,
     ):
-        # The destination CIDR block of the custom route entry that failed to be added.
+        # The destination CIDR block of the custom route that failed to be added.
         self.dst_cidr_block = dst_cidr_block
         # The error code.
         self.failed_code = failed_code
         # The error message.
         self.failed_message = failed_message
-        # The ID of the next hop of the custom route entry that failed to be added.
+        # The ID of the next hop of the custom route that failed to be added.
         self.next_hop = next_hop
 
     def validate(self):

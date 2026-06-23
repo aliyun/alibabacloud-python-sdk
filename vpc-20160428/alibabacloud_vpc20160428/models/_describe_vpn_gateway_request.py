@@ -15,22 +15,23 @@ class DescribeVpnGatewayRequest(DaraModel):
         resource_owner_id: int = None,
         vpn_gateway_id: str = None,
     ):
-        # Specifies whether to include the data about pending orders. Valid values:
+        # Specifies whether to include pending order data. Valid values:
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false** (default): does not include pending order data.
+        # 
+        # - **true**: includes pending order data.
         self.include_reservation_data = include_reservation_data
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VPN gateway.
+        # The region ID of the VPN gateway. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VPN gateway.
+        # The instance ID of the VPN gateway.
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id

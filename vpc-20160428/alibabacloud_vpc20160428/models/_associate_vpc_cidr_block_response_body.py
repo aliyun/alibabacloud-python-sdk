@@ -11,12 +11,9 @@ class AssociateVpcCidrBlockResponseBody(DaraModel):
         ip_version: str = None,
         request_id: str = None,
     ):
-        # The IPv4 CIDR block to be added.
+        # The secondary CIDR block added to the VPC.
         self.cidr_block = cidr_block
-        # The version of the IP address. Valid values:
-        # 
-        # *   **IPV4**: the IPv4 address.
-        # *   **IPV6**: the IPv6 address.
+        # The IP address type of the secondary CIDR block.
         self.ip_version = ip_version
         # The request ID.
         self.request_id = request_id

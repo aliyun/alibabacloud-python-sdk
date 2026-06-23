@@ -17,31 +17,32 @@ class CreateVpnRouteEntryResponseBody(DaraModel):
         vpn_instance_id: str = None,
         weight: int = None,
     ):
-        # The timestamp when the destination-based route was created. Unit: milliseconds.
+        # The timestamp when the destination route was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The description of the destination-based route.
+        # The description of the destination route.
         self.description = description
-        # The next hop of the destination-based route.
+        # The next hop of the destination route.
         self.next_hop = next_hop
-        # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
+        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling protocol).
         self.overlay_mode = overlay_mode
         # The request ID.
         self.request_id = request_id
-        # The destination CIDR block of the destination-based route.
+        # The destination CIDR block of the destination route.
         self.route_dest = route_dest
-        # The status of the destination-based route.
+        # The publish status of the destination route.
         # 
-        # *   **published**: advertised to the VPC route table.
-        # *   **normal**: not advertised to the VPC route table.
+        # - **published**: The destination route has been published to the route table of the VPC.
+        # 
+        # - **normal**: The destination route has not been published to the route table of the VPC.
         self.state = state
-        # The ID of the VPN gateway.
+        # The instance ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
-        # The weight of the destination-based route. Valid values:
+        # The weight of the destination route. Valid values:
         # 
-        # *   **100**: a high priority
-        # *   **0**: a low priority
+        # - **100**: The destination route has a high priority.
+        # - **0**: The destination route has a low priority.
         self.weight = weight
 
     def validate(self):

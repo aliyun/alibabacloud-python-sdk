@@ -18,19 +18,19 @@ class DescribeSslVpnClientsResponseBody(DaraModel):
         total_count: int = None,
         vpn_gateway_id: str = None,
     ):
-        # The list of clients.
+        # The list of client information.
         self.client_info_list = client_info_list
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
-        # The region ID.
+        # The region ID of the VPN gateway instance.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The number of returned entries.
+        # The total number of entries in the list.
         self.total_count = total_count
-        # The ID of the VPN gateway.
+        # The VPN gateway instance ID.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -109,27 +109,27 @@ class DescribeSslVpnClientsResponseBodyClientInfoList(DaraModel):
         send_bytes: int = None,
         status: str = None,
     ):
-        # The SSL client certificate used by the client.
+        # The SSL client certificate used by the client to establish the SSL-VPN connection to Alibaba Cloud.
         # 
-        # >  If the client uses two-factor authentication to establish an SSL-VPN connection to Alibaba Cloud, the return value is the username of the client.
+        # > If the client uses two-factor identity authentication to establish the SSL-VPN connection to Alibaba Cloud, the value of this parameter is the username of the client.
         self.common_name = common_name
-        # The timestamp that indicates when the client connected to Alibaba Cloud through an SSL-VPN connection. Unit: milliseconds.
+        # The timestamp when the client established the SSL-VPN connection to Alibaba Cloud. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the SSL-VPN connection was established.
         self.connected_time = connected_time
-        # The actual public IP address used by the client when the client established an SSL-VPN connection to Alibaba Cloud.
+        # The public IP address that the client used to establish the SSL-VPN connection to Alibaba Cloud.
         self.ip = ip
-        # The port used by the client when the client established an SSL-VPN connection to Alibaba Cloud.
+        # The port number that the client used to establish the SSL-VPN connection to Alibaba Cloud.
         self.port = port
-        # The private IP address allocated to the client by the VPN gateway when the client established an SSL-VPN connection to Alibaba Cloud.
+        # The private IP address that the VPN gateway assigned to the client when the client established an SSL-VPN connection to Alibaba Cloud.
         self.private_ip = private_ip
-        # The amount of data transferred from the client to the VPN gateway through the SSL-VPN connection. Unit: bytes.
+        # The traffic that the VPN gateway received from the client over the SSL-VPN connection. Unit: bytes.
         self.receive_bytes = receive_bytes
-        # The amount of data transferred from the VPN gateway to the client through the SSL-VPN connection. Unit: bytes.
+        # The traffic that the VPN gateway sent to the client over the SSL-VPN connection. Unit: bytes.
         self.send_bytes = send_bytes
         # The status of the SSL-VPN connection.
         # 
-        # The value is set to **online**, which indicates that the client has connected to Alibaba Cloud through an SSL-VPN connection.
+        # Valid values: **online**, which indicates that the client has successfully established an SSL-VPN connection to Alibaba Cloud.
         self.status = status
 
     def validate(self):

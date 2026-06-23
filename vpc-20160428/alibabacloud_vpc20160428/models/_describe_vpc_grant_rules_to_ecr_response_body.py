@@ -15,16 +15,17 @@ class DescribeVpcGrantRulesToEcrResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The authorization information.
+        # A list of authorization rules.
         self.grant_rule_models = grant_rule_models
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token for the next page of results. A non-empty value indicates that more results are available. If this parameter is not returned or is empty, all results have been retrieved.
         # 
-        # *   If **NextToken** is empty, there is no next page.
-        # *   ****
+        # - If **NextToken** is empty, there are no more queries.
+        # 
+        # - If **NextToken** has a value, the value is the token to start the next query.
         self.next_token = next_token
-        # The unique ID that Alibaba Cloud generates for the request.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of instances queried. If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
+        # The total number of entries. Note: When you perform a paged query by using the `MaxResults` and `NextToken` parameters, the value of this parameter is for reference only.
         self.total_count = total_count
 
     def validate(self):
@@ -84,22 +85,23 @@ class DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels(DaraModel):
         region_no: str = None,
         type: str = None,
     ):
-        # The creation time in milliseconds.
+        # The time when the authorization was created.
         self.creation_time = creation_time
-        # The ECR ID.
+        # The ID of the Express Connect Router.
         self.ecr_id = ecr_id
-        # The ID of the Alibaba Cloud account to which the ECR belongs.
+        # The ID of the Alibaba Cloud account (main account) that owns the Express Connect Router.
         self.ecr_owner_id = ecr_owner_id
         # The ID of the network instance.
         self.instance_id = instance_id
-        # The ID of the Alibaba Cloud account to which the instance belongs.
+        # The ID of the Alibaba Cloud account (main account) that owns the network instance.
         self.instance_uid = instance_uid
-        # The ID of the region where the instance is deployed.
+        # The ID of the region where the network instance is located.
         self.region_no = region_no
-        # The type of instance. Valid values:
+        # The type of the network instance. Valid values:
         # 
-        # *   **VBR**: queries the permissions that are granted to a VBR.
-        # *   **VPC**: queries the permissions that are granted from a VPC.
+        # - **VBR**: virtual border router
+        # 
+        # - **VPC**: Virtual Private Cloud
         self.type = type
 
     def validate(self):

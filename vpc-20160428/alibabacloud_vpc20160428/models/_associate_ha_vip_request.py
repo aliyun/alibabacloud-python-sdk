@@ -19,26 +19,27 @@ class AssociateHaVipRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** in each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The ID of the HaVip.
+        # The ID of the HaVip to be associated.
         # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
-        # The ID of the ECS instance to be associated with the HaVip.
+        # The instance ID of the ECS instance to attach to the HaVip.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of the instance to be associated with the HaVip. Valid values:
+        # The type of the instance to attach to the HaVip. Valid values:
         # 
-        # *   **EcsInstance**: an ECS instance
-        # *   **NetworkInterface**: an ENI. If you want to associate the HaVip with an ENI, this parameter is required.
+        # - **EcsInstance**: ECS instance.
+        # 
+        # - **NetworkInterface**: network interface controller (NIC) instance. If the instance to attach to the HaVip is a network interface controller (NIC), this parameter is required.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the HaVip belongs.
+        # The region ID of the HaVip.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 

@@ -13,13 +13,13 @@ class AllocateEipAddressProResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The EIP ID.
+        # The ID of the Elastic IP Address (EIP).
         self.allocation_id = allocation_id
-        # The IP address that is allocated to the EIP. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
+        # The IP address of the EIP. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
         self.eip_address = eip_address
         # The order ID.
-        # 
-        # This parameter is returned when InstanceChargeType is set to PrePaid. If AutoPay is set to false, you must manually complete the payment in the [Order Center](https://usercenter2-intl.aliyun.com/order/list).
+        # <props="china">This parameter is returned when `InstanceChargeType` is set to `PrePaid` (subscription). If `AutoPay` is set to `false`, go to the [Order Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
+        # <props="intl">This parameter is returned when `InstanceChargeType` is set to `PrePaid` (subscription). If `AutoPay` is set to `false`, go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

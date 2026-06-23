@@ -9,7 +9,7 @@ class UpdateRouteTargetGroupResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

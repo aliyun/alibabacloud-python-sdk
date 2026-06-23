@@ -12,7 +12,7 @@ class CreateVbrHaResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the VBR failover group.
+        # The instance ID of the VBR failover group.
         self.vbr_ha_id = vbr_ha_id
 
     def validate(self):

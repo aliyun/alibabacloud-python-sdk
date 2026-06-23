@@ -21,31 +21,35 @@ class ModifyExpressConnectTrafficQosRequest(DaraModel):
         remove_instance_list: List[main_models.ModifyExpressConnectTrafficQosRequestRemoveInstanceList] = None,
         resource_owner_account: str = None,
     ):
-        # The instances to be added. Ignore this parameter if no instances are to be added.
+        # The list of instances to add in this update. You do not need to specify this parameter if no instances need to be added.
         self.add_instance_list = add_instance_list
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The description of the QoS policy.
+        # 
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.qos_description = qos_description
         # The ID of the QoS policy.
         # 
         # This parameter is required.
         self.qos_id = qos_id
         # The name of the QoS policy.
-        self.qos_name = qos_name
-        # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+        self.qos_name = qos_name
+        # The region ID of the QoS policy.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The instances to be removed. Ignore this parameter if no instances are to be removed.
+        # The list of instances to remove in this update. You do not need to specify this parameter if no instances need to be removed.
         self.remove_instance_list = remove_instance_list
         self.resource_owner_account = resource_owner_account
 
@@ -146,9 +150,9 @@ class ModifyExpressConnectTrafficQosRequestRemoveInstanceList(DaraModel):
         instance_id: str = None,
         instance_type: str = None,
     ):
-        # The ID of the associated instance.
+        # The instance ID of the associated instance.
         self.instance_id = instance_id
-        # The type of the associated instance. Set the value to **PHYSICALCONNECTION**.
+        # The type of the associated instance. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
         self.instance_type = instance_type
 
     def validate(self):
@@ -183,9 +187,9 @@ class ModifyExpressConnectTrafficQosRequestAddInstanceList(DaraModel):
         instance_id: str = None,
         instance_type: str = None,
     ):
-        # The ID of the instance to be associated.
+        # The instance ID of the instance to associate.
         self.instance_id = instance_id
-        # The type of instance to be associated. Set the value to **PHYSICALCONNECTION**.
+        # The type of the instance to associate. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
         self.instance_type = instance_type
 
     def validate(self):

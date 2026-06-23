@@ -18,19 +18,19 @@ class DescribeVRoutersRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the vRouter that you want to query.
+        # The ID of the region where the vRouter resides.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the vRouter.
+        # The ID of the vRouter to query.
         self.vrouter_id = vrouter_id
 
     def validate(self):
