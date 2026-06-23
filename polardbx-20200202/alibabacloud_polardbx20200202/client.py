@@ -1583,6 +1583,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_data_import_task_with_options_async(request, runtime)
 
+    def create_gateway_consumer_for_polar_dbxwith_options(
+        self,
+        request: main_models.CreateGatewayConsumerForPolarDBXRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayConsumerForPolarDBXResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayConsumerForPolarDBX',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayConsumerForPolarDBXResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gateway_consumer_for_polar_dbxwith_options_async(
+        self,
+        request: main_models.CreateGatewayConsumerForPolarDBXRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateGatewayConsumerForPolarDBXResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateGatewayConsumerForPolarDBX',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateGatewayConsumerForPolarDBXResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gateway_consumer_for_polar_dbx(
+        self,
+        request: main_models.CreateGatewayConsumerForPolarDBXRequest,
+    ) -> main_models.CreateGatewayConsumerForPolarDBXResponse:
+        runtime = RuntimeOptions()
+        return self.create_gateway_consumer_for_polar_dbxwith_options(request, runtime)
+
+    async def create_gateway_consumer_for_polar_dbx_async(
+        self,
+        request: main_models.CreateGatewayConsumerForPolarDBXRequest,
+    ) -> main_models.CreateGatewayConsumerForPolarDBXResponse:
+        runtime = RuntimeOptions()
+        return await self.create_gateway_consumer_for_polar_dbxwith_options_async(request, runtime)
+
     def create_gdn_instance_with_options(
         self,
         request: main_models.CreateGdnInstanceRequest,

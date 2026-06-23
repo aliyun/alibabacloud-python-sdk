@@ -51,6 +51,9 @@ from ._create_dbinstance_response import CreateDBInstanceResponse
 from ._create_data_import_task_request import CreateDataImportTaskRequest
 from ._create_data_import_task_response_body import CreateDataImportTaskResponseBody
 from ._create_data_import_task_response import CreateDataImportTaskResponse
+from ._create_gateway_consumer_for_polar_dbxrequest import CreateGatewayConsumerForPolarDBXRequest
+from ._create_gateway_consumer_for_polar_dbxresponse_body import CreateGatewayConsumerForPolarDBXResponseBody
+from ._create_gateway_consumer_for_polar_dbxresponse import CreateGatewayConsumerForPolarDBXResponse
 from ._create_gdn_instance_request import CreateGdnInstanceRequest
 from ._create_gdn_instance_response_body import CreateGdnInstanceResponseBody
 from ._create_gdn_instance_response import CreateGdnInstanceResponse
@@ -650,6 +653,9 @@ __all__ = [
     CreateDataImportTaskRequest,
     CreateDataImportTaskResponseBody,
     CreateDataImportTaskResponse,
+    CreateGatewayConsumerForPolarDBXRequest,
+    CreateGatewayConsumerForPolarDBXResponseBody,
+    CreateGatewayConsumerForPolarDBXResponse,
     CreateGdnInstanceRequest,
     CreateGdnInstanceResponseBody,
     CreateGdnInstanceResponse,

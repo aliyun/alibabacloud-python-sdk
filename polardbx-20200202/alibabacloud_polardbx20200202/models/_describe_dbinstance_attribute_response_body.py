@@ -49,6 +49,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
 class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
     def __init__(
         self,
+        ai_gateway_enabled: str = None,
         can_not_create_columnar: bool = None,
         cn_node_class_code: str = None,
         cn_node_count: int = None,
@@ -109,6 +110,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.ai_gateway_enabled = ai_gateway_enabled
         # Indicates whether the In-Memory Column Index feature is supported.
         self.can_not_create_columnar = can_not_create_columnar
         # The CN node specifications. Valid values:
@@ -137,7 +139,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         # The internal network connection string.
         self.connection_string = connection_string
         self.cpu_type = cpu_type
-        # The time when the instance was created.
+        # The creation time.
         self.create_time = create_time
         # The instance type. Valid values:
         # 
@@ -152,9 +154,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         self.dbnodes = dbnodes
         # The database type. The value is fixed as polarx.
         self.dbtype = dbtype
-        # The database engine version.
+        # The database version.
         self.dbversion = dbversion
-        # The description of the instance.
+        # The instance description.
         self.description = description
         # Indicates whether the DN nodes of the instance have different specifications. Valid values:
         # 
@@ -180,45 +182,45 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
-        # The disk space of the DN data nodes, in GB.
+        # The disk space of the DN data node, in GB.
         self.dn_storage_space = dn_storage_space
         # The database type. The value is fixed as polarx.
         self.engine = engine
         self.engine_version = engine_version
-        # The expiration time. The time is in the yyyy-MM-ddTHH:mm:ss.sss+0000 format (UTC).
+        # The expiration time. Format: yyyy-MM-ddTHH:mm:ss.sss+0000 (UTC).
         self.expire_date = expire_date
         # Indicates whether the instance has expired. Valid values:
         # 
-        # - **true**: The instance has expired.
-        # - **false**: The instance is running normally.
+        # - **true**: Expired.
+        # - **false**: Not expired.
         self.expired = expired
         self.gdn_instance_name = gdn_instance_name
         self.gdn_member_list = gdn_member_list
         self.gdn_role = gdn_role
         # The ID of the primary instance. If this parameter is not returned, the instance is a primary instance.
         self.id = id
-        # The instance DPI engine version code. This is an internal parameter.
+        # The engine version of the instance. This is an internal parameter.
         self.kind_code = kind_code
         # This parameter is required.
         self.ltsversions = ltsversions
-        # The latest kernel version supported by the instance.
+        # The latest minor engine version supported by the instance.
         self.latest_minor_version = latest_minor_version
         # The lock mode of the instance. Valid values:
         # 
-        # - **Unlock**: The instance is running normally.
-        # - **ManualLock**: The instance is manually locked.
-        # - **LockByExpiration**: The instance is automatically locked due to expiration.
-        # - **LockByRestoration**: The instance is automatically locked before a rollback.
-        # - **LockByDiskQuota**: The instance is automatically locked because the storage is full.
-        # - **LockReadInstanceByDiskQuota**: The read-only instance is automatically locked because the storage is full.
+        # - **Unlock**: Normal.
+        # - **ManualLock**: Manually locked.
+        # - **LockByExpiration**: Automatically locked due to instance expiration.
+        # - **LockByRestoration**: Automatically locked before instance rollback.
+        # - **LockByDiskQuota**: Automatically locked due to insufficient disk space.
+        # - **LockReadInstanceByDiskQuota**: Read-only instance automatically locked due to insufficient disk space.
         self.lock_mode = lock_mode
         # The end time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
         self.maintain_start_time = maintain_start_time
-        # The current kernel version.
+        # The current minor engine version.
         self.minor_version = minor_version
-        # The network type of the instance. Only VPC is supported, which indicates a virtual private cloud (VPC).
+        # The network type of the instance. Only VPC is supported, which indicates Virtual Private Cloud.
         self.network = network
         # The billing method of the instance. Valid values:
         # 
@@ -236,7 +238,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         self.read_dbinstances = read_dbinstances
         # The region in which the instance resides.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The three-role mode status. Valid values:
         # 
@@ -248,7 +250,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         # - **disabled**: Disabled.
         # - **enabled**: Enabled.
         # - **processing**: Being processed.
-        # - **unknown**: Unknown. The instance may be disconnected.
+        # - **unknown**: Unknown. This may be caused by the instance being unreachable.
         self.rights_separation_status = rights_separation_status
         # The secondary zone.
         self.secondary_zone = secondary_zone
@@ -265,7 +267,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         self.storage_used = storage_used
         # The tag set.
         self.tag_set = tag_set
-        # The third zone.
+        # The tertiary zone for Three-zone deployment.
         self.tertiary_zone = tertiary_zone
         # The topology type. Valid values:
         # 
@@ -309,6 +311,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ai_gateway_enabled is not None:
+            result['AiGatewayEnabled'] = self.ai_gateway_enabled
+
         if self.can_not_create_columnar is not None:
             result['CanNotCreateColumnar'] = self.can_not_create_columnar
 
@@ -498,6 +503,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstance(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiGatewayEnabled') is not None:
+            self.ai_gateway_enabled = m.get('AiGatewayEnabled')
+
         if m.get('CanNotCreateColumnar') is not None:
             self.can_not_create_columnar = m.get('CanNotCreateColumnar')
 

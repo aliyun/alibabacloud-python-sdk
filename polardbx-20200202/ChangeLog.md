@@ -1,3 +1,8 @@
+2026-06-23 Version: 3.6.0
+- Support API CreateGatewayConsumerForPolarDBX.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.AiGatewayEnabled.
+
+
 2026-06-18 Version: 3.5.0
 - Support API DescribeMem0SecurityIps.
 - Support API ModifyMem0SecurityIps.

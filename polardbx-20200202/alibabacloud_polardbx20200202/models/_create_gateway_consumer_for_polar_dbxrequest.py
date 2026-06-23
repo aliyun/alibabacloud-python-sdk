@@ -4,23 +4,20 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeDBInstanceAttributeRequest(DaraModel):
+class CreateGatewayConsumerForPolarDBXRequest(DaraModel):
     def __init__(
         self,
         dbinstance_name: str = None,
         region_id: str = None,
-        resource_group_id: str = None,
     ):
-        # The name of the instance.
+        # The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region in which the instance resides.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -36,9 +33,6 @@ class DescribeDBInstanceAttributeRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
-
         return result
 
     def from_map(self, m: dict = None):
@@ -48,9 +42,6 @@ class DescribeDBInstanceAttributeRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
 
         return self
 
