@@ -1,3 +1,10 @@
+2026-06-23 Version: 1.21.0
+- Support API CommercializeFetch.
+- Support API GetReportResponse.
+- Support API GetReportTaskStatus.
+- Support API RetryReportTask.
+
+
 2026-04-10 Version: 1.20.0
 - Support API ExchangeEntitlement.
 - Support API GetUsage.

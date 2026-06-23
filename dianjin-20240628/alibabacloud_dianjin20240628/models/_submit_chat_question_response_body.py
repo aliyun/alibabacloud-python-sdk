@@ -17,13 +17,21 @@ class SubmitChatQuestionResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time taken
         self.cost = cost
+        # Response data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -95,6 +103,7 @@ class SubmitChatQuestionResponseBodyData(DaraModel):
         self,
         batch_id: str = None,
     ):
+        # Batch ID
         self.batch_id = batch_id
 
     def validate(self):

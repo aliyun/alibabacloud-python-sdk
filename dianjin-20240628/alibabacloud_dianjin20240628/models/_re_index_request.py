@@ -9,6 +9,8 @@ class ReIndexRequest(DaraModel):
         self,
         document_id: str = None,
     ):
+        # The ID of the document.
+        # 
         # This parameter is required.
         self.document_id = document_id
 

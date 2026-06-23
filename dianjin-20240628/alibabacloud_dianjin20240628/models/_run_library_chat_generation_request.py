@@ -29,27 +29,47 @@ class RunLibraryChatGenerationRequest(DaraModel):
         vector_search_parameter: main_models.RunLibraryChatGenerationRequestVectorSearchParameter = None,
         with_document_reference: bool = None,
     ):
+        # A list of document IDs.
         self.doc_id_list = doc_id_list
+        # Specifies whether to enable multi-turn enhancement.
         self.enable_follow_up = enable_follow_up
+        # Specifies whether to enable query splitting.
         self.enable_multi_query = enable_multi_query
+        # Specifies whether to enable openQA.
         self.enable_open_qa = enable_open_qa
+        # The Large Language Model (LLM) used for multi-turn query enhancement.
         self.follow_up_llm = follow_up_llm
+        # The ID of the document library.
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # The type of the LLM.
+        # 
         # This parameter is required.
         self.llm_type = llm_type
+        # The LLM used for query splitting.
         self.multi_query_llm = multi_query_llm
+        # The query entered by the user.
+        # 
         # This parameter is required.
         self.query = query
+        # The property filter.
         self.query_criteria = query_criteria
+        # The type of the sort policy. Valid values: \\`linear\\` and \\`model\\`. \\`linear\\`: rule-based sorting. \\`model\\`: model-based sorting (LLM).
         self.rerank_type = rerank_type
-        # sessionId
+        # The session ID.
         self.session_id = session_id
+        # Specifies whether to use streaming or non-streaming mode.
         self.stream = stream
+        # A list of subqueries.
         self.sub_query_list = sub_query_list
+        # Search engine parameters: text search parameters.
         self.text_search_parameter = text_search_parameter
+        # The final number of retrieved corpus entries.
         self.top_k = top_k
+        # Search engine parameters: vector search parameters.
         self.vector_search_parameter = vector_search_parameter
+        # Specifies whether to return document references.
         self.with_document_reference = with_document_reference
 
     def validate(self):
@@ -187,6 +207,7 @@ class RunLibraryChatGenerationRequestVectorSearchParameter(DaraModel):
         self,
         limit: int = None,
     ):
+        # The number of rows to return.
         self.limit = limit
 
     def validate(self):
@@ -215,7 +236,9 @@ class RunLibraryChatGenerationRequestTextSearchParameter(DaraModel):
         limit: int = None,
         search_analyzer_type: str = None,
     ):
+        # The number of rows to return.
         self.limit = limit
+        # The search tokenizer. Valid values: \\`Standard\\`, \\`IkMaxWord\\`, and \\`IkSmart\\`. Configure this parameter as needed. If left empty, the tokenizer attached to the document library is used.
         self.search_analyzer_type = search_analyzer_type
 
     def validate(self):
@@ -250,7 +273,9 @@ class RunLibraryChatGenerationRequestQueryCriteria(DaraModel):
         and_: List[main_models.RunLibraryChatGenerationRequestQueryCriteriaAnd] = None,
         or_: List[main_models.RunLibraryChatGenerationRequestQueryCriteriaOr] = None,
     ):
+        # The \\`and\\` expression, used to filter documents or document chunks.
         self.and_ = and_
+        # The \\`or\\` expression, used to filter documents or document chunks.
         self.or_ = or_
 
     def validate(self):
@@ -304,9 +329,23 @@ class RunLibraryChatGenerationRequestQueryCriteriaOr(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # The weight of the tag. A value less than 1 decreases the weight of the corresponding keyword. A value greater than 1 increases the weight.
         self.boost = boost
+        # The key of the tag.
         self.key = key
+        # The operator for the tag. It specifies the relationship between the metadata key\\"s stored value and your input value.
+        # 
+        # - eq: Equal to.
+        # 
+        # - lte: Less than or equal to.
+        # 
+        # - gte: Greater than or equal to.
+        # 
+        # - lt: Less than.
+        # 
+        # - gt: Greater than.
         self.operator = operator
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -355,9 +394,23 @@ class RunLibraryChatGenerationRequestQueryCriteriaAnd(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # The weight of the tag. A value less than 1 decreases the weight of the corresponding keyword. A value greater than 1 increases the weight.
         self.boost = boost
+        # The key of the tag.
         self.key = key
+        # The operator for the tag. It specifies the relationship between the metadata key\\"s stored value and your input value.
+        # 
+        # - eq: Equal to.
+        # 
+        # - lte: Less than or equal to.
+        # 
+        # - gte: Greater than or equal to.
+        # 
+        # - lt: Less than.
+        # 
+        # - gt: Greater than.
         self.operator = operator
+        # The value of the tag.
         self.value = value
 
     def validate(self):

@@ -9,6 +9,8 @@ class GetDialogDetailRequest(DaraModel):
         self,
         session_id: str = None,
     ):
+        # Session ID
+        # 
         # This parameter is required.
         self.session_id = session_id
 

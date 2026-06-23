@@ -17,13 +17,21 @@ class CreateQualityCheckTaskResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time consumed.
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -95,7 +103,7 @@ class CreateQualityCheckTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # taskId
+        # The taskId.
         self.task_id = task_id
 
     def validate(self):

@@ -89,7 +89,6 @@ class QueryApiKeysResponseBodyData(DaraModel):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.key_hash = key_hash
-        # **API Key ID**
         self.key_id = key_id
         self.status = status
         self.tenant_id = tenant_id

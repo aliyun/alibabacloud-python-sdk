@@ -17,13 +17,21 @@ class GetLibraryResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Response time in milliseconds.
         self.cost = cost
+        # The response data object.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # Fault type
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # UNIX timestamp
         self.time = time
 
     def validate(self):
@@ -101,12 +109,19 @@ class GetLibraryResponseBodyData(DaraModel):
         index_setting: main_models.GetLibraryResponseBodyDataIndexSetting = None,
         library_name: str = None,
     ):
+        # The document library description.
         self.description = description
+        # The number of documents in the library.
         self.document_count = document_count
+        # Creation time
         self.gmt_create = gmt_create
+        # The last modification time in YYYY-MM-DD HH:MM:SS format.
         self.gmt_modified = gmt_modified
+        # The document library ID.
         self.id = id
+        # The document library index settings.
         self.index_setting = index_setting
+        # The document library name.
         self.library_name = library_name
 
     def validate(self):
@@ -178,12 +193,19 @@ class GetLibraryResponseBodyDataIndexSetting(DaraModel):
         text_index_setting: main_models.GetLibraryResponseBodyDataIndexSettingTextIndexSetting = None,
         vector_index_setting: main_models.GetLibraryResponseBodyDataIndexSettingVectorIndexSetting = None,
     ):
+        # The chunking strategy.
         self.chunk_strategy = chunk_strategy
+        # Model configuration.
         self.model_config = model_config
+        # The prompt role style.
         self.prompt_role_style = prompt_role_style
+        # Query enhancement settings.
         self.query_enhancer = query_enhancer
+        # The recall strategy.
         self.recall_strategy = recall_strategy
+        # Text index settings.
         self.text_index_setting = text_index_setting
+        # Vector index settings.
         self.vector_index_setting = vector_index_setting
 
     def validate(self):
@@ -268,10 +290,15 @@ class GetLibraryResponseBodyDataIndexSettingVectorIndexSetting(DaraModel):
         rank_threshold: float = None,
         top_k: int = None,
     ):
+        # The vector index source. We recommend ADB.
         self.category = category
+        # The text embedding model for the vector index.
         self.embedding_type = embedding_type
+        # Enable vector indexing.
         self.enable = enable
+        # The ranking threshold for vector indexing.
         self.rank_threshold = rank_threshold
+        # Number of final results returned by the vector index.
         self.top_k = top_k
 
     def validate(self):
@@ -328,11 +355,17 @@ class GetLibraryResponseBodyDataIndexSettingTextIndexSetting(DaraModel):
         search_analyzer: str = None,
         top_k: int = None,
     ):
+        # The text index type.
         self.category = category
+        # Enable text indexing.
         self.enable = enable
+        # The text index analyzer: Standard, IkMaxWord, or IkSmart.
         self.index_analyzer = index_analyzer
+        # The ranking threshold for text indexing.
         self.rank_threshold = rank_threshold
+        # The text index search analyzer: Standard, IkMaxWord, or IkSmart.
         self.search_analyzer = search_analyzer
+        # The number of final summary results from text indexing.
         self.top_k = top_k
 
     def validate(self):
@@ -391,7 +424,9 @@ class GetLibraryResponseBodyDataIndexSettingRecallStrategy(DaraModel):
         document_rank_type: str = None,
         limit: int = None,
     ):
+        # The merge and sort policy.
         self.document_rank_type = document_rank_type
+        # The number of results returned after merging two recall paths.
         self.limit = limit
 
     def validate(self):
@@ -431,12 +466,19 @@ class GetLibraryResponseBodyDataIndexSettingQueryEnhancer(DaraModel):
         local_knowledge_id: str = None,
         with_document_reference: bool = None,
     ):
+        # Enable multi-turn query enhancement.
         self.enable_follow_up = enable_follow_up
+        # Use Large Language Model (LLM) knowledge to decompose queries.
         self.enable_multi_query = enable_multi_query
+        # Use Large Language Model (LLM) knowledge to answer questions.
         self.enable_open_qa = enable_open_qa
+        # Rewrite queries using domain-specific knowledge.
         self.enable_query_rewrite = enable_query_rewrite
+        # Record session history.
         self.enable_session = enable_session
+        # The document library ID used for knowledge rewriting.
         self.local_knowledge_id = local_knowledge_id
+        # Include document references in responses.
         self.with_document_reference = with_document_reference
 
     def validate(self):
@@ -501,6 +543,7 @@ class GetLibraryResponseBodyDataIndexSettingModelConfig(DaraModel):
         temperature: float = None,
         top_p: float = None,
     ):
+        # temperature
         self.temperature = temperature
         # topP
         self.top_p = top_p
@@ -544,14 +587,23 @@ class GetLibraryResponseBodyDataIndexSettingChunkStrategy(DaraModel):
         size: int = None,
         split: bool = None,
     ):
+        # Enable layout-based splitting.
         self.doc_tree_split = doc_tree_split
+        # The layout-based splitting size.
         self.doc_tree_split_size = doc_tree_split_size
+        # Enhance images.
         self.enhance_graph = enhance_graph
+        # Enhance tables.
         self.enhance_table = enhance_table
+        # The overlap length between chunks.
         self.overlap = overlap
+        # Split by sentence.
         self.sentence_split = sentence_split
+        # The sentence-based splitting size.
         self.sentence_split_size = sentence_split_size
+        # The chunk size.
         self.size = size
+        # Enable chunking.
         self.split = split
 
     def validate(self):

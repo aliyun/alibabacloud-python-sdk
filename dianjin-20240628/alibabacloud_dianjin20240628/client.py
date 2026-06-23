@@ -11,6 +11,7 @@ from alibabacloud_tea_openapi import exceptions as open_api_exceptions
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
+from alibabacloud_tea_openapi.websocketUtils import Client as WebSocketUtilsClient
 from darabonba.core import DaraCore
 from darabonba.core import DaraCore as DaraCore
 from darabonba.exceptions import UnretryableException
@@ -32,7 +33,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'dianjin.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dianjin', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -207,6 +211,114 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def commercialize_fetch_with_options(
+        self,
+        workspace_id: str,
+        cjf_code: str,
+        zjf_code: str,
+        request: main_models.CommercializeFetchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CommercializeFetchResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel_id):
+            body['channelId'] = request.channel_id
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.product_id):
+            body['productId'] = request.product_id
+        if not DaraCore.is_null(request.request_id):
+            body['requestId'] = request.request_id
+        if not DaraCore.is_null(request.secret_key):
+            body['secretKey'] = request.secret_key
+        if not DaraCore.is_null(request.sign):
+            body['sign'] = request.sign
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CommercializeFetch',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/spi/path/{DaraURL.percent_encode(cjf_code)}/api/support/{DaraURL.percent_encode(zjf_code)}/firefly/commercializeFetch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CommercializeFetchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def commercialize_fetch_with_options_async(
+        self,
+        workspace_id: str,
+        cjf_code: str,
+        zjf_code: str,
+        request: main_models.CommercializeFetchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CommercializeFetchResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.channel_id):
+            body['channelId'] = request.channel_id
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.product_id):
+            body['productId'] = request.product_id
+        if not DaraCore.is_null(request.request_id):
+            body['requestId'] = request.request_id
+        if not DaraCore.is_null(request.secret_key):
+            body['secretKey'] = request.secret_key
+        if not DaraCore.is_null(request.sign):
+            body['sign'] = request.sign
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CommercializeFetch',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/spi/path/{DaraURL.percent_encode(cjf_code)}/api/support/{DaraURL.percent_encode(zjf_code)}/firefly/commercializeFetch',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CommercializeFetchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def commercialize_fetch(
+        self,
+        workspace_id: str,
+        cjf_code: str,
+        zjf_code: str,
+        request: main_models.CommercializeFetchRequest,
+    ) -> main_models.CommercializeFetchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.commercialize_fetch_with_options(workspace_id, cjf_code, zjf_code, request, headers, runtime)
+
+    async def commercialize_fetch_async(
+        self,
+        workspace_id: str,
+        cjf_code: str,
+        zjf_code: str,
+        request: main_models.CommercializeFetchRequest,
+    ) -> main_models.CommercializeFetchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.commercialize_fetch_with_options_async(workspace_id, cjf_code, zjf_code, request, headers, runtime)
 
     def create_annual_doc_summary_task_with_options(
         self,
@@ -1580,18 +1692,20 @@ class Client(OpenApiClient):
         params = open_api_util_models.Params(
             action = 'EndToEndRealTimeDialog',
             version = '2024-06-28',
-            protocol = 'HTTPS',
+            protocol = 'wss',
             pathname = f'/{DaraURL.percent_encode(workspace_id)}/ws/realtime/dialog',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
-            body_type = 'json'
+            body_type = 'json',
+            websocket_sub_protocol = 'awap'
         )
-        return DaraCore.from_map(
-            main_models.EndToEndRealTimeDialogResponse(),
-            self.call_api(params, req, runtime)
-        )
+        res = main_models.EndToEndRealTimeDialogResponse()
+        tmp = self.call_api(params, req, runtime)
+        if not DaraCore.is_null(tmp.get('webSocketClient')):
+            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+        return res
 
     async def end_to_end_real_time_dialog_with_options_async(
         self,
@@ -1627,18 +1741,20 @@ class Client(OpenApiClient):
         params = open_api_util_models.Params(
             action = 'EndToEndRealTimeDialog',
             version = '2024-06-28',
-            protocol = 'HTTPS',
+            protocol = 'wss',
             pathname = f'/{DaraURL.percent_encode(workspace_id)}/ws/realtime/dialog',
             method = 'GET',
             auth_type = 'AK',
             style = 'ROA',
             req_body_type = 'json',
-            body_type = 'json'
+            body_type = 'json',
+            websocket_sub_protocol = 'awap'
         )
-        return DaraCore.from_map(
-            main_models.EndToEndRealTimeDialogResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
+        res = main_models.EndToEndRealTimeDialogResponse()
+        tmp = await self.call_api_async(params, req, runtime)
+        if not DaraCore.is_null(tmp.get('webSocketClient')):
+            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+        return res
 
     def end_to_end_real_time_dialog(
         self,
@@ -3258,6 +3374,174 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_quality_check_task_result_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_report_response_with_options(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReportResponseResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReportResponse',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/firefly/v1/{DaraURL.percent_encode(scene_code)}/{DaraURL.percent_encode(fund_product)}/tasks/{DaraURL.percent_encode(out_request_no)}/report',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReportResponseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_report_response_with_options_async(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReportResponseResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReportResponse',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/firefly/v1/{DaraURL.percent_encode(scene_code)}/{DaraURL.percent_encode(fund_product)}/tasks/{DaraURL.percent_encode(out_request_no)}/report',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReportResponseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_report_response(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportResponseRequest,
+    ) -> main_models.GetReportResponseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_report_response_with_options(workspace_id, scene_code, fund_product, out_request_no, request, headers, runtime)
+
+    async def get_report_response_async(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportResponseRequest,
+    ) -> main_models.GetReportResponseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_report_response_with_options_async(workspace_id, scene_code, fund_product, out_request_no, request, headers, runtime)
+
+    def get_report_task_status_with_options(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReportTaskStatusResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReportTaskStatus',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/firefly/v1/{DaraURL.percent_encode(scene_code)}/{DaraURL.percent_encode(fund_product)}/tasks/{DaraURL.percent_encode(out_request_no)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReportTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_report_task_status_with_options_async(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportTaskStatusRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReportTaskStatusResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReportTaskStatus',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/firefly/v1/{DaraURL.percent_encode(scene_code)}/{DaraURL.percent_encode(fund_product)}/tasks/{DaraURL.percent_encode(out_request_no)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReportTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_report_task_status(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportTaskStatusRequest,
+    ) -> main_models.GetReportTaskStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_report_task_status_with_options(workspace_id, scene_code, fund_product, out_request_no, request, headers, runtime)
+
+    async def get_report_task_status_async(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.GetReportTaskStatusRequest,
+    ) -> main_models.GetReportTaskStatusResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_report_task_status_with_options_async(workspace_id, scene_code, fund_product, out_request_no, request, headers, runtime)
+
     def get_summary_task_result_with_options(
         self,
         workspace_id: str,
@@ -4773,6 +5057,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.recognize_intention_with_options_async(workspace_id, request, headers, runtime)
+
+    def retry_report_task_with_options(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.RetryReportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryReportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryReportTask',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/firefly/v1/{DaraURL.percent_encode(scene_code)}/{DaraURL.percent_encode(fund_product)}/tasks/{DaraURL.percent_encode(out_request_no)}/retry',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryReportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_report_task_with_options_async(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.RetryReportTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryReportTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RetryReportTask',
+            version = '2024-06-28',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/api/firefly/v1/{DaraURL.percent_encode(scene_code)}/{DaraURL.percent_encode(fund_product)}/tasks/{DaraURL.percent_encode(out_request_no)}/retry',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetryReportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_report_task(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.RetryReportTaskRequest,
+    ) -> main_models.RetryReportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.retry_report_task_with_options(workspace_id, scene_code, fund_product, out_request_no, request, headers, runtime)
+
+    async def retry_report_task_async(
+        self,
+        workspace_id: str,
+        scene_code: str,
+        fund_product: str,
+        out_request_no: str,
+        request: main_models.RetryReportTaskRequest,
+    ) -> main_models.RetryReportTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.retry_report_task_with_options_async(workspace_id, scene_code, fund_product, out_request_no, request, headers, runtime)
 
     def run_agent_with_sse(
         self,

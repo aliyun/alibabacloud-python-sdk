@@ -17,13 +17,21 @@ class PreviewDocumentResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time consumed.
         self.cost = cost
+        # Returned data.
         self.data = data
+        # Data type.
         self.data_type = data_type
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Is successful.
         self.success = success
+        # Time.
         self.time = time
 
     def validate(self):
@@ -98,9 +106,13 @@ class PreviewDocumentResponseBodyData(DaraModel):
         upload_time: str = None,
         url: str = None,
     ):
+        # Preview type.
         self.preview_type = preview_type
+        # Document title.
         self.title = title
+        # Upload time.
         self.upload_time = upload_time
+        # Document URL.
         self.url = url
 
     def validate(self):

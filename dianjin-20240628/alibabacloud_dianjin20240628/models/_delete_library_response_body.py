@@ -12,9 +12,13 @@ class DeleteLibraryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):

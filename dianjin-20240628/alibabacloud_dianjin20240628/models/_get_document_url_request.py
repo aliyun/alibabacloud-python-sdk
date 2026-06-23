@@ -9,6 +9,8 @@ class GetDocumentUrlRequest(DaraModel):
         self,
         document_id: str = None,
     ):
+        # The document ID.
+        # 
         # This parameter is required.
         self.document_id = document_id
 

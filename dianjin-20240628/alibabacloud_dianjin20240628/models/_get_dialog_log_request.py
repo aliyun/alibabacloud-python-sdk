@@ -10,7 +10,9 @@ class GetDialogLogRequest(DaraModel):
         id: str = None,
         session_id: str = None,
     ):
+        # The \\`id\\` field returned by the real-time conversation API.
         self.id = id
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

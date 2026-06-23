@@ -16,13 +16,21 @@ class UploadDocumentResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The processing time, in milliseconds.
         self.cost = cost
+        # The returned data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
+        # Timestamp.
         self.time = time
 
     def validate(self):

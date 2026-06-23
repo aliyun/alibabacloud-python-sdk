@@ -9,6 +9,8 @@ class RunDialogAnalysisRequest(DaraModel):
         self,
         session_id: str = None,
     ):
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
 

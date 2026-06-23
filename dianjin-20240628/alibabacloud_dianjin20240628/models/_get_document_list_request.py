@@ -12,10 +12,15 @@ class GetDocumentListRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The document library ID.
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # The page number.
         self.page = page
+        # The page number.
         self.page_size = page_size
+        # The document status.
         self.status = status
 
     def validate(self):

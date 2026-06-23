@@ -19,13 +19,21 @@ class GetLibraryListResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time consumed
         self.cost = cost
+        # Returned data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Successful
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -101,10 +109,15 @@ class GetLibraryListResponseBodyData(DaraModel):
         total_pages: int = None,
         total_records: int = None,
     ):
+        # Page number
         self.current_page = current_page
+        # Number of records per page
         self.page_size = page_size
+        # Record list
         self.records = records
+        # Total pages
         self.total_pages = total_pages
+        # Total records
         self.total_records = total_records
 
     def validate(self):
@@ -170,12 +183,19 @@ class GetLibraryListResponseBodyDataRecords(DaraModel):
         index_setting: main_models.GetLibraryListResponseBodyDataRecordsIndexSetting = None,
         library_name: str = None,
     ):
+        # Document library description
         self.description = description
+        # Document count
         self.document_count = document_count
+        # Creation time
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Document library ID
         self.id = id
+        # Document library index settings
         self.index_setting = index_setting
+        # Document library name
         self.library_name = library_name
 
     def validate(self):
@@ -247,12 +267,19 @@ class GetLibraryListResponseBodyDataRecordsIndexSetting(DaraModel):
         text_index_setting: main_models.GetLibraryListResponseBodyDataRecordsIndexSettingTextIndexSetting = None,
         vector_index_setting: main_models.GetLibraryListResponseBodyDataRecordsIndexSettingVectorIndexSetting = None,
     ):
+        # Chunking strategy
         self.chunk_strategy = chunk_strategy
+        # Model Configuration
         self.model_config = model_config
+        # Prompt role style
         self.prompt_role_style = prompt_role_style
+        # Query enhancement
         self.query_enhancer = query_enhancer
+        # Recall strategy
         self.recall_strategy = recall_strategy
+        # Text index settings
         self.text_index_setting = text_index_setting
+        # Vector index settings
         self.vector_index_setting = vector_index_setting
 
     def validate(self):
@@ -337,10 +364,15 @@ class GetLibraryListResponseBodyDataRecordsIndexSettingVectorIndexSetting(DaraMo
         rank_threshold: float = None,
         top_k: int = None,
     ):
+        # Vector index source. Recommended: ADB
         self.category = category
+        # Vector index text embedding model
         self.embedding_type = embedding_type
+        # Enabled
         self.enable = enable
+        # Vector index sort threshold
         self.rank_threshold = rank_threshold
+        # Number of final summary results for vector index
         self.top_k = top_k
 
     def validate(self):
@@ -397,11 +429,17 @@ class GetLibraryListResponseBodyDataRecordsIndexSettingTextIndexSetting(DaraMode
         search_analyzer: str = None,
         top_k: int = None,
     ):
+        # Text index type
         self.category = category
+        # Text index enabled
         self.enable = enable
+        # Index analyzer for text index: (Standard, IkMaxWord, IkSmart)
         self.index_analyzer = index_analyzer
+        # Text index sort threshold
         self.rank_threshold = rank_threshold
+        # Search analyzer for text index: (Standard, IkMaxWord, IkSmart)
         self.search_analyzer = search_analyzer
+        # Number of final summary results for text index
         self.top_k = top_k
 
     def validate(self):
@@ -460,7 +498,9 @@ class GetLibraryListResponseBodyDataRecordsIndexSettingRecallStrategy(DaraModel)
         document_rank_type: str = None,
         limit: int = None,
     ):
+        # Merge and sort policy
         self.document_rank_type = document_rank_type
+        # Number of results from two-way merge summary
         self.limit = limit
 
     def validate(self):
@@ -500,12 +540,19 @@ class GetLibraryListResponseBodyDataRecordsIndexSettingQueryEnhancer(DaraModel):
         local_knowledge_id: str = None,
         with_document_reference: bool = None,
     ):
+        # Multi-turn enhancement
         self.enable_follow_up = enable_follow_up
+        # Use Large Language Model (LLM) knowledge to decompose questions
         self.enable_multi_query = enable_multi_query
+        # Use Large Language Model (LLM) knowledge to answer questions
         self.enable_open_qa = enable_open_qa
+        # Rewrite questions based on domain knowledge
         self.enable_query_rewrite = enable_query_rewrite
+        # Record session
         self.enable_session = enable_session
+        # Document library ID used for knowledge rewriting
         self.local_knowledge_id = local_knowledge_id
+        # Include document reference
         self.with_document_reference = with_document_reference
 
     def validate(self):
@@ -570,6 +617,7 @@ class GetLibraryListResponseBodyDataRecordsIndexSettingModelConfig(DaraModel):
         temperature: float = None,
         top_p: float = None,
     ):
+        # Temperature
         self.temperature = temperature
         # topP
         self.top_p = top_p
@@ -613,14 +661,23 @@ class GetLibraryListResponseBodyDataRecordsIndexSettingChunkStrategy(DaraModel):
         size: int = None,
         split: bool = None,
     ):
+        # Layout chunking
         self.doc_tree_split = doc_tree_split
+        # Layout chunking size
         self.doc_tree_split_size = doc_tree_split_size
+        # Enhance images
         self.enhance_graph = enhance_graph
+        # Enhance tables
         self.enhance_table = enhance_table
+        # Chunk overlap length
         self.overlap = overlap
+        # Split by sentence
         self.sentence_split = sentence_split
+        # Split by sentence size
         self.sentence_split_size = sentence_split_size
+        # Chunk size
         self.size = size
+        # Chunking enabled
         self.split = split
 
     def validate(self):

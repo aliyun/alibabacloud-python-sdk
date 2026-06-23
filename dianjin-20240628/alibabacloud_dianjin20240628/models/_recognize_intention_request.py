@@ -20,16 +20,27 @@ class RecognizeIntentionRequest(DaraModel):
         op_type: str = None,
         recommend: bool = None,
     ):
+        # Enable analysis.
         self.analysis = analysis
+        # Business type.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Conversation text.
+        # 
         # This parameter is required.
         self.conversation = conversation
+        # Global intent list. Required when opType is hierarchical.
         self.global_intention_list = global_intention_list
+        # Hierarchical intent list. Required when opType is hierarchical.
         self.hierarchical_intention_list = hierarchical_intention_list
+        # Intent library: Local intent library code.
         self.intention_domain_code = intention_domain_code
+        # Intent list. Required when bizType is not attitude.
         self.intention_list = intention_list
+        # Operation type.
         self.op_type = op_type
+        # Recommend intent.
         self.recommend = recommend
 
     def validate(self):
@@ -134,9 +145,13 @@ class RecognizeIntentionRequestIntentionList(DaraModel):
         intention_code: str = None,
         intention_script: str = None,
     ):
+        # Intent description.
         self.description = description
+        # Intent name.
         self.intention = intention
+        # Intent code.
         self.intention_code = intention_code
+        # Intent script.
         self.intention_script = intention_script
 
     def validate(self):
@@ -185,9 +200,13 @@ class RecognizeIntentionRequestHierarchicalIntentionList(DaraModel):
         intention_code: str = None,
         intention_script: str = None,
     ):
+        # Intent description.
         self.description = description
+        # Intent name.
         self.intention = intention
+        # Intent code.
         self.intention_code = intention_code
+        # Intent script.
         self.intention_script = intention_script
 
     def validate(self):
@@ -236,9 +255,13 @@ class RecognizeIntentionRequestGlobalIntentionList(DaraModel):
         intention_code: str = None,
         intention_script: str = None,
     ):
+        # Intent description.
         self.description = description
+        # Intent name.
         self.intention = intention
+        # Intent code.
         self.intention_code = intention_code
+        # Intent script.
         self.intention_script = intention_script
 
     def validate(self):

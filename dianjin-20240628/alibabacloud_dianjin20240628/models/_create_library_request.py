@@ -12,9 +12,14 @@ class CreateLibraryRequest(DaraModel):
         index_setting: main_models.CreateLibraryRequestIndexSetting = None,
         library_name: str = None,
     ):
+        # Document library description
+        # 
         # This parameter is required.
         self.description = description
+        # Index settings for the document library
         self.index_setting = index_setting
+        # Document library name
+        # 
         # This parameter is required.
         self.library_name = library_name
 
@@ -63,12 +68,19 @@ class CreateLibraryRequestIndexSetting(DaraModel):
         text_index_setting: main_models.CreateLibraryRequestIndexSettingTextIndexSetting = None,
         vector_index_setting: main_models.CreateLibraryRequestIndexSettingVectorIndexSetting = None,
     ):
+        # Chunking strategy
         self.chunk_strategy = chunk_strategy
+        # Model configuration
         self.model_config = model_config
+        # Prompt role style. Specify a role and tone to guide response quality. Examples: Document analysis expert, friendly customer service agent, professional financial analyst.
         self.prompt_role_style = prompt_role_style
+        # Query enhancement configuration
         self.query_enhancer = query_enhancer
+        # Retrieval strategy
         self.recall_strategy = recall_strategy
+        # Text index configuration
         self.text_index_setting = text_index_setting
+        # Vector index settings
         self.vector_index_setting = vector_index_setting
 
     def validate(self):
@@ -153,10 +165,15 @@ class CreateLibraryRequestIndexSettingVectorIndexSetting(DaraModel):
         rank_threshold: float = None,
         top_k: int = None,
     ):
+        # Vector index source. Only ADB is supported.
         self.category = category
+        # Text embedding type for vector indexing
         self.embedding_type = embedding_type
+        # Enable vector indexing
         self.enable = enable
+        # Vector index ranking threshold
         self.rank_threshold = rank_threshold
+        # Number of final vector index results
         self.top_k = top_k
 
     def validate(self):
@@ -213,11 +230,17 @@ class CreateLibraryRequestIndexSettingTextIndexSetting(DaraModel):
         search_analyzer: str = None,
         top_k: int = None,
     ):
+        # Text index type. Only ElasticSearch is supported.
         self.category = category
+        # Enable text indexing
         self.enable = enable
+        # Text index analyzer: Standard, IkMaxWord, or IkSmart
         self.index_analyzer = index_analyzer
+        # Text index ranking threshold
         self.rank_threshold = rank_threshold
+        # Text index search analyzer: Standard, IkMaxWord, or IkSmart
         self.search_analyzer = search_analyzer
+        # Number of final text index results
         self.top_k = top_k
 
     def validate(self):
@@ -276,7 +299,9 @@ class CreateLibraryRequestIndexSettingRecallStrategy(DaraModel):
         document_rank_type: str = None,
         limit: int = None,
     ):
+        # Merge and sort policy
         self.document_rank_type = document_rank_type
+        # Number of results from two-way merge and summarization
         self.limit = limit
 
     def validate(self):
@@ -316,12 +341,19 @@ class CreateLibraryRequestIndexSettingQueryEnhancer(DaraModel):
         local_knowledge_id: str = None,
         with_document_reference: bool = None,
     ):
+        # Rewrite queries using history
         self.enable_follow_up = enable_follow_up
+        # Use Large Language Models (LLMs) to decompose queries
         self.enable_multi_query = enable_multi_query
+        # Use LLMs to answer queries
         self.enable_open_qa = enable_open_qa
+        # Enable query rewriting
         self.enable_query_rewrite = enable_query_rewrite
+        # Enable multi-turn conversations
         self.enable_session = enable_session
+        # Document library ID for knowledge rewriting
         self.local_knowledge_id = local_knowledge_id
+        # Include document references in responses
         self.with_document_reference = with_document_reference
 
     def validate(self):
@@ -386,7 +418,11 @@ class CreateLibraryRequestIndexSettingModelConfig(DaraModel):
         temperature: float = None,
         top_p: float = None,
     ):
+        # Control the randomness and diversity of model responses. Higher values flatten the probability distribution over candidate tokens, increasing diversity. Lower values sharpen the distribution, increasing determinism.
+        # 
+        # Valid range: [0, 2). Avoid 0.
         self.temperature = temperature
+        # Probability threshold for nucleus sampling. For example, with a value of 0.8, only the smallest set of most likely tokens whose cumulative probability is at least 0.8 is used. Higher values increase randomness. Lower values increase determinism.
         self.top_p = top_p
 
     def validate(self):
@@ -428,14 +464,23 @@ class CreateLibraryRequestIndexSettingChunkStrategy(DaraModel):
         size: int = None,
         split: bool = None,
     ):
+        # Layout-based chunking
         self.doc_tree_split = doc_tree_split
+        # Layout-based chunk size
         self.doc_tree_split_size = doc_tree_split_size
+        # Parse images in documents
         self.enhance_graph = enhance_graph
+        # Parse tables in documents
         self.enhance_table = enhance_table
+        # Chunk overlap length
         self.overlap = overlap
+        # Split by sentence
         self.sentence_split = sentence_split
+        # Sentence-based chunk size
         self.sentence_split_size = sentence_split_size
+        # Chunk size
         self.size = size
+        # Enable chunking
         self.split = split
 
     def validate(self):

@@ -19,13 +19,21 @@ class RealtimeDialogAssistResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time consumed
         self.cost = cost
+        # Response data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID. This is the system-recorded request ID. If issues arise, provide this ID to the Model Studio DianJin R\\&D team for troubleshooting.
         self.request_id = request_id
+        # Whether successful
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -103,12 +111,19 @@ class RealtimeDialogAssistResponseBodyData(DaraModel):
         request_id: str = None,
         session_id: str = None,
     ):
+        # Analysis process
         self.analysis_process = analysis_process
+        # List of dialog assist results
         self.assist_scripts = assist_scripts
+        # List of flow assist results
         self.assist_sop = assist_sop
+        # Current dialog content
         self.conversation_model = conversation_model
+        # Whether interrupted
         self.interrupt = interrupt
+        # Unique request ID. This request ID matches the request ID in the input parameter.
         self.request_id = request_id
+        # Session ID
         self.session_id = session_id
 
     def validate(self):
@@ -203,11 +218,17 @@ class RealtimeDialogAssistResponseBodyDataConversationModel(DaraModel):
         role: str = None,
         type: str = None,
     ):
+        # Specific content of the dialog
         self.content = content
+        # Unique identity of the dialog role
         self.customer_id = customer_id
+        # Customer service ID
         self.customer_service_id = customer_service_id
+        # Agent type. 0: Robot, 1: Human.
         self.customer_service_type = customer_service_type
+        # Role. 0 indicates customer, 1 indicates agent.
         self.role = role
+        # Type of dialog content
         self.type = type
 
     def validate(self):
@@ -268,9 +289,13 @@ class RealtimeDialogAssistResponseBodyDataAssistSop(DaraModel):
         intent_name: str = None,
         is_default: bool = None,
     ):
+        # Recommended flow
         self.assist_sop = assist_sop
+        # Intent encoding
         self.intent_code = intent_code
+        # Intent name
         self.intent_name = intent_name
+        # Indicates whether the intent is to escape.
         self.is_default = is_default
 
     def validate(self):
@@ -320,10 +345,15 @@ class RealtimeDialogAssistResponseBodyDataAssistScripts(DaraModel):
         intent_name: str = None,
         is_default: bool = None,
     ):
+        # Recommended utterance
         self.assist_script = assist_script
+        # Intent encoding
         self.intent_code = intent_code
+        # Intent labels
         self.intent_labels = intent_labels
+        # Intent name
         self.intent_name = intent_name
+        # Whether intent escaped
         self.is_default = is_default
 
     def validate(self):

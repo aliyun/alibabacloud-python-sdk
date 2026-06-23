@@ -21,20 +21,33 @@ class RealtimeDialogAssistRequest(DaraModel):
         session_id: str = None,
         user_vad: bool = None,
     ):
+        # Whether to analyze
         self.analysis = analysis
+        # Business type. Currently, only dialogAssist is supported.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Dialog list
+        # 
         # This parameter is required.
         self.conversation_model = conversation_model
+        # Number of historical dialog turns included
         self.dialog_memory_turns = dialog_memory_turns
+        # Hang up the session
         self.hang_up_dialog = hang_up_dialog
         # metaData
         self.meta_data = meta_data
+        # Request ID
+        # 
         # This parameter is required.
         self.request_id = request_id
+        # Portion of the previous agent utterance already broadcast
         self.script_content_played = script_content_played
+        # Session ID
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Whether the user interrupted
         self.user_vad = user_vad
 
     def validate(self):
@@ -132,16 +145,27 @@ class RealtimeDialogAssistRequestConversationModel(DaraModel):
         role: int = None,
         type: str = None,
     ):
+        # Start time of this utterance, offset in milliseconds from the session start.
         self.begin = begin
+        # Start time of this utterance
         self.begin_time = begin_time
+        # Specific content of the dialog
+        # 
         # This parameter is required.
         self.content = content
+        # Unique identity of the dialog role
         self.customer_id = customer_id
+        # Customer service ID
         self.customer_service_id = customer_service_id
+        # Agent type. 0: Robot, 1: Human.
         self.customer_service_type = customer_service_type
+        # End time of this utterance, offset in milliseconds from the session start.
         self.end = end
+        # Role. 0 indicates customer, 1 indicates agent.
+        # 
         # This parameter is required.
         self.role = role
+        # Type of dialog content. Currently, only text is supported.
         self.type = type
 
     def validate(self):

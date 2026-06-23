@@ -11,6 +11,7 @@ class DashscopeAsyncTaskFinishEventRequest(DaraModel):
         self,
         body: Dict[str, Any] = None,
     ):
+        # Request body parameters
         self.body = body
 
     def validate(self):

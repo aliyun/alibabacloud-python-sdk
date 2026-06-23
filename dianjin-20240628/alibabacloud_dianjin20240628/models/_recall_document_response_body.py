@@ -19,13 +19,21 @@ class RecallDocumentResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time elapsed.
         self.cost = cost
+        # Response data.
         self.data = data
+        # Data type.
         self.data_type = data_type
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Success.
         self.success = success
+        # Timestamp.
         self.time = time
 
     def validate(self):
@@ -106,15 +114,25 @@ class RecallDocumentResponseBodyData(DaraModel):
         vector_chunk_list: List[main_models.RecallDocumentResponseBodyDataVectorChunkList] = None,
         vector_search_elapsed_ms: int = None,
     ):
+        # Chunk list.
         self.chunk_list = chunk_list
+        # Chunk part (layout recognition result) list.
         self.chunk_part_list = chunk_part_list
+        # Chunk text list.
         self.chunk_text_list = chunk_text_list
+        # Document list.
         self.documents = documents
+        # Vector computation time elapsed.
         self.embedding_elapsed_ms = embedding_elapsed_ms
+        # List of chunks retrieved from the text index.
         self.text_chunk_list = text_chunk_list
+        # Text search time elapsed.
         self.text_search_elapsed_ms = text_search_elapsed_ms
+        # Total time elapsed, including vector computation time, vector search time, and text search time (depending on retrieval parameters).
         self.total_elapsed_ms = total_elapsed_ms
+        # List of chunks retrieved from the vector index.
         self.vector_chunk_list = vector_chunk_list
+        # Vector search time elapsed.
         self.vector_search_elapsed_ms = vector_search_elapsed_ms
 
     def validate(self):
@@ -253,19 +271,33 @@ class RecallDocumentResponseBodyDataVectorChunkList(DaraModel):
         score: float = None,
         title: str = None,
     ):
+        # Document chunk ID.
         self.chunk_id = chunk_id
+        # Document chunk metadata.
         self.chunk_meta = chunk_meta
+        # Document chunk OSS address.
         self.chunk_oss_url = chunk_oss_url
+        # Document chunk text.
         self.chunk_text = chunk_text
+        # Document chunk type.
         self.chunk_type = chunk_type
+        # Document ID.
         self.doc_id = doc_id
+        # Document type.
         self.file_type = file_type
+        # Document library ID.
         self.library_id = library_id
+        # Document library name.
         self.library_name = library_name
+        # Next document chunk ID.
         self.next_chunk_id = next_chunk_id
+        # Document chunk position.
         self.pos = pos
+        # Previous document chunk ID.
         self.pre_chunk_id = pre_chunk_id
+        # Document chunk score.
         self.score = score
+        # Document title.
         self.title = title
 
     def validate(self):
@@ -381,8 +413,11 @@ class RecallDocumentResponseBodyDataVectorChunkListPos(DaraModel):
         page: int = None,
         text_highlight_area: List[int] = None,
     ):
+        # Coordinates.
         self.axis_array = axis_array
+        # Page number.
         self.page = page
+        # Text highlight area, used for text-type file highlighting.
         self.text_highlight_area = text_highlight_area
 
     def validate(self):
@@ -435,19 +470,33 @@ class RecallDocumentResponseBodyDataTextChunkList(DaraModel):
         score: float = None,
         title: str = None,
     ):
+        # Document chunk ID.
         self.chunk_id = chunk_id
+        # Document chunk metadata.
         self.chunk_meta = chunk_meta
+        # Document chunk OSS address.
         self.chunk_oss_url = chunk_oss_url
+        # Document chunk text.
         self.chunk_text = chunk_text
+        # Document chunk type.
         self.chunk_type = chunk_type
+        # Document ID.
         self.doc_id = doc_id
+        # Document type.
         self.file_type = file_type
+        # Document library ID.
         self.library_id = library_id
+        # Document library name.
         self.library_name = library_name
+        # Next document chunk ID.
         self.next_chunk_id = next_chunk_id
+        # Document chunk position.
         self.pos = pos
+        # Previous document chunk ID.
         self.pre_chunk_id = pre_chunk_id
+        # Document chunk score.
         self.score = score
+        # Document title.
         self.title = title
 
     def validate(self):
@@ -563,8 +612,11 @@ class RecallDocumentResponseBodyDataTextChunkListPos(DaraModel):
         page: int = None,
         text_highlight_area: List[int] = None,
     ):
+        # Coordinates.
         self.axis_array = axis_array
+        # Page number.
         self.page = page
+        # Text highlight area, used for text-type file highlighting.
         self.text_highlight_area = text_highlight_area
 
     def validate(self):
@@ -610,12 +662,19 @@ class RecallDocumentResponseBodyDataDocuments(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Document ID.
         self.doc_id = doc_id
+        # Document metadata.
         self.document_meta = document_meta
+        # Document type.
         self.file_type = file_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Document library ID.
         self.library_id = library_id
+        # Document title.
         self.title = title
+        # Document link.
         self.url = url
 
     def validate(self):
@@ -692,19 +751,33 @@ class RecallDocumentResponseBodyDataChunkPartList(DaraModel):
         score: float = None,
         title: str = None,
     ):
+        # Document chunk ID.
         self.chunk_id = chunk_id
+        # Document chunk metadata.
         self.chunk_meta = chunk_meta
+        # Document chunk OSS address.
         self.chunk_oss_url = chunk_oss_url
+        # Document chunk text.
         self.chunk_text = chunk_text
+        # Document chunk type.
         self.chunk_type = chunk_type
+        # Document ID.
         self.doc_id = doc_id
+        # Document type.
         self.file_type = file_type
+        # Document library ID.
         self.library_id = library_id
+        # Document library name.
         self.library_name = library_name
+        # Next document chunk ID.
         self.next_chunk_id = next_chunk_id
+        # Document chunk position.
         self.pos = pos
+        # Previous document chunk ID.
         self.pre_chunk_id = pre_chunk_id
+        # Document chunk score.
         self.score = score
+        # Document title.
         self.title = title
 
     def validate(self):
@@ -820,8 +893,11 @@ class RecallDocumentResponseBodyDataChunkPartListPos(DaraModel):
         page: int = None,
         text_highlight_area: List[int] = None,
     ):
+        # Coordinates.
         self.axis_array = axis_array
+        # Page number.
         self.page = page
+        # Text highlight area, used for text-type file highlighting.
         self.text_highlight_area = text_highlight_area
 
     def validate(self):
@@ -874,19 +950,33 @@ class RecallDocumentResponseBodyDataChunkList(DaraModel):
         score: float = None,
         title: str = None,
     ):
+        # Document chunk ID.
         self.chunk_id = chunk_id
+        # Document chunk metadata.
         self.chunk_meta = chunk_meta
+        # Document chunk OSS address.
         self.chunk_oss_url = chunk_oss_url
+        # Document chunk text.
         self.chunk_text = chunk_text
+        # Document chunk type.
         self.chunk_type = chunk_type
+        # Document ID.
         self.doc_id = doc_id
+        # Document type.
         self.file_type = file_type
+        # Document library ID.
         self.library_id = library_id
+        # Document library name.
         self.library_name = library_name
+        # Next document chunk ID.
         self.next_chunk_id = next_chunk_id
+        # Document chunk position.
         self.pos = pos
+        # Previous document chunk ID.
         self.pre_chunk_id = pre_chunk_id
+        # Document chunk score.
         self.score = score
+        # Document title.
         self.title = title
 
     def validate(self):
@@ -1002,8 +1092,11 @@ class RecallDocumentResponseBodyDataChunkListPos(DaraModel):
         page: int = None,
         text_highlight_area: List[int] = None,
     ):
+        # Coordinates.
         self.axis_array = axis_array
+        # Page number.
         self.page = page
+        # Text highlight area, used for text-type file highlighting.
         self.text_highlight_area = text_highlight_area
 
     def validate(self):

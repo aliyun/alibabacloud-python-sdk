@@ -16,13 +16,21 @@ class GetDocumentUrlResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time spent, in milliseconds.
         self.cost = cost
+        # The download URL for the document. The URL expires in 1 hour.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
+        # The UNIX timestamp.
         self.time = time
 
     def validate(self):

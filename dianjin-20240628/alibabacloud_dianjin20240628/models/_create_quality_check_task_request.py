@@ -18,15 +18,26 @@ class CreateQualityCheckTaskRequest(DaraModel):
         scene_code: str = None,
         type: str = None,
     ):
+        # The conversation content. If associated with a quality check scenario, pass multiple conversations. Otherwise, pass only one.
+        # 
         # This parameter is required.
         self.conversation_list = conversation_list
+        # The business occurrence time. The system uses this to record submission time, make task scheduling priority decisions, and so on.
+        # 
         # This parameter is required.
         self.gmt_service = gmt_service
+        # The metadata. These are properties related to business that rules consume during execution. The business system passes these in real-time when initiating a quality check.
         self.meta_data = meta_data
+        # The quality check rule group.
         self.quality_group = quality_group
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_id = request_id
+        # The scenario code.
         self.scene_code = scene_code
+        # Quality check type:
+        # 
         # This parameter is required.
         self.type = type
 
@@ -99,13 +110,21 @@ class CreateQualityCheckTaskRequestConversationList(DaraModel):
         dialogue_list: List[main_models.CreateQualityCheckTaskRequestConversationListDialogueList] = None,
         gmt_service: str = None,
     ):
+        # Call type:
         self.call_type = call_type
+        # The Customer ID.
         self.customer_id = customer_id
+        # The customer name.
         self.customer_name = customer_name
+        # The customer service ID.
         self.customer_service_id = customer_service_id
+        # The customer service name.
         self.customer_service_name = customer_service_name
+        # The list of dialogue details.
+        # 
         # This parameter is required.
         self.dialogue_list = dialogue_list
+        # The conversation time.
         self.gmt_service = gmt_service
 
     def validate(self):
@@ -185,16 +204,28 @@ class CreateQualityCheckTaskRequestConversationListDialogueList(DaraModel):
         role: str = None,
         type: str = None,
     ):
+        # The start time of this sentence. This is the offset time in milliseconds from the start of the conversation.
         self.begin = begin
+        # The start time of this sentence.
         self.begin_time = begin_time
+        # The specific content of the dialogue.
+        # 
         # This parameter is required.
         self.content = content
+        # The unique identifier of the dialogue role.
         self.customer_id = customer_id
+        # The customer service ID.
         self.customer_service_id = customer_service_id
+        # Agent type:
         self.customer_service_type = customer_service_type
+        # The end time of this sentence. This is the offset time in milliseconds from the start of the conversation.
         self.end = end
+        # Role:
+        # 
         # This parameter is required.
         self.role = role
+        # Dialogue content type:
+        # 
         # This parameter is required.
         self.type = type
 

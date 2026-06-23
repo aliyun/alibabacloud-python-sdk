@@ -16,13 +16,21 @@ class DeleteDocumentResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time consumed.
         self.cost = cost
+        # Returned data.
         self.data = data
+        # Data type.
         self.data_type = data_type
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
+        # Timestamp.
         self.time = time
 
     def validate(self):

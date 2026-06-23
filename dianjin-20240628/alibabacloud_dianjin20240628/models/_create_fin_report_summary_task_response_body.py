@@ -16,13 +16,21 @@ class CreateFinReportSummaryTaskResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time taken
         self.cost = cost
+        # Response data, task ID. Use this ID to query the task status and results later.
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Success
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):

@@ -17,13 +17,21 @@ class RecognizeIntentionResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Processing time in milliseconds.
         self.cost = cost
+        # Response data.
         self.data = data
+        # Data type.
         self.data_type = data_type
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # Timestamp.
         self.time = time
 
     def validate(self):
@@ -100,11 +108,17 @@ class RecognizeIntentionResponseBodyData(DaraModel):
         recommend_intention: str = None,
         recommend_script: str = None,
     ):
+        # Analysis process.
         self.analysis_process = analysis_process
+        # Intent code.
         self.intention_code = intention_code
+        # Intent name.
         self.intention_name = intention_name
+        # Intent script.
         self.intention_script = intention_script
+        # Recommended intent.
         self.recommend_intention = recommend_intention
+        # Recommended script.
         self.recommend_script = recommend_script
 
     def validate(self):

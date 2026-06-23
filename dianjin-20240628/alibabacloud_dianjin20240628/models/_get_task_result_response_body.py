@@ -18,13 +18,31 @@ class GetTaskResultResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time consumed.
         self.cost = cost
+        # The result of the asynchronous task.
+        # 
+        # ## PDF translation task
+        # 
+        # The returned file_url is a downloadable file address.
+        # 
+        # ```
+        # {
+        #   "file_url": "https://finllmworks.oss-cn-zhangjiakou.aliyuncs.com/render_pdf/5336180997111160501.pdf"
+        # }
+        # ```
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):

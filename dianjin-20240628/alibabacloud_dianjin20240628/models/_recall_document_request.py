@@ -15,10 +15,17 @@ class RecallDocumentRequest(DaraModel):
         rearrangement: bool = None,
         top_k: int = None,
     ):
+        # Metadata filter conditions.
         self.filters = filters
+        # Text.
+        # 
         # This parameter is required.
         self.query = query
+        # Enable parent-child document chunk retrieval.
+        # 
+        # - Parent-child document chunks: During document parsing, a complete semantic block, such as a paragraph or a section, might split into multiple document chunks. This depends on your chunking strategy. When you enable parent-child document retrieval, the system attempts to complete the semantic block of the retrieved document chunk. This makes the corpus more semantically complete when constructing prompts, improving answer completeness and accuracy.
         self.rearrangement = rearrangement
+        # The number of document chunks to retrieve.
         self.top_k = top_k
 
     def validate(self):
@@ -77,12 +84,19 @@ class RecallDocumentRequestFilters(DaraModel):
         or_: List[main_models.RecallDocumentRequestFiltersOr] = None,
         status: List[str] = None,
     ):
+        # AND expression, used to filter documents/document chunks.
         self.and_ = and_
+        # Document chunk type, used to filter document chunks, such as: Text, Graph, Table, FAQ.
         self.chunk_type = chunk_type
+        # Document ID list, used to filter documents/document chunks.
         self.doc_id_list = doc_id_list
+        # Document library ID, used to filter documents/document chunks.
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # OR expression, used to filter documents/document chunks.
         self.or_ = or_
+        # Document status list, used to filter documents.
         self.status = status
 
     def validate(self):
@@ -160,9 +174,25 @@ class RecallDocumentRequestFiltersOr(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # Keyword weight.
         self.boost = boost
+        # The key of the metadata in the document library.
         self.key = key
+        # The relationship between the value stored in the document library metadata key and the value you enter.
+        # 
+        # - eq: The value stored in the document library metadata key equals the value you enter.
+        # 
+        # - lte: The value stored in the document library metadata key is less than or equal to the value you enter.
+        # 
+        # - gte: The value stored in the document library metadata key is greater than or equal to the value you enter.
+        # 
+        # - lt: The value stored in the document library metadata key is less than the value you enter.
+        # 
+        # - gt: The value stored in the document library metadata key is greater than the value you enter.
+        # 
+        # - contains: The list of values stored in the document library metadata key contains the value you enter.
         self.operator = operator
+        # The value of the metadata you enter.
         self.value = value
 
     def validate(self):
@@ -211,9 +241,25 @@ class RecallDocumentRequestFiltersAnd(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # Keyword weight.
         self.boost = boost
+        # The key of the metadata in the document library.
         self.key = key
+        # The relationship between the value stored in the document library metadata key and the value you enter.
+        # 
+        # - eq: The value stored in the document library metadata key equals the value you enter.
+        # 
+        # - lte: The value stored in the document library metadata key is less than or equal to the value you enter.
+        # 
+        # - gte: The value stored in the document library metadata key is greater than or equal to the value you enter.
+        # 
+        # - lt: The value stored in the document library metadata key is less than the value you enter.
+        # 
+        # - gt: The value stored in the document library metadata key is greater than the value you enter.
+        # 
+        # - contains: The list of values stored in the document library metadata key contains the value you enter.
         self.operator = operator
+        # The value of the metadata you enter.
         self.value = value
 
     def validate(self):

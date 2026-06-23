@@ -17,15 +17,26 @@ class SubmitChatQuestionRequest(DaraModel):
         request_id: str = None,
         session_id: str = None,
     ):
+        # Current time
+        # 
         # This parameter is required.
         self.gmt_service = gmt_service
+        # Live channel script
+        # 
         # This parameter is required.
         self.live_script_content = live_script_content
+        # Enable small talk. Default is true.
         self.open_small_talk = open_small_talk
+        # Question list
+        # 
         # This parameter is required.
         self.question_list = question_list
+        # Request ID
+        # 
         # This parameter is required.
         self.request_id = request_id
+        # Session ID
+        # 
         # This parameter is required.
         self.session_id = session_id
 
@@ -98,16 +109,28 @@ class SubmitChatQuestionRequestQuestionList(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # Question content
+        # 
         # This parameter is required.
         self.content = content
+        # Original question time
+        # 
         # This parameter is required.
         self.gmt_create = gmt_create
+        # Reply content
         self.reply = reply
+        # Session ID
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Question type: PRODUCT_QA (audio submission), GOSSIP (operation submission), UNKNOWN (unknown)
         self.type = type
+        # Unique ID of the user asking questions in the live channel
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # Name of the user asking questions in the live channel
+        # 
         # This parameter is required.
         self.user_name = user_name
 

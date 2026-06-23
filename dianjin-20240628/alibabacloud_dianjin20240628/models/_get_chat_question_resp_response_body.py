@@ -19,13 +19,21 @@ class GetChatQuestionRespResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time consumed
         self.cost = cost
+        # Response data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -98,7 +106,9 @@ class GetChatQuestionRespResponseBodyData(DaraModel):
         current_state: str = None,
         question_list: List[main_models.GetChatQuestionRespResponseBodyDataQuestionList] = None,
     ):
+        # Current state [INIT (Initialization), PROCESSING (Processing), COMPLETED (Completed)]
         self.current_state = current_state
+        # Question list
         self.question_list = question_list
 
     def validate(self):
@@ -147,13 +157,21 @@ class GetChatQuestionRespResponseBodyDataQuestionList(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # Question content
         self.content = content
+        # Original question time
         self.gmt_create = gmt_create
+        # Original question
         self.ori_content = ori_content
+        # Reply content
         self.reply = reply
+        # Session ID
         self.session_id = session_id
+        # Question type [PRODUCT_QA (Audio submission), GOSSIP (Operation submission), UNKNOWN (Unknown)]
         self.type = type
+        # Unique ID of the user who asked the question in the live channel.
         self.user_id = user_id
+        # Name of the user who asked the question in the live channel.
         self.user_name = user_name
 
     def validate(self):

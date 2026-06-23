@@ -15,10 +15,16 @@ class CreateDocsSummaryTaskRequest(DaraModel):
         instruction: str = None,
         model_id: str = None,
     ):
+        # Document information list
+        # 
         # This parameter is required.
         self.doc_infos = doc_infos
+        # Enable table parsing. Default is true.
         self.enable_table = enable_table
+        # Instruction
         self.instruction = instruction
+        # Model ID
+        # 
         # This parameter is required.
         self.model_id = model_id
 
@@ -76,11 +82,17 @@ class CreateDocsSummaryTaskRequestDocInfos(DaraModel):
         library_id: str = None,
         start_page: int = None,
     ):
+        # Document ID
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # End page number
         self.end_page = end_page
+        # Document library ID
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # Start page number
         self.start_page = start_page
 
     def validate(self):

@@ -11,10 +11,16 @@ class GenDocQaResultRequest(DaraModel):
         library_id: str = None,
         request_id: str = None,
     ):
+        # The document ID.
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # The document library ID.
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # The request ID. This ID uniquely identifies the request. The first request with this ID starts the Q\\&A pair parsing. Subsequent requests with the same ID query the parsing status and results.
+        # 
         # This parameter is required.
         self.request_id = request_id
 

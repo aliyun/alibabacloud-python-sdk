@@ -17,15 +17,25 @@ class CreateDialogRequest(DaraModel):
         request_id: str = None,
         self_directed: bool = None,
     ):
+        # The channel.
+        # 
         # This parameter is required.
         self.channel = channel
+        # Specifies whether to enable the intent library.
         self.enable_library = enable_library
+        # Other information.
         self.meta_data = meta_data
+        # The playbook code.
+        # 
         # This parameter is required.
         self.play_code = play_code
+        # A list of Q\\&A library IDs.
         self.qa_library_list = qa_library_list
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_id = request_id
+        # Specifies whether to enable autonomous Q\\&A.
         self.self_directed = self_directed
 
     def validate(self):

@@ -13,8 +13,12 @@ class UpdateDocumentChunkRequest(DaraModel):
         chunks: List[main_models.UpdateDocumentChunkRequestChunks] = None,
         library_id: str = None,
     ):
+        # List of document chunks.
+        # 
         # This parameter is required.
         self.chunks = chunks
+        # Library ID.
+        # 
         # This parameter is required.
         self.library_id = library_id
 
@@ -58,8 +62,12 @@ class UpdateDocumentChunkRequestChunks(DaraModel):
         chunk_id: str = None,
         chunk_text: str = None,
     ):
+        # Document chunk ID.
+        # 
         # This parameter is required.
         self.chunk_id = chunk_id
+        # Document chunk text.
+        # 
         # This parameter is required.
         self.chunk_text = chunk_text
 

@@ -16,13 +16,33 @@ class GetTaskStatusResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Execution time, in milliseconds
         self.cost = cost
+        # Response data. The current status of the task.
+        # 
+        # - invalid: Parameters or dependent resources are unavailable.
+        # 
+        # - success: The task completed successfully.
+        # 
+        # - evict: The task was canceled.
+        # 
+        # - error: The task failed.
+        # 
+        # - running: The task is running.
+        # 
+        # - pending: The task is queued.
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):

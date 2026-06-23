@@ -12,8 +12,12 @@ class DeleteDocumentRequest(DaraModel):
         doc_ids: List[str] = None,
         library_id: str = None,
     ):
+        # List of document IDs.
+        # 
         # This parameter is required.
         self.doc_ids = doc_ids
+        # Document library ID.
+        # 
         # This parameter is required.
         self.library_id = library_id
 

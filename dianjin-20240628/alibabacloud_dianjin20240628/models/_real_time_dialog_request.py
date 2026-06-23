@@ -22,18 +22,31 @@ class RealTimeDialogRequest(DaraModel):
         stream: bool = None,
         user_vad: bool = None,
     ):
+        # Specifies whether to perform analysis.
         self.analysis = analysis
+        # The business type. The default value is mixIntentChat.
         self.biz_type = biz_type
+        # The list of conversations.
+        # 
         # This parameter is required.
         self.conversation_model = conversation_model
+        # The number of historical conversation turns to include.
         self.dialog_memory_turns = dialog_memory_turns
+        # The metadata used to encapsulate prompts.
         self.meta_data = meta_data
+        # The operation type. Only common and hierarchical are supported.
         self.op_type = op_type
+        # The recommended intent.
         self.recommend = recommend
+        # The part of the previous script from the customer service representative that has been played.
         self.script_content_played = script_content_played
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Specifies whether to return the response in a stream.
         self.stream = stream
+        # Specifies whether the user interrupted the conversation.
         self.user_vad = user_vad
 
     def validate(self):
@@ -138,17 +151,30 @@ class RealTimeDialogRequestConversationModel(DaraModel):
         role: int = None,
         type: str = None,
     ):
+        # The start time of the sentence, in milliseconds, relative to the start of the session.
         self.begin = begin
+        # The start time of this sentence.
         self.begin_time = begin_time
+        # The specific content of the conversation.
+        # 
         # This parameter is required.
         self.content = content
+        # The unique ID of the conversation role. This parameter is **required**.
         self.customer_id = customer_id
+        # The ID of the customer service representative. This parameter is **required**.
         self.customer_service_id = customer_service_id
+        # The type of the customer service representative. 0: bot, 1: human.
         self.customer_service_type = customer_service_type
+        # The end time of the sentence, in milliseconds, relative to the start of the session.
         self.end = end
+        # The intent code.
         self.intention_code = intention_code
+        # The role. 0 indicates the customer, and 1 indicates the customer service representative.
+        # 
         # This parameter is required.
         self.role = role
+        # The type of the conversation content. Valid values: text, audio, and image.
+        # 
         # This parameter is required.
         self.type = type
 

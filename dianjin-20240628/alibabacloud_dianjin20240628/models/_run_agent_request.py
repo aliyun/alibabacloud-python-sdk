@@ -18,15 +18,25 @@ class RunAgentRequest(DaraModel):
         user_inputs: Dict[str, Any] = None,
         version_id: str = None,
     ):
+        # Agent ID
+        # 
         # This parameter is required.
         self.bot_id = bot_id
+        # Model ID. Optional. If empty, the agent uses the model from its configuration.
         self.model_id = model_id
+        # Enable streaming. Default is true.
         self.stream = stream
+        # Thread ID. Optional. If empty, a new thread starts.
         self.thread_id = thread_id
+        # Use the draft version. Drafts are unpublished versions in the editor. They are unstable. Default is false.
         self.use_draft = use_draft
+        # User input
+        # 
         # This parameter is required.
         self.user_content = user_content
+        # More complex user-defined input parameters
         self.user_inputs = user_inputs
+        # Version ID to run
         self.version_id = version_id
 
     def validate(self):
