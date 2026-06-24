@@ -26,47 +26,43 @@ class DescribeSendFileResultsRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeSendFileResultsRequestTag] = None,
     ):
-        # The ID of the instance for which you want to query file sending records.
+        # The instance ID. If you specify this parameter, all file sending records of the specified instance are queried.
         self.instance_id = instance_id
-        # The overall sending status of the file. The overall sending status of the file varies based on the sending status of the file on all destination instances. Valid values:
+        # The overall sending status of the file. The overall status depends on the shared execution status of all target instances. Valid values:
         # 
-        # - Pending: The file is being verified or sent. If the sending state of the file on at least one instance is Pending, the overall sending state of the file is Pending.
-        # 
-        # - Running: The file is being sent to the instances. If the sending state of the file on at least one instance is Running, the overall sending state of the file is Running.
-        # 
-        # - Success: The file is sent. If the sending state of the file on all instances is Success, the overall sending state of the file is Success.
-        # 
-        # - Failed: The file fails to be sent. If the sending state of the file on all instances is Failed, the overall sending state of the file is Failed.
-        # 
-        # - PartialFailed: The file sending task succeeds on some instances and fails on other instances. If the sending state of the file is Success on some instances and is Failed on other instances, the overall sending state of the file is PartialFailed.
+        # - Pending: The system is validating or sending the file. The overall status is Pending if the file sending status of at least one instance is Pending.
+        # - Running: The file is being sent to instances. The overall status is Running if the file sending status of at least one instance is Running.
+        # - Success: The file is sent. The overall status is Success if the file sending status of all instances is Success.
+        # - Failed: The file failed to be sent. The overall status is Failed if the file sending status of all instances is Failed.
+        # - PartialFailed: The file is sent to some instances but failed on others. The overall status is PartialFailed if the file sending status of all instances is Success or Failed.
         self.invocation_status = invocation_status
-        # The ID of the file sending task.
+        # The execution ID.
         self.invoke_id = invoke_id
-        # The maximum number of entries per page.
+        # The maximum number of entries per page in a paging query.
         # 
-        # Valid values: 1 to 50.
+        # Maximum value: 50.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The name of the file whose sending records you want to query.
+        # The name of the file. If you specify this parameter, all sending records of the file with the specified name are queried.
         self.name = name
-        # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter is about to go offline. Use NextToken and MaxResults to execute paging query operations.
         self.page_number = page_number
-        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter is about to go offline. Use NextToken and MaxResults to execute paging query operations.
         self.page_size = page_size
-        # The region ID of the ECS instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the ECS instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. After you set this parameter, file sending results in the specified resource group are queried.
+        # The ID of the resource group to which the file sending task belongs. After you specify this parameter, you must also specify ResourceGroupId when sending a file. This way, you can filter the file sending results of the specified resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags of the file sending task.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -187,13 +183,13 @@ class DescribeSendFileResultsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the file sending task. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # The tag key of the file sending task. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If a single tag is specified to query resources, up to 1,000 resources that have this tag added can be displayed in the response. If multiple tags are specified to query resources, up to 1,000 resources that have all the tags added can be displayed in the response. To query more than 1,000 resources that have specified tags, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
+        # If you use one tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N of the file sending task. Valid values of N: 1 to 20. The tag value can be an empty string.
+        # The tag value of the file sending task. Valid values of N: 1 to 20. The tag value can be an empty string.
         # 
         # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value

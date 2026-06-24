@@ -31,27 +31,27 @@ class ModifyInstanceNetworkSpecRequest(DaraModel):
         self.allocate_public_ip = allocate_public_ip
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - true: After the bandwidth configuration is modified, the payment is automatically deducted. When you set AutoPay to true, make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order will be generated. This order cannot be paid through the ECS console and can only be voided.
+        # - true: After the bandwidth configuration is modified, the payment is automatically deducted. When you set the AutoPay parameter to true, make sure that your account has sufficient balance. If your account balance is insufficient, an abnormal order is generated. You cannot pay for the order on the ECS console. You can only cancel the order.
         # 
         # <props="china">
-        # - false: After the bandwidth configuration is modified, only an order is generated but not paid. If your payment method balance is insufficient, you can set AutoPay to false to cancel automatic payment. In this case, an unpaid order is generated when you call this operation. You can log on to the [ECS console](https://ecs.console.aliyun.com) to pay for the order.
+        # - false: After the bandwidth configuration is modified, only an order is generated and no payment is made. If your payment method has insufficient balance, you can set the AutoPay parameter to false to disable automatic payment. In this case, the API generates a normal unpaid order. You can log on to the [ECS console](https://ecs.console.aliyun.com) to pay for the order.
         # 
         # 
         # 
         # <props="intl">
-        # - false: After the bandwidth configuration is modified, only an order is generated but not paid. If your payment method balance is insufficient, you can set AutoPay to false to cancel automatic payment. In this case, an unpaid order is generated when you call this operation. You can log on to the [ECS console](https://ecs.console.aliyun.com) to pay for the order.
+        # - false: After the bandwidth configuration is modified, only an order is generated and no payment is made. If your payment method has insufficient balance, you can set the AutoPay parameter to false to disable automatic payment. In this case, the API generates a normal unpaid order. You can log on to the [ECS console](https://ecs.console.aliyun.com) to pay for the order.
         # 
         # 
         # 
         # Default value: true.
         self.auto_pay = auto_pay
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The end time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC+0 time in the format of yyyy-MM-ddTHHZ. The precision is down to **hours** (HH).
+        # The end time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC+0 time in the yyyy-MM-ddTHHZ format. The time must be accurate to the **hour** (HH).
         # 
         # > The interval between the end time and the start time of the temporary bandwidth upgrade must be greater than or equal to 3 hours.
         self.end_time = end_time
-        # > This parameter is in invitational preview and is not yet publicly available.
+        # > This parameter is in invitational preview and is not yet available for use.
         self.isp = isp
         # The ID of the instance for which you want to modify the network configuration.
         # 
@@ -59,32 +59,32 @@ class ModifyInstanceNetworkSpecRequest(DaraModel):
         self.instance_id = instance_id
         # The maximum inbound public bandwidth. Unit: Mbit/s (Megabit per second). Valid values:
         # 
-        # - When the purchased maximum outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
-        # - When the purchased maximum outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
+        # - If the purchased maximum outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
+        # - If the purchased maximum outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth. Unit: Mbit/s (Megabit per second). Valid values:
         # 
         # - Pay-by-traffic: 0 to 100.
         # 
         # - Pay-by-bandwidth:
-        #   - Subscription instances: 0 to 200.
-        #   - Pay-as-you-go instances: 0 to 100.
+        #   - Subscription instance: 0 to 200.
+        #   - Pay-as-you-go instance: 0 to 100.
         # 
         # 
-        # > The maximum outbound bandwidth for a single instance is also limited by the **Network bandwidth baseline/burst (Gbit/s)** metric of the ECS instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # > The maximum outbound bandwidth per instance is also limited by the **Network Bandwidth Baseline/Burstable (Gbit/s)** metric of the ECS instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The network billing method. Valid values:
+        # The conversion target for the network billing method. Valid values:
         # 
         # - PayByBandwidth: pay-by-bandwidth.
         # - PayByTraffic: pay-by-traffic.
         # 
-        # > In **pay-by-traffic** mode, the inbound and outbound bandwidth peak values are both bandwidth upper limits and are not guaranteed as committed service metrics. When resource contention occurs, the bandwidth peak values may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth** mode.
+        # > In **pay-by-traffic** mode, the inbound and outbound bandwidth peaks are both bandwidth upper limits and are not guaranteed as committed service metrics. When resource contention occurs, the bandwidth peaks may be throttled. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth** mode.
         self.network_charge_type = network_charge_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC+0 time in the format of yyyy-MM-ddTHH:mmZ. The precision is down to **minutes** (mm).
+        # The start time of the temporary bandwidth upgrade. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC+0 time in the yyyy-MM-ddTHH:mmZ format. The time must be accurate to the **minute** (mm).
         self.start_time = start_time
 
     def validate(self):

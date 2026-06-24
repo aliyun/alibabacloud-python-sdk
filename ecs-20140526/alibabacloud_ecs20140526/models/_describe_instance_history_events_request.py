@@ -35,107 +35,76 @@ class DescribeInstanceHistoryEventsRequest(DaraModel):
     ):
         self.event_publish_time = event_publish_time
         self.not_before = not_before
-        # The lifecycle state of the system event. This parameter takes effect only when InstanceEventCycleStatus.N is not specified. Valid values:
+        # The lifecycle status of the system event. EventCycleStatus takes effect only when the InstanceEventCycleStatus.N parameter is not specified. Valid values: 
         # 
-        # - Scheduled
-        # 
-        # - Avoided
-        # 
-        # - Executing
-        # 
-        # - Executed
-        # 
-        # - Canceled
-        # 
-        # - Failed
-        # 
-        # - Inquiring
+        # - Scheduled: the event is waiting to be executed.
+        # - Avoided: the event has been avoided.
+        # - Executing: the event is being executed.
+        # - Executed: the event has been executed.
+        # - Canceled: the event has been canceled.
+        # - Failed: the event execution failed.
+        # - Inquiring: the event is being inquired.
         self.event_cycle_status = event_cycle_status
-        # The ID of system event N. Valid values of N: 1 to 100. You can repeat this parameter to pass multiple values.
+        # One or more system event IDs. Valid values of N: 1 to 100. Specify multiple values in a repeated list format.
         self.event_id = event_id
-        # The type of the system event. This parameter takes effect only when InstanceEventType.N is not specified. Valid values:
+        # The type of the system event. EventType takes effect only when the InstanceEventType.N parameter is not specified. Valid values: 
         # 
-        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+        # - SystemMaintenance.Reboot: the instance is restarted due to system maintenance.
+        # - SystemMaintenance.Redeploy: the instance is redeployed due to system maintenance.
+        # - SystemFailure.Reboot: the instance is restarted due to a system error.
+        # - SystemFailure.Redeploy: the instance is redeployed due to a system error.
+        # - SystemFailure.Delete: the instance is released due to an instance creation failure.
+        # - InstanceFailure.Reboot: the instance is restarted due to an instance error.
+        # - InstanceExpiration.Stop: the instance is stopped because the subscription has expired.
+        # - InstanceExpiration.Delete: the instance is released because the subscription has expired.
+        # - AccountUnbalanced.Stop: the pay-as-you-go instance is stopped due to an overdue payment.
+        # - AccountUnbalanced.Delete: the pay-as-you-go instance is released due to an overdue payment.
         # 
-        # - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
-        # 
-        # - SystemFailure.Reboot: The instance is restarted due to a system error.
-        # 
-        # - SystemFailure.Redeploy: The instance is redeployed due to a system error.
-        # 
-        # - SystemFailure.Delete: The instance is released due to an instance creation failure.
-        # 
-        # - InstanceFailure.Reboot: The instance is restarted due to an instance error.
-        # 
-        # - InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
-        # 
-        # - InstanceExpiration.Delete: The subscription instance is released due to expiration.
-        # 
-        # - AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
-        # 
-        # - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
-        # 
-        # > For more information, see [Overview](https://help.aliyun.com/document_detail/66574.html). The values of this parameter are applicable only to instance system events, but not to disk system events.
+        # > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter can only be an instance system event, not a disk system event.
         self.event_type = event_type
-        # > This parameter is not publicly available.
+        # > This parameter is not yet available for use.
         self.impact_level = impact_level
-        # The lifecycle state of system event N. Valid values of N: 1 to 7. You can repeat this parameter to pass multiple values. Valid values:
+        # One or more lifecycle statuses of the system event. Valid values of N: 1 to 7. Specify multiple values in a repeated list format. Valid values:
         # 
-        # - Scheduled
-        # 
-        # - Avoided
-        # 
-        # - Executing
-        # 
-        # - Executed
-        # 
-        # - Canceled
-        # 
-        # - Failed
-        # 
-        # - Inquiring
+        # - Scheduled: the event is waiting to be executed.
+        # - Avoided: the event has been avoided.
+        # - Executing: the event is being executed.
+        # - Executed: the event has been executed.
+        # - Canceled: the event has been canceled.
+        # - Failed: the event execution failed.
+        # - Inquiring: the event is being inquired.
         self.instance_event_cycle_status = instance_event_cycle_status
-        # The type of system event N. Valid values of N: 1 to 30. You can repeat this parameter to pass multiple values. Valid values:
+        # One or more types of the system event. Valid values of N: 1 to 30. Specify multiple values in a repeated list format. Valid values:
         # 
-        # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+        # - SystemMaintenance.Reboot: the instance is restarted due to system maintenance.
+        # - SystemMaintenance.Redeploy: the instance is redeployed due to system maintenance.
+        # - SystemFailure.Reboot: the instance is restarted due to a system error.
+        # - SystemFailure.Redeploy: the instance is redeployed due to a system error.
+        # - SystemFailure.Delete: the instance is released due to an instance creation failure.
+        # - InstanceFailure.Reboot: the instance is restarted due to an instance error.
+        # - InstanceExpiration.Stop: the instance is stopped because the subscription has expired.
+        # - InstanceExpiration.Delete: the instance is released because the subscription has expired.
+        # - AccountUnbalanced.Stop: the pay-as-you-go instance is stopped due to an overdue payment.
+        # - AccountUnbalanced.Delete: the pay-as-you-go instance is released due to an overdue payment.
         # 
-        # - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
-        # 
-        # - SystemFailure.Reboot: The instance is restarted due to a system error.
-        # 
-        # - SystemFailure.Redeploy: The instance is redeployed due to a system error.
-        # 
-        # - SystemFailure.Delete: The instance is released due to an instance creation failure.
-        # 
-        # - InstanceFailure.Reboot: The instance is restarted due to an instance error.
-        # 
-        # - InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
-        # 
-        # - InstanceExpiration.Delete: The subscription instance is released due to expiration.
-        # 
-        # - AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
-        # 
-        # - AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
-        # 
-        # > For more information, see [Overview](https://help.aliyun.com/document_detail/66574.html). The values of this parameter are applicable only to instance system events, but not to disk system events.
+        # > For more information about event types, see [System event overview](https://help.aliyun.com/document_detail/66574.html). The value of this parameter can only be an instance system event, not a disk system event.
         self.instance_event_type = instance_event_type
-        # The ID of the instance. If this parameter is not specified, the system events of all instances in the specified region are queried.
+        # The instance ID. If this parameter is not specified, the system events of all instances in the specified region are queried.
         self.instance_id = instance_id
-        # The number of entries to return on each page. Valid values: 10 to 100.
+        # The maximum number of entries per page for paging. Valid values: 10 to 100.
         # 
-        # Default values:
+        # Default value:
         # 
-        # - If you set a value greater than 0 and less than 10, the default value is 10.
-        # 
-        # - If you set this parameter to a value that is greater than 100, the default value is 100.
+        # * When the specified value is greater than 0 but less than 10, the default value is 10.
+        # * When the specified value is greater than 100, the default value is 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter is deprecated. We recommend that you specify MaxResults or NextToken for a paged query.
+        # > This parameter will be deprecated. Use MaxResults and NextToken for pagination instead.
         self.page_number = page_number
-        # > This parameter is deprecated. We recommend that you specify MaxResults or NextToken for a paged query.
+        # > This parameter will be deprecated. Use MaxResults and NextToken for pagination instead.
         self.page_size = page_size
         # The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
@@ -143,31 +112,27 @@ class DescribeInstanceHistoryEventsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the resource group to which the resource belongs.
         self.resource_group_id = resource_group_id
-        # The ID of resource N. Valid values of N: 1 to 100. You can repeat this parameter to pass multiple values. Valid values:
+        # One or more resource IDs. Valid values of N: 1 to 100. Specify multiple values in a repeated list format. Valid values:
         # 
-        # - When `ResourceType` is set to instance, ResourceId.N specifies the ID of instance N.
+        # - When `ResourceType=instance`, the resource ID indicates the ECS instance ID.
+        # - When `ResourceType=ddh`, the resource ID indicates the dedicated host ID.
+        # - When `ResourceType=managedhost`, the resource ID indicates the physical machine ID in an intelligent fully managed resource pool.
         # 
-        # - When `ResourceType` is set to ddh, ResourceId.N specifies the ID of dedicated host N.
+        # If this parameter is not specified, the system events of all resources in the specified region (`RegionId`) and of the specified resource type (`ResourceType`) are queried.
         # 
-        # - When `ResourceType` is set to managedhost, ResourceId.N specifies the ID of physical machine N from a smart hosting pool.
-        # 
-        # If this parameter is not specified, the system events of all resources of the type specified by `ResourceType` in the region specified by `RegionId` are queried.
-        # 
-        # > We recommend that you use `ResourceId.N` to specify one or more resource IDs. If you specify both `ResourceId.N` and `InstanceId`, `ResourceId.N` takes precedence by default.
+        # > We recommend that you use the `ResourceId.N` parameter to specify one or more resource IDs. If you specify both `ResourceId.N` and `InstanceId`, the `ResourceId.N` parameter takes precedence by default.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Valid values:
         # 
-        # - instance: ECS instance
-        # 
-        # - ddh: dedicated host
-        # 
-        # - managehost: physical machine in a smart hosting pool
+        # - instance: ECS instance.
+        # - ddh: dedicated host.
+        # - managedhost: physical machine in an intelligent fully managed resource pool.
         # 
         # Default value: instance.
         self.resource_type = resource_type
-        # The list of tags.
+        # The list of tags supported by system events.
         self.tag = tag
 
     def validate(self):
@@ -336,9 +301,9 @@ class DescribeInstanceHistoryEventsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the resource.
+        # The tag key of the resource.
         self.key = key
-        # The value of tag N of the resource.
+        # The tag value of the resource.
         self.value = value
 
     def validate(self):
@@ -373,9 +338,9 @@ class DescribeInstanceHistoryEventsRequestNotBefore(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The latest scheduled end time for the system event. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 查询系统事件计划执行时间的结束时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
         self.end = end
-        # The earliest scheduled start time for the system event. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 查询系统事件计划执行时间的开始时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
         self.start = start
 
     def validate(self):
@@ -410,9 +375,9 @@ class DescribeInstanceHistoryEventsRequestEventPublishTime(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end of the time range in which to query published system events. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 查询系统事件发布时间的结束时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
         self.end = end
-        # The beginning of the time range in which to query published system events. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 查询系统事件发布时间的开始时间。按照[ISO 8601](https://help.aliyun.com/document_detail/25696.html)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
         self.start = start
 
     def validate(self):

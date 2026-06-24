@@ -10,7 +10,7 @@ class ModifyInstanceNetworkSpecResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The order ID. This parameter is returned only when the bandwidth configuration of a subscription (PrePaid) instance is modified.
+        # The order ID. This parameter is returned only when you modify the bandwidth configuration of a subscription (PrePaid) instance.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

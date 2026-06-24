@@ -1,3 +1,8 @@
+2026-06-24 Version: 7.8.7
+- Update API DescribeInstanceHistoryEvents: add response parameters Body.InstanceSystemEventSet.$.ExtendedAttribute.InitialNotBefore.
+- Update API DescribeInstanceTopology: add response parameters Body.Topologys.$.NetworkNodes.
+
+
 2026-06-19 Version: 7.8.6
 - Update API DescribeDisks: add response parameters Body.Disks.$.DataSource.
 

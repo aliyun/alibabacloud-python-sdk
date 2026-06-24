@@ -28,91 +28,68 @@ class DescribeInvocationResultsRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeInvocationResultsRequestTag] = None,
     ):
-        # $.parameters[11].schema.example
+        # The command ID.
         self.command_id = command_id
-        # 473469C7-AA6F-4DC5-B3DB-A3DC0DE*****
-        # 0
-        # Success
-        # i-bp1i7gg30r52z2em****
-        # 0
-        # the specified instance does not exists
-        # 2019-12-20T06:15:55Z
-        # 0
-        # Running
-        # 2019-12-20T06:15:56Z
-        # MTU6MzA6MDEK
-        # c-hz0jdfwcsr****
-        # InstanceNotExists
-        # t-hz0jdfwd9f****
-        # 2020-01-19T09:15:47Z
-        # ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea****
-        # test-container
-        # owner
-        # zhangsan
-        # 1
-        # 1
-        # 1
+        # The encoding type of the CommandContent and Output fields in the response. Valid values:
+        # - PlainText: Returns the original command content and output.
+        # - Base64: Returns Base64-encoded command content and output.
+        # 
+        # Default value: Base64.
         self.content_encoding = content_encoding
-        # {
-        # "RequestId" : "473469C7-AA6F-4DC5-B3DB-A3DC0DE\\*\\*\\*\\*\\*",
-        # "Invocation" : {
-        # "InvocationResults" : {
-        # "InvocationResult" : [ {
-        # "Dropped" : 0,
-        # "InvocationStatus" : "Success",
-        # "InstanceId" : "i-bp1i7gg30r52z2em\\*\\*\\*\\*",
-        # "ExitCode" : 0,
-        # "ErrorInfo" : "the specified instance does not exists",
-        # "StartTime" : "2019-12-20T06:15:55Z",
-        # "Repeats" : 0,
-        # "InvokeRecordStatus" : "Running",
-        # "FinishedTime" : "2019-12-20T06:15:56Z",
-        # "Output" : "MTU6MzA6MDEK",
-        # "CommandId" : "c-hz0jdfwcsr\\*\\*\\*\\*",
-        # "ErrorCode" : "InstanceNotExists",
-        # "InvokeId" : "t-hz0jdfwd9f\\*\\*\\*\\*",
-        # "StopTime" : "2020-01-19T09:15:47Z",
-        # "ContainerId":"ab141ddfbacfe02d9dbc25966ed971536124527097398d419a6746873fea\\*\\*\\*\\*",
-        # "ContainerName":"test-container",<br>
-        # "Tags": [
-        # {
-        # "TagKey": "owner",
-        # "TagValue": "zhangsan"
-        # }
-        # ]
-        # } ]
-        # },
-        # "TotalCount" : 1,
-        # "PageSize" : 1,
-        # "PageNumber" : 1
-        # }
-        # }
+        # Specifies whether to return the history records of scheduled command executions. Valid values:
+        # 
+        #  - true: Returns the results of scheduled command executions. When this parameter is set to true, InvokeId cannot be empty and must be the execution ID of a scheduled command (RepeatMode is Period) or a command that executes at each system startup (RepeatMode is EveryReboot).
+        #  - false: Does not return the history.
+        # 
+        # Default value: false.
         self.include_history = include_history
-        # $.parameters[11].schema.description
+        # The instance ID.
         self.instance_id = instance_id
-        # $.parameters[11].schema.items.enumValueTitles
+        # The command execution ID. You can call [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) to query the InvokeId.
         self.invoke_id = invoke_id
-        # $.parameters[11].schema.enumValueTitles
+        # The execution status of the command. Valid values:
+        # 
+        # - Running: The command is running.
+        #     - Scheduled execution: The execution status remains running until you manually stop the scheduled command.
+        #     - One-time execution: The overall execution status is running as long as any command process is running.
+        # - Finished: The command execution is complete.
+        #     - Scheduled execution: The command process cannot have a status of finished.
+        #     - One-time execution: All instances have completed execution, or you manually stopped the command process on some instances and the remaining instances have completed execution.
+        # - Success:
+        #     - One-time execution: The command execution is complete and the exit code is 0.
+        #     - Scheduled execution: The last execution succeeded with an exit code of 0, and the specified execution time has ended.
+        # - Failed: The command execution failed.
+        #     - Scheduled execution: The command process cannot have a status of failed.
+        #     - One-time execution: All instances failed to execute the command.
+        # - PartialFailed: The command execution partially failed.
+        #     - Scheduled execution: The command process cannot have a status of partially failed.
+        #     - One-time execution: Some instances have failed command processes, so the overall execution status is partially failed.
+        # - Stopped: The command execution has been stopped.
+        # - Stopping: The command execution is being stopped.
         self.invoke_record_status = invoke_record_status
-        # FEATUREecsXZ3H4M
+        # The maximum number of entries per page for a paging query.
+        # 
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.max_results = max_results
-        # dubbo
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # acs:ecs:{#regionId}:{#accountId}:command/\\*
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_number = page_number
-        # acs:ecs:{#regionId}:{#accountId}:instance/\\*
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
         self.page_size = page_size
-        # $.parameters[11].schema.items.description
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # $.parameters[11].schema.items.example
+        # The ID of the resource group to which the command execution belongs. After you specify this parameter, you must also specify ResourceGroupId when running the command. This parameter filters the corresponding command execution results.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The region ID of the command. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -245,9 +222,15 @@ class DescribeInvocationResultsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the instance.
+        # The tag key of the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # 
+        # If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to execute the query.
+        # 
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The ID of the command task. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) operation to query the IDs of all command tasks.
+        # The tag value of the command execution. Valid values of N: 1 to 20. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

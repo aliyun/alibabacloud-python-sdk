@@ -18,15 +18,15 @@ class DescribeInvocationsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.invocations = invocations
-        # Query credential value returned by this call.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # Page number of the query result.
+        # The page number of the query results.
         self.page_number = page_number
-        # Number of entries per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of commands.
+        # The total number of commands.
         self.total_count = total_count
 
     def validate(self):

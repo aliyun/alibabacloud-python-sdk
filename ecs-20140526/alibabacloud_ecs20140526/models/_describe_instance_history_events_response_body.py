@@ -18,31 +18,24 @@ class DescribeInstanceHistoryEventsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instance_system_event_set = instance_system_event_set
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
-        # 
-        # > If the NextToken parameter is not returned when you use the MaxResults and NextToken parameters to perform a paged query, no more data is returned.
+        # The query token returned in this invocation.
+        # > When you use MaxResults and NextToken for paging and no NextToken is returned, no more data is available.
         self.next_token = next_token
-        # The page number.
+        # The page number of the instance event list.
         # 
-        # >
-        # 
-        # - If MaxResults and NextToken are used to query results by page, ignore this parameter.
-        # 
-        # - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+        # > * When you use MaxResults and NextToken for paging, the returned PageNumber parameter value is meaningless.
+        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page as specified in the request.
         # 
-        # >
-        # 
-        # - If MaxResults and NextToken are used to query results by page, ignore this parameter.
-        # 
-        # - This parameter will be removed in the future. We recommend that you use the NextToken and MaxResults parameters for a paged query.
+        # > * When you use MaxResults and NextToken for paging, the returned PageSize parameter value is meaningless.
+        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of instances.
+        # The total number of instance events.
         # 
-        # > If you specify the MaxResults and NextToken request parameters to perform a paged query, the value of the TotalCount response parameter is invalid.
+        # > When you use MaxResults and NextToken for paging, the returned TotalCount parameter value is meaningless.
         self.total_count = total_count
 
     def validate(self):
@@ -265,6 +258,7 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         host_id: str = None,
         host_type: str = None,
         inactive_disks: main_models.DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks = None,
+        initial_not_before: str = None,
         metric_name: str = None,
         metric_value: str = None,
         migration_options: main_models.DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeMigrationOptions = None,
@@ -282,6 +276,7 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         self.host_id = host_id
         self.host_type = host_type
         self.inactive_disks = inactive_disks
+        self.initial_not_before = initial_not_before
         self.metric_name = metric_name
         self.metric_value = metric_value
         self.migration_options = migration_options
@@ -323,6 +318,9 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
 
         if self.inactive_disks is not None:
             result['InactiveDisks'] = self.inactive_disks.to_map()
+
+        if self.initial_not_before is not None:
+            result['InitialNotBefore'] = self.initial_not_before
 
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
@@ -376,6 +374,9 @@ class DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSys
         if m.get('InactiveDisks') is not None:
             temp_model = main_models.DescribeInstanceHistoryEventsResponseBodyInstanceSystemEventSetInstanceSystemEventTypeExtendedAttributeInactiveDisks()
             self.inactive_disks = temp_model.from_map(m.get('InactiveDisks'))
+
+        if m.get('InitialNotBefore') is not None:
+            self.initial_not_before = m.get('InitialNotBefore')
 
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')

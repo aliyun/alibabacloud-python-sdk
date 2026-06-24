@@ -84,12 +84,15 @@ class DescribeInstanceTopologyResponseBodyTopologysTopology(DaraModel):
         self,
         host_id: str = None,
         instance_id: str = None,
+        network_nodes: main_models.DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes = None,
     ):
         self.host_id = host_id
         self.instance_id = instance_id
+        self.network_nodes = network_nodes
 
     def validate(self):
-        pass
+        if self.network_nodes:
+            self.network_nodes.validate()
 
     def to_map(self):
         result = dict()
@@ -102,6 +105,9 @@ class DescribeInstanceTopologyResponseBodyTopologysTopology(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.network_nodes is not None:
+            result['NetworkNodes'] = self.network_nodes.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -111,6 +117,37 @@ class DescribeInstanceTopologyResponseBodyTopologysTopology(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('NetworkNodes') is not None:
+            temp_model = main_models.DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes()
+            self.network_nodes = temp_model.from_map(m.get('NetworkNodes'))
+
+        return self
+
+class DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes(DaraModel):
+    def __init__(
+        self,
+        network_nodes: List[str] = None,
+    ):
+        self.network_nodes = network_nodes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.network_nodes is not None:
+            result['NetworkNodes'] = self.network_nodes
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NetworkNodes') is not None:
+            self.network_nodes = m.get('NetworkNodes')
 
         return self
 
