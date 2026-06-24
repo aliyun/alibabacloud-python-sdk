@@ -2,19 +2,21 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from alibabacloud_sls20201230 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateAnnotationDataSetRequest(DaraModel):
+class DeleteLogsResponse(DaraModel):
     def __init__(
         self,
-        body: main_models.MLDataSetParam = None,
-        dataset_id: str = None,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: main_models.DeleteLogsResponseBody = None,
     ):
-        # The request struct for the dataset.
+        self.headers = headers
+        self.status_code = status_code
         self.body = body
-        # The unique identifier of the dataset.
-        self.dataset_id = dataset_id
 
     def validate(self):
         if self.body:
@@ -25,22 +27,28 @@ class CreateAnnotationDataSetRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.headers is not None:
+            result['headers'] = self.headers
+
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+
         if self.body is not None:
             result['body'] = self.body.to_map()
-
-        if self.dataset_id is not None:
-            result['datasetId'] = self.dataset_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('body') is not None:
-            temp_model = main_models.MLDataSetParam()
-            self.body = temp_model.from_map(m.get('body'))
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
 
-        if m.get('datasetId') is not None:
-            self.dataset_id = m.get('datasetId')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+
+        if m.get('body') is not None:
+            temp_model = main_models.DeleteLogsResponseBody()
+            self.body = temp_model.from_map(m.get('body'))
 
         return self
 

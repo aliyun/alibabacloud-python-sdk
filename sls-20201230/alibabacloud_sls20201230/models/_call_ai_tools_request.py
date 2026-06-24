@@ -13,7 +13,7 @@ class CallAiToolsRequest(DaraModel):
         region_id: str = None,
         tool_name: str = None,
     ):
-        # Tool parameters.
+        # The tool parameters.
         self.params = params
         # The target region.
         self.region_id = region_id

@@ -184,6 +184,9 @@ from ._delete_index_response import DeleteIndexResponse
 from ._delete_ingest_processor_response import DeleteIngestProcessorResponse
 from ._delete_log_store_response import DeleteLogStoreResponse
 from ._delete_logging_response import DeleteLoggingResponse
+from ._delete_logs_request import DeleteLogsRequest
+from ._delete_logs_response_body import DeleteLogsResponseBody
+from ._delete_logs_response import DeleteLogsResponse
 from ._delete_logtail_pipeline_config_response import DeleteLogtailPipelineConfigResponse
 from ._delete_machine_group_response import DeleteMachineGroupResponse
 from ._delete_materialized_view_response import DeleteMaterializedViewResponse
@@ -277,6 +280,7 @@ from ._get_metric_store_metering_mode_response import GetMetricStoreMeteringMode
 from ._get_ossexport_response import GetOSSExportResponse
 from ._get_osshdfsexport_response import GetOSSHDFSExportResponse
 from ._get_ossingestion_response import GetOSSIngestionResponse
+from ._get_project_request import GetProjectRequest
 from ._get_project_response import GetProjectResponse
 from ._get_project_logs_request import GetProjectLogsRequest
 from ._get_project_logs_response import GetProjectLogsResponse
@@ -480,6 +484,9 @@ from ._update_log_store_processor_request import UpdateLogStoreProcessorRequest
 from ._update_log_store_processor_response import UpdateLogStoreProcessorResponse
 from ._update_logging_request import UpdateLoggingRequest
 from ._update_logging_response import UpdateLoggingResponse
+from ._update_logs_request import UpdateLogsRequest
+from ._update_logs_response_body import UpdateLogsResponseBody
+from ._update_logs_response import UpdateLogsResponse
 from ._update_logtail_pipeline_config_request import UpdateLogtailPipelineConfigRequest
 from ._update_logtail_pipeline_config_response import UpdateLogtailPipelineConfigResponse
 from ._update_machine_group_request import UpdateMachineGroupRequest
@@ -546,6 +553,7 @@ from ._get_histograms_response import GetHistogramsResponseBody
 from ._get_index_response_body import GetIndexResponseBodyLine
 from ._get_logs_v2response_body import GetLogsV2ResponseBodyMetaPhraseQueryInfo
 from ._get_logs_v2response_body import GetLogsV2ResponseBodyMeta
+from ._get_materialized_view_response_body import GetMaterializedViewResponseBodyStatus
 from ._get_sql_instance_response import GetSqlInstanceResponseBody
 from ._get_store_view_index_response_body import GetStoreViewIndexResponseBodyIndexes
 from ._list_agent_instance_configs_response_body import ListAgentInstanceConfigsResponseBodyConfigs
@@ -758,6 +766,9 @@ __all__ = [
     DeleteIngestProcessorResponse,
     DeleteLogStoreResponse,
     DeleteLoggingResponse,
+    DeleteLogsRequest,
+    DeleteLogsResponseBody,
+    DeleteLogsResponse,
     DeleteLogtailPipelineConfigResponse,
     DeleteMachineGroupResponse,
     DeleteMaterializedViewResponse,
@@ -851,6 +862,7 @@ __all__ = [
     GetOSSExportResponse,
     GetOSSHDFSExportResponse,
     GetOSSIngestionResponse,
+    GetProjectRequest,
     GetProjectResponse,
     GetProjectLogsRequest,
     GetProjectLogsResponse,
@@ -1054,6 +1066,9 @@ __all__ = [
     UpdateLogStoreProcessorResponse,
     UpdateLoggingRequest,
     UpdateLoggingResponse,
+    UpdateLogsRequest,
+    UpdateLogsResponseBody,
+    UpdateLogsResponse,
     UpdateLogtailPipelineConfigRequest,
     UpdateLogtailPipelineConfigResponse,
     UpdateMachineGroupRequest,
@@ -1120,6 +1135,7 @@ __all__ = [
     GetIndexResponseBodyLine,
     GetLogsV2ResponseBodyMetaPhraseQueryInfo,
     GetLogsV2ResponseBodyMeta,
+    GetMaterializedViewResponseBodyStatus,
     GetSqlInstanceResponseBody,
     GetStoreViewIndexResponseBodyIndexes,
     ListAgentInstanceConfigsResponseBodyConfigs,

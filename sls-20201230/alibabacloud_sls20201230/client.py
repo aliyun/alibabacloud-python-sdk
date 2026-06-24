@@ -26,7 +26,44 @@ class Client(OpenApiClient):
         self._product_id = 'Sls'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'us-west-1.log.aliyuncs.com',
+            'us-southeast-1': 'us-southeast-1.log.aliyuncs.com',
+            'us-east-1': 'us-east-1.log.aliyuncs.com',
+            'me-east-1': 'me-east-1.log.aliyuncs.com',
+            'me-central-1': 'me-central-1.log.aliyuncs.com',
+            'eu-west-1': 'eu-west-1.log.aliyuncs.com',
+            'eu-central-1': 'eu-central-1.log.aliyuncs.com',
+            'cn-zhangjiakou': 'cn-zhangjiakou.log.aliyuncs.com',
+            'cn-wulanchabu': 'cn-wulanchabu.log.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cn-shenzhen-finance-1.log.aliyuncs.com',
+            'cn-shenzhen': 'cn-shenzhen.log.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cn-shanghai-finance-1.log.aliyuncs.com',
+            'cn-shanghai': 'cn-shanghai.log.aliyuncs.com',
+            'cn-qingdao': 'cn-qingdao.log.aliyuncs.com',
+            'cn-nanjing': 'cn-nanjing.log.aliyuncs.com',
+            'cn-huhehaote': 'cn-huhehaote.log.aliyuncs.com',
+            'cn-hongkong': 'cn-hongkong.log.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'cn-heyuan-acdr-1-intranet.log.aliyuncs.com',
+            'cn-heyuan': 'cn-heyuan.log.aliyuncs.com',
+            'cn-hangzhou-finance': 'cn-hangzhou-finance.log.aliyuncs.com',
+            'cn-hangzhou': 'cn-hangzhou.log.aliyuncs.com',
+            'cn-guangzhou': 'cn-guangzhou.log.aliyuncs.com',
+            'cn-fuzhou': 'cn-fuzhou.log.aliyuncs.com',
+            'cn-chengdu': 'cn-chengdu.log.aliyuncs.com',
+            'cn-beijing-finance-1': 'cn-beijing-finance-1.log.aliyuncs.com',
+            'cn-beijing': 'cn-beijing.log.aliyuncs.com',
+            'ap-southeast-7': 'ap-southeast-7.log.aliyuncs.com',
+            'ap-southeast-6': 'ap-southeast-6.log.aliyuncs.com',
+            'ap-southeast-5': 'ap-southeast-5.log.aliyuncs.com',
+            'ap-southeast-3': 'ap-southeast-3.log.aliyuncs.com',
+            'ap-southeast-2': 'ap-southeast-2.log.aliyuncs.com',
+            'ap-southeast-1': 'ap-southeast-1.log.aliyuncs.com',
+            'ap-south-1': 'ap-south-1.log.aliyuncs.com',
+            'ap-northeast-2': 'ap-northeast-2.log.aliyuncs.com',
+            'ap-northeast-1': 'ap-northeast-1.log.aliyuncs.com'
+        }
 
     def apply_config_to_machine_group_with_options(
         self,
@@ -4936,6 +4973,108 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_logging_with_options_async(project, headers, runtime)
 
+    def delete_logs_with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.DeleteLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLogsResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.row_id):
+            body['rowId'] = request.row_id
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLogs',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/logstores/{logstore}/deletelogs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLogsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_logs_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.DeleteLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLogsResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.row_id):
+            body['rowId'] = request.row_id
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLogs',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/logstores/{logstore}/deletelogs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLogsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_logs(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.DeleteLogsRequest,
+    ) -> main_models.DeleteLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_logs_with_options(project, logstore, request, headers, runtime)
+
+    async def delete_logs_async(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.DeleteLogsRequest,
+    ) -> main_models.DeleteLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_logs_with_options_async(project, logstore, request, headers, runtime)
+
     def delete_logtail_pipeline_config_with_options(
         self,
         project: str,
@@ -9687,14 +9826,20 @@ class Client(OpenApiClient):
     def get_project_with_options(
         self,
         project: str,
+        request: main_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetProjectResponse:
+        request.validate()
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.cross_region):
+            query['crossRegion'] = request.cross_region
         req = open_api_util_models.OpenApiRequest(
             host_map = host_map,
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetProject',
@@ -9715,14 +9860,20 @@ class Client(OpenApiClient):
     async def get_project_with_options_async(
         self,
         project: str,
+        request: main_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.GetProjectResponse:
+        request.validate()
         host_map = {}
         host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.cross_region):
+            query['crossRegion'] = request.cross_region
         req = open_api_util_models.OpenApiRequest(
             host_map = host_map,
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'GetProject',
@@ -9743,18 +9894,20 @@ class Client(OpenApiClient):
     def get_project(
         self,
         project: str,
+        request: main_models.GetProjectRequest,
     ) -> main_models.GetProjectResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(project, headers, runtime)
+        return self.get_project_with_options(project, request, headers, runtime)
 
     async def get_project_async(
         self,
         project: str,
+        request: main_models.GetProjectRequest,
     ) -> main_models.GetProjectResponse:
         runtime = RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(project, headers, runtime)
+        return await self.get_project_with_options_async(project, request, headers, runtime)
 
     def get_project_logs_with_options(
         self,
@@ -18183,6 +18336,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_logging_with_options_async(project, request, headers, runtime)
+
+    def update_logs_with_options(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.UpdateLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLogsResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.row_id):
+            body['rowId'] = request.row_id
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
+        if not DaraCore.is_null(request.update_mode):
+            body['updateMode'] = request.update_mode
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLogs',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/logstores/{logstore}/updatelogs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLogsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_logs_with_options_async(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.UpdateLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLogsResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.row_id):
+            body['rowId'] = request.row_id
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
+        if not DaraCore.is_null(request.update_mode):
+            body['updateMode'] = request.update_mode
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLogs',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/logstores/{logstore}/updatelogs',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLogsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_logs(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.UpdateLogsRequest,
+    ) -> main_models.UpdateLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_logs_with_options(project, logstore, request, headers, runtime)
+
+    async def update_logs_async(
+        self,
+        project: str,
+        logstore: str,
+        request: main_models.UpdateLogsRequest,
+    ) -> main_models.UpdateLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_logs_with_options_async(project, logstore, request, headers, runtime)
 
     def update_logtail_pipeline_config_with_options(
         self,

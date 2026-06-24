@@ -13,9 +13,9 @@ class GetLogsV2ResponseBody(DaraModel):
         data: List[Dict[str, str]] = None,
         meta: main_models.GetLogsV2ResponseBodyMeta = None,
     ):
-        # The query results.
+        # The returned results.
         self.data = data
-        # The metadata of the returned data.
+        # The metadata of the response.
         self.meta = meta
 
     def validate(self):
@@ -70,49 +70,52 @@ class GetLogsV2ResponseBodyMeta(DaraModel):
         terms: List[Dict[str, Any]] = None,
         where_query: str = None,
     ):
-        # The SQL part of the query statement that follows the pipe character (|).
+        # The SQL part after the pipe (|) in the query statement.
         self.agg_query = agg_query
         # The column types.
         self.column_types = column_types
-        # The number of log entries returned in this query.
+        # The number of log entries returned in this query request.
         self.count = count
         # The number of CPU cores used.
         self.cpu_cores = cpu_cores
-        # The core-hours for the Exclusive SQL.
+        # The core-hour consumed by Dedicated SQL.
         self.cpu_sec = cpu_sec
-        # The time consumed by the query, in milliseconds.
+        # The time consumed by this query, in milliseconds.
         self.elapsed_millisecond = elapsed_millisecond
         # Indicates whether the query is an SQL query.
         self.has_sql = has_sql
         # The highlighted content.
         self.highlights = highlights
-        # Indicates whether nanosecond-level sorting is enabled.
+        # Specifies whether to enable nanosecond-precision ordering.
         self.is_accurate = is_accurate
-        # All keys in the query result.
+        # All keys in the query results.
         self.keys = keys
-        # The number of entries returned. This parameter is returned if the SQL statement does not contain a LIMIT clause.
+        # The limit on the number of rows. Returned when an SQL statement does not include a LIMIT clause.
         self.limited = limited
-        # The query mode. Valid values: 0: Normal query, which includes SQL queries. 1: Phrase query. 2: SCAN query. 3: SCAN SQL query.
+        # The query mode. Valid values:
+        # 0: standard query (including SQL)
+        # 1: phrase query
+        # 2: SCAN
+        # 3: SCAN SQL.
         self.mode = mode
-        # The information about the phrase query.
+        # The phrase query information.
         self.phrase_query_info = phrase_query_info
-        # The volume of logs processed in the query, in bytes.
+        # The volume of logs processed by the query.
         self.processed_bytes = processed_bytes
-        # The number of rows processed in the query.
+        # The number of rows processed in this query.
         self.processed_rows = processed_rows
-        # The progress of the query. Valid values:
+        # Indicates whether the query results are complete. Valid values:
         # 
-        # - Complete: The query is complete, and the returned result is complete.
-        # 
-        # - Incomplete: The query is complete, but the returned result is incomplete. You must send the request again to obtain the complete result.
+        # - Complete: The query is complete and the results are complete.
+        # - Incomplete: The query is complete but the results are incomplete. Resend the request to obtain complete results.
         self.progress = progress
-        # The volume of data scanned in the scan query, in bytes.
+        # The amount of data scanned during the scan, in bytes.
         self.scan_bytes = scan_bytes
-        # The type of observable data.
+        # The observable data type.
         self.telementry_type = telementry_type
         # All terms in the query statement.
         self.terms = terms
-        # The part of the query statement that precedes the pipe character (|).
+        # The part before the pipe (|) in the query statement.
         self.where_query = where_query
 
     def validate(self):
@@ -259,13 +262,13 @@ class GetLogsV2ResponseBodyMetaPhraseQueryInfo(DaraModel):
         end_time: int = None,
         scan_all: bool = None,
     ):
-        # The starting offset of the scan result after index filtering.
+        # The start offset of the scan results after index filtering.
         self.begin_offset = begin_offset
-        # The end offset of the scan result after index filtering.
+        # The end offset of the scan results after index filtering.
         self.end_offset = end_offset
-        # The end time of the scan result after index filtering.
+        # The end time of the scan results after index filtering.
         self.end_time = end_time
-        # Indicates whether all logs are scanned.
+        # Indicates whether all logs have been scanned.
         self.scan_all = scan_all
 
     def validate(self):

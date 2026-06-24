@@ -16,9 +16,9 @@ class ListProjectResponseBody(DaraModel):
     ):
         # The number of projects returned on the current page.
         self.count = count
-        # The list of projects that meet the query criteria.
+        # The list of projects that meet the query conditions.
         self.projects = projects
-        # The total number of projects that meet the query criteria.
+        # The total number of projects that meet the query conditions.
         self.total = total
 
     def validate(self):
