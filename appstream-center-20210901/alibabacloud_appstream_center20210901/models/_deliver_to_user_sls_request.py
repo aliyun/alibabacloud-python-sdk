@@ -17,13 +17,21 @@ class DeliverToUserSlsRequest(DaraModel):
         sls_region_id: str = None,
         ttl: int = None,
     ):
+        # List of delivery scopes
+        # 
         # This parameter is required.
         self.delivery_scopes = delivery_scopes
+        # Existing Simple Log Service project name; either this or ProjectName is required
         self.existed_project_name = existed_project_name
+        # LogStore name
         self.log_store_name = log_store_name
+        # Simple Log Service project name; either this or ExistedProjectName is required
         self.project_name = project_name
+        # Region ID of Simple Log Service
+        # 
         # This parameter is required.
         self.sls_region_id = sls_region_id
+        # Data retention period (Day), default 30
         self.ttl = ttl
 
     def validate(self):
@@ -89,6 +97,8 @@ class DeliverToUserSlsRequestDeliveryScopes(DaraModel):
         self,
         product_type: str = None,
     ):
+        # product type
+        # 
         # This parameter is required.
         self.product_type = product_type
 

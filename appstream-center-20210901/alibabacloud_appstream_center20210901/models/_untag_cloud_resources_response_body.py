@@ -13,7 +13,7 @@ class UntagCloudResourcesResponseBody(DaraModel):
         failed_resources: List[main_models.UntagCloudResourcesResponseBodyFailedResources] = None,
         request_id: str = None,
     ):
-        # The cloud resources whose tags failed to be removed and the corresponding tags.
+        # The list of failed resources and tag information.
         self.failed_resources = failed_resources
         # The request ID.
         self.request_id = request_id
@@ -65,18 +65,11 @@ class UntagCloudResourcesResponseBodyFailedResources(DaraModel):
         self.code = code
         # The error message.
         self.message = message
-        # The resource IDs.
+        # The resource ID.
         self.resource_id = resource_id
-        # The type of the cloud resource.
-        # 
-        # Valid values:
-        # 
-        # *   AppId: app ID.
-        # *   WyId: Alibaba Cloud Workspace user ID.
-        # *   AppInstanceGroupId: delivery group ID.
-        # *   AliUid: tenant ID.
+        # The cloud resource type.
         self.resource_type = resource_type
-        # The tags that failed to be removed from the cloud resources.
+        # The list of failed tag information.
         self.tags = tags
 
     def validate(self):
@@ -140,11 +133,6 @@ class UntagCloudResourcesResponseBodyFailedResourcesTags(DaraModel):
         # The tag key.
         self.key = key
         # The tag type.
-        # 
-        # Valid values:
-        # 
-        # *   Custom: custom tag.
-        # *   System: system tag.
         self.scope = scope
 
     def validate(self):

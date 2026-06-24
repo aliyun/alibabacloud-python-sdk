@@ -13,15 +13,15 @@ class StartTaskForDistributeImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code if an error occurred.
+        # The error code returned if the request failed.
         self.code = code
-        # The ID of the image replication task.
+        # The ID of the image copy task.
         self.data = data
-        # The error message if an error occurred.
+        # The error message returned if the request failed.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the task is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

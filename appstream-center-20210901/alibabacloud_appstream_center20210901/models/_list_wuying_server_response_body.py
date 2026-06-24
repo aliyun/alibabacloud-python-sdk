@@ -18,11 +18,11 @@ class ListWuyingServerResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         # The list of workstation information.
         self.wuying_server_list = wuying_server_list
@@ -122,64 +122,67 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
+        # The status of joining a virtual node pool.
         self.add_virtual_node_pool_status = add_virtual_node_pool_status
         self.ali_uid = ali_uid
         self.bandwidth = bandwidth
-        # Region.
+        # The region.
         self.biz_region_id = biz_region_id
         # The billing method.
         self.charge_type = charge_type
-        # The time when the storage resource was created.
+        # The creation time.
         self.create_time = create_time
-        # The data disks.
+        # The list of data cloud disks.
         self.data_disk = data_disk
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
-        # The time when the subscription instance expires.
+        # The expiration time.
         self.expired_time = expired_time
         self.fota_version = fota_version
-        # The ID of the custom image.
+        # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The list of information about the workstation instance.
+        # The list of workstation instance information.
         self.instance_info_list = instance_info_list
         self.max_price = max_price
-        # The private IP address.
+        # The internal IP address.
         self.network_interface_ip = network_interface_ip
-        # The ID of the office network.
+        # The office network ID.
         self.office_site_id = office_site_id
         # The office network name.
         self.office_site_name = office_site_name
-        # The type of the office network.
+        # The office network type.
         self.office_site_type = office_site_type
-        # The OS type.
+        # The operating system type.
         self.os_type = os_type
         self.policy_group_id_list = policy_group_id_list
         self.private_ip_sets = private_ip_sets
         self.resource_session_status = resource_session_status
+        # The list of security group IDs.
         self.security_group_ids = security_group_ids
-        # The specifications.
+        # The instance type information.
         self.server_instance_type_info = server_instance_type_info
         self.sessions = sessions
-        # The status of the workstation.
+        # The workstation status.
         self.status = status
         self.sub_pay_type = sub_pay_type
-        # The type of the system disk.
+        # The system cloud disk type.
         self.system_disk_category = system_disk_category
         self.system_disk_id = system_disk_id
-        # The performance level (PL) of the system disk.
+        # The performance level of the system cloud disk.
         self.system_disk_performance_level = system_disk_performance_level
-        # The size of the system disk. Unit: GiB.
+        # The system cloud disk size. Unit: GB.
         self.system_disk_size = system_disk_size
         self.timer_group_id = timer_group_id
         self.users = users
         self.virtual_kubelet_ip = virtual_kubelet_ip
+        # The virtual node pool ID.
         self.virtual_node_pool_id = virtual_node_pool_id
         self.vk_upgrade_needed = vk_upgrade_needed
         self.vk_version = vk_version
-        # The ID of the workstation.
+        # The workstation ID.
         self.wuying_server_id = wuying_server_id
-        # The name of the workstation.
+        # The workstation name.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -517,12 +520,12 @@ class ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo(DaraMod
         self.cpu = cpu
         # The number of GPUs.
         self.gpu = gpu
-        # The memory size. Unit: MB.
+        # The GPU memory size. Unit: MB.
         self.gpu_memory = gpu_memory
         self.gpu_spec = gpu_spec
         # The memory size. Unit: MB.
         self.memory = memory
-        # Workstation specifications.
+        # The workstation instance type.
         self.server_instance_type = server_instance_type
 
     def validate(self):
@@ -616,9 +619,9 @@ class ListWuyingServerResponseBodyWuyingServerListInstanceInfoList(DaraModel):
         instance_id: str = None,
         network_interface_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the ENI.
+        # The network interface controller (NIC) ID.
         self.network_interface_id = network_interface_id
 
     def validate(self):
@@ -656,13 +659,13 @@ class ListWuyingServerResponseBodyWuyingServerListDataDisk(DaraModel):
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
-        # The category of data disk.
+        # The data cloud disk type.
         self.data_disk_category = data_disk_category
         self.data_disk_id = data_disk_id
         self.data_disk_no = data_disk_no
-        # The PL of the data disk.
+        # The performance level of the data cloud disk.
         self.data_disk_performance_level = data_disk_performance_level
-        # The size of the data disk. Unit: GB.
+        # The data cloud disk size. Unit: GB.
         self.data_disk_size = data_disk_size
 
     def validate(self):

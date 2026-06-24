@@ -16,10 +16,15 @@ class ListModelTemplateResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned results.
         self.data = data
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -79,6 +84,7 @@ class ListModelTemplateResourceGroupResponseBodyData(DaraModel):
         self,
         resource_group_id: str = None,
     ):
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

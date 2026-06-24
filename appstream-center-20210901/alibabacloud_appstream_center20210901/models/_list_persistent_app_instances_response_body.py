@@ -16,15 +16,15 @@ class ListPersistentAppInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the query results currently displayed.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of query results per page.
         self.page_size = page_size
-        # The app instances of the persistent session type.
+        # The list of persistent session application instances.
         self.persistent_app_instance_models = persistent_app_instance_models
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -91,45 +91,21 @@ class ListPersistentAppInstancesResponseBodyPersistentAppInstanceModels(DaraMode
         authorized_users: List[str] = None,
         gmt_create: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the app instance.
+        # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The ID of the app instance of the persistent session type.
+        # The persistent session ID.
         self.app_instance_persistent_id = app_instance_persistent_id
-        # The name of the app instance of the persistent session type.
+        # The name of the persistent session application instance.
         self.app_instance_persistent_name = app_instance_persistent_name
-        # The status of the app instance of the persistent session type.
-        # 
-        # Valid values:
-        # 
-        # *   STARTING
-        # *   RUNNING
-        # *   STOPPED
-        # *   UNAVAILABLE
-        # *   DELETING
-        # *   PENDING
-        # *   STOPPING
-        # *   DELETED
-        # *   REBUILDING
+        # The instance status of the persistent session application.
         self.app_instance_persistent_status = app_instance_persistent_status
-        # The status of the app instance.
-        # 
-        # Valid values:
-        # 
-        # *   INIT: The app instance is being initialized.
-        # *   STARTING: The app instance is being started.
-        # *   CLOSING: The app instance is being stopped.
-        # *   CLOSED: The app instance is closed.
-        # *   RUNNING: The app instance is running.
-        # *   idle: The app instance is idle.
-        # *   BOUND: The app instance is bound to an app instance group.
-        # *   UNAVAILABLE: The app instance is unavailable.
-        # *   DELETED: The app instance is deleted.
+        # The application instance status.
         self.app_instance_status = app_instance_status
-        # The authorized users.
+        # The list of authorized usernames.
         self.authorized_users = authorized_users
-        # The time when the app instance was created.
+        # The creation time.
         self.gmt_create = gmt_create
 
     def validate(self):

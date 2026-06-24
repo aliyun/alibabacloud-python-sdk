@@ -16,68 +16,46 @@ class GetResourcePriceRequest(DaraModel):
         period_unit: str = None,
         product_type: str = None,
     ):
-        # The number of resources to purchase.
+        # The quantity of resources to purchase.
         # 
         # This parameter is required.
         self.amount = amount
-        # The type ID of the sessions that you purchase. You can call the `ListAppInstanceType` operation to obtain the ID.
+        # The ID of the session instance type to purchase. You can call the `ListAppInstanceType` operation to obtain the ID.
         # 
-        # You must specify one of AppInstanceType and NodeInstanceType. If you specify both of the parameters, the value of NodeInstanceType takes effect.
+        # Either AppInstanceType or NodeInstanceType must have a value. If both have values, NodeInstanceType is used.
         self.app_instance_type = app_instance_type
-        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-        # 
-        # Valid values:
-        # 
-        # *   cn-shanghai: China (Shanghai).
-        # *   cn-hangzhou: China (Hangzhou)
+        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
         # The billing method.
         # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
-        # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the resource type that you purchase. You can call the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) to obtain the ID.
+        # The ID of the resource instance type to purchase. You can call the [ListNodeInstanceType](https://help.aliyun.com/document_detail/428502.html) operation to obtain the ID.
         # 
-        # You must specify one of AppInstanceType and NodeInstanceType. If you specify both of the parameters, the value of NodeInstanceType takes effect.
-        # 
-        # Valid values:
-        # 
-        # *   appstreaming.vgpu.8c16g.4g: WUYING - Graphics - 8 vCPUs, 16 GiB Memory, 4 GiB GPU Memory
-        # *   appstreaming.general.8c16g: WUYING - General - 8 vCPUs, 16 GiB Memory
-        # *   appstreaming.general.4c8g: WUYING - General - 4 vCPUs, 8 GiB Memory
-        # *   appstreaming.vgpu.14c93g.12g: WUYING - Graphics - 14 vCPUs, 93 GiB Memory, 12 GiB GPU Memory.
-        # *   appstreaming.vgpu.8c31g.16g: WUYING - Graphics - 8 vCPUs, 31 GiB Memory, 16 GiB GPU Memory
+        # Either AppInstanceType or NodeInstanceType must have a value. If both have values, NodeInstanceType is used.
         self.node_instance_type = node_instance_type
-        # The subscription duration of resources. This parameter must be configured together with `PeriodUnit`.
+        # The numeric part of the purchase duration. This parameter is used together with PeriodUnit to specify the complete purchase duration.
         # 
         # This parameter is required.
         self.period = period
-        # The unit of the subscription duration. This parameter must be configured together with `Period`. The following items describe valid values for the combinations of `Period` and `PeriodUnit`:
+        # The unit part of the purchase duration. This parameter is used together with Period to specify the complete purchase duration. The following combinations of Period and PeriodUnit are supported:
         # 
-        # *   1 Week
-        # *   1 Month
-        # *   2 Month
-        # *   3 Month
-        # *   6 Month
-        # *   1 Year
-        # *   2 Year
-        # *   3 Year
+        # - 1 Week (1 week)
+        # - 1 Month (1 month)
+        # - 2 Month (2 months)
+        # - 3 Month (3 months)
+        # - 6 Month (6 months)
+        # - 1 Year (1 year)
+        # - 2 Year (2 years)
+        # - 3 Year (3 years)
         # 
-        # >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify a value combination other than the preceding combinations, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid. If the request parameters do not match the supported combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement stage.
         # 
         # This parameter is required.
         self.period_unit = period_unit
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type

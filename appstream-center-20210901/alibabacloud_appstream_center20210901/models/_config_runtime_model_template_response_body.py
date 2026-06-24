@@ -14,8 +14,11 @@ class ConfigRuntimeModelTemplateResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of execution results.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -67,10 +70,21 @@ class ConfigRuntimeModelTemplateResponseBodyData(DaraModel):
         runtime_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the execution fails.
         self.code = code
+        # The HTTP status code returned if the execution fails.
         self.http_status_code = http_status_code
+        # The error message returned if the execution fails.
         self.message = message
+        # The Agent runtime ID. The ID mapping is as follows:
+        # 
+        # JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
+        # 
+        # OpenClaw: cloud computer ID, in the format of ecd-xxxx.
+        # 
+        # Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
         self.runtime_id = runtime_id
+        # Indicates whether the execution is successful.
         self.success = success
 
     def validate(self):

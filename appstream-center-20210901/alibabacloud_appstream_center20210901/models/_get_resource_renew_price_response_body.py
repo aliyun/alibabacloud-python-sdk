@@ -54,7 +54,7 @@ class GetResourceRenewPriceResponseBodyData(DaraModel):
     ):
         # The price details.
         self.price = price
-        # The price calculation rules.
+        # The pricing rules.
         self.rules = rules
 
     def validate(self):
@@ -100,9 +100,9 @@ class GetResourceRenewPriceResponseBodyDataRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
-        # The description of the price calculation rule.
+        # The pricing rule description.
         self.description = description
-        # The ID of the price calculation rule.
+        # The pricing rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -140,15 +140,15 @@ class GetResourceRenewPriceResponseBodyDataPrice(DaraModel):
         promotions: List[main_models.GetResourceRenewPriceResponseBodyDataPricePromotions] = None,
         trade_price: str = None,
     ):
-        # The currency type.
+        # The currency.
         self.currency = currency
-        # The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+        # The discount amount. The actual price is calculated by subtracting the discount amount from the original price.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The coupon description.
+        # The coupon descriptions.
         self.promotions = promotions
-        # The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+        # The actual price. The actual price is calculated by subtracting the discount amount from the original price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -214,18 +214,13 @@ class GetResourceRenewPriceResponseBodyDataPricePromotions(DaraModel):
     ):
         # The coupon code.
         self.option_code = option_code
-        # The coupon description.
+        # The coupon descriptions.
         self.promotion_desc = promotion_desc
         # The coupon ID.
         self.promotion_id = promotion_id
         # The coupon name.
         self.promotion_name = promotion_name
-        # Indicates whether the coupon was used.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the coupon is selected.
         self.selected = selected
 
     def validate(self):

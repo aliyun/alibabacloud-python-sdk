@@ -13,7 +13,7 @@ class DeleteAppInstancesResponseBody(DaraModel):
         delete_app_instance_models: List[main_models.DeleteAppInstancesResponseBodyDeleteAppInstanceModels] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The list of instance deletion results.
         self.delete_app_instance_models = delete_app_instance_models
         # The request ID.
         self.request_id = request_id
@@ -60,18 +60,13 @@ class DeleteAppInstancesResponseBodyDeleteAppInstanceModels(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The ID of the application instance.
+        # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The error code.
+        # The error code returned when an error occurs.
         self.code = code
-        # The error message.
+        # The error message returned when an error occurs.
         self.message = message
-        # Specifies whether the application instance is deleted.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the deletion is triggered.
         self.success = success
 
     def validate(self):

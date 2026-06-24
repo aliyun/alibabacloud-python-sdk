@@ -14,11 +14,17 @@ class ListLlmTemplatesShrinkRequest(DaraModel):
         page_size: int = None,
         provider_template_id: str = None,
     ):
+        # The model code used for filtering. Fuzzy match is supported.
         self.llm_code = llm_code
+        # The model template IDs used for filtering.
         self.llm_template_ids_shrink = llm_template_ids_shrink
+        # The ID of the associated model group.
         self.model_template_id = model_template_id
+        # The page number. Pages start from page 1. Values 0 and 1 return the same result.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the model provider template.
         self.provider_template_id = provider_template_id
 
     def validate(self):

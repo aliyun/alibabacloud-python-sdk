@@ -15,13 +15,13 @@ class ListTagCloudResourcesResponseBody(DaraModel):
         resource_tags: List[main_models.ListTagCloudResourcesResponseBodyResourceTags] = None,
         total_count: int = None,
     ):
-        # Indicates whether the next query is required.
+        # The pagination token that indicates whether more results are available for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The tags added to the cloud resources.
+        # The list of tags bound to the resources.
         self.resource_tags = resource_tags
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -79,16 +79,9 @@ class ListTagCloudResourcesResponseBodyResourceTags(DaraModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The type of the cloud resource.
-        # 
-        # Valid values:
-        # 
-        # *   AppId: app ID.
-        # *   WyId: Alibaba Cloud Workspace user ID.
-        # *   AppInstanceGroupId: delivery group ID.
-        # *   AliUid: tenant ID.
+        # The cloud resource type.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -141,11 +134,6 @@ class ListTagCloudResourcesResponseBodyResourceTagsTags(DaraModel):
         # The tag key.
         self.key = key
         # The tag type.
-        # 
-        # Valid values:
-        # 
-        # *   Custom: custom tag.
-        # *   System: system tag.
         self.scope = scope
         # The tag value.
         self.value = value

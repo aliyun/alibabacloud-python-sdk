@@ -11,7 +11,9 @@ class CreateModelTemplateResponseBody(DaraModel):
         data: main_models.CreateModelTemplateResponseBodyData = None,
         request_id: str = None,
     ):
+        # The creation result.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateModelTemplateResponseBodyData(DaraModel):
         self,
         model_template_id: str = None,
     ):
+        # The model group ID.
         self.model_template_id = model_template_id
 
     def validate(self):

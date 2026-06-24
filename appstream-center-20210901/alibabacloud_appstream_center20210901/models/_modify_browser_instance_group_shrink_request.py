@@ -16,21 +16,21 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         storage_policy_shrink: str = None,
         timers_shrink: str = None,
     ):
-        # The browser settings.
+        # The browser configuration.
         self.browser_config_shrink = browser_config_shrink
-        # The ID of the cloud browser to be modified.
+        # The ID of the cloud browser to modify.
         # 
         # This parameter is required.
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
         self.max_amount = max_amount
-        # The network configurations.
+        # The network configuration.
         self.network_shrink = network_shrink
         # The access policy.
         self.policy_shrink = policy_shrink
         self.storage_policy_shrink = storage_policy_shrink
-        # The timer.
+        # The timers.
         self.timers_shrink = timers_shrink
 
     def validate(self):

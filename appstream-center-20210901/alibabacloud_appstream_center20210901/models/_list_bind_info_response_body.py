@@ -16,15 +16,15 @@ class ListBindInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The bindings.
+        # The list of binding information returned.
         self.bind_info_models = bind_info_models
-        # The page number.
+        # The page number of the query results currently displayed.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of query results per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -93,33 +93,22 @@ class ListBindInfoResponseBodyBindInfoModels(DaraModel):
         wy_id: str = None,
     ):
         # The account type.
-        # 
-        # Valid values:
-        # 
-        # *   ad: Active Directory (AD) account
-        # *   simple: convenience account
         self.account_type = account_type
-        # The app ID.
+        # The application ID.
         self.app_id = app_id
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the app instance.
+        # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The app version.
+        # The application version number.
         self.app_version = app_version
         # The product type.
-        # 
-        # Valid values:
-        # 
-        # *   CloudApp: App Streaming
-        # *   CloudBrowser: Cloud-based Browser
-        # *   AndroidCloud: Cloud Phone
         self.product_type = product_type
         # The region ID.
         self.region_id = region_id
         # The user ID.
         self.user_id = user_id
-        # The ID of the Alibaba Cloud Workspace user.
+        # The WUYING user ID.
         self.wy_id = wy_id
 
     def validate(self):

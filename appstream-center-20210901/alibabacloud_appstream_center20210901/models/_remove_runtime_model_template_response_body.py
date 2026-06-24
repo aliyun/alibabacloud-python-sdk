@@ -14,8 +14,11 @@ class RemoveRuntimeModelTemplateResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of removal results.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -67,10 +70,19 @@ class RemoveRuntimeModelTemplateResponseBodyData(DaraModel):
         runtime_id: str = None,
         success: bool = None,
     ):
+        # The error code returned upon failure.
         self.code = code
+        # The HTTP status code returned upon failure.
         self.http_status_code = http_status_code
+        # The error message returned upon failure.
         self.message = message
+        # The Agent runtime ID. The ID mapping is as follows:
+        # 
+        # - JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
+        # - OpenClaw: cloud computer ID, in the format of ecd-xxxx.
+        # - Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
         self.runtime_id = runtime_id
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListAppInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The app instances.
+        # The list of queried application instances.
         self.app_instance_models = app_instance_models
-        # The page number of the returned page. We recommend that you configure this parameter.
+        # The page number of the query results to display. Specify this parameter.
         self.page_number = page_number
-        # The number of entries returned on each page. The value cannot be greater than `100`. We recommend that you configure this parameter.
+        # The number of query results per page. Maximum value: `100`. Specify this parameter.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -95,39 +95,31 @@ class ListAppInstancesResponseBodyAppInstanceModels(DaraModel):
         session_status: str = None,
         status: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the application instance.
+        # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The information about the binding between the application instance and end users.
+        # The binding information between the instance and the user.
         self.bind_info = bind_info
-        # The billing method of the app instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription.
-        # *   **PostPaid**: pay-as-you-go
-        # 
-        # >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the app instance belongs is set to Node.
+        # The billing method of the instance. Valid values:
+        # - **PrePaid**: subscription.
+        # - **PostPaid**: pay-as-you-go.
+        # > This parameter is returned only when the billing mode of the delivery group to which the instance belongs is set to resource-based billing (ChargeResourceMode=Node).
         self.charge_type = charge_type
-        # The time when the application instance was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the application instance was updated.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The public IP address associated with the primary NIC. This value is returned only if `StrategyType` is set to `Mixed`.
+        # The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to mixed mode pattern (`Mixed`). Otherwise, this value is empty.
         self.main_eth_public_ip = main_eth_public_ip
         self.network_interface_id = network_interface_id
         self.network_interface_ip = network_interface_ip
-        # The ID of the node on which the app instance runs.
-        # 
-        # >  This parameter is returned only if the ChargeResourceMode parameter of the delivery group to which the app instance belongs is set to Node.
+        # The ID of the node on which the instance runs.
+        # > This parameter is returned only when the billing mode of the delivery group to which the instance belongs is set to resource-based billing (ChargeResourceMode=Node).
         self.node_id = node_id
-        # The session status. This parameter is returned only if the application instance is in the `RUNNING` state.
-        # 
-        # Valid values:
-        # 
-        # *   disconnect: disconnected
-        # *   connect: connected
+        # The session connection status. This value is returned only when the instance status is running (`RUNNING`). Otherwise, this value is empty.
         self.session_status = session_status
-        # The status of the application instance.
+        # The application instance status.
         self.status = status
 
     def validate(self):
@@ -224,9 +216,9 @@ class ListAppInstancesResponseBodyAppInstanceModelsBindInfo(DaraModel):
         end_user_id: str = None,
         usage_duration: int = None,
     ):
-        # The ID of the end user that is bound to the application instance.
+        # The ID of the end user bound to the instance.
         self.end_user_id = end_user_id
-        # The use duration of the application instance. Unit: seconds.
+        # The usage duration of the instance. Unit: seconds.
         self.usage_duration = usage_duration
 
     def validate(self):

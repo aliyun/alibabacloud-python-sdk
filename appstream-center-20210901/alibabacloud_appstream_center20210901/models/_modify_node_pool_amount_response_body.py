@@ -11,7 +11,7 @@ class ModifyNodePoolAmountResponseBody(DaraModel):
         data: main_models.ModifyNodePoolAmountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The response data object.
         self.data = data
         # The request ID.
         self.request_id = request_id

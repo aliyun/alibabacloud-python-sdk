@@ -12,23 +12,19 @@ class ListOtaTaskRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The type of the OTA update task.
-        # 
-        # Valid values:
-        # 
-        # *   Fota: update of the system components of Alibaba Cloud Workspace
+        # The type of the over-the-air update task.
         # 
         # This parameter is required.
         self.ota_type = ota_type
-        # The page number of the page to return.
+        # The page number of the query results to display.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 100.
+        # The number of query results per page. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_size = page_size

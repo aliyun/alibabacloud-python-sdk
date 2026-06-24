@@ -13,7 +13,9 @@ class GetRuntimeModelConfigResponseBody(DaraModel):
         data: main_models.GetRuntimeModelConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,11 +56,17 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
         model_template_ref_type: str = None,
         resource_group_id: str = None,
     ):
+        # The default model (format: providerName/llmCode).
         self.default_model = default_model
+        # The list of model providers.
         self.model_provider_list = model_provider_list
+        # The configured model group ID.
         self.model_template_id = model_template_id
+        # The model group name.
         self.model_template_name = model_template_name
+        # The model template association type (returned only when an association exists).
         self.model_template_ref_type = model_template_ref_type
+        # The resource group ID to which the runtime belongs. The value is null if the runtime is not associated with a resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -127,9 +135,13 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderList(DaraModel):
         name: str = None,
         provider_name: str = None,
     ):
+        # The list of model information.
         self.llm_info_list = llm_info_list
+        # The model provider template ID.
         self.model_provider_template_id = model_provider_template_id
+        # The model provider template name.
         self.name = name
+        # The model provider name.
         self.provider_name = provider_name
 
     def validate(self):
@@ -189,12 +201,19 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraMode
         published_time: str = None,
         risk_type: str = None,
     ):
+        # The model description.
         self.description = description
+        # The list of model features, such as function-calling, web-search, and structured-outputs.
         self.features = features
+        # The inference metadata, including request and response modalities.
         self.inference_metadata = inference_metadata
+        # The model code.
         self.llm_code = llm_code
+        # The model name.
         self.name = name
+        # The publish time in ISO 8601 format.
         self.published_time = published_time
+        # The model risk type. This parameter is returned only when the request parameter IncludeRiskInfo is set to true.
         self.risk_type = risk_type
 
     def validate(self):
@@ -261,7 +280,9 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInference
         request_modality: List[str] = None,
         response_modality: List[str] = None,
     ):
+        # The list of request modalities, such as Text, Image, and Audio.
         self.request_modality = request_modality
+        # The list of response modalities, such as Text, Image, and Audio.
         self.response_modality = response_modality
 
     def validate(self):

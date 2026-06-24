@@ -16,10 +16,15 @@ class ListModelTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of returned data objects.
         self.data = data
+        # The page number of the current query result.
         self.page_number = page_number
+        # The number of entries per page in the query result.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries in the query result.
         self.total_count = total_count
 
     def validate(self):
@@ -84,11 +89,17 @@ class ListModelTemplatesResponseBodyData(DaraModel):
         model_template_id: str = None,
         name: str = None,
     ):
+        # The name of the Agent provider.
         self.agent_provider = agent_provider
+        # The model group configuration JSON object.
         self.config = config
+        # The template group description.
         self.description = description
+        # Specifies whether models have been configured in the group.
         self.has_model = has_model
+        # The model group ID.
         self.model_template_id = model_template_id
+        # The template group name.
         self.name = name
 
     def validate(self):

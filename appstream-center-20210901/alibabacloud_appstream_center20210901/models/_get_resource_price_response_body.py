@@ -16,17 +16,17 @@ class GetResourcePriceResponseBody(DaraModel):
         price_model: main_models.GetResourcePriceResponseBodyPriceModel = None,
         request_id: str = None,
     ):
-        # The error code.
+        # The error code returned when an error occurs.
         self.code = code
-        # The error message.
+        # The error message returned when an error occurs.
         self.message = message
-        # The price objects.
+        # The list of price objects.
         # 
-        # This parameter is returned only if a value is specified for AppInstanceType.
+        # This parameter is returned when the request parameter AppInstanceType has a value.
         self.price_list = price_list
         # The price object.
         # 
-        # This parameter is returned only if a value is specified for NodeInstanceType.
+        # This parameter is returned when the request parameter NodeInstanceType has a value.
         self.price_model = price_model
         # The request ID.
         self.request_id = request_id
@@ -94,7 +94,7 @@ class GetResourcePriceResponseBodyPriceModel(DaraModel):
     ):
         # The price details.
         self.price = price
-        # The price calculation rules.
+        # The pricing rules.
         self.rules = rules
 
     def validate(self):
@@ -140,9 +140,9 @@ class GetResourcePriceResponseBodyPriceModelRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
-        # The description of the price calculation rule.
+        # The pricing rule description.
         self.description = description
-        # The ID of the price calculation rule.
+        # The pricing rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -180,15 +180,15 @@ class GetResourcePriceResponseBodyPriceModelPrice(DaraModel):
         promotions: List[main_models.GetResourcePriceResponseBodyPriceModelPricePromotions] = None,
         trade_price: str = None,
     ):
-        # The currency type.
+        # The currency.
         self.currency = currency
-        # The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+        # The discount amount. The actual price equals the original price minus the discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
         # The coupon metadata.
         self.promotions = promotions
-        # The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+        # The actual price. The actual price equals the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -260,12 +260,7 @@ class GetResourcePriceResponseBodyPriceModelPricePromotions(DaraModel):
         self.promotion_id = promotion_id
         # The coupon name.
         self.promotion_name = promotion_name
-        # Indicates whether the coupon was used.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the coupon is selected.
         self.selected = selected
 
     def validate(self):
@@ -322,13 +317,8 @@ class GetResourcePriceResponseBodyPriceList(DaraModel):
         # The price details.
         self.price = price
         # The price type.
-        # 
-        # Valid values:
-        # 
-        # *   Connected: in use
-        # *   Standby: pending for use.
         self.price_type = price_type
-        # The price calculation rules.
+        # The pricing rules.
         self.rules = rules
 
     def validate(self):
@@ -380,9 +370,9 @@ class GetResourcePriceResponseBodyPriceListRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
-        # The description of the price calculation rule.
+        # The pricing rule description.
         self.description = description
-        # The ID of the price calculation rule.
+        # The pricing rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -420,15 +410,15 @@ class GetResourcePriceResponseBodyPriceListPrice(DaraModel):
         promotions: List[main_models.GetResourcePriceResponseBodyPriceListPricePromotions] = None,
         trade_price: str = None,
     ):
-        # The currency type.
+        # The currency.
         self.currency = currency
-        # The discount. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+        # The discount amount. The actual price equals the original price minus the discount amount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
         # The coupon metadata.
         self.promotions = promotions
-        # The actual price. The actual price is calculated based on the following formula: Actual price = Original price - Discount.
+        # The actual price. The actual price equals the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -500,12 +490,7 @@ class GetResourcePriceResponseBodyPriceListPricePromotions(DaraModel):
         self.promotion_id = promotion_id
         # The coupon name.
         self.promotion_name = promotion_name
-        # Indicates whether the coupon was used.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the coupon is selected.
         self.selected = selected
 
     def validate(self):

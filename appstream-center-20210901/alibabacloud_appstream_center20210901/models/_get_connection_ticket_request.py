@@ -23,33 +23,37 @@ class GetConnectionTicketRequest(DaraModel):
         product_type: str = None,
         task_id: str = None,
     ):
+        # The access type. If you do not specify this parameter, both types are displayed. Valid values:
+        # - INTERNET: Internet access.
+        # - VPC: Express Connect access.
         self.access_type = access_type
         # The application ID.
         # 
-        # >  This parameter is required for the first call to this operation and optional for subsequent calls to the operation.
+        # > This parameter is required for the initial call and optional for subsequent calls.
         self.app_id = app_id
-        # The delivery groups.
+        # The list of delivery groups.
         # 
-        # > *   If you configure this parameter, the system assigns application instances only among the specified authorized delivery groups. 
-        # > *   This parameter is required if you configure `AppInstanceId` or `AppInstancePersistentId`.
+        # > - If you specify this parameter, application instances are allocated only from the specified authorized delivery groups.
+        # > - If you specify the `AppInstanceId` or `AppInstancePersistentId` parameter, this parameter is required.
         self.app_instance_group_id_list = app_instance_group_id_list
-        # The ID of the application instance.
+        # The application instance ID.
         # 
-        # > *   If you configure this parameter, the system attempts to assign only the specified application instance.
-        # > *   If you configure this parameter, you must also configure `AppInstanceGroupIdList` and the number of delivery groups specified by `AppInstanceGroupIdList` must be 1.
+        # > 
+        # > - If you specify this parameter, only the specified application instance is allocated.
+        # > - If you specify this parameter, you must also specify the `AppInstanceGroupIdList` parameter, and the number of delivery group IDs in `AppInstanceGroupIdList` must be 1.
         self.app_instance_id = app_instance_id
-        # The ID of the persistent session.
+        # The persistent session ID.
         self.app_instance_persistent_id = app_instance_persistent_id
         self.app_policy_id = app_policy_id
-        # The parameters that are configured to start the application. For information about how to obtain these parameters, see [Obtain parameters configured to install and start an application](https://help.aliyun.com/document_detail/426045.html).
+        # The application startup parameter. For information about how to obtain startup parameters, see [How to obtain application installation and startup parameters](https://help.aliyun.com/document_detail/426045.html).
         self.app_start_param = app_start_param
-        # The application version. If you configure this parameter, only an application of the specified version is started. If you do not configure this parameter, an application of a random authorized version is started.
+        # The application version. If you specify this parameter, only the specified version of the application is opened. If you do not specify this parameter, any authorized version of the application is opened.
         self.app_version = app_version
         # The region ID.
         # 
-        # >  If you configure this parameter, the system assigns application instances only among the delivery groups that reside in the specified region.
+        # > If you specify this parameter, application instances are allocated only from delivery groups in the specified region.
         self.biz_region_id = biz_region_id
-        # The ID of the convenience account.
+        # The username.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
@@ -57,16 +61,11 @@ class GetConnectionTicketRequest(DaraModel):
         self.environment_config = environment_config
         # The product type.
         # 
-        # Valid values:
-        # 
-        # *   CloudApp: App Streaming
-        # *   AndroidCloud: Cloud Phone
-        # 
         # This parameter is required.
         self.product_type = product_type
         # The task ID.
         # 
-        # >  This parameter is required for calls other than the first call to this operation. You can use this parameter to query the task status and connection credential.
+        # > This request parameter is required for non-initial invokes. Use this parameter to check the task status and connection credentials.
         self.task_id = task_id
 
     def validate(self):

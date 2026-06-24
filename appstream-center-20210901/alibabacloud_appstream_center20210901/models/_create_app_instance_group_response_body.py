@@ -51,9 +51,9 @@ class CreateAppInstanceGroupResponseBodyAppInstanceGroupModel(DaraModel):
         node_pool_id: str = None,
         order_id: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the resource group. This parameter is returned if a resource group was created.
+        # The resource group ID. This parameter is returned if a resource group is created at the same time.
         self.node_pool_id = node_pool_id
         # The order ID.
         self.order_id = order_id

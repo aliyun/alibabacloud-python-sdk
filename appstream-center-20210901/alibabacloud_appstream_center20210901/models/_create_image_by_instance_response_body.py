@@ -14,15 +14,15 @@ class CreateImageByInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error code returned if the request failed.
         self.code = code
-        # The returned data.
+        # The returned object.
         self.data = data
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -78,11 +78,11 @@ class CreateImageByInstanceResponseBodyData(DaraModel):
         task_id: str = None,
         version_id: str = None,
     ):
-        # The ID of the RDS image.
+        # The WUYING image ID.
         self.image_id = image_id
-        # The ID of the image creation task.
+        # The task ID for creating the image.
         self.task_id = task_id
-        # The version of the image.
+        # The image version.
         self.version_id = version_id
 
     def validate(self):

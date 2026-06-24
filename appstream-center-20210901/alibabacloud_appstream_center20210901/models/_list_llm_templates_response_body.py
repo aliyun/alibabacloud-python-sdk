@@ -16,10 +16,15 @@ class ListLlmTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of returned data objects.
         self.data = data
+        # The page number of the current page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,19 @@ class ListLlmTemplatesResponseBodyData(DaraModel):
         name: str = None,
         provider_template_id: str = None,
     ):
+        # The model configuration JSON object.
         self.config = config
+        # The template description.
         self.description = description
+        # Indicates whether this is the default model in the associated model group.
         self.is_default_model = is_default_model
+        # The model code.
         self.llm_code = llm_code
+        # The model template ID.
         self.llm_template_id = llm_template_id
+        # The template name.
         self.name = name
+        # The ID of the model provider template.
         self.provider_template_id = provider_template_id
 
     def validate(self):

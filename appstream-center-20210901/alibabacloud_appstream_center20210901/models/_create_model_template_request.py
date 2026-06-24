@@ -13,12 +13,20 @@ class CreateModelTemplateRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # The Agent platform.
         self.agent_platform = agent_platform
+        # The Agent provider name.
+        # 
         # This parameter is required.
         self.agent_provider = agent_provider
+        # The business type.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # The template group description.
         self.description = description
+        # The template group name.
+        # 
         # This parameter is required.
         self.name = name
 

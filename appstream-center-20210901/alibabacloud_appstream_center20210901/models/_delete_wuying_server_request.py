@@ -9,7 +9,7 @@ class DeleteWuyingServerRequest(DaraModel):
         self,
         wuying_server_id: str = None,
     ):
-        # The ID of the workstation.
+        # The ID of the cloud graphics workstation.
         # 
         # This parameter is required.
         self.wuying_server_id = wuying_server_id

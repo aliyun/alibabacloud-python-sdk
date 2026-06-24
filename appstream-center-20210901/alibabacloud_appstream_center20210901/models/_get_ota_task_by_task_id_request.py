@@ -9,7 +9,7 @@ class GetOtaTaskByTaskIdRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the OTA update task. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # The over-the-air update task ID. You can call [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) to obtain the ID.
         # 
         # This parameter is required.
         self.task_id = task_id

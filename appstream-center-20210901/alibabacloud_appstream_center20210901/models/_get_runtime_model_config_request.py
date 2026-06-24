@@ -13,12 +13,26 @@ class GetRuntimeModelConfigRequest(DaraModel):
         runtime_id: str = None,
         runtime_type: str = None,
     ):
+        # The Agent platform.
         self.agent_platform = agent_platform
+        # The Agent provider.
+        # 
         # This parameter is required.
         self.agent_provider = agent_provider
+        # Specifies whether to include risk information.
         self.include_risk_info = include_risk_info
+        # The Agent runtime ID. The ID mappings are as follows:
+        # 
+        # JVS Computer: JVS Computer ID, in the format of jvs-xxxx.
+        # 
+        # OpenClaw: Cloud computer ID, in the format of ecd-xxxx.
+        # 
+        # Hermes Agent: Hermes Agent ID, in the format of jvs-xxxx.
+        # 
         # This parameter is required.
         self.runtime_id = runtime_id
+        # The Agent runtime type.
+        # 
         # This parameter is required.
         self.runtime_type = runtime_type
 

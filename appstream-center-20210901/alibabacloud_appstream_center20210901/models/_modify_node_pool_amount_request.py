@@ -14,19 +14,15 @@ class ModifyNodePoolAmountRequest(DaraModel):
         node_pool: main_models.ModifyNodePoolAmountRequestNodePool = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The parameters related to the configuration change of the node pool.
+        # The node pool specification change parameters.
         # 
         # This parameter is required.
         self.node_pool = node_pool
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type
@@ -72,17 +68,13 @@ class ModifyNodePoolAmountRequestNodePool(DaraModel):
         pre_paid_node_amount_modify_mode: str = None,
         pre_paid_node_amount_modify_node_ids: List[str] = None,
     ):
-        # The total number of subscription nodes after the change.
+        # The total number of subscription nodes after the upgrade.
         # 
         # This parameter is required.
         self.node_amount = node_amount
-        # The change mode of subscription nodes.
-        # 
-        # Valid value:
-        # 
-        # *   EXPAND_FROM_POST_PAID_EXPLICIT: changes from specified pay-as-you-go nodes
+        # The modification mode for subscription nodes.
         self.pre_paid_node_amount_modify_mode = pre_paid_node_amount_modify_mode
-        # The nodes for which you want to change the billing method.
+        # The list of nodes whose billing type is to be changed.
         self.pre_paid_node_amount_modify_node_ids = pre_paid_node_amount_modify_node_ids
 
     def validate(self):

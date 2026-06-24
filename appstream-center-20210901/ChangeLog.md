@@ -1,3 +1,10 @@
+2026-06-24 Version: 5.6.1
+- Update API ListDesktopAgentRuntime: add request parameters ManagementStatus.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.ManagementStatuses.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.AgentInstanceInfoList.$.AgentPlatform.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.AgentInstanceInfoList.$.AgentProvider.
+
+
 2026-05-29 Version: 5.6.0
 - Support API ListModelProviderEndpoints.
 - Update API GetRuntimeChannel: add response parameters Body.Data.$.ChannelType.

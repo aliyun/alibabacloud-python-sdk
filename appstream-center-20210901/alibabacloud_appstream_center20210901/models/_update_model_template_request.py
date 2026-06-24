@@ -12,10 +12,15 @@ class UpdateModelTemplateRequest(DaraModel):
         model_template_id: str = None,
         name: str = None,
     ):
+        # The model group configuration JSON object.
         self.config = config
+        # The template group description.
         self.description = description
+        # The model group ID.
+        # 
         # This parameter is required.
         self.model_template_id = model_template_id
+        # The template group name.
         self.name = name
 
     def validate(self):

@@ -14,8 +14,11 @@ class GetRuntimeChannelResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -71,14 +74,25 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
         risk_type: str = None,
         status: str = None,
     ):
+        # The channel avatar URL.
         self.avatar_url = avatar_url
+        # The channel type. Valid values: System: a system-supported channel. Custom: a custom channel.
         self.channel_type = channel_type
+        # The channel code.
         self.code = code
+        # The channel configuration JSON string.
+        # 
+        # Currently, only the simple configuration mode is supported. You must pass in AppKey and AppSecret.
         self.config = config
+        # The configuration mode. Valid values: Simple: simple configuration mode. Custom: custom configuration mode.
         self.config_mode = config_mode
+        # The QR code configuration notification page URL. This parameter is returned only for the ENTERPRISE or ENTERPRISE_JVS platform.
         self.qr_code_notify_url = qr_code_notify_url
+        # The QR code configuration status. This parameter is returned only when the status is not in a final state.
         self.qr_code_status = qr_code_status
+        # The risk type. This parameter is returned only when **includeRiskInfo=true**.
         self.risk_type = risk_type
+        # The configuration status.
         self.status = status
 
     def validate(self):

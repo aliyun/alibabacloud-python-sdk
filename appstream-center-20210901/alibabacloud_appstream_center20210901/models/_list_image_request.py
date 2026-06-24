@@ -33,106 +33,49 @@ class ListImageRequest(DaraModel):
         status: str = None,
         tag_list: List[main_models.ListImageRequestTagList] = None,
     ):
-        # The regions that are supported. The EDS images are centralized. Use this parameter to query the regions where the image is deployed.
+        # The list of supported regions.
+        # WUYING images are centralized. Use this parameter to query the regions where the image is deployed.
         self.biz_region_id_list = biz_region_id_list
-        # The service type. This parameter is not available publicly.
-        # 
-        # Valid value:
-        # 
-        # *   1 (default)
+        # The business type. This parameter is not publicly available.
         self.biz_type = biz_type
-        # The list of all service types. It is not available publicly.
+        # The list of all business types. This parameter is not publicly available.
         self.biz_type_list = biz_type_list
         self.distro = distro
-        # The features supported by the image.
+        # The list of features supported by the image.
         self.feature_list = feature_list
-        # The image version.
+        # The image version information.
         self.fota_version = fota_version
         # The image ID.
         self.image_id = image_id
         # The image name. Fuzzy match is supported.
         self.image_name = image_name
-        # The type of the images.
-        # 
-        # Valid values:
-        # 
-        # *   User: a custom image.
-        # *   Shared: a shared image.
-        # *   System: a system image.
-        # *   Community: a community image.
+        # The image type.
         self.image_type = image_type
         # The language.
-        # 
-        # Valid values:
-        # 
-        # *   en-US: English.
-        # *   zh-HK: Chinese, Traditional (Hong Kong, China).
-        # *   zh-CN: Simplified Chinese.
-        # *   ja-JP: Japanese.
         self.language_type = language_type
-        # The OS type of the image.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # *   Unknown
-        # *   Windows
-        # *   Android
+        # The operating system type of the image.
         self.os_type = os_type
-        # The image encapsulation type.
-        # 
-        # Valid values:
-        # 
-        # *   Ecs_Container: ECS and Docker image
-        # *   Ecs: ECS image
+        # The image package type.
         self.package_type = package_type
-        # The current page number.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 100. Default value: 10.
+        # The number of entries per page for paging queries. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The name of the operating system platform.
-        # 
-        # Valid values:
-        # 
-        # *   Ubuntu
-        # *   Debian
-        # *   Windows Server 2022
-        # *   Windows Server 2019
-        # *   Windows Server 2016
-        # *   Windows 11
-        # *   Windows 10
+        # The operating system platform name.
         self.platform_name = platform_name
         # The list of supported platform types. For valid values, refer to PlatformName above.
         self.platform_name_list = platform_name_list
         # The product type.
-        # 
-        # Valid values:
-        # 
-        # *   CloudDesktop: Elastic Desktop Service
-        # *   CloudApp: App Streaming
-        # *   WuyingServer: Workstation
         self.product_type = product_type
-        # The list of products that are supported when the image supports multiple products.
+        # The list of products supported when the image supports multiple products.
         self.product_type_list = product_type_list
         # The protocol type of the image.
-        # 
-        # Valid values:
-        # 
-        # *   HDX: the High-definition Experience (HDX) protocol
-        # *   ASP: the Alibaba Cloud-developed ASP protocol
         self.protocol_type = protocol_type
-        # Find images with certain fixed specifications.
+        # Queries images of specific defined specifications.
         self.resource_instance_type = resource_instance_type
-        # The status of the image. You can query images in the specified status. By default, all images in the Not Deleted state are queried.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE: The image is available.
-        # *   INIT: The image is being initialized.
-        # *   CREATE_FAILED: The image failed to be created.
-        # *   CREATING: The image is being created.
+        # The image status. Specifies the status of images to query. By default, all images that are not deleted are queried.
         self.status = status
-        # The tags to query.
+        # The tags for query.
         self.tag_list = tag_list
 
     def validate(self):
@@ -295,9 +238,9 @@ class ListImageRequestTagList(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the custom tag.
+        # The custom tag key.
         self.key = key
-        # The value of the custom tag.
+        # The custom tag value.
         self.value = value
 
     def validate(self):

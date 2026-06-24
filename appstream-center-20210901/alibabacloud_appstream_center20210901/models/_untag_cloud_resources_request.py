@@ -13,25 +13,17 @@ class UntagCloudResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_keys: List[str] = None,
     ):
-        # The resource IDs. You can specify up to 50 resource IDs. You do not need to specify this parameter if you set ResourceType to AliUid.
+        # The list of resource IDs. A maximum of 50 resource IDs are supported. You do not need to specify this parameter when the resource type is tenant ID.
         self.resource_ids = resource_ids
-        # The type of the resource from which you want to remove tags.
-        # 
-        # Valid values:
-        # 
-        # *   AppId: app ID.
-        # *   WyId: Alibaba Cloud Workspace user ID.
-        # *   AppInstanceGroupId: delivery group ID.
-        # *   AliUid: tenant ID.
+        # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags that you want to remove from the cloud resources. System and custom tags are supported. You can specify up to 10 tags.
+        # The list of tags. System tags and custom tags are supported. You can specify up to 10 tags.
         # 
-        # Valid values for system tags:
-        # 
-        # *   `System/Scheduler/GRAYSCALE`: canary tags.
-        # *   `System/Scheduler/STOP_NEW_USER_CONNECTION`: tags used to stop new users bound to the delivery group from establishing a connection.
+        # Enumerated values for system tags:
+        # - `System/Scheduler/GRAYSCALE`: canary release tag
+        # - `System/Scheduler/STOP_NEW_USER_CONNECTION`: tag that prevents newly bound users in a delivery group from establishing connections.
         # 
         # This parameter is required.
         self.tag_keys = tag_keys

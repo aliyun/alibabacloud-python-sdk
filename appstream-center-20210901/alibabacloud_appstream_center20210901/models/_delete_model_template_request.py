@@ -9,6 +9,8 @@ class DeleteModelTemplateRequest(DaraModel):
         self,
         model_template_id: str = None,
     ):
+        # The model group ID.
+        # 
         # This parameter is required.
         self.model_template_id = model_template_id
 

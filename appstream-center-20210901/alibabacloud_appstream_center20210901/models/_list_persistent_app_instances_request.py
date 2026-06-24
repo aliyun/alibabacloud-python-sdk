@@ -15,23 +15,17 @@ class ListPersistentAppInstancesRequest(DaraModel):
         page_size: int = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The IDs of the persistent sessions.
+        # The list of persistent session IDs.
         self.app_instance_persistent_ids = app_instance_persistent_ids
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number of the query results to display. Minimum value: **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. The value cannot be greater than **100**. Default value: **20**.
+        # The number of query results per page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
         # The product type.
-        # 
-        # Valid values:
-        # 
-        # *   CloudApp: App Streaming
-        # *   CloudBrowser: Cloud-based Browser
-        # *   AndroidCloud: Cloud Phone
         # 
         # This parameter is required.
         self.product_type = product_type

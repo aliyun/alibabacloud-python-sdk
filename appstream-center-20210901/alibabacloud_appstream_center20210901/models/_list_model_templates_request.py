@@ -17,14 +17,23 @@ class ListModelTemplatesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The Agent platform.
         self.agent_platform = agent_platform
+        # The name of the Agent provider.
+        # 
         # This parameter is required.
         self.agent_provider = agent_provider
+        # The business type.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Specifies whether models have been configured in the group.
         self.has_model = has_model
+        # The list of template group IDs used for filtering.
         self.model_template_id_list = model_template_id_list
+        # The page number, starting from 1. Values 0 and 1 return the same result.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

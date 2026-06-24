@@ -16,25 +16,19 @@ class StartTaskForDistributeImageRequest(DaraModel):
         source_region: str = None,
         version_id: str = None,
     ):
-        # The regions to which you want to replicate the image.
+        # The list of destination regions to which the image is copied.
         self.destination_region_list = destination_region_list
         # The image ID.
         # 
         # This parameter is required.
         self.image_id = image_id
         # The product type.
-        # 
-        # Valid values:
-        # 
-        # *   CloudDesktop: Elastic Desktop Service
-        # *   CloudApp: App Streaming
-        # *   WuyingServer: Workstation
         self.product_type = product_type
         # This parameter is not publicly available.
         self.retry_type = retry_type
-        # The region where the source image is located. If you leave this parameter empty, a random region is selected.
+        # The source region from which the image is copied. If this parameter is not specified, a random region is selected.
         self.source_region = source_region
-        # The ID of the image version. If you do not specify this parameter, the latest image version is used by default.
+        # The image version ID. If this parameter is not specified, the latest image version is used.
         self.version_id = version_id
 
     def validate(self):

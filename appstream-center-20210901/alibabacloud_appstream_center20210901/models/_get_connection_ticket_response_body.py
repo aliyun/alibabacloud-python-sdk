@@ -19,39 +19,28 @@ class GetConnectionTicketResponseBody(DaraModel):
         tenant_id: int = None,
         ticket: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the application instance.
+        # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The ID of the persistent session.
+        # The persistent session ID.
         self.app_instance_persistent_id = app_instance_persistent_id
         # The avatar ID.
         self.avatar_id = avatar_id
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The operating system.
-        # 
-        # Valid value:
-        # 
-        # *   Windows: the Windows operating system
+        # The operating system type.
         self.os_type = os_type
         # The request ID.
         self.request_id = request_id
         # The task ID.
         self.task_id = task_id
         # The task status.
-        # 
-        # Valid values:
-        # 
-        # *   Finished: The task is complete.
-        # *   Failed: The task failed.
-        # *   Running: The task is being executed.
         self.task_status = task_status
-        # The ID of the Alibaba Cloud account.
+        # The tenant ID (Alibaba Cloud account UID).
         self.tenant_id = tenant_id
-        # The credential that is used to connect to App Streaming.
-        # 
-        # >  This parameter is displayed for calls other than the first call to this operation.
+        # The credentials for connecting to the cloud application.
+        # > This parameter is returned only on non-initial calls.
         self.ticket = ticket
 
     def validate(self):

@@ -23,6 +23,7 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         has_auth_user: bool = None,
         has_risk: bool = None,
         include_risk_info: bool = None,
+        management_status: str = None,
         model_configure: bool = None,
         model_template_id: str = None,
         page_number: int = None,
@@ -30,26 +31,48 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
         resource_group_id: str = None,
         resource_ids: List[str] = None,
     ):
+        # The list of agent instance statuses.
         self.agent_instance_statuses = agent_instance_statuses
+        # The list of agent instance versions.
         self.agent_instance_versions = agent_instance_versions
+        # The agent platform.
         self.agent_platform = agent_platform
-        # This parameter is required.
+        # The name of the agent provider.
         self.agent_provider = agent_provider
+        # The list of authorized users.
         self.auth_users = auth_users
+        # The business type.
         self.biz_type = biz_type
+        # Specifies whether the third-party channel is configured.
         self.channel_configure = channel_configure
+        # The deployment source.
         self.deployment_source = deployment_source
+        # The list of agent runtime IDs.
         self.desktop_ids = desktop_ids
+        # The list of agent runtime names.
         self.desktop_names = desktop_names
+        # The list of cloud computer statuses.
         self.desktop_statuses = desktop_statuses
+        # Specifies whether authorized users exist.
         self.has_auth_user = has_auth_user
+        # Specifies whether a risk exists. Used to filter cloud computers with or without risks. This parameter takes effect only when IncludeRiskInfo is set to true.
+        # 
+        # Set to true to return only records with risks. Set to false to return only records without risks. If not specified, no filtering is applied.
         self.has_risk = has_risk
+        # Specifies whether to query and return risk information. Default value: false. When set to true, the response includes the RiskInfo field, and the HasRisk filter condition takes effect.
         self.include_risk_info = include_risk_info
+        self.management_status = management_status
+        # Specifies whether the model is configured.
         self.model_configure = model_configure
+        # The model group ID.
         self.model_template_id = model_template_id
+        # The page number, starting from 1. Values 0 and 1 return the same result.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of resource IDs (underlying real resource IDs).
         self.resource_ids = resource_ids
 
     def validate(self):
@@ -101,6 +124,9 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
 
         if self.include_risk_info is not None:
             result['IncludeRiskInfo'] = self.include_risk_info
+
+        if self.management_status is not None:
+            result['ManagementStatus'] = self.management_status
 
         if self.model_configure is not None:
             result['ModelConfigure'] = self.model_configure
@@ -165,6 +191,9 @@ class ListDesktopAgentRuntimeRequest(DaraModel):
 
         if m.get('IncludeRiskInfo') is not None:
             self.include_risk_info = m.get('IncludeRiskInfo')
+
+        if m.get('ManagementStatus') is not None:
+            self.management_status = m.get('ManagementStatus')
 
         if m.get('ModelConfigure') is not None:
             self.model_configure = m.get('ModelConfigure')

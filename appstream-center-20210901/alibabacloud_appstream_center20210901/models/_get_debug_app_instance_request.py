@@ -10,15 +10,11 @@ class GetDebugAppInstanceRequest(DaraModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group. You can call the `listAppInstanceGroup` operation to obtain the ID.
+        # The delivery group ID. You can obtain this value by calling the listAppInstanceGroup operation.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type

@@ -12,23 +12,19 @@ class ListNodesRequest(DaraModel):
         page_size: int = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The page number. Pages start from page 1.
+        # The page number of the query results to display, starting from 1.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 200.
+        # The number of query results per page. Valid values: 1 to 200.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type

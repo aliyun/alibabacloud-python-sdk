@@ -18,28 +18,23 @@ class ListAppInstancesRequest(DaraModel):
         status: List[str] = None,
         user_id_list: List[str] = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the application instance.
+        # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The IDs of the application instances. Up to 100 IDs can be specified.
+        # The list of application instance IDs. A maximum of 100 IDs can be specified.
         self.app_instance_id_list = app_instance_id_list
-        # Specifies whether to query the information about deleted app instances. If you set this parameter to true, you must configure AppInstanceIdList. Otherwise, a parameter error is reported.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to query information about deleted instances. If this parameter is set to true, the AppInstanceIdList parameter is required. Otherwise, a parameter error is returned.
         self.include_deleted = include_deleted
-        # The page number. Default value: `1`. We recommend that you specify this parameter.
+        # The page number of the query results to display. Default value: `1`. Specify this parameter.
         self.page_number = page_number
-        # The number of entries per page. The value cannot be greater than `100`. Default value: `20`. We recommend that you specify this parameter.
+        # The number of query results per page. Maximum value: `100`. Default value: `20`. Specify this parameter.
         self.page_size = page_size
-        # The status of the application instances.
+        # The list of application instance statuses.
         self.status = status
-        # The user IDs. You can specify up to 100 IDs.
+        # The list of user IDs. A maximum of 100 IDs can be specified.
         self.user_id_list = user_id_list
 
     def validate(self):

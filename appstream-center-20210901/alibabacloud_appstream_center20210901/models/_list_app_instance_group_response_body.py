@@ -16,15 +16,15 @@ class ListAppInstanceGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The delivery groups.
+        # The delivery group information.
         self.app_instance_group_models = app_instance_group_models
-        # The page number.
+        # The page number of the query results currently displayed.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of query results per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -121,115 +121,78 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel):
         tags: List[main_models.ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags] = None,
         user_group_auth_mode: str = None,
     ):
+        # The access type.
         self.access_type = access_type
-        # The number of subscription resources. Minimum value: 1.
+        # The number of subscription resources configured by the user. Minimum value: 1.
         self.amount = amount
-        # The image ID of the app.
+        # The application image ID.
         self.app_center_image_id = app_center_image_id
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group.
+        # The delivery group name.
         self.app_instance_group_name = app_instance_group_name
-        # The resource type of the delivery group.
+        # The specification type of the delivery group.
         self.app_instance_type = app_instance_type
         # The policy ID.
         self.app_policy_id = app_policy_id
+        # Indicates whether the current image supports the unified policy.
         self.app_policy_image_check = app_policy_image_check
+        # The policy version.
         self.app_policy_version = app_policy_version
-        # The apps.
+        # The application information.
         self.apps = apps
+        # The authorization mode.
         self.auth_mode = auth_mode
         # The sales mode.
-        # 
-        # Valid values:
-        # 
-        # *   AppInstance: by session
-        # *   Node: by resource
         self.charge_resource_mode = charge_resource_mode
         # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
         self.charge_type = charge_type
-        # The time when the delivery group expires.
+        # The expiration time of the delivery group.
         self.expired_time = expired_time
-        # The time when the delivery group was created.
+        # The creation time.
         self.gmt_create = gmt_create
         # The maximum number of instances. Minimum value: 1.
         self.max_amount = max_amount
         # The minimum number of instances. Minimum value: 1.
         self.min_amount = min_amount
-        # The resource groups.
+        # The resource group information.
         self.node_pool = node_pool
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The type of the operating system.
-        # 
-        # Valid value:
-        # 
-        # *   Windows
+        # The operating system type.
         self.os_type = os_type
-        # The information about the over-the-air (OTA) update task.
+        # The over-the-air update task information.
         self.ota_info = ota_info
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         self.product_type = product_type
-        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.region_id = region_id
-        # The percentage of reserved instances. The value indicates the percentage of unused sessions in the delivery group. Valid values: 0 to 99.
+        # The percentage of reserved instances, which represents the ratio of unused sessions in the delivery group. Valid values: 0 to 99.
         self.reserve_amount_ratio = reserve_amount_ratio
-        # The maximum number of reserved instances. The value indicates the maximum number of unused sessions in the delivery group. Minimum value: 1.
+        # The maximum number of reserved instances, which represents the maximum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_max_amount = reserve_max_amount
-        # The minimum number of reserved instances. The value indicates the minimum number of unused sessions in the delivery group. Minimum value: 1.
+        # The minimum number of reserved instances, which represents the minimum number of unused sessions in the delivery group. Minimum value: 1.
         self.reserve_min_amount = reserve_min_amount
         # The resource status.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE
-        # *   RELEASED
-        # *   EXPIRED_IN_7_DAYS
-        # *   UNAVAILABLE
-        # *   UPGRADING
-        # *   CREATING
         self.resource_status = resource_status
-        # The resource tags.
+        # The list of resource tags.
         self.resource_tags = resource_tags
-        # The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, auto scale-in is triggered. Minimum value: 0.
+        # The duration of no session connections, in minutes. When a resource remains in a no-session-connection state for the specified duration, automatic scale-in is triggered. Minimum value: 0.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
-        # The number of sessions that are created each time the delivery group is scaled out. Minimum value: 1.
+        # The number of sessions created during each scale-out event. Minimum value: 1.
         self.scaling_step = scaling_step
-        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scale-out is triggered. The session usage rate is calculated by using the following formula: Session usage rate = Number of sessions in use/Total number of sessions × 100%. Valid values: 0 to 99.
+        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: Session usage = Number of sessions in use ÷ Total number of sessions × 100%. Valid values: 0 to 99.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+        # The session disconnection retention duration, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
-        # Indicates whether user permission verification is skipped.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false: This is the default value.
+        # Indicates whether user authorization verification is skipped.
         self.skip_user_auth_check = skip_user_auth_check
-        # The specification ID that uniquely corresponds to the ID of the delivery group.
+        # The ID that uniquely corresponds to the delivery group ID.
         self.spec_id = spec_id
-        # The status of the delivery group.
-        # 
-        # Valid values:
-        # 
-        # *   PUBLISHED: The delivery group is published.
-        # *   FAILED: The delivery group failed to be published.
-        # *   MAINTAIN_FAILED: The delivery group failed to be updated.
-        # *   EXPIRED: The delivery group is expired.
-        # *   MAINTAINING: The delivery group is being updated.
-        # *   CEASED: The delivery group has overdue payments.
-        # *   EXPIRED_RECYCLING: The delivery group is expired and being recycled.
-        # *   DEPLOYING: The delivery group is being published.
+        # The delivery group status.
         self.status = status
         self.support_user_group_mixed_auth = support_user_group_mixed_auth
+        # The list of resource tags.
         self.tags = tags
         self.user_group_auth_mode = user_group_auth_mode
 
@@ -520,8 +483,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsTags(DaraModel):
         scope: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag type.
         self.scope = scope
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -565,7 +531,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsResourceTags(DaraMod
     ):
         # The tag key.
         self.key = key
-        # The tag type. Valid values: Custom System
+        # The tag type.
         self.scope = scope
         # The tag value.
         self.value = value
@@ -609,11 +575,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo(DaraModel):
         ota_version: str = None,
         task_id: str = None,
     ):
-        # The new OTA version. A null value indicates that no new version is available.
+        # The new OTA version. An empty value indicates that no new version is available.
         self.new_ota_version = new_ota_version
         # The current OTA version.
         self.ota_version = ota_version
-        # The ID of the OTA update task.
+        # The OTA upgrade task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -673,55 +639,43 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(DaraModel):
     ):
         # The number of resources purchased when the delivery group was created.
         self.amount = amount
-        # The maximum number of idle sessions. After you specify a value for this parameter, auto scale-out is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that idle sessions in the delivery group are sufficient and does not perform auto scale-out.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
+        # The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions and no automatic scale-out is performed. This parameter allows you to flexibly control elastic scaling behavior and reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
-        # The maximum number of resources that can be created for scale-out.
+        # The maximum number of resources that can be created during scale-out.
         self.max_scaling_amount = max_scaling_amount
-        # The total number of subscription resources.
+        # The total number of current subscription resources.
         self.node_amount = node_amount
-        # The maximum number of sessions that can be connected to a resource at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource specification. The following items describe the value ranges of different resource types:
-        # 
-        # *   appstreaming.general.4c8g: 1 to 2
-        # *   appstreaming.general.8c16g: 1 to 4
-        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
-        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
-        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
+        # The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. Too many simultaneous sessions may degrade the application experience. The valid values vary depending on the resource specification.
         self.node_capacity = node_capacity
-        # The ID of the resource specification that you purchase.
+        # The specification type ID of the purchased resources.
         self.node_instance_type = node_instance_type
-        # The ID of the resource group.
+        # The resource group ID.
         self.node_pool_id = node_pool_id
-        # The name of the resource specification.
+        # The resource specification name.
         self.node_type_name = node_type_name
-        # The number of subscription resources that are in use.
+        # The resource count of subscription resources in use.
         self.node_used = node_used
-        # The intervals at which the scaling policy is executed.
+        # The list of policy execution cycles.
         self.recurrence_schedules = recurrence_schedules
-        # The duration for which no session is connected. Unit: minutes. If no session is connected in the resources after the specified duration elapses, auto scale-in is triggered. Default value: 5.
+        # The duration of no session connections, in minutes. When a resource remains in a no-session-connection state for the specified duration, automatic scale-in is triggered. Default value: 5.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
-        # The total number of scalable resources.
+        # The total number of elastic resources.
         self.scaling_node_amount = scaling_node_amount
-        # The number of scalable resources that are in use.
+        # The resource count of elastic resources in use.
         self.scaling_node_used = scaling_node_used
-        # The number of resources that are created each time resources are scaled out. Valid values: 1 to 10.
+        # The number of resources created during each scale-out event. Valid values: 1 to 10.
         self.scaling_step = scaling_step
-        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scale-out is triggered. The session usage is calculated by using the following formula: `Session usage = Number of current sessions/(Total number of resources × Number of concurrent sessions) × 100%`.
+        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The formula for session usage is: `Session usage = Number of current sessions ÷ (Total number of resources × Concurrent sessions per resource) × 100%`.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # The expiration date of the scaling policy. Format: yyyy-MM-dd.
+        # The date when the policy expires. Format: yyyy-MM-dd.
         self.strategy_disable_date = strategy_disable_date
-        # The effective date of the scaling policy. Format: yyyy-MM-dd.
+        # The date when the policy takes effect. Format: yyyy-MM-dd.
         self.strategy_enable_date = strategy_enable_date
-        # The type of the scaling policy.
+        # The elastic policy type.
         # 
-        # >  `NODE_SCALING_BY_USAGE` is returned for this parameter only if ChargeType is set to `PrePaid`. `NODE_SCALING_BY_SCHEDULE` is returned for this parameter only if ChargeType is set to `PostPaid`.
-        # 
-        # Valid values:
-        # 
-        # *   NODE_FIXED: No scalable resources are used.
-        # *   NODE_SCALING_BY_SCHEDULE: Scheduled scaling is used.
-        # *   NODE_SCALING_BY_USAGE: Resources are scaled based on usage.
+        # > `NODE_SCALING_BY_USAGE` (usage-based scaling policy) applies only to `PrePaid` (subscription) resources. `NODE_SCALING_BY_SCHEDULE` (scheduled scaling policy) applies only to `PostPaid` (pay-as-you-go) resources.
         self.strategy_type = strategy_type
-        # Indicates whether resource prefetch is enabled.
+        # Indicates whether the resource prefetch policy is enabled.
         self.warm_up = warm_up
 
     def validate(self):
@@ -867,15 +821,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSc
         recurrence_values: List[int] = None,
         timer_periods: List[main_models.ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods] = None,
     ):
-        # The schedule type of the scaling policy. This parameter must be configured together with `RecurrenceValues`.``
-        # 
-        # Valid value:
-        # 
-        # *   weekly: The scaling policy is executed on specific days each week.
+        # The type of the policy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues`.
         self.recurrence_type = recurrence_type
-        # The days of each week on which the scaling policy is executed.
+        # The list of values for the policy execution cycle.
         self.recurrence_values = recurrence_values
-        # The time periods during which the scaling policy can be executed.
+        # The list of time periods for the policy execution cycle.
         self.timer_periods = timer_periods
 
     def validate(self):
@@ -925,11 +875,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSc
         end_time: str = None,
         start_time: str = None,
     ):
-        # The number of destination resources.
+        # The target resource count.
         self.amount = amount
-        # The time when the scaling policy ends. Format: HH:mm.
+        # The end time. Format: HH:mm.
         self.end_time = end_time
-        # The time when the scaling policy starts. Format: HH:mm.
+        # The start time. Format: HH:mm.
         self.start_time = start_time
 
     def validate(self):
@@ -973,15 +923,15 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps(DaraModel):
         app_version: str = None,
         app_version_name: str = None,
     ):
-        # The app icon.
+        # The application icon.
         self.app_icon = app_icon
-        # The app ID.
+        # The application ID.
         self.app_id = app_id
-        # The app name.
+        # The application name.
         self.app_name = app_name
-        # The app version.
+        # The application version.
         self.app_version = app_version
-        # The name of the app version.
+        # The application version name.
         self.app_version_name = app_version_name
 
     def validate(self):

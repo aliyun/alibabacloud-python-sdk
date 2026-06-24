@@ -13,7 +13,7 @@ class ListTenantConfigResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The user configurations.
+        # The user configuration information.
         self.tenant_config_model = tenant_config_model
 
     def validate(self):
@@ -49,12 +49,7 @@ class ListTenantConfigResponseBodyTenantConfigModel(DaraModel):
         self,
         app_instance_group_expire_remind: bool = None,
     ):
-        # Indicates whether the resource expiration reminder feature is enabled.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether resource expiration reminders are enabled.
         self.app_instance_group_expire_remind = app_instance_group_expire_remind
 
     def validate(self):

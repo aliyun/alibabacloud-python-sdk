@@ -12,28 +12,19 @@ class UpdateAppInstanceGroupImageRequest(DaraModel):
         biz_region_id: str = None,
         product_type: str = None,
     ):
-        # The image ID of the application. You can obtain the ID from the Images page in the App Streaming console.
+        # The application image ID. You can obtain this ID from the Image Management page in the WUYING Cloud Application console.
         # 
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-        # 
-        # Valid values:
-        # 
-        # *   cn-shanghai: China (Shanghai).
-        # *   cn-hangzhou: China (Hangzhou)
+        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type

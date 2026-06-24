@@ -10,13 +10,9 @@ class ListRegionsRequest(DaraModel):
         biz_source: str = None,
         product_type: str = None,
     ):
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.biz_source = biz_source
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         self.product_type = product_type
 
     def validate(self):

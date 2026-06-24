@@ -13,8 +13,9 @@ class TagCloudResourcesResponseBody(DaraModel):
         failed_resources: List[main_models.TagCloudResourcesResponseBodyFailedResources] = None,
         request_id: str = None,
     ):
-        # The cloud resources on which the operation failed and the corresponding tags.
+        # The list of failed resources and tag information.
         self.failed_resources = failed_resources
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,19 +61,15 @@ class TagCloudResourcesResponseBodyFailedResources(DaraModel):
         resource_type: str = None,
         tags: List[main_models.TagCloudResourcesResponseBodyFailedResourcesTags] = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
+        # The resource ID.
         self.resource_id = resource_id
-        # The type of the cloud resource.
-        # 
-        # Valid values:
-        # 
-        # *   CenterImageId: center image ID.
-        # *   AppId: app ID.
-        # *   WyId: Alibaba Cloud Workspace user ID.
-        # *   AppInstanceGroupId: delivery group ID.
-        # *   AliUid: tenant ID.
+        # The cloud resource type.
         self.resource_type = resource_type
+        # The list of failed tag information.
         self.tags = tags
 
     def validate(self):
@@ -134,8 +131,11 @@ class TagCloudResourcesResponseBodyFailedResourcesTags(DaraModel):
         scope: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag type.
         self.scope = scope
+        # The tag value.
         self.value = value
 
     def validate(self):

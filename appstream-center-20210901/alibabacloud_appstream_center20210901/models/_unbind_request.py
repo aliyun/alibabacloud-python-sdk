@@ -13,23 +13,19 @@ class UnbindRequest(DaraModel):
         end_user_id: str = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
+        # The delivery group ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The session ID. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
+        # The session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
         self.app_instance_id = app_instance_id
-        # The ID of the persistent session. You can call the [GetConnectionTicket](~~GetConnectionTicket~~) operation to obtain the ID.
+        # The persistent session ID. You can call the [GetConnectionTicket](https://help.aliyun.com/document_detail/609336.html) operation to obtain the ID.
         self.app_instance_persistent_id = app_instance_persistent_id
         # The username.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type

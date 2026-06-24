@@ -15,13 +15,22 @@ class RemoveRuntimeChannelRequest(DaraModel):
         runtime_ids: List[str] = None,
         runtime_type: str = None,
     ):
+        # The agent platform.
         self.agent_platform = agent_platform
+        # The agent provider.
+        # 
         # This parameter is required.
         self.agent_provider = agent_provider
+        # The channel code.
+        # 
         # This parameter is required.
         self.code = code
+        # The list of agent runtime IDs.
+        # 
         # This parameter is required.
         self.runtime_ids = runtime_ids
+        # The runtime type.
+        # 
         # This parameter is required.
         self.runtime_type = runtime_type
 

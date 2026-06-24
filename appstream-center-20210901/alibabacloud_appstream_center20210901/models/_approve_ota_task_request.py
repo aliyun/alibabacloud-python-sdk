@@ -13,33 +13,27 @@ class ApproveOtaTaskRequest(DaraModel):
         start_time: str = None,
         task_id: str = None,
     ):
-        # The ID of the delivery group. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # The delivery group ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the region where the delivery group resides. You can call the [ListRegions](https://help.aliyun.com/document_detail/428500.html) operation to query the list of regions supported by App Streaming.
+        # The region ID of the delivery group. You can call [ListRegions](~~ListRegions~~) to query the list of regions supported by Wuying Cloud Application.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
-        # The type of the OTA update task.
-        # 
-        # Valid values:
-        # 
-        # *   Fota: update of the system components of Alibaba Cloud Workspace
-        # *   AppUpdate
-        # *   ImageUpdate
+        # The over-the-air upgrade task type.
         # 
         # This parameter is required.
         self.ota_type = ota_type
-        # The start time of the OTA update task. The time follows the ISO 8601 standard.
+        # The start time of the over-the-air upgrade task. Specify the time in ISO 8601 format.
         # 
         # This parameter is required.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
-        # The ID of the OTA update task. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # The over-the-air upgrade task ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
         # 
-        # >  Each successful call to the `ApproveOtaTask` operation causes a value change of this parameter.`` Before you call this operation, call the `ListAppInstanceGroup` operation again to obtain the latest value of this parameter.``
+        # > Each successful call of `ApproveOtaTask` causes the `TaskId` to change. Therefore, before calling this operation again, call `ListAppInstanceGroup` again to obtain the latest `TaskId`.
         # 
         # This parameter is required.
         self.task_id = task_id

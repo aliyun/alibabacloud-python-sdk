@@ -13,20 +13,15 @@ class RenewWuyingServerRequest(DaraModel):
         promotion_id: str = None,
         wuying_server_id: str = None,
     ):
-        # Automatic payment.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
         # The renewal duration.
         self.period = period
-        # The unit of the renewal time.
-        # 
-        # Valid values:
-        # 
-        # *   Month: month.
-        # *   Year: year.
+        # The unit of the renewal duration.
         self.period_unit = period_unit
         # The discount ID.
         self.promotion_id = promotion_id
-        # The ID of the workstation.
+        # The workstation ID.
         self.wuying_server_id = wuying_server_id
 
     def validate(self):
