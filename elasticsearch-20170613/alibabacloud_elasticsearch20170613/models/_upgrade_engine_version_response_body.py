@@ -13,15 +13,9 @@ class UpgradeEngineVersionResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.UpgradeEngineVersionResponseBodyResult] = None,
     ):
-        # The verification information.
+        # The request ID.
         self.request_id = request_id
-        # The type of the error. Valid values:
-        # 
-        # *   clusterStatus: the health status of the cluster.
-        # *   clusterConfigYml: Cluster YML File
-        # *   clusterConfigPlugins: Cluster Configuration File
-        # *   clusterResource: cluster resources
-        # *   clusterSnapshot: cluster snapshot
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -65,10 +59,19 @@ class UpgradeEngineVersionResponseBodyResult(DaraModel):
         validate_result: List[main_models.UpgradeEngineVersionResponseBodyResultValidateResult] = None,
         validate_type: str = None,
     ):
+        # Indicates whether the check is passed. Valid values:
+        # 
+        # - success: passed.
+        # - failed: not passed.
         self.status = status
-        # The error message returned.
+        # The check information.
         self.validate_result = validate_result
-        # The error code returned if the request failed.
+        # The check type. Valid values:
+        # 
+        # - checkClusterHealth: cluster health status.
+        # - checkConfigCompatible: configuration compatibility status.
+        # - checkClusterResource: resource space status.
+        # - checkClusterSnapshot: whether a snapshot exists.
         self.validate_type = validate_type
 
     def validate(self):
@@ -118,12 +121,17 @@ class UpgradeEngineVersionResponseBodyResultValidateResult(DaraModel):
         error_msg: str = None,
         error_type: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
-        # The verification is passed. Valid values:
+        # The error type. Valid values:
         # 
-        # *   success: through
-        # *   failed: failed
+        # - clusterStatus: cluster health status.
+        # - clusterConfigYml: cluster YML file.
+        # - clusterConfigPlugins: cluster configuration file.
+        # - clusterResource: cluster resources.
+        # - clusterSnapshot: cluster snapshot.
         self.error_type = error_type
 
     def validate(self):

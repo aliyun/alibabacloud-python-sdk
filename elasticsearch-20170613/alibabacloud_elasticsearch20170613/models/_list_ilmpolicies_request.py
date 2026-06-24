@@ -9,6 +9,7 @@ class ListILMPoliciesRequest(DaraModel):
         self,
         policy_name: str = None,
     ):
+        # The name of the index lifecycle policy.
         self.policy_name = policy_name
 
     def validate(self):

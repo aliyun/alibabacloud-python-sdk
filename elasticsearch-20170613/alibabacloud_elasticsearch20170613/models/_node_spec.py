@@ -14,11 +14,25 @@ class NodeSpec(DaraModel):
         performance_level: str = None,
         spec: str = None,
     ):
+        # Storage space size of data nodes, in GB.
         self.disk = disk
+        # Whether to enable cloud disk encryption for data nodes:
+        # 
+        # - true: Enabled
+        # - false: Disabled
         self.disk_encryption = disk_encryption
+        # Storage preference.
         self.disk_preference = disk_preference
+        # Storage type of data nodes. Supported values:
+        # 
+        # - cloud_ssd: SSD cloud disk
+        # - cloud_essd: ESSD cloud disk
+        # - cloud_efficiency: Ultra cloud disk
         self.disk_type = disk_type
+        # Performance level of ESSD cloud disks. Required when the disk type of data nodes is ESSD cloud disk. Supported values: PL1, PL2, PL3.
         self.performance_level = performance_level
+        # Data node specification. Specification details can be viewed in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
+        # 
         # This parameter is required.
         self.spec = spec
 

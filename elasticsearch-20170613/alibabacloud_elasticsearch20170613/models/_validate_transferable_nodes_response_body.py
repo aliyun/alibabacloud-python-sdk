@@ -10,7 +10,12 @@ class ValidateTransferableNodesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result. Valid values:
+        # 
+        # - true: The data can be migrated.
+        # - false: The data cannot be migrated.
         self.result = result
 
     def validate(self):

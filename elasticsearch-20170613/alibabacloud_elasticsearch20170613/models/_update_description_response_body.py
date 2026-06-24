@@ -11,7 +11,9 @@ class UpdateDescriptionResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateDescriptionResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -47,6 +49,7 @@ class UpdateDescriptionResponseBodyResult(DaraModel):
         self,
         description: str = None,
     ):
+        # The updated instance name.
         self.description = description
 
     def validate(self):

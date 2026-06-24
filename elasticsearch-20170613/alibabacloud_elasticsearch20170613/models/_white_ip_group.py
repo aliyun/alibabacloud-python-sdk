@@ -13,8 +13,16 @@ class WhiteIpGroup(DaraModel):
         group_name: str = None,
         ips: List[str] = None,
     ):
+        # The type of the IP address whitelist. Valid values:
+        # 
+        # - PRIVATE_ES: Elasticsearch private network access whitelist
+        # - PUBLIC_ES: Elasticsearch public network access whitelist
+        # - PRIVATE_KIBANA: Kibana private network access whitelist
+        # - PUBLIC_KIBANA: Kibana public network access whitelist.
         self.white_ip_type = white_ip_type
+        # The name of the IP address whitelist group.
         self.group_name = group_name
+        # The list of IP addresses in the whitelist group.
         self.ips = ips
 
     def validate(self):

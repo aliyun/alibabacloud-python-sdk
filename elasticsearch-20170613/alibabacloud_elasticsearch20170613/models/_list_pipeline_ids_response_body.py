@@ -13,7 +13,9 @@ class ListPipelineIdsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListPipelineIdsResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of results.
         self.result = result
 
     def validate(self):
@@ -58,9 +60,17 @@ class ListPipelineIdsResponseBodyResult(DaraModel):
         message: str = None,
         pipeline_id: str = None,
     ):
+        # Indicates whether the pipeline is available. Valid values:
+        # 
+        # - true: Available.
+        # 
+        # - false: Not available.
         self.available = available
+        # The error code returned when the pipeline is unavailable.
         self.code = code
+        # The error message returned when the pipeline is unavailable.
         self.message = message
+        # The pipeline ID created in Kibana.
         self.pipeline_id = pipeline_id
 
     def validate(self):

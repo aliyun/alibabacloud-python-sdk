@@ -10,7 +10,9 @@ class CreateIndexTemplateResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The name of the created cluster index template.
         self.result = result
 
     def validate(self):

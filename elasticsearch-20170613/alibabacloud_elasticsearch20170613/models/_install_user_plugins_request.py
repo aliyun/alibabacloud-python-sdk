@@ -10,6 +10,7 @@ class InstallUserPluginsRequest(DaraModel):
         body: str = None,
         force: bool = None,
     ):
+        # The list of custom plugins to install.
         self.body = body
         self.force = force
 

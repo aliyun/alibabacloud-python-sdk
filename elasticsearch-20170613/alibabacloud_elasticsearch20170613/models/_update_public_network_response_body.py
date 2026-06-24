@@ -11,9 +11,9 @@ class UpdatePublicNetworkResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdatePublicNetworkResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return results.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -49,7 +49,7 @@ class UpdatePublicNetworkResponseBodyResult(DaraModel):
         self,
         enable_public: bool = None,
     ):
-        # The status of the public network access switch.
+        # The status of the public network address switch.
         self.enable_public = enable_public
 
     def validate(self):

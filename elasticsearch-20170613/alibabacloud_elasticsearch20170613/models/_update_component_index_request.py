@@ -13,7 +13,9 @@ class UpdateComponentIndexRequest(DaraModel):
         meta: Dict[str, Any] = None,
         template: main_models.UpdateComponentIndexRequestTemplate = None,
     ):
+        # The metadata, which is used to store information such as remarks.
         self.meta = meta
+        # The composable template information.
         self.template = template
 
     def validate(self):
@@ -51,8 +53,11 @@ class UpdateComponentIndexRequestTemplate(DaraModel):
         mappings: Dict[str, Any] = None,
         settings: Dict[str, Any] = None,
     ):
+        # The aliases configuration of the template.
         self.aliases = aliases
+        # The mappings configuration of the template.
         self.mappings = mappings
+        # The settings configuration of the template.
         self.settings = settings
 
     def validate(self):

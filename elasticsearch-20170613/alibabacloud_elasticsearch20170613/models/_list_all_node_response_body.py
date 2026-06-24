@@ -13,11 +13,9 @@ class ListAllNodeResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListAllNodeResponseBodyResult] = None,
     ):
-        # The zone ID of the node.
+        # The request ID.
         self.request_id = request_id
-        # The CPU utilization.
-        # 
-        # >  If the **extended** request parameter is set to **true** and the monitoring information of the nodes in the cluster is being synchronized, the value of the cpuPercent parameter is null. In this case, you need to send a request again after 10 seconds to obtain the value of the cpuPercent parameter.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -67,26 +65,30 @@ class ListAllNodeResponseBodyResult(DaraModel):
         port: int = None,
         zone_id: str = None,
     ):
-        # The disk usage.
+        # The CPU usage.
+        # > When **extended** is set to **true** and the monitoring information of the node is being synchronized, the parameter value returns null. In this case, wait 10 seconds and send the request again to retrieve the value.
         self.cpu_percent = cpu_percent
-        # The health status of the node. Valid values: GREEN, YELLOW, RED, and GRAY.
+        # The disk usage.
         self.disk_used_percent = disk_used_percent
+        # The health status of the node. Valid values: GREEN, YELLOW, RED, and GRAY.
         self.health = health
-        # The IP address of the node.
+        # The JVM memory usage.
         self.heap_percent = heap_percent
-        # The port that is used to connect to the node.
+        # The IP address of the node.
         self.host = host
+        # The one-minute load average.
         self.load_one_m = load_one_m
-        # The 1-minute load of the node.
-        self.node_type = node_type
-        self.port = port
-        # The type of the nodes. Valid values:
+        # The node type. Valid values:
         # 
-        # *   MASTER: dedicated master node
-        # *   WORKER: hot node
-        # *   WORKER_WARM: warm node
-        # *   COORDINATING: client node
-        # *   KIBANA: Kibana node
+        # - MASTER: dedicated master node
+        # - WORKER: hot node
+        # - WORKER_WARM: warm node
+        # - COORDINATING: client node
+        # - KIBANA: Kibana node.
+        self.node_type = node_type
+        # The access port of the node.
+        self.port = port
+        # The zone where the node resides.
         self.zone_id = zone_id
 
     def validate(self):

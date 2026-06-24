@@ -15,14 +15,9 @@ class UpdateInstanceResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # The time when the instance was created.
+        # The request ID.
         self.request_id = request_id
-        # The state of the instance. Valid values:
-        # 
-        # *   active: normal
-        # *   activating: taking effect
-        # *   inactive: frozen
-        # *   invalid: invalid
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -80,33 +75,35 @@ class UpdateInstanceResponseBodyResult(DaraModel):
         payment_type: str = None,
         status: str = None,
     ):
-        # The private domain name of the instance.
+        # The time when the instance was created.
         self.created_at = created_at
-        # The configuration of data nodes.
+        # The instance name.
         self.description = description
-        # The ID of the instance.
+        # 实例的私网访问域名。
         self.domain = domain
-        # The node specifications.
+        # The instance version.
         self.es_version = es_version
-        # The storage space of the node. Unit: GB.
+        # The instance ID.
         self.instance_id = instance_id
-        # The size of the node storage space.
+        # The Kibana node configuration.
         self.kibana_configuration = kibana_configuration
-        # The storage space of the node. Unit: GB.
+        # The master node configuration.
         self.master_configuration = master_configuration
+        # The number of data nodes.
+        self.node_amount = node_amount
+        # The data node configuration.
+        self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
-        # *   prepaid: subscription
-        # *   postpaid: pay-as-you-go
-        self.node_amount = node_amount
-        # The storage type of the node. Valid values:
-        # 
-        # *   cloud_ssd: standard SSD
-        # *   cloud_efficiency: ultra disk
-        self.node_spec = node_spec
-        # The edition of the dedicated KMS instance.
+        # - prepaid: subscription
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
-        # The name of the instance.
+        # The status of the instance. Valid values:
+        # 
+        # - active: Normal
+        # - activating: Taking effect
+        # - inactive: Frozen
+        # - invalid: Invalid.
         self.status = status
 
     def validate(self):
@@ -204,11 +201,14 @@ class UpdateInstanceResponseBodyResultNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The node specifications.
+        # The storage size of the node. Unit: GB.
         self.disk = disk
-        # The number of nodes.
+        # The storage type of the node. Valid values:
+        # 
+        # - cloud_ssd: standard SSD
+        # - cloud_efficiency: ultra disk.
         self.disk_type = disk_type
-        # The configuration of Kibana nodes.
+        # 节点规格。
         self.spec = spec
 
     def validate(self):
@@ -251,10 +251,13 @@ class UpdateInstanceResponseBodyResultMasterConfiguration(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The number of nodes.
         self.amount = amount
+        # The storage size of the node. Unit: GB.
         self.disk = disk
+        # The storage type of the node. Only cloud_ssd (standard SSD) is supported.
         self.disk_type = disk_type
-        # The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
+        # 节点规格。
         self.spec = spec
 
     def validate(self):
@@ -303,13 +306,13 @@ class UpdateInstanceResponseBodyResultKibanaConfiguration(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The configuration of dedicated master nodes.
-        self.amount = amount
-        # The node specifications.
-        self.disk = disk
         # The number of nodes.
+        self.amount = amount
+        # The storage size of the node.
+        self.disk = disk
+        # The storage type of the node. You can ignore this parameter.
         self.disk_type = disk_type
-        # The storage type of the node. This parameter can be ignored.
+        # 节点规格。
         self.spec = spec
 
     def validate(self):

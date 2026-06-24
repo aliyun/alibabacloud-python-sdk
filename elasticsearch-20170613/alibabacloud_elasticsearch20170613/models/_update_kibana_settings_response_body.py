@@ -10,12 +10,12 @@ class UpdateKibanaSettingsResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The returned result. Valid values:
         # 
-        # *   true: The Kibana language modified successfully
-        # *   false: The Kibana language modified failed
+        # - true: The Kibana language was modified.
+        # - false: The Kibana language failed to be modified.
         self.result = result
 
     def validate(self):

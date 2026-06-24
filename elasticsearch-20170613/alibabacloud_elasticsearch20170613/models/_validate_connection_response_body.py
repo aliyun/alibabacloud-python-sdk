@@ -12,10 +12,10 @@ class ValidateConnectionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the connectivity is normal. Valid values:
+        # The returned result. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The validation succeeded.
+        # - false: The validation failed.
         self.result = result
 
     def validate(self):

@@ -11,13 +11,13 @@ class GetSuggestShrinkableNodesRequest(DaraModel):
         ignore_status: bool = None,
         node_type: str = None,
     ):
-        # The number of nodes that you want to remove.
+        # The expected number of removable nodes to retrieve.
         # 
         # This parameter is required.
         self.count = count
         # Specifies whether to ignore the instance status. Default value: false.
         self.ignore_status = ignore_status
-        # The type of removing nodes. WORKER indicates hot node and WORKER_WARM indicates warm node.
+        # The type of nodes to scale in. **WORKER** indicates hot nodes. **WORKER_WARM** indicates warm nodes.
         # 
         # This parameter is required.
         self.node_type = node_type

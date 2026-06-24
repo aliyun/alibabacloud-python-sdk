@@ -15,14 +15,19 @@ class ValidateShrinkNodesRequest(DaraModel):
         ignore_status: bool = None,
         node_type: str = None,
     ):
+        # The request body.
         self.body = body
+        # The number of nodes.
         self.count = count
-        # The ID of the request.
-        self.ignore_status = ignore_status
-        # Returned results:
+        # Specifies whether to ignore the cluster health status.
         # 
-        # *   true: can be scaled in
-        # *   false: cannot be scaled in.
+        # - true: ignores the cluster health status.
+        # - false (default): does not ignore the cluster health status.
+        self.ignore_status = ignore_status
+        # The type of nodes to scale in. Valid values:
+        # 
+        # - WORKER: hot node
+        # - WORKER_WARM: warm node
         # 
         # This parameter is required.
         self.node_type = node_type
@@ -82,10 +87,18 @@ class ValidateShrinkNodesRequestBody(DaraModel):
         port: int = None,
         zone_id: str = None,
     ):
+        # The IP address of the node.
         self.host = host
+        # The node name of the cloud-native ACK-based cluster. You can call the [ListAllNode](https://help.aliyun.com/document_detail/183958.html) operation to obtain the node name.
         self.host_name = host_name
+        # The node type. Valid values:
+        # 
+        # - WORKER: hot node
+        # - WORKER_WARM: warm node
         self.node_type = node_type
+        # The access port number of the node.
         self.port = port
+        # The zone ID of the node in the instance. For example, the zone ID of China (Shanghai) Zone C is cn-shanghai-c.
         self.zone_id = zone_id
 
     def validate(self):

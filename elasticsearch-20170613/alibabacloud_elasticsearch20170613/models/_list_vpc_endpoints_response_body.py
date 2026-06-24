@@ -15,7 +15,7 @@ class ListVpcEndpointsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the endpoints.
+        # The endpoint details.
         self.result = result
 
     def validate(self):
@@ -65,39 +65,49 @@ class ListVpcEndpointsResponseBodyResult(DaraModel):
         service_id: str = None,
         service_name: str = None,
     ):
-        # The status of the endpoint connection. Valid values:
+        # The endpoint connection status. Valid values:
         # 
-        # *   Pending
-        # *   Connecting
-        # *   Connected
-        # *   Disconnecting
-        # *   Disconnected
-        # *   Deleting
-        # *   ServiceDeleted
+        # - Pending: Being modified.
+        # 
+        # - Connecting: Connecting.
+        # 
+        # - Connected: Connected.
+        # 
+        # - Disconnecting: Disconnecting.
+        # 
+        # - Disconnected: Not connected.
+        # 
+        # - Deleting: Being deleted.
+        # 
+        # - ServiceDeleted: The service associated with the endpoint has been deleted.
         self.connection_status = connection_status
         # The time when the endpoint was created.
         self.create_time = create_time
         # The business status of the endpoint. Valid values:
         # 
-        # *   Normal
-        # *   FinancialLocked
-        self.endpoint_business_status = endpoint_business_status
-        # The domain name of the endpoint. The domain name is used for connection configuration.
-        self.endpoint_domain = endpoint_domain
-        # The ID of the endpoint.
-        self.endpoint_id = endpoint_id
-        # The name of the endpoint.
-        self.endpoint_name = endpoint_name
-        # The status of the endpoint. Valid values:
+        # - Normal: Normal.
         # 
-        # *   Creating
-        # *   Active
-        # *   Pending
-        # *   Deleting
+        # - FinancialLocked: Locked due to overdue payment.
+        self.endpoint_business_status = endpoint_business_status
+        # The endpoint domain name, which is used for connection configuration.
+        self.endpoint_domain = endpoint_domain
+        # The endpoint ID.
+        self.endpoint_id = endpoint_id
+        # The endpoint name.
+        self.endpoint_name = endpoint_name
+        # The endpoint status. Valid values:
+        # 
+        # - Creating: Being created.
+        # 
+        # - Active: Available.
+        # 
+        # - Pending: Being modified.
+        # 
+        # - Deleting: Being deleted.
         self.endpoint_status = endpoint_status
-        # The ID of the endpoint service with which the endpoint is associated.
+        # The ID of the endpoint service associated with the endpoint.
         self.service_id = service_id
-        # The name of the endpoint service with which the endpoint is associated.
+        # The name of the endpoint service associated with the endpoint.
         self.service_name = service_name
 
     def validate(self):

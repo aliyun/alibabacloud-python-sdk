@@ -9,7 +9,11 @@ class ListAllNodeRequest(DaraModel):
         self,
         extended: bool = None,
     ):
-        # The Java Virtual Machine (JVM) heap memory usage of the node.
+        # Specifies whether to return monitoring information for the nodes. Valid values:
+        # 
+        # - true (default): Returns monitoring information.
+        # 
+        # - false: Does not return monitoring information.
         self.extended = extended
 
     def validate(self):

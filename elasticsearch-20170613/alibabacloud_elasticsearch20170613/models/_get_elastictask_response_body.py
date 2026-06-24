@@ -13,7 +13,9 @@ class GetElastictaskResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetElastictaskResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -50,7 +52,9 @@ class GetElastictaskResponseBodyResult(DaraModel):
         elastic_expansion_task: main_models.GetElastictaskResponseBodyResultElasticExpansionTask = None,
         elastic_shrink_task: main_models.GetElastictaskResponseBodyResultElasticShrinkTask = None,
     ):
+        # The elastic scale-out rule.
         self.elastic_expansion_task = elastic_expansion_task
+        # The elastic scale-in rule.
         self.elastic_shrink_task = elastic_shrink_task
 
     def validate(self):
@@ -93,10 +97,14 @@ class GetElastictaskResponseBodyResultElasticShrinkTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
+        # The trigger cycle, specified as a Quartz Cron expression.
         self.cron_expression = cron_expression
+        # The number of elastic data nodes during off-peak hours.
         self.elastic_node_count = elastic_node_count
+        # The number of replicas for the target index.
         self.replica_count = replica_count
         self.target_indices = target_indices
+        # The cause. Currently, only crontab is supported, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -152,10 +160,14 @@ class GetElastictaskResponseBodyResultElasticExpansionTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
+        # The trigger cycle, specified as a Quartz Cron expression.
         self.cron_expression = cron_expression
+        # The number of elastic data nodes during peak hours.
         self.elastic_node_count = elastic_node_count
+        # The number of replicas for the target index.
         self.replica_count = replica_count
         self.target_indices = target_indices
+        # The cause. Currently, only **crontab** is supported, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):

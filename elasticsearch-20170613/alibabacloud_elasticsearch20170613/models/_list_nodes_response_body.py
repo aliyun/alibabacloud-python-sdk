@@ -14,11 +14,11 @@ class ListNodesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListNodesResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The response headers.
         self.headers = headers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -76,37 +76,37 @@ class ListNodesResponseBodyResult(DaraModel):
         status: str = None,
         tags: List[main_models.ListNodesResponseBodyResultTags] = None,
     ):
-        # The status of the shipper on the ECS instance. Valid values:
+        # The status of each collector on the ECS instance. Valid values:
         # 
-        # *   heartOk: The heartbeat is normal.
-        # *   heartLost: The heartbeat is abnormal.
-        # *   uninstalled: The shipper is not installed.
-        # *   failed: The shipper fails to be installed.
+        # - heartOk: normal heartbeat.
+        # - heartLost: abnormal heartbeat.
+        # - uninstalled: not installed.
+        # - failed: installation failed.
         self.agent_status = agent_status
-        # Indicates whether the Cloud Assistant client is installed. Valid values:
+        # Indicates whether Cloud Assistant is enabled. Valid values:
         # 
-        # *   true: installed
-        # *   false: not installed
+        # - true: enabled.
+        # - false: not enabled.
         self.cloud_assistant_status = cloud_assistant_status
-        # The ID of the ECS instance.
+        # The ECS instance ID.
         self.ecs_instance_id = ecs_instance_id
-        # The name of the ECS instance.
+        # The ECS instance name.
         self.ecs_instance_name = ecs_instance_name
-        # The IP addresses of the ECS instance.
+        # The list of IP address information of the ECS instance.
         self.ip_address = ip_address
         # The operating system type of the ECS instance. Valid values:
         # 
-        # *   windows: Windows Server
-        # *   linux: Linux
+        # - windows: Windows Server.
+        # - linux: Linux.
         self.os_type = os_type
         # The status of the ECS instance. Valid values:
         # 
-        # *   running: The instance is running.
-        # *   starting: The instance is being started.
-        # *   stopping: The instance is being stopped.
-        # *   stopped: The instance is stopped.
+        # - running: running.
+        # - starting: starting.
+        # - stopping: stopping.
+        # - stopped: stopped.
         self.status = status
-        # The tags of the ECS instance.
+        # The tag information of the ECS instance.
         self.tags = tags
 
     def validate(self):
@@ -194,9 +194,9 @@ class ListNodesResponseBodyResultTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -235,8 +235,8 @@ class ListNodesResponseBodyResultIpAddress(DaraModel):
         self.host = host
         # The type of the IP address. Valid values:
         # 
-        # *   public: public IP address
-        # *   private: private IP address
+        # - public: public IP address.
+        # - private: private IP address.
         self.ip_type = ip_type
 
     def validate(self):
@@ -270,7 +270,7 @@ class ListNodesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The number of entries returned.
+        # The total number of returned records.
         self.x_total_count = x_total_count
 
     def validate(self):

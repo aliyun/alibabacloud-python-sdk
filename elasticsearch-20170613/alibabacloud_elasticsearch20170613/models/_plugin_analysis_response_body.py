@@ -13,8 +13,9 @@ class PluginAnalysisResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.PluginAnalysisResponseBodyResult] = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return Result.
         self.result = result
 
     def validate(self):
@@ -60,10 +61,15 @@ class PluginAnalysisResponseBodyResult(DaraModel):
         security_policy: str = None,
         version: str = None,
     ):
+        # Plugin Description.
         self.description = description
+        # Plugin version.
         self.elasticsearch_version = elasticsearch_version
+        # Plugin Name.
         self.name = name
+        # Plugin security policy.
         self.security_policy = security_policy
+        # Plugin Version.
         self.version = version
 
     def validate(self):

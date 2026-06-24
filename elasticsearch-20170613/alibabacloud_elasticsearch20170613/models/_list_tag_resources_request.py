@@ -14,21 +14,19 @@ class ListTagResourcesRequest(DaraModel):
         size: int = None,
         tags: str = None,
     ):
-        # The number of the returned page.
+        # The token for the next query.
         self.next_token = next_token
-        # 1d2db86sca4384811e0b5e8707e\\*\\*\\*\\*\\*\\*
+        # The page number of the resource relationship list. This parameter is deprecated.
         self.page = page
-        # The ID of the request.
+        # The list of instance IDs to query. The value is in JSON array format and can contain up to 20 items.
         self.resource_ids = resource_ids
-        # [{"key":"env","value","dev"},{"key":"dev", "value":"IT"}]
+        # The resource type definition.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # ["es-cn-aaa","es-cn-bbb"]
+        # The number of entries per page in Settings for paged query and paging. This field is deprecated.
         self.size = size
-        # The header of the response. This parameter is empty and is for reference only. You cannot force this parameter to be relied on in the program.
-        # 
-        # >  The return examples does not contain this parameter.
+        # The list of tags to query. The value is in JSON string format and can contain up to 20 items.
         self.tags = tags
 
     def validate(self):

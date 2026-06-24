@@ -11,8 +11,12 @@ class KibanaNodeConfiguration(DaraModel):
         disk: int = None,
         spec: str = None,
     ):
+        # The number of Kibana nodes.
         self.amount = amount
+        # The storage space of the Kibana node. Unit: GB.
         self.disk = disk
+        # The Kibana node specifications. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # 
         # This parameter is required.
         self.spec = spec
 

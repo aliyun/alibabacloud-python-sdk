@@ -13,9 +13,9 @@ class DescribeRegionsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.DescribeRegionsResponseBodyResult] = None,
     ):
-        # The available status of the region.
+        # The request ID.
         self.request_id = request_id
-        # The endpoint of the region.
+        # The list of returned results.
         self.result = result
 
     def validate(self):
@@ -61,12 +61,15 @@ class DescribeRegionsResponseBodyResult(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The endpoint of the region exposed in the console.
         self.console_endpoint = console_endpoint
-        self.local_name = local_name
-        self.region_endpoint = region_endpoint
         # The name of the region.
+        self.local_name = local_name
+        # The endpoint of the region.
+        self.region_endpoint = region_endpoint
+        # The region ID.
         self.region_id = region_id
-        # The endpoint of the region that is exposed in the console.
+        # The availability status of the region.
         self.status = status
 
     def validate(self):

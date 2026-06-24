@@ -16,11 +16,17 @@ class EnableKibanaPvlNetworkRequest(DaraModel):
         vpc_id: str = None,
         client_token: str = None,
     ):
+        # The endpoint name.
         self.endpoint_name = endpoint_name
+        # The security groups.
+        # 
         # This parameter is required.
         self.security_groups = security_groups
+        # The vSwitch and zone information.
         self.v_switch_ids_zone = v_switch_ids_zone
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
 
     def validate(self):
@@ -81,7 +87,9 @@ class EnableKibanaPvlNetworkRequestVSwitchIdsZone(DaraModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

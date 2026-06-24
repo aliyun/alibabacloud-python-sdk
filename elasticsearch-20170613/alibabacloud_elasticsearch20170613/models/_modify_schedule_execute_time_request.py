@@ -10,7 +10,9 @@ class ModifyScheduleExecuteTimeRequest(DaraModel):
         event_id: str = None,
         schedule_execute_time: str = None,
     ):
+        # Event ID.
         self.event_id = event_id
+        # Scheduled execution time (UTC)
         self.schedule_execute_time = schedule_execute_time
 
     def validate(self):

@@ -13,9 +13,9 @@ class UpdateWhiteIpsResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateWhiteIpsResponseBodyResult = None,
     ):
-        # The updated whitelist.
+        # The request ID.
         self.request_id = request_id
-        # The network configurations.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -52,9 +52,9 @@ class UpdateWhiteIpsResponseBodyResult(DaraModel):
         es_ipwhitelist: List[str] = None,
         network_config: main_models.UpdateWhiteIpsResponseBodyResultNetworkConfig = None,
     ):
-        # The list of whitelists.
+        # The private network internal-facing access whitelist (deprecated).
         self.es_ipwhitelist = es_ipwhitelist
-        # The name of the whitelist. By default, the default whitelist is included.
+        # The network configuration.
         self.network_config = network_config
 
     def validate(self):
@@ -90,7 +90,7 @@ class UpdateWhiteIpsResponseBodyResultNetworkConfig(DaraModel):
         self,
         white_ip_group_list: List[main_models.UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList] = None,
     ):
-        # The IP addresses in the whitelist.
+        # The list of whitelist groups.
         self.white_ip_group_list = white_ip_group_list
 
     def validate(self):
@@ -128,9 +128,11 @@ class UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList(DaraModel):
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
-        # The type of the whitelist. The value of this parameter is fixed as PRIVATE_ES, which indicates a private IP address whitelist.
+        # The name of the whitelist group. The default group is included by default.
         self.group_name = group_name
+        # The IP address information in the whitelist group.
         self.ips = ips
+        # The whitelist type. The value is fixed as PRIVATE_ES, which indicates the private network internal-facing access whitelist.
         self.white_ip_type = white_ip_type
 
     def validate(self):

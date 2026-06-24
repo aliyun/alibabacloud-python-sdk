@@ -14,19 +14,25 @@ class ListLogstashLogRequest(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # 20
+        # The beginning of the time range to query logs. This value is a UNIX timestamp. Unit: milliseconds.
         self.begin_time = begin_time
-        # The ID of the request.
+        # The end of the time range to query logs. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The returned data.
+        # The page number of the instance list. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
-        # 1
+        # The keyword to query.
         # 
         # This parameter is required.
         self.query = query
-        # The severity level of the log entry. Including trace, debug, info, warn, error, etc. (GC logs have no level).
+        # The number of entries per page for a paged query. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.size = size
-        # 1531910852074
+        # The log type. Valid values:
+        # 
+        # - LOGSTASH_INSTANCE_LOG: main log.
+        # - SEARCHSLOW: searching slow log.
+        # - INDEXINGSLOW: indexing slow log.
+        # - JVMLOG: GC log.
+        # - LOGSTASH_DEBUG_LOG: debug log.
         # 
         # This parameter is required.
         self.type = type

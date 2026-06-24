@@ -14,11 +14,11 @@ class ListPluginsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListPluginsResponseBodyResult] = None,
     ):
-        # The description of the plug-in.
+        # The response headers.
         self.headers = headers
-        # The return results.
+        # The request ID.
         self.request_id = request_id
-        # The status of the plug-in.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -73,12 +73,15 @@ class ListPluginsResponseBodyResult(DaraModel):
         specification_url: str = None,
         state: str = None,
     ):
-        # The source type of the plug-in.
+        # The plugin description.
         self.description = description
+        # The plugin name.
         self.name = name
+        # The plugin source type.
         self.source = source
-        # The name of the plug-in.
+        # The URL of the plugin documentation.
         self.specification_url = specification_url
+        # The plugin status.
         self.state = state
 
     def validate(self):
@@ -130,7 +133,7 @@ class ListPluginsResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The address of the plug-in description document.
+        # The total number of records returned.
         self.x_total_count = x_total_count
 
     def validate(self):

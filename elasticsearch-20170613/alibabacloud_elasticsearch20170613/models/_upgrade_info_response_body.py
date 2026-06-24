@@ -11,8 +11,9 @@ class UpgradeInfoResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpgradeInfoResponseBodyResult = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Result body
         self.result = result
 
     def validate(self):
@@ -48,6 +49,7 @@ class UpgradeInfoResponseBodyResult(DaraModel):
         self,
         upgrade_info: main_models.UpgradeInfoResponseBodyResultUpgradeInfo = None,
     ):
+        # Upgrade information.
         self.upgrade_info = upgrade_info
 
     def validate(self):
@@ -83,12 +85,19 @@ class UpgradeInfoResponseBodyResultUpgradeInfo(DaraModel):
         upgrade_apack_version: str = None,
         upgrade_es_version: str = None,
     ):
+        # Current repo version.
         self.cur_repo_version = cur_repo_version
+        # Upgradable repo version.
         self.update_repo_version = update_repo_version
+        # Indicates whether an upgradable version exists.
         self.upgrade = upgrade
+        # Current Milvus version
         self.cur_apack_version = cur_apack_version
+        # Current ES version
         self.cur_es_version = cur_es_version
+        # Upgradable Milvus version.
         self.upgrade_apack_version = upgrade_apack_version
+        # Upgradable ES version
         self.upgrade_es_version = upgrade_es_version
 
     def validate(self):

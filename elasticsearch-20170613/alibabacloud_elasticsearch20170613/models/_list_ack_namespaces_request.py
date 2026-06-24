@@ -10,9 +10,9 @@ class ListAckNamespacesRequest(DaraModel):
         page: int = None,
         size: int = None,
     ):
-        # The number of the page to return.
+        # The page number. (Deprecated).
         self.page = page
-        # The number of entries to return on each page.
+        # The number of records per page. (Deprecated).
         self.size = size
 
     def validate(self):

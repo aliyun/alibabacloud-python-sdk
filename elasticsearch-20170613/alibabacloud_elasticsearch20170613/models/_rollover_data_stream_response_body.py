@@ -10,7 +10,13 @@ class RolloverDataStreamResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result. Valid values:
+        # 
+        # - true: The rollover succeeded.
+        # 
+        # - false: The rollover failed.
         self.result = result
 
     def validate(self):

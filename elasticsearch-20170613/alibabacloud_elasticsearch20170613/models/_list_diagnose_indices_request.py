@@ -9,7 +9,13 @@ class ListDiagnoseIndicesRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language. Multiple languages are supported.
+        # The language. Default value: the browser language. Valid values:
+        # 
+        # - en: English
+        # - zh: Simplified Chinese
+        # - zt: Traditional Chinese
+        # - es: Spanish
+        # - fr: French.
         self.lang = lang
 
     def validate(self):

@@ -14,11 +14,21 @@ class WarmNodeConfiguration(DaraModel):
         performance_level: str = None,
         spec: str = None,
     ):
+        # The number of cold data nodes.
         self.amount = amount
+        # The storage space size of cold data nodes, in GB.
         self.disk = disk
+        # Specifies whether to enable cloud disk encryption for cold data nodes. Valid values:
+        # 
+        # - true: enabled.
+        # - false: not enabled.
         self.disk_encryption = disk_encryption
+        # The storage type of cold data nodes. Only cloud_efficiency (ultra cloud disk) is supported.
         self.disk_type = disk_type
+        # The performance level (PL) of the ESSD cloud disk. This parameter is required when the disk type of cold data nodes is a standard SSD. Valid values: PL1, PL2, and PL3.
         self.performance_level = performance_level
+        # The node specifications of cold data nodes. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # 
         # This parameter is required.
         self.spec = spec
 

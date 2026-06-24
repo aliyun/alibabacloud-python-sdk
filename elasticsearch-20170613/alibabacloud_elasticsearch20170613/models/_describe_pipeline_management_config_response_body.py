@@ -13,7 +13,7 @@ class DescribePipelineManagementConfigResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribePipelineManagementConfigResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -55,14 +55,14 @@ class DescribePipelineManagementConfigResponseBodyResult(DaraModel):
         pipeline_management_type: str = None,
         user_name: str = None,
     ):
-        # The access addresses of the Elasticsearch cluster. Specify each address in the `http://Endpoint of the Elasticsearch cluster:Port number` format.
+        # The list of access endpoints for the Elasticsearch instance, in the format of `domain name:port number`.
         self.endpoints = endpoints
-        # The ID of the Elasticsearch cluster.
+        # The Elasticsearch instance ID.
         self.es_instance_id = es_instance_id
         self.pipeline_ids = pipeline_ids
         # The pipeline management method. Valid values: Kibana and MULTIPLE_PIPELINE.
         self.pipeline_management_type = pipeline_management_type
-        # The username that is used to access the Elasticsearch cluster.
+        # The username used to access the instance.
         self.user_name = user_name
 
     def validate(self):

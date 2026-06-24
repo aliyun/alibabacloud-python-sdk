@@ -11,9 +11,14 @@ class ListDictInformationRequest(DaraModel):
         bucket_name: str = None,
         key: str = None,
     ):
+        # The type of the OSS dictionary to be added. Valid values: IK_HOT, IK, SYNONYMS, and ALIWS. Default value: IK.
         self.analyzer_type = analyzer_type
+        # The name of the OSS bucket where the dictionary file is stored.
+        # 
         # This parameter is required.
         self.bucket_name = bucket_name
+        # The storage path of the dictionary file in the OSS bucket.
+        # 
         # This parameter is required.
         self.key = key
 

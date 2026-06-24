@@ -12,9 +12,19 @@ class PaymentInfo(DaraModel):
         is_auto_renew: bool = None,
         pricing_cycle: str = None,
     ):
+        # The auto-renewal cycle. Unit: month. This parameter is required when **isAutoRenew** is set to **true**. The valid values are the same as those on the buy page.
         self.auto_renew_duration = auto_renew_duration
+        # The subscription duration. This parameter is required. You can specify the duration in months or years.
         self.duration = duration
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # - true: enabled.
+        # - false (default): disabled.
         self.is_auto_renew = is_auto_renew
+        # The unit of the subscription duration. This parameter is required. Valid values:
+        # 
+        # - Year: year
+        # - Month: month.
         self.pricing_cycle = pricing_cycle
 
     def validate(self):

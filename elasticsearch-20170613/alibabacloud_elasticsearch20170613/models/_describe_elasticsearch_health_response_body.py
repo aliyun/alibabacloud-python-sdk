@@ -12,13 +12,13 @@ class DescribeElasticsearchHealthResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
-        # The response code returned.
+        # The response code.
         self.code = code
-        # The response message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The color that indicates the health status of the cluster.
+        # The health status of the instance.
         self.result = result
 
     def validate(self):

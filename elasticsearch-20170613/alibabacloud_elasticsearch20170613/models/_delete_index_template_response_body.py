@@ -10,7 +10,13 @@ class DeleteIndexTemplateResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result. Valid values:
+        # 
+        # - true: The index template was deleted.
+        # 
+        # - false: The index template failed to be deleted.
         self.result = result
 
     def validate(self):

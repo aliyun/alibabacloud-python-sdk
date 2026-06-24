@@ -9,6 +9,7 @@ class GetRegionConfigurationRequest(DaraModel):
         self,
         zone_id: str = None,
     ):
+        # The current zone ID.
         self.zone_id = zone_id
 
     def validate(self):

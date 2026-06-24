@@ -10,12 +10,12 @@ class CreateSnapshotResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The returned result. Valid values:
         # 
-        # *   true: manual snapshot backup successfully
-        # *   false: manual snapshot backup failed
+        # - true: The manual snapshot backup is successful.
+        # - false: The manual snapshot backup failed.
         self.result = result
 
     def validate(self):

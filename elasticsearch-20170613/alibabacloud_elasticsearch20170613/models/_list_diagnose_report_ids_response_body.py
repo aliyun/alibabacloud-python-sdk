@@ -14,10 +14,11 @@ class ListDiagnoseReportIdsResponseBody(DaraModel):
         request_id: str = None,
         result: List[str] = None,
     ):
-        # The header of the response.
+        # The response headers.
         self.headers = headers
         # The request ID.
         self.request_id = request_id
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -59,7 +60,7 @@ class ListDiagnoseReportIdsResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The total number of records returned.
         self.x_total_count = x_total_count
 
     def validate(self):

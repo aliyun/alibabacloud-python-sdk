@@ -11,7 +11,7 @@ class DescribeAckOperatorResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeAckOperatorResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -50,14 +50,14 @@ class DescribeAckOperatorResponseBodyResult(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The installation status of ES-operator. Valid values:
+        # The Operator installation status. Valid values:
         # 
-        # *   deployed: ES-operator is installed.
-        # *   not-deploy: ES-operator is not installed.
-        # *   failed: ES-operator fails to be installed.
-        # *   unknown: The installation status of ES-operator is unknown.
+        # - deployed: installed
+        # - not-deploy: not installed
+        # - failed: installation failed
+        # - unknown: unknown status.
         self.status = status
-        # The version of ES-operator.
+        # The Operator version.
         self.version = version
 
     def validate(self):

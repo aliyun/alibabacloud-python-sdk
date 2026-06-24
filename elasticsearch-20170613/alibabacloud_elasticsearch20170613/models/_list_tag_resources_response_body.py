@@ -15,13 +15,14 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesResponseBodyTagResources = None,
     ):
-        # The labels of the resource.
+        # The response header information. This parameter is empty and is for reference only. Do not create a dependency on this parameter in your program.
+        # > This parameter is not included in the response example.
         self.headers = headers
-        # The number of resources to query.
+        # The page number.
         self.page_size = page_size
-        # A list of resources that have tags.
+        # The request ID.
         self.request_id = request_id
-        # The type of the resource. Fixed to `ALIYUN::ELASTICSEARCH::INSTANCE`.
+        # The tag resource group.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -72,7 +73,7 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         self,
         tag_resource: List[main_models.ListTagResourcesResponseBodyTagResourcesTagResource] = None,
     ):
-        # Indicates the ID of a resource.
+        # The tag resource.
         self.tag_resource = tag_resource
 
     def validate(self):
@@ -111,10 +112,13 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type. The value is fixed as `ALIYUN::ELASTICSEARCH::INSTANCE`.
         self.resource_type = resource_type
-        self.tag_key = tag_key
         # The tag key.
+        self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -160,7 +164,7 @@ class ListTagResourcesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The value of the tag.
+        # The resource count of TagResource resources found.
         self.x_total_count = x_total_count
 
     def validate(self):

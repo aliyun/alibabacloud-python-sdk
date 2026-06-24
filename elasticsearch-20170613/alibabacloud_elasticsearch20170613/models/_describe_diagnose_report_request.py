@@ -9,6 +9,13 @@ class DescribeDiagnoseReportRequest(DaraModel):
         self,
         lang: str = None,
     ):
+        # The language of the intelligent diagnostic report. Default value: the browser language. Valid values:
+        # 
+        # - en: English
+        # - zh: Simplified Chinese
+        # - zt: Traditional Chinese
+        # - es: Spanish
+        # - fr: French
         self.lang = lang
 
     def validate(self):

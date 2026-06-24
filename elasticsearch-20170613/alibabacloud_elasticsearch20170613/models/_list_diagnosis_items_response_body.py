@@ -13,7 +13,9 @@ class ListDiagnosisItemsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListDiagnosisItemsResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -54,11 +56,16 @@ class ListDiagnosisItemsResponseBodyResult(DaraModel):
     def __init__(
         self,
         description: str = None,
+        es_api_required: bool = None,
         key: str = None,
         name: str = None,
     ):
+        # The diagnostic item description.
         self.description = description
+        self.es_api_required = es_api_required
+        # The diagnostic item identifier.
         self.key = key
+        # The diagnostic item name.
         self.name = name
 
     def validate(self):
@@ -72,6 +79,9 @@ class ListDiagnosisItemsResponseBodyResult(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.es_api_required is not None:
+            result['esApiRequired'] = self.es_api_required
+
         if self.key is not None:
             result['key'] = self.key
 
@@ -84,6 +94,9 @@ class ListDiagnosisItemsResponseBodyResult(DaraModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('esApiRequired') is not None:
+            self.es_api_required = m.get('esApiRequired')
 
         if m.get('key') is not None:
             self.key = m.get('key')

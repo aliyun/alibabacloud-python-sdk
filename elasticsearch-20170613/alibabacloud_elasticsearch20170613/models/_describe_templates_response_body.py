@@ -13,7 +13,9 @@ class DescribeTemplatesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.DescribeTemplatesResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -56,7 +58,13 @@ class DescribeTemplatesResponseBodyResult(DaraModel):
         content: str = None,
         template_name: str = None,
     ):
+        # The template content.
         self.content = content
+        # The template name. Valid values:
+        # - staticSettings: elasticsearch.yml configuration
+        # - ilmPolicy: index lifecycle configuration
+        # - indexTemplate: index template configuration
+        # - dynamicSettings: cluster dynamic configuration.
         self.template_name = template_name
 
     def validate(self):

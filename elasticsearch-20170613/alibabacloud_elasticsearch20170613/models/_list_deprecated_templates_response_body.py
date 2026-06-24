@@ -14,8 +14,11 @@ class ListDeprecatedTemplatesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListDeprecatedTemplatesResponseBodyResult] = None,
     ):
+        # The response headers.
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -71,11 +74,20 @@ class ListDeprecatedTemplatesResponseBodyResult(DaraModel):
         template: main_models.ListDeprecatedTemplatesResponseBodyResultTemplate = None,
         version: str = None,
     ):
+        # Indicates whether the template matches a data stream. Valid values:
+        # 
+        # - true: matched
+        # - false: not matched.
         self.data_stream = data_stream
+        # The index template information.
         self.index_patterns = index_patterns
+        # The index template name.
         self.index_template = index_template
+        # The priority.
         self.order = order
+        # The index template configuration.
         self.template = template
+        # The version of the index template.
         self.version = version
 
     def validate(self):
@@ -137,8 +149,11 @@ class ListDeprecatedTemplatesResponseBodyResultTemplate(DaraModel):
         mappings: str = None,
         settings: str = None,
     ):
+        # The alias configuration of the template.
         self.aliases = aliases
+        # The mappings configuration of the template.
         self.mappings = mappings
+        # The settings configuration of the template.
         self.settings = settings
 
     def validate(self):
@@ -178,6 +193,7 @@ class ListDeprecatedTemplatesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
+        # The total number of entries returned.
         self.x_total_count = x_total_count
 
     def validate(self):

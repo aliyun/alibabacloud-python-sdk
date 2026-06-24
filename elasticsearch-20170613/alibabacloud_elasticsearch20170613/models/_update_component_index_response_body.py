@@ -9,6 +9,7 @@ class UpdateComponentIndexResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -66,13 +66,13 @@ class UpdateHotIkDictsResponseBodyResult(DaraModel):
         self.name = name
         # The source type of the dictionary file. Valid values:
         # 
-        # *   OSS
-        # *   ORIGIN
+        # - OSS: uses OSS open storage.
+        # - ORIGIN: retains a previously uploaded dictionary.
         self.source_type = source_type
-        # The type of the dictionaries. Valid values:
+        # The dictionary type. Valid values:
         # 
-        # *   MAIN: IK main dictionary
-        # *   STOP: IK stopword list
+        # - MAIN: IK main tokenizer dictionary.
+        # - STOP: IK stopword dictionary.
         self.type = type
 
     def validate(self):

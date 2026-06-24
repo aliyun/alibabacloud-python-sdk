@@ -13,7 +13,9 @@ class DescribeComponentIndexResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeComponentIndexResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -50,7 +52,9 @@ class DescribeComponentIndexResponseBodyResult(DaraModel):
         meta: Dict[str, Any] = None,
         template: main_models.DescribeComponentIndexResponseBodyResultTemplate = None,
     ):
+        # The metadata, which is used to store information such as remarks.
         self.meta = meta
+        # The template information.
         self.template = template
 
     def validate(self):
@@ -88,8 +92,11 @@ class DescribeComponentIndexResponseBodyResultTemplate(DaraModel):
         mappings: Dict[str, Any] = None,
         settings: Dict[str, Any] = None,
     ):
+        # The alias configuration of the template.
         self.aliases = aliases
+        # The mappings configuration of the template.
         self.mappings = mappings
+        # The settings configuration of the template.
         self.settings = settings
 
     def validate(self):

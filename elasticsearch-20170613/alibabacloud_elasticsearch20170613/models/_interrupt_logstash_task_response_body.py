@@ -12,16 +12,16 @@ class InterruptLogstashTaskResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The error code returned. If the API operation is successfully called, this parameter is not returned.
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
-        # The error message returned. If the API operation is successfully called, this parameter is not returned.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the task is suspended. Valid values:
+        # The returned result. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The task is suspended.
+        # - false: The task failed to be suspended.
         self.result = result
 
     def validate(self):

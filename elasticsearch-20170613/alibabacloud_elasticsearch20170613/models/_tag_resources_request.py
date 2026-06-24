@@ -14,15 +14,15 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tags: List[main_models.TagResourcesRequestTags] = None,
     ):
-        # A tag.
+        # The resource IDs.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # The request ID.
+        # The resource type. Set this parameter to INSTANCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The value of the tag.
+        # The tag information.
         # 
         # This parameter is required.
         self.tags = tags
@@ -73,14 +73,11 @@ class TagResourcesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The returned object.
+        # The tag key.
         # 
         # This parameter is required.
         self.key = key
-        # Indicates whether tags are added to the clusters. Valid values:
-        # 
-        # *   true
-        # *   false
+        # The tag value.
         # 
         # This parameter is required.
         self.value = value

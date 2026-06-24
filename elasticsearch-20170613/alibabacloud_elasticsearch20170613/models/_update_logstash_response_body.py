@@ -10,7 +10,12 @@ class UpdateLogstashResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the instance information is modified. Valid values:
+        # 
+        # - true: The instance information is modified.
+        # - false: The instance information failed to be modified.
         self.result = result
 
     def validate(self):

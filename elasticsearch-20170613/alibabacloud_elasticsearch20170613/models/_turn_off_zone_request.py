@@ -11,6 +11,7 @@ class TurnOffZoneRequest(DaraModel):
         zone: str = None,
     ):
         self.hp_alb_zone_drained = hp_alb_zone_drained
+        # The zone of the instance.
         self.zone = zone
 
     def validate(self):

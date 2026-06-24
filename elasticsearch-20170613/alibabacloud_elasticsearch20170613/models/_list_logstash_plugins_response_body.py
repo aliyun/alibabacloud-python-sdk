@@ -13,17 +13,9 @@ class ListLogstashPluginsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListLogstashPluginsResponseBodyResult] = None,
     ):
-        # The address of the documentation for the plug-in.
+        # The request ID.
         self.request_id = request_id
-        # The status of the plug-in. Valid values:
-        # 
-        # *   INSTALLED: Installed
-        # *   UNINSTALLED: Not installed
-        # *   INSTALLING: The instance is being installed.
-        # *   UNINSTALLING: The instance is being uninstalled.
-        # *   UPGRADING: The backup gateway is being upgraded.
-        # *   FAILED: Installation failed
-        # *   UNKNOWN: The cluster is lost and cannot be created.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -69,12 +61,23 @@ class ListLogstashPluginsResponseBodyResult(DaraModel):
         specification_url: str = None,
         state: str = None,
     ):
-        # The source of the plug-in.
+        # The plugin description.
         self.description = description
+        # The plugin name.
         self.name = name
+        # The plugin source.
         self.source = source
-        # The name of the plug-in.
+        # The URL of the plugin documentation.
         self.specification_url = specification_url
+        # The plugin status. Valid values:
+        # 
+        # - INSTALLED: installed
+        # - UNINSTALLED: not installed
+        # - INSTALLING: being installed
+        # - UNINSTALLING: being uninstalled
+        # - UPGRADING: being upgraded
+        # - FAILED: installation failed
+        # - UNKNOWN: the cluster is disconnected and the creation status cannot be retrieved.
         self.state = state
 
     def validate(self):

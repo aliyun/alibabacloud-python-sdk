@@ -12,10 +12,10 @@ class InstallAckOperatorResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether ES-operator is installed. Valid values:
+        # The returned result. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The installation was successful.
+        # - false: The installation failed.
         self.result = result
 
     def validate(self):

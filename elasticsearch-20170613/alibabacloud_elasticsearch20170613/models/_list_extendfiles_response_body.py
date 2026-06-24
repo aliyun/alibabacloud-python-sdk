@@ -60,11 +60,11 @@ class ListExtendfilesResponseBodyResult(DaraModel):
         name: str = None,
         source_type: str = None,
     ):
-        # The path of the driver file.
+        # The extension file path.
         self.file_path = file_path
-        # The size of the driver file.
+        # The extension file size.
         self.file_size = file_size
-        # The name of the driver file.
+        # The extension file name.
         self.name = name
         # The source type.
         self.source_type = source_type

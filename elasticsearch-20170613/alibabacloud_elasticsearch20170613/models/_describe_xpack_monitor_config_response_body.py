@@ -13,7 +13,7 @@ class DescribeXpackMonitorConfigResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeXpackMonitorConfigResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -55,16 +55,15 @@ class DescribeXpackMonitorConfigResponseBodyResult(DaraModel):
         pipeline_ids: List[str] = None,
         user_name: str = None,
     ):
-        # Indicates whether the X-Pack Monitoring feature is enabled. Valid values:
-        # 
-        # *   true: enabled
-        # *   false: disabled
+        # Indicates whether X-Pack monitoring is enabled. Valid values:
+        # - true: enabled.
+        # - false: not enabled.
         self.enable = enable
         self.endpoints = endpoints
-        # The ID of the associated Elasticsearch cluster.
+        # The instance ID of the Elasticsearch instance associated with X-Pack monitoring.
         self.es_instance_id = es_instance_id
         self.pipeline_ids = pipeline_ids
-        # The username that is used to access the associated Elasticsearch cluster.
+        # The username used to access the Elasticsearch instance associated with X-Pack monitoring.
         self.user_name = user_name
 
     def validate(self):

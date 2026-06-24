@@ -14,8 +14,8 @@ class StopPipelinesResponseBody(DaraModel):
         self.request_id = request_id
         # The returned result. Valid values:
         # 
-        # *   true: The pipelines are stopped.
-        # *   false: The pipelines fail to be stopped.
+        # - true: The pipelines are stopped.
+        # - false: The pipelines failed to be stopped.
         self.result = result
 
     def validate(self):

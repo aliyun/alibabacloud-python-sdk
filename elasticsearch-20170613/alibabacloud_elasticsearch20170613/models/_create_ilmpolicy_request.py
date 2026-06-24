@@ -10,6 +10,7 @@ class CreateILMPolicyRequest(DaraModel):
         client_token: str = None,
         body: str = None,
     ):
+        # A unique token used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
         self.body = body
 

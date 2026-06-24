@@ -12,9 +12,13 @@ class NodeInfo(DaraModel):
         port: int = None,
         zone_id: str = None,
     ):
+        # The IP address of the node.
         self.host = host
+        # The node name. This parameter is supported only for instances of version 7.16 deployed on ACK.
         self.host_name = host_name
+        # The port number of the node.
         self.port = port
+        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):

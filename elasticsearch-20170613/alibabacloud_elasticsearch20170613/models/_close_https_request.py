@@ -9,6 +9,7 @@ class CloseHttpsRequest(DaraModel):
         self,
         client_token: str = None,
     ):
+        # A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique across different requests and can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
 
     def validate(self):

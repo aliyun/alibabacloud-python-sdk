@@ -13,7 +13,9 @@ class ListILMPoliciesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListILMPoliciesResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of index lifecycle policies returned by the request.
         self.result = result
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListILMPoliciesResponseBodyResult(DaraModel):
         name: str = None,
         phases: Dict[str, Any] = None,
     ):
+        # The name of the index lifecycle policy.
         self.name = name
+        # The index lifecycle content.
         self.phases = phases
 
     def validate(self):

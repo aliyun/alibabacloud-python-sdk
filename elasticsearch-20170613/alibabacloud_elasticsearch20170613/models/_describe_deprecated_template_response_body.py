@@ -13,7 +13,9 @@ class DescribeDeprecatedTemplateResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeDeprecatedTemplateResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result information.
         self.result = result
 
     def validate(self):
@@ -54,11 +56,20 @@ class DescribeDeprecatedTemplateResponseBodyResult(DaraModel):
         template: main_models.DescribeDeprecatedTemplateResponseBodyResultTemplate = None,
         version: str = None,
     ):
+        # Indicates whether automatic creation of a data stream is enabled. Valid values:
+        # 
+        # - true: Automatic creation of a data stream is enabled.
+        # - false: Automatic creation of a data stream is not enabled.
         self.data_stream = data_stream
+        # The index pattern information.
         self.index_patterns = index_patterns
+        # The index template name.
         self.index_template = index_template
+        # The priority.
         self.order = order
+        # The index template configuration information.
         self.template = template
+        # The version of the index template.
         self.version = version
 
     def validate(self):
@@ -120,8 +131,11 @@ class DescribeDeprecatedTemplateResponseBodyResultTemplate(DaraModel):
         mappings: str = None,
         settings: str = None,
     ):
+        # The alias configuration.
         self.aliases = aliases
+        # The mappings configuration of the index template.
         self.mappings = mappings
+        # The settings configuration of the index template.
         self.settings = settings
 
     def validate(self):

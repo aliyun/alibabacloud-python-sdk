@@ -14,8 +14,8 @@ class RunPipelinesResponseBody(DaraModel):
         self.request_id = request_id
         # The returned result. Valid values:
         # 
-        # *   true: successful
-        # *   false: failed
+        # - true: The deployment succeeded.
+        # - false: The deployment failed.
         self.result = result
 
     def validate(self):

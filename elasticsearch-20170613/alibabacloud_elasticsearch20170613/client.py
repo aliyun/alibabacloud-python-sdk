@@ -22,6 +22,31 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'elasticsearch.us-west-1.aliyuncs.com',
+            'us-east-1': 'elasticsearch.us-east-1.aliyuncs.com',
+            'eu-west-1': 'elasticsearch.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'elasticsearch.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'elasticsearch.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'elasticsearch.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'elasticsearch.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'elasticsearch.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'elasticsearch.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'elasticsearch.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'elasticsearch.cn-north-2-gov-1.aliyuncs.com',
+            'cn-hongkong': 'elasticsearch.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou-finance': 'elasticsearch.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'elasticsearch.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'elasticsearch.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'elasticsearch.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'elasticsearch.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'elasticsearch.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'elasticsearch.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'elasticsearch.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'elasticsearch.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'elasticsearch.ap-south-1.aliyuncs.com',
+            'ap-northeast-1': 'elasticsearch.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('elasticsearch', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -7735,6 +7760,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDiagnosisItemsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):
             query['lang'] = request.lang
         req = open_api_util_models.OpenApiRequest(
@@ -7765,6 +7792,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDiagnosisItemsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['instanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):
             query['lang'] = request.lang
         req = open_api_util_models.OpenApiRequest(

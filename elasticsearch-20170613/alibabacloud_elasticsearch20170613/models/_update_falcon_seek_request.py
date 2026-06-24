@@ -9,6 +9,8 @@ class UpdateFalconSeekRequest(DaraModel):
         self,
         enable: bool = None,
     ):
+        # true: Enabled, false: shutdown
+        # 
         # This parameter is required.
         self.enable = enable
 

@@ -13,7 +13,7 @@ class ListAckNamespacesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListAckNamespacesResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -60,7 +60,7 @@ class ListAckNamespacesResponseBodyResult(DaraModel):
     ):
         # The namespace of the cluster.
         self.namespace = namespace
-        # The status of the namespace.
+        # The namespace status.
         self.status = status
 
     def validate(self):

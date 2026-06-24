@@ -10,12 +10,12 @@ class RenewInstanceResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The returned result. Valid values:
         # 
-        # *   true: renewal successfully
-        # *   false: renewal failed
+        # - true: The renewal was successful.
+        # - false: The renewal failed.
         self.result = result
 
     def validate(self):

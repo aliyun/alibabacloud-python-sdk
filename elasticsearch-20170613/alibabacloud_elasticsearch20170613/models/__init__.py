@@ -650,6 +650,7 @@ from ._describe_deprecated_template_response_body import DescribeDeprecatedTempl
 from ._describe_deprecated_template_response_body import DescribeDeprecatedTemplateResponseBodyResult
 from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail
 from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyResultDiagnoseItems
+from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyResultItems
 from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyResult
 from ._describe_diagnosis_settings_response_body import DescribeDiagnosisSettingsResponseBodyResult
 from ._describe_ilmpolicy_response_body import DescribeILMPolicyResponseBodyResult
@@ -684,6 +685,7 @@ from ._describe_regions_response_body import DescribeRegionsResponseBodyResult
 from ._describe_snapshot_setting_response_body import DescribeSnapshotSettingResponseBodyResult
 from ._describe_templates_response_body import DescribeTemplatesResponseBodyResult
 from ._describe_xpack_monitor_config_response_body import DescribeXpackMonitorConfigResponseBodyResult
+from ._diagnose_instance_response_body import DiagnoseInstanceResponseBodyResultItems
 from ._diagnose_instance_response_body import DiagnoseInstanceResponseBodyResult
 from ._enable_kibana_pvl_network_request import EnableKibanaPvlNetworkRequestVSwitchIdsZone
 from ._estimated_logstash_restart_time_response_body import EstimatedLogstashRestartTimeResponseBodyResult
@@ -769,6 +771,7 @@ from ._list_deprecated_templates_response_body import ListDeprecatedTemplatesRes
 from ._list_diagnose_report_response_body import ListDiagnoseReportResponseBodyHeaders
 from ._list_diagnose_report_response_body import ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail
 from ._list_diagnose_report_response_body import ListDiagnoseReportResponseBodyResultDiagnoseItems
+from ._list_diagnose_report_response_body import ListDiagnoseReportResponseBodyResultItems
 from ._list_diagnose_report_response_body import ListDiagnoseReportResponseBodyResult
 from ._list_diagnose_report_ids_response_body import ListDiagnoseReportIdsResponseBodyHeaders
 from ._list_diagnosis_items_response_body import ListDiagnosisItemsResponseBodyResult
@@ -1557,6 +1560,7 @@ __all__ = [
     DescribeDeprecatedTemplateResponseBodyResult,
     DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail,
     DescribeDiagnoseReportResponseBodyResultDiagnoseItems,
+    DescribeDiagnoseReportResponseBodyResultItems,
     DescribeDiagnoseReportResponseBodyResult,
     DescribeDiagnosisSettingsResponseBodyResult,
     DescribeILMPolicyResponseBodyResult,
@@ -1591,6 +1595,7 @@ __all__ = [
     DescribeSnapshotSettingResponseBodyResult,
     DescribeTemplatesResponseBodyResult,
     DescribeXpackMonitorConfigResponseBodyResult,
+    DiagnoseInstanceResponseBodyResultItems,
     DiagnoseInstanceResponseBodyResult,
     EnableKibanaPvlNetworkRequestVSwitchIdsZone,
     EstimatedLogstashRestartTimeResponseBodyResult,
@@ -1676,6 +1681,7 @@ __all__ = [
     ListDiagnoseReportResponseBodyHeaders,
     ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail,
     ListDiagnoseReportResponseBodyResultDiagnoseItems,
+    ListDiagnoseReportResponseBodyResultItems,
     ListDiagnoseReportResponseBodyResult,
     ListDiagnoseReportIdsResponseBodyHeaders,
     ListDiagnosisItemsResponseBodyResult,

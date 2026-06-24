@@ -17,12 +17,21 @@ class UpdatePipelineManagementConfigRequest(DaraModel):
         user_name: str = None,
         client_token: str = None,
     ):
+        # The list of access addresses of the Elasticsearch instance where Kibana resides after Kibana pipeline management is enabled.
         self.endpoints = endpoints
         self.es_instance_id = es_instance_id
+        # The password used to log on to Kibana.
         self.password = password
+        # The list of pipelines managed by Kibana.
         self.pipeline_ids = pipeline_ids
+        # The pipeline management method. Valid values:
+        # 
+        # - ES: Kibana pipeline management.
+        # - MULTIPLE_PIPELINE: configuration file management.
         self.pipeline_management_type = pipeline_management_type
+        # The username used to log on to Kibana.
         self.user_name = user_name
+        # A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique across different requests and can contain up to 64 ASCII characters.
         self.client_token = client_token
 
     def validate(self):

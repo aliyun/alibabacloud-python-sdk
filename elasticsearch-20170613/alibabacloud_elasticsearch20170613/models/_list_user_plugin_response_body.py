@@ -14,8 +14,11 @@ class ListUserPluginResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListUserPluginResponseBodyResult] = None,
     ):
+        # Response header information.
         self.headers = headers
+        # Request ID.
         self.request_id = request_id
+        # Return Result array
         self.result = result
 
     def validate(self):
@@ -67,10 +70,15 @@ class ListUserPluginResponseBodyResult(DaraModel):
         state: str = None,
         version: str = None,
     ):
+        # List of plugins with the same name
         self.bingo_plugins = bingo_plugins
+        # Plugin Name.
         self.name = name
+        # Plugin Source.
         self.source = source
+        # Plugin Status.
         self.state = state
+        # Plugin Version.
         self.version = version
 
     def validate(self):
@@ -136,12 +144,31 @@ class ListUserPluginResponseBodyResultBingoPlugins(DaraModel):
         state: str = None,
         version: str = None,
     ):
+        # Plugin Description.
         self.description = description
+        # Elasticsearch version of the plugin.
         self.elasticsearch_version = elasticsearch_version
+        # Plugin UUID
         self.file_version = file_version
+        # Plugin Name.
         self.name = name
+        # Plugin Source. Valid values:
+        # 
+        # - USER: Custom plugin  
+        # - SYSTEM: Preset system plugin
         self.source = source
+        # Plugin Status
+        # 
+        # - INSTALLED,
+        # - UNINSTALLED,
+        # - INSTALLING,
+        # - UNINSTALLING,
+        # - UPGRADING,
+        # - FAILED,
+        # - UNKNOWN,
+        # - UPLOADING,
         self.state = state
+        # Plugin Version.
         self.version = version
 
     def validate(self):

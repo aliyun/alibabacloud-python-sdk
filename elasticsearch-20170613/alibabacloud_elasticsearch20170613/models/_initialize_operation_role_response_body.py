@@ -10,12 +10,12 @@ class InitializeOperationRoleResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the service-linked role is created. Valid values:
+        # The returned result. Valid values:
         # 
-        # *   true: The service-linked role is created.
-        # *   false: The service-linked role fails to be created.
+        # - true: The service-linked role is created.
+        # - false: The service-linked role failed to be created.
         self.result = result
 
     def validate(self):

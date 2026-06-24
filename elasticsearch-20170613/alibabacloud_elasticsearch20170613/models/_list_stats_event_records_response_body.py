@@ -13,7 +13,9 @@ class ListStatsEventRecordsResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListStatsEventRecordsResponseBodyResult = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return Result
         self.result = result
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListStatsEventRecordsResponseBodyResult(DaraModel):
         result: List[main_models.ListStatsEventRecordsResponseBodyResultResult] = None,
         total: str = None,
     ):
+        # Return Result
         self.result = result
+        # Total number of entries.
         self.total = total
 
     def validate(self):
@@ -95,9 +99,13 @@ class ListStatsEventRecordsResponseBodyResultResult(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # Number of events
         self.cnt = cnt
+        # Event level
         self.level = level
+        # Event status
         self.status = status
+        # Event type
         self.type = type
 
     def validate(self):

@@ -10,7 +10,12 @@ class TransferNodeResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result of the operation. Valid values:
+        # 
+        # - true: The task was successful.
+        # - false: The task failed.
         self.result = result
 
     def validate(self):

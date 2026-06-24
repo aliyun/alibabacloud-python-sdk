@@ -10,7 +10,12 @@ class UpdateExtendConfigResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result. Valid values:
+        # 
+        # - true: The scenario-based configuration template was modified.
+        # - false: The scenario-based configuration template failed to be modified.
         self.result = result
 
     def validate(self):

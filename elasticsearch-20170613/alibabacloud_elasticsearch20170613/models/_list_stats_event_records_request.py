@@ -11,8 +11,11 @@ class ListStatsEventRecordsRequest(DaraModel):
         level: str = None,
         status: str = None,
     ):
+        # Event type
         self.event_type = event_type
+        # Event level
         self.level = level
+        # Status of the management event
         self.status = status
 
     def validate(self):

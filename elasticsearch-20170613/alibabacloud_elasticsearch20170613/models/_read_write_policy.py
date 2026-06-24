@@ -11,8 +11,25 @@ class ReadWritePolicy(DaraModel):
         write_ha: bool = None,
         write_policy: str = None,
     ):
+        # Specifies whether to automatically generate a document hash primary key when no primary key exists. Valid values:
+        # 
+        # - true (default): automatically generates a primary key.
+        # - false: does not automatically generate a primary key.
+        # 
+        # >Notice:  autoGeneratePk cannot be modified independently. The autoGeneratePk setting takes effect only when writeHa is changed from false to true.
+        # .
         self.auto_generate_pk = auto_generate_pk
+        # Specifies whether to enable the write high-availability feature. Valid values:
+        # 
+        # - true: enabled.
+        # - false: not enabled.
         self.write_ha = write_ha
+        # Temporarily switches between synchronous and asynchronous high availability. Valid values:
+        # 
+        # - sync: temporarily switches from asynchronous write high availability to synchronous write.
+        # - async: restores asynchronous write high availability after synchronous write is temporarily enabled.
+        # 
+        # > This field takes effect only when high availability is enabled, that is, writeHa is set to true. You do not need to pass in the writeHa field when setting this field.
         self.write_policy = write_policy
 
     def validate(self):

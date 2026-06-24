@@ -11,8 +11,11 @@ class ListUserPluginRequest(DaraModel):
         page: str = None,
         size: str = None,
     ):
+        # Plugin Name.
         self.name = name
+        # Page number for paging the plugin list.
         self.page = page
+        # Number of records per page.
         self.size = size
 
     def validate(self):

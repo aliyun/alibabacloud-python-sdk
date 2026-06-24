@@ -12,10 +12,9 @@ class ActivateZonesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the nodes in disabled zones are restored. Valid values:
-        # 
-        # *   true
-        # *   false
+        # The result of the operation. Valid values:
+        # - true: The zone is resumed.
+        # - false: The zone failed to be resumed.
         self.result = result
 
     def validate(self):

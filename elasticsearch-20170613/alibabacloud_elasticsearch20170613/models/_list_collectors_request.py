@@ -14,20 +14,21 @@ class ListCollectorsRequest(DaraModel):
         size: int = None,
         source_type: str = None,
     ):
-        # The ID of the resource with which the shipper is associated.
+        # The instance ID associated with the collector.
         self.instance_id = instance_id
-        # The name of the shipper.
+        # The collector name.
         self.name = name
-        # The number of the page to return. Valid values: 1 to 200. Default value: 1.
+        # The page number of the returned results. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
-        # The ID of the shipper.
+        # The collector ID.
         self.res_id = res_id
-        # The number of entries to return on each page. Valid values: 1 to 500. Default value: 20.
+        # The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 500.
         self.size = size
-        # The type of the machine on which the shipper is deployed. If you leave this parameter empty, shippers deployed on all types of machines are returned. Valid values:
+        # The type of machine on which the collector is deployed. If this parameter is not specified, all types are returned. Valid values:
         # 
-        # *   ECS
-        # *   ACK
+        # - ECS: ECS instance
+        # 
+        # - ACK: Container Kubernetes cluster.
         self.source_type = source_type
 
     def validate(self):

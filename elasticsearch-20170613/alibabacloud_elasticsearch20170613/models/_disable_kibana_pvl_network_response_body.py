@@ -10,8 +10,12 @@ class DisableKibanaPvlNetworkResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # request id
+        # The request ID.
         self.request_id = request_id
+        # The returned result. Valid values:
+        # 
+        # - true: The operation is successful.
+        # - false: The operation failed.
         self.result = result
 
     def validate(self):

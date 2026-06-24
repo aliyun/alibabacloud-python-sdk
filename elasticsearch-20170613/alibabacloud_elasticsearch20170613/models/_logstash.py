@@ -30,24 +30,52 @@ class Logstash(DaraModel):
         zone_count: int = None,
         zone_infos: List[main_models.LogstashZoneInfos] = None,
     ):
+        # The instance configuration.
         self.config = config
+        # The time when the instance was created.
         self.created_at = created_at
+        # Specifies whether to enable data nodes. This parameter must be set to true.
         self.data_node = data_node
+        # The instance name.
         self.description = description
+        # The expiration time of the subscription instance.
         self.end_time = end_time
+        # The node information.
         self.endpoint_list = endpoint_list
+        # The instance ID.
         self.instance_id = instance_id
+        # The network configuration.
         self.network_config = network_config
+        # The number of nodes in the instance.
         self.node_amount = node_amount
+        # The data node configuration.
         self.node_spec = node_spec
+        # The billing method of the instance. Valid values:
+        # 
+        # - prepaid: subscription
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
+        # The access protocol of the instance.
         self.protocol = protocol
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The zone status. Valid values:
+        # 
+        # - ISOLATION: offline
+        # - NORMAL: Normal.
         self.status = status
+        # The instance tags.
         self.tags = tags
+        # The time when the instance was last updated.
         self.updated_at = updated_at
+        # The instance version. Valid values:
+        # 
+        # - 6.7.0_with_X-Pack
+        # - 7.4.0_with_X-Pack.
         self.version = version
+        # The number of zones for the instance.
         self.zone_count = zone_count
+        # The zone information.
         self.zone_infos = zone_infos
 
     def validate(self):
@@ -216,7 +244,12 @@ class LogstashZoneInfos(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
+        # The zone status. Valid values:
+        # 
+        # - ISOLATION: offline
+        # - NORMAL: Normal.
         self.status = status
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -251,7 +284,9 @@ class LogstashTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -287,8 +322,11 @@ class LogstashNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The disk size of the node.
         self.disk = disk
+        # The disk type of the node.
         self.disk_type = disk_type
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -331,9 +369,13 @@ class LogstashNetworkConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
+        # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
         self.type = type
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The zone in which the instance resides.
         self.vs_area = vs_area
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -381,8 +423,11 @@ class LogstashEndpointList(DaraModel):
         port: int = None,
         zone_id: str = None,
     ):
+        # The IP address of the node.
         self.host = host
+        # The access port number of the node.
         self.port = port
+        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):

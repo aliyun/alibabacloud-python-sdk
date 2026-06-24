@@ -14,11 +14,11 @@ class ListCollectorsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListCollectorsResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The response headers.
         self.headers = headers
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -82,35 +82,36 @@ class ListCollectorsResponseBodyResult(DaraModel):
         vpc_id: str = None,
     ):
         self.collector_paths = collector_paths
-        # The information about the configuration file of the shipper.
+        # The configuration file information of the collector.
         self.configs = configs
-        # Indicates whether a dry run is performed. Valid values:
+        # Indicates whether the collector is validated only without being created. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Only validates without creating.
+        # - false: Validates and creates.
         self.dry_run = dry_run
-        # The extended configurations of the shipper.
+        # The extended configuration information.
         self.extend_configs = extend_configs
-        # The time when the shipper was created.
+        # The time when the collector was created.
         self.gmt_created_time = gmt_created_time
-        # The time when the shipper was updated.
+        # The time when the collector was last updated.
         self.gmt_update_time = gmt_update_time
-        # The name of the shipper.
+        # The collector name.
         self.name = name
         # The account ID.
         self.owner_id = owner_id
-        # The ID of the shipper.
+        # The collector instance ID.
         self.res_id = res_id
-        # The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+        # The collector type. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
         self.res_type = res_type
-        # The version of the shipper.
+        # The collector version.
         self.res_version = res_version
-        # The status of the shipper. Valid values:
+        # The collector status. Valid values:
         # 
-        # *   activating
-        # *   active
+        # - activing: Taking effect.
+        # 
+        # - active: Active.
         self.status = status
-        # The ID of the virtual private cloud (VPC) where the shipper resides.
+        # The ID of the VPC where the collector resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -242,40 +243,42 @@ class ListCollectorsResponseBodyResultExtendConfigs(DaraModel):
     ):
         # The configuration type. Valid values:
         # 
-        # *   collectorTargetInstance
-        # *   collectorDeployMachine
-        # *   collectorElasticsearchForKibana
+        # - collectorTargetInstance: the collector Output
+        # - collectorDeployMachine: the deployment machine of the collector
+        # - collectorElasticsearchForKibana: the Elasticsearch instance that supports Kibana dashboards.
         self.config_type = config_type
-        # Indicates whether monitoring is enabled. This parameter is returned if the value of **configType** is **collectorTargetInstance** and the value of **instanceType** is **elasticsearch**. Valid values:
+        # Indicates whether Monitoring is enabled. This parameter is displayed when **configType** is **collectorTargetInstance** and **instanceType** is **elasticsearch**. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled.
+        # 
+        # - false: Not enabled.
         self.enable_monitoring = enable_monitoring
-        # The ID of the machine group. This parameter is returned if the value of **configType** is **collectorDeployMachine**.
+        # The machine group ID. This parameter is displayed when **configType** is **collectorDeployMachine**.
         self.group_id = group_id
-        # The internal endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+        # The internal-facing access address of Kibana over the private network after Kibana Dashboard is enabled. This parameter is displayed when **configType** is **collectorElasticsearchForKibana**.
         self.host = host
         self.hosts = hosts
-        # The ID of the resource with which the shipper is associated. If the value of **configType** is **collectorTargetInstance**, the value of this parameter is the ID of the resource specified in the output configuration part of the shipper. If the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
+        # The ID of the instance associated with the collector. When **configType** is **collectorTargetInstance**, this is the instance ID of the collector Output. When **configType** is **collectorDeployMachines** and **type** is **ACKCluster**, this is the ACK (Container Kubernetes) cluster ID.
         self.instance_id = instance_id
-        # The type of the cluster specified in the output configuration part of the shipper. Valid values: elasticsearch and logstash. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
+        # The type of instance specified in the collector Output. Valid values: elasticsearch, logstash. This parameter is displayed when **configType** is **collectorTargetInstance**.
         self.instance_type = instance_type
-        # The public endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
+        # The public network access address of Kibana after Kibana Dashboard is enabled. This parameter is displayed when **configType** is **collectorElasticsearchForKibana**.
         self.kibana_host = kibana_host
-        # The information about the ECS instances on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ECSInstanceId**.
+        # The list of ECS machines on which the collector is deployed. This parameter is displayed when **configType** is **collectorDeployMachines** and **type** is **ECSInstanceId**.
         self.machines = machines
-        # The transmission protocol, which must be the same as the access protocol of the resource specified in the output configuration part of the shipper. Valid values: HTTP and HTTPS. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
+        # The transmission protocol, which must be consistent with the access protocol of the instance specified in the collector Output. Valid values: HTTP, HTTPS. This parameter is displayed when **configType** is **collectorTargetInstance**.
         self.protocol = protocol
-        # The number of pods from which data is successfully collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
+        # The number of Pod nodes successfully collected in the ACK cluster. This parameter is displayed when **configType** is **collectorDeployMachines** and **type** is **ACKCluster**.
         self.success_pods_count = success_pods_count
-        # The total number of pods from which data is collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
+        # The total number of Pod nodes collected in the ACK cluster. This parameter is displayed when **configType** is **collectorDeployMachines** and **type** is **ACKCluster**.
         self.total_pods_count = total_pods_count
-        # The type of the machine on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine**. Valid values:
+        # The type of machine on which the collector is deployed. This parameter is displayed when **configType** is **collectorDeployMachine**. Valid values:
         # 
-        # *   ECSInstanceId
-        # *   ACKCluster
+        # - ECSInstanceId: ECS
+        # 
+        # - ACKCluster: Container Kubernetes.
         self.type = type
-        # The username that is used to access the resource specified in the output configuration part of the shipper. The default value is elastic. This parameter is returned if the value of **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
+        # The username used to access the instance specified in the collector Output. Default value: elastic. This parameter is displayed when **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -390,14 +393,14 @@ class ListCollectorsResponseBodyResultExtendConfigsMachines(DaraModel):
         agent_status: str = None,
         instance_id: str = None,
     ):
-        # The status of the shipper on the ECS instance. Valid values:
+        # The status of each collector on the ECS instance. Valid values:
         # 
-        # *   heartOk
-        # *   heartLost
-        # *   uninstalled
-        # *   failed
+        # - heartOk: The heartbeat is normal.
+        # - heartLost: The heartbeat is abnormal.
+        # - uninstalled: Not installed.
+        # - failed: Installation failed.
         self.agent_status = agent_status
-        # The IDs of the ECS instances.
+        # The list of ECS machine IDs.
         self.instance_id = instance_id
 
     def validate(self):
@@ -432,9 +435,9 @@ class ListCollectorsResponseBodyResultConfigs(DaraModel):
         content: str = None,
         file_name: str = None,
     ):
-        # The content of the file.
+        # The file content.
         self.content = content
-        # The name of the file.
+        # The file name.
         self.file_name = file_name
 
     def validate(self):
@@ -468,7 +471,7 @@ class ListCollectorsResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The total number of returned records.
         self.x_total_count = x_total_count
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetClusterDataInformationResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetClusterDataInformationResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return results.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -52,9 +52,9 @@ class GetClusterDataInformationResponseBodyResult(DaraModel):
         connectable: bool = None,
         meta_info: main_models.GetClusterDataInformationResponseBodyResultMetaInfo = None,
     ):
-        # Whether it is connectable.
+        # Indicates whether the cluster is connectable.
         self.connectable = connectable
-        # The metadata of the cluster.
+        # The metadata information of the cluster.
         self.meta_info = meta_info
 
     def validate(self):
@@ -94,15 +94,12 @@ class GetClusterDataInformationResponseBodyResultMetaInfo(DaraModel):
         settings: str = None,
         type_name: List[str] = None,
     ):
-        # The fields in the Mapping for the index.
         self.fields = fields
-        # The index list of the cluster.
         self.indices = indices
-        # The Mapping configuration of the cluster.
+        # The mapping configuration of the cluster.
         self.mapping = mapping
-        # The Settings of the cluster.
+        # The settings configuration of the cluster.
         self.settings = settings
-        # Specifies the type of the index.
         self.type_name = type_name
 
     def validate(self):

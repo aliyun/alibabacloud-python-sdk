@@ -10,7 +10,12 @@ class ValidateShrinkNodesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
+        # 
+        # - true: The nodes can be scaled in.
+        # - false: The nodes cannot be scaled in.
         self.result = result
 
     def validate(self):

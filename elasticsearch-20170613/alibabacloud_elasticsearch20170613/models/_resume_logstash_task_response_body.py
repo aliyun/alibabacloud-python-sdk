@@ -12,16 +12,16 @@ class ResumeLogstashTaskResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The error code returned. If the API operation is successfully called, this parameter is not returned.
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
-        # The error message returned. If the API operation is successfully called, this parameter is not returned.
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the change task is resumed. Valid values:
+        # The returned result. Valid values:
         # 
-        # *   true: The change task is resumed.
-        # *   false: The change task fails to be resumed.
+        # - true: The task is resumed.
+        # - false: The task failed to be resumed.
         self.result = result
 
     def validate(self):

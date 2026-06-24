@@ -11,8 +11,11 @@ class ListIndexTemplatesRequest(DaraModel):
         page: int = None,
         size: int = None,
     ):
+        # The index template name.
         self.index_template = index_template
+        # The page number of the instance list. Minimum value: 1. Default value: 1.
         self.page = page
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.size = size
 
     def validate(self):

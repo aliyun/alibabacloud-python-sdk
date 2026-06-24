@@ -1,3 +1,19 @@
+2026-06-24 Version: 5.3.2
+- Update API DescribeDiagnoseReport: add response parameters Body.Result.diagnosisMode.
+- Update API DescribeDiagnoseReport: add response parameters Body.Result.items.
+- Update API DescribeDiagnosisSettings: add response parameters Body.Result.authorizationStatus.
+- Update API DescribeDiagnosisSettings: add response parameters Body.Result.dailyLimit.
+- Update API DescribeDiagnosisSettings: add response parameters Body.Result.dailyScheduleEnabled.
+- Update API DescribeDiagnosisSettings: add response parameters Body.Result.diagnosisMode.
+- Update API DescribeDiagnosisSettings: add response parameters Body.Result.selectedItems.
+- Update API DiagnoseInstance: add response parameters Body.Result.diagnosisMode.
+- Update API DiagnoseInstance: add response parameters Body.Result.items.
+- Update API ListDiagnoseReport: add response parameters Body.Result.$.diagnosisMode.
+- Update API ListDiagnoseReport: add response parameters Body.Result.$.items.
+- Update API ListDiagnosisItems: add request parameters instanceId.
+- Update API ListDiagnosisItems: add response parameters Body.Result.$.esApiRequired.
+
+
 2026-06-09 Version: 5.3.1
 - Update API TurnOffZone: add request parameters hpAlbZoneDrained.
 - Update API TurnOnZone: add request parameters hpAlbZoneDrained.
