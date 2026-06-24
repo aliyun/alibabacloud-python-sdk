@@ -309,6 +309,12 @@ from ._move_material_file_response import MoveMaterialFileResponse
 from ._notify_app_notification_for_admin_request import NotifyAppNotificationForAdminRequest
 from ._notify_app_notification_for_admin_response_body import NotifyAppNotificationForAdminResponseBody
 from ._notify_app_notification_for_admin_response import NotifyAppNotificationForAdminResponse
+from ._offline_app_instance_request import OfflineAppInstanceRequest
+from ._offline_app_instance_response_body import OfflineAppInstanceResponseBody
+from ._offline_app_instance_response import OfflineAppInstanceResponse
+from ._online_app_instance_request import OnlineAppInstanceRequest
+from ._online_app_instance_response_body import OnlineAppInstanceResponseBody
+from ._online_app_instance_response import OnlineAppInstanceResponse
 from ._operate_app_instance_for_partner_request import OperateAppInstanceForPartnerRequest
 from ._operate_app_instance_for_partner_response_body import OperateAppInstanceForPartnerResponseBody
 from ._operate_app_instance_for_partner_response import OperateAppInstanceForPartnerResponse
@@ -927,6 +933,12 @@ __all__ = [
     NotifyAppNotificationForAdminRequest,
     NotifyAppNotificationForAdminResponseBody,
     NotifyAppNotificationForAdminResponse,
+    OfflineAppInstanceRequest,
+    OfflineAppInstanceResponseBody,
+    OfflineAppInstanceResponse,
+    OnlineAppInstanceRequest,
+    OnlineAppInstanceResponseBody,
+    OnlineAppInstanceResponse,
     OperateAppInstanceForPartnerRequest,
     OperateAppInstanceForPartnerResponseBody,
     OperateAppInstanceForPartnerResponse,

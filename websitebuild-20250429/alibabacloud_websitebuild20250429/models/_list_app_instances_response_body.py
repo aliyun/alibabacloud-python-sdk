@@ -33,7 +33,7 @@ class ListAppInstancesResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -53,7 +53,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.max_results = max_results
         # Indicates whether a next page exists.
         self.next_page = next_page
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
         # The page size.
         self.page_size = page_size
@@ -61,7 +61,7 @@ class ListAppInstancesResponseBody(DaraModel):
         self.pre_page = pre_page
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the result limit is reached. The server processes up to 1000 recent records excluding pagination limits. If the results exceed 1000 records, **ResultLimit** is **true** and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to pagination limits, the server processes up to 1,000 recent records per query. If the result exceeds 1,000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The error code.
         self.root_error_code = root_error_code

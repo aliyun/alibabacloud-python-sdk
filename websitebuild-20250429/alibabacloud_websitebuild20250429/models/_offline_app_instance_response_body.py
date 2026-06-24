@@ -2,12 +2,11 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Any
+from typing import List, Any, Dict
 
-from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class GetAppWorkspaceDirectoryResponseBody(DaraModel):
+class OfflineAppInstanceResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -16,38 +15,37 @@ class GetAppWorkspaceDirectoryResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        module: main_models.GetAppWorkspaceDirectoryResponseBodyModule = None,
+        module: Dict[str, Any] = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The detailed reason why access was denied.
+        # The deprecated parameter. You can ignore this parameter.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic message. This parameter is not in use. Ignore this parameter.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The error parameters.
         self.error_args = error_args
-        # The response object.
+        # Indicates whether the shift was successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
-        if self.module:
-            self.module.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -73,7 +71,7 @@ class GetAppWorkspaceDirectoryResponseBody(DaraModel):
             result['ErrorArgs'] = self.error_args
 
         if self.module is not None:
-            result['Module'] = self.module.to_map()
+            result['Module'] = self.module
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -110,8 +108,7 @@ class GetAppWorkspaceDirectoryResponseBody(DaraModel):
             self.error_args = m.get('ErrorArgs')
 
         if m.get('Module') is not None:
-            temp_model = main_models.GetAppWorkspaceDirectoryResponseBodyModule()
-            self.module = temp_model.from_map(m.get('Module'))
+            self.module = m.get('Module')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
@@ -124,97 +121,6 @@ class GetAppWorkspaceDirectoryResponseBody(DaraModel):
 
         if m.get('Synchro') is not None:
             self.synchro = m.get('Synchro')
-
-        return self
-
-class GetAppWorkspaceDirectoryResponseBodyModule(DaraModel):
-    def __init__(
-        self,
-        current_time: str = None,
-        directory_list: List[main_models.GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList] = None,
-    ):
-        # The current time.
-        self.current_time = current_time
-        # The directory structure.
-        self.directory_list = directory_list
-
-    def validate(self):
-        if self.directory_list:
-            for v1 in self.directory_list:
-                 if v1:
-                    v1.validate()
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.current_time is not None:
-            result['CurrentTime'] = self.current_time
-
-        result['DirectoryList'] = []
-        if self.directory_list is not None:
-            for k1 in self.directory_list:
-                result['DirectoryList'].append(k1.to_map() if k1 else None)
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CurrentTime') is not None:
-            self.current_time = m.get('CurrentTime')
-
-        self.directory_list = []
-        if m.get('DirectoryList') is not None:
-            for k1 in m.get('DirectoryList'):
-                temp_model = main_models.GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList()
-                self.directory_list.append(temp_model.from_map(k1))
-
-        return self
-
-class GetAppWorkspaceDirectoryResponseBodyModuleDirectoryList(DaraModel):
-    def __init__(
-        self,
-        children: List[Any] = None,
-        key: str = None,
-        label: str = None,
-    ):
-        # The child content.
-        self.children = children
-        # The full path relative to the workspace.
-        self.key = key
-        # The name.
-        self.label = label
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.children is not None:
-            result['Children'] = self.children
-
-        if self.key is not None:
-            result['Key'] = self.key
-
-        if self.label is not None:
-            result['Label'] = self.label
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Children') is not None:
-            self.children = m.get('Children')
-
-        if m.get('Key') is not None:
-            self.key = m.get('Key')
-
-        if m.get('Label') is not None:
-            self.label = m.get('Label')
 
         return self
 

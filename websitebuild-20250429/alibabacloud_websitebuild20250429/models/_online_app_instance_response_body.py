@@ -2,11 +2,11 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Any
+from typing import List, Any, Dict
 
 from darabonba.model import DaraModel
 
-class UpdateAppFileResponseBody(DaraModel):
+class OnlineAppInstanceResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -15,34 +15,33 @@ class UpdateAppFileResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        module: bool = None,
+        module: Dict[str, Any] = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The authentication failure details.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
-        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name can be up to 36 characters in length.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore this parameter.
+        # The dynamic error code. This parameter will be deprecated.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
+        # The placeholder in the dynamic error message.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
-        # Indicates whether the move operation is successful.
+        # The application module.
         self.module = module
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):

@@ -6389,11 +6389,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListAppInstancesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.biz_ids):
+            request.biz_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.biz_ids, 'BizIds', 'json')
         if not DaraCore.is_null(tmp_req.status_list):
             request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.biz_ids_shrink):
+            query['BizIds'] = request.biz_ids_shrink
         if not DaraCore.is_null(request.end_time_begin):
             query['EndTimeBegin'] = request.end_time_begin
         if not DaraCore.is_null(request.end_time_end):
@@ -6443,11 +6447,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListAppInstancesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.biz_ids):
+            request.biz_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.biz_ids, 'BizIds', 'json')
         if not DaraCore.is_null(tmp_req.status_list):
             request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.biz_ids_shrink):
+            query['BizIds'] = request.biz_ids_shrink
         if not DaraCore.is_null(request.end_time_begin):
             query['EndTimeBegin'] = request.end_time_begin
         if not DaraCore.is_null(request.end_time_end):
@@ -7628,6 +7636,146 @@ class Client(OpenApiClient):
     ) -> main_models.NotifyAppNotificationForAdminResponse:
         runtime = RuntimeOptions()
         return await self.notify_app_notification_for_admin_with_options_async(request, runtime)
+
+    def offline_app_instance_with_options(
+        self,
+        request: main_models.OfflineAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OfflineAppInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OfflineAppInstance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OfflineAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def offline_app_instance_with_options_async(
+        self,
+        request: main_models.OfflineAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OfflineAppInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OfflineAppInstance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OfflineAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def offline_app_instance(
+        self,
+        request: main_models.OfflineAppInstanceRequest,
+    ) -> main_models.OfflineAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.offline_app_instance_with_options(request, runtime)
+
+    async def offline_app_instance_async(
+        self,
+        request: main_models.OfflineAppInstanceRequest,
+    ) -> main_models.OfflineAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.offline_app_instance_with_options_async(request, runtime)
+
+    def online_app_instance_with_options(
+        self,
+        request: main_models.OnlineAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OnlineAppInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OnlineAppInstance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OnlineAppInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def online_app_instance_with_options_async(
+        self,
+        request: main_models.OnlineAppInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OnlineAppInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OnlineAppInstance',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OnlineAppInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def online_app_instance(
+        self,
+        request: main_models.OnlineAppInstanceRequest,
+    ) -> main_models.OnlineAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.online_app_instance_with_options(request, runtime)
+
+    async def online_app_instance_async(
+        self,
+        request: main_models.OnlineAppInstanceRequest,
+    ) -> main_models.OnlineAppInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.online_app_instance_with_options_async(request, runtime)
 
     def operate_app_instance_for_partner_with_options(
         self,

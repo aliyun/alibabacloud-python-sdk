@@ -8,6 +8,7 @@ class ListAppInstancesShrinkRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        biz_ids_shrink: str = None,
         end_time_begin: str = None,
         end_time_end: str = None,
         extend: str = None,
@@ -22,6 +23,7 @@ class ListAppInstancesShrinkRequest(DaraModel):
     ):
         # The business ID.
         self.biz_id = biz_id
+        self.biz_ids_shrink = biz_ids_shrink
         # The start of the expiration time range.
         self.end_time_begin = end_time_begin
         # The end of the expiration time range.
@@ -32,11 +34,11 @@ class ListAppInstancesShrinkRequest(DaraModel):
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results exist.
+        # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The field used for sorting.
         self.order_column = order_column
-        # The sort order. Valid values: ASC and DESC.
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num
@@ -57,6 +59,9 @@ class ListAppInstancesShrinkRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.biz_ids_shrink is not None:
+            result['BizIds'] = self.biz_ids_shrink
 
         if self.end_time_begin is not None:
             result['EndTimeBegin'] = self.end_time_begin
@@ -97,6 +102,9 @@ class ListAppInstancesShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('BizIds') is not None:
+            self.biz_ids_shrink = m.get('BizIds')
 
         if m.get('EndTimeBegin') is not None:
             self.end_time_begin = m.get('EndTimeBegin')
