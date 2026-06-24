@@ -361,6 +361,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.allocate_instance_public_connection_with_options_async(request, runtime)
 
+    def allocate_mem_0public_connection_with_options(
+        self,
+        request: main_models.AllocateMem0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateMem0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateMem0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateMem0PublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_mem_0public_connection_with_options_async(
+        self,
+        request: main_models.AllocateMem0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateMem0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string_prefix):
+            query['ConnectionStringPrefix'] = request.connection_string_prefix
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateMem0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateMem0PublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_mem_0public_connection(
+        self,
+        request: main_models.AllocateMem0PublicConnectionRequest,
+    ) -> main_models.AllocateMem0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.allocate_mem_0public_connection_with_options(request, runtime)
+
+    async def allocate_mem_0public_connection_async(
+        self,
+        request: main_models.AllocateMem0PublicConnectionRequest,
+    ) -> main_models.AllocateMem0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.allocate_mem_0public_connection_with_options_async(request, runtime)
+
     def attach_columnar_instance_with_options(
         self,
         request: main_models.AttachColumnarInstanceRequest,
@@ -10528,6 +10610,84 @@ class Client(OpenApiClient):
     ) -> main_models.ReleaseInstancePublicConnectionResponse:
         runtime = RuntimeOptions()
         return await self.release_instance_public_connection_with_options_async(request, runtime)
+
+    def release_mem_0public_connection_with_options(
+        self,
+        request: main_models.ReleaseMem0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseMem0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseMem0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseMem0PublicConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_mem_0public_connection_with_options_async(
+        self,
+        request: main_models.ReleaseMem0PublicConnectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseMem0PublicConnectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_connection_string):
+            query['CurrentConnectionString'] = request.current_connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseMem0PublicConnection',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseMem0PublicConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_mem_0public_connection(
+        self,
+        request: main_models.ReleaseMem0PublicConnectionRequest,
+    ) -> main_models.ReleaseMem0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return self.release_mem_0public_connection_with_options(request, runtime)
+
+    async def release_mem_0public_connection_async(
+        self,
+        request: main_models.ReleaseMem0PublicConnectionRequest,
+    ) -> main_models.ReleaseMem0PublicConnectionResponse:
+        runtime = RuntimeOptions()
+        return await self.release_mem_0public_connection_with_options_async(request, runtime)
 
     def reset_account_password_with_options(
         self,

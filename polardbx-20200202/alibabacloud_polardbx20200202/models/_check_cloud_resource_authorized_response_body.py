@@ -44,8 +44,6 @@ class CheckCloudResourceAuthorizedResponseBody(DaraModel):
 
         return self
 
-
-
 class CheckCloudResourceAuthorizedResponseBodyData(DaraModel):
     def __init__(
         self,

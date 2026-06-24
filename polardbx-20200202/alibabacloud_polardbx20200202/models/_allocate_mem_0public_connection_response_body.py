@@ -5,25 +5,20 @@ from __future__ import annotations
 from alibabacloud_polardbx20200202 import models as main_models
 from darabonba.model import DaraModel
 
-class ModifyMem0SecurityIpsResponseBody(DaraModel):
+class AllocateMem0PublicConnectionResponseBody(DaraModel):
     def __init__(
         self,
-        access_denied_detail: main_models.ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail = None,
-        data: main_models.ModifyMem0SecurityIpsResponseBodyData = None,
+        access_denied_detail: main_models.AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail = None,
         request_id: str = None,
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The data structure.
-        self.data = data
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
         if self.access_denied_detail:
             self.access_denied_detail.validate()
-        if self.data:
-            self.data.validate()
 
     def to_map(self):
         result = dict()
@@ -33,9 +28,6 @@ class ModifyMem0SecurityIpsResponseBody(DaraModel):
         if self.access_denied_detail is not None:
             result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
 
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -44,47 +36,17 @@ class ModifyMem0SecurityIpsResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
-            temp_model = main_models.ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail()
+            temp_model = main_models.AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail()
             self.access_denied_detail = temp_model.from_map(m.get('AccessDeniedDetail'))
-
-        if m.get('Data') is not None:
-            temp_model = main_models.ModifyMem0SecurityIpsResponseBodyData()
-            self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         return self
 
-class ModifyMem0SecurityIpsResponseBodyData(DaraModel):
-    def __init__(
-        self,
-        task_id: int = None,
-    ):
-        # The task ID.
-        self.task_id = task_id
 
-    def validate(self):
-        pass
 
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-
-        return self
-
-class ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
+class AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
     def __init__(
         self,
         auth_action: str = None,
@@ -95,24 +57,19 @@ class ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The API operation name.
+        # As described above.
         self.auth_action = auth_action
         # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The ID of the Alibaba Cloud account to which the identity used for authentication belongs.
+        # As described above.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of identity used for authentication in the request. Valid values:
-        # - SubUser: RAM user.
-        # - AssumedRoleUser: RAM role.
-        # - Federated: SSO federated identity.
+        # As described above.
         self.auth_principal_type = auth_principal_type
-        # The encrypted complete diagnostic information.
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial. Valid values:
-        # - **ImplicitDeny**: The resource owner has not granted the required permissions to the current user. Unauthorized operations are denied by default.
-        # - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user access to the corresponding resource.
+        # NoPermissionType
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # PolicyType
         self.policy_type = policy_type
 
     def validate(self):

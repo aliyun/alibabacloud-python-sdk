@@ -1,3 +1,8 @@
+2026-06-24 Version: 3.7.0
+- Support API AllocateMem0PublicConnection.
+- Support API ReleaseMem0PublicConnection.
+
+
 2026-06-23 Version: 3.6.0
 - Support API CreateGatewayConsumerForPolarDBX.
 - Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.AiGatewayEnabled.

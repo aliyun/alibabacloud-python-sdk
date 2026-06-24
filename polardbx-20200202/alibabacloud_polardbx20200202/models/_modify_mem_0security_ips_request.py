@@ -17,7 +17,7 @@ class ModifyMem0SecurityIpsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The name of the whitelist group for the instance.
+        # The name of the whitelist group of the instance.
         self.group_name = group_name
         # The modification mode of the whitelist. Valid values:
         # 

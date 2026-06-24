@@ -11,6 +11,9 @@ from ._allocate_cold_data_volume_response import AllocateColdDataVolumeResponse
 from ._allocate_instance_public_connection_request import AllocateInstancePublicConnectionRequest
 from ._allocate_instance_public_connection_response_body import AllocateInstancePublicConnectionResponseBody
 from ._allocate_instance_public_connection_response import AllocateInstancePublicConnectionResponse
+from ._allocate_mem_0public_connection_request import AllocateMem0PublicConnectionRequest
+from ._allocate_mem_0public_connection_response_body import AllocateMem0PublicConnectionResponseBody
+from ._allocate_mem_0public_connection_response import AllocateMem0PublicConnectionResponse
 from ._attach_columnar_instance_request import AttachColumnarInstanceRequest
 from ._attach_columnar_instance_response_body import AttachColumnarInstanceResponseBody
 from ._attach_columnar_instance_response import AttachColumnarInstanceResponse
@@ -377,6 +380,9 @@ from ._release_cold_data_volume_response import ReleaseColdDataVolumeResponse
 from ._release_instance_public_connection_request import ReleaseInstancePublicConnectionRequest
 from ._release_instance_public_connection_response_body import ReleaseInstancePublicConnectionResponseBody
 from ._release_instance_public_connection_response import ReleaseInstancePublicConnectionResponse
+from ._release_mem_0public_connection_request import ReleaseMem0PublicConnectionRequest
+from ._release_mem_0public_connection_response_body import ReleaseMem0PublicConnectionResponseBody
+from ._release_mem_0public_connection_response import ReleaseMem0PublicConnectionResponse
 from ._reset_account_password_request import ResetAccountPasswordRequest
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
 from ._reset_account_password_response import ResetAccountPasswordResponse
@@ -443,6 +449,7 @@ from ._upgrade_columnar_version_response import UpgradeColumnarVersionResponse
 from ._upgrade_dbinstance_kernel_version_request import UpgradeDBInstanceKernelVersionRequest
 from ._upgrade_dbinstance_kernel_version_response_body import UpgradeDBInstanceKernelVersionResponseBody
 from ._upgrade_dbinstance_kernel_version_response import UpgradeDBInstanceKernelVersionResponse
+from ._allocate_mem_0public_connection_response_body import AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail
 from ._check_cloud_resource_authorized_response_body import CheckCloudResourceAuthorizedResponseBodyData
 from ._close_engine_migration_response_body import CloseEngineMigrationResponseBodyData
 from ._confirm_no_connection_response_body import ConfirmNoConnectionResponseBodyData
@@ -587,6 +594,7 @@ from ._modify_mem_0security_ips_response_body import ModifyMem0SecurityIpsRespon
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyDataCheckResult
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyData
 from ._refresh_import_meta_response_body import RefreshImportMetaResponseBodyData
+from ._release_mem_0public_connection_response_body import ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail
 from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyAccessDeniedDetail
 from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyData
 from ._skip_current_step_response_body import SkipCurrentStepResponseBodyData
@@ -613,6 +621,9 @@ __all__ = [
     AllocateInstancePublicConnectionRequest,
     AllocateInstancePublicConnectionResponseBody,
     AllocateInstancePublicConnectionResponse,
+    AllocateMem0PublicConnectionRequest,
+    AllocateMem0PublicConnectionResponseBody,
+    AllocateMem0PublicConnectionResponse,
     AttachColumnarInstanceRequest,
     AttachColumnarInstanceResponseBody,
     AttachColumnarInstanceResponse,
@@ -979,6 +990,9 @@ __all__ = [
     ReleaseInstancePublicConnectionRequest,
     ReleaseInstancePublicConnectionResponseBody,
     ReleaseInstancePublicConnectionResponse,
+    ReleaseMem0PublicConnectionRequest,
+    ReleaseMem0PublicConnectionResponseBody,
+    ReleaseMem0PublicConnectionResponse,
     ResetAccountPasswordRequest,
     ResetAccountPasswordResponseBody,
     ResetAccountPasswordResponse,
@@ -1045,6 +1059,7 @@ __all__ = [
     UpgradeDBInstanceKernelVersionRequest,
     UpgradeDBInstanceKernelVersionResponseBody,
     UpgradeDBInstanceKernelVersionResponse,
+    AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail,
     CheckCloudResourceAuthorizedResponseBodyData,
     CloseEngineMigrationResponseBodyData,
     ConfirmNoConnectionResponseBodyData,
@@ -1189,6 +1204,7 @@ __all__ = [
     PreCheckSqlFlashbackTaskResponseBodyDataCheckResult,
     PreCheckSqlFlashbackTaskResponseBodyData,
     RefreshImportMetaResponseBodyData,
+    ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail,
     ResetMem0AccountPasswordResponseBodyAccessDeniedDetail,
     ResetMem0AccountPasswordResponseBodyData,
     SkipCurrentStepResponseBodyData,
