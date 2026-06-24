@@ -163,8 +163,6 @@ class BatchIntrudeDomainsResponseBodyDataSuccessList(DaraModel):
 
         return self
 
-
-
 class BatchIntrudeDomainsResponseBodyDataFailureList(DaraModel):
     def __init__(
         self,

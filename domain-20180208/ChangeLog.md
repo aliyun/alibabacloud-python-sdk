@@ -1,3 +1,13 @@
+2026-06-24 Version: 1.10.0
+- Support API AcceptPush.
+- Support API BatchQueryReceivedPushStatus.
+- Support API CreateCloseoutOrder.
+- Support API QueryCloseoutDomainInfo.
+- Support API QueryCloseoutDomainList.
+- Support API QueryPendingPushList.
+- Support API RejectPush.
+
+
 2026-05-13 Version: 1.9.1
 - Update API QueryExportDomainExpireSnatchs: add request parameters DataSources.
 

@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'domain.aliyuncs.com',
+            'ap-southeast-1': 'domain-intl.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('domain', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -113,6 +117,80 @@ class Client(OpenApiClient):
     ) -> main_models.AcceptDemandResponse:
         runtime = RuntimeOptions()
         return await self.accept_demand_with_options_async(request, runtime)
+
+    def accept_push_with_options(
+        self,
+        request: main_models.AcceptPushRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptPushResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_template_id):
+            query['ContactTemplateId'] = request.contact_template_id
+        if not DaraCore.is_null(request.push_no):
+            query['PushNo'] = request.push_no
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AcceptPush',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AcceptPushResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def accept_push_with_options_async(
+        self,
+        request: main_models.AcceptPushRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptPushResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_template_id):
+            query['ContactTemplateId'] = request.contact_template_id
+        if not DaraCore.is_null(request.push_no):
+            query['PushNo'] = request.push_no
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AcceptPush',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AcceptPushResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def accept_push(
+        self,
+        request: main_models.AcceptPushRequest,
+    ) -> main_models.AcceptPushResponse:
+        runtime = RuntimeOptions()
+        return self.accept_push_with_options(request, runtime)
+
+    async def accept_push_async(
+        self,
+        request: main_models.AcceptPushRequest,
+    ) -> main_models.AcceptPushResponse:
+        runtime = RuntimeOptions()
+        return await self.accept_push_with_options_async(request, runtime)
 
     def batch_intrude_domains_with_options(
         self,
@@ -285,6 +363,92 @@ class Client(OpenApiClient):
     ) -> main_models.BatchQueryPushStatusResponse:
         runtime = RuntimeOptions()
         return await self.batch_query_push_status_with_options_async(request, runtime)
+
+    def batch_query_received_push_status_with_options(
+        self,
+        tmp_req: main_models.BatchQueryReceivedPushStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryReceivedPushStatusResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryReceivedPushStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.push_nos):
+            request.push_nos_shrink = Utils.array_to_string_with_specified_style(tmp_req.push_nos, 'PushNos', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.push_nos_shrink):
+            query['PushNos'] = request.push_nos_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryReceivedPushStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryReceivedPushStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_query_received_push_status_with_options_async(
+        self,
+        tmp_req: main_models.BatchQueryReceivedPushStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryReceivedPushStatusResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryReceivedPushStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.push_nos):
+            request.push_nos_shrink = Utils.array_to_string_with_specified_style(tmp_req.push_nos, 'PushNos', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.push_nos_shrink):
+            query['PushNos'] = request.push_nos_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryReceivedPushStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryReceivedPushStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_query_received_push_status(
+        self,
+        request: main_models.BatchQueryReceivedPushStatusRequest,
+    ) -> main_models.BatchQueryReceivedPushStatusResponse:
+        runtime = RuntimeOptions()
+        return self.batch_query_received_push_status_with_options(request, runtime)
+
+    async def batch_query_received_push_status_async(
+        self,
+        request: main_models.BatchQueryReceivedPushStatusRequest,
+    ) -> main_models.BatchQueryReceivedPushStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_query_received_push_status_with_options_async(request, runtime)
 
     def batch_recall_push_with_options(
         self,
@@ -717,6 +881,80 @@ class Client(OpenApiClient):
     ) -> main_models.CheckSelectedDomainStatusResponse:
         runtime = RuntimeOptions()
         return await self.check_selected_domain_status_with_options_async(request, runtime)
+
+    def create_closeout_order_with_options(
+        self,
+        request: main_models.CreateCloseoutOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloseoutOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloseoutOrder',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloseoutOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_closeout_order_with_options_async(
+        self,
+        request: main_models.CreateCloseoutOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloseoutOrderResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloseoutOrder',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloseoutOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_closeout_order(
+        self,
+        request: main_models.CreateCloseoutOrderRequest,
+    ) -> main_models.CreateCloseoutOrderResponse:
+        runtime = RuntimeOptions()
+        return self.create_closeout_order_with_options(request, runtime)
+
+    async def create_closeout_order_async(
+        self,
+        request: main_models.CreateCloseoutOrderRequest,
+    ) -> main_models.CreateCloseoutOrderResponse:
+        runtime = RuntimeOptions()
+        return await self.create_closeout_order_with_options_async(request, runtime)
 
     def create_fixed_price_demand_order_with_options(
         self,
@@ -1904,6 +2142,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_buyer_domain_trade_records_with_options_async(request, runtime)
 
+    def query_closeout_domain_info_with_options(
+        self,
+        request: main_models.QueryCloseoutDomainInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCloseoutDomainInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryCloseoutDomainInfo',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCloseoutDomainInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_closeout_domain_info_with_options_async(
+        self,
+        request: main_models.QueryCloseoutDomainInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCloseoutDomainInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryCloseoutDomainInfo',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCloseoutDomainInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_closeout_domain_info(
+        self,
+        request: main_models.QueryCloseoutDomainInfoRequest,
+    ) -> main_models.QueryCloseoutDomainInfoResponse:
+        runtime = RuntimeOptions()
+        return self.query_closeout_domain_info_with_options(request, runtime)
+
+    async def query_closeout_domain_info_async(
+        self,
+        request: main_models.QueryCloseoutDomainInfoRequest,
+    ) -> main_models.QueryCloseoutDomainInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.query_closeout_domain_info_with_options_async(request, runtime)
+
+    def query_closeout_domain_list_with_options(
+        self,
+        request: main_models.QueryCloseoutDomainListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCloseoutDomainListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_id):
+            query['CurrentId'] = request.current_id
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryCloseoutDomainList',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCloseoutDomainListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_closeout_domain_list_with_options_async(
+        self,
+        request: main_models.QueryCloseoutDomainListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCloseoutDomainListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_id):
+            query['CurrentId'] = request.current_id
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryCloseoutDomainList',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryCloseoutDomainListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_closeout_domain_list(
+        self,
+        request: main_models.QueryCloseoutDomainListRequest,
+    ) -> main_models.QueryCloseoutDomainListResponse:
+        runtime = RuntimeOptions()
+        return self.query_closeout_domain_list_with_options(request, runtime)
+
+    async def query_closeout_domain_list_async(
+        self,
+        request: main_models.QueryCloseoutDomainListRequest,
+    ) -> main_models.QueryCloseoutDomainListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_closeout_domain_list_with_options_async(request, runtime)
+
     def query_domain_transfer_status_with_options(
         self,
         request: main_models.QueryDomainTransferStatusRequest,
@@ -2212,6 +2594,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_export_domain_expire_snatchs_with_options_async(request, runtime)
 
+    def query_pending_push_list_with_options(
+        self,
+        request: main_models.QueryPendingPushListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPendingPushListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPendingPushList',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPendingPushListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_pending_push_list_with_options_async(
+        self,
+        request: main_models.QueryPendingPushListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPendingPushListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryPendingPushList',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryPendingPushListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_pending_push_list(
+        self,
+        request: main_models.QueryPendingPushListRequest,
+    ) -> main_models.QueryPendingPushListResponse:
+        runtime = RuntimeOptions()
+        return self.query_pending_push_list_with_options(request, runtime)
+
+    async def query_pending_push_list_async(
+        self,
+        request: main_models.QueryPendingPushListRequest,
+    ) -> main_models.QueryPendingPushListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_pending_push_list_with_options_async(request, runtime)
+
     def query_purchased_domains_with_options(
         self,
         request: main_models.QueryPurchasedDomainsRequest,
@@ -2461,6 +2925,76 @@ class Client(OpenApiClient):
     ) -> main_models.RefuseDemandResponse:
         runtime = RuntimeOptions()
         return await self.refuse_demand_with_options_async(request, runtime)
+
+    def reject_push_with_options(
+        self,
+        request: main_models.RejectPushRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectPushResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.push_no):
+            query['PushNo'] = request.push_no
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RejectPush',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RejectPushResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reject_push_with_options_async(
+        self,
+        request: main_models.RejectPushRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectPushResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.push_no):
+            query['PushNo'] = request.push_no
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RejectPush',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RejectPushResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reject_push(
+        self,
+        request: main_models.RejectPushRequest,
+    ) -> main_models.RejectPushResponse:
+        runtime = RuntimeOptions()
+        return self.reject_push_with_options(request, runtime)
+
+    async def reject_push_async(
+        self,
+        request: main_models.RejectPushRequest,
+    ) -> main_models.RejectPushResponse:
+        runtime = RuntimeOptions()
+        return await self.reject_push_with_options_async(request, runtime)
 
     def request_pay_demand_with_options(
         self,
