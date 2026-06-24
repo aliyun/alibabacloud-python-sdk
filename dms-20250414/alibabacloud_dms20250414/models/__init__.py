@@ -28,11 +28,13 @@ from ._dlstorage_descriptor import DLStorageDescriptor
 from ._dltable import DLTable
 from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
+from ._data_agent_billing_instance import DataAgentBillingInstance
 from ._data_mount_info import DataMountInfo
 from ._dms_gateway_order import DmsGatewayOrder
 from ._dms_knowledge_search_order_info_do import DmsKnowledgeSearchOrderInfoDO
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
+from ._mdb_agent_instance_vo import MdbAgentInstanceVo
 from ._one_meta_database import OneMetaDatabase
 from ._one_meta_database_engine_meta import OneMetaDatabaseEngineMeta
 from ._one_meta_database_object import OneMetaDatabaseObject
@@ -196,6 +198,9 @@ from ._get_notebook_and_submit_task_response import GetNotebookAndSubmitTaskResp
 from ._get_notebook_task_status_request import GetNotebookTaskStatusRequest
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBody
 from ._get_notebook_task_status_response import GetNotebookTaskStatusResponse
+from ._get_sql_console_operation_log_request import GetSqlConsoleOperationLogRequest
+from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperationLogResponseBody
+from ._get_sql_console_operation_log_response import GetSqlConsoleOperationLogResponse
 from ._get_workspace_code_request import GetWorkspaceCodeRequest
 from ._get_workspace_code_response_body import GetWorkspaceCodeResponseBody
 from ._get_workspace_code_response import GetWorkspaceCodeResponse
@@ -396,6 +401,7 @@ from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
+from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperationLogResponseBodyData
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyDataRepos
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyData
 from ._get_workspace_quota_response_body import GetWorkspaceQuotaResponseBodyData
@@ -472,11 +478,13 @@ __all__ = [
     DLTable,
     DLTableInput,
     DLTablebaseInfo,
+    DataAgentBillingInstance,
     DataMountInfo,
     DmsGatewayOrder,
     DmsKnowledgeSearchOrderInfoDO,
     ForeignInstance,
     ForeignInstanceCredInfo,
+    MdbAgentInstanceVo,
     OneMetaDatabase,
     OneMetaDatabaseEngineMeta,
     OneMetaDatabaseObject,
@@ -640,6 +648,9 @@ __all__ = [
     GetNotebookTaskStatusRequest,
     GetNotebookTaskStatusResponseBody,
     GetNotebookTaskStatusResponse,
+    GetSqlConsoleOperationLogRequest,
+    GetSqlConsoleOperationLogResponseBody,
+    GetSqlConsoleOperationLogResponse,
     GetWorkspaceCodeRequest,
     GetWorkspaceCodeResponseBody,
     GetWorkspaceCodeResponse,
@@ -840,6 +851,7 @@ __all__ = [
     GetDataAgentSubAccountInfoResponseBodyData,
     GetDataAgentWorkspaceInfoResponseBodyData,
     GetNotebookTaskStatusResponseBodyData,
+    GetSqlConsoleOperationLogResponseBodyData,
     GetWorkspaceCodePublishSettingResponseBodyDataRepos,
     GetWorkspaceCodePublishSettingResponseBodyData,
     GetWorkspaceQuotaResponseBodyData,

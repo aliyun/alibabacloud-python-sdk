@@ -26,8 +26,8 @@ class DescribeDataAgentSessionResponseBody(DaraModel):
         self.request_id = request_id
         # The return value. Valid values:
         # 
-        # - **true**: Succeeded.
-        # - **false**: Failed.
+        # - **true**: The operation was successful.
+        # - **false**: The operation failed.
         self.success = success
 
     def validate(self):
@@ -99,18 +99,21 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # The current agent status.
         self.agent_status = agent_status
+        # The list of artifacts produced by the session. Currently, only reports are included.
         self.artifacts = artifacts
         # The chat replay history.
         self.chat_history_locations = chat_history_locations
-        # The session creation time.
+        # The time when the session was created.
         self.create_time = create_time
+        # The list of data sources used in the current session.
         self.data_sources = data_sources
-        # Indicates whether the session is saved as a favorite in the workspace by the current logged-in user.
+        # Indicates whether the session is saved to favorites in the workspace by the current user.
         self.favorite_in_workspace = favorite_in_workspace
         # The file ID.
         self.file = file
+        # The recall results from the knowledge base and memory for this session.
         self.recall_results = recall_results
-        # Indicates whether the session is saved as a favorite by the current logged-in user.
+        # Indicates whether the session is saved to favorites by the current user.
         self.saved = saved
         # The session configuration item.
         self.session_config = session_config
@@ -284,13 +287,16 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent. Valid values:
-        # - **debug**: Debug stage.
-        # - **prod**: Production stage.
+        # - **debug**: the debugging stage.
+        # - **prod**: the production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
+        # The encryption key for storing artifacts in OSS (including built-in and user-specified OSS). This is typically specified in CreateDataAgentSession.
         self.encrypt_key = encrypt_key
+        # The encryption type for storing artifacts in OSS (including built-in and user-specified OSS).
         self.encrypt_type = encrypt_type
+        # The list of knowledge base IDs for this session.
         self.kb_uuid_list = kb_uuid_list
         # The language. Valid values:
         # - **CHINESE**: Chinese.
@@ -299,14 +305,15 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        # - **ASK_DATA**: Ask data mode.
-        # - **ANALYSIS**: Analysis mode.
-        # - **INSIGHT**: Insight mode.
+        # - **ASK_DATA**: the data query mode.
+        # - **ANALYSIS**: the analysis mode.
+        # - **INSIGHT**: the insight mode.
         self.mode = mode
+        # The report page width.
         self.report_page_width = report_page_width
+        # The report watermark.
         self.report_water_mark = report_water_mark
-        # The name of the user OSS bucket.
-        # - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+        # The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
@@ -402,8 +409,11 @@ class DescribeDataAgentSessionResponseBodyDataRecallResults(DaraModel):
         score: float = None,
         type: str = None,
     ):
+        # The content of the recalled knowledge chunk.
         self.content = content
+        # The similarity score of this data entry. The scoring algorithm is related to the algorithm (l2/ip/cosine) specified when the index was created.
         self.score = score
+        # The type of recalled knowledge.
         self.type = type
 
     def validate(self):
@@ -444,7 +454,15 @@ class DescribeDataAgentSessionResponseBodyDataDataSources(DaraModel):
         category: str = None,
         detail: str = None,
     ):
+        # The data source category. Valid values:
+        # 
+        # - **CHAT**: specified through the CreateDataAgentSession or SendChatMessage operation during a conversation.
+        # 
+        # - **CUSTOM_AGENT**: from the preset analysis data scope in a custom agent.
         self.category = category
+        # The data source details.
+        # 
+        # When Category is CHAT or CUSTOM_AGENT, the structure of Detail is aligned with the structure of a single element in the DataSources parameter of the SendChatMessage operation.
         self.detail = detail
 
     def validate(self):
@@ -522,13 +540,29 @@ class DescribeDataAgentSessionResponseBodyDataArtifacts(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The brief description of the artifact. This value may be empty.
         self.description = description
+        # The time when the backend completed the artifact task. This is a UNIX timestamp accurate to the second.
         self.finish_time = finish_time
+        # The globally unique artifact ID. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId returned by the SendChatMessage operation.
         self.id = id
+        # The artifact name. This is typically a string concatenated by the system. It is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
         self.name = name
+        # The time when the backend received the artifact request. This is a UNIX timestamp accurate to the second.
         self.receive_time = receive_time
+        # The time when the backend actually started running the artifact task. This is a UNIX timestamp accurate to the second.
         self.start_time = start_time
+        # The artifact status. Valid values:
+        # 
+        # - PENDING: The backend has received the task but has not started it.
+        # 
+        # - RUNNING: The backend has started the task but has not completed it.
+        # 
+        # - SUCCESS: The task succeeded. You can query the file information by calling the ListFileUpload operation.
+        # 
+        # - FAILED: The task failed.
         self.status = status
+        # The artifact type. Valid values: TextReport and WebReport.
         self.type = type
 
     def validate(self):

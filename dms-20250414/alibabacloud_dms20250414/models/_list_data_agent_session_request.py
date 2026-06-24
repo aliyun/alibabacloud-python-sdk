@@ -12,31 +12,33 @@ class ListDataAgentSessionRequest(DaraModel):
         custom_agent_id: str = None,
         dmsunit: str = None,
         is_saved: bool = None,
+        mode: str = None,
         page_number: int = None,
         page_size: int = None,
         query_type: str = None,
         title: str = None,
         workspace_id: str = None,
     ):
-        # Session creation end time
+        # The end time of the session creation period.
         self.create_end_time = create_end_time
-        # Session creation start time
+        # The start time of the session creation period.
         self.create_start_time = create_start_time
-        # Custom Agent ID
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
-        # Current DMS unit
+        # The current DMS unit.
         self.dmsunit = dmsunit
-        # Whether to return only saved sessions
+        # Specifies whether to retrieve only favorited sessions.
         self.is_saved = is_saved
-        # Page number for pagination
+        self.mode = mode
+        # The page number.
         self.page_number = page_number
-        # Number of records per page
+        # The number of records per page.
         self.page_size = page_size
-        # Session type. Required when you specify a collaboration workspace.
+        # The session type. This parameter is required if a workspace is specified.
         self.query_type = query_type
-        # Data Agent title (supports fuzzy search)
+        # The Data Agent title. Fuzzy match is supported.
         self.title = title
-        # Collaboration workspace ID
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -61,6 +63,9 @@ class ListDataAgentSessionRequest(DaraModel):
 
         if self.is_saved is not None:
             result['IsSaved'] = self.is_saved
+
+        if self.mode is not None:
+            result['Mode'] = self.mode
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -95,6 +100,9 @@ class ListDataAgentSessionRequest(DaraModel):
 
         if m.get('IsSaved') is not None:
             self.is_saved = m.get('IsSaved')
+
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

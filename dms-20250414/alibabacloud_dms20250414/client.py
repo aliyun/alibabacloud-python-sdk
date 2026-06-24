@@ -4060,6 +4060,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_notebook_task_status_with_options_async(request, runtime)
 
+    def get_sql_console_operation_log_with_options(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSqlConsoleOperationLog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSqlConsoleOperationLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sql_console_operation_log_with_options_async(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSqlConsoleOperationLog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSqlConsoleOperationLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sql_console_operation_log(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        runtime = RuntimeOptions()
+        return self.get_sql_console_operation_log_with_options(request, runtime)
+
+    async def get_sql_console_operation_log_async(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_sql_console_operation_log_with_options_async(request, runtime)
+
     def get_workspace_code_with_options(
         self,
         request: main_models.GetWorkspaceCodeRequest,
@@ -4541,6 +4639,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_saved):
             query['IsSaved'] = request.is_saved
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -4587,6 +4687,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_saved):
             query['IsSaved'] = request.is_saved
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

@@ -83,6 +83,7 @@ class SendChatMessageResponseBodyData(DaraModel):
         self.agent_id = agent_id
         # Message
         self.message = message
+        # The message ID.
         self.message_id = message_id
         # SessionId
         self.session_id = session_id

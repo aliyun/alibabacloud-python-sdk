@@ -1,3 +1,8 @@
+2026-06-24 Version: 1.16.0
+- Support API GetSqlConsoleOperationLog.
+- Update API ListDataAgentSession: add request parameters Mode.
+
+
 2026-06-16 Version: 1.15.3
 - Update API CreateDataAgentWorkspace: add response parameters Body.Data.Type.
 - Update API DescribeDataAgentSession: add response parameters Body.Data.Artifacts.
