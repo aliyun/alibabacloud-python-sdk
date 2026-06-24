@@ -73,6 +73,7 @@ class QueryCloseoutDomainListResponseBodyData(DaraModel):
         freeze_amount: float = None,
         icp_number: str = None,
         icp_status: bool = None,
+        id: int = None,
         introduction: str = None,
         is_premium: bool = None,
         partner_types: str = None,
@@ -114,6 +115,7 @@ class QueryCloseoutDomainListResponseBodyData(DaraModel):
         self.freeze_amount = freeze_amount
         self.icp_number = icp_number
         self.icp_status = icp_status
+        self.id = id
         self.introduction = introduction
         self.is_premium = is_premium
         self.partner_types = partner_types
@@ -202,6 +204,9 @@ class QueryCloseoutDomainListResponseBodyData(DaraModel):
 
         if self.icp_status is not None:
             result['IcpStatus'] = self.icp_status
+
+        if self.id is not None:
+            result['Id'] = self.id
 
         if self.introduction is not None:
             result['Introduction'] = self.introduction
@@ -326,6 +331,9 @@ class QueryCloseoutDomainListResponseBodyData(DaraModel):
 
         if m.get('IcpStatus') is not None:
             self.icp_status = m.get('IcpStatus')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
 
         if m.get('Introduction') is not None:
             self.introduction = m.get('Introduction')

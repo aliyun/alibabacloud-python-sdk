@@ -1,3 +1,7 @@
+2026-06-24 Version: 1.10.1
+- Update API QueryCloseoutDomainList: add response parameters Body.Data.$.Id.
+
+
 2026-06-24 Version: 1.10.0
 - Support API AcceptPush.
 - Support API BatchQueryReceivedPushStatus.
