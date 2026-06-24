@@ -10,7 +10,7 @@ class GetEnrolledAccountRequest(DaraModel):
         account_uid: int = None,
         region_id: str = None,
     ):
-        # The account ID.
+        # The ID of the account.
         # 
         # This parameter is required.
         self.account_uid = account_uid

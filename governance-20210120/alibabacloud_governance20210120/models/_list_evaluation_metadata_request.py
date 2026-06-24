@@ -7,19 +7,28 @@ from darabonba.model import DaraModel
 class ListEvaluationMetadataRequest(DaraModel):
     def __init__(
         self,
+        evaluation_domain: str = None,
         language: str = None,
         lens_code: str = None,
         region_id: str = None,
         topic_code: str = None,
     ):
-        # The language. The information is returned in the specified language. Valid values:
+        self.evaluation_domain = evaluation_domain
+        # The language type. Governance evaluation definitions are returned in this language. Valid values:
         # 
-        # *   en: English
-        # *   zh: Chinese
+        # - en: English.
+        # - zh: Chinese.
         self.language = language
+        # The specialized evaluation code. Valid values:
+        # 
+        # - basic (default): foundation model (governance maturity) evaluation.
+        # - ack: container building specialized evaluation.
+        # - ai: machine learning specialized evaluation.
+        # - nis: network service specialized evaluation.
         self.lens_code = lens_code
         # The region ID.
         self.region_id = region_id
+        # The governance topic code.
         self.topic_code = topic_code
 
     def validate(self):
@@ -30,6 +39,9 @@ class ListEvaluationMetadataRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.evaluation_domain is not None:
+            result['EvaluationDomain'] = self.evaluation_domain
+
         if self.language is not None:
             result['Language'] = self.language
 
@@ -46,6 +58,9 @@ class ListEvaluationMetadataRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EvaluationDomain') is not None:
+            self.evaluation_domain = m.get('EvaluationDomain')
+
         if m.get('Language') is not None:
             self.language = m.get('Language')
 

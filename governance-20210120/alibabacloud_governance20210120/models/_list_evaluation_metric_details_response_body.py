@@ -15,12 +15,13 @@ class ListEvaluationMetricDetailsResponseBody(DaraModel):
         request_id: str = None,
         resources: List[main_models.ListEvaluationMetricDetailsResponseBodyResources] = None,
     ):
+        # The date.
         self.date = date
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token used to retrieve the next page of data.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The details of the non-compliant resources.
+        # The details of non-compliant resources.
         self.resources = resources
 
     def validate(self):
@@ -81,28 +82,27 @@ class ListEvaluationMetricDetailsResponseBodyResources(DaraModel):
         resource_properties: List[main_models.ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties] = None,
         resource_type: str = None,
     ):
-        # The compliance status of the resource. Valid values:
-        # 
-        # *   NonCompliant: non-compliant.
-        # *   Excluded: ignored.
-        # *   PendingExclusion: to be ignored.
-        # *   PendingInclusion: to be unignored.
+        # The compliance status. Valid values:
+        # - NonCompliant: non-compliant.
+        # - Excluded: ignored.
+        # - PendingExclusion: ignored but not yet effective.
+        # - PendingInclusion: unignored but not yet effective.
         self.compliance_type = compliance_type
         # The region ID of the resource.
         self.region_id = region_id
-        # The check results further analyzed by auxiliary decision-making.
+        # The decision assistance classification.
         # 
-        # >  This parameter is returned only when the check item supports the auxiliary decision-making feature.
+        # > This parameter is returned only for check items that support decision assistance.
         self.resource_classification = resource_classification
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
-        # The ID of the Alibaba Cloud account that owns the resource.
+        # The Alibaba Cloud account ID to which the resource belongs.
         self.resource_owner_id = resource_owner_id
-        # The attributes of the resource.
+        # The list of additional resource properties.
         self.resource_properties = resource_properties
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -181,9 +181,9 @@ class ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties(DaraMod
         property_name: str = None,
         property_value: str = None,
     ):
-        # The name of the resource attribute.
+        # The name of the resource property.
         self.property_name = property_name
-        # The value of the resource attribute.
+        # The value of the resource property.
         self.property_value = property_value
 
     def validate(self):

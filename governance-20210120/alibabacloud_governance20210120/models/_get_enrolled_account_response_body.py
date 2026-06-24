@@ -26,11 +26,11 @@ class GetEnrolledAccountResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The account ID.
+        # The ID of the account.
         self.account_uid = account_uid
-        # The ID of the baseline that is implemented.
+        # The ID of the baseline that is applied.
         self.baseline_id = baseline_id
-        # The array that contains baseline items.
+        # The baseline items.
         self.baseline_items = baseline_items
         # The time when the account was created.
         self.create_time = create_time
@@ -38,33 +38,39 @@ class GetEnrolledAccountResponseBody(DaraModel):
         self.display_name = display_name
         # The error message.
         # 
-        # >  This parameter is returned if the value of `Status` is `Failed` or `ScheduleFailed`.
+        # > This parameter is returned if the value of `Status` is `Failed` or `ScheduleFailed`.
         self.error_info = error_info
         # The ID of the parent folder.
         self.folder_id = folder_id
         # Indicates whether the initialization is complete. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false: The initialization is not complete.
+        # 
+        # - true: The initialization is complete.
         self.initialized = initialized
-        # Input parameters used to create an account.
+        # The input parameters that were specified when the account was enrolled.
         self.inputs = inputs
         # The ID of the management account of the resource directory to which the account belongs.
         self.master_account_uid = master_account_uid
-        # The ID of the settlement account.
+        # The ID of the billing account.
         self.payer_account_uid = payer_account_uid
-        # The progress of the applying the baseline to the account.
+        # The progress of applying the baseline to the account.
         self.progress = progress
         # The request ID.
         self.request_id = request_id
         # The status of the account. Valid values:
         # 
-        # *   Pending: The account is pending to be created.
-        # *   Running: The account is being created.
-        # *   Finished: The account is created.
-        # *   Failed: The account fails to be created.
-        # *   Scheduling: The account is being scheduled.
-        # *   ScheduleFailed: The account fails to be scheduled.
+        # - Pending: The account is waiting to be enrolled.
+        # 
+        # - Running: The account is being enrolled.
+        # 
+        # - Finished: The account is enrolled.
+        # 
+        # - Failed: The account failed to be enrolled.
+        # 
+        # - Scheduling: The account is being scheduled.
+        # 
+        # - ScheduleFailed: The account failed to be scheduled.
         self.status = status
         # The update time.
         self.update_time = update_time
@@ -206,10 +212,13 @@ class GetEnrolledAccountResponseBodyProgress(DaraModel):
         self.name = name
         # The status of applying the baseline to the account. Valid values:
         # 
-        # *   Pending: The baseline is pending to be applied to the account.
-        # *   Running: The baseline is being applied to the account.
-        # *   Finished: : The baseline is applied to the account.
-        # *   Failed: : The baseline fails to be applied to the account.
+        # - Pending: The baseline is waiting to be applied to the account.
+        # 
+        # - Running: The baseline is being applied to the account.
+        # 
+        # - Finished: The baseline is applied to the account.
+        # 
+        # - Failed: The baseline failed to be applied to the account.
         self.status = status
 
     def validate(self):
@@ -251,7 +260,7 @@ class GetEnrolledAccountResponseBodyInputs(DaraModel):
     ):
         # The prefix of the account name.
         self.account_name_prefix = account_name_prefix
-        # The account ID.
+        # The ID of the account.
         self.account_uid = account_uid
         # The baseline items.
         self.baseline_items = baseline_items
@@ -259,7 +268,7 @@ class GetEnrolledAccountResponseBodyInputs(DaraModel):
         self.display_name = display_name
         # The ID of the parent folder.
         self.folder_id = folder_id
-        # The ID of the settlement account.
+        # The ID of the billing account.
         self.payer_account_uid = payer_account_uid
         # The tag.
         self.tag = tag
@@ -386,10 +395,11 @@ class GetEnrolledAccountResponseBodyInputsBaselineItems(DaraModel):
         self.config = config
         # The name of the baseline item.
         self.name = name
-        # Indicates whether baseline item is skipped. Valid values:
+        # Indicates whether the baseline item is skipped. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false: The baseline item is not skipped.
+        # 
+        # - true: The baseline item is skipped.
         self.skip = skip
         # The version of the baseline item.
         self.version = version
@@ -499,10 +509,11 @@ class GetEnrolledAccountResponseBodyBaselineItems(DaraModel):
         self.config = config
         # The name of the baseline item.
         self.name = name
-        # Indicates whether baseline item is skipped. Valid values:
+        # Indicates whether the baseline item is skipped. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false: The baseline item is not skipped.
+        # 
+        # - true: The baseline item is skipped.
         self.skip = skip
         # The version of the baseline item.
         self.version = version

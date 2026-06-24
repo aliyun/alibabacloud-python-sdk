@@ -10,7 +10,7 @@ class GetAccountFactoryBaselineRequest(DaraModel):
         baseline_id: str = None,
         region_id: str = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
         # The region ID.
         self.region_id = region_id

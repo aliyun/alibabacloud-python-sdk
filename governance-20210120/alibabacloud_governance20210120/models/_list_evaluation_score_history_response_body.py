@@ -15,7 +15,7 @@ class ListEvaluationScoreHistoryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The historical scores.
+        # The historical detection scores.
         self.score_history = score_history
 
     def validate(self):
@@ -51,7 +51,7 @@ class ListEvaluationScoreHistoryResponseBodyScoreHistory(DaraModel):
         self,
         total_score_history: List[main_models.ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory] = None,
     ):
-        # The historical scores.
+        # The historical detection scores.
         self.total_score_history = total_score_history
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListEvaluationScoreHistoryResponseBodyScoreHistoryTotalScoreHistory(DaraMo
         evaluation_time: str = None,
         score: float = None,
     ):
-        # The time when the score was generated. The time is in UTC.
+        # The time when the score was generated, in UTC.
         self.evaluation_time = evaluation_time
         # The score.
         # 

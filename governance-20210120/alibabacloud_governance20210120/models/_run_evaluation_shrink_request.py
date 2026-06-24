@@ -8,20 +8,22 @@ class RunEvaluationShrinkRequest(DaraModel):
     def __init__(
         self,
         account_id: int = None,
+        evaluation_domain: str = None,
         metric_ids_shrink: str = None,
         region_id: str = None,
         scope: str = None,
     ):
-        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+        # The ID of the member account. This parameter is applicable only to the multi-account check pattern.
         self.account_id = account_id
-        # The IDs of the check items to be checked.
+        self.evaluation_domain = evaluation_domain
+        # The list of check item IDs to check.
         self.metric_ids_shrink = metric_ids_shrink
         # The region ID.
         self.region_id = region_id
-        # The check range of the governance maturity check. Valid values:
+        # The scope of the governance maturity check. Valid values:
         # 
-        # *   Account (default): A single-account governance maturity check is performed to check only the Alibaba Cloud account that you use to access Cloud Governance Center.
-        # *   ResourceDirectory: A multi-account governance maturity check is performed to check all members within a resource directory. Before you perform a multi-account governance maturity check, you must enable the multi-account governance maturity check feature.
+        # - Account (default): runs a single-account governance maturity check that checks only the current account.
+        # - ResourceDirectory: runs a multi-account governance maturity check that checks all member accounts in the resource directory. Before you perform this operation, upgrade to the multi-account governance maturity check.
         self.scope = scope
 
     def validate(self):
@@ -34,6 +36,9 @@ class RunEvaluationShrinkRequest(DaraModel):
             result = _map
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+
+        if self.evaluation_domain is not None:
+            result['EvaluationDomain'] = self.evaluation_domain
 
         if self.metric_ids_shrink is not None:
             result['MetricIds'] = self.metric_ids_shrink
@@ -50,6 +55,9 @@ class RunEvaluationShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+
+        if m.get('EvaluationDomain') is not None:
+            self.evaluation_domain = m.get('EvaluationDomain')
 
         if m.get('MetricIds') is not None:
             self.metric_ids_shrink = m.get('MetricIds')

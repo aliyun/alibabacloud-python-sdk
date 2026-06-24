@@ -13,7 +13,7 @@ class ListEvaluationMetadataResponseBody(DaraModel):
         evaluation_metadata: List[main_models.ListEvaluationMetadataResponseBodyEvaluationMetadata] = None,
         request_id: str = None,
     ):
-        # The metadata of a governance maturity check.
+        # The governance evaluation definition metadata.
         self.evaluation_metadata = evaluation_metadata
         # The request ID.
         self.request_id = request_id
@@ -58,11 +58,11 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadata(DaraModel):
         metadata: List[main_models.ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata] = None,
         type: str = None,
     ):
-        # The metadata objects of a specific metadata type.
+        # The list of metadata objects under a specific metadata type.
         self.metadata = metadata
-        # The type of the metadata. Valid values:
+        # The metadata type. Valid values:
         # 
-        # *   Metric: the check item
+        # - Metric: evaluation item.
         self.type = type
 
     def validate(self):
@@ -113,30 +113,31 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata(DaraModel):
         stage: str = None,
         topic_code: str = None,
     ):
-        # The category of the check item.
+        # The pillar to which the evaluation item belongs.
         self.category = category
-        # The description of the check item.
+        # The description of the evaluation item.
         self.description = description
-        # The display name of the check item.
+        # The display name.
         self.display_name = display_name
-        # The ID of the metadata.
+        # The random ID of the metadata.
         self.id = id
-        # The governance level of the check item.
+        # The recommended governance level of the evaluation item.
         self.recommendation_level = recommendation_level
-        # The metadata of the fixing task.
+        # The remediation metadata.
         self.remediation_metadata = remediation_metadata
-        # The metadata of the checked resources.
+        # The resource metadata of the evaluation item.
         self.resource_metadata = resource_metadata
-        # The scope of the check item. Valid values:
+        # The scope to which the evaluation item belongs. Valid values:
         # 
-        # *   Account: the check item in a single-account governance maturity check
-        # *   ResourceDirectory: the check item in a multi-account governance maturity check
+        # - Account: single-account evaluation item.
+        # - ResourceDirectory: multi-account evaluation item.
         self.scope = scope
-        # The status of the check item. Valid values:
+        # The status of the evaluation item. Valid values:
         # 
-        # *   Released: The check item is released.
-        # *   Beta: The check item is pre-released.
+        # - Released: officially released.
+        # - Beta: pre-release.
         self.stage = stage
+        # The governance topic code to which the evaluation item belongs.
         self.topic_code = topic_code
 
     def validate(self):
@@ -223,7 +224,7 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetada
         self,
         resource_property_metadata: List[main_models.ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata] = None,
     ):
-        # The metadata of the resource properties.
+        # The resource property metadata.
         self.resource_property_metadata = resource_property_metadata
 
     def validate(self):
@@ -261,11 +262,11 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetada
         property_name: str = None,
         property_type: str = None,
     ):
-        # The display name of the resource property.
+        # The display name of the property.
         self.display_name = display_name
-        # The name of the resource property.
+        # The resource property name.
         self.property_name = property_name
-        # The type of the resource property.
+        # The resource property type.
         self.property_type = property_type
 
     def validate(self):
@@ -305,7 +306,7 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         self,
         remediation: List[main_models.ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediation] = None,
     ):
-        # The fixing items.
+        # The remediation item.
         self.remediation = remediation
 
     def validate(self):
@@ -342,13 +343,13 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         actions: List[main_models.ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActions] = None,
         remediation_type: str = None,
     ):
-        # The fixing operations.
+        # The remediation actions.
         self.actions = actions
-        # The type of the fixing method. Valid values:
+        # The remediation type. Valid values:
         # 
-        # *   Manual: manual fixing
-        # *   QuickFix: quick fixing
-        # *   Analysis: auxiliary decision-making
+        # - Manual: Manual remediation.
+        # - QuickFix: Quick fix.
+        # - Analysis: Assisted decision-making.
         self.remediation_type = remediation_type
 
     def validate(self):
@@ -395,23 +396,23 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         notice: str = None,
         suggestion: str = None,
     ):
-        # The fixing method.
+        # The remediation method category.
         # 
-        # >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+        # > This parameter is returned only when `RemediationType` is set to `Analysis`.
         self.classification = classification
-        # The fixing cost.
+        # The remediation cost.
         self.cost_description = cost_description
-        # The description of the fixing item.
+        # The remediation description.
         # 
-        # >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+        # > This parameter is returned only when `RemediationType` is set to `Analysis`.
         self.description = description
-        # The content of the fixing items.
+        # The remediation guidance.
         self.guidance = guidance
-        # The usage notes of the fixing item.
+        # The remediation precautions.
         self.notice = notice
-        # The fixing suggestion.
+        # The remediation suggestion.
         # 
-        # >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+        # > This parameter is returned only when `RemediationType` is set to `Analysis`.
         self.suggestion = suggestion
 
     def validate(self):
@@ -480,13 +481,13 @@ class ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMet
         content: str = None,
         title: str = None,
     ):
-        # The display name of the fixing button.
+        # The display name of the remediation step button.
         self.button_name = button_name
-        # The navigation URL of the fixing button.
+        # The URL that the remediation step button links to.
         self.button_ref = button_ref
-        # The fixing procedure.
+        # The content of the remediation step.
         self.content = content
-        # The title of the fixing procedure.
+        # The title of the remediation step.
         self.title = title
 
     def validate(self):

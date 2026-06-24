@@ -19,7 +19,7 @@ class GetAccountFactoryBaselineResponseBody(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
         # The baseline items.
         self.baseline_items = baseline_items
@@ -33,8 +33,9 @@ class GetAccountFactoryBaselineResponseBody(DaraModel):
         self.request_id = request_id
         # The type of the baseline. Valid values:
         # 
-        # *   System: default baseline.
-        # *   Custom: custom baseline.
+        # - System: The baseline is a default baseline.
+        # 
+        # - Custom: The baseline is a custom baseline.
         self.type = type
         # The time when the baseline was updated.
         self.update_time = update_time

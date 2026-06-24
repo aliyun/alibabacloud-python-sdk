@@ -14,11 +14,11 @@ class ListEvaluationResultsResponseBody(DaraModel):
         request_id: str = None,
         results: main_models.ListEvaluationResultsResponseBodyResults = None,
     ):
-        # The Alibaba Cloud account ID of the member.
+        # Member account ID.
         self.account_id = account_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The check results, including the status of the overall check and the results of check items.
+        # Evaluation results, including overall evaluation status and sub-item evaluation results.
         self.results = results
 
     def validate(self):
@@ -63,17 +63,17 @@ class ListEvaluationResultsResponseBodyResults(DaraModel):
         status: str = None,
         total_score: float = None,
     ):
-        # The end time of the overall check. The time is displayed in UTC.
+        # Overall evaluation end time (UTC).
         self.evaluation_time = evaluation_time
-        # The check result.
+        # Evaluation results.
         self.metric_results = metric_results
-        # The status of the overall check. Valid values:
+        # Overall evaluation status. Valid values:
         # 
-        # *   Running: The check is in progress.
-        # *   Finished: The check is complete.
-        # *   failed: The check fails.
+        # - Running: Evaluation in progress.
+        # - Finished: Evaluation completed.
+        # - Failed: Evaluation failed.
         self.status = status
-        # The overall score.
+        # Overall score.
         self.total_score = total_score
 
     def validate(self):
@@ -136,32 +136,35 @@ class ListEvaluationResultsResponseBodyResultsMetricResults(DaraModel):
         risk: str = None,
         status: str = None,
     ):
+        # Evaluation item account assessment summary.
         self.account_summary = account_summary
+        # List of available remediations.
         self.available_remediation = available_remediation
-        # The error information.
+        # Error information.
         # 
-        # >  This parameter is returned only if the value of `Status` is `Failed`.
+        # > This error information is returned when `Status` is `Failed`.
         self.error_info = error_info
-        # The end time of the check item. The time is displayed in UTC.
+        # Individual evaluation item end time (UTC).
         self.evaluation_time = evaluation_time
-        # The ID of the check item.
+        # Evaluation item ID.
         self.id = id
+        # Potential score increase.
         self.potential_score_increase = potential_score_increase
-        # The checked resources.
+        # Evaluation item resource assessment summary.
         self.resources_summary = resources_summary
-        # The rate of the non-compliant resources.
+        # Evaluation item resource compliance rate.
         self.result = result
-        # The risk level. Valid values:
+        # Evaluation risk level. Valid values:
         # 
-        # *   Error: high risk
-        # *   Warning: medium risk
-        # *   None: no risk
+        # - Error: High risk.
+        # - Warning: Medium risk.
+        # - None: No risk.
         self.risk = risk
-        # The status of the check item. Valid values:
+        # Individual evaluation item status. Valid values:
         # 
-        # *   Running: The check is in progress.
-        # *   Finished: The check is complete.
-        # *   failed: The check fails.
+        # - Running: Evaluation in progress.
+        # - Finished: Evaluation completed.
+        # - Failed: Evaluation failed.
         self.status = status
 
     def validate(self):
@@ -260,7 +263,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResultsResourcesSummary(Dara
         self,
         non_compliant: int = None,
     ):
-        # The number of non-compliant resources.
+        # Number of non-compliant resources.
         self.non_compliant = non_compliant
 
     def validate(self):
@@ -289,9 +292,9 @@ class ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # The error code.
+        # Error code.
         self.code = code
-        # The error message.
+        # Error message.
         self.message = message
 
     def validate(self):
@@ -325,6 +328,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResultsAvailableRemediation(
         self,
         remediation_template_id: str = None,
     ):
+        # Remediation template ID.
         self.remediation_template_id = remediation_template_id
 
     def validate(self):
@@ -352,6 +356,7 @@ class ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary(DaraMo
         self,
         non_compliant: int = None,
     ):
+        # Number of non-compliant accounts.
         self.non_compliant = non_compliant
 
     def validate(self):

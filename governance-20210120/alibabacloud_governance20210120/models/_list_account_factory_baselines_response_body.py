@@ -71,18 +71,19 @@ class ListAccountFactoryBaselinesResponseBodyBaselines(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
         # The name of the baseline.
         self.baseline_name = baseline_name
-        # The time at which the baseline was created.
+        # The time when the baseline was created.
         self.create_time = create_time
         # The description of the baseline.
         self.description = description
         # The type of the baseline. Valid values:
         # 
-        # *   System: default baseline.
-        # *   Custom: custom baseline.
+        # - System: The baseline is a default baseline.
+        # 
+        # - Custom: The baseline is a custom baseline.
         self.type = type
         # The time when the baseline was updated.
         self.update_time = update_time

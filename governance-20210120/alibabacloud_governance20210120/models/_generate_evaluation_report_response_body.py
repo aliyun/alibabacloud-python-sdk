@@ -15,11 +15,23 @@ class GenerateEvaluationReportResponseBody(DaraModel):
         report_url: str = None,
         request_id: str = None,
     ):
+        # The account ID for which the report is generated.
         self.account_id = account_id
+        # The governance maturity evaluation score.
         self.evaluation_score = evaluation_score
+        # The evaluation time.
         self.evaluation_time = evaluation_time
+        # Indicates whether the report generation is complete.
+        # 
+        # > - true: The report generation is complete.
+        # > - false: The report generation is not complete.
         self.finished = finished
+        # The report type. Valid values:
+        # - EvaluationAccountHtmlReport: single-account HTML report.
+        # - EvaluationAccountExcelReport: single-account Excel report.
+        # - EvaluationMultiAccountExcelReport: multi-account Excel report.
         self.report_type = report_type
+        # The download URL of the report.
         self.report_url = report_url
         # Id of the request
         self.request_id = request_id

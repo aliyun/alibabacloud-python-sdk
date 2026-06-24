@@ -15,9 +15,7 @@ class ListEnrolledAccountsRequest(DaraModel):
         # 
         # Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
-        # 
-        # You do not need to specify this parameter for the first request.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
