@@ -4,24 +4,21 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateInstanceServerlessSwitchResponseBody(DaraModel):
+class CreateOpenSourcePermissionResponseBody(DaraModel):
     def __init__(
         self,
         code: int = None,
-        data: bool = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The return code. A value of 200 indicates success.
         self.code = code
-        # The returned data.
-        self.data = data
-        # The returned message.
+        # The return message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The result of the request.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -34,9 +31,6 @@ class UpdateInstanceServerlessSwitchResponseBody(DaraModel):
             result = _map
         if self.code is not None:
             result['Code'] = self.code
-
-        if self.data is not None:
-            result['Data'] = self.data
 
         if self.message is not None:
             result['Message'] = self.message
@@ -53,9 +47,6 @@ class UpdateInstanceServerlessSwitchResponseBody(DaraModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
 
         if m.get('Message') is not None:
             self.message = m.get('Message')

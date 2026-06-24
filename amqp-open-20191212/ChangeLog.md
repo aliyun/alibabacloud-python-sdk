@@ -1,3 +1,14 @@
+2026-06-24 Version: 1.7.0
+- Support API CreateOpenSourceAccount.
+- Support API CreateOpenSourcePermission.
+- Support API DeleteOpenSourceAccount.
+- Support API DeleteOpenSourcePermission.
+- Support API ListOpenSourceAccounts.
+- Support API ListOpenSourcePermissions.
+- Support API UpdateOpenSourceAccount.
+- Support API UpdateOpenSourcePermission.
+
+
 2026-06-23 Version: 1.6.0
 - Support API UpdateInstanceServerlessSwitch.
 

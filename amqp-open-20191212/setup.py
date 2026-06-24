@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_amqp_open20191212.
 
-Created on 23/06/2026
+Created on 24/06/2026
 
 @author: Alibaba Cloud SDK
 """

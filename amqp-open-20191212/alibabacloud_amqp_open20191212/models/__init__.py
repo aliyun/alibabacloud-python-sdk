@@ -20,6 +20,12 @@ from ._create_instance_request import CreateInstanceRequest
 from ._create_instance_shrink_request import CreateInstanceShrinkRequest
 from ._create_instance_response_body import CreateInstanceResponseBody
 from ._create_instance_response import CreateInstanceResponse
+from ._create_open_source_account_request import CreateOpenSourceAccountRequest
+from ._create_open_source_account_response_body import CreateOpenSourceAccountResponseBody
+from ._create_open_source_account_response import CreateOpenSourceAccountResponse
+from ._create_open_source_permission_request import CreateOpenSourcePermissionRequest
+from ._create_open_source_permission_response_body import CreateOpenSourcePermissionResponseBody
+from ._create_open_source_permission_response import CreateOpenSourcePermissionResponse
 from ._create_queue_request import CreateQueueRequest
 from ._create_queue_response_body import CreateQueueResponseBody
 from ._create_queue_response import CreateQueueResponse
@@ -35,6 +41,12 @@ from ._delete_binding_response import DeleteBindingResponse
 from ._delete_exchange_request import DeleteExchangeRequest
 from ._delete_exchange_response_body import DeleteExchangeResponseBody
 from ._delete_exchange_response import DeleteExchangeResponse
+from ._delete_open_source_account_request import DeleteOpenSourceAccountRequest
+from ._delete_open_source_account_response_body import DeleteOpenSourceAccountResponseBody
+from ._delete_open_source_account_response import DeleteOpenSourceAccountResponse
+from ._delete_open_source_permission_request import DeleteOpenSourcePermissionRequest
+from ._delete_open_source_permission_response_body import DeleteOpenSourcePermissionResponseBody
+from ._delete_open_source_permission_response import DeleteOpenSourcePermissionResponse
 from ._delete_queue_request import DeleteQueueRequest
 from ._delete_queue_response_body import DeleteQueueResponseBody
 from ._delete_queue_response import DeleteQueueResponse
@@ -68,6 +80,12 @@ from ._list_instance_white_list_response import ListInstanceWhiteListResponse
 from ._list_instances_request import ListInstancesRequest
 from ._list_instances_response_body import ListInstancesResponseBody
 from ._list_instances_response import ListInstancesResponse
+from ._list_open_source_accounts_request import ListOpenSourceAccountsRequest
+from ._list_open_source_accounts_response_body import ListOpenSourceAccountsResponseBody
+from ._list_open_source_accounts_response import ListOpenSourceAccountsResponse
+from ._list_open_source_permissions_request import ListOpenSourcePermissionsRequest
+from ._list_open_source_permissions_response_body import ListOpenSourcePermissionsResponseBody
+from ._list_open_source_permissions_response import ListOpenSourcePermissionsResponse
 from ._list_queue_consumers_request import ListQueueConsumersRequest
 from ._list_queue_consumers_response_body import ListQueueConsumersResponseBody
 from ._list_queue_consumers_response import ListQueueConsumersResponse
@@ -92,6 +110,12 @@ from ._update_instance_name_response import UpdateInstanceNameResponse
 from ._update_instance_serverless_switch_request import UpdateInstanceServerlessSwitchRequest
 from ._update_instance_serverless_switch_response_body import UpdateInstanceServerlessSwitchResponseBody
 from ._update_instance_serverless_switch_response import UpdateInstanceServerlessSwitchResponse
+from ._update_open_source_account_request import UpdateOpenSourceAccountRequest
+from ._update_open_source_account_response_body import UpdateOpenSourceAccountResponseBody
+from ._update_open_source_account_response import UpdateOpenSourceAccountResponse
+from ._update_open_source_permission_request import UpdateOpenSourcePermissionRequest
+from ._update_open_source_permission_response_body import UpdateOpenSourcePermissionResponseBody
+from ._update_open_source_permission_response import UpdateOpenSourcePermissionResponse
 from ._create_account_response_body import CreateAccountResponseBodyData
 from ._create_instance_request import CreateInstanceRequestTags
 from ._get_instance_response_body import GetInstanceResponseBodyDataTags
@@ -108,6 +132,8 @@ from ._list_exchanges_response_body import ListExchangesResponseBodyData
 from ._list_instances_response_body import ListInstancesResponseBodyDataInstancesTags
 from ._list_instances_response_body import ListInstancesResponseBodyDataInstances
 from ._list_instances_response_body import ListInstancesResponseBodyData
+from ._list_open_source_accounts_response_body import ListOpenSourceAccountsResponseBodyData
+from ._list_open_source_permissions_response_body import ListOpenSourcePermissionsResponseBodyData
 from ._list_queue_consumers_response_body import ListQueueConsumersResponseBodyDataConsumers
 from ._list_queue_consumers_response_body import ListQueueConsumersResponseBodyData
 from ._list_queue_up_stream_bindings_response_body import ListQueueUpStreamBindingsResponseBodyDataBindings
@@ -136,6 +162,12 @@ __all__ = [
     CreateInstanceShrinkRequest,
     CreateInstanceResponseBody,
     CreateInstanceResponse,
+    CreateOpenSourceAccountRequest,
+    CreateOpenSourceAccountResponseBody,
+    CreateOpenSourceAccountResponse,
+    CreateOpenSourcePermissionRequest,
+    CreateOpenSourcePermissionResponseBody,
+    CreateOpenSourcePermissionResponse,
     CreateQueueRequest,
     CreateQueueResponseBody,
     CreateQueueResponse,
@@ -151,6 +183,12 @@ __all__ = [
     DeleteExchangeRequest,
     DeleteExchangeResponseBody,
     DeleteExchangeResponse,
+    DeleteOpenSourceAccountRequest,
+    DeleteOpenSourceAccountResponseBody,
+    DeleteOpenSourceAccountResponse,
+    DeleteOpenSourcePermissionRequest,
+    DeleteOpenSourcePermissionResponseBody,
+    DeleteOpenSourcePermissionResponse,
     DeleteQueueRequest,
     DeleteQueueResponseBody,
     DeleteQueueResponse,
@@ -184,6 +222,12 @@ __all__ = [
     ListInstancesRequest,
     ListInstancesResponseBody,
     ListInstancesResponse,
+    ListOpenSourceAccountsRequest,
+    ListOpenSourceAccountsResponseBody,
+    ListOpenSourceAccountsResponse,
+    ListOpenSourcePermissionsRequest,
+    ListOpenSourcePermissionsResponseBody,
+    ListOpenSourcePermissionsResponse,
     ListQueueConsumersRequest,
     ListQueueConsumersResponseBody,
     ListQueueConsumersResponse,
@@ -208,6 +252,12 @@ __all__ = [
     UpdateInstanceServerlessSwitchRequest,
     UpdateInstanceServerlessSwitchResponseBody,
     UpdateInstanceServerlessSwitchResponse,
+    UpdateOpenSourceAccountRequest,
+    UpdateOpenSourceAccountResponseBody,
+    UpdateOpenSourceAccountResponse,
+    UpdateOpenSourcePermissionRequest,
+    UpdateOpenSourcePermissionResponseBody,
+    UpdateOpenSourcePermissionResponse,
     CreateAccountResponseBodyData,
     CreateInstanceRequestTags,
     GetInstanceResponseBodyDataTags,
@@ -224,6 +274,8 @@ __all__ = [
     ListInstancesResponseBodyDataInstancesTags,
     ListInstancesResponseBodyDataInstances,
     ListInstancesResponseBodyData,
+    ListOpenSourceAccountsResponseBodyData,
+    ListOpenSourcePermissionsResponseBodyData,
     ListQueueConsumersResponseBodyDataConsumers,
     ListQueueConsumersResponseBodyData,
     ListQueueUpStreamBindingsResponseBodyDataBindings,
