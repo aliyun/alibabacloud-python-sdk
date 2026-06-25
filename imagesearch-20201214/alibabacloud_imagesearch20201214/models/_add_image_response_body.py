@@ -16,20 +16,19 @@ class AddImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The code returned.
+        # The error code.
         # 
-        # *   A value of 0 indicates that the request was successful.
-        # *   Values other than 0 indicate that the request failed.
+        # - 0: success.
+        # - Non-zero: failure.
         self.code = code
-        # The error message returned if the request failed.
-        # 
-        # > No value is returned if the request was successful, and an error message is returned if the request failed.
+        # The error message.
+        # > No data is returned for successful requests. Error messages are returned for failed requests.
         self.message = message
-        # The results of category prediction and subject identification.
+        # The category prediction and subject identification results.
         self.pic_info = pic_info
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,11 +85,14 @@ class AddImageResponseBodyPicInfo(DaraModel):
         multi_region: List[main_models.AddImageResponseBodyPicInfoMultiRegion] = None,
         region: str = None,
     ):
+        # The information about all categories supported by the system.
         self.all_categories = all_categories
-        # The result of category prediction. If a category is specified in the request, the specified category prevails.
+        # The category prediction result. If the user specifies a category in the request, the specified category is used.
         self.category_id = category_id
+        # The collection of subject identification results.
+        # > Upgrade to V3.1.1 or later to use this feature.
         self.multi_region = multi_region
-        # The result of subject identification. The subject area of the image is in the format of `x1,x2,y1,y2`. `x1 and y1` represent the position in the upper-left corner, in pixels. `x2 and y2` represent the position in the lower-right corner, in pixels. If a subject area is specified in the request, the specified subject area prevails.
+        # The subject identification result. The subject region of the image, in the format of `x1,x2,y1,y2`, where `x1,y1` is the upper-left point and `x2,y2` is the lower-right point. If the user specifies a subject region in the request, the specified region is used.
         self.region = region
 
     def validate(self):
@@ -153,6 +155,7 @@ class AddImageResponseBodyPicInfoMultiRegion(DaraModel):
         self,
         region: str = None,
     ):
+        # The subject identification result. The subject region of the image, in the format of x1,x2,y1,y2, where x1,y1 is the upper-left point and x2,y2 is the lower-right point. If the user specifies a subject region in the request, the specified region is used.
         self.region = region
 
     def validate(self):
@@ -183,7 +186,9 @@ class AddImageResponseBodyPicInfoAllCategories(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The category ID.
         self.id = id
+        # The category name.
         self.name = name
 
     def validate(self):

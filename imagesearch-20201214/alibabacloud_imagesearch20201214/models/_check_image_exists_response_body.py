@@ -15,11 +15,19 @@ class CheckImageExistsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Description information of all returned products.
         self.auctions = auctions
+        # Error code.  
+        # - 0: Succeeded.  
+        # - Non-zero: Failed.
         self.code = code
+        # Indicates whether the image exists.
         self.exists = exists
+        # Error message.
         self.msg = msg
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -90,17 +98,29 @@ class CheckImageExistsResponseBodyAuctions(DaraModel):
         str_attr_3: str = None,
         str_attr_4: str = None,
     ):
+        # Image category.
         self.category_id = category_id
+        # User-defined content.
         self.custom_content = custom_content
+        # Integer-type property.
         self.int_attr = int_attr
+        # Integer-type property.
         self.int_attr_2 = int_attr_2
+        # Integer-type property.
         self.int_attr_3 = int_attr_3
+        # Integer-type property.
         self.int_attr_4 = int_attr_4
+        # Image name.
         self.pic_name = pic_name
+        # Product ID.
         self.product_id = product_id
+        # String-type property.
         self.str_attr = str_attr
+        # String-type property.
         self.str_attr_2 = str_attr_2
+        # String-type property.
         self.str_attr_3 = str_attr_3
+        # String-type property.
         self.str_attr_4 = str_attr_4
 
     def validate(self):

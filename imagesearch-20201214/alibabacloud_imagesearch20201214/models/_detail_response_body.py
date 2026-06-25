@@ -12,11 +12,11 @@ class DetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the instance.
+        # The instance information.
         self.instance = instance
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -65,21 +65,22 @@ class DetailResponseBodyInstance(DaraModel):
         utc_create: str = None,
         utc_expire_time: str = None,
     ):
-        # The capacity of the plan. Unit: × 10,000 images.
+        # The maximum image capacity of the plan. Unit: 10,000.
         self.capacity = capacity
-        # The name of the instance.
+        # The instance name.
         self.name = name
-        # The number of queries per second supported by the plan.
+        # The QPS of the plan.
         self.qps = qps
-        # The information about the region.
+        # The region information.
         self.region = region
         # The Image Search model.
         # 
-        # 0: commodity search. 1: generic image search.
+        # <props="intl">Valid values: 0: product image search. 1: generic image search.
+        # <props="china">Valid values: 0: product image search. 1: generic image search. 2: fabric search. 3 and 7: trademark search. 4: copyright search. 5: furniture search. 6: hardware search..
         self.service_type = service_type
         # The number of images.
         self.total_count = total_count
-        # The time when the instance was created. Unit: milliseconds.
+        # The creation time of the instance. Unit: milliseconds.
         self.utc_create = utc_create
         # The time when the instance expires. Unit: milliseconds.
         self.utc_expire_time = utc_expire_time

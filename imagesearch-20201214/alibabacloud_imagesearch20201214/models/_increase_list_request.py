@@ -14,19 +14,23 @@ class IncreaseListRequest(DaraModel):
         page_size: int = None,
         path: str = None,
     ):
-        # The name of the Object Storage Service (OSS) bucket.
+        # The name of the bucket.
         self.bucket_name = bucket_name
-        # The ID of the batch task.
+        # The batch task ID.
+        # >To obtain the batch task ID, call the [batch operation](https://help.aliyun.com/document_detail/377468.html) first and retrieve the ID from the response.
         self.id = id
         # The name of the Image Search instance. The name can be up to 20 characters in length.
+        # If you have purchased an Image Search instance, log on to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance name.
+        # If you have not purchased an Image Search instance, refer to [Activate the service](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
+        # >The instance name is not the instance ID. The instance name must be unique within the same region. Make sure you use the correct value.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The number of the page to return. Default value: 1.
+        # The page number of the first page to return. Default value: 1.
         self.page_number = page_number
-        # The number of images to return on each page. Default value: 10.
+        # The number of entries to return. Default value: 10.
         self.page_size = page_size
-        # The absolute path to the increment.meta file in the bucket. The path must start with a forward slash (/) and cannot end with a forward slash (/).
+        # The absolute path of the increment.meta file in OSS. The path must start with a forward slash (/) and must not end with a forward slash (/).
         self.path = path
 
     def validate(self):

@@ -2,13 +2,90 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_imagesearch20201214 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateImageRequest(DaraModel):
+class SearchImageByFilterResponseBody(DaraModel):
     def __init__(
         self,
+        auctions: List[main_models.SearchImageByFilterResponseBodyAuctions] = None,
+        code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The product description information returned.
+        self.auctions = auctions
+        # The error code.
+        # - 0: success.
+        # - Non-zero: failure.
+        self.code = code
+        # The error message.
+        self.msg = msg
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request is successful.
+        self.success = success
+
+    def validate(self):
+        if self.auctions:
+            for v1 in self.auctions:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Auctions'] = []
+        if self.auctions is not None:
+            for k1 in self.auctions:
+                result['Auctions'].append(k1.to_map() if k1 else None)
+
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.msg is not None:
+            result['Msg'] = self.msg
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auctions = []
+        if m.get('Auctions') is not None:
+            for k1 in m.get('Auctions'):
+                temp_model = main_models.SearchImageByFilterResponseBodyAuctions()
+                self.auctions.append(temp_model.from_map(k1))
+
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class SearchImageByFilterResponseBodyAuctions(DaraModel):
+    def __init__(
+        self,
+        category_id: int = None,
         custom_content: str = None,
-        instance_name: str = None,
         int_attr: int = None,
         int_attr_2: int = None,
         int_attr_3: int = None,
@@ -20,41 +97,29 @@ class UpdateImageRequest(DaraModel):
         str_attr_3: str = None,
         str_attr_4: str = None,
     ):
-        # The custom content. The content can be up to 4,096 characters in length.
-        # >This field is returned when you call the "<props="china">[SearchImageByPic](https://help.aliyun.com/document_detail/202282.html)<props="intl">[SearchImageByPic](https://www.alibabacloud.com/help/zh/image-search/latest/updateimage)" operation. For example, you can add text such as image descriptions.
+        # The image category.
+        self.category_id = category_id
+        # The user-defined content.
         self.custom_content = custom_content
-        # The name of the Image Search instance. The name can be up to 20 characters in length.
-        # If you have purchased an Image Search instance, go to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance name.
-        # If you have not purchased an Image Search instance, see [Activate the service](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
-        # >The instance name is not the instance ID. Make sure to distinguish between them.
-        # 
-        # This parameter is required.
-        self.instance_name = instance_name
-        # The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
+        # The integer type attribute.
         self.int_attr = int_attr
-        # The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
+        # The integer type attribute.
         self.int_attr_2 = int_attr_2
-        # The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
+        # The integer type attribute.
         self.int_attr_3 = int_attr_3
-        # The integer attribute. This attribute can be used to filter query results. This field is returned in query results.
+        # The integer type attribute.
         self.int_attr_4 = int_attr_4
-        # The image name. The name can be up to 256 characters in length.
-        # > - The combination of ProductId and PicName uniquely identifies an image.
-        # - If you add an image multiple times with the same ProductId and PicName, the most recently added image takes effect and the previously added images are replaced.
+        # The image name.
         self.pic_name = pic_name
-        # The product ID. The ID can be up to 256 characters in length.
-        # 
-        # >A product can have multiple images. You can customize the value of this parameter based on your business requirements. For example: top001, pants002.
-        # 
-        # This parameter is required.
+        # The product ID.
         self.product_id = product_id
-        # The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
+        # The string type attribute.
         self.str_attr = str_attr
-        # The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
+        # The string type attribute.
         self.str_attr_2 = str_attr_2
-        # The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
+        # The string type attribute.
         self.str_attr_3 = str_attr_3
-        # The string attribute. The attribute can be up to 128 characters in length. It can be used to filter query results. This field is returned in query results.
+        # The string type attribute.
         self.str_attr_4 = str_attr_4
 
     def validate(self):
@@ -65,11 +130,11 @@ class UpdateImageRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+
         if self.custom_content is not None:
             result['CustomContent'] = self.custom_content
-
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
 
         if self.int_attr is not None:
             result['IntAttr'] = self.int_attr
@@ -105,11 +170,11 @@ class UpdateImageRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+
         if m.get('CustomContent') is not None:
             self.custom_content = m.get('CustomContent')
-
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
 
         if m.get('IntAttr') is not None:
             self.int_attr = m.get('IntAttr')

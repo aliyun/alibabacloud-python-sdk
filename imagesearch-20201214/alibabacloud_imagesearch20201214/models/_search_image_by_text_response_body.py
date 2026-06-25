@@ -19,13 +19,23 @@ class SearchImageByTextResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The authentication details.
         self.access_denied_detail = access_denied_detail
+        # The description information of all returned products.
         self.auctions = auctions
+        # The error code. Valid values:
+        # - 0: successful.
+        # - Non-zero value: failed.
         self.code = code
+        # The overview of the search results.
         self.head = head
+        # The error message.
         self.msg = msg
+        # The category information.
         self.pic_info = pic_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -112,6 +122,7 @@ class SearchImageByTextResponseBodyPicInfo(DaraModel):
         self,
         all_categories: List[main_models.SearchImageByTextResponseBodyPicInfoAllCategories] = None,
     ):
+        # All categories supported by the system.
         self.all_categories = all_categories
 
     def validate(self):
@@ -148,7 +159,9 @@ class SearchImageByTextResponseBodyPicInfoAllCategories(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The category ID.
         self.id = id
+        # The category name.
         self.name = name
 
     def validate(self):
@@ -184,8 +197,11 @@ class SearchImageByTextResponseBodyHead(DaraModel):
         docs_return: int = None,
         search_time: int = None,
     ):
+        # The number of results returned.
         self.docs_found = docs_found
+        # The number of matched results in the instance.
         self.docs_return = docs_return
+        # The time consumed by the search, in milliseconds.
         self.search_time = search_time
 
     def validate(self):
@@ -237,18 +253,32 @@ class SearchImageByTextResponseBodyAuctions(DaraModel):
         str_attr_3: str = None,
         str_attr_4: str = None,
     ):
+        # The image category.
         self.category_id = category_id
+        # The custom content defined by the user.
         self.custom_content = custom_content
+        # The integer type attribute.
         self.int_attr = int_attr
+        # The integer type attribute.
         self.int_attr_2 = int_attr_2
+        # The integer type attribute.
         self.int_attr_3 = int_attr_3
+        # The integer type attribute.
         self.int_attr_4 = int_attr_4
+        # The image name.
         self.pic_name = pic_name
+        # The product ID.
         self.product_id = product_id
+        # The image similarity score. Valid values: 0 to 1.
+        # > You must upgrade the SDK to V3.1.1 to use this feature.
         self.score = score
+        # The string type attribute.
         self.str_attr = str_attr
+        # The string type attribute.
         self.str_attr_2 = str_attr_2
+        # The string type attribute.
         self.str_attr_3 = str_attr_3
+        # The string type attribute.
         self.str_attr_4 = str_attr_4
 
     def validate(self):
@@ -354,12 +384,21 @@ class SearchImageByTextResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The action for the authentication request.
         self.auth_action = auth_action
+        # The authentication principal information.
         self.auth_principal_display_name = auth_principal_display_name
+        # The Alibaba Cloud account ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
+        # The encrypted complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # Valid values:
+        # - ImplicitDeny: no policy is matched.
+        # - ExplicitDeny: an explicit Deny policy is matched.
         self.no_permission_type = no_permission_type
+        # The type of the policy that caused the access denial.
         self.policy_type = policy_type
 
     def validate(self):

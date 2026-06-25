@@ -12,16 +12,16 @@ class UpdateImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned.
+        # The error code.
         # 
-        # *   A value of 0 indicates that the operation is successful.
-        # *   Values other than 0 indicate errors.
+        # - 0: The request was successful.
+        # - Non-zero: The request failed.
         self.code = code
-        # Id of the request
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

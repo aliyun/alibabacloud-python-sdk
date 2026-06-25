@@ -16,18 +16,17 @@ class DeleteImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code returned.
-        # 
-        # *   A value of 0 indicates that the operation is successful.
-        # *   Values other than 0 indicate errors.
+        # The error code. Valid values:
+        # - 0: success.
+        # - Non-zero value: failure.
         self.code = code
-        # The information about the deleted images.
+        # The deletion result.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,7 +80,7 @@ class DeleteImageResponseBodyData(DaraModel):
         self,
         pic_names: List[str] = None,
     ):
-        # The name (PicName) of the deleted image.
+        # The deleted PicName.
         self.pic_names = pic_names
 
     def validate(self):

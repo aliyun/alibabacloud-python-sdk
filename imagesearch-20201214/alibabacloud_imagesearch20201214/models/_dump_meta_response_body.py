@@ -12,9 +12,9 @@ class DumpMetaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the export task.
+        # The returned result of the task execution.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -59,13 +59,12 @@ class DumpMetaResponseBodyData(DaraModel):
         dump_meta_status: str = None,
         id: str = None,
     ):
-        # The status of the export task.
-        # 
-        # *   PROCESSING: in progress
-        # *   FAIL: failed
-        # *   SUCCESS: successful
+        # The status of the metadata export task. Valid values:
+        # - PROCESSING: The task is being processed.
+        # - FAIL: The task failed.
+        # - SUCCESS: The task is completed.
         self.dump_meta_status = dump_meta_status
-        # The ID of the export task.
+        # The task ID.
         self.id = id
 
     def validate(self):
