@@ -267,6 +267,9 @@ from ._install_plugin_response import InstallPluginResponse
 from ._list_consumer_authorization_rules_request import ListConsumerAuthorizationRulesRequest
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBody
 from ._list_consumer_authorization_rules_response import ListConsumerAuthorizationRulesResponse
+from ._list_consumer_quota_rules_request import ListConsumerQuotaRulesRequest
+from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBody
+from ._list_consumer_quota_rules_response import ListConsumerQuotaRulesResponse
 from ._list_consumers_request import ListConsumersRequest
 from ._list_consumers_response_body import ListConsumersResponseBody
 from ._list_consumers_response import ListConsumersResponse
@@ -495,6 +498,7 @@ from ._http_route import HttpRouteMcpServerInfo
 from ._http_route_match import HttpRouteMatchHeaders
 from ._http_route_match import HttpRouteMatchPath
 from ._http_route_match import HttpRouteMatchQueryParams
+from ._jwt_identity_config import JwtIdentityConfigClaimsToHeadersConfigs
 from ._jwt_identity_config import JwtIdentityConfigJwtPayloadConfig
 from ._jwt_identity_config import JwtIdentityConfigJwtTokenConfig
 from ._risk_check_results import RiskCheckResultsMetadata
@@ -614,6 +618,8 @@ from ._install_plugin_response_body import InstallPluginResponseBodyDataInstallP
 from ._install_plugin_response_body import InstallPluginResponseBodyData
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyDataItems
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyData
+from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBodyDataItems
+from ._list_consumer_quota_rules_response_body import ListConsumerQuotaRulesResponseBodyData
 from ._list_consumers_response_body import ListConsumersResponseBodyDataItems
 from ._list_consumers_response_body import ListConsumersResponseBodyData
 from ._list_domains_response_body import ListDomainsResponseBodyData
@@ -964,6 +970,9 @@ __all__ = [
     ListConsumerAuthorizationRulesRequest,
     ListConsumerAuthorizationRulesResponseBody,
     ListConsumerAuthorizationRulesResponse,
+    ListConsumerQuotaRulesRequest,
+    ListConsumerQuotaRulesResponseBody,
+    ListConsumerQuotaRulesResponse,
     ListConsumersRequest,
     ListConsumersResponseBody,
     ListConsumersResponse,
@@ -1192,6 +1201,7 @@ __all__ = [
     HttpRouteMatchHeaders,
     HttpRouteMatchPath,
     HttpRouteMatchQueryParams,
+    JwtIdentityConfigClaimsToHeadersConfigs,
     JwtIdentityConfigJwtPayloadConfig,
     JwtIdentityConfigJwtTokenConfig,
     RiskCheckResultsMetadata,
@@ -1311,6 +1321,8 @@ __all__ = [
     InstallPluginResponseBodyData,
     ListConsumerAuthorizationRulesResponseBodyDataItems,
     ListConsumerAuthorizationRulesResponseBodyData,
+    ListConsumerQuotaRulesResponseBodyDataItems,
+    ListConsumerQuotaRulesResponseBodyData,
     ListConsumersResponseBodyDataItems,
     ListConsumersResponseBodyData,
     ListDomainsResponseBodyData,

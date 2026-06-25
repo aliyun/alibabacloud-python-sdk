@@ -15,13 +15,13 @@ class GetConsumerResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # O código de resposta.
         self.code = code
-        # The response payload.
+        # Os dados de resposta.
         self.data = data
-        # The status message.
+        # A mensagem de resposta.
         self.message = message
-        # The request ID.
+        # O ID da solicitação.
         self.request_id = request_id
 
     def validate(self):
@@ -78,25 +78,25 @@ class GetConsumerResponseBodyData(DaraModel):
         name: str = None,
         update_timestamp: int = None,
     ):
-        # The AK/SK authentication configurations.
+        # As configurações de autenticação por par de AccessKey.
         self.ak_sk_identity_configs = ak_sk_identity_configs
-        # The API key authentication configurations.
+        # A configuração de autenticação de chave de API.
         self.api_key_identity_config = api_key_identity_config
-        # The consumer ID.
+        # O ID do consumidor de API.
         self.consumer_id = consumer_id
-        # The creation timestamp.
+        # O carimbo de data/hora de criação.
         self.create_timestamp = create_timestamp
-        # The publishing status of the API in the current environment.
+        # O status de publicação da API no ambiente atual.
         self.deploy_status = deploy_status
-        # The description.
+        # A descrição.
         self.description = description
-        # Indicates if enabled.
+        # Indica se o consumidor de API está habilitado.
         self.enable = enable
-        # The JWT authentication configurations.
+        # A configuração de autenticação JWT.
         self.jwt_identity_config = jwt_identity_config
-        # The consumer name.
+        # O nome do consumidor de API.
         self.name = name
-        # The last update timestamp.
+        # O carimbo de data/hora de atualização.
         self.update_timestamp = update_timestamp
 
     def validate(self):

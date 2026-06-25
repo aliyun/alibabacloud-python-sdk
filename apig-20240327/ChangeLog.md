@@ -1,3 +1,7 @@
+2026-06-25 Version: 9.1.0
+- Support API ListConsumerQuotaRules.
+
+
 2026-06-23 Version: 9.0.0
 - Update API AddGatewayQuotaRule: add request parameters body.periodMultiplier.
 - Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictPeriodType.

@@ -5678,6 +5678,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_consumer_authorization_rules_with_options_async(consumer_id, request, headers, runtime)
 
+    def list_consumer_quota_rules_with_options(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerQuotaRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerQuotaRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerQuotaRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumers/{DaraURL.percent_encode(consumer_id)}/quota-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerQuotaRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consumer_quota_rules_with_options_async(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerQuotaRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerQuotaRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerQuotaRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumers/{DaraURL.percent_encode(consumer_id)}/quota-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerQuotaRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consumer_quota_rules(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerQuotaRulesRequest,
+    ) -> main_models.ListConsumerQuotaRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_consumer_quota_rules_with_options(consumer_id, request, headers, runtime)
+
+    async def list_consumer_quota_rules_async(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerQuotaRulesRequest,
+    ) -> main_models.ListConsumerQuotaRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_consumer_quota_rules_with_options_async(consumer_id, request, headers, runtime)
+
     def list_consumers_with_options(
         self,
         request: main_models.ListConsumersRequest,
