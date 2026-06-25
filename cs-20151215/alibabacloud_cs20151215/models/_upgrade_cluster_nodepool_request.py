@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class UpgradeClusterNodepoolRequest(DaraModel):
     def __init__(
         self,
+        ignore_warning_check: bool = None,
         image_id: str = None,
         kubernetes_version: str = None,
         node_names: List[str] = None,
@@ -18,6 +19,7 @@ class UpgradeClusterNodepoolRequest(DaraModel):
         runtime_version: str = None,
         use_replace: bool = None,
     ):
+        self.ignore_warning_check = ignore_warning_check
         # The system image ID of the node.
         self.image_id = image_id
         # The Kubernetes version of the node. You can call [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) to obtain the current cluster version information from the `KubernetesVersion` field.
@@ -46,6 +48,9 @@ class UpgradeClusterNodepoolRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ignore_warning_check is not None:
+            result['ignore_warning_check'] = self.ignore_warning_check
+
         if self.image_id is not None:
             result['image_id'] = self.image_id
 
@@ -71,6 +76,9 @@ class UpgradeClusterNodepoolRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ignore_warning_check') is not None:
+            self.ignore_warning_check = m.get('ignore_warning_check')
+
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')
 
@@ -108,15 +116,15 @@ class UpgradeClusterNodepoolRequestRollingPolicy(DaraModel):
         # 
         # You can set this parameter to 0 to specify no interval between batches.
         self.batch_interval = batch_interval
-        # The maximum number of nodes that can be upgraded in parallel per batch. Nodes in the node pool are upgraded in batches.
+        # The maximum number of nodes that can be updated in parallel per batch. Nodes in the node pool are updated in batches.
         # 
         # Valid values: [1,10].
         # 
         # Default value: 10.
         self.max_parallelism = max_parallelism
         # The automatic pause policy during node upgrades. Valid values:
-        # - FirstBatch: pauses after the first batch is completed.
-        # - EveryBatch: pauses after each batch is completed.
+        # - FirstBatch: pauses after the first batch is complete.
+        # - EveryBatch: pauses after each batch is complete.
         # - NotPause: does not pause.
         self.pause_policy = pause_policy
 

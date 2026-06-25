@@ -1,3 +1,7 @@
+2026-06-25 Version: 7.0.1
+- Update API UpgradeClusterNodepool: add request parameters body.ignore_warning_check.
+
+
 2026-06-25 Version: 7.0.0
 - Update API CreateClusterNodePool: update request parameters body.node_components.$.config.custom_config' type has changed.
 - Update API DescribeClusterNodePoolDetail: update response parameters Body.node_components.$.config.custom_config' type has changed.

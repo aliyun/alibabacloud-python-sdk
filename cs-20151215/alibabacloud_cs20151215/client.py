@@ -12419,6 +12419,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeClusterNodepoolResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.ignore_warning_check):
+            body['ignore_warning_check'] = request.ignore_warning_check
         if not DaraCore.is_null(request.image_id):
             body['image_id'] = request.image_id
         if not DaraCore.is_null(request.kubernetes_version):
@@ -12463,6 +12465,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeClusterNodepoolResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.ignore_warning_check):
+            body['ignore_warning_check'] = request.ignore_warning_check
         if not DaraCore.is_null(request.image_id):
             body['image_id'] = request.image_id
         if not DaraCore.is_null(request.kubernetes_version):
