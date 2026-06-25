@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from alibabacloud_cs20151215 import models as main_models
 from darabonba.model import DaraModel
@@ -92,11 +92,11 @@ class UpdateNodePoolComponentRequestRollingPolicy(DaraModel):
         max_parallelism: int = None,
         pause_policy: str = None,
     ):
-        # The interval between batches during the upgrade. Unit: seconds.
+        # The interval between batches during the upgrade, in seconds.
         self.batch_interval = batch_interval
         # The maximum number of nodes that can be updated in parallel per batch. Default value: 1.
         self.max_parallelism = max_parallelism
-        # The automatic pause policy during node upgrades.
+        # The automatic pause policy during the node upgrade process.
         self.pause_policy = pause_policy
 
     def validate(self):
@@ -134,7 +134,7 @@ class UpdateNodePoolComponentRequestRollingPolicy(DaraModel):
 class UpdateNodePoolComponentRequestConfig(DaraModel):
     def __init__(
         self,
-        custom_config: Dict[str, str] = None,
+        custom_config: Dict[str, Any] = None,
     ):
         # The custom configuration of the component.
         self.custom_config = custom_config

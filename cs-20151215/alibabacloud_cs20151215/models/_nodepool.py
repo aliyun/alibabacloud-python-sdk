@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from alibabacloud_cs20151215 import models as main_models
 from darabonba.model import DaraModel
@@ -25,15 +25,15 @@ class Nodepool(DaraModel):
     ):
         # The auto scaling configuration of the node pool.
         self.auto_scaling = auto_scaling
-        # [This field is deprecated. Use desired_size instead.]
+        # This parameter is deprecated. Use desired_size instead.
         # 
         # The number of nodes in the node pool.
         self.count = count
-        # [This field is deprecated.]
+        # This parameter is deprecated.
         # 
         # The edge node pool configuration.
         self.interconnect_config = interconnect_config
-        # The network type of the edge node pool. This value is valid only for node pools whose `type` is `edge`. Valid values:
+        # The network type of the edge node pool. This parameter is valid only for node pools whose `type` is `edge`. Valid values:
         # 
         # - `basic`: basic.
         # - `private`: dedicated. Supported in version 1.22 and later.
@@ -52,7 +52,7 @@ class Nodepool(DaraModel):
         self.nodepool_info = nodepool_info
         # The scaling group configuration of the node pool.
         self.scaling_group = scaling_group
-        # The confidential computing node pool configuration.
+        # The confidential computing configuration of the node pool.
         self.tee_config = tee_config
 
     def validate(self):
@@ -1065,7 +1065,7 @@ class NodepoolNodeComponents(DaraModel):
 class NodepoolNodeComponentsConfig(DaraModel):
     def __init__(
         self,
-        custom_config: Dict[str, str] = None,
+        custom_config: Dict[str, Any] = None,
     ):
         # 节点组件自定义配置。
         self.custom_config = custom_config

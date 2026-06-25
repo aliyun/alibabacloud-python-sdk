@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from alibabacloud_cs20151215 import models as main_models
 from darabonba.model import DaraModel
@@ -163,7 +163,7 @@ class InstallNodePoolComponentsRequestComponents(DaraModel):
 class InstallNodePoolComponentsRequestComponentsConfig(DaraModel):
     def __init__(
         self,
-        custom_config: Dict[str, str] = None,
+        custom_config: Dict[str, Any] = None,
     ):
         # The custom configuration of the component.
         self.custom_config = custom_config

@@ -1,3 +1,11 @@
+2026-06-25 Version: 7.0.0
+- Update API CreateClusterNodePool: update request parameters body.node_components.$.config.custom_config' type has changed.
+- Update API DescribeClusterNodePoolDetail: update response parameters Body.node_components.$.config.custom_config' type has changed.
+- Update API DescribeClusterNodePools: update response parameters Body.nodepools.$.node_components.$.config.custom_config' type has changed.
+- Update API InstallNodePoolComponents: update request parameters body.components.$.config.customConfig' type has changed.
+- Update API UpdateNodePoolComponent: update request parameters body.config.customConfig' type has changed.
+
+
 2026-06-23 Version: 6.7.1
 - Update API DescribeClusterNodes: add request parameters nodeIps.
 - Update API DescribeClusterNodes: add request parameters nodeLabels.
