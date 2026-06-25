@@ -1,3 +1,7 @@
+2026-06-25 Version: 1.16.1
+- Update API SendChatMessage: add request parameters WorkspaceId.
+
+
 2026-06-24 Version: 1.16.0
 - Support API GetSqlConsoleOperationLog.
 - Update API ListDataAgentSession: add request parameters Mode.

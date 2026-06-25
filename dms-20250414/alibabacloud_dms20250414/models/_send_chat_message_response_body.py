@@ -22,7 +22,7 @@ class SendChatMessageResponseBody(DaraModel):
         self.error_message = error_message
         # The request ID.
         self.request_id = request_id
-        # Success
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,13 +79,13 @@ class SendChatMessageResponseBodyData(DaraModel):
         message_id: str = None,
         session_id: str = None,
     ):
-        # AgentId
+        # The agent ID.
         self.agent_id = agent_id
-        # Message
+        # The message.
         self.message = message
         # The message ID.
         self.message_id = message_id
-        # SessionId
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

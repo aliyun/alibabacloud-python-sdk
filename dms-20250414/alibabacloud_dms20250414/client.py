@@ -7173,6 +7173,8 @@ class Client(OpenApiClient):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.task_config_shrink):
             query['TaskConfig'] = request.task_config_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -7235,6 +7237,8 @@ class Client(OpenApiClient):
             query['SessionId'] = request.session_id
         if not DaraCore.is_null(request.task_config_shrink):
             query['TaskConfig'] = request.task_config_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

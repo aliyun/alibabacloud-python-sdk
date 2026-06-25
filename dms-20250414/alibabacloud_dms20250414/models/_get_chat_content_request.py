@@ -14,9 +14,9 @@ class GetChatContentRequest(DaraModel):
     ):
         # The agent ID. This parameter is required.
         self.agent_id = agent_id
-        # The service returns output starting from this checkpoint.
+        # The backend will return output starting from this checkpoint.
         self.checkpoint = checkpoint
-        # The DMS unit. For users on the Alibaba Cloud China site, the default value is cn-hangzhou.
+        # The current DMS unit. Chinese mainland users of Alibaba Cloud should use cn-hangzhou by default.
         self.dmsunit = dmsunit
         # The session ID. This parameter is required.
         self.session_id = session_id

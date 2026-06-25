@@ -23,51 +23,53 @@ class SendChatMessageRequest(DaraModel):
         session_config: main_models.SendChatMessageRequestSessionConfig = None,
         session_id: str = None,
         task_config: main_models.SendChatMessageRequestTaskConfig = None,
+        workspace_id: str = None,
     ):
-        # The agent ID. This is a required field. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
+        # The agent ID. This is a required field. You can obtain the current AgentId from the return value of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to pass in each request may change.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can check your current Data Management unit in the Data Management console. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to ap-southeast-1.
+        # The DMS unit you are currently in. If you choose to analyze a database, this information will be used to correctly connect to your DMS instance through DMS. You can go to the DMS console to check your current DMS unit. If you are a China site user of Alibaba Cloud, you can directly enter cn-hangzhou.
         self.dmsunit = dmsunit
-        # The data source information. This parameter can be left empty. This parameter supports only a single data source. Use the DataSources parameter instead.
+        # The data source information. This parameter can be left empty. Only one data source can be passed in through this parameter. We recommend that you use the DataSources parameter instead.
         self.data_source = data_source
         # The detailed data source information. This parameter can be left empty.
         self.data_sources = data_sources
-        # The message content to send to the Agent in this request.
+        # The content of the message to be sent to the Agent.
         # 
         # This parameter is required.
         self.message = message
-        # The message type. Default value: `[primary]`.  
+        # The message type. Default value: `[primary]`.
         # 
-        # - For regular interactions with the Agent, set the message type to `[primary]`.
+        # - In normal cases, when interacting with the Agent, the message type is `[primary]`.
         # 
-        # - When the message is a response to the Agent\\"s Human-in-Loop question, set the type to `[additional]`.
+        # - When the message is a response to the Agent\\"s Human-in-Loop question, the type should be `[additional]`.
         # 
-        # - When the message is intended to trigger report generation, set the type to `[report]`.
+        # - When the message is intended to trigger a report generation, the type should be `[report]`.
         # 
-        # - When the message is intended to cancel the current session, set the type to `[cancel]`.
+        # - When the message is intended to cancel the current session, the type should be `[cancel]`.
         self.message_type = message_type
         # The parent session ID.
         self.parent_session_id = parent_session_id
-        # This field is required when the message type is `additional`. Specify the specific question that the Agent asks the user through Human-in-Loop.
+        # This field is required when the message type is `additional`. Pass in the specific question that the Agent asked the user through Human-in-Loop.
         self.question = question
-        # The quoted content to pass in. This is typically used during interactions with the Agent.
+        # Pass in the current quoted content, typically used when interacting with the Agent.
         self.quoted_message = quoted_message
         # **Important**
         # 
-        # When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, such as requesting further in-depth analysis after analysis is complete, leave reply_to empty or set it to "0".  
+        # When this message is a reply to an Agent message (for example, when the Agent asks for clarification through ASK_HUMAN), reply_to must be set to the exact Checkpoint number carried in that Agent message. If this message is not a specific reply, such as requesting the Agent for further in-depth analysis after analysis is completed, reply_to can be left empty or set to "0".
         # 
         # This field affects how the Agent decides to process the message. Passing an incorrect value may lead to analysis results that do not meet expectations.
         self.reply_to = reply_to
-        # The special configuration for this session. For the same session, only the configuration passed with the first SendMessage call takes effect.
+        # The special configuration for this session. For the same session, only the configuration passed in the first SendMessage call takes effect.
         self.session_config = session_config
-        # The session ID. This is a required field. You can obtain the SessionId by calling the CreateAgentSession operation.
+        # The session ID. This is a required field. You can obtain the SessionId by calling CreateAgentSession.
         # 
         # This parameter is required.
         self.session_id = session_id
-        # The configuration items that affect only the current task.
+        # The configuration items that only affect the current task.
         self.task_config = task_config
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.data_source:
@@ -127,6 +129,9 @@ class SendChatMessageRequest(DaraModel):
         if self.task_config is not None:
             result['TaskConfig'] = self.task_config.to_map()
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -176,6 +181,9 @@ class SendChatMessageRequest(DaraModel):
             temp_model = main_models.SendChatMessageRequestTaskConfig()
             self.task_config = temp_model.from_map(m.get('TaskConfig'))
 
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+
         return self
 
 class SendChatMessageRequestTaskConfig(DaraModel):
@@ -183,7 +191,7 @@ class SendChatMessageRequestTaskConfig(DaraModel):
         self,
         report_config: main_models.SendChatMessageRequestTaskConfigReportConfig = None,
     ):
-        # The report rule configuration. Only when MessageType is REPORT, a report task is executed based on this configuration.
+        # The report rule configuration. Only when MessageType is REPORT, a report task will be executed based on this configuration.
         self.report_config = report_config
 
     def validate(self):
@@ -215,14 +223,11 @@ class SendChatMessageRequestTaskConfigReportConfig(DaraModel):
         report_theme: str = None,
         report_type: str = None,
     ):
-        # The prompt that the report must follow.
+        # The prompt that this report should follow.
         self.report_prompt = report_prompt
-        # The report theme. Valid values: default, journal, legacy, and neobrutalism.
+        # The report theme. Currently supported values: [default, journal, legacy, neobrutalism].
         self.report_theme = report_theme
-        # The service type. Valid values:
-        # - TextReport: generates a text report.
-        # - WebReport: generates a web report.
-        # Currently only WebReport is supported.
+        # The service type. Valid values: TextReport and WebReport, which indicate whether this task generates a text report or a web report. Currently, only the WebReport type is supported.
         self.report_type = report_type
 
     def validate(self):
@@ -270,18 +275,18 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Deprecated. Use the input parameter of CreateAgentSession instead.
+        # Deprecated. The value specified in CreateAgentSession takes precedence.
         self.custom_agent_id = custom_agent_id
-        # Deprecated. Use the input parameter of CreateAgentSession instead.
+        # Deprecated. The value specified in CreateAgentSession takes precedence.
         self.custom_agent_stage = custom_agent_stage
-        # Currently only Chinese and English are supported. The default value is Chinese. Only uppercase values are supported.
+        # Currently only Chinese and English are supported. The default is Chinese. Only uppercase values are supported.
         self.language = language
-        # The mode. Valid values:
-        #  - **ASK_DATA**: data query mode.
-        #  - **ANALYSIS**: analysis mode.
-        #  - **INSIGHT**: insight mode.
+        # The mode:
+        #  - **ASK_DATA**: Ask Data mode
+        #  - **ANALYSIS**: Analysis mode
+        #  - **INSIGHT**: Insight mode
         self.mode = mode
-        # The text of up to 64 characters that is used as a watermark in the generated PDF report.
+        # You can enter text of up to 64 characters, which will be used as a watermark in the generated PDF report.
         self.report_water_mark = report_water_mark
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
@@ -377,17 +382,15 @@ class SendChatMessageRequestDataSources(DaraModel):
     ):
         # Deprecated. You do not need to specify this parameter.
         self.data_source_id = data_source_id
-        # The data source type. Valid values:
-        # - remote_data_center: file
-        # - database: database.
+        # The data source type. Valid values: [remote_data_center, database], which indicate whether the current analysis is for a file or a database respectively.
         self.data_source_type = data_source_type
         # Deprecated. You do not need to specify this parameter.
         self.database = database
         # The database name.
         self.db_name = db_name
-        # The ID of the database in Data Management.
+        # The ID of the database in DMS.
         self.dms_database_id = dms_database_id
-        # The ID of the instance in Data Management.
+        # The ID of the instance in DMS.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine
@@ -497,17 +500,15 @@ class SendChatMessageRequestDataSource(DaraModel):
     ):
         # Deprecated. You do not need to specify this parameter.
         self.data_source_id = data_source_id
-        # The data source type. Valid values:
-        # - remote_data_center: file
-        # - database: database.
+        # The data source type. Valid values: `[remote_data_center, database]`, which indicate whether the current analysis is for a file or a database respectively.
         self.data_source_type = data_source_type
         # Deprecated. You do not need to specify this parameter.
         self.database = database
         # The database name.
         self.db_name = db_name
-        # The ID of the database in Data Management.
+        # The ID of the database in DMS.
         self.dms_database_id = dms_database_id
-        # The ID of the instance in Data Management.
+        # The ID of the instance in DMS.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine
