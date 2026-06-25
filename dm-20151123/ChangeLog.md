@@ -1,3 +1,8 @@
+2026-06-25 Version: 1.11.0
+- Support API DeleteTemplate.
+- Support API ModifyTemplate.
+
+
 2026-06-23 Version: 1.10.2
 - Update API ValidateEmail: add request parameters ProbeType.
 

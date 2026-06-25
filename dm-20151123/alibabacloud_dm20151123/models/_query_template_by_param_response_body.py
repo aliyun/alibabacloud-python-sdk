@@ -16,7 +16,7 @@ class QueryTemplateByParamResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.QueryTemplateByParamResponseBodyData = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

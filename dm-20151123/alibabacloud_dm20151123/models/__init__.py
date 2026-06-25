@@ -107,6 +107,9 @@ from ._delete_receiver_detail_response import DeleteReceiverDetailResponse
 from ._delete_tag_request import DeleteTagRequest
 from ._delete_tag_response_body import DeleteTagResponseBody
 from ._delete_tag_response import DeleteTagResponse
+from ._delete_template_request import DeleteTemplateRequest
+from ._delete_template_response_body import DeleteTemplateResponseBody
+from ._delete_template_response import DeleteTemplateResponse
 from ._delete_validate_file_request import DeleteValidateFileRequest
 from ._delete_validate_file_response_body import DeleteValidateFileResponseBody
 from ._delete_validate_file_response import DeleteValidateFileResponse
@@ -172,6 +175,9 @@ from ._modify_pwby_domain_response import ModifyPWByDomainResponse
 from ._modify_tag_request import ModifyTagRequest
 from ._modify_tag_response_body import ModifyTagResponseBody
 from ._modify_tag_response import ModifyTagResponse
+from ._modify_template_request import ModifyTemplateRequest
+from ._modify_template_response_body import ModifyTemplateResponseBody
+from ._modify_template_response import ModifyTemplateResponse
 from ._open_sendify_trial_service_response_body import OpenSendifyTrialServiceResponseBody
 from ._open_sendify_trial_service_response import OpenSendifyTrialServiceResponse
 from ._query_domain_by_param_request import QueryDomainByParamRequest
@@ -397,6 +403,9 @@ __all__ = [
     DeleteTagRequest,
     DeleteTagResponseBody,
     DeleteTagResponse,
+    DeleteTemplateRequest,
+    DeleteTemplateResponseBody,
+    DeleteTemplateResponse,
     DeleteValidateFileRequest,
     DeleteValidateFileResponseBody,
     DeleteValidateFileResponse,
@@ -462,6 +471,9 @@ __all__ = [
     ModifyTagRequest,
     ModifyTagResponseBody,
     ModifyTagResponse,
+    ModifyTemplateRequest,
+    ModifyTemplateResponseBody,
+    ModifyTemplateResponse,
     OpenSendifyTrialServiceResponseBody,
     OpenSendifyTrialServiceResponse,
     QueryDomainByParamRequest,
