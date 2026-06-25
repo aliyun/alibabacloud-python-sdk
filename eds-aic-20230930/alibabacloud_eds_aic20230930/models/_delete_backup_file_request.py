@@ -11,6 +11,8 @@ class DeleteBackupFileRequest(DaraModel):
         self,
         backup_file_id_list: List[str] = None,
     ):
+        # A list of backup file IDs.
+        # 
         # This parameter is required.
         self.backup_file_id_list = backup_file_id_list
 

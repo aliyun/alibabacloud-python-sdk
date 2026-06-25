@@ -13,7 +13,9 @@ class DescribeDisplayConfigResponseBody(DaraModel):
         display_config_model: List[main_models.DescribeDisplayConfigResponseBodyDisplayConfigModel] = None,
         request_id: str = None,
     ):
+        # A list of display settings.
         self.display_config_model = display_config_model
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,11 +62,17 @@ class DescribeDisplayConfigResponseBodyDisplayConfigModel(DaraModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # The instance ID.
         self.android_instance_id = android_instance_id
+        # The dots per inch (DPI). The value ranges from 72 to 600.
         self.dpi = dpi
+        # > This parameter is not publicly available.
         self.fps = fps
+        # Indicates whether the resolution is locked.
         self.lock_resolution = lock_resolution
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
 
     def validate(self):

@@ -1,3 +1,12 @@
+2026-06-25 Version: 4.29.0
+- Support API DeleteMobileAgentPackage.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.Channel.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.PackageId.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.Channel.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.PackageId.
+- Update API DescribeBackupFiles: add response parameters Body.Data.$.Channel.
+
+
 2026-06-04 Version: 4.28.1
 - Update API CreateMobileAgentPackage: add request parameters ImageId.
 - Update API CreateMobileAgentPackage: add request parameters PackageSpecId.

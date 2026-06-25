@@ -18,12 +18,6 @@ class OperateAppRequest(DaraModel):
         # The IDs of the cloud phone instances.
         self.instance_id_list = instance_id_list
         # The type of the operation.
-        # 
-        # Valid values:
-        # 
-        # *   stop: closes the app.
-        # *   restart: reopens the app.
-        # *   start: open the app.
         self.operate_type = operate_type
 
     def validate(self):

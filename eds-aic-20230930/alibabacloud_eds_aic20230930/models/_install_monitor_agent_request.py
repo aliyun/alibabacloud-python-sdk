@@ -12,7 +12,13 @@ class InstallMonitorAgentRequest(DaraModel):
         android_instance_ids: List[str] = None,
         sale_mode: str = None,
     ):
+        # A list of instance IDs.
         self.android_instance_ids = android_instance_ids
+        # The monitoring type.
+        # 
+        # - Instance mode: Instance
+        # 
+        # - Node mode: Node
         self.sale_mode = sale_mode
 
     def validate(self):

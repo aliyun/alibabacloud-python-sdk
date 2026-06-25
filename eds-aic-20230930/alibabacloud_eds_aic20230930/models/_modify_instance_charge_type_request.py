@@ -17,27 +17,29 @@ class ModifyInstanceChargeTypeRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
-        # Specifies whether to enable the auto-payment feature. Default value: false.
+        # Specifies whether to enable auto-payment. The default value is `false`.
         self.auto_pay = auto_pay
-        # Specifies whether to enable the auto-renewal feature. Default value: false.
+        # Specifies whether to enable auto-renewal. The default value is `false`.
         self.auto_renew = auto_renew
-        # The billing method. Valid values:
+        # The new billing method for the instance groups.
         # 
-        # >  Currently, this operation only allows you to change the billing method from **pay-as-you-go to subscription**.
+        # > You can only change the billing method from pay-as-you-go to subscription.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The IDs of the instance groups.
+        # The instance group IDs.
         # 
         # This parameter is required.
         self.instance_group_ids = instance_group_ids
-        # The subscription duration. The unit is specified by PeriodUnit. Valid values: 1 Month, 2 Months, 3 Months, 6 Months, and 1 Year.
+        # The subscription duration. The PeriodUnit parameter specifies the unit. Valid subscription durations are 1, 2, 3, and 6 months, and 1 year.
         self.period = period
-        # The unit of the subscription duration. Valid values:
+        # The unit for the subscription duration. Valid values:
         # 
-        # *   **Month**
-        # *   **Year**
+        # - **Month**
+        # 
+        # - **Year**
         self.period_unit = period_unit
+        # The promotion or coupon ID.
         self.promotion_id = promotion_id
 
     def validate(self):

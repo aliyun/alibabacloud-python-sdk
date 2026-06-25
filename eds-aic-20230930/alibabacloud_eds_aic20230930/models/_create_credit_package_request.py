@@ -13,10 +13,26 @@ class CreateCreditPackageRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # Whether to enable auto-payment. Valid values:
+        # 
+        # - **true**: Enables auto-payment. Make sure that your account has a sufficient balance.
+        # 
+        # - **false** (Default): Creates an unpaid order.
+        # 
+        # > If your account has an insufficient balance, you can set this parameter to false. This generates an unpaid order. You can then pay for the order in the Wuying Cloud Phone management console.
         self.auto_pay = auto_pay
+        # The number of credits.
         self.credit_amount = credit_amount
+        # The subscription duration. The PeriodUnit parameter specifies the unit for the duration.
         self.period = period
+        # The unit of the subscription duration.
+        # Valid values:
+        # 
+        # - **Month**: The period is measured in months.
+        # 
+        # - **Year**: The period is measured in years.
         self.period_unit = period_unit
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

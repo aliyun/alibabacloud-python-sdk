@@ -16,10 +16,15 @@ class DescribeAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.DescribeAgentTaskResponseBodyTasks] = None,
     ):
+        # The status code.
         self.code = code
+        # The task count.
         self.count = count
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # A list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -86,13 +91,31 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         task_result: str = None,
         user_prompt: str = None,
     ):
+        # The task\\"s current status. Valid values:
+        # 
+        # `PENDING`: The task is being created.
+        # 
+        # `RUNNING`: The task is running.
+        # 
+        # `COMPLETED`: The task has completed.
+        # 
+        # `FAILED`: The task failed.
+        # 
+        # `TIMEOUT`: The task timed out.
         self.current_status = current_status
+        # The mobile node ID.
         self.instance_id = instance_id
+        # The task\\"s creation time, in ISO 8601 format.
         self.running_at = running_at
+        # The number of steps executed.
         self.steps = steps
+        # The task duration. This field is returned only when `CurrentStatus` is `FAILED` or `COMPLETED`.
         self.task_duration = task_duration
+        # The globally unique task ID.
         self.task_id = task_id
+        # The task result. This field is returned only when `CurrentStatus` is `COMPLETED` or `FAILED`.
         self.task_result = task_result
+        # The user prompt that the Agent uses to perform the task.
         self.user_prompt = user_prompt
 
     def validate(self):

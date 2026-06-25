@@ -15,14 +15,17 @@ class ModifyAndroidInstanceRequest(DaraModel):
         new_android_instance_name: str = None,
         up_bandwidth_limit: int = None,
     ):
-        # The ID of the cloud phone instance.
+        # The ID of a single instance. If you specify this parameter, InstanceIds is ignored.
         self.android_instance_id = android_instance_id
+        # The limit for downstream bandwidth. Unit: Mbps.
         self.down_bandwidth_limit = down_bandwidth_limit
+        # The list of Android instance IDs. You can specify from 1 to 100 IDs.
         self.instance_ids = instance_ids
-        # The new name of the cloud phone instance.
+        # The new name for the instance.
         # 
-        # >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+        # > - The name can be up to 30 characters long. It must start with a letter or a Chinese character and cannot start with http\\:// or https\\://. The name can contain only letters, digits, Chinese characters, colons (:), underscores (_), periods (.), and hyphens (-).
         self.new_android_instance_name = new_android_instance_name
+        # The limit for upstream bandwidth. Unit: Mbps.
         self.up_bandwidth_limit = up_bandwidth_limit
 
     def validate(self):

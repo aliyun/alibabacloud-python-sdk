@@ -22,54 +22,27 @@ class CreatePolicyGroupRequest(DaraModel):
         resolution_width: int = None,
         watermark: main_models.CreatePolicyGroupRequestWatermark = None,
     ):
-        # Specifies whether to enable the webcam redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to enable local camera redirection.
         self.camera_redirect = camera_redirect
-        # The read/write permissions on the clipboard.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: read and write.
-        # *   off: read/write disabled.
+        # The clipboard permission.
         self.clipboard = clipboard
-        # The file transfer policy of the Alibaba Cloud Workspace web client.
-        # 
-        # Valid values:
-        # 
-        # *   all: File upload and download are supported.
-        # *   download: Only file download is supported.
-        # *   upload: Only file upload is supported.
-        # *   off: File upload or download is forbidden.
+        # The file transfer policy for the web client.
         self.html_5file_transfer = html_5file_transfer
-        # The read/write permissions on the on-premises drive.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: ready and write.
-        # *   off: read/write disabled.
+        # The local disk mapping permission.
         self.local_drive = local_drive
         # Specifies whether to lock the resolution.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
         self.lock_resolution = lock_resolution
-        # The network redirection policy.
+        # Network redirection.
         self.net_redirect_policy = net_redirect_policy
-        # The name of the policy.
+        # The policy name.
         self.policy_group_name = policy_group_name
+        # The policy type.
         self.policy_type = policy_type
-        # The height of the resolution. Unit: pixels.
+        # The resolution height, in pixels.
         self.resolution_height = resolution_height
-        # The width of the resolution. Unit: pixels.
+        # The resolution width, in pixels.
         self.resolution_width = resolution_width
+        # Screen watermark.
         self.watermark = watermark
 
     def validate(self):
@@ -167,11 +140,17 @@ class CreatePolicyGroupRequestWatermark(DaraModel):
         watermark_transparency_value: int = None,
         watermark_types: List[str] = None,
     ):
+        # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
+        # The custom text for the watermark. The text can be up to 10 characters long and cannot contain emojis.
         self.watermark_custom_text = watermark_custom_text
+        # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
+        # Specifies whether to enable the screen watermark.
         self.watermark_switch = watermark_switch
+        # The opacity of the watermark. A larger value indicates lower transparency. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
+        # The screen watermark content.
         self.watermark_types = watermark_types
 
     def validate(self):
@@ -236,35 +215,21 @@ class CreatePolicyGroupRequestNetRedirectPolicy(DaraModel):
         proxy_user_name: str = None,
         rules: List[main_models.CreatePolicyGroupRequestNetRedirectPolicyRules] = None,
     ):
-        # Specifies whether to manually configure a custom proxy.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to manually configure a transparent proxy.
         self.custom_proxy = custom_proxy
-        # The IPv4 address of the custom proxy.
+        # The IP address of the transparent proxy. The IP address must be in IPv4 format.
         self.host_addr = host_addr
-        # Specifies whether to enable the network redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to enable network redirection.
         self.net_redirect = net_redirect
-        # The port of the custom proxy. Valid values: 1 to 65535.
+        # The port of the transparent proxy. Valid values: 1 to 65535.
         self.port = port
-        # The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
+        # The proxy password. The password must be 1 to 256 characters in length. It cannot contain Chinese characters or whitespace characters.
         self.proxy_password = proxy_password
-        # The type of the proxy protocol.
-        # 
-        # Valid values:
-        # 
-        # *   socks5.
+        # The proxy protocol type.
         self.proxy_type = proxy_type
-        # The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
+        # The proxy username. The username must be 1 to 256 characters in length. It cannot contain Chinese characters or whitespace characters.
         self.proxy_user_name = proxy_user_name
-        # The proxy rules. You can create up to 100 proxy rules.
+        # The list of proxy rules. You can specify up to 100 rules.
         self.rules = rules
 
     def validate(self):
@@ -343,14 +308,9 @@ class CreatePolicyGroupRequestNetRedirectPolicyRules(DaraModel):
         rule_type: str = None,
         target: str = None,
     ):
-        # The type of the rule.
-        # 
-        # Valid values:
-        # 
-        # *   prc: an application package name.
-        # *   domain: a domain name.
+        # The rule type.
         self.rule_type = rule_type
-        # The name of the application package or domain name.
+        # The application package name or domain name.
         self.target = target
 
     def validate(self):

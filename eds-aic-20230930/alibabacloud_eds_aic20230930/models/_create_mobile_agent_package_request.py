@@ -22,19 +22,46 @@ class CreateMobileAgentPackageRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # The number of packages.
         self.amount = amount
+        # Specifies whether to enable auto-payment. Valid values:
+        # 
+        # - **true**: Enables auto-payment. You must ensure that your account balance is sufficient.
+        # 
+        # - **false** (default): An unpaid order is generated. Your account is not charged.
+        # 
+        # > If your account balance is insufficient, you can set this parameter to `false` to generate an unpaid order. Then, you can log in to the Wuying Cloud Phone management console to pay for the order.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # 
+        # - **true**: Enables auto-renewal.
+        # 
+        # - **false** (default): Disables auto-renewal.
         self.auto_renew = auto_renew
+        # The region where the instance is located. Currently, only `cn-hangzhou` is supported.
         self.biz_region_id = biz_region_id
+        # The credit amount.
         self.credit_amount = credit_amount
+        # The credit limit configuration.
         self.credit_config = credit_config
         self.image_id = image_id
+        # The instance name.
         self.instance_name = instance_name
+        # The package specification.
         self.mobile_agent_package_spec = mobile_agent_package_spec
         self.package_spec_id = package_spec_id
+        # The callback URL to which the user is redirected after a successful payment.
         self.paid_callback_url = paid_callback_url
+        # The subscription period. The unit of the period is specified by the `PeriodUnit` parameter.
         self.period = period
+        # The unit of the subscription period.
+        # Valid values:
+        # 
+        # - **Month**
+        # 
+        # - **Year**
         self.period_unit = period_unit
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

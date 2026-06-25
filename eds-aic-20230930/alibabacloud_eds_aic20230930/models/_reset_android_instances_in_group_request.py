@@ -14,10 +14,12 @@ class ResetAndroidInstancesInGroupRequest(DaraModel):
         sale_mode: str = None,
         setting_reset_type: int = None,
     ):
-        # The IDs of the cloud phone instances.
+        # A list of instance IDs.
         self.android_instance_ids = android_instance_ids
         self.ignore_param_validation = ignore_param_validation
+        # The sale mode. This parameter is deprecated.
         self.sale_mode = sale_mode
+        # <props="china">Specifies whether to retain the property settings when you reset the instances. By default, the property settings are not retained. This parameter applies only to cloud phone matrix instances. Run the wya dump config command to view the details of the retained properties.<props="intl">This parameter is not supported on the international site (alibabacloud.com).
         self.setting_reset_type = setting_reset_type
 
     def validate(self):

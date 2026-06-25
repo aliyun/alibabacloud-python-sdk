@@ -14,9 +14,13 @@ class DescribeSystemPropertyTemplatesRequest(DaraModel):
         template_ids: List[str] = None,
         template_name: str = None,
     ):
+        # The maximum number of entries to return for a single request.
         self.max_results = max_results
+        # The starting position for reading. If this parameter is empty, reading starts from the beginning.
         self.next_token = next_token
+        # The property template ID.
         self.template_ids = template_ids
+        # The template name.
         self.template_name = template_name
 
     def validate(self):

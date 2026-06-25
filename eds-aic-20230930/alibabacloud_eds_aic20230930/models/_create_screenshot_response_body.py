@@ -13,9 +13,9 @@ class CreateScreenshotResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.CreateScreenshotResponseBodyTasks] = None,
     ):
-        # The ID of the request. If the request fails, share this ID with technical support to help diagnose the issue.
+        # The unique ID of the request. If you encounter an issue, provide this request ID for troubleshooting.
         self.request_id = request_id
-        # The tasks.
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -59,10 +59,11 @@ class CreateScreenshotResponseBodyTasks(DaraModel):
         screenshot_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the cloud phone instance.
+        # The instance ID.
         self.android_instance_id = android_instance_id
+        # The screenshot ID. The generated screenshot is named "ScreenshotId_AndroidInstanceId.png."
         self.screenshot_id = screenshot_id
-        # The ID of the task. You can use the task ID with the DescribeTasks operation to get the download link for the screenshot.
+        # The task ID. You can use this ID to call the DescribeTasks operation and query the screenshot task. When the task is complete, you can get the download link for the screenshot.
         self.task_id = task_id
 
     def validate(self):

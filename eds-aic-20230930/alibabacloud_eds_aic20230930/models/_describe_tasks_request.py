@@ -45,38 +45,10 @@ class DescribeTasksRequest(DaraModel):
         # The IDs of the tasks.
         self.task_ids = task_ids
         # The state of the task.
-        # 
-        # Valid values:
-        # 
-        # *   PartFinished: The task is partially successful.
-        # *   Finished: The task is completed.
-        # *   Failed: The task failed.
-        # *   Skipped: The task is skipped.
-        # *   Processing: The task is running.
-        # *   Waiting: The task is in queue.
         self.task_status = task_status
         # The status of the tasks.
         self.task_statuses = task_statuses
         # The type of the task.
-        # 
-        # Valid values:
-        # 
-        # *   BackupFile: backs up files.
-        # *   StopInstance: stops cloud phone instances.
-        # *   RebootInstance: restarts cloud phone instances.
-        # *   StartApp: starts apps.
-        # *   SendFile: uploads files.
-        # *   RunCommand: sends remote command.
-        # *   RestartApp: restarts apps.
-        # *   ResetInstance: resets cloud phone instances.
-        # *   RecoverFile: recovers files.
-        # *   UninstallApp: uninstalls apps.
-        # *   StopApp: stops apps.
-        # *   Screenshot: takes screenshots.
-        # *   InstallApp: installs apps.
-        # *   FetchFile: downloads files.
-        # *   UpdateGroupImage: replaces images.
-        # *   StartInstance: starts instances.
         self.task_type = task_type
         # The types of the tasks.
         self.task_types = task_types

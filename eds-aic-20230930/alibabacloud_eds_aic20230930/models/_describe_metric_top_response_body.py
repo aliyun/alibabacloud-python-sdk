@@ -15,9 +15,13 @@ class DescribeMetricTopResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The instance monitoring data.
         self.metric_total_model = metric_total_model
+        # The token to retrieve the next page of results. If the results are not fully returned in a single query, this parameter is not empty. You can use this token in a subsequent query to retrieve the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,8 +77,12 @@ class DescribeMetricTopResponseBodyMetricTotalModel(DaraModel):
         instance_id: str = None,
         metric_model_list: List[main_models.DescribeMetricTopResponseBodyMetricTotalModelMetricModelList] = None,
     ):
+        # For instance-level monitoring, this is the cloud phone instance ID.
+        # <props="china">For matrix-level monitoring, this is the matrix ID.
         self.android_instance_id = android_instance_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The monitoring data of metrics.
         self.metric_model_list = metric_model_list
 
     def validate(self):
@@ -123,7 +131,9 @@ class DescribeMetricTopResponseBodyMetricTotalModelMetricModelList(DaraModel):
         data_points: List[main_models.DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints] = None,
         metric_name: str = None,
     ):
+        # The monitoring data points.
         self.data_points = data_points
+        # The name of the metric.
         self.metric_name = metric_name
 
     def validate(self):
@@ -171,12 +181,27 @@ class DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints(Dar
         properties: str = None,
         timestamp: int = None,
     ):
+        # The average value. Unit: %.
+        # 
+        # > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
         self.average = average
+        # The ID.
         self.id = id
+        # The maximum value. Unit: %.
+        # 
+        # > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
         self.maximum = maximum
+        # The minimum value.
+        # 
+        # > The unit is bps when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
         self.minimum = minimum
+        # The name.
         self.name = name
+        # The properties.
+        # 
+        # > A JSON string that contains the extension properties.
         self.properties = properties
+        # The timestamp of the data point. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

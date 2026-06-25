@@ -15,8 +15,11 @@ class UpdateInstanceImageRequest(DaraModel):
         reset: bool = None,
     ):
         self.ignore_param_validation = ignore_param_validation
+        # The ID of the image. Call [](t2730769.xdita#)to query the list of images for cloud phones.
         self.image_id = image_id
+        # The list of instances.
         self.instance_id_list = instance_id_list
+        # Specifies whether to reset the instance. If you reset the instance, all user data on the instance is cleared.
         self.reset = reset
 
     def validate(self):

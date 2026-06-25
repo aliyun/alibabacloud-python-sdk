@@ -11,8 +11,9 @@ class GetInstancePropertiesResponseBody(DaraModel):
         property_template_model: main_models.GetInstancePropertiesResponseBodyPropertyTemplateModel = None,
         request_id: str = None,
     ):
+        # The instance properties.
         self.property_template_model = property_template_model
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,6 +49,9 @@ class GetInstancePropertiesResponseBodyPropertyTemplateModel(DaraModel):
         self,
         content: str = None,
     ):
+        # The instance properties.
+        # 
+        # > Format: `{ "propties":{"key1":"value1"}}`.
         self.content = content
 
     def validate(self):

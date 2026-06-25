@@ -15,13 +15,13 @@ class DescribeImageListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The images.
+        # The returned data.
         self.data = data
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token that is used to start the next query. An empty value indicates that all data has been returned.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -92,52 +92,35 @@ class DescribeImageListResponseBodyData(DaraModel):
     ):
         # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The description of the image.
+        # The description.
         self.description = description
         # The time when the image was created.
         self.gmt_create = gmt_create
         # The time when the image was last modified.
         self.gmt_modified = gmt_modified
+        # An array of tag objects.
         self.image_biz_tags = image_biz_tags
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The name of the image.
+        # The image name.
         self.image_name = image_name
-        # The region where the image is distributed. The key is the region and the value is the distribution information.
+        # The image distribution information by region. The key is the region and the value is the distribution information.
         self.image_region_distribute_map = image_region_distribute_map
-        # The list of regions.
+        # The list of available regions.
         self.image_region_list = image_region_list
-        # The type of the image.
-        # 
-        # Valid values:
-        # 
-        # *   User: custom images.
-        # *   System: system images.
+        # The image type.
         self.image_type = image_type
+        # The image version.
         self.image_version = image_version
-        # The language of the image.
+        # The language.
         self.language = language
         # The time when the image was published.
         self.release_time = release_time
         # The rendering type.
-        # 
-        # Valid values:
-        # 
-        # *   GPURemote
-        # *   CPU
-        # *   GPULocal
         self.rendering_type = rendering_type
-        # The state of the image.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE: The image is available.
-        # *   DELETE: The image is deleted.
-        # *   INIT: The image is being initialized.
-        # *   CREATE_FAILED: The image failed to be created.
-        # *   CREATING: The image is being created.
+        # The image status.
         self.status = status
-        # The OS type of the image.
+        # The operating system type.
         self.system_type = system_type
 
     def validate(self):
@@ -273,7 +256,9 @@ class DescribeImageListResponseBodyDataImageBizTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -16,14 +16,14 @@ class CreateAndroidInstanceGroupResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of the instance groups.
+        # The instance group IDs.
         self.instance_group_ids = instance_group_ids
-        # The instance groups.
+        # The created instance groups.
         self.instance_group_infos = instance_group_infos
         self.network_package_order_model = network_package_order_model
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -122,9 +122,9 @@ class CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos(DaraModel):
         instance_group_id: str = None,
         instance_ids: List[str] = None,
     ):
-        # The ID of the instance group.
+        # The instance group ID.
         self.instance_group_id = instance_group_id
-        # The IDs of the instances.
+        # The instance IDs.
         self.instance_ids = instance_ids
 
     def validate(self):

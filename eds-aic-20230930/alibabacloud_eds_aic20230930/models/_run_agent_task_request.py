@@ -15,11 +15,18 @@ class RunAgentTaskRequest(DaraModel):
         timeout_seconds: int = None,
         user_prompt: str = None,
     ):
+        # The region ID of the mobile node.
         self.biz_region_id = biz_region_id
+        # An array of mobile node IDs. Specify a maximum of 100 IDs per request.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
+        # The maximum number of steps the task can execute. This limit prevents infinite loops. Valid values: 30–1000. Default: 1000.
         self.max_steps = max_steps
+        # The task timeout in seconds. Valid values: 300–3600. Default: 3600.
         self.timeout_seconds = timeout_seconds
+        # The user prompt in natural language. The Agent completes the task based on this prompt.
+        # 
         # This parameter is required.
         self.user_prompt = user_prompt
 

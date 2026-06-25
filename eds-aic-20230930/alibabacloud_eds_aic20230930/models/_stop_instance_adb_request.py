@@ -11,6 +11,8 @@ class StopInstanceAdbRequest(DaraModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # The list of Android instance IDs. You can specify 1 to 100 IDs.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
 

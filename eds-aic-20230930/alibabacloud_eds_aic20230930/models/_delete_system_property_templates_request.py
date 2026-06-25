@@ -11,6 +11,7 @@ class DeleteSystemPropertyTemplatesRequest(DaraModel):
         self,
         template_ids: List[str] = None,
     ):
+        # The IDs of the property templates.
         self.template_ids = template_ids
 
     def validate(self):

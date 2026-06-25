@@ -11,6 +11,8 @@ class StartInstanceAdbRequest(DaraModel):
         self,
         instance_ids: List[str] = None,
     ):
+        # A list of 1 to 100 cloud phone instance IDs.
+        # 
         # This parameter is required.
         self.instance_ids = instance_ids
 

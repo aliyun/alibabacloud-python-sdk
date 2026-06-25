@@ -11,8 +11,11 @@ class ImportImageRequest(DaraModel):
         image_file_url: str = None,
         image_name: str = None,
     ):
+        # The description of the image.
         self.image_description = image_description
+        # The URL of the image. This must be an Alibaba Cloud OSS address.
         self.image_file_url = image_file_url
+        # The name of the image.
         self.image_name = image_name
 
     def validate(self):

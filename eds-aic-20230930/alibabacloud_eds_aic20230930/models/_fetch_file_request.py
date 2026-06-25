@@ -16,30 +16,31 @@ class FetchFileRequest(DaraModel):
         upload_type: str = None,
         upload_url: str = None,
     ):
-        # The IDs of the cloud phone instances.
+        # A list of cloud phone instance IDs.
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # A client-generated token, up to 100 characters long, that ensures the idempotency of the request.
         self.client_token = client_token
-        # The path to the file that you want to pull from the cloud phone instance.
+        # The path of the file or folder to fetch from the cloud phone.
         # 
         # This parameter is required.
         self.source_file_path = source_file_path
-        # The endpoint of the OSS bucket in which you want to store the pulled file.
+        # The endpoint for uploading files to OSS.
         # 
-        # >  Set the value to an internal endpoint when the cloud phone instance and the OSS bucket are in the same region to improve upload speed without incurring public traffic fees. Sample endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`. For more information, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
+        # > If the cloud phone and the destination OSS bucket are in the same region, you can use an internal endpoint to accelerate the transfer and avoid public network charges. For example, in the China (Hangzhou) region, use `oss-cn-hangzhou-internal.aliyuncs.com`. For a complete list of endpoints, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html).
         # 
         # This parameter is required.
         self.upload_endpoint = upload_endpoint
-        # The type of the storage service.
+        # The type of storage service for the fetched file.
         # 
-        # >  Currently, only OSS is supported.
+        # > Currently, only Object Storage Service (OSS) is supported.
         # 
         # This parameter is required.
         self.upload_type = upload_type
-        # The OSS URL of the pulled file.
+        # The destination URL in OSS.
         # 
-        # >  The OSS bucket name must start with "cloudphone-saved-bucket-", for example, "cloudphone-saved-bucket-example". You must also create an OSS directory to store the backup data. Set the value for UploadUrl in this format: oss://\\<BucketName>/\\<OSSDirectoryName>.
+        # > The destination bucket name must be prefixed with `cloudphone-saved-bucket-`. For example, `cloudphone-saved-bucket-example`. You must also create a folder in the bucket to serve as the destination directory. The `UploadUrl` must follow the format: `oss://<bucket_name>/<folder_name>`.
         # 
         # This parameter is required.
         self.upload_url = upload_url

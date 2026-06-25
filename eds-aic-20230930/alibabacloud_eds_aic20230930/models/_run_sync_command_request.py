@@ -14,9 +14,13 @@ class RunSyncCommandRequest(DaraModel):
         instance_ids: List[str] = None,
         wait_time: int = None,
     ):
+        # The content of the command to execute.
         self.command_content = command_content
+        # The encoding of the command content. If you provide a value that is not a valid option, the system uses the default value, `PlainText`.
         self.content_encoding = content_encoding
+        # An array of Cloud Phone instance IDs. You can specify up to 50 instances in a single request.
         self.instance_ids = instance_ids
+        # The timeout for command execution, in milliseconds. Valid range: 500 to 3000. Default: 1000.
         self.wait_time = wait_time
 
     def validate(self):

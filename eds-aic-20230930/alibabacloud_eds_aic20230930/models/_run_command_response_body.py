@@ -15,9 +15,9 @@ class RunCommandResponseBody(DaraModel):
         run_command_infos: List[main_models.RunCommandResponseBodyRunCommandInfos] = None,
         task_id: str = None,
     ):
-        # The ID of the command execution. You can use the command execution ID to query the output of a command.
+        # The command execution ID. Use this ID to query the execution result.
         self.invoke_id = invoke_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.run_command_infos = run_command_infos
         self.task_id = task_id

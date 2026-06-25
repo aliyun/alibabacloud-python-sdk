@@ -16,14 +16,24 @@ class BackupAppRequest(DaraModel):
         source_app_list: List[str] = None,
         upload_endpoint: str = None,
     ):
+        # A list of instance IDs.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # The name of the backup file.
         self.backup_file_name = backup_file_name
+        # The URL of the backup file.
+        # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
+        # The description of the application backup.
         self.description = description
+        # A list of package names for the applications to back up.
+        # 
         # This parameter is required.
         self.source_app_list = source_app_list
+        # Specifies the region where the backup is created.
+        # 
         # This parameter is required.
         self.upload_endpoint = upload_endpoint
 

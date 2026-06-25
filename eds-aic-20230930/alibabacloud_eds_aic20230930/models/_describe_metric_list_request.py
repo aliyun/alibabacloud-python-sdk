@@ -20,15 +20,35 @@ class DescribeMetricListRequest(DaraModel):
         process_infos: List[main_models.DescribeMetricListRequestProcessInfos] = None,
         start_time: str = None,
     ):
+        # For instance-level monitoring, enter a list of Cloud Phone instance IDs.
+        # 
+        # <props="china">
+        # 
+        # For matrix-level monitoring, enter a list of matrix IDs.
         self.android_instance_ids = android_instance_ids
+        # The end time for the query.
         self.end_time = end_time
+        # A list of instance IDs.
         self.instance_ids = instance_ids
+        # The number of entries to return on each page for a paged query.
+        # 
+        # Default value: 1000. This means that 1000 monitoring data records are returned per page.
         self.length = length
+        # The monitoring metrics.
+        # 
         # This parameter is required.
         self.metric_names = metric_names
+        # A token that marks the position from which the query starts. Leave it empty to start from the beginning.
         self.next_token = next_token
+        # The statistic period of the monitoring data.
+        # 
+        # Valid values: 60, 900, and 3600.
+        # 
+        # Unit: seconds.
         self.period = period
+        # A list of process monitoring metrics.
         self.process_infos = process_infos
+        # The start time for the query.
         self.start_time = start_time
 
     def validate(self):
@@ -113,7 +133,9 @@ class DescribeMetricListRequestProcessInfos(DaraModel):
         process_ids: List[int] = None,
         process_name: str = None,
     ):
+        # A list of process IDs.
         self.process_ids = process_ids
+        # The process name.
         self.process_name = process_name
 
     def validate(self):

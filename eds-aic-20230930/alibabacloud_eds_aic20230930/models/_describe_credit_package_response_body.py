@@ -17,11 +17,17 @@ class DescribeCreditPackageResponseBody(DaraModel):
         total_count: int = None,
         total_exhausted_credit: str = None,
     ):
+        # An array of credit package details.
         self.credits_package_infos = credits_package_infos
+        # Indicates whether this is your first purchase.
         self.is_first_purchase = is_first_purchase
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of available credits.
         self.total_available_credits = total_available_credits
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of exhausted credits.
         self.total_exhausted_credit = total_exhausted_credit
 
     def validate(self):
@@ -93,12 +99,19 @@ class DescribeCreditPackageResponseBodyCreditsPackageInfos(DaraModel):
         expired_time: str = None,
         total_credits: str = None,
     ):
+        # The number of available credits in the credit package.
         self.available_credits = available_credits
+        # The ID of the credit package.
         self.credit_package_id = credit_package_id
+        # The status of the credit package.
         self.credit_package_status = credit_package_status
+        # The time when the credit package becomes effective.
         self.effective_time = effective_time
+        # The number of exhausted credits in the credit package.
         self.exhausted_credits = exhausted_credits
+        # The time when the credit package expires.
         self.expired_time = expired_time
+        # The total number of credits in the credit package.
         self.total_credits = total_credits
 
     def validate(self):

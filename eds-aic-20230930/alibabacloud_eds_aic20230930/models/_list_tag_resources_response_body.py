@@ -14,8 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The token that marks the position from which to start the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # A collection of resources and their tag information.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -66,9 +69,13 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The resource ID. This is the ID of the cloud phone instance.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

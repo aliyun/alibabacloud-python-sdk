@@ -17,13 +17,22 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
+        # The number of entries to return on each page for a paged query.
         self.max_results = max_results
+        # The token that marks the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The region ID.
+        # <props="china">Set the value of this parameter to `cn-shanghai`.<props="intl">Set the value of this parameter to `ap-southeast-1`.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # A list of resource IDs. This is a list of cloud phone instance IDs. You can specify 1 to 50 IDs.
         self.resource_id = resource_id
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # A list of tags.
         self.tag = tag
 
     def validate(self):
@@ -90,7 +99,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify 1 to 20 tag keys.
         self.key = key
+        # The tag value. You can specify 1 to 20 tag values.
         self.value = value
 
     def validate(self):

@@ -11,6 +11,7 @@ class DescribeDisplayConfigRequest(DaraModel):
         self,
         android_instance_ids: List[str] = None,
     ):
+        # A list of instance IDs.
         self.android_instance_ids = android_instance_ids
 
     def validate(self):

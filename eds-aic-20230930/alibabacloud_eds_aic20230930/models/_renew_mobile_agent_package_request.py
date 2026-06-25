@@ -17,12 +17,30 @@ class RenewMobileAgentPackageRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
+        # 
+        # - **false** (default): Generates an unpaid order.
+        # 
+        # > If your account balance is insufficient, set this parameter to `false` to generate an unpaid order. You can then pay for the order in the Wuying Mobile Cloud Phone management console.
         self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal. The default value is `false`.
         self.auto_renew = auto_renew
+        # A list of mobile agent package IDs.
         self.mobile_agent_package_ids = mobile_agent_package_ids
+        # The URL to which a user is redirected after a successful payment.
         self.paid_callback_url = paid_callback_url
+        # The renewal period. The `PeriodUnit` parameter specifies the time unit.
         self.period = period
+        # The unit of the renewal period.
+        # Valid values:
+        # 
+        # - **Month**: month.
+        # 
+        # - **Year**: year.
         self.period_unit = period_unit
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

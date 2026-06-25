@@ -16,24 +16,14 @@ class RenewAndroidInstanceGroupsRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
-        # Specifies whether to enable the auto-payment feature.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables the auto-payment feature. Ensure your account has sufficient balance to use this feature.
-        # *   false: disables the auto-payment feature. You need to manually complete the payment process.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # The IDs of the instance groups.
+        # The instance group IDs.
         self.instance_group_ids = instance_group_ids
         self.paid_call_back_url = paid_call_back_url
-        # The duration of the renewal, measured in units defined by PeriodUnit.
+        # The renewal duration.
         self.period = period
-        # The unit of the renewal duration. Default value: Month.
-        # 
-        # Valid values:
-        # 
-        # *   Month
-        # *   Year
+        # The unit of the renewal duration specified by `Period`. Default value: Month.
         self.period_unit = period_unit
         self.promotion_id = promotion_id
 

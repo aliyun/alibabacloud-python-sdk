@@ -88,45 +88,16 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
         watermark: main_models.ListPolicyGroupsResponseBodyPolicyGroupModelWatermark = None,
     ):
         # Specifies whether to enable the webcam redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
         self.camera_redirect = camera_redirect
         # The read/write permissions on the clipboard.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: read and write.
-        # *   off: read/write disabled.
         self.clipboard = clipboard
         # The time when the policy was created.
         self.gmt_create = gmt_create
         # The file transfer policy of the HTML5 client.
-        # 
-        # Valid values:
-        # 
-        # *   all: File upload and download are supported.
-        # *   download: Only file download is supported.
-        # *   upload: Only file upload is supported.
-        # *   off: File upload or download is forbidden.
         self.html_5file_transfer = html_5file_transfer
         # The read/write permissions on the on-premises drive.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: ready and write.
-        # *   off: read/write denied.
         self.local_drive = local_drive
         # Identifies whether the resolution is locked.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
         self.lock_resolution = lock_resolution
         # The network redirection policy.
         self.net_redirect_policy = net_redirect_policy
@@ -134,11 +105,13 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
         self.policy_group_id = policy_group_id
         # The name of the policy.
         self.policy_group_name = policy_group_name
+        # The resources associated with the policy.
         self.policy_related_resources = policy_related_resources
         # The height of the resolution.
         self.session_resolution_height = session_resolution_height
         # The width of the resolution.
         self.session_resolution_width = session_resolution_width
+        # The screen watermark.
         self.watermark = watermark
 
     def validate(self):
@@ -251,11 +224,17 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelWatermark(DaraModel):
         watermark_transparency_value: int = None,
         watermark_types: List[str] = None,
     ):
+        # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
+        # The custom text for the watermark. The text can be up to 10 characters in length and cannot contain emoji characters.
         self.watermark_custom_text = watermark_custom_text
+        # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
+        # Specifies whether to enable the screen watermark.
         self.watermark_switch = watermark_switch
+        # The opacity of the watermark. A larger value makes the watermark more opaque. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
+        # The content of the screen watermark.
         self.watermark_types = watermark_types
 
     def validate(self):
@@ -314,7 +293,9 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources(DaraMod
         android_instance_group_ids: List[str] = None,
         cloud_phone_matrix_ids: List[str] = None,
     ):
+        # The instance group IDs.
         self.android_instance_group_ids = android_instance_group_ids
+        # The matrix IDs.
         self.cloud_phone_matrix_ids = cloud_phone_matrix_ids
 
     def validate(self):
@@ -355,31 +336,17 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(DaraModel):
         proxy_user_name: str = None,
         rules: List[main_models.ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules] = None,
     ):
-        # Indicates whether a custom proxy is manually configured.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Indicates whether to manually configure a custom proxy.
         self.custom_proxy = custom_proxy
         # The IPv4 address of the custom proxy.
         self.host_addr = host_addr
         # Indicates whether the network redirection feature is enabled. When this feature is enabled, network traffic is automatically redirected to the on-premises network by default.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
         self.net_redirect = net_redirect
         # The port of the custom proxy. Valid values: 1 to 65535.
         self.port = port
         # The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_password = proxy_password
         # The type of the proxy protocol.
-        # 
-        # Valid values:
-        # 
-        # *   socks5.
         self.proxy_type = proxy_type
         # The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
         self.proxy_user_name = proxy_user_name
@@ -463,11 +430,6 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules(DaraMod
         target: str = None,
     ):
         # The type of the rule.
-        # 
-        # Valid values:
-        # 
-        # *   prc: an application package name.
-        # *   domain: a domain name.
         self.rule_type = rule_type
         # The name of the application package or domain name.
         self.target = target

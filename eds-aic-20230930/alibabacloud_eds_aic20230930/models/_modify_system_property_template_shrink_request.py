@@ -13,10 +13,17 @@ class ModifySystemPropertyTemplateShrinkRequest(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # Specifies whether to automatically generate preset system properties.
         self.enable_auto = enable_auto
+        # The URL of the property template file. The system synchronously parses the file. If the file format is invalid, a parsing error is returned.
+        # 
+        # > File template format: `{ "properties":{"key1":"value1", "key2":"value2"}}`.
         self.file_path = file_path
+        # The information about the system property template.
         self.system_property_info_shrink = system_property_info_shrink
+        # The ID of the property template.
         self.template_id = template_id
+        # The name of the template.
         self.template_name = template_name
 
     def validate(self):

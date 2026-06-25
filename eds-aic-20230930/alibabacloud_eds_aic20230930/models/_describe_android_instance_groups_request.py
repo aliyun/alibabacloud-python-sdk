@@ -23,48 +23,29 @@ class DescribeAndroidInstanceGroupsRequest(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeAndroidInstanceGroupsRequestTags] = None,
     ):
-        # The ID of the region.
+        # The region ID.
         self.biz_region_id = biz_region_id
-        # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
+        # The billing type.
+        # [_single.params.ChargeType.enum. PrePaid]Subscription.
         self.charge_type = charge_type
-        # The IDs of the instance groups.
+        # The list of instance group IDs.
         self.instance_group_ids = instance_group_ids
-        # The name of the instance group. Instance groups support fuzzy search by name.
+        # The instance group name. Fuzzy match is supported.
         self.instance_group_name = instance_group_name
         self.instance_version = instance_version
         # The ID of the key pair.
         self.key_pair_id = key_pair_id
-        # The maximum number of entries per page. Value range: 0 to 100. Default value: 100.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token that indicates the position from which the current read operation starts. Leave this parameter empty to read from the beginning.
         self.next_token = next_token
-        # The ID of the policy.
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # The purchase mode of cloud phone instances.
-        # 
-        # Valid values:
-        # 
-        # *   Instance (default): the instance group mode.
-        # *   Node: the matrix mode [whitelisted].
+        # The purchase mode of the cloud phone.
         self.sale_mode = sale_mode
-        # The status of the instance group.
-        # 
-        # Valid values:
-        # 
-        # *   UPDATING_FAILED: The image update for the instance group failed.
-        # *   FAILED: The instance group failed to be created.
-        # *   RUNNING: The instance group is available.
-        # *   EXPIRED: The instance group expired.
-        # *   DELETING: The instance group is being deleted.
-        # *   DELETED: The instance group is deleted.
-        # *   UPDATING: The instance group is undergoing an image update.
-        # *   CREATING: The instance group is being created.
+        # The instance group status.
         self.status = status
+        # The tags of the instance group. You can bind up to 20 tags to each instance.
         self.tags = tags
 
     def validate(self):
@@ -167,7 +148,11 @@ class DescribeAndroidInstanceGroupsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify 1 to 20 tag keys.
+        # >Notice: The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://..
         self.key = key
+        # The tag value.
+        # >Notice: The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`..
         self.value = value
 
     def validate(self):

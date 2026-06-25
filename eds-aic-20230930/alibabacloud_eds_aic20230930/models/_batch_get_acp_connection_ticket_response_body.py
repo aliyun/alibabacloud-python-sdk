@@ -72,10 +72,11 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(DaraModel)
         # The ID of the cloud phone instance.
         self.instance_id = instance_id
         self.persistent_app_instance_id = persistent_app_instance_id
+        # The port used for establishing a connection.
         self.port = port
         # The ID of the task.
         self.task_id = task_id
-        # The state of the task.
+        # The state of the task. If FINISHED is returned, it indicates that a value can be retrieved from the Ticket field. If the returned value is not FINISHED, you still need to use this operation to query the Ticket generation result by using TaskId.
         self.task_status = task_status
         # The ticket used to connect to the cloud phone instance.
         self.ticket = ticket

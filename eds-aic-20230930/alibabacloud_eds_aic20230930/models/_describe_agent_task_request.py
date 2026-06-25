@@ -11,6 +11,7 @@ class DescribeAgentTaskRequest(DaraModel):
         self,
         task_ids: List[str] = None,
     ):
+        # A list of task IDs.
         self.task_ids = task_ids
 
     def validate(self):

@@ -11,7 +11,7 @@ class CreateKeyPairResponseBody(DaraModel):
         data: main_models.CreateKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
-        # The objects that are returned.
+        # The returned data.
         self.data = data
         # The ID of the request.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class CreateKeyPairResponseBodyData(DaraModel):
         self.key_pair_id = key_pair_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The private key of the key pair. The PEM-encoded private key that is in PKCS#8 format and adheres to the ADB connection specification.
+        # The private key of the key pair. The private key is PEM-encoded in PKCS#8 format and is compatible with ADB.
         self.private_key_body = private_key_body
 
     def validate(self):

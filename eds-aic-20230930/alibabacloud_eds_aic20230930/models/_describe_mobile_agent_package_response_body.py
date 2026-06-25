@@ -16,10 +16,15 @@ class DescribeMobileAgentPackageResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The response message.
         self.message = message
+        # A list of packages.
         self.package_list = package_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,20 @@ class DescribeMobileAgentPackageResponseBodyPackageList(DaraModel):
         package_status: str = None,
         used_credit: str = None,
     ):
+        # The expiration time.
         self.expired_at = expired_at
+        # The list of node instance IDs.
         self.instance_ids = instance_ids
+        # The total package credit.
         self.package_credit = package_credit
+        # The package ID.
         self.package_id = package_id
+        # The package specification.
         self.package_spec = package_spec
         self.package_spec_name = package_spec_name
+        # The package status.
         self.package_status = package_status
+        # The amount of credit used.
         self.used_credit = used_credit
 
     def validate(self):

@@ -18,14 +18,30 @@ class DescribeMetricTopRequest(DaraModel):
         period: int = None,
         start_time: str = None,
     ):
+        # For instance-level monitoring, specify a list of cloud phone instance IDs.
+        # 
+        # <props="china">
+        # 
+        # For matrix-level monitoring, specify a list of matrix IDs.
         self.android_instance_ids = android_instance_ids
+        # The end time of the query.
         self.end_time = end_time
+        # The list of instance IDs.
         self.instance_ids = instance_ids
+        # The number of entries to return on each page. This parameter is used for paged queries.
+        # 
+        # > The maximum value is 100 when the metric is \\`instance_in_traffic\\` or \\`instance_out_traffic\\`.
         self.length = length
+        # The list of metrics.
+        # 
         # This parameter is required.
         self.metric_names = metric_names
+        # The token that marks the start of the next page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The statistical period of the monitoring data.
+        # Unit: seconds.
         self.period = period
+        # The start time of the query.
         self.start_time = start_time
 
     def validate(self):

@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'eds-aic.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'eds-aic.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eds-aic', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2425,6 +2429,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteKeyPairsResponse:
         runtime = RuntimeOptions()
         return await self.delete_key_pairs_with_options_async(request, runtime)
+
+    def delete_mobile_agent_package_with_options(
+        self,
+        request: main_models.DeleteMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMobileAgentPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_mobile_agent_package_with_options_async(
+        self,
+        request: main_models.DeleteMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMobileAgentPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_mobile_agent_package(
+        self,
+        request: main_models.DeleteMobileAgentPackageRequest,
+    ) -> main_models.DeleteMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return self.delete_mobile_agent_package_with_options(request, runtime)
+
+    async def delete_mobile_agent_package_async(
+        self,
+        request: main_models.DeleteMobileAgentPackageRequest,
+    ) -> main_models.DeleteMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_mobile_agent_package_with_options_async(request, runtime)
 
     def delete_policy_group_with_options(
         self,

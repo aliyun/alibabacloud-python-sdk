@@ -2,15 +2,17 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
-class GetInstancePropertiesRequest(DaraModel):
+class DeleteMobileAgentPackageRequest(DaraModel):
     def __init__(
         self,
-        instance_id: str = None,
+        package_ids: List[str] = None,
     ):
-        # The instance ID.
-        self.instance_id = instance_id
+        # The list of packages.
+        self.package_ids = package_ids
 
     def validate(self):
         pass
@@ -20,15 +22,15 @@ class GetInstancePropertiesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.instance_id is not None:
-            result['InstanceId'] = self.instance_id
+        if self.package_ids is not None:
+            result['PackageIds'] = self.package_ids
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceId') is not None:
-            self.instance_id = m.get('InstanceId')
+        if m.get('PackageIds') is not None:
+            self.package_ids = m.get('PackageIds')
 
         return self
 

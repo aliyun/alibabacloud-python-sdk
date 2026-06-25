@@ -24,37 +24,32 @@ class DescribeBackupFilesRequest(DaraModel):
         start_time: str = None,
         status_list: List[str] = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.android_instance_id = android_instance_id
-        # The name of the instance. Fuzzy match is supported.
+        # The instance name. Fuzzy match is supported.
         self.android_instance_name = android_instance_name
-        # Specifies whether the whole instance is backed up.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to perform a full device backup.
         self.backup_all = backup_all
-        # The ID of the backup file.
+        # The backup file ID.
         self.backup_file_id = backup_file_id
-        # The name of the backup file. Fuzzy match is supported.
+        # The backup file name. Fuzzy match is supported.
         self.backup_file_name = backup_file_name
-        # The description of the backup file. Fuzzy match is supported.
+        # The description. Fuzzy match is supported.
         self.description = description
-        # The end of the period for querying generated backup files.
+        # Queries backup files created before the specified time.
         self.end_time = end_time
         # The owner of the backup file.
         self.end_user_id = end_user_id
-        # The ID of the instance group.
+        # The instance group ID.
         self.instance_group_id = instance_group_id
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
         self.next_token = next_token
         self.sale_mode = sale_mode
-        # The beginning of the period for querying generated backup files.
+        # Queries backup files created after the specified time.
         self.start_time = start_time
-        # The status of the backup files.
+        # The list of backup file statuses.
         self.status_list = status_list
 
     def validate(self):

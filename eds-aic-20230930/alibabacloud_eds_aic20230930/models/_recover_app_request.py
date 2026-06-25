@@ -15,13 +15,22 @@ class RecoverAppRequest(DaraModel):
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
+        # The list of instance IDs.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # The ID of the backup file.
+        # 
         # This parameter is required.
         self.backup_file_id = backup_file_id
+        # The OSS URL where the backup file is uploaded.
+        # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
+        # The backup region.
         self.upload_endpoint = upload_endpoint
+        # The backup type.
+        # 
         # This parameter is required.
         self.upload_type = upload_type
 

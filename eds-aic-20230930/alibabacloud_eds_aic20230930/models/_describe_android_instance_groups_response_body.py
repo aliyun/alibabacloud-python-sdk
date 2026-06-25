@@ -15,13 +15,13 @@ class DescribeAndroidInstanceGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The instance group.
+        # The details of the instance group.
         self.instance_group_model = instance_group_model
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token that indicates the position where the current call returns. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -80,6 +80,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         bandwidth_package_status: str = None,
         bandwidth_package_type: str = None,
         bind_qos_rules: main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules = None,
+        channel: str = None,
         charge_type: str = None,
         cpu: str = None,
         disks: List[main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks] = None,
@@ -101,6 +102,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         network_type: str = None,
         number_of_instances: str = None,
         office_site_id: str = None,
+        package_id: str = None,
         policy_group_id: str = None,
         region_id: str = None,
         rendering_type: str = None,
@@ -112,67 +114,80 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The type of the architecture.
+        # The architecture type.
         self.architecture_type = architecture_type
-        # The number of available instances.
+        # The number of active instances.
         # 
-        # >  Available instances are those not in the Deleting or Deleted state.
+        # > An instance is considered active if its instance status is not "Deleting" or "Deleted".
         self.available_instance_amount = available_instance_amount
+        # The ID of the bandwidth package.
         self.bandwidth_package_id = bandwidth_package_id
+        # The status of the bandwidth package.
+        # Valid values:
+        # - Creating: being created.
+        # - Releasing: being released.
+        # - InUse: in use.
+        # - Failed: failed.
+        # - Expired: expired.
+        # - Available: unbound and being billed.
         self.bandwidth_package_status = bandwidth_package_status
+        # The type of the bandwidth package.
         self.bandwidth_package_type = bandwidth_package_type
+        # The public network bandwidth throttling rules for the instance group.
         self.bind_qos_rules = bind_qos_rules
+        self.channel = channel
         # The billing method.
         self.charge_type = charge_type
-        # The number of vCPUs.
+        # The number of CPU cores.
         self.cpu = cpu
-        # The disks.
+        # The disk information.
         self.disks = disks
+        # > This parameter is not publicly available.
         self.enable_ipv_6 = enable_ipv_6
-        # The cause of the creation failure.
+        # The reason for the creation failure.
         self.error_code = error_code
-        # The time when the instance group was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the subscription instance group expires.
+        # The expiration time of the subscription instance group.
         self.gmt_expired = gmt_expired
-        # The time when the instance group was updated.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
+        # The image version.
         self.image_version = image_version
         # The list of installed applications.
         self.installed_app_list = installed_app_list
-        # The ID of the instance group.
+        # The instance group ID.
         self.instance_group_id = instance_group_id
-        # The name of the instance group.
+        # The instance group name.
         self.instance_group_name = instance_group_name
-        # The specifications of the instance group.
+        # The instance group specifications.
         self.instance_group_spec = instance_group_spec
         # The description of the instance group specifications.
         self.instance_group_spec_describe = instance_group_spec_describe
-        # The status of the instance group.
+        # The instance group status.
         self.instance_group_status = instance_group_status
+        # > This parameter is not publicly available.
         self.ipv_6bandwidth = ipv_6bandwidth
         # The memory size.
         self.memory = memory
+        # The network type of the instance.
+        # 
+        # > This field is returned only for instance groups with a standard network.
         self.network_type = network_type
         # The number of instances in the instance group.
         self.number_of_instances = number_of_instances
-        # The ID of the network.
+        # The network ID.
         self.office_site_id = office_site_id
-        # The ID of the policy.
+        self.package_id = package_id
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The rendering mode of the instance group.
-        # 
-        # Valid values:
-        # 
-        # *   GPURemote: GPU remote rendering.
-        # *   CPU: CPU rendering.
-        # *   GPUocal: GPU local rendering.
+        # The rendering type of the instance group.
         self.rendering_type = rendering_type
         # The height of the resolution.
         self.resolution_height = resolution_height
@@ -180,11 +195,13 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         self.resolution_width = resolution_width
         # The sales mode.
         self.sale_mode = sale_mode
-        # The version of the operating system.
+        # The system version.
         self.system_version = system_version
+        # The tag information.
         self.tags = tags
-        # The ID of the vSwitch.
+        # The vSwitch ID in the VPC.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -224,6 +241,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
 
         if self.bind_qos_rules is not None:
             result['BindQosRules'] = self.bind_qos_rules.to_map()
+
+        if self.channel is not None:
+            result['Channel'] = self.channel
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
@@ -290,6 +310,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
 
+        if self.package_id is not None:
+            result['PackageId'] = self.package_id
+
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
 
@@ -347,6 +370,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         if m.get('BindQosRules') is not None:
             temp_model = main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules()
             self.bind_qos_rules = temp_model.from_map(m.get('BindQosRules'))
+
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
@@ -414,6 +440,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(DaraModel):
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
 
+        if m.get('PackageId') is not None:
+            self.package_id = m.get('PackageId')
+
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
 
@@ -455,7 +484,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags(DaraModel)
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -490,9 +521,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks(DaraModel
         disk_size: int = None,
         disk_type: str = None,
     ):
-        # The size of the disk. Unit: GB.
+        # The disk size, in GB.
         self.disk_size = disk_size
-        # The type of the disk.
+        # The disk type.
         self.disk_type = disk_type
 
     def validate(self):
@@ -527,7 +558,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules(Da
         instance_qos_rule: List[main_models.DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule] = None,
         total_count: int = None,
     ):
+        # The public network bandwidth throttling rules bound to the instance.
         self.instance_qos_rule = instance_qos_rule
+        # The total number of public network bandwidth throttling rules for the instance group.
         self.total_count = total_count
 
     def validate(self):
@@ -570,7 +603,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesIns
         instance_id: str = None,
         qos_rule_id: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the public network bandwidth throttling rule. This rule applies only to premium bandwidth.
         self.qos_rule_id = qos_rule_id
 
     def validate(self):

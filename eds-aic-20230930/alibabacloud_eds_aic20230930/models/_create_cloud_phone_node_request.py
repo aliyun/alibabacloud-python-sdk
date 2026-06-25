@@ -43,21 +43,13 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         use_template: str = None,
         v_switch_id: str = None,
     ):
-        # Specifies whether to enable the auto-payment feature.
-        # 
-        # Valid values:
-        # 
-        # *   False (default): You must manually complete the payment in the Alibaba Cloud Expenses and Costs console.
-        # *   true: enables the auto-payment feature.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable the auto-renewal feature.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables the auto-renewal feature. In this case, the system automatically renews instances upon expiration.
-        # *   false (default): disables the auto-renewal feature. In this case, you need to manually renew instances upon expiration.
+        # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
+        # The ID of the Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
+        # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
         # The region ID.
         # 
@@ -65,64 +57,63 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         self.biz_region_id = biz_region_id
         # The billing method. Only the subscription billing method is supported.
         self.charge_type = charge_type
-        # The number of cloud phone matrixes you want to purchase.
+        # The number of Cloud Phone matrices to purchase.
         self.count = count
+        # The display settings.
         self.display_config = display_config
+        # The downstream bandwidth limit, in Mbit/s.
         self.down_bandwidth_limit = down_bandwidth_limit
         # The image ID.
         self.image_id = image_id
-        # The instance specification.
+        # The instance type.
         # 
-        # Valid values:
-        # 
-        # *   ac.max: By default, this specification allows up to 25 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
-        # *   ac.plus: By default, this specification allows up to 40 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
+        # > To purchase more instance types, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
         self.instance_type = instance_type
         self.is_single_img_disk = is_single_img_disk
         # The office network ID.
         self.network_id = network_id
+        # The network settings for the instance.
         self.network_info = network_info
+        # The network type of the instance.
         self.network_type = network_type
-        # The name of the cloud phone matrix.
+        # The name of the Cloud Phone matrix.
         self.node_name = node_name
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
+        # The subscription duration. The unit is specified by the `PeriodUnit` parameter.
         # 
-        # *   When `PeriodUnit` is set to **year**: 1.
-        # *   When `PeriodUnit` is set to **month**: 1, 2, 3, and 6.
+        # - If `PeriodUnit` is set to **Year**, this parameter can only be set to 1.
+        # 
+        # - If `PeriodUnit` is set to **Month**, valid values are 1, 2, 3, and 6.
         self.period = period
         # The unit of the subscription duration.
-        # 
-        # Valid values:
-        # 
-        # *   Month (default)
-        # *   Year
         self.period_unit = period_unit
-        # The number of instances per cloud phone matrix.
+        # The number of Cloud Phone instances to create in a single Cloud Phone matrix.
         self.phone_count = phone_count
+        # The size of the independent internal storage, in GiB.
         self.phone_data_volume = phone_data_volume
         self.promotion_id = promotion_id
-        # The resolution height. Unit: pixel.
+        # The vertical resolution, in pixels.
         self.resolution_height = resolution_height
-        # The resolution width. Unit: pixel.
+        # The horizontal resolution, in pixels.
         self.resolution_width = resolution_width
-        # The shared storage size Unit: GiB.
+        # The size of the shared internal storage, in GiB.
+        # 
+        # > The size must exceed 10 GiB per instance in the matrix.
         self.server_share_data_volume = server_share_data_volume
-        # The matrix specification.
-        # 
-        # Valid values:
-        # 
-        # *   cpm.gn6.gx1
+        # The server type.
         # 
         # This parameter is required.
         self.server_type = server_type
+        # The streaming mode for instances in the Cloud Phone matrix. Defaults to preemption mode.
         self.stream_mode = stream_mode
         self.swap_size = swap_size
         # The resource tags.
         self.tag = tag
+        # The upstream bandwidth limit, in Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit
+        # The template for instance creation. Set this parameter to `Random` to use a random template, or specify a template ID to use a specific template.
         self.use_template = use_template
-        # The vSwitch ID.
+        # The VSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -395,14 +386,36 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
         pay_type: str = None,
         visible_type: str = None,
     ):
+        # The name of the bandwidth package.
         self.bandwidth_package_name = bandwidth_package_name
+        # The private CIDR block.
         self.cidr_block = cidr_block
+        # The billing method for the bandwidth package. Valid values:
+        # 
+        # <props="china">
+        # 
+        # - **PayByBandwidth** (default): pay-by-bandwidth.
+        # 
+        # - **PayBy95**: pay-by-95th-percentile. Note: This billing method is not supported for IPv6 public bandwidth by default. To enable it, contact your account manager.
+        # 
+        # 
+        # 
+        # \\-
+        # 
+        # <props="intl">
+        # 
+        # **PayByBandwidth** (default): pay-by-bandwidth.
         self.internet_charge_type = internet_charge_type
+        # The number of Cloud Phone instances that share one elastic IP address (EIP).
         self.ip_ratio = ip_ratio
+        # The line type.
         self.isp = isp
+        # The maximum bandwidth of the bandwidth package, in Mbit/s. This value limits the aggregate bandwidth of all instances that use the package.
         self.limited_bandwidth = limited_bandwidth
         self.paid_callback_url = paid_callback_url
+        # The billing method.
         self.pay_type = pay_type
+        # The visibility scope.
         self.visible_type = visible_type
 
     def validate(self):
@@ -480,8 +493,11 @@ class CreateCloudPhoneNodeRequestDisplayConfig(DaraModel):
         fps: int = None,
         lock_resolution: str = None,
     ):
+        # The dots per inch (DPI). Valid values: 72 to 600.
         self.dpi = dpi
+        # > This parameter is not yet publicly available.
         self.fps = fps
+        # Specifies whether to lock the resolution.
         self.lock_resolution = lock_resolution
 
     def validate(self):

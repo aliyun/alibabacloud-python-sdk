@@ -18,48 +18,41 @@ class CreateAppShrinkRequest(DaraModel):
         oss_app_url: str = None,
         sign_apk: str = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The ID of the region.
+        # The region ID.
         self.biz_region_id = biz_region_id
-        # The information about the custom app.
+        # The custom application information.
         # 
-        # > 
-        # 
-        # *   If you want to pass in a custom app, configure the `CustomAppInfo` parameter. Take note that the six fields within it are mandatory.
-        # 
-        # *   A custom app has a higher priority than an app from the Alibaba Cloud Workspace Application Center. If you configure the `CustomAppInfo` parameter, the `FileName` and `FilePath` pair or the `OssAppUrl` will not take effect.
+        # > - If you pass a custom application, pass the `CustomAppInfo` parameter. All six fields in this object parameter are required.
+        # >
+        # > - Custom applications have a higher priority than applications from the WUYING Workspace app center. If you pass the `CustomAppInfo` parameter, `FileName` and `FilePath`, or `OssAppUrl` will be invalid.
         self.custom_app_info_shrink = custom_app_info_shrink
-        # The description of the application.
+        # The application description.
         self.description = description
-        # The name used by the app file in Object Storage Service (OSS). This parameter, combined with `FilePath`, uniquely identifies the OSS path of the app file.
+        # The name of the application file stored in Object Storage Service (OSS). This parameter and `FilePath` together determine the unique OSS address.
         # 
-        # > 
-        # 
-        # *   If you want to pass in an app from the Alibaba Cloud Workspace Application Center, configure the `FileName` and `FilePath` parameters. Alternatively, configure the `OssAppUrl` parameter. The FileName and FilePath parameters takes precedence over the OssAppUrl parameter.
-        # 
-        # *   Log on to the [Elastic Desktop Service (EDS) Enterprise](https://eds.console.aliyun.com/osshelp) console, upload the app file to the Application Center according to the on-screen instructions, and then retrieve the parameter value.
+        # > - If you pass an application from the WUYING Workspace app center, you must pass `FileName` and `FilePath`, or `OssAppUrl`. The former takes precedence.
+        # >
+        # > - Log on to the [WUYING Workspace console](https://eds.console.aliyun.com/osshelp). Follow the on-screen instructions to upload your application file to the WUYING Workspace app center to obtain this parameter.
         self.file_name = file_name
-        # The OSS bucket path to the app file. This parameter, combined with `FileName`, uniquely identifies the OSS path of the app file.
+        # The storage address of the application file in an OSS bucket. This parameter and `FileName` together determine the unique OSS address.
         # 
-        # > 
-        # 
-        # *   If you want to pass in an app from the Alibaba Cloud Workspace Application Center, configure the `FileName` and `FilePath` parameters. Alternatively, configure the `OssAppUrl` parameter. The FileName and FilePath parameters takes precedence over the OssAppUrl parameter.
-        # 
-        # *   Log on to the [EDS Enterprise](https://eds.console.aliyun.com/osshelp) console, upload the app file to the Application Center according to the on-screen instructions, and then retrieve the parameter value.
+        # > - If you pass an application from the WUYING Workspace app center, you must pass `FileName` and `FilePath`, or `OssAppUrl`. The former takes precedence.
+        # >
+        # > - Log on to the [WUYING Workspace console](https://eds.console.aliyun.com/osshelp). Follow the on-screen instructions to upload your application file to the WUYING Workspace app center to obtain this parameter.
         self.file_path = file_path
-        # The icon URL of the application.
+        # The URL of the application icon.
         self.icon_url = icon_url
-        # The parameters used for installing the application. By default, the `-r` parameter is included when you install an application.
+        # The installation parameters. The `-r` installation parameter is included by default when you install the application.
         self.install_param = install_param
-        # The OSS bucket endpoint of the app file.
+        # The OSS address of the application.
         # 
-        # > 
-        # 
-        # *   If you want to pass in an app from the Alibaba Cloud Workspace Application Center, configure the `FileName` and `FilePath` parameters. Alternatively, configure the `OssAppUrl` parameter. The FileName and FilePath parameters takes precedence over the OssAppUrl parameter.
-        # 
-        # *   Log on to the [EDS Enterprise](https://eds.console.aliyun.com/osshelp) console, upload the app file to the Application Center according to the on-screen instructions, and then retrieve the parameter value.
+        # > - If you pass an application from the WUYING Workspace app center, you must pass `FileName` and `FilePath`, or `OssAppUrl`. The former takes precedence.
+        # >
+        # > - Log on to the [WUYING Workspace console](https://eds.console.aliyun.com/osshelp). Follow the on-screen instructions to upload your application file to the WUYING Workspace app center to obtain this parameter.
         self.oss_app_url = oss_app_url
+        # Specifies whether to perform a system signature.
         self.sign_apk = sign_apk
 
     def validate(self):

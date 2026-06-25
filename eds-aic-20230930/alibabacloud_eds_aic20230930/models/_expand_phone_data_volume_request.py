@@ -16,11 +16,16 @@ class ExpandPhoneDataVolumeRequest(DaraModel):
         phone_data_volume: int = None,
         promotion_id: str = None,
     ):
+        # Whether to enable automatic payment. The default value is false.
         self.auto_pay = auto_pay
+        # The region ID.
         self.biz_region_id = biz_region_id
+        # A list of cloud phone matrix instance IDs. You can specify 1 to 100 IDs.
         self.instance_ids = instance_ids
         self.paid_call_back_url = paid_call_back_url
+        # The target size of the phone storage, in GiB.>Notice: The new value must be greater than the current size of the phone storage.
         self.phone_data_volume = phone_data_volume
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

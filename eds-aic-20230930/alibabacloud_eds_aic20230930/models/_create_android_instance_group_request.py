@@ -40,111 +40,72 @@ class CreateAndroidInstanceGroupRequest(DaraModel):
         tag: List[main_models.CreateAndroidInstanceGroupRequestTag] = None,
         v_switch_id: str = None,
     ):
-        # The number of instance groups. Default value: 1. Maximum value: 1.
+        # The number of instance groups to create. Valid values: 1 to 100. Default value: 1.
         self.amount = amount
         # Specifies whether to enable automatic payment. Default value: false.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables automatic payment. Make sure that your Alibaba Cloud account has sufficient balance.
-        # *   false: disables automatic payment. You must manually complete the payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. Default value: false.
-        # 
-        # Valid values:
-        # 
-        # *   true: automatically renew resource upon expiration.
-        # *   false: manually renew resources upon expiration.
+        # Specifies whether to enable auto-renewal for subscription resources. Default value: false.
         self.auto_renew = auto_renew
         self.bandwidth_package_id = bandwidth_package_id
         self.bandwidth_package_type = bandwidth_package_type
-        # The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
-        # 
-        # Valid values:
-        # 
-        # *   cn-shenzhen: China (Shenzhen).
-        # *   cn-beijing: China (Beijing).
-        # *   cn-shanghai: China (Shanghai).
-        # *   cn-hongkong: China (Hong Kong).
-        # *   ap-southeast-1: Singapore.
-        # *   cn-hangzhou: China (Hangzhou).
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions where Cloud Phone instances are available.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
         # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go.
-        # *   PrePaid: subscription.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. The value cannot exceed 100 characters in length.
+        # A client-generated token to ensure request idempotence. This parameter prevents duplicate requests. The token can be up to 100 characters in length.
         self.client_token = client_token
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.enable_ipv_6 = enable_ipv_6
         # Specifies whether to enable GPU acceleration.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables GPU acceleration.
-        # *   false (default): disables GPU acceleration.
         self.gpu_acceleration = gpu_acceleration
-        # The ID of the image. You can call the [DescribeImageList](https://help.aliyun.com/document_detail/2807324.html) operation to query images.
+        # The image ID. You can call the [DescribeImageList](~~DescribeImageList~~) operation to query available images for Cloud Phone instances.
         # 
         # This parameter is required.
         self.image_id = image_id
         # The name of the instance group.
         # 
-        # >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with `http://` or `https://`.
+        # > The name can be up to 30 characters in length. It must start with an uppercase or lowercase letter or a Chinese character, and cannot start with `http://` or `https://`. The name can contain only Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.instance_group_name = instance_group_name
-        # The specifications of the instance group. You can call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the available specifications.
-        # 
-        # Valid values:
-        # 
-        # *   acp.perf.large: Performance (8 vCPUs, 16 GiB of memory, and 32 GiB of storage.
-        # *   acp.basic.small: Lightweight (2 vCPUs, 4 GiB of memory, and 32 GiB of storage).
-        # *   acp.std.large: Standard (4 vCPUs, 8 GiB of memory, and 32 GiB of storage).
+        # The instance group specification. You can call the [DescribeSpec](~~DescribeSpec~~) operation to query the specifications that are available for Cloud Phone instances.
         # 
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
         self.instance_version = instance_version
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.ipv_6bandwidth = ipv_6bandwidth
-        # The ID of the key pair. When you create an instance group and specify a valid key pair ID, all cloud phone instances within the group will automatically be bound to that key pair upon creation. This eliminates the need to manually bind key pairs to individual cloud phone instances.
+        # The key pair ID. If you specify a valid key pair ID when you create the instance group, the system attaches the key pair to all successfully created instances. No separate API call is required to attach the key pair.
         # 
-        # >  Binding key pairs to cloud phone instances is currently not supported during instance group resizing.
+        # > Attaching a key pair during a scale-out operation is not supported.
         self.key_pair_id = key_pair_id
         self.network_info = network_info
         self.network_type = network_type
-        # The number of cloud phones in the instance group. Maximum value: 100.
+        # The number of instances in the instance group. The maximum value is 100.
         self.number_of_instances = number_of_instances
-        # The ID of the network.
+        # The network ID.
         # 
-        # *   This parameter is required if you assign a shared network to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **shared network**. If no shared network is available in the Cloud Phone console, you can leave this parameter empty. The system automatically creates one when you create an instance group.
-        # *   This parameter is required if you assign a virtual private cloud (VPC) to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **VPC**. If no VPC is available in the Cloud Phone console, you must first create one.
+        # - To create instances in a Shared Network: This parameter is optional. Specify the ID of a **Shared Network**. You can find the ID on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no Shared Network is available in the console, you can omit this parameter. The system automatically creates a Shared Network when you create the instance group.
+        # 
+        # - To create instances in a VPC: This parameter is required. Specify the ID of a **VPC**. You can find the ID on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC is available in the console, you must create one first.
         self.office_site_id = office_site_id
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration. The unit is specified by PeriodUnit.
+        # The subscription duration. The PeriodUnit parameter specifies the unit.
         self.period = period
         # The unit of the subscription duration.
-        # 
-        # Valid values:
-        # 
-        # *   Month
-        # *   Year
-        # *   Hour (Note that this unit is supported only by pay-as-you-go.)
         self.period_unit = period_unit
-        # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
+        # The policy ID. You can call the [ListPolicyGroups](~~ListPolicyGroups~~) operation to query available policies.
         self.policy_group_id = policy_group_id
         self.promotion_id = promotion_id
         self.sale_mode = sale_mode
         self.stream_mode = stream_mode
-        # The tags
+        # The resource tags.
         self.tag = tag
-        # The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
+        # The vSwitch ID. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query available vSwitches.
         # 
-        # *   This parameter is not required if you assign a shared network to cloud phones.
-        # *   This parameter is required if you assign a VPC to cloud phones. The vSwitch specified by this parameter is used to create cloud phones.
+        # - If you create instances in a Shared Network, omit this parameter.
+        # 
+        # - If you create instances in a VPC, this parameter is required. The system creates the instances in the specified vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

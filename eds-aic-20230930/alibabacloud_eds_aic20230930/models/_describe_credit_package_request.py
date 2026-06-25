@@ -10,7 +10,9 @@ class DescribeCreditPackageRequest(DaraModel):
         credit_package_id: str = None,
         credit_package_status: str = None,
     ):
+        # The ID of the credit package.
         self.credit_package_id = credit_package_id
+        # The status of the credit package.
         self.credit_package_status = credit_package_status
 
     def validate(self):

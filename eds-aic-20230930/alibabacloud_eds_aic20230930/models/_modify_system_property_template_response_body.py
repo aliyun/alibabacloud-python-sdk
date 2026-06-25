@@ -10,8 +10,9 @@ class ModifySystemPropertyTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The ID of the property template.
         self.template_id = template_id
 
     def validate(self):

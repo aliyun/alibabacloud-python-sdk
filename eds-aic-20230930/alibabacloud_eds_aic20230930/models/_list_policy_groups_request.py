@@ -23,6 +23,7 @@ class ListPolicyGroupsRequest(DaraModel):
         self.policy_group_ids = policy_group_ids
         # The name of the policy.
         self.policy_group_name = policy_group_name
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

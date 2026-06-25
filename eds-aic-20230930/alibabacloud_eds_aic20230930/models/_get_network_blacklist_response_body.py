@@ -13,7 +13,9 @@ class GetNetworkBlacklistResponseBody(DaraModel):
         network_blacklist_model: main_models.GetNetworkBlacklistResponseBodyNetworkBlacklistModel = None,
         request_id: str = None,
     ):
+        # The network blacklist.
         self.network_blacklist_model = network_blacklist_model
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class GetNetworkBlacklistResponseBodyNetworkBlacklistModel(DaraModel):
         domain_blacklist: List[str] = None,
         ip_blacklist: List[str] = None,
     ):
+        # The list of blacklisted domain names.
         self.domain_blacklist = domain_blacklist
+        # The list of blacklisted IP addresses.
         self.ip_blacklist = ip_blacklist
 
     def validate(self):

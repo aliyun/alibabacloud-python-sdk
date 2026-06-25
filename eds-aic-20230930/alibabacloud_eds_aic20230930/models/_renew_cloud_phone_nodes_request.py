@@ -17,29 +17,22 @@ class RenewCloudPhoneNodesRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
+        # Specifies whether to enable automatic payment. The default value is false.
         self.auto_pay = auto_pay
-        # Specifies whether to enable the auto-renewal feature.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables the auto-renewal feature. In this case, the system automatically renews the instance upon expiration.
-        # *   false (default): disables the auto-renewal feature. In this case, you need to manually renew the instance upon expiration.
+        # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # The cloud phone matrix IDs.
+        # A list of cloud phone matrix IDs.
         self.node_ids = node_ids
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
+        # The renewal duration. The `PeriodUnit` parameter specifies the unit.
         # 
-        # *   When `PeriodUnit` is set to **year**: 1.
-        # *   When `PeriodUnit` is set to **month**: 1, 2, 3, and 6.
+        # - If `PeriodUnit` is **Year**, the value must be 1.
+        # 
+        # - If `PeriodUnit` is **Month**, the valid values are 1, 2, 3, and 6.
         self.period = period
-        # The unit of the subscription duration.
-        # 
-        # Valid values:
-        # 
-        # *   Month (default)
-        # *   Year
+        # The unit of the renewal duration.
         self.period_unit = period_unit
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

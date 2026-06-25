@@ -16,13 +16,15 @@ class DescribeJVSInstanceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of JVS instances.
         self.data = data
-        # 当前页实际返回条数
+        # The number of entries returned on the current page.
         self.max_results = max_results
-        # 下一页游标，末页不返回
+        # The token to retrieve the next page of results. If this field is empty, there are no more results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
-        # 符合条件的总记录数
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,13 +91,21 @@ class DescribeJVSInstanceResponseBodyData(DaraModel):
         status: str = None,
         used_credit: List[main_models.DescribeJVSInstanceResponseBodyDataUsedCredit] = None,
     ):
+        # The time the instance was created.
         self.create_time = create_time
+        # The Credit limit configuration. If you apply multiple configurations, the latest one overwrites the others.
         self.credit_config = credit_config
+        # The expiration time.
         self.expire_time = expire_time
+        # The instance ID.
         self.instance_id = instance_id
+        # This parameter is not supported.
         self.jvs_package_id = jvs_package_id
+        # The time the instance was last modified.
         self.modify_time = modify_time
+        # The instance status.
         self.status = status
+        # The amount of used Credit.
         self.used_credit = used_credit
 
     def validate(self):
@@ -183,7 +193,9 @@ class DescribeJVSInstanceResponseBodyDataUsedCredit(DaraModel):
         credit: int = None,
         limit_period: str = None,
     ):
+        # The amount of Credit.
         self.credit = credit
+        # The calculation period for used Credit.
         self.limit_period = limit_period
 
     def validate(self):
@@ -218,7 +230,9 @@ class DescribeJVSInstanceResponseBodyDataCreditConfig(DaraModel):
         credit_limit: int = None,
         limit_period: str = None,
     ):
+        # The Credit limit.
         self.credit_limit = credit_limit
+        # The limit period.
         self.limit_period = limit_period
 
     def validate(self):

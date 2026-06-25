@@ -10,17 +10,9 @@ class DataImageRegionDistributeMapValue(DaraModel):
         distribute_status: str = None,
         progress: str = None,
     ):
-        # The status of the image distribution task.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE: The task is ready.
-        # *   DELETE: The task is deleted.
-        # *   INIT: The task is being initialized.
-        # *   CREATE_FAILED: The task failed to be created.
-        # *   CREATING: The task is being created.
+        # The distribution status.
         self.distribute_status = distribute_status
-        # The distribution progress of the image.
+        # The distribution progress.
         self.progress = progress
 
     def validate(self):

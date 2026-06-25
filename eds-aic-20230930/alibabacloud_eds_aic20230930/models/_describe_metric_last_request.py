@@ -18,14 +18,33 @@ class DescribeMetricLastRequest(DaraModel):
         period: int = None,
         start_time: str = None,
     ):
+        # For instance-level monitoring, specify a list of Cloud Phone instance IDs.
+        # 
+        # <props="china">
+        # 
+        # For matrix-level monitoring, specify a list of matrix IDs.
         self.android_instance_ids = android_instance_ids
+        # The end time for the query.
         self.end_time = end_time
+        # The list of instance IDs.
         self.instance_ids = instance_ids
+        # The number of monitoring data records to return on each page for a paged query.
+        # 
+        # The default value is 1000. This means that 1000 monitoring data records are returned per page.
         self.length = length
+        # The list of monitoring metrics.
+        # 
         # This parameter is required.
         self.metric_names = metric_names
+        # The token that marks the start of the current read position. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The statistic period for monitoring data.
+        # 
+        # Valid values: 60, 900, and 3600.
+        # 
+        # Unit: seconds.
         self.period = period
+        # The start time for the query.
         self.start_time = start_time
 
     def validate(self):

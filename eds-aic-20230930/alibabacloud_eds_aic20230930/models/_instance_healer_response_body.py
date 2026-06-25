@@ -11,7 +11,9 @@ class InstanceHealerResponseBody(DaraModel):
         instance_healer_model: main_models.InstanceHealerResponseBodyInstanceHealerModel = None,
         request_id: str = None,
     ):
+        # The diagnosis result object.
         self.instance_healer_model = instance_healer_model
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class InstanceHealerResponseBodyInstanceHealerModel(DaraModel):
         self,
         result: str = None,
     ):
+        # The result of the task execution.
         self.result = result
 
     def validate(self):

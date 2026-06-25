@@ -13,11 +13,11 @@ class UninstallAppRequest(DaraModel):
         instance_group_id_list: List[str] = None,
         instance_id_list: List[str] = None,
     ):
-        # The IDs of the apps.
+        # A list of application IDs.
         self.app_id_list = app_id_list
-        # The ID of the instance groups. If you specify this parameter, you cannot specify InstanceIdList.
+        # A list of instance group IDs. You must specify either this parameter or `InstanceIdList`. If you specify both, only `InstanceGroupIdList` takes precedence.
         self.instance_group_id_list = instance_group_id_list
-        # The IDs of the cloud phone instances. If you specify this parameter, you cannot specify InstanceGroupIdList.
+        # A list of instance IDs. You must specify either this parameter or `InstanceGroupIdList`. If you specify both, only `InstanceGroupIdList` takes precedence.
         self.instance_id_list = instance_id_list
 
     def validate(self):

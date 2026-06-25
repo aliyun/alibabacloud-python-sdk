@@ -17,11 +17,11 @@ class BackupFileResponseBody(DaraModel):
     ):
         # The number of instances that are backed up.
         self.count = count
-        # The object that is returned.
+        # The result object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the batch task.
+        # The batch task ID.
         self.task_id = task_id
 
     def validate(self):

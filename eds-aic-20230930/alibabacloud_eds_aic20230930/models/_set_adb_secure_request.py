@@ -16,11 +16,6 @@ class SetAdbSecureRequest(DaraModel):
         self.instance_ids = instance_ids
         # The status of the ADB authentication feature.
         # 
-        # Valid values:
-        # 
-        # *   0: The ADB authentication feature is disabled.
-        # *   1: The ADB authentication feature is enabled.
-        # 
         # This parameter is required.
         self.status = status
 

@@ -14,7 +14,9 @@ class UpdateInstanceImageResponseBody(DaraModel):
         task_id: str = None,
         tasks: main_models.UpdateInstanceImageResponseBodyTasks = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
         self.tasks = tasks
 

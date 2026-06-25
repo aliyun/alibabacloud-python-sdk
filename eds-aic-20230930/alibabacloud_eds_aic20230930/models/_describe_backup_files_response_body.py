@@ -16,15 +16,15 @@ class DescribeBackupFilesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The backup files that are returned.
+        # The list of returned result objects.
         self.data = data
-        # The total number of entries returned.
+        # The maximum number of entries returned in this call.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The ID of the request. If the request fails, provide this ID to technical support to assist in diagnosing the issue.
+        # The request ID. If you encounter an issue, provide this request ID for troubleshooting.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,6 +88,7 @@ class DescribeBackupFilesResponseBodyData(DaraModel):
         backup_file_id: str = None,
         backup_file_name: str = None,
         backup_file_path: str = None,
+        channel: str = None,
         description: str = None,
         end_user_id: str = None,
         file_size: int = None,
@@ -103,53 +104,45 @@ class DescribeBackupFilesResponseBodyData(DaraModel):
         upload_endpoint: str = None,
         upload_type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.android_instance_id = android_instance_id
-        # The name of the instance.
+        # The instance name.
         self.android_instance_name = android_instance_name
-        # Indicates whether the whole instance is backed up.
+        # Specifies whether to perform a full device backup.
         self.backup_all = backup_all
-        # The ID of the backup file.
+        # The backup file ID.
         self.backup_file_id = backup_file_id
-        # The name of the backup file.
+        # The backup file name.
         self.backup_file_name = backup_file_name
-        # The directory in which the backup file is stored.
+        # The directory where the backup file is stored.
         self.backup_file_path = backup_file_path
+        self.channel = channel
         # The description of the backup file.
         self.description = description
         # The owner of the backup file.
         self.end_user_id = end_user_id
-        # The total size of the source files.
+        # The total size of the source backup files.
         self.file_size = file_size
-        # The time when the backup file was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the backup file was last updated.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The ID of the instance group.
+        # The instance ID.
         self.instance_group_id = instance_group_id
         # The region ID.
         self.region_id = region_id
-        # The names of the application packages that are backed up.
+        # The list of backed-up application package names.
         self.source_app_info_list = source_app_info_list
-        # The directories of the source files.
+        # The list of source backup file directories.
         self.source_file_path_list = source_file_path_list
-        # The status of the backup file.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE
-        # *   RECOVERING
+        # The backup file status.
         self.status = status
         self.system_version = system_version
         # The task ID.
         self.task_id = task_id
-        # The endpoint of the OSS bucket that stores the backup file.
+        # The domain name of the upload endpoint.
         self.upload_endpoint = upload_endpoint
-        # The type of the backup.
-        # 
-        # Valid values:
-        # 
-        # *   OSS: backup files are stored in OSS buckets. .
+        # The backup type.
         self.upload_type = upload_type
 
     def validate(self):
@@ -177,6 +170,9 @@ class DescribeBackupFilesResponseBodyData(DaraModel):
 
         if self.backup_file_path is not None:
             result['BackupFilePath'] = self.backup_file_path
+
+        if self.channel is not None:
+            result['Channel'] = self.channel
 
         if self.description is not None:
             result['Description'] = self.description
@@ -241,6 +237,9 @@ class DescribeBackupFilesResponseBodyData(DaraModel):
 
         if m.get('BackupFilePath') is not None:
             self.backup_file_path = m.get('BackupFilePath')
+
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')

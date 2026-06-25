@@ -84,6 +84,9 @@ from ._delete_images_response import DeleteImagesResponse
 from ._delete_key_pairs_request import DeleteKeyPairsRequest
 from ._delete_key_pairs_response_body import DeleteKeyPairsResponseBody
 from ._delete_key_pairs_response import DeleteKeyPairsResponse
+from ._delete_mobile_agent_package_request import DeleteMobileAgentPackageRequest
+from ._delete_mobile_agent_package_response_body import DeleteMobileAgentPackageResponseBody
+from ._delete_mobile_agent_package_response import DeleteMobileAgentPackageResponse
 from ._delete_policy_group_request import DeletePolicyGroupRequest
 from ._delete_policy_group_response_body import DeletePolicyGroupResponseBody
 from ._delete_policy_group_response import DeletePolicyGroupResponse
@@ -541,6 +544,9 @@ __all__ = [
     DeleteKeyPairsRequest,
     DeleteKeyPairsResponseBody,
     DeleteKeyPairsResponse,
+    DeleteMobileAgentPackageRequest,
+    DeleteMobileAgentPackageResponseBody,
+    DeleteMobileAgentPackageResponse,
     DeletePolicyGroupRequest,
     DeletePolicyGroupResponseBody,
     DeletePolicyGroupResponse,

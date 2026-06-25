@@ -17,12 +17,19 @@ class ListInstanceAdbAttributesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The public IP address.
         self.external_ip = external_ip
+        # The list of cloud phone instance IDs. You can specify from 1 to 100 IDs.
         self.instance_ids = instance_ids
+        # The private IP address.
         self.internal_ip = internal_ip
+        # The ADB port number.
         self.internal_port = internal_port
+        # The network protocol type.
         self.ip_protocol = ip_protocol
+        # The maximum number of records to return on each page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
+        # The token that indicates the position from which the query starts. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
 
     def validate(self):

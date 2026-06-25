@@ -15,8 +15,9 @@ class CreateCloudPhoneNodeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # Details of the bandwidth package order.
         self.network_package_order_model = network_package_order_model
-        # The cloud phone matrixes.
+        # A list of Cloud Phone matrices.
         self.node_infos = node_infos
         # The order ID.
         self.order_id = order_id
@@ -78,9 +79,9 @@ class CreateCloudPhoneNodeResponseBodyNodeInfos(DaraModel):
         instance_ids: List[str] = None,
         node_id: str = None,
     ):
-        # The IDs of the cloud phone instances.
+        # A list of Cloud Phone instance IDs.
         self.instance_ids = instance_ids
-        # The ID of the cloud phone matrix.
+        # The ID of the Cloud Phone matrix.
         self.node_id = node_id
 
     def validate(self):
@@ -115,7 +116,9 @@ class CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel(DaraModel):
         bandwidth_package_id: str = None,
         bandwidth_package_order_id: str = None,
     ):
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
+        # The order ID of the bandwidth package.
         self.bandwidth_package_order_id = bandwidth_package_order_id
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListInstanceAdbAttributesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The ADB connection information for the instances.
         self.data = data
+        # The maximum number of records returned in this query.
         self.max_results = max_results
+        # The token to start the next query. If a query does not return all results, NextToken is not empty. Use the returned NextToken value to query the next page.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,21 @@ class ListInstanceAdbAttributesResponseBodyData(DaraModel):
         internal_port: str = None,
         ip_protocol: str = None,
     ):
+        # The public IP address.
         self.external_ip = external_ip
+        # The public network port number.
         self.external_port = external_port
+        # The time when the connection was created.
         self.gmt_created = gmt_created
+        # The time when the connection was last modified.
         self.gmt_modified = gmt_modified
+        # The ID of the cloud phone instance.
         self.instance_id = instance_id
+        # The private IP address.
         self.internal_ip = internal_ip
+        # The private network port number.
         self.internal_port = internal_port
+        # The network protocol type.
         self.ip_protocol = ip_protocol
 
     def validate(self):

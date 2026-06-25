@@ -12,7 +12,10 @@ class ResumeAgentTaskRequest(DaraModel):
         additional_prompt: str = None,
         task_ids: List[str] = None,
     ):
+        # An additional prompt to guide the task. This parameter applies only when a task is in the `PAUSED` state, for example, while waiting for user input.
         self.additional_prompt = additional_prompt
+        # A list of task IDs.
+        # 
         # This parameter is required.
         self.task_ids = task_ids
 

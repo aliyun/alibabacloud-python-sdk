@@ -15,6 +15,7 @@ class ModifyCloudPhoneNodeRequest(DaraModel):
         self.new_node_name = new_node_name
         # The ID of the cloud phone matrix.
         self.node_id = node_id
+        # Specifies the streaming mode for instances in the cloud phone matrix. If this parameter is left empty, the exclusive mode is used.
         self.stream_mode = stream_mode
 
     def validate(self):
