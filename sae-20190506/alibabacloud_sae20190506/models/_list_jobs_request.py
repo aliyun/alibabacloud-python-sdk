@@ -20,35 +20,39 @@ class ListJobsRequest(DaraModel):
     ):
         # The name of the job template.
         self.app_name = app_name
-        # The number of the page to return. The parameter value is a positive integer that is greater than or equal to 1.
+        # The page number. The value starts from 1.
         self.current_page = current_page
-        # The dimension by which applications are filtered. Valid values:
+        # The dimension by which to filter job templates. Valid values:
         # 
-        # *   **appName**: Applications are filtered by job template name.
-        # *   **appIds**: Applications are filtered by job template ID.
+        # - **appName**: The name of the job template.
+        # 
+        # - **appIds**: The ID of the job template.
         self.field_type = field_type
-        # Enter the name and ID of the job template.
+        # The name or ID of the target job template. This value corresponds to the dimension specified by **FieldType**.
         self.field_value = field_value
         # The namespace ID.
         self.namespace_id = namespace_id
-        # Specifies how applications are sorted. Valid values:
+        # The sorting method for the job templates. Valid values:
         # 
-        # *   **running**: The applications are sorted based on the number of running instances.
-        # *   **instances**: The applications are sorted based on the number of destination instances.
+        # - **running**: Sorts by the number of running instances.
+        # 
+        # - **instances**: Sorts by the number of destination instances.
         self.order_by = order_by
-        # The number of entries to return on each page. Valid value: 0 to 200.
+        # The number of entries per page. Valid values: 0 to 200.
         self.page_size = page_size
-        # Specifies whether to sort the field names that are passed by **OrderBy** in ascending order. Valid values:
+        # Specifies whether to sort the results in ascending or descending order based on the field specified by the **OrderBy** parameter. Valid values:
         # 
-        # *   **true**: in ascending order
-        # *   **false**: in descending order
+        # - **true**: ascending order.
+        # 
+        # - **false**: descending order.
         self.reverse = reverse
-        # The tags that are displayed in a JSON string. Valid values:
+        # A list of tags. This is a JSON string. The value consists of the following parts:
         # 
-        # *   **key**: the tag key
-        # *   **value**: the tag value
+        # - **key**: The tag key.
+        # 
+        # - **value**: The tag value.
         self.tags = tags
-        # Set the value to `job`.
+        # The workload. Set the value to `job`.
         self.workload = workload
 
     def validate(self):

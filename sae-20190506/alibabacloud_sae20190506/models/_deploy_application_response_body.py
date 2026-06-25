@@ -16,33 +16,39 @@ class DeployApplicationResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Take note of the following rules:
+        # The API status or POP error code. Values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Request error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
-        # The response.
+        # The response data.
         self.data = data
-        # The error code returned if the request failed. Take note of the following rules:
+        # The error code. Values:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - On success: This field is not returned.
+        # 
+        # - On failure: This field is returned. For details, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The additional information that is returned. Take note of the following rules:
+        # Additional information. Values:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - On success, returns **success**.
+        # 
+        # - On failure, returns a specific error code.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the application deployment is successful. Take note of the following rules:
+        # Whether the deployment succeeded. Values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Deployment succeeded.
+        # 
+        # - **false**: Deployment failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID for precise query of call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -112,12 +118,13 @@ class DeployApplicationResponseBodyData(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The ID of the change order. It can be used to query the task status.
+        # The returned change order ID. Use it to query task execution status.
         self.change_order_id = change_order_id
-        # Specifies whether approval is required when a RAM user performs release. Take note of the following rules:
+        # Whether RAM users need approval to deploy changes. Values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Approval required.
+        # 
+        # - **false**: No approval required.
         self.is_need_approval = is_need_approval
 
     def validate(self):

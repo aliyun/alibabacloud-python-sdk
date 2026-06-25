@@ -16,12 +16,35 @@ class UpdateSecretResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status of the API call or a POP error code. Valid values:
+        # 
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error code. The following list describes the values:
+        # 
+        # - If the request is successful, this parameter is not returned.
+        # 
+        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
+        # Additional information about the call result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the Secret instance was updated. Valid values:
+        # 
+        # - **true**: The instance was updated.
+        # 
+        # - **false**: The update failed.
         self.success = success
+        # The ID of the call chain. You can use this ID to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -87,6 +110,7 @@ class UpdateSecretResponseBodyData(DaraModel):
         self,
         secret_id: int = None,
     ):
+        # The ID of the Secret instance.
         self.secret_id = secret_id
 
     def validate(self):

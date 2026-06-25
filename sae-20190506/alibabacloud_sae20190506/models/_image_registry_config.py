@@ -11,7 +11,9 @@ class ImageRegistryConfig(DaraModel):
         auth_config: main_models.RegistryAuthenticationConfig = None,
         cert_config: main_models.RegistryCertificateConfig = None,
     ):
+        # The authentication configuration for the image repository.
         self.auth_config = auth_config
+        # The certificate configuration for the image repository.
         self.cert_config = cert_config
 
     def validate(self):

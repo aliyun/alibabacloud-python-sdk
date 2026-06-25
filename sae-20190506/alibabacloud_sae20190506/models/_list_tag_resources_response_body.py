@@ -18,33 +18,39 @@ class ListTagResourcesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx** indicates that the request was successful.
+        # 
+        # - **3xx** indicates that the request was redirected.
+        # 
+        # - **4xx** indicates that a client-side error occurred.
+        # 
+        # - **5xx** indicates that a server-side error occurred.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is returned only if the request fails.
+        # 
+        # - For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The message returned for the request.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the mapping relationships between applications and tags were queried. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The mapping relationships were queried.
-        # *   **false**: The mapping relationships failed to be queried.
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -111,9 +117,9 @@ class ListTagResourcesResponseBodyData(DaraModel):
         next_token: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyDataTagResources] = None,
     ):
-        # A maximum of 50 entries can be returned for a query. If a query generates more than 50 entries, the NextToken parameter is returned with the first 50 entries. You can use the NextToken parameter value to retrieve the subsequent entries that are not returned in the current query result.
+        # The token that is used to retrieve the next page of results. A query returns a maximum of 50 results. If the results are truncated, you can use this token in a subsequent request to retrieve the next page of results.
         self.next_token = next_token
-        # The mapping relationships between applications and tags.
+        # The list of tags and their associated resources.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -160,7 +166,7 @@ class ListTagResourcesResponseBodyDataTagResources(DaraModel):
     ):
         # The ID of the application.
         self.resource_id = resource_id
-        # The type of the resource. Valid value: `application`.
+        # The type of the resource. The value is fixed as `application`.
         self.resource_type = resource_type
         # The key of the tag.
         self.tag_key = tag_key

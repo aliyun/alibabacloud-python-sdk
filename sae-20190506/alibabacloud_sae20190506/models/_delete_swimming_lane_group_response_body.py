@@ -14,31 +14,37 @@ class DeleteSwimmingLaneGroupResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The status code. Value values:
+        # The error code. This parameter is returned only if the request fails. For more information, see the **Error codes** section of this topic.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # 
+        # - A failed request returns the **ErrorCode** field. For more information, see the **error code** list in this article.
         self.error_code = error_code
-        # null null
+        # The returned message.
         # 
-        # *   null****
-        # *   null
+        # - **success** is returned for a successful request.
+        # 
+        # - An error code is returned for a failed request.
         self.message = message
-        # null
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The policy was deleted.
-        # *   **false**: Delete failed.
+        # - **true**: The swimming lane group was successfully deleted.
+        # 
+        # - **false**: The swimming lane group was not deleted.
         self.success = success
-        # null
+        # The trace ID. Use this ID to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):

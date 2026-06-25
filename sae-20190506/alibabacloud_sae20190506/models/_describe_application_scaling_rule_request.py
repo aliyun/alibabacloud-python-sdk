@@ -10,11 +10,11 @@ class DescribeApplicationScalingRuleRequest(DaraModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
-        # a0d2e04c-159d-40a8-b240-d2f2c263\\*\\*\\*\\*
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # test
+        # The name of the auto scaling policy.
         # 
         # This parameter is required.
         self.scaling_rule_name = scaling_rule_name

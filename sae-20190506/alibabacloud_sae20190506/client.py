@@ -22,6 +22,23 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'sae.us-west-1.aliyuncs.com',
+            'us-east-1': 'sae.us-east-1.aliyuncs.com',
+            'eu-central-1': 'sae.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'sae.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'sae.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'sae.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'sae.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'sae.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'sae.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou': 'sae.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'sae.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'sae.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'sae.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'sae.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'sae.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sae', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

@@ -9,10 +9,7 @@ class StopApplicationRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The returned message.
-        # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.app_id = app_id

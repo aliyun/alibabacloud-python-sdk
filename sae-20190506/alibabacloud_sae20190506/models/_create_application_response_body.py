@@ -16,33 +16,39 @@ class CreateApplicationResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status or POP error code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Request error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
         # The error code. Valid values:
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # 
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # Additional information. Valid values:
         # 
-        # *   If the request was successful, a success message is returned.
-        # *   If the request failed, an error code is returned.
+        # - If the request is normal, **success** is returned.
+        # 
+        # - If the request is abnormal, a specific error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the application is created. Valid values:
+        # Whether the application is created successfully. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Created successfully.
+        # 
+        # - **false**: Failed to create.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID, used for term query of call information.
         self.trace_id = trace_id
 
     def validate(self):
@@ -109,9 +115,9 @@ class CreateApplicationResponseBodyData(DaraModel):
         app_id: str = None,
         change_order_id: str = None,
     ):
-        # The ID of the application that is created.
+        # The ID of the successfully created application.
         self.app_id = app_id
-        # The ID of the change order. It can be used to query the task status.
+        # The returned release order ID, used to query the task execution status.
         self.change_order_id = change_order_id
 
     def validate(self):

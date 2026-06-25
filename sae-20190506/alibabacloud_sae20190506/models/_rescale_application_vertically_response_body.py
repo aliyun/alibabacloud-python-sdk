@@ -16,30 +16,35 @@ class RescaleApplicationVerticallyResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # Data returned.
+        # The returned data.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - If the request is successful, this parameter is not returned.
+        # 
+        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # Messages returned for additional information.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the update of instance specifications was successful. Valid values:
+        # Indicates whether the instance type was successfully changed.
         # 
-        # *   **true**: Updated.
-        # *   **false**: Failed to update.
+        # - **true**: The change was successful.
+        # 
+        # - **false**: The change failed.
         self.success = success
-        # Trace ID for request information.
+        # The trace ID of the request. You can use this ID to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -105,7 +110,7 @@ class RescaleApplicationVerticallyResponseBodyData(DaraModel):
         self,
         change_order_id: str = None,
     ):
-        # The ticked ID of updates.
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):

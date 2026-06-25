@@ -22,10 +22,13 @@ class DescribeJobHistoryRequest(DaraModel):
         self.page_size = page_size
         # The status of the job. Valid values:
         # 
-        # *   **0**: The job is not executed.
-        # *   **1**: The job is executed.
-        # *   **2**: The job fails to be executed.
-        # *   **3**: The job is being executed.
+        # - **0**: The job is not executed.
+        # 
+        # - **1**: The job is executed.
+        # 
+        # - **2**: The job fails to be executed.
+        # 
+        # - **3**: The job is being executed.
         self.state = state
 
     def validate(self):

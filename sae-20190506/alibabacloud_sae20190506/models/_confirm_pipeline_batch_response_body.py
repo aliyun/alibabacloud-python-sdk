@@ -16,30 +16,35 @@ class ConfirmPipelineBatchResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code for the request.
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The batch information.
+        # The pipeline information.
         self.data = data
         # The error code.
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # - The **ErrorCode** field is not returned if the request is successful.
+        # 
+        # - The **ErrorCode** field is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the processing of the next batch started as required. Valid values:
+        # Indicates whether the batch confirmation was successful.
         # 
-        # *   **true**: The processing started.
-        # *   **false**: The processing could not start.
+        # - **true**: The confirmation was successful.
+        # 
+        # - **false**: The confirmation failed.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID. You can use this ID to look up the details of the call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -105,7 +110,7 @@ class ConfirmPipelineBatchResponseBodyData(DaraModel):
         self,
         pipeline_id: str = None,
     ):
-        # The ID of the batch.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
 
     def validate(self):

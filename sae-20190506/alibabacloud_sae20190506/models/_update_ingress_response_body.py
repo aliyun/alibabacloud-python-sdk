@@ -16,33 +16,39 @@ class UpdateIngressResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # API status or POP error code. Details are as follows:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Request error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
-        # Responses.
+        # Returned result.
         self.data = data
-        # The status code. Value values:
+        # Error code. Details are as follows:
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see the **Error codes** section of this topic.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # 
+        # - If the request failed, the **ErrorCode** field is returned. For more information, see the **Error Codes** list in this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # Additional information. Details are as follows:
         # 
-        # *   The error message returned because the request is normal and **success** is returned.
-        # *   If the request is abnormal, the specific exception error code is returned.
+        # - If the request is normal, **success** is returned.
+        # 
+        # - If the request is abnormal, a specific abnormal error code is returned.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Whether the configuration of the Ingress instance is updated. Valid values:
+        # Indicates whether the Ingress instance configuration was successfully updated. Details are as follows:
         # 
-        # *   **true**: The update was successful.
-        # *   **false**: Update failed.
+        # - **true**: The update was successful.
+        # 
+        # - **false**: The update failed.
         self.success = success
-        # The ID of the trace.
+        # Call chain ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -108,7 +114,7 @@ class UpdateIngressResponseBodyData(DaraModel):
         self,
         ingress_id: int = None,
     ):
-        # The ID of the routing rule.
+        # Routing rule ID.
         self.ingress_id = ingress_id
 
     def validate(self):

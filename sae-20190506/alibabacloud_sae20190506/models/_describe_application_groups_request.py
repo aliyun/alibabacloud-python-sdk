@@ -11,11 +11,11 @@ class DescribeApplicationGroupsRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The page number.
+        # The page number to return.
         self.current_page = current_page
         # The number of entries per page.
         self.page_size = page_size

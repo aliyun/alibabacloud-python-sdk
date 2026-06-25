@@ -18,31 +18,37 @@ class DeleteSecretResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error.
+        # 
+        # - **5xx**: A server error.
         self.code = code
-        # The response.
+        # The returned data.
         self.data = data
-        # The error code returned. Valid values:
+        # The error code.
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - The **ErrorCode** parameter is not returned if the request is successful.
+        # 
+        # - The **ErrorCode** parameter is returned if the request fails. For a list of error codes, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The additional information that is returned. Valid values:
+        # The response message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - **success**: The request was successful.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the Secret is successfully deleted. Valid values:
+        # Indicates whether the secret was successfully deleted. Valid values:
         # 
-        # *   **true**: The instance was deleted.
-        # *   **false**: The instance failed to be deleted.
+        # - **true**: The secret was deleted.
+        # 
+        # - **false**: The secret was not deleted.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The ID used to trace the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -108,7 +114,7 @@ class DeleteSecretResponseBodyData(DaraModel):
         self,
         secret_id: int = None,
     ):
-        # The ID of the deleted Secret.
+        # The ID of the deleted secret.
         self.secret_id = secret_id
 
     def validate(self):

@@ -16,8 +16,9 @@ class SuspendJobRequest(DaraModel):
         self.app_id = app_id
         # Start or suspend a job template.
         # 
-        # *   true: Start a job template.
-        # *   false: Suspend a job template.
+        # - true: Start a job template.
+        # 
+        # - false: Suspend a job template.
         # 
         # This parameter is required.
         self.suspend = suspend

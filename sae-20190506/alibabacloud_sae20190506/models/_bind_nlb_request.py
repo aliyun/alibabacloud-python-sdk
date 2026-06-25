@@ -13,26 +13,31 @@ class BindNlbRequest(DaraModel):
         nlb_id: str = None,
         zone_mappings: str = None,
     ):
-        # The type of the IP addresses. Valid values:
+        # The address type of the NLB instance.
         # 
-        # *   Internet: public endpoint.
-        # *   Intranet: private endpoint.
+        # - `Internet`: a public IP address.
+        # 
+        # - `Intranet`: a private IP address.
         self.address_type = address_type
-        # The ID of the application to which the NLB instance is bound.
+        # The ID of the target application.
         self.app_id = app_id
-        # The listener that you want to manage. The value is a string that consists of JSON arrays. Each listener contains the following fields:
+        # The listeners, specified as a JSON-formatted string. Each listener object contains the following fields:
         # 
-        # *   **port**: the port number of the NLB listener. This field is required. Data type: integer. Valid values: 0 to 65535.
-        # *   **TargetPort**: the port number of the container listener. This field is required. Data type: integer. Valid values: 0 to 65535.
-        # *   **Protocol**: the listener protocol. This field is required. Data type: string. Valid values: TCP, UDP, and TCPSSL.
-        # *   **CertIds**: the IDs of the server certificates. This field is optional. Data type: string. This field is supported only by TCPSSL listeners.
+        # - **Port**: Integer. Required. The listener port. Valid values: 0 to 65535.
+        # 
+        # - **TargetPort**: Integer. Required. The port on the application instance that receives traffic. Valid values: 0 to 65535.
+        # 
+        # - **Protocol**: String. Required. The listener protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
+        # 
+        # - **CertIds**: String. Optional. The server certificate IDs. This parameter is required only for `TCPSSL` listeners.
         self.listeners = listeners
         # The ID of the NLB instance.
         self.nlb_id = nlb_id
-        # The mappings between zones and vSwitches. The value is a JSON string. You can specify at most 10 zones. If the region supports two or more zones, specify at least two zones. A ZoneMapping contains the following fields:
+        # The mappings between zones and vSwitches, specified as a JSON-formatted string. You can add up to 10 zones. If the current region supports two or more zones, you must specify at least two zones. Each `ZoneMapping` object contains the following fields:
         # 
-        # *   The ID of the vSwitch in the zone. Each zone can contain only one vSwitch and one subnet. Data type: string.
-        # *   The zone ID of the NLB instance. Data type: string.
+        # - **VSwitchId**: String. The ID of the vSwitch in the specified zone. Each zone can have only one vSwitch and one subnet.
+        # 
+        # - ZoneId, String, the zone ID of the Network Load Balancer instance.
         self.zone_mappings = zone_mappings
 
     def validate(self):

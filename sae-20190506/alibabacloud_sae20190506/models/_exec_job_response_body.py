@@ -16,33 +16,39 @@ class ExecJobResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values: 
+        # The HTTP status code or a POP error code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Request error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
         # The returned data.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is omitted for successful requests.
+        # 
+        # - This parameter is included for failed requests. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. This parameter is used to query the exact call information.
+        # The trace ID for retrieving detailed information about the call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -111,24 +117,29 @@ class ExecJobResponseBodyData(DaraModel):
         msg: str = None,
         success: str = None,
     ):
-        # The HTTP status code. Valid values: 
+        # The HTTP status code or a POP error code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Request error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
         # The job ID.
         self.data = data
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # - success: If the call is successful, **success** is returned.
-        # - An error code: If the call fails, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
         self.msg = msg
-        # Indicates whether the request was successful. Valid values:
+        # Whether the job was successfully executed.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The execution was successful.
+        # 
+        # - **false**: The execution failed.
         self.success = success
 
     def validate(self):

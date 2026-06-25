@@ -20,29 +20,35 @@ class DescribeNamespaceListResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The call was successful.
+        # 
+        # - **3xx**: The call was redirected.
+        # 
+        # - **4xx**: The call failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The list of namespaces.
         self.data = data
         # The error code. Valid values:
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - If the call is successful, the **ErrorCode** parameter is not returned.
+        # 
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
         # The returned message. Valid values:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - success: If the call is successful, **success** is returned.
+        # 
+        # - An error code: If the call fails, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the list of namespaces was queried. Valid values:
         # 
-        # *   **true**: The list was queried.
-        # *   **false**: The list failed to be queried.
+        # - **true**: The list was queried.
+        # 
+        # - **false**: The list failed to be queried.
         self.success = success
         # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
@@ -132,13 +138,15 @@ class DescribeNamespaceListResponseBodyData(DaraModel):
         self.current = current
         # Indicates whether custom namespaces are returned. Valid values:
         # 
-        # *   **true**: Custom namespaces are returned.
-        # *   **false**: Custom namespaces are not returned.
+        # - **true**: Custom namespaces are returned.
+        # 
+        # - **false**: Custom namespaces are not returned.
         self.custom = custom
         # Indicates whether hybrid cloud namespaces are excluded. Valid values:
         # 
-        # *   **true**: Hybrid cloud namespaces are excluded.
-        # *   **false**: Hybrid cloud namespaces are included.
+        # - **true**: Hybrid cloud namespaces are excluded.
+        # 
+        # - **false**: Hybrid cloud namespaces are included.
         self.hybrid_cloud_enable = hybrid_cloud_enable
         # The short ID of the namespace.
         self.name_space_short_id = name_space_short_id

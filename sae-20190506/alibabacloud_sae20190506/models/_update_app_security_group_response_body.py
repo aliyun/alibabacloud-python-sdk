@@ -14,31 +14,37 @@ class UpdateAppSecurityGroupResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code that is returned for the request. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The additional information. Valid values:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the security group of the application was updated. Valid values:
+        # Indicates whether the application security group was successfully updated. Valid values:
         # 
-        # *   **true**: The security group was updated.
-        # *   **false**: The security group failed to be updated.
+        # - **true**: The update was successful.
+        # 
+        # - **false**: The update failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID. You can use this ID to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):

@@ -17,12 +17,15 @@ class DescribeRegionsResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Client error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
-        # The returned message.
+        # Additional information about the response.
         self.message = message
         self.regions = regions
         # The request ID.

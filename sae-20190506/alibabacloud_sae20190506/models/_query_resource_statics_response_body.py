@@ -18,31 +18,37 @@ class QueryResourceStaticsResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The resource usage.
+        # The resource usage information.
         self.data = data
-        # The error code. 
+        # The error code.
         # 
-        # - The **ErrorCode** parameter is not returned when the request succeeds.
-        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The response message.
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the resource usage of an application was obtained. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: indicates that the resource usage was obtained.
-        # *   **false**: indicates that the resource usage could not be obtained.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The trace ID used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -111,7 +117,7 @@ class QueryResourceStaticsResponseBodyData(DaraModel):
     ):
         # The real-time resource usage.
         self.real_time_res = real_time_res
-        # The resource usage of the current month.
+        # The resource usage in the current month.
         self.summary = summary
 
     def validate(self):
@@ -157,19 +163,21 @@ class QueryResourceStaticsResponseBodyDataSummary(DaraModel):
         idle_cpu: float = None,
         memory: float = None,
     ):
-        # The usage of active vCPU. Unit: Core*min.
+        # The active vCPU usage, in Core·min.
         self.active_cpu = active_cpu
-        # The CPU usage. Unit: core per minute.
+        # The CPU usage, in Core·min.
         self.cpu = cpu
-        # The CU usage.
+        # The number of CUs used.
         self.cu = cu
-        # The storage size of the temporary storage space. Unit: GiB.
+        # The ephemeral storage usage, in GiB·min.
         self.ephemeral_storage = ephemeral_storage
+        # The GpuA10 usage.
         self.gpu_a10 = gpu_a10
+        # The GpuPpu810e usage.
         self.gpu_ppu_810e = gpu_ppu_810e
-        # The usage of idle CPU. Unit: Core*min.
+        # The idle vCPU usage, in Core·min.
         self.idle_cpu = idle_cpu
-        # The memory usage. Unit: GiB per minute.
+        # The memory usage, in GiB·min.
         self.memory = memory
 
     def validate(self):
@@ -241,11 +249,11 @@ class QueryResourceStaticsResponseBodyDataRealTimeRes(DaraModel):
         ephemeral_storage: float = None,
         memory: float = None,
     ):
-        # The CPU usage. Unit: core per minute.
+        # The CPU usage, in Core·min.
         self.cpu = cpu
-        # The storage size of the temporary storage space. Unit: GiB.
+        # The ephemeral storage usage, in GiB·min.
         self.ephemeral_storage = ephemeral_storage
-        # The memory usage. Unit: GiB per minute.
+        # The memory usage, in GiB·min.
         self.memory = memory
 
     def validate(self):

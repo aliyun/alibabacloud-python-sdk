@@ -17,28 +17,33 @@ class ListAppEventsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code returned for the request. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Client error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
-        # The events.
+        # The event list.
         self.data = data
-        # The error code returned if the call failed. Take note of the following rules:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section in this topic.
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # 
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error Codes** section.
         self.error_code = error_code
-        # The returned message.
+        # Additional information about the request result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the events that occurred in the application were queried. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The events were queried.
-        # *   **false**: The events failed to be queried.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -101,13 +106,13 @@ class ListAppEventsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The events.
+        # An array of application events.
         self.app_event_entity = app_event_entity
-        # The number of the returned page.
+        # The current page number.
         self.current_page = current_page
         # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of events that occurred in an application.
+        # The total count of application events.
         self.total_size = total_size
 
     def validate(self):
@@ -168,20 +173,21 @@ class ListAppEventsResponseBodyDataAppEventEntity(DaraModel):
         object_name: str = None,
         reason: str = None,
     ):
+        # The cause analysis.
         self.cause_analysis = cause_analysis
-        # The type of the event. Valid values:
+        # The event type.
         self.event_type = event_type
-        # The timestamp of the first occurrence of the event.
+        # The timestamp of the event\\"s first occurrence.
         self.first_timestamp = first_timestamp
-        # The timestamp of the last occurrence of the event.
+        # The timestamp of the event\\"s last occurrence.
         self.last_timestamp = last_timestamp
-        # The information about the event.
+        # The event message.
         self.message = message
-        # The type of the object.
+        # The object kind.
         self.object_kind = object_kind
-        # The name of the object.
+        # The object name.
         self.object_name = object_name
-        # The cause of the event.
+        # The reason for the event.
         self.reason = reason
 
     def validate(self):

@@ -14,19 +14,35 @@ class ListNamespaceChangeOrdersRequest(DaraModel):
         namespace_id: str = None,
         page_size: int = None,
     ):
-        # 2
+        # The change order status. Valid values:
+        # 
+        # - **0**: Preparing.
+        # 
+        # - **1**: Executing.
+        # 
+        # - **2**: Succeeded.
+        # 
+        # - **3**: Failed.
+        # 
+        # - **6**: Terminated.
+        # 
+        # - **10**: System Error.
         self.co_status = co_status
-        # CoBatchStartApplication
+        # The change order type. Valid values:
+        # 
+        # - **CoBatchStartApplication**: Batch Start Application.
+        # 
+        # - **CoBatchStopApplication**: Batch Stop Application.
         self.co_type = co_type
-        # 1
+        # The current page.
         self.current_page = current_page
-        # test
+        # A keyword for a fuzzy search of change order descriptions. Change orders whose descriptions contain this **key** are returned.
         self.key = key
-        # cn-shanghai:test
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
-        # 20
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

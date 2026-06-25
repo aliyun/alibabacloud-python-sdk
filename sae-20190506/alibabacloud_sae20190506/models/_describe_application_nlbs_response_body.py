@@ -20,28 +20,33 @@ class DescribeApplicationNlbsResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
-        self.code = code
-        # The returned data.
-        self.data = data
-        # The status code. Value values:
+        # - **2xx**: The request is successful.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** section in this topic.
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
+        self.code = code
+        # The data returned in the response.
+        self.data = data
+        # The error code.
+        # 
+        # - This parameter is returned only if the request fails.
+        # 
+        # - For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The message returned. Valid values:If the request was successful, success is returned. If the request failed, an error code is returned.
+        # The returned message. A value of `success` indicates a successful request; otherwise, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the NLB instance was successfully associated with the application. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The application was associated.
-        # *   **false**: The application failed to be associated.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -107,7 +112,7 @@ class DescribeApplicationNlbsResponseBodyData(DaraModel):
         self,
         instances: Dict[str, main_models.DataInstancesValue] = None,
     ):
-        # The details of the instance.
+        # A collection of instance details.
         self.instances = instances
 
     def validate(self):

@@ -10,7 +10,7 @@ class DescribeNamespacesRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # The page number.
+        # The current page number.
         # 
         # This parameter is required.
         self.current_page = current_page

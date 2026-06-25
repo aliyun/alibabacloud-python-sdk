@@ -16,26 +16,31 @@ class GetChangeOrderMetricResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The following limits are imposed on the ID:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client-side error occurred.
+        # 
+        # - **5xx**: A server-side error occurred.
         self.code = code
-        # The details of applications.
+        # The list of application information.
         self.data = data
-        # The additional information that is returned. The following limits are imposed on the ID:
+        # The response message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - Returns **success** if the request is successful.
+        # 
+        # - Returns an error code if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the microservice list was obtained. The following limits are imposed on the ID:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The namespaces were obtained.
-        # *   **false**: no
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -106,17 +111,21 @@ class GetChangeOrderMetricResponseBodyData(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
+        # The average duration of a change order, in milliseconds.
         self.avg_time_cost_ms = avg_time_cost_ms
-        # The number of abnormal change orders.
+        # The number of failed change orders.
         self.error = error
-        # The percentage of change failures.
+        # The percentage of failed change orders.
         self.error_percent = error_percent
+        # The maximum duration, in milliseconds.
         self.max_time_cost_ms = max_time_cost_ms
         # The application name.
         self.name = name
+        # The optimization suggestions.
         self.optimize_suggestions = optimize_suggestions
         # The namespace ID.
         self.region_id = region_id
+        # The average task duration, in milliseconds.
         self.task_time_cost_ms_avg = task_time_cost_ms_avg
         # The total number of change orders.
         self.total = total

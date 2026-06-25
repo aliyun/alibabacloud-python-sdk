@@ -16,18 +16,23 @@ class GetChangeOrderMetricRequest(DaraModel):
         order_by: str = None,
         region_id: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
-        # The SAE application type. Valid values:
+        # The type of the SAE application.
         # 
-        # *   **micro_service**
-        # *   **web**
-        # *   **job**
+        # - **micro_service**
+        # 
+        # - **web**
+        # 
+        # - **job**
         self.app_source = app_source
+        # The type of the change order.
         self.co_type = co_type
-        # The CPU allocation policy. Valid values:
+        # The CPU allocation policy.
         # 
-        # *   **request**: CPU cores are allocated only when a request is initiated.
-        # *   **always**: Fixed CPU cores are always allocated.
+        # - **request**: CPU is allocated only when a request is received.
+        # 
+        # - **always**: A fixed amount of CPU is always allocated.
         self.cpu_strategy = cpu_strategy
         # The start time when the change order was created.
         # 
@@ -37,11 +42,11 @@ class GetChangeOrderMetricRequest(DaraModel):
         # 
         # This parameter is required.
         self.limit = limit
-        # The field based on which you want to sort the returned entries.
+        # The field by which to sort the query results. The value of this parameter must be a field in the response parameters.
         # 
         # This parameter is required.
         self.order_by = order_by
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

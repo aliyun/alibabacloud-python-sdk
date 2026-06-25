@@ -18,30 +18,35 @@ class ListNamespaceChangeOrdersResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code or POP error code.
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The returned data.
+        # The returned results.
         self.data = data
         # The error code.
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-        self.error_code = error_code
-        # The returned message.
-        self.message = message
-        # The ID of the request.
-        self.request_id = request_id
-        # Indicates whether the list of change orders was obtained. Valid values:
+        # - This parameter is returned only when a request fails.
         # 
-        # *   **true**: indicates that the list was obtained.
-        # *   **false**: indicates that the list could not be obtained.
+        # - For more information, see the **Error codes** section of this topic.
+        self.error_code = error_code
+        # The response message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. It is used to query the details of a request.
+        # The trace ID, which is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -112,9 +117,9 @@ class ListNamespaceChangeOrdersResponseBodyData(DaraModel):
     ):
         # The list of change orders.
         self.change_order_list = change_order_list
-        # The number of the returned page.
+        # The current page number.
         self.current_page = current_page
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of change orders.
         self.total_size = total_size
@@ -184,48 +189,51 @@ class ListNamespaceChangeOrdersResponseBodyDataChangeOrderList(DaraModel):
         status: int = None,
         user_id: str = None,
     ):
-        # The number of release batches.
+        # The batch count.
         self.batch_count = batch_count
-        # The mode in which the release batches are determined. Valid values:
-        # 
-        # *   **auto**: SAE automatically determines the release batches.
-        # *   **manual**: You must manually determine the release batches.
+        # The batch type.
         self.batch_type = batch_type
-        # The ID of the change order.
+        # The change order ID.
         self.change_order_id = change_order_id
-        # The type of the change order, which corresponds the **CoTypeCode** parameter.
+        # The type of the change order, which corresponds to the `CoTypeCode`.
         self.co_type = co_type
-        # The code of the change order type. Valid values:
+        # The type code of the change order. Valid values:
         # 
-        # *   **CoBatchStartApplication**: starts multiple applications concurrently.
-        # *   **CoBatchStopApplication**: stops multiple applications concurrently.
+        # - **CoBatchStartApplication**: Starts applications in batches.
+        # 
+        # - **CoBatchStopApplication**: Stops applications in batches.
         self.co_type_code = co_type_code
-        # The time when the change order was created.
+        # The creation time of the change order.
         self.create_time = create_time
         # The ID of the user who created the change order.
         self.create_user_id = create_user_id
         # The description of the change order.
         self.description = description
-        # The time when the change order was completed.
+        # The completion time of the change order.
         self.finish_time = finish_time
-        # The ID of the group.
+        # The group ID.
         self.group_id = group_id
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The information about release batches.
+        # The pipeline.
         self.pipelines = pipelines
-        # The source of the change order.
+        # The initiation source for the change order.
         self.source = source
         # The status of the change order. Valid values:
         # 
-        # *   **0**: The change order is being prepared.
-        # *   **1**: The change order is being executed.
-        # *   **2**: The change order was executed.
-        # *   **3**: The change order could not be executed.
-        # *   **6**: The change order was terminated.
-        # *   **10**: The change order could not be executed due to a system exception.
+        # - **0**: Preparing
+        # 
+        # - **1**: In progress
+        # 
+        # - **2**: Succeeded
+        # 
+        # - **3**: Failed
+        # 
+        # - **6**: Terminated
+        # 
+        # - **10**: Failed due to a system exception
         self.status = status
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

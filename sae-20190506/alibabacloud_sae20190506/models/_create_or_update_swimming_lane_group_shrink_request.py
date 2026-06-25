@@ -15,23 +15,25 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(DaraModel):
         namespace_id: str = None,
         swim_version: str = None,
     ):
-        # The ID of the baseline application.
+        # The IDs of the baseline applications.
         self.app_ids_shrink = app_ids_shrink
-        # The unique ID of the corresponding gateway.
+        # The unique ID of the gateway.
         self.entry_app_id = entry_app_id
-        # The application entry type (gateway type).
+        # The type of the gateway that acts as the application\\"s entry point.
         # 
-        # *   **apig:** cloud-native API Gateway
-        # *   **mse:** Java Services Gateway
-        # *   **mse-gw:** MSE cloud-native Gateway
+        # - **apig:** cloud-native API gateway
+        # 
+        # - **mse:** java service gateway
+        # 
+        # - **mse-gw:** MSE Cloud Native Gateway
         self.entry_app_type = entry_app_type
-        # The ID of the lane group. This is required when you update a lane group.
+        # The ID of the swimming lane group. This parameter is required when you update a swimming lane group.
         self.group_id = group_id
-        # The name of the lane group.
+        # The name of the swimming lane group.
         self.group_name = group_name
-        # The ID of a namespace.
+        # The ID of the namespace.
         self.namespace_id = namespace_id
-        # The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
+        # The version of the end-to-end canary release. Valid values: 0 and 2. The value 2 is recommended.
         self.swim_version = swim_version
 
     def validate(self):

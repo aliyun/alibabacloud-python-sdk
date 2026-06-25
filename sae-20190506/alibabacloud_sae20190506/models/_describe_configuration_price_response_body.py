@@ -18,33 +18,39 @@ class DescribeConfigurationPriceResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code or POP error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The price.
+        # The pricing information.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The message returned. Valid values:
+        # The returned message.
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   If the request failed, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the configuration price was obtained.
+        # Indicates whether the price of the configuration was obtained.
         # 
-        # *   **true**: The price was obtained.
-        # *   **false**: The price failed to be queried.
+        # - **true**: The price was obtained.
+        # 
+        # - **false**: The price failed to be obtained.
         self.success = success
-        # The ID of the trace.
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -115,17 +121,17 @@ class DescribeConfigurationPriceResponseBodyData(DaraModel):
         rules: List[main_models.DescribeConfigurationPriceResponseBodyDataRules] = None,
         traffic_price: main_models.DescribeConfigurationPriceResponseBodyDataTrafficPrice = None,
     ):
-        # The remaining capacity of the resource plan.
+        # The remaining quota of the resource plan.
         self.bag_usage = bag_usage
         # The price of CPU and memory.
         self.cpu_mem_price = cpu_mem_price
-        # The information about pricing.
+        # The pricing information.
         self.order = order
-        # The price based on the number of requests.
+        # The price per request.
         self.request_price = request_price
         # The promotion rules.
         self.rules = rules
-        # The traffic price.
+        # The price of traffic.
         self.traffic_price = traffic_price
 
     def validate(self):
@@ -207,9 +213,9 @@ class DescribeConfigurationPriceResponseBodyDataTrafficPrice(DaraModel):
         order: main_models.DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder = None,
         rules: List[main_models.DescribeConfigurationPriceResponseBodyDataTrafficPriceRules] = None,
     ):
-        # The information about pricing.
+        # The pricing information.
         self.order = order
-        # The discount rule.
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -255,9 +261,9 @@ class DescribeConfigurationPriceResponseBodyDataTrafficPriceRules(DaraModel):
         name: str = None,
         rule_desc_id: float = None,
     ):
-        # The name of the discount rule.
+        # The name of the rule.
         self.name = name
-        # The ID of the discount rule.
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -294,13 +300,13 @@ class DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder(DaraModel):
         rule_ids: List[str] = None,
         trade_amount: float = None,
     ):
-        # The discount amount.
+        # The discount amount of the order.
         self.discount_amount = discount_amount
         # The original price of the order.
         self.original_amount = original_amount
-        # The ID of the discount rule.
+        # The promotion ID.
         self.rule_ids = rule_ids
-        # The final price of the order.
+        # The actual transaction price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -347,9 +353,9 @@ class DescribeConfigurationPriceResponseBodyDataRules(DaraModel):
         name: str = None,
         rule_desc_id: int = None,
     ):
-        # The name of the promotion rule.
+        # The name of the rule.
         self.name = name
-        # The ID of the promotion rule.
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -384,9 +390,9 @@ class DescribeConfigurationPriceResponseBodyDataRequestPrice(DaraModel):
         order: main_models.DescribeConfigurationPriceResponseBodyDataRequestPriceOrder = None,
         rules: List[main_models.DescribeConfigurationPriceResponseBodyDataRequestPriceRules] = None,
     ):
-        # The information about pricing.
+        # The pricing information.
         self.order = order
-        # The discount rule.
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -432,9 +438,9 @@ class DescribeConfigurationPriceResponseBodyDataRequestPriceRules(DaraModel):
         name: str = None,
         rule_desc_id: int = None,
     ):
-        # The name of the discount rule.
+        # The name of the rule.
         self.name = name
-        # The ID of the discount policy.
+        # The policy ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -471,13 +477,13 @@ class DescribeConfigurationPriceResponseBodyDataRequestPriceOrder(DaraModel):
         rule_ids: List[str] = None,
         trade_amount: float = None,
     ):
-        # The discount amount.
+        # The discount amount of the order.
         self.discount_amount = discount_amount
         # The original price of the order.
         self.original_amount = original_amount
-        # The ID of the discount rule.
+        # The rule ID.
         self.rule_ids = rule_ids
-        # The actual price of the order.
+        # The actual transaction price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -526,13 +532,13 @@ class DescribeConfigurationPriceResponseBodyDataOrder(DaraModel):
         rule_ids: List[str] = None,
         trade_amount: float = None,
     ):
-        # The discount amount.
+        # The discount amount of the order.
         self.discount_amount = discount_amount
         # The original price of the order.
         self.original_amount = original_amount
-        # The ID of the promotion rule.
+        # The promotion ID.
         self.rule_ids = rule_ids
-        # The transaction price.
+        # The final price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -579,9 +585,9 @@ class DescribeConfigurationPriceResponseBodyDataCpuMemPrice(DaraModel):
         order: main_models.DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder = None,
         rules: List[main_models.DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules] = None,
     ):
-        # The information about pricing.
+        # The pricing information.
         self.order = order
-        # The discount rules.
+        # The promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -627,9 +633,9 @@ class DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules(DaraModel):
         name: str = None,
         rule_desc_id: float = None,
     ):
-        # The name of discount rule.
+        # The name of the rule.
         self.name = name
-        # The ID of the discount rule.
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
 
     def validate(self):
@@ -666,13 +672,13 @@ class DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder(DaraModel):
         rule_ids: List[str] = None,
         trade_amount: float = None,
     ):
-        # The discount amount.
+        # The discount amount of the order.
         self.discount_amount = discount_amount
         # The original price.
         self.original_amount = original_amount
-        # The ID of the discount rule.
+        # The rule ID.
         self.rule_ids = rule_ids
-        # The final price of the order.
+        # The actual transaction price of the order.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -720,10 +726,11 @@ class DescribeConfigurationPriceResponseBodyDataBagUsage(DaraModel):
         cu: float = None,
         mem: float = None,
     ):
-        # The available CPU capacity. Unit: cores \\*.
+        # The remaining CPU quota. Unit: core-hours.
         self.cpu = cpu
+        # The remaining computing units (CUs) of the resource plan.
         self.cu = cu
-        # The available memory size. Unit: GiB ×.
+        # The remaining memory quota. Unit: GiB-hours.
         self.mem = mem
 
     def validate(self):

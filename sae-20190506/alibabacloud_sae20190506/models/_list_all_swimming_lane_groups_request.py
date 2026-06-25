@@ -9,7 +9,7 @@ class ListAllSwimmingLaneGroupsRequest(DaraModel):
         self,
         namespace_id: str = None,
     ):
-        # The ID of a namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):

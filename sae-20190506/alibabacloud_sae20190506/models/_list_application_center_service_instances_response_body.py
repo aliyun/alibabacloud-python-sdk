@@ -22,7 +22,6 @@ class ListApplicationCenterServiceInstancesResponseBody(DaraModel):
         self.data = data
         self.error_code = error_code
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
         self.trace_id = trace_id

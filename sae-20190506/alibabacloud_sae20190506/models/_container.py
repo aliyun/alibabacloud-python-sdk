@@ -25,37 +25,37 @@ class Container(DaraModel):
         web_nasconfig: main_models.WebNASConfig = None,
         web_ossconfig: main_models.WebOSSConfig = None,
     ):
-        # The startup parameters of the container.
+        # Container startup arguments.
         self.args = args
-        # The startup command of the container.
+        # Container start command.
         self.command = command
-        # The container environment variables.
+        # Container environment variables.
         self.environment_variables = environment_variables
-        # The container image.
+        # Container image.
         # 
         # This parameter is required.
         self.image = image
-        # The configuration of the image repository.
+        # Image repository configuration.
         self.image_registry_config = image_registry_config
-        # The configuration for collecting monitoring records.
+        # Monitoring collection configuration.
         self.metrics_collect_config = metrics_collect_config
-        # The port of the container.
+        # Container port.
         self.port = port
-        # The number of concurrent requests on a single instance.
+        # Maximum concurrent requests per instance.
         self.request_concurrency = request_concurrency
-        # The timeout period of the container request.
+        # Container request timeout, in seconds.
         self.request_timeout = request_timeout
-        # The configurations of the container resources.
+        # Container resource configuration.
         # 
         # This parameter is required.
         self.resources = resources
-        # The configuration of container log collection.
+        # Container log collection configuration.
         self.slscollect_configs = slscollect_configs
-        # The container startup check configuration.
+        # Container startup probe configuration.
         self.startup_probe = startup_probe
-        # The container NAS configuration.
+        # Container NAS configuration.
         self.web_nasconfig = web_nasconfig
-        # The container OSS mount configuration.
+        # Container OSS mount configuration.
         self.web_ossconfig = web_ossconfig
 
     def validate(self):

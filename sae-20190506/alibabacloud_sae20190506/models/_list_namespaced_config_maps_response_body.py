@@ -20,31 +20,37 @@ class ListNamespacedConfigMapsResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the call was successful.
-        # *   **3xx**: indicates that the call was redirected.
-        # *   **4xx**: indicates that the call failed.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The returned result.
+        # The data returned by the request.
         self.data = data
-        # The returned error code. Valid values:
+        # The error code.
         # 
-        # - If the call is successful, the **ErrorCode** parameter is not returned.
-        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # -
+        # 
+        # - This parameter is returned only if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned information. Valid values:
+        # The response message. Valid values:
         # 
-        # *   If the call is successful, **success** is returned.
-        # *   If the call fails, an error code is returned.
+        # - Returns **success** if the request is successful.
+        # 
+        # - Returns an error message if the request fails.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the ConfigMap instances were obtained. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The instances were obtained.
-        # *   **false**: The instances failed to be obtained.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID. You can use this ID to trace the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -110,7 +116,7 @@ class ListNamespacedConfigMapsResponseBodyData(DaraModel):
         self,
         config_maps: List[main_models.ListNamespacedConfigMapsResponseBodyDataConfigMaps] = None,
     ):
-        # The ConfigMap instances.
+        # The list of ConfigMap instances.
         self.config_maps = config_maps
 
     def validate(self):
@@ -155,23 +161,21 @@ class ListNamespacedConfigMapsResponseBodyDataConfigMaps(DaraModel):
     ):
         # The ID of the ConfigMap instance.
         self.config_map_id = config_map_id
-        # The time when the instance was created.
+        # The creation time.
         self.create_time = create_time
-        # The data of ConfigMap key-value pairs. Format:
+        # The key-value pairs of the ConfigMap instance.
         # 
-        # {"k1":"v1", "k2":"v2"}
-        # 
-        # k specifies a key and v specifies a value. For more information, see [Manage and use configurations](https://help.aliyun.com/document_detail/171326.html).
+        # For more information about the ConfigMap, see [Manage and use configuration items](https://help.aliyun.com/document_detail/171326.html).
         self.data = data
         # The description of the instance.
         self.description = description
-        # The name of the ConfigMap instance.
+        # The name of the instance.
         self.name = name
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The application that is associated with the instance.
+        # The associated applications.
         self.relate_apps = relate_apps
-        # The time when the instance was last modified.
+        # The last update time.
         self.update_time = update_time
 
     def validate(self):
@@ -250,9 +254,9 @@ class ListNamespacedConfigMapsResponseBodyDataConfigMapsRelateApps(DaraModel):
         app_id: str = None,
         app_name: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
 
     def validate(self):

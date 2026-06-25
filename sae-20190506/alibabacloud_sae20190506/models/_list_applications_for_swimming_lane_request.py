@@ -13,11 +13,11 @@ class ListApplicationsForSwimmingLaneRequest(DaraModel):
     ):
         # The ID of the application group. You can call the [DescribeApplicationGroups](https://help.aliyun.com/document_detail/126249.html) operation to obtain the ID.
         self.group_id = group_id
-        # The ID of a namespace.
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
-        # The canary tag
+        # The canary tag.
         self.tag = tag
 
     def validate(self):

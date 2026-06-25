@@ -12,17 +12,19 @@ class UnbindNlbRequest(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
-        # A short description of struct
+        # The application ID.
         self.app_id = app_id
-        # The ID of NLB instance.
+        # The NLB instance ID.
         self.nlb_id = nlb_id
-        # The listener port of the instance. Valid values: 0 to 65535.
+        # The listener port, which must be between 0 and 65535.
         self.port = port
-        # The type of the protocol. Valid values:
+        # The protocol. Valid values:
         # 
-        # *   **TCP**.
-        # *   **UDP**.
-        # *   **TCPSSL**.
+        # - **TCP**
+        # 
+        # - **UDP**
+        # 
+        # - **TCPSSL**
         self.protocol = protocol
 
     def validate(self):

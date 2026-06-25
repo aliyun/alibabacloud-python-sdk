@@ -13,17 +13,17 @@ class UpdateGreyTagRouteRequest(DaraModel):
         grey_tag_route_id: int = None,
         sc_rules: str = None,
     ):
-        # The canary release rule of the application for which ALB gateway routing is configured.
+        # The grey tag route for an ALB gateway route.
         self.alb_rules = alb_rules
-        # The description of the canary release rule.
+        # The description of the rule.
         self.description = description
-        # The canary release rule of the Dubbo application.
+        # The grey tag route for a Dubbo application.
         self.dubbo_rules = dubbo_rules
-        # The ID of the canary release rule.
+        # The grey tag route ID.
         # 
         # This parameter is required.
         self.grey_tag_route_id = grey_tag_route_id
-        # The canary release rule of the Spring Cloud application.
+        # The grey tag route for a Spring Cloud application.
         self.sc_rules = sc_rules
 
     def validate(self):

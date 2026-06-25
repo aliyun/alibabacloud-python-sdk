@@ -14,30 +14,37 @@ class DisableApplicationScalingRuleResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request was invalid.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The error codes. Valid values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   If the request failed, an error code is returned.
+        # - **success** is returned if the request is successful.
+        # 
+        # - An error code is returned if the request fails.
         self.message = message
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the auto scaling policy was disabled. Valid values:
+        # Indicates whether the Auto Scaling policy was disabled. Valid values:
         # 
-        # *   **true**: The auto scaling policy was disabled.
-        # *   **false**: The auto scaling policy failed to be disabled.
+        # - **true**: The policy was disabled.
+        # 
+        # - **false**: The policy failed to be disabled.
         self.success = success
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):

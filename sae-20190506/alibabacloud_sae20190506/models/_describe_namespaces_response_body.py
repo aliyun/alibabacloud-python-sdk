@@ -18,33 +18,39 @@ class DescribeNamespacesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request was invalid.
+        # 
+        # - **5xx**: A server-side error occurred.
         self.code = code
-        # The information of namespaces.
+        # The details of the namespaces.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is returned only if the request fails.
+        # 
+        # - For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The message returned by the system.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - Returns **success** if the request is successful.
+        # 
+        # - Returns a specific error message if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the list of namespaces was queried. Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   **true**: The list was queried.
-        # *   **false**: The list failed to be queried.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID that can be used to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -113,11 +119,11 @@ class DescribeNamespacesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.current_page = current_page
-        # The namespaces.
+        # The list of namespaces.
         self.namespaces = namespaces
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The total number of namespaces.
         self.total_size = total_size
@@ -181,21 +187,21 @@ class DescribeNamespacesResponseBodyDataNamespaces(DaraModel):
         secret_key: str = None,
         tenant_id: str = None,
     ):
-        # The ACM-specific AccessKey ID. It can be used to manage data in an Application Configuration Management (ACM) namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](https://help.aliyun.com/document_detail/68941.html).
+        # The access key ID for Application Configuration Management (ACM), used to manage data in an ACM namespace. For more information, see [Differences between an Alibaba Cloud access key and an ACM-specific access key](https://help.aliyun.com/document_detail/68941.html).
         self.access_key = access_key
-        # The endpoint of the host.
+        # The service endpoint.
         self.address_server_host = address_server_host
         # The short ID of the namespace.
         self.name_space_short_id = name_space_short_id
         # The description of the namespace.
         self.namespace_description = namespace_description
-        # The ID of the namespace. You cannot query, modify, or delete the default namespace.
+        # The namespace ID. The default namespace cannot be queried, modified, or deleted.
         self.namespace_id = namespace_id
         # The name of the namespace.
         self.namespace_name = namespace_name
-        # The region ID.
+        # The ID of the region. For example, \\"cn-beijing\\" indicates China (Beijing).
         self.region_id = region_id
-        # The ACM-specific AccessKey secret. It can be used to manage data in an ACM namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](https://help.aliyun.com/document_detail/68941.html).
+        # The secret access key for Application Configuration Management (ACM), used to manage data in an ACM namespace. For more information, see [Differences between an Alibaba Cloud access key and an ACM-specific access key](https://help.aliyun.com/document_detail/68941.html).
         self.secret_key = secret_key
         # The tenant ID.
         self.tenant_id = tenant_id

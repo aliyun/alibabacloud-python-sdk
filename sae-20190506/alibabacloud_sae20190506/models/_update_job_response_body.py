@@ -16,33 +16,37 @@ class UpdateJobResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: The request is invalid.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The response.
+        # The data that is returned.
         self.data = data
-        # The error code returned. Valid values:
+        # - This parameter is not returned if the request is successful.
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The additional information that is returned. Valid values:
+        # The response message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - **success** if the request is successful.
+        # 
+        # - An error code if the request fails.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the application deployment is successful. Valid values:
+        # Indicates whether the job template was updated. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID that you can use to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -109,9 +113,9 @@ class UpdateJobResponseBodyData(DaraModel):
         app_id: str = None,
         change_order_id: str = None,
     ):
-        # The application ID.
+        # The job template ID.
         self.app_id = app_id
-        # The ID of the change order. It can be used to query the task status.
+        # The change order ID. You can use this ID to query the execution status of the job.
         self.change_order_id = change_order_id
 
     def validate(self):

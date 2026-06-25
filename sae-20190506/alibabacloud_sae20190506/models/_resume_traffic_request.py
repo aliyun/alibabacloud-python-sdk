@@ -12,7 +12,7 @@ class ResumeTrafficRequest(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The instance ID.
+        # The instance ID. To specify multiple instances, separate their IDs with commas.
         self.instance_ids = instance_ids
 
     def validate(self):

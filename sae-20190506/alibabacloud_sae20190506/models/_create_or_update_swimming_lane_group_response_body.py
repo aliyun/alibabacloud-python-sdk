@@ -16,33 +16,39 @@ class CreateOrUpdateSwimmingLaneGroupResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The HTTP status code:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: Redirection.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: Server error.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The application information.
+        # The data object returned by the operation.
         self.data = data
-        # The status code. Value values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # The response message:
         # 
-        # *   The error message returned because the request is normal and **success** is returned.
-        # *   If the request is abnormal, the specific exception error code is returned.
+        # - **success**: The request was successful.
+        # 
+        # - An error code is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Whether the lane group is created. Valid values:
+        # Indicates whether the request was successful:
         # 
-        # *   **true**: Created successfully.
-        # *   **false**: The ConfigMap failed to be created.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. This parameter is used to query the exact call information.
+        # The trace ID, which you can use to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -108,7 +114,7 @@ class CreateOrUpdateSwimmingLaneGroupResponseBodyData(DaraModel):
         self,
         group_id: int = None,
     ):
-        # The ID of the lane group.
+        # The ID of the swimming lane group.
         self.group_id = group_id
 
     def validate(self):

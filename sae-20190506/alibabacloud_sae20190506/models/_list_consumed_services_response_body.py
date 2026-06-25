@@ -18,33 +18,39 @@ class ListConsumedServicesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The details of the microservices.
+        # The information about the microservices.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the list of microservices was queried. Valid values:
+        # Indicates whether the list of subscribed microservices was retrieved.
         # 
-        # *   **true**: The list was queried.
-        # *   **false**: The list failed to be queried.
+        # - **true**: The list was retrieved.
+        # 
+        # - **false**: The list failed to be retrieved.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The ID of the request trace. Use this ID to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -122,13 +128,13 @@ class ListConsumedServicesResponseBodyData(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # This parameter is reserved.
+        # A reserved field.
         self.group_2ip = group_2ip
-        # The service groups that corresponds to the consumed services.
+        # The groups to which the consumed services belong.
         self.groups = groups
-        # The addresses where the services can be subscribed to.
+        # The service subscription addresses.
         self.ips = ips
         # The name of the published service.
         self.name = name

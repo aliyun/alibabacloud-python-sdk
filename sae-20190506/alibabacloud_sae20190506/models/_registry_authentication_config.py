@@ -10,7 +10,9 @@ class RegistryAuthenticationConfig(DaraModel):
         password: str = None,
         user_name: str = None,
     ):
+        # The password for the image repository.
         self.password = password
+        # The username for the image repository.
         self.user_name = user_name
 
     def validate(self):

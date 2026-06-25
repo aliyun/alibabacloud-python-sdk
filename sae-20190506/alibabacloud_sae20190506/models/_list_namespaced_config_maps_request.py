@@ -9,7 +9,7 @@ class ListNamespacedConfigMapsRequest(DaraModel):
         self,
         namespace_id: str = None,
     ):
-        # cn-hangzhou
+        # The ID of the namespace.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id

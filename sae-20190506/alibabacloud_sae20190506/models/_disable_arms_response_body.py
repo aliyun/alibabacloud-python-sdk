@@ -18,28 +18,29 @@ class DisableArmsResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
-        self.code = code
-        # The data returned.
-        self.data = data
-        # The error code. Valid values:
+        # - **2xx**: The request was successful.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
+        self.code = code
+        # The returned data.
+        self.data = data
+        # The error code.
+        # 
+        # - If the request is successful, the **ErrorCode** parameter is not returned.
+        # 
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the request was successful. Valid values:
         self.success = success
-        # The trace ID.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -105,10 +106,7 @@ class DisableArmsResponseBodyData(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates if enabled. Valid values: 
-        # 
-        # *   true: enabled
-        # *   false: disabled
+        # Indicates whether ARMS monitoring is enabled. Valid values:
         self.enable = enable
 
     def validate(self):

@@ -18,33 +18,39 @@ class UpdateApplicationScalingRuleResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code or a POP error code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client-side error occurred.
+        # 
+        # - **5xx**: A server-side error occurred.
         self.code = code
-        # The returned result.
+        # The response data.
         self.data = data
-        # The error code returned. Take note of the following rules:
+        # The error code.
         # 
-        # *   If the call is successful, **ErrorCode** is not returned.
-        # *   If the call fails, **ErrorCode** is returned. For more information, see the "**Error codes**" section in this topic.
+        # - This parameter is returned only if the request fails.
+        # 
+        # - For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Take note of the following rules:
+        # The response message.
         # 
-        # *   If the call is successful, **success** is returned.
-        # *   If the call fails, an error code is returned.
+        # - **success** is returned if the request is successful.
+        # 
+        # - An error message is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Specifies whether the instances are successfully restarted. Valid values:
+        # Specifies whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID used to query call details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -121,29 +127,33 @@ class UpdateApplicationScalingRuleResponseBodyData(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The time when the auto scaling policy was created. Unit: milliseconds.
+        # The time when the scaling policy was created, in milliseconds.
         self.create_time = create_time
+        # Specifies whether to enable idle mode.
         self.enable_idle = enable_idle
-        # The time when the auto scaling policy was last disabled.
+        # The time when the scaling policy was last disabled, in milliseconds.
         self.last_disable_time = last_disable_time
-        # The details of the metric-based auto scaling policy.
+        # The configuration for metric-based scaling.
         self.metric = metric
-        # Specifies whether to enable the auto scaling policy. Valid values:
+        # Specifies whether the scaling policy is enabled. Valid values:
         # 
-        # *   **true**: The auto scaling policy is enabled.
-        # *   **false**: The auto scaling policy is disabled.
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.scale_rule_enabled = scale_rule_enabled
-        # The name of the auto scaling policy.
+        # The name of the scaling policy.
         self.scale_rule_name = scale_rule_name
-        # The type of the auto scaling policy. Valid values:
+        # The type of the scaling policy. Valid values:
         # 
-        # *   **timing**: a scheduled auto scaling policy
-        # *   **metric**: a metric-based auto scaling policy
-        # *   **mix**: a hybrid auto scaling policy
+        # - **timing**: scheduled scaling
+        # 
+        # - **metric**: metric-based scaling
+        # 
+        # - **mix**: hybrid scaling
         self.scale_rule_type = scale_rule_type
-        # The details of the scheduled auto scaling policy.
+        # The configuration for scheduled scaling.
         self.timer = timer
-        # The time when the auto scaling policy was updated. Unit: milliseconds.
+        # The time when the scaling policy was updated, in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -233,33 +243,41 @@ class UpdateApplicationScalingRuleResponseBodyDataTimer(DaraModel):
         period: str = None,
         schedules: List[main_models.UpdateApplicationScalingRuleResponseBodyDataTimerSchedules] = None,
     ):
-        # The start date of the validity period of the scheduled auto scaling policy. Parameter description:
+        # The start date of the short-term scheduled scaling policy.
         # 
-        # *   If **BeginDate** and **EndDate** are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
-        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
+        # - If **BeginDate** and **EndDate** are both set to **null**, the policy is long-term by default.
+        # 
+        # - If you specify a date range, for example, **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the policy is effective for one month.
         self.begin_date = begin_date
-        # The end date of the validity period of the scheduled auto scaling policy. Take note of the following rules:
+        # The end date of the short-term scheduled scaling policy.
         # 
-        # *   If **BeginDate** and **EndDate** are set to **null**, the auto scaling policy is a long-term policy. Default values of the beginDate and endDate parameters: null.
-        # *   If the two parameters are set to specific dates, the scheduled auto scaling policy can be triggered during the period between the two dates. For example, if **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the auto scaling policy is valid for one month.
+        # - If **BeginDate** and **EndDate** are both set to **null**, the policy is long-term by default.
+        # 
+        # - If you specify a date range, for example, **BeginDate** is set to 2021-03-25 and **EndDate** is set to 2021-04-25, the policy is effective for one month.
         self.end_date = end_date
-        # The frequency at which the scheduled auto scaling policy is executed. Valid values:
+        # The recurrence schedule for the scaling policy.
         # 
-        # *   **\\* \\* \\***: The scheduled auto scaling policy is executed at a specified point in time every day.
+        # - **\\* \\* \\***: The policy runs at a specified time every day.
         # 
-        # *   **\\* \\* Fri,Mon**: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each week. GMT+8 is used. Valid values:
+        # - **\\* \\* Fri,Mon**: The policy runs at a specified time on specific days of a week. You can select multiple days. The time is in the GMT+8 time zone. Valid values:
         # 
-        #     *   **Sun**
-        #     *   **Mon**
-        #     *   **Tue**
-        #     *   **Wed**
-        #     *   **Thu**
-        #     *   **Fri**
-        #     *   **Sat**
+        #   - **Sun**: Sunday
         # 
-        # *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy is executed at a specified point in time on one or more days of each month. Valid values: 1 to 31. If the month does not have a 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
+        #   - **Mon**: Monday
+        # 
+        #   - **Tue**: Tuesday
+        # 
+        #   - **Wed**: Wednesday
+        # 
+        #   - **Thu**: Thursday
+        # 
+        #   - **Fri**: Friday
+        # 
+        #   - **Sat**: Saturday
+        # 
+        # - **1,2,3,28,31 \\* \\***: The policy runs at a specified time on specific days of a month. You can select multiple days. If a month does not have a specific day, such as the 31st, the policy skips that day.
         self.period = period
-        # The points in time at which the auto scaling policy is triggered within one day.
+        # The schedules for the scaling policy.
         self.schedules = schedules
 
     def validate(self):
@@ -316,11 +334,13 @@ class UpdateApplicationScalingRuleResponseBodyDataTimerSchedules(DaraModel):
         min_replicas: int = None,
         target_replicas: int = None,
     ):
-        # The point in time. Format: **Hour:Minute**.
+        # The time at which the scaling action is triggered. Format: **HH:mm**.
         self.at_time = at_time
+        # The maximum number of instances.
         self.max_replicas = max_replicas
+        # The minimum number of instances.
         self.min_replicas = min_replicas
-        # The expected number of instances.
+        # The target number of instances.
         self.target_replicas = target_replicas
 
     def validate(self):
@@ -370,7 +390,7 @@ class UpdateApplicationScalingRuleResponseBodyDataMetric(DaraModel):
     ):
         # The maximum number of instances.
         self.max_replicas = max_replicas
-        # The metrics that are used to trigger the auto scaling policy.
+        # The metrics that trigger scaling actions.
         self.metrics = metrics
         # The minimum number of instances.
         self.min_replicas = min_replicas
@@ -425,25 +445,53 @@ class UpdateApplicationScalingRuleResponseBodyDataMetricMetrics(DaraModel):
         slb_project: str = None,
         vport: str = None,
     ):
-        # The limit on the metric.
+        # The target value for the specified metric. The unit varies based on the metric type.
         # 
-        # *   The limit on the CPU utilization. Unit: percentage.
-        # *   The limit on the memory usage. Unit: percentage.
-        # *   The limit on the average number of active TCP connections per second.
-        # *   The limit on the QPS of the Internet-facing SLB instance.
-        # *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
+        # - Target CPU utilization, in percentage.
+        # 
+        # - Target memory usage, in percentage.
+        # 
+        # - Target queries per second (QPS).
+        # 
+        # - Target response time, in milliseconds.
+        # 
+        # - The target number of active TCP connections.
+        # 
+        # - Target QPS for the public-facing SLB instance.
+        # 
+        # - Target response time of the public-facing SLB instance, in milliseconds.
+        # 
+        # - Target QPS for the internal SLB instance.
+        # 
+        # - Target response time of the internal SLB instance, in milliseconds.
         self.metric_target_average_utilization = metric_target_average_utilization
-        # The metric that is used to trigger the auto scaling policy. Valid values:
+        # The metric that triggers the scaling policy. Valid values:
         # 
-        # *   **CPU**: the CPU utilization.
-        # *   **MEMORY**: the memory usage.
-        # *   **tcpActiveConn**: the average number of active TCP connections of an application instance within 30 seconds.
-        # *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance associated with an application instance within 15 seconds.
-        # *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
+        # - **CPU**: CPU utilization.
+        # 
+        # - **MEMORY**: memory usage.
+        # 
+        # - **QPS**: The average queries per second (QPS) per instance over the last minute. This applies only to Java applications.
+        # 
+        # - **RT**: The average response time (RT) of all service interfaces in the application over the last minute. This applies only to Java applications.
+        # 
+        # - **tcpActiveConn**: The average number of active TCP connections per instance over the last 30 seconds.
+        # 
+        # - **SLB_QPS**: The average QPS from the public-facing SLB, per instance, over the last 15 seconds.
+        # 
+        # - **SLB_RT**: The average response time of a public-facing SLB instance over the last 15 seconds.
+        # 
+        # - **INTRANET_SLB_QPS**: The average QPS from the internal SLB, per instance, over the last 15 seconds.
+        # 
+        # - **INTRANET_SLB_RT**: The average response time of an internal SLB instance over the last 15 seconds.
         self.metric_type = metric_type
+        # The SLB instance ID.
         self.slb_id = slb_id
+        # The name of the Logstore for SLB access logs.
         self.slb_logstore = slb_logstore
+        # The name of the Log Service Project for SLB access logs.
         self.slb_project = slb_project
+        # The SLB port.
         self.vport = vport
 
     def validate(self):

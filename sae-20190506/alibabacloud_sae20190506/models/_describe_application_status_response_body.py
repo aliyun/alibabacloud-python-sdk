@@ -18,31 +18,37 @@ class DescribeApplicationStatusResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request was invalid.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The returned result.
+        # The response data.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - If the request is successful, this parameter is not returned.
+        # 
+        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The response message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - If the call is successful, **success** is returned.
+        # 
+        # - If the call fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the status of the application was queried. Valid values:
+        # Indicates whether the application status was obtained. Valid values:
         # 
-        # *   **true**: The status was queried.
-        # *   **false**: The status failed to be queried.
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -119,56 +125,71 @@ class DescribeApplicationStatusResponseBodyData(DaraModel):
         running_instances: int = None,
         sub_status: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # Indicates whether Application Real-Time Monitoring Service (ARMS) advanced monitoring is enabled. Valid values:
+        # Indicates whether ARMS Advanced Edition is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.arms_advanced_enabled = arms_advanced_enabled
         # The metadata of the application in ARMS.
         self.arms_apm_info = arms_apm_info
-        # The time when the application was created.
+        # The time when the application was created. This value is a UNIX timestamp.
         self.create_time = create_time
         # The current status of the application. Valid values:
         # 
-        # *   **RUNNING**
-        # *   **STOPPED**
-        # *   **UNKNOWN**
-        self.current_status = current_status
-        # Indicates whether SAE agent is enabled.
+        # - **RUNNING**: The application is running.
         # 
-        # *   **true**
-        # *   **false**
+        # - **STOPPED**: The application is stopped.
+        # 
+        # - **UNKNOWN**: The application status is unknown.
+        self.current_status = current_status
+        # Indicates whether the SAE agent is enabled. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.enable_agent = enable_agent
         # The file size limit. Unit: KB. Valid values: 0 to 10240.
         self.file_size_limit = file_size_limit
-        # The ID of the latest change order that is executed. If no change orders are executed or if change orders expire, this parameter is left empty.
+        # The ID of the most recently executed change order. This parameter is empty if no change order was executed or if the information about the change order has expired.
         self.last_change_order_id = last_change_order_id
-        # Indicates whether the latest change order is being executed. Valid values:
+        # Indicates whether the most recent change order is being executed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.last_change_order_running = last_change_order_running
-        # The status of the latest change order. Valid values:
+        # The status of the most recent change order. Valid values:
         # 
-        # *   **READY**: The change order is ready.
-        # *   **RUNNING**: The change order is being executed.
-        # *   **SUCCESS**: The change order was executed.
-        # *   **FAIL**: The change order failed to be executed.
-        # *   **ABORT**: The change order is stopped.
-        # *   **WAIT_BATCH_CONFIRM**: The change order is pending execution. You must manually confirm the release batch.
-        # *   **AUTO_BATCH_WAIT**: The change order is pending execution. SAE will automatically confirm the release batch.
-        # *   **SYSTEM_FAIL**: A system exception occurred.
-        # *   **WAIT_APPROVAL**: The change order is pending approval.
-        # *   **APPROVED**: The change order is approved and is pending execution.
+        # - **READY**: The change order is ready.
+        # 
+        # - **RUNNING**: The change order is being executed.
+        # 
+        # - **SUCCESS**: The change order was successful.
+        # 
+        # - **FAIL**: The change order failed.
+        # 
+        # - **ABORT**: The change order was aborted.
+        # 
+        # - **WAIT_BATCH_CONFIRM**: The change order is waiting for manual confirmation for the next batch.
+        # 
+        # - **AUTO_BATCH_WAIT**: The change order is in a waiting state for an automatic batch.
+        # 
+        # - **SYSTEM_FAIL**: A system error occurred.
+        # 
+        # - **WAIT_APPROVAL**: The change order is pending approval.
+        # 
+        # - **APPROVED**: The change order is approved and is pending execution.
         self.last_change_order_status = last_change_order_status
         # The number of running instances of the application.
         self.running_instances = running_instances
-        # The substatus of the change order. This parameter indicates whether an exception occurred while the change order was being executed. Valid values:
+        # The substatus of the change order. This parameter is used to determine whether an exception occurs during the release process. Valid values:
         # 
-        # *   **NORMAL**
-        # *   **RUNNING_BUT_HAS_ERROR**: For example, if an error occurs during a phased release, you must manually roll back the application. In this case, the change order cannot be completed because the change order is still being executed.
+        # - **NORMAL**: The release is normal.
+        # 
+        # - **RUNNING_BUT_HAS_ERROR**: The release is abnormal. For example, if an error occurs during a phased release, you must manually roll back the release. In this case, the change order cannot be completed and the status of the change order remains **RUNNING**.
         self.sub_status = sub_status
 
     def validate(self):

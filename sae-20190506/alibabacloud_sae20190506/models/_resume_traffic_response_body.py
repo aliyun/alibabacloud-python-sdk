@@ -16,30 +16,35 @@ class ResumeTrafficResponseBody(DaraModel):
         success: str = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: A client-side error occurred.
+        # 
+        # - **5xx**: A server-side error occurred.
         self.code = code
         # The returned results.
         self.data = data
-        # The error code returned if the request failed.
-        self.error_code = error_code
-        # The message returned for the operation. Valid values:
+        # The error code.
         # 
-        # *   If the request is successful, **success** is returned.
-        # *   If the request fails, a specific error code is returned.
+        # - This parameter is empty if the request is successful.
+        # 
+        # - If the request fails, this parameter contains an error code. For more information, see the "**Error codes**" section of this topic.
+        self.error_code = error_code
+        # The returned message.
+        # 
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **True**: The traffic was resumed.
-        # *   **False**: The traffic failed to be resumed.
+        # Indicates whether the traffic was resumed. **True** indicates that the traffic was resumed, and **False** indicates that the traffic was not resumed.
         self.success = success
-        # The trace ID.
+        # The trace ID of the request. You can use this ID to troubleshoot the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -106,11 +111,13 @@ class ResumeTrafficResponseBodyData(DaraModel):
         msg: str = None,
         success: bool = None,
     ):
-        # The description of the returned code.
+        # Details about the operation\\"s result.
         self.msg = msg
-        # Indicates whether the traffic was removed. Valid values:
-        # *   **true**: The traffic was removed.
-        # *   **false**: The traffic failed to be removed.
+        # Indicates whether the traffic was resumed.
+        # 
+        # - **True**: The traffic was resumed.
+        # 
+        # - **False**: The traffic was not resumed.
         self.success = success
 
     def validate(self):

@@ -10,11 +10,11 @@ class DescribeApplicationConfigRequest(DaraModel):
         app_id: str = None,
         version_id: str = None,
     ):
-        # The app id.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The version id.
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):

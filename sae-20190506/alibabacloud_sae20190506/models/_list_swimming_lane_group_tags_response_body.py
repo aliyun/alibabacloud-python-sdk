@@ -18,33 +18,39 @@ class ListSwimmingLaneGroupTagsResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: Redirection.
-        # *   **4xx**: Request error.
-        # *   **5xx**: Server error.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # Responses.
+        # The data returned.
         self.data = data
-        # Error code. Valid values:
+        # The error code.
         # 
-        # *   If the request is successful, no **ErrorCode** fields are returned.
-        # *   Request failed: **ErrorCode** fields are returned. For more information, see **Error codes**.
+        # - This parameter is not returned if the request succeeds.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # The response message.
         # 
-        # *   The error message returned because the request is normal and **success** is returned.
-        # *   If the request is abnormal, the specific exception error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Whether the data is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request is successful.
-        # *   **false**: Failed.
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The ID of the trace. This parameter is used to query the exact call information.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -119,7 +125,7 @@ class ListSwimmingLaneGroupTagsResponseBodyData(DaraModel):
     ):
         # The metadata.
         self.metadata = metadata
-        # The label of the lane.
+        # The swimming lane tag.
         self.tag = tag
 
     def validate(self):

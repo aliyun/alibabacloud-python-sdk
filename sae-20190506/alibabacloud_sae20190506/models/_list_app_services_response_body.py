@@ -18,33 +18,39 @@ class ListAppServicesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code that is returned. Valid values:
+        # The HTTP status code or a POP error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: The request is invalid.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The details of the microservice.
+        # The list of services.
         self.data = data
-        # The status code. Valid values:
+        # The error code. This parameter is returned only if the request fails. For more information, see the **Error codes** section.
         # 
-        # *   If the request was successful, the **ErrorCode** parameter is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - Successful requests do not return the **ErrorCode** field.
+        # 
+        # - Failed requests return the **ErrorCode** field. For more information, see the **error code** list in this topic.
         self.error_code = error_code
-        # The message returned. Valid values:
+        # The response message.
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   If the request failed, an error message is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID. You can use this ID to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -129,43 +135,49 @@ class ListAppServicesResponseBodyData(DaraModel):
         service_type: str = None,
         service_version: str = None,
     ):
-        # The application ID.
+        # The app ID.
         self.app_id = app_id
-        # The name of the application.
+        # The name of the app.
         self.app_name = app_name
-        # The number of instances of the microservice.
+        # The number of instances of the service.
         self.instance_count = instance_count
-        # The ID of the namespace to which the application belongs.
+        # The ID of the namespace that contains the app.
         self.namespace_id = namespace_id
         # The name of the namespace.
         self.namespace_name = namespace_name
-        # The registry type. Valid values:
+        # The type of the service registry. Valid values:
         # 
-        # *   **0**：SAE Nacos
-        # *   **1**: SAE built-in Nacos
-        # *   **2**: MSE Nacos
-        # *   **9**: SAE Kubernets service
+        # - **0**: SAE Nacos
+        # 
+        # - **1**: self-managed registry
+        # 
+        # - **2**: MSE Nacos
+        # 
+        # - **9**: SAE K8s Service
         self.registry_type = registry_type
-        # The IDs of the security groups.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The group to which the microservice belongs.
+        # The service group.
         self.service_group = service_group
-        # The name of the microservice.
+        # The name of the service.
         self.service_name = service_name
-        # The ports and protocols.
+        # A map of ports and protocols.
         self.service_port_and_protocol = service_port_and_protocol
-        # The list of ports.
+        # A list of ports.
         self.service_ports = service_ports
-        # The protocol used by the microservice.
+        # The protocol used by the service.
         self.service_protocol = service_protocol
-        # The type of the microservice. Valid values:
+        # The type of the service. Valid values:
         # 
-        # *   **dubbo**
-        # *   **springCloud**
-        # *   **hsf**
-        # *   **k8sService**
+        # - **dubbo**
+        # 
+        # - **springCloud**
+        # 
+        # - **hsf**
+        # 
+        # - **k8sService**
         self.service_type = service_type
-        # The version of the microservice.
+        # The version of the service.
         self.service_version = service_version
 
     def validate(self):

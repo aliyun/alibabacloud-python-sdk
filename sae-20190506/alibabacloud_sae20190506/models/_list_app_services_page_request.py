@@ -16,14 +16,15 @@ class ListAppServicesPageRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values: 0 to 9999.
+        # The page size. The value must be an integer from 0 to 9,999.
         self.page_size = page_size
         # The service type. Valid values:
         # 
-        # *   **dubbo**
-        # *   **springCloud**
+        # - **Dubbo**
+        # 
+        # - **Spring Cloud**
         # 
         # This parameter is required.
         self.service_type = service_type

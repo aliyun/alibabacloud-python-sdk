@@ -18,30 +18,35 @@ class ListAppEventsRequest(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The page number of the page to return.
+        # The current page number.
         self.current_page = current_page
-        # The type of the event. Valid values:
+        # The event type. Valid values:
         # 
-        # *   **Warning**: an alert.
-        # *   **Normal**: a normal event.
+        # - **Warning**: An event that indicates a potential problem.
+        # 
+        # - **Normal**: An event that indicates a routine operation.
         self.event_type = event_type
-        # The namespace ID.
+        # The ID of the region where the namespace is located.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The type of the object. Valid values:
+        # The object kind. Valid values:
         # 
-        # *   **Deployment**: an application.
-        # *   **Pod**: an application instance.
-        # *   **Service**: a Server Load Balancer (SLB) instance.
-        # *   **HorizontalPodAutoscaler**: an auto scaling policy.
-        # *   **CloneSet**: an application.
+        # - **Deployment**: The application.
+        # 
+        # - **Pod**: The application instance.
+        # 
+        # - **Service**: The Server Load Balancer (SLB) instance.
+        # 
+        # - **HorizontalPodAutoscaler**: The auto scaling policy.
+        # 
+        # - **CloneSet**: The application.
         self.object_kind = object_kind
-        # The name of the object. Fuzzy search by prefix is supported.
+        # The name of the object. Prefix matching is supported.
         self.object_name = object_name
-        # The number of entries to return on each page. Valid values: 0 to 10000.
+        # The number of entries to return per page. The value must be an integer from 0 to 10,000.
         self.page_size = page_size
-        # The cause of the event. Fuzzy search by prefix is supported.
+        # The reason for the event. Prefix matching is supported.
         self.reason = reason
 
     def validate(self):

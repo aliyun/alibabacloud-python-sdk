@@ -10,7 +10,9 @@ class RegistryCertificateConfig(DaraModel):
         cert_base_64: str = None,
         insecure: bool = None,
     ):
+        # The Base64-encoded certificate of the image repository.
         self.cert_base_64 = cert_base_64
+        # Specifies whether to access the image repository in an insecure manner.
         self.insecure = insecure
 
     def validate(self):

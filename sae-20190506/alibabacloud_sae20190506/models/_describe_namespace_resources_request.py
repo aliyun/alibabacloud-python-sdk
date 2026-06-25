@@ -10,8 +10,9 @@ class DescribeNamespaceResourcesRequest(DaraModel):
         name_space_short_id: str = None,
         namespace_id: str = None,
     ):
+        # The ID of the namespace. The region ID is not included. We recommend that you use this parameter.
         self.name_space_short_id = name_space_short_id
-        # cn-shanghai:test
+        # The ID of the namespace. The format is `Region ID:Namespace name`. This parameter is retained for backward compatibility. If you specify this parameter, `NameSpaceShortId` is ignored. We recommend that you use `NameSpaceShortId` to simplify the request.
         self.namespace_id = namespace_id
 
     def validate(self):

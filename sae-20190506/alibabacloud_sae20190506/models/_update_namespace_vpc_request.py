@@ -11,10 +11,11 @@ class UpdateNamespaceVpcRequest(DaraModel):
         namespace_id: str = None,
         vpc_id: str = None,
     ):
+        # The short-format namespace ID. You do not need to include the region ID. We recommend that you use this parameter.
         self.name_space_short_id = name_space_short_id
-        # vpc-2ze0i263cnn311nvj\\*\\*\\*\\*
+        # The long-format namespace ID. If you set this parameter, it takes precedence over NameSpaceShortId. This parameter is for backward compatibility. Use the short-format namespace ID to simplify the request.
         self.namespace_id = namespace_id
-        # The ID of the request.
+        # The ID of the VPC. This VPC replaces the original VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

@@ -15,33 +15,39 @@ class UntagResourcesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The returned result.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is not returned on a successful request.
+        # 
+        # - This parameter is returned on a failed request. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The response message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - A successful request returns **success**.
+        # 
+        # - A failed request returns an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the tags were removed. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**: The tags were removed.
-        # *   **false**: The tags failed to be removed.
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID for querying the details of a call.
         self.trace_id = trace_id
 
     def validate(self):

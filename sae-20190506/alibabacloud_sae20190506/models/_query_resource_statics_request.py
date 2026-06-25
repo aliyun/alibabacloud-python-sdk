@@ -9,7 +9,7 @@ class QueryResourceStaticsRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*
+        # The ID of the application.
         # 
         # This parameter is required.
         self.app_id = app_id

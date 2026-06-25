@@ -18,33 +18,39 @@ class ListIngressesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The status of the API call or a POP error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The call was successful.
+        # 
+        # - **3xx**: The call was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The result returned.
+        # The result.
         self.data = data
-        # The error code returned if the request failed. Valid values:
+        # The error code.
         # 
-        # *   **ErrorCode** is not returned if a request is successful.
-        # *   **ErrorCode** is returned if a request failed. For more information, see **Error codes**.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The message returned. Valid values:
+        # The response message.
         # 
-        # *   **success** is returned when a request is successful.
-        # *   An error code is returned when a request failed.
+        # - **success** is returned if the call is successful.
+        # 
+        # - An error code is returned if the call fails.
         self.message = message
-        # The ID of a request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the list of Ingresses was obtained. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**: The list were obtained.
-        # *   **false**: The list failed to be queried.
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
-        # The ID of a trace. The ID is used to query the details of a request.
+        # The trace ID. You can use it to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -113,10 +119,13 @@ class ListIngressesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The current page.
         self.current_page = current_page
         # The list of routing rules.
         self.ingress_list = ingress_list
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries found.
         self.total_size = total_size
 
     def validate(self):
@@ -189,53 +198,63 @@ class ListIngressesResponseBodyDataIngressList(DaraModel):
         slb_id: str = None,
         slb_type: str = None,
     ):
-        # The ID of the certificate that is associated with a Classic Load Balancer (**CLB**) instance.
+        # The ID of the Classic Load Balancer (CLB) certificate.
         self.cert_id = cert_id
-        # The ID of the certificate that is associated with an Application Load Balancer **ALB** instance.
+        # The IDs of the Application Load Balancer (ALB) certificates.
         self.cert_ids = cert_ids
+        # The cross-domain configuration.
         self.cors_config = cors_config
+        # The creation time.
         self.create_time = create_time
+        # The default rule.
         self.default_rule = default_rule
-        # The name of a routing rule.
+        # The name of the Ingress rule.
         self.description = description
-        # The ID of a routing rule.
+        # The ID of the routing rule.
         self.id = id
+        # The connection idle timeout period.
         self.idle_timeout = idle_timeout
-        # The listener ports for an SLB instance.
+        # The listening port of the SLB instance.
         self.listener_port = listener_port
-        # The protocol that is supported by SLB to forward requests. Valid values:
+        # The forwarding protocol of the SLB instance. Valid values:
         # 
-        # *   **HTTP**: HTTP is suitable for applications that need to identify the transmitted data.
-        # *   **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+        # - **HTTP**: suitable for applications that need to identify data content.
         # 
-        # This parameter is optional in the **CreateIngress** and **UpadateIngress** operations. If you do not configure this parameter when you call the CreateIngress or UpdateIngress operation to create or update a gateway routing rule, this parameter is not returned for the corresponding response.
+        # - **HTTPS**: suitable for applications that require encrypted transmission.
+        # 
+        # This parameter is optional for the **CreateIngress** and **UpdateIngress** operations. If you do not set this parameter when you create or update a gateway routing rule, this parameter is not returned.
         self.listener_protocol = listener_protocol
-        # The type of SLB instances. Valid values:
+        # The type of the SLB instance. Valid values:
         # 
-        # *   **clb**: Classic Load Balancer (formerly known as SLB).
-        # *   **alb**: Application Load Balancer.
+        # - **clb**: Classic Load Balancer.
+        # 
+        # - **alb**: Application Load Balancer.
         self.load_balance_type = load_balance_type
-        # The ID of an MSE cloud-native gateway.
+        # The ID of the MSE cloud-native gateway instance.
         self.mse_gateway_id = mse_gateway_id
-        # The port of a service.
+        # The port that corresponds to the service.
         self.mse_gateway_port = mse_gateway_port
-        # The protocol that is supported by an MSE cloud-native gateway to forward requests. Valid values:
+        # The forwarding protocol supported by the MSE cloud-native gateway. Valid values:
         # 
-        # *   **HTTP**: HTTP is suitable for applications that need to identify transmitted data.
-        # *   **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+        # - **HTTP**: suitable for applications that need to identify data content.
+        # 
+        # - **HTTPS**: suitable for applications that require encrypted transmission.
         self.mse_gateway_protocol = mse_gateway_protocol
-        # The name of a routing rule.
+        # The name of the routing rule.
         self.name = name
-        # The ID of a namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The request timeout period.
         self.request_timeout = request_timeout
+        # The rules.
         self.rules = rules
-        # The ID of a Server Load Balancer (SLB) instance.
+        # The ID of the Server Load Balancer (SLB) instance.
         self.slb_id = slb_id
-        # The type of SLB instances. Valid values:
+        # The type of the SLB instance. Valid values:
         # 
-        # *   **internet**: an Internet-facing SLB instance
-        # *   **intranet**: an Intranet-facing SLB instance
+        # - **internet**: public network.
+        # 
+        # - **intranet**: private network.
         self.slb_type = slb_type
 
     def validate(self):
@@ -398,13 +417,21 @@ class ListIngressesResponseBodyDataIngressListRules(DaraModel):
         rewrite_path: str = None,
         rule_actions: List[main_models.ListIngressesResponseBodyDataIngressListRulesRuleActions] = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The backend protocol.
         self.backend_protocol = backend_protocol
+        # The container port.
         self.container_port = container_port
+        # The domain name.
         self.domain = domain
+        # The path.
         self.path = path
+        # The rewritten path.
         self.rewrite_path = rewrite_path
+        # The list of rule actions.
         self.rule_actions = rule_actions
 
     def validate(self):
@@ -483,7 +510,9 @@ class ListIngressesResponseBodyDataIngressListRulesRuleActions(DaraModel):
         action_config: str = None,
         action_type: str = None,
     ):
+        # The action configuration.
         self.action_config = action_config
+        # The action type.
         self.action_type = action_type
 
     def validate(self):
@@ -520,9 +549,13 @@ class ListIngressesResponseBodyDataIngressListDefaultRule(DaraModel):
         backend_protocol: str = None,
         container_port: int = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The backend protocol.
         self.backend_protocol = backend_protocol
+        # The container port.
         self.container_port = container_port
 
     def validate(self):
@@ -574,12 +607,19 @@ class ListIngressesResponseBodyDataIngressListCorsConfig(DaraModel):
         expose_headers: str = None,
         max_age: str = None,
     ):
+        # Indicates whether credentials can be carried.
         self.allow_credentials = allow_credentials
+        # The allowed headers.
         self.allow_headers = allow_headers
+        # The allowed methods.
         self.allow_methods = allow_methods
+        # The allowed origins.
         self.allow_origin = allow_origin
+        # Indicates whether cross-domain access is enabled.
         self.enable = enable
+        # The allowed exposed headers.
         self.expose_headers = expose_headers
+        # The time-to-live (TTL).
         self.max_age = max_age
 
     def validate(self):

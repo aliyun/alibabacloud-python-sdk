@@ -22,46 +22,85 @@ class ListApplicationsRequest(DaraModel):
     ):
         # The application name.
         self.app_name = app_name
-        # The SAE application type. Valid values:
+        # The type of the SAE application.
         # 
         # - **micro_service**
+        # 
         # - **web**
+        # 
         # - **job**
         self.app_source = app_source
         # The current page number.
         self.current_page = current_page
-        # Set the filtering criteria for applications. The value options are as follows:
+        # The field to filter applications by. Valid values:
         # 
-        # - appName: Application name.
-        # - appIds: Application IDs.
-        # - slbIps: SLB IP addresses.
-        # - instanceIps: Instance IP addresses.
+        # - **appName**: The application name.
+        # 
+        # - **appIds**: The application ID.
+        # 
+        # - **slbIps**: The SLB IP address.
+        # 
+        # - **instanceIps**: The instance IP address.
         self.field_type = field_type
-        # The name, ID, SLB IP, or instance IP of the target application.
+        # The value for the field specified by `FieldType`. This can be an application name, application ID, SLB IP address, or instance IP address.
         self.field_value = field_value
+        # Filters applications by whether they are stateful. Set this parameter to `true` to return only stateful applications, or to `false` to return only stateless applications.
         self.is_stateful = is_stateful
         # The namespace ID.
         self.namespace_id = namespace_id
+        # The edition of the application:
+        # 
+        # - `lite`: Lite
+        # 
+        # - `std`: Standard
+        # 
+        # - `pro`: Pro
         self.new_sae_version = new_sae_version
-        # Specifies how applications are sorted. Valid values:
+        # The field to sort the applications by. Valid values:
         # 
-        # *   **running**: The applications are sorted based on the number of running instances.
-        # *   **instances**: The applications are sorted based on the number of destination instances.
+        # - **runnings**: Sorts the applications by the current instance count.
+        # 
+        # - **instances**: Sorts the applications by the target instance count.
         self.order_by = order_by
-        # The number of records in each page. Value range: [0,10000]
+        # The number of entries to return per page. Valid values: 0 to 10000.
         self.page_size = page_size
-        # Sort by the running status of application instances. If the statuses are the same, sort by instance ID. The value options are as follows:
+        # The sort order. Valid values:
         # 
-        # - true: Sort in ascending order. Instances are arranged according to the startup process, for example: to ultimately reach the running state, an instance must first go through steps such as starting containers, pulling images, and initializing the instance.
-        # - false: Sort in descending order.
+        # - **true**: Sorts the results in ascending order.
+        # 
+        # - **false**: Sorts the results in descending order.
+        # 
+        # 1. ****
+        # 
+        # 2. ****
+        # 
+        # 3. ****
+        # 
+        # 4. ****
+        # 
+        # 5. ****
+        # 
+        # 6. ****
+        # 
+        # 7. ****
+        # 
+        # 8. ****
+        # 
+        # 9. ****
+        # 
+        # 10. ****
+        # 
+        # 11. ****
         self.reverse = reverse
-        # The tag in the format of a key-value pair.
-        # *   **key**: the tag key. It cannot exceed 128 characters in length.
-        # *   **value**: the tag value. It cannot exceed 128 characters in length.
+        # Filters applications by tags. The tags are specified as a JSON string that contains an array of key-value pairs.
         # 
-        # Tag keys and tag values are case-sensitive. If you specify multiple tags, the system adds all the tags to the specified resources. Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+        # - **key**: The tag key, which can be 1 to 128 characters in length.
         # 
-        # Tag keys and tag values cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # - **value**: The tag value, which can be 1 to 128 characters in length.
+        # 
+        # This parameter is case-sensitive. An application is returned only if it matches all specified tags. On a resource, a tag key can have only one tag value.
+        # 
+        # The tag key and tag value cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.tags = tags
 
     def validate(self):

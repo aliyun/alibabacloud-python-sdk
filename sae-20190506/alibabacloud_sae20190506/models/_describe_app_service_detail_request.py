@@ -15,21 +15,25 @@ class DescribeAppServiceDetailRequest(DaraModel):
         service_type: str = None,
         service_version: str = None,
     ):
-        # 6dcc8c9e-d3da-478a-a066-86dcf820\\*\\*\\*\\*
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
         # The ID of the MSE Nacos instance.
         self.nacos_instance_id = nacos_instance_id
-        # The ID of the namespace for the MSE Nacos instance.
+        # The ID of the MSE Nacos namespace.
         self.nacos_namespace_id = nacos_namespace_id
-        # springCloud
+        # The service group. This is a custom parameter.
         self.service_group = service_group
-        # edas.service.provider
+        # The service name.
         self.service_name = service_name
-        # springCloud
+        # The service type. Valid values:
+        # 
+        # - **dubbo**
+        # 
+        # - **springCloud**
         self.service_type = service_type
-        # 1.0.0
+        # The service version. This is a custom parameter.
         self.service_version = service_version
 
     def validate(self):

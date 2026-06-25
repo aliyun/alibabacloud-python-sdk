@@ -18,30 +18,35 @@ class ListAppServicesPageResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The API status code or POP error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirect.
+        # 
+        # - **4xx**: client error.
+        # 
+        # - **5xx**: server error.
         self.code = code
-        # The details of services.
+        # The service list.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** section of this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # A message that describes the outcome of the request.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the microservice list was obtained. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The list was obtained.
-        # *   **false**: The list failed to be obtained.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -117,15 +122,15 @@ class ListAppServicesPageResponseBodyData(DaraModel):
         result: List[main_models.ListAppServicesPageResponseBodyDataResult] = None,
         total_size: str = None,
     ):
-        # The page number of the current page.
+        # The current page number.
         self.current_page = current_page
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page. Valid values: 0 to 9999.
+        # The number of entries per page. The value must be in the range of 0 to 9999.
         self.page_size = page_size
-        # The result returned.
+        # The returned results.
         self.result = result
-        # The total number of returned pages.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -190,17 +195,17 @@ class ListAppServicesPageResponseBodyDataResult(DaraModel):
         service_name: str = None,
         version: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.edas_app_id = edas_app_id
-        # The name of the application.
+        # The application name.
         self.edas_app_name = edas_app_name
-        # The group to which the service belongs. You can create a custom group.
+        # The service group. This value is user-defined.
         self.group = group
         # The number of instances.
         self.instance_num = instance_num
         # The service name.
         self.service_name = service_name
-        # The version of a service. You can create a custom version.
+        # The service version. This value is user-defined.
         self.version = version
 
     def validate(self):
