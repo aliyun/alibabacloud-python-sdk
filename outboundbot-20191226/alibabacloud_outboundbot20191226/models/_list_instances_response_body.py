@@ -24,7 +24,7 @@ class ListInstancesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # A list of service instances.
+        # The list of service instances.
         self.instances = instances
         # The response message.
         self.message = message
@@ -32,7 +32,7 @@ class ListInstancesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -132,25 +132,25 @@ class ListInstancesResponseBodyInstances(DaraModel):
     ):
         # The time when the instance was created.
         self.creation_time = creation_time
-        # The ID of the user who created the instance.
+        # The ID of the creator.
         self.creator_id = creator_id
-        # The name of the user who created the instance.
+        # The name of the creator.
         self.creator_name = creator_name
-        # The description of the Outbound Calling Bot service instance.
+        # The description of the Outbound Bot service instance.
         self.instance_description = instance_description
-        # The ID of the service instance.
+        # The service instance ID.
         self.instance_id = instance_id
-        # The name of the Outbound Calling Bot service instance.
+        # The name of the Outbound Bot service instance.
         self.instance_name = instance_name
-        # Indicates whether the instance is a system-predefined instance.
+        # Indicates whether the instance is a system preset instance.
         self.is_preset = is_preset
-        # The maximum number of concurrent outbound calls.
+        # The maximum number of concurrent outbound calls allowed.
         self.max_concurrent_conversation = max_concurrent_conversation
         # The name of the Alibaba Cloud account.
         self.owner_name = owner_name
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tag information.
         self.resource_tags = resource_tags
 
     def validate(self):
@@ -247,9 +247,9 @@ class ListInstancesResponseBodyInstancesResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

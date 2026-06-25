@@ -13,11 +13,11 @@ class CreateTenantKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the request.
+        # The status code returned.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id

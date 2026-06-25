@@ -21,13 +21,13 @@ class ListScriptVariablesResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The API message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
-        # The script variables.
+        # The list of variables.
         self.variables = variables
 
     def validate(self):
@@ -95,11 +95,11 @@ class ListScriptVariablesResponseBodyVariables(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
-        # The variable description.
+        # The description.
         self.description = description
-        # The variable display name.
+        # The display name of the variable.
         self.display_name = display_name
-        # The variable name.
+        # The name of the variable.
         self.name = name
 
     def validate(self):

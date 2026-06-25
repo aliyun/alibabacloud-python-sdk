@@ -11,13 +11,13 @@ class ListScriptVariablesRequest(DaraModel):
         sandbox: bool = None,
         script_id: str = None,
     ):
-        # The instance ID, also known as the business ID.
+        # The instance ID (also referred to as the business ID).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to retrieve variables from the sandbox.
+        # Specifies whether the environment is a test environment.
         self.sandbox = sandbox
-        # The script ID.
+        # The scenario ID.
         # 
         # This parameter is required.
         self.script_id = script_id

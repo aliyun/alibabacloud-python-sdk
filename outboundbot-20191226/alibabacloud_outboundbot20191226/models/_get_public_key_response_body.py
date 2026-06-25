@@ -14,9 +14,9 @@ class GetPublicKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The status code of the API.
         self.code = code
-        # The public key in PEM format.
+        # The public key.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

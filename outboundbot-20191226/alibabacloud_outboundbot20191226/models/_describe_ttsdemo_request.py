@@ -11,6 +11,7 @@ class DescribeTTSDemoRequest(DaraModel):
         ali_customized_voice: str = None,
         app_key: str = None,
         engine: str = None,
+        ext_params: str = None,
         instance_id: str = None,
         nls_service_type: str = None,
         pitch_rate: int = None,
@@ -22,66 +23,68 @@ class DescribeTTSDemoRequest(DaraModel):
         volume: int = None,
     ):
         # The AccessKey (AK) for this namespace.
-        # 
-        # > Enter the AK when the engine is xunfei.
+        # > When the engine is set to xunfei, you must enter the AK.
         self.access_key = access_key
-        # Alibaba Cloud custom voice ID
+        # Alibaba Cloud customized voice, which is the voice call ID.
         self.ali_customized_voice = ali_customized_voice
-        # Speech service type
+        # Voice service type.
         # 
-        # - When using **ali** as a custom service, enter the appKey of your Intelligent Speech Interaction project.
+        # - When using **ali** as the custom service, this field stores the appKey of the Intelligent Speech Interaction product project.
         # 
-        # - When using **xunfei** as a custom service, enter its appKey.
+        # - When using **xunfei** as the custom service provider, this field stores the corresponding appKey.
         self.app_key = app_key
-        # Storage engine. Choose from ali, volc, or xunfei.
+        # Storage engine. Valid values: ali, volc, and xunfei.
         # 
-        # - Enter **ali** when using the default service or Alibaba Cloud as a custom service.
+        # - When using the default service or selecting Alibaba Cloud as the custom service, set this parameter to **ali**.
         # 
-        # - Enter **volc** when using the doubao service.
-        # 
-        # - Enter **xunfei** when using iFLYTEK as a service provider. This option is only available for small-model scenarios.
+        # - When using the Doubao service, set this parameter to **volc**.
+        # - When using xunfei as the service provider, set this parameter to **xunfei**. This value can only be used in small model scenarios.
         self.engine = engine
-        # Instance ID
+        self.ext_params = ext_params
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Service type
-        # Managed: The default Intelligent Speech Interaction service for Intelligent Outbound Calling (public service).
-        # Authorized: An Intelligent Speech Interaction service you purchased on Alibaba Cloud public cloud (your private service). You can grant authorization by going to Scenario Management > Edit > Call Service > Custom Service.
+        # Service type.
+        # Managed: The default Intelligent Speech Interaction product service of the Outbound Bot product (public service).
+        # Authorized: The Intelligent Speech Interaction product service purchased by the public cloud customer (customer\\"s private service), authorized through Script Management > Edit > Call Service > Custom Service.
         # 
-        # > Set this parameter to Authorized when using Alibaba Cloud\\"s Intelligent Speech Interaction as your custom service provider.
+        # > When using Alibaba Cloud Intelligent Speech Interaction, that is, when using Alibaba Cloud as the custom service provider, set this parameter to Authorized.
         self.nls_service_type = nls_service_type
-        # Pitch. An integer between -500 and 500. Default is 0.
+        # Pitch.
+        # An integer between [-500, 500]. Default value: 0.
         # 
-        # A value greater than 0 raises pitch.
+        # A value greater than 0 indicates a higher pitch.
         # 
-        # A value less than 0 lowers pitch.
+        # A value less than 0 indicates a lower pitch.
         self.pitch_rate = pitch_rate
-        # Scenario ID
+        # Script ID.
         self.script_id = script_id
-        # The AccessKey secret (SK) for this namespace.
+        # The AccessKey Secret (SK) for this namespace.
         # 
-        # > Enter the SK when the engine is xunfei.
+        # > When the engine is set to xunfei, you must enter the SK.
         self.secret_key = secret_key
-        # Speech rate. An integer between -500 and 500. Default is 0.
+        # Speech rate.
+        # An integer between [-500, 500]. Default value: 0.
         # 
-        # A value greater than 0 increases speech speed.
+        # A value greater than 0 indicates a faster speech rate.
         # 
-        # A value less than 0 decreases speech speed.
+        # A value less than 0 indicates a slower speech rate.
         self.speech_rate = speech_rate
-        # Text to convert to speech
+        # Text content.
         # 
         # This parameter is required.
         self.text = text
-        # Voice ID. Examples include aixia, siyue, and xiaoyun. For the full list of available voices, see the voice list below.
+        # Voice information, such as aixia, siyue, or xiaoyun. For the complete list of available voices, refer to the voice list below.
         # 
-        # > Cloned voices use dynamic Voice IDs that are generated during voice cloning. Therefore, specific Voice IDs for cloned voices are not listed here. To get a cloned voice’s Voice ID, call ListVoiceClone from the voice cloning page.
+        # > Because the Voice value of a cloned voice is a unique, non-fixed value generated during voice cloning, the specific Voice value cannot be provided at this stage. You must obtain the specific VoiceID from the voice cloning page by calling the ListVoiceClone API.
         self.voice = voice
-        # Volume. An integer between 0 and 100. Default is 50.
+        # Volume.
+        # An integer between [0, 100]. Default value: 50.
         # 
-        # A value greater than 50 increases volume.
+        # A value greater than 50 indicates a higher volume.
         # 
-        # A value less than 50 decreases volume.
+        # A value less than 50 indicates a lower volume.
         self.volume = volume
 
     def validate(self):
@@ -103,6 +106,9 @@ class DescribeTTSDemoRequest(DaraModel):
 
         if self.engine is not None:
             result['Engine'] = self.engine
+
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -146,6 +152,9 @@ class DescribeTTSDemoRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

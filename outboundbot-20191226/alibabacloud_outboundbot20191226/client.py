@@ -21,6 +21,9 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'outboundbot.cn-shanghai.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('outboundbot', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4717,6 +4720,8 @@ class Client(OpenApiClient):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.nls_service_type):
@@ -4769,6 +4774,8 @@ class Client(OpenApiClient):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.nls_service_type):

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_outboundbot20191226.
 
-Created on 11/06/2026
+Created on 25/06/2026
 
 @author: Alibaba Cloud SDK
 """
