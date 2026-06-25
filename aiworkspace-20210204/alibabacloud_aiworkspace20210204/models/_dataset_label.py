@@ -10,9 +10,9 @@ class DatasetLabel(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
+        # The label key, which must be 1 to 128 characters long.
         self.key = key
-        # Value
+        # The label value, which can be 0 to 128 characters long.
         self.value = value
 
     def validate(self):

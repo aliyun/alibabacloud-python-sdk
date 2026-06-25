@@ -15,18 +15,13 @@ class CreateDatasetFileMetasResponseBody(DaraModel):
         status: bool = None,
         succeed_details: List[main_models.DatasetFileMetaResponse] = None,
     ):
-        # The metadata that failed to be created.
+        # A list of file metadata records that failed to be created.
         self.failed_details = failed_details
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the metadata records of all dataset files were created. The value true indicates that the metadata records of all dataset files are created. If the value is false, view the failure details specified by FailedDetails.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # The status of the batch metadata creation. A value of \\`true\\` indicates that all records were created successfully. If the value is \\`false\\`, check \\`FailedDetails\\`.
         self.status = status
-        # The metadata that is created.
+        # A list of file metadata records that were successfully created.
         self.succeed_details = succeed_details
 
     def validate(self):

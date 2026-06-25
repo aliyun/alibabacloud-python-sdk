@@ -24,42 +24,51 @@ class Connection(DaraModel):
         secrets: Dict[str, str] = None,
         workspace_id: str = None,
     ):
-        # The workspace accessibility. Valid values:
+        # The workspace visibility. Valid values:
         # 
-        # *   PRIVATE (default): accessible only to you and the administrator of the workspace.
-        # *   PUBLIC: accessible to all members in the workspace.
+        # - PRIVATE (default): The connection is visible only to you and administrators in the workspace.
+        # 
+        # - PUBLIC: The connection is visible to all users in the workspace.
         self.accessibility = accessibility
-        # The connection configuration.
+        # The connection configurations.
         self.configs = configs
         # The connection ID.
         self.connection_id = connection_id
-        # The connection name.
+        # The name of the connection.
         self.connection_name = connection_name
         # The connection type. Valid values:
         # 
-        # *   DashScopeConnection
-        # *   OpenLLMConnection
-        # *   MilvusConnection
-        # *   OpenSearchConnection
-        # *   LindormConnection
-        # *   ElasticsearchConnection
-        # *   HologresConnection
-        # *   RDSConnection
-        # *   CustomConnection
+        # - DashScopeConnection: A service connection to Alibaba Cloud Model Studio.
+        # 
+        # - OpenLLMConnection: An open source model connection.
+        # 
+        # - MilvusConnection: A Milvus connection.
+        # 
+        # - OpenSearchConnection: An OpenSearch connection.
+        # 
+        # - LindormConnection: A Lindorm connection.
+        # 
+        # - ElasticsearchConnection: An Elasticsearch connection.
+        # 
+        # - HologresConnection: A Hologres connection.
+        # 
+        # - RDSConnection: An RDS connection.
+        # 
+        # - CustomConnection: A custom connection.
         self.connection_type = connection_type
-        # The connection creator.
+        # The creator of the connection.
         self.creator = creator
         # The connection description.
         self.description = description
-        # The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
+        # The time when the connection was created. The time is in UTC and follows the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # The time when the connection was modified, in UTC. The time follows the ISO 8601 standard.
+        # The time when the connection was last modified. The time is in UTC and follows the ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
-        # The models.
+        # The model list.
         self.models = models
-        # The connection resource. This parameter is used for the connection configuration of the database type.
+        # The resource information for the connection. This usually applies to database connection configurations.
         self.resource_meta = resource_meta
-        # The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
+        # The key-value configurations to encrypt, such as database logon passwords and model connection keys.
         self.secrets = secrets
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -174,6 +183,7 @@ class ConnectionResourceMeta(DaraModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
+        # Extra configuration information.
         self.extra = extra
         # The instance ID.
         self.instance_id = instance_id
@@ -222,20 +232,23 @@ class ConnectionModels(DaraModel):
         model_type: str = None,
         tool_call: bool = None,
     ):
-        # The display name of the model.
+        # The model\\"s display name.
         self.display_name = display_name
         # The model identifier.
         self.model = model
         # The model type. Valid values:
         # 
-        # *   LLM
-        # *   Embedding
-        # *   ReRank
-        self.model_type = model_type
-        # Indicates whether tool calling was supported. Valid values:
+        # - LLM (large language model)
         # 
-        # *   true
-        # *   false
+        # - Embedding (Embedding model)
+        # 
+        # - ReRank (ReRank model)
+        self.model_type = model_type
+        # Indicates whether tool calling is supported. Valid values:
+        # 
+        # - true: Supported
+        # 
+        # - false: Not supported
         self.tool_call = tool_call
 
     def validate(self):

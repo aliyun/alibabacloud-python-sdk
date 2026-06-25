@@ -14,7 +14,7 @@ class ListModelsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The models.
+        # The list of models.
         self.models = models
         # The request ID.
         self.request_id = request_id

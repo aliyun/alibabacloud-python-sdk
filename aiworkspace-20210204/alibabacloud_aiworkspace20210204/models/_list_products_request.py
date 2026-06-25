@@ -11,7 +11,9 @@ class ListProductsRequest(DaraModel):
         service_codes: str = None,
         verbose: bool = None,
     ):
+        # The product codes, separated by commas.
         self.product_codes = product_codes
+        # The service codes, separated by commas.
         self.service_codes = service_codes
         self.verbose = verbose
 

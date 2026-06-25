@@ -10,9 +10,9 @@ class CreateExperimentResponseBody(DaraModel):
         experiment_id: str = None,
         request_id: str = None,
     ):
-        # The returned data. If the operation is asynchronously implemented, the job ID is returned.
+        # If the call is asynchronous, the API returns a JobId.
         self.experiment_id = experiment_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

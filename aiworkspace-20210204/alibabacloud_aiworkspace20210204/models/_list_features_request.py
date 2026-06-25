@@ -9,6 +9,7 @@ class ListFeaturesRequest(DaraModel):
         self,
         names: str = None,
     ):
+        # Feature names, separated by commas.
         self.names = names
 
     def validate(self):

@@ -17,19 +17,26 @@ class ListDatasetJobsRequest(DaraModel):
         with_logs: bool = None,
         workspace_id: str = None,
     ):
-        # The dataset version name.
+        # The name of the dataset version.
         self.dataset_version = dataset_version
-        # The action to be performed on the job.
+        # The job action.
         self.job_action = job_action
+        # The order in which to sort the results. This parameter is used with `SortBy`. Default: DESC.
+        # 
+        # - ASC: ascending order.
+        # 
+        # - DESC: descending order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages are 1-indexed. Default: 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
+        # The field by which to sort the results. By default, the results are sorted by `CreateTime` in descending order.
         self.sort_by = sort_by
+        # The job status.
         self.status = status
         self.with_logs = with_logs
-        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The ID of the workspace. To obtain this ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

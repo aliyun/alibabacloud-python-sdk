@@ -10,15 +10,19 @@ class DeleteConfigRequest(DaraModel):
         category_name: str = None,
         labels: str = None,
     ):
-        # The category of the configuration item. Valid values:
+        # The classification of the configuration item. The following classifications are supported:
         # 
-        # *   CommonResourceConfig
-        # *   DLCAutoRecycle - DLCPriorityConfig
-        # *   DSWPriorityConfig
-        # *   QuotaMaximumDuration
-        # *   CommonTagConfig
+        # - DLCAutoRecycle: The DLC automatic release configuration.
+        # 
+        # - DLCPriorityConfig: The DLC priority settings.
+        # 
+        # - DSWPriorityConfig: The DSW priority settings.
+        # 
+        # - QuotaMaximumDuration: The maximum runtime configuration of a DLC task for a quota.
+        # 
+        # - CommonTagConfig: The tag settings.
         self.category_name = category_name
-        # The filter conditions. Separate multiple conditions with commas (,). The conditions have an AND relationship.
+        # The filter conditions. Separate multiple conditions with commas. The conditions are combined with a logical AND.
         self.labels = labels
 
     def validate(self):

@@ -12,9 +12,14 @@ class UpdateDatasetVersionRequest(DaraModel):
         description: str = None,
         options: str = None,
     ):
+        # The number of files in the dataset.
         self.data_count = data_count
+        # The size of the dataset files, in bytes.
         self.data_size = data_size
+        # A custom description of the dataset to distinguish it from other datasets.
         self.description = description
+        # An extension field in the JSON String format.
+        # When DLC uses the dataset, you can configure the mountPath field to specify the default mount path.
         self.options = options
 
     def validate(self):

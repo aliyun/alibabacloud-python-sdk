@@ -24,42 +24,51 @@ class ListConnectionsRequest(DaraModel):
         tool_call: bool = None,
         workspace_id: str = None,
     ):
+        # Visibility of the connection. Valid values:
+        # 
+        # - PUBLIC: visible to all workspace members.
+        # 
+        # - PRIVATE: visible only to the creator.
         self.accessibility = accessibility
-        # The list of connection IDs.
+        # List of connection IDs to filter by.
         self.connection_ids = connection_ids
-        # The connection name.
+        # Connection name. Supports fuzzy matching.
         self.connection_name = connection_name
-        # The list of connection types.
+        # List of connection types to filter by.
         self.connection_types = connection_types
+        # Alibaba Cloud account ID of the creator.
         self.creator = creator
-        # The encryption settings. Valid values:
+        # Encryption option for sensitive fields in the response. Valid values:
         # 
-        # *   PlainText
-        # *   Secret
+        # - PlainText: returns values in plaintext.
+        # 
+        # - Secret: returns values in ciphertext.
         self.encrypt_option = encrypt_option
-        # The maximum number of entries per page.
+        # Maximum number of entries per page.
         self.max_results = max_results
-        # The model identifier.
+        # Model identifier. Filters connections associated with this model.
         self.model = model
-        # The list of model types.
+        # List of model types to filter by.
         self.model_types = model_types
-        # The pagination token that indicates the start position from which to retrieve data on the next page.
+        # The token that marks the starting position for the next page of results.
         self.next_token = next_token
-        # The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+        # Sort order. Use with the SortBy parameter. Valid values:
         # 
-        # *   ASC: ascending order.
-        # *   DESC: descending order. This is the default value.
+        # - ASC: ascending order.
+        # 
+        # - DESC (default): descending order.
         self.order = order
-        # The field used to sort the results in queries by page. Default value: GmtCreateTime. Valid value:
+        # Field by which to sort results. Default value: GmtCreateTime. Valid values:
         # 
-        # *   GmtCreateTime: The results are sorted by creation time. This is the default value.
+        # - GmtCreateTime (default): sorts by creation time.
         self.sort_by = sort_by
-        # Specifies whether a tool can be called by using ToolCall. Valid values:
+        # Whether tool calling is supported. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: supported.
+        # 
+        # - false: not supported.
         self.tool_call = tool_call
-        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # Workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

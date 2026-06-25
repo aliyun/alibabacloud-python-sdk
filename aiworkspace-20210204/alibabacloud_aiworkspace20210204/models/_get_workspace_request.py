@@ -9,10 +9,11 @@ class GetWorkspaceRequest(DaraModel):
         self,
         verbose: bool = None,
     ):
-        # Specifies whether to display supplementary information such as the workspace owner. Valid values:
+        # Specifies whether to return additional information, such as the workspace owner. Valid values:
         # 
-        # *   false (default)
-        # *   true
+        # - false (default): Does not return additional information.
+        # 
+        # - true: Returns additional information.
         self.verbose = verbose
 
     def validate(self):

@@ -15,24 +15,31 @@ class GetDatasetJobConfigResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
-        # The configuration content. Configuration format for MultimodalIntelligentTag:
+        # The configuration content. The format depends on the ConfigType value.
+        # If ConfigType is MultimodalIntelligentTag, the format is as follows:
         # 
-        # { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+        # {
+        # "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx"
+        # }
         # 
-        # MultimodalSemanticIndex
+        # If ConfigType is MultimodalSemanticIndex, the format is as follows:
         # 
-        # { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+        # {
+        # "defaultModelId": "xxx",
+        # "defaultModelVersion":"1.0.0"
+        # }
         self.config = config
-        # The configuration type. Valid values:
+        # The configuration type.
         # 
-        # *   MultimodalIntelligentTag
-        # *   MultimodalSemanticIndex
+        # - MultimodalIntelligentTag
+        # 
+        # - MultimodalSemanticIndex
         self.config_type = config_type
-        # The time when the configuration is created.
+        # The time when the configuration was created.
         self.create_time = create_time
         # The dataset ID.
         self.dataset_id = dataset_id
-        # The time when the configuration is modified.
+        # The time when the configuration was last modified.
         self.modify_time = modify_time
         # The request ID.
         self.request_id = request_id

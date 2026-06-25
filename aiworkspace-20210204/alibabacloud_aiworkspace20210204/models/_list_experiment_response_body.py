@@ -17,9 +17,9 @@ class ListExperimentResponseBody(DaraModel):
     ):
         # The list of experiments.
         self.experiments = experiments
-        # The pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page. Save this token and include it in the next request to retrieve the next page of results.
         self.next_page_token = next_page_token
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
         # The request ID.
         self.request_id = request_id

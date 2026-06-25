@@ -25,61 +25,81 @@ class DatasetFileMeta(DaraModel):
         thumbnail_url: str = None,
         uri: str = None,
     ):
-        # The MIME Type of the file.
+        # The MIME type of the file. It includes a type and a subtype.
         self.content_type = content_type
-        # The file size. Unit: bytes.
+        # The size of the file in bytes.
         self.data_size = data_size
-        # The metadata ID of the dataset file.
+        # The ID of the dataset file metadata.
         self.dataset_file_meta_id = dataset_file_meta_id
         # The download URL of the file.
         self.download_url = download_url
-        # The time when the file was created. A UTC timestamp in the ISO 8601 format.
+        # The time when the file was created. The time is in UTC and in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
-        # The file fingerprint, used to determine the uniqueness of the file content. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5 values.
+        # The file fingerprint. This value ensures the uniqueness of the file content and changes if the content is modified. The ETag is used for OSS files, and the MD5 value is used for NAS files.
         self.file_finger_print = file_finger_print
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
-        # The file type.
+        # The type of the file. This corresponds to the main type of a Multipurpose Internet Mail Extensions (MIME) type.
         self.file_type = file_type
-        # The last modified time of the file. A UTC timestamp in the ISO 8601 format.
+        # The time when the file was last modified. The time is in Coordinated Universal Time (UTC) and in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
-        # The specific metadata of the file. For example, the width and height of an image file, or the bitrate and resolution of a video file. This parameter cannot be used for retrieval. In JSON String format.
+        # Specific metadata for the file, such as the width and height of an image or the bitrate and resolution of a video. Currently, this metadata cannot be used for retrieval. The format is a JSON string.
         self.meta_attributes = meta_attributes
         # The similarity score.
         self.score = score
-        # The ID of the last semantic indexing job.
+        # The ID of the job that last built the semantic index.
         self.semantic_index_job_id = semantic_index_job_id
-        # The last update time of the semantic index. A UTC timestamp in the ISO 8601 format.
+        # The time when the semantic index was last updated. The time is in UTC and in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.semantic_index_update_time = semantic_index_update_time
+        # The current status of the metadata:
+        # \\- ACTIVE: Active.
+        # \\- DELETED: Deleted.
         self.status = status
-        # The tags of the metadata, in JSON string format. Including:
+        # A collection of tags for the metadata, in JSON string format. The collection includes the following groups:
         # 
-        # *   Algorithm tag group:
+        # - Algorithm tag group:
         # 
-        #     *   ai: tags from all algorithm tagging tasks on this metadata.
+        #   - ai: A list of tag names aggregated from all algorithm-based tagging tasks for a single metadata record.
         # 
-        # *   User-defined tag group:
+        # - User-defined tag group:
         # 
-        #     *   user: tags added by the user to this metadata.
-        #     *   user-delete-ai-tags: tags from the algorithm tag group that the user needs to delete.
+        #   - user: A list of tag names that a user adds to a single metadata record.
+        # 
+        #   - user-delete-ai-tags: A list of tag names from the algorithm tag group that the user deletes from a single metadata record.
         self.tags = tags
         # The URL of the thumbnail.
         self.thumbnail_url = thumbnail_url
-        # The URI of the file. Used to record the unique path of the file. File paths in Object Storage Service (OSS) and File Storage NAS (NAS) are supported.
+        # The unique URI of the file. It records the unique path of the file. Paths for files in OSS and NAS are supported.
         # 
-        # **OSS**
+        # <details>
         # 
-        # oss://${bucket}/${path}
+        # <summary>
         # 
-        # **NAS**
+        # OSS
         # 
-        # nas://${fileSystemId}/${path}
+        # </summary>
+        # 
+        # oss\\://${bucket}/${path}
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # NAS
+        # 
+        # </summary>
+        # 
+        # nas\\://${fileSystemId}/${path}
+        # 
+        # </details>
         self.uri = uri
 
     def validate(self):

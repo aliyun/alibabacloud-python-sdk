@@ -20,34 +20,35 @@ class ListExperimentShrinkRequest(DaraModel):
         verbose: bool = None,
         workspace_id: str = None,
     ):
-        # The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`.
+        # The filter conditions for labels. Separate multiple conditions with commas (,). A single filter condition must be in the `Key=Value` format.
         self.labels = labels
-        # The maximum number of entries in the request. Default value: 10.
+        # The maximum number of results to return. The default is 10.
         self.max_results = max_results
-        # The experiment name.
+        # The name of the experiment.
         self.name = name
-        # The optional parameters.
+        # Optional parameters.
         self.options_shrink = options_shrink
-        # The order of specific fields of results in a paged query (ascending or descending).
+        # The order in which to sort the results of a paged query. Valid values:
         # 
-        # *   ASC: ascending order
-        # *   DESC: descending order. This is the default value.
+        # - ASC: ascending order.
+        # 
+        # - DESC (default): descending order.
         self.order = order
-        # The strings used for sorting. The following fields can be used for sorting: GmtCreateTime, Name, GmtModifiedTime, and ExperimentId. The sorting order can be ASC (default) and DESC.
+        # A list of sorting methods as strings. You can sort by the following fields: GmtCreateTime, Name, GmtModifiedTime, or ExperimentId. The sorting methods are DESC and ASC. The default is ASC.
         self.order_by = order_by
-        # The page number. The value starts from 1.
+        # The page number. Pages start from 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The pagination token, which starts from 0. Default value: 0.
+        # The paging token. It starts from 0. The default is 0.
         self.page_token = page_token
-        # The field used for sorting. The GmtCreateTime field is used.
+        # The field to use for sorting in a paged query. Currently, only the GmtCreateTime field is supported for sorting.
         self.sort_by = sort_by
-        # Specifies whether to obtain the LatestRun value that is related to the experiment.
+        # Specifies whether to retrieve the LatestRun information related to the experiment.
         self.verbose = verbose
-        # The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The ID of the workspace where the experiment resides. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         # 
-        # >  If you do not specify a workspace ID, the system returns the experiments in the default workspace.
+        # > If you do not specify a workspace ID, the system returns the list of experiments in the default workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

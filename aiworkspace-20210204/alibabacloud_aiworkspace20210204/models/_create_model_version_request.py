@@ -30,82 +30,110 @@ class CreateModelVersionRequest(DaraModel):
     ):
         # The approval status. Valid values:
         # 
-        # *   Pending
-        # *   Approved
-        # *   Rejected
+        # - Pending: The version is pending approval.
+        # 
+        # - Approved: The version is approved for deployment.
+        # 
+        # - Rejected: The version is rejected for deployment.
         self.approval_status = approval_status
-        # The compression configuration.
+        # The compression configurations.
         self.compression_spec = compression_spec
+        # The distillation configurations.
         self.distillation_spec = distillation_spec
-        # The evaluation configuration.
+        # The evaluation configurations.
         self.evaluation_spec = evaluation_spec
-        # The additional information.
+        # Other information.
         self.extra_info = extra_info
-        # The model format. Valid values:
+        # The format of the model. Valid values:
         # 
-        # *   OfflineModel
-        # *   SavedModel
-        # *   Keras H5
-        # *   Frozen Pb
-        # *   Caffe Prototxt
-        # *   TorchScript
-        # *   XGBoost
-        # *   PMML
-        # *   AlinkModel
-        # *   ONNX
+        # - OfflineModel
+        # 
+        # - SavedModel
+        # 
+        # - Keras H5
+        # 
+        # - Frozen Pb
+        # 
+        # - Caffe Prototxt
+        # 
+        # - TorchScript
+        # 
+        # - XGBoost
+        # 
+        # - PMML
+        # 
+        # - AlinkModel
+        # 
+        # - ONNX
         self.format_type = format_type
-        # The model framework. Valid values:
+        # The framework of the model. Valid values:
         # 
-        # *   Pytorch
-        # *   XGBoost
-        # *   Keras
-        # *   Caffe
-        # *   Alink
-        # *   Xflow
-        # *   TensorFlow
+        # - Pytorch
+        # 
+        # - XGBoost
+        # 
+        # - Keras
+        # 
+        # - Caffe
+        # 
+        # - Alink
+        # 
+        # - Xflow
+        # 
+        # - TensorFlow
         self.framework_type = framework_type
-        # Describes how to apply to downstream inference services. For example, describe the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
+        # The configurations for downstream inference services, such as the processor and container for Elastic Algorithm Service (EAS). Example:
+        # `{ "processor": "tensorflow_gpu_1.12" }`
         self.inference_spec = inference_spec
-        # The labels.
+        # The list of labels.
         self.labels = labels
-        # The metrics for the model. The length after serialization is limited to 8,192.
+        # The model metrics.
+        # The serialized data cannot exceed 8,192 bytes in length.
         self.metrics = metrics
-        # The extended field. This is a JSON string.
+        # The extended fields. This parameter is a JSON string.
         self.options = options
-        # The ID of the model source.
+        # The source ID.
         # 
-        # *   If SourceType is set to Custom, this parameter is not limited.
-        # *   If SourceType is set to PAIFlow or TrainingService, the ID of the model source is in the following format:
+        # - If SourceType is set to Custom, this parameter has no format restrictions.
         # 
-        # <!---->
+        # - If SourceType is PAIFlow or TrainingService, the value must be in the following format:
         # 
-        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # ```
+        # region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # ```
         # 
-        # Take note of the following parameters:
+        # The fields are described as follows:
         # 
-        # *   region indicates the region ID.
-        # *   workspaceId indicates the workspace ID.
-        # *   kind indicates the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
-        # *   id indicates the unique identifier.
+        # - region: The ID of the Alibaba Cloud region.
+        # 
+        # - workspaceId: The ID of the workspace.
+        # 
+        # - kind: The type. Valid values: PipelineRun (PAI pipeline) and ServiceJob (training service).
+        # 
+        # - id: The unique identifier.
         self.source_id = source_id
-        # The type of the model source. Valid values:
+        # The source type of the model. Valid values:
         # 
-        # *   Custom (default)
-        # *   PAIFlow
-        # *   TrainingService: the Platform for AI (PAI) training service.
+        # - Custom (default): The model is custom.
+        # 
+        # - PAIFlow: The model is from a PAI pipeline.
+        # 
+        # - TrainingService: The model is from a PAI training service.
         self.source_type = source_type
-        # The training configurations, which is used for fine-tuning and incremental training.
+        # The training configurations. These configurations are used for fine-tuning and incremental training.
         self.training_spec = training_spec
-        # The URI of the model version, which is the location where the model is stored. Valid values:
+        # The URI of the model version, which is the storage location of the model. The following types of model URIs are supported:
         # 
-        # *   The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
-        # *   The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For information about endpoints, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+        # - An HTTP or HTTPS URL of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+        # 
+        # - If the model is stored in Object Storage Service (OSS), the URI must be in the `oss://<bucket>.<endpoint>/object` format. For more information about endpoints, see [Endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
         # 
         # This parameter is required.
         self.uri = uri
-        # The version description.
+        # The description of the model version.
         self.version_description = version_description
-        # The model version, which is unique for each model. If you leave this parameter empty, the first version is **0.1.0** by default. After that, the minor version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). The major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
+        # The model version. The version must be unique within the model. If you do not specify this parameter, the first version defaults to **0.1.0**. The minor version number is then incremented by 1 for each subsequent version. For example, the second version defaults to **0.2.0**.
+        # A version number consists of a major version, a minor version, and a patch version, separated by periods (.). The major and minor versions are numbers. The patch version can start with a number and contain underscores (_) and letters. Examples: 1.1.0 and 2.3.4_beta.
         self.version_name = version_name
 
     def validate(self):

@@ -10,9 +10,9 @@ class StopDatasetJobRequest(DaraModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
-        # The dataset version.
+        # The name of the dataset version.
         self.dataset_version = dataset_version
-        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The workspace ID. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

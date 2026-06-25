@@ -19,77 +19,74 @@ class DatasetFileMetaContentCreate(DaraModel):
         tags: str = None,
         uri: str = None,
     ):
-        # The file comment.
+        # The comment on the file.
         self.comment = comment
-        # The MIME type of the file. It contains Type and SubType.
-        # 
-        # Valid values:
-        # 
-        # *   image/png: PNG.
-        # *   image/jpeg: JPEG.
-        # *   image/tiff: TIFF.
-        # *   image/bmp: BMP.
-        # *   image/gif: GIF.
-        # *   image/x-icon: ICON.
-        # *   image/svg+xml: SVG.
-        # *   image/webp: WEBP.
-        # *   image/heic: HEIC
+        # The MIME type of the file. It includes a type and a subtype.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The file size. Unit: bytes.
+        # The size of the file in bytes.
         self.data_size = data_size
-        # The time when the file was created. The time follows the ISO 8601 standard.
+        # The time when the file was created. The time is in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_create_time = file_create_time
-        # The file fingerprint. Used to check the uniqueness of the file. This value changes after the file content is modified. OSS files use ETags, and NAS files use MD5 values.
+        # The fingerprint of the file. This value ensures the uniqueness of the file content and changes if the content is modified. For OSS files, this is the ETag. For NAS files, this is the MD5 value.
         # 
         # This parameter is required.
         self.file_finger_print = file_finger_print
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
-        # The file type. The same as MIME type.
-        # 
-        # Valid values:
-        # 
-        # *   image
-        # *   application
-        # *   audio
-        # *   video
-        # *   text
+        # The type of the file. This is the same as the Multipurpose Internet Mail Extensions (MIME) type.
         # 
         # This parameter is required.
         self.file_type = file_type
-        # The time when the file was last modified. The time follows the ISO 8601 standard.
+        # The time when the file was last modified. The time is in ISO 8601 format.
         # 
         # This parameter is required.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.file_update_time = file_update_time
-        # The specific metadata of the file. You cannot retrieve the metadata. The value is a JSON string.
+        # The specific metadata of the file. This metadata cannot be used for retrieval. The value must be a JSON string.
         self.meta_attributes = meta_attributes
-        # The tags manually added. The value is a JSON string. Operable tag group:
+        # The tags that are manually added by users. The \\`add\\` operation is used to add tags to a tag group. The value must be a JSON string.
+        # The following tag group is available:
         # 
-        # *   user: the list of tags to add to a metadata entry.
+        # - user: A list of tag names added to a single piece of metadata.
         # 
-        # <!---->
-        # 
-        #     {
-        #         "user":{
-        #             "add":["lane line","sunny"]
-        #         }
+        # ```
+        # {
+        #     "user":{
+        #         "add":["Lane line","Sunny day"]
         #     }
+        # }
+        # ```
         self.tags = tags
-        # The URI of the file. Used to record the unique path of the file. File paths in Object Storage Service (OSS) and File Storage NAS (NAS) are supported.
+        # The unique URI of the file. This URI records the unique path of the file. The path can be an OSS or NAS path.
         # 
-        # **OSS**
+        # <details>
         # 
-        # oss://${bucket}/${path}
+        # <summary>
         # 
-        # **NAS**
+        # OSS
         # 
-        # nas://${fileSystemId}/${path}
+        # </summary>
+        # 
+        # oss\\://${bucket}/${path}
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # NAS
+        # 
+        # </summary>
+        # 
+        # nas\\://${fileSystemId}/${path}
+        # 
+        # </details>
         # 
         # This parameter is required.
         self.uri = uri

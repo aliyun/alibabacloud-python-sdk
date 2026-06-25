@@ -44,6 +44,7 @@ class Model(DaraModel):
         self.extra_info = extra_info
         # The time when the model was created, in UTC. The time follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
+        # 最后版本更新时间。
         self.gmt_latest_version_modified_time = gmt_latest_version_modified_time
         # The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
@@ -67,9 +68,11 @@ class Model(DaraModel):
         self.origin = origin
         # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        # 参数量，单位M。
         self.parameter_size = parameter_size
         # The model provider.
         self.provider = provider
+        # 标签列表
         self.tags = tags
         # The task. The specific issue that the model resolves, such as text-classification.
         self.task = task

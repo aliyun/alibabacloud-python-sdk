@@ -14,26 +14,37 @@ class DeleteWorkspaceResourceRequest(DaraModel):
         resource_ids: str = None,
         resource_type: str = None,
     ):
-        # The name of the resource group. You can call [ListResources](https://help.aliyun.com/document_detail/449143.html) to obtain the name of the resource group.
+        # The resource group name. To get the resource group name, see [ListResources](https://help.aliyun.com/document_detail/449143.html).
         self.group_name = group_name
-        # The tags. Multiple tags are separated by commas (,).
+        # A comma-separated list of labels.
         self.labels = labels
-        # The operation to perform. Valid values:
+        # The deletion behavior. Valid values:
         # 
-        # *   DetachAndDelete: disassociates a resource from a workspace and deletes the resource in the workspace. This is the default value.
-        # *   Detach: disassociates a resource group from a workspace.
+        # - `DetachAndDelete` (default): Detaches the resource from the workspace and deletes the resource.
+        # 
+        # - `Detach`: Detaches the resource from the workspace.
         self.option = option
-        # **This field is no longer used and will be removed. Use the ResourceType field instead.
+        # **This parameter is deprecated and will be removed. Use the `ResourceType` parameter instead.**
         self.product_type = product_type
-        # The resource IDs. Multiple resource IDs are separated by commas (,). The GroupName values for the specified resources must be the same. You cannot leave both GroupName and ResourceIds empty. You can specify both parameters.
+        # A comma-separated list of resource IDs. All specified resources must belong to the same `GroupName`. You must specify a value for at least one of the `GroupName` or `ResourceIds` parameters.
         self.resource_ids = resource_ids
         # The resource type. Valid values:
         # 
-        # *   ECS
-        # *   Lingjun
-        # *   ACS
-        # *   FLINK
-        # *   MaxCompute (This resource type is valid only if Option is set to Detach.)
+        # - `ECS`: general-purpose computing resources
+        # 
+        # - `Lingjun`: Lingjun intelligent computing resources
+        # 
+        # - `ACS`: ACS computing resources
+        # 
+        # - `Flink`: Flink resources.
+        # 
+        # - `MaxCompute`: MaxCompute resources. For this resource type, the `Option` parameter can only be set to `Detach`.
+        # 
+        # - `SelfManagedAckPro`: AckPro unified management cluster resources
+        # 
+        # - `SelfManagedAckLingjun`: AckLinjun unified management cluster resources
+        # 
+        # - `SelfManagedASI`: ASI unified management cluster resources (third-party cloud)
         self.resource_type = resource_type
 
     def validate(self):

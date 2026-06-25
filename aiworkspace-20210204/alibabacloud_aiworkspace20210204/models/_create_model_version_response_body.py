@@ -12,7 +12,7 @@ class CreateModelVersionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The version of the model.
+        # The model version.
         self.version_name = version_name
 
     def validate(self):

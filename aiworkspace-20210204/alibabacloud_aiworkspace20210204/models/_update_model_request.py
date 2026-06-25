@@ -23,27 +23,29 @@ class UpdateModelRequest(DaraModel):
     ):
         # The visibility of the model in the workspace. Valid values:
         # 
-        # *   PRIVATE: The model is visible only to you and the administrator of the workspace.
-        # *   PUBLIC: The model is visible to all users in the workspace.
+        # - PRIVATE: The model is visible only to you and administrators in the workspace.
+        # 
+        # - PUBLIC: The model is visible to everyone in the workspace.
         self.accessibility = accessibility
-        # The domain. This parameter describes the domain in which the model is applied. Valid values: nlp (natural language processing) and cv (computer vision).
+        # The domain of the model. This parameter specifies the field where the model is applied. Examples: nlp (natural language processing) and cv (computer vision).
         self.domain = domain
         # Other information about the model.
         self.extra_info = extra_info
         # The model description.
         self.model_description = model_description
-        # The documentation of the model.
+        # The model document.
         self.model_doc = model_doc
-        # The model name, which must be 1 to 127 characters in length.
+        # The name of the model. The name must be 1 to 127 characters in length.
         self.model_name = model_name
-        # The model type. Valid values: Checkpoint and LoRA.
+        # The model type, such as Checkpoint or LoRA.
         self.model_type = model_type
-        # The sequence number of the model. This parameter can be used for custom sorting.
+        # The ordinal number of the model. You can use this parameter for custom sorting.
         self.order_number = order_number
-        # The source of the model. This parameter describes the community or organization to which the source model belongs. Valid values: ModelScope and HuggingFace.
+        # The source of the model. This parameter describes the community or organization to which the source model belongs, such as ModelScope and HuggingFace.
         self.origin = origin
+        # The number of parameters, in millions.
         self.parameter_size = parameter_size
-        # The task. This parameter specifies the specific issue that the model resolves. Example: text-classification.
+        # The task of the model. This parameter describes the specific problem that the model solves. For example, text-classification.
         self.task = task
 
     def validate(self):

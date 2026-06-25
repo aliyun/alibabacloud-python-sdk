@@ -20,17 +20,17 @@ class UpdateCodeSourceRequest(DaraModel):
         self.clone_type = clone_type
         # The name of the code branch.
         self.code_branch = code_branch
-        # The code commit ID.
+        # The commit ID.
         self.code_commit = code_commit
-        # The address of the code repository.
+        # The URL of the code repository.
         self.code_repo = code_repo
-        # The access token corresponding to the username.
+        # The access token for the username.
         self.code_repo_access_token = code_repo_access_token
-        # The username used to access the code repository.
+        # The username for the code repository.
         self.code_repo_user_name = code_repo_user_name
-        # The description of the code build.
+        # The description of the code source.
         self.description = description
-        # The name of the code build.
+        # The name of the code source.
         self.display_name = display_name
         # The default mount path.
         self.mount_path = mount_path

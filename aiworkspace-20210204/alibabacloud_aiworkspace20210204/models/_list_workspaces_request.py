@@ -21,49 +21,46 @@ class ListWorkspacesRequest(DaraModel):
         workspace_ids: str = None,
         workspace_name: str = None,
     ):
-        # The list of returned fields of workspace details. Used to limit the fields in the returned results. Separate multiple fields with commas (,). Currently, only Id is supported, which is the workspace ID.
+        # The list of return fields for workspace details. This parameter limits the workspace properties returned in the result.
+        # Separate multiple properties with commas (,). Currently, only Id is supported, which represents the workspace ID.
         self.fields = fields
-        # The modules, separated by commas (,). Default value: PAI.
+        # The comma-separated list of modules. Default value: PAI.
         self.module_list = module_list
-        # The query options. Valid values:
-        # 
-        # *   GetWorkspaces (default): Obtains a list of Workspaces.
-        # *   GetResourceLimits: Obtains a list of ResourceLimits.
+        # The query option. Valid values:
+        # * GetWorkspaces (default): retrieves the workspace list. The Workspaces parameter is returned.
+        # * GetResourceLimits: retrieves resource limits. The ResourceLimits parameter is returned.
         self.option = option
-        # The order of results (ascending or descending). Valid values:
-        # 
-        # *   ASC: ascending order. This is the default value.
-        # *   DESC: descending order.
+        # The sort order for the specified sort field in a paged query. Valid values:
+        # * ASC (default): ascending order.
+        # * DESC: descending order.
         self.order = order
-        # The page number of the workspace list. Pages start from page 1. Default value: 1.
+        # The page number of the workspace list. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 20.
+        # The number of entries per page in a paged query. Default value: 20.
         self.page_size = page_size
-        # The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The resource group ID. For information about how to view the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # Specifies how to sort the results. Default value: GmtCreateTime. Valid values:
-        # 
-        # *   GmtCreateTime: Sort by the time when created.
-        # *   GmtModifiedTime: Sort by the time when modified.
+        # The field used for sorting in a paged query. Default value: GmtCreateTime. Valid values:
+        # * GmtCreateTime (default): sorts by creation time.
+        # * GmtModifiedTime: sorts by modification time.
         self.sort_by = sort_by
         # The workspace status. Valid values:
         # 
-        # *   ENABLED
-        # *   INITIALIZING
-        # *   FAILURE
-        # *   DISABLED
-        # *   FROZEN
-        # *   UPDATING
+        # - ENABLED: Normal.
+        # - INITIALIZING: Being initialized.
+        # - FAILURE: Failed.
+        # - DISABLED: Manually disabled.
+        # - FROZEN: Frozen due to overdue payment.
+        # - UPDATING: Being updated.
         self.status = status
         self.user_id = user_id
-        # Specifies whether to display workspace details. Valid values:
-        # 
-        # *   false (default)
-        # *   true
+        # Specifies whether to display detailed workspace information. Valid values:
+        # - false (default): does not display detailed information.
+        # - true: displays detailed information.
         self.verbose = verbose
-        # The workspace IDs. Separate multiple IDs by commas (,).
+        # The list of workspace IDs. Separate multiple workspace IDs with commas (,).
         self.workspace_ids = workspace_ids
-        # The name of the workspace.
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

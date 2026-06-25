@@ -10,7 +10,7 @@ class UpdateCodeSourceResponseBody(DaraModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the code build.
+        # The ID of the code source.
         self.code_source_id = code_source_id
         # The request ID.
         self.request_id = request_id

@@ -14,7 +14,7 @@ class DeleteWorkspaceResourceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The resource IDs.
+        # The affected resource IDs.
         self.resource_ids = resource_ids
 
     def validate(self):

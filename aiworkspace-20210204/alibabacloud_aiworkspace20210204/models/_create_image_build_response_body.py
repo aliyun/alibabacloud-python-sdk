@@ -10,8 +10,9 @@ class CreateImageBuildResponseBody(DaraModel):
         image_build_id: str = None,
         image_build_job_id: str = None,
     ):
-        # 代表资源一级ID的资源属性字段
+        # The image build ID.
         self.image_build_id = image_build_id
+        # The build task ID.
         self.image_build_job_id = image_build_job_id
 
     def validate(self):

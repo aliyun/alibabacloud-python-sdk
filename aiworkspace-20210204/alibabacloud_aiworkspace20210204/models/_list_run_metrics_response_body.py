@@ -14,11 +14,11 @@ class ListRunMetricsResponseBody(DaraModel):
         next_page_token: int = None,
         request_id: str = None,
     ):
-        # The metrics.
+        # The list of metrics.
         self.metrics = metrics
-        # The pagination token that is used to retrieve the next page. You do not need to specify this parameter for the first request. You must specify the pagination token in the result of the previous query. If the pagination token is 0, no next page exists. You can obtain the pagination token that is used to retrieve the next page in the value of the **NextPageToken** field.
+        # The token to retrieve the next page of results. A value of 0 indicates that all results have been returned. Use the value of this parameter for the \\`PageToken\\` parameter in your next request to retrieve the next page.
         self.next_page_token = next_page_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -13,15 +13,18 @@ class ListImageLabelsRequest(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
+        # The image ID. For more information about how to obtain an image ID, see [ListImages](https://help.aliyun.com/document_detail/449118.html).
         self.image_id = image_id
-        # The tag filter conditions, separated with commas (,). The format of a single condition filter is `key=value`. Takes effect independently from LabelKeys.
+        # The filter conditions for labels. Separate multiple conditions with commas.
+        # The format for a single condition is `key=value`.
+        # This parameter works independently of the LabelKeys parameter.
         self.label_filter = label_filter
-        # The tag keys, separated with commas (,). System tags start with system and take effect independently from LabelFilter.
+        # The list of tag keys. Separate multiple keys with commas (,).
+        # System tags start with "system". This parameter works independently of the LabelFilter parameter.
         self.label_keys = label_keys
         # The region where the image resides.
         self.region = region
-        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The workspace ID. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

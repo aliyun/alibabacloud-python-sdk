@@ -14,9 +14,9 @@ class GetDatasetFileMetasStatisticsResponseBody(DaraModel):
         total_count: int = None,
         request_id: str = None,
     ):
-        # The details of the returned aggregation list, including the number of each aggregate item. The list is by default sorted in descending order based on the count number.
+        # The details of the returned aggregation list. You can get the count for each aggregated item. The list is sorted by Count in descending order by default.
         self.dataset_file_metas_stats = dataset_file_metas_stats
-        # The returned number. Example: the number of metadata records or the number of user-defined tags.
+        # The number of statistical results returned. For example, the number of metadata entries or the number of user tags.
         self.total_count = total_count
         # The request ID.
         self.request_id = request_id

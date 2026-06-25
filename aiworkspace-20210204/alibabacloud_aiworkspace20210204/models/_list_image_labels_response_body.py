@@ -14,11 +14,11 @@ class ListImageLabelsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The image tags.
+        # The list of image labels.
         self.labels = labels
         # The request ID.
         self.request_id = request_id
-        # The total number of the images that meet the filter conditions.
+        # The total number of image labels that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -67,9 +67,9 @@ class ListImageLabelsResponseBodyLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the label.
         self.key = key
-        # The tag value.
+        # The value of the label.
         self.value = value
 
     def validate(self):

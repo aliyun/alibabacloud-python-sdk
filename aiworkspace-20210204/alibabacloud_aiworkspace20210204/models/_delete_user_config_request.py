@@ -10,7 +10,7 @@ class DeleteUserConfigRequest(DaraModel):
         config_key: str = None,
         scope: str = None,
     ):
-        # The configuration item keys. Currently, only customizePAIAssumedRole.
+        # The configuration key. Only customizePAIAssumedRole is supported.
         self.config_key = config_key
         # The scope. Valid values: subUser and owner.
         self.scope = scope

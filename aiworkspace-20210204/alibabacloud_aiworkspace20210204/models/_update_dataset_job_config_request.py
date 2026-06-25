@@ -11,22 +11,29 @@ class UpdateDatasetJobConfigRequest(DaraModel):
         config_type: str = None,
         workspace_id: str = None,
     ):
-        # The configuration content. Formats:
+        # The configuration content.
+        # The format is as follows:
         # 
-        # *   MultimodalIntelligentTag
+        # - MultimodalIntelligentTag
         # 
-        # { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+        # {
+        # "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx"
+        # }
         # 
-        # *   MultimodalSemanticIndex
+        # - MultimodalSemanticIndex
         # 
-        # { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+        # {
+        # "defaultModelId": "xxx",
+        # "defaultModelVersion":"1.0.0"
+        # }
         self.config = config
         # The configuration type.
         # 
-        # *   MultimodalIntelligentTag
-        # *   MultimodalSemanticIndex
+        # - MultimodalIntelligentTag
+        # 
+        # - MultimodalSemanticIndex
         self.config_type = config_type
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

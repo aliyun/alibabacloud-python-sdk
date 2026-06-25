@@ -18,7 +18,7 @@ class ListModelVersionsResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of model versions.
         self.total_count = total_count
-        # The model versions.
+        # The list of model versions.
         self.versions = versions
 
     def validate(self):

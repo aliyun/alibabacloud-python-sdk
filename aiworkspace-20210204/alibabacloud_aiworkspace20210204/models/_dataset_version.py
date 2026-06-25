@@ -26,35 +26,35 @@ class DatasetVersion(DaraModel):
         uri: str = None,
         version_name: str = None,
     ):
-        # DataCount
+        # The total number of data items in the version.
         self.data_count = data_count
-        # DataSize
+        # The total size of the data in the version, in bytes.
         self.data_size = data_size
-        # DataSourceType
+        # The data source type. For example, the value `OSS` indicates Object Storage Service.
         self.data_source_type = data_source_type
-        # Description
+        # A custom description for the dataset version.
         self.description = description
-        # create time
+        # The creation time of the dataset version, in UTC.
         self.gmt_create_time = gmt_create_time
-        # modify time
+        # The time the dataset version was last modified, in UTC.
         self.gmt_modified_time = gmt_modified_time
-        # ImportInfo
+        # Information about the import source, in JSON format.
         self.import_info = import_info
-        # Labels
+        # A list of labels applied to the dataset version.
         self.labels = labels
-        # MountAccess
+        # The access permission for the mounted dataset. For example, `RO` means read-only.
         self.mount_access = mount_access
-        # Options
+        # Additional configurations for the dataset version, in JSON format.
         self.options = options
-        # property
+        # The data format of the dataset.
         self.property = property
-        # SourceId
+        # The ID of the source from which the version was created.
         self.source_id = source_id
-        # SourceType
+        # The method used to create the dataset version.
         self.source_type = source_type
-        # Uri
+        # The URI of the data source.
         self.uri = uri
-        # version name
+        # The name of the dataset version.
         self.version_name = version_name
 
     def validate(self):

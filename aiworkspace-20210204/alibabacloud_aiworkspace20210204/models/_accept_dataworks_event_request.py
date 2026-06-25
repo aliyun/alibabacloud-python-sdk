@@ -12,9 +12,9 @@ class AcceptDataworksEventRequest(DaraModel):
         data: Dict[str, Any] = None,
         message_id: str = None,
     ):
-        # The event content in the message.
+        # The event content of the message.
         self.data = data
-        # The message ID. You can obtain the ID from the message received when an extension point event is triggered. For more information about the message format, see [Message formats](https://help.aliyun.com/document_detail/436911.html).
+        # The ID of the DataWorks open message. After an extension point event is triggered, the message ID is available in the received event message. For more information about the message format, see [Message format](https://help.aliyun.com/document_detail/436911.html).
         self.message_id = message_id
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateModelVersionLabelsRequest(DaraModel):
         self,
         labels: List[main_models.Label] = None,
     ):
-        # The tags.
+        # A list of labels.
         self.labels = labels
 
     def validate(self):

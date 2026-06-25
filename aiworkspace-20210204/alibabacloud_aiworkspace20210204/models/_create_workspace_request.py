@@ -15,25 +15,24 @@ class CreateWorkspaceRequest(DaraModel):
         resource_group_id: str = None,
         workspace_name: str = None,
     ):
-        # The description of the workspace. The description can be up to 80 characters in length.
+        # The description of the workspace. The description cannot exceed 80 characters in length.
         # 
         # This parameter is required.
         self.description = description
-        # The display name of the workspace. You can set it based on the purpose of the workspace. If left empty, the name of the workspace is used.
+        # We recommend that you name the workspace based on its business attribute to facilitate identification of its purpose. If you do not configure this parameter, the workspace name is used by default.
         self.display_name = display_name
-        # The environment of the workspace.
-        # 
-        # *   Workspaces in basic mode can run only in the production environment (prod).
-        # *   Workspaces in standard mode can run in both the development and production environments (dev and prod).
+        # The environments included in the workspace:
+        # - The simple mode contains only the production environment (prod).
+        # - The standard mode contains both the development environment (dev) and the production environment (prod).
         # 
         # This parameter is required.
         self.env_types = env_types
+        # The resource group ID. For information about how to obtain the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # The name of the workspace. Format:
-        # 
-        # *   The name must be 3 to 23 characters in length, and can contain letters, underscores (_), and digits.
-        # *   The name must start with a letter.
-        # *   It must be unique in the current region.
+        # The name of the workspace. The format is as follows:
+        # - The length is 3 to 23 characters and can contain letters, underscores (_), or digits.
+        # - It must start with a letter (uppercase or lowercase).
+        # - It must be unique within the current region.
         # 
         # This parameter is required.
         self.workspace_name = workspace_name

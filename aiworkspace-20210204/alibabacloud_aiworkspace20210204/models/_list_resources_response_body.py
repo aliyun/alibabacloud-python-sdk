@@ -16,9 +16,9 @@ class ListResourcesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The resources.
+        # The list of resources.
         self.resources = resources
-        # The number of resources that meet the filter conditions.
+        # The total number of entries that match the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -79,43 +79,57 @@ class ListResourcesResponseBodyResources(DaraModel):
         spec: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
-        # The encryption information, which is valid only for MaxCompute resources.
+        # The encryption details. This parameter is valid only for MaxCompute resources.
         self.encryption = encryption
         # The environment type. Valid values:
         # 
-        # *   dev: development environment
-        # *   prod: production environment
+        # - `dev`: development environment
+        # 
+        # - `prod`: production environment
         self.env_type = env_type
-        # This parameter is invalid and deprecated.
+        # **Deprecated.** This parameter is no longer used.
         self.executor = executor
-        # The time when the resource group is created, in UTC. The time follows the ISO 8601 standard.
+        # The time when the resource was created. The time is displayed in UTC and is formatted in ISO 8601.
         self.gmt_create_time = gmt_create_time
-        # The name of the resource group, which is unique within the Alibaba Cloud account.
+        # The name of the resource group. The name must be unique within an Alibaba Cloud account.
         self.group_name = group_name
         # The resource ID.
         self.id = id
-        # Indicates whether the resource is the default resource. Each type of resources has a default resource. Valid values:
+        # Indicates whether the resource is the default resource of its type. Each resource type has only one default resource. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The resource is the default resource.
+        # 
+        # - `false`: The resource is not the default resource.
         self.is_default = is_default
-        # The tags.
+        # The list of labels.
         self.labels = labels
         # The resource name.
         self.name = name
-        # **This field is no longer used and will be removed. Use the ResourceType field.
+        # **Deprecated.** This parameter is deprecated and will be removed in a future release. Use the `ResourceType` parameter instead.
         self.product_type = product_type
-        # The quotas.
+        # The list of quotas.
         self.quotas = quotas
-        # The resource type. Valid values:
+        # The type of the resource. Valid values:
         # 
-        # *   MaxCompute
-        # *   DLC
-        # *   FLINK
+        # - `MaxCompute`: MaxCompute resources
+        # 
+        # - `ECS`: ECS resources
+        # 
+        # - `Lingjun`: Lingjun intelligent computing resources
+        # 
+        # - `ACS`: ACS computing resources
+        # 
+        # - `Flink`: Flink resources
+        # 
+        # - `SelfManagedAckPro`: self-managed cluster resources for AckPro
+        # 
+        # - `SelfManagedAckLingjun`: self-managed cluster resources for AckLingjun
+        # 
+        # - `SelfManagedASI`: self-managed cluster resources for ASI (third-party cloud)
         self.resource_type = resource_type
-        # The resource specification.
+        # The resource specifications.
         self.spec = spec
-        # The workspace ID.
+        # The ID of the workspace to which the resource belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -251,39 +265,49 @@ class ListResourcesResponseBodyResourcesQuotas(DaraModel):
         quota_type: str = None,
         specs: List[main_models.ListResourcesResponseBodyResourcesQuotasSpecs] = None,
     ):
-        # The resource group type. Valid values:
+        # The card type. Valid values:
         # 
-        # *   CPU
-        # *   GPU
+        # - `CPU`
+        # 
+        # - `GPU`
         self.card_type = card_type
-        # The alias of the quota.
+        # The display name of the quota.
         self.display_name = display_name
         # The quota ID.
         self.id = id
         # The billing method. Valid values:
         # 
-        # *   isolate: subscription
-        # *   share: pay-as-you-go
+        # - `isolate`: subscription
+        # 
+        # - `share`: pay-as-you-go
         self.mode = mode
         # The quota name.
         self.name = name
         # The product code. Valid values:
         # 
-        # *   PAI_isolate: CPU subscription resource groups of PAI
-        # *   PAI_share: GPU pay-as-you-go resource groups of PAI
-        # *   MaxCompute_share: pay-as-you-go resource groups of MaxCompute
-        # *   MaxCompute_isolate: subscription resource groups of MaxCompute
-        # *   DataWorks_isolate: subscription resource groups of DataWorks
-        # *   DataWorks_share: pay-as-you-go resource groups of DataWorks
-        # *   DLC_share: pay-as-you-go resource groups of Deep Learning Containers (DLC)
+        # - `PAI_isolate`: PAI subscription resource group (PAI CPU)
+        # 
+        # - `PAI_share`: PAI pay-as-you-go resource group (PAI GPU)
+        # 
+        # - `MaxCompute_share`: MaxCompute pay-as-you-go resource group
+        # 
+        # - `MaxCompute_isolate`: MaxCompute subscription resource group
+        # 
+        # - `DataWorks_isolate`: DataWorks subscription resource group
+        # 
+        # - `DataWorks_share`: DataWorks pay-as-you-go resource group
+        # 
+        # - `DLC_share`: DLC pay-as-you-go resource group
         self.product_code = product_code
         # The quota type. Valid values:
         # 
-        # *   PAI
-        # *   MaxCompute
-        # *   DLC
+        # - `PAI`
+        # 
+        # - `MaxCompute`
+        # 
+        # - `DLC`
         self.quota_type = quota_type
-        # The quota specifications.
+        # The list of specifications.
         self.specs = specs
 
     def validate(self):
@@ -364,7 +388,7 @@ class ListResourcesResponseBodyResourcesQuotasSpecs(DaraModel):
     ):
         # The specification name.
         self.name = name
-        # The specification description.
+        # The specification value.
         self.value = value
 
     def validate(self):
@@ -399,9 +423,9 @@ class ListResourcesResponseBodyResourcesLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the label.
         self.key = key
-        # The tag value.
+        # The value of the label.
         self.value = value
 
     def validate(self):
@@ -435,7 +459,7 @@ class ListResourcesResponseBodyResourcesExecutor(DaraModel):
         self,
         owner_id: str = None,
     ):
-        # This parameter is invalid and deprecated.
+        # **Deprecated.** This parameter is no longer used.
         self.owner_id = owner_id
 
     def validate(self):
@@ -467,9 +491,9 @@ class ListResourcesResponseBodyResourcesEncryption(DaraModel):
     ):
         # The encryption algorithm.
         self.algorithm = algorithm
-        # Indicates whether the resources are encrypted.
+        # Indicates whether encryption is enabled.
         self.enabled = enabled
-        # The primary key for the encryption.
+        # The encryption key.
         self.key = key
 
     def validate(self):

@@ -12,7 +12,7 @@ class LogRunMetricsRequest(DaraModel):
         self,
         metrics: List[main_models.RunMetric] = None,
     ):
-        # The metrics.
+        # The list of metrics.
         self.metrics = metrics
 
     def validate(self):

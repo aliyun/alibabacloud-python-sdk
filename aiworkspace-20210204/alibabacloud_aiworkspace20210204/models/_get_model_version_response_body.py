@@ -35,50 +35,68 @@ class GetModelVersionResponseBody(DaraModel):
     ):
         # The approval status. Valid values:
         # 
-        # *   Pending
-        # *   Approved
-        # *   Rejected
+        # - Pending: The model is pending approval.
+        # 
+        # - Approved: The model is approved for publishing.
+        # 
+        # - Rejected: The model is rejected for publishing.
         self.approval_status = approval_status
         # The compression configuration.
         self.compression_spec = compression_spec
+        # The distillation configuration.
         self.distillation_spec = distillation_spec
         # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
-        # The additional information.
+        # Other information.
         self.extra_info = extra_info
         # The model format. Valid values:
         # 
-        # *   OfflineModel
-        # *   SavedModel
-        # *   Keras H5
-        # *   Frozen Pb
-        # *   Caffe Prototxt
-        # *   TorchScript
-        # *   XGBoost
-        # *   PMML
-        # *   AlinkModel
-        # *   ONNX
+        # - OfflineModel
+        # 
+        # - SavedModel
+        # 
+        # - Keras H5
+        # 
+        # - Frozen Pb
+        # 
+        # - Caffe Prototxt
+        # 
+        # - TorchScript
+        # 
+        # - XGBoost
+        # 
+        # - PMML
+        # 
+        # - AlinkModel
+        # 
+        # - ONNX
         self.format_type = format_type
         # The model framework. Valid values:
         # 
-        # *   Pytorch -XGBoost
-        # *   Keras
-        # *   Caffe
-        # *   Alink
-        # *   Xflow
-        # *   TensorFlow
+        # - Pytorch
+        #   -XGBoost
+        # 
+        # - Keras
+        # 
+        # - Caffe
+        # 
+        # - Alink
+        # 
+        # - Xflow
+        # 
+        # - TensorFlow
         self.framework_type = framework_type
-        # The time when the model was created, in UTC. The time follows the ISO 8601 standard.
+        # The UTC time when the model was created. The time is in the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
+        # The UTC time when the model was last updated. The time is in the ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
-        # Describes how to apply to downstream inference services. For example, describes the processor and container of Elastic Algorithm Service (EAS).
+        # Describes how to apply the model to a downstream inference service. For example, this can describe the processor and container for Elastic Algorithm Service (EAS).
         self.inference_spec = inference_spec
-        # The labels.
+        # The list of labels for the model version.
         self.labels = labels
         # The metrics.
         self.metrics = metrics
-        # The extended field. The value of this parameter is a JSON string.
+        # The extended field. This field is a JSON string.
         self.options = options
         # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
@@ -86,36 +104,43 @@ class GetModelVersionResponseBody(DaraModel):
         self.request_id = request_id
         # The source ID.
         # 
-        # *   If the source type is Custom, this field is not limited.
-        # *   If the source type is PAIFlow or TrainingService, the format is:
+        # - If the source type is Custom, this field has no limits.
         # 
-        # <!---->
+        # - If the source is PAIFlow or TrainingService, the format is:
         # 
-        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # ```
+        # region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # ```
         # 
-        # Take note of the following parameters:
+        # The parameters are:
         # 
-        # *   region is the region ID.
-        # *   workspaceId is the ID of the workspace.
-        # *   kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
-        # *   id is a unique identifier.
+        # - region: The ID of the Alibaba Cloud region.
+        # 
+        # - workspaceId: The workspace ID.
+        # 
+        # - kind: The type. Valid values: PipelineRun (PAI pipeline) and ServiceJob (training service).
+        # 
+        # - id: The unique identifier.
         self.source_id = source_id
         # The source type of the model. Valid values:
         # 
-        # *   Custom
-        # *   PAIFlow
-        # *   TrainingService
-        self.source_type = source_type
-        # The training configurations used for fine-tuning and incremental training.
-        self.training_spec = training_spec
-        # The URI of the model version, which is the location where the model is stored. Valid values:
+        # - Custom: The model is a custom model.
         # 
-        # *   The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
-        # *   The Object Storage Service (OSS) path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+        # - PAIFlow: The model is from a PAI pipeline.
+        # 
+        # - TrainingService: The model is from a PAI training service.
+        self.source_type = source_type
+        # The training configuration. This is the configuration for fine-tuning and incremental training.
+        self.training_spec = training_spec
+        # The URI of the model version. This is the storage location of the model. Valid values:
+        # 
+        # - The HTTP or HTTPS URL of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+        # 
+        # - If the model is stored in Object Storage Service (OSS), the format is `oss://<bucket>.<endpoint>/object`. For more information about how to configure the endpoint, see [Endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
         self.uri = uri
         # The user ID.
         self.user_id = user_id
-        # The version description.
+        # The description of the model version.
         self.version_description = version_description
         # The model version.
         self.version_name = version_name

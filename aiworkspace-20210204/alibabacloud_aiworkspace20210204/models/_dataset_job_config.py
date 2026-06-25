@@ -15,18 +15,18 @@ class DatasetJobConfig(DaraModel):
         modify_time: str = None,
         workspace_id: str = None,
     ):
-        # The content of the dataset job configuration, in the JSON format.
+        # The content of the dataset job configuration, in JSON format.
         self.config = config
         # The type of the dataset job configuration.
         self.config_type = config_type
-        # The time when the dataset job was created.
+        # The creation time of the dataset job configuration.
         self.create_time = create_time
-        # The ID of the dataset job configuration.
+        # The unique ID for the dataset job configuration.
         self.dataset_job_config_id = dataset_job_config_id
         self.dataset_version = dataset_version
-        # The time when the dataset job was modified.
+        # The last modification time of the dataset job configuration.
         self.modify_time = modify_time
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

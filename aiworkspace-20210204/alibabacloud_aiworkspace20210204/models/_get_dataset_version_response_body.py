@@ -28,7 +28,7 @@ class GetDatasetVersionResponseBody(DaraModel):
         uri: str = None,
         version_name: str = None,
     ):
-        # The number of data records.
+        # The number of data entries.
         self.data_count = data_count
         # The size of the dataset.
         self.data_size = data_size
@@ -36,50 +36,91 @@ class GetDatasetVersionResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
-        # The request ID.
+        # The ID of the dataset.
         self.dataset_id = dataset_id
-        # The version description.
+        # The description of the version.
         self.description = description
-        # The creation time.
+        # The time when the dataset version was created.
         self.gmt_create_time = gmt_create_time
-        # The last modification time.
+        # The time when the dataset version was last modified.
         self.gmt_modified_time = gmt_modified_time
-        # The dataset configurations to be imported to a storage, such as Object Storage Service (OSS), File Storage NAS (NAS), or Cloud Parallel File Storage (CPFS).
+        # The storage import configuration of the dataset. Supported storage services include OSS, NAS, and CPFS.
         # 
-        # **OSS**
+        # <details>
         # 
-        # { "region": "${region}",// The region ID. $bucket = $options["bucket"]; // The bucket name. "path": "${path}" // The file path. }
+        # <summary>
         # 
-        # **NAS**
+        # OSS
         # 
-        # **CPFS**
+        # </summary>
         # 
-        # **CPFS for Lingjun**
+        # {
+        # "region": "${region}",// Region ID
+        # "bucket": "${bucket}",// Bucket name
+        # "path": "${path}" // File path
+        # }
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # NAS
+        # 
+        # </summary>
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # CPFS
+        # 
+        # </summary>
+        # 
+        # Block content
+        # 
+        # </details>
+        # 
+        # <details>
+        # 
+        # <summary>
+        # 
+        # AI Computing CPFS
+        # 
+        # </summary>
+        # 
+        # Block content
+        # 
+        # </details>
         self.import_info = import_info
-        # The resource tags.
+        # The tags of the resource.
         self.labels = labels
-        # The access permission on the dataset when the dataset is mounted. Valid values:
+        # The access permissions when the dataset is mounted.
         # 
-        # *   RO: read-only permissions
-        # *   RW: read and write permissions
+        # - RO: Read-only mount
+        # 
+        # - RW: Read-write mount
         self.mount_access = mount_access
-        # The extended fields.
+        # Additional options.
         self.options = options
         # The property of the dataset.
         # 
         # This parameter is required.
         self.property = property
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the source dataset.
+        # The ID of the dataset source.
         self.source_id = source_id
-        # The type of the data source.
+        # The source type.
         self.source_type = source_type
-        # The sample URI of the dataset.
+        # The URI of the dataset version.
         # 
         # This parameter is required.
         self.uri = uri
-        # The version name of the dataset.
+        # The name of the dataset version.
         self.version_name = version_name
 
     def validate(self):
