@@ -11,10 +11,15 @@ class GetWorkflowDAGRequest(DaraModel):
         cluster_id: str = None,
         workflow_id: int = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

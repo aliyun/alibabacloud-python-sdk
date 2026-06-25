@@ -16,11 +16,19 @@ class ListJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. A value of `200` indicates that the request was successful.
         self.code = code
-        # -
+        # - The returned data.
         self.data = data
+        # The error message returned if the request fails.
         self.message = message
+        # A unique ID that Alibaba Cloud generates for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -77,10 +85,13 @@ class ListJobsResponseBodyData(DaraModel):
         records: List[main_models.ListJobsResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # -
+        # - A list of jobs.
         self.records = records
+        # The total number of jobs returned.
         self.total = total
 
     def validate(self):
@@ -169,41 +180,127 @@ class ListJobsResponseBodyDataRecords(DaraModel):
         workflow_id: int = None,
         xattrs: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The retry interval, in seconds.
         self.attempt_interval = attempt_interval
+        # The calendar.
         self.calendar = calendar
+        # The child job ID.
         self.child_job_id = child_job_id
+        # The cleanup mode.
         self.clean_mode = clean_mode
+        # The ID of the user who created the job.
         self.creator = creator
+        # The current execution status. Valid values:
+        # 
+        # - `0`: Not Started
+        # 
+        # - `1`: Running
+        # 
+        # - `2`: Queued
+        # 
+        # - `3`: Waiting
         self.current_execute_status = current_execute_status
+        # The data offset.
         self.data_offset = data_offset
+        # The dependency check strategy.
         self.dependent_strategy = dependent_strategy
+        # The job description.
         self.description = description
+        # The executor blocking strategy. Valid values:
+        # 
+        # - `1`: Serial Execution
+        # 
+        # - `2`: Discard Later
+        # 
+        # - `3`: Cover Earlier
         self.executor_block_strategy = executor_block_strategy
+        # The name of the job handler.
         self.job_handler = job_handler
+        # The job ID.
         self.job_id = job_id
+        # The job type.
         self.job_type = job_type
+        # The time when the last execution ended.
         self.last_execute_end_time = last_execute_end_time
+        # The status of the last execution. Valid values:
+        # 
+        # - `4`: Success
+        # 
+        # - `5`: Failure
         self.last_execute_status = last_execute_status
+        # The maximum number of retries for a failed job.
         self.max_attempt = max_attempt
+        # The maximum concurrency.
         self.max_concurrency = max_concurrency
+        # The job name.
         self.name = name
+        # The node type.
         self.node_type = node_type
+        # The notification configuration.
         self.notice_config = notice_config
+        # The notification contacts.
         self.notice_contacts = notice_contacts
+        # The job parameters.
         self.parameters = parameters
+        # The job priority.
         self.priority = priority
+        # The routing strategy. Valid values:
+        # 
+        # - `1`: Round-robin
+        # 
+        # - `2`: Random
+        # 
+        # - `3`: First
+        # 
+        # - `4`: Last
+        # 
+        # - `5`: Least Frequently Used
+        # 
+        # - `6`: Least Recently Used
+        # 
+        # - `7`: Consistent Hashing
+        # 
+        # - `8`: Sharded Broadcast
         self.route_strategy = route_strategy
+        # The script content.
         self.script = script
+        # The type of the start time.
         self.start_time_type = start_time_type
+        # The job status. Valid values:
+        # 
+        # - `0`: Disabled
+        # 
+        # - `1`: Enabled
         self.status = status
+        # The time expression.
         self.time_expression = time_expression
+        # The time type. Valid values:
+        # 
+        # - `-1`: none
+        # 
+        # - `1`: cron
+        # 
+        # - `3`: fix_rate
+        # 
+        # - `5`: one_time
+        # 
+        # - `100`: api
         self.time_type = time_type
+        # The time zone.
         self.time_zone = time_zone
+        # The time zone.
         self.timezone = timezone
+        # The ID of the user who last updated the job.
         self.updater = updater
+        # The job weight.
         self.weight = weight
+        # The workflow ID.
         self.workflow_id = workflow_id
+        # The extended attributes.
+        # 
+        # > This parameter is not currently supported.
         self.xattrs = xattrs
 
     def validate(self):

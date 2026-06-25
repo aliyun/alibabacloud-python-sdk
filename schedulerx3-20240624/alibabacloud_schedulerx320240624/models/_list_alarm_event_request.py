@@ -19,17 +19,53 @@ class ListAlarmEventRequest(DaraModel):
         reverse: bool = None,
         start_time: int = None,
     ):
+        # The channel for sending alarm notifications. Valid values:
+        # 
+        # - `sms`: SMS
+        # 
+        # - `mail`: Email
+        # 
+        # - `phone`: Phone call
+        # 
+        # - `webhook`: Webhook
         self.alarm_channel = alarm_channel
+        # The delivery status of the alarm notification. Valid values:
+        # 
+        # - `true`: The notification delivery succeeded.
+        # 
+        # - `false`: The notification delivery failed.
         self.alarm_status = alarm_status
+        # The type of the alarm. Valid values:
+        # 
+        # - **`schedulerx3_no_designate_machine_alarm`**: The Designated Machine is unavailable.
+        # 
+        # - **`schedulerx3_all_busy_alarm`**: All available machines are busy.
+        # 
+        # - **`schedulerx3_no_machine_alarm`**: No machines are available to run the job.
+        # 
+        # - **`schedulerx3_timeout_alarm`**: The job timed out.
+        # 
+        # - **`schedulerx3_fail_alarm`**: The job failed to run.
+        # 
+        # - **`schedulerx3_job_success_notice`**: The job ran successfully.
         self.alarm_type = alarm_type
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The end of the time range for querying events. This value is a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # The name of the job.
         self.job_name = job_name
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # Set to true to return results in descending order.
         self.reverse = reverse
+        # The start of the time range for querying events. This value is a Unix timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

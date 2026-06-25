@@ -13,10 +13,16 @@ class OperateEnableWorkflowsRequest(DaraModel):
         cluster_id: str = None,
         workflow_ids: List[int] = None,
     ):
+        # The name of the application.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # A list of workflow IDs.
+        # 
         # This parameter is required.
         self.workflow_ids = workflow_ids
 

@@ -12,12 +12,19 @@ class OperateStopJobExecutionShrinkRequest(DaraModel):
         job_execution_id: str = None,
         task_list_shrink: str = None,
     ):
+        # The name of the Application.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The ID of the Cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the Job Execution.
+        # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
+        # A list of Task IDs.
         self.task_list_shrink = task_list_shrink
 
     def validate(self):

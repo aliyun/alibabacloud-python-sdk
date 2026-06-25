@@ -28,8 +28,6 @@ class UpdateExecutorGroupRequest(DaraModel):
         self.cluster_id = cluster_id
         self.cms_workspace_id = cms_workspace_id
         self.description = description
-        # ID。
-        # 
         # This parameter is required.
         self.id = id
         self.name = name

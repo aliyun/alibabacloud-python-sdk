@@ -24,7 +24,6 @@ class ListExecutorGroupResponseBody(DaraModel):
         # This parameter is required.
         self.message = message
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -96,7 +95,6 @@ class ListExecutorGroupResponseBodyData(DaraModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
-        # -
         self.records = records
         self.total = total
 

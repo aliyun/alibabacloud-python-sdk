@@ -1,3 +1,9 @@
+2026-06-25 Version: 1.7.2
+- Update API CreateCluster: add request parameters Source.
+- Update API GetCluster: add response parameters Body.Data.Source.
+- Update API ListClusters: add response parameters Body.Data.Records.$.Source.
+
+
 2026-05-28 Version: 1.7.1
 - Update API CreateExecutorGroup: add request parameters AutoScale.
 - Update API CreateExecutorGroup: add request parameters CmsWorkspaceId.

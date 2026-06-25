@@ -16,11 +16,19 @@ class ListLablesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # The returned list of labels.
         self.data = data
+        # The response message.
         self.message = message
+        # A unique identifier for the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -83,9 +91,13 @@ class ListLablesResponseBodyData(DaraModel):
         online: bool = None,
         size: int = None,
     ):
+        # Indicates whether the label is designated.
         self.is_designated = is_designated
+        # The label.
         self.label = label
+        # Indicates whether the Executor is online.
         self.online = online
+        # The number of machines with this label.
         self.size = size
 
     def validate(self):

@@ -16,11 +16,19 @@ class ListAppNamesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
         # .
         self.data = data
+        # The error message.
         self.message = message
+        # The unique request ID. Use this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates if the request succeeded.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -85,11 +93,17 @@ class ListAppNamesResponseBodyData(DaraModel):
         title: str = None,
         worker_registry: str = None,
     ):
+        # The ID of the application group.
         self.app_group_id = app_group_id
+        # The application name.
         self.app_name = app_name
+        # The app type.
         self.app_type = app_type
+        # The unique identifier.
         self.id = id
+        # The application title.
         self.title = title
+        # The registry type for manually registered workers.
         self.worker_registry = worker_registry
 
     def validate(self):

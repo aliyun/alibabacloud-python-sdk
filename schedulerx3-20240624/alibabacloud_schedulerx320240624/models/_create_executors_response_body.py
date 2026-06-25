@@ -14,11 +14,19 @@ class CreateExecutorsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
+        # 
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -77,11 +85,17 @@ class CreateExecutorsResponseBodyData(DaraModel):
         worker_type: str = None,
         workers: str = None,
     ):
+        # The App Group ID.
         self.app_group_id = app_group_id
+        # The application type.
         self.app_type = app_type
+        # A list of Kubernetes Services that failed to import.
         self.failed_service = failed_service
+        # The ID of the worker. You can obtain this ID by calling the [ListWorkerResource](https://help.aliyun.com/document_detail/2712224.html) operation.
         self.worker_id = worker_id
+        # The worker type.
         self.worker_type = worker_type
+        # A JSON string that represents the list of imported workers.
         self.workers = workers
 
     def validate(self):

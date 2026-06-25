@@ -22,20 +22,39 @@ class GetLogEventRequest(DaraModel):
         workflow_execution_id: int = None,
         workflow_name: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The unique identifier for the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The end of the query\\"s time range, specified as a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # The severity level for filtering events.
         self.event = event
+        # The type of event to retrieve.
         self.event_type = event_type
+        # The unique identifier for the job execution.
         self.job_execution_id = job_execution_id
+        # The name of the job.
         self.job_name = job_name
+        # A keyword to search for in log events.
         self.keyword = keyword
+        # The page number to retrieve.
         self.page_num = page_num
+        # The maximum number of results to return per page.
         self.page_size = page_size
+        # Specifies the sort order of events.
+        # 
+        # - **true**: Sorts events in descending order.
+        # 
+        # - **false**: Sorts events in ascending order.
         self.reverse = reverse
+        # The start of the query\\"s time range, specified as a Unix timestamp in milliseconds.
         self.start_time = start_time
+        # The unique identifier for the workflow execution.
         self.workflow_execution_id = workflow_execution_id
+        # The name of the workflow.
         self.workflow_name = workflow_name
 
     def validate(self):

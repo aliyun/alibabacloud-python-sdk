@@ -13,14 +13,24 @@ class OperateBackfillWorkflowRequest(DaraModel):
         start_date: str = None,
         workflow_id: int = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The end date of the backfill, in YYYY-MM-DD format.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The start date of the backfill, in YYYY-MM-DD format.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
 

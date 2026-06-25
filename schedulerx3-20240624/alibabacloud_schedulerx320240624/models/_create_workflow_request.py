@@ -19,19 +19,49 @@ class CreateWorkflowRequest(DaraModel):
         time_type: int = None,
         timezone: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The custom calendar. This parameter applies only when `TimeType` is `cron`.
         self.calendar = calendar
+        # A unique client token to ensure request idempotence. The token must contain only ASCII characters. If you omit this parameter, the system uses the RequestId as the ClientToken. The RequestId is unique to each request.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The workflow description.
         self.description = description
+        # The maximum concurrency for the workflow.
         self.max_concurrency = max_concurrency
+        # The workflow name.
+        # 
         # This parameter is required.
         self.name = name
+        # The status of the workflow. By default, the workflow is disabled. Valid values:
+        # 
+        # - 0: Disabled
+        # 
+        # - 1: Enabled
         self.status = status
+        # The time expression, which depends on the `TimeType` parameter.
+        # 
+        # - **none**: This parameter is not required.
+        # 
+        # - **cron**: Enter a standard cron expression. Online validation is supported.
+        # 
+        # - **api**: This parameter is not required.
         self.time_expression = time_expression
+        # The schedule type. Valid values:
+        # 
+        # - -1: none<br>
+        # 
+        # - 1: cron<br>
+        # 
+        # - 100: api
         self.time_type = time_type
+        # The time zone for the schedule.
         self.timezone = timezone
 
     def validate(self):

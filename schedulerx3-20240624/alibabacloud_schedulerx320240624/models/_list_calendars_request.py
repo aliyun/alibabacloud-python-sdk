@@ -14,12 +14,23 @@ class ListCalendarsRequest(DaraModel):
         next_token: str = None,
         year: int = None,
     ):
+        # The name of the calendar.
         self.calendar_name = calendar_name
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to return calendar details. The default value is `false`.
+        # 
+        # - `false`: Does not return the detailed list of days for each month. Only basic information is returned.
+        # 
+        # - `true`: Returns the detailed list of days for each month.
         self.fetch_calendar_detail = fetch_calendar_detail
+        # The maximum number of entries returned per page. The default value is 10.
         self.max_results = max_results
+        # The token to retrieve the next page of results. Set this parameter to the `NextToken` value from the previous response. Omit this parameter for the first request.
         self.next_token = next_token
+        # The year.
         self.year = year
 
     def validate(self):

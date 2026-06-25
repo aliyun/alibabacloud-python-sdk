@@ -16,11 +16,19 @@ class GetWorkflowDAGPreviewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The unique identifier for the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -75,7 +83,9 @@ class GetWorkflowDAGPreviewResponseBodyData(DaraModel):
         edges: List[main_models.GetWorkflowDAGPreviewResponseBodyDataEdges] = None,
         nodes: List[main_models.GetWorkflowDAGPreviewResponseBodyDataNodes] = None,
     ):
+        # The workflow edges.
         self.edges = edges
+        # The workflow nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -132,12 +142,23 @@ class GetWorkflowDAGPreviewResponseBodyDataNodes(DaraModel):
         name: str = None,
         status: int = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The node coordinates.
         self.coordinate = coordinate
+        # The dependency strategy.
         self.dependent_strategy = dependent_strategy
+        # The job ID.
         self.id = id
+        # The job type.
         self.job_type = job_type
+        # The job name.
         self.name = name
+        # The job status. Valid values:
+        # 
+        # - `0`: Disabled
+        # 
+        # - `1`: Enabled
         self.status = status
 
     def validate(self):
@@ -206,9 +227,13 @@ class GetWorkflowDAGPreviewResponseBodyDataNodesCoordinate(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The node height. This parameter is optional.
         self.height = height
+        # The node width. This parameter is optional.
         self.width = width
+        # The x-coordinate.
         self.x = x
+        # The y-coordinate.
         self.y = y
 
     def validate(self):
@@ -255,7 +280,9 @@ class GetWorkflowDAGPreviewResponseBodyDataEdges(DaraModel):
         source: int = None,
         target: int = None,
     ):
+        # The ID of the source node.
         self.source = source
+        # The ID of the target node.
         self.target = target
 
     def validate(self):

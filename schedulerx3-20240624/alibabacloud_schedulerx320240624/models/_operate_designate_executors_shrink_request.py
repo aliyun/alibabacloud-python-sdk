@@ -14,16 +14,31 @@ class OperateDesignateExecutorsShrinkRequest(DaraModel):
         job_id: int = None,
         transferable: bool = None,
     ):
+        # A list of machine addresses to designate.
+        # 
         # This parameter is required.
         self.address_list_shrink = address_list_shrink
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The designation type. Valid values:
+        # 
+        # - **1**: By worker.
+        # 
+        # - **2**: By label.
+        # 
         # This parameter is required.
         self.designate_type = designate_type
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # Specifies whether to enable failover.
         self.transferable = transferable
 
     def validate(self):

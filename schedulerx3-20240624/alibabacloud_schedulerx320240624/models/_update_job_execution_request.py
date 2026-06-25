@@ -12,12 +12,19 @@ class UpdateJobExecutionRequest(DaraModel):
         job_execution_id: str = None,
         schedule_time: int = None,
     ):
+        # AppName
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Job execution ID.
+        # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
+        # Schedule time
         self.schedule_time = schedule_time
 
     def validate(self):

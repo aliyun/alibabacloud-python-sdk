@@ -11,10 +11,15 @@ class OperateUnholdJobExecutionRequest(DaraModel):
         cluster_id: str = None,
         job_execution_id: str = None,
     ):
+        # The Application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The Job Execution ID.
         self.job_execution_id = job_execution_id
 
     def validate(self):

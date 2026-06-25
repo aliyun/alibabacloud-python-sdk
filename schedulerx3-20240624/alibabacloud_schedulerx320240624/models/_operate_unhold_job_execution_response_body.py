@@ -12,10 +12,17 @@ class OperateUnholdJobExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The Response Code.
         self.code = code
+        # The Error Message.
         self.message = message
-        # Id of the request
+        # The Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded:
+        # 
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

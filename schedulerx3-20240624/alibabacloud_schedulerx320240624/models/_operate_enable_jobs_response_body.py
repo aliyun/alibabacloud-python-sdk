@@ -12,9 +12,17 @@ class OperateEnableJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The error message.
         self.message = message
+        # The unique ID generated for the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # - `true`: The call was successful.
+        # 
+        # - `false`: The call failed.
         self.success = success
 
     def validate(self):

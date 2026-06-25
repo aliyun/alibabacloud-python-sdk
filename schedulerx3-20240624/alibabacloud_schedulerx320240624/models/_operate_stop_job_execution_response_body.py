@@ -12,9 +12,13 @@ class OperateStopJobExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The Response Code.
         self.code = code
+        # The response message.
         self.message = message
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful. A value of **true** indicates success, and a value of **false** indicates failure.
         self.success = success
 
     def validate(self):

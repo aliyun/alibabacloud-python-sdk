@@ -16,11 +16,19 @@ class ListScheduleEventResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # The returned data.
         self.data = data
+        # The returned error message.
         self.message = message
+        # The unique identifier for the request, which is used to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -77,9 +85,13 @@ class ListScheduleEventResponseBodyData(DaraModel):
         records: List[main_models.ListScheduleEventResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The array of event records.
         self.records = records
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -142,16 +154,25 @@ class ListScheduleEventResponseBodyDataRecords(DaraModel):
         workflow_execution_id: str = None,
         workflow_name: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The event content.
         self.content = content
+        # The event status.
         self.event = event
+        # The event type.
         self.event_type = event_type
-        # 130
+        # The job execution ID.
         self.job_execution_id = job_execution_id
+        # The job name.
         self.job_name = job_name
+        # The timestamp of the event. The time is in the `yyyy-MM-dd HH:mm:ss` format.
         self.time = time
+        # The worker address.
         self.worker_addr = worker_addr
+        # The workflow execution ID.
         self.workflow_execution_id = workflow_execution_id
+        # The workflow name.
         self.workflow_name = workflow_name
 
     def validate(self):

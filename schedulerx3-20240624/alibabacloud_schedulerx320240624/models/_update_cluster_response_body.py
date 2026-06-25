@@ -12,9 +12,17 @@ class UpdateClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The error message.
         self.message = message
+        # The unique request identifier, used for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
+        # 
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

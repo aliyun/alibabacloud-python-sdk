@@ -16,11 +16,19 @@ class GetLogEventResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. A value of `200` indicates a successful request.
         self.code = code
         # -
         self.data = data
+        # The error message that is returned if the request fails.
         self.message = message
+        # The unique, server-generated ID for the request. This ID is used for troubleshooting purposes.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -77,10 +85,13 @@ class GetLogEventResponseBodyData(DaraModel):
         records: List[main_models.GetLogEventResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         # -
         self.records = records
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -143,15 +154,25 @@ class GetLogEventResponseBodyDataRecords(DaraModel):
         workflow_execution_id: str = None,
         workflow_name: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The log content.
         self.content = content
+        # The severity level of the event.
         self.event = event
+        # The type of the event.
         self.event_type = event_type
+        # The job execution ID.
         self.job_execution_id = job_execution_id
+        # The name of the job.
         self.job_name = job_name
+        # The time when the log was recorded. The time is in the `yyyy-MM-dd HH:mm:ss` format.
         self.time = time
+        # The address of the worker that runs the job.
         self.worker_addr = worker_addr
+        # The workflow execution ID.
         self.workflow_execution_id = workflow_execution_id
+        # The name of the workflow.
         self.workflow_name = workflow_name
 
     def validate(self):

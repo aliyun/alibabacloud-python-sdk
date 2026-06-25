@@ -14,12 +14,19 @@ class GetJobExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
         # -
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,24 +98,97 @@ class GetJobExecutionResponseBodyData(DaraModel):
         time_type: int = None,
         trigger_type: int = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The number of execution attempts.
         self.attempt = attempt
+        # The data timestamp for the job instance.
         self.data_time = data_time
+        # The duration of the job execution.
         self.duration = duration
+        # The time when the job execution ended.
         self.end_time = end_time
+        # Details of the executor that ran the job. The value is a JSON string.
         self.executor = executor
+        # The ID of the job execution.
         self.job_execution_id = job_execution_id
+        # The ID of the job.
         self.job_id = job_id
+        # The name of the job.
         self.job_name = job_name
+        # The type of the job.
         self.job_type = job_type
+        # The parameters of the job.
         self.parameters = parameters
+        # The result of the job execution. The value is a JSON string.
         self.result = result
+        # The routing strategy. Valid values:
+        # 
+        # - `1`: `Round Robin`
+        # 
+        # - `2`: `Random`
+        # 
+        # - `3`: `First`
+        # 
+        # - `4`: `Last`
+        # 
+        # - `5`: `Least Frequently Used`
+        # 
+        # - `6`: `Least Recently Used`
+        # 
+        # - `7`: `Consistent Hashing`
+        # 
+        # - `8`: `Shard Broadcasting`
         self.route_strategy = route_strategy
+        # The scheduled time for the job execution.
         self.schedule_time = schedule_time
+        # The IP address of the scheduling server.
         self.server_ip = server_ip
+        # The time when the job execution started.
         self.start_time = start_time
+        # The job execution status. Valid values:
+        # 
+        # - `0`: `UNKNOWN`
+        # 
+        # - `1`: `WAITING`
+        # 
+        # - `2`: `READY`
+        # 
+        # - `3`: `RUNNING`
+        # 
+        # - `4`: `SUCCESS`
+        # 
+        # - `5`: `FAILED`
         self.status = status
+        # The scheduling type of the job. Valid values:
+        # 
+        # - `-1`: `none`
+        # 
+        # - `1`: `cron`
+        # 
+        # - `2`: `fixed_delay`
+        # 
+        # - `3`: `fixed_rate`
+        # 
+        # - `5`: `one_time`
+        # 
+        # - `100`: `api`
         self.time_type = time_type
+        # Indicates how the job was triggered. Valid values:
+        # 
+        # - `0`: `unknown`
+        # 
+        # - `1`: `timer_schedule`
+        # 
+        # - `2`: `rerun`
+        # 
+        # - `3`: `api_run`
+        # 
+        # - `4`: `user_retry`
+        # 
+        # - `5`: `system_retry`
+        # 
+        # - `6`: `manual`
         self.trigger_type = trigger_type
 
     def validate(self):

@@ -15,13 +15,21 @@ class ListDatasourcesRequest(DaraModel):
         page_size: int = None,
         type: int = None,
     ):
+        # Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Maximum data volume to read in this request. Default value is 10.
         self.max_results = max_results
+        # Job Name.
         self.name = name
+        # Indicates the current read position returned by the call. An empty value means all data has been read. This parameter is not required for the first query.
         self.next_token = next_token
+        # Page number.
         self.page_num = page_num
+        # Page size.
         self.page_size = page_size
+        # Grafana dashboard type, including: dash-db: Dashboard; dash-folder: Folder (which can contain dashboards).
         self.type = type
 
     def validate(self):

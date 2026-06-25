@@ -18,16 +18,27 @@ class ListJobsRequest(DaraModel):
         status: str = None,
         workflow_id: int = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The description of the job.
         self.description = description
+        # The name of the job handler.
         self.job_handler = job_handler
+        # The ID of the job.
         self.job_id = job_id
+        # The name of the job.
         self.job_name = job_name
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The status of the job.
         self.status = status
+        # The ID of the workflow.
         self.workflow_id = workflow_id
 
     def validate(self):

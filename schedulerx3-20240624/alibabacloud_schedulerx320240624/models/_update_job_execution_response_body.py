@@ -12,10 +12,15 @@ class UpdateJobExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # error message
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the invocation succeeded.  
+        # - true: The invocation succeeded.  
+        # - false: Failed to Invocate.
         self.success = success
 
     def validate(self):

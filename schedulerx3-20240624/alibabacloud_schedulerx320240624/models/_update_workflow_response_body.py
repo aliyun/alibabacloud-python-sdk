@@ -12,9 +12,17 @@ class UpdateWorkflowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The error message.
         self.message = message
+        # The unique ID generated for the request. If you encounter an issue, provide this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

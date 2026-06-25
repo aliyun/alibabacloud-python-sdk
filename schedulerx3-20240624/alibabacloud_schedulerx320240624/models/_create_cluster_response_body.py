@@ -15,12 +15,19 @@ class CreateClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.message = message
+        # The request ID. Alibaba Cloud generates a unique ID for each request.
+        # You can use this ID for troubleshooting.
         self.request_id = request_id
+        # The status of the request. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -81,7 +88,9 @@ class CreateClusterResponseBodyData(DaraModel):
         cluster_id: str = None,
         order_id: int = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

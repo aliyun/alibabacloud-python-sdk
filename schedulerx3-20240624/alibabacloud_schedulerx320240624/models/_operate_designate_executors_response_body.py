@@ -12,9 +12,17 @@ class OperateDesignateExecutorsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. A value of `200` indicates success.
         self.code = code
+        # The error message that is returned if the request fails.
         self.message = message
+        # The unique ID generated for the request. Use this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

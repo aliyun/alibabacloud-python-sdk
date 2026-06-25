@@ -13,12 +13,20 @@ class ListWorkflowVersionsRequest(DaraModel):
         next_token: str = None,
         workflow_id: int = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The maximum number of results to return. The default value is 10.
         self.max_results = max_results
+        # The token to retrieve the next page of results. Omit this parameter for the first request.
         self.next_token = next_token
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
 

@@ -17,10 +17,14 @@ class ListClustersRequest(DaraModel):
         page_size: int = None,
         tag: List[main_models.ListClustersRequestTag] = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
         self.cluster_type = cluster_type
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page for paginated queries.
         self.page_size = page_size
         self.tag = tag
 

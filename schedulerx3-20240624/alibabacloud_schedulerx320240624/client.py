@@ -20,7 +20,21 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'schedulerx3.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'schedulerx3.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'schedulerx3.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'schedulerx3.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'schedulerx3.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'schedulerx3.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'schedulerx3.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'schedulerx3.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'schedulerx3.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'schedulerx3.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'schedulerx3.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'schedulerx3.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('schedulerx3', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -252,6 +266,8 @@ class Client(OpenApiClient):
             body['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
         if not DaraCore.is_null(request.v_switches_shrink):
             body['VSwitches'] = request.v_switches_shrink
         if not DaraCore.is_null(request.vpc_id):
@@ -304,6 +320,8 @@ class Client(OpenApiClient):
             body['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
         if not DaraCore.is_null(request.v_switches_shrink):
             body['VSwitches'] = request.v_switches_shrink
         if not DaraCore.is_null(request.vpc_id):

@@ -13,8 +13,6 @@ class DeleteExecutorGroupRequest(DaraModel):
     ):
         # This parameter is required.
         self.cluster_id = cluster_id
-        # ID。
-        # 
         # This parameter is required.
         self.id = id
         self.name = name

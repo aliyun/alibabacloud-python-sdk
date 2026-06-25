@@ -14,7 +14,6 @@ class DeleteExecutorGroupResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 

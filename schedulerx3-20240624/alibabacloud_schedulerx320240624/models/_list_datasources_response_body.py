@@ -16,11 +16,17 @@ class ListDatasourcesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Error message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Indicates whether the invocation succeeded.
+        # - **true**: The invocation succeeded.
+        # - **false**: Failed to invoke.
         self.success = success
 
     def validate(self):
@@ -79,12 +85,17 @@ class ListDatasourcesResponseBodyData(DaraModel):
         records: List[main_models.ListDatasourcesResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # Maximum Data Volume to read in this request. Default Value is 10.
         self.max_results = max_results
+        # When the data matching the query conditions has not been fully read, the server returns a nextToken. You can use this nextToken to continue reading subsequent data. This parameter is not required for the first query.
         self.next_token = next_token
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
         # -
         self.records = records
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -155,11 +166,19 @@ class ListDatasourcesResponseBodyDataRecords(DaraModel):
         type: int = None,
         updater: str = None,
     ):
+        # Data source connection parameters.
         self.connection_params = connection_params
+        # DataSource ID.
         self.datasource_id = datasource_id
+        # Job description.
         self.description = description
+        # Job name.
         self.name = name
+        # Specific pronunciation rule Type. Options:
+        # 
+        # - replacement: A rule that directly replaces Word with Pronunciation.
         self.type = type
+        # Updater.
         self.updater = updater
 
     def validate(self):

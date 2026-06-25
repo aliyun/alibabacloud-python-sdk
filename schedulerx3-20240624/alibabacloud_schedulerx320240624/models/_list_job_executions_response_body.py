@@ -16,12 +16,21 @@ class ListJobExecutionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # The query result.
         self.data = data
+        # The error message returned if the request fails.
+        # 
         # This parameter is required.
         self.message = message
+        # The unique identifier for the request. Alibaba Cloud generates this ID to help troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -78,10 +87,13 @@ class ListJobExecutionsResponseBodyData(DaraModel):
         records: List[main_models.ListJobExecutionsResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # -
+        # A list of job instances.
         self.records = records
+        # The total number of entries found.
         self.total = total
 
     def validate(self):
@@ -158,29 +170,119 @@ class ListJobExecutionsResponseBodyDataRecords(DaraModel):
         workflow_name: str = None,
         xattrs: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The attempt number for this execution. `1` indicates the initial run.
         self.attempt = attempt
+        # The data timestamp for the job execution.
         self.data_time = data_time
+        # The duration of the job execution.
         self.duration = duration
+        # The time when the job execution ended.
         self.end_time = end_time
+        # The ID of the executor.
         self.executor = executor
+        # The job execution ID.
         self.job_execution_id = job_execution_id
+        # The job ID.
         self.job_id = job_id
+        # The name of the job.
         self.job_name = job_name
+        # The type of the job.
         self.job_type = job_type
+        # The parameters of the job.
         self.parameters = parameters
+        # The execution result.
         self.result = result
+        # The strategy for routing the job to a worker. Valid values:
+        # 
+        # - 1: Round-robin
+        # 
+        # - 2: Random
+        # 
+        # - 3: First
+        # 
+        # - 4: Last
+        # 
+        # - 5: Least Frequently Used
+        # 
+        # - 6: Least Recently Used
+        # 
+        # - 7: Consistent Hashing
+        # 
+        # - 8: Sharded Broadcasting
         self.route_strategy = route_strategy
+        # The time when the job was scheduled.
         self.schedule_time = schedule_time
+        # The IP address of the scheduler node.
         self.server_ip = server_ip
+        # The job execution status. Valid values:
+        # 
+        # - 0: UNKNOWN
+        # 
+        # - 1: WAITING
+        # 
+        # - 2: READY
+        # 
+        # - 3: RUNNING
+        # 
+        # - 4: SUCCESS
+        # 
+        # - 5: FAILED
+        # 
+        # - 6: PAUSED
+        # 
+        # - 7: SUBMITTED
+        # 
+        # - 8: REJECTED
+        # 
+        # - 9: ACCEPTED
+        # 
+        # - 10: PARTIAL_FAILED
+        # 
+        # - 11: SKIPPED
+        # 
+        # - 12: REMOVED
         self.status = status
+        # The scheduling type. Valid values:
+        # 
+        # - -1: none<br>
+        # 
+        # - 1: cron<br>
+        # 
+        # - 3: fix_rate<br>
+        # 
+        # - 5: one_time<br>
+        # 
+        # - 100: api
         self.time_type = time_type
+        # The total number of tokens consumed by the job execution.
         self.total_tokens = total_tokens
+        # The method that triggered the job. Valid values:
+        # 
+        # - 0: unknown
+        # 
+        # - 1: schedule
+        # 
+        # - 2: rerun
+        # 
+        # - 3: api
+        # 
+        # - 4: user_retry
+        # 
+        # - 5: system_retry
+        # 
+        # - 6: manual
         self.trigger_type = trigger_type
+        # The address of the worker that executed the job instance.
         self.work_addr = work_addr
+        # The ID of the parent workflow instance, if applicable.
         self.workflow_execution_id = workflow_execution_id
+        # The ID of the parent workflow, if applicable.
         self.workflow_id = workflow_id
+        # The name of the parent workflow, if applicable.
         self.workflow_name = workflow_name
+        # The extended attributes.
         self.xattrs = xattrs
 
     def validate(self):

@@ -18,15 +18,25 @@ class ListWorkflowExecutionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. A value of `200` indicates a successful request.
         self.code = code
         # -
         self.data = data
+        # The maximum number of entries to return per page.
         self.max_results = max_results
+        # The response message. If the request fails, this parameter provides details about the error.
+        # 
         # This parameter is required.
         self.message = message
+        # The token to retrieve the next page of results. If this parameter is not returned, all results have been returned.
         self.next_token = next_token
-        # Id of the request
+        # The unique request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -95,10 +105,13 @@ class ListWorkflowExecutionsResponseBodyData(DaraModel):
         records: List[main_models.ListWorkflowExecutionsResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
         # -
         self.records = records
+        # The total number of matching workflow executions.
         self.total = total
 
     def validate(self):
@@ -161,15 +174,51 @@ class ListWorkflowExecutionsResponseBodyDataRecords(DaraModel):
         workflow_id: str = None,
         workflow_name: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The data time of the workflow execution.
         self.data_time = data_time
+        # The end time of the workflow execution.
         self.end_time = end_time
+        # The executor ID.
         self.executor = executor
+        # The schedule time of the workflow execution.
         self.schedule_time = schedule_time
+        # The start time of the workflow execution.
         self.start_time = start_time
+        # The status of the workflow execution. Valid values:
+        # 
+        # - 0: UNKNOWN
+        # 
+        # - 1: WAITING
+        # 
+        # - 2: READY
+        # 
+        # - 3: RUNNING
+        # 
+        # - 4: SUCCESS
+        # 
+        # - 5: FAILED
+        # 
+        # - 6: PAUSED
+        # 
+        # - 7: SUBMITTED
+        # 
+        # - 8: REJECTED
+        # 
+        # - 9: ACCEPTED
+        # 
+        # - 10: PARTIAL_FAILED
+        # 
+        # - 11: SKIPPED
+        # 
+        # - 12: REMOVED
         self.status = status
+        # The workflow execution ID.
         self.workflow_execution_id = workflow_execution_id
+        # The workflow ID.
         self.workflow_id = workflow_id
+        # The workflow name.
         self.workflow_name = workflow_name
 
     def validate(self):

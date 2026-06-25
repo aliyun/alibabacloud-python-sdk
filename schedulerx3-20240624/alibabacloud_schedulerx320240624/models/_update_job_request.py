@@ -37,33 +37,122 @@ class UpdateJobRequest(DaraModel):
         weight: int = None,
         xattrs: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The interval in seconds between retry attempts.
         self.attempt_interval = attempt_interval
+        # The custom calendar.
         self.calendar = calendar
+        # The client blocking strategy.
+        # 
+        # - 1: Serial execution
+        # 
+        # - 2: Ignore later schedules
+        # 
+        # - 3: Overwrite earlier schedules
         self.child_job_id = child_job_id
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
         self.dependent_strategy = dependent_strategy
+        # The job description.
         self.description = description
+        # Notification contact configuration
         self.executor_block_strategy = executor_block_strategy
+        # The job handler name.
         self.job_handler = job_handler
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The maximum number of retries for a failed job.
         self.max_attempt = max_attempt
+        # The maximum number of concurrent job instances.
+        # 
+        # > This parameter defines the maximum number of instances for a single job that can run concurrently. A value of `1` prevents duplicate execution. If this limit is exceeded, the scheduler skips the current job.
         self.max_concurrency = max_concurrency
+        # The job name.
         self.name = name
+        # Time zone
+        # 
+        # > The default is the time zone of the SchedulerX server.
         self.notice_config = notice_config
+        # Notification configuration
         self.notice_contacts = notice_contacts
+        # The job parameters.
         self.parameters = parameters
+        # The job execution priority. Valid values:
+        # 
+        # - `1`: Low
+        # 
+        # - `5`: Medium
+        # 
+        # - `10`: High
+        # 
+        # - `15`: Very High
         self.priority = priority
+        # The routing strategy. Valid values:
+        # 
+        # - `1`: round-robin
+        # 
+        # - `2`: random
+        # 
+        # - `3`: first
+        # 
+        # - `4`: last
+        # 
+        # - `5`: least frequently used
+        # 
+        # - `6`: least recently used
+        # 
+        # - `7`: consistent hashing
+        # 
+        # - `8`: sharded broadcast
         self.route_strategy = route_strategy
+        # The script content for non-BEAN jobs.
         self.script = script
+        # The type of the start time.
         self.start_time = start_time
+        # The task execution priority. The following values are supported:
+        # 
+        # - 1: Low
+        # 
+        # - 5: Medium
+        # 
+        # - 10: High
+        # 
+        # - 15: Very High
         self.start_time_type = start_time_type
+        # The time expression. The expression format depends on the `TimeType`.
+        # 
+        # - `none`: Leave this parameter empty.
+        # 
+        # - `cron`: Specify a standard cron expression. Online validation is supported.
+        # 
+        # - `api`: Leave this parameter empty.
+        # 
+        # - `fixed_rate`: An integer that represents a fixed interval in seconds. For example, `30` triggers the job every 30 seconds.
+        # 
+        # - `one_time`: A single execution time, specified in the `yyyy-MM-dd HH:mm:ss` format or as a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
+        # The time type. Valid values:
+        # 
+        # - `-1`: none
+        # 
+        # - `1`: cron
+        # 
+        # - `3`: fixed_rate
+        # 
+        # - `5`: one_time
+        # 
+        # - `100`: api
         self.time_type = time_type
+        # The start time of the schedule.
         self.timezone = timezone
+        # The ID of the child job. Separate multiple IDs with a comma.
         self.weight = weight
         self.xattrs = xattrs
 
@@ -254,7 +343,10 @@ class UpdateJobRequestNoticeContacts(DaraModel):
         contact_type: int = None,
         name: str = None,
     ):
+        # The contact type.
+        # \\> Default value: 1.
         self.contact_type = contact_type
+        # The contact name.
         self.name = name
 
     def validate(self):
@@ -297,15 +389,30 @@ class UpdateJobRequestNoticeConfig(DaraModel):
         timeout_enable: bool = None,
         timeout_kill_enable: bool = None,
     ):
+        # The threshold, in seconds, for a job to be considered as finishing early.
         self.end_early = end_early
+        # Indicates whether to enable an alarm when a job finishes earlier than expected. Set to `true` to enable the alarm, or `false` to disable it.
         self.end_early_enable = end_early_enable
+        # Indicates whether to enable the failure alarm. Set to `true` to enable the alarm, or `false` to disable it.
         self.fail_enable = fail_enable
+        # The number of consecutive failures required to trigger a failure alarm.
         self.fail_limit_times = fail_limit_times
+        # Indicates whether to enable an alarm if no workers are available. Set to `true` to enable the alarm, or `false` to disable it.
         self.miss_worker_enable = miss_worker_enable
+        # The notification channel. Valid values:
+        # \\- `sms`: sms
+        # \\- `phone`: voice call
+        # \\- `mail`: email
+        # \\- `webhook`: webhook
+        # \\> You can specify multiple channels, separated by commas.
         self.send_channel = send_channel
+        # Indicates whether to enable success notifications. Set to `true` to enable notifications, or `false` to disable them.
         self.success_notice = success_notice
+        # The job execution timeout in seconds.
         self.timeout = timeout
+        # Indicates whether to enable the timeout alarm. Set to `true` to enable the alarm, or `false` to disable it.
         self.timeout_enable = timeout_enable
+        # Indicates whether to terminate a timed-out job. Set to `true` to terminate the job, or `false` to let it continue.
         self.timeout_kill_enable = timeout_kill_enable
 
     def validate(self):

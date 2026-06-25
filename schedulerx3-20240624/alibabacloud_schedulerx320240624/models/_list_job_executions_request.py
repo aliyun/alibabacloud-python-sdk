@@ -19,17 +19,55 @@ class ListJobExecutionsRequest(DaraModel):
         status: int = None,
         workflow_execution_id: int = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The end time.
         self.end_time = end_time
+        # The job execution ID.
         self.job_execution_id = job_execution_id
+        # The job ID.
         self.job_id = job_id
+        # The job name.
         self.job_name = job_name
+        # The current page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
+        # The start time.
         self.start_time = start_time
+        # The job execution status. Valid values:
+        # 
+        # - 0: **UNKNOWN**.
+        # 
+        # - 1: **WAITING**.
+        # 
+        # - 2: **READY**.
+        # 
+        # - 3: **RUNNING**.
+        # 
+        # - 4: **SUCCESS**.
+        # 
+        # - 5: **FAILED**.
+        # 
+        # - 6: **PAUSED**.
+        # 
+        # - 7: **SUBMITTED**.
+        # 
+        # - 8: **REJECTED**.
+        # 
+        # - 9: **ACCEPTED**.
+        # 
+        # - 10: **PARTIAL_FAILED**.
+        # 
+        # - 11: **SKIPPED**.
+        # 
+        # - 12: **REMOVED**.
         self.status = status
+        # The workflow execution ID.
         self.workflow_execution_id = workflow_execution_id
 
     def validate(self):

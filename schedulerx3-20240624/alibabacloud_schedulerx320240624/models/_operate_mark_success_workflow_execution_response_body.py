@@ -12,10 +12,17 @@ class OperateMarkSuccessWorkflowExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. A value of `200` indicates a successful request.
         self.code = code
+        # Additional details about the result.
         self.message = message
-        # Id of the request
+        # The unique ID of the request, used for troubleshooting.
         self.request_id = request_id
+        # Indicates if the operation succeeded.
+        # 
+        # - `true`: The operation succeeded.
+        # 
+        # - `false`: The operation failed.
         self.success = success
 
     def validate(self):

@@ -12,11 +12,17 @@ class ListExecutorsRequest(DaraModel):
         job_id: int = None,
         label: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The job ID.
         self.job_id = job_id
+        # The label.
         self.label = label
 
     def validate(self):

@@ -13,12 +13,19 @@ class ListK8sResourceRequest(DaraModel):
         resource_type: str = None,
         vpc_id: str = None,
     ):
+        # The Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the Kubernetes cluster used for synchronizing namespaces. The cluster is added to the service mesh specified by ServiceMeshId. This parameter is required when you query a k8s namespace or a k8s service.
         self.k_8s_cluster_id = k_8s_cluster_id
+        # The name of the namespace in the k8s cluster. This parameter is required when you query a k8s service.
         self.k_8s_namespace = k_8s_namespace
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The VPC ID. This parameter is required if ResourceType is set to \\"cluster\\".
         self.vpc_id = vpc_id
 
     def validate(self):

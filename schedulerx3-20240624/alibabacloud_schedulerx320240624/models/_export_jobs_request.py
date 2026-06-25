@@ -14,12 +14,17 @@ class ExportJobsRequest(DaraModel):
         export_job_type: int = None,
         job_ids: List[int] = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The type of jobs to export. The default value is 1.
         self.export_job_type = export_job_type
-        # -
+        # A list of job IDs.
         self.job_ids = job_ids
 
     def validate(self):

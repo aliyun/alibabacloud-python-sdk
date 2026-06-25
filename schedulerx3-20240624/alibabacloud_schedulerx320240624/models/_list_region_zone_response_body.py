@@ -17,12 +17,19 @@ class ListRegionZoneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
         # -
         self.data = data
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.message = message
+        # Request UUID.
         self.request_id = request_id
+        # Indicates whether the invocation succeeded.
+        # - **true**: The invocation succeeded.
+        # - **false**: Failed to invoke.
         self.success = success
 
     def validate(self):
@@ -89,6 +96,7 @@ class ListRegionZoneResponseBodyData(DaraModel):
         local_name: str = None,
         zone_id: str = None,
     ):
+        # Local name.
         self.local_name = local_name
         # zone id
         self.zone_id = zone_id

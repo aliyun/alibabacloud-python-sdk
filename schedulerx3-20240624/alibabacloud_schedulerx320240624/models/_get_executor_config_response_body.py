@@ -14,11 +14,15 @@ class GetExecutorConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned for the request.
         self.code = code
+        # The configuration data for the Executor.
         self.data = data
+        # The error message returned if the request fails.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -73,7 +77,38 @@ class GetExecutorConfigResponseBodyData(DaraModel):
         config: str = None,
         executor_type: str = None,
     ):
+        # The default global configuration for Data Integration tasks. This configuration specifies the default handling policies for different types of DDL messages. Example:
+        # `{"RENAMECOLUMN":"WARNING","DROPTABLE":"WARNING","CREATETABLE":"WARNING","MODIFYCOLUMN":"WARNING","TRUNCATETABLE":"WARNING","DROPCOLUMN":"WARNING","ADDCOLUMN":"WARNING","RENAMETABLE":"WARNING"}`
+        # 
+        # The DDL message types are as follows:
+        # 
+        # - RENAMECOLUMN: `RENAME COLUMN`
+        # 
+        # - DROPTABLE: `DROP TABLE`
+        # 
+        # - CREATETABLE: `CREATE TABLE`
+        # 
+        # - MODIFYCOLUMN: `MODIFY COLUMN`
+        # 
+        # - TRUNCATETABLE: `TRUNCATE TABLE`
+        # 
+        # - DROPCOLUMN: `DROP COLUMN`
+        # 
+        # - ADDCOLUMN: `ADD COLUMN`
+        # 
+        # - RENAMETABLE: `RENAME TABLE`
+        # 
+        # When DataWorks receives a DDL message, it applies one of the following handling policies:
+        # 
+        # - WARNING: Discards the message and logs a warning in the Real-time Synchronization Task log.
+        # 
+        # - IGNORE: Discards the message without sending it to the Destination Data Source.
+        # 
+        # - CRITICAL: Causes the Real-time Synchronization Task to fail.
+        # 
+        # - NORMAL: Forwards the message to the Destination Data Source. Because handling of DDL messages can vary by Destination Data Source, DataWorks only forwards the message.
         self.config = config
+        # The type of the Executor.
         self.executor_type = executor_type
 
     def validate(self):

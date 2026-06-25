@@ -16,12 +16,19 @@ class ListCalendarsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # - The returned data.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -78,9 +85,13 @@ class ListCalendarsResponseBodyData(DaraModel):
         records: List[main_models.ListCalendarsResponseBodyDataRecords] = None,
         total: int = None,
     ):
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The token for the next page of results. If this parameter is not returned, all results have been retrieved.
         self.next_token = next_token
+        # A list of calendars.
         self.records = records
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -136,8 +147,11 @@ class ListCalendarsResponseBodyDataRecords(DaraModel):
         months: str = None,
         year: int = None,
     ):
+        # The name of the calendar.
         self.calendar_name = calendar_name
+        # A JSON string that represents an array of months and their corresponding days.
         self.months = months
+        # The year.
         self.year = year
 
     def validate(self):

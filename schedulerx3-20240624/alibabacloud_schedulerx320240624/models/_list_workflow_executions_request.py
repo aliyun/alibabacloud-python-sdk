@@ -20,18 +20,51 @@ class ListWorkflowExecutionsRequest(DaraModel):
         workflow_id: int = None,
         workflow_name: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The end of the time range for filtering executions. The time must be in `YYYY-MM-DD HH:mm:ss` format.
         self.end_time = end_time
+        # The maximum number of results to return. Defaults to 10.
         self.max_results = max_results
+        # The token to retrieve the next page of results. For the first request, do not specify this parameter. If the response does not include a `NextToken`, no more results are available.
         self.next_token = next_token
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The start of the time range for filtering executions. The time must be in `YYYY-MM-DD HH:mm:ss` format.
         self.start_time = start_time
+        # The workflow execution status. Use this parameter to filter executions by status. Valid values:
+        # 
+        # - 0: unknown
+        # 
+        # - 1: waiting
+        # 
+        # - 2: queued
+        # 
+        # - 3: running
+        # 
+        # - 4: success
+        # 
+        # - 5: failed
+        # 
+        # - 6: killed
+        # 
+        # - 7: held
+        # 
+        # - 8: mark_success
+        # 
+        # - 9: skipped
         self.status = status
+        # The workflow execution ID.
         self.workflow_execution_id = workflow_execution_id
+        # The workflow ID.
         self.workflow_id = workflow_id
+        # The workflow name.
         self.workflow_name = workflow_name
 
     def validate(self):

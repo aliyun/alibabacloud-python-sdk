@@ -39,38 +39,100 @@ class CreateJobRequest(DaraModel):
         weight: int = None,
         xattrs: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The retry interval on failure. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
+        # The custom calendar. This parameter is optional for the cron time type.
         self.calendar = calendar
+        # The child node IDs, separated by commas.
         self.child_job_id = child_job_id
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The node coordinate in the workflow.
         self.coordinate = coordinate
+        # The dependency strategy.
         self.dependent_strategy = dependent_strategy
+        # The node description.
         self.description = description
+        # The client blocking strategy. Valid values:
+        # - 1: serial execution on a single machine
+        # - 2: ignore subsequent schedules
+        # - 3: override previous schedules.
         self.executor_block_strategy = executor_block_strategy
+        # The JobHandler name.
         self.job_handler = job_handler
+        # The node type.
+        # 
         # This parameter is required.
         self.job_type = job_type
+        # The maximum number of retries on failure. Set this parameter based on your business requirements.
         self.max_attempt = max_attempt
+        # The maximum number of concurrent instances.
         self.max_concurrency = max_concurrency
+        # The node name.
+        # 
         # This parameter is required.
         self.name = name
+        # The notification configuration.
         self.notice_config = notice_config
+        # The notification contact configuration.
         self.notice_contacts = notice_contacts
+        # The node parameters.
         self.parameters = parameters
+        # The priority. Valid values:
+        # - 1: low
+        # - 5: medium
+        # - 10: high
+        # - 15: very high.
         self.priority = priority
+        # The routing strategy. Valid values:
+        # - 1: round robin
+        # - 2: random
+        # - 3: first
+        # - 4: last
+        # - 5: least frequently used
+        # - 6: least recently used
+        # - 7: consistent hashing
+        # - 8: shard broadcast.
         self.route_strategy = route_strategy
+        # The script content for non-BEAN node types. Use this field to pass the script content.
         self.script = script
+        # The start time.
         self.start_time = start_time
+        # The start time type.
         self.start_time_type = start_time_type
+        # The node status. Default value: enabled. Valid values:
+        # - 0: disabled
+        # - 1: enabled.
         self.status = status
+        # The time expression. Set this parameter based on the selected time type.
+        # - **none**: No value is required.
+        # - **cron**: Specify a standard cron expression. Online validation is supported.
+        # - **api**: No value is required.
+        # - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 200 indicates that the node is triggered every 200 seconds.
+        # - **one_time**: Specify a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
+        # The time type. Valid values:
+        # - -1: none<br/>
+        # - 1: cron<br/>
+        # - 3: fix_rate<br/>
+        # - 5: one_time<br/>
+        # - 100: api.
+        # 
         # This parameter is required.
         self.time_type = time_type
+        # The time zone.
         self.timezone = timezone
+        # The node weight.
         self.weight = weight
+        # The extended attributes. This parameter is required for K8s node types.
+        # Job node: {"resource":"job"}
+        # Shell node: {"image":"busybox","resource":"shell"}.
         self.xattrs = xattrs
 
     def validate(self):
@@ -275,7 +337,13 @@ class CreateJobRequestNoticeContacts(DaraModel):
         contact_type: int = None,
         name: str = None,
     ):
+        # The object type of the notification recipient. Valid values:
+        # 
+        # - 1: alert contact
+        # 
+        # - 2: alert contact group.
         self.contact_type = contact_type
+        # The name of the alert contact or alert contact group.
         self.name = name
 
     def validate(self):
@@ -320,13 +388,42 @@ class CreateJobRequestNoticeConfig(DaraModel):
     ):
         self.end_early = end_early
         self.end_early_enable = end_early_enable
+        # Specifies whether to enable failure alerting. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.fail_enable = fail_enable
+        # The number of consecutive failures.
+        # > An alert is sent only when the number of consecutive failures exceeds the configured value.
         self.fail_limit_times = fail_limit_times
+        # Specifies whether to enable alerting when no workers are available. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.miss_worker_enable = miss_worker_enable
+        # The notification channel. Valid values:
+        # - sms: SMS
+        # - phone: phone call
+        # - mail: email
+        # - webhook: webhook
+        # > Separate multiple notification channels with commas.
         self.send_channel = send_channel
+        # Specifies whether to enable success notification. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.success_notice = success_notice
+        # The timeout period. Unit: seconds.
         self.timeout = timeout
+        # Specifies whether to enable timeout alerting. Valid values:
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.timeout_enable = timeout_enable
+        # Specifies whether to enable timeout termination. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.timeout_kill_enable = timeout_kill_enable
 
     def validate(self):
@@ -411,9 +508,13 @@ class CreateJobRequestCoordinate(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The height.
         self.height = height
+        # The width.
         self.width = width
+        # The X coordinate.
         self.x = x
+        # The Y coordinate.
         self.y = y
 
     def validate(self):

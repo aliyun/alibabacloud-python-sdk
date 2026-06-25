@@ -13,13 +13,23 @@ class OperateRetryJobExecutionShrinkRequest(DaraModel):
         task_list_shrink: str = None,
         trigger_child: bool = None,
     ):
+        # The Application Name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The Job Execution ID.
+        # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
+        # A list of Sub-task execution IDs for a Broadcast Sharding Job.
+        # 
+        # > To retry a specific Sub-task of a Broadcast Sharding Job, set this parameter to the execution ID of that Sub-task.
         self.task_list_shrink = task_list_shrink
+        # Specifies whether to trigger downstream jobs.
         self.trigger_child = trigger_child
 
     def validate(self):

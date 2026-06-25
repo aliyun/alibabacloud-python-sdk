@@ -12,12 +12,20 @@ class ImportCalendarRequest(DaraModel):
         name: str = None,
         year: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The days of each month, in JSON format.
+        # 
         # This parameter is required.
         self.months = months
+        # The name of the calendar.
+        # 
         # This parameter is required.
         self.name = name
+        # The year.
+        # 
         # This parameter is required.
         self.year = year
 

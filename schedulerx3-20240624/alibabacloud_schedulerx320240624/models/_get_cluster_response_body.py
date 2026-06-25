@@ -16,11 +16,16 @@ class GetClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID. The value is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -89,6 +94,7 @@ class GetClusterResponseBodyData(DaraModel):
         max_job_num: int = None,
         max_workflow_num: int = None,
         product_type: int = None,
+        source: str = None,
         spm: int = None,
         status: int = None,
         tags: Dict[str, Any] = None,
@@ -99,32 +105,76 @@ class GetClusterResponseBodyData(DaraModel):
         workflow_num: int = None,
         zones: List[str] = None,
     ):
+        # The billing method. Valid values:
+        # - PREPAY: subscription.
+        # - POSTPAY: pay-as-you-go.
         self.charge_type = charge_type
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
+        # The cluster specification. Valid values:
+        # - scx.dev.x1.
+        # - scx.small.x1.
+        # - scx.small.x2.
+        # - scx.medium.x1.
+        # - scx.medium.x2.
         self.cluster_spec = cluster_spec
         self.cluster_type = cluster_type
+        # The time when the cluster was created.
         self.create_time = create_time
+        # The expiration time.
         self.end_time = end_time
+        # The engine type. Valid value: xxljob.
         self.engine_type = engine_type
+        # The engine version.
         self.engine_version = engine_version
+        # The public endpoint.
+        # > Currently not supported.
         self.internet_domain = internet_domain
+        # The internal endpoint.
         self.intranet_domain = intranet_domain
         self.ip_whitelist = ip_whitelist
+        # The maximum number of jobs for the current specification.
         self.job_num = job_num
+        # The configuration of the Kubernetes server.
         self.kube_config = kube_config
+        # The maximum number of jobs for the current specification.
         self.max_job_num = max_job_num
+        # The maximum number of workflows supported.
         self.max_workflow_num = max_workflow_num
+        # The product edition.
+        # 
+        # - 1: Developer Edition.
+        # 
+        # - 2: Professional Edition.
+        # 
+        # - 3: Enterprise Edition.
         self.product_type = product_type
+        self.source = source
+        # The peak number of scheduling operations per minute.
         self.spm = spm
+        # The cluster status.
+        # 
+        # - 1: Being created.
+        # - 2: Running.
+        # - 3: Restarting.
+        # - 4: Being released.
+        # - 5: Creation failed.
+        # - 6: Stopped.
+        # - 99: Deleted.
         self.status = status
         self.tags = tags
+        # The vSwitch information of zones.
         self.v_switches = v_switches
         self.version_lifecycle = version_lifecycle
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The number of workers.
         self.worker_num = worker_num
+        # The current number of workflows.
         self.workflow_num = workflow_num
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -188,6 +238,9 @@ class GetClusterResponseBodyData(DaraModel):
 
         if self.product_type is not None:
             result['ProductType'] = self.product_type
+
+        if self.source is not None:
+            result['Source'] = self.source
 
         if self.spm is not None:
             result['Spm'] = self.spm
@@ -273,6 +326,9 @@ class GetClusterResponseBodyData(DaraModel):
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
 
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+
         if m.get('Spm') is not None:
             self.spm = m.get('Spm')
 
@@ -311,7 +367,9 @@ class GetClusterResponseBodyDataVSwitches(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

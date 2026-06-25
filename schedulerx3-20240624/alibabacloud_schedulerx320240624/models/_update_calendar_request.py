@@ -14,14 +14,28 @@ class UpdateCalendarRequest(DaraModel):
         months: str = None,
         year: int = None,
     ):
+        # The calendar name.
+        # 
         # This parameter is required.
         self.calendar_name = calendar_name
+        # A client-generated token that ensures request idempotence. This token must be unique for each request and be no more than 64 ASCII characters long.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to perform an incremental update. Default value: `false`.
+        # 
+        # - `false`: Replaces all existing calendar data with the data in this request, deleting configurations for any unspecified months.
+        # 
+        # - `true`: Updates only the data for the specified months, preserving existing configurations for all other months.
         self.incremental = incremental
+        # A JSON string that defines the days for one or more months.
+        # 
         # This parameter is required.
         self.months = months
+        # The year.
+        # 
         # This parameter is required.
         self.year = year
 
