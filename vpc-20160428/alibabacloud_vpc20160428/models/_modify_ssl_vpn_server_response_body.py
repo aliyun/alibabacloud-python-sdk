@@ -28,20 +28,21 @@ class ModifySslVpnServerResponseBody(DaraModel):
         ssl_vpn_server_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The encryption algorithm.
+        # The encryption algorithm used.
         self.cipher = cipher
         # The client CIDR block.
         self.client_ip_pool = client_ip_pool
-        # Indicates whether data compression is enabled.
+        # Indicates whether communication is compressed.
         self.compress = compress
-        # The total number of current connections.
+        # The current number of connections.
         self.connections = connections
-        # The time when the SSL server was created.
+        # The creation time of the SSL-VPN server.
         self.create_time = create_time
         # Indicates whether two-factor authentication is enabled.
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Enabled.
+        # 
+        # - **false** (default): Not enabled.
         self.enable_multi_factor_auth = enable_multi_factor_auth
         # The ID of the IDaaS application.
         self.idaa_sapplication_id = idaa_sapplication_id
@@ -49,32 +50,32 @@ class ModifySslVpnServerResponseBody(DaraModel):
         self.idaa_sinstance_id = idaa_sinstance_id
         # The version of the IDaaS EIAM instance.
         # 
-        # *   This parameter is returned only if the SSL server is associated with an IDaaS EIAM 2.0 instance. Only **EIAM 2.0** is returned.
-        # *   If the SSL server is associated with an IDaaS EIAM 1.0 instance, no value is returned.
+        # - This parameter is returned only when the SSL server is bound to an IDaaS EIAM 2.0 instance. The only valid value is **EIAM 2.0**.
+        # - If the SSL server is bound to an IDaaS EIAM 1.0 instance, this parameter is not returned.
         self.idaa_sinstance_version = idaa_sinstance_version
         # The public IP address.
         self.internet_ip = internet_ip
-        # The local CIDR block.
+        # The local subnet.
         self.local_subnet = local_subnet
         # The maximum number of connections.
         self.max_connections = max_connections
-        # The name of the SSL server.
+        # The name of the SSL-VPN server.
         self.name = name
-        # The port that is used by the SSL server.
+        # The port of the SSL-VPN server.
         self.port = port
-        # The protocol that is used by the SSL server.
+        # The protocol used by the SSL-VPN server.
         self.proto = proto
-        # The ID of the region where the SSL server is created.
+        # The region ID of the SSL-VPN server.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the SSL server belongs.
+        # The ID of the resource group to which the SSL-VPN server belongs.
         # 
-        # The SSL server and the VPN gateway associated with the SSL server belong to the same resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
+        # The resource group of the SSL-VPN server is the same as that of the associated VPN gateway instance. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
-        # The ID of the SSL server.
+        # The ID of the SSL-VPN server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
-        # The ID of the VPN gateway.
+        # The ID of the VPN gateway instance.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

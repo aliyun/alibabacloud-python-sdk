@@ -9119,6 +9119,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.compress):
             query['Compress'] = request.compress
+        if not DaraCore.is_null(request.dns_servers):
+            query['DnsServers'] = request.dns_servers
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_multi_factor_auth):
@@ -9183,6 +9185,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.compress):
             query['Compress'] = request.compress
+        if not DaraCore.is_null(request.dns_servers):
+            query['DnsServers'] = request.dns_servers
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_multi_factor_auth):
@@ -35473,6 +35477,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.compress):
             query['Compress'] = request.compress
+        if not DaraCore.is_null(request.dns_servers):
+            query['DnsServers'] = request.dns_servers
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_multi_factor_auth):
@@ -35537,6 +35543,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.compress):
             query['Compress'] = request.compress
+        if not DaraCore.is_null(request.dns_servers):
+            query['DnsServers'] = request.dns_servers
         if not DaraCore.is_null(request.dry_run):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_multi_factor_auth):

@@ -19,7 +19,7 @@ class DescribeSslVpnServersRequest(DaraModel):
         ssl_vpn_server_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The SSL server name.
+        # The name of the SSL server.
         # 
         # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         self.name = name
@@ -27,17 +27,17 @@ class DescribeSslVpnServersRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the SSL server.
+        # The region ID of the SSL server. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID of the SSL server.
+        # The ID of the resource group to which the SSL server belongs.
         # 
-        # The SSL server and its associated VPN gateway belong to the same resource group. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the ID of the resource group to which the VPN gateway belongs.
+        # The SSL server belongs to the same resource group as the associated VPN gateway instance. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the resource group ID of the VPN gateway instance.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

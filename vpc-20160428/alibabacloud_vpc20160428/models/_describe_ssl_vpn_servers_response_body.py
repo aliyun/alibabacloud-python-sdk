@@ -16,14 +16,14 @@ class DescribeSslVpnServersResponseBody(DaraModel):
         ssl_vpn_servers: main_models.DescribeSslVpnServersResponseBodySslVpnServers = None,
         total_count: int = None,
     ):
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in paging query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.ssl_vpn_servers = ssl_vpn_servers
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -115,6 +115,7 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(DaraModel):
         compress: bool = None,
         connections: int = None,
         create_time: int = None,
+        dns_servers: str = None,
         enable_multi_factor_auth: bool = None,
         idaa_sapplication_id: str = None,
         idaa_sinstance_id: str = None,
@@ -136,6 +137,7 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(DaraModel):
         self.compress = compress
         self.connections = connections
         self.create_time = create_time
+        self.dns_servers = dns_servers
         self.enable_multi_factor_auth = enable_multi_factor_auth
         self.idaa_sapplication_id = idaa_sapplication_id
         self.idaa_sinstance_id = idaa_sinstance_id
@@ -174,6 +176,9 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(DaraModel):
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.dns_servers is not None:
+            result['DnsServers'] = self.dns_servers
 
         if self.enable_multi_factor_auth is not None:
             result['EnableMultiFactorAuth'] = self.enable_multi_factor_auth
@@ -238,6 +243,9 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(DaraModel):
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('DnsServers') is not None:
+            self.dns_servers = m.get('DnsServers')
 
         if m.get('EnableMultiFactorAuth') is not None:
             self.enable_multi_factor_auth = m.get('EnableMultiFactorAuth')
