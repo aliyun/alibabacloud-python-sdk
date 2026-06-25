@@ -12,13 +12,13 @@ class UpdateConfigResponseBody(DaraModel):
         updated_at: str = None,
         value: str = None,
     ):
-        # 创建时间
+        # The time the configuration was created.
         self.created_at = created_at
-        # 配置键名
+        # The dynamic parameter name.
         self.key = key
-        # 更新时间
+        # The time the configuration was last updated.
         self.updated_at = updated_at
-        # 配置值
+        # The dynamic parameter value.
         self.value = value
 
     def validate(self):

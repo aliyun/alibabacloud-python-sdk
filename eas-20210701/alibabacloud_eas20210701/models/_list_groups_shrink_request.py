@@ -2,15 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
-
 from darabonba.model import DaraModel
 
-class ListGroupsRequest(DaraModel):
+class ListGroupsShrinkRequest(DaraModel):
     def __init__(
         self,
         filter: str = None,
-        labels: Dict[str, str] = None,
+        labels_shrink: str = None,
         order: str = None,
         page_number: str = None,
         page_size: str = None,
@@ -21,7 +19,7 @@ class ListGroupsRequest(DaraModel):
         # The filter name. Fuzzy match is supported.
         self.filter = filter
         # The user-defined labels.
-        self.labels = labels
+        self.labels_shrink = labels_shrink
         # The sort order of the results.
         self.order = order
         # The current page number of the service group list. Default value: 1.
@@ -46,8 +44,8 @@ class ListGroupsRequest(DaraModel):
         if self.filter is not None:
             result['Filter'] = self.filter
 
-        if self.labels is not None:
-            result['Labels'] = self.labels
+        if self.labels_shrink is not None:
+            result['Labels'] = self.labels_shrink
 
         if self.order is not None:
             result['Order'] = self.order
@@ -75,7 +73,7 @@ class ListGroupsRequest(DaraModel):
             self.filter = m.get('Filter')
 
         if m.get('Labels') is not None:
-            self.labels = m.get('Labels')
+            self.labels_shrink = m.get('Labels')
 
         if m.get('Order') is not None:
             self.order = m.get('Order')

@@ -24,40 +24,44 @@ class CreateResourceRequest(DaraModel):
     ):
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   false (default)
-        # *   true
+        # - `false` (default): Auto-renewal is disabled.
+        # 
+        # - `true`: Auto-renewal is enabled.
         self.auto_renewal = auto_renewal
         # The billing method. Valid values:
         # 
-        # *   PrePaid: the subscription billing method.
-        # *   PostPaid: the pay-as-you-go billing method.
+        # - `PrePaid`: subscription.
         # 
-        # >  This parameter is required when the ResourceType parameter is set to Dedicated.
+        # - `PostPaid`: pay-as-you-go.
+        # 
+        # > This parameter is required when `ResourceType` is set to `Dedicated`.
         self.charge_type = charge_type
-        # The number of ECS instances.
+        # The number of instances.
         # 
-        # >  This parameter is required when the ResourceType parameter is set to Dedicated.
+        # > This parameter is required when `ResourceType` is set to `Dedicated`.
         self.ecs_instance_count = ecs_instance_count
-        # The type of the Elastic Compute Service (ECS) instance.
+        # The ECS instance type.
         # 
-        # >  This parameter is required when the ResourceType parameter is set to Dedicated.
+        # > This parameter is required when `ResourceType` is set to `Dedicated`.
         self.ecs_instance_type = ecs_instance_type
-        # The labels.
+        # The user-defined labels.
         self.labels = labels
+        # The name of the resource group.
         self.resource_name = resource_name
         # The type of the resource group. Valid values:
         # 
-        # *   Dedicated: the dedicated resource group.
-        # *   SelfManaged: the self-managed resource group.
+        # - `Dedicated`: a dedicated resource group.
         # 
-        # >  If you use a self-managed resource group, you must configure a whitelist.
+        # - `SelfManaged`: a self-managed resource group.
+        # 
+        # > You must be whitelisted to use self-managed resource groups.
         self.resource_type = resource_type
-        # The configurations of the self-managed resource group.
+        # The configuration options for the self-managed resource group.
         self.self_managed_resource_options = self_managed_resource_options
-        # The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
+        # The size of the system disk, in GiB. The value must be between 200 and 2,000. If unspecified, the default is 200 GiB.
         self.system_disk_size = system_disk_size
         self.usage_mode = usage_mode
-        # The ID of the zone in which the instance resides.
+        # The zone in which to create the instance.
         self.zone = zone
 
     def validate(self):
@@ -152,11 +156,11 @@ class CreateResourceRequestSelfManagedResourceOptions(DaraModel):
     ):
         # The ID of the self-managed cluster.
         self.external_cluster_id = external_cluster_id
-        # The tag key-value pairs of the node.
+        # The node labels to match, specified as key-value pairs.
         self.node_match_labels = node_match_labels
-        # The tolerations for the node taint.
+        # A list of tolerations for node taints.
         self.node_tolerations = node_tolerations
-        # The name of the RAM user to which the permissions on Elastic Algorithm Service (EAS) of Platform for AI (PAI) are granted.
+        # The name of the RAM role that grants PAI-EAS the required permissions.
         self.role_name = role_name
 
     def validate(self):
@@ -213,24 +217,13 @@ class CreateResourceRequestSelfManagedResourceOptionsNodeTolerations(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # The effect.
-        # 
-        # Valid values:
-        # 
-        # *   PreferNoSchedule
-        # *   NoSchedule
-        # *   NoExecute
+        # The effect of the toleration.
         self.effect = effect
-        # The key name.
+        # The key of the toleration.
         self.key = key
-        # The relationship between key names and key values.
-        # 
-        # Valid values:
-        # 
-        # *   Equal
-        # *   Exists
+        # The toleration operator, which defines the relationship between the key and value.
         self.operator = operator
-        # The key value.
+        # The toleration value.
         self.value = value
 
     def validate(self):

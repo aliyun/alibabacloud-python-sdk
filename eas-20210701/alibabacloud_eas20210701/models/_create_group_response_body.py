@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateServiceInstanceResponseBody(DaraModel):
+class CreateGroupResponseBody(DaraModel):
     def __init__(
         self,
         message: str = None,
         request_id: str = None,
     ):
-        # A message that indicates a successful operation.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

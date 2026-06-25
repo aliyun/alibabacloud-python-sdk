@@ -7,21 +7,22 @@ from typing import Dict
 from alibabacloud_eas20210701 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateGroupRequest(DaraModel):
+class CreateGroupRequest(DaraModel):
     def __init__(
         self,
         labels: Dict[str, str] = None,
-        network: main_models.UpdateGroupRequestNetwork = None,
-        traffic_mode: str = None,
+        name: str = None,
+        network: main_models.CreateGroupRequestNetwork = None,
+        work_space_id: str = None,
     ):
         # The user-defined labels.
         self.labels = labels
-        # The VPC configuration.
+        # The name of the group.
+        self.name = name
+        # The virtual private cloud (VPC) configuration.
         self.network = network
-        # The traffic mode. Valid values:
-        # - auto: automatically assigns weights based on the proportion of instances.
-        # - customized: distributes traffic based on custom fixed weights.
-        self.traffic_mode = traffic_mode
+        # The workspace ID.
+        self.work_space_id = work_space_id
 
     def validate(self):
         if self.network:
@@ -35,11 +36,14 @@ class UpdateGroupRequest(DaraModel):
         if self.labels is not None:
             result['Labels'] = self.labels
 
+        if self.name is not None:
+            result['Name'] = self.name
+
         if self.network is not None:
             result['Network'] = self.network.to_map()
 
-        if self.traffic_mode is not None:
-            result['TrafficMode'] = self.traffic_mode
+        if self.work_space_id is not None:
+            result['WorkSpaceId'] = self.work_space_id
 
         return result
 
@@ -48,16 +52,19 @@ class UpdateGroupRequest(DaraModel):
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
 
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
         if m.get('Network') is not None:
-            temp_model = main_models.UpdateGroupRequestNetwork()
+            temp_model = main_models.CreateGroupRequestNetwork()
             self.network = temp_model.from_map(m.get('Network'))
 
-        if m.get('TrafficMode') is not None:
-            self.traffic_mode = m.get('TrafficMode')
+        if m.get('WorkSpaceId') is not None:
+            self.work_space_id = m.get('WorkSpaceId')
 
         return self
 
-class UpdateGroupRequestNetwork(DaraModel):
+class CreateGroupRequestNetwork(DaraModel):
     def __init__(
         self,
         gateway_id: str = None,

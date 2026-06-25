@@ -13,9 +13,9 @@ class CreateServiceCronScalerRequest(DaraModel):
         exclude_dates: List[str] = None,
         scale_jobs: List[main_models.CreateServiceCronScalerRequestScaleJobs] = None,
     ):
-        # The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
+        # A list of cron expressions for dates to exclude.
         self.exclude_dates = exclude_dates
-        # The description of the CronHPA job.
+        # The scheduled scaling tasks.
         # 
         # This parameter is required.
         self.scale_jobs = scale_jobs
@@ -62,16 +62,17 @@ class CreateServiceCronScalerRequestScaleJobs(DaraModel):
         target_size: int = None,
         time_zone: str = None,
     ):
-        # The name of the CronHPA job.
+        # The name of the scheduled auto-scaling task.
         self.name = name
-        # The cron expression that is used to configure the execution time of the CronHPA job. For more information about how to configure cron expressions, see **Description of special characters** in this topic.
+        # The cron expression that specifies when to run the scaling task. For more information about how to configure a cron expression, see the **Cron expressions** section.
         # 
         # This parameter is required.
         self.schedule = schedule
-        # The number of instances that you want to configure for the CronHPA job.
+        # The target number of instances for the scaling task.
         # 
         # This parameter is required.
         self.target_size = target_size
+        # The time zone for the scheduled scaling task.
         self.time_zone = time_zone
 
     def validate(self):

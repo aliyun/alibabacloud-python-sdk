@@ -10,7 +10,15 @@ class UpdateServiceRolloutResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # A message that indicates the result of the request. Possible values include:
+        # 
+        # - "Rollout updated successfully"
+        # 
+        # - "Rollout paused successfully"
+        # 
+        # - "Rollout resumed successfully"
         self.message = message
+        # A unique identifier for the request. You can use this request ID for troubleshooting and tracking.
         self.request_id = request_id
 
     def validate(self):

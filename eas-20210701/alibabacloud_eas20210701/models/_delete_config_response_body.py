@@ -10,9 +10,9 @@ class DeleteConfigResponseBody(DaraModel):
         deleted: int = None,
         message: str = None,
     ):
-        # 删除的配置数量
+        # The number of configurations deleted.
         self.deleted = deleted
-        # 操作结果消息
+        # A message indicating the operation result.
         self.message = message
 
     def validate(self):

@@ -12,12 +12,13 @@ class DeleteServiceInstancesRequest(DaraModel):
         is_replica: bool = None,
         soft_restart: bool = None,
     ):
-        # The name of the container whose process needs to be restarted. This parameter takes effect only if the SoftRestart parameter is set to true.
+        # The name of the container in which to restart the process. This parameter is valid only when \\`SoftRestart\\` is set to \\`true\\`.
         self.container = container
-        # The instances that you want to restart. Separate multiple instance names with commas (,). For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+        # The instances to restart. Separate multiple instance names with a comma (,). For more information, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
         self.instance_list = instance_list
+        # Specifies whether the instance is a replica.
         self.is_replica = is_replica
-        # Specifies whether to restart only the container process without recreating the instance. Default value: false. Valid values: true and false.
+        # Specifies whether to restart only the container process without rebuilding the instance. The default value is false.
         self.soft_restart = soft_restart
 
     def validate(self):

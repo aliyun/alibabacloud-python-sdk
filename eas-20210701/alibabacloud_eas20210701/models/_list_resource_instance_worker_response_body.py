@@ -16,15 +16,15 @@ class ListResourceInstanceWorkerResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The returned page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The workers.
+        # The list of workers.
         self.pods = pods
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of workers.
         self.total_count = total_count
 
     def validate(self):

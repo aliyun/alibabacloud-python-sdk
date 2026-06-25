@@ -10,8 +10,9 @@ class CreateFaultInjectionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The message returned for the request.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

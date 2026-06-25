@@ -20,205 +20,33 @@ class ListResourceInstancesShrinkRequest(DaraModel):
         sort: str = None,
         zone: str = None,
     ):
-        # The billing method of the instance. Valid values:
+        # Filters instances by billing method. Valid values:
         # 
-        # *   PrePaid: subscription.
-        # *   PostPaid: pay-as-you-go.
+        # - PrePaid: subscription.
+        # 
+        # - PostPaid: pay-as-you-go.
         self.charge_type = charge_type
-        # The keyword used to query instances. Instances can be queried by instance ID or instance IP address.
+        # A keyword for the search. You can search by instance ID or IP address.
         self.filter = filter
         # The IP address of the instance.
         self.instance_ip = instance_ip
-        # The instance ID. For more information about how to query the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+        # Filter by instance ID. For more information, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
         self.instance_id = instance_id
-        # The instance name.
+        # Filter by instance name.
         self.instance_name = instance_name
-        # The instance state.
-        # 
-        # Valid values:
-        # 
-        # *   Ready-SchedulingDisabled
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The instance is available but unschedulable
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   Ready
-        # 
-        #     <!-- -->
-        # 
-        #     : The instance
-        # 
-        #     <!-- -->
-        # 
-        #     is running
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   NotReady
-        # 
-        #     <!-- -->
-        # 
-        #     : The instance is unready.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Stopped
-        # 
-        #     <!-- -->
-        # 
-        #     : The instance has stopped.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NotReady-SchedulingDisabled
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The instance is unavailable and unschedulable
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   Attaching
-        # 
-        #     <!-- -->
-        # 
-        #     : The instance
-        # 
-        #     <!-- -->
-        # 
-        #     is starting
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   Deleting
-        # 
-        #     <!-- -->
-        # 
-        #     : The instance is being deleted.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CreateFailed: The instance failed to be created.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the instance.
         self.instance_status = instance_status
-        # The tag.
+        # Filter by label.
         self.label_shrink = label_shrink
-        # The sorting order.
-        # 
-        # Valid values:
-        # 
-        # *   asc: The instances are sorted in ascending order.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   desc
-        # 
-        #     <!-- -->
-        # 
-        #     : The instances are sorted in descending order.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The sort order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of instances to return on each page. Default value: 100.
         self.page_size = page_size
-        # The field that you use to sort the query results.
-        # 
-        # Valid values:
-        # 
-        # *   CreateTime
-        # 
-        #     <!-- -->
-        # 
-        #     : The instances are sorted based on the time when the instances were created.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   MemoryUsed
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The instances are sorted based on the memory usage of the instances
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   GpuUsed
-        # 
-        #     <!-- -->
-        # 
-        #     : The instances are sorted based on the
-        # 
-        #     <!-- -->
-        # 
-        #     GPU usage of the instances.
-        # 
-        #     <!-- -->
-        # 
-        # *   ExpireTime: The instances are sorted based on the time when the instances expired.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CpuUsed
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The instances are sorted based on the CPU utilization of the instances.
-        # 
-        #     <!-- -->
+        # The sort field.
         self.sort = sort
+        # The zone of the instance.
         self.zone = zone
 
     def validate(self):

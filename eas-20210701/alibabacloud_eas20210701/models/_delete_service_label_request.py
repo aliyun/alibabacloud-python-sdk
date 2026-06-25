@@ -12,8 +12,9 @@ class DeleteServiceLabelRequest(DaraModel):
         keys: List[str] = None,
         label_keys: List[str] = None,
     ):
-        # The service tags that you want to delete.
+        # The keys of the service labels that you want to delete. This parameter is deprecated. Use the LabelKeys parameter instead.
         self.keys = keys
+        # The keys of the service labels that you want to delete.
         self.label_keys = label_keys
 
     def validate(self):

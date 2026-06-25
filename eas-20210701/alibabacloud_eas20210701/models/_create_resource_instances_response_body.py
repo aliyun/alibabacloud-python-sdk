@@ -13,9 +13,9 @@ class CreateResourceInstancesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The instance IDs.
+        # A list of machine instance IDs.
         self.instance_ids = instance_ids
-        # The returned message.
+        # The message returned for a successful operation.
         self.message = message
         # The request ID.
         self.request_id = request_id

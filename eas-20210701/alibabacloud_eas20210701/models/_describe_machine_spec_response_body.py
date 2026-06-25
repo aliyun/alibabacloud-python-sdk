@@ -14,11 +14,11 @@ class DescribeMachineSpecResponseBody(DaraModel):
         request_id: str = None,
         types: List[main_models.DescribeMachineSpecResponseBodyTypes] = None,
     ):
-        # The instance types when the resources are specified.
+        # A list of available instance types for deployment.
         self.instance_metas = instance_metas
         # The request ID.
         self.request_id = request_id
-        # The values that can be supported when the number of CPUs and memory size are specified for deployment.
+        # The supported combinations of CPU and memory values for deployment.
         self.types = types
 
     def validate(self):
@@ -76,9 +76,9 @@ class DescribeMachineSpecResponseBodyTypes(DaraModel):
         cpu: int = None,
         memory: List[int] = None,
     ):
-        # Valid values:
+        # The valid values for the number of CPU cores.
         self.cpu = cpu
-        # The optional values for memory when CPU is set to a specific value as above.
+        # The valid memory values for the specified number of CPU cores.
         self.memory = memory
 
     def validate(self):
@@ -122,39 +122,27 @@ class DescribeMachineSpecResponseBodyInstanceMetas(DaraModel):
         stock_status: str = None,
         vendor: str = None,
     ):
-        # The number of CPU cores in the instance type.
+        # The number of CPU cores of the instance type.
         self.cpu = cpu
-        # The GPU type in the instance type. If the instance type is not a GPU-based instance type, this parameter does not exist.
+        # The GPU model of the instance type. This field is not returned for non-GPU instance types.
         self.gpu = gpu
         # The number of GPUs in the instance type.
         self.gpuamount = gpuamount
-        # The GPU memory in the instance type. Unit: GB.
+        # The GPU memory size of the instance type, in GB.
         self.gpumemory = gpumemory
-        # The name of the instance type.
+        # The instance type name.
         self.instance_type = instance_type
-        # Indicates whether the instance type is available.
+        # Indicates whether the instance type is currently available.
         self.is_available = is_available
-        # The memory size in the instance type. Unit: GB.
+        # The memory size of the instance type, in GB.
         self.memory = memory
-        # The minimum discount that can be accepted when the preemptible instance type does not include a usage duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
+        # The minimum discount currently offered for a spot instance in no-protection mode. A value of 0.1 indicates a 90% discount. If this field is not returned, the instance type does not support spot instances.
         self.non_protect_spot_discount = non_protect_spot_discount
-        # The minimum discount that can be accepted when the preemptible instance type has the 1-hour protection duration. 0.1 indicates one fold. If this parameter is not returned, the bidding feature is not supported.
+        # The current lowest discount for a spot instance with a 1-hour protection period. A value of 0.1 indicates a 90% discount. If this field is not returned, the instance type does not support spot instances.
         self.spot_discount = spot_discount
         # The inventory status of the instance type.
-        # 
-        # Valid values:
-        # 
-        # *   WithStock
-        # *   ClosedWithStock
-        # *   NoStock
         self.stock_status = stock_status
         # The source of the instance type.
-        # 
-        # Valid values:
-        # 
-        # *   ECS
-        # *   BareMetal
-        # *   Lingjun
         self.vendor = vendor
 
     def validate(self):

@@ -22,10 +22,11 @@ class DescribeVirtualResourceResponseBody(DaraModel):
     ):
         # The time when the virtual resource group was created.
         self.create_time = create_time
-        # Indicates whether the retention period of preemptible instances was disabled.
+        # Indicates whether the protection period for spot instances is disabled.
         self.disable_spot_protection_period = disable_spot_protection_period
+        # The collection of features for the virtual resource group. This identifies the attributes that the resource group supports.
         self.features = features
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The list of resources in the virtual resource group.
         self.resources = resources
@@ -126,15 +127,15 @@ class DescribeVirtualResourceResponseBodyResources(DaraModel):
     ):
         # The instance type of the public resource group.
         self.instance_type = instance_type
-        # The priority of resource scheduling. A greater number specifies a higher priority.
+        # The scheduling priority of the resource. A larger value indicates a higher priority.
         self.priority = priority
-        # The instance type of the public resource group.
+        # The ID of the Lingjun resource quota.
         self.quota_id = quota_id
-        # The region where the resource resides.
+        # The region where the resource is located.
         self.region = region
         # The ID of the dedicated resource group.
         self.resource_id = resource_id
-        # The maximum price of preemptible instances in a public resource group.
+        # The maximum price for a spot instance in the public resource group.
         self.spot_price_limit = spot_price_limit
 
     def validate(self):

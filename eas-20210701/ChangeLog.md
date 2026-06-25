@@ -1,3 +1,12 @@
+2026-06-25 Version: 6.16.0
+- Support API CreateGroup.
+- Support API DeleteGroup.
+- Update API ListGroups: add request parameters Labels.
+- Update API UpdateGroup: add request parameters body.Labels.
+- Update API UpdateGroup: add request parameters body.Network.
+- Update API UpdateGroup: add response parameters Body.Message.
+
+
 2026-05-26 Version: 6.15.0
 - Support API CreateConfig.
 - Support API DeleteConfig.

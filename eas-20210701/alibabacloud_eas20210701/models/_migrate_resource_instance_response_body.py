@@ -13,11 +13,11 @@ class MigrateResourceInstanceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The instance ID.
+        # The IDs of the instances.
         self.instance_ids = instance_ids
-        # The returned message.
+        # The message returned for the request.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -36,31 +36,35 @@ class DescribeResourceResponseBody(DaraModel):
         update_time: str = None,
         usage_mode: str = None,
     ):
-        # The ID of the cluster to which the resource group belongs.
+        # The ID of the cluster that contains the resource group.
         self.cluster_id = cluster_id
         # The total number of CPU cores.
         self.cpu_count = cpu_count
-        # The number of vCPUs that is used.
+        # The number of CPU cores in use.
         self.cpu_used = cpu_used
-        # The time when the resource group was created.
+        # The time the resource group was created.
         self.create_time = create_time
-        # The additional information, such as the connection status of a virtual private cloud (VPC) and the log status of Log Service.
+        # Additional information, such as the VPC connection status and the SLS log status.
         self.extra_data = extra_data
+        # The features that the resource group supports.
         self.features = features
         # The total number of GPUs.
         self.gpu_count = gpu_count
-        # The number of GPUs that is used.
+        # The number of GPUs in use.
         self.gpu_used = gpu_used
         # The total number of instances in the resource group.
         self.instance_count = instance_count
+        # The maximum number of CPU cores that can be allocated to a single instance in the resource group.
         self.instance_max_allocatable_cpu = instance_max_allocatable_cpu
+        # The maximum number of GPUs that can be allocated to a single instance in the resource group.
         self.instance_max_allocatable_gpu = instance_max_allocatable_gpu
+        # The maximum amount of memory that can be allocated to a single instance in the resource group, in MB.
         self.instance_max_allocatable_memory = instance_max_allocatable_memory
-        # The total memory size. Unit: MB.
+        # The total memory size, in MB.
         self.memory = memory
-        # The size of memory that is used. Unit: MB.
+        # The amount of memory in use, in MB.
         self.memory_used = memory_used
-        # The returned message.
+        # A message that provides details about the status of the resource group.
         self.message = message
         # The ID of the resource group owner.
         self.owner_uid = owner_uid
@@ -70,20 +74,23 @@ class DescribeResourceResponseBody(DaraModel):
         self.pre_paid_instance_count = pre_paid_instance_count
         # The request ID.
         self.request_id = request_id
-        # The ID of the Elastic Algorithm Service (EAS) resource.
+        # The ID of the resource group.
         self.resource_id = resource_id
-        # The name of the EAS resource.
+        # The name of the resource group.
         self.resource_name = resource_name
         # The type of the resource group. Valid values:
         # 
-        # *   Dedicated: the dedicated resource group.
-        # *   SelfManaged: the self-managed resource group.
+        # - `Dedicated`: a dedicated resource group.
+        # 
+        # - `SelfManaged`: a self-managed resource group.
         self.resource_type = resource_type
+        # The number of services deployed in the resource group.
         self.service_count = service_count
-        # The state of the resource group.
+        # The status of the resource group.
         self.status = status
-        # The time when the resource group was last updated.
+        # The time the resource group was last updated.
         self.update_time = update_time
+        # The usage mode of the resource group.
         self.usage_mode = usage_mode
 
     def validate(self):

@@ -10,7 +10,9 @@ class ListConfigsRequest(DaraModel):
         page: int = None,
         page_size: int = None,
     ):
+        # **The page number.** Default: 1.
         self.page = page
+        # **The number of entries per page.** Default: 100. Maximum: 200.
         self.page_size = page_size
 
     def validate(self):

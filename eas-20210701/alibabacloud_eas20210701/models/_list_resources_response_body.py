@@ -16,15 +16,15 @@ class ListResourcesResponseBody(DaraModel):
         resources: List[main_models.Resource] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The returned page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The resource groups.
+        # A list of resource groups.
         self.resources = resources
-        # The total number of entries returned.
+        # The total number of resource groups.
         self.total_count = total_count
 
     def validate(self):

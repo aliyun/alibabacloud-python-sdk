@@ -18,19 +18,19 @@ class ListConfigsResponseBody(DaraModel):
         total: int = None,
         type: str = None,
     ):
-        # 配置项列表
+        # The list of dynamic parameters.
         self.configs = configs
-        # 是否有更多数据
+        # Indicates if more entries are available. `true` if more entries exist; otherwise, `false`.
         self.has_more = has_more
-        # 服务名称
+        # The service name.
         self.name = name
-        # 当前页码
+        # The current page number.
         self.page = page
-        # 每页数量
+        # The number of entries on the current page.
         self.page_size = page_size
-        # 总数量
+        # The total number of entries found.
         self.total = total
-        # 配置类型
+        # The configuration type.
         self.type = type
 
     def validate(self):
@@ -105,13 +105,13 @@ class ListConfigsResponseBodyConfigs(DaraModel):
         updated_at: str = None,
         value: str = None,
     ):
-        # 创建时间
+        # The time when the dynamic parameter was created, in UTC and ISO 8601 format.
         self.created_at = created_at
-        # 配置项键名
+        # The name of the dynamic parameter.
         self.key = key
-        # 更新时间
+        # The time when the dynamic parameter was last updated, in UTC and ISO 8601 format.
         self.updated_at = updated_at
-        # 配置值
+        # The value of the dynamic parameter.
         self.value = value
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListGatewayResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The private gateways.
+        # The list of private gateways.
         self.gateways = gateways
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of private gateways returned.
+        # The total number of gateways.
         self.total_count = total_count
 
     def validate(self):
@@ -100,44 +100,37 @@ class ListGatewayResponseBodyGateways(DaraModel):
     ):
         # The billing method. Valid values:
         # 
-        # *   PrePaid: subscription.
-        # *   PostPaid: pay-as-you-go.
+        # - PrePaid: Subscription.
+        # 
+        # - PostPaid: Pay-as-you-go.
         self.charge_type = charge_type
-        # The time when the private gateway was created. The time is displayed in UTC.
+        # The time when the private gateway was created. The time is in UTC.
         self.create_time = create_time
-        # The private gateway ID.
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The private gateway alias.
+        # The alias of the private gateway.
         self.gateway_name = gateway_name
-        # The type of instances used for the private gateway.
+        # The instance type used by the private gateway.
         self.instance_type = instance_type
-        # The public endpoint.
+        # The public network endpoint.
         self.internet_domain = internet_domain
-        # Indicates whether Internet access is enabled.
+        # Indicates whether public network access is enabled.
         self.internet_enabled = internet_enabled
-        # The internal endpoint.
+        # The internal network endpoint.
         self.intranet_domain = intranet_domain
+        # Indicates whether internal network access is enabled.
         self.intranet_enabled = intranet_enabled
         # Indicates whether it is the default private gateway.
         self.is_default = is_default
+        # The list of gateway tags.
         self.labels = labels
-        # The number of nodes in the private gateway.
+        # The number of nodes for the private gateway.
         self.replicas = replicas
-        # Specifies whether to enable HTTP to HTTPS redirection.
+        # Indicates whether HTTP to HTTPS redirection is enabled.
         self.sslredirection_enabled = sslredirection_enabled
-        # The state of the private gateway.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # *   Stopped
-        # *   Failed
-        # *   Running
-        # *   Deleted
-        # *   Deleting
-        # *   Waiting
+        # The status of the private gateway.
         self.status = status
-        # The time when the private gateway was updated. The time is displayed in UTC.
+        # The time when the private gateway was last updated. The time is in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -258,7 +251,9 @@ class ListGatewayResponseBodyGatewaysLabels(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
+        # The key of the gateway tag.
         self.label_key = label_key
+        # The value of the gateway tag.
         self.label_value = label_value
 
     def validate(self):

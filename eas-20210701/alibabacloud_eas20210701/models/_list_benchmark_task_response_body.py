@@ -16,15 +16,15 @@ class ListBenchmarkTaskResponseBody(DaraModel):
         tasks: List[main_models.ListBenchmarkTaskResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned list of tasks.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of tasks to return on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The stress testing tasks.
+        # The list of tasks.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -92,97 +92,23 @@ class ListBenchmarkTaskResponseBodyTasks(DaraModel):
         task_name: str = None,
         update_time: str = None,
     ):
-        # The number of instances that are available for stress testing.
+        # The number of available stress testing instances.
         self.available_agent = available_agent
         # The time when the stress testing task was created.
         self.create_time = create_time
-        # The returned message.
+        # A summary of the task.
         self.message = message
-        # The region ID of the stress testing task.
+        # The region where the stress testing task is located.
         self.region = region
-        # The name of the service on which you want to perform a stress testing.
+        # The name of the service to be stress tested.
         self.service_name = service_name
-        # The state of the stress testing task.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Starting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DeleteFailed
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Running
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Stopping
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Error
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Updating
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Deleting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CreateFailed
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the stress testing task.
         self.status = status
         # The ID of the stress testing task.
         self.task_id = task_id
         # The name of the stress testing task.
         self.task_name = task_name
-        # The time when the stress testing task was updated.
+        # The time when the stress testing task was last updated.
         self.update_time = update_time
 
     def validate(self):

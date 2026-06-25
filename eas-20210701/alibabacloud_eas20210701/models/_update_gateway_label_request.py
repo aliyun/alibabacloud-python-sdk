@@ -11,6 +11,8 @@ class UpdateGatewayLabelRequest(DaraModel):
         self,
         labels: Dict[str, str] = None,
     ):
+        # The custom gateway labels.
+        # 
         # This parameter is required.
         self.labels = labels
 

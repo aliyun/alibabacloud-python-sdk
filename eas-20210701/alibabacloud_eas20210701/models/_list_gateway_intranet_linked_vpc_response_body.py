@@ -14,9 +14,9 @@ class ListGatewayIntranetLinkedVpcResponseBody(DaraModel):
         intranet_linked_vpc_list: List[main_models.ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList] = None,
         request_id: str = None,
     ):
-        # The private gateway ID.
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The internal endpoints.
+        # The list of internal access endpoints.
         self.intranet_linked_vpc_list = intranet_linked_vpc_list
         # The request ID.
         self.request_id = request_id
@@ -72,43 +72,23 @@ class ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account that owns the VPC.
         self.account_id = account_id
+        # Indicates whether authoritative DNS resolution is enabled. Default value: false.
         self.authoritative_dns_enabled = authoritative_dns_enabled
         # The IP address.
         self.ip = ip
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The state of the private gateway.
+        # The status. Valid values:
         # 
-        # Valid values:
+        # - Creating: The endpoint is being created.
         # 
-        # *   Creating
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The private gateway is being created.
-        # 
-        #     <!-- -->
-        # 
-        # *   Running
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     The private gateway is running.
-        # 
-        #     <!-- -->
+        # - Running: The endpoint is running.
         self.status = status
-        # The vSwitch ID.
+        # The ID of the virtual switch.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):

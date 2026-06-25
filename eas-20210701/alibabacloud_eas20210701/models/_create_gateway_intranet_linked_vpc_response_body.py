@@ -11,9 +11,9 @@ class CreateGatewayIntranetLinkedVpcResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The private gateway ID.
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id

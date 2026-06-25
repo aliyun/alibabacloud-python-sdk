@@ -46,6 +46,9 @@ from ._create_gateway_intranet_linked_vpc_peer_request import CreateGatewayIntra
 from ._create_gateway_intranet_linked_vpc_peer_shrink_request import CreateGatewayIntranetLinkedVpcPeerShrinkRequest
 from ._create_gateway_intranet_linked_vpc_peer_response_body import CreateGatewayIntranetLinkedVpcPeerResponseBody
 from ._create_gateway_intranet_linked_vpc_peer_response import CreateGatewayIntranetLinkedVpcPeerResponse
+from ._create_group_request import CreateGroupRequest
+from ._create_group_response_body import CreateGroupResponseBody
+from ._create_group_response import CreateGroupResponse
 from ._create_resource_request import CreateResourceRequest
 from ._create_resource_response_body import CreateResourceResponseBody
 from ._create_resource_response import CreateResourceResponse
@@ -104,6 +107,9 @@ from ._delete_gateway_label_request import DeleteGatewayLabelRequest
 from ._delete_gateway_label_shrink_request import DeleteGatewayLabelShrinkRequest
 from ._delete_gateway_label_response_body import DeleteGatewayLabelResponseBody
 from ._delete_gateway_label_response import DeleteGatewayLabelResponse
+from ._delete_group_request import DeleteGroupRequest
+from ._delete_group_response_body import DeleteGroupResponseBody
+from ._delete_group_response import DeleteGroupResponse
 from ._delete_resource_request import DeleteResourceRequest
 from ._delete_resource_response_body import DeleteResourceResponseBody
 from ._delete_resource_response import DeleteResourceResponse
@@ -245,6 +251,7 @@ from ._list_gateway_intranet_supported_zone_request import ListGatewayIntranetSu
 from ._list_gateway_intranet_supported_zone_response_body import ListGatewayIntranetSupportedZoneResponseBody
 from ._list_gateway_intranet_supported_zone_response import ListGatewayIntranetSupportedZoneResponse
 from ._list_groups_request import ListGroupsRequest
+from ._list_groups_shrink_request import ListGroupsShrinkRequest
 from ._list_groups_response_body import ListGroupsResponseBody
 from ._list_groups_response import ListGroupsResponse
 from ._list_resource_instance_worker_request import ListResourceInstanceWorkerRequest
@@ -369,12 +376,15 @@ from ._update_service_version_response import UpdateServiceVersionResponse
 from ._update_virtual_resource_request import UpdateVirtualResourceRequest
 from ._update_virtual_resource_response_body import UpdateVirtualResourceResponseBody
 from ._update_virtual_resource_response import UpdateVirtualResourceResponse
+from ._group import GroupLabels
+from ._group import GroupNetwork
 from ._resource_instance import ResourceInstanceLabels
 from ._service import ServiceInstanceCountInResource
 from ._service import ServiceLabels
 from ._attach_gateway_domain_request import AttachGatewayDomainRequestCustomDomain
 from ._create_acl_policy_request import CreateAclPolicyRequestAclPolicyList
 from ._create_gateway_intranet_linked_vpc_peer_request import CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs
+from ._create_group_request import CreateGroupRequestNetwork
 from ._create_resource_request import CreateResourceRequestSelfManagedResourceOptionsNodeTolerations
 from ._create_resource_request import CreateResourceRequestSelfManagedResourceOptions
 from ._create_service_auto_scaler_request import CreateServiceAutoScalerRequestBehaviorOnZero
@@ -425,6 +435,7 @@ from ._list_service_instance_fault_injection_info_response_body import ListServi
 from ._list_service_versions_response_body import ListServiceVersionsResponseBodyVersions
 from ._list_tenant_addons_response_body import ListTenantAddonsResponseBodyAddons
 from ._list_virtual_resource_response_body import ListVirtualResourceResponseBodyVirtualResources
+from ._update_group_request import UpdateGroupRequestNetwork
 from ._update_resource_request import UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations
 from ._update_resource_request import UpdateResourceRequestSelfManagedResourceOptions
 from ._update_service_auto_scaler_request import UpdateServiceAutoScalerRequestBehaviorOnZero
@@ -482,6 +493,9 @@ __all__ = [
     CreateGatewayIntranetLinkedVpcPeerShrinkRequest,
     CreateGatewayIntranetLinkedVpcPeerResponseBody,
     CreateGatewayIntranetLinkedVpcPeerResponse,
+    CreateGroupRequest,
+    CreateGroupResponseBody,
+    CreateGroupResponse,
     CreateResourceRequest,
     CreateResourceResponseBody,
     CreateResourceResponse,
@@ -540,6 +554,9 @@ __all__ = [
     DeleteGatewayLabelShrinkRequest,
     DeleteGatewayLabelResponseBody,
     DeleteGatewayLabelResponse,
+    DeleteGroupRequest,
+    DeleteGroupResponseBody,
+    DeleteGroupResponse,
     DeleteResourceRequest,
     DeleteResourceResponseBody,
     DeleteResourceResponse,
@@ -681,6 +698,7 @@ __all__ = [
     ListGatewayIntranetSupportedZoneResponseBody,
     ListGatewayIntranetSupportedZoneResponse,
     ListGroupsRequest,
+    ListGroupsShrinkRequest,
     ListGroupsResponseBody,
     ListGroupsResponse,
     ListResourceInstanceWorkerRequest,
@@ -805,12 +823,15 @@ __all__ = [
     UpdateVirtualResourceRequest,
     UpdateVirtualResourceResponseBody,
     UpdateVirtualResourceResponse,
+    GroupLabels,
+    GroupNetwork,
     ResourceInstanceLabels,
     ServiceInstanceCountInResource,
     ServiceLabels,
     AttachGatewayDomainRequestCustomDomain,
     CreateAclPolicyRequestAclPolicyList,
     CreateGatewayIntranetLinkedVpcPeerRequestPeerVpcs,
+    CreateGroupRequestNetwork,
     CreateResourceRequestSelfManagedResourceOptionsNodeTolerations,
     CreateResourceRequestSelfManagedResourceOptions,
     CreateServiceAutoScalerRequestBehaviorOnZero,
@@ -861,6 +882,7 @@ __all__ = [
     ListServiceVersionsResponseBodyVersions,
     ListTenantAddonsResponseBodyAddons,
     ListVirtualResourceResponseBodyVirtualResources,
+    UpdateGroupRequestNetwork,
     UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations,
     UpdateResourceRequestSelfManagedResourceOptions,
     UpdateServiceAutoScalerRequestBehaviorOnZero,

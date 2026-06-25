@@ -16,15 +16,15 @@ class DescribeServiceEventResponseBody(DaraModel):
         total_count: int = None,
         total_page_num: int = None,
     ):
-        # The events.
+        # The list of events.
         self.events = events
-        # The page number.
+        # The current page number.
         self.page_num = page_num
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total count of events.
         self.total_count = total_count
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -88,17 +88,23 @@ class DescribeServiceEventResponseBodyEvents(DaraModel):
         time: str = None,
         type: str = None,
     ):
-        # The returned message. The message is formatted and returned in the JSON format.
+        # The event message, which is a JSON-formatted string.
         self.message = message
-        # The cause of the event. The information about the change in the service status is returned.
+        # The reason for the event, which indicates a change in the service status.
         self.reason = reason
+        # The resource type. Valid values:
+        # 
+        # - Service: a service.
+        # 
+        # - Pod: a service instance.
         self.resource = resource
-        # The time when the event occurred. The time must be in UTC.
+        # The time when the event occurred, in UTC.
         self.time = time
         # The event type. Valid values:
         # 
-        # *   Normal
-        # *   Warning
+        # - Normal: a normal event.
+        # 
+        # - Warning: a warning event.
         self.type = type
 
     def validate(self):

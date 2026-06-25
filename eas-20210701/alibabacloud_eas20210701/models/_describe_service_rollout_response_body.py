@@ -11,7 +11,9 @@ class DescribeServiceRolloutResponseBody(DaraModel):
         request_id: str = None,
         rollout: main_models.DescribeServiceRolloutResponseBodyRollout = None,
     ):
+        # The request ID. This ID is unique to each request and is used for troubleshooting.
         self.request_id = request_id
+        # Details of the service rollout, including the rollout strategy (`Strategy`) and execution status (`Status`).
         self.rollout = rollout
 
     def validate(self):
@@ -48,7 +50,9 @@ class DescribeServiceRolloutResponseBodyRollout(DaraModel):
         status: main_models.DescribeServiceRolloutResponseBodyRolloutStatus = None,
         strategy: main_models.DescribeServiceRolloutResponseBodyRolloutStrategy = None,
     ):
+        # The current progress and phase of the rollout.
         self.status = status
+        # The rollout strategy configuration. This object contains the parameters for a canary release or batch release.
         self.strategy = strategy
 
     def validate(self):
@@ -88,7 +92,9 @@ class DescribeServiceRolloutResponseBodyRolloutStrategy(DaraModel):
         batch: main_models.DescribeServiceRolloutResponseBodyRolloutStrategyBatch = None,
         partition: main_models.DescribeServiceRolloutResponseBodyRolloutStrategyPartition = None,
     ):
+        # The configuration for a batch release. This object is returned only when the batch release strategy is used.
         self.batch = batch
+        # The configuration for a canary release. This object is returned only when the canary release strategy is used.
         self.partition = partition
 
     def validate(self):
@@ -127,6 +133,7 @@ class DescribeServiceRolloutResponseBodyRolloutStrategyPartition(DaraModel):
         self,
         partition: str = None,
     ):
+        # Specifies the number or percentage of old replicas to keep. For example, a value of `50%` indicates that 50% of the old replicas are retained.
         self.partition = partition
 
     def validate(self):
@@ -155,7 +162,9 @@ class DescribeServiceRolloutResponseBodyRolloutStrategyBatch(DaraModel):
         batch_size: str = None,
         interval: str = None,
     ):
+        # The number or percentage of replicas to update in each batch.
         self.batch_size = batch_size
+        # The time to wait between batches.
         self.interval = interval
 
     def validate(self):
@@ -194,11 +203,27 @@ class DescribeServiceRolloutResponseBodyRolloutStatus(DaraModel):
         update_revision: str = None,
         updated_replicas: int = None,
     ):
+        # The identifier for the currently running revision.
         self.current_revision = current_revision
+        # The scheduled start time for the next batch.
         self.next_batch_start_time = next_batch_start_time
+        # The current release phase. Valid values:
+        # 
+        # - `Pending`: The rollout is waiting to start.
+        # 
+        # - `Running`: The rollout is in progress.
+        # 
+        # - `Paused`: The rollout is paused.
+        # 
+        # - `Completed`: The rollout is complete.
+        # 
+        # - `Failed`: The rollout has failed.
         self.phase = phase
+        # The total number of desired replicas for the service.
         self.total_replicas = total_replicas
+        # The identifier for the target revision.
         self.update_revision = update_revision
+        # The number of replicas updated to the new revision.
         self.updated_replicas = updated_replicas
 
     def validate(self):

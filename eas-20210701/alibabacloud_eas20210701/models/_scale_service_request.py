@@ -12,8 +12,11 @@ class ScaleServiceRequest(DaraModel):
         instance: int = None,
         instances_to_delete: List[str] = None,
     ):
+        # The target number of instances.
+        # 
         # This parameter is required.
         self.instance = instance
+        # A list of instance names to prioritize for removal during a scale-in operation.
         self.instances_to_delete = instances_to_delete
 
     def validate(self):

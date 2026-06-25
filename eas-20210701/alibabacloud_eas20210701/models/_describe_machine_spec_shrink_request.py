@@ -11,9 +11,11 @@ class DescribeMachineSpecShrinkRequest(DaraModel):
         instance_types_shrink: str = None,
         resource_type: str = None,
     ):
+        # The billing method. The default value is \\`PostPaid\\`.
         self.charge_type = charge_type
         # This parameter is deprecated.
         self.instance_types_shrink = instance_types_shrink
+        # The resource type. The default value is \\`Public\\`.
         self.resource_type = resource_type
 
     def validate(self):

@@ -20,79 +20,29 @@ class ResourceInstanceWorker(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The maximum number of CPU cores.
+        # The CPU core limit.
         self.cpu_limit = cpu_limit
-        # The number of CPU cores that you applied for.
+        # The number of CPU cores requested.
         self.cpu_request = cpu_request
-        # The maximum number of GPUs.
+        # The GPU limit.
         self.gpu_limit = gpu_limit
-        # The number of GPUs that you applied for.
+        # The number of GPUs requested.
         self.gpu_request = gpu_request
-        # The maximum memory size.
+        # The memory limit.
         self.memory_limit = memory_limit
-        # The memory size that you applied for.
+        # The requested memory.
         self.memory_rquest = memory_rquest
         # The name of the service instance.
         self.name = name
-        # Indicates whether the instance worker is ready.
+        # Indicates whether the instance is ready.
         self.ready = ready
-        # The number of times the instance worker restarted.
+        # The number of times the instance has been restarted.
         self.restart_count = restart_count
-        # The service name.
+        # The name of the service.
         self.service_name = service_name
-        # The time when the instance worker started.
+        # The start time of the instance, in UTC (ISO 8601 format).
         self.start_time = start_time
-        # The instance state.
-        # 
-        # Valid values:
-        # 
-        # *   Terminating
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Succeeded
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Unknown
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Failed
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Running
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Pending
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the instance.
         self.status = status
 
     def validate(self):

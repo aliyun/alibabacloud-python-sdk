@@ -38,246 +38,91 @@ class ListServicesRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.accessibility = accessibility
+        # Specifies whether to enable Auto Scaling for the service.
         self.autoscaler_enabled = autoscaler_enabled
+        # The UID of the account that created the service.
         self.caller_uid = caller_uid
+        # Specifies whether to enable scheduled auto scaling for the service.
         self.cronscaler_enabled = cronscaler_enabled
-        # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
+        # The keyword for a fuzzy search. This parameter supports fuzzy searches by service name only.
         self.filter = filter
         # The private gateway ID.
         self.gateway = gateway
-        # The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+        # The name of the service group. To learn how to obtain this name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
         self.group_name = group_name
+        # Specifies whether to include services that do not belong to any workspace. The default value is true.
         self.include_no_workspace = include_no_workspace
-        # The tag that is used to filter services.
+        # Filters services by label.
         self.label = label
-        # The sorting order. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   desc (default): The query results are sorted in descending order.
-        # *   asc: The query results are sorted in ascending order.
+        # - `desc` (default): descending.
+        # 
+        # - `asc`: ascending.
         self.order = order
-        # The page number. Default value: 1.
+        # The page number of the results to return. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of services to return per page. The default value is 100.
         self.page_size = page_size
-        # The ID of the primary service that corresponds to the Band member service.
+        # The UID of the primary service. This parameter applies to member services in a service group.
         self.parent_service_uid = parent_service_uid
         # The quota ID.
         self.quota_id = quota_id
+        # The custom name of the resource group.
         self.resource_alias_name = resource_alias_name
+        # Specifies whether to enable a burstable resource pool for the service.
         self.resource_burstable = resource_burstable
+        # The ID of the resource group. To learn how to query for this ID, see [ListResources](https://help.aliyun.com/document_detail/412133.html).
         self.resource_id = resource_id
-        # The name or ID of the resource group to which the service belongs.
+        # The name or ID of the service\\"s resource group.
         self.resource_name = resource_name
+        # The type of resource the service uses. Valid values:
+        # 
+        # - PublicResource
+        # 
+        # - DedicatedResource
+        # 
+        # - Lingjun
+        # 
+        # - SelfManagedLingjun
         self.resource_type = resource_type
-        # The server role.
-        # 
-        # Valid values:
-        # 
-        # *   DataLoader
-        # *   FrontEnd
-        # *   DataSet
-        # *   SDProxy
-        # *   LLMSscheduler
-        # *   ScalableJob
-        # *   LLMGateway
-        # *   Job
-        # *   Queue
+        # The service role.
         self.role = role
         # The service name.
         self.service_name = service_name
-        # The service state.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Stopped
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Failed
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Complete
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Cloning
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Stopping
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Updating
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Waiting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   HotUpdate
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Committing
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Starting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DeleteFailed
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Running
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Developing
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Scaling
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Deleted
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Pending
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Deleting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the service.
         self.service_status = service_status
         # The service type. Valid values:
         # 
-        # *   Async
-        # *   Standard
-        # *   Offline Task
-        # *   Proxima
+        # - Async
         # 
-        # Valid values:
+        # - Standard
         # 
-        # *   Async
+        # - Queue
         # 
-        #     <!-- -->
+        # - LLM
         # 
-        #     <!-- -->
+        # - RAG
         # 
-        #     <!-- -->
+        # - Serverless
         # 
-        # *   Standard
+        # - LLMGatewayService
         # 
-        #     <!-- -->
+        # - OfflineTask
         # 
-        #     <!-- -->
+        # - SDCluster
         # 
-        #     <!-- -->
+        # - ScalableJob
         # 
-        # *   OfflineTask
+        # - ScalableJobService
         # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Proxima
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # - AssistantJob
         self.service_type = service_type
-        # The user ID (UID) of the service.
+        # The service UID.
         self.service_uid = service_uid
-        # The sort field. By default, the query results are sorted by the timestamp type in descending order.
+        # The sort field. By default, results are sorted by timestamp in descending order.
         self.sort = sort
+        # Specifies whether the service accepts group traffic. This parameter applies only to services within a service group.
         self.traffic_state = traffic_state
         # The workspace ID.
         self.workspace_id = workspace_id
