@@ -17,13 +17,20 @@ class CreateSessionInput(DaraModel):
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        # A value of false (the default) allows an expired session ID to be reused for a new session, which the system then binds to a new instance. If set to true, an expired session ID cannot be reused.
         self.disable_session_id_reuse = disable_session_id_reuse
         self.juice_fs_config = juice_fs_config
+        # Allows instances in the session to access specified NAS resources.
         self.nas_config = nas_config
+        # Allows instances in the session to access specified OSS resources.
         self.oss_mount_config = oss_mount_config
+        # Allows instances in the session to access specified PolarFS resources.
         self.polar_fs_config = polar_fs_config
+        # A customizable session ID. If you do not specify a value, the server generates one. This parameter applies only to the HEADER_FIELD affinity mode. The value must be 0 to 64 characters long. The first character must be a character in **a-zA-Z0-9_**. Subsequent characters can be any character in **a-zA-Z0-9_-**.
         self.session_id = session_id
+        # The session idle timeout in seconds.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        # The session lifetime in seconds.
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):

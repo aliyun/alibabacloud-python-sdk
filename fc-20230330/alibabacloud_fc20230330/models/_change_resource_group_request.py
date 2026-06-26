@@ -10,7 +10,7 @@ class ChangeResourceGroupRequest(DaraModel):
         self,
         body: main_models.ChangeResourceGroupInput = None,
     ):
-        # The request details for updating the resource group.
+        # The request body to change the resource group.
         self.body = body
 
     def validate(self):

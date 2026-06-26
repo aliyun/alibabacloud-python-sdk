@@ -11,7 +11,7 @@ class PutProvisionConfigRequest(DaraModel):
         body: main_models.PutProvisionConfigInput = None,
         qualifier: str = None,
     ):
-        # The provisioned configuration information.
+        # The provisioned configuration.
         # 
         # This parameter is required.
         self.body = body

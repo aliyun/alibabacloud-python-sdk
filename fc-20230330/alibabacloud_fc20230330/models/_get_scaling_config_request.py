@@ -9,7 +9,7 @@ class GetScalingConfigRequest(DaraModel):
         self,
         qualifier: str = None,
     ):
-        # The alias of the function.
+        # The function alias.
         self.qualifier = qualifier
 
     def validate(self):

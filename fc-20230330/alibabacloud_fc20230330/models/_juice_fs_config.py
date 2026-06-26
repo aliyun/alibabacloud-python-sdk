@@ -13,7 +13,9 @@ class JuiceFsConfig(DaraModel):
         envs: Dict[str, str] = None,
         mount_points: List[main_models.JuiceFsMountConfig] = None,
     ):
+        # A map of environment variables (key-value pairs) to set for the JuiceFS client.
         self.envs = envs
+        # An array of JuiceFsMountConfig objects, each specifying the configuration for a mount point.
         self.mount_points = mount_points
 
     def validate(self):

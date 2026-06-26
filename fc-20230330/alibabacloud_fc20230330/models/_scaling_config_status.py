@@ -22,16 +22,27 @@ class ScalingConfigStatus(DaraModel):
         scheduled_policies: List[main_models.ScheduledPolicy] = None,
         target_instances: int = None,
     ):
+        # The error message that is returned when an instance fails to be created.
         self.current_error = current_error
+        # The current number of instances.
         self.current_instances = current_instances
+        # Specifies whether mix mode is enabled.
         self.enable_mix_mode = enable_mix_mode
+        # Specifies whether on-demand scaling is enabled.
         self.enable_on_demand_scaling = enable_on_demand_scaling
+        # The resource identifier of the function.
         self.function_arn = function_arn
+        # The horizontal scaling policies.
         self.horizontal_scaling_policies = horizontal_scaling_policies
+        # The minimum number of instances.
         self.min_instances = min_instances
+        # The request dispatch policy.
         self.request_dispatch_policy = request_dispatch_policy
+        # The ID of the resident resource pool.
         self.resident_pool_id = resident_pool_id
+        # The scheduled scaling policies.
         self.scheduled_policies = scheduled_policies
+        # The target number of instances.
         self.target_instances = target_instances
 
     def validate(self):

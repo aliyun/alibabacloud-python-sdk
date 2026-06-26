@@ -18,17 +18,17 @@ class ListTagResourcesRequest(DaraModel):
     ):
         # The number of resources to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # The resource IDs.
+        # The list of resource IDs.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags.
         # 
-        # You can query up to 20 tags at a time.
+        # You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -91,11 +91,11 @@ class ListTagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be up to 128 characters in length and can be an empty string.
+        # The tag value can be up to 128 characters in length. It can be an empty string.
         self.value = value
 
     def validate(self):

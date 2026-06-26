@@ -10,7 +10,7 @@ class UpdateAliasRequest(DaraModel):
         self,
         body: main_models.UpdateAliasInput = None,
     ):
-        # The alias information to be updated.
+        # The alias information to update.
         # 
         # This parameter is required.
         self.body = body

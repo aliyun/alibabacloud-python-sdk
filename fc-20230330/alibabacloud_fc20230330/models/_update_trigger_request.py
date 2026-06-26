@@ -10,7 +10,7 @@ class UpdateTriggerRequest(DaraModel):
         self,
         body: main_models.UpdateTriggerInput = None,
     ):
-        # The trigger configurations.
+        # The trigger configuration.
         # 
         # This parameter is required.
         self.body = body

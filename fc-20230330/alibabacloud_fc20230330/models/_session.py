@@ -28,27 +28,31 @@ class Session(DaraModel):
         self.container_id = container_id
         # The time when the session was created.
         self.created_time = created_time
+        # Specifies whether an expired session ID can be reused. If `true`, an expired session ID cannot be reused. If `false` (the default), sending a request with an expired session ID creates a new session bound to a new instance.
         self.disable_session_id_reuse = disable_session_id_reuse
-        # The name of the function to which the session belongs.
+        # The name of the function associated with the session.
         self.function_name = function_name
+        # The JuiceFS mount configuration, enabling the associated function instance to access specified JuiceFS resources.
         self.juice_fs_config = juice_fs_config
         # The time when the session was last updated.
         self.last_modified_time = last_modified_time
-        # The File Storage NAS (NAS) configuration. Once configured, the instance associated with the session can access designated NAS resources.
+        # The NAS configuration, enabling the associated function instance to access specified NAS resources.
         self.nas_config = nas_config
+        # The OSS mount configuration, enabling the associated function instance to access specified OSS resources.
         self.oss_mount_config = oss_mount_config
+        # The PolarFS mount configuration, enabling the associated function instance to access specified PolarFS resources.
         self.polar_fs_config = polar_fs_config
-        # The qualifier specified when creating a session. If not provided, the default value is LATEST.
+        # The qualifier, which specifies a function version or alias. Defaults to `LATEST` if unspecified.
         self.qualifier = qualifier
-        # The session affinity type.
+        # The type of session affinity.
         self.session_affinity_type = session_affinity_type
-        # The unique identifier of the function session.
+        # The unique identifier for the function session.
         self.session_id = session_id
-        # The timeout period for idle sessions.
+        # The maximum duration, in seconds, that the session can be idle before it expires.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
-        # The session status, which can be either Active (session is valid) or Expired (session has expired).
+        # The status of the session. `Active` indicates the session is valid, and `Expired` indicates it is no longer valid.
         self.session_status = session_status
-        # The maximum session lifecycle.
+        # The maximum lifespan of the session, in seconds.
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):

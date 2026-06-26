@@ -15,17 +15,17 @@ class ListTagResourcesShrinkRequest(DaraModel):
     ):
         # The number of resources to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # The resource IDs.
+        # The list of resource IDs.
         self.resource_id_shrink = resource_id_shrink
-        # The type of the resource.
+        # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # The list of tags.
         # 
-        # You can query up to 20 tags at a time.
+        # You can specify up to 20 tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

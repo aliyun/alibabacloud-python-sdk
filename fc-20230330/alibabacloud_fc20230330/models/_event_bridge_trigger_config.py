@@ -15,27 +15,29 @@ class EventBridgeTriggerConfig(DaraModel):
         run_options: main_models.RunOptions = None,
         trigger_enable: bool = None,
     ):
-        # Whether to invoke the function in asynchronous mode. Valid values:
+        # The method used by the trigger to invoke the function. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: synchronous call.
         # 
-        # >  The default value is **false**.
+        # - **false**: asynchronous invocation.
+        # 
+        # > Default value: **false**
         self.async_invocation_type = async_invocation_type
-        # The event pattern. The value is in the JSON format. For more information, see [Event patterns](https://help.aliyun.com/document_detail/181432.html).
+        # Event pattern. Use JSON format. For detailed rules, see [event pattern](https://help.aliyun.com/document_detail/181432.html).
         self.event_rule_filter_pattern = event_rule_filter_pattern
-        # The event destination configurations.
+        # Event target configuration
         self.event_sink_config = event_sink_config
-        # The event source configurations.
+        # Event source configuration.
         self.event_source_config = event_source_config
-        # The runtime configurations.
+        # Environment parameter configuration
         self.run_options = run_options
         # Whether to enable the trigger. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: enable the trigger.
         # 
-        # >  The default value is **true**.
+        # - **false**: disable the trigger.
+        # 
+        # > Default value: **true**
         self.trigger_enable = trigger_enable
 
     def validate(self):

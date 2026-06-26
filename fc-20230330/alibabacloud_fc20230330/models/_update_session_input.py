@@ -16,12 +16,19 @@ class UpdateSessionInput(DaraModel):
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        # Defaults to `false`. If set to `false`, you can reuse a `SessionID` to start a new session on a new instance after the original session expires. If set to `true`, you cannot reuse a `SessionID` after its session expires.
         self.disable_session_id_reuse = disable_session_id_reuse
+        # The JuiceFS configuration.
         self.juice_fs_config = juice_fs_config
+        # The NAS configuration.
         self.nas_config = nas_config
+        # The OSS mount configuration.
         self.oss_mount_config = oss_mount_config
+        # The PolarFS configuration.
         self.polar_fs_config = polar_fs_config
+        # The session idle timeout, in seconds.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        # The session duration, in seconds.
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):

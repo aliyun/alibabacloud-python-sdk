@@ -32,6 +32,7 @@ class UpdateFunctionInput(DaraModel):
         layers: List[str] = None,
         log_config: main_models.LogConfig = None,
         memory_size: int = None,
+        micro_sandbox_config: main_models.MicroSandboxConfig = None,
         nas_config: main_models.NASConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
         polar_fs_config: main_models.PolarFsConfig = None,
@@ -43,60 +44,73 @@ class UpdateFunctionInput(DaraModel):
         tracing_config: main_models.TracingConfig = None,
         vpc_config: main_models.VPCConfig = None,
     ):
-        # The code package of the function. Configure either code or customContainerConfig.
+        # The ZIP package of the function code. Specify either code or customContainerConfig.
         self.code = code
-        # The CPU power allocated to the function. Unit: vCPUs. The value must be a multiple of 0.05.
+        # The CPU specification of the function. Unit: vCPU. The value must be a multiple of 0.05 vCPU.
         self.cpu = cpu
-        # The configurations of the Custom Container runtime. After you configure a Custom Container runtime for your function, Function Compute can execute the function in a custom container image. Configure either code or customContainerConfig.
+        # The configuration of the custom container runtime. After this parameter is configured, the function can use a custom container image for execution. Specify either code or customContainerConfig.
         self.custom_container_config = custom_container_config
-        # The custom DNS settings of the function.
+        # The custom DNS configuration.
         self.custom_dns = custom_dns
-        # The configurations of the custom runtime.
+        # The custom runtime configuration.
         self.custom_runtime_config = custom_runtime_config
         # The description of the function.
         self.description = description
+        # Specifies whether to disable STS token injection. Valid values:
+        # - None: STS tokens are injected in all methods.
+        # - Env: STS tokens are not injected through environment variables.
+        # - Request: STS tokens are not injected through requests, including context and headers.
+        # - All: STS tokens are not injected in any method.
         self.disable_inject_credentials = disable_inject_credentials
+        # Specifies whether to disable the creation of on-demand instances. If this feature is enabled, on-demand instances are not created, and only provisioned instances can be used.
         self.disable_ondemand = disable_ondemand
-        # The disk size of the function. Unit: MB. Valid values: 512 and 10240.
+        # The disk specification of the function. Unit: MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
+        # Specifies whether to allow provisioned instances of GPU functions to be long-running. When this feature is enabled, function instances that are created are not injected with STS tokens.
         self.enable_long_living = enable_long_living
-        # The environment variables of the function. You can access the specified environment variables in the runtime.
+        # The environment variables of the function. You can access the configured environment variables in the runtime environment.
         self.environment_variables = environment_variables
-        # The GPU configurations of the function.
+        # The GPU configuration of the function.
         self.gpu_config = gpu_config
-        # The handler of the function. The format of the handler is related to the runtime you use.
+        # The function entry point. The specific format depends on the runtime.
         self.handler = handler
+        # The deferred release time of the instance.
         self.idle_timeout = idle_timeout
-        # The maximum number of requests that a function instance can process at a time.
+        # The maximum concurrency of an instance.
         self.instance_concurrency = instance_concurrency
+        # The instance isolation mode.
         self.instance_isolation_mode = instance_isolation_mode
-        # The configurations of instance lifecycle hooks.
+        # The instance lifecycle hook configuration.
         self.instance_lifecycle_config = instance_lifecycle_config
-        # Specifies whether to allow the function to access the Internet.
+        # Specifies whether to allow access to the Internet.
         self.internet_access = internet_access
         self.juice_fs_config = juice_fs_config
-        # The layers. Multiple layers are merged based on the order of array subscripts. If two layers have the same file name, the content of the layer with the smaller subscript will overwrite the content of the layer with the larger subscript.
+        # The list of layers. Multiple layers are merged in descending order of array index. Files in a layer with a smaller index overwrite files with the same name in a layer with a larger index.
         self.layers = layers
-        # The logging configurations. Logs generated by the function are written to the specified Logstore.
+        # The log configuration. Logs generated by the function are written to the configured Logstore.
         self.log_config = log_config
-        # The memory capacity for the function. Unit: MB. The value must be a multiple of 64. The capacity varies based on the type of the function instance.
+        # The memory specification of the function. Unit: MB. The value must be a multiple of 64 MB. The memory specification varies based on the function instance type.
         self.memory_size = memory_size
-        # The File Storage NAS (NAS) configurations. The configurations allow the function to access the specified NAS file system.
+        self.micro_sandbox_config = micro_sandbox_config
+        # The NAS configuration. After this parameter is configured, the function can access the specified NAS resources.
         self.nas_config = nas_config
-        # The Object Storage Service (OSS) mounting configurations.
+        # The OSS mount configuration.
         self.oss_mount_config = oss_mount_config
+        # The PolarFs configuration. After this parameter is configured, the function can access the specified PolarFs resources.
         self.polar_fs_config = polar_fs_config
-        # The Resource Access Management (RAM) role that grants the necessary permissions to Function Compute. The role can be used in the following scenarios: 1. When Function Compute sends logs generated by the function to your Logstore. 2. When Function Compute obtains a Security Token Service (STS) token, which serves as a temporary key for your function to access other Alibaba Cloud services.
+        # The Alibaba Cloud Resource Access Management (RAM) role that grants Function Compute the required permissions. Scenarios include: 1. Sending logs generated by the function to your Logstore. 2. Generating temporary access tokens for the function to access other cloud resources during the execute procedure.
         self.role = role
-        # The runtime of the function.
+        # The runtime environment of the function.
         self.runtime = runtime
+        # The affinity policy for Function Compute invocation requests. To implement request affinity for the MCP SSE protocol, set this parameter to MCP_SSE. To use cookie-based affinity, set this parameter to GENERATED_COOKIE. To use header-based affinity, set this parameter to HEADER_FIELD. If this parameter is not set or is set to NONE, no affinity is applied, and requests are routed based on the default scheduling policy of Function Compute.
         self.session_affinity = session_affinity
+        # The affinity configuration that corresponds to the sessionAffinity type. For MCP_SSE affinity, configure MCPSSESessionAffinityConfig. For cookie-based affinity, configure CookieSessionAffinityConfig. For header field affinity, configure HeaderFieldSessionAffinityConfig.
         self.session_affinity_config = session_affinity_config
-        # The timeout period for function execution. Unit: seconds. Minimum value: 1. Default value: 3. The execution of the function is terminated when the timeout period expires.
+        # The timeout period for function execution. Unit: seconds. Minimum value: 1. Default value: 3. The function is terminated if it exceeds this time limit.
         self.timeout = timeout
-        # The configurations of Managed Service for OpenTelemetry. After Function Compute is integrated with Managed Service for OpenTelemetry, you can record the invocation duration of a request, view the cold start duration of a function, and track the execution duration of the function.
+        # The Tracing Analysis configuration. After Function Compute is integrated with Tracing Analysis, you can record the time consumed by requests in Function Compute, view the cold start time of functions, and record the time consumed by internal function operations.
         self.tracing_config = tracing_config
-        # The Virtual Private Cloud (VPC) configurations. The configurations allow the function to access the specified VPC resources.
+        # The VPC configuration. After this parameter is configured, the function can access the specified VPC resources.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -116,6 +130,8 @@ class UpdateFunctionInput(DaraModel):
             self.juice_fs_config.validate()
         if self.log_config:
             self.log_config.validate()
+        if self.micro_sandbox_config:
+            self.micro_sandbox_config.validate()
         if self.nas_config:
             self.nas_config.validate()
         if self.oss_mount_config:
@@ -197,6 +213,9 @@ class UpdateFunctionInput(DaraModel):
 
         if self.memory_size is not None:
             result['memorySize'] = self.memory_size
+
+        if self.micro_sandbox_config is not None:
+            result['microSandboxConfig'] = self.micro_sandbox_config.to_map()
 
         if self.nas_config is not None:
             result['nasConfig'] = self.nas_config.to_map()
@@ -305,6 +324,10 @@ class UpdateFunctionInput(DaraModel):
 
         if m.get('memorySize') is not None:
             self.memory_size = m.get('memorySize')
+
+        if m.get('microSandboxConfig') is not None:
+            temp_model = main_models.MicroSandboxConfig()
+            self.micro_sandbox_config = temp_model.from_map(m.get('microSandboxConfig'))
 
         if m.get('nasConfig') is not None:
             temp_model = main_models.NASConfig()

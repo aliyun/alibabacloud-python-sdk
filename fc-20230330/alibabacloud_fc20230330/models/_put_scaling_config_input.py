@@ -18,12 +18,19 @@ class PutScalingConfigInput(DaraModel):
         resident_pool_id: str = None,
         scheduled_policies: List[main_models.ScheduledPolicy] = None,
     ):
+        # Specifies whether to enable the mix mode.
         self.enable_mix_mode = enable_mix_mode
+        # Specifies whether to enable on-demand scaling.
         self.enable_on_demand_scaling = enable_on_demand_scaling
+        # The horizontal scaling policies.
         self.horizontal_scaling_policies = horizontal_scaling_policies
+        # The minimum number of instances.
         self.min_instances = min_instances
+        # The request dispatch policy.
         self.request_dispatch_policy = request_dispatch_policy
+        # The ID of the resident resource pool.
         self.resident_pool_id = resident_pool_id
+        # The scheduled elastic policies.
         self.scheduled_policies = scheduled_policies
 
     def validate(self):

@@ -22,7 +22,35 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'fcv3.us-west-1.aliyuncs.com',
+            'us-east-1': 'fcv3.us-east-1.aliyuncs.com',
+            'me-central-1': 'me-central-1.fc.aliyuncs.com',
+            'eu-west-1': 'fcv3.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'fcv3.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'fcv3.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'fcv3.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'fcv3.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cn-shanghai-finance-1.fc.aliyuncs.com',
+            'cn-shanghai': 'fcv3.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'fcv3.cn-qingdao.aliyuncs.com',
+            'cn-huhehaote': 'fcv3.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'fcv3.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'cn-heyuan-acdr-1.fc.aliyuncs.com',
+            'cn-hangzhou-finance': 'cn-hangzhou-finance.fc.aliyuncs.com',
+            'cn-hangzhou': 'fcv3.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'fcv3.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'fcv3.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'fcv3.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-5': 'fcv3.ap-southeast-5.aliyuncs.com	',
+            'ap-southeast-3': 'fcv3.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'fcv3.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'fcv3.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'fcv3.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'fcv3.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'fcv3.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('fc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

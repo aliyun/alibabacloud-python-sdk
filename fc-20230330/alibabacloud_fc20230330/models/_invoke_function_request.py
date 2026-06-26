@@ -12,9 +12,9 @@ class InvokeFunctionRequest(DaraModel):
         body: BinaryIO = None,
         qualifier: str = None,
     ):
-        # The request parameters of function invocation.
+        # Function invocation parameter
         self.body = body
-        # The version or alias of the function.
+        # Function version or alias
         self.qualifier = qualifier
 
     def validate(self):

@@ -9,7 +9,7 @@ class DisableFunctionInvocationResponseBody(DaraModel):
         self,
         success: bool = None,
     ):
-        # Indicates whether the request is successful.
+        # Indicates whether the function invocation was successfully disabled.
         self.success = success
 
     def validate(self):

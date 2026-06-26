@@ -13,11 +13,11 @@ class UpdateAliasInput(DaraModel):
         description: str = None,
         version_id: str = None,
     ):
-        # The weight of the canary release version.
+        # Weight of the canary release version
         self.additional_version_weight = additional_version_weight
-        # The alias description.
+        # Description of the alias
         self.description = description
-        # The version to which the alias points.
+        # Version that the alias points to
         self.version_id = version_id
 
     def validate(self):

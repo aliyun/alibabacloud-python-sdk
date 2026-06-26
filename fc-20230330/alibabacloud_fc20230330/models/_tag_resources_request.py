@@ -10,7 +10,7 @@ class TagResourcesRequest(DaraModel):
         self,
         body: main_models.TagResourcesInput = None,
     ):
-        # The configuration of the resource tag.
+        # The resource tag configuration.
         # 
         # This parameter is required.
         self.body = body

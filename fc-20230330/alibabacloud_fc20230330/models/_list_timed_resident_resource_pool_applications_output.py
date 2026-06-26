@@ -7,20 +7,18 @@ from typing import List
 from alibabacloud_fc20230330 import models as main_models
 from darabonba.model import DaraModel
 
-class ListScalingConfigsOutput(DaraModel):
+class ListTimedResidentResourcePoolApplicationsOutput(DaraModel):
     def __init__(
         self,
+        applications: List[main_models.TimedResidentResourcePoolApplication] = None,
         next_token: str = None,
-        scaling_configs: List[main_models.ScalingConfigStatus] = None,
     ):
-        # Paging token for the next request.
+        self.applications = applications
         self.next_token = next_token
-        # Function scaling configuration information
-        self.scaling_configs = scaling_configs
 
     def validate(self):
-        if self.scaling_configs:
-            for v1 in self.scaling_configs:
+        if self.applications:
+            for v1 in self.applications:
                  if v1:
                     v1.validate()
 
@@ -29,26 +27,26 @@ class ListScalingConfigsOutput(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['applications'] = []
+        if self.applications is not None:
+            for k1 in self.applications:
+                result['applications'].append(k1.to_map() if k1 else None)
+
         if self.next_token is not None:
             result['nextToken'] = self.next_token
-
-        result['scalingConfigs'] = []
-        if self.scaling_configs is not None:
-            for k1 in self.scaling_configs:
-                result['scalingConfigs'].append(k1.to_map() if k1 else None)
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.applications = []
+        if m.get('applications') is not None:
+            for k1 in m.get('applications'):
+                temp_model = main_models.TimedResidentResourcePoolApplication()
+                self.applications.append(temp_model.from_map(k1))
+
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
-
-        self.scaling_configs = []
-        if m.get('scalingConfigs') is not None:
-            for k1 in m.get('scalingConfigs'):
-                temp_model = main_models.ScalingConfigStatus()
-                self.scaling_configs.append(temp_model.from_map(k1))
 
         return self
 

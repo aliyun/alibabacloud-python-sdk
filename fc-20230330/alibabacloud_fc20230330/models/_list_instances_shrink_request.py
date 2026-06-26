@@ -16,15 +16,21 @@ class ListInstancesShrinkRequest(DaraModel):
         start_time_ms: int = None,
         with_all_active: bool = None,
     ):
+        # The end time of the query range, specified as a UNIX timestamp in milliseconds.
         self.end_time_ms = end_time_ms
+        # A list of instance IDs to return.
         self.instance_ids_shrink = instance_ids_shrink
+        # An array of instance statuses. The operation returns only instances whose status is in this array.
         self.instance_status_shrink = instance_status_shrink
+        # The maximum number of instances to return.
         self.limit = limit
         # The function version or alias.
         self.qualifier = qualifier
+        # The token that specifies where to start the query. It is returned in a truncated response and can be used to retrieve the next page of results.
         self.start_key = start_key
+        # The start time of the query range, specified as a UNIX timestamp in milliseconds.
         self.start_time_ms = start_time_ms
-        # Specifies whether to list all instances. Valid values: true and false.
+        # Specifies whether to list all active instances.
         self.with_all_active = with_all_active
 
     def validate(self):

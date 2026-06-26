@@ -9,30 +9,36 @@ class ResidentResourcePool(DaraModel):
     def __init__(
         self,
         allocation_status: main_models.ResidentResourceAllocationStatus = None,
+        associated_pool_id: str = None,
         created_time: str = None,
         expire_time: str = None,
         last_modified_time: str = None,
+        pool_type: str = None,
         resident_resource_pool_id: str = None,
         resident_resource_pool_name: str = None,
         resource_pool_capacity: main_models.ResidentResourceCapacity = None,
         resource_pool_config: main_models.ResidentResourceCapacity = None,
+        timed_config: main_models.TimedPoolConfig = None,
     ):
-        # 资源池实时分配情况，包含每个函数的具体分配情况
+        # The real-time allocation status of the resource pool, including the specific allocation details for each function.
         self.allocation_status = allocation_status
-        # 代表创建时间的资源属性字段
+        self.associated_pool_id = associated_pool_id
+        # The resource property field that represents the creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.created_time = created_time
-        # 资源池过期时间
+        # The expiration time of the resource pool.
         self.expire_time = expire_time
-        # 上次修改时间，包含扩容、续费、更名等操作
+        # The last modification time, including operations such as scaling, renewal, and renaming.
         self.last_modified_time = last_modified_time
+        self.pool_type = pool_type
         self.resident_resource_pool_id = resident_resource_pool_id
-        # 代表资源名称的资源属性字段
+        # The resource property field that represents the resource name.
         self.resident_resource_pool_name = resident_resource_pool_name
-        # 资源池总体规格
+        # The overall specifications of the resource pool.
         self.resource_pool_capacity = resource_pool_capacity
         self.resource_pool_config = resource_pool_config
+        self.timed_config = timed_config
 
     def validate(self):
         if self.allocation_status:
@@ -41,6 +47,8 @@ class ResidentResourcePool(DaraModel):
             self.resource_pool_capacity.validate()
         if self.resource_pool_config:
             self.resource_pool_config.validate()
+        if self.timed_config:
+            self.timed_config.validate()
 
     def to_map(self):
         result = dict()
@@ -50,6 +58,9 @@ class ResidentResourcePool(DaraModel):
         if self.allocation_status is not None:
             result['allocationStatus'] = self.allocation_status.to_map()
 
+        if self.associated_pool_id is not None:
+            result['associatedPoolId'] = self.associated_pool_id
+
         if self.created_time is not None:
             result['createdTime'] = self.created_time
 
@@ -58,6 +69,9 @@ class ResidentResourcePool(DaraModel):
 
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
+
+        if self.pool_type is not None:
+            result['poolType'] = self.pool_type
 
         if self.resident_resource_pool_id is not None:
             result['residentResourcePoolId'] = self.resident_resource_pool_id
@@ -71,6 +85,9 @@ class ResidentResourcePool(DaraModel):
         if self.resource_pool_config is not None:
             result['resourcePoolConfig'] = self.resource_pool_config.to_map()
 
+        if self.timed_config is not None:
+            result['timedConfig'] = self.timed_config.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -78,6 +95,9 @@ class ResidentResourcePool(DaraModel):
         if m.get('allocationStatus') is not None:
             temp_model = main_models.ResidentResourceAllocationStatus()
             self.allocation_status = temp_model.from_map(m.get('allocationStatus'))
+
+        if m.get('associatedPoolId') is not None:
+            self.associated_pool_id = m.get('associatedPoolId')
 
         if m.get('createdTime') is not None:
             self.created_time = m.get('createdTime')
@@ -87,6 +107,9 @@ class ResidentResourcePool(DaraModel):
 
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
+
+        if m.get('poolType') is not None:
+            self.pool_type = m.get('poolType')
 
         if m.get('residentResourcePoolId') is not None:
             self.resident_resource_pool_id = m.get('residentResourcePoolId')
@@ -101,6 +124,10 @@ class ResidentResourcePool(DaraModel):
         if m.get('resourcePoolConfig') is not None:
             temp_model = main_models.ResidentResourceCapacity()
             self.resource_pool_config = temp_model.from_map(m.get('resourcePoolConfig'))
+
+        if m.get('timedConfig') is not None:
+            temp_model = main_models.TimedPoolConfig()
+            self.timed_config = temp_model.from_map(m.get('timedConfig'))
 
         return self
 

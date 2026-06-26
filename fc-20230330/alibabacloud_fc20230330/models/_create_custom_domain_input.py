@@ -18,23 +18,23 @@ class CreateCustomDomainInput(DaraModel):
         tls_config: main_models.TLSConfig = None,
         waf_config: main_models.WAFConfig = None,
     ):
-        # The configuration of permission authentication.
+        # Permission authentication configuration.
         self.auth_config = auth_config
-        # The configuration of the HTTPS certificate.
+        # HTTPS certificate information.
         self.cert_config = cert_config
         self.cors_config = cors_config
-        # The domain name. Enter a custom domain name that has obtained an Internet content provider (ICP) filing in the Alibaba Cloud ICP Filing system, or a custom domain name whose ICP filing information includes Alibaba Cloud as a service provider.
+        # Domain name. Enter a custom domain name that has an ICP filing with Alibaba Cloud or has added Alibaba Cloud to the ICP filing information as a service provider.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         self.is_e2b = is_e2b
-        # The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
+        # Protocol type supported by the domain. HTTP: supports HTTP only. HTTPS: supports HTTPS only. HTTP,HTTPS: supports both HTTP and HTTPS.
         self.protocol = protocol
-        # The route table that maps paths to functions when the function is invoked by using the custom domain name.
+        # Route table: maps PATHs to functions when accessing the custom domain.
         self.route_config = route_config
-        # The Transport Layer Security (TLS) configuration.
+        # TLS configuration information.
         self.tls_config = tls_config
-        # The Web Application Firewall (WAF) configuration.
+        # Web Application Firewall configuration information.
         self.waf_config = waf_config
 
     def validate(self):

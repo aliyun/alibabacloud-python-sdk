@@ -12,11 +12,11 @@ class RegistryConfig(DaraModel):
         cert_config: main_models.RegistryCertConfig = None,
         network_config: main_models.RegistryNetworkConfig = None,
     ):
-        # The permission authentication configurations.
+        # The authentication configuration.
         self.auth_config = auth_config
-        # The certificate configurations.
+        # The certificate configuration.
         self.cert_config = cert_config
-        # The network settings.
+        # The network configuration.
         self.network_config = network_config
 
     def validate(self):

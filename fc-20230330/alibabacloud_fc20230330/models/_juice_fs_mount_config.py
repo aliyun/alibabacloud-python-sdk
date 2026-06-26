@@ -15,10 +15,15 @@ class JuiceFsMountConfig(DaraModel):
         token: str = None,
         volume_name: str = None,
     ):
+        # An array of strings containing additional command-line arguments for the mount command. For example, use these arguments to set cache sizes or other performance-tuning options.
         self.args = args
+        # The path within the function\\"s local filesystem to mount the volume. For example, /mnt/data. This parameter is required.
         self.mount_dir = mount_dir
+        # The subdirectory within the JuiceFS volume to mount. If not specified, the root of the volume is mounted.
         self.remote_dir = remote_dir
+        # The authentication token to access the JuiceFS volume.
         self.token = token
+        # The name of the JuiceFS volume to mount. This parameter is required.
         self.volume_name = volume_name
 
     def validate(self):

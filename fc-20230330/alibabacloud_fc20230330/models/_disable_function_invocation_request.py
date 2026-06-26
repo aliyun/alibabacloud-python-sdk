@@ -10,9 +10,9 @@ class DisableFunctionInvocationRequest(DaraModel):
         abort_ongoing_request: bool = None,
         reason: str = None,
     ):
-        # Specifies whether to immediately terminate all ongoing requests.
+        # Specifies whether to immediately stop all ongoing requests.
         self.abort_ongoing_request = abort_ongoing_request
-        # The reason for disabling the function\\"s invocation.
+        # The reason for disabling the function invocation.
         self.reason = reason
 
     def validate(self):
