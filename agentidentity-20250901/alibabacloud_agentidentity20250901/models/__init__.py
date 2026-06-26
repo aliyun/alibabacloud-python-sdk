@@ -49,6 +49,9 @@ from ._create_token_vault_request import CreateTokenVaultRequest
 from ._create_token_vault_shrink_request import CreateTokenVaultShrinkRequest
 from ._create_token_vault_response_body import CreateTokenVaultResponseBody
 from ._create_token_vault_response import CreateTokenVaultResponse
+from ._create_user_request import CreateUserRequest
+from ._create_user_response_body import CreateUserResponseBody
+from ._create_user_response import CreateUserResponse
 from ._create_user_pool_request import CreateUserPoolRequest
 from ._create_user_pool_response_body import CreateUserPoolResponseBody
 from ._create_user_pool_response import CreateUserPoolResponse
@@ -114,6 +117,9 @@ from ._get_gateway_policy_config_response import GetGatewayPolicyConfigResponse
 from ._get_identity_provider_request import GetIdentityProviderRequest
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBody
 from ._get_identity_provider_response import GetIdentityProviderResponse
+from ._get_login_preference_request import GetLoginPreferenceRequest
+from ._get_login_preference_response_body import GetLoginPreferenceResponseBody
+from ._get_login_preference_response import GetLoginPreferenceResponse
 from ._get_oauth2_credential_provider_request import GetOAuth2CredentialProviderRequest
 from ._get_oauth2_credential_provider_response_body import GetOAuth2CredentialProviderResponseBody
 from ._get_oauth2_credential_provider_response import GetOAuth2CredentialProviderResponse
@@ -132,6 +138,9 @@ from ._get_samlidentity_provider_response import GetSAMLIdentityProviderResponse
 from ._get_samlservice_provider_info_request import GetSAMLServiceProviderInfoRequest
 from ._get_samlservice_provider_info_response_body import GetSAMLServiceProviderInfoResponseBody
 from ._get_samlservice_provider_info_response import GetSAMLServiceProviderInfoResponse
+from ._get_specific_identity_provider_request import GetSpecificIdentityProviderRequest
+from ._get_specific_identity_provider_response_body import GetSpecificIdentityProviderResponseBody
+from ._get_specific_identity_provider_response import GetSpecificIdentityProviderResponse
 from ._get_token_vault_request import GetTokenVaultRequest
 from ._get_token_vault_response_body import GetTokenVaultResponseBody
 from ._get_token_vault_response import GetTokenVaultResponse
@@ -144,6 +153,9 @@ from ._get_user_pool_response import GetUserPoolResponse
 from ._get_user_pool_client_request import GetUserPoolClientRequest
 from ._get_user_pool_client_response_body import GetUserPoolClientResponseBody
 from ._get_user_pool_client_response import GetUserPoolClientResponse
+from ._get_user_pool_sync_job_request import GetUserPoolSyncJobRequest
+from ._get_user_pool_sync_job_response_body import GetUserPoolSyncJobResponseBody
+from ._get_user_pool_sync_job_response import GetUserPoolSyncJobResponse
 from ._get_workload_identity_request import GetWorkloadIdentityRequest
 from ._get_workload_identity_response_body import GetWorkloadIdentityResponseBody
 from ._get_workload_identity_response import GetWorkloadIdentityResponse
@@ -183,6 +195,9 @@ from ._list_token_vaults_response import ListTokenVaultsResponse
 from ._list_user_pool_clients_request import ListUserPoolClientsRequest
 from ._list_user_pool_clients_response_body import ListUserPoolClientsResponseBody
 from ._list_user_pool_clients_response import ListUserPoolClientsResponse
+from ._list_user_pool_sync_jobs_request import ListUserPoolSyncJobsRequest
+from ._list_user_pool_sync_jobs_response_body import ListUserPoolSyncJobsResponseBody
+from ._list_user_pool_sync_jobs_response import ListUserPoolSyncJobsResponse
 from ._list_user_pools_request import ListUserPoolsRequest
 from ._list_user_pools_response_body import ListUserPoolsResponseBody
 from ._list_user_pools_response import ListUserPoolsResponse
@@ -192,10 +207,19 @@ from ._list_users_response import ListUsersResponse
 from ._list_workload_identities_request import ListWorkloadIdentitiesRequest
 from ._list_workload_identities_response_body import ListWorkloadIdentitiesResponseBody
 from ._list_workload_identities_response import ListWorkloadIdentitiesResponse
+from ._run_user_pool_sync_job_request import RunUserPoolSyncJobRequest
+from ._run_user_pool_sync_job_response_body import RunUserPoolSyncJobResponseBody
+from ._run_user_pool_sync_job_response import RunUserPoolSyncJobResponse
 from ._set_samlidentity_provider_request import SetSAMLIdentityProviderRequest
 from ._set_samlidentity_provider_shrink_request import SetSAMLIdentityProviderShrinkRequest
 from ._set_samlidentity_provider_response_body import SetSAMLIdentityProviderResponseBody
 from ._set_samlidentity_provider_response import SetSAMLIdentityProviderResponse
+from ._set_specific_identity_provider_request import SetSpecificIdentityProviderRequest
+from ._set_specific_identity_provider_response_body import SetSpecificIdentityProviderResponseBody
+from ._set_specific_identity_provider_response import SetSpecificIdentityProviderResponse
+from ._set_user_password_request import SetUserPasswordRequest
+from ._set_user_password_response_body import SetUserPasswordResponseBody
+from ._set_user_password_response import SetUserPasswordResponse
 from ._update_apikey_credential_provider_request import UpdateAPIKeyCredentialProviderRequest
 from ._update_apikey_credential_provider_response_body import UpdateAPIKeyCredentialProviderResponseBody
 from ._update_apikey_credential_provider_response import UpdateAPIKeyCredentialProviderResponse
@@ -206,6 +230,10 @@ from ._update_identity_provider_request import UpdateIdentityProviderRequest
 from ._update_identity_provider_shrink_request import UpdateIdentityProviderShrinkRequest
 from ._update_identity_provider_response_body import UpdateIdentityProviderResponseBody
 from ._update_identity_provider_response import UpdateIdentityProviderResponse
+from ._update_login_preference_request import UpdateLoginPreferenceRequest
+from ._update_login_preference_shrink_request import UpdateLoginPreferenceShrinkRequest
+from ._update_login_preference_response_body import UpdateLoginPreferenceResponseBody
+from ._update_login_preference_response import UpdateLoginPreferenceResponse
 from ._update_oauth2_credential_provider_request import UpdateOAuth2CredentialProviderRequest
 from ._update_oauth2_credential_provider_shrink_request import UpdateOAuth2CredentialProviderShrinkRequest
 from ._update_oauth2_credential_provider_response_body import UpdateOAuth2CredentialProviderResponseBody
@@ -223,6 +251,9 @@ from ._update_role_response import UpdateRoleResponse
 from ._update_token_vault_request import UpdateTokenVaultRequest
 from ._update_token_vault_response_body import UpdateTokenVaultResponseBody
 from ._update_token_vault_response import UpdateTokenVaultResponse
+from ._update_user_request import UpdateUserRequest
+from ._update_user_response_body import UpdateUserResponseBody
+from ._update_user_response import UpdateUserResponse
 from ._update_user_pool_request import UpdateUserPoolRequest
 from ._update_user_pool_response_body import UpdateUserPoolResponseBody
 from ._update_user_pool_response import UpdateUserPoolResponse
@@ -245,6 +276,7 @@ from ._create_role_response_body import CreateRoleResponseBodyRole
 from ._create_role_assignment_response_body import CreateRoleAssignmentResponseBodyRoleAssignment
 from ._create_token_vault_response_body import CreateTokenVaultResponseBodyTokenVaultEncryptionConfig
 from ._create_token_vault_response_body import CreateTokenVaultResponseBodyTokenVault
+from ._create_user_response_body import CreateUserResponseBodyUser
 from ._create_user_pool_response_body import CreateUserPoolResponseBodyUserPool
 from ._create_user_pool_client_response_body import CreateUserPoolClientResponseBodyClientClientScopes
 from ._create_user_pool_client_response_body import CreateUserPoolClientResponseBodyClient
@@ -252,6 +284,8 @@ from ._create_workload_identity_response_body import CreateWorkloadIdentityRespo
 from ._get_apikey_credential_provider_response_body import GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider
 from ._get_gateway_policy_config_response_body import GetGatewayPolicyConfigResponseBodyGatewayPolicyConfig
 from ._get_identity_provider_response_body import GetIdentityProviderResponseBodyIdentityProvider
+from ._get_login_preference_response_body import GetLoginPreferenceResponseBodyLoginPreference
+from ._get_login_preference_response_body import GetLoginPreferenceResponseBodyPasswordPolicy
 from ._get_oauth2_credential_provider_response_body import GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider
 from ._get_policy_response_body import GetPolicyResponseBodyPolicy
 from ._get_policy_set_response_body import GetPolicySetResponseBodyPolicySet
@@ -259,12 +293,15 @@ from ._get_role_response_body import GetRoleResponseBodyRole
 from ._get_samlidentity_provider_response_body import GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates
 from ._get_samlidentity_provider_response_body import GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration
 from ._get_samlservice_provider_info_response_body import GetSAMLServiceProviderInfoResponseBodySAMLServiceProviderInfo
+from ._get_specific_identity_provider_response_body import GetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration
 from ._get_token_vault_response_body import GetTokenVaultResponseBodyTokenVaultEncryptionConfig
 from ._get_token_vault_response_body import GetTokenVaultResponseBodyTokenVault
 from ._get_user_response_body import GetUserResponseBodyUser
 from ._get_user_pool_response_body import GetUserPoolResponseBodyUserPool
 from ._get_user_pool_client_response_body import GetUserPoolClientResponseBodyClientClientScopes
 from ._get_user_pool_client_response_body import GetUserPoolClientResponseBodyClient
+from ._get_user_pool_sync_job_response_body import GetUserPoolSyncJobResponseBodySynchronizationJobJobSummary
+from ._get_user_pool_sync_job_response_body import GetUserPoolSyncJobResponseBodySynchronizationJob
 from ._get_workload_identity_response_body import GetWorkloadIdentityResponseBodyWorkloadIdentity
 from ._list_apikey_credential_providers_response_body import ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders
 from ._list_client_secrets_response_body import ListClientSecretsResponseBodyClientSecrets
@@ -280,12 +317,17 @@ from ._list_token_vaults_response_body import ListTokenVaultsResponseBodyTokenVa
 from ._list_token_vaults_response_body import ListTokenVaultsResponseBodyTokenVaults
 from ._list_user_pool_clients_response_body import ListUserPoolClientsResponseBodyClientsClientScopes
 from ._list_user_pool_clients_response_body import ListUserPoolClientsResponseBodyClients
+from ._list_user_pool_sync_jobs_response_body import ListUserPoolSyncJobsResponseBodySynchronizationJobsJobSummary
+from ._list_user_pool_sync_jobs_response_body import ListUserPoolSyncJobsResponseBodySynchronizationJobs
 from ._list_user_pools_response_body import ListUserPoolsResponseBodyUserPools
 from ._list_users_response_body import ListUsersResponseBodyUsers
 from ._list_workload_identities_response_body import ListWorkloadIdentitiesResponseBodyWorkloadIdentities
 from ._set_samlidentity_provider_response_body import SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates
 from ._set_samlidentity_provider_response_body import SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration
+from ._set_specific_identity_provider_response_body import SetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration
 from ._update_gateway_policy_config_response_body import UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig
+from ._update_login_preference_request import UpdateLoginPreferenceRequestLoginPreference
+from ._update_user_response_body import UpdateUserResponseBodyUser
 
 __all__ = [
     AuthorizationRequest,
@@ -335,6 +377,9 @@ __all__ = [
     CreateTokenVaultShrinkRequest,
     CreateTokenVaultResponseBody,
     CreateTokenVaultResponse,
+    CreateUserRequest,
+    CreateUserResponseBody,
+    CreateUserResponse,
     CreateUserPoolRequest,
     CreateUserPoolResponseBody,
     CreateUserPoolResponse,
@@ -400,6 +445,9 @@ __all__ = [
     GetIdentityProviderRequest,
     GetIdentityProviderResponseBody,
     GetIdentityProviderResponse,
+    GetLoginPreferenceRequest,
+    GetLoginPreferenceResponseBody,
+    GetLoginPreferenceResponse,
     GetOAuth2CredentialProviderRequest,
     GetOAuth2CredentialProviderResponseBody,
     GetOAuth2CredentialProviderResponse,
@@ -418,6 +466,9 @@ __all__ = [
     GetSAMLServiceProviderInfoRequest,
     GetSAMLServiceProviderInfoResponseBody,
     GetSAMLServiceProviderInfoResponse,
+    GetSpecificIdentityProviderRequest,
+    GetSpecificIdentityProviderResponseBody,
+    GetSpecificIdentityProviderResponse,
     GetTokenVaultRequest,
     GetTokenVaultResponseBody,
     GetTokenVaultResponse,
@@ -430,6 +481,9 @@ __all__ = [
     GetUserPoolClientRequest,
     GetUserPoolClientResponseBody,
     GetUserPoolClientResponse,
+    GetUserPoolSyncJobRequest,
+    GetUserPoolSyncJobResponseBody,
+    GetUserPoolSyncJobResponse,
     GetWorkloadIdentityRequest,
     GetWorkloadIdentityResponseBody,
     GetWorkloadIdentityResponse,
@@ -469,6 +523,9 @@ __all__ = [
     ListUserPoolClientsRequest,
     ListUserPoolClientsResponseBody,
     ListUserPoolClientsResponse,
+    ListUserPoolSyncJobsRequest,
+    ListUserPoolSyncJobsResponseBody,
+    ListUserPoolSyncJobsResponse,
     ListUserPoolsRequest,
     ListUserPoolsResponseBody,
     ListUserPoolsResponse,
@@ -478,10 +535,19 @@ __all__ = [
     ListWorkloadIdentitiesRequest,
     ListWorkloadIdentitiesResponseBody,
     ListWorkloadIdentitiesResponse,
+    RunUserPoolSyncJobRequest,
+    RunUserPoolSyncJobResponseBody,
+    RunUserPoolSyncJobResponse,
     SetSAMLIdentityProviderRequest,
     SetSAMLIdentityProviderShrinkRequest,
     SetSAMLIdentityProviderResponseBody,
     SetSAMLIdentityProviderResponse,
+    SetSpecificIdentityProviderRequest,
+    SetSpecificIdentityProviderResponseBody,
+    SetSpecificIdentityProviderResponse,
+    SetUserPasswordRequest,
+    SetUserPasswordResponseBody,
+    SetUserPasswordResponse,
     UpdateAPIKeyCredentialProviderRequest,
     UpdateAPIKeyCredentialProviderResponseBody,
     UpdateAPIKeyCredentialProviderResponse,
@@ -492,6 +558,10 @@ __all__ = [
     UpdateIdentityProviderShrinkRequest,
     UpdateIdentityProviderResponseBody,
     UpdateIdentityProviderResponse,
+    UpdateLoginPreferenceRequest,
+    UpdateLoginPreferenceShrinkRequest,
+    UpdateLoginPreferenceResponseBody,
+    UpdateLoginPreferenceResponse,
     UpdateOAuth2CredentialProviderRequest,
     UpdateOAuth2CredentialProviderShrinkRequest,
     UpdateOAuth2CredentialProviderResponseBody,
@@ -509,6 +579,9 @@ __all__ = [
     UpdateTokenVaultRequest,
     UpdateTokenVaultResponseBody,
     UpdateTokenVaultResponse,
+    UpdateUserRequest,
+    UpdateUserResponseBody,
+    UpdateUserResponse,
     UpdateUserPoolRequest,
     UpdateUserPoolResponseBody,
     UpdateUserPoolResponse,
@@ -531,6 +604,7 @@ __all__ = [
     CreateRoleAssignmentResponseBodyRoleAssignment,
     CreateTokenVaultResponseBodyTokenVaultEncryptionConfig,
     CreateTokenVaultResponseBodyTokenVault,
+    CreateUserResponseBodyUser,
     CreateUserPoolResponseBodyUserPool,
     CreateUserPoolClientResponseBodyClientClientScopes,
     CreateUserPoolClientResponseBodyClient,
@@ -538,6 +612,8 @@ __all__ = [
     GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider,
     GetGatewayPolicyConfigResponseBodyGatewayPolicyConfig,
     GetIdentityProviderResponseBodyIdentityProvider,
+    GetLoginPreferenceResponseBodyLoginPreference,
+    GetLoginPreferenceResponseBodyPasswordPolicy,
     GetOAuth2CredentialProviderResponseBodyOAuth2CredentialProvider,
     GetPolicyResponseBodyPolicy,
     GetPolicySetResponseBodyPolicySet,
@@ -545,12 +621,15 @@ __all__ = [
     GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates,
     GetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration,
     GetSAMLServiceProviderInfoResponseBodySAMLServiceProviderInfo,
+    GetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration,
     GetTokenVaultResponseBodyTokenVaultEncryptionConfig,
     GetTokenVaultResponseBodyTokenVault,
     GetUserResponseBodyUser,
     GetUserPoolResponseBodyUserPool,
     GetUserPoolClientResponseBodyClientClientScopes,
     GetUserPoolClientResponseBodyClient,
+    GetUserPoolSyncJobResponseBodySynchronizationJobJobSummary,
+    GetUserPoolSyncJobResponseBodySynchronizationJob,
     GetWorkloadIdentityResponseBodyWorkloadIdentity,
     ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders,
     ListClientSecretsResponseBodyClientSecrets,
@@ -566,10 +645,15 @@ __all__ = [
     ListTokenVaultsResponseBodyTokenVaults,
     ListUserPoolClientsResponseBodyClientsClientScopes,
     ListUserPoolClientsResponseBodyClients,
+    ListUserPoolSyncJobsResponseBodySynchronizationJobsJobSummary,
+    ListUserPoolSyncJobsResponseBodySynchronizationJobs,
     ListUserPoolsResponseBodyUserPools,
     ListUsersResponseBodyUsers,
     ListWorkloadIdentitiesResponseBodyWorkloadIdentities,
     SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfigurationX509Certificates,
     SetSAMLIdentityProviderResponseBodySSOIdentityProviderConfiguration,
-    UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig
+    SetSpecificIdentityProviderResponseBodySpecificIdentityProviderConfiguration,
+    UpdateGatewayPolicyConfigResponseBodyGatewayPolicyConfig,
+    UpdateLoginPreferenceRequestLoginPreference,
+    UpdateUserResponseBodyUser
 ]

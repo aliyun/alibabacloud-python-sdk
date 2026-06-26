@@ -16,7 +16,6 @@ class UpdateOAuth2CredentialProviderRequest(DaraModel):
         token_vault_name: str = None,
     ):
         self.callback_url = callback_url
-        # AliyunOAuth2
         self.credential_provider_vendor = credential_provider_vendor
         self.description = description
         self.oauth2_credential_provider_name = oauth2_credential_provider_name

@@ -48,6 +48,9 @@ class GetUserResponseBodyUser(DaraModel):
         create_time: str = None,
         description: str = None,
         display_name: str = None,
+        email: str = None,
+        status: str = None,
+        type: str = None,
         update_time: str = None,
         user_id: str = None,
         user_name: str = None,
@@ -55,6 +58,9 @@ class GetUserResponseBodyUser(DaraModel):
         self.create_time = create_time
         self.description = description
         self.display_name = display_name
+        self.email = email
+        self.status = status
+        self.type = type
         self.update_time = update_time
         self.user_id = user_id
         self.user_name = user_name
@@ -75,6 +81,15 @@ class GetUserResponseBodyUser(DaraModel):
 
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
+
+        if self.email is not None:
+            result['Email'] = self.email
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.type is not None:
+            result['Type'] = self.type
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -97,6 +112,15 @@ class GetUserResponseBodyUser(DaraModel):
 
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
+
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

@@ -51,6 +51,7 @@ class CreateUserPoolClientResponseBodyClient(DaraModel):
         client_id: str = None,
         client_name: str = None,
         client_scopes: List[main_models.CreateUserPoolClientResponseBodyClientClientScopes] = None,
+        client_type: str = None,
         create_time: str = None,
         enforce_pkce: bool = None,
         redirect_uris: List[str] = None,
@@ -63,6 +64,7 @@ class CreateUserPoolClientResponseBodyClient(DaraModel):
         self.client_id = client_id
         self.client_name = client_name
         self.client_scopes = client_scopes
+        self.client_type = client_type
         self.create_time = create_time
         self.enforce_pkce = enforce_pkce
         self.redirect_uris = redirect_uris
@@ -95,6 +97,9 @@ class CreateUserPoolClientResponseBodyClient(DaraModel):
         if self.client_scopes is not None:
             for k1 in self.client_scopes:
                 result['ClientScopes'].append(k1.to_map() if k1 else None)
+
+        if self.client_type is not None:
+            result['ClientType'] = self.client_type
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -135,6 +140,9 @@ class CreateUserPoolClientResponseBodyClient(DaraModel):
             for k1 in m.get('ClientScopes'):
                 temp_model = main_models.CreateUserPoolClientResponseBodyClientClientScopes()
                 self.client_scopes.append(temp_model.from_map(k1))
+
+        if m.get('ClientType') is not None:
+            self.client_type = m.get('ClientType')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')

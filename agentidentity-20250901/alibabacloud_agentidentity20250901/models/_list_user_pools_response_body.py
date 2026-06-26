@@ -79,12 +79,14 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
         self,
         create_time: str = None,
         description: str = None,
+        source_platform: str = None,
         update_time: str = None,
         user_pool_id: str = None,
         user_pool_name: str = None,
     ):
         self.create_time = create_time
         self.description = description
+        self.source_platform = source_platform
         self.update_time = update_time
         self.user_pool_id = user_pool_id
         self.user_pool_name = user_pool_name
@@ -102,6 +104,9 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.source_platform is not None:
+            result['SourcePlatform'] = self.source_platform
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -121,6 +126,9 @@ class ListUserPoolsResponseBodyUserPools(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('SourcePlatform') is not None:
+            self.source_platform = m.get('SourcePlatform')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

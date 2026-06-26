@@ -958,6 +958,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_token_vault_with_options_async(request, runtime)
 
+    def create_user_with_options(
+        self,
+        request: main_models.CreateUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.email):
+            body['Email'] = request.email
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUser',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_user_with_options_async(
+        self,
+        request: main_models.CreateUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.email):
+            body['Email'] = request.email
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUser',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_user(
+        self,
+        request: main_models.CreateUserRequest,
+    ) -> main_models.CreateUserResponse:
+        runtime = RuntimeOptions()
+        return self.create_user_with_options(request, runtime)
+
+    async def create_user_async(
+        self,
+        request: main_models.CreateUserRequest,
+    ) -> main_models.CreateUserResponse:
+        runtime = RuntimeOptions()
+        return await self.create_user_with_options_async(request, runtime)
+
     def create_user_pool_with_options(
         self,
         request: main_models.CreateUserPoolRequest,
@@ -2572,6 +2662,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_identity_provider_with_options_async(request, runtime)
 
+    def get_login_preference_with_options(
+        self,
+        request: main_models.GetLoginPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLoginPreferenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLoginPreference',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLoginPreferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_login_preference_with_options_async(
+        self,
+        request: main_models.GetLoginPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLoginPreferenceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLoginPreference',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLoginPreferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_login_preference(
+        self,
+        request: main_models.GetLoginPreferenceRequest,
+    ) -> main_models.GetLoginPreferenceResponse:
+        runtime = RuntimeOptions()
+        return self.get_login_preference_with_options(request, runtime)
+
+    async def get_login_preference_async(
+        self,
+        request: main_models.GetLoginPreferenceRequest,
+    ) -> main_models.GetLoginPreferenceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_login_preference_with_options_async(request, runtime)
+
     def get_oauth2_credential_provider_with_options(
         self,
         request: main_models.GetOAuth2CredentialProviderRequest,
@@ -3004,6 +3164,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_samlservice_provider_info_with_options_async(request, runtime)
 
+    def get_specific_identity_provider_with_options(
+        self,
+        request: main_models.GetSpecificIdentityProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSpecificIdentityProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSpecificIdentityProvider',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSpecificIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_specific_identity_provider_with_options_async(
+        self,
+        request: main_models.GetSpecificIdentityProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSpecificIdentityProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSpecificIdentityProvider',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSpecificIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_specific_identity_provider(
+        self,
+        request: main_models.GetSpecificIdentityProviderRequest,
+    ) -> main_models.GetSpecificIdentityProviderResponse:
+        runtime = RuntimeOptions()
+        return self.get_specific_identity_provider_with_options(request, runtime)
+
+    async def get_specific_identity_provider_async(
+        self,
+        request: main_models.GetSpecificIdentityProviderRequest,
+    ) -> main_models.GetSpecificIdentityProviderResponse:
+        runtime = RuntimeOptions()
+        return await self.get_specific_identity_provider_with_options_async(request, runtime)
+
     def get_token_vault_with_options(
         self,
         request: main_models.GetTokenVaultRequest,
@@ -3291,6 +3525,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserPoolClientResponse:
         runtime = RuntimeOptions()
         return await self.get_user_pool_client_with_options_async(request, runtime)
+
+    def get_user_pool_sync_job_with_options(
+        self,
+        request: main_models.GetUserPoolSyncJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserPoolSyncJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.synchronization_job_id):
+            body['SynchronizationJobId'] = request.synchronization_job_id
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserPoolSyncJob',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserPoolSyncJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_pool_sync_job_with_options_async(
+        self,
+        request: main_models.GetUserPoolSyncJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserPoolSyncJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.synchronization_job_id):
+            body['SynchronizationJobId'] = request.synchronization_job_id
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserPoolSyncJob',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserPoolSyncJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_pool_sync_job(
+        self,
+        request: main_models.GetUserPoolSyncJobRequest,
+    ) -> main_models.GetUserPoolSyncJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_user_pool_sync_job_with_options(request, runtime)
+
+    async def get_user_pool_sync_job_async(
+        self,
+        request: main_models.GetUserPoolSyncJobRequest,
+    ) -> main_models.GetUserPoolSyncJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_user_pool_sync_job_with_options_async(request, runtime)
 
     def get_workload_identity_with_options(
         self,
@@ -4290,6 +4598,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_user_pool_clients_with_options_async(request, runtime)
 
+    def list_user_pool_sync_jobs_with_options(
+        self,
+        request: main_models.ListUserPoolSyncJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserPoolSyncJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserPoolSyncJobs',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserPoolSyncJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_user_pool_sync_jobs_with_options_async(
+        self,
+        request: main_models.ListUserPoolSyncJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserPoolSyncJobsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUserPoolSyncJobs',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUserPoolSyncJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_user_pool_sync_jobs(
+        self,
+        request: main_models.ListUserPoolSyncJobsRequest,
+    ) -> main_models.ListUserPoolSyncJobsResponse:
+        runtime = RuntimeOptions()
+        return self.list_user_pool_sync_jobs_with_options(request, runtime)
+
+    async def list_user_pool_sync_jobs_async(
+        self,
+        request: main_models.ListUserPoolSyncJobsRequest,
+    ) -> main_models.ListUserPoolSyncJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_user_pool_sync_jobs_with_options_async(request, runtime)
+
     def list_user_pools_with_options(
         self,
         request: main_models.ListUserPoolsRequest,
@@ -4516,6 +4902,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_workload_identities_with_options_async(request, runtime)
 
+    def run_user_pool_sync_job_with_options(
+        self,
+        request: main_models.RunUserPoolSyncJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunUserPoolSyncJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.max_sync_users):
+            body['MaxSyncUsers'] = request.max_sync_users
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunUserPoolSyncJob',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunUserPoolSyncJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_user_pool_sync_job_with_options_async(
+        self,
+        request: main_models.RunUserPoolSyncJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunUserPoolSyncJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.max_sync_users):
+            body['MaxSyncUsers'] = request.max_sync_users
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunUserPoolSyncJob',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunUserPoolSyncJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_user_pool_sync_job(
+        self,
+        request: main_models.RunUserPoolSyncJobRequest,
+    ) -> main_models.RunUserPoolSyncJobResponse:
+        runtime = RuntimeOptions()
+        return self.run_user_pool_sync_job_with_options(request, runtime)
+
+    async def run_user_pool_sync_job_async(
+        self,
+        request: main_models.RunUserPoolSyncJobRequest,
+    ) -> main_models.RunUserPoolSyncJobResponse:
+        runtime = RuntimeOptions()
+        return await self.run_user_pool_sync_job_with_options_async(request, runtime)
+
     def set_samlidentity_provider_with_options(
         self,
         tmp_req: main_models.SetSAMLIdentityProviderRequest,
@@ -4621,6 +5085,170 @@ class Client(OpenApiClient):
     ) -> main_models.SetSAMLIdentityProviderResponse:
         runtime = RuntimeOptions()
         return await self.set_samlidentity_provider_with_options_async(request, runtime)
+
+    def set_specific_identity_provider_with_options(
+        self,
+        request: main_models.SetSpecificIdentityProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetSpecificIdentityProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.idpmetadata):
+            body['IDPMetadata'] = request.idpmetadata
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.ssostatus):
+            body['SSOStatus'] = request.ssostatus
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetSpecificIdentityProvider',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetSpecificIdentityProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_specific_identity_provider_with_options_async(
+        self,
+        request: main_models.SetSpecificIdentityProviderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetSpecificIdentityProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.idpmetadata):
+            body['IDPMetadata'] = request.idpmetadata
+        if not DaraCore.is_null(request.identity_provider_type):
+            body['IdentityProviderType'] = request.identity_provider_type
+        if not DaraCore.is_null(request.ssostatus):
+            body['SSOStatus'] = request.ssostatus
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetSpecificIdentityProvider',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetSpecificIdentityProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_specific_identity_provider(
+        self,
+        request: main_models.SetSpecificIdentityProviderRequest,
+    ) -> main_models.SetSpecificIdentityProviderResponse:
+        runtime = RuntimeOptions()
+        return self.set_specific_identity_provider_with_options(request, runtime)
+
+    async def set_specific_identity_provider_async(
+        self,
+        request: main_models.SetSpecificIdentityProviderRequest,
+    ) -> main_models.SetSpecificIdentityProviderResponse:
+        runtime = RuntimeOptions()
+        return await self.set_specific_identity_provider_with_options_async(request, runtime)
+
+    def set_user_password_with_options(
+        self,
+        request: main_models.SetUserPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetUserPasswordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.generate_random_password):
+            body['GenerateRandomPassword'] = request.generate_random_password
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetUserPassword',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetUserPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_user_password_with_options_async(
+        self,
+        request: main_models.SetUserPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetUserPasswordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.generate_random_password):
+            body['GenerateRandomPassword'] = request.generate_random_password
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetUserPassword',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetUserPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_user_password(
+        self,
+        request: main_models.SetUserPasswordRequest,
+    ) -> main_models.SetUserPasswordResponse:
+        runtime = RuntimeOptions()
+        return self.set_user_password_with_options(request, runtime)
+
+    async def set_user_password_async(
+        self,
+        request: main_models.SetUserPasswordRequest,
+    ) -> main_models.SetUserPasswordResponse:
+        runtime = RuntimeOptions()
+        return await self.set_user_password_with_options_async(request, runtime)
 
     def update_apikey_credential_provider_with_options(
         self,
@@ -4871,6 +5499,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateIdentityProviderResponse:
         runtime = RuntimeOptions()
         return await self.update_identity_provider_with_options_async(request, runtime)
+
+    def update_login_preference_with_options(
+        self,
+        tmp_req: main_models.UpdateLoginPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLoginPreferenceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLoginPreferenceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.login_preference):
+            request.login_preference_shrink = Utils.array_to_string_with_specified_style(tmp_req.login_preference, 'LoginPreference', 'json')
+        query = {}
+        if not DaraCore.is_null(request.login_preference_shrink):
+            query['LoginPreference'] = request.login_preference_shrink
+        body = {}
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLoginPreference',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLoginPreferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_login_preference_with_options_async(
+        self,
+        tmp_req: main_models.UpdateLoginPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLoginPreferenceResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLoginPreferenceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.login_preference):
+            request.login_preference_shrink = Utils.array_to_string_with_specified_style(tmp_req.login_preference, 'LoginPreference', 'json')
+        query = {}
+        if not DaraCore.is_null(request.login_preference_shrink):
+            query['LoginPreference'] = request.login_preference_shrink
+        body = {}
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLoginPreference',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLoginPreferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_login_preference(
+        self,
+        request: main_models.UpdateLoginPreferenceRequest,
+    ) -> main_models.UpdateLoginPreferenceResponse:
+        runtime = RuntimeOptions()
+        return self.update_login_preference_with_options(request, runtime)
+
+    async def update_login_preference_async(
+        self,
+        request: main_models.UpdateLoginPreferenceRequest,
+    ) -> main_models.UpdateLoginPreferenceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_login_preference_with_options_async(request, runtime)
 
     def update_oauth2_credential_provider_with_options(
         self,
@@ -5289,6 +6003,96 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateTokenVaultResponse:
         runtime = RuntimeOptions()
         return await self.update_token_vault_with_options_async(request, runtime)
+
+    def update_user_with_options(
+        self,
+        request: main_models.UpdateUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.email):
+            body['Email'] = request.email
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUser',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_user_with_options_async(
+        self,
+        request: main_models.UpdateUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateUserResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.email):
+            body['Email'] = request.email
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.user_name):
+            body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_name):
+            body['UserPoolName'] = request.user_pool_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateUser',
+            version = '2025-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_user(
+        self,
+        request: main_models.UpdateUserRequest,
+    ) -> main_models.UpdateUserResponse:
+        runtime = RuntimeOptions()
+        return self.update_user_with_options(request, runtime)
+
+    async def update_user_async(
+        self,
+        request: main_models.UpdateUserRequest,
+    ) -> main_models.UpdateUserResponse:
+        runtime = RuntimeOptions()
+        return await self.update_user_with_options_async(request, runtime)
 
     def update_user_pool_with_options(
         self,

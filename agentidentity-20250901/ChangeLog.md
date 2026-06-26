@@ -1,3 +1,28 @@
+2026-06-26 Version: 1.2.0
+- Support API CreateUser.
+- Support API GetLoginPreference.
+- Support API GetSpecificIdentityProvider.
+- Support API GetUserPoolSyncJob.
+- Support API ListUserPoolSyncJobs.
+- Support API RunUserPoolSyncJob.
+- Support API SetSpecificIdentityProvider.
+- Support API SetUserPassword.
+- Support API UpdateLoginPreference.
+- Support API UpdateUser.
+- Update API CreateUserPool: add response parameters Body.UserPool.SourcePlatform.
+- Update API CreateUserPoolClient: add response parameters Body.Client.ClientType.
+- Update API GetUser: add response parameters Body.User.Email.
+- Update API GetUser: add response parameters Body.User.Status.
+- Update API GetUser: add response parameters Body.User.Type.
+- Update API GetUserPool: add response parameters Body.UserPool.SourcePlatform.
+- Update API GetUserPoolClient: add response parameters Body.Client.ClientType.
+- Update API ListUserPoolClients: add response parameters Body.Clients.$.ClientType.
+- Update API ListUserPools: add response parameters Body.UserPools.$.SourcePlatform.
+- Update API ListUsers: add response parameters Body.Users.$.Email.
+- Update API ListUsers: add response parameters Body.Users.$.Status.
+- Update API ListUsers: add response parameters Body.Users.$.Type.
+
+
 2026-05-26 Version: 1.1.0
 - Support API AddSAMLIdentityProviderCertificate.
 - Support API AttachPolicySetToGateway.
