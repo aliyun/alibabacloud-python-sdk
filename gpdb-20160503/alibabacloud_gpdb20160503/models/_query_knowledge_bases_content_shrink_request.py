@@ -18,42 +18,38 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         source_collection_shrink: str = None,
         top_k: int = None,
     ):
-        # The text content to search for.
+        # The text content used for retrieval.
         # 
         # This parameter is required.
         self.content = content
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to view the details of all AnalyticDB for PostgreSQL instances in a specific region, including their instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The method for merging results from multiple knowledge bases. The default value is `RRF`. Valid values:
-        # 
+        # The method used to merge results from multiple knowledge bases. Default value: RRF. Valid values:
         # - RRF
-        # 
-        # - Weight
+        # - Weight.
         self.merge_method = merge_method
-        # The arguments for the specified `MergeMethod`.
+        # The parameters for the merge method of each SourceCollection.
         self.merge_method_args_shrink = merge_method_args_shrink
         self.owner_id = owner_id
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The reranking factor. If specified, the system reranks the final merged results. Valid values: 1 < RerankFactor <= 5.
-        # 
-        # > - Sparse document chunking reduces reranking efficiency.
-        # >
-        # > - We recommend that the number of items to rerank (TopK × Factor, rounded up) does not exceed 50.
+        # The reranking factor. If this parameter is not empty, the vector retrieval results are reranked. Valid values: 1 < RerankFactor <= 5.
+        # > - Reranking is slow when document chunks are sparse.
+        # > - The recommended reranking count (TopK × Factor, rounded up) should not exceed 50.
         self.rerank_factor = rerank_factor
-        # Parameters for the rerank model applied to the final merged results.
+        # The reranking model parameters for performing an additional reranking on the overall results after multi-channel merging.
         self.rerank_model_shrink = rerank_model_shrink
-        # The source collections to search.
+        # The information about the multiple collections to retrieve.
         # 
         # This parameter is required.
         self.source_collection_shrink = source_collection_shrink
-        # The number of top results to return after the results from all recall paths are merged.
+        # The number of top results to return after multi-channel recall merging.
         self.top_k = top_k
 
     def validate(self):

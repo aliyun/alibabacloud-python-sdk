@@ -16,19 +16,17 @@ class ChatWithKnowledgeBaseResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The response from the large language model.
+        # The model response.
         self.chat_completion = chat_completion
-        # A message that provides details about the status of the operation.
+        # The return message.
         self.message = message
-        # The recall results from multiple knowledge bases.
+        # The multi-knowledge base recall information.
         self.multi_collection_recall_result = multi_collection_recall_result
         # The request ID.
         self.request_id = request_id
-        # The final status of the request. Valid values:
-        # 
-        # - `success`: The request was successful.
-        # 
-        # - `fail`: The request failed.
+        # The status. Valid values:
+        # - **success**: Succeeded.
+        # - **fail**: Failed.
         self.status = status
 
     def validate(self):
@@ -91,23 +89,21 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResult(DaraModel):
         tokens: int = None,
         usage: main_models.ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage = None,
     ):
-        # A list of identified entity types.
+        # The entity details.
         self.entities = entities
-        # The recalled items.
+        # The recall items.
         self.matches = matches
-        # The relationship edges.
+        # The relationship edge details.
         self.relations = relations
         # The request ID.
         self.request_id = request_id
-        # The status of the recall operation. Valid values:
-        # 
-        # - `success`: The recall was successful.
-        # 
-        # - `fail`: The recall failed.
+        # The API execution status. Valid values:
+        # - **success**: Execution succeeded.
+        # - **fail**: Execution failed.
         self.status = status
-        # The number of tokens consumed by the recall process.
+        # The number of tokens consumed.
         self.tokens = tokens
-        # Usage statistics for the recall, such as the number of tokens for vectorization.
+        # The tokens or items consumed by document understanding or embedding.
         self.usage = usage
 
     def validate(self):
@@ -184,7 +180,7 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultUsage(DaraMode
     ):
         # The number of tokens used for vectorization.
         # 
-        # > A token is the smallest unit of text. A token can be a word, a phrase, a punctuation mark, or a character.
+        # > A token is the smallest unit into which input text is divided. A token can be a word, a phrase, a punctuation mark, a character, etc.
         self.embedding_tokens = embedding_tokens
 
     def validate(self):
@@ -225,21 +221,21 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(DaraMo
         self.content = content
         # The file name.
         self.file_name = file_name
-        # The public URL of the file. By default, the URL is valid for 2 hours.
+        # The public URL of the query result image, valid for 2 hours by default.
         # 
-        # You can specify a custom validity period by using the `UrlExpiration` request parameter.
+        # You can specify the validity period using the UrlExpiration input parameter.
         self.file_url = file_url
-        # The unique ID of the vector.
+        # The unique ID of the vector data.
         self.id = id
-        # The metadata generated when the document was loaded.
+        # The metadata information loaded by the document loader.
         self.loader_metadata = loader_metadata
         # The metadata.
         self.metadata = metadata
         # The reranking score.
         self.rerank_score = rerank_score
-        # The retrieval source. Valid values: `1` for vector retrieval, `2` for full-text search, and `3` for two-channel recall.
+        # The source of the retrieval result. 1 indicates vector retrieval, 2 indicates full-text retrieval, and 3 indicates dual-path recall.
         self.retrieval_source = retrieval_source
-        # The similarity score. The score is based on the algorithm `(l2/ip/cosine)` specified when the index was created.
+        # The similarity score of this data entry. The scoring algorithm is related to the algorithm specified when creating the index (l2/ip/cosine).
         self.score = score
         # The vector data.
         self.vector = vector
@@ -327,15 +323,15 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletion(DaraModel):
         model: str = None,
         usage: main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionUsage = None,
     ):
-        # A list of chat completion choices.
+        # The real-time generated text content.
         self.choices = choices
-        # The creation time of the response, as a Unix timestamp.
+        # The creation time.
         self.created = created
         # The response ID.
         self.id = id
-        # The model that generated the response.
+        # The model name used.
         self.model = model
-        # Token usage statistics for the chat completion.
+        # The token usage of the large model output.
         self.usage = usage
 
     def validate(self):
@@ -401,13 +397,13 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionUsage(DaraModel):
         prompt_tokens_details: main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails = None,
         total_tokens: int = None,
     ):
-        # The number of tokens in the generated response.
+        # The number of tokens consumed for generating content.
         self.completion_tokens = completion_tokens
-        # The number of tokens in the input prompt.
+        # The number of tokens consumed by the input prompt.
         self.prompt_tokens = prompt_tokens
-        # Details of the prompt tokens.
+        # The prompt token details.
         self.prompt_tokens_details = prompt_tokens_details
-        # The total number of tokens used in the request (prompt tokens + completion tokens).
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -455,7 +451,7 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionUsagePromptTokensDetails(Da
         self,
         cached_tokens: int = None,
     ):
-        # The number of prompt tokens that resulted in a cache hit.
+        # The number of tokens that hit the cache.
         self.cached_tokens = cached_tokens
 
     def validate(self):
@@ -485,11 +481,11 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoices(DaraModel):
         index: int = None,
         message: main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage = None,
     ):
-        # The reason the model stopped generating tokens.
+        # The stop reason.
         self.finish_reason = finish_reason
-        # The index of this choice in the `Choices` array.
+        # The reply sequence number.
         self.index = index
-        # The message generated by the large language model.
+        # The large model reply response.
         self.message = message
 
     def validate(self):
@@ -534,19 +530,16 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessage(DaraModel):
         role: str = None,
         tool_calls: List[main_models.ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls] = None,
     ):
-        # The content of the message.
+        # The document content.
         self.content = content
-        # The model\\"s reasoning process.
+        # The model reasoning content.
         self.reasoning_content = reasoning_content
-        # The role of the message:
-        # 
-        # - `system`
-        # 
-        # - `user`
-        # 
-        # - `assistant`
+        # The message role:
+        # - system
+        # - user
+        # - assistant
         self.role = role
-        # A list of tool calls generated by the model.
+        # The tool call response list.
         self.tool_calls = tool_calls
 
     def validate(self):
@@ -602,11 +595,11 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCalls(Dar
         id: str = None,
         index: int = None,
     ):
-        # The function that the model wants to call.
+        # The called function information.
         self.function = function
-        # The ID of the tool call.
+        # The ID.
         self.id = id
-        # The index of the tool call.
+        # The tool call sequence number.
         self.index = index
 
     def validate(self):
@@ -649,9 +642,9 @@ class ChatWithKnowledgeBaseResponseBodyChatCompletionChoicesMessageToolCallsFunc
         arguments: str = None,
         name: str = None,
     ):
-        # The arguments to pass to the function.
+        # The called function parameters.
         self.arguments = arguments
-        # The name of the function to call.
+        # The called function name.
         self.name = name
 
     def validate(self):

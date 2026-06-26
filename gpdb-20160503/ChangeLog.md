@@ -1,3 +1,12 @@
+2026-06-26 Version: 5.6.0
+- Support API PauseSaasService.
+- Support API ResumeSaasService.
+- Update API ChatWithKnowledgeBase: add request parameters KnowledgeParams.SourceCollection.$.QueryParams.RerankModel.RerankMetadataFields.
+- Update API ChatWithKnowledgeBaseStream: add request parameters KnowledgeParams.SourceCollection.$.QueryParams.RerankModel.RerankMetadataFields.
+- Update API QueryContent: add request parameters RerankModel.RerankMetadataFields.
+- Update API QueryKnowledgeBasesContent: add request parameters SourceCollection.$.QueryParams.RerankModel.RerankMetadataFields.
+
+
 2026-06-18 Version: 5.5.0
 - Support API CreateBranch.
 - Support API CreateSnapshot.

@@ -724,6 +724,9 @@ from ._pause_data_redistribute_response import PauseDataRedistributeResponse
 from ._pause_instance_request import PauseInstanceRequest
 from ._pause_instance_response_body import PauseInstanceResponseBody
 from ._pause_instance_response import PauseInstanceResponse
+from ._pause_saas_service_request import PauseSaasServiceRequest
+from ._pause_saas_service_response_body import PauseSaasServiceResponseBody
+from ._pause_saas_service_response import PauseSaasServiceResponse
 from ._pause_supabase_project_request import PauseSupabaseProjectRequest
 from ._pause_supabase_project_response_body import PauseSupabaseProjectResponseBody
 from ._pause_supabase_project_response import PauseSupabaseProjectResponse
@@ -774,6 +777,9 @@ from ._resume_data_redistribute_response import ResumeDataRedistributeResponse
 from ._resume_instance_request import ResumeInstanceRequest
 from ._resume_instance_response_body import ResumeInstanceResponseBody
 from ._resume_instance_response import ResumeInstanceResponse
+from ._resume_saas_service_request import ResumeSaasServiceRequest
+from ._resume_saas_service_response_body import ResumeSaasServiceResponseBody
+from ._resume_saas_service_response import ResumeSaasServiceResponse
 from ._resume_supabase_project_request import ResumeSupabaseProjectRequest
 from ._resume_supabase_project_response_body import ResumeSupabaseProjectResponseBody
 from ._resume_supabase_project_response import ResumeSupabaseProjectResponse
@@ -1834,6 +1840,9 @@ __all__ = [
     PauseInstanceRequest,
     PauseInstanceResponseBody,
     PauseInstanceResponse,
+    PauseSaasServiceRequest,
+    PauseSaasServiceResponseBody,
+    PauseSaasServiceResponse,
     PauseSupabaseProjectRequest,
     PauseSupabaseProjectResponseBody,
     PauseSupabaseProjectResponse,
@@ -1884,6 +1893,9 @@ __all__ = [
     ResumeInstanceRequest,
     ResumeInstanceResponseBody,
     ResumeInstanceResponse,
+    ResumeSaasServiceRequest,
+    ResumeSaasServiceResponseBody,
+    ResumeSaasServiceResponse,
     ResumeSupabaseProjectRequest,
     ResumeSupabaseProjectResponseBody,
     ResumeSupabaseProjectResponse,

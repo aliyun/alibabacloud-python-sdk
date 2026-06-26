@@ -21329,6 +21329,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.pause_instance_with_options_async(request, runtime)
 
+    def pause_saas_service_with_options(
+        self,
+        request: main_models.PauseSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSaasServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_saas_service_with_options_async(
+        self,
+        request: main_models.PauseSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PauseSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PauseSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PauseSaasServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_saas_service(
+        self,
+        request: main_models.PauseSaasServiceRequest,
+    ) -> main_models.PauseSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return self.pause_saas_service_with_options(request, runtime)
+
+    async def pause_saas_service_async(
+        self,
+        request: main_models.PauseSaasServiceRequest,
+    ) -> main_models.PauseSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.pause_saas_service_with_options_async(request, runtime)
+
     def pause_supabase_project_with_options(
         self,
         request: main_models.PauseSupabaseProjectRequest,
@@ -22944,6 +23018,80 @@ class Client(OpenApiClient):
     ) -> main_models.ResumeInstanceResponse:
         runtime = RuntimeOptions()
         return await self.resume_instance_with_options_async(request, runtime)
+
+    def resume_saas_service_with_options(
+        self,
+        request: main_models.ResumeSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSaasServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_saas_service_with_options_async(
+        self,
+        request: main_models.ResumeSaasServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumeSaasServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumeSaasService',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumeSaasServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_saas_service(
+        self,
+        request: main_models.ResumeSaasServiceRequest,
+    ) -> main_models.ResumeSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return self.resume_saas_service_with_options(request, runtime)
+
+    async def resume_saas_service_async(
+        self,
+        request: main_models.ResumeSaasServiceRequest,
+    ) -> main_models.ResumeSaasServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.resume_saas_service_with_options_async(request, runtime)
 
     def resume_supabase_project_with_options(
         self,
