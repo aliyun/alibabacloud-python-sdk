@@ -12,22 +12,24 @@ class RunAgentTaskRequest(DaraModel):
         biz_region_id: str = None,
         instance_ids: List[str] = None,
         max_steps: int = None,
+        schedule_id: str = None,
+        task_config_id: str = None,
         timeout_seconds: int = None,
         user_prompt: str = None,
     ):
-        # The region ID of the mobile node.
+        # The region ID of the Mobile node.
         self.biz_region_id = biz_region_id
-        # An array of mobile node IDs. Specify a maximum of 100 IDs per request.
+        # The list of Mobile node IDs. A maximum of 100 nodes are supported per request.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The maximum number of steps the task can execute. This limit prevents infinite loops. Valid values: 30–1000. Default: 1000.
+        # The maximum number of execution steps for the task to prevent infinite loops. Valid values: 30 to 1000. Default value: 1000.
         self.max_steps = max_steps
-        # The task timeout in seconds. Valid values: 300–3600. Default: 3600.
+        self.schedule_id = schedule_id
+        self.task_config_id = task_config_id
+        # The task timeout period in seconds. Valid values: 300 to 3600. Default value: 3600.
         self.timeout_seconds = timeout_seconds
-        # The user prompt in natural language. The Agent completes the task based on this prompt.
-        # 
-        # This parameter is required.
+        # The user instruction in natural language. The Agent performs operations based on this instruction.
         self.user_prompt = user_prompt
 
     def validate(self):
@@ -47,6 +49,12 @@ class RunAgentTaskRequest(DaraModel):
         if self.max_steps is not None:
             result['MaxSteps'] = self.max_steps
 
+        if self.schedule_id is not None:
+            result['ScheduleId'] = self.schedule_id
+
+        if self.task_config_id is not None:
+            result['TaskConfigId'] = self.task_config_id
+
         if self.timeout_seconds is not None:
             result['TimeoutSeconds'] = self.timeout_seconds
 
@@ -65,6 +73,12 @@ class RunAgentTaskRequest(DaraModel):
 
         if m.get('MaxSteps') is not None:
             self.max_steps = m.get('MaxSteps')
+
+        if m.get('ScheduleId') is not None:
+            self.schedule_id = m.get('ScheduleId')
+
+        if m.get('TaskConfigId') is not None:
+            self.task_config_id = m.get('TaskConfigId')
 
         if m.get('TimeoutSeconds') is not None:
             self.timeout_seconds = m.get('TimeoutSeconds')

@@ -7983,6 +7983,10 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.max_steps):
             query['MaxSteps'] = request.max_steps
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.task_config_id):
+            query['TaskConfigId'] = request.task_config_id
         if not DaraCore.is_null(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not DaraCore.is_null(request.user_prompt):
@@ -8019,6 +8023,10 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.max_steps):
             query['MaxSteps'] = request.max_steps
+        if not DaraCore.is_null(request.schedule_id):
+            query['ScheduleId'] = request.schedule_id
+        if not DaraCore.is_null(request.task_config_id):
+            query['TaskConfigId'] = request.task_config_id
         if not DaraCore.is_null(request.timeout_seconds):
             query['TimeoutSeconds'] = request.timeout_seconds
         if not DaraCore.is_null(request.user_prompt):
