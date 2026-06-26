@@ -605,6 +605,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateResourceGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.enable_aliyun_resource_group):
@@ -643,6 +645,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateResourceGroupResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.business_channel):
             query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.enable_aliyun_resource_group):
@@ -1427,6 +1431,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeResourceGroupsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.aliyun_resource_group_ids):
             query['AliyunResourceGroupIds'] = request.aliyun_resource_group_ids
         if not DaraCore.is_null(request.business_channel):
@@ -1471,6 +1477,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeResourceGroupsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not DaraCore.is_null(request.aliyun_resource_group_ids):
             query['AliyunResourceGroupIds'] = request.aliyun_resource_group_ids
         if not DaraCore.is_null(request.business_channel):

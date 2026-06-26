@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateResourceGroupRequest(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         business_channel: str = None,
         enable_aliyun_resource_group: bool = None,
         is_resource_group_with_office_site: int = None,
@@ -14,12 +15,13 @@ class CreateResourceGroupRequest(DaraModel):
         resource_classification: str = None,
         resource_group_name: str = None,
     ):
-        # The business channel.
+        self.agent_type = agent_type
+        # The channel.
         self.business_channel = business_channel
         self.enable_aliyun_resource_group = enable_aliyun_resource_group
-        # > This parameter is for internal use only.
+        # > This parameter is not publicly available.
         self.is_resource_group_with_office_site = is_resource_group_with_office_site
-        # Set this parameter to `AliyunConsole` for Wuying Workspace Enterprise Edition.
+        # For WUYING Workspace Enterprise Edition, set this parameter to `AliyunConsole`. Other platforms are not supported.
         self.platform = platform
         self.resource_classification = resource_classification
         # The name of the resource group.
@@ -33,6 +35,9 @@ class CreateResourceGroupRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.business_channel is not None:
             result['BusinessChannel'] = self.business_channel
 
@@ -55,6 +60,9 @@ class CreateResourceGroupRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('BusinessChannel') is not None:
             self.business_channel = m.get('BusinessChannel')
 

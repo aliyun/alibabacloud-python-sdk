@@ -1,3 +1,9 @@
+2026-06-26 Version: 2.1.1
+- Update API CreateResourceGroup: add request parameters AgentType.
+- Update API DescribeResourceGroups: add request parameters AgentType.
+- Update API DescribeResourceGroups: add response parameters Body.ResourceGroup.$.AgentType.
+
+
 2026-06-18 Version: 2.1.0
 - Support API TransferResourcesIntoGroup.
 - Support API TransferResourcesOutofGroup.

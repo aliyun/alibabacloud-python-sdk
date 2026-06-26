@@ -16,7 +16,7 @@ class DescribeResourceGroupsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # A list of resource groups.
+        # The list of resource groups.
         self.resource_group = resource_group
         # The total number of resource groups.
         self.total_count = total_count
@@ -64,6 +64,7 @@ class DescribeResourceGroupsResponseBody(DaraModel):
 class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         aliyun_resource_group_id: str = None,
         app_rules: List[main_models.DescribeResourceGroupsResponseBodyResourceGroupAppRules] = None,
         auth_count: str = None,
@@ -74,28 +75,26 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
         resource_group_name: str = None,
         timers: List[main_models.DescribeResourceGroupsResponseBodyResourceGroupTimers] = None,
     ):
+        self.agent_type = agent_type
         # The Alibaba Cloud resource group ID.
         self.aliyun_resource_group_id = aliyun_resource_group_id
         self.app_rules = app_rules
         # The number of administrators authorized for the resource group.
         self.auth_count = auth_count
-        # The time the resource group was created.
+        # The creation time.
         self.create_time = create_time
         # > The policies associated with the resource group.
-        # >
-        # > - These policies apply to the cloud computers in the resource group. If multiple policies are associated, they are applied in order of priority.
-        # >
-        # > - Policies associated with the resource group take precedence over policies assigned to individual cloud computers.
+        # > - Associated policies take effect on cloud desktops in the resource group. If multiple policies are associated, they take effect based on policy priority.
+        # > - If a cloud desktop in the resource group already has other policies specified, the policies associated with the resource group take precedence.
         self.policies = policies
-        # The number of resources in the resource group.
+        # The resource count in the resource group.
         self.resource_count = resource_count
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The name of the resource group.
         self.resource_group_name = resource_group_name
-        # > The scheduled tasks associated with the resource group.
-        # >
-        # > - These scheduled tasks apply to cloud computers in the resource group and take precedence over any tasks associated with individual cloud computers.
+        # > The associated scheduled tasks.
+        # > - Associated scheduled tasks take effect on cloud desktops in the resource group. If a cloud desktop in the resource group already has other scheduled tasks associated, the tasks associated with the resource group take precedence.
         self.timers = timers
 
     def validate(self):
@@ -117,6 +116,9 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.aliyun_resource_group_id is not None:
             result['AliyunResourceGroupId'] = self.aliyun_resource_group_id
 
@@ -154,6 +156,9 @@ class DescribeResourceGroupsResponseBodyResourceGroup(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('AliyunResourceGroupId') is not None:
             self.aliyun_resource_group_id = m.get('AliyunResourceGroupId')
 
@@ -254,7 +259,7 @@ class DescribeResourceGroupsResponseBodyResourceGroupPolicies(DaraModel):
     ):
         # The policy ID.
         self.id = id
-        # Specifies whether this is the default policy.
+        # Indicates whether the policy is the default policy.
         self.is_default = is_default
         # The policy name.
         self.name = name

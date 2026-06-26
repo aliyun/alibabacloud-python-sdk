@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class DescribeResourceGroupsRequest(DaraModel):
     def __init__(
         self,
+        agent_type: str = None,
         aliyun_resource_group_ids: List[str] = None,
         business_channel: str = None,
         need_contain_resource_group_with_office_site: int = None,
@@ -19,22 +20,22 @@ class DescribeResourceGroupsRequest(DaraModel):
         resource_group_ids: List[str] = None,
         resource_group_name: str = None,
     ):
-        # A list of Aliyun resource group IDs.
+        self.agent_type = agent_type
+        # The cloud platform resource group ID.
         self.aliyun_resource_group_ids = aliyun_resource_group_ids
-        # The business channel.
+        # The channel tag.
         self.business_channel = business_channel
         # > This parameter is not publicly available.
         self.need_contain_resource_group_with_office_site = need_contain_resource_group_with_office_site
         # The page number.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # > The cloud platform.
-        # >
-        # > - For Elastic Desktop Service (EDS) Enterprise Edition, this parameter must be set to AliyunConsole.
+        # > Fixed value: AliyunConsole.
+        # > - For Elastic Desktop Service Enterprise Edition, set this parameter to AliyunConsole. Other platforms are not publicly available.
         self.platform = platform
         self.resource_classification = resource_classification
-        # A list of resource group IDs.
+        # The list of resource group IDs.
         self.resource_group_ids = resource_group_ids
         # The name of the resource group.
         self.resource_group_name = resource_group_name
@@ -47,6 +48,9 @@ class DescribeResourceGroupsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
+
         if self.aliyun_resource_group_ids is not None:
             result['AliyunResourceGroupIds'] = self.aliyun_resource_group_ids
 
@@ -78,6 +82,9 @@ class DescribeResourceGroupsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
+
         if m.get('AliyunResourceGroupIds') is not None:
             self.aliyun_resource_group_ids = m.get('AliyunResourceGroupIds')
 
