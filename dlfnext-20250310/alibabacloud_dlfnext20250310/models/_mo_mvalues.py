@@ -11,11 +11,11 @@ class MoMValues(DaraModel):
         last_day_value: int = None,
         last_month_value: int = None,
     ):
-        # total
+        # The current value.
         self.current_value = current_value
-        # daily addition
+        # The value of the previous day.
         self.last_day_value = last_day_value
-        # monthly addition
+        # The value of the previous month.
         self.last_month_value = last_month_value
 
     def validate(self):

@@ -19,16 +19,26 @@ class ReceivedShare(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The catalog name.
         self.catalog_name = catalog_name
+        # The comment of the share.
         self.comment = comment
+        # The creation time.
         self.created_at = created_at
+        # The creator of the share.
         self.created_by = created_by
         self.enable_write = enable_write
+        # The share owner.
         self.owner = owner
+        # The provider\\"s account ID.
         self.provider_tenant_id = provider_tenant_id
+        # The share ID.
         self.share_id = share_id
+        # The share name.
         self.share_name = share_name
+        # The update time.
         self.updated_at = updated_at
+        # The user who last updated the share.
         self.updated_by = updated_by
 
     def validate(self):

@@ -15,12 +15,19 @@ class Receiver(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The comment.
         self.comment = comment
+        # The time when the receiver was created.
         self.created_at = created_at
+        # The creator.
         self.created_by = created_by
+        # The name of the receiver.
         self.receiver_name = receiver_name
+        # The receiver\\"s account ID.
         self.receiver_tenant_id = receiver_tenant_id
+        # The time when the receiver was last updated.
         self.updated_at = updated_at
+        # The user who last updated the receiver.
         self.updated_by = updated_by
 
     def validate(self):

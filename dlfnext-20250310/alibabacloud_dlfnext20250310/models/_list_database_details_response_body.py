@@ -13,7 +13,9 @@ class ListDatabaseDetailsResponseBody(DaraModel):
         database_details: List[main_models.Database] = None,
         next_page_token: str = None,
     ):
+        # The databases.
         self.database_details = database_details
+        # The token to retrieve the next page of results. A null value indicates that all results have been retrieved.
         self.next_page_token = next_page_token
 
     def validate(self):

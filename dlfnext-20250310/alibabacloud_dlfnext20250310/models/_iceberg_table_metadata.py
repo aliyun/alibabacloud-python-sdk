@@ -16,10 +16,14 @@ class IcebergTableMetadata(DaraModel):
         partition_fields: List[main_models.IcebergPartitionField] = None,
         properties: Dict[str, str] = None,
     ):
+        # The latest snapshot of the Iceberg table.
         self.current_snapshot = current_snapshot
+        # The fields.
         self.fields = fields
         self.identifier_field_ids = identifier_field_ids
+        # The partition fields.
         self.partition_fields = partition_fields
+        # The properties.
         self.properties = properties
 
     def validate(self):

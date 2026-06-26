@@ -11,8 +11,11 @@ class ListReceiversRequest(DaraModel):
         page_token: str = None,
         receiver_name: str = None,
     ):
+        # The maximum number of records to return.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
         self.page_token = page_token
+        # The name of the receiver.
         self.receiver_name = receiver_name
 
     def validate(self):

@@ -13,8 +13,11 @@ class AlterCatalogResponseBody(DaraModel):
         removed: List[str] = None,
         updated: List[str] = None,
     ):
+        # The unchanged items.
         self.missing = missing
+        # The deleted items.
         self.removed = removed
+        # The updated items.
         self.updated = updated
 
     def validate(self):

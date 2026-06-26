@@ -21,15 +21,25 @@ class Role(DaraModel):
         updated_by: str = None,
         users: List[main_models.User] = None,
     ):
+        # The time when the role was created. This is a Unix timestamp in milliseconds.
         self.created_at = created_at
+        # The name of the user who created the role.
         self.created_by = created_by
+        # The role description.
         self.description = description
+        # The display name of the role.
         self.display_name = display_name
+        # Indicates whether the role is a system role.
         self.is_predefined = is_predefined
+        # The name of the role.
         self.role_name = role_name
+        # The resource descriptor of the role.
         self.role_principal = role_principal
+        # The time when the role was last updated. This is a Unix timestamp in milliseconds.
         self.updated_at = updated_at
+        # The name of the user who last updated the role.
         self.updated_by = updated_by
+        # The users for the role.
         self.users = users
 
     def validate(self):

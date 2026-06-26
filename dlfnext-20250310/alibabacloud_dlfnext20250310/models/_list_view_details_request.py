@@ -11,8 +11,11 @@ class ListViewDetailsRequest(DaraModel):
         page_token: str = None,
         view_name_pattern: str = None,
     ):
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
+        # The token for the next page of results. If the response does not include this token, pass an empty string ("").
         self.page_token = page_token
+        # A pattern to filter view names.
         self.view_name_pattern = view_name_pattern
 
     def validate(self):

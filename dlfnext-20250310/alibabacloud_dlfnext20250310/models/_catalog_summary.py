@@ -24,21 +24,35 @@ class CatalogSummary(DaraModel):
         total_meta_file_count: main_models.MoMValues = None,
         total_meta_size_in_bytes: main_models.MoMValues = None,
     ):
+        # The total number of metadata requests in the current month.
         self.api_visit_count_monthly = api_visit_count_monthly
+        # The month-over-month data on the total number of databases.
         self.database_count = database_count
+        # The total number of file requests for the current month.
         self.file_access_count_monthly = file_access_count_monthly
-        # Update date of the statistics
+        # The date when the storage overview data was updated.
         self.generated_date = generated_date
+        # The storage usage for Archive data files.
         self.obj_type_archive_size = obj_type_archive_size
+        # The storage usage for Cold Archive data files.
         self.obj_type_cold_archive_size = obj_type_cold_archive_size
+        # The storage usage for Infrequent Access (IA) data files.
         self.obj_type_ia_size = obj_type_ia_size
+        # The storage usage for Standard data files.
         self.obj_type_standard_size = obj_type_standard_size
+        # The month-over-month data on the total number of partitions.
         self.partition_count = partition_count
+        # The month-over-month data on the total number of tables.
         self.table_count = table_count
+        # The data access traffic for the current month, in bytes.
         self.throughput_monthly = throughput_monthly
+        # The month-over-month data on the total number of files.
         self.total_file_count = total_file_count
+        # The change in storage capacity from the previous period, in bytes.
         self.total_file_size_in_bytes = total_file_size_in_bytes
+        # The month-over-month data for the total number of metadata files.
         self.total_meta_file_count = total_meta_file_count
+        # The month-over-month data for the storage usage of metadata files, in bytes.
         self.total_meta_size_in_bytes = total_meta_size_in_bytes
 
     def validate(self):

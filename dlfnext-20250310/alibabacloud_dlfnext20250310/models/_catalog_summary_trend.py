@@ -17,17 +17,17 @@ class CatalogSummaryTrend(DaraModel):
         total_file_size_in_bytes: List[main_models.DateSummary] = None,
         total_meta_count: List[main_models.DateSummary] = None,
     ):
-        # API visit count trends
+        # The trend of total metadata requests.
         self.api_visit_count = api_visit_count
-        # file access count trends
+        # The trend of file access count.
         self.file_access_count = file_access_count
-        # Table count trends
+        # The data access traffic trend.
         self.throughput = throughput
-        # Historical total file count
+        # The trend of total file count.
         self.total_file_count = total_file_count
-        # Database count trends
+        # The trend of total storage capacity.
         self.total_file_size_in_bytes = total_file_size_in_bytes
-        # Latest snapshot file count
+        # The trend of total metadata object count.
         self.total_meta_count = total_meta_count
 
     def validate(self):

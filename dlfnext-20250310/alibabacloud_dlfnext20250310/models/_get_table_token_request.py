@@ -9,6 +9,7 @@ class GetTableTokenRequest(DaraModel):
         self,
         is_internal: bool = None,
     ):
+        # Specifies whether the access is from a VPC.
         self.is_internal = is_internal
 
     def validate(self):

@@ -12,8 +12,11 @@ class FailurePermission(DaraModel):
         error_message: str = None,
         permission: main_models.Permission = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The permission information.
         self.permission = permission
 
     def validate(self):

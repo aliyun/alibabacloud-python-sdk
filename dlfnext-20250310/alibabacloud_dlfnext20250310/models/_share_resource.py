@@ -15,12 +15,19 @@ class ShareResource(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The time when the resource was created.
         self.created_at = created_at
+        # The user who created the resource.
         self.created_by = created_by
+        # The database name.
         self.database_name = database_name
+        # The shared resource type.
         self.share_type = share_type
+        # The table name.
         self.table_name = table_name
+        # The time when the resource was last updated.
         self.updated_at = updated_at
+        # The user who last updated the resource.
         self.updated_by = updated_by
 
     def validate(self):

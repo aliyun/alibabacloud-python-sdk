@@ -17,13 +17,21 @@ class View(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The creator.
         self.created_by = created_by
+        # The UUID of the view.
         self.id = id
+        # The name of the view.
         self.name = name
+        # The owner of the view.
         self.owner = owner
+        # The view schema.
         self.schema = schema
+        # The time of the last update.
         self.updated_at = updated_at
+        # The user who last updated the view.
         self.updated_by = updated_by
 
     def validate(self):

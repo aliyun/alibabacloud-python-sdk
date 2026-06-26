@@ -11,8 +11,11 @@ class AlterShareRequest(DaraModel):
         enable_write: bool = None,
         share_name: str = None,
     ):
+        # The comment for the share.
         self.comment = comment
+        # Specifies whether to enable the write permission for the share.
         self.enable_write = enable_write
+        # The name of the share.
         self.share_name = share_name
 
     def validate(self):

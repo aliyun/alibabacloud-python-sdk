@@ -14,11 +14,17 @@ class TableCompaction(DaraModel):
         max_level_0file_count: str = None,
         table_id: str = None,
     ):
+        # The catalog ID.
         self.catalog_id = catalog_id
+        # The total CU usage.
         self.cu_usage = cu_usage
+        # The time when the last file was compacted.
         self.last_compacted_file_time = last_compacted_file_time
+        # The earliest creation time of uncompacted files.
         self.latency_file_earliest_time = latency_file_earliest_time
+        # The number of Level 0 files.
         self.max_level_0file_count = max_level_0file_count
+        # The table ID.
         self.table_id = table_id
 
     def validate(self):

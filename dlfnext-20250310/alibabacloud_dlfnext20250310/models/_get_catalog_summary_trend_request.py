@@ -10,8 +10,12 @@ class GetCatalogSummaryTrendRequest(DaraModel):
         end_date: str = None,
         start_date: str = None,
     ):
+        # The end date, in yyyy-MM-dd format.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The start date, in yyyy-MM-dd format.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

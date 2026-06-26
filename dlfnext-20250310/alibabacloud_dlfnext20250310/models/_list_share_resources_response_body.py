@@ -14,8 +14,11 @@ class ListShareResourcesResponseBody(DaraModel):
         next_page_token: str = None,
         share_resources: List[main_models.ShareResource] = None,
     ):
+        # The ID of the catalog.
         self.catalog_id = catalog_id
+        # The token used to page through results. A null value indicates that this is the last page.
         self.next_page_token = next_page_token
+        # The shared resources.
         self.share_resources = share_resources
 
     def validate(self):

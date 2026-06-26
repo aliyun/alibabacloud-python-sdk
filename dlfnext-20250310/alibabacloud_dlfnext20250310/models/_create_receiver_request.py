@@ -11,8 +11,11 @@ class CreateReceiverRequest(DaraModel):
         receiver_name: str = None,
         receiver_tenant_id: int = None,
     ):
+        # The comment.
         self.comment = comment
+        # The name of the receiver.
         self.receiver_name = receiver_name
+        # The ID of the receiver\\"s account.
         self.receiver_tenant_id = receiver_tenant_id
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListSnapshotsResponseBody(DaraModel):
         next_page_token: str = None,
         snapshots: List[main_models.Snapshot] = None,
     ):
+        # The token used to retrieve the next page of results. If this parameter is not returned, all results have been returned.
         self.next_page_token = next_page_token
+        # A list of snapshots.
         self.snapshots = snapshots
 
     def validate(self):

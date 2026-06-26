@@ -13,7 +13,9 @@ class ListViewDetailsResponseBody(DaraModel):
         next_page_token: str = None,
         view_details: List[main_models.View] = None,
     ):
+        # The token for the next page of results. If null is returned, all results have been retrieved.
         self.next_page_token = next_page_token
+        # A list of views.
         self.view_details = view_details
 
     def validate(self):

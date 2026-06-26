@@ -22,18 +22,29 @@ class Catalog(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The time when the catalog was created.
         self.created_at = created_at
+        # The user who created the catalog.
         self.created_by = created_by
+        # The ID of the catalog.
         self.id = id
+        # Whether the data catalog is shared.
         self.is_shared = is_shared
+        # The name of the catalog.
         self.name = name
+        # The extension options.
         self.options = options
-        # Owner。
+        # The catalog owner.
         self.owner = owner
+        # Share ID.
         self.share_id = share_id
+        # The status of the catalog.
         self.status = status
+        # Type.
         self.type = type
+        # The time when the catalog was last modified.
         self.updated_at = updated_at
+        # The user who last modified the catalog.
         self.updated_by = updated_by
 
     def validate(self):

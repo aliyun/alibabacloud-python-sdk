@@ -7,15 +7,12 @@ from typing import List
 from alibabacloud_dlfnext20250310 import models as main_models
 from darabonba.model import DaraModel
 
-class PartitionSummaries(DaraModel):
+class ListPartitionsByNamesResponseBody(DaraModel):
     def __init__(
         self,
-        next_page_token: str = None,
-        partitions: List[main_models.PartitionSummary] = None,
+        partitions: List[main_models.Partition] = None,
     ):
-        # The token to retrieve the next page of results. A null value indicates that the last page of results has been returned.
-        self.next_page_token = next_page_token
-        # The partitions.
+        # 分区。
         self.partitions = partitions
 
     def validate(self):
@@ -29,9 +26,6 @@ class PartitionSummaries(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.next_page_token is not None:
-            result['nextPageToken'] = self.next_page_token
-
         result['partitions'] = []
         if self.partitions is not None:
             for k1 in self.partitions:
@@ -41,13 +35,10 @@ class PartitionSummaries(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('nextPageToken') is not None:
-            self.next_page_token = m.get('nextPageToken')
-
         self.partitions = []
         if m.get('partitions') is not None:
             for k1 in m.get('partitions'):
-                temp_model = main_models.PartitionSummary()
+                temp_model = main_models.Partition()
                 self.partitions.append(temp_model.from_map(k1))
 
         return self

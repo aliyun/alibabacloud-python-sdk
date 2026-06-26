@@ -12,9 +12,13 @@ class IcebergPartitionField(DaraModel):
         source_id: int = None,
         transform: str = None,
     ):
+        # The partition ID.
         self.field_id = field_id
+        # The partition name.
         self.name = name
+        # The source ID.
         self.source_id = source_id
+        # The transformation rule.
         self.transform = transform
 
     def validate(self):

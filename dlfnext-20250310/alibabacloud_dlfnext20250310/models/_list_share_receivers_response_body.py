@@ -13,7 +13,9 @@ class ListShareReceiversResponseBody(DaraModel):
         next_page_token: str = None,
         receivers: List[main_models.Receiver] = None,
     ):
+        # The token to retrieve the next page of results. If this parameter is null, it indicates that this is the last page of results.
         self.next_page_token = next_page_token
+        # The receivers.
         self.receivers = receivers
 
     def validate(self):

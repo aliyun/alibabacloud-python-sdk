@@ -11,8 +11,11 @@ class ListDatabasesRequest(DaraModel):
         max_results: int = None,
         page_token: str = None,
     ):
+        # The database name pattern for fuzzy matching.
         self.database_name_pattern = database_name_pattern
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
+        # The token for the next page of results. If the response does not provide a token, pass an empty string ("").
         self.page_token = page_token
 
     def validate(self):

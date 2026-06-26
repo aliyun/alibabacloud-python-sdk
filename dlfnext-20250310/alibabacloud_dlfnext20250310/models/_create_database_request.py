@@ -12,7 +12,9 @@ class CreateDatabaseRequest(DaraModel):
         name: str = None,
         options: Dict[str, str] = None,
     ):
+        # The name of the database.
         self.name = name
+        # The configuration options.
         self.options = options
 
     def validate(self):

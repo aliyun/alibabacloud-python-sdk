@@ -13,9 +13,13 @@ class DataField(DaraModel):
         name: str = None,
         type: main_models.FullDataType = None,
     ):
+        # The column description.
         self.description = description
+        # The column ID.
         self.id = id
+        # The column name.
         self.name = name
+        # The column type.
         self.type = type
 
     def validate(self):

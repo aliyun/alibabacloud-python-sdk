@@ -21,7 +21,21 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'dlfnext.us-west-1.aliyuncs.com',
+            'us-east-1': 'dlfnext.us-east-1.aliyuncs.com',
+            'eu-central-1': 'dlfnext.eu-central-1.aliyuncs.com',
+            'cn-wulanchabu': 'dlfnext.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'dlfnext.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'dlfnext.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'dlfnext.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'dlfnext.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'dlfnext.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'dlfnext.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'dlfnext.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'dlfnext.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dlfnext', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -640,6 +654,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.alter_table_with_options_async(catalog_id, database, table, request, headers, runtime)
+
+    def alter_table_schema_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.AlterTableSchemaRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AlterTableSchemaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.schema):
+            body['schema'] = request.schema
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AlterTableSchema',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/schema',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.AlterTableSchemaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def alter_table_schema_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.AlterTableSchemaRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AlterTableSchemaResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.schema):
+            body['schema'] = request.schema
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AlterTableSchema',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/schema',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.AlterTableSchemaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def alter_table_schema(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.AlterTableSchemaRequest,
+    ) -> main_models.AlterTableSchemaResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.alter_table_schema_with_options(catalog_id, database, table, request, headers, runtime)
+
+    async def alter_table_schema_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.AlterTableSchemaRequest,
+    ) -> main_models.AlterTableSchemaResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.alter_table_schema_with_options_async(catalog_id, database, table, request, headers, runtime)
 
     def batch_grant_permissions_with_options(
         self,
@@ -4146,6 +4248,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_partitions_with_options_async(catalog_id, database, table, request, headers, runtime)
+
+    def list_partitions_by_names_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsByNamesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPartitionsByNamesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.specs):
+            body['specs'] = request.specs
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPartitionsByNames',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/partitions/list-by-names',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPartitionsByNamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_partitions_by_names_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsByNamesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPartitionsByNamesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.specs):
+            body['specs'] = request.specs
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPartitionsByNames',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/partitions/list-by-names',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPartitionsByNamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_partitions_by_names(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsByNamesRequest,
+    ) -> main_models.ListPartitionsByNamesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_partitions_by_names_with_options(catalog_id, database, table, request, headers, runtime)
+
+    async def list_partitions_by_names_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.ListPartitionsByNamesRequest,
+    ) -> main_models.ListPartitionsByNamesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_partitions_by_names_with_options_async(catalog_id, database, table, request, headers, runtime)
 
     def list_permissions_with_options(
         self,

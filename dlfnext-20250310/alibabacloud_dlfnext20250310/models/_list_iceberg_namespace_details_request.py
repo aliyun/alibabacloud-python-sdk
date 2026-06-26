@@ -11,8 +11,13 @@ class ListIcebergNamespaceDetailsRequest(DaraModel):
         namespace_name_pattern: str = None,
         page_token: str = None,
     ):
+        # The number of entries to return on each page.
+        # Default value: 1000.
+        # Maximum value: 1000.
         self.max_results = max_results
+        # The namespace name pattern. Supports right-hand fuzzy matching with the percent sign (%).
         self.namespace_name_pattern = namespace_name_pattern
+        # The token for the next page of results. If the response does not include this token, pass an empty string ("").
         self.page_token = page_token
 
     def validate(self):

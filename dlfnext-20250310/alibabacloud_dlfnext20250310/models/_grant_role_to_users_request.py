@@ -12,7 +12,9 @@ class GrantRoleToUsersRequest(DaraModel):
         role_principal: str = None,
         user_principals: List[str] = None,
     ):
+        # The resource descriptor for a role.
         self.role_principal = role_principal
+        # The resource descriptors for users.
         self.user_principals = user_principals
 
     def validate(self):

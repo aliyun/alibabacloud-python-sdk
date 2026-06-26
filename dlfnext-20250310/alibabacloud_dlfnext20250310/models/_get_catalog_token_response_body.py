@@ -12,7 +12,9 @@ class GetCatalogTokenResponseBody(DaraModel):
         expires_at_millis: int = None,
         token: Dict[str, str] = None,
     ):
+        # The token expiration time.
         self.expires_at_millis = expires_at_millis
+        # The token for the catalog.
         self.token = token
 
     def validate(self):

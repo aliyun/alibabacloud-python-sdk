@@ -12,7 +12,9 @@ class AlterCatalogRequest(DaraModel):
         removals: List[str] = None,
         updates: Dict[str, str] = None,
     ):
+        # The items to delete.
         self.removals = removals
+        # The items to update.
         self.updates = updates
 
     def validate(self):

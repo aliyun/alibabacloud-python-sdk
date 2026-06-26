@@ -11,8 +11,11 @@ class ListIcebergTableDetailsRequest(DaraModel):
         page_token: str = None,
         table_name_pattern: str = None,
     ):
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this parameter is not returned in the response, pass an empty string ("").
         self.page_token = page_token
+        # The pattern to filter table names.
         self.table_name_pattern = table_name_pattern
 
     def validate(self):

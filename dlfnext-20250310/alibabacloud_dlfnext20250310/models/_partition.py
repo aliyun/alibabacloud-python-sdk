@@ -24,19 +24,33 @@ class Partition(DaraModel):
         updated_at: int = None,
         updated_by: str = None,
     ):
+        # The time when the partition was created.
         self.created_at = created_at
+        # The creator of the partition.
         self.created_by = created_by
+        # Indicates whether the process is complete.
         self.done = done
+        # The number of files.
         self.file_count = file_count
+        # The file size.
         self.file_size_in_bytes = file_size_in_bytes
+        # The time when the latest file was created.
         self.last_file_creation_time = last_file_creation_time
+        # The number of records.
         self.record_count = record_count
+        # The key-value pairs of the partition values.
         self.spec = spec
+        # The status of the storage class conversion.
         self.storage_action = storage_action
+        # The storage class conversion time.
         self.storage_action_timestamp = storage_action_timestamp
+        # The storage class.
         self.storage_class = storage_class
+        # The total number of buckets.
         self.total_buckets = total_buckets
+        # The time when the partition was last updated.
         self.updated_at = updated_at
+        # The user who last updated the partition.
         self.updated_by = updated_by
 
     def validate(self):

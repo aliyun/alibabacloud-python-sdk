@@ -12,8 +12,11 @@ class FieldRef(DaraModel):
         name: str = None,
         type: main_models.FullDataType = None,
     ):
+        # Text sequence
         self.index = index
+        # Table name
         self.name = name
+        # File type
         self.type = type
 
     def validate(self):

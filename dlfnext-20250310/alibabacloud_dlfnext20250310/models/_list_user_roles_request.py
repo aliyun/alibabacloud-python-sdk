@@ -11,8 +11,11 @@ class ListUserRolesRequest(DaraModel):
         page_token: str = None,
         user_principal: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of data. If the response does not provide this token, pass an empty string ("").
         self.page_token = page_token
+        # The resource descriptor for the user.
         self.user_principal = user_principal
 
     def validate(self):

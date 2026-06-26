@@ -2,15 +2,17 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List, Dict
+
 from darabonba.model import DaraModel
 
-class GetCatalogSummaryRequest(DaraModel):
+class ListPartitionsByNamesRequest(DaraModel):
     def __init__(
         self,
-        date: str = None,
+        specs: List[Dict[str, str]] = None,
     ):
-        # The date of the storage overview.
-        self.date = date
+        # 分区规格列表。
+        self.specs = specs
 
     def validate(self):
         pass
@@ -20,15 +22,15 @@ class GetCatalogSummaryRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.date is not None:
-            result['date'] = self.date
+        if self.specs is not None:
+            result['specs'] = self.specs
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('date') is not None:
-            self.date = m.get('date')
+        if m.get('specs') is not None:
+            self.specs = m.get('specs')
 
         return self
 

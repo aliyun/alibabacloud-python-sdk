@@ -11,8 +11,12 @@ class CreateShareRequest(DaraModel):
         enable_write: bool = None,
         share_name: str = None,
     ):
+        # The comment for the share.
         self.comment = comment
+        # Specifies whether to enable write permissions for the share.
         self.enable_write = enable_write
+        # The share name.
+        # 
         # This parameter is required.
         self.share_name = share_name
 

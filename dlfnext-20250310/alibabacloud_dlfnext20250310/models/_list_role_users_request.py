@@ -11,8 +11,11 @@ class ListRoleUsersRequest(DaraModel):
         page_token: str = None,
         role_principal: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If the response does not return a token, pass an empty string ("").
         self.page_token = page_token
+        # The resource descriptor for the DLF role.
         self.role_principal = role_principal
 
     def validate(self):

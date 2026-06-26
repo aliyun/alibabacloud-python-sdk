@@ -23,25 +23,29 @@ class FullSchemaChange(DaraModel):
         new_nullability: bool = None,
         value: str = None,
     ):
+        # The type of change.
         self.action = action
-        # required in UpdateComment/AddColumn
+        # The description. This parameter is required when `action` is `UpdateComment` or `AddColumn`.
         self.comment = comment
+        # The column type. This parameter is required when `action` is `AddColumn`.
         self.data_type = data_type
-        # required in AddColumn/RenameColumn/DropColumn/UpdateColumnComment/UpdateColumnType/UpdateColumnNullability
+        # The table column names. This parameter is required when `action` is `AddColumn`, `RenameColumn`, `DropColumn`, `UpdateColumnComment`, `UpdateColumnType`, or `UpdateColumnNullability`.
         self.field_names = field_names
-        # required in UpdateColumnType
+        # Specifies whether the column is nullable. This parameter is required when the `action` is `UpdateColumnType`.
         self.keep_nullability = keep_nullability
-        # required in SetOption/RemoveOption
+        # The key for the configuration. This parameter is required when `action` is `SetOption` or `RemoveOption`.
         self.key = key
+        # The column to move. This parameter is required when `action` is `AddColumn` or `UpdateColumnPosition`.
         self.move = move
-        # required in UpdateColumnComment
+        # The new description for the column. This parameter is required when `action` is `UpdateColumnComment`.
         self.new_comment = new_comment
+        # The new column type. This parameter is required when `action` is `UpdateColumnType`.
         self.new_data_type = new_data_type
-        # required in RenameColumn
+        # The new name of the column. This parameter is required when `action` is `RenameColumn`.
         self.new_name = new_name
-        # required in UpdateColumnNullability
+        # Specifies whether the new column is nullable. This parameter is required when `action` is `UpdateColumnType`.
         self.new_nullability = new_nullability
-        # required in SetOption
+        # The value of the configuration. This parameter is required when `action` is `SetOption`.
         self.value = value
 
     def validate(self):

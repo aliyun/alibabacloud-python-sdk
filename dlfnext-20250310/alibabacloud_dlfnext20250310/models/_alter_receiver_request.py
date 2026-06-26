@@ -10,7 +10,9 @@ class AlterReceiverRequest(DaraModel):
         comment: str = None,
         receiver_name: str = None,
     ):
+        # The comment.
         self.comment = comment
+        # The name of the sink.
         self.receiver_name = receiver_name
 
     def validate(self):

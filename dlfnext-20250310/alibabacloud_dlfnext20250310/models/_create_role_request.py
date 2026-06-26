@@ -11,8 +11,11 @@ class CreateRoleRequest(DaraModel):
         display_name: str = None,
         role_name: str = None,
     ):
+        # The role description.
         self.description = description
+        # The role display name.
         self.display_name = display_name
+        # The role name.
         self.role_name = role_name
 
     def validate(self):

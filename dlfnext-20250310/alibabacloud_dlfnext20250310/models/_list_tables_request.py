@@ -11,8 +11,11 @@ class ListTablesRequest(DaraModel):
         page_token: str = None,
         table_name_pattern: str = None,
     ):
+        # The maximum number of records to return.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If the response does not include this parameter, pass an empty string ("").
         self.page_token = page_token
+        # The table name pattern.
         self.table_name_pattern = table_name_pattern
 
     def validate(self):

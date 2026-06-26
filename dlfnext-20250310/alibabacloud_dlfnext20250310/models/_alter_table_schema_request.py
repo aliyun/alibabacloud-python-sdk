@@ -5,33 +5,33 @@ from __future__ import annotations
 from alibabacloud_dlfnext20250310 import models as main_models
 from darabonba.model import DaraModel
 
-class RollbackTableRequest(DaraModel):
+class AlterTableSchemaRequest(DaraModel):
     def __init__(
         self,
-        instant: main_models.FullInstant = None,
+        schema: main_models.Schema = None,
     ):
-        # The details of the instance.
-        self.instant = instant
+        # The table schema.
+        self.schema = schema
 
     def validate(self):
-        if self.instant:
-            self.instant.validate()
+        if self.schema:
+            self.schema.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.instant is not None:
-            result['instant'] = self.instant.to_map()
+        if self.schema is not None:
+            result['schema'] = self.schema.to_map()
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('instant') is not None:
-            temp_model = main_models.FullInstant()
-            self.instant = temp_model.from_map(m.get('instant'))
+        if m.get('schema') is not None:
+            temp_model = main_models.Schema()
+            self.schema = temp_model.from_map(m.get('schema'))
 
         return self
 

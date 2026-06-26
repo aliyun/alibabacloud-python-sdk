@@ -12,7 +12,9 @@ class RevokeRoleFromUsersRequest(DaraModel):
         role_principal: str = None,
         user_principals: List[str] = None,
     ):
+        # The resource descriptor for the DLF role.
         self.role_principal = role_principal
+        # The resource descriptors for the users.
         self.user_principals = user_principals
 
     def validate(self):

@@ -26,28 +26,37 @@ class PartitionSummary(DaraModel):
         total_file_size_in_bytes: int = None,
         updated_at: int = None,
     ):
-        # Partition creation timestamp in milliseconds
+        # The creation timestamp for the partition.
         self.created_at = created_at
-        # Database name
+        # The name of the database.
         self.database_name = database_name
-        # Total files in partition
+        # The last access timestamp for the partition\\"s data.
         self.last_access_time = last_access_time
+        # The last requester.
         self.last_requester = last_requester
-        # Partition identifier
+        # The name of the partition.
         self.partition_name = partition_name
+        # The storage action parameters.
         self.storage_action_params = storage_action_params
+        # The storage action timestamp.
         self.storage_action_timestamp = storage_action_timestamp
+        # The storage class.
         self.storage_class = storage_class
-        # Table name
+        # The name of the table.
         self.table_name = table_name
+        # The top requester.
         self.top_requester = top_requester
+        # Total file access count.
         self.total_file_access_num = total_file_access_num
+        # Total file access count over the last 30 days.
         self.total_file_access_num_30d = total_file_access_num_30d
+        # Total file access count over the last 7 days.
         self.total_file_access_num_7d = total_file_access_num_7d
-        # 24h access count
+        # The total number of files in the partition.
         self.total_file_count = total_file_count
-        # Last data access timestamp in milliseconds
+        # The total size, in bytes, of all files in the partition.
         self.total_file_size_in_bytes = total_file_size_in_bytes
+        # The last update timestamp for the partition.
         self.updated_at = updated_at
 
     def validate(self):

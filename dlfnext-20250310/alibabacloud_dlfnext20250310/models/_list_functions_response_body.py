@@ -12,7 +12,9 @@ class ListFunctionsResponseBody(DaraModel):
         functions: List[str] = None,
         next_page_token: str = None,
     ):
+        # The function definitions.
         self.functions = functions
+        # A pagination token. Use this token to retrieve the next page of results. If this parameter is null, all results have been returned.
         self.next_page_token = next_page_token
 
     def validate(self):

@@ -11,8 +11,11 @@ class ListPartitionSummariesRequest(DaraModel):
         page_token: str = None,
         partition_name_pattern: str = None,
     ):
+        # The number of entries to return on each page.
         self.max_results = max_results
+        # The token for the next page of results. If the response does not include this token, pass an empty string ("").
         self.page_token = page_token
+        # The partition name pattern.
         self.partition_name_pattern = partition_name_pattern
 
     def validate(self):

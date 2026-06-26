@@ -13,7 +13,9 @@ class ListIcebergTableDetailsResponseBody(DaraModel):
         next_page_token: str = None,
         table_details: List[main_models.IcebergTable] = None,
     ):
+        # The token to retrieve the next page of results. If this parameter is null, all results have been returned.
         self.next_page_token = next_page_token
+        # A list of data tables.
         self.table_details = table_details
 
     def validate(self):
