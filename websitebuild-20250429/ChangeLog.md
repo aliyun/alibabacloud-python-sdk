@@ -1,3 +1,13 @@
+2026-06-26 Version: 2.30.0
+- Support API GrantPromotionOfferForPartner.
+- Support API ListPromotionActivitiesForPartner.
+- Support API ListPromotionOfferRecordsForPartner.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.ActionType.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.Description.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.RecommendType.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.Title.
+
+
 2026-06-24 Version: 2.29.0
 - Support API OfflineAppInstance.
 - Support API OnlineAppInstance.

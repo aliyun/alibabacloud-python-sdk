@@ -15,6 +15,7 @@ from ._app_service import AppService
 from ._app_service_aggregate import AppServiceAggregate
 from ._app_service_group import AppServiceGroup
 from ._app_service_profile import AppServiceProfile
+from ._promotion_activity import PromotionActivity
 from ._tree_node import TreeNode
 from ._module_results_value import ModuleResultsValue
 from ._module_versions_value import ModuleVersionsValue
@@ -232,6 +233,9 @@ from ._get_user_access_token_for_partner_response import GetUserAccessTokenForPa
 from ._get_user_tmp_identity_for_partner_request import GetUserTmpIdentityForPartnerRequest
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBody
 from ._get_user_tmp_identity_for_partner_response import GetUserTmpIdentityForPartnerResponse
+from ._grant_promotion_offer_for_partner_request import GrantPromotionOfferForPartnerRequest
+from ._grant_promotion_offer_for_partner_response_body import GrantPromotionOfferForPartnerResponseBody
+from ._grant_promotion_offer_for_partner_response import GrantPromotionOfferForPartnerResponse
 from ._introspect_app_instance_ticket_for_preview_request import IntrospectAppInstanceTicketForPreviewRequest
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBody
 from ._introspect_app_instance_ticket_for_preview_response import IntrospectAppInstanceTicketForPreviewResponse
@@ -286,6 +290,12 @@ from ._list_app_templates_response import ListAppTemplatesResponse
 from ._list_isv_payment_plugin_configs_request import ListIsvPaymentPluginConfigsRequest
 from ._list_isv_payment_plugin_configs_response_body import ListIsvPaymentPluginConfigsResponseBody
 from ._list_isv_payment_plugin_configs_response import ListIsvPaymentPluginConfigsResponse
+from ._list_promotion_activities_for_partner_request import ListPromotionActivitiesForPartnerRequest
+from ._list_promotion_activities_for_partner_response_body import ListPromotionActivitiesForPartnerResponseBody
+from ._list_promotion_activities_for_partner_response import ListPromotionActivitiesForPartnerResponse
+from ._list_promotion_offer_records_for_partner_request import ListPromotionOfferRecordsForPartnerRequest
+from ._list_promotion_offer_records_for_partner_response_body import ListPromotionOfferRecordsForPartnerResponseBody
+from ._list_promotion_offer_records_for_partner_response import ListPromotionOfferRecordsForPartnerResponse
 from ._modify_app_instance_spec_request import ModifyAppInstanceSpecRequest
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBody
 from ._modify_app_instance_spec_response import ModifyAppInstanceSpecResponse
@@ -543,6 +553,7 @@ from ._get_oss_upload_policy_response_body import GetOssUploadPolicyResponseBody
 from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBodyModule
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
+from ._grant_promotion_offer_for_partner_response_body import GrantPromotionOfferForPartnerResponseBodyModule
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBodyModule
 from ._list_aistaff_chat_events_response_body import ListAIStaffChatEventsResponseBodyModuleEvents
 from ._list_aistaff_chat_events_response_body import ListAIStaffChatEventsResponseBodyModule
@@ -588,6 +599,10 @@ from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModul
 from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModuleNext
 from ._list_app_templates_response_body import ListAppTemplatesResponseBodyModule
 from ._list_isv_payment_plugin_configs_response_body import ListIsvPaymentPluginConfigsResponseBodyModule
+from ._list_promotion_activities_for_partner_response_body import ListPromotionActivitiesForPartnerResponseBodyModuleActivities
+from ._list_promotion_activities_for_partner_response_body import ListPromotionActivitiesForPartnerResponseBodyModule
+from ._list_promotion_offer_records_for_partner_response_body import ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords
+from ._list_promotion_offer_records_for_partner_response_body import ListPromotionOfferRecordsForPartnerResponseBodyModule
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBodyModule
 from ._publish_app_instance_response_body import PublishAppInstanceResponseBodyModule
 from ._query_inspiration_account_details_response_body import QueryInspirationAccountDetailsResponseBodyModuleData
@@ -639,6 +654,7 @@ __all__ = [
     AppServiceAggregate,
     AppServiceGroup,
     AppServiceProfile,
+    PromotionActivity,
     TreeNode,
     ModuleResultsValue,
     ModuleVersionsValue,
@@ -856,6 +872,9 @@ __all__ = [
     GetUserTmpIdentityForPartnerRequest,
     GetUserTmpIdentityForPartnerResponseBody,
     GetUserTmpIdentityForPartnerResponse,
+    GrantPromotionOfferForPartnerRequest,
+    GrantPromotionOfferForPartnerResponseBody,
+    GrantPromotionOfferForPartnerResponse,
     IntrospectAppInstanceTicketForPreviewRequest,
     IntrospectAppInstanceTicketForPreviewResponseBody,
     IntrospectAppInstanceTicketForPreviewResponse,
@@ -910,6 +929,12 @@ __all__ = [
     ListIsvPaymentPluginConfigsRequest,
     ListIsvPaymentPluginConfigsResponseBody,
     ListIsvPaymentPluginConfigsResponse,
+    ListPromotionActivitiesForPartnerRequest,
+    ListPromotionActivitiesForPartnerResponseBody,
+    ListPromotionActivitiesForPartnerResponse,
+    ListPromotionOfferRecordsForPartnerRequest,
+    ListPromotionOfferRecordsForPartnerResponseBody,
+    ListPromotionOfferRecordsForPartnerResponse,
     ModifyAppInstanceSpecRequest,
     ModifyAppInstanceSpecResponseBody,
     ModifyAppInstanceSpecResponse,
@@ -1167,6 +1192,7 @@ __all__ = [
     GetUserAccessTokenForPartnerResponseBodyModule,
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,
+    GrantPromotionOfferForPartnerResponseBodyModule,
     IntrospectAppInstanceTicketForPreviewResponseBodyModule,
     ListAIStaffChatEventsResponseBodyModuleEvents,
     ListAIStaffChatEventsResponseBodyModule,
@@ -1212,6 +1238,10 @@ __all__ = [
     ListAppTemplatesResponseBodyModuleNext,
     ListAppTemplatesResponseBodyModule,
     ListIsvPaymentPluginConfigsResponseBodyModule,
+    ListPromotionActivitiesForPartnerResponseBodyModuleActivities,
+    ListPromotionActivitiesForPartnerResponseBodyModule,
+    ListPromotionOfferRecordsForPartnerResponseBodyModuleRecords,
+    ListPromotionOfferRecordsForPartnerResponseBodyModule,
     ModifyAppInstanceSpecResponseBodyModule,
     PublishAppInstanceResponseBodyModule,
     QueryInspirationAccountDetailsResponseBodyModuleData,

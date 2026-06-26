@@ -5487,6 +5487,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_tmp_identity_for_partner_with_options_async(request, runtime)
 
+    def grant_promotion_offer_for_partner_with_options(
+        self,
+        request: main_models.GrantPromotionOfferForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GrantPromotionOfferForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.activity_id):
+            query['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GrantPromotionOfferForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GrantPromotionOfferForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_promotion_offer_for_partner_with_options_async(
+        self,
+        request: main_models.GrantPromotionOfferForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GrantPromotionOfferForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.activity_id):
+            query['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GrantPromotionOfferForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GrantPromotionOfferForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_promotion_offer_for_partner(
+        self,
+        request: main_models.GrantPromotionOfferForPartnerRequest,
+    ) -> main_models.GrantPromotionOfferForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.grant_promotion_offer_for_partner_with_options(request, runtime)
+
+    async def grant_promotion_offer_for_partner_async(
+        self,
+        request: main_models.GrantPromotionOfferForPartnerRequest,
+    ) -> main_models.GrantPromotionOfferForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.grant_promotion_offer_for_partner_with_options_async(request, runtime)
+
     def introspect_app_instance_ticket_for_preview_with_options(
         self,
         request: main_models.IntrospectAppInstanceTicketForPreviewRequest,
@@ -7050,6 +7136,186 @@ class Client(OpenApiClient):
     ) -> main_models.ListIsvPaymentPluginConfigsResponse:
         runtime = RuntimeOptions()
         return await self.list_isv_payment_plugin_configs_with_options_async(request, runtime)
+
+    def list_promotion_activities_for_partner_with_options(
+        self,
+        request: main_models.ListPromotionActivitiesForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPromotionActivitiesForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPromotionActivitiesForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPromotionActivitiesForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_promotion_activities_for_partner_with_options_async(
+        self,
+        request: main_models.ListPromotionActivitiesForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPromotionActivitiesForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
+        if not DaraCore.is_null(request.employee_code):
+            query['EmployeeCode'] = request.employee_code
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPromotionActivitiesForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPromotionActivitiesForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_promotion_activities_for_partner(
+        self,
+        request: main_models.ListPromotionActivitiesForPartnerRequest,
+    ) -> main_models.ListPromotionActivitiesForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.list_promotion_activities_for_partner_with_options(request, runtime)
+
+    async def list_promotion_activities_for_partner_async(
+        self,
+        request: main_models.ListPromotionActivitiesForPartnerRequest,
+    ) -> main_models.ListPromotionActivitiesForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.list_promotion_activities_for_partner_with_options_async(request, runtime)
+
+    def list_promotion_offer_records_for_partner_with_options(
+        self,
+        request: main_models.ListPromotionOfferRecordsForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPromotionOfferRecordsForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.activity_code):
+            query['ActivityCode'] = request.activity_code
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPromotionOfferRecordsForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPromotionOfferRecordsForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_promotion_offer_records_for_partner_with_options_async(
+        self,
+        request: main_models.ListPromotionOfferRecordsForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPromotionOfferRecordsForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.activity_code):
+            query['ActivityCode'] = request.activity_code
+        if not DaraCore.is_null(request.belong_id):
+            query['BelongId'] = request.belong_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPromotionOfferRecordsForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPromotionOfferRecordsForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_promotion_offer_records_for_partner(
+        self,
+        request: main_models.ListPromotionOfferRecordsForPartnerRequest,
+    ) -> main_models.ListPromotionOfferRecordsForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.list_promotion_offer_records_for_partner_with_options(request, runtime)
+
+    async def list_promotion_offer_records_for_partner_async(
+        self,
+        request: main_models.ListPromotionOfferRecordsForPartnerRequest,
+    ) -> main_models.ListPromotionOfferRecordsForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.list_promotion_offer_records_for_partner_with_options_async(request, runtime)
 
     def modify_app_instance_spec_with_options(
         self,

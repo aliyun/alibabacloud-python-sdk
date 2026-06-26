@@ -173,16 +173,22 @@ class GetAppRecommendedCommoditiesResponseBodyModule(DaraModel):
 class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
     def __init__(
         self,
+        action_type: str = None,
         commodity_code: str = None,
+        description: str = None,
         extend: Dict[str, str] = None,
         order_type: str = None,
         priority: int = None,
         promotion_commodity_id: str = None,
+        recommend_type: str = None,
         redirect_url: str = None,
         status: str = None,
+        title: str = None,
     ):
+        self.action_type = action_type
         # The commodity code. This code applies to both resource plans and promotional commodities.
         self.commodity_code = commodity_code
+        self.description = description
         # The extension field, such as unsupportedReason.
         self.extend = extend
         # The order type. Valid values:
@@ -193,10 +199,12 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         self.priority = priority
         # The promotional commodity ID. This parameter is returned only for new purchases.
         self.promotion_commodity_id = promotion_commodity_id
+        self.recommend_type = recommend_type
         # The redirect URL. This parameter is returned when a redirect is required, such as during an upgrade.
         self.redirect_url = redirect_url
         # The commodity status.
         self.status = status
+        self.title = title
 
     def validate(self):
         pass
@@ -206,8 +214,14 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.extend is not None:
             result['Extend'] = self.extend
@@ -221,18 +235,30 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         if self.promotion_commodity_id is not None:
             result['PromotionCommodityId'] = self.promotion_commodity_id
 
+        if self.recommend_type is not None:
+            result['RecommendType'] = self.recommend_type
+
         if self.redirect_url is not None:
             result['RedirectUrl'] = self.redirect_url
 
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.title is not None:
+            result['Title'] = self.title
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')
@@ -246,11 +272,17 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         if m.get('PromotionCommodityId') is not None:
             self.promotion_commodity_id = m.get('PromotionCommodityId')
 
+        if m.get('RecommendType') is not None:
+            self.recommend_type = m.get('RecommendType')
+
         if m.get('RedirectUrl') is not None:
             self.redirect_url = m.get('RedirectUrl')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
 
         return self
 
