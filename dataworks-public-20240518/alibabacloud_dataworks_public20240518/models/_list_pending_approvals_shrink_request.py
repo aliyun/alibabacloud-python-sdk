@@ -17,27 +17,45 @@ class ListPendingApprovalsShrinkRequest(DaraModel):
         resource_type_shrink: str = None,
         start_time: int = None,
     ):
-        # The access types.
+        # Filters by requested permissions.
+        # 
+        # Note: Different resource levels support different permission types. All are uniformly constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.access_types_shrink = access_types_shrink
-        # The resource schema type.
+        # Filters by resource type.
+        # 
+        # Note: The supported resource types for requests are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.def_schema = def_schema
-        # The end time of the query range, specified as a Unix timestamp in milliseconds.
+        # End time of the application period (millisecond timestamp).
         self.end_time = end_time
-        # The grantee object used to filter results.
+        # Filters by authorization principal.
+        # 
+        # Note: The supported authorization principal types are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.grantee_shrink = grantee_shrink
-        # The token used to retrieve the next page of results.
+        # Cursor.
         self.next_token = next_token
-        # The number of entries to return per page. Default: 10. Maximum: 200.
+        # Page size (default: 10, maximum: 200).
         self.page_size = page_size
-        # The criteria to filter resources.
+        # Filters by resource with exact or fuzzy matching. Resource descriptions are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource_shrink = resource_shrink
-        # The resource type, which corresponds to a leaf node name. You can specify multiple values. A business context can map to multiple leaf node names.
+        # Filters by minimum permission resource type.
+        # 
+        # Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.resource_type_shrink = resource_type_shrink
-        # The start time of the query range, specified as a Unix timestamp in milliseconds.
+        # Start time of the application period (millisecond timestamp).
         self.start_time = start_time
 
     def validate(self):

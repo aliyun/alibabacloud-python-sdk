@@ -23491,6 +23491,8 @@ class Client(OpenApiClient):
             body['Comment'] = request.comment
         if not DaraCore.is_null(request.ids_shrink):
             body['Ids'] = request.ids_shrink
+        if not DaraCore.is_null(request.use_latest_config):
+            body['UseLatestConfig'] = request.use_latest_config
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -23525,6 +23527,8 @@ class Client(OpenApiClient):
             body['Comment'] = request.comment
         if not DaraCore.is_null(request.ids_shrink):
             body['Ids'] = request.ids_shrink
+        if not DaraCore.is_null(request.use_latest_config):
+            body['UseLatestConfig'] = request.use_latest_config
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )

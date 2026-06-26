@@ -21,43 +21,55 @@ class ListMyRelatedApprovalsRequest(DaraModel):
         start_time: int = None,
         statuses: List[str] = None,
     ):
-        # The permissions.
+        # Filter by requested permissions.
+        # 
+        # Note: Different resource levels support different application permission types, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.access_types = access_types
-        # The resource type.
+        # Filter by resource type.
+        # 
+        # Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.def_schema = def_schema
-        # The end of the application time range, specified as a millisecond timestamp.
+        # Application time end (millisecond timestamp)
         self.end_time = end_time
-        # Filters approvals by the specified principal.
+        # Filter by authorization principal.
+        # 
+        # Note: The authorization principal types supported by the system are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.grantee = grantee
-        # The pagination token that acts as a cursor to retrieve the next page of results.
+        # Pagination cursor
         self.next_token = next_token
-        # The number of entries to return on each page. Default value: 10. Maximum value: 200.
+        # Page size (default 10, maximum 200)
         self.page_size = page_size
-        # The resource declaration.
+        # Filter by resource with exact/generalized matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource = resource
-        # The resource type, specified as a leaf node name. Multiple values are supported because a single business semantic can be mapped to multiple leaf node names.
+        # Filter by minimum permission resource type.
+        # 
+        # Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The start of the application time range, specified as a millisecond timestamp.
+        # Application time start (millisecond timestamp)
         self.start_time = start_time
-        # Filters the results by approval status. Valid values:
+        # Filter by approval status. Enum values:
         # 
-        # - `WaitApproval`: Pending approval
-        # 
-        # - `Confirmed`: Pending authorization
-        # 
-        # - `RejectApproval`: Approval rejected
-        # 
-        # - `AuthorizeSucceed`: Authorization succeeded
-        # 
-        # - `AuthorizeFailed`: Authorization failed
-        # 
-        # - `Deleted`: Deleted
-        # 
-        # - `Canceled`: Withdrawn
+        # - WaitApproval: Pending approval
+        # - Confirmed: Pending authorization
+        # - RejectApproval: Approval rejected
+        # - AuthorizeSucceed: Authorization succeeded
+        # - AuthorizeFailed: Authorization failed
+        # - Deleted: Deleted
+        # - Canceled: Withdrawn
         self.statuses = statuses
 
     def validate(self):
@@ -146,11 +158,21 @@ class ListMyRelatedApprovalsRequestResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
-        # The `name` of the `ResourceSchema` used to parse the resource.
+        # Resource type.
+        # 
+        # Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_schema = def_schema
-        # The `version` of the `ResourceSchema` used to parse the resource.
+        # The resource parsing version is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).version.
+        # 
+        # [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_version = def_version
-        # The resource metadata. The `ResourceSchema` defines its content.
+        # Resource metadata.
+        # 
+        # Note: The metadata is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to validLeaf layer.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.meta_data = meta_data
 
     def validate(self):
@@ -191,36 +213,24 @@ class ListMyRelatedApprovalsRequestGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
-        # The ID of the principal. The format varies based on the value of `PrincipalType`.
+        # Authorization principal ID:
         # 
-        # - If `PrincipalType` is `RamUser`, this parameter is the Dataworks user ID.
-        # 
-        # - If `PrincipalType` is `RamRole`, this parameter is a Dataworks user ID that starts with `ROLE_`.
-        # 
-        # - If `PrincipalType` is `DataworksTenantMember`, this parameter is the Dataworks user ID.
-        # 
-        # - If `PrincipalType` is `DataworksTenantRole`, this parameter is the Dataworks tenant `roleCode`.
-        # 
-        # - If `PrincipalType` is `DataworksProjectRole`, this parameter is the Dataworks workspace `roleCode`.
-        # 
-        # - If `PrincipalType` is `DataworksProjectMember`, this parameter is the Dataworks user ID.
-        # 
-        # - If `PrincipalType` is `DlfRole`, this parameter is the DlfNext role name.
+        # - `RamUser`: Dataworks UserId
+        # - `RamRole`: Dataworks UserId prefixed with "ROLE_"
+        # - `DataworksTenantMember`: Dataworks UserId
+        # - `DataworksTenantRole`: Dataworks tenant roleCode
+        # - `DataworksProjectRole`: Dataworks workspace roleCode
+        # - `DataworksProjectMember`: Dataworks UserId
+        # - `DlfRole`: DlfNext role name
         self.principal_id = principal_id
-        # The type of the principal. Valid values:
+        # Authorization principal type:
         # 
         # - `RamRole`
-        # 
         # - `RamUser`
-        # 
         # - `DataworksTenantMember`
-        # 
         # - `DataworksTenantRole`
-        # 
         # - `DataworksProjectMember`
-        # 
         # - `DataworksProjectRole`
-        # 
         # - `DlfRole`
         self.principal_type = principal_type
 

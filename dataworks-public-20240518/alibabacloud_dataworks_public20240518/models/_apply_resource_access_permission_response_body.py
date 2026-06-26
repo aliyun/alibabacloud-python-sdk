@@ -14,7 +14,7 @@ class ApplyResourceAccessPermissionResponseBody(DaraModel):
     ):
         # The list of application IDs.
         self.data = data
-        # The request ID. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
 
     def validate(self):

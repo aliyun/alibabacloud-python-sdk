@@ -20,27 +20,45 @@ class ListPendingApprovalsRequest(DaraModel):
         resource_type: List[str] = None,
         start_time: int = None,
     ):
-        # The access types.
+        # Filters by requested permissions.
+        # 
+        # Note: Different resource levels support different permission types. All are uniformly constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.access_types = access_types
-        # The resource schema type.
+        # Filters by resource type.
+        # 
+        # Note: The supported resource types for requests are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.def_schema = def_schema
-        # The end time of the query range, specified as a Unix timestamp in milliseconds.
+        # End time of the application period (millisecond timestamp).
         self.end_time = end_time
-        # The grantee object used to filter results.
+        # Filters by authorization principal.
+        # 
+        # Note: The supported authorization principal types are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.grantee = grantee
-        # The token used to retrieve the next page of results.
+        # Cursor.
         self.next_token = next_token
-        # The number of entries to return per page. Default: 10. Maximum: 200.
+        # Page size (default: 10, maximum: 200).
         self.page_size = page_size
-        # The criteria to filter resources.
+        # Filters by resource with exact or fuzzy matching. Resource descriptions are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource = resource
-        # The resource type, which corresponds to a leaf node name. You can specify multiple values. A business context can map to multiple leaf node names.
+        # Filters by minimum permission resource type.
+        # 
+        # Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The start time of the query range, specified as a Unix timestamp in milliseconds.
+        # Start time of the application period (millisecond timestamp).
         self.start_time = start_time
 
     def validate(self):
@@ -123,11 +141,21 @@ class ListPendingApprovalsRequestResource(DaraModel):
         def_version: str = None,
         meta_data: Dict[str, Any] = None,
     ):
-        # The `name` of the `ResourceSchema` used to parse the resource.
+        # Resource type.
+        # 
+        # Note: The supported resource types for requests are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_schema = def_schema
-        # The `version` of the `ResourceSchema` used to parse the resource.
+        # Resource parsing version is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).version.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_version = def_version
-        # The resource metadata. Its content is constrained by the `ResourceSchema`.
+        # Resource metadata.
+        # 
+        # Note: Metadata is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full path metadata declaration from level 0 to the validLeaf level.
+        # 
+        # Reference: [ResourceSchema International Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.meta_data = meta_data
 
     def validate(self):
@@ -168,9 +196,9 @@ class ListPendingApprovalsRequestGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
-        # The ID of the principal.
+        # Authorization principal ID.
         self.principal_id = principal_id
-        # The type of principal.
+        # Authorization principal type.
         self.principal_type = principal_type
 
     def validate(self):

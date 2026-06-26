@@ -1,3 +1,7 @@
+2026-06-26 Version: 8.8.3
+- Update API RerunTaskInstances: add request parameters UseLatestConfig.
+
+
 2026-06-23 Version: 8.8.2
 - Update API ApproveProcessInstance: add request parameters NewExpiration.
 - Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.

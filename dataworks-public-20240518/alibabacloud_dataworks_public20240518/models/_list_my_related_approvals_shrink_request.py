@@ -18,43 +18,55 @@ class ListMyRelatedApprovalsShrinkRequest(DaraModel):
         start_time: int = None,
         statuses_shrink: str = None,
     ):
-        # The permissions.
+        # Filter by requested permissions.
+        # 
+        # Note: Different resource levels support different application permission types, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.access_types_shrink = access_types_shrink
-        # The resource type.
+        # Filter by resource type.
+        # 
+        # Note: The resource types supported by the system for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.def_schema = def_schema
-        # The end of the application time range, specified as a millisecond timestamp.
+        # Application time end (millisecond timestamp)
         self.end_time = end_time
-        # Filters approvals by the specified principal.
+        # Filter by authorization principal.
+        # 
+        # Note: The authorization principal types supported by the system are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.grantee_shrink = grantee_shrink
-        # The pagination token that acts as a cursor to retrieve the next page of results.
+        # Pagination cursor
         self.next_token = next_token
-        # The number of entries to return on each page. Default value: 10. Maximum value: 200.
+        # Page size (default 10, maximum 200)
         self.page_size = page_size
-        # The resource declaration.
+        # Filter by resource with exact/generalized matching. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource_shrink = resource_shrink
-        # The resource type, specified as a leaf node name. Multiple values are supported because a single business semantic can be mapped to multiple leaf node names.
+        # Filter by minimum permission resource type.
+        # 
+        # Note: The minimum permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+        # 
+        # Reference: [ResourceSchema International Site Documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.resource_type_shrink = resource_type_shrink
-        # The start of the application time range, specified as a millisecond timestamp.
+        # Application time start (millisecond timestamp)
         self.start_time = start_time
-        # Filters the results by approval status. Valid values:
+        # Filter by approval status. Enum values:
         # 
-        # - `WaitApproval`: Pending approval
-        # 
-        # - `Confirmed`: Pending authorization
-        # 
-        # - `RejectApproval`: Approval rejected
-        # 
-        # - `AuthorizeSucceed`: Authorization succeeded
-        # 
-        # - `AuthorizeFailed`: Authorization failed
-        # 
-        # - `Deleted`: Deleted
-        # 
-        # - `Canceled`: Withdrawn
+        # - WaitApproval: Pending approval
+        # - Confirmed: Pending authorization
+        # - RejectApproval: Approval rejected
+        # - AuthorizeSucceed: Authorization succeeded
+        # - AuthorizeFailed: Authorization failed
+        # - Deleted: Deleted
+        # - Canceled: Withdrawn
         self.statuses_shrink = statuses_shrink
 
     def validate(self):
