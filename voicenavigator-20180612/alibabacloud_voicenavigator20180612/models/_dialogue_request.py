@@ -16,15 +16,25 @@ class DialogueRequest(DaraModel):
         instance_owner_id: int = None,
         utterance: str = None,
     ):
+        # The conversation context.
         self.additional_context = additional_context
+        # The called number.
         self.called_number = called_number
+        # The calling number.
         self.calling_number = calling_number
+        # The ID of the conversation.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
         self.emotion = emotion
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the Alibaba Cloud account that owns the instance.
         self.instance_owner_id = instance_owner_id
+        # The user\\"s input.
+        # 
         # This parameter is required.
         self.utterance = utterance
 

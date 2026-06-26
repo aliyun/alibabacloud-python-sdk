@@ -1,3 +1,9 @@
+2026-06-26 Version: 2.0.2
+- Update API AuditTTSVoice: add request parameters ExtParams.
+- Update API DescribeTTSConfig: add response parameters Body.ExtParams.
+- Update API ModifyTTSConfig: add request parameters ExtParams.
+
+
 2026-06-02 Version: 2.0.1
 - Update API DebugBeginDialogue: add request parameters ShouldUseSandBox.
 

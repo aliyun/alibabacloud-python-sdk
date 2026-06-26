@@ -14,14 +14,23 @@ class BeginDialogueRequest(DaraModel):
         instance_id: str = None,
         instance_owner_id: int = None,
     ):
+        # The called number.
         self.called_number = called_number
+        # The calling number.
+        # 
         # This parameter is required.
         self.calling_number = calling_number
+        # The conversation ID.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
+        # The conversation context.
         self.initial_context = initial_context
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The instance owner ID.
         self.instance_owner_id = instance_owner_id
 
     def validate(self):

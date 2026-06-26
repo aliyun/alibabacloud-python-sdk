@@ -11,6 +11,7 @@ class DescribeTTSConfigResponseBody(DaraModel):
         app_key: str = None,
         engine: str = None,
         engine_xunfei: str = None,
+        ext_params: str = None,
         nls_service_type: str = None,
         pitch_rate: int = None,
         request_id: str = None,
@@ -19,16 +20,28 @@ class DescribeTTSConfigResponseBody(DaraModel):
         voice: str = None,
         volume: int = None,
     ):
+        # The custom voice ID.
         self.ali_customized_voice = ali_customized_voice
+        # The AppKey of the third-party voice configuration.
         self.app_key = app_key
+        # The TTS engine.
         self.engine = engine
+        # The iFLYTEK engine parameters.
         self.engine_xunfei = engine_xunfei
+        self.ext_params = ext_params
+        # The TTS service invoke type.
         self.nls_service_type = nls_service_type
+        # The pitch rate.
         self.pitch_rate = pitch_rate
+        # The request ID.
         self.request_id = request_id
+        # The speech rate.
         self.speech_rate = speech_rate
+        # The TTS error correction dictionary.
         self.tts_overrides = tts_overrides
+        # The voice.
         self.voice = voice
+        # The volume.
         self.volume = volume
 
     def validate(self):
@@ -50,6 +63,9 @@ class DescribeTTSConfigResponseBody(DaraModel):
 
         if self.engine_xunfei is not None:
             result['EngineXunfei'] = self.engine_xunfei
+
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
 
         if self.nls_service_type is not None:
             result['NlsServiceType'] = self.nls_service_type
@@ -87,6 +103,9 @@ class DescribeTTSConfigResponseBody(DaraModel):
 
         if m.get('EngineXunfei') is not None:
             self.engine_xunfei = m.get('EngineXunfei')
+
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
 
         if m.get('NlsServiceType') is not None:
             self.nls_service_type = m.get('NlsServiceType')

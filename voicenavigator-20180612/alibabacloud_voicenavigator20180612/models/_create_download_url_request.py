@@ -10,8 +10,12 @@ class CreateDownloadUrlRequest(DaraModel):
         download_task_id: str = None,
         file_id: str = None,
     ):
+        # The task ID.
+        # 
         # This parameter is required.
         self.download_task_id = download_task_id
+        # The file ID. Call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to obtain it.
+        # 
         # This parameter is required.
         self.file_id = file_id
 

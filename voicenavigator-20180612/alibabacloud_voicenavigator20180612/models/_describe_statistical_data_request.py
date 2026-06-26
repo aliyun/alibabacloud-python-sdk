@@ -12,10 +12,16 @@ class DescribeStatisticalDataRequest(DaraModel):
         instance_id: str = None,
         time_unit: str = None,
     ):
+        # The start of the query time range, specified as a Unix timestamp in milliseconds.
         self.begin_time_left_range = begin_time_left_range
+        # The end of the query time range, specified as a Unix timestamp in milliseconds.
         self.begin_time_right_range = begin_time_right_range
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The time unit. Valid values: `Day` and `Hour`.
+        # 
         # This parameter is required.
         self.time_unit = time_unit
 

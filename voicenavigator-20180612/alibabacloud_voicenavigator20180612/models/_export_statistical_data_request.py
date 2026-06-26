@@ -13,12 +13,20 @@ class ExportStatisticalDataRequest(DaraModel):
         instance_id: str = None,
         time_unit: str = None,
     ):
+        # The start of the query time range. The value must be a Unix timestamp in milliseconds.
         self.begin_time_left_range = begin_time_left_range
+        # The end of the query time range. The value must be a Unix timestamp in milliseconds.
         self.begin_time_right_range = begin_time_right_range
+        # The export type.
+        # 
         # This parameter is required.
         self.export_type = export_type
+        # The ID of the Voice Navigator instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The time unit.
+        # 
         # This parameter is required.
         self.time_unit = time_unit
 

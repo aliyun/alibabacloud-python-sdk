@@ -14,12 +14,20 @@ class DebugBeginDialogueRequest(DaraModel):
         instance_id: str = None,
         should_use_sand_box: bool = None,
     ):
+        # The called number.
         self.called_number = called_number
+        # The calling number.
+        # 
         # This parameter is required.
         self.calling_number = calling_number
+        # The unique ID of the conversation.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
+        # The initial context of the conversation.
         self.initial_context = initial_context
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.should_use_sand_box = should_use_sand_box

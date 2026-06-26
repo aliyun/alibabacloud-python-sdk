@@ -14,8 +14,12 @@ class AssociateChatbotInstanceRequest(DaraModel):
         nlu_service_type: str = None,
         union_source: str = None,
     ):
+        # The chatbot ID.
         self.chatbot_instance_id = chatbot_instance_id
+        # The name of the chatbot.
         self.chatbot_name = chatbot_name
+        # The navigation instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.nlu_service_params_json = nlu_service_params_json

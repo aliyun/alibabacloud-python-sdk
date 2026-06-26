@@ -19,15 +19,24 @@ class ExportConversationDetailsRequest(DaraModel):
         rounds_left_range: int = None,
         rounds_right_range: int = None,
     ):
+        # The beginning of the time range to query. This value is a UNIX timestamp in milliseconds.
         self.begin_time_left_range = begin_time_left_range
+        # The end of the time range to query. This value is a UNIX timestamp in milliseconds.
         self.begin_time_right_range = begin_time_right_range
+        # The calling number.
         self.calling_number = calling_number
         self.debug_conversation = debug_conversation
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # An array of optional parameters.
         self.options = options
+        # The result of the conversation.
         self.result = result
+        # The minimum number of conversation turns.
         self.rounds_left_range = rounds_left_range
+        # The maximum number of conversation turns.
         self.rounds_right_range = rounds_right_range
 
     def validate(self):

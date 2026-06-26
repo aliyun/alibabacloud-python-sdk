@@ -12,9 +12,14 @@ class ModifyInstanceRequest(DaraModel):
         instance_id: str = None,
         name: str = None,
     ):
+        # The maximum number of concurrent conversations for the instance.
+        # 
         # This parameter is required.
         self.concurrency = concurrency
+        # The description of the instance.
         self.description = description
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.name = name

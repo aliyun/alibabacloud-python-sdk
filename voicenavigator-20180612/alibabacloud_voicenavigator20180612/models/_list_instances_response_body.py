@@ -16,10 +16,15 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of instances.
         self.instances = instances
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -91,18 +96,35 @@ class ListInstancesResponseBodyInstances(DaraModel):
         union_instance_id: str = None,
         union_source: str = None,
     ):
+        # A list of applicable operations.
         self.applicable_operations = applicable_operations
+        # The maximum number of concurrent calls.
         self.concurrency = concurrency
+        # The time when the instance was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The description of the instance.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the instance was last modified. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.modify_time = modify_time
+        # The user who last modified the instance.
         self.modify_user_name = modify_user_name
+        # The name of the instance.
         self.name = name
+        # The parameters of the NLU service in the JSON format.
         self.nlu_service_params_json = nlu_service_params_json
+        # The list of inbound numbers.
         self.numbers = numbers
+        # The status of the instance.
         self.status = status
+        # The instance ID from the source system.
+        # 
+        # > If UnionSource is CCC, this parameter indicates the instance ID of the Cloud Communication Center instance.
         self.union_instance_id = union_instance_id
+        # The source of the instance.
+        # 
+        # - `CCC`: Cloud Communication Center
         self.union_source = union_source
 
     def validate(self):

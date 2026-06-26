@@ -17,11 +17,17 @@ class ListDownloadTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The download task data.
         self.download_tasks = download_tasks
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListDownloadTasksResponseBodyDownloadTasks(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # A list of download tasks.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -144,10 +154,15 @@ class ListDownloadTasksResponseBodyDownloadTasksList(DaraModel):
         task_id: str = None,
         title: str = None,
     ):
+        # A list of download task files.
         self.download_task_files = download_task_files
+        # The expiration time.
         self.expire_time = expire_time
+        # The status of the task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The title of the task.
         self.title = title
 
     def validate(self):
@@ -210,9 +225,13 @@ class ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles(DaraModel)
         status: str = None,
         title: str = None,
     ):
+        # The file ID.
         self.file_id = file_id
+        # The progress of the file download.
         self.progress = progress
+        # The status of the file.
         self.status = status
+        # The title of the file.
         self.title = title
 
     def validate(self):

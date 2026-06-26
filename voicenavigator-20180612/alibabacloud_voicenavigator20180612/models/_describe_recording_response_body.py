@@ -12,8 +12,11 @@ class DescribeRecordingResponseBody(DaraModel):
         request_id: str = None,
         voice_slice_recording_list_json: str = None,
     ):
+        # The file name.
         self.file_name = file_name
+        # The file download URL.
         self.file_path = file_path
+        # The request ID.
         self.request_id = request_id
         self.voice_slice_recording_list_json = voice_slice_recording_list_json
 

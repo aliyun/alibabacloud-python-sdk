@@ -13,7 +13,9 @@ class ListConversationDetailsResponseBody(DaraModel):
         conversation_details: List[main_models.ListConversationDetailsResponseBodyConversationDetails] = None,
         request_id: str = None,
     ):
+        # The list of conversation details.
         self.conversation_details = conversation_details
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,12 +63,19 @@ class ListConversationDetailsResponseBodyConversationDetails(DaraModel):
         speaker: str = None,
         utterance: str = None,
     ):
+        # The action performed during the turn.
         self.action = action
+        # The action parameters.
         self.action_params = action_params
+        # The conversation ID.
         self.conversation_id = conversation_id
+        # The creation time.
         self.create_time = create_time
+        # The sequence ID of the conversational turn.
         self.sequence_id = sequence_id
+        # The speaker. Valid values: `customer` and `chatbot`.
         self.speaker = speaker
+        # The speaker\\"s utterance.
         self.utterance = utterance
 
     def validate(self):

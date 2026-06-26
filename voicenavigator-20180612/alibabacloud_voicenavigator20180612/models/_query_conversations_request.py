@@ -14,13 +14,22 @@ class QueryConversationsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The start of the time range to query. This value is a Unix timestamp in milliseconds.
         self.begin_time_left_range = begin_time_left_range
+        # The end of the time range to query. This value is a Unix timestamp in milliseconds.
         self.begin_time_right_range = begin_time_right_range
+        # The calling number.
         self.calling_number = calling_number
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

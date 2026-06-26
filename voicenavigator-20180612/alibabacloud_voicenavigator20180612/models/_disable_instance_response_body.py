@@ -10,7 +10,9 @@ class DisableInstanceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The status of the operation. A value of \\"true\\" indicates that the operation was successful.
         self.status = status
 
     def validate(self):

@@ -12,11 +12,18 @@ class DebugDialogueRequest(DaraModel):
         instance_id: str = None,
         utterance: str = None,
     ):
+        # The context of the conversation.
         self.additional_context = additional_context
+        # The ID of the conversation.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The user\\"s utterance.
+        # 
         # This parameter is required.
         self.utterance = utterance
 

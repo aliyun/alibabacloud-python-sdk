@@ -14,13 +14,27 @@ class CreateInstanceRequest(DaraModel):
         union_instance_id: str = None,
         union_source: str = None,
     ):
+        # The maximum concurrency of the instance.
+        # 
         # This parameter is required.
         self.concurrency = concurrency
+        # The description of the instance.
         self.description = description
+        # The name of the Voice Navigator instance, which identifies the digital employee scenario.
+        # 
         # This parameter is required.
         self.name = name
+        # Configuration parameters for the large language model service, in JSON format.
+        # 
+        # - Use this parameter to specify a Function Compute service.
         self.nlu_service_params_json = nlu_service_params_json
+        # The ID of the source instance.
+        # 
+        # > If you set UnionSource to CCC, set this parameter to the ID of the Cloud Contact Center instance.
         self.union_instance_id = union_instance_id
+        # The source service.
+        # 
+        # - CCC: Cloud Contact Center
         self.union_source = union_source
 
     def validate(self):

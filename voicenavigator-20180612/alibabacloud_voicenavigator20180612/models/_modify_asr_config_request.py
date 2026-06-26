@@ -18,15 +18,23 @@ class ModifyAsrConfigRequest(DaraModel):
         entry_id: str = None,
         nls_service_type: str = None,
     ):
+        # The AppKey for the engine.
         self.app_key = app_key
+        # The ID of the ASR acoustic model.
         self.asr_acoustic_model_id = asr_acoustic_model_id
+        # The ID of the ASR class-based vocabulary.
         self.asr_class_vocabulary_id = asr_class_vocabulary_id
+        # The ID of the dataset.
         self.asr_customization_id = asr_customization_id
         self.asr_overrides = asr_overrides
+        # The ID of the hotword. You can find this ID on the [ASR Hotword Management](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi) page.
         self.asr_vocabulary_id = asr_vocabulary_id
+        # The policy level. Valid values: `0` (system), `1` (tenant), and `2` (instance).
         self.config_level = config_level
         self.engine = engine
+        # The entity ID for the specified `ConfigLevel`.
         self.entry_id = entry_id
+        # The service type of Intelligent Speech Interaction.
         self.nls_service_type = nls_service_type
 
     def validate(self):

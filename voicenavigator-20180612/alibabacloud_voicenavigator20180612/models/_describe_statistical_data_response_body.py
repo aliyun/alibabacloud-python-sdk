@@ -19,13 +19,21 @@ class DescribeStatisticalDataResponseBody(DaraModel):
         total_resolution_rate: str = None,
         total_valid_answer_rate: str = None,
     ):
+        # The total number of conversations.
         self.conversation_total_num = conversation_total_num
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of resolved questions.
         self.resolved_question_total_num = resolved_question_total_num
+        # The array of statistical data over time.
         self.statistical_data_reports = statistical_data_reports
+        # The total pass rate of multi-turn dialogues.
         self.total_dialogue_pass_rate = total_dialogue_pass_rate
+        # The total knowledge base hit rate.
         self.total_knowledge_hit_rate = total_knowledge_hit_rate
+        # The total resolution rate.
         self.total_resolution_rate = total_resolution_rate
+        # The total valid answer rate.
         self.total_valid_answer_rate = total_valid_answer_rate
 
     def validate(self):
@@ -109,12 +117,19 @@ class DescribeStatisticalDataResponseBodyStatisticalDataReports(DaraModel):
         total_conversation_num: int = None,
         valid_answer_rate: str = None,
     ):
+        # The pass rate of multi-turn dialogues.
         self.dialogue_pass_rate = dialogue_pass_rate
+        # The knowledge base hit rate.
         self.knowledge_hit_rate = knowledge_hit_rate
+        # The resolution rate.
         self.resolution_rate = resolution_rate
+        # The number of resolved questions.
         self.resolved_question_num = resolved_question_num
+        # The date of the statistics.
         self.statistical_date = statistical_date
+        # The total number of conversations.
         self.total_conversation_num = total_conversation_num
+        # The valid answer rate.
         self.valid_answer_rate = valid_answer_rate
 
     def validate(self):

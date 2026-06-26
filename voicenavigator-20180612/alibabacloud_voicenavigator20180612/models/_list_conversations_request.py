@@ -20,20 +20,34 @@ class ListConversationsRequest(DaraModel):
         rounds_left_range: int = None,
         rounds_right_range: int = None,
     ):
+        # The start of the time range to query. This value is a UNIX timestamp in milliseconds.
         self.begin_time_left_range = begin_time_left_range
+        # The end of the time range to query. This value is a UNIX timestamp in milliseconds.
         self.begin_time_right_range = begin_time_right_range
+        # The calling number.
         self.calling_number = calling_number
         self.debug_conversation = debug_conversation
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether the conversation is in a sandbox environment. Valid values: `true` and `false`.
         self.is_sand_box = is_sand_box
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The search query for filtering conversations.
         self.query = query
+        # The result of the conversation.
         self.result = result
+        # The minimum number of rounds in the conversation.
         self.rounds_left_range = rounds_left_range
+        # The maximum number of rounds in the conversation.
         self.rounds_right_range = rounds_right_range
 
     def validate(self):

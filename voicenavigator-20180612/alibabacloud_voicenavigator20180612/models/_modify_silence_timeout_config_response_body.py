@@ -9,6 +9,7 @@ class ModifySilenceTimeoutConfigResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

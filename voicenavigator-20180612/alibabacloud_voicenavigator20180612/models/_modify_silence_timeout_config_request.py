@@ -17,20 +17,36 @@ class ModifySilenceTimeoutConfigRequest(DaraModel):
         threshold: int = None,
         timeout: int = None,
     ):
+        # Action After Prompt
+        # 
         # This parameter is required.
         self.final_action = final_action
+        # Parameters for the post-prompt action, specified in a JSON string.
         self.final_action_params = final_action_params
+        # The prompt that plays after the silence timeout threshold is reached.
+        # 
         # This parameter is required.
         self.final_prompt = final_prompt
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent trigger for the silence timeout.
         self.intent_trigger = intent_trigger
+        # The prompt that plays when the system detects no user input during the specified timeout period.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The type of source that triggers the action.
+        # 
         # This parameter is required.
         self.source_type = source_type
+        # The maximum number of times the system plays the silence timeout prompt before it performs the post-prompt action.
+        # 
         # This parameter is required.
         self.threshold = threshold
+        # The duration of the silence timeout, in seconds.
+        # 
         # This parameter is required.
         self.timeout = timeout
 

@@ -10,8 +10,12 @@ class ListConversationDetailsRequest(DaraModel):
         conversation_id: str = None,
         instance_id: str = None,
     ):
+        # The conversation ID.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

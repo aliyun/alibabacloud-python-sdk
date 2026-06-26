@@ -15,11 +15,17 @@ class ModifyAsrConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The result of the modification.
         self.data = data
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,7 @@ class ModifyAsrConfigResponseBodyData(DaraModel):
         self,
         affected_rows: int = None,
     ):
+        # The number of affected rows.
         self.affected_rows = affected_rows
 
     def validate(self):

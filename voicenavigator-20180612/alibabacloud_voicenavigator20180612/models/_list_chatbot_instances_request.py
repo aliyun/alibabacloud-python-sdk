@@ -14,11 +14,15 @@ class ListChatbotInstancesRequest(DaraModel):
         page_size: int = None,
         union_source: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
         self.nlu_service_params_json = nlu_service_params_json
         self.nlu_service_type = nlu_service_type
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
         self.union_source = union_source
 

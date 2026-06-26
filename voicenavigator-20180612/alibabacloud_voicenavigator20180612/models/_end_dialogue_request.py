@@ -12,11 +12,17 @@ class EndDialogueRequest(DaraModel):
         instance_id: str = None,
         instance_owner_id: int = None,
     ):
+        # The ID of the conversation.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
+        # The hang-up parameters, in a JSON string.
         self.hang_up_params = hang_up_params
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the instance owner.
         self.instance_owner_id = instance_owner_id
 
     def validate(self):
