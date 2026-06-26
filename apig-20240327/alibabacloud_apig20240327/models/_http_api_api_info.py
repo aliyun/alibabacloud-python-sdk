@@ -17,7 +17,7 @@ class HttpApiApiInfo(DaraModel):
         deploy_cnt_map: Dict[str, main_models.HttpApiApiInfoDeployCntMapValue] = None,
         deploy_configs: List[main_models.HttpApiDeployConfig] = None,
         description: str = None,
-        enabel_auth: bool = None,
+        enable_auth: bool = None,
         environments: List[main_models.HttpApiApiInfoEnvironments] = None,
         gateway_id: str = None,
         http_api_id: str = None,
@@ -43,8 +43,7 @@ class HttpApiApiInfo(DaraModel):
         self.deploy_configs = deploy_configs
         # The API description.
         self.description = description
-        # Specifies whether to enable authentication.
-        self.enabel_auth = enabel_auth
+        self.enable_auth = enable_auth
         # The API environment information.
         self.environments = environments
         # The instance ID.
@@ -124,8 +123,8 @@ class HttpApiApiInfo(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
-        if self.enabel_auth is not None:
-            result['enabelAuth'] = self.enabel_auth
+        if self.enable_auth is not None:
+            result['enableAuth'] = self.enable_auth
 
         result['environments'] = []
         if self.environments is not None:
@@ -191,8 +190,8 @@ class HttpApiApiInfo(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
-        if m.get('enabelAuth') is not None:
-            self.enabel_auth = m.get('enabelAuth')
+        if m.get('enableAuth') is not None:
+            self.enable_auth = m.get('enableAuth')
 
         self.environments = []
         if m.get('environments') is not None:

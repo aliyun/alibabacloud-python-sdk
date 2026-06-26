@@ -318,8 +318,8 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(DaraModel):
         path: str = None,
     ):
         # The action to be performed after the dry run. Valid values:
-        # - Create: create.
-        # - Update: update.
+        # - Create: Create.
+        # - Update: Update.
         self.action = action
         # The operation method.
         self.method = method
@@ -373,8 +373,8 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(DaraModel):
         name: str = None,
     ):
         # The action to be performed after the dry run. Valid values:
-        # - Create: create.
-        # - Update: update.
+        # - Create: Create.
+        # - Update: Update.
         self.action = action
         # The data structure name.
         self.name = name

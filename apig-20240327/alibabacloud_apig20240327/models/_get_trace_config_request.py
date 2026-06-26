@@ -9,7 +9,10 @@ class GetTraceConfigRequest(DaraModel):
         self,
         accept_language: str = None,
     ):
-        # The language in which you want results to be returned. Valid values: zh: Chinese. en: English.
+        # The language type. Valid values:
+        # 
+        # zh: Chinese
+        # en: English.
         self.accept_language = accept_language
 
     def validate(self):

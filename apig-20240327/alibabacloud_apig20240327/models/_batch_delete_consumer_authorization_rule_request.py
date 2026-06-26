@@ -9,7 +9,7 @@ class BatchDeleteConsumerAuthorizationRuleRequest(DaraModel):
         self,
         consumer_authorization_rule_ids: str = None,
     ):
-        # The rule IDs.
+        # The list of API consumer authorization rule IDs.
         self.consumer_authorization_rule_ids = consumer_authorization_rule_ids
 
     def validate(self):

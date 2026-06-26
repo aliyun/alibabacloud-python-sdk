@@ -29,7 +29,7 @@ class ImportHttpApiRequest(DaraModel):
         self.deploy_configs = deploy_configs
         # The description of the imported API. If this parameter is not specified, the description is extracted from the API definition. Maximum length: 255 bytes.
         self.description = description
-        # Specifies whether to perform a dry run. If this parameter is enabled, only validation is performed without the actual import.
+        # Specifies whether to perform a dry run. If enabled, only validation is performed without the actual import.
         self.dry_run = dry_run
         # The gateway ID.
         self.gateway_id = gateway_id
@@ -41,7 +41,7 @@ class ImportHttpApiRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The Base64-encoded API definition. OAS 2.0 and OAS 3.0 specifications are supported in YAML or JSON format. This parameter takes priority over the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter instead.
         self.spec_content_base_64 = spec_content_base_64
-        # The download URL of the API definition file. The URL must be accessible over the public network or be an internal network OSS download URL in the same region. The URL must have download permissions. For OSS files that are not publicly readable, refer to References [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Only API definition files stored in OSS are supported.
+        # The download URL of the API definition file. The URL must be accessible over the public network or be an internal network OSS download URL in the same region. The URL must have download permissions. For OSS files that are not publicly readable, see References [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Only API definition files stored in OSS are supported.
         self.spec_file_url = spec_file_url
         # The OSS configuration.
         self.spec_oss_config = spec_oss_config

@@ -30,45 +30,52 @@ class CreateHttpApiRequest(DaraModel):
         type: str = None,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
-        # Agent protocols
+        # The list of protocols supported by the agent.
         self.agent_protocols = agent_protocols
-        # $.parameters[0].schema.properties.authConfig.enumValueTitles
+        # The AI API protocols. The following protocols are supported:
+        # - OpenAI/v1.
         self.ai_protocols = ai_protocols
-        # The request parameters for API creation.
+        # The authentication configuration.
         self.auth_config = auth_config
-        # $.parameters[0].schema.properties.deployConfigs.items.example
+        # The base path of the API. The value must start with a forward slash (/).
         self.base_path = base_path
-        # ID of the gateway to which the API belongs.
+        # The ID of the gateway to which the API belongs.
         self.belong_gateway_id = belong_gateway_id
-        # $.parameters[0].schema.example
+        # The API deployment configurations. Currently, only AI APIs support deployment configurations, and only a single deployment configuration can be specified.
         self.deploy_configs = deploy_configs
-        # $.parameters[0].schema.properties.aiProtocols.items.description
+        # The API description.
         self.description = description
-        # Whether to preview without execution.
+        # Specifies whether to perform a dry run without executing the operation.
         self.dry_run = dry_run
-        # Create an API of HTTP type
+        # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
-        # First byte timeout
+        # The timeout period for waiting for the first byte from the backend.
         self.first_byte_timeout = first_byte_timeout
-        # $.parameters[0].schema.properties.deployConfigs.example
+        # The HTTP Ingress API configuration.
         self.ingress_config = ingress_config
-        # Model category
+        # The model category.
         self.model_category = model_category
-        # $.parameters[0].schema.example
+        # The API name.
         # 
         # This parameter is required.
         self.name = name
-        # $.parameters[0].schema.properties.aiProtocols.description
+        # The list of API access protocols.
         self.protocols = protocols
-        # Whether to remove base path when forwarding
+        # Specifies whether to remove the base path when forwarding requests.
         self.remove_base_path_on_forward = remove_base_path_on_forward
-        # $.parameters[0].schema.properties.authConfig.example
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The conflict merge strategy for import.
+        # The conflict merge strategy for the import.
         self.strategy = strategy
-        # $.parameters[0].schema.properties.deployConfigs.description
+        # The type of the HTTP API. Valid values:
+        # - Http
+        # - Rest
+        # - WebSocket
+        # - HttpIngress
+        # - LLM
+        # - Agent.
         self.type = type
-        # $.parameters[0].schema.properties.deployConfigs.items.enumValueTitles
+        # The API versioning configuration.
         self.version_config = version_config
 
     def validate(self):
@@ -226,17 +233,17 @@ class CreateHttpApiRequestIngressConfig(DaraModel):
         source_id: str = None,
         watch_namespace: str = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # $.parameters[0].schema.properties.deployConfigs.enumValueTitles
+        # The environment ID.
         self.environment_id = environment_id
-        # $.parameters[0].schema.properties.enableAuth.example
+        # The Ingress class to listen on.
         self.ingress_class = ingress_class
-        # $.parameters[0].schema.properties.authConfig.description
+        # Specifies whether to update the address in the Ingress status.
         self.override_ingress_ip = override_ingress_ip
-        # $.parameters[0].schema.properties.enableAuth.description
+        # The source ID.
         self.source_id = source_id
-        # $.parameters[0].schema.properties.enableAuth.enumValueTitles
+        # The namespace to listen on.
         self.watch_namespace = watch_namespace
 
     def validate(self):
