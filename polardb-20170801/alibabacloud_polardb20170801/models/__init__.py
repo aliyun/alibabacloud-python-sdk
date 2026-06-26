@@ -119,6 +119,9 @@ from ._create_application_prompt_response import CreateApplicationPromptResponse
 from ._create_backup_request import CreateBackupRequest
 from ._create_backup_response_body import CreateBackupResponseBody
 from ._create_backup_response import CreateBackupResponse
+from ._create_batch_consumer_request import CreateBatchConsumerRequest
+from ._create_batch_consumer_response_body import CreateBatchConsumerResponseBody
+from ._create_batch_consumer_response import CreateBatchConsumerResponse
 from ._create_batch_task_request import CreateBatchTaskRequest
 from ._create_batch_task_shrink_request import CreateBatchTaskShrinkRequest
 from ._create_batch_task_response_body import CreateBatchTaskResponseBody
@@ -390,6 +393,9 @@ from ._describe_active_operation_maintain_conf_response import DescribeActiveOpe
 from ._describe_active_operation_tasks_request import DescribeActiveOperationTasksRequest
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBody
 from ._describe_active_operation_tasks_response import DescribeActiveOperationTasksResponse
+from ._describe_apikey_attribute_request import DescribeApikeyAttributeRequest
+from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBody
+from ._describe_apikey_attribute_response import DescribeApikeyAttributeResponse
 from ._describe_application_attribute_request import DescribeApplicationAttributeRequest
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBody
 from ._describe_application_attribute_response import DescribeApplicationAttributeResponse
@@ -593,6 +599,9 @@ from ._describe_extensions_response import DescribeExtensionsResponse
 from ._describe_firewall_rules_request import DescribeFirewallRulesRequest
 from ._describe_firewall_rules_response_body import DescribeFirewallRulesResponseBody
 from ._describe_firewall_rules_response import DescribeFirewallRulesResponse
+from ._describe_gateway_apikey_list_request import DescribeGatewayApikeyListRequest
+from ._describe_gateway_apikey_list_response_body import DescribeGatewayApikeyListResponseBody
+from ._describe_gateway_apikey_list_response import DescribeGatewayApikeyListResponse
 from ._describe_gateway_attribute_request import DescribeGatewayAttributeRequest
 from ._describe_gateway_attribute_response_body import DescribeGatewayAttributeResponseBody
 from ._describe_gateway_attribute_response import DescribeGatewayAttributeResponse
@@ -1214,6 +1223,7 @@ from ._create_application_request import CreateApplicationRequestParameters
 from ._create_application_request import CreateApplicationRequestTag
 from ._create_application_shrink_request import CreateApplicationShrinkRequestTag
 from ._create_application_response_body import CreateApplicationResponseBodyComponents
+from ._create_batch_consumer_response_body import CreateBatchConsumerResponseBodyItems
 from ._create_dbcluster_request import CreateDBClusterRequestTag
 from ._create_dbendpoint_address_request import CreateDBEndpointAddressRequestZoneInfo
 from ._create_dbnodes_request import CreateDBNodesRequestDBNode
@@ -1262,6 +1272,9 @@ from ._describe_accounts_zonal_response_body import DescribeAccountsZonalRespons
 from ._describe_activation_codes_response_body import DescribeActivationCodesResponseBodyItems
 from ._describe_active_operation_maintain_conf_response_body import DescribeActiveOperationMaintainConfResponseBodyConfig
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBodyItems
+from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBodyItemsConsumer
+from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBodyItemsUsageStatistics
+from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBodyItems
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponentsSecurityGroups
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponentsTopology
@@ -1413,6 +1426,7 @@ from ._describe_encryption_dbrole_privilege_response_body import DescribeEncrypt
 from ._describe_extensions_response_body import DescribeExtensionsResponseBodyInstalledExtensions
 from ._describe_extensions_response_body import DescribeExtensionsResponseBodyUninstalledExtensions
 from ._describe_firewall_rules_response_body import DescribeFirewallRulesResponseBodyData
+from ._describe_gateway_apikey_list_response_body import DescribeGatewayApikeyListResponseBodyItems
 from ._describe_gateway_attribute_response_body import DescribeGatewayAttributeResponseBodyEndpoints
 from ._describe_gateway_attribute_response_body import DescribeGatewayAttributeResponseBodySecurityIPArrays
 from ._describe_gateway_list_response_body import DescribeGatewayListResponseBodyItems
@@ -1454,7 +1468,9 @@ from ._describe_pending_maintenance_action_response_body import DescribePendingM
 from ._describe_pending_maintenance_actions_response_body import DescribePendingMaintenanceActionsResponseBodyTypeList
 from ._describe_polar_agent_chat_records_response_body import DescribePolarAgentChatRecordsResponseBodyData
 from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgentUserSessionsResponseBodyData
+from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgentsFiles
 from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgentsIdentity
+from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgentsModel
 from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgents
 from ._describe_polar_claw_channels_response_body import DescribePolarClawChannelsResponseBodyChannelsAccounts
 from ._describe_polar_claw_channels_response_body import DescribePolarClawChannelsResponseBodyChannels
@@ -1662,6 +1678,9 @@ __all__ = [
     CreateBackupRequest,
     CreateBackupResponseBody,
     CreateBackupResponse,
+    CreateBatchConsumerRequest,
+    CreateBatchConsumerResponseBody,
+    CreateBatchConsumerResponse,
     CreateBatchTaskRequest,
     CreateBatchTaskShrinkRequest,
     CreateBatchTaskResponseBody,
@@ -1933,6 +1952,9 @@ __all__ = [
     DescribeActiveOperationTasksRequest,
     DescribeActiveOperationTasksResponseBody,
     DescribeActiveOperationTasksResponse,
+    DescribeApikeyAttributeRequest,
+    DescribeApikeyAttributeResponseBody,
+    DescribeApikeyAttributeResponse,
     DescribeApplicationAttributeRequest,
     DescribeApplicationAttributeResponseBody,
     DescribeApplicationAttributeResponse,
@@ -2136,6 +2158,9 @@ __all__ = [
     DescribeFirewallRulesRequest,
     DescribeFirewallRulesResponseBody,
     DescribeFirewallRulesResponse,
+    DescribeGatewayApikeyListRequest,
+    DescribeGatewayApikeyListResponseBody,
+    DescribeGatewayApikeyListResponse,
     DescribeGatewayAttributeRequest,
     DescribeGatewayAttributeResponseBody,
     DescribeGatewayAttributeResponse,
@@ -2757,6 +2782,7 @@ __all__ = [
     CreateApplicationRequestTag,
     CreateApplicationShrinkRequestTag,
     CreateApplicationResponseBodyComponents,
+    CreateBatchConsumerResponseBodyItems,
     CreateDBClusterRequestTag,
     CreateDBEndpointAddressRequestZoneInfo,
     CreateDBNodesRequestDBNode,
@@ -2805,6 +2831,9 @@ __all__ = [
     DescribeActivationCodesResponseBodyItems,
     DescribeActiveOperationMaintainConfResponseBodyConfig,
     DescribeActiveOperationTasksResponseBodyItems,
+    DescribeApikeyAttributeResponseBodyItemsConsumer,
+    DescribeApikeyAttributeResponseBodyItemsUsageStatistics,
+    DescribeApikeyAttributeResponseBodyItems,
     DescribeApplicationAttributeResponseBodyComponentsSecurityGroups,
     DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays,
     DescribeApplicationAttributeResponseBodyComponentsTopology,
@@ -2956,6 +2985,7 @@ __all__ = [
     DescribeExtensionsResponseBodyInstalledExtensions,
     DescribeExtensionsResponseBodyUninstalledExtensions,
     DescribeFirewallRulesResponseBodyData,
+    DescribeGatewayApikeyListResponseBodyItems,
     DescribeGatewayAttributeResponseBodyEndpoints,
     DescribeGatewayAttributeResponseBodySecurityIPArrays,
     DescribeGatewayListResponseBodyItems,
@@ -2997,7 +3027,9 @@ __all__ = [
     DescribePendingMaintenanceActionsResponseBodyTypeList,
     DescribePolarAgentChatRecordsResponseBodyData,
     DescribePolarAgentUserSessionsResponseBodyData,
+    DescribePolarClawAgentsResponseBodyAgentsFiles,
     DescribePolarClawAgentsResponseBodyAgentsIdentity,
+    DescribePolarClawAgentsResponseBodyAgentsModel,
     DescribePolarClawAgentsResponseBodyAgents,
     DescribePolarClawChannelsResponseBodyChannelsAccounts,
     DescribePolarClawChannelsResponseBodyChannels,

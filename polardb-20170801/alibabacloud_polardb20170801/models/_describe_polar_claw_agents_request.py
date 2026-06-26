@@ -12,7 +12,7 @@ class DescribePolarClawAgentsRequest(DaraModel):
         agent_list: List[str] = None,
         application_id: str = None,
     ):
-        # A list of agent IDs to query.
+        # The list of agent IDs to describe.
         self.agent_list = agent_list
         # The application ID.
         # 

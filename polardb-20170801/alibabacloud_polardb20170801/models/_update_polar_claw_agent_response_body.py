@@ -15,17 +15,17 @@ class UpdatePolarClawAgentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The details of the updated agent.
+        # Updated Agent details
         self.agent = agent
-        # The agent ID.
+        # Agent ID
         self.agent_id = agent_id
-        # The application ID.
+        # Application ID
         self.application_id = application_id
-        # The response status code.
+        # Response status code
         self.code = code
-        # The response message.
+        # Response message
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -88,13 +88,13 @@ class UpdatePolarClawAgentResponseBodyAgent(DaraModel):
         name: str = None,
         workspace: str = None,
     ):
-        # The agent ID.
+        # Agent ID
         self.id = id
-        # The identity information of the agent.
+        # Identity information
         self.identity = identity
-        # The display name of the agent.
+        # Agent display name
         self.name = name
-        # The workspace path.
+        # Workspace directory path
         self.workspace = workspace
 
     def validate(self):
@@ -146,15 +146,15 @@ class UpdatePolarClawAgentResponseBodyAgentIdentity(DaraModel):
         name: str = None,
         theme: str = None,
     ):
-        # The path or content of the avatar.
+        # Avatar path or content
         self.avatar = avatar
-        # The avatar URL.
+        # Avatar URL
         self.avatar_url = avatar_url
-        # The identity\\"s Emoji identifier. This can be a Unicode code point, such as U+1F99E, or the Emoji character itself.
+        # Emoji identifier (Unicode format such as U+1F99E, or direct emoji character)
         self.emoji = emoji
-        # The name of the identity.
+        # Identity name
         self.name = name
-        # The theme of the identity.
+        # Theme
         self.theme = theme
 
     def validate(self):

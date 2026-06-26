@@ -1,3 +1,18 @@
+2026-06-26 Version: 7.1.0
+- Support API CreateBatchConsumer.
+- Support API DescribeApikeyAttribute.
+- Support API DescribeGatewayApikeyList.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.GatewayId.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Default.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Files.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Model.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Skills.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Workspace.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaInstanceName.
+- Update API UpdatePolarClawAgent: add request parameters IsDefault.
+- Update API UpdatePolarClawAgent: add request parameters KeepWorkspaceFiles.
+
+
 2026-06-17 Version: 7.0.0
 - Support API OperateApplication.
 - Update API CreateAIDBCluster: add request parameters ModelName.

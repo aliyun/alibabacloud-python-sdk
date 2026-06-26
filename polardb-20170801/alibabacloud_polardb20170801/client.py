@@ -3850,6 +3850,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
+    def create_batch_consumer_with_options(
+        self,
+        request: main_models.CreateBatchConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBatchConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBatchConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBatchConsumerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_batch_consumer_with_options_async(
+        self,
+        request: main_models.CreateBatchConsumerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBatchConsumerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['ConsumerGroupId'] = request.consumer_group_id
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
+        if not DaraCore.is_null(request.gw_cluster_id):
+            query['GwClusterId'] = request.gw_cluster_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBatchConsumer',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBatchConsumerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_batch_consumer(
+        self,
+        request: main_models.CreateBatchConsumerRequest,
+    ) -> main_models.CreateBatchConsumerResponse:
+        runtime = RuntimeOptions()
+        return self.create_batch_consumer_with_options(request, runtime)
+
+    async def create_batch_consumer_async(
+        self,
+        request: main_models.CreateBatchConsumerRequest,
+    ) -> main_models.CreateBatchConsumerResponse:
+        runtime = RuntimeOptions()
+        return await self.create_batch_consumer_with_options_async(request, runtime)
+
     def create_batch_task_with_options(
         self,
         tmp_req: main_models.CreateBatchTaskRequest,
@@ -12588,6 +12674,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_active_operation_tasks_with_options_async(request, runtime)
 
+    def describe_apikey_attribute_with_options(
+        self,
+        request: main_models.DescribeApikeyAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApikeyAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApikeyAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApikeyAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apikey_attribute_with_options_async(
+        self,
+        request: main_models.DescribeApikeyAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApikeyAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key):
+            query['ApiKey'] = request.api_key
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApikeyAttribute',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApikeyAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apikey_attribute(
+        self,
+        request: main_models.DescribeApikeyAttributeRequest,
+    ) -> main_models.DescribeApikeyAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_apikey_attribute_with_options(request, runtime)
+
+    async def describe_apikey_attribute_async(
+        self,
+        request: main_models.DescribeApikeyAttributeRequest,
+    ) -> main_models.DescribeApikeyAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_apikey_attribute_with_options_async(request, runtime)
+
     def describe_application_attribute_with_options(
         self,
         request: main_models.DescribeApplicationAttributeRequest,
@@ -18905,6 +19073,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeFirewallRulesResponse:
         runtime = RuntimeOptions()
         return await self.describe_firewall_rules_with_options_async(request, runtime)
+
+    def describe_gateway_apikey_list_with_options(
+        self,
+        request: main_models.DescribeGatewayApikeyListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGatewayApikeyListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGatewayApikeyList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGatewayApikeyListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_gateway_apikey_list_with_options_async(
+        self,
+        request: main_models.DescribeGatewayApikeyListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeGatewayApikeyListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeGatewayApikeyList',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeGatewayApikeyListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_gateway_apikey_list(
+        self,
+        request: main_models.DescribeGatewayApikeyListRequest,
+    ) -> main_models.DescribeGatewayApikeyListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_gateway_apikey_list_with_options(request, runtime)
+
+    async def describe_gateway_apikey_list_async(
+        self,
+        request: main_models.DescribeGatewayApikeyListRequest,
+    ) -> main_models.DescribeGatewayApikeyListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_gateway_apikey_list_with_options_async(request, runtime)
 
     def describe_gateway_attribute_with_options(
         self,
@@ -37333,6 +37579,10 @@ class Client(OpenApiClient):
             query['Avatar'] = request.avatar
         if not DaraCore.is_null(request.files_shrink):
             query['Files'] = request.files_shrink
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.keep_workspace_files):
+            query['KeepWorkspaceFiles'] = request.keep_workspace_files
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         if not DaraCore.is_null(request.name):
@@ -37379,6 +37629,10 @@ class Client(OpenApiClient):
             query['Avatar'] = request.avatar
         if not DaraCore.is_null(request.files_shrink):
             query['Files'] = request.files_shrink
+        if not DaraCore.is_null(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not DaraCore.is_null(request.keep_workspace_files):
+            query['KeepWorkspaceFiles'] = request.keep_workspace_files
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         if not DaraCore.is_null(request.name):

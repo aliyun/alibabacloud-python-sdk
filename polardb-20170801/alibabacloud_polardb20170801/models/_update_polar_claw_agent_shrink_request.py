@@ -11,30 +11,34 @@ class UpdatePolarClawAgentShrinkRequest(DaraModel):
         application_id: str = None,
         avatar: str = None,
         files_shrink: str = None,
+        is_default: bool = None,
+        keep_workspace_files: bool = None,
         model: str = None,
         name: str = None,
         restart: bool = None,
         workspace: str = None,
     ):
-        # The ID of the agent to update.
+        # Agent ID to update
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # The application ID.
+        # Application ID
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The new avatar for the agent.
+        # New avatar
         self.avatar = avatar
-        # The file list to update.
+        # List of files to update
         self.files_shrink = files_shrink
-        # The model to override the agent\\"s default setting.
+        self.is_default = is_default
+        self.keep_workspace_files = keep_workspace_files
+        # Model override
         self.model = model
-        # The new display name for the agent.
+        # New display name
         self.name = name
-        # Specifies whether to restart the gateway after the update. The default value is true.
+        # Whether to restart the gateway after creation, default is true
         self.restart = restart
-        # The new path for the agent\\"s workspace.
+        # New workspace directory path
         self.workspace = workspace
 
     def validate(self):
@@ -56,6 +60,12 @@ class UpdatePolarClawAgentShrinkRequest(DaraModel):
 
         if self.files_shrink is not None:
             result['Files'] = self.files_shrink
+
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+
+        if self.keep_workspace_files is not None:
+            result['KeepWorkspaceFiles'] = self.keep_workspace_files
 
         if self.model is not None:
             result['Model'] = self.model
@@ -84,6 +94,12 @@ class UpdatePolarClawAgentShrinkRequest(DaraModel):
 
         if m.get('Files') is not None:
             self.files_shrink = m.get('Files')
+
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+
+        if m.get('KeepWorkspaceFiles') is not None:
+            self.keep_workspace_files = m.get('KeepWorkspaceFiles')
 
         if m.get('Model') is not None:
             self.model = m.get('Model')

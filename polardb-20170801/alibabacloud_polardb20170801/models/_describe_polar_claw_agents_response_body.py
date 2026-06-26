@@ -19,19 +19,19 @@ class DescribePolarClawAgentsResponseBody(DaraModel):
         request_id: str = None,
         scope: str = None,
     ):
-        # The list of agents.
+        # The agent list.
         self.agents = agents
         # The application ID.
         self.application_id = application_id
-        # The status code.
+        # The response status code.
         self.code = code
         # The default agent ID.
         self.default_id = default_id
-        # The main agent key name.
+        # The primary agent key name.
         self.main_key = main_key
-        # The message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The routing scope.
         self.scope = scope
@@ -109,39 +109,81 @@ class DescribePolarClawAgentsResponseBody(DaraModel):
 class DescribePolarClawAgentsResponseBodyAgents(DaraModel):
     def __init__(
         self,
+        default: bool = None,
+        files: List[main_models.DescribePolarClawAgentsResponseBodyAgentsFiles] = None,
         id: str = None,
         identity: main_models.DescribePolarClawAgentsResponseBodyAgentsIdentity = None,
+        model: main_models.DescribePolarClawAgentsResponseBodyAgentsModel = None,
         name: str = None,
+        skills: List[str] = None,
+        workspace: str = None,
     ):
-        # The agent ID.
+        self.default = default
+        self.files = files
+        # Agent ID
         self.id = id
-        # The agent\\"s identity.
+        # The identity information.
         self.identity = identity
-        # The agent display name.
+        self.model = model
+        # The display name of the agent.
         self.name = name
+        self.skills = skills
+        self.workspace = workspace
 
     def validate(self):
+        if self.files:
+            for v1 in self.files:
+                 if v1:
+                    v1.validate()
         if self.identity:
             self.identity.validate()
+        if self.model:
+            self.model.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.default is not None:
+            result['Default'] = self.default
+
+        result['Files'] = []
+        if self.files is not None:
+            for k1 in self.files:
+                result['Files'].append(k1.to_map() if k1 else None)
+
         if self.id is not None:
             result['Id'] = self.id
 
         if self.identity is not None:
             result['Identity'] = self.identity.to_map()
 
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+
         if self.name is not None:
             result['Name'] = self.name
+
+        if self.skills is not None:
+            result['Skills'] = self.skills
+
+        if self.workspace is not None:
+            result['Workspace'] = self.workspace
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Default') is not None:
+            self.default = m.get('Default')
+
+        self.files = []
+        if m.get('Files') is not None:
+            for k1 in m.get('Files'):
+                temp_model = main_models.DescribePolarClawAgentsResponseBodyAgentsFiles()
+                self.files.append(temp_model.from_map(k1))
+
         if m.get('Id') is not None:
             self.id = m.get('Id')
 
@@ -149,8 +191,53 @@ class DescribePolarClawAgentsResponseBodyAgents(DaraModel):
             temp_model = main_models.DescribePolarClawAgentsResponseBodyAgentsIdentity()
             self.identity = temp_model.from_map(m.get('Identity'))
 
+        if m.get('Model') is not None:
+            temp_model = main_models.DescribePolarClawAgentsResponseBodyAgentsModel()
+            self.model = temp_model.from_map(m.get('Model'))
+
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('Skills') is not None:
+            self.skills = m.get('Skills')
+
+        if m.get('Workspace') is not None:
+            self.workspace = m.get('Workspace')
+
+        return self
+
+class DescribePolarClawAgentsResponseBodyAgentsModel(DaraModel):
+    def __init__(
+        self,
+        fallbacks: List[str] = None,
+        primary: str = None,
+    ):
+        self.fallbacks = fallbacks
+        self.primary = primary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.fallbacks is not None:
+            result['Fallbacks'] = self.fallbacks
+
+        if self.primary is not None:
+            result['Primary'] = self.primary
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Fallbacks') is not None:
+            self.fallbacks = m.get('Fallbacks')
+
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
 
         return self
 
@@ -163,15 +250,15 @@ class DescribePolarClawAgentsResponseBodyAgentsIdentity(DaraModel):
         name: str = None,
         theme: str = None,
     ):
-        # The path or content of the avatar.
+        # The avatar path or content.
         self.avatar = avatar
         # The avatar URL.
         self.avatar_url = avatar_url
-        # The emoji for the identity. This can be a Unicode code point (e.g., `U+1F99E`) or an emoji character.
+        # The emoji identifier in Unicode encoding format such as U+1F99E, or a direct emoji character.
         self.emoji = emoji
         # The identity name.
         self.name = name
-        # The identity theme.
+        # The theme.
         self.theme = theme
 
     def validate(self):
@@ -215,6 +302,65 @@ class DescribePolarClawAgentsResponseBodyAgentsIdentity(DaraModel):
 
         if m.get('Theme') is not None:
             self.theme = m.get('Theme')
+
+        return self
+
+class DescribePolarClawAgentsResponseBodyAgentsFiles(DaraModel):
+    def __init__(
+        self,
+        missing: bool = None,
+        name: str = None,
+        path: str = None,
+        size: int = None,
+        updated_at_ms: int = None,
+    ):
+        self.missing = missing
+        self.name = name
+        self.path = path
+        self.size = size
+        self.updated_at_ms = updated_at_ms
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.missing is not None:
+            result['Missing'] = self.missing
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.path is not None:
+            result['Path'] = self.path
+
+        if self.size is not None:
+            result['Size'] = self.size
+
+        if self.updated_at_ms is not None:
+            result['UpdatedAtMs'] = self.updated_at_ms
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Missing') is not None:
+            self.missing = m.get('Missing')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+
+        if m.get('UpdatedAtMs') is not None:
+            self.updated_at_ms = m.get('UpdatedAtMs')
 
         return self
 
