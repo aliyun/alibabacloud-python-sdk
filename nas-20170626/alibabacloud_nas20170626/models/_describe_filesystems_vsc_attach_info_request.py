@@ -17,11 +17,12 @@ class DescribeFilesystemsVscAttachInfoRequest(DaraModel):
     ):
         # The number of results for each query.
         # 
-        # Valid values: 10 to 100. Default value: 10.
+        # Valid values: 10 to 100.
+        # Default value: 10.
         self.max_results = max_results
-        # Query token, which is the NextToken value returned from the previous API call.
+        # The query token. Set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The ID information of the file system and virtual storage channel. Each batch can contain up to 10 IDs.
+        # The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
@@ -131,9 +132,9 @@ class DescribeFilesystemsVscAttachInfoRequestResourceIds(DaraModel):
         file_system_id: str = None,
         vsc_id: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
-        # The ID of the virtual storage channel.
+        # The virtual storage channel ID.
         self.vsc_id = vsc_id
 
     def validate(self):

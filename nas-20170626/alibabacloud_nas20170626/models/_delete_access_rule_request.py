@@ -15,7 +15,7 @@ class DeleteAccessRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.access_group_name = access_group_name
-        # The rule ID.
+        # The ID of the permission rule.
         # 
         # This parameter is required.
         self.access_rule_id = access_rule_id
@@ -23,8 +23,8 @@ class DeleteAccessRuleRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system.
-        # *   extreme: Extreme NAS file system.
+        # - standard (default): General-purpose NAS.
+        # - extreme: Extreme NAS.
         self.file_system_type = file_system_type
 
     def validate(self):

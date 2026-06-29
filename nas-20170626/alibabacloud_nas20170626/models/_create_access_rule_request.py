@@ -23,45 +23,42 @@ class CreateAccessRuleRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
-        # *   extreme: Extreme NAS file system.
+        # - standard (default): General-purpose NAS.
+        # - extreme: Extreme NAS.
         self.file_system_type = file_system_type
-        # The IPv6 address or CIDR block of the authorized object.
+        # The source IPv6 CIDR block.
         # 
-        # You must set this parameter to an IPv6 address or CIDR block.
+        # The value supports CIDR format and IPv6 format address range.
         # 
-        # > *   Only Extreme NAS file systems that reside in the Chinese mainland support IPv6. If you specify this parameter, you must enable IPv6 for the file system.
-        # >*   Only permission groups that reside in virtual private clouds (VPCs) support IPv6.
-        # >*   You cannot specify an IPv4 address and an IPv6 address at the same time.
+        # > - The IPv6 feature is supported only by Extreme NAS file systems in regions in the Chinese mainland, and IPv6 must be enabled for the file system.
+        # >- Only VPC networks are supported.
+        # >- IPv4 and IPv6 are mutually exclusive.
         self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
-        # The priority of the rule.
+        # The priority of the permission rule.
         # 
-        # The rule with the highest priority takes effect if multiple rules are attached to the authorized object.
+        # If an authorized address matches multiple rules, the rule with the highest priority takes effect.
         # 
         # Valid values: 1 to 100. The value 1 indicates the highest priority.
         self.priority = priority
-        # The access permissions of the authorized object on the file system.
+        # The read and write permissions of the authorized address on the file system.
         # 
         # Valid values:
-        # 
-        # *   RDWR (default): the read and write permissions.
-        # *   RDONLY: the read-only permission.
+        # - RDWR (default): read and write.
+        # - RDONLY: read-only.
         self.rwaccess_type = rwaccess_type
-        # The IP address or CIDR block of the authorized object.
+        # The IP address or CIDR block of the authorized address.
         # 
-        # You must set this parameter to an IP address or CIDR block.
-        # 
-        # > If the permission group resides in the classic network, you must set this parameter to an IP address.
+        # The value must be a single IP address or a CIDR block.
+        # > Permission groups of the classic network type support only IP addresses.
         self.source_cidr_ip = source_cidr_ip
-        # The access permissions for different types of users in the authorized object.
+        # The access permissions of the system user of the authorized address on the file system.
         # 
         # Valid values:
+        # - no_squash (default): allows access to the file system as the root user.
+        # - root_squash: maps the root user to the nobody user when the root user accesses the file system.
+        # - all_squash: maps all users to the nobody user regardless of the user identity.
         # 
-        # *   no_squash (default): grants root users the permissions to access the file system.
-        # *   root_squash: grants root users the least permissions as the nobody user.
-        # *   all_squash: grants all users the least permissions as the nobody user.
-        # 
-        # The nobody user has the least permissions in Linux and can access only the public content of the file system. This ensures the security of the file system.
+        # The nobody user is a default user in Linux. The nobody user can access only public content on the server and has low privileges and high security. Authorization is required for the system user to access the file system.
         self.user_access_type = user_access_type
 
     def validate(self):

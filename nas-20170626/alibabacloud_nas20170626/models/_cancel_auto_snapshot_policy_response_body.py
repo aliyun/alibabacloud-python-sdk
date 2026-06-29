@@ -11,7 +11,7 @@ class CancelAutoSnapshotPolicyResponseBody(DaraModel):
     ):
         # The request ID.
         # 
-        # Every response returns a unique request ID regardless of whether the request is successful.
+        # The request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
 
     def validate(self):

@@ -13,18 +13,17 @@ class CreateLifecycleRetrieveJobRequest(DaraModel):
         paths: List[str] = None,
         storage_type: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The directories or files that you want to retrieve. You can specify a maximum of 10 paths.
+        # The list of directories or file paths to retrieve. You can specify up to 10 paths.
         # 
         # This parameter is required.
         self.paths = paths
-        # The storage class.
-        # 
-        # *   InfrequentAccess (default): the Infrequent Access (IA) storage class.
-        # *   Archive: the Archive storage class.
+        # The storage class. Valid values:
+        # - InfrequentAccess (default): IA storage class.
+        # - Archive: Archive storage class.
         self.storage_type = storage_type
 
     def validate(self):

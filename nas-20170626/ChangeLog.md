@@ -1,3 +1,17 @@
+2026-06-29 Version: 3.5.0
+- Support API CreateAgenticSpace.
+- Support API DeleteAgenticSpace.
+- Support API DescribeAgenticSpaces.
+- Support API GetAgenticSpace.
+- Support API ListAccessPoints.
+- Support API ModifyAgenticSpace.
+- Support API SetAgenticSpaceQuota.
+- Update API CreateAccessPoint: add request parameters AgenticSpaceId.
+- Update API DescribeAccessPoint: add response parameters Body.AccessPoint.AgenticSpaceId.
+- Update API DescribeAccessPoint: add response parameters Body.AccessPoint.CreateTimeUtc.
+- Update API DescribeAccessPoint: add response parameters Body.AccessPoint.ModifyTimeUtc.
+
+
 2026-06-15 Version: 3.4.2
 - Update API AttachVscToFilesystems: add request parameters RoleChain.
 - Update API DescribeFilesystemsVscAttachInfo: add request parameters RoleChain.

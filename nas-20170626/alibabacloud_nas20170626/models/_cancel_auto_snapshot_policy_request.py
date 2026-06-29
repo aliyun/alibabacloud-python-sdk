@@ -9,9 +9,9 @@ class CancelAutoSnapshotPolicyRequest(DaraModel):
         self,
         file_system_ids: str = None,
     ):
-        # The IDs of file systems.
+        # The IDs of the file systems.
         # 
-        # You can specify a maximum of 100 file system IDs. If you want to remove automatic snapshot policies from multiple file systems, separate the file system IDs with commas (,).
+        # You can specify up to 100 file systems in a single call. To cancel the automatic snapshot policy for multiple file systems, separate the file system IDs with commas (,).
         # 
         # This parameter is required.
         self.file_system_ids = file_system_ids

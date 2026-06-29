@@ -53,7 +53,37 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'nas.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'nas.aliyuncs.com',
             'eu-west-1-oxs': 'nas.aliyuncs.com',
-            'rus-west-1-pop': 'nas.aliyuncs.com'
+            'rus-west-1-pop': 'nas.aliyuncs.com',
+            'us-west-1': 'nas.us-west-1.aliyuncs.com',
+            'us-east-1': 'nas.us-east-1.aliyuncs.com',
+            'me-east-1': 'nas.me-east-1.aliyuncs.com',
+            'me-central-1': 'nas.me-central-1.aliyuncs.com',
+            'eu-west-1': 'nas.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'nas.eu-central-1.aliyuncs.com',
+            'cn-zhengzhou-jva': 'nas.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'nas.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'nas.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'nas.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'nas.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'nas.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'nas.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'nas.cn-qingdao.aliyuncs.com',
+            'cn-huhehaote': 'nas.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'nas.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'nas.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou': 'nas.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'nas.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'nas.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'nas.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'nas.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'nas.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'nas.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'nas.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'nas.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'nas.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'nas.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'nas.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'nas.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('nas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1209,6 +1239,8 @@ class Client(OpenApiClient):
             query['AccessGroup'] = request.access_group
         if not DaraCore.is_null(request.access_point_name):
             query['AccessPointName'] = request.access_point_name
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
         if not DaraCore.is_null(request.enabled_ram):
             query['EnabledRam'] = request.enabled_ram
         if not DaraCore.is_null(request.file_system_id):
@@ -1263,6 +1295,8 @@ class Client(OpenApiClient):
             query['AccessGroup'] = request.access_group
         if not DaraCore.is_null(request.access_point_name):
             query['AccessPointName'] = request.access_point_name
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
         if not DaraCore.is_null(request.enabled_ram):
             query['EnabledRam'] = request.enabled_ram
         if not DaraCore.is_null(request.file_system_id):
@@ -1413,6 +1447,100 @@ class Client(OpenApiClient):
     ) -> main_models.CreateAccessRuleResponse:
         runtime = RuntimeOptions()
         return await self.create_access_rule_with_options_async(request, runtime)
+
+    def create_agentic_space_with_options(
+        self,
+        request: main_models.CreateAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.azone):
+            query['Azone'] = request.azone
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.file_system_path):
+            query['FileSystemPath'] = request.file_system_path
+        if not DaraCore.is_null(request.quota):
+            query['Quota'] = request.quota
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgenticSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agentic_space_with_options_async(
+        self,
+        request: main_models.CreateAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.azone):
+            query['Azone'] = request.azone
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.file_system_path):
+            query['FileSystemPath'] = request.file_system_path
+        if not DaraCore.is_null(request.quota):
+            query['Quota'] = request.quota
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgenticSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agentic_space(
+        self,
+        request: main_models.CreateAgenticSpaceRequest,
+    ) -> main_models.CreateAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_agentic_space_with_options(request, runtime)
+
+    async def create_agentic_space_async(
+        self,
+        request: main_models.CreateAgenticSpaceRequest,
+    ) -> main_models.CreateAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agentic_space_with_options_async(request, runtime)
 
     def create_auto_snapshot_policy_with_options(
         self,
@@ -3344,6 +3472,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_access_rule_with_options_async(request, runtime)
 
+    def delete_agentic_space_with_options(
+        self,
+        request: main_models.DeleteAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agentic_space_with_options_async(
+        self,
+        request: main_models.DeleteAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgenticSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agentic_space(
+        self,
+        request: main_models.DeleteAgenticSpaceRequest,
+    ) -> main_models.DeleteAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agentic_space_with_options(request, runtime)
+
+    async def delete_agentic_space_async(
+        self,
+        request: main_models.DeleteAgenticSpaceRequest,
+    ) -> main_models.DeleteAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agentic_space_with_options_async(request, runtime)
+
     def delete_auto_snapshot_policy_with_options(
         self,
         request: main_models.DeleteAutoSnapshotPolicyRequest,
@@ -4513,6 +4723,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAccessRulesResponse:
         runtime = RuntimeOptions()
         return await self.describe_access_rules_with_options_async(request, runtime)
+
+    def describe_agentic_spaces_with_options(
+        self,
+        request: main_models.DescribeAgenticSpacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticSpacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticSpaces',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticSpacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_agentic_spaces_with_options_async(
+        self,
+        request: main_models.DescribeAgenticSpacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticSpacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticSpaces',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticSpacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_agentic_spaces(
+        self,
+        request: main_models.DescribeAgenticSpacesRequest,
+    ) -> main_models.DescribeAgenticSpacesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_agentic_spaces_with_options(request, runtime)
+
+    async def describe_agentic_spaces_async(
+        self,
+        request: main_models.DescribeAgenticSpacesRequest,
+    ) -> main_models.DescribeAgenticSpacesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_agentic_spaces_with_options_async(request, runtime)
 
     def describe_auto_snapshot_policies_with_options(
         self,
@@ -7082,6 +7374,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enable_smb_acl_with_options_async(request, runtime)
 
+    def get_agentic_space_with_options(
+        self,
+        request: main_models.GetAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agentic_space_with_options_async(
+        self,
+        request: main_models.GetAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgenticSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agentic_space(
+        self,
+        request: main_models.GetAgenticSpaceRequest,
+    ) -> main_models.GetAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return self.get_agentic_space_with_options(request, runtime)
+
+    async def get_agentic_space_async(
+        self,
+        request: main_models.GetAgenticSpaceRequest,
+    ) -> main_models.GetAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agentic_space_with_options_async(request, runtime)
+
     def get_directory_or_file_properties_with_options(
         self,
         request: main_models.GetDirectoryOrFilePropertiesRequest,
@@ -7385,6 +7751,88 @@ class Client(OpenApiClient):
     ) -> main_models.GetRecycleBinAttributeResponse:
         runtime = RuntimeOptions()
         return await self.get_recycle_bin_attribute_with_options_async(request, runtime)
+
+    def list_access_points_with_options(
+        self,
+        request: main_models.ListAccessPointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAccessPointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAccessPoints',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAccessPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_access_points_with_options_async(
+        self,
+        request: main_models.ListAccessPointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAccessPointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.filters):
+            query['Filters'] = request.filters
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAccessPoints',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAccessPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_access_points(
+        self,
+        request: main_models.ListAccessPointsRequest,
+    ) -> main_models.ListAccessPointsResponse:
+        runtime = RuntimeOptions()
+        return self.list_access_points_with_options(request, runtime)
+
+    async def list_access_points_async(
+        self,
+        request: main_models.ListAccessPointsRequest,
+    ) -> main_models.ListAccessPointsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_access_points_with_options_async(request, runtime)
 
     def list_directories_and_files_with_options(
         self,
@@ -8103,6 +8551,92 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyAccessRuleResponse:
         runtime = RuntimeOptions()
         return await self.modify_access_rule_with_options_async(request, runtime)
+
+    def modify_agentic_space_with_options(
+        self,
+        request: main_models.ModifyAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgenticSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_agentic_space_with_options_async(
+        self,
+        request: main_models.ModifyAgenticSpaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgenticSpaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgenticSpace',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgenticSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_agentic_space(
+        self,
+        request: main_models.ModifyAgenticSpaceRequest,
+    ) -> main_models.ModifyAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return self.modify_agentic_space_with_options(request, runtime)
+
+    async def modify_agentic_space_async(
+        self,
+        request: main_models.ModifyAgenticSpaceRequest,
+    ) -> main_models.ModifyAgenticSpaceResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_agentic_space_with_options_async(request, runtime)
 
     def modify_auto_snapshot_policy_with_options(
         self,
@@ -9357,6 +9891,96 @@ class Client(OpenApiClient):
     ) -> main_models.RetryLifecycleRetrieveJobResponse:
         runtime = RuntimeOptions()
         return await self.retry_lifecycle_retrieve_job_with_options_async(request, runtime)
+
+    def set_agentic_space_quota_with_options(
+        self,
+        request: main_models.SetAgenticSpaceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAgenticSpaceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_count_limit):
+            query['FileCountLimit'] = request.file_count_limit
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.size_limit):
+            query['SizeLimit'] = request.size_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAgenticSpaceQuota',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAgenticSpaceQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_agentic_space_quota_with_options_async(
+        self,
+        request: main_models.SetAgenticSpaceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAgenticSpaceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agentic_space_id):
+            query['AgenticSpaceId'] = request.agentic_space_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.file_count_limit):
+            query['FileCountLimit'] = request.file_count_limit
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.size_limit):
+            query['SizeLimit'] = request.size_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAgenticSpaceQuota',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAgenticSpaceQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_agentic_space_quota(
+        self,
+        request: main_models.SetAgenticSpaceQuotaRequest,
+    ) -> main_models.SetAgenticSpaceQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.set_agentic_space_quota_with_options(request, runtime)
+
+    async def set_agentic_space_quota_async(
+        self,
+        request: main_models.SetAgenticSpaceQuotaRequest,
+    ) -> main_models.SetAgenticSpaceQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.set_agentic_space_quota_with_options_async(request, runtime)
 
     def set_dir_quota_with_options(
         self,

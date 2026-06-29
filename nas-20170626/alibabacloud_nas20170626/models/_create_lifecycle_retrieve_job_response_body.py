@@ -10,7 +10,7 @@ class CreateLifecycleRetrieveJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the data retrieval task.
+        # The data retrieval task ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

@@ -12,6 +12,7 @@ class CreateAccessPointRequest(DaraModel):
         self,
         access_group: str = None,
         access_point_name: str = None,
+        agentic_space_id: str = None,
         enabled_ram: bool = None,
         file_system_id: str = None,
         owner_group_id: int = None,
@@ -27,48 +28,61 @@ class CreateAccessPointRequest(DaraModel):
     ):
         # The name of the permission group.
         # 
-        # This parameter is required for a General-purpose File Storage NAS (NAS) file system.
+        # This parameter is required if the file system is a General-purpose NAS file system.
         # 
-        # The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
-        # 
-        # This parameter is required.
+        # Default permission group: DEFAULT_VPC_GROUP_NAME (the default permission group for VPCs).
+        # >Not supported for Agentic file systems.
         self.access_group = access_group
         # The name of the access point.
         self.access_point_name = access_point_name
-        # Specifies whether to enable the RAM policy. Valid values:
+        # The AgenticSpace ID.
+        # >This parameter is required for Agentic file systems.
+        self.agentic_space_id = agentic_space_id
+        # Specifies whether to enable access point policy.
+        # Valid values:
         # 
-        # *   true: The RAM policy is enabled.
-        # *   false (default): The RAM policy is disabled.
+        # - true: enabled.
+        # - false (default): not enabled.
         # 
-        # >  After the RAM policy is enabled for access points, no RAM user is allowed to use access points to mount and access data by default. To use access points to mount and access data as a RAM user, you must grant the related access permissions to the RAM user. If the RAM policy is disabled, access points can be anonymously mounted. For more information about how to configure permissions on access points, see [Configure a policy for the access point](https://help.aliyun.com/document_detail/2545998.html).
+        # > After you enable access point policy for the access point, all Resource Access Management (RAM) users are denied access to mount and access data through the access point by default. You must grant the corresponding access permissions through authorization and then mount and access the file system through the access point. After you disable access point policy, the access point allows anonymity mounting. For more information about how to configure access point permissions, see [Configure access point policies](https://help.aliyun.com/document_detail/2545998.html).
+        # 
+        # >For Agentic file systems, this parameter must be set to true.
         self.enabled_ram = enabled_ram
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The ID of the owner group.
+        # The owner group ID.
         # 
         # This parameter is required if the RootDirectory directory does not exist.
+        # >Not supported for Agentic file systems.
         self.owner_group_id = owner_group_id
-        # The owner ID.
+        # The owner user ID.
         # 
         # This parameter is required if the RootDirectory directory does not exist.
+        # >Not supported for Agentic file systems.
         self.owner_user_id = owner_user_id
-        # The Portable Operating System Interface for UNIX (POSIX) permission. Default value: 0777.
+        # The POSIX permission. Default value: "0755". The value must be a four-digit octal number that starts with 0.
         # 
-        # This field takes effect only if you specify the OwnerUserId and OwnerGroupId parameters.
+        # This parameter takes effect only after you specify the OwnerUserId and OwnerGroupId parameters.
+        # >Not supported for Agentic file systems.
         self.permission = permission
-        # The ID of the POSIX user group.
+        # The POSIX group ID.
+        # >Not supported for Agentic file systems.
         self.posix_group_id = posix_group_id
-        # The secondary user group. Separate multiple user group IDs with commas (,).
+        # The secondary group IDs. Separate multiple group IDs with commas (,).
+        # >Not supported for Agentic file systems.
         self.posix_secondary_group_ids = posix_secondary_group_ids
-        # The ID of the POSIX user.
+        # The POSIX user ID.
+        # >Not supported for Agentic file systems.
         self.posix_user_id = posix_user_id
-        # The root directory of the access point. The default value is /. If the directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
+        # The root directory of the access point.
+        # Default value: "/". If the access point directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
+        # >Supported only for Agentic file systems.
         self.root_directory = root_directory
-        # The tags of the access point.
+        # The list of access point tags.
         self.tag = tag
-        # The VPC ID.
+        # The virtual private cloud (VPC) ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -93,6 +107,9 @@ class CreateAccessPointRequest(DaraModel):
 
         if self.access_point_name is not None:
             result['AccessPointName'] = self.access_point_name
+
+        if self.agentic_space_id is not None:
+            result['AgenticSpaceId'] = self.agentic_space_id
 
         if self.enabled_ram is not None:
             result['EnabledRam'] = self.enabled_ram
@@ -142,6 +159,9 @@ class CreateAccessPointRequest(DaraModel):
         if m.get('AccessPointName') is not None:
             self.access_point_name = m.get('AccessPointName')
 
+        if m.get('AgenticSpaceId') is not None:
+            self.agentic_space_id = m.get('AgenticSpaceId')
+
         if m.get('EnabledRam') is not None:
             self.enabled_ram = m.get('EnabledRam')
 
@@ -189,18 +209,20 @@ class CreateAccessPointRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag. Limits:
+        # The tag key.
+        # Limits:
         # 
-        # *   Cannot be null or an empty string.
-        # *   Can be up to 128 characters in length.
-        # *   Cannot start with aliyun or acs:.
-        # *   Cannot contain http:// or https://.
+        # - Cannot be empty or an empty string.
+        # - Can be up to 128 characters in length.
+        # - Cannot start with aliyun or acs:.
+        # - Cannot contain http:// or https://.
         self.key = key
-        # The value of a tag. Limits:
+        # The tag value.
+        # Limits:
         # 
-        # *   Cannot be null or an empty string.
-        # *   Can be up to 128 characters in length.
-        # *   Cannot contain http:// or https://.
+        # - Cannot be empty or an empty string.
+        # - Can be up to 128 characters in length.
+        # - Cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

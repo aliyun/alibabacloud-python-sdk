@@ -12,15 +12,15 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the new resource group.
+        # The new resource group ID.
         # 
-        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+        # You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The region ID of the zone.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2412111.html) operation to query the latest region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/2412111.html) to query the most recent region list.
         self.region_id = region_id
         # The resource ID.
         # 
@@ -28,7 +28,7 @@ class ChangeResourceGroupRequest(DaraModel):
         self.resource_id = resource_id
         # The resource type.
         # 
-        # Set the value to filesystem.
+        # Valid values: filesystem (file system).
         # 
         # This parameter is required.
         self.resource_type = resource_type

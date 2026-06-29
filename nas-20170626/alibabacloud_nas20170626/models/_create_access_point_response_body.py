@@ -52,7 +52,7 @@ class CreateAccessPointResponseBodyAccessPoint(DaraModel):
     ):
         # The domain name of the access point.
         self.access_point_domain = access_point_domain
-        # The ID of the access point.
+        # The access point ID.
         self.access_point_id = access_point_id
 
     def validate(self):

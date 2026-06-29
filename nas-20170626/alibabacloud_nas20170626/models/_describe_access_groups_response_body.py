@@ -17,9 +17,9 @@ class DescribeAccessGroupsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.access_groups = access_groups
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of permission groups returned per page.
+        # The number of permission groups on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
