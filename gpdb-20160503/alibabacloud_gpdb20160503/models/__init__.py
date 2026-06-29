@@ -756,6 +756,9 @@ from ._rerank_response import RerankResponse
 from ._reset_account_password_request import ResetAccountPasswordRequest
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
 from ._reset_account_password_response import ResetAccountPasswordResponse
+from ._reset_branch_request import ResetBranchRequest
+from ._reset_branch_response_body import ResetBranchResponseBody
+from ._reset_branch_response import ResetBranchResponse
 from ._reset_imvmonitor_data_request import ResetIMVMonitorDataRequest
 from ._reset_imvmonitor_data_response_body import ResetIMVMonitorDataResponseBody
 from ._reset_imvmonitor_data_response import ResetIMVMonitorDataResponse
@@ -768,6 +771,9 @@ from ._restart_dbinstance_response import RestartDBInstanceResponse
 from ._restart_supabase_project_request import RestartSupabaseProjectRequest
 from ._restart_supabase_project_response_body import RestartSupabaseProjectResponseBody
 from ._restart_supabase_project_response import RestartSupabaseProjectResponse
+from ._restore_branch_request import RestoreBranchRequest
+from ._restore_branch_response_body import RestoreBranchResponseBody
+from ._restore_branch_response import RestoreBranchResponse
 from ._restore_snapshot_request import RestoreSnapshotRequest
 from ._restore_snapshot_response_body import RestoreSnapshotResponseBody
 from ._restore_snapshot_response import RestoreSnapshotResponse
@@ -783,6 +789,9 @@ from ._resume_saas_service_response import ResumeSaasServiceResponse
 from ._resume_supabase_project_request import ResumeSupabaseProjectRequest
 from ._resume_supabase_project_response_body import ResumeSupabaseProjectResponseBody
 from ._resume_supabase_project_response import ResumeSupabaseProjectResponse
+from ._set_as_default_branch_request import SetAsDefaultBranchRequest
+from ._set_as_default_branch_response_body import SetAsDefaultBranchResponseBody
+from ._set_as_default_branch_response import SetAsDefaultBranchResponse
 from ._set_dbinstance_plan_status_request import SetDBInstancePlanStatusRequest
 from ._set_dbinstance_plan_status_response_body import SetDBInstancePlanStatusResponseBody
 from ._set_dbinstance_plan_status_response import SetDBInstancePlanStatusResponse
@@ -816,6 +825,9 @@ from ._untag_resources_response import UntagResourcesResponse
 from ._untag_supabase_project_request import UntagSupabaseProjectRequest
 from ._untag_supabase_project_response_body import UntagSupabaseProjectResponseBody
 from ._untag_supabase_project_response import UntagSupabaseProjectResponse
+from ._update_branch_request import UpdateBranchRequest
+from ._update_branch_response_body import UpdateBranchResponseBody
+from ._update_branch_response import UpdateBranchResponse
 from ._update_collection_data_metadata_request import UpdateCollectionDataMetadataRequest
 from ._update_collection_data_metadata_shrink_request import UpdateCollectionDataMetadataShrinkRequest
 from ._update_collection_data_metadata_response_body import UpdateCollectionDataMetadataResponseBody
@@ -1113,6 +1125,7 @@ from ._tag_supabase_project_request import TagSupabaseProjectRequestTag
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResultsResultsEmbedding
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResultsResults
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResults
+from ._update_branch_request import UpdateBranchRequestTag
 from ._upsert_chunks_request import UpsertChunksRequestTextChunks
 from ._upsert_collection_data_request import UpsertCollectionDataRequestRowsSparseVector
 from ._upsert_collection_data_request import UpsertCollectionDataRequestRows
@@ -1872,6 +1885,9 @@ __all__ = [
     ResetAccountPasswordRequest,
     ResetAccountPasswordResponseBody,
     ResetAccountPasswordResponse,
+    ResetBranchRequest,
+    ResetBranchResponseBody,
+    ResetBranchResponse,
     ResetIMVMonitorDataRequest,
     ResetIMVMonitorDataResponseBody,
     ResetIMVMonitorDataResponse,
@@ -1884,6 +1900,9 @@ __all__ = [
     RestartSupabaseProjectRequest,
     RestartSupabaseProjectResponseBody,
     RestartSupabaseProjectResponse,
+    RestoreBranchRequest,
+    RestoreBranchResponseBody,
+    RestoreBranchResponse,
     RestoreSnapshotRequest,
     RestoreSnapshotResponseBody,
     RestoreSnapshotResponse,
@@ -1899,6 +1918,9 @@ __all__ = [
     ResumeSupabaseProjectRequest,
     ResumeSupabaseProjectResponseBody,
     ResumeSupabaseProjectResponse,
+    SetAsDefaultBranchRequest,
+    SetAsDefaultBranchResponseBody,
+    SetAsDefaultBranchResponse,
     SetDBInstancePlanStatusRequest,
     SetDBInstancePlanStatusResponseBody,
     SetDBInstancePlanStatusResponse,
@@ -1932,6 +1954,9 @@ __all__ = [
     UntagSupabaseProjectRequest,
     UntagSupabaseProjectResponseBody,
     UntagSupabaseProjectResponse,
+    UpdateBranchRequest,
+    UpdateBranchResponseBody,
+    UpdateBranchResponse,
     UpdateCollectionDataMetadataRequest,
     UpdateCollectionDataMetadataShrinkRequest,
     UpdateCollectionDataMetadataResponseBody,
@@ -2229,6 +2254,7 @@ __all__ = [
     TextEmbeddingResponseBodyResultsResultsEmbedding,
     TextEmbeddingResponseBodyResultsResults,
     TextEmbeddingResponseBodyResults,
+    UpdateBranchRequestTag,
     UpsertChunksRequestTextChunks,
     UpsertCollectionDataRequestRowsSparseVector,
     UpsertCollectionDataRequestRows
