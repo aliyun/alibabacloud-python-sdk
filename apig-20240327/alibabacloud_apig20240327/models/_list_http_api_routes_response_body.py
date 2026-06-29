@@ -72,11 +72,11 @@ class ListHttpApiRoutesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # 路由列表。
+        # The route list.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The total number of entries.
         self.total_size = total_size

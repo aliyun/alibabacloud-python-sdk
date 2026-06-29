@@ -13,9 +13,9 @@ class DeletePluginAttachmentResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The response message returned.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

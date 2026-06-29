@@ -13,13 +13,13 @@ class AiToolSelectionConfig(DaraModel):
         query_rewriting: main_models.AiToolSelectionConfigQueryRewriting = None,
         tool_reranking: main_models.AiToolSelectionConfigToolReranking = None,
     ):
-        # Conditions for activating the tool selection feature.
+        # The enable conditions configuration. Controls when the overall feature is triggered.
         self.enable_conditions = enable_conditions
-        # The status of the AI tool selection plugin.
+        # The plug-in running status.
         self.plugin_status = plugin_status
-        # Configuration for query rewriting, which optimizes user queries before tool selection.
+        # The query rewrite configuration. Rewrites user queries before tool reranking to improve matching precision.
         self.query_rewriting = query_rewriting
-        # Configuration for tool reranking, which controls how tools are scored and filtered.
+        # The tool reranking configuration. Uses a model to rank and filter candidate tools.
         self.tool_reranking = tool_reranking
 
     def validate(self):
@@ -81,17 +81,17 @@ class AiToolSelectionConfigToolReranking(DaraModel):
         top_kpercent: int = None,
         top_ncount: int = None,
     ):
-        # The fallback strategy used if tool reranking fails or returns no results.
+        # The fallback strategy upon failure.
         self.fallback_strategy = fallback_strategy
-        # The method for filtering tools after reranking.
+        # The filtering method.
         self.filtering_method = filtering_method
-        # Model service configuration for tool reranking.
+        # The reranking model service configuration.
         self.model_service = model_service
-        # The minimum score a tool must have to be selected. Tools with scores below this threshold are filtered out.
+        # The score threshold.
         self.score_threshold = score_threshold
-        # The percentage of top-ranked tools to select. This parameter only applies when `filteringMethod` is set to a percentage-based method.
+        # The retention percentage.
         self.top_kpercent = top_kpercent
-        # The number of top-ranked tools to select. This parameter only applies when `filteringMethod` is set to a count-based method.
+        # The retention count.
         self.top_ncount = top_ncount
 
     def validate(self):
@@ -153,11 +153,11 @@ class AiToolSelectionConfigToolRerankingModelService(DaraModel):
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
-        # The name of the model used for reranking.
+        # The model name.
         self.model_name = model_name
-        # The ID of the model service used for reranking.
+        # The model service ID.
         self.service_id = service_id
-        # The request timeout in milliseconds for the reranking model service.
+        # The request timeout period, in milliseconds.
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):
@@ -203,19 +203,19 @@ class AiToolSelectionConfigQueryRewriting(DaraModel):
         prompt_config: main_models.AiToolSelectionConfigQueryRewritingPromptConfig = None,
         trigger_conditions: main_models.AiToolSelectionConfigQueryRewritingTriggerConditions = None,
     ):
-        # Method for selecting the conversation context for query rewriting.
+        # The context selection configuration.
         self.context_selection = context_selection
-        # Whether to enable query rewriting.
+        # Specifies whether query rewrite is enabled.
         self.enabled = enabled
-        # The fallback strategy used if query rewriting fails or returns no results.
+        # The fallback strategy.
         self.fallback_strategy = fallback_strategy
-        # The maximum number of tokens to generate for the rewritten query.
+        # The maximum number of output tokens for rewriting.
         self.max_output_tokens = max_output_tokens
-        # Model service configuration for query rewriting.
+        # The rewriting model service configuration.
         self.model_service = model_service
-        # Prompt configuration for query rewriting.
+        # The prompt configuration.
         self.prompt_config = prompt_config
-        # Conditions for activating query rewriting.
+        # The trigger condition configuration.
         self.trigger_conditions = trigger_conditions
 
     def validate(self):
@@ -290,7 +290,7 @@ class AiToolSelectionConfigQueryRewritingTriggerConditions(DaraModel):
         self,
         message_count_threshold: int = None,
     ):
-        # The minimum number of messages in the conversation history required to activate query rewriting.
+        # The number of conversation turns after which rewriting is triggered.
         self.message_count_threshold = message_count_threshold
 
     def validate(self):
@@ -319,9 +319,9 @@ class AiToolSelectionConfigQueryRewritingPromptConfig(DaraModel):
         custom_prompt: str = None,
         type: str = None,
     ):
-        # The custom prompt template for query rewriting. This parameter is required if `type` is set to `custom`.
+        # The custom prompt content.
         self.custom_prompt = custom_prompt
-        # The type of prompt, such as default or custom.
+        # The prompt type.
         self.type = type
 
     def validate(self):
@@ -357,11 +357,11 @@ class AiToolSelectionConfigQueryRewritingModelService(DaraModel):
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
-        # The name of the model used for query rewriting.
+        # The model name.
         self.model_name = model_name
-        # The ID of the model service used for query rewriting.
+        # The model service ID.
         self.service_id = service_id
-        # The request timeout in milliseconds for the query rewriting model service.
+        # The request timeout period, in milliseconds.
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):
@@ -402,9 +402,9 @@ class AiToolSelectionConfigQueryRewritingContextSelection(DaraModel):
         type: str = None,
         value: int = None,
     ):
-        # The strategy for selecting the conversation context.
+        # The context selection method.
         self.type = type
-        # The value associated with the context selection strategy, such as the number of messages to include.
+        # The number of retained messages or characters.
         self.value = value
 
     def validate(self):
@@ -438,7 +438,7 @@ class AiToolSelectionConfigEnableConditions(DaraModel):
         self,
         tool_count_threshold: int = None,
     ):
-        # The minimum number of tools required to activate tool selection.
+        # The tool count threshold.
         self.tool_count_threshold = tool_count_threshold
 
     def validate(self):

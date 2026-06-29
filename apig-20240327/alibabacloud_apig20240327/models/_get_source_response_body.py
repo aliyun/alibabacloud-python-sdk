@@ -13,11 +13,11 @@ class GetSourceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The response status code.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
         # ID of the request
         self.request_id = request_id
@@ -79,23 +79,23 @@ class GetSourceResponseBodyData(DaraModel):
     ):
         self.association_reason = association_reason
         self.association_status = association_status
-        # Creation timestamp.
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # Gateway ID.
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # K8s source information.
+        # The Kubernetes source information.
         self.k_8ssource_info = k_8ssource_info
-        # MSE Nacos source information.
+        # The Microservices Engine (MSE) Nacos source information.
         self.nacos_source_info = nacos_source_info
-        # Name.
+        # The name.
         self.name = name
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Source ID.
+        # The source ID.
         self.source_id = source_id
-        # Type.
+        # The type.
         self.type = type
-        # Update timestamp.
+        # The update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -190,11 +190,11 @@ class GetSourceResponseBodyDataNacosSourceInfo(DaraModel):
         cluster_id: str = None,
         instance_id: str = None,
     ):
-        # Nacos instance access address.
+        # The access address of the Nacos instance.
         self.address = address
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Nacos instance ID.
+        # The Nacos instance ID.
         self.instance_id = instance_id
 
     def validate(self):
@@ -234,7 +234,7 @@ class GetSourceResponseBodyDataK8SSourceInfo(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # Container Service cluster ID.
+        # The container service cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):

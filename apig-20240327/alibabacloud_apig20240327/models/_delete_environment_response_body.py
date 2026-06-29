@@ -11,11 +11,11 @@ class DeleteEnvironmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # The response message returned.
+        # The response message.
         self.message = message
-        # The request ID. You can use the ID to trace the request link.
+        # The request ID, which is used to trace the request chain.
         self.request_id = request_id
 
     def validate(self):

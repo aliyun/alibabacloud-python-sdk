@@ -13,11 +13,11 @@ class CreateConsumerAuthorizationRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -67,7 +67,7 @@ class CreateConsumerAuthorizationRuleResponseBodyData(DaraModel):
         self,
         consumer_authorization_rule_id: str = None,
     ):
-        # Filters the list of operations based on a specific consumer authorization rule ID. Only authorized operations are returned in the response.
+        # The consumer authorization rule ID. When this ID is used to filter the API list, the response contains only the authorized APIs.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
 
     def validate(self):

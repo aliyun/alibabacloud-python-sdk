@@ -16,31 +16,23 @@ class CreateServiceRequest(DaraModel):
         source_type: str = None,
         client_token: str = None,
     ):
-        # The gateway instance ID.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of service configurations.
+        # The list of service configurations. At least one service configuration is required.
         self.service_configs = service_configs
-        # The service source type. Valid values:
-        # 
-        # *   MSE_NACOS: MSE Nacos instance services
-        # *   K8S: Container Service for Kubernetes (ACK) cluster services
-        # *   VIP: fixed IP addresses
-        # *   DNS: Domain Name System (DNS) domains
-        # *   FC3: Function Compute services
-        # *   SAE_K8S_SERVICE: Serverless App Engine (SAE) Kubernetes services
-        # 
-        # Valid values:
-        # 
-        # *   SAE_K8S_SERVICE
-        # *   K8S
-        # *   FC3
-        # *   DNS
-        # *   VIP
-        # *   MSE_NACOS
+        # The service source. Valid values:
+        # - MSE_NACOS: a service in MSE Nacos.
+        # - K8S: a service in a Kubernetes cluster of Container Service.
+        # - VIP: a fixed address service.
+        # - DNS: a DNS domain name service.
+        # - FC3: a service in Function Compute.
+        # - SAE_K8S_SERVICE: an SAE Kubernetes service.
+        # - AI: an AI service.
+        # - AGENT: an Agent service.
         self.source_type = source_type
-        # clientToken
+        # The client token.
         self.client_token = client_token
 
     def validate(self):
@@ -110,32 +102,32 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         source_id: str = None,
         validation_options: main_models.CreateServiceRequestServiceConfigsValidationOptions = None,
     ):
-        # The list of domain names or fixed IP addresses.
+        # The list of domain names or fixed addresses.
         self.addresses = addresses
-        # Agent service configuration
+        # The Agent service configuration. This parameter is required when sourceType is set to AGENT.
         self.agent_service_config = agent_service_config
-        # The AI service configurations.
+        # The AI service configuration.
         self.ai_service_config = ai_service_config
-        # The list of DNS service addresses.
+        # The list of DNS server addresses.
         self.dns_servers = dns_servers
-        # Express type
+        # The service expression type that identifies the special type or mode of the service.
         self.express_type = express_type
-        # The service group name. This parameter is required if sourceType is set to MSE_NACOS.
+        # The service group name. This parameter is required when sourceType is set to MSE_NACOS.
         self.group_name = group_name
         # The service name.
         self.name = name
-        # The service namespace. This parameter is required when sourceType is set to K8S or MSE_NACOS.
+        # The namespace of the service.
         # 
-        # *   If sourceType is set to K8S, this parameter specifies the namespace where the K8s service resides.
-        # *   If sourceType is set to MSE_NACOS, this parameter specifies a namespace in Nacos.
+        # - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
+        # - If sourceType is set to MSE_NACOS, this parameter specifies the namespace in Nacos.
         # 
-        # This parameter is required if sourceType is set to K8S or MSE_NACOS.
+        # This parameter is required when sourceType is set to K8S or MSE_NACOS.
         self.namespace = namespace
-        # The function version/alias.
+        # The function version or alias.
         self.qualifier = qualifier
-        # Service source ID
+        # The service source ID. This parameter is required in multi-Nacos instance scenarios.
         self.source_id = source_id
-        # Validation options
+        # The validation options for service verification configuration.
         self.validation_options = validation_options
 
     def validate(self):
@@ -231,7 +223,7 @@ class CreateServiceRequestServiceConfigsValidationOptions(DaraModel):
         self,
         skip_verify_aichat_completion: bool = None,
     ):
-        # Skip AI chat completion verification
+        # Specifies whether to skip AI chat completion verification.
         self.skip_verify_aichat_completion = skip_verify_aichat_completion
 
     def validate(self):

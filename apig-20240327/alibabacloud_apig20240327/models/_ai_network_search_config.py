@@ -20,23 +20,23 @@ class AiNetworkSearchConfig(DaraModel):
         search_from: List[main_models.AiNetworkConfigSearchEngine] = None,
         search_rewrite: main_models.AiNetworkSearchConfigSearchRewrite = None,
     ):
-        # Whether the network search feature is enabled by default.
+        # Specifies whether the plug-in feature is enabled by default.
         self.default_enable = default_enable
-        # The default language for the search query.
+        # The default search language code.
         self.default_lang = default_lang
-        # Whether to include references in the search results.
+        # Specifies whether to add reference sources in the answer.
         self.need_reference = need_reference
-        # The status of the AI plugin.
+        # The plug-in running status.
         self.plugin_status = plugin_status
-        # The format of the references.
+        # The format template for reference content. The template must contain at least one %s placeholder.
         self.reference_format = reference_format
-        # The location of the references in the response.
+        # The reference location.
         self.reference_location = reference_location
         # The search engine configuration.
         self.search_engine_config = search_engine_config
-        # A list of search engine configurations for the network search.
+        # The list of search engines (multi-engine configuration).
         self.search_from = search_from
-        # Configuration for search query rewriting.
+        # The search term rewriting configuration.
         self.search_rewrite = search_rewrite
 
     def validate(self):
@@ -133,15 +133,15 @@ class AiNetworkSearchConfigSearchRewrite(DaraModel):
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
-        # Whether to enable the search query rewrite feature.
+        # Specifies whether to enable search query rewriting.
         self.enable = enable
-        # The maximum number of rewritten queries to generate.
+        # The maximum number of search queries after rewriting.
         self.max_count = max_count
-        # The name of the model to use for query rewriting.
+        # The name of the model used for rewriting.
         self.model_name = model_name
-        # The ID of the query rewriting service.
+        # The ID of the rewriting service.
         self.service_id = service_id
-        # Timeout for the query rewriting operation, in milliseconds.
+        # The timeout period for the rewriting request, in milliseconds.
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):

@@ -72,7 +72,7 @@ class ListDomainsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # 域名信息列表。
+        # The list of domain name information.
         self.items = items
         # The page number.
         self.page_number = page_number

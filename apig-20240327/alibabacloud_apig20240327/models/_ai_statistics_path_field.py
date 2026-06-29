@@ -18,25 +18,28 @@ class AiStatisticsPathField(DaraModel):
         sensitive: bool = None,
         source: str = None,
     ):
-        # The category to which the field belongs, used for grouping and organizing fields.
+        # The secondary category.
         self.category = category
-        # A detailed description that provides additional context about the field\\"s purpose and usage.
+        # The field description.
         self.description = description
-        # The unique key used to identify the field in statistical results.
+        # The log key.
         self.field_key = field_key
-        # Specifies whether the field is an input or an output. Valid values are typically `IN` or `OUT`.
+        # The request or response direction.
         self.io = io
-        # The JSONPath expression to extract the field value from the source data.
+        # The corresponding JSON path (GJSON syntax).
         self.json_path = json_path
-        # The display name of the field, used for labeling in user interfaces or reports.
+        # The display name of the field.
         self.name = name
-        # Specifies whether logging is enabled for this field. If set to `true`, the system records the field\\"s value in logs.
+        # Specifies whether collection is enabled.
         self.record_enabled = record_enabled
-        # A rule or condition applied to the extracted field. The rule\\"s format and effect are implementation-specific.
+        # The rule used for streaming response extraction. Valid values:
+        # - append: appends content
+        # - first: retrieves the first value
+        # - replace: retrieves the last value
         self.rule = rule
-        # Indicates whether the field contains sensitive information. If set to `true`, the system may apply masking or other security measures.
+        # Indicates whether the field is sensitive.
         self.sensitive = sensitive
-        # The data source from which the field is extracted. For example, `Request` or `Response`.
+        # The data source.
         self.source = source
 
     def validate(self):

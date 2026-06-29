@@ -22,31 +22,35 @@ class CreateGatewayRequest(DaraModel):
         vpc_id: str = None,
         zone_config: main_models.CreateGatewayRequestZoneConfig = None,
     ):
-        # The logging configurations.
+        # The billing method.
         self.charge_type = charge_type
-        # Gateway instance edition:
+        # The gateway instance edition. Valid values:
         # 
-        # - Standard instance: Professional
+        # - Professional: Standard instance.
         # 
-        # - Serverless: Serverless (currently supports only AI gateway)
+        # - Serverless: Serverless instance.
+        # 
+        # - MultiTenantServerless: Multi-tenant Serverless instance.
+        # 
+        # - Unknown: Unknown.
         self.gateway_edition = gateway_edition
-        # The ID of the resource group.
+        # The gateway type.
         self.gateway_type = gateway_type
-        # Gateway log configuration.
+        # The gateway log configuration.
         self.log_config = log_config
-        # The ID of the vSwitch.
+        # The gateway name.
         self.name = name
-        # The gateway edition.
+        # The network access configuration.
         self.network_access_config = network_access_config
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tag key.
+        # The node specifications.
         self.spec = spec
-        # The list of labels.
+        # The list of tags.
         self.tag = tag
-        # The tag value.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The status message.
+        # The zone configuration.
         self.zone_config = zone_config
 
     def validate(self):
@@ -153,11 +157,11 @@ class CreateGatewayRequestZoneConfig(DaraModel):
         v_switch_id: str = None,
         zones: List[main_models.CreateGatewayRequestZoneConfigZones] = None,
     ):
-        # The response payload.
+        # The zone selection option.
         self.select_option = select_option
-        # Virtual switch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # List of supported zones.
+        # The list of supported zones.
         self.zones = zones
 
     def validate(self):
@@ -206,9 +210,9 @@ class CreateGatewayRequestZoneConfigZones(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the virtual switch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -245,7 +249,7 @@ class CreateGatewayRequestTag(DaraModel):
     ):
         # The tag key.
         self.key = key
-        # The value of the label.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -279,7 +283,7 @@ class CreateGatewayRequestNetworkAccessConfig(DaraModel):
         self,
         type: str = None,
     ):
-        # -
+        # The network access type.
         self.type = type
 
     def validate(self):
@@ -307,7 +311,7 @@ class CreateGatewayRequestLogConfig(DaraModel):
         self,
         sls: main_models.CreateGatewayRequestLogConfigSls = None,
     ):
-        # SLS log configuration.
+        # The Simple Log Service (SLS) log configuration.
         self.sls = sls
 
     def validate(self):
@@ -337,7 +341,7 @@ class CreateGatewayRequestLogConfigSls(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Whether to enable.
+        # Specifies whether to enable SLS logging.
         self.enable = enable
 
     def validate(self):

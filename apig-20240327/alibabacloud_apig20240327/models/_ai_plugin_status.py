@@ -13,11 +13,11 @@ class AiPluginStatus(DaraModel):
         plugin_id: str = None,
         service_healthy: bool = None,
     ):
-        # An object containing error logs, where each key is a string identifying an error and the value is a string describing that error.
+        # The list of plug-in runtime error logs. Each item is a map[string]any key-value pair.
         self.error_logs = error_logs
-        # The unique identifier of the plugin.
+        # The plug-in instance ID.
         self.plugin_id = plugin_id
-        # Indicates if the service is healthy. `true` indicates normal operation, and `false` indicates an issue.
+        # Indicates whether the backend service that the plug-in depends on is healthy.
         self.service_healthy = service_healthy
 
     def validate(self):

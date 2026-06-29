@@ -17,23 +17,23 @@ class UpdateAndAttachPolicyRequest(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
-        # The association IDs.
+        # The list of mount point IDs.
         # 
         # This parameter is required.
         self.attach_resource_ids = attach_resource_ids
-        # The supported associated resource type. Valid values:
+        # The type of mount point supported by the policy. Valid values:
         # 
-        # *   HttpApi: an HTTP API
-        # *   Operation: an operation in an HTTP API
-        # *   GatewayRoute: a route
-        # *   GatewayService: a service
-        # *   GatewayServicePort: a service port
-        # *   Domain: a domain name
-        # *   Gateway: an instance
+        # - HttpApi: HttpApi.
+        # - Operation: Operation of HttpApi.
+        # - GatewayRoute: gateway rule.
+        # - GatewayService: gateway service.
+        # - GatewayServicePort: gateway service port.
+        # - Domain: gateway domain name.
+        # - Gateway: gateway.
         # 
         # This parameter is required.
         self.attach_resource_type = attach_resource_type
-        # The policy configurations. The value is a JSON string.
+        # The configuration information. The value is a JSON string.
         # 
         # This parameter is required.
         self.config = config
@@ -41,7 +41,7 @@ class UpdateAndAttachPolicyRequest(DaraModel):
         self.description = description
         # The environment ID.
         self.environment_id = environment_id
-        # The instance ID.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The policy name.
         self.name = name

@@ -330,6 +330,10 @@ from ._list_services_response import ListServicesResponse
 from ._list_ssl_certs_request import ListSslCertsRequest
 from ._list_ssl_certs_response_body import ListSslCertsResponseBody
 from ._list_ssl_certs_response import ListSslCertsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_shrink_request import ListTagResourcesShrinkRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_zones_response_body import ListZonesResponseBody
 from ._list_zones_response import ListZonesResponse
 from ._query_consumer_authorization_rules_request import QueryConsumerAuthorizationRulesRequest
@@ -345,6 +349,9 @@ from ._restart_gateway_response import RestartGatewayResponse
 from ._sync_mcpservers_request import SyncMCPServersRequest
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBody
 from ._sync_mcpservers_response import SyncMCPServersResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
 from ._un_deploy_mcp_server_response_body import UnDeployMcpServerResponseBody
 from ._un_deploy_mcp_server_response import UnDeployMcpServerResponse
 from ._undeploy_http_api_request import UndeployHttpApiRequest
@@ -352,6 +359,10 @@ from ._undeploy_http_api_response_body import UndeployHttpApiResponseBody
 from ._undeploy_http_api_response import UndeployHttpApiResponse
 from ._uninstall_plugin_response_body import UninstallPluginResponseBody
 from ._uninstall_plugin_response import UninstallPluginResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_shrink_request import UntagResourcesShrinkRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_and_attach_policy_request import UpdateAndAttachPolicyRequest
 from ._update_and_attach_policy_response_body import UpdateAndAttachPolicyResponseBody
 from ._update_and_attach_policy_response import UpdateAndAttachPolicyResponse
@@ -672,6 +683,8 @@ from ._list_secrets_response_body import ListSecretsResponseBodyDataItems
 from ._list_secrets_response_body import ListSecretsResponseBodyData
 from ._list_services_response_body import ListServicesResponseBodyData
 from ._list_ssl_certs_response_body import ListSslCertsResponseBodyData
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_zones_response_body import ListZonesResponseBodyDataItems
 from ._list_zones_response_body import ListZonesResponseBodyData
 from ._query_consumer_authorization_rules_response_body import QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo
@@ -684,6 +697,7 @@ from ._sync_mcpservers_request import SyncMCPServersRequestNacosMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataFailedMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyDataSucceedMcpServers
 from ._sync_mcpservers_response_body import SyncMCPServersResponseBodyData
+from ._tag_resources_request import TagResourcesRequestTag
 from ._update_domain_response_body import UpdateDomainResponseBodyData
 from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems
 from ._update_gateway_quota_rule_response_body import UpdateGatewayQuotaRuleResponseBodyDataConflictPreview
@@ -1033,6 +1047,10 @@ __all__ = [
     ListSslCertsRequest,
     ListSslCertsResponseBody,
     ListSslCertsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesShrinkRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
     ListZonesResponseBody,
     ListZonesResponse,
     QueryConsumerAuthorizationRulesRequest,
@@ -1048,6 +1066,9 @@ __all__ = [
     SyncMCPServersRequest,
     SyncMCPServersResponseBody,
     SyncMCPServersResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
     UnDeployMcpServerResponseBody,
     UnDeployMcpServerResponse,
     UndeployHttpApiRequest,
@@ -1055,6 +1076,10 @@ __all__ = [
     UndeployHttpApiResponse,
     UninstallPluginResponseBody,
     UninstallPluginResponse,
+    UntagResourcesRequest,
+    UntagResourcesShrinkRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
     UpdateAndAttachPolicyRequest,
     UpdateAndAttachPolicyResponseBody,
     UpdateAndAttachPolicyResponse,
@@ -1375,6 +1400,8 @@ __all__ = [
     ListSecretsResponseBodyData,
     ListServicesResponseBodyData,
     ListSslCertsResponseBodyData,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
     ListZonesResponseBodyDataItems,
     ListZonesResponseBodyData,
     QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo,
@@ -1387,6 +1414,7 @@ __all__ = [
     SyncMCPServersResponseBodyDataFailedMcpServers,
     SyncMCPServersResponseBodyDataSucceedMcpServers,
     SyncMCPServersResponseBodyData,
+    TagResourcesRequestTag,
     UpdateDomainResponseBodyData,
     UpdateGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
     UpdateGatewayQuotaRuleResponseBodyDataConflictPreview,

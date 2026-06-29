@@ -20,25 +20,25 @@ class AiNetworkConfigSearchEngine(DaraModel):
         timeout_millisecond: int = None,
         type: str = None,
     ):
-        # Required. The API key to authenticate requests to the search engine service.
+        # The API key of the search engine.
         self.api_key = api_key
-        # The search content mode, which determines how the service interprets the query and returns results.
+        # Quark-specific: the content mode.
         self.content_mode = content_mode
-        # The number of search results to return. If this parameter is omitted, the service uses a default value.
+        # The number of results returned per search.
         self.count = count
-        # The endpoint URL for the search engine service.
+        # The endpoint of the search engine.
         self.endpoint = endpoint
-        # The industry context for tailoring search results to a specific domain.
+        # Quark-specific: the industry filter.
         self.industry = industry
-        # Optional. A key-value map for service-specific parameters not covered by the standard configuration.
+        # The search engine-specific parameters in key-value pair format.
         self.option_args = option_args
-        # The starting offset for the search results, used for pagination. For example, a value of 10 skips the first 10 results. The default is 0.
+        # The offset of search results.
         self.start = start
-        # The time range for filtering results by their creation or modification date.
+        # Quark-specific: the time range filter.
         self.time_range = time_range
-        # The request timeout in milliseconds. If a request exceeds this time, the service terminates it.
+        # The API call timeout period, in milliseconds.
         self.timeout_millisecond = timeout_millisecond
-        # Specifies the search engine service to use.
+        # The search engine type.
         self.type = type
 
     def validate(self):

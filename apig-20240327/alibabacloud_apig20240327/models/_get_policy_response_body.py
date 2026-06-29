@@ -13,11 +13,11 @@ class GetPolicyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

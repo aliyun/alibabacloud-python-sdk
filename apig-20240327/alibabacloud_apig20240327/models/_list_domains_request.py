@@ -18,9 +18,7 @@ class ListDomainsRequest(DaraModel):
         self.domain_scope = domain_scope
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The gateway type used for filtering. Valid values:
-        # - **AI**
-        # - **API**.
+        # The gateway type used for filtering. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
         # The domain name. Fuzzy match is supported.
         self.name_like = name_like

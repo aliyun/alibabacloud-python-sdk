@@ -13,13 +13,13 @@ class CreatePluginAttachmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The response message returned.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreatePluginAttachmentResponseBodyData(DaraModel):
         self,
         plugin_attachment_id: str = None,
     ):
-        # The plug-in ID.
+        # The plug-in attachment ID.
         self.plugin_attachment_id = plugin_attachment_id
 
     def validate(self):

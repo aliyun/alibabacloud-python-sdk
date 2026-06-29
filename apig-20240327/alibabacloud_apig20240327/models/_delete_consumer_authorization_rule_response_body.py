@@ -11,11 +11,11 @@ class DeleteConsumerAuthorizationRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The status message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

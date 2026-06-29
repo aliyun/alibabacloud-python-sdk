@@ -12,7 +12,7 @@ class CreateConsumerAuthorizationRulesRequest(DaraModel):
         self,
         authorization_rules: List[main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRules] = None,
     ):
-        # Consumer authorization rules.
+        # The consumer authentication rules.
         self.authorization_rules = authorization_rules
 
     def validate(self):
@@ -52,15 +52,15 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
         resource_identifier: main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier = None,
         resource_type: str = None,
     ):
-        # Consumer ID.
+        # The consumer ID.
         self.consumer_id = consumer_id
-        # Expiration mode. Currently only LongTerm is supported.
+        # The expiration mode. Currently, only LongTerm is supported.
         self.expire_mode = expire_mode
-        # Expiration time.
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
-        # Resource identifier, provided to non-standard code sources as a unique identifier for space reuse
+        # The resource identifier, which serves as a unique identifier for non-standard code sources for space reuse.
         self.resource_identifier = resource_identifier
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -117,13 +117,13 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifie
         resource_id: str = None,
         resources: List[str] = None,
     ):
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Parent resource ID.
+        # The parent resource ID.
         self.parent_resource_id = parent_resource_id
-        # Resource ID.
+        # The resource ID.
         self.resource_id = resource_id
-        # Resource information.
+        # The resource information.
         self.resources = resources
 
     def validate(self):

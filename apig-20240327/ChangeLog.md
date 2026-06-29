@@ -1,3 +1,9 @@
+2026-06-29 Version: 9.2.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2026-06-26 Version: 9.1.1
 - Generated python 2024-03-27 for APIG.
 

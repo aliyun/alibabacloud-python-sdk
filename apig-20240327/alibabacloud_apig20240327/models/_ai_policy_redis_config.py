@@ -14,17 +14,17 @@ class AiPolicyRedisConfig(DaraModel):
         timeout: int = None,
         username: str = None,
     ):
-        # The zero-based index of the Redis database to use. The default value is 0.
+        # The Redis database number.
         self.database_number = database_number
-        # The hostname of the Redis instance.
+        # The Redis host address.
         self.host = host
-        # The password for Redis authentication.
+        # The Redis password.
         self.password = password
-        # The port number of the Redis instance.
+        # The Redis port.
         self.port = port
-        # The connection timeout in milliseconds.
+        # The timeout period, in milliseconds.
         self.timeout = timeout
-        # The username for Redis authentication.
+        # The Redis username.
         self.username = username
 
     def validate(self):

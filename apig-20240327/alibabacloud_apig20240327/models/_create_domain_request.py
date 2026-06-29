@@ -34,9 +34,9 @@ class CreateDomainRequest(DaraModel):
         self.force_https = force_https
         # The gateway type.
         self.gateway_type = gateway_type
-        # The HTTP/2 setting.
+        # The HTTP/2 settings.
         self.http_2option = http_2option
-        # Specifies whether to enable mutual TLS (mTLS) authentication.
+        # Specifies whether to enable mTLS mutual authentication.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         # 
@@ -51,9 +51,9 @@ class CreateDomainRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum TLS version. TLS 1.3 is the maximum supported version.
+        # The maximum TLS protocol version. TLS 1.3 is the maximum supported version.
         self.tls_max = tls_max
-        # The minimum TLS version. TLS 1.0 is the minimum supported version.
+        # The minimum TLS protocol version. TLS 1.0 is the minimum supported version.
         self.tls_min = tls_min
 
     def validate(self):

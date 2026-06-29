@@ -17,9 +17,9 @@ class CreateSourceResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreateSourceResponseBodyData(DaraModel):
         self,
         source_id: str = None,
     ):
-        # Source ID
+        # The source ID.
         self.source_id = source_id
 
     def validate(self):

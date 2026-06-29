@@ -72,7 +72,7 @@ class ListSslCertsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # 证书信息列表。
+        # The list of certificate information.
         self.items = items
         # The page number.
         self.page_number = page_number

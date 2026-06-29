@@ -13,9 +13,9 @@ class ExportHttpApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The response status code.
         self.code = code
-        # The API definition.
+        # The API definition information.
         self.data = data
         # The response message.
         self.message = message

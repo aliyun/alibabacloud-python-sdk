@@ -20,23 +20,23 @@ class CreateHttpApiRouteRequest(DaraModel):
         name: str = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The backend service configurations for the route.
+        # The backend service configuration of the route.
         self.backend_config = backend_config
-        # deployConfigs
+        # The API deployment configurations.
         self.deploy_configs = deploy_configs
         # The route description.
         self.description = description
-        # The list of domain IDs.
+        # The domain name IDs.
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
         # The route match rule.
         self.match = match
-        # The MCP route configuration
+        # The MCP route configuration.
         self.mcp_route_config = mcp_route_config
         # The route name.
         self.name = name
-        # The route-level policy configurations
+        # The policy type.
         self.policy_configs = policy_configs
 
     def validate(self):
@@ -140,11 +140,14 @@ class CreateHttpApiRouteRequestMcpRouteConfig(DaraModel):
         mcp_statistics_enable: bool = None,
         protocol: str = None,
     ):
-        # The exposed URI path
+        # The exposed URI path.
         self.exposed_uri_path = exposed_uri_path
-        # mcpStatisticsEnable
+        # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The MCP protocol
+        # The service protocol. Valid values:
+        # - TCP.
+        # - HTTP.
+        # - DUBBO.
         self.protocol = protocol
 
     def validate(self):
@@ -186,11 +189,10 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
         services: List[main_models.CreateHttpApiRouteRequestBackendConfigServices] = None,
     ):
         # The backend service scenario. Valid values:
-        # 
-        # *   SingleService
-        # *   MultiServiceByRatio
-        # *   Mock
-        # *   Redirect
+        # - SingleService: Single service.
+        # - MultiServiceByRatio: Multiple services with ratio-based canary release.
+        # - Mock: Mock service.
+        # - Redirect: Redirect service.
         self.scene = scene
         # The list of backend services.
         self.services = services
@@ -238,18 +240,17 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service port (omit for dynamic ports).
+        # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # 
-        # *   HTTP
-        # *   HTTPS
+        # - HTTP.
+        # - HTTPS.
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # The service version (valid only in tag-based scenarios).
+        # The service version. This parameter is valid only in the tag-based scenario.
         self.version = version
-        # The traffic weight percentage.
+        # The percentage value of the traffic ratio.
         self.weight = weight
 
     def validate(self):

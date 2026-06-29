@@ -15,13 +15,13 @@ class GetConsumerResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # O código de resposta.
+        # The response code.
         self.code = code
-        # Os dados de resposta.
+        # The response data.
         self.data = data
-        # A mensagem de resposta.
+        # The response message.
         self.message = message
-        # O ID da solicitação.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -78,25 +78,25 @@ class GetConsumerResponseBodyData(DaraModel):
         name: str = None,
         update_timestamp: int = None,
     ):
-        # As configurações de autenticação por par de AccessKey.
+        # The AK/SK identity authentication configurations.
         self.ak_sk_identity_configs = ak_sk_identity_configs
-        # A configuração de autenticação de chave de API.
+        # The API key identity authentication configuration.
         self.api_key_identity_config = api_key_identity_config
-        # O ID do consumidor de API.
+        # The consumer ID.
         self.consumer_id = consumer_id
-        # O carimbo de data/hora de criação.
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # O status de publicação da API no ambiente atual.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
-        # A descrição.
+        # The description.
         self.description = description
-        # Indica se o consumidor de API está habilitado.
+        # Indicates whether the consumer is enabled.
         self.enable = enable
-        # A configuração de autenticação JWT.
+        # The JWT identity authentication configuration.
         self.jwt_identity_config = jwt_identity_config
-        # O nome do consumidor de API.
+        # The consumer name.
         self.name = name
-        # O carimbo de data/hora de atualização.
+        # The update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):
