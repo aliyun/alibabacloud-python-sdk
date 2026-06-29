@@ -20,7 +20,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'aidge.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aidge', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -914,11 +917,11 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.image_remove_with_options_async(request, runtime)
 
-    def image_translation_pro_with_options(
+    def image_translation_plus_with_options(
         self,
-        request: main_models.ImageTranslationProRequest,
+        request: main_models.ImageTranslationPlusRequest,
         runtime: RuntimeOptions,
-    ) -> main_models.ImageTranslationProResponse:
+    ) -> main_models.ImageTranslationPlusResponse:
         request.validate()
         body = {}
         if not DaraCore.is_null(request.glossary):
@@ -935,8 +938,102 @@ class Client(OpenApiClient):
             body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
         if not DaraCore.is_null(request.use_image_editor):
             body['UseImageEditor'] = request.use_image_editor
-        if not DaraCore.is_null(request.call_type):
-            body['callType'] = request.call_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationPlus',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationPlusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_translation_plus_with_options_async(
+        self,
+        request: main_models.ImageTranslationPlusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationPlusResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.glossary):
+            body['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            body['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            body['UseImageEditor'] = request.use_image_editor
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageTranslationPlus',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageTranslationPlusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_translation_plus(
+        self,
+        request: main_models.ImageTranslationPlusRequest,
+    ) -> main_models.ImageTranslationPlusResponse:
+        runtime = RuntimeOptions()
+        return self.image_translation_plus_with_options(request, runtime)
+
+    async def image_translation_plus_async(
+        self,
+        request: main_models.ImageTranslationPlusRequest,
+    ) -> main_models.ImageTranslationPlusResponse:
+        runtime = RuntimeOptions()
+        return await self.image_translation_plus_with_options_async(request, runtime)
+
+    def image_translation_pro_with_options(
+        self,
+        request: main_models.ImageTranslationProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageTranslationProResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.async_):
+            body['Async'] = request.async_
+        if not DaraCore.is_null(request.glossary):
+            body['Glossary'] = request.glossary
+        if not DaraCore.is_null(request.image_url):
+            body['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.including_product_area):
+            body['IncludingProductArea'] = request.including_product_area
+        if not DaraCore.is_null(request.source_language):
+            body['SourceLanguage'] = request.source_language
+        if not DaraCore.is_null(request.target_language):
+            body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translating_brand_in_the_product):
+            body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
+        if not DaraCore.is_null(request.use_image_editor):
+            body['UseImageEditor'] = request.use_image_editor
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -963,6 +1060,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImageTranslationProResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.async_):
+            body['Async'] = request.async_
         if not DaraCore.is_null(request.glossary):
             body['Glossary'] = request.glossary
         if not DaraCore.is_null(request.image_url):
@@ -977,8 +1076,6 @@ class Client(OpenApiClient):
             body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
         if not DaraCore.is_null(request.use_image_editor):
             body['UseImageEditor'] = request.use_image_editor
-        if not DaraCore.is_null(request.call_type):
-            body['callType'] = request.call_type
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1171,6 +1268,92 @@ class Client(OpenApiClient):
     ) -> main_models.LanguageDetectResponse:
         runtime = RuntimeOptions()
         return await self.language_detect_with_options_async(request, runtime)
+
+    def material_inspection_with_options(
+        self,
+        request: main_models.MaterialInspectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MaterialInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_id):
+            query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.image_refer):
+            query['ImageRefer'] = request.image_refer
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.req_id):
+            query['ReqId'] = request.req_id
+        if not DaraCore.is_null(request.rules):
+            query['Rules'] = request.rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MaterialInspection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MaterialInspectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def material_inspection_with_options_async(
+        self,
+        request: main_models.MaterialInspectionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MaterialInspectionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_id):
+            query['ApiId'] = request.api_id
+        if not DaraCore.is_null(request.image_refer):
+            query['ImageRefer'] = request.image_refer
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        if not DaraCore.is_null(request.req_id):
+            query['ReqId'] = request.req_id
+        if not DaraCore.is_null(request.rules):
+            query['Rules'] = request.rules
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MaterialInspection',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MaterialInspectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def material_inspection(
+        self,
+        request: main_models.MaterialInspectionRequest,
+    ) -> main_models.MaterialInspectionResponse:
+        runtime = RuntimeOptions()
+        return self.material_inspection_with_options(request, runtime)
+
+    async def material_inspection_async(
+        self,
+        request: main_models.MaterialInspectionRequest,
+    ) -> main_models.MaterialInspectionResponse:
+        runtime = RuntimeOptions()
+        return await self.material_inspection_with_options_async(request, runtime)
 
     def package_weight_size_check_with_options(
         self,

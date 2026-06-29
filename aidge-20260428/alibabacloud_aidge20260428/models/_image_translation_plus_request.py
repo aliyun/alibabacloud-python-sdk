@@ -4,10 +4,9 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ImageTranslationProRequest(DaraModel):
+class ImageTranslationPlusRequest(DaraModel):
     def __init__(
         self,
-        async_: bool = None,
         glossary: str = None,
         image_url: str = None,
         including_product_area: bool = None,
@@ -16,26 +15,25 @@ class ImageTranslationProRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         use_image_editor: bool = None,
     ):
-        self.async_ = async_
-        # Glossary ID, optional. You need to create a glossary separately in the console and provide its ID. If the provided glossary ID is empty, the translation results will not be modified.
+        # The ID of the intervention glossary. This parameter is optional.
         self.glossary = glossary
-        # Original image URL, required. Image requirements: width and height must not exceed 4000×4000; size must not exceed 10MB; supported formats include png, jpeg, jpg, bmp, and webp.
+        # The URL of the original image. This parameter is required.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Choose whether to translate text on the image subject, optional, default false. This helps you protect information by avoiding translation of embedded content such as product names.
+        # Specifies whether to translate text on the product body. This parameter is optional. Default value: false.
         self.including_product_area = including_product_area
-        # Source language code, required. See the supported language pairs list for available translation directions.
+        # The source language. This parameter is required.
         # 
         # This parameter is required.
         self.source_language = source_language
-        # Target language code, required. See the supported language pairs list for available translation directions.
+        # The target language. This parameter is required.
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Choose whether to translate brand names on the image, optional, default false. This helps you protect brand name information from being translated.
+        # Specifies whether to translate brand text on the product. This parameter is optional. Default value: false.
         self.translating_brand_in_the_product = translating_brand_in_the_product
-        # Whether to return layout information such as text position, font, and color, optional, default false. This can be used for secondary editing when integrating with an image editor.
+        # Specifies whether to use the image translation editor protocol. This parameter is optional.
         self.use_image_editor = use_image_editor
 
     def validate(self):
@@ -46,9 +44,6 @@ class ImageTranslationProRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.async_ is not None:
-            result['Async'] = self.async_
-
         if self.glossary is not None:
             result['Glossary'] = self.glossary
 
@@ -74,9 +69,6 @@ class ImageTranslationProRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Async') is not None:
-            self.async_ = m.get('Async')
-
         if m.get('Glossary') is not None:
             self.glossary = m.get('Glossary')
 

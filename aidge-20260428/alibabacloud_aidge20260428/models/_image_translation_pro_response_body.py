@@ -16,15 +16,15 @@ class ImageTranslationProResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates success. For other response codes, see the error codes.
+        # Response code. 200 indicates a successful call. For other response codes, refer to the error code documentation.
         self.code = code
-        # The translation result data. ResultList contains the URL of the translation result. GenFiles contains EditInfo with the recognized text information.
+        # Translation result data. ResultList contains the URL of the translation result, and GenFiles contains EditInfo with recognized text information.
         self.data = data
-        # The error message. "Success" is returned for successful calls. A specific error message is returned for failed calls, such as "The content contains sensitive data. Try other input.".
+        # Error message. Returns "Success" during normal calls. Returns specific error information during exceptions, such as "Content contains sensitive data, please try other input".
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # Request ID, used to identify a unique request call.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Whether the call was successful. true indicates success, false indicates failure.
         self.success = success
 
     def validate(self):
@@ -81,13 +81,13 @@ class ImageTranslationProResponseBodyData(DaraModel):
         task_id: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The editor protocol, which contains the translation result files and editing information.
+        # Editor protocol, containing translation result files and editing information
         self.gen_files = gen_files
-        # The list of image translation results.
+        # Image translation result list
         self.result_list = result_list
-        # The asynchronous task ID. This is not returned for synchronous calls.
+        # Asynchronous task ID, not returned during synchronous calls.
         self.task_id = task_id
-        # The usage information, including the number of processed images.
+        # Usage information, including the number of processed images, etc.
         self.usage_map = usage_map
 
     def validate(self):
@@ -151,9 +151,9 @@ class ImageTranslationProResponseBodyDataResultList(DaraModel):
         file_url: str = None,
         language: str = None,
     ):
-        # The URL of the image translation result image.
+        # Image translation result image URL
         self.file_url = file_url
-        # The target language for image translation.
+        # Image translation target language
         self.language = language
 
     def validate(self):
@@ -189,11 +189,11 @@ class ImageTranslationProResponseBodyDataGenFiles(DaraModel):
         result_list: List[main_models.ImageTranslationProResponseBodyDataGenFilesResultList] = None,
         src_image: str = None,
     ):
-        # The editor information, which contains recognized information such as text areas, product areas, and fonts.
+        # Editor information, containing recognized information such as text areas, product areas, and fonts
         self.edit_info = edit_info
-        # The collection of translation results.
+        # Translation result collection
         self.result_list = result_list
-        # The URL of the original image.
+        # Original image URL
         self.src_image = src_image
 
     def validate(self):
@@ -245,9 +245,9 @@ class ImageTranslationProResponseBodyDataGenFilesResultList(DaraModel):
         file_url: str = None,
         language: str = None,
     ):
-        # The URL of the translated image file.
+        # Translated image file URL
         self.file_url = file_url
-        # The target language for translation.
+        # Translation target language
         self.language = language
 
     def validate(self):
@@ -286,17 +286,17 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfo(DaraModel):
         result_image_ids: List[str] = None,
         text_areas: List[main_models.ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas] = None,
     ):
-        # The list of font types.
+        # Font type list
         self.font = font
-        # The coordinate information of the product bounding box area.
+        # Product bounding box area coordinate information
         self.goods_rects = goods_rects
-        # The list of target languages for translation.
+        # Translation target language list
         self.languages = languages
-        # The URL of the image with all text removed.
+        # Image URL after all text has been inpainted
         self.repaired_url = repaired_url
-        # The collection of global IDs of translated images.
+        # Collection of translated image global IDs
         self.result_image_ids = result_image_ids
-        # The list of text boxes, which contains information about all recognized text areas.
+        # Text box list, containing information about all recognized text areas
         self.text_areas = text_areas
 
     def validate(self):
@@ -371,19 +371,19 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas(DaraModel):
         texts: List[main_models.ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts] = None,
         vertical_layout: str = None,
     ):
-        # The text color, such as #ffffff.
+        # Text color, e.g., #ffffff
         self.color = color
-        # The original text before translation.
+        # Original text before translation
         self.content = content
-        # The font size.
+        # Font size
         self.fontsize = fontsize
-        # The horizontal layout. Valid values: center, left, right.
+        # Horizontal layout mode. Available values: center, left, right
         self.horizontal_layout = horizontal_layout
-        # The number of lines in the text box.
+        # Number of lines in the text box
         self.line_count = line_count
-        # The list of translated texts. Each element corresponds to the translation result for a target language.
+        # Translated text list, where each element corresponds to the translation result for one target language
         self.texts = texts
-        # The vertical layout. Valid values: center, top, down.
+        # Vertical layout mode. Available values: center, top, down
         self.vertical_layout = vertical_layout
 
     def validate(self):
@@ -465,27 +465,27 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts(DaraMode
         value: str = None,
         vertical_layout: str = None,
     ):
-        # The color of the translated text.
+        # Translated text color
         self.color = color
-        # The font size of the translated text.
+        # Font size of the translated text
         self.fontsize = fontsize
-        # The horizontal layout. Valid values: center, left, right.
+        # Horizontal layout mode. Available values: center, left, right
         self.horizontal_layout = horizontal_layout
-        # The coordinates of the image repair area.
+        # Image repair area coordinates
         self.image_rect = image_rect
-        # The target language code for translation.
+        # Translation target language code
         self.language = language
-        # The number of lines in the text box.
+        # Number of lines in the text box
         self.line_count = line_count
-        # The Ovis model error message and execution time.
+        # Ovis model error message and execution time
         self.ovis_err_msg = ovis_err_msg
-        # The coordinates of the text box area.
+        # Text box area coordinates
         self.text_rect = text_rect
-        # Indicates whether the TextItem is valid. The item is invalid if this value does not exist or is false.
+        # Whether the TextItem is valid. It is invalid when this value does not exist or is false.
         self.valid = valid
-        # The translated text content.
+        # Translated text content
         self.value = value
-        # The vertical layout. Valid values: center, top, down.
+        # Vertical layout mode. Available values: center, top, down
         self.vertical_layout = vertical_layout
 
     def validate(self):
@@ -582,15 +582,15 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect(
         top: int = None,
         width: int = None,
     ):
-        # The rotation angle of the text box in degrees. A value less than 1 indicates a horizontal text box.
+        # Text box rotation angle in degrees. Values less than 1 indicate a horizontal text box
         self.degree = degree
-        # The height.
+        # Height
         self.height = height
-        # The left coordinate.
+        # Left coordinate
         self.left = left
-        # The top coordinate.
+        # Top coordinate
         self.top = top
-        # The width.
+        # Width
         self.width = width
 
     def validate(self):
@@ -646,15 +646,15 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect
         top: int = None,
         width: int = None,
     ):
-        # The rotation angle of the text box in degrees. A value less than 1 indicates a horizontal text box.
+        # Text box rotation angle in degrees. Values less than 1 indicate a horizontal text box
         self.degree = degree
-        # The height.
+        # Height
         self.height = height
-        # The left coordinate.
+        # Left coordinate
         self.left = left
-        # The top coordinate.
+        # Top coordinate
         self.top = top
-        # The width.
+        # Width
         self.width = width
 
     def validate(self):
@@ -710,15 +710,15 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects(DaraModel):
         top: int = None,
         width: int = None,
     ):
-        # The rotation angle of the text box in degrees. A value less than 1 indicates a horizontal text box.
+        # Text box rotation angle in degrees. Values less than 1 indicate a horizontal text box
         self.degree = degree
-        # The height.
+        # Height
         self.height = height
-        # The left coordinate.
+        # Left coordinate
         self.left = left
-        # The top coordinate.
+        # Top coordinate
         self.top = top
-        # The width.
+        # Width
         self.width = width
 
     def validate(self):

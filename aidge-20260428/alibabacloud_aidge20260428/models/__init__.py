@@ -33,6 +33,9 @@ from ._image_remove_request import ImageRemoveRequest
 from ._image_remove_shrink_request import ImageRemoveShrinkRequest
 from ._image_remove_response_body import ImageRemoveResponseBody
 from ._image_remove_response import ImageRemoveResponse
+from ._image_translation_plus_request import ImageTranslationPlusRequest
+from ._image_translation_plus_response_body import ImageTranslationPlusResponseBody
+from ._image_translation_plus_response import ImageTranslationPlusResponse
 from ._image_translation_pro_request import ImageTranslationProRequest
 from ._image_translation_pro_response_body import ImageTranslationProResponseBody
 from ._image_translation_pro_response import ImageTranslationProResponse
@@ -42,6 +45,9 @@ from ._image_translation_standard_response import ImageTranslationStandardRespon
 from ._language_detect_request import LanguageDetectRequest
 from ._language_detect_response_body import LanguageDetectResponseBody
 from ._language_detect_response import LanguageDetectResponse
+from ._material_inspection_request import MaterialInspectionRequest
+from ._material_inspection_response_body import MaterialInspectionResponseBody
+from ._material_inspection_response import MaterialInspectionResponse
 from ._package_weight_size_check_request import PackageWeightSizeCheckRequest
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBody
 from ._package_weight_size_check_response import PackageWeightSizeCheckResponse
@@ -77,6 +83,7 @@ from ._image_cropping_response_body import ImageCroppingResponseBodyData
 from ._image_matting_response_body import ImageMattingResponseBodyData
 from ._image_recognition_response_body import ImageRecognitionResponseBodyData
 from ._image_remove_response_body import ImageRemoveResponseBodyData
+from ._image_translation_plus_response_body import ImageTranslationPlusResponseBodyData
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect
@@ -89,6 +96,9 @@ from ._image_translation_pro_response_body import ImageTranslationProResponseBod
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyData
 from ._image_translation_standard_response_body import ImageTranslationStandardResponseBodyData
 from ._language_detect_response_body import LanguageDetectResponseBodyData
+from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResultSteps
+from ._material_inspection_response_body import MaterialInspectionResponseBodyDataResult
+from ._material_inspection_response_body import MaterialInspectionResponseBodyData
 from ._package_weight_size_check_response_body import PackageWeightSizeCheckResponseBodyData
 from ._query_async_task_result_response_body import QueryAsyncTaskResultResponseBodyData
 from ._size_chart_detect_response_body import SizeChartDetectResponseBodyData
@@ -130,6 +140,9 @@ __all__ = [
     ImageRemoveShrinkRequest,
     ImageRemoveResponseBody,
     ImageRemoveResponse,
+    ImageTranslationPlusRequest,
+    ImageTranslationPlusResponseBody,
+    ImageTranslationPlusResponse,
     ImageTranslationProRequest,
     ImageTranslationProResponseBody,
     ImageTranslationProResponse,
@@ -139,6 +152,9 @@ __all__ = [
     LanguageDetectRequest,
     LanguageDetectResponseBody,
     LanguageDetectResponse,
+    MaterialInspectionRequest,
+    MaterialInspectionResponseBody,
+    MaterialInspectionResponse,
     PackageWeightSizeCheckRequest,
     PackageWeightSizeCheckResponseBody,
     PackageWeightSizeCheckResponse,
@@ -174,6 +190,7 @@ __all__ = [
     ImageMattingResponseBodyData,
     ImageRecognitionResponseBodyData,
     ImageRemoveResponseBodyData,
+    ImageTranslationPlusResponseBodyData,
     ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect,
@@ -186,6 +203,9 @@ __all__ = [
     ImageTranslationProResponseBodyData,
     ImageTranslationStandardResponseBodyData,
     LanguageDetectResponseBodyData,
+    MaterialInspectionResponseBodyDataResultSteps,
+    MaterialInspectionResponseBodyDataResult,
+    MaterialInspectionResponseBodyData,
     PackageWeightSizeCheckResponseBodyData,
     QueryAsyncTaskResultResponseBodyData,
     SizeChartDetectResponseBodyData,
