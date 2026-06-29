@@ -10,8 +10,12 @@ class ListCatalogAssetsShrinkRequest(DaraModel):
         list_catalog_assets_query_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The query parameters.
+        # 
         # This parameter is required.
         self.list_catalog_assets_query_shrink = list_catalog_assets_query_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

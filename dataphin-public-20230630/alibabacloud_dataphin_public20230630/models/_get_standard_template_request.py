@@ -13,10 +13,16 @@ class GetStandardTemplateRequest(DaraModel):
         nullable: bool = None,
         op_tenant_id: int = None,
     ):
+        # The filter condition.
         self.filter_query = filter_query
+        # The standard template ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Specifies whether to allow a null value to be returned when the template does not exist. If set to false, an exception is thrown. Default value: true.
         self.nullable = nullable
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -65,6 +71,7 @@ class GetStandardTemplateRequestFilterQuery(DaraModel):
         self,
         version: int = None,
     ):
+        # The version number. If this parameter is left empty or set to -1, the latest version is used.
         self.version = version
 
     def validate(self):

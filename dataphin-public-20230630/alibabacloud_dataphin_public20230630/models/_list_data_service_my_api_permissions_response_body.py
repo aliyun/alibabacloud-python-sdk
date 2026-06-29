@@ -17,12 +17,17 @@ class ListDataServiceMyApiPermissionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Backend response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Backend response exception details.
         self.message = message
+        # Paginated query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListDataServiceMyApiPermissionsResponseBodyPageResult(DaraModel):
         permission_list: List[main_models.ListDataServiceMyApiPermissionsResponseBodyPageResultPermissionList] = None,
         total_count: int = None,
     ):
+        # Paginated permission list.
         self.permission_list = permission_list
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -135,16 +142,27 @@ class ListDataServiceMyApiPermissionsResponseBodyPageResultPermissionList(DaraMo
         project_name: str = None,
         role: int = None,
     ):
+        # API ID.
         self.api_id = api_id
+        # API name.
         self.api_name = api_name
+        # Creator name.
         self.create_user_name = create_user_name
+        # Creator ID.
         self.creator = creator
+        # Owner ID.
         self.owner = owner
+        # Owner name.
         self.owner_user_name = owner_user_name
+        # The user to whom the privilege belongs.
         self.privilege_belong_to = privilege_belong_to
+        # Authorization source. Valid value: 0, which indicates the owner.
         self.privilege_from = privilege_from
+        # Project ID.
         self.project_id = project_id
+        # Project name.
         self.project_name = project_name
+        # Role. Valid value: 0, which indicates the owner.
         self.role = role
 
     def validate(self):

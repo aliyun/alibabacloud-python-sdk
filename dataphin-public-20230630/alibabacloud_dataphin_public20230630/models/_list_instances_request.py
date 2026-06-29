@@ -14,8 +14,14 @@ class ListInstancesRequest(DaraModel):
         list_query: main_models.ListInstancesRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # Environment identifier
+        # - DEV: Development environment
+        # - PROD (default): Production environment
         self.env = env
+        # Query Request
         self.list_query = list_query
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -76,28 +82,81 @@ class ListInstancesRequestListQuery(DaraModel):
         search_text: str = None,
         sub_biz_type_list: List[str] = None,
     ):
+        # Business Type
+        # 
+        # - SCRIPT: Script Instance
+        # - LOGICAL_TABLE: Logical Table
         self.biz_type = biz_type
+        # Business unit ID. Required when querying summary logical tables.
         self.biz_unit_id = biz_unit_id
+        # Workflow ID
         self.flow_id = flow_id
+        # End business date and time. The time format must conform to the partition format specified by the business unit.
         self.max_biz_date = max_biz_date
+        # Maximum instance run time
         self.max_run_date = max_run_date
+        # Start business date and time. The time format must conform to the partition format specified by the business unit.
         self.min_biz_date = min_biz_date
+        # Minimum instance run time
         self.min_run_date = min_run_date
+        # Node ID
         self.node_id = node_id
+        # Node Owner
         self.owner_list = owner_list
+        # Page Number
+        # 
         # This parameter is required.
         self.page = page
+        # Page Size
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Priority
+        # - HIGHEST
+        # - HIGH
+        # - MIDDLE
+        # - LOW
+        # - LOWEST
         self.priority_list = priority_list
+        # Project ID
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Running status
+        # - INIT: Initialized
+        # - WAIT_SUBMISSION: Waiting for Submission
+        # - WAIT_SCHEDULE: Waiting for Schedule Time
+        # - DISPATCH_BLOCKED: Throttled
+        # - WAIT_RESOURCE: Waiting for Scheduling Resources
+        # - RUNNING: Running
+        # - SUCCESS: Succeeded
+        # - FAILED: Failed
         self.run_status_list = run_status_list
+        # Whether scheduling is paused
         self.schedule_paused = schedule_paused
+        # Schedule Period
+        # - YEARLY
+        # - MONTHLY
+        # - WEEKLY
+        # - DAILY
+        # - HOURLY
+        # - MINUTELY
         self.schedule_period_list = schedule_period_list
+        # Instance schedule type
+        # - NORMAL (Periodic Instance)
+        # - MANUAL (Manual Instance)
+        # 
         # This parameter is required.
         self.schedule_type = schedule_type
+        # Fuzzy match by node name or exact match by node ID
         self.search_text = search_text
+        # Sub-business Type
+        # - MAX_COMPUTE_SQL
+        # - HIVE_SQL
+        # - SHELL
+        # - PYTHON
+        # - ONE_SERVICE_SQL
+        # - DATABASE_SQL
         self.sub_biz_type_list = sub_biz_type_list
 
     def validate(self):

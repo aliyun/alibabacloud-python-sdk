@@ -12,12 +12,20 @@ class PublishDataServiceApiRequest(DaraModel):
         project_id: int = None,
         version_id: str = None,
     ):
+        # The API ID.
+        # 
         # This parameter is required.
         self.api_id = api_id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The API version number.
+        # 
         # This parameter is required.
         self.version_id = version_id
 

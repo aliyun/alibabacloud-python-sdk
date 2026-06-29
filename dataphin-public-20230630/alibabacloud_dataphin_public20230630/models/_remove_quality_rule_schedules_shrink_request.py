@@ -10,8 +10,12 @@ class RemoveQualityRuleSchedulesShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         remove_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The unbinding instruction.
+        # 
         # This parameter is required.
         self.remove_command_shrink = remove_command_shrink
 

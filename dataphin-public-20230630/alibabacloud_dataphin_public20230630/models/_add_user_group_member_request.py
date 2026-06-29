@@ -13,7 +13,10 @@ class AddUserGroupMemberRequest(DaraModel):
         add_command: main_models.AddUserGroupMemberRequestAddCommand = None,
         op_tenant_id: int = None,
     ):
+        # The command to add user group members.
         self.add_command = add_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,8 +54,11 @@ class AddUserGroupMemberRequestAddCommand(DaraModel):
         user_group_id: str = None,
         user_id_list: List[str] = None,
     ):
+        # The user group ID.
+        # 
         # This parameter is required.
         self.user_group_id = user_group_id
+        # The list of user IDs.
         self.user_id_list = user_id_list
 
     def validate(self):

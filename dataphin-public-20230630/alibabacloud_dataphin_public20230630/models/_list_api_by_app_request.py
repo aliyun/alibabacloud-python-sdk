@@ -11,8 +11,12 @@ class ListApiByAppRequest(DaraModel):
         op_tenant_id: int = None,
         page_query: main_models.ListApiByAppRequestPageQuery = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The paged query parameters.
+        # 
         # This parameter is required.
         self.page_query = page_query
 
@@ -53,11 +57,16 @@ class ListApiByAppRequestPageQuery(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
-        # appKey
+        # The application key.
+        # >Notice: Deprecated. Use AppKeyStr instead.</notice>.
         self.app_key = app_key
+        # The application key.
         self.app_key_str = app_key_str
+        # The keyword.
         self.keyword = keyword
+        # The page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

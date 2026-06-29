@@ -11,8 +11,12 @@ class DeleteSecurityClassifyRequest(DaraModel):
         delete_command: main_models.DeleteSecurityClassifyRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,8 +55,11 @@ class DeleteSecurityClassifyRequestDeleteCommand(DaraModel):
         name: str = None,
         parent_path: str = None,
     ):
+        # The categorization ID. If this parameter is not specified, the categorization is matched and deleted based on the categorization name and parent path.
         self.id = id
+        # The categorization name.
         self.name = name
+        # The categorization path. Default value: /.
         self.parent_path = parent_path
 
     def validate(self):

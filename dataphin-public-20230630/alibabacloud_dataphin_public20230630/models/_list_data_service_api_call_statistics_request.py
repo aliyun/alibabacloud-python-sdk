@@ -12,10 +12,16 @@ class ListDataServiceApiCallStatisticsRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # Search conditions.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -64,13 +70,22 @@ class ListDataServiceApiCallStatisticsRequestListQuery(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # End time. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Search keyword.
         self.keyword = keyword
+        # Sort column. Valid values: CALL_COUNT (call count), ERROR_COUNT (error count), ERROR_RATE (error rate), AVG_RESPONSE_TIME (average response time), and OFFLINE_RATE (offline percentage). Default value: CALL_COUNT.
         self.order_column = order_column
+        # Sort order. Valid values: 1 (ascending) and 2 (descending). Default value: 1.
         self.order_type = order_type
+        # Page number. Default value: 1.
         self.page_no = page_no
+        # Number of entries per page. Default value: 20.
         self.page_size = page_size
+        # Start time. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

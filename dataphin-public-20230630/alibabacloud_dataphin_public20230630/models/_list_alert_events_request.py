@@ -13,8 +13,12 @@ class ListAlertEventsRequest(DaraModel):
         list_query: main_models.ListAlertEventsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query request.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -63,23 +67,52 @@ class ListAlertEventsRequestListQuery(DaraModel):
         status_list: List[str] = None,
         user_id_list: List[str] = None,
     ):
+        # The end date of the alert.
+        # 
         # This parameter is required.
         self.alert_end_time = alert_end_time
+        # The list of alert object types.
         self.alert_object_type_list = alert_object_type_list
+        # The list of alert reasons.
         self.alert_reason_list = alert_reason_list
+        # The start date of the alert.
+        # 
         # This parameter is required.
         self.alert_start_time = alert_start_time
+        # The list of business units.
         self.biz_name_list = biz_name_list
+        # The keyword for the query.
         self.keyword = keyword
+        # The list of monitored item IDs.
         self.monitored_item_id_list = monitored_item_id_list
+        # The page number.
+        # 
         # This parameter is required.
         self.page = page
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The list of projects.
         self.project_name_list = project_name_list
+        # The source system. Valid values:
+        # 
+        # - ALL: all
+        # - DQE: data quality
+        # - OS: data service
+        # - STREAM: real-time computing
+        # - VDM_BATCH: offline computing
+        # - SOP: O&M platform
+        # - REAL_TIME_PIPELINE: real-time integration
+        # - KGB: baseline monitoring
+        # 
+        # and more.
+        # 
         # This parameter is required.
         self.source_system = source_system
+        # The list of alert statuses.
         self.status_list = status_list
+        # The list of alert contact IDs.
         self.user_id_list = user_id_list
 
     def validate(self):

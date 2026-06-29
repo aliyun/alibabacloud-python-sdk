@@ -17,14 +17,25 @@ class GetInstanceUpDownStreamRequest(DaraModel):
         project_id: int = None,
         up_stream_depth: int = None,
     ):
+        # The number of downstream node levels. Default value: 1.
         self.down_stream_depth = down_stream_depth
+        # The environment identifier. Valid values:
+        # - DEV: development environment. 
+        # - PROD (default): production environment.
         self.env = env
+        # The center node.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The number of upstream node levels. Default value: 1.
         self.up_stream_depth = up_stream_depth
 
     def validate(self):
@@ -85,7 +96,10 @@ class GetInstanceUpDownStreamRequestInstanceId(DaraModel):
         field_instance_id_list: List[str] = None,
         id: str = None,
     ):
+        # The list of field IDs. This parameter can be specified when the node is a logical table instance ID. If this parameter is not specified, the full table is used by default.
         self.field_instance_id_list = field_instance_id_list
+        # The instance ID.
+        # 
         # This parameter is required.
         self.id = id
 

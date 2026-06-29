@@ -13,8 +13,12 @@ class UpdateDataServiceAppMemberRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateDataServiceAppMemberRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The command to update regular members of a data service application.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -52,8 +56,12 @@ class UpdateDataServiceAppMemberRequestUpdateCommand(DaraModel):
         app_id: int = None,
         member_list: List[main_models.UpdateDataServiceAppMemberRequestUpdateCommandMemberList] = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The list of members.
+        # 
         # This parameter is required.
         self.member_list = member_list
 
@@ -97,8 +105,12 @@ class UpdateDataServiceAppMemberRequestUpdateCommandMemberList(DaraModel):
         effective_end: str = None,
         user_id: str = None,
     ):
+        # The authorization expiration time.
+        # 
         # This parameter is required.
         self.effective_end = effective_end
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

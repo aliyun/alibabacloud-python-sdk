@@ -11,7 +11,10 @@ class GetAssetMappingRelationsRequest(DaraModel):
         asset_mapping_query: main_models.GetAssetMappingRelationsRequestAssetMappingQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query instruction.
         self.asset_mapping_query = asset_mapping_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -50,10 +53,20 @@ class GetAssetMappingRelationsRequestAssetMappingQuery(DaraModel):
         guid: str = None,
         relation_type: str = None,
     ):
+        # The object type of the asset. Valid values:
+        # - COLUMN: field.
+        # - INDEX: metric.
+        # 
         # This parameter is required.
         self.asset_type = asset_type
+        # The GUID of the asset object.
+        # 
         # This parameter is required.
         self.guid = guid
+        # The type of the mapping relationship. Valid values:
+        # - VALID: mapped.
+        # - INVALID: invalid mapping.
+        # 
         # This parameter is required.
         self.relation_type = relation_type
 

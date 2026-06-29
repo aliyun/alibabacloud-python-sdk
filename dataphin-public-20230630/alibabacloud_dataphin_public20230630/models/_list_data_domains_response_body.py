@@ -17,11 +17,17 @@ class ListDataDomainsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The query result.
         self.data = data
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class ListDataDomainsResponseBodyData(DaraModel):
         self,
         data_domain_list: List[main_models.ListDataDomainsResponseBodyDataDataDomainList] = None,
     ):
+        # The details of the data domains.
         self.data_domain_list = data_domain_list
 
     def validate(self):
@@ -128,18 +135,31 @@ class ListDataDomainsResponseBodyDataDataDomainList(DaraModel):
         owner_user_id: str = None,
         parent_id: int = None,
     ):
+        # The abbreviation of the data domain.
         self.abbreviation = abbreviation
+        # The ID of the business unit to which the data domain belongs.
         self.biz_unit_id = biz_unit_id
+        # The description of the business object.
         self.description = description
+        # The display name of the data domain.
         self.display_name = display_name
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The ID of the data domain.
         self.id = id
+        # The ID of the user who last modified the data domain.
         self.last_modifier = last_modifier
+        # The name of the user who last modified the data domain.
         self.last_modifier_name = last_modifier_name
+        # The name of the data domain.
         self.name = name
+        # The ID of the owner of the business object.
         self.owner_name = owner_name
+        # The ID of the owner of the business object.
         self.owner_user_id = owner_user_id
+        # The IDs of the parent data domains.
         self.parent_id = parent_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListBizUnitsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The query result.
         self.data = data
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class ListBizUnitsResponseBodyData(DaraModel):
         self,
         biz_unit_list: List[main_models.ListBizUnitsResponseBodyDataBizUnitList] = None,
     ):
+        # The business unit details.
         self.biz_unit_list = biz_unit_list
 
     def validate(self):
@@ -129,19 +136,37 @@ class ListBizUnitsResponseBodyDataBizUnitList(DaraModel):
         owner_name: str = None,
         owner_user_id: str = None,
     ):
+        # The business unit architects.
         self.account_list = account_list
+        # The description of the business object.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The environment identifier. Valid values:
+        # - DEV: development environment.
+        # - PROD: production environment.
         self.env = env
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The business unit icon.
         self.icon = icon
+        # The business unit ID.
         self.id = id
+        # The ID of the user who last modified the business unit.
         self.last_modifier = last_modifier
+        # The name of the user who last modified the business unit.
         self.last_modifier_name = last_modifier_name
+        # The production mode. Valid values:
+        # - BASIC: single-environment mode.
+        # - DEV_PROD: development/production dual-environment mode.
         self.mode = mode
+        # The name.
         self.name = name
+        # The owner of the business object.
         self.owner_name = owner_name
+        # The owner of the business object.
         self.owner_user_id = owner_user_id
 
     def validate(self):
@@ -255,6 +280,7 @@ class ListBizUnitsResponseBodyDataBizUnitListAccountList(DaraModel):
         self,
         id: str = None,
     ):
+        # The user ID.
         self.id = id
 
     def validate(self):

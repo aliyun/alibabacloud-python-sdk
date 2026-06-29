@@ -11,10 +11,16 @@ class ListDataServiceApiCallStatisticsShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # Search conditions.
+        # 
         # This parameter is required.
         self.list_query_shrink = list_query_shrink
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

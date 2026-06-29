@@ -15,12 +15,17 @@ class CreatePipelineResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Backend response code
         self.code = code
+        # Integration pipeline/workflow task creation result
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Backend response exception details
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Whether the request was successful
         self.success = success
 
     def validate(self):
@@ -84,10 +89,17 @@ class CreatePipelineResponseBodyData(DaraModel):
         submit_id: int = None,
         version: str = None,
     ):
+        # Server-side execution machine name and IP
         self.host_machine = host_machine
+        # Scheduling node ID of the pipeline/workflow task after successful creation
         self.node_id = node_id
+        # Pipeline/workflow ID after successful creation
         self.pipeline_id = pipeline_id
+        # Submit ID of the pending release list generated after successfully submitting the pipeline, used for release through the release domain.
+        # Workflow tasks only support PROD, so this value is not applicable.
         self.submit_id = submit_id
+        # Pending release version number generated after pipeline submission.
+        # Workflow tasks only support PROD, so this value is not applicable.
         self.version = version
 
     def validate(self):

@@ -10,8 +10,12 @@ class CheckResourcePermissionShrinkRequest(DaraModel):
         check_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # Check user resource permission
+        # 
         # This parameter is required.
         self.check_command_shrink = check_command_shrink
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

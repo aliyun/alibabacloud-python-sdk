@@ -13,14 +13,29 @@ class GetDevObjectDependencyRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # Development object source.
+        # - BLACK_BOX: Logical table
+        # - DATA_PROCESS: Compute task
+        # - PIPELINE: Integration task
+        # 
         # This parameter is required.
         self.object_from = object_from
+        # Object ID.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # Development object type.
+        # - FILE_ID: Task FileId
+        # - MODEL_ID: Logical table
+        # 
         # This parameter is required.
         self.object_type = object_type
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

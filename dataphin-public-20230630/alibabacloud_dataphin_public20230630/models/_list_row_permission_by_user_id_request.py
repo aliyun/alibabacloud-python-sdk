@@ -11,8 +11,12 @@ class ListRowPermissionByUserIdRequest(DaraModel):
         list_row_permission_by_user_id_query: main_models.ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery = None,
         op_tenant_id: int = None,
     ):
+        # The request command.
+        # 
         # This parameter is required.
         self.list_row_permission_by_user_id_query = list_row_permission_by_user_id_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,10 +55,16 @@ class ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The specified operator.
+        # 
         # This parameter is required.
         self.operator = operator
+        # The page number.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # The page size.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

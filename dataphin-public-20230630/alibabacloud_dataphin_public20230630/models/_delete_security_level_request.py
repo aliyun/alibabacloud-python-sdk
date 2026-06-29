@@ -11,8 +11,12 @@ class DeleteSecurityLevelRequest(DaraModel):
         delete_command: main_models.DeleteSecurityLevelRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -50,7 +54,9 @@ class DeleteSecurityLevelRequestDeleteCommand(DaraModel):
         index: int = None,
         name: str = None,
     ):
+        # The sensitivity level of the classification level. If this parameter is not specified, the classification level is deleted based on an exact match of the classification level name.
         self.index = index
+        # The classification level name.
         self.name = name
 
     def validate(self):

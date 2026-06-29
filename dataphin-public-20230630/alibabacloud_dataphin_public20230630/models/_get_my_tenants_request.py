@@ -12,7 +12,10 @@ class GetMyTenantsRequest(DaraModel):
         feature_code_list: List[str] = None,
         op_tenant_id: int = None,
     ):
+        # The feature codes owned by the tenant.
         self.feature_code_list = feature_code_list
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

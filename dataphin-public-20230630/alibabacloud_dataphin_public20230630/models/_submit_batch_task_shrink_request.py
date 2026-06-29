@@ -10,8 +10,12 @@ class SubmitBatchTaskShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         submit_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The submit request.
+        # 
         # This parameter is required.
         self.submit_command_shrink = submit_command_shrink
 

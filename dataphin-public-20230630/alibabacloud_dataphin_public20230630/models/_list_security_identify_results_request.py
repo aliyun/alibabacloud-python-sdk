@@ -13,7 +13,10 @@ class ListSecurityIdentifyResultsRequest(DaraModel):
         list_query: main_models.ListSecurityIdentifyResultsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # Query conditions.
         self.list_query = list_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -59,15 +62,25 @@ class ListSecurityIdentifyResultsRequestListQuery(DaraModel):
         project_name_list: List[str] = None,
         status: str = None,
     ):
+        # Business unit names.
         self.biz_unit_name_list = biz_unit_name_list
+        # Data classification ID.
         self.classify_id = classify_id
+        # Data source names.
         self.datasource_name_list = datasource_name_list
+        # Environment identifier of the data source, project, or business unit.
         self.env = env
+        # Whether it is locked.
         self.is_locked = is_locked
+        # Keyword filter. Supports matching by table catalog, table name, table display name, and field name.
         self.keyword = keyword
+        # Page number. Default value: 1.
         self.page_no = page_no
+        # Number of records per page. Default value: 20.
         self.page_size = page_size
+        # Project names.
         self.project_name_list = project_name_list
+        # Effective status filter: ENABLE or DISABLE.
         self.status = status
 
     def validate(self):

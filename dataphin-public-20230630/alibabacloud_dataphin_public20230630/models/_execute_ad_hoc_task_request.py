@@ -13,8 +13,12 @@ class ExecuteAdHocTaskRequest(DaraModel):
         execute_command: main_models.ExecuteAdHocTaskRequestExecuteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The execution command.
+        # 
         # This parameter is required.
         self.execute_command = execute_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -57,14 +61,24 @@ class ExecuteAdHocTaskRequestExecuteCommand(DaraModel):
         param_list: List[main_models.ExecuteAdHocTaskRequestExecuteCommandParamList] = None,
         project_id: int = None,
     ):
+        # The node script.
+        # 
         # This parameter is required.
         self.code = code
+        # The catalog for a database SQL task. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
+        # The data source ID for a database SQL task.
         self.data_source_id = data_source_id
+        # The schema for a database SQL task. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
+        # The node type.
+        # 
         # This parameter is required.
         self.operator_type = operator_type
+        # The runtime parameters.
         self.param_list = param_list
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -138,8 +152,12 @@ class ExecuteAdHocTaskRequestExecuteCommandParamList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The parameter.
+        # 
         # This parameter is required.
         self.key = key
+        # The parameter value.
+        # 
         # This parameter is required.
         self.value = value
 

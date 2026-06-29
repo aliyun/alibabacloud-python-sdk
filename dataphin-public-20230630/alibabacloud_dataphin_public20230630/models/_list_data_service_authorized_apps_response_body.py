@@ -17,12 +17,17 @@ class ListDataServiceAuthorizedAppsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The paging query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResult(DaraModel):
         authorized_app_list: List[main_models.ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList] = None,
         total_count: int = None,
     ):
+        # The paginated list of authorized applications.
         self.authorized_app_list = authorized_app_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -142,23 +149,41 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList(DaraM
         revocable: bool = None,
         revocable_detail: int = None,
     ):
+        # The primary key ID of the application.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The ID of the permission account, which is the applicant ID.
         self.apply_user_id = apply_user_id
+        # The permission account, which is the applicant.
         self.apply_user_name = apply_user_name
+        # The expiration date in the format of yyyy-MM-dd.
         self.expire_date = expire_date
+        # The application ID.
         self.id = id
+        # Indicates whether the current user is a project administrator.
         self.is_project_manager = is_project_manager
+        # The ID of the owner.
         self.owner = owner
+        # The name of the owner.
         self.owner_user_name = owner_user_name
+        # The permission account. Valid values: 0: individual account.
         self.privilege_account = privilege_account
+        # The permission type. Valid values: 0: usage permission. 1: development permission.
         self.privilege_type = privilege_type
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # Indicates whether the user actually has owner permissions on this application. The user may lack permissions because of expiration or other reasons.
         self.real_has_owner_privilege = real_has_owner_privilege
+        # Indicates whether the user actually has permissions.
         self.real_has_privilege = real_has_privilege
+        # The descriptions used for troubleshooting.
         self.remark_for_debug_list = remark_for_debug_list
+        # Indicates whether the permissions can be returned or revoked.
         self.revocable = revocable
+        # The detailed status of the revoke button. Valid values: -1: super administrators cannot revoke. -2: owners cannot revoke. -3: project administrators without actual permissions are grayed out. -4: regular users without permissions cannot revoke. 1: project administrators with actual permissions can revoke. 2: regular users with permissions can revoke.
         self.revocable_detail = revocable_detail
 
     def validate(self):
@@ -297,7 +322,9 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemark
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
         self.key = key
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

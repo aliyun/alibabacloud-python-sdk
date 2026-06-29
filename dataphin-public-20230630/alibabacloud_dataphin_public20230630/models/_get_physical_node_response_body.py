@@ -17,11 +17,17 @@ class GetPhysicalNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The node details.
         self.node_info = node_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,24 +105,64 @@ class GetPhysicalNodeResponseBodyNodeInfo(DaraModel):
         status: str = None,
         trigger_config: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The node creator.
         self.creator = creator
+        # The cron expression used to calculate the scheduling time.
         self.cron_expression = cron_expression
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The data source schema. This parameter takes effect only for data source types that require a schema, such as Oracle. If set to "default", the value is null.
         self.data_source_schema = data_source_schema
+        # The node description.
         self.description = description
+        # The node source. Valid values:
+        # - DATA_PROCESS: code development.
+        # - BLACK_BOX: modeling development.
+        # - PIPELINE: pipeline.
         self.from_ = from_
+        # The node ID.
         self.id = id
+        # The time of the last modification.
         self.last_modified_time = last_modified_time
+        # The user who last modified the node.
         self.modifier = modifier
+        # The node name.
         self.name = name
+        # The node subtype. Valid values:
+        # - MAX_COMPUTE_SQL
+        # - HIVE_SQL
+        # - SHELL
+        # - PYTHON
+        # - ONE_SERVICE_SQL
+        # - DATABASE_SQL and others.
         self.operator_type = operator_type
+        # The list of output names.
         self.output_name_list = output_name_list
+        # The node owner.
         self.owner = owner
+        # The scheduling priority. Valid values:
+        # 
+        # - HIGHEST
+        # - HIGH
+        # - MIDDLE
+        # - LOW
+        # - LOWEST.
         self.priority = priority
+        # The project to which the node belongs.
         self.project_info = project_info
+        # The scheduling cycle type. Valid values:
+        # - MINUTELY
+        # - HOURLY
+        # - DAILY
+        # - WEEKLY
+        # - MONTHLY
+        # - QUARTERLY.
         self.schedule_type = schedule_type
+        # The scheduling status.
         self.status = status
+        # The trigger configuration, which is used to implement field-level dependencies on logical tables.
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -264,7 +310,9 @@ class GetPhysicalNodeResponseBodyNodeInfoProjectInfo(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The project ID.
         self.id = id
+        # The project name.
         self.name = name
 
     def validate(self):
@@ -299,7 +347,9 @@ class GetPhysicalNodeResponseBodyNodeInfoOwner(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -334,7 +384,9 @@ class GetPhysicalNodeResponseBodyNodeInfoModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -369,7 +421,9 @@ class GetPhysicalNodeResponseBodyNodeInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The user ID.
         self.name = name
 
     def validate(self):

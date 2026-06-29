@@ -13,8 +13,12 @@ class UpsertQualityWatchAlertRequest(DaraModel):
         op_tenant_id: int = None,
         upsert_command: main_models.UpsertQualityWatchAlertRequestUpsertCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.upsert_command = upsert_command
 
@@ -52,8 +56,12 @@ class UpsertQualityWatchAlertRequestUpsertCommand(DaraModel):
         quality_alert_info: main_models.UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo = None,
         watch_id: int = None,
     ):
+        # The alert configuration details.
+        # 
         # This parameter is required.
         self.quality_alert_info = quality_alert_info
+        # The ID of the monitored object.
+        # 
         # This parameter is required.
         self.watch_id = watch_id
 
@@ -95,11 +103,17 @@ class UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo(DaraModel):
         alert_user_list: List[main_models.UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertUserList] = None,
         enable_alert_quality_owner: bool = None,
     ):
+        # The alert channels for on-duty schedules.
         self.alert_duty_channel_list = alert_duty_channel_list
+        # The list of on-duty schedules for alerts.
         self.alert_duty_list = alert_duty_list
+        # The alert channels for the quality owner.
         self.alert_quality_owner_channel_list = alert_quality_owner_channel_list
+        # The alert channels for users.
         self.alert_user_channel_list = alert_user_channel_list
+        # The list of users to receive alerts.
         self.alert_user_list = alert_user_list
+        # Specifies whether to enable alerts for the quality owner.
         self.enable_alert_quality_owner = enable_alert_quality_owner
 
     def validate(self):
@@ -175,7 +189,9 @@ class UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertUserList(D
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -210,7 +226,9 @@ class UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertDutyList(D
         id: str = None,
         name: str = None,
     ):
+        # The ID of the on-duty alert schedule.
         self.id = id
+        # The name of the on-duty alert schedule.
         self.name = name
 
     def validate(self):

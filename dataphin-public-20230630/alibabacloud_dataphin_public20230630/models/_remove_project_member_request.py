@@ -14,10 +14,16 @@ class RemoveProjectMemberRequest(DaraModel):
         op_tenant_id: int = None,
         remove_command: main_models.RemoveProjectMemberRequestRemoveCommand = None,
     ):
+        # The project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The command to remove a member.
+        # 
         # This parameter is required.
         self.remove_command = remove_command
 
@@ -61,8 +67,11 @@ class RemoveProjectMemberRequestRemoveCommand(DaraModel):
         env: str = None,
         user_id_list: List[str] = None,
     ):
+        # The environment identifier. Valid values: DEV and PROD.
+        # 
         # This parameter is required.
         self.env = env
+        # The user IDs.
         self.user_id_list = user_id_list
 
     def validate(self):

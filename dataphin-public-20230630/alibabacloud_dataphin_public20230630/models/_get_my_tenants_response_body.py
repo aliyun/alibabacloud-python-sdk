@@ -17,11 +17,17 @@ class GetMyTenantsResponseBody(DaraModel):
         success: bool = None,
         tenant_list: List[main_models.GetMyTenantsResponseBodyTenantList] = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The list of tenants.
         self.tenant_list = tenant_list
 
     def validate(self):
@@ -97,16 +103,27 @@ class GetMyTenantsResponseBodyTenantList(DaraModel):
         title_type: str = None,
         visible: bool = None,
     ):
+        # The time when the tenant was deleted.
         self.delete_time = delete_time
+        # Indicates whether the tenant is deleted.
         self.deleted = deleted
+        # The tenant description.
         self.description = description
+        # The tenant ID.
         self.id = id
+        # The tenant name.
         self.name = name
+        # Indicates whether the tenant is an O&M tenant.
         self.ops_tenant = ops_tenant
+        # The ID of the user to whom the tenant belongs.
         self.owner_id = owner_id
+        # Indicates whether resource quota calculation is performed.
         self.resource_limited = resource_limited
+        # The tenant types.
         self.tenant_type_list = tenant_type_list
+        # The title type of the tenant.
         self.title_type = title_type
+        # Indicates whether the tenant is visible.
         self.visible = visible
 
     def validate(self):

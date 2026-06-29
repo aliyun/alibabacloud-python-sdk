@@ -10,8 +10,12 @@ class CreateRowPermissionShrinkRequest(DaraModel):
         create_row_permission_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # Request command.
+        # 
         # This parameter is required.
         self.create_row_permission_command_shrink = create_row_permission_command_shrink
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

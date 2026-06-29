@@ -10,8 +10,12 @@ class GetUserBySourceIdRequest(DaraModel):
         op_tenant_id: int = None,
         source_id: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The user source ID.
+        # 
         # This parameter is required.
         self.source_id = source_id
 

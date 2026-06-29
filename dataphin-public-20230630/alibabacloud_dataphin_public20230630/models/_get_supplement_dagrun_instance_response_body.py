@@ -17,11 +17,17 @@ class GetSupplementDagrunInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The list of instances.
         self.instance_list = instance_list
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -97,16 +103,37 @@ class GetSupplementDagrunInstanceResponseBodyInstanceList(DaraModel):
         status_list: List[str] = None,
         type: str = None,
     ):
+        # The business date.
         self.biz_date = biz_date
+        # The scheduled date.
         self.due_time = due_time
+        # The execution duration. Unit: seconds.
         self.duration = duration
+        # The end time of the execution.
         self.end_execute_time = end_execute_time
+        # The extended information. This field contains information specific to instances of different business systems, such as the fileId of a pipeline, whether a logical table is a hierarchy dimension table, mid-node information, and instance output names.
         self.extend_info = extend_info
+        # The instance ID.
         self.id = id
+        # The sequence number of the hourly or minutely instance.
         self.index = index
+        # The details of the node associated with the instance.
         self.node_info = node_info
+        # The start time of the execution.
         self.start_execute_time = start_execute_time
+        # The list of instance statuses. A physical instance list contains only one status. Valid values:
+        # 
+        # - NIT: init.
+        # - WATING: waiting.
+        # - RUNNING: running.
+        # - SUCCESS: succeeded.
+        # - FAILED: failed.
         self.status_list = status_list
+        # The instance type. Valid values:
+        # 
+        # - NORMAL: periodic instance.
+        # - SUPPLEMENT: data backfill instance.
+        # - MANUAL: manual instance.
         self.type = type
 
     def validate(self):
@@ -214,24 +241,67 @@ class GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfo(DaraModel):
         sub_detail_type: str = None,
         type: str = None,
     ):
+        # The business unit.
         self.biz_unit_name = biz_unit_name
+        # The creation time.
         self.create_time = create_time
+        # The creator of the node.
         self.creator = creator
+        # The node description.
         self.description = description
+        # Indicates whether the node is a dry run.
         self.dry_run = dry_run
+        # The source business system. Valid values:
+        # 
+        # - DATA_PROCESS: code development.
+        # - BLACK_BOX: black box.
+        # - ONE_ID: extraction.
+        # - PIPELINE: pipeline.
         self.from_ = from_
+        # Indicates whether the node exists in the development environment.
         self.has_dev = has_dev
+        # Indicates whether the node exists in the production environment.
         self.has_prod = has_prod
+        # The node ID.
         self.id = id
+        # The last modification time.
         self.last_modified_time = last_modified_time
+        # The modifier.
         self.modifier = modifier
+        # The node name.
         self.name = name
+        # The owners of the node.
         self.owner_list = owner_list
+        # The priority. Valid values:
+        # 
+        # - HIGHEST
+        # - HIGH
+        # - MIDDLE
+        # - LOW
+        # - LOWEST.
         self.priority_list = priority_list
+        # The schedule resource groups.
         self.resource_group_list = resource_group_list
+        # Indicates whether the node is paused.
         self.schedule_paused = schedule_paused
+        # The scheduling period. Valid values:
+        # 
+        # - MINUTELY
+        # - HOURLY
+        # - DAILY
+        # - WEEKLY
+        # - MONTHLY
+        # - QUARTERLY.
         self.schedule_period_list = schedule_period_list
+        # The node subtype.
         self.sub_detail_type = sub_detail_type
+        # The node type. Valid values:
+        # 
+        # - DATA_PROCESS: code node.
+        # - BBOX_LOGIC_TABLE_NODE: black box logical table node.
+        # - ONE_ID_LABEL: extraction label node.
+        # - ONE_ID_RULE: extraction label node.
+        # - PIPELINE_NODE: pipeline node.
         self.type = type
 
     def validate(self):
@@ -382,7 +452,9 @@ class GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoOwnerList(DaraM
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -417,7 +489,9 @@ class GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoModifier(DaraMo
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -452,7 +526,9 @@ class GetSupplementDagrunInstanceResponseBodyInstanceListNodeInfoCreator(DaraMod
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):

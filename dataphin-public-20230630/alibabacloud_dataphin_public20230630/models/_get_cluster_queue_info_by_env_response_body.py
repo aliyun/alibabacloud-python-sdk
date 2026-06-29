@@ -17,11 +17,17 @@ class GetClusterQueueInfoByEnvResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -101,20 +107,35 @@ class GetClusterQueueInfoByEnvResponseBodyData(DaraModel):
         spec: str = None,
         vvp_cluster_type: str = None,
     ):
+        # The annotations.
         self.annotations = annotations
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The creation time.
         self.create_at = create_at
+        # The Flink image registry address.
         self.flink_image_registry = flink_image_registry
+        # The Flink image repository.
         self.flink_image_repository = flink_image_repository
+        # The Flink image tag.
         self.flink_image_tag = flink_image_tag
+        # The Flink version.
         self.flink_version = flink_version
+        # The labels.
         self.labels = labels
+        # The maximum number of vCores provided by each queue.
         self.max_vcore = max_vcore
+        # The modification time.
         self.modified_at = modified_at
+        # The namespace.
         self.namespace = namespace
+        # The queue name, which serves as a unique identifier. For Kubernetes, this is the resource group name.
         self.queue_name = queue_name
+        # The resource version.
         self.resource_version = resource_version
+        # The resource specification.
         self.spec = spec
+        # The VVP cluster type.
         self.vvp_cluster_type = vvp_cluster_type
 
     def validate(self):

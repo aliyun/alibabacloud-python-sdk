@@ -17,12 +17,17 @@ class ListDataServiceApiImpactsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListDataServiceApiImpactsResponseBodyPageResult(DaraModel):
         impact_list: List[main_models.ListDataServiceApiImpactsResponseBodyPageResultImpactList] = None,
         total_count: int = None,
     ):
+        # The list of API impact analysis results.
         self.impact_list = impact_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -143,18 +150,31 @@ class ListDataServiceApiImpactsResponseBodyPageResultImpactList(DaraModel):
         self.api_id = api_id
         # appKey
         self.app_key = app_key
+        # The application name.
         self.app_name = app_name
+        # The number of calls.
         self.call_count = call_count
+        # The number of client failures.
         self.client_fail_count = client_fail_count
+        # The source IP address of the access request.
         self.client_ip = client_ip
+        # The number of abnormal API calls.
         self.error_api_count = error_api_count
+        # The number of errors.
         self.error_count = error_count
+        # The error rate.
         self.error_rate = error_rate
+        # The most recent call time. Format: yyyy-MM-dd HH:mm:ss.
         self.last_call_time = last_call_time
+        # The gateway statistics time. Format: yyyy_MMdd_HHmm.
         self.minute = minute
+        # The number of offline instances.
         self.offline_count = offline_count
+        # The total time consumed by successful calls.
         self.success_time_cost = success_time_cost
+        # The total number of calls.
         self.total_count = total_count
+        # The total time consumed by the API, including failed calls.
         self.total_time_cost = total_time_cost
 
     def validate(self):

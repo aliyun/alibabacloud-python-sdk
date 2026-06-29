@@ -11,9 +11,16 @@ class GetPhysicalNodeOperationLogRequest(DaraModel):
         node_id: str = None,
         op_tenant_id: int = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment. 
+        # - PROD (default): production environment.
         self.env = env
+        # The node ID.
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

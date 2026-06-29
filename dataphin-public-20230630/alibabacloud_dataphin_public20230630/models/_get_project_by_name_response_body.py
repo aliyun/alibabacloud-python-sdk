@@ -17,12 +17,17 @@ class GetProjectByNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The project details.
         self.project_info = project_info
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,24 +105,48 @@ class GetProjectByNameResponseBodyProjectInfo(DaraModel):
         type: str = None,
         white_lists: List[main_models.GetProjectByNameResponseBodyProjectInfoWhiteLists] = None,
     ):
+        # The display name of the business unit to which the project belongs.
         self.biz_unit_display_name = biz_unit_display_name
+        # The ID of the business unit to which the project belongs.
         self.biz_unit_id = biz_unit_id
+        # The ID of the associated compute source.
         self.compute_source_id = compute_source_id
+        # The name of the associated compute source.
         self.compute_source_name = compute_source_name
+        # The project description.
         self.description = description
+        # The display name of the project.
         self.display_name = display_name
+        # The environment identifier.
         self.env = env
+        # The creation time, in the format of yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
+        # The update time, in the format of yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
+        # The project ID.
         self.id = id
+        # The project mode.
         self.mode = mode
+        # The project name.
         self.name = name
+        # The namespace type. Valid values:
+        # - PUBLIC: public type
+        # - APPLICATION: application type
+        # - BASE: base type.
         self.name_space_tag = name_space_tag
+        # The project owner.
         self.owner = owner
+        # The project owner.
         self.owner_name = owner_name
+        # The ID of the associated real-time compute source.
         self.stream_compute_source_id = stream_compute_source_id
+        # The name of the associated real-time compute source.
         self.stream_compute_source_name = stream_compute_source_name
+        # The project type. Valid values:
+        # - DISTILL: distillation project
+        # - GENERAL: general project.
         self.type = type
+        # The whitelists.
         self.white_lists = white_lists
 
     def validate(self):
@@ -263,9 +292,11 @@ class GetProjectByNameResponseBodyProjectInfoWhiteLists(DaraModel):
         ip: str = None,
         port: str = None,
     ):
+        # The description.
         self.description = description
         # Ip
         self.ip = ip
+        # The port.
         self.port = port
 
     def validate(self):

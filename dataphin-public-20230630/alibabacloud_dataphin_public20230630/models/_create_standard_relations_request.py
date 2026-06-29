@@ -13,8 +13,12 @@ class CreateStandardRelationsRequest(DaraModel):
         create_command: main_models.CreateStandardRelationsRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -53,10 +57,16 @@ class CreateStandardRelationsRequestCreateCommand(DaraModel):
         standard_id: int = None,
         standard_ref_list: List[main_models.CreateStandardRelationsRequestCreateCommandStandardRefList] = None,
     ):
+        # The standard association type: RELATIVE.
+        # 
         # This parameter is required.
         self.relation_type = relation_type
+        # The standard ID.
+        # 
         # This parameter is required.
         self.standard_id = standard_id
+        # The list of referenced standards.
+        # 
         # This parameter is required.
         self.standard_ref_list = standard_ref_list
 
@@ -105,6 +115,8 @@ class CreateStandardRelationsRequestCreateCommandStandardRefList(DaraModel):
         self,
         standard_id: int = None,
     ):
+        # The standard ID.
+        # 
         # This parameter is required.
         self.standard_id = standard_id
 

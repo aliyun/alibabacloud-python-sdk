@@ -13,8 +13,12 @@ class ListTenantMembersRequest(DaraModel):
         list_query: main_models.ListTenantMembersRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The request object.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -55,12 +59,36 @@ class ListTenantMembersRequestListQuery(DaraModel):
         search_text: str = None,
         user_group_id_list: List[str] = None,
     ):
+        # The page number.
+        # 
         # This parameter is required.
         self.page = page
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The member roles:
+        # - SUPER_ADMIN: Dataphin super administrator
+        # - SYSTEM_ADMIN: system administrator
+        # - COMMON_USER: Dataphin user
+        # - DATA_ADMIN: Dataphin data administrator
+        # - EXPORT_ADMIN: export administrator
+        # - SECURITY_ADMIN: security administrator
+        # - DATASOURCE_MANAGER: data source administrator
+        # - QUALITY_MANAGER: asset quality manager
+        # - DATA_STANDARD_MANAGER: data standard administrator
+        # - LABELS_BUSINESS_PLANNER: tag business planner
+        # - BUSINESS_MEMBER: general business user
+        # - DATAPRO_OPERATE_SUPER_ADMIN: operations super administrator
+        # - DATAPRO_OPERATE_ADMIN: operations administrator
+        # - DATAPRO_OPERATE_MEMBER: operations member
+        # - DATAPRO_BUSINESS_ANALYST: business analyst
+        # - LABELS_BUSINESS_MEMBER: tag business member
+        # - DATAPRO_BUSINESS_MEMBER: DATAPRO general business user
         self.role_list = role_list
+        # The search keyword.
         self.search_text = search_text
+        # The IDs of the user groups to which the member belongs.
         self.user_group_id_list = user_group_id_list
 
     def validate(self):

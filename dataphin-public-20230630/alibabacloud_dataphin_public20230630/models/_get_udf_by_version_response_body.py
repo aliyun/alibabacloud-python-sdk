@@ -15,12 +15,17 @@ class GetUdfByVersionResponseBody(DaraModel):
         success: bool = None,
         udf_info: main_models.GetUdfByVersionResponseBodyUdfInfo = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The details of the user-defined function.
         self.udf_info = udf_info
 
     def validate(self):
@@ -91,17 +96,39 @@ class GetUdfByVersionResponseBodyUdfInfo(DaraModel):
         last_modifier: str = None,
         name: str = None,
     ):
+        # The udf type. Valid values:
+        # - 1: window function.
+        # - 2: statistical function.
+        # - 3: numerical function.
+        # - 4: string function.
+        # - 5: time function.
+        # - 6: IP address utility function.
+        # - 7: URL-related function.
+        # - 8: encoding and decoding function.
+        # - 9: business-related function.
+        # - 10: other.
         self.category = category
+        # The registered class name.
         self.class_name = class_name
+        # The command help.
         self.command_help = command_help
+        # The compute engine. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
         self.compute_engine_type = compute_engine_type
+        # The creator.
         self.creator = creator
+        # The description.
         self.description = description
+        # The directory where the function is stored.
         self.directory = directory
+        # The creation time, in the yyyy-MM-d HH:mm:ss format.
         self.gmt_create = gmt_create
+        # The update time, in the yyyy-MM-d HH:mm:ss format.
         self.gmt_modified = gmt_modified
+        # The ID of the user-defined function.
         self.id = id
+        # The last modifier.
         self.last_modifier = last_modifier
+        # The function name.
         self.name = name
 
     def validate(self):

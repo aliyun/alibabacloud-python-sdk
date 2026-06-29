@@ -11,8 +11,12 @@ class UpdateStandardWordRootRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateStandardWordRootRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -53,13 +57,22 @@ class UpdateStandardWordRootRequestUpdateCommand(DaraModel):
         name: str = None,
         old_name: str = None,
     ):
+        # The abbreviation of the root word.
+        # 
         # This parameter is required.
         self.abbreviation = abbreviation
+        # The description of the root word.
         self.description = description
+        # The full name of the root word.
+        # 
         # This parameter is required.
         self.full_name = full_name
+        # The name of the root word.
+        # 
         # This parameter is required.
         self.name = name
+        # The name of the root word before the update.
+        # 
         # This parameter is required.
         self.old_name = old_name
 

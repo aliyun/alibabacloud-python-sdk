@@ -12,9 +12,14 @@ class ListDataServiceAuthorizedAppsRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The query conditions.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the data service project.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -59,8 +64,11 @@ class ListDataServiceAuthorizedAppsRequestListQuery(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The search keyword.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

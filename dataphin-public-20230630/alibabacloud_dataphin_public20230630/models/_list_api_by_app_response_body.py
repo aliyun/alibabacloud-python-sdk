@@ -17,12 +17,17 @@ class ListApiByAppResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The query result.
         self.list_result = list_result
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListApiByAppResponseBodyListResult(DaraModel):
         data: List[main_models.ListApiByAppResponseBodyListResultData] = None,
         total_count: int = None,
     ):
+        # The API list.
         self.data = data
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -167,51 +174,96 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
         update_rate_name: str = None,
         version: str = None,
     ):
+        # The API number.
         self.api_no = api_no
+        # The API timeout.
         self.api_timeout = api_timeout
+        # The application name.
         self.app_name = app_name
+        # The list of permission types.
         self.auth_types = auth_types
+        # The business module name.
         self.biz_module_en_name = biz_module_en_name
+        # The API cache switch.
         self.cache_switch = cache_switch
+        # The cache duration, in seconds.
         self.cache_time = cache_time
+        # The creation type. Valid values:
+        # SQL_MODE(0, "Logical table API - SQL mode"),
+        # WIZARD_MODE(1, "Logical table API - wizard mode"),
+        # DIRECT_API_MODE(2, "Direct datasource - SQL mode"),
+        # REGISTER_API_MODE(3, "Registered API mode"),
+        # COMPOSITE_API_MODE(4, "Composite API mode").
         self.create_type = create_type
+        # The data environment.
         self.db_env = db_env
+        # The description.
         self.description = description
+        # The datasource ID of the direct API.
         self.direct_datasource_id = direct_datasource_id
+        # The datasource name of the direct API.
         self.direct_datasource_name = direct_datasource_name
+        # The API group ID.
         self.group_id = group_id
+        # The API group name.
         self.group_name = group_name
+        # The API ID.
         self.id = id
+        # Indicates whether the table is a logical table.
         self.is_logical_table = is_logical_table
+        # Indicates whether the query is a paged query.
         self.is_paged_query = is_paged_query
+        # The maximum number of returned records.
         self.max_return_num = max_return_num
+        # The model type.
         self.model_type = model_type
+        # The API name.
         self.name = name
+        # The service project ID.
         self.proj_id = proj_id
+        # The service project name.
         self.proj_name = proj_name
+        # The protocol.
         self.protocol = protocol
+        # The protocol name.
         self.protocol_name = protocol_name
         # -
         self.public_param_list = public_param_list
+        # The registered API information.
         self.register_api = register_api
+        # The request method.
         self.request_method = request_method
+        # The request method name.
         self.request_method_name = request_method_name
         # -
         self.request_param_list = request_param_list
+        # The resource group name.
         self.resource_group_name = resource_group_name
         # -
         self.response_param_list = response_param_list
+        # The sample call result.
         self.result_sample = result_sample
+        # The return type.
         self.return_type = return_type
+        # The return type name.
         self.return_type_name = return_type_name
+        # The resource group ID.
         self.rs_grp_id = rs_grp_id
+        # The script type.
         self.script_type = script_type
+        # The special SQL flag.
         self.special_sql = special_sql
+        # The SQL statement.
         self.sql_statement = sql_statement
+        # The logical table name.
         self.table_name = table_name
+        # The timeout duration, in seconds.
         self.timeout = timeout
+        # The update frequency.
         self.update_rate = update_rate
+        # The update frequency name.
         self.update_rate_name = update_rate_name
+        # The API version.
         self.version = version
 
     def validate(self):
@@ -535,20 +587,35 @@ class ListApiByAppResponseBodyListResultDataResponseParamList(DaraModel):
         sample: str = None,
         table_and_ds_list: List[main_models.ListApiByAppResponseBodyListResultDataResponseParamListTableAndDsList] = None,
     ):
+        # The date format.
         self.date_format = date_format
+        # The default value for registered APIs.
         self.default_value = default_value
+        # The parameter description.
         self.description = description
+        # The parameter description code.
         self.description_code = description_code
+        # The primary key ID.
         self.id = id
+        # The initial value.
         self.initial_value = initial_value
+        # The frontend binding field.
         self.mapping_column = mapping_column
+        # Indicates whether the request parameter is required.
         self.must = must
+        # The operator.
         self.operator = operator
+        # Indicates whether the parameter is editable.
         self.optional = optional
+        # The original field name.
         self.original_column = original_column
+        # The frontend parameter name.
         self.param_name = param_name
+        # The parameter type.
         self.param_type = param_type
+        # The request parameter location for registered APIs or the value path for response parameters.
         self.parameter_location = parameter_location
+        # The parameter example.
         self.sample = sample
         # -
         self.table_and_ds_list = table_and_ds_list
@@ -680,10 +747,15 @@ class ListApiByAppResponseBodyListResultDataResponseParamListTableAndDsList(Dara
         datasource_url: str = None,
         table_name: str = None,
     ):
+        # The datasource ID.
         self.datasource_id = datasource_id
+        # The datasource name.
         self.datasource_name = datasource_name
+        # The datasource type.
         self.datasource_type = datasource_type
+        # The datasource URL.
         self.datasource_url = datasource_url
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -750,20 +822,35 @@ class ListApiByAppResponseBodyListResultDataRequestParamList(DaraModel):
         sample: str = None,
         table_and_ds_list: List[main_models.ListApiByAppResponseBodyListResultDataRequestParamListTableAndDsList] = None,
     ):
+        # The date format.
         self.date_format = date_format
+        # The default value for registered APIs.
         self.default_value = default_value
+        # The parameter description.
         self.description = description
+        # The parameter description code.
         self.description_code = description_code
+        # The primary key ID.
         self.id = id
+        # The initial value.
         self.initial_value = initial_value
+        # The frontend binding field.
         self.mapping_column = mapping_column
+        # Indicates whether the request parameter is required.
         self.must = must
+        # The operator.
         self.operator = operator
+        # Indicates whether the parameter is editable.
         self.optional = optional
+        # The original field name.
         self.original_column = original_column
+        # The frontend parameter name.
         self.param_name = param_name
+        # The parameter type.
         self.param_type = param_type
+        # The request parameter location for registered APIs or the value path for response parameters.
         self.parameter_location = parameter_location
+        # The parameter example.
         self.sample = sample
         # -
         self.table_and_ds_list = table_and_ds_list
@@ -895,10 +982,15 @@ class ListApiByAppResponseBodyListResultDataRequestParamListTableAndDsList(DaraM
         datasource_url: str = None,
         table_name: str = None,
     ):
+        # The datasource ID.
         self.datasource_id = datasource_id
+        # The datasource name.
         self.datasource_name = datasource_name
+        # The datasource type.
         self.datasource_type = datasource_type
+        # The datasource URL.
         self.datasource_url = datasource_url
+        # The table name.
         self.table_name = table_name
 
     def validate(self):
@@ -961,17 +1053,29 @@ class ListApiByAppResponseBodyListResultDataRegisterApi(DaraModel):
         timeout: int = None,
         url: str = None,
     ):
+        # The primary key of data_api.
         self.api_id = api_id
+        # The API datasource authentication mode.
         self.authentication_mode = authentication_mode
+        # The API datasource ID.
         self.datasource_id = datasource_id
+        # The API datasource name.
         self.datasource_name = datasource_name
+        # The failure example.
         self.fail_example = fail_example
+        # The HTTP method of the registered API.
         self.http_method = http_method
+        # The model type.
         self.model_type = model_type
+        # The service path.
         self.path = path
+        # The API datasource request protocol.
         self.protocol = protocol
+        # The success example.
         self.success_example = success_example
+        # The timeout period.
         self.timeout = timeout
+        # The API datasource URL.
         self.url = url
 
     def validate(self):
@@ -1080,20 +1184,35 @@ class ListApiByAppResponseBodyListResultDataPublicParamList(DaraModel):
         sample: str = None,
         table_and_ds_list: List[main_models.ListApiByAppResponseBodyListResultDataPublicParamListTableAndDsList] = None,
     ):
+        # The date format.
         self.date_format = date_format
+        # The default value for registered APIs.
         self.default_value = default_value
+        # The parameter description.
         self.description = description
+        # The parameter description code.
         self.description_code = description_code
+        # The primary key ID.
         self.id = id
+        # The initial value.
         self.initial_value = initial_value
+        # The frontend binding field.
         self.mapping_column = mapping_column
+        # Indicates whether the request parameter is required.
         self.must = must
+        # The operator.
         self.operator = operator
+        # Indicates whether the parameter is editable.
         self.optional = optional
+        # The original field name.
         self.original_column = original_column
+        # The frontend parameter name.
         self.param_name = param_name
+        # The parameter type.
         self.param_type = param_type
+        # The request parameter location for registered APIs or the value path for response parameters.
         self.parameter_location = parameter_location
+        # The parameter example.
         self.sample = sample
         # -
         self.table_and_ds_list = table_and_ds_list
@@ -1225,10 +1344,15 @@ class ListApiByAppResponseBodyListResultDataPublicParamListTableAndDsList(DaraMo
         datasource_url: str = None,
         table_name: str = None,
     ):
+        # The datasource ID.
         self.datasource_id = datasource_id
+        # The datasource name.
         self.datasource_name = datasource_name
+        # The datasource type.
         self.datasource_type = datasource_type
+        # The datasource URL.
         self.datasource_url = datasource_url
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

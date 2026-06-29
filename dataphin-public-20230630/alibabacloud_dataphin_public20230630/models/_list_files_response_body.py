@@ -17,11 +17,17 @@ class ListFilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request error code. OK indicates a normal request.
         self.code = code
+        # File list
         self.file_list = file_list
+        # Backend response HTTP code
         self.http_status_code = http_status_code
+        # Request error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the request was successful
         self.success = success
 
     def validate(self):
@@ -97,16 +103,27 @@ class ListFilesResponseBodyFileList(DaraModel):
         name: str = None,
         project_id: int = None,
     ):
+        # File category
         self.category = category
+        # File content
         self.content = content
+        # Creator
         self.creator = creator
+        # File directory
         self.directory = directory
+        # File type, such as directory
         self.file_type = file_type
+        # Creation time
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # File ID
         self.id = id
+        # Last modifier
         self.last_modifier = last_modifier
+        # File name
         self.name = name
+        # Project ID
         self.project_id = project_id
 
     def validate(self):

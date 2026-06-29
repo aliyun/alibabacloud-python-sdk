@@ -17,11 +17,17 @@ class ListDataSourceWithConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. OK indicates that the request was successful.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Query result.
         self.page_result = page_result
+        # Request ID
         self.request_id = request_id
+        # Whether the request was successful
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListDataSourceWithConfigResponseBodyPageResult(DaraModel):
         data_source_list: List[main_models.ListDataSourceWithConfigResponseBodyPageResultDataSourceList] = None,
         total_count: int = None,
     ):
+        # Paginated list
         self.data_source_list = data_source_list
+        # Total number of records
         self.total_count = total_count
 
     def validate(self):
@@ -125,9 +133,9 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceList(DaraModel):
         dev_data_source_info: main_models.ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceInfo = None,
         prod_data_source_info: main_models.ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfo = None,
     ):
-        # 开发环境数据源信息
+        # Development environment data source
         self.dev_data_source_info = dev_data_source_info
-        # 生产环境数据源
+        # Production environment data source
         self.prod_data_source_info = prod_data_source_info
 
     def validate(self):
@@ -178,18 +186,31 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSource
         scope: str = None,
         type: str = None,
     ):
+        # Connection configuration items
         self.config_item_list = config_item_list
+        # Creation time
         self.create_time = create_time
+        # Creator ID
         self.creator = creator
+        # Creator name
         self.creator_name = creator_name
+        # Description
         self.description = description
+        # Environment of the data source
         self.env = env
+        # Data source ID
         self.id = id
+        # Modification time
         self.modify_time = modify_time
+        # Data source name
         self.name = name
+        # Owner ID
         self.owner = owner
+        # Owner name
         self.owner_name = owner_name
+        # Data source scope
         self.scope = scope
+        # Data source type
         self.type = type
 
     def validate(self):
@@ -298,7 +319,9 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSource
         key: str = None,
         value: str = None,
     ):
+        # Configuration item ID
         self.key = key
+        # Configuration item value
         self.value = value
 
     def validate(self):
@@ -344,18 +367,31 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceI
         scope: str = None,
         type: str = None,
     ):
+        # Connection configuration items
         self.config_item_list = config_item_list
+        # Creation time
         self.create_time = create_time
+        # Creator ID
         self.creator = creator
+        # Creator name
         self.creator_name = creator_name
+        # Description
         self.description = description
+        # Environment of the data source
         self.env = env
+        # Data source ID
         self.id = id
+        # Modification time
         self.modify_time = modify_time
+        # Data source name
         self.name = name
+        # Owner ID
         self.owner = owner
+        # Owner name
         self.owner_name = owner_name
+        # Data source scope
         self.scope = scope
+        # Data source type
         self.type = type
 
     def validate(self):
@@ -464,7 +500,9 @@ class ListDataSourceWithConfigResponseBodyPageResultDataSourceListDevDataSourceI
         key: str = None,
         value: str = None,
     ):
+        # Configuration item ID
         self.key = key
+        # Configuration item value
         self.value = value
 
     def validate(self):

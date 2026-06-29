@@ -13,7 +13,10 @@ class CreateDataSourceRequest(DaraModel):
         create_command: main_models.CreateDataSourceRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # Request object
         self.create_command = create_command
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,8 +54,9 @@ class CreateDataSourceRequestCreateCommand(DaraModel):
         dev_data_source_create: main_models.CreateDataSourceRequestCreateCommandDevDataSourceCreate = None,
         prod_data_source_create: main_models.CreateDataSourceRequestCreateCommandProdDataSourceCreate = None,
     ):
+        # Development environment data source
         self.dev_data_source_create = dev_data_source_create
-        # 数据源创建结构体
+        # Production environment data source
         self.prod_data_source_create = prod_data_source_create
 
     def validate(self):
@@ -95,12 +99,43 @@ class CreateDataSourceRequestCreateCommandProdDataSourceCreate(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Whether to check connectivity
         self.check_activity = check_activity
+        # List of connection configuration items
+        # 
         # This parameter is required.
         self.config_item_list = config_item_list
+        # Data source description
         self.description = description
+        # Data source name
+        # 
         # This parameter is required.
         self.name = name
+        # Data source type:
+        # - MAX_COMPUTE
+        # - HDFS
+        # - LOG_HUB
+        # - POLARDB
+        # - HBASE_0_9_4
+        # - HBASE_1_1_X
+        # - DRDS
+        # - HIVE
+        # - FTP
+        # - ELASTIC_SEARCH
+        # - MYSQL
+        # - MONGODB
+        # - OSS
+        # - HANA
+        # - SQL_SERVER
+        # - POSTGRE_SQL
+        # - ANALYTICDB
+        # - ADB_FOR_MYSQL_V3
+        # - ADB_FOR_PG
+        # - ORACLE
+        # - VERTICA
+        # - DB2
+        # - TERA_DATA, etc.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -162,8 +197,12 @@ class CreateDataSourceRequestCreateCommandProdDataSourceCreateConfigItemList(Dar
         key: str = None,
         value: str = None,
     ):
+        # Configuration item. For the key values required by different databases, see the supplementary description at the bottom of the document.
+        # 
         # This parameter is required.
         self.key = key
+        # Configuration item value
+        # 
         # This parameter is required.
         self.value = value
 
@@ -199,8 +238,9 @@ class CreateDataSourceRequestCreateCommandDevDataSourceCreate(DaraModel):
         data_source_create: main_models.CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate = None,
         prod_data_source_id: int = None,
     ):
-        # 数据源创建结构体
+        # Development environment data source
         self.data_source_create = data_source_create
+        # Associated production environment data source ID. This parameter cannot be empty when only creating a development environment compute source.
         self.prod_data_source_id = prod_data_source_id
 
     def validate(self):
@@ -240,12 +280,20 @@ class CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate(Da
         name: str = None,
         type: str = None,
     ):
+        # Whether to check connectivity
         self.check_activity = check_activity
+        # List of connection configuration items
+        # 
         # This parameter is required.
         self.config_item_list = config_item_list
+        # Description
         self.description = description
+        # Data source name
+        # 
         # This parameter is required.
         self.name = name
+        # Data source type
+        # 
         # This parameter is required.
         self.type = type
 
@@ -307,8 +355,12 @@ class CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateCon
         key: str = None,
         value: str = None,
     ):
+        # Configuration item. For the key values required by different databases, see the supplementary description at the bottom of the document.
+        # 
         # This parameter is required.
         self.key = key
+        # Configuration item value
+        # 
         # This parameter is required.
         self.value = value
 

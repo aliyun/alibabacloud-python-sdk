@@ -11,7 +11,10 @@ class ListTablesRequest(DaraModel):
         list_query: main_models.ListTablesRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The paged query conditions.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,10 +54,15 @@ class ListTablesRequestListQuery(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The asset catalog, such as the project name or business unit name.
+        # 
         # This parameter is required.
         self.catalog = catalog
+        # The keyword for searching. Table names are supported.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

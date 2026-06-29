@@ -1840,6 +1840,7 @@ from ._revoke_data_service_api_request import RevokeDataServiceApiRequestRevokeC
 from ._revoke_resource_permission_request import RevokeResourcePermissionRequestRevokeCommandResourceList
 from ._revoke_resource_permission_request import RevokeResourcePermissionRequestRevokeCommand
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig
+from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandParamList
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandSparkClientInfo
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod
@@ -3819,6 +3820,7 @@ __all__ = [
     RevokeResourcePermissionRequestRevokeCommandResourceList,
     RevokeResourcePermissionRequestRevokeCommand,
     SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig,
+    SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams,
     SubmitBatchTaskRequestSubmitCommandParamList,
     SubmitBatchTaskRequestSubmitCommandSparkClientInfo,
     SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod,

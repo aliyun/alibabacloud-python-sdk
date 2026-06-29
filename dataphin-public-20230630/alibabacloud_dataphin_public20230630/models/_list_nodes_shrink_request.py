@@ -11,9 +11,16 @@ class ListNodesShrinkRequest(DaraModel):
         list_query_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD (default): production environment.
         self.env = env
+        # The query conditions.
+        # 
         # This parameter is required.
         self.list_query_shrink = list_query_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

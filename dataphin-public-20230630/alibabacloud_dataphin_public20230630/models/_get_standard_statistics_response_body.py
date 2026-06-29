@@ -17,12 +17,17 @@ class GetStandardStatisticsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The statistical results.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class GetStandardStatisticsResponseBodyData(DaraModel):
         standard_type_count_list: List[main_models.GetStandardStatisticsResponseBodyDataStandardTypeCountList] = None,
         total_count: int = None,
     ):
+        # The mapping between standard types and the number of standards for each type. If the standard type is empty, the key is EMPTY.
         self.standard_type_count_list = standard_type_count_list
+        # The total number of standards.
         self.total_count = total_count
 
     def validate(self):
@@ -126,7 +133,9 @@ class GetStandardStatisticsResponseBodyDataStandardTypeCountList(DaraModel):
         count: int = None,
         standard_type: str = None,
     ):
+        # The number of standards.
         self.count = count
+        # The standard type.
         self.standard_type = standard_type
 
     def validate(self):

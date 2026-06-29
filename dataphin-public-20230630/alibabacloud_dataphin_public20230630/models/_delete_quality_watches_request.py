@@ -13,8 +13,12 @@ class DeleteQualityWatchesRequest(DaraModel):
         delete_command: main_models.DeleteQualityWatchesRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,6 +55,8 @@ class DeleteQualityWatchesRequestDeleteCommand(DaraModel):
         self,
         watch_id_list: List[int] = None,
     ):
+        # The IDs of the monitored objects.
+        # 
         # This parameter is required.
         self.watch_id_list = watch_id_list
 

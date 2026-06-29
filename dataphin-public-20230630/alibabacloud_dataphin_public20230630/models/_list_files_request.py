@@ -11,8 +11,12 @@ class ListFilesRequest(DaraModel):
         list_query: main_models.ListFilesRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # Query conditions
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -53,14 +57,39 @@ class ListFilesRequestListQuery(DaraModel):
         project_id: int = None,
         recursive: bool = None,
     ):
+        # Menu tree category
+        # - Ad hoc query: tempCode
+        # - Code task: codeManage
+        # - Offline pipeline: offlinePipeline
+        # - Pipeline custom component: offlinePipelineCustomPlugin
+        # - Sync task: dataX
+        # - Real-time meta table: streamMeta
+        # - Real-time custom source: streamCustomDataSource
+        # - Real-time computing template: streamTemplate
+        # - Resource management: resourceManage
+        # - Offline function: udfResource
+        # - Real-time function: streamFunction
+        # 
         # This parameter is required.
         self.category = category
+        # File directory
+        # 
         # This parameter is required.
         self.directory = directory
+        # Environment identifier
+        # - DEV
+        # - PROD
+        # 
         # This parameter is required.
         self.env = env
+        # Project ID
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Whether to recursively traverse and query
+        # - true: Yes, returns all nodes under the directory
+        # - false: No, returns only the first-level nodes under the directory
+        # 
         # This parameter is required.
         self.recursive = recursive
 

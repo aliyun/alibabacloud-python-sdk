@@ -15,12 +15,17 @@ class GetResourceResponseBody(DaraModel):
         resource_info: main_models.GetResourceResponseBodyResourceInfo = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The resource file details.
         self.resource_info = resource_info
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -92,18 +97,31 @@ class GetResourceResponseBodyResourceInfo(DaraModel):
         size: int = None,
         storage_address: str = None,
     ):
+        # The compute engine type.
         self.compute_engine_type = compute_engine_type
+        # The creator.
         self.creator = creator
+        # The description.
         self.description = description
+        # The directory where the resource is stored.
         self.directory = directory
+        # The creation time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
+        # The last modification time, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_modified = gmt_modified
+        # The resource ID.
         self.id = id
+        # The last modifier.
         self.last_modifier = last_modifier
+        # The name of the resource file.
         self.name = name
+        # The project ID.
         self.project_id = project_id
+        # The resource type.
         self.resource_type = resource_type
+        # The size of the resource, in bytes.
         self.size = size
+        # The storage address of the resource.
         self.storage_address = storage_address
 
     def validate(self):

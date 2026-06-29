@@ -11,9 +11,16 @@ class ExecuteManualNodeShrinkRequest(DaraModel):
         execute_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD (default): production environment.
         self.env = env
+        # The request for running a manual task.
+        # 
         # This parameter is required.
         self.execute_command_shrink = execute_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

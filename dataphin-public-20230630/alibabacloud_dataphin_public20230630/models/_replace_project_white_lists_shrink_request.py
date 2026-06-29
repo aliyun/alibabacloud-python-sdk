@@ -11,10 +11,16 @@ class ReplaceProjectWhiteListsShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         replace_command_shrink: str = None,
     ):
+        # The project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The edit command.
+        # 
         # This parameter is required.
         self.replace_command_shrink = replace_command_shrink
 

@@ -17,11 +17,17 @@ class GetPhysicalInstanceLogResponseBody(DaraModel):
         success: bool = None,
         taskrun_log_list: List[main_models.GetPhysicalInstanceLogResponseBodyTaskrunLogList] = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # All execution logs of the instance, including logs from multiple reruns.
         self.taskrun_log_list = taskrun_log_list
 
     def validate(self):
@@ -92,11 +98,17 @@ class GetPhysicalInstanceLogResponseBodyTaskrunLogList(DaraModel):
         status: str = None,
         taskrun_id: str = None,
     ):
+        # The execution duration of the task. Unit: seconds.
         self.duration = duration
+        # The time when the task finished running.
         self.end_time = end_time
+        # The execution log content. This value is empty if the task has not been run.
         self.log_content = log_content
+        # The time when the task started running.
         self.start_time = start_time
+        # The execution status.
         self.status = status
+        # The task ID for each run.
         self.taskrun_id = taskrun_id
 
     def validate(self):

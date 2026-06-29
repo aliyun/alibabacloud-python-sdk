@@ -14,10 +14,16 @@ class ReplaceProjectWhiteListsRequest(DaraModel):
         op_tenant_id: int = None,
         replace_command: main_models.ReplaceProjectWhiteListsRequestReplaceCommand = None,
     ):
+        # The project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The edit command.
+        # 
         # This parameter is required.
         self.replace_command = replace_command
 
@@ -60,6 +66,8 @@ class ReplaceProjectWhiteListsRequestReplaceCommand(DaraModel):
         self,
         white_lists: List[main_models.ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists] = None,
     ):
+        # The project whitelist.
+        # 
         # This parameter is required.
         self.white_lists = white_lists
 
@@ -98,11 +106,14 @@ class ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists(DaraModel):
         ip: str = None,
         port: str = None,
     ):
+        # The description.
         self.description = description
         # ip
         # 
         # This parameter is required.
         self.ip = ip
+        # The port.
+        # 
         # This parameter is required.
         self.port = port
 

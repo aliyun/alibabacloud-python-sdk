@@ -11,7 +11,10 @@ class GetBelongAssetMappingRequest(DaraModel):
         asset_mapping_query: main_models.GetBelongAssetMappingRequestAssetMappingQuery = None,
         op_tenant_id: int = None,
     ):
+        # Query command.
         self.asset_mapping_query = asset_mapping_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -49,8 +52,11 @@ class GetBelongAssetMappingRequestAssetMappingQuery(DaraModel):
         belong_guid: str = None,
         relation_type: str = None,
     ):
+        # The GUID of the belonging asset.
+        # 
         # This parameter is required.
         self.belong_guid = belong_guid
+        # The mapping relationship type. Valid values: VALID (mapped) and INVALID (invalid mapping).
         self.relation_type = relation_type
 
     def validate(self):

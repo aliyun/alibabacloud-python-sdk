@@ -11,10 +11,16 @@ class AddProjectMemberShrinkRequest(DaraModel):
         id: int = None,
         op_tenant_id: int = None,
     ):
+        # The command to add members.
+        # 
         # This parameter is required.
         self.add_command_shrink = add_command_shrink
+        # The project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

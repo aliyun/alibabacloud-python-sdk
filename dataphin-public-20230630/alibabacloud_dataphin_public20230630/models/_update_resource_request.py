@@ -11,8 +11,12 @@ class UpdateResourceRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateResourceRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The edit command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -55,18 +59,34 @@ class UpdateResourceRequestUpdateCommand(DaraModel):
         project_id: int = None,
         storage_address: str = None,
     ):
+        # The commit remarks.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The compute engine type. Valid values:
+        # - MAX_COMPUTE
+        # - HADOOP.
+        # 
         # This parameter is required.
         self.compute_engine_type = compute_engine_type
+        # The resource description.
+        # 
         # This parameter is required.
         self.description = description
+        # The resource ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The resource name.
+        # 
         # This parameter is required.
         self.name = name
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The storage address of the resource.
+        # 
         # This parameter is required.
         self.storage_address = storage_address
 

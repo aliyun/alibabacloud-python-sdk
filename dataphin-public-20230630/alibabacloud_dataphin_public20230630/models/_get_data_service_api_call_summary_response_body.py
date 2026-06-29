@@ -15,12 +15,17 @@ class GetDataServiceApiCallSummaryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The aggregate statistics of API calls.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,11 +90,17 @@ class GetDataServiceApiCallSummaryResponseBodyData(DaraModel):
         error_rate: float = None,
         offline_rate: float = None,
     ):
+        # The number of API calls.
         self.call_count = call_count
+        # The number of APIs with call errors.
         self.error_api_count = error_api_count
+        # The number of applications affected by errors.
         self.error_app_count = error_app_count
+        # The number of failed calls.
         self.error_count = error_count
+        # The error rate.
         self.error_rate = error_rate
+        # The offline percentage.
         self.offline_rate = offline_rate
 
     def validate(self):

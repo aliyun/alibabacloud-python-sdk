@@ -11,8 +11,12 @@ class UpsertQualityWatchRequest(DaraModel):
         op_tenant_id: int = None,
         upsert_command: main_models.UpsertQualityWatchRequestUpsertCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.upsert_command = upsert_command
 
@@ -54,12 +58,25 @@ class UpsertQualityWatchRequestUpsertCommand(DaraModel):
         table_info: main_models.UpsertQualityWatchRequestUpsertCommandTableInfo = None,
         type: str = None,
     ):
+        # The data source details.
         self.data_source_info = data_source_info
+        # The monitored object ID. If this parameter is specified, the object is updated. If this parameter is not specified, a new object is created.
         self.id = id
+        # The monitoring metrics object.
         self.index_info = index_info
+        # The quality owner.
+        # 
         # This parameter is required.
         self.quality_owner = quality_owner
+        # The monitored table object.
         self.table_info = table_info
+        # The monitored object type. Valid values:
+        # - TABLE: Dataphin table.
+        # - DATASOURCE_TABLE: global table.
+        # - DATASOURCE: data source.
+        # - INDEX: metric.
+        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -126,6 +143,7 @@ class UpsertQualityWatchRequestUpsertCommandTableInfo(DaraModel):
         self,
         id: str = None,
     ):
+        # The table ID.
         self.id = id
 
     def validate(self):
@@ -164,17 +182,34 @@ class UpsertQualityWatchRequestUpsertCommandIndexInfo(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The cell aggregate table name.
         self.cell_sum_logic_table_name = cell_sum_logic_table_name
+        # The metric computation type. Valid values:
+        # - AUTO
+        # - CUSTOM
+        # - MOUNT
+        # - COMBINE.
         self.compute_type = compute_type
+        # The metric data type.
         self.date_type = date_type
+        # The description.
         self.description = description
+        # The metric display name.
         self.display_name = display_name
+        # The statistical granularity name.
         self.granularity_display_name = granularity_display_name
+        # The statistical granularity ID.
         self.granularity_id = granularity_id
+        # The metric ID.
         self.id = id
+        # The metric name.
         self.name = name
+        # The project ID.
         self.project_id = project_id
+        # The metric type. Valid values:
+        # - INDEX.
         self.type = type
 
     def validate(self):
@@ -268,6 +303,7 @@ class UpsertQualityWatchRequestUpsertCommandDataSourceInfo(DaraModel):
         self,
         id: str = None,
     ):
+        # The data source ID.
         self.id = id
 
     def validate(self):

@@ -12,9 +12,14 @@ class ListDataServicePublishedApisRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # Search conditions.
         self.list_query = list_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -60,9 +65,13 @@ class ListDataServicePublishedApisRequestListQuery(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # API name.
         self.api_name = api_name
+        # Group ID.
         self.group_id = group_id
+        # Page number. Default value: 1.
         self.page_no = page_no
+        # Number of records per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

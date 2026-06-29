@@ -11,10 +11,16 @@ class GetPipelineAsyncResultShrinkRequest(DaraModel):
         context_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The asynchronous execution ID.
+        # 
         # This parameter is required.
         self.async_id = async_id
+        # The request context information.
+        # 
         # This parameter is required.
         self.context_shrink = context_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

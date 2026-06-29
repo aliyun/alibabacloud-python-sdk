@@ -17,12 +17,17 @@ class GetStreamJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -95,13 +100,30 @@ class GetStreamJobsResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development.
+        # - PROD: production.
         self.env = env
+        # The mapping ID of the real-time node.
         self.id = id
+        # The name of the real-time node.
         self.job_name = job_name
+        # The ID of the user who last modified the node.
         self.modifier_id = modifier_id
+        # The ID of the creator.
         self.owner_id = owner_id
+        # The Dataphin project ID.
         self.project_id = project_id
+        # The node status. Valid values:
+        # - 0: draft.
+        # - 1: submitting.
+        # - 2: submitted.
+        # - 3: published.
+        # - 100: in development.
         self.status = status
+        # The node type. Valid values:
+        # - FLINK_SQL
+        # - FLINK_DATASTREAM.
         self.type = type
 
     def validate(self):

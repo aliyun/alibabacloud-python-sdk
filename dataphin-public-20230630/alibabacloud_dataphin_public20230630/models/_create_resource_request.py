@@ -11,8 +11,12 @@ class CreateResourceRequest(DaraModel):
         create_command: main_models.CreateResourceRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -56,20 +60,43 @@ class CreateResourceRequestCreateCommand(DaraModel):
         resource_type: str = None,
         storage_address: str = None,
     ):
+        # The commit remarks.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The compute engine type. Valid values:
+        # - MAX_COMPUTE
+        # - HADOOP
+        # - NONE.
+        # 
         # This parameter is required.
         self.compute_engine_type = compute_engine_type
+        # The description of the resource file.
+        # 
         # This parameter is required.
         self.description = description
+        # The folder in which the resource file is stored.
+        # 
         # This parameter is required.
         self.directory = directory
+        # The resource name.
+        # 
         # This parameter is required.
         self.name = name
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The type of the resource file. Valid values:
+        # - FILE: common file.
+        # - JAR: JAR file.
+        # - PYTHON: Python file.
+        # - OTHERS: other type of file.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The storage address of the resource file.
+        # 
         # This parameter is required.
         self.storage_address = storage_address
 

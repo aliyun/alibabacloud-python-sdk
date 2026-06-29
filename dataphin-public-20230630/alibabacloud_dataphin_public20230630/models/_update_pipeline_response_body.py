@@ -15,12 +15,17 @@ class UpdatePipelineResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The update result of the pipeline or workflow node.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details returned by the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,10 +89,15 @@ class UpdatePipelineResponseBodyData(DaraModel):
         submit_id: int = None,
         version: str = None,
     ):
+        # The name and IP address of the server that executed the request.
         self.host_machine = host_machine
+        # The scheduling node ID of the pipeline or workflow node.
         self.node_id = node_id
+        # The pipeline or workflow ID.
         self.pipeline_id = pipeline_id
+        # The submit ID generated upon successful submission of the pipeline or workflow, which is added to the pending publish list and can be published through the publish domain. This value is not returned for workflow nodes because they only support PROD.
         self.submit_id = submit_id
+        # The version number pending publish. This value is not returned for workflow nodes because they only support PROD.
         self.version = version
 
     def validate(self):

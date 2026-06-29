@@ -17,12 +17,17 @@ class GetTableColumnsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Backend response code.
         self.code = code
+        # List of asset table columns.
         self.column_list = column_list
+        # HTTP response code.
         self.http_status_code = http_status_code
+        # Backend response exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -111,29 +116,53 @@ class GetTableColumnsResponseBodyColumnList(DaraModel):
         table_name: str = None,
         visit_count_30d: int = None,
     ):
+        # Data classification ID.
         self.classify_id = classify_id
+        # Data classification name.
         self.classify_name = classify_name
+        # Column comment.
         self.comment = comment
+        # Creation time.
         self.create_time = create_time
+        # Creator.
         self.creator = creator
+        # Data source ID.
         self.data_source_id = data_source_id
+        # Data source type.
         self.data_source_type = data_source_type
+        # Data type.
         self.data_type = data_type
+        # Default value.
         self.default_value = default_value
+        # Column display name.
         self.display_name = display_name
+        # Environment: dev or prod.
         self.env = env
+        # Column GUID.
         self.guid = guid
+        # Whether this is a foreign key.
         self.is_foreign_key = is_foreign_key
+        # Whether this is a partition column.
         self.is_partition_column = is_partition_column
+        # Whether this is a primary key.
         self.is_primary_key = is_primary_key
+        # Last modifier.
         self.last_modifier = last_modifier
+        # Data level abbreviation.
         self.level_abbreviation = level_abbreviation
+        # Modification time.
         self.modify_time = modify_time
+        # Column name.
         self.name = name
+        # Whether null values are allowed.
         self.nullable = nullable
+        # Sequence number.
         self.seq_number = seq_number
+        # Table GUID.
         self.table_guid = table_guid
+        # Table name.
         self.table_name = table_name
+        # Query count in the last 30 days.
         self.visit_count_30d = visit_count_30d
 
     def validate(self):

@@ -17,12 +17,17 @@ class GetDataServiceAppMembersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The member list of the data service application.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned from the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,6 +87,7 @@ class GetDataServiceAppMembersResponseBodyData(DaraModel):
         self,
         member_list: List[main_models.GetDataServiceAppMembersResponseBodyDataMemberList] = None,
     ):
+        # The application member list.
         self.member_list = member_list
 
     def validate(self):
@@ -119,8 +125,14 @@ class GetDataServiceAppMembersResponseBodyDataMemberList(DaraModel):
         role: str = None,
         user_id: str = None,
     ):
+        # The authorization expiration time.
         self.effective_end = effective_end
+        # The role of the user. Valid values:
+        # 
+        # - general: regular member.
+        # - owner: application owner.
         self.role = role
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

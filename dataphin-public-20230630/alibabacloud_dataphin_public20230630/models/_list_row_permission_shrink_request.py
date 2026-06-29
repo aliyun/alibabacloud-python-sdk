@@ -10,8 +10,12 @@ class ListRowPermissionShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         page_row_permission_query_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The request command.
+        # 
         # This parameter is required.
         self.page_row_permission_query_shrink = page_row_permission_query_shrink
 

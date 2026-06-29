@@ -17,11 +17,17 @@ class GetUserGroupResponseBody(DaraModel):
         success: bool = None,
         user_group_info: main_models.GetUserGroupResponseBodyUserGroupInfo = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The user group details.
         self.user_group_info = user_group_info
 
     def validate(self):
@@ -86,11 +92,17 @@ class GetUserGroupResponseBodyUserGroupInfo(DaraModel):
         my_role: str = None,
         name: str = None,
     ):
+        # Indicates whether the user group is enabled.
         self.active = active
+        # The administrators of the user group.
         self.admin_list = admin_list
+        # The description of the user group.
         self.description = description
+        # The user group ID.
         self.id = id
+        # The role of the current user in the user group.
         self.my_role = my_role
+        # The name of the user group.
         self.name = name
 
     def validate(self):
@@ -158,8 +170,11 @@ class GetUserGroupResponseBodyUserGroupInfoAdminList(DaraModel):
         display_name: str = None,
         id: str = None,
     ):
+        # The account name of the user.
         self.account_name = account_name
+        # The username.
         self.display_name = display_name
+        # The user ID.
         self.id = id
 
     def validate(self):

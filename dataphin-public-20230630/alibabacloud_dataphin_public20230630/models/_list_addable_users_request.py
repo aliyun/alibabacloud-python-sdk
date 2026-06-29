@@ -11,8 +11,12 @@ class ListAddableUsersRequest(DaraModel):
         list_query: main_models.ListAddableUsersRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The request object.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,8 +55,11 @@ class ListAddableUsersRequestListQuery(DaraModel):
         page_size: int = None,
         search_text: str = None,
     ):
+        # The page number.
         self.page = page
+        # The number of records per page.
         self.page_size = page_size
+        # The search keyword.
         self.search_text = search_text
 
     def validate(self):

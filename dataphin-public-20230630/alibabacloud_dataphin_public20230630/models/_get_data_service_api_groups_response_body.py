@@ -17,12 +17,17 @@ class GetDataServiceApiGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of API groups.
         self.api_group_list = api_group_list
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,7 +94,9 @@ class GetDataServiceApiGroupsResponseBodyApiGroupList(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The group ID.
         self.id = id
+        # The group name.
         self.name = name
 
     def validate(self):

@@ -11,8 +11,11 @@ class TransferOwnershipForAllObjectRequest(DaraModel):
         op_tenant_id: int = None,
         privilege_transfer_record: main_models.TransferOwnershipForAllObjectRequestPrivilegeTransferRecord = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The transfer information.
         self.privilege_transfer_record = privilege_transfer_record
 
     def validate(self):
@@ -50,10 +53,15 @@ class TransferOwnershipForAllObjectRequestPrivilegeTransferRecord(DaraModel):
         old_owner: str = None,
         transfer_comment: str = None,
     ):
+        # The user ID of the new owner.
+        # 
         # This parameter is required.
         self.new_owner = new_owner
+        # The user ID of the original owner.
+        # 
         # This parameter is required.
         self.old_owner = old_owner
+        # The remarks.
         self.transfer_comment = transfer_comment
 
     def validate(self):

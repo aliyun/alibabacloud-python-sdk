@@ -13,8 +13,12 @@ class SyncDepartmentRequest(DaraModel):
         op_tenant_id: int = None,
         sync_department_command: main_models.SyncDepartmentRequestSyncDepartmentCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The request command.
+        # 
         # This parameter is required.
         self.sync_department_command = sync_department_command
 
@@ -51,6 +55,8 @@ class SyncDepartmentRequestSyncDepartmentCommand(DaraModel):
         self,
         department_list: List[main_models.SyncDepartmentRequestSyncDepartmentCommandDepartmentList] = None,
     ):
+        # The department list (full organization tree).
+        # 
         # This parameter is required.
         self.department_list = department_list
 
@@ -89,10 +95,15 @@ class SyncDepartmentRequestSyncDepartmentCommandDepartmentList(DaraModel):
         department_name: str = None,
         parent_department_id: str = None,
     ):
+        # The department ID (unique identifier of the department).
+        # 
         # This parameter is required.
         self.department_id = department_id
+        # The display name of the department.
+        # 
         # This parameter is required.
         self.department_name = department_name
+        # The parent department ID (unique identifier of the parent department). Set to null if no parent department exists.
         self.parent_department_id = parent_department_id
 
     def validate(self):

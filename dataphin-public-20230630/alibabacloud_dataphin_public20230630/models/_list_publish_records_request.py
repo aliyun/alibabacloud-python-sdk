@@ -13,8 +13,12 @@ class ListPublishRecordsRequest(DaraModel):
         list_query: main_models.ListPublishRecordsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # Query command.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,7 +56,10 @@ class ListPublishRecordsRequestListQuery(DaraModel):
         keyword: str = None,
         search_filter: main_models.ListPublishRecordsRequestListQuerySearchFilter = None,
     ):
+        # Search keyword.
         self.keyword = keyword
+        # Publish record filter.
+        # 
         # This parameter is required.
         self.search_filter = search_filter
 
@@ -96,16 +103,27 @@ class ListPublishRecordsRequestListQuerySearchFilter(DaraModel):
         publish_status_list: List[int] = None,
         submitter_list: List[str] = None,
     ):
+        # List of change types (0: Create, 1: Update, 2: Delete).
         self.change_type_list = change_type_list
+        # Page number.
+        # 
         # This parameter is required.
         self.page = page
+        # Page size.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # List of project IDs.
+        # 
         # This parameter is required.
         self.project_id_list = project_id_list
+        # Publish end time in the yyyy-MM-dd HH:mm:ss format.
         self.publish_end_time = publish_end_time
+        # Publish start time in the yyyy-MM-dd HH:mm:ss format.
         self.publish_start_time = publish_start_time
+        # List of publish statuses (0: Failed, 1: Succeeded, 2: Publishing).
         self.publish_status_list = publish_status_list
+        # List of submitter IDs.
         self.submitter_list = submitter_list
 
     def validate(self):

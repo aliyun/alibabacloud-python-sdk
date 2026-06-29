@@ -11,8 +11,12 @@ class ListRowPermissionRequest(DaraModel):
         op_tenant_id: int = None,
         page_row_permission_query: main_models.ListRowPermissionRequestPageRowPermissionQuery = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The request command.
+        # 
         # This parameter is required.
         self.page_row_permission_query = page_row_permission_query
 
@@ -51,9 +55,14 @@ class ListRowPermissionRequestPageRowPermissionQuery(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The search keyword.
         self.keyword = keyword
+        # The page number.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

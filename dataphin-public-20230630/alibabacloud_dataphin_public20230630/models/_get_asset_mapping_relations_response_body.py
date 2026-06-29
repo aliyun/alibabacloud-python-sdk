@@ -17,12 +17,17 @@ class GetAssetMappingRelationsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The list of mapping relationships.
         self.mapping_relation_list = mapping_relation_list
+        # The error details from the backend response.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -98,16 +103,29 @@ class GetAssetMappingRelationsResponseBodyMappingRelationList(DaraModel):
         standard_set_name: str = None,
         standard_stage: str = None,
     ):
+        # The Asset Type. Valid values:
+        # - COLUMN: field.
+        # - INDEX: metric.
         self.asset_type = asset_type
+        # The GUID of the asset.
         self.guid = guid
+        # The update time.
         self.modify_time = modify_time
+        # The name of the asset.
         self.name = name
+        # The code of the standard.
         self.standard_code = standard_code
+        # The ID of the standard.
         self.standard_id = standard_id
+        # The name of the standard.
         self.standard_name = standard_name
+        # The folder in which the standard set resides.
         self.standard_set_directory = standard_set_directory
+        # The ID of the standard set.
         self.standard_set_id = standard_set_id
+        # The name of the standard set.
         self.standard_set_name = standard_set_name
+        # The stage of the standard.
         self.standard_stage = standard_stage
 
     def validate(self):

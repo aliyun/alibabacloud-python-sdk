@@ -1,3 +1,9 @@
+2026-06-29 Version: 2.7.1
+- Update API SubmitBatchTask: add request parameters SubmitCommand.CodeTemplateVersion.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.OfflineCodeTemplateId.
+- Update API SubmitBatchTask: add request parameters SubmitCommand.OfflineCodeTemplateParams.
+
+
 2026-04-30 Version: 2.7.0
 - Support API GetCatalogAssetDetails.
 - Support API ListCatalogAssets.

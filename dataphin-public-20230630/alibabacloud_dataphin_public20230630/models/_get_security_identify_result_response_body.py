@@ -15,12 +15,17 @@ class GetSecurityIdentifyResultResponseBody(DaraModel):
         security_identify_result_info: main_models.GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The identification result details.
         self.security_identify_result_info = security_identify_result_info
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -116,42 +121,89 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         table_task_id: int = None,
         table_type: str = None,
     ):
+        # The business date.
         self.biz_date = biz_date
+        # The display name of the business unit in Chinese.
         self.biz_unit_display_name = biz_unit_display_name
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
+        # The classification abbreviation.
         self.classify_abbreviation = classify_abbreviation
+        # The classification ID.
         self.classify_id = classify_id
+        # The classification name.
         self.classify_name = classify_name
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.creator = creator
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The data source name.
         self.datasource_name = datasource_name
+        # The field description.
         self.field_description = field_description
+        # The field ID.
         self.field_id = field_id
+        # The field name.
         self.field_name = field_name
+        # Indicates whether a better matching result exists.
         self.has_better_rule = has_better_rule
+        # The identification result ID.
         self.id = id
+        # The identification record ID.
         self.identify_record_id = identify_record_id
+        # Indicates whether a custom tagging rule is used.
         self.is_custom_identify = is_custom_identify
+        # Indicates whether the result is locked.
         self.is_locked = is_locked
+        # The sensitivity level abbreviation.
         self.level_abbreviation = level_abbreviation
+        # The sensitivity level color.
         self.level_color = level_color
+        # The sensitivity level index.
         self.level_index = level_index
+        # The sensitivity level name.
         self.level_name = level_name
+        # The modifier.
         self.modifier = modifier
+        # The modification time.
         self.modify_time = modify_time
+        # The display name of the project in Chinese.
         self.project_display_name = project_display_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The scan task ID.
         self.scan_task_id = scan_task_id
+        # The status. Valid values:
+        # - ENABLE: enabled.
+        # - DISABLE: disabled.
         self.status = status
+        # The table catalog.
         self.table_catalog = table_catalog
+        # The table description.
         self.table_description = table_description
+        # The table environment.
         self.table_env = table_env
+        # The table ID.
         self.table_id = table_id
+        # The table name.
         self.table_name = table_name
+        # The identification table task ID.
         self.table_task_id = table_task_id
+        # The table type. Valid values:
+        # - LOGIC_TABLE: logical table.
+        # - LOGIC_DIM_TABLE: logical dimension table.
+        # - LOGIC_FACT_TABLE: fact logical table.
+        # - LOGIC_SUM_TABLE: aggregate logical table.
+        # - LOGIC_ODM_SOURCE: source table.
+        # - LOGIC_LABEL_TABLE: label logical table.
+        # - PHYSICAL_TABLE: physical table.
+        # - REAL_TIME_LOGIC_TABLE: real-time configured logical table.
         self.table_type = table_type
 
     def validate(self):

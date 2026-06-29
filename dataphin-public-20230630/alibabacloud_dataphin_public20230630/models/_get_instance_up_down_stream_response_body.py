@@ -17,11 +17,17 @@ class GetInstanceUpDownStreamResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The instance dag data, including the current instance and its upstream and downstream instances.
         self.instance_dag_info = instance_dag_info
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class GetInstanceUpDownStreamResponseBodyInstanceDagInfo(DaraModel):
         start_instance_list: List[main_models.GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList] = None,
         up_instance_list: List[main_models.GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList] = None,
     ):
+        # The downstream instances.
         self.down_instance_list = down_instance_list
+        # The center instances.
         self.start_instance_list = start_instance_list
+        # The upstream instances.
         self.up_instance_list = up_instance_list
 
     def validate(self):
@@ -154,10 +163,15 @@ class GetInstanceUpDownStreamResponseBodyInstanceDagInfoUpInstanceList(DaraModel
         node_id: str = None,
         node_type: str = None,
     ):
+        # The list of field IDs.
         self.field_instance_id_list = field_instance_id_list
+        # The instance ID.
         self.id = id
+        # The node name.
         self.name = name
+        # The node ID.
         self.node_id = node_id
+        # The node type.
         self.node_type = node_type
 
     def validate(self):
@@ -213,10 +227,18 @@ class GetInstanceUpDownStreamResponseBodyInstanceDagInfoStartInstanceList(DaraMo
         node_id: str = None,
         node_type: str = None,
     ):
+        # The list of field IDs.
         self.field_instance_id_list = field_instance_id_list
+        # The instance ID.
         self.id = id
+        # The node name.
         self.name = name
+        # The node ID.
         self.node_id = node_id
+        # The node type. Valid values:
+        # - DATA_PROCESS: code node.
+        # - BBOX_LOGIC_TABLE_NODE: logical table node.
+        # - PIPELINE_NODE: pipeline node.
         self.node_type = node_type
 
     def validate(self):
@@ -272,10 +294,15 @@ class GetInstanceUpDownStreamResponseBodyInstanceDagInfoDownInstanceList(DaraMod
         node_id: str = None,
         node_type: str = None,
     ):
+        # The list of field IDs.
         self.field_instance_id_list = field_instance_id_list
+        # The instance ID.
         self.id = id
+        # The node name.
         self.name = name
+        # The node ID.
         self.node_id = node_id
+        # The node type.
         self.node_type = node_type
 
     def validate(self):

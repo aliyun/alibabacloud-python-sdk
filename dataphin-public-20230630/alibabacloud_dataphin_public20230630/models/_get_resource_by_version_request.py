@@ -12,12 +12,20 @@ class GetResourceByVersionRequest(DaraModel):
         project_id: int = None,
         version_id: int = None,
     ):
+        # Resource file name.
+        # 
         # This parameter is required.
         self.name = name
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Version ID.
+        # 
         # This parameter is required.
         self.version_id = version_id
 

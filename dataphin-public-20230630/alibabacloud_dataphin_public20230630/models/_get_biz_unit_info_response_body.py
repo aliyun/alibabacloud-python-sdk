@@ -17,11 +17,17 @@ class GetBizUnitInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the data domain.
         self.biz_unit_info = biz_unit_info
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,24 +105,45 @@ class GetBizUnitInfoResponseBodyBizUnitInfo(DaraModel):
         owner_name: str = None,
         owner_user_id: str = None,
     ):
+        # The architects of the data domain.
         self.account_list = account_list
+        # The number of business objects.
         self.biz_object_count = biz_object_count
+        # The number of business activities.
         self.biz_process_count = biz_process_count
+        # The business owners.
         self.business_leader_list = business_leader_list
+        # The number of subject domains.
         self.data_domain_count = data_domain_count
+        # The data owners.
         self.data_leader_list = data_leader_list
+        # The description of the business object.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The English names of the data domain for the two environments: production and development.
         self.env_list = env_list
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The icon of the data domain.
         self.icon = icon
+        # The data domain ID.
         self.id = id
+        # The ID of the user who last modified the data domain.
         self.last_modifier = last_modifier
+        # The name of the user who last modified the data domain.
         self.last_modifier_name = last_modifier_name
+        # The production mode. Valid values:
+        # - BASIC: single-environment mode.
+        # - DEV_PROD: development/production dual-environment mode.
         self.mode = mode
+        # The name.
         self.name = name
+        # The owner of the business object.
         self.owner_name = owner_name
+        # The owner of the business object.
         self.owner_user_id = owner_user_id
 
     def validate(self):
@@ -289,8 +316,11 @@ class GetBizUnitInfoResponseBodyBizUnitInfoEnvList(DaraModel):
         env_name: str = None,
         name: str = None,
     ):
+        # The display name.
         self.display_name = display_name
+        # The environment identifier. Valid values: PROD and DEV.
         self.env_name = env_name
+        # The English name.
         self.name = name
 
     def validate(self):
@@ -330,6 +360,7 @@ class GetBizUnitInfoResponseBodyBizUnitInfoDataLeaderList(DaraModel):
         self,
         id: str = None,
     ):
+        # The user ID.
         self.id = id
 
     def validate(self):
@@ -357,6 +388,7 @@ class GetBizUnitInfoResponseBodyBizUnitInfoBusinessLeaderList(DaraModel):
         self,
         id: str = None,
     ):
+        # The user ID.
         self.id = id
 
     def validate(self):
@@ -384,6 +416,7 @@ class GetBizUnitInfoResponseBodyBizUnitInfoAccountList(DaraModel):
         self,
         id: str = None,
     ):
+        # The user ID.
         self.id = id
 
     def validate(self):

@@ -13,8 +13,12 @@ class ListUserGroupsRequest(DaraModel):
         list_query: main_models.ListUserGroupsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The paged query parameters.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -56,12 +60,20 @@ class ListUserGroupsRequestListQuery(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # Specifies whether the user group is enabled.
         self.active = active
+        # The user IDs of the user group administrators.
         self.admin_id_list = admin_id_list
+        # Specifies whether to filter user groups that the current user belongs to.
         self.filter_mine = filter_mine
+        # The keyword for the user group name.
         self.keyword = keyword
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of records per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

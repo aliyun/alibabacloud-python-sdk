@@ -11,9 +11,14 @@ class GetStandardWordRootRequest(DaraModel):
         nullable: bool = None,
         op_tenant_id: int = None,
     ):
+        # The name of the word root.
+        # 
         # This parameter is required.
         self.name = name
+        # Specifies whether to allow a null value to be returned when the word root does not exist. If set to false, an exception is thrown. Default value: true.
         self.nullable = nullable
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

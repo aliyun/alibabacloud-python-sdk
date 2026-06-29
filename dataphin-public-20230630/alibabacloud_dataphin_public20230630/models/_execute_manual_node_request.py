@@ -14,9 +14,16 @@ class ExecuteManualNodeRequest(DaraModel):
         execute_command: main_models.ExecuteManualNodeRequestExecuteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD (default): production environment.
         self.env = env
+        # The request for running a manual task.
+        # 
         # This parameter is required.
         self.execute_command = execute_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -64,14 +71,24 @@ class ExecuteManualNodeRequestExecuteCommand(DaraModel):
         project_id: int = None,
         start_biz_date: str = None,
     ):
+        # The end business date.
+        # 
         # This parameter is required.
         self.end_biz_date = end_biz_date
+        # The workflow name.
         self.flow_name = flow_name
+        # The node ID.
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # The runtime parameters.
         self.param_list = param_list
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The start business date.
+        # 
         # This parameter is required.
         self.start_biz_date = start_biz_date
 
@@ -139,7 +156,9 @@ class ExecuteManualNodeRequestExecuteCommandParamList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The parameter.
         self.key = key
+        # The parameter value.
         self.value = value
 
     def validate(self):

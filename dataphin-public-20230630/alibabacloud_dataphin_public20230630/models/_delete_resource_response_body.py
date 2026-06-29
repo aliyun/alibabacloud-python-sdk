@@ -13,11 +13,15 @@ class DeleteResourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Backend response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Backend error details.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

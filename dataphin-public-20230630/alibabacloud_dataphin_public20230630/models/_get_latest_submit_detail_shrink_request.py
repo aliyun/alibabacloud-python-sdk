@@ -10,8 +10,12 @@ class GetLatestSubmitDetailShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         submit_detail_query_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The pending submit query request.
+        # 
         # This parameter is required.
         self.submit_detail_query_shrink = submit_detail_query_shrink
 

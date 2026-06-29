@@ -17,11 +17,17 @@ class GetBatchTaskVersionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The request result.
         self.data = data
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class GetBatchTaskVersionsResponseBodyData(DaraModel):
         self,
         batch_task_version_list: List[main_models.GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList] = None,
     ):
+        # The list of batch task versions.
         self.batch_task_version_list = batch_task_version_list
 
     def validate(self):
@@ -124,14 +131,23 @@ class GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList(DaraModel):
         user_name: str = None,
         version: str = None,
     ):
+        # The comment for the submission.
         self.comment = comment
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The node ID.
         self.node_id = node_id
+        # The project ID.
         self.project_id = project_id
+        # Indicates whether the version has been published to the production environment.
         self.published = published
+        # The ID of the user who submitted the version.
         self.user_id = user_id
+        # The ID of the user who submitted the version.
         self.user_name = user_name
+        # The version number.
         self.version = version
 
     def validate(self):

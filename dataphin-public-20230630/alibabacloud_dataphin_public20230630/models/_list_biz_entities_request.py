@@ -13,8 +13,12 @@ class ListBizEntitiesRequest(DaraModel):
         list_query: main_models.ListBizEntitiesRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query request.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -54,9 +58,13 @@ class ListBizEntitiesRequestListQuery(DaraModel):
         page: int = None,
         page_size: int = None,
     ):
+        # The filter criteria for the query.
         self.filter_criteria = filter_criteria
+        # The search keyword.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page = page
+        # The number of records per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -111,13 +119,21 @@ class ListBizEntitiesRequestListQueryFilterCriteria(DaraModel):
         status_list: List[str] = None,
         sub_type_list: List[str] = None,
     ):
+        # The list of business unit IDs.
         self.biz_unit_id_list = biz_unit_id_list
+        # The list of business unit IDs.
         self.biz_unit_name_list = biz_unit_name_list
+        # The list of data domain IDs.
         self.data_domain_id_list = data_domain_id_list
+        # The list of data domain IDs.
         self.data_domain_name_list = data_domain_name_list
+        # Specifies whether the business entity is associated with a logical table.
         self.has_table_ref = has_table_ref
+        # The list of owner user IDs.
         self.owner_user_id_list = owner_user_id_list
+        # The list of business entity statuses. For more information, refer to the API operation for querying business entity details.
         self.status_list = status_list
+        # The list of business entity subtypes. For more information, refer to the API operation for querying business entity details.
         self.sub_type_list = sub_type_list
 
     def validate(self):

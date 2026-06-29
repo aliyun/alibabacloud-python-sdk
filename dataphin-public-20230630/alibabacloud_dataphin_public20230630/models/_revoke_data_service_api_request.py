@@ -12,10 +12,16 @@ class RevokeDataServiceApiRequest(DaraModel):
         project_id: int = None,
         revoke_command: main_models.RevokeDataServiceApiRequestRevokeCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The revoke instruction.
+        # 
         # This parameter is required.
         self.revoke_command = revoke_command
 
@@ -64,14 +70,29 @@ class RevokeDataServiceApiRequestRevokeCommand(DaraModel):
         reason: str = None,
         user_id: str = None,
     ):
+        # The API ID.
+        # 
         # This parameter is required.
         self.api_id = api_id
+        # The ID of the application.
         self.app_id = app_id
+        # The permission type. Valid values:
+        # - USE: use permission
+        # - DELEGATION: delegation permission.
         self.auth_type = auth_type
+        # The API environment. Valid values:
+        # - DEV: development environment
+        # - PROD: production environment.
         self.env = env
+        # The authorization object type. Valid values:
+        # - APP: application
+        # - USER: user.
         self.grantee_type = grantee_type
+        # The reason for the request.
+        # 
         # This parameter is required.
         self.reason = reason
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

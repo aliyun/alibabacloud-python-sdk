@@ -17,12 +17,17 @@ class GetDataServiceAuthorizedAppsByGroupIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of API groups.
         self.app_info_list = app_info_list
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -91,11 +96,14 @@ class GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # AppKey
+        # The application key.
+        # >Notice: Deprecated. Use AppKeyStr instead.</notice>.
         self.app_key = app_key
+        # The application key.
         self.app_key_str = app_key_str
         # AppId
         self.id = id
+        # The app name.
         self.name = name
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListTenantMembersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. OK indicates a successful request.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paginated query result.
         self.page_result = page_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListTenantMembersResponseBodyPageResult(DaraModel):
         total_count: int = None,
         user_list: List[main_models.ListTenantMembersResponseBodyPageResultUserList] = None,
     ):
+        # The total number of entries.
         self.total_count = total_count
+        # The list of users.
         self.user_list = user_list
 
     def validate(self):
@@ -141,23 +149,41 @@ class ListTenantMembersResponseBodyPageResultUserList(DaraModel):
         user_group_list: List[main_models.ListTenantMembersResponseBodyPageResultUserListUserGroupList] = None,
         white_ip: str = None,
     ):
+        # The account name.
         self.account_name = account_name
+        # The DingTalk number.
         self.ding_number = ding_number
+        # The display name of the user.
         self.display_name = display_name
+        # The display name of the user without status.
         self.display_name_without_status = display_name_without_status
+        # Indicates whether the IP address whitelist is enabled.
         self.enable_white_ip = enable_white_ip
+        # The time when the user was created.
         self.gmt_create = gmt_create
+        # The time when the user was last modified.
         self.gmt_modified = gmt_modified
+        # The user ID.
         self.id = id
+        # The email address.
         self.mail = mail
+        # The phone number.
         self.mobile_phone = mobile_phone
+        # The username.
         self.name = name
+        # The nickname of the user.
         self.nick_name = nick_name
+        # The real name of the user.
         self.real_name = real_name
+        # The list of member roles.
         self.role_list = role_list
+        # The user source ID.
         self.source_id = source_id
+        # The user source.
         self.source_type = source_type
+        # The list of user groups to which the user belongs.
         self.user_group_list = user_group_list
+        # The IP address whitelist.
         self.white_ip = white_ip
 
     def validate(self):
@@ -298,9 +324,13 @@ class ListTenantMembersResponseBodyPageResultUserListUserGroupList(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # Indicates whether the user group is enabled.
         self.active = active
+        # The description.
         self.description = description
+        # The user group ID.
         self.id = id
+        # The name of the user group.
         self.name = name
 
     def validate(self):

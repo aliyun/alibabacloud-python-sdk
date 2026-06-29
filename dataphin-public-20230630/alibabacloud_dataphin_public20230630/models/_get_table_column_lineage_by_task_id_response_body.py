@@ -17,11 +17,17 @@ class GetTableColumnLineageByTaskIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. A value of OK indicates that the request was successful.
         self.code = code
+        # Query results.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -113,32 +119,74 @@ class GetTableColumnLineageByTaskIdResponseBodyData(DaraModel):
         task_id: str = None,
         tenant_id: int = None,
     ):
+        # Business unit ID of the input table.
         self.input_biz_unit_id = input_biz_unit_id
+        # GUID of the input column.
         self.input_column_id = input_column_id
+        # Input column name.
         self.input_column_name = input_column_name
+        # Data source ID of the input table.
         self.input_data_source_id = input_data_source_id
+        # Storage type of the input table.
         self.input_data_source_type = input_data_source_type
+        # Database type of the input table.
         self.input_db_type = input_db_type
+        # Environment of the input table: DEV or PROD.
         self.input_env = input_env
+        # Project ID of the input table.
         self.input_project_id = input_project_id
+        # Indicates whether the input table is deleted.
         self.input_table_deleted = input_table_deleted
+        # GUID of the input table. Each asset has a unique GUID in the following format: 
+        # 
+        # - Logical table: dp_table.[TenantId].[BizUnitName].[TableName]
+        # - Compute source physical table: [EngineType].[TenantId].[ProjectName].[TableName]
+        # - Data source table: dp_ds_table.[TenantId].[DataSourceId].[SchemaName].[TableName]
         self.input_table_id = input_table_id
+        # Input table name.
         self.input_table_name = input_table_name
+        # Input table type. Valid values:
+        # - PHYSICAL_TABLE: Physical table (compute source)
+        # - DIM_LOGIC_TABLE: Dimension logical table
+        # - FACT_LOGIC_TABLE: Fact logical table
+        # - SUM_LOGIC_TABLE: Summary logical table
+        # - REAL_TIME_LOGIC_TABLE: Real-time meta table
+        # - REAL_TIME_MIRROR_TABLE: Real-time mirror table
+        # - PHYSICAL_VIEW: Physical view
+        # - LOGICAL_VIEW: Logical view
+        # - DATA_SOURCE_PHYSICAL_TABLE: Data source table
+        # - DATA_SOURCE_VIEW: Data source view
+        # - DATA_SOURCE_MATERIALIZED_VIEW: Data source materialized view
         self.input_table_type = input_table_type
+        # Business unit ID of the output table.
         self.output_biz_unit_id = output_biz_unit_id
+        # GUID of the output column.
         self.output_column_id = output_column_id
+        # Output column name.
         self.output_column_name = output_column_name
+        # Data source ID of the output table.
         self.output_data_source_id = output_data_source_id
+        # Storage type of the output table.
         self.output_data_source_type = output_data_source_type
+        # Database type of the output table.
         self.output_db_type = output_db_type
+        # Environment of the output table: DEV or PROD.
         self.output_env = output_env
+        # Project ID of the output table.
         self.output_project_id = output_project_id
+        # Indicates whether the output table is deleted.
         self.output_table_deleted = output_table_deleted
+        # GUID of the output table. Each asset has a unique GUID. For the format, see InputTableId.
         self.output_table_id = output_table_id
+        # Output table name.
         self.output_table_name = output_table_name
+        # Output table type. For valid values, see InputTableType.
         self.output_table_type = output_table_type
+        # Environment of the task (node) associated with the lineage: DEV or PROD.
         self.task_env = task_env
+        # Task (node) ID associated with the lineage.
         self.task_id = task_id
+        # Tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

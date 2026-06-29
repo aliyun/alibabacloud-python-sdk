@@ -13,8 +13,12 @@ class CheckComputeSourceConnectivityRequest(DaraModel):
         check_command: main_models.CheckComputeSourceConnectivityRequestCheckCommand = None,
         op_tenant_id: int = None,
     ):
+        # The check command.
+        # 
         # This parameter is required.
         self.check_command = check_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,8 +56,12 @@ class CheckComputeSourceConnectivityRequestCheckCommand(DaraModel):
         config_list: List[main_models.CheckComputeSourceConnectivityRequestCheckCommandConfigList] = None,
         type: str = None,
     ):
+        # The connection configuration items.
+        # 
         # This parameter is required.
         self.config_list = config_list
+        # The compute source type.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -97,8 +105,12 @@ class CheckComputeSourceConnectivityRequestCheckCommandConfigList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the configuration item.
+        # 
         # This parameter is required.
         self.value = value
 

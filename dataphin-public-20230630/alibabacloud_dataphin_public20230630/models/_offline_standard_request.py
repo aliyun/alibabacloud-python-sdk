@@ -11,8 +11,12 @@ class OfflineStandardRequest(DaraModel):
         offline_command: main_models.OfflineStandardRequestOfflineCommand = None,
         op_tenant_id: int = None,
     ):
+        # The offline instruction.
+        # 
         # This parameter is required.
         self.offline_command = offline_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -50,8 +54,12 @@ class OfflineStandardRequestOfflineCommand(DaraModel):
         comment: str = None,
         id: int = None,
     ):
+        # The review remarks. The value can be up to 128 characters in length.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The standard ID.
+        # 
         # This parameter is required.
         self.id = id
 

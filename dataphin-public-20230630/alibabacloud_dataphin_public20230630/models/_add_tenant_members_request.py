@@ -13,8 +13,12 @@ class AddTenantMembersRequest(DaraModel):
         add_command: main_models.AddTenantMembersRequestAddCommand = None,
         op_tenant_id: int = None,
     ):
+        # The request command.
+        # 
         # This parameter is required.
         self.add_command = add_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,6 +55,8 @@ class AddTenantMembersRequestAddCommand(DaraModel):
         self,
         user_list: List[main_models.AddTenantMembersRequestAddCommandUserList] = None,
     ):
+        # The list of members.
+        # 
         # This parameter is required.
         self.user_list = user_list
 
@@ -88,7 +94,17 @@ class AddTenantMembersRequestAddCommandUserList(DaraModel):
         id: str = None,
         role_list: List[str] = None,
     ):
+        # The user ID.
         self.id = id
+        # The list of roles. Valid values:
+        # - SYSTEM_ADMIN
+        # - DATASOURCE_MANAGER
+        # - SECURITY_ADMIN
+        # - QUALITY_MANAGER
+        # - EXPORT_ADMIN
+        # - DATA_STANDARD_MANAGER
+        # - LABELS_BUSINESS_PLANNER
+        # - BUSINESS_MEMBER.
         self.role_list = role_list
 
     def validate(self):

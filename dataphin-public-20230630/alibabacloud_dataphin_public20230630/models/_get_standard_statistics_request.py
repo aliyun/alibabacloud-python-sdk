@@ -13,8 +13,12 @@ class GetStandardStatisticsRequest(DaraModel):
         op_tenant_id: int = None,
         statistics_query: main_models.GetStandardStatisticsRequestStatisticsQuery = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The statistical query instruction.
+        # 
         # This parameter is required.
         self.statistics_query = statistics_query
 
@@ -53,9 +57,13 @@ class GetStandardStatisticsRequestStatisticsQuery(DaraModel):
         directory: str = None,
         standard_stage_list: List[str] = None,
     ):
+        # The creation time period.
         self.create_time_period = create_time_period
+        # The folder to which the standards belong. The search includes all subfolders under this folder.
+        # 
         # This parameter is required.
         self.directory = directory
+        # The stages to which the standards belong.
         self.standard_stage_list = standard_stage_list
 
     def validate(self):
@@ -99,8 +107,11 @@ class GetStandardStatisticsRequestStatisticsQueryCreateTimePeriod(DaraModel):
         include_end_time: bool = None,
         start_time: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # Specifies whether to include the end time. Default value: false.
         self.include_end_time = include_end_time
+        # The start time.
         self.start_time = start_time
 
     def validate(self):

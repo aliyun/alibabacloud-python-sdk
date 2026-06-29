@@ -11,8 +11,12 @@ class CreateAdHocFileRequest(DaraModel):
         create_command: main_models.CreateAdHocFileRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The request for creating an ad hoc query file.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,12 +56,20 @@ class CreateAdHocFileRequestCreateCommand(DaraModel):
         name: str = None,
         project_id: int = None,
     ):
+        # The file content.
+        # 
         # This parameter is required.
         self.content = content
+        # The directory where the file is located.
+        # 
         # This parameter is required.
         self.directory = directory
+        # The file name.
+        # 
         # This parameter is required.
         self.name = name
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

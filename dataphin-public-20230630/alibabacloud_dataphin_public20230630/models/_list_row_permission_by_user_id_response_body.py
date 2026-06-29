@@ -17,11 +17,17 @@ class ListRowPermissionByUserIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListRowPermissionByUserIdResponseBodyPageResult(DaraModel):
         data: List[main_models.ListRowPermissionByUserIdResponseBodyPageResultData] = None,
         total_count: int = None,
     ):
+        # The query result.
         self.data = data
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -130,12 +138,19 @@ class ListRowPermissionByUserIdResponseBodyPageResultData(DaraModel):
         tables: List[main_models.ListRowPermissionByUserIdResponseBodyPageResultDataTables] = None,
         tenant_id: int = None,
     ):
+        # The creator.
         self.creator = creator
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The modifier.
         self.modifier = modifier
+        # The rules.
         self.rules = rules
+        # The related tables.
         self.tables = tables
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -218,8 +233,11 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataTables(DaraModel):
         mapping_column_name: str = None,
         resource_id: str = None,
     ):
+        # The table field.
         self.column_name = column_name
+        # The mapping field name.
         self.mapping_column_name = mapping_column_name
+        # The table GUID.
         self.resource_id = resource_id
 
     def validate(self):
@@ -265,12 +283,19 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRules(DaraModel):
         status: int = None,
         user_mapping_list: List[main_models.ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList] = None,
     ):
+        # The rule expressions.
         self.expressions = expressions
+        # The rule ID.
         self.id = id
+        # Indicates whether the rule is deleted.
         self.is_delete = is_delete
+        # The rule name.
         self.rule_name = rule_name
+        # The scope type of the rule.
         self.scope_type = scope_type
+        # The rule status.
         self.status = status
+        # The accounts bound to the rule.
         self.user_mapping_list = user_mapping_list
 
     def validate(self):
@@ -352,7 +377,9 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList(Da
         account_type: str = None,
         accounts: List[main_models.ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts] = None,
     ):
+        # The type of the account bound to the rule.
         self.account_type = account_type
+        # The accounts bound to the rule.
         self.accounts = accounts
 
     def validate(self):
@@ -394,6 +421,7 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAcc
         self,
         account_id: str = None,
     ):
+        # The ID of the account bound to the rule.
         self.account_id = account_id
 
     def validate(self):
@@ -425,10 +453,15 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions(DaraMo
         type: str = None,
         values: List[str] = None,
     ):
+        # The mapping field name.
         self.mapping_column_name = mapping_column_name
+        # The expression operator.
         self.operator = operator
+        # The sub-expressions.
         self.sub_conditions = sub_conditions
+        # The expression type.
         self.type = type
+        # The expression operation values.
         self.values = values
 
     def validate(self):

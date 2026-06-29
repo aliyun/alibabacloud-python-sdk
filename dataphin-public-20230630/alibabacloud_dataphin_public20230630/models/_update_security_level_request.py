@@ -11,8 +11,12 @@ class UpdateSecurityLevelRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateSecurityLevelRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -51,8 +55,11 @@ class UpdateSecurityLevelRequestUpdateCommand(DaraModel):
         index: int = None,
         name: str = None,
     ):
+        # The classification description.
         self.description = description
+        # The classification order. If this parameter is not specified, the classification name is used for matching.
         self.index = index
+        # The classification name.
         self.name = name
 
     def validate(self):

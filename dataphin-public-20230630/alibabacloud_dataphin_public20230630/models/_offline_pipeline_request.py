@@ -12,10 +12,16 @@ class OfflinePipelineRequest(DaraModel):
         offline_command: main_models.OfflinePipelineRequestOfflineCommand = None,
         op_tenant_id: int = None,
     ):
+        # The request context information.
+        # 
         # This parameter is required.
         self.context = context
+        # The offline command for the pipeline node.
+        # 
         # This parameter is required.
         self.offline_command = offline_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -65,11 +71,17 @@ class OfflinePipelineRequestOfflineCommand(DaraModel):
         node_id: str = None,
         pipeline_id: int = None,
     ):
+        # The remarks.
         self.comment = comment
+        # Specifies whether to delete the node.
+        # 
         # This parameter is required.
         self.delete = delete
+        # The file ID of the integration node. You can specify any one of PipelineId, FileId, or NodeId.
         self.file_id = file_id
+        # The scheduling node ID of the integration node. You can specify any one of PipelineId, FileId, or NodeId.
         self.node_id = node_id
+        # The primary key of the integration pipeline. You can specify any one of PipelineId, FileId, or NodeId.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -122,8 +134,14 @@ class OfflinePipelineRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
+        # The current operating environment. Valid values:
+        # - DEV: the development environment.
+        # - PROD: the production environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The ID of the project to which the integration pipeline node belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

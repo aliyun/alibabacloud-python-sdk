@@ -10,8 +10,12 @@ class CreateDataServiceAppGroupRequest(DaraModel):
         group_name: str = None,
         op_tenant_id: int = None,
     ):
+        # The group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

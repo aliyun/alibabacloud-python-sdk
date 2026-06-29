@@ -17,11 +17,17 @@ class GetDirectoryTreeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. OK indicates a successful request.
         self.code = code
+        # Directory tree information. Returns the directory tree with all edge information, traversed level by level from the root node.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +94,9 @@ class GetDirectoryTreeResponseBodyData(DaraModel):
         children: main_models.GetDirectoryTreeResponseBodyDataChildren = None,
         parent: main_models.GetDirectoryTreeResponseBodyDataParent = None,
     ):
+        # Child node.
         self.children = children
+        # Parent node.
         self.parent = parent
 
     def validate(self):
@@ -140,19 +148,33 @@ class GetDirectoryTreeResponseBodyDataParent(DaraModel):
         string_id: str = None,
         type: str = None,
     ):
+        # Directory type.
         self.category_type = category_type
+        # Creator ID.
         self.creator = creator
+        # Creator name.
         self.creator_name = creator_name
+        # Data cell ID.
         self.data_cell_id = data_cell_id
+        # Directory path. Valid only for file or resource nodes.
         self.dir_name = dir_name
+        # Creation time. Empty for non-entity object nodes.
         self.gmt_create = gmt_create
+        # Modification time. Empty for non-entity object nodes.
         self.gmt_modified = gmt_modified
+        # Directory ID.
         self.id = id
+        # Last modifier ID.
         self.last_modifier = last_modifier
+        # Last modifier name.
         self.last_modifier_name = last_modifier_name
+        # Display name of the object.
         self.name = name
+        # Project ID.
         self.project_id = project_id
+        # Directory string ID.
         self.string_id = string_id
+        # Object type.
         self.type = type
 
     def validate(self):
@@ -271,19 +293,33 @@ class GetDirectoryTreeResponseBodyDataChildren(DaraModel):
         string_id: str = None,
         type: str = None,
     ):
+        # Directory type.
         self.category_type = category_type
+        # Creator ID.
         self.creator = creator
+        # Creator name.
         self.creator_name = creator_name
+        # Data cell ID.
         self.data_cell_id = data_cell_id
+        # Directory path. Valid only for file or resource nodes.
         self.dir_name = dir_name
+        # Creation time. Empty for non-entity object nodes.
         self.gmt_create = gmt_create
+        # Modification time. Empty for non-entity object nodes.
         self.gmt_modified = gmt_modified
+        # Directory ID.
         self.id = id
+        # Last modifier ID.
         self.last_modifier = last_modifier
+        # Last modifier name.
         self.last_modifier_name = last_modifier_name
+        # Display name of the object.
         self.name = name
+        # Project ID.
         self.project_id = project_id
+        # Directory string ID.
         self.string_id = string_id
+        # Object type.
         self.type = type
 
     def validate(self):

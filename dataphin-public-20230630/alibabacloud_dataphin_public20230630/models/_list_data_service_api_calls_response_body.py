@@ -17,12 +17,17 @@ class ListDataServiceApiCallsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paginated query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListDataServiceApiCallsResponseBodyPageResult(DaraModel):
         call_log_list: List[main_models.ListDataServiceApiCallsResponseBodyPageResultCallLogList] = None,
         total_count: int = None,
     ):
+        # The list of API call logs.
         self.call_log_list = call_log_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -152,33 +159,62 @@ class ListDataServiceApiCallsResponseBodyPageResultCallLogList(DaraModel):
         status: int = None,
         successful: bool = None,
     ):
+        # The ID of the API.
         self.api_id = api_id
+        # The name of the API.
         self.api_name = api_name
+        # The application key.
+        # >Notice: This parameter is deprecated. Use AppKeyStr instead.
         self.app_key = app_key
+        # The application key.
         self.app_key_str = app_key_str
+        # The name of the application.
         self.app_name = app_name
+        # The business status code.
         self.biz_code = biz_code
+        # The description of the business status code.
         self.biz_code_description = biz_code_description
+        # The IP address of the request.
         self.client_ip = client_ip
+        # The duration of the request, in milliseconds.
         self.cost_time = cost_time
+        # The end time of the request. Format: yyyy-MM-dd HH:mm:ss.SSS.
         self.end_time = end_time
+        # The environment. Valid values: 0 (dev) and 1 (prod).
         self.env = env
+        # The execution duration.
         self.execute_cost_time = execute_cost_time
+        # The execution mode. Valid values: 1 (synchronous) and 2 (asynchronous).
         self.execute_mode = execute_mode
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The description of the status code.
         self.http_status_description = http_status_description
+        # The job ID.
         self.job_id = job_id
+        # The project ID.
         self.project_id = project_id
+        # The name of the project.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The request parameters.
         self.request_parameter = request_parameter
+        # The size of the request.
         self.request_size = request_size
+        # The response parameters.
         self.response_parameter = response_parameter
+        # The size of the response.
         self.response_size = response_size
+        # The number of returned data records.
         self.result_count = result_count
+        # The SQL statement.
         self.sql = sql
+        # The start time of the request. Format: yyyy-MM-dd HH:mm:ss.SSS.
         self.start_time = start_time
+        # The call status of the job.
         self.status = status
+        # Indicates whether the request was successful.
         self.successful = successful
 
     def validate(self):

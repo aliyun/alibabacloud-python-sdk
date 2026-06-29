@@ -13,8 +13,12 @@ class UpdateBatchTaskUdfLineagesRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateBatchTaskUdfLineagesRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -53,10 +57,16 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommand(DaraModel):
         lineage_group_list: List[main_models.UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList] = None,
         project_id: int = None,
     ):
+        # The node ID in the logical definition subtree.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The list of lineage groups.
+        # 
         # This parameter is required.
         self.lineage_group_list = lineage_group_list
+        # The project to which the node belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -106,8 +116,12 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList(DaraModel):
         input_lineage_list: List[main_models.UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineageList] = None,
         output_lineage_list: List[main_models.UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListOutputLineageList] = None,
     ):
+        # The collection of lineage input tables.
+        # 
         # This parameter is required.
         self.input_lineage_list = input_lineage_list
+        # The collection of lineage output tables.
+        # 
         # This parameter is required.
         self.output_lineage_list = output_lineage_list
 
@@ -162,12 +176,20 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListOutputLineag
         full_table: bool = None,
         name: str = None,
     ):
+        # The list of lineage fields.
+        # 
         # This parameter is required.
         self.column_list = column_list
+        # The environment. Valid values: prod, dev, and auto.
+        # 
         # This parameter is required.
         self.env = env
+        # Specifies whether to select the full table.
+        # 
         # This parameter is required.
         self.full_table = full_table
+        # The table name.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -217,12 +239,20 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineage
         full_table: bool = None,
         name: str = None,
     ):
+        # The list of lineage fields.
+        # 
         # This parameter is required.
         self.column_list = column_list
+        # The environment. Valid values: prod, dev, and auto.
+        # 
         # This parameter is required.
         self.env = env
+        # Specifies whether to select the full table.
+        # 
         # This parameter is required.
         self.full_table = full_table
+        # The table name.
+        # 
         # This parameter is required.
         self.name = name
 

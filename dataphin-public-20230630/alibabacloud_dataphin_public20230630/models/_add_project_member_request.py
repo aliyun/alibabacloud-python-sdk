@@ -14,10 +14,16 @@ class AddProjectMemberRequest(DaraModel):
         id: int = None,
         op_tenant_id: int = None,
     ):
+        # The command to add members.
+        # 
         # This parameter is required.
         self.add_command = add_command
+        # The project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -61,8 +67,12 @@ class AddProjectMemberRequestAddCommand(DaraModel):
         env: str = None,
         user_list: List[main_models.AddProjectMemberRequestAddCommandUserList] = None,
     ):
+        # The environment identifier. Valid values: DEV and PROD.
+        # 
         # This parameter is required.
         self.env = env
+        # The list of user members.
+        # 
         # This parameter is required.
         self.user_list = user_list
 
@@ -106,8 +116,12 @@ class AddProjectMemberRequestAddCommandUserList(DaraModel):
         role_list: List[int] = None,
         user_id: str = None,
     ):
+        # The member role. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
+        # 
         # This parameter is required.
         self.role_list = role_list
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

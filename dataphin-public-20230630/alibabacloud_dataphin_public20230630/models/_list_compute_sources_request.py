@@ -11,8 +11,12 @@ class ListComputeSourcesRequest(DaraModel):
         list_query: main_models.ListComputeSourcesRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query conditions.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -53,10 +57,15 @@ class ListComputeSourcesRequestListQuery(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
+        # Specifies whether the compute source is bound to a project.
         self.bind_project = bind_project
+        # The keyword used for filtering.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
+        # The type of the compute source.
         self.type = type
 
     def validate(self):

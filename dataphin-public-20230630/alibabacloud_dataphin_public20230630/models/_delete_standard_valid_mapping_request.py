@@ -13,8 +13,12 @@ class DeleteStandardValidMappingRequest(DaraModel):
         delete_command: main_models.DeleteStandardValidMappingRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -53,8 +57,12 @@ class DeleteStandardValidMappingRequestDeleteCommand(DaraModel):
         guid_list: List[str] = None,
         standard_id: int = None,
     ):
+        # The list of parent GUIDs. A maximum of 1000 GUIDs are supported.
         self.belong_guid_list = belong_guid_list
+        # The list of GUIDs. A maximum of 1000 GUIDs are supported.
         self.guid_list = guid_list
+        # The standard ID.
+        # 
         # This parameter is required.
         self.standard_id = standard_id
 

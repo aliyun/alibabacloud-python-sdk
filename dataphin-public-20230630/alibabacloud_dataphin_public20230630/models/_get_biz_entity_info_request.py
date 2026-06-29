@@ -11,10 +11,16 @@ class GetBizEntityInfoRequest(DaraModel):
         op_tenant_id: int = None,
         type: str = None,
     ):
+        # The business entity ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The business entity type. For more information, refer to the create business entity operation.
+        # 
         # This parameter is required.
         self.type = type
 

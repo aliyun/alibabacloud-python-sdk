@@ -13,8 +13,12 @@ class UpdateQualityRuleSwitchRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateQualityRuleSwitchRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -52,8 +56,12 @@ class UpdateQualityRuleSwitchRequestUpdateCommand(DaraModel):
         open: bool = None,
         rule_id_list: List[int] = None,
     ):
+        # Specifies whether to enable the quality rules.
+        # 
         # This parameter is required.
         self.open = open
+        # The list of rule IDs.
+        # 
         # This parameter is required.
         self.rule_id_list = rule_id_list
 

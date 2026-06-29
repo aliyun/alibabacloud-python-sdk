@@ -11,9 +11,14 @@ class GetStandardSetRequest(DaraModel):
         nullable: bool = None,
         op_tenant_id: int = None,
     ):
+        # The standard set ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Specifies whether to allow a null value to be returned when the standard set does not exist. If set to false, an exception is thrown. Default value: true.
         self.nullable = nullable
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

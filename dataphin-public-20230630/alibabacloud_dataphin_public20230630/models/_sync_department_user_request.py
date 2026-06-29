@@ -13,8 +13,12 @@ class SyncDepartmentUserRequest(DaraModel):
         op_tenant_id: int = None,
         sync_department_user_command: main_models.SyncDepartmentUserRequestSyncDepartmentUserCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The request command.
+        # 
         # This parameter is required.
         self.sync_department_user_command = sync_department_user_command
 
@@ -51,6 +55,8 @@ class SyncDepartmentUserRequestSyncDepartmentUserCommand(DaraModel):
         self,
         dept_user_mapping: List[main_models.SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping] = None,
     ):
+        # The mapping between users and their affiliated departments.
+        # 
         # This parameter is required.
         self.dept_user_mapping = dept_user_mapping
 
@@ -88,7 +94,10 @@ class SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping(DaraMode
         department_id_list: List[str] = None,
         source_user_id: str = None,
     ):
+        # The list of department IDs to which the user belongs. If this parameter is left empty, the user-department affiliation is deleted.
         self.department_id_list = department_id_list
+        # The user ID in the user system. This value is the unique identifier of the user.
+        # 
         # This parameter is required.
         self.source_user_id = source_user_id
 

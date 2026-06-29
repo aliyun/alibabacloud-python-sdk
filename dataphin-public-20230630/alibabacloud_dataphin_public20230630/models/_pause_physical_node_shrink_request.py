@@ -11,9 +11,16 @@ class PausePhysicalNodeShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         pause_command_shrink: str = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD (default): production environment.
         self.env = env
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The pause scheduling request.
+        # 
         # This parameter is required.
         self.pause_command_shrink = pause_command_shrink
 

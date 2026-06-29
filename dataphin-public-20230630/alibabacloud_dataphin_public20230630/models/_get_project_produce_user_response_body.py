@@ -15,11 +15,17 @@ class GetProjectProduceUserResponseBody(DaraModel):
         success: bool = None,
         user: main_models.GetProjectProduceUserResponseBodyUser = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The producer user.
         self.user = user
 
     def validate(self):
@@ -79,6 +85,7 @@ class GetProjectProduceUserResponseBodyUser(DaraModel):
         self,
         id: str = None,
     ):
+        # The user ID.
         self.id = id
 
     def validate(self):

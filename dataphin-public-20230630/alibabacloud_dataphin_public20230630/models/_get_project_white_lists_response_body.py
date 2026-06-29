@@ -17,12 +17,17 @@ class GetProjectWhiteListsResponseBody(DaraModel):
         success: bool = None,
         white_lists: List[main_models.GetProjectWhiteListsResponseBodyWhiteLists] = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The project whitelist.
         self.white_lists = white_lists
 
     def validate(self):
@@ -90,9 +95,11 @@ class GetProjectWhiteListsResponseBodyWhiteLists(DaraModel):
         ip: str = None,
         port: str = None,
     ):
+        # The description.
         self.description = description
         # ip
         self.ip = ip
+        # The port.
         self.port = port
 
     def validate(self):

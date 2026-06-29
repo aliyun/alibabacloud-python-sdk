@@ -13,8 +13,12 @@ class CheckDataSourceConnectivityRequest(DaraModel):
         check_command: main_models.CheckDataSourceConnectivityRequestCheckCommand = None,
         op_tenant_id: int = None,
     ):
+        # The object to check.
+        # 
         # This parameter is required.
         self.check_command = check_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,8 +56,12 @@ class CheckDataSourceConnectivityRequestCheckCommand(DaraModel):
         config_item_list: List[main_models.CheckDataSourceConnectivityRequestCheckCommandConfigItemList] = None,
         type: str = None,
     ):
+        # The connection configuration items.
+        # 
         # This parameter is required.
         self.config_item_list = config_item_list
+        # The data source type. For supported data source types, see the documentation for creating a data source.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -97,8 +105,12 @@ class CheckDataSourceConnectivityRequestCheckCommandConfigItemList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
+        # 
         # This parameter is required.
         self.key = key
+        # The configuration value.
+        # 
         # This parameter is required.
         self.value = value
 

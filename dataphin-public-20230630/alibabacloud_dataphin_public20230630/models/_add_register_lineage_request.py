@@ -13,8 +13,12 @@ class AddRegisterLineageRequest(DaraModel):
         add_register_lineage_command: main_models.AddRegisterLineageRequestAddRegisterLineageCommand = None,
         op_tenant_id: int = None,
     ):
+        # The command for registering and adding data lineage.
+        # 
         # This parameter is required.
         self.add_register_lineage_command = add_register_lineage_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -57,14 +61,23 @@ class AddRegisterLineageRequestAddRegisterLineageCommand(DaraModel):
         tenant_id: int = None,
         user_id: str = None,
     ):
+        # Specifies whether to check the existence of the asset. By default, the existence is not checked.
         self.check_asset_exist = check_asset_exist
+        # The detailed lineage relationships. For tables, these are field-level lineage relationships. If you do not want to add field-level lineage, leave this parameter empty.
         self.detailed_lineages = detailed_lineages
+        # The lineage relationship properties.
         self.relation_properties = relation_properties
+        # The source asset.
+        # 
         # This parameter is required.
         self.source = source
+        # The target asset.
+        # 
         # This parameter is required.
         self.target = target
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The ID of the current user.
         self.user_id = user_id
 
     def validate(self):
@@ -150,16 +163,27 @@ class AddRegisterLineageRequestAddRegisterLineageCommandTarget(DaraModel):
         reference_type: str = None,
         schema: str = None,
     ):
+        # The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.catalog = catalog
+        # The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.env = env
+        # The extended properties.
         self.ext_properties = ext_properties
+        # The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
         self.guid = guid
+        # The asset subtype. Specify this parameter only when metadataType is set to TABLE and referenceType is not set to BY_GUID.
         self.metadata_sub_type = metadata_sub_type
+        # The asset type. Set this parameter based on the actual scenario.
+        # 
         # This parameter is required.
         self.metadata_type = metadata_type
+        # The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.name = name
+        # The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
+        # 
         # This parameter is required.
         self.reference_type = reference_type
+        # The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.schema = schema
 
     def validate(self):
@@ -243,16 +267,27 @@ class AddRegisterLineageRequestAddRegisterLineageCommandSource(DaraModel):
         reference_type: str = None,
         schema: str = None,
     ):
+        # The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.catalog = catalog
+        # The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.env = env
+        # The extended properties.
         self.ext_properties = ext_properties
+        # The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
         self.guid = guid
+        # The asset subtype. Specify this parameter only when metadataType is set to TABLE and referenceType is not set to BY_GUID.
         self.metadata_sub_type = metadata_sub_type
+        # The asset type. Set this parameter based on the actual scenario.
+        # 
         # This parameter is required.
         self.metadata_type = metadata_type
+        # The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.name = name
+        # The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
+        # 
         # This parameter is required.
         self.reference_type = reference_type
+        # The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.schema = schema
 
     def validate(self):
@@ -330,9 +365,14 @@ class AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineages(DaraMod
         source: main_models.AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource = None,
         target: main_models.AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget = None,
     ):
+        # Specifies whether this is a direct lineage relationship. Default value: true.
         self.is_direct = is_direct
+        # The source asset reference.
+        # 
         # This parameter is required.
         self.source = source
+        # The target asset reference.
+        # 
         # This parameter is required.
         self.target = target
 
@@ -386,14 +426,23 @@ class AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesTarget(D
         reference_type: str = None,
         schema: str = None,
     ):
+        # The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.catalog = catalog
+        # The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.env = env
+        # The extended properties.
         self.ext_properties = ext_properties
+        # The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
         self.guid = guid
+        # The asset type. Set this parameter based on the actual scenario.
         self.metadata_type = metadata_type
+        # The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.name = name
+        # The GUID of the parent asset. If the current object is a field, parentGuid is the GUID of the table to which the field belongs.
         self.parent_guid = parent_guid
+        # The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
         self.reference_type = reference_type
+        # The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.schema = schema
 
     def validate(self):
@@ -477,14 +526,23 @@ class AddRegisterLineageRequestAddRegisterLineageCommandDetailedLineagesSource(D
         reference_type: str = None,
         schema: str = None,
     ):
+        # The catalog property of the asset. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.catalog = catalog
+        # The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.env = env
+        # The extended properties.
         self.ext_properties = ext_properties
+        # The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
         self.guid = guid
+        # The asset type. Set this parameter based on the actual scenario.
         self.metadata_type = metadata_type
+        # The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.name = name
+        # The GUID of the parent asset. If the current object is a field, parentGuid is the GUID of the table to which the field belongs.
         self.parent_guid = parent_guid
+        # The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
         self.reference_type = reference_type
+        # The schema property of the asset. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
         self.schema = schema
 
     def validate(self):

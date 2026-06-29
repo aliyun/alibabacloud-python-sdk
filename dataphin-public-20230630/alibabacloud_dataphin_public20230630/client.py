@@ -20,7 +20,14 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shenzhen': 'dataphin-public.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'dataphin-public.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'dataphin-public.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'dataphin-public.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'dataphin-public.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dataphin-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

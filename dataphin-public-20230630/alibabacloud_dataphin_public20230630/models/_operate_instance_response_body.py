@@ -17,11 +17,17 @@ class OperateInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The O&M results of the instances.
         self.instance_status_list = instance_status_list
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -93,12 +99,19 @@ class OperateInstanceResponseBodyInstanceStatusList(DaraModel):
         owner_name: str = None,
         status: str = None,
     ):
+        # The display name of the instance.
         self.display_name = display_name
+        # The error message returned when the operation fails.
         self.error_message = error_message
+        # The instance ID.
         self.id = id
+        # The instance name.
         self.name = name
+        # The owner of the instance.
         self.owner_id = owner_id
+        # The owner of the instance.
         self.owner_name = owner_name
+        # The result of the operation, which indicates success or failure.
         self.status = status
 
     def validate(self):

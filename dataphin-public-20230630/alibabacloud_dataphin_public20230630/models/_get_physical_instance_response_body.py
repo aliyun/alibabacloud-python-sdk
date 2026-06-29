@@ -17,11 +17,17 @@ class GetPhysicalInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. A value of OK indicates that the request was successful.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Instance details
         self.instance = instance
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,15 +96,25 @@ class GetPhysicalInstanceResponseBodyInstance(DaraModel):
         start_execute_time: int = None,
         status_list: List[str] = None,
     ):
+        # Business date
         self.biz_date = biz_date
+        # Scheduled time
         self.due_time = due_time
+        # Execution duration
         self.duration = duration
+        # End execution time
         self.end_execute_time = end_execute_time
+        # Extended information
         self.extend_info = extend_info
+        # Instance ID
         self.id = id
+        # Running instance index
         self.index = index
+        # Node details
         self.node_info = node_info
+        # Start execution time
         self.start_execute_time = start_execute_time
+        # Status list
         self.status_list = status_list
 
     def validate(self):
@@ -200,24 +216,69 @@ class GetPhysicalInstanceResponseBodyInstanceNodeInfo(DaraModel):
         sub_detail_type: str = None,
         type: str = None,
     ):
+        # Business unit name
         self.biz_unit_name = biz_unit_name
+        # Creation time
         self.create_time = create_time
+        # Creator
         self.creator = creator
+        # Description
         self.description = description
+        # Indicates whether this is a dry run.
         self.dry_run = dry_run
+        # Source system of the node
         self.from_ = from_
+        # Indicates whether the development environment exists.
         self.has_dev = has_dev
+        # Indicates whether the production environment exists.
         self.has_prod = has_prod
+        # Node ID
         self.id = id
+        # Last modified time
         self.last_modified_time = last_modified_time
+        # Modifier
         self.modifier = modifier
+        # Node name
         self.name = name
+        # Owner list
         self.owner_list = owner_list
+        # Priority
+        # - HIGHEST
+        # - HIGH
+        # - MIDDLE
+        # - LOW
+        # - LOWEST
         self.priority_list = priority_list
+        # Resource group list
         self.resource_group_list = resource_group_list
+        # Indicates whether scheduling is paused.
         self.schedule_paused = schedule_paused
+        # Scheduling period
+        # - YEARLY
+        # - MONTHLY
+        # - WEEKLY
+        # - DAILY
+        # - HOURLY
+        # - MINUTELY
         self.schedule_period_list = schedule_period_list
+        # Sub-business type
+        # - MAX_COMPUTE_SQL
+        # - HIVE_SQL
+        # - SHELL
+        # - PYTHON
+        # - ONE_SERVICE_SQL
+        # - DATABASE_SQL
         self.sub_detail_type = sub_detail_type
+        # Node type
+        # - BBOX_LOGIC_TABLE_NODE: Logical table node
+        # - BBOX_LOGIC_FIELD_NODE: Logical field node
+        # - BBOX_LOGIC_FIELD_GROUP_NODE: Field group node
+        # - BBOX_INNER_TEMP_NODE: Logical table temp node
+        # - DATA_PROCESS: Code task
+        # - STREAM_TASK_NODE: Real-time task
+        # - PIPELINE_NODE: Pipeline node
+        # - FLINK_BATCH: Flink batch task
+        # - ODM_NODE: ODM node
         self.type = type
 
     def validate(self):
@@ -368,7 +429,9 @@ class GetPhysicalInstanceResponseBodyInstanceNodeInfoOwnerList(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # User ID
         self.id = id
+        # Username
         self.name = name
 
     def validate(self):
@@ -403,7 +466,9 @@ class GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # User ID
         self.id = id
+        # Username
         self.name = name
 
     def validate(self):
@@ -438,7 +503,9 @@ class GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # User ID
         self.id = id
+        # Username
         self.name = name
 
     def validate(self):

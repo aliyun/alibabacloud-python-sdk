@@ -11,8 +11,12 @@ class DeleteBizMetricRequest(DaraModel):
         delete_biz_metric_command: main_models.DeleteBizMetricRequestDeleteBizMetricCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete request.
+        # 
         # This parameter is required.
         self.delete_biz_metric_command = delete_biz_metric_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -49,6 +53,8 @@ class DeleteBizMetricRequestDeleteBizMetricCommand(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the business metric to delete.
+        # 
         # This parameter is required.
         self.name = name
 

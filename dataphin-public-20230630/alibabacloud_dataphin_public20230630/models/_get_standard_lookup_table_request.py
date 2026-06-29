@@ -11,9 +11,14 @@ class GetStandardLookupTableRequest(DaraModel):
         nullable: bool = None,
         op_tenant_id: int = None,
     ):
+        # The lookup table ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Specifies whether to allow a null value to be returned when the lookup table does not exist. If set to false, an exception is thrown. Default value: true.
         self.nullable = nullable
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

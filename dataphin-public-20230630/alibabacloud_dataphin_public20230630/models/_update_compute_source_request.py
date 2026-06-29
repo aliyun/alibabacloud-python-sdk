@@ -13,8 +13,12 @@ class UpdateComputeSourceRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateComputeSourceRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The edit command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -55,14 +59,24 @@ class UpdateComputeSourceRequestUpdateCommand(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The connection configuration items.
+        # 
         # This parameter is required.
         self.config_list = config_list
+        # The description.
+        # 
         # This parameter is required.
         self.description = description
+        # The ID of the compute source.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the compute source.
+        # 
         # This parameter is required.
         self.name = name
+        # The type of the compute source.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -124,8 +138,12 @@ class UpdateComputeSourceRequestUpdateCommandConfigList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the configuration item.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the configuration item.
+        # 
         # This parameter is required.
         self.value = value
 

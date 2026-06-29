@@ -17,13 +17,17 @@ class GetCheckConnectivityJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code returned by the backend.
         self.code = code
         # result
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details returned by the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -95,12 +99,19 @@ class GetCheckConnectivityJobsResponseBodyData(DaraModel):
         tenant_id: str = None,
         voldemort_task_id: str = None,
     ):
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The error message that provides a detailed error description when the task fails.
         self.error_msg = error_msg
+        # The task ID.
         self.job_id = job_id
+        # The task type, such as application-level or cluster-level.
         self.job_type = job_type
+        # The task status.
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The Voldemort task ID, which is used to associate with the underlying execution task.
         self.voldemort_task_id = voldemort_task_id
 
     def validate(self):

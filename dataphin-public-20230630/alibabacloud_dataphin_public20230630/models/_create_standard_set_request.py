@@ -13,8 +13,12 @@ class CreateStandardSetRequest(DaraModel):
         create_command: main_models.CreateStandardSetRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create instruction.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -61,18 +65,31 @@ class CreateStandardSetRequestCreateCommand(DaraModel):
         offline_approval_config: main_models.CreateStandardSetRequestCreateCommandOfflineApprovalConfig = None,
         visibility_config: main_models.CreateStandardSetRequestCreateCommandVisibilityConfig = None,
     ):
+        # The approval configuration for going online.
         self.approval_config = approval_config
+        # The code of the standard set.
+        # 
         # This parameter is required.
         self.code = code
+        # The ID of the default standard template.
         self.default_standard_template_id = default_standard_template_id
+        # The description of the standard set.
         self.description = description
+        # The directory to which the standard set belongs.
         self.directory_reference = directory_reference
+        # The list of maintainers.
         self.maintainer_list = maintainer_list
+        # The list of member groups.
         self.member_group_list = member_group_list
+        # The list of members.
         self.member_list = member_list
+        # The name of the standard set.
+        # 
         # This parameter is required.
         self.name = name
+        # The approval configuration for going offline.
         self.offline_approval_config = offline_approval_config
+        # The visibility configuration.
         self.visibility_config = visibility_config
 
     def validate(self):
@@ -172,7 +189,13 @@ class CreateStandardSetRequestCreateCommandVisibilityConfig(DaraModel):
         specified_user_list: List[str] = None,
         type: str = None,
     ):
+        # The list of specified users who can view the standard set. This parameter takes effect only when the visibility type is set to SPECIFIED.
         self.specified_user_list = specified_user_list
+        # The visibility type. Valid values:
+        # - PUBLIC: visible to all users.
+        # - PRIVATE: visible only to standard set members and administrators.
+        # - SPECIFIED: visible only to specified users.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -210,12 +233,21 @@ class CreateStandardSetRequestCreateCommandOfflineApprovalConfig(DaraModel):
         is_submit_in_batch: bool = None,
         template_id: int = None,
     ):
+        # The approval process type. Valid values:
+        # - BY_DEFAULT: the default approval type.
+        # - BY_TEMPLATE: approval based on an approval template.
+        # 
         # This parameter is required.
         self.approval_type = approval_type
+        # Specifies whether to enable approval.
+        # 
         # This parameter is required.
         self.enable_approval = enable_approval
+        # Specifies whether to submit approvals in batches.
+        # 
         # This parameter is required.
         self.is_submit_in_batch = is_submit_in_batch
+        # The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
         self.template_id = template_id
 
     def validate(self):
@@ -261,6 +293,8 @@ class CreateStandardSetRequestCreateCommandDirectoryReference(DaraModel):
         self,
         directory: str = None,
     ):
+        # The directory to which the standard set belongs.
+        # 
         # This parameter is required.
         self.directory = directory
 
@@ -292,12 +326,21 @@ class CreateStandardSetRequestCreateCommandApprovalConfig(DaraModel):
         is_submit_in_batch: bool = None,
         template_id: int = None,
     ):
+        # The approval process type. Valid values:
+        # - BY_DEFAULT: the default approval type.
+        # - BY_TEMPLATE: approval based on an approval template.
+        # 
         # This parameter is required.
         self.approval_type = approval_type
+        # Specifies whether to enable approval.
+        # 
         # This parameter is required.
         self.enable_approval = enable_approval
+        # Specifies whether to submit approvals in batches.
+        # 
         # This parameter is required.
         self.is_submit_in_batch = is_submit_in_batch
+        # The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
         self.template_id = template_id
 
     def validate(self):

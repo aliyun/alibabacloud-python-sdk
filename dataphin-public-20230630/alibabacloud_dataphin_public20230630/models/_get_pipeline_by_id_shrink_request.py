@@ -11,10 +11,16 @@ class GetPipelineByIdShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         query_id_shrink: str = None,
     ):
+        # The request context information.
+        # 
         # This parameter is required.
         self.context_shrink = context_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID used to query the pipeline task.
+        # 
         # This parameter is required.
         self.query_id_shrink = query_id_shrink
 

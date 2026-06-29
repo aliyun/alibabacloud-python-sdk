@@ -17,12 +17,17 @@ class GetDataServiceAppsByGroupIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of application groups.
         self.app_info_list = app_info_list
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -91,6 +96,7 @@ class GetDataServiceAppsByGroupIdResponseBodyAppInfoList(DaraModel):
     ):
         # AppId
         self.id = id
+        # The application name.
         self.name = name
 
     def validate(self):

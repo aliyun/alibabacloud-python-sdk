@@ -11,8 +11,12 @@ class CreateSecurityLevelRequest(DaraModel):
         create_command: main_models.CreateSecurityLevelRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,9 +56,14 @@ class CreateSecurityLevelRequestCreateCommand(DaraModel):
         index: int = None,
         name: str = None,
     ):
+        # The abbreviation of the classification level.
         self.abbreviation = abbreviation
+        # The description of the classification level.
         self.description = description
+        # The sort order of the classification level. If this parameter is not specified, the current maximum order ID is used by default.
         self.index = index
+        # The name of the classification level.
+        # 
         # This parameter is required.
         self.name = name
 

@@ -17,11 +17,17 @@ class GetUsersResponseBody(DaraModel):
         success: bool = None,
         user_list: List[main_models.GetUsersResponseBodyUserList] = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The list of users.
         self.user_list = user_list
 
     def validate(self):
@@ -105,24 +111,43 @@ class GetUsersResponseBodyUserList(DaraModel):
         we_chat_robot: str = None,
         white_ip: str = None,
     ):
+        # The account name.
         self.account_name = account_name
+        # The DingTalk number.
         self.ding_number = ding_number
+        # The display name of the user.
         self.display_name = display_name
+        # The display name of the user without status.
         self.display_name_without_status = display_name_without_status
+        # Indicates whether the IP whitelist is enabled.
         self.enable_white_ip = enable_white_ip
+        # The Lark chatbot.
         self.fei_shu_robot = fei_shu_robot
+        # The creation time.
         self.gmt_create = gmt_create
+        # The last modification time.
         self.gmt_modified = gmt_modified
+        # The user ID.
         self.id = id
+        # The email address.
         self.mail = mail
+        # The phone number.
         self.mobile_phone = mobile_phone
+        # The username.
         self.name = name
+        # The nickname of the user.
         self.nick_name = nick_name
+        # The ID of the primary account to which the user belongs.
         self.parent_id = parent_id
+        # The real name of the user.
         self.real_name = real_name
+        # The source ID of the user.
         self.source_id = source_id
+        # The source type of the user.
         self.source_type = source_type
+        # The WeCom chatbot.
         self.we_chat_robot = we_chat_robot
+        # The IP whitelist.
         self.white_ip = white_ip
 
     def validate(self):

@@ -11,8 +11,12 @@ class GetBizMetricByNameRequest(DaraModel):
         biz_metric_by_name_query: main_models.GetBizMetricByNameRequestBizMetricByNameQuery = None,
         op_tenant_id: int = None,
     ):
+        # Query request.
+        # 
         # This parameter is required.
         self.biz_metric_by_name_query = biz_metric_by_name_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -50,8 +54,12 @@ class GetBizMetricByNameRequestBizMetricByNameQuery(DaraModel):
         draft: bool = None,
         name: str = None,
     ):
+        # Specifies whether to query draft or published asset details. Set this parameter to True to query draft details, or False to query published details.
+        # 
         # This parameter is required.
         self.draft = draft
+        # The name of the business metric.
+        # 
         # This parameter is required.
         self.name = name
 

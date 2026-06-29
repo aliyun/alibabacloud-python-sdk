@@ -17,11 +17,17 @@ class ListProjectMembersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paging query result.
         self.page_result = page_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListProjectMembersResponseBodyPageResult(DaraModel):
         project_member_list: List[main_models.ListProjectMembersResponseBodyPageResultProjectMemberList] = None,
         total_count: int = None,
     ):
+        # The list of project members.
         self.project_member_list = project_member_list
+        # The total number of project members.
         self.total_count = total_count
 
     def validate(self):
@@ -131,13 +139,21 @@ class ListProjectMembersResponseBodyPageResultProjectMemberList(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The creation timestamp.
         self.gmt_create = gmt_create
+        # The last modified timestamp.
         self.gmt_modified = gmt_modified
+        # The project ID.
         self.id = id
+        # The ID of the user who last modified the record.
         self.last_modifier = last_modifier
+        # The name of the user who last modified the record.
         self.last_modifier_name = last_modifier_name
+        # The roles.
         self.role_id_list = role_id_list
+        # The user ID of the member.
         self.user_id = user_id
+        # The username of the member.
         self.user_name = user_name
 
     def validate(self):

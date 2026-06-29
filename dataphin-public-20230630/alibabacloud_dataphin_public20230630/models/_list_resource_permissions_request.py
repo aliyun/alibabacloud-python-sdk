@@ -11,8 +11,12 @@ class ListResourcePermissionsRequest(DaraModel):
         list_query: main_models.ListResourcePermissionsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # Paginated request.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,11 +56,18 @@ class ListResourcePermissionsRequestListQuery(DaraModel):
         search_text: str = None,
         tab_type: str = None,
     ):
+        # Page number.
+        # 
         # This parameter is required.
         self.page = page
+        # Number of records per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Search keyword.
         self.search_text = search_text
+        # Tab name. Table: TABLE. Data source: DATASOURCE.
+        # 
         # This parameter is required.
         self.tab_type = tab_type
 

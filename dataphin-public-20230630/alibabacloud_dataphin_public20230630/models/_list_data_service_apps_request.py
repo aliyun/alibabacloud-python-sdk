@@ -11,8 +11,12 @@ class ListDataServiceAppsRequest(DaraModel):
         list_query: main_models.ListDataServiceAppsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # Query the list of all applications under the tenant.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,9 +56,13 @@ class ListDataServiceAppsRequestListQuery(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # Application group ID.
         self.app_group_id = app_group_id
+        # Application name search keyword.
         self.keyword = keyword
+        # Page number. Default value: 1.
         self.page_no = page_no
+        # Number of records per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

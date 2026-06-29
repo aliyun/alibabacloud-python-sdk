@@ -15,12 +15,17 @@ class GetQualityRuleTaskResponseBody(DaraModel):
         rule_task_info: main_models.GetQualityRuleTaskResponseBodyRuleTaskInfo = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The rule task details.
         self.rule_task_info = rule_task_info
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -97,23 +102,41 @@ class GetQualityRuleTaskResponseBodyRuleTaskInfo(DaraModel):
         watch_id: int = None,
         watch_task_id: int = None,
     ):
+        # The business date.
         self.biz_date = biz_date
+        # The business date format.
         self.biz_date_format = biz_date_format
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.creator = creator
+        # The end time.
         self.end_time = end_time
+        # The rule task ID.
         self.id = id
+        # The ID of the user who last modified the task.
         self.modifier = modifier
+        # The modification time.
         self.modify_time = modify_time
+        # The rule ID.
         self.rule_id = rule_id
+        # The start time.
         self.start_time = start_time
+        # The task status.
         self.status = status
+        # The template ID.
         self.template_id = template_id
+        # The validation object name.
         self.validate_object_name = validate_object_name
+        # The validation object type.
         self.validate_object_type = validate_object_type
+        # The validation partition.
         self.validate_partition = validate_partition
+        # Indicates whether the validation passed.
         self.validate_success = validate_success
+        # The ID of the associated monitor.
         self.watch_id = watch_id
+        # The monitor task ID. This ID is empty for trial-run rule tasks.
         self.watch_task_id = watch_task_id
 
     def validate(self):

@@ -11,10 +11,16 @@ class RevokeDataServiceApiShrinkRequest(DaraModel):
         project_id: int = None,
         revoke_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The revoke instruction.
+        # 
         # This parameter is required.
         self.revoke_command_shrink = revoke_command_shrink
 

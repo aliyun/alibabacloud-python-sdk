@@ -13,8 +13,12 @@ class CreateDataServiceAppRequest(DaraModel):
         create_command: main_models.CreateDataServiceAppRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The command to create a data service application.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -56,14 +60,29 @@ class CreateDataServiceAppRequestCreateCommand(DaraModel):
         owner_ids: List[str] = None,
         scenarios: str = None,
     ):
+        # The application group ID.
+        # 
         # This parameter is required.
         self.app_group_id = app_group_id
+        # The application key, which must be globally unique and is used when calling APIs.
+        # The key must be 8 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # This parameter can be customized only when using Alibaba Cloud API Gateway or the built-in gateway. This parameter is ignored when using a dedicated cloud gateway.
         self.app_key = app_key
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The app secret.
+        # If this parameter is not specified, the system automatically generates a new AppSecret value.
+        # The secret must be 8 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # This parameter can be customized only when using Alibaba Cloud API Gateway or the built-in gateway. This parameter is ignored when using a dedicated cloud gateway.
         self.app_secret = app_secret
+        # The list of owner IDs.
+        # 
         # This parameter is required.
         self.owner_ids = owner_ids
+        # Common scenarios.
+        # 
         # This parameter is required.
         self.scenarios = scenarios
 

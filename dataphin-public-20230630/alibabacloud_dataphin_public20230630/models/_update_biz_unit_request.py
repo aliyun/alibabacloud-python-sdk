@@ -13,8 +13,12 @@ class UpdateBizUnitRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateBizUnitRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update request.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -56,15 +60,26 @@ class UpdateBizUnitRequestUpdateCommand(DaraModel):
         icon: str = None,
         name: str = None,
     ):
+        # The domain architects.
+        # 
         # This parameter is required.
         self.biz_unit_account_list = biz_unit_account_list
+        # The data domain ID.
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # The description.
         self.description = description
+        # The display name of the data domain.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The preset icon. For more information, refer to the create data domain operation.
+        # 
         # This parameter is required.
         self.icon = icon
+        # The data domain code.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -131,6 +146,8 @@ class UpdateBizUnitRequestUpdateCommandBizUnitAccountList(DaraModel):
         self,
         user_id: str = None,
     ):
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

@@ -13,8 +13,12 @@ class UpdateTenantMemberRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateTenantMemberRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The request object.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -51,6 +55,8 @@ class UpdateTenantMemberRequestUpdateCommand(DaraModel):
         self,
         member_list: List[main_models.UpdateTenantMemberRequestUpdateCommandMemberList] = None,
     ):
+        # The list of members.
+        # 
         # This parameter is required.
         self.member_list = member_list
 
@@ -91,10 +97,15 @@ class UpdateTenantMemberRequestUpdateCommandMemberList(DaraModel):
         role_list: List[str] = None,
         user_id: str = None,
     ):
+        # The DingTalk number.
         self.ding_number = ding_number
+        # The email address.
         self.mail = mail
+        # The phone number.
         self.mobile_phone = mobile_phone
+        # The list of roles.
         self.role_list = role_list
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

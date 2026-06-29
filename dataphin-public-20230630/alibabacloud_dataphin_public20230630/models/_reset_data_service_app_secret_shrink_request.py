@@ -10,8 +10,12 @@ class ResetDataServiceAppSecretShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         update_command_shrink: str = None,
     ):
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Reset Data Service Application Key
+        # 
         # This parameter is required.
         self.update_command_shrink = update_command_shrink
 

@@ -13,8 +13,12 @@ class UpdateBizEntityRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateBizEntityRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update request.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -56,14 +60,24 @@ class UpdateBizEntityRequestUpdateCommand(DaraModel):
         id: int = None,
         type: str = None,
     ):
+        # The business object.
         self.biz_object = biz_object
+        # The business process.
         self.biz_process = biz_process
+        # The ID of the business unit to which the business process belongs.
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # The ID of the data domain to which the business process belongs.
+        # 
         # This parameter is required.
         self.data_domain_id = data_domain_id
+        # The ID of the business entity.
+        # 
         # This parameter is required.
         self.id = id
+        # The type of the business entity. For more information, refer to the create business entity operation.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -133,15 +147,25 @@ class UpdateBizEntityRequestUpdateCommandBizProcess(DaraModel):
         pre_biz_process_id_list: List[int] = None,
         ref_biz_entity_id_list: List[int] = None,
     ):
+        # The list of business event activity IDs contained in the business flow activity. This parameter is valid only when the current entity is a business flow activity.
         self.biz_event_entity_id_list = biz_event_entity_id_list
+        # The description of the business process. The description can be up to 128 characters in length.
         self.description = description
+        # The display name of the business process. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The code name of the business process. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The user ID of the business process owner.
+        # 
         # This parameter is required.
         self.owner_user_id = owner_user_id
+        # The preceding business flow activities of the business flow activity.
         self.pre_biz_process_id_list = pre_biz_process_id_list
+        # The list of associated online business entity IDs. If this parameter is not specified, the existing values are cleared.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
 
     def validate(self):
@@ -210,14 +234,23 @@ class UpdateBizEntityRequestUpdateCommandBizObject(DaraModel):
         parent_id: int = None,
         ref_biz_entity_id_list: List[int] = None,
     ):
+        # The description of the business object. The description can be up to 128 characters in length.
         self.description = description
+        # The display name of the business object. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The user ID of the business object owner.
+        # 
         # This parameter is required.
         self.owner_user_id = owner_user_id
+        # The inherited entity of the business object. Only common business objects support inherited entity configuration, and only online business objects can be inherited.
         self.parent_id = parent_id
+        # The list of associated online business entity IDs. If this parameter is not specified, the existing values are cleared.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
 
     def validate(self):

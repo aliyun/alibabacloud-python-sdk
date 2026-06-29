@@ -13,8 +13,12 @@ class RemoveUserGroupMemberRequest(DaraModel):
         op_tenant_id: int = None,
         remove_command: main_models.RemoveUserGroupMemberRequestRemoveCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The command to remove user group members.
+        # 
         # This parameter is required.
         self.remove_command = remove_command
 
@@ -52,8 +56,12 @@ class RemoveUserGroupMemberRequestRemoveCommand(DaraModel):
         user_group_id: str = None,
         user_id_list: List[str] = None,
     ):
+        # The user group ID.
+        # 
         # This parameter is required.
         self.user_group_id = user_group_id
+        # The list of user IDs.
+        # 
         # This parameter is required.
         self.user_id_list = user_id_list
 

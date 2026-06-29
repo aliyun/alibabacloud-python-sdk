@@ -13,7 +13,10 @@ class ListQualityRuleTasksRequest(DaraModel):
         list_query: main_models.ListQualityRuleTasksRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The paged query conditions.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -59,15 +62,57 @@ class ListQualityRuleTasksRequestListQuery(DaraModel):
         validate_result_list: List[str] = None,
         watch_task_id: int = None,
     ):
+        # The business date.
         self.biz_date = biz_date
+        # The rule type. Valid values:
+        # - CONSISTENT: consistency
+        # - EFFECTIVE: validity
+        # - TIMELINESE: timeliness
+        # - ACCURATE: accuracy
+        # - UNIQUENESS: uniqueness
+        # - COMPLETENESS: completeness
+        # - STABILITY: stability
+        # - CUSTOM: custom.
         self.catalog_list = catalog_list
+        # The search keyword. You can search by field name or rule name.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The rule strength. Valid values:
+        # - STRONG: strong
+        # - WEAK: weak.
         self.rule_strength_list = rule_strength_list
+        # The rule label. Valid values:
+        # - DEFAULT: default label
+        # - DATA_STANDARD_MANUAL: standard rule manually created
+        # - DATA_STANDARD_AUTO: quality rule created by automatic creation from a standard
+        # - PIPELINE: rule created by a pipeline
+        # - DATA_MODELING: data modeling diagnostics.
         self.rule_tag_list = rule_tag_list
+        # The task status. Valid values:
+        # - NOT_RUN: not executed
+        # - WAITING: waiting
+        # - RUNNING: running
+        # - SUCCESS: succeeded
+        # - FAILED: failed
+        # - CANCEL: canceled
+        # - TIMEOUT: timed out
+        # - OFFLINE: offline.
         self.status_list = status_list
+        # The validation result. Valid values:
+        # - NOT_RUN: not executed
+        # - WAITING: waiting for execution
+        # - RUNNING: running
+        # - PASS: passed
+        # - NOT_PASS: not passed
+        # - FAILED: execution failed
+        # - OFFLINE: offline and needs to be restarted
+        # - CANCEL: task canceled
+        # - TIMEOUT: task timed out.
         self.validate_result_list = validate_result_list
+        # The ID of the quality watchtask.
         self.watch_task_id = watch_task_id
 
     def validate(self):

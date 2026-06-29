@@ -13,8 +13,12 @@ class UpdateDataSourceConfigRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateDataSourceConfigRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data source configuration item change.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -52,8 +56,12 @@ class UpdateDataSourceConfigRequestUpdateCommand(DaraModel):
         config_item_list: List[main_models.UpdateDataSourceConfigRequestUpdateCommandConfigItemList] = None,
         id: int = None,
     ):
+        # The connection configuration items.
+        # 
         # This parameter is required.
         self.config_item_list = config_item_list
+        # The data source ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -97,8 +105,12 @@ class UpdateDataSourceConfigRequestUpdateCommandConfigItemList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key ID of the configuration item.
+        # 
         # This parameter is required.
         self.key = key
+        # The configuration value.
+        # 
         # This parameter is required.
         self.value = value
 

@@ -10,8 +10,12 @@ class GetDataServiceAppMembersRequest(DaraModel):
         app_id: int = None,
         op_tenant_id: int = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

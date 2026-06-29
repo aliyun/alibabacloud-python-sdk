@@ -11,8 +11,11 @@ class RetryTransferOwnershipRequest(DaraModel):
         op_tenant_id: int = None,
         privilege_transfer_record: main_models.RetryTransferOwnershipRequestPrivilegeTransferRecord = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The transfer information.
         self.privilege_transfer_record = privilege_transfer_record
 
     def validate(self):
@@ -50,10 +53,15 @@ class RetryTransferOwnershipRequestPrivilegeTransferRecord(DaraModel):
         new_owner: str = None,
         transfer_comment: str = None,
     ):
+        # The ID of the transfer task.
+        # 
         # This parameter is required.
         self.id = id
+        # The user ID of the recipient.
+        # 
         # This parameter is required.
         self.new_owner = new_owner
+        # The remarks.
         self.transfer_comment = transfer_comment
 
     def validate(self):

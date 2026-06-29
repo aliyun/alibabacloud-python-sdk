@@ -11,9 +11,16 @@ class GetProjectRequest(DaraModel):
         id: int = None,
         op_tenant_id: int = None,
     ):
+        # Project environment. Valid values:
+        #  - DEV: development environment.
+        #  - PROD: production environment.
         self.env = env
+        # Project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

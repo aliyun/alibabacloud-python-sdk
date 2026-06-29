@@ -13,8 +13,12 @@ class CreateUdfRequest(DaraModel):
         create_command: main_models.CreateUdfRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -60,23 +64,42 @@ class CreateUdfRequestCreateCommand(DaraModel):
         project_id: int = None,
         ref_resource_id_list: List[int] = None,
     ):
+        # The UDF category identifier. Valid values: 1: window function. 2: statistical function. 3: numerical function. 4: string function. 5: time function. 6: IP address utility function. 7: URL-related function. 8: encoding and decoding function. 9: business-related function. 10: other.
+        # 
         # This parameter is required.
         self.category = category
+        # The class name that implements the function in the resource.
+        # 
         # This parameter is required.
         self.class_name = class_name
+        # The command format for function calling invoke.
+        # 
         # This parameter is required.
         self.command_help = command_help
+        # The commit remarks.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The compute engine type. Valid values: MAX_COMPUTE, HADOOP.
+        # 
         # This parameter is required.
         self.compute_engine_type = compute_engine_type
+        # The description.
+        # 
         # This parameter is required.
         self.description = description
+        # The directory in which the function is stored.
         self.directory = directory
+        # The function name.
+        # 
         # This parameter is required.
         self.name = name
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The IDs of referenced resources.
+        # 
         # This parameter is required.
         self.ref_resource_id_list = ref_resource_id_list
 

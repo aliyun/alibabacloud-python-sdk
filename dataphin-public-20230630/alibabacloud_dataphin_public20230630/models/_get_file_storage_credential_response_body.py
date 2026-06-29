@@ -15,12 +15,17 @@ class GetFileStorageCredentialResponseBody(DaraModel):
         storage_credential: main_models.GetFileStorageCredentialResponseBodyStorageCredential = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The details of the temporary read/write authorization.
         self.storage_credential = storage_credential
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,15 +93,23 @@ class GetFileStorageCredentialResponseBodyStorageCredential(DaraModel):
         security_token: str = None,
         storage_type: str = None,
     ):
+        # The temporary AccessKey ID.
         self.access_id = access_id
+        # The temporary AccessKey ID.
         self.access_key = access_key
+        # The file storage bucket.
         self.bucket = bucket
+        # The endpoint.
         self.endpoint = endpoint
+        # The expiration time.
         self.expiration = expiration
+        # The storage object.
         self.object_name = object_name
         # region
         self.region = region
+        # The temporary security token.
         self.security_token = security_token
+        # The storage cluster type. Valid values: oss and ceph.
         self.storage_type = storage_type
 
     def validate(self):

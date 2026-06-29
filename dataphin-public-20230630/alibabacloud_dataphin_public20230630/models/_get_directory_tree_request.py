@@ -11,10 +11,27 @@ class GetDirectoryTreeRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # Directory type.
+        # - Ad-hoc Query: tempCode
+        # - Code Task: codeManage
+        # - Offline Pipeline: offlinePipeline
+        # - Pipeline Custom Component: offlinePipelineCustomPlugin
+        # - Sync Task: dataX
+        # - Real-time Meta Table: streamMeta
+        # - Real-time Custom Source: streamCustomDataSource
+        # - Real-time Compute Template: streamTemplate
+        # - Resource Management: resourceManage
+        # - Offline Function: udfResource
+        # - Real-time Function: streamFunction
+        # 
         # This parameter is required.
         self.category = category
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

@@ -10,8 +10,12 @@ class ParseBatchTaskDependencyShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         parse_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The parse request.
+        # 
         # This parameter is required.
         self.parse_command_shrink = parse_command_shrink
 

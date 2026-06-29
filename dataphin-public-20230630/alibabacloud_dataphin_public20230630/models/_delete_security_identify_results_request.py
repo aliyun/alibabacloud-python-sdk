@@ -13,8 +13,12 @@ class DeleteSecurityIdentifyResultsRequest(DaraModel):
         delete_command: main_models.DeleteSecurityIdentifyResultsRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,6 +55,7 @@ class DeleteSecurityIdentifyResultsRequestDeleteCommand(DaraModel):
         self,
         identify_result_id_list: List[int] = None,
     ):
+        # The list of identification result IDs.
         self.identify_result_id_list = identify_result_id_list
 
     def validate(self):

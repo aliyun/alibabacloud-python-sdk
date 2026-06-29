@@ -11,8 +11,12 @@ class RemoveTenantMemberRequest(DaraModel):
         op_tenant_id: int = None,
         remove_command: main_models.RemoveTenantMemberRequestRemoveCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The request command.
+        # 
         # This parameter is required.
         self.remove_command = remove_command
 
@@ -49,6 +53,8 @@ class RemoveTenantMemberRequestRemoveCommand(DaraModel):
         self,
         source_id: str = None,
     ):
+        # The source ID of the user.
+        # 
         # This parameter is required.
         self.source_id = source_id
 

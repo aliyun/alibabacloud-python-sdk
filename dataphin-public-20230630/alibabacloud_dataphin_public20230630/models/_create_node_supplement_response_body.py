@@ -14,11 +14,18 @@ class CreateNodeSupplementResponseBody(DaraModel):
         submit_id: str = None,
         success: bool = None,
     ):
+        # Error code. A value of OK indicates a successful request.
         self.code = code
+        # HTTP status code returned by the backend
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # - Standard mode: the FlowId is returned.
+        # - Bulk mode: the submitted JobId is returned. You can call GetOperationSubmitStatus to query the task submission status. After the submission succeeds, the FlowId is returned.
         self.submit_id = submit_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

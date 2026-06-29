@@ -13,8 +13,12 @@ class CreateStandardRequest(DaraModel):
         create_command: main_models.CreateStandardRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -57,13 +61,22 @@ class CreateStandardRequestCreateCommand(DaraModel):
         standard_set_reference: main_models.CreateStandardRequestCreateCommandStandardSetReference = None,
         standard_template_reference: main_models.CreateStandardRequestCreateCommandStandardTemplateReference = None,
     ):
+        # The description.
         self.description = description
+        # The effective period configuration.
         self.effective_time_config = effective_time_config
+        # Specifies whether to generate a standard code based on rules. If this parameter is set to true, the standard code specified in the attribute values is ignored and a new standard code is generated.
         self.need_generate_standard_code = need_generate_standard_code
+        # The owner. If this parameter is not specified, the current user is used.
         self.owner = owner
+        # The standard monitoring configuration.
         self.standard_general_monitor_config = standard_general_monitor_config
+        # The reference to the standard set.
+        # 
         # This parameter is required.
         self.standard_set_reference = standard_set_reference
+        # The standard template to which the standard belongs.
+        # 
         # This parameter is required.
         self.standard_template_reference = standard_template_reference
 
@@ -141,9 +154,13 @@ class CreateStandardRequestCreateCommandStandardTemplateReference(DaraModel):
         id: int = None,
         version: int = None,
     ):
+        # The attribute values corresponding to the attributes in the referenced template. If this parameter is left empty, default values are used.
         self.attribute_value_list = attribute_value_list
+        # The standard template ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The standard template version number. The latest version is used by default.
         self.version = version
 
     def validate(self):
@@ -192,7 +209,9 @@ class CreateStandardRequestCreateCommandStandardTemplateReferenceAttributeValueL
         attribute_id: int = None,
         value: str = None,
     ):
+        # The attribute ID.
         self.attribute_id = attribute_id
+        # The attribute value.
         self.value = value
 
     def validate(self):
@@ -226,6 +245,8 @@ class CreateStandardRequestCreateCommandStandardSetReference(DaraModel):
         self,
         id: int = None,
     ):
+        # The standard set ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -254,6 +275,8 @@ class CreateStandardRequestCreateCommandStandardGeneralMonitorConfig(DaraModel):
         self,
         standard_monitor_config_list: List[main_models.CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigList] = None,
     ):
+        # The list of standard monitoring configurations.
+        # 
         # This parameter is required.
         self.standard_monitor_config_list = standard_monitor_config_list
 
@@ -301,19 +324,40 @@ class CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMoni
         rule_validate_config_list: List[main_models.CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMonitorConfigListRuleValidateConfigList] = None,
         type: str = None,
     ):
+        # The associated attribute ID.
         self.attribute_id = attribute_id
+        # The monitoring configuration for the associated attribute.
         self.attribute_monitor_config = attribute_monitor_config
+        # The attribute name.
         self.attribute_name = attribute_name
+        # The rule description.
         self.description = description
+        # The monitoring configuration ID. If this parameter is left empty, a new monitoring configuration is created. If an existing monitoring configuration ID is specified, the corresponding monitoring configuration is updated.
         self.id = id
+        # The method used to add the monitoring configuration. Valid values:
+        # - BY_USER: manually added.
+        # - BY_SYSTEM_ATTRIBUTE: preset by system attribute.
+        # 
         # This parameter is required.
         self.monitor_from = monitor_from
+        # The rule template. This parameter is required when the monitoring type is QUALITY.
         self.quality_rule_template = quality_rule_template
+        # The rule configurations. This parameter is required when the monitoring type is QUALITY.
         self.rule_config_list = rule_config_list
+        # The rule name.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The rule subtype. This parameter is required when the monitoring type is QUALITY. Valid values:
+        # - BY_ATTRIBUTE: configured based on attributes.
+        # - CUSTOMIZED: custom configuration.
         self.rule_sub_type = rule_sub_type
+        # The rule validation configurations. This parameter is required when the monitoring type is QUALITY.
         self.rule_validate_config_list = rule_validate_config_list
+        # The monitoring type. Valid values:
+        # - METADATA: metadata monitoring.
+        # - QUALITY: data quality monitoring.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -437,15 +481,37 @@ class CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMoni
         type: str = None,
         value: str = None,
     ):
+        # The validation configuration ID. This ID is randomly generated by the business and must be unique.
+        # 
         # This parameter is required.
         self.id = id
+        # The metric. This parameter is required when the validation type is EXPRESSION.
         self.metric = metric
+        # The metric name. This parameter is required when the validation type is EXPRESSION.
         self.metric_name = metric_name
+        # If the validation type is EXPRESSION, valid values:
+        # - EQUAL: equal to.
+        # - NOT_EQUAL: not equal to.
+        # - LARGER: greater than.
+        # - LARGE_OR_EQUAL: greater than or equal to.
+        # - SMALLER: less than.
+        # - SMALLER_OR_EQUAL: less than or equal to.
+        # 
+        # If the validation type is RELATION, valid values:
+        # - AND: and.
+        # - OR: or.
+        # 
         # This parameter is required.
         self.operator = operator
+        # The parent validation configuration ID. The parent rule validation type can only be RELATION.
         self.parent_id = parent_id
+        # The rule validation type. Valid values:
+        # - RELATION: relation.
+        # - EXPRESSION: expression.
+        # 
         # This parameter is required.
         self.type = type
+        # The value to compare.
         self.value = value
 
     def validate(self):
@@ -510,8 +576,12 @@ class CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMoni
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
+        # 
         # This parameter is required.
         self.key = key
+        # The configuration item value.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -548,10 +618,18 @@ class CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMoni
         name: str = None,
         type: str = None,
     ):
+        # The template ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The template name.
+        # 
         # This parameter is required.
         self.name = name
+        # The template source. Valid values:
+        # - FROM_SYSTEM: system template.
+        # - CUSTOMIZED: custom template.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -594,9 +672,16 @@ class CreateStandardRequestCreateCommandStandardGeneralMonitorConfigStandardMoni
         is_case_sensitive: bool = None,
         type: str = None,
     ):
+        # The field to check.
         self.column_name = column_name
+        # Specifies whether the check is case-sensitive.
+        # 
         # This parameter is required.
         self.is_case_sensitive = is_case_sensitive
+        # The monitoring method. Valid values:
+        # - METADATA: metadata monitoring.
+        # - QUALITY: data quality monitoring.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -639,8 +724,14 @@ class CreateStandardRequestCreateCommandEffectiveTimeConfig(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
+        # The end of the effective period.
         self.end_time = end_time
+        # The start of the effective period.
         self.start_time = start_time
+        # The effective period type. Valid values:
+        # - FOREVER: permanent.
+        # - TIME_PERIOD: time period.
+        # 
         # This parameter is required.
         self.type = type
 

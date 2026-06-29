@@ -13,8 +13,12 @@ class AssignQualityRuleOfAllRuleScopeSchedulesRequest(DaraModel):
         assign_command: main_models.AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand = None,
         op_tenant_id: int = None,
     ):
+        # The assignment binding instruction.
+        # 
         # This parameter is required.
         self.assign_command = assign_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -53,10 +57,16 @@ class AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand(DaraModel):
         schedule_id_list: List[int] = None,
         watch_id: int = None,
     ):
+        # The rule IDs.
+        # 
         # This parameter is required.
         self.rule_id_list = rule_id_list
+        # The schedule IDs.
+        # 
         # This parameter is required.
         self.schedule_id_list = schedule_id_list
+        # The ID of the monitored object.
+        # 
         # This parameter is required.
         self.watch_id = watch_id
 

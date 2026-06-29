@@ -17,11 +17,17 @@ class GetTableLineageByTaskIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. OK indicates a successful request.
         self.code = code
+        # The query results.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -109,28 +115,67 @@ class GetTableLineageByTaskIdResponseBodyData(DaraModel):
         task_id: str = None,
         tenant_id: int = None,
     ):
+        # The business unit ID of the input table.
         self.input_biz_unit_id = input_biz_unit_id
+        # The data source ID of the input table.
         self.input_data_source_id = input_data_source_id
+        # The storage type of the input table.
         self.input_data_source_type = input_data_source_type
+        # The data source type of the input table.
         self.input_db_type = input_db_type
+        # The environment of the input table: DEV or PROD.
         self.input_env = input_env
+        # The project ID of the input table.
         self.input_project_id = input_project_id
+        # Indicates whether the input table is deleted.
         self.input_table_deleted = input_table_deleted
+        # The GUID of the input table. Each asset has a unique GUID in the following format:
+        # 
+        # - Logical table: dp_table.[TenantId].[BusinessUnitName].[TableName]
+        # - Compute source physical table: [EngineType].[TenantId].[ProjectName].[TableName]
+        # - Data source table: dp_ds_table.[TenantId].[DataSourceId].[SchemaName].[TableName]
         self.input_table_id = input_table_id
+        # The name of the input table.
         self.input_table_name = input_table_name
+        # The type of the input table. 
+        # 
+        # - PHYSICAL_TABLE Physical table (compute source)
+        # - DIM_LOGIC_TABLE Dimension logical table
+        # - FACT_LOGIC_TABLE Fact logical table
+        # - SUM_LOGIC_TABLE Aggregate logical table
+        # - REAL_TIME_LOGIC_TABLE Real-time meta table
+        # - REAL_TIME_MIRROR_TABLE Real-time mirror table
+        # - PHYSICAL_VIEW Physical view
+        # - LOGICAL_VIEW Logical view
+        # - DATA_SOURCE_PHYSICAL_TABLE Data source table
+        # - DATA_SOURCE_VIEW Data source view
+        # - DATA_SOURCE_MATERIALIZED_VIEW Data source materialized view
         self.input_table_type = input_table_type
+        # The business unit ID of the output table.
         self.output_biz_unit_id = output_biz_unit_id
+        # The data source ID of the output table.
         self.output_data_source_id = output_data_source_id
+        # The storage type of the output table.
         self.output_data_source_type = output_data_source_type
+        # The data source type of the output table.
         self.output_db_type = output_db_type
+        # The environment of the output table: DEV or PROD.
         self.output_env = output_env
+        # The project ID of the output table.
         self.output_project_id = output_project_id
+        # Indicates whether the output table is deleted.
         self.output_table_deleted = output_table_deleted
+        # The GUID of the output table. Each asset has a unique GUID. For the format, see InputTableId.
         self.output_table_id = output_table_id
+        # The name of the output table.
         self.output_table_name = output_table_name
+        # The type of the output table. For valid values, see InputTableType.
         self.output_table_type = output_table_type
+        # The environment of the task (node) associated with the lineage: DEV or PROD.
         self.task_env = task_env
+        # The task (node) ID associated with the lineage.
         self.task_id = task_id
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
