@@ -1743,6 +1743,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_app_token_service_with_options_async(request, runtime)
 
+    def create_inspiration_with_options(
+        self,
+        request: main_models.CreateInspirationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspirationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amountspec):
+            query['Amountspec'] = request.amountspec
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspiration',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspirationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_inspiration_with_options_async(
+        self,
+        request: main_models.CreateInspirationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspirationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.amountspec):
+            query['Amountspec'] = request.amountspec
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.extend):
+            query['Extend'] = request.extend
+        if not DaraCore.is_null(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.pricing_cycle):
+            query['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspiration',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspirationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_inspiration(
+        self,
+        request: main_models.CreateInspirationRequest,
+    ) -> main_models.CreateInspirationResponse:
+        runtime = RuntimeOptions()
+        return self.create_inspiration_with_options(request, runtime)
+
+    async def create_inspiration_async(
+        self,
+        request: main_models.CreateInspirationRequest,
+    ) -> main_models.CreateInspirationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_inspiration_with_options_async(request, runtime)
+
     def create_logo_task_with_options(
         self,
         request: main_models.CreateLogoTaskRequest,

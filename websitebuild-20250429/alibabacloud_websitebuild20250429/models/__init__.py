@@ -81,6 +81,9 @@ from ._create_app_notification_scene_response import CreateAppNotificationSceneR
 from ._create_app_token_service_request import CreateAppTokenServiceRequest
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBody
 from ._create_app_token_service_response import CreateAppTokenServiceResponse
+from ._create_inspiration_request import CreateInspirationRequest
+from ._create_inspiration_response_body import CreateInspirationResponseBody
+from ._create_inspiration_response import CreateInspirationResponse
 from ._create_logo_task_request import CreateLogoTaskRequest
 from ._create_logo_task_response_body import CreateLogoTaskResponseBody
 from ._create_logo_task_response import CreateLogoTaskResponse
@@ -494,6 +497,7 @@ from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketRe
 from ._create_app_llm_api_key_for_partner_response_body import CreateAppLlmApiKeyForPartnerResponseBodyModule
 from ._create_app_notification_scene_response_body import CreateAppNotificationSceneResponseBodyModule
 from ._create_app_token_service_response_body import CreateAppTokenServiceResponseBodyModule
+from ._create_inspiration_response_body import CreateInspirationResponseBodyModule
 from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
 from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBodyModule
@@ -720,6 +724,9 @@ __all__ = [
     CreateAppTokenServiceRequest,
     CreateAppTokenServiceResponseBody,
     CreateAppTokenServiceResponse,
+    CreateInspirationRequest,
+    CreateInspirationResponseBody,
+    CreateInspirationResponse,
     CreateLogoTaskRequest,
     CreateLogoTaskResponseBody,
     CreateLogoTaskResponse,
@@ -1133,6 +1140,7 @@ __all__ = [
     CreateAppLlmApiKeyForPartnerResponseBodyModule,
     CreateAppNotificationSceneResponseBodyModule,
     CreateAppTokenServiceResponseBodyModule,
+    CreateInspirationResponseBodyModule,
     CreateMaterialDirectoryResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,
     DeleteAppDomainRedirectResponseBodyModule,

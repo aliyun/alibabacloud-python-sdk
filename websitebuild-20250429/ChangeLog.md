@@ -1,3 +1,7 @@
+2026-06-29 Version: 2.31.0
+- Support API CreateInspiration.
+
+
 2026-06-26 Version: 2.30.0
 - Support API GrantPromotionOfferForPartner.
 - Support API ListPromotionActivitiesForPartner.
