@@ -11,8 +11,11 @@ class BindInstance2VpcResponseBody(DaraModel):
         endpoint: str = None,
         request_id: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The connection endpoint for the instance.
         self.endpoint = endpoint
+        # The ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

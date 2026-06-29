@@ -11,9 +11,11 @@ class ListVpcInfoByVpcRequest(DaraModel):
         page_size: int = None,
         vpc_id: str = None,
     ):
+        # The page number.
         self.page_num = page_num
+        # The number of VPCs to return on each page.
         self.page_size = page_size
-        # VPC ID
+        # The ID of the VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

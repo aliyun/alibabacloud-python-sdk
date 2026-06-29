@@ -10,8 +10,12 @@ class UnbindInstance2VpcRequest(DaraModel):
         instance_name: str = None,
         instance_vpc_name: str = None,
     ):
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The name of the VPC.
+        # 
         # This parameter is required.
         self.instance_vpc_name = instance_vpc_name
 

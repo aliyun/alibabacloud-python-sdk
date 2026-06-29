@@ -12,10 +12,13 @@ class CreateVCUInstanceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code of the response.
         self.code = code
+        # The name of the created instance.
         self.instance_name = instance_name
+        # The description of the response message.
         self.message = message
-        # request id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

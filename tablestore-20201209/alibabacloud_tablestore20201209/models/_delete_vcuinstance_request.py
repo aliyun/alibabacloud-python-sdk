@@ -9,6 +9,8 @@ class DeleteVCUInstanceRequest(DaraModel):
         self,
         instance_name: str = None,
     ):
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
 

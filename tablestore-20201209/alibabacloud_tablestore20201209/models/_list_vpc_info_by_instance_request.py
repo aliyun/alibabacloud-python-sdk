@@ -11,9 +11,13 @@ class ListVpcInfoByInstanceRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The page number.
         self.page_num = page_num
+        # The number of VPCs to return on each page.
         self.page_size = page_size
 
     def validate(self):

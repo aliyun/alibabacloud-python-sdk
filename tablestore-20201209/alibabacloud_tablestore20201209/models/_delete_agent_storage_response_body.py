@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteVCUInstanceResponseBody(DaraModel):
+class DeleteAgentStorageResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # The ID of the request. You can use this ID to locate and troubleshoot issues.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

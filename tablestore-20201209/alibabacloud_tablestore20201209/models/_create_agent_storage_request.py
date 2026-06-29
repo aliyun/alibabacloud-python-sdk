@@ -7,61 +7,35 @@ from typing import List
 from alibabacloud_tablestore20201209 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateInstanceRequest(DaraModel):
+class CreateAgentStorageRequest(DaraModel):
     def __init__(
         self,
-        cluster_type: str = None,
-        disable_replication: bool = None,
-        instance_description: str = None,
-        instance_name: str = None,
+        agent_storage_description: str = None,
+        agent_storage_name: str = None,
         network: str = None,
         network_source_acl: List[str] = None,
         network_type_acl: List[str] = None,
         policy: str = None,
         resource_group_id: str = None,
-        tags: List[main_models.CreateInstanceRequestTags] = None,
+        tags: List[main_models.CreateAgentStorageRequestTags] = None,
     ):
-        # The type of the instance.
+        # agent storage description
+        self.agent_storage_description = agent_storage_description
+        # agent storage name
         # 
         # This parameter is required.
-        self.cluster_type = cluster_type
-        # (Deprecated) Specifies whether to enable disaster recovery for the instance.
-        # 
-        # Valid values:
-        # 
-        # *   false
-        # *   true
-        self.disable_replication = disable_replication
-        # The description of the instance. The instance description must be 3 to 256 characters in length.
-        self.instance_description = instance_description
-        # The name of the instance. Instance naming conventions:
-        # 
-        # *   The name can contain only letters, digits, and hyphens (-).
-        # *   The name must start with a letter.
-        # *   The name cannot end with a hyphen (-).
-        # *   The name is case-insensitive.
-        # *   The name must be 3 to 16 characters in length.
-        # *   The name cannot contain the following words: ali, ay, ots, taobao, and admin.
-        # 
-        # This parameter is required.
-        self.instance_name = instance_name
-        # (Deprecated) The network type of the instance. Valid values: NORMAL and VPC_CONSOLE. Default value: NORMAL.
+        self.agent_storage_name = agent_storage_name
+        # （已弃用）智能体存储网络类型。NORMAL, VPC_CONSOLE。默认为NORMAL。
         self.network = network
-        # The types of the source from which access is allowed. By default, the following source type is allowed:
-        # 
-        # TRUST_PROXY: console
+        # The list of network sources allowed for the agent storage instance. By default, all network sources are allowed. Valid values: TRUST_PROXY: console.
         self.network_source_acl = network_source_acl
-        # The types of the network from which access is allowed. By default, the following network types are allowed:
-        # 
-        # *   INTERNET: Internet
-        # *   VPC: virtual private cloud (VPC)
-        # *   CLASSIC: classic network
+        # The list of network types allowed for the agent storage instance. By default, all network types are allowed. Valid values: CLASSIC: classic network. INTERNET: Internet. VPC: VPC.
         self.network_type_acl = network_type_acl
-        # The instance policy in the JSON format.
+        # The access control policy of the agent storage instance in JSON format. For the policy syntax, see https://www.alibabacloud.com/help/en/ram/user-guide/policy-structure-and-syntax.
         self.policy = policy
-        # The ID of the resource group to which the instance belongs.
+        # resource group id
         self.resource_group_id = resource_group_id
-        # The tags.
+        # tag
         self.tags = tags
 
     def validate(self):
@@ -75,17 +49,11 @@ class CreateInstanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.cluster_type is not None:
-            result['ClusterType'] = self.cluster_type
+        if self.agent_storage_description is not None:
+            result['AgentStorageDescription'] = self.agent_storage_description
 
-        if self.disable_replication is not None:
-            result['DisableReplication'] = self.disable_replication
-
-        if self.instance_description is not None:
-            result['InstanceDescription'] = self.instance_description
-
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
+        if self.agent_storage_name is not None:
+            result['AgentStorageName'] = self.agent_storage_name
 
         if self.network is not None:
             result['Network'] = self.network
@@ -111,17 +79,11 @@ class CreateInstanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClusterType') is not None:
-            self.cluster_type = m.get('ClusterType')
+        if m.get('AgentStorageDescription') is not None:
+            self.agent_storage_description = m.get('AgentStorageDescription')
 
-        if m.get('DisableReplication') is not None:
-            self.disable_replication = m.get('DisableReplication')
-
-        if m.get('InstanceDescription') is not None:
-            self.instance_description = m.get('InstanceDescription')
-
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
+        if m.get('AgentStorageName') is not None:
+            self.agent_storage_name = m.get('AgentStorageName')
 
         if m.get('Network') is not None:
             self.network = m.get('Network')
@@ -141,22 +103,26 @@ class CreateInstanceRequest(DaraModel):
         self.tags = []
         if m.get('Tags') is not None:
             for k1 in m.get('Tags'):
-                temp_model = main_models.CreateInstanceRequestTags()
+                temp_model = main_models.CreateAgentStorageRequestTags()
                 self.tags.append(temp_model.from_map(k1))
 
         return self
 
-class CreateInstanceRequestTags(DaraModel):
+
+
+class CreateAgentStorageRequestTags(DaraModel):
     def __init__(
         self,
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The tag key can be up to 64 characters in length.
+        # The key of the tag.
+        # The key can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value. The tag value can be up to 64 characters in length.
+        # The value of the tag.
+        # The value can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.value = value

@@ -1,3 +1,11 @@
+2026-06-29 Version: 3.1.0
+- Support API CreateAgentStorage.
+- Support API DeleteAgentStorage.
+- Support API GetAgentStorage.
+- Support API ListAgentStorages.
+- Support API UpdateAgentStorage.
+
+
 2026-01-30 Version: 3.0.0
 - Update API ListClusterType: add response parameters Body.ClusterTypeInfos.
 - Update API ListClusterType: add response parameters Body.ClusterTypes.

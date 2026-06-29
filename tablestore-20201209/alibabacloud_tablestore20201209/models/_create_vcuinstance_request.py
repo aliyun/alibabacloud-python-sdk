@@ -22,22 +22,32 @@ class CreateVCUInstanceRequest(DaraModel):
         tags: List[main_models.CreateVCUInstanceRequestTags] = None,
         vcu: int = None,
     ):
+        # The alias of the instance.
         self.alias_name = alias_name
+        # The auto-renewal cycle. This parameter is required if auto-renewal is enabled.
         self.auto_renew_period_in_month = auto_renew_period_in_month
-        # cluster type
+        # The cluster type.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type
+        # Specifies whether to perform a dry run. If you perform a dry run, no instance is created.
         self.dry_run = dry_run
+        # Specifies whether to enable auto-renewal.
         self.enable_auto_renew = enable_auto_renew
+        # Specifies whether to enable instance elasticity. If you enable instance elasticity, the peak VCU usage can exceed the purchased VCU amount, but additional fees are incurred.
         self.enable_elastic_vcu = enable_elastic_vcu
+        # The description of the instance.
         self.instance_description = instance_description
+        # The subscription duration. Unit: month.
+        # 
         # This parameter is required.
         self.period_in_month = period_in_month
-        # resource group id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # tag
+        # The tags.
         self.tags = tags
+        # The instance type: the number of VCUs.
+        # 
         # This parameter is required.
         self.vcu = vcu
 
@@ -135,8 +145,12 @@ class CreateVCUInstanceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. The key can be up to 64 characters in length.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the tag. The value can be up to 64 characters in length.
+        # 
         # This parameter is required.
         self.value = value
 
