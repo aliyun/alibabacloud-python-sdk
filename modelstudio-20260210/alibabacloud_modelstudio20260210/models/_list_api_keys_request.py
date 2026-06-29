@@ -11,17 +11,31 @@ class ListApiKeysRequest(DaraModel):
         description: str = None,
         max_results: int = None,
         next_token: str = None,
+        order: str = None,
+        order_by: str = None,
         workspace_id: str = None,
     ):
-        # Exact search by API Key ID.
+        # The API key ID for exact match.
         self.api_key_id = api_key_id
-        # Fuzzy search by description keyword.
+        # The keyword for fuzzy match against the description.
         self.description = description
-        # Page size.
+        # The page size.
         self.max_results = max_results
-        # Used to return more results. This parameter is not required for the first query. The token required for subsequent queries can be obtained from the returned results.
+        # The token used to retrieve more results. You do not need to provide this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
         self.next_token = next_token
-        # Exact search by workspace ID.
+        # The sort order. Valid values:
+        # 
+        # - DESC (default)
+        # 
+        # - ASC.
+        self.order = order
+        # The field by which to sort results. Valid values:
+        # 
+        # - apiKeyId (default)
+        # 
+        # - gmtCreate.
+        self.order_by = order_by
+        # The workspace ID for exact match.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -44,6 +58,12 @@ class ListApiKeysRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.order is not None:
+            result['order'] = self.order
+
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
 
@@ -62,6 +82,12 @@ class ListApiKeysRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('order') is not None:
+            self.order = m.get('order')
+
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')

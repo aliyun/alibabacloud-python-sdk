@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class BatchAssignSeatsResponseBody(DaraModel):
+class SetTokenPlanOrgInviteConfigResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
@@ -15,7 +15,10 @@ class BatchAssignSeatsResponseBody(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

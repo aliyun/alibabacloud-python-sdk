@@ -7,11 +7,11 @@ from typing import List
 from alibabacloud_modelstudio20260210 import models as main_models
 from darabonba.model import DaraModel
 
-class GetSubscriptionSeatDetailsResponseBody(DaraModel):
+class ListSubscriptionSharedPackagesResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.GetSubscriptionSeatDetailsResponseBodyData = None,
+        data: main_models.ListSubscriptionSharedPackagesResponseBodyData = None,
         message: str = None,
         success: bool = None,
     ):
@@ -21,10 +21,10 @@ class GetSubscriptionSeatDetailsResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The call is successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -56,7 +56,7 @@ class GetSubscriptionSeatDetailsResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.GetSubscriptionSeatDetailsResponseBodyData()
+            temp_model = main_models.ListSubscriptionSharedPackagesResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -67,17 +67,17 @@ class GetSubscriptionSeatDetailsResponseBody(DaraModel):
 
         return self
 
-class GetSubscriptionSeatDetailsResponseBodyData(DaraModel):
+class ListSubscriptionSharedPackagesResponseBodyData(DaraModel):
     def __init__(
         self,
-        items: List[main_models.GetSubscriptionSeatDetailsResponseBodyDataItems] = None,
+        items: List[main_models.ListSubscriptionSharedPackagesResponseBodyDataItems] = None,
         page_no: int = None,
         page_size: int = None,
         total: int = None,
     ):
-        # The data items.
+        # The data entries.
         self.items = items
-        # The page number. The value is greater than 0 and does not exceed the maximum value of the Integer data type.
+        # The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. Default value: 1.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
@@ -116,7 +116,7 @@ class GetSubscriptionSeatDetailsResponseBodyData(DaraModel):
         self.items = []
         if m.get('Items') is not None:
             for k1 in m.get('Items'):
-                temp_model = main_models.GetSubscriptionSeatDetailsResponseBodyDataItems()
+                temp_model = main_models.ListSubscriptionSharedPackagesResponseBodyDataItems()
                 self.items.append(temp_model.from_map(k1))
 
         if m.get('PageNo') is not None:
@@ -130,49 +130,19 @@ class GetSubscriptionSeatDetailsResponseBodyData(DaraModel):
 
         return self
 
-class GetSubscriptionSeatDetailsResponseBodyDataItems(DaraModel):
+class ListSubscriptionSharedPackagesResponseBodyDataItems(DaraModel):
     def __init__(
         self,
-        account_email: str = None,
-        account_id: str = None,
-        account_name: str = None,
-        assigned_status: str = None,
-        end_time: int = None,
-        equity_list: List[main_models.GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList] = None,
+        equity_list: List[main_models.ListSubscriptionSharedPackagesResponseBodyDataItemsEquityList] = None,
         instance_code: str = None,
-        seat_id: str = None,
-        spec_type: str = None,
-        start_time: int = None,
         status: str = None,
     ):
-        # The mailbox of the member accounts.
-        self.account_email = account_email
-        # The ID of the attached member accounts.
-        self.account_id = account_id
-        # The name of the member accounts.
-        self.account_name = account_name
-        # The assignment status. Valid values:
-        # 
-        # - ASSIGNED
-        # - UNASSIGNED
-        self.assigned_status = assigned_status
-        # The expiration time of the seat.
-        self.end_time = end_time
-        # The currently active equity instances. For TokenPlan products, this list contains only one active equity instance.
+        # The currently active equity instances.
         self.equity_list = equity_list
         # The instance code of the seat.
         self.instance_code = instance_code
-        # The seat ID.
-        self.seat_id = seat_id
-        # The seat type. Valid values: 
-        # 
-        # - standard: standard seat.
-        # - pro: pro seat.
-        # - max: premium seat.
-        self.spec_type = spec_type
-        # The start time of the seat.
-        self.start_time = start_time
         # The seat status. Valid values:
+        # 
         # - CREATING: being created.
         # - NORMAL: active.
         # - LIMIT: restricted due to overdue payment.
@@ -192,21 +162,6 @@ class GetSubscriptionSeatDetailsResponseBodyDataItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.account_email is not None:
-            result['AccountEmail'] = self.account_email
-
-        if self.account_id is not None:
-            result['AccountId'] = self.account_id
-
-        if self.account_name is not None:
-            result['AccountName'] = self.account_name
-
-        if self.assigned_status is not None:
-            result['AssignedStatus'] = self.assigned_status
-
-        if self.end_time is not None:
-            result['EndTime'] = self.end_time
-
         result['EquityList'] = []
         if self.equity_list is not None:
             for k1 in self.equity_list:
@@ -215,15 +170,6 @@ class GetSubscriptionSeatDetailsResponseBodyDataItems(DaraModel):
         if self.instance_code is not None:
             result['InstanceCode'] = self.instance_code
 
-        if self.seat_id is not None:
-            result['SeatId'] = self.seat_id
-
-        if self.spec_type is not None:
-            result['SpecType'] = self.spec_type
-
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-
         if self.status is not None:
             result['Status'] = self.status
 
@@ -231,45 +177,21 @@ class GetSubscriptionSeatDetailsResponseBodyDataItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AccountEmail') is not None:
-            self.account_email = m.get('AccountEmail')
-
-        if m.get('AccountId') is not None:
-            self.account_id = m.get('AccountId')
-
-        if m.get('AccountName') is not None:
-            self.account_name = m.get('AccountName')
-
-        if m.get('AssignedStatus') is not None:
-            self.assigned_status = m.get('AssignedStatus')
-
-        if m.get('EndTime') is not None:
-            self.end_time = m.get('EndTime')
-
         self.equity_list = []
         if m.get('EquityList') is not None:
             for k1 in m.get('EquityList'):
-                temp_model = main_models.GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList()
+                temp_model = main_models.ListSubscriptionSharedPackagesResponseBodyDataItemsEquityList()
                 self.equity_list.append(temp_model.from_map(k1))
 
         if m.get('InstanceCode') is not None:
             self.instance_code = m.get('InstanceCode')
-
-        if m.get('SeatId') is not None:
-            self.seat_id = m.get('SeatId')
-
-        if m.get('SpecType') is not None:
-            self.spec_type = m.get('SpecType')
-
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
         return self
 
-class GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList(DaraModel):
+class ListSubscriptionSharedPackagesResponseBodyDataItemsEquityList(DaraModel):
     def __init__(
         self,
         cycle_end_time: int = None,
@@ -282,7 +204,7 @@ class GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList(DaraModel):
     ):
         # The end time of the current cycle, in milliseconds.
         self.cycle_end_time = cycle_end_time
-        # The equity code (subscription code). This does not need to be consumed in CREDITS scenarios.
+        # The equity code (subscription code). This is not required for consumption in the credits scenario.
         self.cycle_instance_id = cycle_instance_id
         # The start time of the current cycle, in milliseconds.
         self.cycle_start_time = cycle_start_time
@@ -290,7 +212,7 @@ class GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList(DaraModel):
         self.cycle_surplus_value = cycle_surplus_value
         # The total quota of the current cycle.
         self.cycle_total_value = cycle_total_value
-        # The time-series version of the current cycle.
+        # The sequential version of the current cycle.
         self.cycle_version = cycle_version
         # The equity type, such as CREDITS, SPN, or resource plan.
         self.equity_type = equity_type

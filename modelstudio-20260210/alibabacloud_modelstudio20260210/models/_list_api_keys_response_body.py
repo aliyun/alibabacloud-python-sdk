@@ -20,26 +20,26 @@ class ListApiKeysResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # List of API Keys.
+        # The list of API keys.
         self.api_keys = api_keys
-        # Response status code.
+        # The response status code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Page size.
+        # The page size.
         self.max_results = max_results
-        # Response message.
+        # The response message.
         self.message = message
-        # Used to return more results. This parameter is not required for the first query. The token required for subsequent queries can be obtained from the returned results.
+        # The token used to retrieve more results. You do not need to provide this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # Whether the API call is successful:
+        # Indicates whether the API call was successful. Valid values:
         # 
         # - true: Successful.
         # - false: Failed.
         self.success = success
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -130,24 +130,24 @@ class ListApiKeysResponseBodyApiKeys(DaraModel):
         gmt_create: int = None,
         workspace_id: str = None,
     ):
-        # API Key ID.
+        # API Key ID。
         self.api_key_id = api_key_id
-        # Value of the API Key.
+        # The value of the API key.
         self.api_key_value = api_key_value
-        # Permission settings.
+        # The permission settings.
         self.auth = auth
-        # Creator.
+        # The creator.
         self.created_by = created_by
-        # Description.
+        # The description.
         self.description = description
-        # Whether the API Key is disabled.
+        # Indicates whether the API key is disabled. Valid values:
         # 
         # - **0**: Active.
         # - **1**: Disabled.
         self.disabled = disabled
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Workspace ID.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -220,9 +220,9 @@ class ListApiKeysResponseBodyApiKeysAuth(DaraModel):
         access_ips: List[str] = None,
         type: str = None,
     ):
-        # IP access whitelist.
+        # The IP address whitelist.
         self.access_ips = access_ips
-        # All: All permissions; Custom: Custom permissions.
+        # All: all permissions. Custom: custom permissions.
         self.type = type
 
     def validate(self):

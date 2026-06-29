@@ -4,18 +4,18 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class BatchAssignSeatsResponseBody(DaraModel):
+class RemoveOrganizationMemberResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         success: bool = None,
     ):
-        # The response status code.
+        # The error code. This parameter is empty if the operation is successful.
         self.code = code
-        # The response message.
+        # The error message. This parameter is empty if the operation is successful.
         self.message = message
-        # Indicates whether the request was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

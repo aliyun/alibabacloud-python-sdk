@@ -1,3 +1,37 @@
+2026-06-29 Version: 2.0.0
+- Support API BatchRevokeSeats.
+- Support API CreateTokenPlanInviteLink.
+- Support API GetOrganization.
+- Support API GetOrganizationMemberSeatStats.
+- Support API GetSubscriptionStats.
+- Support API GetTokenPlanAccountDetail.
+- Support API GetTokenPlanInviteLink.
+- Support API GetTokenPlanOrgInviteConfig.
+- Support API ListOrganizationMembers.
+- Support API ListSubscriptionSharedPackages.
+- Support API RemoveOrganizationMember.
+- Support API RevokeTokenPlanInviteLink.
+- Support API RotateTokenPlanKey.
+- Support API SetTokenPlanOrgInviteConfig.
+- Support API UpdateOrganization.
+- Support API UpdateOrganizationMember.
+- Update API AddOrganizationMember: delete request parameters CallerUacAccountId.
+- Update API AddOrganizationMember: delete request parameters NamespaceId.
+- Update API AddOrganizationMember: delete request parameters OrgId.
+- Update API BatchAssignSeats: delete request parameters AccountIdsStr.
+- Update API BatchAssignSeats: delete request parameters CallerUacAccountId.
+- Update API BatchAssignSeats: delete request parameters NamespaceId.
+- Update API BatchAssignSeats: delete request parameters WorkspaceId.
+- Update API CreateTokenPlanKey: delete request parameters CallerUacAccountId.
+- Update API CreateTokenPlanKey: delete request parameters NamespaceId.
+- Update API CreateTokenPlanKey: delete request parameters WorkspaceId.
+- Update API GetSubscriptionSeatDetails: delete request parameters CallerUacAccountId.
+- Update API GetSubscriptionSeatDetails: delete request parameters NamespaceId.
+- Update API GetSubscriptionSeatDetails: delete request parameters StatusListStr.
+- Update API ListApiKeys: add request parameters order.
+- Update API ListApiKeys: add request parameters orderBy.
+
+
 2026-06-18 Version: 1.3.0
 - Support API AddOrganizationMember.
 - Support API BatchAssignSeats.

@@ -6,31 +6,18 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class GetSubscriptionSeatDetailsRequest(DaraModel):
+class ListSubscriptionSharedPackagesRequest(DaraModel):
     def __init__(
         self,
         page_no: int = None,
         page_size: int = None,
-        query_assigned: bool = None,
-        seat_id: str = None,
-        seat_type: str = None,
         status_list: List[str] = None,
     ):
-        # The page number. Default value: 1. Valid values: positive integers.
+        # The page number. Default value: 1. The value must be a positive integer.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The seat assignment status filter. Set to true for assigned seats, false for unassigned seats, or null for all seats.
-        self.query_assigned = query_assigned
-        # The seat ID.
-        self.seat_id = seat_id
-        # The seat type (specType). Valid values:
-        # 
-        # - standard: standard seat.
-        # - pro: pro seat.
-        # - max: premium seat.
-        self.seat_type = seat_type
-        # The list of seat statuses used for filtering.
+        # The list of statuses used for filtering.
         self.status_list = status_list
 
     def validate(self):
@@ -47,15 +34,6 @@ class GetSubscriptionSeatDetailsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
-        if self.query_assigned is not None:
-            result['QueryAssigned'] = self.query_assigned
-
-        if self.seat_id is not None:
-            result['SeatId'] = self.seat_id
-
-        if self.seat_type is not None:
-            result['SeatType'] = self.seat_type
-
         if self.status_list is not None:
             result['StatusList'] = self.status_list
 
@@ -68,15 +46,6 @@ class GetSubscriptionSeatDetailsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
-
-        if m.get('QueryAssigned') is not None:
-            self.query_assigned = m.get('QueryAssigned')
-
-        if m.get('SeatId') is not None:
-            self.seat_id = m.get('SeatId')
-
-        if m.get('SeatType') is not None:
-            self.seat_type = m.get('SeatType')
 
         if m.get('StatusList') is not None:
             self.status_list = m.get('StatusList')
