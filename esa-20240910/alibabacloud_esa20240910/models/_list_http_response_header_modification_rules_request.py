@@ -15,27 +15,25 @@ class ListHttpResponseHeaderModificationRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The config ID.
+        # The configuration ID.
         self.config_id = config_id
-        # The type of configuration to query. Valid values:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
+        # - global: queries global configurations.
+        # - rule: queries rule configurations.
         # 
-        # - global: Returns only the global configuration.
-        # 
-        # - rule: Returns only the rule configuration.
-        # 
-        # If you do not specify this parameter, the operation returns both global and rule configurations.
+        # This parameter is optional. If you do not specify this parameter, both global and rule configurations are returned.
         self.config_type = config_type
-        # The page number.
+        # The page number for a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 500. Valid values: an integer from 1 to 500.
+        # The number of entries per page for a paged query. Valid values: 1 to 500.
         self.page_size = page_size
-        # The rule name. This parameter applies only when you query for a rule configuration.
+        # The rule name. You do not need to set this parameter when you add a global configuration.
         self.rule_name = rule_name
-        # The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The site version. For sites that have configuration versioning enabled, you can use this parameter to query a configuration from a specific version. The default value is 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

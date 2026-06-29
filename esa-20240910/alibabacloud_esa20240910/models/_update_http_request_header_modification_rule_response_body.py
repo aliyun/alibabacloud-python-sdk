@@ -9,7 +9,7 @@ class UpdateHttpRequestHeaderModificationRuleResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

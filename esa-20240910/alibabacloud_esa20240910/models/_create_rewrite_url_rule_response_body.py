@@ -12,7 +12,7 @@ class CreateRewriteUrlRuleResponseBody(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

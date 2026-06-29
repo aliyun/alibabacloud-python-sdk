@@ -18,54 +18,42 @@ class ListRecordsRequest(DaraModel):
         source_type: str = None,
         type: str = None,
     ):
-        # The business scenario for acceleration. Use this parameter to filter results. Valid values:
-        # 
-        # - **image_video**: Images and videos.
-        # 
+        # The business scenario for record acceleration. Used as a filter condition for queries. Valid values:
+        # - **image_video**: Image and video.
         # - **api**: API.
-        # 
         # - **web**: Web page.
         self.biz_name = biz_name
         self.custom_port = custom_port
-        # The page number. Defaults to **1**.
+        # The page number for paginated queries. The value must be greater than or equal to 1. Default value: **1**.
         self.page_number = page_number
-        # The page size. Defaults to **500**.
+        # The number of entries per page for paginated queries. Valid values: 1 to 500. Default value: **500**.
         self.page_size = page_size
-        # Filters the results based on whether the record is proxied. Valid values:
+        # Specifies whether proxy acceleration is enabled for the record. Used as a filter condition for queries. Valid values:
         # 
-        # - **true**: The record is proxied.
-        # 
-        # - **false**: The record is not proxied.
+        # - **true**: Proxy enabled.
+        # - **false**: Proxy acceleration disabled.
         self.proxied = proxied
-        # The match type for the record name search. Defaults to **exact**. Valid values:
+        # The search matching mode for record names. Defaults to exact match. Valid values:
         # 
         # - **prefix**: Prefix match.
-        # 
         # - **suffix**: Suffix match.
-        # 
         # - **exact**: Exact match.
-        # 
         # - **fuzzy**: Fuzzy match.
         self.record_match_type = record_match_type
-        # The record name. Use this parameter to filter query results.
+        # Record name. Used as a filter condition for queries.
         self.record_name = record_name
-        # The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Filters the results by the record\\"s origin type. This filter applies only to CNAME records. Valid values:
-        # 
+        # The origin type of the record. Used as a filter condition for queries (only CNAME records can be filtered by this field). Valid values:
         # - **OSS**: OSS origin.
-        # 
         # - **S3**: S3 origin.
-        # 
         # - **LB**: Load balancer origin.
-        # 
         # - **OP**: Origin pool.
-        # 
-        # - **Domain**: Domain origin.
+        # - **Domain**: Standard domain origin.
         self.source_type = source_type
-        # The DNS record type. Use this parameter to filter results.
+        # The DNS record type of the record. Used as a filter condition for queries.
         self.type = type
 
     def validate(self):

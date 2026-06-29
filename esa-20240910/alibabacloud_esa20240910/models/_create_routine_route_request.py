@@ -18,32 +18,38 @@ class CreateRoutineRouteRequest(DaraModel):
         timeout: str = None,
     ):
         # The bypass mode. Valid values:
-        # - on: enabled.
+        # - on: enabled
         # - off: disabled.
         self.bypass = bypass
         # The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
-        # - on: enabled.
-        # - off: disabled.
+        # - on: Enabled.
+        # - off: Disabled.
         self.fallback = fallback
         # The route switch. Valid values:
-        # - on: enabled.
+        # - on: enabled
         # - off: disabled.
+        # 
+        # This parameter is required.
         self.route_enable = route_enable
         # The route name.
+        # 
+        # This parameter is required.
         self.route_name = route_name
-        # The name of the edge function routine.
+        # The Edge Routine name.
         # 
         # This parameter is required.
         self.routine_name = routine_name
         # The rule content.
+        # 
+        # This parameter is required.
         self.rule = rule
-        # The rule execution sequence.
+        # The rule execution order.
         self.sequence = sequence
-        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The edge routine timeout period. Valid values: 5 to 60. Unit: seconds.
+        # The Edge Routine timeout period. Valid values: 5 to 60.
         self.timeout = timeout
 
     def validate(self):

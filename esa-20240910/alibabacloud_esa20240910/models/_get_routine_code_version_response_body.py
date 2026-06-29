@@ -14,7 +14,7 @@ class GetRoutineCodeVersionResponseBody(DaraModel):
     ):
         # The description of the code version.
         self.code_description = code_description
-        # The time when the version was created.
+        # The creation time. The time follows the RFC 3339 standard in the UTC time zone.
         self.create_time = create_time
         # The request ID.
         self.request_id = request_id

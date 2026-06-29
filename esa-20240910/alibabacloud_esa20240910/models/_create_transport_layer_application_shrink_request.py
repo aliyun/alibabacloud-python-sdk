@@ -16,23 +16,25 @@ class CreateTransportLayerApplicationShrinkRequest(DaraModel):
         site_id: int = None,
         static_ip: str = None,
     ):
-        # Enables or disables network optimization for access from the Chinese mainland. This feature is disabled by default. Valid values:
-        # 
-        # - `on`: Enables the optimization.
-        # 
-        # - `off`: Disables the optimization.
+        # Specifies whether to enable network access optimization for the Chinese mainland. This feature is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.cross_border_optimization = cross_border_optimization
-        # Applies IP access rules from Web Application Firewall (WAF) to this Transport Layer Application. Valid values:
+        # The IP access rule switch. When enabled, IP access rules in WAF take effect for the Layer 4 application. Valid values:
         # 
-        # - `on`: Enables the feature.
-        # 
-        # - `off`: Disables the feature.
+        # - on: enabled.
+        # - off: disabled.
         self.ip_access_rule = ip_access_rule
-        # Enables or disables IPv6 support.
+        # Specifies whether to enable IPv6. This feature is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.ipv_6 = ipv_6
-        # Enables or disables keep-alive protection.
+        # Specifies whether to enable keep-alive protection. This feature is disabled by default. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.keep_alive_protection = keep_alive_protection
-        # The domain name of the Transport Layer Application.
+        # The domain name of the Layer 4 application.
         # 
         # This parameter is required.
         self.record_name = record_name
@@ -40,10 +42,14 @@ class CreateTransportLayerApplicationShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.rules_shrink = rules_shrink
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID. The site must be activated.
         # 
         # This parameter is required.
         self.site_id = site_id
+        # Specifies whether to enable static IP. This feature is disabled by default. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.static_ip = static_ip
 
     def validate(self):

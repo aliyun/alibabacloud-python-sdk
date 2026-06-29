@@ -12,19 +12,18 @@ class UpdateOriginPoolShrinkRequest(DaraModel):
         origins_shrink: str = None,
         site_id: int = None,
     ):
-        # Specifies whether to enable the origin pool:
+        # Specifies whether the origin address pool is enabled. Valid values:
         # 
-        # - true: Enables the origin pool.
-        # 
-        # - false: Disables the origin pool.
+        # - true: Enabled.
+        # - false: Not enabled.
         self.enabled = enabled
-        # The origin pool ID. Get this ID by calling the [ListOriginPools](~~ListOriginPools~~) operation.
+        # The origin address pool ID. You can call the [ListOriginPools](~~ListOriginPools~~) operation to obtain the ID.
         # 
         # This parameter is required.
         self.id = id
-        # An array of origin configurations.
+        # The origin server information added to the origin address pool. Use an array to pass multiple origin servers.
         self.origins_shrink = origins_shrink
-        # The site ID. Get this ID by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the ID.
         # 
         # This parameter is required.
         self.site_id = site_id

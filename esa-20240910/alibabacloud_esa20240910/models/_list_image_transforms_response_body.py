@@ -17,15 +17,15 @@ class ListImageTransformsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # A list of configurations.
+        # The list of configurations.
         self.configs = configs
-        # The current page number.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The number of entries per page, ranging from **1 to 500**. The default is **500**.
+        # The number of entries per page. Valid values: **1 to 500**. Default value: **500**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page
@@ -102,39 +102,34 @@ class ListImageTransformsResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
+        # The adaptive AVIF setting.
         self.auto_avif = auto_avif
+        # The adaptive WebP setting.
         self.auto_webp = auto_webp
-        # The ID of the configuration.
+        # The configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # - `global`: A global configuration.
-        # 
-        # - `rule`: A rule-based configuration.
+        # The configuration type. Valid values:
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Indicates whether the configuration is enabled. Valid values:
+        # The switch status. Valid values:
         # 
-        # - **on**: Enabled.
-        # 
-        # - **off**: Disabled.
+        # - **on**: enabled.
+        # - **off**: disabled.
         self.enable = enable
-        # The conditional expression that defines the rule used to match user requests. This parameter is not applicable to global configurations.
-        # 
-        # - A value of `true` matches all incoming requests.
-        # 
-        # - A custom expression, such as `(http.host eq "video.example.com")`, matches specific requests.
+        # The rule content, which uses conditional expressions to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Indicates whether the rule is enabled. This parameter is not applicable to global configurations. Valid values:
-        # 
-        # - **on**: Enabled.
-        # 
-        # - **off**: Disabled.
+        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The name of the rule. This parameter is not applicable to global configurations.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
         # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The version of the site configuration. For a site with version management enabled, this parameter specifies the site version to which the configuration applies. The default is 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

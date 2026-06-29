@@ -18,43 +18,37 @@ class CreateRewriteUrlRuleRequest(DaraModel):
         site_version: int = None,
         uri: str = None,
     ):
-        # The query string after the rewrite.
+        # The query string after rewriting.
         self.query_string = query_string
-        # The query string rewrite mode. Valid values:
+        # The query string rewrite type. Valid values:
         # 
-        # - `static`: Static mode.
-        # 
-        # - `dynamic`: Dynamic mode.
+        # - static: static mode.
+        # - dynamic: dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # The URI rewrite mode. Valid values:
+        # The URI rewrite type. Valid values:
         # 
-        # - `static`: Static mode.
-        # 
-        # - `dynamic`: Dynamic mode.
+        # - static: static mode.
+        # - dynamic: dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # The conditional expression used to match user requests. This parameter is not required when you add a global configuration. Two use cases are supported:
-        # 
-        # - To match all inbound requests, set the value to `true`.
-        # 
-        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+        # The rule content, which uses conditional expressions to match user requests. This parameter does not need to be set when adding global configurations. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # This parameter is not required when you add a global configuration. Valid values:
-        # 
-        # - `on`: Enables the rule.
-        # 
-        # - `off`: Disables the rule.
+        # The rule switch. This parameter does not need to be set when adding global configurations. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The rule name. This parameter is not required when you add a global configuration.
+        # The rule name. This parameter does not need to be set when adding global configurations.
         self.rule_name = rule_name
-        # The execution priority of the rule. A lower value indicates a higher priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site ID. Obtain it by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # If configuration versioning is enabled for the site, this parameter specifies the target version. The default value is 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
-        # The target URI after the rewrite.
+        # The destination URI after rewriting.
         self.uri = uri
 
     def validate(self):

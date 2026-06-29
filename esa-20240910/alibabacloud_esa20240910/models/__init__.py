@@ -436,6 +436,9 @@ from ._describe_ddo_sevent_max_response import DescribeDDoSEventMaxResponse
 from ._describe_ddo_sl7qps_list_request import DescribeDDoSL7QpsListRequest
 from ._describe_ddo_sl7qps_list_response_body import DescribeDDoSL7QpsListResponseBody
 from ._describe_ddo_sl7qps_list_response import DescribeDDoSL7QpsListResponse
+from ._describe_ddo_soverseas_attack_count_request import DescribeDDoSOverseasAttackCountRequest
+from ._describe_ddo_soverseas_attack_count_response_body import DescribeDDoSOverseasAttackCountResponseBody
+from ._describe_ddo_soverseas_attack_count_response import DescribeDDoSOverseasAttackCountResponse
 from ._describe_ddos_max_burst_gbps_request import DescribeDdosMaxBurstGbpsRequest
 from ._describe_ddos_max_burst_gbps_response_body import DescribeDdosMaxBurstGbpsResponseBody
 from ._describe_ddos_max_burst_gbps_response import DescribeDdosMaxBurstGbpsResponse
@@ -554,6 +557,9 @@ from ._get_custom_hostname_response import GetCustomHostnameResponse
 from ._get_custom_response_code_rule_request import GetCustomResponseCodeRuleRequest
 from ._get_custom_response_code_rule_response_body import GetCustomResponseCodeRuleResponseBody
 from ._get_custom_response_code_rule_response import GetCustomResponseCodeRuleResponse
+from ._get_dcv_delegation_request import GetDcvDelegationRequest
+from ._get_dcv_delegation_response_body import GetDcvDelegationResponseBody
+from ._get_dcv_delegation_response import GetDcvDelegationResponse
 from ._get_development_mode_request import GetDevelopmentModeRequest
 from ._get_development_mode_response_body import GetDevelopmentModeResponseBody
 from ._get_development_mode_response import GetDevelopmentModeResponse
@@ -2105,6 +2111,9 @@ __all__ = [
     DescribeDDoSL7QpsListRequest,
     DescribeDDoSL7QpsListResponseBody,
     DescribeDDoSL7QpsListResponse,
+    DescribeDDoSOverseasAttackCountRequest,
+    DescribeDDoSOverseasAttackCountResponseBody,
+    DescribeDDoSOverseasAttackCountResponse,
     DescribeDdosMaxBurstGbpsRequest,
     DescribeDdosMaxBurstGbpsResponseBody,
     DescribeDdosMaxBurstGbpsResponse,
@@ -2223,6 +2232,9 @@ __all__ = [
     GetCustomResponseCodeRuleRequest,
     GetCustomResponseCodeRuleResponseBody,
     GetCustomResponseCodeRuleResponse,
+    GetDcvDelegationRequest,
+    GetDcvDelegationResponseBody,
+    GetDcvDelegationResponse,
     GetDevelopmentModeRequest,
     GetDevelopmentModeResponseBody,
     GetDevelopmentModeResponse,

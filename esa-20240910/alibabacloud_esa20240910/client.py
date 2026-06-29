@@ -11739,6 +11739,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_ddo_sl7qps_list_with_options_async(request, runtime)
 
+    def describe_ddo_soverseas_attack_count_with_options(
+        self,
+        request: main_models.DescribeDDoSOverseasAttackCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSOverseasAttackCountResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSOverseasAttackCount',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSOverseasAttackCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddo_soverseas_attack_count_with_options_async(
+        self,
+        request: main_models.DescribeDDoSOverseasAttackCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDDoSOverseasAttackCountResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDDoSOverseasAttackCount',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDDoSOverseasAttackCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddo_soverseas_attack_count(
+        self,
+        request: main_models.DescribeDDoSOverseasAttackCountRequest,
+    ) -> main_models.DescribeDDoSOverseasAttackCountResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ddo_soverseas_attack_count_with_options(request, runtime)
+
+    async def describe_ddo_soverseas_attack_count_async(
+        self,
+        request: main_models.DescribeDDoSOverseasAttackCountRequest,
+    ) -> main_models.DescribeDDoSOverseasAttackCountResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ddo_soverseas_attack_count_with_options_async(request, runtime)
+
     def describe_ddos_max_burst_gbps_with_options(
         self,
         request: main_models.DescribeDdosMaxBurstGbpsRequest,
@@ -14560,6 +14626,72 @@ class Client(OpenApiClient):
     ) -> main_models.GetCustomResponseCodeRuleResponse:
         runtime = RuntimeOptions()
         return await self.get_custom_response_code_rule_with_options_async(request, runtime)
+
+    def get_dcv_delegation_with_options(
+        self,
+        request: main_models.GetDcvDelegationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDcvDelegationResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDcvDelegation',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDcvDelegationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dcv_delegation_with_options_async(
+        self,
+        request: main_models.GetDcvDelegationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDcvDelegationResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDcvDelegation',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDcvDelegationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dcv_delegation(
+        self,
+        request: main_models.GetDcvDelegationRequest,
+    ) -> main_models.GetDcvDelegationResponse:
+        runtime = RuntimeOptions()
+        return self.get_dcv_delegation_with_options(request, runtime)
+
+    async def get_dcv_delegation_async(
+        self,
+        request: main_models.GetDcvDelegationRequest,
+    ) -> main_models.GetDcvDelegationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_dcv_delegation_with_options_async(request, runtime)
 
     def get_development_mode_with_options(
         self,

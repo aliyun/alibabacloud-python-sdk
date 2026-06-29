@@ -17,17 +17,17 @@ class ListRoutineRoutesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The list of configurations.
+        # The configuration list in the response body.
         self.configs = configs
-        # The page number of the returned page.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries that match the query criteria.
+        # The total number of records.
         self.total_count = total_count
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -107,52 +107,43 @@ class ListRoutineRoutesResponseBodyConfigs(DaraModel):
         timeout: str = None,
     ):
         # The bypass mode. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # - on: Enabled.
+        # - off: Disabled.
         self.bypass = bypass
         # The configuration ID.
         self.config_id = config_id
-        # The type of configuration. You can query global configurations or rule-based configurations based on this parameter. Valid values:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # - `global`: A global configuration.
-        # 
-        # - `rule`: A rule-based configuration.
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Indicates whether to enable fallback to origin. If this feature is enabled, the request is routed to the origin server when an exception occurs in the edge function, such as exceeding the CPU usage limit. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.fallback = fallback
         # The configuration mode. Valid values:
-        # 
-        # - `simple`: Simple mode.
-        # 
-        # - `custom`: Custom mode.
+        # - simple: simple mode.
+        # - custom: custom mode.
         self.mode = mode
-        # Indicates whether the route is enabled. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The route switch status. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.route_enable = route_enable
         # The route name.
         self.route_name = route_name
-        # The edge function routine name.
+        # The name of the Edge Routine.
         self.routine_name = routine_name
         # The rule content.
         self.rule = rule
-        # The rule execution order.
+        # The execution order of the rule.
         self.sequence = sequence
         # The site ID.
         self.site_id = site_id
         # The site name.
         self.site_name = site_name
-        # The site configuration version.
+        # The version number of the site configuration.
         self.site_version = site_version
-        # The timeout period. Unit: seconds.
+        # The Edge Routine timeout period. Valid values: 5 to 60.
         self.timeout = timeout
 
     def validate(self):

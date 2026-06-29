@@ -17,17 +17,17 @@ class ListCustomResponseCodeRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # You can modify the response code configuration list.
+        # The list of custom response code configurations.
         self.configs = configs
-        # The page number. Default value: **1**.
+        # Page number. Default value: **1**.
         self.page_number = page_number
-        # The page size. Default value: 500. Valid values: 1 to 500.
+        # Page size. Default value: 500. Valid values: 1 to 500.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # Total number of entries.
         self.total_count = total_count
-        # The total number of pages.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -101,35 +101,29 @@ class ListCustomResponseCodeRulesResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
         # The configuration type. Valid values:
-        # 
-        # - global: Global configuration.
-        # 
-        # - rule: Rule configuration.
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
         # The response page.
         self.page_id = page_id
         # The response code.
         self.return_code = return_code
-        # The rule content. Use a conditional expression to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
-        # 
-        # - Match all incoming requests: Set the value to true.
-        # 
-        # - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
+        # The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two usage scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specific requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # The rule switch. Do not set this parameter when adding a global configuration. Valid values:
-        # 
-        # - on: Enabled.
-        # 
-        # - off: Disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: enables the rule.
+        # - off: disables the rule.
         self.rule_enable = rule_enable
-        # The rule name. Do not set this parameter when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. A smaller value indicates higher priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The version number of the site configuration. For sites with configuration version control enabled, this parameter specifies the site version for which the configuration takes effect. The default value is version 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

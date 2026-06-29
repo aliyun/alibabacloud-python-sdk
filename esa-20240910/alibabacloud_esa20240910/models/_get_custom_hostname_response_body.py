@@ -79,15 +79,15 @@ class GetCustomHostnameResponseBodyCustomHostnameModel(DaraModel):
         self.cas_id = cas_id
         # The error code for the free certificate application.
         self.cert_apply_code = cert_apply_code
-        # The error description for the free certificate application.
+        # The error message for the free certificate application.
         self.cert_apply_message = cert_apply_message
-        # The certificate verification HTTP address.
+        # The HTTP address for certificate verification.
         self.cert_http_key = cert_http_key
-        # The certificate verification HTTP content.
+        # The HTTP content for certificate verification.
         self.cert_http_value = cert_http_value
         # The certificate ID.
         self.cert_id = cert_id
-        # The certificate expiration time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The certificate expiration time, in ISO 8601 format with UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.cert_not_after = cert_not_after
         # The certificate status. Valid values:
         # - **OK**: Normal.
@@ -96,9 +96,9 @@ class GetCustomHostnameResponseBodyCustomHostnameModel(DaraModel):
         # - **Expiring**: About to expire.
         # - **Expired**: Expired.
         self.cert_status = cert_status
-        # The certificate verification TXT name.
+        # The TXT name for certificate verification.
         self.cert_txt_key = cert_txt_key
-        # The certificate verification TXT content.
+        # The TXT content for certificate verification.
         self.cert_txt_value = cert_txt_value
         # The certificate type. Valid values:
         # - **free**: Free certificate.
@@ -112,8 +112,9 @@ class GetCustomHostnameResponseBodyCustomHostnameModel(DaraModel):
         # - **existing_record**: Conflicts with an existing site record.
         # - **existing_load_balancer**: Conflicts with an existing load balancing instance.
         # - **existing_origin_pool**: Conflicts with an existing origin IPAM pool.
+        # - **existing_site**: Conflicts with an existing site.
         self.conflict_with = conflict_with
-        # The time when the SaaS domain name was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the SaaS domain name was created, in ISO 8601 format with UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The SaaS domain name.
         self.hostname = hostname
@@ -124,7 +125,7 @@ class GetCustomHostnameResponseBodyCustomHostnameModel(DaraModel):
         # - **internally_disabled**: Disabled by the system.
         # - **missing_icp**: The domain name does not have an ICP filing.
         # - **content_violation**: Content violation.
-        # - **proactively_disabled**: You proactively disabled the domain name or the usage cap that you configured was reached.
+        # - **proactively_disabled**: You proactively disabled the domain name or the usage cap you configured was reached.
         self.offline_reason = offline_reason
         # The private key of the certificate.
         self.private_key = private_key
@@ -147,11 +148,11 @@ class GetCustomHostnameResponseBodyCustomHostnameModel(DaraModel):
         # - **offline**: Offline.
         # - **configuring**: Being configured.
         self.status = status
-        # The time when the SaaS domain name was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the SaaS domain name was last updated, in ISO 8601 format with UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.update_time = update_time
-        # The domain verification TXT content.
+        # The TXT content for domain verification.
         self.verify_code = verify_code
-        # The domain verification TXT name.
+        # The TXT name for domain verification.
         self.verify_host = verify_host
 
     def validate(self):

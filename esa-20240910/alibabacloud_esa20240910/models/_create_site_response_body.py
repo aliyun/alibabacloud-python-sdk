@@ -12,13 +12,13 @@ class CreateSiteResponseBody(DaraModel):
         site_id: int = None,
         verify_code: str = None,
     ):
-        # A comma-separated list of name servers assigned to the site. This parameter is returned only if the site uses NS-based access. To activate the site, you must change your domain\\"s DNS servers to these name servers. This verifies your ownership of the site and activates it.
+        # The list of name servers assigned to the site, separated by commas (,). This field has a value when the access type of the site is NS. You need to change the DNS servers of the site to these name servers. Then you can verify the site ownership and activate the site.
         self.name_server_list = name_server_list
         # The request ID.
         self.request_id = request_id
-        # The ID of the site.
+        # The site ID.
         self.site_id = site_id
-        # The verification code for the site. This parameter is returned only if the site uses CNAME-based access. To activate the site, you must add a TXT record to your domain\\"s DNS settings. Set the record\\"s host to **_esaauth.[your_site_name]** and its value to this **verification code**. This verifies your ownership of the site and activates it.
+        # The verification code of the site. When the access type of the site is CNAME, you need to add a TXT record with the record name **_esaauth.[site name]** and the record value set to the **verification code** on the DNS server of the site. Then you can verify the site ownership and activate the site.
         self.verify_code = verify_code
 
     def validate(self):

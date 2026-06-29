@@ -23,9 +23,9 @@ class ListCustomHostnamesRequest(DaraModel):
         # - **exact**: exact match.
         # - **fuzzy**: fuzzy match.
         self.name_match_type = name_match_type
-        # The page number, starting from 1. Default value: 1.
+        # The page number for a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100. Maximum value: 500.
+        # The number of entries per page for a paged query. Valid values: 1 to 500.
         self.page_size = page_size
         # The associated record ID. You can call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to obtain the record ID.
         self.record_id = record_id

@@ -9,7 +9,7 @@ class GetRoutineRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the edge function Routine.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name

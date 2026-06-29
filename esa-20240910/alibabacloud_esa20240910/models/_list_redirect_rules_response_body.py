@@ -17,17 +17,17 @@ class ListRedirectRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # List of redirect configurations.
+        # The redirect configuration list.
         self.configs = configs
-        # Current page number.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of items.
+        # The total number of entries.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -103,42 +103,43 @@ class ListRedirectRulesResponseBodyConfigs(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration.
-        # - rule: Rule configuration.
+        # The configuration type. Valid values:
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Preserve query string. Value range:
+        # Specifies whether to preserve the query string. Valid values:
         # - on: enabled.
         # - off: disabled.
         self.reserve_query_string = reserve_query_string
-        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specified requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter does not need to be set when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, with the default being version 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
-        # Response status code used by the node to respond to the client with the redirect address. Possible values:
+        # The HTTP status code used when the node responds to the client with the redirect address. Valid values:
         # - 301
         # - 302
         # - 303
         # - 307
-        # - 308
+        # - 308.
         self.status_code = status_code
-        # Target URL after redirection.
+        # The target URL after the redirect.
         self.target_url = target_url
-        # Redirect type. Possible values:
-        # - static: Static mode.
-        # - dynamic: Dynamic mode.
+        # The redirect type. Valid values:
+        # 
+        # - static: static pattern.
+        # - dynamic: dynamic schema.
         self.type = type
 
     def validate(self):

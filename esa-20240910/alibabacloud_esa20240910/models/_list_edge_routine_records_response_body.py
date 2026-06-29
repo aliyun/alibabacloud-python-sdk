@@ -16,15 +16,15 @@ class ListEdgeRoutineRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The total number of pages returned.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records displayed per page.
         self.page_size = page_size
         # The list of records.
         self.records = records
         # The request ID.
         self.request_id = request_id
-        # The total number of records returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -89,17 +89,17 @@ class ListEdgeRoutineRecordsResponseBodyRecords(DaraModel):
         site_name: str = None,
         update_time: str = None,
     ):
-        # The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time of the record. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The CNAME. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+        # The CNAME of the record. When the site uses CNAME access, this is the CNAME value that needs to be configured for the record.
         self.record_cname = record_cname
         # The record name.
         self.record_name = record_name
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The name of the site to which the record belongs.
         self.site_name = site_name
-        # The time when the record was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The update time of the record. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.update_time = update_time
 
     def validate(self):

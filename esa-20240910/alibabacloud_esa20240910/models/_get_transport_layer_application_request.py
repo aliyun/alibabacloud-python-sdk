@@ -10,11 +10,11 @@ class GetTransportLayerApplicationRequest(DaraModel):
         application_id: int = None,
         site_id: int = None,
     ):
-        # The application ID. Call the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) API to obtain this ID.
+        # The application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The site ID. Call the [ListSites](~~ListSites~~) API to obtain this ID.
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

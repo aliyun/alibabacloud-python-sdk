@@ -17,9 +17,9 @@ class ListOriginRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # A list of configurations.
+        # The configurations in the response.
         self.configs = configs
-        # The current page number.
+        # The current page number, same as the PageNumber request parameter.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
@@ -117,93 +117,72 @@ class ListOriginRulesResponseBodyConfigs(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The configuration type. You can use this parameter to query for global or rule-specific configurations. Valid values:
+        # The configuration type. You can query global or rule configurations based on this parameter. Valid values:
         # 
-        # - `global`: The global configuration.
-        # 
-        # - `rule`: A rule-specific configuration.
+        # - global: Query global configurations.
+        # - rule: Query rule configurations.
         self.config_type = config_type
-        # Overrides the DNS record for the origin request.
+        # The rewritten DNS resolution record for back-to-origin requests.
         self.dns_record = dns_record
-        # Specifies whether to follow 302 redirects from the origin. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The back-to-origin 302 redirect follow switch. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.follow_302enable = follow_302enable
-        # The maximum number of 302 redirects to follow. Valid range: 1 to 5.
+        # The maximum number of 302 redirect follows. Valid values: 1 to 5.
         self.follow_302max_tries = follow_302max_tries
-        # Specifies whether to retain the original request parameters when following a redirect. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The switch for retaining original request parameters. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.follow_302retain_args = follow_302retain_args
-        # Specifies whether to retain the original request header when following a redirect. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The switch for retaining original request headers. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.follow_302retain_header = follow_302retain_header
-        # The host to use for the origin request after following a 302 redirect.
+        # The back-to-origin host after 302 redirect modification.
         self.follow_302target_host = follow_302target_host
-        # The `Host` header carried in the origin request.
+        # The HOST carried in the back-to-origin request.
         self.origin_host = origin_host
-        # The origin server port used for origin requests over HTTP.
+        # The origin server port accessed when using the HTTP protocol for back-to-origin.
         self.origin_http_port = origin_http_port
-        # The origin server port used for origin requests over HTTPS.
+        # The origin server port accessed when using the HTTPS protocol for back-to-origin.
         self.origin_https_port = origin_https_port
-        # Specifies whether mTLS is enabled. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The mTLS switch. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_mtls = origin_mtls
-        # The read timeout, in seconds, for the origin server.
+        # The origin server read timeout period, in seconds.
         self.origin_read_timeout = origin_read_timeout
-        # The protocol used for origin requests. Valid values:
-        # 
-        # - `http`: Use the HTTP protocol for origin requests.
-        # 
-        # - `https`: Use the HTTPS protocol for origin requests.
-        # 
-        # - `follow`: Use the same protocol as the client request.
+        # The protocol used for back-to-origin requests. Valid values:
+        # - http: Use the HTTP protocol for back-to-origin.
+        # - https: Use the HTTPS protocol for back-to-origin.
+        # - follow: Follow the client protocol for back-to-origin.
         self.origin_scheme = origin_scheme
-        # The SNI carried in the origin request.
+        # The SNI carried in the back-to-origin request.
         self.origin_sni = origin_sni
-        # Specifies whether to verify the origin server certificate. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The origin server certificate verification switch. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.origin_verify = origin_verify
-        # Specifies whether to use range-based requests to retrieve files from the origin. Valid values:
-        # 
-        # - `on`: Enables range requests.
-        # 
-        # - `off`: Disables range requests.
-        # 
-        # - `force`: Forces range requests.
+        # Use range-based slicing for back-to-origin file downloads. Valid values:
+        # - on: Enable.
+        # - off: Disable.
+        # - force: Force enable.
         self.range = range
-        # The size of each chunk for range requests.
+        # The range chunk size.
         self.range_chunk_size = range_chunk_size
-        # The rule content, which uses a conditional expression to match user requests. This parameter is not required for global configurations. It supports two use cases:
-        # 
-        # - To match all incoming requests, set the value to `true`.
-        # 
-        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+        # The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Specifies whether the rule is enabled. This parameter is not required for global configurations. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # The rule name. This parameter is not required for global configurations.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. Lower values indicate higher priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site configuration version. If versioning is enabled for the site, this parameter specifies which version to use. The default is 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

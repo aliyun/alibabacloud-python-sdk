@@ -16,15 +16,15 @@ class ListTransportLayerApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of transport layer applications.
+        # The list of Layer 4 applications.
         self.applications = applications
-        # The current page number.
+        # The current page number, same as the PageNumber request parameter.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of transport layer applications.
+        # The total number of Layer 4 applications.
         self.total_count = total_count
 
     def validate(self):
@@ -96,49 +96,51 @@ class ListTransportLayerApplicationsResponseBodyApplications(DaraModel):
         static_ip_v4list: List[main_models.ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List] = None,
         status: str = None,
     ):
-        # The transport layer application ID.
+        # The Layer 4 application ID.
         self.application_id = application_id
-        # The CNAME for the transport layer application. This parameter is returned only when the site is onboarded by using a CNAME record.
+        # The CNAME domain name corresponding to the Layer 4 acceleration application. This field is non-empty only when the site is connected via the CNAME method.
         self.cname = cname
-        # Specifies whether cross-border optimization is enabled for Chinese mainland network access. By default, this feature is disabled. Valid values:
+        # Indicates whether mainland China network access optimization is enabled. Disabled by default. Valid values:
         # 
         # - on: Enabled.
-        # 
         # - off: Disabled.
         self.cross_border_optimization = cross_border_optimization
-        # Specifies whether the IP access rule feature is enabled. When enabled, the IP access rules in WAF apply to this transport layer application.
+        # The IP access rule switch. When enabled, the IP access rules in WAF take effect for the Layer 4 application.
         # 
         # - on: Enabled.
-        # 
         # - off: Disabled.
         self.ip_access_rule = ip_access_rule
-        # Specifies whether IPv6 is enabled.
+        # The IPv6 switch. Valid values:
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
         self.ipv_6 = ipv_6
-        # Specifies whether keep-alive protection is enabled.
+        # Indicates whether keep-alive protection is enabled. Disabled by default. Valid values:
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
         self.keep_alive_protection = keep_alive_protection
-        # The domain name of the transport layer application.
+        # The domain name of the Layer 4 application.
         self.record_name = record_name
-        # A list of forwarding rules.
+        # The list of forwarding rules.
         self.rules = rules
-        # The number of forwarding rules in the transport layer application.
+        # The number of forwarding rules contained in the Layer 4 acceleration application.
         self.rules_count = rules_count
         # The site ID.
         self.site_id = site_id
-        # Specifies whether the static IP feature is enabled. By default, this feature is disabled. Valid values:
+        # Indicates whether static IP is enabled. Disabled by default. Valid values:
         # 
         # - on: Enabled.
-        # 
         # - off: Disabled.
         self.static_ip = static_ip
-        # A list of static IPv4 addresses assigned to the application when the static IP feature is enabled.
+        # The list of static IPv4 addresses assigned to this Layer 4 application after the static IP feature is enabled.
         # 
         # This parameter is required.
         self.static_ip_v4list = static_ip_v4list
-        # The status of the transport layer application. Valid values:
+        # The status of the Layer 4 application.
         # 
-        # - **deploying**: The application is being deployed. You cannot modify or delete the application in this state.
-        # 
-        # - **active**: The application is running.
+        # - **deploying**: Deploying. Modification and deletion are not allowed in this state.
+        # - **active**: Active.
         self.status = status
 
     def validate(self):
@@ -258,13 +260,11 @@ class ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List(DaraM
     ):
         # The IP address.
         self.address = address
-        # The health status of the IP address. Valid values:
+        # The status of the IP address. Valid values:
         # 
-        # - healthy: The IP address is passing health checks.
-        # 
-        # - unhealthy: The IP address is failing health checks.
-        # 
-        # - unknown: The IP address is being provisioned.
+        # - healthy: Healthy.
+        # - unhealthy: Unhealthy.
+        # - unknown: IP address is being prepared.
         self.status = status
 
     def validate(self):
@@ -305,51 +305,39 @@ class ListTransportLayerApplicationsResponseBodyApplicationsRules(DaraModel):
         source_port: str = None,
         source_type: str = None,
     ):
-        # Specifies whether and how to pass the client\\"s IP address to the origin server. Valid values:
-        # 
-        # - **off**: Disables client IP pass-through.
-        # 
-        # - **PPv1**: The PROXY Protocol v1, which supports client IP pass-through for TCP traffic.
-        # 
-        # - **PPv2**: The PROXY Protocol v2, which supports client IP pass-through for both TCP and UDP traffic.
-        # 
-        # - **SPP**: The Simple Proxy Protocol, which supports client IP pass-through for UDP traffic.
+        # The client IP pass-through protocol. Supported values:
+        # - **off**: Disabled.
+        # - **PPv1**: PROXY Protocol v1, which supports client IP pass-through for TCP protocol.
+        # - **PPv2**: PROXY Protocol v2, which supports client IP pass-through for TCP and UDP protocols.
+        # - **SPP**: Simple Proxy Protocol, which supports client IP pass-through for UDP protocol.
         self.client_ippass_through_mode = client_ippass_through_mode
         # The comment for the rule.
         self.comment = comment
-        # The edge port. The following formats are supported:
+        # The edge port. Supported formats:
         # 
-        # - A single port, for example, `80`.
-        # 
-        # - A port range, for example, `81-85`, which includes ports 81, 82, 83, 84, and 85.
-        # 
-        # - A combination of ports and port ranges separated by commas, for example, `80,81-85,90`, which includes ports 80, 81, 82, 83, 84, 85, and 90.
+        # - A single port, such as 80.
+        # - A port range, such as 81-85, which represents ports 81, 82, 83, 84, and 85.
+        # - A combination of ports and port ranges separated by commas, such as 80,81-85,90, which represents ports 80, 81, 82, 83, 84, 85, and 90.
         self.edge_port = edge_port
         # The protocol of the forwarding rule. Valid values:
         # 
-        # - **TCP**: The TCP protocol.
-        # 
-        # - **UDP**: The UDP protocol.
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
         self.protocol = protocol
-        # The unique ID of the forwarding rule.
+        # The Layer 4 acceleration rule ID.
         self.rule_id = rule_id
-        # The origin address. The value of this parameter must match the `SourceType`.
+        # The specific value of the origin, which must match the origin type.
         self.source = source
-        # The origin port. The following formats are supported:
+        # The origin port. Supported formats:
         # 
-        # - A single port. If you specify a single origin port, you can use any valid combination of edge ports.
-        # 
-        # - A port range. The origin port can be a port range only if the edge port is also a port range. The number of ports in the origin port range must be the same as that in the edge port range. For example, if the edge port range is `90-93` (which contains 4 ports), you cannot set the origin port range to `81-85` (which contains 5 ports) because their sizes do not match.
+        # - A single port. When the origin port is a single port, any valid combination of edge ports is supported.
+        # - A port range. The origin port can be set to a port range only when the edge port is a port range, and the range size must be the same as that of the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85, because the origin port range size is 5 while the edge port range size is 3, which are inconsistent.
         self.source_port = source_port
-        # The origin type. Valid values:
-        # 
-        # - **ip**: An IP address.
-        # 
-        # - **domain**: A domain name.
-        # 
-        # - **OP**: An origin pool.
-        # 
-        # - **LB**: A load balancer.
+        # The origin type. Supported values:
+        # - **ip**: IP address.
+        # - **domain**: Domain name.
+        # - **OP**: Origin pool.
+        # - **LB**: Load balancer.
         self.source_type = source_type
 
     def validate(self):

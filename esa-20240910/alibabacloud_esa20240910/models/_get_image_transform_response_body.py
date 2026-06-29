@@ -19,41 +19,39 @@ class GetImageTransformResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
+        # Specifies whether to enable adaptive AVIF. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.auto_avif = auto_avif
+        # Specifies whether to enable adaptive WebP. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.auto_webp = auto_webp
-        # The config ID.
+        # The configuration ID.
         self.config_id = config_id
         # The configuration type. Valid values:
-        # 
-        # - global: The global configuration.
-        # 
-        # - rule: A rule configuration.
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Indicates whether image transformation is enabled. Valid values:
-        # 
+        # Specifies whether to enable image transformation. Valid values:
         # - on: Enabled.
-        # 
         # - off: Disabled.
         self.enable = enable
         # The request ID.
         self.request_id = request_id
-        # The conditional expression of the rule, used to match user requests. This parameter is relevant only for a rule configuration.
-        # 
-        # - A value of true matches all incoming requests.
-        # 
-        # - A custom expression, such as (http.host eq "video.example.com"), matches specific requests.
+        # The rule content, which uses a conditional expression to match user requests. This parameter does not need to be set when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # The status of the rule. This parameter is relevant only for a rule configuration. Valid values:
-        # 
+        # The rule switch. This parameter does not need to be set when you add a global configuration. Valid values:
         # - on: Enabled.
-        # 
         # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name. This parameter is relevant only for a rule configuration.
+        # The rule name. This parameter does not need to be set when you add a global configuration.
         self.rule_name = rule_name
-        # The execution sequence of the rule. A smaller value indicates a higher execution priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The version number of the site configuration. For a site that has configuration versioning enabled, this value indicates the version to which the configuration applies. The default value is 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
 
     def validate(self):

@@ -10,19 +10,15 @@ class UpdateTieredCacheRequest(DaraModel):
         cache_architecture_mode: str = None,
         site_id: int = None,
     ):
-        # The tiered cache architecture mode. Valid values:
-        # 
-        # - edge: The edge cache layer.
-        # 
-        # - edge_smart: The edge cache layer and the intelligent cache layer.
-        # 
-        # - edge_regional: The edge cache layer and the regional cache layer.
-        # 
-        # - edge_regional_smart: The edge cache layer, the regional cache layer, and the intelligent cache layer.
+        # The multi-level cache architecture mode. Valid values:
+        # - edge: edge cache layer.
+        # - edge_smart: edge cache layer + smart cache layer.
+        # - edge_regional: edge cache layer + regional cache layer.
+        # - edge_regional_smart: edge cache layer + regional cache layer + smart cache layer.
         # 
         # This parameter is required.
         self.cache_architecture_mode = cache_architecture_mode
-        # The site ID. You can get this ID by calling [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+        # The site ID. You can call [ListSites](https://help.aliyun.com/document_detail/2850189.html) to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

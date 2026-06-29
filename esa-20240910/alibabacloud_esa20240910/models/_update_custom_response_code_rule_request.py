@@ -24,23 +24,19 @@ class UpdateCustomResponseCodeRuleRequest(DaraModel):
         self.page_id = page_id
         # The response code.
         self.return_code = return_code
-        # The rule content. Use a conditional expression to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
-        # 
-        # - Match all incoming requests: Set the value to \\`true\\`.
-        # 
-        # - Match specific requests: Set the value to a custom expression, such as: \\`(http.host eq "video.example.com")\\`.
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # The rule switch. Do not set this parameter when adding a global configuration. Valid values:
-        # 
-        # - on: Enable the rule.
-        # 
-        # - off: Disable the rule.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name. Do not set this parameter when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The rule execution order. A smaller value indicates higher priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site ID. Get it by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

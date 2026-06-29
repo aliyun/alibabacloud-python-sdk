@@ -13,7 +13,7 @@ class GetRecordResponseBody(DaraModel):
         record_model: main_models.GetRecordResponseBodyRecordModel = None,
         request_id: str = None,
     ):
-        # Details of the record.
+        # The information about the queried record.
         self.record_model = record_model
         # The request ID.
         self.request_id = request_id
@@ -69,36 +69,32 @@ class GetRecordResponseBodyRecordModel(DaraModel):
         ttl: int = None,
         update_time: str = None,
     ):
-        # The origin authentication settings for the CNAME record.
+        # The back-to-origin authentication information of the CNAME record.
         self.auth_conf = auth_conf
-        # The business scenario for record acceleration. Valid values:
+        # The business scenario when the record is accelerated. Valid values:
         # 
-        # - **image_video**: Images and videos.
-        # 
-        # - **api**: APIs.
-        # 
-        # - **web**: Web pages.
+        # - **image_video**: video and image.
+        # - **api**: API.
+        # - **web**: web page.
         self.biz_name = biz_name
-        # The comment for the record.
+        # The comment of the record.
         self.comment = comment
-        # The time when the record was created. The time is in UTC and follows the ISO 8601 standard. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The creation time of the record. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         self.custom_port = custom_port
-        # DNS information for the record. The content varies based on the record type.
+        # The DNS information of the record. The content returned in this field varies by record type.
         self.data = data
-        # Specifies the policy for the `Host` header during origin-pull. This parameter applies only to CNAME records. Valid values:
+        # The back-to-origin HOST policy. This parameter takes effect when the record type is CNAME. It specifies the HOST header policy for back-to-origin requests. Valid values:
         # 
-        # - **follow_hostname**: Follows the host record.
-        # 
-        # - **follow_origin_domain**: Follows the origin domain.
+        # - **follow_hostname**: follows the host record.
+        # - **follow_origin_domain**: follows the origin domain name.
         self.host_policy = host_policy
         self.http_ports = http_ports
         self.https_ports = https_ports
-        # Indicates whether the proxy is enabled for the record. This feature is supported only for A, AAAA, and CNAME records. Valid values:
+        # Indicates whether proxy acceleration is enabled for the record. Only CNAME and A/AAAA records support proxy acceleration. Valid values:
         # 
-        # - **true**: The proxy is enabled.
-        # 
-        # - **false**: The proxy is disabled.
+        # - **true**: Proxy acceleration is enabled.
+        # - **false**: Proxy acceleration is disabled.
         self.proxied = proxied
         # The CNAME of the record.
         self.record_cname = record_cname
@@ -106,29 +102,25 @@ class GetRecordResponseBodyRecordModel(DaraModel):
         self.record_id = record_id
         # The record name.
         self.record_name = record_name
-        # The origin type for CNAME records. Valid values:
+        # The origin type of the CNAME record. Valid values:
         # 
         # - **OSS**: OSS origin.
-        # 
         # - **S3**: S3 origin.
+        # - **LB**: load balancing origin.
+        # - **OP**: IPAM pool origin.
+        # - **Domain**: standard domain name origin.
         # 
-        # - **LB**: A load balancer.
-        # 
-        # - **OP**: An origin pool.
-        # 
-        # - **Domain**: A standard domain.
-        # 
-        # If unspecified, the default is `Domain`.
+        # If this parameter is not specified or is left empty, the default value is Domain, which indicates a standard domain name origin type.
         self.record_source_type = record_source_type
-        # The DNS type of the record, such as **A/AAAA**, **CNAME**, or **TXT**.
+        # The DNS type of the record, such as **A/AAAA, CNAME, or TXT**.
         self.record_type = record_type
         # The site ID.
         self.site_id = site_id
         # The site name.
         self.site_name = site_name
-        # The record\\"s Time to Live (TTL) in seconds. A value of 1 indicates an automatic TTL.
+        # The Time-to-Live (TTL) of the record, in seconds. A value of 1 indicates that the TTL is set to automatic.
         self.ttl = ttl
-        # The time when the record was last updated. The time is in UTC and follows the ISO 8601 standard. Format: `yyyy-MM-ddTHH:mm:ssZ`.
+        # The update time of the record. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -283,50 +275,44 @@ class GetRecordResponseBodyRecordModelData(DaraModel):
         value: str = None,
         weight: int = None,
     ):
-        # The encryption algorithm of the record, from **0** to **255**.
+        # The encryption algorithm used by the record. Valid values: **0 to 255**.
         self.algorithm = algorithm
-        # The record\\"s public key certificate.
+        # The public key certificate information of the record.
         self.certificate = certificate
-        # The public key fingerprint of the record.
+        # The public key fingerprint value of the record.
         self.fingerprint = fingerprint
-        # The flag of the record. For CAA records, this flag indicates the priority and processing method. The value must be from **0** to **255**.
+        # The flag of the record. The Flag of a CAA record indicates its priority and processing method. Valid values: **0 to 255**.
         self.flag = flag
-        # The public key identifier of the record, from **0** to **65535**.
+        # The public key identifier of the record. Valid values: **0 to 65535**.
         self.key_tag = key_tag
-        # The algorithm policy for matching or verifying the certificate, from **0** to **255**.
+        # The algorithm policy used by the record for matching or verifying certificates. Valid values: **0 to 255**.
         self.matching_type = matching_type
-        # The port of the record, from **0** to **65535**.
+        # The port of the record. Valid values: **0 to 65535**.
         self.port = port
-        # The priority of the record, from **0** to **65535**. A lower value indicates a higher priority.
+        # The priority of the record. Valid values: **0 to 65535**. A smaller value indicates a higher priority.
         self.priority = priority
-        # The record\\"s certificate or public key type, from **0** to **255**.
+        # The type of certificate or public key used by the record. Valid values: **0 to 255**.
         self.selector = selector
-        # The tag of the record. For CAA records, the tag indicates the specific type and purpose.
+        # The tag of the record. The Tag of a CAA record indicates its specific type and purpose.
         self.tag = tag
+        # The tags of the record.
         self.tags = tags
-        # The certificate type for a CERT record, or the public key type for an SSHFP record.
+        # The certificate type of the record (in CERT records) or the public key type (in SSHFP records).
         self.type = type
-        # The usage identifier of the record, from **0** to **255**.
+        # The usage identifier of the record. Valid values: **0 to 255**.
         self.usage = usage
-        # The record value. The meaning of this parameter varies by the record type:
+        # The record value or partial content. The meaning varies by record type:
         # 
-        # - **A/AAAA**: The target IP address. Separate multiple IP addresses with a comma (`,`). Requires at least one IPv4 address.
-        # 
-        # - **CNAME**: The target domain name.
-        # 
-        # - **NS**: The name server for the specified domain.
-        # 
-        # - **MX**: A valid target mail server domain name.
-        # 
-        # - **TXT**: A valid text string.
-        # 
-        # - **CAA**: A valid Certificate Authority domain name.
-        # 
-        # - **SRV**: A valid target host domain name.
-        # 
-        # - **URI**: A valid URI string.
+        # - **A/AAAA**: the IP address that the record points to. Separate multiple IP addresses with commas (,). At least one IPv4 address is required.
+        # - **CNAME**: the target domain name that the record points to.
+        # - **NS**: the name server for the specified domain name.
+        # - **MX**: the valid target mail server domain name.
+        # - **TXT**: a valid text string.
+        # - **CAA**: a valid certification authority domain name.
+        # - **SRV**: a valid target host domain name.
+        # - **URI**: a valid URI string.
         self.value = value
-        # The weight of the record, from **0** to **65535**.
+        # The weight of the record. Valid values: **0 to 65535**.
         self.weight = weight
 
     def validate(self):
@@ -442,29 +428,23 @@ class GetRecordResponseBodyRecordModelAuthConf(DaraModel):
         secret_key: str = None,
         version: str = None,
     ):
-        # The AccessKey ID of the account that owns the origin.
+        # The AccessKey of the account to which the origin belongs.
         self.access_key = access_key
         # The origin authentication type. Valid values:
-        # 
-        # - **public**: Public read. Select this value when the origin is an OSS or S3 origin with public read access.
-        # 
-        # - **private**: Private read. Select this value when the origin is an S3 origin with private read access.
-        # 
-        # - **private_same_account**: Private read within the same account. Select this value when the origin is an OSS origin with private read access under the same Alibaba Cloud account.
-        # 
-        # - **private_cross_account**: Private read across accounts. Select this value when the origin is an OSS origin with private read access under a different Alibaba Cloud account.
+        # - **public**: public read. Select this value when the origin type is OSS or S3 and the origin has public read access.
+        # - **private**: private read. Select this value when the origin type is S3 and the origin has private read access.
+        # - **private_same_account**: private read within the same account. Select this value when the origin type is OSS, the origin is under the same Alibaba Cloud account, and the origin has private read access.
+        # - **private_cross_account**: private read across accounts. Select this value when the origin type is OSS, the origin is under a different Alibaba Cloud account, and the origin has private read access.
         self.auth_type = auth_type
-        # The origin\\"s region. For S3 origins, you can find region codes on the official S3 website.
+        # The region of the origin. Obtain the region from the official S3 website.
         self.region = region
-        # The AccessKey secret of the account that owns the origin.
+        # The AccessKey of the account to which the origin belongs.
         self.secret_key = secret_key
-        # The version of the signature algorithm. Supported versions:
-        # 
+        # The signature algorithm version. Valid values:
         # - **v2**
-        # 
         # - **v4**
         # 
-        # If unspecified, the default is `v4`.
+        # Default value: v4.
         self.version = version
 
     def validate(self):

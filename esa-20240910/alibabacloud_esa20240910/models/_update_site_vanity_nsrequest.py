@@ -10,11 +10,11 @@ class UpdateSiteVanityNSRequest(DaraModel):
         site_id: int = None,
         vanity_nslist: str = None,
     ):
-        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The custom nameserver names. You can specify two to five custom nameserver names. Separate multiple names with commas (,).
+        # The list of custom NS names. You can specify 2 to 5 custom NS names, separated by commas (,).
         self.vanity_nslist = vanity_nslist
 
     def validate(self):

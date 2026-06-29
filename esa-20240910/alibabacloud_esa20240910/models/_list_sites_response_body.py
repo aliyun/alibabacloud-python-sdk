@@ -16,15 +16,15 @@ class ListSitesResponseBody(DaraModel):
         sites: List[main_models.ListSitesResponseBodySites] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned data.
         self.page_number = page_number
-        # The number of sites to return on each page.
+        # The number of sites displayed per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # A list of sites.
+        # The list of queried site information.
         self.sites = sites
-        # The total count of sites.
+        # The total number of sites.
         self.total_count = total_count
 
     def validate(self):
@@ -100,67 +100,56 @@ class ListSitesResponseBodySites(DaraModel):
         verify_code: str = None,
         visit_time: str = None,
     ):
-        # The access type. Valid values:
+        # The site access type. Valid values:
         # 
-        # - **NS**: The site connects via NS.
-        # 
-        # - **CNAME**: The site connects via a CNAME record.
+        # - **NS**: NS-based access.
+        # - **CNAME**: CNAME-based access.
         self.access_type = access_type
-        # The CNAME suffix for the site. This suffix is required for CNAME record configuration.
+        # The CNAME suffix of the site. For sites that use CNAME-based access, this is the CNAME suffix that needs to be configured for records.
         self.cname_zone = cname_zone
-        # The acceleration region. Valid values:
+        # The acceleration region of the site. Valid values:
         # 
-        # - **domestic**: Chinese mainland only.
-        # 
-        # - **global**: Global.
-        # 
-        # - **overseas**: Global (excluding Chinese mainland).
+        # - **domestic**: the Chinese mainland only.
+        # - **global**: global.
+        # - **overseas**: global (excluding the Chinese mainland).
         self.coverage = coverage
-        # The time (UTC) when the site was created, in `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The creation time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The ID of the plan instance associated with the site.
+        # The instance ID of the plan attached to the site.
         self.instance_id = instance_id
-        # The list of name servers (NS) assigned to the site. Multiple name servers are separated by commas.
+        # The list of name servers assigned to the site. Multiple values are separated by commas (,).
         self.name_server_list = name_server_list
-        # The reason the site was disabled. Valid values:
+        # The reason why the site is disabled. Valid values:
         # 
-        # - **expiration_ arrears**: The plan has expired or payment is overdue.
-        # 
-        # - **internally_disabled**: Disabled by the system.
-        # 
-        # - **missing_icp**: The domain name is missing an ICP filing.
-        # 
-        # - **content_violation**: The site content violates regulations.
-        # 
-        # - **proactively_disabled**: The user disabled the site, or a usage cap was reached.
+        # - **expiration_ arrears**: The subscription plan has expired or the account has an overdue payment.
+        # - **internally_disabled**: The site is disabled by the system.
+        # - **missing_icp**: The domain name does not have an ICP filing.
+        # - **content_violation**: Content violation.
+        # - **proactively_disabled**: You proactively disabled the site or the site is disabled because the usage cap you configured is reached.
         self.offline_reason = offline_reason
-        # The name of the plan.
+        # The plan name.
         self.plan_name = plan_name
-        # The name of the plan specification.
+        # The specification name of the site plan.
         self.plan_spec_name = plan_spec_name
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the site.
+        # The site ID.
         self.site_id = site_id
-        # The domain name.
+        # The site name.
         self.site_name = site_name
-        # The status. Valid values:
-        # 
-        # - **pending**: The site is awaiting configuration.
-        # 
-        # - **active**: The site is active.
-        # 
-        # - **offline**: The site is offline.
-        # 
-        # - **moved**: The site has moved to another instance.
+        # The site status. Valid values:
+        # - **pending**: the site is pending configuration.
+        # - **active**: the site is activated.
+        # - **offline**: the site is offline.
+        # - **moved**: the site has been superseded.
         self.status = status
-        # The tags associated with the site.
+        # The site tags.
         self.tags = tags
-        # The time (UTC) when the site was last updated, in `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The update time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.update_time = update_time
-        # The TXT verification code for site ownership. For sites that connect via CNAME, you must configure this code.
+        # The site ownership verification code. When a site uses CNAME-based access, this TXT verification code must be configured.
         self.verify_code = verify_code
-        # The time (UTC) when the site was last accessed, in `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The access time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.visit_time = visit_time
 
     def validate(self):

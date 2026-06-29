@@ -17,17 +17,17 @@ class ListHttpsApplicationConfigurationsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # A list of HTTPS application configurations.
+        # Response body configurations.
         self.configs = configs
-        # The current page number.
+        # Current page number, same as the PageNumber request parameter.
         self.page_number = page_number
-        # The page size.
+        # Page size.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # Total number of records.
         self.total_count = total_count
-        # The total number of pages.
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -112,101 +112,80 @@ class ListHttpsApplicationConfigurationsResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Whether to enable the Alt-Svc feature. Default: `off`. Valid values:
-        # 
-        # - `on`: The Alt-Svc feature is enabled.
-        # 
-        # - `off`: The Alt-Svc feature is disabled.
+        # Alt-Svc feature switch. Disabled by default. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.alt_svc = alt_svc
-        # Whether the Alt-Svc header includes the `clear` parameter. Default: `off`. Valid values:
-        # 
-        # - `on`: The `clear` parameter is included.
-        # 
-        # - `off`: The `clear` parameter is not included.
+        # Whether the Alt-Svc header includes the clear parameter. Disabled by default. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.alt_svc_clear = alt_svc_clear
-        # The Alt-Svc max-age in seconds. Default: `86400`.
+        # Alt-Svc validity period in seconds. Default value: 86400 seconds.
         self.alt_svc_ma = alt_svc_ma
-        # Whether the Alt-Svc header includes the `persist` parameter. Default: `off`. Valid values:
-        # 
-        # - `on`: The `persist` parameter is included.
-        # 
-        # - `off`: The `persist` parameter is not included.
+        # Whether the Alt-Svc header includes the persist parameter. Disabled by default. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.alt_svc_persist = alt_svc_persist
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
+        # Configuration type. You can use this parameter to query global configurations or rule configurations. Valid values:
         # 
-        # - `global`: A global configuration.
-        # 
-        # - `rule`: A rule-based configuration.
+        # - global: Query global configurations.
+        # - rule: Query rule configurations.
         self.config_type = config_type
-        # Whether to enable HSTS. Default: `off`. Valid values:
+        # Whether to enable HSTS. Disabled by default. Valid values:
         # 
-        # - `on`: HSTS is enabled.
-        # 
-        # - `off`: HSTS is disabled.
+        # - on: Enabled.
+        # - off: Disabled.
         self.hsts = hsts
-        # Whether the HSTS header includes the `includeSubDomains` directive. Default: `off`. Valid values:
+        # Whether to include subdomains in HSTS. Disabled by default. Valid values:
         # 
-        # - `on`: The `includeSubDomains` directive is included.
-        # 
-        # - `off`: The `includeSubDomains` directive is not included.
+        # - on: Enabled.
+        # - off: Disabled.
         self.hsts_include_subdomains = hsts_include_subdomains
-        # The HSTS `max-age`, in seconds.
+        # HSTS expiration time in seconds.
         self.hsts_max_age = hsts_max_age
-        # Whether the HSTS header includes the `preload` directive. Default: `off`. Valid values:
+        # Whether to enable HSTS preload. Disabled by default. Valid values:
         # 
-        # - `on`: The `preload` directive is included.
-        # 
-        # - `off`: The `preload` directive is not included.
+        # - on: Enabled.
+        # - off: Disabled.
         self.hsts_preload = hsts_preload
-        # Whether to enable HTTPS redirection. Default: `off`. Valid values:
+        # Whether to enable forced HTTPS. Disabled by default. Valid values:
         # 
-        # - `on`: HTTPS redirection is enabled.
+        # - on: Enabled.
         # 
-        # - `off`: HTTPS redirection is disabled.
+        # - off: Disabled.
         self.https_force = https_force
-        # The status code for HTTPS redirection. Valid values:
-        # 
-        # - `301`
-        # 
-        # - `302`
-        # 
-        # - `307`
-        # 
-        # - `308`
+        # Forced HTTPS redirect status code. Valid values:
+        # - 301
+        # - 302
+        # - 307
+        # - 308
         self.https_force_code = https_force_code
-        # Whether to reject TLS handshake requests that lack an SNI. Default: `off`. Valid values:
-        # 
-        # - `on`: Requests that lack an SNI are rejected.
-        # 
-        # - `off`: Requests that lack an SNI are not rejected.
+        # Whether to enable denial of TLS handshake requests without SNI. Disabled by default. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.https_no_sni_deny = https_no_sni_deny
-        # Whether to enable SNI verification. Default: `off`. Valid values:
+        # Whether to enable SNI verification. Disabled by default. Valid values:
         # 
-        # - `on`: SNI verification is enabled.
-        # 
-        # - `off`: SNI verification is disabled.
+        # - on: Enabled.
+        # - off: Disabled.
         self.https_sni_verify = https_sni_verify
-        # The SNI allowlist. Separate multiple values with a space.
+        # Specifies the list of allowed SNI whitelist entries, separated by spaces.
         self.https_sni_whitelist = https_sni_whitelist
-        # The content of the rule, a conditional expression that matches user requests. This parameter is not required for a global configuration. The following use cases are supported:
-        # 
-        # - To match all incoming requests, set the value to `true`.
-        # 
-        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Whether the rule is enabled. This parameter is not required for a global configuration. Valid values:
-        # 
-        # - `on`: The rule is enabled.
-        # 
-        # - `off`: The rule is disabled.
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The name of the rule. This parameter is not required for a global configuration.
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
-        # The execution priority of the rule. A smaller value indicates a higher priority.
+        # Rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site configuration version. For sites with version management, this specifies the version to which the configuration applies. Default: `0`.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: version 0.
         self.site_version = site_version
 
     def validate(self):

@@ -17,17 +17,17 @@ class ListHttpsBasicConfigurationsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Response body configuration.
+        # The configurations returned.
         self.configs = configs
-        # Current page number.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -108,87 +108,65 @@ class ListHttpsBasicConfigurationsResponseBodyConfigs(DaraModel):
         tls_12: str = None,
         tls_13: str = None,
     ):
-        # Custom ciphersuite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+        # The custom cipher suite, which specifies the encryption algorithms selected when CiphersuiteGroup is set to custom.
         self.ciphersuite = ciphersuite
-        # Ciphersuite group, defaults to enabling all ciphersuites. Value range:
-        # 
-        # - all: all ciphersuites.
-        # 
-        # - strict: strong ciphersuites.
-        # 
-        # - custom: custom ciphersuites.
+        # The cipher suite group. All cipher suites are enabled by default. Valid values:
+        # - all: all cipher suites.
+        # - strict: strong cipher suites.
+        # - custom: custom cipher suites.
         self.ciphersuite_group = ciphersuite_group
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # - global: Query global configuration.
-        # 
-        # - rule: Query rule configuration.
+        # - global: queries global configurations.
+        # - rule: queries rule configurations.
         self.config_type = config_type
-        # Whether to enable HTTP2, default is on. Value range:
-        # 
+        # Specifies whether to enable HTTP/2. HTTP/2 is enabled by default. Valid values:
         # - on: enabled.
-        # 
         # - off: disabled.
         self.http_2 = http_2
-        # Whether to enable HTTP3, default is on. Value range:
-        # 
+        # Specifies whether to enable HTTP/3. HTTP/3 is enabled by default. Valid values:
         # - on: enabled.
-        # 
         # - off: disabled.
         self.http_3 = http_3
-        # Whether to enable HTTPS, default is enabled. Value range:
-        # 
-        # - on: Enable.
-        # 
-        # - off: Disable.
-        self.https = https
-        # Whether to enable OCSP, default is off. Value range:
+        # Specifies whether to enable HTTPS. HTTPS is enabled by default. Valid values:
         # 
         # - on: enabled.
         # 
         # - off: disabled.
+        self.https = https
+        # Specifies whether to enable OCSP stapling. OCSP stapling is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.ocsp_stapling = ocsp_stapling
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # 
-        # - Match all incoming requests: Set the value to true.
-        # 
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # 
-        # - on: Enable.
-        # 
-        # - off: Disable.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Whether to enable TLS1.0, default is disabled. Value range:
-        # 
-        # - on: Enable.
-        # 
-        # - off: Disable.
+        # Specifies whether to enable TLS 1.0. TLS 1.0 is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.tls_10 = tls_10
-        # Whether to enable TLS1.1, default is disabled. Value range:
-        # 
-        # - on: Enable.
-        # 
-        # - off: Disable.
+        # Specifies whether to enable TLS 1.1. TLS 1.1 is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.tls_11 = tls_11
-        # Whether to enable TLS1.2, default is disabled. Value range:
-        # 
-        # - on: Enable.
-        # 
-        # - off: Disable.
+        # Specifies whether to enable TLS 1.2. TLS 1.2 is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.tls_12 = tls_12
-        # Whether to enable TLS1.3, default is disabled. Value range:
-        # 
-        # - on: Enable.
-        # 
-        # - off: Disable.
+        # Specifies whether to enable TLS 1.3. TLS 1.3 is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.tls_13 = tls_13
 
     def validate(self):

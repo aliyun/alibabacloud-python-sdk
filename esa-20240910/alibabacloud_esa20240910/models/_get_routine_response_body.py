@@ -17,15 +17,15 @@ class GetRoutineResponseBody(DaraModel):
         has_assets: bool = None,
         request_id: str = None,
     ):
-        # The creation time of the edge function Routine.
+        # The time when the Edge Routine was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.create_time = create_time
-        # The default domain name for accessing the Routine.
+        # The default access record.
         self.default_related_record = default_related_record
-        # The description of the edge function Routine.
+        # The description of the Edge Routine.
         self.description = description
-        # A list of environments.
+        # The list of environment context.
         self.envs = envs
-        # Indicates whether the Routine includes Assets.
+        # Indicates whether the Routine has the Assets tag.
         self.has_assets = has_assets
         # The request ID.
         self.request_id = request_id
@@ -94,7 +94,7 @@ class GetRoutineResponseBodyEnvs(DaraModel):
         code_deploy: main_models.GetRoutineResponseBodyEnvsCodeDeploy = None,
         env: str = None,
     ):
-        # Details of the canary release for a code version.
+        # The percentage-based canary release deployment information.
         self.code_deploy = code_deploy
         # The environment name.
         self.env = env
@@ -135,13 +135,13 @@ class GetRoutineResponseBodyEnvsCodeDeploy(DaraModel):
         deploy_id: str = None,
         strategy: str = None,
     ):
-        # A list of deployed code versions.
+        # The list of deployed code version numbers.
         self.code_versions = code_versions
-        # The time the deployment was created.
+        # The time when the deployment was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.creation_time = creation_time
-        # The deployment ID.
+        # The deployment record ID.
         self.deploy_id = deploy_id
-        # The deployment strategy. The default value is `percentage`.
+        # The deployment strategy. Default value: percentage.
         self.strategy = strategy
 
     def validate(self):
@@ -198,13 +198,13 @@ class GetRoutineResponseBodyEnvsCodeDeployCodeVersions(DaraModel):
         description: str = None,
         percentage: int = None,
     ):
-        # The code version ID.
+        # The code version number.
         self.code_version = code_version
-        # The creation time of the code version.
+        # The time when the code version was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.create_time = create_time
         # The description of the code version.
         self.description = description
-        # The percentage of traffic routed to this code version.
+        # The canary release percentage of the code version.
         self.percentage = percentage
 
     def validate(self):

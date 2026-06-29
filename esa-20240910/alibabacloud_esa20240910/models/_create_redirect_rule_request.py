@@ -18,59 +18,49 @@ class CreateRedirectRuleRequest(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
-        # Specifies whether to preserve the query string from the original request. Valid values:
+        # Specifies whether to preserve the query string. Valid values:
         # 
-        # - `on`: Preserves the query string.
-        # 
-        # - `off`: Discards the query string.
+        # - on: Enabled.
+        # - off: Disabled.
         # 
         # This parameter is required.
         self.reserve_query_string = reserve_query_string
-        # The rule content, which is a conditional expression used to match user requests. Do not set this parameter when adding a global configuration. The following use cases are supported:
-        # 
-        # - To match all incoming requests, set the value to `true`.
-        # 
-        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Specifies whether to enable the rule. Do not set this parameter when adding a global configuration. Valid values:
-        # 
-        # - `on`: The rule is enabled.
-        # 
-        # - `off`: The rule is disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name. Do not set this parameter when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The execution priority of the rule. A smaller value indicates a higher priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site ID. To get this value, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # For sites with configuration version management enabled, specify the version to which this configuration applies.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
-        # The status code that the edge node returns to the client for the redirect. Valid values:
+        # The response status code used by the node when responding to the client with the redirect address. Valid values:
         # 
         # - 301
-        # 
         # - 302
-        # 
         # - 303
-        # 
         # - 307
-        # 
-        # - 308
+        # - 308.
         # 
         # This parameter is required.
         self.status_code = status_code
-        # The target URL for the redirect.
+        # The target URL after redirection.
         # 
         # This parameter is required.
         self.target_url = target_url
         # The redirect type. Valid values:
         # 
-        # - `static`: Static mode.
-        # 
-        # - `dynamic`: Dynamic mode.
+        # - static: Static pattern.
+        # - dynamic: Dynamic pattern.
         # 
         # This parameter is required.
         self.type = type

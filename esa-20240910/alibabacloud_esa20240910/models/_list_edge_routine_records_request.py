@@ -13,23 +13,19 @@ class ListEdgeRoutineRecordsRequest(DaraModel):
         record_name: str = None,
         site_id: int = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number for a paged query. The value must be greater than or equal to 1. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**.
+        # The number of records per page for a paged query. Valid values: 1 to 500. Default value: **500**.
         self.page_size = page_size
-        # The match mode to filter the record names.
-        # 
+        # The matching mode used to filter by record name. Valid values:
         # - **fuzzy**: fuzzy match.
-        # 
-        # - **prefix**: match by prefix.
-        # 
-        # - **suffix**: match by suffix.
-        # 
-        # - **exact** (default): exact match .
+        # - **prefix**: prefix match.
+        # - **suffix**: suffix match.
+        # - **exact**: exact match (default).
         self.record_match_type = record_match_type
-        # The record name.
+        # Filters by the specified record name.
         self.record_name = record_name
-        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

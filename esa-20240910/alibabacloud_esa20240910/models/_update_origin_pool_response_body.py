@@ -10,7 +10,7 @@ class UpdateOriginPoolResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The origin pool ID.
+        # The origin address pool ID.
         self.id = id
         # The request ID.
         self.request_id = request_id

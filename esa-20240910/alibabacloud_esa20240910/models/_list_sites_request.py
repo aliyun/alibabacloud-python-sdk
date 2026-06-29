@@ -25,57 +25,45 @@ class ListSitesRequest(DaraModel):
     ):
         # The access type. Valid values:
         # 
-        # - **NS**: NS access.
+        # - **NS**: NS-based access.
         # 
-        # - **CNAME**: CNAME access.
+        # - **CNAME**: CNAME-based access.
         self.access_type = access_type
         # The acceleration region. Valid values:
-        # 
-        # - **domestic**: Chinese mainland only.
-        # 
-        # - **global**: Global.
-        # 
-        # - **overseas**: Global (excluding the Chinese mainland).
+        # - **domestic**: the Chinese mainland only.
+        # - **global**: global.
+        # - **overseas**: global (excluding the Chinese mainland).
         self.coverage = coverage
-        # Specifies whether to return only sites that use the Enterprise Edition.
+        # Specifies whether to query only Enterprise Edition sites. Set this parameter to **true** to query only Enterprise Edition sites.
         self.only_enterprise = only_enterprise
-        # The field to sort the results by. By default, results are sorted by creation time (gmtCreate). Supported values:
-        # 
-        # - `gmtCreate`: site creation time
-        # 
-        # - `visitTime`: site access time
+        # The sort field. By default, results are sorted by creation time. Valid values:
+        # - gmtCreate: site creation time.
+        # - visitTime: site access time.
         self.order_by = order_by
-        # The number of the page to return. The default value is **1**.
+        # The page number for paging. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries to return on each page. The default value is **500**.
+        # The number of entries per page for paging. Valid values: 1 to 500.
         self.page_size = page_size
-        # The subscription plan type. Valid values:
-        # 
+        # The plan subscription type. Valid values:
         # - **basicplan**: Basic Edition.
-        # 
         # - **standardplan**: Standard Edition.
-        # 
-        # - **advancedplan**: Advanced Edition.
-        # 
+        # - **advancedplan**: Premium Edition.
         # - **enterpriseplan**: Enterprise Edition.
         self.plan_subscribe_type = plan_subscribe_type
-        # The resource group ID, used to filter query results.
+        # The resource group ID. Used as a filter condition for the query.
         self.resource_group_id = resource_group_id
-        # The site name, used to filter query results.
+        # The site name. Used as a filter condition for the query.
         self.site_name = site_name
-        # The match mode for the `SiteName` parameter. The default value is `exact`. Valid values:
+        # The search matching mode for the site name. Default is exact match. Valid values:
         # 
         # - **prefix**: prefix match.
-        # 
         # - **suffix**: suffix match.
-        # 
         # - **exact**: exact match.
-        # 
         # - **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
-        # The site status, used to filter query results.
+        # The site status. Used as a filter condition for the query.
         self.status = status
-        # A list of tags to use for filtering sites.
+        # The tag filter rules.
         self.tag_filter = tag_filter
 
     def validate(self):
@@ -178,9 +166,9 @@ class ListSitesRequestTagFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key, used to filter query results.
+        # The tag key. Used as a filter condition for the query.
         self.key = key
-        # The tag value, used to filter query results.
+        # The tag value. Used as a filter condition for the query.
         self.value = value
 
     def validate(self):

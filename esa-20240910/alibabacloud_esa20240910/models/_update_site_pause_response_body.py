@@ -9,7 +9,7 @@ class UpdateSitePauseResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The unique ID for the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

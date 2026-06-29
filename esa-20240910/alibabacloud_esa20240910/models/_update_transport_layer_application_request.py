@@ -19,31 +19,40 @@ class UpdateTransportLayerApplicationRequest(DaraModel):
         site_id: int = None,
         static_ip: str = None,
     ):
-        # The transport layer application ID. You can obtain this ID by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation.
+        # The Layer 4 application ID. You can call the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Specifies whether to enable cross-border optimization for network access from the Chinese mainland. This feature is disabled by default. Valid values:
+        # Specifies whether to enable network access optimization for the Chinese mainland. This feature is disabled by default. Valid values:
         # 
-        # - on: Enables the feature.
-        # 
-        # - off: Disables the feature.
+        # - on: enabled.
+        # - off: disabled.
         self.cross_border_optimization = cross_border_optimization
-        # Specifies whether to enable IP access rules. If enabled, the IP access rules in WAF apply to the transport layer application. Valid values:
+        # The IP access rule switch. When enabled, WAF IP access rules take effect for the Layer 4 application. Valid values:
         # 
-        # - on: Enables the feature.
-        # 
-        # - off: Disables the feature.
+        # - on: enabled.
+        # - off: disabled.
         self.ip_access_rule = ip_access_rule
-        # Specifies whether to enable IPv6. Valid values: `on` and `off`.
+        # The IPv6 switch. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.ipv_6 = ipv_6
+        # Specifies whether to enable keep-alive protection. This feature is disabled by default. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.keep_alive_protection = keep_alive_protection
-        # A list of forwarding rules. For each rule, all parameters are required except for `Comment`.
+        # The list of forwarding rules. For each rule, all parameters except the comment are required.
         self.rules = rules
-        # The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
+        # Specifies whether to enable static IP. This feature is disabled by default. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.static_ip = static_ip
 
     def validate(self):
@@ -127,51 +136,38 @@ class UpdateTransportLayerApplicationRequestRules(DaraModel):
         source_port: str = None,
         source_type: str = None,
     ):
-        # Specifies the protocol for client IP pass-through. Valid values:
-        # 
-        # - **off**: Disables client IP pass-through.
-        # 
-        # - **PPv1**: PROXY Protocol v1. Supports client IP pass-through for the TCP protocol.
-        # 
-        # - **PPv2**: PROXY Protocol v2. Supports client IP pass-through for both TCP and UDP protocols.
-        # 
-        # - **SPP**: Simple Proxy Protocol. Supports client IP pass-through for the UDP protocol.
+        # The client IP pass-through protocol. Valid values:
+        # - **off**: disabled.
+        # - **PPv1**: PROXY Protocol v1, which supports client IP pass-through for TCP.
+        # - **PPv2**: PROXY Protocol v2, which supports client IP pass-through for TCP and UDP.
+        # - **SPP**: Simple Proxy Protocol, which supports client IP pass-through for UDP.
         self.client_ippass_through_mode = client_ippass_through_mode
-        # An optional comment for the forwarding rule.
+        # The comment for the rule.
         self.comment = comment
-        # The edge port. The following formats are supported:
+        # The edge port. Valid values:
         # 
-        # - A single port, for example, `80`.
-        # 
-        # - A port range, for example, `81-85`. This range includes ports 81, 82, 83, 84, and 85.
-        # 
-        # - A combination of ports and port ranges separated by commas, for example, `80,81-85,90`. This includes ports 80, 81, 82, 83, 84, 85, and 90.
-        # 
-        # - Edge ports cannot overlap within a single rule or across multiple rules.
+        # - A single port, such as 80.
+        # - A port range, such as 81-85, which represents ports 81, 82, 83, 84, and 85.
+        # - A combination of ports and port ranges separated by commas, such as 80,81-85,90, which represents ports 80, 81, 82, 83, 84, 85, and 90.
+        # - Edge ports within a single rule and across multiple rules cannot overlap.
         self.edge_port = edge_port
-        # The forwarding protocol. Valid values:
+        # The forwarding rule protocol. Valid values:
         # 
-        # - TCP: Transmission Control Protocol.
-        # 
-        # - UDP: User Datagram Protocol.
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
         self.protocol = protocol
-        # The source, which must correspond to the specified `SourceType`. For example, if `SourceType` is `ip`, this parameter must be an IP address.
+        # The specific value of the origin.
         self.source = source
-        # The source port. The following formats are supported:
+        # Origin Server Port. Valid values:
         # 
-        # - A single port. When a single source port is used, any valid format can be used for the edge port.
-        # 
-        # - A port range. You can specify a port range for the source port only if the edge port is also a port range, and their sizes must match. For example, if `EdgePort` is `90-93`, you cannot set `SourcePort` to `81-85` because their sizes (4 and 5 ports, respectively) do not match.
+        # - A single port. When Origin Server Port is a single port, any valid edge port combination is supported.
+        # - A port range. Origin Server Port can be set to a port range only when the edge port is a port range, and the range size must match the edge port range. For example, if the edge port is 90-93, you cannot set Origin Server Port to 81-85 because Origin Server Port range is 5 while the edge port range is 4, which are inconsistent.
         self.source_port = source_port
-        # The type of the source. Valid values:
-        # 
-        # - **ip**: An IP address.
-        # 
-        # - **domain**: A domain name.
-        # 
-        # - **OP**: An origin pool.
-        # 
-        # - **LB**: A load balancer.
+        # The origin type. Valid values:
+        # - **ip**: IP address.
+        # - **domain**: domain name.
+        # - **OP**: origin IPAM pool.
+        # - **LB**: load balancing.
         self.source_type = source_type
 
     def validate(self):

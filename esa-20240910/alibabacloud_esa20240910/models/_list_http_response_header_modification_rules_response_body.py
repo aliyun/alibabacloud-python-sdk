@@ -17,11 +17,11 @@ class ListHttpResponseHeaderModificationRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # A list of HTTP response header modification rules.
+        # The list of HTTP response header modifications.
         self.configs = configs
-        # The page number.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -102,31 +102,25 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigs(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The type of configuration. Valid values:
-        # 
-        # - `global`: A global configuration.
-        # 
-        # - `rule`: A rule configuration.
+        # The configuration type. Valid values:
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # The response header modifications. You can add, remove, or modify headers.
+        # The response header modifications. Three operations are supported: add, delete, and modify.
         self.response_header_modification = response_header_modification
-        # The conditional expression that matches user requests. This parameter is not required for a global configuration.
-        # 
-        # - To match all incoming requests, set the value to `true`.
-        # 
-        # - To match specific requests, set a custom expression. Example: `(http.host eq "video.example.com")`
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specific requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Whether the rule is enabled. This parameter is not required for a global configuration. Valid values:
-        # 
-        # - `on`: Enabled.
-        # 
-        # - `off`: Disabled.
+        # The rule switch. You do not need to set this parameter when you add a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The name of the rule. This parameter is not required for a global configuration.
+        # The rule name. You do not need to set this parameter when you add a global configuration.
         self.rule_name = rule_name
-        # The execution priority of the rule. Rules with smaller values have higher priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The version number of the site configuration. For sites with version management enabled, this specifies the version to which the configuration applies. The default is 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):
@@ -209,19 +203,14 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
     ):
         # The response header name.
         self.name = name
-        # The modification operation. Valid values:
-        # 
-        # - `add`: Adds a header.
-        # 
-        # - `del`: Removes a header.
-        # 
-        # - `modify`: Modifies a header.
+        # The operation type. Valid values:
+        # - add: adds a response header.
+        # - del: deletes a response header.
+        # - modify: modifies a response header.
         self.operation = operation
         # The value type. Valid values:
-        # 
-        # - `static`: Static mode.
-        # 
-        # - `dynamic`: Dynamic mode.
+        # - static: static pattern.
+        # - dynamic: dynamic schema.
         self.type = type
         # The response header value.
         self.value = value
