@@ -1,3 +1,6 @@
+2026-06-29 Version: 1.1.1
+- Generated python 2022-06-16 for OpenITag.
+
 2024-05-15 Version: 1.1.0
 - Support API AppendAllDataToTask.
 - Update API CreateUser: update param body.
