@@ -24,18 +24,31 @@ class ListRulesV4ResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Business type. This field has no practical use. Ignore it.
         self.business_type = business_type
+        # Result code. **200** means success. Any other value means failure. Callers can use this field to identify the cause of failure.
         self.code = code
+        # Total number of items.
         self.count = count
+        # Current page number.
         self.current_page = current_page
+        # Response data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error details if the request failed. Returns **successful** if the request succeeded.
         self.message = message
+        # Error details if the request failed. Use this field when multiple messages are returned.
         self.messages = messages
+        # Current page number.
         self.page_number = page_number
+        # Number of rows per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Callers can use this field to determine success: true means success. **false** or **null** means failure.
         self.success = success
+        # Total number of items.
         self.total_count = total_count
 
     def validate(self):

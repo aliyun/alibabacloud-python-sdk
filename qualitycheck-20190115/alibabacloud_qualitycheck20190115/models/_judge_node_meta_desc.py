@@ -16,12 +16,18 @@ class JudgeNodeMetaDesc(DaraModel):
         symbol: int = None,
         value: str = None,
     ):
+        # Actual value
         self.actual_value = actual_value
+        # Data type
         self.data_type = data_type
         self.expression_meta_desc = expression_meta_desc
+        # System field
         self.field = field
+        # Field data source type: 1: System predefined field. 2: Quality inspection field for passed parameters.
         self.field_type = field_type
+        # Expression
         self.symbol = symbol
+        # Preset value
         self.value = value
 
     def validate(self):

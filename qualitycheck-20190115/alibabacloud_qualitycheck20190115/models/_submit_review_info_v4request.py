@@ -10,7 +10,9 @@ class SubmitReviewInfoV4Request(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Complete JSON string. For details, see the following sections.
         self.json_str = json_str
 
     def validate(self):

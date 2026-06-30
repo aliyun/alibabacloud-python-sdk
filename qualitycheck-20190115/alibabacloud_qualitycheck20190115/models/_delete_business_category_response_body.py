@@ -13,10 +13,21 @@ class DeleteBusinessCategoryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates that the request was successful. Other values indicate that the request failed. Use this field to determine the cause of the failure.
         self.code = code
+        # The returned result.
         self.data = data
+        # If the request fails, this parameter returns the error details. If the request is successful, this parameter returns **successful**.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Use this field to determine whether the request was successful:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - false or **null**: The request failed.
         self.success = success
 
     def validate(self):

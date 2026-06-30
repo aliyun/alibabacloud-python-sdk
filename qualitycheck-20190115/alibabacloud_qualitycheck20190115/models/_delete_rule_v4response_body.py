@@ -17,11 +17,16 @@ class DeleteRuleV4ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. **200** indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Provides error details if an error occurs. If successful, the value is **successful**.
         self.message = message
         self.messages = messages
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true means success; false/null means failure.
         self.success = success
 
     def validate(self):

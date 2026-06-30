@@ -12,6 +12,8 @@ class UpdateQualityCheckDataRequest(DaraModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # Complete JSON string containing detailed information. For specific content, see the details below.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

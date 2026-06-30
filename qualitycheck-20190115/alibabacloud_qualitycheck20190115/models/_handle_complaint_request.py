@@ -10,8 +10,10 @@ class HandleComplaintRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The ID of the business space.
         self.base_me_agent_id = base_me_agent_id
+        # A JSON string that contains the request parameters. For details, see the following section.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

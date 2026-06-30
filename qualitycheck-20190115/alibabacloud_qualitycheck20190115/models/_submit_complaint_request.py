@@ -10,8 +10,10 @@ class SubmitComplaintRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The business space ID.
         self.base_me_agent_id = base_me_agent_id
+        # A JSON string that contains the complaint details. For more information, see the following table.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

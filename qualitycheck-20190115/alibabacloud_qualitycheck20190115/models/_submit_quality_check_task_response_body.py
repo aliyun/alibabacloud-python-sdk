@@ -13,10 +13,15 @@ class SubmitQualityCheckTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Any other value indicates failure. Use this field to determine the cause of failure.
         self.code = code
+        # Task ID.
         self.data = data
+        # Error details if the request failed. Returns "successful" on success.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. true means success. false or null means failure.
         self.success = success
 
     def validate(self):

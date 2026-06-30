@@ -12,9 +12,13 @@ class UpdateUserResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Other values indicate failure. Use this field to determine the cause of failure.
         self.code = code
+        # Error details on failure. "successful" on success.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates if the request succeeded. Use this field to determine if the request succeeded: \\`true\\` for success; \\`false\\`/\\`null\\` for failure.
         self.success = success
 
     def validate(self):

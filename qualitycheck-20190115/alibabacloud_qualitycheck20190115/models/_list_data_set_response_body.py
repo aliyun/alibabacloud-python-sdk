@@ -22,16 +22,25 @@ class ListDataSetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
         self.code = code
+        # Total count.
         self.count = count
+        # Current page number.
         self.current_page = current_page
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details if an error occurs; "successful" on success.
         self.message = message
         self.messages = messages
+        # Current page.
         self.page_number = page_number
+        # Number of items displayed per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true for success; false/null for failure.
         self.success = success
 
     def validate(self):

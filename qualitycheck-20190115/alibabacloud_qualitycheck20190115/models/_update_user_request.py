@@ -10,8 +10,10 @@ class UpdateUserRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # Workspace ID.
         self.base_me_agent_id = base_me_agent_id
+        # This API supports batch modification of user roles. The value of the \\`jsonStr\\` input parameter is a List type. Refer to the example value. See the detailed information below for the complete JSON string content.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

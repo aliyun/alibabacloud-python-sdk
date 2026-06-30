@@ -10,8 +10,9 @@ class UpdateQualityCheckSchemeRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
+        # The request parameters in JSON format. For more information, see the supplementary description of request parameters.
         self.json_str = json_str
 
     def validate(self):

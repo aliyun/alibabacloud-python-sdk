@@ -20,14 +20,23 @@ class ListQualityCheckSchemeResponseBody(DaraModel):
         result_count_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of **200** indicates success. Other values indicate a failure. Use this code to identify the cause of the failure.
         self.code = code
+        # The total number of entries.
         self.count = count
+        # The data of the quality check scheme list.
         self.data = data
+        # The returned message. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # An internal parameter. You can ignore this parameter.
         self.result_count_id = result_count_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of **false** or **null** indicates failure.
         self.success = success
 
     def validate(self):
@@ -124,19 +133,33 @@ class ListQualityCheckSchemeResponseBodyData(DaraModel):
         update_user_name: str = None,
         version: int = None,
     ):
+        # The time when the scheme was created.
         self.create_time = create_time
+        # The name of the creator.
         self.create_user_name = create_user_name
+        # The data type of the quality check scheme. Valid values: 0 (text) and 1 (audio).
         self.data_type = data_type
+        # The description.
         self.description = description
+        # The name of the quality check scheme.
         self.name = name
+        # The list of check items.
         self.rule_list = rule_list
+        # The list of quality check dimensions.
         self.scheme_check_type_list = scheme_check_type_list
+        # The ID of the quality check scheme.
         self.scheme_id = scheme_id
+        # The status of the quality check scheme. Valid values: 0 (deleted), 1 (published), 2 (unpublished), and 3 (updated but not published).
         self.status = status
+        # The type of the quality check scheme template. Valid values: 1 (built-in) and 2 (user-defined).
         self.template_type = template_type
+        # The type of the quality check scheme. Valid values: 0 (built-in) and 1 (user-defined).
         self.type = type
+        # The time when the scheme was last updated.
         self.update_time = update_time
+        # The name of the user who last updated the scheme.
         self.update_user_name = update_user_name
+        # The version of the quality check scheme.
         self.version = version
 
     def validate(self):
@@ -263,10 +286,15 @@ class ListQualityCheckSchemeResponseBodyDataSchemeCheckTypeList(DaraModel):
         score: int = None,
         target_type: int = None,
     ):
+        # The name of the quality check dimension.
         self.check_name = check_name
+        # The type of the quality check dimension.
         self.check_type = check_type
+        # The enabled status. Valid values: 0 (disabled) and 1 (enabled).
         self.enable = enable
+        # The score of the quality check dimension.
         self.score = score
+        # An internal parameter. You can ignore this parameter.
         self.target_type = target_type
 
     def validate(self):
@@ -318,6 +346,7 @@ class ListQualityCheckSchemeResponseBodyDataRuleList(DaraModel):
         self,
         rules: List[main_models.ListQualityCheckSchemeResponseBodyDataRuleListRules] = None,
     ):
+        # The rule information. This parameter is reserved for future use. Currently, only one rule is returned.
         self.rules = rules
 
     def validate(self):
@@ -360,13 +389,21 @@ class ListQualityCheckSchemeResponseBodyDataRuleListRules(DaraModel):
         score_type: int = None,
         target_type: int = None,
     ):
+        # The quality check dimension to which the item belongs.
         self.check_type = check_type
+        # The name of the check item.
         self.name = name
+        # The ID of the check item.
         self.rid = rid
+        # Indicates whether to calculate a score. Valid values: 1 (no score) and 3 (score).
         self.rule_score_type = rule_score_type
+        # The score.
         self.score_num = score_num
+        # The scoring type. Valid values: 0 (Points are added or deducted each time the rule is triggered) and 1 (A one-time score is given when the rule is triggered).
         self.score_num_type = score_num_type
+        # The scoring method. Valid values: 1 (add points) and 3 (deduct points).
         self.score_type = score_type
+        # The application scenario of the check item. Valid values: 10 (common check item) and 11 (SOP flow check item).
         self.target_type = target_type
 
     def validate(self):

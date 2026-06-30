@@ -24,18 +24,29 @@ class ListSessionGroupResponseBody(DaraModel):
         result_count_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of \\`200\\` indicates that the request was successful. Other values indicate that the request failed.
         self.code = code
+        # The total number of entries.
         self.count = count
+        # The number of the returned page. The default value is 1.
         self.current_page = current_page
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The data marker. To retrieve more than 10,000 records, include the LastDataId from the previous response in the next request.
         self.last_data_id = last_data_id
+        # The error details if the request fails. \\`successful\\` is returned if the request is successful.
         self.message = message
         self.messages = messages
+        # The number of the current page.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # A reserved parameter. You can ignore this parameter.
         self.result_count_id = result_count_id
+        # Indicates whether the request was successful. A value of \\`true\\` indicates that the request was successful. A value of \\`false\\` or \\`null\\` indicates that the request failed.
         self.success = success
 
     def validate(self):

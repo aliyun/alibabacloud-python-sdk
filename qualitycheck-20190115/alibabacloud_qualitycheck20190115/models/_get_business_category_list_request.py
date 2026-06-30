@@ -10,7 +10,10 @@ class GetBusinessCategoryListRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Pass an empty string as the value.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

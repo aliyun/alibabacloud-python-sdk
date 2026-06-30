@@ -13,10 +13,15 @@ class SubmitPrecisionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. A value of **200** indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
         self.code = code
+        # ID of the created task.
         self.data = data
+        # Error details if the call fails. Returns successful if the call succeeds.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. true means success. false or null means failure.
         self.success = success
 
     def validate(self):

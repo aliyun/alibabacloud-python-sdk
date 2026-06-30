@@ -1,3 +1,22 @@
+2026-06-30 Version: 9.2.0
+- Support API AnalyzeLabel.
+- Support API CreateAgent.
+- Support API CreateAgentTask.
+- Support API CreateTag.
+- Support API DeleteAgent.
+- Support API DeleteTag.
+- Support API ExecuteAgent.
+- Support API GenerateLabel.
+- Support API GetAgent.
+- Support API GetAgentTaskResult.
+- Support API GetLabelAnalysisResult.
+- Support API GetLabelGeneratedResult.
+- Support API GetTag.
+- Support API ListTag.
+- Support API UpdateAgent.
+- Support API UpdateTag.
+
+
 2026-06-02 Version: 9.1.1
 - Generated python 2019-01-15 for Qualitycheck.
 

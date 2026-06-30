@@ -16,10 +16,14 @@ class GetCustomizationConfigListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates that the request succeeded. Other values indicate failure. Use this field to identify the cause of a failure.
         self.code = code
         self.data = data
+        # If an error occurs, this field contains error details. If the request succeeds, the value is \\`successful\\`.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Use this field to check the request status. A value of \\`true\\` means success. A value of \\`false\\` or \\`null\\` means failure.
         self.success = success
 
     def validate(self):

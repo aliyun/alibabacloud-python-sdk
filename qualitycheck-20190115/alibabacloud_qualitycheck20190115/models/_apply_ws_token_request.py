@@ -10,7 +10,9 @@ class ApplyWsTokenRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Complete JSON string information. For details, see the following specifications.
         self.json_str = json_str
 
     def validate(self):

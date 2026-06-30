@@ -13,10 +13,15 @@ class UpdateAsrVocabResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of **200** indicates that the request was successful. Other values indicate that the request failed.
         self.code = code
+        # The ID of the hotword vocabulary. This is the value of the **vocabId** that you specified in the request.
         self.data = data
+        # The message that is returned. If the request is successful, **successful** is returned. If the request fails, an error message is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of **false** or **null** indicates failure.
         self.success = success
 
     def validate(self):

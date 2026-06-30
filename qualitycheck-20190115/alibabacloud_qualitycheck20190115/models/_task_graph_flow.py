@@ -18,12 +18,19 @@ class TaskGraphFlow(DaraModel):
         show_properties: str = None,
         skip_when_first_session_node_miss: bool = None,
     ):
+        # Flow scoring logic settings
         self.flow_rule_score_type = flow_rule_score_type
+        # Canvas ID of the flow
         self.id = id
+        # All nodes in the flow
         self.nodes = nodes
+        # Rule ID
         self.rid = rid
+        # Rule Name
         self.rule_name = rule_name
+        # Used for frontend display
         self.show_properties = show_properties
+        # Skip if the first session node is not hit
         self.skip_when_first_session_node_miss = skip_when_first_session_node_miss
 
     def validate(self):

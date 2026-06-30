@@ -13,10 +13,19 @@ class DeleteAsrVocabResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** means success. Any other value means failure. Use this field to identify the cause of failure.
         self.code = code
+        # The hotword ID you specified as vocabId.
         self.data = data
+        # Details about the error if the request fails. If the request succeeds, the value is **successful**.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Use this field to check the result:
+        # 
+        # - **true** means success.
+        # 
+        # - false or **null** means failure.
         self.success = success
 
     def validate(self):

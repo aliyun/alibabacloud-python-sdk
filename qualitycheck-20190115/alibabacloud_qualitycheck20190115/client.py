@@ -22,7 +22,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'qualitycheck.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('qualitycheck', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -271,6 +274,80 @@ class Client(OpenApiClient):
     ) -> main_models.AddRuleV4Response:
         runtime = RuntimeOptions()
         return await self.add_rule_v4with_options_async(request, runtime)
+
+    def analyze_label_with_options(
+        self,
+        request: main_models.AnalyzeLabelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AnalyzeLabelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AnalyzeLabel',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AnalyzeLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def analyze_label_with_options_async(
+        self,
+        request: main_models.AnalyzeLabelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AnalyzeLabelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AnalyzeLabel',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AnalyzeLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def analyze_label(
+        self,
+        request: main_models.AnalyzeLabelRequest,
+    ) -> main_models.AnalyzeLabelResponse:
+        runtime = RuntimeOptions()
+        return self.analyze_label_with_options(request, runtime)
+
+    async def analyze_label_async(
+        self,
+        request: main_models.AnalyzeLabelRequest,
+    ) -> main_models.AnalyzeLabelResponse:
+        runtime = RuntimeOptions()
+        return await self.analyze_label_with_options_async(request, runtime)
 
     def apply_ws_token_with_options(
         self,
@@ -567,6 +644,154 @@ class Client(OpenApiClient):
     ) -> main_models.BatchSubmitReviewInfoResponse:
         runtime = RuntimeOptions()
         return await self.batch_submit_review_info_with_options_async(request, runtime)
+
+    def create_agent_with_options(
+        self,
+        request: main_models.CreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_with_options_async(
+        self,
+        request: main_models.CreateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent(
+        self,
+        request: main_models.CreateAgentRequest,
+    ) -> main_models.CreateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.create_agent_with_options(request, runtime)
+
+    async def create_agent_async(
+        self,
+        request: main_models.CreateAgentRequest,
+    ) -> main_models.CreateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agent_with_options_async(request, runtime)
+
+    def create_agent_task_with_options(
+        self,
+        request: main_models.CreateAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentTask',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_agent_task_with_options_async(
+        self,
+        request: main_models.CreateAgentTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAgentTaskResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAgentTask',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAgentTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_agent_task(
+        self,
+        request: main_models.CreateAgentTaskRequest,
+    ) -> main_models.CreateAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_agent_task_with_options(request, runtime)
+
+    async def create_agent_task_async(
+        self,
+        request: main_models.CreateAgentTaskRequest,
+    ) -> main_models.CreateAgentTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_agent_task_with_options_async(request, runtime)
 
     def create_asr_vocab_with_options(
         self,
@@ -1028,6 +1253,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_skill_group_config_with_options_async(request, runtime)
 
+    def create_tag_with_options(
+        self,
+        request: main_models.CreateTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_with_options_async(
+        self,
+        request: main_models.CreateTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag(
+        self,
+        request: main_models.CreateTagRequest,
+    ) -> main_models.CreateTagResponse:
+        runtime = RuntimeOptions()
+        return self.create_tag_with_options(request, runtime)
+
+    async def create_tag_async(
+        self,
+        request: main_models.CreateTagRequest,
+    ) -> main_models.CreateTagResponse:
+        runtime = RuntimeOptions()
+        return await self.create_tag_with_options_async(request, runtime)
+
     def create_task_assign_rule_with_options(
         self,
         request: main_models.CreateTaskAssignRuleRequest,
@@ -1397,6 +1696,80 @@ class Client(OpenApiClient):
     ) -> main_models.DelRuleCategoryResponse:
         runtime = RuntimeOptions()
         return await self.del_rule_category_with_options_async(request, runtime)
+
+    def delete_agent_with_options(
+        self,
+        request: main_models.DeleteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_with_options_async(
+        self,
+        request: main_models.DeleteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent(
+        self,
+        request: main_models.DeleteAgentRequest,
+    ) -> main_models.DeleteAgentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_agent_with_options(request, runtime)
+
+    async def delete_agent_async(
+        self,
+        request: main_models.DeleteAgentRequest,
+    ) -> main_models.DeleteAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_agent_with_options_async(request, runtime)
 
     def delete_asr_vocab_with_options(
         self,
@@ -2232,6 +2605,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_skill_group_config_with_options_async(request, runtime)
 
+    def delete_tag_with_options(
+        self,
+        request: main_models.DeleteTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tag_with_options_async(
+        self,
+        request: main_models.DeleteTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tag(
+        self,
+        request: main_models.DeleteTagRequest,
+    ) -> main_models.DeleteTagResponse:
+        runtime = RuntimeOptions()
+        return self.delete_tag_with_options(request, runtime)
+
+    async def delete_tag_async(
+        self,
+        request: main_models.DeleteTagRequest,
+    ) -> main_models.DeleteTagResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_tag_with_options_async(request, runtime)
+
     def delete_task_assign_rule_with_options(
         self,
         request: main_models.DeleteTaskAssignRuleRequest,
@@ -2454,6 +2901,388 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_warning_strategy_config_with_options_async(request, runtime)
 
+    def execute_agent_with_sse(
+        self,
+        request: main_models.ExecuteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.ExecuteAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ExecuteAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def execute_agent_with_sse_async(
+        self,
+        request: main_models.ExecuteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.ExecuteAgentResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ExecuteAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def execute_agent_with_options(
+        self,
+        request: main_models.ExecuteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_agent_with_options_async(
+        self,
+        request: main_models.ExecuteAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        if not DaraCore.is_null(request.stream):
+            body['Stream'] = request.stream
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_agent(
+        self,
+        request: main_models.ExecuteAgentRequest,
+    ) -> main_models.ExecuteAgentResponse:
+        runtime = RuntimeOptions()
+        return self.execute_agent_with_options(request, runtime)
+
+    async def execute_agent_async(
+        self,
+        request: main_models.ExecuteAgentRequest,
+    ) -> main_models.ExecuteAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.execute_agent_with_options_async(request, runtime)
+
+    def generate_label_with_options(
+        self,
+        request: main_models.GenerateLabelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateLabelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateLabel',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_label_with_options_async(
+        self,
+        request: main_models.GenerateLabelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateLabelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateLabel',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_label(
+        self,
+        request: main_models.GenerateLabelRequest,
+    ) -> main_models.GenerateLabelResponse:
+        runtime = RuntimeOptions()
+        return self.generate_label_with_options(request, runtime)
+
+    async def generate_label_async(
+        self,
+        request: main_models.GenerateLabelRequest,
+    ) -> main_models.GenerateLabelResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_label_with_options_async(request, runtime)
+
+    def get_agent_with_options(
+        self,
+        request: main_models.GetAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_with_options_async(
+        self,
+        request: main_models.GetAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent(
+        self,
+        request: main_models.GetAgentRequest,
+    ) -> main_models.GetAgentResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_with_options(request, runtime)
+
+    async def get_agent_async(
+        self,
+        request: main_models.GetAgentRequest,
+    ) -> main_models.GetAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_with_options_async(request, runtime)
+
+    def get_agent_task_result_with_options(
+        self,
+        request: main_models.GetAgentTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentTaskResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentTaskResult',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_agent_task_result_with_options_async(
+        self,
+        request: main_models.GetAgentTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentTaskResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAgentTaskResult',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAgentTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_agent_task_result(
+        self,
+        request: main_models.GetAgentTaskResultRequest,
+    ) -> main_models.GetAgentTaskResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_agent_task_result_with_options(request, runtime)
+
+    async def get_agent_task_result_async(
+        self,
+        request: main_models.GetAgentTaskResultRequest,
+    ) -> main_models.GetAgentTaskResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_agent_task_result_with_options_async(request, runtime)
+
     def get_asr_vocab_with_options(
         self,
         request: main_models.GetAsrVocabRequest,
@@ -2675,6 +3504,154 @@ class Client(OpenApiClient):
     ) -> main_models.GetCustomizationConfigListResponse:
         runtime = RuntimeOptions()
         return await self.get_customization_config_list_with_options_async(request, runtime)
+
+    def get_label_analysis_result_with_options(
+        self,
+        request: main_models.GetLabelAnalysisResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLabelAnalysisResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLabelAnalysisResult',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLabelAnalysisResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_label_analysis_result_with_options_async(
+        self,
+        request: main_models.GetLabelAnalysisResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLabelAnalysisResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLabelAnalysisResult',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLabelAnalysisResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_label_analysis_result(
+        self,
+        request: main_models.GetLabelAnalysisResultRequest,
+    ) -> main_models.GetLabelAnalysisResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_label_analysis_result_with_options(request, runtime)
+
+    async def get_label_analysis_result_async(
+        self,
+        request: main_models.GetLabelAnalysisResultRequest,
+    ) -> main_models.GetLabelAnalysisResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_label_analysis_result_with_options_async(request, runtime)
+
+    def get_label_generated_result_with_options(
+        self,
+        request: main_models.GetLabelGeneratedResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLabelGeneratedResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLabelGeneratedResult',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLabelGeneratedResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_label_generated_result_with_options_async(
+        self,
+        request: main_models.GetLabelGeneratedResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLabelGeneratedResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLabelGeneratedResult',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLabelGeneratedResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_label_generated_result(
+        self,
+        request: main_models.GetLabelGeneratedResultRequest,
+    ) -> main_models.GetLabelGeneratedResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_label_generated_result_with_options(request, runtime)
+
+    async def get_label_generated_result_async(
+        self,
+        request: main_models.GetLabelGeneratedResultRequest,
+    ) -> main_models.GetLabelGeneratedResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_label_generated_result_with_options_async(request, runtime)
 
     def get_mining_task_result_with_options(
         self,
@@ -3960,6 +4937,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_sync_result_with_options_async(request, runtime)
 
+    def get_tag_with_options(
+        self,
+        request: main_models.GetTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tag_with_options_async(
+        self,
+        request: main_models.GetTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tag(
+        self,
+        request: main_models.GetTagRequest,
+    ) -> main_models.GetTagResponse:
+        runtime = RuntimeOptions()
+        return self.get_tag_with_options(request, runtime)
+
+    async def get_tag_async(
+        self,
+        request: main_models.GetTagRequest,
+    ) -> main_models.GetTagResponse:
+        runtime = RuntimeOptions()
+        return await self.get_tag_with_options_async(request, runtime)
+
     def get_warning_strategy_config_with_options(
         self,
         request: main_models.GetWarningStrategyConfigRequest,
@@ -4947,6 +5998,80 @@ class Client(OpenApiClient):
     ) -> main_models.ListSkillGroupConfigResponse:
         runtime = RuntimeOptions()
         return await self.list_skill_group_config_with_options_async(request, runtime)
+
+    def list_tag_with_options(
+        self,
+        request: main_models.ListTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_with_options_async(
+        self,
+        request: main_models.ListTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag(
+        self,
+        request: main_models.ListTagRequest,
+    ) -> main_models.ListTagResponse:
+        runtime = RuntimeOptions()
+        return self.list_tag_with_options(request, runtime)
+
+    async def list_tag_async(
+        self,
+        request: main_models.ListTagRequest,
+    ) -> main_models.ListTagResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tag_with_options_async(request, runtime)
 
     def list_task_assign_rules_with_options(
         self,
@@ -6160,6 +7285,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.test_rule_v4with_options_async(request, runtime)
 
+    def update_agent_with_options(
+        self,
+        request: main_models.UpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_with_options_async(
+        self,
+        request: main_models.UpdateAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgent',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent(
+        self,
+        request: main_models.UpdateAgentRequest,
+    ) -> main_models.UpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return self.update_agent_with_options(request, runtime)
+
+    async def update_agent_async(
+        self,
+        request: main_models.UpdateAgentRequest,
+    ) -> main_models.UpdateAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_agent_with_options_async(request, runtime)
+
     def update_asr_vocab_with_options(
         self,
         request: main_models.UpdateAsrVocabRequest,
@@ -6998,6 +8197,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_sync_quality_check_data_with_options_async(request, runtime)
 
+    def update_tag_with_options(
+        self,
+        request: main_models.UpdateTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tag_with_options_async(
+        self,
+        request: main_models.UpdateTagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateTagResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            query['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            query['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateTag',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tag(
+        self,
+        request: main_models.UpdateTagRequest,
+    ) -> main_models.UpdateTagResponse:
+        runtime = RuntimeOptions()
+        return self.update_tag_with_options(request, runtime)
+
+    async def update_tag_async(
+        self,
+        request: main_models.UpdateTagRequest,
+    ) -> main_models.UpdateTagResponse:
+        runtime = RuntimeOptions()
+        return await self.update_tag_with_options_async(request, runtime)
+
     def update_task_assign_rule_with_options(
         self,
         request: main_models.UpdateTaskAssignRuleRequest,
@@ -7525,10 +8798,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.base_me_agent_id):
             query['BaseMeAgentId'] = request.base_me_agent_id
+        body = {}
         if not DaraCore.is_null(request.json_str):
-            query['JsonStr'] = request.json_str
+            body['JsonStr'] = request.json_str
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UploadDataSyncForLLM',
@@ -7555,10 +8830,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.base_me_agent_id):
             query['BaseMeAgentId'] = request.base_me_agent_id
+        body = {}
         if not DaraCore.is_null(request.json_str):
-            query['JsonStr'] = request.json_str
+            body['JsonStr'] = request.json_str
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UploadDataSyncForLLM',

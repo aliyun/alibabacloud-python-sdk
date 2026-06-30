@@ -17,11 +17,17 @@ class TestRuleV4ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. 200 indicates success. Other values indicate failure. Callers can use this field to identify the cause of failure.
         self.code = code
+        # Full response body.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error details when an error occurs. Returns successful when the request succeeds.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Callers can use this field to determine success: true means success; false or null means failure.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class TestRuleV4ResponseBodyData(DaraModel):
         hit_task_flow_list: List[main_models.TestRuleV4ResponseBodyDataHitTaskFlowList] = None,
         unhit_rule_review_info_list: List[main_models.TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList] = None,
     ):
+        # Information about hit check items.
         self.hit_rule_review_info_list = hit_rule_review_info_list
+        # List of hit advanced flow nodes.
         self.hit_task_flow_list = hit_task_flow_list
+        # Information about rules that were not hit.
         self.unhit_rule_review_info_list = unhit_rule_review_info_list
 
     def validate(self):
@@ -153,9 +162,13 @@ class TestRuleV4ResponseBodyDataUnhitRuleReviewInfoList(DaraModel):
         rid: int = None,
         task_flow_type: int = None,
     ):
+        # List of conditions.
         self.condition_info_list = condition_info_list
+        # Whether the rule was hit.
         self.matched = matched
+        # The ID of the rule.
         self.rid = rid
+        # Flowchart type. Deprecated. Default value: 1.
         self.task_flow_type = task_flow_type
 
     def validate(self):
@@ -211,8 +224,11 @@ class TestRuleV4ResponseBodyDataHitTaskFlowList(DaraModel):
         rid: int = None,
         task_flow_type: int = None,
     ):
+        # Flowchart canvas.
         self.graph_flow = graph_flow
+        # Rule ID.
         self.rid = rid
+        # Flowchart type. Deprecated. Default value: 1.
         self.task_flow_type = task_flow_type
 
     def validate(self):
@@ -266,18 +282,31 @@ class TestRuleV4ResponseBodyDataHitRuleReviewInfoList(DaraModel):
         score_num_type: int = None,
         task_flow_id: int = None,
     ):
+        # ID of the hit branch.
         self.branch_hit_id = branch_hit_id
+        # List of branch information.
         self.branch_info_list = branch_info_list
+        # Information about hit conditions.
         self.condition_hit_info_list = condition_hit_info_list
+        # List of conditions.
         self.condition_info_list = condition_info_list
+        # Judgement node name.
         self.judge_node_name = judge_node_name
+        # Lambda expression. Example: a&\\&b.
         self.lambda_ = lambda_
+        # Whether the rule was hit.
         self.matched = matched
+        # Node type.
         self.node_type = node_type
+        # Check item ID.
         self.rid = rid
+        # Rule name.
         self.rule_name = rule_name
+        # Whether scoring applies. Valid values: 1 (no scoring) and 3 (scoring).
         self.rule_score_type = rule_score_type
+        # Scoring type. Valid values: 0 (add or subtract points on hit) and 1 (one-time score on hit).
         self.score_num_type = score_num_type
+        # Flow ID.
         self.task_flow_id = task_flow_id
 
     def validate(self):
@@ -405,8 +434,11 @@ class TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoList(DaraMo
         key_words: List[main_models.TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords] = None,
         phrase: main_models.TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase = None,
     ):
+        # Condition ID.
         self.cid = cid
+        # Key information that was hit. This information appears highlighted on the review page. Examples include keywords matched by a keyword-check operator or category information matched by an agent-model-check operator.
         self.key_words = key_words
+        # Sentence details for the current hit check item.
         self.phrase = phrase
 
     def validate(self):
@@ -473,22 +505,43 @@ class TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListPhrase(
         uuid: str = None,
         words: str = None,
     ):
+        # Start time offset of this sentence relative to the start of the full dialogue, in milliseconds. For example, if the total audio duration is 2 minutes and 10 seconds, and a customer starts speaking at 1 minute and 12 seconds and finishes at 1 minute and 20 seconds, then begin equals 72000 and end equals 80000.
         self.begin = begin
+        # Start time of this sentence. Example: 2019-11-25 15:37:16.
         self.begin_time = begin_time
+        # Channel ID.
         self.channel_id = channel_id
+        # Internal use only. Ignore this field.
         self.emotion_fine_grained_value = emotion_fine_grained_value
+        # Emotion intensity score. Value equals volume in decibels divided by 10. Valid range: [1, 10]. Higher values indicate stronger emotion.
         self.emotion_value = emotion_value
+        # End time offset of this sentence relative to the start of the full dialogue, in milliseconds. For example, if the total audio duration is 2 minutes and 10 seconds, and a customer starts speaking at 1 minute and 12 seconds and finishes at 1 minute and 20 seconds, then begin equals 72000 and end equals 80000.
         self.end = end
+        # Hit status. Valid values:
+        # 
+        # - **0**: Not hit
+        # 
+        # - **1**: Hit
         self.hit_status = hit_status
+        # Start time of this sentence in hh:mm:ss format.
         self.hour_min_sec = hour_min_sec
+        # Role identifier. In offline voice scenarios, roles are limited to agent or customer. In offline text quality check scenarios, this field shows the identity value passed in during upload.
         self.identity = identity
+        # Index of this sentence in the full list of sentences. This is the index of the sentence in the dialogues array of the request parameters, starting from 0.
         self.pid = pid
+        # Internal use only. Ignore this field.
         self.renter_id = renter_id
+        # Speaker role for this sentence. Valid values: agent and customer.
         self.role = role
+        # Internal use only. Ignore this field.
         self.sid = sid
+        # Silence duration, in milliseconds.
         self.silence_duration = silence_duration
+        # Average speech rate for this sentence, in words per minute.
         self.speech_rate = speech_rate
+        # Internal use only. Ignore this field.
         self.uuid = uuid
+        # Dialogue content.
         self.words = words
 
     def validate(self):
@@ -622,16 +675,27 @@ class TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWord
         uuid: str = None,
         val: str = None,
     ):
+        # Condition ID.
         self.cid = cid
+        # Internal field. Ignore this field.
         self.customize_code = customize_code
+        # Starting character position for highlighting. Index starts at 0. Maximum value is the total number of characters in the sentence minus 1. The character at position from is included in the highlight.
         self.from_ = from_
+        # Operator ID.
         self.oid = oid
+        # Key information matched by the operator.
         self.operator_key = operator_key
+        # Index of this sentence in the full list of sentences. This is the index of the sentence in the dialogues array of the request parameters, starting from 0.
         self.pid = pid
+        # Similar phrase.
         self.similar_phrase = similar_phrase
+        # Internal use only. Ignore this field.
         self.tid = tid
+        # The position of the character that follows the highlighted keyword. The character at the \\`to\\` position is not included in the highlight. For example, if \\`from\\` is 0 and \\`to\\` is 3, the highlighted keyword consists of the characters at indices 0, 1, and 2. The maximum value is one less than the total number of characters in the sentence.
         self.to = to
+        # Internal use only. Ignore this field.
         self.uuid = uuid
+        # Key information matched by the operator. For details, see **Detailed explanation of Val key information** in the response parameter description below.
         self.val = val
 
     def validate(self):
@@ -725,12 +789,19 @@ class TestRuleV4ResponseBodyDataHitRuleReviewInfoListBranchInfoList(DaraModel):
         situation: main_models.NextNodeSituations = None,
         triggers: List[str] = None,
     ):
+        # Check item type.
         self.check_type = check_type
+        # Index number.
         self.index = index
+        # Lambda expression.
         self.lambda_ = lambda_
+        # Node name.
         self.name = name
+        # ID of the next flow node.
         self.next_node_id = next_node_id
+        # Flow node condition.
         self.situation = situation
+        # List of trigger IDs.
         self.triggers = triggers
 
     def validate(self):

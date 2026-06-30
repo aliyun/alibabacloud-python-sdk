@@ -18,12 +18,18 @@ class CreateSchemeTaskConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Any other value indicates failure. The caller can use this field to determine the cause of failure.
         self.code = code
+        # ID of the newly created quality inspection job.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # When an error occurs, this field provides error details. When the operation succeeds, the value is "successful".
         self.message = message
         self.messages = messages
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. The caller can use this field to determine the request outcome: true indicates success; false or null indicates failure.
         self.success = success
 
     def validate(self):

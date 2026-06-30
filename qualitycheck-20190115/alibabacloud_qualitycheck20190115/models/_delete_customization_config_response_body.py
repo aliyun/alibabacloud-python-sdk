@@ -13,10 +13,15 @@ class DeleteCustomizationConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** means the call succeeded. Any other value means the call failed. Use this field to identify the cause of failure.
         self.code = code
+        # The model ID.
         self.data = data
+        # Details about the error if the call fails. If the call succeeds, this value is **successful**.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Use this field to check the result: true means success and **false** or **null** means failure.
         self.success = success
 
     def validate(self):

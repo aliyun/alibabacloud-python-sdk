@@ -16,11 +16,15 @@ class GetMiningTaskResultResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Result code. **200** indicates success. Any other value indicates failure. Use this field to determine the cause of failure.
         self.code = code
+        # Quality inspection task ID.
         self.data = data
+        # Details of the error if an error occurs. Otherwise, **successful**.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded. true means success. false or null means failure.
         self.success = success
 
     def validate(self):
@@ -78,10 +82,15 @@ class GetMiningTaskResultResponseBodyData(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
+        # File path
         self.file_path = file_path
+        # List of returned file paths
         self.file_path_list = file_path_list
+        # Markdown file path
         self.file_path_md = file_path_md
+        # Task ID
         self.task_id = task_id
+        # Task status
         self.task_status = task_status
 
     def validate(self):
@@ -142,7 +151,9 @@ class GetMiningTaskResultResponseBodyDataFilePathList(DaraModel):
         file_type: str = None,
         file_url: str = None,
     ):
+        # Generated file type
         self.file_type = file_type
+        # Generated file URL
         self.file_url = file_url
 
     def validate(self):

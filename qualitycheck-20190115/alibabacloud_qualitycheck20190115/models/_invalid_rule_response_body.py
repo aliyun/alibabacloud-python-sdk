@@ -13,10 +13,15 @@ class InvalidRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Other values indicate failure. The caller can determine the cause of failure based on this field.
         self.code = code
+        # Indicates whether the deletion was successful.
         self.data = data
+        # Indicates error details on failure. For success, the value is **successful**.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful. The caller can determine if the request succeeded based on this field: **true** indicates success, and **false/null** indicates failure.
         self.success = success
 
     def validate(self):

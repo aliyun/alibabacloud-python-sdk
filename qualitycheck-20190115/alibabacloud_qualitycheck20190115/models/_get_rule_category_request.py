@@ -10,8 +10,10 @@ class GetRuleCategoryRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
+        # Set the value to an empty string.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

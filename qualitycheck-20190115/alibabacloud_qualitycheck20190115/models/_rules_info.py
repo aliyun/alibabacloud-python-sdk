@@ -17,11 +17,17 @@ class RulesInfo(DaraModel):
         page_size: int = None,
         rules: List[main_models.RuleInfo] = None,
     ):
+        # Rule condition information; conditions for multiple rules are all placed in a single list
         self.conditions = conditions
+        # Total number of entries
         self.count = count
+        # Testing copy
         self.dialogues = dialogues
+        # Current page
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Basic rule information; multiple rules may exist
         self.rules = rules
 
     def validate(self):

@@ -12,6 +12,7 @@ class GetQualityCheckSchemeRequest(DaraModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # The request parameters in JSON format. For more information, see the additional information for request parameters.
         self.json_str = json_str
 
     def validate(self):

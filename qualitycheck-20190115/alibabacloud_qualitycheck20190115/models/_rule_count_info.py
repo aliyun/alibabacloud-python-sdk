@@ -58,52 +58,121 @@ class RuleCountInfo(DaraModel):
         un_review_number: int = None,
         user_group: str = None,
     ):
+        # The review option.
+        # 
+        # - 1: Manual review
+        # 
+        # - 3: Automatic review
         self.auto_review = auto_review
+        # A list of basic information about business categories.
         self.business_category_basic_info_list = business_category_basic_info_list
+        # A list of business category names.
         self.business_category_name_list = business_category_name_list
+        # The business scope.
         self.business_range = business_range
+        # The number of checked sessions.
         self.check_number = check_number
+        # The comments.
         self.comments = comments
+        # The name of the creator.
         self.create_emp_name = create_emp_name
+        # The employee ID of the creator.
         self.create_empid = create_empid
+        # The creation time.
         self.create_time = create_time
+        # You can set this parameter to 1 to reject rule edits, or to 0 or null to allow rule edits.
         self.deny = deny
+        # Indicates if the rule is active. \\`0\\`: No. \\`1\\`: Yes.
         self.effective = effective
+        # The effective end time.
         self.effective_end_time = effective_end_time
+        # The effective start time.
         self.effective_start_time = effective_start_time
+        # The end time.
         self.end_time = end_time
+        # Indicates if the rule is active for the entire lifecycle. \\`0\\`: No. \\`1\\`: Yes.
         self.full_cycle = full_cycle
+        # The flow canvas, in JSON format.
         self.graph_flow = graph_flow
+        # The number of hit sessions.
         self.hit_number = hit_number
+        # The hit rate.
         self.hit_rate = hit_rate
+        # The hit rate of actual violations.
         self.hit_real_violation_rate = hit_real_violation_rate
+        # Indicates if the rule is deleted.
         self.is_delete = is_delete
+        # Indicates if the rule is selected.
         self.is_select = is_select
+        # The scheduled task name.
         self.job_name = job_name
+        # The name of the user who last updated the rule.
         self.last_update_emp_name = last_update_emp_name
+        # The employee ID of the user who last updated the rule.
         self.last_update_empid = last_update_empid
+        # The last update time.
         self.last_update_time = last_update_time
+        # The rule name.
         self.name = name
+        # The operation mode.
         self.operation_mode = operation_mode
+        # The number of items pending review.
         self.pre_review_number = pre_review_number
+        # The number of problems found.
         self.problem_number = problem_number
+        # The quality check type.
+        # 
+        # - 0: Offline
+        # 
+        # - 1: Real-time
         self.quality_check_type = quality_check_type
+        # The number of actual violations after review.
         self.real_violation_number = real_violation_number
+        # The review accuracy rate.
         self.review_accuracy_rate = review_accuracy_rate
+        # The number of reviewed items.
         self.review_number = review_number
+        # The review rate.
         self.review_rate = review_rate
+        # The review status name.
         self.review_status_name = review_status_name
+        # The rule ID.
         self.rid = rid
+        # The scoring type. \\`8\\`: No score is set.
         self.rule_score_single_type = rule_score_single_type
+        # Specifies if a score is calculated.
+        # 
+        # - 1: No
+        # 
+        # - 3: Yes
         self.rule_score_type = rule_score_type
+        # The rule origin. For example, a built-in rule or a user-created rule.
         self.rule_type = rule_type
+        # The sub-item ID.
         self.score_sub_id = score_sub_id
+        # The start time.
         self.start_time = start_time
+        # The status of the rule.
+        # 
+        # - 0: Pending
+        # 
+        # - 1: Active
+        # 
+        # - 2: Expired
         self.status = status
+        # The rule category.
+        # 
+        # - 10: Standard
+        # 
+        # - 11: Flow-based
         self.target_type = target_type
+        # The rule type.
         self.type = type
+        # The type name.
         self.type_name = type_name
+        # The number of unreviewed items.
         self.un_review_number = un_review_number
+        # The user group.
         self.user_group = user_group
 
     def validate(self):

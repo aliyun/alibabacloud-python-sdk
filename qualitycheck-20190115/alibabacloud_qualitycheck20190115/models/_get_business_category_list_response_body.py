@@ -16,10 +16,17 @@ class GetBusinessCategoryListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. The value **200** indicates success. Any other value indicates failure, and the caller can determine the cause of failure based on this field.
         self.code = code
         self.data = data
+        # When an error occurs, this field provides error details; when successful, the value is **successful**.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. The caller can use this field to determine the request outcome:
+        # 
+        # - **true** indicates success
+        # - **false/null** indicates failure
         self.success = success
 
     def validate(self):

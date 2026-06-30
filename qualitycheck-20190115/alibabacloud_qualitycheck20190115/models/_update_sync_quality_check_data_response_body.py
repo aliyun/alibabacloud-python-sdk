@@ -14,10 +14,15 @@ class UpdateSyncQualityCheckDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The Result code. A value of 200 indicates Succeeded. Any other value indicates failed. The API caller can determine the cause of failure based on this field.
         self.code = code
+        # The complete response Content.
         self.data = data
+        # Details of the error when an error occurs; "successful" when the operation succeeded.
         self.message = message
+        # The request ID, which is the UUID of the request.
         self.request_id = request_id
+        # Indicates whether the Request succeeded. The API caller can use this field to determine whether the Request succeeded: true indicates success; false or null indicates failure.
         self.success = success
 
     def validate(self):
@@ -72,7 +77,9 @@ class UpdateSyncQualityCheckDataResponseBodyData(DaraModel):
         task_id: str = None,
         tid: str = None,
     ):
+        # The Job ID.
         self.task_id = task_id
+        # The UUID of the call.
         self.tid = tid
 
     def validate(self):

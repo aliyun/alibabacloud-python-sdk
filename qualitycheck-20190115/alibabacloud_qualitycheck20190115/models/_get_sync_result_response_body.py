@@ -20,14 +20,23 @@ class GetSyncResultResponseBody(DaraModel):
         result_count_id: str = None,
         success: bool = None,
     ):
+        # Result code. A value of 200 indicates success. Any other value indicates failure. The caller can use this field to determine the cause of failure.
         self.code = code
+        # Total number of entries.
         self.count = count
+        # Query result.
         self.data = data
+        # Error details when an error occurs; "successful" when the operation succeeded.
         self.message = message
+        # Page number
         self.page_number = page_number
+        # Number of entries per page.
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Internal field. Ignore it.
         self.result_count_id = result_count_id
+        # Indicates whether the request succeeded. The caller can use this field to determine the request status: true indicates success; false or null indicates failure.
         self.success = success
 
     def validate(self):
@@ -125,20 +134,35 @@ class GetSyncResultResponseBodyData(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # Agent information
         self.agent = agent
+        # Transcription result (dialogue text)
         self.asr_result = asr_result
+        # Review comments.
         self.comments = comments
+        # Job Creation Time.
         self.create_time = create_time
+        # When status is neither 0 nor 1, this field indicates the Error Details.
         self.error_message = error_message
+        # Rule hit result.
         self.hit_result = hit_result
+        # Recording file information
         self.recording = recording
+        # The quality inspector who actually reviewed the task.
         self.resolver = resolver
+        # Review accuracy. Possible values: 0 (fault); 1 (correct); 2 (partially correct); 3 (pending review).
         self.review_result = review_result
+        # Review status; possible values: 0 (not reviewed); 1 (reviewed).
         self.review_status = review_status
+        # Username of the assigned quality inspector.
         self.reviewer = reviewer
+        # Quality inspection score, with a maximum of 100.
         self.score = score
+        # Current job status. Possible values: 0 (not completed); 1 (completed). The caller can use this field to determine whether the job is complete. Values other than 0 or 1 indicate an error; see the errorMessage field for Error Details.
         self.status = status
+        # Job ID.
         self.task_id = task_id
+        # Internal field. Ignore it.
         self.task_name = task_name
 
     def validate(self):
@@ -288,21 +312,39 @@ class GetSyncResultResponseBodyDataRecording(DaraModel):
         remark_3: str = None,
         url: str = None,
     ):
+        # Line-of-business name.
         self.business = business
+        # Call ID.
         self.call_id = call_id
+        # Recording generation UNIX timestamp, accurate to milliseconds.
         self.call_time = call_time
+        # Call type:  
+        # - 1: Outgoing call  
+        # - 3: Incoming call
         self.call_type = call_type
+        # Callee number.
         self.callee = callee
+        # Caller number.
         self.caller = caller
+        # Internal field. Ignore this.
         self.data_set_name = data_set_name
+        # Total number of words in the conversation.
         self.duration = duration
+        # Call duration.
         self.duration_audio = duration_audio
+        # File ID, which is the callId in the request parameters. If not specified, a random ID will be generated.
         self.id = id
+        # Recording file name.
         self.name = name
+        # Internal field. Ignore it.
         self.primary_id = primary_id
+        # Custom data 1.
         self.remark_1 = remark_1
+        # Custom data 2.
         self.remark_2 = remark_2
+        # Custom data 3.
         self.remark_3 = remark_3
+        # Recording file URL, used for playback.
         self.url = url
 
     def validate(self):
@@ -424,10 +466,15 @@ class GetSyncResultResponseBodyDataHitResult(DaraModel):
         rid: str = None,
         type: str = None,
     ):
+        # Specific hit location information. At the sentence dimension, returns which condition in the rule was hit and which specific characters triggered the hit within the sentence.
         self.hits = hits
+        # Hit rule name.
         self.name = name
+        # Review accuracy; possible values: 0 (fault); 1 (correct).
         self.review_result = review_result
+        # Hit rule ID.
         self.rid = rid
+        # Rule type associated with the hit rule.
         self.type = type
 
     def validate(self):
@@ -489,8 +536,11 @@ class GetSyncResultResponseBodyDataHitResultHits(DaraModel):
         key_words: List[main_models.GetSyncResultResponseBodyDataHitResultHitsKeyWords] = None,
         phrase: main_models.GetSyncResultResponseBodyDataHitResultHitsPhrase = None,
     ):
+        # List of hit condition IDs.
         self.cid = cid
+        # Returns the specific characters in the current sentence that hit the rule, which are the keywords to be highlighted.
         self.key_words = key_words
+        # Details of the sentence that hit the current rule.
         self.phrase = phrase
 
     def validate(self):
@@ -547,12 +597,19 @@ class GetSyncResultResponseBodyDataHitResultHitsPhrase(DaraModel):
         speech_rate: int = None,
         words: str = None,
     ):
+        # The Start Time of this sentence, represented as an offset in milliseconds from the starting point.
         self.begin = begin
+        # Emotion intensity value ranging from 1 to 10. A higher value indicates stronger emotion.
         self.emotion_value = emotion_value
+        # The End Time of this sentence, represented as an offset in milliseconds from the starting point.
         self.end = end
+        # The role in the conversation content. Possible values: agent, Customer, System.
         self.role = role
+        # Internal field. Ignore.
         self.silence_duration = silence_duration
+        # The speech rate of this sentence.
         self.speech_rate = speech_rate
+        # A sentence spoken by this role.
         self.words = words
 
     def validate(self):
@@ -619,9 +676,13 @@ class GetSyncResultResponseBodyDataHitResultHitsKeyWords(DaraModel):
         to: int = None,
         val: str = None,
     ):
+        # The ID of the condition that was hit.
         self.cid = cid
+        # The starting character position (inclusive) of the keyword to be highlighted. The value starts from 0 and can be at most the total number of characters in the sentence minus 1.
         self.from_ = from_
+        # The ending character position (exclusive) of the keyword to be highlighted. The maximum value is the total number of characters in the sentence minus 1. For example, in the sentence “不可能给你退货的”, if from=0 and to=3, the highlighted keyword is “不可能”, which consists of three characters.
         self.to = to
+        # The exact keyword content.
         self.val = val
 
     def validate(self):
@@ -673,12 +734,19 @@ class GetSyncResultResponseBodyDataAsrResult(DaraModel):
         speech_rate: int = None,
         words: str = None,
     ):
+        # The start time of this sentence, which is the offset from the starting point in milliseconds.
         self.begin = begin
+        # Emotion intensity value ranging from 1 to 10. A higher value indicates stronger emotion.
         self.emotion_value = emotion_value
+        # The end time of this sentence, which is the offset from the starting point in milliseconds.
         self.end = end
+        # Role in the dialogue content. Possible values: agent, Customer.
         self.role = role
+        # Internal field. Ignore it.
         self.silence_duration = silence_duration
+        # The average speech rate of this sentence, in characters per minute.
         self.speech_rate = speech_rate
+        # Dialogue content.
         self.words = words
 
     def validate(self):
@@ -744,8 +812,11 @@ class GetSyncResultResponseBodyDataAgent(DaraModel):
         name: str = None,
         skill_group: str = None,
     ):
+        # Agent ID.
         self.id = id
+        # Agent name
         self.name = name
+        # Skill group name
         self.skill_group = skill_group
 
     def validate(self):

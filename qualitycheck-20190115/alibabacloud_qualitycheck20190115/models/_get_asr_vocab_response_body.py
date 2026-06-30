@@ -16,10 +16,19 @@ class GetAsrVocabResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** means success. Any other value means failure. Use this field to identify the cause of failure.
         self.code = code
+        # The response data.
         self.data = data
+        # Error details if the request fails. If successful, the value is **successful**.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Use this field to check the result:
+        # 
+        # - **true** means success
+        # 
+        # - false or **null** means failure
         self.success = success
 
     def validate(self):
@@ -76,8 +85,15 @@ class GetAsrVocabResponseBodyData(DaraModel):
         name: str = None,
         words: main_models.GetAsrVocabResponseBodyDataWords = None,
     ):
+        # The ASR version.
+        # 
+        # - 2 or **null**: V2 (Intelligent Speech Interaction ASR)
+        # 
+        # - **3**: V3 (Paraformer ASR)
         self.asr_version = asr_version
+        # The language model ID. This field appears only for V3.
         self.model_customization_id = model_customization_id
+        # The hotword group name.
         self.name = name
         self.words = words
 

@@ -16,10 +16,18 @@ class UploadRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** means success. Any other value indicates failure. Use this field to diagnose errors.
         self.code = code
         self.data = data
+        # Error details if the call fails. **successful** if successful.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Whether the request succeeded. Use this field to verify success:
+        # 
+        # - **true** means success.
+        # 
+        # - false or **null** means failure.
         self.success = success
 
     def validate(self):

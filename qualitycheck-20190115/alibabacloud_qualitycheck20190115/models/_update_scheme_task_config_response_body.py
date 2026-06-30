@@ -17,11 +17,16 @@ class UpdateSchemeTaskConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** means success. Other values mean failure.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error details if an error occurs. When successful, the value is **successful**.
         self.message = message
         self.messages = messages
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. true means success. false or null means failure.
         self.success = success
 
     def validate(self):

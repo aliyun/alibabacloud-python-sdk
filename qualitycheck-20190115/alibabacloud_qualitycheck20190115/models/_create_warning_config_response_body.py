@@ -13,10 +13,15 @@ class CreateWarningConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Other values indicate failure. The caller can determine the failure reason based on this field.
         self.code = code
+        # The ID of the warning configuration successfully created.
         self.data = data
+        # Error details when an error occurs. Returns \\"successful\\" on success.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Whether the request was successful. The caller can determine if the request was successful based on this field: true indicates success, false/null indicates failure.
         self.success = success
 
     def validate(self):

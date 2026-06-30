@@ -14,8 +14,11 @@ class RunCompletionMessageRequest(DaraModel):
         model_code: str = None,
         stream: bool = None,
     ):
+        # A list of messages that form the conversation history and the current prompt.
         self.messages = messages
+        # The model specification to use. Valid values: `TYXM_PLUS` and `TYXM_TURBO`.
         self.model_code = model_code
+        # Specifies whether to stream the response using Server-Sent Events (SSE). If `true`, the response is streamed. Defaults to `false`.
         self.stream = stream
 
     def validate(self):
@@ -64,7 +67,9 @@ class RunCompletionMessageRequestMessages(DaraModel):
         content: str = None,
         role: str = None,
     ):
+        # The content of the message.
         self.content = content
+        # The role of the message sender. Valid values: `user`, `agent`, `system`, and `function`.
         self.role = role
 
     def validate(self):

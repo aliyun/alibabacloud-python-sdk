@@ -10,8 +10,9 @@ class DeleteQualityCheckSchemeRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # JSON request body. For details, see the parameter description below.
         self.json_str = json_str
 
     def validate(self):

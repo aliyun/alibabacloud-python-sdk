@@ -13,10 +13,15 @@ class VerifyFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Other values indicate failure. Callers can determine the failure reason using this field.
         self.code = code
+        # Current detection accuracy: Number of incorrect characters in verified files / Total number of characters in verified files.
         self.data = data
+        # Error details when an error occurs. Successful when successful.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Callers can determine if the request was successful using this field: true indicates success; false/null indicates failure.
         self.success = success
 
     def validate(self):

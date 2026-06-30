@@ -19,13 +19,20 @@ class ListUsersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of `200` indicates success. Other values indicate failure.
         self.code = code
+        # The total number of entries.
         self.count = count
         self.data = data
+        # The message returned. The value is successful if the request is successful. Otherwise, an error message is returned.
         self.message = message
+        # The current page number.
         self.page_number = page_number
+        # The number of entries displayed per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
         self.success = success
 
     def validate(self):

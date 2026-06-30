@@ -24,18 +24,29 @@ class GetRulesCountListResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Business type. This field has no practical meaning and can be ignored.
         self.business_type = business_type
+        # Result code. **200** indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
         self.code = code
+        # Total number of entries.
         self.count = count
+        # Current page number.
         self.current_page = current_page
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error details if the request failed. Returns "successful" on success.
         self.message = message
         self.messages = messages
+        # Current page.
         self.page_number = page_number
+        # Number of rows per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Use this field to determine request success: true means success; false or null means failure.
         self.success = success
+        # Total number of entries.
         self.total_count = total_count
 
     def validate(self):

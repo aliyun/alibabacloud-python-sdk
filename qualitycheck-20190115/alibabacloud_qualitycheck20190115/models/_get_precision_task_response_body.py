@@ -16,10 +16,15 @@ class GetPrecisionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates that the request was successful. Other values indicate that the request failed. Use this field to determine the cause of the failure.
         self.code = code
+        # The task details.
         self.data = data
+        # If the request fails, this field provides the error details. If the request is successful, the value is \\`successful\\`.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -84,17 +89,28 @@ class GetPrecisionTaskResponseBodyData(DaraModel):
         update_time: str = None,
         verified_count: int = None,
     ):
+        # If the source is a dataset, this is the dataset ID.
         self.data_set_id = data_set_id
+        # If the source is a dataset, this is the dataset name.
         self.data_set_name = data_set_name
+        # The total duration of the audio recording.
         self.duration = duration
+        # The number of incorrectly transcribed words.
         self.incorrect_words = incorrect_words
+        # The task name.
         self.name = name
         self.precisions = precisions
+        # The source of the file. Possible values: 3: Dataset. 0: Call center.
         self.source = source
+        # The task status. Possible values: 0: Transcribing. 1: Transcription complete.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The total number of files in the task.
         self.total_count = total_count
+        # The time when the task was last updated.
         self.update_time = update_time
+        # The total number of verified files.
         self.verified_count = verified_count
 
     def validate(self):

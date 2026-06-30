@@ -13,10 +13,15 @@ class SubmitComplaintResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates success. Other values indicate failure.
         self.code = code
+        # The current quality check score.
         self.data = data
+        # The response message. If the request is successful, "successful" is returned. If the request fails, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of `true` indicates success, and a value of `false` or `null` indicates failure.
         self.success = success
 
     def validate(self):

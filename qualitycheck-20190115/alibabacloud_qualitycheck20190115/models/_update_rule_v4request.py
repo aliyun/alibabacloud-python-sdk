@@ -13,8 +13,11 @@ class UpdateRuleV4Request(DaraModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # For details about JsonStrForRule, see the document [`Rule Object Description`](https://help.aliyun.com/document_detail/453053.html).
+        # 
         # This parameter is required.
         self.json_str_for_rule = json_str_for_rule
+        # Rule ID.
         self.rule_id = rule_id
 
     def validate(self):

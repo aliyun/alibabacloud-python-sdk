@@ -13,7 +13,9 @@ class NextNodeSituations(DaraModel):
         condition_group: List[main_models.NextNodeSituationsConditionGroup] = None,
         type: str = None,
     ):
+        # Judgment Conditions
         self.condition_group = condition_group
+        # The matching relationship between conditions: currently all are OR relationships.
         self.type = type
 
     def validate(self):
@@ -56,7 +58,9 @@ class NextNodeSituationsConditionGroup(DaraModel):
         conditions: List[main_models.JudgeNodeMetaDesc] = None,
         type: str = None,
     ):
+        # Collection of matching conditions
         self.conditions = conditions
+        # The matching relationship between conditions
         self.type = type
 
     def validate(self):

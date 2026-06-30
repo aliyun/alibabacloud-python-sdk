@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._agent_info import AgentInfo
 from ._business_category_basic_info import BusinessCategoryBasicInfo
 from ._condition_basic_info import ConditionBasicInfo
 from ._graph_flow_node import GraphFlowNode
@@ -23,6 +24,9 @@ from ._add_rule_category_response import AddRuleCategoryResponse
 from ._add_rule_v4request import AddRuleV4Request
 from ._add_rule_v4response_body import AddRuleV4ResponseBody
 from ._add_rule_v4response import AddRuleV4Response
+from ._analyze_label_request import AnalyzeLabelRequest
+from ._analyze_label_response_body import AnalyzeLabelResponseBody
+from ._analyze_label_response import AnalyzeLabelResponse
 from ._apply_ws_token_request import ApplyWsTokenRequest
 from ._apply_ws_token_response_body import ApplyWsTokenResponseBody
 from ._apply_ws_token_response import ApplyWsTokenResponse
@@ -35,6 +39,12 @@ from ._assign_reviewer_by_session_group_response import AssignReviewerBySessionG
 from ._batch_submit_review_info_request import BatchSubmitReviewInfoRequest
 from ._batch_submit_review_info_response_body import BatchSubmitReviewInfoResponseBody
 from ._batch_submit_review_info_response import BatchSubmitReviewInfoResponse
+from ._create_agent_request import CreateAgentRequest
+from ._create_agent_response_body import CreateAgentResponseBody
+from ._create_agent_response import CreateAgentResponse
+from ._create_agent_task_request import CreateAgentTaskRequest
+from ._create_agent_task_response_body import CreateAgentTaskResponseBody
+from ._create_agent_task_response import CreateAgentTaskResponse
 from ._create_asr_vocab_request import CreateAsrVocabRequest
 from ._create_asr_vocab_response_body import CreateAsrVocabResponseBody
 from ._create_asr_vocab_response import CreateAsrVocabResponse
@@ -53,6 +63,9 @@ from ._create_scheme_task_config_response import CreateSchemeTaskConfigResponse
 from ._create_skill_group_config_request import CreateSkillGroupConfigRequest
 from ._create_skill_group_config_response_body import CreateSkillGroupConfigResponseBody
 from ._create_skill_group_config_response import CreateSkillGroupConfigResponse
+from ._create_tag_request import CreateTagRequest
+from ._create_tag_response_body import CreateTagResponseBody
+from ._create_tag_response import CreateTagResponse
 from ._create_task_assign_rule_request import CreateTaskAssignRuleRequest
 from ._create_task_assign_rule_response_body import CreateTaskAssignRuleResponseBody
 from ._create_task_assign_rule_response import CreateTaskAssignRuleResponse
@@ -68,6 +81,9 @@ from ._create_warning_strategy_config_response import CreateWarningStrategyConfi
 from ._del_rule_category_request import DelRuleCategoryRequest
 from ._del_rule_category_response_body import DelRuleCategoryResponseBody
 from ._del_rule_category_response import DelRuleCategoryResponse
+from ._delete_agent_request import DeleteAgentRequest
+from ._delete_agent_response_body import DeleteAgentResponseBody
+from ._delete_agent_response import DeleteAgentResponse
 from ._delete_asr_vocab_request import DeleteAsrVocabRequest
 from ._delete_asr_vocab_response_body import DeleteAsrVocabResponseBody
 from ._delete_asr_vocab_response import DeleteAsrVocabResponse
@@ -101,6 +117,9 @@ from ._delete_scheme_task_config_response import DeleteSchemeTaskConfigResponse
 from ._delete_skill_group_config_request import DeleteSkillGroupConfigRequest
 from ._delete_skill_group_config_response_body import DeleteSkillGroupConfigResponseBody
 from ._delete_skill_group_config_response import DeleteSkillGroupConfigResponse
+from ._delete_tag_request import DeleteTagRequest
+from ._delete_tag_response_body import DeleteTagResponseBody
+from ._delete_tag_response import DeleteTagResponse
 from ._delete_task_assign_rule_request import DeleteTaskAssignRuleRequest
 from ._delete_task_assign_rule_response_body import DeleteTaskAssignRuleResponseBody
 from ._delete_task_assign_rule_response import DeleteTaskAssignRuleResponse
@@ -110,6 +129,18 @@ from ._delete_warning_config_response import DeleteWarningConfigResponse
 from ._delete_warning_strategy_config_request import DeleteWarningStrategyConfigRequest
 from ._delete_warning_strategy_config_response_body import DeleteWarningStrategyConfigResponseBody
 from ._delete_warning_strategy_config_response import DeleteWarningStrategyConfigResponse
+from ._execute_agent_request import ExecuteAgentRequest
+from ._execute_agent_response_body import ExecuteAgentResponseBody
+from ._execute_agent_response import ExecuteAgentResponse
+from ._generate_label_request import GenerateLabelRequest
+from ._generate_label_response_body import GenerateLabelResponseBody
+from ._generate_label_response import GenerateLabelResponse
+from ._get_agent_request import GetAgentRequest
+from ._get_agent_response_body import GetAgentResponseBody
+from ._get_agent_response import GetAgentResponse
+from ._get_agent_task_result_request import GetAgentTaskResultRequest
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBody
+from ._get_agent_task_result_response import GetAgentTaskResultResponse
 from ._get_asr_vocab_request import GetAsrVocabRequest
 from ._get_asr_vocab_response_body import GetAsrVocabResponseBody
 from ._get_asr_vocab_response import GetAsrVocabResponse
@@ -119,6 +150,12 @@ from ._get_business_category_list_response import GetBusinessCategoryListRespons
 from ._get_customization_config_list_request import GetCustomizationConfigListRequest
 from ._get_customization_config_list_response_body import GetCustomizationConfigListResponseBody
 from ._get_customization_config_list_response import GetCustomizationConfigListResponse
+from ._get_label_analysis_result_request import GetLabelAnalysisResultRequest
+from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBody
+from ._get_label_analysis_result_response import GetLabelAnalysisResultResponse
+from ._get_label_generated_result_request import GetLabelGeneratedResultRequest
+from ._get_label_generated_result_response_body import GetLabelGeneratedResultResponseBody
+from ._get_label_generated_result_response import GetLabelGeneratedResultResponse
 from ._get_mining_task_result_request import GetMiningTaskResultRequest
 from ._get_mining_task_result_response_body import GetMiningTaskResultResponseBody
 from ._get_mining_task_result_response import GetMiningTaskResultResponse
@@ -167,6 +204,9 @@ from ._get_skill_group_config_response import GetSkillGroupConfigResponse
 from ._get_sync_result_request import GetSyncResultRequest
 from ._get_sync_result_response_body import GetSyncResultResponseBody
 from ._get_sync_result_response import GetSyncResultResponse
+from ._get_tag_request import GetTagRequest
+from ._get_tag_response_body import GetTagResponseBody
+from ._get_tag_response import GetTagResponse
 from ._get_warning_strategy_config_request import GetWarningStrategyConfigRequest
 from ._get_warning_strategy_config_response_body import GetWarningStrategyConfigResponseBody
 from ._get_warning_strategy_config_response import GetWarningStrategyConfigResponse
@@ -203,6 +243,9 @@ from ._list_session_group_response import ListSessionGroupResponse
 from ._list_skill_group_config_request import ListSkillGroupConfigRequest
 from ._list_skill_group_config_response_body import ListSkillGroupConfigResponseBody
 from ._list_skill_group_config_response import ListSkillGroupConfigResponse
+from ._list_tag_request import ListTagRequest
+from ._list_tag_response_body import ListTagResponseBody
+from ._list_tag_response import ListTagResponse
 from ._list_task_assign_rules_request import ListTaskAssignRulesRequest
 from ._list_task_assign_rules_response_body import ListTaskAssignRulesResponseBody
 from ._list_task_assign_rules_response import ListTaskAssignRulesResponse
@@ -249,6 +292,9 @@ from ._sync_quality_check_response import SyncQualityCheckResponse
 from ._test_rule_v4request import TestRuleV4Request
 from ._test_rule_v4response_body import TestRuleV4ResponseBody
 from ._test_rule_v4response import TestRuleV4Response
+from ._update_agent_request import UpdateAgentRequest
+from ._update_agent_response_body import UpdateAgentResponseBody
+from ._update_agent_response import UpdateAgentResponse
 from ._update_asr_vocab_request import UpdateAsrVocabRequest
 from ._update_asr_vocab_response_body import UpdateAsrVocabResponseBody
 from ._update_asr_vocab_response import UpdateAsrVocabResponse
@@ -282,6 +328,9 @@ from ._update_skill_group_config_response import UpdateSkillGroupConfigResponse
 from ._update_sync_quality_check_data_request import UpdateSyncQualityCheckDataRequest
 from ._update_sync_quality_check_data_response_body import UpdateSyncQualityCheckDataResponseBody
 from ._update_sync_quality_check_data_response import UpdateSyncQualityCheckDataResponse
+from ._update_tag_request import UpdateTagRequest
+from ._update_tag_response_body import UpdateTagResponseBody
+from ._update_tag_response import UpdateTagResponse
 from ._update_task_assign_rule_request import UpdateTaskAssignRuleRequest
 from ._update_task_assign_rule_response_body import UpdateTaskAssignRuleResponseBody
 from ._update_task_assign_rule_response import UpdateTaskAssignRuleResponse
@@ -318,6 +367,15 @@ from ._verify_file_response import VerifyFileResponse
 from ._verify_sentence_request import VerifySentenceRequest
 from ._verify_sentence_response_body import VerifySentenceResponseBody
 from ._verify_sentence_response import VerifySentenceResponse
+from ._agent_info import AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList
+from ._agent_info import AgentInfoInstructionTypeParamCustomPromptParam
+from ._agent_info import AgentInfoInstructionTypeParamFieldsParamNameDescPairList
+from ._agent_info import AgentInfoInstructionTypeParamFieldsParam
+from ._agent_info import AgentInfoInstructionTypeParamServiceInspectionParamDimensions
+from ._agent_info import AgentInfoInstructionTypeParamServiceInspectionParam
+from ._agent_info import AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList
+from ._agent_info import AgentInfoInstructionTypeParamTagCategoryParam
+from ._agent_info import AgentInfoInstructionTypeParam
 from ._condition_basic_info import ConditionBasicInfoCheckRangeAnchor
 from ._condition_basic_info import ConditionBasicInfoCheckRangeRange
 from ._condition_basic_info import ConditionBasicInfoCheckRange
@@ -337,15 +395,27 @@ from ._add_rule_v4response_body import AddRuleV4ResponseBodyMessages
 from ._apply_ws_token_response_body import ApplyWsTokenResponseBodyData
 from ._assign_reviewer_by_session_group_response_body import AssignReviewerBySessionGroupResponseBodyMessages
 from ._batch_submit_review_info_response_body import BatchSubmitReviewInfoResponseBodyMessages
+from ._create_agent_task_response_body import CreateAgentTaskResponseBodyData
 from ._create_check_type_to_scheme_response_body import CreateCheckTypeToSchemeResponseBodyMessages
 from ._create_mining_task_response_body import CreateMiningTaskResponseBodyData
 from ._create_quality_check_scheme_response_body import CreateQualityCheckSchemeResponseBodyMessages
 from ._create_scheme_task_config_response_body import CreateSchemeTaskConfigResponseBodyMessages
+from ._create_tag_response_body import CreateTagResponseBodyData
 from ._del_rule_category_response_body import DelRuleCategoryResponseBodyData
 from ._delete_quality_check_scheme_response_body import DeleteQualityCheckSchemeResponseBodyMessages
 from ._delete_rule_response_body import DeleteRuleResponseBodyMessages
 from ._delete_rule_v4response_body import DeleteRuleV4ResponseBodyMessages
 from ._delete_scheme_task_config_response_body import DeleteSchemeTaskConfigResponseBodyMessages
+from ._execute_agent_response_body import ExecuteAgentResponseBodyData
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseFieldResponse
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceInspectionVoList
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyDataResponse
+from ._get_agent_task_result_response_body import GetAgentTaskResultResponseBodyData
 from ._get_asr_vocab_response_body import GetAsrVocabResponseBodyDataWordsWord
 from ._get_asr_vocab_response_body import GetAsrVocabResponseBodyDataWords
 from ._get_asr_vocab_response_body import GetAsrVocabResponseBodyData
@@ -353,6 +423,13 @@ from ._get_business_category_list_response_body import GetBusinessCategoryListRe
 from ._get_business_category_list_response_body import GetBusinessCategoryListResponseBodyData
 from ._get_customization_config_list_response_body import GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo
 from ._get_customization_config_list_response_body import GetCustomizationConfigListResponseBodyData
+from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildrenChildren
+from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren
+from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren
+from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagListChildren
+from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagList
+from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyData
+from ._get_label_generated_result_response_body import GetLabelGeneratedResultResponseBodyData
 from ._get_mining_task_result_response_body import GetMiningTaskResultResponseBodyDataFilePathList
 from ._get_mining_task_result_response_body import GetMiningTaskResultResponseBodyData
 from ._get_next_result_to_verify_response_body import GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSourceLine
@@ -486,6 +563,7 @@ from ._get_sync_result_response_body import GetSyncResultResponseBodyDataHitResu
 from ._get_sync_result_response_body import GetSyncResultResponseBodyDataHitResult
 from ._get_sync_result_response_body import GetSyncResultResponseBodyDataRecording
 from ._get_sync_result_response_body import GetSyncResultResponseBodyData
+from ._get_tag_response_body import GetTagResponseBodyData
 from ._get_warning_strategy_config_response_body import GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyListRange
 from ._get_warning_strategy_config_response_body import GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyList
 from ._get_warning_strategy_config_response_body import GetWarningStrategyConfigResponseBodyDataWarningStrategyList
@@ -534,6 +612,7 @@ from ._list_skill_group_config_response_body import ListSkillGroupConfigResponse
 from ._list_skill_group_config_response_body import ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens
 from ._list_skill_group_config_response_body import ListSkillGroupConfigResponseBodyDataSkillGroupConfig
 from ._list_skill_group_config_response_body import ListSkillGroupConfigResponseBodyData
+from ._list_tag_response_body import ListTagResponseBodyData
 from ._list_task_assign_rules_response_body import ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgentsAgent
 from ._list_task_assign_rules_response_body import ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents
 from ._list_task_assign_rules_response_body import ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewersReviewer
@@ -583,6 +662,7 @@ from ._update_rule_to_scheme_response_body import UpdateRuleToSchemeResponseBody
 from ._update_rule_v4response_body import UpdateRuleV4ResponseBodyMessages
 from ._update_scheme_task_config_response_body import UpdateSchemeTaskConfigResponseBodyMessages
 from ._update_sync_quality_check_data_response_body import UpdateSyncQualityCheckDataResponseBodyData
+from ._update_tag_response_body import UpdateTagResponseBodyData
 from ._upload_data_sync_response_body import UploadDataSyncResponseBodyDataResultInfoHandScoreIdList
 from ._upload_data_sync_response_body import UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfoConditionBasicInfo
 from ._upload_data_sync_response_body import UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo
@@ -617,6 +697,7 @@ from ._verify_sentence_response_body import VerifySentenceResponseBodyDataDelta
 from ._verify_sentence_response_body import VerifySentenceResponseBodyData
 
 __all__ = [
+    AgentInfo,
     BusinessCategoryBasicInfo,
     ConditionBasicInfo,
     GraphFlowNode,
@@ -638,6 +719,9 @@ __all__ = [
     AddRuleV4Request,
     AddRuleV4ResponseBody,
     AddRuleV4Response,
+    AnalyzeLabelRequest,
+    AnalyzeLabelResponseBody,
+    AnalyzeLabelResponse,
     ApplyWsTokenRequest,
     ApplyWsTokenResponseBody,
     ApplyWsTokenResponse,
@@ -650,6 +734,12 @@ __all__ = [
     BatchSubmitReviewInfoRequest,
     BatchSubmitReviewInfoResponseBody,
     BatchSubmitReviewInfoResponse,
+    CreateAgentRequest,
+    CreateAgentResponseBody,
+    CreateAgentResponse,
+    CreateAgentTaskRequest,
+    CreateAgentTaskResponseBody,
+    CreateAgentTaskResponse,
     CreateAsrVocabRequest,
     CreateAsrVocabResponseBody,
     CreateAsrVocabResponse,
@@ -668,6 +758,9 @@ __all__ = [
     CreateSkillGroupConfigRequest,
     CreateSkillGroupConfigResponseBody,
     CreateSkillGroupConfigResponse,
+    CreateTagRequest,
+    CreateTagResponseBody,
+    CreateTagResponse,
     CreateTaskAssignRuleRequest,
     CreateTaskAssignRuleResponseBody,
     CreateTaskAssignRuleResponse,
@@ -683,6 +776,9 @@ __all__ = [
     DelRuleCategoryRequest,
     DelRuleCategoryResponseBody,
     DelRuleCategoryResponse,
+    DeleteAgentRequest,
+    DeleteAgentResponseBody,
+    DeleteAgentResponse,
     DeleteAsrVocabRequest,
     DeleteAsrVocabResponseBody,
     DeleteAsrVocabResponse,
@@ -716,6 +812,9 @@ __all__ = [
     DeleteSkillGroupConfigRequest,
     DeleteSkillGroupConfigResponseBody,
     DeleteSkillGroupConfigResponse,
+    DeleteTagRequest,
+    DeleteTagResponseBody,
+    DeleteTagResponse,
     DeleteTaskAssignRuleRequest,
     DeleteTaskAssignRuleResponseBody,
     DeleteTaskAssignRuleResponse,
@@ -725,6 +824,18 @@ __all__ = [
     DeleteWarningStrategyConfigRequest,
     DeleteWarningStrategyConfigResponseBody,
     DeleteWarningStrategyConfigResponse,
+    ExecuteAgentRequest,
+    ExecuteAgentResponseBody,
+    ExecuteAgentResponse,
+    GenerateLabelRequest,
+    GenerateLabelResponseBody,
+    GenerateLabelResponse,
+    GetAgentRequest,
+    GetAgentResponseBody,
+    GetAgentResponse,
+    GetAgentTaskResultRequest,
+    GetAgentTaskResultResponseBody,
+    GetAgentTaskResultResponse,
     GetAsrVocabRequest,
     GetAsrVocabResponseBody,
     GetAsrVocabResponse,
@@ -734,6 +845,12 @@ __all__ = [
     GetCustomizationConfigListRequest,
     GetCustomizationConfigListResponseBody,
     GetCustomizationConfigListResponse,
+    GetLabelAnalysisResultRequest,
+    GetLabelAnalysisResultResponseBody,
+    GetLabelAnalysisResultResponse,
+    GetLabelGeneratedResultRequest,
+    GetLabelGeneratedResultResponseBody,
+    GetLabelGeneratedResultResponse,
     GetMiningTaskResultRequest,
     GetMiningTaskResultResponseBody,
     GetMiningTaskResultResponse,
@@ -782,6 +899,9 @@ __all__ = [
     GetSyncResultRequest,
     GetSyncResultResponseBody,
     GetSyncResultResponse,
+    GetTagRequest,
+    GetTagResponseBody,
+    GetTagResponse,
     GetWarningStrategyConfigRequest,
     GetWarningStrategyConfigResponseBody,
     GetWarningStrategyConfigResponse,
@@ -818,6 +938,9 @@ __all__ = [
     ListSkillGroupConfigRequest,
     ListSkillGroupConfigResponseBody,
     ListSkillGroupConfigResponse,
+    ListTagRequest,
+    ListTagResponseBody,
+    ListTagResponse,
     ListTaskAssignRulesRequest,
     ListTaskAssignRulesResponseBody,
     ListTaskAssignRulesResponse,
@@ -864,6 +987,9 @@ __all__ = [
     TestRuleV4Request,
     TestRuleV4ResponseBody,
     TestRuleV4Response,
+    UpdateAgentRequest,
+    UpdateAgentResponseBody,
+    UpdateAgentResponse,
     UpdateAsrVocabRequest,
     UpdateAsrVocabResponseBody,
     UpdateAsrVocabResponse,
@@ -897,6 +1023,9 @@ __all__ = [
     UpdateSyncQualityCheckDataRequest,
     UpdateSyncQualityCheckDataResponseBody,
     UpdateSyncQualityCheckDataResponse,
+    UpdateTagRequest,
+    UpdateTagResponseBody,
+    UpdateTagResponse,
     UpdateTaskAssignRuleRequest,
     UpdateTaskAssignRuleResponseBody,
     UpdateTaskAssignRuleResponse,
@@ -933,6 +1062,15 @@ __all__ = [
     VerifySentenceRequest,
     VerifySentenceResponseBody,
     VerifySentenceResponse,
+    AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList,
+    AgentInfoInstructionTypeParamCustomPromptParam,
+    AgentInfoInstructionTypeParamFieldsParamNameDescPairList,
+    AgentInfoInstructionTypeParamFieldsParam,
+    AgentInfoInstructionTypeParamServiceInspectionParamDimensions,
+    AgentInfoInstructionTypeParamServiceInspectionParam,
+    AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList,
+    AgentInfoInstructionTypeParamTagCategoryParam,
+    AgentInfoInstructionTypeParam,
     ConditionBasicInfoCheckRangeAnchor,
     ConditionBasicInfoCheckRangeRange,
     ConditionBasicInfoCheckRange,
@@ -952,15 +1090,27 @@ __all__ = [
     ApplyWsTokenResponseBodyData,
     AssignReviewerBySessionGroupResponseBodyMessages,
     BatchSubmitReviewInfoResponseBodyMessages,
+    CreateAgentTaskResponseBodyData,
     CreateCheckTypeToSchemeResponseBodyMessages,
     CreateMiningTaskResponseBodyData,
     CreateQualityCheckSchemeResponseBodyMessages,
     CreateSchemeTaskConfigResponseBodyMessages,
+    CreateTagResponseBodyData,
     DelRuleCategoryResponseBodyData,
     DeleteQualityCheckSchemeResponseBodyMessages,
     DeleteRuleResponseBodyMessages,
     DeleteRuleV4ResponseBodyMessages,
     DeleteSchemeTaskConfigResponseBodyMessages,
+    ExecuteAgentResponseBodyData,
+    GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse,
+    GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList,
+    GetAgentTaskResultResponseBodyDataResponseFieldResponse,
+    GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceInspectionVoList,
+    GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse,
+    GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList,
+    GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse,
+    GetAgentTaskResultResponseBodyDataResponse,
+    GetAgentTaskResultResponseBodyData,
     GetAsrVocabResponseBodyDataWordsWord,
     GetAsrVocabResponseBodyDataWords,
     GetAsrVocabResponseBodyData,
@@ -968,6 +1118,13 @@ __all__ = [
     GetBusinessCategoryListResponseBodyData,
     GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo,
     GetCustomizationConfigListResponseBodyData,
+    GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildrenChildren,
+    GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren,
+    GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren,
+    GetLabelAnalysisResultResponseBodyDataTagListChildren,
+    GetLabelAnalysisResultResponseBodyDataTagList,
+    GetLabelAnalysisResultResponseBodyData,
+    GetLabelGeneratedResultResponseBodyData,
     GetMiningTaskResultResponseBodyDataFilePathList,
     GetMiningTaskResultResponseBodyData,
     GetNextResultToVerifyResponseBodyDataDialoguesDialogueDeltasDeltaSourceLine,
@@ -1101,6 +1258,7 @@ __all__ = [
     GetSyncResultResponseBodyDataHitResult,
     GetSyncResultResponseBodyDataRecording,
     GetSyncResultResponseBodyData,
+    GetTagResponseBodyData,
     GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyListRange,
     GetWarningStrategyConfigResponseBodyDataWarningStrategyListWarningStrategyList,
     GetWarningStrategyConfigResponseBodyDataWarningStrategyList,
@@ -1149,6 +1307,7 @@ __all__ = [
     ListSkillGroupConfigResponseBodyDataSkillGroupConfigSkillGroupScreens,
     ListSkillGroupConfigResponseBodyDataSkillGroupConfig,
     ListSkillGroupConfigResponseBodyData,
+    ListTagResponseBodyData,
     ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgentsAgent,
     ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoAgents,
     ListTaskAssignRulesResponseBodyDataTaskAssignRuleInfoReviewersReviewer,
@@ -1198,6 +1357,7 @@ __all__ = [
     UpdateRuleV4ResponseBodyMessages,
     UpdateSchemeTaskConfigResponseBodyMessages,
     UpdateSyncQualityCheckDataResponseBodyData,
+    UpdateTagResponseBodyData,
     UploadDataSyncResponseBodyDataResultInfoHandScoreIdList,
     UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfoConditionBasicInfo,
     UploadDataSyncResponseBodyDataResultInfoRulesRuleHitInfoConditionInfo,

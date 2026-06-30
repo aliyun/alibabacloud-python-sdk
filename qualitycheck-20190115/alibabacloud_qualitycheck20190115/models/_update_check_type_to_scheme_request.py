@@ -10,8 +10,9 @@ class UpdateCheckTypeToSchemeRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The baseMeAgentId.
         self.base_me_agent_id = base_me_agent_id
+        # Input parameter in JSON format. For more information, see the request parameters.
         self.json_str = json_str
 
     def validate(self):

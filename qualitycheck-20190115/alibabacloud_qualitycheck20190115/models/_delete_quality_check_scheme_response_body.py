@@ -17,11 +17,16 @@ class DeleteQualityCheckSchemeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. A value of 200 means success. Any other value means failure. Use this field to identify the cause of failure.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details if the request failed. Returns "successful" if the request succeeded.
         self.message = message
         self.messages = messages
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. If true, the request succeeded. If **false** or **null**, the request failed.
         self.success = success
 
     def validate(self):

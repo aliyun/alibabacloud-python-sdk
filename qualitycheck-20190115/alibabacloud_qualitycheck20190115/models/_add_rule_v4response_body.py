@@ -18,12 +18,18 @@ class AddRuleV4ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. \\`**200**\\` indicates that the request was successful. Other values indicate that the request failed. You can use this parameter to identify the cause of a failure.
         self.code = code
+        # The ID of the new rule.
         self.data = data
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         self.messages = messages
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\` or \\`null\\`: The request failed.
         self.success = success
 
     def validate(self):

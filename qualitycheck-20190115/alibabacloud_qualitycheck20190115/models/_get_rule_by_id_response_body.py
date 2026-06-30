@@ -18,12 +18,19 @@ class GetRuleByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates success. Other values indicate an error.
         self.code = code
+        # The detailed information about the rule.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message. A value of successful is returned on success, and an error message is returned on failure.
         self.message = message
+        # Details about the error. This parameter is used when multiple messages are returned.
         self.messages = messages
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of true indicates success, and false or null indicates failure.
         self.success = success
 
     def validate(self):

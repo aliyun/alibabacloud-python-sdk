@@ -16,11 +16,17 @@ class DeleteCheckTypeToSchemeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates that the request was successful. Other values indicate that the request failed.
         self.code = code
+        # The returned data.
         self.data = data
+        # The message returned. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
         self.message = message
+        # A list of returned messages.
         self.messages = messages
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
         self.success = success
 
     def validate(self):

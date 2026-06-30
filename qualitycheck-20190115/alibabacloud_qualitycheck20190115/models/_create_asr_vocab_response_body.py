@@ -13,10 +13,15 @@ class CreateAsrVocabResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** means success. Any other value means failure. Use this field to diagnose errors.
         self.code = code
+        # Hotword ID
         self.data = data
+        # Error details if the call fails. Returns **successful** on success.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. true means success. **false** or **null** means failure.
         self.success = success
 
     def validate(self):

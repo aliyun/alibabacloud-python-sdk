@@ -13,8 +13,11 @@ class ApplyWsTokenResponseBody(DaraModel):
         http_status_code: int = None,
         request_id: str = None,
     ):
+        # Response code
         self.code = code
+        # Return Result
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
         # Id of the request
         self.request_id = request_id
@@ -66,8 +69,11 @@ class ApplyWsTokenResponseBodyData(DaraModel):
         token: str = None,
         ws_endpoint: str = None,
     ):
+        # Session ID.
         self.session_id = session_id
+        # User access token
         self.token = token
+        # WebSocket connection domain name
         self.ws_endpoint = ws_endpoint
 
     def validate(self):
