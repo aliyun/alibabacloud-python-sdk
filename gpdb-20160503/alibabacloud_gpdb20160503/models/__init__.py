@@ -98,6 +98,9 @@ from ._create_index_response import CreateIndexResponse
 from ._create_jdbcdata_source_request import CreateJDBCDataSourceRequest
 from ._create_jdbcdata_source_response_body import CreateJDBCDataSourceResponseBody
 from ._create_jdbcdata_source_response import CreateJDBCDataSourceResponse
+from ._create_model_operator_api_key_request import CreateModelOperatorApiKeyRequest
+from ._create_model_operator_api_key_response_body import CreateModelOperatorApiKeyResponseBody
+from ._create_model_operator_api_key_response import CreateModelOperatorApiKeyResponse
 from ._create_model_service_request import CreateModelServiceRequest
 from ._create_model_service_shrink_request import CreateModelServiceShrinkRequest
 from ._create_model_service_response_body import CreateModelServiceResponseBody
@@ -393,6 +396,13 @@ from ._describe_jdbcdata_source_response import DescribeJDBCDataSourceResponse
 from ._describe_log_backups_request import DescribeLogBackupsRequest
 from ._describe_log_backups_response_body import DescribeLogBackupsResponseBody
 from ._describe_log_backups_response import DescribeLogBackupsResponse
+from ._describe_model_operator_api_key_request import DescribeModelOperatorApiKeyRequest
+from ._describe_model_operator_api_key_response_body import DescribeModelOperatorApiKeyResponseBody
+from ._describe_model_operator_api_key_response import DescribeModelOperatorApiKeyResponse
+from ._describe_model_operator_usage_request import DescribeModelOperatorUsageRequest
+from ._describe_model_operator_usage_shrink_request import DescribeModelOperatorUsageShrinkRequest
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBody
+from ._describe_model_operator_usage_response import DescribeModelOperatorUsageResponse
 from ._describe_model_service_request import DescribeModelServiceRequest
 from ._describe_model_service_response_body import DescribeModelServiceResponseBody
 from ._describe_model_service_response import DescribeModelServiceResponse
@@ -578,6 +588,12 @@ from ._list_instance_databases_response import ListInstanceDatabasesResponse
 from ._list_instance_extensions_request import ListInstanceExtensionsRequest
 from ._list_instance_extensions_response_body import ListInstanceExtensionsResponseBody
 from ._list_instance_extensions_response import ListInstanceExtensionsResponse
+from ._list_model_operator_api_keys_request import ListModelOperatorApiKeysRequest
+from ._list_model_operator_api_keys_response_body import ListModelOperatorApiKeysResponseBody
+from ._list_model_operator_api_keys_response import ListModelOperatorApiKeysResponse
+from ._list_model_operator_services_request import ListModelOperatorServicesRequest
+from ._list_model_operator_services_response_body import ListModelOperatorServicesResponseBody
+from ._list_model_operator_services_response import ListModelOperatorServicesResponse
 from ._list_model_services_request import ListModelServicesRequest
 from ._list_model_services_response_body import ListModelServicesResponseBody
 from ._list_model_services_response import ListModelServicesResponse
@@ -989,6 +1005,9 @@ from ._describe_health_status_response_body import DescribeHealthStatusResponseB
 from ._describe_health_status_response_body import DescribeHealthStatusResponseBodyStatus
 from ._describe_imvinfos_response_body import DescribeIMVInfosResponseBodyImvInfos
 from ._describe_log_backups_response_body import DescribeLogBackupsResponseBodyItems
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBodyKeysSeriesValues
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBodyKeysSeries
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBodyKeys
 from ._describe_modify_parameter_log_response_body import DescribeModifyParameterLogResponseBodyChangelogs
 from ._describe_parameters_response_body import DescribeParametersResponseBodyParameters
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch
@@ -1053,6 +1072,8 @@ from ._list_indices_response_body import ListIndicesResponseBodyIndicesIndices
 from ._list_indices_response_body import ListIndicesResponseBodyIndices
 from ._list_instance_databases_response_body import ListInstanceDatabasesResponseBodyDatabases
 from ._list_instance_extensions_response_body import ListInstanceExtensionsResponseBodyItems
+from ._list_model_operator_api_keys_response_body import ListModelOperatorApiKeysResponseBodyApiKeys
+from ._list_model_operator_services_response_body import ListModelOperatorServicesResponseBodyServices
 from ._list_model_services_response_body import ListModelServicesResponseBodyModelServices
 from ._list_namespaces_response_body import ListNamespacesResponseBodyNamespaces
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources
@@ -1227,6 +1248,9 @@ __all__ = [
     CreateJDBCDataSourceRequest,
     CreateJDBCDataSourceResponseBody,
     CreateJDBCDataSourceResponse,
+    CreateModelOperatorApiKeyRequest,
+    CreateModelOperatorApiKeyResponseBody,
+    CreateModelOperatorApiKeyResponse,
     CreateModelServiceRequest,
     CreateModelServiceShrinkRequest,
     CreateModelServiceResponseBody,
@@ -1522,6 +1546,13 @@ __all__ = [
     DescribeLogBackupsRequest,
     DescribeLogBackupsResponseBody,
     DescribeLogBackupsResponse,
+    DescribeModelOperatorApiKeyRequest,
+    DescribeModelOperatorApiKeyResponseBody,
+    DescribeModelOperatorApiKeyResponse,
+    DescribeModelOperatorUsageRequest,
+    DescribeModelOperatorUsageShrinkRequest,
+    DescribeModelOperatorUsageResponseBody,
+    DescribeModelOperatorUsageResponse,
     DescribeModelServiceRequest,
     DescribeModelServiceResponseBody,
     DescribeModelServiceResponse,
@@ -1707,6 +1738,12 @@ __all__ = [
     ListInstanceExtensionsRequest,
     ListInstanceExtensionsResponseBody,
     ListInstanceExtensionsResponse,
+    ListModelOperatorApiKeysRequest,
+    ListModelOperatorApiKeysResponseBody,
+    ListModelOperatorApiKeysResponse,
+    ListModelOperatorServicesRequest,
+    ListModelOperatorServicesResponseBody,
+    ListModelOperatorServicesResponse,
     ListModelServicesRequest,
     ListModelServicesResponseBody,
     ListModelServicesResponse,
@@ -2118,6 +2155,9 @@ __all__ = [
     DescribeHealthStatusResponseBodyStatus,
     DescribeIMVInfosResponseBodyImvInfos,
     DescribeLogBackupsResponseBodyItems,
+    DescribeModelOperatorUsageResponseBodyKeysSeriesValues,
+    DescribeModelOperatorUsageResponseBodyKeysSeries,
+    DescribeModelOperatorUsageResponseBodyKeys,
     DescribeModifyParameterLogResponseBodyChangelogs,
     DescribeParametersResponseBodyParameters,
     DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch,
@@ -2182,6 +2222,8 @@ __all__ = [
     ListIndicesResponseBodyIndices,
     ListInstanceDatabasesResponseBodyDatabases,
     ListInstanceExtensionsResponseBodyItems,
+    ListModelOperatorApiKeysResponseBodyApiKeys,
+    ListModelOperatorServicesResponseBodyServices,
     ListModelServicesResponseBodyModelServices,
     ListNamespacesResponseBodyNamespaces,
     ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources,

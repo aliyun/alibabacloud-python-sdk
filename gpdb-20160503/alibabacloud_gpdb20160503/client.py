@@ -3353,6 +3353,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_jdbcdata_source_with_options_async(request, runtime)
 
+    def create_model_operator_api_key_with_options(
+        self,
+        request: main_models.CreateModelOperatorApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelOperatorApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelOperatorApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelOperatorApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_model_operator_api_key_with_options_async(
+        self,
+        request: main_models.CreateModelOperatorApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelOperatorApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelOperatorApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelOperatorApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_model_operator_api_key(
+        self,
+        request: main_models.CreateModelOperatorApiKeyRequest,
+    ) -> main_models.CreateModelOperatorApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.create_model_operator_api_key_with_options(request, runtime)
+
+    async def create_model_operator_api_key_async(
+        self,
+        request: main_models.CreateModelOperatorApiKeyRequest,
+    ) -> main_models.CreateModelOperatorApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_model_operator_api_key_with_options_async(request, runtime)
+
     def create_model_service_with_options(
         self,
         tmp_req: main_models.CreateModelServiceRequest,
@@ -11695,6 +11765,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_log_backups_with_options_async(request, runtime)
 
+    def describe_model_operator_api_key_with_options(
+        self,
+        request: main_models.DescribeModelOperatorApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelOperatorApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['ApiKeyId'] = request.api_key_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelOperatorApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelOperatorApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_operator_api_key_with_options_async(
+        self,
+        request: main_models.DescribeModelOperatorApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelOperatorApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_key_id):
+            query['ApiKeyId'] = request.api_key_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelOperatorApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelOperatorApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_operator_api_key(
+        self,
+        request: main_models.DescribeModelOperatorApiKeyRequest,
+    ) -> main_models.DescribeModelOperatorApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_model_operator_api_key_with_options(request, runtime)
+
+    async def describe_model_operator_api_key_async(
+        self,
+        request: main_models.DescribeModelOperatorApiKeyRequest,
+    ) -> main_models.DescribeModelOperatorApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_model_operator_api_key_with_options_async(request, runtime)
+
+    def describe_model_operator_usage_with_options(
+        self,
+        tmp_req: main_models.DescribeModelOperatorUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelOperatorUsageResponse:
+        tmp_req.validate()
+        request = main_models.DescribeModelOperatorUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_key_ids):
+            request.api_key_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_key_ids, 'ApiKeyIds', 'simple')
+        if not DaraCore.is_null(tmp_req.keys):
+            request.keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        if not DaraCore.is_null(tmp_req.model_names):
+            request.model_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_names, 'ModelNames', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.api_key_ids_shrink):
+            query['ApiKeyIds'] = request.api_key_ids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not DaraCore.is_null(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        if not DaraCore.is_null(request.model_names_shrink):
+            query['ModelNames'] = request.model_names_shrink
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelOperatorUsage',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelOperatorUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_operator_usage_with_options_async(
+        self,
+        tmp_req: main_models.DescribeModelOperatorUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelOperatorUsageResponse:
+        tmp_req.validate()
+        request = main_models.DescribeModelOperatorUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_key_ids):
+            request.api_key_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_key_ids, 'ApiKeyIds', 'simple')
+        if not DaraCore.is_null(tmp_req.keys):
+            request.keys_shrink = Utils.array_to_string_with_specified_style(tmp_req.keys, 'Keys', 'simple')
+        if not DaraCore.is_null(tmp_req.model_names):
+            request.model_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.model_names, 'ModelNames', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.api_key_ids_shrink):
+            query['ApiKeyIds'] = request.api_key_ids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group_by):
+            query['GroupBy'] = request.group_by
+        if not DaraCore.is_null(request.keys_shrink):
+            query['Keys'] = request.keys_shrink
+        if not DaraCore.is_null(request.model_names_shrink):
+            query['ModelNames'] = request.model_names_shrink
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelOperatorUsage',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelOperatorUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_operator_usage(
+        self,
+        request: main_models.DescribeModelOperatorUsageRequest,
+    ) -> main_models.DescribeModelOperatorUsageResponse:
+        runtime = RuntimeOptions()
+        return self.describe_model_operator_usage_with_options(request, runtime)
+
+    async def describe_model_operator_usage_async(
+        self,
+        request: main_models.DescribeModelOperatorUsageRequest,
+    ) -> main_models.DescribeModelOperatorUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_model_operator_usage_with_options_async(request, runtime)
+
     def describe_model_service_with_options(
         self,
         request: main_models.DescribeModelServiceRequest,
@@ -17100,6 +17350,154 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstanceExtensionsResponse:
         runtime = RuntimeOptions()
         return await self.list_instance_extensions_with_options_async(request, runtime)
+
+    def list_model_operator_api_keys_with_options(
+        self,
+        request: main_models.ListModelOperatorApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelOperatorApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelOperatorApiKeys',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelOperatorApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_operator_api_keys_with_options_async(
+        self,
+        request: main_models.ListModelOperatorApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelOperatorApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelOperatorApiKeys',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelOperatorApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_operator_api_keys(
+        self,
+        request: main_models.ListModelOperatorApiKeysRequest,
+    ) -> main_models.ListModelOperatorApiKeysResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_operator_api_keys_with_options(request, runtime)
+
+    async def list_model_operator_api_keys_async(
+        self,
+        request: main_models.ListModelOperatorApiKeysRequest,
+    ) -> main_models.ListModelOperatorApiKeysResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_operator_api_keys_with_options_async(request, runtime)
+
+    def list_model_operator_services_with_options(
+        self,
+        request: main_models.ListModelOperatorServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelOperatorServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelOperatorServices',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelOperatorServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_operator_services_with_options_async(
+        self,
+        request: main_models.ListModelOperatorServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelOperatorServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelOperatorServices',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelOperatorServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_operator_services(
+        self,
+        request: main_models.ListModelOperatorServicesRequest,
+    ) -> main_models.ListModelOperatorServicesResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_operator_services_with_options(request, runtime)
+
+    async def list_model_operator_services_async(
+        self,
+        request: main_models.ListModelOperatorServicesRequest,
+    ) -> main_models.ListModelOperatorServicesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_operator_services_with_options_async(request, runtime)
 
     def list_model_services_with_options(
         self,

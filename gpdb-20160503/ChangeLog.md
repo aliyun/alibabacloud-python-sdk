@@ -1,3 +1,11 @@
+2026-06-30 Version: 5.8.0
+- Support API CreateModelOperatorApiKey.
+- Support API DescribeModelOperatorApiKey.
+- Support API DescribeModelOperatorUsage.
+- Support API ListModelOperatorApiKeys.
+- Support API ListModelOperatorServices.
+
+
 2026-06-29 Version: 5.7.0
 - Support API ResetBranch.
 - Support API RestoreBranch.
