@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class GrantPromotionOfferForPartnerRequest(DaraModel):
     def __init__(
         self,
+        activity_code: str = None,
         activity_id: str = None,
         belong_id: str = None,
         channel: str = None,
         employee_code: str = None,
         remark: str = None,
     ):
+        self.activity_code = activity_code
         # The activity ID.
         self.activity_id = activity_id
         # The user ID.
@@ -32,6 +34,9 @@ class GrantPromotionOfferForPartnerRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.activity_code is not None:
+            result['ActivityCode'] = self.activity_code
+
         if self.activity_id is not None:
             result['ActivityId'] = self.activity_id
 
@@ -51,6 +56,9 @@ class GrantPromotionOfferForPartnerRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityCode') is not None:
+            self.activity_code = m.get('ActivityCode')
+
         if m.get('ActivityId') is not None:
             self.activity_id = m.get('ActivityId')
 

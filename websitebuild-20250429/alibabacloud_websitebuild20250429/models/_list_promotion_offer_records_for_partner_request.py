@@ -18,7 +18,7 @@ class ListPromotionOfferRecordsForPartnerRequest(DaraModel):
     ):
         # The activity code.
         self.activity_code = activity_code
-        # The belonging ID.
+        # The belong ID.
         self.belong_id = belong_id
         # The number of entries per query.
         # 

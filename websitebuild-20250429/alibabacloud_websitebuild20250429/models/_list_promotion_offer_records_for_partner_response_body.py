@@ -26,7 +26,7 @@ class ListPromotionOfferRecordsForPartnerResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
         # The application name. The application with this name is queried.
         self.app_name = app_name
@@ -48,7 +48,7 @@ class ListPromotionOfferRecordsForPartnerResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # The reserved parameter.
         self.synchro = synchro
@@ -161,7 +161,7 @@ class ListPromotionOfferRecordsForPartnerResponseBodyModule(DaraModel):
         self.page_size = page_size
         # The list of issuance records.
         self.records = records
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

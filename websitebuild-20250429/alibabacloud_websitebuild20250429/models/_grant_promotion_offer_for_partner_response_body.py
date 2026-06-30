@@ -28,11 +28,11 @@ class GrantPromotionOfferForPartnerResponseBody(DaraModel):
         self.allow_retry = allow_retry
         # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
         self.app_name = app_name
-        # The dynamic code. This parameter is not in use. Ignore it.
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The returned error parameters.
+        # The error parameters returned.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -40,9 +40,9 @@ class GrantPromotionOfferForPartnerResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):

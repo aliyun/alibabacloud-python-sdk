@@ -5588,6 +5588,8 @@ class Client(OpenApiClient):
     ) -> main_models.GrantPromotionOfferForPartnerResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.activity_code):
+            query['ActivityCode'] = request.activity_code
         if not DaraCore.is_null(request.activity_id):
             query['ActivityId'] = request.activity_id
         if not DaraCore.is_null(request.belong_id):
@@ -5624,6 +5626,8 @@ class Client(OpenApiClient):
     ) -> main_models.GrantPromotionOfferForPartnerResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.activity_code):
+            query['ActivityCode'] = request.activity_code
         if not DaraCore.is_null(request.activity_id):
             query['ActivityId'] = request.activity_id
         if not DaraCore.is_null(request.belong_id):
