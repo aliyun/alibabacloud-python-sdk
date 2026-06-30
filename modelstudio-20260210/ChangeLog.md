@@ -1,3 +1,10 @@
+2026-06-30 Version: 2.0.1
+- Update API CreateApiKey: add request parameters auth.modelAccessScope.
+- Update API GetApiKey: add response parameters Body.apiKey.auth.modelAccessScope.
+- Update API ListApiKeys: add response parameters Body.apiKeys.$.auth.modelAccessScope.
+- Update API UpdateApiKey: add request parameters auth.modelAccessScope.
+
+
 2026-06-29 Version: 2.0.0
 - Support API BatchRevokeSeats.
 - Support API CreateTokenPlanInviteLink.

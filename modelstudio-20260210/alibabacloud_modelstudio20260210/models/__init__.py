@@ -96,12 +96,14 @@ from ._update_organization_member_response_body import UpdateOrganizationMemberR
 from ._update_organization_member_response import UpdateOrganizationMemberResponse
 from ._add_organization_member_response_body import AddOrganizationMemberResponseBodyData
 from ._batch_revoke_seats_request import BatchRevokeSeatsRequestItems
+from ._create_api_key_request import CreateApiKeyRequestAuthModelAccessScope
 from ._create_api_key_request import CreateApiKeyRequestAuth
 from ._create_api_key_response_body import CreateApiKeyResponseBodyApiKey
 from ._create_token_plan_invite_link_response_body import CreateTokenPlanInviteLinkResponseBodyData
 from ._create_token_plan_key_response_body import CreateTokenPlanKeyResponseBodyData
 from ._create_workspace_response_body import CreateWorkspaceResponseBodyWorkspace
 from ._delete_workspace_response_body import DeleteWorkspaceResponseBodyFailReasons
+from ._get_api_key_response_body import GetApiKeyResponseBodyApiKeyAuthModelAccessScope
 from ._get_api_key_response_body import GetApiKeyResponseBodyApiKeyAuth
 from ._get_api_key_response_body import GetApiKeyResponseBodyApiKey
 from ._get_organization_response_body import GetOrganizationResponseBodyData
@@ -115,6 +117,7 @@ from ._get_token_plan_account_detail_response_body import GetTokenPlanAccountDet
 from ._get_token_plan_account_detail_response_body import GetTokenPlanAccountDetailResponseBodyData
 from ._get_token_plan_invite_link_response_body import GetTokenPlanInviteLinkResponseBodyData
 from ._get_token_plan_org_invite_config_response_body import GetTokenPlanOrgInviteConfigResponseBodyData
+from ._list_api_keys_response_body import ListApiKeysResponseBodyApiKeysAuthModelAccessScope
 from ._list_api_keys_response_body import ListApiKeysResponseBodyApiKeysAuth
 from ._list_api_keys_response_body import ListApiKeysResponseBodyApiKeys
 from ._list_organization_members_response_body import ListOrganizationMembersResponseBodyData
@@ -124,6 +127,7 @@ from ._list_subscription_shared_packages_response_body import ListSubscriptionSh
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
 from ._reset_api_key_response_body import ResetApiKeyResponseBodyApiKey
 from ._rotate_token_plan_key_response_body import RotateTokenPlanKeyResponseBodyData
+from ._update_api_key_request import UpdateApiKeyRequestAuthModelAccessScope
 from ._update_api_key_request import UpdateApiKeyRequestAuth
 from ._update_organization_response_body import UpdateOrganizationResponseBodyData
 
@@ -222,12 +226,14 @@ __all__ = [
     UpdateOrganizationMemberResponse,
     AddOrganizationMemberResponseBodyData,
     BatchRevokeSeatsRequestItems,
+    CreateApiKeyRequestAuthModelAccessScope,
     CreateApiKeyRequestAuth,
     CreateApiKeyResponseBodyApiKey,
     CreateTokenPlanInviteLinkResponseBodyData,
     CreateTokenPlanKeyResponseBodyData,
     CreateWorkspaceResponseBodyWorkspace,
     DeleteWorkspaceResponseBodyFailReasons,
+    GetApiKeyResponseBodyApiKeyAuthModelAccessScope,
     GetApiKeyResponseBodyApiKeyAuth,
     GetApiKeyResponseBodyApiKey,
     GetOrganizationResponseBodyData,
@@ -241,6 +247,7 @@ __all__ = [
     GetTokenPlanAccountDetailResponseBodyData,
     GetTokenPlanInviteLinkResponseBodyData,
     GetTokenPlanOrgInviteConfigResponseBodyData,
+    ListApiKeysResponseBodyApiKeysAuthModelAccessScope,
     ListApiKeysResponseBodyApiKeysAuth,
     ListApiKeysResponseBodyApiKeys,
     ListOrganizationMembersResponseBodyData,
@@ -250,6 +257,7 @@ __all__ = [
     ListWorkspacesResponseBodyWorkspaces,
     ResetApiKeyResponseBodyApiKey,
     RotateTokenPlanKeyResponseBodyData,
+    UpdateApiKeyRequestAuthModelAccessScope,
     UpdateApiKeyRequestAuth,
     UpdateOrganizationResponseBodyData
 ]

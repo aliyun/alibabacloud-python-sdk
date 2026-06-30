@@ -184,15 +184,18 @@ class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
     def __init__(
         self,
         access_ips: List[str] = None,
+        model_access_scope: main_models.GetApiKeyResponseBodyApiKeyAuthModelAccessScope = None,
         type: str = None,
     ):
         # The IP address whitelist.
         self.access_ips = access_ips
+        self.model_access_scope = model_access_scope
         # The permission type. Valid values: All: all permissions. Custom: custom permissions.
         self.type = type
 
     def validate(self):
-        pass
+        if self.model_access_scope:
+            self.model_access_scope.validate()
 
     def to_map(self):
         result = dict()
@@ -201,6 +204,9 @@ class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
             result = _map
         if self.access_ips is not None:
             result['accessIps'] = self.access_ips
+
+        if self.model_access_scope is not None:
+            result['modelAccessScope'] = self.model_access_scope.to_map()
 
         if self.type is not None:
             result['type'] = self.type
@@ -212,8 +218,47 @@ class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
         if m.get('accessIps') is not None:
             self.access_ips = m.get('accessIps')
 
+        if m.get('modelAccessScope') is not None:
+            temp_model = main_models.GetApiKeyResponseBodyApiKeyAuthModelAccessScope()
+            self.model_access_scope = temp_model.from_map(m.get('modelAccessScope'))
+
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class GetApiKeyResponseBodyApiKeyAuthModelAccessScope(DaraModel):
+    def __init__(
+        self,
+        accessible_models: List[str] = None,
+        allow_all_models: bool = None,
+    ):
+        self.accessible_models = accessible_models
+        self.allow_all_models = allow_all_models
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.accessible_models is not None:
+            result['accessibleModels'] = self.accessible_models
+
+        if self.allow_all_models is not None:
+            result['allowAllModels'] = self.allow_all_models
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessibleModels') is not None:
+            self.accessible_models = m.get('accessibleModels')
+
+        if m.get('allowAllModels') is not None:
+            self.allow_all_models = m.get('allowAllModels')
 
         return self
 
