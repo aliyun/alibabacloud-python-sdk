@@ -11,20 +11,17 @@ class ListCommonAreasRequest(DaraModel):
         is_epg: bool = None,
         is_ip_set: bool = None,
     ):
-        # The IP version used to connect to the GA instance. Valid values:
-        # 
-        # *   **IPv4** (default)
-        # *   **IPv6**
+        # The IP address protocol used to connect to Global Accelerator (GA). Valid values:
+        # - **IPv4** (default): IPv4 address protocol. Queries regions that support IPv4.
+        # - **IPv6**: IPv6 address protocol. Queries regions that support IPv6.
         self.ip_version = ip_version
-        # Specifies whether to query regions where endpoint groups of GA can be deployed. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # Specifies whether the region is an endpoint group region supported by Global Accelerator.
+        # - **true**: Yes.
+        # - **false** (default): No.
         self.is_epg = is_epg
-        # Specifies whether to query regions supported by GA. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
+        # Specifies whether the region is an acceleration area supported by Global Accelerator.
+        # - **true**: Yes.
+        # - **false** (default): No.
         self.is_ip_set = is_ip_set
 
     def validate(self):

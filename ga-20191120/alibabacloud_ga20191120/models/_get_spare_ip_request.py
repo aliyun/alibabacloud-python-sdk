@@ -13,24 +13,23 @@ class GetSpareIpRequest(DaraModel):
         region_id: str = None,
         spare_ip: str = None,
     ):
-        # The GA instance ID.
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of a request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a unique value from your client to ensure that different requests have unique ClientToken values. ClientToken supports only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request.
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without actually creating the resource. The system checks the required parameters, request syntax, and business limitations. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The secondary IP address that is associated with the CNAME. If the acceleration area becomes unavailable, GA redirects traffic to the secondary IP address.
+        # The CNAME spare IP address. When an acceleration area is abnormal, traffic is switched to this IP address.
         # 
         # This parameter is required.
         self.spare_ip = spare_ip

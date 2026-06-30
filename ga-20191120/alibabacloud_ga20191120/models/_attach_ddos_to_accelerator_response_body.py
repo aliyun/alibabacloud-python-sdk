@@ -11,11 +11,11 @@ class AttachDdosToAcceleratorResponseBody(DaraModel):
         ga_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Anti-DDoS Pro/Premium instance that is associated with the GA instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance associated with the Global Accelerator (GA) instance.
         self.ddos_id = ddos_id
-        # The ID of the GA instance that is associated with the Anti-DDoS Pro/Premium instance.
+        # The ID of the Global Accelerator (GA) instance with which the Anti-DDoS Pro or Anti-DDoS Premium instance is associated.
         self.ga_id = ga_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

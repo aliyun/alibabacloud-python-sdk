@@ -18,29 +18,35 @@ class ListAcceleratorsRequest(DaraModel):
         state: str = None,
         tag: List[main_models.ListAcceleratorsRequestTag] = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         self.accelerator_id = accelerator_id
         # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The status of the GA instance. Valid values:
+        # The state of the Global Accelerator instance. Valid values:
         # 
-        # *   **init**: The GA instance is being initialized.
-        # *   **active**: The GA instance is available.
-        # *   **configuring**: The GA instance is being configured.
-        # *   **binding**: The GA instance is being associated.
-        # *   **unbinding**: The GA instance is being disassociated.
-        # *   **deleting**: The GA instance is being deleted.
-        # *   **finacialLocked**: The GA instance is locked due to overdue payments.
+        # - **init**: The instance is being initialized.
+        # 
+        # - **active**: The instance is active.
+        # 
+        # - **configuring**: The instance is being configured.
+        # 
+        # - **binding**: The instance is being bound.
+        # 
+        # - **unbinding**: The instance is being unbound.
+        # 
+        # - **deleting**: The instance is being deleted.
+        # 
+        # - **finacialLocked**: The instance is locked due to an overdue payment.
         self.state = state
-        # The tags of the GA instance.
+        # The tags of the resource.
         self.tag = tag
 
     def validate(self):
@@ -113,15 +119,15 @@ class ListAcceleratorsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the GA resource. The tag key cannot be an empty string.
+        # The tag key of the Global Accelerator resource. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag keys.
         self.key = key
-        # The tag value of the GA resource. The tag value can be an empty string.
+        # The tag value of the Global Accelerator resource. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag values.
         self.value = value

@@ -28,116 +28,131 @@ class CreateListenerRequest(DaraModel):
         type: str = None,
         xforwarded_for_config: main_models.CreateListenerRequestXForwardedForConfig = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The SSL certificates.
+        # The SSL certificates for an HTTPS listener.
         self.certificates = certificates
-        # Specifies whether to enable client affinity for the listener.
+        # The client affinity for the listener.
         # 
-        # *   If this parameter is left empty, client affinity is disabled. After client affinity is disabled, requests from a specific client IP address may be forwarded to different endpoints.
-        # *   To enable client affinity, set this parameter to **SOURCE_IP**. In this case, when a client accesses stateful applications, requests from the same client are forwarded to the same endpoint regardless of the source port or protocol.
+        # - By default, client affinity is disabled, and requests from the same client may be routed to different endpoints.
+        # 
+        # - Set to **SOURCE_IP** to enable client affinity. This setting directs all requests from the same client to the same endpoint, regardless of the source port or protocol.
         self.client_affinity = client_affinity
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token that ensures the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a unique token on your client for each request. The token must contain only ASCII characters.
         # 
-        # > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** is different for each API request.
+        # > If you omit this parameter, the system uses the request\\"s **RequestId** as the **ClientToken**.
         self.client_token = client_token
-        # The endpoint group that is associated with the custom routing listener.
+        # The configurations of the endpoint groups for a custom routing listener.
         # 
-        # The endpoint groups that are associated with the custom routing listener.
+        # You can specify up to five endpoint groups.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.custom_routing_endpoint_group_configurations = custom_routing_endpoint_group_configurations
         # The description of the listener.
         # 
-        # The description can be up to 200 characters in length and cannot start with `http://` or `https://`.
+        # The description can be up to 200 characters long and cannot start with `http://` or `https://`.
         self.description = description
-        # The endpoint groups that are associated with the intelligent routing listener.
+        # The configurations of the endpoint groups for a standard listener.
         # 
-        # You can configure up to 10 endpoint groups for an intelligent routing listener.
+        # You can specify up to 10 endpoint groups.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.endpoint_group_configurations = endpoint_group_configurations
-        # The maximum version of the HTTP protocol. Valid values:
+        # The maximum HTTP version. Valid values:
         # 
-        # *   **http3**
-        # *   **http2** (default)
-        # *   **http1.1**
+        # - **http3**: HTTP/3
         # 
-        # >  Only HTTPS listeners support this parameter.
+        # - **http2** (default): HTTP/2
+        # 
+        # - **http1.1**: HTTP/1.1
+        # 
+        # > This parameter applies only to HTTPS listeners.
         self.http_version = http_version
-        # The timeout period of idle connections. Unit: seconds.
+        # The connection idle timeout, in seconds.
         # 
-        # *   TCP: 10-900. Default value: 900. Unit: seconds.
-        # *   UDP: 10-20. Default value: 20. Unit: seconds.
-        # *   HTTP/HTTPS: 1-60. Default value: 15. Unit: seconds.
+        # - TCP: 10–900 seconds. Default: 900 seconds.
+        # 
+        # - UDP: 10–20 seconds. Default: 20 seconds.
+        # 
+        # - HTTP/HTTPS: 1–60 seconds. Default: 15 seconds.
         self.idle_timeout = idle_timeout
         # The name of the listener.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters long, start with a letter or a Chinese character, and can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The listener ports. Valid values: **1** to **65499**. The maximum number of ports that can be configured depends on the routing type and protocol of the listener. For more information, see [Listener overview](https://help.aliyun.com/document_detail/153216.html).
+        # The listener port range. The port numbers must be within the range of **1** to **65499**. The maximum number of allowed ports depends on the listener\\"s routing type and protocol. For more information, see [Listener ports](https://help.aliyun.com/document_detail/153216.html).
         # 
         # This parameter is required.
         self.port_ranges = port_ranges
-        # The network transmission protocol that you want to use for the listener. Valid values:
+        # The listener\\"s network protocol. Valid values:
         # 
-        # *   **tcp**: TCP
-        # *   **udp**: UDP
-        # *   **http**: HTTP
-        # *   **https**: HTTPS
+        # - **tcp**: TCP.
+        # 
+        # - **udp**: UDP.
+        # 
+        # - **http**: HTTP.
+        # 
+        # - **https**: HTTPS.
         self.protocol = protocol
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The timeout period for HTTP or HTTPS requests. Unit: seconds.
+        # The request timeout for HTTP/HTTPS connections, in seconds.
         # 
-        # Valid values: 1 to 180. Default value: 60. Unit: seconds.
+        # Valid values: 1–180 seconds. Default: 60 seconds.
         # 
-        # >  This parameter takes effect only for HTTP or HTTPS listeners. If the backend server does not respond within the timeout period, GA returns an HTTP 504 error code to the client.
+        # > This parameter applies only to HTTP or HTTPS listeners. If the backend server does not respond within the timeout period, Global Accelerator returns an HTTP 504 error to the client.
         self.request_timeout = request_timeout
         # The ID of the security policy. Valid values:
         # 
-        # *   **tls_cipher_policy_1_0**
+        # - **tls_cipher_policy_1_0**
         # 
-        #     *   Supported Transport Layer Security (TLS) versions: TLS 1.0, TLS 1.1, and TLS 1.2
-        #     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+        #   - Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2.
         # 
-        # *   **tls_cipher_policy_1_1**
+        #   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
         # 
-        #     *   Supported TLS versions: TLS 1.1 and TLS 1.2
-        #     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+        # - **tls_cipher_policy_1_1**
         # 
-        # *   **tls_cipher_policy_1_2**
+        #   - Supported TLS versions: TLS 1.1 and TLS 1.2.
         # 
-        #     *   Supported TLS version: TLS 1.2
-        #     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
+        #   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
         # 
-        # *   **tls_cipher_policy_1_2_strict**
+        # - **tls_cipher_policy_1_2**
         # 
-        #     *   Supported TLS version: TLS 1.2
-        #     *   Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        #   - Supported TLS version: TLS 1.2.
         # 
-        # *   **tls_cipher_policy_1_2_strict_with_1_3**
+        #   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA.
         # 
-        #     *   Supported TLS versions: TLS 1.2 and TLS 1.3
-        #     *   Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        # - **tls_cipher_policy_1_2_strict**
         # 
-        # > This parameter is available only when you create an HTTPS listener.
+        #   - Supported TLS version: TLS 1.2.
+        # 
+        #   - Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+        # 
+        # - **tls_cipher_policy_1_2_strict_with_1_3**
+        # 
+        #   - Supported TLS versions: TLS 1.2 and TLS 1.3.
+        # 
+        #   - Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA.
+        # 
+        # > This parameter applies only to HTTPS listeners.
         self.security_policy_id = security_policy_id
         # The routing type of the listener. Valid values:
         # 
-        # *   **Standard** (default): intelligent routing
-        # *   **CustomRouting**: custom routing
+        # - **Standard** (default): standard routing.
         # 
-        # > *   Custom routing listeners are in invitational preview. To use custom routing listeners, contact your account manager.
-        # > *   You can create only listeners of the same routing type for a standard GA instance. You cannot change the routing types of listeners. For more information, see [Listener overview](https://help.aliyun.com/document_detail/153216.html).
+        # - **CustomRouting**: custom routing.
+        # 
+        # > * Custom routing is in invitation-only preview. To use this feature, contact your Alibaba Cloud account manager.
+        # >
+        # > * A standard Global Accelerator instance supports only one routing type for all of its listeners. The routing type cannot be changed after the listener is created. For more information, see [Listener overview](https://help.aliyun.com/document_detail/153216.html).
         self.type = type
-        # The `XForward` headers.
+        # Settings for `X-Forwarded-For` related headers.
         self.xforwarded_for_config = xforwarded_for_config
 
     def validate(self):
@@ -303,40 +318,45 @@ class CreateListenerRequestXForwardedForConfig(DaraModel):
         xforwarded_for_proto_enabled: bool = None,
         xreal_ip_enabled: bool = None,
     ):
-        # Specifies whether to use the `GA-AP` header to retrieve the information about acceleration regions. Valid values:
+        # Specifies whether to use the `GA-AP` header to pass information about the acceleration region to the backend server. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # - **true**
         # 
-        # > This parameter is available only when you create an HTTPS or HTTP listener.
+        # - **false** (Default)
+        # 
+        # > This parameter applies only to HTTP and HTTPS listeners.
         self.xforwarded_for_ga_ap_enabled = xforwarded_for_ga_ap_enabled
-        # Specifies whether to use the `GA-ID` header to retrieve the ID of the GA instance. Valid values:
+        # Specifies whether to use the `GA-ID` header to pass the Global Accelerator instance ID to the backend server. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # - **true**
         # 
-        # > This parameter is available only when you create an HTTPS or HTTP listener.
+        # - **false** (Default)
+        # 
+        # > This parameter applies only to HTTP and HTTPS listeners.
         self.xforwarded_for_ga_id_enabled = xforwarded_for_ga_id_enabled
-        # Specifies whether to use the `GA-X-Forward-Port` header to retrieve the listener ports of the GA instance. Valid values:
+        # Specifies whether to use the `GA-X-Forward-Port` header to pass the listener port of the Global Accelerator instance to the backend server. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # - **true**
         # 
-        # > This parameter is available only when you create an HTTPS or HTTP listener.
+        # - **false** (Default)
+        # 
+        # > This parameter applies only to HTTP and HTTPS listeners.
         self.xforwarded_for_port_enabled = xforwarded_for_port_enabled
-        # Specifies whether to use the `GA-X-Forward-Proto` header to retrieve the listener protocol of the GA instance. Valid values:
+        # Specifies whether to use the `GA-X-Forward-Proto` header to pass the listener protocol of the Global Accelerator instance to the backend server. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # - **true**
         # 
-        # > This parameter is available only when you create an HTTPS or HTTP listener.
+        # - **false** (Default)
+        # 
+        # > This parameter applies only to HTTP and HTTPS listeners.
         self.xforwarded_for_proto_enabled = xforwarded_for_proto_enabled
-        # Specifies whether to use the `X-Real-IP` header to retrieve client IP addresses. Valid values:
+        # Specifies whether to use the `X-Real-IP` header to pass the client\\"s real IP address to the backend server. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # - **true**
         # 
-        # > This parameter is available only when you create an HTTPS or HTTP listener.
+        # - **false** (Default)
+        # 
+        # > This parameter applies only to HTTP and HTTPS listeners.
         self.xreal_ip_enabled = xreal_ip_enabled
 
     def validate(self):
@@ -389,23 +409,19 @@ class CreateListenerRequestPortRanges(DaraModel):
         from_port: int = None,
         to_port: int = None,
     ):
-        # The first port of the listener port range that you want to use to receive and forward requests to endpoints.
+        # The first port in the listener range used to receive and forward requests to endpoints.
         # 
-        # Valid values: **1** to **65499**. The value of **FromPort** must be smaller than or equal to the value of **ToPort**.
+        # The port number must be in the range of **1** to **65499**, and the value of **FromPort** must be less than or equal to the value of **ToPort**.
         # 
-        # The maximum number of ports that can be configured varies based on the routing type and protocol of the listener. For more information, see [Listener overview](https://help.aliyun.com/document_detail/153216.html).
-        # 
-        # > You can configure only one listener port for an HTTP or HTTPS listener. In this case, the first port is the same as the last port.
+        # > For HTTP or HTTPS listeners, you can specify only one listener port. In this case, the value of **FromPort** must be the same as the value of **ToPort**.
         # 
         # This parameter is required.
         self.from_port = from_port
-        # The last port of the listener port range that you want to use to receive and forward requests to endpoints.
+        # The last port in the listener range used to receive and forward requests to endpoints.
         # 
-        # Valid values: **1** to **65499**. The value of **FromPort** must be smaller than or equal to the value of **ToPort**.
+        # The port number must be in the range of **1** to **65499**, and the value of **FromPort** must be less than or equal to the value of **ToPort**.
         # 
-        # The maximum number of ports that can be configured varies based on the routing type and protocol of the listener. For more information, see [Listener overview](https://help.aliyun.com/document_detail/153216.html).
-        # 
-        # > You can configure only one listener port for an HTTP or HTTPS listener. In this case, the first port is the same as the last port.
+        # > For HTTP or HTTPS listeners, you can specify only one listener port. In this case, the value of **FromPort** must be the same as the value of **ToPort**.
         # 
         # This parameter is required.
         self.to_port = to_port
@@ -457,112 +473,130 @@ class CreateListenerRequestEndpointGroupConfigurations(DaraModel):
         threshold_count: int = None,
         traffic_percentage: int = None,
     ):
-        # The endpoints that are associated with the intelligent routing listener.
+        # The endpoint configurations.
         self.endpoint_configurations = endpoint_configurations
-        # The description of the endpoint group that is associated with the intelligent routing listener.
+        # The description of the endpoint group.
         # 
-        # The description can be up to 200 characters in length and cannot contain `http://` or `https://`.
+        # The description can be up to 200 characters long and cannot contain `http://` or `https://`.
         # 
-        # You can enter the descriptions of up to 10 endpoint groups.
+        # You can enter up to 10 endpoint group descriptions.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.endpoint_group_description = endpoint_group_description
-        # The name of the endpoint group that is associated with the intelligent routing listener.
+        # The name of the endpoint group.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters long, start with a letter or a Chinese character, and can contain digits, periods (.), underscores (_), and hyphens (-).
         # 
-        # You can enter the names of up to 10 endpoint groups.
+        # You can enter up to 10 endpoint group names.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.endpoint_group_name = endpoint_group_name
-        # The region ID of the endpoint group that is associated with the intelligent routing listener.
+        # The ID of the region where the endpoint group is created.
         # 
-        # You can enter the IDs of up to 10 regions.
+        # You can enter up to 10 endpoint group region IDs.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.endpoint_group_region = endpoint_group_region
-        # The type of the endpoint group associated with the intelligent routing listener. Valid values:
+        # The type of the endpoint group. Valid values:
         # 
-        # *   **default** (default): a default endpoint group.
-        # *   **virtual**: a virtual endpoint group.
+        # - **default** (default): a default endpoint group.
         # 
-        # You can specify up to 10 endpoint group types.
+        # - **virtual**: a virtual endpoint group.
         # 
-        # > *   You can configure endpoint groups and endpoints for an intelligent routing listener only if you set **Type** to **Standard**.
-        # >*   Only HTTP and HTTPS intelligent routing listeners support virtual endpoint groups.
+        # You can enter up to 10 endpoint group types.
+        # 
+        # > - This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
+        # >
+        # > - You can create virtual endpoint groups only for HTTP or HTTPS listeners.
         self.endpoint_group_type = endpoint_group_type
+        # The IP version used by the backend service. Valid values:
+        # 
+        # - **IPv4** (default): GA uses only IPv4 addresses to communicate with backend services.
+        # 
+        # - **IPv6**: GA uses only IPv6 addresses to communicate with backend services.
+        # 
+        # - **ProtocolAffinity**: GA uses the same IP version as the client request to communicate with backend services.
         self.endpoint_ip_version = endpoint_ip_version
-        # The backend service protocol version of the endpoint that is associated with the intelligent routing listener. Valid values:
+        # The protocol version of the backend service. Valid values:
         # 
-        # *   **HTTP1.1** (default)
-        # *   **HTTP2**
+        # - **HTTP1.1** (default): HTTP/1.1
         # 
-        # >  You can specify this parameter only if EndpointRequestProtocol is set to HTTPS.
+        # - **HTTP2**: HTTP/2
+        # 
+        # > This parameter is available only when EndpointRequestProtocol is set to HTTPS.
         self.endpoint_protocol_version = endpoint_protocol_version
-        # The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values:
+        # The protocol used by the backend service. Valid values:
         # 
-        # *   **HTTP** (default)
-        # *   **HTTPS**
+        # - **HTTP** (default)
         # 
-        # You can specify up to 10 backend service protocols.
+        # - **HTTPS**
         # 
-        # > *   You can configure endpoint groups and endpoints for an intelligent routing listener only if you set **Type** to **Standard**.
-        # >*   You can specify this parameter only for HTTP and HTTPS intelligent routing listeners.
-        # >* For an HTTP listener, the backend service protocol must be **HTTP**.
+        # You can enter up to 10 backend service protocols.
+        # 
+        # > - This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
+        # >
+        # > - You can configure this parameter only for endpoint groups of HTTP or HTTPS listeners.
+        # >
+        # > - For an HTTP listener, the backend service protocol must be **HTTP**.
         self.endpoint_request_protocol = endpoint_request_protocol
         # Specifies whether to enable health checks for the endpoint group. Valid values:
         # 
-        # *   **true**: enables the health check feature.
-        # *   **false** (default): disables the health check feature.
+        # - **true**: Enables health checks.
         # 
-        # You can enable the health check feature for up to 10 endpoint groups.
+        # - **false** (Default): Disables health checks.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # You can enable health checks for up to 10 endpoint groups.
+        # 
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.health_check_enabled = health_check_enabled
+        # The domain name that is used for health checks.
         self.health_check_host = health_check_host
-        # The interval at which health checks are performed. Unit: seconds.
+        # The health check interval, in seconds.
         # 
-        # You can specify up to 10 health check intervals.
+        # You can enter up to 10 health check intervals.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.health_check_interval_seconds = health_check_interval_seconds
-        # The health check path.
+        # The path to which health check requests are sent.
         # 
-        # You can specify up to 10 health check paths.
+        # You can enter up to 10 health check paths.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.health_check_path = health_check_path
-        # The port that you want to use for health checks. Valid values: **1** to **65535**.
+        # The port that is used for health checks. Valid values: **1** to **65535**.
         # 
-        # You can specify up to 10 ports for health checks.
+        # You can enter a maximum of 10 ports for health checks.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.health_check_port = health_check_port
         # The protocol over which health check requests are sent. Valid values:
         # 
-        # *   **tcp** or **TCP**
-        # *   **http** or **HTTP**
-        # *   **https** or **HTTPS**
+        # - **tcp** or **TCP**: TCP
         # 
-        # You can specify up to 10 health check protocols.
+        # - **http** or **HTTP**: HTTP
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # - **https** or **HTTPS**: HTTPS
+        # 
+        # You can enter up to 10 health check protocols.
+        # 
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.health_check_protocol = health_check_protocol
-        # The port mappings.
+        # The port mapping. You can specify up to five port mappings.
         self.port_overrides = port_overrides
-        # The number of failed consecutive health checks that must occur before a healthy endpoint group is considered unhealthy or the number of successful consecutive health checks that must occur before an unhealthy endpoint group is considered healthy. Valid values: **2** to **10**. Default value: **3**.
+        # The number of consecutive successful health checks required to mark an endpoint as healthy, or consecutive failed health checks to mark an endpoint as unhealthy.
+        # Valid values: **2** to **10**. Default value: **3**.
         # 
-        # You can specify up to 10 values (the number of consecutive health check successes or consecutive health check failures).
+        # You can enter up to 10 values for the number of consecutive health checks required to trigger a health status change.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.threshold_count = threshold_count
-        # The traffic distribution ratio. If an intelligent routing listener is associated with multiple endpoint groups, you can configure this parameter to specify the ratio of traffic distributed to each endpoint group.
+        # The traffic distribution ratio. If a standard listener is associated with multiple endpoint groups, this parameter specifies the percentage of traffic that is distributed to each endpoint group.
         # 
         # Valid values: **1** to **100**. Default value: **100**.
         # 
-        # You can specify traffic distribution ratios for up to 10 endpoint groups.
+        # You can enter traffic distribution values for up to 10 endpoint groups.
         # 
-        # >  You can configure endpoint groups and endpoints only if you set **Type** to **Standard**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.traffic_percentage = traffic_percentage
 
     def validate(self):
@@ -704,23 +738,29 @@ class CreateListenerRequestEndpointGroupConfigurationsPortOverrides(DaraModel):
         endpoint_port: int = None,
         listener_port: int = None,
     ):
-        # The endpoint port that is mapped to the listener port.
+        # The endpoint port that is specified in the port mapping.
         # 
-        # You can specify endpoint ports in up to five port mappings.
+        # You can enter a maximum of 5 endpoint ports for port mapping.
         # 
-        # > *   You can configure endpoint groups and endpoints for an intelligent routing listener only if you set **Type** to **Standard**.
-        # >*   You cannot configure port mappings for virtual endpoint groups of TCP listeners. If a virtual endpoint group already exists on the listener, you cannot configure port mappings for the default endpoint group. If port mappings are configured for the default endpoint group, you cannot add a virtual endpoint group.
-        # >*   If you configure port mappings for a listener, you cannot modify the listener protocol. You can only switch between HTTP and HTTPS.
-        # >*   Listener port: When you modify the listener port range, make sure that the port range includes the ports configured in port mappings. For example, if you set the listener port range to 80 to 82 and map the listener ports to endpoint ports 100 to 102, you cannot change the listener port range to 80 to 81.
+        # > - This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
+        # >
+        # > - For TCP listeners, you cannot configure a port mapping for a virtual endpoint group. If a virtual endpoint group already exists for the listener, you cannot configure a port mapping for the default endpoint group. If a port mapping is configured for the default endpoint group, you cannot add a virtual endpoint group to the listener.
+        # >
+        # > - After you configure a port mapping, you cannot modify the listener protocol, except for switching between HTTP and HTTPS.
+        # >
+        # > - When you modify the listener port range, make sure that the new port range includes all listener ports that are specified in the port mapping. For example, if the listener port range is 80-82 and the listener ports are mapped to the endpoint ports 100-102, you cannot change the listener port range to 80-81.
         self.endpoint_port = endpoint_port
-        # The listener port that is mapped to the endpoint port.
+        # The listener port that is specified in the port mapping.
         # 
-        # You can specify listener ports in up to five port mappings.
+        # You can enter up to 5 listener ports for port mappings.
         # 
-        # > *   You can configure endpoint groups and endpoints for an intelligent routing listener only if you set **Type** to **Standard**.
-        # >*   You cannot configure port mappings for virtual endpoint groups of TCP listeners. If a virtual endpoint group already exists on the listener, you cannot configure port mappings for the default endpoint group. If port mappings are configured for the default endpoint group, you cannot add a virtual endpoint group.
-        # >*   If you configure port mappings for a listener, you cannot modify the listener protocol. You can only switch between HTTP and HTTPS.
-        # >*   Listener port: When you modify the listener port range, make sure that the port range includes the ports configured in port mappings. For example, if you set the listener port range to 80 to 82 and map the listener ports to endpoint ports 100 to 102, you cannot change the listener port range to 80 to 81.
+        # > - This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
+        # >
+        # > - For TCP listeners, you cannot configure a port mapping for a virtual endpoint group. If a virtual endpoint group already exists for the listener, you cannot configure a port mapping for the default endpoint group. If a port mapping is configured for the default endpoint group, you cannot add a virtual endpoint group to the listener.
+        # >
+        # > - After you configure a port mapping, you cannot modify the listener protocol, except for switching between HTTP and HTTPS.
+        # >
+        # > - When you modify the listener port range, make sure that the new port range includes all listener ports that are specified in the port mapping. For example, if the listener port range is 80-82 and the listener ports are mapped to the endpoint ports 100-102, you cannot change the listener port range to 80-81.
         self.listener_port = listener_port
 
     def validate(self):
@@ -752,82 +792,108 @@ class CreateListenerRequestEndpointGroupConfigurationsPortOverrides(DaraModel):
 class CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations(DaraModel):
     def __init__(
         self,
+        api_keys: List[str] = None,
         enable_client_ippreservation: bool = None,
         enable_proxy_protocol: bool = None,
         endpoint: str = None,
+        provider: str = None,
         sub_address: str = None,
         type: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
         weight: int = None,
     ):
-        # Specifies whether to automatically preserve client IP addresses. Valid values:
+        self.api_keys = api_keys
+        # Specifies whether to preserve client source IP addresses. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: enables the feature.
         # 
-        # > *   By default, client IP address preservation is disabled for an endpoint group that is associated with a UDP or TCP listener. You can configure this parameter based on your business requirements.
-        # >*   By default, client IP address preservation is enabled for an endpoint group that is associated with a HTTP or HTTPS listener. Client IP addresses are obtained by using the X-Forwarded-For header. You cannot disable the feature.
-        # >*   EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
-        # >>For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+        # - **false** (default): disables the feature.
+        # 
+        # > * This feature is disabled by default for endpoint groups of TCP or UDP listeners. You can enable it as needed.
+        # >
+        # > * This feature is enabled by default for endpoint groups of HTTP or HTTPS listeners. Client source IP addresses are retrieved from the `X-Forwarded-For` header. You cannot disable this feature.
+        # >
+        # > * You cannot set both `EnableClientIPPreservation` and `EnableProxyProtocol` to `true`.
+        # >
+        # > * For more information, see [Preserve client source IP addresses](https://help.aliyun.com/document_detail/158080.html).
         self.enable_client_ippreservation = enable_client_ippreservation
-        # Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
+        # Specifies whether to use the proxy protocol to preserve client source IP addresses. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: enables the feature.
         # 
-        # >*   This parameter is supported only by endpoint groups associated with TCP listeners.
-        # >*   EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
-        # >>For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+        # - **false** (default): disables the feature.
+        # 
+        # > * You can configure this parameter only for endpoint groups of TCP listeners.
+        # >
+        # > * You cannot set both `EnableClientIPPreservation` and `EnableProxyProtocol` to `true`.
+        # >
+        # > * For more information, see [Preserve client source IP addresses](https://help.aliyun.com/document_detail/158080.html).
         self.enable_proxy_protocol = enable_proxy_protocol
-        # The IP address or domain name of the endpoint that is associated with the intelligent routing listener.
+        # The IP address or domain name of the endpoint.
         # 
-        # You can enter the IP addresses or domain names of up to 100 endpoints in an endpoint group that is associated with the intelligent routing listener.
+        # In an endpoint group of an intelligent routing listener, you can enter up to 100 IP addresses or domain names of endpoints.
         # 
-        # >  If you set **Type** to **Standard**, you can configure endpoint groups and endpoints, and this parameter is required.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
         self.endpoint = endpoint
+        self.provider = provider
         # The private IP address of the ENI.
         # 
-        # >  This parameter is available only when you set the endpoint type to **ENI**. If you leave this parameter empty, the primary private IP address of the ENI is used.
+        # > If the endpoint type is **ENI**, you can specify this parameter. If you do not specify this parameter, the primary private IP address of the ENI is used.
         self.sub_address = sub_address
-        # The type of the endpoint that is associated with the intelligent routing listener. Valid values:
+        # The type of the endpoint. Valid values:
         # 
-        # *   **Domain**: a custom domain name.
-        # *   **Ip**: a custom IP address.
-        # *   **PublicIp**: a public IP address provided by Alibaba Cloud.
-        # *   **ECS**: an Elastic Compute Service (ECS) instance.
-        # *   **SLB**: a Server Load Balancer (SLB) instance.
-        # *   **ALB**: an Application Load Balancer (ALB) instance.
-        # *   **OSS**: an Object Storage Service (OSS) bucket.
-        # *   **ENI**: an elastic network interface (ENI).
-        # *   **NLB**: a Network Load Balancer (NLB) instance.
-        # *   **IpTarget**: a custom private IP address.
+        # - **Domain**: a custom domain name.
         # 
-        # You can specify up to 100 endpoint types in the endpoint group that is associated with the intelligent routing listener.
+        # - **Ip**: a custom IP address.
         # 
-        # > *   If you set **Type** to **Standard**, you can configure the endpoint group and endpoint that are associated with the intelligent routing listener. In addition, this parameter is required.
-        # >*   If you set this parameter to **ECS**, **ENI**, **SLB**, **ALB**, **NLB**, or **IpTarget** and the AliyunServiceRoleForGaVpcEndpoint service-linked role does not exist, the system automatically creates the role.
-        # >*   If you set this parameter to **ALB** and the AliyunServiceRoleForGaAlb service-linked role does not exist, the system automatically creates the role.
-        # >*   If you set this parameter to **OSS** and the AliyunServiceRoleForGaOss service-linked role does not exist, the system automatically creates the role.
-        # >*   If you set this parameter to **NLB** and the AliyunServiceRoleForGaNlb service-linked role does not exist, the system automatically creates the role.
-        # >>For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/178360.html).
+        # - **PublicIp**: a public IP address of an Alibaba Cloud service.
+        # 
+        # - **ECS**: an Elastic Compute Service (ECS) instance.
+        # 
+        # - **SLB**: a Server Load Balancer (SLB) instance.
+        # 
+        # - **ALB**: an Application Load Balancer (ALB) instance.
+        # 
+        # - **OSS**: an Object Storage Service (OSS) bucket.
+        # 
+        # - **ENI**: an elastic network interface (ENI).
+        # 
+        # - **NLB**: a Network Load Balancer (NLB) instance.
+        # 
+        # - **IpTarget**: a custom private IP address.
+        # 
+        # You can specify up to 100 endpoints in an endpoint group.
+        # 
+        # > - This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
+        # >
+        # > - When you add endpoints, Global Accelerator may create service-linked roles to access your resources. The role created depends on the endpoint type:
+        # >
+        # > -
+        # >
+        # > -
+        # >
+        # > -
+        # >
+        # > > For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/178360.html).
         self.type = type
-        # The IDs of vSwitches that are deployed in the VPC.
+        # The list of vSwitches in the VPC. You can specify up to two vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID.
+        # The ID of the Virtual Private Cloud (VPC).
         # 
-        # You can specify one VPC ID for an endpoint group of an intelligent routing listener.
+        # In an endpoint group of an intelligent routing listener, you can enter a maximum of 1 VPC ID.
         # 
-        # >  This parameter is valid and required only if Type is set to **IpTarget**.
+        # > This parameter is required only for **IpTarget** endpoints.
         self.vpc_id = vpc_id
-        # The weight of the endpoint that is associated with the intelligent routing listener.
+        # The weight of the endpoint.
         # 
         # Valid values: **0** to **255**.
         # 
-        # You can specify the weights of up to 100 endpoints for an endpoint group of an intelligent routing listener.
+        # In an endpoint group for an intelligent routing type listener, you can enter weights for up to 100 endpoints.
         # 
-        # > *   If you set **Type** to **Standard**, you can configure the endpoint group and endpoint that are associated with the intelligent routing listener. In addition, this parameter is required.
-        # >*   If the weight of an endpoint is set to 0, GA stops distributing network traffic to the endpoint. Proceed with caution.
+        # > - This parameter applies only when the listener\\"s routing type (**Type**) is **Standard**.
+        # >
+        # > - If an endpoint\\"s weight is set to 0, Global Accelerator stops sending traffic to it. Use this setting with caution.
         self.weight = weight
 
     def validate(self):
@@ -838,6 +904,9 @@ class CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations(Dar
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_keys is not None:
+            result['ApiKeys'] = self.api_keys
+
         if self.enable_client_ippreservation is not None:
             result['EnableClientIPPreservation'] = self.enable_client_ippreservation
 
@@ -846,6 +915,9 @@ class CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations(Dar
 
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
+
+        if self.provider is not None:
+            result['Provider'] = self.provider
 
         if self.sub_address is not None:
             result['SubAddress'] = self.sub_address
@@ -866,6 +938,9 @@ class CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations(Dar
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKeys') is not None:
+            self.api_keys = m.get('ApiKeys')
+
         if m.get('EnableClientIPPreservation') is not None:
             self.enable_client_ippreservation = m.get('EnableClientIPPreservation')
 
@@ -874,6 +949,9 @@ class CreateListenerRequestEndpointGroupConfigurationsEndpointConfigurations(Dar
 
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
 
         if m.get('SubAddress') is not None:
             self.sub_address = m.get('SubAddress')
@@ -901,41 +979,41 @@ class CreateListenerRequestCustomRoutingEndpointGroupConfigurations(DaraModel):
         endpoint_group_region: str = None,
         name: str = None,
     ):
-        # The description of the endpoint group that is associated with the custom routing listener.
+        # The description of the endpoint group.
         # 
-        # The description can be up to 200 characters in length and cannot contain `http://` or `https://`.
+        # The description can be up to 200 characters long and cannot contain `http://` or `https://`.
         # 
-        # You can specify up to five endpoint group descriptions.
+        # You can enter up to 5 endpoint group descriptions.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.description = description
-        # The mapping configurations of the endpoint group that is associated with the custom routing listener.
+        # The mapping configurations for the endpoint group.
         # 
-        # You need to specify the port ranges and protocols used by the endpoint group. The ports are mapped to listener ports.
+        # You must specify the port ranges and protocols for the backend service. The settings are mapped to the associated listener port ranges.
         # 
-        # You can specify up to 20 mapping configurations for an endpoint group of a custom routing listener.
+        # You can specify up to 20 mapping configurations for each endpoint group.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.destination_configurations = destination_configurations
-        # The endpoints that are associated with the custom routing listener.
+        # The endpoint configurations.
         # 
-        # You can configure up to 10 endpoints for an endpoint group of a custom routing listener.
+        # You can specify up to 10 endpoints for each endpoint group.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.endpoint_configurations = endpoint_configurations
-        # The region ID of the endpoint group that is associated with the custom routing listener.
+        # The ID of the region where the endpoint group is created.
         # 
-        # You can enter the region IDs of up to five endpoint groups.
+        # You can enter up to 5 endpoint group region IDs.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.endpoint_group_region = endpoint_group_region
-        # The name of the endpoint group that is associated with the custom routing listener.
+        # The name of the endpoint group.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters long, start with a letter or a Chinese character, and can contain digits, periods (.), underscores (_), and hyphens (-).
         # 
-        # You can specify up to five endpoint group names.
+        # You can enter up to 5 endpoint group names.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.name = name
 
     def validate(self):
@@ -1007,29 +1085,32 @@ class CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfi
         traffic_to_endpoint_policy: str = None,
         type: str = None,
     ):
-        # The name of the vSwitch attached to the endpoint of the custom routing listener.
+        # The vSwitch of the custom routing listener.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.endpoint = endpoint
-        # The destinations in the endpoint that is associated with the custom routing listener.
+        # The destination configurations for a custom routing listener.
         # 
-        # You can specify up to 20 traffic destinations for each endpoint of a custom routing listener.
+        # You can specify up to 20 destinations for each endpoint.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.policy_configurations = policy_configurations
-        # The traffic policy for the endpoint that is associated with the custom routing listener. Default value: DenyAll. Valid values:
+        # The traffic policy for the backend service of a custom routing listener. Valid values:
         # 
-        # *   **DenyAll** (default): denies all traffic to the specified backend service.
-        # *   **AllowAll**: allows all traffic to the specified backend service.
-        # *   **AllowCustom**: allows traffic only to specified destinations in the endpoint. If you set this parameter to AllowCustom, you must specify IP addresses and port ranges as the destinations to which you want to distribute traffic. If you specify only IP addresses and do not specify port ranges, GA can forward traffic to the specified IP addresses over all destination ports.
+        # - **DenyAll** (default): Denies all traffic to the specified backend service.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # - **AllowAll**: Allows all traffic to the specified backend service.
+        # 
+        # - **AllowCustom**: Allows traffic to specific destinations.
+        #   You must specify the IP addresses and port ranges of the allowed destinations. If no port range is specified, all ports of the destination are allowed.
+        # 
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.traffic_to_endpoint_policy = traffic_to_endpoint_policy
-        # The service type of the endpoint that is associated with the custom routing listener. Default value: PrivateSubNet. Set the value to
+        # The type of the backend service for a custom routing listener. Valid value:
         # 
-        # **PrivateSubNet**, which specifies a private CIDR block.
+        # **PrivateSubNet** (default): a private CIDR block.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.type = type
 
     def validate(self):
@@ -1084,23 +1165,23 @@ class CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfi
         address: str = None,
         port_ranges: List[main_models.CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfigurationsPolicyConfigurationsPortRanges] = None,
     ):
-        # The IP address of the destination.
+        # The IP address of the destination that is allowed to receive traffic.
         # 
-        # This parameter takes effect only if **TrafficToEndpointPolicy** is set to **AllowCustom**.
+        # This parameter is required only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
         # 
-        # You can specify up to 20 destination IP addresses for each endpoint of a custom routing listener.
+        # You can specify up to 20 destination IP addresses for each endpoint.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.address = address
-        # The port ranges of the destination to which traffic is forwarded. The value of this parameter must fall within the port range of the endpoint group.
+        # The port range of the destination that is allowed to receive traffic. The port range must be within the port range of the backend service.
         # 
-        # If you do not specify this parameter, traffic is forwarded over all ports.
+        # If you leave this parameter empty, all ports of the destination are allowed.
         # 
-        # This parameter takes effect only if **TrafficToEndpointPolicy** is set to **AllowCustom**.
+        # This parameter is required only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
         # 
-        # You can specify port ranges for up to 20 destinations in each endpoint of a custom routing listener. You can specify up to five port ranges for each destination.
+        # You can specify up to 20 port ranges for each endpoint, and up to 5 port ranges for each destination.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.port_ranges = port_ranges
 
     def validate(self):
@@ -1143,21 +1224,21 @@ class CreateListenerRequestCustomRoutingEndpointGroupConfigurationsEndpointConfi
         from_port: int = None,
         to_port: int = None,
     ):
-        # The start port of the port range. The value of this parameter must fall within the port range of the backend service.
+        # The first port of the destination that is allowed to receive traffic. The port must be within the port range of the backend service.
         # 
-        # This parameter takes effect only if **TrafficToEndpointPolicy** is set to **AllowCustom**.
+        # This parameter is required only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
         # 
-        # You can specify port ranges for up to 20 destinations in each endpoint of a custom routing listener. You can specify up to five start ports for each destination.
+        # You can specify up to 20 port ranges for each endpoint, and up to 5 first ports for each destination.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.from_port = from_port
-        # The end port of the destination port range. The value of this parameter must fall within the port range of the backend service.
+        # The last port of the destination that is allowed to receive traffic. The port must be within the port range of the backend service.
         # 
-        # This parameter takes effect only if **TrafficToEndpointPolicy** is set to **AllowCustom**.
+        # This parameter is required only when **TrafficToEndpointPolicy** is set to **AllowCustom**.
         # 
-        # You can specify port ranges for up to 20 destinations in each endpoint of a custom routing listener. You can specify up to five end ports for each destination.
+        # You can specify up to 20 port ranges for each endpoint, and up to 5 last ports for each destination.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.to_port = to_port
 
     def validate(self):
@@ -1193,27 +1274,27 @@ class CreateListenerRequestCustomRoutingEndpointGroupConfigurationsDestinationCo
         protocols: List[str] = None,
         to_port: int = None,
     ):
-        # The start port used by the endpoint group that is associated with the custom routing listener.
+        # The first port of the backend service.
         # 
-        # Valid values: **1** to **65499**. The value of **FromPort** must be equal to or smaller than the value of **ToPort**.
+        # The valid port range is **1** to **65499**. The value of **FromPort** must be less than or equal to the value of **ToPort**.
         # 
-        # You can specify up to 20 start ports for an endpoint group of a custom routing listener.
+        # In each endpoint group for a custom routing type listener, you can enter up to 20 backend service starting ports.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.from_port = from_port
-        # The protocol used by the endpoint group that is associated with the custom routing listener.
+        # The protocols of the backend service.
         # 
-        # You can specify up to four protocol types for an endpoint group of a custom routing listener.
+        # You can specify up to four backend service protocols for each mapping configuration.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.protocols = protocols
-        # The end port used by the endpoint group that is associated with the custom routing listener.
+        # The last port of the backend service.
         # 
-        # Valid values: **1** to **65499**. The value of **FromPort** must be equal to or smaller than the value of **ToPort**.
+        # The valid port range is **1** to **65499**. The value of **FromPort** must be less than or equal to the value of **ToPort**.
         # 
-        # You can specify up to 20 end ports for an endpoint group of a custom routing listener.
+        # In each endpoint group of a listener of the custom routing type, you can enter a maximum of 20 backend service ports.
         # 
-        # >  You can configure endpoint groups and endpoints for a custom routing listener only if **Type** is set to **CustomRouting**.
+        # > This parameter applies only when the listener\\"s routing type (**Type**) is **CustomRouting**.
         self.to_port = to_port
 
     def validate(self):
@@ -1255,7 +1336,7 @@ class CreateListenerRequestCertificates(DaraModel):
     ):
         # The ID of the SSL certificate.
         # 
-        # > This parameter is required only when you create an HTTPS listener.
+        # > This parameter is required only for HTTPS listeners.
         self.id = id
 
     def validate(self):

@@ -19,39 +19,41 @@ class ListCustomRoutingEndpointGroupDestinationsRequest(DaraModel):
         region_id: str = None,
         to_port: int = None,
     ):
-        # The ID of the GA instance.
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA) instance for which you want to query endpoint group destination configurations.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The ID of the endpoint group.
+        # The ID of the endpoint group for which you want to query destination configurations.
         self.endpoint_group_id = endpoint_group_id
-        # The start port of the backend service port range of the endpoint group.
+        # The start port of the backend service of the endpoint group.
         # 
-        # Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
+        # Valid values: **1** to **65499**. The value of **FromPort** must be less than or equal to the value of **ToPort**.
         self.from_port = from_port
-        # The ID of the listener.
+        # The ID of the listener for which you want to query endpoint group destination configurations.
         self.listener_id = listener_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The backend service protocols of the endpoint group. Valid values:
+        # The protocol type of the backend service of the endpoint group. Valid values:
         # 
-        # - **TCP**: TCP.
-        # - **UDP**: UDP.
-        # - **TCP,UDP**: TCP and UDP.
+        # - **TCP**: TCP protocol.
         # 
-        # If this parameter is empty, all types of protocols are queried.
+        # - **UDP**: UDP protocol.
         # 
-        # You can specify up to 10 protocols.
+        # - **TCP,UDP**: TCP and UDP protocols.
+        # 
+        # If this parameter is left empty, all protocol types are queried.
+        # 
+        # You can specify up to 10 protocol entries.
         self.protocols = protocols
-        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The end port of the backend service port range of the endpoint group.
+        # The end port of the backend service of the endpoint group.
         # 
-        # Valid values: **1** to **65499**. The **FromPort** value must be smaller than or equal to the **ToPort** value.
+        # Valid values: **1** to **65499**. The value of **FromPort** must be less than or equal to the value of **ToPort**.
         self.to_port = to_port
 
     def validate(self):

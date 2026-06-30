@@ -17,20 +17,27 @@ class AttachDdosToAcceleratorRequest(DaraModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance with which the Anti-DDoS Pro/Premium instance is associated.
+        # The ID of the Global Accelerator (GA) instance with which you want to associate the Anti-DDoS Pro or Anti-DDoS Premium instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
+        # The list of Anti-DDoS Pro or Anti-DDoS Premium instances to associate with the Global Accelerator (GA) instance.
         self.ddos_config_list = ddos_config_list
-        # The ID of the Anti-DDoS Pro/Premium instance to be associated with the GA instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to associate with the Global Accelerator (GA) instance.
         self.ddos_id = ddos_id
-        # The region where the Anti-DDoS Pro/Premium instance is deployed. Valid values:
+        # The region of the Anti-DDoS Pro or Anti-DDoS Premium instance. Valid values:
         # 
-        # *   **cn-hangzhou**: regions in the Chinese mainland
-        # *   **ap-southeast-1**: regions outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.ddos_region_id = ddos_region_id
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # - **true**: performs a dry run without actually associating the instances. The system checks the required parameters, request syntax, and business limits. If the check fails, the corresponding error is returned. If the check passes, an HTTP 2xx status code is returned.
+        # 
+        # - **false** (default): sends the request. After the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -97,7 +104,13 @@ class AttachDdosToAcceleratorRequestDdosConfigList(DaraModel):
         ddos_id: str = None,
         ddos_region_id: str = None,
     ):
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to associate with the Global Accelerator (GA) instance.
         self.ddos_id = ddos_id
+        # The region of the Anti-DDoS Pro or Anti-DDoS Premium instance. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.ddos_region_id = ddos_region_id
 
     def validate(self):

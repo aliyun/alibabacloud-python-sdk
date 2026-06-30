@@ -25,6 +25,7 @@ class UpdateAcceleratorCrossBorderStatusRequest(DaraModel):
         # Specifies whether to enable the cross-border acceleration feature for the GA instance. Valid values:
         # 
         # - **true**
+        # 
         # - **false**
         # 
         # This parameter is required.

@@ -23,7 +23,7 @@ class ListForwardingRulesRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the forwarding rule.
         self.forwarding_rule_id = forwarding_rule_id
@@ -35,8 +35,9 @@ class ListForwardingRulesRequest(DaraModel):
         self.max_results = max_results
         # The token that is used for the next query. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # - If this is your first query or no subsequent query is to be sent, ignore this parameter.
+        # 
+        # - If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
         self.next_token = next_token
         # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
         # 

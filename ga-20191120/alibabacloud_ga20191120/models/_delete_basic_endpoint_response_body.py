@@ -10,9 +10,9 @@ class DeleteBasicEndpointResponseBody(DaraModel):
         endpoint_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the endpoint.
+        # The ID of the endpoint of the basic Alibaba Cloud Global Accelerator (GA) instance.
         self.endpoint_id = endpoint_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

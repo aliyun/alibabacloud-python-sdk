@@ -13,16 +13,17 @@ class ListListenersRequest(DaraModel):
         protocol: str = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The page number. Default value: **1**.
+        # The page number. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to **50**. Default value: **10**.
+        # The number of entries to return on each page. The maximum value is **50**. The default value is **10**.
         self.page_size = page_size
+        # The transport layer protocol used by the listener.
         self.protocol = protocol
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -15,13 +15,19 @@ class DetachDdosFromAcceleratorRequest(DaraModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
+        # A list of Anti-DDoS Pro or Anti-DDoS Premium instances that are associated with the Global Accelerator instance.
         self.ddos_config_list = ddos_config_list
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns an HTTP 2xx status code.
+        # 
+        # - **false** (default): sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the instance is detached.
         self.dry_run = dry_run
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
         self.region_id = region_id
 
     def validate(self):
@@ -76,7 +82,13 @@ class DetachDdosFromAcceleratorRequestDdosConfigList(DaraModel):
         ddos_id: str = None,
         ddos_region_id: str = None,
     ):
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance that is associated with the Global Accelerator instance.
         self.ddos_id = ddos_id
+        # The region where the Anti-DDoS Pro or Anti-DDoS Premium instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.ddos_region_id = ddos_region_id
 
     def validate(self):

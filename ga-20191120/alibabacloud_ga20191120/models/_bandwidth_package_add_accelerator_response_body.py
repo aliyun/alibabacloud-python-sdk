@@ -13,9 +13,9 @@ class BandwidthPackageAddAcceleratorResponseBody(DaraModel):
         bandwidth_package_id: str = None,
         request_id: str = None,
     ):
-        # The GA instance IDs.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance to which the bandwidth plan is attached.
         self.accelerators = accelerators
-        # The bandwidth plan ID.
+        # The ID of the bandwidth plan attached to the Alibaba Cloud Global Accelerator (GA) instance.
         self.bandwidth_package_id = bandwidth_package_id
         # The request ID.
         self.request_id = request_id

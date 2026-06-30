@@ -15,46 +15,47 @@ class UpdateAcceleratorAutoRenewAttributeRequest(DaraModel):
         region_id: str = None,
         renewal_status: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # Specifies whether to enable auto-renewal for the GA instance. Valid values:
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Auto-renewal is enabled.
         # 
-        # >  **AutoRenew** and **RenewalStatus** cannot be left empty at the same time.
+        # - **false** (default): Auto-renewal is disabled.
+        # 
+        # > You must specify at least one of **AutoRenew** and **RenewalStatus**.
         self.auto_renew = auto_renew
         # The auto-renewal duration. Unit: month.
         # 
         # Valid values: **1** to **12**.
         # 
-        # >  This parameter takes effect only if you set **AutoRenew** to **true**.
+        # > This parameter takes effect only when **AutoRenew** is set to **true**.
         self.auto_renew_duration = auto_renew_duration
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
         self.client_token = client_token
-        # The name of the GA instance.
+        # The name of the Global Accelerator instance.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters in length, start with a letter or a Chinese character, and can contain letters, digits, underscores (_), and hyphens (-).
         self.name = name
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
-        # Specifies how to renew the GA instance. Valid values:
+        # The auto-renewal status of the Global Accelerator instance. Valid values:
         # 
-        # *   **AutoRenewal**: The system automatically renews the GA instance.
-        # *   **Normal**: You must manually renew the GA instance.
-        # *   **NotRenewal**: The GA instance is not renewed after the instance expires. The system sends only a non-renewal reminder three days before the expiration date. The system no longer reminds you to renew the GA instance. To renew a GA instance whose RenewalStatus is set to NotRenewal, change the value of RenewalStatus from NotRenewal to **Normal**, and then manually renew the instance. You can also set RenewalStatus to **AutoRenewal**.
+        # - **AutoRenewal**: The instance is configured for auto-renewal.
         # 
-        # > 
+        # - **Normal**: The instance is configured for manual renewal.
         # 
-        # *   **AutoRenew** and **RenewalStatus** cannot be left empty at the same time.
+        # - NotRenewal: The instance is not renewed. The system does not send expiration reminders, but sends a non-renewal reminder three days before the expiration date. You can change the renewal status from **NotRenewal** to **Normal** to manually renew the instance, or change the renewal status to **AutoRenewal**.
         # 
-        # *   **RenewalStatus** takes precedence over **AutoRenew**. By default, if you do not specify **RenewalStatus**, **AutoRenew** is used.
+        # > * You must specify at least one of **AutoRenew** and **RenewalStatus**.
+        # >
+        # > * The **RenewalStatus** parameter takes precedence over the **AutoRenew** parameter. If you do not specify **RenewalStatus**, the value of **AutoRenew** is used.
         self.renewal_status = renewal_status
 
     def validate(self):

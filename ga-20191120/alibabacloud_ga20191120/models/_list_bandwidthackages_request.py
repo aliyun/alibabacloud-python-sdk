@@ -11,11 +11,11 @@ class ListBandwidthackagesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the list. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **100**. Default value: **10**.
+        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

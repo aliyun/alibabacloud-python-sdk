@@ -40,117 +40,147 @@ class DescribeAcceleratorResponseBody(DaraModel):
         tags: List[main_models.DescribeAcceleratorResponseBodyTags] = None,
         upgradable_status: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         self.accelerator_id = accelerator_id
+        # The bandwidth of the standard Global Accelerator instance. Unit: Mbps.
+        # 
+        # > This parameter is valid only when the access mode of the acceleration area is Anycast.
         self.bandwidth = bandwidth
-        # The bandwidth metering method. Valid values:
+        # The billing method of the bandwidth. Valid values:
         # 
-        # *   **BandwidthPackage:** billed based on bandwidth plans.
-        # *   **CDT**: billed based on data transfer.
+        # - **BandwidthPackage**: pay-by-bandwidth-plan.
+        # 
+        # - **CDT**: pay-by-data-transfer.
         self.bandwidth_billing_type = bandwidth_billing_type
-        # The details about the basic bandwidth plan that is associated with the GA instance.
+        # The details of the basic bandwidth plan that is associated with the Global Accelerator instance.
         self.basic_bandwidth_package = basic_bandwidth_package
-        # The ID of the Cloud Enterprise Network (CEN) instance with which the GA instance is associated.
+        # The ID of the Cloud Enterprise Network (CEN) instance that is associated with the Global Accelerator instance.
         self.cen_id = cen_id
-        # The timestamp that indicates when the GA instance is created.
+        # The timestamp that indicates when the Global Accelerator instance was created.
         self.create_time = create_time
-        # The type of cross-border acceleration. This parameter is returned for GA instances whose bandwidth metering method is pay-by-data-transfer (CDT).
+        # The type of cross-border acceleration. This parameter is returned for pay-by-data-transfer instances.
         # 
-        # Only **bpgPro** may be returned, which indicates BGP (Multi-ISP) Pro lines.
+        # **bpgPro**: premium bandwidth for cross-border acceleration.
         self.cross_border_mode = cross_border_mode
-        # Indicates whether cross-border acceleration is enabled.
-        # - **true**: yes
-        # - **false**: no
+        # Indicates whether the cross-border line feature is enabled for the Global Accelerator instance. Valid values:
+        # 
+        # - **true**: The cross-border line feature is enabled. You can use Global Accelerator to accelerate data transmission across borders.
+        # 
+        # - **false**: The cross-border line feature is disabled. You cannot use Global Accelerator to accelerate data transmission across borders.
         self.cross_border_status = cross_border_status
-        # The details about the cross-border acceleration bandwidth plan that is associated with the GA instance.
+        # The details of the cross-region bandwidth plan that is associated with the Global Accelerator instance.
         # 
-        # This array is returned only for GA instances that are created on the international site (alibabacloud.com).
+        # This parameter is returned only by the Alibaba Cloud International Website (www\\.alibabacloud.com).
         self.cross_domain_bandwidth_package = cross_domain_bandwidth_package
-        # Indicates whether cross-border acceleration is enabled.
+        # Indicates whether cross-border bandwidth is enabled.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.cross_private_state = cross_private_state
+        # The list of Anti-DDoS instances that are associated with the Global Accelerator instance.
         self.ddos_config_list = ddos_config_list
-        # The ID of the Anti-DDoS Pro/Premium instance that is associated with the GA instance.
+        # The ID of the Anti-DDoS instance that is associated with the Global Accelerator instance.
         self.ddos_id = ddos_id
-        # The description of the GA instance.
+        # The description of the Global Accelerator instance.
         self.description = description
-        # The canonical name (CNAME) that is assigned to the GA instance.
+        # The canonical name (CNAME) that is assigned to the Global Accelerator instance.
         self.dns_name = dns_name
-        # The timestamp that indicates when the GA instance expires.
+        # The timestamp that indicates when the Global Accelerator instance expires.
         self.expired_time = expired_time
-        # The billing method of the GA instance.
+        # The billing method of the Global Accelerator instance.
         self.instance_charge_type = instance_charge_type
-        # The configurations of the acceleration area.
+        # The configuration of the acceleration area.
         self.ip_set_config = ip_set_config
-        # The name of the GA instance.
+        # The name of the Global Accelerator instance.
         self.name = name
-        # The region ID of the GA instance.
+        # The region where the Global Accelerator instance is deployed.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The CNAME that is used to integrate the GA instance with the Anti-DDoS service.
+        # The CNAME of the Anti-DDoS instance that is associated with the Global Accelerator instance.
         self.second_dns_name = second_dns_name
-        # The ID of the service that manages the GA instance.
+        # The ID of the service that manages the instance.
         # 
-        # >  This parameter is returned only if the value of **ServiceManaged** is **true**.
+        # > This parameter is valid only when **ServiceManaged** is set to **True**.
         self.service_id = service_id
-        # Indicates whether the GA instance is managed. Valid values:
+        # Indicates whether the instance is a managed instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The instance is a managed instance.
+        # 
+        # - **false**: The instance is not a managed instance.
         self.service_managed = service_managed
-        # The actions that users can perform on the managed instance.
+        # The actions that you can perform on the managed instance.
         # 
-        # > 
-        # 
-        # *   This parameter is returned only if the value of **ServiceManaged** is **true**.
-        # 
-        # *   Users can perform only specific actions on a managed instance.
+        # > - This parameter is valid only when **ServiceManaged** is set to **True**.
+        # >
+        # > - When the instance is managed, you cannot perform some operations on the instance.
         self.service_managed_infos = service_managed_infos
-        # The specification of the GA instance. Valid values:
+        # The specification of the Global Accelerator instance. Valid values:
         # 
-        # *   **1**: Small Ⅰ
-        # *   **2**: Small Ⅱ
-        # *   **3**: Small Ⅲ
-        # *   **5**: Medium Ⅰ
-        # *   **8**: Medium Ⅱ
-        # *   **10**: Medium Ⅲ
-        # *   **20**: Large Ⅰ
-        # *   **30**: Large Ⅱ
-        # *   **40**: Large Ⅲ
-        # *   **50**: Large Ⅳ
-        # *   **60**: Large Ⅴ
-        # *   **70**: Large Ⅵ
-        # *   **80**: Large VⅡ
-        # *   **90**: Large VⅢ
-        # *   **100**: Super Large Ⅰ
-        # *   **200**: Super Large Ⅱ
+        # - **1**: Small I.
         # 
-        # >  The Large Ⅲ specification and higher specifications are available only to users that are added to the whitelist. To use these specifications, contact your Alibaba Cloud account manager.
+        # - **2**: Small II.
         # 
-        # Different specifications provide different capabilities. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/153127.html).
+        # - **3**: Small III.
+        # 
+        # - **5**: Medium I.
+        # 
+        # - **8**: Medium II.
+        # 
+        # - **10**: Medium III.
+        # 
+        # - **20**: Large I.
+        # 
+        # - **30**: Large II.
+        # 
+        # - **40**: Large III.
+        # 
+        # - **50**: Large IV.
+        # 
+        # - **60**: Large V.
+        # 
+        # - **70**: Large VI.
+        # 
+        # - **80**: Large VII.
+        # 
+        # - **90**: Large VIII.
+        # 
+        # - **100**: Super Large I.
+        # 
+        # - **200**: Super Large II.
+        # 
+        # > The Large III and higher specifications are available only to users on the whitelist. To use these specifications, contact your account manager.
+        # 
+        # The definitions of different specifications vary. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/153127.html).
         self.spec = spec
-        # The status of the GA instance. Valid values:
+        # The status of the Global Accelerator instance. Valid values:
         # 
-        # *   **init**: The GA instance is being initialized.
-        # *   **active**: The GA instance is available.
-        # *   **configuring**: The GA instance is being configured.
-        # *   **binding**: The GA instance is being associated.
-        # *   **unbinding**: The GA instance is being disassociated.
-        # *   **deleting**: The GA instance is being deleted.
-        # *   **finacialLocked**: The GA instance is locked due to overdue payments.
+        # - **init**: The instance is being initialized.
+        # 
+        # - **active**: The instance is available.
+        # 
+        # - **configuring**: The instance is being configured.
+        # 
+        # - **binding**: The instance is being associated.
+        # 
+        # - **unbinding**: The instance is being disassociated.
+        # 
+        # - **deleting**: The instance is being deleted.
+        # 
+        # - **finacialLocked**: The instance is financially locked.
         self.state = state
-        # The tags of the GA instance.
+        # The tags of the resource.
         self.tags = tags
-        # Indicates whether the GA instance can be upgraded. Valid values:
+        # The upgrade status of the Global Accelerator instance. Valid values:
         # 
-        # *   **notUpgradable:** The GA instance does not need to be upgraded.
-        # *   **upgradable:** The GA instance can be upgraded to the latest version.
-        # *   **upgradeFailed:** The GA instance failed to be upgraded.
+        # - **notUpgradable**: The instance does not need to be upgraded.
+        # 
+        # - **upgradable**: The instance can be upgraded.
+        # 
+        # - **upgradeFailed**: The instance failed to be upgraded.
         self.upgradable_status = upgradable_status
 
     def validate(self):
@@ -382,9 +412,9 @@ class DescribeAcceleratorResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N that is added to the GA instance.
+        # The tag key.
         self.key = key
-        # The value of tag N that is added to the GA instance.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -420,31 +450,43 @@ class DescribeAcceleratorResponseBodyServiceManagedInfos(DaraModel):
         child_type: str = None,
         is_managed: bool = None,
     ):
-        # The name of the action performed on the managed instance. Valid values:
+        # The name of the action on the managed instance. Valid values:
         # 
-        # *   **Create**
-        # *   **Update**
-        # *   **Delete**
-        # *   **Associate**
-        # *   **UserUnmanaged**
-        # *   **CreateChild**
+        # - **Create**: creates an instance.
+        # 
+        # - **Update**: updates the current instance.
+        # 
+        # - **Delete**: deletes the current instance.
+        # 
+        # - **Associate**: associates the instance with other resources.
+        # 
+        # - **UserUnmanaged**: unmanages the instance.
+        # 
+        # - **CreateChild**: creates a child resource in the instance.
         self.action = action
         # The type of the child resource. Valid values:
         # 
-        # *   **Listener**: a listener.
-        # *   **IpSet**: an acceleration region.
-        # *   **EndpointGroup**: an endpoint group.
-        # *   **ForwardingRule**: a forwarding rule.
-        # *   **Endpoint**: an endpoint.
-        # *   **EndpointGroupDestination**: a protocol mapping of an endpoint group associated with a custom routing listener.
-        # *   **EndpointPolicy**: a traffic policy of an endpoint associated with a custom routing listener.
+        # - **Listener**: listener.
         # 
-        # >  This parameter is returned only if the value of **Action** is **CreateChild**.
+        # - **IpSet**: acceleration region.
+        # 
+        # - **EndpointGroup**: endpoint group.
+        # 
+        # - **ForwardingRule**: forwarding rule.
+        # 
+        # - **Endpoint**: endpoint.
+        # 
+        # - **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
+        # 
+        # - **EndpointPolicy**: access policy of an endpoint associated with a custom routing listener.
+        # 
+        # > This parameter is valid only when **Action** is set to **CreateChild**.
         self.child_type = child_type
-        # Indicates whether the specified actions are managed. Valid values:
+        # Indicates whether the specified action is managed. Valid values:
         # 
-        # *   **true**: The specified actions are managed, and you cannot perform the specified actions on the managed instance.
-        # *   **false**: The specified actions are not managed, and you can perform the specified actions on the managed instance.
+        # - **true**: The action is managed. You cannot perform the specified action on the managed instance.
+        # 
+        # - **false**: The action is not managed. You can perform the specified action on the managed instance.
         self.is_managed = is_managed
 
     def validate(self):
@@ -486,8 +528,9 @@ class DescribeAcceleratorResponseBodyIpSetConfig(DaraModel):
     ):
         # The access mode of the acceleration area. Valid values:
         # 
-        # *   **UserDefine**: custom nearby access mode. You can select acceleration areas and regions based on your business requirements. GA allocates a separate elastic IP address (EIP) to each acceleration region.
-        # *   **Anycast**: automatic nearby access mode. You do not need to specify an acceleration area. GA allocates an Anycast EIP to multiple regions across the globe. Users can connect to the nearest access point of the Alibaba Cloud global transmission network by sending requests to the Anycast EIP.
+        # - **UserDefine**: custom. You can select acceleration areas and regions based on your business needs. Global Accelerator provides a separate elastic IP address (EIP) for each acceleration region.
+        # 
+        # - **Anycast**: automatic. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users can connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
         self.access_mode = access_mode
 
     def validate(self):
@@ -516,7 +559,13 @@ class DescribeAcceleratorResponseBodyDdosConfigList(DaraModel):
         ddos_id: str = None,
         ddos_region_id: str = None,
     ):
+        # The ID of the Anti-DDoS instance that is associated with the Global Accelerator instance.
         self.ddos_id = ddos_id
+        # The region where the Anti-DDoS instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.ddos_region_id = ddos_region_id
 
     def validate(self):
@@ -551,9 +600,9 @@ class DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage(DaraModel):
         bandwidth: int = None,
         instance_id: str = None,
     ):
-        # The bandwidth that is provided by the cross-border acceleration bandwidth plan. Unit: Mbit/s.
+        # The bandwidth of the cross-region bandwidth plan. Unit: Mbps.
         self.bandwidth = bandwidth
-        # The ID of the cross-border acceleration bandwidth plan.
+        # The ID of the cross-region bandwidth plan.
         self.instance_id = instance_id
 
     def validate(self):
@@ -589,13 +638,15 @@ class DescribeAcceleratorResponseBodyBasicBandwidthPackage(DaraModel):
         bandwidth_type: str = None,
         instance_id: str = None,
     ):
-        # The bandwidth value of the basic bandwidth plan. Unit: Mbit/s.
+        # The bandwidth of the basic bandwidth plan. Unit: Mbps.
         self.bandwidth = bandwidth
-        # The type of the bandwidth that is provided by the basic bandwidth plan. Valid values:
+        # The type of the bandwidth of the basic bandwidth plan. Valid values:
         # 
-        # *   **Basic**: basic
-        # *   **Enhanced**: enhanced
-        # *   **Advanced**: premium
+        # - **Basic**: standard acceleration bandwidth.
+        # 
+        # - **Enhanced**: enhanced acceleration bandwidth.
+        # 
+        # - **Advanced**: premium acceleration bandwidth.
         self.bandwidth_type = bandwidth_type
         # The ID of the basic bandwidth plan.
         self.instance_id = instance_id

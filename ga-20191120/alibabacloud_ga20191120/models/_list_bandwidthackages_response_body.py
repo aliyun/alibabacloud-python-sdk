@@ -18,11 +18,11 @@ class ListBandwidthackagesResponseBody(DaraModel):
     ):
         # The details of the bandwidth plans.
         self.bandwidth_packages = bandwidth_packages
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -95,41 +95,49 @@ class ListBandwidthackagesResponseBodyBandwidthPackages(DaraModel):
         state: str = None,
         tags: List[main_models.ListBandwidthackagesResponseBodyBandwidthPackagesTags] = None,
     ):
-        # The IDs of the GA instances that are associated with the bandwidth plans.
+        # The IDs of the Global Accelerator instances that are associated with the bandwidth plan.
         self.accelerators = accelerators
-        # The bandwidth of the bandwidth plan. Unit: Mbit/s.
+        # The bandwidth of the bandwidth plan. Unit: Mbps.
         self.bandwidth = bandwidth
         # The ID of the bandwidth plan.
         self.bandwidth_package_id = bandwidth_package_id
-        # The billing method of the bandwidth plan. Valid values:
+        # The billing method.
         # 
-        # *   **PREPAY**: subscription. This is the default value.
-        # *   **POSTPAY**: pay-as-you-go.
+        # - **PREPAY** (default): subscription.
+        # 
+        # - **POSTPAY**: pay-as-you-go.
         self.charge_type = charge_type
-        # The time when the bandwidth plan was created.
+        # The timestamp that indicates when the bandwidth plan was created.
         self.create_time = create_time
         # The description of the bandwidth plan.
         self.description = description
-        # The expiration time of the bandwidth plan.
+        # The timestamp that indicates when the bandwidth plan expires.
         self.expired_time = expired_time
-        # The name of the GA instance.
+        # The name of the bandwidth plan.
         self.name = name
-        # The request ID.
+        # The ID of the region.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The status of the bandwidth plan. Valid values:
+        # The status of the bandwidth plan.
         # 
-        # *   **init:** The bandwidth plan is being initialized.
-        # *   **active:** The bandwidth plan is available.
-        # *   **binded:** The bandwidth plan is associated with a GA instance.
-        # *   **binding:** The bandwidth plan is being associated with a GA instance.
-        # *   **unbinding:** The bandwidth plan is being disassociated from a GA instance.
-        # *   **updating:** The bandwidth plan is being updated.
-        # *   **finacialLocked:** The bandwidth plan is locked due to overdue payments.
-        # *   **locked:** The bandwidth plan is locked.
+        # - **init**: The bandwidth plan is being initialized.
+        # 
+        # - **active**: The bandwidth plan is available.
+        # 
+        # - **binded**: The bandwidth plan is bound.
+        # 
+        # - **binding**: The bandwidth plan is being bound.
+        # 
+        # - **unbinding**: The bandwidth plan is being unbound.
+        # 
+        # - **updating**: The bandwidth plan is being updated.
+        # 
+        # - **finacialLocked**: The bandwidth plan is financially locked.
+        # 
+        # - **locked**: The bandwidth plan is locked.
         self.state = state
-        # The tag of the bandwidth plan.
+        # The tags of the resource.
         self.tags = tags
 
     def validate(self):
@@ -232,9 +240,9 @@ class ListBandwidthackagesResponseBodyBandwidthPackagesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the bandwidth plan.
+        # The tag key.
         self.key = key
-        # The tag value of the bandwidth plan.
+        # The tag value.
         self.value = value
 
     def validate(self):

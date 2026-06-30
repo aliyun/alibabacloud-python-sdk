@@ -20,7 +20,7 @@ class AttachLogStoreToEndpointGroupRequest(DaraModel):
         sls_project_name: str = None,
         sls_region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
@@ -28,31 +28,31 @@ class AttachLogStoreToEndpointGroupRequest(DaraModel):
         self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The IDs of the endpoint groups.
+        # The list of endpoint group IDs.
         # 
         # This parameter is required.
         self.endpoint_group_ids = endpoint_group_ids
-        # The ID of the listener.
+        # The instance ID of the listener.
         # 
         # This parameter is required.
         self.listener_id = listener_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the Logstore.
+        # The name of the SLS Logstore.
         # 
         # This parameter is required.
         self.sls_log_store_name = sls_log_store_name
-        # The name of the Log Service project.
+        # The name of the SLS project.
         # 
         # This parameter is required.
         self.sls_project_name = sls_project_name
-        # The region ID of the Log Service project.
+        # The region ID of the SLS service.
         # 
         # This parameter is required.
         self.sls_region_id = sls_region_id

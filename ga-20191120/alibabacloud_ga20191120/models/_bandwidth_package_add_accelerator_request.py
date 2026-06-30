@@ -11,15 +11,15 @@ class BandwidthPackageAddAcceleratorRequest(DaraModel):
         bandwidth_package_id: str = None,
         region_id: str = None,
     ):
-        # The GA instance ID.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance to which the bandwidth plan is attached.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The bandwidth plan ID.
+        # The ID of the bandwidth plan to attach to the Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

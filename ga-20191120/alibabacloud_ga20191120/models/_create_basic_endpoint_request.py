@@ -18,57 +18,54 @@ class CreateBasicEndpointRequest(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The ID of the basic GA instance.
+        # The instance ID of the basic Alibaba Cloud Global Accelerator (GA).
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The address of the endpoint.
         # 
         # This parameter is required.
         self.endpoint_address = endpoint_address
-        # The ID of the endpoint group.
+        # The endpoint group ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.endpoint_group_id = endpoint_group_id
         # The secondary address of the endpoint.
         # 
-        # This parameter is required if the endpoint type is **ECS**, **ENI**, or **NLB**.
-        # 
-        # *   If the endpoint type is **ECS**, you can set **EndpointSubAddress** to the secondary private IP address of the primary ENI. If the parameter is left empty, the primary private IP address of the primary ENI is used.
-        # *   If the endpoint type is **ENI**, you can set **EndpointSubAddress** to the secondary private IP address of the secondary ENI. If the parameter is left empty, the primary private IP address of the secondary ENI is used.
-        # *   This parameter is required if the endpoint type is **NLB**. **EndpointSubAddress** is the primary private IP address of the NLB backend server.
+        # This parameter is required when the endpoint type is **ECS**, **ENI**, or **NLB**.
+        # - If the endpoint type is **ECS**, EndpointSubAddress can be set to a secondary private IP of the primary network interface controller (NIC). If you leave this parameter empty, the primary private IP of the primary network interface controller (NIC) is used.
+        # - If the endpoint type is **ENI**, EndpointSubAddress can be set to a secondary private IP of the secondary network interface controller (NIC). If you leave this parameter empty, the primary private IP of the secondary network interface controller (NIC) is used.
+        # - If the endpoint type is **NLB**, this parameter is required. Set EndpointSubAddress to the primary private IP of the NLB backend server.
         self.endpoint_sub_address = endpoint_sub_address
         # The type of the secondary address of the endpoint. Valid values:
+        # - **primary**: The secondary address type is the primary private IP address.
+        # - **secondary**: The secondary address type is a secondary private IP address.
         # 
-        # *   **primary**: a primary private IP address.
-        # *   **secondary**: a secondary private IP address.
-        # 
-        # This parameter is required if the endpoint type is **ECS**, **ENI**, or **NLB**. If the endpoint type is **NLB**, only **primary** is supported.
+        # This parameter is required when the endpoint type is **ECS**, **ENI**, or **NLB**. If the endpoint type is **NLB**, only **primary** is supported.
         self.endpoint_sub_address_type = endpoint_sub_address_type
-        # The type of endpoint. Valid values:
-        # 
-        # *   **ENI**: elastic network interface (ENI)
-        # *   **SLB**: Classic Load Balancer (CLB)
-        # *   **ECS**: Elastic Compute Service (ECS)
-        # *   **NLB**: Network Load Balancer (NLB)
+        # The endpoint type. Valid values:
+        # - **ENI**: Alibaba Cloud elastic network interface (ENI).
+        # - **SLB**: Alibaba Cloud Classic Load Balancer (CLB) instance.
+        # - **ECS**: Alibaba Cloud ECS instance.
+        # - **NLB**: Alibaba Cloud Network Load Balancer (NLB) instance.
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
         # The zone ID of the endpoint.
         # 
-        # This parameter is required only if the endpoint type is **NLB**.
+        # Currently, this parameter is required only when the endpoint type is **NLB**.
         self.endpoint_zone_id = endpoint_zone_id
-        # The name of the endpoint that is associated with the basic GA instance.
+        # The name of the endpoint for the basic Alibaba Cloud Global Accelerator (GA) instance.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **ap-southeast-1**.
         # 
         # This parameter is required.
         self.region_id = region_id

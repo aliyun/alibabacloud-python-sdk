@@ -19,9 +19,11 @@ class GetHealthStatusResponseBody(DaraModel):
         self.endpoint_groups = endpoint_groups
         # The health status of endpoints and endpoint groups. Valid values:
         # 
-        # *   **normal**
-        # *   **abnormal**
-        # *   **partiallyAbnormal**
+        # - **normal**
+        # 
+        # - **abnormal**
+        # 
+        # - **partiallyAbnormal**
         self.health_status = health_status
         # The ID of the listener.
         self.listener_id = listener_id
@@ -87,8 +89,9 @@ class GetHealthStatusResponseBodyEndpointGroups(DaraModel):
         self.endpoint_group_id = endpoint_group_id
         # The type of the endpoint group. Valid values:
         # 
-        # *   **default:** the default endpoint group.
-        # *   **virtual:** a virtual endpoint group.
+        # - **default:** the default endpoint group.
+        # 
+        # - **virtual:** a virtual endpoint group.
         self.endpoint_group_type = endpoint_group_type
         # The information about the endpoints.
         self.endpoints = endpoints
@@ -96,10 +99,13 @@ class GetHealthStatusResponseBodyEndpointGroups(DaraModel):
         self.forwarding_rule_ids = forwarding_rule_ids
         # The health status of the endpoint group. Valid values:
         # 
-        # *   **init:** The endpoint group is being initialized.
-        # *   **normal:** The endpoint group is normal.
-        # *   **abnormal:** The endpoint group is abnormal.
-        # *   **partiallyAbnormal:** The endpoint group is partially abnormal.
+        # - **init:** The endpoint group is being initialized.
+        # 
+        # - **normal:** The endpoint group is normal.
+        # 
+        # - **abnormal:** The endpoint group is abnormal.
+        # 
+        # - **partiallyAbnormal:** The endpoint group is partially abnormal.
         self.health_status = health_status
 
     def validate(self):
@@ -170,27 +176,37 @@ class GetHealthStatusResponseBodyEndpointGroupsEndpoints(DaraModel):
         self.endpoint_id = endpoint_id
         # The health check details of the endpoint.
         # 
-        # >  This parameter is unavailable.
+        # > This parameter is unavailable.
         self.health_detail = health_detail
         # The health status of the endpoint. Valid values:
         # 
-        # *   **init:** The endpoint is being initialized.
-        # *   **normal:** The endpoint is normal.
-        # *   **abnormal:** The endpoint is abnormal.
+        # - **init:** The endpoint is being initialized.
+        # 
+        # - **normal:** The endpoint is normal.
+        # 
+        # - **abnormal:** The endpoint is abnormal.
         self.health_status = health_status
         # The port that is used to connect to the endpoint.
         self.port = port
         # The type of the endpoint. Valid values:
         # 
-        # *   **Domain:** a custom domain name.
-        # *   **Ip:** a custom IP address.
-        # *   **PublicIp:** a public IP address provided by Alibaba Cloud.
-        # *   **ECS:** an Elastic Compute Service (ECS) instance.
-        # *   **SLB:** a Classic Load Balancer (CLB) instance.
-        # *   **ALB:** an Application Load Balancer (ALB) instance.
-        # *   **OSS:** an Object Storage Service (OSS) bucket.
-        # *   **ENI:** an elastic network interface (ENI).
-        # *   **NLB:** a Network Load Balancer (NLB) instance.
+        # - **Domain:** a custom domain name.
+        # 
+        # - **Ip:** a custom IP address.
+        # 
+        # - **PublicIp:** a public IP address provided by Alibaba Cloud.
+        # 
+        # - **ECS:** an Elastic Compute Service (ECS) instance.
+        # 
+        # - **SLB:** a Classic Load Balancer (CLB) instance.
+        # 
+        # - **ALB:** an Application Load Balancer (ALB) instance.
+        # 
+        # - **OSS:** an Object Storage Service (OSS) bucket.
+        # 
+        # - **ENI:** an elastic network interface (ENI).
+        # 
+        # - **NLB:** a Network Load Balancer (NLB) instance.
         self.type = type
 
     def validate(self):

@@ -11,9 +11,11 @@ class AssociateResourcesResponseBody(DaraModel):
         associated_resource_id: str = None,
         request_id: str = None,
     ):
+        # Alibaba Cloud Global Accelerator (GA) instance ID.
         self.accelerator_id = accelerator_id
+        # Linked instance ID.
         self.associated_resource_id = associated_resource_id
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):

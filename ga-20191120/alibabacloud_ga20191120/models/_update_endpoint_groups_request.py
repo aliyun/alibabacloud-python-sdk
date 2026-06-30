@@ -18,20 +18,21 @@ class UpdateEndpointGroupsRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a value for this parameter on your client. Make sure that the value is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true:** performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, a 2xx HTTP status code is returned.
+        # 
+        # - **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The configurations of the endpoint groups.
+        # The configurations of the endpoint group.
         # 
         # This parameter is required.
         self.endpoint_group_configurations = endpoint_group_configurations
-        # The listener ID.
+        # The ID of the listener.
         # 
         # This parameter is required.
         self.listener_id = listener_id
@@ -114,73 +115,81 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurations(DaraModel):
         threshold_count: int = None,
         traffic_percentage: int = None,
     ):
-        # Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
+        # Specifies whether to use the Proxy Protocol to preserve client IP addresses. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes.
+        # 
+        # - **false**: no.
         self.enable_client_ippreservation_proxy_protocol = enable_client_ippreservation_proxy_protocol
         # Specifies whether to use the TCP Option Address (TOA) module to preserve client IP addresses. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes.
+        # 
+        # - **false**: no.
         self.enable_client_ippreservation_toa = enable_client_ippreservation_toa
-        # The configurations of the endpoints in the endpoint group.
+        # The configurations of the endpoint.
         self.endpoint_configurations = endpoint_configurations
         # The description of the endpoint group.
         # 
-        # The description cannot exceed 200 characters in length and cannot start with http:// or https://.
+        # The description can be up to 200 characters in length and cannot start with http\\:// or https\\://.
         self.endpoint_group_description = endpoint_group_description
-        # The endpoint ID.
+        # The ID of the endpoint group.
         # 
         # This parameter is required.
         self.endpoint_group_id = endpoint_group_id
         # The name of the endpoint group.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters in length, start with a letter or a Chinese character, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.endpoint_group_name = endpoint_group_name
         self.endpoint_ip_version = endpoint_ip_version
-        # The backend service protocol of the endpoint that is associated with the intelligent routing listener. Valid values:
+        # The version of the backend service protocol for endpoints in a listener that uses smart routing. Valid values:
         # 
-        # *   **HTTP1.1** (default)
-        # *   **HTTP2**
+        # - **HTTP1.1** (default): HTTP/1.1
         # 
-        # >  You can specify this parameter only if EndpointRequestProtocol is set to HTTPS.
+        # - **HTTP2**: HTTP/2
+        # 
+        # > This parameter is available only when you set EndpointRequestProtocol to HTTPS.
         self.endpoint_protocol_version = endpoint_protocol_version
-        # The backend service protocol. Valid values:
+        # The protocol of the backend service. Valid values:
         # 
-        # *   **HTTP**
-        # *   **HTTPS**
+        # - **HTTP**: HTTP
         # 
-        # > *   You can specify this parameter only if the listener that is associated with the endpoint group uses HTTP or HTTPS.
-        # > *   The backend service protocol of an HTTP listener must be HTTP.
+        # - **HTTPS**: HTTPS
+        # 
+        # > * You can set this parameter only when you create an endpoint group for an HTTP or HTTPS listener.
+        # >
+        # > * For an HTTP listener, the backend service protocol must be HTTP.
         self.endpoint_request_protocol = endpoint_request_protocol
-        # Specifies whether to enable the health check feature. Valid values:
+        # Specifies whether to enable the health check feature.
         # 
-        # *   **true**: enables the health check feature.
-        # *   **false** (default): disables the health check feature.
+        # - **true**: enables the health check feature.
+        # 
+        # - **false** (default): disables the health check feature.
         self.health_check_enabled = health_check_enabled
         self.health_check_host = health_check_host
-        # The interval at which health checks are performed. Unit: seconds. Valid values: **1** to **50**.
+        # The interval between two consecutive health checks. Unit: seconds. Valid values: **1** to **50**.
         self.health_check_interval_seconds = health_check_interval_seconds
-        # The health check path.
+        # The path of the health check.
         self.health_check_path = health_check_path
-        # The port that you want to use for health checks.
+        # The port that is used for health checks.
         # 
         # Valid values: **1** to **65535**.
         self.health_check_port = health_check_port
-        # The protocol over which health check requests are sent. Valid values:
+        # The protocol that is used for health checks.
         # 
-        # *   **tcp** or **TCP**
-        # *   **http** or **HTTP**
-        # *   **https** or **HTTPS**
+        # - **tcp** or **TCP**: TCP
+        # 
+        # - **http** or **HTTP**: HTTP
+        # 
+        # - **https** or **HTTPS**: HTTPS
         self.health_check_protocol = health_check_protocol
-        # The port mappings.
+        # The port mapping.
         self.port_overrides = port_overrides
-        # The number of failed consecutive health checks that must occur before a healthy endpoint group is considered unhealthy or the number of successful consecutive health checks that must occur before an unhealthy endpoint group is considered healthy.
+        # The number of consecutive health checks that an endpoint must pass to be considered healthy, or fail to be considered unhealthy.
         # 
         # Valid values: **2** to **10**.
         self.threshold_count = threshold_count
-        # The traffic ratio of the endpoint group when the specified listener is associated with multiple endpoint groups.
+        # The traffic distribution ratio. If a listener is associated with multiple endpoint groups, you can specify this parameter to distribute traffic to the endpoint groups.
         # 
         # Valid values: **1** to **100**.
         self.traffic_percentage = traffic_percentage
@@ -338,9 +347,11 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides(DaraMo
         # 
         # Valid values: **1** to **65499**.
         # 
-        # > *   You cannot configure port mappings for virtual endpoint groups of TCP listeners. If a virtual endpoint group already exists on the listener, you cannot configure port mappings for the default endpoint group. If port mappings are configured for the default endpoint group, you cannot add a virtual endpoint group.
-        # >*   If you configure port mappings for a listener, you cannot modify the listener protocol. You can only switch between HTTP and HTTPS.
-        # >*   Listener port: When you modify the listener port range, make sure that the port range includes the ports configured in port mappings. For example, if you set the listener port range to 80 to 82 and map the listener ports to endpoint ports 100 to 102, you cannot change the listener port range to 80 to 81.
+        # > - For TCP listeners, virtual endpoint groups do not support port mapping. If a virtual endpoint group already exists under the listener, you cannot configure port mapping for the default endpoint group. If port mapping is already configured for the default endpoint group, you cannot add a virtual endpoint group.
+        # >
+        # > - After you configure port mapping, the following limits apply to subsequent listener modifications: You cannot change the listener protocol, except for changing it between HTTP and HTTPS.
+        # >
+        # > - Listener port: The modified listener port range must include all listener ports that are currently mapped. For example, if the listener port range is 80-82 and the ports are mapped to endpoint ports 100-102, you cannot change the listener port range to 80-81.
         self.listener_port = listener_port
 
     def validate(self):
@@ -372,76 +383,98 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurationsPortOverrides(DaraMo
 class UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfigurations(DaraModel):
     def __init__(
         self,
+        api_keys: List[str] = None,
         enable_client_ippreservation: bool = None,
         enable_proxy_protocol: bool = None,
         endpoint: str = None,
+        provider: str = None,
         sub_address: str = None,
         type: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
         weight: int = None,
     ):
-        # Specifies whether to automatically preserve client IP addresses. Valid values:
+        self.api_keys = api_keys
+        # Specifies whether to preserve client IP addresses. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: preserves client IP addresses.
         # 
-        # > *   By default, client IP address preservation is disabled for an endpoint group of a UDP or TCP listener. You can configure this parameter based on your business requirements.
-        # >*   By default, client IP address preservation is enabled for an endpoint group of an HTTP or HTTP listener. You can obtain client IP addresses by using the X-Forwarded-For header. You cannot disable the feature.
-        # >*   EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
-        # >>  For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+        # - **false** (default): does not preserve client IP addresses.
+        # 
+        # > * By default, client IP address preservation is disabled for endpoint groups of TCP and UDP listeners. You can enable it based on your business needs.
+        # >
+        # > * Client IP address preservation is enabled by default for endpoint groups of HTTP and HTTPS listeners. The client IP addresses are retrieved from the X-Forwarded-For header field. You cannot disable this feature.
+        # >
+        # > * EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
+        # >
+        # > * For more information, see [](t1863665.xdita#).
         self.enable_client_ippreservation = enable_client_ippreservation
-        # Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
+        # Specifies whether to use the Proxy Protocol to preserve client IP addresses. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: uses the Proxy Protocol.
         # 
-        # > *   This parameter is available only to endpoint groups of TCP listeners.
-        # >*   EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
-        # >>For more information, see [Preserve client IP addresses](https://help.aliyun.com/document_detail/158080.html).
+        # - **false** (default): does not use the Proxy Protocol.
+        # 
+        # > * This parameter is available only for endpoint groups of TCP listeners.
+        # >
+        # > * EnableClientIPPreservation and EnableProxyProtocol cannot be set to true at the same time.
+        # >
+        # > * For more information, see [](t1863665.xdita#).
         self.enable_proxy_protocol = enable_proxy_protocol
-        # The IP address, domain name, or instance ID based on the value of Type.
+        # The IP address, domain name, or instance ID of the endpoint, based on the value of Type.
         # 
         # This parameter is required.
         self.endpoint = endpoint
+        self.provider = provider
         # The private IP address of the ENI.
         # 
-        # >  If you set the endpoint type to ENI, you can specify this parameter. 
-        # >If you leave this parameter empty, the primary private IP address of the ENI is used.
+        # > - This parameter is available only when the endpoint type is ENI. You can specify this parameter. If you do not specify this parameter, the primary private IP address of the ENI is used.
         self.sub_address = sub_address
-        # The type of the endpoint. Valid values:
+        # The type of the endpoint.
         # 
-        # *   **Domain**: a custom domain name.
-        # *   **Ip**: a custom IP address.
-        # *   **IpTarget**: a custom private IP address.
-        # *   **PublicIp**: a public IP address provided by Alibaba Cloud.
-        # *   **ECS**: an Elastic Compute Service (ECS) instance.
-        # *   **SLB**: a Server Load Balancer (SLB) instance.
-        # *   **ALB**: an Application Load Balancer (ALB) instance.
-        # *   **OSS**: an Object Storage Service (OSS) bucket.
-        # *   **ENI**: an elastic network interface (ENI).
-        # *   **NLB**: a Network Load Balancer (NLB) instance.
+        # - **Domain**: a custom domain name.
         # 
-        # > *   If you set this parameter to **ECS**, **ENI**, **SLB**, **ALB**, **NLB**, or **IpTarget** and the AliyunServiceRoleForGaVpcEndpoint service-linked role does not exist, the system automatically creates the role.
-        # > *   If you set this parameter to **ALB** and the AliyunServiceRoleForGaAlb service-linked role does not exist, the system automatically creates the role.
-        # > *   If you set this parameter to **OSS** and the AliyunServiceRoleForGaOss service-linked role does not exist, the system automatically creates the role.
-        # > > For more information, see [Service-linked roles](https://help.aliyun.com/document_detail/178360.html).
+        # - **Ip**: a custom IP address.
+        # 
+        # - **IpTarget**: a custom private IP address.
+        # 
+        # - **PublicIp**: an Alibaba Cloud public IP address.
+        # 
+        # - **ECS**: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+        # 
+        # - **SLB**: an Alibaba Cloud Server Load Balancer (SLB) instance.
+        # 
+        # - **ALB**: an Alibaba Cloud Application Load Balancer (ALB) instance.
+        # 
+        # - **OSS**: an Alibaba Cloud Object Storage Service (OSS) bucket.
+        # 
+        # - **ENI**: an Alibaba Cloud Elastic Network Interface (ENI).
+        # 
+        # - **NLB**: an Alibaba Cloud Network Load Balancer (NLB) instance.
+        # 
+        # > * If you set the endpoint type to **ECS**, **ENI**, **SLB**, **NLB**, or **IpTarget**, and the service-linked role does not exist, the system automatically creates a service-linked role named AliyunServiceRoleForGaVpcEndpoint.
+        # >
+        # > * If you set the endpoint type to **ALB**, and the service-linked role does not exist, the system automatically creates a service-linked role named AliyunServiceRoleForGaAlb.
+        # >
+        # > * If you set the endpoint type to **OSS**, and the service-linked role does not exist, the system automatically creates a service-linked role named AliyunServiceRoleForGaOss.
+        # >
+        # > > For more information, see [](t1963894.xdita#).
         # 
         # This parameter is required.
         self.type = type
-        # The IDs of vSwitches that are deployed in the VPC.
+        # The list of vSwitches in the VPC.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID.
+        # The ID of the virtual private cloud (VPC).
         # 
-        # You can specify one VPC ID for an endpoint group of an intelligent routing listener.
+        # You can specify at most one VPC ID for an endpoint group that is associated with a listener that uses smart routing.
         # 
-        # >  This parameter is valid and required only if Type is set to **IpTarget**.
+        # > This parameter is required and takes effect only when the endpoint type is **IpTarget**.
         self.vpc_id = vpc_id
         # The weight of the endpoint.
         # 
         # Valid values: **0** to **255**.
         # 
-        # >  If you set the weight of an endpoint to 0, GA stops distributing traffic to the endpoint. Proceed with caution.
+        # > If you set the weight of an endpoint to 0, GA stops distributing traffic to the endpoint. Handle this with care.
         # 
         # This parameter is required.
         self.weight = weight
@@ -454,6 +487,9 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguratio
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_keys is not None:
+            result['ApiKeys'] = self.api_keys
+
         if self.enable_client_ippreservation is not None:
             result['EnableClientIPPreservation'] = self.enable_client_ippreservation
 
@@ -462,6 +498,9 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguratio
 
         if self.endpoint is not None:
             result['Endpoint'] = self.endpoint
+
+        if self.provider is not None:
+            result['Provider'] = self.provider
 
         if self.sub_address is not None:
             result['SubAddress'] = self.sub_address
@@ -482,6 +521,9 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguratio
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKeys') is not None:
+            self.api_keys = m.get('ApiKeys')
+
         if m.get('EnableClientIPPreservation') is not None:
             self.enable_client_ippreservation = m.get('EnableClientIPPreservation')
 
@@ -490,6 +532,9 @@ class UpdateEndpointGroupsRequestEndpointGroupConfigurationsEndpointConfiguratio
 
         if m.get('Endpoint') is not None:
             self.endpoint = m.get('Endpoint')
+
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
 
         if m.get('SubAddress') is not None:
             self.sub_address = m.get('SubAddress')

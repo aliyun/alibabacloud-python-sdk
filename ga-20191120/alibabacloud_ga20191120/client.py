@@ -22,6 +22,9 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'ga.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ga', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -10018,6 +10021,8 @@ class Client(OpenApiClient):
             query['AccessLogSwitch'] = request.access_log_switch
         if not DaraCore.is_null(request.endpoint_group_id):
             query['EndpointGroupId'] = request.endpoint_group_id
+        if not DaraCore.is_null(request.endpoint_group_region):
+            query['EndpointGroupRegion'] = request.endpoint_group_region
         if not DaraCore.is_null(request.endpoint_group_type):
             query['EndpointGroupType'] = request.endpoint_group_type
         if not DaraCore.is_null(request.listener_id):
@@ -10062,6 +10067,8 @@ class Client(OpenApiClient):
             query['AccessLogSwitch'] = request.access_log_switch
         if not DaraCore.is_null(request.endpoint_group_id):
             query['EndpointGroupId'] = request.endpoint_group_id
+        if not DaraCore.is_null(request.endpoint_group_region):
+            query['EndpointGroupRegion'] = request.endpoint_group_region
         if not DaraCore.is_null(request.endpoint_group_type):
             query['EndpointGroupType'] = request.endpoint_group_type
         if not DaraCore.is_null(request.listener_id):

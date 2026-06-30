@@ -12,7 +12,7 @@ class GetInvalidDomainCountResponseBody(DaraModel):
     ):
         # The number of invalid domain names.
         self.invalid_domain_count = invalid_domain_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

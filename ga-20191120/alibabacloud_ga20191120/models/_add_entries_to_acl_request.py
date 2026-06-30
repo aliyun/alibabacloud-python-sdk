@@ -16,28 +16,27 @@ class AddEntriesToAclRequest(DaraModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
-        # The entries (IP addresses or CIDR blocks) that you want to add to the ACL.
+        # The access control policy group entries to add. An entry can be an IP address or a CIDR block.
         # 
-        # You can add at most 50 entries at a time.
+        # You can add up to 50 entries at a time.
         # 
         # This parameter is required.
         self.acl_entries = acl_entries
-        # The ACL ID.
+        # The ID of the access control policy group.
         # 
         # This parameter is required.
         self.acl_id = acl_id
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of a request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and business limitations without actually adding IP entries to the access control policy group. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -102,15 +101,15 @@ class AddEntriesToAclRequestAclEntries(DaraModel):
         entry: str = None,
         entry_description: str = None,
     ):
-        # The entry (IP address or CIDR block) that you want to add. You can add at most 50 entries at a time.
+        # The access control policy group entry to add. An entry can be an IP address or a CIDR block. You can add up to 50 entries at a time.
         # 
-        # >  This parameter is required.
+        # > This parameter is required.
         self.entry = entry
-        # The description of the entry that you want to add to the ACL.
+        # The description of the access control policy group entry.
         # 
-        # You can add at most 50 descriptions in each request.
+        # You can add descriptions for up to 50 entries at a time.
         # 
-        # The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        # The description must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_). Chinese characters are supported.
         self.entry_description = entry_description
 
     def validate(self):

@@ -10,7 +10,7 @@ class CreateBasicIpSetResponseBody(DaraModel):
         ip_set_id: str = None,
         request_id: str = None,
     ):
-        # The region ID of the GA instance.
+        # The acceleration region instance ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
         self.ip_set_id = ip_set_id
         # The request ID.
         self.request_id = request_id

@@ -14,17 +14,17 @@ class ListCustomRoutingPortMappingsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the GA instance whose port mapping table you want to query.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The ID of the endpoint group.
+        # The ID of the endpoint group whose port mapping table you want to query.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the listener.
+        # The ID of the listener whose port mapping table you want to query.
         self.listener_id = listener_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
         # 

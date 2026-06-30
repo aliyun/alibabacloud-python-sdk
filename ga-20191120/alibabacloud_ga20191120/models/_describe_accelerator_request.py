@@ -10,11 +10,11 @@ class DescribeAcceleratorRequest(DaraModel):
         accelerator_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance that you want to query.
+        # The ID of the Global Accelerator instance that you want to query.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -10,7 +10,7 @@ class CreateBasicEndpointGroupResponseBody(DaraModel):
         endpoint_group_id: str = None,
         request_id: str = None,
     ):
-        # The endpoint group ID.
+        # The ID of the endpoint group for the basic Alibaba Cloud Global Accelerator (GA) instance.
         self.endpoint_group_id = endpoint_group_id
         # The request ID.
         self.request_id = request_id

@@ -27,70 +27,71 @@ class CreateBasicAcceleratorRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **false:** disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated. This is the default value.
-        # *   **true:** enables automatic payment. Payments are automatically completed.
-        self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the basic GA instance. Valid values:
+        # - **false** (default): disables automatic payment. After an order is generated, go to the Order Center to complete the payment.
         # 
-        # *   **true:** enables auto-renewal for the basic GA instance.
-        # *   **false:** disables auto-renewal for the basic GA instance. This is the default value.
+        # - **true**: enables automatic payment. The order is automatically paid.
+        self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal.
+        # 
+        # - **true**: enables auto-renewal.
+        # 
+        # - **false** (default): disables auto-renewal.
         self.auto_renew = auto_renew
         # The auto-renewal duration. Unit: months.
         # 
         # Valid values: **1** to **12**. Default value: **1**.
         # 
-        # >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
+        # > This parameter takes effect only when **AutoRenew** is set to **true**.
         self.auto_renew_duration = auto_renew_duration
-        # Specifies whether to automatically apply coupons to your bills. Valid values:
+        # Specifies whether to use coupons for automatic payment of the bill. Valid values:
         # 
-        # *   **true:** automatically applies coupons to your bills.
-        # *   **false:** does not automatically apply coupons to your bills. This is the default value.
+        # - **true**: uses coupons.
         # 
-        # >  This parameter takes effect only when the **AutoPay** parameter is set to **true**.
+        # - **false** (default): does not use coupons.
+        # 
+        # > This parameter takes effect only when **AutoPay** is set to **true**.
         self.auto_use_coupon = auto_use_coupon
         # The bandwidth billing method. Valid values:
-        # 
-        # *   **BandwidthPackage:** billed based on bandwidth plans.
-        # *   **CDT:** billed based on data transfer. The bills are managed by using Cloud Data Transfer (CDT).
-        # *   **CDT95:** billed based on the 95th percentile bandwidth. The bills are managed by using Cloud Data Transfer (CDT). This bandwidth billing method is not available by default. Contact your Alibaba Cloud account manager for more information.
+        # - **BandwidthPackage**: billed by bandwidth plan.
+        # - **CDT**: billed by traffic and settled through unified settlement by Cloud Data Transfer (CDT).
+        # - **CDT95**: billed by the 95th percentile bandwidth and settled through unified settlement by CDT. This bandwidth billing method is available only to users in the whitelist.
         self.bandwidth_billing_type = bandwidth_billing_type
         # The billing method. Valid values:
-        # 
-        # *   **PREPAY** (default)
-        # *   **POSTPAY**
+        # - **PREPAY (default)**: subscription.
+        # - **POSTPAY**: pay-as-you-go.
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # *   **true:** performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
+        # - **true**: performs a dry run without creating the resource. The system checks the required parameters, request syntax, and business limitations. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The subscription duration of the GA instance.
+        # The subscription duration.
         # 
-        # *   If you set **PricingCycle** to **Month**, the valid values for **Duration** are **1** to **9**.
-        # *   If you set **PricingCycle** to **Year**, the valid values for **Duration** are **1** to **3**.
+        # - If **PricingCycle** is set to **Month**, valid values of **Duration** are **1** to **9**.
+        # 
+        # - If **PricingCycle** is set to **Year**, valid values of **Duration** are **1** to **3**.
         self.duration = duration
         # The billing cycle. Valid values:
         # 
-        # *   **Month**
-        # *   **Year**
-        self.pricing_cycle = pricing_cycle
-        # The code of the coupon.
+        # - **Month**: billed on a monthly basis.
         # 
-        # >  This parameter takes effect only for accounts registered on the international site (alibabacloud.com).
+        # - **Year**: billed on a yearly basis.
+        self.pricing_cycle = pricing_cycle
+        # The coupon number.
+        # > This parameter is applicable only to the China site (aliyun.com).
         self.promotion_option_no = promotion_option_no
-        # The ID of the region where the basic GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the basic Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the basic GA instance belongs.
+        # The ID of the resource group to which the basic Alibaba Cloud Global Accelerator (GA) instance belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the basic GA instance.
+        # The labels of the basic Alibaba Cloud Global Accelerator (GA) instance.
         self.tag = tag
 
     def validate(self):
@@ -205,17 +206,17 @@ class CreateBasicAcceleratorRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The tag key cannot be an empty string.
+        # The label key of the basic Alibaba Cloud Global Accelerator (GA) instance. If you specify this parameter, the value cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The label key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify up to 20 tag keys.
+        # You can specify up to 20 label keys.
         self.key = key
-        # The tag value. The tag value cannot be an empty string.
+        # The label value of the basic Alibaba Cloud Global Accelerator (GA) instance. If you specify this parameter, the value cannot be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `acs:` or `aliyun`.
+        # The label value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify up to 20 tag values.
+        # You can specify up to 20 label values.
         self.value = value
 
     def validate(self):

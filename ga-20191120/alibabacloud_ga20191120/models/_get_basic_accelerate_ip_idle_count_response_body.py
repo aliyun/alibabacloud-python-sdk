@@ -10,7 +10,7 @@ class GetBasicAccelerateIpIdleCountResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of entries returned, which indicates the number of idle accelerated IP addresses.
         self.total_count = total_count

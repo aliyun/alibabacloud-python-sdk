@@ -13,35 +13,33 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of a request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **client token** can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # The ID of the new resource group.
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **ap-southeast-1**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the GA resource.
-        # 
-        # *   If you set **ResourceType** to **accelerator**, set the value of ResourceId to the ID of a standard GA instance.
-        # *   If you set **ResourceType** to **basicaccelerator**, set the value of ResourceId to the ID of a basic GA instance.
-        # *   If you set **ResourceType** to **bandwidthpackage**, set the value of ResourceId to the ID of a bandwidth plan.
-        # *   If you set **ResourceType** to **acl**, set the value of ResourceId to the ID of an access control list (ACL).
+        # The instance ID of the Global Accelerator resource for which you want to modify the resource group.
+        # - If **ResourceType** is set to **accelerator**, set this parameter to the instance ID of a standard Global Accelerator instance.
+        # - If **ResourceType** is set to **basicaccelerator**, set this parameter to the instance ID of a basic Global Accelerator instance.
+        # - If **ResourceType** is set to **bandwidthpackage**, set this parameter to the ID of a bandwidth plan.
+        # - If **ResourceType** is set to **acl**, set this parameter to the ID of an access control policy group.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the GA resource. Valid values:
-        # 
-        # *   **accelerator:** a standard GA instance.
-        # *   **basicaccelerator:** a basic GA instance.
-        # *   **bandwidthpackage:** a bandwidth plan.
-        # *   **acl:** an ACL.
+        # The type of the Global Accelerator resource for which you want to modify the resource group. Valid values:
+        # - **accelerator**: a standard Alibaba Cloud Global Accelerator (GA) instance.
+        # - **basicaccelerator**: a basic Alibaba Cloud Global Accelerator (GA) instance.
+        # - **bandwidthpackage**: a bandwidth plan.
+        # - **acl**: an access control policy group.
         # 
         # This parameter is required.
         self.resource_type = resource_type

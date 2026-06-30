@@ -13,11 +13,11 @@ class BandwidthPackageRemoveAcceleratorResponseBody(DaraModel):
         bandwidth_package_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance disassociated from the bandwidth plan.
         self.accelerators = accelerators
-        # The ID of the bandwidth plan.
+        # The ID of the bandwidth plan disassociated from the Alibaba Cloud Global Accelerator (GA) instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

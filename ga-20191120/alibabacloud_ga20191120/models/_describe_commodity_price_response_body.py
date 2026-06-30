@@ -21,8 +21,9 @@ class DescribeCommodityPriceResponseBody(DaraModel):
     ):
         # The currency unit.
         # 
-        # *   China site: **CNY**.
-        # *   International site: **USD**.
+        # - China site: **CNY**.
+        # 
+        # - International site: **USD**.
         self.currency = currency
         # The discount.
         self.discount_price = discount_price
@@ -32,7 +33,7 @@ class DescribeCommodityPriceResponseBody(DaraModel):
         self.original_price = original_price
         # The details of the coupon.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.promotions = promotions
         # The ID of the request.
         self.request_id = request_id
@@ -177,26 +178,29 @@ class DescribeCommodityPriceResponseBodyPromotions(DaraModel):
     ):
         # The discounted amount.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.can_prom_fee = can_prom_fee
         # The code of the commodity to which the coupon can be applied.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.option_code = option_code
         # The name of the coupon.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.promotion_name = promotion_name
         # The code of the coupon.
-        # > *   `youhuiquan_promotion_option_id_for_blank` indicates coupons that cannot be applied to the commodity.
-        # > *   This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # 
+        # > - `youhuiquan_promotion_option_id_for_blank` indicates coupons that cannot be applied to the commodity.
+        # >
+        # > - This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.promotion_option_no = promotion_option_no
         # Indicates whether the coupon was selected.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # - **false**
+        # 
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.selected = selected
 
     def validate(self):
@@ -268,7 +272,7 @@ class DescribeCommodityPriceResponseBodyOrderDetails(DaraModel):
         self.original_price = original_price
         # The details of the discount.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.prom_details = prom_details
         # The number of instances that are purchased.
         self.quantity = quantity
@@ -373,23 +377,23 @@ class DescribeCommodityPriceResponseBodyOrderDetailsPromDetails(DaraModel):
     ):
         # The discounted price.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.final_prom_fee = final_prom_fee
         # The code of the discount option.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.option_code = option_code
         # The sub-type of the discount.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.prom_type = prom_type
         # The ID of the discount item.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.promotion_id = promotion_id
         # The name of the discount item.
         # 
-        # >  This parameter does not take effect for accounts registered on the China site (aliyun.com).
+        # > This parameter does not take effect for accounts registered on the China site (aliyun.com).
         self.promotion_name = promotion_name
 
     def validate(self):

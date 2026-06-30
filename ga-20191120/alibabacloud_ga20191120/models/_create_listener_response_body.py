@@ -10,9 +10,9 @@ class CreateListenerResponseBody(DaraModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the listener.
+        # The ID of the created listener.
         self.listener_id = listener_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

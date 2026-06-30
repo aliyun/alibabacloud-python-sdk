@@ -13,7 +13,7 @@ class ListCommonAreasResponseBody(DaraModel):
         areas: List[main_models.ListCommonAreasResponseBodyAreas] = None,
         request_id: str = None,
     ):
-        # The information about the areas.
+        # The area information.
         self.areas = areas
         # The request ID.
         self.request_id = request_id
@@ -63,7 +63,7 @@ class ListCommonAreasResponseBodyAreas(DaraModel):
         self.area_id = area_id
         # The area name.
         self.local_name = local_name
-        # The information about the regions.
+        # The region list.
         self.region_list = region_list
 
     def validate(self):

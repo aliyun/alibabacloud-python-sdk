@@ -19,19 +19,39 @@ class UpdateLogStoreConfigRequest(DaraModel):
         sls_log_store_name: str = None,
         sls_project_name: str = None,
     ):
+        # The instance ID of Alibaba Cloud Global Accelerator (GA).
+        # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
+        # A list of custom header field names to be included in access logs.
         self.access_log_record_customized_header_list = access_log_record_customized_header_list
+        # Specifies whether to include custom headers in access logs. Valid values:
+        # 
+        # - **true**: Yes.
+        # - **false** (default): No.
+        # 
+        # > You can set this parameter to **true** only when the **AccessLogEnabled** toggle for the instance is turned on.
         self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
+        # An idempotent token.
         self.client_token = client_token
+        # The ID of the endpoint group.
+        # 
         # This parameter is required.
         self.endpoint_group_id = endpoint_group_id
+        # The listener ID.
+        # 
         # This parameter is required.
         self.listener_id = listener_id
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. The only valid value is cn-hangzhou.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the Logstore.
+        # 
         # This parameter is required.
         self.sls_log_store_name = sls_log_store_name
+        # The name of the Data Service Project.
+        # 
         # This parameter is required.
         self.sls_project_name = sls_project_name
 

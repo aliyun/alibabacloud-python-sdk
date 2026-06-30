@@ -18,17 +18,19 @@ class UpdateBandwidthPackageRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **false**: disables automatic payment. This is the default value. If you select this option, you must go to [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment after an order is generated.
-        # *   **true**: enables automatic payment. Payments are automatically completed.
+        # - **false** (default): disables automatic payment. After an order is generated, you must go to the <props="china">[Order Hub](https://usercenter2.aliyun.com/order/list)<props="intl">[Order Hub](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         # 
-        # >  This parameter takes effect only if you call the UpdateBandwidthPackage operation to upgrade a bandwidth plan.
+        # - **true**: enables automatic payment. The system automatically pays the bill.
+        # 
+        # > This parameter is required only for upgrade orders.
         self.auto_pay = auto_pay
         # Specifies whether to use coupons. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: yes.
+        # 
+        # - **false** (default): no.
         self.auto_use_coupon = auto_use_coupon
-        # The bandwidth value of the bandwidth plan. Unit: Mbit/s.
+        # The bandwidth of the bandwidth plan. Unit: Mbit/s.
         # 
         # Valid values: **2** to **2000**.
         self.bandwidth = bandwidth
@@ -36,21 +38,24 @@ class UpdateBandwidthPackageRequest(DaraModel):
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The type of bandwidth. Valid values:
+        # The bandwidth type. Valid values:
         # 
-        # *   **Basic**
-        # *   **Enhanced**
-        # *   **Advanced**
+        # - **Basic**: standard bandwidth.
         # 
-        # >  You can upgrade **Basic** bandwidth to **Enhanced** bandwidth or downgrade Enhanced bandwidth to Basic bandwidth. You cannot change **Advanced** bandwidth to another type of bandwidth.
+        # - **Enhanced**: enhanced bandwidth.
+        # 
+        # - **Advanced**: premium bandwidth.
+        # 
+        # > You can upgrade a Basic bandwidth plan to Enhanced, or downgrade an **Enhanced** bandwidth plan to **Basic**. You cannot change the bandwidth type of an **Advanced** bandwidth plan.
         self.bandwidth_type = bandwidth_type
         # The description of the bandwidth plan.
         # 
         # The description can be up to 256 characters in length.
         self.description = description
-        # The name of the bandwidth plan. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name of the bandwidth plan.
+        # The name must be 1 to 128 characters in length, start with a letter or a Chinese character, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
+        # The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

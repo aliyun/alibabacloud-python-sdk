@@ -12,9 +12,9 @@ class CreateCustomRoutingEndpointGroupsResponseBody(DaraModel):
         endpoint_group_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the endpoint groups.
+        # The list of endpoint group IDs.
         self.endpoint_group_ids = endpoint_group_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
