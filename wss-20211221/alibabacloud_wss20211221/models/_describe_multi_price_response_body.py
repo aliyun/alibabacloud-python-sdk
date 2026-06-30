@@ -13,7 +13,9 @@ class DescribeMultiPriceResponseBody(DaraModel):
         price_info: main_models.DescribeMultiPriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
+        # The detailed price information.
         self.price_info = price_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class DescribeMultiPriceResponseBodyPriceInfo(DaraModel):
         price: main_models.DescribeMultiPriceResponseBodyPriceInfoPrice = None,
         rules: List[main_models.DescribeMultiPriceResponseBodyPriceInfoRules] = None,
     ):
+        # The price information.
         self.price = price
+        # A list of promotion rules.
         self.rules = rules
 
     def validate(self):
@@ -96,7 +100,9 @@ class DescribeMultiPriceResponseBodyPriceInfoRules(DaraModel):
         description: str = None,
         rule_id: int = None,
     ):
+        # The promotion rule description.
         self.description = description
+        # The promotion rule ID.
         self.rule_id = rule_id
 
     def validate(self):
@@ -137,13 +143,25 @@ class DescribeMultiPriceResponseBodyPriceInfoPrice(DaraModel):
         refund_price: float = None,
         trade_price: float = None,
     ):
+        # The currency.
+        # 
+        # China site: CNY.
+        # 
+        # International site: USD.
         self.currency = currency
+        # The discount amount.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # A list of price details.
         self.price_details = price_details
+        # A list of promotions.
         self.promotions = promotions
+        # A map of instance IDs to their corresponding refund amounts.
         self.refund_instance_id_price_map = refund_instance_id_price_map
+        # The refund amount.
         self.refund_price = refund_price
+        # The trade price, which is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -234,10 +252,15 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePromotions(DaraModel):
         promotion_name: str = None,
         selected: bool = None,
     ):
+        # The option code.
         self.option_code = option_code
+        # The promotion description.
         self.promotion_desc = promotion_desc
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # The promotion name.
         self.promotion_name = promotion_name
+        # Indicates whether the promotion is selected.
         self.selected = selected
 
     def validate(self):
@@ -291,8 +314,11 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails(DaraModel):
         order_item: int = None,
         price_detail: main_models.DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail = None,
     ):
+        # A list of pricing module details.
         self.module_details = module_details
+        # The sort order.
         self.order_item = order_item
+        # A breakdown of the price.
         self.price_detail = price_detail
 
     def validate(self):
@@ -347,10 +373,14 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail(DaraMo
         saving_plan_recommend_price: float = None,
         trade_price: float = None,
     ):
+        # The discount amount.
         self.discount_price = discount_price
+        # The original price.
         self.original_price = original_price
+        # The resource type.
         self.resource_type = resource_type
         self.saving_plan_recommend_price = saving_plan_recommend_price
+        # The trade price, which is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -408,12 +438,18 @@ class DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails(Dara
         saving_plan_discount_price: float = None,
         trade_price: float = None,
     ):
+        # The discount amount.
         self.discount_price = discount_price
+        # The module code.
         self.module_code = module_code
+        # The module name.
         self.module_name = module_name
+        # The module value.
         self.module_value = module_value
+        # The original price.
         self.original_price = original_price
         self.saving_plan_discount_price = saving_plan_discount_price
+        # The trade price, which is the original price minus the discount amount.
         self.trade_price = trade_price
 
     def validate(self):

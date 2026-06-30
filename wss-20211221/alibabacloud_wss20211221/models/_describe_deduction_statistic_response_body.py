@@ -13,7 +13,9 @@ class DescribeDeductionStatisticResponseBody(DaraModel):
         data: main_models.DescribeDeductionStatisticResponseBodyData = None,
         request_id: str = None,
     ):
+        # The deduction data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,8 +53,11 @@ class DescribeDeductionStatisticResponseBodyData(DaraModel):
         deductions: List[main_models.DescribeDeductionStatisticResponseBodyDataDeductions] = None,
         usages: List[main_models.DescribeDeductionStatisticResponseBodyDataUsages] = None,
     ):
+        # **The available core-hour packages.**
         self.available_core_packages = available_core_packages
+        # The deduction details.
         self.deductions = deductions
+        # **The usage details.**
         self.usages = usages
 
     def validate(self):
@@ -120,8 +125,11 @@ class DescribeDeductionStatisticResponseBodyDataUsages(DaraModel):
         period: str = None,
         resource_type: str = None,
     ):
+        # **The consumption duration in seconds.**
         self.consume_second = consume_second
+        # **The time period.**
         self.period = period
+        # **The resource type.**
         self.resource_type = resource_type
 
     def validate(self):
@@ -163,8 +171,11 @@ class DescribeDeductionStatisticResponseBodyDataDeductions(DaraModel):
         deduction_date: str = None,
         resource_type: str = None,
     ):
+        # The consumption duration in seconds.
         self.consume_second = consume_second
+        # The deduction date.
         self.deduction_date = deduction_date
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -217,19 +228,33 @@ class DescribeDeductionStatisticResponseBodyDataAvailableCorePackages(DaraModel)
         total_time: int = None,
         used_time: int = None,
     ):
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
+        # The creation time.
         self.create_time = create_time
+        # The end time.
         self.end_time = end_time
+        # The expiration time.
         self.expired_time = expired_time
+        # The group ID.
         self.group_id = group_id
+        # The group resource type.
         self.group_resource_type = group_resource_type
+        # Indicates whether the resource is a No-Lx resource.
         self.no_lx = no_lx
+        # The source of the No-Lx resource.
         self.no_lx_source = no_lx_source
+        # The resource ID.
         self.resource_id = resource_id
+        # The group resource type.
         self.resource_type = resource_type
+        # The start time.
         self.start_time = start_time
+        # The status.
         self.status = status
+        # The total duration.
         self.total_time = total_time
+        # The used duration.
         self.used_time = used_time
 
     def validate(self):

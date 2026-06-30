@@ -13,7 +13,9 @@ class DescribeCreditUsageInfoResponseBody(DaraModel):
         request_id: str = None,
         usage_info_list: List[main_models.DescribeCreditUsageInfoResponseBodyUsageInfoList] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The array of usage data.
         self.usage_info_list = usage_info_list
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoList(DaraModel):
         usage_info: main_models.DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo = None,
         usage_info_key: str = None,
     ):
+        # The usage data details.
         self.usage_info = usage_info
+        # The usage primary key. When `UsageType=User`, this is the `aliUid`. When `UsageType=CreditPackage`, this is the credit package instance ID. When `UsageType=Agent`, this is the `AgentId`.
         self.usage_info_key = usage_info_key
 
     def validate(self):
@@ -99,23 +103,40 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         period_total_credit: int = None,
         period_used_credit: int = None,
         remain_credit: int = None,
+        today_used: str = None,
         total_credit: int = None,
+        total_used: str = None,
         total_used_credit: int = None,
         warn_percent: int = None,
         week_used_credit: int = None,
     ):
+        # The hourly consumption samples of the current credit package.
         self.credit_trend_list = credit_trend_list
+        # The instance ID of the current active credit package.
         self.current_instance_id = current_instance_id
+        # The remaining credits of the current active credit package.
         self.current_remain_credit = current_remain_credit
+        # The total credits of the current active credit package.
         self.current_total_credit = current_total_credit
+        # The used credits of the current active credit package.
         self.current_used_credit = current_used_credit
+        # The credit usage in the last 1 day.
         self.day_used_credit = day_used_credit
+        # The shared credit quota in the current active period.
         self.period_total_credit = period_total_credit
+        # The shared credit usage in the current active period.
         self.period_used_credit = period_used_credit
+        # The cumulative remaining credits.
         self.remain_credit = remain_credit
+        self.today_used = today_used
+        # The cumulative total credits.
         self.total_credit = total_credit
+        self.total_used = total_used
+        # The cumulative credit usage.
         self.total_used_credit = total_used_credit
+        # The alert threshold percentage (0–100).
         self.warn_percent = warn_percent
+        # The credit usage in the last 1 week.
         self.week_used_credit = week_used_credit
 
     def validate(self):
@@ -158,8 +179,14 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         if self.remain_credit is not None:
             result['RemainCredit'] = self.remain_credit
 
+        if self.today_used is not None:
+            result['TodayUsed'] = self.today_used
+
         if self.total_credit is not None:
             result['TotalCredit'] = self.total_credit
+
+        if self.total_used is not None:
+            result['TotalUsed'] = self.total_used
 
         if self.total_used_credit is not None:
             result['TotalUsedCredit'] = self.total_used_credit
@@ -204,8 +231,14 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfo(DaraModel):
         if m.get('RemainCredit') is not None:
             self.remain_credit = m.get('RemainCredit')
 
+        if m.get('TodayUsed') is not None:
+            self.today_used = m.get('TodayUsed')
+
         if m.get('TotalCredit') is not None:
             self.total_credit = m.get('TotalCredit')
+
+        if m.get('TotalUsed') is not None:
+            self.total_used = m.get('TotalUsed')
 
         if m.get('TotalUsedCredit') is not None:
             self.total_used_credit = m.get('TotalUsedCredit')
@@ -224,7 +257,9 @@ class DescribeCreditUsageInfoResponseBodyUsageInfoListUsageInfoCreditTrendList(D
         time_point: str = None,
         used_credit: int = None,
     ):
+        # The time point in the format of `yyyy-MM-dd HH` (accurate to the hour).
         self.time_point = time_point
+        # The number of credits consumed during the hour.
         self.used_credit = used_credit
 
     def validate(self):

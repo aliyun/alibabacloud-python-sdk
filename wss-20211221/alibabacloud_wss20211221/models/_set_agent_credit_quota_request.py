@@ -14,9 +14,13 @@ class SetAgentCreditQuotaRequest(DaraModel):
         biz_type: str = None,
         credit_quota: int = None,
     ):
+        # A list of Agent IDs.
         self.agent_ids = agent_ids
+        # The Agent type.
         self.agent_type = agent_type
+        # The business type.
         self.biz_type = biz_type
+        # The credit quota.
         self.credit_quota = credit_quota
 
     def validate(self):

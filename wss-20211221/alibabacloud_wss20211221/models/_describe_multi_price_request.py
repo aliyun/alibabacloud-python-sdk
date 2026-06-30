@@ -15,9 +15,13 @@ class DescribeMultiPriceRequest(DaraModel):
         package_code: str = None,
         reseller_owner_uid: int = None,
     ):
+        # The order items.
         self.order_items = order_items
+        # The order type.
         self.order_type = order_type
+        # The package code. This parameter is not required for non-package types.
         self.package_code = package_code
+        # The ID of the user who owns the resource in the reseller model. This parameter is not required in non-reseller mode.
         self.reseller_owner_uid = reseller_owner_uid
 
     def validate(self):
@@ -80,14 +84,28 @@ class DescribeMultiPriceRequestOrderItems(DaraModel):
         resource_type: str = None,
         saving_plan_period: str = None,
     ):
+        # The quantity to purchase.
         self.amount = amount
+        # A list of components.
         self.components = components
         self.data = data
+        # A list of instance IDs.
         self.instance_ids = instance_ids
+        # The subscription period. Valid values:
+        # 
+        # - If `PeriodUnit` is `Year`, the valid values are 1, 2, and 3.
+        # 
+        # - If `PeriodUnit` is `Month`, the valid values are 1, 2, 3, and 6.
         self.period = period
+        # The unit of the subscription period.
         self.period_unit = period_unit
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # A list of resource IDs.
         self.resource_ids = resource_ids
+        # The resource type.
+        # 
+        # > The value is case-sensitive.
         self.resource_type = resource_type
         self.saving_plan_period = saving_plan_period
 
@@ -179,7 +197,53 @@ class DescribeMultiPriceRequestOrderItemsComponents(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the component.
         self.key = key
+        # The value of the component.
+        # 
+        # The following are the keys and their sample or enumerated values for a monthly duration package of the enterprise edition:
+        # 
+        # - `RegionId`: cn-shanghai
+        # 
+        # - `InstanceType`: eds.enterprise_office.4c8g
+        # 
+        # - `DurationType` (in hours): [enum]
+        # 
+        #   - 120
+        # 
+        #   - 250
+        # 
+        # - `OsType`: [enum]
+        # 
+        #   - Windows
+        # 
+        #   - Linux
+        # 
+        # - `RootDiskSize` (in GiB): 80
+        # 
+        # - `RootDiskCategory`: [enum]
+        # 
+        #   - `cloud_efficiency` (Ultra Cloud Disk)
+        # 
+        #   - `cloud_auto` (AutoPL Cloud Disk)
+        # 
+        #   - `cloud_essd` (Enhanced SSD (ESSD), available only for specific instance types)
+        # 
+        # - `RootPerformanceLevel`: [enum]
+        # 
+        #   - PL0
+        # 
+        #   - PL1
+        # 
+        #   - PL2
+        # 
+        #   - PL3
+        # 
+        # - `DataDiskSize` (in GiB): Same as `RootDiskSize`.
+        # 
+        # - `DataDiskCategory`: Same as `RootDiskCategory`.
+        # 
+        # - `DataPerformanceLevel`: Same as `RootPerformanceLevel`.
         self.value = value
 
     def validate(self):
