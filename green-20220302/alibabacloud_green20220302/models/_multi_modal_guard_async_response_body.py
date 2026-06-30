@@ -13,10 +13,13 @@ class MultiModalGuardAsyncResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -65,7 +68,9 @@ class MultiModalGuardAsyncResponseBodyData(DaraModel):
         data_id: str = None,
         task_id: str = None,
     ):
+        # The custom data ID.
         self.data_id = data_id
+        # The ID of the asynchronous task.
         self.task_id = task_id
 
     def validate(self):

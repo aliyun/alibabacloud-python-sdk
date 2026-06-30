@@ -1,3 +1,9 @@
+2026-06-30 Version: 3.4.0
+- Support API MultiModalGuardWs.
+- Update API ManualModerationResult: add response parameters Body.Data.ReviewCount.
+- Update API VideoModerationResult: add response parameters Body.Data.AudioResult.SliceDetails.$.Result.
+
+
 2026-05-22 Version: 3.3.0
 - Support API MultiModalGuardAsync.
 - Support API MultiModalGuardAsyncResult.

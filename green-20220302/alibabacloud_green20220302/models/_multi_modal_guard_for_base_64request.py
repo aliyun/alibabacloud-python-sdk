@@ -12,7 +12,6 @@ class MultiModalGuardForBase64Request(DaraModel):
         service_parameters: str = None,
     ):
         self.image_base_64str = image_base_64str
-        # Service
         self.service = service
         self.service_parameters = service_parameters
 

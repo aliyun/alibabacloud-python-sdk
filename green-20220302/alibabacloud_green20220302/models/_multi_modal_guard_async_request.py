@@ -10,7 +10,9 @@ class MultiModalGuardAsyncRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The moderation service type. Valid values: `audio_security_check` and `video_security_check`.
         self.service = service
+        # The parameter set required for the moderation service.
         self.service_parameters = service_parameters
 
     def validate(self):

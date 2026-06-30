@@ -9,7 +9,7 @@ class DescribeImageModerationResultRequest(DaraModel):
         self,
         req_id: str = None,
     ):
-        # The ReqId field returned by the asynchronous Image Moderation 2.0 API.
+        # The \\`ReqId\\` returned by the asynchronous Image Moderation Pro API.
         self.req_id = req_id
 
     def validate(self):

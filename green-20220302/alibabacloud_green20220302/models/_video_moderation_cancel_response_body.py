@@ -11,11 +11,11 @@ class VideoModerationCancelResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # The message that is returned in response to the request.
+        # The message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

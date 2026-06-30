@@ -13,8 +13,11 @@ class MultimodalAsyncModerationResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # Return code. A value of 200 indicates success.
         self.code = code
+        # Returned data.
         self.data = data
+        # The response message for this request.
         self.msg = msg
         # Id of the request
         self.request_id = request_id
@@ -65,7 +68,9 @@ class MultimodalAsyncModerationResponseBodyData(DaraModel):
         data_id: str = None,
         req_id: str = None,
     ):
+        # The value of dataId passed in the API request. This field is absent if dataId was not included in the request.
         self.data_id = data_id
+        # The ReqId field returned by the URL asynchronous enhanced moderation API. Use this field to query moderation results.
         self.req_id = req_id
 
     def validate(self):

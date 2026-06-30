@@ -15,9 +15,13 @@ class DescribeMultimodalModerationResultResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
+        # The error code, which matches the HTTP status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response message for this request.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,10 +73,15 @@ class DescribeMultimodalModerationResultResponseBodyData(DaraModel):
         req_id: str = None,
         risk_level: str = None,
     ):
+        # Comment moderation results.
         self.comment_datas = comment_datas
+        # The dataId value passed in the API request. This field is absent if no dataId was provided in the request.
         self.data_id = data_id
+        # Main post moderation results.
         self.main_data = main_data
+        # The ReqId field returned by the asynchronous moderation API.
         self.req_id = req_id
+        # Risk level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -135,6 +144,7 @@ class DescribeMultimodalModerationResultResponseBodyDataMainData(DaraModel):
         self,
         results: List[main_models.DescribeMultimodalModerationResultResponseBodyDataMainDataResults] = None,
     ):
+        # Main post moderation results.
         self.results = results
 
     def validate(self):
@@ -171,7 +181,9 @@ class DescribeMultimodalModerationResultResponseBodyDataMainDataResults(DaraMode
         description: str = None,
         label: str = None,
     ):
+        # Description of the Label field.
         self.description = description
+        # Risk label.
         self.label = label
 
     def validate(self):
@@ -206,7 +218,9 @@ class DescribeMultimodalModerationResultResponseBodyDataCommentDatas(DaraModel):
         comment_datas: List[main_models.DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas] = None,
         results: List[main_models.DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults] = None,
     ):
+        # Moderation results.
         self.comment_datas = comment_datas
+        # Comment moderation results.
         self.results = results
 
     def validate(self):
@@ -258,7 +272,9 @@ class DescribeMultimodalModerationResultResponseBodyDataCommentDatasResults(Dara
         description: str = None,
         label: str = None,
     ):
+        # Description of the Label field.
         self.description = description
+        # Risk label.
         self.label = label
 
     def validate(self):
@@ -292,6 +308,7 @@ class DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas
         self,
         results: List[main_models.DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatasResults] = None,
     ):
+        # Comment moderation results.
         self.results = results
 
     def validate(self):
@@ -328,7 +345,9 @@ class DescribeMultimodalModerationResultResponseBodyDataCommentDatasCommentDatas
         description: str = None,
         label: str = None,
     ):
+        # Description of the Label field.
         self.description = description
+        # Risk label.
         self.label = label
 
     def validate(self):

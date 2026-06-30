@@ -58,6 +58,9 @@ from ._multi_modal_guard_async_result_response import MultiModalGuardAsyncResult
 from ._multi_modal_guard_for_base_64request import MultiModalGuardForBase64Request
 from ._multi_modal_guard_for_base_64response_body import MultiModalGuardForBase64ResponseBody
 from ._multi_modal_guard_for_base_64response import MultiModalGuardForBase64Response
+from ._multi_modal_guard_ws_request import MultiModalGuardWsRequest
+from ._multi_modal_guard_ws_response_body import MultiModalGuardWsResponseBody
+from ._multi_modal_guard_ws_response import MultiModalGuardWsResponse
 from ._multimodal_async_moderation_request import MultimodalAsyncModerationRequest
 from ._multimodal_async_moderation_response_body import MultimodalAsyncModerationResponseBody
 from ._multimodal_async_moderation_response import MultimodalAsyncModerationResponse
@@ -202,6 +205,9 @@ from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyD
 from ._url_async_moderation_response_body import UrlAsyncModerationResponseBodyData
 from ._video_moderation_response_body import VideoModerationResponseBodyData
 from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataAudioResultAudioSummarys
+from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit
+from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions
+from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult
 from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataAudioResultSliceDetails
 from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataAudioResult
 from ._video_moderation_result_response_body import VideoModerationResultResponseBodyDataExtAigcDataAIGC
@@ -284,6 +290,9 @@ __all__ = [
     MultiModalGuardForBase64Request,
     MultiModalGuardForBase64ResponseBody,
     MultiModalGuardForBase64Response,
+    MultiModalGuardWsRequest,
+    MultiModalGuardWsResponseBody,
+    MultiModalGuardWsResponse,
     MultimodalAsyncModerationRequest,
     MultimodalAsyncModerationResponseBody,
     MultimodalAsyncModerationResponse,
@@ -428,6 +437,9 @@ __all__ = [
     UrlAsyncModerationResponseBodyData,
     VideoModerationResponseBodyData,
     VideoModerationResultResponseBodyDataAudioResultAudioSummarys,
+    VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit,
+    VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions,
+    VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult,
     VideoModerationResultResponseBodyDataAudioResultSliceDetails,
     VideoModerationResultResponseBodyDataAudioResult,
     VideoModerationResultResponseBodyDataExtAigcDataAIGC,

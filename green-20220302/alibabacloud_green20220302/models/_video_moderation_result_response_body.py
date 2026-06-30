@@ -15,11 +15,11 @@ class VideoModerationResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code. The status code 200 indicates that the request was successful.
+        # The response code. A value of 200 indicates success.
         self.code = code
-        # The moderation results.
+        # The moderation result data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -76,17 +76,27 @@ class VideoModerationResultResponseBodyData(DaraModel):
         risk_level: str = None,
         task_id: str = None,
     ):
-        # The voice moderation results. The moderation results contain a structure.
+        # The segmented results of video audio moderation.
         self.audio_result = audio_result
-        # The value of dataId that is specified in the API request. If this parameter is not specified in the API request, the dataId field is not available in the response.
+        # The value of dataId passed in the API request. This field is not returned if dataId was not specified in the request.
         self.data_id = data_id
+        # The extended information.
         self.ext = ext
-        # The image moderation results. If the call is successful, the HTTP status code 200 and moderation results are returned. The moderation results contain a structure.
+        # The list of video frame capture results.
         self.frame_result = frame_result
         # The unique ID of the live stream.
         self.live_id = live_id
+        # The manual review task ID.
         self.manual_task_id = manual_task_id
-        # Risk Level.
+        # The risk level, returned based on the configured high and low risk score thresholds. Valid values:
+        # 
+        # - high: High risk.
+        # 
+        # - medium: Medium risk.
+        #  
+        # - low: Low risk.
+        # 
+        # - none: No risk detected.
         self.risk_level = risk_level
         # The task ID.
         self.task_id = task_id
@@ -169,13 +179,21 @@ class VideoModerationResultResponseBodyDataFrameResult(DaraModel):
         frames: List[main_models.VideoModerationResultResponseBodyDataFrameResultFrames] = None,
         risk_level: str = None,
     ):
-        # The number of captured frames that are returned for the video file.
+        # The number of result frames.
         self.frame_num = frame_num
-        # The summary of the labels against which captured frames are matched.
+        # The video frame label summary.
         self.frame_summarys = frame_summarys
-        # The information about the frames that match the labels.
+        # The information about video frames that contain hit labels.
         self.frames = frames
-        # Risk Level.
+        # The risk level, returned based on the configured high and low risk score thresholds. Valid values:
+        # 
+        # - high: High risk.
+        # 
+        # - medium: Medium risk.
+        #  
+        # - low: Low risk.
+        # 
+        # - none: No risk detected.
         self.risk_level = risk_level
 
     def validate(self):
@@ -242,13 +260,21 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(DaraModel):
         temp_url: str = None,
         timestamp: int = None,
     ):
-        # The interval between the start of the video file and the captured frame. Unit: seconds.
+        # The offset of the captured frame.
         self.offset = offset
-        # The results of frame moderation parameters such as the label parameter and the confidence parameter.
+        # The frame detection result details.
         self.results = results
-        # Risk Level.
+        # The risk level, returned based on the configured high and low risk score thresholds. Valid values:
+        # 
+        # - high: High risk.
+        # 
+        # - medium: Medium risk.
+        #  
+        # - low: Low risk.
+        # 
+        # - none: No risk detected.
         self.risk_level = risk_level
-        # The temporary URL of a captured frame.
+        # The temporary URL of the captured frame image.
         self.temp_url = temp_url
         # The absolute timestamp. Unit: milliseconds.
         self.timestamp = timestamp
@@ -316,18 +342,19 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
         text_in_image: Dict[str, Any] = None,
         vl_content: main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent = None,
     ):
-        # If a custom image library is hit, information about the custom image library is returned.
+        # The custom image library information that is hit. This field is returned only when a custom image library is hit.
         self.custom_image = custom_image
-        # Returns logo information when the video contains a logo.
+        # The logo information returned when the video contains a logo.
         self.logo_data = logo_data
-        # If the video contains a specific figure, the code of the identified figure is returned.
+        # The recognized public figure codes returned when the video contains specific public figures.
         self.public_figure = public_figure
-        # The results of frame moderation parameters such as the label parameter and the confidence parameter.
+        # The hit result details.
         self.result = result
-        # The moderation service that is called.
+        # The image moderation service type.
         self.service = service
-        # The information about the text hit in the image is returned.
+        # The text information in the image that is hit.
         self.text_in_image = text_in_image
+        # The foundation model result.
         self.vl_content = vl_content
 
     def validate(self):
@@ -429,6 +456,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent(Dar
         self,
         output_text: str = None,
     ):
+        # The output text from the foundation model.
         self.output_text = output_text
 
     def validate(self):
@@ -458,11 +486,11 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsResult(DaraMo
         description: str = None,
         label: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
-        # The description of the result.
+        # The description of the Label field.
         self.description = description
-        # The label returned after a frame is moderated. Multiple risk labels and the corresponding scores of confidence levels may be returned for a frame.
+        # The classification of the detection result.
         self.label = label
 
     def validate(self):
@@ -504,9 +532,11 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(
         figure_name: str = None,
         location: List[main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation] = None,
     ):
-        # The information about the code of the identified figure.
+        # The code of the recognized public figure.
         self.figure_id = figure_id
+        # The name of the recognized public figure.
         self.figure_name = figure_name
+        # The location of the recognized public figure.
         self.location = location
 
     def validate(self):
@@ -557,9 +587,13 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureL
         x: int = None,
         y: int = None,
     ):
+        # The height.
         self.h = h
+        # The width.
         self.w = w
+        # The x-coordinate of the starting point.
         self.x = x
+        # The y-coordinate of the starting point.
         self.y = y
 
     def validate(self):
@@ -606,9 +640,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData(Dara
         location: main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocation = None,
         logo: List[main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo] = None,
     ):
-        # The location of the logo.
+        # The text line and coordinate information.
         self.location = location
-        # Logo information.
+        # The logo identification information.
         self.logo = logo
 
     def validate(self):
@@ -655,11 +689,11 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLogo(
         label: str = None,
         name: str = None,
     ):
-        # Confidence score, ranging from 0 to 100, with two decimal places.
+        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
         self.confidence = confidence
-        # label
+        # The hit label.
         self.label = label
-        # Logo name.
+        # The logo name.
         self.name = name
 
     def validate(self):
@@ -706,9 +740,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoDataLocat
         self.h = h
         # The width of the text area. Unit: pixels.
         self.w = w
-        # The distance from the top-left corner of the text area to the y-axis, with the top-left corner of the image as the origin. Unit: pixels.
+        # The distance from the upper-left corner of the text area to the y-axis, with the upper-left corner of the image as the origin. Unit: pixels.
         self.x = x
-        # The distance from the top-left corner of the text area to the x-axis, with the top-left corner of the image as the origin. Unit: pixels.
+        # The distance from the upper-left corner of the text area to the x-axis, with the upper-left corner of the image as the origin. Unit: pixels.
         self.y = y
 
     def validate(self):
@@ -793,11 +827,11 @@ class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(DaraModel):
         label: str = None,
         label_sum: int = None,
     ):
-        # The description of the result.
+        # The description of the Label field.
         self.description = description
-        # The label against which a captured frame is matched.
+        # The video frame label.
         self.label = label
-        # The number of times that the label is matched.
+        # The number of times the label appears.
         self.label_sum = label_sum
 
     def validate(self):
@@ -837,6 +871,7 @@ class VideoModerationResultResponseBodyDataExt(DaraModel):
         self,
         aigc_data: main_models.VideoModerationResultResponseBodyDataExtAigcData = None,
     ):
+        # The AIGC metadata detection result.
         self.aigc_data = aigc_data
 
     def validate(self):
@@ -867,7 +902,9 @@ class VideoModerationResultResponseBodyDataExtAigcData(DaraModel):
         aigc: main_models.VideoModerationResultResponseBodyDataExtAigcDataAIGC = None,
         result: str = None,
     ):
+        # The AIGC metadata.
         self.aigc = aigc
+        # The detection result.
         self.result = result
 
     def validate(self):
@@ -909,12 +946,29 @@ class VideoModerationResultResponseBodyDataExtAigcDataAIGC(DaraModel):
         reserved_code_1: str = None,
         reserved_code_2: str = None,
     ):
+        # The code or name of the service provider, used to identify the content producer.
         self.content_producer = content_producer
+        # The name, ID, or code of the propagation platform. For services that provide artificial intelligence-generated content, this value can be the same as ContentProducer.
         self.content_propagator = content_propagator
+        # Indicates whether the content is generated by artificial intelligence (AI). Valid values:
+        # 
+        # - 1: The content is generated through artificial intelligence content generation.
+        # 
+        # - 2: (Propagation platforms only) The content may be generated through artificial intelligence content generation.
+        # 
+        # - 3: (Propagation platforms only) The content is suspected to be generated through artificial intelligence content generation.
         self.label = label
+        # The content production ID, which is the unique identifier used by the production platform to trace synthesized content.
         self.produce_id = produce_id
+        # The content propagation ID, which is the unique identifier assigned by the propagation platform to the propagated AI-generated content.
         self.propagate_id = propagate_id
+        # The reserved field.
+        # 
+        # This field can store information used by the content generation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
         self.reserved_code_1 = reserved_code_1
+        # The reserved field.
+        # 
+        # This field can be used by the content propagation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
         self.reserved_code_2 = reserved_code_2
 
     def validate(self):
@@ -980,11 +1034,19 @@ class VideoModerationResultResponseBodyDataAudioResult(DaraModel):
         risk_level: str = None,
         slice_details: List[main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetails] = None,
     ):
-        # Summary of voice labels.
+        # The audio label summary.
         self.audio_summarys = audio_summarys
-        # Risk Level.
+        # The risk level, returned based on the configured high and low risk score thresholds. Valid values:
+        # 
+        # - high: High risk.
+        # 
+        # - medium: Medium risk.
+        #  
+        # - low: Low risk.
+        # 
+        # - none: No risk detected.
         self.risk_level = risk_level
-        # The details about the text in the moderated voice. The value is a JSON array that contains one or more elements. Each element corresponds to a text entry.
+        # The list of audio segments.
         self.slice_details = slice_details
 
     def validate(self):
@@ -1044,6 +1106,7 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(DaraModel):
         end_timestamp: int = None,
         extend: str = None,
         labels: str = None,
+        result: List[main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult] = None,
         risk_level: str = None,
         risk_tips: str = None,
         risk_words: str = None,
@@ -1053,35 +1116,47 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(DaraModel):
         text: str = None,
         url: str = None,
     ):
-        # The description of the labels.
+        # The label descriptions.
         self.descriptions = descriptions
-        # The end time of the text after voice-to-text conversion. Unit: seconds.
+        # The end time of the segment, in seconds.
         self.end_time = end_time
-        # The end timestamp of the segment. Unit: milliseconds.
+        # The end timestamp.
         self.end_timestamp = end_timestamp
-        # A reserved parameter.
+        # The extended field.
         self.extend = extend
-        # The details of the labels.
+        # The violation labels that are hit.
         self.labels = labels
-        # Risk Level.
+        self.result = result
+        # The risk level, returned based on the configured high and low risk score thresholds. Valid values:
+        # 
+        # - high: High risk.
+        # 
+        # - medium: Medium risk.
+        #  
+        # - low: Low risk.
+        # 
+        # - none: No risk detected.
         self.risk_level = risk_level
-        # Subcategory labels. Multiple labels are separated by commas (,).
+        # The details of the hit risk.
         self.risk_tips = risk_tips
-        # The risk words that are hit. Multiple words are separated by commas (,).
+        # The risk keywords that are hit.
         self.risk_words = risk_words
         # The risk score. Default range: 0 to 99.
         self.score = score
-        # The start time of the text after voice-to-text conversion. Unit: seconds.
+        # The start time of the segment, in seconds.
         self.start_time = start_time
-        # The start timestamp of the segment. Unit: milliseconds.
+        # The start timestamp, in milliseconds.
         self.start_timestamp = start_timestamp
-        # The text converted from voice.
+        # The transcribed text of the audio segment.
         self.text = text
-        # If the moderation object is a voice stream, this parameter indicates the temporary access URL of the voice stream to which the text entry corresponds. The validity period of the URL is 30 minutes. You must prepare another URL to store the voice stream at the earliest opportunity.
+        # The temporary URL of the audio segment file.
         self.url = url
 
     def validate(self):
-        pass
+        if self.result:
+            for v1 in self.result:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -1102,6 +1177,11 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(DaraModel):
 
         if self.labels is not None:
             result['Labels'] = self.labels
+
+        result['Result'] = []
+        if self.result is not None:
+            for k1 in self.result:
+                result['Result'].append(k1.to_map() if k1 else None)
 
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
@@ -1146,6 +1226,12 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(DaraModel):
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
 
+        self.result = []
+        if m.get('Result') is not None:
+            for k1 in m.get('Result'):
+                temp_model = main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult()
+                self.result.append(temp_model.from_map(k1))
+
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
 
@@ -1172,6 +1258,176 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(DaraModel):
 
         return self
 
+class VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult(DaraModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        customized_hit: List[main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit] = None,
+        description: str = None,
+        label: str = None,
+        risk_level: str = None,
+        risk_positions: List[main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions] = None,
+        risk_words: str = None,
+    ):
+        self.confidence = confidence
+        self.customized_hit = customized_hit
+        self.description = description
+        self.label = label
+        self.risk_level = risk_level
+        self.risk_positions = risk_positions
+        self.risk_words = risk_words
+
+    def validate(self):
+        if self.customized_hit:
+            for v1 in self.customized_hit:
+                 if v1:
+                    v1.validate()
+        if self.risk_positions:
+            for v1 in self.risk_positions:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+
+        result['CustomizedHit'] = []
+        if self.customized_hit is not None:
+            for k1 in self.customized_hit:
+                result['CustomizedHit'].append(k1.to_map() if k1 else None)
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.label is not None:
+            result['Label'] = self.label
+
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+
+        result['RiskPositions'] = []
+        if self.risk_positions is not None:
+            for k1 in self.risk_positions:
+                result['RiskPositions'].append(k1.to_map() if k1 else None)
+
+        if self.risk_words is not None:
+            result['RiskWords'] = self.risk_words
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+
+        self.customized_hit = []
+        if m.get('CustomizedHit') is not None:
+            for k1 in m.get('CustomizedHit'):
+                temp_model = main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit()
+                self.customized_hit.append(temp_model.from_map(k1))
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+
+        self.risk_positions = []
+        if m.get('RiskPositions') is not None:
+            for k1 in m.get('RiskPositions'):
+                temp_model = main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions()
+                self.risk_positions.append(temp_model.from_map(k1))
+
+        if m.get('RiskWords') is not None:
+            self.risk_words = m.get('RiskWords')
+
+        return self
+
+class VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions(DaraModel):
+    def __init__(
+        self,
+        end_pos: int = None,
+        risk_word: str = None,
+        start_pos: int = None,
+    ):
+        self.end_pos = end_pos
+        self.risk_word = risk_word
+        self.start_pos = start_pos
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_pos is not None:
+            result['EndPos'] = self.end_pos
+
+        if self.risk_word is not None:
+            result['RiskWord'] = self.risk_word
+
+        if self.start_pos is not None:
+            result['StartPos'] = self.start_pos
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndPos') is not None:
+            self.end_pos = m.get('EndPos')
+
+        if m.get('RiskWord') is not None:
+            self.risk_word = m.get('RiskWord')
+
+        if m.get('StartPos') is not None:
+            self.start_pos = m.get('StartPos')
+
+        return self
+
+class VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomizedHit(DaraModel):
+    def __init__(
+        self,
+        key_words: str = None,
+        lib_name: str = None,
+    ):
+        self.key_words = key_words
+        self.lib_name = lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
+
+        return self
+
 class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(DaraModel):
     def __init__(
         self,
@@ -1179,11 +1435,11 @@ class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(DaraModel):
         label: str = None,
         label_sum: int = None,
     ):
-        # The description of the labels.
+        # The label descriptions.
         self.description = description
-        # The voice label.
+        # The video audio label.
         self.label = label
-        # The number of times that the label is matched.
+        # The number of times the label appears.
         self.label_sum = label_sum
 
     def validate(self):

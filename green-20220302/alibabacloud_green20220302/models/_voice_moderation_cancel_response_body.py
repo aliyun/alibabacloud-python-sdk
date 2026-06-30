@@ -11,11 +11,11 @@ class VoiceModerationCancelResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The return code. A return code of 200 indicates that the request is successful.
         self.code = code
-        # The message that is returned in response to the request.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

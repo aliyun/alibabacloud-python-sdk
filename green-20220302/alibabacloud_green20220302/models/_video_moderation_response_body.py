@@ -13,13 +13,13 @@ class VideoModerationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The return code. A return code of 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,7 +68,7 @@ class VideoModerationResponseBodyData(DaraModel):
         data_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the moderated object.
+        # The value of the dataId parameter that you specified in the API request. This parameter is not returned if you did not specify the dataId parameter in the request.
         self.data_id = data_id
         # The task ID.
         self.task_id = task_id

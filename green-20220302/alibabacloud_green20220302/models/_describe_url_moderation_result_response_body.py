@@ -15,13 +15,13 @@ class DescribeUrlModerationResultResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates success.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The response message of this request.
         self.msg = msg
-        # The request ID.
+        # The ID of this request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeUrlModerationResultResponseBodyData(DaraModel):
         req_id: str = None,
         result: List[main_models.DescribeUrlModerationResultResponseBodyDataResult] = None,
     ):
-        # The value of dataId that is specified in the API request. If this parameter is not specified in the API request, this field is not available in the response.
+        # The value of the dataId parameter passed in the API request. This field is not returned if the parameter is not passed in the request.
         self.data_id = data_id
-        # The supplementary information.
+        # Additional information.
         self.extra_info = extra_info
-        # The ReqId field returned by an asynchronous URL moderation operation.
+        # The ReqId field returned by the asynchronous URL moderation operation
         self.req_id = req_id
-        # The returned results.
+        # The returned collection.
         self.result = result
 
     def validate(self):
@@ -136,9 +136,9 @@ class DescribeUrlModerationResultResponseBodyDataResult(DaraModel):
         confidence: float = None,
         label: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+        # The confidence score, ranging from 0 to 100, with two decimal places.
         self.confidence = confidence
-        # The labels returned after the asynchronous URL moderation.
+        # The label returned after URL moderation.
         self.label = label
 
     def validate(self):
@@ -174,11 +174,11 @@ class DescribeUrlModerationResultResponseBodyDataExtraInfo(DaraModel):
         icp_type: str = None,
         site_type: str = None,
     ):
-        # The ICP number.
+        # The ICP filing number.
         self.icp_no = icp_no
-        # The type of the ICP filing.
+        # The ICP filing type.
         self.icp_type = icp_type
-        # The type of site
+        # The website type
         self.site_type = site_type
 
     def validate(self):

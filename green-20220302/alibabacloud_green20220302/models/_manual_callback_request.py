@@ -14,17 +14,17 @@ class ManualCallbackRequest(DaraModel):
         msg: str = None,
         req_id: str = None,
     ):
-        # Channel field
+        # The channel field.
         self.channel = channel
-        # Checksum.
+        # The checksum.
         self.checksum = checksum
-        # Code value
+        # The code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Message information
+        # The message.
         self.msg = msg
-        # Platform request ID, used for troubleshooting assistance
+        # The ID of the platform request. This ID is used to troubleshoot issues.
         self.req_id = req_id
 
     def validate(self):

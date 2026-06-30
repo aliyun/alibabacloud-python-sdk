@@ -10,16 +10,9 @@ class VideoModerationResultRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
-        # 
-        # Valid values:
-        # 
-        # *   liveStreamDetection: live stream moderation
-        # *   videoDetection: video file moderation
-        # *   liveStreamDetection_cb: live stream moderation_For regions outside the Chinese mainland
-        # *   videoDetection_cb: video file moderation_For regions outside the Chinese mainland.
+        # The service code for video moderation.
         self.service = service
-        # The parameters required by the moderation service. The ID of the task that you want to query. You can specify one task ID at a time.
+        # The parameter set required by the moderation service. taskId specifies the task ID of the moderation task to query. Only one taskId can be specified per request.
         self.service_parameters = service_parameters
 
     def validate(self):

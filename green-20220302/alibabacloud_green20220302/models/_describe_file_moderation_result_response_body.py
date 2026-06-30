@@ -15,13 +15,13 @@ class DescribeFileModerationResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -75,18 +75,19 @@ class DescribeFileModerationResultResponseBodyData(DaraModel):
         risk_level: str = None,
         url: str = None,
     ):
+        # The AccountId specified in the request.
         self.account_id = account_id
-        # The ID of the moderated object.
+        # The ID of the data.
         self.data_id = data_id
-        # Optional. The document type.
+        # The document type. This parameter is optional.
         self.doc_type = doc_type
-        # An array that consists of the moderation results.
+        # A list of moderation results.
         self.page_result = page_result
-        # Summary of results
+        # The summary information.
         self.page_summary = page_summary
-        # Risk Level
+        # The risk level.
         self.risk_level = risk_level
-        # The URL of the moderated object.
+        # The download URL for the file.
         self.url = url
 
     def validate(self):
@@ -163,11 +164,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummary(DaraModel):
         page_sum: int = None,
         text_summary: main_models.DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary = None,
     ):
-        # Image Results Summary
+        # The image summary information.
         self.image_summary = image_summary
-        # Number of pages
+        # The total number of pages.
         self.page_sum = page_sum
-        # Text Results Summary
+        # The text summary information.
         self.text_summary = text_summary
 
     def validate(self):
@@ -213,9 +214,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummary(DaraMod
         risk_level: str = None,
         text_labels: List[main_models.DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabels] = None,
     ):
-        # Risk Level
+        # The risk level.
         self.risk_level = risk_level
-        # Text Label
+        # The text labels.
         self.text_labels = text_labels
 
     def validate(self):
@@ -259,11 +260,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryTextSummaryTextLabe
         label: str = None,
         label_sum: int = None,
     ):
-        # The description of the labels.
+        # The description of the label.
         self.description = description
-        # The details of the labels.
+        # The label.
         self.label = label
-        # The number of times that the label is matched.
+        # The number of times the label appears.
         self.label_sum = label_sum
 
     def validate(self):
@@ -304,9 +305,9 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummary(DaraMo
         image_labels: List[main_models.DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLabels] = None,
         risk_level: str = None,
     ):
-        # Image Label
+        # The image labels.
         self.image_labels = image_labels
-        # Risk Level
+        # The risk level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -350,11 +351,11 @@ class DescribeFileModerationResultResponseBodyDataPageSummaryImageSummaryImageLa
         label: str = None,
         label_sum: int = None,
     ):
-        # The description.
+        # The description of the label.
         self.description = description
-        # The details of the labels.
+        # The label.
         self.label = label
-        # The number of times that the label is matched.
+        # The number of times the label appears.
         self.label_sum = label_sum
 
     def validate(self):
@@ -400,13 +401,13 @@ class DescribeFileModerationResultResponseBodyDataPageResult(DaraModel):
     ):
         # The image moderation results.
         self.image_result = image_result
-        # The image URL.
+        # The URL of the image.
         self.image_url = image_url
         # The page number.
         self.page_num = page_num
         # The text moderation results.
         self.text_result = text_result
-        # The text URL.
+        # The URL where the text content is stored.
         self.text_url = text_url
 
     def validate(self):
@@ -485,21 +486,21 @@ class DescribeFileModerationResultResponseBodyDataPageResultTextResult(DaraModel
     ):
         # The description.
         self.description = description
-        # The description of the labels.
+        # The description of the label.
         self.descriptions = descriptions
-        # The details of the labels.
+        # The value of the label.
         self.labels = labels
-        # Risk Level
+        # The risk level.
         self.risk_level = risk_level
-        # The risk details that are hit.
+        # Details about the hit risk.
         self.risk_tips = risk_tips
-        # The risk words that are hit.
+        # The risk keywords that were hit.
         self.risk_words = risk_words
-        # The moderation service.
+        # The service.
         self.service = service
         # The text content.
         self.text = text
-        # The text segmentation information.
+        # Information about the text segment.
         self.text_segment = text_segment
 
     def validate(self):
@@ -583,11 +584,11 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResult(DaraMode
         self.description = description
         # The label information.
         self.label_result = label_result
-        # The location information
+        # The location information.
         self.location = location
-        # Risk Level
+        # The risk level.
         self.risk_level = risk_level
-        # The moderation service.
+        # The service that was called.
         self.service = service
 
     def validate(self):
@@ -653,13 +654,13 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation(
         x: int = None,
         y: int = None,
     ):
-        # The H value of the coordinate point.
+        # The height of the detected area.
         self.h = h
-        # The W value of the coordinate point.
+        # The width of the detected area.
         self.w = w
-        # The X value of the coordinate point.
+        # The X coordinate of the point.
         self.x = x
-        # The Y value of the coordinate point.
+        # The Y-coordinate of the point.
         self.y = y
 
     def validate(self):
@@ -709,11 +710,11 @@ class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResu
         description: str = None,
         label: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+        # The confidence score.
         self.confidence = confidence
         # The description.
         self.description = description
-        # The details of the labels.
+        # The label.
         self.label = label
 
     def validate(self):

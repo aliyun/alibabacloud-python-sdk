@@ -15,11 +15,11 @@ class ManualModerationResponseBody(DaraModel):
     ):
         # Status code
         self.code = code
-        # Returned data.
+        # The response data.
         self.data = data
         # Error message
         self.message = message
-        # ID of the request
+        # The ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +68,9 @@ class ManualModerationResponseBodyData(DaraModel):
         data_id: str = None,
         task_id: str = None,
     ):
-        # The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
+        # The value of dataId passed in the API request. This field is not present if no dataId was passed in the request.
         self.data_id = data_id
-        # Task ID
+        # The task ID
         self.task_id = task_id
 
     def validate(self):

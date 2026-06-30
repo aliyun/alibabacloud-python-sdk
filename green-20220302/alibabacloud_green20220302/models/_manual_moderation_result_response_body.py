@@ -15,13 +15,13 @@ class ManualModerationResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message
+        # The error message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -69,22 +69,24 @@ class ManualModerationResultResponseBodyData(DaraModel):
         self,
         data_id: str = None,
         result: List[main_models.ManualModerationResultResponseBodyDataResult] = None,
+        review_count: str = None,
         risk_level: str = None,
         task_id: str = None,
     ):
-        # The value of dataId passed during the API request. This field will not be present if it was not provided during the request.
+        # The value of dataId passed in the API request. This field is not returned if dataId was not specified in the request.
         self.data_id = data_id
-        # Detailed label results.
+        # The detailed label results.
         self.result = result
-        # Risk level, returned based on the set high and low risk scores. Possible values include:
+        self.review_count = review_count
+        # The risk level, returned based on the configured high and low risk scores. Valid values:
         # 
-        # - high: High risk
+        # - high: high risk
         #  
-        # - low: Low risk
+        # - low: low risk
         # 
-        #  - none: No risk detected
+        # - none: no risk detected
         self.risk_level = risk_level
-        # Task ID
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -106,6 +108,9 @@ class ManualModerationResultResponseBodyData(DaraModel):
             for k1 in self.result:
                 result['Result'].append(k1.to_map() if k1 else None)
 
+        if self.review_count is not None:
+            result['ReviewCount'] = self.review_count
+
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
 
@@ -125,6 +130,9 @@ class ManualModerationResultResponseBodyData(DaraModel):
                 temp_model = main_models.ManualModerationResultResponseBodyDataResult()
                 self.result.append(temp_model.from_map(k1))
 
+        if m.get('ReviewCount') is not None:
+            self.review_count = m.get('ReviewCount')
+
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
 
@@ -139,9 +147,9 @@ class ManualModerationResultResponseBodyDataResult(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # Label description
+        # The label description.
         self.description = description
-        # Risk label
+        # The risk label.
         self.label = label
 
     def validate(self):

@@ -9,6 +9,7 @@ class DescribeMultimodalModerationResultRequest(DaraModel):
         self,
         req_id: str = None,
     ):
+        # The ReqId field returned by the asynchronous moderation API.
         self.req_id = req_id
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeUrlModerationResultRequest(DaraModel):
         self,
         req_id: str = None,
     ):
-        # The ReqId field returned by an asynchronous URL moderation operation.
+        # The ReqId field returned by the asynchronous URL moderation operation
         self.req_id = req_id
 
     def validate(self):
