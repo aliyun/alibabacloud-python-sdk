@@ -18,27 +18,29 @@ class UpdatePolarClawAgentShrinkRequest(DaraModel):
         restart: bool = None,
         workspace: str = None,
     ):
-        # Agent ID to update
+        # The ID of the agent to update.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # Application ID
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # New avatar
+        # The new avatar.
         self.avatar = avatar
-        # List of files to update
+        # The list of files to update.
         self.files_shrink = files_shrink
+        # Specifies whether to set the agent as the default agent.
         self.is_default = is_default
+        # Specifies whether to keep files when switching the workspace.
         self.keep_workspace_files = keep_workspace_files
-        # Model override
+        # The model override.
         self.model = model
-        # New display name
+        # The new display name of the agent.
         self.name = name
-        # Whether to restart the gateway after creation, default is true
+        # Specifies whether to restart the gateway after creation. Default value: true.
         self.restart = restart
-        # New workspace directory path
+        # The new working directory path.
         self.workspace = workspace
 
     def validate(self):

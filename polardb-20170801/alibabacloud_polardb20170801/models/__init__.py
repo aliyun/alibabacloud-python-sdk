@@ -689,6 +689,12 @@ from ._describe_polar_agent_session_status_response import DescribePolarAgentSes
 from ._describe_polar_agent_user_sessions_request import DescribePolarAgentUserSessionsRequest
 from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgentUserSessionsResponseBody
 from ._describe_polar_agent_user_sessions_response import DescribePolarAgentUserSessionsResponse
+from ._describe_polar_claw_agent_file_request import DescribePolarClawAgentFileRequest
+from ._describe_polar_claw_agent_file_response_body import DescribePolarClawAgentFileResponseBody
+from ._describe_polar_claw_agent_file_response import DescribePolarClawAgentFileResponse
+from ._describe_polar_claw_agent_tools_request import DescribePolarClawAgentToolsRequest
+from ._describe_polar_claw_agent_tools_response_body import DescribePolarClawAgentToolsResponseBody
+from ._describe_polar_claw_agent_tools_response import DescribePolarClawAgentToolsResponse
 from ._describe_polar_claw_agents_request import DescribePolarClawAgentsRequest
 from ._describe_polar_claw_agents_shrink_request import DescribePolarClawAgentsShrinkRequest
 from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBody
@@ -707,6 +713,9 @@ from ._describe_polar_claw_mcpservers_response import DescribePolarClawMCPServer
 from ._describe_polar_claw_plugins_request import DescribePolarClawPluginsRequest
 from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBody
 from ._describe_polar_claw_plugins_response import DescribePolarClawPluginsResponse
+from ._describe_polar_claw_skill_detail_request import DescribePolarClawSkillDetailRequest
+from ._describe_polar_claw_skill_detail_response_body import DescribePolarClawSkillDetailResponseBody
+from ._describe_polar_claw_skill_detail_response import DescribePolarClawSkillDetailResponse
 from ._describe_polar_claw_task_request import DescribePolarClawTaskRequest
 from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBody
 from ._describe_polar_claw_task_response import DescribePolarClawTaskResponse
@@ -847,6 +856,9 @@ from ._grant_account_privilege_zonal_response import GrantAccountPrivilegeZonalR
 from ._install_polar_claw_plugin_request import InstallPolarClawPluginRequest
 from ._install_polar_claw_plugin_response_body import InstallPolarClawPluginResponseBody
 from ._install_polar_claw_plugin_response import InstallPolarClawPluginResponse
+from ._install_polar_claw_skill_request import InstallPolarClawSkillRequest
+from ._install_polar_claw_skill_response_body import InstallPolarClawSkillResponseBody
+from ._install_polar_claw_skill_response import InstallPolarClawSkillResponse
 from ._list_orders_request import ListOrdersRequest
 from ._list_orders_response_body import ListOrdersResponseBody
 from ._list_orders_response import ListOrdersResponse
@@ -1153,6 +1165,9 @@ from ._run_polar_claw_cron_job_response import RunPolarClawCronJobResponse
 from ._search_memories_request import SearchMemoriesRequest
 from ._search_memories_response_body import SearchMemoriesResponseBody
 from ._search_memories_response import SearchMemoriesResponse
+from ._search_polar_claw_skills_request import SearchPolarClawSkillsRequest
+from ._search_polar_claw_skills_response_body import SearchPolarClawSkillsResponseBody
+from ._search_polar_claw_skills_response import SearchPolarClawSkillsResponse
 from ._set_polar_fs_file_quota_request import SetPolarFsFileQuotaRequest
 from ._set_polar_fs_file_quota_response_body import SetPolarFsFileQuotaResponseBody
 from ._set_polar_fs_file_quota_response import SetPolarFsFileQuotaResponse
@@ -1188,10 +1203,22 @@ from ._update_polar_claw_agent_request import UpdatePolarClawAgentRequest
 from ._update_polar_claw_agent_shrink_request import UpdatePolarClawAgentShrinkRequest
 from ._update_polar_claw_agent_response_body import UpdatePolarClawAgentResponseBody
 from ._update_polar_claw_agent_response import UpdatePolarClawAgentResponse
+from ._update_polar_claw_agent_skills_request import UpdatePolarClawAgentSkillsRequest
+from ._update_polar_claw_agent_skills_shrink_request import UpdatePolarClawAgentSkillsShrinkRequest
+from ._update_polar_claw_agent_skills_response_body import UpdatePolarClawAgentSkillsResponseBody
+from ._update_polar_claw_agent_skills_response import UpdatePolarClawAgentSkillsResponse
+from ._update_polar_claw_agent_tools_request import UpdatePolarClawAgentToolsRequest
+from ._update_polar_claw_agent_tools_shrink_request import UpdatePolarClawAgentToolsShrinkRequest
+from ._update_polar_claw_agent_tools_response_body import UpdatePolarClawAgentToolsResponseBody
+from ._update_polar_claw_agent_tools_response import UpdatePolarClawAgentToolsResponse
 from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequest
 from ._update_polar_claw_cron_job_shrink_request import UpdatePolarClawCronJobShrinkRequest
 from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBody
 from ._update_polar_claw_cron_job_response import UpdatePolarClawCronJobResponse
+from ._update_polar_claw_skill_request import UpdatePolarClawSkillRequest
+from ._update_polar_claw_skill_shrink_request import UpdatePolarClawSkillShrinkRequest
+from ._update_polar_claw_skill_response_body import UpdatePolarClawSkillResponseBody
+from ._update_polar_claw_skill_response import UpdatePolarClawSkillResponse
 from ._upgrade_dbcluster_version_request import UpgradeDBClusterVersionRequest
 from ._upgrade_dbcluster_version_response_body import UpgradeDBClusterVersionResponseBody
 from ._upgrade_dbcluster_version_response import UpgradeDBClusterVersionResponse
@@ -1468,6 +1495,11 @@ from ._describe_pending_maintenance_action_response_body import DescribePendingM
 from ._describe_pending_maintenance_actions_response_body import DescribePendingMaintenanceActionsResponseBodyTypeList
 from ._describe_polar_agent_chat_records_response_body import DescribePolarAgentChatRecordsResponseBodyData
 from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgentUserSessionsResponseBodyData
+from ._describe_polar_claw_agent_file_response_body import DescribePolarClawAgentFileResponseBodyFile
+from ._describe_polar_claw_agent_tools_response_body import DescribePolarClawAgentToolsResponseBodyCurrentConfig
+from ._describe_polar_claw_agent_tools_response_body import DescribePolarClawAgentToolsResponseBodyGroupsTools
+from ._describe_polar_claw_agent_tools_response_body import DescribePolarClawAgentToolsResponseBodyGroups
+from ._describe_polar_claw_agent_tools_response_body import DescribePolarClawAgentToolsResponseBodyProfiles
 from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgentsFiles
 from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgentsIdentity
 from ._describe_polar_claw_agents_response_body import DescribePolarClawAgentsResponseBodyAgentsModel
@@ -1483,6 +1515,10 @@ from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJ
 from ._describe_polar_claw_cron_jobs_response_body import DescribePolarClawCronJobsResponseBodyJobs
 from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBodyDiagnostics
 from ._describe_polar_claw_plugins_response_body import DescribePolarClawPluginsResponseBodyPlugins
+from ._describe_polar_claw_skill_detail_response_body import DescribePolarClawSkillDetailResponseBodyLatestVersion
+from ._describe_polar_claw_skill_detail_response_body import DescribePolarClawSkillDetailResponseBodyOwner
+from ._describe_polar_claw_skill_detail_response_body import DescribePolarClawSkillDetailResponseBodySkillStats
+from ._describe_polar_claw_skill_detail_response_body import DescribePolarClawSkillDetailResponseBodySkill
 from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBodyTaskError
 from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBodyTask
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyCustomBucketPathList
@@ -1542,12 +1578,14 @@ from ._modify_global_security_ipgroup_relation_response_body import ModifyGlobal
 from ._modify_log_backup_policy_request import ModifyLogBackupPolicyRequestAdvancedLogPolicies
 from ._move_polar_fs_objects_request import MovePolarFsObjectsRequestObjectsToMove
 from ._search_memories_response_body import SearchMemoriesResponseBodyResults
+from ._search_polar_claw_skills_response_body import SearchPolarClawSkillsResponseBodyResults
 from ._set_polar_fs_file_quota_request import SetPolarFsFileQuotaRequestFilePathQuotas
 from ._tag_resources_request import TagResourcesRequestTag
 from ._temp_modify_dbnode_request import TempModifyDBNodeRequestDBNode
 from ._update_polar_claw_agent_request import UpdatePolarClawAgentRequestFiles
 from ._update_polar_claw_agent_response_body import UpdatePolarClawAgentResponseBodyAgentIdentity
 from ._update_polar_claw_agent_response_body import UpdatePolarClawAgentResponseBodyAgent
+from ._update_polar_claw_agent_tools_response_body import UpdatePolarClawAgentToolsResponseBodyTools
 from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequestDelivery
 from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequestFailureAlert
 from ._update_polar_claw_cron_job_request import UpdatePolarClawCronJobRequestPayload
@@ -1559,6 +1597,7 @@ from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobRes
 from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobSchedule
 from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJobState
 from ._update_polar_claw_cron_job_response_body import UpdatePolarClawCronJobResponseBodyJob
+from ._update_polar_claw_skill_response_body import UpdatePolarClawSkillResponseBodyConfig
 
 __all__ = [
     AbortDBClusterMigrationRequest,
@@ -2248,6 +2287,12 @@ __all__ = [
     DescribePolarAgentUserSessionsRequest,
     DescribePolarAgentUserSessionsResponseBody,
     DescribePolarAgentUserSessionsResponse,
+    DescribePolarClawAgentFileRequest,
+    DescribePolarClawAgentFileResponseBody,
+    DescribePolarClawAgentFileResponse,
+    DescribePolarClawAgentToolsRequest,
+    DescribePolarClawAgentToolsResponseBody,
+    DescribePolarClawAgentToolsResponse,
     DescribePolarClawAgentsRequest,
     DescribePolarClawAgentsShrinkRequest,
     DescribePolarClawAgentsResponseBody,
@@ -2266,6 +2311,9 @@ __all__ = [
     DescribePolarClawPluginsRequest,
     DescribePolarClawPluginsResponseBody,
     DescribePolarClawPluginsResponse,
+    DescribePolarClawSkillDetailRequest,
+    DescribePolarClawSkillDetailResponseBody,
+    DescribePolarClawSkillDetailResponse,
     DescribePolarClawTaskRequest,
     DescribePolarClawTaskResponseBody,
     DescribePolarClawTaskResponse,
@@ -2406,6 +2454,9 @@ __all__ = [
     InstallPolarClawPluginRequest,
     InstallPolarClawPluginResponseBody,
     InstallPolarClawPluginResponse,
+    InstallPolarClawSkillRequest,
+    InstallPolarClawSkillResponseBody,
+    InstallPolarClawSkillResponse,
     ListOrdersRequest,
     ListOrdersResponseBody,
     ListOrdersResponse,
@@ -2712,6 +2763,9 @@ __all__ = [
     SearchMemoriesRequest,
     SearchMemoriesResponseBody,
     SearchMemoriesResponse,
+    SearchPolarClawSkillsRequest,
+    SearchPolarClawSkillsResponseBody,
+    SearchPolarClawSkillsResponse,
     SetPolarFsFileQuotaRequest,
     SetPolarFsFileQuotaResponseBody,
     SetPolarFsFileQuotaResponse,
@@ -2747,10 +2801,22 @@ __all__ = [
     UpdatePolarClawAgentShrinkRequest,
     UpdatePolarClawAgentResponseBody,
     UpdatePolarClawAgentResponse,
+    UpdatePolarClawAgentSkillsRequest,
+    UpdatePolarClawAgentSkillsShrinkRequest,
+    UpdatePolarClawAgentSkillsResponseBody,
+    UpdatePolarClawAgentSkillsResponse,
+    UpdatePolarClawAgentToolsRequest,
+    UpdatePolarClawAgentToolsShrinkRequest,
+    UpdatePolarClawAgentToolsResponseBody,
+    UpdatePolarClawAgentToolsResponse,
     UpdatePolarClawCronJobRequest,
     UpdatePolarClawCronJobShrinkRequest,
     UpdatePolarClawCronJobResponseBody,
     UpdatePolarClawCronJobResponse,
+    UpdatePolarClawSkillRequest,
+    UpdatePolarClawSkillShrinkRequest,
+    UpdatePolarClawSkillResponseBody,
+    UpdatePolarClawSkillResponse,
     UpgradeDBClusterVersionRequest,
     UpgradeDBClusterVersionResponseBody,
     UpgradeDBClusterVersionResponse,
@@ -3027,6 +3093,11 @@ __all__ = [
     DescribePendingMaintenanceActionsResponseBodyTypeList,
     DescribePolarAgentChatRecordsResponseBodyData,
     DescribePolarAgentUserSessionsResponseBodyData,
+    DescribePolarClawAgentFileResponseBodyFile,
+    DescribePolarClawAgentToolsResponseBodyCurrentConfig,
+    DescribePolarClawAgentToolsResponseBodyGroupsTools,
+    DescribePolarClawAgentToolsResponseBodyGroups,
+    DescribePolarClawAgentToolsResponseBodyProfiles,
     DescribePolarClawAgentsResponseBodyAgentsFiles,
     DescribePolarClawAgentsResponseBodyAgentsIdentity,
     DescribePolarClawAgentsResponseBodyAgentsModel,
@@ -3042,6 +3113,10 @@ __all__ = [
     DescribePolarClawCronJobsResponseBodyJobs,
     DescribePolarClawPluginsResponseBodyDiagnostics,
     DescribePolarClawPluginsResponseBodyPlugins,
+    DescribePolarClawSkillDetailResponseBodyLatestVersion,
+    DescribePolarClawSkillDetailResponseBodyOwner,
+    DescribePolarClawSkillDetailResponseBodySkillStats,
+    DescribePolarClawSkillDetailResponseBodySkill,
     DescribePolarClawTaskResponseBodyTaskError,
     DescribePolarClawTaskResponseBodyTask,
     DescribePolarFsAttributeResponseBodyCustomBucketPathList,
@@ -3101,12 +3176,14 @@ __all__ = [
     ModifyLogBackupPolicyRequestAdvancedLogPolicies,
     MovePolarFsObjectsRequestObjectsToMove,
     SearchMemoriesResponseBodyResults,
+    SearchPolarClawSkillsResponseBodyResults,
     SetPolarFsFileQuotaRequestFilePathQuotas,
     TagResourcesRequestTag,
     TempModifyDBNodeRequestDBNode,
     UpdatePolarClawAgentRequestFiles,
     UpdatePolarClawAgentResponseBodyAgentIdentity,
     UpdatePolarClawAgentResponseBodyAgent,
+    UpdatePolarClawAgentToolsResponseBodyTools,
     UpdatePolarClawCronJobRequestDelivery,
     UpdatePolarClawCronJobRequestFailureAlert,
     UpdatePolarClawCronJobRequestPayload,
@@ -3117,5 +3194,6 @@ __all__ = [
     UpdatePolarClawCronJobResponseBodyJobRuns,
     UpdatePolarClawCronJobResponseBodyJobSchedule,
     UpdatePolarClawCronJobResponseBodyJobState,
-    UpdatePolarClawCronJobResponseBodyJob
+    UpdatePolarClawCronJobResponseBodyJob,
+    UpdatePolarClawSkillResponseBodyConfig
 ]

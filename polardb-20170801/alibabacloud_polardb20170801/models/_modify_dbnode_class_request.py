@@ -24,63 +24,54 @@ class ModifyDBNodeClassRequest(DaraModel):
         resource_owner_id: int = None,
         sub_category: str = None,
     ):
-        # Specifies whether to automatically use a coupon. Valid values:
-        # 
-        # - `true` (default): A coupon is automatically applied.
-        # 
-        # - `false`: A coupon is not applied.
+        # Specifies whether to automatically use coupons. Valid values:
+        # * true (default): Uses coupons.
+        # * false: Does not use coupons.
         self.auto_use_coupon = auto_use_coupon
-        # A client-generated token that ensures the idempotence of the request. The token must be unique across requests. It is case-sensitive and can be up to 64 ASCII characters long.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token is case-sensitive and can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The cloud provider of the instance.
+        # The cloud service provider of the instance.
         self.cloud_provider = cloud_provider
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The target node specifications for all nodes in the cluster. For more information, see [compute node specifications](https://help.aliyun.com/document_detail/102542.html).
+        # The target specifications for all nodes. For more information, see [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
         # 
         # This parameter is required.
         self.dbnode_target_class = dbnode_target_class
-        # To modify the specifications of an AI node, you must set this parameter to `DLNode`.
+        # The node type. Set this parameter to DLNode only when you change the node specifications of an AI node.
         self.dbnode_type = dbnode_type
-        # The modification type. Valid values:
-        # 
-        # - **Upgrade**: Upgrades the node specifications.
-        # 
-        # - **Downgrade**: Downgrades the node specifications.
+        # The type of the specification change. Valid values: 
+        # * **Upgrade**: upgrades the specifications.
+        # * **Downgrade**: downgrades the specifications.
         # 
         # This parameter is required.
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The latest time to start the scheduled task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
-        # 
-        # > - The latest start time must be at least 30 minutes later than the earliest start time.
-        # >
-        # > - If you specify `PlannedStartTime` but omit this parameter, the latest start time defaults to `PlannedStartTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and leave this parameter empty, the task starts no later than `2021-01-14T09:30:00Z`.
+        # The latest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # > * The latest time must be at least 30 minutes later than the start time.
+        # > * If `PlannedStartTime` is set but this parameter is not specified, the latest time defaults to `start time + 30 minutes`. For example, if `PlannedStartTime` is set to `2021-01-14T09:00:00Z` and this parameter is left empty, the task starts no later than `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
-        # The planned time for a transient disconnection. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+        # The planned transient disconnection time.
         self.planned_flashing_off_time = planned_flashing_off_time
-        # The earliest time to start the scheduled upgrade or downgrade task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
-        # 
-        # > - This parameter is valid only when `ModifyType` is set to `Upgrade` or `Downgrade`.
-        # >
-        # > - The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can set the start time to a value in the range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-        # >
-        # > - If you leave this parameter empty, the task is immediately executed.
+        # The earliest start time of the scheduled specification change task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format (UTC).
+        # > * This parameter takes effect when `ModifyType` is set to `Upgrade` or `Downgrade`.
+        # > * The start time must be within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, the valid range for the start time is from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+        # > * If this parameter is left empty, the specification change task is immediately executed.
         self.planned_start_time = planned_start_time
-        # The coupon code. If you omit this parameter, the system applies the default coupon.
+        # The coupon code. If this parameter is not specified, the default coupon is used.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The subcategory of the cluster. Valid values:
+        # The cluster sub-series. Valid values:
         # 
-        # - **normal_exclusive**: dedicated specifications
+        # - **normal_exclusive**: Dedicated
         # 
-        # - **normal_general**: general-purpose specifications
+        # - **normal_general**: General-purpose
         # 
-        # This parameter is required when switching between dedicated and general-purpose specifications.
+        # This parameter is required when you change specifications between Dedicated and General-purpose.
         self.sub_category = sub_category
 
     def validate(self):

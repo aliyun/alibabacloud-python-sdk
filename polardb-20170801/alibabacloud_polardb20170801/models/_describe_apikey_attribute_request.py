@@ -12,10 +12,18 @@ class DescribeApikeyAttributeRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The plaintext API key.
+        # 
         # This parameter is required.
         self.api_key = api_key
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -118,16 +118,21 @@ class DescribePolarClawAgentsResponseBodyAgents(DaraModel):
         skills: List[str] = None,
         workspace: str = None,
     ):
+        # Indicates whether this is the default agent.
         self.default = default
+        # The agent file list.
         self.files = files
         # Agent ID
         self.id = id
         # The identity information.
         self.identity = identity
+        # The model configuration.
         self.model = model
-        # The display name of the agent.
+        # The agent display name.
         self.name = name
+        # The list of skills available to the agent.
         self.skills = skills
+        # The working directory path.
         self.workspace = workspace
 
     def validate(self):
@@ -212,7 +217,9 @@ class DescribePolarClawAgentsResponseBodyAgentsModel(DaraModel):
         fallbacks: List[str] = None,
         primary: str = None,
     ):
+        # The fallback model list.
         self.fallbacks = fallbacks
+        # The primary model.
         self.primary = primary
 
     def validate(self):
@@ -254,7 +261,7 @@ class DescribePolarClawAgentsResponseBodyAgentsIdentity(DaraModel):
         self.avatar = avatar
         # The avatar URL.
         self.avatar_url = avatar_url
-        # The emoji identifier in Unicode encoding format such as U+1F99E, or a direct emoji character.
+        # The emoji identifier in Unicode format such as U+1F99E, or a direct emoji character.
         self.emoji = emoji
         # The identity name.
         self.name = name
@@ -314,10 +321,15 @@ class DescribePolarClawAgentsResponseBodyAgentsFiles(DaraModel):
         size: int = None,
         updated_at_ms: int = None,
     ):
+        # Indicates whether the file is missing.
         self.missing = missing
+        # The file name.
         self.name = name
+        # The file path.
         self.path = path
+        # The file size, in bytes.
         self.size = size
+        # The last updated timestamp, in milliseconds.
         self.updated_at_ms = updated_at_ms
 
     def validate(self):

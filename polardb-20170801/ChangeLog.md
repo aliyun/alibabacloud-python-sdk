@@ -1,3 +1,14 @@
+2026-06-30 Version: 7.2.0
+- Support API DescribePolarClawAgentFile.
+- Support API DescribePolarClawAgentTools.
+- Support API DescribePolarClawSkillDetail.
+- Support API InstallPolarClawSkill.
+- Support API SearchPolarClawSkills.
+- Support API UpdatePolarClawAgentSkills.
+- Support API UpdatePolarClawAgentTools.
+- Support API UpdatePolarClawSkill.
+
+
 2026-06-26 Version: 7.1.0
 - Support API CreateBatchConsumer.
 - Support API DescribeApikeyAttribute.

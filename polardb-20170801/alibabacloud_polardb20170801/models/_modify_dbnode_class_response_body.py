@@ -11,7 +11,7 @@ class ModifyDBNodeClassResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The cluster ID.
+        # The database cluster ID.
         self.dbcluster_id = dbcluster_id
         # The order ID.
         self.order_id = order_id
