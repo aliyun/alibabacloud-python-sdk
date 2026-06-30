@@ -10,6 +10,12 @@
 - Update API ModifyTransitRouterMulticastDomain: add request parameters Options.StrictSourceControl.
 
 
+2026-06-30 Version: 1.3.10
+- Update API CreateTransitRouterMulticastDomain: add request parameters Options.StrictSourceControl.
+- Update API ListTransitRouterMulticastDomains: add response parameters Body.TransitRouterMulticastDomains.$.Options.StrictSourceControl.
+- Update API ModifyTransitRouterMulticastDomain: add request parameters Options.StrictSourceControl.
+
+
 2026-05-12 Version: 1.3.9
 - Update API ListTransitRouterVbrAttachments: add response parameters Body.TransitRouterAttachments.$.ManagedService.
 
