@@ -8,12 +8,18 @@ from alibabacloud_green20220302 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
-from alibabacloud_tea_openapi.websocketUtils import Client as WebSocketUtilsClient
 from darabonba.core import DaraCore as DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
 """
+
+def _create_web_socket_client(web_socket_client_config):
+    from alibabacloud_tea_openapi.websocketUtils import Client as WebSocketUtilsClient
+
+    return WebSocketUtilsClient.create_web_socket_client(web_socket_client_config)
+
+
 class Client(OpenApiClient):
 
     def __init__(
@@ -1481,7 +1487,7 @@ class Client(OpenApiClient):
         res = main_models.MultiModalGuardWsResponse()
         tmp = self.call_api(params, req, runtime)
         if not DaraCore.is_null(tmp.get('webSocketClient')):
-            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+            res.web_socket_client = _create_web_socket_client(tmp.get('webSocketClient'))
         return res
 
     async def multi_modal_guard_ws_with_options_async(
@@ -1509,7 +1515,7 @@ class Client(OpenApiClient):
         res = main_models.MultiModalGuardWsResponse()
         tmp = await self.call_api_async(params, req, runtime)
         if not DaraCore.is_null(tmp.get('webSocketClient')):
-            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+            res.web_socket_client = _create_web_socket_client(tmp.get('webSocketClient'))
         return res
 
     def multi_modal_guard_ws(
