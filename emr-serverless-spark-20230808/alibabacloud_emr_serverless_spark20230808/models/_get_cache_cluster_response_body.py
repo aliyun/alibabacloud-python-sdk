@@ -11,7 +11,9 @@ class GetCacheClusterResponseBody(DaraModel):
         cache_clusters: main_models.CacheCluster = None,
         request_id: str = None,
     ):
+        # The list of Cache clusters.
         self.cache_clusters = cache_clusters
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

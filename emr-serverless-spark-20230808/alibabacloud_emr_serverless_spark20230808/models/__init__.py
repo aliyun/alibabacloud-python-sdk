@@ -120,6 +120,9 @@ from ._get_ray_cluster_response import GetRayClusterResponse
 from ._get_ray_job_request import GetRayJobRequest
 from ._get_ray_job_response_body import GetRayJobResponseBody
 from ._get_ray_job_response import GetRayJobResponse
+from ._get_ray_log_request import GetRayLogRequest
+from ._get_ray_log_response_body import GetRayLogResponseBody
+from ._get_ray_log_response import GetRayLogResponse
 from ._get_run_configuration_request import GetRunConfigurationRequest
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBody
 from ._get_run_configuration_response import GetRunConfigurationResponse
@@ -182,6 +185,9 @@ from ._list_ray_job_request import ListRayJobRequest
 from ._list_ray_job_shrink_request import ListRayJobShrinkRequest
 from ._list_ray_job_response_body import ListRayJobResponseBody
 from ._list_ray_job_response import ListRayJobResponse
+from ._list_ray_logs_request import ListRayLogsRequest
+from ._list_ray_logs_response_body import ListRayLogsResponseBody
+from ._list_ray_logs_response import ListRayLogsResponse
 from ._list_release_versions_request import ListReleaseVersionsRequest
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBody
 from ._list_release_versions_response import ListReleaseVersionsResponse
@@ -321,6 +327,7 @@ from ._get_ray_cluster_response_body import GetRayClusterResponseBodyWorkerSpec
 from ._get_ray_job_response_body import GetRayJobResponseBodyGuHours
 from ._get_ray_job_response_body import GetRayJobResponseBodyHeadSpec
 from ._get_ray_job_response_body import GetRayJobResponseBodyWorkerSpecs
+from ._get_ray_log_response_body import GetRayLogResponseBodyData
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationLogConfig
 from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfiguration
@@ -367,6 +374,8 @@ from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayCluste
 from ._list_ray_cluster_response_body import ListRayClusterResponseBodyRayClusters
 from ._list_ray_job_request import ListRayJobRequestSubmitTime
 from ._list_ray_job_response_body import ListRayJobResponseBodyRayJobs
+from ._list_ray_logs_response_body import ListRayLogsResponseBodyDataObjectList
+from ._list_ray_logs_response_body import ListRayLogsResponseBodyData
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBodyReleaseVersions
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersApplicationConfigs
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStartConfiguration
@@ -522,6 +531,9 @@ __all__ = [
     GetRayJobRequest,
     GetRayJobResponseBody,
     GetRayJobResponse,
+    GetRayLogRequest,
+    GetRayLogResponseBody,
+    GetRayLogResponse,
     GetRunConfigurationRequest,
     GetRunConfigurationResponseBody,
     GetRunConfigurationResponse,
@@ -584,6 +596,9 @@ __all__ = [
     ListRayJobShrinkRequest,
     ListRayJobResponseBody,
     ListRayJobResponse,
+    ListRayLogsRequest,
+    ListRayLogsResponseBody,
+    ListRayLogsResponse,
     ListReleaseVersionsRequest,
     ListReleaseVersionsResponseBody,
     ListReleaseVersionsResponse,
@@ -723,6 +738,7 @@ __all__ = [
     GetRayJobResponseBodyGuHours,
     GetRayJobResponseBodyHeadSpec,
     GetRayJobResponseBodyWorkerSpecs,
+    GetRayLogResponseBodyData,
     GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs,
     GetRunConfigurationResponseBodyRunConfigurationLogConfig,
     GetRunConfigurationResponseBodyRunConfiguration,
@@ -769,6 +785,8 @@ __all__ = [
     ListRayClusterResponseBodyRayClusters,
     ListRayJobRequestSubmitTime,
     ListRayJobResponseBodyRayJobs,
+    ListRayLogsResponseBodyDataObjectList,
+    ListRayLogsResponseBodyData,
     ListReleaseVersionsResponseBodyReleaseVersions,
     ListSessionClustersResponseBodySessionClustersApplicationConfigs,
     ListSessionClustersResponseBodySessionClustersAutoStartConfiguration,

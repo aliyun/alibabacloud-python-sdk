@@ -1,3 +1,8 @@
+2026-06-30 Version: 1.26.0
+- Support API GetRayLog.
+- Support API ListRayLogs.
+
+
 2026-06-15 Version: 1.25.0
 - Support API GetCacheCluster.
 - Support API StartCacheCluster.

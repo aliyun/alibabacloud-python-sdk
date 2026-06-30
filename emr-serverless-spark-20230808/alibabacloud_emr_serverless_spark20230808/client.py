@@ -21,7 +21,24 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'emr-serverless-spark.us-west-1.aliyuncs.com',
+            'us-east-1': 'emr-serverless-spark.us-east-1.aliyuncs.com',
+            'na-south-1': 'emr-serverless-spark.na-south-1.aliyuncs.com',
+            'eu-central-1': 'emr-serverless-spark.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'emr-serverless-spark.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'emr-serverless-spark.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'emr-serverless-spark.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'emr-serverless-spark.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'emr-serverless-spark.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'emr-serverless-spark.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'emr-serverless-spark.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'emr-serverless-spark.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'emr-serverless-spark.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'emr-serverless-spark.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'emr-serverless-spark.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('emr-serverless-spark', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -3257,6 +3274,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_ray_job_with_options_async(workspace_id, submission_id, request, headers, runtime)
 
+    def get_ray_log_with_options(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayLog',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/log',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ray_log_with_options_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayLog',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/log',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ray_log(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+    ) -> main_models.GetRayLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_ray_log_with_options(workspace_id, instance_id, request, headers, runtime)
+
+    async def get_ray_log_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+    ) -> main_models.GetRayLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_ray_log_with_options_async(workspace_id, instance_id, request, headers, runtime)
+
     def get_run_configuration_with_options(
         self,
         workspace_id: str,
@@ -5134,6 +5239,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_ray_job_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_ray_logs_with_options(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.delimiter):
+            query['delimiter'] = request.delimiter
+        if not DaraCore.is_null(request.marker):
+            query['marker'] = request.marker
+        if not DaraCore.is_null(request.max_keys):
+            query['maxKeys'] = request.max_keys
+        if not DaraCore.is_null(request.prefix):
+            query['prefix'] = request.prefix
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayLogs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ray_logs_with_options_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.delimiter):
+            query['delimiter'] = request.delimiter
+        if not DaraCore.is_null(request.marker):
+            query['marker'] = request.marker
+        if not DaraCore.is_null(request.max_keys):
+            query['maxKeys'] = request.max_keys
+        if not DaraCore.is_null(request.prefix):
+            query['prefix'] = request.prefix
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayLogs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ray_logs(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+    ) -> main_models.ListRayLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ray_logs_with_options(workspace_id, instance_id, request, headers, runtime)
+
+    async def list_ray_logs_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+    ) -> main_models.ListRayLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ray_logs_with_options_async(workspace_id, instance_id, request, headers, runtime)
 
     def list_release_versions_with_options(
         self,
