@@ -10,7 +10,6 @@ class GetOpenUrlResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
-        # requestId
         self.request_id = request_id
         self.result = result
 

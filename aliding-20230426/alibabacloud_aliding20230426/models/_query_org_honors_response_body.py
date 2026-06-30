@@ -16,7 +16,6 @@ class QueryOrgHonorsResponseBody(DaraModel):
     ):
         self.next_token = next_token
         self.open_honors = open_honors
-        # requestId
         self.request_id = request_id
 
     def validate(self):

@@ -4,14 +4,18 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class GetUserIdShrinkRequest(DaraModel):
+class DisableSceneGroupTemplateShrinkRequest(DaraModel):
     def __init__(
         self,
+        open_conversation_id: str = None,
+        template_id: str = None,
         tenant_context_shrink: str = None,
-        union_id: str = None,
     ):
+        # This parameter is required.
+        self.open_conversation_id = open_conversation_id
+        # This parameter is required.
+        self.template_id = template_id
         self.tenant_context_shrink = tenant_context_shrink
-        self.union_id = union_id
 
     def validate(self):
         pass
@@ -21,21 +25,27 @@ class GetUserIdShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.open_conversation_id is not None:
+            result['OpenConversationId'] = self.open_conversation_id
+
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
         if self.tenant_context_shrink is not None:
             result['TenantContext'] = self.tenant_context_shrink
-
-        if self.union_id is not None:
-            result['UnionId'] = self.union_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OpenConversationId') is not None:
+            self.open_conversation_id = m.get('OpenConversationId')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
         if m.get('TenantContext') is not None:
             self.tenant_context_shrink = m.get('TenantContext')
-
-        if m.get('UnionId') is not None:
-            self.union_id = m.get('UnionId')
 
         return self
 

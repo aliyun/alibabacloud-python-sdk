@@ -13,7 +13,6 @@ class UpdateMeetingRoomResponseBody(DaraModel):
         vendor_type: str = None,
     ):
         self.result = result
-        # requestId
         self.request_id = request_id
         self.vendor_request_id = vendor_request_id
         self.vendor_type = vendor_type

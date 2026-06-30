@@ -19,7 +19,6 @@ class ListReportResponseBody(DaraModel):
         self.data_list = data_list
         self.has_more = has_more
         self.next_cursor = next_cursor
-        # requestId
         self.request_id = request_id
         self.size = size
 

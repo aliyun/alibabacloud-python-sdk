@@ -13,7 +13,6 @@ class QueryMeetingRoomGroupListResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.QueryMeetingRoomGroupListResponseBodyResult] = None,
     ):
-        # requestId
         self.request_id = request_id
         self.result = result
 

@@ -10,7 +10,6 @@ class DeleteSheetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # requestId
         self.request_id = request_id
         self.success = success
 

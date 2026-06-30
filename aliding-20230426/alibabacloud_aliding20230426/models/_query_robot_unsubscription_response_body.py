@@ -17,7 +17,6 @@ class QueryRobotUnsubscriptionResponseBody(DaraModel):
     ):
         self.page_no = page_no
         self.page_size = page_size
-        # requestId
         self.request_id = request_id
         self.total_count = total_count
         self.unsubscribed_staff_ids = unsubscribed_staff_ids

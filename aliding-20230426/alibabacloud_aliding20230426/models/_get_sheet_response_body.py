@@ -21,7 +21,6 @@ class GetSheetResponseBody(DaraModel):
         self.last_non_empty_column = last_non_empty_column
         self.last_non_empty_row = last_non_empty_row
         self.name = name
-        # requestId
         self.request_id = request_id
         self.row_count = row_count
         self.visibility = visibility

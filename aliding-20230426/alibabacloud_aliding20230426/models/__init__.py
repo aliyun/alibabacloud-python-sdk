@@ -457,6 +457,12 @@ from ._delete_workspace_members_request import DeleteWorkspaceMembersRequest
 from ._delete_workspace_members_shrink_request import DeleteWorkspaceMembersShrinkRequest
 from ._delete_workspace_members_response_body import DeleteWorkspaceMembersResponseBody
 from ._delete_workspace_members_response import DeleteWorkspaceMembersResponse
+from ._disable_scene_group_template_headers import DisableSceneGroupTemplateHeaders
+from ._disable_scene_group_template_shrink_headers import DisableSceneGroupTemplateShrinkHeaders
+from ._disable_scene_group_template_request import DisableSceneGroupTemplateRequest
+from ._disable_scene_group_template_shrink_request import DisableSceneGroupTemplateShrinkRequest
+from ._disable_scene_group_template_response_body import DisableSceneGroupTemplateResponseBody
+from ._disable_scene_group_template_response import DisableSceneGroupTemplateResponse
 from ._doc_blocks_delete_headers import DocBlocksDeleteHeaders
 from ._doc_blocks_delete_shrink_headers import DocBlocksDeleteShrinkHeaders
 from ._doc_blocks_delete_request import DocBlocksDeleteRequest
@@ -1944,6 +1950,8 @@ from ._delete_workspace_doc_members_request import DeleteWorkspaceDocMembersRequ
 from ._delete_workspace_members_headers import DeleteWorkspaceMembersHeadersAccountContext
 from ._delete_workspace_members_request import DeleteWorkspaceMembersRequestMembers
 from ._delete_workspace_members_request import DeleteWorkspaceMembersRequestTenantContext
+from ._disable_scene_group_template_headers import DisableSceneGroupTemplateHeadersAccountContext
+from ._disable_scene_group_template_request import DisableSceneGroupTemplateRequestTenantContext
 from ._doc_blocks_delete_headers import DocBlocksDeleteHeadersAccountContext
 from ._doc_blocks_delete_request import DocBlocksDeleteRequestTenantContext
 from ._doc_blocks_modify_headers import DocBlocksModifyHeadersAccountContext
@@ -3192,6 +3200,12 @@ __all__ = [
     DeleteWorkspaceMembersShrinkRequest,
     DeleteWorkspaceMembersResponseBody,
     DeleteWorkspaceMembersResponse,
+    DisableSceneGroupTemplateHeaders,
+    DisableSceneGroupTemplateShrinkHeaders,
+    DisableSceneGroupTemplateRequest,
+    DisableSceneGroupTemplateShrinkRequest,
+    DisableSceneGroupTemplateResponseBody,
+    DisableSceneGroupTemplateResponse,
     DocBlocksDeleteHeaders,
     DocBlocksDeleteShrinkHeaders,
     DocBlocksDeleteRequest,
@@ -4679,6 +4693,8 @@ __all__ = [
     DeleteWorkspaceMembersHeadersAccountContext,
     DeleteWorkspaceMembersRequestMembers,
     DeleteWorkspaceMembersRequestTenantContext,
+    DisableSceneGroupTemplateHeadersAccountContext,
+    DisableSceneGroupTemplateRequestTenantContext,
     DocBlocksDeleteHeadersAccountContext,
     DocBlocksDeleteRequestTenantContext,
     DocBlocksModifyHeadersAccountContext,

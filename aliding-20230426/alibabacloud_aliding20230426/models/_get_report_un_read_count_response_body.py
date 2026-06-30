@@ -11,7 +11,6 @@ class GetReportUnReadCountResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.count = count
-        # requestId
         self.request_id = request_id
 
     def validate(self):

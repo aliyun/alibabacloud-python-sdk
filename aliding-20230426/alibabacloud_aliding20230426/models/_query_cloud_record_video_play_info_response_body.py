@@ -18,7 +18,6 @@ class QueryCloudRecordVideoPlayInfoResponseBody(DaraModel):
         self.file_size = file_size
         self.mp_4file_url = mp_4file_url
         self.play_url = play_url
-        # requestId
         self.request_id = request_id
         self.status = status
 

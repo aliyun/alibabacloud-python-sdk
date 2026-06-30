@@ -22,7 +22,6 @@ class InvokeSkillResponseBody(DaraModel):
         self.error_msg = error_msg
         self.finished = finished
         self.metadata = metadata
-        # RequestId
         self.request_id = request_id
         self.success = success
 

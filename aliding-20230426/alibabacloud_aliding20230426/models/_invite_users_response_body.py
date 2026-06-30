@@ -12,7 +12,6 @@ class InviteUsersResponseBody(DaraModel):
         vendor_request_id: str = None,
         vendor_type: str = None,
     ):
-        # requestId
         self.request_id = request_id
         self.success = success
         self.vendor_request_id = vendor_request_id

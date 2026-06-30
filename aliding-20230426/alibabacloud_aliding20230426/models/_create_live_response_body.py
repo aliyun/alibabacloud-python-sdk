@@ -11,7 +11,6 @@ class CreateLiveResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.live_id = live_id
-        # requestId
         self.request_id = request_id
 
     def validate(self):

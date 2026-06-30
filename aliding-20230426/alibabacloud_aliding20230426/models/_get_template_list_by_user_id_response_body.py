@@ -15,7 +15,6 @@ class GetTemplateListByUserIdResponseBody(DaraModel):
         template_list: List[main_models.GetTemplateListByUserIdResponseBodyTemplateList] = None,
     ):
         self.next_cursor = next_cursor
-        # requestId
         self.request_id = request_id
         self.template_list = template_list
 

@@ -22,7 +22,6 @@ class CreateVideoConferenceResponseBody(DaraModel):
         self.external_link_url = external_link_url
         self.host_password = host_password
         self.phone_numbers = phone_numbers
-        # requestId
         self.request_id = request_id
         self.room_code = room_code
 

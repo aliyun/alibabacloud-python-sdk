@@ -24,7 +24,6 @@ class GetReportTemplateByNameResponseBody(DaraModel):
         self.fields = fields
         self.id = id
         self.name = name
-        # requestId
         self.request_id = request_id
         self.user_name = user_name
         self.userid = userid

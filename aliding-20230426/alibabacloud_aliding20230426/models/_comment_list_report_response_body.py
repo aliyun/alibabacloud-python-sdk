@@ -18,7 +18,6 @@ class CommentListReportResponseBody(DaraModel):
         self.comments = comments
         self.has_more = has_more
         self.next_cursor = next_cursor
-        # requestId
         self.request_id = request_id
 
     def validate(self):

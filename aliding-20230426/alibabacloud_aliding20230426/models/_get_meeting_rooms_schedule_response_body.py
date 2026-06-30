@@ -13,7 +13,6 @@ class GetMeetingRoomsScheduleResponseBody(DaraModel):
         request_id: str = None,
         schedule_information: List[main_models.GetMeetingRoomsScheduleResponseBodyScheduleInformation] = None,
     ):
-        # requestId
         self.request_id = request_id
         self.schedule_information = schedule_information
 

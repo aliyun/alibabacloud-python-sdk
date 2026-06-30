@@ -16,7 +16,6 @@ class ListEventsViewResponseBody(DaraModel):
     ):
         self.events = events
         self.next_token = next_token
-        # requestId
         self.request_id = request_id
 
     def validate(self):

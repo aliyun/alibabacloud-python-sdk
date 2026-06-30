@@ -48,7 +48,6 @@ class GetEventResponseBody(DaraModel):
         self.origin_start = origin_start
         self.recurrence = recurrence
         self.reminders = reminders
-        # requestId
         self.request_id = request_id
         self.rich_text_description = rich_text_description
         self.series_master_id = series_master_id
@@ -691,7 +690,6 @@ class GetEventResponseBodyLocation(DaraModel):
         meeting_rooms: List[str] = None,
     ):
         self.display_name = display_name
-        # --
         self.meeting_rooms = meeting_rooms
 
     def validate(self):

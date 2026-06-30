@@ -5,14 +5,18 @@ from __future__ import annotations
 from alibabacloud_aliding20230426 import models as main_models
 from darabonba.model import DaraModel
 
-class GetUserIdRequest(DaraModel):
+class DisableSceneGroupTemplateRequest(DaraModel):
     def __init__(
         self,
-        tenant_context: main_models.GetUserIdRequestTenantContext = None,
-        union_id: str = None,
+        open_conversation_id: str = None,
+        template_id: str = None,
+        tenant_context: main_models.DisableSceneGroupTemplateRequestTenantContext = None,
     ):
+        # This parameter is required.
+        self.open_conversation_id = open_conversation_id
+        # This parameter is required.
+        self.template_id = template_id
         self.tenant_context = tenant_context
-        self.union_id = union_id
 
     def validate(self):
         if self.tenant_context:
@@ -23,26 +27,32 @@ class GetUserIdRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.open_conversation_id is not None:
+            result['OpenConversationId'] = self.open_conversation_id
+
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
         if self.tenant_context is not None:
             result['TenantContext'] = self.tenant_context.to_map()
-
-        if self.union_id is not None:
-            result['UnionId'] = self.union_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('TenantContext') is not None:
-            temp_model = main_models.GetUserIdRequestTenantContext()
-            self.tenant_context = temp_model.from_map(m.get('TenantContext'))
+        if m.get('OpenConversationId') is not None:
+            self.open_conversation_id = m.get('OpenConversationId')
 
-        if m.get('UnionId') is not None:
-            self.union_id = m.get('UnionId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        if m.get('TenantContext') is not None:
+            temp_model = main_models.DisableSceneGroupTemplateRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m.get('TenantContext'))
 
         return self
 
-class GetUserIdRequestTenantContext(DaraModel):
+class DisableSceneGroupTemplateRequestTenantContext(DaraModel):
     def __init__(
         self,
         tenant_id: str = None,

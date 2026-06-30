@@ -18,7 +18,6 @@ class GetSpaceDirectoriesResponseBody(DaraModel):
         self.children = children
         self.has_more = has_more
         self.next_token = next_token
-        # requestId
         self.request_id = request_id
 
     def validate(self):
@@ -338,7 +337,6 @@ class GetSpaceDirectoriesResponseBodyChildrenStatisticalInfo(DaraModel):
         self,
         word_count: int = None,
     ):
-        # WordCount
         self.word_count = word_count
 
     def validate(self):

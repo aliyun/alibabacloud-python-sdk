@@ -16,7 +16,6 @@ class StatisticsListByTypeReportResponseBody(DaraModel):
     ):
         self.has_more = has_more
         self.next_cursor = next_cursor
-        # requestId
         self.request_id = request_id
         self.userid_list = userid_list
 

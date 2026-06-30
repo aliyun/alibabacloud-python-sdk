@@ -21,7 +21,6 @@ class GetRangeResponseBody(DaraModel):
         self.display_values = display_values
         self.formulas = formulas
         self.hyperlinks = hyperlinks
-        # requestId
         self.request_id = request_id
         self.values = values
 
@@ -157,13 +156,9 @@ class GetRangeResponseBodyBackgroundColors(DaraModel):
         blue: int = None,
         hex_string: str = None,
     ):
-        # red
         self.red = red
-        # green
         self.green = green
-        # blue
         self.blue = blue
-        # hexString
         self.hex_string = hex_string
 
     def validate(self):

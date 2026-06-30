@@ -42,7 +42,6 @@ class QueryDentryResponseBody(DaraModel):
         self.link_source_info = link_source_info
         self.name = name
         self.path = path
-        # requestId
         self.request_id = request_id
         self.space = space
         self.space_id = space_id

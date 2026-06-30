@@ -14,7 +14,6 @@ class GrantHonorResponseBody(DaraModel):
         success_user_ids: List[str] = None,
     ):
         self.failed_user_ids = failed_user_ids
-        # requestId
         self.request_id = request_id
         self.success_user_ids = success_user_ids
 

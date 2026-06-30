@@ -11,7 +11,6 @@ class UploadMediaResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.media_id = media_id
-        # requestId
         self.request_id = request_id
 
     def validate(self):

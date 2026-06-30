@@ -16,7 +16,6 @@ class QueryLiveWatchUserListResponseBody(DaraModel):
     ):
         self.org_uses_list = org_uses_list
         self.out_org_user_list = out_org_user_list
-        # requestId
         self.request_id = request_id
 
     def validate(self):

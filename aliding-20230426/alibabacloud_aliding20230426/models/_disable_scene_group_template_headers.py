@@ -7,11 +7,11 @@ from typing import Dict
 from alibabacloud_aliding20230426 import models as main_models
 from darabonba.model import DaraModel
 
-class GetSkillDetailHeaders(DaraModel):
+class DisableSceneGroupTemplateHeaders(DaraModel):
     def __init__(
         self,
         common_headers: Dict[str, str] = None,
-        account_context: main_models.GetSkillDetailHeadersAccountContext = None,
+        account_context: main_models.DisableSceneGroupTemplateHeadersAccountContext = None,
     ):
         self.common_headers = common_headers
         self.account_context = account_context
@@ -39,18 +39,16 @@ class GetSkillDetailHeaders(DaraModel):
             self.common_headers = m.get('commonHeaders')
 
         if m.get('AccountContext') is not None:
-            temp_model = main_models.GetSkillDetailHeadersAccountContext()
+            temp_model = main_models.DisableSceneGroupTemplateHeadersAccountContext()
             self.account_context = temp_model.from_map(m.get('AccountContext'))
 
         return self
 
-class GetSkillDetailHeadersAccountContext(DaraModel):
+class DisableSceneGroupTemplateHeadersAccountContext(DaraModel):
     def __init__(
         self,
-        sso_ticket: str = None,
         account_id: str = None,
     ):
-        self.sso_ticket = sso_ticket
         # This parameter is required.
         self.account_id = account_id
 
@@ -62,9 +60,6 @@ class GetSkillDetailHeadersAccountContext(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.sso_ticket is not None:
-            result['SsoTicket'] = self.sso_ticket
-
         if self.account_id is not None:
             result['accountId'] = self.account_id
 
@@ -72,9 +67,6 @@ class GetSkillDetailHeadersAccountContext(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('SsoTicket') is not None:
-            self.sso_ticket = m.get('SsoTicket')
-
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
 

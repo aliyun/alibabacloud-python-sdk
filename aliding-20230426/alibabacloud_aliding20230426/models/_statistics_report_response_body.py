@@ -17,7 +17,6 @@ class StatisticsReportResponseBody(DaraModel):
         self.comment_user_num = comment_user_num
         self.like_num = like_num
         self.read_num = read_num
-        # requestId
         self.request_id = request_id
 
     def validate(self):

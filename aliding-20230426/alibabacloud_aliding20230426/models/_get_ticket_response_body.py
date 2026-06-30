@@ -178,9 +178,7 @@ class GetTicketResponseBodyTemplate(DaraModel):
         open_template_id: str = None,
         template_name: str = None,
     ):
-        # OpenTemplateBizId
         self.open_template_biz_id = open_template_biz_id
-        # OpenTemplateBizId
         self.open_template_id = open_template_id
         self.template_name = template_name
 

@@ -15,7 +15,6 @@ class QueryOrgTodoTasksResponseBody(DaraModel):
         todo_cards: List[main_models.QueryOrgTodoTasksResponseBodyTodoCards] = None,
     ):
         self.next_token = next_token
-        # requestId
         self.request_id = request_id
         self.todo_cards = todo_cards
 

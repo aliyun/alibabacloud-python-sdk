@@ -4,14 +4,18 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class AddScenegroupMemberResponseBody(DaraModel):
+class DisableSceneGroupTemplateResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
         success: bool = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
     ):
         self.request_id = request_id
         self.success = success
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
 
     def validate(self):
         pass
@@ -27,6 +31,12 @@ class AddScenegroupMemberResponseBody(DaraModel):
         if self.success is not None:
             result['success'] = self.success
 
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -36,6 +46,12 @@ class AddScenegroupMemberResponseBody(DaraModel):
 
         if m.get('success') is not None:
             self.success = m.get('success')
+
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
 
         return self
 

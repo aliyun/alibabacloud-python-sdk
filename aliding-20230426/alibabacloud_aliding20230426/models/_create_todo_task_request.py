@@ -311,9 +311,7 @@ class CreateTodoTaskRequestContentFieldList(DaraModel):
         field_key: str = None,
         field_value: str = None,
     ):
-        # fieldKey
         self.field_key = field_key
-        # fieldValue
         self.field_value = field_value
 
     def validate(self):

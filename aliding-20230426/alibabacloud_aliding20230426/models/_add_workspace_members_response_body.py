@@ -13,7 +13,6 @@ class AddWorkspaceMembersResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.not_in_org_list = not_in_org_list
-        # requestId
         self.request_id = request_id
 
     def validate(self):

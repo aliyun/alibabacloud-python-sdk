@@ -11,7 +11,6 @@ class InsertColumnsBeforeResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.id = id
-        # requestId
         self.request_id = request_id
 
     def validate(self):
