@@ -13,6 +13,7 @@ class GetYikeUserResponseBody(DaraModel):
     ):
         # RequestId
         self.request_id = request_id
+        # The user information.
         self.user_info = user_info
 
     def validate(self):
@@ -51,9 +52,13 @@ class GetYikeUserResponseBodyUserInfo(DaraModel):
         workspace_id: str = None,
         yike_user_id: str = None,
     ):
+        # The nickname.
         self.nickname = nickname
+        # The username.
         self.user_name = user_name
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The user ID.
         self.yike_user_id = yike_user_id
 
     def validate(self):

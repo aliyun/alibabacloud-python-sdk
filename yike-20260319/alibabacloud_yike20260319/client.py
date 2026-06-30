@@ -20,7 +20,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'yike.cn-shanghai.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('yike', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -919,6 +922,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetYikeAssetMediaInfoResponse:
         runtime = RuntimeOptions()
         return await self.get_yike_asset_media_info_with_options_async(request, runtime)
+
+    def get_yike_project_export_job_with_options(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeProjectExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_project_export_job_with_options_async(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeProjectExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_project_export_job(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_project_export_job_with_options(request, runtime)
+
+    async def get_yike_project_export_job_async(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_project_export_job_with_options_async(request, runtime)
 
     def get_yike_prompt_expansion_voice_fix_job_with_options(
         self,
@@ -2111,6 +2184,84 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitYikeAvatarNarratorJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_yike_avatar_narrator_job_with_options_async(request, runtime)
+
+    def submit_yike_project_export_job_with_options(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.export_type):
+            query['ExportType'] = request.export_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeProjectExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_yike_project_export_job_with_options_async(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.export_type):
+            query['ExportType'] = request.export_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeProjectExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_yike_project_export_job(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_yike_project_export_job_with_options(request, runtime)
+
+    async def submit_yike_project_export_job_async(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_yike_project_export_job_with_options_async(request, runtime)
 
     def submit_yike_prompt_expansion_voice_fix_job_with_options(
         self,

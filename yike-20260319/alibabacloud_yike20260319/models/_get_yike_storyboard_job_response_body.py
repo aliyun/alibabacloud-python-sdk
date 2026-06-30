@@ -15,11 +15,23 @@ class GetYikeStoryboardJobResponseBody(DaraModel):
         job_status: str = None,
         request_id: str = None,
     ):
+        # The credit consumption.
         self.job_credit = job_credit
+        # The task ID. You can obtain this value from the response of [SubmitPackageJob](https://help.aliyun.com/document_detail/461964.html).
         self.job_id = job_id
+        # The algorithm job parameters. This is a JSON object whose content varies depending on the algorithm.
         self.job_params = job_params
+        # The task result.
         self.job_result = job_result
+        # The task status. Valid values:
+        # 
+        # - **Succeeded**: The task is successful.
+        # 
+        # - **Failed**: The task failed.
+        # 
+        # - **Running**: The task is running.
         self.job_status = job_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -91,12 +103,19 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
         success_storyboard_ids: str = None,
         success_storyboard_list: str = None,
     ):
+        # The list of abnormal storyboard IDs.
         self.exception_storyboard_ids = exception_storyboard_ids
+        # The list of failed shots.
         self.failure_shot_list = failure_shot_list
+        # The downloadable OSS URL.
         self.output_url = output_url
+        # The URL of the SRT file.
         self.srt_file_url = srt_file_url
+        # The detailed storyboard information for the storyboard generation task.
         self.storyboard_info_list = storyboard_info_list
+        # The list of successful storyboard IDs, separated by commas.
         self.success_storyboard_ids = success_storyboard_ids
+        # The list of successful storyboards.
         self.success_storyboard_list = success_storyboard_list
 
     def validate(self):
@@ -170,16 +189,29 @@ class GetYikeStoryboardJobResponseBodyJobParams(DaraModel):
         title: str = None,
         video_model: str = None,
     ):
+        # The aspect ratio of the video.
         self.aspect_ratio = aspect_ratio
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The random seed.
         self.model_params = model_params
+        # The narration voice ID.
         self.narration_voice_id = narration_voice_id
+        # The resolution of the generated video.
         self.resolution = resolution
+        # The shot prompt generation mode.
         self.shot_prompt_mode = shot_prompt_mode
+        # The shot splitting mode.
         self.shot_split_mode = shot_split_mode
+        # The source type.
         self.source_type = source_type
+        # The style ID.
         self.style_id = style_id
+        # The task title. Requirements:
+        # - The title cannot exceed 128 bytes in length.
+        # - The title must be UTF-8 encoded.
         self.title = title
+        # The video model.
         self.video_model = video_model
 
     def validate(self):
@@ -270,9 +302,13 @@ class GetYikeStoryboardJobResponseBodyJobCredit(DaraModel):
         video_composition: str = None,
         video_generation: str = None,
     ):
+        # The credit consumption for element image generation.
         self.element_image_generation = element_image_generation
+        # The total credit consumption.
         self.total_credit_cost = total_credit_cost
+        # The credit consumption for video composition.
         self.video_composition = video_composition
+        # The credit consumption for video generation.
         self.video_generation = video_generation
 
     def validate(self):

@@ -11,7 +11,9 @@ class GetYikeUserCreditResponseBody(DaraModel):
         credit_usage: str = None,
         request_id: str = None,
     ):
+        # The total allocated credits.
         self.credit_total = credit_total
+        # The remaining available credits.
         self.credit_usage = credit_usage
         # RequestId
         self.request_id = request_id

@@ -10,6 +10,7 @@ class UpdateYikeProductionResponseBody(DaraModel):
         production_id: str = None,
         request_id: str = None,
     ):
+        # The project ID.
         self.production_id = production_id
         # RequestId
         self.request_id = request_id

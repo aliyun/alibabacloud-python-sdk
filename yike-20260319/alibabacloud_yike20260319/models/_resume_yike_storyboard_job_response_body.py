@@ -10,7 +10,9 @@ class ResumeYikeStoryboardJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The task ID. You can obtain this value from the response of [SubmitPackageJob](https://help.aliyun.com/document_detail/461964.html).
         self.job_id = job_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

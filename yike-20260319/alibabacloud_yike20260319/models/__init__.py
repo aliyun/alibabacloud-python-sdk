@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._entity_media_basic_info import EntityMediaBasicInfo
 from ._add_yike_production_members_request import AddYikeProductionMembersRequest
 from ._add_yike_production_members_response_body import AddYikeProductionMembersResponseBody
 from ._add_yike_production_members_response import AddYikeProductionMembersResponse
@@ -38,6 +39,9 @@ from ._get_yike_agent_job_response import GetYikeAgentJobResponse
 from ._get_yike_asset_media_info_request import GetYikeAssetMediaInfoRequest
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBody
 from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
+from ._get_yike_project_export_job_request import GetYikeProjectExportJobRequest
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBody
+from ._get_yike_project_export_job_response import GetYikeProjectExportJobResponse
 from ._get_yike_prompt_expansion_voice_fix_job_request import GetYikePromptExpansionVoiceFixJobRequest
 from ._get_yike_prompt_expansion_voice_fix_job_response_body import GetYikePromptExpansionVoiceFixJobResponseBody
 from ._get_yike_prompt_expansion_voice_fix_job_response import GetYikePromptExpansionVoiceFixJobResponse
@@ -86,6 +90,9 @@ from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
 from ._submit_yike_avatar_narrator_job_request import SubmitYikeAvatarNarratorJobRequest
 from ._submit_yike_avatar_narrator_job_response_body import SubmitYikeAvatarNarratorJobResponseBody
 from ._submit_yike_avatar_narrator_job_response import SubmitYikeAvatarNarratorJobResponse
+from ._submit_yike_project_export_job_request import SubmitYikeProjectExportJobRequest
+from ._submit_yike_project_export_job_response_body import SubmitYikeProjectExportJobResponseBody
+from ._submit_yike_project_export_job_response import SubmitYikeProjectExportJobResponse
 from ._submit_yike_prompt_expansion_voice_fix_job_request import SubmitYikePromptExpansionVoiceFixJobRequest
 from ._submit_yike_prompt_expansion_voice_fix_job_response_body import SubmitYikePromptExpansionVoiceFixJobResponseBody
 from ._submit_yike_prompt_expansion_voice_fix_job_response import SubmitYikePromptExpansionVoiceFixJobResponse
@@ -125,6 +132,9 @@ from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoRespo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBodyProjectExportJobExportResultSrtList
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBodyProjectExportJobExportResult
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBodyProjectExportJob
 from ._get_yike_prompt_expansion_voice_fix_job_response_body import GetYikePromptExpansionVoiceFixJobResponseBodyJobResult
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobCredit
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
@@ -137,6 +147,7 @@ from ._list_yike_workspaces_response_body import ListYikeWorkspacesResponseBodyW
 from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBodyResult
 
 __all__ = [
+    EntityMediaBasicInfo,
     AddYikeProductionMembersRequest,
     AddYikeProductionMembersResponseBody,
     AddYikeProductionMembersResponse,
@@ -173,6 +184,9 @@ __all__ = [
     GetYikeAssetMediaInfoRequest,
     GetYikeAssetMediaInfoResponseBody,
     GetYikeAssetMediaInfoResponse,
+    GetYikeProjectExportJobRequest,
+    GetYikeProjectExportJobResponseBody,
+    GetYikeProjectExportJobResponse,
     GetYikePromptExpansionVoiceFixJobRequest,
     GetYikePromptExpansionVoiceFixJobResponseBody,
     GetYikePromptExpansionVoiceFixJobResponse,
@@ -221,6 +235,9 @@ __all__ = [
     SubmitYikeAvatarNarratorJobRequest,
     SubmitYikeAvatarNarratorJobResponseBody,
     SubmitYikeAvatarNarratorJobResponse,
+    SubmitYikeProjectExportJobRequest,
+    SubmitYikeProjectExportJobResponseBody,
+    SubmitYikeProjectExportJobResponse,
     SubmitYikePromptExpansionVoiceFixJobRequest,
     SubmitYikePromptExpansionVoiceFixJobResponseBody,
     SubmitYikePromptExpansionVoiceFixJobResponse,
@@ -260,6 +277,9 @@ __all__ = [
     GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList,
     GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo,
     GetYikeAssetMediaInfoResponseBodyMediaInfo,
+    GetYikeProjectExportJobResponseBodyProjectExportJobExportResultSrtList,
+    GetYikeProjectExportJobResponseBodyProjectExportJobExportResult,
+    GetYikeProjectExportJobResponseBodyProjectExportJob,
     GetYikePromptExpansionVoiceFixJobResponseBodyJobResult,
     GetYikeStoryboardJobResponseBodyJobCredit,
     GetYikeStoryboardJobResponseBodyJobParams,

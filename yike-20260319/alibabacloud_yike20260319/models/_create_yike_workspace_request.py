@@ -10,8 +10,12 @@ class CreateYikeWorkspaceRequest(DaraModel):
         title: str = None,
         user_count_limit: int = None,
     ):
+        # The project title.
+        # 
         # This parameter is required.
         self.title = title
+        # The maximum number of team users allowed in the workspace.
+        # 
         # This parameter is required.
         self.user_count_limit = user_count_limit
 

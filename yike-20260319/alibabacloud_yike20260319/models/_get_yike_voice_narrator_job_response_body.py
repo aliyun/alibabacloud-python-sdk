@@ -18,12 +18,22 @@ class GetYikeVoiceNarratorJobResponseBody(DaraModel):
         request_id: str = None,
         user_data: str = None,
     ):
+        # The error code. This parameter is returned only when JobStatus is Failed.
         self.error_code = error_code
+        # The task ID.
         self.job_id = job_id
+        # The input parameters of the task, in JSON string format.
         self.job_params = job_params
+        # The task results. This parameter is valid only when JobStatus is Succeeded.
         self.job_result = job_result
+        # The task status. Valid values:
+        # - Running
+        # - Succeeded
+        # - Failed.
         self.job_status = job_status
+        # The request ID.
         self.request_id = request_id
+        # The custom user data passed in when the task was created. The value is returned as-is.
         self.user_data = user_data
 
     def validate(self):
@@ -98,9 +108,13 @@ class GetYikeVoiceNarratorJobResponseBodyJobResult(DaraModel):
         output_language: str = None,
         output_url: str = None,
     ):
+        # The online editing project ID.
         self.editing_project_id = editing_project_id
+        # The asset ID.
         self.media_id = media_id
+        # The output language.
         self.output_language = output_language
+        # The download URL.
         self.output_url = output_url
 
     def validate(self):

@@ -16,7 +16,9 @@ class ListYikeWorkspacesResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # Total number of workspaces
         self.total_count = total_count
+        # Workspace list
         self.workspace_list = workspace_list
 
     def validate(self):
@@ -70,12 +72,19 @@ class ListYikeWorkspacesResponseBodyWorkspaceList(DaraModel):
         user_count: str = None,
         workspace_id: str = None,
     ):
+        # Workspace code
         self.code = code
+        # Creation time.
         self.create_time = create_time
+        # Default project ID
         self.default_production_id = default_production_id
+        # Workspace status
         self.status = status
+        # Title
         self.title = title
+        # Number of users in the workspace
         self.user_count = user_count
+        # Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

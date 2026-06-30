@@ -10,8 +10,11 @@ class CreateYikeAssetUploadRequest(DaraModel):
         file_ext: str = None,
         file_type: str = None,
     ):
+        # The file name extension.
+        # 
         # This parameter is required.
         self.file_ext = file_ext
+        # The file type. Default value: Media.
         self.file_type = file_type
 
     def validate(self):

@@ -1,3 +1,8 @@
+2026-06-30 Version: 1.7.0
+- Support API GetYikeProjectExportJob.
+- Support API SubmitYikeProjectExportJob.
+
+
 2026-05-27 Version: 1.6.3
 - Update API GetYikeAgentJob: add response parameters Body.CreateTime.
 - Update API GetYikeAgentJob: add response parameters Body.FinishTime.

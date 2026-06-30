@@ -4,16 +4,15 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SubmitYikeStoryboardJobResponseBody(DaraModel):
+class GetYikeProjectExportJobRequest(DaraModel):
     def __init__(
         self,
         job_id: str = None,
-        request_id: str = None,
     ):
         # The task ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
-        # The request ID.
-        self.request_id = request_id
 
     def validate(self):
         pass
@@ -26,18 +25,12 @@ class SubmitYikeStoryboardJobResponseBody(DaraModel):
         if self.job_id is not None:
             result['JobId'] = self.job_id
 
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
-
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
 
         return self
 

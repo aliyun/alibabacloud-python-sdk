@@ -23,20 +23,98 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         user_data: str = None,
         video_model: str = None,
     ):
+        # The aspect ratio of the output video. Valid values:
+        # - 16:9
+        # - 9:16
+        # - 4:3
+        # - 3:4.
         self.aspect_ratio = aspect_ratio
+        # The execution mode for storyboard generation. Valid values:
+        # - FullPipeline: Full pipeline generation, which includes both storyboard generation and shot video generation.
+        # - StoryboardOnly: Generates only the storyboard.
         self.exec_mode = exec_mode
+        # The OSS URL of the file. Only URLs with the .txt or .doc file name extension are supported.
         self.file_url = file_url
+        # Specifies whether to retain the original dialogue during final video composition. Default value: True.
         self.keep_origin_dialogue = keep_origin_dialogue
+        # The model parameters in JSON format.
+        # 
+        # "AudioEnable": false disables audio.
         self.model_params = model_params
+        # The narration voice ID. Valid values:
+        # - sys_GracefulPoisedWoman: Graceful Poised Woman
+        # - sys_ElderlyWistfulWoman: Elderly Wistful Woman
+        # - sys_SweetBrightGirl: Sweet Bright Girl
+        # - sys_YoungGracefulWoman: Young Graceful Woman
+        # - sys_MaturePoisedWoman: Mature Poised Woman
+        # - sys_MatureWiseWoman: Mature Wise Woman
+        # - sys_CalmDeepMale: Calm Deep Male
+        # - sys_SereneIntellect: Serene Intellect
+        # - sys_MajesticBaritone: Majestic Baritone
+        # - sys_GravellySoulful: Gravelly Soulful
+        # - sys_ClassicYoungMan: Classic Young Man Narrator
+        # - sys_WiseYoungMan: Wise Young Man Narrator
+        # - sys_ClassicYoungWoman: Classic Young Woman Narrator
+        # - sys_IntellectualYoungWoman: Intellectual Young Woman Narrator
+        # - sys_GentleYoungMan: Gentle Young Man Narrator
+        # - sys_thoughtfulBoy: Thoughtful Boy
+        # - sys_RichBassMale: Rich Bass Male
+        # - sys_ClassicMiddleAgedWoman: Classic Middle-Aged Woman Narrator.
         self.narration_voice_id = narration_voice_id
+        # The resolution of the output video. Valid values:
+        # - 720P
+        # - 1080P
+        # - 2K
+        # - 4K.
         self.resolution = resolution
+        # The storyboard shot generation mode. Valid values:
+        # - multi: multi-reference video generation
+        # - default: image-to-video generation.
         self.shot_prompt_mode = shot_prompt_mode
+        # The shot split mode. Valid values:
+        # - firstPersonNarration: narration mode.
         self.shot_split_mode = shot_split_mode
+        # Specifies whether to skip failed shots. Default value: True.
         self.skip_failure_shot = skip_failure_shot
+        # The type of the material source. Valid values:
+        # - Novel: novel.
         self.source_type = source_type
+        # The storyboard style ID. Valid values:
+        # - RealisticPhotographyPro: Realistic Photography Pro
+        # - RealisticGuzhuangPro: Realistic Ancient Costume Pro
+        # - RealisticXianxiaPro: Realistic Xianxia Pro
+        # - RealisticWesternPro: Western Realism Pro
+        # - RealisticPhotography: Realistic Photography
+        # - RealisticGuzhuang: Realistic Ancient Costume
+        # - RealisticXianxia: Realistic Xianxia
+        # - RealisticWasteland: Realistic Wasteland
+        # - RealisticEra: Realistic Vintage
+        # - GuofengAnime: 2D Chinese-style Anime
+        # - GuofengAnime3D: 3D Chinese-style Anime
+        # - AncientRomanceAnime: Anime Ancient Romance
+        # - PostApocalypticAnime: Anime Post-Apocalyptic
+        # - Cartoon3D: 3D Cartoon
+        # - Photorealistic3D: Photorealistic 3D Rendering
+        # - SciFiRealism: Sci-Fi Realism
+        # - Chibi3D: 3D Chibi
+        # - ShojoManga: Japanese Manga
+        # - NewPeriodAnime: New Era Japanese Anime
+        # - FairyTale2D: 2D Fairy Tale
+        # - Wasteland2D: 2D Wasteland
+        # - InkWuxia: Ink Wash Wuxia
+        # - ShadiaoMeme: Panda Head Meme
+        # - Chibi2D: 2D Chibi
+        # - Ghibli: Ghibli
+        # - SciFiComic: Cyberpunk
+        # - AmericanSuperhero: American Superhero.
         self.style_id = style_id
+        # The task title. If not specified, a default title is automatically generated based on the date. The title cannot exceed 128 bytes in length and must be UTF-8 encoded.
         self.title = title
+        # The custom settings in JSON format.
+        # - NotifyAddress specifies the callback for task completion. Both MNS callbacks and HTTP callbacks are supported.
         self.user_data = user_data
+        # The video model. Valid values:
+        # - wan2.6-r2v-flash.
         self.video_model = video_model
 
     def validate(self):

@@ -12,6 +12,9 @@ class SetYikeUserRoleResponseBody(DaraModel):
     ):
         # RequestId
         self.request_id = request_id
+        # Indicates whether the role is set. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.result = result
 
     def validate(self):

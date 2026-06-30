@@ -11,10 +11,19 @@ class UpdateYikeProductionMemberAuthRequest(DaraModel):
         production_id: str = None,
         yike_user_id: str = None,
     ):
+        # The permission name. Valid values:
+        # 
+        # - Manage: manageable
+        # - Edit: editable.
+        # 
         # This parameter is required.
         self.auth = auth
+        # The project ID.
+        # 
         # This parameter is required.
         self.production_id = production_id
+        # The RAM user ID.
+        # 
         # This parameter is required.
         self.yike_user_id = yike_user_id
 

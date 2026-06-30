@@ -10,7 +10,11 @@ class DeleteYikeAssetMediaInfosRequest(DaraModel):
         logic_delete: bool = None,
         media_ids: str = None,
     ):
+        # Specifies whether to delete the media asset information and files. Valid values:
+        # - true (default): logical deletion. The media asset is moved to the recycle bin, and the files are retained.
+        # - false: deletes the media asset information and files.
         self.logic_delete = logic_delete
+        # The ICE media asset ID.
         self.media_ids = media_ids
 
     def validate(self):

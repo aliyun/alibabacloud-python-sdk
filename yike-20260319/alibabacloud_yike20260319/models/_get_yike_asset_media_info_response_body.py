@@ -13,6 +13,7 @@ class GetYikeAssetMediaInfoResponseBody(DaraModel):
         media_info: main_models.GetYikeAssetMediaInfoResponseBodyMediaInfo = None,
         request_id: str = None,
     ):
+        # The media asset information.
         self.media_info = media_info
         # RequestId
         self.request_id = request_id
@@ -53,11 +54,13 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfo(DaraModel):
         media_basic_info: main_models.GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # The custom business information.
         self.biz_data = biz_data
         # FileInfos
         self.file_info_list = file_info_list
         # BasicInfo
         self.media_basic_info = media_basic_info
+        # The media asset ID.
         self.media_id = media_id
 
     def validate(self):
@@ -140,29 +143,53 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo(DaraModel):
         upload_source: str = None,
         user_data: str = None,
     ):
+        # The business to which the media asset belongs.
         self.biz = biz
+        # The business type of the media asset.
         self.business_type = business_type
+        # The category ID.
         self.cate_id = cate_id
+        # The category name.
         self.cate_name = cate_name
+        # The category.
         self.category = category
+        # The cover URL.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The content description.
         self.description = description
+        # The address of the media asset to be registered in the corresponding system.
         self.input_url = input_url
+        # The media asset ID.
         self.media_id = media_id
+        # The tags.
         self.media_tags = media_tags
+        # The media type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The value must be 6 to 64 characters in length and is unique for each user.
         self.reference_id = reference_id
+        # The snapshots.
         self.snapshots = snapshots
+        # The source.
         self.source = source
+        # The sprite images.
         self.sprite_images = sprite_images
+        # The resource status.
         self.status = status
+        # The thumbnail with a height of 240 pixels.
         self.thumb_url240p = thumb_url240p
+        # The thumbnail encoded in WebP format.
         self.thumb_urlwebp = thumb_urlwebp
+        # The title.
         self.title = title
+        # The upload source of the media asset.
         self.upload_source = upload_source
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -331,9 +358,13 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList(DaraModel):
         subtitle_stream_info_list: List[main_models.GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList] = None,
         video_stream_info_list: List[main_models.GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList] = None,
     ):
+        # The audio stream information. A media asset may contain multiple audio streams.
         self.audio_stream_info_list = audio_stream_info_list
+        # The basic file information, including duration and size.
         self.file_basic_info = file_basic_info
+        # The subtitle stream information. A media asset may contain multiple subtitle streams.
         self.subtitle_stream_info_list = subtitle_stream_info_list
+        # The video stream information. A media asset may contain multiple video streams.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -430,28 +461,51 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList(
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The long name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The codec tag.
         self.codec_tag = codec_tag
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR).
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The video frame rate.
         self.fps = fps
+        # Indicates whether the video stream contains B-frames.
         self.has_bframes = has_bframes
+        # The height.
         self.height = height
+        # The index of the video stream.
         self.index = index
+        # The language.
         self.lang = lang
+        # The codec level.
         self.level = level
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The codec profile.
         self.profile = profile
+        # The rotation angle.
         self.rotate = rotate
+        # The sample aspect ratio (SAR).
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The width.
         self.width = width
 
     def validate(self):
@@ -620,15 +674,25 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoLi
         start_time: str = None,
         timebase: str = None,
     ):
+        # The long name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The codec tag.
         self.codec_tag = codec_tag
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The index of the audio stream.
         self.index = index
+        # The language.
         self.lang = lang
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -722,18 +786,31 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo(DaraMo
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The time when the file was created.
         self.create_time = create_time
+        # The duration.
         self.duration = duration
+        # The file name.
         self.file_name = file_name
+        # The file size, in bytes.
         self.file_size = file_size
+        # The file status.
         self.file_status = file_status
+        # The file type.
         self.file_type = file_type
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The container format.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The time when the file was last modified.
         self.modified_time = modified_time
+        # The storage region of the file.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -850,23 +927,41 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList(
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The channel layout.
         self.channel_layout = channel_layout
+        # The number of channels.
         self.channels = channels
+        # The long name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The codec tag.
         self.codec_tag = codec_tag
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
+        # The codec time base.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The audio frame rate.
         self.fps = fps
+        # The index of the audio stream.
         self.index = index
+        # The language.
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The codec profile.
         self.profile = profile
+        # The sample format.
         self.sample_fmt = sample_fmt
+        # The sample rate.
         self.sample_rate = sample_rate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -1008,18 +1103,31 @@ class GetYikeAssetMediaInfoResponseBodyMediaInfoBizData(DaraModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # The audit label.
         self.audit_blocked_label = audit_blocked_label
+        # The audit status.
         self.audit_status = audit_status
+        # The ID of the creation task.
         self.creation_job_id = creation_job_id
+        # The folder ID.
         self.folder_id = folder_id
+        # Indicates whether the media asset is marked as a favorite.
         self.is_favorite = is_favorite
+        # Indicates whether the media asset is logically deleted.
         self.is_logical_deleted = is_logical_deleted
+        # The media asset subtype.
         self.media_asset_sub_type = media_asset_sub_type
+        # The media asset type.
         self.media_asset_type = media_asset_type
+        # The project ID.
         self.production_id = production_id
+        # The prompt.
         self.prompt = prompt
+        # The source ID.
         self.source_id = source_id
+        # The source name.
         self.source_name = source_name
+        # The source type.
         self.source_type = source_type
 
     def validate(self):

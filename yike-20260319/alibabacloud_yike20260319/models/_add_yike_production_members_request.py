@@ -10,8 +10,12 @@ class AddYikeProductionMembersRequest(DaraModel):
         production_id: str = None,
         yike_user_ids: str = None,
     ):
+        # The project ID.
+        # 
         # This parameter is required.
         self.production_id = production_id
+        # The IDs of the RAM users.
+        # 
         # This parameter is required.
         self.yike_user_ids = yike_user_ids
 

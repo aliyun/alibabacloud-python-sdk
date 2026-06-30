@@ -21,16 +21,44 @@ class GetYikePromptExpansionVoiceFixJobResponseBody(DaraModel):
         start_time: str = None,
         user_data: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The error code. This parameter is returned when the task is in the Failed state.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The task ID.
         self.job_id = job_id
+        # The task parameters, in JSON format. The following fields are included:
+        # - model (String, required): The model name. Example: happyhorse-1.0-r2v.
+        # - input (Object, required): The input data object.
+        #   - prompt (String, required): The prompt content. The maximum length is 10,000 characters.
+        #   - media (Array(Object), required): The list of media materials used to specify reference images and audio.
+        #     - type (String, required): The input media type. Valid values: reference_image and reference_audio.
+        #     - url (String, required): The URL of the input media.
+        # - parameters (Object, required): The video generation parameter object.
+        #   - duration (Integer, required): The video duration in seconds. The value must be a positive integer. Valid values: 5 to 15.
+        #   - ratio (String, required): The aspect ratio. Valid values: 16:9, 9:16, 4:3, 3:4, and 1:1.
+        #   - resolution (String, required): The video resolution. Valid values: 720P and 1080P.
+        #   - specialEdition (Bool, optional): The cost-effective edition parameter. This parameter can be set to true only when the resolution is 1080P.
+        #   - skipPromptEnhancer (Bool, optional): Specifies whether to skip prompt enhancement. Default value: false.
+        #   - skipVoiceResync (Bool, optional): Specifies whether to skip audio repair. Default value: false.
         self.job_params = job_params
+        # The task result of the node.
         self.job_result = job_result
+        # The task status. Valid values:
+        # 
+        # - **Succeeded**: The task is processed.
+        # 
+        # - **Failed**: The task failed.
+        # 
+        # - **Running**: The task is being processed.
         self.job_status = job_status
         # RequestId
         self.request_id = request_id
+        # The start time.
         self.start_time = start_time
+        # The custom user parameter.
         self.user_data = user_data
 
     def validate(self):

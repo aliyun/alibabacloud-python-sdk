@@ -12,6 +12,7 @@ class UpdateYikeProductionMemberAuthResponseBody(DaraModel):
     ):
         # RequestId
         self.request_id = request_id
+        # Indicates whether the permissions were set successfully.
         self.result = result
 
     def validate(self):
