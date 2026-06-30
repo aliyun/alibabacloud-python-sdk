@@ -23,6 +23,9 @@ from ._create_custom_agent_response import CreateCustomAgentResponse
 from ._create_inspection_task_request import CreateInspectionTaskRequest
 from ._create_inspection_task_response_body import CreateInspectionTaskResponseBody
 from ._create_inspection_task_response import CreateInspectionTaskResponse
+from ._create_sandbox_template_request import CreateSandboxTemplateRequest
+from ._create_sandbox_template_response_body import CreateSandboxTemplateResponseBody
+from ._create_sandbox_template_response import CreateSandboxTemplateResponse
 from ._create_scheduled_task_request import CreateScheduledTaskRequest
 from ._create_scheduled_task_response_body import CreateScheduledTaskResponseBody
 from ._create_scheduled_task_response import CreateScheduledTaskResponse
@@ -39,6 +42,9 @@ from ._delete_app_instance_response import DeleteAppInstanceResponse
 from ._delete_custom_agent_request import DeleteCustomAgentRequest
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
 from ._delete_custom_agent_response import DeleteCustomAgentResponse
+from ._delete_sandbox_template_request import DeleteSandboxTemplateRequest
+from ._delete_sandbox_template_response_body import DeleteSandboxTemplateResponseBody
+from ._delete_sandbox_template_response import DeleteSandboxTemplateResponse
 from ._delete_scheduled_task_request import DeleteScheduledTaskRequest
 from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBody
 from ._delete_scheduled_task_response import DeleteScheduledTaskResponse
@@ -51,6 +57,9 @@ from ._describe_app_instance_attribute_response import DescribeAppInstanceAttrib
 from ._describe_app_instances_request import DescribeAppInstancesRequest
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBody
 from ._describe_app_instances_response import DescribeAppInstancesResponse
+from ._describe_common_sandbox_templates_request import DescribeCommonSandboxTemplatesRequest
+from ._describe_common_sandbox_templates_response_body import DescribeCommonSandboxTemplatesResponseBody
+from ._describe_common_sandbox_templates_response import DescribeCommonSandboxTemplatesResponse
 from ._describe_events_list_request import DescribeEventsListRequest
 from ._describe_events_list_response_body import DescribeEventsListResponseBody
 from ._describe_events_list_response import DescribeEventsListResponse
@@ -173,6 +182,9 @@ from ._modify_instances_sslresponse import ModifyInstancesSSLResponse
 from ._modify_messages_feedbacks_request import ModifyMessagesFeedbacksRequest
 from ._modify_messages_feedbacks_response_body import ModifyMessagesFeedbacksResponseBody
 from ._modify_messages_feedbacks_response import ModifyMessagesFeedbacksResponse
+from ._modify_sandbox_template_request import ModifySandboxTemplateRequest
+from ._modify_sandbox_template_response_body import ModifySandboxTemplateResponseBody
+from ._modify_sandbox_template_response import ModifySandboxTemplateResponse
 from ._modify_scheduled_task_request import ModifyScheduledTaskRequest
 from ._modify_scheduled_task_response_body import ModifyScheduledTaskResponseBody
 from ._modify_scheduled_task_response import ModifyScheduledTaskResponse
@@ -221,8 +233,10 @@ from ._create_app_instance_request import CreateAppInstanceRequestDBInstanceConf
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySkills
 from ._create_inspection_task_response_body import CreateInspectionTaskResponseBodyData
 from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBodyComponents
+from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBodyUploadKeyList
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstancesComponents
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstances
+from ._describe_common_sandbox_templates_response_body import DescribeCommonSandboxTemplatesResponseBodyTemplates
 from ._describe_events_list_response_body import DescribeEventsListResponseBodyEvents
 from ._describe_instance_auth_info_response_body import DescribeInstanceAuthInfoResponseBodyApiKeys
 from ._describe_instance_auth_info_response_body import DescribeInstanceAuthInfoResponseBodyConfigList
@@ -298,6 +312,9 @@ __all__ = [
     CreateInspectionTaskRequest,
     CreateInspectionTaskResponseBody,
     CreateInspectionTaskResponse,
+    CreateSandboxTemplateRequest,
+    CreateSandboxTemplateResponseBody,
+    CreateSandboxTemplateResponse,
     CreateScheduledTaskRequest,
     CreateScheduledTaskResponseBody,
     CreateScheduledTaskResponse,
@@ -314,6 +331,9 @@ __all__ = [
     DeleteCustomAgentRequest,
     DeleteCustomAgentResponseBody,
     DeleteCustomAgentResponse,
+    DeleteSandboxTemplateRequest,
+    DeleteSandboxTemplateResponseBody,
+    DeleteSandboxTemplateResponse,
     DeleteScheduledTaskRequest,
     DeleteScheduledTaskResponseBody,
     DeleteScheduledTaskResponse,
@@ -326,6 +346,9 @@ __all__ = [
     DescribeAppInstancesRequest,
     DescribeAppInstancesResponseBody,
     DescribeAppInstancesResponse,
+    DescribeCommonSandboxTemplatesRequest,
+    DescribeCommonSandboxTemplatesResponseBody,
+    DescribeCommonSandboxTemplatesResponse,
     DescribeEventsListRequest,
     DescribeEventsListResponseBody,
     DescribeEventsListResponse,
@@ -448,6 +471,9 @@ __all__ = [
     ModifyMessagesFeedbacksRequest,
     ModifyMessagesFeedbacksResponseBody,
     ModifyMessagesFeedbacksResponse,
+    ModifySandboxTemplateRequest,
+    ModifySandboxTemplateResponseBody,
+    ModifySandboxTemplateResponse,
     ModifyScheduledTaskRequest,
     ModifyScheduledTaskResponseBody,
     ModifyScheduledTaskResponse,
@@ -496,8 +522,10 @@ __all__ = [
     CreateCustomAgentResponseBodySkills,
     CreateInspectionTaskResponseBodyData,
     DescribeAppInstanceAttributeResponseBodyComponents,
+    DescribeAppInstanceAttributeResponseBodyUploadKeyList,
     DescribeAppInstancesResponseBodyInstancesComponents,
     DescribeAppInstancesResponseBodyInstances,
+    DescribeCommonSandboxTemplatesResponseBodyTemplates,
     DescribeEventsListResponseBodyEvents,
     DescribeInstanceAuthInfoResponseBodyApiKeys,
     DescribeInstanceAuthInfoResponseBodyConfigList,

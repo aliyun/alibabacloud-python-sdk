@@ -15,6 +15,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         dbinstance_name: str = None,
         dashboard_password: str = None,
         dashboard_username: str = None,
+        database: str = None,
         database_password: str = None,
         initialize_with_existing_data: bool = None,
         instance_class: str = None,
@@ -32,6 +33,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         self.app_type = app_type
         # The name of the new AI application.
         self.client_token = client_token
+        # List of modules
         self.components_shrink = components_shrink
         # A reserved parameter.
         self.dbinstance_config_shrink = dbinstance_config_shrink
@@ -43,6 +45,7 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         # 
         # The password must be 8 to 32 characters in length and must contain at least three of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         self.dashboard_username = dashboard_username
+        self.database = database
         # The idempotency token. The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         self.database_password = database_password
         # Specifies whether to enable public endpoint.
@@ -102,6 +105,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
         if self.dashboard_username is not None:
             result['DashboardUsername'] = self.dashboard_username
 
+        if self.database is not None:
+            result['Database'] = self.database
+
         if self.database_password is not None:
             result['DatabasePassword'] = self.database_password
 
@@ -153,6 +159,9 @@ class CreateAppInstanceShrinkRequest(DaraModel):
 
         if m.get('DashboardUsername') is not None:
             self.dashboard_username = m.get('DashboardUsername')
+
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
 
         if m.get('DatabasePassword') is not None:
             self.database_password = m.get('DatabasePassword')

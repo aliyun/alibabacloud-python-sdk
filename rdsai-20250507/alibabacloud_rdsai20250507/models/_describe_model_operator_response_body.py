@@ -15,10 +15,13 @@ class DescribeModelOperatorResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -74,24 +77,44 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
         instance_id: str = None,
         key_usage_list: List[main_models.DescribeModelOperatorResponseBodyDataKeyUsageList] = None,
         prefix_cache_enabled: bool = None,
+        session_ids: List[str] = None,
         start_time: int = None,
         status: str = None,
         total_quota: int = None,
         used_quota: int = None,
     ):
+        # The API key.
         self.api_key = api_key
+        # Indicates whether auto-renewal is enabled for the instance. Valid values:
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false** (default): Disabled.
         self.auto_renew = auto_renew
+        # The endpoint URL for model requests.
         self.base_url = base_url
+        # The billing method. Valid values: `PREPAY` (subscription) and `POSTPAY` (pay-as-you-go).
         self.charge_type = charge_type
+        # The daily token usage.
         self.daily_usage = daily_usage
+        # The UNIX timestamp, in milliseconds, indicating when the instance expires.
         self.end_time = end_time
+        # The instance type.
         self.instance_class = instance_class
+        # The instance ID.
         self.instance_id = instance_id
+        # The usage of each API key, including deleted keys.
         self.key_usage_list = key_usage_list
+        # Indicates whether prefix caching is enabled.
         self.prefix_cache_enabled = prefix_cache_enabled
+        self.session_ids = session_ids
+        # The UNIX timestamp, in milliseconds, indicating when the instance started.
         self.start_time = start_time
+        # The status.
         self.status = status
+        # The total quota for the current cycle, such as the monthly quota.
         self.total_quota = total_quota
+        # The usage in the current cycle, such as the monthly usage.
         self.used_quota = used_quota
 
     def validate(self):
@@ -142,6 +165,9 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
 
         if self.prefix_cache_enabled is not None:
             result['PrefixCacheEnabled'] = self.prefix_cache_enabled
+
+        if self.session_ids is not None:
+            result['SessionIds'] = self.session_ids
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -195,6 +221,9 @@ class DescribeModelOperatorResponseBodyData(DaraModel):
         if m.get('PrefixCacheEnabled') is not None:
             self.prefix_cache_enabled = m.get('PrefixCacheEnabled')
 
+        if m.get('SessionIds') is not None:
+            self.session_ids = m.get('SessionIds')
+
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
 
@@ -220,13 +249,19 @@ class DescribeModelOperatorResponseBodyDataKeyUsageList(DaraModel):
         key_used: str = None,
         used_quota: str = None,
     ):
-        # API Key
+        # The API key.
         self.api_key = api_key
+        # The daily usage for the API key.
         self.daily_usage = daily_usage
+        # Indicates whether the API key has been deleted.
         self.deleted = deleted
+        # The name of the API key.
         self.key_name = key_name
+        # The type of the API key.
         self.key_type = key_type
+        # The total number of tokens used by this API key.
         self.key_used = key_used
+        # The token usage for the current cycle.
         self.used_quota = used_quota
 
     def validate(self):
@@ -299,7 +334,9 @@ class DescribeModelOperatorResponseBodyDataKeyUsageListDailyUsage(DaraModel):
         date: str = None,
         usage: str = None,
     ):
+        # The date of the usage record.
         self.date = date
+        # The number of tokens used by the API key on this date.
         self.usage = usage
 
     def validate(self):
@@ -334,7 +371,9 @@ class DescribeModelOperatorResponseBodyDataDailyUsage(DaraModel):
         date: str = None,
         usage: int = None,
     ):
+        # The date of the usage record.
         self.date = date
+        # The number of tokens used on this date.
         self.usage = usage
 
     def validate(self):

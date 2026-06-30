@@ -16,32 +16,46 @@ class CreateInspectionTaskRequest(DaraModel):
         report_type: str = None,
         start_time: str = None,
     ):
-        # The end time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. By default, the time range of the task is the latest 24 hours.
+        # The end of the inspection time range. The time must be in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ. If StartTime and EndTime are not specified, the inspection covers the last 24 hours.
         self.end_time = end_time
-        # The inspection items. Separates multiple items with commas (,). If this parameter is empty or not specified, all inspection items are executed.
+        # The inspection items to run, separated by commas. If this parameter is omitted, all inspection items are run.
         # 
-        # ### [](#)Valid values:
+        # ### Inspection items
         # 
-        # *   instance_info
-        # *   resource_usage
-        # *   connection_session_management
-        # *   performance_metrics
-        # *   slow_query_analysis
-        # *   error_log_analysis
-        # *   lock_wait_deadlock_analysis
-        # *   backup_recovery_analysis
-        # *   high_availability_disaster_recovery_analysis
-        # *   security_configuration_analysis
-        # *   storage_engine_analysis
-        # *   schema_object_analysis
+        # - `instance_info` (instance information)
+        # 
+        # - `resource_usage` (resource usage)
+        # 
+        # - `connection_session_management` (connection and session management)
+        # 
+        # - `performance_metrics` (performance metrics)
+        # 
+        # - `slow_query_analysis` (slow query analysis)
+        # 
+        # - `error_log_analysis` (error log analysis)
+        # 
+        # - `lock_wait_deadlock_analysis` (lock wait and deadlock analysis)
+        # 
+        # - `backup_recovery_analysis` (backup and recovery analysis)
+        # 
+        # - `high_availability_disaster_recovery_analysis` (high availability and disaster recovery inspection)
+        # 
+        # - `security_configuration_analysis` (security configuration inspection)
+        # 
+        # - `storage_engine_analysis` (storage engine inspection)
+        # 
+        # - `schema_object_analysis` (schema and object inspection)
         self.inspection_items = inspection_items
-        # The instances covered by the task. Separates multiple instance IDs with commas (,).
+        # The IDs of the instances to inspect. Separate multiple instance IDs with a comma.
         self.instance_ids = instance_ids
+        # The region ID.
         self.region_id = region_id
+        # The language of the inspection report. Valid values are zh-CN (Simplified Chinese) and en-US (English). The default value is en-US.
         self.report_language = report_language
         self.report_region_id = report_region_id
+        # The format of the inspection report. Valid values are pdf and json. The default value is pdf.
         self.report_type = report_type
-        # The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. By default, the time range of the task is the latest 24 hours.
+        # The beginning of the inspection time range. The time must be in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ. If StartTime and EndTime are not specified, the inspection covers the last 24 hours.
         self.start_time = start_time
 
     def validate(self):

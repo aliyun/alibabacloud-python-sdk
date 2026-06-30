@@ -13,14 +13,14 @@ class GetStandAloneReportsRequest(DaraModel):
         report_type: str = None,
         start_time: str = None,
     ):
-        # The task end time based on which the reports are filtered. If you do not specify this parameter, all reports are returned.
+        # The end of the query\\"s time range. The time must be in UTC and in the `YYYY-MM-DDTHH:mm:ssZ` format. If omitted, no end time filter is applied.
         self.end_time = end_time
-        # The page number. Pages start from 1. Default value: 1.
+        # The number of the page to return. The default value is 1.
         self.page_number = page_number
-        # The number of records on each page. Default value: 20. Maximum value: 100.
+        # The number of entries to return on each page. Default: 20. Maximum: 100.
         self.page_size = page_size
         self.report_type = report_type
-        # The task start time based on which the reports are filtered. If you do not specify this parameter, all reports are returned.
+        # The start of the query\\"s time range. The time must be in UTC and in the `YYYY-MM-DDTHH:mm:ssZ` format. If omitted, no start time filter is applied.
         self.start_time = start_time
 
     def validate(self):

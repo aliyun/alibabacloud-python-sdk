@@ -10,8 +10,9 @@ class DisableAgentRuntimeResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # The ID of the AI application instance.
         self.instance_name = instance_name
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

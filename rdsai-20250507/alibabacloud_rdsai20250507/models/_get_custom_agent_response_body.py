@@ -20,22 +20,22 @@ class GetCustomAgentResponseBody(DaraModel):
         tools: List[str] = None,
         updated_at: str = None,
     ):
-        # The creation time of the agent.
+        # The time when the custom agent was created.
         self.created_at = created_at
         # Indicates whether tools are enabled.
         self.enable_tools = enable_tools
-        # The ID of the backup set.
+        # The ID of the custom agent.
         self.id = id
-        # The name of the dedicated agent.
+        # The name of the custom agent.
         self.name = name
         # The request ID.
         self.request_id = request_id
         self.skills = skills
-        # The system prompts.
+        # The system prompt for the agent.
         self.system_prompt = system_prompt
-        # The details of the tools.
+        # A list of tools enabled for the agent.
         self.tools = tools
-        # The modification time of the agent.
+        # The time when the custom agent was last updated.
         self.updated_at = updated_at
 
     def validate(self):

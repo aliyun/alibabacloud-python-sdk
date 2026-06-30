@@ -17,16 +17,17 @@ class ListCustomAgentResponseBody(DaraModel):
         skills: List[main_models.ListCustomAgentResponseBodySkills] = None,
         total_count: int = None,
     ):
-        # The returned data.
+        # A list of custom agents.
         self.data = data
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
+        # A list of skills.
         self.skills = skills
-        # The total number of entries returned. By default, this parameter is not returned.
+        # The total number of entries that match the query. This parameter is not returned by default.
         self.total_count = total_count
 
     def validate(self):
@@ -104,9 +105,13 @@ class ListCustomAgentResponseBodySkills(DaraModel):
         name: str = None,
         skill_type: str = None,
     ):
+        # The description of the skill.
         self.description = description
+        # The skill ID.
         self.id = id
+        # The name of the skill.
         self.name = name
+        # The type of the skill.
         self.skill_type = skill_type
 
     def validate(self):
@@ -158,19 +163,19 @@ class ListCustomAgentResponseBodyData(DaraModel):
         tools: List[str] = None,
         updated_at: str = None,
     ):
-        # The creation time of the agent.
+        # The creation time.
         self.created_at = created_at
         # Indicates whether tools are enabled.
         self.enable_tools = enable_tools
-        # The ID of the agent.
+        # The agent ID.
         self.id = id
-        # The name of the dedicated agent.
+        # The name of the custom agent.
         self.name = name
-        # The system prompts.
+        # The system prompt.
         self.system_prompt = system_prompt
-        # The information about the tool.
+        # A list of tools.
         self.tools = tools
-        # The modification time of the agent.
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

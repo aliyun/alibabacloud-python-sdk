@@ -11,11 +11,14 @@ class RenameApiKeyRequest(DaraModel):
         instance_id: str = None,
         key_name: str = None,
     ):
-        # API KEY
+        # The API key to rename.
         # 
         # This parameter is required.
         self.api_key = api_key
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The new name for the API key.
+        # 
         # This parameter is required.
         self.key_name = key_name
 

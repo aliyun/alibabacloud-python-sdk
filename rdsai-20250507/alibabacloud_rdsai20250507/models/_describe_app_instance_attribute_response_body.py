@@ -19,32 +19,38 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         instance_class: str = None,
         instance_minor_version: str = None,
         instance_name: str = None,
+        login_token: str = None,
         nat_created_by: str = None,
         nat_gateway_id: str = None,
         nat_status: str = None,
         public_connection_string: str = None,
         region_id: str = None,
         request_id: str = None,
+        retention_hours: str = None,
+        sql_extend_mo_instance_id: str = None,
         status: str = None,
+        upload_key: str = None,
+        upload_key_list: List[main_models.DescribeAppInstanceAttributeResponseBodyUploadKeyList] = None,
         v_switch_id: str = None,
         vpc_connection_string: str = None,
         zone_id: str = None,
     ):
         # The name of the AI application.
         self.app_name = app_name
-        # The application type. Only **supabase** is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+        # The application type. Currently, only **supabase** is supported, which indicates [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
         self.components = components
-        # The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
+        # The instance ID of the ApsaraDB RDS for PostgreSQL database to which the AI application is connected.
         self.dbinstance_name = dbinstance_name
         self.eip_id = eip_id
         self.eip_status = eip_status
-        # The instance type of the RDS Supabase instance.
+        # The instance type of the AI application.
         self.instance_class = instance_class
-        # The minor version number of RDS Supabase instance.
+        # The minor version of the RDS AI application instance.
         self.instance_minor_version = instance_minor_version
-        # The ID of the RDS Supabase instance.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
+        self.login_token = login_token
         self.nat_created_by = nat_created_by
         self.nat_gateway_id = nat_gateway_id
         self.nat_status = nat_status
@@ -54,9 +60,13 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
+        self.retention_hours = retention_hours
+        self.sql_extend_mo_instance_id = sql_extend_mo_instance_id
+        # The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/2623972.html).
         self.status = status
-        # The ID of the vSwitch.
+        self.upload_key = upload_key
+        self.upload_key_list = upload_key_list
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The internal endpoint of the AI application.
         self.vpc_connection_string = vpc_connection_string
@@ -66,6 +76,10 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
     def validate(self):
         if self.components:
             for v1 in self.components:
+                 if v1:
+                    v1.validate()
+        if self.upload_key_list:
+            for v1 in self.upload_key_list:
                  if v1:
                     v1.validate()
 
@@ -103,6 +117,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
+        if self.login_token is not None:
+            result['LoginToken'] = self.login_token
+
         if self.nat_created_by is not None:
             result['NatCreatedBy'] = self.nat_created_by
 
@@ -121,8 +138,22 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.retention_hours is not None:
+            result['RetentionHours'] = self.retention_hours
+
+        if self.sql_extend_mo_instance_id is not None:
+            result['SqlExtendMoInstanceId'] = self.sql_extend_mo_instance_id
+
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.upload_key is not None:
+            result['UploadKey'] = self.upload_key
+
+        result['UploadKeyList'] = []
+        if self.upload_key_list is not None:
+            for k1 in self.upload_key_list:
+                result['UploadKeyList'].append(k1.to_map() if k1 else None)
 
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
@@ -167,6 +198,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 
+        if m.get('LoginToken') is not None:
+            self.login_token = m.get('LoginToken')
+
         if m.get('NatCreatedBy') is not None:
             self.nat_created_by = m.get('NatCreatedBy')
 
@@ -185,8 +219,23 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('RetentionHours') is not None:
+            self.retention_hours = m.get('RetentionHours')
+
+        if m.get('SqlExtendMoInstanceId') is not None:
+            self.sql_extend_mo_instance_id = m.get('SqlExtendMoInstanceId')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('UploadKey') is not None:
+            self.upload_key = m.get('UploadKey')
+
+        self.upload_key_list = []
+        if m.get('UploadKeyList') is not None:
+            for k1 in m.get('UploadKeyList'):
+                temp_model = main_models.DescribeAppInstanceAttributeResponseBodyUploadKeyList()
+                self.upload_key_list.append(temp_model.from_map(k1))
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
@@ -196,6 +245,65 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class DescribeAppInstanceAttributeResponseBodyUploadKeyList(DaraModel):
+    def __init__(
+        self,
+        is_system_key: bool = None,
+        remark: str = None,
+        sls_storage_bytes: int = None,
+        status: str = None,
+        upload_key: str = None,
+    ):
+        self.is_system_key = is_system_key
+        self.remark = remark
+        self.sls_storage_bytes = sls_storage_bytes
+        self.status = status
+        self.upload_key = upload_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.is_system_key is not None:
+            result['IsSystemKey'] = self.is_system_key
+
+        if self.remark is not None:
+            result['Remark'] = self.remark
+
+        if self.sls_storage_bytes is not None:
+            result['SlsStorageBytes'] = self.sls_storage_bytes
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.upload_key is not None:
+            result['UploadKey'] = self.upload_key
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsSystemKey') is not None:
+            self.is_system_key = m.get('IsSystemKey')
+
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+
+        if m.get('SlsStorageBytes') is not None:
+            self.sls_storage_bytes = m.get('SlsStorageBytes')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('UploadKey') is not None:
+            self.upload_key = m.get('UploadKey')
 
         return self
 

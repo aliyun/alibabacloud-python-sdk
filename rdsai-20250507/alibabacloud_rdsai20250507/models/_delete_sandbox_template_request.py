@@ -4,16 +4,18 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeInstanceAuthInfoRequest(DaraModel):
+class DeleteSandboxTemplateRequest(DaraModel):
     def __init__(
         self,
         instance_name: str = None,
         region_id: str = None,
+        template_id: str = None,
     ):
-        # The instance ID of the AI application.
+        # This parameter is required.
         self.instance_name = instance_name
-        # The region ID.
         self.region_id = region_id
+        # This parameter is required.
+        self.template_id = template_id
 
     def validate(self):
         pass
@@ -29,6 +31,9 @@ class DescribeInstanceAuthInfoRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +43,9 @@ class DescribeInstanceAuthInfoRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
 
         return self
 

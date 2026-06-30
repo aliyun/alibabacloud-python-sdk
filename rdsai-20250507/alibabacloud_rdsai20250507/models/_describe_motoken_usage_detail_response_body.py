@@ -16,14 +16,22 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
         records: List[main_models.DescribeMOTokenUsageDetailResponseBodyRecords] = None,
         request_id: str = None,
         total_count: int = None,
+        usage_type: str = None,
     ):
+        # The cursor for the next page. An empty value indicates the last page.
         self.next_cursor = next_cursor
+        # The page number.
         self.page = page
+        # The number of records per page.
         self.page_size = page_size
+        # The list of records returned.
         self.records = records
         # Id of the request
         self.request_id = request_id
+        # The total number of records that match the query conditions.
         self.total_count = total_count
+        # The usage type.
+        self.usage_type = usage_type
 
     def validate(self):
         if self.records:
@@ -56,6 +64,9 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
         if self.total_count is not None:
             result['TotalCount'] = self.total_count
 
+        if self.usage_type is not None:
+            result['UsageType'] = self.usage_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -81,12 +92,16 @@ class DescribeMOTokenUsageDetailResponseBody(DaraModel):
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
 
+        if m.get('UsageType') is not None:
+            self.usage_type = m.get('UsageType')
+
         return self
 
 class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
     def __init__(
         self,
         consumer_name: str = None,
+        extra_info: str = None,
         input_tokens: float = None,
         instance_id: str = None,
         model: str = None,
@@ -95,13 +110,23 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
         request_time: str = None,
         total_tokens: float = None,
     ):
+        # The consumer associated with the API key.
         self.consumer_name = consumer_name
+        # The additional information passed by the user in the extra_info field during the request. The value is a JSON string.
+        self.extra_info = extra_info
+        # The number of input tokens consumed.
         self.input_tokens = input_tokens
+        # The instance ID.
         self.instance_id = instance_id
+        # The model that was called.
         self.model = model
+        # The number of output tokens consumed.
         self.output_tokens = output_tokens
+        # The region in which the instance resides.
         self.region = region
+        # The request time in ISO 8601 format (UTC).
         self.request_time = request_time
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -114,6 +139,9 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
             result = _map
         if self.consumer_name is not None:
             result['ConsumerName'] = self.consumer_name
+
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
 
         if self.input_tokens is not None:
             result['InputTokens'] = self.input_tokens
@@ -142,6 +170,9 @@ class DescribeMOTokenUsageDetailResponseBodyRecords(DaraModel):
         m = m or dict()
         if m.get('ConsumerName') is not None:
             self.consumer_name = m.get('ConsumerName')
+
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
 
         if m.get('InputTokens') is not None:
             self.input_tokens = m.get('InputTokens')

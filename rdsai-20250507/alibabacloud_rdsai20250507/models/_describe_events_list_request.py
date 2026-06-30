@@ -14,19 +14,19 @@ class DescribeEventsListRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The start time of the query period.
+        # The end of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format. The time must be in UTC.
         self.end_time = end_time
-        # The region ID.
+        # The instance IDs. You can specify one or more instance IDs.
         self.instance_id_list = instance_id_list
-        # The number of records per page.
+        # The number of the page to return.
         self.page_number = page_number
-        # The end time of the query period.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The operation that you want to perform. Set the value to **DescribeEventsList**.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The RDS Supabase instances.
+        # The beginning of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

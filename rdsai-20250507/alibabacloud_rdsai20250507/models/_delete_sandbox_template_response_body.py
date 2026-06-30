@@ -4,19 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteApiKeyResponseBody(DaraModel):
+class DeleteSandboxTemplateResponseBody(DaraModel):
     def __init__(
         self,
-        message: str = None,
+        instance_name: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The response message.
-        self.message = message
-        # The request ID.
+        self.instance_name = instance_name
         self.request_id = request_id
-        # Indicates whether the request was successful.
-        self.success = success
 
     def validate(self):
         pass
@@ -26,27 +21,21 @@ class DeleteApiKeyResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.message is not None:
-            result['Message'] = self.message
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-
-        if self.success is not None:
-            result['Success'] = self.success
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
 
         return self
 

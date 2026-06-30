@@ -10,8 +10,10 @@ class ResetApiKeyRequest(DaraModel):
         api_key: str = None,
         instance_id: str = None,
     ):
-        # Api Key
+        # The API key.
         self.api_key = api_key
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

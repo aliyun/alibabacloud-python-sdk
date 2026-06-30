@@ -11,8 +11,11 @@ class ListApiKeysRequest(DaraModel):
         page: int = None,
         page_size: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

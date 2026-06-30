@@ -15,10 +15,13 @@ class UpdateApiKeyQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -66,6 +69,7 @@ class UpdateApiKeyQuotaResponseBodyData(DaraModel):
         self,
         custom_key_list: List[main_models.UpdateApiKeyQuotaResponseBodyDataCustomKeyList] = None,
     ):
+        # The list of custom API keys.
         self.custom_key_list = custom_key_list
 
     def validate(self):
@@ -100,14 +104,25 @@ class UpdateApiKeyQuotaResponseBodyDataCustomKeyList(DaraModel):
     def __init__(
         self,
         api_key: str = None,
+        daily_token_quota: int = None,
         limit_rate: float = None,
         limit_type: str = None,
         token_quota: int = None,
     ):
-        # Api Key
+        # The API key.
         self.api_key = api_key
+        self.daily_token_quota = daily_token_quota
+        # The limit rate.
         self.limit_rate = limit_rate
+        # The quota limiting method. Valid values:
+        # 
+        # - `ratio`: Sets the limit based on a ratio.
+        # 
+        # - `fixed`: Sets the limit to a fixed value.
+        # 
+        # - `auto`: Allocates the limit automatically.
         self.limit_type = limit_type
+        # The token quota for the API key.
         self.token_quota = token_quota
 
     def validate(self):
@@ -120,6 +135,9 @@ class UpdateApiKeyQuotaResponseBodyDataCustomKeyList(DaraModel):
             result = _map
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
+
+        if self.daily_token_quota is not None:
+            result['DailyTokenQuota'] = self.daily_token_quota
 
         if self.limit_rate is not None:
             result['LimitRate'] = self.limit_rate
@@ -136,6 +154,9 @@ class UpdateApiKeyQuotaResponseBodyDataCustomKeyList(DaraModel):
         m = m or dict()
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
+
+        if m.get('DailyTokenQuota') is not None:
+            self.daily_token_quota = m.get('DailyTokenQuota')
 
         if m.get('LimitRate') is not None:
             self.limit_rate = m.get('LimitRate')

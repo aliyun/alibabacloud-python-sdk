@@ -11,9 +11,13 @@ class DisableAgentRuntimeRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # An idempotent parameter.
         self.client_token = client_token
+        # The ID of the AI application instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The ID of the region where the instance is located.
         self.region_id = region_id
 
     def validate(self):

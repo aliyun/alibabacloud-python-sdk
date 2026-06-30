@@ -18,13 +18,19 @@ class DescribeSandboxTemplatesResponseBody(DaraModel):
         sandbox_templates: List[main_models.DescribeSandboxTemplatesResponseBodySandboxTemplates] = None,
         total_count: int = None,
     ):
+        # This parameter is reserved.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned on the current page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # A list of sandbox templates.
         self.sandbox_templates = sandbox_templates
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -94,6 +100,7 @@ class DescribeSandboxTemplatesResponseBody(DaraModel):
 class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
     def __init__(
         self,
+        created_by: str = None,
         default_cpu: str = None,
         default_memory: str = None,
         description: str = None,
@@ -102,12 +109,19 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         replicas: int = None,
         template_id: str = None,
     ):
+        self.created_by = created_by
+        # The default number of CPUs for a sandbox created from this template.
         self.default_cpu = default_cpu
+        # The default memory size for a sandbox created from this template.
         self.default_memory = default_memory
+        # The description of the sandbox template.
         self.description = description
+        # Specifies whether sandboxes created from this template can access resources in the VPC of the parent RDS Supabase instance.
         self.enable_vpc_access = enable_vpc_access
+        # The name of the sandbox template.
         self.name = name
         self.replicas = replicas
+        # The ID of the sandbox template. Use this ID when you create a sandbox.
         self.template_id = template_id
 
     def validate(self):
@@ -118,6 +132,9 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.created_by is not None:
+            result['CreatedBy'] = self.created_by
+
         if self.default_cpu is not None:
             result['DefaultCpu'] = self.default_cpu
 
@@ -143,6 +160,9 @@ class DescribeSandboxTemplatesResponseBodySandboxTemplates(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreatedBy') is not None:
+            self.created_by = m.get('CreatedBy')
+
         if m.get('DefaultCpu') is not None:
             self.default_cpu = m.get('DefaultCpu')
 

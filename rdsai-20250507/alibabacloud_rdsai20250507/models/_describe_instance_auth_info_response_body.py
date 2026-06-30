@@ -16,13 +16,13 @@ class DescribeInstanceAuthInfoResponseBody(DaraModel):
         jwt_secret: str = None,
         request_id: str = None,
     ):
-        # The API keys.
+        # API Keys。
         self.api_keys = api_keys
-        # The authentication configurations.
+        # The list of authentication configurations.
         self.config_list = config_list
-        # The ID of the RDS Supabase instance.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The JWT key.
+        # The JWT secret.
         self.jwt_secret = jwt_secret
         # The request ID.
         self.request_id = request_id
@@ -90,17 +90,17 @@ class DescribeInstanceAuthInfoResponseBodyConfigList(DaraModel):
     ):
         # The name of the configuration item. Valid values:
         # 
-        # *   **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Enables authentication via external email addresses.
-        # *   **GOTRUE_SITE_URL**: the URL that is displayed in the emails sent from the instance.
-        # *   **GOTRUE_SMTP_PORT**: the port of the SMTP service provider.
-        # *   **GOTRUE_SMTP_SENDER_NAME**: the name of the sender of the email.
-        # *   **GOTRUE_SMTP_USER**: the username of the SMTP service provider.
-        # *   **GOTRUE_SMTP_PASS**: the key of the SMTP service provider.
-        # *   **GOTRUE_SMTP_ADMIN_EMAIL**: the email address of the SMTP service provider.
-        # *   **GOTRUE_SMTP_HOST**: The host address of the SMTP service provider.
-        # *   **GOTRUE_MAILER_AUTOCONFIRM**: specifies whether to enable automatic confirmation.
-        # *   **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
-        # *   **GOTRUE_MAILER_OTP_LENGTH**: The verification code length of the one-time password (OTP). The value must be an integer greater than or equal to 6.
+        # - **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Specifies whether to allow external email addresses.
+        # - **GOTRUE_SITE_URL**: The website URL displayed when the AI application sends emails.
+        # - **GOTRUE_SMTP_PORT**: The port of the SMTP provider.
+        # - **GOTRUE_SMTP_SENDER_NAME**: The name of the email sender.
+        # - **GOTRUE_SMTP_USER**: The username of the SMTP provider.
+        # - **GOTRUE_SMTP_PASS**: The secret key of the SMTP provider.
+        # - **GOTRUE_SMTP_ADMIN_EMAIL**: The email address of the SMTP provider.
+        # - **GOTRUE_SMTP_HOST**: The host address of the SMTP provider.
+        # - **GOTRUE_MAILER_AUTOCONFIRM**: Specifies whether to enable automatic confirmation.
+        # - **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
+        # - **GOTRUE_MAILER_OTP_LENGTH**: The length of the one-time password (OTP) verification code. The value must be an integer greater than or equal to 6.
         self.name = name
         # The value of the configuration item.
         self.value = value
@@ -135,10 +135,12 @@ class DescribeInstanceAuthInfoResponseBodyApiKeys(DaraModel):
     def __init__(
         self,
         anon_key: str = None,
+        e_2b_api_key: str = None,
         service_key: str = None,
     ):
         # The ANON_KEY of Supabase.
         self.anon_key = anon_key
+        self.e_2b_api_key = e_2b_api_key
         # The SERVICE_ROLE_KEY of Supabase.
         self.service_key = service_key
 
@@ -153,6 +155,9 @@ class DescribeInstanceAuthInfoResponseBodyApiKeys(DaraModel):
         if self.anon_key is not None:
             result['AnonKey'] = self.anon_key
 
+        if self.e_2b_api_key is not None:
+            result['E2bApiKey'] = self.e_2b_api_key
+
         if self.service_key is not None:
             result['ServiceKey'] = self.service_key
 
@@ -162,6 +167,9 @@ class DescribeInstanceAuthInfoResponseBodyApiKeys(DaraModel):
         m = m or dict()
         if m.get('AnonKey') is not None:
             self.anon_key = m.get('AnonKey')
+
+        if m.get('E2bApiKey') is not None:
+            self.e_2b_api_key = m.get('E2bApiKey')
 
         if m.get('ServiceKey') is not None:
             self.service_key = m.get('ServiceKey')

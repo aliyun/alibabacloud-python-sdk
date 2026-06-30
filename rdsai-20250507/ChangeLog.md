@@ -1,3 +1,30 @@
+2026-06-30 Version: 3.5.0
+- Support API CreateSandboxTemplate.
+- Support API DeleteSandboxTemplate.
+- Support API DescribeCommonSandboxTemplates.
+- Support API ModifySandboxTemplate.
+- Update API ChatMessages: add request parameters Inputs.EnableThinking.
+- Update API ChatMessages: add request parameters Inputs.ThinkEffort.
+- Update API CreateApiKey: add request parameters DailyTokenQuota.
+- Update API CreateApiKey: add response parameters Body.Data.CustomKeyList.$.DailyTokenQuota.
+- Update API CreateAppInstance: add request parameters Database.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.LoginToken.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.RetentionHours.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.SqlExtendMoInstanceId.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.UploadKey.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.UploadKeyList.
+- Update API DescribeInstanceAuthInfo: add response parameters Body.ApiKeys.E2bApiKey.
+- Update API DescribeMOTokenUsageDetail: add request parameters UsageType.
+- Update API DescribeMOTokenUsageDetail: add response parameters Body.UsageType.
+- Update API DescribeMOTokenUsageDetail: add response parameters Body.Records.$.ExtraInfo.
+- Update API DescribeModelOperator: add response parameters Body.Data.SessionIds.
+- Update API DescribeSandboxTemplates: add response parameters Body.SandboxTemplates.$.CreatedBy.
+- Update API ListApiKeys: add response parameters Body.Data.DailyTokenQuota.
+- Update API ListApiKeys: add response parameters Body.Data.CustomKeyList.$.DailyTokenQuota.
+- Update API UpdateApiKeyQuota: add request parameters Keys.$.DailyTokenQuota.
+- Update API UpdateApiKeyQuota: add response parameters Body.Data.CustomKeyList.$.DailyTokenQuota.
+
+
 2026-05-22 Version: 3.4.3
 - Update API GetMessages: add response parameters Body.Data.$.GenerationFinishedAt.
 - Update API GetMessages: add response parameters Body.Data.$.GenerationStartedAt.

@@ -13,11 +13,23 @@ class EnableAgentRuntimeRequest(DaraModel):
         security_group_id: str = None,
         v_switch_id: str = None,
     ):
+        # The idempotence parameter.
         self.client_token = client_token
+        # The instance ID of the AI application.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The region ID of the instance.
         self.region_id = region_id
+        # The security group ID used to create an endpoint.
+        # 
+        # **If not specified**: The system automatically creates a security group named **sg-aliyun-rds-created-supabase-sandbox** in the VPC where the instance resides. No manual operation is required.
+        # 
+        # **If specified**: Ensure that the specified security group allows the CIDR block of the VPC where the Supabase instance resides (both inbound and outbound directions must be allowed). Otherwise, network connectivity issues may occur.
+        # >Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates the endpoint. When subsequent Supabase instances in the same VPC enable this capability, the existing endpoint is reused and no new endpoint is created.
         self.security_group_id = security_group_id
+        # The vSwitch ID used to create an endpoint. If this parameter is not specified, the vSwitch of the Supabase instance is used by default.
+        # >Notice: The endpoint is created only once. When the first Supabase instance in a VPC enables the sandbox and Edge Routine capabilities, the system automatically creates the endpoint. When subsequent Supabase instances in the same VPC enable this capability, the existing endpoint is reused and no new endpoint is created.
         self.v_switch_id = v_switch_id
 
     def validate(self):

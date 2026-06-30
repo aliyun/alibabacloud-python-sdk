@@ -15,13 +15,13 @@ class GetMessagesResponseBody(DaraModel):
         limit: int = None,
         request_id: str = None,
     ):
-        # The returned results.
+        # A list of message objects.
         self.data = data
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether there are more messages to retrieve.
         self.has_more = has_more
-        # The maximum number of entries to return.
+        # The value of the Limit parameter used for this request.
         self.limit = limit
-        # The request ID.
+        # The unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -87,24 +87,24 @@ class GetMessagesResponseBodyData(DaraModel):
         retriever_resources: List[Any] = None,
         stream_key: str = None,
     ):
-        # The response to the query.
+        # The AI-generated response to the query.
         self.answer = answer
-        # The ID of the conversation.
+        # The unique identifier for the conversation.
         self.conversation_id = conversation_id
-        # The creation time of the conversation.
+        # The Unix timestamp (in seconds) when the message was created.
         self.created_at = created_at
         self.events = events
-        # The feedback.
+        # The user\\"s feedback on the answer, such as "like" or "dislike".
         self.feedback = feedback
         self.generation_finished_at = generation_finished_at
         self.generation_started_at = generation_started_at
         self.generation_status = generation_status
-        # The message ID.
+        # The unique identifier for the message.
         self.id = id
         self.last_sent_entry_id = last_sent_entry_id
-        # The query statement.
+        # The user\\"s query.
         self.query = query
-        # The retriever resources.
+        # The resources that were retrieved to generate the answer.
         self.retriever_resources = retriever_resources
         self.stream_key = stream_key
 

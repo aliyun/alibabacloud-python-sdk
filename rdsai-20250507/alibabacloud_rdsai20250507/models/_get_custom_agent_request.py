@@ -9,7 +9,7 @@ class GetCustomAgentRequest(DaraModel):
         self,
         custom_agent_id: str = None,
     ):
-        # The operation that you want to perform. Set the value to **GetCustomAgent**.
+        # The ID of the custom agent.
         self.custom_agent_id = custom_agent_id
 
     def validate(self):

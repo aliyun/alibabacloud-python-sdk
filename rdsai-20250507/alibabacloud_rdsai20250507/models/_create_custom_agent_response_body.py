@@ -19,9 +19,9 @@ class CreateCustomAgentResponseBody(DaraModel):
         system_prompt: str = None,
         tools: List[str] = None,
     ):
-        # The creation time of the agent.
+        # The creation time.
         self.created_at = created_at
-        # Indicates whether tools are enabled.
+        # Specifies whether to enable tools.
         self.enable_tools = enable_tools
         # AgentId
         self.id = id
@@ -30,9 +30,9 @@ class CreateCustomAgentResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.skills = skills
-        # The system prompts.
+        # The system prompt.
         self.system_prompt = system_prompt
-        # The information about the tool.
+        # The tool information.
         self.tools = tools
 
     def validate(self):

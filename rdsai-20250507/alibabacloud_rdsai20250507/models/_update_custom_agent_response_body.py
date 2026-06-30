@@ -20,16 +20,16 @@ class UpdateCustomAgentResponseBody(DaraModel):
     ):
         # Indicates whether tools are enabled.
         self.enable_tools = enable_tools
-        # The ID of the agent.
+        # AgentId.
         self.id = id
-        # The name of the agent.
+        # The name of the custom agent.
         self.name = name
         # The request ID.
         self.request_id = request_id
         self.skills = skills
-        # The system prompts.
+        # The system prompt.
         self.system_prompt = system_prompt
-        # The information about the tool.
+        # The tools that the custom agent can use.
         self.tools = tools
 
     def validate(self):
