@@ -29,26 +29,27 @@ class CreateTransitRouterEcrAttachmentRequest(DaraModel):
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Make sure that the client token is unique for each request. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID is different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned. The system does not change the configuration of the ECR connection.
+        # 
+        # - **false** (default): sends a normal request. If the request passes the check, the system changes the configuration of the ECR connection.
         self.dry_run = dry_run
-        # The ID of the ECR.
+        # The ID of the ECR instance.
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The ID of the Alibaba Cloud account to which the ECR belongs. By default, the ID of the current Alibaba Cloud account is specified.
+        # The ID of the Alibaba Cloud account to which the ECR instance belongs. The default value is the ID of the current Alibaba Cloud account.
         # 
-        # >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+        # > If you want to connect to a network instance that belongs to another Alibaba Cloud account, this parameter is required.
         self.ecr_owner_id = ecr_owner_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the transit router.
+        # The ID of the region where the transit router is deployed.
         # 
         # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
         self.region_id = region_id
@@ -56,15 +57,15 @@ class CreateTransitRouterEcrAttachmentRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The tags.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify up to 20 tags in each call.
         self.tag = tag
         # The description of the ECR connection.
         # 
-        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
         self.transit_router_attachment_description = transit_router_attachment_description
         # The name of the ECR connection.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
         self.transit_router_attachment_name = transit_router_attachment_name
         # The ID of the transit router.
         self.transit_router_id = transit_router_id
@@ -183,15 +184,15 @@ class CreateTransitRouterEcrAttachmentRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
         # 
-        # You can specify at most 20 tag keys in each call.
+        # You can specify up to 20 tag keys.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be empty or up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https:// `.
         # 
-        # Each key-value pair must be unique. You can specify values for at most 20 tag keys in each call.
+        # Each tag key must have a unique tag value. You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):

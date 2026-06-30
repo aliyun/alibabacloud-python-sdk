@@ -14,14 +14,15 @@ class ListCenInterRegionTrafficQosQueuesResponseBody(DaraModel):
         request_id: str = None,
         traffic_qos_queues: List[main_models.ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # A pagination token. It is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no more results are returned.
+        # 
+        # - If NextToken is not empty, the value of **NextToken** is used for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the QoS queue.
+        # The information about the queues of the QoS policy.
         self.traffic_qos_queues = traffic_qos_queues
 
     def validate(self):
@@ -79,31 +80,33 @@ class ListCenInterRegionTrafficQosQueuesResponseBodyTrafficQosQueues(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The absolute bandwidth value that can be allocated to the current queue.
+        # The bandwidth allocated to the queue. This parameter is returned only if you allocate bandwidth to the queue by absolute value.
         # 
-        # A value of **1** indicates that the QoS queue can consume at most 1 Mbit/s of inter-region bandwidth.
+        # For example, a value of **1** indicates that traffic that matches the queue can use up to 1 Mbit/s of the inter-region connection bandwidth.
         self.bandwidth = bandwidth
-        # The Differentiated Services Code Point (DSCP) value that matches the current QoS queue.
+        # The Differentiated Services Code Point (DSCP) values that are matched by the queue.
         self.dscps = dscps
-        # The actual bandwidth of the current queue.
+        # The actual bandwidth of the queue.
         self.effective_bandwidth = effective_bandwidth
-        # The percentage of bandwidth that can be allocated to the current queue.
+        # The percentage of the inter-region connection bandwidth that can be used by the queue. This parameter is returned only if you allocate bandwidth to the queue by percentage.
         # 
-        # A value of **1** indicates that the QoS queue can consume at most 1% of the inter-region bandwidth.
+        # For example, a value of **1** indicates that traffic that matches the queue can use up to 1% of the inter-region connection bandwidth.
         self.remain_bandwidth_percent = remain_bandwidth_percent
-        # The status of the QoS queue. Valid values:
+        # The status of the queue.
         # 
-        # *   **Creating**
-        # *   **Active**
-        # *   **Deleting**
+        # - **Creating**: The queue is being created.
+        # 
+        # - **Active**: The queue is running.
+        # 
+        # - **Deleting**: The queue is being deleted.
         self.status = status
         # The ID of the QoS policy.
         self.traffic_qos_policy_id = traffic_qos_policy_id
-        # The description of the QoS queue.
+        # The description of the queue in the QoS policy.
         self.traffic_qos_queue_description = traffic_qos_queue_description
-        # The ID of the QoS queue.
+        # The ID of the queue in the QoS policy.
         self.traffic_qos_queue_id = traffic_qos_queue_id
-        # The name of the QoS queue.
+        # The name of the queue in the QoS policy.
         self.traffic_qos_queue_name = traffic_qos_queue_name
         # The ID of the inter-region connection.
         self.transit_router_attachment_id = transit_router_attachment_id

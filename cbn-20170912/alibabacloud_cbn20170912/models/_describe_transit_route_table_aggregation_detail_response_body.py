@@ -15,13 +15,13 @@ class DescribeTransitRouteTableAggregationDetailResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.count = count
-        # The configuration of the aggregate route.
+        # The configuration details of the aggregate route.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -77,17 +77,21 @@ class DescribeTransitRouteTableAggregationDetailResponseBodyData(DaraModel):
         instance_id: str = None,
         status: str = None,
     ):
-        # The error message returned if the configuration of the aggregate route fails.
+        # The message returned if the configuration of the aggregate route fails.
         self.description = description
-        # The ID of the virtual private cloud (VPC) for which the aggregate route is configured.
+        # The ID of the VPC instance for which the aggregate route is configured.
         self.instance_id = instance_id
-        # The status of the aggregate route. Valid values:
+        # The configuration status of the aggregate route.
         # 
-        # *   **Configured**: The aggregate route is advertised to the VPC.
-        # *   **Configuring**: The aggregate route is being advertised.
-        # *   **ConfigFailed**: The aggregate route failed to be advertised.
-        # *   **PartialConfigured**: Failed to advertise the aggregate route to some VPCs.
-        # *   **Deleting**: The aggregate route is being deleted.
+        # - **Configured**: The aggregate route is advertised to the VPC instance.
+        # 
+        # - **Configuring**: The aggregate route is being advertised.
+        # 
+        # - **ConfigFailed**: The aggregate route failed to be advertised.
+        # 
+        # - **PartialConfigured**: The aggregate route was partially advertised.
+        # 
+        # - **Deleting**: The aggregate route is being deleted.
         self.status = status
 
     def validate(self):

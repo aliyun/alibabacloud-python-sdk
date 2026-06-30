@@ -23,18 +23,21 @@ class ListTransitRouterPrefixListAssociationRequest(DaraModel):
         transit_router_id: str = None,
         transit_router_table_id: str = None,
     ):
-        # The ID of the next hop.
+        # The ID of the next hop connection.
         # 
-        # > Set the value to **BlackHole** if you want to query the prefix list that generates blackhole routes.
+        # > If you want to query information about the prefix list that is used to generate blackhole routes, set this parameter to **BlackHole**.
         self.next_hop = next_hop
-        # The ID of the network instance associated with the next hop connection.
+        # The ID of the network instance that is associated with the next hop connection.
         self.next_hop_instance_id = next_hop_instance_id
-        # The type of the next hop. Valid values:
+        # The next hop type. Valid values:
         # 
-        # *   **BlackHole**: The prefix list that generates blackhole routes.
-        # *   **VPC**: The prefix list whose next hop is a virtual private cloud (VPC) connection.
-        # *   **VBR**: The prefix list whose next hop is a virtual border router (VBR) connection.
-        # *   **TR**: The prefix list whose next hop is an inter-region connection on the transit router.
+        # - **BlackHole**: queries the prefix lists that generate blackhole routes.
+        # 
+        # - **VPC**: queries the prefix lists whose next hop is a Virtual Private Cloud (VPC) connection.
+        # 
+        # - **VBR**: queries the prefix lists whose next hop is a virtual border router (VBR) connection.
+        # 
+        # - **TR**: queries the prefix lists whose next hop is an inter-region connection.
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -46,18 +49,19 @@ class ListTransitRouterPrefixListAssociationRequest(DaraModel):
         self.page_size = page_size
         # The ID of the prefix list.
         self.prefix_list_id = prefix_list_id
-        # The ID of the region where the transit router is deployed.
+        # The region ID of the transit router.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the prefix list. Valid values:
+        # The status of the prefix list.
         # 
-        # *   **Active**
-        # *   **Updating**
+        # - **Active**: The prefix list is active.
+        # 
+        # - **Updating**: The prefix list is being updated.
         self.status = status
         # The ID of the transit router.
         # 

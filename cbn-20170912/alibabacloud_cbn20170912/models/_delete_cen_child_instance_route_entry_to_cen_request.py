@@ -19,13 +19,13 @@ class DeleteCenChildInstanceRouteEntryToCenRequest(DaraModel):
         resource_owner_id: int = None,
         route_table_id: str = None,
     ):
-        # The ID of the CEN instance.
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         # 
         # This parameter is required.
         self.cen_id = cen_id
         # The ID of the Alibaba Cloud account to which the network instance belongs.
         # 
-        # > If the network instance and the CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
+        # > This parameter is required if the network instance belongs to another Alibaba Cloud account.
         self.child_instance_ali_uid = child_instance_ali_uid
         # The ID of the network instance.
         # 
@@ -39,14 +39,15 @@ class DeleteCenChildInstanceRouteEntryToCenRequest(DaraModel):
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: a virtual private cloud (VPC)
-        # *   **VBR**: a virtual border router (VBR)
+        # - **VPC**: a virtual private cloud (VPC).
+        # 
+        # - **VBR**: a virtual border router (VBR).
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
         # The destination CIDR block of the route.
         # 
-        # Specify the value of this parameter in CIDR notation. Example: 192.168.10.0/24.
+        # The destination CIDR block must be in CIDR format. Example: 192.168.10.0/24.
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
@@ -54,7 +55,7 @@ class DeleteCenChildInstanceRouteEntryToCenRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table configured on the network instance.
+        # The ID of the route table of the network instance.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

@@ -25,21 +25,21 @@ class DescribeRouteServicesInCenRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The service address of the cloud service.
+        # The endpoint of the Alibaba Cloud service.
         # 
-        # You can enter a domain name, an IP address, or a CIDR block.
+        # The endpoint can be a domain name, an IP address, or a CIDR block.
         self.host = host
-        # The region ID of the cloud service.
+        # The ID of the region where the Alibaba Cloud service is deployed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
         self.host_region_id = host_region_id
-        # The ID of the VPC associated with the cloud service.
+        # The ID of the VPC that is associated with the Alibaba Cloud service.
         self.host_vpc_id = host_vpc_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries to return on each page. The default value is **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

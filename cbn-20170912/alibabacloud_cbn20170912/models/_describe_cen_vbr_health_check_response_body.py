@@ -16,7 +16,7 @@ class DescribeCenVbrHealthCheckResponseBody(DaraModel):
         total_count: int = None,
         vbr_health_checks: main_models.DescribeCenVbrHealthCheckResponseBodyVbrHealthChecks = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size

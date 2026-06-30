@@ -14,8 +14,14 @@ class UnroutePrivateZoneInCenToVpcRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the region where the PrivateZone connection is accessed.
+        # 
+        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to get the region ID.
+        # 
         # This parameter is required.
         self.access_region_id = access_region_id
+        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # 
         # This parameter is required.
         self.cen_id = cen_id
         self.owner_account = owner_account

@@ -20,10 +20,11 @@ class ListTrafficMarkingPoliciesRequest(DaraModel):
     ):
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # - You do not need to specify this parameter for the first query.
+        # 
+        # - If a next query is to be sent, set the value to the **NextToken** value returned from the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31,15 +32,15 @@ class ListTrafficMarkingPoliciesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The description of the traffic marking policy.
         # 
-        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
         self.traffic_marking_policy_description = traffic_marking_policy_description
         # The ID of the traffic marking policy.
         self.traffic_marking_policy_id = traffic_marking_policy_id
         # The name of the traffic marking policy.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
         self.traffic_marking_policy_name = traffic_marking_policy_name
-        # The ID of the transit router.
+        # The ID of the TransitRouter instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

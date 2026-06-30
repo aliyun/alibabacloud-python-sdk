@@ -21,12 +21,12 @@ class UpdateTransitRouterRouteEntryRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** is different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** is different for each request.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Default values:
         # 
-        # *   **false** (default): performs a dry run and sends the request.
-        # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request.
+        # - **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -34,7 +34,7 @@ class UpdateTransitRouterRouteEntryRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new description of the route.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The description must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
         self.transit_router_route_entry_description = transit_router_route_entry_description
         # The ID of the route.
         # 
@@ -42,7 +42,7 @@ class UpdateTransitRouterRouteEntryRequest(DaraModel):
         self.transit_router_route_entry_id = transit_router_route_entry_id
         # The new name of the route.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The name must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
         self.transit_router_route_entry_name = transit_router_route_entry_name
 
     def validate(self):

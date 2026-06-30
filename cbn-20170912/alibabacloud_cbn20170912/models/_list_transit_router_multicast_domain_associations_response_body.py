@@ -16,18 +16,19 @@ class ListTransitRouterMulticastDomainAssociationsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_multicast_associations: List[main_models.ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations] = None,
     ):
-        # The number of entries returned on each page.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   If **NextToken** is empty, it indicates that no subsequent query is to be sent.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # - If **NextToken** is empty, it indicates that no next query is to be sent.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The information about the resource associated with the multicast domain.
+        # The list of associations.
         self.transit_router_multicast_associations = transit_router_multicast_associations
 
     def validate(self):
@@ -99,13 +100,15 @@ class ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulti
         self.resource_owner_id = resource_owner_id
         # The type of resource associated with the multicast domain.
         # 
-        # Valid value: **VPC**.
+        # The value is **VPC**.
         self.resource_type = resource_type
-        # The association status. Valid values:
+        # The association status.
         # 
-        # *   **Associated**: The resource is associated with the multicast domain.
-        # *   **Associating**: The resource is being associated with the multicast domain.
-        # *   **Dissociating**: The resource is being disassociated from the multicast domain.
+        # - **Associated**: The resource is associated with the multicast domain.
+        # 
+        # - **Associating**: The resource is being associated with the multicast domain.
+        # 
+        # - **Dissociating**: The resource is being dissociated from the multicast domain.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id

@@ -17,14 +17,15 @@ class DeleteTransitRouterRouteTableRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a token from your client to ensure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run. A dry run checks for issues such as permissions and instance status. Valid values:
         # 
-        # *   **false** (default): performs a dry run and sends the request.
-        # *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request. The custom route table is deleted after the request passes the check.
+        # 
+        # - **true**: Sends a check request. The system checks the required parameters, request format, and permissions. If the check fails, an error message is returned. If the check succeeds, the `DryRunOperation` error code is returned. The custom route table is not deleted.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id

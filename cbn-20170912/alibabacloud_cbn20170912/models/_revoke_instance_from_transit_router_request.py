@@ -31,10 +31,10 @@ class RevokeInstanceFromTransitRouterRequest(DaraModel):
         self.instance_id = instance_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: VPC
-        # *   **ExpressConnect**: VBR
-        # *   **VPN**: IPsec-VPN connection
-        # *   **ECR**: ECR
+        # - **VPC**: VPC
+        # - **ExpressConnect**: VBR
+        # - **VPN**: IPsec-VPN connection
+        # - **ECR**: ECR
         # 
         # This parameter is required.
         self.instance_type = instance_type

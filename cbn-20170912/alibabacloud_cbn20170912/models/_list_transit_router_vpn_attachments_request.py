@@ -22,28 +22,29 @@ class ListTransitRouterVpnAttachmentsRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The ID of the CEN instance.
         self.cen_id = cen_id
         # The number of entries to return on each page. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # - If this is your first query or no next query is to be sent, you do not need to specify this parameter.
+        # 
+        # - If a next query is to be sent, set the value to the NextToken value returned from the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the transit router.
+        # The ID of the region where the transit router is deployed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # For more information, see [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The information about the tags that are added to the CEN instance.
+        # The tags of the CEN instance.
         # 
-        # You can query at most 20 tags in each call.
+        # You can query a maximum of 20 tags at a time.
         self.tag = tag
-        # The ID of the VPN attachment.
+        # The ID of the VPN connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The ID of the transit router.
         self.transit_router_id = transit_router_id
@@ -144,15 +145,15 @@ class ListTransitRouterVpnAttachmentsRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
         # 
-        # You can specify at most 20 tag keys.
+        # You can specify up to 20 tag keys.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https:// `.
         # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # Each tag key must have a unique tag value. You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):

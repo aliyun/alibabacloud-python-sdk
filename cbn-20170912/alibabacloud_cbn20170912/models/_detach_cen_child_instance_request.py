@@ -38,9 +38,11 @@ class DetachCenChildInstanceRequest(DaraModel):
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **VBR**: virtual border router (VBR)
-        # *   **CCN**: Cloud Connect Network (CCN) instance
+        # - **VPC**: virtual private cloud (VPC)
+        # 
+        # - **VBR**: virtual border router (VBR)
+        # 
+        # - **CCN**: Cloud Connect Network (CCN) instance
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type

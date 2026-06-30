@@ -20,23 +20,25 @@ class DeleteTransitRouterVpnAttachmentRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** of each request is unique.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request.
-        self.dry_run = dry_run
-        # Specifies whether to forcefully delete the VPN attachment. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # *   **false** (default): Check for resource dependencies, such as associated forwarding and route learning, before the VPN attachment is deleted. If such resources exist, the VPN attachment is not deleted and an error message is returned.
-        # *   **true**: Delete the resource dependencies along with the VPN attachment.
+        # - **false** (default): sends a normal request. If the request passes the check, the VPN connection is deleted.
+        self.dry_run = dry_run
+        # Specifies whether to forcefully delete the VPN connection. Valid values:
+        # 
+        # - **false** (default): checks for resource dependencies, such as associated forwarding and route learning, before the VPN connection is deleted. If a dependency is found, the deletion fails and an error message is returned.
+        # 
+        # - **true**: deletes the VPN connection and all its dependencies.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VPN attachment.
+        # The ID of the VPN connection.
         # 
         # This parameter is required.
         self.transit_router_attachment_id = transit_router_attachment_id

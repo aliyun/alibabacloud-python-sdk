@@ -18,13 +18,13 @@ class ListTransitRouterRouteTablePropagationsResponseBody(DaraModel):
     ):
         # The number of entries returned per page.
         self.max_results = max_results
-        # The token that determines the start point of the query.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # A list of route learning correlations.
+        # A list of the route propagations.
         self.transit_router_propagations = transit_router_propagations
 
     def validate(self):
@@ -90,18 +90,23 @@ class ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagatio
     ):
         # The ID of the network instance.
         self.resource_id = resource_id
-        # The type of the network instance. Valid values:
+        # The type of the network instance.
         # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **TR**: transit router
-        # *   **VPN**: VPN connection
+        # - **VPC**: a VPC.
+        # 
+        # - **VBR**: a VBR.
+        # 
+        # - **TR**: a transit router.
+        # 
+        # - **VPN**: a VPN connection.
         self.resource_type = resource_type
-        # The status of the route learning correlation. Valid values:
+        # The status of the route propagation.
         # 
-        # *   **Enabling**: being enabled
-        # *   **Disabling**: being disabled
-        # *   **Active**: available
+        # - **Enabling**: The propagation is being enabled.
+        # 
+        # - **Disabling**: The propagation is being disabled.
+        # 
+        # - **Active**: The propagation is active.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id

@@ -27,13 +27,13 @@ class ListTransitRoutersRequest(DaraModel):
     ):
         # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The field that is used to enable or disable a feature of the transit router.
+        # The feature to be filtered.
         self.feature_filter = feature_filter
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region where the transit router is deployed.
         # 
@@ -41,28 +41,33 @@ class ListTransitRoutersRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the transit router. Valid values:
+        # The status of the transit router.
         # 
-        # *   **Creating**: The transit router is being created.
-        # *   **Active**: The transit router is available.
-        # *   **Modifying**: The transit router is being modified
-        # *   **Deleting**: The transit router is being deleted.
-        # *   **Upgrading**: The transit router is being upgraded.
+        # - **Creating**: The transit router is being created.
+        # 
+        # - **Active**: The transit router is available.
+        # 
+        # - **Modifying**: The transit router is being modified.
+        # 
+        # - **Deleting**: The transit router is being deleted.
+        # 
+        # - **Upgrading**: The transit router is being upgraded.
         self.status = status
-        # The information about the tags.
+        # The tags.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify up to 20 tags.
         self.tag = tag
         # The ID of the transit router.
         self.transit_router_id = transit_router_id
-        # The name of the Enterprise Edition transit router.
+        # The name of the transit router.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.transit_router_name = transit_router_name
-        # The edition of the transit router. Valid values:
+        # The type of the transit router.
         # 
-        # *   **Enterprise**: Enhance Edition
-        # *   **Basic**: Basic Edition
+        # - **Enterprise**: Enterprise Edition.
+        # 
+        # - **Basic**: Basic Edition.
         self.type = type
 
     def validate(self):
@@ -188,15 +193,15 @@ class ListTransitRoutersRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys.
+        # You can specify up to 20 tag keys.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # Each tag key must have a unique tag value. You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):
@@ -231,14 +236,17 @@ class ListTransitRoutersRequestFeatureFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The value of the field that is used to enable or disable a feature of the transit router. Supported fields:
+        # The key of the feature to be filtered.
+        # The following key is supported:
         # 
-        # *   **Multicast**: the multicast feature.
+        # - **Multicast**: the multicast feature.
         self.key = key
-        # The fields that are used to enable or disable the features of the transit router. The **Multicast** field supports only one value. Valid values:
+        # A list of values for the feature.
+        # If you set the key to **Multicast**, you can specify only one value. Valid values:
         # 
-        # *   **Enabled**: enables multicast.
-        # *   **Disabled**: disables multicast.
+        # - **Enabled**: Multicast is supported.
+        # 
+        # - **Disabled**: Multicast is not supported.
         self.value = value
 
     def validate(self):

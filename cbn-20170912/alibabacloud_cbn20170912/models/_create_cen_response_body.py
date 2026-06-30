@@ -10,7 +10,7 @@ class CreateCenResponseBody(DaraModel):
         cen_id: str = None,
         request_id: str = None,
     ):
-        # The CEN instance ID.
+        # The ID of the CEN instance.
         self.cen_id = cen_id
         # The request ID.
         self.request_id = request_id

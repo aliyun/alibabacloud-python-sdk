@@ -17,9 +17,9 @@ class DescribeCenRegionDomainRouteEntriesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.cen_route_entries = cen_route_entries
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

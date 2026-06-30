@@ -15,13 +15,22 @@ class RefreshTransitRouteTableAggregationRequest(DaraModel):
         transit_route_table_aggregation_cidr: str = None,
         transit_route_table_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # Use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > When left empty, the system automatically uses the RequestId as the ClientToken. The RequestId is different for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The destination CIDR block of the aggregate route.
+        # 
         # This parameter is required.
         self.transit_route_table_aggregation_cidr = transit_route_table_aggregation_cidr
+        # The route table ID of the Enterprise Edition transit router.
+        # 
         # This parameter is required.
         self.transit_route_table_id = transit_route_table_id
 

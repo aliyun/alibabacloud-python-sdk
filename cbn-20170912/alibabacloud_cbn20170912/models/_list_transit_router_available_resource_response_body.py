@@ -15,15 +15,15 @@ class ListTransitRouterAvailableResourceResponseBody(DaraModel):
         slave_zones: List[str] = None,
         support_multicast: bool = None,
     ):
-        # A list of zone IDs.
+        # A list of available zone IDs.
         self.available_zones = available_zones
-        # A list of primary zones.
+        # A list of primary zone IDs.
         self.master_zones = master_zones
         # The request ID.
         self.request_id = request_id
         # A list of secondary zone IDs.
         self.slave_zones = slave_zones
-        # Indicates whether the zone supports the multicast feature.
+        # Indicates whether the returned zones support the multicast feature.
         self.support_multicast = support_multicast
 
     def validate(self):

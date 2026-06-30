@@ -16,19 +16,19 @@ class DescribeCenInterRegionBandwidthLimitsRequest(DaraModel):
         resource_owner_id: int = None,
         tr_region_id: str = None,
     ):
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The ID of the CEN instance.
         self.cen_id = cen_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. The default value is **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries to return on each page. The default value is **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The region ID of the transit router.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query information about regions.
         self.tr_region_id = tr_region_id
 
     def validate(self):

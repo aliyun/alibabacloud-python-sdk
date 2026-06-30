@@ -10,12 +10,12 @@ class DeleteFlowlogResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call is successful. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**
+        # - **false**
         self.success = success
 
     def validate(self):

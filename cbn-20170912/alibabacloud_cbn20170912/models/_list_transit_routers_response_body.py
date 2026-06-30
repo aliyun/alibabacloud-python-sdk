@@ -16,11 +16,11 @@ class ListTransitRoutersResponseBody(DaraModel):
         total_count: int = None,
         transit_routers: List[main_models.ListTransitRoutersResponseBodyTransitRouters] = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -101,26 +101,31 @@ class ListTransitRoutersResponseBodyTransitRouters(DaraModel):
         self.cen_id = cen_id
         # The time when the transit router was created.
         # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
+        # The time is displayed in the `YYYY-MM-DDThh:mmZ` format in UTC.
         self.creation_time = creation_time
         # The ID of the region where the transit router is deployed.
         self.region_id = region_id
-        # The status of the transit router. Valid values:
+        # The status of the transit router.
         # 
-        # *   **Creating**: The transit router is being created.
-        # *   **Active**: The transit router is available.
-        # *   **Modifying**: The transit router is being modified
-        # *   **Deleting**: The transit router is being deleted.
-        # *   **Upgrading**: The transit router is being upgraded.
+        # - **Creating**: The transit router is being created.
+        # 
+        # - **Active**: The transit router is available.
+        # 
+        # - **Modifying**: The transit router is being modified.
+        # 
+        # - **Deleting**: The transit router is being deleted.
+        # 
+        # - **Upgrading**: The transit router is being upgraded.
         self.status = status
-        # Indicates whether multicast is enabled for the transit router. Valid values:
+        # Indicates whether the multicast feature is enabled for the transit router.
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.support_multicast = support_multicast
         # A list of tags.
         self.tags = tags
-        # The CIDR blocks of the transit router.
+        # A list of CIDR blocks of the transit router.
         self.transit_router_cidr_list = transit_router_cidr_list
         # The description of the transit router.
         self.transit_router_description = transit_router_description
@@ -128,10 +133,11 @@ class ListTransitRoutersResponseBodyTransitRouters(DaraModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
-        # The edition of the transit router. Valid values:
+        # The type of the transit router.
         # 
-        # *   **Enterprise**: Enhance Edition
-        # *   **Basic**: Basic Edition
+        # - **Enterprise**: Enterprise Edition.
+        # 
+        # - **Basic**: Basic Edition.
         self.type = type
 
     def validate(self):
@@ -252,15 +258,17 @@ class ListTransitRoutersResponseBodyTransitRoutersTransitRouterCidrList(DaraMode
         self.description = description
         # The name of the CIDR block.
         self.name = name
-        # Indicates whether the system is allowed to automatically add a route to the route table of the transit router. Valid values:
+        # Indicates whether the system automatically adds a route for the transit router CIDR block to the route table of the transit router.
         # 
-        # - **true**: yes
+        # - **true**: Yes.
         # 
-        #   A value of **true** indicates that after you create a private VPN connection and create a route learning correlation for the private VPC connection, the system automatically adds the following route to the route table of the transit router that is in route learning correlation with the private VPN connection: A blackhole route whose destination CIDR block is the CIDR block of the transit router. The CIDR block of the transit router refers to the CIDR block from which gateway IP addresses are allocated to IPsec-VPN connections. 
-        #          
-        #   The blackhole route is advertised only to the route tables of virtual border routers (VBRs) that are connected to the transit router. 
+        #   If this parameter is set to **true**, after you create a VPN connection of the private gateway type and enable route learning for the VPN connection, the system automatically adds a blackhole route to the route table of the transit router that is in a route learning correlation with the VPN connection.
         # 
-        # - **false**: no
+        #   The destination CIDR block of the blackhole route is the CIDR block of the transit router. The CIDR block of the transit router is the CIDR block from which an IP address is allocated to the IPsec-VPN connection.
+        # 
+        #   This blackhole route is advertised only to the route tables of the virtual border routers (VBRs) that are connected to the transit router.
+        # 
+        # - **false**: No.
         self.publish_cidr_route = publish_cidr_route
         # The ID of the CIDR block.
         self.transit_router_cidr_id = transit_router_cidr_id

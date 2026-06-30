@@ -26,52 +26,57 @@ class EnableCenVbrHealthCheckRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The description of the health check.
+        # The description.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length and cannot start with `http:// `or `https://`.
         self.description = description
-        # The time interval at which probe packets are sent during a health check. Unit: seconds. Default value: **2**. Valid values: **2 to 3**.
+        # The time interval at which probe packets are sent during a health check. Unit: seconds. Default value: 2. Valid values: **2** to **3**.
         self.health_check_interval = health_check_interval
-        # Specifies whether to enable probing during the health check. Valid values:
+        # Specifies whether to enable only the detection feature. Valid values:
         # 
-        # *   **true**: yes
+        # - **true**: Yes.
         # 
-        #         If you enable probing, the system does not switch to another route if the detected route is not reachable. 
+        #   ```
+        #     If you enable only the detection feature, the system performs a health check but does not switch routes when the Express Connect circuit is down.
         # 
-        #           Make sure that a redundant route is available. Otherwise, network disconnections may occur. 
+        #     > Make sure that you have another way to ensure link redundancy. Otherwise, network interruptions may occur.
+        #   ```
         # 
-        # *   **false** (default): no
+        # - **false** (default): No.
         # 
-        #         Probing is disabled by default. If a redundant route is specified, the system switches to the redundant route if the detected route is not reachable.
+        #   ```
+        #     This feature is disabled by default. If the health check detects a link failure and a redundant route is available in the CEN instance, the system immediately switches to the available route.
+        #   ```
         self.health_check_only = health_check_only
-        # The source IP address for the health check. You can set the source IP address in the following ways:
+        # The source IP address for the health check. You can configure the source IP address in one of the following ways:
         # 
-        # *   **Automatic IP Address** (recommended): The system automatically assigns an IP address from the 100.96.0.0/16 CIDR block.
-        # *   **Custom IP Address**: You must specify an idle IP address from the 10.0.0.0/8, 192.168.0.0/16, or 172.16.0.0/12 CIDR block. The specified IP address cannot be the IP address of the VBR on the Alibaba Cloud side, the IP address of the VBR on the customer side, or other IP addresses with which the VBR communicates through the CEN instance.
+        # - **Automatic IP address** (recommended): The system automatically assigns an IP address from the 100.96.0.0/16 CIDR block.
+        # 
+        # - **Custom IP address**: You can specify an unused IP address from the 10.0.0.0/8, 192.168.0.0/16, or 172.16.0.0/12 CIDR block. The specified IP address cannot conflict with an IP address that is used for communication in the CEN instance. The specified IP address also cannot conflict with the Alibaba Cloud-side or client-side IP address of the VBR instance.
         self.health_check_source_ip = health_check_source_ip
         # The destination IP address for the health check.
         # 
-        # Set the destination IP address to the IP address of the VBR on the customer side.
+        # The destination IP address is the client-side IP address of the VBR instance.
         # 
         # This parameter is required.
         self.health_check_target_ip = health_check_target_ip
-        # The number of probe packets that are sent during a health check. Unit: packets. Valid values: **3 to 8**. Default value: **8**.
+        # The number of probe packets that are sent during a health check. Unit: packets. Valid values: 3 to **8**. Default value: **8**.
         self.healthy_threshold = healthy_threshold
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VBR.
+        # The ID of the VBR instance.
         # 
         # This parameter is required.
         self.vbr_instance_id = vbr_instance_id
-        # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # The ID of the Alibaba Cloud account to which the VBR instance belongs.
         # 
-        # > This parameter is required if the VBR and the CEN instance belong to different Alibaba Cloud accounts.
+        # > This parameter is required if the VBR instance and the CEN instance belong to different Alibaba Cloud accounts.
         self.vbr_instance_owner_id = vbr_instance_owner_id
-        # The ID of the region where the VBR is deployed.
+        # The ID of the region where the VBR instance is deployed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.vbr_instance_region_id = vbr_instance_region_id

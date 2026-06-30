@@ -16,16 +16,17 @@ class ListTransitRouterMulticastDomainsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_multicast_domains: List[main_models.ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query.
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+        # - If the value of **NextToken** is empty, it indicates that no next query is to be sent.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         # The list of multicast domains.
         self.transit_router_multicast_domains = transit_router_multicast_domains
@@ -95,21 +96,21 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         transit_router_multicast_domain_id: str = None,
         transit_router_multicast_domain_name: str = None,
     ):
-        # The CEN instance ID.
+        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # Multicast domain feature.
+        # The options of the multicast domain.
         self.options = options
-        # The region ID of the transit router.
+        # The ID of the region where the transit router is deployed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
         self.region_id = region_id
         # The status of the multicast domain.
         # 
-        # The valid value is **Active**, which indicates that the multicast domain is available.
+        # The value is **Active**, which indicates that the multicast domain is available.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tags = tags
-        # The transit router ID.
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
         # The description of the multicast domain.
         self.transit_router_multicast_domain_description = transit_router_multicast_domain_description
@@ -238,9 +239,11 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
     def __init__(
         self,
         igmpv_2support: str = None,
+        strict_source_control: str = None,
     ):
-        # Indicates whether the IGMP feature is enabled for the multicast domain.
+        # Indicates whether IGMPv2 is enabled for the multicast domain.
         self.igmpv_2support = igmpv_2support
+        self.strict_source_control = strict_source_control
 
     def validate(self):
         pass
@@ -253,12 +256,18 @@ class ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains
         if self.igmpv_2support is not None:
             result['Igmpv2Support'] = self.igmpv_2support
 
+        if self.strict_source_control is not None:
+            result['StrictSourceControl'] = self.strict_source_control
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Igmpv2Support') is not None:
             self.igmpv_2support = m.get('Igmpv2Support')
+
+        if m.get('StrictSourceControl') is not None:
+            self.strict_source_control = m.get('StrictSourceControl')
 
         return self
 

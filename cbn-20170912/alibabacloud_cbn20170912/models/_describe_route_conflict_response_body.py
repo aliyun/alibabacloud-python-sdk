@@ -16,14 +16,14 @@ class DescribeRouteConflictResponseBody(DaraModel):
         route_conflicts: main_models.DescribeRouteConflictResponseBodyRouteConflicts = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         self.route_conflicts = route_conflicts
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

@@ -10,9 +10,9 @@ class CreateTransitRouterResponseBody(DaraModel):
         request_id: str = None,
         transit_router_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

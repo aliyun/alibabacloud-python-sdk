@@ -14,7 +14,7 @@ class ModifyCenBandwidthPackageSpecRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The new maximum bandwidth value of the bandwidth plan. Unit: Mbit/s.
+        # The new maximum bandwidth of the bandwidth plan. Unit: Mbps.
         # 
         # Valid values: **2** to **10000**.
         self.bandwidth = bandwidth

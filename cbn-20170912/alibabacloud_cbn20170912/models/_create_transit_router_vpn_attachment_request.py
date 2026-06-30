@@ -28,31 +28,33 @@ class CreateTransitRouterVpnAttachmentRequest(DaraModel):
         vpn_owner_id: int = None,
         zone: List[main_models.CreateTransitRouterVpnAttachmentRequestZone] = None,
     ):
-        # Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
+        # Specifies whether to enable the transit router to automatically publish routes to the IPsec-VPN connection. Valid values:
         # 
-        # *   **true** (default): yes
-        # *   **false**: no
+        # - **true** (default): enabled.
+        # 
+        # - **false**: disabled.
         self.auto_publish_route_enabled = auto_publish_route_enabled
         # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
         # The billing method.
         # 
-        # Set the value to **POSTPAY**, which is the default value and specifies the pay-as-you-go billing method.
+        # The value is set to **POSTPAY** (default), which specifies the pay-as-you-go billing method.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # Generate a unique token on your client. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request.
+        # - **true**: performs a dry run but does not create the VPN connection. The system checks the request for required parameters, format, and service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and creates the VPN connection if the request passes the check.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the transit router is deployed.
+        # The ID of the region where the transit router instance is deployed.
         # 
         # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
         self.region_id = region_id
@@ -60,30 +62,33 @@ class CreateTransitRouterVpnAttachmentRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The tags.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify up to 20 tags.
         self.tag = tag
-        # The description of the VPN attachment.
+        # The description of the VPN connection.
         # 
-        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
+        # The description can be empty or 1 to 256 characters in length, and cannot start with \\`http\\://\\` or \\`https\\://\\`.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The name of the VPN attachment.
+        # The name of the VPN connection.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        # The name can be empty or 1 to 128 characters in length, and cannot start with \\`http\\://\\` or \\`https\\://\\`.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The ID of the transit router.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
-        # The ID of the IPsec-VPN attachment.
+        # The ID of the IPsec-VPN connection.
         # 
         # This parameter is required.
         self.vpn_id = vpn_id
         # The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
         # 
-        # *   If you do not set this parameter, the ID of the current Alibaba Cloud account is used.
-        # *   You must set VpnOwnerId if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
+        # - If you do not specify this parameter, the ID of the current Alibaba Cloud account is used.
+        # 
+        # - This parameter is required if you want to connect to a cross-account IPsec-VPN connection.
         self.vpn_owner_id = vpn_owner_id
         # The ID of the zone in the current region.
         # 
-        # Resources are deployed in the specified zone.
+        # The system creates resources in the specified zone.
+        # 
+        # > Do not specify this parameter if the attached IPsec-VPN connection is in dual-tunnel mode.
         self.zone = zone
 
     def validate(self):
@@ -224,9 +229,9 @@ class CreateTransitRouterVpnAttachmentRequestZone(DaraModel):
         self,
         zone_id: str = None,
     ):
-        # The zone ID of the read-only instance.
+        # The zone ID.
         # 
-        # You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query the most recent zone list.
+        # You can call the [ListTransitRouterAvailableResource](https://help.aliyun.com/document_detail/261356.html) operation to query available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -257,15 +262,15 @@ class CreateTransitRouterVpnAttachmentRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # The tag keys cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. It can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # You can specify at most 20 tag keys.
+        # You can specify up to 20 tag keys.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):

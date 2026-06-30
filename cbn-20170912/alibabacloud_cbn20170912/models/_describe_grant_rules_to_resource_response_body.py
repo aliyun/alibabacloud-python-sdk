@@ -16,15 +16,17 @@ class DescribeGrantRulesToResourceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The permissions that are granted to the CEN instance.
+        # A list of permission records.
         self.grant_rules = grant_rules
-        # *   If no value is specified for **MaxResults**, query results are returned in one batch. The value of **MaxResults** indicates the total number of entries.
-        # *   If a value is specified for **MaxResults**, query results are returned in batches. The value of **MaxResults** in the response indicates the number of entries in the current batch.
-        self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+        # - If the **MaxResults** parameter was not included in the request, this field indicates the total number of entries.
         # 
-        # *   If the **NextToken** parameter is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+        # - If the **MaxResults** parameter was included in the request, this field indicates the number of entries on the current page.
+        self.max_results = max_results
+        # The token to use in your next request to retrieve a new page of results. Valid values:
+        # 
+        # - If the **NextToken** parameter is empty, no more results are available.
+        # 
+        # - If a value is returned for **NextToken**, use it for the next request to get the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -92,17 +94,18 @@ class DescribeGrantRulesToResourceResponseBodyGrantRules(DaraModel):
         effective_order_type: str = None,
         order_type: str = None,
     ):
-        # The ID of the CEN instance.
+        # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
-        # The ID of the Alibaba Cloud account to which the CEN instance belongs.
+        # The ID of the main account that owns the Cloud Enterprise Network (CEN) instance.
         self.cen_owner_id = cen_owner_id
-        # The timestamp when the permissions were granted. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The timestamp when the permission was granted. The value is in UTC and follows the ISO 8601 standard: `YYYY-MM-DDThh:mmZ`.
         self.create_time = create_time
         self.effective_order_type = effective_order_type
-        # The entity that pays the fees of the network instance. Valid values: Valid values:
+        # The payer for the network instance. Valid values:
         # 
-        # *   **PayByCenOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the CEN instance belongs.
-        # *   **PayByResourceOwner**: The fees of the connections and data forwarding on the transit router are paid by the Alibaba Cloud account to which the network instance belongs.
+        # - **PayByCenOwner**: The CEN instance owner pays the Transit Router connection and data processing fees for the network instance.
+        # 
+        # - **PayByResourceOwner**: The network instance owner pays the Transit Router connection and data processing fees for the network instance.
         self.order_type = order_type
 
     def validate(self):

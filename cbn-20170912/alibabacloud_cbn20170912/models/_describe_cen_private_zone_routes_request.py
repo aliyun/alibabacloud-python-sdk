@@ -15,19 +15,19 @@ class DescribeCenPrivateZoneRoutesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the region where PrivateZone is accessed.
+        # The ID of the region where you access the PrivateZone service.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.access_region_id = access_region_id
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The ID of the CEN instance.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the region where PrivateZone is deployed.
+        # The ID of the region where the PrivateZone service is deployed.
         self.host_region_id = host_region_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. The default value is **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries to return on each page. The default value is **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

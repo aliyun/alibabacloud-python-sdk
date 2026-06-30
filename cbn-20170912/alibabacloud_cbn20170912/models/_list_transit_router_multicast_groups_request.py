@@ -27,63 +27,71 @@ class ListTransitRouterMulticastGroupsRequest(DaraModel):
         transit_router_multicast_domain_id: str = None,
         v_switch_ids: List[str] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+        # Generate a unique value from your client for each request. The \\`ClientToken\\` parameter can contain only ASCII characters.
         self.client_token = client_token
         # The IP address of the multicast group.
         # 
-        # Each multicast group is identified by its IP address.
+        # Each multicast group is identified by a multicast IP address.
         self.group_ip_address = group_ip_address
-        # Specified whether to query the multicast members. Valid values:
+        # Specifies whether to query multicast members.
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: No.
         # 
-        # >- This parameter must be specified together with the IsGroupMember parameter.
-        # >- If you do not set IsGroupMember or IsGroupSource, both the multicast sources and members are queried.
-        # >- If you set only one of them or both of them, the specified values prevail.
+        # - **true**: Yes.
+        # 
+        # > This parameter works with \\`IsGroupSource\\`.
+        # >
+        # > - If you do not specify \\`IsGroupMember\\` or \\`IsGroupSource\\`, the system queries both multicast members and sources.
+        # >
+        # > - If you specify one or both parameters, the system queries resources based on the specified parameters.
         self.is_group_member = is_group_member
-        # Specifies whether to query the multicast sources. Valid values:
+        # Specifies whether to query multicast sources.
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: No.
         # 
-        # > - This parameter must be specified together with the IsGroupMember parameter.
-        # > *   If you do not specify IsGroupMember or IsGroupSource, both the multicast sources and members are queried.
-        # > *   If you specify only one of them or both of them, the specified values prevail.
+        # - **true**: Yes.
+        # 
+        # > This parameter works with \\`IsGroupMember\\`.
+        # >
+        # > - If you do not specify \\`IsGroupSource\\` or \\`IsGroupMember\\`, the system queries both multicast sources and members.
+        # >
+        # > - If you specify one or both parameters, the system queries resources based on the specified parameters.
         self.is_group_source = is_group_source
         # The number of entries to return on each page. Default value: **20**.
         self.max_results = max_results
-        # The IDs of ENIs.
+        # A list of Elastic Network Interface (ENI) IDs.
         self.network_interface_ids = network_interface_ids
-        # The token that determines the start point of the query. Valid values:
+        # The token for the next page of results.
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # - If this is your first query or if no next page exists, do not specify this parameter.
+        # 
+        # - If a next page exists, set this parameter to the \\`NextToken\\` value that is returned from the previous call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the inter-region multicast domain.
+        # A list of IDs of cross-region multicast domains.
         self.peer_transit_router_multicast_domains = peer_transit_router_multicast_domains
         # The ID of the resource associated with the multicast resource.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the multicast resource. Valid values:
+        # The type of the multicast resource.
         # 
-        # *   **VPC**: queries multicast resources by VPC.
-        # *   **TR**: queries multicast resources that are also deployed in a different region.
+        # - **VPC**: queries information about multicast resources in a VPC.
+        # 
+        # - **TR**: queries information about cross-region multicast resources.
         self.resource_type = resource_type
-        # The ID of the network instance connection
+        # The ID of the network instance connection.
         # 
-        # You must configure one of the TransitRouterMulticastDomainId and TransitRouterAttachmentId parameters.
+        # You must specify \\`TransitRouterMulticastDomainId\\` or \\`TransitRouterAttachmentId\\`.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The ID of the multicast domain.
         # 
-        # You must configure one of the TransitRouterMulticastDomainId and TransitRouterAttachmentId parameters.
+        # You must specify \\`TransitRouterMulticastDomainId\\` or \\`TransitRouterAttachmentId\\`.
         self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
-        # The vSwitch IDs.
+        # A list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

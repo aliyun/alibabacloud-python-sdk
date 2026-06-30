@@ -21,19 +21,41 @@ class TagResourcesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID of the resource.
+        # 
+        # This parameter is not required for resources of the Cen and BandwidthPackage types. It is required for all other resource types.
         self.region_id = region_id
-        # The IDs of the resources. You can enter most at 20 resource IDs.
+        # The list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **cen**, which specifies a CEN instance.
+        # The type of the resource. Valid values:
+        # 
+        # **Cen**: a CEN instance.
+        # 
+        # **BandwidthPackage**: a bandwidth plan.
+        # 
+        # **TransitRouter**: a transit router instance.
+        # 
+        # **TransitRouterVpcAttachment**: a VPC connection.
+        # 
+        # **TransitRouterVbrAttachment**: a VBR connection.
+        # 
+        # **TransitRouterPeerAttachment**: an inter-region connection.
+        # 
+        # **TransitRouterVpnAttachment**: a VPN connection.
+        # 
+        # **TransitRouterRouteTable**: a route table.
+        # 
+        # **Flowlog**: a flow log.
+        # 
+        # **TransitRouterMulticastDomain**: a multicast domain.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tags that you want to associate with the resources.
+        # The list of tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -116,15 +138,15 @@ class TagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # You can enter multiple tag keys. Valid values of **N**: **1** to **20**.
+        # You can enter multiple tag keys. The value of **N** ranges from **1** to **20**.
         # 
-        # The key cannot exceed 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
-        # Each tag key corresponds to a tag value. Valid values of **N**: **1** to **20**.
+        # Each tag key must have a tag value. The value of **N** ranges from **1** to **20**.
         # 
-        # The value cannot exceed 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

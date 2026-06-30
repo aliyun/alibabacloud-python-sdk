@@ -18,11 +18,9 @@ class DeleteFlowlogRequest(DaraModel):
     ):
         # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
-        # The client token that is used to ensure the idempotence of the request.
+        # The unique, one-use client token that is used to ensure the idempotence of the request. It can contain only ASCII characters.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
-        # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId may be different for each request.
+        # > If you leave this parameter empty, the system automatically uses the **request ID** as the **client token**.
         self.client_token = client_token
         # The ID of the flow log.
         # 
@@ -32,7 +30,7 @@ class DeleteFlowlogRequest(DaraModel):
         self.owner_id = owner_id
         # The ID of the region where the flow log is deployed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

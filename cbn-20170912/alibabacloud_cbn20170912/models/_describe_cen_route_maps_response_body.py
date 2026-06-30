@@ -16,7 +16,7 @@ class DescribeCenRouteMapsResponseBody(DaraModel):
         route_maps: main_models.DescribeCenRouteMapsResponseBodyRouteMaps = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
