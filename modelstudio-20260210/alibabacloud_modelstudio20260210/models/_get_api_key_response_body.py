@@ -27,7 +27,7 @@ class GetApiKeyResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request was successful.
         # - true: The request was successful.
         # - false: The request failed.
         self.success = success
@@ -106,12 +106,12 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
         self.created_by = created_by
         # The description.
         self.description = description
-        # Indicates whether the API key is disabled. Valid values:
+        # Indicates whether the API key is disabled.
         # 
         # - **0**: Active.
         # - **1**: Disabled.
         self.disabled = disabled
-        # The creation time.
+        # The time when the API key was created.
         self.gmt_create = gmt_create
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -187,10 +187,11 @@ class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
         model_access_scope: main_models.GetApiKeyResponseBodyApiKeyAuthModelAccessScope = None,
         type: str = None,
     ):
-        # The IP address whitelist.
+        # The IP access whitelist.
         self.access_ips = access_ips
+        # The model access scope.
         self.model_access_scope = model_access_scope
-        # The permission type. Valid values: All: all permissions. Custom: custom permissions.
+        # All: all permissions. Custom: custom permissions.
         self.type = type
 
     def validate(self):
@@ -233,7 +234,12 @@ class GetApiKeyResponseBodyApiKeyAuthModelAccessScope(DaraModel):
         accessible_models: List[str] = None,
         allow_all_models: bool = None,
     ):
+        # The list of accessible models.
         self.accessible_models = accessible_models
+        # Indicates whether all models with granted inference permissions in the workspace can be accessed. Valid values:
+        # 
+        # - true
+        # - false
         self.allow_all_models = allow_all_models
 
     def validate(self):

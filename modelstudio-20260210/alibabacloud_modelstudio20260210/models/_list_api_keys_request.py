@@ -17,23 +17,23 @@ class ListApiKeysRequest(DaraModel):
     ):
         # The API key ID for exact match.
         self.api_key_id = api_key_id
-        # The keyword for fuzzy match against the description.
+        # The keyword for fuzzy match by description.
         self.description = description
-        # The page size.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token used to retrieve more results. You do not need to provide this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
+        # The token used to retrieve more results. This parameter is not required for the first query. For subsequent queries, use the token obtained from the previous response.
         self.next_token = next_token
         # The sort order. Valid values:
         # 
         # - DESC (default)
         # 
-        # - ASC.
+        # - ASC
         self.order = order
         # The field by which to sort results. Valid values:
         # 
         # - apiKeyId (default)
         # 
-        # - gmtCreate.
+        # - gmtCreate
         self.order_by = order_by
         # The workspace ID for exact match.
         self.workspace_id = workspace_id

@@ -14,6 +14,8 @@ class UpdateApiKeyRequest(DaraModel):
         description: str = None,
     ):
         # The API key permission settings.
+        # 
+        # > Do not fill in this section or fill it in completely for each UpdateApiKey operation. Otherwise, the configuration may not match your expectations.
         self.auth = auth
         # The description.
         self.description = description
@@ -56,8 +58,9 @@ class UpdateApiKeyRequestAuth(DaraModel):
         # The IP access whitelist.
         # 
         # > 
-        # > - When you set custom permissions and do not specify the IP access whitelist, the server sets the whitelist to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
+        # > - When you customize the permission scope, if the IP access whitelist is not specified, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
         self.access_ips = access_ips
+        # The model access scope.
         self.model_access_scope = model_access_scope
         # Valid values:
         # 
@@ -105,7 +108,13 @@ class UpdateApiKeyRequestAuthModelAccessScope(DaraModel):
         accessible_models: List[str] = None,
         allow_all_models: bool = None,
     ):
+        # The list of accessible models.
+        # >Notice: The content takes effect only when allowAllModels is set to false.
         self.accessible_models = accessible_models
+        # Specifies whether to allow access to all models with granted inference permissions in the workspace. Valid values:
+        # 
+        # - true
+        # - false
         self.allow_all_models = allow_all_models
 
     def validate(self):

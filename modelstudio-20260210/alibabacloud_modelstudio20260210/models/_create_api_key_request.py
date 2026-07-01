@@ -20,7 +20,7 @@ class CreateApiKeyRequest(DaraModel):
         self.description = description
         # The workspace ID.
         # > 
-        # > - If you leave this parameter empty, the created API key is automatically assigned to the default workspace.
+        # > - If you leave this parameter empty, the API key is automatically assigned to the default workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -64,13 +64,15 @@ class CreateApiKeyRequestAuth(DaraModel):
         model_access_scope: main_models.CreateApiKeyRequestAuthModelAccessScope = None,
         type: str = None,
     ):
-        # The IP address whitelist.
+        # The IP access whitelist.
         # 
         # > 
-        # > - When you use custom permissions, if you do not specify the IP address whitelist, the server sets it to IPv4 (0.0.0.0/0) and IPv6 (::/0) by default, which allows all traffic.
+        # > - When you set custom permissions and leave the IP access whitelist empty, the server sets the default values to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows all traffic.
         self.access_ips = access_ips
+        # The model access scope.
         self.model_access_scope = model_access_scope
         # Valid values:
+        # 
         # - All: all permissions.
         # - Custom: custom permissions.
         self.type = type
@@ -115,7 +117,13 @@ class CreateApiKeyRequestAuthModelAccessScope(DaraModel):
         accessible_models: List[str] = None,
         allow_all_models: bool = None,
     ):
+        # The list of accessible models.
+        # >Notice: This parameter takes effect only when allowAllModels is set to false.
         self.accessible_models = accessible_models
+        # Specifies whether all models with granted inference permissions in the workspace are accessible. Valid values:
+        # 
+        # - true
+        # - false
         self.allow_all_models = allow_all_models
 
     def validate(self):

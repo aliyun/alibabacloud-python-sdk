@@ -26,11 +26,11 @@ class ListApiKeysResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The page size.
+        # The number of entries per page.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The token used to retrieve more results. You do not need to provide this parameter for the first query. For subsequent queries, use the token obtained from the previous response.
+        # The token used to retrieve more results. This parameter is not required for the first query. For subsequent queries, use the token obtained from the previous response.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -221,8 +221,9 @@ class ListApiKeysResponseBodyApiKeysAuth(DaraModel):
         model_access_scope: main_models.ListApiKeysResponseBodyApiKeysAuthModelAccessScope = None,
         type: str = None,
     ):
-        # The IP address whitelist.
+        # The IP access whitelist.
         self.access_ips = access_ips
+        # The model access scope.
         self.model_access_scope = model_access_scope
         # All: all permissions. Custom: custom permissions.
         self.type = type
@@ -267,7 +268,9 @@ class ListApiKeysResponseBodyApiKeysAuthModelAccessScope(DaraModel):
         accessible_models: List[str] = None,
         allow_all_models: bool = None,
     ):
+        # The list of accessible models.
         self.accessible_models = accessible_models
+        # Indicates whether access to all models with inference permissions in the workspace is allowed.
         self.allow_all_models = allow_all_models
 
     def validate(self):

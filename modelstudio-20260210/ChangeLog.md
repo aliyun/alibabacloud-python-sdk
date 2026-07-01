@@ -1,3 +1,6 @@
+2026-07-01 Version: 2.0.2
+- Generated python 2026-02-10 for ModelStudio.
+
 2026-06-30 Version: 2.0.1
 - Update API CreateApiKey: add request parameters auth.modelAccessScope.
 - Update API GetApiKey: add response parameters Body.apiKey.auth.modelAccessScope.
