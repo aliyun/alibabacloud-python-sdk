@@ -13,7 +13,7 @@ class UpdateSessionRequest(DaraModel):
     ):
         # The session update configuration.
         self.body = body
-        # The function alias or version associated with the session to be updated.
+        # The function alias or version associated with the session ID to update.
         self.qualifier = qualifier
 
     def validate(self):

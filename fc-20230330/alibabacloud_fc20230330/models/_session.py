@@ -11,6 +11,8 @@ class Session(DaraModel):
         container_id: str = None,
         created_time: str = None,
         disable_session_id_reuse: bool = None,
+        enable_auto_pause: bool = None,
+        enable_auto_resume: bool = None,
         function_name: str = None,
         juice_fs_config: main_models.JuiceFsConfig = None,
         last_modified_time: str = None,
@@ -24,35 +26,36 @@ class Session(DaraModel):
         session_status: str = None,
         session_ttlin_seconds: int = None,
     ):
-        # The ID of the function instance associated with the session.
+        # The instance ID of the function instance associated with the session.
         self.container_id = container_id
         # The time when the session was created.
         self.created_time = created_time
-        # Specifies whether an expired session ID can be reused. If `true`, an expired session ID cannot be reused. If `false` (the default), sending a request with an expired session ID creates a new session bound to a new instance.
+        # Specifies whether to disable session ID reuse. Default value: False, which indicates that after the session expires, you can use the same session ID to initiate requests. The system treats the request as a new session and binds it to a new instance. If you set this parameter to True, the session ID cannot be reused after the session expires.
         self.disable_session_id_reuse = disable_session_id_reuse
-        # The name of the function associated with the session.
+        self.enable_auto_pause = enable_auto_pause
+        self.enable_auto_resume = enable_auto_resume
+        # The name of the function to which the session belongs.
         self.function_name = function_name
-        # The JuiceFS mount configuration, enabling the associated function instance to access specified JuiceFS resources.
         self.juice_fs_config = juice_fs_config
         # The time when the session was last updated.
         self.last_modified_time = last_modified_time
-        # The NAS configuration, enabling the associated function instance to access specified NAS resources.
+        # The NAS configuration. After configuration, the instance associated with the session can access the specified NAS resource.
         self.nas_config = nas_config
-        # The OSS mount configuration, enabling the associated function instance to access specified OSS resources.
         self.oss_mount_config = oss_mount_config
-        # The PolarFS mount configuration, enabling the associated function instance to access specified PolarFS resources.
         self.polar_fs_config = polar_fs_config
-        # The qualifier, which specifies a function version or alias. Defaults to `LATEST` if unspecified.
+        # The qualifier passed in when the customer created the session. If not specified, the default value is LATEST.
         self.qualifier = qualifier
-        # The type of session affinity.
+        # The session affinity type.
         self.session_affinity_type = session_affinity_type
-        # The unique identifier for the function session.
+        # The unique identifier of the function session.
         self.session_id = session_id
-        # The maximum duration, in seconds, that the session can be idle before it expires.
+        # The idle timeout period of the session.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
-        # The status of the session. `Active` indicates the session is valid, and `Expired` indicates it is no longer valid.
+        # The session status. Valid values:
+        # - Active: The session is valid.
+        # - Expired: The session has expired.
         self.session_status = session_status
-        # The maximum lifespan of the session, in seconds.
+        # The maximum lifetime of the session.
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):
@@ -78,6 +81,12 @@ class Session(DaraModel):
 
         if self.disable_session_id_reuse is not None:
             result['disableSessionIdReuse'] = self.disable_session_id_reuse
+
+        if self.enable_auto_pause is not None:
+            result['enableAutoPause'] = self.enable_auto_pause
+
+        if self.enable_auto_resume is not None:
+            result['enableAutoResume'] = self.enable_auto_resume
 
         if self.function_name is not None:
             result['functionName'] = self.function_name
@@ -127,6 +136,12 @@ class Session(DaraModel):
 
         if m.get('disableSessionIdReuse') is not None:
             self.disable_session_id_reuse = m.get('disableSessionIdReuse')
+
+        if m.get('enableAutoPause') is not None:
+            self.enable_auto_pause = m.get('enableAutoPause')
+
+        if m.get('enableAutoResume') is not None:
+            self.enable_auto_resume = m.get('enableAutoResume')
 
         if m.get('functionName') is not None:
             self.function_name = m.get('functionName')

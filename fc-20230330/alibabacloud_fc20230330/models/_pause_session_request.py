@@ -9,7 +9,7 @@ class PauseSessionRequest(DaraModel):
         self,
         qualifier: str = None,
     ):
-        # The function alias or version associated with the session to pause
+        # The function alias or version associated with the session ID to save.
         self.qualifier = qualifier
 
     def validate(self):

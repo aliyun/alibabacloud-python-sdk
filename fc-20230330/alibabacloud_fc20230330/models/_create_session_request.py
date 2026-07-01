@@ -11,9 +11,9 @@ class CreateSessionRequest(DaraModel):
         body: main_models.CreateSessionInput = None,
         qualifier: str = None,
     ):
-        # The configuration of the session.
+        # The session configuration.
         self.body = body
-        # The version or alias to which the session belongs.
+        # The version or alias of the function to which the session belongs.
         self.qualifier = qualifier
 
     def validate(self):
