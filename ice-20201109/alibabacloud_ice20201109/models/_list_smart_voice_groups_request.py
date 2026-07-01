@@ -9,6 +9,7 @@ class ListSmartVoiceGroupsRequest(DaraModel):
         self,
         voice_type: str = None,
     ):
+        # The voice type. If you do not specify this parameter, the operation returns voices from the small model by default. Set this parameter to `CosyVoice` to retrieve voices from the Cosyvoice large model.
         self.voice_type = voice_type
 
     def validate(self):

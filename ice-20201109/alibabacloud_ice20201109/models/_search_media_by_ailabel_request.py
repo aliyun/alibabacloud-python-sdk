@@ -21,23 +21,41 @@ class SearchMediaByAILabelRequest(DaraModel):
         text: str = None,
         utc_create: str = None,
     ):
+        # Custom filters. A JSON string. The following backing fields are supported: intField1 (integer type), strField1 and strField2 (string type). For the same field, only one matching method can be specified. Filters on different fields are combined with a logical AND relationship.
+        # 
+        # - Exact match, for example: {"intField1":12,"strField1":"abc"}
+        # 
+        # - Multi-value match, for example: {"intField1":[12,13],"strField1":["abc","cd"]}
+        # 
+        # - Range match, for example: {"intField1":{"gte":12,"lte":13}}
         self.custom_filters = custom_filters
+        # Matching pattern. The default value is fuzzy for Fuzzy Matching. Valid values:
+        # 
+        # - fuzzy: Fuzzy Matching
+        # 
+        # - precise: Precise matching. This pattern applies only to newly added media assets.
         self.matching_mode = matching_mode
         # The ID of the media asset. This parameter is required if you want to query media asset clips.
         self.media_id = media_id
         # The type of the media assets. Valid values:
         # 
-        # *   image
-        # *   video
-        # *   audio
+        # - image
+        # 
+        # - video
+        # 
+        # - audio
         self.media_type = media_type
         # The type of query. Valid values:
         # 
-        # *   PersonName: queries media assets based on character names.
-        # *   Ocr: queries media assets based on subtitles.
-        # *   AiCategory: queries media assets based on AI categories.
-        # *   FullSearch (default): queries all media assets.
+        # - PersonName: queries media assets based on character names.
+        # 
+        # - Ocr: queries media assets based on subtitles.
+        # 
+        # - AiCategory: queries media assets based on AI categories.
+        # 
+        # - FullSearch (default): queries all media assets.
         self.multimodal_search_type = multimodal_search_type
+        # Namespace.
         self.namespace = namespace
         # The page number. Default value: 1.
         self.page_no = page_no
@@ -47,16 +65,21 @@ class SearchMediaByAILabelRequest(DaraModel):
         self.search_lib_name = search_lib_name
         # The sorting method of the results. Valid values:
         # 
-        # *   CreationTime:Desc (default): sorts results in reverse chronological order.
-        # *   CreationTime:Asc: sorts results in chronological order.
+        # - CreationTime:Desc (default): sorts results in reverse chronological order.
+        # 
+        # - CreationTime:Asc: sorts results in chronological order.
         self.sort_by = sort_by
         # Specifies whether to query media asset clips. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.specific_search = specific_search
         # The content that you want to query.
         self.text = text
+        # Creation time, in milliseconds UNIX timestamp. Use gte for greater than or equal to, and lte for less than or equal to.
+        # 
+        # - Example range: {"gte":1761205662998,"lte":1771205662998}
         self.utc_create = utc_create
 
     def validate(self):

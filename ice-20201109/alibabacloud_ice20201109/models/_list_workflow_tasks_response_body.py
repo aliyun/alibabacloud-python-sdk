@@ -100,11 +100,15 @@ class ListWorkflowTasksResponseBodyTaskList(DaraModel):
         # 
         # **Valid values**:
         # 
-        # *   Init: Initializing
-        # *   Failed
-        # *   Canceled
-        # *   Processing
-        # *   Succeed
+        # - Init: Initializing
+        # 
+        # - Failed
+        # 
+        # - Canceled
+        # 
+        # - Processing
+        # 
+        # - Succeed
         self.status = status
         # The ID of the workflow task.
         self.task_id = task_id
@@ -188,8 +192,9 @@ class ListWorkflowTasksResponseBodyTaskListWorkflow(DaraModel):
         self.create_time = create_time
         # The source of the media file. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: an OSS object.
+        # 
+        # - Media: a media asset.
         self.media_type = media_type
         # The last modification time of the workflow template.
         self.modified_time = modified_time

@@ -15,16 +15,19 @@ class CreateDNADBRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The description of the media fingerprint library.
+        # The description of the DNA database.
         self.description = description
-        # The model of the media fingerprint library. Valid values:
+        # The DNA database model. Valid values:
         # 
-        # *   **Video**
-        # *   **Audio**
-        # *   **Image**
-        # *   **Text** (supported only in the China (Shanghai) region)
+        # - **Video**: For video content.
+        # 
+        # - **Audio**: For audio content.
+        # 
+        # - **Image**: For image content. (Deprecated)
+        # 
+        # - **Text**: For text content. Supported only in the China (Shanghai) region. (Deprecated)
         self.model = model
-        # The name of the media fingerprint library.
+        # The name of the DNA database.
         # 
         # This parameter is required.
         self.name = name

@@ -101,9 +101,11 @@ class ListHotwordLibrariesResponseBodyHotwordLibraryList(DaraModel):
         self.name = name
         # The usage scenario of the hotword library. Valid values:
         # 
-        # *   ASR: Automatic Speech Recognition
-        # *   StructuredMediaAssets: structured media analysis
-        # *   VideoTranslation: Video translation This field cannot be modified after the hotword library is created.
+        # - ASR: Automatic Speech Recognition
+        # 
+        # - StructuredMediaAssets: structured media analysis
+        # 
+        # - VideoTranslation: Video translation This field cannot be modified after the hotword library is created.
         self.usage_scenario = usage_scenario
 
     def validate(self):

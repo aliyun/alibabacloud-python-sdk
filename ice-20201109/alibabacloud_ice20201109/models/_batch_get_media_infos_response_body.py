@@ -14,8 +14,9 @@ class BatchGetMediaInfosResponseBody(DaraModel):
         media_infos: List[main_models.BatchGetMediaInfosResponseBodyMediaInfos] = None,
         request_id: str = None,
     ):
+        # A list of media IDs for which information could not be retrieved.
         self.ignored_list = ignored_list
-        # The queried media assets.
+        # A list of media assets.
         self.media_infos = media_infos
         # The request ID.
         self.request_id = request_id
@@ -68,12 +69,13 @@ class BatchGetMediaInfosResponseBodyMediaInfos(DaraModel):
         media_dynamic_info: main_models.BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo = None,
         media_id: str = None,
     ):
-        # FileInfos
+        # A list of basic file information.
         self.file_info_list = file_info_list
-        # The basic information of the media asset.
+        # The basic information about the media asset.
         self.media_basic_info = media_basic_info
+        # The dynamic information about the media asset.
         self.media_dynamic_info = media_dynamic_info
-        # The ID of the media asset.
+        # The media ID.
         self.media_id = media_id
 
     def validate(self):
@@ -133,6 +135,13 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfo(DaraModel):
         self,
         dynamic_meta_data: main_models.BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData = None,
     ):
+        # The type of dynamic metadata. Valid values:
+        # 
+        # - `"ai"`: Standardized data derived from raw AI results.
+        # 
+        # - `"user-defined"`: The user-defined metadata.
+        # 
+        # - `"system"`: The system-generated data.
         self.dynamic_meta_data = dynamic_meta_data
 
     def validate(self):
@@ -162,6 +171,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData(Da
         self,
         data: str = None,
     ):
+        # The content of the dynamic metadata.
         self.data = data
 
     def validate(self):
@@ -207,52 +217,53 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo(DaraModel):
         transcode_status: str = None,
         user_data: str = None,
     ):
+        # The business associated with the media asset.
         self.biz = biz
         # The business type of the media asset.
         self.business_type = business_type
-        # The category of the media asset.
+        # The category.
         self.category = category
-        # The thumbnail URL of the media asset.
+        # The cover URL.
         self.cover_url = cover_url
-        # The time when the media asset was created.
+        # The time the media asset was created.
         self.create_time = create_time
-        # The time when the media asset was deleted.
+        # The time the media asset was deleted.
         self.deleted_time = deleted_time
-        # The description of the media asset.
+        # The description.
         self.description = description
-        # The URL of the media asset in another service.
+        # The URL of the media asset in its source system.
         self.input_url = input_url
-        # MediaId
+        # The media ID.
         self.media_id = media_id
-        # The tags of the media asset.
+        # The tags.
         self.media_tags = media_tags
-        # The type of the media asset. Valid values:
+        # The media type. Valid values:
         # 
-        # \\- image
+        # - `Image`
         # 
-        # \\- video
+        # - `Video`
         # 
-        # \\- audio
+        # - `Audio`
         # 
-        # \\- text
+        # - `Text`
         self.media_type = media_type
-        # The time when the media asset was last modified.
+        # The time the media asset was last modified.
         self.modified_time = modified_time
-        # The snapshots of the media asset.
+        # The snapshots.
         self.snapshots = snapshots
-        # The source of the media asset. Valid values:
+        # The source. Valid values:
         # 
-        # \\- oss
+        # - `OSS`
         # 
-        # \\- vod
+        # - `VOD`
         self.source = source
-        # The sprite.
+        # The sprite images.
         self.sprite_images = sprite_images
         # The status of the media asset.
         self.status = status
-        # The title of the media asset.
+        # The title.
         self.title = title
-        # The transcoding status of the media asset.
+        # The transcoding status.
         self.transcode_status = transcode_status
         # The user data.
         self.user_data = user_data
@@ -393,10 +404,13 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoList(DaraModel):
         subtitle_stream_info_list: List[main_models.BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList] = None,
         video_stream_info_list: List[main_models.BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList] = None,
     ):
+        # The audio streams.
         self.audio_stream_info_list = audio_stream_info_list
-        # The basic information of the file, including the duration and size.
+        # The basic information about the file, such as the duration and file size.
         self.file_basic_info = file_basic_info
+        # The subtitle streams.
         self.subtitle_stream_info_list = subtitle_stream_info_list
+        # The video streams.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -494,29 +508,53 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoListVideoStreamInfoList(Da
         timebase: str = None,
         width: str = None,
     ):
+        # The average frame rate.
         self.avg_fps = avg_fps
+        # The bitrate.
         self.bitrate = bitrate
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The codec tag.
         self.codec_tag = codec_tag
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
+        # The display aspect ratio (DAR).
         self.dar = dar
+        # The duration.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # Indicates whether B-frames exist.
         self.has_bframes = has_bframes
+        # The height of the video.
         self.height = height
+        # The index of the stream.
         self.index = index
+        # The language.
         self.lang = lang
+        # The level.
         self.level = level
+        # This parameter is an alias for `NumFrames`.
         self.nb_frames = nb_frames
+        # The total number of frames.
         self.num_frames = num_frames
+        # The pixel format.
         self.pix_fmt = pix_fmt
+        # The profile.
         self.profile = profile
+        # The rotation angle.
         self.rotate = rotate
+        # The sample aspect ratio (SAR).
         self.sar = sar
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
+        # The width of the video.
         self.width = width
 
     def validate(self):
@@ -691,15 +729,25 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList
         start_time: str = None,
         timebase: str = None,
     ):
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The codec tag.
         self.codec_tag = codec_tag
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The index of the stream.
         self.index = index
+        # The language.
         self.lang = lang
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):
@@ -797,19 +845,19 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo(DaraMode
         self.duration = duration
         # The file name.
         self.file_name = file_name
-        # The file size. Unit: bytes.
+        # The file size, in bytes.
         self.file_size = file_size
         # The file status.
         self.file_status = file_status
         # The file type.
         self.file_type = file_type
-        # The Object Storage Service (OSS) URL of the file.
+        # The OSS URL of the file.
         self.file_url = file_url
         # The container format.
         self.format_name = format_name
         # The height.
         self.height = height
-        # The region in which the file resides.
+        # The region where the file is stored.
         self.region = region
         # The width.
         self.width = width
@@ -916,23 +964,41 @@ class BatchGetMediaInfosResponseBodyMediaInfosFileInfoListAudioStreamInfoList(Da
         start_time: str = None,
         timebase: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The channel layout.
         self.channel_layout = channel_layout
+        # The number of audio channels.
         self.channels = channels
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
+        # The short name of the codec.
         self.codec_name = codec_name
+        # The codec tag.
         self.codec_tag = codec_tag
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
+        # The duration.
         self.duration = duration
+        # The frame rate.
         self.fps = fps
+        # The index of the stream.
         self.index = index
+        # The language.
         self.lang = lang
+        # The total number of frames.
         self.num_frames = num_frames
+        # The profile.
         self.profile = profile
+        # The sample format.
         self.sample_fmt = sample_fmt
+        # The sample rate.
         self.sample_rate = sample_rate
+        # The start time.
         self.start_time = start_time
+        # The time base.
         self.timebase = timebase
 
     def validate(self):

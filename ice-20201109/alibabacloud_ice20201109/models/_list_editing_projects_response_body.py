@@ -121,8 +121,9 @@ class ListEditingProjectsResponseBodyProjectList(DaraModel):
         self.project_id = project_id
         # The type of the editing project. Valid values:
         # 
-        # *   EditingProject: a regular editing project.
-        # *   LiveEditingProject: a live stream editing project.
+        # - EditingProject: a regular editing project.
+        # 
+        # - LiveEditingProject: a live stream editing project.
         self.project_type = project_type
         # The status of the online editing project. Valid values:
         # 
@@ -138,8 +139,9 @@ class ListEditingProjectsResponseBodyProjectList(DaraModel):
         self.status = status
         # The template type. Valid values:
         # 
-        # *   Timeline: a regular template.
-        # *   VETemplate: an advanced template.
+        # - Timeline: a regular template.
+        # 
+        # - VETemplate: an advanced template.
         self.template_type = template_type
         # The title of the online editing project.
         self.title = title

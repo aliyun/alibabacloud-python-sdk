@@ -14,10 +14,23 @@ class SendAIAgentSpeechRequest(DaraModel):
     ):
         # Specifies whether the broadcast can interrupt the ongoing speech. Default value: true
         self.enable_interrupt = enable_interrupt
+        # Agent instance ID.
+        # 
+        # > The InstanceId is the unique ID returned after successfully starting an agent instance. For details about starting an agent instance, see [StartAIAgentInstance](https://help.aliyun.com/document_detail/2846201.html) and [GenerateAIAgentCall](https://help.aliyun.com/document_detail/2846209.html).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The text content to be played back. The supported input format varies based on the Type parameter. The length cannot exceed 1024 characters.
+        # 
         # This parameter is required.
         self.text = text
+        # Input type. Valid values:
+        # 
+        # - Text: Input is plain text.
+        # 
+        # - AudioUrl: Input is an audio URL.
+        # 
+        # Default value: Text.
         self.type = type
 
     def validate(self):

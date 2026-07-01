@@ -16,32 +16,45 @@ class UploadStreamByURLRequest(DaraModel):
     ):
         # The quality of the media stream. Valid values:
         # 
-        # *   FD: low definition.
-        # *   LD: standard definition.
-        # *   SD: high definition.
-        # *   HD: ultra-high definition.
-        # *   OD: original quality.
-        # *   2K: 2K resolution.
-        # *   4K: 4K resolution.
-        # *   SQ: standard sound quality.
-        # *   HQ: high sound quality.
+        # - FD: low definition.
+        # 
+        # - LD: standard definition.
+        # 
+        # - SD: high definition.
+        # 
+        # - HD: ultra-high definition.
+        # 
+        # - OD: original quality.
+        # 
+        # - 2K: 2K resolution.
+        # 
+        # - 4K: 4K resolution.
+        # 
+        # - SQ: standard sound quality.
+        # 
+        # - HQ: high sound quality.
         self.definition = definition
         # The file name extension of the media stream.
         self.file_extension = file_extension
         # The high dynamic range (HDR) format of the transcoded stream. Valid values:
         # 
-        # *   HDR
-        # *   HDR10
-        # *   HLG
-        # *   DolbyVision
-        # *   HDRVivid
-        # *   SDR+
+        # - HDR
         # 
-        # > 
+        # - HDR10
         # 
-        # *   The value is not case-sensitive,
+        # - HLG
         # 
-        # *   You can leave this parameter empty for non-HDR streams.
+        # - DolbyVision
+        # 
+        # - HDRVivid
+        # 
+        # - SDR+
+        # 
+        # >
+        # 
+        # - The value is not case-sensitive,
+        # 
+        # - You can leave this parameter empty for non-HDR streams.
         self.hdrtype = hdrtype
         # The ID of the media asset.
         self.media_id = media_id

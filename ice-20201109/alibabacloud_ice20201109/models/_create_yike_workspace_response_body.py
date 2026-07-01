@@ -11,8 +11,11 @@ class CreateYikeWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the project.
         self.production_id = production_id
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

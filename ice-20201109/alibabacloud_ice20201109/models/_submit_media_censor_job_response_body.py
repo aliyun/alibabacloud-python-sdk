@@ -10,7 +10,7 @@ class SubmitMediaCensorJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the content moderation job. We recommend that you save this ID for subsequent calls of other operations.
+        # The ID of the video censor job. We recommend saving this ID for subsequent API calls.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

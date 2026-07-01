@@ -13,9 +13,9 @@ class ListAIAgentInstanceResponseBody(DaraModel):
         instances: List[main_models.ListAIAgentInstanceResponseBodyInstances] = None,
         request_id: str = None,
     ):
-        # The list of the AI agents.
+        # List of agent instance objects.
         self.instances = instances
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,19 +62,23 @@ class ListAIAgentInstanceResponseBodyInstances(DaraModel):
         template_config: main_models.AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        # Template configuration used by the agent instance.
         self.agent_config = agent_config
-        # The URL of the call log file for the AI agent. The structure of the file is CallLog in the JSON format.
+        # URL of the call log file. The file contains a JSON-formatted CallLog structure.
         self.call_log_url = call_log_url
-        # The runtime configurations of the AI agent.
+        # Runtime configuration required by the agent.
         self.runtime_config = runtime_config
-        # The state of the instance. Valid values:
+        # Instance status:
         # 
-        # *   Executing
-        # *   Finished
+        # - Created: The call started but no connection was established between both ends.
+        # 
+        # - Executing: The call is in progress and a connection is established between both ends.
+        # 
+        # - Finished: The call ended.
         self.status = status
-        # The template configurations of the AI agent.
+        # Template configuration used by the agent instance.
         self.template_config = template_config
-        # The custom information.
+        # User-defined information.
         self.user_data = user_data
 
     def validate(self):

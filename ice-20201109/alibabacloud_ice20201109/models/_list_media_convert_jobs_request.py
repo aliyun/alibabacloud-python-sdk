@@ -15,24 +15,27 @@ class ListMediaConvertJobsRequest(DaraModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to filter jobs by creation time. The time must be in the `yyyy-MM-ddTHH:mm:ssZ` ISO 8601 format.
         self.end_of_create_time = end_of_create_time
-        # The task ID.
+        # Filters the results by job ID.
         self.job_id = job_id
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+        # The token for the next page of results. Leave this empty for the first request. To retrieve the next page, pass the `NextPageToken` value from the previous response.
         self.next_page_token = next_page_token
-        # The sorting order. Valid values: CreateTimeDesc: sorts by create time in descending order. CreateTimeAsc: sorts by create time in ascending order.
+        # The sort order for the results. Valid values: `CreateTimeDesc` (descending by creation time) and `CreateTimeAsc` (ascending by creation time).
         self.order_by = order_by
-        # The number of entries per page. Valid values: 0 to 100. Default value: 20.
+        # The page size. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start of the time range to filter jobs by creation time. The time must be in the `yyyy-MM-ddTHH:mm:ssZ` ISO 8601 format.
         self.start_of_create_time = start_of_create_time
-        # The task status.
+        # The status of the job. Valid values:
         # 
-        # *   Inited: submitted
-        # *   Running
-        # *   Complete
-        # *   Error
+        # - `Inited`: The job has been submitted.
+        # 
+        # - `Running`: The job is running.
+        # 
+        # - `Complete`: The job is complete.
+        # 
+        # - `Error`: The job failed due to an error.
         self.status = status
 
     def validate(self):

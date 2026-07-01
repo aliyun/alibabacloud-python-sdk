@@ -28,13 +28,17 @@ class DescribePlayListRequest(DaraModel):
         # The criteria by which the sorting is performed. Valid values:
         # 
         # - FirstFrameDuration
+        # 
         # - PlayDuration
+        # 
         # - VideoDuration
+        # 
         # - StuckDuration
         self.order_name = order_name
         # The sort order. Valid values:
         # 
         # - DESC: descending order.
+        # 
         # - ASC: ascending order.
         self.order_type = order_type
         # The page number. Default value: 1.
@@ -45,14 +49,16 @@ class DescribePlayListRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The playback type. Valid value: 
+        # The playback type. Valid value:
         # 
         # - vod
         self.play_type = play_type
         # The playback status. Valid values:
         # 
         # - complete
+        # 
         # - playing
+        # 
         # - unusual: A playback error occurs.
         self.status = status
         # The TraceId of the player.

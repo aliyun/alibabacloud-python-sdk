@@ -13,14 +13,30 @@ class CreateYikeUserRequest(DaraModel):
         user_name_prefix: str = None,
         workspace_id: str = None,
     ):
+        # The user\\"s nickname.
+        # 
         # This parameter is required.
         self.nickname = nickname
+        # The user\\"s password.
+        # 
         # This parameter is required.
         self.password = password
+        # The IDs of productions to add the user to. You can specify multiple IDs separated by commas.
+        # 
+        # > - A user can be added to multiple productions.
+        # 
         # This parameter is required.
         self.production_ids = production_ids
+        # The user name prefix for the sub-account. The prefix must meet the following requirements:
+        # 
+        # - The prefix can be up to 50 characters long and must be unique within the workspace.
+        # 
+        # - The system automatically generates a user login name in the format: {UserNamePrefix}.{WorkspaceCode}@{AlibabaCloudUID}.yikeai.
+        # 
         # This parameter is required.
         self.user_name_prefix = user_name_prefix
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

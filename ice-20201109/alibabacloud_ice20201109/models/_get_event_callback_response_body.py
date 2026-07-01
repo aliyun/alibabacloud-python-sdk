@@ -19,15 +19,17 @@ class GetEventCallbackResponseBody(DaraModel):
         self.auth_key = auth_key
         # Specifies whether callback authentication is enabled. This parameter is returned only for **HTTP** callbacks. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on**
+        # 
+        # - **off**
         self.auth_switch = auth_switch
         # The name of the Simple Message Queue (SMQ) queue to which callback messages are sent.
         self.callback_queue_name = callback_queue_name
         # The callback method. Valid values:
         # 
-        # *   **HTTP**
-        # *   **MNS**
+        # - **HTTP**
+        # 
+        # - **MNS**
         self.callback_type = callback_type
         # The callback URL to which event notifications are sent.
         self.callback_url = callback_url

@@ -17,11 +17,20 @@ class SearchMediaByHybridRequest(DaraModel):
         text: str = None,
         utc_create: str = None,
     ):
+        # Custom filters. A JSON string. Supported backing fields include integer field intField1 and string fields strField1 and strField2. Only one matching condition can be applied per field, and filters across different fields are combined with a logical AND relationship.
+        # 
+        # - Exact match example: {"intField1":12,"strField1":"abc"}
+        # 
+        # - Multi-value example: {"intField1":[12,13],"strField1":["abc","cd"]}
+        # 
+        # - Range example: {"intField1":{"gte":12,"lte":13}}
         self.custom_filters = custom_filters
         # The ID of the media asset. If provided, the details of the media asset are returned.
         self.media_id = media_id
         # The type of media assets. Valid values:
+        # 
         # - image
+        # 
         # - video
         self.media_type = media_type
         # The namespace.
@@ -34,6 +43,9 @@ class SearchMediaByHybridRequest(DaraModel):
         self.search_lib_name = search_lib_name
         # The natural language search query.
         self.text = text
+        # Creation time, in milliseconds UNIX timestamp. gte means greater than or equal to, and lte means less than or equal to.
+        # 
+        # - Range example: {"gte":1761205662998,"lte":1771205662998}
         self.utc_create = utc_create
 
     def validate(self):

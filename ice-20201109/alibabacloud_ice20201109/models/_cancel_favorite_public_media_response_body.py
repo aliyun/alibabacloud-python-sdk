@@ -12,7 +12,9 @@ class CancelFavoritePublicMediaResponseBody(DaraModel):
         ignored_list: List[str] = None,
         request_id: str = None,
     ):
+        # List of IDs for which removing from favorites failed.
         self.ignored_list = ignored_list
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

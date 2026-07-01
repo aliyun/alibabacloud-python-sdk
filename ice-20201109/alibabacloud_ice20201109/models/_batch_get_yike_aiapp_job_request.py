@@ -9,6 +9,7 @@ class BatchGetYikeAIAppJobRequest(DaraModel):
         self,
         job_ids: str = None,
     ):
+        # A list of job IDs, separated by commas.
         self.job_ids = job_ids
 
     def validate(self):

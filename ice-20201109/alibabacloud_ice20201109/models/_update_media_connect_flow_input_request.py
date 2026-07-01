@@ -24,6 +24,7 @@ class UpdateMediaConnectFlowInputRequest(DaraModel):
         self.flow_id = flow_id
         # The source URL. You can modify this parameter only when the source type is RTMP-PULL or SRT-Listener.
         self.input_from_url = input_from_url
+        # Input name. This parameter is required only when primary/standby input is enabled for the instance.
         self.input_name = input_name
         # The maximum bitrate. Unit: bit/s.
         self.max_bitrate = max_bitrate

@@ -88,9 +88,11 @@ class ListTemplatesResponseBodyTemplates(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AliyunConsole
-        # *   WebSDK
-        # *   OpenAPI
+        # - AliyunConsole
+        # 
+        # - WebSDK
+        # 
+        # - OpenAPI
         self.create_source = create_source
         # The time when the template was created.
         self.creation_time = creation_time
@@ -98,9 +100,11 @@ class ListTemplatesResponseBodyTemplates(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AliyunConsole
-        # *   WebSDK
-        # *   OpenAPI
+        # - AliyunConsole
+        # 
+        # - WebSDK
+        # 
+        # - OpenAPI
         self.modified_source = modified_source
         # The time when the template was last modified.
         self.modified_time = modified_time
@@ -112,21 +116,29 @@ class ListTemplatesResponseBodyTemplates(DaraModel):
         # 
         # Valid values:
         # 
-        # *   PrepareFail
-        # *   Init
-        # *   Normal
-        # *   Preparing
+        # - PrepareFail
+        # 
+        # - Init
+        # 
+        # - Normal
+        # 
+        # - Preparing
         self.preview_media_status = preview_media_status
         # The template state.
         # 
         # Valid values:
         # 
-        # *   UploadFailed: Failed to upload the video.
-        # *   ProcessFailed: Failed to process the advanced template.
-        # *   Available: The template is available.
-        # *   Uploading: The video is being uploaded.
-        # *   Created: The template is created but not ready for use.
-        # *   Processing: The advanced template is being processed.
+        # - UploadFailed: Failed to upload the video.
+        # 
+        # - ProcessFailed: Failed to process the advanced template.
+        # 
+        # - Available: The template is available.
+        # 
+        # - Uploading: The video is being uploaded.
+        # 
+        # - Created: The template is created but not ready for use.
+        # 
+        # - Processing: The advanced template is being processed.
         self.status = status
         # The template ID.
         self.template_id = template_id
@@ -134,8 +146,9 @@ class ListTemplatesResponseBodyTemplates(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Timeline: regular template.
-        # *   VETemplate: advanced template.
+        # - Timeline: regular template.
+        # 
+        # - VETemplate: advanced template.
         self.type = type
 
     def validate(self):

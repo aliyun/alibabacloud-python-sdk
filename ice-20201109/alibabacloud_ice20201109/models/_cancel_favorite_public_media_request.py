@@ -9,6 +9,9 @@ class CancelFavoritePublicMediaRequest(DaraModel):
         self,
         media_ids: str = None,
     ):
+        # IMS media asset ID.
+        # 
+        # - Separate multiple IDs with commas.
         self.media_ids = media_ids
 
     def validate(self):

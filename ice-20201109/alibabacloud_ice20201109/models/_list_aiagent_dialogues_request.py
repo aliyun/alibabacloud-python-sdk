@@ -15,25 +15,23 @@ class ListAIAgentDialoguesRequest(DaraModel):
         session_id: str = None,
         start_time: int = None,
     ):
-        # Specify the end of the time range to query using a UNIX timestamp accurate to milliseconds.
+        # The end Unix timestamp (inclusive), in milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The sorting order. Valid values: 
-        # 
-        # - DESC: descending order (default)
-        # - ASC: ascending order
+        # The sort order. Valid values: `ASC` (ascending) and `DESC` (descending). Default value: `DESC`.
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
+        # The number of items per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
+        # The number of most recent dialogue rounds to return. This value must be a positive integer. This parameter is mutually exclusive with pagination parameters; if specified, it overrides them.
         self.round_limit = round_limit
         # The session ID.
         # 
         # This parameter is required.
         self.session_id = session_id
-        # Specify the start of the time range to query using a UNIX timestamp accurate to milliseconds.
+        # The start Unix timestamp (inclusive), in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time

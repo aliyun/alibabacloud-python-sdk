@@ -39,6 +39,7 @@ class UpdateLivePackageOriginEndpointShrinkRequest(DaraModel):
         self.ip_blacklist = ip_blacklist
         # The IP address whitelist. It supports subnet masks. 0.0.0.0/0 is not allowed. It can be up to 1,000 characters in length. Separate multiple IP addresses with commas (,). You must configure AuthorizationCode, IpWhitelist, or both.
         self.ip_whitelist = ip_whitelist
+        # Live stream encapsulation configuration
         self.live_packaging_config_shrink = live_packaging_config_shrink
         # The playlist name. Default value: manifest.
         self.manifest_name = manifest_name

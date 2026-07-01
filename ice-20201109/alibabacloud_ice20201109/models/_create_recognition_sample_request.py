@@ -19,11 +19,15 @@ class CreateRecognitionSampleRequest(DaraModel):
     ):
         # The type of recognition this sample is for.
         # 
-        # *   landmark
-        # *   object
-        # *   logo
-        # *   face
-        # *   label
+        # - landmark
+        # 
+        # - object
+        # 
+        # - logo
+        # 
+        # - face
+        # 
+        # - label
         # 
         # This parameter is required.
         self.algorithm = algorithm

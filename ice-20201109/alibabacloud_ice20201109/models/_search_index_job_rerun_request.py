@@ -16,14 +16,17 @@ class SearchIndexJobRerunRequest(DaraModel):
         # 
         # This parameter is required.
         self.media_ids = media_ids
+        # Namespace.
         self.namespace = namespace
         # The search library.
         self.search_lib_name = search_lib_name
         # The type of the job. Separate multiple types with commas (,).
         # 
-        # *   aiLabel: smart tagging.
-        # *   face: face recognition.
-        # *   mm: large visual model.
+        # - aiLabel: smart tagging.
+        # 
+        # - face: face recognition.
+        # 
+        # - mm: large visual model.
         self.task = task
 
     def validate(self):

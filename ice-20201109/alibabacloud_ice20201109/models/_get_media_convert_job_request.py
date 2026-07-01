@@ -9,7 +9,7 @@ class GetMediaConvertJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the transcoding task.
+        # The ID of the media transcoding job.
         self.job_id = job_id
 
     def validate(self):

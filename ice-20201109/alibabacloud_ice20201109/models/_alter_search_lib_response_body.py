@@ -12,9 +12,17 @@ class AlterSearchLibResponseBody(DaraModel):
         search_lib_name: str = None,
         success: str = None,
     ):
+        # The status code.
         self.code = code
+        # The request ID.
         self.request_id = request_id
+        # The name of the search library.
         self.search_lib_name = search_lib_name
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

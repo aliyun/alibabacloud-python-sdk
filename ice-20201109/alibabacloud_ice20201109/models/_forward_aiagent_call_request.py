@@ -13,10 +13,28 @@ class ForwardAIAgentCallRequest(DaraModel):
         instance_id: str = None,
         transfer_prompt: str = None,
     ):
+        # The target phone number for call transfer.
         self.called_number = called_number
+        # The caller phone number for the transferred call. Optional.
+        # 
+        # >Notice: 
+        # 
+        # By default, the CallerNumber is the agent\\"s phone number after the call starts:
+        # 1\\. For inbound lines, the agent number is the agent’s seat number.
+        # 2\\. For outbound lines, the agent number is the original caller number.
+        # 
+        # 
+        # 
+        # 
+        # >Warning: 
+        # 
+        # Alibaba Cloud lines do not support this parameter.
         self.caller_number = caller_number
+        # Abnormal prompt text played when the transfer fails. Default is empty.
         self.error_prompt = error_prompt
+        # Current call instance ID, used only in inbound call transfer scenarios.
         self.instance_id = instance_id
+        # Prompt message played before initiating the transfer. If empty, the system skips the prompt and plays the ringing tone directly. Default is empty.
         self.transfer_prompt = transfer_prompt
 
     def validate(self):

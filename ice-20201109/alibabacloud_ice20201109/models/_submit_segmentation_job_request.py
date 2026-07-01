@@ -13,15 +13,15 @@ class SubmitSegmentationJobRequest(DaraModel):
         output_config: str = None,
         user_data: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token to ensure request idempotence.
         self.client_token = client_token
-        # The input configuration. For detailed parameters, see [InputConfig](~~2874121#cc59ad3082jbx~~).
+        # The input configuration. For more information, see [InputConfig](~~2874121#cc59ad3082jbx~~).
         self.input_config = input_config
-        # The task parameters. For details, see [JobParams](~~2874121#a60357f2d5iix~~).
+        # The job parameters. For more information, see [JobParams](~~2874121#a60357f2d5iix~~).
         self.job_params = job_params
-        # The output configuration. For detailed parameters, see [OutputConfig](~~2874121#cef23186a8d6w~~).
+        # The output configuration. For more information, see [OutputConfig](~~2874121#cef23186a8d6w~~).
         self.output_config = output_config
-        # The user-defined data in the JSON format, which can be up to 512 bytes in length.
+        # Custom user data in JSON format, with a maximum length of 512 bytes.
         self.user_data = user_data
 
     def validate(self):

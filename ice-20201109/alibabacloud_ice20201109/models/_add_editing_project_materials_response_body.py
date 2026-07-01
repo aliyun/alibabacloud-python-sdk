@@ -389,15 +389,15 @@ class AddEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo(
         self.file_size = file_size
         # The file status.
         # 
-        # \\-Uploading
+        # -Uploading
         # 
-        # \\-Normal
+        # -Normal
         # 
-        # \\-UploadFail
+        # -UploadFail
         # 
-        # \\-Disable
+        # -Disable
         # 
-        # \\-Deleted
+        # -Deleted
         self.file_status = file_status
         # The file type.
         self.file_type = file_type

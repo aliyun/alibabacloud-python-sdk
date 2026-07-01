@@ -16,8 +16,9 @@ class ListSourceLocationsRequest(DaraModel):
     ):
         # Specifies whether to ignore source locations marked as deleted. A value of true means ignoring source locations marked as deleted.
         self.filter_state = filter_state
-        # *   The page number.
-        # *   Default value: 1.
+        # - The page number.
+        # 
+        # - Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size

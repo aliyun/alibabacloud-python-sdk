@@ -15,7 +15,7 @@ class ListSmartVoiceGroupsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried speaker groups.
+        # An array of voice groups.
         self.voice_groups = voice_groups
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroups(DaraModel):
         type: str = None,
         voice_list: List[main_models.ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList] = None,
     ):
-        # The name of the speaker group.
+        # The name of the voice group.
         self.type = type
-        # The speakers.
+        # The voice list.
         self.voice_list = voice_list
 
     def validate(self):
@@ -110,28 +110,22 @@ class ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList(DaraModel):
         voice_type: str = None,
         voice_url: str = None,
     ):
-        # The speaker description.
+        # The description of the voice.
         self.desc = desc
-        # The speaker name.
+        # The name of the voice.
         self.name = name
-        # The remarks of the speaker.
+        # Notes for the voice.
         self.remark = remark
+        # The sample rates supported by the voice.
         self.support_sample_rate = support_sample_rate
-        # The tag of the speaker type.
+        # The tag for the voice category.
         self.tag = tag
-        # The speaker ID.
+        # The voice ID.
         self.voice = voice
         self.voice_source = voice_source
-        # The speaker type.
-        # 
-        # Valid values:
-        # 
-        # *   Male
-        # *   Female
-        # *   Boy
-        # *   Girl
+        # The voice type.
         self.voice_type = voice_type
-        # The URL of the sample audio file.
+        # The URL of the sample audio.
         self.voice_url = voice_url
 
     def validate(self):

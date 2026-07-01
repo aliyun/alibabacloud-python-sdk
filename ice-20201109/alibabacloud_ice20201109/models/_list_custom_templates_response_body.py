@@ -14,9 +14,9 @@ class ListCustomTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The queried templates.
+        # An array of custom template objects.
         self.custom_template_list = custom_template_list
-        # The request ID.
+        # The unique identifier for the request.
         self.request_id = request_id
         # The total number of templates.
         self.total = total
@@ -77,37 +77,28 @@ class ListCustomTemplatesResponseBodyCustomTemplateList(DaraModel):
         type: int = None,
         type_name: str = None,
     ):
-        # The time when the template was created.
+        # The time when the template was created, in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ.
         self.create_time = create_time
         self.frontend_hint = frontend_hint
-        # Indicates whether the template is the default template.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Whether the template is a default template.
         self.is_default = is_default
-        # The time when the template was last modified.
+        # The time when the template was last modified, in UTC and formatted as YYYY-MM-DDTHH:mm:ssZ.
         self.modified_time = modified_time
-        # The template state.
-        # 
-        # Valid values:
-        # 
-        # *   Normal
+        # The template status.
         self.status = status
-        # The subtype ID of the template.
+        # The template subtype ID.
         self.subtype = subtype
-        # The subtype name of the template.
+        # The template subtype name.
         self.subtype_name = subtype_name
-        # The template parameters.
+        # The template configuration, as a JSON string.
         self.template_config = template_config
         # The template ID.
         self.template_id = template_id
         # The template name.
         self.template_name = template_name
-        # The type ID of the template.
+        # The template type ID.
         self.type = type
-        # The type name of the template.
+        # The template type name.
         self.type_name = type_name
 
     def validate(self):

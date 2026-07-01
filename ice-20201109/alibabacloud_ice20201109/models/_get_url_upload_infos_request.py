@@ -12,20 +12,21 @@ class GetUrlUploadInfosRequest(DaraModel):
     ):
         # The IDs of the upload jobs. You can specify one or more job IDs. You can obtain the job IDs from the response parameter JobId of the [UploadMediaByURL](https://help.aliyun.com/document_detail/86311.html) operation.
         # 
-        # *   You can specify a maximum of 10 job IDs.
-        # *   Separate the job IDs with commas (,).
+        # - You can specify a maximum of 10 job IDs.
         # 
-        # >  You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
+        # - Separate the job IDs with commas (,).
+        # 
+        # > You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
         self.job_ids = job_ids
         # The upload URLs of the source files. You can specify a maximum of 10 URLs. Separate the URLs with commas (,).
         # 
-        # > 
+        # >
         # 
-        # *   The URLs must be encoded.
+        # - The URLs must be encoded.
         # 
-        # *   If a media file is uploaded multiple times, we recommend that you specify the URL of the media file only once in this parameter.
+        # - If a media file is uploaded multiple times, we recommend that you specify the URL of the media file only once in this parameter.
         # 
-        # *   You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
+        # - You must specify either JobIds or UploadURLs. If you specify both parameters, only the value of JobIds takes effect.
         self.upload_urls = upload_urls
 
     def validate(self):

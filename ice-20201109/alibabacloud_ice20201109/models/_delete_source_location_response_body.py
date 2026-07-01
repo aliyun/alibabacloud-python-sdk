@@ -14,8 +14,9 @@ class DeleteSourceLocationResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid value:
         # 
-        # *   true: The request succeeded.
-        # *   false: The request failed.
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

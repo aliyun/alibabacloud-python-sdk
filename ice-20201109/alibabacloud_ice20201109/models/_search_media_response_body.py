@@ -17,17 +17,17 @@ class SearchMediaResponseBody(DaraModel):
         success: str = None,
         total: int = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The media assets that meet the requirements.
+        # A collection of media assets that match the criteria.
         self.media_info_list = media_info_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The pagination identifier.
+        # The token used to retrieve the next page of results.
         self.scroll_token = scroll_token
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of media assets that meet the conditions.
+        # The total number of media assets matching the search criteria.
         self.total = total
 
     def validate(self):
@@ -99,17 +99,19 @@ class SearchMediaResponseBodyMediaInfoList(DaraModel):
         media_basic_info: main_models.SearchMediaResponseBodyMediaInfoListMediaBasicInfo = None,
         media_id: str = None,
     ):
-        # The details of the intelligent AI job.
+        # The detailed AI data.
         self.ai_data = ai_data
-        # The description of the AI job.
+        # A summary of the AI processing data.
         self.ai_rough_data = ai_rough_data
+        # Custom fields for filtering, provided as a JSON string.
         self.custom_fields = custom_fields
-        # The information about the files.
+        # A list of file information.
         self.file_info_list = file_info_list
+        # A list of indexing statuses for different index types.
         self.index_status_list = index_status_list
-        # The basic information about the media asset.
+        # Basic information about the media asset.
         self.media_basic_info = media_basic_info
-        # The ID of the media asset.
+        # The media asset ID.
         self.media_id = media_id
 
     def validate(self):
@@ -228,13 +230,13 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         self.biz = biz
         # The business type of the media asset.
         self.business_type = business_type
-        # The ID of the category.
+        # The category ID.
         self.cate_id = cate_id
-        # The name of the category.
+        # The category name.
         self.cate_name = cate_name
         # The category of the media asset.
         self.category = category
-        # The thumbnail URL of the media asset.
+        # The URL of the cover image.
         self.cover_url = cover_url
         # The time when the media asset was created.
         self.create_time = create_time
@@ -242,36 +244,39 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         self.deleted_time = deleted_time
         # The description of the media asset.
         self.description = description
-        # The address of the media asset that is waiting to be registered.
+        # The source URL of the media asset.
         self.input_url = input_url
-        # The ID of the media asset.
+        # The media asset ID.
         self.media_id = media_id
-        # The tags of the media asset.
+        # The tags assigned to the media asset. Multiple tags are separated by commas.
         self.media_tags = media_tags
         # The type of the media asset.
         self.media_type = media_type
-        # The time when the media asset was modified.
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The namespace.
         self.namespace = namespace
-        # The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. Each custom ID is unique.
+        # A unique, custom ID for the user. It must be 6 to 64 characters long and can contain letters, digits, hyphens (-), and underscores (_).
         self.reference_id = reference_id
-        # The snapshots of the media asset.
+        # Snapshot information in JSON format.
         self.snapshots = snapshots
         # The source of the media asset.
         self.source = source
-        # The image sprite of the media asset
+        # Sprite Image information in JSON format.
         self.sprite_images = sprite_images
-        # The state of the media asset.
+        # The status of the media asset.
         self.status = status
+        # The stream status.
         self.stream_status = stream_status
         # The title of the media asset.
         self.title = title
         # The transcoding status of the media asset.
         self.transcode_status = transcode_status
-        # The upload source of the media asset.
+        # The upload source.
         self.upload_source = upload_source
-        # The user data.
+        # The custom user data.
         self.user_data = user_data
+        # A computer-vision-generated description of the media content.
         self.vision_description = vision_description
 
     def validate(self):
@@ -450,7 +455,21 @@ class SearchMediaResponseBodyMediaInfoListIndexStatusList(DaraModel):
         index_status: str = None,
         index_type: str = None,
     ):
+        # The status of the index. Valid values:
+        # 
+        # - `Running`: The index is being created.
+        # 
+        # - `Fail`: The index creation failed.
+        # 
+        # - `Success`: The index was created.
         self.index_status = index_status
+        # The type of the index. Valid values:
+        # 
+        # - `mm`: Large Language Model (LLM).
+        # 
+        # - `face`: Face.
+        # 
+        # - `aiLabel`: Smart tagging.
         self.index_type = index_type
 
     def validate(self):
@@ -484,7 +503,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoList(DaraModel):
         self,
         file_basic_info: main_models.SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo = None,
     ):
-        # The basic information about the file, such as the duration and size.
+        # Basic information about the file, such as its duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -535,7 +554,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(DaraModel):
         self.duration = duration
         # The name of the file.
         self.file_name = file_name
-        # The size of the file in bytes.
+        # The file size in bytes.
         self.file_size = file_size
         # The status of the file.
         self.file_status = file_status
@@ -543,16 +562,17 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(DaraModel):
         self.file_type = file_type
         # The Object Storage Service (OSS) URL of the file.
         self.file_url = file_url
-        # The encapsulation format of the file.
+        # The container format of the file.
         self.format_name = format_name
-        # The height of the file.
+        # The height of the video in pixels.
         self.height = height
+        # Information about the image set.
         self.images_input = images_input
         # The time when the file was last modified.
         self.modified_time = modified_time
-        # The region in which the file is stored.
+        # The region where the file is stored.
         self.region = region
-        # The width of the file.
+        # The width of the video in pixels.
         self.width = width
 
     def validate(self):
@@ -662,15 +682,15 @@ class SearchMediaResponseBodyMediaInfoListAiRoughData(DaraModel):
         save_type: str = None,
         status: str = None,
     ):
-        # TV Series
+        # The AI category applied to the media asset.
         self.ai_category = ai_category
         # The ID of the AI job.
         self.ai_job_id = ai_job_id
-        # The results of the AI job.
+        # The URL of the raw AI result file.
         self.result = result
-        # The save type.
+        # The save type of the AI data.
         self.save_type = save_type
-        # The data status.
+        # The save status of the AI data.
         self.status = status
 
     def validate(self):
@@ -724,11 +744,11 @@ class SearchMediaResponseBodyMediaInfoListAiData(DaraModel):
         asr_info: List[main_models.SearchMediaResponseBodyMediaInfoListAiDataAsrInfo] = None,
         ocr_info: List[main_models.SearchMediaResponseBodyMediaInfoListAiDataOcrInfo] = None,
     ):
-        # The tags of the intelligent AI job.
+        # A list of AI label information.
         self.ai_label_info = ai_label_info
-        # The information about audio files.
+        # A list of Automatic Speech Recognition (ASR) results.
         self.asr_info = asr_info
-        # The subtitles.
+        # A list of Optical Character Recognition (OCR) results.
         self.ocr_info = ocr_info
 
     def validate(self):
@@ -798,9 +818,9 @@ class SearchMediaResponseBodyMediaInfoListAiDataOcrInfo(DaraModel):
         timestamp: float = None,
         to: float = None,
     ):
-        # The ID of the clip.
+        # The clip ID.
         self.clip_id = clip_id
-        # The text content.
+        # The recognized text content.
         self.content = content
         # The start time of the clip.
         self.from_ = from_
@@ -862,9 +882,9 @@ class SearchMediaResponseBodyMediaInfoListAiDataAsrInfo(DaraModel):
         timestamp: float = None,
         to: float = None,
     ):
-        # The ID of the clip.
+        # The clip ID.
         self.clip_id = clip_id
-        # The text content.
+        # The transcribed text content.
         self.content = content
         # The start time of the clip.
         self.from_ = from_
@@ -928,19 +948,19 @@ class SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfo(DaraModel):
         occurrences: List[main_models.SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences] = None,
         source: str = None,
     ):
-        # The category.
+        # The category of the label.
         self.category = category
-        # The face ID.
+        # The ID of the recognized face.
         self.face_id = face_id
         # The ID of the entity.
         self.label_id = label_id
         # The name of the entity.
         self.label_name = label_name
-        # The type of the tag.
+        # The type of the label.
         self.label_type = label_type
-        # The clips.
+        # A list of clips where the entity appears.
         self.occurrences = occurrences
-        # The source.
+        # The source of the AI data.
         self.source = source
 
     def validate(self):
@@ -1029,17 +1049,17 @@ class SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrences(DaraModel
         self.finegrain_name = finegrain_name
         # The start time of the clip.
         self.from_ = from_
-        # The optimal face image encoded in Base64.
+        # The optimal image of the recognized face, encoded in Base64.
         self.image = image
-        # The score.
+        # The confidence score for the recognition result.
         self.score = score
         # The sequence ID of the vector table.
         self.table_batch_seq_id = table_batch_seq_id
         # The end time of the clip.
         self.to = to
-        # The track sequence.
+        # A sequence of tracks that represent the entity within the clip.
         self.tracks = tracks
-        # The ID of the clip.
+        # The clip ID.
         self.clip_id = clip_id
 
     def validate(self):
@@ -1135,7 +1155,7 @@ class SearchMediaResponseBodyMediaInfoListAiDataAiLabelInfoOccurrencesTracks(Dar
         self.position = position
         # The size of the bounding box.
         self.size = size
-        # The timestamp of the track.
+        # The timestamp of the track data point.
         self.timestamp = timestamp
 
     def validate(self):

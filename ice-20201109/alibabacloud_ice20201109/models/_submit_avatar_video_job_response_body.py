@@ -11,11 +11,11 @@ class SubmitAvatarVideoJobResponseBody(DaraModel):
         media_id: str = None,
         request_id: str = None,
     ):
-        # The task ID.
+        # The [smart job]() ID.
         self.job_id = job_id
-        # The media asset ID of the output file.
+        # The ID of the output video\\"s [media asset]().
         self.media_id = media_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -14,23 +14,23 @@ class SubmitSnapshotJobShrinkRequest(DaraModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
-        # The snapshot input.
+        # The input for the snapshot job.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink
-        # The name of the job.
+        # The name of the snapshot job.
         self.name = name
-        # The snapshot output.
+        # The output destination for the snapshot job.
         # 
         # This parameter is required.
         self.output_shrink = output_shrink
-        # The scheduling settings.
+        # The scheduling configuration.
         self.schedule_config_shrink = schedule_config_shrink
         # The snapshot template configuration.
         # 
         # This parameter is required.
         self.template_config_shrink = template_config_shrink
-        # The user-defined data.
+        # Custom user data, passed as a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):

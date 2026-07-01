@@ -13,7 +13,9 @@ class BatchGetYikeAIAppJobResponseBody(DaraModel):
         job_list: List[main_models.BatchGetYikeAIAppJobResponseBodyJobList] = None,
         request_id: str = None,
     ):
+        # The list of jobs. Each object mirrors the details returned by the `GetYikeAIAppJob` operation.
         self.job_list = job_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -63,14 +65,33 @@ class BatchGetYikeAIAppJobResponseBodyJobList(DaraModel):
         result: main_models.BatchGetYikeAIAppJobResponseBodyJobListResult = None,
         status: str = None,
     ):
+        # The ID of the application.
         self.app_id = app_id
+        # The AI application\\"s input parameters, formatted as a JSON-serialized string.
         self.app_input_config = app_input_config
+        # The time the job execution finished. The time is in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
         self.execution_finish_time = execution_finish_time
+        # The time the job execution started. The time is in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
         self.execution_start_time = execution_start_time
+        # The ID of the folder.
         self.folder_id = folder_id
+        # The ID of the job.
         self.job_id = job_id
+        # The ID of the project.
         self.production_id = production_id
+        # The execution result of the job.
         self.result = result
+        # The status of the job. Valid values are:
+        # 
+        # - `Created`: The job has been created.
+        # 
+        # - `Queuing`: The job is in the queue.
+        # 
+        # - `Executing`: The job is executing.
+        # 
+        # - `Finished`: The job completed successfully.
+        # 
+        # - `Failed`: The job failed to complete.
         self.status = status
 
     def validate(self):
@@ -150,8 +171,11 @@ class BatchGetYikeAIAppJobResponseBodyJobListResult(DaraModel):
         image_result: List[main_models.BatchGetYikeAIAppJobResponseBodyJobListResultImageResult] = None,
         video_result: List[main_models.BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult] = None,
     ):
+        # The audio result.
         self.audio_result = audio_result
+        # The image result.
         self.image_result = image_result
+        # The video result.
         self.video_result = video_result
 
     def validate(self):
@@ -218,7 +242,9 @@ class BatchGetYikeAIAppJobResponseBodyJobListResultVideoResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The output URL.
         self.output_url = output_url
 
     def validate(self):
@@ -253,7 +279,9 @@ class BatchGetYikeAIAppJobResponseBodyJobListResultImageResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The output URL.
         self.output_url = output_url
 
     def validate(self):
@@ -288,7 +316,9 @@ class BatchGetYikeAIAppJobResponseBodyJobListResultAudioResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
+        # The ID of the media asset.
         self.media_id = media_id
+        # The output URL.
         self.output_url = output_url
 
     def validate(self):

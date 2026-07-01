@@ -11,7 +11,10 @@ class UpdateRtcRobotInstanceRequest(DaraModel):
         config: main_models.UpdateRtcRobotInstanceRequestConfig = None,
         instance_id: str = None,
     ):
+        # The configuration for the AI Agent instance.
         self.config = config
+        # The ID of the AI Agent instance to update.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -50,8 +53,11 @@ class UpdateRtcRobotInstanceRequestConfig(DaraModel):
         greeting: str = None,
         voice_id: str = None,
     ):
+        # Controls whether voice interrupt is enabled. This change takes effect immediately.
         self.enable_voice_interrupt = enable_voice_interrupt
+        # The greeting message. The greeting is not updated if it has already been played.
         self.greeting = greeting
+        # The ID of the voice. The new voice takes effect on the AI Agent\\"s next utterance.
         self.voice_id = voice_id
 
     def validate(self):

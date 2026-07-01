@@ -10,6 +10,7 @@ class CancelIProductionJobRequest(DaraModel):
         client_token: str = None,
         job_id: str = None,
     ):
+        # Idempotency parameter
         self.client_token = client_token
         # The ID of the intelligent production job.
         # 

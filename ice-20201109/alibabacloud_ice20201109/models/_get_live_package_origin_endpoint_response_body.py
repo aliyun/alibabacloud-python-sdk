@@ -82,6 +82,7 @@ class GetLivePackageOriginEndpointResponseBodyLivePackageOriginEndpoint(DaraMode
         self.ip_whitelist = ip_whitelist
         # The time when the endpoint was last modified.
         self.last_modified = last_modified
+        # Live packaging configuration
         self.live_packaging_config = live_packaging_config
         # The playlist name.
         self.manifest_name = manifest_name

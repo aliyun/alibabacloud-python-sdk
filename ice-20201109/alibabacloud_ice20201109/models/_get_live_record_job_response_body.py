@@ -73,9 +73,11 @@ class GetLiveRecordJobResponseBodyRecordJob(DaraModel):
         # 
         # Valid values:
         # 
-        # *   paused: The job is paused.
-        # *   initial: The job is not started.
-        # *   started: The job is in progress.
+        # - paused: The job is paused.
+        # 
+        # - initial: The job is not started.
+        # 
+        # - started: The job is in progress.
         self.status = status
         # The URL of the live stream.
         self.stream_input = stream_input
@@ -209,8 +211,9 @@ class GetLiveRecordJobResponseBodyRecordJobRecordOutput(DaraModel):
         # 
         # Valid values:
         # 
-        # *   vod
-        # *   oss
+        # - vod
+        # 
+        # - oss
         self.type = type
 
     def validate(self):

@@ -19,19 +19,25 @@ class ListSmartJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Finished: The job is complete.
-        # *   Failed: The job failed.
-        # *   Executing: The job is in progress.
-        # *   Created: The job is created.
+        # - Finished: The job is complete.
+        # 
+        # - Failed: The job failed.
+        # 
+        # - Executing: The job is in progress.
+        # 
+        # - Created: The job is created.
         self.job_state = job_state
         # The job type.
         # 
         # Valid values:
         # 
-        # *   ASR: automatic speech recognition(job) job.
-        # *   DynamicChart: dynamic chart job.
-        # *   VideoTranslation: video translation job.
-        # *   TextToSpeech: intelligent audio production job.
+        # - ASR: automatic speech recognition(job) job.
+        # 
+        # - DynamicChart: dynamic chart job.
+        # 
+        # - VideoTranslation: video translation job.
+        # 
+        # - TextToSpeech: intelligent audio production job.
         self.job_type = job_type
         # The maximum number of entries to return.
         # 
@@ -47,8 +53,9 @@ class ListSmartJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   CreationTime:Asc: sorted by creation time in ascending order.
-        # *   CreationTime:Desc: sorted by creation time in descending order.
+        # - CreationTime:Asc: sorted by creation time in ascending order.
+        # 
+        # - CreationTime:Desc: sorted by creation time in descending order.
         self.sort_by = sort_by
 
     def validate(self):

@@ -182,8 +182,9 @@ class QueryTraceM3u8JobListResponseBodyDataOutput(DaraModel):
         self.media = media
         # The type of the output file. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: an OSS object.
+        # 
+        # - Media: a media asset.
         self.type = type
 
     def validate(self):

@@ -15,26 +15,29 @@ class ListTranscodeJobsRequest(DaraModel):
         start_of_create_time: str = None,
         status: str = None,
     ):
-        # The end of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to filter jobs by their creation time. The time must be in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
         self.end_of_create_time = end_of_create_time
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+        # The token for the next page of results. Not required for the first page.
         self.next_page_token = next_page_token
-        # The order that you use to sort the query results. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   CreateTimeDesc: sorts the query results by creation time in descending order.
-        # *   CreateTimeAsc: sorts the query results by creation time in ascending order.
+        # - `CreateTimeDesc`: Sorts by creation time in descending order.
+        # 
+        # - `CreateTimeAsc`: Sorts by creation time in ascending order.
         self.order_by = order_by
-        # The number of entries per page. Valid values: 0 to 100. Default value: 20.
+        # The number of entries per page. Valid values: 1-100. Default: 20.
         self.page_size = page_size
-        # The job ID.
+        # Filters by job ID.
         self.parent_job_id = parent_job_id
-        # The beginning of the time range during which the jobs to be queried were created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start of the time range to filter jobs by their creation time. The time must be in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
         self.start_of_create_time = start_of_create_time
-        # The state of the job.
+        # The job status. Valid values:
         # 
-        # *   Init: The job is submitted.
-        # *   Success: The job is successful.
-        # *   Fail: The job failed.
+        # - `Init`: Submitted.
+        # 
+        # - `Success`: Succeeded.
+        # 
+        # - `Fail`: Failed.
         self.status = status
 
     def validate(self):

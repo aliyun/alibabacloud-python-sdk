@@ -20,8 +20,9 @@ class SubmitVideoTranslationJobResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -63,7 +64,7 @@ class SubmitVideoTranslationJobResponseBodyData(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the video translation job.
+        # The video translation job ID.
         self.job_id = job_id
 
     def validate(self):

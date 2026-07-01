@@ -11,8 +11,27 @@ class CreateIpcOrderRequest(DaraModel):
         device_id: str = None,
         period: str = None,
     ):
+        # The capability. Valid values:
+        # 
+        # - understand: Image understanding. Supports the analysis of 300 images per day.
+        # 
+        # - understand-reid: Image understanding with person re-identification (ReID). Supports the analysis of 300 images per day.
+        # 
+        # - search: Search. Supports 75 searches per day.
+        # 
+        # - understand-search: Image understanding and search. Supports the analysis of 300 images and 75 searches per day.
+        # 
+        # - understand-reid-search: Image understanding with ReID and search. Supports the analysis of 300 images and 75 searches per day.
         self.capability = capability
+        # The device ID.
         self.device_id = device_id
+        # The subscription period. Valid values:
+        # 
+        # - month: A monthly subscription, calculated as 30 days.
+        # 
+        # - quarter: A quarterly subscription, calculated as 90 days.
+        # 
+        # - year: An annual subscription, calculated as 365 days.
         self.period = period
 
     def validate(self):

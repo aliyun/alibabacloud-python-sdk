@@ -12,15 +12,15 @@ class SubmitMediaConvertJobRequest(DaraModel):
         pipeline_id: str = None,
         user_data: str = None,
     ):
-        # The idempotency key that is used to ensure repeated requests have the same effect as a single request.
+        # A unique client token that ensures request idempotency.
         self.client_token = client_token
-        # The configurations of the transcoding task.
+        # The transcoding job configuration. For more information, see [MediaConvertJobConfig](https://help.aliyun.com/document_detail/2999539.html).
         # 
         # This parameter is required.
         self.config = config
-        # The ID of the queue.
+        # The ID of the pipeline for the transcoding job.
         self.pipeline_id = pipeline_id
-        # The user data.
+        # Custom data to pass with the job.
         self.user_data = user_data
 
     def validate(self):

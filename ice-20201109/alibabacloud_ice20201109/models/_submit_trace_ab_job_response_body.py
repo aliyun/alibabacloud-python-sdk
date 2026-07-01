@@ -13,13 +13,13 @@ class SubmitTraceAbJobResponseBody(DaraModel):
         request_id: str = None,
         status_code: int = None,
     ):
-        # The data returned.
+        # Contains the IDs for the submitted job and the output media asset.
         self.data = data
-        # The message returned.
+        # The response message. A value of `ok` indicates a successful request.
         self.message = message
-        # The ID of the request.
+        # The unique identifier for the request. If you encounter an issue, provide this ID for technical support.
         self.request_id = request_id
-        # The status code.
+        # The HTTP status code. A value of `200` indicates success.
         self.status_code = status_code
 
     def validate(self):
@@ -70,7 +70,7 @@ class SubmitTraceAbJobResponseBodyData(DaraModel):
     ):
         # The job ID.
         self.job_id = job_id
-        # The media ID.
+        # The ID of the media asset created for tracing.
         self.trace_media_id = trace_media_id
 
     def validate(self):

@@ -10,7 +10,10 @@ class UpdateRtcRobotInstanceShrinkRequest(DaraModel):
         config_shrink: str = None,
         instance_id: str = None,
     ):
+        # The configuration for the AI Agent instance.
         self.config_shrink = config_shrink
+        # The ID of the AI Agent instance to update.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

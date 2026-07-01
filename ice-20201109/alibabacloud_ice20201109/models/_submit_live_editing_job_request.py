@@ -15,38 +15,45 @@ class SubmitLiveEditingJobRequest(DaraModel):
         project_id: str = None,
         user_data: str = None,
     ):
-        # The clips in the JSON array format. The output video is created by merging these clips sequentially.
+        # A JSON array that specifies the clips to edit. The job creates the output file by concatenating these clips in the specified order.
         # 
-        # Each clip has a start time and an end time. If no live stream parameters are specified, the outer live stream configurations apply. The start and end timestamps are in UTC. For more information about the parameters, see the "Clip" section of this topic.
+        # Each clip includes a start and end time. If live stream parameters are not specified for a clip, the system uses the global `LiveStreamConfig` settings. The start and end timestamps must be in UTC. For more details, see the Clip data structure below.
         # 
         # This parameter is required.
         self.clips = clips
-        # The live stream configurations, in the JSON format. The configurations must include the following parameters:
+        # The configuration of the source live stream, specified as a JSON object. It includes the following parameters:
         # 
-        # *   AppName: the name of the application to which the live stream belongs.
-        # *   DomainName: the domain name of the application.
-        # *   StreamName: the name of the live stream.
+        # - `AppName`: The name of the application to which the stream belongs.
+        # 
+        # - `DomainName`: The domain name of the stream.
+        # 
+        # - `StreamName`: The name of the live stream.
         self.live_stream_config = live_stream_config
-        # The production configurations, in the JSON format. Mode specifies the editing mode. Valid values:
+        # The production configuration for the output file, specified as a JSON object. The `Mode` parameter specifies the editing mode. Valid values are:
         # 
-        # *   **AccurateFast** (default): fast editing. It is faster than the Accurate mode. The resolution of the output file is the same as that of the source stream. You cannot specify the width and height of the output file.
-        # *   **Accurate**: accurate editing. In this mode, you can specify the width and height of the output file.
-        # *   **Rough**: rough editing. The minimum precision is one TS segment. The output file comprises all segments within the specified time range. You can specify the width and height of the output file.
-        # *   **RoughFast**: fast rough editing. It is faster than the Accurate mode. The minimum precision is one TS segment. The output file comprises all segments within the specified time range. The resolution of the output file is the same as that of the source stream. You cannot specify the width and height of the output file.
+        # - **AccurateFast** (Default): Fast and precise editing. It offers faster processing compared to the `Accurate` mode. The output file has the same resolution as the source stream. You cannot specify a custom width and height for the output file.
+        # 
+        # - **Accurate**: Precise editing. This mode lets you specify a custom width and height for the output file.
+        # 
+        # - **Rough**: Rough editing with a precision of a single TS segment. The output file includes all segments between the specified start and end times. You can specify a custom width and height for the output file.
+        # 
+        # - **RoughFast**: Fast rough-cut editing, which is faster than the `Accurate` mode. It has a precision of a single TS segment, and the output file includes all segments between the specified start and end times. The output file has the same resolution as the source stream. You cannot specify a custom width and height for the output file.
         self.media_produce_config = media_produce_config
-        # The configurations of the output file, in the JSON format. You can specify an OSS URL or a storage location in a storage bucket of ApsaraVideo VOD.
+        # The destination configuration for the output file, specified as a JSON object. You can specify either a URL on OSS or a storage location in a VOD bucket.
         # 
-        # *   To store the output file in OSS, you must specify MediaURL.
-        # *   To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
+        # - To output to OSS, the `MediaURL` parameter is required.
+        # 
+        # - To output to VOD, the `StorageLocation` and `FileName` parameters are required.
         self.output_media_config = output_media_config
-        # The type of the output file. Valid values:
+        # The destination type for the output file. Valid values:
         # 
-        # *   oss-object: OSS object in an OSS bucket.
-        # *   vod-media: media asset in Alibaba Cloud VOD.
+        # - `oss-object`: An object in an Alibaba Cloud OSS bucket.
+        # 
+        # - `vod-media`: A media asset in Alibaba Cloud VOD.
         self.output_media_target = output_media_target
-        # The ID of the live editing project. If this parameter is specified, the system reads the storage configurations of the project. If this parameter is not specified, the specified storage configurations take precedence.
+        # The ID of the live editing project. If you specify this parameter, the system uses the storage settings from the project. If left empty, the system uses the storage settings provided in the request instead.
         self.project_id = project_id
-        # The user-defined data in the JSON format, which can be up to 512 bytes in length.
+        # Custom user data, provided as a JSON object. The maximum length is 512 bytes.
         self.user_data = user_data
 
     def validate(self):

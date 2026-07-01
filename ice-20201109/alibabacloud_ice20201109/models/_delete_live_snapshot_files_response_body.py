@@ -13,9 +13,9 @@ class DeleteLiveSnapshotFilesResponseBody(DaraModel):
         delete_file_result_list: List[main_models.DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList] = None,
         request_id: str = None,
     ):
-        # The list of deleted files.
+        # An array of deletion results.
         self.delete_file_result_list = delete_file_result_list
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,14 +58,9 @@ class DeleteLiveSnapshotFilesResponseBodyDeleteFileResultList(DaraModel):
         create_timestamp: int = None,
         result: str = None,
     ):
-        # The time when the file was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The creation timestamp of the file.
         self.create_timestamp = create_timestamp
-        # The result of deletion. A value of OK indicates that the file is deleted. Other values indicate that the file failed to be deleted.
-        # 
-        # Valid values:
-        # 
-        # *   OK: The file was deleted.
-        # *   NotFound: The file was not found.
+        # The deletion result. A value of `OK` indicates the operation succeeded. Other values indicate that it failed.
         self.result = result
 
     def validate(self):

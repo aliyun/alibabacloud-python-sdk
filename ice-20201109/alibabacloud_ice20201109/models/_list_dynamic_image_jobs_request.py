@@ -23,8 +23,9 @@ class ListDynamicImageJobsRequest(DaraModel):
         self.next_page_token = next_page_token
         # The order that you use to sort the query results. Valid values:
         # 
-        # 1.  CreateTimeAsc: sorts the jobs by creation time in ascending order.
-        # 2.  CreateTimeDesc: sorts the jobs by creation time in descending order.
+        # 1. CreateTimeAsc: sorts the jobs by creation time in ascending order.
+        # 
+        # 2. CreateTimeDesc: sorts the jobs by creation time in descending order.
         self.order_by = order_by
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
@@ -34,9 +35,11 @@ class ListDynamicImageJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Init: The job is submitted.
-        # *   Success: The job is successful.
-        # *   Fail: The job failed.
+        # - Init: The job is submitted.
+        # 
+        # - Success: The job is successful.
+        # 
+        # - Fail: The job failed.
         self.status = status
 
     def validate(self):

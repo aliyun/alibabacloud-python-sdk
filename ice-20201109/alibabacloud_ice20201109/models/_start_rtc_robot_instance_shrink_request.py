@@ -14,14 +14,24 @@ class StartRtcRobotInstanceShrinkRequest(DaraModel):
         user_data: str = None,
         user_id: str = None,
     ):
+        # The authentication token required to join the RTC call. You must generate this token using your RTC AppKey.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The RTC channel\\"s unique identifier.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # Specifies advanced call configurations that override the agent\\"s default configurations. If you omit this parameter, the agent uses its default configurations.
         self.config_shrink = config_shrink
+        # The AI agent\\"s unique identifier.
+        # 
         # This parameter is required.
         self.robot_id = robot_id
+        # User-defined information.
         self.user_data = user_data
+        # The AI agent\\"s unique identifier within the channel.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

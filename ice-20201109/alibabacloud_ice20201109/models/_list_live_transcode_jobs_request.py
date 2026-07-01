@@ -23,13 +23,15 @@ class ListLiveTranscodeJobsRequest(DaraModel):
         self.page_size = page_size
         # The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
         # 
-        # *   asc
-        # *   desc
+        # - asc
+        # 
+        # - desc
         self.sort_by = sort_by
         # The start mode of the transcoding job.
         # 
-        # *   0: The transcoding job immediately starts.
-        # *   1: The transcoding job starts at the scheduled time.
+        # - 0: The transcoding job immediately starts.
+        # 
+        # - 1: The transcoding job starts at the scheduled time.
         self.start_mode = start_mode
         # The state of the job.
         # 
@@ -37,10 +39,13 @@ class ListLiveTranscodeJobsRequest(DaraModel):
         self.status = status
         # The type of the template used by the transcoding job.
         # 
-        # *   normal
-        # *   narrow-band
-        # *   audio-only
-        # *   origin
+        # - normal
+        # 
+        # - narrow-band
+        # 
+        # - audio-only
+        # 
+        # - origin
         self.type = type
 
     def validate(self):

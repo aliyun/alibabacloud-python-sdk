@@ -12,10 +12,15 @@ class SubmitYikeAIAppJobRequest(DaraModel):
         folder_id: str = None,
         production_id: str = None,
     ):
+        # The AI application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The AI application runtime parameters, as a JSON string.
         self.app_params = app_params
+        # The ID of the folder. If provided, the output is saved to this folder.
         self.folder_id = folder_id
+        # The ID of the project. If provided, the output is saved to this project.
         self.production_id = production_id
 
     def validate(self):

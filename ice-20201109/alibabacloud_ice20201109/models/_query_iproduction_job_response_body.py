@@ -28,48 +28,75 @@ class QueryIProductionJobResponseBody(DaraModel):
         template_id: str = None,
         user_data: str = None,
     ):
-        # The time when the job was created.
+        # The time when the job was created, in UTC.
         self.create_time = create_time
-        # The time when the job was complete.
+        # The time when the job was completed, in UTC.
         self.finish_time = finish_time
-        # The name of the algorithm that you want to use for the job. Valid values:
+        # The name of the algorithm to use. Valid values:
         # 
-        # *   **Cover**: This algorithm intelligently generates a thumbnail image for a video.
-        # *   **VideoClip**: This algorithm intelligently generates a summary for a video.
-        # *   **VideoDelogo**: This algorithm removes logos from a video.
-        # *   **VideoDetext**: This algorithm removes captions from a video.
+        # - **Cover**: smart cover
+        # 
+        # - **VideoClip**: video summary
+        # 
+        # - **VideoDelogo**: video logo removal
+        # 
+        # - **VideoDetext**: video text removal
+        # 
+        # - **CaptionExtraction**: caption extraction
+        # 
+        # - **VideoGreenScreenMatting**: green screen matting
+        # 
+        # - **FaceBeauty**: video beautification
+        # 
+        # - **VideoH2V**: horizontal-to-vertical video conversion
+        # 
+        # - **MusicSegmentDetect**: chorus detection
+        # 
+        # - **AudioBeatDetection**: beat detection
+        # 
+        # - **AudioQualityAssessment**: audio quality assessment
+        # 
+        # - **SpeechDenoise**: speech denoising
+        # 
+        # - **AudioMixing**: audio mixing
+        # 
+        # - **MusicDemix**: music source separation
         self.function_name = function_name
-        # The input file.
+        # The input media.
         self.input = input
-        # The ID of the intelligent production job.
+        # The job ID.
         self.job_id = job_id
-        # The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm.
+        # A JSON object that contains the parameters for the algorithm job. The specific parameters vary depending on the selected algorithm.
         self.job_params = job_params
-        # The name of the intelligent production job.
+        # The job name.
         self.name = name
-        # The output file.
+        # The output media.
         self.output = output
-        # The output files.
+        # An array of output file paths.
         self.output_files = output_files
+        # The output media asset IDs.
         self.output_media_ids = output_media_ids
-        # The URLs of the output files.
+        # An array of output file URLs.
         self.output_urls = output_urls
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The output of the algorithm. The output is in JSON format and varies based on the algorithm. For more information, see the "Parameters of Result" section of this topic.
+        # The algorithm output, returned as a JSON string. The structure of the output varies based on the `FunctionName`. For more information, see the additional notes below.
         self.result = result
-        # The scheduling configuration.
+        # The job configuration.
         self.schedule_config = schedule_config
-        # The status of the job. Valid values:
+        # The job status. Valid values:
         # 
-        # *   Queuing: The job is waiting in the queue.
-        # *   Analysing: The job is in progress.
-        # *   Fail: The job failed.
-        # *   Success: The job was successful.
+        # - Queuing: The job is awaiting processing.
+        # 
+        # - Analyzing: The job is being processed.
+        # 
+        # - Fail: The job failed to complete.
+        # 
+        # - Success: The job completed successfully.
         self.status = status
         # The template ID.
         self.template_id = template_id
-        # The user-defined data that is returned in the response.
+        # The user data. The system returns this value unchanged.
         self.user_data = user_data
 
     def validate(self):
@@ -202,12 +229,13 @@ class QueryIProductionJobResponseBodyScheduleConfig(DaraModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
-        # The ID of the ApsaraVideo Media Processing (MPS) queue.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The priority of the job in the MPS queue to which the job is added.
+        # The job\\"s priority within the pipeline.
         # 
-        # *   A value of 10 indicates the highest priority.
-        # *   Default value: **6**.
+        # - A larger value indicates a higher priority. The highest priority is 10.
+        # 
+        # - Default: **6**.
         self.priority = priority
 
     def validate(self):
@@ -244,17 +272,24 @@ class QueryIProductionJobResponseBodyOutput(DaraModel):
         output_url: str = None,
         type: str = None,
     ):
+        # The service that the media asset belongs to.
         self.biz = biz
-        # The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+        # The destination for the output. If the output `Type` is `OSS`, this parameter returns an OSS file URL. If the output `Type` is `Media`, it returns the specified or a newly generated media asset ID.
         # 
-        # 1.  oss://bucket/object
-        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+        # Valid OSS URL formats:
+        # 
+        # 1. oss\\://bucket/object
+        # 
+        # 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        #    In these formats, `bucket` is the name of the OSS bucket in the same region as the current project, and `object` is the file path.
         self.media = media
+        # The OSS URL of the output file. This value is returned only when `Type` is `Media`.
         self.output_url = output_url
         # The media type. Valid values:
         # 
-        # *   OSS: OSS object
-        # *   Media: media asset
+        # - OSS: An OSS file URL.
+        # 
+        # - Media: A media asset ID.
         self.type = type
 
     def validate(self):
@@ -301,15 +336,19 @@ class QueryIProductionJobResponseBodyInput(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # The input file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
+        # The source file for the job. Set this to an OSS file URL if `Type` is `OSS`, or a media asset ID if `Type` is `Media`.
+        # Valid OSS URL formats:
         # 
-        # 1.  oss://bucket/object
-        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object bucket in the path specifies an OSS bucket that resides in the same region as the intelligent production job. object in the path specifies the object path in OSS.
+        # 1. oss\\://bucket/object
+        # 
+        # 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        #    In these formats, `bucket` is the name of the OSS bucket in the same region as the current project, and `object` is the file path.
         self.media = media
-        # The media type. Valid values:
+        # The input type. Valid values:
         # 
-        # 1.  OSS: Object Storage Service (OSS) object
-        # 2.  Media: media asset
+        # 1. OSS: An OSS file URL.
+        # 
+        # 2. Media: A media asset ID.
         self.type = type
 
     def validate(self):

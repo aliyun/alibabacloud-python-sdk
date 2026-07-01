@@ -108,20 +108,23 @@ class GetAvatarTrainingJobResponseBodyDataAvatarTrainingJob(DaraModel):
         self.avatar_name = avatar_name
         # The type of the digital human.
         self.avatar_type = avatar_type
-        # *   The time when the first training was initiated.
-        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # - The time when the first training was initiated.
+        # 
+        # - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.first_training_time = first_training_time
         # The ID of the digital human training job.
         self.job_id = job_id
-        # *   The time when the last training was initiated.
-        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # - The time when the last training was initiated.
+        # 
+        # - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.last_training_time = last_training_time
         # The status description.
         self.message = message
         # The media asset ID of the portrait image.
         self.portrait = portrait
-        # *   The state of the digital human training job.
-        # *   Valid values: Init, Queuing, Training, Success, and Fail.
+        # - The state of the digital human training job.
+        # 
+        # - Valid values: Init, Queuing, Training, Success, and Fail.
         self.status = status
         # The thumbnail URL.
         self.thumbnail = thumbnail

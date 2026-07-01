@@ -13,9 +13,9 @@ class SubmitMediaConvertJobResponseBody(DaraModel):
         job: main_models.SubmitMediaConvertJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The transcoding task.
+        # The media transcoding job.
         self.job = job
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,31 +61,35 @@ class SubmitMediaConvertJobResponseBodyJob(DaraModel):
         state: str = None,
         user_data: str = None,
     ):
-        # The idempotency key of the request for creating the transcoding task.
+        # The idempotency token for the request.
         self.client_token = client_token
-        # The error code returned when the transcoding task failed.
+        # The error code returned if the job fails.
         self.code = code
-        # The configurations of the transcoding task.
+        # The job configuration.
         self.config = config
-        # The ID of the transcoding task.
+        # The job ID.
         self.job_id = job_id
-        # The error message returned when the transcoding task failed.
+        # The error message returned if the job fails.
         self.message = message
-        # The details of the transcoded outputs.
+        # The output details.
         self.output_details = output_details
-        # The details of the output groups.
+        # The output group details.
         self.output_group_details = output_group_details
-        # The ID of the queue.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the transcoding task. Valid values:
+        # The job status. Valid values:
         # 
-        # *   Inited: The task is initialized.
-        # *   Running
-        # *   Complete
-        # *   Error
-        # *   Cancelled
+        # - Inited: The job has been initialized.
+        # 
+        # - Running: The job is running.
+        # 
+        # - Success: The job has completed successfully.
+        # 
+        # - Failed: The job has failed.
+        # 
+        # - Canceled: The job has been canceled.
         self.state = state
         # The user data.
         self.user_data = user_data
@@ -198,9 +202,9 @@ class SubmitMediaConvertJobResponseBodyJobConfig(DaraModel):
         output_groups: List[main_models.MediaConvertOutputGroup] = None,
         outputs: List[main_models.MediaConvertOutput] = None,
     ):
-        # The inputs of the transcoding task.
+        # The job inputs.
         self.inputs = inputs
-        # The name of the job.
+        # The job name.
         self.job_name = job_name
         # The output group configurations.
         self.output_groups = output_groups

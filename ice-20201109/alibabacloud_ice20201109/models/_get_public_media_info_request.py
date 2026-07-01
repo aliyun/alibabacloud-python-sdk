@@ -9,6 +9,7 @@ class GetPublicMediaInfoRequest(DaraModel):
         self,
         media_id: str = None,
     ):
+        # IMS media asset ID
         self.media_id = media_id
 
     def validate(self):

@@ -80,23 +80,31 @@ class GetTemplateParamsResponseBodyParamList(DaraModel):
         self.content = content
         # The thumbnail URL of the original material.
         self.cover_url = cover_url
+        # The height of the original material in the output video, in absolute pixel values. This value is returned only for standard templates created in the console.
         self.height = height
         # The parameter name.
         self.key = key
         # The URL of the original material.
         self.media_url = media_url
+        # In-point of the original material segment relative to the timeline, in seconds. This value is returned only for standard templates created in the console.
         self.timeline_in = timeline_in
+        # Out-point of the original material segment relative to the timeline, in seconds. This value is returned only for standard templates created in the console.
         self.timeline_out = timeline_out
         # The material type.
         # 
         # Valid values:
         # 
-        # *   Video
-        # *   Text
-        # *   Image
+        # - Video
+        # 
+        # - Text
+        # 
+        # - Image
         self.type = type
+        # The width of the original material in the output video, in absolute pixel values. This value is returned only for standard templates created in the console.
         self.width = width
+        # The horizontal distance of the original material relative to the top-left corner of the video, in absolute pixel values. This value is returned only for standard templates created in the console.
         self.x = x
+        # The vertical distance of the original material relative to the top-left corner of the video, in absolute pixel values. This value is returned only for standard templates created in the console.
         self.y = y
 
     def validate(self):

@@ -15,9 +15,13 @@ class ListYikeProductionsResponseBody(DaraModel):
         production_list: List[main_models.ListYikeProductionsResponseBodyProductionList] = None,
         request_id: str = None,
     ):
+        # The maximum number of results returned on each page.
         self.max_results = max_results
+        # A pagination token. If more results are available, you can use this token in the next request to retrieve the next page of results. If this field is empty, all results have been returned.
         self.next_token = next_token
+        # The list of projects.
         self.production_list = production_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,13 +82,21 @@ class ListYikeProductionsResponseBodyProductionList(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # The authentication method.
         self.auth = auth
+        # The cover URL.
         self.cover_url = cover_url
+        # The creation time of the project.
         self.create_time = create_time
+        # The creator name.
         self.create_user_name = create_user_name
+        # The project description.
         self.description = description
+        # The project ID.
         self.production_id = production_id
+        # The title of the project.
         self.title = title
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

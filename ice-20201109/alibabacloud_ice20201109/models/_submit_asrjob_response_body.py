@@ -11,16 +11,19 @@ class SubmitASRJobResponseBody(DaraModel):
         request_id: str = None,
         state: str = None,
     ):
-        # The job ID.
+        # The ID of the intelligent job.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # The job state. Valid values:
+        # The job status. Valid values:
         # 
-        # *   Created
-        # *   Executing
-        # *   Finished
-        # *   Failed
+        # - Created
+        # 
+        # - Executing
+        # 
+        # - Finished
+        # 
+        # - Failed
         self.state = state
 
     def validate(self):

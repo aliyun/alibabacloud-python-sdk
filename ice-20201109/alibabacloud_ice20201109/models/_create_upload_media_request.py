@@ -15,54 +15,65 @@ class CreateUploadMediaRequest(DaraModel):
         upload_target_config: str = None,
         user_data: str = None,
     ):
-        # The application ID. Default value: app-1000000.
+        # The application ID. The default value is `app-1000000`.
         self.app_id = app_id
-        # The entity ID. You can call the CreateEntity operation to create an entity and specify a dynamic metadata structure.
+        # The ID of the entity. You can call the `CreateEntity` operation to create an entity and define a custom schema for dynamic metadata.
         self.entity_id = entity_id
-        # The file information, which is in the JSON format and contains the following fields:
+        # The file information, provided as a JSON string containing the following fields:
         # 
-        # *   Type: required. The file type. Valid values: video, image, audio, text, and other.
-        # *   Name: required. The file name without the extension.
-        # *   Size: optional. The file size.
-        # *   Ext: required. The file name extension.
+        # - `Type` (Required): The file type. Valid values: `video`, `image`, `audio`, `text`, and `other`.
+        # 
+        # - `Name` (Required): The filename without the extension.
+        # 
+        # - `Size` (Optional): The file size.
+        # 
+        # - `Ext` (Required): The file extension.
         self.file_info = file_info
-        # The metadata of the media asset, which is a JSON string that contains the following fields:
+        # The media asset metadata, provided as a JSON string.
         # 
-        # Title: required.
+        # `Title` (Required):
         # 
-        # *   The value can be up to 128 characters in length.
-        # *   The value must be encoded in UTF-8.
+        # - The title can be up to 128 characters in length.
         # 
-        # Description: optional.
+        # - The title must be UTF-8 encoded.
         # 
-        # *   The value can be up to 1,024 characters in length.
-        # *   The value must be encoded in UTF-8.
+        # `Description` (Optional):
         # 
-        # CateId: optional.
+        # - The description can be up to 1,024 characters in length.
         # 
-        # Tags: optional.
+        # - The description must be UTF-8 encoded.
         # 
-        # BusinessType: required. Valid values:
+        # `CateId` (Optional): The category ID.
         # 
-        # *   opening or ending if Type is set to video
-        # *   default or cover if Type is set to image
-        # *   subtitles or font if Type is set to text
-        # *   watermark if Type is set to material
-        # *   general CoverURL: optional.
+        # `Tags` (Optional): The tags of the media asset, separated by commas.
         # 
-        # DynamicMetaData: The value is a string.
+        # `BusinessType` (Required): The business type. Valid values depend on the `Type` specified in `FileInfo`.
+        # 
+        # - If `Type` is `video`: `opening` or `ending`.
+        # 
+        # - If `Type` is `image`: `default`, `cover`, or `watermark`.
+        # 
+        # - If `Type` is `text`: `subtitles` or `font`.
+        # 
+        # -
+        # 
+        # - If `Type` is `other`: `general`.
+        # 
+        # `CoverURL` (Optional): The URL of the cover image.<br>`DynamicMetaData` (Optional): A string for custom dynamic metadata.<br>
         self.media_meta_data = media_meta_data
-        # The postprocessing configurations. You can specify this parameter if Type is set to video or audio.
+        # The post-processing configuration for `video` or `audio` uploads.
         # 
-        # Set ProcessType to Workflow.
+        # Set `ProcessType` to `Workflow`.
+        # 
+        # > - This parameter specifies an [asynchronous task](https://help.aliyun.com/document_detail/3027141.html), which is queued and runs in the background after you submit the request.
         self.post_process_config = post_process_config
-        # The destination storage address.
+        # The destination storage configuration, provided as a JSON string.
         # 
-        # Set StorageType to oss.
+        # - `StorageType`: Only `oss` is supported.
         # 
-        # Set StorageLocation to an address in ApsaraVideo VOD. You cannot set this field to an OSS URL.
+        # - `StorageLocation`: Only VOD storage is supported. You cannot upload to your own OSS buckets.
         self.upload_target_config = upload_target_config
-        # The user data. The value must be a JSON string. You can configure settings such as message callbacks.
+        # A JSON string for custom settings, such as configuring a message callback.
         self.user_data = user_data
 
     def validate(self):

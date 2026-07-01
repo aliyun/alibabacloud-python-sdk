@@ -10,7 +10,7 @@ class SubmitBatchMediaProducingJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the quick video production job.
+        # The ID of the batch job for one-click smart video creation.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

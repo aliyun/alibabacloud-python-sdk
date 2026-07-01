@@ -19,20 +19,15 @@ class ListLiveRecordTemplatesResponseBody(DaraModel):
     ):
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of templates per page.
         self.page_size = page_size
         # The list of recording templates.
         self.record_template_list = record_template_list
         # The request ID.
         self.request_id = request_id
-        # The sorting order. By default, the query results are sorted by creation time in descending order.
-        # 
-        # Valid values:
-        # 
-        # *   asc: sorts the query results in ascending order.
-        # *   desc: sorts the query results in descending order.
+        # The sort order. By default, templates are sorted by creation time in descending order.
         self.sort_by = sort_by
-        # The total number of entries returned.
+        # The total number of templates.
         self.total_count = total_count
 
     def validate(self):
@@ -103,11 +98,11 @@ class ListLiveRecordTemplatesResponseBodyRecordTemplateList(DaraModel):
         template_id: str = None,
         type: str = None,
     ):
-        # The time when the job was created.
+        # The time the template was created.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
-        # The time when the template was last modified.
+        # The time the template was last modified.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.last_modified = last_modified
@@ -117,7 +112,7 @@ class ListLiveRecordTemplatesResponseBodyRecordTemplateList(DaraModel):
         self.record_format_list = record_format_list
         # The template ID.
         self.template_id = template_id
-        # The type of the template.
+        # The template type.
         self.type = type
 
     def validate(self):
@@ -187,15 +182,15 @@ class ListLiveRecordTemplatesResponseBodyRecordTemplateListRecordFormatList(Dara
         slice_duration: int = None,
         slice_oss_object_prefix: str = None,
     ):
-        # The duration of the recording cycle. Unit: seconds.
+        # The duration of the recording cycle, in seconds.
         self.cycle_duration = cycle_duration
-        # The output file format.
+        # The recording file format.
         self.format = format
-        # The name of the recording file that is stored in Object Storage Service (OSS).
+        # The object prefix for the recording file stored in Object Storage Service (OSS).
         self.oss_object_prefix = oss_object_prefix
-        # The duration of a single segment. Unit: seconds.
+        # The duration of each slice, in seconds.
         self.slice_duration = slice_duration
-        # The name of the TS segment.
+        # The object prefix for the Transport Stream (TS) slice.
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):

@@ -64,29 +64,35 @@ class GetTemplateResponseBodyTemplate(DaraModel):
     ):
         # The clip parameters for submitting a video production job. You can replace mediaId and text with real values to submit a job. References:
         # 
-        # *   [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html)
-        # *   [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html)
+        # - [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html)
+        # 
+        # - [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html)
         self.clips_param = clips_param
         # The template configurations.
         # 
-        # *   For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
-        # *   For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+        # - For more information about the configurations of a regular template, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
+        # 
+        # - For more information about the configurations of an advanced template, see [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         self.config = config
         # The thumbnail URL.
         self.cover_url = cover_url
         # The source from which the template was created. Valid values:
         # 
-        # *   AliyunConsole
-        # *   OpenAPI
-        # *   WebSDK
+        # - AliyunConsole
+        # 
+        # - OpenAPI
+        # 
+        # - WebSDK
         self.create_source = create_source
         # The time when the template was created.
         self.creation_time = creation_time
         # The source from which the template was modified. Valid values:
         # 
-        # *   AliyunConsole
-        # *   OpenAPI
-        # *   WebSDK
+        # - AliyunConsole
+        # 
+        # - OpenAPI
+        # 
+        # - WebSDK
         self.modified_source = modified_source
         # The time when the template was last modified.
         self.modified_time = modified_time
@@ -96,28 +102,37 @@ class GetTemplateResponseBodyTemplate(DaraModel):
         self.preview_media = preview_media
         # The state of the preview media asset. Valid values:
         # 
-        # *   Init: the initial state, which indicates that the source file is not ready.
-        # *   Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
-        # *   PrepareFail: The source file failed to be prepared. For example, the information about the source file failed to be obtained.
-        # *   Normal: The source file is ready.
+        # - Init: the initial state, which indicates that the source file is not ready.
+        # 
+        # - Preparing: The source file is being prepared. For example, the file is being uploaded or edited.
+        # 
+        # - PrepareFail: The source file failed to be prepared. For example, the information about the source file failed to be obtained.
+        # 
+        # - Normal: The source file is ready.
         self.preview_media_status = preview_media_status
         # The IDs of the materials associated with the template for use by the regular template editor.
         self.related_mediaids = related_mediaids
         # The template state. Valid values:
         # 
-        # *   Available
-        # *   Created
-        # *   Uploading
-        # *   Processing
-        # *   UploadFailed
-        # *   ProcessFailed
+        # - Available
+        # 
+        # - Created
+        # 
+        # - Uploading
+        # 
+        # - Processing
+        # 
+        # - UploadFailed
+        # 
+        # - ProcessFailed
         self.status = status
         # The template ID.
         self.template_id = template_id
         # The template type. Valid values:
         # 
-        # *   Timeline
-        # *   VETemplate
+        # - Timeline
+        # 
+        # - VETemplate
         self.type = type
 
     def validate(self):

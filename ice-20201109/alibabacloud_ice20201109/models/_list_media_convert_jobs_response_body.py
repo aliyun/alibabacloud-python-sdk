@@ -14,13 +14,13 @@ class ListMediaConvertJobsResponseBody(DaraModel):
         next_page_token: str = None,
         request_id: str = None,
     ):
-        # The tasks.
+        # A list of media convert jobs.
         self.jobs = jobs
-        # Indicates the read position returned by the current call. An empty value means all data has been read.
+        # The token to retrieve the next page of results. This value is empty when there are no more results to return.
         # 
         # This parameter is required.
         self.next_page_token = next_page_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -342,9 +342,11 @@ class GetMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoLis
         self.fps = fps
         # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
         # 
-        # *   0: The stream contains no B-frames.
-        # *   1: The stream contains one B-frame.
-        # *   2: The stream contains multiple consecutive B-frames.
+        # - 0: The stream contains no B-frames.
+        # 
+        # - 1: The stream contains one B-frame.
+        # 
+        # - 2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
         # The height of the output video.
         self.height = height
@@ -814,8 +816,9 @@ class GetMediaInfoJobResponseBodyMediaInfoJobInput(DaraModel):
         self.media = media
         # The type of the media object. Valid values:
         # 
-        # *   OSS: an Object Storage Service (OSS) object.
-        # *   Media: a media asset.
+        # - OSS: an Object Storage Service (OSS) object.
+        # 
+        # - Media: a media asset.
         self.type = type
 
     def validate(self):

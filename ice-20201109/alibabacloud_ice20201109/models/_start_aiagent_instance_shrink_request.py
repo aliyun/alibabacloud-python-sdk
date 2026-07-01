@@ -15,17 +15,27 @@ class StartAIAgentInstanceShrinkRequest(DaraModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
-        # The ID of the AI agent created in the [IMS](https://ims.console.aliyun.com/ai/robot/list) console.
+        # The agent ID configured in the [IMS console](https://ims.console.aliyun.com/ai/robot/list).
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The agent template configuration. Values you provide merge with the template configuration set in the console. If you omit this parameter, the agent uses its default configuration from the console.
+        # 
+        # > This field is compatible with TemplateConfig. Fields in AgentConfig take precedence. If TemplateConfig contains fields not defined in AgentConfig, those fields are used. Use AgentConfig instead of TemplateConfig.
         self.agent_config_shrink = agent_config_shrink
-        # 同步聊天记录配置。
+        # The chat history synchronization configuration.
         self.chat_sync_config_shrink = chat_sync_config_shrink
+        # The configuration required for the agent at runtime.
+        # 
         # This parameter is required.
         self.runtime_config_shrink = runtime_config_shrink
+        # A unique identifier for the chat session. This parameter is optional.
         self.session_id = session_id
+        # The agent template configuration. Values you provide merge with the template configuration set in the console. If you omit this parameter, the agent uses its default configuration from the console.
+        # 
+        # > The agent template configuration. This field is deprecated. See the AgentConfig field.
         self.template_config_shrink = template_config_shrink
+        # User-defined data.
         self.user_data = user_data
 
     def validate(self):

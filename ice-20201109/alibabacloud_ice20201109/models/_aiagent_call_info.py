@@ -15,12 +15,22 @@ class AIAgentCallInfo(DaraModel):
         hangup_role: int = None,
         status: str = None,
     ):
+        # The duration of the call, in seconds.
         self.call_duration = call_duration
+        # The time the call ended, in ISO 8601 format.
         self.call_end_time = call_end_time
+        # The time the call started, in ISO 8601 format.
         self.call_start_time = call_start_time
+        # The number of the called party.
         self.callee_number = callee_number
+        # The number of the calling party.
         self.caller_number = caller_number
+        # Indicates which party ended the call.
+        # 0: The agent ended the call.
+        # 1: The user ended the call.
+        # 2: The system ended the call for a transfer.
         self.hangup_role = hangup_role
+        # The status of the call.
         self.status = status
 
     def validate(self):

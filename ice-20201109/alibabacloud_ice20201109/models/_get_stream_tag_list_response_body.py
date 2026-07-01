@@ -27,8 +27,9 @@ class GetStreamTagListResponseBody(DaraModel):
         self.stream_tag_list = stream_tag_list
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # The total number of entries that are returned.
         self.total = total

@@ -63,8 +63,9 @@ class AddCategoryResponseBodyCategory(DaraModel):
         self.parent_id = parent_id
         # The type of the category. Valid values:
         # 
-        # *   **default**: audio, video, and image files. This is the default value.
-        # *   **material**: short video materials.
+        # - **default**: audio, video, and image files. This is the default value.
+        # 
+        # - **material**: short video materials.
         self.type = type
 
     def validate(self):

@@ -16,15 +16,25 @@ class StartAIAgentOutboundCallRequest(DaraModel):
         session_id: str = None,
         user_data: str = None,
     ):
+        # The AI agent ID configured in the [IMS console](https://ims.console.aliyun.com/ai/robot/list).
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The called number.
+        # 
         # This parameter is required.
         self.called_number = called_number
+        # The caller number. Only numbers from mainland China are supported.
+        # 
         # This parameter is required.
         self.caller_number = caller_number
+        # The AI agent outbound call configuration.
         self.config = config
+        # A reserved parameter.
         self.ims_aiagent_free_ob_call = ims_aiagent_free_ob_call
+        # A unique identifier for the session. You can use this ID to store, query, and synchronize chat history across multiple calls. This parameter is optional.
         self.session_id = session_id
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):

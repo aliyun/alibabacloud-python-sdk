@@ -14,21 +14,21 @@ class SubmitTranscodeJobShrinkRequest(DaraModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The idempotence key. Ensures request idempotence.
         self.client_token = client_token
-        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+        # The input group for the job. A single input creates a transcoding job. Multiple inputs create a media merging job.
         # 
         # This parameter is required.
         self.input_group_shrink = input_group_shrink
         # The job name.
         self.name = name
-        # The output group of the job.
+        # The output group for the job.
         # 
         # This parameter is required.
         self.output_group_shrink = output_group_shrink
-        # The scheduling information about the job.
+        # The job scheduling information.
         self.schedule_config_shrink = schedule_config_shrink
-        # The custom settings. The value must be in the JSON format and can be up to 512 bytes in length. You can specify a [custom callback URL](https://help.aliyun.com/document_detail/451631.html).
+        # Custom settings in JSON format. The length is limited to 512 bytes. Supports [custom webhook address configuration](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):

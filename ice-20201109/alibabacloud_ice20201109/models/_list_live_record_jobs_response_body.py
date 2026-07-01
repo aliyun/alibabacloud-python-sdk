@@ -247,8 +247,9 @@ class ListLiveRecordJobsResponseBodyLiveRecordJobsRecordOutput(DaraModel):
         # 
         # Valid values:
         # 
-        # *   vod
-        # *   oss
+        # - vod
+        # 
+        # - oss
         self.type = type
 
     def validate(self):

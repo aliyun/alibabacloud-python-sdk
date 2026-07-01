@@ -12,16 +12,19 @@ class QuerySearchIndexRequest(DaraModel):
     ):
         # The category of the index. Valid values:
         # 
-        # *   mm: large visual model.
-        # *   face: face recognition.
-        # *   aiLabel: smart tagging.
+        # - mm: large visual model.
+        # 
+        # - face: face recognition.
+        # 
+        # - aiLabel: smart tagging.
         # 
         # This parameter is required.
         self.index_type = index_type
         # The name of the search library.
         # 
-        # *   If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
-        # *   To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
+        # - If you leave this parameter empty, the search index is created in the default search library of Intelligent Media Service (IMS). Default value: ims-default-search-lib.
+        # 
+        # - To query information about an existing search library, call the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API operation.
         self.search_lib_name = search_lib_name
 
     def validate(self):

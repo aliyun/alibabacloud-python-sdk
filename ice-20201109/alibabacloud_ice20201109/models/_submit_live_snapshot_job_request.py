@@ -16,12 +16,13 @@ class SubmitLiveSnapshotJobRequest(DaraModel):
     ):
         # The snapshot callback URL.
         # 
-        # *   It cannot exceed 255 characters in length.
-        # *   Both HTTP and HTTPS URLs are supported.
+        # - It cannot exceed 255 characters in length.
+        # 
+        # - Both HTTP and HTTPS URLs are supported.
         self.callback_url = callback_url
         # The name of the job.
         # 
-        # *   It cannot exceed 128 characters in length.
+        # - It cannot exceed 128 characters in length.
         # 
         # This parameter is required.
         self.job_name = job_name
@@ -99,7 +100,7 @@ class SubmitLiveSnapshotJobRequestStreamInput(DaraModel):
         self.type = type
         # The URL of the input stream.
         # 
-        # *   It cannot exceed 255 characters in length.
+        # - It cannot exceed 255 characters in length.
         # 
         # This parameter is required.
         self.url = url

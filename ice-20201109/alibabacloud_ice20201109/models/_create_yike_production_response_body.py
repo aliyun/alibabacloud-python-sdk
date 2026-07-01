@@ -10,7 +10,9 @@ class CreateYikeProductionResponseBody(DaraModel):
         production_id: str = None,
         request_id: str = None,
     ):
+        # The production ID.
         self.production_id = production_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -24,8 +24,9 @@ class GetVideoListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # The total number of audio and video files that meet the conditions.
         self.total = total
@@ -127,17 +128,27 @@ class GetVideoListResponseBodyMediaList(DaraModel):
         # 
         # Valid values:
         # 
-        # *   PrepareFail: The file is abnormal.
-        # *   UploadFail: The video failed to be uploaded.
-        # *   UploadSucc: The video is uploaded.
-        # *   Transcoding: The video is being transcoded.
-        # *   TranscodeFail: The video failed to be transcoded.
-        # *   ProduceFail: The video failed to be produced.
-        # *   Normal: The video is normal.
-        # *   Uploading: The video is being uploaded.
-        # *   Preparing: The file is being generated.
-        # *   Blocked: The video is blocked.
-        # *   checking: The video is being reviewed.
+        # - PrepareFail: The file is abnormal.
+        # 
+        # - UploadFail: The video failed to be uploaded.
+        # 
+        # - UploadSucc: The video is uploaded.
+        # 
+        # - Transcoding: The video is being transcoded.
+        # 
+        # - TranscodeFail: The video failed to be transcoded.
+        # 
+        # - ProduceFail: The video failed to be produced.
+        # 
+        # - Normal: The video is normal.
+        # 
+        # - Uploading: The video is being uploaded.
+        # 
+        # - Preparing: The file is being generated.
+        # 
+        # - Blocked: The video is blocked.
+        # 
+        # - checking: The video is being reviewed.
         self.status = status
         # The storage address.
         self.storage_location = storage_location

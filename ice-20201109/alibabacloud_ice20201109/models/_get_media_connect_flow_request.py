@@ -9,7 +9,7 @@ class GetMediaConnectFlowRequest(DaraModel):
         self,
         flow_id: str = None,
     ):
-        # The flow ID.
+        # The ID of the MediaConnect Flow instance.
         # 
         # This parameter is required.
         self.flow_id = flow_id

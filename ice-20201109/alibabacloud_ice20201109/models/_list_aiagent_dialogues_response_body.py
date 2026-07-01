@@ -13,7 +13,7 @@ class ListAIAgentDialoguesResponseBody(DaraModel):
         dialogues: List[main_models.ListAIAgentDialoguesResponseBodyDialogues] = None,
         request_id: str = None,
     ):
-        # The dialog records.
+        # A list of dialogues.
         self.dialogues = dialogues
         # The request ID.
         self.request_id = request_id
@@ -67,43 +67,51 @@ class ListAIAgentDialoguesResponseBodyDialogues(DaraModel):
         time: int = None,
         type: str = None,
     ):
+        # A list of file attachments referenced in the dialogue.
         self.attached_file_list = attached_file_list
-        # The unique ID of the dialog.
+        # The unique ID of the dialogue.
         self.dialogue_id = dialogue_id
+        # A JSON-formatted string for extended information. Use this field to store custom data, such as sentiment labels or intent recognition results.
         self.extend = extend
+        # The ID of the workflow node that generated the dialogue entry, which you can use for tracing.
         self.node_id = node_id
-        # The speaker. Valid values: 
+        # The producer of this message.
         # 
-        # - user
-        # - agent
+        # - user: A message from the user.
+        # 
+        # - agent: A message from the agent.
         self.producer = producer
-        # The reasoning trace.
+        # The agent\\"s reasoning text, which can reveal its thought process.
         self.reasoning_text = reasoning_text
-        # The ID of the conversational turn.
+        # The ID of the dialogue round.
         self.round_id = round_id
-        # The source of the message. Valid values:
+        # The source channel of the message. Valid values:
         # 
-        # chat: messaging conversations.
+        # chat: The message is from a text chat.
         # 
-        # call: voice calls.
+        # call: The message is from a voice call.
         self.source = source
-        # The specific content.
+        # The text content of the dialogue entry.
         self.text = text
-        # The UNIX timestamp, measured in milliseconds, which indicates the time when the message was generated.
+        # The Unix timestamp (in milliseconds) when the dialogue entry was created.
         self.time = time
-        # The message type. Valid values:
+        # The type of the message. Valid values include:
         # 
-        # Voice calls:
+        # For a call:
         # 
-        # 1.  greeting: the welcome message.
-        # 2.  normal: the voice response.
-        # 3.  speech: the proactive message.
+        # 1. greeting: A welcome message.
         # 
-        # Messaging conversations:
+        # 2. normal: A standard voice response.
         # 
-        # 1.  normal: the text reply.
-        # 2.  announcement: the proactive text message.
-        # 3.  custom: the custom message.
+        # 3. speech: A proactive voice broadcast.
+        # 
+        # For a chat:
+        # 
+        # 1. normal: A standard text response.
+        # 
+        # 2. announcement: A proactive text push.
+        # 
+        # 3. custom: A custom message.
         self.type = type
 
     def validate(self):
@@ -203,10 +211,15 @@ class ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList(DaraModel):
         type: int = None,
         url: str = None,
     ):
+        # The format of the attachment, such as mp3, wav, or pdf.
         self.format = format
+        # The unique identifier of the attachment.
         self.id = id
+        # The file name of the attachment.
         self.name = name
+        # The attachment type, represented by a numeric value. The meaning of this value is defined by your business logic.
         self.type = type
+        # The URL of the attachment.
         self.url = url
 
     def validate(self):

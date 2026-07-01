@@ -20,29 +20,32 @@ class SubmitVideoTranslationJobRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
-        # *   The client token.
+        # A client-generated token that ensures the idempotence of the request.
         self.client_token = client_token
-        # *   The job description.
+        # The job description.
         self.description = description
-        # *   The configuration parameters of the video translation job.
-        # *   The value must be in the JSON format.
+        # Configuration parameters for the video translation job, specified as a JSON string.
         self.editing_config = editing_config
-        # *   The input parameters of the video translation job.
-        # *   A video translation job takes a video or subtitle file as the input.
-        # *   The value must be in the JSON format.
+        # The input parameters for the video translation job.
+        # 
+        # - The input can be a video or a subtitle file.
+        # 
+        # - The value must be a JSON string.
         self.input_config = input_config
-        # *   The output parameters of the video translation job.
-        # *   A video translation job can generate a video or subtitle file as the output.
+        # Output parameters for the video translation job. The output can be a video or a subtitle file.
         self.output_config = output_config
         self.signature = signature
+        # The system automatically populates this parameter. You do not need to set it.
         self.signature_mehtod = signature_mehtod
         self.signature_nonce = signature_nonce
+        # The system automatically populates this parameter. You do not need to set it.
         self.signature_type = signature_type
         self.signature_version = signature_version
-        # *   The job title.
+        # The job title.
         self.title = title
-        # *   The user-defined data.
-        # *   The data must be in the JSON format, and can be up to 512 characters in length.
+        # User data for the job, provided as a JSON string. The string can be up to 512 bytes long.
+        # 
+        # - Use this parameter to [configure a custom callback URL](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):

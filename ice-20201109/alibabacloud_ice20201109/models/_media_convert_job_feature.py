@@ -14,18 +14,19 @@ class MediaConvertJobFeature(DaraModel):
         metadata: Dict[str, str] = None,
         watermarks: List[main_models.MediaConvertJobFeatureWatermarks] = None,
     ):
-        # Configuration for clipping from the source video.
+        # Clip settings.
         self.clip = clip
-        # A map of key-value pairs to be embedded as container-level metadata in the output file. Provided as a JSON string. Example: {"key1":"value1","key2":"value2"}.
+        # Specifies the metadata for the output video container format, provided as JSON key-value pairs. Example: `{"key1":"value1","key2":"value2"}`.
         # 
-        # *   Max key length: 64 characters.
-        # *   Max value length: 512 characters.
+        # - Maximum key length: 64 characters.
         # 
-        # Max 4 key-value pairs.
+        # - Maximum value length: 512 characters.
+        # 
+        # You can add a maximum of four metadata key-value pairs.
         self.metadata = metadata
-        # Image or text watermarks to add to the video. These parameters override the corresponding settings from a specified watermark template.
+        # A list of watermark settings to overlay on the video. If specified, these settings override the corresponding parameters in the specified watermark template.
         # 
-        # *   You can add up to four watermarks to a transcoding task.
+        # - You can add a maximum of four watermarks per transcoding job.
         self.watermarks = watermarks
 
     def validate(self):
@@ -89,98 +90,113 @@ class MediaConvertJobFeatureWatermarks(DaraModel):
         x: str = None,
         y: str = None,
     ):
-        # Specifies if the font size adapts to the output resolution. Valid values:
+        # Specifies whether the font size of the text watermark adapts to the output video resolution.
         # 
-        # *   true
-        # *   false
-        # *   Default value: false.
+        # - `true`: The font size is adaptive.
+        # 
+        # - `false`: The font size is fixed.
+        # 
+        # - Default value: `false`.
         self.adaptive = adaptive
-        # The color of the font border.
+        # The border color of the text watermark.
         # 
-        # *   Default value: Black.
+        # - Default value: `black`.
         self.border_color = border_color
-        # The width of the font border.
+        # The border width of the text watermark.
         # 
-        # *   Unit: pixels.
-        # *   Valid values: [0,4096].
-        # *   Default value: 0.
+        # - Unit: pixels.
+        # 
+        # - Value range: [0, 4096].
+        # 
+        # - Default value: `0`.
         self.border_width = border_width
-        # The text to be displayed as the watermark.
+        # The content of the text watermark.
         self.content = content
-        # The font opacity.
+        # The opacity of the font.
         # 
-        # *   Valid values: (0,1].
-        # *   Default value: 1.0.
+        # - Value range: (0, 1].
+        # 
+        # - Default value: `1.0`.
         self.font_alpha = font_alpha
         # The font color of the text watermark.
         # 
-        # *   Default value: black.
+        # - Default value: `black`.
         self.font_color = font_color
-        # The font of the text watermark.
+        # The font name for the text watermark.
         # 
-        # *   Default value: SimSum.
+        # - Default value: `SimSun`.
         self.font_name = font_name
         # The font size of the text watermark.
         # 
-        # *   Valid values: (4,120).
-        # *   Default value: 16.
+        # - Value range: (4, 120).
+        # 
+        # - Default value: `16`.
         self.font_size = font_size
-        # The height of the image watermark. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+        # The height of the watermark. If specified, this value overrides the corresponding parameter in the watermark template. You can specify the value in two ways:
         # 
-        # *   Integer: the pixel value of the watermark height.
+        # - As an integer, representing the height in pixels.
         # 
-        #     *
-        #     *   Valid values: [8,4096].
+        #   - Unit: pixels.
         # 
-        # *   Decimal: A decimal of the output video\\"s height.
+        #   - Value range: [8, 4096].
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - As a decimal, representing the ratio of the height to the height of the output video.
+        # 
+        #   - Value range: (0, 1).
+        # 
+        #   - Supports up to four decimal places, such as `0.9999`. The system truncates additional digits.
         self.height = height
         # The ID of the watermark template.
         self.template_id = template_id
-        # The watermark type.
+        # The type of the watermark.
         # 
-        # *   Text: a text watermark. In this case, you must specify the parameters related to the text watermark.
-        # *   Image: an image watermark. In this case, you must specify the parameters related to the image watermark.
+        # - `Text`: A text watermark. You must also set the text watermark parameters.
         # 
-        # If not specified, the type is inferred from the TemplateId.
+        # - `Image`: An image watermark. You must also set the image watermark parameters.
+        # 
+        # Default value: The system automatically determines the type based on the watermark template.
         self.type = type
-        # The width of the image watermark. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+        # The width of the watermark. If specified, this value overrides the corresponding parameter in the watermark template. You can specify the value in two ways:
         # 
-        # *   Integer: the pixel value of the watermark width.
+        # - As an integer, representing the width in pixels.
         # 
-        #     *
-        #     *   Valid values: [8,4096].
+        #   - Unit: pixels.
         # 
-        # *   Decimal: A decimal of the output video\\"s width.
+        #   - Value range: [8, 4096].
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - As a decimal, representing the ratio of the width to the width of the output video.
+        # 
+        #   - Value range: (0, 1).
+        # 
+        #   - Supports up to four decimal places, such as `0.9999`. The system truncates additional digits.
         self.width = width
-        # The horizontal offset of the image watermark relative to the output video. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+        # The horizontal offset of the watermark relative to the output video. If specified, this value overrides the corresponding parameter in the watermark template. You can specify the value in two ways:
         # 
-        # *   Integer: the pixel value of the horizontal offset.
+        # - As an integer, representing the offset in pixels.
         # 
-        #     *   Unit: pixels.
-        #     *   Valid values: [8,4096].
+        #   - Unit: pixels.
         # 
-        # *   Decimal: the ratio of the horizontal offset to the width of the output video.
+        #   - Value range: [8, 4096].
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - As a decimal, representing the ratio of the offset to the width of the output video.
+        # 
+        #   - Value range: (0, 1).
+        # 
+        #   - Supports up to four decimal places, such as `0.9999`. The system truncates additional digits.
         self.x = x
-        # The vertical offset of the image watermark relative to the output video. This parameter overrides the corresponding setting from a specified watermark template. The following value types are supported:
+        # The vertical offset of the watermark relative to the output video. If specified, this value overrides the corresponding parameter in the watermark template. You can specify the value in two ways:
         # 
-        # *   Integer: the pixel value of the vertical offset.
+        # - As an integer, representing the offset in pixels.
         # 
-        #     *   Unit: pixels.
-        #     *   Valid values: [8,4096].
+        #   - Unit: pixels.
         # 
-        # *   Decimal: the ratio of the vertical offset to the height of the output video.
+        #   - Value range: [8, 4096].
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - As a decimal, representing the ratio of the offset to the height of the output video.
+        # 
+        #   - Value range: (0, 1).
+        # 
+        #   - Supports up to four decimal places, such as `0.9999`. The system truncates additional digits.
         self.y = y
 
     def validate(self):
@@ -287,13 +303,15 @@ class MediaConvertJobFeatureClip(DaraModel):
         config_to_clip_first_part: str = None,
         time_span: main_models.MediaConvertJobFeatureClipTimeSpan = None,
     ):
-        # Specifies the order of operations when concatenating multiple files and clipping.
+        # Specifies whether to clip the first segment before concatenation.
         # 
-        # *   true: Clips the first input file before it is concatenated.
-        # *   false: Concatenates all input files first, then applies clipping.
-        # *   Default value: false.
+        # - `true`: The system clips the first segment before concatenation and transcoding.
+        # 
+        # - `false`: The system first concatenates and transcodes the segments, and then clips the resulting video.
+        # 
+        # - Default value: `false`.
         self.config_to_clip_first_part = config_to_clip_first_part
-        # The time range for the clip.
+        # The time span for the clip.
         self.time_span = time_span
 
     def validate(self):
@@ -331,23 +349,29 @@ class MediaConvertJobFeatureClipTimeSpan(DaraModel):
         end: str = None,
         seek: str = None,
     ):
-        # The duration of the clip, starting from the Seek time. The default duration is from the Seek time to the end of the video. Duration and End are mutually exclusive. If End is set, Duration is ignored.
+        # Specifies the duration of the clip, relative to the `Seek` time. By default, the clip extends to the end of the video. You can specify either `Duration` or `End`, but not both. If `End` is specified, `Duration` is ignored.
         # 
-        # *   Format: hh:mm:ss[.SSS] or sssss[.SSS].
-        # *   Valid values: [00:00:00.000,23:59:59.999] or [0.000,86399.999].
-        # *   Example: 00:01:59.99 or 180.30.
+        # - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # 
+        # - Value range: `[00:00:00.000, 23:59:59.999]` or `[0.000, 86399.999]`.
+        # 
+        # - Example: `00:01:59.999` or `180.30`.
         self.duration = duration
-        # Specifies a duration to trim from the end of the video. Duration and End are mutually exclusive. If End is set, Duration is ignored.
+        # Specifies the end time of the clip. You can specify either `End` or `Duration`, but not both. If `End` is specified, `Duration` is ignored.
         # 
-        # *   Format: hh:mm:ss[.SSS] or sssss[.SSS].
-        # *   Valid values: [00:00:00.000,23:59:59.999] or [0.000,86399.999].
-        # *   Example: 00:01:59.99 or 180.30.
+        # - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # 
+        # - Value range: `[00:00:00.000, 23:59:59.999]` or `[0.000, 86399.999]`.
+        # 
+        # - Example: `00:01:59.999` or `180.30`.
         self.end = end
-        # The start time of the clip. It defaults to the beginning of the video.
+        # Specifies the start time of the clip. If this parameter is not set, the clip starts from the beginning of the video.
         # 
-        # *   Format: hh:mm:ss[.SSS] or sssss[.SSS].
-        # *   Valid values: [00:00:00.000,23:59:59.999] or [0.000,86399.999].
-        # *   Example: 00:01:59.99 or 180.30.
+        # - Format: `hh:mm:ss[.SSS]` or `sssss[.SSS]`.
+        # 
+        # - Value range: `[00:00:00.000, 23:59:59.999]` or `[0.000, 86399.999]`.
+        # 
+        # - Example: `00:01:59.999` or `180.30`.
         self.seek = seek
 
     def validate(self):

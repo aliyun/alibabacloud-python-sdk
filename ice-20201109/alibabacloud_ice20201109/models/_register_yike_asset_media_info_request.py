@@ -12,11 +12,17 @@ class RegisterYikeAssetMediaInfoRequest(DaraModel):
         media_type: str = None,
         production_id: str = None,
     ):
+        # The ID of the folder.
         self.folder_id = folder_id
+        # The URL of the media asset. You can use the FileURL value that is returned by the CreateYikeAssetUpload operation.
+        # 
         # This parameter is required.
         self.input_url = input_url
+        # The type of the media asset.
+        # 
         # This parameter is required.
         self.media_type = media_type
+        # The ID of the production. If this parameter is omitted, the media asset is uploaded to the default production.
         self.production_id = production_id
 
     def validate(self):

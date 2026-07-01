@@ -45,9 +45,11 @@ class GetLiveSnapshotJobResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   init: The job is not started.
-        # *   paused: The job is paused.
-        # *   started: The job is in progress.
+        # - init: The job is not started.
+        # 
+        # - paused: The job is paused.
+        # 
+        # - started: The job is in progress.
         self.status = status
         # The input information.
         self.stream_input = stream_input

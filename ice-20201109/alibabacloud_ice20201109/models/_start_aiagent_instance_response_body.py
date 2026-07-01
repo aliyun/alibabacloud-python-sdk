@@ -10,7 +10,9 @@ class StartAIAgentInstanceResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # The unique ID of the agent instance.
         self.instance_id = instance_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -11,11 +11,11 @@ class DeleteLiveSnapshotFilesShrinkRequest(DaraModel):
         delete_original_file: bool = None,
         job_id: str = None,
     ):
-        # The list of timestamps when the jobs were created. The values are UNIX timestamps representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A maximum of 200 jobs can be deleted at a time.
+        # A list of creation timestamps for the files to delete. You can specify up to 200 timestamps per request.
         # 
         # This parameter is required.
         self.create_timestamp_list_shrink = create_timestamp_list_shrink
-        # Specifies whether to delete the original files at the same time. Default value: false.
+        # Specifies whether to delete the original OSS files. The default value is false.
         self.delete_original_file = delete_original_file
         # The ID of the snapshot job.
         # 

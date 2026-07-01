@@ -24,8 +24,9 @@ class UpdatePipelineRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Active
-        # *   Paused
+        # - Active
+        # 
+        # - Paused
         self.status = status
 
     def validate(self):

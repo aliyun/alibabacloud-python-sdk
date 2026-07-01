@@ -11,13 +11,13 @@ class QueryVideoCognitionJobShrinkRequest(DaraModel):
         job_id: str = None,
         params: str = None,
     ):
-        # Specifies whether to include the full algorithm results in the response.
+        # A container for parameters that determine which algorithm results to include in the response.
         self.include_results_shrink = include_results_shrink
-        # The ID of the task to query. It is returned when you call the [SubmitSmarttagJob](https://help.aliyun.com/document_detail/478786.html) operation.
+        # The ID of the intelligent tagging job. You can obtain this ID from the response of the [SubmitIntelligentTaggingJob](https://help.aliyun.com/document_detail/478786.html) operation.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # Additional request parameters, provided as a JSON string.
+        # Additional request parameters, specified as a JSON string.
         self.params = params
 
     def validate(self):

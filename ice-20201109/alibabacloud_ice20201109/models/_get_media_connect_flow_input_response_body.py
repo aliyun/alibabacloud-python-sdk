@@ -15,11 +15,11 @@ class GetMediaConnectFlowInputResponseBody(DaraModel):
     ):
         # The response body.
         self.content = content
-        # The call description.
+        # The description of the API call.
         self.description = description
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned error code. A value of 0 indicates the call is successful.
+        # The error code returned. A value of 0 indicates success.
         self.ret_code = ret_code
 
     def validate(self):
@@ -89,54 +89,49 @@ class GetMediaConnectFlowInputResponseBodyContent(DaraModel):
         srt_passphrase: str = None,
         srt_pbkey_len: int = None,
     ):
+        # The IP address whitelist for the backup input.
         self.backup_cidrs = backup_cidrs
+        # The time when the backup input was created.
         self.backup_create_time = backup_create_time
         self.backup_inner_input_url = backup_inner_input_url
+        # The name of the backup input.
         self.backup_input_name = backup_input_name
+        # The status of the backup input. It indicates whether the backup stream is being pushed.
         self.backup_input_status = backup_input_status
+        # The URL of the backup input.
         self.backup_input_url = backup_input_url
+        # The bitrate of the backup input.
         self.backup_max_bitrate = backup_max_bitrate
+        # The SRT latency for the backup input.
         self.backup_srt_latency = backup_srt_latency
+        # The SRT encryption key for the backup input.
         self.backup_srt_passphrase = backup_srt_passphrase
+        # The SRT encryption key length for the backup input.
         self.backup_srt_pbkey_len = backup_srt_pbkey_len
-        # The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
+        # The IP address whitelist in CIDR format. Separate multiple IP address segments with commas.
         self.cidrs = cidrs
-        # The time when the flow was created.
+        # The time when the input was created.
         self.create_time = create_time
         self.inner_input_url = inner_input_url
-        # The source name.
+        # The input name.
         self.input_name = input_name
-        # The source type.
-        # 
-        # Valid values:
-        # 
-        # *   RTMP-PUSH
-        # *   SRT-Caller
-        # *   RTMP-PULL
-        # *   SRT-Listener
-        # *   Flow
+        # The input type.
         self.input_protocol = input_protocol
+        # The input status. It indicates whether the primary stream is being pushed.
         self.input_status = input_status
-        # The source URL.
+        # The input URL.
         self.input_url = input_url
-        # The maximum bitrate. Unit: bit/s.
+        # The input bitrate, in bps.
         self.max_bitrate = max_bitrate
-        # The ID of the source flow. This parameter is returned when the source type is Flow.
+        # The ID of the peer Flow instance. This parameter is required only if the output type is Flow.
         self.pair_flow_id = pair_flow_id
-        # The output of the source flow. This parameter is returned when the source type is Flow.
+        # The output name of the peer Flow. This parameter is required only when the input type is Flow.
         self.pair_output_name = pair_output_name
-        # The latency for the SRT stream. Unit: milliseconds. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+        # The SRT latency in milliseconds (ms). This parameter is required only when the input type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # The SRT key. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
+        # The SRT encryption key. This parameter is required only when the input type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # The encryption key length. This parameter is returned when the source type is SRT-Listener or SRT-Caller.
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # *   16
-        # *   24
-        # *   32
+        # The SRT encryption key length. This parameter is required only when the input type is SRT-Listener or SRT-Caller.
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):

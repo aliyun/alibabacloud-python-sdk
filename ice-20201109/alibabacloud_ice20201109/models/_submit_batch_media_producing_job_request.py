@@ -14,16 +14,17 @@ class SubmitBatchMediaProducingJobRequest(DaraModel):
         template_config: str = None,
         user_data: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client-side token used to ensure request idempotence.
         self.client_token = client_token
-        # The editing configurations. For more information, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
+        # The editing configuration. For the structure definition, see [EditingConfig](~~2692547#1be9bba03b7qu~~).
         self.editing_config = editing_config
-        # The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
+        # The input configuration. For the structure definition, see [InputConfig](~~2692547#2faed1559549n~~).
         self.input_config = input_config
-        # The output configurations. For more information, see [OutputConfig](~~2692547#447b928fcbuoa~~).
+        # The output configuration. For the structure definition, see [OutputConfig](~~2692547#447b928fcbuoa~~).
         self.output_config = output_config
+        # The template parameters. You can configure multiple templates for one-click smart video creation. The system randomly selects one template to apply. For more information, see [TemplateConfig parameters](https://help.aliyun.com/zh/ims/use-cases/batch-video-production-public-parameters?spm=a2c4g.11186623.help-menu-193643.d_3_2_0_5.342860c5H30VVS\\&scm=20140722.H_2877814._.OR_help-T_cn~zh-V_1#32c3bea6182sy).
         self.template_config = template_config
-        # The user-defined data, including the business and callback configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/357745.html).
+        # Custom business and callback configurations. For the structure definition, see [UserData configuration](~~357745#section-urj-v3f-0s1~~).
         self.user_data = user_data
 
     def validate(self):

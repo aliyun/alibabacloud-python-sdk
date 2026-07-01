@@ -10,9 +10,9 @@ class SubmitSnapshotJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The job ID.
+        # The ID of the submitted job.
         self.job_id = job_id
-        # The request ID.
+        # A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

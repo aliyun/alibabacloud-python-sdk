@@ -65,17 +65,21 @@ class AddTemplateResponseBodyTemplate(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AliyunConsole
-        # *   WebSDK
-        # *   OpenAPI
+        # - AliyunConsole
+        # 
+        # - WebSDK
+        # 
+        # - OpenAPI
         self.create_source = create_source
         # The source from which the template was modified.
         # 
         # Valid values:
         # 
-        # *   AliyunConsole
-        # *   WebSDK
-        # *   OpenAPI
+        # - AliyunConsole
+        # 
+        # - WebSDK
+        # 
+        # - OpenAPI
         self.modified_source = modified_source
         # The template name.
         self.name = name
@@ -85,12 +89,17 @@ class AddTemplateResponseBodyTemplate(DaraModel):
         # 
         # Valid values:
         # 
-        # *   UploadFailed: Failed to upload the video.
-        # *   ProcessFailed: Failed to process the advanced template.
-        # *   Available: The template is available.
-        # *   Uploading: The video is being uploaded.
-        # *   Created: The template is created but not ready for use.
-        # *   Processing: The advanced template is being processed.
+        # - UploadFailed: Failed to upload the video.
+        # 
+        # - ProcessFailed: Failed to process the advanced template.
+        # 
+        # - Available: The template is available.
+        # 
+        # - Uploading: The video is being uploaded.
+        # 
+        # - Created: The template is created but not ready for use.
+        # 
+        # - Processing: The advanced template is being processed.
         self.status = status
         # The template ID.
         self.template_id = template_id
@@ -98,8 +107,9 @@ class AddTemplateResponseBodyTemplate(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Timeline: regular template.
-        # *   VETemplate: advanced template.
+        # - Timeline: regular template.
+        # 
+        # - VETemplate: advanced template.
         self.type = type
 
     def validate(self):

@@ -23,8 +23,9 @@ class ListMediaInfoJobsRequest(DaraModel):
         self.next_page_token = next_page_token
         # The order that you use to sort the query results. Valid values:
         # 
-        # *   CreateTimeDesc: sorts the query results by creation time in descending order.
-        # *   CreateTimeAsc: sorts the query results by creation time in ascending order.
+        # - CreateTimeDesc: sorts the query results by creation time in descending order.
+        # 
+        # - CreateTimeAsc: sorts the query results by creation time in ascending order.
         self.order_by = order_by
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
@@ -32,9 +33,11 @@ class ListMediaInfoJobsRequest(DaraModel):
         self.start_of_create_time = start_of_create_time
         # The state of the job. Valid values:
         # 
-        # *   Init: The job is submitted.
-        # *   Success: The job is successful.
-        # *   Fail: The job failed.
+        # - Init: The job is submitted.
+        # 
+        # - Success: The job is successful.
+        # 
+        # - Fail: The job failed.
         self.status = status
 
     def validate(self):

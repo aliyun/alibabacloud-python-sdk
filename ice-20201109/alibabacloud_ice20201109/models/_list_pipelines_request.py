@@ -13,9 +13,11 @@ class ListPipelinesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Boost: MPS queue with transcoding speed boosted.
-        # *   Standard: standard MPS queue.
-        # *   NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+        # - Boost: MPS queue with transcoding speed boosted.
+        # 
+        # - Standard: standard MPS queue.
+        # 
+        # - NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
         self.speed = speed
 
     def validate(self):

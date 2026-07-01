@@ -14,17 +14,17 @@ class SubmitDynamicImageJobShrinkRequest(DaraModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
-        # The input of the job.
+        # The job input.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink
-        # The name of the job.
+        # The job name.
         self.name = name
-        # The output of the job.
+        # The job output.
         # 
         # This parameter is required.
         self.output_shrink = output_shrink
-        # The scheduling settings.
+        # The scheduling configuration.
         self.schedule_config_shrink = schedule_config_shrink
         # The snapshot template configuration.
         # 

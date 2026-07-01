@@ -17,42 +17,67 @@ class SubmitIProductionJobShrinkRequest(DaraModel):
         template_id: str = None,
         user_data: str = None,
     ):
-        # The name of the algorithm that you want to use for the job. Valid values:
+        # The name of the algorithm function. Valid values:
         # 
-        # *   **Cover**: This algorithm intelligently generates a thumbnail image for a video.
-        # *   **VideoClip**: This algorithm intelligently generates a summary for a video.
-        # *   **VideoDelogo**: This algorithm removes logos from a video.
-        # *   **VideoDetext**: This algorithm removes captions from a video.
-        # *   **CaptionExtraction**: This algorithm extracts captions from a video and generates the caption file.
-        # *   **VideoGreenScreenMatting**: This algorithm performs green-screen image matting on a video and generates a new video.
-        # *   **FaceBeauty**: This algorithm performs video retouching.
-        # *   **VideoH2V**: This algorithm transforms a video from the landscape mode to the portrait mode.
-        # *   **MusicSegmentDetect**: This algorithm detects the chorus of a song.
-        # *   **AudioBeatDetection**: This algorithm detects rhythms.
-        # *   **AudioQualityAssessment**: This algorithm assesses the audio quality.
-        # *   **SpeechDenoise**: This algorithm performs noise reduction.
-        # *   **AudioMixing**: This algorithm mixes audio streams.
+        # - **Cover**: Generates a smart cover.
+        # 
+        # - **VideoClip**: Creates a video summary.
+        # 
+        # - **VideoDelogo**: Removes logos from a video.
+        # 
+        # - **VideoDetext**: Removes text from a video.
+        # 
+        # - **CaptionExtraction**: Extracts captions from a video.
+        # 
+        # - **VideoGreenScreenMatting**: Performs green screen keying for a video.
+        # 
+        # - **FaceBeauty**: Applies beauty filters to faces in a video.
+        # 
+        # - **VideoH2V**: Converts a horizontal video to a vertical video.
+        # 
+        # - **MusicSegmentDetect**: Detects chorus segments in music.
+        # 
+        # - **AudioBeatDetection**: Detects the beat of an audio track.
+        # 
+        # - **AudioQualityAssessment**: Assesses audio quality.
+        # 
+        # - **SpeechDenoise**: Reduces noise in speech audio.
+        # 
+        # - **AudioMixing**: Mixes audio tracks.
+        # 
+        # - **MusicDemix**: Separates vocals from accompaniment in music.
         # 
         # This parameter is required.
         self.function_name = function_name
-        # The input file. The file can be an Object Storage Service (OSS) object or a media asset.
+        # The input media asset. You can specify an OSS file or a media asset ID.
+        # 
+        # The requirements for input files vary by algorithm function. For more information, see the supplementary instructions.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink
-        # The algorithm-specific parameters. The parameters are specified as JSON objects and vary based on the algorithm. For more information, see the "Parameters of JobParams" section of this topic.
+        # The algorithm job parameters, specified as a JSON-formatted string. The content of the JSON object varies by algorithm function. For more information, see the supplementary instructions.
         self.job_params = job_params
+        # The ID of the algorithm model. If you do not specify this parameter, the system uses the default model for the selected function. We recommend leaving this parameter empty unless you need to use a specific alternative model.
+        # 
+        # The following function offers an alternative model:
+        # 
+        # - `VideoDetext`
+        # 
+        #   - Set `ModelId` to `algo-video-detext-new` to use an advanced subtitle removal algorithm. This model provides higher quality results but is slower and more expensive than the default model.
         self.model_id = model_id
-        # The name of the intelligent production job. The name can be up to 100 characters in length.
+        # The name of the job, which can be up to 100 characters long.
         self.name = name
-        # The output file. The file can be an OSS object or a media asset.
+        # The output destination. You can specify an OSS file path or a media asset ID.
+        # 
+        # The output files vary by algorithm function. For more information, see the supplementary instructions.
         # 
         # This parameter is required.
         self.output_shrink = output_shrink
-        # The scheduling configuration.
+        # The configuration for job scheduling.
         self.schedule_config_shrink = schedule_config_shrink
-        # The template ID.
+        # The ID of the template.
         self.template_id = template_id
-        # The user-defined data that is returned in the response. The value can be up to 1,024 bytes in length.
+        # Custom user data. The system passes this data through and returns it as-is in the callback or response. The length cannot exceed 256 characters.
         self.user_data = user_data
 
     def validate(self):

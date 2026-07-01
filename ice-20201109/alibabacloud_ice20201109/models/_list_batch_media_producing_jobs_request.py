@@ -24,8 +24,9 @@ class ListBatchMediaProducingJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Script: script-based editing job that mixes media assets.
-        # *   Smart_Mix: intelligent editing job that mixes media assets.
+        # - Script: script-based editing job that mixes media assets.
+        # 
+        # - Smart_Mix: intelligent editing job that mixes media assets.
         self.job_type = job_type
         # The maximum number of entries to return.
         self.max_results = max_results
@@ -33,8 +34,9 @@ class ListBatchMediaProducingJobsRequest(DaraModel):
         self.next_token = next_token
         # The sorting parameter. Valid values:
         # 
-        # *   desc (default): sorted by creation time in descending order.
-        # *   asc: sorted by creation time in ascending order.
+        # - desc (default): sorted by creation time in descending order.
+        # 
+        # - asc: sorted by creation time in ascending order.
         # 
         # <!---->
         self.sort_by = sort_by
@@ -44,10 +46,13 @@ class ListBatchMediaProducingJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Finished
-        # *   Init
-        # *   Failed
-        # *   Processing
+        # - Finished
+        # 
+        # - Init
+        # 
+        # - Failed
+        # 
+        # - Processing
         self.status = status
 
     def validate(self):

@@ -96,9 +96,11 @@ class GetPackageJobResponseBodyPackageJob(DaraModel):
         self.submit_time = submit_time
         # The source of the job. Valid values:
         # 
-        # *   API
-        # *   WorkFlow
-        # *   Console
+        # - API
+        # 
+        # - WorkFlow
+        # 
+        # - Console
         self.trigger_source = trigger_source
         # The user-defined data.
         self.user_data = user_data
@@ -232,13 +234,15 @@ class GetPackageJobResponseBodyPackageJobOutput(DaraModel):
     ):
         # The media object.
         # 
-        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
-        # *   If Type is set to Media, the ID of a media asset is returned.
+        # - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # 
+        # - If Type is set to Media, the ID of a media asset is returned.
         self.media = media
         # The type of the media object. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: an OSS object.
+        # 
+        # - Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -305,13 +309,15 @@ class GetPackageJobResponseBodyPackageJobInputsInput(DaraModel):
     ):
         # The media object.
         # 
-        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
-        # *   If Type is set to Media, the ID of a media asset is returned.
+        # - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # 
+        # - If Type is set to Media, the ID of a media asset is returned.
         self.media = media
         # The type of the media object. Valid values:
         # 
-        # *   OSS: an Object Storage Service (OSS) object.
-        # *   Media: a media asset.
+        # - OSS: an Object Storage Service (OSS) object.
+        # 
+        # - Media: a media asset.
         self.type = type
 
     def validate(self):

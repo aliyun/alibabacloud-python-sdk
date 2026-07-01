@@ -15,38 +15,29 @@ class ListLiveSnapshotJobsRequest(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`. The time must be in UTC.
         # 
-        # *   By default, EndTime is seven days later than StartTime.
-        # *   The time range specified by the StartTime and EndTime parameters cannot exceed 30 days.
+        # - If this parameter is not specified, the default is the current time.
+        # 
+        # -
         self.end_time = end_time
-        # The page number. Valid values: [1,n). Default value: 1.
+        # The page number to return. The value must be an integer greater than or equal to 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The number of jobs to return on each page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The search keyword. You can use the job ID or name as the keyword to search for jobs. If you search for jobs by name, fuzzy match is supported.
+        # The search keyword. You can search by Job ID or Job Name. Fuzzy search is supported for Job Name.
         # 
-        # *   It cannot exceed 128 characters in length.
+        # - The maximum length is 128 characters.
         self.search_key_word = search_key_word
-        # The sorting order. By default, the query results are sorted by creation time in descending order.
-        # 
-        # Valid values:
-        # 
-        # *   asc: sorts the query results by creation time in ascending order.
-        # *   desc: sorts the query results by creation time in descending order.
+        # The sort order. The results are sorted by `CreateTime`. Default: `desc` (Descending).
         self.sort_by = sort_by
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start of the time range to query. Specify the time in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`. The time must be in UTC.
         # 
-        # *   The default value is seven days ago.
-        # *   The time range specified by the StartTime and EndTime parameters cannot exceed 30 days.
+        # - If this parameter is not specified, the default is 7 days ago.
+        # 
+        # - The interval between `StartTime` and `EndTime` cannot exceed 30 days.
         self.start_time = start_time
-        # The job state filter. By default, all jobs are queried.
-        # 
-        # Valid values:
-        # 
-        # *   init: The job is not started.
-        # *   paused: The job is paused.
-        # *   started: The job is in progress.
+        # The job status to filter by. If omitted, jobs of all statuses are returned.
         self.status = status
 
     def validate(self):

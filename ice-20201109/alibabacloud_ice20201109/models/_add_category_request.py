@@ -13,8 +13,9 @@ class AddCategoryRequest(DaraModel):
     ):
         # The category name.
         # 
-        # *   The value can be up to 64 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # - The value can be up to 64 bytes in length.
+        # 
+        # - The value must be encoded in UTF-8.
         # 
         # This parameter is required.
         self.cate_name = cate_name
@@ -22,8 +23,9 @@ class AddCategoryRequest(DaraModel):
         self.parent_id = parent_id
         # The type of the category. Valid values:
         # 
-        # *   default: audio, video, and image files. This is the default value.
-        # *   material: short video materials.
+        # - default: audio, video, and image files. This is the default value.
+        # 
+        # - material: short video materials.
         self.type = type
 
     def validate(self):

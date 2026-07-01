@@ -12,6 +12,11 @@ class StartWorkflowRequest(DaraModel):
         user_data: str = None,
         workflow_id: str = None,
     ):
+        # Specifies whether to skip verification of the input path supported by the pipeline. This parameter takes effect only when the pipeline input is an OSS file. We recommend that you do not skip this verification to avoid faults caused by incorrect paths. If this parameter is not specified, verification is performed by default. Valid values:
+        # 
+        # - **true**: Skip verification
+        # 
+        # - **false**: Do not skip verification
         self.skip_input_verification = skip_input_verification
         # The workflow input. Only media assets are supported.
         self.task_input = task_input

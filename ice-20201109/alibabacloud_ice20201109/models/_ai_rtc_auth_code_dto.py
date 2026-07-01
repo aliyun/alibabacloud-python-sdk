@@ -17,15 +17,29 @@ class AiRtcAuthCodeDTO(DaraModel):
         status: int = None,
         type: int = None,
     ):
+        # Activation time.
         self.activated_time = activated_time
+        # Authorization code.
         self.auth_code = auth_code
+        # Creation time.
         self.creation_time = creation_time
+        # Device ID.
         self.device_id = device_id
         # license。
         self.license = license
+        # Batch ID.
         self.license_item_id = license_item_id
+        # Update time.
         self.modification_time = modification_time
+        # Status:
+        # 
+        # - 1 - Activated
+        # - 2 - Not activated
         self.status = status
+        # Type:
+        # 
+        # - 1 - Voice call
+        # - 2 - Visual understanding
         self.type = type
 
     def validate(self):

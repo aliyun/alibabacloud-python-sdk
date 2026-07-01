@@ -69,16 +69,19 @@ class GetPipelineResponseBodyPipeline(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Standard: standard MPS queue.
-        # *   Boost: MPS queue with transcoding speed boosted.
-        # *   NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
+        # - Standard: standard MPS queue.
+        # 
+        # - Boost: MPS queue with transcoding speed boosted.
+        # 
+        # - NarrowBandHDV2: MPS queue that supports Narrowband HD 2.0.
         self.speed = speed
         # The state of the MPS queue.
         # 
         # Valid values:
         # 
-        # *   Active
-        # *   Paused
+        # - Active
+        # 
+        # - Paused
         self.status = status
 
     def validate(self):

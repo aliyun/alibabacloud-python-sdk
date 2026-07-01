@@ -9,6 +9,9 @@ class AddFavoritePublicMediaRequest(DaraModel):
         self,
         media_ids: str = None,
     ):
+        # The IDs of the Media Assets.
+        # 
+        # - Separate multiple IDs with commas.
         self.media_ids = media_ids
 
     def validate(self):

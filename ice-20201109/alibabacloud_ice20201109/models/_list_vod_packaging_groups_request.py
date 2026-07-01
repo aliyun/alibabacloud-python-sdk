@@ -20,8 +20,9 @@ class ListVodPackagingGroupsRequest(DaraModel):
         self.page_size = page_size
         # The sorting order of the packaging groups based on the time when they were created. Valid values:
         # 
-        # *   desc (default): descending order.
-        # *   asc: ascending order.
+        # - desc (default): descending order.
+        # 
+        # - asc: ascending order.
         self.sort_by = sort_by
 
     def validate(self):

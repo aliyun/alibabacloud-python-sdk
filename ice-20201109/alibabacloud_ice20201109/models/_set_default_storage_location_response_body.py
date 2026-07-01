@@ -10,7 +10,9 @@ class SetDefaultStorageLocationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded. Valid values: true: succeeded. false: failed.
         self.success = success
 
     def validate(self):

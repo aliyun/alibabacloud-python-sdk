@@ -15,14 +15,24 @@ class StartRtcRobotInstanceRequest(DaraModel):
         user_data: str = None,
         user_id: str = None,
     ):
+        # The authentication token required to join the RTC call. You must generate this token using your RTC AppKey.
+        # 
         # This parameter is required.
         self.auth_token = auth_token
+        # The RTC channel\\"s unique identifier.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # Specifies advanced call configurations that override the agent\\"s default configurations. If you omit this parameter, the agent uses its default configurations.
         self.config = config
+        # The AI agent\\"s unique identifier.
+        # 
         # This parameter is required.
         self.robot_id = robot_id
+        # User-defined information.
         self.user_data = user_data
+        # The AI agent\\"s unique identifier within the channel.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -92,11 +102,14 @@ class StartRtcRobotInstanceRequestConfig(DaraModel):
         volume: int = None,
     ):
         self.asr_max_silence = asr_max_silence
+        # Specifies whether to allow voice interrupt.
         self.enable_voice_interrupt = enable_voice_interrupt
+        # The greeting the AI agent speaks when a user joins the call.
         self.greeting = greeting
         self.use_voiceprint = use_voiceprint
         self.user_offline_timeout = user_offline_timeout
         self.user_online_timeout = user_online_timeout
+        # The voice\\"s unique identifier.
         self.voice_id = voice_id
         self.voiceprint_id = voiceprint_id
         self.volume = volume

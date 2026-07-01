@@ -23,8 +23,9 @@ class QueryMediaIndexJobResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -87,15 +88,19 @@ class QueryMediaIndexJobResponseBodyIndexJobInfoList(DaraModel):
         self.gmt_submit = gmt_submit
         # The index type. Valid values:
         # 
-        # *   mm: large visual model.
-        # *   face: face recognition.
-        # *   aiLabel: smart tagging.
+        # - mm: large visual model.
+        # 
+        # - face: face recognition.
+        # 
+        # - aiLabel: smart tagging.
         self.index_type = index_type
         # The job status. Valid values:
         # 
-        # *   Running
-        # *   Success
-        # *   Fail
+        # - Running
+        # 
+        # - Success
+        # 
+        # - Fail
         self.status = status
 
     def validate(self):

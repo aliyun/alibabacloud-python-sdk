@@ -14,23 +14,25 @@ class GetAiRtcLicenseInfoListRequest(DaraModel):
         status: int = None,
         type: int = None,
     ):
-        # The ID of the batch.
+        # The License Item ID.
         self.license_item_id = license_item_id
-        # Specifies whether to include the total count of records in the response. Defaults to `true`.
+        # Specifies whether to return the total count. Default value: `true`.
         self.need_total_count = need_total_count
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The status of the batch. Valid values:
+        # The status of the license batch. Valid values:
         # 
-        # *   `1`: Active
-        # *   `2`: Expired
+        # - `1`: Normal
+        # 
+        # - `2`: Expired
         self.status = status
-        # The type of license. Valid values:
+        # The license type. Valid values:
         # 
-        # *   `1`: Audio call
-        # *   `2`: Vision call
+        # - `1`: voice call
+        # 
+        # - `2`: visual understanding
         self.type = type
 
     def validate(self):

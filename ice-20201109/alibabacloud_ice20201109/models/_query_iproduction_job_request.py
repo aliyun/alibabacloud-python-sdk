@@ -10,9 +10,9 @@ class QueryIProductionJobRequest(DaraModel):
         client_token: str = None,
         job_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A token that ensures request idempotence.
         self.client_token = client_token
-        # The ID of the intelligent production job.
+        # The intelligent job ID.
         # 
         # This parameter is required.
         self.job_id = job_id

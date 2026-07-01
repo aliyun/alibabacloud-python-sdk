@@ -56,8 +56,9 @@ class GetLiveTranscodeTemplateResponseBodyTemplateContent(DaraModel):
     ):
         # The category of the template. Valid values:
         # 
-        # *   system
-        # *   customized
+        # - system
+        # 
+        # - customized
         self.category = category
         # The time when the template was created.
         self.create_time = create_time

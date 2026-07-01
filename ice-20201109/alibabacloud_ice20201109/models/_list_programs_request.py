@@ -25,8 +25,9 @@ class ListProgramsRequest(DaraModel):
         self.program_name = program_name
         # The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
         # 
-        # *   asc: ascending order.
-        # *   desc: descending order.
+        # - asc: ascending order.
+        # 
+        # - desc: descending order.
         self.sort_by = sort_by
 
     def validate(self):

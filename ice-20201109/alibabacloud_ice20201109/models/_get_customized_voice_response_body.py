@@ -18,8 +18,9 @@ class GetCustomizedVoiceResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -100,16 +101,19 @@ class GetCustomizedVoiceResponseBodyDataCustomizedVoice(DaraModel):
         self.demo_audio_media_id = demo_audio_media_id
         # The gender. Valid values:
         # 
-        # *   female
-        # *   male
+        # - female
+        # 
+        # - male
         self.gender = gender
         # The demonstration scenario.
         # 
         # Valid values:
         # 
-        # *   **story**
-        # *   **interaction**
-        # *   **navigation**
+        # - **story**
+        # 
+        # - **interaction**
+        # 
+        # - **navigation**
         self.scenario = scenario
         # The voice description.
         self.voice_desc = voice_desc

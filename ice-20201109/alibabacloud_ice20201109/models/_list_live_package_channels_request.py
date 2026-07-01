@@ -27,8 +27,9 @@ class ListLivePackageChannelsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   asc
-        # *   desc
+        # - asc
+        # 
+        # - desc
         self.sort_by = sort_by
 
     def validate(self):

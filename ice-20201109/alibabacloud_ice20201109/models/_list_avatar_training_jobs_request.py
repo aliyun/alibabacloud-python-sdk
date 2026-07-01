@@ -11,15 +11,19 @@ class ListAvatarTrainingJobsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
-        # *   The page number.
-        # *   Default value: 1.
+        # - The page number.
+        # 
+        # - Default value: 1.
         self.page_no = page_no
-        # *   The number of entries per page.
-        # *   Default value: 10.
-        # *   Valid values: 1 to 100.
+        # - The number of entries per page.
+        # 
+        # - Default value: 10.
+        # 
+        # - Valid values: 1 to 100.
         self.page_size = page_size
-        # *   The job state.
-        # *   Valid values: Init, Queuing, Training, Success, and Fail.
+        # - The job state.
+        # 
+        # - Valid values: Init, Queuing, Training, Success, and Fail.
         self.status = status
 
     def validate(self):

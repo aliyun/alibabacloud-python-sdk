@@ -15,23 +15,23 @@ class SubmitSnapshotJobRequest(DaraModel):
         template_config: main_models.SubmitSnapshotJobRequestTemplateConfig = None,
         user_data: str = None,
     ):
-        # The snapshot input.
+        # The input for the snapshot job.
         # 
         # This parameter is required.
         self.input = input
-        # The name of the job.
+        # The name of the snapshot job.
         self.name = name
-        # The snapshot output.
+        # The output destination for the snapshot job.
         # 
         # This parameter is required.
         self.output = output
-        # The scheduling settings.
+        # The scheduling configuration.
         self.schedule_config = schedule_config
         # The snapshot template configuration.
         # 
         # This parameter is required.
         self.template_config = template_config
-        # The user-defined data.
+        # Custom user data, passed as a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):
@@ -101,9 +101,9 @@ class SubmitSnapshotJobRequestTemplateConfig(DaraModel):
         overwrite_params: main_models.SubmitSnapshotJobRequestTemplateConfigOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters.
+        # Parameters used to override settings in the specified template.
         self.overwrite_params = overwrite_params
-        # The template ID.
+        # The snapshot template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
@@ -151,27 +151,27 @@ class SubmitSnapshotJobRequestTemplateConfigOverwriteParams(DaraModel):
         type: str = None,
         width: int = None,
     ):
-        # The threshold that is used to filter out black frames for the first snapshot to be captured. This feature is available if you request the system to capture multiple snapshots.
+        # The threshold for detecting and filtering black content in the first frame. This applies only to multi-frame snapshots.
         self.black_level = black_level
-        # The number of snapshots.
+        # The number of snapshots to capture.
         self.count = count
-        # The type of the frame.
+        # The frame type.
         self.frame_type = frame_type
-        # The height of a captured snapshot.
+        # The output image height.
         self.height = height
-        # The interval at which snapshots are captured.
+        # The interval between snapshots.
         self.interval = interval
-        # The WebVTT snapshot configuration that specifies whether to merge the output snapshots.
+        # Specifies whether to stitch snapshots into a single sprite. This applies only to WebVTT snapshots.
         self.is_spt_frag = is_spt_frag
-        # The color value threshold that determines whether a pixel is black.
+        # The threshold for determining whether a pixel is black.
         self.pixel_black_threshold = pixel_black_threshold
-        # The configuration of the sprite snapshot.
+        # The sprite configuration.
         self.sprite_snapshot_config = sprite_snapshot_config
-        # The point in time at which the system starts to capture snapshots in the input video.
+        # The start time for capturing snapshots.
         self.time = time
-        # The snapshot type. Valid values:
+        # The snapshot type.
         self.type = type
-        # The width of a captured snapshot.
+        # The output image width.
         self.width = width
 
     def validate(self):
@@ -267,19 +267,19 @@ class SubmitSnapshotJobRequestTemplateConfigOverwriteParamsSpriteSnapshotConfig(
         margin: int = None,
         padding: int = None,
     ):
-        # The height of a single snapshot before tiling. The default value is the height of the output snapshot.
+        # The height of each tile. Default: the height of the output snapshot.
         self.cell_height = cell_height
-        # The width of a single snapshot before tiling. The default value is the width of the output snapshot.
+        # The width of each tile. Default: the width of the output snapshot.
         self.cell_width = cell_width
         # The background color.
         self.color = color
-        # The number of columns that the image sprite contains.
+        # The number of columns in the sprite grid.
         self.columns = columns
-        # The number of rows that the image sprite contains.
+        # The number of rows in the sprite grid.
         self.lines = lines
-        # The width of the frame. Default value: 0. Unit: pixels.
+        # The margin around the sprite, in pixels. Default value: 0.
         self.margin = margin
-        # The spacing between two adjacent snapshots. Default value: 0. Unit: pixels.
+        # The padding between tiles, in pixels. Default value: 0.
         self.padding = padding
 
     def validate(self):
@@ -343,7 +343,7 @@ class SubmitSnapshotJobRequestScheduleConfig(DaraModel):
         self,
         pipeline_id: str = None,
     ):
-        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -372,21 +372,35 @@ class SubmitSnapshotJobRequestOutput(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # The output media asset.
         # 
-        # 1.  oss://bucket/object
-        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        # - If `Type` is `OSS`, specify the OSS URL for the output file.
         # 
-        # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
+        # - If `Type` is `Media`, specify the ID of the output media asset.
         # 
-        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
+        # The OSS URL must be in one of the following formats:
+        # 
+        # 1. `oss://bucket/object`
+        # 
+        # 2. `http(s)://bucket.oss-[RegionId].aliyuncs.com/object`
+        # 
+        # In these formats, `bucket` is the name of an OSS bucket located in the same region as the current project, and `object` is the file path.
+        # 
+        # - When capturing multiple static snapshots, the `object` must contain the `{Count}` placeholder.
+        # 
+        # - When capturing a sprite, the `object` must contain the `{TileCount}` placeholder.
+        # 
+        # - For WebVTT snapshots, the filename in the `object` path must end with `.vtt`.
+        # 
+        # > The OSS bucket specified in the URL must be added to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before use.
         # 
         # This parameter is required.
         self.media = media
-        # The type of the output file. Valid values:
+        # The type of the output. Valid values:
         # 
-        # 1.  OSS: an OSS object.
-        # 2.  Media: a media asset.
+        # - `OSS`: an OSS file URL.
+        # 
+        # - `Media`: a media asset ID.
         # 
         # This parameter is required.
         self.type = type
@@ -423,19 +437,28 @@ class SubmitSnapshotJobRequestInput(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
+        # The input media asset.
         # 
-        # 1.  oss://bucket/object
-        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+        # - If `Type` is `OSS`, specify the OSS URL of the input file.
         # 
-        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
+        # - If `Type` is `Media`, specify the ID of the media asset.
+        # 
+        # The OSS URL must be in one of the following formats:
+        # 
+        # 1. `oss://bucket/object`
+        # 
+        # 2. `http(s)://bucket.oss-[RegionId].aliyuncs.com/object`
+        #    <br>In these formats, `bucket` is the name of an OSS bucket located in the same region as the current project, and `object` is the file path.<br>
+        # 
+        # > The OSS bucket specified in the URL must be added to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before use.
         # 
         # This parameter is required.
         self.media = media
-        # The type of the input file. Valid values:
+        # The type of the input. Valid values:
         # 
-        # 1.  OSS: an Object Storage Service (OSS) object.
-        # 2.  Media: a media asset.
+        # - `OSS`: an OSS file URL.
+        # 
+        # - `Media`: a media asset ID.
         # 
         # This parameter is required.
         self.type = type

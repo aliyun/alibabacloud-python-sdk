@@ -18,8 +18,9 @@ class GetCustomizedVoiceJobResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -104,8 +105,9 @@ class GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob(DaraModel):
         self.create_time = create_time
         # The gender. Valid values:
         # 
-        # *   female
-        # *   male
+        # - female
+        # 
+        # - male
         self.gender = gender
         # The ID of the human voice cloning job.
         self.job_id = job_id
@@ -113,23 +115,31 @@ class GetCustomizedVoiceJobResponseBodyDataCustomizedVoiceJob(DaraModel):
         self.message = message
         # The scenario. Valid values:
         # 
-        # *   story
-        # *   interaction
-        # *   navigation
+        # - story
+        # 
+        # - interaction
+        # 
+        # - navigation
         self.scenario = scenario
         # The job state. Valid values:
         # 
-        # *   Initialization
-        # *   AudioDetecting
-        # *   PreTraining
-        # *   Training
-        # *   Success
-        # *   Fail
+        # - Initialization
+        # 
+        # - AudioDetecting
+        # 
+        # - PreTraining
+        # 
+        # - Training
+        # 
+        # - Success
+        # 
+        # - Fail
         self.status = status
         # The type of the human voice cloning job. Valid values:
         # 
-        # *   Basic
-        # *   Standard
+        # - Basic
+        # 
+        # - Standard
         self.type = type
         # The voice description.
         self.voice_desc = voice_desc

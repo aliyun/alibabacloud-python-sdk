@@ -82,6 +82,7 @@ class GetMediaConnectFlowOutputResponseBodyContent(DaraModel):
         self.cidrs = cidrs
         # The time when the flow was created.
         self.create_time = create_time
+        # Indicates whether the output is disabled. Valid values: yes or no.
         self.forbid = forbid
         # The output name.
         self.output_name = output_name
@@ -89,11 +90,15 @@ class GetMediaConnectFlowOutputResponseBodyContent(DaraModel):
         # 
         # Valid values:
         # 
-        # *   RTMP-PUSH
-        # *   SRT-Caller
-        # *   RTMP-PULL
-        # *   SRT-Listener
-        # *   Flow
+        # - RTMP-PUSH
+        # 
+        # - SRT-Caller
+        # 
+        # - RTMP-PULL
+        # 
+        # - SRT-Listener
+        # 
+        # - Flow
         self.output_protocol = output_protocol
         # The output URL.
         self.output_url = output_url
@@ -111,10 +116,13 @@ class GetMediaConnectFlowOutputResponseBodyContent(DaraModel):
         # 
         # Valid values:
         # 
-        # *   0
-        # *   16
-        # *   24
-        # *   32
+        # - 0
+        # 
+        # - 16
+        # 
+        # - 24
+        # 
+        # - 32
         self.srt_pbkey_len = srt_pbkey_len
 
     def validate(self):

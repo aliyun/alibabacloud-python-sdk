@@ -16,13 +16,23 @@ class DescribeRtcRobotInstanceResponseBody(DaraModel):
         user_data: str = None,
         user_id: str = None,
     ):
+        # The authentication token for the RTC Channel.
         self.auth_token = auth_token
+        # The channel ID.
         self.channel_id = channel_id
+        # The advanced configurations of the AI agent.
         self.config = config
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status of the instance. Valid values:
+        # 
+        # - `Executing`: The instance is running.
+        # 
+        # - `Finished`: The instance has stopped.
         self.status = status
+        # The custom user data.
         self.user_data = user_data
+        # The ID of the AI agent in the channel.
         self.user_id = user_id
 
     def validate(self):
@@ -90,8 +100,11 @@ class DescribeRtcRobotInstanceResponseBodyConfig(DaraModel):
         greeting: str = None,
         voice_id: str = None,
     ):
+        # Specifies whether to allow voice interruption.
         self.enable_voice_interrupt = enable_voice_interrupt
+        # The welcome message.
         self.greeting = greeting
+        # The voice ID.
         self.voice_id = voice_id
 
     def validate(self):

@@ -112,8 +112,9 @@ class UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams(DaraModel):
         self.bitrate = bitrate
         # The encoding type. Valid values:
         # 
-        # *   H.264
-        # *   H.265
+        # - H.264
+        # 
+        # - H.265
         self.codec = codec
         # The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to 60.
         self.fps = fps
@@ -121,25 +122,31 @@ class UpdateLiveTranscodeTemplateRequestTemplateConfigVideoParams(DaraModel):
         self.gop = gop
         # The height of the output video. Valid values:
         # 
-        # *   Height ≥ 128
-        # *   max (Height,Width) ≤ 2560
-        # *   min（Height,Width）≤ 1440
+        # - Height ≥ 128
         # 
-        # >  The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
+        # - max (Height,Width) ≤ 2560
+        # 
+        # - min(Height,Width)≤ 1440
+        # 
+        # > The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
         self.height = height
         # The video encoding profile. The profile determines how a video is encoded. In most cases, a greater value indicates better image quality and higher resource consumption. Valid values:
         # 
-        # *   1: baseline. This value is suitable for mobile devices.
-        # *   2: main. This value is suitable for standard-definition devices.
-        # *   3: high. This value is suitable for high-definition devices.
+        # - 1: baseline. This value is suitable for mobile devices.
+        # 
+        # - 2: main. This value is suitable for standard-definition devices.
+        # 
+        # - 3: high. This value is suitable for high-definition devices.
         self.profile = profile
         # The width of the output video. Valid values:
         # 
-        # *   Width ≥ 128
-        # *   max (Height,Width) ≤ 2560
-        # *   min（Height,Width）≤ 1440
+        # - Width ≥ 128
         # 
-        # >  The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
+        # - max (Height,Width) ≤ 2560
+        # 
+        # - min(Height,Width)≤ 1440
+        # 
+        # > The resolution of a video transcoded by using the H.265 Narrowband HD template cannot exceed 1,280 × 720 pixels.
         self.width = width
 
     def validate(self):
@@ -215,10 +222,13 @@ class UpdateLiveTranscodeTemplateRequestTemplateConfigAudioParams(DaraModel):
         self.codec = codec
         # The audio codec profile. Valid values when the Codec parameter is set to AAC:
         # 
-        # *   aac_low
-        # *   aac_he
-        # *   aac_he_v2
-        # *   aac_ld
+        # - aac_low
+        # 
+        # - aac_he
+        # 
+        # - aac_he_v2
+        # 
+        # - aac_ld
         self.profile = profile
         # The audio sampling rate. Valid values: 22050 to 96000.
         # 

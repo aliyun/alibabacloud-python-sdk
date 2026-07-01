@@ -19,17 +19,19 @@ class SearchEditingProjectRequest(DaraModel):
     ):
         # The source of the project.
         # 
-        # \\-OpenAPI
+        # -OpenAPI
         # 
-        # \\-AliyunConsole
+        # -AliyunConsole
         # 
-        # \\-WebSDK
+        # -WebSDK
         # 
         # Valid values:
         # 
-        # *   AliyunConsole: The project is created in the Alibaba Cloud console.
-        # *   WebSDK: The project is created by using the SDK for Web.
-        # *   OpenAPI: The project is created by calling API operations.
+        # - AliyunConsole: The project is created in the Alibaba Cloud console.
+        # 
+        # - WebSDK: The project is created by using the SDK for Web.
+        # 
+        # - OpenAPI: The project is created by calling API operations.
         self.create_source = create_source
         # The end of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
@@ -39,8 +41,9 @@ class SearchEditingProjectRequest(DaraModel):
         self.page_size = page_size
         # The type of the editing project. Default value: EditingProject. Valid values:
         # 
-        # *   EditingProject: a regular editing project.
-        # *   LiveEditingProject: a live stream editing project.
+        # - EditingProject: a regular editing project.
+        # 
+        # - LiveEditingProject: a live stream editing project.
         self.project_type = project_type
         # The sorting rule of results. Valid values:
         # 
@@ -54,25 +57,27 @@ class SearchEditingProjectRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # \\-Draft
+        # -Draft
         # 
-        # \\-Producing
+        # -Producing
         # 
-        # \\-Produced
+        # -Produced
         # 
-        # \\-ProduceFailed
+        # -ProduceFailed
         self.status = status
         # The template type. Valid values:
         # 
-        # \\-Timeline
+        # -Timeline
         # 
-        # \\-VETemplate
+        # -VETemplate
         # 
         # Valid values:
         # 
-        # *   Timeline: regular template.
-        # *   VETemplate: advanced template.
-        # *   None: No template is used.
+        # - Timeline: regular template.
+        # 
+        # - VETemplate: advanced template.
+        # 
+        # - None: No template is used.
         self.template_type = template_type
 
     def validate(self):

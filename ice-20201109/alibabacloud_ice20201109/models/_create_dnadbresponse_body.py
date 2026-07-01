@@ -11,7 +11,7 @@ class CreateDNADBResponseBody(DaraModel):
         dbinfo: main_models.CreateDNADBResponseBodyDBInfo = None,
         request_id: str = None,
     ):
-        # The details of the media fingerprint library.
+        # The details of the DNA database.
         self.dbinfo = dbinfo
         # The request ID.
         self.request_id = request_id
@@ -53,15 +53,15 @@ class CreateDNADBResponseBodyDBInfo(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The ID of the media fingerprint library. We recommend that you save this ID for subsequent calls of other operations.
+        # The DNA database ID. Save this ID for use in subsequent API calls.
         self.dbid = dbid
-        # The description of the media fingerprint library.
+        # The description of the DNA database.
         self.description = description
-        # The model of the media fingerprint library.
+        # The DNA database model.
         self.model = model
-        # The name of the media fingerprint library.
+        # The name of the DNA database.
         self.name = name
-        # The state of the media fingerprint library. After a media fingerprint library is created, it enters the offline state. After the media fingerprint library is processed at the backend, it enters the active state.
+        # After you create the database, its status is `offline` by default. The status automatically changes to `active` after the backend completes processing.
         self.status = status
 
     def validate(self):

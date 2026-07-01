@@ -16,9 +16,9 @@ class ListSmartSysAvatarModelsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried digital humans.
+        # A list of system digital avatars.
         self.smart_sys_avatar_model_list = smart_sys_avatar_model_list
-        # The total number of system digital human images returned.
+        # The total number of system digital avatars.
         self.total_count = total_count
 
     def validate(self):
@@ -73,19 +73,19 @@ class ListSmartSysAvatarModelsResponseBodySmartSysAvatarModelList(DaraModel):
         video_url: str = None,
         width: int = None,
     ):
-        # The ID of the digital human. The ID is required to submit a separate digital human rendering job or use the digital human image in an intelligent timeline.
+        # The digital avatar ID. Use this ID when you submit a rendering job or use the digital avatar in an intelligent timeline.
         self.avatar_id = avatar_id
-        # The name of the digital human.
+        # The digital avatar name.
         self.avatar_name = avatar_name
         # The video bitrate.
         self.bitrate = bitrate
-        # The sample thumbnail URL of the digital human.
+        # The URL of the sample cover for the digital avatar.
         self.cover_url = cover_url
         # The video height.
         self.height = height
         # Indicates whether portrait mask rendering is supported.
         self.output_mask = output_mask
-        # The sample video URL of the digital human.
+        # The URL of the sample video for the digital avatar.
         self.video_url = video_url
         # The video width.
         self.width = width

@@ -13,10 +13,21 @@ class QueryIpcQuotaRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # Capability. Default value is understand. Valid values:
+        # 
+        # - understand: understanding
+        # 
+        # - understand-reid: understanding with reid
+        # 
+        # - search: search
         self.capability = capability
+        # End time. UTC time in the format: yyyy-MM-ddTHH:mm:ssZ. The difference between EndTime and StartTime must not exceed 180 days.
         self.end_time = end_time
+        # Page number for paging. Default Value: 1.
         self.page_no = page_no
+        # Page size, which specifies the number of entries displayed per page. Default value is 10, and the maximum value is 50.
         self.page_size = page_size
+        # Start Time. UTC time in the format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

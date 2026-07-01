@@ -16,26 +16,17 @@ class ListLiveRecordTemplatesRequest(DaraModel):
         template_ids: List[str] = None,
         type: str = None,
     ):
-        # The search keyword. You can use the template ID or name as the keyword to search for templates. If you search for templates by name, fuzzy match is supported.
+        # The keyword to search for templates by ID or name. Fuzzy matching is supported for template names.
         self.keyword = keyword
         # The page number. Minimum value: 1. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries to return on each page. Value range: 1–100. Default value: 10.
         self.page_size = page_size
-        # The sorting order. By default, the query results are sorted by creation time in descending order.
-        # 
-        # Valid values:
-        # 
-        # *   asc: sorts the query results in ascending order.
-        # *   desc: sorts the query results in descending order.
+        # The sort order. The default sort is descending by creation time.
         self.sort_by = sort_by
+        # The template IDs to retrieve.
         self.template_ids = template_ids
-        # The type of the template.
-        # 
-        # Valid values:
-        # 
-        # *   system
-        # *   custom
+        # The template type.
         self.type = type
 
     def validate(self):

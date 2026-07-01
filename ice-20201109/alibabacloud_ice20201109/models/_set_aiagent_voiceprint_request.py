@@ -57,19 +57,19 @@ class SetAIAgentVoiceprintRequestInput(DaraModel):
         self.format = format
         # Specifies the access type for the audio file. The system will verify file accessibility via HEAD or GET requests. Valid values:
         # 
-        # *   url: An HTTP(S) link to the audio file.
+        # - url: An HTTP(S) link to the audio file.
         # 
-        # *   oss: An OSS object. Supports the following formats:
+        # - oss: An OSS object. Supports the following formats:
         # 
-        #     1.  OSS URI: oss://bucket-name/object-key
+        #   1. OSS URI: oss\\://bucket-name/object-key
         # 
-        #         Example: oss://my-bucket/audio/sample.wav
+        #      Example: oss\\://my-bucket/audio/sample.wav
         # 
-        #     2.  OSS public URL: http(s)://${bucket}.oss-${region}.aliyuncs.com/${object}
+        #   2. OSS public URL: http(s)://${bucket}.oss-${region}.aliyuncs.com/${object}
         # 
-        #         Example: https://my-bucket.oss-cn-hangzhou.aliyuncs.com/audio/sample.wav
+        #      Example: https\\://my-bucket.oss-cn-hangzhou.aliyuncs.com/audio/sample.wav
         # 
-        # >  The OSS bucket must be in the same region as the service. Otherwise, the access fails.
+        # > The OSS bucket must be in the same region as the service. Otherwise, the access fails.
         self.type = type
 
     def validate(self):

@@ -14,9 +14,11 @@ class SendLiveSnapshotJobCommandRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   stop
-        # *   restart
-        # *   start
+        # - stop
+        # 
+        # - restart
+        # 
+        # - start
         # 
         # This parameter is required.
         self.command = command

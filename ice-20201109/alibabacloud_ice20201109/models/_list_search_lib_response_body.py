@@ -16,15 +16,15 @@ class ListSearchLibResponseBody(DaraModel):
         success: str = None,
         total: int = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
         # The request ID.
         self.request_id = request_id
-        # Information about search libraries.
+        # Search library information.
         self.search_lib_info_list = search_lib_info_list
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -87,15 +87,13 @@ class ListSearchLibResponseBodySearchLibInfoList(DaraModel):
         search_lib_name: str = None,
         status: str = None,
     ):
+        # The index information.
         self.index_info = index_info
+        # The search library configuration.
         self.search_lib_config = search_lib_config
         # The search library.
         self.search_lib_name = search_lib_name
         # The status of the search library.
-        # 
-        # *   normal
-        # *   deleting
-        # *   deleteFail
         self.status = status
 
     def validate(self):
@@ -151,8 +149,29 @@ class ListSearchLibResponseBodySearchLibInfoListIndexInfo(DaraModel):
         index_status: str = None,
         index_type: str = None,
     ):
+        # The readiness status of the index. Valid values:
+        # 
+        # - Initializing: The index is being initialized.
+        # 
+        # - Normal: The index is ready.
+        # 
+        # - Fail: The index failed to be created.
         self.index_readiness = index_readiness
+        # The index status.
+        # 
+        # Default value: Active. Valid values:
+        # 
+        # - Active: The index is active.
+        # 
+        # - Deactive: The index is inactive.
         self.index_status = index_status
+        # The index type. Valid values:
+        # 
+        # - mm: Large language model (LLM).
+        # 
+        # - face: Face recognition.
+        # 
+        # - aiLabel: Smart tagging.
         self.index_type = index_type
 
     def validate(self):

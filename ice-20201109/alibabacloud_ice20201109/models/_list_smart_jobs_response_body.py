@@ -109,18 +109,23 @@ class ListSmartJobsResponseBodySmartJobList(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Finished: The job is complete.
-        # *   Failed: The job failed.
-        # *   Executing: The job is in progress.
-        # *   Created: The job is created.
+        # - Finished: The job is complete.
+        # 
+        # - Failed: The job failed.
+        # 
+        # - Executing: The job is in progress.
+        # 
+        # - Created: The job is created.
         self.job_state = job_state
         # The job type.
         # 
         # Valid values:
         # 
-        # *   ASR: ASR job.
-        # *   DynamicChart: dynamic chart job.
-        # *   TextToSpeech: intelligent audio production job.
+        # - ASR: ASR job.
+        # 
+        # - DynamicChart: dynamic chart job.
+        # 
+        # - TextToSpeech: intelligent audio production job.
         self.job_type = job_type
         # The time when the job was last modified.
         self.modified_time = modified_time

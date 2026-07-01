@@ -14,8 +14,15 @@ class PrecheckYikeAIAppJobResponseBody(DaraModel):
         result: List[main_models.PrecheckYikeAIAppJobResponseBodyResult] = None,
         status: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned if the precheck fails. This parameter contains only the parameters that failed the check.
         self.result = result
+        # The precheck result. Valid values are:
+        # 
+        # - Success: The precheck was successful.
+        # 
+        # - Failed: The precheck failed.
         self.status = status
 
     def validate(self):
@@ -64,7 +71,9 @@ class PrecheckYikeAIAppJobResponseBodyResult(DaraModel):
         error_code: str = None,
         key: str = None,
     ):
+        # The cause of the parameter validation error.
         self.error_code = error_code
+        # The application parameter name.
         self.key = key
 
     def validate(self):

@@ -33,8 +33,9 @@ class GetStreamTagListRequest(DaraModel):
         self.search_lib_name = search_lib_name
         # The sorting order for the results. Valid values:
         # 
-        # *   StartTime:Desc (default): Sort by creation time in descending order.
-        # *   StartTime:Asc: Sort by creation time in ascending order.
+        # - StartTime:Desc (default): Sort by creation time in descending order.
+        # 
+        # - StartTime:Asc: Sort by creation time in ascending order.
         self.sort_by = sort_by
         # The start of the query time range, based on the tagging timestamp. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time

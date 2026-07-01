@@ -20,8 +20,9 @@ class AddStreamTagToSearchLibResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful. Default value: true. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

@@ -10,9 +10,9 @@ class SubmitScreenMediaHighlightsJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the task.
+        # The ID of the highlight compilation job.
         self.job_id = job_id
-        # The request ID.
+        # A unique ID for the request.
         self.request_id = request_id
 
     def validate(self):

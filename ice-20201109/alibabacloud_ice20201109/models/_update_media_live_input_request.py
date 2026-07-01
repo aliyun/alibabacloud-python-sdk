@@ -94,9 +94,15 @@ class UpdateMediaLiveInputRequestInputSettings(DaraModel):
         self.flow_output_name = flow_output_name
         # The source URL from which the stream is pulled. This parameter is required for PULL inputs.
         self.source_url = source_url
+        # Latency of the SRT stream, in ms. Valid range: [100, 10000]. Optional when Type is SRT_PUSH or SRT_PULL.
         self.srt_latency = srt_latency
+        # Maximum bitrate of the SRT stream, in bps. Valid range: [100, 100000000]. Optional when Type is SRT_PUSH or SRT_PULL.
         self.srt_max_bitrate = srt_max_bitrate
+        # The SRT encryption configuration. The password for the SRT stream must consist of 10 to 79 visible ASCII characters. Optional when Type is SRT_PUSH or SRT_PULL.
+        # 
+        # If the encryption configuration is not empty, all SRT clients must use the correct password to publish or playback streams. Otherwise, the SRT connection will be denied.
         self.srt_passphrase = srt_passphrase
+        # Encryption configuration for SRT—the key length of the SRT stream. Valid values: 0, 16, 24, 32. Optional when Type is SRT_PUSH or SRT_PULL.
         self.srt_pb_key_len = srt_pb_key_len
         # The name of the pushed stream. This parameter is required for PUSH inputs. It can be up to 255 characters in length.
         self.stream_name = stream_name

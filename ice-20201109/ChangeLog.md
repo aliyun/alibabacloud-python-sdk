@@ -1,3 +1,8 @@
+2026-07-01 Version: 6.19.2
+- Update API GetProjectExportJob: add response parameters Body.ProjectExportJob.ExportResult.AudioUrl.
+- Update API GetProjectExportJob: add response parameters Body.ProjectExportJob.ExportResult.SrtList.
+
+
 2026-06-05 Version: 6.19.1
 - Generated python 2020-11-09 for ICE.
 

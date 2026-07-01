@@ -96,9 +96,11 @@ class ListMediaInfoJobsResponseBodyJobs(DaraModel):
         self.schedule_config = schedule_config
         # The state of the job. Valid values:
         # 
-        # *   Init: The job is submitted.
-        # *   Success: The job is successful.
-        # *   Fail: The job failed.
+        # - Init: The job is submitted.
+        # 
+        # - Success: The job is successful.
+        # 
+        # - Fail: The job failed.
         self.status = status
         # The job submission information.
         self.submit_result_json = submit_result_json
@@ -106,9 +108,11 @@ class ListMediaInfoJobsResponseBodyJobs(DaraModel):
         self.submit_time = submit_time
         # The source of the job. Valid values:
         # 
-        # *   API
-        # *   WorkFlow
-        # *   Console
+        # - API
+        # 
+        # - WorkFlow
+        # 
+        # - Console
         self.trigger_source = trigger_source
         # The user data.
         self.user_data = user_data
@@ -365,9 +369,11 @@ class ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList(Dara
         self.fps = fps
         # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
         # 
-        # *   0: The stream contains no B-frames.
-        # *   1: The stream contains one B-frame.
-        # *   2: The stream contains multiple consecutive B-frames.
+        # - 0: The stream contains no B-frames.
+        # 
+        # - 1: The stream contains one B-frame.
+        # 
+        # - 2: The stream contains multiple consecutive B-frames.
         self.has_bframes = has_bframes
         # The height.
         self.height = height
@@ -385,8 +391,9 @@ class ListMediaInfoJobsResponseBodyJobsMediaInfoPropertyVideoStreamInfoList(Dara
         self.profile = profile
         # The rotation angle of the video image.
         # 
-        # *   Valid values: 0, 90, 180, and 270.
-        # *   Default value: 0.
+        # - Valid values: 0, 90, 180, and 270.
+        # 
+        # - Default value: 0.
         self.rotate = rotate
         # The aspect ratio of the area from which the sampling points are collected.
         self.sar = sar
@@ -838,13 +845,15 @@ class ListMediaInfoJobsResponseBodyJobsInput(DaraModel):
     ):
         # The media object.
         # 
-        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
-        # *   If Type is set to Media, the ID of a media asset is returned.
+        # - If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
+        # 
+        # - If Type is set to Media, the ID of a media asset is returned.
         self.media = media
         # The type of the media object. Valid values:
         # 
-        # *   OSS: an Object Storage Service (OSS) object.
-        # *   Media: a media asset.
+        # - OSS: an Object Storage Service (OSS) object.
+        # 
+        # - Media: a media asset.
         self.type = type
 
     def validate(self):

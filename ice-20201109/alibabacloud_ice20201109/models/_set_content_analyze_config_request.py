@@ -11,8 +11,31 @@ class SetContentAnalyzeConfigRequest(DaraModel):
         save_type: str = None,
         template_id: str = None,
     ):
+        # Specifies whether to automatically start Intelligent Content Analysis after a Media Asset is registered.
+        # 
+        # Valid values:
+        # 
+        # - true: Enable
+        # 
+        # - false: Disable (Default)
         self.auto = auto
+        # The storage type for analysis results. This parameter applies only when Auto is set to true. Default: Empty.
+        # 
+        # - TEXT: Label
+        # 
+        # - FACE: Face
+        # 
+        # - DNA: Similar Image
+        # 
+        # You can specify multiple values separated by commas. If this parameter is empty, Intelligent Content Analysis results are not saved to any search library, and you cannot perform content searches.
         self.save_type = save_type
+        # The ID of the Intelligent Content Analysis Template. Each Template includes the following AI analysis features:
+        # 
+        # - S00000101-100040: Text Recognition
+        # 
+        # - S00000101-100060: Video Categorization and Face Recognition
+        # 
+        # - S00000101-100070: Text Recognition, Video Categorization, and Face Recognition
         self.template_id = template_id
 
     def validate(self):

@@ -20,7 +20,7 @@ class ListRecognitionSamplesResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.samples = samples
         # The total number of samples.

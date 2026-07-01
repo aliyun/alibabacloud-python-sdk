@@ -13,9 +13,11 @@ class GetDemonstrationForCustomizedVoiceJobRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   **story**
-        # *   **interaction**
-        # *   **navigation**
+        # - **story**
+        # 
+        # - **interaction**
+        # 
+        # - **navigation**
         # 
         # This parameter is required.
         self.scenario = scenario

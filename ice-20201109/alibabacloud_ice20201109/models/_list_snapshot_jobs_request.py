@@ -23,13 +23,15 @@ class ListSnapshotJobsRequest(DaraModel):
         self.next_page_token = next_page_token
         # The order that you use to sort the query results.
         # 
-        # 1.  CreateTimeDesc
-        # 2.  CreateTimeAsc
+        # 1. CreateTimeDesc
+        # 
+        # 2. CreateTimeAsc
         # 
         # Valid values:
         # 
-        # *   CreateTimeDesc: sorts the jobs by creation time in descending order
-        # *   CreateTimeAsc: sorts the jobs by creation time in ascending order.
+        # - CreateTimeDesc: sorts the jobs by creation time in descending order
+        # 
+        # - CreateTimeAsc: sorts the jobs by creation time in ascending order.
         self.order_by = order_by
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
@@ -39,9 +41,11 @@ class ListSnapshotJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Init: The job is submitted.
-        # *   Success: The job is successful.
-        # *   Fail: The job failed.
+        # - Init: The job is submitted.
+        # 
+        # - Success: The job is successful.
+        # 
+        # - Fail: The job failed.
         self.status = status
 
     def validate(self):

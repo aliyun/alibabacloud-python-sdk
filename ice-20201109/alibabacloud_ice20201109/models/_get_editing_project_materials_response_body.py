@@ -16,15 +16,15 @@ class GetEditingProjectMaterialsResponseBody(DaraModel):
         project_materials: List[str] = None,
         request_id: str = None,
     ):
-        # The materials associated with the live stream.
+        # Media assets associated with live streams.
         self.live_materials = live_materials
-        # The media assets that meet the specified conditions.
+        # Collection of matching media assets.
         self.media_infos = media_infos
-        # The project ID.
+        # ID of the project.
         self.project_id = project_id
-        # The materials associated with the editing project. A live stream editing project will be associated with a regular editing project after the live streaming ends.
+        # Media assets associated with the editing project. After a live stream ends, it is linked to a standard editing project.
         self.project_materials = project_materials
-        # The request ID.
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -95,11 +95,11 @@ class GetEditingProjectMaterialsResponseBodyMediaInfos(DaraModel):
         media_basic_info: main_models.GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
-        # The information about the file.
+        # File information.
         self.file_info_list = file_info_list
-        # The basic information of the media asset.
+        # Basic information about the media asset.
         self.media_basic_info = media_basic_info
-        # The ID of the media asset.
+        # ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -167,48 +167,41 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosMediaBasicInfo(DaraModel):
         transcode_status: str = None,
         user_data: str = None,
     ):
-        # The business type of the media asset.
+        # Business type of the media asset.
         self.business_type = business_type
-        # The category of the media asset.
+        # Category of the media asset.
         self.category = category
-        # The thumbnail URL of the media asset.
+        # URL of the thumbnail image.
         self.cover_url = cover_url
-        # The time when the media asset was created.
+        # Time when the media asset was created.
         self.create_time = create_time
-        # The time when the media asset was deleted.
+        # Time when the media asset was deleted.
         self.deleted_time = deleted_time
-        # The description of the media asset.
+        # Description of the media asset.
         self.description = description
-        # The URL of the media asset in another service.
+        # URL of the media asset in the source system.
         self.input_url = input_url
-        # The ID of the media asset.
+        # ID of the media asset.
         self.media_id = media_id
-        # The tags of the media asset.
+        # Tags associated with the media asset.
         self.media_tags = media_tags
-        # The type of the media asset.
+        # Media type of the asset.
         self.media_type = media_type
-        # The time when the media asset was last modified.
+        # Time when the media asset was last modified.
         self.modified_time = modified_time
-        # The snapshots of the media asset.
+        # Thumbnail images.
         self.snapshots = snapshots
-        # The source of the media asset.
+        # Source of the media asset.
         self.source = source
-        # The sprite of the media asset
+        # Sprite image.
         self.sprite_images = sprite_images
-        # The status of the media asset.
+        # Status of the resource.
         self.status = status
-        # The title of the media asset.
+        # Title of the media asset.
         self.title = title
-        # The transcoding status of the media asset.
-        # 
-        # Valid values:
-        # 
-        # *   TranscodeSuccess: transcoding completed.
-        # *   TranscodeFailed: transcoding failed.
-        # *   Init: initializing.
-        # *   Transcoding: transcoding in progress.
+        # Status of the transcoding task.
         self.transcode_status = transcode_status
-        # The user data.
+        # User-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -338,7 +331,7 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoList(DaraModel):
         self,
         file_basic_info: main_models.GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
-        # The basic information of the file, such as the duration and size.
+        # Basic file information, such as duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -378,27 +371,27 @@ class GetEditingProjectMaterialsResponseBodyMediaInfosFileInfoListFileBasicInfo(
         region: str = None,
         width: str = None,
     ):
-        # The bitrate.
+        # Bitrate of the file.
         self.bitrate = bitrate
-        # The duration.
+        # Duration of the file.
         self.duration = duration
-        # The file name.
+        # Name of the file.
         self.file_name = file_name
-        # The file size. Unit: bytes.
+        # Size of the file, in bytes.
         self.file_size = file_size
-        # The file status.
+        # Status of the file.
         self.file_status = file_status
-        # The file type.
+        # Type of the file.
         self.file_type = file_type
-        # The Object Storage Service (OSS) URL of the file.
+        # OSS URL of the file.
         self.file_url = file_url
-        # The container format.
+        # Container format.
         self.format_name = format_name
-        # The height.
+        # Height of the video.
         self.height = height
-        # The region in which the file resides.
+        # Region where the file is stored.
         self.region = region
-        # The width.
+        # Width of the video.
         self.width = width
 
     def validate(self):
@@ -489,13 +482,13 @@ class GetEditingProjectMaterialsResponseBodyLiveMaterials(DaraModel):
         live_url: str = None,
         stream_name: str = None,
     ):
-        # The application name of the live stream.
+        # Name of the live streaming application.
         self.app_name = app_name
-        # The domain name of the live stream.
+        # Streaming domain name for live streaming.
         self.domain_name = domain_name
-        # The URL of the live stream.
+        # Streaming URL for the live stream.
         self.live_url = live_url
-        # The name of the live stream.
+        # Name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):

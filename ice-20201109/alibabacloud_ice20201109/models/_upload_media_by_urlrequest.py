@@ -17,36 +17,39 @@ class UploadMediaByURLRequest(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The entity ID. You can call the CreateEntity operation to create an entity and specify a dynamic metadata structure.
+        # The entity ID. You can call the CreateEntity API to create an entity and define a custom dynamic metadata schema.
         self.entity_id = entity_id
-        # The metadata of the media file that you want to upload. The value must be a JSON string.
+        # The metadata of the media file, provided as a JSON string.
         # 
-        # *   This parameter takes effect only if its value matches a URL that is specified in UploadURLs.
-        # *   You must convert the JSON-formatted data, such as [UploadMetadata, UploadMetadata,…], into a JSON string.
-        # *   For more information, see the "UploadMetadata" section of this topic.
+        # - This metadata takes effect only when it matches a URL in `UploadURLs`.
+        # 
+        # - The value must be a JSON array in the `[UploadMetadata, UploadMetadata, ...]` format, passed as a JSON string.
+        # 
+        # - For more information, see the UploadMetadata table below.
         self.media_meta_data = media_meta_data
-        # The postprocessing configurations. You can specify this parameter if Type is set to video or audio.
+        # Specifies post-upload processing actions for media files of type `video` or `audio`.
         # 
-        # Set ProcessType to Workflow.
+        # The only supported value for `ProcessType` is `Workflow`.
         self.post_process_config = post_process_config
-        # The destination storage address.
+        # The destination storage location.
         # 
-        # Set StorageType to oss.
+        # - The only valid value for `StorageType` is `oss`.
         # 
-        # Set StorageLocation to an address in ApsaraVideo VOD. You cannot set this field to an OSS URL.
+        # - `StorageLocation` supports VOD storage only and does not support your own OSS buckets.
         self.upload_target_config = upload_target_config
-        # The URL of the source file.
+        # The source URL of the media file.
         # 
-        # *   The URL must contain a file name extension, such as mp4 in `https://****.mp4`.
+        # - The URL must include a file extension. For example, in `https://****.mp4`, mp4 is the file extension.
         # 
-        #     *   If the URL does not contain a file name extension, you can specify one by setting `FileExtension` in `UploadMetadata`.
-        #     *   If the URL contains a file name extension and `FileExtension` is also specified, the value of `FileExtension` prevails.
+        #   - If the URL does not include a file extension, you can specify it by using the `FileExtension` parameter in `MediaMetaData`.
         # 
-        # *   URL encoding is required. Separate multiple URLs with commas (,). You can specify a maximum of 20 URLs.
+        #   - If a file extension is present in both the URL and the `FileExtension` parameter, the value of `FileExtension` takes precedence.
         # 
-        # *   Special characters may cause upload failures. Therefore, you must encode URLs before you separate them with commas (,).
+        # - The URLs must be URL-encoded. Separate multiple URLs with commas (,). You can specify up to 20 URLs.
+        # 
+        # - To prevent upload failures due to special characters, URL-encode each URL before concatenating them with commas.
         self.upload_urls = upload_urls
-        # The user data. The value must be a JSON string. You can configure settings such as message callbacks.
+        # Custom settings, provided as a JSON string. This parameter supports configurations such as message callbacks.
         self.user_data = user_data
 
     def validate(self):

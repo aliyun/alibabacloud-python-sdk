@@ -11,8 +11,11 @@ class GetYikeUserCreditResponseBody(DaraModel):
         credit_usage: str = None,
         request_id: str = None,
     ):
+        # The total allocated credit.
         self.credit_total = credit_total
+        # The remaining credit.
         self.credit_usage = credit_usage
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

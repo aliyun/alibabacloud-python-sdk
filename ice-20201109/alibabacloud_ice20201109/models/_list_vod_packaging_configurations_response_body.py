@@ -27,8 +27,9 @@ class ListVodPackagingConfigurationsResponseBody(DaraModel):
         self.request_id = request_id
         # The sorting order of the packaging configurations based on the time when they were created. Valid values:
         # 
-        # *   desc: descending order.
-        # *   asc: ascending order.
+        # - desc: descending order.
+        # 
+        # - asc: ascending order.
         self.sort_by = sort_by
         # The total number of entries returned.
         self.total_count = total_count

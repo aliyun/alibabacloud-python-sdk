@@ -16,22 +16,23 @@ class SubmitTraceM3u8JobRequest(DaraModel):
     ):
         # The URI of the key server.
         self.key_uri = key_uri
-        # The OSS URL of the output M3U8 file.
+        # The OSS destination for the output M3U8 file.
         # 
-        # > The OSS bucket must reside in the same region as the service region.
+        # > The OSS bucket must be in the same region as your MPS service.
         # 
         # This parameter is required.
         self.output = output
-        # Additional parameters for the watermark job, provided as a JSON string. Supported parameter:
+        # A JSON string that contains parameters for the watermarking job. The following parameter is supported:
         # 
-        # *   m3u8Type: The type of M3U8 to generate. Defaults to v1.
+        # - `m3u8Type`: The algorithm type. The default value is `v1`.
         # 
-        #     *   v1: Generates an M3U8 with absolute paths, playable directly. The signed URL for access is valid for 24 hours. If you need to use it after expiration, you must call this API again.
-        #     *   v2: Generates an M3U8 with relative paths. It must be placed in the same directory as the TS segment files to be playable.
+        #   - `v1`: Generates an M3U8 file that uses an absolute path. The file can be played directly. The signature is valid for 24 hours. After expiration, you must submit a new job to get a new M3U8 file.
+        # 
+        #   - `v2`: Generates an M3U8 file that uses a relative path. This file must be stored in the same directory as the TS files.
         self.params = params
-        # The specific trace watermark information.
+        # The watermark content to embed.
         self.trace = trace
-        # The media ID for the trace watermark. You can obtain this from the response of the SubmitTraceAbJob operation.
+        # The media ID of the processed A/B stream for video watermarking for tracing. This ID is returned in the response when you submit the A/B stream job.
         self.trace_media_id = trace_media_id
 
     def validate(self):
@@ -86,17 +87,17 @@ class SubmitTraceM3u8JobRequestOutput(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # The OSS path where the output file is saved. You can specify the path in one of the following formats:
+        # The output file path. Only OSS paths are supported. You can use one of the following formats:
         # 
-        # 1\\. oss://bucket/object
+        # 1\\. `oss://bucket/object`
         # 
-        # 2\\. http(s)://bucket.oss-[regionId].aliyuncs.com/object where bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object path in OSS.
+        # 2\\. `http(s)://bucket.oss-[regionId].aliyuncs.com/object`. In these formats, `bucket` specifies the name of an OSS bucket in the same region as your project, and `object` specifies the file path.
         # 
         # This parameter is required.
         self.media = media
-        # The type of the output file. Valid value:
+        # The type of the output destination. Valid values:
         # 
-        # 1.  OSS: an OSS object.
+        # 1. `OSS`: an OSS file location.
         # 
         # This parameter is required.
         self.type = type

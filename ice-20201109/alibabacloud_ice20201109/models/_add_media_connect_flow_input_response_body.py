@@ -13,13 +13,13 @@ class AddMediaConnectFlowInputResponseBody(DaraModel):
         request_id: str = None,
         ret_code: int = None,
     ):
-        # The response body.
+        # Response body
         self.content = content
-        # The call description.
+        # API call description
         self.description = description
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
-        # The returned error code. A value of 0 indicates the call is successful.
+        # Error code. A value of 0 indicates success.
         self.ret_code = ret_code
 
     def validate(self):
@@ -69,7 +69,7 @@ class AddMediaConnectFlowInputResponseBodyContent(DaraModel):
         input_url: str = None,
     ):
         self.inner_input_url = inner_input_url
-        # The source URL.
+        # Input URL
         self.input_url = input_url
 
     def validate(self):

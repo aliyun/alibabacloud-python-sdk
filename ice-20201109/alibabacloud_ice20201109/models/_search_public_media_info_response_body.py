@@ -14,8 +14,11 @@ class SearchPublicMediaInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Public copyright media asset information
         self.public_media_infos = public_media_infos
+        # Request ID
         self.request_id = request_id
+        # The total amount of Data under the current request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -66,9 +69,13 @@ class SearchPublicMediaInfoResponseBodyPublicMediaInfos(DaraModel):
         media_info: main_models.SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo = None,
         remaining_auth_time: str = None,
     ):
+        # Indicates whether you have purchased a resource plan that includes this media asset.
         self.authorized = authorized
+        # Whether the media asset is collected.
         self.favorite = favorite
+        # Media asset information
         self.media_info = media_info
+        # Remaining validity period of the resource plan (Day)
         self.remaining_auth_time = remaining_auth_time
 
     def validate(self):
@@ -118,9 +125,11 @@ class SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfo(DaraModel):
         media_basic_info: main_models.SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # Dynamic metadata
         self.dynamic_meta_data = dynamic_meta_data
         # BasicInfo
         self.media_basic_info = media_basic_info
+        # Media asset ID
         self.media_id = media_id
 
     def validate(self):
@@ -179,21 +188,35 @@ class SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoMediaBasicInfo(D
         title: str = None,
         user_data: str = None,
     ):
+        # Media Asset Business Type
         self.business_type = business_type
+        # Categorization
         self.category = category
+        # Thumbnail URL
         self.cover_url = cover_url
+        # Media Asset Creation Time
         self.create_time = create_time
+        # Media Asset Deletion Time
         self.deleted_time = deleted_time
+        # Content description
         self.description = description
         # MediaId
         self.media_id = media_id
+        # Label
         self.media_tags = media_tags
+        # Media asset media type
         self.media_type = media_type
+        # Updated At
         self.modified_time = modified_time
+        # Source
         self.source = source
+        # sprite
         self.sprite_images = sprite_images
+        # Resource status
         self.status = status
+        # title
         self.title = title
+        # User Data
         self.user_data = user_data
 
     def validate(self):
@@ -306,7 +329,15 @@ class SearchPublicMediaInfoResponseBodyPublicMediaInfosMediaInfoDynamicMetaData(
         data: str = None,
         type: str = None,
     ):
+        # Metadata JSON string
         self.data = data
+        # Type. Valid values:
+        # 
+        # - "ai": AI data processed and normalized from original AI results
+        # 
+        # - "user-defined": User-defined metadata
+        # 
+        # - "system": System-provided
         self.type = type
 
     def validate(self):

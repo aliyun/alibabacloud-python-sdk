@@ -11,8 +11,17 @@ class SubYikeUserCreditResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The error code returned if the operation fails. A possible value is:
+        # 
+        # - `NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA`: The sub-account\\"s credit balance is insufficient.
         self.error_code = error_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
+        # 
+        # - `true`: The operation succeeded.
+        # 
+        # - `false`: The operation failed.
         self.result = result
 
     def validate(self):

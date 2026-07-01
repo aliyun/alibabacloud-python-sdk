@@ -10,7 +10,7 @@ class SubmitSportsHighlightsJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the sports highlights job.
+        # The sports highlight job ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

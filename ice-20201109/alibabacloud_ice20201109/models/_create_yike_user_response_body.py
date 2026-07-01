@@ -11,7 +11,9 @@ class CreateYikeUserResponseBody(DaraModel):
         request_id: str = None,
         user_info: main_models.CreateYikeUserResponseBodyUserInfo = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The user information.
         self.user_info = user_info
 
     def validate(self):
@@ -50,9 +52,13 @@ class CreateYikeUserResponseBodyUserInfo(DaraModel):
         user_name: str = None,
         workspace_id: str = None,
     ):
+        # The user\\"s nickname.
         self.nickname = nickname
+        # The user ID.
         self.user_id = user_id
+        # The user name.
         self.user_name = user_name
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

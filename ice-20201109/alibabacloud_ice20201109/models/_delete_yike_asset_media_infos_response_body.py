@@ -12,7 +12,9 @@ class DeleteYikeAssetMediaInfosResponseBody(DaraModel):
         ignored_list: List[str] = None,
         request_id: str = None,
     ):
+        # A list of the IDs or InputUrl values of media assets that could not be deleted.
         self.ignored_list = ignored_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

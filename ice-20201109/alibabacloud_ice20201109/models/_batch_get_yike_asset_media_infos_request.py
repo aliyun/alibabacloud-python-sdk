@@ -9,6 +9,7 @@ class BatchGetYikeAssetMediaInfosRequest(DaraModel):
         self,
         media_ids: str = None,
     ):
+        # The media asset IDs, separated by commas.
         self.media_ids = media_ids
 
     def validate(self):

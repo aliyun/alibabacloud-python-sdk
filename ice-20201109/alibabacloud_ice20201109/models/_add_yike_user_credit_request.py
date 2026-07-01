@@ -10,8 +10,12 @@ class AddYikeUserCreditRequest(DaraModel):
         credit: int = None,
         yike_user_id: str = None,
     ):
+        # The number of credits to add. The value must be greater than 0.
+        # 
         # This parameter is required.
         self.credit = credit
+        # The user ID of the sub-account.
+        # 
         # This parameter is required.
         self.yike_user_id = yike_user_id
 

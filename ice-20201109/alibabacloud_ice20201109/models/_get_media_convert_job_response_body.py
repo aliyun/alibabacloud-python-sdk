@@ -13,9 +13,9 @@ class GetMediaConvertJobResponseBody(DaraModel):
         job: main_models.GetMediaConvertJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The transcoding task.
+        # The media transcoding job.
         self.job = job
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,34 +64,41 @@ class GetMediaConvertJobResponseBodyJob(DaraModel):
         state: str = None,
         user_data: str = None,
     ):
-        # The idempotency key of the request for creating the transcoding task.
+        # The idempotency parameter for the job creation request.
         self.client_token = client_token
-        # The error code returned when the transcoding task failed.
+        # The error code if the job fails.
         self.code = code
-        # The configurations of the transcoding task.
+        # The job configuration.
         self.config = config
+        # The time when the job was created, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.create_time = create_time
+        # The time when the job finished, in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.finish_time = finish_time
-        # The ID of the transcoding task, which is a 32-bit string.
+        # The job ID. This is a 32-character string.
         self.job_id = job_id
-        # The error message returned when the transcoding task failed.
+        # The error message detailing the failure.
         self.message = message
-        # The details of the transcoded outputs, each corresponding to an output configuration.
+        # The execution results of the outputs specified in the job configuration.
         self.output_details = output_details
-        # The details of the output groups, each corresponding to an output group configuration.
+        # The execution results of the output groups specified in the job configuration.
         self.output_group_details = output_group_details
+        # The completion percentage.
         self.percent = percent
-        # The ID of the queue.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The ID of the request for creating the transcoding task.
+        # The ID of the job creation request.
         self.request_id = request_id
-        # The status of the transcoding task. Valid values:
+        # The job state. Valid values:
         # 
-        # *   Inited: The task is initialized.
-        # *   Running
-        # *   Success
-        # *   Failed
-        # *   Cancelled
+        # - Inited: The job is initialized.
+        # 
+        # - Running: The job is in progress.
+        # 
+        # - Complete: The job finished successfully.
+        # 
+        # - Error: The job failed.
+        # 
+        # - Cancelled: The job was cancelled.
         self.state = state
         # The user data.
         self.user_data = user_data
@@ -222,12 +229,13 @@ class GetMediaConvertJobResponseBodyJobConfig(DaraModel):
         output_groups: List[main_models.MediaConvertOutputGroup] = None,
         outputs: List[main_models.MediaConvertOutput] = None,
     ):
-        # The inputs of the transcoding task.
+        # The job inputs.
         self.inputs = inputs
+        # The job name.
         self.job_name = job_name
-        # The output group configurations.
+        # The job output group configurations.
         self.output_groups = output_groups
-        # The output configurations.
+        # The job output configurations.
         self.outputs = outputs
 
     def validate(self):

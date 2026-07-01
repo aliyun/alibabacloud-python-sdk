@@ -13,6 +13,7 @@ class GetPublicMediaInfoResponseBody(DaraModel):
         media_info: main_models.GetPublicMediaInfoResponseBodyMediaInfo = None,
         request_id: str = None,
     ):
+        # Media asset information
         self.media_info = media_info
         # RequestId
         self.request_id = request_id
@@ -53,11 +54,13 @@ class GetPublicMediaInfoResponseBodyMediaInfo(DaraModel):
         media_basic_info: main_models.GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # Public media asset dynamic metadata
         self.dynamic_meta_data = dynamic_meta_data
         # FileInfos
         self.file_info_list = file_info_list
         # BasicInfo
         self.media_basic_info = media_basic_info
+        # Media asset ID
         self.media_id = media_id
 
     def validate(self):
@@ -131,21 +134,35 @@ class GetPublicMediaInfoResponseBodyMediaInfoMediaBasicInfo(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
+        # Media asset business type
         self.business_type = business_type
+        # categorization
         self.category = category
+        # thumbnail URL
         self.cover_url = cover_url
+        # Media asset creation time
         self.create_time = create_time
+        # Media asset deletion time
         self.deleted_time = deleted_time
+        # Content description
         self.description = description
         # MediaId
         self.media_id = media_id
+        # label
         self.media_tags = media_tags
+        # media asset Type
         self.media_type = media_type
+        # Updated At
         self.modified_time = modified_time
+        # Source
         self.source = source
+        # sprite
         self.sprite_images = sprite_images
+        # Resource status
         self.status = status
+        # title
         self.title = title
+        # User Data
         self.user_data = user_data
 
     def validate(self):
@@ -260,9 +277,13 @@ class GetPublicMediaInfoResponseBodyMediaInfoFileInfoList(DaraModel):
         subtitle_stream_info_list: List[main_models.GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList] = None,
         video_stream_info_list: List[main_models.GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList] = None,
     ):
+        # Audio stream information. A media asset may contain multiple audio streams.
         self.audio_stream_info_list = audio_stream_info_list
+        # Basic file information, including duration and size.
         self.file_basic_info = file_basic_info
+        # Caption stream information. A media asset may have multiple caption streams.
         self.subtitle_stream_info_list = subtitle_stream_info_list
+        # Video stream information; a media asset may contain multiple video streams.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -360,29 +381,53 @@ class GetPublicMediaInfoResponseBodyMediaInfoFileInfoListVideoStreamInfoList(Dar
         timebase: str = None,
         width: str = None,
     ):
+        # average frame rate
         self.avg_fps = avg_fps
+        # bitrate
         self.bitrate = bitrate
+        # Long name of the encoding format
         self.codec_long_name = codec_long_name
+        # Encoding format short name
         self.codec_name = codec_name
+        # Encoding format tag
         self.codec_tag = codec_tag
+        # Encoding format mark text
         self.codec_tag_string = codec_tag_string
+        # Codec time base
         self.codec_time_base = codec_time_base
+        # Encoded display aspect ratio
         self.dar = dar
+        # Duration
         self.duration = duration
+        # video frame rate
         self.fps = fps
+        # Whether B-frames are present
         self.has_bframes = has_bframes
+        # Height
         self.height = height
+        # Video stream ordinal number
         self.index = index
+        # Language
         self.lang = lang
+        # Encoding Level
         self.level = level
+        # total number of frames
         self.nb_frames = nb_frames
+        # Total number of frames
         self.num_frames = num_frames
+        # Pixel format
         self.pix_fmt = pix_fmt
+        # codec profile
         self.profile = profile
+        # rotate
         self.rotate = rotate
+        # Sample Aspect Ratio (SAR)
         self.sar = sar
+        # start time
         self.start_time = start_time
+        # time base
         self.timebase = timebase
+        # Width
         self.width = width
 
     def validate(self):
@@ -557,15 +602,25 @@ class GetPublicMediaInfoResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList(
         start_time: str = None,
         timebase: str = None,
     ):
+        # Long name of encoding format
         self.codec_long_name = codec_long_name
+        # Brief name of encoding format
         self.codec_name = codec_name
+        # Encoding format tag
         self.codec_tag = codec_tag
+        # Encoding format mark text
         self.codec_tag_string = codec_tag_string
+        # Codec time base
         self.codec_time_base = codec_time_base
+        # Duration
         self.duration = duration
+        # Caption stream ordinal number
         self.index = index
+        # Language
         self.lang = lang
+        # Start time
         self.start_time = start_time
+        # Time base
         self.timebase = timebase
 
     def validate(self):
@@ -657,16 +712,27 @@ class GetPublicMediaInfoResponseBodyMediaInfoFileInfoListFileBasicInfo(DaraModel
         region: str = None,
         width: str = None,
     ):
+        # Bitrate
         self.bitrate = bitrate
+        # Duration
         self.duration = duration
+        # File name
         self.file_name = file_name
+        # File Size (bytes)
         self.file_size = file_size
+        # File status
         self.file_status = file_status
+        # File type
         self.file_type = file_type
+        # Preview or sample playback URL for the copyrighted media asset.
         self.file_url = file_url
+        # Container format
         self.format_name = format_name
+        # Height
         self.height = height
+        # File storage area
         self.region = region
+        # Width
         self.width = width
 
     def validate(self):
@@ -771,23 +837,41 @@ class GetPublicMediaInfoResponseBodyMediaInfoFileInfoListAudioStreamInfoList(Dar
         start_time: str = None,
         timebase: str = None,
     ):
+        # bitrate
         self.bitrate = bitrate
+        # Sound channel output layout
         self.channel_layout = channel_layout
+        # the number of sound channels
         self.channels = channels
+        # Long name of the encoding format
         self.codec_long_name = codec_long_name
+        # short name of the encoding format
         self.codec_name = codec_name
+        # Encoding format tag
         self.codec_tag = codec_tag
+        # Encoding format tag text
         self.codec_tag_string = codec_tag_string
+        # Codec time base
         self.codec_time_base = codec_time_base
+        # Duration
         self.duration = duration
+        # Audio frame rate
         self.fps = fps
+        # Audio stream ordinal number
         self.index = index
+        # Language
         self.lang = lang
+        # Total number of frames
         self.num_frames = num_frames
+        # codec profile
         self.profile = profile
+        # Sampling format
         self.sample_fmt = sample_fmt
+        # Sample rate
         self.sample_rate = sample_rate
+        # Start time
         self.start_time = start_time
+        # Timebase
         self.timebase = timebase
 
     def validate(self):
@@ -918,7 +1002,15 @@ class GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData(DaraModel):
         data: str = None,
         type: str = None,
     ):
+        # Metadata in JSON format
         self.data = data
+        # Type. Valid values:
+        # 
+        # - "ai": AI data processed from raw AI results
+        # 
+        # - "user-defined": User-defined metadata
+        # 
+        # - "system": System-provided
         self.type = type
 
     def validate(self):

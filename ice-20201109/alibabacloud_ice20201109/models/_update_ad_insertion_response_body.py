@@ -173,7 +173,7 @@ class UpdateAdInsertionResponseBodyConfigManifestEndpointConfig(DaraModel):
         dash_prefix: str = None,
         hls_prefix: str = None,
     ):
-        # DASH清单播放端点前缀
+        # The prefix of the playback endpoint for DASH manifests.
         self.dash_prefix = dash_prefix
         # The prefix of the playback endpoint for HLS manifests.
         self.hls_prefix = hls_prefix

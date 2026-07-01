@@ -20,7 +20,9 @@ class SendMessageChatTextRequest(DaraModel):
         # This parameter is required.
         self.aiagent_id = aiagent_id
         # The mode of message sending. Valid values:
+        # 
         # - online
+        # 
         # - offline
         # 
         # Default value: offline.
@@ -42,6 +44,7 @@ class SendMessageChatTextRequest(DaraModel):
         # The type of the message. Valid values:
         # 
         # - announcement: notification.
+        # 
         # - custom: custom message.
         # 
         # This parameter is required.

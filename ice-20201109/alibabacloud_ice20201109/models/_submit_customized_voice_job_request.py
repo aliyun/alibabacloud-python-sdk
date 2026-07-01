@@ -10,17 +10,15 @@ class SubmitCustomizedVoiceJobRequest(DaraModel):
         demo_audio_media_url: str = None,
         voice_id: str = None,
     ):
-        # The URL of the sample audio file.
+        # The OSS URL where the demo audio will be saved.
         # 
-        # *   If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
+        # - If specified, the service generates a demo audio file at the provided OSS URL after training completes.
         # 
-        # *   If this parameter is not specified, no sample audio file is generated.
+        # - >Notice: 
         # 
-        #     **
-        # 
-        #     **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
+        #   The URL must be a valid public address for an OSS object in your account.
         self.demo_audio_media_url = demo_audio_media_url
-        # The voice ID.
+        # The unique identifier for the voice.
         # 
         # This parameter is required.
         self.voice_id = voice_id

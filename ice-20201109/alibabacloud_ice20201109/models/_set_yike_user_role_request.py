@@ -10,7 +10,15 @@ class SetYikeUserRoleRequest(DaraModel):
         role_name: str = None,
         yike_user_id: str = None,
     ):
+        # The user role. Valid values:
+        # 
+        # - SuperAdmin: Super Admin.
+        # 
+        # - Admin: Admin.
+        # 
+        # - RegularUser: Regular User.
         self.role_name = role_name
+        # The sub-account user ID.
         self.yike_user_id = yike_user_id
 
     def validate(self):

@@ -12,19 +12,31 @@ class CreateSearchIndexRequest(DaraModel):
         index_type: str = None,
         search_lib_name: str = None,
     ):
+        # Index configuration
         self.index_config = index_config
+        # Index status. Default value is Active. Valid values:
+        # 
+        # - Active: Activated.
+        # 
+        # - Deactive: Deactivated.
         self.index_status = index_status
         # The category of the index. Valid values:
         # 
-        # *   mm: large visual model. You can use this model to describe complex visual features and identify and search for specific actions, movements, and events in videos, such as when athletes score a goal or get injured.
+        # - mm: large visual model. You can use this model to describe complex visual features and identify and search for specific actions, movements, and events in videos, such as when athletes score a goal or get injured.
         # 
-        # >  This feature is in the public preview phase. You can use this feature for free for 1,000 hours of videos.
+        # > This feature is in the public preview phase. You can use this feature for free for 1,000 hours of videos.
         # 
-        # *   face: face recognition. You can use the face recognition technology to describe face characteristics and automatically mark or search for faces in videos.
-        # *   aiLabel: smart tagging. The smart tagging category is used to describe content such as subtitles and audio in videos. You can use the speech recognition technology to automatically extract, mark, and search for subtitles and dialog content from videos. This helps you quickly locate the video content that is related to specific topics or keywords.
+        # - face: face recognition. You can use the face recognition technology to describe face characteristics and automatically mark or search for faces in videos.
+        # 
+        # - aiLabel: smart tagging. The smart tagging category is used to describe content such as subtitles and audio in videos. You can use the speech recognition technology to automatically extract, mark, and search for subtitles and dialog content from videos. This helps you quickly locate the video content that is related to specific topics or keywords.
         # 
         # This parameter is required.
         self.index_type = index_type
+        # Search library name.
+        # 
+        # - If no search library name is specified, the search index is created under the default IMS search library by default. The default value is ims-default-search-lib.
+        # 
+        # - You can also use the [QuerySearchLib](https://help.aliyun.com/document_detail/2584455.html) API to retrieve information about existing search libraries.
         self.search_lib_name = search_lib_name
 
     def validate(self):

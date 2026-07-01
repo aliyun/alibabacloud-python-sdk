@@ -16,8 +16,9 @@ class UpdateMediaConnectFlowStatusRequest(DaraModel):
         self.flow_id = flow_id
         # The flow state. Valid values:
         # 
-        # *   online: starts the flow.
-        # *   offline: stops the flow.
+        # - online: starts the flow.
+        # 
+        # - offline: stops the flow.
         # 
         # This parameter is required.
         self.status = status
