@@ -271,6 +271,7 @@ class GetFeatureViewResponseBodyFields(DaraModel):
     def __init__(
         self,
         attributes: List[str] = None,
+        dimension: int = None,
         name: str = None,
         transform: List[main_models.GetFeatureViewResponseBodyFieldsTransform] = None,
         type: str = None,
@@ -283,6 +284,7 @@ class GetFeatureViewResponseBodyFields(DaraModel):
         # 
         # ● `EventTime`: The event time.
         self.attributes = attributes
+        self.dimension = dimension
         # The field name.
         self.name = name
         # The feature transformation.
@@ -310,6 +312,9 @@ class GetFeatureViewResponseBodyFields(DaraModel):
         if self.attributes is not None:
             result['Attributes'] = self.attributes
 
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -327,6 +332,9 @@ class GetFeatureViewResponseBodyFields(DaraModel):
         m = m or dict()
         if m.get('Attributes') is not None:
             self.attributes = m.get('Attributes')
+
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

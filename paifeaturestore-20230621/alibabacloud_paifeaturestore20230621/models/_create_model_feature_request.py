@@ -105,7 +105,7 @@ class CreateModelFeatureRequestFeatures(DaraModel):
         prefix_name: str = None,
         type: str = None,
     ):
-        # The alias of the feature.
+        # The feature alias.
         self.alias_name = alias_name
         # The feature view ID. You can call the ListFeatureViews operation to obtain the feature view ID.
         # 
@@ -118,13 +118,19 @@ class CreateModelFeatureRequestFeatures(DaraModel):
         self.prefix_name = prefix_name
         # The feature type. Valid values:
         # 
-        # - INT32
-        # - INT64
-        # - FLOAT
-        # - DOUBLE
-        # - STRING
-        # - BOOLEAN
-        # - TIMESTAMP.
+        # ● INT32
+        # 
+        # ● INT64
+        # 
+        # ● FLOAT
+        # 
+        # ● DOUBLE
+        # 
+        # ● STRING
+        # 
+        # ● BOOLEAN
+        # 
+        # ● TIMESTAMP.
         # 
         # This parameter is required.
         self.type = type

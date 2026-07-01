@@ -1,3 +1,8 @@
+2026-07-01 Version: 6.1.4
+- Update API CreateFeatureView: add request parameters body.Fields.$.Dimension.
+- Update API GetFeatureView: add response parameters Body.Fields.$.Dimension.
+
+
 2026-06-15 Version: 6.1.3
 - Update API CreateModelFeature: add request parameters body.Features.$.PrefixName.
 - Update API GetModelFeature: add response parameters Body.Features.$.PrefixName.

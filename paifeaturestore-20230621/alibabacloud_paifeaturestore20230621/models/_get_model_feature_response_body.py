@@ -26,35 +26,35 @@ class GetModelFeatureResponseBody(DaraModel):
         training_set_fgtable: str = None,
         training_set_table: str = None,
     ):
-        # The script for exporting the training sample table.
+        # Script for exporting the training set table.
         self.export_training_set_table_script = export_training_set_table_script
-        # The feature list.
+        # Feature list.
         self.features = features
-        # The creation time.
+        # Creation time.
         self.gmt_create_time = gmt_create_time
-        # The update time.
+        # Update time.
         self.gmt_modified_time = gmt_modified_time
-        # The priority level of the label table. Default value: 0. Set to 1 to prioritize the label table. Set to 2 to prioritize the feature view.
+        # Label table priority. The default value is 0. Set to 1 to give priority to the label table, or set to 2 to give priority to the feature view.
         self.label_priority_level = label_priority_level
-        # The label table ID.
+        # Label table ID.
         self.label_table_id = label_table_id
-        # The label table name.
+        # Label table name.
         self.label_table_name = label_table_name
-        # The model feature name.
+        # Model feature name.
         self.name = name
-        # The Alibaba Cloud account ID of the creator.
+        # Alibaba Cloud account ID of the creator.
         self.owner = owner
-        # The project ID.
+        # Project ID.
         self.project_id = project_id
-        # The project name.
+        # Project name.
         self.project_name = project_name
-        # The feature relationships.
+        # Feature relations.
         self.relations = relations
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The name of the exported training set FG table.
+        # Name of the exported training set FG table.
         self.training_set_fgtable = training_set_fgtable
-        # The name of the exported training set table.
+        # Name of the exported training set table.
         self.training_set_table = training_set_table
 
     def validate(self):
@@ -178,9 +178,9 @@ class GetModelFeatureResponseBodyRelations(DaraModel):
         domains: List[main_models.GetModelFeatureResponseBodyRelationsDomains] = None,
         links: List[main_models.GetModelFeatureResponseBodyRelationsLinks] = None,
     ):
-        # The domain list.
+        # Domain list.
         self.domains = domains
-        # The feature relationship link list.
+        # Feature relation link information list.
         self.links = links
 
     def validate(self):
@@ -233,11 +233,11 @@ class GetModelFeatureResponseBodyRelationsLinks(DaraModel):
         link: str = None,
         to: str = None,
     ):
-        # The source ID of the link.
+        # Source ID of the link.
         self.from_ = from_
-        # The dependency field of the link.
+        # Link dependency field.
         self.link = link
-        # The destination ID of the link.
+        # Target ID of the link.
         self.to = to
 
     def validate(self):
@@ -279,15 +279,17 @@ class GetModelFeatureResponseBodyRelationsDomains(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The domain type. Valid values:
+        # Domain type.
         # 
-        # - FeatureEntity: feature entity.
-        # - FeatureView: feature view.
-        # - ModelFeature: model feature.
+        # ● FeatureEntity - Feature entity
+        # 
+        # ● FeatureView - Feature view
+        # 
+        # ● ModelFeature - Model feature
         self.domain_type = domain_type
-        # Domain ID。
+        # Domain ID.
         self.id = id
-        # The domain name.
+        # Domain name.
         self.name = name
 
     def validate(self):
@@ -332,24 +334,30 @@ class GetModelFeatureResponseBodyFeatures(DaraModel):
         prefix_name: str = None,
         type: str = None,
     ):
-        # The feature alias.
+        # Feature alias.
         self.alias_name = alias_name
-        # The feature view ID.
+        # Feature view ID.
         self.feature_view_id = feature_view_id
-        # The feature view name.
+        # Feature view name.
         self.feature_view_name = feature_view_name
-        # The feature name.
+        # Feature name.
         self.name = name
         self.prefix_name = prefix_name
-        # The feature type. Valid values:
+        # Feature type.
         # 
-        # - INT32
-        # - INT64
-        # - FLOAT
-        # - DOUBLE
-        # - STRING
-        # - BOOLEAN
-        # - TIMESTAMP.
+        # ● INT32
+        # 
+        # ● INT64
+        # 
+        # ● FLOAT
+        # 
+        # ● DOUBLE
+        # 
+        # ● STRING
+        # 
+        # ● BOOLEAN
+        # 
+        # ● TIMESTAMP
         self.type = type
 
     def validate(self):

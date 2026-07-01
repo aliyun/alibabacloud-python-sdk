@@ -18,7 +18,7 @@ class UpdateModelFeatureRequest(DaraModel):
         # The list of features.
         self.features = features
         self.label_priority_level = label_priority_level
-        # The label table ID. You can call the ListLabelTables operation to query the label table ID.
+        # The label table ID. You can call the ListLabelTables operation to obtain the label table ID.
         self.label_table_id = label_table_id
         self.sequence_feature_view_ids = sequence_feature_view_ids
 
@@ -79,7 +79,7 @@ class UpdateModelFeatureRequestFeatures(DaraModel):
     ):
         # The feature alias.
         self.alias_name = alias_name
-        # The feature view ID. You can call the ListFeatureViews operation to query the feature view ID.
+        # The feature view ID. You can call the ListFeatureViews operation to obtain the feature view ID.
         # 
         # This parameter is required.
         self.feature_view_id = feature_view_id
