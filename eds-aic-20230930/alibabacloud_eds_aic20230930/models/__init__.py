@@ -114,6 +114,9 @@ from ._describe_buckets_response import DescribeBucketsResponse
 from ._describe_cloud_phone_nodes_request import DescribeCloudPhoneNodesRequest
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBody
 from ._describe_cloud_phone_nodes_response import DescribeCloudPhoneNodesResponse
+from ._describe_credit_detail_request import DescribeCreditDetailRequest
+from ._describe_credit_detail_response_body import DescribeCreditDetailResponseBody
+from ._describe_credit_detail_response import DescribeCreditDetailResponse
 from ._describe_credit_package_request import DescribeCreditPackageRequest
 from ._describe_credit_package_response_body import DescribeCreditPackageResponseBody
 from ._describe_credit_package_response import DescribeCreditPackageResponse
@@ -392,6 +395,8 @@ from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesRe
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelTags
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModel
+from ._describe_credit_detail_response_body import DescribeCreditDetailResponseBodyDataDetails
+from ._describe_credit_detail_response_body import DescribeCreditDetailResponseBodyData
 from ._describe_credit_package_response_body import DescribeCreditPackageResponseBodyCreditsPackageInfos
 from ._describe_display_config_response_body import DescribeDisplayConfigResponseBodyDisplayConfigModel
 from ._describe_image_list_request import DescribeImageListRequestImageBizTags
@@ -574,6 +579,9 @@ __all__ = [
     DescribeCloudPhoneNodesRequest,
     DescribeCloudPhoneNodesResponseBody,
     DescribeCloudPhoneNodesResponse,
+    DescribeCreditDetailRequest,
+    DescribeCreditDetailResponseBody,
+    DescribeCreditDetailResponse,
     DescribeCreditPackageRequest,
     DescribeCreditPackageResponseBody,
     DescribeCreditPackageResponse,
@@ -852,6 +860,8 @@ __all__ = [
     DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo,
     DescribeCloudPhoneNodesResponseBodyNodeModelTags,
     DescribeCloudPhoneNodesResponseBodyNodeModel,
+    DescribeCreditDetailResponseBodyDataDetails,
+    DescribeCreditDetailResponseBodyData,
     DescribeCreditPackageResponseBodyCreditsPackageInfos,
     DescribeDisplayConfigResponseBodyDisplayConfigModel,
     DescribeImageListRequestImageBizTags,

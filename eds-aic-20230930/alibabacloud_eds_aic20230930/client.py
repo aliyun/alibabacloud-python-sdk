@@ -3386,6 +3386,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_cloud_phone_nodes_with_options_async(request, runtime)
 
+    def describe_credit_detail_with_options(
+        self,
+        request: main_models.DescribeCreditDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditDetail',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_credit_detail_with_options_async(
+        self,
+        request: main_models.DescribeCreditDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCreditDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCreditDetail',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCreditDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_credit_detail(
+        self,
+        request: main_models.DescribeCreditDetailRequest,
+    ) -> main_models.DescribeCreditDetailResponse:
+        runtime = RuntimeOptions()
+        return self.describe_credit_detail_with_options(request, runtime)
+
+    async def describe_credit_detail_async(
+        self,
+        request: main_models.DescribeCreditDetailRequest,
+    ) -> main_models.DescribeCreditDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_credit_detail_with_options_async(request, runtime)
+
     def describe_credit_package_with_options(
         self,
         request: main_models.DescribeCreditPackageRequest,
