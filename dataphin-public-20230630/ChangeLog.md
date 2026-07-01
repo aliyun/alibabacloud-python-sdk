@@ -1,3 +1,17 @@
+2026-07-01 Version: 2.8.0
+- Support API CreateDataset.
+- Support API DeleteDataset.
+- Support API GetBatchTemplateVersions.
+- Support API GetDataset.
+- Support API GetOperationRecordById.
+- Support API GetOperationRecordDetail.
+- Support API GetOperationRecordRunCode.
+- Support API ListBatchTemplates.
+- Support API ListDatasets.
+- Support API ListOperationRecord.
+- Support API UpdateDataset.
+
+
 2026-06-29 Version: 2.7.1
 - Update API SubmitBatchTask: add request parameters SubmitCommand.CodeTemplateVersion.
 - Update API SubmitBatchTask: add request parameters SubmitCommand.OfflineCodeTemplateId.
