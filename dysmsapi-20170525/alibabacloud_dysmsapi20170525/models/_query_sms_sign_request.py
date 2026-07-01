@@ -15,7 +15,7 @@ class QuerySmsSignRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The signature.
+        # The name of an existing SMS signature in your account.
         # 
         # This parameter is required.
         self.sign_name = sign_name

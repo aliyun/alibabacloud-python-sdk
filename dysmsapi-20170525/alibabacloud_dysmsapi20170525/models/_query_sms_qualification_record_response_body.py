@@ -17,11 +17,23 @@ class QuerySmsQualificationRecordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # 访问被拒绝详细信息。
         self.access_denied_detail = access_denied_detail
+        # 请求状态码。
+        # 
+        # * 返回OK代表请求成功。
+        # * 其他错误码，请参见本章节的错误码列表或产品[API错误码](https://help.aliyun.com/document_detail/101346.html)。
         self.code = code
+        # 资质审核列表
         self.data = data
+        # 状态码的描述。
         self.message = message
+        # 请求ID。
         self.request_id = request_id
+        # 调用接口是否成功。取值：
+        # 
+        # - **true**：调用成功。
+        # - **false**：调用失败。
         self.success = success
 
     def validate(self):
@@ -84,9 +96,13 @@ class QuerySmsQualificationRecordResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # 满足过滤条件的数据列表。
         self.list = list
+        # 当前页码。
         self.page_no = page_no
+        # 每页数据条数。
         self.page_size = page_size
+        # 总条数。
         self.total = total
 
     def validate(self):
@@ -149,25 +165,34 @@ class QuerySmsQualificationRecordResponseBodyDataList(DaraModel):
         use_by_self: str = None,
         work_order_id: int = None,
     ):
-        # 审核备注
+        # 审核备注。
         self.audit_remark = audit_remark
-        # 审核时间
+        # 审核时间。
         self.audit_time = audit_time
-        # 公司名称或实人认证姓名
+        # 企业名称。
         self.company_name = company_name
-        # 创建时间
+        # 资质创建时间。
         self.create_date = create_date
-        # 资质组ID
+        # 资质ID。
         self.group_id = group_id
-        # 法人名称
+        # 法人姓名。
         self.legal_person_name = legal_person_name
-        # 资质组名称
+        # 资质名称。
         self.qualification_group_name = qualification_group_name
-        # 审核状态名
+        # 审核状态。取值：
+        # 
+        # - INIT：审核中。
+        # - NOT_PASS：审核不通过。 
+        # - PASS：审核通过。
+        # - NOT_FINISH：资料待补充。
+        # - CANCEL：已撤回。
         self.state_name = state_name
-        # 是否自用
+        # 资质申请用途，取值：
+        # 
+        # - **true**：自用。
+        # - **false**：他用。
         self.use_by_self = use_by_self
-        # 工单ID
+        # 审核工单ID。
         self.work_order_id = work_order_id
 
     def validate(self):

@@ -12,16 +12,16 @@ class DeleteSmsSignResponseBody(DaraModel):
         request_id: str = None,
         sign_name: str = None,
     ):
-        # The response code.
+        # The HTTP status code.
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # * The value OK indicates that the request was successful.
+        # * For information about other return values, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # The returned message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The signature.
+        # The name of the deleted signature.
         self.sign_name = sign_name
 
     def validate(self):

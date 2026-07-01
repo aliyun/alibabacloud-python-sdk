@@ -15,7 +15,11 @@ class QueryShortUrlRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The short URL. You can query the short URL by calling the [AddShortUrl](https://help.aliyun.com/document_detail/186774.html) operation.
+        # The short link to query. Obtain this URL by calling the [AddShortUrl](https://help.aliyun.com/document_detail/186774.html) API.
+        # 
+        # >Notice: 
+        # 
+        # This API is not currently supported by Short Message Service.
         # 
         # This parameter is required.
         self.short_url = short_url

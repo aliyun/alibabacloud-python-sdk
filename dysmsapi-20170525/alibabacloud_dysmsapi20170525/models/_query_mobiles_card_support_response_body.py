@@ -15,19 +15,20 @@ class QueryMobilesCardSupportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # 请求状态码。
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - 返回OK代表请求成功。
+        # - 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
         self.code = code
-        # The data returned.
+        # 返回数据。
         self.data = data
-        # The request ID.
+        # 阿里云为该请求生成的唯一标识符。
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # 调用接口是否成功。取值：
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**：调用成功。
+        # 
+        # - **false**：调用失败。
         self.success = success
 
     def validate(self):
@@ -75,7 +76,7 @@ class QueryMobilesCardSupportResponseBodyData(DaraModel):
         self,
         query_result: List[main_models.QueryMobilesCardSupportResponseBodyDataQueryResult] = None,
     ):
-        # The list of returned results.
+        # 查询值。
         self.query_result = query_result
 
     def validate(self):
@@ -112,12 +113,12 @@ class QueryMobilesCardSupportResponseBodyDataQueryResult(DaraModel):
         mobile: str = None,
         support: bool = None,
     ):
-        # The mobile phone number.
+        # 查询的手机号码。
         self.mobile = mobile
-        # Indicates whether the mobile phone number supports card messages. Valid values:
+        # 是否支持卡片短信。取值：
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**：支持。
+        # - **false**：不支持。
         self.support = support
 
     def validate(self):

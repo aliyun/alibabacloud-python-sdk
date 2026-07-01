@@ -15,11 +15,25 @@ class GetSmsOcrOssInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # 访问被拒绝详细信息，只有 RAM 校验失败才会返回此字段。
         self.access_denied_detail = access_denied_detail
+        # 请求状态码。
+        # 
+        # - 返回 OK 代表请求成功。
+        # 
+        # - 其他错误码，请参见 [API 错误码](https://www.alibabacloud.com/help/en/sms/developer-reference/api-error-codes)。
         self.code = code
+        # 状态码的描述。
         self.message = message
+        # OSS配置信息。
         self.model = model
+        # 本次调用请求的 ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
         self.request_id = request_id
+        # 调用接口是否成功。取值：
+        # 
+        # - true：调用成功。
+        # 
+        # - false：调用失败。
         self.success = success
 
     def validate(self):
@@ -85,12 +99,19 @@ class GetSmsOcrOssInfoResponseBodyModel(DaraModel):
         signature: str = None,
         start_path: str = None,
     ):
+        # 签名使用的 AccessKey ID。
         self.access_key_id = access_key_id
+        # bucket名称。
         self.bucket = bucket
+        # 过期时间戳，单位：秒。
         self.expire_time = expire_time
+        # Host 地址。
         self.host = host
+        # 签名策略。
         self.policy = policy
+        # 根据 AccessKey Secret 和 Policy 计算出的签名信息。调用 OSS API 时，OSS 验证该签名信息，从而确认请求的合法性。
         self.signature = signature
+        # 策略路径。
         self.start_path = start_path
 
     def validate(self):

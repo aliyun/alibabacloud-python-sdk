@@ -15,6 +15,7 @@ class QueryDigitalSignByNameRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the digital SMS signature. The signature must belong to your Alibaba Cloud account.
         self.sign_name = sign_name
 
     def validate(self):

@@ -12,16 +12,16 @@ class ModifySmsTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_code: str = None,
     ):
-        # The response code.
+        # 请求状态码。
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - 返回OK代表请求成功。
+        # - 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
         self.code = code
-        # The returned message.
+        # 状态码的描述。
         self.message = message
-        # The request ID.
+        # 请求ID。
         self.request_id = request_id
-        # The code of the message template.
+        # 已修改的模板Code。
         self.template_code = template_code
 
     def validate(self):

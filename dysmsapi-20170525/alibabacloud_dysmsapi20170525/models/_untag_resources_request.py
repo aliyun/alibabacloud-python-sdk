@@ -19,27 +19,28 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to delete all tags from the message template. Valid values:
+        # Specifies whether to delete all tags under the template. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes.
+        # - **false**: no.
         self.all = all
         self.owner_id = owner_id
-        # The name of the cloud service. Set the value to **dysms**.
+        # The product name. Default value: **dysms**.
         self.prod_code = prod_code
-        # The region. Set the value to cn-hangzhou.
+        # The region ID. Set the value to cn-hangzhou by default.
+        # For more region IDs, see [Service endpoints](https://help.aliyun.com/document_detail/419270.html).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The array of message template codes. You can specify 1 to 20 message templates.
+        # The SMS template code. The number of codes cannot exceed 20.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to TEMPLATE.
+        # The resource type. Set the value to TEMPLATE by default.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The array of tag keys. You can specify 1 to 20 tag keys.
+        # The tag key. You can add no more than 20 tags at a time.
         self.tag_key = tag_key
 
     def validate(self):

@@ -12,13 +12,14 @@ class CheckMobilesCardSupportRequest(DaraModel):
         mobiles: List[Dict[str, Any]] = None,
         template_code: str = None,
     ):
-        # The list of mobile phone numbers that receive messages.
+        # The list of phone numbers to be queried.
         # 
         # This parameter is required.
         self.mobiles = mobiles
-        # The code of the message template. You can view the template code in the **Template Code** column on the **Templates** tab of the **Go China** page in the Alibaba Cloud SMS console.
+        # The code of the card SMS template.
+        # Log on to the SMS Service console and go to the [Domestic Card SMS](https://dysms.console.aliyun.com/domestic/card) page. On the **Template Management** tab, you can view the list of card SMS templates.
         # 
-        # > Make sure that the message template has been approved.
+        # >The template must be added and approved.
         # 
         # This parameter is required.
         self.template_code = template_code

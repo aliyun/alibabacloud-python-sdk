@@ -14,11 +14,24 @@ class RequiredPhoneCodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # This field is not returned and can be ignored.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation call is successful. Valid values:
+        # 
+        # - **true**: The call is successful.
+        # 
+        # - **false**: The call fails.
         self.success = success
 
     def validate(self):

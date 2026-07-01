@@ -13,19 +13,21 @@ class CreateCardSmsTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The request status code. Valid values:
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - OK: The request was successful.
+        # 
+        # - For a list of other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # The data returned.
+        # The data returned by the operation.
         self.data = data
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -73,11 +75,9 @@ class CreateCardSmsTemplateResponseBodyData(DaraModel):
         self,
         template_code: str = None,
     ):
-        # The code of the message template.
+        # The code for the card SMS template. You can view the **Template Code** on the **Card SMS** > [template management](https://dysms.console.aliyun.com/domestic/card) page in the console.
         # 
-        # You can view the template code in the **Template Code** column on the **Templates** tab of the **Go China** page in the [Alibaba Cloud SMS console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview).
-        # 
-        # > Make sure that the message template has been approved.
+        # > The card SMS template must be approved before it can be used.
         self.template_code = template_code
 
     def validate(self):

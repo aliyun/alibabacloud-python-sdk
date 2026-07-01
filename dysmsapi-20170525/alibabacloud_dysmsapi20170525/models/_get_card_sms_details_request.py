@@ -18,28 +18,28 @@ class GetCardSmsDetailsRequest(DaraModel):
         resource_owner_id: int = None,
         send_date: str = None,
     ):
-        # Card SMS sending ID, which is the BizCardId field in the response when calling SendCardSms or SendBatchCardSms.
+        # The card SMS sending ID. When you send a card SMS by calling the [SendCardSms](https://help.aliyun.com/document_detail/434120.html) or [SendBatchCardSms](https://help.aliyun.com/document_detail/434119.html) operation, obtain the BizCardId field from the response.
         self.biz_card_id = biz_card_id
-        # Digital SMS sending ID, which is the BizDigitalId field in the response when calling SendCardSms or SendBatchCardSms.
+        # The digital SMS sending ID. When you send a card SMS by calling the [SendCardSms](https://help.aliyun.com/document_detail/434120.html) or [SendBatchCardSms](https://help.aliyun.com/document_detail/434119.html) operation, obtain the BizDigitalId field from the response.
         self.biz_digit_id = biz_digit_id
-        # Text SMS sending ID, which is the BizSmsId field in the response when calling SendCardSms or SendBatchCardSms.
+        # The text SMS sending ID. When you send a card SMS by calling the [SendCardSms](https://help.aliyun.com/document_detail/434120.html) or [SendBatchCardSms](https://help.aliyun.com/document_detail/434119.html) operation, obtain the BizSmsId field from the response.
         self.biz_sms_id = biz_sms_id
-        # For paginated viewing of sending records, specify the current page number of the sending records.
+        # The current page number when you paginate sending records.
         self.current_page = current_page
         self.owner_id = owner_id
-        # For paginated viewing of sending records, specify the number of card SMS records to display per page.
+        # The number of card SMS records to display on each page when you paginate sending records.
         # 
-        # The value range is 1~50.
+        # Valid values: 1 to 50.
         self.page_size = page_size
-        # Domestic phone number that received the SMS. Format: 11-digit phone number, for example, 1390000****.
+        # The domestic mobile phone number that received the SMS. Format: an 11-digit mobile phone number. For example, 1390000****.
         # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Card SMS sending date, supports querying records from the last 30 days.
+        # The card SMS sending date. Records from the last 30 days can be queried.
         # 
-        # Format: yyyyMMdd, for example, 20240112.
+        # Format: yyyyMMdd. For example, 20240112.
         # 
         # This parameter is required.
         self.send_date = send_date

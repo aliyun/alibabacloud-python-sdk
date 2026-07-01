@@ -18,18 +18,23 @@ class QuerySmsAuthorizationLetterRequest(DaraModel):
         state: str = None,
         status: str = None,
     ):
-        # 委托授权书id列表
+        # The list of letter of authorization IDs.
         self.authorization_letter_id_list = authorization_letter_id_list
-        # 授权方社会统一信用代码
+        # The unified social credit code of the authorizing party. The length cannot exceed 150 characters.
         self.organization_code = organization_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 签名名称（支持命中签名范围查询）
+        # The signature name. If the authorization scope includes multiple signatures when you create the letter of authorization, the letters of authorization that contain the signature are returned.
         self.sign_name = sign_name
-        # 授权书审核状态，INT:审核中，PASSED:审核通过
+        # The review status of the letter of authorization, which is related to the review status of the signature. Valid values:
+        # - **INT**: Pending review. The letter of authorization has been created. After you submit a signature application, it enters the review process.
+        # - **PASSED**: Review passed. When a signature in the authorized signature scope of the letter of authorization passes the review, the status of the letter of authorization changes to PASSED.
         self.state = state
-        # 授权书可用状态，VALID可用，INVALID不可用
+        # The availability status of the letter of authorization, which is related to the validity period of the letter of authorization. Valid values:
+        # 
+        # - **VALID**: Available. The letter of authorization is within the validity period.
+        # - **INVALID**: Unavailable. The letter of authorization has expired.
         self.status = status
 
     def validate(self):

@@ -16,28 +16,38 @@ class AddSmsTemplateRequest(DaraModel):
         template_type: int = None,
     ):
         self.owner_id = owner_id
-        # The description of the message template. It is one of the reference information for template review. The description cannot exceed 100 characters in length.
+        # The description for the SMS template application. The length must not exceed 100 characters.
+        # 
+        # This is reference information for template review. Providing a complete application description helps reviewers understand your business scenario and improves review efficiency. Guidelines:
+        # 
+        # - You can provide the usage scenario of business that has been launched.
+        # - You can provide SMS examples for real scenarios to demonstrate your business scenario.
+        # - You can provide the variable parameter content, describing the business usage scenario in detail and the reason for choosing this variable attribute.
+        # - You can provide website links of actual business, registered domain addresses, app market download links, and so on.
+        # - For login scenarios, you can provide a test account and password.
         # 
         # This parameter is required.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The content of the template. The content can be up to 500 characters in length. For more information, see [Message template specifications](https://help.aliyun.com/document_detail/108253.html).
+        # The template content. The length must not exceed 500 characters.
+        # 
+        # The template content and variable content must comply with the [SMS template specifications](https://help.aliyun.com/document_detail/463161.html); otherwise, the template review will fail. You can also view common template examples on the [Apply for template](https://dysms.console.aliyun.com/domestic/text/template/add) page. Using example templates can improve review efficiency and success rate. For variable specifications, see [TemplateContent parameter variable specifications](https://help.aliyun.com/document_detail/2806243.html).
         # 
         # This parameter is required.
         self.template_content = template_content
-        # The name of the template. The name can be up to 30 characters in length.
+        # The template name. The length must not exceed 30 characters.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The type of the message. Valid values:
+        # The SMS type. Valid values:
         # 
-        # *   **0**: verification code
-        # *   **1**: notification
-        # *   **2**: promotional message
-        # *   **3**: message sent to countries or regions outside the Chinese mainland
+        # - **0**: verification code.
+        # - **1**: notification SMS.
+        # - **2**: promotional SMS.
+        # - **3**: international/Hong Kong, Macao, and Taiwan messages.
         # 
-        # > Only enterprise users can send promotional messages, or send messages to countries or regions outside the Chinese mainland.
+        # > Only enterprise-verified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. For details about the differences between individual and enterprise user privileges, see [Usage notes](https://help.aliyun.com/document_detail/55324.html).
         # 
         # This parameter is required.
         self.template_type = template_type

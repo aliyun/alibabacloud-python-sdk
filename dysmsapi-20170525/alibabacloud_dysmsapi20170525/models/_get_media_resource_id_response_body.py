@@ -13,19 +13,20 @@ class GetMediaResourceIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # 请求状态码。
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - 返回OK代表请求成功。
+        # - 其他错误码，请参见[错误码列表](https://help.aliyun.com/document_detail/101346.html)。
         self.code = code
-        # The data returned.
+        # 返回数据。
         self.data = data
-        # The request ID.
+        # 请求ID。
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # 调用接口是否成功。取值：
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**：调用成功。
+        # 
+        # - **false**：调用失败。
         self.success = success
 
     def validate(self):
@@ -74,9 +75,9 @@ class GetMediaResourceIdResponseBodyData(DaraModel):
         res_url_download: str = None,
         resource_id: int = None,
     ):
-        # The download URL of the resource.
+        # 资源下载地址。
         self.res_url_download = res_url_download
-        # The resource ID.
+        # 资源ID。
         self.resource_id = resource_id
 
     def validate(self):

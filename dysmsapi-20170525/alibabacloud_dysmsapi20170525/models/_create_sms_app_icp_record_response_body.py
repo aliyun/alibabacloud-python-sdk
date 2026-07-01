@@ -14,11 +14,25 @@ class CreateSmsAppIcpRecordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - A value of `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see the [error code list](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # The ID of the app\\"s ICP filing record.
         self.data = data
+        # The message returned with the request status code.
         self.message = message
+        # The request ID. Alibaba Cloud generates this unique identifier for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the API call was successful. Valid values:
+        # 
+        # - **`true`**
+        # 
+        # - **`false`**
         self.success = success
 
     def validate(self):

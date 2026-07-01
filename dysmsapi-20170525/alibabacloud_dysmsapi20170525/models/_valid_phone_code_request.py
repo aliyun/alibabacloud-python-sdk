@@ -13,12 +13,12 @@ class ValidPhoneCodeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 验证码
+        # The verification code.
         # 
         # This parameter is required.
         self.certify_code = certify_code
         self.owner_id = owner_id
-        # 手机号
+        # The phone number.
         # 
         # This parameter is required.
         self.phone_no = phone_no

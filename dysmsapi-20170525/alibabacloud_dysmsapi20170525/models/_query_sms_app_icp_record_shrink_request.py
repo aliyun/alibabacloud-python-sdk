@@ -12,7 +12,7 @@ class QuerySmsAppIcpRecordShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # app-icp备案实体id列表
+        # A list of icp record entity IDs.
         # 
         # This parameter is required.
         self.app_icp_record_id_list_shrink = app_icp_record_id_list_shrink

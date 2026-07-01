@@ -20,21 +20,21 @@ class TagResourcesRequest(DaraModel):
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
-        # The name of the cloud service. Set the value to **dysms**.
+        # The product name. Default value: **dysms**.
         self.prod_code = prod_code
-        # The region ID. Set the value to **cn-hangzhou**.
+        # The region ID. Default value: **cn-hangzhou**. For more region IDs, see [Endpoints](https://help.aliyun.com/document_detail/419270.html).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The code of the message template.
+        # The SMS template codes. The number of codes cannot exceed 20.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **TEMPLATE**.
+        # The resource type. Default value: **TEMPLATE**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag.
+        # The tags. You can add up to 20 tags at a time.
         # 
         # This parameter is required.
         self.tag = tag
@@ -115,9 +115,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The array of tag keys. Valid values of N: 1 to 20.
+        # The tag key.
         self.key = key
-        # The array of tag values. Valid values of N: 1 to 20.
+        # The tag value.
         self.value = value
 
     def validate(self):

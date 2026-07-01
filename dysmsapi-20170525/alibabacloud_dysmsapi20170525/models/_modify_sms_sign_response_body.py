@@ -12,16 +12,16 @@ class ModifySmsSignResponseBody(DaraModel):
         request_id: str = None,
         sign_name: str = None,
     ):
-        # The response code.
+        # 请求状态码。
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+        # * 返回OK代表请求成功。
+        # * 其他错误码，请参见[API错误码](https://help.aliyun.com/document_detail/101346.html)。
         self.code = code
-        # The returned message.
+        # 状态码的描述。
         self.message = message
-        # The request ID.
+        # 请求ID。
         self.request_id = request_id
-        # The signature.
+        # 签名名称。
         self.sign_name = sign_name
 
     def validate(self):

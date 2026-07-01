@@ -13,19 +13,20 @@ class GetOSSInfoForCardTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # 请求状态码。
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - OK：代表请求成功。
+        # - 其他错误码，请参见[API错误码](https://help.aliyun.com/document_detail/101346.html)。
         self.code = code
-        # The data returned.
+        # 返回数据。
         self.data = data
-        # The request ID.
+        # 请求ID。
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # 调用接口是否成功。取值：
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**：调用成功。
+        # 
+        # - **false**：调用失败。
         self.success = success
 
     def validate(self):
@@ -80,21 +81,21 @@ class GetOSSInfoForCardTemplateResponseBodyData(DaraModel):
         signature: str = None,
         start_path: str = None,
     ):
-        # The AccessKey ID.
+        # 签名使用的AccessKey ID。
         self.access_key_id = access_key_id
-        # The ID of the Alibaba Cloud account.
+        # 阿里云账号ID。
         self.ali_uid = ali_uid
-        # The name of the OSS bucket.
+        # OSS文件保存桶名称。
         self.bucket = bucket
-        # The timeout period.
+        # 超时时间戳。单位：秒。
         self.expire_time = expire_time
-        # The hostname.
+        # 访问地址。
         self.host = host
-        # The signature policy.
+        # 签名策略。
         self.policy = policy
-        # The signature.
+        # 短信签名。
         self.signature = signature
-        # The path of the policy.
+        # 策略路径。
         self.start_path = start_path
 
     def validate(self):

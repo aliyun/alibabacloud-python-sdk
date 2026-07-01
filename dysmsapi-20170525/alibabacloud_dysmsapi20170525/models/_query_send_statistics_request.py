@@ -18,23 +18,24 @@ class QuerySendStatisticsRequest(DaraModel):
         start_date: str = None,
         template_type: int = None,
     ):
-        # The end of the time range to query. Format: yyyyMMdd. Example: 20181225.
+        # The end date. The format is yyyyMMdd.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The site from where the message is sent. Valid values:
+        # The destination scope of the messages. Valid values:
         # 
-        # *   **1**: China site
-        # *   **2**: international site
+        # - **1**: domestic messages.
+        # 
+        # - **2**: international messages.
         # 
         # This parameter is required.
         self.is_globe = is_globe
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The current page number.
         # 
         # This parameter is required.
         self.page_index = page_index
-        # The number of entries to return on each page. Valid values: **1 to 50**.
+        # The page size. Valid values: **1 to 50**.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -42,17 +43,21 @@ class QuerySendStatisticsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The signature.
         self.sign_name = sign_name
-        # The beginning of the time range to query. Format: yyyyMMdd. Example: 20181225.
+        # The start date. The format is yyyyMMdd.
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The type of the message template. Valid values: Valid values:
+        # The template type. Valid values:
         # 
-        # *   **0**: verification code
-        # *   **1**: notification
-        # *   **2**: promotional message (Enterprise users only)
-        # *   **3**: international purpose (Enterprise users only)
-        # *   **7**: digital message
+        # - **0**: verification code.
+        # 
+        # - **1**: notification message.
+        # 
+        # - **2**: promotional message. (Enterprise customers only)
+        # 
+        # - **3**: international message. (Enterprise customers only)
+        # 
+        # - **7**: digital message.
         self.template_type = template_type
 
     def validate(self):

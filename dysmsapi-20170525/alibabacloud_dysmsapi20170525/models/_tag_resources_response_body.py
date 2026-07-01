@@ -11,15 +11,15 @@ class TagResourcesResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The request status code. Valid values:
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - OK: The request was successful.
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # Indicates whether tags were attached. Valid values:
+        # The result of adding the tags. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: success.
+        # - **false**: failure.
         self.data = data
         # The request ID.
         self.request_id = request_id

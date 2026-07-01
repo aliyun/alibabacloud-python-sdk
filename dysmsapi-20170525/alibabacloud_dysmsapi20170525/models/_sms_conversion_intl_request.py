@@ -14,16 +14,17 @@ class SmsConversionIntlRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The time when the OTP message was delivered. The value is a UNIX timestamp. Unit: milliseconds.
+        # The timestamp at which the message reached the recipient. Must be a Unix timestamp, expressed as a long integer in milliseconds.
         # 
-        # *   If you leave the parameter empty, the current timestamp is specified by default.
-        # *   If you specify the parameter, the timestamp must be greater than the message sending time and less than the current timestamp.
+        # - If this field is not specified: defaults to the current timestamp.
+        # 
+        # - If this field is specified: the timestamp must be greater than the send time and less than the current timestamp.
         self.conversion_time = conversion_time
-        # Specifies whether customers replied to the OTP message. Valid values: true and false.
+        # Set to true if your user replied to the message you sent. Otherwise, set to false.
         # 
         # This parameter is required.
         self.delivered = delivered
-        # The ID of the message.
+        # Message ID.
         # 
         # This parameter is required.
         self.message_id = message_id

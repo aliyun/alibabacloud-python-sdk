@@ -16,18 +16,21 @@ class GetCardSmsDetailsResponseBody(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # Access denied detail; this field is returned only if the RAM check fails.
+        # The access denied details. This parameter is returned only when the RAM check fails.
         self.access_denied_detail = access_denied_detail
-        # Card SMS sending result
+        # The card SMS sending result.
         self.card_send_detail_dto = card_send_detail_dto
-        # Request status code.
-        # * OK indicates a successful request.
-        # * For other error codes, see [API Error Codes](https://help.aliyun.com/document_detail/101346.html).
+        # The request status code.
+        # * OK indicates that the request was successful.
+        # * For other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # Description of the status code.
+        # The description of the status code.
         self.message = message
-        # Indicates whether the API call was successful. Values:
-        # - **true** - **false**
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -84,13 +87,13 @@ class GetCardSmsDetailsResponseBodyCardSendDetailDTO(DaraModel):
         records: List[main_models.GetCardSmsDetailsResponseBodyCardSendDetailDTORecords] = None,
         total_count: int = None,
     ):
-        # Current page number
+        # The page number.
         self.current_page = current_page
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # List of card SMS sending records
+        # The list of card SMS sending records.
         self.records = records
-        # Total count
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -154,27 +157,36 @@ class GetCardSmsDetailsResponseBodyCardSendDetailDTORecords(DaraModel):
         sms_content: str = None,
         template_code: str = None,
     ):
-        # Error code for sending
+        # The sending error code.
         self.err_code = err_code
-        # Customer-transmitted outId
+        # The outId passed by the customer.
         self.out_id = out_id
-        # Phone number that received the SMS
+        # The phone number that received the SMS.
         self.phone_number = phone_number
-        # Receive date
+        # The receive time.
         self.receive_date = receive_date
-        # Receive SMS type
+        # The SMS receive type.
         self.receive_type = receive_type
-        # Render date
+        # The render time.
         self.render_date = render_date
-        # Render status. 0: Not rendered; 1: Rendered successfully; 3: Not rendered
+        # The parsing status. Valid values:
+        # 
+        # - 0: not parsed.
+        # - 1: parsed successfully.
+        # - 3: not parsed.
         self.render_status = render_status
-        # Time when the SMS was sent
+        # The SMS sending time.
         self.send_date = send_date
-        # Sending status. 1: Sending; 2: Send failed; 3: Sent successfully; 4: Addressing failed
+        # The sending status. Valid values:
+        # 
+        # - 1: sending.
+        # - 2: sending failed.
+        # - 3: sending succeeded.
+        # - 4: addressing failed.
         self.send_status = send_status
-        # SMS content. Only applicable for text messages.
+        # The SMS content. Only text SMS has a value.
         self.sms_content = sms_content
-        # Template code
+        # The template code.
         self.template_code = template_code
 
     def validate(self):

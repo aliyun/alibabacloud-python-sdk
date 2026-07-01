@@ -15,14 +15,15 @@ class QuerySendStatisticsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The response code. Valid values:
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - OK: The request was successful.
+        # 
+        # - For other values, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -73,7 +74,7 @@ class QuerySendStatisticsResponseBodyData(DaraModel):
         target_list: List[main_models.QuerySendStatisticsResponseBodyDataTargetList] = None,
         total_size: int = None,
     ):
-        # The details of the data returned.
+        # A list of delivery statistics.
         self.target_list = target_list
         # The total number of entries returned.
         self.total_size = total_size
@@ -121,15 +122,15 @@ class QuerySendStatisticsResponseBodyDataTargetList(DaraModel):
         send_date: str = None,
         total_count: int = None,
     ):
-        # The number of messages without a delivery receipt.
+        # The number of messages with no delivery receipts.
         self.no_responded_count = no_responded_count
-        # The number of messages with a delivery receipt that indicates a failure.
+        # The number of messages with failed delivery receipts.
         self.responded_fail_count = responded_fail_count
-        # The number of messages with a delivery receipt that indicates a success.
+        # The number of messages with successful delivery receipts.
         self.responded_success_count = responded_success_count
-        # The date when the message is sent. Format: yyyyMMdd. Example: 20181225.
+        # The date the messages were sent. Format: yyyyMMdd.
         self.send_date = send_date
-        # The number of delivered messages.
+        # The number of successfully sent messages (billable message count).
         self.total_count = total_count
 
     def validate(self):

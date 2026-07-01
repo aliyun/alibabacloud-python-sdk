@@ -15,7 +15,11 @@ class DeleteShortUrlRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The source address. The address can be up to 1,000 characters in length.
+        # The source URL. The URL must not exceed 1,000 characters.
+        # 
+        # >Notice: 
+        # 
+        # Short Message Service does not currently support this API operation.
         # 
         # This parameter is required.
         self.source_url = source_url

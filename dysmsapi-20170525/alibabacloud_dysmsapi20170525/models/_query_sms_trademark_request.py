@@ -17,7 +17,7 @@ class QuerySmsTrademarkRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 商标实体id列表
+        # A list of trademark IDs.
         # 
         # This parameter is required.
         self.trademark_id_list = trademark_id_list

@@ -13,10 +13,10 @@ class QuerySingleSmsQualificationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 工单id
+        # The review ticket ID. You can call the [QuerySmsQualificationRecord](~~QuerySmsQualificationRecord~~) operation to obtain the qualifications and corresponding review ticket IDs under your current account.
         self.order_id = order_id
         self.owner_id = owner_id
-        # 资质id
+        # The qualification ID, which is the ID returned when you [apply for a qualification](~~SubmitSmsQualification~~). You can call the [QuerySmsQualificationRecord](~~QuerySmsQualificationRecord~~) operation to obtain the qualification IDs under your current account.
         # 
         # This parameter is required.
         self.qualification_group_id = qualification_group_id
