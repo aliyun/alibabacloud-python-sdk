@@ -34,27 +34,23 @@ class DescribeDBClustersRequest(DaraModel):
     ):
         # The database endpoint.
         self.connection_string = connection_string
-        # The cluster description. Fuzzy search is supported.
+        # The cluster description. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
-        # The IDs of one or more clusters. Separate multiple IDs with a comma.
+        # The cluster ID. Separate multiple cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
-        # The cluster status. For more information, see [Cluster state table](https://help.aliyun.com/document_detail/99286.html).
+        # The cluster status. For valid values, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
-        # The IDs of one or more nodes. Separate multiple IDs with a comma.
+        # The node ID. You can specify multiple node IDs, separated by commas (,).
         self.dbnode_ids = dbnode_ids
-        # The database engine. Valid values:
-        # 
-        # - **MySQL**
-        # 
-        # - **PostgreSQL**
-        # 
-        # - **Oracle**
+        # The database type. Valid values:
+        # * **MySQL**
+        # * **PostgreSQL**
+        # * **Oracle**
         self.dbtype = dbtype
-        # The database version.
+        # The database engine version.
         self.dbversion = dbversion
-        # The query mode. Set the value to Simple to return only the basic metadata of clusters.
-        # 
-        # > If you do not specify this parameter, the operation returns detailed information about the clusters.
+        # The query mode for the list. Set the value to Simple to use the simple mode, which returns only basic metadata of clusters.
+        # > If you do not specify this parameter, the detailed mode is used by default, which returns detailed information about clusters.
         self.describe_type = describe_type
         # Specifies whether the cluster has expired. Valid values:
         # 
@@ -64,25 +60,23 @@ class DescribeDBClustersRequest(DaraModel):
         self.expired = expired
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**.
-        # 
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
+        #                               
         # Default value: **30**.
         self.page_size = page_size
-        # The billing method. Valid values:
+        # The billing method. Valid values: 
         # 
-        # - **Postpaid**: pay-as-you-go
-        # 
-        # - **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # Filters the query to return only clusters created within the specified number of days. Valid values: 0 to 15.
+        # Filters clusters created within the last N days. Valid values: 0 to 15.
         self.recent_creation_interval = recent_creation_interval
-        # Filters the query to return only clusters that will expire within the specified number of days. Valid values: 0 to 15.
+        # Filters clusters that expire within the next N days. Valid values: 0 to 15.
         self.recent_expiration_interval = recent_expiration_interval
         # The region ID.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -90,7 +84,7 @@ class DescribeDBClustersRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags used to filter clusters.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -247,13 +241,13 @@ class DescribeDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag used for filtering. You can specify up to 20 tags. The `n` in `Tag.n.Key` indicates the tag number and must be a consecutive integer starting from 1.
+        # The tag key. You can use tags to filter the cluster list. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer that starts from 1. The Tag.n.Key parameter is paired with the Tag.n.Value parameter.
         # 
-        # > The tag key cannot exceed 128 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # > The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.key = key
-        # The tag value.
+        # The tag value that corresponds to the tag key.
         # 
-        # > The tag value cannot exceed 128 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # > The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.value = value
 
     def validate(self):

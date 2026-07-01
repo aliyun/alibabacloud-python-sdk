@@ -16,11 +16,10 @@ class DescribeDBClustersResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details of the clusters.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of clusters returned on the current page.
+        # The number of clusters on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
@@ -113,6 +112,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(DaraModel):
         self,
         ai_type: str = None,
         category: str = None,
+        connection_resource_quota: int = None,
+        connection_resource_used: int = None,
         cpu_cores: str = None,
         create_time: str = None,
         dbcluster_description: str = None,
@@ -150,6 +151,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(DaraModel):
     ):
         self.ai_type = ai_type
         self.category = category
+        self.connection_resource_quota = connection_resource_quota
+        self.connection_resource_used = connection_resource_used
         self.cpu_cores = cpu_cores
         self.create_time = create_time
         self.dbcluster_description = dbcluster_description
@@ -201,6 +204,12 @@ class DescribeDBClustersResponseBodyItemsDBCluster(DaraModel):
 
         if self.category is not None:
             result['Category'] = self.category
+
+        if self.connection_resource_quota is not None:
+            result['ConnectionResourceQuota'] = self.connection_resource_quota
+
+        if self.connection_resource_used is not None:
+            result['ConnectionResourceUsed'] = self.connection_resource_used
 
         if self.cpu_cores is not None:
             result['CpuCores'] = self.cpu_cores
@@ -313,6 +322,12 @@ class DescribeDBClustersResponseBodyItemsDBCluster(DaraModel):
 
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('ConnectionResourceQuota') is not None:
+            self.connection_resource_quota = m.get('ConnectionResourceQuota')
+
+        if m.get('ConnectionResourceUsed') is not None:
+            self.connection_resource_used = m.get('ConnectionResourceUsed')
 
         if m.get('CpuCores') is not None:
             self.cpu_cores = m.get('CpuCores')

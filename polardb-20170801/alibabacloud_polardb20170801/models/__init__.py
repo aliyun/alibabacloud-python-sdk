@@ -106,6 +106,15 @@ from ._create_account_zonal_response import CreateAccountZonalResponse
 from ._create_activation_code_request import CreateActivationCodeRequest
 from ._create_activation_code_response_body import CreateActivationCodeResponseBody
 from ._create_activation_code_response import CreateActivationCodeResponse
+from ._create_agentic_dbbranch_request import CreateAgenticDBBranchRequest
+from ._create_agentic_dbbranch_response_body import CreateAgenticDBBranchResponseBody
+from ._create_agentic_dbbranch_response import CreateAgenticDBBranchResponse
+from ._create_agentic_dbproject_request import CreateAgenticDBProjectRequest
+from ._create_agentic_dbproject_response_body import CreateAgenticDBProjectResponseBody
+from ._create_agentic_dbproject_response import CreateAgenticDBProjectResponse
+from ._create_agentic_dbtenant_api_key_request import CreateAgenticDBTenantApiKeyRequest
+from ._create_agentic_dbtenant_api_key_response_body import CreateAgenticDBTenantApiKeyResponseBody
+from ._create_agentic_dbtenant_api_key_response import CreateAgenticDBTenantApiKeyResponse
 from ._create_application_request import CreateApplicationRequest
 from ._create_application_shrink_request import CreateApplicationShrinkRequest
 from ._create_application_response_body import CreateApplicationResponseBody
@@ -239,6 +248,18 @@ from ._delete_account_response import DeleteAccountResponse
 from ._delete_account_zonal_request import DeleteAccountZonalRequest
 from ._delete_account_zonal_response_body import DeleteAccountZonalResponseBody
 from ._delete_account_zonal_response import DeleteAccountZonalResponse
+from ._delete_agentic_dbbranch_request import DeleteAgenticDBBranchRequest
+from ._delete_agentic_dbbranch_response_body import DeleteAgenticDBBranchResponseBody
+from ._delete_agentic_dbbranch_response import DeleteAgenticDBBranchResponse
+from ._delete_agentic_dbcompute_cluster_request import DeleteAgenticDBComputeClusterRequest
+from ._delete_agentic_dbcompute_cluster_response_body import DeleteAgenticDBComputeClusterResponseBody
+from ._delete_agentic_dbcompute_cluster_response import DeleteAgenticDBComputeClusterResponse
+from ._delete_agentic_dbproject_request import DeleteAgenticDBProjectRequest
+from ._delete_agentic_dbproject_response_body import DeleteAgenticDBProjectResponseBody
+from ._delete_agentic_dbproject_response import DeleteAgenticDBProjectResponse
+from ._delete_agentic_dbtenant_api_key_request import DeleteAgenticDBTenantApiKeyRequest
+from ._delete_agentic_dbtenant_api_key_response_body import DeleteAgenticDBTenantApiKeyResponseBody
+from ._delete_agentic_dbtenant_api_key_response import DeleteAgenticDBTenantApiKeyResponse
 from ._delete_application_request import DeleteApplicationRequest
 from ._delete_application_response_body import DeleteApplicationResponseBody
 from ._delete_application_response import DeleteApplicationResponse
@@ -393,6 +414,33 @@ from ._describe_active_operation_maintain_conf_response import DescribeActiveOpe
 from ._describe_active_operation_tasks_request import DescribeActiveOperationTasksRequest
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBody
 from ._describe_active_operation_tasks_response import DescribeActiveOperationTasksResponse
+from ._describe_agentic_dbbranch_request import DescribeAgenticDBBranchRequest
+from ._describe_agentic_dbbranch_response_body import DescribeAgenticDBBranchResponseBody
+from ._describe_agentic_dbbranch_response import DescribeAgenticDBBranchResponse
+from ._describe_agentic_dbbranch_endpoints_request import DescribeAgenticDBBranchEndpointsRequest
+from ._describe_agentic_dbbranch_endpoints_response_body import DescribeAgenticDBBranchEndpointsResponseBody
+from ._describe_agentic_dbbranch_endpoints_response import DescribeAgenticDBBranchEndpointsResponse
+from ._describe_agentic_dbbranch_lineage_request import DescribeAgenticDBBranchLineageRequest
+from ._describe_agentic_dbbranch_lineage_response_body import DescribeAgenticDBBranchLineageResponseBody
+from ._describe_agentic_dbbranch_lineage_response import DescribeAgenticDBBranchLineageResponse
+from ._describe_agentic_dbbranches_request import DescribeAgenticDBBranchesRequest
+from ._describe_agentic_dbbranches_response_body import DescribeAgenticDBBranchesResponseBody
+from ._describe_agentic_dbbranches_response import DescribeAgenticDBBranchesResponse
+from ._describe_agentic_dbclusters_request import DescribeAgenticDBClustersRequest
+from ._describe_agentic_dbclusters_response_body import DescribeAgenticDBClustersResponseBody
+from ._describe_agentic_dbclusters_response import DescribeAgenticDBClustersResponse
+from ._describe_agentic_dbcompute_clusters_request import DescribeAgenticDBComputeClustersRequest
+from ._describe_agentic_dbcompute_clusters_response_body import DescribeAgenticDBComputeClustersResponseBody
+from ._describe_agentic_dbcompute_clusters_response import DescribeAgenticDBComputeClustersResponse
+from ._describe_agentic_dbproject_request import DescribeAgenticDBProjectRequest
+from ._describe_agentic_dbproject_response_body import DescribeAgenticDBProjectResponseBody
+from ._describe_agentic_dbproject_response import DescribeAgenticDBProjectResponse
+from ._describe_agentic_dbprojects_request import DescribeAgenticDBProjectsRequest
+from ._describe_agentic_dbprojects_response_body import DescribeAgenticDBProjectsResponseBody
+from ._describe_agentic_dbprojects_response import DescribeAgenticDBProjectsResponse
+from ._describe_agentic_dbtenant_api_keys_request import DescribeAgenticDBTenantApiKeysRequest
+from ._describe_agentic_dbtenant_api_keys_response_body import DescribeAgenticDBTenantApiKeysResponseBody
+from ._describe_agentic_dbtenant_api_keys_response import DescribeAgenticDBTenantApiKeysResponse
 from ._describe_apikey_attribute_request import DescribeApikeyAttributeRequest
 from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBody
 from ._describe_apikey_attribute_response import DescribeApikeyAttributeResponse
@@ -1135,6 +1183,9 @@ from ._reset_account_password_response import ResetAccountPasswordResponse
 from ._reset_account_zonal_request import ResetAccountZonalRequest
 from ._reset_account_zonal_response_body import ResetAccountZonalResponseBody
 from ._reset_account_zonal_response import ResetAccountZonalResponse
+from ._reset_agentic_dbtenant_api_key_request import ResetAgenticDBTenantApiKeyRequest
+from ._reset_agentic_dbtenant_api_key_response_body import ResetAgenticDBTenantApiKeyResponseBody
+from ._reset_agentic_dbtenant_api_key_response import ResetAgenticDBTenantApiKeyResponse
 from ._reset_consumer_api_key_request import ResetConsumerApiKeyRequest
 from ._reset_consumer_api_key_response_body import ResetConsumerApiKeyResponseBody
 from ._reset_consumer_api_key_response import ResetConsumerApiKeyResponse
@@ -1235,6 +1286,9 @@ from ._upgrade_polar_claw_plugin_response import UpgradePolarClawPluginResponse
 from ._upgrade_polar_claw_skills_request import UpgradePolarClawSkillsRequest
 from ._upgrade_polar_claw_skills_response_body import UpgradePolarClawSkillsResponseBody
 from ._upgrade_polar_claw_skills_response import UpgradePolarClawSkillsResponse
+from ._verify_agentic_dbtenant_api_key_request import VerifyAgenticDBTenantApiKeyRequest
+from ._verify_agentic_dbtenant_api_key_response_body import VerifyAgenticDBTenantApiKeyResponseBody
+from ._verify_agentic_dbtenant_api_key_response import VerifyAgenticDBTenantApiKeyResponse
 from ._add_polar_fs_path_mapping_request import AddPolarFsPathMappingRequestCustomBucketPathList
 from ._add_polar_fs_quota_request import AddPolarFsQuotaRequestQuotas
 from ._approve_polar_claw_device_pair_response_body import ApprovePolarClawDevicePairResponseBodyDevice
@@ -1299,6 +1353,15 @@ from ._describe_accounts_zonal_response_body import DescribeAccountsZonalRespons
 from ._describe_activation_codes_response_body import DescribeActivationCodesResponseBodyItems
 from ._describe_active_operation_maintain_conf_response_body import DescribeActiveOperationMaintainConfResponseBodyConfig
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBodyItems
+from ._describe_agentic_dbbranch_endpoints_response_body import DescribeAgenticDBBranchEndpointsResponseBodyItems
+from ._describe_agentic_dbbranch_lineage_response_body import DescribeAgenticDBBranchLineageResponseBodyItems
+from ._describe_agentic_dbbranches_response_body import DescribeAgenticDBBranchesResponseBodyItems
+from ._describe_agentic_dbclusters_request import DescribeAgenticDBClustersRequestTag
+from ._describe_agentic_dbclusters_response_body import DescribeAgenticDBClustersResponseBodyItemsTags
+from ._describe_agentic_dbclusters_response_body import DescribeAgenticDBClustersResponseBodyItems
+from ._describe_agentic_dbcompute_clusters_response_body import DescribeAgenticDBComputeClustersResponseBodyItems
+from ._describe_agentic_dbprojects_response_body import DescribeAgenticDBProjectsResponseBodyItems
+from ._describe_agentic_dbtenant_api_keys_response_body import DescribeAgenticDBTenantApiKeysResponseBodyItems
 from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBodyItemsConsumer
 from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBodyItemsUsageStatistics
 from ._describe_apikey_attribute_response_body import DescribeApikeyAttributeResponseBodyItems
@@ -1704,6 +1767,15 @@ __all__ = [
     CreateActivationCodeRequest,
     CreateActivationCodeResponseBody,
     CreateActivationCodeResponse,
+    CreateAgenticDBBranchRequest,
+    CreateAgenticDBBranchResponseBody,
+    CreateAgenticDBBranchResponse,
+    CreateAgenticDBProjectRequest,
+    CreateAgenticDBProjectResponseBody,
+    CreateAgenticDBProjectResponse,
+    CreateAgenticDBTenantApiKeyRequest,
+    CreateAgenticDBTenantApiKeyResponseBody,
+    CreateAgenticDBTenantApiKeyResponse,
     CreateApplicationRequest,
     CreateApplicationShrinkRequest,
     CreateApplicationResponseBody,
@@ -1837,6 +1909,18 @@ __all__ = [
     DeleteAccountZonalRequest,
     DeleteAccountZonalResponseBody,
     DeleteAccountZonalResponse,
+    DeleteAgenticDBBranchRequest,
+    DeleteAgenticDBBranchResponseBody,
+    DeleteAgenticDBBranchResponse,
+    DeleteAgenticDBComputeClusterRequest,
+    DeleteAgenticDBComputeClusterResponseBody,
+    DeleteAgenticDBComputeClusterResponse,
+    DeleteAgenticDBProjectRequest,
+    DeleteAgenticDBProjectResponseBody,
+    DeleteAgenticDBProjectResponse,
+    DeleteAgenticDBTenantApiKeyRequest,
+    DeleteAgenticDBTenantApiKeyResponseBody,
+    DeleteAgenticDBTenantApiKeyResponse,
     DeleteApplicationRequest,
     DeleteApplicationResponseBody,
     DeleteApplicationResponse,
@@ -1991,6 +2075,33 @@ __all__ = [
     DescribeActiveOperationTasksRequest,
     DescribeActiveOperationTasksResponseBody,
     DescribeActiveOperationTasksResponse,
+    DescribeAgenticDBBranchRequest,
+    DescribeAgenticDBBranchResponseBody,
+    DescribeAgenticDBBranchResponse,
+    DescribeAgenticDBBranchEndpointsRequest,
+    DescribeAgenticDBBranchEndpointsResponseBody,
+    DescribeAgenticDBBranchEndpointsResponse,
+    DescribeAgenticDBBranchLineageRequest,
+    DescribeAgenticDBBranchLineageResponseBody,
+    DescribeAgenticDBBranchLineageResponse,
+    DescribeAgenticDBBranchesRequest,
+    DescribeAgenticDBBranchesResponseBody,
+    DescribeAgenticDBBranchesResponse,
+    DescribeAgenticDBClustersRequest,
+    DescribeAgenticDBClustersResponseBody,
+    DescribeAgenticDBClustersResponse,
+    DescribeAgenticDBComputeClustersRequest,
+    DescribeAgenticDBComputeClustersResponseBody,
+    DescribeAgenticDBComputeClustersResponse,
+    DescribeAgenticDBProjectRequest,
+    DescribeAgenticDBProjectResponseBody,
+    DescribeAgenticDBProjectResponse,
+    DescribeAgenticDBProjectsRequest,
+    DescribeAgenticDBProjectsResponseBody,
+    DescribeAgenticDBProjectsResponse,
+    DescribeAgenticDBTenantApiKeysRequest,
+    DescribeAgenticDBTenantApiKeysResponseBody,
+    DescribeAgenticDBTenantApiKeysResponse,
     DescribeApikeyAttributeRequest,
     DescribeApikeyAttributeResponseBody,
     DescribeApikeyAttributeResponse,
@@ -2733,6 +2844,9 @@ __all__ = [
     ResetAccountZonalRequest,
     ResetAccountZonalResponseBody,
     ResetAccountZonalResponse,
+    ResetAgenticDBTenantApiKeyRequest,
+    ResetAgenticDBTenantApiKeyResponseBody,
+    ResetAgenticDBTenantApiKeyResponse,
     ResetConsumerApiKeyRequest,
     ResetConsumerApiKeyResponseBody,
     ResetConsumerApiKeyResponse,
@@ -2833,6 +2947,9 @@ __all__ = [
     UpgradePolarClawSkillsRequest,
     UpgradePolarClawSkillsResponseBody,
     UpgradePolarClawSkillsResponse,
+    VerifyAgenticDBTenantApiKeyRequest,
+    VerifyAgenticDBTenantApiKeyResponseBody,
+    VerifyAgenticDBTenantApiKeyResponse,
     AddPolarFsPathMappingRequestCustomBucketPathList,
     AddPolarFsQuotaRequestQuotas,
     ApprovePolarClawDevicePairResponseBodyDevice,
@@ -2897,6 +3014,15 @@ __all__ = [
     DescribeActivationCodesResponseBodyItems,
     DescribeActiveOperationMaintainConfResponseBodyConfig,
     DescribeActiveOperationTasksResponseBodyItems,
+    DescribeAgenticDBBranchEndpointsResponseBodyItems,
+    DescribeAgenticDBBranchLineageResponseBodyItems,
+    DescribeAgenticDBBranchesResponseBodyItems,
+    DescribeAgenticDBClustersRequestTag,
+    DescribeAgenticDBClustersResponseBodyItemsTags,
+    DescribeAgenticDBClustersResponseBodyItems,
+    DescribeAgenticDBComputeClustersResponseBodyItems,
+    DescribeAgenticDBProjectsResponseBodyItems,
+    DescribeAgenticDBTenantApiKeysResponseBodyItems,
     DescribeApikeyAttributeResponseBodyItemsConsumer,
     DescribeApikeyAttributeResponseBodyItemsUsageStatistics,
     DescribeApikeyAttributeResponseBodyItems,

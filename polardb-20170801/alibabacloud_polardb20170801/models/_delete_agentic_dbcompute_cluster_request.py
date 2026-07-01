@@ -4,19 +4,19 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ModifyDBClusterResponseBody(DaraModel):
+class DeleteAgenticDBComputeClusterRequest(DaraModel):
     def __init__(
         self,
+        compute_cluster_id: str = None,
         dbcluster_id: str = None,
-        order_id: str = None,
-        request_id: str = None,
+        region_id: str = None,
     ):
-        # The cluster ID.
+        # This parameter is required.
+        self.compute_cluster_id = compute_cluster_id
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The order ID.
-        self.order_id = order_id
-        # The request ID.
-        self.request_id = request_id
+        # This parameter is required.
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -26,27 +26,27 @@ class ModifyDBClusterResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.compute_cluster_id is not None:
+            result['ComputeClusterId'] = self.compute_cluster_id
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
-        if self.order_id is not None:
-            result['OrderId'] = self.order_id
-
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputeClusterId') is not None:
+            self.compute_cluster_id = m.get('ComputeClusterId')
+
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 
-        if m.get('OrderId') is not None:
-            self.order_id = m.get('OrderId')
-
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         return self
 

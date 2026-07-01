@@ -15,12 +15,11 @@ class DescribeDBClusterAttributeRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
-        # 
-        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, including the cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to query information about AI nodes.
+        # Specifies whether to retrieve AI-related node information.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -7,11 +7,15 @@ from darabonba.model import DaraModel
 class CreateDBClusterResponseBody(DaraModel):
     def __init__(
         self,
+        agentic_db_cluster_description: str = None,
+        agentic_db_cluster_id: str = None,
         dbcluster_id: str = None,
         order_id: str = None,
         request_id: str = None,
         resource_group_id: str = None,
     ):
+        self.agentic_db_cluster_description = agentic_db_cluster_description
+        self.agentic_db_cluster_id = agentic_db_cluster_id
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The order ID.
@@ -29,6 +33,12 @@ class CreateDBClusterResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agentic_db_cluster_description is not None:
+            result['AgenticDbClusterDescription'] = self.agentic_db_cluster_description
+
+        if self.agentic_db_cluster_id is not None:
+            result['AgenticDbClusterId'] = self.agentic_db_cluster_id
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
@@ -45,6 +55,12 @@ class CreateDBClusterResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgenticDbClusterDescription') is not None:
+            self.agentic_db_cluster_description = m.get('AgenticDbClusterDescription')
+
+        if m.get('AgenticDbClusterId') is not None:
+            self.agentic_db_cluster_id = m.get('AgenticDbClusterId')
+
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 

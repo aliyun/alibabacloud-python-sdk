@@ -1,3 +1,34 @@
+2026-07-01 Version: 7.3.0
+- Support API CreateAgenticDBBranch.
+- Support API CreateAgenticDBProject.
+- Support API CreateAgenticDBTenantApiKey.
+- Support API DeleteAgenticDBBranch.
+- Support API DeleteAgenticDBComputeCluster.
+- Support API DeleteAgenticDBProject.
+- Support API DeleteAgenticDBTenantApiKey.
+- Support API DescribeAgenticDBBranch.
+- Support API DescribeAgenticDBBranchEndpoints.
+- Support API DescribeAgenticDBBranchLineage.
+- Support API DescribeAgenticDBBranches.
+- Support API DescribeAgenticDBClusters.
+- Support API DescribeAgenticDBComputeClusters.
+- Support API DescribeAgenticDBProject.
+- Support API DescribeAgenticDBProjects.
+- Support API DescribeAgenticDBTenantApiKeys.
+- Support API ResetAgenticDBTenantApiKey.
+- Support API VerifyAgenticDBTenantApiKey.
+- Update API CreateDBCluster: add request parameters AgenticDbClusterDescription.
+- Update API CreateDBCluster: add request parameters AgenticDbClusterId.
+- Update API CreateDBCluster: add request parameters AgenticDbType.
+- Update API CreateDBCluster: add response parameters Body.AgenticDbClusterDescription.
+- Update API CreateDBCluster: add response parameters Body.AgenticDbClusterId.
+- Update API DescribeDBClusterAttribute: add response parameters Body.ConnectionResourceQuota.
+- Update API DescribeDBClusterAttribute: add response parameters Body.ConnectionResourceUsed.
+- Update API DescribeDBClusters: add response parameters Body.Items.$.ConnectionResourceQuota.
+- Update API DescribeDBClusters: add response parameters Body.Items.$.ConnectionResourceUsed.
+- Update API ModifyDBCluster: add request parameters ConnectionResourceQuota.
+
+
 2026-06-30 Version: 7.2.0
 - Support API DescribePolarClawAgentFile.
 - Support API DescribePolarClawAgentTools.

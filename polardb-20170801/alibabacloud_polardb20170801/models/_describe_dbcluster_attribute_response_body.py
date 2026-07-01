@@ -22,6 +22,8 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         column_table: str = None,
         compress_storage_mode: str = None,
         compress_storage_used: int = None,
+        connection_resource_quota: int = None,
+        connection_resource_used: int = None,
         creation_time: str = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
@@ -82,67 +84,54 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         v_switch_id: str = None,
         zone_ids: str = None,
     ):
-        # The start time of the free trial for the AI feature.
+        # The start time of the free AI trial.
         self.ai_creating_time = ai_creating_time
         # The AI node type. Valid values:
-        # 
-        # - **SearchNode**: a search node.
-        # 
-        # - **DLNode**: an AI node.
+        #      
+        # - **SearchNode**: search node.
+        # - **DLNode**: AI node.
         self.ai_type = ai_type
         # The CPU architecture. Valid values:
-        # 
         # - **X86**
-        # 
         # - **ARM**
         self.architecture = architecture
-        # The method for minor version upgrades.
+        # The minor version update method. Valid values:
         # 
-        # - Auto: automatic upgrade
-        # 
-        # - Manual: manual upgrade
+        # - Auto: automatic update.
+        # - Manual: manual update.
         self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        # The maximum number of blktags for the file system.
+        # The maximum number of blktags in the file system.
         self.blktag_total = blktag_total
-        # The number of used blktags.
+        # The current blktag usage.
         self.blktag_used = blktag_used
         self.branch = branch
-        # Indicates whether the performance burst feature is enabled for the ESSD AutoPL disk. Valid values:
+        # Indicates whether I/O performance burst is enabled for the ESSD AutoPL cloud disk. Valid values:
         # 
-        # - **true**: enabled
-        # 
-        # - **false**: disabled
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.bursting_enabled = bursting_enabled
-        # The [product edition](https://help.aliyun.com/document_detail/183258.html). Valid values:
+        # The [edition](https://help.aliyun.com/document_detail/183258.html) of the cluster. Valid values:
+        # * **Normal**: Cluster Edition
+        # * **Basic**: Single Node Edition
+        # * **Archive**: PolarDB X-Engine Edition
+        # * **NormalMultimaster**: Multi-master Cluster Edition
+        # * **SENormal**: PolarDB for MySQL Standard Edition
         # 
-        # - **Normal**: Cluster Edition
-        # 
-        # - **Basic**: Single Node Edition
-        # 
-        # - **Archive**: X-Engine
-        # 
-        # - **NormalMultimaster**: Multi-master Cluster Edition
-        # 
-        # - **SENormal**: Standard Edition
-        # 
-        # > * The single node edition is not supported for PolarDB for PostgreSQL that runs PostgreSQL 11.
-        # >
-        # > * The Standard Edition is supported on PolarDB for MySQL that runs MySQL 8.0 or 5.7 and on PolarDB for PostgreSQL that runs PostgreSQL 14.
-        # >
-        # > * PolarDB for MySQL that runs MySQL 8.0 supports X-Engine and the Multi-master Cluster Edition.
+        # > * PolarDB for PostgreSQL (PostgreSQL 11) does not support Single Node Edition.
+        # >* PolarDB for MySQL 8.0, PolarDB for MySQL 5.7, and PolarDB for PostgreSQL (PostgreSQL 14) support PolarDB for MySQL Standard Edition.
+        # >* PolarDB for MySQL 8.0 supports PolarDB X-Engine Edition and Multi-master Cluster Edition.
         self.category = category
-        # Indicates whether column-oriented tables are enabled.
+        # Indicates whether column store tables are enabled.
         self.column_table = column_table
         # Indicates whether storage compression is enabled. Valid values:
-        # 
         # - ON: enabled
-        # 
         # - OFF: disabled
         self.compress_storage_mode = compress_storage_mode
-        # The size of the compressed storage data.
-        # 
-        # > This parameter is returned only when the storage compression feature is enabled for the cluster.
+        # The compressed storage data size.
+        # >This parameter is returned only when the storage compression feature is enabled for the cluster.
         self.compress_storage_used = compress_storage_used
+        self.connection_resource_quota = connection_resource_quota
+        self.connection_resource_used = connection_resource_used
         # The time when the cluster was created.
         self.creation_time = creation_time
         # The cluster description.
@@ -151,169 +140,122 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
-        # The cluster status. For more information about the valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
+        # The cluster status. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
-        # The details of the nodes.
+        # The details of nodes.
         self.dbnodes = dbnodes
         # The database engine type.
         self.dbtype = dbtype
         # The database engine version.
         self.dbversion = dbversion
-        # The status of the minor engine version. Valid values:
+        # The status of the current minor engine version. Valid values:
+        # * **Stable**: The current version is stable.
+        # * **Old**: The current version is outdated. Upgrade to the latest version.
+        # * **HighRisk**: The current version has critical defects. Upgrade to the latest version immediately.
+        # * **Beta**: The current version is a beta version.
         # 
-        # - **Stable**: The current version is stable.
-        # 
-        # - **Old**: The current version is old. Upgrade the cluster to the latest version.
-        # 
-        # - **HighRisk**: The current version has critical defects. Immediately upgrade the cluster to the latest version.
-        # 
-        # - **Beta**: The current version is a beta version.
-        # 
-        # > * For more information about how to upgrade the minor engine version, see [Upgrade versions](https://help.aliyun.com/document_detail/158572.html).
-        # >
-        # > * This parameter is returned only when the **DBType** parameter is set to **MySQL**.
+        # > * For information about how to upgrade the minor engine version, see [Version upgrade](https://help.aliyun.com/document_detail/158572.html).
+        # > * This parameter is returned only when the database engine type (**DBType**) is **MySQL**.
         self.dbversion_status = dbversion_status
-        # The total size of level-1 backups (snapshots). Unit: bytes.
+        # The total size of level-1 backups (snapshots), in bytes.
         self.data_level_1backup_chain_size = data_level_1backup_chain_size
-        # The data replication mode. Valid values:
-        # 
+        # The data replication relationship mode. Valid values:
         # - **AsyncSync**: asynchronous
-        # 
         # - **SemiSync**: semi-synchronous
         self.data_sync_mode = data_sync_mode
-        # The lock state of the cluster for deletion. Valid values:
-        # 
-        # - **0**: The cluster is not locked and can be deleted.
-        # 
-        # - **1**: The cluster is locked and cannot be deleted.
+        # The lock status for cluster deletion. Valid values:
+        # * **0**: Unlocked. The cluster can be deleted.
+        # * **1**: Locked. The cluster cannot be deleted.
         self.deletion_lock = deletion_lock
         # The cluster engine.
         self.engine = engine
         # The expiration time of the cluster.
         # 
-        # > This parameter is returned only for subscription clusters. An empty value is returned for pay-as-you-go clusters.
+        # > A specific value is returned only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired.
-        # 
-        # > This parameter is returned only for subscription clusters.
+        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription).
         self.expired = expired
-        # Indicates whether resources for the new primary database are provisioned after a cross-zone failover. Valid values:
-        # 
-        # - **true**
-        # 
-        # - **false**
+        # Indicates whether resources are replenished for the new primary database after a cross-zone failover. Valid values:
+        # - **true**: Resources are replenished.
+        # - **false**: Resources are not replenished.
         self.has_complete_standby_res = has_complete_standby_res
-        # Indicates whether the hot standby storage cluster (and standby compute nodes) is enabled. Valid values:
-        # 
-        # - **StandbyClusterON**: The hot standby storage cluster or both the hot standby storage cluster and standby compute nodes are enabled.
-        # 
-        # - **StandbyClusterOFF**: The hot standby storage cluster or both the hot standby storage cluster and standby compute nodes are disabled.
+        # Indicates whether the Hot Standby Cluster (and standby compute nodes) is enabled. Valid values:
+        # - **StandbyClusterON**: The Hot Standby Cluster and standby compute nodes are enabled.
+        # - **StandbyClusterOFF**: The Hot Standby Cluster and standby compute nodes are disabled.
         self.hot_standby_cluster = hot_standby_cluster
         # The automatic IMCI-based query acceleration feature. Valid values:
-        # 
         # - `ON`: enabled.
-        # 
         # - `OFF`: disabled.
         self.imci_auto_index = imci_auto_index
-        # The imperceptible switchover feature. Valid values:
-        # 
+        # The failover with hot replica feature. Valid values:
         # - `true`: enabled.
-        # 
         # - `false`: disabled.
         self.imperceptible_switch = imperceptible_switch
-        # The maximum number of inodes for the file system.
+        # The maximum number of inodes in the file system.
         self.inode_total = inode_total
-        # The number of used inodes.
+        # The current inode usage.
         self.inode_used = inode_used
-        # Indicates whether the kernel is the latest version. Valid values:
+        # Indicates whether the cluster runs the latest Milvus version. Valid values:
         # 
-        # - **true**
+        # - **true**: The cluster runs the latest Milvus version.
         # 
-        # - **false**
+        # - **false**: The cluster does not run the latest Milvus version.
         self.is_latest_version = is_latest_version
         # Indicates whether the database proxy is the latest version. Valid values:
         # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: The database proxy is the latest version.
+        # - **false**: The database proxy is not the latest version.
         self.is_proxy_latest_version = is_proxy_latest_version
-        # The lock mode. Valid values:
+        # The lock mode. Valid values: 
         # 
-        # - **Unlock**: The cluster is not locked.
-        # 
-        # - **ManualLock**: The cluster is manually locked.
-        # 
-        # - **LockByExpiration**: The cluster is automatically locked after it expires.
+        # - **Unlock**: not locked.
+        # - **ManualLock**: manually locked. 
+        # - **LockByExpiration**: automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
-        # The maintenance window of the cluster. The time is in the `HH:mmZ-HH:mmZ` format and is in UTC. For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+8).
+        # The maintenance window of the cluster, in the `HH:mmZ-HH:mmZ` format (UTC). For example, `16:00Z-17:00Z` indicates that routine maintenance can be performed from 00:00 to 01:00 (UTC+08:00).
         self.maintain_time = maintain_time
         # The Orca feature. Valid values:
         # 
-        # - on: enabled
+        # - on: enabled.
         # 
-        # - off: disabled
+        # - off: disabled.
         self.orca = orca
         # The billing method. Valid values:
         # 
         # - **Postpaid**: pay-as-you-go.
-        # 
         # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # <props="china">
-        # 
-        # The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}.
-        # 
-        # 
-        # 
-        # <props="china">
-        # 
-        # Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
-        # 
-        # 
-        # 
-        # <props="china">
-        # 
-        # > This parameter is supported only when StorageType is set to ESSDAUTOPL.
+        # <p id="p_wyg_t4a_glm" props="china" icmsditafragmentmagic=1>The provisioned read/write IOPS of the ESSD AutoPL cloud disk. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}.</p>
+        # <p id="p_6de_jxy_k2g" props="china" icmsditafragmentmagic=1>Baseline performance = min{1,800 + 50 × capacity, 50,000}.</p>
+        # <note id="note_7kj_j0o_rgs" props="china" icmsditafragmentmagic=1>This parameter is supported only when StorageType is set to ESSDAUTOPL.</note>
         self.provisioned_iops = provisioned_iops
         # The number of CPU cores of the database proxy.
         self.proxy_cpu_cores = proxy_cpu_cores
-        # The Serverless type of the database proxy. Valid values:
-        # 
-        # - AgileServerless: agile, which indicates a Serverless cluster.
-        # 
-        # - SteadyServerless: steady, which indicates a cluster with defined specifications (a subscription or pay-as-you-go cluster).
+        # The serverless type of the database proxy. Valid values:
+        # - AgileServerless: agile serverless cluster.
+        # - SteadyServerless: steady serverless, which is a cluster with defined specifications (subscription or pay-as-you-go billing).
         self.proxy_serverless_type = proxy_serverless_type
-        # The number of CPU cores of the database proxy with standard specifications.
+        # The number of CPU cores in the standard configuration of the database proxy.
         self.proxy_standard_cpu_cores = proxy_standard_cpu_cores
         # The status of the database proxy. Valid values:
         # 
-        # - **Creating**
-        # 
-        # - **Running**
-        # 
-        # - **Deleting**: The proxy is being released.
-        # 
-        # - **Rebooting**
-        # 
-        # - **DBNodeCreating**: A node is being added.
-        # 
-        # - **DBNodeDeleting**: A node is being deleted.
-        # 
-        # - **ClassChanging**: The node specifications are being changed.
-        # 
-        # - **NetAddressCreating**: A network connection is being created.
-        # 
-        # - **NetAddressDeleting**: A network connection is being deleted.
-        # 
-        # - **NetAddressModifying**: A network connection is being modified.
-        # 
-        # - **Deleted**: The proxy is released.
+        # - **Creating**: being created.
+        # - **Running**: running.
+        # - **Deleting**: being released.
+        # - **Rebooting**: being restarted.
+        # - **DBNodeCreating**: adding a node.
+        # - **DBNodeDeleting**: deleting a node.
+        # - **ClassChanging**: changing node specifications.
+        # - **NetAddressCreating**: creating network connectivity.
+        # - **NetAddressDeleting**: deleting network connectivity.
+        # - **NetAddressModifying**: modifying network connectivity.
+        # - **Deleted**: released.
         self.proxy_status = proxy_status
         # The type of the database proxy. Valid values:
         # 
         # - **Exclusive**: Dedicated Enterprise Edition
-        # 
-        # - **General** : Standard Enterprise Edition
+        # - **General**: Standard Enterprise Edition
         self.proxy_type = proxy_type
         # The region ID.
         self.region_id = region_id
@@ -321,95 +263,82 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # - If RestoreType is set to **RestoreByTime** or **RestoreByTimeOss**, this parameter indicates the point in time for the restoration.
+        # * If RestoreType is **RestoreByTime** or **RestoreByTimeOss**, this value indicates the point in time to which the cluster is restored.
+        # * If RestoreType is **RestoreByBackupSet** or **RestoreByBackupSetOss**, this value indicates the backup set ID used for the restoration.
         # 
-        # - If RestoreType is set to **RestoreByBackupSet** or **RestoreByBackupSetOss**, this parameter indicates the ID of the backup set that is used for the restoration.
-        # 
-        # > This parameter is supported only for clusters that are restored from a backup set or a point in time after June 1, 2024.
+        # <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
         self.restore_data_point = restore_data_point
-        # The method that is used to restore the cluster. Valid values:
+        # The restoration method of the cluster. Valid values:
         # 
-        # - **RestoreByTime**: The cluster is restored to a point in time from a level-1 backup.
+        # * **RestoreByTime**: point-in-time restore based on a level-1 backup.
+        # * **RestoreByBackupSet**: restore from a level-1 backup set.
+        # * **RestoreByTimeOss**: point-in-time restore based on a level-2 backup.
+        # * **RestoreByBackupSetOss**: restore from a level-2 backup set.
+        # * **CloneFromSourceCluster**: clone from the source cluster.
         # 
-        # - **RestoreByBackupSet**: The cluster is restored from a level-1 backup set.
-        # 
-        # - **RestoreByTimeOss**: The cluster is restored to a point in time from a level-2 backup.
-        # 
-        # - **RestoreByBackupSetOss**: The cluster is restored from a level-2 backup set.
-        # 
-        # - **CloneFromSourceCluster**: The cluster is cloned from a source cluster.
-        # 
-        # > This parameter is supported only for clusters that are restored from a backup set or a point in time after June 1, 2024.
+        # <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
         self.restore_type = restore_type
-        # The row compression settings.
+        # The row compression setting.
         self.row_compression = row_compression
-        # The storage usage for SQL statements. Unit: bytes. A value of -1 indicates that no data is available.
+        # The storage size of SQL statements, in bytes. A value of -1 indicates that no data is available.
         self.sqlsize = sqlsize
-        # The running state of the search node.
+        # The running status of the search node.
         self.search_cluster_status = search_cluster_status
-        # The size of the compressed storage data of the search node.
-        # 
-        # > This parameter is returned only when the storage compression feature is enabled for the cluster.
+        # The compressed storage data size of the search node.
+        # >This parameter is returned only when the storage compression feature is enabled for the cluster.
         self.search_compress_storage_used = search_compress_storage_used
         # The storage usage of the search node.
         self.search_storage_used = search_storage_used
-        # The Serverless type of the cluster. Valid values:
+        # The serverless type of the cluster. Valid values:
         # 
-        # - AgileServerless: agile, which indicates a Serverless cluster.
+        # - AgileServerless: agile serverless cluster.
+        # - SteadyServerless: steady serverless, which is a cluster with defined specifications that has the serverless feature enabled.
         # 
-        # - SteadyServerless: steady, which indicates a cluster with defined specifications for which the Serverless feature is enabled.
-        # 
-        # > This parameter is supported only for Serverless clusters or clusters with defined specifications for which the Serverless feature is enabled.
+        # > This parameter is supported only for serverless clusters or clusters with defined specifications that have the serverless feature enabled.
         self.serverless_type = serverless_type
         # The source cluster ID.
-        # > This parameter is supported only for clusters that are restored from a backup set or a point in time after June 1, 2024.
+        # <note>This parameter is supported only for clusters restored from a backup set or point in time after June 1, 2024.</note>
         self.source_dbcluster = source_dbcluster
         # The region ID of the source cluster.
-        # > This parameter is returned only when the source cluster ID exists.
+        # <note>This parameter is returned only when the source cluster ID exists.</note>
         self.source_region_id = source_region_id
         # The cross-zone disaster recovery mode. Valid values:
-        # 
-        # - **ON**: The cross-zone disaster recovery mode is enabled.
-        # 
-        # - **OFF**: The cross-zone disaster recovery mode is disabled.
-        # 
-        # - **0**: The customer drill mode.
+        # - **ON**: Cross-zone disaster recovery is enabled.
+        # - **OFF**: Cross-zone disaster recovery is disabled.
+        # - **0**: Customer drill mode.
         self.standby_hamode = standby_hamode
-        # The maximum storage capacity of the current cluster specifications. Unit: bytes.
+        # The maximum storage capacity for the current cluster specifications, in bytes.
         self.storage_max = storage_max
         # The billing method for storage. Valid values:
         # 
-        # - **Postpaid**: pay-as-you-go.
-        # 
-        # - **Prepaid**: subscription.
+        # - **Postpaid**: pay-by-capacity (pay-as-you-go).
+        # - **Prepaid**: pay-by-space (subscription).
         self.storage_pay_type = storage_pay_type
-        # The storage space of the subscription cluster. Unit: bytes.
+        # The storage space for pay-by-space (subscription) billing. Unit: bytes.
         self.storage_space = storage_space
-        # The storage class. The value is fixed as **HighPerformance**.
+        # The storage type. The value is fixed as **HighPerformance**.
         self.storage_type = storage_type
-        # The used storage space. Unit: bytes.
+        # The storage usage, in bytes.
         self.storage_used = storage_used
-        # Indicates whether strong consistency is enabled for the multi-zone data. Valid values:
+        # Indicates whether multi-zone strong data consistency is enabled for the cluster. Valid values:
         # 
-        # - **ON**: Strong consistency is enabled for the multi-zone data. This applies to Standard Edition clusters that are deployed across three zones.
+        # - **ON**: Multi-zone strong data consistency is enabled. This applies to PolarDB for MySQL Standard Edition with three-zone deployment.
         # 
-        # - **OFF**: Strong consistency is not enabled for the multi-zone data.
+        # - **OFF**: Multi-zone strong data consistency is not enabled.
         self.strict_consistency = strict_consistency
-        # The specification type of the compute node. Valid values:
+        # The specification type of compute nodes. Valid values:
+        # * **Exclusive**: Dedicated
+        # * **General**: General-purpose
         # 
-        # - **Exclusive**: Dedicated
-        # 
-        # - **General**: General-purpose
-        # 
-        # > This parameter is returned only for PolarDB for MySQL Cluster Edition clusters.
+        # > This parameter is returned only for PolarDB for MySQL clusters of the Cluster Edition.
         self.sub_category = sub_category
-        # Indicates whether the instant switchover feature that is compatible with IMCI is supported.
+        # Indicates whether failover with hot replica is supported with IMCI compatibility.
         self.support_instant_switch_with_imci = support_instant_switch_with_imci
-        # The details of the tags.
+        # The details of tags.
         self.tags = tags
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpcid = vpcid
-        # The virtual switch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The zone ID.
         self.zone_ids = zone_ids
@@ -466,6 +395,12 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
 
         if self.compress_storage_used is not None:
             result['CompressStorageUsed'] = self.compress_storage_used
+
+        if self.connection_resource_quota is not None:
+            result['ConnectionResourceQuota'] = self.connection_resource_quota
+
+        if self.connection_resource_used is not None:
+            result['ConnectionResourceUsed'] = self.connection_resource_used
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -688,6 +623,12 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
 
         if m.get('CompressStorageUsed') is not None:
             self.compress_storage_used = m.get('CompressStorageUsed')
+
+        if m.get('ConnectionResourceQuota') is not None:
+            self.connection_resource_quota = m.get('ConnectionResourceQuota')
+
+        if m.get('ConnectionResourceUsed') is not None:
+            self.connection_resource_used = m.get('ConnectionResourceUsed')
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
@@ -942,7 +883,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
         sub_group_description: str = None,
         zone_id: str = None,
     ):
-        # The number of CPU cores that are added for the elastic scaling feature within seconds.
+        # The number of CPU cores added by second-level rapid scaling.
         self.added_cpu_cores = added_cpu_cores
         # The number of CPU cores of the node.
         self.cpu_cores = cpu_cores
@@ -956,101 +897,87 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(DaraModel):
         self.dbnode_description = dbnode_description
         # The node ID.
         self.dbnode_id = dbnode_id
-        # The role of the node. Valid values:
+        # The role of the node. Valid values: 
         # 
-        # - **Writer**: the primary node.
-        # 
-        # - **Reader**: a read-only node.
+        # - **Writer**: read/write node.
+        # - **Reader**: read-only node.
         self.dbnode_role = dbnode_role
-        # The status of the node. Valid values:
-        # 
-        # - **Creating**
-        # 
-        # - **Running**
-        # 
-        # - **Deleting**
-        # 
-        # - **Rebooting**
-        # 
-        # - **DBNodeCreating**: A node is being added.
-        # 
-        # - **DBNodeDeleting**: A node is being deleted.
-        # 
-        # - **ClassChanging**: The node specifications are being changed.
-        # 
-        # - **NetAddressCreating**: A network connection is being created.
-        # 
-        # - **NetAddressDeleting**: A network connection is being deleted.
-        # 
-        # - **NetAddressModifying**: A network connection is being modified.
-        # 
-        # - **MinorVersionUpgrading**: The minor version is being upgraded.
-        # 
-        # - **Maintaining**: The instance is being maintained.
-        # 
-        # - **Switching**: A switchover is in progress.
+        # The node status. Valid values:
+        # * **Creating**: being created.
+        # * **Running**: running.
+        # * **Deleting**: being deleted.
+        # * **Rebooting**: being restarted.
+        # * **DBNodeCreating**: adding a node.
+        # * **DBNodeDeleting**: deleting a node.
+        # * **ClassChanging**: changing node specifications.
+        # * **NetAddressCreating**: creating network connectivity.
+        # * **NetAddressDeleting**: deleting network connectivity.
+        # * **NetAddressModifying**: modifying network connectivity.
+        # * **MinorVersionUpgrading**: performing a minor engine version upgrade.
+        # * **Maintaining**: instance under maintenance.
+        # * **Switching**: being switched.
         self.dbnode_status = dbnode_status
-        # The failover priority. Each node has a failover priority. A larger value indicates a higher priority for the node to be promoted to the primary node during a failover. Valid values: 1 to 15.
+        # The failover priority. Each node has a failover priority that determines the probability of the node being elected as the primary node during a failover. A higher value indicates a higher priority.
+        # Valid values: 1 to 15.
         self.failover_priority = failover_priority
-        # Indicates whether the hot replica feature is enabled. Valid values:
+        # Indicates whether hot standby is enabled. Valid values:
         # 
-        # - **ON**: enabled
+        # - **ON**: enabled.
         # 
-        # - **OFF**: disabled
+        # - **OFF**: disabled.
         self.hot_replica_mode = hot_replica_mode
-        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
+        # Indicates whether In-Memory Column Index (IMCI) is enabled. Valid values:
         # 
-        # - **ON**: enabled
+        # - **ON**: enabled.
         # 
-        # - **OFF**: disabled
+        # - **OFF**: disabled.
         self.imci_switch = imci_switch
-        # The ID of the primary node in a Multi-master Cluster Edition cluster.
+        # The primary node ID of the Multi-master Cluster Edition.
         self.master_id = master_id
         # The maximum number of concurrent connections to the cluster.
         self.max_connections = max_connections
-        # The maximum input/output operations per second (IOPS).
+        # The maximum number of I/O requests per second (IOPS).
         self.max_iops = max_iops
         # The memory size of the node. Unit: MB.
         self.memory_size = memory_size
-        # The name of the hot replica compute node that corresponds to the node in an architecture where both hot standby storage and hot standby compute are enabled.
+        # The name of the hot replica compute node that corresponds to the node in the Hot Standby Cluster and compute architecture.
         self.mirror_ins_name = mirror_ins_name
-        # The local secondary node in a multi-master cluster.
+        # The multi-master local standby node.
         self.multi_master_local_standby = multi_master_local_standby
-        # The primary node in a multi-master cluster.
+        # The multi-master primary node.
         self.multi_master_primary_node = multi_master_primary_node
         # The Orca feature. Valid values:
         # 
-        # - on: enabled
+        # - on: enabled.
         # 
-        # - off: disabled
+        # - off: disabled.
         self.orca = orca
-        # The size of the remote memory. Unit: MB.
+        # The remote memory size. Unit: MB.
         self.remote_memory_size = remote_memory_size
-        # Indicates whether global consistency (high-performance mode) is enabled for the node. Valid values:
+        # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
         # 
-        # - **ON**: enabled
+        # - **ON**: The feature is enabled.
         # 
-        # - **OFF**: disabled
+        # - **OFF**: The feature is disabled.
         # 
         # This parameter is required.
         self.scc_mode = scc_mode
-        # The routing weight. Valid values: 1 to 100. Default value: 1.
+        # The routing weight.
+        # Valid values: 1 to 100. Default value: 1.
         self.server_weight = server_weight
-        # The Serverless type of the node. Valid values:
+        # The serverless type of the node. Valid values:
         # 
-        # - AgileServerless: agile, which indicates a Serverless node.
+        # - AgileServerless: agile serverless node.
+        # - SteadyServerless: steady serverless node, which is a node with defined specifications that has the serverless capability enabled.
         # 
-        # - SteadyServerless: steady, which indicates that Serverless capabilities are added to a node with defined specifications.
-        # 
-        # > * This parameter is supported only for Serverless clusters or clusters with defined specifications for which the Serverless feature is enabled. For more information, see [Serverless](https://help.aliyun.com/document_detail/452274.html).
+        # > This parameter is supported only for serverless clusters or clusters with defined specifications that have the serverless feature enabled. For more information, see [Serverless](https://help.aliyun.com/document_detail/452274.html).
         self.serverless_type = serverless_type
-        # Indicates whether the node is in the primary zone or a secondary zone. This parameter is mainly used for peer resources. Valid values:
-        # 
-        # - Primary: the primary zone
-        # 
-        # - Standby: a secondary zone
+        # Indicates whether the node is in the primary zone or the secondary zone. This parameter is mainly used for resource-equivalent deployments.
+        # Valid values:
+        # - Primary: primary zone.
+        # - Standby: secondary zone.
         self.sub_cluster = sub_cluster
-        # The description of the cluster subgroup.
+        # The cluster subgroup description.
         self.sub_group_description = sub_group_description
         # The zone ID.
         self.zone_id = zone_id
