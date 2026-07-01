@@ -15,15 +15,15 @@ class AcceptInquiredSystemEventRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # > This parameter is in invitational preview and is not supported for use.
+        # > This parameter is in invitational preview and is not publicly available.
         self.choice = choice
-        # The ID of the system event.
+        # The system event ID.
         # 
         # This parameter is required.
         self.event_id = event_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID where the system event is located. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+        # The region ID of the system event. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

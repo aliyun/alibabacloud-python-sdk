@@ -23,25 +23,26 @@ class DescribeSecurityGroupAttributeResponseBody(DaraModel):
     ):
         # The description of the security group.
         self.description = description
-        # The access control policy of the security group. Valid values:
-        # 
-        # - Accept: All instances in the security group can communicate with each other.
-        # 
-        # - Drop: All instances in the security group are isolated from each other.
+        # The internal network connectivity policy of the security group. Valid values: 
+        #          
+        # - Accept: service interconnection.
+        # - Drop: internal isolation.
         self.inner_access_policy = inner_access_policy
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If the return value of this parameter is empty when you specify `MaxResults` and `NextToken` for a paged query, no more results are to be returned.
+        # The paging token returned in this call. When you use `MaxResults` and `NextToken` for paging query, if this value is empty, no more data is available.
         self.next_token = next_token
         self.permissions = permissions
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
         # The name of the security group.
         self.security_group_name = security_group_name
         self.snapshot_policy_ids = snapshot_policy_ids
-        # The ID of the VPC. If a VPC ID is returned, the network type of the security group is VPC. If no VPC ID is returned, the network type of the security group is classic network.
+        # The VPC ID. If a VPC ID is returned, the network type of the security group is VPC. Otherwise, the security group belongs to the classic network.
+        # 
+        # > The classic network feature has been offline. For details, see [Retirement announcement](https://help.aliyun.com/document_detail/2833134.html).
         self.vpc_id = vpc_id
 
     def validate(self):

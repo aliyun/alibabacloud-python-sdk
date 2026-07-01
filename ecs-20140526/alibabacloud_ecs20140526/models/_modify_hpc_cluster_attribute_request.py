@@ -27,7 +27,7 @@ class ModifyHpcClusterAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.hpc_cluster_id = hpc_cluster_id
-        # The name of the HPC cluster. The name must be 2 to 128 characters in length. The name must start with a letter or a Chinese character and cannot start with http:// or https://. The name can contain digits, underscores (_), or hyphens (-).
+        # The name of the HPC cluster. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, underscores (_), or hyphens (-).
         # 
         # Default value: empty.
         self.name = name

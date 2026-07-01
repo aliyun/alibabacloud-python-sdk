@@ -19,23 +19,23 @@ class DescribeInstanceHistoryEventsResponseBody(DaraModel):
     ):
         self.instance_system_event_set = instance_system_event_set
         # The query token returned in this invocation.
-        # > When you use MaxResults and NextToken for paging and no NextToken is returned, no more data is available.
+        # > When you use MaxResults and NextToken parameters for paging query and no NextToken is returned, no more data is available.
         self.next_token = next_token
         # The page number of the instance event list.
         # 
-        # > * When you use MaxResults and NextToken for paging, the returned PageNumber parameter value is meaningless.
-        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
+        # > * When you use MaxResults and NextToken parameters for paging query, the returned PageNumber parameter value is meaningless.
+        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging query instead.
         self.page_number = page_number
         # The number of entries per page as specified in the request.
         # 
-        # > * When you use MaxResults and NextToken for paging, the returned PageSize parameter value is meaningless.
-        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging instead.
+        # > * When you use MaxResults and NextToken parameters for paging query, the returned PageSize parameter value is meaningless.
+        # > * This parameter will be deprecated. Use NextToken and MaxResults for paging query instead.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of instance events.
         # 
-        # > When you use MaxResults and NextToken for paging, the returned TotalCount parameter value is meaningless.
+        # > When you use MaxResults and NextToken parameters for paging query, the returned TotalCount parameter value is meaningless.
         self.total_count = total_count
 
     def validate(self):

@@ -38,100 +38,85 @@ class DescribeSnapshotsRequest(DaraModel):
     ):
         self.filter = filter
         # The category of the snapshot. Valid values:
+        # - Standard: standard snapshot.
+        # - Flash: local snapshot. This value is about to be deprecated. Local snapshots have been replaced by the snapshot instant access feature. The metric description is as follows:
+        #   - If you used local snapshots before December 14, 2020, you can use this parameter. The parameter is active.
+        #   - If you did not use local snapshots before December 14, 2020, you cannot use this parameter.
+        # - archive: archive snapshot.
         # 
-        # - `Standard`: A standard snapshot.
         # 
-        # - `Flash`: A local snapshot. This value is deprecated because the local snapshot feature has been replaced by the instant access feature.
         # 
-        #   - If you have used local snapshots before December 14, 2020, you can continue to use this value.
-        # 
-        #   - If you have not used local snapshots before December 14, 2020, you cannot use this value.
-        # 
-        # - `archive`: An archive snapshot.
-        # 
-        # <props="china">
-        # 
-        # For more information, see [December 14: Alibaba Cloud snapshot service upgrade and new billing items notice](https://help.aliyun.com/noticelist/articleid/1060755542.html).
+        # <props="china">For more information, see [Chinese site notice on snapshot service upgrade and new billing items on December 14](https://help.aliyun.com/noticelist/articleid/1060755542.html).
         self.category = category
-        # The ID of the cloud disk.
+        # The ID of the disk.
         self.disk_id = disk_id
-        # Specifies whether to perform a dry run.
+        # Specifies whether to perform only a dry run, without performing the actual request.
         # 
-        # - `true`: Performs a dry run but does not query resources. The system checks the request for potential issues, including missing required parameters, invalid parameter values, and insufficient permissions. If the request is invalid, an error is returned. If the request is valid, the `DryRunOperation` error code is returned.
-        # 
-        # - `false` (Default): Sends a normal request. If the request is valid, the system returns a 2xx HTTP status code and the query results.
+        # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - false (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # Specifies whether to return only encrypted snapshots. Default value: false.
+        # Specifies whether to filter encrypted snapshots. Default value: false.
         self.encrypted = encrypted
-        # The ID of the instance. When you specify this ID, the operation returns snapshots of cloud disks attached to the instance.
+        # The instance ID. Specify this parameter to query snapshot information of disks attached to the instance.
         self.instance_id = instance_id
-        # The ID of the KMS key used to encrypt the snapshot.
+        # The ID of the Key Management Service (KMS) key used by the data disk.
         self.kmskey_id = kmskey_id
-        # The number of entries to return on each page. Maximum value: 100.
+        # The maximum number of entries per page for paging. Maximum value: 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The token to start the next page of results. You can obtain this token from the response to a previous query.
+        # The pagination token. Obtained from the response of the previous request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter is deprecated. We recommend that you use the `NextToken` and `MaxResults` parameters for paged queries.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
         self.page_number = page_number
-        # > This parameter is deprecated. We recommend that you use the `NextToken` and `MaxResults` parameters for paged queries.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults for paging instead.
         self.page_size = page_size
-        # The ID of the region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+        # The region ID of the disk. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the snapshot belongs. When you filter by this parameter, the query can return a maximum of 1,000 snapshots.
+        # The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1000.
         # 
-        # > You cannot filter resources that are in the default resource group.
+        # > Filtering by default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # A JSON array that contains the IDs of up to 100 snapshots to query.
+        # The IDs of snapshots. The value is a JSON array that consists of up to 100 snapshot IDs. Separate the IDs with commas (,).
         self.snapshot_ids = snapshot_ids
         # The ID of the snapshot chain.
         self.snapshot_link_id = snapshot_link_id
-        # The snapshot name.
+        # The name of the snapshot.
         self.snapshot_name = snapshot_name
-        # The snapshot creation type. Valid values:
-        # 
-        # - `auto`: An automatically created snapshot.
-        # 
-        # - `user`: A manually created snapshot.
-        # 
-        # - `all` (Default): All snapshot creation types.
+        # The type of automatic creation. Valid values: 
+        #          
+        # - auto: automatic snapshot.
+        # - user: manual snapshot.
+        # - all (default): All automatic creation types.
         self.snapshot_type = snapshot_type
-        # The type of the source disk of the snapshot. Valid values:
-        # 
-        # - `system`: The snapshot was created from a system disk.
-        # 
-        # - `data`: The snapshot was created from a data disk.
+        # The type of the source disk. Valid values: 
+        #      
+        # - system: system disk.
+        # - data: data disk.
         # 
         # > The value is case-insensitive.
         self.source_disk_type = source_disk_type
-        # The status of the snapshot. Valid values:
-        # 
-        # - `progressing`: The snapshot is being created.
-        # 
-        # - `accomplished`: The snapshot is complete.
-        # 
-        # - `failed`: Snapshot creation failed.
-        # 
-        # - `all` (Default): All snapshot statuses.
+        # The status of the snapshot. Valid values: 
+        #          
+        # - progressing: The snapshot is being created.
+        # - accomplished: The snapshot is created.
+        # - failed: The snapshot failed to be created.
+        # - all (default): All snapshot statuses.
         self.status = status
-        # The tags by which to filter snapshots.
+        # The tags.
         self.tag = tag
-        # The usage of the snapshot. Valid values:
+        # Specifies whether the snapshot has been used to create images or disks. Valid values: 
         # 
-        # - `image`: The snapshot is used to create a custom image.
-        # 
-        # - `disk`: The snapshot is used to create a cloud disk.
-        # 
-        # - `image_disk`: The snapshot is used to create a custom image and a data disk.
-        # 
-        # - `none`: The snapshot is not used.
+        # - image: The snapshot has been used to create custom images.
+        # - disk: The snapshot has been used to create disks.
+        # - image_disk: The snapshot has been used to create both data disks and custom images.
+        # - none: The snapshot has not been used.
         self.usage = usage
 
     def validate(self):
@@ -321,11 +306,11 @@ class DescribeSnapshotsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the snapshot. Valid values of N: 1 to 20.
         # 
-        # > For better compatibility, use the `Tag.N.Key` parameter.
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1000. If the resource count exceeds 1000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
         self.key = key
-        # The tag value.
+        # The tag value of the snapshot. Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -360,9 +345,9 @@ class DescribeSnapshotsRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter key for querying resources. The value must be `CreationStartTime`. If you specify `Filter.1.Key` and `Filter.1.Value`, you can query for resources that were created after the specified point in time.
+        # The filter key used to query resources. Set the value to `CreationStartTime`. When you specify both `Filter.1.Key` and `Filter.1.Value`, you can query resources created after the specified point in time.
         self.key = key
-        # The filter value. If you specify this parameter, you must also specify `Filter.1.Key`. The value must be in the `yyyy-MM-ddTHH:mmZ` format and in UTC.
+        # The filter value used to query resources. When you specify this parameter, you must also specify `Filter.1.Key`. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC.
         self.value = value
 
     def validate(self):

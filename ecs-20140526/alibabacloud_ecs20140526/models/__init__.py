@@ -985,6 +985,9 @@ from ._modify_storage_capacity_unit_attribute_response import ModifyStorageCapac
 from ._modify_storage_set_attribute_request import ModifyStorageSetAttributeRequest
 from ._modify_storage_set_attribute_response_body import ModifyStorageSetAttributeResponseBody
 from ._modify_storage_set_attribute_response import ModifyStorageSetAttributeResponse
+from ._modify_system_event_attribute_request import ModifySystemEventAttributeRequest
+from ._modify_system_event_attribute_response_body import ModifySystemEventAttributeResponseBody
+from ._modify_system_event_attribute_response import ModifySystemEventAttributeResponse
 from ._modify_user_business_behavior_request import ModifyUserBusinessBehaviorRequest
 from ._modify_user_business_behavior_response_body import ModifyUserBusinessBehaviorResponseBody
 from ._modify_user_business_behavior_response import ModifyUserBusinessBehaviorResponse
@@ -3055,6 +3058,9 @@ __all__ = [
     ModifyStorageSetAttributeRequest,
     ModifyStorageSetAttributeResponseBody,
     ModifyStorageSetAttributeResponse,
+    ModifySystemEventAttributeRequest,
+    ModifySystemEventAttributeResponseBody,
+    ModifySystemEventAttributeResponse,
     ModifyUserBusinessBehaviorRequest,
     ModifyUserBusinessBehaviorResponseBody,
     ModifyUserBusinessBehaviorResponse,

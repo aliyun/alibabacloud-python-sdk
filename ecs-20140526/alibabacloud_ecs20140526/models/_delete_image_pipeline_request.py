@@ -14,7 +14,7 @@ class DeleteImagePipelineRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the image template.
+        # The image template ID.
         # 
         # This parameter is required.
         self.image_pipeline_id = image_pipeline_id

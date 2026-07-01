@@ -48,13 +48,13 @@ class DescribeDisksRequest(DaraModel):
         self.filter = filter
         # The list of additional attribute values. The only valid value is `Placement`, which queries the data storage location of the disk.
         # 
-        # > Only regional ESSD disks have data storage locations.
+        # > Only regional (cross-zone redundant) disks have a valid data storage location.
         self.additional_attributes = additional_attributes
-        # The ID of the automatic snapshot policy that is applied to the disk.
+        # The ID of the automatic snapshot policy used to query cloud disks.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         # The category of the disk. Valid values: 
         #          
-        # - all: all disks, local disks, and elastic ephemeral disks.
+        # - all: all cloud disks, local disks, and elastic ephemeral disks.
         # - cloud: basic disk.
         # - cloud_efficiency: ultra disk.
         # - cloud_ssd: standard SSD.
@@ -62,8 +62,8 @@ class DescribeDisksRequest(DaraModel):
         # - cloud_auto: ESSD AutoPL disk.
         # - cloud_regional_disk_auto: regional ESSD.
         # - cloud_essd_entry: ESSD Entry disk.
-        # - elastic_ephemeral_disk_standard: elastic ephemeral disk - Standard.
-        # - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium.
+        # - elastic_ephemeral_disk_standard: elastic ephemeral disk - standard.
+        # - elastic_ephemeral_disk_premium: elastic ephemeral disk - premium.
         # - local_ssd_pro: I/O-intensive local disk.
         # - local_hdd_pro: throughput-intensive local disk.
         # - ephemeral: (retired) local disk.
@@ -71,18 +71,18 @@ class DescribeDisksRequest(DaraModel):
         # 
         # Default value: all.
         self.category = category
-        # Specifies whether automatic snapshots are released when the disk is released.
+        # Specifies whether automatic snapshots are released when the cloud disk is released.
         # 
-        # - true: Automatic snapshots are released.
+        # - true: Yes.
         # 
-        # - false: Automatic snapshots are not released.
+        # - false: No.
         # 
         # Default value: false.
         self.delete_auto_snapshot = delete_auto_snapshot
-        # Specifies whether the disk is released together with the instance. Valid values:
+        # Specifies whether the disk is set to be released together with the instance. Valid values:
         # 
         # - true: The disk is released together with the instance.
-        # - false: The disk is retained as a pay-as-you-go data disk after the instance is released.
+        # - false: The disk is retained as a pay-as-you-go data disk when the instance is released.
         # 
         # Default value: false.
         self.delete_with_instance = delete_with_instance
@@ -91,11 +91,11 @@ class DescribeDisksRequest(DaraModel):
         # - PrePaid: subscription.
         # - PostPaid: pay-as-you-go.
         self.disk_charge_type = disk_charge_type
-        # The IDs of disks, local disks, or elastic ephemeral disks. The value is a JSON array that can contain up to 100 IDs. Separate the IDs with commas (,).
+        # The IDs of cloud disks, local disks, or elastic ephemeral disks. The value is a JSON array that can contain up to 100 IDs. Separate the IDs with commas (,).
         self.disk_ids = disk_ids
-        # The name of the disk. The name must be 2 to 128 characters in length and can contain letters, digits, and characters categorized as letter in Unicode. The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the disk. The name must be 2 to 128 characters in length and can contain Unicode characters under the letter category (including letters, digits, and characters from other languages). The name can contain colons (:), underscores (_), periods (.), and hyphens (-).
         self.disk_name = disk_name
-        # The type of the disk, local disk, or elastic ephemeral disk to query. Valid values: 
+        # The type of the cloud disk, local disk, or elastic ephemeral disk to query. Valid values: 
         #          
         # - all: queries both system disks and data disks.
         # - system: queries only system disks.
@@ -104,55 +104,55 @@ class DescribeDisksRequest(DaraModel):
         # Default value: all.
         # > Elastic ephemeral disks cannot be used as system disks.
         self.disk_type = disk_type
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: Only a dry run is performed. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is granted the required authorization, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - false: A Normal request is sent. If the request passes the dry run, a 2XX HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - false: performs a dry run and sends the Normal request. If the request passes the dry run, a 2XX HTTP status code is returned and the authorization is verified.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether the automatic snapshot policy feature is enabled for the disk.
+        # Specifies whether the automatic snapshot policy feature is enabled for the cloud disk.
         # 
         # - true: Enabled.
         # - false: Not enabled.
         # 
-        # > This parameter is deprecated. After a disk is created, the automatic snapshot policy feature is enabled by default. You only need to apply an automatic snapshot policy to the disk.
+        # > This parameter is deprecated. After a cloud disk is created, the automatic snapshot policy feature is enabled by default. You only need to associate an automatic snapshot policy with the cloud disk.
         self.enable_auto_snapshot = enable_auto_snapshot
-        # Specifies whether an automatic snapshot policy is applied to the disk.
-        # - true: An automatic snapshot policy is applied.
-        # - false: No automatic snapshot policy is applied.
+        # Specifies whether an automatic snapshot policy is applied to the cloud disk.
+        # - true: Applied.
+        # - false: Not applied.
         # 
         # Default value: false.
         self.enable_automated_snapshot_policy = enable_automated_snapshot_policy
         # Specifies whether the disk is a Shared Block Storage device.
         self.enable_shared = enable_shared
-        # Specifies whether to query only encrypted disks.
+        # Specifies whether to query only encrypted cloud disks.
         # 
-        # - true: Only encrypted disks are queried.
+        # - true: Yes.
         # 
-        # - false: Encrypted disks are not exclusively queried.
+        # - false: No.
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The instance ID of the instance to which the disk, local disk, or elastic ephemeral disk is attached.
+        # The instance ID of the instance to which the cloud disk, local disk, or elastic ephemeral disk is attached.
         self.instance_id = instance_id
-        # The ID of the Key Management Service (KMS) key used by the disk.
+        # The ID of the Key Management Service (KMS) key used by the cloud disk.
         self.kmskey_id = kmskey_id
         # The reason why the disk is locked. Valid values:
         # 
-        # - financial: The disk is locked due to overdue payments.
-        # - security: The disk is locked for security reasons.
+        # - financial: locked due to overdue payment.
+        # - security: locked for security reasons.
         self.lock_reason = lock_reason
         # The maximum number of entries to return. Valid values: 10 to 500.
         # 
         # Default value:
-        # - If this parameter is not specified or is set to a value smaller than 10, the default value is 10.
+        # - If this parameter is not specified or is set to a value less than 10, the default value is 10.
         # - If this parameter is set to a value greater than 500, the default value is 500.
         self.max_results = max_results
-        # Specifies whether the multi-attach feature is enabled for the disk. Valid values:
+        # Specifies whether the multi-attach feature is enabled. Valid values:
         # 
-        # - Disabled: The multi-attach feature is not enabled.
-        # - Enabled: The multi-attach feature is enabled.
+        # - Disabled: not enabled.
+        # - Enabled: enabled.
         # - LegacyShared: queries Shared Block Storage devices.
         self.multi_attach = multi_attach
         # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
@@ -161,15 +161,15 @@ class DescribeDisksRequest(DaraModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults for paging operations.
         self.page_number = page_number
-        # > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+        # > This parameter is about to be deprecated. Use NextToken and MaxResults for paging operations.
         self.page_size = page_size
         # Specifies whether the disk is removable. Valid values:
         # 
-        # - true: The disk is removable. The disk can exist independently and can be freely attached to or detached from instances within the same zone.
+        # - true: The disk can exist independently and can be freely attached and detached within the zone.
         # 
-        # - false: The disk is not removable. The disk cannot exist independently and cannot be freely attached to or detached from instances within the same zone.
+        # - false: The disk cannot exist independently and cannot be freely attached and detached within the zone.
         # 
         # The Portable attribute of the following types of block storage devices is false, and their lifecycle is the same as that of the instance:
         # 
@@ -187,7 +187,7 @@ class DescribeDisksRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the snapshot used to create the disk.
+        # The ID of the snapshot used to create the cloud disk.
         self.snapshot_id = snapshot_id
         # The status of the disk. For more information, see [Disk status](https://help.aliyun.com/document_detail/25689.html). Valid values:
         # - In_use: in use.
@@ -448,7 +448,7 @@ class DescribeDisksRequestTag(DaraModel):
     ):
         # The tag key of the disk. Valid values of N: 1 to 20.
         # 
-        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count with all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html).
+        # If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached with all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
         self.key = key
         # The tag value of the disk. Valid values of N: 1 to 20.
         self.value = value
@@ -485,9 +485,9 @@ class DescribeDisksRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # 查询资源时的筛选键，取值必须为`CreationStartTime`。同时设置`Filter.1.Key`和`Filter.1.Value`可以查询在指定时间点后创建的资源信息。
+        # The filter key used to query resources. Set the value to `CreationStartTime`. You can specify both Filter.1.Key and Filter.1.Value to query resources created after the specified point in time.
         self.key = key
-        # 查询资源时的筛选值。指定该参数时必须同时指定`Filter.1.Key`参数，格式为：`yyyy-MM-ddTHH:mmZ`，采用UTC +0时区。
+        # The filter value used to query resources. When you specify this parameter, you must also specify Filter.1.Key. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC+0.
         self.value = value
 
     def validate(self):

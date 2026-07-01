@@ -36357,6 +36357,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_storage_set_attribute_with_options_async(request, runtime)
 
+    def modify_system_event_attribute_with_options(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.not_before):
+            query['NotBefore'] = request.not_before
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySystemEventAttribute',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySystemEventAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_system_event_attribute_with_options_async(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.not_before):
+            query['NotBefore'] = request.not_before
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySystemEventAttribute',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySystemEventAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_system_event_attribute(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.modify_system_event_attribute_with_options(request, runtime)
+
+    async def modify_system_event_attribute_async(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_system_event_attribute_with_options_async(request, runtime)
+
     def modify_user_business_behavior_with_options(
         self,
         request: main_models.ModifyUserBusinessBehaviorRequest,

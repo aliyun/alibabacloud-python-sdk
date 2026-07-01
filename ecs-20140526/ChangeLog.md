@@ -1,3 +1,7 @@
+2026-07-01 Version: 7.9.0
+- Support API ModifySystemEventAttribute.
+
+
 2026-06-24 Version: 7.8.7
 - Update API DescribeInstanceHistoryEvents: add response parameters Body.InstanceSystemEventSet.$.ExtendedAttribute.InitialNotBefore.
 - Update API DescribeInstanceTopology: add response parameters Body.Topologys.$.NetworkNodes.

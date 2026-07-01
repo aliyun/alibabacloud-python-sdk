@@ -18,27 +18,25 @@ class StopInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         stopped_mode: str = None,
     ):
-        # This parameter will be removed in the future and is retained only to ensure compatibility. We recommend that you ignore this parameter.
+        # This parameter will be deprecated soon and is retained only for compatibility purposes. Ignore this parameter when you call this operation.
         self.confirm_stop = confirm_stop
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, service limits, and available ECS resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # 
-        # - false: performs a dry run and performs the actual request.
+        # - true: performs only a dry run. The instance is not stopped. The system checks whether required parameters are specified, whether the request format is valid, whether business restrictions are met, and whether ECS inventory is sufficient. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - false: performs a dry run and sends the request. The instance is stopped after the check succeeds.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # Specifies whether to forcefully stop the ECS instance. Valid values:
+        # Specifies whether to forcefully stop the instance. Valid values:
         # 
-        # - true: forcefully stops the ECS instance. If you set ForceStop to true, this operation is equivalent to a power-off operation. Cache data that is not written to storage devices on the instance is lost.
-        # 
-        # - false: normally stops the ECS instance.
+        # - true: forcefully stops the instance. This is equivalent to a power-off operation. All cached data that is not written to storage devices is lost.
+        # - false: normally stops the instance.
         # 
         # Default value: false.
         self.force_stop = force_stop
-        # > This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not available for use.
         self.hibernate = hibernate
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -46,27 +44,22 @@ class StopInstanceRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The stop mode of the pay-as-you-go instance. Valid values:
+        # The stop mode for the pay-as-you-go ECS instance. Valid values:
         # 
-        # - StopCharging: economical mode. After an instance is stopped in economical mode:
+        #   - StopCharging: economical mode. After the economical mode is enabled:
+        #     - Billing is suspended for compute resources (vCPUs, memory, and GPUs), image license fees, and fixed bandwidth of static public IP addresses.
+        #     - Billing continues for system disks, data disks, and fixed bandwidth of Elastic IP Addresses (EIPs).
+        #     - Because compute resources are released, the instance may fail to restart due to insufficient inventory. Try again later or change the instance type.
+        #     - If the instance is associated with an EIP before it is stopped, the IP address remains unchanged after the instance is restarted. Otherwise, the static public IP address may change, but the private IP address remains unchanged. 
         # 
-        #   - Billing for the following resources of the instance stops: computing resources (vCPUs, memory, and GPUs), image licenses, and public bandwidth of the static public IP address (if any) that uses the pay-by-bandwidth metering method.
+        #     For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
+        #     >Notice: 
+        # If the instance does not support the economical mode, no error is returned on the API side. Stopping the instance takes priority. Instance types that do not support the economical mode include instances with local disks and subscription instances.
+        #     
         # 
-        #   - Billing for the following resources of the instance continues: system disk, data disks, and public bandwidth of the elastic IP address (EIP) (if any) that uses the pay-by-bandwidth metering method.
+        #   - KeepCharging: standard stop mode. The instance continues to be billed after it is stopped.
         # 
-        #   - The instance may fail to restart due to the reclaimed computing resources or insufficient resources. Try again later or change the instance type of the instance.
-        # 
-        #   - If an EIP is associated with the instance before the instance is stopped, the EIP remains unchanged after the instance is restarted. If a static public IP address is associated with the instance before the instance is stopped, the static public IP address may change, but the private IP address does not change.
-        # 
-        #   For more information, see [Economical mode](https://help.aliyun.com/document_detail/63353.html).
-        # 
-        #   \\*\\*
-        # 
-        #   **Note** If the instance does not support the economical mode, the system stops the instance and does not report errors during the operation call. The following types of instances are not supported: classic network instances, local disks, and monthly instances.
-        # 
-        # - KeepCharging: standard mode. After the instance is stopped in standard mode, you continue to be charged for the instance.
-        # 
-        # Default value: If the conditions for [enabling the economical mode for an instance in a VPC](~~63353#default~~) are met and you have enabled this mode in the ECS console, the default value is `StopCharging`. Otherwise, the default value is `KeepCharging`.
+        # Default value: If you enable the economical mode for VPC-connected instances in the ECS console (for more information, see [Enable the economical mode by default](~~63353#default~~)) and the conditions are met, the default value is `StopCharging`. Otherwise, the default value is `KeepCharging`.
         self.stopped_mode = stopped_mode
 
     def validate(self):

@@ -60,7 +60,7 @@ class DescribeInvocationResultsResponseBodyInvocation(DaraModel):
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page in the paging query.
+        # The number of entries per page. This value is the PageSize value specified in the paging query settings.
         self.page_size = page_size
         # The total number of commands.
         self.total_count = total_count

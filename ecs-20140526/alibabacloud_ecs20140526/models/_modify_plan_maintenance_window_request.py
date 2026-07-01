@@ -114,7 +114,7 @@ class ModifyPlanMaintenanceWindowRequestTimePeriod(DaraModel):
     ):
         # The cycle type. Valid values: Daily and Weekly.
         self.period_unit = period_unit
-        # The time ranges of the recurring O&M window cycle (UTC time zone).
+        # The time ranges of the O&M window recurring cycle (UTC time zone).
         self.range_list = range_list
 
     def validate(self):
@@ -161,13 +161,13 @@ class ModifyPlanMaintenanceWindowRequestTimePeriodRangeList(DaraModel):
         # 
         # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
         # - If PeriodUnit is set to Daily, the format is 22:00.
-        # - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minutes, which currently supports only 00.
+        # - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, which currently supports only 00.
         self.end_time = end_time
         # The start time of the O&M window.
         # 
         # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
         # - If PeriodUnit is set to Daily, the format is 22:00.
-        # - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minutes, which currently supports only 00.
+        # - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, which currently supports only 00.
         self.start_time = start_time
 
     def validate(self):
@@ -205,7 +205,7 @@ class ModifyPlanMaintenanceWindowRequestTargetResource(DaraModel):
     ):
         # The ID of the resource group to which the O&M window applies. This parameter is required only when Scope is set to ResourceGroup.
         self.resource_group_id = resource_group_id
-        # The resource type for the O&M window.
+        # The resource type for the O&M window configuration.
         self.scope = scope
         # The tags to which the O&M window applies. This parameter is required only when Scope is set to Tag.
         self.tags = tags

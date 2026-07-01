@@ -28,160 +28,126 @@ class DescribeAvailableResourceRequest(DaraModel):
         system_disk_category: str = None,
         zone_id: str = None,
     ):
-        # The number of vCPU cores for the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The number of vCPU cores of the instance type. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # This parameter applies only when `DestinationResource` is set to `InstanceType`.
+        # This parameter takes effect only when DestinationResource is set to InstanceType.
         self.cores = cores
-        # The category of the data disk. Valid values:
-        # 
-        # - cloud: basic cloud disk.
-        # 
-        # - cloud_efficiency: ultra cloud disk.
-        # 
-        # - cloud_ssd: SSD cloud disk.
-        # 
-        # - ephemeral_ssd: local SSD disk.
-        # 
-        # - cloud_essd: ESSD cloud disk.
-        # 
-        # - cloud_auto: ESSD AutoPL cloud disk.
-        # 
+        # The category of the data disk. Valid values: 
+        #          
+        # - cloud: basic disk.
+        # - cloud_efficiency: ultra disk.
+        # - cloud_ssd: standard SSD.
+        # - ephemeral_ssd: local SSD.
+        # - cloud_essd: enterprise SSD (ESSD).
+        # - cloud_auto: ESSD AutoPL disk.
         # <props="china">
-        # 
-        # - cloud_essd_entry: ESSD Entry cloud disk.
+        # - cloud_essd_entry: ESSD Entry disk.
         self.data_disk_category = data_disk_category
         # The ID of the dedicated host.
         self.dedicated_host_id = dedicated_host_id
-        # The type of resource to query. Valid values:
-        # 
-        # - Zone: availability zone.
-        # 
+        # The type of resource to query. Valid values: 
+        #          
+        # - Zone: zone.
         # - IoOptimized: I/O optimized.
-        # 
         # - InstanceType: instance type.
-        # 
         # - Network: network type.
-        # 
         # - ddh: dedicated host.
-        # 
         # - SystemDisk: system disk.
-        # 
         # - DataDisk: data disk.
         # 
-        # > When `DestinationResource` is set to `SystemDisk`, you must specify `InstanceType` because available system disks depend on the instance type.
+        # > When DestinationResource is set to `SystemDisk`, you must specify InstanceType because system disks are restricted by instance types.
         # 
-        # For details on how to specify this parameter, see the **API description** section.
+        # For more information about how to set the DestinationResource parameter, see the **operation description** section of this topic.
         # 
         # This parameter is required.
         self.destination_resource = destination_resource
-        # The billing method of the resource. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values:
-        # 
-        # - PrePaid: The subscription billing method.
-        # 
-        # - PostPaid: The pay-as-you-go billing method.
+        # The billing method of the resource. For more information, see [Billing overview](https://help.aliyun.com/document_detail/25398.html). Valid values: 
+        #        
+        # - PrePaid: subscription.  
+        # - PostPaid: pay-as-you-go.
         # 
         # Default value: PostPaid.
         self.instance_charge_type = instance_charge_type
-        # The instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html). You can also call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to get the latest list of instance types.
+        # The instance type. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html). You can also invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
         # 
-        # For details on how to specify this parameter, see the **API description** section.
+        # For more information about how to set the InstanceType parameter, see the **operation description** section at the beginning of this topic.
         self.instance_type = instance_type
-        # Specifies whether the instance is I/O optimized. Valid values:
+        # Specifies whether the instance is an I/O optimized instance. Valid values:
         # 
-        # - none: The instance is not I/O optimized.
-        # 
-        # - optimized: The instance is I/O optimized.
+        # - none: non-I/O optimized instance.
+        # - optimized: I/O optimized instance.
         # 
         # Default value: optimized.
         self.io_optimized = io_optimized
-        # The memory size for the instance type, in GiB. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The memory size of the instance type. Unit: GiB. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
         # 
-        # This parameter applies only when `DestinationResource` is set to `InstanceType`.
+        # This parameter takes effect only when DestinationResource is set to InstanceType.
         self.memory = memory
-        # The network type. Valid values:
-        # 
-        # - vpc: VPC.
-        # 
-        # - classic: classic network.
+        # The network type. Valid values: 
+        #         
+        # - vpc: virtual private cloud (VPC).
+        # - classic: classic network. The classic network is deprecated. For more information, see [Deprecation notice](https://help.aliyun.com/document_detail/2833134.html).
         self.network_category = network_category
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to get the latest list of Alibaba Cloud regions.
+        # The ID of the destination region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Valid values:
+        # The type of the resource. Valid values:
         # 
         # - instance: ECS instance.
-        # 
         # - disk: cloud disk.
-        # 
         # - reservedinstance: reserved instance.
-        # 
         # - ddh: dedicated host.
         self.resource_type = resource_type
         # The scope of the reserved instance. Valid values:
-        # 
-        # - Region: The reserved instance is scoped to a region.
-        # 
-        # - Zone: The reserved instance is scoped to an availability zone.
+        #          
+        # - Region: regional.
+        # - Zone: zonal.
         self.scope = scope
-        # The protection period for the spot instance. Unit: hours. Default value: 1. Valid values:
+        # The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
+        # - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After 1 hour, the system compares the bid price with the market price and checks the inventory to determine whether to retain automatic release the instance.
+        # - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks the inventory to determine whether to retain automatic release the instance.
         # 
-        # - 1: Alibaba Cloud guarantees that the instance will not be automatically reclaimed within 1 hour of creation. After the 1-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
+        # Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
         # 
-        # - 0: Alibaba Cloud does not guarantee that the instance runs for 1 hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
-        # 
-        # Alibaba Cloud sends a notification through ECS system events 5 minutes before reclaiming an instance. Spot instances are billed by the second. We recommend that you select a protection period based on the expected runtime of your tasks.
-        # 
-        # > This parameter applies only when `InstanceChargeType` is set to `PostPaid` and `SpotStrategy` is set to `SpotWithPriceLimit` or `SpotAsPriceGo`.
+        # > This parameter takes effect only when `InstanceChargeType` is set to `PostPaid` and `SpotStrategy` is set to `SpotWithPriceLimit` or `SpotAsPriceGo`.
         self.spot_duration = spot_duration
-        # The bidding strategy for pay-as-you-go instances. Valid values:
-        # 
-        # - NoSpot: A standard pay-as-you-go instance.
-        # 
-        # - SpotWithPriceLimit: A spot instance for which you specify a maximum hourly price.
-        # 
-        # - SpotAsPriceGo: A spot instance for which the system automatically bids based on the current market price, up to the pay-as-you-go price.
+        # The bidding policy for pay-as-you-go instances. Valid values: 
+        #          
+        # - NoSpot: a regular pay-as-you-go instance.
+        # - SpotWithPriceLimit: a spot instance with a maximum price limit.
+        # - SpotAsPriceGo: a spot instance priced at the market price with the pay-as-you-go price as the upper limit.
         # 
         # Default value: NoSpot.
         # 
-        # This parameter applies only when `InstanceChargeType` is set to `PostPaid`.
+        # This parameter takes effect only when InstanceChargeType is set to `PostPaid`.
         self.spot_strategy = spot_strategy
-        # The category of the system disk. Valid values:
-        # 
-        # - cloud: basic cloud disk.
-        # 
-        # - cloud_efficiency: ultra cloud disk.
-        # 
-        # - cloud_ssd: SSD cloud disk.
-        # 
-        # - ephemeral_ssd: local SSD disk.
-        # 
-        # - cloud_essd: ESSD cloud disk.
-        # 
-        # - cloud_auto: ESSD AutoPL cloud disk.
-        # 
+        # The category of the system disk. Valid values: 
+        #          
+        # - cloud: basic disk.
+        # - cloud_efficiency: ultra disk.
+        # - cloud_ssd: standard SSD.
+        # - ephemeral_ssd: local SSD.
+        # - cloud_essd: enterprise SSD (ESSD).
+        # - cloud_auto: ESSD AutoPL disk.
         # <props="china">
-        # 
-        # - cloud_essd_entry: ESSD Entry cloud disk.
-        # 
+        # - cloud_essd_entry: ESSD Entry disk.
         # 
         # 
+        # Default value description:
         # 
-        # About the default value:
+        # - If InstanceType is set to a retired instance type, the default value is `cloud`.
+        # - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, for instance types that support only cloud_essd, the default value is changed from cloud_efficiency to cloud_essd PL0. For more information, see [Change notice](https://www.aliyun.com/notice/117844).
         # 
-        # - If `InstanceType` specifies a discontinued instance type, the default value is `cloud`.
-        # 
-        # - Otherwise, the default value is `cloud_efficiency`. <props="china">After January 30, 2026, for instance types that support only ESSD cloud disks, the default value changes from cloud_efficiency to cloud_essd PL0. For more information, see the [official announcement](https://www.aliyun.com/notice/117844).
-        # 
-        # > When `ResourceType` is set to `instance` and `DestinationResource` is set to `DataDisk`, this parameter is required.
+        # > When ResourceType is set to instance and DestinationResource is set to DataDisk, the SystemDiskCategory parameter is required. If you do not specify this parameter, the default value takes effect.
         self.system_disk_category = system_disk_category
-        # The ID of the availability zone.
+        # The zone ID.
         # 
-        # This parameter has no default value. If you do not specify this parameter, the operation returns resources that meet the query conditions in all availability zones within the specified region.
+        # Default value: null. The operation returns resources that match the query conditions across all zones in the specified region (RegionId).
         self.zone_id = zone_id
 
     def validate(self):

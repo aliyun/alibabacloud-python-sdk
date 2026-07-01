@@ -75,68 +75,55 @@ class CreateInstanceRequest(DaraModel):
         self.hibernation_options = hibernation_options
         self.private_pool_options = private_pool_options
         self.system_disk = system_disk
-        # 专有宿主机实例是否与专有宿主机关联。取值范围：
+        # Specifies whether the instance is associated with a dedicated host. Valid values:
         # 
-        # - default：实例不与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，若原专有宿主机可用资源不足，则实例被放置在自动部署资源池的其它专有宿主机上。
+        # - default: The instance is not associated with a dedicated host. When an instance that has economical mode enabled is restarted after it is stopped, the instance is deployed to another dedicated host in the automatic deployment resource pool if the resources of the original dedicated host are insufficient.
         # 
-        # - host：实例与专有宿主机关联。已启用节省停机模式的实例，停机后再次启动时，仍放置在原专有宿主机上。若原专有宿主机可用资源不足，则实例重启失败。
+        # - host: The instance is associated with a dedicated host. When an instance that has economical mode enabled is restarted after it is stopped, the instance remains on the original dedicated host. If the resources of the original dedicated host are insufficient, the instance fails to restart.
         # 
-        # 默认值为 default。
+        # Default value: default.
         self.affinity = affinity
         # > This parameter is in invitational preview and is not publicly available.
         self.arn = arn
-        # Specifies whether to enable auto-renewal for the instance. This parameter is valid only for subscription (`InstanceChargeType` is `PrePaid`) instances. Valid values:
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when `InstanceChargeType` is set to `PrePaid`. Valid values:
         # 
         # - true: enables auto-renewal.
-        # 
-        # - false: disables auto-renewal. (Default)
+        # - false (default): disables auto-renewal.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required if `AutoRenew` is `true`.
+        # The auto-renewal period. This parameter is required when AutoRenew is set to True.
         # 
-        # <props="china">
+        # <props="china">If PeriodUnit is set to Week, valid values of AutoRenewPeriod are 1, 2, and 3.
         # 
-        # If `PeriodUnit` is set to `Week`, valid values of `AutoRenewPeriod` are 1, 2, and 3.
-        # 
-        # 
-        # 
-        # If `PeriodUnit` is set to `Month`, valid values of `AutoRenewPeriod` are 1, 2, 3, 6, and 12.
+        # If PeriodUnit is set to Month, valid values of AutoRenewPeriod are 1, 2, 3, 6, and 12.
         self.auto_renew_period = auto_renew_period
-        # A client-generated token that you can use to ensure the idempotency of the request. Generate a value that is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The ID of the cluster in which to create the instance.
+        # The cluster ID of the instance.
         # 
-        # > This parameter is deprecated. To ensure future compatibility, use other parameters.
+        # > This parameter will be deprecated. To improve compatibility, use other parameters instead.
         self.cluster_id = cluster_id
-        # The performance mode of the burstable performance instance. Valid values:
+        # The performance mode of the burstable instance. Valid values:
         # 
-        # - `Standard`: standard mode. For more information about the performance of burstable performance instances, see the "Standard mode" section in [Burstable performance instances](https://help.aliyun.com/document_detail/59977.html).
-        # 
-        # - `Unlimited`: unlimited mode. For more information about the performance of burstable performance instances, see the "Unlimited mode" section in [Burstable performance instances](https://help.aliyun.com/document_detail/59977.html).
+        # - Standard: standard mode. For more information, see the performance constrained mode section in [What are burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # - Unlimited: unlimited mode. For more information, see the unlimited performance mode section in [What are burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.credit_specification = credit_specification
-        # The data disks.
+        # The list of data disks.
         self.data_disk = data_disk
         # The ID of the dedicated host.
-        # <props="china">You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the list of dedicated host IDs.
+        # <props="china">You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query the list of dedicated host IDs.
         # 
-        # <props="intl">
+        # <props="intl">You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query the list of dedicated host IDs.
         # 
-        # You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the list of dedicated host IDs.
-        # 
-        # 
-        # 
-        # >Notice: 
-        # 
-        # You cannot create spot instances on dedicated hosts. If you specify `DedicatedHostId`, the `SpotStrategy` and `SpotPriceLimit` parameters are ignored.
+        # >Notice: Spot instances cannot be created on dedicated hosts. If you specify `DedicatedHostId`, the `SpotStrategy` and `SpotPriceLimit` settings in the request are automatically ignored.
         self.dedicated_host_id = dedicated_host_id
-        # Specifies whether to enable deletion protection for the instance. This parameter determines whether you can release the instance by using the console or by calling the [DeleteInstance](https://help.aliyun.com/document_detail/25507.html) operation.
+        # The release protection attribute of the instance. Specifies whether the instance can be released from the ECS console or by calling [DeleteInstance](https://help.aliyun.com/document_detail/25507.html).
         # 
-        # - `true`: enables deletion protection.
+        # -   true: enables release protection.
+        # -   false (default): disables release protection.
         # 
-        # - `false`: disables deletion protection. This is the default value.
-        # 
-        # > This parameter is applicable only to pay-as-you-go instances. It can prevent only manual releases but not releases that are performed by the system.
+        # > This attribute is applicable only to pay-as-you-go instances. It can only prevent manual release, not system-initiated release.
         self.deletion_protection = deletion_protection
-        # If the deployment set you specified uses the high availability group strategy (AvailabilityGroup), you can use this parameter to specify the group number of the instance within the deployment set. Valid values: 1 to 7.
+        # The group number of the instance in the deployment set. This parameter takes effect only when the deployment set uses the high availability group strategy (AvailabilityGroup). Valid values: 1 to 7.
         self.deployment_set_group_no = deployment_set_group_no
         # The ID of the deployment set.
         self.deployment_set_id = deployment_set_id
@@ -144,247 +131,206 @@ class CreateInstanceRequest(DaraModel):
         # 
         # Default value: empty.
         self.description = description
-        # Specifies whether to perform a dry run for this request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - `true`: Performs a dry run to check the request for issues like parameter validity and permissions, without creating the instance. If the check succeeds, a `DryRunOperation` error code is returned. If the check fails, an error message is returned.
-        # 
-        # - `false`: performs a dry run and creates the instance if the request passes the dry run. This is the default value.
+        # - true: performs only a dry run. The system checks whether the required parameters are specified, whether the request format is valid, whether service limits are met, and whether the specified ECS resources are available. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - false (default): performs a dry run and sends the request. If the check succeeds, the instance is created.
         self.dry_run = dry_run
-        # The hostname of the instance.
+        # The hostname of the server.
         # 
-        # - The first and last characters cannot be periods (.) or hyphens (-). These characters also cannot be used consecutively.
-        # 
-        # - For Windows instances: The hostname must be 2 to 15 characters long, cannot contain periods (.), and cannot consist of only digits. It can contain letters, digits, and hyphens (-).
-        # 
-        # - For other operating systems, such as Linux: The hostname must be 2 to 64 characters long. You can use periods (.) as separators. The segments between periods can contain letters, digits, and hyphens (-).
+        # - The hostname cannot start or end with a period (.) or hyphen (-), and cannot contain consecutive periods or hyphens.
+        # - Windows instances: The hostname must be 2 to 15 characters in length and cannot contain periods (.) or consist entirely of digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
+        # - Other instances (such as Linux): The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment separated by a period can contain uppercase and lowercase letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the HPC cluster to which the instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
         # Specifies whether to enable the access channel for instance metadata. Valid values:
+        # - enabled: enabled.
+        # - disabled: disabled.
         # 
-        # - `enabled`
-        # 
-        # - `disabled`
-        # 
-        # Default value: `enabled`.
-        # 
+        # Default value: enabled.
         # > For more information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/49122.html).
         self.http_endpoint = http_endpoint
         # > This parameter is not publicly available.
         self.http_put_response_hop_limit = http_put_response_hop_limit
-        # Specifies whether to enforce token-based access (IMDSv2) to instance metadata. Valid values:
+        # Specifies whether to forcefully use the security-hardened mode (IMDSv2) to access instance metadata. Valid values:
+        # - optional: does not forcefully use the security-hardened mode.
+        # - required: forcefully uses the security-hardened mode. After this value is set, instance metadata cannot be accessed in normal mode.
         # 
-        # - `optional`: does not enforce the use of IMDSv2.
-        # 
-        # - `required`: enforces the use of IMDSv2. If you set this value, you cannot use IMDSv1 to access instance metadata.
-        # 
-        # Default value: `optional`.
-        # 
-        # > For more information about the modes of accessing instance metadata, see [Access instance metadata](https://help.aliyun.com/document_detail/150575.html).
+        # Default value: optional.
+        # > For more information about the modes for accessing instance metadata, see [Instance metadata access modes](https://help.aliyun.com/document_detail/150575.html).
         self.http_tokens = http_tokens
-        # The name of the image family. Setting this parameter creates an instance with the latest available image from the specified image family.
-        # 
-        # - If `ImageId` is specified, this parameter cannot be used.
-        # 
-        # - If `ImageId` is not specified, you can specify this parameter.
+        # The name of the image family. Set this parameter to obtain the latest available image from the specified image family to create the instance.
+        # - If `ImageId` is specified, you cannot set this parameter.
+        # - If `ImageId` is not specified, you can set this parameter.
         self.image_family = image_family
-        # The ID of the image used to create the instance. For an Alibaba Cloud Marketplace image, find its `ImageId` on the product details page. This parameter is required if you do not specify `ImageFamily` to use the latest available image from an image family.
+        # The ID of the image used to start the instance. To use an Alibaba Cloud Marketplace image, you can view the `ImageId` on the image product page. If you do not use `ImageFamily` to select the latest available image from an image family, this parameter is required.
         self.image_id = image_id
         # The internal IP address of the instance.
         self.inner_ip_address = inner_ip_address
         # The billing method of the instance. Valid values:
         # 
-        # - `PrePaid`: subscription. If you select this billing method, make sure that your account supports balance payment or credit payment. Otherwise, an `InvalidPayMethod` error is returned.
-        # 
-        # - `PostPaid`: pay-as-you-go. This is the default value.
+        # - PrePaid: subscription. If you set this parameter to PrePaid, make sure that your account supports credit payment or balance payment. Otherwise, an `InvalidPayMethod` error is returned.
+        # - PostPaid (default): pay-as-you-go.
         self.instance_charge_type = instance_charge_type
-        # The name of the instance. The name must be 2 to 128 characters long. It can contain Unicode letters (such as Chinese characters), digits, colons (:), underscores (_), periods (.), and hyphens (-). If you do not specify this parameter, the instance ID is used by default.
+        # The name of the instance. The name must be 2 to 128 characters in length and can contain letters in the Unicode letter category (including English and Chinese characters) and digits. The name can contain colons (:), underscores (_), periods (.), or hyphens (-). If this parameter is not specified, the default value is the instance ID.
         self.instance_name = instance_name
         # The instance type.
         # 
-        # - Select an instance type: For more information, see [Instance type families](https://help.aliyun.com/document_detail/25378.html), call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query performance data, or see [Select instance types](https://help.aliyun.com/document_detail/58291.html) for selection guidance.
-        # 
-        # - Query available resources: Call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) operation to query available resources in a specific region or zone.
+        # - Instance type selection: See [Instance family](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the performance data of the target instance type. You can also see [Best practices for instance type selection](https://help.aliyun.com/document_detail/58291.html) to learn how to select an instance type.
+        # - Check active resources: Invoke [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) to query active resources in a specific region or zone.
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # The network billing method. Valid values:
+        # The billing method for network usage. Valid values:
         # 
-        # - `PayByBandwidth`: pay-by-bandwidth.
+        # - PayByBandwidth: pay-by-bandwidth.
+        # - PayByTraffic (default): pay-by-traffic.
         # 
-        # - `PayByTraffic`: pay-by-traffic. This is the default value.
-        # 
-        # > With the **pay-by-traffic** billing method, the specified peak bandwidth is an upper limit, not a guaranteed speed. Actual bandwidth may be limited during resource contention. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth** billing method.
+        # > In **pay-by-traffic** mode, the peak inbound and outbound bandwidths are both upper limits and are not guaranteed. When resource contention occurs, the peak bandwidth may be throttled. If your workloads require guaranteed bandwidth, use **pay-by-bandwidth** mode.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
+        # The maximum inbound public bandwidth, in Mbit/s. Valid values:
         # 
-        # - If `InternetMaxBandwidthOut` is 10 or less, the value of this parameter is an integer from 1 to 10. Default value: 10.
-        # 
-        # - If `InternetMaxBandwidthOut` is greater than 10 Mbit/s, the value of this parameter is an integer from 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
+        # - If the purchased outbound bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
+        # - If the purchased outbound bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
-        # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
+        # The maximum outbound public bandwidth, in Mbit/s. Valid values: 0 to 100.
         # 
         # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # 是否为 I/O 优化实例。取值范围：
+        # Specifies whether the instance is I/O optimized. Valid values:
         # 
-        # - none：非 I/O 优化。
+        # - none: not I/O optimized.
+        # - optimized: I/O optimized.
         # 
-        # - optimized：I/O 优化。
+        # The default value for [retired instance types](https://help.aliyun.com/document_detail/55263.html) is none.
         # 
-        # [已停售的实例规格](https://help.aliyun.com/document_detail/55263.html)实例默认值是 none。
-        # 
-        # 其他实例规格默认值是 optimized。
+        # The default value for other instance types is optimized.
         self.io_optimized = io_optimized
         # The name of the key pair.
         # 
-        # > For Windows instances, this parameter is ignored and the `Password` parameter is used. Default value: empty.
+        # > For Windows instances, this parameter is ignored. The default value is empty. Even if this parameter is specified, only the `Password` content is used.
         self.key_pair_name = key_pair_name
         # > This parameter is in invitational preview and is not publicly available.
         self.node_controller_id = node_controller_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password of the instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The supported special characters are:
+        # The password of the instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
         # 
         # ```
         # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
         # ```
         # 
-        # Note the following:
+        # Note the following items:
         # 
-        # - If you specify the `Password` parameter, send the request over HTTPS to prevent the password from being leaked.
-        # 
+        # - For security purposes, use HTTPS to send requests if the Password parameter is specified.
         # - For Windows instances, the password cannot start with a forward slash (/).
-        # 
-        # - Some operating systems, such as Others Linux and Fedora CoreOS, do not support password-based logon. For these, you must use a key pair.
+        # - For instances that run certain operating systems, passwords are not supported. Only key pairs are supported. Examples: Others Linux and Fedora CoreOS.
         self.password = password
-        # Specifies whether to use the password preconfigured in the image. If you set this parameter, you must leave the `Password` parameter empty and make sure that the image has a password preconfigured.
+        # Specifies whether to use the password preset in the image. When you use this parameter, the Password parameter must be empty. Make sure that the image has a password configured.
         self.password_inherit = password_inherit
-        # The subscription duration of the resource. The unit is specified by `PeriodUnit`. This parameter is required and takes effect only if `InstanceChargeType` is set to `PrePaid`. If you specify `DedicatedHostId`, the value of this parameter cannot exceed the subscription duration of the specified dedicated host. Valid values:
+        # The subscription duration of the instance. The unit is specified by `PeriodUnit`. This parameter is required and takes effect only when `InstanceChargeType` is set to `PrePaid`. If `DedicatedHostId` is specified, the value of this parameter cannot exceed the subscription duration of the dedicated host. Valid values:
         # 
         # <props="china">
-        # 
-        # - If `PeriodUnit` is set to `Week`: 1, 2, 3, and 4.
-        # 
-        # - If `PeriodUnit` is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+        # - If PeriodUnit is set to Week, valid values of Period are 1, 2, 3, and 4.
+        # - If PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
         # 
         # 
         # 
-        # <props="intl">
+        # <props="intl">If PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 6, and 12.
         # 
-        # If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, 6, and 12.
-        # 
-        # 
-        # 
-        # <props="partner">
-        # 
-        # If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, 6, and 12.
+        # <props="partner">If PeriodUnit is set to Month, valid values of Period are 1, 2, 3, 6, and 12.
         self.period = period
         # The unit of the subscription duration. Valid values:
         # 
         # <props="china">
-        # 
-        # - Week
-        # 
-        # - Month
+        # - Week.
+        # - Month.
         # 
         # 
         # 
-        # <props="intl">
+        # <props="intl">Month.
         # 
-        # Month
-        # 
-        # 
-        # 
-        # <props="partner">
-        # 
-        # Month
-        # 
-        # 
+        # <props="partner">Month.
         # 
         # Default value: Month.
         self.period_unit = period_unit
-        # The private IP address of the instance. The IP address must be an available address in the CIDR block of the specified VSwitch.
+        # The private IP address of the instance. The IP address must be an available address within the CIDR block of the specified vSwitch (VSwitchId).
         self.private_ip_address = private_ip_address
-        # The name of the instance RAM role. You can call the RAM API operation [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you created.
+        # The name of the instance RAM role. You can call the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you have created.
         self.ram_role_name = ram_role_name
-        # The ID of the region in which to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view the latest list of Alibaba Cloud regions.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
+        # The ID of the enterprise resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable security hardening. Valid values:
         # 
-        # - `Active`: enables security hardening. This setting is valid only for system images.
-        # 
-        # - `Deactive`: disables security hardening. This setting is valid for all image types.
+        # - Active: enables security hardening. This value is applicable only to public images.
+        # - Deactive: disables security hardening. This value is applicable to all image types.
         self.security_enhancement_strategy = security_enhancement_strategy
-        # The ID of the security group to assign to the instance.
+        # The ID of the security group to which the instance belongs.
         self.security_group_id = security_group_id
-        # The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
+        # The protection period of the spot instance, in hours. Default value: 1. Valid values:
         # 
-        # - 1: Alibaba Cloud ensures that the instance runs for 1 hour without being automatically released. After 1 hour, the system compares your bid with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
+        # - 1: After the instance is created, Alibaba Cloud ensures that the instance is not automatically released for 1 hour. After 1 hour, the system automatically compares the bid price with the market price and checks resource availability to determine whether to retain automatic release the instance.
+        # - 0: After the instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system automatically compares the bid price with the market price and checks resource availability to determine whether to retain automatic release the instance.
         # 
-        # - 0: Alibaba Cloud does not guarantee that the instance runs for 1 hour after it is created. The system compares your bid with the market price and checks the resource inventory to determine whether to retain or reclaim the instance.
-        # 
-        # > * This parameter supports only 0 and 1.
-        # >
-        # > * Spot instances are billed per second. We recommend that you select a protection period based on the expected runtime of your tasks.
-        # >
-        # > * Alibaba Cloud sends a notification through ECS system events 5 minutes before the instance is reclaimed.
+        # > 
+        # > - This parameter supports only the value 0 or 1.
+        # > - Spot instances are billed by second. Set the protection period based on the expected task execution duration.
+        # > - Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released.
         self.spot_duration = spot_duration
-        # The interruption mode for the spot instance. Valid values:
+        # The break mode of the spot instance. Valid values:
         # 
-        # - `Terminate`: releases the instance.
+        # - Terminate: The instance is directly released.
         # 
-        # - `Stop`: stops the instance in economical mode.
+        # - Stop: The instance enters economical mode.
         # 
         #   For more information about economical mode, see [Economical mode for pay-as-you-go instances](https://help.aliyun.com/document_detail/63353.html).
         # 
         # Default value: Terminate.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The maximum hourly price of the instance. The value can be accurate to three decimal places. This parameter is valid only if `SpotStrategy` is set to `SpotWithPriceLimit`.
+        # The maximum hourly price of the instance. This value can be accurate to three decimal places. This parameter takes effect only when `SpotStrategy` is set to `SpotWithPriceLimit`.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the instance. This parameter is valid only if `InstanceChargeType` is set to `PostPaid`. Valid values:
+        # The bidding policy for the instance. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
         # 
-        # - `NoSpot`: The instance is created as a regular pay-as-you-go instance. This is the default value.
-        # 
-        # - `SpotWithPriceLimit`: The instance is created as a spot instance with a user-defined maximum hourly price.
-        # 
-        # - `SpotAsPriceGo`: The instance is created as a spot instance for which the system automatically bids based on the current market price.
+        # - NoSpot (default): The instance is a regular pay-as-you-go instance.
+        # - SpotWithPriceLimit: The instance is a spot instance with a user-defined maximum hourly price.
+        # - SpotAsPriceGo: The instance is a spot instance for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
-        # Specifies whether to create the instance on a dedicated host. Valid values:
+        # The ID of the storage set.
         self.storage_set_id = storage_set_id
-        # The maximum number of partitions in the storage set. The value must be 2 or greater.
+        # The maximum number of partitions in the storage set. Valid values: greater than or equal to 2.
         self.storage_set_partition_number = storage_set_partition_number
-        # The tags.
+        # The list of tags.
         self.tag = tag
-        # Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
+        # Specifies whether to create the instance on a dedicated host. Valid values:
         # 
-        # - `default`: does not associate the instance with the dedicated host. When a stopped instance in economical mode is restarted, it may be placed on a different dedicated host in the auto-deployment resource pool if the original dedicated host has insufficient resources.
+        # - default: creates the instance on a non-dedicated host.
         # 
-        # - `host`: associates the instance with the dedicated host. When a stopped instance in economical mode is restarted, it is still placed on the original dedicated host. If the original dedicated host has insufficient resources, the instance fails to restart.
+        # - host: creates the instance on a dedicated host. If you do not specify `DedicatedHostId`, Alibaba Cloud automatically selects a dedicated host for the instance.
         # 
-        # Default value: `default`.
+        # Default value: default.
         self.tenancy = tenancy
-        # 是否使用阿里云提供的虚拟机系统配置（Windows：NTP、KMS；Linux：NTP、YUM）。
+        # Specifies whether to use the virtual machine system configuration provided by Alibaba Cloud (Windows: NTP and KMS. Linux: NTP and YUM).
         self.use_additional_service = use_additional_service
-        # The user data of the instance. The user data must be Base64-encoded. The raw data can be up to 32 KB in size.
+        # The instance user data. The data must be encoded in Base64. The maximum size of the raw data is 32 KB.
         self.user_data = user_data
-        # When you create an instance in a VPC, you must specify a VSwitch ID. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query information about the VSwitches that you created.
+        # The vSwitch ID. This parameter is required when you create a VPC-connected instance. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) to query available vSwitches.
         # 
-        # > If `VSwitchId` is specified, `ZoneId` must match the VSwitch\\"s zone. If `ZoneId` is left unspecified, the system automatically uses the VSwitch\\"s zone.
+        # > If you specify `VSwitchId`, the specified `ZoneId` must be in the same zone as the vSwitch. You can also leave `ZoneId` empty, and the system automatically selects the zone of the specified vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual LAN (VLAN).
+        # The virtual local area network ID.
         self.vlan_id = vlan_id
-        # The ID of the zone to which the instance belongs. For more information, call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the list of zones.
+        # The zone ID of the instance. For more information, call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the zone list.
         # 
-        # > If `VSwitchId` is specified, `ZoneId` must match the VSwitch\\"s zone. If `ZoneId` is left unspecified, the system automatically uses the VSwitch\\"s zone.
+        # > If you specify `VSwitchId`, the specified `ZoneId` must be in the same zone as the vSwitch. You can also leave `ZoneId` empty, and the system automatically selects the zone of the specified vSwitch.
         # 
-        # Default value: empty, which indicates that the system randomly selects a zone.
+        # Default value: empty. The system automatically selects a zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -808,11 +754,9 @@ class CreateInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
-        # 
-        # > For better compatibility
+        # The tag key for the instance, disk, and primary ENI. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # 实例、云盘和主网卡的标签值。N 的取值范围：1\\~20。一旦传入该值，可以为空字符串。最多支持 128 个字符，不能包含`http://`或者`https://`。
+        # The tag value for the instance, disk, and primary ENI. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -859,93 +803,74 @@ class CreateInstanceRequestDataDisk(DaraModel):
     ):
         # The category of data disk N. Valid values:
         # 
-        # - `cloud_efficiency`: Ultra Disk.
+        # - cloud_efficiency: ultra disk.
+        # - cloud_ssd: standard SSD.
+        # - cloud_essd: enterprise SSD (ESSD).
+        # - cloud: basic disk.
+        # - cloud_auto: ESSD AutoPL disk.
+        # - cloud_essd_entry: ESSD Entry disk.
+        #   > The cloud_essd_entry value is supported only when `InstanceType` is set to the `ecs.u1` or `ecs.e` instance family. Settings of this parameter determine the optimization level of the data disk.
+        # - elastic_ephemeral_disk_standard: elastic ephemeral disk - standard.
+        # - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium Edition.
         # 
-        # - `cloud_ssd`: SSD cloud disk.
-        # 
-        # - `cloud_essd`: ESSD.
-        # 
-        # - `cloud`: Basic Disk.
-        # 
-        # - `cloud_auto`: ESSD AutoPL disk.
-        # 
-        # - `cloud_essd_entry`: ESSD Entry disk.
-        # 
-        #   > You can set this parameter to `cloud_essd_entry` only if you set `InstanceType` to an `ecs.u1` or `ecs.e` instance type family.
-        # 
-        # - `elastic_ephemeral_disk_standard`: standard elastic ephemeral disk.
-        # 
-        # - `elastic_ephemeral_disk_premium`: premium elastic ephemeral disk.
-        # 
-        # Default value for I/O optimized instances: `cloud_efficiency`. Default value for non-I/O optimized instances: `cloud`.
+        # The default value is cloud_efficiency for I/O optimized instances and cloud for non-I/O optimized instances.
         self.category = category
-        # Specifies whether to release the data disk when the instance is released.
+        # Specifies whether the data disk is released when the instance is released.
         # 
-        # - `true`: releases the data disk.
+        # - true: The data disk is released when the instance is released.
+        # - false: The data disk is not released when the instance is released.
         # 
-        # - `false`: does not release the data disk.
-        # 
-        # Default value: `true`.
+        # Default value: true.
         self.delete_with_instance = delete_with_instance
         # The description of the data disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The mount point of the data disk.
         # 
-        # > This parameter is valid only for whole machine images. You can set this parameter to the mount point that corresponds to the data disk in the whole machine image and modify the `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the category and size of the data disk in the whole machine image.
+        # > This parameter is applicable only to full image (system image) scenarios. You can set this parameter to the mount point of the data disk in the full image and modify the corresponding `DataDisk.N.Size` and `DataDisk.N.Category` parameters to change the disk category and size of the data disk in the full image.
         self.device = device
-        # The name of the data disk. The name must be 2 to 128 characters in length. It can contain letters in the Unicode letter category (such as English letters, Chinese characters, and digits), colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the data disk. The name must be 2 to 128 characters in length and can contain letters in the Unicode letter category (including English and Chinese characters and digits). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
         self.disk_name = disk_name
         # > This parameter is not publicly available.
         self.encrypt_algorithm = encrypt_algorithm
-        # Specifies whether to encrypt data disk N.
+        # Specifies whether data disk N is encrypted.
         # 
-        # - `true`: encrypts the data disk.
+        # - true: encrypted.
         # 
-        # - `false`: does not encrypt the data disk.
+        # - false: not encrypted.
         # 
-        # Default value: `false`.
+        # Default value: false.
         self.encrypted = encrypted
-        # The ID of the KMS key to use for the cloud disk.
+        # The KMS key ID used by the disk.
         self.kmskey_id = kmskey_id
-        # The performance level of the ESSD to use as a data disk. The value of N must be the same as in `DataDisk.N.Category=cloud_essd`. Valid values:
+        # The performance level (PL) of the enterprise SSD used as a data disk. Settings of this parameter apply only when the disk category is not standard SSD. The value of N must be the same as that in `DataDisk.N.Category=cloud_essd`. Valid values:
         # 
-        # - PL0: A single disk delivers up to 10,000 random read/write IOPS.
+        # - PL0: a single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1 (default): a single disk can deliver up to 50,000 random read/write IOPS.
+        # - PL2: a single disk can deliver up to 100,000 random read/write IOPS.
+        # - PL3: a single disk can deliver up to 1,000,000 random read/write IOPS.
         # 
-        # - PL1: A single disk delivers up to 50,000 random read/write IOPS. This is the default value.
-        # 
-        # - PL2: A single disk delivers up to 100,000 random read/write IOPS.
-        # 
-        # - PL3: A single disk delivers up to 1,000,000 random read/write IOPS.
-        # 
-        # For more information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
-        # The size of data disk N. The value of N ranges from 1 to 16. Unit: GiB. Valid values:
+        # The size of data disk N, in GiB. Valid values of N: 1 to 16. Valid values:
         # 
-        # - `cloud_efficiency`: 20 to 32768.
-        # 
-        # - `cloud_ssd`: 20 to 32768.
-        # 
-        # - `cloud_essd`: The valid values of this parameter are related to the value of `DataDisk.N.PerformanceLevel`.
-        # 
-        #   - PL0: 1 to 65,536.
-        # 
-        #   - PL1: 20 to 65,536.
-        # 
-        #   - PL2: 461 to 65,536.
-        # 
-        #   - PL3: 1261 to 65,536.
-        # 
-        # - `cloud`: 5 to 2000.
+        # - cloud_efficiency: 20 to 32768.
+        # - cloud_ssd: 20 to 32768.
+        # - cloud_essd: The valid values depend on the value of `DataDisk.N.PerformanceLevel`.
+        #     - PL0: 1 to 65,536.
+        #     - PL1: 20 to 65,536.
+        #     - PL2: 461 to 65,536.
+        #     - PL3: 1261 to 65,536.
+        # - cloud: 5 to 2000.
         # 
         # > The value of this parameter must be greater than or equal to the size of the snapshot specified by `SnapshotId`.
         self.size = size
-        # The ID of the snapshot to use to create data disk N. The value of N ranges from 1 to 16.
+        # The snapshot ID used to create data disk N. Valid values of N: 1 to 16.
         # 
-        # - If `DataDisk.N.SnapshotId` is specified, `DataDisk.N.Size` is ignored, and the disk is created with the same size as the snapshot.
+        # - If `DataDisk.N.SnapshotId` is specified, `DataDisk.N.Size` is ignored. The actual size of the created disk is the size of the specified snapshot.
         # 
-        # - Snapshots created on or before July 15, 2013, are not supported.
+        # - Snapshots created on or before July 15, 2013 cannot be used. Requests with such snapshots are rejected.
         self.snapshot_id = snapshot_id
-        # The ID of the dedicated block storage cluster. If you want to use cloud disk resources in a dedicated block storage cluster as data disks when you create an ECS instance, set this parameter.
+        # The ID of the dedicated block storage cluster. To use a disk in a dedicated block storage cluster as a data disk when you create an ECS instance, set this parameter.
         self.storage_cluster_id = storage_cluster_id
 
     def validate(self):
@@ -1092,53 +1017,44 @@ class CreateInstanceRequestSystemDisk(DaraModel):
     ):
         # The category of the system disk. Valid values:
         # 
-        # - `cloud_efficiency`: Ultra Disk.
+        # - cloud_efficiency: ultra disk.
+        # - cloud_ssd: standard SSD.
+        # - cloud_essd: enterprise SSD (ESSD).
+        # - cloud: basic disk.
+        # - cloud_auto: ESSD AutoPL disk.
+        # - cloud_essd_entry: ESSD Entry disk.
+        # > The cloud_essd_entry value is supported only when `InstanceType` is set to the [u1, universal instance family](https://help.aliyun.com/document_detail/457079.html) (`ecs.u1`) or the [e, economy instance family](https://help.aliyun.com/document_detail/108489.html) (`ecs.e`). Settings of this parameter determine the computing power and optimization level of the system disk.
         # 
-        # - `cloud_ssd`: SSD cloud disk.
-        # 
-        # - `cloud_essd`: ESSD.
-        # 
-        # - `cloud`: Basic Disk.
-        # 
-        # - `cloud_auto`: ESSD AutoPL disk.
-        # 
-        # - `cloud_essd_entry`: ESSD Entry disk.
-        # 
-        # > You can set this parameter to `cloud_essd_entry` only if you set `InstanceType` to an instance type of the [general-purpose instance type family u1](https://help.aliyun.com/document_detail/457079.html) (`ecs.u1`) or [economy instance type family e](https://help.aliyun.com/document_detail/108489.html) (`ecs.e`).
-        # 
-        # The default value is `cloud` for retired and non-I/O optimized instance types, and `cloud_efficiency` for all other types.
+        # For retired instance types that are not I/O optimized instances, the default value is cloud. For other instance types, the default value is cloud_efficiency.
         self.category = category
         # The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
         # Default value: empty.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 characters in length. It can contain letters in the Unicode letter category (such as English letters, Chinese characters, and digits), colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the system disk. The name must be 2 to 128 characters in length and can contain letters in the Unicode letter category (including English and Chinese characters and digits). The name can contain colons (:), underscores (_), periods (.), or hyphens (-).
         # 
         # Default value: empty.
         self.disk_name = disk_name
-        # The performance level of the ESSD to use as the system disk. Valid values:
+        # The performance level (PL) of the enterprise SSD used as the system disk. Settings of this parameter apply only when the disk category is not standard SSD. Valid values:
         # 
-        # - PL0: A single disk delivers up to 10,000 random read/write IOPS.
+        # - PL0: a single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1 (default): a single disk can deliver up to 50,000 random read/write IOPS.
+        # - PL2: a single disk can deliver up to 100,000 random read/write IOPS.
+        # - PL3: a single disk can deliver up to 1,000,000 random read/write IOPS.
         # 
-        # - PL1: A single disk delivers up to 50,000 random read/write IOPS. This is the default value.
-        # 
-        # - PL2: A single disk delivers up to 100,000 random read/write IOPS.
-        # 
-        # - PL3: A single disk delivers up to 1,000,000 random read/write IOPS.
-        # 
-        # For more information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # For information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
-        # The size of the system disk. Unit: GiB. Valid values:
+        # The size of the system disk, in GiB. Valid values:
         # 
-        # - Basic Disk: 20 to 500.
+        # - Basic disk: 20 to 500
         # 
-        # - Other cloud disk types: 20 to 2048.
+        # - Other disk types: 20 to 2048
         # 
-        # The value must be greater than or equal to `max(20, ImageSize)`.
+        # The value of this parameter must be greater than or equal to max{20, ImageSize}.
         # 
-        # Default value: max(40, ImageSize).
+        # Default value: max{40, ImageSize}.
         self.size = size
-        # 专属块存储集群 ID。如果您在创建 ECS 实例时，需要使用专属块存储集群中的云盘资源作为系统盘，请设置该参数。
+        # The ID of the dedicated block storage cluster. To use a disk in a dedicated block storage cluster as the system disk when you create an ECS instance, set this parameter.
         self.storage_cluster_id = storage_cluster_id
 
     def validate(self):
@@ -1197,25 +1113,19 @@ class CreateInstanceRequestPrivatePoolOptions(DaraModel):
         id: str = None,
         match_criteria: str = None,
     ):
-        # The ID of the private pool. This is the ID of the Elastic Assurance service or the Capacity Reservation service.
+        # The private pool ID, which is the ID of the elasticity assurance or capacity reservation.
         self.id = id
-        # The matching mode for the private pool. A private pool is a capacity pool generated by the Elastic Assurance service or Capacity Reservation service. Valid values:
+        # The private pool option for launching the instance. A private pool is generated when an elasticity assurance or capacity reservation takes effect. You can select a private pool when you start an instance. Valid values:
         # 
-        # - `Open`: Attempts to use capacity from an open private pool. If unavailable, it uses resources from the public pool. You do not need to specify `PrivatePoolOptions.Id`.
+        # - Open: open mode. The system automatically matches an open private pool. If no matching private pool is available, the instance is launched using public pool resources. You do not need to set `PrivatePoolOptions.Id`.
+        # - Target: specified mode. The instance is launched using the specified private pool. If the specified private pool is unavailable, the instance fails to launch. In this mode, you must specify the private pool ID. Set `PrivatePoolOptions.Id` to the private pool ID.
+        # - None: does not use a private pool. The instance is launched without using any private pool.
         # 
-        # - `Target`: Uses capacity only from a specific private pool, which you must specify in `PrivatePoolOptions.Id`. The request fails if the specified capacity is unavailable.
+        # Default value: None.
         # 
-        # - `None`: The instance is launched without using private pool capacity.
-        # 
-        # Default value: `None`.
-        # 
-        # In any of the following scenarios, the capacity option for the private pool can only be set to `None` or left unspecified.
-        # 
-        # - Create a spot instance.
-        # 
-        # - Create an ECS instance in the classic network.
-        # 
-        # - Create an ECS instance on a dedicated host.
+        # In any of the following scenarios, the private pool option can only be set to `None` or left empty:
+        # - Creating a spot instance.
+        # - Creating an ECS instance on a dedicated host.
         self.match_criteria = match_criteria
 
     def validate(self):

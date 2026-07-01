@@ -18,7 +18,7 @@ class StartTerminalSessionResponseBody(DaraModel):
         self.security_token = security_token
         # The session ID.
         self.session_id = session_id
-        # The URL of the WebSocket session for the remote connection to the ECS instance. The URL contains the session ID (SessionId) and the SecurityToken used for system verification.
+        # The URL of the WebSocket session for the remote connection to the ECS instance. The URL contains the session ID (`SessionId`) and the `SecurityToken` for system verification.
         self.web_socket_url = web_socket_url
 
     def validate(self):

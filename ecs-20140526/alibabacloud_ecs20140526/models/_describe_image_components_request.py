@@ -32,7 +32,7 @@ class DescribeImageComponentsRequest(DaraModel):
         # - Build
         # - Test.
         self.component_type = component_type
-        # The component version number in the format of major.minor.patch. All values are non-negative integers. You can also use the wildcard character (*) to replace one of the values for fuzzy matching.
+        # The component version number in the major.minor.patch format. Each part must be a non-negative integer. You can also use the wildcard character (*) to replace one part for fuzzy matching.
         # >This parameter takes effect only when Name is specified.
         self.component_version = component_version
         # The ID of the image component to query. Valid values of N: 1 to 20.
@@ -43,7 +43,7 @@ class DescribeImageComponentsRequest(DaraModel):
         self.max_results = max_results
         # The image component name. Only exact match is supported.
         self.name = name
-        # The pagination token. Set this parameter to the value of `NextToken` returned in the previous call. You do not need to set this parameter for the first request.
+        # The pagination token. Set this parameter to the value of NextToken returned by the previous call. You do not need to set this parameter for the first request.
         self.next_token = next_token
         # The image component type. Valid values:
         # 
@@ -56,7 +56,7 @@ class DescribeImageComponentsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1000.
+        # The resource group ID. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
         # >Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id

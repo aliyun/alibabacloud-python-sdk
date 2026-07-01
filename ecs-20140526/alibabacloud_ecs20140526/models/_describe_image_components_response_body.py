@@ -19,7 +19,7 @@ class DescribeImageComponentsResponseBody(DaraModel):
         self.image_component = image_component
         # The maximum number of entries per page for paging.
         self.max_results = max_results
-        # The pagination token returned in this call. For more information about how to use it, refer to the operation description.
+        # The pagination token returned in this call. For more information about how to use this token, refer to the operation description.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
