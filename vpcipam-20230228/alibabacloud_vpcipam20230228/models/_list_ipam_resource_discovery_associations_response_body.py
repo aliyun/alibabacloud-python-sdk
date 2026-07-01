@@ -17,20 +17,21 @@ class ListIpamResourceDiscoveryAssociationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries on each page.
+        # The number of entries returned on the current page.
         self.count = count
-        # The list of associations.
+        # A list of association details.
         self.ipam_resource_discovery_associations = ipam_resource_discovery_associations
-        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries returned per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token to use to retrieve the next page of results. This value is empty when there are no more results to return.
         # 
-        # *   If **NextToken** is empty, there is no next page.
-        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no subsequent query is needed.
+        # 
+        # - If **NextToken** is not empty, its value is the token to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the query criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -101,29 +102,35 @@ class ListIpamResourceDiscoveryAssociationsResponseBodyIpamResourceDiscoveryAsso
         ipam_resource_discovery_type: str = None,
         status: str = None,
     ):
-        # The ID of the IPAM.
+        # The ID of the IPAM instance.
         self.ipam_id = ipam_id
-        # The ID of resource discovery instance.
+        # The ID of the resource discovery instance.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
-        # The ID of the Alibaba Cloud account to which the resource discovery belongs.
+        # The ID of the Alibaba Cloud account that owns the resource discovery instance.
         self.ipam_resource_discovery_owner_id = ipam_resource_discovery_owner_id
         # The status of the resource discovery instance. Valid values:
         # 
-        # *   **Creating**
-        # *   **Created**
-        # *   **Modifying**
-        # *   **Deleting**
-        # *   **Deleted**
+        # - **Creating**
+        # 
+        # - **Created**
+        # 
+        # - **Modifying**
+        # 
+        # - **Deleting**
+        # 
+        # - **Deleted**
         self.ipam_resource_discovery_status = ipam_resource_discovery_status
-        # The type of resource discovery. Valid values:
+        # The type of the resource discovery. Valid values:
         # 
-        # *   **system**: default resource discovery created by the system.
-        # *   **custom**: custom resource discovery created by users.
+        # - **system**: a default resource discovery that is automatically created by the system.
+        # 
+        # - **custom**: a custom resource discovery that is created by a user.
         self.ipam_resource_discovery_type = ipam_resource_discovery_type
-        # The status of the associations. Valid values:
+        # The association status. Valid values:
         # 
-        # *   **Created**
-        # *   **Deleted**
+        # - **Created**
+        # 
+        # - **Deleted**
         self.status = status
 
     def validate(self):

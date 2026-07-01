@@ -17,20 +17,21 @@ class ListIpamPoolCidrsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned.
+        # The number of entries returned on the current page.
         self.count = count
-        # The IDs of IPAM pools.
+        # A list of provisioned CIDR blocks of the IPAM pool.
         self.ipam_pool_cidrs = ipam_pool_cidrs
-        # The number of entries per page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used to retrieve the next page of results.
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If this parameter is empty, no more results are to be returned.
+        # 
+        # - If a value is returned, the value is the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -100,12 +101,13 @@ class ListIpamPoolCidrsResponseBodyIpamPoolCidrs(DaraModel):
     ):
         # The provisioned CIDR block.
         self.cidr = cidr
-        # The ID of the IPAM pool.
+        # The instance ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
-        # The status of the CIDR block provisioned to the IPAM pool. Valid values:
+        # The instance status of the provisioned CIDR block of the IPAM pool. Valid values:
         # 
-        # *   **Created**
-        # *   **Deleted**
+        # - **Created**: The CIDR block is created.
+        # 
+        # - **Deleted**: The CIDR block is deleted.
         self.status = status
 
     def validate(self):

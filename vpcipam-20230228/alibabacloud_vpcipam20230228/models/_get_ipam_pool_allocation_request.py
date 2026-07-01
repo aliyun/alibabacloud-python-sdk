@@ -10,13 +10,13 @@ class GetIpamPoolAllocationRequest(DaraModel):
         ipam_pool_allocation_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+        # The ID of the IPAM pool allocation.
         # 
         # This parameter is required.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
-        # The region of the IPAM pool.
+        # The region of the IPAM pool to which the CIDR block allocation belongs.
         # 
-        # >  If the IPAM pool to which CIDR allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM hosted region.
+        # > If the IPAM pool has a region attribute, this parameter specifies the region of the IPAM pool. If the IPAM pool does not have a region attribute, this parameter specifies the managed region of IPAM.
         # 
         # This parameter is required.
         self.region_id = region_id

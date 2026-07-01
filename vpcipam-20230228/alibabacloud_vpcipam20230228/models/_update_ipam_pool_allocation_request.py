@@ -14,28 +14,29 @@ class UpdateIpamPoolAllocationRequest(DaraModel):
         ipam_pool_allocation_name: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # A client token to ensure the idempotence of the request. Generate a unique value from your client for each request. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system uses the request ID as the client token. The request ID is different for each request.
         self.client_token = client_token
-        # Specifies whether to precheck this request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run without modifying the CIDR blocks of IPAM pools. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        # *   **false** (default): performs a dry run and the actual request. If the request passes the check, an HTTP 2xx status code is returned and the CIDR allocation information of the IPAM address pool is modified.
+        # - **true**: Sends a check request without modifying the CIDR allocation. The system checks for required parameters, request format, and service limits. If the check fails, an error is returned. If the check passes, the DryRunOperation error code is returned.
+        # 
+        # - **false** (default): Sends a normal request. After the check passes, an HTTP 2xx status code is returned and the CIDR allocation is modified.
         self.dry_run = dry_run
-        # The description of the CIDR allocation of the IPAM pool.
+        # The description of the CIDR allocation.
         # 
-        # The description must be 1 to 256 characters in length and start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+        # The description must be 1 to 256 characters long and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. If you do not specify this parameter, the description is empty.
         self.ipam_pool_allocation_description = ipam_pool_allocation_description
-        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+        # The ID of the CIDR allocation.
         # 
         # This parameter is required.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
-        # The name of the CIDR allocation of the IPAM pool.
+        # The name of the CIDR allocation.
         # 
-        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters long. It cannot start with `http://` or `https://`.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
-        # The ID of the region where you want to perform the operation. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+        # The ID of the region where the CIDR allocation is located. To obtain a region ID, call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation.
         # 
         # This parameter is required.
         self.region_id = region_id

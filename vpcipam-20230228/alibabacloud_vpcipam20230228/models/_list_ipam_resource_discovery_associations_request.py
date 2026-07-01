@@ -17,20 +17,21 @@ class ListIpamResourceDiscoveryAssociationsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the IPAM.
+        # The ID of the IPAM instance.
         self.ipam_id = ipam_id
-        # The ID of resource discovery instance.
+        # The ID of the resource discovery instance.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
-        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used to retrieve the next page of results.
         # 
-        # *   If this is your first or only query, this parameter is left empty.
-        # *   If a next query is to be sent, the returned value is the value of NextToken that was returned last time this operation was called.
+        # - For the first query, leave this parameter empty.
+        # 
+        # - For a subsequent query, set this parameter to the NextToken value returned from the previous response.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The request region.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id

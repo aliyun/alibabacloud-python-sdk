@@ -13,25 +13,25 @@ class GetIpamPoolNextAvailableCidrRequest(DaraModel):
         ipam_pool_id: str = None,
         region_id: str = None,
     ):
-        # CIDR to be allocated.
+        # The CIDR block to be allocated.
         # 
-        # >  You must enter at least one of the CidrBlock and CidrMask fields.
+        # > You must specify CidrBlock or CidrMask.
         self.cidr_block = cidr_block
-        # The length of the CIDR mask to be allocated.
+        # The mask length of the CIDR block to be allocated.
         # 
-        # >  You must enter at least one of the CidrBlock and CidrMask fields.
+        # > You must specify CidrBlock or CidrMask.
         self.cidr_mask = cidr_mask
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system uses the RequestId as the ClientToken. The RequestId of each request is unique.
         self.client_token = client_token
-        # The ID of the IPAM pool.
+        # The instance ID of the IPAM pool.
         # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
         # The region of the IPAM pool.
         # 
-        # >  If the IPAM pool has the region attribute, this parameter is set to the effective region of the IPAM pool. If not, this is set to the hosted region.
+        # > If the IPAM pool has a region property, this parameter specifies the region where the pool is active. If the IPAM pool does not have a region property, this parameter specifies the managed region of IPAM.
         # 
         # This parameter is required.
         self.region_id = region_id

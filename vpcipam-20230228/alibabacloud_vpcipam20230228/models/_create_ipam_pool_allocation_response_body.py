@@ -12,7 +12,7 @@ class CreateIpamPoolAllocationResponseBody(DaraModel):
         request_id: str = None,
         source_cidr: str = None,
     ):
-        # The custom reserved CIDR block.
+        # The allocated CIDR block.
         self.cidr = cidr
         # The ID of the custom reserved CIDR block.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id

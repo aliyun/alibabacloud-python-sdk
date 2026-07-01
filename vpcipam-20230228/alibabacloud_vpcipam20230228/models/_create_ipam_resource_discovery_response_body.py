@@ -10,7 +10,7 @@ class CreateIpamResourceDiscoveryResponseBody(DaraModel):
         ipam_resource_discovery_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the instance for resource discovery.
+        # The ID of the resource discovery instance.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
         # The request ID.
         self.request_id = request_id

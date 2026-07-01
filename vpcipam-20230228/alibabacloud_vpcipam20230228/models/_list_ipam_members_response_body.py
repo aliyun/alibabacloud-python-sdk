@@ -17,11 +17,21 @@ class ListIpamMembersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # The maximum number of entries returned on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # A list of members managed by the IPAM trusted service.
         self.member_infos = member_infos
+        # The token that is used to retrieve the next page of results. Valid values:
+        # 
+        # - If **NextToken** is empty, no more results are available.
+        # 
+        # - If **NextToken** has a value, the value is the token for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -90,9 +100,25 @@ class ListIpamMembersResponseBodyMemberInfos(DaraModel):
         member_type: str = None,
         status: str = None,
     ):
+        # The time when the member was added.
         self.creation_time = creation_time
+        # The member ID.
+        # 
+        # - **Folder ID**: The ID of the folder.
+        # 
+        # - **Account UID**: The UID of the member account in the resource directory.
         self.member_id = member_id
+        # The type of the member. Valid values:
+        # 
+        # - **Folder**: The member is a folder.
+        # 
+        # - **Account**: The member is a member account in the resource directory.
         self.member_type = member_type
+        # The status of the member managed by the IPAM trusted service. Valid values:
+        # 
+        # - **Created**: The member is managed.
+        # 
+        # - **Deleted**: The member is removed.
         self.status = status
 
     def validate(self):

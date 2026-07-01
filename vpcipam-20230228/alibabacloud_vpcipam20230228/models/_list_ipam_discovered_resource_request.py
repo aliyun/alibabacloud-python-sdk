@@ -14,31 +14,32 @@ class ListIpamDiscoveredResourceRequest(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource discovery instance.
+        # The resource discovery instance ID.
         # 
         # This parameter is required.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
-        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - If this is the first query or no subsequent query exists, leave this parameter empty.
+        # - If a subsequent query exists, set this parameter to the **NextToken** value returned in the previous API call.
         self.next_token = next_token
-        # The ID of the hosted region of the IPAM pool.
+        # The hosted region ID of the resource discovery instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The region where resource discovery is performed.
+        # The operating region of the resource discovery.
         # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
         # The resource type. Valid values:
         # 
-        # *   **VPC**
-        # *   **VSwitch**
+        # - **VPC**: VPC.
+        # 
+        # - **VSwitch**: vSwitch.
         self.resource_type = resource_type
 
     def validate(self):

@@ -18,11 +18,20 @@ class ListIpamMembersRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
+        # A list of IDs of members managed by the IPAM trusted service.
         self.member_ids = member_ids
+        # The token that is used to retrieve the next page of results. Valid values:
+        # 
+        # - If **NextToken** is empty, no more results are available.
+        # 
+        # - If **NextToken** has a value, the value is the token for the next query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the hosted region of the IPAM. Call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to get the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

@@ -17,20 +17,21 @@ class ListIpamsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned.
+        # The number of entries returned on the current page.
         self.count = count
-        # The IPAMs.
+        # A list of IPAM instances.
         self.ipams = ipams
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries returned per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no next page exists.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The number of entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -113,9 +114,9 @@ class ListIpamsResponseBodyIpams(DaraModel):
     ):
         # The time when the IPAM was created.
         self.create_time = create_time
-        # Default resource discovery association ID.
+        # The ID of the default resource discovery association.
         self.default_resource_discovery_association_id = default_resource_discovery_association_id
-        # Default resource discovery instance ID.
+        # The ID of the default resource discovery.
         self.default_resource_discovery_id = default_resource_discovery_id
         # The description of the IPAM.
         self.ipam_description = ipam_description
@@ -125,28 +126,31 @@ class ListIpamsResponseBodyIpams(DaraModel):
         self.ipam_name = ipam_name
         # The status of the IPAM. Valid values:
         # 
-        # *   **Creating**
-        # *   **Created**
-        # *   **Deleting**
-        # *   **Deleted**
+        # - **Creating**: The IPAM is being created.
+        # 
+        # - **Created**: The IPAM is created.
+        # 
+        # - **Deleting**: The IPAM is being deleted.
+        # 
+        # - **Deleted**: The IPAM is deleted.
         self.ipam_status = ipam_status
-        # The effective regions of the IPAM.
+        # The list of operating regions of the IPAM.
         self.operating_region_list = operating_region_list
-        # The Alibaba Cloud account that owns the IPAM.
+        # The ID of the Alibaba Cloud account to which the IPAM belongs.
         self.owner_id = owner_id
-        # The default private scope created by the system after the IPAM is created.
+        # The ID of the default private scope that is automatically created when you create the IPAM.
         self.private_default_scope_id = private_default_scope_id
-        # The default public scope created by the system after the IPAM is created.
+        # The ID of the default public scope that is automatically created when you create the IPAM.
         self.public_default_scope_id = public_default_scope_id
-        # The region ID of the IPAM.
+        # The ID of the region where the IPAM is created.
         self.region_id = region_id
-        # Number of resource discovery associations.
+        # The number of resource discovery associations.
         self.resource_discovery_association_count = resource_discovery_association_count
-        # The resource group ID of the IPAM.
+        # The ID of the resource group to which the IPAM belongs.
         self.resource_group_id = resource_group_id
-        # The number of IPAM scopes. Value: **2 to 5**.
+        # The number of scopes in the IPAM. Valid values: 2 to **5**.
         self.scope_count = scope_count
-        # The tag list.
+        # The tags.
         self.tags = tags
 
     def validate(self):

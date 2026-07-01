@@ -19,12 +19,22 @@ class RemoveIpamMembersRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # A client token to ensure the idempotence of the request. Generate a value from your client to make sure that the value is unique among different requests. The ClientToken parameter can contain only ASCII characters. Note: If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
         self.client_token = client_token
+        # Specifies whether to perform a dry run. Valid values:
+        # 
+        # - **true**: Performs a dry run. The system checks the required parameters, the request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned. The members are not removed.
+        # 
+        # - **false** (default): Sends a request. If the request passes the check, a 2xx HTTP status code is returned, and the members are removed.
         self.dry_run = dry_run
+        # The members managed by the IPAM trusted service.
+        # 
         # This parameter is required.
         self.members = members
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the IPAM is hosted. To get the region ID, call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -106,7 +116,17 @@ class RemoveIpamMembersRequestMembers(DaraModel):
         member_id: str = None,
         member_type: str = None,
     ):
+        # The member ID.
+        # 
+        # - **Folder ID**: The ID of the folder.
+        # 
+        # - **Account UID**: The UID of the member account in the resource directory.
         self.member_id = member_id
+        # The type of the member. Valid values:
+        # 
+        # - **Folder**: The member is a folder.
+        # 
+        # - **Account**: The member is a member account in the resource directory.
         self.member_type = member_type
 
     def validate(self):

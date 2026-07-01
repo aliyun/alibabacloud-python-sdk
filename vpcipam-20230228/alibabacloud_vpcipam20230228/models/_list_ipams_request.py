@@ -22,30 +22,31 @@ class ListIpamsRequest(DaraModel):
         resource_owner_id: int = None,
         tags: List[main_models.ListIpamsRequestTags] = None,
     ):
-        # The IDs of IPAMs. Valid values of N: 1 to 100. A maximum of 100 IPAMs can be queried at a time.
+        # The IDs of the IPAMs. You can specify up to 100 IPAM IDs.
         self.ipam_ids = ipam_ids
         # The name of the IPAM.
         # 
-        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_name = ipam_name
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
+        # The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - You do not need to specify this parameter for the first request or when no next page exists.
+        # 
+        # - If a next page exists, set the value to the NextToken value returned in the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of the hosted region of the IPAM. You can call [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) to get the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID of the IPAM.
+        # The ID of the resource group to which the IPAM belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag information.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -142,13 +143,13 @@ class ListIpamsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

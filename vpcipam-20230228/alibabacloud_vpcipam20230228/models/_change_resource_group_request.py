@@ -22,25 +22,25 @@ class ChangeResourceGroupRequest(DaraModel):
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of the hosted region. Call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to get the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the IPAM resource.
+        # The ID of the resource whose resource group you want to change.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Resource type, with values:
+        # The resource type. Valid values:
         # 
-        # - Ipam:IPAM instance
+        # - Ipam: an IPAM instance
         # 
-        # - IpamScope:IPAM scope
+        # - IpamScope: an IPAM scope
         # 
-        # - IpamPool:IPAM address pool
+        # - IpamPool: an IPAM pool
         # 
-        # - IpamResourceDiscovery:IPAM resource discovery
+        # - IpamResourceDiscovery: an IPAM resource discovery
         # 
         # This parameter is required.
         self.resource_type = resource_type

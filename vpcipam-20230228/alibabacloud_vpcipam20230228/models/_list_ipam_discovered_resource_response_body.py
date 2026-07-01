@@ -17,20 +17,19 @@ class ListIpamDiscoveredResourceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries on each page.
+        # The number of entries returned per page.
         self.count = count
-        # The list of resources.
+        # The resources.
         self.ipam_discovered_resources = ipam_discovered_resources
-        # The maximum number of entries on each page. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, there is no next page.
-        # *   If a value of **NextToken** is returned, it indicates the token that is used for the next query.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** has a return value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -101,39 +100,44 @@ class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources(DaraModel):
         ip_usage: str = None,
         ipam_resource_discovery_id: str = None,
         resource_id: str = None,
+        resource_name: str = None,
         resource_owner_id: int = None,
         resource_region_id: str = None,
         resource_type: str = None,
         source_cidr: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
         # The CIDR block of the resource.
         self.cidr = cidr
         # The time when the resource was discovered.
         # 
-        # >  If the resource has not been modified since it was created, the discovery time remains unchanged.
+        # > If the resource has not been modified since it was created, the discovery time remains unchanged.
         self.discovery_time = discovery_time
+        # The details of the resource IP address count.
         self.ip_count_detail = ip_count_detail
-        # The IP usage in decimal form.
+        # The IP utilization rate, in decimal format.
         self.ip_usage = ip_usage
-        # The ID of resource discovery instance.
+        # The resource discovery instance ID.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The resource name.
+        self.resource_name = resource_name
+        # The Alibaba Cloud account ID of the resource ownership.
         self.resource_owner_id = resource_owner_id
-        # The ID of the region to which the resource belongs.
+        # The region ID of the resource ownership.
         self.resource_region_id = resource_region_id
         # The resource type. Valid values:
         # 
-        # *   **VPC**
-        # *   **VSwitch**
+        # - **VPC**: VPC.
+        # 
+        # - **VSwitch**: vSwitch.
         self.resource_type = resource_type
         # The source CIDR block.
         self.source_cidr = source_cidr
-        # The ID of the VPC to which the resource belongs.
+        # The instance ID of the VPC-connected instance to which the resource belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -165,6 +169,9 @@ class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources(DaraModel):
 
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
 
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
@@ -207,6 +214,9 @@ class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResources(DaraModel):
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
 
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
 
@@ -231,8 +241,11 @@ class ListIpamDiscoveredResourceResponseBodyIpamDiscoveredResourcesIpCountDetail
         total_ip_count: str = None,
         used_ip_count: str = None,
     ):
+        # The number of available IP addresses.
         self.free_ip_count = free_ip_count
+        # The total number of IP addresses.
         self.total_ip_count = total_ip_count
+        # The number of allocated IP addresses.
         self.used_ip_count = used_ip_count
 
     def validate(self):

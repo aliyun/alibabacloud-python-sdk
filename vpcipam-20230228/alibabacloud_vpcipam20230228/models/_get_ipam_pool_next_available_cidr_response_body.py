@@ -10,7 +10,7 @@ class GetIpamPoolNextAvailableCidrResponseBody(DaraModel):
         cidr_block: str = None,
         request_id: str = None,
     ):
-        # Available CIDR.
+        # The available CIDR block.
         self.cidr_block = cidr_block
         # The request ID.
         self.request_id = request_id

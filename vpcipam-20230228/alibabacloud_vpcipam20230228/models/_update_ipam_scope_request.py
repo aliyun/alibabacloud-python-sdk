@@ -18,30 +18,31 @@ class UpdateIpamScopeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a value for this parameter that is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the request as the ClientToken. The RequestId of each request is unique.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, DryRunOperation is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: Performs a dry run. The system checks the request for potential issues, including missing required parameters, incorrect request format, and instance status. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # 
+        # - **false** (Default): Sends a normal request. After the request passes the check, the operation is performed.
         self.dry_run = dry_run
-        # The new description of the IPAM scope.
+        # The description of the IPAM scope.
         # 
-        # It must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`. This parameter is empty by default.
+        # The description must be 1 to 256 characters long. It must start with a letter and cannot start with `http://` or `https://`. If you do not specify this parameter, the value is not modified.
         self.ipam_scope_description = ipam_scope_description
         # The ID of the IPAM scope.
         # 
         # This parameter is required.
         self.ipam_scope_id = ipam_scope_id
-        # The new name of the IPAM scope.
+        # The name of the IPAM scope.
         # 
-        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters long and cannot start with `http://` or `https://`.
         self.ipam_scope_name = ipam_scope_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of the region where the IPAM is hosted. Call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to get the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
