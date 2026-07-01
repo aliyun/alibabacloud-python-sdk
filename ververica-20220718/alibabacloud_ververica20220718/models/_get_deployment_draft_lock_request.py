@@ -9,6 +9,8 @@ class GetDeploymentDraftLockRequest(DaraModel):
         self,
         deployment_draft_id: str = None,
     ):
+        # The ID of the job draft. You can get this ID by calling the ListDeploymentDrafts operation.
+        # 
         # This parameter is required.
         self.deployment_draft_id = deployment_draft_id
 

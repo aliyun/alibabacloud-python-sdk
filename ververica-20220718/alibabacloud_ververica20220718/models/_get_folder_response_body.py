@@ -15,12 +15,21 @@ class GetFolderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data structure of the folder.
+        # Folder data structure.
         self.data = data
+        # - If success is false, the business error code is returned.
+        # 
+        # - If success is true, an empty value is returned.
         self.error_code = error_code
+        # - If success is false, the business error message is returned.
+        # 
+        # - If success is true, an empty value is returned.
         self.error_message = error_message
+        # Indicates task success or failure. If the parameter is not empty and not 200, it means failure.
         self.http_code = http_code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -31,10 +31,6 @@ class Table(DaraModel):
         self.properties = properties
         # The schema information about the table.
         self.schema = schema
-        # TABLE;
-        #   MATERIALIZED_TABLE;
-        #   VIEW;
-        # 
         # This parameter is required.
         self.table_type = table_type
 

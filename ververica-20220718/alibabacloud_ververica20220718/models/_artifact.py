@@ -14,18 +14,23 @@ class Artifact(DaraModel):
         python_artifact: main_models.PythonArtifact = None,
         sql_artifact: main_models.SqlArtifact = None,
     ):
+        # Required for a data ingestion job.
         self.cdc_yaml_artifact = cdc_yaml_artifact
-        # The information required for the SQL deployment.
+        # Required for a JAR job.
         self.jar_artifact = jar_artifact
-        # The type of the deployment. This parameter is required and cannot be modified after the deployment is created.
+        # Specifies the kind of job. This field is required and cannot be changed after creation.
         # 
-        # *   SQLSCRIPT
-        # *   JAR
-        # *   PYTHON
+        # - SQLSCRIPT: An SQL job.
+        # 
+        # - JAR: A JAR job.
+        # 
+        # - PYTHON: A Python job.
+        # 
+        # - CDCYAML: A CDC data ingestion job.
         self.kind = kind
-        # The information required for the Python deployment.
+        # Required for a Python job.
         self.python_artifact = python_artifact
-        # The information required for the JAR deployment.
+        # Required for an SQL job.
         self.sql_artifact = sql_artifact
 
     def validate(self):

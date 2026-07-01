@@ -13,7 +13,7 @@ class ListJobsHeaders(DaraModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
-        # The workspace ID.
+        # The ID of the workspace.
         # 
         # This parameter is required.
         self.workspace = workspace

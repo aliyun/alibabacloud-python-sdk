@@ -12,8 +12,11 @@ class DeploymentTarget(DaraModel):
         namespace: str = None,
         quota: main_models.ResourceQuota = None,
     ):
+        # The name of the perjob deployment target.
         self.name = name
+        # The namespace name.
         self.namespace = namespace
+        # The resource quota.
         self.quota = quota
 
     def validate(self):

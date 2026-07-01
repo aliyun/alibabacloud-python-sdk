@@ -10,6 +10,7 @@ class UpdateSessionClusterRequest(DaraModel):
         self,
         body: main_models.SessionCluster = None,
     ):
+        # The data structure of the session cluster to be updated.
         self.body = body
 
     def validate(self):

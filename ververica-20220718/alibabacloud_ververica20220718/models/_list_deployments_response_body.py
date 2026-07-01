@@ -20,26 +20,29 @@ class ListDeploymentsResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
-        # *   If the value of success was true, the list of all deployments was returned.
-        # *   If the value of success was false, a null value was returned.
+        # - When success is true, returns a list of jobs that meet the query conditions;
+        # 
+        # - When success is false, returns an empty value.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - When success is false, returns a business error code;
+        # 
+        # - When success is true, returns an empty value.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - When success is false, returns a business error message;
+        # 
+        # - When success is true, returns an empty value.
         self.error_message = error_message
-        # The value was fixed to 200.
+        # Static field with a fixed value of 200.
         self.http_code = http_code
-        # The page number.
+        # Pagination parameter: page index, indicating the requested page number.
         self.page_index = page_index
-        # The number of entries per page.
+        # Pagination parameter: the number of elements on the requested page.
         self.page_size = page_size
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the business request succeeded.
         self.success = success
-        # The total number of entries returned.
+        # The total number of elements that meet the query conditions.
         self.total_size = total_size
 
     def validate(self):

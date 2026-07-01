@@ -20,14 +20,23 @@ class GetEventsResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # A list of runtime events matching the filter criteria. Returned only when the request is successful (`success` is `true`).
         self.data = data
+        # The business error code. Returned only when the request fails (that is, `success` is `false`).
         self.error_code = error_code
+        # The business error message. Returned only when the request fails (that is, `success` is `false`).
         self.error_message = error_message
+        # The business status code. This field always returns `200`. To confirm the request\\"s success, check the `success` parameter.
         self.http_code = http_code
+        # The page number of the returned page.
         self.page_index = page_index
+        # The number of entries on this page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the business request was successful.
         self.success = success
+        # The total number of entries that match the query.
         self.total_size = total_size
 
     def validate(self):

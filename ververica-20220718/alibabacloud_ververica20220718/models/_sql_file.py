@@ -17,14 +17,23 @@ class SqlFile(DaraModel):
         sql_script: str = None,
         workspace: str = None,
     ):
+        # The batch mode.
         self.batch_mode = batch_mode
+        # The description of the SQL file.
         self.description = description
+        # The name of the SQL file.
         self.name = name
+        # The namespace.
         self.namespace = namespace
+        # The ID of the parent SQL file.
         self.parent_id = parent_id
+        # The name of the session cluster.
         self.session_cluster_name = session_cluster_name
+        # The SQL file ID.
         self.sql_file_id = sql_file_id
+        # The SQL script content.
         self.sql_script = sql_script
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):

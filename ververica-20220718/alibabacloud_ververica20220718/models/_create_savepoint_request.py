@@ -19,8 +19,9 @@ class CreateSavepointRequest(DaraModel):
         self.description = description
         # Specifies whether to use the native format mode. Valid values:
         # 
-        # *   true: The native format mode is used.
-        # *   false: The native format mode is not used.
+        # - true: The native format mode is used.
+        # 
+        # - false: The native format mode is not used.
         self.native_format = native_format
 
     def validate(self):

@@ -29,39 +29,39 @@ class DeploymentDraft(DaraModel):
         referenced_deployment_id: str = None,
         workspace: str = None,
     ):
-        # The script of the SQL deployment.
+        # The artifact. Supported types include SQLSCRIPT and CDCYAML.
         self.artifact = artifact
-        # The time when the draft was created.
+        # Output only. The creation time, represented as a Unix timestamp.
         self.created_at = created_at
-        # The ID of the account that is used to create the draft.
+        # Output only. The ID of the creator.
         self.creator = creator
-        # The name of the account that is used to create the draft.
+        # Output only. The name of the creator.
         self.creator_name = creator_name
-        # The draft ID.
+        # The deployment draft ID.
         self.deployment_draft_id = deployment_draft_id
-        # The engine version of the deployment.
+        # The engine version.
         self.engine_version = engine_version
         # The execution mode.
         self.execution_mode = execution_mode
-        # The labels of the deployment.
+        # Key-value pairs to apply as labels.
         self.labels = labels
-        # The variables.
+        # The local variables.
         self.local_variables = local_variables
-        # The lock of the draft.
+        # The deployment draft lock.
         self.lock = lock
-        # The time when the draft was modified.
+        # Output only. The modification time, represented as a Unix timestamp.
         self.modified_at = modified_at
-        # The ID of the account that is used to modify the draft.
+        # Output only. The ID of the modifier.
         self.modifier = modifier
-        # The name of the account that is used to modify the draft.
+        # Output only. The name of the modifier.
         self.modifier_name = modifier_name
-        # The name of the draft.
+        # The deployment draft name.
         self.name = name
-        # The name of the namespace.
+        # The namespace.
         self.namespace = namespace
-        # The ID of the parent folder.
+        # The parent ID.
         self.parent_id = parent_id
-        # The ID of the associated deployment.
+        # The referenced deployment ID.
         self.referenced_deployment_id = referenced_deployment_id
         # The workspace.
         self.workspace = workspace

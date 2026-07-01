@@ -12,9 +12,12 @@ class GetEventsRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The ID of the deployed job. If you specify this parameter, the operation returns events only for this job.
         self.deployment_id = deployment_id
         self.deployment_name = deployment_name
+        # The page number to retrieve. Default value: 1.
         self.page_index = page_index
+        # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):

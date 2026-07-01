@@ -10,7 +10,9 @@ class ListDeploymentDraftsRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # The page number to return. The default value is 1.
         self.page_index = page_index
+        # The number of entries to return on each page. The default value is 10. The maximum value is 100.
         self.page_size = page_size
 
     def validate(self):

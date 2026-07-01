@@ -26,8 +26,9 @@ class FlinkApiProxyRequest(DaraModel):
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
-        # *   jobs
-        # *   sessionclusters
+        # - jobs
+        # 
+        # - sessionclusters
         # 
         # This parameter is required.
         self.resource_type = resource_type

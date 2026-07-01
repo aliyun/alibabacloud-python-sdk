@@ -15,11 +15,17 @@ class ValidateDeploymentDraftAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The error code. This parameter is returned when the request fails. If the request is successful, this parameter is empty.
         self.error_code = error_code
+        # The error message. This parameter is returned when the request fails. If the request is successful, this parameter is empty.
         self.error_message = error_message
+        # The status code. This is always 200. Use the success parameter to determine if the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,7 @@ class ValidateDeploymentDraftAsyncResponseBodyData(DaraModel):
         self,
         ticket_id: str = None,
     ):
+        # The ID of the asynchronous ticket. Use this ID to query the result of the asynchronous operation.
         self.ticket_id = ticket_id
 
     def validate(self):

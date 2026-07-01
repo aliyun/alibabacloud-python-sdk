@@ -9,6 +9,7 @@ class GetTablesRequest(DaraModel):
         self,
         table_name: str = None,
     ):
+        # The name of the table. If this parameter is left empty, information about all tables is returned.
         self.table_name = table_name
 
     def validate(self):

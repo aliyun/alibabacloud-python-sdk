@@ -22,6 +22,26 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'ververica.us-west-1.aliyuncs.com',
+            'us-east-1': 'ververica.us-east-1.aliyuncs.com',
+            'eu-west-1': 'ververica.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'ververica.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'ververica.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'ververica.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'ververica.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'ververica.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'ververica.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'ververica.cn-qingdao.aliyuncs.com',
+            'cn-hongkong': 'ververica.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'ververica.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'ververica.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'ververica.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'ververica.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'ververica.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'ververica.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'ververica.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ververica', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

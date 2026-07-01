@@ -10,7 +10,9 @@ class GetDeploymentsByNameRequest(DaraModel):
         ignore_job_summary: bool = None,
         ignore_resource_setting: bool = None,
     ):
+        # Specifies whether to exclude job summary information, such as jobName and status, from the response. Set this to true to return only the JobId and improve performance.
         self.ignore_job_summary = ignore_job_summary
+        # Specifies whether to exclude resource configuration information, such as parallelism and the number of CUs, to reduce the response size.
         self.ignore_resource_setting = ignore_resource_setting
 
     def validate(self):

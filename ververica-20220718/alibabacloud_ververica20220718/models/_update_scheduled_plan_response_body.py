@@ -15,11 +15,17 @@ class UpdateScheduledPlanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data structure of the updated scheduled plan.
         self.data = data
+        # The business error code. This parameter is not empty when the success parameter is false. This parameter is empty when the success parameter is true.
         self.error_code = error_code
+        # The business error message. This parameter is not empty when the success parameter is false. This parameter is empty when the success parameter is true.
         self.error_message = error_message
+        # The business status code. This is always 200. Use the success parameter to determine if the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -35,54 +35,57 @@ class Deployment(DaraModel):
         streaming_resource_setting: main_models.StreamingResourceSetting = None,
         workspace: str = None,
     ):
-        # The parameters that are required for starting a deployment.
+        # The data structure required to start the deployed job.
         self.artifact = artifact
-        # The resource configuration of the batch deployment.
+        # Resource settings for a batch job.
         self.batch_resource_setting = batch_resource_setting
-        # The time at which the deployment was created.
+        # Creation time.
         self.created_at = created_at
-        # The ID of the account that is used to create the deployment.
+        # Creator.
         self.creator = creator
-        # The name of the account that is used to create the deployment.
+        # Name of the creator.
         self.creator_name = creator_name
-        # Specifies whether the deployment is modified after the deployment is started.
+        # Indicates whether the deployed job has been modified after it was started.
         self.deployment_has_changed = deployment_has_changed
-        # The ID of the deployment.
+        # Deployed job ID.
         self.deployment_id = deployment_id
-        # The cluster on which the deployment is deployed.
+        # Deployment target.
         self.deployment_target = deployment_target
-        # The description of the deployment.
+        # Description.
         self.description = description
-        # The engine version of the deployment.
+        # Engine version.
         self.engine_version = engine_version
-        # The execution mode of the deployment. Valid values:
+        # Execution mode.
         # 
-        # *   STREAMING
-        # *   BATCH
+        # - STREAMING: stream mode.
+        # 
+        # - BATCH: batch mode.
         self.execution_mode = execution_mode
-        # The Realtime Compute for Apache Flink configuration.
+        # Flink configuration.
         self.flink_conf = flink_conf
-        # The summary of jobs in the deployment.
+        # A summary of information about the job instances under the deployed job.
         self.job_summary = job_summary
+        # Job labels.
         self.labels = labels
-        # The variables of the deployment.
+        # Job variables.
         self.local_variables = local_variables
-        # The logging configuration.
+        # Log configuration.
         self.logging = logging
-        # The time at which the deployment was modified.
+        # Modification time.
         self.modified_at = modified_at
-        # The ID of the account that is used to modify the deployment.
+        # Modifier.
         self.modifier = modifier
-        # The name of the account that is used to modify the deployment.
+        # Name of the modifier.
         self.modifier_name = modifier_name
-        # The name of the deployment.
+        # Deployed job name.
         self.name = name
         # The name of the namespace.
         self.namespace = namespace
+        # Associated job draft ID.
         self.referenced_deployment_draft_id = referenced_deployment_draft_id
-        # The resource configuration of the streaming deployment.
+        # Resource settings for a stream job.
         self.streaming_resource_setting = streaming_resource_setting
-        # The workspace to which the deployment belongs.
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):

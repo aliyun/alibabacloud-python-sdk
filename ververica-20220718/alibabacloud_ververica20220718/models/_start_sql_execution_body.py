@@ -11,8 +11,11 @@ class StartSqlExecutionBody(DaraModel):
         sql_file_id: str = None,
         sql_script: str = None,
     ):
+        # The description of the SQL execution.
         self.description = description
+        # The SQL file ID.
         self.sql_file_id = sql_file_id
+        # The SQL script content.
         self.sql_script = sql_script
 
     def validate(self):

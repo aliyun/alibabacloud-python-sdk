@@ -11,7 +11,9 @@ class WatermarkSpec(DaraModel):
         watermark_expression: str = None,
         watermark_type: str = None,
     ):
+        # The column of the event time attribute.
         self.column = column
+        # The watermark expression.
         self.watermark_expression = watermark_expression
         self.watermark_type = watermark_type
 

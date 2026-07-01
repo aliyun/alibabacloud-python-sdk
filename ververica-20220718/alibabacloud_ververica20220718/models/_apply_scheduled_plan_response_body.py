@@ -15,11 +15,17 @@ class ApplyScheduledPlanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data structure of the applied scheduled plan.
         self.data = data
+        # The error code returned if the request fails. This parameter is empty if the request is successful.
         self.error_code = error_code
+        # The error message returned if the request fails. This parameter is empty if the request is successful.
         self.error_message = error_message
+        # The HTTP status code. A value of 200 is returned. Use the \\`success\\` parameter to determine if the request was successful.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

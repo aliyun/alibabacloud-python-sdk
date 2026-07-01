@@ -11,7 +11,9 @@ class HotUpdateJobParams(DaraModel):
         rescale_job_param: main_models.RescaleJobParam = None,
         update_job_config_param: main_models.UpdateJobConfigParam = None,
     ):
+        # 资源动态更新。
         self.rescale_job_param = rescale_job_param
+        # 运行参数动态更新。
         self.update_job_config_param = update_job_config_param
 
     def validate(self):

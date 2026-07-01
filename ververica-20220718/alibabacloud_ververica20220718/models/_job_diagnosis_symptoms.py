@@ -17,11 +17,17 @@ class JobDiagnosisSymptoms(DaraModel):
         state: List[main_models.JobDiagnosisSymptom] = None,
         troubleshooting: List[main_models.JobDiagnosisSymptom] = None,
     ):
+        # Job resource diagnosis.
         self.autopilot = autopilot
+        # Other namespace diagnosis.
         self.others = others
+        # Run diagnosis.
         self.runtime = runtime
+        # Startup procedure diagnosis.
         self.startup = startup
+        # Job status diagnosis.
         self.state = state
+        # Underlying abnormal diagnosis.
         self.troubleshooting = troubleshooting
 
     def validate(self):

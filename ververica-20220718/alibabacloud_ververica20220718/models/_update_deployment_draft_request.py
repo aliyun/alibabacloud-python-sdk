@@ -10,6 +10,8 @@ class UpdateDeploymentDraftRequest(DaraModel):
         self,
         body: main_models.DeploymentDraft = None,
     ):
+        # The information to update the job draft.
+        # 
         # This parameter is required.
         self.body = body
 

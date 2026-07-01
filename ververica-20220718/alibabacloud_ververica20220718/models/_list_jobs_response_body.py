@@ -22,26 +22,29 @@ class ListJobsResponseBody(DaraModel):
         total_size: int = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # *   If the value of success was true, all jobs that meet the condition were returned.
-        # *   If the value of success was false, a null value was returned.
+        # - An array of job instances for a successful request (when `success` is `true`).
+        # 
+        # - An empty array for a failed request (when `success` is `false`).
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - The error code for a failed request (when `success` is `false`).
+        # 
+        # - An empty string if the request is successful (when `success` is `true`).
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - The error message for a failed request (when `success` is `false`).
+        # 
+        # - An empty string if the request is successful (when `success` is `true`).
         self.error_message = error_message
-        # The value was fixed to 200.
+        # A fixed value of 200.
         self.http_code = http_code
-        # The page number.
+        # The page number of the returned results.
         self.page_index = page_index
-        # The number of entries per page.
+        # The number of entries returned on the current page.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries that match the query.
         self.total_size = total_size
 
     def validate(self):

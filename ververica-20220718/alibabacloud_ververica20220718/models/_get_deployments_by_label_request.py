@@ -12,10 +12,16 @@ class GetDeploymentsByLabelRequest(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
+        # Specifies whether to exclude job summary information, such as jobName and status, from the response. If set to true, the response includes only the JobId. This improves performance.
         self.ignore_job_summary = ignore_job_summary
+        # Specifies whether to exclude resource configuration information, such as parallelism and the number of CUs, from the response. This reduces the size of the returned data.
         self.ignore_resource_setting = ignore_resource_setting
+        # The label key used for filtering.
+        # 
         # This parameter is required.
         self.label_key = label_key
+        # The label value. You can specify multiple values separated by commas (,) to create an OR condition.
+        # 
         # This parameter is required.
         self.label_value = label_value
 

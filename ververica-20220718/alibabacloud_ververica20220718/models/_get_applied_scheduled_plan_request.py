@@ -9,6 +9,8 @@ class GetAppliedScheduledPlanRequest(DaraModel):
         self,
         deployment_id: str = None,
     ):
+        # The ID of the deployed job.
+        # 
         # This parameter is required.
         self.deployment_id = deployment_id
 

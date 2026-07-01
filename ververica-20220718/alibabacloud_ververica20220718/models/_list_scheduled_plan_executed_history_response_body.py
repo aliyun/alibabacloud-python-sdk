@@ -20,14 +20,23 @@ class ListScheduledPlanExecutedHistoryResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # The list of jobs that meet the filter criteria. This parameter is returned only when the request is successful.
         self.data = data
+        # The error code that is returned if the request fails.
         self.error_code = error_code
+        # The error message that is returned if the request fails.
         self.error_message = error_message
+        # The HTTP status code. The value is always 200. Use the \\`success\\` parameter to determine whether the request was successful.
         self.http_code = http_code
+        # The page number of the returned page.
         self.page_index = page_index
+        # The number of entries on the returned page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries that meet the filter criteria.
         self.total_size = total_size
 
     def validate(self):

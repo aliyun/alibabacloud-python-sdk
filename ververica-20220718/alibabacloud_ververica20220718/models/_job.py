@@ -37,60 +37,61 @@ class Job(DaraModel):
         user_flink_conf: Dict[str, Any] = None,
         workspace: str = None,
     ):
-        # The content template of the job.
+        # Job instance content template.
         self.artifact = artifact
-        # The resource configuration of the job in batch mode.
+        # Batch mode resource settings.
         self.batch_resource_setting = batch_resource_setting
-        # The time when the job was created.
+        # Creation time.
         self.created_at = created_at
-        # The ID of the account that is used to create the job.
+        # Creator.
         self.creator = creator
-        # The name of the account that is used to create the job.
+        # Creator name.
         self.creator_name = creator_name
-        # The deployment ID.
+        # Deployment ID.
         self.deployment_id = deployment_id
-        # The name of the deployment.
+        # Deployment name.
         self.deployment_name = deployment_name
-        # The end time of the job.
+        # Job instance end time.
         self.end_time = end_time
-        # The engine version of the deployment.
+        # Job engine version.
         self.engine_version = engine_version
-        # The execution mode of the job. Valid values:
+        # Job instance execution mode.
         # 
-        # *   STREAM
-        # *   BATCH
+        # - STREAM: Stream mode.
+        # 
+        # - BATCH: Batch mode.
         self.execution_mode = execution_mode
-        # The configuration of the job.
+        # Full parameter settings for the job instance.
         self.flink_conf = flink_conf
-        # The job ID.
+        # Job instance ID.
         self.job_id = job_id
-        # The variables.
+        # Job variables.
         self.local_variables = local_variables
-        # The logging configuration of the job.
+        # Job instance log configuration.
         self.logging = logging
-        # The resource information of the job.
+        # Job instance resource information.
         self.metric = metric
-        # The time when the job was modified.
+        # Modification time.
         self.modified_at = modified_at
-        # The ID of the account that is used to modify the job.
+        # Modifier.
         self.modifier = modifier
-        # The name of the account that is used to modify the job.
+        # Modifier name.
         self.modifier_name = modifier_name
         # The name of the namespace.
         self.namespace = namespace
-        # The startup strategy of the job.
+        # Job instance startup policy.
         self.restore_strategy = restore_strategy
-        # If the job runs in a session cluster, the value of this parameter is the name of the session cluster. Otherwise, the value of this parameter is null.
+        # If the job instance runs on a Session cluster, this shows the Session cluster name; otherwise, it is null.
         self.session_cluster_name = session_cluster_name
-        # The start time of the job.
+        # Job instance start time.
         self.start_time = start_time
-        # The status of the job.
+        # Job instance status.
         self.status = status
-        # The resource configuration of the job in streaming mode.
+        # Stream mode resource settings.
         self.streaming_resource_setting = streaming_resource_setting
-        # The Flink configuration.
+        # User job parameter settings.
         self.user_flink_conf = user_flink_conf
-        # The workspace.
+        # Workspace.
         self.workspace = workspace
 
     def validate(self):

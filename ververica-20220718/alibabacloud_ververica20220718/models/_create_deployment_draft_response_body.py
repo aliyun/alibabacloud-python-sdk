@@ -15,11 +15,21 @@ class CreateDeploymentDraftResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data structure of the job draft.
         self.data = data
+        # - If \\`success\\` is \\`false\\`, an error code is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_code = error_code
+        # - If \\`success\\` is \\`false\\`, an error message is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_message = error_message
+        # Indicates whether the request was successful. A value other than 200 indicates that the request failed.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

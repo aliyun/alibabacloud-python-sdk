@@ -20,14 +20,23 @@ class ListScheduledPlanResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # The list of scheduled plans that meet the filter criteria. This parameter is returned only if the request is successful. If the request fails, this parameter is empty.
         self.data = data
+        # The error code returned if the request fails. This parameter is empty if the request is successful.
         self.error_code = error_code
+        # The error message returned if the request fails. This parameter is empty if the request is successful.
         self.error_message = error_message
+        # The HTTP status code. The value is always 200. Use the \\`success\\` parameter to determine if the request was successful.
         self.http_code = http_code
+        # A paging parameter that specifies the page index to return.
         self.page_index = page_index
+        # The number of entries on the returned page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries that match the query.
         self.total_size = total_size
 
     def validate(self):

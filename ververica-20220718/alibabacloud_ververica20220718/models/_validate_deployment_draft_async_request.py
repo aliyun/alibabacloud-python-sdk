@@ -10,6 +10,7 @@ class ValidateDeploymentDraftAsyncRequest(DaraModel):
         self,
         body: main_models.DraftValidateParams = None,
     ):
+        # The parameter object for the job draft.
         self.body = body
 
     def validate(self):

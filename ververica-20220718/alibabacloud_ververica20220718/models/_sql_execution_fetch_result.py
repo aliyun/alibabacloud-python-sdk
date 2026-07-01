@@ -11,7 +11,9 @@ class SqlExecutionFetchResult(DaraModel):
         dql_result: main_models.DqlResult = None,
         sql_execution: main_models.SqlExecution = None,
     ):
+        # The result of the data query language (DQL) statement.
         self.dql_result = dql_result
+        # The information about the SQL execution.
         self.sql_execution = sql_execution
 
     def validate(self):

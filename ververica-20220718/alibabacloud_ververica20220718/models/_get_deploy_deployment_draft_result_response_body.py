@@ -15,11 +15,21 @@ class GetDeployDeploymentDraftResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The deployment result of the job draft.
         self.data = data
+        # - The error code. This parameter is returned when the request fails.
+        # 
+        # - If the request is successful, this parameter is empty.
         self.error_code = error_code
+        # - The error message. This parameter is returned when the request fails.
+        # 
+        # - If the request is successful, this parameter is empty.
         self.error_message = error_message
+        # The HTTP status code. A value other than 200 indicates that the request failed.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

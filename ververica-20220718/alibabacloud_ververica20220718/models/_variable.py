@@ -14,7 +14,7 @@ class Variable(DaraModel):
     ):
         # The description of the variable.
         self.description = description
-        # The type of the variable. Valid value: Plain.
+        # The type of the variable. `Clear` indicates plaintext and `Encrypted` indicates ciphertext.
         # 
         # This parameter is required.
         self.kind = kind

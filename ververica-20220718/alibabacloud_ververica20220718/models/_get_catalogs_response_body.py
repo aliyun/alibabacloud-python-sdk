@@ -17,12 +17,21 @@ class GetCatalogsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # If the value of success was true, the list of catalogs that meet the specified condition was returned. If the value of success was false, a null value was returned.
+        # If \\`success\\` is \\`true\\`, a list of catalogs that meet the criteria is returned. If \\`success\\` is \\`false\\`, this parameter is empty.
         self.data = data
+        # - If \\`success\\` is \\`false\\`, an error code is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_code = error_code
+        # - If \\`success\\` is \\`false\\`, an error message is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_message = error_message
+        # The business status code. This is always 200. Use the \\`success\\` parameter to determine whether the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

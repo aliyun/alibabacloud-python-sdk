@@ -9,6 +9,7 @@ class GetCatalogsRequest(DaraModel):
         self,
         catalog_name: str = None,
     ):
+        # The name of the catalog. If this parameter is left empty, all catalogs are listed.
         self.catalog_name = catalog_name
 
     def validate(self):

@@ -14,8 +14,12 @@ class Catalog(DaraModel):
         properties: Dict[str, Any] = None,
     ):
         self.extension_conf = extension_conf
+        # The catalog name.
+        # 
         # This parameter is required.
         self.name = name
+        # The catalog configuration parameters.
+        # 
         # This parameter is required.
         self.properties = properties
 

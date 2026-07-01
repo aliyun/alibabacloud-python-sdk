@@ -12,8 +12,11 @@ class TableSchema(DaraModel):
         schema: main_models.Schema = None,
         table_name: str = None,
     ):
+        # The ID of the collect sink operator.
         self.collect_sink_operator_id = collect_sink_operator_id
+        # The schema of the table.
         self.schema = schema
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

@@ -23,17 +23,28 @@ class SqlExecution(DaraModel):
         statements: List[main_models.SqlStatement] = None,
         workspace: str = None,
     ):
+        # Specifies whether to enable batch mode.
         self.batch_mode = batch_mode
+        # The description of the SQL execution.
         self.description = description
+        # The message returned for the SQL execution.
         self.message = message
+        # The name of the SQL execution.
         self.name = name
+        # The namespace.
         self.namespace = namespace
+        # The name of the session cluster.
         self.session_cluster_name = session_cluster_name
+        # The SQL execution ID.
         self.sql_execution_id = sql_execution_id
+        # The SQL file ID.
         self.sql_file_id = sql_file_id
+        # The SQL script content.
         self.sql_script = sql_script
+        # The state of the SQL execution.
         self.state = state
         self.statements = statements
+        # The workspace ID.
         self.workspace = workspace
 
     def validate(self):

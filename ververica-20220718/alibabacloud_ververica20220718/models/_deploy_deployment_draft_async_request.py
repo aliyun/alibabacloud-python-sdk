@@ -10,6 +10,8 @@ class DeployDeploymentDraftAsyncRequest(DaraModel):
         self,
         body: main_models.DraftDeployParams = None,
     ):
+        # The job draft and deployment information.
+        # 
         # This parameter is required.
         self.body = body
 

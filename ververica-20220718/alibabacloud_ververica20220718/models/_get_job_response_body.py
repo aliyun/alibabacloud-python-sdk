@@ -17,16 +17,19 @@ class GetJobResponseBody(DaraModel):
         success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # *   If the value of success was true, the details of the job was returned.
-        # *   If the value of success was false, a null value was returned.
+        # - The job instance information if `success` is `true`.
+        # 
+        # - An empty object if `success` is `false`.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - An error code if `success` is `false`.
+        # 
+        # - An empty string if `success` is `true`.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - An error message if `success` is `false`.
+        # 
+        # - An empty string if `success` is `true`.
         self.error_message = error_message
-        # The value was fixed to 200.
+        # A fixed value of 200.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id

@@ -14,10 +14,15 @@ class HotUpdateJobResult(DaraModel):
         status: main_models.HotUpdateJobStatus = None,
         target_resource_setting: main_models.BriefResourceSetting = None,
     ):
+        # 动态更新参数。
         self.hot_update_params = hot_update_params
+        # 动态更新id。
         self.job_hot_update_id = job_hot_update_id
+        # 作业实例id。
         self.job_id = job_id
+        # 动态更新状态。
         self.status = status
+        # 目标作业资源配置。
         self.target_resource_setting = target_resource_setting
 
     def validate(self):

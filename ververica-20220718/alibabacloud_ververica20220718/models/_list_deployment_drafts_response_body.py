@@ -20,14 +20,27 @@ class ListDeploymentDraftsResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
+        # A list of job drafts that match the query. This parameter is returned if the request is successful. If the request fails, this parameter is empty.
         self.data = data
+        # - If the request fails, the error code is returned.
+        # 
+        # - If the request is successful, this parameter is empty.
         self.error_code = error_code
+        # - If the request fails, the error message is returned.
+        # 
+        # - If the request is successful, this parameter is empty.
         self.error_message = error_message
+        # The HTTP status code. If this parameter is not empty and its value is not 200, the request failed.
         self.http_code = http_code
+        # The page number of the returned page.
         self.page_index = page_index
+        # The number of entries on the returned page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries that match the query.
         self.total_size = total_size
 
     def validate(self):
