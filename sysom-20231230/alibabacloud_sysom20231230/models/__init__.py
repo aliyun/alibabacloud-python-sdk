@@ -123,6 +123,9 @@ from ._install_agent_response import InstallAgentResponse
 from ._install_agent_for_cluster_request import InstallAgentForClusterRequest
 from ._install_agent_for_cluster_response_body import InstallAgentForClusterResponseBody
 from ._install_agent_for_cluster_response import InstallAgentForClusterResponse
+from ._install_agent_with_type_request import InstallAgentWithTypeRequest
+from ._install_agent_with_type_response_body import InstallAgentWithTypeResponseBody
+from ._install_agent_with_type_response import InstallAgentWithTypeResponse
 from ._invoke_anomaly_diagnosis_request import InvokeAnomalyDiagnosisRequest
 from ._invoke_anomaly_diagnosis_response_body import InvokeAnomalyDiagnosisResponseBody
 from ._invoke_anomaly_diagnosis_response import InvokeAnomalyDiagnosisResponse
@@ -264,6 +267,8 @@ from ._initial_sysom_response_body import InitialSysomResponseBodyData
 from ._install_agent_request import InstallAgentRequestInstances
 from ._install_agent_response_body import InstallAgentResponseBodyData
 from ._install_agent_for_cluster_response_body import InstallAgentForClusterResponseBodyData
+from ._install_agent_with_type_request import InstallAgentWithTypeRequestInstances
+from ._install_agent_with_type_response_body import InstallAgentWithTypeResponseBodyData
 from ._invoke_diagnosis_response_body import InvokeDiagnosisResponseBodyData
 from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyDataOptsResult
 from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyDataOpts
@@ -428,6 +433,9 @@ __all__ = [
     InstallAgentForClusterRequest,
     InstallAgentForClusterResponseBody,
     InstallAgentForClusterResponse,
+    InstallAgentWithTypeRequest,
+    InstallAgentWithTypeResponseBody,
+    InstallAgentWithTypeResponse,
     InvokeAnomalyDiagnosisRequest,
     InvokeAnomalyDiagnosisResponseBody,
     InvokeAnomalyDiagnosisResponse,
@@ -569,6 +577,8 @@ __all__ = [
     InstallAgentRequestInstances,
     InstallAgentResponseBodyData,
     InstallAgentForClusterResponseBodyData,
+    InstallAgentWithTypeRequestInstances,
+    InstallAgentWithTypeResponseBodyData,
     InvokeDiagnosisResponseBodyData,
     ListAbnormalyEventsResponseBodyDataOptsResult,
     ListAbnormalyEventsResponseBodyDataOpts,

@@ -3597,6 +3597,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.install_agent_for_cluster_with_options_async(request, headers, runtime)
 
+    def install_agent_with_type_with_options(
+        self,
+        request: main_models.InstallAgentWithTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAgentWithTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            body['agentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        if not DaraCore.is_null(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallAgentWithType',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/installAgent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallAgentWithTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_agent_with_type_with_options_async(
+        self,
+        request: main_models.InstallAgentWithTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAgentWithTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            body['agentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.config_id):
+            body['configId'] = request.config_id
+        if not DaraCore.is_null(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallAgentWithType',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/installAgent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallAgentWithTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_agent_with_type(
+        self,
+        request: main_models.InstallAgentWithTypeRequest,
+    ) -> main_models.InstallAgentWithTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.install_agent_with_type_with_options(request, headers, runtime)
+
+    async def install_agent_with_type_async(
+        self,
+        request: main_models.InstallAgentWithTypeRequest,
+    ) -> main_models.InstallAgentWithTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.install_agent_with_type_with_options_async(request, headers, runtime)
+
     def invoke_anomaly_diagnosis_with_options(
         self,
         request: main_models.InvokeAnomalyDiagnosisRequest,
