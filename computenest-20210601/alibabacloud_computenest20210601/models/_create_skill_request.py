@@ -12,29 +12,31 @@ class CreateSkillRequest(DaraModel):
         client_token: str = None,
         oss_url: str = None,
         skill_description: str = None,
+        skill_display_name: str = None,
         skill_labels: List[str] = None,
         skill_name: str = None,
         skill_space_id: str = None,
         source_skill_id: str = None,
         source_type: str = None,
     ):
-        # A client-generated token that ensures request idempotence. It must be unique for each request. The **ClientToken** can contain only ASCII characters and must be no more than 64 characters long.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Required when SourceType is set to UPLOAD. The OSS URL of the Skill package to upload.
+        # The OSS URL of the Skill package to upload. This parameter is required when SourceType is set to UPLOAD.
         self.oss_url = oss_url
-        # The description of the Skill.
+        # The Skill description.
         self.skill_description = skill_description
+        self.skill_display_name = skill_display_name
         # The Skill labels.
         self.skill_labels = skill_labels
-        # The name of the Skill.
+        # The Skill name.
         self.skill_name = skill_name
-        # The ID of the SkillSpace containing the Skill.
+        # The ID of the SkillSpace to which the Skill belongs.
         # 
         # This parameter is required.
         self.skill_space_id = skill_space_id
-        # Required when SourceType is set to COPY. The ID of the public Skill.
+        # The public Skill ID. This parameter is required when SourceType is set to COPY.
         self.source_skill_id = source_skill_id
-        # The creation method for the Skill.
+        # The source type used when creating the Skill.
         # 
         # This parameter is required.
         self.source_type = source_type
@@ -55,6 +57,9 @@ class CreateSkillRequest(DaraModel):
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
+
+        if self.skill_display_name is not None:
+            result['SkillDisplayName'] = self.skill_display_name
 
         if self.skill_labels is not None:
             result['SkillLabels'] = self.skill_labels
@@ -83,6 +88,9 @@ class CreateSkillRequest(DaraModel):
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')
+
+        if m.get('SkillDisplayName') is not None:
+            self.skill_display_name = m.get('SkillDisplayName')
 
         if m.get('SkillLabels') is not None:
             self.skill_labels = m.get('SkillLabels')

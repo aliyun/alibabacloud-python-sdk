@@ -9,7 +9,7 @@ class GetSkillRequest(DaraModel):
         self,
         skill_id: str = None,
     ):
-        # The ID of the Skill.
+        # The unique ID of the Skill.
         # 
         # This parameter is required.
         self.skill_id = skill_id

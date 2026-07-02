@@ -4,39 +4,47 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_computenest20210601 import models as main_models
 from darabonba.model import DaraModel
 
 class GetSkillResponseBody(DaraModel):
     def __init__(
         self,
         create_time: str = None,
+        locales: List[main_models.GetSkillResponseBodyLocales] = None,
         request_id: str = None,
         skill_description: str = None,
+        skill_display_name: str = None,
         skill_id: str = None,
         skill_labels: List[str] = None,
         skill_name: str = None,
         skill_space_id: str = None,
         update_time: str = None,
     ):
-        # The time the Skill was created.
+        # The time when the Skill was created.
         self.create_time = create_time
-        # The request ID.
+        self.locales = locales
+        # Id of the request
         self.request_id = request_id
-        # The description of the Skill.
+        # The Skill description.
         self.skill_description = skill_description
-        # The ID of the Skill.
+        self.skill_display_name = skill_display_name
+        # Skill ID
         self.skill_id = skill_id
-        # The labels of the Skill.
+        # The Skill labels.
         self.skill_labels = skill_labels
-        # The name of the Skill.
+        # The Skill name.
         self.skill_name = skill_name
         # The ID of the SkillSpace to which the Skill belongs.
         self.skill_space_id = skill_space_id
-        # The time the Skill was last updated.
+        # The time when the Skill was last updated.
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.locales:
+            for v1 in self.locales:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -46,11 +54,19 @@ class GetSkillResponseBody(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        result['Locales'] = []
+        if self.locales is not None:
+            for k1 in self.locales:
+                result['Locales'].append(k1.to_map() if k1 else None)
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
+
+        if self.skill_display_name is not None:
+            result['SkillDisplayName'] = self.skill_display_name
 
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
@@ -74,11 +90,20 @@ class GetSkillResponseBody(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        self.locales = []
+        if m.get('Locales') is not None:
+            for k1 in m.get('Locales'):
+                temp_model = main_models.GetSkillResponseBodyLocales()
+                self.locales.append(temp_model.from_map(k1))
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')
+
+        if m.get('SkillDisplayName') is not None:
+            self.skill_display_name = m.get('SkillDisplayName')
 
         if m.get('SkillId') is not None:
             self.skill_id = m.get('SkillId')
@@ -94,6 +119,49 @@ class GetSkillResponseBody(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        return self
+
+class GetSkillResponseBodyLocales(DaraModel):
+    def __init__(
+        self,
+        en_value: str = None,
+        original_value: str = None,
+        zh_value: str = None,
+    ):
+        self.en_value = en_value
+        self.original_value = original_value
+        self.zh_value = zh_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.en_value is not None:
+            result['EnValue'] = self.en_value
+
+        if self.original_value is not None:
+            result['OriginalValue'] = self.original_value
+
+        if self.zh_value is not None:
+            result['ZhValue'] = self.zh_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnValue') is not None:
+            self.en_value = m.get('EnValue')
+
+        if m.get('OriginalValue') is not None:
+            self.original_value = m.get('OriginalValue')
+
+        if m.get('ZhValue') is not None:
+            self.zh_value = m.get('ZhValue')
 
         return self
 

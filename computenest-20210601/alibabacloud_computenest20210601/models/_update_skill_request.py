@@ -12,31 +12,31 @@ class UpdateSkillRequest(DaraModel):
         client_token: str = None,
         oss_url: str = None,
         skill_description: str = None,
+        skill_display_name: str = None,
         skill_id: str = None,
         skill_labels: List[str] = None,
         skill_name: str = None,
         source_skill_id: str = None,
         source_type: str = None,
     ):
-        # A unique, client-generated token to ensure request idempotence. **ClientToken** can contain only ASCII characters and must not exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The value of **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # This parameter is required if `SourceType` is set to `UPLOAD`. It specifies the Object Storage Service (OSS) URL of the compressed skill package to upload.
+        # Required when SourceType is set to UPLOAD. The OSS URL of the skill package to upload.
         self.oss_url = oss_url
-        # The skill description.
+        # The description of the skill.
         self.skill_description = skill_description
+        self.skill_display_name = skill_display_name
         # The ID of the skill to update.
         # 
         # This parameter is required.
         self.skill_id = skill_id
-        # An array of skill labels.
+        # The labels of the skill.
         self.skill_labels = skill_labels
-        # The skill name.
+        # The name of the skill.
         self.skill_name = skill_name
-        # This parameter is required if `SourceType` is set to `COPY`. It specifies the ID of the public skill.
+        # Required when SourceType is set to COPY. The ID of the public skill.
         self.source_skill_id = source_skill_id
-        # The source type for the skill update.
-        # 
-        # This parameter is required.
+        # The source type for updating the skill.
         self.source_type = source_type
 
     def validate(self):
@@ -55,6 +55,9 @@ class UpdateSkillRequest(DaraModel):
 
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
+
+        if self.skill_display_name is not None:
+            result['SkillDisplayName'] = self.skill_display_name
 
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
@@ -83,6 +86,9 @@ class UpdateSkillRequest(DaraModel):
 
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')
+
+        if m.get('SkillDisplayName') is not None:
+            self.skill_display_name = m.get('SkillDisplayName')
 
         if m.get('SkillId') is not None:
             self.skill_id = m.get('SkillId')

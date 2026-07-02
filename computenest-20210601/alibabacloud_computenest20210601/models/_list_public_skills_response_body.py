@@ -16,13 +16,13 @@ class ListPublicSkillsResponseBody(DaraModel):
         skills: List[main_models.ListPublicSkillsResponseBodySkills] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned per page.
+        # The maximum number of entries per page.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The token for the next page.
         self.next_token = next_token
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The list of public skills.
+        # The list of skills.
         self.skills = skills
         # The total number of entries.
         self.total_count = total_count
@@ -84,32 +84,39 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
         self,
         create_time: str = None,
         download_url: str = None,
+        locales: List[main_models.ListPublicSkillsResponseBodySkillsLocales] = None,
         skill_description: str = None,
+        skill_display_name: str = None,
         skill_id: str = None,
         skill_labels: List[str] = None,
         skill_name: str = None,
         skill_space_id: str = None,
         update_time: str = None,
     ):
-        # The creation time.
+        # The time when the skill was created.
         self.create_time = create_time
-        # The download link for the skill package.
+        # The download URL of the skill package.
         self.download_url = download_url
-        # The description of the skill.
+        self.locales = locales
+        # The skill description.
         self.skill_description = skill_description
-        # The ID of the skill.
+        self.skill_display_name = skill_display_name
+        # Skill ID
         self.skill_id = skill_id
-        # The labels attached to the skill.
+        # The skill label set.
         self.skill_labels = skill_labels
-        # The name of the skill.
+        # The skill name.
         self.skill_name = skill_name
-        # The ID of the skill space.
+        # The ID of the SkillSpace to which the skill belongs.
         self.skill_space_id = skill_space_id
-        # The update time.
+        # The time when the skill was last updated.
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.locales:
+            for v1 in self.locales:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -122,8 +129,16 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
         if self.download_url is not None:
             result['DownloadUrl'] = self.download_url
 
+        result['Locales'] = []
+        if self.locales is not None:
+            for k1 in self.locales:
+                result['Locales'].append(k1.to_map() if k1 else None)
+
         if self.skill_description is not None:
             result['SkillDescription'] = self.skill_description
+
+        if self.skill_display_name is not None:
+            result['SkillDisplayName'] = self.skill_display_name
 
         if self.skill_id is not None:
             result['SkillId'] = self.skill_id
@@ -150,8 +165,17 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
         if m.get('DownloadUrl') is not None:
             self.download_url = m.get('DownloadUrl')
 
+        self.locales = []
+        if m.get('Locales') is not None:
+            for k1 in m.get('Locales'):
+                temp_model = main_models.ListPublicSkillsResponseBodySkillsLocales()
+                self.locales.append(temp_model.from_map(k1))
+
         if m.get('SkillDescription') is not None:
             self.skill_description = m.get('SkillDescription')
+
+        if m.get('SkillDisplayName') is not None:
+            self.skill_display_name = m.get('SkillDisplayName')
 
         if m.get('SkillId') is not None:
             self.skill_id = m.get('SkillId')
@@ -167,6 +191,49 @@ class ListPublicSkillsResponseBodySkills(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        return self
+
+class ListPublicSkillsResponseBodySkillsLocales(DaraModel):
+    def __init__(
+        self,
+        en_value: str = None,
+        original_value: str = None,
+        zh_value: str = None,
+    ):
+        self.en_value = en_value
+        self.original_value = original_value
+        self.zh_value = zh_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.en_value is not None:
+            result['EnValue'] = self.en_value
+
+        if self.original_value is not None:
+            result['OriginalValue'] = self.original_value
+
+        if self.zh_value is not None:
+            result['ZhValue'] = self.zh_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnValue') is not None:
+            self.en_value = m.get('EnValue')
+
+        if m.get('OriginalValue') is not None:
+            self.original_value = m.get('OriginalValue')
+
+        if m.get('ZhValue') is not None:
+            self.zh_value = m.get('ZhValue')
 
         return self
 

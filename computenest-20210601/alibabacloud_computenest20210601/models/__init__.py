@@ -261,11 +261,13 @@ from ._get_service_template_parameter_constraints_request import GetServiceTempl
 from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints
 from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors
 from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints
+from ._get_skill_response_body import GetSkillResponseBodyLocales
 from ._get_user_information_response_body import GetUserInformationResponseBodyDeliverySettings
 from ._list_backups_request import ListBackupsRequestFilter
 from ._list_backups_response_body import ListBackupsResponseBodyBackups
 from ._list_policies_response_body import ListPoliciesResponseBodyPolicies
 from ._list_public_skills_request import ListPublicSkillsRequestFilter
+from ._list_public_skills_response_body import ListPublicSkillsResponseBodySkillsLocales
 from ._list_public_skills_response_body import ListPublicSkillsResponseBodySkills
 from ._list_restore_tasks_request import ListRestoreTasksRequestFilter
 from ._list_restore_tasks_response_body import ListRestoreTasksResponseBodyRestoreTasks
@@ -299,6 +301,7 @@ from ._list_skill_files_response_body import ListSkillFilesResponseBodySkillFile
 from ._list_skill_spaces_request import ListSkillSpacesRequestFilter
 from ._list_skill_spaces_response_body import ListSkillSpacesResponseBodySkillSpaces
 from ._list_skills_request import ListSkillsRequestFilter
+from ._list_skills_response_body import ListSkillsResponseBodySkillsLocales
 from ._list_skills_response_body import ListSkillsResponseBodySkills
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -571,11 +574,13 @@ __all__ = [
     GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints,
     GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors,
     GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints,
+    GetSkillResponseBodyLocales,
     GetUserInformationResponseBodyDeliverySettings,
     ListBackupsRequestFilter,
     ListBackupsResponseBodyBackups,
     ListPoliciesResponseBodyPolicies,
     ListPublicSkillsRequestFilter,
+    ListPublicSkillsResponseBodySkillsLocales,
     ListPublicSkillsResponseBodySkills,
     ListRestoreTasksRequestFilter,
     ListRestoreTasksResponseBodyRestoreTasks,
@@ -609,6 +614,7 @@ __all__ = [
     ListSkillSpacesRequestFilter,
     ListSkillSpacesResponseBodySkillSpaces,
     ListSkillsRequestFilter,
+    ListSkillsResponseBodySkillsLocales,
     ListSkillsResponseBodySkills,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,

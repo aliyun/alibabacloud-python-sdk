@@ -21,6 +21,10 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'computenest.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-1': 'computenest.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('computenest', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -791,6 +795,8 @@ class Client(OpenApiClient):
             query['OssUrl'] = request.oss_url
         if not DaraCore.is_null(request.skill_description):
             query['SkillDescription'] = request.skill_description
+        if not DaraCore.is_null(request.skill_display_name):
+            query['SkillDisplayName'] = request.skill_display_name
         if not DaraCore.is_null(request.skill_labels):
             query['SkillLabels'] = request.skill_labels
         if not DaraCore.is_null(request.skill_name):
@@ -835,6 +841,8 @@ class Client(OpenApiClient):
             query['OssUrl'] = request.oss_url
         if not DaraCore.is_null(request.skill_description):
             query['SkillDescription'] = request.skill_description
+        if not DaraCore.is_null(request.skill_display_name):
+            query['SkillDisplayName'] = request.skill_display_name
         if not DaraCore.is_null(request.skill_labels):
             query['SkillLabels'] = request.skill_labels
         if not DaraCore.is_null(request.skill_name):
@@ -5211,6 +5219,8 @@ class Client(OpenApiClient):
             query['OssUrl'] = request.oss_url
         if not DaraCore.is_null(request.skill_description):
             query['SkillDescription'] = request.skill_description
+        if not DaraCore.is_null(request.skill_display_name):
+            query['SkillDisplayName'] = request.skill_display_name
         if not DaraCore.is_null(request.skill_id):
             query['SkillId'] = request.skill_id
         if not DaraCore.is_null(request.skill_labels):
@@ -5255,6 +5265,8 @@ class Client(OpenApiClient):
             query['OssUrl'] = request.oss_url
         if not DaraCore.is_null(request.skill_description):
             query['SkillDescription'] = request.skill_description
+        if not DaraCore.is_null(request.skill_display_name):
+            query['SkillDisplayName'] = request.skill_display_name
         if not DaraCore.is_null(request.skill_id):
             query['SkillId'] = request.skill_id
         if not DaraCore.is_null(request.skill_labels):
