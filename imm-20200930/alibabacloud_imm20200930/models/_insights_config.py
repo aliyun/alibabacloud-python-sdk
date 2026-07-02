@@ -13,8 +13,9 @@ class InsightsConfig(DaraModel):
         video: main_models.VideoInsightsConfig = None,
     ):
         self.image = image
-        # The language of the source content.
+        # The language.
         self.language = language
+        # The video content-aware configuration.
         self.video = video
 
     def validate(self):

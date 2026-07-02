@@ -11,7 +11,6 @@ class Project(DaraModel):
     def __init__(
         self,
         create_time: str = None,
-        dataset_config: main_models.DatasetConfig = None,
         dataset_count: int = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
@@ -32,7 +31,6 @@ class Project(DaraModel):
     ):
         # The timestamp when the project was created, in RFC3339Nano format.
         self.create_time = create_time
-        self.dataset_config = dataset_config
         # The current number of datasets in the project.
         self.dataset_count = dataset_count
         # The maximum number of bindings per dataset. Valid values: 1 to 10. Default value: 10.
@@ -49,9 +47,9 @@ class Project(DaraModel):
         self.dataset_max_relation_count = dataset_max_relation_count
         # The maximum total file size per dataset, in bytes. After this limit is exceeded, no more indexes can be added. Default value: 90000000000000000.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The project description.
+        # The description of the project.
         self.description = description
-        # The maximum number of tasks that the project can process per second. This specifies the maximum number of operators that can run in parallel at the same time across the project. Default value: 100.
+        # The maximum number of tasks that the project can process per second. This specifies the maximum number of operators across the project that can run in parallel at the same time. Default value: 100.
         # 
         # - Synchronous tasks: if the number of concurrent tasks exceeds this limit, task execution time increases until a timeout occurs.
         # 
@@ -75,12 +73,10 @@ class Project(DaraModel):
         self.total_file_size = total_file_size
         # The timestamp when the project was last modified, in RFC3339Nano format.
         # 
-        # > If the project has not been updated since creation, this timestamp is the same as the creation timestamp.
+        # > If the project has not been updated since it was created, the modification timestamp is the same as the creation timestamp.
         self.update_time = update_time
 
     def validate(self):
-        if self.dataset_config:
-            self.dataset_config.validate()
         if self.tags:
             for v1 in self.tags:
                  if v1:
@@ -93,9 +89,6 @@ class Project(DaraModel):
             result = _map
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-
-        if self.dataset_config is not None:
-            result['DatasetConfig'] = self.dataset_config.to_map()
 
         if self.dataset_count is not None:
             result['DatasetCount'] = self.dataset_count
@@ -156,10 +149,6 @@ class Project(DaraModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-
-        if m.get('DatasetConfig') is not None:
-            temp_model = main_models.DatasetConfig()
-            self.dataset_config = temp_model.from_map(m.get('DatasetConfig'))
 
         if m.get('DatasetCount') is not None:
             self.dataset_count = m.get('DatasetCount')
@@ -223,9 +212,9 @@ class ProjectTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # 标签键。
+        # The tag key.
         self.tag_key = tag_key
-        # 标签值。
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

@@ -1726,13 +1726,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -1780,13 +1776,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -3494,13 +3486,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateProjectShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.tag):
             request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -3550,13 +3538,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateProjectShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.tag):
             request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -9746,13 +9730,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -9800,13 +9780,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -10138,13 +10114,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateProjectShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.tag):
             request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -10194,13 +10166,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateProjectShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.tag):
             request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):

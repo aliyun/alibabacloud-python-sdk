@@ -12,14 +12,11 @@ class DocumentReadSummaryOption(DaraModel):
         chapter_summarize_option: main_models.DocumentChapterSummarizeOption = None,
         summarize: bool = None,
     ):
-        # Specifies whether to generate a summary for each chapter. This setting applies only if the service can identify chapters.
-        # 
-        # **Default value**: `false`.
+        # Specifies whether to extract the chapter-level summary of the article.
         self.chapter_summarize = chapter_summarize
+        # The chapter-level summary options for the article.
         self.chapter_summarize_option = chapter_summarize_option
-        # Specifies whether to generate a summary for the entire document.
-        # 
-        # **Default value**: `false`.
+        # Specifies whether to extract the article summary.
         self.summarize = summarize
 
     def validate(self):

@@ -25,30 +25,33 @@ class SmartCluster(DaraModel):
         rules: List[main_models.SmartClusterRule] = None,
         update_time: str = None,
     ):
+        # The category of the grouping.
         self.cluster_type = cluster_type
-        # The creation time.
+        # The time when the grouping was created.
         self.create_time = create_time
         # The dataset name.
         self.dataset_name = dataset_name
-        # The group description.
+        # The description of the grouping.
         self.description = description
-        # The group name.
+        # The grouping name.
         self.name = name
-        # The smart cluster ID.
+        # The intelligent grouping ID.
         self.object_id = object_id
-        # The group status. Valid values are `Succeeded`, `Failed`, and `Running`.
+        # The status of the grouping.
         self.object_status = object_status
-        # The group type. The value is always `smart-cluster`.
+        # The grouping type.
         self.object_type = object_type
         # The user ID.
         self.owner_id = owner_id
         # The project name.
         self.project_name = project_name
+        # The reason why the grouping failed.
         self.reason = reason
-        # The clustering rule.
+        # The grouping rule. This parameter is deprecated. Use the Rules parameter instead.
         self.rule = rule
+        # The list of grouping rules.
         self.rules = rules
-        # The update time.
+        # The time when the grouping was last updated.
         self.update_time = update_time
 
     def validate(self):

@@ -14,11 +14,13 @@ class SmartClusterRule(DaraModel):
         rule_type: str = None,
         sensitivity: float = None,
     ):
+        # The array of URIs for the reference files.
         self.base_uris = base_uris
-        # An array of keywords for clustering.
+        # The keywords.
         self.keywords = keywords
+        # The rule type.
         self.rule_type = rule_type
-        # The sensitivity for clustering, ranging from 0.0 to 1.0.
+        # The sensitivity.
         self.sensitivity = sensitivity
 
     def validate(self):

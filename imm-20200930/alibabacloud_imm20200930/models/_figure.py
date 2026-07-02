@@ -37,82 +37,59 @@ class Figure(DaraModel):
     ):
         # The age.
         self.age = age
-        # The standard deviation of the age.
+        # The age standard deviation.
         self.age_sd = age_sd
-        # The face attractiveness. A high score indicates strong attractiveness. Valid values: 0 to 1.
+        # The face attractiveness score. A higher score indicates greater attractiveness. Valid values: 0 to 1.
         self.attractive = attractive
-        # Specifies whether the figure has a beard. Valid values:
-        # 
-        # *   beard
-        # *   none
+        # Indicates whether the person has a beard.
         self.beard = beard
-        # The confidence level of detecting whether the figure has a beard. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The confidence score for whether the person has a beard. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.beard_confidence = beard_confidence
         # The face boundary information.
         self.boundary = boundary
-        # The emotion. Valid values:
-        # 
-        # *   happiness
-        # *   none
+        # The emotion.
         self.emotion = emotion
-        # The confidence level of the emotion. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The emotion confidence score. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.emotion_confidence = emotion_confidence
-        # The face quality.
+        # The face quality score, which evaluates whether the image quality is suitable for face recognition. A higher score indicates better quality. Valid values: 0 to 1.
         self.face_quality = face_quality
-        # The confidence level of the face clustering task. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The clustering confidence score. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.figure_cluster_confidence = figure_cluster_confidence
-        # The ID of the face clustering task. The following IDs of special face clustering tasks are reserved:
+        # The figure cluster ID. The following reserved special cluster ID names are included:
         # 
-        # *   figure-cluster-id-independent: the ID of a face clustering task in which faces do not belong to any face group. After images are added to a dataset, the faces may be categorized into different face groups when you perform face clustering.
-        # *   figure-cluster-id-unavailable: the ID of a face clustering task in which face clustering is not performed after images are added to a dataset.
+        # - figure-cluster-id-independent: The face does not currently belong to any suitable group. After new images are added to the dataset and face clustering is performed, the face may be assigned to a group.
+        # 
+        # - figure-cluster-id-unavailable: The face has not been clustered yet. This means that after new images were added to the dataset, face clustering has not been performed.
         self.figure_cluster_id = figure_cluster_id
-        # The confidence level of the figure. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The confidence score of the figure object. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.figure_confidence = figure_confidence
-        # The figure ID.
+        # The ID of the figure object.
         self.figure_id = figure_id
         # The figure type.
-        # 
-        # Set this parameter to face.
         self.figure_type = figure_type
-        # The gender. Valid values:
-        # 
-        # *   female
-        # *   male
+        # The gender.
         self.gender = gender
-        # The confidence level of the gender. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The gender confidence score. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.gender_confidence = gender_confidence
-        # Specifies whether the figure wears glasses. Valid values:
-        # 
-        # *   glasses
-        # *   sunglasses
-        # *   none
+        # Indicates whether the person is wearing glasses.
         self.glasses = glasses
-        # The confidence level of detecting whether the figure wears glasses. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The confidence score for whether the person is wearing glasses. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.glasses_confidence = glasses_confidence
-        # Specifies whether the figure wears a hat. Valid values:
-        # 
-        # *   hat
-        # *   none
+        # Indicates whether the person is wearing a hat.
         self.hat = hat
-        # The confidence level of detecting whether the figure wears a hat.
+        # The confidence score for whether the person is wearing a hat. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.hat_confidence = hat_confidence
-        # The head orientation.
+        # The head pose information.
         self.head_pose = head_pose
-        # Specifies whether the figure wears a mask. Valid values:
-        # 
-        # *   mask
-        # *   none
+        # Indicates whether the person is wearing a mask.
         self.mask = mask
-        # The confidence level of detecting whether the figure wears a mask. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The confidence score for whether the person is wearing a mask. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.mask_confidence = mask_confidence
-        # Specifies whether the mouth is open. Valid values:
-        # 
-        # *   open
-        # *   close
+        # Indicates whether the mouth is open.
         self.mouth = mouth
-        # The confidence level of detecting whether the mouth is open. Valid values: 0 to 1. The value 0 indicates the lowest confidence level. The value 1 indicates the highest confidence level.
+        # The confidence score for whether the mouth is open. Valid values: 0 (lowest confidence) to 1 (highest confidence).
         self.mouth_confidence = mouth_confidence
-        # The clarity.
+        # The sharpness score. A higher score indicates a clearer face. Valid values: 0 to 1.
         self.sharpness = sharpness
 
     def validate(self):

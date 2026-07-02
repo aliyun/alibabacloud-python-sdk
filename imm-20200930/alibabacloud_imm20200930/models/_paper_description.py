@@ -13,7 +13,9 @@ class PaperDescription(DaraModel):
         description: List[main_models.Summary] = None,
         title_id: List[str] = None,
     ):
+        # The guide result.
         self.description = description
+        # The section heading included in the guide result.
         self.title_id = title_id
 
     def validate(self):

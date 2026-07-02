@@ -16,7 +16,7 @@ class ListProjectsResponseBody(DaraModel):
     ):
         # The credential for querying subsequent pages when the total number of expected projects exceeds the specified MaxResults value. This parameter has a value only when not all projects are returned.
         self.next_token = next_token
-        # The array of projects. Returns information about the projects.
+        # The array of projects. Project information is returned.
         self.projects = projects
         # The request ID.
         self.request_id = request_id

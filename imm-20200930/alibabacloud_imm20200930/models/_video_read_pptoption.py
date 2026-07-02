@@ -9,7 +9,7 @@ class VideoReadPPTOption(DaraModel):
         self,
         extract: bool = None,
     ):
-        # Specifies whether to extract content from the presentation slides. Set this parameter to `true` to enable extraction.
+        # Specifies whether to fetch.
         self.extract = extract
 
     def validate(self):

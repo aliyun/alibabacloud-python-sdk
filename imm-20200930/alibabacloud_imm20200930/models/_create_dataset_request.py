@@ -10,7 +10,6 @@ from darabonba.model import DaraModel
 class CreateDatasetRequest(DaraModel):
     def __init__(
         self,
-        dataset_config: main_models.DatasetConfig = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
         dataset_max_file_count: int = None,
@@ -22,42 +21,35 @@ class CreateDatasetRequest(DaraModel):
         template_id: str = None,
         workflow_parameters: List[main_models.WorkflowParameter] = None,
     ):
-        # The dataset configuration.
-        self.dataset_config = dataset_config
-        # The maximum number of bindings for each dataset. Valid values: 1 to 10. The default value is 10.
+        # The maximum number of bindings per dataset. Valid values: 1 to 10. Default value: 10.
         self.dataset_max_bind_count = dataset_max_bind_count
-        # The maximum number of metadata entities in each dataset. The default value is 10,000,000,000.
+        # The maximum number of metadata entities per dataset. Default value: 10000000000.
         self.dataset_max_entity_count = dataset_max_entity_count
-        # The maximum number of files in each dataset. Valid values: 1 to 100,000,000. The default value is 100,000,000.
+        # The maximum number of files per dataset. Valid values: 1 to 100000000. Default value: 100000000.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships in each dataset. The default value is 100,000,000,000.
+        # The maximum number of metadata relationships per dataset. Default value: 100000000000.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total size of files in each dataset. You cannot add more indexes after exceeding this limit. The default value is 90,000,000,000,000,000 bytes.
+        # The maximum total file size per dataset, in bytes. After this limit is exceeded, no more indexes can be added. Default value: 90000000000000000.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The dataset name. It must be unique within the same project. Naming conventions are as follows:
-        # 
-        # - Length: 1 to 128 characters.
-        # 
-        # - Only English letters, digits, hyphens (-), and underscores (_) are allowed.
-        # 
-        # - Must start with an English letter or an underscore (_).
+        # The dataset name. The name must be unique within the same project. The following naming rules apply:
+        # - The name must be 1 to 128 characters in length.
+        # - The name can contain only letters, digits, hyphens (-), and underscores (_).
+        # - The name must start with a letter or an underscore (_).
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The description of the dataset. Length: 1 to 256 English or Chinese characters. The default value is empty.
+        # The description of the dataset. The description can be 1 to 256 characters in length. Default value: empty.
         self.description = description
-        # The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
+        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The workflow template ID. For more information, see [Workflow Templates and Operators](https://help.aliyun.com/document_detail/466304.html). The default value is empty.
+        # The workflow template ID. For more information, see [Workflow templates and operators](https://help.aliyun.com/document_detail/466304.html). Default value: empty.
         self.template_id = template_id
         # Invalid parameter.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
-        if self.dataset_config:
-            self.dataset_config.validate()
         if self.workflow_parameters:
             for v1 in self.workflow_parameters:
                  if v1:
@@ -68,9 +60,6 @@ class CreateDatasetRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.dataset_config is not None:
-            result['DatasetConfig'] = self.dataset_config.to_map()
-
         if self.dataset_max_bind_count is not None:
             result['DatasetMaxBindCount'] = self.dataset_max_bind_count
 
@@ -107,10 +96,6 @@ class CreateDatasetRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DatasetConfig') is not None:
-            temp_model = main_models.DatasetConfig()
-            self.dataset_config = temp_model.from_map(m.get('DatasetConfig'))
-
         if m.get('DatasetMaxBindCount') is not None:
             self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
 

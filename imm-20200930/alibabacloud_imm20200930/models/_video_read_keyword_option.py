@@ -10,9 +10,9 @@ class VideoReadKeywordOption(DaraModel):
         count: int = None,
         extract: bool = None,
     ):
-        # Specifies the maximum number of keywords to return. The service may return fewer keywords than this limit. If omitted, the service returns all extracted keywords.
+        # The number of keywords. Valid values: 0 to 10.
         self.count = count
-        # Specifies whether to extract keywords from the video. Set to `true` to enable keyword extraction. The default is `false`.
+        # Specifies whether to fetch keywords.
         self.extract = extract
 
     def validate(self):

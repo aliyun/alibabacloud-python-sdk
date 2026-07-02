@@ -10,9 +10,9 @@ class DocumentReadKeywordOption(DaraModel):
         count: int = None,
         extract: bool = None,
     ):
-        # The maximum number of keywords to return.
+        # The number of keywords. Valid values: 0 to 10.
         self.count = count
-        # Whether to extract keywords from the document.
+        # Specifies whether to extract keywords.
         self.extract = extract
 
     def validate(self):

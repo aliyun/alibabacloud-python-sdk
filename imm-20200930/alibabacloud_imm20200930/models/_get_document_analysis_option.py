@@ -17,20 +17,21 @@ class GetDocumentAnalysisOption(DaraModel):
         question: bool = None,
         summary: bool = None,
     ):
-        # Specifies whether to generate summaries for each chapter. Set to `true` to enable this feature. Use `ChapterSummaryOption` to configure detailed options. Defaults to `false`.
+        # Specifies whether to retrieve chapter-by-chapter summaries of the document.
         self.chapter_summary = chapter_summary
+        # The options for retrieving chapter-by-chapter summaries of the document.
         self.chapter_summary_option = chapter_summary_option
-        # Specifies whether to analyze each image within the document. Set to `true` to enable this feature. Defaults to `false`.
+        # Specifies whether to retrieve images extracted from the document, such as pictures, tables, and formulas.
         self.images = images
-        # Specifies whether to extract keywords from the document. Set to `true` to enable this feature. Defaults to `false`.
+        # Specifies whether to retrieve keywords.
         self.keyword = keyword
-        # Specifies whether to analyze the document layout. Set to `true` to enable this feature. Defaults to `false`.
+        # Specifies whether to retrieve the layout.jsonl file.
         self.layouts = layouts
-        # Specifies whether to identify the narrator in the document. Set to `true` to enable this feature. Defaults to `false`.
+        # Specifies whether to retrieve the document reading guide results.
         self.narrator = narrator
-        # Specifies whether to generate questions based on the document content. Set to `true` to enable this feature. Defaults to `false`.
+        # Specifies whether to retrieve the generated questions and corresponding answers.
         self.question = question
-        # Specifies whether to generate a summary for the document. Set to `true` to enable this feature. Defaults to `false`.
+        # Specifies whether to retrieve the full-text summary.
         self.summary = summary
 
     def validate(self):

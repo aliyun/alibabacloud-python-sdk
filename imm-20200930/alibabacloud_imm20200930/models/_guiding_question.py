@@ -10,9 +10,9 @@ class GuidingQuestion(DaraModel):
         answer: str = None,
         question: str = None,
     ):
-        # The answer to the question.
+        # The answer.
         self.answer = answer
-        # The guiding question.
+        # The question.
         self.question = question
 
     def validate(self):

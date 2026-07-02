@@ -7,7 +7,6 @@ from darabonba.model import DaraModel
 class UpdateProjectShrinkRequest(DaraModel):
     def __init__(
         self,
-        dataset_config_shrink: str = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
         dataset_max_file_count: int = None,
@@ -20,7 +19,6 @@ class UpdateProjectShrinkRequest(DaraModel):
         tag_shrink: str = None,
         template_id: str = None,
     ):
-        self.dataset_config_shrink = dataset_config_shrink
         # The maximum number of bindings for each dataset. Valid values: 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
         # The maximum number of metadata entities in each dataset.
@@ -37,7 +35,7 @@ class UpdateProjectShrinkRequest(DaraModel):
         self.description = description
         # The maximum number of datasets in the project. Valid values: 1 to 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
-        # The project name. For information about how to obtain the project name, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -58,9 +56,6 @@ class UpdateProjectShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.dataset_config_shrink is not None:
-            result['DatasetConfig'] = self.dataset_config_shrink
-
         if self.dataset_max_bind_count is not None:
             result['DatasetMaxBindCount'] = self.dataset_max_bind_count
 
@@ -98,9 +93,6 @@ class UpdateProjectShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DatasetConfig') is not None:
-            self.dataset_config_shrink = m.get('DatasetConfig')
-
         if m.get('DatasetMaxBindCount') is not None:
             self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
 

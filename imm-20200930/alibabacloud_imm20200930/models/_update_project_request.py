@@ -10,7 +10,6 @@ from darabonba.model import DaraModel
 class UpdateProjectRequest(DaraModel):
     def __init__(
         self,
-        dataset_config: main_models.DatasetConfig = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
         dataset_max_file_count: int = None,
@@ -23,7 +22,6 @@ class UpdateProjectRequest(DaraModel):
         tag: List[main_models.UpdateProjectRequestTag] = None,
         template_id: str = None,
     ):
-        self.dataset_config = dataset_config
         # The maximum number of bindings for each dataset. Valid values: 1 to 10.
         self.dataset_max_bind_count = dataset_max_bind_count
         # The maximum number of metadata entities in each dataset.
@@ -40,7 +38,7 @@ class UpdateProjectRequest(DaraModel):
         self.description = description
         # The maximum number of datasets in the project. Valid values: 1 to 1000000000.
         self.project_max_dataset_count = project_max_dataset_count
-        # The project name. For information about how to obtain the project name, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -54,8 +52,6 @@ class UpdateProjectRequest(DaraModel):
         self.template_id = template_id
 
     def validate(self):
-        if self.dataset_config:
-            self.dataset_config.validate()
         if self.tag:
             for v1 in self.tag:
                  if v1:
@@ -66,9 +62,6 @@ class UpdateProjectRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.dataset_config is not None:
-            result['DatasetConfig'] = self.dataset_config.to_map()
-
         if self.dataset_max_bind_count is not None:
             result['DatasetMaxBindCount'] = self.dataset_max_bind_count
 
@@ -108,10 +101,6 @@ class UpdateProjectRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DatasetConfig') is not None:
-            temp_model = main_models.DatasetConfig()
-            self.dataset_config = temp_model.from_map(m.get('DatasetConfig'))
-
         if m.get('DatasetMaxBindCount') is not None:
             self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
 

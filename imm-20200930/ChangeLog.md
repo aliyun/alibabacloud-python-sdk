@@ -1,3 +1,10 @@
+2026-07-02 Version: 5.0.0
+- Update API CreateDataset: delete request parameters DatasetConfig.
+- Update API CreateProject: delete request parameters DatasetConfig.
+- Update API UpdateDataset: delete request parameters DatasetConfig.
+- Update API UpdateProject: delete request parameters DatasetConfig.
+
+
 2026-06-22 Version: 4.8.4
 - Update API CreateProject: add request parameters DatasetConfig.
 - Update API UpdateProject: add request parameters DatasetConfig.
