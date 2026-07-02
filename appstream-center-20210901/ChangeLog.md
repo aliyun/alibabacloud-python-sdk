@@ -3,6 +3,11 @@
 - Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportedRegions.
 
 
+2026-07-02 Version: 5.6.2
+- Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportType.
+- Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportedRegions.
+
+
 2026-06-24 Version: 5.6.1
 - Update API ListDesktopAgentRuntime: add request parameters ManagementStatus.
 - Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.ManagementStatuses.
