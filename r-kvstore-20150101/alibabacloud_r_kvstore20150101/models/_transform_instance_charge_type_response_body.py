@@ -11,13 +11,13 @@ class TransformInstanceChargeTypeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The time when the instance expires.
+        # The expiration time of the instance.
         # 
-        # >  A value is returned for this parameter only if the instance was changed from pay-as-you-go to subscription.
+        # > This parameter is returned only when you change the billing method of an instance from pay-as-you-go to subscription.
         self.end_time = end_time
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

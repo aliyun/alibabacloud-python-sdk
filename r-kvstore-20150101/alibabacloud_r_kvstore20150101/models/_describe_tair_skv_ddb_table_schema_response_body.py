@@ -11,8 +11,11 @@ class DescribeTairSkvDdbTableSchemaResponseBody(DaraModel):
         schema: str = None,
         ttl_spec: str = None,
     ):
+        # The request ID. For more information, see common parameters.
         self.request_id = request_id
+        # The table schema information in JSON format.
         self.schema = schema
+        # The TTL property. The parameter settings toggle in JSON format.
         self.ttl_spec = ttl_spec
 
     def validate(self):

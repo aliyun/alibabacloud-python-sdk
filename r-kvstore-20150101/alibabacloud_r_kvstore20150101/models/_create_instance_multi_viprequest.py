@@ -4,25 +4,24 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeInstanceAttributeRequest(DaraModel):
+class CreateInstanceMultiVIPRequest(DaraModel):
     def __init__(
         self,
+        add_count: str = None,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
-        # The instance ID.
-        # 
+        # This parameter is required.
+        self.add_count = add_count
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -32,6 +31,9 @@ class DescribeInstanceAttributeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.add_count is not None:
+            result['AddCount'] = self.add_count
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -47,13 +49,13 @@ class DescribeInstanceAttributeRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddCount') is not None:
+            self.add_count = m.get('AddCount')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
@@ -68,9 +70,6 @@ class DescribeInstanceAttributeRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
 
         return self
 

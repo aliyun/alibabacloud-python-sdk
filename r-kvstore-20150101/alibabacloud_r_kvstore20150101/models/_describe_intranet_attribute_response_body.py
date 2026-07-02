@@ -16,37 +16,40 @@ class DescribeIntranetAttributeResponseBody(DaraModel):
         intranet_bandwidth: int = None,
         request_id: str = None,
     ):
-        # Indicates whether auto-renewal is enabled for the extra internal bandwidth that you purchased. Valid values:
+        # Indicates whether auto-renewal is enabled for the bandwidth package. Valid values:
         # 
-        # *   **true**: Auto-renewal is enabled.
-        # *   **false**: Auto-renewal is disabled.
+        # - **true**: Auto-renewal is enabled.
         # 
-        # > If no extra internal bandwidth is purchased, this parameter is not returned.
+        # - **false**: Auto-renewal is disabled.
+        # 
+        # > This parameter is not returned if no additional bandwidth is purchased.
         self.auto_renewal = auto_renewal
-        # The expiration time of the purchased bandwidth. The time follows the ISO 8601 standard in the *yyyy-MM-dd* T *HH:mm:ss* Z format.
+        # The expiration time of the bandwidth package. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
         # 
-        # > If no extra internal bandwidth is purchased, this parameter is not returned.
+        # > This parameter is not returned if no additional bandwidth is purchased.
         self.bandwidth_expire_time = bandwidth_expire_time
-        # The billing method of the bandwidth plan. Valid values:
+        # The billing method of the bandwidth package. Valid values:
         # 
-        # *   **0**: pay-as-you-go
-        # *   **1**: subscription
+        # - **0**: pay-as-you-go.
+        # 
+        # - **1**: subscription.
         self.bandwidth_pre_paid = bandwidth_pre_paid
-        # The time when the extra internal bandwidth that you purchased for temporary use expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The expiration time of the temporary bandwidth. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format.
         # 
-        # > If no extra internal bandwidth for temporary use is purchased or the extra internal bandwidth that you purchased for temporary use has expired, **0** is returned for this parameter.
+        # > This parameter returns **0** if the instance has no temporary bandwidth or if the temporary bandwidth has expired.
         self.expire_time = expire_time
-        # Specifies whether the instance has unexpired bandwidth plans. Valid values:
+        # Indicates whether the instance has an unexpired bandwidth package. Valid values:
         # 
-        # *   **true**: The instance has unexpired bandwidth plans.
-        # *   **false**: The instance does not have unexpired bandwidth plans.
+        # - **true**: An unexpired bandwidth package exists.
         # 
-        # > If no extra internal bandwidth is purchased, this parameter is not returned.
+        # - **false**: No unexpired bandwidth package exists.
+        # 
+        # > This parameter is not returned if no additional bandwidth is purchased.
         self.has_pre_paid_band_width_order_running = has_pre_paid_band_width_order_running
         self.intranet_band_width_burst = intranet_band_width_burst
-        # The internal bandwidth of the instance. This parameter indicates the combined bandwidth of all shards in the instance. Unit: Mbit/s.
+        # The total intranet bandwidth across all shards in the instance, in MB/s.
         self.intranet_bandwidth = intranet_bandwidth
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

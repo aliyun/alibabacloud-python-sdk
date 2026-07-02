@@ -58,7 +58,37 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'r-kvstore.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'r-kvstore.aliyuncs.com',
             'eu-west-1-oxs': 'r-kvstore.aliyuncs.com',
-            'rus-west-1-pop': 'r-kvstore.aliyuncs.com'
+            'rus-west-1-pop': 'r-kvstore.aliyuncs.com',
+            'us-west-1': 'r-kvstore.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'r-kvstore.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'r-kvstore.us-east-1.aliyuncs.com',
+            'na-south-1': 'r-kvstore.na-south-1.aliyuncs.com',
+            'me-east-1': 'r-kvstore.me-east-1.aliyuncs.com',
+            'me-central-1': 'r-kvstore.me-central-1.aliyuncs.com',
+            'eu-west-1': 'r-kvstore.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'r-kvstore.eu-central-1.aliyuncs.com',
+            'cn-zhengzhou-jva': 'r-kvstore.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'r-kvstore.cn-zhangjiakou.aliyuncs.com',
+            'cn-wuhan-lr': 'r-kvstore.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'r-kvstore.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'r-kvstore.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'r-kvstore.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-nanjing': 'r-kvstore.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'r-kvstore.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'r-kvstore.cn-hongkong.aliyuncs.com',
+            'cn-guangzhou': 'r-kvstore.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'r-kvstore.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'r-kvstore.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'r-kvstore.cn-beijing-finance-1.aliyuncs.com',
+            'ap-southeast-7': 'r-kvstore.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'r-kvstore.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'r-kvstore.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'r-kvstore.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'r-kvstore.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'r-kvstore.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'r-kvstore.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'r-kvstore.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'r-kvstore.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('r-kvstore', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1124,6 +1154,10 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.node_type):
@@ -1248,6 +1282,10 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.node_type):
@@ -1336,6 +1374,96 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
+
+    def create_instance_multi_vipwith_options(
+        self,
+        request: main_models.CreateInstanceMultiVIPRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceMultiVIPResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_count):
+            query['AddCount'] = request.add_count
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceMultiVIP',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceMultiVIPResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_multi_vipwith_options_async(
+        self,
+        request: main_models.CreateInstanceMultiVIPRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceMultiVIPResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_count):
+            query['AddCount'] = request.add_count
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceMultiVIP',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceMultiVIPResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_multi_vip(
+        self,
+        request: main_models.CreateInstanceMultiVIPRequest,
+    ) -> main_models.CreateInstanceMultiVIPResponse:
+        runtime = RuntimeOptions()
+        return self.create_instance_multi_vipwith_options(request, runtime)
+
+    async def create_instance_multi_vip_async(
+        self,
+        request: main_models.CreateInstanceMultiVIPRequest,
+    ) -> main_models.CreateInstanceMultiVIPResponse:
+        runtime = RuntimeOptions()
+        return await self.create_instance_multi_vipwith_options_async(request, runtime)
 
     def create_instances_with_options(
         self,
@@ -1792,6 +1920,10 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -1912,6 +2044,10 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -6494,6 +6630,92 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceConfigResponse:
         runtime = RuntimeOptions()
         return await self.describe_instance_config_with_options_async(request, runtime)
+
+    def describe_instance_multi_vipwith_options(
+        self,
+        request: main_models.DescribeInstanceMultiVIPRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceMultiVIPResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceMultiVIP',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceMultiVIPResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_multi_vipwith_options_async(
+        self,
+        request: main_models.DescribeInstanceMultiVIPRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInstanceMultiVIPResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInstanceMultiVIP',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInstanceMultiVIPResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_multi_vip(
+        self,
+        request: main_models.DescribeInstanceMultiVIPRequest,
+    ) -> main_models.DescribeInstanceMultiVIPResponse:
+        runtime = RuntimeOptions()
+        return self.describe_instance_multi_vipwith_options(request, runtime)
+
+    async def describe_instance_multi_vip_async(
+        self,
+        request: main_models.DescribeInstanceMultiVIPRequest,
+    ) -> main_models.DescribeInstanceMultiVIPResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_instance_multi_vipwith_options_async(request, runtime)
 
     def describe_instance_sslwith_options(
         self,
@@ -15708,10 +15930,16 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.source_node_id):
+            query['SourceNodeId'] = request.source_node_id
         if not DaraCore.is_null(request.switch_mode):
             query['SwitchMode'] = request.switch_mode
         if not DaraCore.is_null(request.switch_type):
             query['SwitchType'] = request.switch_type
+        if not DaraCore.is_null(request.target_node_id):
+            query['TargetNodeId'] = request.target_node_id
+        if not DaraCore.is_null(request.target_shard_name):
+            query['TargetShardName'] = request.target_shard_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15752,10 +15980,16 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.source_node_id):
+            query['SourceNodeId'] = request.source_node_id
         if not DaraCore.is_null(request.switch_mode):
             query['SwitchMode'] = request.switch_mode
         if not DaraCore.is_null(request.switch_type):
             query['SwitchType'] = request.switch_type
+        if not DaraCore.is_null(request.target_node_id):
+            query['TargetNodeId'] = request.target_node_id
+        if not DaraCore.is_null(request.target_shard_name):
+            query['TargetShardName'] = request.target_shard_name
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -16404,6 +16638,10 @@ class Client(OpenApiClient):
             query['InstanceClass'] = request.instance_class
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_across_zone):
+            query['IsAcrossZone'] = request.is_across_zone
+        if not DaraCore.is_null(request.iz_no):
+            query['IzNo'] = request.iz_no
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -16414,8 +16652,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.secondary_iz_no):
+            query['SecondaryIzNo'] = request.secondary_iz_no
         if not DaraCore.is_null(request.shard_count):
             query['ShardCount'] = request.shard_count
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -16458,6 +16700,10 @@ class Client(OpenApiClient):
             query['InstanceClass'] = request.instance_class
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.is_across_zone):
+            query['IsAcrossZone'] = request.is_across_zone
+        if not DaraCore.is_null(request.iz_no):
+            query['IzNo'] = request.iz_no
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -16468,8 +16714,12 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.secondary_iz_no):
+            query['SecondaryIzNo'] = request.secondary_iz_no
         if not DaraCore.is_null(request.shard_count):
             query['ShardCount'] = request.shard_count
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -11,9 +11,11 @@ class CreateGlobalDistributeCacheResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the distributed instance.
         self.global_instance_id = global_instance_id
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

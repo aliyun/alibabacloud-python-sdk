@@ -12,6 +12,7 @@ class CreateAccountResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
+        # The account name.
         self.account_name = account_name
         # The name of the account.
         self.acount_name = acount_name

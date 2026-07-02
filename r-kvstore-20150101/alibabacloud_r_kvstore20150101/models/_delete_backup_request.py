@@ -14,6 +14,8 @@ class DeleteBackupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The backup file ID of the instance. You can invoke [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) to query it.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
         # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the ID of instance.

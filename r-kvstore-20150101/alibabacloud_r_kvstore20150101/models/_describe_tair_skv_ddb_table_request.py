@@ -14,6 +14,8 @@ class DescribeTairSkvDdbTableRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The ID of the instance to query.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account

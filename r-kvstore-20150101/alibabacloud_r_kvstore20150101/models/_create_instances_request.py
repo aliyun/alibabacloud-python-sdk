@@ -23,52 +23,38 @@ class CreateInstancesRequest(DaraModel):
         token: str = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
-        # 
-        # *   **true** (default).
-        # *   **false**. If automatic payment is disabled, you must perform the following steps to complete the payment in the Tair (Redis OSS-compatible) console: In the top navigation bar, choose **Expenses** > **Renewal Management**. In the left-side navigation pane, click **Orders**. On the **Orders** page, find the order and complete the payment.
-        # 
-        # >  This parameter is valid only if the value of the **ChargeType** field in the **Instances** parameter is set to **PrePaid**.
+        # \\* **true**: Enables automatic payment. This is the default value.
+        # \\* **false**: Disables automatic payment. You must go to the console to complete the payment. In the top navigation bar, choose **Expenses** > **Renewal Management**. In the navigation pane on the left, click **Or*er Management** > **My Or*ers**, find the or*er, and then complete the payment.
+        # \\> This parameter is valid only when **ChargeType** is set to **PrePaid** in **Instances**.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
-        # 
-        # >  This parameter is available only if **ChargeType** in the **Instances** parameter is set to **PrePaid**.
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # \\* **true**: Enables auto-renewal.
+        # \\* **false**: Disables auto-renewal. This is the default value.
+        # \\> This parameter is valid only when **ChargeType** is set to **PrePaid** in **Instances**.
         self.auto_renew = auto_renew
-        # The additional business information about the instance.
+        # Additional business information.
         self.business_info = business_info
-        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+        # The coupon code. The default value is `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
-        # The database engine version of the instance. Valid values: **4.0** and **5.0**.
-        # 
-        # >  The default value is **5.0**.
-        # 
-        # Valid values:
-        # 
-        # *   2.8
-        # *   4.0
-        # *   5.0
+        # The Redis-compatible engine version for the instance. Valid values: **4.0** and **5.0**. The default value is **5.0**.
         self.engine_version = engine_version
-        # The JSON-formatted configurations of the instance. For more information, see the "Additional description of the Instances parameter" section.
+        # The configurations of the new instances, specified in JSON format. For more information, see the details of the Instances parameter.
         # 
         # This parameter is required.
         self.instances = instances
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to restore the source instance from the recycle bin. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
-        # 
-        # >  This parameter is valid only if the **SrcDBInstanceId** field in the **Instances** parameter is specified.
+        # Specifies whether to rebuild an instance from the recycle bin. Valid values:
+        # \\* **true**: Rebuilds the instance.
+        # \\* **false**: Does not rebuild the instance. This is the default value.
+        # \\> This parameter is valid only when **SrcDBInstanceId** is specified in **Instances**.
         self.rebuild_instance = rebuild_instance
-        # The ID of the resource group to which to assign the instance.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token to ensure request idempotence. The value must be unique across requests, case-sensitive, and up to 64 ASCII characters long.
         self.token = token
 
     def validate(self):

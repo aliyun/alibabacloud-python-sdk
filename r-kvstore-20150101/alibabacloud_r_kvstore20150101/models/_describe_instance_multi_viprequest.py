@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeInstanceAttributeRequest(DaraModel):
+class DescribeInstanceMultiVIPRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
@@ -12,17 +12,13 @@ class DescribeInstanceAttributeRequest(DaraModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
-        # The instance ID.
-        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -47,9 +43,6 @@ class DescribeInstanceAttributeRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
-
         return result
 
     def from_map(self, m: dict = None):
@@ -68,9 +61,6 @@ class DescribeInstanceAttributeRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
 
         return self
 

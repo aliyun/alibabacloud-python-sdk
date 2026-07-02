@@ -15,11 +15,11 @@ class DescribeLogicInstanceTopologyResponseBody(DaraModel):
         redis_shard_list: main_models.DescribeLogicInstanceTopologyResponseBodyRedisShardList = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         self.redis_proxy_list = redis_proxy_list
         self.redis_shard_list = redis_shard_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

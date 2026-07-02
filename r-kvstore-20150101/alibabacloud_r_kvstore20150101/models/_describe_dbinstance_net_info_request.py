@@ -15,10 +15,11 @@ class DescribeDBInstanceNetInfoRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The network type.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id

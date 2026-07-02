@@ -37,31 +37,33 @@ class CreateTairKVCacheVNodeRequest(DaraModel):
         vk_name: str = None,
         zone_id: str = None,
     ):
-        # Specifies whether to enable automatic payment. Set the value to **true**.
+        # Specifies whether to automatically complete the payment. The value must be **true**.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disables auto-renewal.
+        # - **true**: Enables auto-renewal.
+        # 
+        # - **false** (default): Disables auto-renewal.
         self.auto_renew = auto_renew
-        # The subscription duration that is supported by auto-renewal. Unit: month. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The auto-renewal period, in months. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # 
-        # >  This parameter is required if the **AutoRenew** parameter is set to **true**.
+        # > This parameter is required when the **AutoRenew** parameter is set to **true**.
         self.auto_renew_period = auto_renew_period
         # Specifies whether to use a coupon. Valid values:
         # 
-        # *   **true**: uses a coupon.
-        # *   **false**: does not use a coupon.
-        self.auto_use_coupon = auto_use_coupon
-        # The extended information such as the promotional event ID and business information.
-        self.business_info = business_info
-        # The new billing method. Valid values:
+        # - **true**: Use a coupon.
         # 
-        # *   **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period** parameter.
+        # - **false** (default): Do not use a coupon.
+        self.auto_use_coupon = auto_use_coupon
+        # Additional business information, such as a promotion ID.
+        self.business_info = business_info
+        # The billing method for the instance. Valid value:
+        # 
+        # - **PrePaid**: Subscription. If you specify this value, you must also specify the **Period** parameter.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests and is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that ensures request idempotence. This token must be unique across requests, is case-sensitive, and cannot exceed 64 ASCII characters.
         self.client_token = client_token
-        # The number of compute units. Valid values: 1.
+        # The number of compute units. Currently, only one compute unit is supported.
         # 
         # This parameter is required.
         self.compute_unit_num = compute_unit_num
@@ -69,51 +71,52 @@ class CreateTairKVCacheVNodeRequest(DaraModel):
         self.coupon_no = coupon_no
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run and does not create the instance. The system prechecks the request parameters, request format, service limits, and available resources. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, the instance is created.
+        # - **true**: Performs a dry run and does not create the instance. The system checks the request parameters, request format, business limits, and available inventory. If the check fails, the system returns the corresponding error. If the check passes, the system returns the `DryRunOperation` error code.
+        # 
+        # - **false** (default): Sends a normal request. If the check passes, the system creates the instance.
         self.dry_run = dry_run
+        # This parameter is no longer used.
         self.elastic_time_range = elastic_time_range
-        # Instance specification
+        # The instance specification.
         # 
         # This parameter is required.
         self.instance_class = instance_class
-        # The name of the instance. The name must be 2 to 80 characters in length. The name must start with a letter and cannot contain spaces or the following special characters: `@ / : = " < > { [ ] }`
+        # The name of the new instance. The name must be 2 to 80 characters long and must start with a letter (case-insensitive) or a Chinese character. Spaces and the following special characters are not supported: `@/:=”<>{[]}`.
         self.instance_name = instance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration. Valid values: **1** to **9**, **12**, **24**, and **36**. Unit: months.
+        # The subscription period in months. Valid values: **1** to **9**, **12**, **24**, and **36**.
         # 
-        # >  This parameter is required only if the **ChargeType** parameter is set to **PrePaid**.
+        # > This parameter is required when the **ChargeType** parameter is set to **PrePaid**.
         self.period = period
-        # The ID of the region where the instance resides.
+        # The ID of the region where you want to create the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group that you want to manage.
+        # The ID of the resource group to which the instance will belong.
         # 
-        # > 
-        # 
-        # *   You can query resource group IDs in the console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View the basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
-        # 
-        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
+        # > - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or view resource group IDs in the console. For more information, see [View the basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # >
+        # > - Before changing the resource group of an instance, call the [ListResources](158866) API to view the current resource group of the instance.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Details of the tags.
+        # The tags to add to the instance. You can specify a maximum of five tags.
         self.tag = tag
+        # This parameter is no longer used.
         self.vnode_type = vnode_type
-        # The ID of the vSwitch to which the instance belongs. The vSwitch must belong to the VPC of the VCluser. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the VPC ID.
+        # The ID of the vSwitch for the instance. The vSwitch must belong to the VPC that is associated with the specified virtual cluster. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to obtain the vSwitch ID.
         # 
-        # >  The vSwitch and the instance must be deployed in the same zone.
+        # > The vSwitch must be in the same zone as the instance.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The ID of the VCluster that contains the VNode.
+        # The ID of the virtual cluster that hosts the VNode.
         # 
         # This parameter is required.
         self.vk_name = vk_name
-        # The zone ID of the instance.
+        # The ID of the zone where you want to create the instance.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -304,11 +307,11 @@ class CreateTairKVCacheVNodeRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # >  A maximum of five key-value pairs can be specified at a time.
+        # > You can specify up to 5 tag key-value pairs at a time.
         self.key = key
-        # The value of tag N of the instance.
+        # The tag value.
         # 
-        # >  **N** specifies the value of the nth tag. For example, **Tag.1.Value** specifies the value of the first tag, and **Tag.2.Value** specifies the value of the second tag.
+        # > **N** represents the index of a tag, starting from 1. For example, **Tag.1.Value** is the value of the first tag.
         self.value = value
 
     def validate(self):

@@ -4,12 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class RestoreInstanceResponseBody(DaraModel):
+class CreateInstanceMultiVIPResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

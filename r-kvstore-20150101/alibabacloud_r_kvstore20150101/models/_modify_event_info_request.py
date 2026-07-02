@@ -13,26 +13,29 @@ class ModifyEventInfoRequest(DaraModel):
         region_id: str = None,
         security_token: str = None,
     ):
-        # The JSON-formatted parameters related to the action. Set this parameter to `{"recoverMode": "xxx", "recoverTime": "xxx"}` if the **TaskAction** parameter is set to **modifySwitchTime**.
+        # The parameters for the action, in JSON format. For example: `{"recoverMode": "xxx", "recoverTime": "xxx"}`.
         # 
-        # *   **recoverMode**: specifies the restoration mode for the task. Valid values:
+        # - **recoverMode**: The recovery mode. Valid values:
         # 
-        #     *   **timePoint**: performs the task at the specified point in time.
-        #     *   **immediate**: performs the task immediately.
-        #     *   **maintainTime**: performs the task within the maintenance window.
+        #   - **timePoint**: Executes the task at the time specified by `recoverTime`.
         # 
-        # *   **recoverTime**: specifies the point in time for restoration. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter is required if the **recoverMode** parameter is set to **timePoint**.
+        #   - **immediate**: Executes the task immediately.
+        # 
+        #   - **maintainTime**: Executes the task during the maintenance window.
+        # 
+        # - **recoverTime**: The time to execute the task. This parameter is required when **recoverMode** is set to **timePoint**. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.action_params = action_params
-        # The event handling action. Valid values:
+        # The action to perform on the event. Valid values:
         # 
-        # *   **archive**
-        # *   **undo**
+        # - **archive**: Archives the event.
+        # 
+        # - **undo**: Cancels processing for the event.
         self.event_action = event_action
-        # The event IDs. Separate multiple event IDs with commas (,). You can specify up to 20 event IDs.
+        # The ID of the event. You can specify up to 20 event IDs. Separate multiple IDs with commas.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
