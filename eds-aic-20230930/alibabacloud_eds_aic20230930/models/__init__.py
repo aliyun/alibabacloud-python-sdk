@@ -456,6 +456,7 @@ from ._recovery_file_response_body import RecoveryFileResponseBodyData
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
 from ._resume_agent_task_response_body import ResumeAgentTaskResponseBodyTasks
+from ._run_agent_task_request import RunAgentTaskRequestTargets
 from ._run_agent_task_response_body import RunAgentTaskResponseBodyTasks
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
 from ._run_sync_command_response_body import RunSyncCommandResponseBodyData
@@ -921,6 +922,7 @@ __all__ = [
     ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
     ResetAndroidInstancesInGroupResponseBodyTasks,
     ResumeAgentTaskResponseBodyTasks,
+    RunAgentTaskRequestTargets,
     RunAgentTaskResponseBodyTasks,
     RunCommandResponseBodyRunCommandInfos,
     RunSyncCommandResponseBodyData,
