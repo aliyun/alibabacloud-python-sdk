@@ -35,63 +35,60 @@ class CreateTemplateInput(DaraModel):
         template_type: str = None,
         workspace_id: str = None,
     ):
-        # Controls whether data plane calls can create, stop, or delete the sandbox.
+        # Whether to allow data channel to call create/stop/delete sandbox APIs
         self.allow_anonymous_manage = allow_anonymous_manage
-        # The Application Real-Time Monitoring Service (ARMS) configuration.
+        # ARMS configuration
         self.arms_configuration = arms_configuration
-        # The container configuration. You can only use images based on the Browser or Code Interpreter base images.
+        # Container configuration, only images based on Browser/Code Interpreter base images are allowed
         self.container_configuration = container_configuration
-        # The number of CPU cores.
+        # CPU resource configuration (unit: cores)
         # 
         # This parameter is required.
         self.cpu = cpu
-        # The credential configuration.
+        # Credential configuration
         self.credential_configuration = credential_configuration
-        # The template description.
+        # Template description
         self.description = description
-        # The disk size in MB.
+        # Disk size
         self.disk_size = disk_size
-        # Controls whether to enable the Sandbox Agent.
+        # Sandbox Agent switch
         self.enable_agent = enable_agent
-        # Specifies whether to enable the pre-stop hook.
         self.enable_pre_stop = enable_pre_stop
-        # The environment variables for the sandbox.
+        # Environment variables
         self.environment_variables = environment_variables
-        # The Alibaba Cloud Resource Name (ARN) of the execution role.
+        # Execution role ARN
         self.execution_role_arn = execution_role_arn
-        # The log configuration.
+        # Log configuration
         self.log_configuration = log_configuration
-        # The memory size in MB.
+        # Memory resource configuration (unit: MB)
         # 
         # This parameter is required.
         self.memory = memory
-        # The Network Attached Storage (NAS) mount configuration.
+        # NAS mount configuration
         self.nas_config = nas_config
-        # The network configuration.
+        # Network configuration
         # 
         # This parameter is required.
         self.network_configuration = network_configuration
-        # A list of Object Storage Service (OSS) configurations.
+        # OSS configuration
         self.oss_configuration = oss_configuration
-        # The timeout for the pre-stop hook, in seconds. This parameter applies only when `enablePreStop` is set to `true`.
         self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
-        # The duration in seconds that a sandbox can be idle before it is automatically stopped.
+        # Sandbox idle timeout (in seconds)
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
-        # The maximum time-to-live (TTL) in seconds for the sandbox. The sandbox is terminated after this duration, regardless of activity.
+        # Sandbox time-to-live (in seconds)
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
-        # The scaling configuration.
+        # Scaling configuration
         self.scaling_config = scaling_config
-        # The template configuration. This is a flexible object whose structure varies depending on the `templateType`.
+        # Template configuration (flexible object structure that varies depending on templateType)
         self.template_configuration = template_configuration
-        # A unique name for the template within your account.
+        # Template name (must be unique within the account)
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The template type.
+        # Template type
         # 
         # This parameter is required.
         self.template_type = template_type
-        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

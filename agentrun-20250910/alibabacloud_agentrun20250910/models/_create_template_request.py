@@ -10,7 +10,7 @@ class CreateTemplateRequest(DaraModel):
         self,
         body: main_models.CreateTemplateInput = None,
     ):
-        # Contains the parameters for creating the template.
+        # CreateTemplate request parameters
         # 
         # This parameter is required.
         self.body = body
