@@ -1,3 +1,10 @@
+2026-07-02 Version: 1.9.0
+- Support API GetImageGenerationJob.
+- Support API GetVideoGenerationJob.
+- Support API SubmitImageGenerationJob.
+- Support API SubmitVideoGenerationJob.
+
+
 2026-07-02 Version: 1.8.0
 - Support API SubmitYikeVideoCloneJob.
 

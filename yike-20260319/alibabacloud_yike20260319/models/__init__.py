@@ -30,6 +30,12 @@ from ._create_yike_workspace_response import CreateYikeWorkspaceResponse
 from ._delete_yike_asset_media_infos_request import DeleteYikeAssetMediaInfosRequest
 from ._delete_yike_asset_media_infos_response_body import DeleteYikeAssetMediaInfosResponseBody
 from ._delete_yike_asset_media_infos_response import DeleteYikeAssetMediaInfosResponse
+from ._get_image_generation_job_request import GetImageGenerationJobRequest
+from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBody
+from ._get_image_generation_job_response import GetImageGenerationJobResponse
+from ._get_video_generation_job_request import GetVideoGenerationJobRequest
+from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBody
+from ._get_video_generation_job_response import GetVideoGenerationJobResponse
 from ._get_yike_aiapp_job_request import GetYikeAIAppJobRequest
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBody
 from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
@@ -84,6 +90,12 @@ from ._set_yike_user_role_response import SetYikeUserRoleResponse
 from ._sub_yike_user_credit_request import SubYikeUserCreditRequest
 from ._sub_yike_user_credit_response_body import SubYikeUserCreditResponseBody
 from ._sub_yike_user_credit_response import SubYikeUserCreditResponse
+from ._submit_image_generation_job_request import SubmitImageGenerationJobRequest
+from ._submit_image_generation_job_response_body import SubmitImageGenerationJobResponseBody
+from ._submit_image_generation_job_response import SubmitImageGenerationJobResponse
+from ._submit_video_generation_job_request import SubmitVideoGenerationJobRequest
+from ._submit_video_generation_job_response_body import SubmitVideoGenerationJobResponseBody
+from ._submit_video_generation_job_response import SubmitVideoGenerationJobResponse
 from ._submit_yike_aiapp_job_request import SubmitYikeAIAppJobRequest
 from ._submit_yike_aiapp_job_response_body import SubmitYikeAIAppJobResponseBody
 from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
@@ -122,6 +134,8 @@ from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMe
 from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo
 from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfos
 from ._create_yike_user_response_body import CreateYikeUserResponseBodyUserInfo
+from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBodyImageGenerationJob
+from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultAudioResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultImageResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultVideoResult
@@ -178,6 +192,12 @@ __all__ = [
     DeleteYikeAssetMediaInfosRequest,
     DeleteYikeAssetMediaInfosResponseBody,
     DeleteYikeAssetMediaInfosResponse,
+    GetImageGenerationJobRequest,
+    GetImageGenerationJobResponseBody,
+    GetImageGenerationJobResponse,
+    GetVideoGenerationJobRequest,
+    GetVideoGenerationJobResponseBody,
+    GetVideoGenerationJobResponse,
     GetYikeAIAppJobRequest,
     GetYikeAIAppJobResponseBody,
     GetYikeAIAppJobResponse,
@@ -232,6 +252,12 @@ __all__ = [
     SubYikeUserCreditRequest,
     SubYikeUserCreditResponseBody,
     SubYikeUserCreditResponse,
+    SubmitImageGenerationJobRequest,
+    SubmitImageGenerationJobResponseBody,
+    SubmitImageGenerationJobResponse,
+    SubmitVideoGenerationJobRequest,
+    SubmitVideoGenerationJobResponseBody,
+    SubmitVideoGenerationJobResponse,
     SubmitYikeAIAppJobRequest,
     SubmitYikeAIAppJobResponseBody,
     SubmitYikeAIAppJobResponse,
@@ -270,6 +296,8 @@ __all__ = [
     BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo,
     BatchGetYikeAssetMediaInfosResponseBodyMediaInfos,
     CreateYikeUserResponseBodyUserInfo,
+    GetImageGenerationJobResponseBodyImageGenerationJob,
+    GetVideoGenerationJobResponseBodyVideoGenerationJob,
     GetYikeAIAppJobResponseBodyResultAudioResult,
     GetYikeAIAppJobResponseBodyResultImageResult,
     GetYikeAIAppJobResponseBodyResultVideoResult,
