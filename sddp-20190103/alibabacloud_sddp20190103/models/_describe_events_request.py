@@ -9,13 +9,13 @@ class DescribeEventsRequest(DaraModel):
         self,
         current_page: int = None,
         deal_user_id: str = None,
-        end_time: str = None,
+        end_time: int = None,
         id: int = None,
         instance_name: str = None,
         lang: str = None,
         page_size: int = None,
         product_code: str = None,
-        start_time: str = None,
+        start_time: int = None,
         status: str = None,
         sub_type_code: str = None,
         target_product_code: str = None,
@@ -26,52 +26,59 @@ class DescribeEventsRequest(DaraModel):
     ):
         # The page number of the page to return.
         self.current_page = current_page
-        # The ID of the account that handles the anomalous event.
+        # The ID of the account that handled the anomalous activity.
         self.deal_user_id = deal_user_id
-        # The end of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the detection of the anomalous activity ended. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The unique ID of the anomalous event.
+        # The unique ID of the anomalous activity.
         self.id = id
-        # The name of the data asset.
+        # The name of the data asset instance.
         self.instance_name = instance_name
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. The default value is **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The service to which the data asset belongs. Valid values include MaxCompute, OSS, ADS, OTS, and **RDS**.
         self.product_code = product_code
-        # The beginning of the time range during which the anomalous events are detected. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the anomalous activity occurred. This is the start time of the detection. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
-        # The handling status of the anomalous event. Valid values:
+        # The processing status of the anomalous activity.
         # 
-        # *   0: unhandled
-        # *   1: confirmed
-        # *   2: marked as false positive
+        # - 0: Unhandled.
+        # 
+        # - 1: Confirmed.
+        # 
+        # - 2: Dismissed.
         self.status = status
-        # The name of the anomalous event subtype.
+        # The name of the child type of the anomalous activity.
         # 
-        # > You can call the **DescribeEventTypes** operation to query the name of the anomalous event subtype.
+        # > To query anomalous activities by the child type name, call the **DescribeEventTypes** operation to get the name.
         self.sub_type_code = sub_type_code
-        # The name of the destination service in an anomalous data flow. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**
+        # The destination service for an anomalous data flow event. Valid values include MaxCompute, OSS, ADS, OTS, and **RDS**.
         self.target_product_code = target_product_code
-        # The name of the anomalous event type. Valid values:
+        # The code of the parent type of the anomalous activity.
         # 
-        # *   01: anomalous permission usage
-        # *   02: anomalous data flow
-        # *   03: anomalous data operation
+        # - 01: Anomalous permission access.
+        # 
+        # - 02: Anomalous data flow.
+        # 
+        # - 03: Anomalous data operation.
         self.type_code = type_code
-        # The ID of the account that triggered the anomalous event.
+        # The ID of the account that performed the operation that triggered the anomalous activity.
         self.user_id = user_id
         # The username of the RAM user.
         self.user_name = user_name
-        # The risk level of the alert that is triggered. Valid values:
+        # The risk level of the anomalous activity.
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # - **1**: Low.
+        # 
+        # - **2**: Medium.
+        # 
+        # - **3**: High.
         self.warn_level = warn_level
 
     def validate(self):

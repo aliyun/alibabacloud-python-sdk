@@ -16,15 +16,15 @@ class DescribeDataLimitsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The number of the returned page.
         self.current_page = current_page
-        # The data assets.
+        # A list of data assets.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -124,142 +124,167 @@ class DescribeDataLimitsResponseBodyItems(DaraModel):
         v_switch_id_list: List[str] = None,
         vpc_id: str = None,
     ):
-        # Indicates whether the security audit feature is enabled. Valid values:
+        # The audit status. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Auditing enabled.
+        # 
+        # - **0**: Auditing disabled.
         self.audit_status = audit_status
-        # Indicates whether the data asset can be automatically scanned. Valid values:
+        # Indicates whether automatic scanning is enabled. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: No.
+        # 
+        # - **1**: Yes.
         self.auto_scan = auto_scan
-        # The data detection status. Valid values:
+        # The connectivity test status. Valid values:
         # 
-        # *   **0**: The data detection is ready.
-        # *   **1**: The data detection is running.
-        # *   **2**: The connectivity test is in progress.
-        # *   **3**: The connectivity test is passed.
-        # *   **4**: The connectivity test failed.
+        # - **0**: Ready.
+        # 
+        # - **1**: Running.
+        # 
+        # - **2**: Connectivity test in progress.
+        # 
+        # - **3**: Connectivity test passed.
+        # 
+        # - **4**: Connectivity test failed.
         self.check_status = check_status
-        # The name of the data detection status.
+        # The name of the connectivity test status.
         self.check_status_name = check_status_name
-        # Indicates whether DSC has the data de-identification permissions on the data asset. Valid values:
+        # The data masking status. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # 
+        # - **0**: Disabled.
         self.datamask_status = datamask_status
-        # The database engine version.
+        # The database version.
         self.db_version = db_version
-        # Indicates whether DSC has the data identification permissions on the data asset. Valid values:
+        # The sensitive data detection status. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # 
+        # - **0**: Disabled.
         self.enable = enable
-        # The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
+        # The database engine type. Examples: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
         self.engine_type = engine_type
-        # The error code.
+        # The error code that is returned if the connectivity test fails.
         self.error_code = error_code
-        # The reason for the failure.
+        # The error message that is returned if the connectivity test fails.
         self.error_message = error_message
-        # Indicates whether the data leak prevention feature is enabled. Valid values:
+        # The anomaly detection status. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes (default)
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled (default).
         self.event_status = event_status
-        # The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
         # The unique ID of the data asset.
         self.id = id
         # The description of the instance.
         self.instance_description = instance_description
-        # The ID of the data asset to which the table belongs.
+        # The ID of the instance to which the data asset belongs.
         self.instance_id = instance_id
-        # The time when the last scan is performed.
+        # The time when the last full scan was complete. This value is a UNIX timestamp in milliseconds.
         # 
-        # *   The value is a UNIX timestamp.
-        # *   Unit: milliseconds.
+        # - Format: UNIX timestamp
+        # 
+        # - Unit: milliseconds
         self.last_finished_time = last_finished_time
-        # The last scan start time of data assets, in milliseconds.
+        # The time when the last scan started. This value is a UNIX timestamp in milliseconds.
         self.last_start_time = last_start_time
-        # The region in which the data asset resides.
+        # The name of the region in which the data asset is located.
         self.local_name = local_name
-        # The retention period of raw logs. Unit: days.
+        # The retention period of raw logs, in days.
         self.log_store_day = log_store_day
-        # The ID of the member.
+        # The ID of the member account to which the data asset belongs.
         self.member_account = member_account
-        # The next time when the data asset is scanned. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the next scan is scheduled to start. This value is a UNIX timestamp. Unit: milliseconds.
         self.next_start_time = next_start_time
-        # Indicates whether the optical character recognition (OCR) feature is enabled. Valid values:
+        # The status of Optical Character Recognition (OCR). Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.ocr_status = ocr_status
-        # The parent ID of the data asset that you want to query. Valid values include **bucket, db, and project**.
+        # The ID of the parent asset, such as a bucket, DB, or **project**.
         self.parent_id = parent_id
         # The port number of the self-managed database.
         self.port = port
-        # The status of the data asset scan. Valid values:
+        # The status of the scan task. Valid values:
         # 
-        # *   **-1**: invalid
-        # *   **0**: waiting
-        # *   **1**: being scanned
-        # *   **2**: suspended
-        # *   **3**: completed
+        # - **-1**: Invalid.
+        # 
+        # - **0**: Pending.
+        # 
+        # - **1**: Scanning.
+        # 
+        # - **2**: Paused.
+        # 
+        # - **3**: Completed.
         self.process_status = process_status
         # The total number of data tables or files.
         self.process_total_count = process_total_count
-        # The region in which the asset resides.
+        # The ID of the region in which the data asset is located.
         self.region_id = region_id
-        # The type of the service to which the data asset belongs. Valid values:
+        # The type of service to which the data asset belongs. Data assets can be instances, databases, or buckets. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: OSS
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore
-        # *   **5**: ApsaraDB RDS
-        # *   **6**: self-managed database
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: AnalyticDB for MySQL
+        # 
+        # - **4**: Tablestore
+        # 
+        # - **5**: RDS
+        # 
+        # - **6**: A self-managed database
         self.resource_type = resource_type
-        # The code of the service to which the data asset belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The code of the service to which the data asset belongs. Examples: MaxCompute, OSS, ADS, OTS, and **RDS**.
         self.resource_type_code = resource_type_code
-        # The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: data entries.
+        # The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: entries.
         self.sampling_size = sampling_size
-        # A list of the IDs of the security groups that are used by PrivateLink when you install the DSC agent.
+        # A list of security group IDs that are used by PrivateLink for agent-based auditing.
         self.security_group_id_list = security_group_id_list
-        # Indicates whether the security audit feature is supported. Valid values:
+        # Indicates whether auditing is supported. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.support_audit = support_audit
-        # Indicates whether the data de-identification feature is supported. Valid values:
+        # Indicates whether data masking is supported. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.support_datamask = support_datamask
-        # Indicates whether anomalous event detection is supported. Valid values:
+        # Indicates whether anomaly detection is supported. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.support_event = support_event
         # Indicates whether OCR is supported. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
-        self.support_ocr = support_ocr
-        # Indicates whether the data asset scan feature is supported. Valid values:
+        # - **true**: Yes.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **false**: No.
+        self.support_ocr = support_ocr
+        # Indicates whether sensitive data detection is supported. Valid values:
+        # 
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.support_scan = support_scan
         # The alias of the tenant.
         self.tenant_name = tenant_name
-        # The total number of fields in the table.
+        # The total number of fields. This parameter is returned only when the data asset is a table.
         self.total_count = total_count
-        # The username that is used to access the data asset.
+        # The username of the data asset owner.
         self.user_name = user_name
-        # A list of the IDs of the vSwitches that are used by PrivateLink when you install the DSC agent.
+        # A list of vSwitch IDs that are used by PrivateLink for agent-based auditing.
         self.v_switch_id_list = v_switch_id_list
-        # The ID of the virtual private cloud (VPC) to which the data asset belongs.
+        # The ID of the virtual private cloud (VPC) in which the data asset resides.
         self.vpc_id = vpc_id
 
     def validate(self):

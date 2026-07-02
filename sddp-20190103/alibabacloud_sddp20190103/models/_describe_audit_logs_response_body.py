@@ -17,11 +17,17 @@ class DescribeAuditLogsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.async_request_id = async_request_id
+        # The page number in a paged query. Default value: 1.
         self.current_page = current_page
+        # The list of alert logs.
         self.items = items
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -113,6 +119,7 @@ class DescribeAuditLogsResponseBodyItems(DaraModel):
         package_name: str = None,
         product_code: str = None,
         product_id: int = None,
+        ram_console_link: str = None,
         rule_category: str = None,
         rule_id: str = None,
         rule_name: str = None,
@@ -123,40 +130,94 @@ class DescribeAuditLogsResponseBodyItems(DaraModel):
         warn_level: str = None,
         warn_level_name: str = None,
     ):
+        # The client IP address.
         self.client_ip = client_ip
+        # The client port.
         self.client_port = client_port
+        # The client type.
         self.client_ua = client_ua
+        # The column name.
         self.column_name = column_name
+        # The alert time, in milliseconds.
         self.creation_time = creation_time
+        # The SQL result set.
         self.data_set = data_set
+        # The database name.
         self.database_name = database_name
+        # The database type.
         self.db_type = db_type
+        # The number of affected rows.
         self.effect_row = effect_row
+        # The execution status. Valid values:
+        # - 0: failed.
+        # - 1: succeeded.
         self.execute_status = execute_status
+        # The execution duration, in milliseconds.
         self.execute_time = execute_time
+        # Indicates whether the entry is whitelisted.
         self.in_white_list = in_white_list
+        # The instance audit status.
         self.instance_audit_status = instance_audit_status
+        # The description of the data asset instance.
         self.instance_description = instance_description
+        # The name of the asset instance.
         self.instance_name = instance_name
+        # The network type. Valid values:
+        # 
+        # **default** (default): non-Alibaba Cloud service
+        # 
+        # **aliyun**: Alibaba Cloud service
         self.ip_type = ip_type
+        # The data source.
         self.log_source = log_source
+        # The log execution time.
         self.log_time = log_time
+        # The UID of the member accounts.
         self.member_account = member_account
+        # The raw log content.
         self.message = message
+        # The sensitive data model that was matched.
         self.model_name = model_name
+        # The operation type.
         self.operate_type = operate_type
+        # The key of the OSS object.
         self.oss_object_key = oss_object_key
+        # The MaxCompute package name.
         self.package_name = package_name
+        # The name of the product to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and more.
         self.product_code = product_code
+        # The ID that corresponds to the product name to which the data asset belongs. Valid values:
+        # - **1**: MaxCompute.
+        # - **2**: OSS.
+        # - **3**: ADS.
+        # - **4**: OTS.
+        # - **5**: RDS.
+        # - **6**: SELF_DB.
         self.product_id = product_id
+        self.ram_console_link = ram_console_link
+        # The rule type.
         self.rule_category = rule_category
+        # The audit policy ID.
         self.rule_id = rule_id
+        # The name of the audit policy.
         self.rule_name = rule_name
+        # The SQL statement in the alert log.
         self.sql_text = sql_text
+        # The table name.
         self.table_name = table_name
+        # The user UID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
+        # The risk level. Valid values:
+        # - **1**: Low.
+        # - **2**: Medium.
+        # - **3**: High.
         self.warn_level = warn_level
+        # The name of the risk level. Valid values:
+        # - Low.
+        # - Medium.
+        # - High.
         self.warn_level_name = warn_level_name
 
     def validate(self):
@@ -244,6 +305,9 @@ class DescribeAuditLogsResponseBodyItems(DaraModel):
 
         if self.product_id is not None:
             result['ProductId'] = self.product_id
+
+        if self.ram_console_link is not None:
+            result['RamConsoleLink'] = self.ram_console_link
 
         if self.rule_category is not None:
             result['RuleCategory'] = self.rule_category
@@ -353,6 +417,9 @@ class DescribeAuditLogsResponseBodyItems(DaraModel):
 
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
+
+        if m.get('RamConsoleLink') is not None:
+            self.ram_console_link = m.get('RamConsoleLink')
 
         if m.get('RuleCategory') is not None:
             self.rule_category = m.get('RuleCategory')

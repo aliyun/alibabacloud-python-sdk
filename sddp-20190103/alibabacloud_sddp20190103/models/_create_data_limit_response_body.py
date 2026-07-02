@@ -10,7 +10,7 @@ class CreateDataLimitResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The ID of the data asset.
+        # The ID of the authorized data asset.
         self.id = id
         # The ID of the request.
         self.request_id = request_id

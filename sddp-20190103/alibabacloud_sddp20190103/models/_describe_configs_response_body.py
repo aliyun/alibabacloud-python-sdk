@@ -13,7 +13,7 @@ class DescribeConfigsResponseBody(DaraModel):
         config_list: List[main_models.DescribeConfigsResponseBodyConfigList] = None,
         request_id: str = None,
     ):
-        # An array that consists of common configuration items for alerts.
+        # A list of common configuration items for anomaly alerts.
         self.config_list = config_list
         # The ID of the request.
         self.request_id = request_id
@@ -61,15 +61,15 @@ class DescribeConfigsResponseBodyConfigList(DaraModel):
         id: int = None,
         value: str = None,
     ):
-        # The code of the common configuration item.
+        # The code of the configuration item.
         self.code = code
-        # The description of the default value for the common configuration item.
+        # The default value of the configuration item.
         self.default_value = default_value
-        # The description of the common configuration item.
+        # The description of the configuration item.
         self.description = description
-        # The unique ID of the common configuration item.
+        # The unique ID of the configuration item.
         self.id = id
-        # The value of the common configuration item.
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

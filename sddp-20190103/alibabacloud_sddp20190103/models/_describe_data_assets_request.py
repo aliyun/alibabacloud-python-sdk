@@ -15,49 +15,71 @@ class DescribeDataAssetsRequest(DaraModel):
         risk_levels: str = None,
         rule_id: int = None,
     ):
-        # The number of the page to return.
+        # The page number to return.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. The default value is **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Simplified Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese (Simplified)
+        # 
+        # - **en_us**: English (US)
         self.lang = lang
-        # The keyword that is used to search for data assets. Fuzzy search is supported.
+        # The keyword for a fuzzy search of data assets.
         self.name = name
-        # The number of entries to return on each page. Default value: **20**.
+        # The number of entries to return on each page. The default value is **20**.
         self.page_size = page_size
-        # The type of the data asset that you want to query. Valid values:
+        # The type of data asset to query. Valid values:
         # 
-        # *   **1**: MaxCompute project
-        # *   **2**: MaxCompute table
-        # *   **3**: MaxCompute package
-        # *   **11**: AnalyticDB for MySQL database
-        # *   **12**: AnalyticDB for MySQL table
-        # *   **21**: Object Storage Service (OSS) bucket
-        # *   **22**: OSS object
-        # *   **31**: Tablestore instance
-        # *   **32**: Tablestore table
-        # *   **51**: ApsaraDB RDS database
-        # *   **52**: ApsaraDB RDS table
-        # *   **61**: self-managed database hosted on an Elastic Compute Service (ECS) instance
-        # *   **62**: self-managed table hosted on an ECS instance
-        # *   **71**: PolarDB-X database
-        # *   **72**: PolarDB-X table
-        # *   **81**: PolarDB database
-        # *   **82**: PolarDB table
-        # *   **91**: AnalyticDB for PostgreSQL database
-        # *   **92**: AnalyticDB for PostgreSQL table
+        # - **1**: MaxCompute project
+        # 
+        # - **2**: MaxCompute table
+        # 
+        # - **3**: MaxCompute package
+        # 
+        # - **11**: AnalyticDB for MySQL database
+        # 
+        # - **12**: AnalyticDB for MySQL table
+        # 
+        # - **21**: OSS bucket
+        # 
+        # - **22**: OSS object
+        # 
+        # - **31**: Tablestore instance
+        # 
+        # - **32**: Tablestore table
+        # 
+        # - **51**: RDS database
+        # 
+        # - **52**: RDS table
+        # 
+        # - **61**: Self-managed database on an ECS instance
+        # 
+        # - **62**: Self-managed table on an ECS instance
+        # 
+        # - **71**: DRDS database
+        # 
+        # - **72**: DRDS table
+        # 
+        # - **81**: PolarDB database
+        # 
+        # - **82**: PolarDB table
+        # 
+        # - **91**: GPDB database
+        # 
+        # - **92**: GPDB table
         self.range_id = range_id
-        # The sensitivity level of the data asset. Separate multiple sensitivity levels with commas (,). Valid values:
+        # The risk levels of the data assets to query. Separate multiple risk levels with commas (,).
         # 
-        # *   **2**: S1, indicating the low sensitivity level
-        # *   **3**: S2, indicating the medium sensitivity level
-        # *   **4**: S3, indicating the high sensitivity level
-        # *   **5**: S4, indicating the highest sensitivity level
+        # - **2**: S1, low risk level
+        # 
+        # - **3**: S2, medium risk level
+        # 
+        # - **4**: S3, high risk level
+        # 
+        # - **5**: S4, highest risk level
         self.risk_levels = risk_levels
-        # The unique ID of the sensitive data detection rule that the data assets to be queried hit.
+        # The ID of the sensitive data detection rule that the data asset matches.
         # 
-        # > If you query sensitive data detection results based on the sensitive data detection rule that the data assets hit, you can call the [DescribeRules](~~DescribeRules~~) operation to query the ID of the sensitive data detection rule.
+        # > To find data assets based on the sensitive data detection rules they match, call the [DescribeRules](~~DescribeRules~~) operation to get the rule IDs.
         self.rule_id = rule_id
 
     def validate(self):

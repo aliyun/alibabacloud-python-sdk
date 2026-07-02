@@ -13,7 +13,7 @@ class DescribeDataLimitSetResponseBody(DaraModel):
         data_limit_set: main_models.DescribeDataLimitSetResponseBodyDataLimitSet = None,
         request_id: str = None,
     ):
-        # The information about the data asset.
+        # Information about the authorized data assets.
         self.data_limit_set = data_limit_set
         # The ID of the request.
         self.request_id = request_id
@@ -56,29 +56,41 @@ class DescribeDataLimitSetResponseBodyDataLimitSet(DaraModel):
         resource_type_code: str = None,
         total_count: int = None,
     ):
-        # An array that consists of data assets that DSC is authorized to scan.
+        # A list of authorized data assets.
         self.data_limit_list = data_limit_list
-        # An array consisting of the OSS objects that DSC is authorized to scan.
+        # A list of authorized OSS buckets.
         self.oss_bucket_list = oss_bucket_list
-        # An array consisting of the regions in which the data assets can be scanned.
+        # A list of regions that support scanning.
         self.region_list = region_list
-        # The type of service to which the data asset belongs. Valid values:
+        # The type of the data asset. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: OSS
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore
-        # *   **5**: ApsaraDB RDS
+        # - **1**: MaxCompute.
+        # 
+        # - **2**: OSS.
+        # 
+        # - **3**: ADS.
+        # 
+        # - **4**: OTS.
+        # 
+        # - **5**: RDS.
+        # 
+        # - **6**: SELF_DB.
         self.resource_type = resource_type
-        # The service to which the data asset belongs. Valid values:
+        # The code for the data asset type. Valid values:
         # 
-        # *   **ODPS**
-        # *   **OSS**
-        # *   **ADS**
-        # *   **OTS**
-        # *   **RDS**
+        # - **MaxCompute**
+        # 
+        # - **OSS**
+        # 
+        # - **ADS**
+        # 
+        # - **OTS**
+        # 
+        # - **RDS**
+        # 
+        # - **SELF_DB**
         self.resource_type_code = resource_type_code
-        # The total number of data objects in the data assets.
+        # The total number of assets found.
         self.total_count = total_count
 
     def validate(self):
@@ -163,9 +175,9 @@ class DescribeDataLimitSetResponseBodyDataLimitSetRegionList(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # The name of the region.
+        # The region name.
         self.local_name = local_name
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -200,9 +212,9 @@ class DescribeDataLimitSetResponseBodyDataLimitSetOssBucketList(DaraModel):
         bucket_name: str = None,
         region_id: str = None,
     ):
-        # The name of the OSS bucket to which the OSS object belongs.
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # The region ID of the OSS object.
+        # The ID of the region where the OSS bucket is located.
         self.region_id = region_id
 
     def validate(self):
@@ -246,43 +258,57 @@ class DescribeDataLimitSetResponseBodyDataLimitSetDataLimitList(DaraModel):
         resource_type_code: str = None,
         user_name: str = None,
     ):
-        # Indicates whether the test of connectivity between DSC and the data asset is passed.
+        # The status of the connectivity test between Security Center and the authorized data asset.
         # 
-        # *   **2**: The connectivity test is in progress.
-        # *   **3**: The connectivity test is passed.
-        # *   **4**: The connectivity test failed.
+        # - **2**: The connectivity test is in progress.
+        # 
+        # - **3**: The connectivity test is passed.
+        # 
+        # - **4**: The connectivity test has failed.
         self.check_status = check_status
-        # The name of the data detection status.
+        # The name of the connectivity test status.
         self.check_status_name = check_status_name
-        # The connection string that is used to access the data asset.
+        # The connection string for the data asset.
         self.connector = connector
-        # The time when the data asset was created. Unit: milliseconds.
+        # The time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The ID of the data asset.
+        # The unique ID of the data asset.
         self.id = id
-        # The region in which the data asset resides.
+        # The name of the region where the data asset is located.
         self.local_name = local_name
-        # The parent asset ID of the data asset.
+        # The ID of the parent asset.
         self.parent_id = parent_id
-        # The region in which the data asset resides.
+        # The ID of the region where the data asset is located.
         self.region_id = region_id
-        # The type of service to which the data asset belongs. Valid values:
+        # The type of the data asset. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: OSS
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore
-        # *   **5**: ApsaraDB RDS
+        # - **1**: MaxCompute.
+        # 
+        # - **2**: OSS.
+        # 
+        # - **3**: ADS.
+        # 
+        # - **4**: OTS.
+        # 
+        # - **5**: RDS.
+        # 
+        # - **6**: SELF_DB.
         self.resource_type = resource_type
-        # The code of the service to which the data asset belongs. Valid values:
+        # The code for the data asset type. Valid values:
         # 
-        # *   **ODPS**
-        # *   **OSS**
-        # *   **ADS**
-        # *   **OTS**
-        # *   **RDS**
+        # - **MaxCompute**
+        # 
+        # - **OSS**
+        # 
+        # - **ADS**
+        # 
+        # - **OTS**
+        # 
+        # - **RDS**
+        # 
+        # - **SELF_DB**
         self.resource_type_code = resource_type_code
-        # The username that is used to access the data asset.
+        # The username of the data owner.
         self.user_name = user_name
 
     def validate(self):

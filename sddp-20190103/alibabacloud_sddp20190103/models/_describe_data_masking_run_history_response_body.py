@@ -18,7 +18,7 @@ class DescribeDataMaskingRunHistoryResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # The execution information about the de-identification task.
+        # A list of data masking task details.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -102,56 +102,63 @@ class DescribeDataMaskingRunHistoryResponseBodyItems(DaraModel):
         task_id: str = None,
         type: int = None,
     ):
-        # The number of rows that are in conflict with the data to be de-identified in the destination table to which the data to be de-identified is moved.
+        # The number of data conflicts. This is the number of rows to be inserted into the destination table that conflict with existing data.
         self.conflict_count = conflict_count
-        # The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The type of service to which the masked data is destined. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
         self.dst_type = dst_type
-        # The service that stores the de-identified data. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The type of the destination service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.dst_type_code = dst_type_code
-        # The end time of the de-identification task.
+        # The time when the execution ended. This is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The error code that is returned when the de-identification task fails.
+        # The error code returned when the task fails. This parameter has a value only if the task fails.
         self.fail_code = fail_code
-        # The reason why the de-identification task fails.
+        # The reason the task failed.
         self.fail_msg = fail_msg
-        # Indicates whether a file is available for download.
+        # Indicates whether a download file is available.
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Yes.
+        # 
+        # - **0**: No.
         self.has_download_file = has_download_file
         # The number of created subtasks.
         self.has_sub_process = has_sub_process
-        # The ID of the task execution record.
+        # The ID of the execution record.
         self.id = id
-        # The number of rows that are de-identified.
+        # The number of masked rows.
         self.masking_count = masking_count
-        # The progress of the de-identification task.
+        # The execution progress.
         self.percentage = percentage
-        # The number of times that the de-identification task is executed.
+        # The number of times the task has been executed.
         self.run_index = run_index
         # The name of the source table.
         self.src_table_name = src_table_name
-        # The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The type of service to which the source data belongs. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
         self.src_type = src_type
-        # The service to which the data to be de-identified belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The type of the source service. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.src_type_code = src_type_code
-        # The time when the de-identification task was executed. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the execution started. This is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The status of the de-identification task. Valid values:
+        # The execution status of the task. Valid values:
         # 
-        # *   **-1**: waiting
-        # *   **0**: being executed
-        # *   **1**: executed
-        # *   **2**: failed to be executed
-        # *   **3**: terminated
-        # *   **4**: partially failed
+        # - -**1**: pending.
+        # 
+        # - **0**: running.
+        # 
+        # - **1**: successful.
+        # 
+        # - **2**: failed.
+        # 
+        # - **3**: stopped by user.
+        # 
+        # - **4**: partially failed.
         self.status = status
-        # The ID of the identification task.
+        # The ID of the task.
         self.task_id = task_id
-        # The mode in which the de-identification task is executed. Valid values:
+        # The execution method. Valid values:
         # 
-        # *   **1**: manual
-        # *   **2**: scheduled
+        # - **1**: manual.
+        # 
+        # - **2**: scheduled.
         self.type = type
 
     def validate(self):

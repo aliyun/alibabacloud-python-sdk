@@ -56,17 +56,17 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetail(DaraModel):
         risk_level_name: str = None,
         rule_list: List[main_models.DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList] = None,
     ):
-        # The name of the OSS bucket to which the OSS object belongs.
+        # The name of the bucket to which the OSS object belongs.
         self.bucket_name = bucket_name
-        # The type of the OSS object.
+        # The name of the OSS object type.
         self.category_name = category_name
         # The name of the OSS object.
         self.name = name
-        # The region ID of the OSS object.
+        # The ID of the region where the OSS object is stored.
         self.region_id = region_id
-        # The name of the sensitivity level for the OSS object.
+        # The name of the risk level for the OSS object.
         self.risk_level_name = risk_level_name
-        # A list of the sensitive data detection rules that the OSS object hits.
+        # A list of sensitive data detection rules that the OSS object hits.
         self.rule_list = rule_list
 
     def validate(self):
@@ -137,23 +137,27 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleList(DaraModel):
         risk_level_name: str = None,
         rule_name: str = None,
     ):
-        # The type of the OSS object.
+        # The name of the OSS object type.
         self.category_name = category_name
-        # The number of times that the OSS object hits the sensitive data detection rule.
+        # The number of times the sensitive data detection rule was hit.
         self.count = count
-        # A list of tags for data that hits the recognition model.
+        # A list of data tags that are hit by the detection model.
         self.model_tags = model_tags
-        # The ID of the sensitivity level of the OSS object.
+        # The ID of the risk level for the OSS object.
         # 
-        # *   **1**: No sensitive data is detected.
-        # *   **2**: indicates the low sensitivity level.
-        # *   **3**: indicates the medium sensitivity level.
-        # *   **4**: indicates the high sensitivity level.
-        # *   **5**: indicates the highest sensitivity level.
+        # - **1**: No sensitive data is detected.
+        # 
+        # - **2**: Level 1 sensitive data.
+        # 
+        # - **3**: Level 2 sensitive data.
+        # 
+        # - **4**: Level 3 sensitive data.
+        # 
+        # - **5**: Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The name of the sensitivity level for the OSS object.
+        # The name of the risk level for the OSS object.
         self.risk_level_name = risk_level_name
-        # The name of the sensitive data detection rule.
+        # The name of the sensitive data detection rule that was hit.
         self.rule_name = rule_name
 
     def validate(self):
@@ -220,17 +224,21 @@ class DescribeOssObjectDetailResponseBodyOssObjectDetailRuleListModelTags(DaraMo
         id: int = None,
         name: str = None,
     ):
-        # The tag ID.
+        # The ID of the data tag for the detection model.
         # 
-        # *   **101**: sensitive personal information
-        # *   **102**: personal information
-        # *   **103**: important information
+        # - **101**: Personal sensitive information.
+        # 
+        # - **102**: Personal information.
+        # 
+        # - **103**: Important data.
         self.id = id
-        # The tag name.
+        # The name of the data tag for the detection model.
         # 
-        # *   Sensitive personal information
-        # *   Personal information
-        # *   Important information
+        # - Personal sensitive information.
+        # 
+        # - Personal information.
+        # 
+        # - Important data.
         self.name = name
 
     def validate(self):

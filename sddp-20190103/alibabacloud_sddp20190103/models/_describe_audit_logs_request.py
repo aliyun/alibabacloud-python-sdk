@@ -36,33 +36,79 @@ class DescribeAuditLogsRequest(DaraModel):
         start_time: int = None,
         user_name: str = None,
     ):
+        # The request ID.
         self.async_request_id = async_request_id
+        # The IP address of the request client.
         self.client_ip = client_ip
+        # The client type.
         self.client_ua = client_ua
+        # The page number in a paged query. Default value: 1.
         self.current_page = current_page
+        # The database name.
         self.database_name = database_name
+        # The range of affected rows.
         self.effect_row_range = effect_row_range
+        # The end time of the alert log. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
+        # The range of execution time.
         self.execute_time_range = execute_time_range
+        # The name of the asset instance.
         self.instance_name = instance_name
+        # The network type. Valid values:
+        # 
+        # - **default** (default): non-Alibaba Cloud service
+        # 
+        # - **aliyun**: Alibaba Cloud service
         self.ip_type = ip_type
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
+        # - **zh_cn**: Chinese.
+        # - **en_us**: English.
         self.lang = lang
+        # Specifies whether to load the whitelist status.
         self.load_white_list = load_white_list
+        # The JSON string that specifies whether the query conditions are included.
         self.log_query_op_json = log_query_op_json
+        # The data source.
         self.log_source = log_source
+        # The UID of the member accounts.
         self.member_account = member_account
+        # The message content.
         self.message = message
+        # The operation type.
         self.operate_type = operate_type
+        # The key of the OSS object.
         self.oss_object_key = oss_object_key
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
+        # The name of the product to which the data asset belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and more.
         self.product_code = product_code
+        # The ID that corresponds to the product name to which the data object belongs. Valid values:
+        # - **1**: MaxCompute
+        # - **2**: OSS
+        # - **3**: ADB-MYSQL
+        # - **4**: TableStore
+        # - **5**: RDS
+        # - **6**: SELF_DB
+        # - **7**: PolarDB-X
+        # - **8**: PolarDB
+        # - **9**: ADB-PG
+        # - **10**: OceanBase
+        # - **11**: MongoDB
+        # - **25**: Redis
         self.product_id = product_id
+        # Specifies whether to perform an aggregate query.
         self.rule_agg_query = rule_agg_query
+        # The rule type.
         self.rule_category = rule_category
+        # The ID of the audit policy.
         self.rule_id = rule_id
+        # The name of the audit policy.
         self.rule_name = rule_name
+        # The content of the SQL statement.
         self.sql_text = sql_text
+        # The start time of the alert log, in milliseconds.
         self.start_time = start_time
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -143,7 +189,7 @@ class DescribeAuditLogsRequest(DaraModel):
             result['RuleCategory'] = self.rule_category
 
         if self.rule_id is not None:
-            result['RuleID'] = self.rule_id
+            result['RuleId'] = self.rule_id
 
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
@@ -230,8 +276,8 @@ class DescribeAuditLogsRequest(DaraModel):
         if m.get('RuleCategory') is not None:
             self.rule_category = m.get('RuleCategory')
 
-        if m.get('RuleID') is not None:
-            self.rule_id = m.get('RuleID')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
 
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')

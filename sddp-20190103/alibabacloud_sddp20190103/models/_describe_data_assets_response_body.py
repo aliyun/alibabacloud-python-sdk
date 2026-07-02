@@ -18,13 +18,13 @@ class DescribeDataAssetsResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # An array that consists of data assets.
+        # An array of data assets.
         self.items = items
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of queried data assets that contain sensitive data.
+        # The total number of data assets that contain sensitive data.
         self.total_count = total_count
 
     def validate(self):
@@ -102,83 +102,105 @@ class DescribeDataAssetsResponseBodyItems(DaraModel):
         sensitive_ratio: str = None,
         total_count: int = None,
     ):
-        # The access control list (ACL) that controls the access permissions on the OSS bucket.
+        # The access control list (ACL) of the OSS bucket.
         # 
-        # > This parameter is returned only when you set the parameter **RangeId** to **21**.
+        # > This parameter is returned only when **RangeId** is **21&#x20;**(OSS buckets).
         self.acl = acl
-        # The time when the data asset was created. Unit: milliseconds.
+        # The time when the data asset was created. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
-        # The data type of the data asset.
+        # The type of the data asset.
         self.data_type = data_type
         # The ID of the data asset.
         self.id = id
-        # The sensitivity tag of the data. The value is fixed as **0**. **0**, **1**, **2**, or **3** is returned for this parameter only when you set the parameter **RangeId** to **1**.
+        # The sensitivity level of the data. This is a static field and is returned only when **RangeId** is **1** (MaxCompute projects).
         # 
-        # *   **0**: unclassified
-        # *   **1**: confidential
-        # *   **2**: sensitive
-        # *   **3**: highly sensitive
+        # - **0**: Unclassified
+        # 
+        # - **1**: Confidential
+        # 
+        # - **2**: Sensitive
+        # 
+        # - **3**: Highly sensitive
         self.labelsec = labelsec
         # The name of the data asset.
         self.name = name
-        # The key value of the OSS object.
+        # The key of the OSS object.
         # 
-        # > This parameter is returned only when you set the parameter **RangeId** to **22**.
+        # > This parameter is returned only when **RangeId** is **22** (OSS objects).
         self.object_key = object_key
-        # The sensitivity level of the MaxCompute data asset. Valid values:
+        # The name of the risk level for the MaxCompute data asset. Valid values:
         # 
-        # *   **S1**: low sensitivity level
-        # *   **S2**: medium sensitivity level
-        # *   **S3**: high sensitivity level
-        # *   **S4**: highest sensitivity level
+        # - **S1**: Low
         # 
-        # > This parameter is returned only when you set the parameter **RangeId** to **1**.
+        # - **S2**: Medium
+        # 
+        # - **S3**: High
+        # 
+        # - **S4**: Highest
+        # 
+        # > This parameter is returned only when \\`RangeId\\` is \\`1\\` (MaxCompute projects).
         self.odps_risk_level_name = odps_risk_level_name
-        # The account that owns the data asset.
+        # The owner of the data asset.
         self.owner = owner
-        # The name of the service to which the data asset belongs.
+        # The code of the service to which the data asset belongs.
         self.product_code = product_code
         # The ID of the service to which the data asset belongs. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: OSS
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore
-        # *   **5**: ApsaraDB RDS
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: AnalyticDB for MySQL
+        # 
+        # - **4**: Tablestore
+        # 
+        # - **5**: RDS
         self.product_id = product_id
-        # Indicates whether the data protection mechanism is enabled for the data asset. The value is fixed as **false**. **true** or **false** is returned for this parameter only when you set the parameter **RangeId** to **1**.
+        # Indicates whether data protection is enabled. This is a static field and is returned only when **RangeId** is **1** (MaxCompute projects).
         # 
-        # *   **false**: The data protection mechanism is disabled.
-        # *   **true**: The data protection mechanism is enabled. Only data inbound is supported. Data outbound is not supported.
+        # - **false**: Data protection is disabled.
+        # 
+        # - **true**: Data protection is enabled. Data can only flow into the project, not out of it.
         self.protection = protection
-        # The sensitivity level of the data asset. A higher sensitivity level indicates that the identified data is more sensitive. Valid values:
+        # The ID of the risk level. A larger value indicates a higher risk level. Valid values:
         # 
-        # *   **1**: No sensitive data is identified.
-        # *   **2**: sensitive data at level 1.
-        # *   **3**: sensitive data at level 2.
-        # *   **3**: sensitive data at level 3.
-        # *   **5**: sensitive data at level 4.
-        # *   **6**: sensitive data at level 5.
-        # *   **7**: sensitive data at level 6.
-        # *   **8**: sensitive data at level 7.
-        # *   **9**: sensitive data at level 8.
-        # *   **10**: sensitive data at level 9.
-        # *   **11**: sensitive data at level 10.
+        # - **1**: No sensitive data detected
+        # 
+        # - **2**: Level 1
+        # 
+        # - **3**: Level 2
+        # 
+        # - **4**: Level 3
+        # 
+        # - **5**: Level 4
+        # 
+        # - **6**: Level 5
+        # 
+        # - **7**: Level 6
+        # 
+        # - **8**: Level 7
+        # 
+        # - **9**: Level 8
+        # 
+        # - **10**: Level 9
+        # 
+        # - **11**: Level 10
         self.risk_level_id = risk_level_id
-        # The name of the sensitivity level for the data asset.
+        # The name of the risk level.
         self.risk_level_name = risk_level_name
-        # The name of the sensitive data detection rule that the data asset hits.
+        # The name of the sensitive data detection rule that the data asset matches.
         self.rule_name = rule_name
         # Indicates whether the data asset contains sensitive data. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes
+        # 
+        # - **false**: No
         self.sensitive = sensitive
-        # The total number of sensitive data assets. For example, the value can be the total number of sensitive MaxCompute projects, packages, or tables, the total number of sensitive ApsaraDB RDS databases or tables, or the total number of sensitive OSS buckets or objects.
+        # The total number of sensitive items in the data asset. For example, the total number of sensitive projects, packages, or tables in MaxCompute, the total number of sensitive databases or tables in RDS, or the total number of sensitive buckets or objects in OSS.
         self.sensitive_count = sensitive_count
-        # The percentage of sensitive data in all data assets.
+        # The percentage of sensitive data in the data asset.
         self.sensitive_ratio = sensitive_ratio
-        # The total number of data assets. For example, the value can be the total number of MaxCompute projects, packages, or tables, the total number of ApsaraDB RDS databases or tables, or the total number of OSS buckets or objects.
+        # The total number of items in the data asset. For example, the total number of projects, packages, or tables in MaxCompute, the total number of databases or tables in RDS, or the total number of buckets or objects in OSS.
         self.total_count = total_count
 
     def validate(self):

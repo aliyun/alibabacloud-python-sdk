@@ -13,28 +13,31 @@ class ModifyEventStatusRequest(DaraModel):
         lang: str = None,
         status: int = None,
     ):
-        # Specifies whether to enhance the detection of anomalous events. If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+        # Specifies whether to enhance the detection of the anomalous activity. Enhancing detection improves accuracy and increases the alert rate for anomalous activities.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.backed = backed
-        # The reason why the anomalous event is handled.
+        # The reason for handling the anomalous activity.
         self.deal_reason = deal_reason
-        # The ID of the anomalous event.
+        # The unique ID of the anomalous activity.
         # 
-        # > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
+        # > To handle an anomalous activity, you must provide its unique ID. You can obtain this ID by calling the **DescribeEvents** operation.
         # 
         # This parameter is required.
         self.id = id
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. The default value is **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
-        # The method to handle the anomalous event. Valid values:
+        # The operation to perform on the anomalous activity.
         # 
-        # *   **1**: marks the anomalous event as a false positive.
-        # *   **2**: confirms and handles the anomalous event.
+        # - **1**: Mark as false positive.
+        # 
+        # - **2**: Confirm and handle the anomalous activity.
         # 
         # This parameter is required.
         self.status = status

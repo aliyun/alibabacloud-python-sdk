@@ -11,14 +11,15 @@ class DisableUserConfigRequest(DaraModel):
         feature_type: int = None,
         lang: str = None,
     ):
-        # The code of the configuration item. You can call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code of the configuration item.
+        # The code of the configuration item in the general anomaly alert configuration module. Call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code.
         self.code = code
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh_cn**: Chinese (default)
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese. This is the default value.
+        # 
+        # - **en_us**: English.
         self.lang = lang
 
     def validate(self):

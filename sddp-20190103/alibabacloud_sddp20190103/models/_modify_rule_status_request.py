@@ -12,23 +12,25 @@ class ModifyRuleStatusRequest(DaraModel):
         lang: str = None,
         status: int = None,
     ):
-        # The ID of the sensitive data detection rule.
+        # The unique ID of the sensitive data detection rule.
         # 
-        # > You can query the ID of the sensitive data detection rule by calling the **DescribeRules** operation.
+        # > To enable or disable the detection feature for a sensitive data detection rule, provide the unique ID of the rule. Call the **DescribeRules** operation to obtain the ID.
         self.id = id
-        # The ID of the sensitive data detection rule. Separate multiple IDs with commas (,).
+        # The unique IDs of the sensitive data detection rules. Separate multiple IDs with commas.
         # 
-        # > You can query the ID of the sensitive data detection rule by calling the **DescribeRules** operation.
+        # > To enable or disable the detection feature for sensitive data detection rules, provide the unique IDs of the rules. Call the **DescribeRules** operation to obtain the IDs.
         self.ids = ids
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # Specifies whether to enable or disable the sensitive data detection rule. Valid values:
+        # Specifies whether to enable or disable the detection feature for the sensitive data detection rules. Valid values:
         # 
-        # *   **0**: disables the sensitive data detection rule.
-        # *   **1**: enables the sensitive data detection rule.
+        # - **0**: Disable.
+        # 
+        # - **1**: Enable.
         # 
         # This parameter is required.
         self.status = status

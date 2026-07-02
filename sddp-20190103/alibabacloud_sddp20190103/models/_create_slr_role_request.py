@@ -14,10 +14,11 @@ class CreateSlrRoleRequest(DaraModel):
     ):
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response messages. Default value: **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Simplified Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese (Simplified)
+        # 
+        # - **en_us**: English (US)
         self.lang = lang
         self.service_name = service_name
         # This parameter is deprecated.

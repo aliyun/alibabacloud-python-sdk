@@ -19,39 +19,45 @@ class DescribeDataMaskingRunHistoryRequest(DaraModel):
         status: int = None,
         task_id: str = None,
     ):
-        # The number of the page to return.
+        # The page number to return.
         self.current_page = current_page
-        # The type of the service to which the de-identified data belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The type of service to which the masked data is destined. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
         self.dst_type = dst_type
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end time to query for task executions. This is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
-        # The ID of the task.
+        # The ID of the main task.
         # 
-        # > If a task has one or more subtasks, the value of the parameter must be the ID of the task. Otherwise, leave this parameter empty.
+        # > If a task has subtasks, this parameter specifies the ID of the main task. Otherwise, this parameter is empty.
         self.main_process_id = main_process_id
         # The number of entries to return on each page.
         self.page_size = page_size
         # The name of the source table.
         self.src_table_name = src_table_name
-        # The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The type of service to which the source data belongs. Valid values: **1** for MaxCompute, **2** for OSS, **3** for ADS, **4** for OTS, and **5** for RDS.
         self.src_type = src_type
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start time to query for task executions. This is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The status of the de-identification task. Valid values:
+        # The execution status of the task. Valid values:
         # 
-        # *   **-1**: waiting
-        # *   **0**: being executed
-        # *   **1**: executed
-        # *   **2**: failed to be executed
-        # *   **3**: terminated
-        # *   **4**: partially failed
+        # - **-1**: pending.
+        # 
+        # - **0**: running.
+        # 
+        # - **1**: successful.
+        # 
+        # - **2**: failed.
+        # 
+        # - **3**: stopped by user.
+        # 
+        # - **4**: partially failed.
         self.status = status
-        # The ID of the de-identification task.
+        # The ID of the data masking task.
         self.task_id = task_id
 
     def validate(self):

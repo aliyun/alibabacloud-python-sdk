@@ -22,7 +22,9 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-hongkong': 'sddp-api.cn-hongkong.aliyuncs.com'
+            'cn-hongkong': 'sddp-api.cn-hongkong.aliyuncs.com',
+            'cn-zhangjiakou': 'sddp.cn-zhangjiakou.aliyuncs.com',
+            'ap-southeast-1': 'sddp.ap-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sddp', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -835,7 +837,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.rule_category):
             query['RuleCategory'] = request.rule_category
         if not DaraCore.is_null(request.rule_id):
-            query['RuleID'] = request.rule_id
+            query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
         if not DaraCore.is_null(request.sql_text):
@@ -917,7 +919,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.rule_category):
             query['RuleCategory'] = request.rule_category
         if not DaraCore.is_null(request.rule_id):
-            query['RuleID'] = request.rule_id
+            query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
         if not DaraCore.is_null(request.sql_text):
@@ -1170,6 +1172,8 @@ class Client(OpenApiClient):
             query['RuleName'] = request.rule_name
         if not DaraCore.is_null(request.sens_level_name):
             query['SensLevelName'] = request.sens_level_name
+        if not DaraCore.is_null(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
         if not DaraCore.is_null(request.table_id):
             query['TableId'] = request.table_id
         if not DaraCore.is_null(request.table_name):
@@ -1232,6 +1236,8 @@ class Client(OpenApiClient):
             query['RuleName'] = request.rule_name
         if not DaraCore.is_null(request.sens_level_name):
             query['SensLevelName'] = request.sens_level_name
+        if not DaraCore.is_null(request.service_region_id):
+            query['ServiceRegionId'] = request.service_region_id
         if not DaraCore.is_null(request.table_id):
             query['TableId'] = request.table_id
         if not DaraCore.is_null(request.table_name):
@@ -2252,8 +2258,14 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDataObjectsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apiversion):
+            query['APIVersion'] = request.apiversion
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.db_name):
+            query['DbName'] = request.db_name
         if not DaraCore.is_null(request.domain_id):
             query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.feature_type):
@@ -2266,6 +2278,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.log_store):
+            query['LogStore'] = request.log_store
+        if not DaraCore.is_null(request.log_store_flag):
+            query['LogStoreFlag'] = request.log_store_flag
         if not DaraCore.is_null(request.member_account):
             query['MemberAccount'] = request.member_account
         if not DaraCore.is_null(request.model_ids):
@@ -2276,14 +2292,30 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_category_ids):
             query['ParentCategoryIds'] = request.parent_category_ids
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.product_id):
+            query['ProductId'] = request.product_id
         if not DaraCore.is_null(request.product_ids):
             query['ProductIds'] = request.product_ids
+        if not DaraCore.is_null(request.project):
+            query['Project'] = request.project
         if not DaraCore.is_null(request.query_name):
             query['QueryName'] = request.query_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.risk_level_id_list):
+            query['RiskLevelIdList'] = request.risk_level_id_list
         if not DaraCore.is_null(request.risk_levels):
             query['RiskLevels'] = request.risk_levels
+        if not DaraCore.is_null(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         if not DaraCore.is_null(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
@@ -2312,8 +2344,14 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDataObjectsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apiversion):
+            query['APIVersion'] = request.apiversion
+        if not DaraCore.is_null(request.bucket):
+            query['Bucket'] = request.bucket
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.db_name):
+            query['DbName'] = request.db_name
         if not DaraCore.is_null(request.domain_id):
             query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.feature_type):
@@ -2326,6 +2364,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.log_store):
+            query['LogStore'] = request.log_store
+        if not DaraCore.is_null(request.log_store_flag):
+            query['LogStoreFlag'] = request.log_store_flag
         if not DaraCore.is_null(request.member_account):
             query['MemberAccount'] = request.member_account
         if not DaraCore.is_null(request.model_ids):
@@ -2336,14 +2378,30 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_category_ids):
             query['ParentCategoryIds'] = request.parent_category_ids
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.product_id):
+            query['ProductId'] = request.product_id
         if not DaraCore.is_null(request.product_ids):
             query['ProductIds'] = request.product_ids
+        if not DaraCore.is_null(request.project):
+            query['Project'] = request.project
         if not DaraCore.is_null(request.query_name):
             query['QueryName'] = request.query_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.risk_level_id_list):
+            query['RiskLevelIdList'] = request.risk_level_id_list
         if not DaraCore.is_null(request.risk_levels):
             query['RiskLevels'] = request.risk_levels
+        if not DaraCore.is_null(request.rule_ids):
+            query['RuleIds'] = request.rule_ids
         if not DaraCore.is_null(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_util_models.OpenApiRequest(
@@ -4258,6 +4316,8 @@ class Client(OpenApiClient):
             query['BucketName'] = request.bucket_name
         if not DaraCore.is_null(request.is_always_upload):
             query['IsAlwaysUpload'] = request.is_always_upload
+        if not DaraCore.is_null(request.is_cover_object):
+            query['IsCoverObject'] = request.is_cover_object
         if not DaraCore.is_null(request.is_support_restore):
             query['IsSupportRestore'] = request.is_support_restore
         if not DaraCore.is_null(request.lang):
@@ -4298,6 +4358,8 @@ class Client(OpenApiClient):
             query['BucketName'] = request.bucket_name
         if not DaraCore.is_null(request.is_always_upload):
             query['IsAlwaysUpload'] = request.is_always_upload
+        if not DaraCore.is_null(request.is_cover_object):
+            query['IsCoverObject'] = request.is_cover_object
         if not DaraCore.is_null(request.is_support_restore):
             query['IsSupportRestore'] = request.is_support_restore
         if not DaraCore.is_null(request.lang):

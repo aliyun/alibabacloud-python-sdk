@@ -13,7 +13,7 @@ class DescribeDocTypesResponseBody(DaraModel):
         doc_type_list: List[main_models.DescribeDocTypesResponseBodyDocTypeList] = None,
         request_id: str = None,
     ):
-        # A list of OSS object types.
+        # A list of OSS file types.
         self.doc_type_list = doc_type_list
         # The ID of the request.
         self.request_id = request_id
@@ -59,11 +59,11 @@ class DescribeDocTypesResponseBodyDocTypeList(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The code of the object type.
+        # The code of the file type.
         self.code = code
-        # The ID of the object type.
+        # The unique ID of the file type.
         self.id = id
-        # The name of the object type.
+        # The name of the file type.
         self.name = name
 
     def validate(self):

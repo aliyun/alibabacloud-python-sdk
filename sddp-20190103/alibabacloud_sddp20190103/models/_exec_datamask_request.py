@@ -12,25 +12,29 @@ class ExecDatamaskRequest(DaraModel):
         lang: str = None,
         template_id: int = None,
     ):
-        # The sensitive data to be de-identified. The value is a JSON string that contains the following parameters:
+        # The data that you want to mask. The data must be a string in JSON format and include the following fields:
         # 
-        # *   **dataHeaderList**: the names of the columns in which data needs to be de-identified. Specify the column names in accordance with the order of data that needs to be de-identified.
-        # *   **dataList**: the data that needs to be de-identified.
-        # *   **ruleList**: the IDs of sensitive data detection rules used to detect data that needs to be de-identified. Specify the rule IDs in accordance with the order of data that needs to be de-identified. Each ID identifies a sensitive data detection rule that is used to detect a type of sensitive data. You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
+        # - **dataHeaderList**: The column names of the data. The order of the column names must correspond to the order of the data that you want to mask.
+        # 
+        # - **dataList**: The data that you want to mask.
+        # 
+        # - **ruleList**: A list of sensitive data type IDs. The order of the IDs must correspond to the order of the data that you want to mask. Each ID is a number that represents a sensitive data type. You can call the [DescribeRules](https://help.aliyun.com/document_detail/410141.html) operation to obtain the IDs.
         # 
         # This parameter is required.
         self.data = data
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Simplified Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Simplified Chinese
+        # 
+        # - **en_us**: English (US)
         self.lang = lang
-        # The ID of the de-identification template. The ID is generated after you create the de-identification template in the [Data Security Center (DSC) console](https://yundun.console.aliyun.com/?\\&p=sddpnext#/sddp/dm/template). You can choose **Data desensitization** > **Desensitization Template** in the left-side navigation pane and obtain the ID of the de-identification template from the **Desensitization Template** page.
+        # The ID of the data masking template. A template ID is generated after you create a template in the [Data Security Center console](https://yundun.console.aliyun.com/?p=sddp#/dm/dmConfig/cn-zhangjiakou). You can find the **Template ID** on the **Data Masking** > **Masking Configuration** > **Masking Template** page.
         # 
-        # *   If you select **Field name** as the matching mode of the template, DSC matches data based on the columns specified by the **dataHeaderList** parameter in the **Data** parameter.
-        # *   If you select **Sensitive type** as the matching mode of the template, DSC matches data based on the sensitive data detection rules specified by the **ruleList** parameter in the **Data** parameter.
+        # - If the matching type of the data masking template is **Field Name**, the system matches the data against **dataHeaderList** in **Data**.
+        # 
+        # - If the matching type of the data masking template is **Sensitive Data Type**, the system matches the data against **ruleList** in **Data**.
         # 
         # This parameter is required.
         self.template_id = template_id

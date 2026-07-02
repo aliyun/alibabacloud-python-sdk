@@ -14,37 +14,51 @@ class DescribeCategoryTemplateRuleListRequest(DaraModel):
         risk_level_id: int = None,
         status: int = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number. The default value is **1**.
         self.current_page = current_page
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. The default value is **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Simplified Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Simplified Chinese.
+        # 
+        # - **en_us**: US English.
         self.lang = lang
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of template rules to return on each page. The default value is **10**.
         self.page_size = page_size
-        # The sensitivity level of the data that is not compliant with the rule. Valid values: **1** to **11**. Default value: **null**.
+        # The risk level of the template rule. The value ranges from **1** to **11**. The default value is **null**. Valid values:
         # 
-        # *   **1**: No sensitive data is detected.
-        # *   **2**: specifies the S1 sensitivity level.
-        # *   **3**: specifies the S2 sensitivity level.
-        # *   **4**: specifies the S3 sensitivity level.
-        # *   **5**: specifies the S4 sensitivity level.
-        # *   **6**: specifies the S5 sensitivity level.
-        # *   **7**: specifies the S6 sensitivity level.
-        # *   **8**: specifies the S7 sensitivity level.
-        # *   **9**: specifies the S8 sensitivity level.
-        # *   **10**: specifies the S9 sensitivity level.
-        # *   **11**: specifies the S10 sensitivity level.
-        # *   **null**: specifies all preceding sensitivity levels.
+        # - **1**: No risk.
+        # 
+        # - **2**: S1.
+        # 
+        # - **3**: S2.
+        # 
+        # - **4**: S3.
+        # 
+        # - **5**: S4.
+        # 
+        # - **6**: S5.
+        # 
+        # - **7**: S6.
+        # 
+        # - **8**: S7.
+        # 
+        # - **9**: S8.
+        # 
+        # - **10**: S9.
+        # 
+        # - **11**: S10.
+        # 
+        # - **null**: All risk levels, including No risk, S1, S2, S3, S4, S5, S6, S7, S8, S9, and S10.
         self.risk_level_id = risk_level_id
-        # The status of the rule. Default value: **null**. Valid values:
+        # The status of the template rule. The default value is **null**. Valid values:
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled
-        # *   **null**: all states
+        # - **0**: The rule is disabled.
+        # 
+        # - **1**: The rule is enabled.
+        # 
+        # - **null**: All rules are returned, regardless of their status.
         self.status = status
 
     def validate(self):

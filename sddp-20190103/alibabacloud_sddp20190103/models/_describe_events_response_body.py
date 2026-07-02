@@ -18,7 +18,7 @@ class DescribeEventsResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # An array that consists of the anomalous events.
+        # A list of anomalous activities.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -103,56 +103,61 @@ class DescribeEventsResponseBodyItems(DaraModel):
         user_id: int = None,
         warn_level: int = None,
     ):
-        # The time when an alert was triggered for the anomalous event. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when an alert was generated for the anomalous activity. The value is a UNIX timestamp. Unit: milliseconds.
         self.alert_time = alert_time
-        # Indicates whether the detection of anomalous events is enhanced. If the detection of anomalous events is enhanced, the detection accuracy and the rate of triggering alerts for anomalous events are improved. Valid values:
+        # Indicates whether enhanced detection is enabled for the anomalous activity. Enhanced detection improves detection accuracy and the alert reporting rate.
         # 
-        # *   true: yes
-        # *   false: no
+        # - true: Enhanced detection is enabled.
+        # 
+        # - false: Enhanced detection is disabled.
         self.backed = backed
-        # The display name of the account that is used to handle the anomalous event.
+        # The display name of the account that handled the anomalous activity.
         self.deal_display_name = deal_display_name
-        # The username of the account that is used to handle the anomalous event.
+        # The logon name of the account that handled the anomalous activity.
         self.deal_login_name = deal_login_name
-        # The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the anomalous activity was handled. The value is a UNIX timestamp in milliseconds.
         self.deal_time = deal_time
-        # The ID of the account that is used to handle the anomalous event.
+        # The ID of the account that handled the anomalous activity.
         self.deal_user_id = deal_user_id
-        # The display name of the account that triggered the anomalous event.
+        # The display name of the account that performed the operation.
         self.display_name = display_name
-        # The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the anomalous activity occurred. The value is a UNIX timestamp. Unit: milliseconds.
         self.event_time = event_time
-        # The ID of the anomalous event.
+        # The unique ID of the anomalous activity that is recorded in Data Security Center (DSC).
         self.id = id
-        # The username of the account that triggered the anomalous event.
+        # The logon name of the account that performed the operation.
         self.login_name = login_name
-        # The name of the service in which the anomalous event was detected.
+        # The service to which the anomalous activity belongs.
         self.product_code = product_code
-        # The handling status for the anomalous event. Valid values:
+        # The processing status of the anomalous activity.
         # 
-        # *   0: unhandled
-        # *   1: confirmed
-        # *   2: marked as false positive
+        # - 0: Unhandled.
+        # 
+        # - 1: Confirmed.
+        # 
+        # - 2: Dismissed.
         self.status = status
-        # The name of the handling status for the anomalous event.
+        # The name of the processing status.
         self.status_name = status_name
-        # The code of the anomalous event subtype.
+        # The code of the child type of the anomalous activity.
         self.sub_type_code = sub_type_code
-        # The name of the anomalous event subtype.
+        # The name of the child type of the anomalous activity.
         self.sub_type_name = sub_type_name
-        # The name of the destination service in an anomalous data flow.
+        # The destination service for the anomalous data flow event.
         self.target_product_code = target_product_code
-        # The code of the anomalous event type.
+        # The code of the parent type of the anomalous activity.
         self.type_code = type_code
-        # The name of the anomalous event type.
+        # The name of the parent type of the anomalous activity.
         self.type_name = type_name
-        # The ID of the account that triggered the anomalous event.
+        # The ID of the account that performed the operation.
         self.user_id = user_id
-        # The severity of the anomalous event.
+        # The risk level of the anomalous activity.
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # - **1**: Low.
+        # 
+        # - **2**: Medium.
+        # 
+        # - **3**: High.
         self.warn_level = warn_level
 
     def validate(self):

@@ -27,99 +27,125 @@ class CreateDataLimitRequest(DaraModel):
         source_ip: str = None,
         user_name: str = None,
     ):
-        # Specifies whether to enable the security audit feature. Valid values:
+        # Specifies whether to enable auditing. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: Do not enable auditing.
+        # 
+        # - **1**: Enable auditing.
         self.audit_status = audit_status
-        # Specifies whether to automatically trigger a re-scan after a rule is modified. Valid values:
+        # Specifies whether to automatically trigger a rescan when a rule changes. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: Do not trigger an automatic scan.
         # 
-        # > When a re-scan is triggered, DSC scans all data in your data asset.
+        # - **1**: Trigger an automatic scan.
+        # 
+        # > If you enable this feature, a rule change triggers a full scan of all data in the data source.
         self.auto_scan = auto_scan
-        # The permissions. Valid values:
+        # The permission level of the credential. Valid values:
         # 
-        # *   **ReadOnly**: read-only permissions
-        # *   **ReadWrite**: read and write permissions
+        # - **ReadOnly**: Read-only permissions.
+        # 
+        # - **ReadWrite**: Read and write permissions.
         self.certificate_permission = certificate_permission
         # Specifies whether to enable sensitive data detection. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
         # 
-        # > If this is your first time to authorize DSC to access the data asset, the default value is 1. If this is not your first time to authorize DSC to access the data asset, the default value is the same as that used in the last authorization operation. Both 1 and 0 are possible.
+        # - **0**: Disabled.
+        # 
+        # > The default value is 1 for the first authorization. For later authorizations, the value from the previous authorization is used. Set this parameter to 1 to detect sensitive data.
         self.enable = enable
-        # The database engine that is run by the instance. Valid values:
+        # The database engine type. Valid values:
         # 
-        # *   **MySQL**
-        # *   **SQLServer**
+        # - **MySQL**
+        # 
+        # - **SQLServer**
         self.engine_type = engine_type
-        # Specifies whether to enable anomalous event detection. Valid values:
+        # Specifies whether to enable anomalous activity detection. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes (default)
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled. This is the default value.
         self.event_status = event_status
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # Specifies whether to immediately scan the authorized asset. Valid values:
+        # Specifies whether to immediately scan the authorized data asset. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: Do not scan immediately.
+        # 
+        # - **true**: Scan immediately.
         self.instantly_scan = instantly_scan
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the content that is returned in the response. Default value: **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese
+        # 
+        # - **en_us**: English
         self.lang = lang
-        # The retention period of raw logs after you enable the security audit feature. Unit: days. Valid values:
+        # The retention period of raw logs after you enable auditing. Unit: days. Valid values:
         # 
-        # *   **30**
-        # *   **90**
-        # *   **180**
-        # *   **365**
+        # - **30**
+        # 
+        # - **90**
+        # 
+        # - **180**
+        # 
+        # - **365**
         self.log_store_day = log_store_day
-        # Specifies whether to enable optical character recognition (OCR). Valid values:
+        # Specifies whether to enable Optical Character Recognition (OCR). Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # 
+        # - **0**: Disabled.
         self.ocr_status = ocr_status
-        # The name of the asset. The value is a connection string. It consists of an instance ID and a database name, which are separated by a comma (,). This parameter is required.
+        # The name of the data asset. The name consists of the instance ID and the database name, separated by a period (.).
         self.parent_id = parent_id
-        # The password that is used to access the database.
+        # The password to access the database.
         self.password = password
-        # The port that is used to connect to the database.
+        # The database connection port.
         self.port = port
-        # The type of service to which the data asset belongs. Valid values:
+        # The service to which the data asset belongs. Valid values:
         # 
-        # *   **1** :MaxCompute
-        # *   **2**: Object Storage Service (OSS)
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4** :Tablestore
-        # *   **5**: ApsaraDB RDS
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: ADS
+        # 
+        # - **4**: OTS
+        # 
+        # - **5**: RDS
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The number of sensitive data samples that are collected after sensitive data detection is enabled. Valid values:
+        # The number of sensitive data samples to return after a scan. Valid values:
         # 
-        # *   **0**
-        # *   **5**
-        # *   **10**
+        # - **0**
+        # 
+        # - **5**
+        # 
+        # - **10**
+        # 
+        # > The default value is 10.
         self.sampling_size = sampling_size
-        # The region in which the data asset resides. Valid values:
+        # The region where the data asset is located. Valid values:
         # 
-        # *   **cn-beijing**: China (Beijing).
-        # *   **cn-zhangjiakou**: China (Zhangjiakou)
-        # *   **cn-huhehaote**: China (Hohhot)
-        # *   **cn-hangzhou**: China (Hangzhou)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **cn-hongkong**: China (Hong Kong)
+        # - **cn-beijing**: China (Beijing)
+        # 
+        # - **cn-zhangjiakou**: China (Zhangjiakou)
+        # 
+        # - **cn-huhehaote**: China (Hohhot)
+        # 
+        # - **cn-hangzhou**: China (Hangzhou)
+        # 
+        # - **cn-shanghai**: China (Shanghai)
+        # 
+        # - **cn-shenzhen**: China (Shenzhen)
+        # 
+        # - **cn-hongkong**: China (Hong Kong)
         self.service_region_id = service_region_id
         # This parameter is deprecated.
         self.source_ip = source_ip
-        # The username that is used to access the database.
+        # The username for the database.
         self.user_name = user_name
 
     def validate(self):

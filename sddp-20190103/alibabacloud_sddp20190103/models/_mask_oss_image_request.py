@@ -9,21 +9,53 @@ class MaskOssImageRequest(DaraModel):
         self,
         bucket_name: str = None,
         is_always_upload: bool = None,
+        is_cover_object: bool = None,
         is_support_restore: bool = None,
         lang: str = None,
         mask_rule_id_list: str = None,
         object_key: str = None,
         service_region_id: str = None,
     ):
+        # The name of the OSS bucket.
+        # 
         # This parameter is required.
         self.bucket_name = bucket_name
+        # Specifies whether to always upload the processed image.
+        # 
+        # If you set this to false, the image is uploaded only if it matches a masking rule.
+        # 
+        # If you set this to true, the processed image is always uploaded.
         self.is_always_upload = is_always_upload
+        self.is_cover_object = is_cover_object
+        # Specifies whether you can restore the original image from the masked version.
         self.is_support_restore = is_support_restore
         self.lang = lang
+        # A comma-separated list of masking rule IDs.
+        # 
+        # The following rule IDs correspond to the listed sensitive data types:
+        # 
+        # 3000: Images that contain ID card information (Chinese mainland)
+        # 
+        # 3009: Images that contain license plate information (Chinese mainland)
+        # 
+        # 3002: Images that contain faces
+        # 
+        # 1002: Names (Simplified Chinese)
+        # 
+        # 1003: Addresses (Chinese mainland)
+        # 
+        # 4003: Unified Social Credit Code
+        # 
+        # 63009: Images that contain eyes
+        # 
         # This parameter is required.
         self.mask_rule_id_list = mask_rule_id_list
+        # The full key of the object stored in OSS.
+        # 
         # This parameter is required.
         self.object_key = object_key
+        # The region where the bucket is located.
+        # 
         # This parameter is required.
         self.service_region_id = service_region_id
 
@@ -40,6 +72,9 @@ class MaskOssImageRequest(DaraModel):
 
         if self.is_always_upload is not None:
             result['IsAlwaysUpload'] = self.is_always_upload
+
+        if self.is_cover_object is not None:
+            result['IsCoverObject'] = self.is_cover_object
 
         if self.is_support_restore is not None:
             result['IsSupportRestore'] = self.is_support_restore
@@ -65,6 +100,9 @@ class MaskOssImageRequest(DaraModel):
 
         if m.get('IsAlwaysUpload') is not None:
             self.is_always_upload = m.get('IsAlwaysUpload')
+
+        if m.get('IsCoverObject') is not None:
+            self.is_cover_object = m.get('IsCoverObject')
 
         if m.get('IsSupportRestore') is not None:
             self.is_support_restore = m.get('IsSupportRestore')

@@ -28,92 +28,145 @@ class DescribeRulesRequest(DaraModel):
         support_form: int = None,
         warn_level: int = None,
     ):
-        # The content type of the sensitive data detection rule. Valid values:
+        # The type of content in the sensitive data detection rule. Valid values:
         # 
-        # *   **0**: keyword
-        # *   **2**: regular expression
+        # - **0**: keyword
+        # 
+        # - **2**: regular expression
         self.category = category
-        # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
-        self.content_category = content_category
-        # The external cooperation channel. Valid values:
+        # The content type. Valid values:
         # 
-        # *   DAS
-        # *   YAOCHI
+        # - **1**: SQL injection exploits
+        # 
+        # - **2**: SQL injection bypass attempts
+        # 
+        # - **3**: stored procedure abuse
+        # 
+        # - **4**: buffer overflows
+        # 
+        # - **5**: error-based SQL injections
+        self.content_category = content_category
+        # The source of the external cooperation request. Valid values:
+        # 
+        # - DAS
+        # 
+        # - YAOCHI
         self.cooperation_channel = cooperation_channel
-        # The page number of the page to return.
+        # The page number of the paged query.
         self.current_page = current_page
         # The type of the sensitive data detection rule. Valid values:
         # 
-        # *   **0**: built-in rule
-        # *   **1**: custom rule
+        # - **0**: built-in
+        # 
+        # - **1**: custom
         self.custom_type = custom_type
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The parent group type of the rule.
+        # The parent group of the rule.
         self.group_id = group_id
-        # Specifies whether to allow earlier versions of request parameters to support keywords that are supported in later versions of request parameters. Valid values:
+        # Specifies whether the keyword is compatible with earlier versions. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**
         # 
-        # > To specify keywords as the content type of the sensitive data detection rule, you can set the Category parameter to 0 for earlier versions of request parameters and set the Category parameter to 5 for later versions of request parameters. You can specify the KeywordCompatible parameter based on your business requirements.
+        # - **false**
+        # 
+        # > In earlier versions, the Category parameter for keywords had a value of 0. In the current version, it has a value of 5. Enable this parameter based on your business needs.
         self.keyword_compatible = keyword_compatible
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response messages. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The match type. Valid values:
         # 
-        # *   1: rule-based match
-        # *   2: dictionary-based match
+        # - 1: rule-based match
+        # 
+        # - 2: dictionary-based match
         self.match_type = match_type
         # The name of the sensitive data detection rule. Fuzzy match is supported.
         self.name = name
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
-        self.product_code = product_code
-        # The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
-        self.product_id = product_id
-        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # The name of the service to which the data asset belongs. Valid values:
         # 
-        # *   **1**: N/A, which indicates that no sensitive data is detected.
-        # *   **2**: S1, which indicates the low sensitivity level.
-        # *   **3**: S2, which indicates the medium sensitivity level.
-        # *   **4**: S3, which indicates the high sensitivity level.
-        # *   **5**: S4, which indicates the highest sensitivity level.
+        # - **MaxCompute**
+        # 
+        # - **OSS**
+        # 
+        # - **ADS**
+        # 
+        # - **OTS**
+        # 
+        # - **RDS**
+        # 
+        # - **SELF_DB**
+        self.product_code = product_code
+        # The ID of the service to which the data asset belongs. Valid values:
+        # 
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: ADS
+        # 
+        # - **4**: OTS
+        # 
+        # - **5**: RDS
+        # 
+        # - **6**: SELF_DB
+        self.product_id = product_id
+        # The sensitivity level ID of the sensitive data detection rule. Valid values:
+        # 
+        # - **1**: N/A. No sensitive data is detected.
+        # 
+        # - **2**: S1. Level 1 sensitive data.
+        # 
+        # - **3**: S2. Level 2 sensitive data.
+        # 
+        # - **4**: S3. Level 3 sensitive data.
+        # 
+        # - **5**: S4. Level 4 sensitive data.
         self.risk_level_id = risk_level_id
         # The type of the sensitive data detection rule. Valid values:
         # 
-        # *   **1**: sensitive data detection rule
-        # *   **2**: audit rule
-        # *   **3**: anomalous event detection rule
-        # *   **99**: custom rule
+        # - **1**: data detection rule
+        # 
+        # - **2**: audit policy
+        # 
+        # - **3**: anomaly detection rule
+        # 
+        # - **99**: custom rule
         self.rule_type = rule_type
-        # Specifies whether to query a simplified rule. The simplified rule contains only the rule name. Valid values:
+        # Specifies whether to return a simplified version of the rule that contains only the rule name. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.simplify = simplify
-        # The status of the sensitive data detection rule. Valid values:
+        # The status. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: Normal
+        # 
+        # - **0**: Disabled
         self.status = status
-        # The type of the data asset. Valid values:
+        # The type of data asset that the rule supports. Valid values:
         # 
-        # *   **0**: all data assets
-        # *   **1**: structured data asset
-        # *   **2**: unstructured data asset
+        # - **0**: all assets
         # 
-        # > If you set the parameter to 1 or 2, rules that support all data assets and rules that support the queried data asset type are returned.
+        # - **1**: structured assets
+        # 
+        # - **2**: unstructured assets
+        # 
+        # > When you query for rules that support structured or unstructured assets, the response also includes rules that support all asset types.
         self.support_form = support_form
-        # The severity level of the alert. Valid values:
+        # The risk level.
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # - **1**: Low
+        # 
+        # - **2**: Medium
+        # 
+        # - **3**: High
         self.warn_level = warn_level
 
     def validate(self):

@@ -9,7 +9,7 @@ class ModifyDataLimitResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

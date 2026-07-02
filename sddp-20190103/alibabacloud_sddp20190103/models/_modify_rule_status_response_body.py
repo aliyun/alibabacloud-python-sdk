@@ -10,7 +10,7 @@ class ModifyRuleStatusResponseBody(DaraModel):
         failed_ids: str = None,
         request_id: str = None,
     ):
-        # The IDs of sensitive data detection rules whose status failed to be changed. Multiple IDs are separated with commas (,).
+        # The IDs of the rules whose status failed to be changed. Multiple IDs are separated by commas.
         self.failed_ids = failed_ids
         # The ID of the request.
         self.request_id = request_id

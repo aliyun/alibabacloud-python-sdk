@@ -61,15 +61,19 @@ class DescribeDataLimitDetailResponseBodyDataLimit(DaraModel):
     ):
         # The status of the connectivity test between the data asset and DSC. Valid values:
         # 
-        # *   **2**: indicates that the data asset was being connected.
-        # *   **3**: indicates that the data asset was connected to DSC.
-        # *   **4**: indicates that the data asset failed to be connected.
+        # - **2**: indicates that the data asset was being connected.
+        # 
+        # - **3**: indicates that the data asset was connected to DSC.
+        # 
+        # - **4**: indicates that the data asset failed to be connected.
         self.check_status = check_status
         # The result that indicates the status of the connectivity test between the data asset and DSC. Valid values:
         # 
-        # *   **Passed**
-        # *   **Failed**
-        # *   **Testing**
+        # - **Passed**
+        # 
+        # - **Failed**
+        # 
+        # - **Testing**
         self.check_status_name = check_status_name
         # The time when the data asset was connected to DSC. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
@@ -85,19 +89,27 @@ class DescribeDataLimitDetailResponseBodyDataLimit(DaraModel):
         self.region_id = region_id
         # The type of the service to which the data asset belongs. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: OSS
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore
-        # *   **5**: ApsaraDB RDS
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: AnalyticDB for MySQL
+        # 
+        # - **4**: Tablestore
+        # 
+        # - **5**: ApsaraDB RDS
         self.resource_type = resource_type
         # The service to which the data asset belongs. Valid values:
         # 
-        # *   **MaxCompute**
-        # *   **OSS**
-        # *   **ADS**
-        # *   **OTS**
-        # *   **RDS**
+        # - **MaxCompute**
+        # 
+        # - **OSS**
+        # 
+        # - **ADS**
+        # 
+        # - **OTS**
+        # 
+        # - **RDS**
         self.resource_type_code = resource_type_code
         # The account of the user who manages the data asset.
         self.user_name = user_name

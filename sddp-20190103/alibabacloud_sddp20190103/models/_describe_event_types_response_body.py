@@ -13,9 +13,9 @@ class DescribeEventTypesResponseBody(DaraModel):
         event_type_list: List[main_models.DescribeEventTypesResponseBodyEventTypeList] = None,
         request_id: str = None,
     ):
-        # An array that consists of the types of anomalous events.
+        # The list of anomalous activity types.
         # 
-        # > If you leave the ParentTypeId parameter empty, anomalous event types are returned. If you set the ParentTypeId parameter, anomalous event subtypes under the specified anomalous event type are returned.
+        # > If ParentTypeId is empty, the parent anomalous activity types are returned. If ParentTypeId is not empty, the child anomalous activity types are returned.
         self.event_type_list = event_type_list
         # The ID of the request.
         self.request_id = request_id
@@ -63,15 +63,15 @@ class DescribeEventTypesResponseBodyEventTypeList(DaraModel):
         name: str = None,
         sub_type_list: List[main_models.DescribeEventTypesResponseBodyEventTypeListSubTypeList] = None,
     ):
-        # The code of the anomalous event type.
+        # The code of the parent anomalous activity type.
         self.code = code
-        # The description of the anomalous event type.
+        # The description of the parent anomalous activity type.
         self.description = description
-        # The ID of the anomalous event type.
+        # The unique ID of the parent anomalous activity type.
         self.id = id
-        # The name of the anomalous event type.
+        # The name of the parent anomalous activity type.
         self.name = name
-        # An array that consists of anomalous event subtypes.
+        # The list of child anomalous activity types.
         self.sub_type_list = sub_type_list
 
     def validate(self):
@@ -141,33 +141,35 @@ class DescribeEventTypesResponseBodyEventTypeListSubTypeList(DaraModel):
         name: str = None,
         status: int = None,
     ):
-        # The service to which the anomalous event detection rule applies. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The products to which the rule applies, including MaxCompute, OSS, AnalyticDB for MySQL, Tablestore, and ApsaraDB RDS.
         self.adapted_product = adapted_product
-        # The code of the anomalous event subtype.
+        # The code of the child anomalous activity type.
         self.code = code
-        # The code of the configuration.
+        # The configuration code.
         self.config_code = config_code
-        # The content format of anomalous event detection rule. Valid values:
+        # The format of the rule item. Valid values:
         # 
-        # *   **0**: numeric values such as thresholds
-        # *   **1**: text such as IP addresses
+        # - **0**: numeric (such as a threshold).
+        # 
+        # - **1**: text (such as an IP address).
         self.config_content_type = config_content_type
-        # The description of the configuration.
+        # The configuration description.
         self.config_description = config_description
-        # The value of the configuration.
+        # The configuration value.
         self.config_value = config_value
-        # The description of the anomalous event subtype.
+        # The description of the child anomalous activity type.
         self.description = description
-        # The number of times that the anomalous event hits the anomalous event detection rule.
+        # The number of times the rule is hit.
         self.event_hit_count = event_hit_count
-        # The ID of the anomalous event subtype.
+        # The unique ID of the child anomalous activity type.
         self.id = id
-        # The name of the anomalous event subtype.
+        # The name of the child anomalous activity type.
         self.name = name
-        # Indicates whether detection is enabled for the anomalous event subtype. Valid values:
+        # The detection feature of Data Security Center (DSC) for the child anomalous activity type. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled.
+        # 
+        # - **0**: disabled.
         self.status = status
 
     def validate(self):

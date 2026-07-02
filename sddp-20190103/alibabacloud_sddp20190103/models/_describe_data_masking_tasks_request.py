@@ -15,22 +15,35 @@ class DescribeDataMaskingTasksRequest(DaraModel):
         search_key: str = None,
         start_time: int = None,
     ):
-        # The page number of the page to return.
+        # The page number to return.
         self.current_page = current_page
-        # The service to which the data to be de-identified belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
-        self.dst_type = dst_type
-        # The end of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
-        self.end_time = end_time
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The product that the destination data source belongs to. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **1**: MaxCompute.
+        # 
+        # - **2**: OSS.
+        # 
+        # - **3**: ADS.
+        # 
+        # - **4**: OTS.
+        # 
+        # - **5**: RDS.
+        # 
+        # - **6**: SELF_DB.
+        self.dst_type = dst_type
+        # The end time for creating the data masking task. The value is a UNIX timestamp. Unit: milliseconds.
+        self.end_time = end_time
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
+        # 
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The keyword used to query the de-identification tasks, which can be the task name or ID.
+        # A keyword to search for tasks. You can search by task name or task ID.
         self.search_key = search_key
-        # The beginning of the time range during which the de-identification tasks to be queried are created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start time for creating the task. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribeEventDetailResponseBody(DaraModel):
         event: main_models.DescribeEventDetailResponseBodyEvent = None,
         request_id: str = None,
     ):
-        # The details of the anomalous event.
+        # The details of the anomalous activity.
         self.event = event
         # The ID of the request.
         self.request_id = request_id
@@ -74,68 +74,75 @@ class DescribeEventDetailResponseBodyEvent(DaraModel):
         type_name: str = None,
         user_id: int = None,
     ):
-        # The time when the alert for the anomalous event was generated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the alert for the anomalous activity was triggered. This value is a UNIX timestamp. Unit: milliseconds.
         self.alert_time = alert_time
-        # Indicates whether the handling result of the anomalous event is used to enhance the detection of anomalous events. Valid values:
+        # Indicates whether the detection of the anomalous activity is enhanced. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes.
         # 
-        # > If you enhance the detection of anomalous events, the detection accuracy and the rate of triggering alerts for anomalous events are improved.
+        # - **false**: no.
+        # 
+        # > Enhancing the detection of anomalous activities improves detection accuracy and the alert reporting rate.
         self.backed = backed
-        # The instance name of the service in which the anomalous event was detected.
+        # The name of the asset instance in which the anomalous activity occurred.
         self.data_instance = data_instance
-        # The display name of the account that is used to handle the anomalous event.
+        # The display name of the account that handled the anomalous activity.
         self.deal_display_name = deal_display_name
-        # The username of the account that is used to handle the anomalous event.
+        # The logon name of the account that handled the anomalous activity.
         self.deal_login_name = deal_login_name
-        # The reason why the anomalous event is handled.
+        # The reason for handling the anomalous activity.
         self.deal_reason = deal_reason
-        # The time when the anomalous event was handled. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the anomalous activity was handled. This value is a UNIX timestamp. Unit: milliseconds.
         self.deal_time = deal_time
-        # The ID of the account that is used to handle the anomalous event.
+        # The ID of the account that handled the anomalous activity.
         self.deal_user_id = deal_user_id
-        # The content in the details of the anomalous event.
+        # The specific content of the anomalous activity details.
         self.detail = detail
-        # The display name of the account that triggered the anomalous event.
+        # The display name of the account that performed the operation.
         self.display_name = display_name
-        # The time when the anomalous event occurred. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the anomalous activity occurred. This value is a UNIX timestamp. Unit: milliseconds.
         self.event_time = event_time
-        # An array that consists of the handling records of the anomalous event.
+        # The handling history.
         self.handle_info_list = handle_info_list
-        # The unique ID of the anomalous event.
+        # The unique ID of the anomalous activity that is recorded in Data Security Center.
         self.id = id
-        # The details of the alert logs.
+        # The details of the alert log.
         self.log_detail = log_detail
-        # The username of the account that triggered the anomalous event.
+        # The name of the account that performed the operation.
         self.login_name = login_name
-        # Whether it is a new version of the alarm. Value:
-        # - **true**: Yes. 
-        # - **false**: No.
+        # Indicates whether the alert is of the new version. Valid values:
+        # 
+        # - **true**: yes.
+        # 
+        # - **false**: no.
         self.new_alarm = new_alarm
-        # The name of the service in which the anomalous event was detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The name of the product in which the anomalous activity is detected. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
-        # The handling status for the anomalous event. Valid values:
+        # The processing status of the anomalous activity. Valid values:
         # 
-        # *   **0**: unhandled
-        # *   **1**: confirmed
-        # *   **2**: marked as false positive
+        # - **0**: unhandled.
+        # 
+        # - **1**: confirmed.
+        # 
+        # - **2**: dismissed.
         self.status = status
-        # The name of the handling status for the anomalous event.
+        # The name of the processing status of the anomalous activity.
         self.status_name = status_name
-        # The code of the anomalous event subtype.
+        # The code of the anomalous activity subtype.
         self.sub_type_code = sub_type_code
-        # The name of the anomalous event subtype.
+        # The name of the anomalous activity subtype.
         self.sub_type_name = sub_type_name
-        # The code of the anomalous event type.
+        # The code of the anomalous activity type.
         self.type_code = type_code
-        # The name of the anomalous event type. Valid values:
+        # The name of the anomalous activity type. Valid values:
         # 
-        # *   **01**: anomalous permission usage
-        # *   **02**: anomalous data flow
-        # *   **03**: anomalous data operation
+        # - **01**: anomalous permission access.
+        # 
+        # - **02**: anomalous data flow.
+        # 
+        # - **03**: anomalous data operation.
         self.type_name = type_name
-        # The ID of the account that triggered the anomalous event.
+        # The ID of the account that performed the operation.
         self.user_id = user_id
 
     def validate(self):
@@ -319,26 +326,29 @@ class DescribeEventDetailResponseBodyEventHandleInfoList(DaraModel):
         id: int = None,
         status: int = None,
     ):
-        # The account that is used to handle the anomalous event.
+        # Specifies the account that handled the event.
         self.current_value = current_value
-        # The time when the account is disabled. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the handling action was disabled. This value is a UNIX timestamp. Unit: milliseconds.
         self.disable_time = disable_time
-        # The time when the disabled account is enabled. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the handling action was enabled. This value is a UNIX timestamp. Unit: milliseconds.
         self.enable_time = enable_time
         # The handling method.
         self.handler_name = handler_name
-        # The type of the handling method.
+        # The handling type.
         self.handler_type = handler_type
-        # The duration for which the handling operation takes effect. If you leave this parameter empty, the handling operation is permanently valid. Unit: minutes.
+        # The duration of the handling action. Unit: minutes. If this parameter is empty, the handling action is permanent.
         self.handler_value = handler_value
-        # The ID of the handling rule.
+        # The handling ID.
         self.id = id
-        # The status of the account that triggered the anomalous event. Valid values:
+        # The status of the handling action. Valid values:
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled
-        # *   **-1**: failed to disable the account
-        # *   **-2**: failed to enable the account
+        # - **0**: disabled.
+        # 
+        # - **1**: enabled.
+        # 
+        # - **-1**: disabling failed.
+        # 
+        # - **-2**: enabling failed.
         self.status = status
 
     def validate(self):
@@ -410,11 +420,11 @@ class DescribeEventDetailResponseBodyEventDetail(DaraModel):
         content: List[main_models.DescribeEventDetailResponseBodyEventDetailContent] = None,
         resource_info: List[main_models.DescribeEventDetailResponseBodyEventDetailResourceInfo] = None,
     ):
-        # The baseline behavior chart of the anomalous event.
+        # The baseline behavior profile for the anomalous activity.
         self.chart = chart
-        # The content in the anomalous event.
+        # The content of the anomalous activity.
         self.content = content
-        # An array that consists of the source from which the information of the anomalous event is recorded.
+        # The information about the source of the anomalous activity.
         self.resource_info = resource_info
 
     def validate(self):
@@ -481,9 +491,9 @@ class DescribeEventDetailResponseBodyEventDetailResourceInfo(DaraModel):
         label: str = None,
         value: str = None,
     ):
-        # The source title.
+        # The title of the source of the anomalous activity.
         self.label = label
-        # The source description.
+        # The description of the source of the anomalous activity.
         self.value = value
 
     def validate(self):
@@ -519,11 +529,11 @@ class DescribeEventDetailResponseBodyEventDetailContent(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The title of the content in the anomalous event.
+        # The title of the anomalous activity content.
         self.label = label
-        # Exception event name.
+        # The name of the anomalous activity.
         self.name = name
-        # The description of the content in the anomalous event.
+        # The description of the anomalous activity content.
         self.value = value
 
     def validate(self):
@@ -572,31 +582,33 @@ class DescribeEventDetailResponseBodyEventDetailChart(DaraModel):
     ):
         # The type of the chart. Valid values:
         # 
-        # *   **1**: column chart
-        # *   **2**: line chart
+        # - **1**: column chart.
         # 
-        # >This field will be returned only when NewAlarm is true.
+        # - **2**: line chart.
+        # 
+        # > This parameter is returned only when NewAlarm is set to true.
         self.chat_type = chat_type
-        # The data in the baseline behavior profile of the anomalous event.
+        # The data items of the baseline behavior profile for the anomalous activity.
         self.data = data
-        # The name of the baseline behavior chart of the anomalous event.
+        # The name of the baseline behavior profile for the anomalous activity.
         self.label = label
-        # Icon title.
+        # The title of the chart.
         # 
-        # >This field will be returned only when NewAlarm is true.
+        # > This parameter is returned only when NewAlarm is set to true.
         self.name = name
         # The type of the chart. Valid values:
         # 
-        # *   **1**: column chart
-        # *   **2**: line chart
-        self.type = type
-        # The descriptive label of data items on the X axis.
-        self.xlabel = xlabel
-        # The descriptive label of data items on the Y axis.
-        self.ylabel = ylabel
-        # The descriptive label of data items on the Z axis.
+        # - **1**: column chart.
         # 
-        # >This field will be returned only when NewAlarm is true.
+        # - **2**: line chart.
+        self.type = type
+        # The label of the x-axis.
+        self.xlabel = xlabel
+        # The label of the y-axis.
+        self.ylabel = ylabel
+        # The label of the z-axis.
+        # 
+        # > This parameter is returned only when NewAlarm is set to true.
         self.zlabel = zlabel
 
     def validate(self):
@@ -670,11 +682,11 @@ class DescribeEventDetailResponseBodyEventDetailChartData(DaraModel):
         y: List[str] = None,
         z: List[str] = None,
     ):
-        # The value of the data item on the X axis.
+        # The values of the data items on the x-axis.
         self.x = x
-        # The value of the data item on the Y axis.
+        # The values of the data items on the y-axis.
         self.y = y
-        # The value of the data item for the Z axis.
+        # The values of the data items on the z-axis.
         self.z = z
 
     def validate(self):
