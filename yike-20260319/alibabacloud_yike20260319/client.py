@@ -2467,6 +2467,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.submit_yike_storyboard_job_with_options_async(request, runtime)
 
+    def submit_yike_video_clone_job_with_options(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeVideoCloneJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeVideoCloneJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_yike_video_clone_job_with_options_async(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeVideoCloneJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeVideoCloneJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_yike_video_clone_job(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_yike_video_clone_job_with_options(request, runtime)
+
+    async def submit_yike_video_clone_job_async(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_yike_video_clone_job_with_options_async(request, runtime)
+
     def submit_yike_voice_narrator_job_with_options(
         self,
         request: main_models.SubmitYikeVoiceNarratorJobRequest,

@@ -99,6 +99,9 @@ from ._submit_yike_prompt_expansion_voice_fix_job_response import SubmitYikeProm
 from ._submit_yike_storyboard_job_request import SubmitYikeStoryboardJobRequest
 from ._submit_yike_storyboard_job_response_body import SubmitYikeStoryboardJobResponseBody
 from ._submit_yike_storyboard_job_response import SubmitYikeStoryboardJobResponse
+from ._submit_yike_video_clone_job_request import SubmitYikeVideoCloneJobRequest
+from ._submit_yike_video_clone_job_response_body import SubmitYikeVideoCloneJobResponseBody
+from ._submit_yike_video_clone_job_response import SubmitYikeVideoCloneJobResponse
 from ._submit_yike_voice_narrator_job_request import SubmitYikeVoiceNarratorJobRequest
 from ._submit_yike_voice_narrator_job_response_body import SubmitYikeVoiceNarratorJobResponseBody
 from ._submit_yike_voice_narrator_job_response import SubmitYikeVoiceNarratorJobResponse
@@ -244,6 +247,9 @@ __all__ = [
     SubmitYikeStoryboardJobRequest,
     SubmitYikeStoryboardJobResponseBody,
     SubmitYikeStoryboardJobResponse,
+    SubmitYikeVideoCloneJobRequest,
+    SubmitYikeVideoCloneJobResponseBody,
+    SubmitYikeVideoCloneJobResponse,
     SubmitYikeVoiceNarratorJobRequest,
     SubmitYikeVoiceNarratorJobResponseBody,
     SubmitYikeVoiceNarratorJobResponse,

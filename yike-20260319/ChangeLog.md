@@ -1,3 +1,7 @@
+2026-07-02 Version: 1.8.0
+- Support API SubmitYikeVideoCloneJob.
+
+
 2026-06-30 Version: 1.7.0
 - Support API GetYikeProjectExportJob.
 - Support API SubmitYikeProjectExportJob.
