@@ -16,19 +16,19 @@ class ListAgentsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
-        # Request ID, which can be used for end-to-end Diagnosis
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code  
-        # - `code == Success` indicates successful authorization;  
-        # - Other status codes indicate authorization failure. When authorization fails, view the `message` field to obtain detailed error message;
+        # The status code.
+        # - If code is Success, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the message field for the detailed fault information.
         self.code = code
-        # Returned Data
+        # The returned data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
+        # The error message.
+        # - If code is Success, this field is empty.
         # - Otherwise, this field contains the request error message.
         self.message = message
-        # Total number of records.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -95,23 +95,23 @@ class ListAgentsResponseBodyData(DaraModel):
         updated_at: str = None,
         versions: List[main_models.ListAgentsResponseBodyDataVersions] = None,
     ):
-        # Widget creation time
+        # The time when the component was created.
         self.created_at = created_at
-        # Widget description
+        # The component description.
         self.description = description
-        # Widget ID
+        # The component ID.
         self.id = id
-        # Widget name
+        # The component name.
         self.name = name
-        # Supported architecture (multiple architectures separated by commas)
+        # The supported architectures. Multiple architectures are separated by commas.
         self.support_arch = support_arch
-        # Widget type  
-        # - Control: control-type widget  
-        # - AI: AI widget
+        # The type of the component. Valid values:
+        # - Control: control-type component.
+        # - AI: AI component.
         self.type = type
-        # Widget Update Time
+        # The time when the component was last updated.
         self.updated_at = updated_at
-        # Widget Version List
+        # The list of component versions.
         self.versions = versions
 
     def validate(self):
@@ -194,17 +194,17 @@ class ListAgentsResponseBodyDataVersions(DaraModel):
         upgrade_script: str = None,
         version: str = None,
     ):
-        # Widget version creation time
+        # The time when the component version was created.
         self.created_at = created_at
-        # The widget\\"s install script
+        # The installation script of the component.
         self.install_script = install_script
-        # Widget uninstall script
+        # The uninstallation script of the component.
         self.uninstall_script = uninstall_script
-        # Widget version update time
+        # The time when the component version was last updated.
         self.updated_at = updated_at
-        # Widget upgrade script
+        # The update script of the component.
         self.upgrade_script = upgrade_script
-        # Widget version number
+        # The component version number.
         self.version = version
 
     def validate(self):

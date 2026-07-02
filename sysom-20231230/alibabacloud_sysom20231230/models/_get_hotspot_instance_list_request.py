@@ -11,11 +11,11 @@ class GetHotspotInstanceListRequest(DaraModel):
         beg_start: int = None,
         table: str = None,
     ):
-        # stop time
+        # End time
         # 
         # This parameter is required.
         self.beg_end = beg_end
-        # start time
+        # Start time
         # 
         # This parameter is required.
         self.beg_start = beg_start

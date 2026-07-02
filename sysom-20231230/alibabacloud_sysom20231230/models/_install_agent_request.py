@@ -15,22 +15,23 @@ class InstallAgentRequest(DaraModel):
         install_type: str = None,
         instances: List[main_models.InstallAgentRequestInstances] = None,
     ):
-        # ID of the widget to install
+        # The ID of the component to install.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # Version of the widget to install
+        # The version of the component to install.
         # 
         # This parameter is required.
         self.agent_version = agent_version
-        # Installation Type:  
-        # - InstallAndUpgrade: Install if not present; update if present.  
-        # - OnlyInstallNotHasAgent: Install if not present; do nothing if present.  
-        # - OnlyUpgradeHasAgent: Do nothing if not present; update if present.
+        # The installation type. Valid values:
+        # - InstallAndUpgrade: installs the component if it does not exist, or updates it if it exists.
+        # - OnlyInstallNotHasAgent: installs the component if it does not exist, or takes no action if it exists.
+        # - OnlyUpgradeHasAgent: takes no action if the component does not exist, or updates it if it exists.
+        # - OnlyInstallWithoutStart: installs the component only without starting the service.
         # 
         # This parameter is required.
         self.install_type = install_type
-        # List of instances on which to install the widget
+        # The list of instances on which to install the component.
         # 
         # This parameter is required.
         self.instances = instances
@@ -87,11 +88,11 @@ class InstallAgentRequestInstances(DaraModel):
         instance: str = None,
         region: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance = instance
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region = region

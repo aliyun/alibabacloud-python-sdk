@@ -24,37 +24,37 @@ class ListInstancesWithEcsInfoRequest(DaraModel):
         resource_group_id_name: str = None,
         resource_group_name: str = None,
     ):
-        # This field exists when using paging and indicates the current page.
+        # The page number for pagination. This parameter specifies the current page.
         self.current = current
-        # Filter instances by health status.
+        # Filters instances by health status.
         self.health_status = health_status
-        # If this field is specified, filter the Agent installation status for the specified instance.
+        # Specifies an instance ID to filter the Agent installation status of the specified instance.
         self.instance_id = instance_id
-        # Filter by instance name or instance ID. Fuzzy query is supported.
+        # Filters instances by instance name or instance ID. Fuzzy match is supported.
         self.instance_id_name = instance_id_name
-        # Widget instance name.
+        # The name of the component instance.
         self.instance_name = instance_name
-        # Filter by tags of instances.
+        # Filters instances by instance tag.
         self.instance_tag = instance_tag
-        # Filter instances by managed status.
+        # Filters instances by management status.
         self.is_managed = is_managed
-        # Filter instances by operating system name.
+        # Filters instances by operating system name.
         self.os_name = os_name
-        # Page size. Default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Filter instances by private IP address.
+        # Filters instances by private IP address.
         self.private_ip = private_ip
-        # Filter instances by public IP address.
+        # Filters instances by public IP address.
         self.public_ip = public_ip
-        # Filter instances by region.
+        # Filters instances by region.
         # 
         # This parameter is required.
         self.region = region
-        # Filter instances by resource group ID.
+        # Filters instances by resource group ID.
         self.resource_group_id = resource_group_id
-        # Filter by resource group name or resource group ID. Fuzzy query is supported.
+        # Filters instances by resource group name or resource group ID. Fuzzy match is supported.
         self.resource_group_id_name = resource_group_id_name
-        # Filter instances by resource group name.
+        # Filters instances by resource group name.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -169,9 +169,9 @@ class ListInstancesWithEcsInfoRequestInstanceTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

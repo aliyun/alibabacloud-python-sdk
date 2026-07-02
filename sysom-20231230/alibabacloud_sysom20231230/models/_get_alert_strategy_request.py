@@ -9,7 +9,7 @@ class GetAlertStrategyRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # Policy ID
+        # The policy ID.
         self.id = id
 
     def validate(self):

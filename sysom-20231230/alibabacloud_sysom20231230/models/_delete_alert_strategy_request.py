@@ -9,7 +9,7 @@ class DeleteAlertStrategyRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # Alert policy ID
+        # The ID of the alert policy.
         # 
         # This parameter is required.
         self.id = id

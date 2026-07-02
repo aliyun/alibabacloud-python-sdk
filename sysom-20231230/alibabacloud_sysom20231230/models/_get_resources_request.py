@@ -11,11 +11,11 @@ class GetResourcesRequest(DaraModel):
         instance: str = None,
         type: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster = cluster
-        # Instance ID.
+        # The instance ID.
         self.instance = instance
-        # Resource type
+        # The resource type.
         self.type = type
 
     def validate(self):

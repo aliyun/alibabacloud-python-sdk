@@ -12,15 +12,15 @@ class GetRangeScoreRequest(DaraModel):
         instance: str = None,
         start: float = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster = cluster
-        # End Time
+        # The end time.
         # 
         # This parameter is required.
         self.end = end
-        # Instance ID.
+        # The instance ID.
         self.instance = instance
-        # Start Time
+        # The start time.
         # 
         # This parameter is required.
         self.start = start

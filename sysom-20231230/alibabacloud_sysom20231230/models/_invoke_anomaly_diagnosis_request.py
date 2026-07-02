@@ -9,7 +9,7 @@ class InvokeAnomalyDiagnosisRequest(DaraModel):
         self,
         uuid: str = None,
     ):
-        # UUID corresponding to the anomalous activity
+        # The UUID of the anomaly event.
         self.uuid = uuid
 
     def validate(self):

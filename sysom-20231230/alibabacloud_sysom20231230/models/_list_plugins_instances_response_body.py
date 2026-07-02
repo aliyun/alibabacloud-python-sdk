@@ -16,17 +16,17 @@ class ListPluginsInstancesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Status code  
-        # - `code == Success` indicates successful authorization;  
-        # - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Return Result.
+        # The returned result.
         self.data = data
-        # Description
+        # The description.
         self.message = message
-        # Request RequestId
+        # The request ID.
         self.request_id = request_id
-        # Total number of query results.
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -94,23 +94,23 @@ class ListPluginsInstancesResponseBodyData(DaraModel):
         resource_group_id: str = None,
         resource_group_name: str = None,
     ):
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Widget instance name.
+        # The component instance name.
         self.instance_name = instance_name
-        # Tags of instances
+        # The instance tag.
         self.instance_tag = instance_tag
-        # Operating system name of the instance
+        # The operating system name of the instance.
         self.os_name = os_name
-        # Private IP address
+        # The private IP address.
         self.private_ip = private_ip
-        # Internet IP address
+        # The public IP address.
         self.public_ip = public_ip
-        # Area where the instance resides
+        # The region where the instance resides.
         self.region = region
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource group name
+        # The resource group name.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -195,9 +195,9 @@ class ListPluginsInstancesResponseBodyDataInstanceTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Name of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # Tag value.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

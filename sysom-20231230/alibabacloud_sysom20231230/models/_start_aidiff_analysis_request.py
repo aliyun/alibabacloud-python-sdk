@@ -13,11 +13,11 @@ class StartAIDiffAnalysisRequest(DaraModel):
         task_1: main_models.StartAIDiffAnalysisRequestTask1 = None,
         task_2: main_models.StartAIDiffAnalysisRequestTask2 = None,
     ):
-        # task1 parameters
+        # The task1 parameters.
         # 
         # This parameter is required.
         self.task_1 = task_1
-        # task2 parameters
+        # The task2 parameters.
         # 
         # This parameter is required.
         self.task_2 = task_2
@@ -61,19 +61,19 @@ class StartAIDiffAnalysisRequestTask2(DaraModel):
         step_end: float = None,
         step_start: float = None,
     ):
-        # AI analysis ID
+        # The AI analysis ID.
         # 
         # This parameter is required.
         self.analysis_id = analysis_id
-        # Process IDs (PIDs) of AI jobs. Batch input is supported, with PIDs separated by commas.
+        # The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
         # 
         # This parameter is required.
         self.pids = pids
-        # Step end time, computed based on the selected step number.
+        # The step end time, calculated based on the selected step number.
         # 
         # This parameter is required.
         self.step_end = step_end
-        # Step start time, computed based on the selected step number.
+        # The step start time, calculated based on the selected step number.
         # 
         # This parameter is required.
         self.step_start = step_start
@@ -124,13 +124,13 @@ class StartAIDiffAnalysisRequestTask1(DaraModel):
         step_end: float = None,
         step_start: float = None,
     ):
-        # AI analysis ID
+        # The AI analysis ID.
         self.analysis_id = analysis_id
-        # PIDs of AI job processes; batch input is supported, separated by commas
+        # The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
         self.pids = pids
-        # Step end time, computed based on the selected step number
+        # The step end time, calculated based on the selected step number.
         self.step_end = step_end
-        # Step start time, computed based on the selected step number
+        # The step start time, calculated based on the selected step number.
         self.step_start = step_start
 
     def validate(self):

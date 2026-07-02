@@ -34,7 +34,7 @@ class GetHotspotCompareRequest(DaraModel):
         # 
         # This parameter is required.
         self.beg_2start = beg_2start
-        # Hot spot type
+        # Hotspot type
         self.hot_type = hot_type
         # Instance 1
         # 
@@ -44,9 +44,9 @@ class GetHotspotCompareRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_2 = instance_2
-        # Process of instance 1
+        # Instance 1 process
         self.pid_1 = pid_1
-        # Process of instance 2
+        # Instance 2 process
         self.pid_2 = pid_2
         # Query table name
         # 

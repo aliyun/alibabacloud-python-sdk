@@ -9,6 +9,7 @@ class GetInspectionReportRequest(DaraModel):
         self,
         report_id: str = None,
     ):
+        # The inspection report ID.
         self.report_id = report_id
 
     def validate(self):

@@ -16,19 +16,19 @@ class GetHostCountResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Status code  
-        # - If `code == Success`, authorization succeeded.  
-        # - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
-        # Request RequestId
+        # The request ID.
         self.request_id = request_id
-        # Total number of entries.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -89,9 +89,9 @@ class GetHostCountResponseBodyData(DaraModel):
         time: int = None,
         value: int = None,
     ):
-        # Time point
+        # The point in time.
         self.time = time
-        # Quantity
+        # The count.
         self.value = value
 
     def validate(self):

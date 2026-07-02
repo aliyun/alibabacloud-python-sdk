@@ -15,10 +15,15 @@ class CreateInstanceInspectionRequest(DaraModel):
         region: str = None,
         source: str = None,
     ):
+        # The instance ID.
         self.instance = instance
+        # 异常项
         self.items = items
+        # The metric source.
         self.metric_source = metric_source
+        # The region to which the instance belongs.
         self.region = region
+        # The source.
         self.source = source
 
     def validate(self):

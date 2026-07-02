@@ -15,16 +15,16 @@ class CreateAlertStrategyRequest(DaraModel):
         name: str = None,
         strategy: main_models.CreateAlertStrategyRequestStrategy = None,
     ):
-        # Whether the alert policy is enabled
+        # Specifies whether the alert strategy is enabled.
         # 
         # This parameter is required.
         self.enabled = enabled
         self.k_8s_label = k_8s_label
-        # Alert policy name
+        # The name of the alert strategy.
         # 
         # This parameter is required.
         self.name = name
-        # Details of the alert policy
+        # The details of the alert strategy.
         # 
         # This parameter is required.
         self.strategy = strategy
@@ -76,10 +76,10 @@ class CreateAlertStrategyRequestStrategy(DaraModel):
         destinations: List[int] = None,
         items: List[str] = None,
     ):
-        # Set of clusters that receive alerts
+        # The collection of clusters for which alerts are received.
         self.clusters = clusters
         self.destinations = destinations
-        # Set of abnormal items that trigger alerts
+        # The collection of anomaly items for which alerts are received.
         self.items = items
 
     def validate(self):

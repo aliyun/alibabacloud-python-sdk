@@ -16,15 +16,15 @@ class ListInstancesWithEcsInfoResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message. An empty value indicates that the data has been read completely.
+        # The error message. An empty value indicates that all data has been read.
         self.message = message
-        # Request RequestId
+        # The request ID.
         self.request_id = request_id
-        # Total number of records
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -96,35 +96,37 @@ class ListInstancesWithEcsInfoResponseBodyData(DaraModel):
         resource_group_name: str = None,
         status: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instance Name.
+        # The instance name.
         self.instance_name = instance_name
-        # tags of instances
+        # The instance tags.
         self.instance_tag = instance_tag
-        # Milvus version
+        # The kernel version.
         self.kernel_version = kernel_version
-        # ECS instance architecture
+        # The architecture of the ECS instance.
         self.os_arch = os_arch
-        # Instance health score
+        # The health score of the instance.
         self.os_health_score = os_health_score
-        # The operating system name of the instance
+        # The operating system name of the instance.
         self.os_name = os_name
-        # Instance private IP
+        # The private IP address of the instance.
         self.private_ip = private_ip
-        # Instance Internet IP
+        # The public IP address of the instance.
         self.public_ip = public_ip
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource group name
+        # The resource group name.
         self.resource_group_name = resource_group_name
-        # The running status of the instance. Valid values:  
-        # - **Running**: The instance is running.  
-        # - **Offline**: The instance is offline.  
+        # The running status of the instance. Valid values:
+        # - **Running**: The instance is running.
+        # - **Offline**: The instance is offline.
         # 
-        # > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM Server has been lost. This does not mean that the corresponding ECS instance is not running.
+        # 
+        # 
+        # > An instance in the Offline state indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance has stopped running.
         self.status = status
 
     def validate(self):
@@ -233,9 +235,9 @@ class ListInstancesWithEcsInfoResponseBodyDataInstanceTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Name of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # Tag value.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

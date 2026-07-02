@@ -18,19 +18,19 @@ class ListAllInstancesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # Status code
+        # Status code.
         self.code = code
-        # Returned data
+        # Returned data.
         self.data = data
-        # Maximum number of returned items
+        # Maximum number of results returned.
         self.max_results = max_results
-        # Error message:
+        # Error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message of the request.
+        # - Otherwise, this field contains the request error message.
         self.message = message
-        # Paging cursor.
+        # Pagination token.
         # 
-        # > If not empty, more data is available.
+        # > A non-empty value indicates that more data is available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -127,53 +127,55 @@ class ListAllInstancesResponseBodyData(DaraModel):
         resource_group_name: str = None,
         status: str = None,
     ):
-        # Agent configuration ID
+        # Agent configuration ID.
         self.agent_config_id = agent_config_id
-        # Agent configuration name
+        # Agent configuration name.
         self.agent_config_name = agent_config_name
-        # Extension information.
+        # Extended information.
         self.attributes = attributes
-        # Cluster ID
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # Cluster name
+        # Cluster name.
         self.cluster_name = cluster_name
         # Image ID.
         self.image_id = image_id
-        # Installation level
+        # Installation level.
         self.install_level = install_level
-        # Installation type
+        # Installation type.
         self.install_type = install_type
-        # Instance ID
+        # Instance ID.
         self.instance_id = instance_id
         # Instance name.
         self.instance_name = instance_name
-        # Instance type
+        # Instance type.
         self.instance_type = instance_type
-        # Milvus version
+        # Kernel version.
         self.kernel_version = kernel_version
-        # Management level
+        # Management level.
         self.manage_level = manage_level
-        # Management type
+        # Management type.
         self.manage_type = manage_type
-        # Operating system architecture
+        # Operating system architecture.
         self.os_arch = os_arch
-        # Operating system health score
+        # Operating system health score.
         self.os_health_score = os_health_score
-        # Operating system name
+        # Operating system name.
         self.os_name = os_name
         # Private IP address.
         self.private_ip = private_ip
         # Public IP address.
         self.public_ip = public_ip
-        # The resource group ID.
+        # Resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource group name
+        # Resource group name.
         self.resource_group_name = resource_group_name
-        # The running status of the instance. Valid values:
+        # Running status of the instance. Valid values:
         # - **Running**: The instance is running.
         # - **Offline**: The instance is offline.
         # 
-        # > An instance in the Offline state indicates that the heartbeat from the edge zone to the SysOM Server has been lost. It does not mean that the corresponding ECS instance is not running.
+        # 
+        # 
+        # > An instance in the Offline status indicates that the heartbeat from the node to the SysOM server is lost. It does not necessarily mean that the corresponding ECS instance is not running.
         self.status = status
 
     def validate(self):
@@ -337,11 +339,11 @@ class ListAllInstancesResponseBodyDataAttributes(DaraModel):
         info_type: str = None,
         info_value: str = None,
     ):
-        # information key
+        # Information key.
         self.info_key = info_key
-        # information type
+        # Information type.
         self.info_type = info_type
-        # information value
+        # Information value.
         self.info_value = info_value
 
     def validate(self):

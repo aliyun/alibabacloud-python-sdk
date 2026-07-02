@@ -13,13 +13,13 @@ class CreateAlertDestinationRequest(DaraModel):
         source: str = None,
         target: str = None,
     ):
-        # Alert contact name
+        # The name of the alert contact.
         self.name = name
-        # Configuration parameters for the alert contact
+        # The configuration parameters of the alert contact.
         self.params = params
-        # Configuration source
+        # The configuration source.
         self.source = source
-        # Push Target. Currently, only DingTalk Robot is supported.
+        # The notification target. Currently, only DingTalk chatbots are supported.
         self.target = target
 
     def validate(self):
@@ -70,13 +70,13 @@ class CreateAlertDestinationRequestParams(DaraModel):
         sec: str = None,
         webhook: str = None,
     ):
-        # Email
+        # The email address.
         self.email = email
-        # Phone number
+        # The phone number.
         self.phone = phone
-        # Robot key
+        # The secret key of the chatbot.
         self.sec = sec
-        # Robot link
+        # The webhook URL of the chatbot.
         self.webhook = webhook
 
     def validate(self):

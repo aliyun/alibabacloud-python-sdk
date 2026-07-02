@@ -14,17 +14,17 @@ class AuthDiagnosisResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code
-        # - If `code == Success`, the authorization succeeded.
-        # - Any other status code indicates that the authorization failed. In this case, check the `message` field for detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # This API returns no data.
+        # This operation does not return data.
         self.data = data
-        # Error message
+        # The error message.
         # - If `code == Success`, this field is empty.
-        # - Otherwise, this field contains the error message.
+        # - Otherwise, this field contains the error information of the request.
         self.message = message
-        # Request RequestId
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetAlertDestinationRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # Alert contact ID
+        # The alert contact ID.
         self.id = id
 
     def validate(self):

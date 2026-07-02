@@ -15,13 +15,13 @@ class CheckInstanceSupportResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code  
-        # - `code == Success` indicates that authorization succeeded.  
-        # - Other status codes indicate that authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message. When code != Success, the error message is stored here.
+        # The error message. This field contains the error information when code is not Success.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -79,13 +79,13 @@ class CheckInstanceSupportResponseBodyData(DaraModel):
         reason: str = None,
         support: bool = None,
     ):
-        # ECS instance ID
+        # The ECS instance ID.
         self.instance = instance
-        # When `success` is false, this value is not empty and indicates the reason why the instance cannot be managed by SysOM.
+        # The reason why the instance cannot be managed. This field is not empty when success is false.
         self.reason = reason
-        # Indicates whether the instance can be managed by SysOM.  
+        # Indicates whether the instance can be managed by SysOM.
         # 
-        # - **true**: The instance can be managed by SysOM.  
+        # - **true**: The instance can be managed by SysOM.
         # 
         # - **false**: The instance cannot be managed by SysOM.
         self.support = support

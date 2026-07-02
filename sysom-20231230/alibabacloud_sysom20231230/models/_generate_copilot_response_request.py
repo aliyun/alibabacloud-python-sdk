@@ -9,7 +9,7 @@ class GenerateCopilotResponseRequest(DaraModel):
         self,
         llm_param_string: str = None,
     ):
-        # Input parameter for integrating with the copilot LLM service. Refer to the standard LLM API input parameter dict, convert it into a string, and pass it in llmParamString.
+        # Input parameters for the copilot LLM service. Refer to the standard LLM API input parameter dict, which needs to be converted to a string and passed into llmParamString
         self.llm_param_string = llm_param_string
 
     def validate(self):

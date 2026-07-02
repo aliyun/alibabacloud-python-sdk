@@ -16,19 +16,19 @@ class ListAgentInstallRecordsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
-        # Request ID, which can be used for end-to-end Diagnosis
+        # The request ID, which is active for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code  
-        # - `code == Success` indicates successful authorization;  
-        # - Other status codes indicate failed authorization. When authorization fails, view the `message` field to obtain detailed error message;
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Return Result.
+        # The returned results.
         self.data = data
-        # error message  
-        # - If `code == Success`, this field is empty;  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the error message for the request.
         self.message = message
-        # Total number of records.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -93,17 +93,17 @@ class ListAgentInstallRecordsResponseBodyData(DaraModel):
         status: str = None,
         updated_at: str = None,
     ):
-        # Creation Time
+        # The creation time.
         self.created_at = created_at
-        # instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # widget ID
+        # The component ID.
         self.plugin_id = plugin_id
-        # plugin Version
+        # The plug-in version.
         self.plugin_version = plugin_version
-        # widget status
+        # The component status.
         self.status = status
-        # Updated At
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

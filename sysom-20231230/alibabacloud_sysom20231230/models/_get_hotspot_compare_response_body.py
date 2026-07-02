@@ -16,15 +16,15 @@ class GetHotspotCompareResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # error code
+        # Error code
         self.code = code
-        # Returned data
+        # Response data
         self.data = data
-        # Return message
+        # Response message
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # true indicates that the API call succeeded; false indicates that the API call failed.
+        # true: API call succeeded; false: API call failed
         self.success = success
 
     def validate(self):
@@ -82,9 +82,9 @@ class GetHotspotCompareResponseBodyData(DaraModel):
     ):
         # Differential flame graph data
         self.flame = flame
-        # Hot spot timing series 1
+        # Hotspot time series 1
         self.series_instance_1 = series_instance_1
-        # Hot spot metric series 2
+        # Hotspot time series 2
         self.series_instance_2 = series_instance_2
 
     def validate(self):
@@ -133,9 +133,9 @@ class GetHotspotCompareResponseBodyDataSeriesInstance2(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
-        # List of column names
+        # Field name list
         self.columns = columns
-        # List of hot spot metric data
+        # Hotspot time series data list
         self.values = values
 
     def validate(self):
@@ -170,9 +170,9 @@ class GetHotspotCompareResponseBodyDataSeriesInstance1(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
-        # List of column names
+        # Field name list
         self.columns = columns
-        # List of hot spot metric data
+        # Hotspot time series data list
         self.values = values
 
     def validate(self):
@@ -207,9 +207,9 @@ class GetHotspotCompareResponseBodyDataFlame(DaraModel):
         columns: List[str] = None,
         values: List[List[str]] = None,
     ):
-        # List of column names
+        # Field name list
         self.columns = columns
-        # List of flame graph data
+        # Flame graph data list
         self.values = values
 
     def validate(self):

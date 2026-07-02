@@ -13,15 +13,15 @@ class ListAlertDestinationsRequest(DaraModel):
         next_token: str = None,
         page_size: int = None,
     ):
-        # Current page number (starts from 1).
+        # Current page number (starting from 1)
         self.current = current
-        # Maximum number of records retrieved in a single request.
+        # Maximum number of records to retrieve at a time.
         self.max_results = max_results
-        # Alert contact name.
+        # Alert contact name
         self.name = name
-        # Paging token for the next request.
+        # Pagination token for the next request.
         self.next_token = next_token
-        # Page size.
+        # Page size
         self.page_size = page_size
 
     def validate(self):

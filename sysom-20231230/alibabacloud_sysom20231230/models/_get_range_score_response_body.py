@@ -16,19 +16,19 @@ class GetRangeScoreResponseBody(DaraModel):
         request_id: str = None,
         total: float = None,
     ):
-        # Status code  
-        # - If `code == Success`, authorization succeeded.  
-        # - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
-        # Request RequestId
+        # The request ID.
         self.request_id = request_id
-        # Total data volume.
+        # The total amount of data.
         self.total = total
 
     def validate(self):
@@ -90,11 +90,11 @@ class GetRangeScoreResponseBodyData(DaraModel):
         type: str = None,
         value: int = None,
     ):
-        # Time point
+        # The point in time.
         self.time = time
-        # Metric type
+        # The metric type.
         self.type = type
-        # Score
+        # The score.
         self.value = value
 
     def validate(self):

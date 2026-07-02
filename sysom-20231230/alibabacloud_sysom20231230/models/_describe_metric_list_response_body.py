@@ -15,14 +15,14 @@ class DescribeMetricListResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code  
-        # - `code == Success` indicates successful authorization;  
-        # - Any other status code indicates authorization failure. When authorization fails, check the `message` field for detailed error information.
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
+        # The error message.
+        # - If `code == Success`, this field is empty.
         # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
@@ -81,11 +81,11 @@ class DescribeMetricListResponseBodyData(DaraModel):
         metric_name: str = None,
         values: List[List[str]] = None,
     ):
-        # Metric labels
+        # The metric labels.
         self.labels = labels
-        # Metric name
+        # The metric name.
         self.metric_name = metric_name
-        # Metric data
+        # The metric data.
         self.values = values
 
     def validate(self):

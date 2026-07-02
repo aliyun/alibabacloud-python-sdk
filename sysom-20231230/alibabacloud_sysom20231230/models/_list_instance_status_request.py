@@ -13,15 +13,15 @@ class ListInstanceStatusRequest(DaraModel):
         region: str = None,
         status: str = None,
     ):
-        # This field exists when paging is used and indicates the current page (starting from 1).
+        # The current page number (starting from 1). This field is present when pagination is used.
         self.current = current
-        # Instance ID.
+        # The instance ID.
         self.instance = instance
-        # Number of entries returned per page. Default value: pageSize=10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region ID.
+        # The region ID.
         self.region = region
-        # Filter the instance list by status. If this field is specified, only instances with the corresponding status are returned.
+        # Filters the instance list by status. If this field is specified, only instances with the corresponding status are returned.
         self.status = status
 
     def validate(self):

@@ -1,3 +1,8 @@
+2026-07-02 Version: 1.18.2
+- Update API GetListRecord: add request parameters analysisId.
+- Update API GetListRecord: add request parameters customId.
+
+
 2026-06-10 Version: 1.18.1
 - Update API CreateInstanceInspection: add request parameters body.metricSource.
 

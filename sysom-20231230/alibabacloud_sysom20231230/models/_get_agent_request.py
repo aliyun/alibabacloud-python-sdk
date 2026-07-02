@@ -9,7 +9,7 @@ class GetAgentRequest(DaraModel):
         self,
         agent_id: str = None,
     ):
-        # Widget ID
+        # Agent ID
         self.agent_id = agent_id
 
     def validate(self):

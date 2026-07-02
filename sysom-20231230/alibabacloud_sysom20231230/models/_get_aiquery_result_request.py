@@ -9,7 +9,7 @@ class GetAIQueryResultRequest(DaraModel):
         self,
         analysis_id: str = None,
     ):
-        # AI analysis ID
+        # The AI analysis ID.
         self.analysis_id = analysis_id
 
     def validate(self):

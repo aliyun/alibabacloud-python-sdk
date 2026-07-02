@@ -11,13 +11,13 @@ class UpgradeAgentForClusterRequest(DaraModel):
         agent_version: str = None,
         cluster_id: str = None,
     ):
-        # widget ID
+        # The component ID.
         self.agent_id = agent_id
-        # widget Version
+        # The component version.
         self.agent_version = agent_version
-        # cluster ID.  
+        # The cluster ID.
         # 
-        # > This cluster ID must be the ID of the ACK cluster.
+        # > The cluster ID must be the ID of an ACK cluster.
         self.cluster_id = cluster_id
 
     def validate(self):

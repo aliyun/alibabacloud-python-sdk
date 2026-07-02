@@ -14,15 +14,15 @@ class UpgradeAgentRequest(DaraModel):
         agent_version: str = None,
         instances: List[main_models.UpgradeAgentRequestInstances] = None,
     ):
-        # ID of the widget to update
+        # The ID of the component to update.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # Version of the widget to update
+        # The version to which the component is updated.
         # 
         # This parameter is required.
         self.agent_version = agent_version
-        # List of instances on which to update the widget
+        # The list of instances for which you want to update the component.
         # 
         # This parameter is required.
         self.instances = instances
@@ -73,11 +73,11 @@ class UpgradeAgentRequestInstances(DaraModel):
         instance: str = None,
         region: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance = instance
-        # Region ID.
+        # The region ID.
         # 
         # This parameter is required.
         self.region = region

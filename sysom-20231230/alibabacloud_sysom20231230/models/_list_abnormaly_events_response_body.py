@@ -15,15 +15,15 @@ class ListAbnormalyEventsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
-        # Status code.  
-        # - If `code == Success`, authorization succeeded.  
-        # - Any other status code indicates authorization failed. When authorization fails, check the `message` field for detailed error message.
+        # The status code.
+        # - `code == Success` indicates that the authorization was successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Return Result.
+        # The returned result.
         self.data = data
-        # Error code description; empty if no error
+        # The error code description. This value is empty if no error occurred.
         self.message = message
-        # Total number of records.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -90,33 +90,38 @@ class ListAbnormalyEventsResponseBodyData(DaraModel):
         type: str = None,
         uuid: str = None,
     ):
-        # Creation Time
+        # The creation time.
         self.created_at = created_at
-        # Detailed description of the anomalous item.
+        # The detailed description of the anomaly item.
         self.description = description
-        # Diagnosis status (1 indicates diagnosis ready, 2 indicates running, 3 indicates completed, 4 indicates undiagnosable, 5 indicates failed)
+        # The diagnostic status. Valid values:
+        # - 1: diagnosis ready.
+        # - 2: diagnosis in progress.
+        # - 3: diagnosis completed.
+        # - 4: not diagnosable.
+        # - 5: diagnosis failed.
         self.diag_status = diag_status
-        # End time of the anomalous activity.
+        # The end time of the anomaly event.
         self.end_at = end_at
-        # Instance ID.
+        # The instance ID.
         self.instance = instance
-        # Name of the anomalous item.
+        # The name of the anomaly item.
         self.item = item
-        # Level of the anomalous item.
+        # The level of the anomaly item.
         self.level = level
-        # Namespace where the pod is located
+        # The namespace of the pod.
         self.namespace = namespace
-        # List of operations for the abnormal item
+        # The list of operations for the anomaly item.
         self.opts = opts
-        # Pod name.
+        # The pod name.
         self.pod = pod
-        # Raw metrics
+        # The raw metrics.
         self.raw_metrics = raw_metrics
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Type of abnormal item
+        # The type of the anomaly item.
         self.type = type
-        # UUID corresponding to the anomalous activity
+        # The UUID of the anomaly event.
         self.uuid = uuid
 
     def validate(self):
@@ -235,11 +240,11 @@ class ListAbnormalyEventsResponseBodyDataRawMetrics(DaraModel):
         metrics: List[str] = None,
         start_time: float = None,
     ):
-        # End Time
+        # The end time.
         self.end_time = end_time
-        # List of metric values.
+        # The list of metric values.
         self.metrics = metrics
-        # Start Time
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -281,11 +286,11 @@ class ListAbnormalyEventsResponseBodyDataOpts(DaraModel):
         result: main_models.ListAbnormalyEventsResponseBodyDataOptsResult = None,
         type: str = None,
     ):
-        # Operation Type
+        # The operation type.
         self.label = label
-        # Diagnosis result of the abnormal item
+        # The diagnostic result of the anomaly item.
         self.result = result
-        # Diagnosis Type
+        # The diagnostic type.
         self.type = type
 
     def validate(self):
@@ -328,9 +333,9 @@ class ListAbnormalyEventsResponseBodyDataOptsResult(DaraModel):
         status: str = None,
         url: str = None,
     ):
-        # Diagnosis status
+        # The diagnostic status.
         self.status = status
-        # Diagnosis details URL
+        # The URL of the diagnostic details.
         self.url = url
 
     def validate(self):

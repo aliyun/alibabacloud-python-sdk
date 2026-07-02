@@ -13,15 +13,15 @@ class GetServiceFuncStatusResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code  
-        # - `code == Success` indicates that authorization succeeded.  
-        # - Any other status code indicates that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Return Result
+        # The returned result.
         self.data = data
-        # error message  
-        # - If `code == Success`, this field is empty;  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -71,7 +71,7 @@ class GetServiceFuncStatusResponseBodyData(DaraModel):
         self,
         args: main_models.GetServiceFuncStatusResponseBodyDataArgs = None,
     ):
-        # Configuration Parameter
+        # The configuration parameters.
         self.args = args
 
     def validate(self):
@@ -107,19 +107,19 @@ class GetServiceFuncStatusResponseBodyDataArgs(DaraModel):
         mem: str = None,
         system_profiling: str = None,
     ):
-        # Configuration process
+        # The configuration process.
         self.add_cmd = add_cmd
-        # ONCPU tracing Toggle
+        # The ONCPU tracing switch.
         self.cpu = cpu
-        # Storage Path
+        # The storage path.
         self.java_store_path = java_store_path
-        # Edit Lock tracing Toggle
+        # The lock tracing switch.
         self.locks = locks
-        # Tracing epoch
+        # The tracing cycle.
         self.loop = loop
-        # Memory tracing Toggle
+        # The memory tracing switch.
         self.mem = mem
-        # System profiling Toggle
+        # The system profiling switch.
         self.system_profiling = system_profiling
 
     def validate(self):

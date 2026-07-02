@@ -12,15 +12,15 @@ class GetProblemPercentageRequest(DaraModel):
         instance: str = None,
         start: float = None,
     ):
-        # Cluster ID
+        # Cluster ID.
         self.cluster = cluster
-        # End Time
+        # End time.
         # 
         # This parameter is required.
         self.end = end
         # Instance ID.
         self.instance = instance
-        # Start Time
+        # Start time.
         # 
         # This parameter is required.
         self.start = start

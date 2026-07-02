@@ -15,17 +15,17 @@ class GetDiagnosisResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code  
-        # - If `code == "Success"`, authorization succeeded.  
-        # - Other status codes indicate authorization failed. When authorization fails, view the `message` field to obtain detailed error information.
+        # The status code.
+        # - `code == Success` indicates that the authorization was successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data.
+        # The response data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
-        # Request RequestId
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,32 +83,32 @@ class GetDiagnosisResultResponseBodyData(DaraModel):
         updated_at: str = None,
         url: str = None,
     ):
-        # Error code (0 indicates no error)
+        # The error code. A value of 0 indicates no error.
         self.code = code
-        # Diagnosis command
+        # The diagnostic command.
         self.command = command
-        # Creation Time
+        # The creation time.
         self.created_at = created_at
-        # Error message
+        # The error message.
         self.err_msg = err_msg
-        # Diagnosis parameters
+        # The diagnostic parameters.
         self.params = params
-        # Diagnosis result
+        # The diagnostic result.
         self.result = result
-        # Diagnosis Type
+        # The diagnostic type.
         self.service_name = service_name
-        # The execution status of the diagnostic task.  
-        # Valid values:  
-        # - **Ready**: Ready  
-        # - **Running**: Running  
-        # - **Success**: Succeeded  
-        # - **Fail**: Failed
+        # The execution status of the diagnostic task.
+        # Valid values:
+        # - **Ready**: ready
+        # - **Running**: running
+        # - **Success**: succeeded
+        # - **Fail**: failed.
         self.status = status
-        # Job ID.
+        # The task ID.
         self.task_id = task_id
-        # Update Time
+        # The update time.
         self.updated_at = updated_at
-        # Diagnosis details URL
+        # The URL of the diagnostic details.
         self.url = url
 
     def validate(self):

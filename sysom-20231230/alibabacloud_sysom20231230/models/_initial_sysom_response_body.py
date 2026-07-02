@@ -13,17 +13,17 @@ class InitialSysomResponseBody(DaraModel):
         data: main_models.InitialSysomResponseBodyData = None,
         message: str = None,
     ):
-        # Request ID, which can be used for end-to-end diagnosis
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code  
-        # - If `code == Success`, authorization succeeded.  
-        # - Any other status code indicates a failed authorization. In such cases, view the `message` field for detailed error information.
+        # The status code.
+        # - `code == Success`: The authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Return Result.
+        # The response data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
 
     def validate(self):
@@ -71,7 +71,7 @@ class InitialSysomResponseBodyData(DaraModel):
         self,
         role_exist: bool = None,
     ):
-        # Indicates whether the service role exists
+        # Indicates whether the service-linked role exists.
         self.role_exist = role_exist
 
     def validate(self):

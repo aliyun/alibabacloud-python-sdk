@@ -22,7 +22,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'sysom.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('sysom', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -2822,8 +2825,12 @@ class Client(OpenApiClient):
     ) -> main_models.GetListRecordResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.analysis_id):
+            query['analysisId'] = request.analysis_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
+        if not DaraCore.is_null(request.custom_id):
+            query['customId'] = request.custom_id
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.region):
@@ -2856,8 +2863,12 @@ class Client(OpenApiClient):
     ) -> main_models.GetListRecordResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.analysis_id):
+            query['analysisId'] = request.analysis_id
         if not DaraCore.is_null(request.current):
             query['current'] = request.current
+        if not DaraCore.is_null(request.custom_id):
+            query['customId'] = request.custom_id
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.region):

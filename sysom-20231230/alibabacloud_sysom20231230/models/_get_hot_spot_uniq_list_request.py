@@ -30,7 +30,7 @@ class GetHotSpotUniqListRequest(DaraModel):
         self.pid = pid
         # Table name
         self.table = table
-        # Identity flag
+        # Identifier flag
         # 
         # This parameter is required.
         self.uniq = uniq

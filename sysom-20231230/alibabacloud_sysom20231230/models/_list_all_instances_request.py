@@ -17,22 +17,22 @@ class ListAllInstancesRequest(DaraModel):
         plugin_id: str = None,
         region: str = None,
     ):
-        # Current page
+        # Current page number.
         self.current = current
         # List of filter information.
         self.filters = filters
         # Instance type.
         self.instance_type = instance_type
-        # Managed type.
+        # Management type.
         self.managed_type = managed_type
-        # Maximum number of records to retrieve in a single request.
+        # Maximum number of records to retrieve at a time.
         self.max_results = max_results
-        # Paging cursor.  
-        # > If this parameter is not empty, it indicates that more data is available.
+        # Pagination token.
+        # > If this parameter is not empty, more data is available.
         self.next_token = next_token
         # Number of entries returned per page. Default value: pageSize=10.
         self.page_size = page_size
-        # Plugin ID
+        # Plugin ID.
         self.plugin_id = plugin_id
         # Region ID.
         self.region = region

@@ -15,17 +15,17 @@ class GetAlertDestinationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code.  
-        # - If `code == Success`, authorization succeeded.  
-        # - Other status codes indicate authorization failed. When authorization fails, check the `message` field for detailed error information.
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message.  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -80,21 +80,21 @@ class GetAlertDestinationResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: str = None,
     ):
-        # Creation Time.
+        # The creation time.
         self.created_at = created_at
-        # Alert contact ID
+        # The alert contact ID.
         self.id = id
-        # Alert contact name
+        # The alert contact name.
         self.name = name
-        # Configuration Parameter
+        # The configuration parameters.
         self.params = params
-        # Configuration source
+        # The configuration source.
         self.source = source
-        # Alert push target. Currently, only DingTalk Robot is supported.
+        # The alert notification target. Currently, only DingTalk chatbots are supported.
         self.target = target
-        # User ID
+        # The user ID.
         self.uid = uid
-        # Update Time.
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

@@ -13,17 +13,17 @@ class UpgradeAgentResponseBody(DaraModel):
         data: main_models.UpgradeAgentResponseBodyData = None,
         message: str = None,
     ):
-        # Request ID, which can be used for end-to-end Diagnosis
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code  
-        # - If `code == Success`, authorization Succeeded.  
-        # - Other status codes indicate Failed to Authorize. When authorization fails, view the `message` field to obtain the detailed error message.
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate that the authorization has failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned Data
+        # The returned data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
 
     def validate(self):
@@ -71,7 +71,7 @@ class UpgradeAgentResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # Job ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -13,15 +13,15 @@ class CreateAlertDestinationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # error code
+        # The error code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the error message of the request.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,21 +76,21 @@ class CreateAlertDestinationResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: int = None,
     ):
-        # Creation Time.
+        # The creation time.
         self.created_at = created_at
-        # Policy ID
+        # The policy ID.
         self.id = id
-        # Policy Name
+        # The policy name.
         self.name = name
-        # Configuration Parameter of alert contact
+        # The configuration parameters of the alert contact.
         self.params = params
-        # Configuration Source
+        # The configuration source.
         self.source = source
-        # Push Target. Currently, only DingTalk Robot is supported.
+        # The notification target. Currently, only DingTalk chatbots are supported.
         self.target = target
-        # User ID
+        # The user ID.
         self.uid = uid
-        # Update Time
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -165,13 +165,13 @@ class CreateAlertDestinationResponseBodyDataParams(DaraModel):
         sec: str = None,
         webhook: str = None,
     ):
-        # mailbox
+        # The email address.
         self.email = email
-        # Phone
+        # The phone number.
         self.phone = phone
-        # Robot key
+        # The secret key of the chatbot.
         self.sec = sec
-        # Robot address
+        # The webhook URL of the chatbot.
         self.webhook = webhook
 
     def validate(self):

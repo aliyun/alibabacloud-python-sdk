@@ -18,15 +18,15 @@ class ListPodsOfInstanceResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.code = code
-        # Data returned
+        # The returned data.
         self.data = data
-        # Error message; empty indicates that data reading is complete
+        # The error message. An empty value indicates that all data has been read.
         # 
         # This parameter is required.
         self.message = message
-        # The maximum number of records returned by this request
+        # The maximum number of entries returned for this request.
         self.total = total
 
     def validate(self):
@@ -87,9 +87,9 @@ class ListPodsOfInstanceResponseBodyData(DaraModel):
         namespace: str = None,
         pod: str = None,
     ):
-        # Namespace where the pod resides
+        # The namespace in which the pod resides.
         self.namespace = namespace
-        # Pod Name
+        # The pod name.
         self.pod = pod
 
     def validate(self):

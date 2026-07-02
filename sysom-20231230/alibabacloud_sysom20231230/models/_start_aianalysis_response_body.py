@@ -13,9 +13,9 @@ class StartAIAnalysisResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Return code.
+        # Response code.
         self.code = code
-        # Returned data
+        # Response data
         self.data = data
         # Error message.
         self.message = message

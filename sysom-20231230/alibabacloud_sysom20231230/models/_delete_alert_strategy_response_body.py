@@ -14,15 +14,15 @@ class DeleteAlertStrategyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Status code  
-        # - If `code == Success`, authorization succeeded.  
-        # - Other status codes indicate authorization failed. When authorization fails, check the `message` field for detailed error message.
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed error message.
         self.code = code
-        # Returned data.
+        # The response data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request
         self.request_id = request_id

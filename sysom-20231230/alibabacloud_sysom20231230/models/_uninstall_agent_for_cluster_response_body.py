@@ -13,17 +13,17 @@ class UninstallAgentForClusterResponseBody(DaraModel):
         data: main_models.UninstallAgentForClusterResponseBodyData = None,
         message: str = None,
     ):
-        # Request ID, which can be used for end-to-end diagnosis
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
-        # Status code  
-        # - `code == Success` indicates that authorization succeeded.  
-        # - Any other status code indicates that authorization failed. When authorization fails, view the `message` field to obtain detailed error message.
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
-        # Returned data
+        # The response data.
         self.data = data
-        # Error message  
-        # - If `code == Success`, this field is empty.  
-        # - Otherwise, this field contains the request error message.
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the error information of the request.
         self.message = message
 
     def validate(self):
@@ -71,8 +71,7 @@ class UninstallAgentForClusterResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # Job ID.  
-        # You can use this job ID to invoke GetAgentTask to query the execution status of the job.
+        # The task ID. You can use this task ID to call GetAgentTasK to query the execution status of the task.
         self.task_id = task_id
 
     def validate(self):
