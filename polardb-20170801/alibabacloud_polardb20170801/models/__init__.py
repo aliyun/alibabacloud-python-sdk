@@ -767,6 +767,9 @@ from ._describe_polar_claw_skill_detail_response import DescribePolarClawSkillDe
 from ._describe_polar_claw_task_request import DescribePolarClawTaskRequest
 from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBody
 from ._describe_polar_claw_task_response import DescribePolarClawTaskResponse
+from ._describe_polar_fs_request import DescribePolarFsRequest
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBody
+from ._describe_polar_fs_response import DescribePolarFsResponse
 from ._describe_polar_fs_attribute_request import DescribePolarFsAttributeRequest
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBody
 from ._describe_polar_fs_attribute_response import DescribePolarFsAttributeResponse
@@ -1584,6 +1587,14 @@ from ._describe_polar_claw_skill_detail_response_body import DescribePolarClawSk
 from ._describe_polar_claw_skill_detail_response_body import DescribePolarClawSkillDetailResponseBodySkill
 from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBodyTaskError
 from ._describe_polar_claw_task_response_body import DescribePolarClawTaskResponseBodyTask
+from ._describe_polar_fs_request import DescribePolarFsRequestTag
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBodyItemsPolarFsPathsMountInfo
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBodyItemsPolarFsPathsMountedAIDBClustersMountedAIDBClusters
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBodyItemsPolarFsPathsMountedAIDBClusters
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBodyItemsPolarFsPathsTagsTag
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBodyItemsPolarFsPathsTags
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBodyItemsPolarFsPaths
+from ._describe_polar_fs_response_body import DescribePolarFsResponseBodyItems
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyCustomBucketPathList
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyMountInfo
 from ._describe_polar_fs_objects_response_body import DescribePolarFsObjectsResponseBodyItems
@@ -2428,6 +2439,9 @@ __all__ = [
     DescribePolarClawTaskRequest,
     DescribePolarClawTaskResponseBody,
     DescribePolarClawTaskResponse,
+    DescribePolarFsRequest,
+    DescribePolarFsResponseBody,
+    DescribePolarFsResponse,
     DescribePolarFsAttributeRequest,
     DescribePolarFsAttributeResponseBody,
     DescribePolarFsAttributeResponse,
@@ -3245,6 +3259,14 @@ __all__ = [
     DescribePolarClawSkillDetailResponseBodySkill,
     DescribePolarClawTaskResponseBodyTaskError,
     DescribePolarClawTaskResponseBodyTask,
+    DescribePolarFsRequestTag,
+    DescribePolarFsResponseBodyItemsPolarFsPathsMountInfo,
+    DescribePolarFsResponseBodyItemsPolarFsPathsMountedAIDBClustersMountedAIDBClusters,
+    DescribePolarFsResponseBodyItemsPolarFsPathsMountedAIDBClusters,
+    DescribePolarFsResponseBodyItemsPolarFsPathsTagsTag,
+    DescribePolarFsResponseBodyItemsPolarFsPathsTags,
+    DescribePolarFsResponseBodyItemsPolarFsPaths,
+    DescribePolarFsResponseBodyItems,
     DescribePolarFsAttributeResponseBodyCustomBucketPathList,
     DescribePolarFsAttributeResponseBodyMountInfo,
     DescribePolarFsObjectsResponseBodyItems,

@@ -24100,6 +24100,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_polar_claw_task_with_options_async(request, runtime)
 
+    def describe_polar_fs_with_options(
+        self,
+        request: main_models.DescribePolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.polar_fs_instance_description):
+            query['PolarFsInstanceDescription'] = request.polar_fs_instance_description
+        if not DaraCore.is_null(request.polar_fs_instance_ids):
+            query['PolarFsInstanceIds'] = request.polar_fs_instance_ids
+        if not DaraCore.is_null(request.polar_fs_type):
+            query['PolarFsType'] = request.polar_fs_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_db_cluster_id):
+            query['RelativeDbClusterId'] = request.relative_db_cluster_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_fs_with_options_async(
+        self,
+        request: main_models.DescribePolarFsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarFsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.polar_fs_instance_description):
+            query['PolarFsInstanceDescription'] = request.polar_fs_instance_description
+        if not DaraCore.is_null(request.polar_fs_instance_ids):
+            query['PolarFsInstanceIds'] = request.polar_fs_instance_ids
+        if not DaraCore.is_null(request.polar_fs_type):
+            query['PolarFsType'] = request.polar_fs_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.relative_db_cluster_id):
+            query['RelativeDbClusterId'] = request.relative_db_cluster_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarFs',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarFsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_fs(
+        self,
+        request: main_models.DescribePolarFsRequest,
+    ) -> main_models.DescribePolarFsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_fs_with_options(request, runtime)
+
+    async def describe_polar_fs_async(
+        self,
+        request: main_models.DescribePolarFsRequest,
+    ) -> main_models.DescribePolarFsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_fs_with_options_async(request, runtime)
+
     def describe_polar_fs_attribute_with_options(
         self,
         request: main_models.DescribePolarFsAttributeRequest,

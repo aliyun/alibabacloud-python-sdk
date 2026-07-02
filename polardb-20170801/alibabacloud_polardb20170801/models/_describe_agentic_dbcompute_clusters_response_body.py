@@ -16,10 +16,15 @@ class DescribeAgenticDBComputeClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of compute instances.
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -97,24 +102,40 @@ class DescribeAgenticDBComputeClustersResponseBodyItems(DaraModel):
         tenant_id: str = None,
         tenant_name: str = None,
     ):
+        # The ID of the associated branch.
         self.branch_id = branch_id
+        # The name of the associated branch.
         self.branch_name = branch_name
+        # The compute instance ID.
         self.compute_cluster_id = compute_cluster_id
+        # The number of compute nodes. The value is fixed to 1 in the first phase.
         self.compute_node_count = compute_node_count
+        # The time when the compute instance was created.
         self.create_time = create_time
+        # The description of the compute instance.
         self.description = description
         self.is_default_branch = is_default_branch
+        # The time when the compute instance was last activated.
         self.last_activated_at = last_activated_at
+        # The maximum compute unit.
         self.max_cu = max_cu
+        # The minimum compute unit.
         self.min_cu = min_cu
+        # The operator type.
         self.operator_type = operator_type
         self.parent_branch_id = parent_branch_id
         self.parent_branch_name = parent_branch_name
+        # The ID of the associated project.
         self.project_id = project_id
+        # The name of the associated project.
         self.project_name = project_name
+        # The status of the compute instance.
         self.status = status
+        # The amount of used data, in bytes.
         self.storage_size = storage_size
+        # The ID of the associated tenant.
         self.tenant_id = tenant_id
+        # The name of the associated tenant.
         self.tenant_name = tenant_name
 
     def validate(self):

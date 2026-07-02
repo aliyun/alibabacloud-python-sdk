@@ -15,12 +15,19 @@ class DescribeAgenticDBComputeClustersRequest(DaraModel):
         status: str = None,
     ):
         self.compute_cluster_id = compute_cluster_id
+        # The AgenticDB cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 30. Maximum value: 100.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The status filter. Valid values: Running, Stopped, and Waiting.
         self.status = status
 
     def validate(self):

@@ -1,3 +1,7 @@
+2026-07-02 Version: 7.4.0
+- Support API DescribePolarFs.
+
+
 2026-07-01 Version: 7.3.0
 - Support API CreateAgenticDBBranch.
 - Support API CreateAgenticDBProject.

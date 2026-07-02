@@ -10,8 +10,12 @@ class VerifyAgenticDBTenantApiKeyRequest(DaraModel):
         api_key: str = None,
         region_id: str = None,
     ):
+        # The plaintext API key to validate.
+        # 
         # This parameter is required.
         self.api_key = api_key
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 
