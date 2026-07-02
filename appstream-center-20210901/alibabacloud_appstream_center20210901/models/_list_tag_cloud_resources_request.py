@@ -18,7 +18,7 @@ class ListTagCloudResourcesRequest(DaraModel):
         # The number of entries per page.
         # Maximum value: 1000. Default value: 50.
         self.max_results = max_results
-        # The pagination token for the next query.
+        # The token for the next query.
         self.next_token = next_token
         # The list of resource IDs. A maximum of 50 resource IDs are supported. You do not need to specify this parameter when the resource type is tenant ID.
         self.resource_ids = resource_ids

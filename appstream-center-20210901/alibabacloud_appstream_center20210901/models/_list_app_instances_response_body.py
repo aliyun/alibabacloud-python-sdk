@@ -104,18 +104,18 @@ class ListAppInstancesResponseBodyAppInstanceModels(DaraModel):
         # The billing method of the instance. Valid values:
         # - **PrePaid**: subscription.
         # - **PostPaid**: pay-as-you-go.
-        # > This parameter is returned only when the billing mode of the delivery group to which the instance belongs is set to resource-based billing (ChargeResourceMode=Node).
+        # > This parameter is returned only when the billing mode of the delivery group to which this instance belongs is resource-based billing (ChargeResourceMode=Node).
         self.charge_type = charge_type
         # The creation time.
         self.gmt_create = gmt_create
         # The update time.
         self.gmt_modified = gmt_modified
-        # The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to mixed mode pattern (`Mixed`). Otherwise, this value is empty.
+        # The public IP address of the primary network interface controller (NIC). This value is returned only when the network policy (`StrategyType`) of the delivery group is set to the mixed pattern (`Mixed`). Otherwise, this value is empty.
         self.main_eth_public_ip = main_eth_public_ip
         self.network_interface_id = network_interface_id
         self.network_interface_ip = network_interface_ip
         # The ID of the node on which the instance runs.
-        # > This parameter is returned only when the billing mode of the delivery group to which the instance belongs is set to resource-based billing (ChargeResourceMode=Node).
+        # > This parameter is returned only when the billing mode of the delivery group to which this instance belongs is resource-based billing (ChargeResourceMode=Node).
         self.node_id = node_id
         # The session connection status. This value is returned only when the instance status is running (`RUNNING`). Otherwise, this value is empty.
         self.session_status = session_status
@@ -216,7 +216,7 @@ class ListAppInstancesResponseBodyAppInstanceModelsBindInfo(DaraModel):
         end_user_id: str = None,
         usage_duration: int = None,
     ):
-        # The ID of the end user bound to the instance.
+        # The end user ID bound to the instance.
         self.end_user_id = end_user_id
         # The usage duration of the instance. Unit: seconds.
         self.usage_duration = usage_duration

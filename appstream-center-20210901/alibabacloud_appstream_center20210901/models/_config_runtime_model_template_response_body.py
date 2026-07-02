@@ -70,11 +70,11 @@ class ConfigRuntimeModelTemplateResponseBodyData(DaraModel):
         runtime_id: str = None,
         success: bool = None,
     ):
-        # The error code returned if the execution fails.
+        # The error code returned when the execution fails.
         self.code = code
-        # The HTTP status code returned if the execution fails.
+        # The HTTP status code returned when the execution fails.
         self.http_status_code = http_status_code
-        # The error message returned if the execution fails.
+        # The error message returned when the execution fails.
         self.message = message
         # The Agent runtime ID. The ID mapping is as follows:
         # 
