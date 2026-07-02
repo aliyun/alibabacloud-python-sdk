@@ -31,11 +31,11 @@ class UpdateNetworkZoneRequest(DaraModel):
         # 
         # This parameter is required.
         self.network_zone_id = network_zone_id
-        # The name of the network zone.
+        # The network zone name.
         # 
         # This parameter is required.
         self.network_zone_name = network_zone_name
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

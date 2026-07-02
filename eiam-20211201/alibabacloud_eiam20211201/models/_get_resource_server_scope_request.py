@@ -19,7 +19,7 @@ class GetResourceServerScopeRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the scope permission.
+        # The scope permission ID.
         # 
         # This parameter is required.
         self.resource_server_scope_id = resource_server_scope_id

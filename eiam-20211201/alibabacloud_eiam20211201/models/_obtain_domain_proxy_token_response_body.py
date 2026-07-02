@@ -11,7 +11,7 @@ class ObtainDomainProxyTokenResponseBody(DaraModel):
         domain_proxy_token: main_models.ObtainDomainProxyTokenResponseBodyDomainProxyToken = None,
         request_id: str = None,
     ):
-        # The information about the proxy token.
+        # The proxy token information object.
         self.domain_proxy_token = domain_proxy_token
         # The request ID.
         self.request_id = request_id
@@ -56,25 +56,24 @@ class ObtainDomainProxyTokenResponseBodyDomainProxyToken(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The time when the domain name proxy token was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the domain proxy token was created, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
-        # The domain name proxy token.
+        # The domain proxy token.
         self.domain_proxy_token = domain_proxy_token
-        # The ID of the domain name proxy token.
+        # The domain proxy token ID.
         self.domain_proxy_token_id = domain_proxy_token_id
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the domain name proxy token was last used. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the domain proxy token was last used, in UNIX timestamp format. Unit: milliseconds.
         self.last_used_time = last_used_time
-        # The status of the token. Valid values:
+        # The token status. Valid values:
+        # - enabled: Enabled.
         # 
-        # - enabled: The token is enabled.
-        # 
-        # - disabled: The token is disabled.
+        # - disabled: Disabled.
         self.status = status
-        # The time when the domain name proxy token was last updated. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the domain proxy token was last updated, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

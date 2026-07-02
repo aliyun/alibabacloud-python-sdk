@@ -14,11 +14,11 @@ class ListIdentityProvidersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of identity providers.
+        # List of identity provider information.
         self.identity_providers = identity_providers
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # Total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,11 +85,11 @@ class ListIdentityProvidersResponseBodyIdentityProviders(DaraModel):
         ud_push_status: str = None,
         update_time: int = None,
     ):
-        # Indicates whether advanced configuration is enabled. Valid values:
+        # Whether the advanced configuration is enabled. Valid values:
         # 
-        # - disabled: The feature is disabled.
+        # - Disabled: disabled
         # 
-        # - enabled: The feature is enabled.
+        # - Enabled: enabled
         self.advanced_status = advanced_status
         # The authentication source product, such as Okta, Google, or Azure AD.
         # Valid values:
@@ -110,27 +110,27 @@ class ListIdentityProvidersResponseBodyIdentityProviders(DaraModel):
         # 
         # - Alibaba Cloud SASE: urn:alibaba:idaas:idp:alibaba:sase
         self.authn_source_supplier = authn_source_supplier
-        # The authentication method type. Valid values:
+        # The authentication source type, OIDC or SAML. Valid values:
         # 
         # - OIDC: urn:alibaba:idaas:authntype:oidc
         # 
         # - SAML: urn:alibaba:idaas:authntype:saml2
         self.authn_source_type = authn_source_type
-        # Indicates whether the identity provider supports authentication. Valid values:
+        # Whether the corresponding IdP supports authentication. Valid values:
         # 
-        # - disabled: Authentication is disabled.
+        # - Disabled: disabled
         # 
-        # - enabled: Authentication is enabled.
+        # - Enabled: enabled
         self.authn_status = authn_status
-        # The time when the identity provider was created. This is a UNIX timestamp. Unit: milliseconds.
+        # The creation time, in Unix timestamp format, measured in milliseconds.
         self.create_time = create_time
-        # The description of the identity provider.
+        # Description of the identity provider.
         self.description = description
-        # The external ID of the identity provider.
+        # External ID of the identity provider.
         self.identity_provider_external_id = identity_provider_external_id
-        # The identity provider ID.
+        # Identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # The name of the identity provider.
+        # Name of the identity provider.
         self.identity_provider_name = identity_provider_name
         # The synchronization type of the identity provider.
         # 
@@ -148,39 +148,39 @@ class ListIdentityProvidersResponseBodyIdentityProviders(DaraModel):
         # 
         # - Standard OIDC: urn:alibaba:idaas:idp:standard:oidc
         # 
-        # - Custom OIDC for SASE: urn:alibaba:idaas:idp:alibaba:sase
+        # - SASE Customized OIDC: urn:alibaba:idaas:idp:alibaba:sase
         self.identity_provider_type = identity_provider_type
-        # The incremental callback status. This indicates whether to process incremental callback data from the identity provider. Valid values:
+        # The incremental callback status, indicating whether incremental callback data from the IdP is processed. Valid values:
         # 
-        # - disabled: The feature is disabled.
+        # - Disabled: disabled
         # 
-        # - enabled: The feature is enabled.
+        # - Enabled: enabled
         self.incremental_callback_status = incremental_callback_status
-        # The instance ID.
+        # Instance ID.
         self.instance_id = instance_id
-        # The result of the last status check. A sync task can be triggered only when the status check of the identity provider returns \\`success\\`.
+        # The last status check result. Before synchronization, a sync task can only be triggered when the identity provider status check result is success.
         self.last_status_check_job_result = last_status_check_job_result
-        # The reason why the identity provider is locked.
+        # The lock reason.
         self.lock_reason = lock_reason
-        # The URL of the custom logo for the identity provider.
+        # The custom logo URL of the identity provider.
         self.logo_url = logo_url
-        # The periodic check status. This indicates whether to periodically check for data inconsistencies between IDaaS and the identity provider.
+        # The periodic sync status, indicating whether the data differences between EIAM and the identity provider are periodically checked.
         self.periodic_sync_status = periodic_sync_status
-        # Indicates whether inbound synchronization is enabled. Valid values:
+        # Whether the inbound sync feature is supported. Valid values:
         # 
-        # - disabled: The feature is disabled.
+        # - Disabled: disabled
         # 
-        # - enabled: The feature is enabled.
+        # - Enabled: enabled
         self.ud_pull_status = ud_pull_status
         # The target node for synchronization.
         self.ud_pull_target_scope = ud_pull_target_scope
-        # Indicates whether outbound synchronization is enabled. Valid values:
+        # Whether the outbound sync feature is enabled. Valid values:
         # 
-        # - disabled: The feature is disabled.
+        # - Disabled: disabled
         # 
-        # - enabled: The feature is enabled.
+        # - Enabled: enabled
         self.ud_push_status = ud_push_status
-        # The time when the identity provider was last updated. This is a UNIX timestamp. Unit: milliseconds.
+        # The update time, in Unix timestamp format, measured in milliseconds.
         self.update_time = update_time
 
     def validate(self):

@@ -10,7 +10,7 @@ class GetCloudAccountRequest(DaraModel):
         cloud_account_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The cloud account ID.
         # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id

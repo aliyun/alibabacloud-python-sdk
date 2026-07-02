@@ -11,7 +11,9 @@ class GetAuthorizationServerResponseBody(DaraModel):
         authorization_server: main_models.GetAuthorizationServerResponseBodyAuthorizationServer = None,
         request_id: str = None,
     ):
+        # The authorization server.
         self.authorization_server = authorization_server
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,28 +60,29 @@ class GetAuthorizationServerResponseBodyAuthorizationServer(DaraModel):
         protocol_endpoint: main_models.GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint = None,
         status: str = None,
     ):
-        # IDaaS EIAM 授权服务器ID
+        # The authorization server ID.
         self.authorization_server_id = authorization_server_id
-        # IDaaS EIAM 授权服务器名称
+        # The name of the authorization server.
         self.authorization_server_name = authorization_server_name
-        # IDaaS EIAM 授权服务器创建时间
+        # The time when the authorization server was created.
         self.create_time = create_time
-        # 创建类型：system_init-系统默认创建，jwt_credential_provider-JWT凭据提供商创建，user_custom-用户创建
+        # The creation type.
         self.creation_type = creation_type
-        # 授权服务器描述
+        # The description of the authorization server.
         self.description = description
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
-        # IDaaS EIAM 授权token颁发者
+        # The issuer of the authorization token.
         self.issuer = issuer
-        # Issuer使用的域名，可为初始化域名或已添加的自定义域名
+        # The domain name used by the issuer.
         self.issuer_domain = issuer_domain
-        # Issuer模式：dynamic-动态基于请求域名，static-使用固定域名
+        # The issuer mode.
         self.issuer_mode = issuer_mode
-        # IDaaS EIAM 授权服务器最近更新时间
+        # The time when the authorization server was last updated.
         self.last_update_time = last_update_time
+        # The endpoint configuration of the authorization server.
         self.protocol_endpoint = protocol_endpoint
-        # IDaaS EIAM 授权服务器状态，enabled启用，disabled禁用
+        # The status of the authorization server.
         self.status = status
 
     def validate(self):
@@ -176,7 +179,9 @@ class GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint(Dara
         oauth_2token_endpoint: str = None,
         oidc_jwks_endpoint: str = None,
     ):
+        # The token endpoint of the authorization server.
         self.oauth_2token_endpoint = oauth_2token_endpoint
+        # The JWKS endpoint of the authorization server.
         self.oidc_jwks_endpoint = oidc_jwks_endpoint
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateUserResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The user ID.
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):

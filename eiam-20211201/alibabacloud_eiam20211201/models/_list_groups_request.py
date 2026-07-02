@@ -17,21 +17,21 @@ class ListGroupsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The external ID of the group.
+        # Group external ID.
         self.group_external_id = group_external_id
-        # The group IDs.
+        # Group ID list.
         self.group_ids = group_ids
-        # The name of the group. If you specify this parameter, the query is based on an exact match.
+        # Group name. The query uses exact matching.
         self.group_name = group_name
-        # The prefix of the group name. If you specify this parameter, the query follows the leftmost matching principle.
+        # Group name prefix. The query uses prefix matching.
         self.group_name_starts_with = group_name_starts_with
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # Page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # Page size.
         self.page_size = page_size
 
     def validate(self):

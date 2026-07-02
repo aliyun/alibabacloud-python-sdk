@@ -11,7 +11,7 @@ class GetCloudAccountResponseBody(DaraModel):
         cloud_account: main_models.GetCloudAccountResponseBodyCloudAccount = None,
         request_id: str = None,
     ):
-        # The details of the Alibaba Cloud account.
+        # The cloud account details.
         self.cloud_account = cloud_account
         # The request ID.
         self.request_id = request_id
@@ -54,43 +54,42 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         cloud_account_name: str = None,
         cloud_account_provider_config: main_models.GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig = None,
         cloud_account_provider_name: str = None,
+        cloud_account_site: str = None,
         cloud_account_vendor_type: str = None,
         create_time: int = None,
         description: str = None,
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The unique external ID of the Alibaba Cloud account.
+        # The external unique identifier of the cloud account.
         self.cloud_account_external_id = cloud_account_external_id
-        # The health status of the Alibaba Cloud account. Valid values:
-        # 
+        # The health status of the cloud account. Valid values:
         # - healthy: Healthy.
-        # 
         # - unhealthy: Unhealthy.
-        # 
         # - unknown: Unknown.
         self.cloud_account_health = cloud_account_health
-        # The health check result for the cloud account.
+        # The health check result of the cloud account.
         self.cloud_account_health_check_result = cloud_account_health_check_result
-        # The ID of the Alibaba Cloud account.
+        # The cloud account ID.
         self.cloud_account_id = cloud_account_id
-        # The name of the Alibaba Cloud account.
+        # The cloud account name.
         self.cloud_account_name = cloud_account_name
-        # The configuration of the identity provider.
+        # The identity provider configuration.
         self.cloud_account_provider_config = cloud_account_provider_config
-        # The name of the identity provider.
+        # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # The type of the Alibaba Cloud account. The valid value is:
+        self.cloud_account_site = cloud_account_site
+        # The cloud account type. Valid values:
         # 
-        # - alibaba_cloud: Alibaba Cloud
+        # - alibaba_cloud: Alibaba Cloud.
         self.cloud_account_vendor_type = cloud_account_vendor_type
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The description of the Alibaba Cloud account.
+        # The cloud account description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The time of the last update. The value is a UNIX timestamp in milliseconds.
+        # The most recent update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -124,6 +123,9 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
 
         if self.cloud_account_provider_name is not None:
             result['CloudAccountProviderName'] = self.cloud_account_provider_name
+
+        if self.cloud_account_site is not None:
+            result['CloudAccountSite'] = self.cloud_account_site
 
         if self.cloud_account_vendor_type is not None:
             result['CloudAccountVendorType'] = self.cloud_account_vendor_type
@@ -167,6 +169,9 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         if m.get('CloudAccountProviderName') is not None:
             self.cloud_account_provider_name = m.get('CloudAccountProviderName')
 
+        if m.get('CloudAccountSite') is not None:
+            self.cloud_account_site = m.get('CloudAccountSite')
+
         if m.get('CloudAccountVendorType') is not None:
             self.cloud_account_vendor_type = m.get('CloudAccountVendorType')
 
@@ -192,13 +197,13 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountProviderConfig(DaraMode
         issuer: str = None,
         oidc_jwks_endpoint: str = None,
     ):
-        # The audience identity.
+        # The audience identifier.
         self.audience = audience
-        # The ID of the authorization server.
+        # The authorization server ID.
         self.authorization_server_id = authorization_server_id
-        # The issuer.
+        # Issuer。
         self.issuer = issuer
-        # The public key endpoint for signature verification.
+        # The signature verification public key endpoint.
         self.oidc_jwks_endpoint = oidc_jwks_endpoint
 
     def validate(self):
@@ -246,15 +251,14 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResult(DaraM
         last_check_time: int = None,
         result: str = None,
     ):
-        # The reason for the fault. This field returns a value when the health check status is unhealthy.
+        # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
-        # The time of the last check. The value is a UNIX timestamp in milliseconds.
+        # The time of the last health check. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
-        # The result of the health check for the cloud account. Valid values:
+        # The health check result of the cloud account. Valid values:
         # 
-        # - success: The health check was successful.
-        # 
-        # - failed: The health check failed.
+        # - success: Succeeded.
+        # - failed: Failed.
         self.result = result
 
     def validate(self):
@@ -299,7 +303,7 @@ class GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorR
     ):
         # The error code.
         self.error_code = error_code
-        # The description of the error.
+        # The error description.
         self.error_message = error_message
 
     def validate(self):

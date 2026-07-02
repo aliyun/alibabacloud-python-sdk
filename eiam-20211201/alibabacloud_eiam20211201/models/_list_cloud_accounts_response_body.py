@@ -16,15 +16,15 @@ class ListCloudAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of Alibaba Cloud accounts.
+        # The list of cloud accounts.
         self.cloud_accounts = cloud_accounts
-        # The number of entries returned per page.
+        # The number of rows per page for paging.
         self.max_results = max_results
-        # The token returned from this call.
+        # The token returned for the current call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -88,41 +88,40 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         cloud_account_id: str = None,
         cloud_account_name: str = None,
         cloud_account_provider_name: str = None,
+        cloud_account_site: str = None,
         cloud_account_vendor_type: str = None,
         create_time: int = None,
         description: str = None,
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The external unique ID of the Alibaba Cloud account.
+        # The external unique identifier of the cloud account.
         self.cloud_account_external_id = cloud_account_external_id
-        # The health check status of the Alibaba Cloud account. Valid values:
-        # 
-        # - healthy: The account is healthy.
-        # 
-        # - unhealthy: The account is unhealthy.
-        # 
-        # - unknown: The status is unknown.
+        # The health status of the cloud account. Valid values:
+        # - healthy: Healthy.
+        # - unhealthy: Unhealthy.
+        # - unknown: Unknown.
         self.cloud_account_health = cloud_account_health
-        # The result of the health check for the Alibaba Cloud account.
+        # The health check result of the cloud account.
         self.cloud_account_health_check_result = cloud_account_health_check_result
-        # The ID of the Alibaba Cloud account.
+        # The cloud account ID.
         self.cloud_account_id = cloud_account_id
-        # The name of the Alibaba Cloud account.
+        # The cloud account name.
         self.cloud_account_name = cloud_account_name
-        # The name of the identity provider.
+        # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # The type of the Alibaba Cloud account. Valid values:
+        self.cloud_account_site = cloud_account_site
+        # The cloud account type. Valid values:
         # 
-        # - alibaba_cloud: Alibaba Cloud
+        # - alibaba_cloud: Alibaba Cloud.
         self.cloud_account_vendor_type = cloud_account_vendor_type
-        # The time when the account was created. This is a UNIX timestamp in milliseconds.
+        # The time when the cloud account was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The description of the Alibaba Cloud account.
+        # The description of the cloud account.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the account was last updated. This is a UNIX timestamp in milliseconds.
+        # The time when the cloud account was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -151,6 +150,9 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
 
         if self.cloud_account_provider_name is not None:
             result['CloudAccountProviderName'] = self.cloud_account_provider_name
+
+        if self.cloud_account_site is not None:
+            result['CloudAccountSite'] = self.cloud_account_site
 
         if self.cloud_account_vendor_type is not None:
             result['CloudAccountVendorType'] = self.cloud_account_vendor_type
@@ -190,6 +192,9 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         if m.get('CloudAccountProviderName') is not None:
             self.cloud_account_provider_name = m.get('CloudAccountProviderName')
 
+        if m.get('CloudAccountSite') is not None:
+            self.cloud_account_site = m.get('CloudAccountSite')
+
         if m.get('CloudAccountVendorType') is not None:
             self.cloud_account_vendor_type = m.get('CloudAccountVendorType')
 
@@ -214,15 +219,13 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult(Da
         last_check_time: int = None,
         result: str = None,
     ):
-        # The reason for the error. This field is returned when the health check status is unhealthy.
+        # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
-        # The time of the last health check. This is a UNIX timestamp in milliseconds.
+        # The time of the last health check. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
-        # The result of the health check. Valid values:
-        # 
-        # - success: The check was successful.
-        # 
-        # - failed: The check failed.
+        # The health check result of the cloud account. Valid values:
+        # - success: Succeeded.
+        # - failed: Failed.
         self.result = result
 
     def validate(self):

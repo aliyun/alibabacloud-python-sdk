@@ -18,7 +18,7 @@ class ListInstancesResponseBody(DaraModel):
         self.instances = instances
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -76,19 +76,23 @@ class ListInstancesResponseBodyInstances(DaraModel):
         service_managed: bool = None,
         status: str = None,
     ):
-        # The time when the instance was created. The value is a UNIX timestamp in milliseconds.
+        # The instance creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
+        # Indicates whether cross-region replication is enabled. Valid values: enabled or disabled.
         self.cross_region_replication = cross_region_replication
+        # The cross-region replication role. Valid values: primary (primary instance) or backup (backup instance).
         self.cross_region_replication_role = cross_region_replication_role
         # The default endpoint of the instance.
         self.default_endpoint = default_endpoint
-        # The description of the instance.
+        # The instance description.
         self.description = description
+        # The instance failover activation status. Valid values: active (activated) or inactive (not activated).
         self.instance_failover_status = instance_failover_status
         # The instance ID.
         self.instance_id = instance_id
         # The service code of the Alibaba Cloud service that manages the instance.
         self.managed_service_code = managed_service_code
+        # The replication configuration. This parameter is returned only when CrossRegionReplication is set to enabled.
         self.replication_configuration = replication_configuration
         # Indicates whether the instance is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
@@ -191,10 +195,15 @@ class ListInstancesResponseBodyInstancesReplicationConfiguration(DaraModel):
         primary_instance_region_id: str = None,
         replication_create_time: int = None,
     ):
+        # The instance ID of the backup instance.
         self.backup_instance_id = backup_instance_id
+        # The region ID of the backup instance.
         self.backup_instance_region_id = backup_instance_region_id
+        # The instance ID of the primary instance.
         self.primary_instance_id = primary_instance_id
+        # The region ID of the primary instance.
         self.primary_instance_region_id = primary_instance_region_id
+        # The time when the disaster recovery data replication was created, in UNIX timestamp format. Unit: milliseconds.
         self.replication_create_time = replication_create_time
 
     def validate(self):
@@ -249,9 +258,9 @@ class ListInstancesResponseBodyInstancesDefaultEndpoint(DaraModel):
     ):
         # The endpoint address of the instance.
         self.endpoint = endpoint
-        # The status of the instance endpoint. Valid values:
+        # The endpoint status. Valid values:
         # - resolved: Resolved.
-        # - unresolved: Unresolved.
+        # - unresolved: Not resolved.
         self.status = status
 
     def validate(self):

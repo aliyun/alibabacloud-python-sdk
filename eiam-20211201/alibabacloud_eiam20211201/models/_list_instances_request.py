@@ -16,11 +16,12 @@ class ListInstancesRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The cross-region replication status.
         self.cross_region_replication = cross_region_replication
         # The license edition. Valid values:
         # - free: Free Edition.
         # - trial: Trial Edition.
-        # - scalability: Capability Expansion Edition.
+        # - scalability: Scalability Edition.
         # - standard: Standard Edition.
         # - enterprise: Enterprise Edition.
         self.edition = edition

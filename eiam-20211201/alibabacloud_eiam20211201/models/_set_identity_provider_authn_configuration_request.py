@@ -17,21 +17,21 @@ class SetIdentityProviderAuthnConfigurationRequest(DaraModel):
         instance_id: str = None,
         ldap_authn_config: main_models.SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig = None,
     ):
-        # Automatic Account Creation Rule Configuration.
+        # Automatic account creation rule configuration.
         self.auto_create_user_config = auto_create_user_config
-        # Automatic Account Update Configuration
+        # Automatic account update configuration.
         self.auto_update_user_config = auto_update_user_config
-        # Account Binding Rule Configuration
+        # Account binding rule configuration.
         self.binding_config = binding_config
-        # Identity Provider ID
+        # Identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # Instance ID
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # AD/LDAP Authentication Configuration
+        # AD/LDAP authentication configuration.
         self.ldap_authn_config = ldap_authn_config
 
     def validate(self):
@@ -102,11 +102,11 @@ class SetIdentityProviderAuthnConfigurationRequestLdapAuthnConfig(DaraModel):
         user_login_identifier: str = None,
         user_object_class: str = None,
     ):
-        # Specifies whether to automatically update passwords.
+        # Indicates whether automatic password update is supported.
         self.auto_update_password_status = auto_update_password_status
-        # User Login Identifier
+        # The user login identifier.
         self.user_login_identifier = user_login_identifier
-        # User ObjectClass
+        # The user ObjectClass.
         self.user_object_class = user_object_class
 
     def validate(self):
@@ -150,9 +150,9 @@ class SetIdentityProviderAuthnConfigurationRequestBindingConfig(DaraModel):
     ):
         # Rules for automatic account matching.
         self.auto_match_user_profile_expressions = auto_match_user_profile_expressions
-        # Automatic account matching status.
+        # Indicates whether automatic account matching is enabled.
         self.auto_match_user_status = auto_match_user_status
-        # Specifies whether the manual account binding feature is enabled.
+        # Indicates whether the manual account binding feature is enabled.
         self.mapping_binding_status = mapping_binding_status
 
     def validate(self):
@@ -203,19 +203,19 @@ class SetIdentityProviderAuthnConfigurationRequestBindingConfigAutoMatchUserProf
         target_field: str = None,
         target_field_description: str = None,
     ):
-        # Type of expression.
+        # The type of the expression.
         # 
         # This parameter is required.
         self.expression_mapping_type = expression_mapping_type
-        # Expression for mapping attribute value.
+        # The value expression of the mapping attribute.
         # 
         # This parameter is required.
         self.source_value_expression = source_value_expression
-        # Target attribute name for mapping.
+        # The name of the mapping target attribute.
         # 
         # This parameter is required.
         self.target_field = target_field
-        # Target attribute name for mapping.
+        # The description of the mapping target attribute.
         self.target_field_description = target_field_description
 
     def validate(self):
@@ -261,7 +261,7 @@ class SetIdentityProviderAuthnConfigurationRequestAutoUpdateUserConfig(DaraModel
         self,
         auto_update_user_status: str = None,
     ):
-        # Specifies whether to enable automatic account updates.
+        # Indicates whether automatic account update is enabled.
         self.auto_update_user_status = auto_update_user_status
 
     def validate(self):
@@ -290,9 +290,9 @@ class SetIdentityProviderAuthnConfigurationRequestAutoCreateUserConfig(DaraModel
         auto_create_user_status: str = None,
         target_organizational_unit_ids: List[str] = None,
     ):
-        # Automatic account creation status.
+        # Indicates whether automatic account creation is enabled.
         self.auto_create_user_status = auto_create_user_status
-        # Organization ID
+        # The organizational unit IDs.
         self.target_organizational_unit_ids = target_organizational_unit_ids
 
     def validate(self):

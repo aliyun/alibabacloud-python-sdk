@@ -11,9 +11,9 @@ class GetOrganizationalUnitResponseBody(DaraModel):
         organizational_unit: main_models.GetOrganizationalUnitResponseBodyOrganizationalUnit = None,
         request_id: str = None,
     ):
-        # The data object of the organizational unit.
+        # Organizational unit data object.
         self.organizational_unit = organizational_unit
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,39 +59,36 @@ class GetOrganizationalUnitResponseBodyOrganizationalUnit(DaraModel):
         parent_id: str = None,
         update_time: int = None,
     ):
-        # The time when the organizational unit was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the organizational unit was created, in Unix timestamp format, in milliseconds.
         self.create_time = create_time
-        # The description of the organizational unit.
+        # Description of the organizational unit.
         self.description = description
-        # The ID of the instance.
+        # Instance ID.
         self.instance_id = instance_id
-        # Indicates whether the node is a leaf node.
+        # Indicates whether the organizational unit is a leaf node. A value of true indicates that the organizational unit has no child nodes, and a value of false indicates that the organizational unit has child nodes.
         self.leaf = leaf
-        # The external ID of the organizational unit. The external ID can be used by external data to map the data of the organizational unit in IDaaS EIAM. By default, the external ID is the organizational unit ID.
+        # Organizational unit external ID, used for mapping between external data and IDaaS organizational units. The default value is the IDaaS organizational unit ID.
         # 
-        # For organizational units with the same source type and source ID, each organizational unit has a unique external ID.
+        # Note: The external ID is unique within the same source type and source ID.
         self.organizational_unit_external_id = organizational_unit_external_id
-        # The ID of the organizational unit.
+        # Organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
-        # The Name of the organizational unit.
+        # Organizational unit name.
         self.organizational_unit_name = organizational_unit_name
-        # The source ID of the organizational unit.
+        # Organizational unit source ID.
         # 
-        # If the organizational unit was created in IDaaS, its source ID is the ID of the IDaaS instance. If the organizational unit was imported, its source ID is the enterprise ID in the source. For example, if the organizational unit was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+        # The default value for the self-built type is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
         self.organizational_unit_source_id = organizational_unit_source_id
-        # The source type of the organizational unit. Valid values:
-        # 
-        # - build_in: The organizational unit was created in IDaaS.
-        # 
-        # - ding_talk: The organizational unit was imported from DingTalk.
-        # 
-        # - ad: The organizational unit was imported from Microsoft Active Directory (AD).
-        # 
-        # - ldap: The organizational unit was imported from a Lightweight Directory Access Protocol (LDAP) service.
+        # Account source type. Valid values:
+        # - build_in: self-built.
+        # - ding_talk: imported from DingTalk.
+        # - ad: imported from AD.
+        # - ldap: imported from LDAP.
+        # - we_com: imported from WeCom.
         self.organizational_unit_source_type = organizational_unit_source_type
-        # The ID of the parent organizational unit.
+        # Parent organizational unit ID.
         self.parent_id = parent_id
-        # The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the organizational unit was last updated, in Unix timestamp format, in milliseconds.
         self.update_time = update_time
 
     def validate(self):

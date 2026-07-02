@@ -11,11 +11,11 @@ class ObtainDomainProxyTokenRequest(DaraModel):
         domain_proxy_token_id: str = None,
         instance_id: str = None,
     ):
-        # The domain ID.
+        # The domain name ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # The ID of the domain name proxy token.
+        # The domain proxy token ID.
         # 
         # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id

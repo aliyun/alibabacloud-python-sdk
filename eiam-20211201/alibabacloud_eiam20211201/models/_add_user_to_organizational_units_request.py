@@ -17,7 +17,7 @@ class AddUserToOrganizationalUnitsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of organization IDs. The list can contain up to 100 IDs.
+        # The list of organization IDs. The list can contain up to 100 elements.
         # 
         # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids

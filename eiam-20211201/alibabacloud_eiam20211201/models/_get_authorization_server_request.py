@@ -10,11 +10,11 @@ class GetAuthorizationServerRequest(DaraModel):
         authorization_server_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的授权服务器资源ID。
+        # The authorization server ID.
         # 
         # This parameter is required.
         self.authorization_server_id = authorization_server_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

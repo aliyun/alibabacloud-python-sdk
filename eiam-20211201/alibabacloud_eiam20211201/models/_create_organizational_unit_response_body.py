@@ -10,9 +10,9 @@ class CreateOrganizationalUnitResponseBody(DaraModel):
         organizational_unit_id: str = None,
         request_id: str = None,
     ):
-        # The organization ID.
+        # Organization ID.
         self.organizational_unit_id = organizational_unit_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -21,15 +21,15 @@ class ListCloudAccountsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of records to return on each page.
+        # The maximum number of records per page.
         # 
-        # - The default value is 20.
+        # - Default value: 20.
         # 
-        # - The maximum value is 100.
+        # - Maximum value: 100.
         self.max_results = max_results
-        # The token that specifies the start of the next page.
+        # The token that marks the starting position of the next page.
         # 
-        # - If you leave this parameter empty, the query starts from the first page.
+        # - If you do not specify this parameter, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):
@@ -86,13 +86,11 @@ class ListCloudAccountsRequestFilter(DaraModel):
     ):
         # The name of the filter field. Valid values:
         # 
-        # - CloudAccountId: The ID of the Alibaba Cloud account.
-        # 
-        # - CloudAccountExternalId: The external unique ID of the Alibaba Cloud account.
-        # 
-        # - CloudAccountVendorType: The type of the Alibaba Cloud account.
+        # - CloudAccountId: the cloud account ID.
+        # - CloudAccountExternalId: the external unique identifier of the cloud account.
+        # - CloudAccountVendorType: the cloud account type.
         self.name = name
-        # A list of values for the filter field.
+        # The values of the filter field.
         self.value = value
 
     def validate(self):

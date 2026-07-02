@@ -15,19 +15,19 @@ class ListApplicationsForOrganizationalUnitRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # A list of application IDs. You can specify up to 100 application IDs in a single operation.
+        # The list of application IDs. A maximum of 100 application IDs are supported in a single operation.
         self.application_ids = application_ids
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The organization ID.
+        # The organizational unit ID.
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

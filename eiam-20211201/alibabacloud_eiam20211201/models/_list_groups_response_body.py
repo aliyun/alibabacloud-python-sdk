@@ -14,11 +14,11 @@ class ListGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried account groups.
+        # Account group list.
         self.groups = groups
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize.
+        # Total number of matched entries. The maximum number of entries returned in a single request is determined by pageSize.
         self.total_count = total_count
 
     def validate(self):
@@ -74,23 +74,24 @@ class ListGroupsResponseBodyGroups(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The time at which the group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # Group creation time in Unix timestamp format, in milliseconds.
         self.create_time = create_time
-        # The description of the group.
+        # Group description.
         self.description = description
-        # The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID.
+        # Group external ID, used for association with external systems. Defaults to the account group ID.
         self.group_external_id = group_external_id
-        # The group ID.
+        # Group ID.
         self.group_id = group_id
-        # The name of the group.
+        # Group name.
         self.group_name = group_name
-        # The source ID of the group. If the group was imported from other services, this value indicates the external source ID. By default, the source ID is the instance ID.
+        # Group source ID. If created by importing from other sources, this is the external source ID. Defaults to the instance ID.
         self.group_source_id = group_source_id
-        # The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
+        # Group source type. Currently, only self-built is supported. Valid values:
+        # - build_in: self-built.
         self.group_source_type = group_source_type
-        # The instance ID.
+        # Instance ID.
         self.instance_id = instance_id
-        # The time at which the group was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # Group last update time in Unix timestamp format, in milliseconds.
         self.update_time = update_time
 
     def validate(self):

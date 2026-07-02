@@ -14,7 +14,7 @@ class DisableUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the account.
+        # The account ID.
         # 
         # This parameter is required.
         self.user_id = user_id

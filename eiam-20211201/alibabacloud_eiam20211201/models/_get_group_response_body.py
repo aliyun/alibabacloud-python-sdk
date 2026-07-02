@@ -11,7 +11,7 @@ class GetGroupResponseBody(DaraModel):
         group: main_models.GetGroupResponseBodyGroup = None,
         request_id: str = None,
     ):
-        # The information about the account group.
+        # The account group object information.
         self.group = group
         # The request ID.
         self.request_id = request_id
@@ -57,25 +57,24 @@ class GetGroupResponseBodyGroup(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The time at which the group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the group was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The description of the group.
+        # The group description.
         self.description = description
-        # The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID.
+        # The external ID of the group, which is used to associate the group with an external system. The default value is the account group ID.
         self.group_external_id = group_external_id
         # The group ID.
         self.group_id = group_id
-        # The name of the group.
+        # The group name.
         self.group_name = group_name
-        # The source ID of the group. By default, the source ID is the instance ID.
+        # The source ID of the group. The default value is the instance ID.
         self.group_source_id = group_source_id
-        # The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
-        # 
-        # \\*build_in:Create By Self.
+        # The source type of the group. Currently, only built-in groups are supported. Valid values:
+        # - build_in: built-in.
         self.group_source_type = group_source_type
         # The instance ID.
         self.instance_id = instance_id
-        # The time at which the group was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the group was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

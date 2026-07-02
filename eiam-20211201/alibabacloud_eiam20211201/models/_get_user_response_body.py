@@ -13,9 +13,9 @@ class GetUserResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.GetUserResponseBodyUser = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The data object of the account.
+        # The account object data.
         self.user = user
 
     def validate(self):
@@ -76,77 +76,75 @@ class GetUserResponseBodyUser(DaraModel):
         user_source_type: str = None,
         username: str = None,
     ):
-        # The time when the account expires. This value is a UNIX timestamp. Unit: milliseconds.
+        # The expiration time of the account, in UNIX timestamp format. Unit: milliseconds.
         self.account_expire_time = account_expire_time
-        # The time when the account was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time of the account, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The list of custom fields that describe the account.
+        # The list of custom fields of the account.
         self.custom_fields = custom_fields
         # The description of the account.
         self.description = description
         # The display name of the account.
         self.display_name = display_name
-        # The email address of the user who owns the account.
+        # The email address of the account.
         self.email = email
-        # Indicates whether the email address has been verified. A value of true indicates that the email address has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the email address has not been verified.
+        # Indicates whether the email address is verified. A value of true indicates that the email address has been verified by the user or set as verified by the administrator. A value of false indicates that the email address is not verified.
         self.email_verified = email_verified
-        # The organizational units to which the account belongs.
+        # The list of groups to which the account belongs.
         self.groups = groups
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
-        # The time when the account lock expires. This value is a UNIX timestamp. Unit: milliseconds.
+        # The lock expiration time, in UNIX timestamp format. Unit: milliseconds.
         self.lock_expire_time = lock_expire_time
-        # The organizational units to which the account belongs.
+        # The list of organizational units to which the account belongs.
         self.organizational_units = organizational_units
-        # The time when the password of the account expires. This value is a UNIX timestamp. Unit: milliseconds.
+        # The expiration time of the password, in UNIX timestamp format. Unit: milliseconds.
         # 
-        # - If the value -1 is returned, the password does not expire.
+        # - A return value of -1 indicates that the password does not expire.
         # 
-        # - If no value is returned, the password does not expire.
+        # - No return value indicates that the password does not expire.
         # 
-        # - If a UNIX timestamp is returned, the password expires at the indicated point of time.
+        # - A specific timestamp value indicates the exact password expiration time.
         self.password_expire_time = password_expire_time
-        # Indicates whether a password is set.
+        # Indicates whether the password is set.
         self.password_set = password_set
-        # The mobile number of the user who owns the account.
+        # The phone number of the account.
         self.phone_number = phone_number
-        # Indicates whether the mobile number has been verified. A value of true indicates that the mobile number has been verified by the user or has been set to the verified status by the administrator. A value of false indicates that the mobile number has not been verified.
+        # Indicates whether the phone number is verified. A value of true indicates that the phone number has been verified by the user or set as verified by the administrator. A value of false indicates that the phone number is not verified.
         self.phone_number_verified = phone_number_verified
-        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+        # The country calling code of the phone number. Example: 86 for the Chinese mainland. The code does not include the 00 or + prefix.
         self.phone_region = phone_region
-        # Preferred language
+        # The preferred language.
         self.preferred_language = preferred_language
         # The ID of the primary organizational unit to which the account belongs.
         self.primary_organizational_unit_id = primary_organizational_unit_id
-        # The time when the account was registered. This value is a UNIX timestamp. Unit: milliseconds.
+        # The registration time of the account, in UNIX timestamp format. Unit: milliseconds.
         self.register_time = register_time
         # The status of the account. Valid values:
+        # - enabled: enabled.
         # 
-        # - enabled: The account is enabled.
-        # 
-        # - disabled: The account is disabled.
+        # - disabled: disabled.
         self.status = status
-        # The time when the account was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The most recent update time of the account, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
-        # The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM. By default, the external ID is the account ID.
+        # The external ID of the account. This ID is used to associate external data with the IDaaS account. The default value is the IDaaS account ID.
         # 
-        # For accounts with the same source type and source ID, each account has a unique external ID.
+        # > Note: The external ID must be unique within the same source type and source ID.
         self.user_external_id = user_external_id
-        # The ID of the account.
+        # The account ID.
         self.user_id = user_id
         # The source ID of the account.
         # 
-        # If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+        # For the self-built type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
         self.user_source_id = user_source_id
         # The source type of the account. Valid values:
         # 
-        # - build_in: The account was created in IDaaS.
+        # - build_in: self-built.
         # 
-        # - ding_talk: The account was imported from DingTalk.
-        # 
-        # - ad: The account was imported from Microsoft Active Directory (AD).
-        # 
-        # - ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+        # - ding_talk: imported from DingTalk.
+        # - ad: imported from AD.
+        # - ldap: imported from LDAP.
+        # - we_com: imported from WeCom.
         self.user_source_type = user_source_type
         # The username of the account.
         self.username = username
@@ -354,11 +352,11 @@ class GetUserResponseBodyUserOrganizationalUnits(DaraModel):
         organizational_unit_name: str = None,
         primary: bool = None,
     ):
-        # The ID of the organizational unit.
+        # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
-        # The name of the organizational unit.
+        # The organizational unit name.
         self.organizational_unit_name = organizational_unit_name
-        # Indicates whether the organization is the primary organization.
+        # Indicates whether this is the primary organizational unit.
         self.primary = primary
 
     def validate(self):
@@ -400,11 +398,11 @@ class GetUserResponseBodyUserGroups(DaraModel):
         group_id: str = None,
         group_name: str = None,
     ):
-        # The description of the organizational unit.
+        # The group description.
         self.description = description
-        # The ID of the organizational unit.
+        # The group ID.
         self.group_id = group_id
-        # The name of the organizational unit.
+        # The group name.
         self.group_name = group_name
 
     def validate(self):

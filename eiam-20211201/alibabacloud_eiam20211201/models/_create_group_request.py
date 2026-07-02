@@ -12,15 +12,15 @@ class CreateGroupRequest(DaraModel):
         group_name: str = None,
         instance_id: str = None,
     ):
-        # The description of the group. The value can be up to 256 characters in length.
+        # Description. The maximum length is 256 characters.
         self.description = description
-        # The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID. The value can be up to 64 characters in length.
+        # Group external ID, used for association with external systems. The default value is the group ID. The maximum length is 64 characters.
         self.group_external_id = group_external_id
-        # The name of the group. The name can be up to 64 characters in length.
+        # Group name. The maximum length is 64 characters.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

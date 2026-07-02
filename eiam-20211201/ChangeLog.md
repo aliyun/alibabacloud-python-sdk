@@ -1,3 +1,8 @@
+2026-07-02 Version: 2.17.1
+- Update API GetCloudAccount: add response parameters Body.CloudAccount.CloudAccountSite.
+- Update API ListCloudAccounts: add response parameters Body.CloudAccounts.$.CloudAccountSite.
+
+
 2026-06-23 Version: 2.17.0
 - Support API GetAuthorizationServer.
 - Support API ListAuthorizationServers.

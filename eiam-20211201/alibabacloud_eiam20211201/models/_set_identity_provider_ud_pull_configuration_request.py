@@ -21,20 +21,19 @@ class SetIdentityProviderUdPullConfigurationRequest(DaraModel):
         ud_sync_scope_config: main_models.SetIdentityProviderUdPullConfigurationRequestUdSyncScopeConfig = None,
     ):
         # The group synchronization status. Valid values:
+        # - disabled: Disabled.
         # 
-        # - disabled: The feature is disabled.
-        # 
-        # - enabled: The feature is enabled.
+        # - enabled: Enabled.
         self.group_sync_status = group_sync_status
         # The identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # The status of incremental callback. This parameter specifies whether to process incremental callback data from the IdP. Valid values:
+        # Specifies whether to process incremental callback data from the IdP. Valid values:
         # 
-        # - disabled: The feature is disabled.
+        # - disabled: Disabled.
         # 
-        # - enabled: The feature is enabled.
+        # - enabled: Enabled.
         # 
         # This parameter is required.
         self.incremental_callback_status = incremental_callback_status
@@ -42,19 +41,19 @@ class SetIdentityProviderUdPullConfigurationRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The configurations of LDAP synchronization.
+        # The LDAP synchronization configuration.
         self.ldap_ud_pull_config = ldap_ud_pull_config
-        # The scheduled synchronization configuration.
+        # The periodic synchronization configuration.
         self.periodic_sync_config = periodic_sync_config
-        # The status of scheduled check. This parameter specifies whether to periodically check for data inconsistencies between IDaaS and the IdP. Valid values:
+        # Specifies whether to periodically verify data differences between IDaaS and the identity provider. Valid values:
         # 
-        # - disabled: The feature is disabled.
+        # - disabled: Disabled.
         # 
-        # - enabled: The feature is enabled.
+        # - enabled: Enabled.
         self.periodic_sync_status = periodic_sync_status
         # The inbound synchronization protection rule.
         self.pull_protected_rule = pull_protected_rule
-        # The inbound synchronization configuration.
+        # The inbound synchronization scope configuration.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -180,11 +179,11 @@ class SetIdentityProviderUdPullConfigurationRequestPullProtectedRule(DaraModel):
         organizational_unit_deleted_threshold: int = None,
         user_deleted_threshold: int = None,
     ):
-        # The threshold for the number of groups to be deleted. If the number of groups to be deleted exceeds this value, the synchronization task is stopped.
+        # The threshold for the number of deleted groups. If the number of deleted groups exceeds this value, the synchronization task is terminated.
         self.group_deleted_threshold = group_deleted_threshold
-        # The threshold for the number of organizational units to be deleted. If the number of organizational units to be deleted exceeds this value, the synchronization task is stopped.
+        # The threshold for the number of deleted organizational units. If the number of deleted organizational units exceeds this value, the synchronization task is terminated.
         self.organizational_unit_deleted_threshold = organizational_unit_deleted_threshold
-        # The threshold for the number of users to be deleted. If the number of users to be deleted exceeds this value, the synchronization task is stopped.
+        # The threshold for the number of deleted accounts. If the number of deleted users exceeds this value, the synchronization task is terminated.
         self.user_deleted_threshold = user_deleted_threshold
 
     def validate(self):
@@ -228,9 +227,9 @@ class SetIdentityProviderUdPullConfigurationRequestPeriodicSyncConfig(DaraModel)
     ):
         # The cron expression. This parameter is required when periodicSyncType is set to cron.
         self.periodic_sync_cron = periodic_sync_cron
-        # The time points for synchronization. This parameter is required when periodicSyncType is set to time. For example, if you set this parameter to [3, 5], the synchronization is performed from 03:00 to 04:00 and from 05:00 to 06:00.
+        # The execution time points. This parameter is required when periodicSyncType is set to time. For example, [3, 5] indicates that the task runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
         self.periodic_sync_times = periodic_sync_times
-        # The type.
+        # The type of periodic synchronization.
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -277,15 +276,15 @@ class SetIdentityProviderUdPullConfigurationRequestLdapUdPullConfig(DaraModel):
     ):
         # The group member identifier.
         self.group_member_attribute_name = group_member_attribute_name
-        # The group objectClass.
+        # The group ObjectClass.
         self.group_object_class = group_object_class
-        # The custom group filter.
+        # The custom filter for groups.
         self.group_object_class_custom_filter = group_object_class_custom_filter
-        # The organizational unit objectClass.
+        # The organizational unit ObjectClass.
         self.organization_unit_object_class = organization_unit_object_class
-        # The user objectClass.
+        # The user ObjectClass.
         self.user_object_class = user_object_class
-        # The custom user filter.
+        # The custom filter for users.
         self.user_object_class_custom_filter = user_object_class_custom_filter
 
     def validate(self):

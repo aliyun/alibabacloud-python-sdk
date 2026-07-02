@@ -27,41 +27,41 @@ class CreateUserRequest(DaraModel):
         user_external_id: str = None,
         username: str = None,
     ):
-        # A client-provided token to ensure the idempotence of the request. This value must be unique for each request. The token can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](~~~/doc-en/6a938a5b-2402-4c9d-b235-3733a1f813c9.dita).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: How to ensure idempotence.
         self.client_token = client_token
         # The list of custom fields.
         self.custom_fields = custom_fields
-        # The description. The maximum length is 256 characters.
+        # The description. The description can be up to 256 characters in length.
         self.description = description
-        # The display name. The maximum length is 128 characters.
+        # The display name of the account. The display name can be up to 128 characters in length.
         self.display_name = display_name
-        # The email address. The local part of the address can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), or hyphens (-). The maximum length is 128 characters.
+        # The email address. The email prefix can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-). The email address can be up to 128 characters in length.
         self.email = email
-        # Indicates whether the email address is verified. A verified address is considered trusted. This parameter is required if you specify the `Email` parameter. For typical use, set this to `true`.
+        # Specifies whether the email address is verified as a trusted email address. This parameter is required if Email is specified. If no special business requirement exists, set this parameter to true.
         self.email_verified = email_verified
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # A list of subordinate organizational unit IDs. A user can belong to multiple organizational units.
+        # The list of organizational unit IDs to which the account belongs. An account can belong to multiple organizational units.
         self.organizational_unit_ids = organizational_unit_ids
-        # The password. The format must comply with the password policy.
+        # The password. The password must meet the requirements of the password policy.
         self.password = password
-        # The settings for the password initialization policy.
+        # The password initialization configuration.
         self.password_initialization_config = password_initialization_config
-        # The phone number. It must be 6 to 15 digits long.
+        # The phone number. The value is a 6 to 15-digit number.
         self.phone_number = phone_number
-        # Indicates whether the phone number is verified. A verified number is considered trusted. This parameter is required if you specify the `PhoneNumber` parameter. For typical use, set this to `true`.
+        # Specifies whether the phone number is verified as a trusted phone number. This parameter is required if PhoneNumber is specified. If no special business requirement exists, set this parameter to true.
         self.phone_number_verified = phone_number_verified
-        # The country code. It must contain 1 to 6 digits and must not include the plus sign (+).
+        # The phone region code. The value is a 1 to 6-digit number and does not include a plus sign (+).
         self.phone_region = phone_region
         # The ID of the primary organizational unit.
         # 
         # This parameter is required.
         self.primary_organizational_unit_id = primary_organizational_unit_id
-        # The external ID for associating the user with an external system. The maximum length is 128 characters. If this parameter is not specified, its value defaults to the system-generated user ID.
+        # The external ID of the account. This parameter is used to associate the account with an external system. The value can be up to 128 characters in length. If this parameter is not specified, the account ID is used by default.
         self.user_external_id = user_external_id
-        # The username. It can contain letters, digits, and the following special characters: underscores (_), periods (.), at signs (@), and hyphens (-). The maximum length is 256 characters.
+        # The username. The username can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-). The username can be up to 256 characters in length.
         # 
         # This parameter is required.
         self.username = username
@@ -195,21 +195,16 @@ class CreateUserRequestPasswordInitializationConfig(DaraModel):
         password_initialization_type: str = None,
         user_notification_channels: List[str] = None,
     ):
-        # The status of forced password update. This setting is disabled by default. Valid values:
-        # 
-        # - `enabled`: Enables forced password updates.
-        # 
-        # - `disabled`: Disables forced password updates.
+        # The forced password change status. By default, this feature is not enabled. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_forced_update_status = password_forced_update_status
-        # The priority of the password initialization policy. This setting is disabled by default. Valid values:
-        # 
-        # - `global`: The service uses the instance-level password initialization policy and ignores the policy specified in this request. For more information, see the password initialization policy settings.
-        # 
-        # - `custom`: The service uses the password initialization policy defined in this request. This includes the forced password update setting, the password initialization method, and the notification channels.
+        # The priority of the password initialization policy. By default, this parameter does not take effect. Valid values:
+        # - global: The global policy policy priority. The instance-level password initialization policy is used, and the password initialization policy specified in this request does not take effect. For more information, refer to the password initialization policy in password-related policies.
+        # - custom: The custom policy policy priority. The password initialization policy defined in this request is used, including whether to enable forced password change, the password initialization method, and the notification channel.
         self.password_initialization_policy_priority = password_initialization_policy_priority
-        # The password initialization type. Valid values:
-        # 
-        # - `random`: The system generates a random password.
+        # The password initialization method. Valid values:
+        # - random: random.
         self.password_initialization_type = password_initialization_type
         # The list of password notification channels.
         self.user_notification_channels = user_notification_channels
@@ -258,9 +253,9 @@ class CreateUserRequestCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
-        # The identifier of the custom field. You must create this field in the console before you can use it in a request. For more information, see the Custom Fields module in the console.
+        # The identifier of the custom field. Create the custom field in advance. For more information, refer to the custom fields module in the console.
         self.field_name = field_name
-        # The value of the custom field. This value must comply with the constraints defined for the corresponding custom field.
+        # The value of the custom field. The value must comply with the attribute constraints of the corresponding custom field.
         self.field_value = field_value
 
     def validate(self):

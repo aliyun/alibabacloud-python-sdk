@@ -10,9 +10,9 @@ class CreateGroupResponseBody(DaraModel):
         group_id: str = None,
         request_id: str = None,
     ):
-        # The group ID.
+        # Group ID.
         self.group_id = group_id
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

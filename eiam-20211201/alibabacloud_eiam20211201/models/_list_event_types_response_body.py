@@ -14,11 +14,11 @@ class ListEventTypesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # List of event types
+        # The list of event types.
         self.event_types = event_types
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total number of items in the list
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -66,7 +66,7 @@ class ListEventTypesResponseBodyEventTypes(DaraModel):
         self,
         event_type: str = None,
     ):
-        # Event type
+        # The event type.
         self.event_type = event_type
 
     def validate(self):

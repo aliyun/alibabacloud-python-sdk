@@ -10,11 +10,11 @@ class DeleteGroupRequest(DaraModel):
         group_id: str = None,
         instance_id: str = None,
     ):
-        # The group ID.
+        # Group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -10,9 +10,9 @@ class ListEventTypesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Page number for paging
+        # The page number of the query.
         self.page_number = page_number
-        # Number of items per page
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
