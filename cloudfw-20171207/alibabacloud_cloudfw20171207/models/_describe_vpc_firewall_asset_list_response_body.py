@@ -83,13 +83,13 @@ class DescribeVpcFirewallAssetListResponseBodyDataList(DaraModel):
         self.asset_instance_id = asset_instance_id
         # The name of the asset instance.
         self.asset_instance_name = asset_instance_name
-        # The inbound traffic. Unit: bytes.
+        # The inbound traffic, in bytes.
         self.in_bytes = in_bytes
         # The number of IPS hits.
         self.ips_hit_cnt = ips_hit_cnt
-        # The outbound traffic. Unit: bytes.
+        # The outbound traffic, in bytes.
         self.out_bytes = out_bytes
-        # The list of ports.
+        # The port list.
         self.port_list = port_list
         # The region.
         self.region_no = region_no

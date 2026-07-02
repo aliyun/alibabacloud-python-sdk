@@ -24,19 +24,19 @@ class DescribeACLProtectTrendResponseBody(DaraModel):
         self.in_protect_cnt = in_protect_cnt
         # This parameter is deprecated.
         self.inter_vpcprotect_cnt = inter_vpcprotect_cnt
-        # The interval at which data is returned. Unit: seconds. A result is returned at each interval.
+        # The step size of the returned data, in seconds. This indicates the interval between consecutive data points.
         self.interval = interval
         # The number of outbound interceptions by Internet access control.
         self.out_protect_cnt = out_protect_cnt
         # The request ID.
         self.request_id = request_id
-        # The cumulative total of AlertCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the entire time period.
+        # The cumulative sum of AlertCnt across all time points within the query time range. This represents the total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the entire time period.
         self.total_alert_cnt = total_alert_cnt
-        # The cumulative total of PassCnt across all time points within the query time range. This value indicates the total number of sessions that matched an ACL policy and were allowed during the entire time period.
+        # The cumulative sum of PassCnt across all time points within the query time range. This represents the total number of sessions that matched an ACL policy and were allowed during the entire time period.
         self.total_pass_cnt = total_pass_cnt
         # The total number of Internet access control interceptions.
         self.total_protect_cnt = total_protect_cnt
-        # The list of Internet access control intercept trend data.
+        # The list of Internet access control interception trend data.
         self.trend_list = trend_list
 
     def validate(self):
@@ -123,13 +123,13 @@ class DescribeACLProtectTrendResponseBodyTrendList(DaraModel):
         protect_cnt: int = None,
         time: int = None,
     ):
-        # The total number of sessions that matched an ACL policy and triggered the monitor (alert) action at this point in time.
+        # The total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the time interval.
         self.alert_cnt = alert_cnt
-        # The total number of sessions that matched an ACL policy and were allowed at this point in time.
+        # The total number of sessions that matched an ACL policy and were allowed during the time interval.
         self.pass_cnt = pass_cnt
         # The number of Internet access control interceptions on the day.
         self.protect_cnt = protect_cnt
-        # The timestamp of 00:00 on each day. Unit: seconds. Indicates the date.
+        # The timestamp of 00:00 of each day, in seconds. This indicates the date.
         self.time = time
 
     def validate(self):

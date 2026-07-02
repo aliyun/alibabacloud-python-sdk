@@ -14,8 +14,11 @@ class DescribePrepayBillTotalResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The bill list, aggregated by day.
         self.bill_list = bill_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -76,19 +79,33 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
         temporary_bandwidth: int = None,
         vpc_traffic_bandwidth: float = None,
     ):
+        # The actual billed traffic for sensitive data leak detection.
         self.billed_detection_traffic = billed_detection_traffic
+        # The sensitive data detection traffic for the day.
         self.daily_detection_traffic = daily_detection_traffic
+        # The total elastic traffic for the day. Unit: GB.
         self.daily_overflow_traffic = daily_overflow_traffic
+        # The default bandwidth of the edition. Unit: Mbit/s.
         self.default_bandwidth = default_bandwidth
+        # The elastic bandwidth. Unit: Mbit/s.
         self.elastic_bandwidth = elastic_bandwidth
+        # The end time of the day. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The extended bandwidth. Unit: Mbit/s.
         self.extension_bandwidth = extension_bandwidth
+        # The Internet traffic bandwidth. Unit: Gbit/s.
         self.internet_traffic_bandwidth = internet_traffic_bandwidth
+        # The monthly free traffic quota for sensitive data detection. Unit: GB.
         self.monthly_remaining_free_traffic = monthly_remaining_free_traffic
+        # The NAT traffic bandwidth. Unit: Gbit/s.
         self.nat_traffic_bandwidth = nat_traffic_bandwidth
+        # The timestamp when the maximum combined bandwidth (Internet + VPC + NAT) occurred on that day.
         self.overflow_time = overflow_time
+        # The start time of the day. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
+        # The temporary upgrade bandwidth. Unit: Mbit/s.
         self.temporary_bandwidth = temporary_bandwidth
+        # The VPC traffic bandwidth. Unit: Gbit/s.
         self.vpc_traffic_bandwidth = vpc_traffic_bandwidth
 
     def validate(self):

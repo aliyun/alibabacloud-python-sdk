@@ -20,12 +20,12 @@ class DescribePostpayBillRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The time interval for querying data. This is an enumerated value. Valid values:
+        # The time interval for querying data. This is an enumeration value. Valid values:
         # 
-        # - 3600: queries hourly data.
-        # - 86400: queries daily data.
+        # - 3600: queries data at the hourly level.
+        # - 86400: queries data at the daily level.
         self.interval = interval
-        # The language. This is an enumerated value.
+        # The language. This is an enumeration value.
         # Default value: zh.
         # Valid values: en.
         self.lang = lang

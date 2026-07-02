@@ -14,7 +14,7 @@ class DescribeResourceTypeAutoEnableResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether traffic redirection is enabled by default.
+        # Indicates whether default traffic redirection is enabled.
         self.resource_type_auto_enable = resource_type_auto_enable
 
     def validate(self):

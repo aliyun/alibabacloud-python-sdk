@@ -1,3 +1,9 @@
+2026-07-02 Version: 9.2.0
+- Support API DescribeFirewallDropTrend.
+- Support API DescribeFirewallTrafficTrend.
+- Support API DescribeSdlLastPayload.
+
+
 2026-06-22 Version: 9.1.0
 - Support API DescribePostpayBill.
 - Support API DescribePrepayBillTotal.

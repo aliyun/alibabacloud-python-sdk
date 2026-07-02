@@ -67,7 +67,7 @@ class DescribeUnprotectedPortTrendResponseBodyDataList(DaraModel):
         count: int = None,
         time: int = None,
     ):
-        # The number of blocked requests.
+        # The number of interceptions.
         self.count = count
         # The timestamp.
         self.time = time

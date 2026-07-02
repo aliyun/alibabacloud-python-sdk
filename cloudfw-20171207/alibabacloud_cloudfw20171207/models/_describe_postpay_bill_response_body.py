@@ -129,16 +129,16 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         self.internet_instance_cnt = internet_instance_cnt
         # The Internet traffic, in GB.
         self.internet_traffic = internet_traffic
-        # Indicates whether the bill is waived. A value of 0 indicates that the bill is not waived. Any value greater than 0 indicates that the bill is waived. If the bill is waived, it will not be issued.
-        # > This field is meaningful only when you query hourly data.
+        # Indicates whether a deduction is applied. A value of 0 indicates that no deduction is applied. Any value greater than 0 indicates that a deduction is applied. If a deduction is applied, the bill is not generated.
+        # > This field is meaningful only when you query data at the hourly level.
         self.is_derated = is_derated
-        # The log service usage duration, in TB*h.
+        # The log service usage duration, in TB × hours.
         self.log_storage = log_storage
         # The number of NAT instances.
         self.nat_instance_cnt = nat_instance_cnt
         # The NAT traffic, in GB.
         self.nat_traffic = nat_traffic
-        # The data leak detection usage duration, in hours.
+        # The sensitive data leak detection usage duration, in hours.
         self.sdl = sdl
         # The sensitive data detection traffic, in GB.
         self.sdl_traffic = sdl_traffic

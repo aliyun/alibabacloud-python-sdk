@@ -30,7 +30,7 @@ class DescribeVpcFirewallAssetListRequest(DaraModel):
         self.app_name = app_name
         # The IP address of the asset.
         self.asset_ip = asset_ip
-        # The page number.
+        # The current page number.
         self.current_page = current_page
         # The traffic direction.
         self.direction = direction
@@ -38,7 +38,7 @@ class DescribeVpcFirewallAssetListRequest(DaraModel):
         self.ecs_instance_id = ecs_instance_id
         # The name of the asset instance.
         self.ecs_instance_name = ecs_instance_name
-        # The end time. The value is a UNIX timestamp. Unit: seconds.
+        # The end time. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -52,7 +52,7 @@ class DescribeVpcFirewallAssetListRequest(DaraModel):
         self.order = order
         # The number of entries per page.
         self.page_size = page_size
-        # The instance ID of the peer VPC.
+        # The instance ID of the peer VPC instance.
         self.peer_vpc_id = peer_vpc_id
         # The port number.
         self.port = port
@@ -60,7 +60,7 @@ class DescribeVpcFirewallAssetListRequest(DaraModel):
         self.risk_level = risk_level
         # The sort method.
         self.sort = sort
-        # The start time. The value is a UNIX timestamp. Unit: seconds.
+        # The start time. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time

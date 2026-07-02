@@ -31,15 +31,14 @@ class DescribeInternetOpenIpRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end time when the public IP address was exposed. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the public IP address exposure. Specify the value as a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language of the response message.
+        # The language of the content within the response. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page for a paged query.
+        # The number of entries per page for a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -49,19 +48,15 @@ class DescribeInternetOpenIpRequest(DaraModel):
         self.public_ip = public_ip
         # The region ID of the instance.
         self.region_no = region_no
-        # The risk level. If you leave this parameter empty, all risk levels are queried. Valid values:
-        # 
-        # - **3**: high
-        # 
-        # - **2**: medium
-        # 
-        # - **1**: low
-        # 
-        # - **0**: none
+        # The risk level. If this parameter is not specified, all risk levels are returned. Valid values:
+        # - **3**: high risk
+        # - **2**: medium risk
+        # - **1**: low risk
+        # - **0**: no risk.
         self.risk_level = risk_level
-        # The name of the application to query.
+        # The application name to query.
         self.service_name = service_name
-        # The start time when the public IP address was exposed. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the public IP address exposure. Specify the value as a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

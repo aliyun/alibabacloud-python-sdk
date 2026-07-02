@@ -17,11 +17,11 @@ class DescribeACLProtectTrendRequest(DaraModel):
         # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The type of the firewall border. Valid values:
-        # - **internet** (default): Internet Border firewall, which detects and controls traffic between your assets and the Internet.
-        # - **vpc**: virtual private cloud (VPC) firewalls, which detect and control traffic between VPCs.
-        # - **nat**: NAT firewalls, which detect and control traffic from internal-facing assets to the Internet.
+        # - **internet** (default): Internet Border firewall, which monitors traffic between the Internet and your assets.
+        # - **vpc**: virtual private cloud (VPC) firewalls, which monitor traffic between VPCs.
+        # - **nat**: NAT firewalls, which monitor traffic from internal-facing assets to the Internet.
         self.firewall_type = firewall_type
-        # The time aggregation granularity for trend data. Unit: seconds. Valid values:
+        # The time aggregation granularity for trend data, in seconds. Valid values:
         # - **60**: 1-minute granularity (uses the minute-level detail table).
         # - **1800**: 30-minute granularity.
         # - **3600**: 1-hour granularity.

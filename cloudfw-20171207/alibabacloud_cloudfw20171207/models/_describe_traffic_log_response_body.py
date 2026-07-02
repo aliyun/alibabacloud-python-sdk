@@ -163,7 +163,7 @@ class DescribeTrafficLogResponseBodyDataList(DaraModel):
         vpc_firewall_id: str = None,
         vul_level: int = None,
     ):
-        # The policy ID of the ACL pre-match. If this parameter is empty, all policies are included.
+        # The policy ID of the ACL pre-match. If this parameter is not specified, all policies are included.
         self.acl_pre_rule_id = acl_pre_rule_id
         # The policy name of the ACL pre-match.
         self.acl_pre_rule_name = acl_pre_rule_name
@@ -173,7 +173,7 @@ class DescribeTrafficLogResponseBodyDataList(DaraModel):
         # 
         # **domain_unknown**: domain name not identified
         # 
-        # **normal**: normal.
+        # **normal**: normal
         self.acl_pre_state = acl_pre_state
         # The application identification status. Valid values:
         # 
@@ -191,7 +191,7 @@ class DescribeTrafficLogResponseBodyDataList(DaraModel):
         # 
         # **unknown_strict**: strict mode, identification failed
         # 
-        # **success**: identification succeeded.
+        # **success**: identification succeeded
         self.app_dpi_state = app_dpi_state
         # The application ID.
         self.app_id = app_id
@@ -225,9 +225,9 @@ class DescribeTrafficLogResponseBodyDataList(DaraModel):
         self.dst_vpc = dst_vpc
         # The end time of the data. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The additional extension data.
+        # Other extended data.
         self.ext = ext
-        # The inbound traffic in bytes.
+        # The inbound traffic.
         self.in_bytes = in_bytes
         # The number of inbound packets.
         self.in_packets = in_packets
@@ -241,7 +241,7 @@ class DescribeTrafficLogResponseBodyDataList(DaraModel):
         self.location = location
         # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
-        # The outbound traffic in bytes.
+        # The outbound traffic.
         self.out_bytes = out_bytes
         # The number of outbound packets.
         self.out_packets = out_packets
@@ -275,7 +275,7 @@ class DescribeTrafficLogResponseBodyDataList(DaraModel):
         self.rules = rules
         # The source IP address.
         self.src_ip = src_ip
-        # The source port.
+        # The port of the data source.
         self.src_port = src_port
         # The private source IP address.
         self.src_private_ip = src_private_ip
@@ -717,7 +717,7 @@ class DescribeTrafficLogResponseBodyDataListDstVpc(DaraModel):
     ):
         # The region ID.
         self.region_no = region_no
-        # The VPC instance ID.
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
         # The VPC instance name.
         self.vpc_name = vpc_name

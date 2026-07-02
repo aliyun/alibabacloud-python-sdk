@@ -57,7 +57,7 @@ class CreateSecurityProxyRequest(DaraModel):
         # - 1: Enable strict mode.
         # - 0: Disable strict mode.
         self.strict_mode = strict_mode
-        # The instance ID of the VPC.
+        # The VPC-connected instance ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

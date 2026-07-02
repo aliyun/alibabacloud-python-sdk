@@ -93,7 +93,7 @@ class DescribeTrafficLogRequest(DaraModel):
         self.isp = isp
         # The language type of the received message. Valid values:
         # - **zh** (default): Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The region of the source or destination IP address.
         self.location = location
@@ -129,7 +129,7 @@ class DescribeTrafficLogRequest(DaraModel):
         self.src_vpc_id = src_vpc_id
         # The region of the source VPC asset.
         self.src_vpc_region_no = src_vpc_region_no
-        # The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. We recommend that a single query does not exceed one day.
+        # The start time. Specify a UNIX timestamp in seconds. Only data within the last 7 days can be queried. A single query should not exceed one day.
         # 
         # This parameter is required.
         self.start_time = start_time

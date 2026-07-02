@@ -17,11 +17,11 @@ class DescribeAssetStatisticResponseBody(DaraModel):
     ):
         # Indicates whether automatic traffic redirection is enabled. Valid values:- **true**: Enabled.- **false**: Disabled.
         self.auto_resource_enable = auto_resource_enable
-        # The general instance specifications for version 2.0.
+        # The general instance specifications for the 2.0 billing model.
         self.general_instance_spec_statistic = general_instance_spec_statistic
         # The request ID.
         self.request_id = request_id
-        # The consumed quota statistics information.
+        # The quota usage statistics information.
         self.resource_spec_statistic = resource_spec_statistic
 
     def validate(self):
@@ -79,9 +79,9 @@ class DescribeAssetStatisticResponseBodyResourceSpecStatistic(DaraModel):
         self.ip_num_spec = ip_num_spec
         # The number of public IP addresses with protection enabled.
         self.ip_num_used = ip_num_used
-        # The quota for sensitive data IP addresses.
+        # The quota for IP addresses with sensitive data protection.
         self.sensitive_data_ip_num_spec = sensitive_data_ip_num_spec
-        # The number of sensitive data IP addresses with protection enabled.
+        # The number of IP addresses with sensitive data protection enabled.
         self.sensitive_data_ip_num_used = sensitive_data_ip_num_used
 
     def validate(self):
@@ -134,15 +134,15 @@ class DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic(DaraModel):
         total_nat_general_instance_used_cnt: int = None,
         total_vfw_general_instance_used_cnt: int = None,
     ):
-        # The region-specific statistics for the Internet firewall.
+        # The region-specific statistics of Internet firewall instances.
         self.cfw_general_instance_region_statistic = cfw_general_instance_region_statistic
-        # The region-specific statistics for all Internet firewall instances.
+        # The full region-specific statistics of Internet firewall instances.
         self.cfw_total_general_instance_region_statistic = cfw_total_general_instance_region_statistic
         # The total number of instances for the Internet firewall.
         self.total_cfw_general_instance_cnt = total_cfw_general_instance_cnt
         # The number of instances with the Internet firewall enabled.
         self.total_cfw_general_instance_used_cnt = total_cfw_general_instance_used_cnt
-        # The total quota.
+        # The total quota of general instances.
         self.total_general_instance_used_cnt = total_general_instance_used_cnt
         # The total number of instances for the NAT firewall.
         self.total_nat_general_instance_cnt = total_nat_general_instance_cnt

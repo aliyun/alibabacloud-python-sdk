@@ -263,9 +263,15 @@ from ._describe_download_task_type_response_body import DescribeDownloadTaskType
 from ._describe_download_task_type_response import DescribeDownloadTaskTypeResponse
 from ._describe_firewall_drop_statistics_response_body import DescribeFirewallDropStatisticsResponseBody
 from ._describe_firewall_drop_statistics_response import DescribeFirewallDropStatisticsResponse
+from ._describe_firewall_drop_trend_request import DescribeFirewallDropTrendRequest
+from ._describe_firewall_drop_trend_response_body import DescribeFirewallDropTrendResponseBody
+from ._describe_firewall_drop_trend_response import DescribeFirewallDropTrendResponse
 from ._describe_firewall_task_request import DescribeFirewallTaskRequest
 from ._describe_firewall_task_response_body import DescribeFirewallTaskResponseBody
 from ._describe_firewall_task_response import DescribeFirewallTaskResponse
+from ._describe_firewall_traffic_trend_request import DescribeFirewallTrafficTrendRequest
+from ._describe_firewall_traffic_trend_response_body import DescribeFirewallTrafficTrendResponseBody
+from ._describe_firewall_traffic_trend_response import DescribeFirewallTrafficTrendResponse
 from ._describe_firewall_vswitch_request import DescribeFirewallVSwitchRequest
 from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchResponseBody
 from ._describe_firewall_vswitch_response import DescribeFirewallVSwitchResponse
@@ -511,6 +517,9 @@ from ._describe_sdl_event_sd_list_response import DescribeSdlEventSdListResponse
 from ._describe_sdl_event_statistic_request import DescribeSdlEventStatisticRequest
 from ._describe_sdl_event_statistic_response_body import DescribeSdlEventStatisticResponseBody
 from ._describe_sdl_event_statistic_response import DescribeSdlEventStatisticResponse
+from ._describe_sdl_last_payload_request import DescribeSdlLastPayloadRequest
+from ._describe_sdl_last_payload_response_body import DescribeSdlLastPayloadResponseBody
+from ._describe_sdl_last_payload_response import DescribeSdlLastPayloadResponse
 from ._describe_sdl_statistic_request import DescribeSdlStatisticRequest
 from ._describe_sdl_statistic_response_body import DescribeSdlStatisticResponseBody
 from ._describe_sdl_statistic_response import DescribeSdlStatisticResponse
@@ -875,7 +884,10 @@ from ._describe_dns_firewall_policy_response_body import DescribeDnsFirewallPoli
 from ._describe_domain_resolve_response_body import DescribeDomainResolveResponseBodyResolveResult
 from ._describe_download_task_response_body import DescribeDownloadTaskResponseBodyTasks
 from ._describe_download_task_type_response_body import DescribeDownloadTaskTypeResponseBodyTaskTypeArray
+from ._describe_firewall_drop_trend_response_body import DescribeFirewallDropTrendResponseBodyDataList
 from ._describe_firewall_task_response_body import DescribeFirewallTaskResponseBodyTaskSteps
+from ._describe_firewall_traffic_trend_response_body import DescribeFirewallTrafficTrendResponseBodyDataList
+from ._describe_firewall_traffic_trend_response_body import DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps
 from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchResponseBodyVswitchListFirewallList
 from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchResponseBodyVswitchList
 from ._describe_firewall_vswitch_resources_response_body import DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList
@@ -1336,9 +1348,15 @@ __all__ = [
     DescribeDownloadTaskTypeResponse,
     DescribeFirewallDropStatisticsResponseBody,
     DescribeFirewallDropStatisticsResponse,
+    DescribeFirewallDropTrendRequest,
+    DescribeFirewallDropTrendResponseBody,
+    DescribeFirewallDropTrendResponse,
     DescribeFirewallTaskRequest,
     DescribeFirewallTaskResponseBody,
     DescribeFirewallTaskResponse,
+    DescribeFirewallTrafficTrendRequest,
+    DescribeFirewallTrafficTrendResponseBody,
+    DescribeFirewallTrafficTrendResponse,
     DescribeFirewallVSwitchRequest,
     DescribeFirewallVSwitchResponseBody,
     DescribeFirewallVSwitchResponse,
@@ -1584,6 +1602,9 @@ __all__ = [
     DescribeSdlEventStatisticRequest,
     DescribeSdlEventStatisticResponseBody,
     DescribeSdlEventStatisticResponse,
+    DescribeSdlLastPayloadRequest,
+    DescribeSdlLastPayloadResponseBody,
+    DescribeSdlLastPayloadResponse,
     DescribeSdlStatisticRequest,
     DescribeSdlStatisticResponseBody,
     DescribeSdlStatisticResponse,
@@ -1948,7 +1969,10 @@ __all__ = [
     DescribeDomainResolveResponseBodyResolveResult,
     DescribeDownloadTaskResponseBodyTasks,
     DescribeDownloadTaskTypeResponseBodyTaskTypeArray,
+    DescribeFirewallDropTrendResponseBodyDataList,
     DescribeFirewallTaskResponseBodyTaskSteps,
+    DescribeFirewallTrafficTrendResponseBodyDataList,
+    DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps,
     DescribeFirewallVSwitchResponseBodyVswitchListFirewallList,
     DescribeFirewallVSwitchResponseBodyVswitchList,
     DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList,

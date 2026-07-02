@@ -16,7 +16,7 @@ class DescribePageDocumentsResponseBody(DaraModel):
         more: main_models.DescribePageDocumentsResponseBodyMore = None,
         request_id: str = None,
     ):
-        # The document list.
+        # The list of documents.
         self.docs = docs
         # The image URL.
         self.image_url = image_url

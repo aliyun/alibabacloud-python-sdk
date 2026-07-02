@@ -4,21 +4,21 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeUnprotectedPortTrendRequest(DaraModel):
+class DescribeFirewallDropTrendRequest(DaraModel):
     def __init__(
         self,
-        end_time: str = None,
+        end_time: int = None,
         lang: str = None,
-        source_ip: str = None,
-        start_time: str = None,
+        start_time: int = None,
     ):
-        # The end time. Specify a UNIX timestamp in seconds.
+        # The end time of the query. Specify the value as a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language type of the received message.
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source IP address of the visitor.
-        self.source_ip = source_ip
-        # The start time. Specify a UNIX timestamp in seconds.
+        # The start time of the query. Specify the value as a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -35,9 +35,6 @@ class DescribeUnprotectedPortTrendRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -50,9 +47,6 @@ class DescribeUnprotectedPortTrendRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

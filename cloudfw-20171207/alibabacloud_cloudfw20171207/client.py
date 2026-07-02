@@ -46,7 +46,7 @@ class Client(OpenApiClient):
             'cn-beijing-finance-1': 'cloudfw.aliyuncs.com',
             'cn-beijing': 'cloudfw.aliyuncs.com',
             'ap-southeast-5': 'cloudfw.aliyuncs.com',
-            'ap-southeast-3': 'cloudfw.aliyuncs.com',
+            'ap-southeast-3': 'cloudfw.ap-southeast-1.aliyuncs.com',
             'ap-northeast-1': 'cloudfw.aliyuncs.com'
         }
         self.check_config(config)
@@ -7480,6 +7480,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_firewall_drop_statistics_with_options_async(runtime)
 
+    def describe_firewall_drop_trend_with_options(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallDropTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallDropTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_firewall_drop_trend_with_options_async(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallDropTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallDropTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_firewall_drop_trend(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        runtime = RuntimeOptions()
+        return self.describe_firewall_drop_trend_with_options(request, runtime)
+
+    async def describe_firewall_drop_trend_async(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_firewall_drop_trend_with_options_async(request, runtime)
+
     def describe_firewall_task_with_options(
         self,
         request: main_models.DescribeFirewallTaskRequest,
@@ -7565,6 +7643,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeFirewallTaskResponse:
         runtime = RuntimeOptions()
         return await self.describe_firewall_task_with_options_async(request, runtime)
+
+    def describe_firewall_traffic_trend_with_options(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_firewall_traffic_trend_with_options_async(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_firewall_traffic_trend(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return self.describe_firewall_traffic_trend_with_options(request, runtime)
+
+    async def describe_firewall_traffic_trend_async(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_firewall_traffic_trend_with_options_async(request, runtime)
 
     def describe_firewall_vswitch_with_options(
         self,
@@ -15189,6 +15345,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSdlEventStatisticResponse:
         runtime = RuntimeOptions()
         return await self.describe_sdl_event_statistic_with_options_async(request, runtime)
+
+    def describe_sdl_last_payload_with_options(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dst_ip):
+            query['DstIp'] = request.dst_ip
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.sensitive_category):
+            query['SensitiveCategory'] = request.sensitive_category
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSdlLastPayload',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSdlLastPayloadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sdl_last_payload_with_options_async(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dst_ip):
+            query['DstIp'] = request.dst_ip
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.sensitive_category):
+            query['SensitiveCategory'] = request.sensitive_category
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSdlLastPayload',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSdlLastPayloadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sdl_last_payload(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sdl_last_payload_with_options(request, runtime)
+
+    async def describe_sdl_last_payload_async(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sdl_last_payload_with_options_async(request, runtime)
 
     def describe_sdl_statistic_with_options(
         self,
