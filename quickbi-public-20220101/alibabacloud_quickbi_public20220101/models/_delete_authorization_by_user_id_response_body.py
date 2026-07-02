@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UpdateCubeBySqlResponseBody(DaraModel):
+class DeleteAuthorizationByUserIdResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
@@ -13,14 +13,9 @@ class UpdateCubeBySqlResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The execution result of the operation. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the deletion was successful.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

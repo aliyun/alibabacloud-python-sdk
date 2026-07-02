@@ -13,16 +13,14 @@ class CreateCubeBySqlResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of the API call. Valid values:
+        # The execution result of the operation. Valid values:
         # 
-        # - true: The request is successful.
-        # 
+        # - true: The request was successful.
         # - false: The request failed.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
         # - true: The request was successful.
-        # 
         # - false: The request failed.
         self.success = success
 

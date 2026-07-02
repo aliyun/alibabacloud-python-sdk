@@ -10,10 +10,11 @@ class UpdateCubeBySqlRequest(DaraModel):
         cube_id: str = None,
         custom_sql: str = None,
         ds_id: str = None,
+        placeholders: str = None,
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the dataset.
+        # The dataset ID.
         # 
         # This parameter is required.
         self.cube_id = cube_id
@@ -21,15 +22,17 @@ class UpdateCubeBySqlRequest(DaraModel):
         # 
         # This parameter is required.
         self.custom_sql = custom_sql
-        # The ID of the data source.
+        # The data source ID.
         # 
         # This parameter is required.
         self.ds_id = ds_id
-        # The ID of the Quick BI user. The user must have permissions to create datasets. This ID is not your Alibaba Cloud account ID. Call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV\\&params=%7B%7D\\&tab=DOC\\&sdkStyle=old\\&RegionId=cn-hangzhou) operation to obtain the user ID.
+        # The placeholder parameters. For more information, see the supplementary description below.
+        self.placeholders = placeholders
+        # The Quick BI UserId of a user who has permissions to create datasets. This is not your Alibaba Cloud account ID. Call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV&params=%7B%7D&tab=DOC&sdkStyle=old&RegionId=cn-hangzhou) operation to obtain the UserId.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The ID of the workspace.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -51,6 +54,9 @@ class UpdateCubeBySqlRequest(DaraModel):
         if self.ds_id is not None:
             result['DsId'] = self.ds_id
 
+        if self.placeholders is not None:
+            result['Placeholders'] = self.placeholders
+
         if self.user_id is not None:
             result['UserId'] = self.user_id
 
@@ -69,6 +75,9 @@ class UpdateCubeBySqlRequest(DaraModel):
 
         if m.get('DsId') is not None:
             self.ds_id = m.get('DsId')
+
+        if m.get('Placeholders') is not None:
+            self.placeholders = m.get('Placeholders')
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')

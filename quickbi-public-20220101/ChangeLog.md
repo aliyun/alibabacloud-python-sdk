@@ -1,3 +1,11 @@
+2026-07-02 Version: 1.17.0
+- Support API DeleteAuthorizationByUserId.
+- Support API IpWhiteListConfig.
+- Support API TransferUsergroup.
+- Update API CreateCubeBySql: add request parameters Placeholders.
+- Update API UpdateCubeBySql: add request parameters Placeholders.
+
+
 2026-06-11 Version: 1.16.0
 - Support API ClearDynamicTagCache.
 - Support API ListDynamicTag.

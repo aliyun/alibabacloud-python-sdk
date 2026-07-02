@@ -2,24 +2,23 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_quickbi_public20220101 import models as main_models
 from darabonba.model import DaraModel
 
-class QueryUserByMobileAccountResponseBody(DaraModel):
+class IpWhiteListConfigResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
-        result: main_models.QueryUserByMobileAccountResponseBodyResult = None,
+        result: main_models.IpWhiteListConfigResponseBodyResult = None,
         success: bool = None,
     ):
         # The request ID.
         self.request_id = request_id
-        # The user information bound to the third-party account.
+        # The IP address whitelist.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -48,7 +47,7 @@ class QueryUserByMobileAccountResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.QueryUserByMobileAccountResponseBodyResult()
+            temp_model = main_models.IpWhiteListConfigResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         if m.get('Success') is not None:
@@ -56,16 +55,13 @@ class QueryUserByMobileAccountResponseBody(DaraModel):
 
         return self
 
-class QueryUserByMobileAccountResponseBodyResult(DaraModel):
+class IpWhiteListConfigResponseBodyResult(DaraModel):
     def __init__(
         self,
-        bound_user_id: str = None,
-        third_account_name: str = None,
+        ip_white_list: List[str] = None,
     ):
-        # The QuickBI user ID of the bound account.
-        self.bound_user_id = bound_user_id
-        # The mobile account name.
-        self.third_account_name = third_account_name
+        # The IP address whitelist array.
+        self.ip_white_list = ip_white_list
 
     def validate(self):
         pass
@@ -75,21 +71,15 @@ class QueryUserByMobileAccountResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.bound_user_id is not None:
-            result['BoundUserId'] = self.bound_user_id
-
-        if self.third_account_name is not None:
-            result['ThirdAccountName'] = self.third_account_name
+        if self.ip_white_list is not None:
+            result['IpWhiteList'] = self.ip_white_list
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('BoundUserId') is not None:
-            self.bound_user_id = m.get('BoundUserId')
-
-        if m.get('ThirdAccountName') is not None:
-            self.third_account_name = m.get('ThirdAccountName')
+        if m.get('IpWhiteList') is not None:
+            self.ip_white_list = m.get('IpWhiteList')
 
         return self
 

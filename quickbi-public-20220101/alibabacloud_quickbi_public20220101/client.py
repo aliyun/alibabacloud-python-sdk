@@ -20,7 +20,19 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-east-1': 'quickbi-public.us-east-1.aliyuncs.com',
+            'me-central-1': 'quickbi-public.me-central-1.aliyuncs.com',
+            'eu-central-1': 'quickbi-public.eu-central-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'quickbi-public.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-hongkong': 'quickbi-public.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'quickbi-public.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-5': 'quickbi-public.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'quickbi-public.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'quickbi-public.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'quickbi-public.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('quickbi-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1777,8 +1789,12 @@ class Client(OpenApiClient):
             query['UserId'] = request.user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.placeholders):
+            body['Placeholders'] = request.placeholders
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateCubeBySql',
@@ -1813,8 +1829,12 @@ class Client(OpenApiClient):
             query['UserId'] = request.user_id
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.placeholders):
+            body['Placeholders'] = request.placeholders
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateCubeBySql',
@@ -1951,8 +1971,6 @@ class Client(OpenApiClient):
             query['CmptId'] = request.cmpt_id
         if not DaraCore.is_null(request.expire_time):
             query['ExpireTime'] = request.expire_time
-        if not DaraCore.is_null(request.global_param):
-            query['GlobalParam'] = request.global_param
         if not DaraCore.is_null(request.ticket_num):
             query['TicketNum'] = request.ticket_num
         if not DaraCore.is_null(request.user_id):
@@ -1961,8 +1979,12 @@ class Client(OpenApiClient):
             query['WatermarkParam'] = request.watermark_param
         if not DaraCore.is_null(request.works_id):
             query['WorksId'] = request.works_id
+        body = {}
+        if not DaraCore.is_null(request.global_param):
+            body['GlobalParam'] = request.global_param
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateTicket',
@@ -1995,8 +2017,6 @@ class Client(OpenApiClient):
             query['CmptId'] = request.cmpt_id
         if not DaraCore.is_null(request.expire_time):
             query['ExpireTime'] = request.expire_time
-        if not DaraCore.is_null(request.global_param):
-            query['GlobalParam'] = request.global_param
         if not DaraCore.is_null(request.ticket_num):
             query['TicketNum'] = request.ticket_num
         if not DaraCore.is_null(request.user_id):
@@ -2005,8 +2025,12 @@ class Client(OpenApiClient):
             query['WatermarkParam'] = request.watermark_param
         if not DaraCore.is_null(request.works_id):
             query['WorksId'] = request.works_id
+        body = {}
+        if not DaraCore.is_null(request.global_param):
+            body['GlobalParam'] = request.global_param
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateTicket',
@@ -2615,6 +2639,84 @@ class Client(OpenApiClient):
     ) -> main_models.DelayTicketExpireTimeResponse:
         runtime = RuntimeOptions()
         return await self.delay_ticket_expire_time_with_options_async(request, runtime)
+
+    def delete_authorization_by_user_id_with_options(
+        self,
+        request: main_models.DeleteAuthorizationByUserIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAuthorizationByUserIdResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qbi_user_id):
+            query['QbiUserId'] = request.qbi_user_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAuthorizationByUserId',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAuthorizationByUserIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_authorization_by_user_id_with_options_async(
+        self,
+        request: main_models.DeleteAuthorizationByUserIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAuthorizationByUserIdResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qbi_user_id):
+            query['QbiUserId'] = request.qbi_user_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAuthorizationByUserId',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAuthorizationByUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_authorization_by_user_id(
+        self,
+        request: main_models.DeleteAuthorizationByUserIdRequest,
+    ) -> main_models.DeleteAuthorizationByUserIdResponse:
+        runtime = RuntimeOptions()
+        return self.delete_authorization_by_user_id_with_options(request, runtime)
+
+    async def delete_authorization_by_user_id_async(
+        self,
+        request: main_models.DeleteAuthorizationByUserIdRequest,
+    ) -> main_models.DeleteAuthorizationByUserIdResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_authorization_by_user_id_with_options_async(request, runtime)
 
     def delete_data_level_permission_rule_users_with_options(
         self,
@@ -3647,6 +3749,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetWorksEmbedListResponse:
         runtime = RuntimeOptions()
         return await self.get_works_embed_list_with_options_async(request, runtime)
+
+    def ip_white_list_config_with_options(
+        self,
+        request: main_models.IpWhiteListConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IpWhiteListConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ip_white_list):
+            query['IpWhiteList'] = request.ip_white_list
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IpWhiteListConfig',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IpWhiteListConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def ip_white_list_config_with_options_async(
+        self,
+        request: main_models.IpWhiteListConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IpWhiteListConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ip_white_list):
+            query['IpWhiteList'] = request.ip_white_list
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IpWhiteListConfig',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IpWhiteListConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def ip_white_list_config(
+        self,
+        request: main_models.IpWhiteListConfigRequest,
+    ) -> main_models.IpWhiteListConfigResponse:
+        runtime = RuntimeOptions()
+        return self.ip_white_list_config_with_options(request, runtime)
+
+    async def ip_white_list_config_async(
+        self,
+        request: main_models.IpWhiteListConfigRequest,
+    ) -> main_models.IpWhiteListConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.ip_white_list_config_with_options_async(request, runtime)
 
     def list_acceleration_of_workspace_with_options(
         self,
@@ -9432,6 +9608,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.smartq_query_ability_with_options_async(request, runtime)
 
+    def transfer_usergroup_with_options(
+        self,
+        request: main_models.TransferUsergroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferUsergroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parent_user_group_id):
+            query['ParentUserGroupId'] = request.parent_user_group_id
+        if not DaraCore.is_null(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferUsergroup',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferUsergroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_usergroup_with_options_async(
+        self,
+        request: main_models.TransferUsergroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferUsergroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.parent_user_group_id):
+            query['ParentUserGroupId'] = request.parent_user_group_id
+        if not DaraCore.is_null(request.user_group_id):
+            query['UserGroupId'] = request.user_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TransferUsergroup',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TransferUsergroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_usergroup(
+        self,
+        request: main_models.TransferUsergroupRequest,
+    ) -> main_models.TransferUsergroupResponse:
+        runtime = RuntimeOptions()
+        return self.transfer_usergroup_with_options(request, runtime)
+
+    async def transfer_usergroup_async(
+        self,
+        request: main_models.TransferUsergroupRequest,
+    ) -> main_models.TransferUsergroupResponse:
+        runtime = RuntimeOptions()
+        return await self.transfer_usergroup_with_options_async(request, runtime)
+
     def update_cube_by_sql_with_options(
         self,
         request: main_models.UpdateCubeBySqlRequest,
@@ -9445,6 +9695,8 @@ class Client(OpenApiClient):
             query['CustomSql'] = request.custom_sql
         if not DaraCore.is_null(request.ds_id):
             query['DsId'] = request.ds_id
+        if not DaraCore.is_null(request.placeholders):
+            query['Placeholders'] = request.placeholders
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         if not DaraCore.is_null(request.workspace_id):
@@ -9481,6 +9733,8 @@ class Client(OpenApiClient):
             query['CustomSql'] = request.custom_sql
         if not DaraCore.is_null(request.ds_id):
             query['DsId'] = request.ds_id
+        if not DaraCore.is_null(request.placeholders):
+            query['Placeholders'] = request.placeholders
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         if not DaraCore.is_null(request.workspace_id):

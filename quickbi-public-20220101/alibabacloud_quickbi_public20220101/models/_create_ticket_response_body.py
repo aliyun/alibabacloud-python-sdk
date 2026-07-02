@@ -11,15 +11,13 @@ class CreateTicketResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
         # The generated ticket value.
         self.result = result
-        # Indicates whether the request was successful. Value range:
-        # 
-        # - true: Request succeeded
-        # 
-        # - false: Request failed
+        # Indicates whether the request was successful. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

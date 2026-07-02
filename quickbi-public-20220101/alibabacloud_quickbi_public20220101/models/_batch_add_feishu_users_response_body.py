@@ -14,17 +14,18 @@ class BatchAddFeishuUsersResponseBody(DaraModel):
         result: main_models.BatchAddFeishuUsersResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Result of adding members to the user group. Possible values:
+        # The result of adding user group members. Valid values:
         # 
-        # - true: Addition successful
-        # - false: Addition failed
+        # - true: The users were added.
+        # 
+        # - false: The users failed to be added.
         self.result = result
-        # Whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: Request successful
-        # - false: Request failed
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -68,11 +69,11 @@ class BatchAddFeishuUsersResponseBodyResult(DaraModel):
         fail_results: List[main_models.BatchAddFeishuUsersResponseBodyResultFailResults] = None,
         ok_count: int = None,
     ):
-        # Number of failed validations.
+        # The number of users that failed validation.
         self.fail_count = fail_count
-        # Details of the failures.
+        # The details of the failures.
         self.fail_results = fail_results
-        # Count of successes.
+        # The number of users that were added.
         self.ok_count = ok_count
 
     def validate(self):
@@ -120,7 +121,7 @@ class BatchAddFeishuUsersResponseBodyResultFailResults(DaraModel):
         self,
         fail_infos: List[main_models.BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos] = None,
     ):
-        # Reasons for errors.
+        # The error causes.
         self.fail_infos = fail_infos
 
     def validate(self):
@@ -158,11 +159,11 @@ class BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos(DaraModel):
         code_desc: str = None,
         input: str = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Description of the error code.
+        # The error code description.
         self.code_desc = code_desc
-        # Incorrect input value.
+        # The invalid input value.
         self.input = input
 
     def validate(self):
