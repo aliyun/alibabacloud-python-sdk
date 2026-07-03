@@ -16,9 +16,9 @@ class DeployHttpApiRequest(DaraModel):
     ):
         # The HTTP API deployment configuration.
         self.http_api_config = http_api_config
-        # The deployment configuration for the REST API. This parameter is required when the HTTP API to be published is a REST API.
+        # The REST API deployment configuration. Required when the HTTP API being published is a REST API.
         self.rest_api_config = rest_api_config
-        # The route ID. This parameter is required when you publish a route of an HTTP API.
+        # The route ID. Required when publishing a route of an HTTP API.
         self.route_id = route_id
 
     def validate(self):
@@ -78,7 +78,7 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         self.operation_deployments = operation_deployments
         # The operation IDs.
         self.operation_ids = operation_ids
-        # The historical version number. If this parameter is specified, the publish information is based on the historical version.
+        # The historical version number. If this field is specified, the publish information is based on the historical version.
         self.revision_id = revision_id
 
     def validate(self):

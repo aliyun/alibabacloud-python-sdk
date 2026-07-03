@@ -15,9 +15,13 @@ class GetGatewayQuotaRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -75,16 +79,27 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
+        # The base timestamp of the period.
         self.base_timestamp = base_timestamp
+        # The number of consumers associated with the rule.
         self.consumer_count = consumer_count
+        # The list of principals (consumers) bound to this rule.
         self.consumers = consumers
+        # The quota period type.
         self.period_type = period_type
+        # The quota dimension.
         self.quota_dimension = quota_dimension
+        # The quota limit.
         self.quota_limit = quota_limit
+        # The rule ID.
         self.rule_id = rule_id
+        # The rule name.
         self.rule_name = rule_name
+        # The rule status.
         self.rule_status = rule_status
+        # The time zone corresponding to the calendar period, in UTC+x format.
         self.timezone = timezone
+        # The reset period type. Currently, only calendar period is supported, which means windowAlignment="calendar".
         self.window_alignment = window_alignment
 
     def validate(self):
@@ -181,7 +196,9 @@ class GetGatewayQuotaRuleResponseBodyDataConsumers(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The principal (consumer) ID.
         self.id = id
+        # The principal (consumer) name.
         self.name = name
 
     def validate(self):

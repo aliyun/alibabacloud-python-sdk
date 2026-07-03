@@ -15,11 +15,11 @@ class ListGatewayFeaturesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
-        # The response message returned.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -69,7 +69,7 @@ class ListGatewayFeaturesResponseBodyData(DaraModel):
         self,
         items: List[main_models.ListGatewayFeaturesResponseBodyDataItems] = None,
     ):
-        # The list of parameter configurations.
+        # The list of parameter settings.
         self.items = items
 
     def validate(self):
@@ -158,51 +158,48 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinition(DaraModel):
         value_type: str = None,
         value_unit: str = None,
     ):
-        # The default value of the parameter.
+        # The default value.
         self.default_value = default_value
         # The parameter description.
         self.description = description
         # The display name of the parameter.
         self.display_name = display_name
-        # The parameter group to which the parameter belongs. Valid values:
-        # 
-        # *   Telemetry: an observability parameter
-        # *   Engine: an engine parameter
+        # The parameter group. Valid values:
+        # - Telemetry: observability parameter.
+        # - Engine: engine parameter.
         self.group = group
         # The input type of the parameter. Valid values:
-        # 
-        # *   Trigger
-        # *   Input
-        # *   SingleSelect
-        # *   MultiSelect
+        # - Trigger: toggle.
+        # - Input: input.
+        # - SingleSelect: single-select.
+        # - MultiSelect: multi-select.
         self.input_type = input_type
-        # The maximum length of the value. This parameter is valid when the value type is string.
+        # The maximum length supported by the parameter value. This is valid only when the value type is string.
         self.max_length = max_length
-        # The maximum value of the parameter. This parameter is valid when the value type is int32, int64, or float.
+        # The maximum value supported by the parameter. This is valid only when the value type is int32, int64, or float.
         self.max_value = max_value
-        # The minimum length of the value. This parameter is valid when the value type is string.
+        # The minimum length supported by the parameter value. This is valid only when the value type is string.
         self.min_length = min_length
-        # The minimum value of the parameter. This parameter is valid when the value type is int32, int64, or float.
+        # The minimum value supported by the parameter. This is valid only when the value type is int32, int64, or float.
         self.min_value = min_value
         # The parameter name.
         self.name = name
         # Indicates whether the parameter is read-only.
         self.read_only = read_only
-        # The regular expression that the parameter value must fulfill. This parameter is valid when the value type is string.
+        # The regular expression that the parameter value must match. This is valid only when the parameter value type is string.
         self.regex = regex
         # The list of options supported by the parameter value.
         self.value_options = value_options
-        # The value type of the parameter. Valid values:
-        # 
-        # *   bool: boolean
-        # *   string
-        # *   int32: integer
-        # *   int64: long integer
-        # *   json
-        # *   array: JSON array
-        # *   float: floating point
+        # The type supported by the parameter value. Valid values:
+        # - bool: Boolean.
+        # - string: String.
+        # - int32: Integer.
+        # - int64: Long integer.
+        # - json: JSON format.
+        # - array: JSON array format.
+        # - float: Float.
         self.value_type = value_type
-        # The value unit.
+        # The unit.
         self.value_unit = value_unit
 
     def validate(self):
@@ -323,7 +320,7 @@ class ListGatewayFeaturesResponseBodyDataItemsDefinitionValueOptions(DaraModel):
         key: str = None,
         label: str = None,
     ):
-        # The key to pass the parameter.
+        # The pass parameter key.
         self.key = key
         # The display value.
         self.label = label

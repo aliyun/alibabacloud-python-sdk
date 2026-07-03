@@ -46,18 +46,22 @@ class CreateConsumerAuthorizationRulesRequest(DaraModel):
 class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
     def __init__(
         self,
+        consumer_group_id: str = None,
         consumer_id: str = None,
         expire_mode: str = None,
         expire_timestamp: int = None,
+        principal_type: str = None,
         resource_identifier: main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier = None,
         resource_type: str = None,
     ):
+        self.consumer_group_id = consumer_group_id
         # The consumer ID.
         self.consumer_id = consumer_id
         # The expiration mode. Currently, only LongTerm is supported.
         self.expire_mode = expire_mode
         # The expiration time.
         self.expire_timestamp = expire_timestamp
+        self.principal_type = principal_type
         # The resource identifier, which serves as a unique identifier for non-standard code sources for space reuse.
         self.resource_identifier = resource_identifier
         # The resource type.
@@ -72,6 +76,9 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+
         if self.consumer_id is not None:
             result['consumerId'] = self.consumer_id
 
@@ -80,6 +87,9 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
 
         if self.expire_timestamp is not None:
             result['expireTimestamp'] = self.expire_timestamp
+
+        if self.principal_type is not None:
+            result['principalType'] = self.principal_type
 
         if self.resource_identifier is not None:
             result['resourceIdentifier'] = self.resource_identifier.to_map()
@@ -91,6 +101,9 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+
         if m.get('consumerId') is not None:
             self.consumer_id = m.get('consumerId')
 
@@ -99,6 +112,9 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
 
         if m.get('expireTimestamp') is not None:
             self.expire_timestamp = m.get('expireTimestamp')
+
+        if m.get('principalType') is not None:
+            self.principal_type = m.get('principalType')
 
         if m.get('resourceIdentifier') is not None:
             temp_model = main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifier()

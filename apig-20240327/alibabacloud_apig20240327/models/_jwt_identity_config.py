@@ -18,7 +18,7 @@ class JwtIdentityConfig(DaraModel):
         secret_type: str = None,
         type: str = None,
     ):
-        # The claims-to-headers configurations.
+        # The list of claim-to-header configurations.
         self.claims_to_headers_configs = claims_to_headers_configs
         # The JWKS configuration.
         self.jwks = jwks
@@ -26,11 +26,11 @@ class JwtIdentityConfig(DaraModel):
         self.jwt_payload_config = jwt_payload_config
         # The JWT token configuration.
         self.jwt_token_config = jwt_token_config
-        # The remote JWKS.
+        # The remote JWKS configuration (JSON string).
         self.remote_jwks = remote_jwks
         # The secret type.
         self.secret_type = secret_type
-        # The type of authentication configuration.
+        # The authentication configuration type.
         self.type = type
 
     def validate(self):
@@ -111,11 +111,11 @@ class JwtIdentityConfigJwtTokenConfig(DaraModel):
         position: str = None,
         prefix: str = None,
     ):
-        # The JWT key configuration.
+        # The key configuration of the JWT.
         self.key = key
-        # Specifies whether to pass through.
+        # Indicates whether the request is passed through.
         self.pass_ = pass_
-        # The storage location of the JWT.
+        # The location where the JWT is stored.
         self.position = position
         # The prefix configuration.
         self.prefix = prefix
@@ -202,11 +202,11 @@ class JwtIdentityConfigClaimsToHeadersConfigs(DaraModel):
         header: str = None,
         override: bool = None,
     ):
-        # The claim.
+        # The claim name in the JWT payload.
         self.claim = claim
-        # The header.
+        # The HTTP header name after conversion.
         self.header = header
-        # The override.
+        # Specifies whether to overwrite an existing header with the same name.
         self.override = override
 
     def validate(self):

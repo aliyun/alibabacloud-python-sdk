@@ -9,7 +9,7 @@ class UpdateSecretRequest(DaraModel):
         self,
         secret_data: str = None,
     ):
-        # The key value.
+        # The key pair value.
         self.secret_data = secret_data
 
     def validate(self):

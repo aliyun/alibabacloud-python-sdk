@@ -15,13 +15,13 @@ class ListPluginAttachmentsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListPluginAttachmentsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The details of resource attachments.
+        # The item details.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -140,33 +140,23 @@ class ListPluginAttachmentsResponseBodyDataItems(DaraModel):
         plugin_id: str = None,
         resource_infos: List[main_models.ResourceInfo] = None,
     ):
-        # The types of resource attachments.
-        # 
-        # - HttpApi
-        # 
-        # - Operation
-        # 
-        # - GatewayRoute
-        # 
-        # - GatewayDomain
-        # 
-        # - Gateway
+        # The plug-in mount resource type. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
         self.attach_resource_type = attach_resource_type
-        # Indicates if enabled.
+        # Indicates whether the plug-in mount is enabled.
         self.enable = enable
-        # The environment metadata.
+        # The environment context.
         self.environment_info = environment_info
-        # The parent resource metadata.
+        # The parent resource information.
         self.parent_resource_info = parent_resource_info
-        # The ID of the resource attachment.
+        # The plug-in mount ID.
         self.plugin_attachment_id = plugin_attachment_id
-        # The plug-in type metadata.
+        # The plug-in type information.
         self.plugin_class_info = plugin_class_info
-        # The plug-in configurations (Base64-encoded).
+        # The Base64-encoded content of the original plug-in configuration.
         self.plugin_config = plugin_config
         # The plug-in ID.
         self.plugin_id = plugin_id
-        # The information of resource attachments.
+        # The mount resource information.
         self.resource_infos = resource_infos
 
     def validate(self):

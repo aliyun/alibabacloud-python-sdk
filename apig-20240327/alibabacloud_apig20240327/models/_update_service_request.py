@@ -16,27 +16,29 @@ class UpdateServiceRequest(DaraModel):
         dns_servers: List[str] = None,
         health_check_config: main_models.UpdateServiceRequestHealthCheckConfig = None,
         healthy_panic_threshold: float = None,
+        model_provider_id: str = None,
         outlier_detection_config: main_models.UpdateServiceRequestOutlierDetectionConfig = None,
         ports: List[main_models.UpdateServiceRequestPorts] = None,
         protocol: str = None,
     ):
         # The list of domain names or fixed addresses.
         self.addresses = addresses
-        # The agent service configurations.
+        # The agent service configuration.
         self.agent_service_config = agent_service_config
-        # The AI service configurations.
+        # The AI service configuration.
         self.ai_service_config = ai_service_config
-        # A DNS service address.
+        # The DNS server addresses.
         self.dns_servers = dns_servers
-        # The health check configurations.
+        # The health check configuration of the service.
         self.health_check_config = health_check_config
         # The health check threshold.
         self.healthy_panic_threshold = healthy_panic_threshold
-        # The passive health check configurations.
+        self.model_provider_id = model_provider_id
+        # The passive health check parameter settings.
         self.outlier_detection_config = outlier_detection_config
         # The port information.
         self.ports = ports
-        # The service protocol.
+        # The protocol of the service.
         self.protocol = protocol
 
     def validate(self):
@@ -76,6 +78,9 @@ class UpdateServiceRequest(DaraModel):
         if self.healthy_panic_threshold is not None:
             result['healthyPanicThreshold'] = self.healthy_panic_threshold
 
+        if self.model_provider_id is not None:
+            result['modelProviderId'] = self.model_provider_id
+
         if self.outlier_detection_config is not None:
             result['outlierDetectionConfig'] = self.outlier_detection_config.to_map()
 
@@ -112,6 +117,9 @@ class UpdateServiceRequest(DaraModel):
         if m.get('healthyPanicThreshold') is not None:
             self.healthy_panic_threshold = m.get('healthyPanicThreshold')
 
+        if m.get('modelProviderId') is not None:
+            self.model_provider_id = m.get('modelProviderId')
+
         if m.get('outlierDetectionConfig') is not None:
             temp_model = main_models.UpdateServiceRequestOutlierDetectionConfig()
             self.outlier_detection_config = temp_model.from_map(m.get('outlierDetectionConfig'))
@@ -136,7 +144,7 @@ class UpdateServiceRequestPorts(DaraModel):
     ):
         # The port name.
         self.name = name
-        # The port.
+        # The port number.
         self.port = port
         # The protocol.
         self.protocol = protocol
@@ -182,15 +190,15 @@ class UpdateServiceRequestOutlierDetectionConfig(DaraModel):
         failure_percentage_threshold: int = None,
         interval: int = None,
     ):
-        # The initial isolation duration after a node is isolated (e.g., 30 seconds). The isolation time is calculated as: k \\* base_ejection_time (with k initially set to 1). Each subsequent isolation increases the isolation time (k is incremented by 1), while consecutive healthy checks gradually decrease the isolation time (k is decremented by 1).
+        # The base ejection time, which is the initial isolation duration after a node is ejected (for example, 30 seconds). The isolation time is calculated by using the following formula: k × base_ejection_time (the initial value of k is 1). Each ejection increases the isolation time (k is incremented by 1). If consecutive checks are healthy, the isolation time is gradually reduced (k is decremented by 1).
         self.base_ejection_time = base_ejection_time
         # enable
         self.enable = enable
         # The panic threshold.
         # 
-        # When the proportion of healthy nodes in the service is greater than the panic threshold, health checks take effect normally, and requests are only sent to healthy nodes, not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled, and requests are sent to all nodes, including those that have been ejected nodes.
+        # When the proportion of healthy nodes in the service is greater than the panic threshold, health checks function normally. Requests are sent only to healthy nodes and not to ejected nodes. When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled. Requests are sent to all nodes, including ejected nodes.
         self.failure_percentage_minimum_hosts = failure_percentage_minimum_hosts
-        # When the request failure rate of a node reaches this threshold, the system triggers the isolation mechanism of the node.
+        # The failure percentage threshold. When the percentage of failed requests on a node reaches this threshold, the system triggers the ejection mechanism for the node.
         self.failure_percentage_threshold = failure_percentage_threshold
         # The detection interval.
         self.interval = interval
@@ -252,28 +260,23 @@ class UpdateServiceRequestHealthCheckConfig(DaraModel):
         timeout: int = None,
         unhealthy_threshold: int = None,
     ):
-        # Specifies whether to enable health checks.
+        # Specifies whether to enable health checks for the service.
         self.enable = enable
-        # The normal status codes to be returned. This parameter is required if the health check protocol is HTTP.
+        # The list of expected HTTP status codes that indicate a healthy response. This parameter is required when the protocol is HTTP.
         self.expected_statuses = expected_statuses
-        # The healthy threshold.
+        # The healthy threshold for health checks.
         self.healthy_threshold = healthy_threshold
-        # The domain name that you want to use for health checks. Optional. This parameter is available if the health check protocol is HTTP.
+        # The domain name for health checks. This parameter is optional and can be configured when the protocol is HTTP.
         self.http_host = http_host
-        # The request path of health checks. This parameter is required if the health check protocol is HTTP.
+        # The request path for health checks. This parameter is required when the protocol is HTTP.
         self.http_path = http_path
-        # The health check interval. Unit: seconds
+        # The health check interval. Unit: seconds.
         self.interval = interval
-        # The protocol over which the system performs health checks.
-        # 
-        # Valid values:
-        # 
-        # *   TCP
-        # *   HTTP
+        # The protocol used for health checks.
         self.protocol = protocol
-        # The timeout period for a health check response. Unit: seconds
+        # The response timeout period for health checks. Unit: seconds.
         self.timeout = timeout
-        # The unhealthy threshold.
+        # The unhealthy threshold for health checks.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

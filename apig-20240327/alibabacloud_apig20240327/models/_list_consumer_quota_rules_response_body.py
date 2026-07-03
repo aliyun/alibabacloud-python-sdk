@@ -15,9 +15,13 @@ class ListConsumerQuotaRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +72,13 @@ class ListConsumerQuotaRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of rules.
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The current page size.
         self.page_size = page_size
+        # The total number of configured quota rules.
         self.total_size = total_size
 
     def validate(self):
@@ -134,16 +142,29 @@ class ListConsumerQuotaRulesResponseBodyDataItems(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
+        # The ID of the gateway to which the rule belongs.
         self.gateway_id = gateway_id
+        # The name of the gateway to which the rule belongs.
         self.gateway_name = gateway_name
+        # The period multiplier, which specifies the number of periods after which the quota is reset. This parameter is returned only when the rule uses a custom cycle. Minimum value: 1. Maximum value: 60.
         self.period_multiplier = period_multiplier
+        # The period type.
         self.period_type = period_type
+        # The quota dimension.
         self.quota_dimension = quota_dimension
+        # The quota limit.
         self.quota_limit = quota_limit
+        # The rule ID.
         self.rule_id = rule_id
+        # The rule name.
         self.rule_name = rule_name
+        # The rule status.
         self.rule_status = rule_status
+        # The time zone corresponding to the natural cycle, in UTC+x format.
         self.timezone = timezone
+        # The cycle type. Valid values:
+        # - calendar: Natural cycle.
+        # - epoch: Custom cycle.
         self.window_alignment = window_alignment
 
     def validate(self):

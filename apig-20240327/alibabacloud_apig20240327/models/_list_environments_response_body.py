@@ -72,7 +72,7 @@ class ListEnvironmentsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # 环境信息列表。
+        # The list of environment contexts.
         self.items = items
         # The page number.
         self.page_number = page_number

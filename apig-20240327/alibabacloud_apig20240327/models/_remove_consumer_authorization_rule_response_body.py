@@ -11,9 +11,9 @@ class RemoveConsumerAuthorizationRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id

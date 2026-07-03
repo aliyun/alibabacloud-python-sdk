@@ -25,6 +25,7 @@ from ._authorization_resource_info import AuthorizationResourceInfo
 from ._backend import Backend
 from ._check_service_linked_role_result import CheckServiceLinkedRoleResult
 from ._consumer_config import ConsumerConfig
+from ._consumer_group_info import ConsumerGroupInfo
 from ._consumer_info import ConsumerInfo
 from ._dashboard_filter import DashboardFilter
 from ._domain_info import DomainInfo
@@ -85,6 +86,7 @@ from ._resource_statistic import ResourceStatistic
 from ._risk_check_results import RiskCheckResults
 from ._service import Service
 from ._service_health_check import ServiceHealthCheck
+from ._service_info import ServiceInfo
 from ._service_linked_role import ServiceLinkedRole
 from ._ssl_cert_meta_info import SslCertMetaInfo
 from ._sub_domain_info import SubDomainInfo
@@ -105,6 +107,9 @@ from ._batch_delete_consumer_authorization_rule_response import BatchDeleteConsu
 from ._change_resource_group_request import ChangeResourceGroupRequest
 from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
 from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._create_ai_model_provider_request import CreateAiModelProviderRequest
+from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBody
+from ._create_ai_model_provider_response import CreateAiModelProviderResponse
 from ._create_and_attach_policy_request import CreateAndAttachPolicyRequest
 from ._create_and_attach_policy_response_body import CreateAndAttachPolicyResponseBody
 from ._create_and_attach_policy_response import CreateAndAttachPolicyResponse
@@ -141,6 +146,9 @@ from ._create_mcp_server_response import CreateMcpServerResponse
 from ._create_plugin_attachment_request import CreatePluginAttachmentRequest
 from ._create_plugin_attachment_response_body import CreatePluginAttachmentResponseBody
 from ._create_plugin_attachment_response import CreatePluginAttachmentResponse
+from ._create_plugin_class_request import CreatePluginClassRequest
+from ._create_plugin_class_response_body import CreatePluginClassResponseBody
+from ._create_plugin_class_response import CreatePluginClassResponse
 from ._create_policy_request import CreatePolicyRequest
 from ._create_policy_response_body import CreatePolicyResponseBody
 from ._create_policy_response import CreatePolicyResponse
@@ -240,6 +248,9 @@ from ._get_mcp_server_response_body import GetMcpServerResponseBody
 from ._get_mcp_server_response import GetMcpServerResponse
 from ._get_plugin_attachment_response_body import GetPluginAttachmentResponseBody
 from ._get_plugin_attachment_response import GetPluginAttachmentResponse
+from ._get_plugin_class_request import GetPluginClassRequest
+from ._get_plugin_class_response_body import GetPluginClassResponseBody
+from ._get_plugin_class_response import GetPluginClassResponse
 from ._get_policy_response_body import GetPolicyResponseBody
 from ._get_policy_response import GetPolicyResponse
 from ._get_policy_attachment_response_body import GetPolicyAttachmentResponseBody
@@ -517,10 +528,18 @@ from ._risk_check_results import RiskCheckResultsRiskDetails
 from ._service import ServicePorts
 from ._service import ServiceVersionsLabels
 from ._service import ServiceVersions
+from ._service_info import ServiceInfoPorts
+from ._service_info import ServiceInfoVersionsLabels
+from ._service_info import ServiceInfoVersions
 from ._tls_cipher_suites_config import TlsCipherSuitesConfigTlsCipherSuite
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyDataConflictPreview
 from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBodyData
+from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths
+from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCardsCredit
+from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCardsMeta
+from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyDataModelCards
+from ._create_ai_model_provider_response_body import CreateAiModelProviderResponseBodyData
 from ._create_and_attach_policy_response_body import CreateAndAttachPolicyResponseBodyData
 from ._create_consumer_response_body import CreateConsumerResponseBodyData
 from ._create_consumer_authorization_rule_response_body import CreateConsumerAuthorizationRuleResponseBodyData
@@ -553,6 +572,7 @@ from ._create_mcp_server_request import CreateMcpServerRequestGrayMcpServerConfi
 from ._create_mcp_server_request import CreateMcpServerRequestMcpServerConfig
 from ._create_mcp_server_response_body import CreateMcpServerResponseBodyData
 from ._create_plugin_attachment_response_body import CreatePluginAttachmentResponseBodyData
+from ._create_plugin_class_response_body import CreatePluginClassResponseBodyData
 from ._create_policy_response_body import CreatePolicyResponseBodyData
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBodyData
 from ._create_secret_response_body import CreateSecretResponseBodyData
@@ -573,6 +593,7 @@ from ._deploy_http_api_response_body import DeployHttpApiResponseBodyData
 from ._describe_regions_response_body import DescribeRegionsResponseBodyData
 from ._export_http_api_request import ExportHttpApiRequestExtensionConfig
 from ._export_http_api_response_body import ExportHttpApiResponseBodyData
+from ._get_consumer_response_body import GetConsumerResponseBodyDataConsumerGroups
 from ._get_consumer_response_body import GetConsumerResponseBodyData
 from ._get_dashboard_request import GetDashboardRequestFilter
 from ._get_dashboard_response_body import GetDashboardResponseBodyData
@@ -604,6 +625,7 @@ from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataGrayMcpSe
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyDataNacosMcpSyncInfo
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyData
 from ._get_plugin_attachment_response_body import GetPluginAttachmentResponseBodyData
+from ._get_plugin_class_response_body import GetPluginClassResponseBodyData
 from ._get_policy_attachment_response_body import GetPolicyAttachmentResponseBodyData
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataApi
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataGateway
@@ -742,6 +764,7 @@ __all__ = [
     Backend,
     CheckServiceLinkedRoleResult,
     ConsumerConfig,
+    ConsumerGroupInfo,
     ConsumerInfo,
     DashboardFilter,
     DomainInfo,
@@ -802,6 +825,7 @@ __all__ = [
     RiskCheckResults,
     Service,
     ServiceHealthCheck,
+    ServiceInfo,
     ServiceLinkedRole,
     SslCertMetaInfo,
     SubDomainInfo,
@@ -822,6 +846,9 @@ __all__ = [
     ChangeResourceGroupRequest,
     ChangeResourceGroupResponseBody,
     ChangeResourceGroupResponse,
+    CreateAiModelProviderRequest,
+    CreateAiModelProviderResponseBody,
+    CreateAiModelProviderResponse,
     CreateAndAttachPolicyRequest,
     CreateAndAttachPolicyResponseBody,
     CreateAndAttachPolicyResponse,
@@ -858,6 +885,9 @@ __all__ = [
     CreatePluginAttachmentRequest,
     CreatePluginAttachmentResponseBody,
     CreatePluginAttachmentResponse,
+    CreatePluginClassRequest,
+    CreatePluginClassResponseBody,
+    CreatePluginClassResponse,
     CreatePolicyRequest,
     CreatePolicyResponseBody,
     CreatePolicyResponse,
@@ -957,6 +987,9 @@ __all__ = [
     GetMcpServerResponse,
     GetPluginAttachmentResponseBody,
     GetPluginAttachmentResponse,
+    GetPluginClassRequest,
+    GetPluginClassResponseBody,
+    GetPluginClassResponse,
     GetPolicyResponseBody,
     GetPolicyResponse,
     GetPolicyAttachmentResponseBody,
@@ -1234,10 +1267,18 @@ __all__ = [
     ServicePorts,
     ServiceVersionsLabels,
     ServiceVersions,
+    ServiceInfoPorts,
+    ServiceInfoVersionsLabels,
+    ServiceInfoVersions,
     TlsCipherSuitesConfigTlsCipherSuite,
     AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems,
     AddGatewayQuotaRuleResponseBodyDataConflictPreview,
     AddGatewayQuotaRuleResponseBodyData,
+    CreateAiModelProviderResponseBodyDataModelCardsAvailablePaths,
+    CreateAiModelProviderResponseBodyDataModelCardsCredit,
+    CreateAiModelProviderResponseBodyDataModelCardsMeta,
+    CreateAiModelProviderResponseBodyDataModelCards,
+    CreateAiModelProviderResponseBodyData,
     CreateAndAttachPolicyResponseBodyData,
     CreateConsumerResponseBodyData,
     CreateConsumerAuthorizationRuleResponseBodyData,
@@ -1270,6 +1311,7 @@ __all__ = [
     CreateMcpServerRequestMcpServerConfig,
     CreateMcpServerResponseBodyData,
     CreatePluginAttachmentResponseBodyData,
+    CreatePluginClassResponseBodyData,
     CreatePolicyResponseBodyData,
     CreatePolicyAttachmentResponseBodyData,
     CreateSecretResponseBodyData,
@@ -1290,6 +1332,7 @@ __all__ = [
     DescribeRegionsResponseBodyData,
     ExportHttpApiRequestExtensionConfig,
     ExportHttpApiResponseBodyData,
+    GetConsumerResponseBodyDataConsumerGroups,
     GetConsumerResponseBodyData,
     GetDashboardRequestFilter,
     GetDashboardResponseBodyData,
@@ -1321,6 +1364,7 @@ __all__ = [
     GetMcpServerResponseBodyDataNacosMcpSyncInfo,
     GetMcpServerResponseBodyData,
     GetPluginAttachmentResponseBodyData,
+    GetPluginClassResponseBodyData,
     GetPolicyAttachmentResponseBodyData,
     GetResourceOverviewResponseBodyDataApi,
     GetResourceOverviewResponseBodyDataGateway,

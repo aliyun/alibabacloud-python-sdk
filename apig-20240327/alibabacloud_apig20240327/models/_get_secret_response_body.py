@@ -13,11 +13,11 @@ class GetSecretResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
         # The key information.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # ID of the request.
         self.request_id = request_id
@@ -77,10 +77,9 @@ class GetSecretResponseBodyData(DaraModel):
     ):
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The type of the gateway. Valid values:
-        # 
-        # *   API
-        # *   AI
+        # The gateway type. Valid values:
+        # - API: API gateway.
+        # - AI: AI gateway.
         self.gateway_type = gateway_type
         # The KMS configuration information.
         self.kms_config = kms_config
@@ -88,15 +87,14 @@ class GetSecretResponseBodyData(DaraModel):
         self.name = name
         # The number of resources that reference the current key.
         self.reference_count = reference_count
-        # The ID of the key.
+        # The key ID.
         self.secret_id = secret_id
-        # The source of the key.
+        # The key source.
         self.secret_source = secret_source
-        # The state of the key. Valid values:
-        # 
-        # *   ENALBE
-        # *   DISABLE
-        # *   DELETED
+        # The key status. Valid values:
+        # - ENALBE: Enabled.
+        # - DISABLE: Disabled.
+        # - DELETED: Deleted.
         self.status = status
         # The update timestamp.
         self.update_timestamp = update_timestamp

@@ -12,13 +12,13 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_type: str = None,
         service: str = None,
     ):
-        # Target resource group ID.
+        # The ID of the destination resource group.
         self.resource_group_id = resource_group_id
-        # Resource ID
+        # The resource ID.
         self.resource_id = resource_id
-        # Resource type
+        # The resource type.
         self.resource_type = resource_type
-        # Service name, fixed value apig
+        # The service name. Set this parameter to apig.
         self.service = service
 
     def validate(self):

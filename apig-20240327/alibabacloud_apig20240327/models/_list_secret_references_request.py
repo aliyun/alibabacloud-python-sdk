@@ -10,7 +10,7 @@ class ListSecretReferencesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number. The value starts from 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

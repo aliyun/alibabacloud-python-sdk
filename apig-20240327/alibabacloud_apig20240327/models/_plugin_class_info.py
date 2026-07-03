@@ -25,22 +25,39 @@ class PluginClassInfo(DaraModel):
         wasm_language: str = None,
         wasm_url: str = None,
     ):
+        # The plugin class alias.
         self.alias = alias
+        # The configuration example (JSON string).
         self.config_example = config_example
+        # The plugin class description.
         self.description = description
+        # The execution priority.
         self.execute_priority = execute_priority
+        # The execution stage.
         self.execute_stage = execute_stage
+        # The Wasm image name.
         self.image_name = image_name
+        # Indicates whether the plugin is a built-in plugin.
         self.inner_plugin = inner_plugin
+        # The plugin running mode.
         self.mode = mode
+        # The plugin class name.
         self.name = name
+        # The plugin class ID.
         self.plugin_class_id = plugin_class_id
+        # The plugin source.
         self.source = source
+        # The minimum supported gateway DPI engine version.
         self.supported_min_gateway_version = supported_min_gateway_version
+        # The plugin type category.
         self.type = type
+        # The plugin version number.
         self.version = version
+        # The version description.
         self.version_description = version_description
+        # The Wasm programming language.
         self.wasm_language = wasm_language
+        # The Wasm file download URL.
         self.wasm_url = wasm_url
 
     def validate(self):

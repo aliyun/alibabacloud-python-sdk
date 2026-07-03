@@ -14,8 +14,11 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
+        # The resource IDs. You can specify up to 50 subkeys.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The list of labels.
         self.tag = tag
 
     def validate(self):
@@ -64,7 +67,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):

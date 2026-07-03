@@ -11,8 +11,11 @@ class DeleteGatewayQuotaRuleResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code or error code.
         self.code = code
+        # The message content.
         self.message = message
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -444,6 +444,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
 
+    def create_ai_model_provider_with_options(
+        self,
+        request: main_models.CreateAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAiModelProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.provider):
+            body['provider'] = request.provider
+        if not DaraCore.is_null(request.service_ids):
+            body['serviceIds'] = request.service_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAiModelProviderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ai_model_provider_with_options_async(
+        self,
+        request: main_models.CreateAiModelProviderRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAiModelProviderResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.provider):
+            body['provider'] = request.provider
+        if not DaraCore.is_null(request.service_ids):
+            body['serviceIds'] = request.service_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAiModelProvider',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/ai-model-providers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAiModelProviderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ai_model_provider(
+        self,
+        request: main_models.CreateAiModelProviderRequest,
+    ) -> main_models.CreateAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_ai_model_provider_with_options(request, headers, runtime)
+
+    async def create_ai_model_provider_async(
+        self,
+        request: main_models.CreateAiModelProviderRequest,
+    ) -> main_models.CreateAiModelProviderResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_ai_model_provider_with_options_async(request, headers, runtime)
+
     def create_and_attach_policy_with_options(
         self,
         request: main_models.CreateAndAttachPolicyRequest,
@@ -1723,6 +1811,118 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_plugin_attachment_with_options_async(request, headers, runtime)
+
+    def create_plugin_class_with_options(
+        self,
+        request: main_models.CreatePluginClassRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePluginClassResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alias):
+            body['alias'] = request.alias
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_priority):
+            body['executePriority'] = request.execute_priority
+        if not DaraCore.is_null(request.execute_stage):
+            body['executeStage'] = request.execute_stage
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.supported_min_gateway_version):
+            body['supportedMinGatewayVersion'] = request.supported_min_gateway_version
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
+        if not DaraCore.is_null(request.wasm_language):
+            body['wasmLanguage'] = request.wasm_language
+        if not DaraCore.is_null(request.wasm_url):
+            body['wasmUrl'] = request.wasm_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePluginClass',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePluginClassResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_plugin_class_with_options_async(
+        self,
+        request: main_models.CreatePluginClassRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePluginClassResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alias):
+            body['alias'] = request.alias
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_priority):
+            body['executePriority'] = request.execute_priority
+        if not DaraCore.is_null(request.execute_stage):
+            body['executeStage'] = request.execute_stage
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.supported_min_gateway_version):
+            body['supportedMinGatewayVersion'] = request.supported_min_gateway_version
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
+        if not DaraCore.is_null(request.wasm_language):
+            body['wasmLanguage'] = request.wasm_language
+        if not DaraCore.is_null(request.wasm_url):
+            body['wasmUrl'] = request.wasm_url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePluginClass',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePluginClassResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_plugin_class(
+        self,
+        request: main_models.CreatePluginClassRequest,
+    ) -> main_models.CreatePluginClassResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_plugin_class_with_options(request, headers, runtime)
+
+    async def create_plugin_class_async(
+        self,
+        request: main_models.CreatePluginClassRequest,
+    ) -> main_models.CreatePluginClassResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_plugin_class_with_options_async(request, headers, runtime)
 
     def create_policy_with_options(
         self,
@@ -4829,6 +5029,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_plugin_attachment_with_options_async(plugin_attachment_id, headers, runtime)
+
+    def get_plugin_class_with_options(
+        self,
+        plugin_class_id: str,
+        request: main_models.GetPluginClassRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPluginClassResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPluginClass',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes/{DaraURL.percent_encode(plugin_class_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPluginClassResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_plugin_class_with_options_async(
+        self,
+        plugin_class_id: str,
+        request: main_models.GetPluginClassRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPluginClassResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPluginClass',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes/{DaraURL.percent_encode(plugin_class_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPluginClassResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_plugin_class(
+        self,
+        plugin_class_id: str,
+        request: main_models.GetPluginClassRequest,
+    ) -> main_models.GetPluginClassResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_plugin_class_with_options(plugin_class_id, request, headers, runtime)
+
+    async def get_plugin_class_async(
+        self,
+        plugin_class_id: str,
+        request: main_models.GetPluginClassRequest,
+    ) -> main_models.GetPluginClassResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_plugin_class_with_options_async(plugin_class_id, request, headers, runtime)
 
     def get_policy_with_options(
         self,
@@ -7996,6 +8268,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.api_name_like):
             query['apiNameLike'] = request.api_name_like
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['consumerGroupId'] = request.consumer_group_id
         if not DaraCore.is_null(request.consumer_id):
             query['consumerId'] = request.consumer_id
         if not DaraCore.is_null(request.consumer_name_like):
@@ -8010,6 +8284,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_resource_id):
             query['parentResourceId'] = request.parent_resource_id
+        if not DaraCore.is_null(request.principal_type):
+            query['principalType'] = request.principal_type
         if not DaraCore.is_null(request.resource_id):
             query['resourceId'] = request.resource_id
         if not DaraCore.is_null(request.resource_type):
@@ -8046,6 +8322,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.api_name_like):
             query['apiNameLike'] = request.api_name_like
+        if not DaraCore.is_null(request.consumer_group_id):
+            query['consumerGroupId'] = request.consumer_group_id
         if not DaraCore.is_null(request.consumer_id):
             query['consumerId'] = request.consumer_id
         if not DaraCore.is_null(request.consumer_name_like):
@@ -8060,6 +8338,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_resource_id):
             query['parentResourceId'] = request.parent_resource_id
+        if not DaraCore.is_null(request.principal_type):
+            query['principalType'] = request.principal_type
         if not DaraCore.is_null(request.resource_id):
             query['resourceId'] = request.resource_id
         if not DaraCore.is_null(request.resource_type):
@@ -10427,6 +10707,8 @@ class Client(OpenApiClient):
             body['healthCheckConfig'] = request.health_check_config
         if not DaraCore.is_null(request.healthy_panic_threshold):
             body['healthyPanicThreshold'] = request.healthy_panic_threshold
+        if not DaraCore.is_null(request.model_provider_id):
+            body['modelProviderId'] = request.model_provider_id
         if not DaraCore.is_null(request.outlier_detection_config):
             body['outlierDetectionConfig'] = request.outlier_detection_config
         if not DaraCore.is_null(request.ports):
@@ -10474,6 +10756,8 @@ class Client(OpenApiClient):
             body['healthCheckConfig'] = request.health_check_config
         if not DaraCore.is_null(request.healthy_panic_threshold):
             body['healthyPanicThreshold'] = request.healthy_panic_threshold
+        if not DaraCore.is_null(request.model_provider_id):
+            body['modelProviderId'] = request.model_provider_id
         if not DaraCore.is_null(request.outlier_detection_config):
             body['outlierDetectionConfig'] = request.outlier_detection_config
         if not DaraCore.is_null(request.ports):

@@ -22,19 +22,23 @@ class CreateGatewayRequest(DaraModel):
         vpc_id: str = None,
         zone_config: main_models.CreateGatewayRequestZoneConfig = None,
     ):
-        # The billing method.
+        # The billing method. Valid values:
+        # - POSTPAY: subscription.
+        # - PREPAY: pay-as-you-go.
         self.charge_type = charge_type
         # The gateway instance edition. Valid values:
         # 
-        # - Professional: Standard instance.
+        # - Professional: standard instance.
         # 
         # - Serverless: Serverless instance.
         # 
-        # - MultiTenantServerless: Multi-tenant Serverless instance.
+        # - MultiTenantServerless: multi-tenant Serverless instance.
         # 
-        # - Unknown: Unknown.
+        # - Unknown: unknown.
         self.gateway_edition = gateway_edition
-        # The gateway type.
+        # The gateway type. Valid values:
+        # - AI: AI gateway.
+        # - API: cloud-native API gateway.
         self.gateway_type = gateway_type
         # The gateway log configuration.
         self.log_config = log_config
@@ -157,7 +161,9 @@ class CreateGatewayRequestZoneConfig(DaraModel):
         v_switch_id: str = None,
         zones: List[main_models.CreateGatewayRequestZoneConfigZones] = None,
     ):
-        # The zone selection option.
+        # The zone selection option. Valid values:
+        # - Auto: automatic.
+        # - Manual: manual.
         self.select_option = select_option
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -283,7 +289,10 @@ class CreateGatewayRequestNetworkAccessConfig(DaraModel):
         self,
         type: str = None,
     ):
-        # The network access type.
+        # The network access type. Valid values:
+        # - InternetAndIntranet: public and internal network.
+        # - Intranet: internal network.
+        # - Internet: public network.
         self.type = type
 
     def validate(self):

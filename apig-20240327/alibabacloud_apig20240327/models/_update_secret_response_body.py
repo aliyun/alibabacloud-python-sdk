@@ -11,9 +11,9 @@ class UpdateSecretResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
         # ID of the request.
         self.request_id = request_id

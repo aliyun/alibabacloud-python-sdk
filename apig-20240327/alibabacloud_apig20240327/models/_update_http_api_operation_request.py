@@ -10,7 +10,7 @@ class UpdateHttpApiOperationRequest(DaraModel):
         self,
         operation: main_models.HttpApiOperation = None,
     ):
-        # The API operation definition.
+        # The operation definition.
         self.operation = operation
 
     def validate(self):

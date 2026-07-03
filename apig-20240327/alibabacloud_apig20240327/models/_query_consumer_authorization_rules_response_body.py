@@ -72,7 +72,7 @@ class QueryConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
-        # 消费者规则列表。
+        # The list of consumer rules.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -132,6 +132,8 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self,
         api_info: main_models.HttpApiApiInfo = None,
         consumer_authorization_rule_id: str = None,
+        consumer_group_id: str = None,
+        consumer_group_info: main_models.ConsumerGroupInfo = None,
         consumer_id: str = None,
         consumer_info: main_models.ConsumerInfo = None,
         create_timestamp: int = None,
@@ -141,45 +143,53 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         expire_status: str = None,
         expire_timestamp: int = None,
         gateway_info: main_models.GatewayInfo = None,
+        principal_type: str = None,
         resource_id: str = None,
         resource_info: main_models.QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo = None,
         resource_type: str = None,
         update_timestamp: int = None,
     ):
-        # API信息详情。
+        # The API information.
         self.api_info = api_info
-        # 消费者授权规则ID。
+        # The consumer authorization rule ID.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # 消费者ID。
+        self.consumer_group_id = consumer_group_id
+        self.consumer_group_info = consumer_group_info
+        # The consumer ID.
         self.consumer_id = consumer_id
-        # 消费者信息详情。
+        # The consumer information.
         self.consumer_info = consumer_info
-        # 创建时间戳。单位: 毫秒。
+        # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # API在当前环境的发布状态
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
-        # 环境信息。
+        # The environment context.
         self.environment_info = environment_info
-        # 失效模式。LongTerm、ShortTerm，二选一。
+        # The expiration mode. Valid values:
+        # - LongTerm
+        # - ShortTerm
         self.expire_mode = expire_mode
-        # 失效状态。
+        # The expiration status.
         self.expire_status = expire_status
-        # 到期时间。
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
-        # 网关信息。
+        # The gateway information.
         self.gateway_info = gateway_info
-        # 资源ID。
+        self.principal_type = principal_type
+        # The resource ID.
         self.resource_id = resource_id
-        # 资源信息详情。
+        # The resource information.
         self.resource_info = resource_info
-        # 资源类型。
+        # The resource type.
         self.resource_type = resource_type
-        # 更新时间戳。单位: 毫秒。
+        # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
 
     def validate(self):
         if self.api_info:
             self.api_info.validate()
+        if self.consumer_group_info:
+            self.consumer_group_info.validate()
         if self.consumer_info:
             self.consumer_info.validate()
         if self.environment_info:
@@ -199,6 +209,12 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
 
         if self.consumer_authorization_rule_id is not None:
             result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
+
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+
+        if self.consumer_group_info is not None:
+            result['consumerGroupInfo'] = self.consumer_group_info.to_map()
 
         if self.consumer_id is not None:
             result['consumerId'] = self.consumer_id
@@ -227,6 +243,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         if self.gateway_info is not None:
             result['gatewayInfo'] = self.gateway_info.to_map()
 
+        if self.principal_type is not None:
+            result['principalType'] = self.principal_type
+
         if self.resource_id is not None:
             result['resourceId'] = self.resource_id
 
@@ -249,6 +268,13 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
 
         if m.get('consumerAuthorizationRuleId') is not None:
             self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
+
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+
+        if m.get('consumerGroupInfo') is not None:
+            temp_model = main_models.ConsumerGroupInfo()
+            self.consumer_group_info = temp_model.from_map(m.get('consumerGroupInfo'))
 
         if m.get('consumerId') is not None:
             self.consumer_id = m.get('consumerId')
@@ -280,6 +306,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
             temp_model = main_models.GatewayInfo()
             self.gateway_info = temp_model.from_map(m.get('gatewayInfo'))
 
+        if m.get('principalType') is not None:
+            self.principal_type = m.get('principalType')
+
         if m.get('resourceId') is not None:
             self.resource_id = m.get('resourceId')
 
@@ -301,9 +330,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
         operation_info: main_models.HttpApiOperationInfo = None,
         route: main_models.HttpRoute = None,
     ):
-        # 接口信息。
+        # The operation information.
         self.operation_info = operation_info
-        # 路由规则。
+        # The routing rule.
         self.route = route
 
     def validate(self):

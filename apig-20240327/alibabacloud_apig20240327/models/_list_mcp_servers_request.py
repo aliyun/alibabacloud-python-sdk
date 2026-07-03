@@ -15,17 +15,17 @@ class ListMcpServersRequest(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
-        # The type of source to create from.
+        # The creation source type.
         self.create_from_types = create_from_types
         # The deployment status of the MCP server.
         self.deploy_statuses = deploy_statuses
-        # The gateway instance ID.
+        # The gateway ID.
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # The name to perform a fuzzy search on the MCP server.
+        # The fuzzy match keyword for searching MCP servers by API name.
         self.name_like = name_like
-        # The page number to return. Pages start from 1. Default value: 1.
+        # The page number, starting from 1. Default value: 1.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -33,7 +33,7 @@ class ListMcpServersRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The type of the MCP server.
+        # The MCP server type.
         self.type = type
 
     def validate(self):

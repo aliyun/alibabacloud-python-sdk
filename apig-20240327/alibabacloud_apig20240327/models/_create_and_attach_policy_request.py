@@ -18,59 +18,29 @@ class CreateAndAttachPolicyRequest(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
-        # List of attachment point IDs.
+        # The list of target resource IDs to attach.
         # 
         # This parameter is required.
         self.attach_resource_ids = attach_resource_ids
-        # Types of attachment points supported by the policy.
-        # 
-        # - HttpApi: HttpApi.
-        # - Operation: Operation of HttpApi.
-        # - GatewayRoute: Gateway route.
-        # - GatewayService: Gateway service.
-        # - GatewayServicePort: Gateway service port.
-        # - Domain: Gateway domain.
-        # - Gateway: Gateway.
+        # The type of the target resource to attach.
         # 
         # This parameter is required.
         self.attach_resource_type = attach_resource_type
-        # The class name types supported by the policy. Different policies support different attachment points, to be used in conjunction with `attachResourceType`.
-        # 
-        # - RateLimit: Traffic control, supports HttpApi, Operation, GatewayRoute.
-        # - ConcurrencyLimit: Concurrency control, supports HttpApi, Operation, GatewayRoute.
-        # - CircuitBreaker: Circuit breaking and degradation, supports HttpApi, Operation, GatewayRoute.
-        # - HttpRewrite: HTTP rewrite, supports HttpApi, Operation, GatewayRoute.
-        # - HeaderModify: Header modification, supports HttpApi, Operation, GatewayRoute.
-        # - Cors: Cross-origin, supports HttpApi, Operation, GatewayRoute.
-        # - FlowCopy: Traffic replication, supports HttpApi, Operation, GatewayRoute.
-        # - Timeout: Timeout, supports HttpApi, Operation, GatewayRoute.
-        # - Retry: Retry, supports HttpApi, Operation, GatewayRoute.
-        # - IpAccessControl: IP access control, supports HttpApi, Operation, GatewayRoute, Domain, Gateway.
-        # - DirectResponse: Mock, supports Operation, GatewayRoute.
-        # - Redirect: Redirection, supports GatewayRoute.
-        # - Fallback: Fallback, supports Operation, GatewayRoute.
-        # - ServiceTls: Service TLS authentication, supports GatewayService.
-        # - ServiceLb: Service load balancing, supports GatewayService.
-        # - ServicePortTls: Service port TLS authentication, supports GatewayServicePort.
-        # 
-        # - Waf: WAF protection, supports GatewayRoute, Gateway.
-        # - JWTAuth: JWT global authentication, supports Gateway.
-        # - OIDCAuth: OIDC global authentication, supports Gateway.
-        # - ExternalZAuth: Custom authorization, supports Gateway.
+        # The policy type.
         # 
         # This parameter is required.
         self.class_name = class_name
-        # Configuration information.
+        # The policy configuration content (JSON string).
         # 
         # This parameter is required.
         self.config = config
-        # Policy description.
+        # The policy description.
         self.description = description
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Gateway ID.
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # Policy name.
+        # The policy name.
         self.name = name
 
     def validate(self):

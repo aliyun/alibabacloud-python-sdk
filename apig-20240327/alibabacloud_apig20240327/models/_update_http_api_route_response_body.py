@@ -11,7 +11,7 @@ class UpdateHttpApiRouteResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code of the response.
+        # The response status code.
         self.code = code
         # The response message.
         self.message = message

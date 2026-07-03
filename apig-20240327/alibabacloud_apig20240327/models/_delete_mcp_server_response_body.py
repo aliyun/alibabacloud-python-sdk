@@ -11,11 +11,11 @@ class DeleteMcpServerResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The request ID.
+        # The response status code.
         self.code = code
-        # The status code.
+        # The response message.
         self.message = message
-        # The MCP server ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

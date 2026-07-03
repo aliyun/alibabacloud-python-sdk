@@ -15,11 +15,11 @@ class GetMcpServerResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -91,57 +91,57 @@ class GetMcpServerResponseBodyData(DaraModel):
         route_id: str = None,
         type: str = None,
     ):
-        # API ID.
+        # API ID。
         self.api_id = api_id
-        # Assembly source list. Required when type is AssemblyMCP.
+        # The list of assembly sources. This parameter is required when type is AssemblyMCP.
         self.assembled_sources = assembled_sources
-        # Backend service of the route.
+        # The backend service of the route.
         self.backend = backend
-        # Creation source type.
+        # The creation source type. Valid values:
         # 
-        # ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP.
-        # ApiGatewayMcpHosting: Gateway-managed MCP direct proxy.
-        # ApiGatewayAssembly: Gateway MCP assembly.
-        # NacosHttpToMCP: Gateway-managed Nacos-synced HTTP-to-MCP.
-        # NacosMcpHosting: Gateway-managed Nacos-synced MCP direct proxy.
+        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+        # - ApiGatewayMcpHosting: gateway-managed MCP direct proxy.
+        # - ApiGatewayAssembly: gateway MCP assembly.
+        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+        # - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
         self.create_from_type = create_from_type
-        # Deployment status of the API in the current environment.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
-        # Description.
+        # The description.
         self.description = description
-        # Domain ID list.
+        # The list of domain name IDs.
         self.domain_ids = domain_ids
-        # Domain information list.
+        # The list of domain name information.
         self.domain_infos = domain_infos
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Exposed URI path. Required when protocol is SSE or StreamableHTTP and type is RealMCP.
+        # The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
         self.exposed_uri_path = exposed_uri_path
-        # Gateway instance ID.
+        # The gateway instance ID.
         self.gateway_id = gateway_id
-        # Canary route configuration.
+        # The canary release route configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # Route match rules.
+        # The route match rule.
         self.match = match
-        # HTTP-to-MCP configuration.
+        # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
-        # MCP Server plugin configuration attachment ID.
+        # The MCP server plugin configuration attachment ID.
         self.mcp_server_config_plugin_attachment_id = mcp_server_config_plugin_attachment_id
         # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # MCP Server access path provided by the gateway.
+        # The MCP server access path provided by the gateway.
         self.mcp_server_path = mcp_server_path
-        # Whether to enable MCP observability. Default is false.
+        # Specifies whether MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # Nacos synchronization managed MCP information.
+        # The Nacos-synced managed MCP information.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info
-        # MCP Server name.
+        # The MCP server name.
         self.name = name
-        # Service protocol.
+        # The service protocol.
         self.protocol = protocol
-        # Route ID.
+        # The route ID.
         self.route_id = route_id
-        # MCP Server type.
+        # The MCP server type.
         self.type = type
 
     def validate(self):
@@ -338,11 +338,11 @@ class GetMcpServerResponseBodyDataNacosMcpSyncInfo(DaraModel):
         import_mcp_server_id: str = None,
         import_namespace: str = None,
     ):
-        # Nacos instance.
+        # The Nacos instance.
         self.import_instance_id = import_instance_id
-        # Synchronized MCP Server ID.
+        # The synced MCP server ID.
         self.import_mcp_server_id = import_mcp_server_id
-        # Nacos namespace.
+        # The Nacos namespace.
         self.import_namespace = import_namespace
 
     def validate(self):
@@ -384,11 +384,11 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigs(DaraModel):
         match: main_models.HttpRouteMatch = None,
         route_id: str = None,
     ):
-        # Canary route backend configuration.
+        # The canary release route backend configuration.
         self.backend_config = backend_config
-        # Canary route match rules.
+        # The canary release route match rule.
         self.match = match
-        # Canary route ID.
+        # The canary release route ID.
         self.route_id = route_id
 
     def validate(self):
@@ -434,9 +434,9 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices] = None,
     ):
-        # Backend scenario.
+        # The backend scene.
         self.scene = scene
-        # Service configuration list.
+        # The list of service configurations.
         self.services = services
 
     def validate(self):
@@ -482,15 +482,15 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices(Dara
         version: str = None,
         weight: int = None,
     ):
-        # Service port.
+        # The service port.
         self.port = port
-        # Service protocol.
+        # The service protocol.
         self.protocol = protocol
-        # Service ID.
+        # The service ID.
         self.service_id = service_id
-        # Service version.
+        # The service version.
         self.version = version
-        # Service weight.
+        # The service weight.
         self.weight = weight
 
     def validate(self):
@@ -544,11 +544,11 @@ class GetMcpServerResponseBodyDataDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
-        # Domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
-        # Domain name.
+        # The domain name.
         self.name = name
-        # Protocol.
+        # The protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -590,11 +590,11 @@ class GetMcpServerResponseBodyDataAssembledSources(DaraModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # MCP Server ID.
+        # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # MCP Server name.
+        # The MCP server name.
         self.mcp_server_name = mcp_server_name
-        # MCP tool list.
+        # The list of MCP tools.
         self.tools = tools
 
     def validate(self):

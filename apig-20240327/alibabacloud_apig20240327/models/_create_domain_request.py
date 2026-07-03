@@ -29,12 +29,13 @@ class CreateDomainRequest(DaraModel):
         self.cert_identifier = cert_identifier
         # The client CA certificate.
         self.client_cacert = client_cacert
+        # The domain name scope.
         self.domain_scope = domain_scope
         # Specifies whether to enable forced HTTPS redirect when the protocol type is set to HTTPS.
         self.force_https = force_https
         # The gateway type.
         self.gateway_type = gateway_type
-        # The HTTP/2 settings.
+        # The HTTP/2 setting.
         self.http_2option = http_2option
         # Specifies whether to enable mTLS mutual authentication.
         self.m_tlsenabled = m_tlsenabled
@@ -42,10 +43,10 @@ class CreateDomainRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The protocol type supported by the domain name.
+        # The protocol type supported by the domain name. Valid values:
         # 
-        # - HTTP: supports only HTTP.
-        # - HTTPS: supports only HTTPS.
+        # - HTTP: Only HTTP is supported.
+        # - HTTPS: Only HTTPS is supported.
         self.protocol = protocol
         # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id

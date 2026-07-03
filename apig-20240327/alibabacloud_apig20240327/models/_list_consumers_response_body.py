@@ -15,13 +15,13 @@ class ListConsumersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListConsumersResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of consumer information.
+        # The list of consumers.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -142,15 +142,15 @@ class ListConsumersResponseBodyDataItems(DaraModel):
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The deployment status of the API in the current environment.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
         # The description.
         self.description = description
-        # Indicates if enabled.
+        # Indicates whether the consumer is enabled.
         self.enable = enable
         # The consumer name.
         self.name = name
-        # The last update timestamp.
+        # The update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):

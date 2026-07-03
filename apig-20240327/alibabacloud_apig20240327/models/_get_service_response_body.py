@@ -19,7 +19,7 @@ class GetServiceResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

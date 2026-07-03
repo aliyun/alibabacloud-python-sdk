@@ -20,6 +20,7 @@ class Service(DaraModel):
         health_check: main_models.ServiceHealthCheck = None,
         health_status: str = None,
         label_details: List[main_models.LabelDetail] = None,
+        model_provider_id: str = None,
         name: str = None,
         namespace: str = None,
         outlier_endpoints: List[str] = None,
@@ -33,33 +34,34 @@ class Service(DaraModel):
         update_timestamp: int = None,
         versions: List[main_models.ServiceVersions] = None,
     ):
-        # A list of service addresses, such as IP addresses or domain names.
+        # The address information, including IP addresses or domain name lists.
         self.addresses = addresses
         # The agent service configuration.
         self.agent_service_config = agent_service_config
         # The AI service configuration.
         self.ai_service_config = ai_service_config
-        # The creation timestamp.
+        # The creation time.
         self.create_timestamp = create_timestamp
-        # The execution type for the cloud workflow.
+        # The CloudFlow execution mode.
         self.express_type = express_type
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The name of the service group.
+        # The service group name.
         self.group_name = group_name
         # The health check configuration.
         self.health_check = health_check
-        # The health status. Valid values: `Healthy` or `Unhealthy`.
+        # The health check status. Valid values: Healthy and Unhealthy.
         self.health_status = health_status
-        # A list of labels for the service.
+        # The label information of the service.
         self.label_details = label_details
+        self.model_provider_id = model_provider_id
         # The service name.
         self.name = name
         # The namespace.
         self.namespace = namespace
-        # A list of outlier endpoints.
+        # The circuit-broken endpoints.
         self.outlier_endpoints = outlier_endpoints
-        # A list of port configurations.
+        # The list of port information.
         self.ports = ports
         # The service protocol.
         self.protocol = protocol
@@ -67,15 +69,15 @@ class Service(DaraModel):
         self.qualifier = qualifier
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The unique service ID.
+        # The unique ID of the service.
         self.service_id = service_id
         # The source type of the service.
         self.source_type = source_type
-        # A list of unhealthy endpoints.
+        # The unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The update timestamp.
+        # The update time.
         self.update_timestamp = update_timestamp
-        # A list of service versions.
+        # The list of service versions.
         self.versions = versions
 
     def validate(self):
@@ -134,6 +136,9 @@ class Service(DaraModel):
         if self.label_details is not None:
             for k1 in self.label_details:
                 result['labelDetails'].append(k1.to_map() if k1 else None)
+
+        if self.model_provider_id is not None:
+            result['modelProviderId'] = self.model_provider_id
 
         if self.name is not None:
             result['name'] = self.name
@@ -215,6 +220,9 @@ class Service(DaraModel):
                 temp_model = main_models.LabelDetail()
                 self.label_details.append(temp_model.from_map(k1))
 
+        if m.get('modelProviderId') is not None:
+            self.model_provider_id = m.get('modelProviderId')
+
         if m.get('name') is not None:
             self.name = m.get('name')
 
@@ -265,7 +273,7 @@ class ServiceVersions(DaraModel):
         labels: List[main_models.ServiceVersionsLabels] = None,
         name: str = None,
     ):
-        # The labels of the version.
+        # The list of version labels.
         self.labels = labels
         # The version name.
         self.name = name
@@ -310,9 +318,9 @@ class ServiceVersionsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the label.
+        # The label key.
         self.key = key
-        # The value of the label.
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -352,7 +360,7 @@ class ServicePorts(DaraModel):
         self.name = name
         # The port number.
         self.port = port
-        # The protocol. Valid values: `TCP` or `UDP`.
+        # The protocol. Valid values: TCP and UDP.
         self.protocol = protocol
 
     def validate(self):

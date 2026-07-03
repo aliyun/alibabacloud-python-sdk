@@ -14,23 +14,18 @@ class ListPoliciesRequest(DaraModel):
         with_attachments: bool = None,
         with_system_policy: bool = None,
     ):
-        # The attachment point ID.
+        # The ID of the attachment point.
         self.attach_resource_id = attach_resource_id
-        # The types of attachment points supported by the policy. Valid values:
+        # The type of attachment point supported by the policy.
         # 
-        # - HttpApi
-        # 
-        # - Operation
-        # 
-        # - GatewayRoute
-        # 
-        # - GatewayService
-        # 
-        # - GatewayServicePort
-        # 
-        # - Domain
-        # 
-        # - Gateway
+        # Valid values:
+        # - HttpApi: HTTP API.
+        # - Operation: Operation of an HTTP API.
+        # - GatewayRoute: Gateway route.
+        # - GatewayService: Gateway service.
+        # - GatewayServicePort: Gateway service port.
+        # - Domain: Gateway domain name.
+        # - Gateway: Gateway.
         self.attach_resource_type = attach_resource_type
         # The environment ID.
         self.environment_id = environment_id
@@ -38,7 +33,7 @@ class ListPoliciesRequest(DaraModel):
         self.gateway_id = gateway_id
         # Specifies whether to return attachment information.
         self.with_attachments = with_attachments
-        # Specifies whether it is a system policy.
+        # Specifies whether the policy is a system policy.
         self.with_system_policy = with_system_policy
 
     def validate(self):

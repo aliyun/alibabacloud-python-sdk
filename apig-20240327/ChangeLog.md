@@ -1,3 +1,19 @@
+2026-07-03 Version: 9.3.0
+- Support API CreateAiModelProvider.
+- Support API CreatePluginClass.
+- Support API GetPluginClass.
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.consumerGroupId.
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.principalType.
+- Update API CreateService: add request parameters body.serviceConfigs.$.modelProviderId.
+- Update API GetConsumer: add response parameters Body.data.consumerGroups.
+- Update API QueryConsumerAuthorizationRules: add request parameters consumerGroupId.
+- Update API QueryConsumerAuthorizationRules: add request parameters principalType.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.consumerGroupId.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.consumerGroupInfo.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.principalType.
+- Update API UpdateService: add request parameters body.modelProviderId.
+
+
 2026-06-29 Version: 9.2.0
 - Support API ListTagResources.
 - Support API TagResources.

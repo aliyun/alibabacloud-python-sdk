@@ -12,13 +12,13 @@ class ListSecretsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Gateway type for filtering secrets of specific gateway type
+        # The gateway type used to filter results. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
-        # Secret name for fuzzy matching, supports filtering secrets by name
+        # The key name. Fuzzy match is supported.
         self.name_like = name_like
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Number of items per page
+        # The page size. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

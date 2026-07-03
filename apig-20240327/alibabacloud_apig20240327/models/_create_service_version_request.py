@@ -13,7 +13,7 @@ class CreateServiceVersionRequest(DaraModel):
         labels: List[main_models.CreateServiceVersionRequestLabels] = None,
         name: str = None,
     ):
-        # The service tags.
+        # The service labels.
         # 
         # This parameter is required.
         self.labels = labels
@@ -62,11 +62,11 @@ class CreateServiceVersionRequestLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The label key.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value.
+        # The label value.
         self.value = value
 
     def validate(self):

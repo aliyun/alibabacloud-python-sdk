@@ -31,11 +31,11 @@ class CreateMcpServerRequest(DaraModel):
         self.backend_config = backend_config
         # The creation source type. Valid values:
         # 
-        # ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
-        # ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
-        # ApiGatewayAssembly: gateway MCP assembly.
-        # NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
-        # NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
+        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+        # - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
+        # - ApiGatewayAssembly: gateway MCP assembly.
+        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+        # - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
         self.create_from_type = create_from_type
         # The description of the MCP server.
         self.description = description
@@ -47,7 +47,7 @@ class CreateMcpServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # The canary release route configurations.
+        # The canary release routing configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
@@ -63,7 +63,7 @@ class CreateMcpServerRequest(DaraModel):
         self.protocol = protocol
         # The type. Valid values:
         # 
-        # RealMCP: standard MCP service.
+        # - RealMCP: standard MCP service.
         # 
         # This parameter is required.
         self.type = type

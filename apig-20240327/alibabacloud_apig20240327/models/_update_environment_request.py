@@ -10,11 +10,11 @@ class UpdateEnvironmentRequest(DaraModel):
         alias: str = None,
         description: str = None,
     ):
-        # Schema of Response
+        # The alias of the environment.
         # 
         # This parameter is required.
         self.alias = alias
-        # The status code returned.
+        # The description of the environment. You can specify information such as the purpose and owner of the environment.
         self.description = description
 
     def validate(self):

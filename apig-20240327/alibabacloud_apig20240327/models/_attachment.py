@@ -17,33 +17,27 @@ class Attachment(DaraModel):
         gateway_id: str = None,
         policy_attachment_id: str = None,
     ):
-        # The attachment point ID.
+        # attachResourceId
         self.attach_resource_id = attach_resource_id
-        # A list of attached resource IDs.
+        # The list of mounted resource IDs.
         self.attach_resource_ids = attach_resource_ids
-        # A list of parent resource IDs.
+        # The list of parent IDs of the mounted resource.
         self.attach_resource_parent_ids = attach_resource_parent_ids
-        # The supported attachment point types for the policy.
+        # The type of mount point supported by the policy. Valid values:
         # 
-        # - `HttpApi`: An HTTP API.
-        # 
-        # - `Operation`: An operation of an HTTP API.
-        # 
-        # - `GatewayRoute`: A gateway route.
-        # 
-        # - `GatewayService`: A gateway service.
-        # 
-        # - `GatewayServicePort`: A gateway service port.
-        # 
-        # - `Domain`: A gateway domain.
-        # 
-        # - `Gateway`: A gateway.
+        # - HttpApi: HttpApi.
+        # - Operation: Operation of HttpApi.
+        # - GatewayRoute: gateway route.
+        # - GatewayService: gateway service.
+        # - GatewayServicePort: gateway service port.
+        # - Domain: gateway domain name.
+        # - Gateway: gateway.
         self.attach_resource_type = attach_resource_type
-        # The ID of the environment for the attached resource. An asterisk (`*`) indicates that the policy attachment is not environment-specific.
+        # The environment to which the mounted resource belongs. If the environment ID is *, the mounted resource of the policy is not associated with any environment.
         self.environment_id = environment_id
-        # The ID of the gateway for the attached resource.
+        # The gateway to which the mounted resource belongs.
         self.gateway_id = gateway_id
-        # The policy attachment ID.
+        # The policy mount ID.
         self.policy_attachment_id = policy_attachment_id
 
     def validate(self):

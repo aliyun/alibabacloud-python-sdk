@@ -18,33 +18,33 @@ class ListPluginsRequest(DaraModel):
         plugin_class_name: str = None,
         with_attachment_info: bool = None,
     ):
-        # The resource attachment ID.
+        # The ID of the attached resource.
         self.attach_resource_id = attach_resource_id
-        # The resource attachment type.
+        # The type of the attachment point supported by the policy.
         # 
         # - HttpApi: HttpApi.
         # - Operation: Operation of HttpApi.
-        # - GatewayRoute: Gateway route.
-        # - GatewayService: Gateway service.
-        # - GatewayServicePort: Gateway service port.
-        # - Domain: Gateway domain.
-        # - Gateway: Gateway.
+        # - GatewayRoute: gateway route.
+        # - GatewayService: gateway service.
+        # - GatewayServicePort: gateway service port.
+        # - Domain: gateway domain name.
+        # - Gateway: gateway.
         self.attach_resource_type = attach_resource_type
-        # The gateway instance ID for filtering.
+        # The ID of the gateway instance used to filter results.
         self.gateway_id = gateway_id
-        # The instance type. Valid values: **AI** and **API**.
+        # The gateway type used to filter results. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
-        # Specifies whether to include built-in AI plug-ins in the returned results. Default: false.
+        # Specifies whether the response includes built-in AI plugins installed by the system. Default value: false.
         self.include_builtin_ai_gateway = include_builtin_ai_gateway
-        # The page number to return. Pages start from 1. Default value: 1.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The page size.
         self.page_size = page_size
-        # The plug-in type ID for filtering.
+        # The ID of the plugin type used to filter results.
         self.plugin_class_id = plugin_class_id
-        # The plug-in type name for filtering.
+        # The name of the plugin type used to filter results.
         self.plugin_class_name = plugin_class_name
-        # Specifies whether the returned results should include plug-in attachment information corresponding to the attachResourceId.
+        # Specifies whether the response includes the plugin attachment information corresponding to attachResourceId.
         self.with_attachment_info = with_attachment_info
 
     def validate(self):

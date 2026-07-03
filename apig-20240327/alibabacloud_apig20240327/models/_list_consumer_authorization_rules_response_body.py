@@ -72,7 +72,7 @@ class ListConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
-        # 消费者授权信息列表。
+        # The list of consumer authorization information.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -144,31 +144,33 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         resource_type: str = None,
         update_timestamp: int = None,
     ):
-        # API信息。
+        # The API information.
         self.api_info = api_info
-        # 消费者授权规则ID。
+        # The consumer authorization rule ID.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # 消费者ID。
+        # The consumer ID.
         self.consumer_id = consumer_id
-        # 创建时间戳。
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # API在当前环境的发布状态
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
-        # 环境信息。
+        # The environment context.
         self.environment_info = environment_info
-        # 失效模式。LongTerm、ShortTerm，二选一。
+        # The expiration mode. Valid values:
+        # - LongTerm
+        # - ShortTerm
         self.expire_mode = expire_mode
-        # 失效状态。
+        # The expiration status.
         self.expire_status = expire_status
-        # 到期时间。
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
-        # 网关信息。
+        # The gateway information.
         self.gateway_info = gateway_info
-        # 资源ID。
+        # The resource ID.
         self.resource_id = resource_id
-        # 资源类型。
+        # The resource type.
         self.resource_type = resource_type
-        # 更新时间戳。单位: 毫秒。
+        # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
 
     def validate(self):

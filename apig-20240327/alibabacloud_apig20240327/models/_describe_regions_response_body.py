@@ -15,9 +15,13 @@ class DescribeRegionsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The list of regions.
         self.data = data
+        # The response message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +76,9 @@ class DescribeRegionsResponseBodyData(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
+        # The display name of the region.
         self.local_name = local_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

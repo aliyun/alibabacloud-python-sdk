@@ -22,21 +22,41 @@ class AddGatewayQuotaRuleRequest(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
+        # The conflict snapshot hash used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dryRun=true call.
+        # 
+        # You do not need to specify this parameter in the following cases: no conflict exists, the request is a dry run (dryRun=true), or overwrite=false.
+        # 
+        # When dryRun=false and overwrite=true, if this parameter is not specified or the value has expired, the backend returns accepted=false with a new conflict preview. Perform a dry run again to confirm the new conflict.
         self.conflict_hash = conflict_hash
+        # The list of consumer group IDs. This parameter is not supported.
         self.consumer_group_ids = consumer_group_ids
+        # The list of consumer IDs to bind to the rule.
         self.consumer_ids = consumer_ids
+        # Specifies whether to perform only a dry run without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a daily calendar quota cannot have another daily calendar quota rule added.
         self.dry_run = dry_run
+        # Specifies whether to allow overwriting on conflict. If overwriting is allowed, the conflicting principals (consumers) are unbound from the old rule and bound to the new rule.
         self.overwrite = overwrite
+        # The period multiplier.
         self.period_multiplier = period_multiplier
+        # The period type. Valid values: day (calendar day), week (calendar week), and month (calendar month).
+        # 
         # This parameter is required.
         self.period_type = period_type
+        # The quota dimension or throttling type. Currently, only token is supported.
+        # 
         # This parameter is required.
         self.quota_dimension = quota_dimension
+        # The total available quota per period.
+        # 
         # This parameter is required.
         self.quota_limit = quota_limit
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The time zone for the calendar period, in UTC+x format.
         self.timezone = timezone
+        # The reset period alignment type. Currently, only calendar alignment is supported, which means windowAlignment="calendar".
         self.window_alignment = window_alignment
 
     def validate(self):

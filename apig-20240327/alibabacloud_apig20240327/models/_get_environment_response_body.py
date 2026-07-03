@@ -204,7 +204,7 @@ class GetEnvironmentResponseBodyDataStatisticsInfo(DaraModel):
     ):
         # The online resource count.
         self.resource_statistics = resource_statistics
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

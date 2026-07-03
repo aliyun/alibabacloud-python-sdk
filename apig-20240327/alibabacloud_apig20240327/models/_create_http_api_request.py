@@ -33,7 +33,7 @@ class CreateHttpApiRequest(DaraModel):
         # The list of protocols supported by the agent.
         self.agent_protocols = agent_protocols
         # The AI API protocols. The following protocols are supported:
-        # - OpenAI/v1.
+        # - OpenAI/v1
         self.ai_protocols = ai_protocols
         # The authentication configuration.
         self.auth_config = auth_config
@@ -43,19 +43,19 @@ class CreateHttpApiRequest(DaraModel):
         self.belong_gateway_id = belong_gateway_id
         # The API deployment configurations. Currently, only AI APIs support deployment configurations, and only a single deployment configuration can be specified.
         self.deploy_configs = deploy_configs
-        # The API description.
+        # The description of the API.
         self.description = description
-        # Specifies whether to perform a dry run without executing the operation.
+        # Specifies whether to perform a dry run without actually executing the operation.
         self.dry_run = dry_run
         # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
         # The timeout period for waiting for the first byte from the backend.
         self.first_byte_timeout = first_byte_timeout
-        # The HTTP Ingress API configuration.
+        # The configuration of the HTTP Ingress API.
         self.ingress_config = ingress_config
         # The model category.
         self.model_category = model_category
-        # The API name.
+        # The name of the API.
         # 
         # This parameter is required.
         self.name = name
@@ -73,9 +73,9 @@ class CreateHttpApiRequest(DaraModel):
         # - WebSocket
         # - HttpIngress
         # - LLM
-        # - Agent.
+        # - Agent
         self.type = type
-        # The API versioning configuration.
+        # The versioning configuration of the API.
         self.version_config = version_config
 
     def validate(self):

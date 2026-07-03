@@ -12,11 +12,11 @@ class ListConsumersRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The instance type. Valid values: **AI** and **API**.
+        # Filters by gateway type. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
-        # The name used to perform a fuzzy search for operations.
+        # Fuzzy matches APIs by API name.
         self.name_like = name_like
-        # The page number to return. Pages start from 1. Default value: 1.
+        # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size

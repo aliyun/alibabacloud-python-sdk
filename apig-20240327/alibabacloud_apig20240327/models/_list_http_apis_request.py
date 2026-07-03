@@ -25,39 +25,43 @@ class ListHttpApisRequest(DaraModel):
         with_plugin_attachment_by_plugin_id: str = None,
         with_policy_configs: bool = None,
     ):
-        # Specifies whether to include policy configurations.
+        # The ID of the cloud-native API gateway.
         self.gateway_id = gateway_id
-        # The API information.
+        # The gateway type filter. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
-        # The consumer authentication policy in the specified environment in each returned API.
+        # The search keyword. Supports fuzzy match by API name or exact search by API ID.
         self.keyword = keyword
-        # Specifies whether authentication is enabled.
+        # The exact name to search for.
         self.name = name
-        # The environment information.
+        # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
-        # The resource group ID.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The returned message.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The Ingress information.
+        # The type of the HTTP API. You can specify multiple types separated by commas (,). Valid values:
+        # - Http
+        # - Rest
+        # - WebSocket
+        # - HttpIngress
         self.types = types
-        # Whether to return all APIs published to a specific environment
+        # Specifies whether to return information about APIs published to the specified environment.
         self.with_apis_published_to_environment = with_apis_published_to_environment
-        # The gateway type to filter. Valid values: **AI** and **API**.
+        # The environment ID. If specified, the response includes consumer authentication policy information for each API in the specified environment.
         self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
-        # The page number of the returned page.
+        # Specifies whether authentication policies are enabled.
         self.with_auth_policy_list = with_auth_policy_list
-        # The response body.
+        # The consumer ID. If specified, the response includes the authorization rule list for the specified consumer for each API.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # The request ID.
+        # The environment context.
         self.with_environment_info = with_environment_info
-        # The APIs.
+        # The environment ID.
         self.with_environment_info_by_id = with_environment_info_by_id
-        # The number of entries per page.
+        # Specifies whether to include ingress information.
         self.with_ingress_info = with_ingress_info
-        # The status code.
+        # The plug-in ID. If specified, the response includes the plug-in publishing information for the specified plug-in.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
-        # The total number of entries returned.
+        # Specifies whether to include policy information.
         self.with_policy_configs = with_policy_configs
 
     def validate(self):

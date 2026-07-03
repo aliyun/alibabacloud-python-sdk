@@ -21,27 +21,28 @@ class DomainInfo(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
-        # The China Security certificate identity.
+        # The SSL Certificates Service certificate identity.
         self.cert_identifier = cert_identifier
         # The client CA certificate.
         self.client_cacert = client_cacert
-        # The source from which the domain name was created.
+        # The source from which the domain name is created.
         self.create_from = create_from
         # The creation timestamp.
         self.create_timestamp = create_timestamp
         # The domain name ID.
         self.domain_id = domain_id
+        # domainScope
         self.domain_scope = domain_scope
         # Specifies whether to enable forced HTTPS redirect when the HTTPS protocol type is configured.
         self.force_https = force_https
-        # Specifies whether to enable mTLS mutual authentication.
+        # Indicates whether MTLS mutual authentication is enabled.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         self.name = name
-        # The protocol type supported by the domain name. Valid values:
+        # The protocol type supported by the domain name.
         # 
-        # - HTTP: Only HTTP is supported.
-        # - HTTPS: Only HTTPS is supported.
+        # - HTTP: Only the HTTP protocol is supported.
+        # - HTTP: Only the HTTPS protocol is supported.
         self.protocol = protocol
         # The resource group ID.
         self.resource_group_id = resource_group_id

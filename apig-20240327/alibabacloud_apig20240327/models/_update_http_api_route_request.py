@@ -18,17 +18,19 @@ class UpdateHttpApiRouteRequest(DaraModel):
         mcp_route_config: main_models.UpdateHttpApiRouteRequestMcpRouteConfig = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The configuration of the backend service for the route.
+        # The backend service configuration of the route.
         self.backend_config = backend_config
-        # The description of the route.
+        # The route description.
         self.description = description
-        # A list of domain name IDs.
+        # The list of domain name IDs.
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The route matching rule.
+        # The route match rule.
         self.match = match
+        # The MCP route configuration.
         self.mcp_route_config = mcp_route_config
+        # The route-level policy configurations.
         self.policy_configs = policy_configs
 
     def validate(self):
@@ -111,8 +113,11 @@ class UpdateHttpApiRouteRequestMcpRouteConfig(DaraModel):
         mcp_statistics_enable: bool = None,
         protocol: str = None,
     ):
+        # The exposed URI path.
         self.exposed_uri_path = exposed_uri_path
+        # Specifies whether to enable MCP statistics.
         self.mcp_statistics_enable = mcp_statistics_enable
+        # The MCP protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -155,7 +160,7 @@ class UpdateHttpApiRouteRequestBackendConfig(DaraModel):
     ):
         # The backend service scenario.
         self.scene = scene
-        # A list of backend services.
+        # The list of backend services.
         self.services = services
 
     def validate(self):
@@ -201,19 +206,17 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service port. This parameter is not required for dynamic ports.
+        # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # 
         # - HTTP
-        # 
         # - HTTPS
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
         # The service version.
         self.version = version
-        # The percentage of traffic.
+        # The percentage value of the traffic ratio.
         self.weight = weight
 
     def validate(self):

@@ -13,13 +13,13 @@ class HiMarketProductCategory(DaraModel):
         icon: main_models.HiMarketIcon = None,
         name: str = None,
     ):
-        # The unique category ID.
+        # The categorization ID.
         self.category_id = category_id
-        # The category description.
+        # The categorization description.
         self.description = description
-        # The category icon.
+        # The icon configuration.
         self.icon = icon
-        # The category name.
+        # The categorization name.
         self.name = name
 
     def validate(self):

@@ -15,13 +15,13 @@ class ListMcpServersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -78,7 +78,7 @@ class ListMcpServersResponseBodyData(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -152,53 +152,53 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
         route_id: str = None,
         type: str = None,
     ):
-        # The API ID.
+        # API ID。
         self.api_id = api_id
-        # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
+        # The list of assembly sources. This parameter is required when type is AssemblyMCP.
         self.assembled_sources = assembled_sources
         # The backend service of the route.
         self.backend = backend
-        # The type of source for MCP server creation. Valid values: 
+        # The creation source type. Valid values:
         # 
-        # ApiGatewayHttpToMCP 
-        # ApiGatewayMcpHosting 
-        # ApiGatewayAssembly 
-        # NacosHttpToMCP 
-        # NacosMcpHosting
+        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+        # - ApiGatewayMcpHosting: gateway-managed MCP direct proxy.
+        # - ApiGatewayAssembly: gateway MCP assembly.
+        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+        # - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
         self.create_from_type = create_from_type
-        # The publishing status of the API in the current environment.
+        # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
         # The description.
         self.description = description
-        # The domain name IDs.
+        # The list of domain name IDs.
         self.domain_ids = domain_ids
-        # The list of domain information.
+        # The list of domain name information.
         self.domain_infos = domain_infos
         # The environment ID.
         self.environment_id = environment_id
-        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
+        # The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
         self.exposed_uri_path = exposed_uri_path
         # The gateway instance ID.
         self.gateway_id = gateway_id
         # The route match rule.
         self.match = match
-        # The HTTP-to-MCP configurations.
+        # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
-        # The MCP server ID.
+        # MCP Server ID
         self.mcp_server_id = mcp_server_id
         # The MCP server access path provided by the gateway.
         self.mcp_server_path = mcp_server_path
         # Indicates whether MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The MCP information synchronized and managed by Nacos.
+        # The Nacos-synced managed MCP information.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info
-        # The name of the MCP server.
+        # The MCP server name.
         self.name = name
         # The service protocol.
         self.protocol = protocol
-        # The ID of the MCP server associated route.
+        # The route ID associated with the MCP server.
         self.route_id = route_id
-        # The type of the MCP server. Valid values: RealMCP and AssemblyMCP.
+        # The MCP server type.
         self.type = type
 
     def validate(self):
@@ -376,7 +376,7 @@ class ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo(DaraModel):
     ):
         # The Nacos instance.
         self.import_instance_id = import_instance_id
-        # The synchronized MCP server ID.
+        # The synced MCP server ID.
         self.import_mcp_server_id = import_mcp_server_id
         # The Nacos namespace.
         self.import_namespace = import_namespace
@@ -420,9 +420,9 @@ class ListMcpServersResponseBodyDataItemsAssembledSources(DaraModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # The MCP server ID.
+        # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The name of the MCP server.
+        # The MCP server name.
         self.mcp_server_name = mcp_server_name
         # The list of MCP tools.
         self.tools = tools

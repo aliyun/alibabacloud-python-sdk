@@ -96,6 +96,7 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         dns_servers: List[str] = None,
         express_type: str = None,
         group_name: str = None,
+        model_provider_id: str = None,
         name: str = None,
         namespace: str = None,
         qualifier: str = None,
@@ -104,19 +105,20 @@ class CreateServiceRequestServiceConfigs(DaraModel):
     ):
         # The list of domain names or fixed addresses.
         self.addresses = addresses
-        # The Agent service configuration. This parameter is required when sourceType is set to AGENT.
+        # The Agent service configuration. This parameter is required when `sourceType` is set to `AGENT`.
         self.agent_service_config = agent_service_config
         # The AI service configuration.
         self.ai_service_config = ai_service_config
         # The list of DNS server addresses.
         self.dns_servers = dns_servers
-        # The service expression type that identifies the special type or mode of the service.
+        # The service expression type. Identifies the special type or mode of the service.
         self.express_type = express_type
         # The service group name. This parameter is required when sourceType is set to MSE_NACOS.
         self.group_name = group_name
+        self.model_provider_id = model_provider_id
         # The service name.
         self.name = name
-        # The namespace of the service.
+        # The namespace of the service:
         # 
         # - If sourceType is set to K8S, this parameter specifies the namespace of the Kubernetes service.
         # - If sourceType is set to MSE_NACOS, this parameter specifies the namespace in Nacos.
@@ -127,7 +129,7 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         self.qualifier = qualifier
         # The service source ID. This parameter is required in multi-Nacos instance scenarios.
         self.source_id = source_id
-        # The validation options for service verification configuration.
+        # The validation options. Configuration options related to service validation.
         self.validation_options = validation_options
 
     def validate(self):
@@ -160,6 +162,9 @@ class CreateServiceRequestServiceConfigs(DaraModel):
 
         if self.group_name is not None:
             result['groupName'] = self.group_name
+
+        if self.model_provider_id is not None:
+            result['modelProviderId'] = self.model_provider_id
 
         if self.name is not None:
             result['name'] = self.name
@@ -199,6 +204,9 @@ class CreateServiceRequestServiceConfigs(DaraModel):
 
         if m.get('groupName') is not None:
             self.group_name = m.get('groupName')
+
+        if m.get('modelProviderId') is not None:
+            self.model_provider_id = m.get('modelProviderId')
 
         if m.get('name') is not None:
             self.name = m.get('name')

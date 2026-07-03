@@ -15,13 +15,13 @@ class GetResourceOverviewResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The response status code.
         self.code = code
         # The resource information.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class GetResourceOverviewResponseBodyData(DaraModel):
         gateway: main_models.GetResourceOverviewResponseBodyDataGateway = None,
         risk_overview: List[main_models.GetResourceOverviewResponseBodyDataRiskOverview] = None,
     ):
-        # API information.
+        # The API information.
         self.api = api
-        # Gateway information.
+        # The gateway information.
         self.gateway = gateway
         # The risk overview.
         self.risk_overview = risk_overview
@@ -131,9 +131,9 @@ class GetResourceOverviewResponseBodyDataRiskOverview(DaraModel):
         risk_details: List[main_models.GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails] = None,
         risk_level: str = None,
     ):
-        # The number of instances at a risk level.
+        # The number of instances at this risk level.
         self.count = count
-        # The risk details list.
+        # The list of risk details.
         self.risk_details = risk_details
         # The risk level.
         self.risk_level = risk_level
@@ -193,7 +193,7 @@ class GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails(DaraModel):
         self.gateway_name = gateway_name
         # The risk level.
         self.risk_level = risk_level
-        # The risk name list.
+        # The list of risk names.
         self.risk_names = risk_names
         # The risk score.
         self.score = score
@@ -248,9 +248,9 @@ class GetResourceOverviewResponseBodyDataGateway(DaraModel):
         running_count: int = None,
         total_count: int = None,
     ):
-        # Number of running gateways.
+        # The number of running gateways.
         self.running_count = running_count
-        # Number of gateway instances.
+        # The total number of gateway instances.
         self.total_count = total_count
 
     def validate(self):
@@ -285,9 +285,9 @@ class GetResourceOverviewResponseBodyDataApi(DaraModel):
         published_count: int = None,
         total_count: int = None,
     ):
-        # Number of published APIs.
+        # The number of published APIs.
         self.published_count = published_count
-        # Number of APIs.
+        # The total number of APIs.
         self.total_count = total_count
 
     def validate(self):

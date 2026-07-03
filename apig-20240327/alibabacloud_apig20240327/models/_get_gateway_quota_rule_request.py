@@ -11,8 +11,11 @@ class GetGatewayQuotaRuleRequest(DaraModel):
         consumer_page_size: str = None,
         with_consumers: bool = None,
     ):
+        # The page number of the consumer list.
         self.consumer_page_number = consumer_page_number
+        # The page size of the consumer list.
         self.consumer_page_size = consumer_page_size
+        # Specifies whether to return the consumer list.
         self.with_consumers = with_consumers
 
     def validate(self):

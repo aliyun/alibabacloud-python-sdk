@@ -26,11 +26,11 @@ class ListServicesRequest(DaraModel):
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The source type of the service. Valid values:
-        # - MSE_NACOS: The service is from MSE Nacos.
-        # - K8S: The service is from a Kubernetes cluster in Container Service.
-        # - FC3: The service is from Function Compute.
-        # - VIP: The service is from a fixed address.
-        # - DNS: The service is from a domain name.
+        # - MSE_NACOS: services from MSE Nacos.
+        # - K8S: services from a Kubernetes cluster in Container Service.
+        # - FC3: services from Function Compute.
+        # - VIP: services with a fixed address.
+        # - DNS: services with a domain name.
         self.source_type = source_type
         # The list of service source types.
         self.source_types = source_types

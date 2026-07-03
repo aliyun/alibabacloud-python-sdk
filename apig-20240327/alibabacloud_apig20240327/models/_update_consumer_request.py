@@ -16,13 +16,13 @@ class UpdateConsumerRequest(DaraModel):
         enable: bool = None,
         jwt_identity_config: main_models.JwtIdentityConfig = None,
     ):
-        # The list of AK/SK authentication configurations.
+        # The list of AccessKey pair authentication configurations.
         self.ak_sk_identity_configs = ak_sk_identity_configs
-        # The API key authentication configurations.
+        # The API key authentication configuration.
         self.apikey_identity_config = apikey_identity_config
         # The description.
         self.description = description
-        # Specifies the enablement status.
+        # Specifies whether to enable the API consumer.
         self.enable = enable
         # The JWT authentication configuration.
         self.jwt_identity_config = jwt_identity_config

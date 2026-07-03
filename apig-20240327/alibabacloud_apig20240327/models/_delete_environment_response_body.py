@@ -15,7 +15,7 @@ class DeleteEnvironmentResponseBody(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # The request ID, which is used to trace the request chain.
+        # The request ID, which is used to trace the request.
         self.request_id = request_id
 
     def validate(self):

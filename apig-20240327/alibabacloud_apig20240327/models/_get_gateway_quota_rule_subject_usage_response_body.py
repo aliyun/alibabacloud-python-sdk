@@ -15,9 +15,13 @@ class GetGatewayQuotaRuleSubjectUsageResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -71,12 +75,19 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         total_quota: int = None,
         used_amount: int = None,
     ):
+        # The total cached token consumption.
         self.cached_amount = cached_amount
+        # The paginated consumption details.
         self.details = details
+        # The total input token consumption.
         self.input_amount = input_amount
+        # The total output token consumption.
         self.output_amount = output_amount
+        # Indicates whether the quota limit is exceeded.
         self.over_limit = over_limit
+        # The total quota of the subject.
         self.total_quota = total_quota
+        # The total used amount of the subject.
         self.used_amount = used_amount
 
     def validate(self):
@@ -145,9 +156,13 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # The list of usage details.
         self.items = items
+        # The current page number.
         self.page_number = page_number
+        # The current page size.
         self.page_size = page_size
+        # The total number of records.
         self.total_size = total_size
 
     def validate(self):
@@ -206,11 +221,17 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         start_time: str = None,
         used_amount: int = None,
     ):
+        # The cached token consumption.
         self.cached_amount = cached_amount
+        # The input token consumption.
         self.input_amount = input_amount
+        # The model name.
         self.model = model
+        # The output token consumption.
         self.output_amount = output_amount
+        # The consumption (request) time.
         self.start_time = start_time
+        # The total consumption.
         self.used_amount = used_amount
 
     def validate(self):

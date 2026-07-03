@@ -15,11 +15,11 @@ class ListPluginsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The returned data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -72,13 +72,13 @@ class ListPluginsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of plug-in information.
+        # The plugin list.
         self.items = items
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -135,13 +135,13 @@ class ListPluginsResponseBodyDataItems(DaraModel):
         plugin_class_info: main_models.ListPluginsResponseBodyDataItemsPluginClassInfo = None,
         plugin_id: str = None,
     ):
-        # The attachment information.
+        # The plugin attachment information.
         self.attachment_info = attachment_info
-        # The gateway instance information.
+        # The gateway information.
         self.gateway_info = gateway_info
-        # The plug-in type information.
+        # The plugin type information.
         self.plugin_class_info = plugin_class_info
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
 
     def validate(self):
@@ -208,15 +208,15 @@ class ListPluginsResponseBodyDataItemsPluginClassInfo(DaraModel):
         self.execute_priority = execute_priority
         # The execution stage.
         self.execute_stage = execute_stage
-        # The name of the plug-in.
+        # The plugin name.
         self.name = name
-        # The plug-in type ID.
+        # The plugin type ID.
         self.plugin_class_id = plugin_class_id
-        # The source of the plug-in.
+        # The plugin source.
         self.source = source
         # The version.
         self.version = version
-        # The description of the version.
+        # The version description.
         self.version_description = version_description
 
     def validate(self):
@@ -287,9 +287,9 @@ class ListPluginsResponseBodyDataItemsGatewayInfo(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
-        # The instance ID.
+        # The gateway ID.
         self.gateway_id = gateway_id
-        # The instance name.
+        # The gateway name.
         self.name = name
 
     def validate(self):
@@ -324,9 +324,9 @@ class ListPluginsResponseBodyDataItemsAttachmentInfo(DaraModel):
         enable: str = None,
         plugin_attachment_id: str = None,
     ):
-        # Indicates if enabled.
+        # Indicates whether the plugin is enabled.
         self.enable = enable
-        # The attachment ID.
+        # The plugin attachment ID.
         self.plugin_attachment_id = plugin_attachment_id
 
     def validate(self):

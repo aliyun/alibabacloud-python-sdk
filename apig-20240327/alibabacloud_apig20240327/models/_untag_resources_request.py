@@ -14,9 +14,20 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to delete all tags. This parameter takes effect only when tags are empty. Valid values:
+        # 
+        # - true
+        # - false
+        # - True
+        # - False
+        # 
+        # Default value: false.
         self.all = all
+        # The resource IDs. You can specify up to 50 subkeys.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
+        # The list of tag keys. You can specify up to 20 subkeys.
         self.tag_key = tag_key
 
     def validate(self):

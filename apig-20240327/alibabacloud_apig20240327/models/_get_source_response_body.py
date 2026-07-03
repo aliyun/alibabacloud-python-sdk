@@ -85,7 +85,7 @@ class GetSourceResponseBodyData(DaraModel):
         self.gateway_id = gateway_id
         # The Kubernetes source information.
         self.k_8ssource_info = k_8ssource_info
-        # The Microservices Engine (MSE) Nacos source information.
+        # The MSE Nacos source information.
         self.nacos_source_info = nacos_source_info
         # The name.
         self.name = name
@@ -234,7 +234,7 @@ class GetSourceResponseBodyDataK8SSourceInfo(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # The container service cluster ID.
+        # The Container Service cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):

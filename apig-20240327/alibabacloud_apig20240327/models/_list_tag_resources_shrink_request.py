@@ -12,9 +12,13 @@ class ListTagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
+        # The token that determines the start point of the next query.
         self.next_token = next_token
+        # The resource ID. You can specify up to 50 subkeys.
         self.resource_id_shrink = resource_id_shrink
+        # The resource type.
         self.resource_type = resource_type
+        # The list of labels to add. You can specify up to 20 subkeys.
         self.tag_shrink = tag_shrink
 
     def validate(self):

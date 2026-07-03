@@ -77,15 +77,15 @@ class GetPluginAttachmentResponseBodyData(DaraModel):
         plugin_id: str = None,
         resource_infos: List[main_models.ResourceInfo] = None,
     ):
-        # Indicates whether the plugin attachment is enabled.
+        # Indicates whether the plugin mount is enabled.
         self.enable = enable
         # The environment context.
         self.environment_info = environment_info
         # The gateway information.
         self.gateway_info = gateway_info
-        # The parent attachment resource information.
+        # The parent mount resource information.
         self.parent_resource_info = parent_resource_info
-        # The plugin attachment ID.
+        # The plugin mount ID.
         self.plugin_attachment_id = plugin_attachment_id
         # The plugin type information.
         self.plugin_class_info = plugin_class_info
@@ -93,7 +93,7 @@ class GetPluginAttachmentResponseBodyData(DaraModel):
         self.plugin_config = plugin_config
         # The plugin ID.
         self.plugin_id = plugin_id
-        # The list of attachment resource information.
+        # The list of mount resource information.
         self.resource_infos = resource_infos
 
     def validate(self):

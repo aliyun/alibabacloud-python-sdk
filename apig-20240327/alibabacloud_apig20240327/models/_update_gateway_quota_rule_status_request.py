@@ -10,7 +10,9 @@ class UpdateGatewayQuotaRuleStatusRequest(DaraModel):
         clear_history: bool = None,
         enable: bool = None,
     ):
+        # Specifies whether to clear historical quota usage when enabling or disabling the rule.
         self.clear_history = clear_history
+        # Specifies whether to enable or disable the rule.
         self.enable = enable
 
     def validate(self):

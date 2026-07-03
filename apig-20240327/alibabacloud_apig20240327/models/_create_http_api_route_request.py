@@ -189,10 +189,10 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
         services: List[main_models.CreateHttpApiRouteRequestBackendConfigServices] = None,
     ):
         # The backend service scenario. Valid values:
-        # - SingleService: Single service.
-        # - MultiServiceByRatio: Multiple services with ratio-based canary release.
-        # - Mock: Mock service.
-        # - Redirect: Redirect service.
+        # - SingleService: single service.
+        # - MultiServiceByRatio: multiple services with ratio-based canary release.
+        # - Mock: mock service.
+        # - Redirect: redirect service.
         self.scene = scene
         # The list of backend services.
         self.services = services

@@ -10,7 +10,9 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number of the detailed consumption (request) records of the consumer within the cycle.
         self.page_number = page_number
+        # The number of detailed consumption (request) records per page for the consumer within the cycle. Maximum value: 10.
         self.page_size = page_size
 
     def validate(self):

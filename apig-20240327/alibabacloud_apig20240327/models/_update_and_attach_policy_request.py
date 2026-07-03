@@ -21,7 +21,9 @@ class UpdateAndAttachPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.attach_resource_ids = attach_resource_ids
-        # The type of mount point supported by the policy. Valid values:
+        # The type of mount point supported by the policy.
+        # 
+        # Valid values:
         # 
         # - HttpApi: HttpApi.
         # - Operation: Operation of HttpApi.

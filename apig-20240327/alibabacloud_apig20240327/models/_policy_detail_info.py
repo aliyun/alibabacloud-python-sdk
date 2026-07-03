@@ -14,11 +14,17 @@ class PolicyDetailInfo(DaraModel):
         name: str = None,
         policy_id: str = None,
     ):
+        # The policy class ID.
         self.class_id = class_id
+        # The policy type name.
         self.class_name = class_name
+        # The policy configuration content (JSON string).
         self.config = config
+        # The policy description.
         self.description = description
+        # The policy name.
         self.name = name
+        # The policy ID.
         self.policy_id = policy_id
 
     def validate(self):

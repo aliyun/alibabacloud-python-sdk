@@ -15,13 +15,13 @@ class InstallPluginResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -69,7 +69,7 @@ class InstallPluginResponseBodyData(DaraModel):
         self,
         install_plugin_results: List[main_models.InstallPluginResponseBodyDataInstallPluginResults] = None,
     ):
-        # The installation result.
+        # The installation results.
         self.install_plugin_results = install_plugin_results
 
     def validate(self):

@@ -69,6 +69,7 @@ class GetConsumerResponseBodyData(DaraModel):
         self,
         ak_sk_identity_configs: List[main_models.AkSkIdentityConfig] = None,
         api_key_identity_config: main_models.ApiKeyIdentityConfig = None,
+        consumer_groups: List[main_models.GetConsumerResponseBodyDataConsumerGroups] = None,
         consumer_id: str = None,
         create_timestamp: int = None,
         deploy_status: str = None,
@@ -78,11 +79,12 @@ class GetConsumerResponseBodyData(DaraModel):
         name: str = None,
         update_timestamp: int = None,
     ):
-        # The AK/SK identity authentication configurations.
+        # The AccessKey pair authentication configuration.
         self.ak_sk_identity_configs = ak_sk_identity_configs
-        # The API key identity authentication configuration.
+        # The API key authentication configuration.
         self.api_key_identity_config = api_key_identity_config
-        # The consumer ID.
+        self.consumer_groups = consumer_groups
+        # The API consumer ID.
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
@@ -90,11 +92,11 @@ class GetConsumerResponseBodyData(DaraModel):
         self.deploy_status = deploy_status
         # The description.
         self.description = description
-        # Indicates whether the consumer is enabled.
+        # Indicates whether the API consumer is enabled.
         self.enable = enable
-        # The JWT identity authentication configuration.
+        # The JWT authentication configuration.
         self.jwt_identity_config = jwt_identity_config
-        # The consumer name.
+        # The API consumer name.
         self.name = name
         # The update timestamp.
         self.update_timestamp = update_timestamp
@@ -106,6 +108,10 @@ class GetConsumerResponseBodyData(DaraModel):
                     v1.validate()
         if self.api_key_identity_config:
             self.api_key_identity_config.validate()
+        if self.consumer_groups:
+            for v1 in self.consumer_groups:
+                 if v1:
+                    v1.validate()
         if self.jwt_identity_config:
             self.jwt_identity_config.validate()
 
@@ -121,6 +127,11 @@ class GetConsumerResponseBodyData(DaraModel):
 
         if self.api_key_identity_config is not None:
             result['apiKeyIdentityConfig'] = self.api_key_identity_config.to_map()
+
+        result['consumerGroups'] = []
+        if self.consumer_groups is not None:
+            for k1 in self.consumer_groups:
+                result['consumerGroups'].append(k1.to_map() if k1 else None)
 
         if self.consumer_id is not None:
             result['consumerId'] = self.consumer_id
@@ -160,6 +171,12 @@ class GetConsumerResponseBodyData(DaraModel):
             temp_model = main_models.ApiKeyIdentityConfig()
             self.api_key_identity_config = temp_model.from_map(m.get('apiKeyIdentityConfig'))
 
+        self.consumer_groups = []
+        if m.get('consumerGroups') is not None:
+            for k1 in m.get('consumerGroups'):
+                temp_model = main_models.GetConsumerResponseBodyDataConsumerGroups()
+                self.consumer_groups.append(temp_model.from_map(k1))
+
         if m.get('consumerId') is not None:
             self.consumer_id = m.get('consumerId')
 
@@ -184,6 +201,57 @@ class GetConsumerResponseBodyData(DaraModel):
 
         if m.get('updateTimestamp') is not None:
             self.update_timestamp = m.get('updateTimestamp')
+
+        return self
+
+class GetConsumerResponseBodyDataConsumerGroups(DaraModel):
+    def __init__(
+        self,
+        consumer_group_id: str = None,
+        description: str = None,
+        join_timestamp: int = None,
+        name: str = None,
+    ):
+        self.consumer_group_id = consumer_group_id
+        self.description = description
+        self.join_timestamp = join_timestamp
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+
+        if self.description is not None:
+            result['description'] = self.description
+
+        if self.join_timestamp is not None:
+            result['joinTimestamp'] = self.join_timestamp
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+
+        if m.get('description') is not None:
+            self.description = m.get('description')
+
+        if m.get('joinTimestamp') is not None:
+            self.join_timestamp = m.get('joinTimestamp')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
 
         return self
 

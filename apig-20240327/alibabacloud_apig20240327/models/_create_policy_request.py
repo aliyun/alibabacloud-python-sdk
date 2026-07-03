@@ -12,17 +12,17 @@ class CreatePolicyRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # Policy type, including RateLimit, ConcurrencyLimit, CircuitBreaker, HttpRewrite, HeaderModify, Cors, Authentication, FlowCopy, Timeout, Retry, IpAccessControl, DirectResponse, Redirect, Fallback, ServiceTls, ServiceLb, ServicePortTls, Waf, JWTAuth, OIDCAuth, ExternalZAuth, AiProxy, ModelRouter, AiStatistics, AiSecurityGuard, AiFallback, ModelMapper, AiTokenRateLimit, AiCache, DynamicRoute
+        # The policy type. Valid values: RateLimit, ConcurrencyLimit, CircuitBreaker, HttpRewrite, HeaderModify, Cors, Authentication, FlowCopy, Timeout, Retry, IpAccessControl, DirectResponse, Redirect, Fallback, ServiceTls, ServiceLb, ServicePortTls, Waf, JWTAuth, OIDCAuth, ExternalZAuth, AiProxy, ModelRouter, AiStatistics, AiSecurityGuard, AiFallback, ModelMapper, AiTokenRateLimit, AiCache, DynamicRoute.
         # 
         # This parameter is required.
         self.class_name = class_name
-        # Policy configuration
+        # The policy configuration.
         # 
         # This parameter is required.
         self.config = config
-        # Policy description
+        # The description of the policy.
         self.description = description
-        # Policy name
+        # The policy name.
         # 
         # This parameter is required.
         self.name = name

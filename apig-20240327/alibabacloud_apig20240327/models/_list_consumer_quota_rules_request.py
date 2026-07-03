@@ -12,9 +12,13 @@ class ListConsumerQuotaRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The gateway ID. This parameter is optional.
         self.gateway_id = gateway_id
+        # The rule name keyword, used for fuzzy match.
         self.keyword = keyword
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

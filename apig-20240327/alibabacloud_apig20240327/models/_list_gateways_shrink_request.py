@@ -16,21 +16,21 @@ class ListGatewaysShrinkRequest(DaraModel):
         resource_group_id: str = None,
         tag_shrink: str = None,
     ):
-        # Retrieve the list of created cloud-native gateways
+        # The gateway ID for exact match query.
         self.gateway_id = gateway_id
-        # The search keyword. A full match is performed. The search is case-insensitive.
+        # The gateway type.
         self.gateway_type = gateway_type
-        # The instance name. If you specify a name, an exact search is performed.
+        # The keyword for full match search. Case-insensitive.
         self.keyword = keyword
-        # The number of entries per page.
+        # The gateway name for exact match query.
         self.name = name
-        # The instance ID. If you specify an ID, an exact search is performed.
+        # The page number.
         self.page_number = page_number
-        # The number of the page to return.
+        # The page size.
         self.page_size = page_size
-        # rg-aekz3wes3hnre5a
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags that you want to use for the search.
+        # The list of tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

@@ -14,8 +14,14 @@ class GatewayInfo(DaraModel):
         name: str = None,
         vpc_info: main_models.GatewayInfoVpcInfo = None,
     ):
-        # The gateway DPI engine database engine version.
+        # The gateway DPI engine version.
         self.engine_version = engine_version
+        # The gateway instance edition. Valid values:
+        # 
+        # - Professional: standard instance.
+        # - Serverless: Serverless.
+        # - MultiTenantServerless: multi-tenant Serverless.
+        # - Unknown: unknown.
         self.gateway_edition = gateway_edition
         # The gateway ID.
         self.gateway_id = gateway_id

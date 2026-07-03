@@ -15,6 +15,7 @@ class ListDomainsRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
+        # The domain name scope.
         self.domain_scope = domain_scope
         # The gateway ID.
         self.gateway_id = gateway_id

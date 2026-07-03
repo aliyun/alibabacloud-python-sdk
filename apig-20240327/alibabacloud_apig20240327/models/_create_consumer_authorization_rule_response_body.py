@@ -67,7 +67,7 @@ class CreateConsumerAuthorizationRuleResponseBodyData(DaraModel):
         self,
         consumer_authorization_rule_id: str = None,
     ):
-        # The consumer authorization rule ID. When this ID is used to filter the API list, the response contains only the authorized APIs.
+        # The consumer authorization rule ID. When this ID is used to filter the API list, the response includes only the authorized APIs.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
 
     def validate(self):
