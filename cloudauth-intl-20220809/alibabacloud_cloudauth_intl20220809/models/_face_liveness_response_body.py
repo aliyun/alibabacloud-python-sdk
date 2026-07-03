@@ -72,10 +72,10 @@ class FaceLivenessResponseBodyResult(DaraModel):
     ):
         # The face result information.
         self.ext_face_info = ext_face_info
-        # Indicates whether the authentication passed. Valid values:
+        # Indicates whether the authentication is passed. Valid values:
         # 
-        # - Y: passed.
-        # - N: not passed.
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code
@@ -127,6 +127,7 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
         self,
         face_age: int = None,
         face_attack: str = None,
+        face_attribute_info: str = None,
         face_gender: str = None,
         face_quality_score: float = None,
         illumination_score: float = None,
@@ -135,22 +136,23 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
         occlusion_score: float = None,
         sharpness_score: float = None,
     ):
-        # The predicted reference age based on the face. The prediction may fail and return no value.
+        # The predicted reference age of the face. The prediction may fail and return no value.
         self.face_age = face_age
         # The liveness detection result. Valid values: Y (attack detected) and N (normal).
         self.face_attack = face_attack
-        # The predicted gender based on the face photo. The prediction may fail and return no value. Valid values:
+        self.face_attribute_info = face_attribute_info
+        # The predicted gender of the face in the photo. The prediction may fail and return no value. Valid values:
         # 
-        # - M: male.
-        # - F: female.
+        # - M: Male.
+        # - F: Female.
         self.face_gender = face_gender
-        # The face quality score (0 to 100). This value is returned only when the face quality score switch is enabled in the request parameters.
+        # The face quality score (0 to 100). This parameter is returned only when the face quality score switch is enabled.
         self.face_quality_score = face_quality_score
         # The illumination score.
         self.illumination_score = illumination_score
         # The key area occlusion score.
         self.ka_occlusion_score = ka_occlusion_score
-        # The occlusion detection result. Valid values: Y (occluded) and N (not occluded). This value is returned only when the occlusion detection switch is enabled.
+        # The occlusion detection result. Valid values: Y (occluded) and N (not occluded). This parameter is returned only when the occlusion detection switch is enabled.
         self.occlusion_result = occlusion_result
         # The occlusion score.
         self.occlusion_score = occlusion_score
@@ -170,6 +172,9 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
 
         if self.face_attack is not None:
             result['FaceAttack'] = self.face_attack
+
+        if self.face_attribute_info is not None:
+            result['FaceAttributeInfo'] = self.face_attribute_info
 
         if self.face_gender is not None:
             result['FaceGender'] = self.face_gender
@@ -201,6 +206,9 @@ class FaceLivenessResponseBodyResultExtFaceInfo(DaraModel):
 
         if m.get('FaceAttack') is not None:
             self.face_attack = m.get('FaceAttack')
+
+        if m.get('FaceAttributeInfo') is not None:
+            self.face_attribute_info = m.get('FaceAttributeInfo')
 
         if m.get('FaceGender') is not None:
             self.face_gender = m.get('FaceGender')

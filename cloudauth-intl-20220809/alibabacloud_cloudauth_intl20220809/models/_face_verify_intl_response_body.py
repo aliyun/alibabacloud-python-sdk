@@ -13,9 +13,13 @@ class FaceVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceVerifyIntlResponseBodyResult = None,
     ):
+        # The response code.
         self.code = code
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -74,17 +78,39 @@ class FaceVerifyIntlResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # The face ID, user ID, and comparison score of the corresponding face in the face library when a duplicate face is found during retrieval.
         self.duplicate_face = duplicate_face
+        # The additional face result information.
         self.ext_face_info = ext_face_info
+        # The predicted reference age of the face. Prediction may fail and the value may not be returned.
         self.face_age = face_age
+        # Indicates whether the captured face involves a liveness attack. Valid values:
+        # - Y: attack detected.
+        # - N: no attack detected.
+        # 
+        # This field is returned only when passive liveness detection is enabled.
         self.face_attack = face_attack
+        # The probability of a passive liveness detection attack on the face. Value range: 0 to 100. This field is returned only when passive liveness detection is enabled.
         self.face_attack_score = face_attack_score
+        # The comparison score between the face image submitted during verification and the reference face image. Value range: 0 to 100.
         self.face_comparison_score = face_comparison_score
+        # The predicted gender of the face image. Prediction may fail and the value may not be returned. Valid values:
+        # - M: male.
+        # - F: female.
         self.face_gender = face_gender
+        # The final verification result. Valid values:
+        # - Y: passed.
+        # - N: not passed.
         self.face_passed = face_passed
+        # The corresponding face ID returned only when the customer has enabled automatic registration and the face is registered successfully.
         self.face_registration_id = face_registration_id
+        # The face registration result. Valid values: 
+        # - 0: failed. 
+        # - 1: succeeded.
         self.face_registration_result = face_registration_result
+        # The sub-result code.
         self.sub_code = sub_code
+        # The unique identifier of the verification request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -178,17 +204,34 @@ class FaceVerifyIntlResponseBodyResult(DaraModel):
 class FaceVerifyIntlResponseBodyResultExtFaceInfo(DaraModel):
     def __init__(
         self,
+        face_attribute_info: str = None,
         face_quality_score: float = None,
         illumination_score: float = None,
         ka_occlusion_score: float = None,
         occlusion_score: float = None,
         sharpness_score: float = None,
+        target_face_quality_score: float = None,
+        target_illumination_score: float = None,
+        target_ka_occlusion_score: float = None,
+        target_occlusion_score: float = None,
+        target_sharpness_score: float = None,
     ):
+        self.face_attribute_info = face_attribute_info
+        # The liveness face quality score. Value range: 0 to 100. A higher value indicates better quality.
         self.face_quality_score = face_quality_score
+        # The algorithm score for illumination, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
         self.illumination_score = illumination_score
+        # The algorithm score for key area occlusion, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
         self.ka_occlusion_score = ka_occlusion_score
+        # The algorithm score for occlusion, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
         self.occlusion_score = occlusion_score
+        # The image sharpness score, a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
         self.sharpness_score = sharpness_score
+        self.target_face_quality_score = target_face_quality_score
+        self.target_illumination_score = target_illumination_score
+        self.target_ka_occlusion_score = target_ka_occlusion_score
+        self.target_occlusion_score = target_occlusion_score
+        self.target_sharpness_score = target_sharpness_score
 
     def validate(self):
         pass
@@ -198,6 +241,9 @@ class FaceVerifyIntlResponseBodyResultExtFaceInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.face_attribute_info is not None:
+            result['FaceAttributeInfo'] = self.face_attribute_info
+
         if self.face_quality_score is not None:
             result['FaceQualityScore'] = self.face_quality_score
 
@@ -213,10 +259,28 @@ class FaceVerifyIntlResponseBodyResultExtFaceInfo(DaraModel):
         if self.sharpness_score is not None:
             result['SharpnessScore'] = self.sharpness_score
 
+        if self.target_face_quality_score is not None:
+            result['TargetFaceQualityScore'] = self.target_face_quality_score
+
+        if self.target_illumination_score is not None:
+            result['TargetIlluminationScore'] = self.target_illumination_score
+
+        if self.target_ka_occlusion_score is not None:
+            result['TargetKaOcclusionScore'] = self.target_ka_occlusion_score
+
+        if self.target_occlusion_score is not None:
+            result['TargetOcclusionScore'] = self.target_occlusion_score
+
+        if self.target_sharpness_score is not None:
+            result['TargetSharpnessScore'] = self.target_sharpness_score
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FaceAttributeInfo') is not None:
+            self.face_attribute_info = m.get('FaceAttributeInfo')
+
         if m.get('FaceQualityScore') is not None:
             self.face_quality_score = m.get('FaceQualityScore')
 
@@ -231,6 +295,21 @@ class FaceVerifyIntlResponseBodyResultExtFaceInfo(DaraModel):
 
         if m.get('SharpnessScore') is not None:
             self.sharpness_score = m.get('SharpnessScore')
+
+        if m.get('TargetFaceQualityScore') is not None:
+            self.target_face_quality_score = m.get('TargetFaceQualityScore')
+
+        if m.get('TargetIlluminationScore') is not None:
+            self.target_illumination_score = m.get('TargetIlluminationScore')
+
+        if m.get('TargetKaOcclusionScore') is not None:
+            self.target_ka_occlusion_score = m.get('TargetKaOcclusionScore')
+
+        if m.get('TargetOcclusionScore') is not None:
+            self.target_occlusion_score = m.get('TargetOcclusionScore')
+
+        if m.get('TargetSharpnessScore') is not None:
+            self.target_sharpness_score = m.get('TargetSharpnessScore')
 
         return self
 

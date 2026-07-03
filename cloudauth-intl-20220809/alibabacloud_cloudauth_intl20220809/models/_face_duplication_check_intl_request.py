@@ -25,27 +25,27 @@ class FaceDuplicationCheckIntlRequest(DaraModel):
         target_face_picture_url: str = None,
         verify_model: str = None,
     ):
-        # Specifies whether to automatically register the face in the specified face database when no duplicate face is found during the search. Valid values:
-        # - 0: automatic registration
-        # - 1: no registration (default).
+        # Specifies whether to automatically register the face in the specified face library when no duplicate face is found during the search. Valid values:
+        # - 0: Automatic registration.
+        # - 1: No registration (default).
         self.auto_registration = auto_registration
-        # The face database codes created in the console. A maximum of 10 face databases can be queried at a time. Separate multiple face database codes with commas (,).
+        # The face library codes created by the customer in the console. A maximum of 10 face libraries can be queried at the same time. Separate multiple face library codes with commas (,).
         self.face_group_codes = face_group_codes
         # Specifies whether to enable face quality check.
         self.face_quality_check = face_quality_check
-        # The face database for registration.
+        # The face library for registration.
         self.face_register_group_code = face_register_group_code
-        # The face matching threshold. >Warning: This is a reserved field and is not currently enabled.</warning>.
+        # The face matching threshold. >Warning: This is a reserved field and is not currently enabled.</warning>
         self.face_verify_threshold = face_verify_threshold
         # Specifies whether to enable passive liveness detection. Valid values:
-        # - 0: disabled
-        # - 1: enabled.
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.liveness = liveness
-        # The custom unique business identifier, which is used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
+        # The custom unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
         # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
-        # The custom user ID or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
+        # The custom user ID, or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
         # 
         # This parameter is required.
         self.merchant_user_id = merchant_user_id
@@ -53,37 +53,37 @@ class FaceDuplicationCheckIntlRequest(DaraModel):
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The number of faces to return when multiple faces above the matching threshold are found.
+        # Specifies the number of faces to return when multiple faces above the matching threshold exist.
         # - Default value: 1.
         # - Maximum value: 5.
         self.return_faces = return_faces
         # Specifies the type of face data to save. Valid values:
         # - 0: face image (default)
         # - 1: feature
-        # >Warning: This is a reserved field and is not currently enabled.</warning>.
+        # >Warning: This is a reserved field and is not currently enabled.</warning>
         self.save_face_picture = save_face_picture
         # The custom verification scenario ID.
         self.scene_code = scene_code
-        # The Base64-encoded facial image.
+        # The Base64-encoded face image.
         self.source_face_picture = source_face_picture
-        # The URL of the facial image. The URL must be a publicly accessible HTTP or HTTPS link.
+        # The URL of the face image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.source_face_picture_url = source_face_picture_url
-        # The Base64-encoded facial image.
+        # The Base64-encoded face image.
         self.target_face_picture = target_face_picture
-        # The URL of the facial image. The URL must be a publicly accessible HTTP or HTTPS link.
+        # The URL of the face image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.target_face_picture_url = target_face_picture_url
-        # The verification type. Valid values:
-        # - 0: retrieve pattern
-        # > - Feature: Submits a face database and a user facial image (sourceFacePicture). The system automatically retrieves the face database to check whether the specified facial image (sourceFacePicture) already exists. Passive liveness detection can be enabled for the facial image (sourceFacePicture).
-        # > - Recommended scenario: Real-person create an account where duplicate registration is not allowed.
+        # The authentication type. Valid values:
+        # - 0: retrieval pattern
+        # > - Feature: Submits a face library and a user face image (sourceFacePicture). The system automatically retrieves faces from the face library to determine whether the specified face image (sourceFacePicture) already exists. Passive liveness detection can be enabled for the face image (sourceFacePicture).
+        # > - Recommended scenario: Real-person scenarios where you want to create an account and duplicate registration is not allowed.
         # 
-        # - 1 (default): authenticate pattern
-        # > - Feature: Submits a specified facial image (sourceFacePicture) and a stored facial image (TargetFacePicture). The system automatically authenticates whether the two faces match. Passive liveness detection can be enabled for the specified facial image (sourceFacePicture).
-        # > - Recommended scenario: Authenticating whether the operation is performed by the account owner when logon credentials or account information is modified.
+        # - 1 (default): authentication pattern
+        # > - Feature: Submits a specified face image (sourceFacePicture) and a retained face image (TargetFacePicture). The system automatically authenticates whether the faces match. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
+        # > - Recommended scenario: Authenticating the identity of the operator when logon credentials or account information is modified.
         # 
         # - 2: comprehensive pattern
-        # > - Feature: Submits a face database, a specified facial image (sourceFacePicture), and a stored facial image (TargetFacePicture). The system automatically retrieves the face database to check whether the specified facial image (sourceFacePicture) exists and whether it matches the stored face. Passive liveness detection can be enabled for the specified facial image (sourceFacePicture).
-        # > - Recommended scenario: Authenticating that the user is new and the operation is performed by the user.
+        # > - Feature: Submits a face library, a specified face image (sourceFacePicture), and a retained face image (TargetFacePicture). The system automatically retrieves faces from the face library to determine whether the specified face image (sourceFacePicture) exists and whether it matches the retained face image. Passive liveness detection can be enabled for the specified face image (sourceFacePicture).
+        # > - Recommended scenario: Authenticating that the user is new and the operation is performed by the user in person.
         # 
         # This parameter is required.
         self.verify_model = verify_model

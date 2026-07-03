@@ -3120,6 +3120,8 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not DaraCore.is_null(request.id_threshold):
@@ -3174,6 +3176,8 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not DaraCore.is_null(request.id_threshold):
@@ -3242,6 +3246,8 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not DaraCore.is_null(request.id_threshold):
@@ -3300,6 +3306,8 @@ class Client(OpenApiClient):
             query['DocType'] = request.doc_type
         if not DaraCore.is_null(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
+        if not DaraCore.is_null(request.face_quality_check):
+            query['FaceQualityCheck'] = request.face_quality_check
         if not DaraCore.is_null(request.id_ocr_picture_url):
             query['IdOcrPictureUrl'] = request.id_ocr_picture_url
         if not DaraCore.is_null(request.id_threshold):
@@ -5268,6 +5276,290 @@ class Client(OpenApiClient):
     ) -> main_models.Id2MetaVerifyIntlResponse:
         runtime = RuntimeOptions()
         return await self.id_2meta_verify_intl_with_options_async(request, runtime)
+
+    def idn_authority_verify_intl_with_options(
+        self,
+        request: main_models.IdnAuthorityVerifyIntlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IdnAuthorityVerifyIntlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.birth_date):
+            query['BirthDate'] = request.birth_date
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.full_name):
+            query['FullName'] = request.full_name
+        if not DaraCore.is_null(request.id_number):
+            query['IdNumber'] = request.id_number
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not DaraCore.is_null(request.source_face_picture_file):
+            query['SourceFacePictureFile'] = request.source_face_picture_file
+        if not DaraCore.is_null(request.source_face_picture_url):
+            query['SourceFacePictureUrl'] = request.source_face_picture_url
+        if not DaraCore.is_null(request.timestamp):
+            query['Timestamp'] = request.timestamp
+        body = {}
+        if not DaraCore.is_null(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'IdnAuthorityVerifyIntl',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IdnAuthorityVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def idn_authority_verify_intl_with_options_async(
+        self,
+        request: main_models.IdnAuthorityVerifyIntlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IdnAuthorityVerifyIntlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.birth_date):
+            query['BirthDate'] = request.birth_date
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.full_name):
+            query['FullName'] = request.full_name
+        if not DaraCore.is_null(request.id_number):
+            query['IdNumber'] = request.id_number
+        if not DaraCore.is_null(request.merchant_biz_id):
+            query['MerchantBizId'] = request.merchant_biz_id
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        if not DaraCore.is_null(request.source_face_picture_file):
+            query['SourceFacePictureFile'] = request.source_face_picture_file
+        if not DaraCore.is_null(request.source_face_picture_url):
+            query['SourceFacePictureUrl'] = request.source_face_picture_url
+        if not DaraCore.is_null(request.timestamp):
+            query['Timestamp'] = request.timestamp
+        body = {}
+        if not DaraCore.is_null(request.source_face_picture):
+            body['SourceFacePicture'] = request.source_face_picture
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'IdnAuthorityVerifyIntl',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IdnAuthorityVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def idn_authority_verify_intl(
+        self,
+        request: main_models.IdnAuthorityVerifyIntlRequest,
+    ) -> main_models.IdnAuthorityVerifyIntlResponse:
+        runtime = RuntimeOptions()
+        return self.idn_authority_verify_intl_with_options(request, runtime)
+
+    async def idn_authority_verify_intl_async(
+        self,
+        request: main_models.IdnAuthorityVerifyIntlRequest,
+    ) -> main_models.IdnAuthorityVerifyIntlResponse:
+        runtime = RuntimeOptions()
+        return await self.idn_authority_verify_intl_with_options_async(request, runtime)
+
+    def idn_authority_verify_intl_advance(
+        self,
+        request: main_models.IdnAuthorityVerifyIntlAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IdnAuthorityVerifyIntlResponse:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        idn_authority_verify_intl_req = main_models.IdnAuthorityVerifyIntlRequest()
+        Utils.convert(request, idn_authority_verify_intl_req)
+        if not DaraCore.is_null(request.source_face_picture_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.source_face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
+            idn_authority_verify_intl_req.source_face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        idn_authority_verify_intl_resp = self.idn_authority_verify_intl_with_options(idn_authority_verify_intl_req, runtime)
+        return idn_authority_verify_intl_resp
+
+    async def idn_authority_verify_intl_advance_async(
+        self,
+        request: main_models.IdnAuthorityVerifyIntlAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IdnAuthorityVerifyIntlResponse:
+        # Step 0: init client
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
+        open_platform_endpoint = self._open_platform_endpoint
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
+            open_platform_endpoint = 'openplatform.aliyuncs.com'
+        if DaraCore.is_null(credential_type):
+            credential_type = 'access_key'
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
+        )
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth-intl',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
+        )
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        auth_response = {}
+        file_obj = FileField()
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
+        idn_authority_verify_intl_req = main_models.IdnAuthorityVerifyIntlRequest()
+        Utils.convert(request, idn_authority_verify_intl_req)
+        if not DaraCore.is_null(request.source_face_picture_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.source_face_picture_file_object,
+                content_type = ''
+            )
+            oss_header = {
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
+            idn_authority_verify_intl_req.source_face_picture_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
+        idn_authority_verify_intl_resp = await self.idn_authority_verify_intl_with_options_async(idn_authority_verify_intl_req, runtime)
+        return idn_authority_verify_intl_resp
 
     def initialize_with_options(
         self,

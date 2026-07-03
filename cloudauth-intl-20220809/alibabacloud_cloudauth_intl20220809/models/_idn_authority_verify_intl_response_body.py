@@ -5,13 +5,13 @@ from __future__ import annotations
 from alibabacloud_cloudauth_intl20220809 import models as main_models
 from darabonba.model import DaraModel
 
-class DocOcrMaxV2ResponseBody(DaraModel):
+class IdnAuthorityVerifyIntlResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
         message: str = None,
         request_id: str = None,
-        result: main_models.DocOcrMaxV2ResponseBodyResult = None,
+        result: main_models.IdnAuthorityVerifyIntlResponseBodyResult = None,
     ):
         # The response code.
         self.code = code
@@ -57,29 +57,32 @@ class DocOcrMaxV2ResponseBody(DaraModel):
             self.request_id = m.get('RequestId')
 
         if m.get('Result') is not None:
-            temp_model = main_models.DocOcrMaxV2ResponseBodyResult()
+            temp_model = main_models.IdnAuthorityVerifyIntlResponseBodyResult()
             self.result = temp_model.from_map(m.get('Result'))
 
         return self
 
-class DocOcrMaxV2ResponseBodyResult(DaraModel):
+class IdnAuthorityVerifyIntlResponseBodyResult(DaraModel):
     def __init__(
         self,
-        ext_id_info: str = None,
+        ext_source_info: str = None,
         passed: str = None,
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The card and certificate recognition result. This parameter is returned only when the API response is successful.
-        self.ext_id_info = ext_id_info
-        # Indicates whether the verification passed. Valid values:
-        # 
+        # The detailed verification results from the data source are described as follows (using the Indonesian data source as an example):
+        # - **govId, fullName, dob**: A comparison score equal to 1.0 indicates a complete match with the official data source. A score lower than 1.0 indicates a mismatch. 
+        # - **selfiePhoto**: A comparison score greater than 0.8 indicates a match with the official data source. A score equal to or lower than 0.8 indicates a mismatch. 
+        # - **liveness**: A score higher than 0.95 indicates a liveness detection risk. 
+        # - **imgManipulationScore**: A score higher than 0.95 indicates an image tampering risk.
+        self.ext_source_info = ext_source_info
+        # Indicates whether the verification is passed. Valid values:
         # - Y: passed.
         # - N: not passed.
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code
-        # The unique identifier of the verification request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -90,8 +93,8 @@ class DocOcrMaxV2ResponseBodyResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.ext_id_info is not None:
-            result['ExtIdInfo'] = self.ext_id_info
+        if self.ext_source_info is not None:
+            result['ExtSourceInfo'] = self.ext_source_info
 
         if self.passed is not None:
             result['Passed'] = self.passed
@@ -106,8 +109,8 @@ class DocOcrMaxV2ResponseBodyResult(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ExtIdInfo') is not None:
-            self.ext_id_info = m.get('ExtIdInfo')
+        if m.get('ExtSourceInfo') is not None:
+            self.ext_source_info = m.get('ExtSourceInfo')
 
         if m.get('Passed') is not None:
             self.passed = m.get('Passed')

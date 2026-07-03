@@ -18,7 +18,7 @@ class FaceCompareV2Request(DaraModel):
         target_face_picture_url: str = None,
     ):
         # Specifies whether to enable quality check for the input face images.
-        # >Danger: Deprecated.
+        # >Danger: Deprecated.</danger>.
         self.face_picture_quality_check = face_picture_quality_check
         # Specifies whether to enable face quality check.
         self.face_quality_check = face_quality_check

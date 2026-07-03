@@ -116,6 +116,10 @@ from ._id_2meta_period_verify_intl_response import Id2MetaPeriodVerifyIntlRespon
 from ._id_2meta_verify_intl_request import Id2MetaVerifyIntlRequest
 from ._id_2meta_verify_intl_response_body import Id2MetaVerifyIntlResponseBody
 from ._id_2meta_verify_intl_response import Id2MetaVerifyIntlResponse
+from ._idn_authority_verify_intl_request import IdnAuthorityVerifyIntlRequest
+from ._idn_authority_verify_intl_advance_request import IdnAuthorityVerifyIntlAdvanceRequest
+from ._idn_authority_verify_intl_response_body import IdnAuthorityVerifyIntlResponseBody
+from ._idn_authority_verify_intl_response import IdnAuthorityVerifyIntlResponse
 from ._initialize_request import InitializeRequest
 from ._initialize_shrink_request import InitializeShrinkRequest
 from ._initialize_response_body import InitializeResponseBody
@@ -189,6 +193,7 @@ from ._face_verify_intl_response_body import FaceVerifyIntlResponseBodyResultExt
 from ._face_verify_intl_response_body import FaceVerifyIntlResponseBodyResult
 from ._id_2meta_period_verify_intl_response_body import Id2MetaPeriodVerifyIntlResponseBodyResult
 from ._id_2meta_verify_intl_response_body import Id2MetaVerifyIntlResponseBodyResult
+from ._idn_authority_verify_intl_response_body import IdnAuthorityVerifyIntlResponseBodyResult
 from ._initialize_response_body import InitializeResponseBodyResult
 from ._initialize_v2response_body import InitializeV2ResponseBodyResult
 from ._keepalive_intl_response_body import KeepaliveIntlResponseBodyResult
@@ -314,6 +319,10 @@ __all__ = [
     Id2MetaVerifyIntlRequest,
     Id2MetaVerifyIntlResponseBody,
     Id2MetaVerifyIntlResponse,
+    IdnAuthorityVerifyIntlRequest,
+    IdnAuthorityVerifyIntlAdvanceRequest,
+    IdnAuthorityVerifyIntlResponseBody,
+    IdnAuthorityVerifyIntlResponse,
     InitializeRequest,
     InitializeShrinkRequest,
     InitializeResponseBody,
@@ -387,6 +396,7 @@ __all__ = [
     FaceVerifyIntlResponseBodyResult,
     Id2MetaPeriodVerifyIntlResponseBodyResult,
     Id2MetaVerifyIntlResponseBodyResult,
+    IdnAuthorityVerifyIntlResponseBodyResult,
     InitializeResponseBodyResult,
     InitializeV2ResponseBodyResult,
     KeepaliveIntlResponseBodyResult,

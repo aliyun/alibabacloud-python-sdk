@@ -13,16 +13,16 @@ class FaceCompareResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceCompareResponseBodyResult = None,
     ):
-        # The response code.
+        # Response code.
         # 
-        # 200: The request was successful.
-        # Other values: An error occurred. For more information, see error codes.
+        # 200: Success.
+        # Other: Error code. For error code details, see Error Codes.
         self.code = code
-        # The response message.
+        # Response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # Response result.
         self.result = result
 
     def validate(self):
@@ -73,16 +73,16 @@ class FaceCompareResponseBodyResult(DaraModel):
         passed: str = None,
         transaction_id: str = None,
     ):
-        # The additional result information.
+        # Related result information
         self.ext_face_info = ext_face_info
-        # The comparison score between the submitted face image and the reference face image during verification. Value range: **0** to **100**.
+        # The comparison score between the submitted face photo and the reference face image during the authentication process. Value range: **0** to **100**.
         self.face_comparison_score = face_comparison_score
-        # Indicates whether the verification passed.
+        # Whether the authentication passed.
         # 
         # - Y: Passed.
         # - N: Not passed.
         self.passed = passed
-        # The unique ID of the verification request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -133,17 +133,27 @@ class FaceCompareResponseBodyResultExtFaceInfo(DaraModel):
         ka_occlusion_score: float = None,
         occlusion_score: float = None,
         sharpness_score: float = None,
+        target_face_quality_score: float = None,
+        target_illumination_score: float = None,
+        target_ka_occlusion_score: float = None,
+        target_occlusion_score: float = None,
+        target_sharpness_score: float = None,
     ):
-        # The overall quality score.
+        # Overall quality score
         self.face_quality_score = face_quality_score
-        # The illumination score.
+        # Illumination score
         self.illumination_score = illumination_score
-        # The key area occlusion score.
+        # Key area occlusion score
         self.ka_occlusion_score = ka_occlusion_score
-        # The occlusion score.
+        # Occlusion score
         self.occlusion_score = occlusion_score
-        # The sharpness score.
+        # Sharpness score
         self.sharpness_score = sharpness_score
+        self.target_face_quality_score = target_face_quality_score
+        self.target_illumination_score = target_illumination_score
+        self.target_ka_occlusion_score = target_ka_occlusion_score
+        self.target_occlusion_score = target_occlusion_score
+        self.target_sharpness_score = target_sharpness_score
 
     def validate(self):
         pass
@@ -168,6 +178,21 @@ class FaceCompareResponseBodyResultExtFaceInfo(DaraModel):
         if self.sharpness_score is not None:
             result['SharpnessScore'] = self.sharpness_score
 
+        if self.target_face_quality_score is not None:
+            result['TargetFaceQualityScore'] = self.target_face_quality_score
+
+        if self.target_illumination_score is not None:
+            result['TargetIlluminationScore'] = self.target_illumination_score
+
+        if self.target_ka_occlusion_score is not None:
+            result['TargetKaOcclusionScore'] = self.target_ka_occlusion_score
+
+        if self.target_occlusion_score is not None:
+            result['TargetOcclusionScore'] = self.target_occlusion_score
+
+        if self.target_sharpness_score is not None:
+            result['TargetSharpnessScore'] = self.target_sharpness_score
+
         return result
 
     def from_map(self, m: dict = None):
@@ -186,6 +211,21 @@ class FaceCompareResponseBodyResultExtFaceInfo(DaraModel):
 
         if m.get('SharpnessScore') is not None:
             self.sharpness_score = m.get('SharpnessScore')
+
+        if m.get('TargetFaceQualityScore') is not None:
+            self.target_face_quality_score = m.get('TargetFaceQualityScore')
+
+        if m.get('TargetIlluminationScore') is not None:
+            self.target_illumination_score = m.get('TargetIlluminationScore')
+
+        if m.get('TargetKaOcclusionScore') is not None:
+            self.target_ka_occlusion_score = m.get('TargetKaOcclusionScore')
+
+        if m.get('TargetOcclusionScore') is not None:
+            self.target_occlusion_score = m.get('TargetOcclusionScore')
+
+        if m.get('TargetSharpnessScore') is not None:
+            self.target_sharpness_score = m.get('TargetSharpnessScore')
 
         return self
 

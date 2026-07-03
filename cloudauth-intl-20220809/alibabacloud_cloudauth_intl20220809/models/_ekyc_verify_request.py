@@ -14,6 +14,7 @@ class EkycVerifyRequest(DaraModel):
         doc_type: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
+        face_quality_check: str = None,
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_url: str = None,
         id_threshold: str = None,
@@ -21,17 +22,17 @@ class EkycVerifyRequest(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to enable authoritative identity verification. This parameter is currently applicable only to second-generation ID cards in the Chinese mainland.
+        # Specifies whether to enable authoritative identity verification. This feature currently applies only to second-generation ID cards issued in the Chinese mainland.
         self.authorize = authorize
         # Specifies whether cropping is allowed. By default, cropping is not allowed. Valid values:
         # 
-        # - T: Detection is required.
-        # - F: Detection is required (default value: F).
+        # - T: Cropping is required.
+        # - F: Cropping is not required. This is the default value.
         self.crop = crop
-        # The real name of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: document key information (DocName and DocNo) or document images (IdOcrPictureBase64 or IdOcrPictureUrl).
-        # Note: The value must contain at least one Chinese character and no special characters, except for the middle dot (·) used in ethnic minority names.
+        # The real name of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: the key document information (DocName and DocNo) or the document image (IdOcrPictureBase64 or IdOcrPictureURL).
+        # Note: The value must contain at least one Chinese character and cannot contain special characters, except for the middle dot (·) used in ethnic minority names.
         self.doc_name = doc_name
-        # The document number of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: document key information (DocName and DocNo) or document images (IdOcrPictureBase64 or IdOcrPictureUrl).
+        # The document number of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: the key document information (DocName and DocNo) or the document image (IdOcrPictureBase64 or IdOcrPictureURL).
         # Note: The value is a combination of letters and digits up to 18 characters in length.
         self.doc_no = doc_no
         # The document type.
@@ -39,14 +40,15 @@ class EkycVerifyRequest(DaraModel):
         # The Base64-encoded face image.
         # 
         # Note:
-        # - If you use this method to submit the face image, check the image size and do not submit an excessively large image.
+        # - If you use this method to pass the face image, check the image size and do not pass an excessively large image.
         # - Specify either FacePictureBase64 or FacePictureUrl.
         self.face_picture_base_64 = face_picture_base_64
         # The URL of the face photo.
         self.face_picture_url = face_picture_url
+        self.face_quality_check = face_quality_check
         # The Base64-encoded document image.
         # Note:
-        # - If you use this method to submit the document image, check the image size and do not submit an excessively large image.
+        # - If you use this method to pass the document image, check the image size and do not pass an excessively large image.
         # - Specify either IdOcrPictureBase64 or IdOcrPictureUrl.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
         # The URL of the front side of the document image.
@@ -60,7 +62,7 @@ class EkycVerifyRequest(DaraModel):
         self.id_threshold = id_threshold
         # The merchant-defined unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # Your custom user ID, or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you mask this field value in advance, for example, by hashing the value.
+        # The custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you mask the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
         # The product code.
         self.product_code = product_code
@@ -93,6 +95,9 @@ class EkycVerifyRequest(DaraModel):
 
         if self.face_picture_url is not None:
             result['FacePictureUrl'] = self.face_picture_url
+
+        if self.face_quality_check is not None:
+            result['FaceQualityCheck'] = self.face_quality_check
 
         if self.id_ocr_picture_base_64 is not None:
             result['IdOcrPictureBase64'] = self.id_ocr_picture_base_64
@@ -136,6 +141,9 @@ class EkycVerifyRequest(DaraModel):
 
         if m.get('FacePictureUrl') is not None:
             self.face_picture_url = m.get('FacePictureUrl')
+
+        if m.get('FaceQualityCheck') is not None:
+            self.face_quality_check = m.get('FaceQualityCheck')
 
         if m.get('IdOcrPictureBase64') is not None:
             self.id_ocr_picture_base_64 = m.get('IdOcrPictureBase64')

@@ -1,3 +1,33 @@
+2026-07-03 Version: 3.21.0
+- Support API IdnAuthorityVerifyIntl.
+- Update API EkycVerify: add request parameters FaceQualityCheck.
+- Update API EkycVerifyV2: add request parameters FaceQualityCheck.
+- Update API FaceCompare: add response parameters Body.Result.ExtFaceInfo.TargetFaceQualityScore.
+- Update API FaceCompare: add response parameters Body.Result.ExtFaceInfo.TargetIlluminationScore.
+- Update API FaceCompare: add response parameters Body.Result.ExtFaceInfo.TargetKaOcclusionScore.
+- Update API FaceCompare: add response parameters Body.Result.ExtFaceInfo.TargetOcclusionScore.
+- Update API FaceCompare: add response parameters Body.Result.ExtFaceInfo.TargetSharpnessScore.
+- Update API FaceCompareV2: add response parameters Body.Result.ExtFaceInfo.TargetFaceQualityScore.
+- Update API FaceCompareV2: add response parameters Body.Result.ExtFaceInfo.TargetIlluminationScore.
+- Update API FaceCompareV2: add response parameters Body.Result.ExtFaceInfo.TargetKaOcclusionScore.
+- Update API FaceCompareV2: add response parameters Body.Result.ExtFaceInfo.TargetOcclusionScore.
+- Update API FaceCompareV2: add response parameters Body.Result.ExtFaceInfo.TargetSharpnessScore.
+- Update API FaceDuplicationCheckIntl: add response parameters Body.Result.ExtFaceInfo.FaceAttributeInfo.
+- Update API FaceDuplicationCheckIntl: add response parameters Body.Result.ExtFaceInfo.TargetFaceQualityScore.
+- Update API FaceDuplicationCheckIntl: add response parameters Body.Result.ExtFaceInfo.TargetIlluminationScore.
+- Update API FaceDuplicationCheckIntl: add response parameters Body.Result.ExtFaceInfo.TargetKaOcclusionScore.
+- Update API FaceDuplicationCheckIntl: add response parameters Body.Result.ExtFaceInfo.TargetOcclusionScore.
+- Update API FaceDuplicationCheckIntl: add response parameters Body.Result.ExtFaceInfo.TargetSharpnessScore.
+- Update API FaceLiveness: add response parameters Body.Result.ExtFaceInfo.FaceAttributeInfo.
+- Update API FaceLivenessV2: add response parameters Body.Result.ExtFaceInfo.FaceAttributeInfo.
+- Update API FaceVerifyIntl: add response parameters Body.Result.ExtFaceInfo.FaceAttributeInfo.
+- Update API FaceVerifyIntl: add response parameters Body.Result.ExtFaceInfo.TargetFaceQualityScore.
+- Update API FaceVerifyIntl: add response parameters Body.Result.ExtFaceInfo.TargetIlluminationScore.
+- Update API FaceVerifyIntl: add response parameters Body.Result.ExtFaceInfo.TargetKaOcclusionScore.
+- Update API FaceVerifyIntl: add response parameters Body.Result.ExtFaceInfo.TargetOcclusionScore.
+- Update API FaceVerifyIntl: add response parameters Body.Result.ExtFaceInfo.TargetSharpnessScore.
+
+
 2026-06-16 Version: 3.20.0
 - Support API DocOcrMaxV2.
 - Support API InitializeV2.

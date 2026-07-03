@@ -13,9 +13,13 @@ class InitializeV2ResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.InitializeV2ResponseBodyResult = None,
     ):
+        # The response code.
         self.code = code
+        # The response message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -66,9 +70,15 @@ class InitializeV2ResponseBodyResult(DaraModel):
         transaction_id: str = None,
         transaction_url: str = None,
     ):
+        # The client configuration.
         self.client_cfg = client_cfg
+        # The standard authentication encryption protocol.
+        # 
+        # > This field is required when you use iframe embedding for H5 web page integration.
         self.protocol = protocol
+        # The unique ID of the authentication request.
         self.transaction_id = transaction_id
+        # The web authentication URL.
         self.transaction_url = transaction_url
 
     def validate(self):

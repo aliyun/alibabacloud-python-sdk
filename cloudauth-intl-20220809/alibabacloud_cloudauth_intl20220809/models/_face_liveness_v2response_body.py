@@ -13,9 +13,13 @@ class FaceLivenessV2ResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceLivenessV2ResponseBodyResult = None,
     ):
+        # The return code.
         self.code = code
+        # The return message.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -66,9 +70,16 @@ class FaceLivenessV2ResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # The face result information.
         self.ext_face_info = ext_face_info
+        # Indicates whether the authentication is passed. Valid values:
+        # 
+        # - Y: passed.
+        # - N: not passed.
         self.passed = passed
+        # The sub-result code.
         self.sub_code = sub_code
+        # The unique ID of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -116,6 +127,7 @@ class FaceLivenessV2ResponseBodyResultExtFaceInfo(DaraModel):
         self,
         face_age: int = None,
         face_attack: str = None,
+        face_attribute_info: str = None,
         face_gender: str = None,
         face_quality_score: float = None,
         illumination_score: float = None,
@@ -124,14 +136,27 @@ class FaceLivenessV2ResponseBodyResultExtFaceInfo(DaraModel):
         occlusion_score: float = None,
         sharpness_score: float = None,
     ):
+        # The predicted reference age of the face. The prediction may fail and return no value.
         self.face_age = face_age
+        # The liveness detection result. Valid values: Y (attack detected) and N (Normal).
         self.face_attack = face_attack
+        self.face_attribute_info = face_attribute_info
+        # The predicted gender of the face image. The prediction may fail and return no value. Valid values:
+        # 
+        # - M: male.
+        # - F: female.
         self.face_gender = face_gender
+        # The quality score of the liveness face. Valid values: 0 to 100. A higher value indicates better quality.
         self.face_quality_score = face_quality_score
+        # The algorithm score for illumination as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
         self.illumination_score = illumination_score
+        # The algorithm score for key area occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
         self.ka_occlusion_score = ka_occlusion_score
+        # Indicates whether facial occlusion is detected. A value of Y indicates occlusion is detected. A value of N indicates no occlusion is detected.
         self.occlusion_result = occlusion_result
+        # The algorithm score for occlusion as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
         self.occlusion_score = occlusion_score
+        # The algorithm score for image sharpness as a quality sub-dimension. Valid values: 0 to 100. A higher value indicates better quality.
         self.sharpness_score = sharpness_score
 
     def validate(self):
@@ -147,6 +172,9 @@ class FaceLivenessV2ResponseBodyResultExtFaceInfo(DaraModel):
 
         if self.face_attack is not None:
             result['FaceAttack'] = self.face_attack
+
+        if self.face_attribute_info is not None:
+            result['FaceAttributeInfo'] = self.face_attribute_info
 
         if self.face_gender is not None:
             result['FaceGender'] = self.face_gender
@@ -178,6 +206,9 @@ class FaceLivenessV2ResponseBodyResultExtFaceInfo(DaraModel):
 
         if m.get('FaceAttack') is not None:
             self.face_attack = m.get('FaceAttack')
+
+        if m.get('FaceAttributeInfo') is not None:
+            self.face_attribute_info = m.get('FaceAttributeInfo')
 
         if m.get('FaceGender') is not None:
             self.face_gender = m.get('FaceGender')
