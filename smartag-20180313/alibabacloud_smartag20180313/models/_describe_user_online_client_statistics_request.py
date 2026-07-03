@@ -29,6 +29,8 @@ class DescribeUserOnlineClientStatisticsRequest(DaraModel):
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
+        # The usernames. You can query up to 50 users at a time. Separate multiple usernames with commas (,).
+        # 
         # This parameter is required.
         self.user_names = user_names
 

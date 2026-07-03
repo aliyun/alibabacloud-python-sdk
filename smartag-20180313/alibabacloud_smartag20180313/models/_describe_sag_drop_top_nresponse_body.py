@@ -13,9 +13,9 @@ class DescribeSagDropTopNResponseBody(DaraModel):
         drop_top_n: List[main_models.DescribeSagDropTopNResponseBodyDropTopN] = None,
         request_id: str = None,
     ):
-        # The information about packets dropped by the SAG instance.
+        # The list of packet loss information about Smart Access Gateway instances.
         self.drop_top_n = drop_top_n
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,13 +60,13 @@ class DescribeSagDropTopNResponseBodyDropTopN(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The packet loss rate of the SAG instance. Unit: packets per second (PPS).
+        # The packet loss rate of the Smart Access Gateway instance. Unit: pps.
         self.drop_rate = drop_rate
-        # The ID of the SAG instance.
+        # The ID of the Smart Access Gateway instance.
         self.instance_id = instance_id
-        # The name of the SAG instance.
+        # The name of the Smart Access Gateway instance.
         self.name = name
-        # The ID of the region where the SAG instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
 
     def validate(self):

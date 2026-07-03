@@ -15,13 +15,13 @@ class ListDpiGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the application group.
+        # The list of application groups.
         self.dpi_group = dpi_group
-        # The token returned for the next query.
+        # The token for the next page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of application groups returned.
         self.total_count = total_count
 
     def validate(self):
@@ -82,9 +82,9 @@ class ListDpiGroupsResponseBodyDpiGroup(DaraModel):
         self.dpi_group_id = dpi_group_id
         # The name of the application group.
         self.dpi_group_name = dpi_group_name
-        # The earliest version of engine that supports the application group.
+        # The minimum version of the deep packet inspection (DPI) engine that supports the application group.
         self.min_engine_version = min_engine_version
-        # The earliest version of signature database that supports the application group.
+        # The minimum version of the signature database that supports the application group.
         self.min_signature_db_version = min_signature_db_version
 
     def validate(self):

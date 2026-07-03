@@ -20,23 +20,23 @@ class DescribeSmartAccessGatewayClientUsersRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of entries per page when paging is used. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the SAG app instance is deployed.
+        # The region ID of the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG app instance.
+        # The instance ID of the Smart Access Gateway app.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The email address of the client account.
+        # The email address of the client.
         self.user_mail = user_mail
-        # The username of the client account.
+        # The username of the client.
         self.user_name = user_name
 
     def validate(self):

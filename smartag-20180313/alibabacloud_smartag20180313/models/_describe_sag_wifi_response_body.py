@@ -23,38 +23,47 @@ class DescribeSagWifiResponseBody(DaraModel):
     ):
         # The authentication type. Valid values:
         # 
-        # *   **NONE**: authentication is disabled.
-        # *   **WPA-PSK**: WPA-PSK authentication is enabled.
-        # *   **WPA2-PSK**: WPA2-PSK authentication is enabled.
+        # - **NONE**: authentication is disabled.
+        # 
+        # - **WPA-PSK**: WPA-PSK authentication is enabled.
+        # 
+        # - **WPA2-PSK**: WPA2-PSK authentication is enabled.
         self.authentication_type = authentication_type
         # The bandwidth of the Wi-Fi channel. Valid values:
         # 
-        # *   **Automatic**
-        # *   **20 HMz**
-        # *   **40 MHz**
+        # - **Automatic**
+        # 
+        # - **20 HMz**
+        # 
+        # - **40 MHz**
         self.bandwidth = bandwidth
         # The Wi-Fi channel.
         self.channel = channel
         # The encryption algorithm.
         # 
-        # *   **AUTO**: automatically selects the encryption algorithm.
-        # *   **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
-        # *   **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
+        # - **AUTO**: automatically selects the encryption algorithm.
+        # 
+        # - **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
+        # 
+        # - **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
         self.encrypt_algorithm = encrypt_algorithm
         # Indicates whether wireless security is enabled.
         # 
-        # *   **True**: wireless security is enabled.
-        # *   **False**: wireless security is disabled.
+        # - **True**: wireless security is enabled.
+        # 
+        # - **False**: wireless security is disabled.
         self.is_auth = is_auth
         # Indicates whether broadcast over Wi-Fi is enabled. Valid values:
         # 
-        # *   **True**: broadcast is enabled.
-        # *   **False**: broadcast is disabled.
+        # - **True**: broadcast is enabled.
+        # 
+        # - **False**: broadcast is disabled.
         self.is_broadcast = is_broadcast
         # Indicates whether wireless connections are enabled. Valid values:
         # 
-        # *   **True**: wireless connections are enabled.
-        # *   **False**: wireless connections are disabled.
+        # - **True**: wireless connections are enabled.
+        # 
+        # - **False**: wireless connections are disabled.
         self.is_enable = is_enable
         # The ID of the request.
         self.request_id = request_id
@@ -161,15 +170,23 @@ class DescribeSagWifiResponseBodyTaskStates(DaraModel):
         self.error_message = error_message
         # The status of the query task. Valid values:
         # 
-        # *   **Initialized**: The query task has been initialized.
-        # *   **Offline**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will be dispatched after the SAG device is connected to Alibaba Cloud.
-        # *   **Succeed**: The query task has been dispatched.
-        # *   **Processing**: The query task is being dispatched.
-        # *   **VersionNotSupport**: The current version of the SAG device does not support query tasks.
-        # *   **BuildRequestError**: The SAG control system does not support query tasks.
-        # *   **HardwareError**: The query task failed to be dispatched due to device errors.
-        # *   **TaskNotExist**: The query task does not exist.
-        # *   **OfflineNotConfiged**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will not be dispatched after the device is connected to Alibaba Cloud.
+        # - **Initialized**: The query task has been initialized.
+        # 
+        # - **Offline**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will be dispatched after the SAG device is connected to Alibaba Cloud.
+        # 
+        # - **Succeed**: The query task has been dispatched.
+        # 
+        # - **Processing**: The query task is being dispatched.
+        # 
+        # - **VersionNotSupport**: The current version of the SAG device does not support query tasks.
+        # 
+        # - **BuildRequestError**: The SAG control system does not support query tasks.
+        # 
+        # - **HardwareError**: The query task failed to be dispatched due to device errors.
+        # 
+        # - **TaskNotExist**: The query task does not exist.
+        # 
+        # - **OfflineNotConfiged**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will not be dispatched after the device is connected to Alibaba Cloud.
         self.state = state
 
     def validate(self):

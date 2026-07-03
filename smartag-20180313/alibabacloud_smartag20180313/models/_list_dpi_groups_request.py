@@ -19,21 +19,27 @@ class ListDpiGroupsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The application group ID.
+        # 
+        # You can query information about one or more application groups by specifying their IDs. You can query up to 10 application groups at a time.
         self.dpi_group_ids = dpi_group_ids
+        # The application group name.
+        # 
+        # You can query information about one or more application groups by specifying their names. You can query up to 10 application groups at a time.
         self.dpi_group_names = dpi_group_names
-        # The number of entries to return on each page.
+        # The number of application groups to return on each page.
         # 
         # Valid values: **1** to **100**.
         # 
         # Default value: **20**.
         self.max_results = max_results
-        # The token used to query the next page.
+        # The token for the next page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the application groups belong.
+        # The region ID.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) to query the most recent region list.
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions and their IDs that Smart Access Gateway supports.
         # 
         # This parameter is required.
         self.region_id = region_id

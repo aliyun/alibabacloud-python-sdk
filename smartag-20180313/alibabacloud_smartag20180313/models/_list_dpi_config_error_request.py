@@ -14,30 +14,28 @@ class ListDpiConfigErrorRequest(DaraModel):
         rule_instance_id: str = None,
         smart_agid: str = None,
     ):
-        # The type of the instance for which the DPI feature is configured. Valid values:
+        # The type of instance for which the DPI feature is configured:
         # 
-        # *   **acl**
-        # *   **qos**
+        # - **acl**: a Resource Access Management instance.
+        # - **qos**: a QoS policy instance.
         # 
         # This parameter is required.
         self.dpi_config_type = dpi_config_type
-        # The maximum number of entries to return on each page.
+        # The maximum number of configuration errors to return on each page.
         # 
         # Valid values: **1** to **100**.
         # 
         # Default value: **10**.
         self.max_results = max_results
-        # The token that is used to query the next page.
+        # The token for the next page of results.
         self.next_token = next_token
-        # The region ID of the SAG instance.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+        # The ID of the region where the Smart Access Gateway instance is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions and their IDs that Smart Access Gateway supports.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the instance for which the DPI feature is configured.
         self.rule_instance_id = rule_instance_id
-        # The ID of the SAG instance.
+        # The ID of the Smart Access Gateway instance.
         self.smart_agid = smart_agid
 
     def validate(self):

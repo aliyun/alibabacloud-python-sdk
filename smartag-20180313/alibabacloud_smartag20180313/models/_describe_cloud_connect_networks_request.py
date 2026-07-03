@@ -21,24 +21,25 @@ class DescribeCloudConnectNetworksRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeCloudConnectNetworksRequestTag] = None,
     ):
-        # The ID of the CCN instance.
+        # The ID of the CCN.
         self.ccn_id = ccn_id
-        # The name of the CCN instance.
+        # The name of the CCN.
         # 
-        # The name must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_),and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 100 characters long, start with a letter or a Chinese character, and can contain digits, underscores (_), periods (.), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: **10**. Maximum value: **50**.
         self.page_size = page_size
-        # The ID of the region where the CCN instances are deployed.
+        # The ID of the region where the CCN is located.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags to filter CCN instances.
         self.tag = tag
 
     def validate(self):
@@ -129,9 +130,9 @@ class DescribeCloudConnectNetworksRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is bound to the CCN instance.
+        # The tag key.
         self.key = key
-        # The value of the tag that is bound to the CCN instance.
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -27,9 +27,9 @@ class CreateHealthCheckRequest(DaraModel):
         src_port: int = None,
         type: str = None,
     ):
-        # The description of the health check.
+        # The description of the health check instance.
         # 
-        # The description must be 2 to 256 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The description must be 2 to 256 characters in length, and must start with a letter or a Chinese character. The description can contain digits, periods (.), underscores (_), and hyphens (-).
         self.description = description
         # The destination IP address of the health check.
         # 
@@ -37,29 +37,29 @@ class CreateHealthCheckRequest(DaraModel):
         self.dst_ip_addr = dst_ip_addr
         # The destination port of the health check.
         # 
-        # >  This parameter is not supported.
+        # > This feature is currently not supported.
         self.dst_port = dst_port
-        # The maximum number of failed probes before a health check is declared failed.
+        # The threshold for the number of consecutive probe failures.
         # 
-        # Valid values: **1 to 15**.
+        # Valid values: **1** to **15**.
         # 
         # Default value: **3**.
         self.fail_count_threshold = fail_count_threshold
-        # The name of the health check.
+        # The name of the health check instance.
         # 
-        # The name must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 100 characters in length, and must start with a letter or a Chinese character. The name can contain digits, periods (.), underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of probes performed per health check.
+        # The number of probes per health check.
         # 
         # Valid values: **1** to **20**.
         # 
         # Default value: **1**.
         self.probe_count = probe_count
-        # The time interval at which probes are performed. The next probe does not start before the current one is completed.
+        # The interval between health check probes. The next probe will not be initiated until the current probe is complete.
         # 
         # Valid values: **1000** to **60000**.
         # 
@@ -67,7 +67,7 @@ class CreateHealthCheckRequest(DaraModel):
         # 
         # Unit: milliseconds.
         self.probe_interval = probe_interval
-        # The timeout period of a probe.
+        # The timeout period for a single probe.
         # 
         # Valid values: **10** to **30000**.
         # 
@@ -75,41 +75,41 @@ class CreateHealthCheckRequest(DaraModel):
         # 
         # Unit: milliseconds.
         self.probe_timeout = probe_timeout
-        # The region ID of the SAG instance.
+        # The ID of the region where the Smart Access Gateway instance is deployed.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The number of times that the maximum RTT is exceeded before an alert is triggered.
+        # The number of times that the RTT threshold can be reached.
         # 
         # Valid values: **1** to **15**.
         # 
         # Default value: **3**.
         self.rtt_fail_threshold = rtt_fail_threshold
-        # The maximum round-trip time (RTT).
+        # The round-trip time (RTT) threshold.
         # 
-        # Valid values: **-1** and **1** to **5000**.
+        # Valid values: **-1** or **1** to **5000**.
         # 
-        # Default value: **-1**. This value indicates that the maximum RTT is not specified.
+        # Default value: **-1**, which indicates that no RTT threshold is set.
         # 
         # Unit: milliseconds.
         self.rtt_threshold = rtt_threshold
-        # The ID of the SAG instance.
+        # The ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The source IP address of the health check.
+        # The source IP address of the health check instance.
         # 
         # This parameter is required.
         self.src_ip_addr = src_ip_addr
         # The source port of the health check.
         # 
-        # >  This parameter is not supported.
+        # > This feature is currently not supported.
         self.src_port = src_port
-        # The type of packets used in the health check.
+        # The type of health check packets.
         # 
-        # >  Only **ICMP_ECHO** is supported.
+        # > Only **ICMP_ECHO** is supported.
         # 
         # This parameter is required.
         self.type = type

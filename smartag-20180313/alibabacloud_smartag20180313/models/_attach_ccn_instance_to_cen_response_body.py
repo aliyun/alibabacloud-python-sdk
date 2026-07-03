@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ModifyClientUserDNSResponseBody(DaraModel):
+class AttachCcnInstanceToCenResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

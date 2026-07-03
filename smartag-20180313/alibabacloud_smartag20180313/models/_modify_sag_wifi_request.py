@@ -26,15 +26,19 @@ class ModifySagWifiRequest(DaraModel):
     ):
         # The authentication type. Valid values:
         # 
-        # *   **NONE**
-        # *   **WPA-PSK**
-        # *   **WPA2-PSK**
+        # - **NONE**
+        # 
+        # - **WPA-PSK**
+        # 
+        # - **WPA2-PSK**
         self.authentication_type = authentication_type
         # The bandwidth of the channel. Valid values:
         # 
-        # *   **Automatic**
-        # *   **20 MHz**
-        # *   **40 MHz**
+        # - **Automatic**
+        # 
+        # - **20 MHz**
+        # 
+        # - **40 MHz**
         self.bandwidth = bandwidth
         # The Wi-Fi channel.
         # 
@@ -42,26 +46,31 @@ class ModifySagWifiRequest(DaraModel):
         self.channel = channel
         # The encryption algorithm. Valid values:
         # 
-        # *   **AUTO**: automatically selects the encryption algorithm.
-        # *   **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
-        # *   **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
+        # - **AUTO**: automatically selects the encryption algorithm.
+        # 
+        # - **TKIP**: uses the Temporal Key Integrity Protocol (TKIP).
+        # 
+        # - **AES**: uses the Advanced Encryption Standard authorized by Wi-Fi®.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether wireless security is enabled. Valid values:
         # 
-        # *   **true**: enables wireless security.
-        # *   **False**: disables wireless security.
+        # - **true**: enables wireless security.
+        # 
+        # - **False**: disables wireless security.
         self.is_auth = is_auth
         # Specifies whether broadcast over Wi-Fi is enabled. Valid values:
         # 
-        # *   **true**: enables broadcast.
-        # *   **False**: disables broadcast.
+        # - **true**: enables broadcast.
         # 
-        # >  Only after you enable broadcast, terminals that support wireless connections can search the Wi-Fi network by its SSID and receive Wi-Fi signals.
+        # - **False**: disables broadcast.
+        # 
+        # > Only after you enable broadcast, terminals that support wireless connections can search the Wi-Fi network by its SSID and receive Wi-Fi signals.
         self.is_broadcast = is_broadcast
         # Specifies whether Wi-Fi is enabled. Valid values:
         # 
-        # *   **true**: enables Wi-Fi.
-        # *   **False**: disables Wi-Fi.
+        # - **true**: enables Wi-Fi.
+        # 
+        # - **False**: disables Wi-Fi.
         # 
         # This parameter is required.
         self.is_enable = is_enable

@@ -18,17 +18,26 @@ class ModifyClientUserDNSRequest(DaraModel):
         resource_owner_id: int = None,
         smart_agid: str = None,
     ):
+        # The IP addresses of the primary and secondary DNS servers that the client uses when it connects to a private network.
+        # 
+        # > - If the client uses PrivateZone to access Alibaba Cloud, the DNS server IP addresses are 100.100.2.136 and 100.100.2.138.
+        # 
+        # - DNS configuration is supported only on Android and macOS clients, version 2.1.1 or later.
+        # - This parameter is optional. If you do not specify this parameter, the system deletes the existing DNS configuration.
         self.app_dns = app_dns
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The IP addresses of the primary and secondary DNS servers to use after the client disconnects from the private network.
+        # 
+        # > This feature is not yet available.
         self.recovered_dns = recovered_dns
-        # The ID of the region where the SAG app instance is deployed.
+        # The region ID of the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG app instance.
+        # The ID of the Smart Access Gateway app instance.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid

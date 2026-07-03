@@ -13,7 +13,7 @@ class DescribeSagOnlineClientStatisticsResponseBody(DaraModel):
         request_id: str = None,
         sag_statistics: main_models.DescribeSagOnlineClientStatisticsResponseBodySagStatistics = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.sag_statistics = sag_statistics
 

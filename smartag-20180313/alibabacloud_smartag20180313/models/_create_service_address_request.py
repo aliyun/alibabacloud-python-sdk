@@ -13,25 +13,25 @@ class CreateServiceAddressRequest(DaraModel):
         sag_id: str = None,
         sn: str = None,
     ):
-        # The service address. Example: **192.168.1.1**.
+        # The service address of the Smart Access Gateway instance. Example: **192.168.1.1**.
         # 
         # This parameter is required.
         self.address = address
-        # The type of service address. Set the value to **ProbeTask**.
+        # The service address type of the Smart Access Gateway instance. Set the value to **ProbeTask**.
         # 
         # This parameter is required.
         self.address_type = address_type
-        # The region ID of the SAG instance.
+        # The region ID of the Smart Access Gateway instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.sag_id = sag_id
-        # The serial number of the SAG device.
+        # The serial number of the Smart Access Gateway device.
         # 
         # This parameter is required.
         self.sn = sn

@@ -13,12 +13,25 @@ class ViewSmartAccessGatewayPortRouteProtocolRequest(DaraModel):
         sag_ins_id: str = None,
         sag_sn: str = None,
     ):
+        # Specifies whether to query only the Smart Access Gateway instances that belong to other accounts. Valid values:
+        # 
+        # - **false** (default): No.
+        # - **true**: Yes.
         self.cross_account = cross_account
+        # The ID of the region where the Smart Access Gateway instance is deployed.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to obtain the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud account to which the Smart Access Gateway instance belongs.
         self.resource_uid = resource_uid
+        # The ID of the Smart Access Gateway instance.
+        # 
         # This parameter is required.
         self.sag_ins_id = sag_ins_id
+        # The serial number (SN) of the Smart Access Gateway device.
+        # 
         # This parameter is required.
         self.sag_sn = sag_sn
 

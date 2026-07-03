@@ -55,93 +55,95 @@ class DescribeSmartAccessGatewayAttributeResponseBody(DaraModel):
         user_count: int = None,
         vpn_status: str = None,
     ):
-        # The maximum bandwidth value for application acceleration. Unit: Mbit/s.
+        # The peak bandwidth of application acceleration for the SAG instance. Unit: Mbit/s.
         self.accelerate_bandwidth = accelerate_bandwidth
-        # The ID of the access point for the SAG instance.
+        # The ID of the access point of the SAG instance.
         self.access_point_id = access_point_id
         self.acl_ids = acl_ids
-        # The status of the bandwidth plan for application acceleration. Valid value:
+        # The status of the application acceleration bandwidth package instance.
         # 
-        # *   **Abnormal**: abnormal
-        # *   **Normal**: normal
+        # - **Abnormal**: Abnormal.
+        # - **Normal**: Normal.
         self.application_bandwidth_package_bussiness_status = application_bandwidth_package_bussiness_status
-        # The ID of the bandwidth plan for application acceleration that is associated with the SAG instance.
+        # The ID of the application acceleration bandwidth package associated with the SAG instance.
         self.application_bandwidth_package_id = application_bandwidth_package_id
-        # The name of the bandwidth plan for application acceleration that is associated with the SAG instance.
+        # The name of the application acceleration bandwidth package associated with the SAG instance.
         self.application_bandwidth_package_name = application_bandwidth_package_name
-        # Indicates whether the bandwidth plan is locked.
+        # The lock information of the application acceleration bandwidth package instance.
         self.application_bandwidth_package_operation_locks = application_bandwidth_package_operation_locks
-        # The ID of the Cloud Connect Network (CCN) instance with which the SAG instance is associated.
+        # The ID of the CCN instance associated with the SAG instance.
         self.associated_ccn_id = associated_ccn_id
-        # The ID of the Cloud Connect Network (CCN) instance with which the SAG instance is associated.
+        # The name of the Cloud Connect Network (CCN) instance associated with the SAG instance.
         self.associated_ccn_name = associated_ccn_name
         # The public IP address of the standby SAG device.
         self.backup_box_controller_ip = backup_box_controller_ip
-        # The public IP address of the active SAG device.
+        # The public IP address of the primary SAG device.
         self.box_controller_ip = box_controller_ip
-        # The private CIDR block of the destination network with which the on-premises network or client needs to communicate.
+        # The private CIDR block used for communication between the on-premises network or clients and the cloud.
         self.cidr_block = cidr_block
-        # The ID of the city where the SAG device is deployed.
+        # The ID of the city where the SAG device is located.
         self.city = city
-        # The timestamp when the SAG instance was created.
+        # The creation timestamp of the SAG instance.
         self.create_time = create_time
-        # The data transfer plan of the SAG instance. Unit: GB.
+        # The data plan of the SAG instance. Unit: GB.
         # 
-        # >  Each client account has a data transfer plan free of charge for 5 GB each month.
+        # > Currently, only 5 GB of complimentary data traffic is provided for each account per month.
         self.data_plan = data_plan
         # The description of the SAG instance.
         self.description = description
         self.devices = devices
-        # Indicates whether the transmission optimization feature is enabled.
+        # Indicates whether the optimized retransmission feature is enabled for the SAG instance.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enable_optimization = enable_optimization
-        # Indicates whether the audit log for connections to the SAG app instance is enabled. Valid values:
+        # Indicates whether connection log auditing is enabled for the SAG APP instance. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # - **true**: Connection log auditing is enabled for the SAG APP instance.
+        # 
+        # - **false**: Connection log auditing is disabled for the SAG APP instance.
         self.enable_software_connection_audit = enable_software_connection_audit
-        # The timestamp when the SAG instance expires.
+        # The expiration timestamp of the SAG instance.
         self.end_time = end_time
         self.flow_log_ids = flow_log_ids
         self.irids = irids
-        # The type of the SAG instance. Valid values:
+        # The type of the SAG instance.
         # 
-        # *   **sag-1000**: indicates an SAG CPE instance and the instance is associated with an SAG-1000 device.
-        # *   **sag-10wm**: indicates an SAG CPE instance and the instance is associated with an SAG-100WM device.
-        # *   **sag-software**: indicates an SAG app instance.
-        # *   **sag-vcpe**: an SAG vCPE instance.
+        # - **sag-1000**: The instance is a hardware SAG instance with a SAG-1000 device.
+        # - **sag-10wm**: The instance is a hardware SAG instance with a SAG-100WM device.
+        # - **sag-software**: The instance is an SAG APP instance.
+        # - **sag-vcpe**: The instance is an SAG vCPE instance.
         self.instance_type = instance_type
-        # The status of the IPsec-VPN connection. Valid values:
+        # The status of the IPsec-VPN connection.
         # 
-        # *   **up**: normal
-        # *   **down**: abnormal
+        # - **up**: The IPsec-VPN connection is normal.
+        # - **down**: The IPsec-VPN connection is abnormal.
         self.ipsec_status = ipsec_status
         self.links = links
-        # The maximum bandwidth value of the SAG instance. Unit: Mbit/s.
+        # The peak bandwidth of the SAG instance. Unit: Mbit/s.
         self.max_bandwidth = max_bandwidth
         # The name of the SAG instance.
         self.name = name
-        # The transmission optimization type of the SAG instance. If transmission optimization is enabled, the default value is **fec**.
+        # The optimized retransmission type of the SAG instance. After the optimized retransmission type is enabled, the default value is **fec**.
         self.optimization_type = optimization_type
-        # The location of the SAG instance.
+        # The location of the SAG device.
         self.position = position
         self.qos_ids = qos_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the instance provided by the third-party reseller.
+        # The ID of the reseller instance.
         self.reseller_instance_id = reseller_instance_id
-        # The ID of the third-party reseller.
+        # The ID of the reseller account.
         self.reseller_uid = reseller_uid
         # The ID of the resource group to which the SAG instance belongs.
         self.resource_group_id = resource_group_id
-        # The method that the SAG instance uses to advertise routes to Alibaba Cloud.
+        # The routing synchronization method of the SAG instance.
         # 
-        # *   **static**: static routing
-        # *   **dynamic**: dynamic routing
+        # - **static**: Static routing.
+        # 
+        # - **dynamic**: Dynamic routing.
         self.routing_strategy = routing_strategy
-        # The time threshold. If the SAG device remains disconnected for the specified period of time, the SAG device is locked.
+        # The time threshold for locking the SAG device when it goes offline.
         # 
         # Unit: seconds.
         self.security_lock_threshold = security_lock_threshold
@@ -149,28 +151,28 @@ class DescribeSmartAccessGatewayAttributeResponseBody(DaraModel):
         self.serial_number = serial_number
         # The ID of the SAG instance.
         self.smart_agid = smart_agid
-        # The status of the SAG instance. Valid values:
+        # The status of the SAG instance.
         # 
-        # *   **Ordered**: The order is to be shipped.
-        # *   **Delivered**: The SAG instance is shipped.
-        # *   **Received**: The SAG instance is activated.
-        # *   **Unconfirmed**: The SAG instance is to be confirmed.
-        # *   **Active**: The SAG instance is available.
-        # *   **Offline**: The SAG instance is disconnected.
-        # *   **Arrearage**: The SAG device is locked due to overdue payments.
+        # - **Ordered**: Pending delivery.
+        # - **Delivered**: Delivered.
+        # - **Received**: Activated.
+        # - **Unconfirmed**: Pending confirmation.
+        # - **Active**: Available.
+        # - **Offline**: Offline.
+        # - **Arrearage**: Locked due to overdue payment.
         self.status = status
-        # The serial number of the active SAG device.
+        # The serial number of the SAG device that is currently responsible for transmitting traffic.
         self.traffic_master_sn = traffic_master_sn
-        # The maximum upstream bandwidth of 4G network connections established by the SAG device. Unit: Mbit/s.
+        # The maximum upstream bandwidth of the 4G public network for the SAG device. Unit: Mbit/s.
         self.up_bandwidth_4g = up_bandwidth_4g
-        # The maximum upstream bandwidth of network connections established on the WAN port of the SAG device. Unit: Mbit/s.
+        # The maximum upstream bandwidth of the WAN port for the SAG device. Unit: Mbit/s.
         self.up_bandwidth_wan = up_bandwidth_wan
-        # The number of client accounts on the SAG instance.
+        # The number of client accounts of the SAG instance.
         self.user_count = user_count
-        # The status of the VPN connection. Valid values:
+        # The status of the aliVPN connection.
         # 
-        # *   **up**: normal
-        # *   **down**: abnormal
+        # - **up**: The aliVPN connection is normal.
+        # - **down**: The aliVPN connection is abnormal.
         self.vpn_status = vpn_status
 
     def validate(self):
@@ -802,9 +804,9 @@ class DescribeSmartAccessGatewayAttributeResponseBodyApplicationBandwidthPackage
         lock_reason: str = None,
         lock_type: str = None,
     ):
-        # The reason why the instance was locked.
+        # The reason for the lock.
         self.lock_reason = lock_reason
-        # The lock mode of the instance. The value is set to **FinancialLocked**.
+        # The lock type. Valid value: **FinancialLocked**.
         self.lock_type = lock_type
 
     def validate(self):

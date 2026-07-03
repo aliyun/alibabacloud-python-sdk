@@ -18,27 +18,27 @@ class DescribeACLsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the ACL.
+        # The access control instance ID.
         # 
-        # *   If you want to query multiple ACLs at the same time, separate the ACL IDs with commas (,).
-        # *   If you do not set this parameter, all ACLs in the specified region are queried.
+        # - To query multiple access control instances simultaneously, separate multiple instance IDs with commas (,).
+        # - If this parameter is not specified, information about all access control instances in the current region is queried.
         self.acl_ids = acl_ids
-        # The type of the SAG instance associated with the ACL. Valid values:
+        # The type of Smart Access Gateway (SAG) instance that the access control instance can be associated with. Valid values:
         # 
-        # *   **acl-hardware**: SAG CPE instance
-        # *   **acl-software**: SAG app instance
+        # - **acl-hardware**: SAG hardware instance.
+        # - **acl-software**: SAG app instance.
         self.acl_type = acl_type
-        # The name of the ACL.
+        # The name of the access control instance.
         # 
-        # The name must be 2 to 100 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 100 characters in length and must start with an uppercase letter, lowercase letter, or Chinese character. The name can contain digits, underscores (_), periods (.), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paginated query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region where the ACL is deployed.
+        # The region ID of the access control instance.
         # 
         # This parameter is required.
         self.region_id = region_id

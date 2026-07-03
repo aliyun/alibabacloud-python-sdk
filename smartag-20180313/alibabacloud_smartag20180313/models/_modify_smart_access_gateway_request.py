@@ -31,8 +31,9 @@ class ModifySmartAccessGatewayRequest(DaraModel):
         self.description = description
         # Specifies whether to audit the network connection logs of the SAS app instance.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.enable_software_connection_audit = enable_software_connection_audit
         # The name of the SAG instance.
         # 
@@ -50,8 +51,9 @@ class ModifySmartAccessGatewayRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The policy that is used to advertise routes to Alibaba Cloud. Valid values:
         # 
-        # *   **static**: static routing
-        # *   **dynamic**: dynamic routing
+        # - **static**: static routing
+        # 
+        # - **dynamic**: dynamic routing
         self.routing_strategy = routing_strategy
         # The time during which the disconnected SAG instance remains locked. Valid values: an integer that is greater than or equal to 0.
         # 

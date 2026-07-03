@@ -18,23 +18,23 @@ class DescribeSagExpressConnectInterfaceListRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the Express Connect circuit port.
+        # The name of the dedicated connection port.
         # 
         # This parameter is required.
         self.port_name = port_name
-        # The ID of the region where the Smart Access Gateway (SAG) instance is deployed.
+        # The region ID of the Smart Access Gateway instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) to query the regions supported by Smart Access Gateway and the corresponding region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid
-        # The serial number of the SAG device associated with the SAG instance.
+        # The serial number of the associated Smart Access Gateway device.
         # 
         # This parameter is required.
         self.smart_agsn = smart_agsn

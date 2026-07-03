@@ -16,15 +16,15 @@ class DescribeFlowLogSagsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID of the flow log.
+        # The flow log instance ID.
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the SAG instance list. Minimum value: **1**. Default value: **1**
+        # The page number of the query list. Minimum value: **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in the case of a paged query result. Maximum value: **50**. Default value: **10**
+        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region to which the flow log belongs.
+        # The region ID of the flow log.
         # 
         # This parameter is required.
         self.region_id = region_id

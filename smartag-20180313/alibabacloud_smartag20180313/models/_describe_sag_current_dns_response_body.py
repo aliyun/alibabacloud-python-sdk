@@ -13,7 +13,7 @@ class DescribeSagCurrentDnsResponseBody(DaraModel):
     ):
         # The IP address of the primary DNS server.
         self.master_dns = master_dns
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The IP address of the secondary DNS server.
         self.slave_dns = slave_dns

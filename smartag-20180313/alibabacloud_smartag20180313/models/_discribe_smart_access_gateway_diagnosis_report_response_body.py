@@ -13,9 +13,9 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBody(DaraModel):
         diagnose_result: main_models.DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResult = None,
         request_id: str = None,
     ):
-        # The diagnosis report of the SAG device.
+        # The diagnosis report of the Smart Access Gateway device.
         self.diagnose_result = diagnose_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,57 +69,57 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResult(DaraMo
         uid: str = None,
         user_level: str = None,
     ):
-        # The model of the SAG device.
+        # The type of the Smart Access Gateway device.
         # 
-        # *   **sag-1000**
-        # *   **sag-100WM**
+        # - **sag-1000**
+        # - **sag-100WM**
         self.box_type = box_type
-        # The version of the SAG device.
+        # The software version that runs on the Smart Access Gateway device.
         self.box_version = box_version
-        # The list of diagnoses that are returned.
+        # The list of diagnosis results.
         self.details = details
-        # The ID of the diagnosis.
+        # The diagnosis ID.
         self.diagnose_id = diagnose_id
-        # The timestamp when the system finishes diagnosing the item.
+        # The timestamp when the diagnosis ended.
         self.end_time = end_time
-        # The number of items that are diagnosed.
+        # The number of completed diagnosis items.
         self.finished_number = finished_number
-        # The ID of the SAG instance.
+        # The ID of the Smart Access Gateway instance.
         self.instance_id = instance_id
-        # The diagnosis level.
+        # The diagnosis result level.
         self.level = level
-        # The version of the monitoring feature that is used by the SAG device.
+        # The monitoring version used by the Smart Access Gateway device.
         self.monitor_version = monitor_version
         # The completion percentage of the diagnosis report.
         self.percent = percent
-        # The status of the diagnosis report to be uploaded to Log Service.
+        # The status of uploading the diagnosis report to SLS.
         # 
-        # *   **0**: The system failed to upload the report.
-        # *   **1**: The system has uploaded the report to Log Service.
+        # - **0**: The upload failed.
+        # - **1**: The upload was successful.
         self.report_slssuccess = report_slssuccess
-        # The serial number of the SAG device.
+        # The serial number of the Smart Access Gateway device.
         self.sn = sn
-        # The timestamp when the system starts to diagnose the item.
+        # The timestamp when the diagnosis started.
         self.start_time = start_time
-        # The diagnosis status. Valid values:
+        # The diagnosis state.
         # 
-        # *   **processing**: The SAG device is being diagnosed.
-        # *   **finished**: The SAG device is diagnosed.
-        # *   **failed**: The system failed to diagnose the SAG device.
-        # *   **error**: A diagnostic error occurred.
-        # *   **upload_to_sls_fail**: The system failed to upload the diagnosis report.
+        # - **processing**: The diagnosis is in progress.
+        # - **finished**: The diagnosis is successful.
+        # - **failed**: The diagnosis failed.
+        # - **error**: An error occurred during the diagnosis.
+        # - **upload_to_sls_fail**: The diagnosis report failed to be uploaded.
         self.state = state
-        # The overall diagnosis level.
+        # The overall statistics of diagnosis item results.
         self.statistics = statistics
         # The storage type.
         # 
-        # The value is set to **both**, which indicates that the data is stored in the SAG device and Log Service.
+        # Value: **both**, which indicates that the diagnosis report is stored on both the Smart Access Gateway device and in Log Service (SLS).
         self.store_type = store_type
-        # The total number of entries returned.
+        # The total number of diagnosis result entries.
         self.total_number = total_number
-        # The user ID (UID) of the Alibaba Cloud account to which the SAG instance belongs.
+        # The ID of the account to which the Smart Access Gateway instance belongs.
         self.uid = uid
-        # The type of user that initiated the diagnostics. The value is set to **user**.
+        # The type of user who initiated the diagnosis. Value: **user**.
         self.user_level = user_level
 
     def validate(self):
@@ -272,13 +272,13 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultStatist
         total: int = None,
         warning: int = None,
     ):
-        # The number of items of the **ERROR** level.
+        # The total number of diagnosis items with the **Error** severity level.
         self.error = error
-        # The number of items of the **INFO** level.
+        # The total number of diagnosis items with the **Info** severity level.
         self.info = info
-        # The total number of items.
+        # The total number of all diagnosis items.
         self.total = total
-        # The number of items of the **WARNING** level.
+        # The total number of diagnosis items with the **Warning** severity level.
         self.warning = warning
 
     def validate(self):
@@ -326,15 +326,15 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultLevel(D
         configuration: str = None,
         total: str = None,
     ):
-        # The diagnosis level of the service quality.
+        # The diagnosis result level for service quality.
         self.biz = biz
-        # The diagnosis level of the SAG configuration.
+        # The diagnosis result level for SAG configuration.
         self.configuration = configuration
-        # The overall diagnosis level.
+        # The overall diagnosis result level.
         # 
-        # *   **error**: severe
-        # *   **warning**: warning
-        # *   **info**: normal
+        # - **error**: Critical.
+        # - **warning**: Warning.
+        # - **info**: Normal.
         self.total = total
 
     def validate(self):
@@ -376,15 +376,15 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetails
         statistics: main_models.DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetailsStatistics = None,
         type: str = None,
     ):
-        # The list of items diagnosed.
+        # The list of detailed information about diagnosis items.
         self.items = items
-        # The information about items of each diagnosis level for the current diagnosis type.
+        # The statistics on the severity levels of diagnosis items under the current diagnosis type.
         self.statistics = statistics
-        # The type of the diagnosis. Valid values:
+        # The diagnosis type.
         # 
-        # *   **config**: SAG configuration
-        # *   **internet**: quality of connections to the Internet
-        # *   **biz**: service quality
+        # - **config**: SAG configuration.
+        # - **internet**: Internet quality.
+        # - **biz**: Service quality.
         self.type = type
 
     def validate(self):
@@ -438,13 +438,13 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetails
         total: int = None,
         warning: int = None,
     ):
-        # The number of items of the **ERROR** level.
+        # The number of diagnosis items with the **Error** severity level.
         self.error = error
-        # The number of items of the **INFO** level.
+        # The number of diagnosis items with the **Info** severity level.
         self.info = info
-        # The total number of items for the current diagnosis type.
+        # The total number of diagnosis items under the current diagnosis type.
         self.total = total
-        # The number of items of the **WARNING** level.
+        # The number of diagnosis items with the **Warning** severity level.
         self.warning = warning
 
     def validate(self):
@@ -496,27 +496,27 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetails
         start_time: int = None,
         type: str = None,
     ):
-        # The diagnosis report in Chinese.
+        # The diagnosis result in Chinese.
         self.cn = cn
-        # The diagnosis report in English.
+        # The diagnosis result in English.
         self.en = en
-        # The timestamp when the system finishes diagnosing the item.
+        # The timestamp when the diagnosis of the diagnosis item ended.
         self.end_time = end_time
-        # The name of the item, which is the unique identifier of the item.
+        # The name of the diagnosis item, which is the unique identifier of the diagnosis item.
         self.item_name = item_name
-        # The diagnosis level of the item. Valid values:
+        # The severity level of the diagnosis result for the diagnosis item.
         # 
-        # *   **error**: severe
-        # *   **warning**: warning
-        # *   **info**: normal
+        # - **error**: Critical.
+        # - **warning**: Warning.
+        # - **info**: Normal.
         self.level = level
-        # The timestamp when the system starts to diagnose the item.
+        # The timestamp when the diagnosis of the diagnosis item started.
         self.start_time = start_time
-        # The type of the item. Valid values:
+        # The diagnosis type to which the diagnosis item belongs.
         # 
-        # *   **config**: SAG configuration
-        # *   **internet**: quality of connections to the Internet
-        # *   **biz**: service quality
+        # - **config**: SAG configuration.
+        # - **internet**: Internet quality.
+        # - **biz**: Service quality.
         self.type = type
 
     def validate(self):
@@ -589,23 +589,23 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetails
         item_name: str = None,
         item_type: str = None,
     ):
-        # The suggestion for the diagnosis.
+        # The diagnosis suggestion.
         self.advice = advice
-        # The diagnosis.
+        # The diagnosis result.
         self.details = details
-        # The diagnosis level of the item. Valid values:
+        # The severity level of the diagnosis result for the diagnosis item.
         # 
-        # *   **ERROR**: indicates that the item has an issue that may affect your services. We recommend that you handle the issue at the earliest opportunity.
-        # *   **WARNING**: indicates that the item has an issue. You can handle the issue based on your business requirements.
-        # *   **INFO**: indicates that the item is working as expected. No additional operation is required.
+        # - **ERROR**: indicates that the issue of the diagnosis item may affect service running. We recommend that you handle the issue at the earliest opportunity.
+        # - **WARNING**: indicates that the diagnosis item has an issue. Handle the issue based on the suggestion.
+        # - **INFO**: indicates that the diagnosis item is running as expected. No action is required.
         self.item_level = item_level
-        # The name of the item.
+        # The name of the diagnosis item.
         self.item_name = item_name
-        # The type of the item. Valid values:
+        # The diagnosis type to which the diagnosis item belongs.
         # 
-        # *   **Config**: **SAG configuration**
-        # *   **Service**: **service quality**
-        # *   **Internet**: **quality of connections to the Internet**
+        # - **Config**: indicates the **SAG configuration** type.
+        # - **Service**: indicates the **service quality** type.
+        # - **Internet**: indicates the **Internet quality** type.
         self.item_type = item_type
 
     def validate(self):
@@ -661,23 +661,23 @@ class DiscribeSmartAccessGatewayDiagnosisReportResponseBodyDiagnoseResultDetails
         item_name: str = None,
         item_type: str = None,
     ):
-        # The suggestion for the diagnosis.
+        # The diagnosis suggestion.
         self.advice = advice
-        # The diagnosis.
+        # The diagnosis result.
         self.details = details
-        # The diagnosis level of the item. Valid values:
+        # The severity level of the diagnosis result for the diagnosis item.
         # 
-        # *   **ERROR**: indicates that the item has an issue that may affect your services. We recommend that you handle the issue at the earliest opportunity.
-        # *   **WARNING**: indicates that the item has an issue. You can handle the issue based on your business requirements.
-        # *   **INFO**: indicates that the item is working as expected. No additional operation is required.
+        # - **严重** (Critical): indicates that the issue of the diagnosis item may affect service running. We recommend that you handle the issue at the earliest opportunity.
+        # - **警告** (Warning): indicates that the diagnosis item has an issue. Handle the issue based on the suggestion.
+        # - **正常** (Normal): indicates that the diagnosis item is running as expected. No action is required.
         self.item_level = item_level
-        # The name of the item.
+        # The name of the diagnosis item.
         self.item_name = item_name
-        # The type of the item. Valid values:
+        # The diagnosis type to which the diagnosis item belongs.
         # 
-        # *   **Config**: **SAG configuration**
-        # *   **Service**: **service quality**
-        # *   **Internet**: **quality of connections to the Internet**
+        # - **配置** (Configuration): indicates the **SAG configuration** type.
+        # - **业务** (Service): indicates the **service quality** type.
+        # - **公网** (Internet): indicates the **Internet quality** type.
         self.item_type = item_type
 
     def validate(self):

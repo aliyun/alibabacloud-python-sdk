@@ -32,19 +32,21 @@ class ModifySagPortRouteProtocolRequest(DaraModel):
         self.region_id = region_id
         # The BGP autonomous system number (ASN) of the peer device.
         # 
-        # >  You must set this parameter when you enable BGP.
+        # > You must set this parameter when you enable BGP.
         self.remote_as = remote_as
         # The IP address of the peer device.
         # 
-        # >  You must set this parameter when you enable BGP.
+        # > You must set this parameter when you enable BGP.
         self.remote_ip = remote_ip
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The routing protocol. Valid values:
         # 
-        # *   **STATIC**: uses a static routing protocol.
-        # *   **OSPF**: uses the Open Shortest Path First protocol (OSPF).
-        # *   **BGP**: uses the Border Gateway Protocol (BGP).
+        # - **STATIC**: uses a static routing protocol.
+        # 
+        # - **OSPF**: uses the Open Shortest Path First protocol (OSPF).
+        # 
+        # - **BGP**: uses the Border Gateway Protocol (BGP).
         # 
         # This parameter is required.
         self.route_protocol = route_protocol

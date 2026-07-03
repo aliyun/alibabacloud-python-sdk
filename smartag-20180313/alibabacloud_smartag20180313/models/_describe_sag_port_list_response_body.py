@@ -86,15 +86,23 @@ class DescribeSagPortListResponseBodyTaskStates(DaraModel):
         self.error_message = error_message
         # Asynchronous task states:
         # 
-        # *   **Initialized**: The query task is initialized.
-        # *   **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. When the SAG device is connected to Alibaba Cloud, Alibaba Cloud continues to assign the query task to the SAG device.
-        # *   **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
-        # *   **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
-        # *   **VersionNotSupport**: not supported by the current version of the SAG device.
-        # *   **BuildRequestError**: not supported by the control and management center in the cloud.
-        # *   **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
-        # *   **TaskNotExist**: The query task does not exist.
-        # *   **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. When the SAG device is connected to Alibaba Cloud, Alibaba Cloud does not assign the query task to the SAG device.
+        # - **Initialized**: The query task is initialized.
+        # 
+        # - **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. When the SAG device is connected to Alibaba Cloud, Alibaba Cloud continues to assign the query task to the SAG device.
+        # 
+        # - **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
+        # 
+        # - **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
+        # 
+        # - **VersionNotSupport**: not supported by the current version of the SAG device.
+        # 
+        # - **BuildRequestError**: not supported by the control and management center in the cloud.
+        # 
+        # - **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
+        # 
+        # - **TaskNotExist**: The query task does not exist.
+        # 
+        # - **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. When the SAG device is connected to Alibaba Cloud, Alibaba Cloud does not assign the query task to the SAG device.
         self.state = state
 
     def validate(self):
@@ -149,17 +157,23 @@ class DescribeSagPortListResponseBodyPorts(DaraModel):
         self.port_name = port_name
         # Port role:
         # 
-        # *   **NONE**: No role is assigned to the port.
-        # *   **WAN**: The port is used as a WAN port. The WAN port supports a Dynamic Host Configuration Protocol (DHCP) client, PPPoE, or a static IP address to access the Internet.
-        # *   **LAN**: The port is used as a LAN port. The LAN port supports a DHCP server or a static IP address to connect to a local terminal or switch.
-        # *   **ECC**: The port is used as a leased line port to connect to a leased line.
-        # *   **MGT**: The port is used as the management port.
+        # - **NONE**: No role is assigned to the port.
+        # 
+        # - **WAN**: The port is used as a WAN port. The WAN port supports a Dynamic Host Configuration Protocol (DHCP) client, PPPoE, or a static IP address to access the Internet.
+        # 
+        # - **LAN**: The port is used as a LAN port. The LAN port supports a DHCP server or a static IP address to connect to a local terminal or switch.
+        # 
+        # - **ECC**: The port is used as a leased line port to connect to a leased line.
+        # 
+        # - **MGT**: The port is used as the management port.
         self.role = role
         # Port states:
         # 
-        # *   **Up**: The port is enabled.
-        # *   **Down**: The port is disabled.
-        # *   **Unavailable**: The SAG device is disconnected from Alibaba Cloud.
+        # - **Up**: The port is enabled.
+        # 
+        # - **Down**: The port is disabled.
+        # 
+        # - **Unavailable**: The SAG device is disconnected from Alibaba Cloud.
         self.status = status
 
     def validate(self):

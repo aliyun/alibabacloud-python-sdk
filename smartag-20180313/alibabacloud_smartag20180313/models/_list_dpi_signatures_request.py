@@ -22,21 +22,23 @@ class ListDpiSignaturesRequest(DaraModel):
     ):
         # The ID of the application group.
         self.dpi_group_id = dpi_group_id
+        # The application ID.
         self.dpi_signature_ids = dpi_signature_ids
+        # The application name.
         self.dpi_signature_names = dpi_signature_names
-        # The number of entries to return on each page.
+        # The number of applications to return on each page.
         # 
         # Valid values: **1** to **100**.
         # 
         # Default value: **20**.
         self.max_results = max_results
-        # The token used to query the next page.
+        # The token for the next page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the application or application group belongs.
+        # The region ID.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the regions and their IDs that are supported by SAG.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -17,7 +17,7 @@ class DeleteQosCarRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The instance ID of the QoS speed limiting rule.
+        # The instance ID of the QoS bandwidth throttling rule.
         # 
         # This parameter is required.
         self.qos_car_id = qos_car_id
@@ -25,7 +25,7 @@ class DeleteQosCarRequest(DaraModel):
         # 
         # This parameter is required.
         self.qos_id = qos_id
-        # The ID of the region to which the QoS policy belongs.
+        # The region ID of the quality of service (QoS) policy instance.
         # 
         # This parameter is required.
         self.region_id = region_id

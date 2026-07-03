@@ -76,13 +76,15 @@ class ListSmartAGByAccessPointResponseBodySmartAccessGateways(DaraModel):
         self.associated_ccn_id = associated_ccn_id
         # The model of the SAG device with which the SAG instance is associated. Valid values:
         # 
-        # *   **sag-1000**.
-        # *   **sag-100WM**.
+        # - **sag-1000**.
+        # 
+        # - **sag-100WM**.
         self.hardware_version = hardware_version
         # The method that the SAG instance uses to synchronize Alibaba Cloud-facing routes. Valid values:
         # 
-        # *   **static**: static routing.
-        # *   **dynamic**: dynamic routing.
+        # - **static**: static routing.
+        # 
+        # - **dynamic**: dynamic routing.
         self.routing_strategy = routing_strategy
         # The description of the SAG instance.
         self.smart_agdescription = smart_agdescription
@@ -92,8 +94,9 @@ class ListSmartAGByAccessPointResponseBodySmartAccessGateways(DaraModel):
         self.smart_agname = smart_agname
         # The status of the SAG instance. Valid values:
         # 
-        # *   **Active**: The SAG device is connected to Alibaba Cloud.
-        # *   **offline**: The SAG device is disconnected from Alibaba Cloud.
+        # - **Active**: The SAG device is connected to Alibaba Cloud.
+        # 
+        # - **offline**: The SAG device is disconnected from Alibaba Cloud.
         self.smart_agstatus = smart_agstatus
 
     def validate(self):

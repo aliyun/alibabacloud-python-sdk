@@ -19,21 +19,21 @@ class CreateCloudConnectNetworkRequest(DaraModel):
     ):
         # The private CIDR block.
         self.cidr_block = cidr_block
-        # The description of the CCN instance.
+        # The description of the Cloud Connect Network (CCN) instance. 
         # 
-        # The description must be 2 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
+        # The description must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.description = description
-        # The name of the CCN instance.
+        # The name of the Cloud Connect Network (CCN) instance. 
         # 
-        # The name must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_),and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), periods (.), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the CCN instance is deployed.
+        # The region ID of the Cloud Connect Network (CCN) instance.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The private CIDR block used for Source Network Address Translation (SNAT).
+        # The SNAT private CIDR block.
         self.snat_cidr_block = snat_cidr_block
 
     def validate(self):

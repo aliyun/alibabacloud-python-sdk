@@ -19,37 +19,39 @@ class CreateQosCarResponseBody(DaraModel):
         qos_id: str = None,
         request_id: str = None,
     ):
-        # The description of the traffic throttling rule.
+        # The description of the QoS rate limiting rule.
         self.description = description
-        # The type of the traffic throttling rule. Valid values:
+        # The type of rate limiting. Valid values:
         # 
-        # *   **Absolute**: throttles traffic based on a specific range of bandwidth.
-        # *   **Percent**: throttles traffic based on a specific range of bandwidth percentage.
+        # - **Absolute**: by bandwidth value.
+        # 
+        # - **Percent**: by percentage.
         self.limit_type = limit_type
         # The maximum bandwidth value. Unit: Mbit/s.
         # 
-        # This parameter is returned when **LimitType** is set to **Absolute**.
+        # This parameter is required when **LimitType** is set to **Absolute**.
         self.max_bandwidth_abs = max_bandwidth_abs
         # The maximum bandwidth percentage. Unit: percent (%).
         self.max_bandwidth_percent = max_bandwidth_percent
         # The minimum bandwidth value. Unit: Mbit/s.
         # 
-        # This parameter is returned when **LimitType** is set to **Absolute**.
+        # This parameter is required when **LimitType** is set to **Absolute**.
         self.min_bandwidth_abs = min_bandwidth_abs
         # The minimum bandwidth percentage. Unit: percent (%).
         self.min_bandwidth_percent = min_bandwidth_percent
-        # The type of bandwidth when traffic is throttled based on bandwidth percentage. Valid values:
+        # The bandwidth type when rate limiting by percentage. Valid values:
         # 
-        # *   **CcnBandwidth**: CCN bandwidth
-        # *   **InternetUpBandwidth**: total Internet bandwidth
+        # - **CcnBandwidth**: CCN bandwidth.
+        # 
+        # - **InternetUpBandwidth**: total Internet bandwidth.
         self.percent_source_type = percent_source_type
-        # The priority value of the traffic throttling rule.
+        # The priority of the rule.
         self.priority = priority
-        # The ID of the traffic throttling rule.
+        # The instance ID of the QoS rate limiting rule.
         self.qos_car_id = qos_car_id
-        # The ID of the QoS policy.
+        # The instance ID of the QoS policy.
         self.qos_id = qos_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

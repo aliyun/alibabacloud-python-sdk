@@ -14,8 +14,11 @@ class ViewSmartAccessGatewayPortRouteProtocolResponseBody(DaraModel):
         request_id: str = None,
         task_states: List[main_models.ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates] = None,
     ):
+        # The list of port information.
         self.ports = ports
+        # The request ID.
         self.request_id = request_id
+        # The status of the query task.
         self.task_states = task_states
 
     def validate(self):
@@ -75,9 +78,25 @@ class ViewSmartAccessGatewayPortRouteProtocolResponseBodyTaskStates(DaraModel):
         error_message: str = None,
         state: str = None,
     ):
+        # The time when the query task was created.
+        # 
+        # This is a UNIX timestamp that represents the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.create_time = create_time
+        # The error code. \\`200\\` indicates that the query task is successful.
         self.error_code = error_code
+        # The error message. \\`Successful\\` indicates that the query task is successful.
         self.error_message = error_message
+        # The status of the asynchronous task:
+        # 
+        # - **Initialized**: The query task is being initialized.
+        # - **Offline**: The SAG device is offline and the query task is not sent. The task will be sent after the device goes online.
+        # - **Succeed**: The query task is sent.
+        # - **Processing**: The query task is being sent.
+        # - **VersionNotSupport**: The current version of the SAG device is not supported.
+        # - **BuildRequestError**: The management plane does not support the operation.
+        # - **HardwareError**: The query task failed to be sent due to a device error.
+        # - **TaskNotExist**: The query task does not exist.
+        # - **OfflineNotConfiged**: The SAG device is offline and the query task is not sent. The task will not be sent even after the device goes online.
         self.state = state
 
     def validate(self):
@@ -129,12 +148,26 @@ class ViewSmartAccessGatewayPortRouteProtocolResponseBodyPorts(DaraModel):
         status: str = None,
         vlan: str = None,
     ):
+        # The IP address of the neighbor.
         self.neighbor_ip = neighbor_ip
+        # The name of the port.
         self.port_name = port_name
+        # The autonomous system (AS) number of the BGP peer.
         self.remote_as = remote_as
+        # The IP address of the peer.
         self.remote_ip = remote_ip
+        # The routable protocol of the port. Valid values:
+        # 
+        # - **STATIC**: static routing protocol.
+        # - **OSPF**: Open Shortest Path First (OSPF) dynamic routing protocol.
+        # - **BGP**: Border Gateway Protocol (BGP) dynamic routing protocol.
         self.route_protocol = route_protocol
+        # The status of the port. Valid values:
+        # 
+        # - **UP**: The port is enabled.
+        # - **DOWN**: The port is disabled.
         self.status = status
+        # The VLAN ID.
         self.vlan = vlan
 
     def validate(self):

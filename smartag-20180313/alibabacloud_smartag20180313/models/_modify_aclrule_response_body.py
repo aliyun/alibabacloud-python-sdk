@@ -27,47 +27,47 @@ class ModifyACLRuleResponseBody(DaraModel):
         source_cidr: str = None,
         source_port_range: str = None,
     ):
-        # The ID of ACL.
+        # The ID of the ACL instance.
         self.acl_id = acl_id
-        # The ID of the ACL rule.
+        # The ID of the access control rule.
         self.acr_id = acr_id
-        # The description of the ACL rule.
+        # The description of the access control rule.
         self.description = description
         # The destination CIDR block.
         # 
-        # The value of this parameter is in CIDR notation. Example: 192.168.10.0/24.
+        # The destination CIDR block is in CIDR format. For example: 192.168.10.0/24.
         self.dest_cidr = dest_cidr
         # The destination port range.
         self.dest_port_range = dest_port_range
-        # The direction of traffic in which the ACL rule is applied. Valid values:
+        # The direction in which the access control rule is applied. Valid values:
         # 
-        # *   **in**: The ACL rule controls inbound network traffic of the on-premises network that is associated with the SAG instance.
-        # *   **out**: The ACL rule controls outbound network traffic of the on-premises network that is associated with the SAG instance.
+        # - **in**: inbound. This is the direction of traffic from an external network to the on-premises network where the Smart Access Gateway instance is deployed.
+        # - **out**: outbound. This is the direction of traffic from the on-premises network where the Smart Access Gateway instance is deployed to an external network.
         self.direction = direction
         self.dpi_group_ids = dpi_group_ids
         self.dpi_signature_ids = dpi_signature_ids
-        # The timestamp when the ACL rule was created.
+        # The timestamp that indicates when the access control rule was created.
         # 
-        # The timestamp is of the Long data type. If multiple ACL rules have the same priority, the rule with the earliest timestamp takes effect.
+        # The value is a UNIX timestamp. If rules have the same priority, the one with the smaller timestamp takes precedence.
         self.gmt_create = gmt_create
-        # The protocol used by the ACL rule.
+        # The protocol used by the access control rule.
         self.ip_protocol = ip_protocol
-        # The name of the ACL rule.
+        # The name of the access control rule.
         self.name = name
-        # The action of the ACL rule.
+        # The authorization policy of the access control rule.
         # 
-        # *   **accept**: allows network traffic.
-        # *   **drop**: blocks network traffic.
+        # - **accept**: allows access.
+        # - **drop**: denies access.
         self.policy = policy
-        # The priority of the ACL rule.
+        # The priority of the access control rule.
         # 
-        # A smaller value indicates a higher priority. If multiple rules have the same priority, the rule that is applied earlier takes effect.
+        # A smaller value indicates a higher priority. If rules have the same priority, the one that is first delivered to the Smart Access Gateway device takes precedence.
         self.priority = priority
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The source CIDR block.
         # 
-        # The value of this parameter is in CIDR notation. Example: 192.168.1.0/24.
+        # The source CIDR block is in CIDR format. For example: 192.168.1.0/24.
         self.source_cidr = source_cidr
         # The source port range.
         self.source_port_range = source_port_range

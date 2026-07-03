@@ -14,13 +14,13 @@ class DeleteHealthCheckRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the health check instance.
+        # The health check instance ID.
         # 
         # This parameter is required.
         self.hc_instance_id = hc_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the health check instance is deployed.
+        # The region ID of the health check instance.
         # 
         # This parameter is required.
         self.region_id = region_id
