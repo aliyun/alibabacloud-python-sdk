@@ -1,3 +1,19 @@
+2026-07-03 Version: 1.17.0
+- Support API CreateDataAgentAccuracyTest.
+- Support API DeleteDataAgentAccuracyTest.
+- Support API ListDataAgentAccuracyTestInstances.
+- Support API ListDataAgentAccuracyTestResults.
+- Support API ListDataAgentAccuracyTestTasks.
+- Support API StartDataAgentAccuracyTestTask.
+- Support API StopDataAgentAccuracyTestTask.
+- Support API UpdateDataAgentAccuracyTest.
+- Update API SendChatMessage: add request parameters UserOssBucket.
+- Update API SendChatMessage: add request parameters SessionConfig.EnableSearch.
+- Update API SendChatMessage: add request parameters SessionConfig.KbUuidList.
+- Update API SendChatMessage: add request parameters SessionConfig.McpServerIds.
+- Update API SendChatMessage: add request parameters SessionConfig.PlanMode.
+
+
 2026-06-25 Version: 1.16.1
 - Update API SendChatMessage: add request parameters WorkspaceId.
 

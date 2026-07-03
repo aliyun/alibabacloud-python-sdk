@@ -4,29 +4,24 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SaveWorkspaceCodeResponseBody(DaraModel):
+class DeleteDataAgentAccuracyTestResponseBody(DaraModel):
     def __init__(
         self,
-        data: str = None,
         error_code: str = None,
-        http_status_code: int = None,
-        message: str = None,
+        error_message: str = None,
         request_id: str = None,
-        success: bool = None,
+        success: str = None,
     ):
-        # The response data.
-        self.data = data
         # The error code.
         self.error_code = error_code
-        # The HTTP status code.
-        self.http_status_code = http_status_code
-        # The error message. This parameter is returned with a specific error message when the request fails, and is empty when the request succeeds.
-        self.message = message
-        # The request ID.
+        # The error message returned if the call failed.
+        self.error_message = error_message
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - **true**: The call was successful.
-        # - **false**: The call failed.
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -37,17 +32,11 @@ class SaveWorkspaceCodeResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.data is not None:
-            result['Data'] = self.data
-
         if self.error_code is not None:
             result['ErrorCode'] = self.error_code
 
-        if self.http_status_code is not None:
-            result['HttpStatusCode'] = self.http_status_code
-
-        if self.message is not None:
-            result['Message'] = self.message
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -59,17 +48,11 @@ class SaveWorkspaceCodeResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-
         if m.get('ErrorCode') is not None:
             self.error_code = m.get('ErrorCode')
 
-        if m.get('HttpStatusCode') is not None:
-            self.http_status_code = m.get('HttpStatusCode')
-
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

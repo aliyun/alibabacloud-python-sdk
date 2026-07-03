@@ -5,24 +5,27 @@ from __future__ import annotations
 from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
-class SendChatMessageResponseBody(DaraModel):
+class StartDataAgentAccuracyTestTaskResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.SendChatMessageResponseBodyData = None,
+        data: main_models.StartDataAgentAccuracyTestTaskResponseBodyData = None,
         error_code: str = None,
         error_message: str = None,
         request_id: str = None,
         success: str = None,
     ):
-        # The response data.
+        # The response struct.
         self.data = data
-        # The error code.
+        # The error code returned if the request fails.
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Success
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - True: The request is successful.                                 
+        # - False: The request fails.
         self.success = success
 
     def validate(self):
@@ -54,7 +57,7 @@ class SendChatMessageResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Data') is not None:
-            temp_model = main_models.SendChatMessageResponseBodyData()
+            temp_model = main_models.StartDataAgentAccuracyTestTaskResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('ErrorCode') is not None:
@@ -71,22 +74,13 @@ class SendChatMessageResponseBody(DaraModel):
 
         return self
 
-class SendChatMessageResponseBodyData(DaraModel):
+class StartDataAgentAccuracyTestTaskResponseBodyData(DaraModel):
     def __init__(
         self,
-        agent_id: str = None,
-        message: str = None,
-        message_id: str = None,
-        session_id: str = None,
+        accuracy_test_task_id: str = None,
     ):
-        # AgentId
-        self.agent_id = agent_id
-        # Message
-        self.message = message
-        # The message ID.
-        self.message_id = message_id
-        # SessionId
-        self.session_id = session_id
+        # The ID of the accuracy test task.
+        self.accuracy_test_task_id = accuracy_test_task_id
 
     def validate(self):
         pass
@@ -96,33 +90,15 @@ class SendChatMessageResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.agent_id is not None:
-            result['AgentId'] = self.agent_id
-
-        if self.message is not None:
-            result['Message'] = self.message
-
-        if self.message_id is not None:
-            result['MessageId'] = self.message_id
-
-        if self.session_id is not None:
-            result['SessionId'] = self.session_id
+        if self.accuracy_test_task_id is not None:
+            result['AccuracyTestTaskId'] = self.accuracy_test_task_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AgentId') is not None:
-            self.agent_id = m.get('AgentId')
-
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-
-        if m.get('MessageId') is not None:
-            self.message_id = m.get('MessageId')
-
-        if m.get('SessionId') is not None:
-            self.session_id = m.get('SessionId')
+        if m.get('AccuracyTestTaskId') is not None:
+            self.accuracy_test_task_id = m.get('AccuracyTestTaskId')
 
         return self
 

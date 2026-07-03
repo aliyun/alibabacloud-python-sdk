@@ -23,52 +23,50 @@ class SendChatMessageRequest(DaraModel):
         session_config: main_models.SendChatMessageRequestSessionConfig = None,
         session_id: str = None,
         task_config: main_models.SendChatMessageRequestTaskConfig = None,
+        user_oss_bucket: str = None,
         workspace_id: str = None,
     ):
-        # The agent ID. This is a required field. You can obtain the current AgentId from the return value of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to pass in each request may change.
-        # 
-        # This parameter is required.
+        # The agent ID. This parameter is required. You can obtain the current AgentId from the response of the CreateAgentSession operation. Agent resources have a lifecycle, so the AgentId you need to specify may change with each request.
         self.agent_id = agent_id
-        # The DMS unit you are currently in. If you choose to analyze a database, this information will be used to correctly connect to your DMS instance through DMS. You can go to the DMS console to check your current DMS unit. If you are a China site user of Alibaba Cloud, you can directly enter cn-hangzhou.
+        # The Data Management unit you are currently in. If you choose to analyze a database, this information is used to correctly connect to your Data Management instance. You can view your current Data Management unit in the Data Management console. If you are a user of Alibaba Cloud China Website (www.aliyun.com), set this parameter to cn-hangzhou.
         self.dmsunit = dmsunit
-        # The data source information. This parameter can be left empty. Only one data source can be passed in through this parameter. We recommend that you use the DataSources parameter instead.
+        # The data source information. This parameter is optional. Only one data source can be specified for this parameter. Use the DataSources parameter instead.
         self.data_source = data_source
-        # The detailed data source information. This parameter can be left empty.
+        # The detailed data source information. This parameter is optional.
         self.data_sources = data_sources
-        # The content of the message to be sent to the Agent.
+        # The message content to send to the Agent.
         # 
         # This parameter is required.
         self.message = message
-        # The message type. Default value: `[primary]`.
+        # The message type. Default value: `[primary]`.  
         # 
-        # - In normal cases, when interacting with the Agent, the message type is `[primary]`.
+        # - For regular interactions with the Agent, set the message type to `[primary]`.
         # 
-        # - When the message is a response to the Agent\\"s Human-in-Loop question, the type should be `[additional]`.
+        # - When the message is a response to the Agent\\"s Human-in-Loop question, set the type to `[additional]`.
         # 
-        # - When the message is intended to trigger a report generation, the type should be `[report]`.
+        # - When the message is intended to trigger report generation, set the type to `[report]`.
         # 
-        # - When the message is intended to cancel the current session, the type should be `[cancel]`.
+        # - When the message is intended to cancel the current session, set the type to `[cancel]`.
         self.message_type = message_type
         # The parent session ID.
         self.parent_session_id = parent_session_id
-        # This field is required when the message type is `additional`. Pass in the specific question that the Agent asked the user through Human-in-Loop.
+        # The specific question that the Agent asks the user through Human-in-Loop. This parameter is required when the message type is `additional`.
         self.question = question
-        # Pass in the current quoted content, typically used when interacting with the Agent.
+        # The quoted content. This parameter is typically used during interactions with the Agent.
         self.quoted_message = quoted_message
         # **Important**
         # 
-        # When this message is a reply to an Agent message (for example, when the Agent asks for clarification through ASK_HUMAN), reply_to must be set to the exact Checkpoint number carried in that Agent message. If this message is not a specific reply, such as requesting the Agent for further in-depth analysis after analysis is completed, reply_to can be left empty or set to "0".
+        # When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried by that Agent message. If this message is not a targeted reply, for example, requesting the Agent to perform further in-depth analysis after analysis is complete, leave reply_to empty or set it to "0".  
         # 
         # This field affects how the Agent decides to process the message. Passing an incorrect value may lead to analysis results that do not meet expectations.
         self.reply_to = reply_to
-        # The special configuration for this session. For the same session, only the configuration passed in the first SendMessage call takes effect.
+        # The special configuration for this session. Only the configuration sent with the first SendMessage call in the same session takes effect.
         self.session_config = session_config
-        # The session ID. This is a required field. You can obtain the SessionId by calling CreateAgentSession.
-        # 
-        # This parameter is required.
+        # The session ID. This parameter is required. You can obtain the SessionId by calling the CreateAgentSession operation.
         self.session_id = session_id
-        # The configuration items that only affect the current task.
+        # The configuration items that affect only the current task.
         self.task_config = task_config
+        self.user_oss_bucket = user_oss_bucket
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -129,6 +127,9 @@ class SendChatMessageRequest(DaraModel):
         if self.task_config is not None:
             result['TaskConfig'] = self.task_config.to_map()
 
+        if self.user_oss_bucket is not None:
+            result['UserOssBucket'] = self.user_oss_bucket
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -181,6 +182,9 @@ class SendChatMessageRequest(DaraModel):
             temp_model = main_models.SendChatMessageRequestTaskConfig()
             self.task_config = temp_model.from_map(m.get('TaskConfig'))
 
+        if m.get('UserOssBucket') is not None:
+            self.user_oss_bucket = m.get('UserOssBucket')
+
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
 
@@ -191,7 +195,7 @@ class SendChatMessageRequestTaskConfig(DaraModel):
         self,
         report_config: main_models.SendChatMessageRequestTaskConfigReportConfig = None,
     ):
-        # The report rule configuration. Only when MessageType is REPORT, a report task will be executed based on this configuration.
+        # The report rule configuration. Only when MessageType is REPORT, a report task is executed based on this configuration.
         self.report_config = report_config
 
     def validate(self):
@@ -223,11 +227,11 @@ class SendChatMessageRequestTaskConfigReportConfig(DaraModel):
         report_theme: str = None,
         report_type: str = None,
     ):
-        # The prompt that this report should follow.
+        # The prompt that the report must follow.
         self.report_prompt = report_prompt
-        # The report theme. Currently supported values: [default, journal, legacy, neobrutalism].
+        # The report theme. Valid values: [default, journal, legacy, neobrutalism].
         self.report_theme = report_theme
-        # The service type. Valid values: TextReport and WebReport, which indicate whether this task generates a text report or a web report. Currently, only the WebReport type is supported.
+        # The service type. Valid values: TextReport and WebReport, indicating that the task generates a text report or a web report. Only WebReport is supported.
         self.report_type = report_type
 
     def validate(self):
@@ -267,26 +271,34 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         self,
         custom_agent_id: str = None,
         custom_agent_stage: str = None,
+        enable_search: str = None,
+        kb_uuid_list: str = None,
         language: str = None,
+        mcp_server_ids: str = None,
         mode: str = None,
+        plan_mode: str = None,
         report_water_mark: str = None,
         skip_ask_human: bool = None,
         skip_plan: bool = None,
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Deprecated. The value specified in CreateAgentSession takes precedence.
+        # Deprecated. Use the input parameter of CreateAgentSession instead.
         self.custom_agent_id = custom_agent_id
-        # Deprecated. The value specified in CreateAgentSession takes precedence.
+        # Deprecated. Use the input parameter of CreateAgentSession instead.
         self.custom_agent_stage = custom_agent_stage
-        # Currently only Chinese and English are supported. The default is Chinese. Only uppercase values are supported.
+        self.enable_search = enable_search
+        self.kb_uuid_list = kb_uuid_list
+        # Only Chinese and English are supported. Default value: Chinese. Only uppercase values are supported.
         self.language = language
-        # The mode:
-        #  - **ASK_DATA**: Ask Data mode
-        #  - **ANALYSIS**: Analysis mode
-        #  - **INSIGHT**: Insight mode
+        self.mcp_server_ids = mcp_server_ids
+        # The mode. Valid values:
+        #  - **ASK_DATA**: data query mode.
+        #  - **ANALYSIS**: analysis mode.
+        #  - **INSIGHT**: insight mode.
         self.mode = mode
-        # You can enter text of up to 64 characters, which will be used as a watermark in the generated PDF report.
+        self.plan_mode = plan_mode
+        # The text of up to 64 characters that is used as a watermark in the generated PDF report.
         self.report_water_mark = report_water_mark
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
@@ -311,11 +323,23 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         if self.custom_agent_stage is not None:
             result['CustomAgentStage'] = self.custom_agent_stage
 
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
+
+        if self.kb_uuid_list is not None:
+            result['KbUuidList'] = self.kb_uuid_list
+
         if self.language is not None:
             result['Language'] = self.language
 
+        if self.mcp_server_ids is not None:
+            result['McpServerIds'] = self.mcp_server_ids
+
         if self.mode is not None:
             result['Mode'] = self.mode
+
+        if self.plan_mode is not None:
+            result['PlanMode'] = self.plan_mode
 
         if self.report_water_mark is not None:
             result['ReportWaterMark'] = self.report_water_mark
@@ -342,11 +366,23 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         if m.get('CustomAgentStage') is not None:
             self.custom_agent_stage = m.get('CustomAgentStage')
 
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
+
+        if m.get('KbUuidList') is not None:
+            self.kb_uuid_list = m.get('KbUuidList')
+
         if m.get('Language') is not None:
             self.language = m.get('Language')
 
+        if m.get('McpServerIds') is not None:
+            self.mcp_server_ids = m.get('McpServerIds')
+
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+
+        if m.get('PlanMode') is not None:
+            self.plan_mode = m.get('PlanMode')
 
         if m.get('ReportWaterMark') is not None:
             self.report_water_mark = m.get('ReportWaterMark')
@@ -382,15 +418,15 @@ class SendChatMessageRequestDataSources(DaraModel):
     ):
         # Deprecated. You do not need to specify this parameter.
         self.data_source_id = data_source_id
-        # The data source type. Valid values: [remote_data_center, database], which indicate whether the current analysis is for a file or a database respectively.
+        # The data source type. Valid values: [remote_data_center, database], indicating that the analysis is performed on a file or a database.
         self.data_source_type = data_source_type
         # Deprecated. You do not need to specify this parameter.
         self.database = database
         # The database name.
         self.db_name = db_name
-        # The ID of the database in DMS.
+        # The ID of the database in Data Management.
         self.dms_database_id = dms_database_id
-        # The ID of the instance in DMS.
+        # The ID of the instance in Data Management.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine
@@ -500,15 +536,15 @@ class SendChatMessageRequestDataSource(DaraModel):
     ):
         # Deprecated. You do not need to specify this parameter.
         self.data_source_id = data_source_id
-        # The data source type. Valid values: `[remote_data_center, database]`, which indicate whether the current analysis is for a file or a database respectively.
+        # The data source type. Valid values: `[remote_data_center, database]`, indicating that the analysis is performed on a file or a database.
         self.data_source_type = data_source_type
         # Deprecated. You do not need to specify this parameter.
         self.database = database
         # The database name.
         self.db_name = db_name
-        # The ID of the database in DMS.
+        # The ID of the database in Data Management.
         self.dms_database_id = dms_database_id
-        # The ID of the instance in DMS.
+        # The ID of the instance in Data Management.
         self.dms_instance_id = dms_instance_id
         # The database engine type.
         self.engine = engine

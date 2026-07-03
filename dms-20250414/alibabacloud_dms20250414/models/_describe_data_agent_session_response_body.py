@@ -20,14 +20,14 @@ class DescribeDataAgentSessionResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
         # The return value. Valid values:
         # 
-        # - **true**: The operation was successful.
-        # - **false**: The operation failed.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -107,13 +107,13 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         self.create_time = create_time
         # The list of data sources used in the current session.
         self.data_sources = data_sources
-        # Indicates whether the session is saved to favorites in the workspace by the current user.
+        # Indicates whether the session is saved as a favorite in the workspace by the current logged-in user.
         self.favorite_in_workspace = favorite_in_workspace
         # The file ID.
         self.file = file
-        # The recall results from the knowledge base and memory for this session.
+        # The recall results from the knowledge base and memory for the current session.
         self.recall_results = recall_results
-        # Indicates whether the session is saved to favorites by the current user.
+        # Indicates whether the session is saved as a favorite by the current logged-in user.
         self.saved = saved
         # The session configuration item.
         self.session_config = session_config
@@ -287,16 +287,16 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # The stage of the custom agent. Valid values:
-        # - **debug**: the debugging stage.
-        # - **prod**: the production stage.
+        # - **debug**: test stage.
+        # - **prod**: production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
-        # The encryption key for storing artifacts in OSS (including built-in and user-specified OSS). This is typically specified in CreateDataAgentSession.
+        # The encryption key for storing artifacts in OSS (both built-in and user-specified). This is typically specified in CreateDataAgentSession.
         self.encrypt_key = encrypt_key
-        # The encryption type for storing artifacts in OSS (including built-in and user-specified OSS).
+        # The encryption type for storing artifacts in OSS (both built-in and user-specified).
         self.encrypt_type = encrypt_type
-        # The list of knowledge base IDs for this session.
+        # The list of knowledge base IDs for the current session.
         self.kb_uuid_list = kb_uuid_list
         # The language. Valid values:
         # - **CHINESE**: Chinese.
@@ -305,15 +305,16 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The list of MCP server IDs in the session configuration.
         self.mcp_server_ids = mcp_server_ids
         # The mode. Valid values:
-        # - **ASK_DATA**: the data query mode.
-        # - **ANALYSIS**: the analysis mode.
-        # - **INSIGHT**: the insight mode.
+        #  - **ASK_DATA**: ask data mode.
+        #  - **ANALYSIS**: analysis mode.
+        #  - **INSIGHT**: insight mode.
         self.mode = mode
         # The report page width.
         self.report_page_width = report_page_width
         # The report watermark.
         self.report_water_mark = report_water_mark
-        # The name of the user OSS bucket. Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
+        # The name of the user OSS bucket.
+        # - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
@@ -413,7 +414,7 @@ class DescribeDataAgentSessionResponseBodyDataRecallResults(DaraModel):
         self.content = content
         # The similarity score of this data entry. The scoring algorithm is related to the algorithm (l2/ip/cosine) specified when the index was created.
         self.score = score
-        # The type of recalled knowledge.
+        # The type of the recalled knowledge.
         self.type = type
 
     def validate(self):
@@ -544,9 +545,9 @@ class DescribeDataAgentSessionResponseBodyDataArtifacts(DaraModel):
         self.description = description
         # The time when the backend completed the artifact task. This is a UNIX timestamp accurate to the second.
         self.finish_time = finish_time
-        # The globally unique artifact ID. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId returned by the SendChatMessage operation.
+        # The globally unique artifact ID. If the report is produced by calling SendChatMessage with MessageType set to REPORT, the artifact ID is the same as the MessageId in the response of the SendChatMessage operation.
         self.id = id
-        # The artifact name. This is typically a string concatenated by the system. It is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
+        # The artifact name. This is typically a string concatenated by the system and is aligned with the name field in the ListFileUpload operation. You can use this field to query the download URL of the artifact file.
         self.name = name
         # The time when the backend received the artifact request. This is a UNIX timestamp accurate to the second.
         self.receive_time = receive_time
@@ -562,7 +563,7 @@ class DescribeDataAgentSessionResponseBodyDataArtifacts(DaraModel):
         # 
         # - FAILED: The task failed.
         self.status = status
-        # The artifact type. Valid values: TextReport and WebReport.
+        # The artifact type. Valid values: TextReport, WebReport.
         self.type = type
 
     def validate(self):
