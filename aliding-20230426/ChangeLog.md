@@ -1,3 +1,6 @@
+2026-07-03 Version: 2.54.1
+- Generated python 2023-04-26 for aliding.
+
 2026-06-30 Version: 2.54.0
 - Support API DisableSceneGroupTemplate.
 
