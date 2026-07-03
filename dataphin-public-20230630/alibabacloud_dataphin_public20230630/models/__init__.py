@@ -195,6 +195,10 @@ from ._create_user_group_request import CreateUserGroupRequest
 from ._create_user_group_shrink_request import CreateUserGroupShrinkRequest
 from ._create_user_group_response_body import CreateUserGroupResponseBody
 from ._create_user_group_response import CreateUserGroupResponse
+from ._create_work_flow_by_json_request import CreateWorkFlowByJsonRequest
+from ._create_work_flow_by_json_shrink_request import CreateWorkFlowByJsonShrinkRequest
+from ._create_work_flow_by_json_response_body import CreateWorkFlowByJsonResponseBody
+from ._create_work_flow_by_json_response import CreateWorkFlowByJsonResponse
 from ._delete_ad_hoc_file_request import DeleteAdHocFileRequest
 from ._delete_ad_hoc_file_response_body import DeleteAdHocFileResponseBody
 from ._delete_ad_hoc_file_response import DeleteAdHocFileResponse
@@ -1288,6 +1292,9 @@ from ._create_stream_batch_job_mapping_request import CreateStreamBatchJobMappin
 from ._create_stream_batch_job_mapping_response_body import CreateStreamBatchJobMappingResponseBodyData
 from ._create_udf_request import CreateUdfRequestCreateCommand
 from ._create_user_group_request import CreateUserGroupRequestCreateCommand
+from ._create_work_flow_by_json_request import CreateWorkFlowByJsonRequestContext
+from ._create_work_flow_by_json_request import CreateWorkFlowByJsonRequestCreateCommand
+from ._create_work_flow_by_json_response_body import CreateWorkFlowByJsonResponseBodyData
 from ._delete_batch_task_request import DeleteBatchTaskRequestDeleteCommand
 from ._delete_biz_metric_request import DeleteBizMetricRequestDeleteBizMetricCommand
 from ._delete_biz_metric_response_body import DeleteBizMetricResponseBodyData
@@ -2281,6 +2288,10 @@ __all__ = [
     CreateUserGroupShrinkRequest,
     CreateUserGroupResponseBody,
     CreateUserGroupResponse,
+    CreateWorkFlowByJsonRequest,
+    CreateWorkFlowByJsonShrinkRequest,
+    CreateWorkFlowByJsonResponseBody,
+    CreateWorkFlowByJsonResponse,
     DeleteAdHocFileRequest,
     DeleteAdHocFileResponseBody,
     DeleteAdHocFileResponse,
@@ -3374,6 +3385,9 @@ __all__ = [
     CreateStreamBatchJobMappingResponseBodyData,
     CreateUdfRequestCreateCommand,
     CreateUserGroupRequestCreateCommand,
+    CreateWorkFlowByJsonRequestContext,
+    CreateWorkFlowByJsonRequestCreateCommand,
+    CreateWorkFlowByJsonResponseBodyData,
     DeleteBatchTaskRequestDeleteCommand,
     DeleteBizMetricRequestDeleteBizMetricCommand,
     DeleteBizMetricResponseBodyData,

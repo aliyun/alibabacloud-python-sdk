@@ -4253,6 +4253,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
 
+    def create_work_flow_by_json_with_options(
+        self,
+        tmp_req: main_models.CreateWorkFlowByJsonRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkFlowByJsonResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkFlowByJsonShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkFlowByJson',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkFlowByJsonResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_work_flow_by_json_with_options_async(
+        self,
+        tmp_req: main_models.CreateWorkFlowByJsonRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkFlowByJsonResponse:
+        tmp_req.validate()
+        request = main_models.CreateWorkFlowByJsonShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context):
+            request.context_shrink = Utils.array_to_string_with_specified_style(tmp_req.context, 'Context', 'json')
+        if not DaraCore.is_null(tmp_req.create_command):
+            request.create_command_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not DaraCore.is_null(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not DaraCore.is_null(request.context_shrink):
+            body['Context'] = request.context_shrink
+        if not DaraCore.is_null(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkFlowByJson',
+            version = '2023-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkFlowByJsonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_work_flow_by_json(
+        self,
+        request: main_models.CreateWorkFlowByJsonRequest,
+    ) -> main_models.CreateWorkFlowByJsonResponse:
+        runtime = RuntimeOptions()
+        return self.create_work_flow_by_json_with_options(request, runtime)
+
+    async def create_work_flow_by_json_async(
+        self,
+        request: main_models.CreateWorkFlowByJsonRequest,
+    ) -> main_models.CreateWorkFlowByJsonResponse:
+        runtime = RuntimeOptions()
+        return await self.create_work_flow_by_json_with_options_async(request, runtime)
+
     def delete_ad_hoc_file_with_options(
         self,
         request: main_models.DeleteAdHocFileRequest,

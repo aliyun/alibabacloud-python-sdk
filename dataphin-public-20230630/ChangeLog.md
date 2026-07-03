@@ -1,3 +1,7 @@
+2026-07-03 Version: 2.9.0
+- Support API CreateWorkFlowByJson.
+
+
 2026-07-01 Version: 2.8.0
 - Support API CreateDataset.
 - Support API DeleteDataset.
