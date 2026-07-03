@@ -1,3 +1,18 @@
+2026-07-03 Version: 3.8.0
+- Support API CheckHealth.
+- Support API CreatePolardbxSupabaseInstance.
+- Support API CreateSupabaseNetType.
+- Support API DeletePolardbxSupabaseInstance.
+- Support API DeleteSupabaseNetType.
+- Support API DescribeSupabaseApiKey.
+- Support API DescribeSupabaseInstanceAttribute.
+- Support API DescribeSupabaseInstances.
+- Support API DescribeSupabaseIpWhitelist.
+- Support API ModifySupabaseDashboardPassword.
+- Support API ModifySupabaseSecurityIPList.
+- Support API RestartSupabaseInstance.
+
+
 2026-06-24 Version: 3.7.0
 - Support API AllocateMem0PublicConnection.
 - Support API ReleaseMem0PublicConnection.

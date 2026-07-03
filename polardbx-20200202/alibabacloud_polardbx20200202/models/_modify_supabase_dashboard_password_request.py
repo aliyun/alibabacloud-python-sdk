@@ -4,25 +4,21 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateSubCNInstanceRequest(DaraModel):
+class ModifySupabaseDashboardPasswordRequest(DaraModel):
     def __init__(
         self,
         dbinstance_name: str = None,
-        is_auto_create: bool = None,
-        read_type: str = None,
+        new_password: str = None,
         region_id: str = None,
     ):
-        # The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
+        # The instance name.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # Specifies whether to automatically calculate compute resource parameters. Valid values:
-        # - **true**:
-        self.is_auto_create = is_auto_create
-        # The read/write type. Valid values:
-        # - ReadWrite: row store read/write.
-        # - ColumnarRead: column store read-only.
-        self.read_type = read_type
+        # The new password.
+        # 
+        # This parameter is required.
+        self.new_password = new_password
         # The region ID.
         # 
         # This parameter is required.
@@ -39,11 +35,8 @@ class CreateSubCNInstanceRequest(DaraModel):
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
 
-        if self.is_auto_create is not None:
-            result['IsAutoCreate'] = self.is_auto_create
-
-        if self.read_type is not None:
-            result['ReadType'] = self.read_type
+        if self.new_password is not None:
+            result['NewPassword'] = self.new_password
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -55,11 +48,8 @@ class CreateSubCNInstanceRequest(DaraModel):
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
 
-        if m.get('IsAutoCreate') is not None:
-            self.is_auto_create = m.get('IsAutoCreate')
-
-        if m.get('ReadType') is not None:
-            self.read_type = m.get('ReadType')
+        if m.get('NewPassword') is not None:
+            self.new_password = m.get('NewPassword')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

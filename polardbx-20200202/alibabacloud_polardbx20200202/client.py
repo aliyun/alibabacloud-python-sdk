@@ -743,6 +743,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_cloud_resource_authorized_with_options_async(request, runtime)
 
+    def check_health_with_options(
+        self,
+        request: main_models.CheckHealthRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckHealthResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'CheckHealth',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckHealthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_health_with_options_async(
+        self,
+        request: main_models.CheckHealthRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckHealthResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'CheckHealth',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckHealthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_health(
+        self,
+        request: main_models.CheckHealthRequest,
+    ) -> main_models.CheckHealthResponse:
+        runtime = RuntimeOptions()
+        return self.check_health_with_options(request, runtime)
+
+    async def check_health_async(
+        self,
+        request: main_models.CheckHealthRequest,
+    ) -> main_models.CheckHealthResponse:
+        runtime = RuntimeOptions()
+        return await self.check_health_with_options_async(request, runtime)
+
     def check_sql_audit_sls_status_with_options(
         self,
         request: main_models.CheckSqlAuditSlsStatusRequest,
@@ -2069,6 +2129,128 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_mem_0with_options_async(request, runtime)
 
+    def create_polardbx_supabase_instance_with_options(
+        self,
+        request: main_models.CreatePolardbxSupabaseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolardbxSupabaseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dashboard_password):
+            query['DashboardPassword'] = request.dashboard_password
+        if not DaraCore.is_null(request.db_instance_description):
+            query['DbInstanceDescription'] = request.db_instance_description
+        if not DaraCore.is_null(request.db_password):
+            query['DbPassword'] = request.db_password
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tenant_mode):
+            query['TenantMode'] = request.tenant_mode
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolardbxSupabaseInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolardbxSupabaseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_polardbx_supabase_instance_with_options_async(
+        self,
+        request: main_models.CreatePolardbxSupabaseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolardbxSupabaseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dashboard_password):
+            query['DashboardPassword'] = request.dashboard_password
+        if not DaraCore.is_null(request.db_instance_description):
+            query['DbInstanceDescription'] = request.db_instance_description
+        if not DaraCore.is_null(request.db_password):
+            query['DbPassword'] = request.db_password
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tenant_mode):
+            query['TenantMode'] = request.tenant_mode
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePolardbxSupabaseInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePolardbxSupabaseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_polardbx_supabase_instance(
+        self,
+        request: main_models.CreatePolardbxSupabaseInstanceRequest,
+    ) -> main_models.CreatePolardbxSupabaseInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.create_polardbx_supabase_instance_with_options(request, runtime)
+
+    async def create_polardbx_supabase_instance_async(
+        self,
+        request: main_models.CreatePolardbxSupabaseInstanceRequest,
+    ) -> main_models.CreatePolardbxSupabaseInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_polardbx_supabase_instance_with_options_async(request, runtime)
+
     def create_rpl_inspection_task_with_options(
         self,
         request: main_models.CreateRplInspectionTaskRequest,
@@ -2538,6 +2720,84 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSubCNInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_sub_cninstance_with_options_async(request, runtime)
+
+    def create_supabase_net_type_with_options(
+        self,
+        request: main_models.CreateSupabaseNetTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSupabaseNetTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSupabaseNetType',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSupabaseNetTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_supabase_net_type_with_options_async(
+        self,
+        request: main_models.CreateSupabaseNetTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSupabaseNetTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSupabaseNetType',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSupabaseNetTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_supabase_net_type(
+        self,
+        request: main_models.CreateSupabaseNetTypeRequest,
+    ) -> main_models.CreateSupabaseNetTypeResponse:
+        runtime = RuntimeOptions()
+        return self.create_supabase_net_type_with_options(request, runtime)
+
+    async def create_supabase_net_type_async(
+        self,
+        request: main_models.CreateSupabaseNetTypeRequest,
+    ) -> main_models.CreateSupabaseNetTypeResponse:
+        runtime = RuntimeOptions()
+        return await self.create_supabase_net_type_with_options_async(request, runtime)
 
     def create_super_account_with_options(
         self,
@@ -3241,6 +3501,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_mem_0with_options_async(request, runtime)
 
+    def delete_polardbx_supabase_instance_with_options(
+        self,
+        request: main_models.DeletePolardbxSupabaseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolardbxSupabaseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolardbxSupabaseInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolardbxSupabaseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_polardbx_supabase_instance_with_options_async(
+        self,
+        request: main_models.DeletePolardbxSupabaseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolardbxSupabaseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePolardbxSupabaseInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePolardbxSupabaseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_polardbx_supabase_instance(
+        self,
+        request: main_models.DeletePolardbxSupabaseInstanceRequest,
+    ) -> main_models.DeletePolardbxSupabaseInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_polardbx_supabase_instance_with_options(request, runtime)
+
+    async def delete_polardbx_supabase_instance_async(
+        self,
+        request: main_models.DeletePolardbxSupabaseInstanceRequest,
+    ) -> main_models.DeletePolardbxSupabaseInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_polardbx_supabase_instance_with_options_async(request, runtime)
+
     def delete_sub_cninstance_with_options(
         self,
         request: main_models.DeleteSubCNInstanceRequest,
@@ -3318,6 +3652,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteSubCNInstanceResponse:
         runtime = RuntimeOptions()
         return await self.delete_sub_cninstance_with_options_async(request, runtime)
+
+    def delete_supabase_net_type_with_options(
+        self,
+        request: main_models.DeleteSupabaseNetTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSupabaseNetTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSupabaseNetType',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSupabaseNetTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_supabase_net_type_with_options_async(
+        self,
+        request: main_models.DeleteSupabaseNetTypeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSupabaseNetTypeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSupabaseNetType',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSupabaseNetTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_supabase_net_type(
+        self,
+        request: main_models.DeleteSupabaseNetTypeRequest,
+    ) -> main_models.DeleteSupabaseNetTypeResponse:
+        runtime = RuntimeOptions()
+        return self.delete_supabase_net_type_with_options(request, runtime)
+
+    async def delete_supabase_net_type_async(
+        self,
+        request: main_models.DeleteSupabaseNetTypeRequest,
+    ) -> main_models.DeleteSupabaseNetTypeResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_supabase_net_type_with_options_async(request, runtime)
 
     def describe_account_list_with_options(
         self,
@@ -7781,6 +8189,326 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_structure_import_task_info_with_options_async(request, runtime)
 
+    def describe_supabase_api_key_with_options(
+        self,
+        request: main_models.DescribeSupabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseApiKey',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_supabase_api_key_with_options_async(
+        self,
+        request: main_models.DescribeSupabaseApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseApiKey',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_supabase_api_key(
+        self,
+        request: main_models.DescribeSupabaseApiKeyRequest,
+    ) -> main_models.DescribeSupabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.describe_supabase_api_key_with_options(request, runtime)
+
+    async def describe_supabase_api_key_async(
+        self,
+        request: main_models.DescribeSupabaseApiKeyRequest,
+    ) -> main_models.DescribeSupabaseApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_supabase_api_key_with_options_async(request, runtime)
+
+    def describe_supabase_instance_attribute_with_options(
+        self,
+        request: main_models.DescribeSupabaseInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseInstanceAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseInstanceAttribute',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseInstanceAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_supabase_instance_attribute_with_options_async(
+        self,
+        request: main_models.DescribeSupabaseInstanceAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseInstanceAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseInstanceAttribute',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseInstanceAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_supabase_instance_attribute(
+        self,
+        request: main_models.DescribeSupabaseInstanceAttributeRequest,
+    ) -> main_models.DescribeSupabaseInstanceAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_supabase_instance_attribute_with_options(request, runtime)
+
+    async def describe_supabase_instance_attribute_async(
+        self,
+        request: main_models.DescribeSupabaseInstanceAttributeRequest,
+    ) -> main_models.DescribeSupabaseInstanceAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_supabase_instance_attribute_with_options_async(request, runtime)
+
+    def describe_supabase_instances_with_options(
+        self,
+        request: main_models.DescribeSupabaseInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseInstances',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_supabase_instances_with_options_async(
+        self,
+        request: main_models.DescribeSupabaseInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseInstances',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_supabase_instances(
+        self,
+        request: main_models.DescribeSupabaseInstancesRequest,
+    ) -> main_models.DescribeSupabaseInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_supabase_instances_with_options(request, runtime)
+
+    async def describe_supabase_instances_async(
+        self,
+        request: main_models.DescribeSupabaseInstancesRequest,
+    ) -> main_models.DescribeSupabaseInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_supabase_instances_with_options_async(request, runtime)
+
+    def describe_supabase_ip_whitelist_with_options(
+        self,
+        request: main_models.DescribeSupabaseIpWhitelistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseIpWhitelistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseIpWhitelist',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseIpWhitelistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_supabase_ip_whitelist_with_options_async(
+        self,
+        request: main_models.DescribeSupabaseIpWhitelistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSupabaseIpWhitelistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSupabaseIpWhitelist',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSupabaseIpWhitelistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_supabase_ip_whitelist(
+        self,
+        request: main_models.DescribeSupabaseIpWhitelistRequest,
+    ) -> main_models.DescribeSupabaseIpWhitelistResponse:
+        runtime = RuntimeOptions()
+        return self.describe_supabase_ip_whitelist_with_options(request, runtime)
+
+    async def describe_supabase_ip_whitelist_async(
+        self,
+        request: main_models.DescribeSupabaseIpWhitelistRequest,
+    ) -> main_models.DescribeSupabaseIpWhitelistResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_supabase_ip_whitelist_with_options_async(request, runtime)
+
     def describe_tags_with_options(
         self,
         request: main_models.DescribeTagsRequest,
@@ -10295,6 +11023,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
 
+    def modify_supabase_dashboard_password_with_options(
+        self,
+        request: main_models.ModifySupabaseDashboardPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseDashboardPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseDashboardPassword',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseDashboardPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_supabase_dashboard_password_with_options_async(
+        self,
+        request: main_models.ModifySupabaseDashboardPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseDashboardPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseDashboardPassword',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseDashboardPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_supabase_dashboard_password(
+        self,
+        request: main_models.ModifySupabaseDashboardPasswordRequest,
+    ) -> main_models.ModifySupabaseDashboardPasswordResponse:
+        runtime = RuntimeOptions()
+        return self.modify_supabase_dashboard_password_with_options(request, runtime)
+
+    async def modify_supabase_dashboard_password_async(
+        self,
+        request: main_models.ModifySupabaseDashboardPasswordRequest,
+    ) -> main_models.ModifySupabaseDashboardPasswordResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_supabase_dashboard_password_with_options_async(request, runtime)
+
+    def modify_supabase_security_iplist_with_options(
+        self,
+        request: main_models.ModifySupabaseSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseSecurityIPListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseSecurityIPList',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseSecurityIPListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_supabase_security_iplist_with_options_async(
+        self,
+        request: main_models.ModifySupabaseSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySupabaseSecurityIPListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.modify_mode):
+            query['ModifyMode'] = request.modify_mode
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_iplist):
+            query['SecurityIPList'] = request.security_iplist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySupabaseSecurityIPList',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySupabaseSecurityIPListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_supabase_security_iplist(
+        self,
+        request: main_models.ModifySupabaseSecurityIPListRequest,
+    ) -> main_models.ModifySupabaseSecurityIPListResponse:
+        runtime = RuntimeOptions()
+        return self.modify_supabase_security_iplist_with_options(request, runtime)
+
+    async def modify_supabase_security_iplist_async(
+        self,
+        request: main_models.ModifySupabaseSecurityIPListRequest,
+    ) -> main_models.ModifySupabaseSecurityIPListResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_supabase_security_iplist_with_options_async(request, runtime)
+
     def pre_check_sql_flashback_task_with_options(
         self,
         request: main_models.PreCheckSqlFlashbackTaskRequest,
@@ -11102,6 +11994,80 @@ class Client(OpenApiClient):
     ) -> main_models.RestartDataImportTaskResponse:
         runtime = RuntimeOptions()
         return await self.restart_data_import_task_with_options_async(request, runtime)
+
+    def restart_supabase_instance_with_options(
+        self,
+        request: main_models.RestartSupabaseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartSupabaseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartSupabaseInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartSupabaseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_supabase_instance_with_options_async(
+        self,
+        request: main_models.RestartSupabaseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RestartSupabaseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RestartSupabaseInstance',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RestartSupabaseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_supabase_instance(
+        self,
+        request: main_models.RestartSupabaseInstanceRequest,
+    ) -> main_models.RestartSupabaseInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.restart_supabase_instance_with_options(request, runtime)
+
+    async def restart_supabase_instance_async(
+        self,
+        request: main_models.RestartSupabaseInstanceRequest,
+    ) -> main_models.RestartSupabaseInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.restart_supabase_instance_with_options_async(request, runtime)
 
     def restore_dbinstance_with_options(
         self,

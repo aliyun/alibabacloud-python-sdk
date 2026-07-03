@@ -11,7 +11,9 @@ class CreateSubCNInstanceResponseBody(DaraModel):
         data: main_models.CreateSubCNInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateSubCNInstanceResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

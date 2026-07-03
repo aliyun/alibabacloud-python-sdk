@@ -27,7 +27,7 @@ class DescribeDBInstancesRequest(DaraModel):
         self.must_has_cdc = must_has_cdc
         # The page number. Starts from 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The page size. Valid values:
         # 
         # - 30
         # - 50

@@ -134,17 +134,17 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         self.cdc_instance_name = cdc_instance_name
         # The CN node specifications. Valid values:
         # 
-        # - **polarx.x4.medium.2e**: 2 cores, 8 GB memory
-        # - **polarx.x4.large.2e**: 4 cores, 16 GB memory
-        # - **polarx.x8.large.2e**: 4 cores, 32 GB memory
-        # - **polarx.x4.xlarge.2e**: 8 cores, 32 GB memory
-        # - **polarx.x8.xlarge.2e**: 8 cores, 64 GB memory
-        # - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB memory
-        # - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB memory
-        # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB memory
-        # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB memory
-        # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB memory
-        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB memory.
+        # - **polarx.x4.medium.2e**: 2 cores, 8 GB
+        # - **polarx.x4.large.2e**: 4 cores, 16 GB
+        # - **polarx.x8.large.2e**: 4 cores, 32 GB
+        # - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+        # - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+        # - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+        # - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+        # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+        # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+        # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
         self.cn_node_class_code = cn_node_class_code
         # The number of CN nodes.
         self.cn_node_count = cn_node_count
@@ -162,7 +162,7 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         self.cpu_type = cpu_type
         # The creation time.
         self.create_time = create_time
-        # The name of the database instance.
+        # The database instance name.
         self.dbinstance_name = dbinstance_name
         # The database type.
         self.dbtype = dbtype
@@ -171,21 +171,21 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         # The database description.
         self.description = description
         # The DN node specifications. Valid values:
-        # - **mysql.n2.medium.25**: 2 cores, 4 GB memory
-        # - **mysql.n4.medium.25**: 2 cores, 8 GB memory
-        # - **mysql.x8.medium.25**: 2 cores, 16 GB memory
-        # - **mysql.n2.large.25**: 4 cores, 8 GB memory
-        # - **mysql.n4.large.25**: 4 cores, 16 GB memory
-        # - **mysql.x8.large.25**: 4 cores, 32 GB memory
-        # - **mysql.n2.xlarge.25**: 8 cores, 16 GB memory
-        # - **mysql.n4.xlarge.25**: 8 cores, 32 GB memory
-        # - **mysql.x8.xlarge.25**: 8 cores, 64 GB memory
-        # - **mysql.n4.2xlarge.25**: 16 cores, 64 GB memory
-        # - **mysql.x8.2xlarge.25**: 16 cores, 128 GB memory
-        # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB memory
-        # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB memory
-        # - **mysql.st.8xlarge.25**: 60 cores, 470 GB memory
-        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB memory.
+        # - **mysql.n2.medium.25**: 2 cores, 4 GB
+        # - **mysql.n4.medium.25**: 2 cores, 8 GB
+        # - **mysql.x8.medium.25**: 2 cores, 16 GB
+        # - **mysql.n2.large.25**: 4 cores, 8 GB
+        # - **mysql.n4.large.25**: 4 cores, 16 GB
+        # - **mysql.x8.large.25**: 4 cores, 32 GB
+        # - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+        # - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+        # - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+        # - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+        # - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+        # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+        # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+        # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
@@ -200,7 +200,7 @@ class DescribeDBInstancesResponseBodyDBInstances(DaraModel):
         self.id = id
         # Indicates whether the instance is locked.
         self.lock_mode = lock_mode
-        # The reason why the instance is locked.
+        # The lock reason.
         self.lock_reason = lock_reason
         # The current Milvus version.
         self.minor_version = minor_version
