@@ -1,3 +1,6 @@
+2026-07-03 Version: 2.0.1
+- Generated python 2019-01-03 for Sddp.
+
 2026-07-02 Version: 2.0.0
 - Update API DescribeAuditLogs: add request parameters RuleId.
 - Update API DescribeAuditLogs: add response parameters Body.Items.$.RamConsoleLink.
