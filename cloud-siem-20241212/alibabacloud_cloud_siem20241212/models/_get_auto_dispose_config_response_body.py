@@ -11,8 +11,9 @@ class GetAutoDisposeConfigResponseBody(DaraModel):
         auto_dispose_config: main_models.GetAutoDisposeConfigResponseBodyAutoDisposeConfig = None,
         request_id: str = None,
     ):
+        # The automatic response configuration.
         self.auto_dispose_config = auto_dispose_config
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +50,13 @@ class GetAutoDisposeConfigResponseBodyAutoDisposeConfig(DaraModel):
         auto_decision_status: str = None,
         product_code: str = None,
     ):
+        # Indicates whether automatic response is enabled. Valid values:
+        # 
+        # - enabled: Enabled.
+        # 
+        # - disabled: Disabled.
         self.auto_decision_status = auto_decision_status
+        # The code for the cloud product.
         self.product_code = product_code
 
     def validate(self):

@@ -24,18 +24,47 @@ class UpdateDataSourceRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The source of the data. Valid values:
+        # 
+        # - center
+        # 
+        # - custom
         self.data_source_from = data_source_from
+        # The ID of the data source.
         self.data_source_id = data_source_id
+        # The name of the data source.
         self.data_source_name = data_source_name
+        # Specifies whether to automatically discover new Logstores.
         self.data_source_recognize_enabled = data_source_recognize_enabled
+        # The list of Simple Log Service Logstores.
         self.data_source_stores = data_source_stores
+        # The language of the response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
+        # The user ID for data access.
         self.log_user_id = log_user_id
+        # The field to use for sorting the rule list. Valid values:
+        # 
+        # - GmtModified: Sorts the list by modification time.
+        # 
+        # - Id: Sorts the list by rule ID. This is the default value.
         self.order_field = order_field
+        # The region of the Data Management center for threat analysis. Select a region based on the location of the assets. Valid values:
+        # 
+        # - cn-hangzhou: Assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Assets are outside China.
         self.region_id = region_id
+        # The user ID of the member whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):
@@ -147,10 +176,19 @@ class UpdateDataSourceRequestDataSourceStores(DaraModel):
         log_region_id: str = None,
         log_store_name: str = None,
     ):
+        # The source of the data. Valid values:
+        # 
+        # - center
+        # 
+        # - custom
         self.data_source_store_from = data_source_store_from
+        # The ID of the log storage.
         self.data_source_store_id = data_source_store_id
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
 
     def validate(self):

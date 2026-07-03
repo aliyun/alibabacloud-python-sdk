@@ -11,8 +11,15 @@ class GetDetectionStatisticRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: China (Hangzhou). Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Singapore. Your assets reside outside China.
         self.region_id = region_id
+        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

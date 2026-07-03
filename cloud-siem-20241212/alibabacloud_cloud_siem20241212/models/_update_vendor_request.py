@@ -13,10 +13,23 @@ class UpdateVendorRequest(DaraModel):
         vendor_id: str = None,
         vendor_name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region of the Data Management center for threat analysis. Select the region based on where your asset is located. Valid values:
+        # 
+        # - cn-hangzhou: The asset is in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The asset is outside China.
         self.region_id = region_id
+        # The user ID of the member. This parameter allows an administrator to switch to the perspective of a member.
         self.role_for = role_for
+        # The ID of the vendor.
         self.vendor_id = vendor_id
+        # The name of the vendor.
         self.vendor_name = vendor_name
 
     def validate(self):

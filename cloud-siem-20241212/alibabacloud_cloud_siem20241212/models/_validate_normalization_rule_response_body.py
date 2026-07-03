@@ -13,7 +13,9 @@ class ValidateNormalizationRuleResponseBody(DaraModel):
         request_id: str = None,
         validate_result: List[main_models.ValidateNormalizationRuleResponseBodyValidateResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of validation results.
         self.validate_result = validate_result
 
     def validate(self):
@@ -67,18 +69,51 @@ class ValidateNormalizationRuleResponseBodyValidateResult(DaraModel):
         normalization_field_validation_status: str = None,
         result: int = None,
     ):
+        # The field name.
         self.field_name = field_name
+        # The field value.
         self.field_value = field_value
+        # The name of the log field.
         self.log_field_name = log_field_name
+        # The value of the log field.
         self.log_field_value = log_field_value
+        # The reason for the validation result. Valid values:
+        # 
+        # - OperationDenied.TheValueIsRequired: A required parameter is empty.
+        # 
+        # - OperationDenied.TheValueIsNull: The parameter value is empty.
+        # 
+        # - OperationDenied.TheEnumValueNotSupport: The field value is not within the valid enumeration.
+        # 
+        # - OperationDenied.TheValueLessThanMin: The field value is less than the minimum value.
+        # 
+        # - OperationDenied.TheValueMoreThanMax: The field value is greater than the maximum value.
+        # 
+        # - OperationDenied.TheValueNotMatchRegularExpression: The field value does not match the regular expression.
+        # 
+        # - success: The validation passed.
         self.message = message
+        # The source of the normalized field. Valid values: \\`preset\\` (built-in) and \\`custom\\`.
         self.normalization_field_from = normalization_field_from
+        # The name of the normalized field.
         self.normalization_field_name = normalization_field_name
+        # Indicates whether the normalized field is required.
         self.normalization_field_required = normalization_field_required
+        # Indicates whether the name of the normalized field is a built-in field name.
         self.normalization_field_reserved = normalization_field_reserved
+        # The type of the normalized field. Supported types: \\`text\\`, \\`long\\`, \\`double\\`, and \\`json\\`.
         self.normalization_field_type = normalization_field_type
+        # The reason why the validation of the normalized field failed.
         self.normalization_field_validation_reason = normalization_field_validation_reason
+        # The validation status of the normalized field. Valid values: \\`pass\\` and \\`fail\\`.
         self.normalization_field_validation_status = normalization_field_validation_status
+        # The result of the validation. Valid values:
+        # 
+        # - 1: The validation passed.
+        # 
+        # - 0: A warning is returned.
+        # 
+        # - -1: The validation failed.
         self.result = result
 
     def validate(self):

@@ -11,7 +11,9 @@ class GetDetectionStatisticResponseBody(DaraModel):
         detection_statistic: main_models.GetDetectionStatisticResponseBodyDetectionStatistic = None,
         request_id: str = None,
     ):
+        # The detection rule count result.
         self.detection_statistic = detection_statistic
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -45,6 +47,7 @@ class GetDetectionStatisticResponseBody(DaraModel):
 class GetDetectionStatisticResponseBodyDetectionStatistic(DaraModel):
     def __init__(
         self,
+        ai_powered_aggregation_rule_count: int = None,
         detection_rule_online_count: int = None,
         detection_rule_template_count: int = None,
         detection_rule_test_count: int = None,
@@ -52,11 +55,18 @@ class GetDetectionStatisticResponseBodyDetectionStatistic(DaraModel):
         passthrough_rule_count: int = None,
         window_rule_count: int = None,
     ):
+        self.ai_powered_aggregation_rule_count = ai_powered_aggregation_rule_count
+        # The number of online rules.
         self.detection_rule_online_count = detection_rule_online_count
+        # The number of rule templates.
         self.detection_rule_template_count = detection_rule_template_count
+        # The number of test rules.
         self.detection_rule_test_count = detection_rule_test_count
+        # The number of graph computing rules.
         self.graph_compute_rule_count = graph_compute_rule_count
+        # The number of alert pass-through rules.
         self.passthrough_rule_count = passthrough_rule_count
+        # The number of similar aggregation rules.
         self.window_rule_count = window_rule_count
 
     def validate(self):
@@ -67,6 +77,9 @@ class GetDetectionStatisticResponseBodyDetectionStatistic(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ai_powered_aggregation_rule_count is not None:
+            result['AiPoweredAggregationRuleCount'] = self.ai_powered_aggregation_rule_count
+
         if self.detection_rule_online_count is not None:
             result['DetectionRuleOnlineCount'] = self.detection_rule_online_count
 
@@ -89,6 +102,9 @@ class GetDetectionStatisticResponseBodyDetectionStatistic(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiPoweredAggregationRuleCount') is not None:
+            self.ai_powered_aggregation_rule_count = m.get('AiPoweredAggregationRuleCount')
+
         if m.get('DetectionRuleOnlineCount') is not None:
             self.detection_rule_online_count = m.get('DetectionRuleOnlineCount')
 

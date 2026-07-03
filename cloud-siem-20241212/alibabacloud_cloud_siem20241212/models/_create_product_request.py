@@ -13,10 +13,23 @@ class CreateProductRequest(DaraModel):
         role_for: int = None,
         vendor_name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The name of the product.
         self.product_name = product_name
+        # The region of the Data Management center. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Assets are outside China.
         self.region_id = region_id
+        # The user ID of a member. This parameter is used when an administrator operates as another member.
         self.role_for = role_for
+        # The name of the vendor.
         self.vendor_name = vendor_name
 
     def validate(self):

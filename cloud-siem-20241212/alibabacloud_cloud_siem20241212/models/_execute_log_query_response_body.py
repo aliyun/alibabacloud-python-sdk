@@ -12,7 +12,9 @@ class ExecuteLogQueryResponseBody(DaraModel):
         query_result: List[Any] = None,
         request_id: str = None,
     ):
+        # The query result.
         self.query_result = query_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

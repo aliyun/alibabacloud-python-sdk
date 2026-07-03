@@ -16,13 +16,29 @@ class ListLogStoresRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The ID of the user who ingests the data.
         self.log_user_id = log_user_id
+        # The maximum number of entries to return on this call.
         self.max_results = max_results
+        # The token that is used to start the next query. You do not need to specify this parameter for the first query. If a subsequent query is required, set the value to the NextToken value that is returned from the previous API call.
         self.next_token = next_token
+        # The region of the Data Management center. Select the region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of the member whose permissions are assumed by the administrator.
         self.role_for = role_for
 
     def validate(self):

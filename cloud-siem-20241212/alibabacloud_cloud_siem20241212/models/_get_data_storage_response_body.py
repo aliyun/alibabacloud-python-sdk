@@ -13,7 +13,9 @@ class GetDataStorageResponseBody(DaraModel):
         data: main_models.GetDataStorageResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned details.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,19 +58,35 @@ class GetDataStorageResponseBodyData(DaraModel):
         log_project: str = None,
         normalization_log_stores: List[main_models.GetDataStorageResponseBodyDataNormalizationLogStores] = None,
         normalization_log_views: List[main_models.GetDataStorageResponseBodyDataNormalizationLogViews] = None,
+        record_log_stores: List[main_models.GetDataStorageResponseBodyDataRecordLogStores] = None,
         sas_log_stores: List[main_models.GetDataStorageResponseBodyDataSasLogStores] = None,
         unused_log_stores: List[main_models.GetDataStorageResponseBodyDataUnusedLogStores] = None,
     ):
+        # The cold storage capacity used by user logs.
         self.cold_storage_used_capacity = cold_storage_used_capacity
+        # The storage region of user logs.
         self.data_storage_region_id = data_storage_region_id
+        # Indicates whether the storage region can be modified. By default, the storage region cannot be modified. Contact your account manager to reset the region. The region can be reset only once. Valid values:
+        # - allow: The storage region can be modified.
+        # - deny: The storage region cannot be modified.
         self.data_storage_region_permission = data_storage_region_permission
+        # The storage capacity purchased in the subscription scenario.
         self.data_storage_total_capacity = data_storage_total_capacity
+        # The storage capacity used in user log management.
         self.data_storage_used_capacity = data_storage_used_capacity
+        # The storage usage details in log management.
         self.data_storage_used_capacity_detail = data_storage_used_capacity_detail
+        # The name of the Simple Log Service project that stores user logs.
         self.log_project = log_project
+        # The details of the Logstores for normalized data.
         self.normalization_log_stores = normalization_log_stores
+        # The details of normalized datasets.
         self.normalization_log_views = normalization_log_views
+        # The list of record Logstores.
+        self.record_log_stores = record_log_stores
+        # The details of raw log storage in Security Center.
         self.sas_log_stores = sas_log_stores
+        # The list of legacy SIEM V1 Logstores.
         self.unused_log_stores = unused_log_stores
 
     def validate(self):
@@ -78,6 +96,10 @@ class GetDataStorageResponseBodyData(DaraModel):
                     v1.validate()
         if self.normalization_log_views:
             for v1 in self.normalization_log_views:
+                 if v1:
+                    v1.validate()
+        if self.record_log_stores:
+            for v1 in self.record_log_stores:
                  if v1:
                     v1.validate()
         if self.sas_log_stores:
@@ -124,6 +146,11 @@ class GetDataStorageResponseBodyData(DaraModel):
         if self.normalization_log_views is not None:
             for k1 in self.normalization_log_views:
                 result['NormalizationLogViews'].append(k1.to_map() if k1 else None)
+
+        result['RecordLogStores'] = []
+        if self.record_log_stores is not None:
+            for k1 in self.record_log_stores:
+                result['RecordLogStores'].append(k1.to_map() if k1 else None)
 
         result['SasLogStores'] = []
         if self.sas_log_stores is not None:
@@ -172,6 +199,12 @@ class GetDataStorageResponseBodyData(DaraModel):
                 temp_model = main_models.GetDataStorageResponseBodyDataNormalizationLogViews()
                 self.normalization_log_views.append(temp_model.from_map(k1))
 
+        self.record_log_stores = []
+        if m.get('RecordLogStores') is not None:
+            for k1 in m.get('RecordLogStores'):
+                temp_model = main_models.GetDataStorageResponseBodyDataRecordLogStores()
+                self.record_log_stores.append(temp_model.from_map(k1))
+
         self.sas_log_stores = []
         if m.get('SasLogStores') is not None:
             for k1 in m.get('SasLogStores'):
@@ -193,8 +226,11 @@ class GetDataStorageResponseBodyDataUnusedLogStores(DaraModel):
         log_store_ttl: int = None,
         used_capacity: float = None,
     ):
+        # The Logstore name.
         self.log_store_name = log_store_name
+        # The data storage duration.
         self.log_store_ttl = log_store_ttl
+        # The hot storage capacity used.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -244,16 +280,35 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         log_store_ttl: int = None,
         used_capacity: float = None,
     ):
+        # The log code.
         self.log_code = log_code
+        # The group to which the log belongs. Valid values:
+        # - host: host logs.
+        # - security: security logs.
         self.log_delivery_group = log_delivery_group
+        # Indicates whether log delivery can be toggled. Log delivery cannot be enabled if the service is not purchased. Valid values:
+        # - allow: Allowed.
+        # - deny: Not allowed.
         self.log_delivery_permission = log_delivery_permission
+        # The log delivery status. Valid values:
+        # - enable: log delivery is enabled.
+        # - disable: log delivery is disabled.
         self.log_delivery_status = log_delivery_status
+        # The time when the log delivery was last modified.
         self.log_delivery_update_time = log_delivery_update_time
+        # The log name.
         self.log_name = log_name
+        # The default log query conditions for the log. When multiple logs are stored in the same Logstore, log query conditions are required to query individual logs.
         self.log_search_conditions = log_search_conditions
+        # Indicates whether the Logstore where the log is stored exists. Valid values:
+        # - true: The Logstore exists.
+        # - false: The Logstore does not exist.
         self.log_store_existed = log_store_existed
+        # The name of the Logstore where the log is stored.
         self.log_store_name = log_store_name
+        # The storage duration of the Logstore where the log is stored. Logs are stored for at least 30 days.
         self.log_store_ttl = log_store_ttl
+        # The hot storage capacity used.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -336,6 +391,52 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
 
         return self
 
+class GetDataStorageResponseBodyDataRecordLogStores(DaraModel):
+    def __init__(
+        self,
+        log_store_name: str = None,
+        log_store_ttl: int = None,
+        used_capacity: float = None,
+    ):
+        # The Logstore name.
+        self.log_store_name = log_store_name
+        # The time-to-live (TTL) of the Logstore.
+        self.log_store_ttl = log_store_ttl
+        # The used capacity of the Logstore.
+        self.used_capacity = used_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.log_store_name is not None:
+            result['LogStoreName'] = self.log_store_name
+
+        if self.log_store_ttl is not None:
+            result['LogStoreTtl'] = self.log_store_ttl
+
+        if self.used_capacity is not None:
+            result['UsedCapacity'] = self.used_capacity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogStoreName') is not None:
+            self.log_store_name = m.get('LogStoreName')
+
+        if m.get('LogStoreTtl') is not None:
+            self.log_store_ttl = m.get('LogStoreTtl')
+
+        if m.get('UsedCapacity') is not None:
+            self.used_capacity = m.get('UsedCapacity')
+
+        return self
+
 class GetDataStorageResponseBodyDataNormalizationLogViews(DaraModel):
     def __init__(
         self,
@@ -348,13 +449,23 @@ class GetDataStorageResponseBodyDataNormalizationLogViews(DaraModel):
         log_view_existed: bool = None,
         log_view_name: str = None,
     ):
+        # The log type of the normalized log.
         self.activity_name = activity_name
+        # The category of the normalized log.
         self.category_name = category_name
+        # The number of times the normalized dataset is referenced in the threat analysis access center.
         self.detection_rule_reference_count = detection_rule_reference_count
+        # The list of products that reference the normalized dataset in the threat analysis access center.
         self.detection_rule_reference_product_ids = detection_rule_reference_product_ids
+        # The query statement used to query the log type in the normalized dataset.
         self.log_search_conditions = log_search_conditions
+        # The Logstore where threat analysis stores normalized logs.
         self.log_store_name = log_store_name
+        # Indicates whether the normalized dataset exists. Valid values:
+        # - true: The normalized dataset exists.
+        # - false: The normalized dataset does not exist.
         self.log_view_existed = log_view_existed
+        # The name of the normalized dataset.
         self.log_view_name = log_view_name
 
     def validate(self):
@@ -426,8 +537,11 @@ class GetDataStorageResponseBodyDataNormalizationLogStores(DaraModel):
         log_store_ttl: int = None,
         used_capacity: float = None,
     ):
+        # The name of the Logstore that stores normalized data.
         self.log_store_name = log_store_name
+        # The storage duration of normalized data.
         self.log_store_ttl = log_store_ttl
+        # The hot storage capacity used.
         self.used_capacity = used_capacity
 
     def validate(self):

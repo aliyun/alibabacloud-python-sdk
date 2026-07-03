@@ -19,13 +19,21 @@ class ListDataSourcesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The data sources.
         self.data_sources = data_sources
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. If a value is returned, it indicates that not all results have been returned. You can use this token in the next query to continue retrieving results.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -118,21 +126,51 @@ class ListDataSourcesResponseBodyDataSources(DaraModel):
         log_user_id: int = None,
         update_time: int = None,
     ):
+        # The time when the data source was created.
         self.create_time = create_time
+        # The source of the data. Valid values:
+        # 
+        # - center
+        # 
+        # - custom
         self.data_source_from = data_source_from
+        # The ID of the data source.
         self.data_source_id = data_source_id
+        # The name of the data source.
         self.data_source_name = data_source_name
+        # Indicates whether new Logstores are automatically discovered.
         self.data_source_recognize_enabled = data_source_recognize_enabled
+        # The data source recognizer.
         self.data_source_recognizer = data_source_recognizer
+        # The list of data ingestion IDs that are associated with the data source.
         self.data_source_references = data_source_references
+        # The status of the data source. Valid values:
+        # 
+        # - unconfigured
+        # 
+        # - normal
+        # 
+        # - abnormal
         self.data_source_status = data_source_status
+        # The list of Logstores.
         self.data_source_stores = data_source_stores
+        # The ID of the data source template.
         self.data_source_template_id = data_source_template_id
+        # The type of the data source. Valid values:
+        # 
+        # - preset
+        # 
+        # - custom
         self.data_source_type = data_source_type
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
+        # The ID of the user who can access the data.
         self.log_user_id = log_user_id
+        # The time when the data source was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -276,15 +314,33 @@ class ListDataSourcesResponseBodyDataSourcesDataSourceStores(DaraModel):
         log_store_name: str = None,
         update_time: int = None,
     ):
+        # The time when the check was performed.
         self.check_time = check_time
+        # The time when the log storage was created.
         self.create_time = create_time
+        # The source of the data. Valid values:
+        # 
+        # - center
+        # 
+        # - custom
         self.data_source_store_from = data_source_store_from
+        # The ID of the log storage.
         self.data_source_store_id = data_source_store_id
+        # The status of the log storage. Valid values:
+        # 
+        # - normal
+        # 
+        # - abnormal
         self.data_source_store_status = data_source_store_status
+        # The status code of the log storage.
         self.data_source_store_status_code = data_source_store_status_code
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
+        # The time when the log storage was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -366,6 +422,7 @@ class ListDataSourcesResponseBodyDataSourcesDataSourceReferences(DaraModel):
         self,
         data_ingestion_id: str = None,
     ):
+        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
 
     def validate(self):

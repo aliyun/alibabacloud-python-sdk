@@ -20,15 +20,45 @@ class ListTrafficStatisticsRequest(DaraModel):
         traffic_statistic_type: str = None,
         traffic_type: str = None,
     ):
+        # The language of the response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # A list of user IDs for batch data ingestion.
         self.log_user_ids = log_user_ids
+        # The product ID.
         self.product_id = product_id
+        # The region of the Data Management center for threat analysis. Select a region based on the location of your asset. Valid values:
+        # 
+        # - cn-hangzhou: Your asset is in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your asset is outside China.
         self.region_id = region_id
+        # The region.
         self.region_tag = region_tag
+        # The user ID of a member. This parameter is used by an administrator to switch to the perspective of the member.
         self.role_for = role_for
+        # The statistical period.
         self.traffic_statistic_period = traffic_statistic_period
+        # The statistic granularity. Valid values:
+        # 
+        # - day: day. This is the default value.
+        # 
+        # - hour: hour.
         self.traffic_statistic_period_type = traffic_statistic_period_type
+        # The statistic dimension. Valid values:
+        # 
+        # - Region
+        # 
+        # - Product
+        # 
+        # - DataIngetion
+        # 
+        # - logUserId
         self.traffic_statistic_type = traffic_statistic_type
+        # The type of the log traffic.
         self.traffic_type = traffic_type
 
     def validate(self):

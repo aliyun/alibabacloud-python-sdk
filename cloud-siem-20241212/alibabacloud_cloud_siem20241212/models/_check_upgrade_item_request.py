@@ -12,9 +12,21 @@ class CheckUpgradeItemRequest(DaraModel):
         role_for: str = None,
         upgrade_item_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region of the Data Management center. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: The assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The assets are in a region outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID of a member. An administrator can use this parameter to switch to the member\\"s perspective.
         self.role_for = role_for
+        # The ID of the upgrade item.
         self.upgrade_item_id = upgrade_item_id
 
     def validate(self):

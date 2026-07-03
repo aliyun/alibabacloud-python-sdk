@@ -18,12 +18,19 @@ class ListDataSetRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of dataset records.
         self.data_set_records = data_set_records
+        # The maximum number of results to return per page for token-based pagination. Valid values: 1 to 100. Default: 50.
         self.max_results = max_results
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -100,11 +107,17 @@ class ListDataSetRecordsResponseBodyDataSetRecords(DaraModel):
         data_set_record_values: str = None,
         update_time: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The dataset ID.
         self.data_set_id = data_set_id
+        # The dataset name.
         self.data_set_name = data_set_name
+        # The dataset record ID.
         self.data_set_record_id = data_set_record_id
+        # The dataset record value.
         self.data_set_record_values = data_set_record_values
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

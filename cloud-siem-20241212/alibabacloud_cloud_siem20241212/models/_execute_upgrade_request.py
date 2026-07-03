@@ -11,8 +11,19 @@ class ExecuteUpgradeRequest(DaraModel):
         region_id: str = None,
         role_for: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region of the Data Management center for threat analysis. Select a region for the Management Hub based on the region of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can switch to the perspective of this member.
         self.role_for = role_for
 
     def validate(self):

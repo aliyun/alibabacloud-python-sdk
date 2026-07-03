@@ -12,9 +12,21 @@ class DeleteDataSourceRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The ID of the data source.
         self.data_source_id = data_source_id
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region where the Data Management center for threat analysis is located. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of the member whose permissions you want to use. This parameter is available only to administrators.
         self.role_for = role_for
 
     def validate(self):

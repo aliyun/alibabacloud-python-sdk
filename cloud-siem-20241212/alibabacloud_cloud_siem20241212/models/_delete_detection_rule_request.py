@@ -12,10 +12,23 @@ class DeleteDetectionRuleRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The ID of the detection rule.
+        # 
         # This parameter is required.
         self.detection_rule_id = detection_rule_id
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region of the Management Hub. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: The assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The assets are outside China.
         self.region_id = region_id
+        # The user ID of the member. This parameter is used by an administrator to switch to the perspective of a member.
         self.role_for = role_for
 
     def validate(self):

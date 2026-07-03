@@ -20,17 +20,59 @@ class UpdateResponseRuleRequest(DaraModel):
         response_rule_status: int = None,
         response_trigger_type: str = None,
     ):
+        # The language of the response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of results to return for a single request.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. If you do not specify this parameter, the query starts from the first page.
         self.next_token = next_token
+        # The region where the data management center of Cloud SIEM is located. Select a region based on the location of your assets. Valid values:
+        # 
+        # - `cn-hangzhou`: China (Hangzhou). For assets in the Chinese mainland.
+        # 
+        # - `ap-southeast-1`: Asia Pacific SE 1 (Singapore). For assets in overseas regions.
         self.region_id = region_id
+        # The action configuration for the automatic response rule.
         self.response_action_config = response_action_config
+        # The action for the automatic response rule. Valid values:
+        # 
+        # - `doPlaybook`: Executes a playbook.
+        # 
+        # - `changeEventStatus`: Updates the event status.
+        # 
+        # - `changeThreatLevel`: Updates the event threat level.
+        # 
+        # - `addEventTag`: Adds an event tag.
+        # 
+        # - `deleteEventTag`: Deletes an event tag.
+        # 
+        # - `alertWhitelist`: Adds the alert to a whitelist.
         self.response_action_type = response_action_type
+        # The trigger conditions for the rule.
         self.response_execution_condition = response_execution_condition
+        # The ID of the automatic response rule.
         self.response_rule_id = response_rule_id
+        # The name of the automatic response rule.
         self.response_rule_name = response_rule_name
+        # The execution priority of the automatic response rule.
         self.response_rule_priority = response_rule_priority
+        # The status of the rule. Valid values:
+        # 
+        # - `0`: disabled
+        # 
+        # - `100`: enabled
         self.response_rule_status = response_rule_status
+        # The trigger for the automatic response rule. Valid values:
+        # 
+        # - `event`: The rule is triggered when an event occurs.
+        # 
+        # - `event_update`: The rule is triggered when an event is updated.
+        # 
+        # - `alert`: The rule is triggered when an alert is generated.
         self.response_trigger_type = response_trigger_type
 
     def validate(self):

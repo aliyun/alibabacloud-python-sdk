@@ -15,12 +15,27 @@ class ListLogProjectsRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The user ID for data access.
         self.log_user_id = log_user_id
+        # The maximum number of entries to return on this call.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first call. To retrieve the next page of results, set this parameter to the NextToken value that was returned from the previous call.
         self.next_token = next_token
+        # The region where the Data Management hub for threat analysis is located. Select the region of the Data Management hub based on the region of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The ID of the member account in the resource directory.
         self.role_for = role_for
 
     def validate(self):

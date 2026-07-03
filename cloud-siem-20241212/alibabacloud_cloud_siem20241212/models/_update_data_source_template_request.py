@@ -21,16 +21,39 @@ class UpdateDataSourceTemplateRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # Specifies whether to automatically discover new users.
+        # 
+        # - enabled: Enabled.
+        # 
+        # - disabled: Disabled.
         self.auto_scan_new = auto_scan_new
+        # Specifies whether to automatically discover new data sources.
         self.data_source_recognize_enabled = data_source_recognize_enabled
+        # The ID of the data source template.
         self.data_source_template_id = data_source_template_id
+        # The name of the data source template.
         self.data_source_template_name = data_source_template_name
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The matching rule for the names of Simple Log Service projects.
         self.log_project_pattern = log_project_pattern
+        # The list of IDs of log storage regions.
         self.log_region_ids = log_region_ids
+        # The matching rule for the names of Simple Log Service Logstores.
         self.log_store_pattern = log_store_pattern
+        # The list of user IDs for batch data access.
         self.log_user_ids = log_user_ids
+        # The region where the Management Hub of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: Assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Assets are outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID of the member. This parameter lets an administrator switch to the perspective of the member.
         self.role_for = role_for
 
     def validate(self):

@@ -11,7 +11,9 @@ class UpdateDataSetRecordResponseBody(DaraModel):
         data_set_record_statistic: main_models.UpdateDataSetRecordResponseBodyDataSetRecordStatistic = None,
         request_id: str = None,
     ):
+        # The result of the dataset update.
         self.data_set_record_statistic = data_set_record_statistic
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,9 @@ class UpdateDataSetRecordResponseBodyDataSetRecordStatistic(DaraModel):
         new_data_set_record_count: int = None,
         update_data_set_record_count: int = None,
     ):
+        # The number of new dataset records.
         self.new_data_set_record_count = new_data_set_record_count
+        # The number of updated dataset records.
         self.update_data_set_record_count = update_data_set_record_count
 
     def validate(self):

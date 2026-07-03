@@ -18,16 +18,31 @@ class ListAutoDisposeEntitiesRequest(DaraModel):
         page_size: str = None,
         uuid: str = None,
     ):
+        # The IDs of automated disposal records.
         self.auto_dispose_record_ids = auto_dispose_record_ids
+        # The page number. The value must be 1 or greater.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The type of the data source.
+        # 
         # This parameter is required.
         self.data_source_type = data_source_type
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. You can obtain this token from the response to a previous call.
         self.next_token = next_token
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The unique identifier of the playbook.
         self.uuid = uuid
 
     def validate(self):

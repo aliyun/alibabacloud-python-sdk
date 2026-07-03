@@ -18,14 +18,21 @@ class ListResponseRulesResponseBody(DaraModel):
         response_rules: List[main_models.ListResponseRulesResponseBodyResponseRules] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
+        # The position where the current query ends. If this parameter is empty, all data is returned.
+        # 
         # This parameter is required.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The list of automated response rules.
         self.response_rules = response_rules
+        # The total number of entries that match the query conditions. This parameter is optional and may not always be returned.
         self.total_count = total_count
 
     def validate(self):
@@ -107,16 +114,53 @@ class ListResponseRulesResponseBodyResponseRules(DaraModel):
         response_trigger_type: str = None,
         update_time: int = None,
     ):
+        # The time when the rule was created.
         self.create_time = create_time
+        # The configuration of the action that is performed if the automated response rule is triggered.
         self.response_action_config = response_action_config
+        # The type of the action. Valid values:
+        # 
+        # - `doPlaybook`: executes a playbook.
+        # 
+        # - `changeEventStatus`: changes the status of an event.
+        # 
+        # - `changeThreatLevel`: changes the threat level of an event.
+        # 
+        # - `addEventTag`: adds a tag to an event.
+        # 
+        # - `deleteEventTag`: removes a tag from an event.
+        # 
+        # - `alertWhitelist`: adds an alert to the whitelist.
         self.response_action_type = response_action_type
+        # The trigger condition of the rule.
         self.response_execution_condition = response_execution_condition
+        # The ID of the automated response rule.
         self.response_rule_id = response_rule_id
+        # The name of the automated response rule.
         self.response_rule_name = response_rule_name
+        # The priority of the automated response rule.
         self.response_rule_priority = response_rule_priority
+        # The status of the automated response rule. Valid values:
+        # 
+        # - `0`: disabled.
+        # 
+        # - `100`: enabled.
         self.response_rule_status = response_rule_status
+        # The type of the response rule. Valid values:
+        # 
+        # - `preset`: a predefined rule.
+        # 
+        # - `custom`: a custom rule.
         self.response_rule_type = response_rule_type
+        # The trigger type of the automated response rule. Valid values:
+        # 
+        # - `event`: triggered when an event occurs.
+        # 
+        # - `event_update`: triggered when an event is updated.
+        # 
+        # - `alert`: triggered when an alert is generated.
         self.response_trigger_type = response_trigger_type
+        # The time when the rule was updated.
         self.update_time = update_time
 
     def validate(self):

@@ -1,3 +1,47 @@
+2026-07-03 Version: 2.3.0
+- Support API GetAlert.
+- Support API GetResponseRuleStatistic.
+- Support API ListAlerts.
+- Support API ListNormalizationSecurityDomains.
+- Support API ListQueryViews.
+- Support API ListResponseRuleFields.
+- Support API ListTags.
+- Update API CreateNormalizationRule: add request parameters NormalizationSecurityDomainId.
+- Update API CreateNormalizationSchema: add request parameters NormalizationFieldSource.
+- Update API CreateNormalizationSchema: add request parameters NormalizationSecurityDomainId.
+- Update API CreateNormalizationSchema: add request parameters ProductId.
+- Update API CreateNormalizationSchema: add request parameters VendorId.
+- Update API ExecuteLogQuery: add request parameters LogCondition.
+- Update API GetDataStorage: add response parameters Body.Data.RecordLogStores.
+- Update API GetDetectionStatistic: add response parameters Body.DetectionStatistic.AiPoweredAggregationRuleCount.
+- Update API GetIncident: add response parameters Body.Incident.ResponseTime.
+- Update API GetNormalizationRule: add request parameters NormalizationSecurityDomainId.
+- Update API GetNormalizationRule: add response parameters Body.NormalizationRule.NormalizationFieldSource.
+- Update API GetNormalizationRule: add response parameters Body.NormalizationRule.NormalizationSecurityDomainId.
+- Update API GetNormalizationSchema: add response parameters Body.NormalizationSchema.NormalizationFieldSource.
+- Update API GetNormalizationSchema: add response parameters Body.NormalizationSchema.NormalizationSecurityDomainId.
+- Update API GetNormalizationSchema: add response parameters Body.NormalizationSchema.ProductId.
+- Update API GetNormalizationSchema: add response parameters Body.NormalizationSchema.RecommendEntities.
+- Update API GetNormalizationSchema: add response parameters Body.NormalizationSchema.VendorId.
+- Update API ListIncidents: add response parameters Body.Incidents.$.ResponseTime.
+- Update API ListNormalizationFields: add request parameters NormalizationFieldSource.
+- Update API ListNormalizationFields: add request parameters NormalizationSchemaType.
+- Update API ListNormalizationFields: add response parameters Body.NormalizationFields.$.NormalizationSecurityDomainId.
+- Update API ListNormalizationRules: add request parameters NormalizationSecurityDomainId.
+- Update API ListNormalizationRules: add response parameters Body.NormalizationRules.$.NormalizationFieldSource.
+- Update API ListNormalizationRules: add response parameters Body.NormalizationRules.$.NormalizationSecurityDomainId.
+- Update API ListNormalizationSchemas: add request parameters NormalizationFieldSource.
+- Update API ListNormalizationSchemas: add request parameters NormalizationSecurityDomainId.
+- Update API ListNormalizationSchemas: add response parameters Body.NormalizationSchemas.$.NormalizationFieldSource.
+- Update API ListNormalizationSchemas: add response parameters Body.NormalizationSchemas.$.NormalizationSchemaType.
+- Update API ListNormalizationSchemas: add response parameters Body.NormalizationSchemas.$.NormalizationSecurityDomainId.
+- Update API ListNormalizationSchemas: add response parameters Body.NormalizationSchemas.$.ProductId.
+- Update API ListNormalizationSchemas: add response parameters Body.NormalizationSchemas.$.RecommendEntities.
+- Update API ListNormalizationSchemas: add response parameters Body.NormalizationSchemas.$.VendorId.
+- Update API SetDefaultNormalizationRuleVersion: add response parameters Body.NormalizationRuleVersion.NormalizationSecurityDomainId.
+- Update API UpdateNormalizationRule: add request parameters NormalizationSecurityDomainId.
+
+
 2026-04-28 Version: 2.2.2
 - Update API GetDataStorage: add response parameters Body.Data.UnusedLogStores.
 - Update API GetDataStorage: add response parameters Body.Data.NormalizationLogStores.$.UsedCapacity.

@@ -15,10 +15,15 @@ class ListLogProjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of Simple Log Service projects.
         self.log_projects = log_projects
+        # The maximum number of entries returned on this call.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. If this parameter is not returned, no more results are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

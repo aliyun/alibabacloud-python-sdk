@@ -14,11 +14,25 @@ class UpdateProductRequest(DaraModel):
         role_for: int = None,
         vendor_name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The product ID.
         self.product_id = product_id
+        # The product name.
         self.product_name = product_name
+        # The region of the Data Management center for threat analysis. Select the region for the Data Management center based on the region of your assets. Valid values:
+        # 
+        # - cn-hangzhou: The Chinese mainland.
+        # 
+        # - ap-southeast-1: Regions outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID of a member. An administrator can specify this parameter to switch to the perspective of the member.
         self.role_for = role_for
+        # The vendor name.
         self.vendor_name = vendor_name
 
     def validate(self):

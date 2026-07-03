@@ -11,7 +11,9 @@ class CheckUpgradeItemResponseBody(DaraModel):
         request_id: str = None,
         upgrade_item: main_models.CheckUpgradeItemResponseBodyUpgradeItem = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The upgrade item.
         self.upgrade_item = upgrade_item
 
     def validate(self):
@@ -51,8 +53,11 @@ class CheckUpgradeItemResponseBodyUpgradeItem(DaraModel):
         check_status: str = None,
         upgrade_item_id: str = None,
     ):
+        # The name of the module.
         self.check_result = check_result
+        # The check status.
         self.check_status = check_status
+        # The ID of the upgrade item.
         self.upgrade_item_id = upgrade_item_id
 
     def validate(self):

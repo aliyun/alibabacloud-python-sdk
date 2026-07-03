@@ -13,10 +13,23 @@ class ListUpgradeItemsRequest(DaraModel):
         region_id: str = None,
         role_for: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. Leave this parameter empty for the first request. To retrieve the next page, set this parameter to the NextToken value from the previous response.
         self.next_token = next_token
+        # The region where the Data Management center is located. Select a region based on where your assets are. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
+        # The user ID of the member. An administrator can use this parameter to switch to the member\\"s view.
         self.role_for = role_for
 
     def validate(self):

@@ -13,11 +13,29 @@ class UpdateDataStorageDeliveryRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The log code.
+        # 
         # This parameter is required.
         self.log_code = log_code
+        # The status of log delivery. Valid values:
+        # 
+        # - enable: Enables log delivery.
+        # 
+        # - disable: Disables log delivery.
         self.log_delivery_status = log_delivery_status
+        # The region where the Data Management hub for Threat Analysis is located. Select the region of the management hub based on the region of your asset. Valid values:
+        # 
+        # - cn-hangzhou: Your asset is in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your asset is in a region outside China.
         self.region_id = region_id
+        # The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
         self.role_for = role_for
 
     def validate(self):

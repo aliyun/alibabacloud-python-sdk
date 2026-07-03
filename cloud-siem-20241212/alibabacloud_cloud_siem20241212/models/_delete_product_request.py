@@ -12,9 +12,21 @@ class DeleteProductRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The product ID.
         self.product_id = product_id
+        # The region of the Data Management center for Threat Analysis. Select a region for the Management Hub based on the region of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
+        # The user ID of the member. An administrator can use this parameter to switch to the member\\"s perspective.
         self.role_for = role_for
 
     def validate(self):

@@ -13,7 +13,9 @@ class GetIncidentResponseBody(DaraModel):
         incident: main_models.GetIncidentResponseBodyIncident = None,
         request_id: str = None,
     ):
+        # The event information.
         self.incident = incident
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,27 +64,63 @@ class GetIncidentResponseBodyIncident(DaraModel):
         relate_asset_count: int = None,
         relate_data_source_ids: Any = None,
         relate_user_ids: Any = None,
+        response_time: int = None,
         threat_level: str = None,
         threat_score: str = None,
         update_time: int = None,
     ):
+        # The count of attack stages associated with the event alerts.
         self.attck_tactics = attck_tactics
+        # The creation time.
         self.create_time = create_time
+        # The ID of the detection rule.
         self.detection_rule_id = detection_rule_id
+        # The event summaries type. Valid values:
+        # 
+        # - none: no event is generated.
+        # - graph_compute: graph computing (supported by predefined rules).
+        # - expert: expert rule.
+        # - passthrough: alerting pass-through (one-to-one).
+        # - window: same-type aggregation (window).
         self.incident_aggregation_type = incident_aggregation_type
+        # The description of the event.
         self.incident_description = incident_description
+        # The name of the event.
         self.incident_name = incident_name
+        # The remarks of the event.
         self.incident_remark = incident_remark
+        # The status of the event. Valid values:
+        # - 0: unhandled.
+        # - 1: handling.
+        # - 5: handling failed.
+        # - 10: handled.
         self.incident_status = incident_status
+        # The tags of the event.
         self.incident_tags = incident_tags
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The owner of the event.
         self.owner = owner
+        # The number of alerts associated with the event.
         self.relate_alert_count = relate_alert_count
+        # The number of assets associated with the event.
         self.relate_asset_count = relate_asset_count
+        # The list of associated data sources.
         self.relate_data_source_ids = relate_data_source_ids
+        # The list of user IDs associated with the event.
         self.relate_user_ids = relate_user_ids
+        # The response time. Unit: milliseconds (ms).
+        self.response_time = response_time
+        # The threat level. Valid values:
+        # - 5: critical.
+        # - 4: high.
+        # - 3: medium.
+        # - 2: low.
+        # - 1: informational.
         self.threat_level = threat_level
+        # The threat score of the event. Valid values: 0 to 100. A higher score indicates a higher risk level.
         self.threat_score = threat_score
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -137,6 +175,9 @@ class GetIncidentResponseBodyIncident(DaraModel):
 
         if self.relate_user_ids is not None:
             result['RelateUserIds'] = self.relate_user_ids
+
+        if self.response_time is not None:
+            result['ResponseTime'] = self.response_time
 
         if self.threat_level is not None:
             result['ThreatLevel'] = self.threat_level
@@ -195,6 +236,9 @@ class GetIncidentResponseBodyIncident(DaraModel):
 
         if m.get('RelateUserIds') is not None:
             self.relate_user_ids = m.get('RelateUserIds')
+
+        if m.get('ResponseTime') is not None:
+            self.response_time = m.get('ResponseTime')
 
         if m.get('ThreatLevel') is not None:
             self.threat_level = m.get('ThreatLevel')

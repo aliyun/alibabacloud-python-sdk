@@ -18,12 +18,19 @@ class ListDataSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of datasets.
         self.data_sets = data_sets
+        # The maximum number of results to return for the request. This parameter is used for queries that use NextToken. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
+        # The token that is used to start the next query.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -106,17 +113,37 @@ class ListDataSetsResponseBodyDataSets(DaraModel):
         ip_whitelist_recognizers: List[main_models.ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers] = None,
         update_time: int = None,
     ):
+        # The time when the dataset was created.
         self.create_time = create_time
+        # The description of the dataset.
         self.data_set_description = data_set_description
+        # The name of the unique key for the dataset.
         self.data_set_field_key_name = data_set_field_key_name
+        # The names of the fields in the dataset.
         self.data_set_field_names = data_set_field_names
+        # The name of the uploaded dataset file.
         self.data_set_file_name = data_set_file_name
+        # The ID of the dataset.
         self.data_set_id = data_set_id
+        # The name of the dataset.
         self.data_set_name = data_set_name
+        # The dataset references.
         self.data_set_references = data_set_references
+        # The status of the dataset. Valid values:
+        # 
+        # - 0: deleted.
+        # 
+        # - 1: enabled.
         self.data_set_status = data_set_status
+        # The type of the dataset. Valid values:
+        # 
+        # - custom: custom.
+        # 
+        # - preset: predefined.
         self.data_set_type = data_set_type
+        # The list of recognizers.
         self.ip_whitelist_recognizers = ip_whitelist_recognizers
+        # The time when the dataset was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -230,9 +257,39 @@ class ListDataSetsResponseBodyDataSetsIpWhitelistRecognizers(DaraModel):
         recognize_scope: str = None,
         update_time: int = None,
     ):
+        # The status of automatic detection. Valid values:
+        # 
+        # - enabled: enabled.
+        # 
+        # - disabled: disabled.
         self.auto_recognize_status = auto_recognize_status
+        # The type of IP address that the recognizer detects. Valid values:
+        # 
+        # - sas_vulnerability_scanner_ip: Security Center web vulnerability scanner IP address.
+        # 
+        # - waf_back_source_ip: Web Application Firewall back-to-origin IP address.
+        # 
+        # - ddos_back_source_ip: Anti-DDoS back-to-origin IP address.
+        # 
+        # - esa_back_source_ip: Edge Security Acceleration (ESA) back-to-origin node IP address.
+        # 
+        # - ecs_public_ip: Elastic Compute Service (ECS) public IP address.
+        # 
+        # - slb_public_ip: Server Load Balancer (SLB) public IP address.
+        # 
+        # - vpc_eip: Elastic IP Address (EIP).
+        # 
+        # - cdn_back_source_ip: Alibaba Cloud CDN back-to-origin IP address.
+        # 
+        # - ga_back_source_ip: Global Accelerator (GA) back-to-origin IP address.
         self.ip_whitelist_recognizer_type = ip_whitelist_recognizer_type
+        # The detection scope. Valid values:
+        # 
+        # - current_account: current account only.
+        # 
+        # - rd_accounts: multiple accounts.
         self.recognize_scope = recognize_scope
+        # The time when the dataset was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -281,9 +338,17 @@ class ListDataSetsResponseBodyDataSetsDataSetReferences(DaraModel):
         data_set_reference_name: str = None,
         data_set_reference_type: str = None,
     ):
+        # The ID of the dataset.
         self.data_set_id = data_set_id
+        # The ID of the rule or playbook that is associated with the dataset.
         self.data_set_reference_id = data_set_reference_id
+        # The name of the rule or playbook that is associated with the dataset.
         self.data_set_reference_name = data_set_reference_name
+        # The type of the service that is associated with the dataset. Valid values:
+        # 
+        # - custom_rule: custom rule.
+        # 
+        # - playbook: playbook.
         self.data_set_reference_type = data_set_reference_type
 
     def validate(self):

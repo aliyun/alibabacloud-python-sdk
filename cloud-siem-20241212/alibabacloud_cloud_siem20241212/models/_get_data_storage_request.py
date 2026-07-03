@@ -11,8 +11,15 @@ class GetDataStorageRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        # The region where the threat analysis data management center is located. Specify the management center region based on the region of your assets. Valid values:
+        # - cn-hangzhou: the asset is in the Chinese mainland.
+        # - ap-southeast-1: the asset is outside China.
         self.region_id = region_id
+        # The ID of the member to which the administrator switches the view.
         self.role_for = role_for
 
     def validate(self):

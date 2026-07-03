@@ -10,8 +10,9 @@ class CreateResponseRuleResponseBody(DaraModel):
         request_id: str = None,
         response_rule_id: str = None,
     ):
-        # Id of the request
+        # The unique request ID.
         self.request_id = request_id
+        # The ID of the automatic response rule.
         self.response_rule_id = response_rule_id
 
     def validate(self):

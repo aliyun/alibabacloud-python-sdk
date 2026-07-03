@@ -13,11 +13,29 @@ class UpdateDataStorageRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The log storage region.
+        # 
         # This parameter is required.
         self.data_storage_region_id = data_storage_region_id
+        # The global switch for log delivery in Log Management. This parameter is not yet available. Valid values:
+        # 
+        # - enable: Enables global delivery.
+        # 
+        # - disable: Disables global delivery.
         self.delivery_status = delivery_status
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region where the Data Management center for threat analysis is located. This region must be the same as the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: The assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can specify this parameter to switch to the perspective of the member.
         self.role_for = role_for
 
     def validate(self):

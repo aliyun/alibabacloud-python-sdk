@@ -10,7 +10,9 @@ class CreateVendorResponseBody(DaraModel):
         request_id: str = None,
         vendor_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The vendor ID.
         self.vendor_id = vendor_id
 
     def validate(self):

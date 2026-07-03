@@ -19,13 +19,21 @@ class ListNormalizationRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
+        # The list of normalization rules.
         self.normalization_rules = normalization_rules
+        # The page number of the current page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -105,6 +113,7 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
         extend_content_packed: str = None,
         extend_field_store_mode: str = None,
         normalization_category_id: str = None,
+        normalization_field_source: str = None,
         normalization_rule_description: str = None,
         normalization_rule_expression: str = None,
         normalization_rule_format: str = None,
@@ -116,27 +125,55 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
         normalization_rule_type: str = None,
         normalization_rule_version: str = None,
         normalization_schema_id: str = None,
+        normalization_security_domain_id: str = None,
         product_id: str = None,
         update_time: int = None,
         vendor_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # Specifies whether non-standard fields are packed into the extend_content field. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
+        # The storage mode for extended fields. Valid values: flat (ingest as-is), reject (do not ingest), and pack (pack into the extend_content field).
         self.extend_field_store_mode = extend_field_store_mode
+        # The category ID of the normalization rule.
         self.normalization_category_id = normalization_category_id
+        self.normalization_field_source = normalization_field_source
+        # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
+        # The expression of the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
+        # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
+        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
+        # The mode of the normalization rule. Valid values:
+        # - both
+        # - scan
+        # - realtime.
         self.normalization_rule_mode = normalization_rule_mode
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
+        # The list of associated ingestion policies.
         self.normalization_rule_references = normalization_rule_references
+        # The status of the normalization rule.
         self.normalization_rule_status = normalization_rule_status
+        # The type of the normalization rule. Valid values:
+        # - predefined: predefined normalization rule.
+        # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
+        # The current version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        self.normalization_security_domain_id = normalization_security_domain_id
+        # The product ID.
         self.product_id = product_id
+        # The update time.
         self.update_time = update_time
+        # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -161,6 +198,9 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
 
         if self.normalization_category_id is not None:
             result['NormalizationCategoryId'] = self.normalization_category_id
+
+        if self.normalization_field_source is not None:
+            result['NormalizationFieldSource'] = self.normalization_field_source
 
         if self.normalization_rule_description is not None:
             result['NormalizationRuleDescription'] = self.normalization_rule_description
@@ -197,6 +237,9 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
         if self.normalization_schema_id is not None:
             result['NormalizationSchemaId'] = self.normalization_schema_id
 
+        if self.normalization_security_domain_id is not None:
+            result['NormalizationSecurityDomainId'] = self.normalization_security_domain_id
+
         if self.product_id is not None:
             result['ProductId'] = self.product_id
 
@@ -221,6 +264,9 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
 
         if m.get('NormalizationCategoryId') is not None:
             self.normalization_category_id = m.get('NormalizationCategoryId')
+
+        if m.get('NormalizationFieldSource') is not None:
+            self.normalization_field_source = m.get('NormalizationFieldSource')
 
         if m.get('NormalizationRuleDescription') is not None:
             self.normalization_rule_description = m.get('NormalizationRuleDescription')
@@ -258,6 +304,9 @@ class ListNormalizationRulesResponseBodyNormalizationRules(DaraModel):
         if m.get('NormalizationSchemaId') is not None:
             self.normalization_schema_id = m.get('NormalizationSchemaId')
 
+        if m.get('NormalizationSecurityDomainId') is not None:
+            self.normalization_security_domain_id = m.get('NormalizationSecurityDomainId')
+
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')
 
@@ -274,6 +323,7 @@ class ListNormalizationRulesResponseBodyNormalizationRulesNormalizationRuleRefer
         self,
         data_ingestion_id: str = None,
     ):
+        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
 
     def validate(self):

@@ -11,8 +11,19 @@ class GetDataBatchIngestionRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region where the Data Management Center for threat analysis is located. Select the region of the Management Center based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can use this parameter to switch to the member\\"s perspective.
         self.role_for = role_for
 
     def validate(self):

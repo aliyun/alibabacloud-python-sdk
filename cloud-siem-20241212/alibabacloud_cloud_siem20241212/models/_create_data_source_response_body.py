@@ -10,7 +10,9 @@ class CreateDataSourceResponseBody(DaraModel):
         data_source_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the data source.
         self.data_source_id = data_source_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

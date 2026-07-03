@@ -10,7 +10,13 @@ class ListLogRegionsRequest(DaraModel):
         lang: str = None,
         role_for: int = None,
     ):
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The user ID of the member whose perspective the administrator wants to use.
         self.role_for = role_for
 
     def validate(self):

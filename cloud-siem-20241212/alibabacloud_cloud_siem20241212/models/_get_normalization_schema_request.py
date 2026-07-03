@@ -13,10 +13,21 @@ class GetNormalizationSchemaRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        # The ID of the normalization rule category.
         self.normalization_schema_id = normalization_schema_id
+        # The normalization schema type. Valid values:
+        # - log: log.
+        # - entity: entity.
         self.normalization_schema_type = normalization_schema_type
+        # The region where the threat analysis data management center resides. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID that the administrator switches to when viewing as another member.
         self.role_for = role_for
 
     def validate(self):

@@ -12,9 +12,21 @@ class GetLogTicketRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The user ID for data access.
         self.log_user_id = log_user_id
+        # The region of the Data Management hub for threat analysis. Select the region based on the location of your asset. Valid values:
+        # 
+        # - cn-hangzhou: The asset is in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The asset is in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. This parameter lets an administrator switch to the perspective of the member.
         self.role_for = role_for
 
     def validate(self):

@@ -19,19 +19,49 @@ class ListDataSetRecordsRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The ID of the dataset.
+        # 
         # This parameter is required.
         self.data_set_id = data_set_id
+        # The filter conditions, specified as a JSON string. For example: {"field1":"value1","field2":"value2"}
         self.filter = filter
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The maximum number of results to return for each request when `NextToken` is used for pagination. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # - "desc" (default)
+        # 
+        # - "asc"
         self.order = order
+        # The sort field. Valid values:
+        # 
+        # - "updatetime" (default)
+        # 
+        # - "createtime"
         self.order_field = order_field
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region of the data management center for Threat Analysis. Select the region where your assets are located. Valid values:
+        # 
+        # - `cn-hangzhou`: For assets in the Chinese mainland.
+        # 
+        # - `ap-southeast-1`: For assets in regions outside mainland China.
         self.region_id = region_id
+        # The user ID that an administrator can use to view data as another member.
         self.role_for = role_for
 
     def validate(self):

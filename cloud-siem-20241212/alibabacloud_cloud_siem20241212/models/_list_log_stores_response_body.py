@@ -15,10 +15,15 @@ class ListLogStoresResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of Simple Log Service Logstores.
         self.log_stores = log_stores
+        # The maximum number of entries returned on this call.
         self.max_results = max_results
+        # The token that is used to start the next query. If this parameter is empty, no subsequent query is required.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

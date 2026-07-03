@@ -13,7 +13,9 @@ class ListTrafficStatisticsResponseBody(DaraModel):
         request_id: str = None,
         traffic_statistics: List[main_models.ListTrafficStatisticsResponseBodyTrafficStatistics] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of traffic statistics.
         self.traffic_statistics = traffic_statistics
 
     def validate(self):
@@ -56,7 +58,9 @@ class ListTrafficStatisticsResponseBodyTrafficStatistics(DaraModel):
         traffic_statistic_data: List[main_models.ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData] = None,
         traffic_statistic_target: str = None,
     ):
+        # The statistics information.
         self.traffic_statistic_data = traffic_statistic_data
+        # The statistic target.
         self.traffic_statistic_target = traffic_statistic_target
 
     def validate(self):
@@ -99,7 +103,9 @@ class ListTrafficStatisticsResponseBodyTrafficStatisticsTrafficStatisticData(Dar
         traffic_statistic_time: int = None,
         traffic_statistic_value: float = None,
     ):
+        # The statistic time.
         self.traffic_statistic_time = traffic_statistic_time
+        # The statistic value.
         self.traffic_statistic_value = traffic_statistic_value
 
     def validate(self):

@@ -12,9 +12,21 @@ class DeleteNormalizationRuleRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # The region of the threat analysis Management Hub. Select the region of the Management Hub based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can specify this parameter to operate on behalf of the member.
         self.role_for = role_for
 
     def validate(self):
