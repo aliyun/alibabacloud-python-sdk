@@ -16,9 +16,9 @@ class DescribeCloudSiemEventDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The returned message.
         self.message = message
@@ -26,8 +26,9 @@ class DescribeCloudSiemEventDetailResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -107,16 +108,17 @@ class DescribeCloudSiemEventDetailResponseBodyData(DaraModel):
         self.aliuid = aliuid
         # The number of assets that are associated with the event.
         self.asset_num = asset_num
-        # The tags of the ATT\\&CK attacks.
+        # The ATT\\&CK technique labels.
         self.att_ck_labels = att_ck_labels
+        # The attack stages.
         self.attck_stages = attck_stages
-        # The source of the alert.
+        # The cloud services that generated the alerts associated with the event.
         self.data_sources = data_sources
         # The description of the event.
         self.description = description
-        # The description of the event in English.
+        # The English description of the event.
         self.description_en = description_en
-        # The extended information of the event in the JSON format.
+        # The extended information about the event, in JSON format.
         self.ext_content = ext_content
         # The time when the event occurred.
         self.gmt_create = gmt_create
@@ -124,30 +126,45 @@ class DescribeCloudSiemEventDetailResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The name of the event.
         self.incident_name = incident_name
-        # The name of the event in English.
+        # The English name of the event.
         self.incident_name_en = incident_name_en
+        # The type of the event.
+        # 
+        # - net-attack: Expert rule
+        # 
+        # - graph: Graph computing
+        # 
+        # - singleToSingle: Alert pass-through
+        # 
+        # - allToSingle: Alert aggregation
         self.incident_type = incident_type
-        # The UUID of the event.
+        # The globally unique ID of the event.
         self.incident_uuid = incident_uuid
-        # Users associated with the event.
+        # The linked accounts.
         self.refer_account = refer_account
-        # The remarks of the event.
+        # The remarks for the event.
         self.remark = remark
+        # The rule that is used to generate the event.
         self.rule_id = rule_id
         # The status of the event. Valid values:
         # 
-        # *   0: not handled
-        # *   1: handing
-        # *   5: handling failed
-        # *   10: handled
-        self.status = status
-        # The risk level. Valid values:
+        # - 0: unhandled
         # 
-        # *   serious: high
-        # *   suspicious: medium
-        # *   remind: low
+        # - 1: handling
+        # 
+        # - 5: handling failed
+        # 
+        # - 10: handled
+        self.status = status
+        # The threat level. Valid values:
+        # 
+        # - serious: high
+        # 
+        # - suspicious: medium
+        # 
+        # - remind: low
         self.threat_level = threat_level
-        # The risk score of the event. The score ranges from 0 to 100. A higher score indicates a higher risk level.
+        # The threat score of the event. The score is a value from 0 to 100. A higher score indicates a higher threat level.
         self.threat_score = threat_score
 
     def validate(self):
@@ -305,8 +322,11 @@ class DescribeCloudSiemEventDetailResponseBodyDataAttckStages(DaraModel):
         tactic_id: str = None,
         tactic_name: str = None,
     ):
+        # The number of alerts that are associated with the tactic.
         self.alert_num = alert_num
+        # The ID of the ATT\\&CK tactic.
         self.tactic_id = tactic_id
+        # The name of the tactic.
         self.tactic_name = tactic_name
 
     def validate(self):

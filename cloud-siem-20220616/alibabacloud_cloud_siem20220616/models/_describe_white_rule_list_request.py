@@ -16,30 +16,33 @@ class DescribeWhiteRuleListRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The name of the alert.
+        # The alert name.
         self.alert_name = alert_name
-        # The type of the alert.
+        # The alert type.
         self.alert_type = alert_type
-        # The page number. Pages start from page 1.
+        # The page number. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The UUID of the event.
+        # The universally unique identifier (UUID) of the event.
         self.incident_uuid = incident_uuid
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page. The maximum value is 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the data management center of Threat Analysis is deployed. You must select the region where your assets are located. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are deployed in the Chinese mainland or in the China (Hong Kong) region.
+        # 
+        # - ap-southeast-1: Your assets are deployed in regions outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The ID of the member. This parameter is used in a multi-account management scenario. An administrator can specify this parameter to query the data of a member.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The view type.
+        # 
+        # - 0: the view of the current Alibaba Cloud account.
+        # 
+        # - 1: the view of all accounts that are managed by the administrator account.
         self.role_type = role_type
 
     def validate(self):

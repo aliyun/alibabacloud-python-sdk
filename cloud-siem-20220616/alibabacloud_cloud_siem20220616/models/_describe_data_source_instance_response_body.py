@@ -15,7 +15,7 @@ class DescribeDataSourceInstanceResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,17 +54,19 @@ class DescribeDataSourceInstanceResponseBodyData(DaraModel):
         data_source_instance_id: str = None,
         data_source_instance_params: List[main_models.DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams] = None,
     ):
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The code of the cloud service provider. Valid values:
+        # The code for the multicloud environment. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+        # The ID of the data source. The threat analysis service generates the ID by calculating the MD5 hash of specific parameters.
         self.data_source_instance_id = data_source_instance_id
-        # The parameters of the data source.
+        # The list of detailed parameters for the data source.
         self.data_source_instance_params = data_source_instance_params
 
     def validate(self):
@@ -119,9 +121,9 @@ class DescribeDataSourceInstanceResponseBodyDataDataSourceInstanceParams(DaraMod
         para_code: str = None,
         para_value: str = None,
     ):
-        # The code of the parameter.
+        # The parameter code.
         self.para_code = para_code
-        # The value of the parameter.
+        # The parameter value.
         self.para_value = para_value
 
     def validate(self):

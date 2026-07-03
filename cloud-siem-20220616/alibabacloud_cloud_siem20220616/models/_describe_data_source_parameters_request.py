@@ -11,28 +11,25 @@ class DescribeDataSourceParametersRequest(DaraModel):
         data_source_type: str = None,
         region_id: str = None,
     ):
-        # The code of the cloud service provider.
-        # 
-        # Valid values:
-        # 
-        # *   qcloud
-        # *   hcloud
-        # *   aliyun
+        # The code for the multicloud environment.
         # 
         # This parameter is required.
         self.cloud_code = cloud_code
         # The type of the data source. Valid values:
         # 
-        # *   **ckafka**: Tencent Cloud TDMQ for CKafka
-        # *   **obs**: Huawei Cloud Object Storage Service (OBS)
-        # *   **wafApi**: download API of Tencent Cloud Web Application Firewall (WAF)
+        # - **ckafka**: Tencent Cloud CKafka.
+        # 
+        # - **obs**: Huawei Cloud OBS.
+        # 
+        # - **wafApi**: Tencent Cloud WAF attack log download API.
         # 
         # This parameter is required.
         self.data_source_type = data_source_type
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management center for threat analysis is deployed. Select a region based on the region where your assets are located. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
 
     def validate(self):

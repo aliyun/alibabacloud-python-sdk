@@ -16,29 +16,35 @@ class DescribeDisposeAndPlaybookRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The page number. Pages start from page 1.
+        # 列表当前页号， 大于等于 1。
         self.current_page = current_page
         # The entity type. Valid values:
         # 
-        # *   ip
-        # *   process
-        # *   file
-        self.entity_type = entity_type
-        self.entity_uuid = entity_uuid
-        # The UUID of the event.
-        self.incident_uuid = incident_uuid
-        # The number of entries to return on each page. Maximum value: 100.
-        self.page_size = page_size
-        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # - `ip`: IP address
         # 
-        # *   cn-hangzhou: Your assets reside in regions inside China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - `process`: process
+        # 
+        # - `file`: file
+        self.entity_type = entity_type
+        # 实体 uuid。
+        self.entity_uuid = entity_uuid
+        # The incident UUID.
+        self.incident_uuid = incident_uuid
+        # 列表每页条数， 最大不超过 100。
+        self.page_size = page_size
+        # 威胁分析的数据管理中心所在地。您需要根据资产所在地域，选择管理中心所在地。取值：
+        # 
+        # - cn-hangzhou：资产属于中国内地与中国香港
+        # 
+        # - ap-southeast-1：资产属于海外地域
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # 管理员切换成其他成员视角的用户 ID。
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # 视图类型。
+        # 
+        # - 0：当前阿里云账号视图。
+        # 
+        # - 1：企业下所有账号的视图。
         self.role_type = role_type
 
     def validate(self):

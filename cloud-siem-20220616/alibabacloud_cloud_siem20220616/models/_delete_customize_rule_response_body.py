@@ -13,9 +13,9 @@ class DeleteCustomizeRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The status code of the request.
         self.code = code
-        # The data returned.
+        # The return value of the request.
         self.data = data
         # The returned message.
         self.message = message
@@ -23,8 +23,9 @@ class DeleteCustomizeRuleResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

@@ -16,18 +16,19 @@ class DescribeDisposeAndPlaybookResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The HTTP status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -139,20 +140,33 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseData(DaraModel):
     ):
         # The number of alerts that are associated with the entity.
         self.alert_num = alert_num
-        # The object for handling.
+        # The disposition object.
         self.dispose = dispose
-        # The entity ID
+        # The ID of the entity.
         self.entity_id = entity_id
-        # The entity information.
+        # The information about the entity.
         self.entity_info = entity_info
+        # The type of the entity. Valid values:
+        # 
+        # - `ip`: IP address
+        # 
+        # - `domain`: Domain name
+        # 
+        # - `url`: URL
+        # 
+        # - `process`: Process
+        # 
+        # - `file`: File
+        # 
+        # - `host`: Host
         self.entity_type = entity_type
-        # The key-value pairs each of which consists of opcode and oplevel.
+        # The opcode and the corresponding operation level.
         self.opcode_map = opcode_map
-        # The codes of the playbooks that are recommended for entity handling.
+        # The recommended playbook opcode for the entity.
         self.opcode_set = opcode_set
-        # The playbooks that can handle the entity.
+        # The list of playbooks that can be used to handle the entity.
         self.playbook_list = playbook_list
-        # The IDs of the users who can handle objects.
+        # The list of user IDs that are authorized to perform the disposition.
         self.scope = scope
 
     def validate(self):
@@ -246,30 +260,43 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(DaraMod
         uuid: str = None,
         waf_playbook: bool = None,
     ):
+        # Indicates whether the playbook is available.
+        # 
+        # - 1: available
+        # 
+        # - 0: unavailable
         self.available = available
-        # The playbook description.
+        # The description of the playbook.
         self.description = description
         # The display name of the playbook.
         self.display_name = display_name
-        # The playbook name, which is the unique identifier of the playbook.
+        # The name of the playbook, which is the unique identifier of the playbook.
         self.name = name
-        # The opcode of the playbook, which corresponds to the opcode of the playbook recommended for entity handling.
+        # The opcode of the playbook. The value corresponds to the recommended playbook opcode of the entity.
         self.op_code = op_code
-        # Indicates whether quick event handling is selected by default. Valid values:
+        # Indicates whether the playbook is selected by default for one-click event disposition. Valid values:
         # 
-        # *   2: Quick event handling is selected.
-        # *   1: Quick event handling is displayed but not selected.
+        # - 2: selected
+        # 
+        # - 1: displayed but not selected
         self.op_level = op_level
-        # The playbook parameters and the corresponding properties.
+        # The list of parameters for the playbook and the attributes of the parameters.
         self.param_config = param_config
-        # The opcode configuration.
+        # The configuration of the opcode.
         self.task_config = task_config
-        self.un_available_code = un_available_code
-        self.uuid = uuid
-        # Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
+        # The reason why the playbook is unavailable.
         # 
-        # *   true
-        # *   false
+        # - PARAM_INVALID: The input parameters are invalid.
+        # 
+        # - NO_INGESTION: The required service is not integrated.
+        self.un_available_code = un_available_code
+        # The UUID of the playbook, which is the unique identifier of the playbook.
+        self.uuid = uuid
+        # Indicates whether the playbook is a WAF playbook. Valid values:
+        # 
+        # - `true`: Yes
+        # 
+        # - `false`: No
         self.waf_playbook = waf_playbook
 
     def validate(self):
@@ -361,9 +388,9 @@ class DescribeDisposeAndPlaybookResponseBodyDataPageInfo(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

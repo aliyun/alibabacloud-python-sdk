@@ -11,9 +11,9 @@ class AddUserSourceLogConfigResponseBody(DaraModel):
         data: main_models.AddUserSourceLogConfigResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The return value of the request.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,21 +56,21 @@ class AddUserSourceLogConfigResponseBodyData(DaraModel):
         sub_user_id: int = None,
         sub_user_name: str = None,
     ):
-        # The display details of the Logstore.
+        # The detailed information about the SLS log.
         self.diplay_line = diplay_line
-        # Indicates whether the details of added logs are returned. Valid values: true false
+        # Indicates whether the details of the log collection task are returned. Valid values:
         self.displayed = displayed
-        # Indicates whether the logs are added to the threat analysis feature. Valid values: true false
+        # Indicates whether the log is collected. Valid values:
         self.imported = imported
-        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
         self.main_user_id = main_user_id
-        # The log code.
+        # The code of the log.
         self.source_log_code = source_log_code
-        # The code of the cloud service.
+        # The code of the product.
         self.source_prod_code = source_prod_code
-        # The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+        # The ID of the Alibaba Cloud account for which the logs are collected.
         self.sub_user_id = sub_user_id
-        # The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+        # The name of the Alibaba Cloud account for which the logs are collected.
         self.sub_user_name = sub_user_name
 
     def validate(self):

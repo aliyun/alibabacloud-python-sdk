@@ -14,18 +14,27 @@ class ListBindAccountRequest(DaraModel):
     ):
         # The code of the cloud service provider. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         # 
         # This parameter is required.
         self.cloud_code = cloud_code
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the data management center of Threat Analysis is deployed. Select the region of the data management center based on the region of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
+        # The user ID of the member whose perspective the administrator wants to switch to.
         self.role_for = role_for
+        # The view type.
+        # 
+        # - 0: The view of the current Alibaba Cloud account.
+        # 
+        # - 1: The view of all accounts that are managed by the enterprise.
         self.role_type = role_type
 
     def validate(self):

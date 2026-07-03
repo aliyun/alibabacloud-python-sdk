@@ -13,22 +13,25 @@ class DescribeDisposeStrategyPlaybookRequest(DaraModel):
         role_type: int = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. Unit: milliseconds.
+        # The end time of the query. This value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # The region of the Data Management center for Threat Analysis. Select a region based on the location of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions inside China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: The assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: The assets are outside China.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The user ID of the member. An administrator can use this parameter to switch to the member\\"s view.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The view type.
+        # 
+        # - 0: The view of the current Alibaba Cloud account.
+        # 
+        # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type
-        # The beginning of the time range to query. Unit: milliseconds.
+        # The start time of the query. This value is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time

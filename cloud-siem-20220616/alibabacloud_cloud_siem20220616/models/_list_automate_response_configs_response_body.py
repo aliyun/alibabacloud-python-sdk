@@ -16,7 +16,7 @@ class ListAutomateResponseConfigsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The request status code.
         self.code = code
         # The data returned.
         self.data = data
@@ -26,8 +26,9 @@ class ListAutomateResponseConfigsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -141,41 +142,47 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(DaraModel):
         status: int = None,
         sub_user_id: int = None,
     ):
-        # The configuration of the action that is performed after the automated response rule is hit. The value is in the JSON format.
+        # The action configuration of the automated response rule. The value is a JSON array.
         self.action_config = action_config
-        # The type of the handling action. Multiple types are separated by commas (,). Valid values:
+        # The handling action. Multiple values are separated by commas. Valid values:
         # 
-        # *   **doPlaybook**: runs the playbook.
-        # *   **changeEventStatus**: changes the event status.
-        # *   **changeThreatLevel**: changes the risk level of the event.
+        # - **doPlaybook**: executes a playbook.
+        # 
+        # - **changeEventStatus**: changes the status of an event.
+        # 
+        # - **changeThreatLevel**: changes the threat level of an event.
         self.action_type = action_type
-        # The ID of the Alibaba Cloud account that is associated with the rule in SIEM.
+        # The ID of the Alibaba Cloud account that is associated with the rule.
         self.aliuid = aliuid
-        # The type of the automated response rule. Valid values:
+        # The type of the automated response. Valid values:
         # 
-        # *   **event**
-        # *   **alert**
+        # - **event**
+        # 
+        # - **alert**
         self.auto_response_type = auto_response_type
-        # The type of the view. Valid values:
-        # 
-        # 0: the current Alibaba Cloud account
-        # 1: the global account
+        # The data type of the condition field in the automated response rule.
         self.data_type = data_type
         # The trigger condition of the automated response rule. The value is in the JSON format.
         self.execution_condition = execution_condition
-        # The creation time.
+        # The time when the rule was created.
         self.gmt_create = gmt_create
-        # The update time.
+        # The time when the rule was last modified.
         self.gmt_modified = gmt_modified
         # The ID of the automated response rule.
         self.id = id
+        # The type of the response rule.
+        # 
+        # - preset: predefined
+        # 
+        # - custom: custom
         self.response_rule_type = response_rule_type
         # The name of the automated response rule.
         self.rule_name = rule_name
         # The status of the rule. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **100**: enabled.
+        # - **0**: disabled
+        # 
+        # - **100**: enabled
         self.status = status
         # The ID of the user who created the rule.
         self.sub_user_id = sub_user_id
@@ -279,11 +286,11 @@ class ListAutomateResponseConfigsResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # The page number of the returned page.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

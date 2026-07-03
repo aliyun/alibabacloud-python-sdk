@@ -10,10 +10,11 @@ class SetStorageResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the settings are saved. Valid values:
+        # Indicates whether the settings were saved. Valid values:
         # 
-        # *   true:
-        # *   false:
+        # - true: The settings were saved.
+        # 
+        # - false: The settings failed to be saved.
         self.data = data
         # The request ID.
         self.request_id = request_id

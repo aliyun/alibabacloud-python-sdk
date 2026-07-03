@@ -16,18 +16,19 @@ class DescribeLogFieldsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The request status code.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -91,16 +92,17 @@ class DescribeLogFieldsResponseBodyData(DaraModel):
         field_type: str = None,
         log_code: str = None,
     ):
-        # The type of the log to which the field belongs.
+        # The log type to which the field belongs.
         self.activity_name = activity_name
-        # The internal code of the field description.
+        # The Medusa code for the field description.
         self.field_desc = field_desc
-        # The name of the field.
+        # The name of the rule field.
         self.field_name = field_name
         # The data type of the field. Valid values:
         # 
-        # *   varchar
-        # *   bigint
+        # - varchar: string
+        # 
+        # - bigint: number
         self.field_type = field_type
         # The log source to which the field belongs.
         self.log_code = log_code

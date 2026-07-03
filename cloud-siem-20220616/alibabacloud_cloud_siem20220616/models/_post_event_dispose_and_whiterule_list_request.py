@@ -20,35 +20,51 @@ class PostEventDisposeAndWhiteruleListRequest(DaraModel):
         status: int = None,
         threat_level: str = None,
     ):
+        # A comma-separated list of response strategy IDs.
         self.dispose_strategy_ids = dispose_strategy_ids
-        # The configuration of event handling. The value is a JSON object.
+        # A JSON object that defines the incident response configuration.
         self.event_dispose = event_dispose
-        # The UUID of the event.
+        # The globally unique UUID of the incident.
         self.incident_uuid = incident_uuid
+        # The UID of the incident owner.
         self.owner = owner
-        # The configuration of the alert recipient. The value is a JSON object.
+        # A JSON object that defines the alert recipient configuration.
         self.receiver_info = receiver_info
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management service for threat analysis is deployed. Select a region based on where your assets are located. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Assets in the Chinese mainland or Hong Kong (China)
+        # 
+        # - ap-southeast-1: Assets outside China
         self.region_id = region_id
-        # The remarks of the event.
+        # A note about the incident.
         self.remark = remark
+        # The source of the response policy.
         self.response_source = response_source
-        # The ID of the account that you switch from the management account.
+        # The UID of the member whose perspective an administrator switches to.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
-        self.role_type = role_type
-        # The status of the event. Valid values:
+        # The view type. Valid values:
         # 
-        # *   0: unhandled
-        # *   1: handing
-        # *   5: handling failed
-        # *   10: handled
+        # - 0: Current Alibaba Cloud account view
+        # 
+        # - 1: View for all accounts in your enterprise
+        self.role_type = role_type
+        # The incident status. Valid values:
+        # 
+        # - 0: Not handled
+        # 
+        # - 1: Handling
+        # 
+        # - 5: Failed
+        # 
+        # - 10: Handled
         self.status = status
+        # The threat level. Valid values:
+        # 
+        # - serious: Important
+        # 
+        # - suspicious: Medium
+        # 
+        # - remind: Low
         self.threat_level = threat_level
 
     def validate(self):

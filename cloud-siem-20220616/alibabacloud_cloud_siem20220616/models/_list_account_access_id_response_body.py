@@ -22,12 +22,13 @@ class ListAccountAccessIdResponseBody(DaraModel):
         self.data = data
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,22 +94,23 @@ class ListAccountAccessIdResponseBodyData(DaraModel):
         cloud_code: str = None,
         sub_user_id: int = None,
     ):
-        # The AccessKey ID of the cloud account that is added to the threat analysis feature.
+        # The attached AccessKey ID.
         self.access_id = access_id
-        # The MD5 hash value of the AccessKey ID.
+        # The MD5 value of the multicloud AccessKey ID.
         self.access_id_md_5 = access_id_md_5
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The information about the cloud account to which the AccessKey ID belongs. The value is in the following format: Alibaba Cloud account ID|Alibaba Cloud account username|AccessKey ID.
+        # The information of the account to which the multicloud AccessKey ID belongs. The format is: Alibaba Cloud account ID|Alibaba Cloud account name|Multicloud AccessKey ID.
         self.account_str = account_str
-        # Indicates whether the cloud account to which the AccessKey ID belongs is added to the threat analysis feature. Valid values:
+        # Indicates whether the AccessKey ID is attached to threat analysis. Valid values:
         # 
-        # *   0: no
-        # *   1: yes
+        # - 0: Not attached.
+        # 
+        # - 1: Attached.
         self.bound = bound
-        # The code of the cloud service provider.
+        # The code for the multicloud environment.
         self.cloud_code = cloud_code
-        # The ID of the Alibaba Cloud account that is used to add the third-party cloud account.
+        # The ID of the Alibaba Cloud account that corresponds to the multicloud AccessKey ID.
         self.sub_user_id = sub_user_id
 
     def validate(self):

@@ -12,20 +12,21 @@ class ListProjectLogStoresRequest(DaraModel):
         source_prod_code: str = None,
         sub_user_id: int = None,
     ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region of the Data Management center for threat analysis. Specify the region based on where your assets are located. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Assets are in regions outside China.
         self.region_id = region_id
-        # The log code.
+        # The code of the log to query.
         # 
         # This parameter is required.
         self.source_log_code = source_log_code
-        # The code of the cloud service.
+        # The code of the product to query.
         # 
         # This parameter is required.
         self.source_prod_code = source_prod_code
-        # The ID of the Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account to query.
         # 
         # This parameter is required.
         self.sub_user_id = sub_user_id

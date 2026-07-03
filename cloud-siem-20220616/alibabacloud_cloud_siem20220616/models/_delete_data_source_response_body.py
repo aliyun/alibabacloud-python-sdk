@@ -11,9 +11,9 @@ class DeleteDataSourceResponseBody(DaraModel):
         data: main_models.DeleteDataSourceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The return value of the request.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class DeleteDataSourceResponseBodyData(DaraModel):
         self,
         count: int = None,
     ):
-        # The number of data sources that are removed. The value 1 indicates that data source is removed, and a value less than or equal to 0 indicates that the data source failed to be removed.
+        # The number of data sources that are deleted. A value of 1 indicates success. A value of 0 or less indicates failure.
         self.count = count
 
     def validate(self):

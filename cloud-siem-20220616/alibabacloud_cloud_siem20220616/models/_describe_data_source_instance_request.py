@@ -12,26 +12,29 @@ class DescribeDataSourceInstanceRequest(DaraModel):
         data_source_instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         # 
         # This parameter is required.
         self.account_id = account_id
-        # The code of the cloud service provider. Valid values:
+        # The code for the multicloud environment. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         # 
         # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to query the IDs of data sources.
+        # The ID of the data source. The threat analysis service generates the ID by calculating the MD5 hash of specific parameters. Call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) operation to obtain the data source ID.
         # 
         # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management center of the threat analysis service is located. Select a region based on the region where your assets are located. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
 
     def validate(self):

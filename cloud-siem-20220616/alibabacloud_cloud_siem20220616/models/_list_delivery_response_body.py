@@ -13,7 +13,7 @@ class ListDeliveryResponseBody(DaraModel):
         data: main_models.ListDeliveryResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -56,20 +56,21 @@ class ListDeliveryResponseBodyData(DaraModel):
         project_name: str = None,
         search_url: str = None,
     ):
-        # The URL that is displayed in charts.
+        # The URL of the dashboard on the log analysis page.
         self.dashboard_url = dashboard_url
-        # Indicates whether the log delivery switch is displayed. Default value: true. Valid values:
+        # Indicates whether to display the delivery switch. The default value is true. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The delivery switch is displayed.
+        # 
+        # - false: The delivery switch is hidden.
         self.display_switch_or_not = display_switch_or_not
-        # The name of the Logstore for the threat analysis feature on the user side. The value is in the cloud_siem format.
+        # The name of your LogStore for threat analysis. The format is \\`cloud_siem\\`.
         self.log_store_name = log_store_name
-        # The cloud services.
+        # A list of products.
         self.product_list = product_list
-        # The name of the project for the threat analysis feature in Simple Log service on the user side. The value is in the aliyun-cloudsiem-data-${aliUid}-${region} format.
+        # The name of your Simple Log Service (SLS) project for threat analysis. The format is \\`aliyun-cloudsiem-data-${aliUid}-${region}\\`.
         self.project_name = project_name
-        # The URL that is used for log analysis.
+        # The URL of the Search & Analysis page in the SLS console.
         self.search_url = search_url
 
     def validate(self):
@@ -138,37 +139,59 @@ class ListDeliveryResponseBodyDataProductList(DaraModel):
         product_code: str = None,
         product_name: str = None,
     ):
-        # The logs of the cloud services.
+        # A list of logs for cloud products that do not have subcategories.
         self.log_list = log_list
-        # The log group. For example, in Security Center, the logs of hosts and networks are stored in different groups. Key indicates the group information, and value indicates the logs in the group.
+        # A list of logs that are categorized. For example, Security Center logs are categorized into groups such as Host and Network. The group is the key, and the logs in the group are the value.
         self.log_map = log_map
-        # The code of the cloud service. Valid values:
+        # The code of the cloud product. Valid values:
         # 
-        # *   qcloud_waf
-        # *   qlcoud_cfw
-        # *   hcloud_waf
-        # *   hcloud_cfw
-        # *   ddos
-        # *   sas
-        # *   cfw
-        # *   config
-        # *   csk
-        # *   fc
-        # *   rds
-        # *   nas
-        # *   apigateway
-        # *   cdn
-        # *   mongodb
-        # *   eip
-        # *   slb
-        # *   vpc
-        # *   actiontrail
-        # *   waf
-        # *   bastionhost
-        # *   oss
-        # *   polardb
+        # - qcloud_waf
+        # 
+        # - qcloud_cfw
+        # 
+        # - hcloud_waf
+        # 
+        # - hcloud_cfw
+        # 
+        # - ddos
+        # 
+        # - sas
+        # 
+        # - cfw
+        # 
+        # - config
+        # 
+        # - csk
+        # 
+        # - fc
+        # 
+        # - rds
+        # 
+        # - nas
+        # 
+        # - apigateway
+        # 
+        # - cdn
+        # 
+        # - mongodb
+        # 
+        # - eip
+        # 
+        # - slb
+        # 
+        # - vpc
+        # 
+        # - actiontrail
+        # 
+        # - waf
+        # 
+        # - bastionhost
+        # 
+        # - oss
+        # 
+        # - polardb
         self.product_code = product_code
-        # This parameter is deprecated.
+        # This parameter is deprecated. You can ignore it.
         self.product_name = product_name
 
     def validate(self):
@@ -245,27 +268,29 @@ class ListDeliveryResponseBodyDataProductListLogList(DaraModel):
         status: bool = None,
         topic: str = None,
     ):
-        # Indicates whether the log delivery feature can be enabled or disabled. The feature can be enabled or disabled only by the administrator of the threat analysis feature. Valid values:
+        # Indicates whether the log delivery switch can be operated. Only the delegated administrator for threat analysis can operate the switch. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The switch can be operated.
+        # 
+        # - false: The switch cannot be operated.
         self.can_operate_or_not = can_operate_or_not
-        # The extended parameter.
+        # Additional parameters.
         self.extra_parameters = extra_parameters
-        # The code of the log.
+        # The log code.
         self.log_code = log_code
-        # This parameter is deprecated.
+        # This parameter is deprecated. You can ignore it.
         self.log_name = log_name
-        # This parameter is deprecated.
+        # This parameter is deprecated. You can ignore it.
         self.log_name_en = log_name_en
-        # The language code of the log that is used to indicate the language in which the log is displayed.
+        # The language key of the log name. This key is used to display the log name in different languages.
         self.log_name_key = log_name_key
-        # The status of the log delivery. Valid values:
+        # The log delivery status. Valid values:
         # 
-        # *   true: The logs are being delivered.
-        # *   false: The log delivery feature is disabled.
+        # - true: Delivery is in progress.
+        # 
+        # - false: Delivery is disabled.
         self.status = status
-        # The topic of the log in the Logstore. The value is an index field in the Logstore that can be used to distinguish different logs.
+        # The topic of the log in the LogStore. This parameter is an index field in the LogStore and is used to differentiate logs.
         self.topic = topic
 
     def validate(self):
@@ -344,9 +369,9 @@ class ListDeliveryResponseBodyDataProductListLogListExtraParameters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the extended parameter.
+        # The key of the additional parameter.
         self.key = key
-        # The value of the extended parameter.
+        # The value of the additional parameter.
         self.value = value
 
     def validate(self):

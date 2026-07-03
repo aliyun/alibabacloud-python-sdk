@@ -16,10 +16,17 @@ class ListEntitiesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code of the request.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - true: successful.
+        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -74,7 +81,9 @@ class ListEntitiesResponseBodyData(DaraModel):
         page_info: main_models.ListEntitiesResponseBodyDataPageInfo = None,
         response_data: List[main_models.ListEntitiesResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -117,9 +126,11 @@ class ListEntitiesResponseBodyData(DaraModel):
 class ListEntitiesResponseBodyDataResponseData(DaraModel):
     def __init__(
         self,
+        agent_analysis_reason: str = None,
         agent_confidence: str = None,
         agent_disposal_method: str = None,
         agent_disposal_playbook_uuid: str = None,
+        agent_disposal_reason: str = None,
         agent_disposal_suggestion: str = None,
         agent_disposes: List[main_models.ListEntitiesResponseBodyDataResponseDataAgentDisposes] = None,
         alert_num: int = None,
@@ -142,29 +153,73 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         sub_user_id: int = None,
         tags: str = None,
     ):
+        self.agent_analysis_reason = agent_analysis_reason
+        # The confidence level of the entity as determined by the agent.
         self.agent_confidence = agent_confidence
+        # The disposal method recommended by the agent.
         self.agent_disposal_method = agent_disposal_method
+        # The UUID of the playbook recommended by the agent for disposal.
         self.agent_disposal_playbook_uuid = agent_disposal_playbook_uuid
+        self.agent_disposal_reason = agent_disposal_reason
+        # The disposal suggestion recommended by the agent.
         self.agent_disposal_suggestion = agent_disposal_suggestion
+        # The list of disposal suggestions recommended by the agent.
         self.agent_disposes = agent_disposes
+        # The number of alerts associated with the entity.
         self.alert_num = alert_num
+        # The alert UUID.
         self.alert_uuid = alert_uuid
+        # The Alibaba Cloud account ID.
         self.aliuid = aliuid
+        # The code of the cloud service provider from which the entity originates. Valid values:
+        # - aliyun: Alibaba Cloud
+        # - qcloud: Tencent Cloud
+        # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
+        # The logical ID of the entity.
         self.entity_id = entity_id
+        # The display information of the entity in JSON format.
         self.entity_info = entity_info
+        # The entity name.
         self.entity_name = entity_name
+        # The entity type. Valid values:
+        # - ip: IP address
+        # - domain: domain name
+        # - url: URL
+        # - process: process
+        # - file: file
+        # - host: host
+        # - cloud_account: cloud account
+        # - container: container
+        # - bucket: Object Storage Service (OSS) bucket.
         self.entity_type = entity_type
+        # The entity UUID.
         self.entity_uuid = entity_uuid
+        # The number of events associated with the entity.
         self.event_num = event_num
+        # The time when the entity was collected.
         self.gmt_create = gmt_create
+        # The time when the entity was last updated.
         self.gmt_modified = gmt_modified
+        # The entity ID.
         self.id = id
+        # The incident UUID. You can obtain this value from the incident list operation.
         self.incident_uuid = incident_uuid
+        # Indicates whether the entity is an asset. Valid values:
+        # + 0: No.
+        # + 1: Yes.
         self.is_asset = is_asset
+        # Indicates whether the entity is malicious. Valid values:
+        # + 0: No.
+        # + 1: Yes.
         self.is_malware = is_malware
+        # The malware type of the entity.
         self.malware_type = malware_type
+        # The linked account ID associated with the entity.
         self.sub_user_id = sub_user_id
+        # The entity tags. The value is a JSON array string:
+        # 
+        # `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`.
         self.tags = tags
 
     def validate(self):
@@ -178,6 +233,9 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_analysis_reason is not None:
+            result['AgentAnalysisReason'] = self.agent_analysis_reason
+
         if self.agent_confidence is not None:
             result['AgentConfidence'] = self.agent_confidence
 
@@ -186,6 +244,9 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
 
         if self.agent_disposal_playbook_uuid is not None:
             result['AgentDisposalPlaybookUuid'] = self.agent_disposal_playbook_uuid
+
+        if self.agent_disposal_reason is not None:
+            result['AgentDisposalReason'] = self.agent_disposal_reason
 
         if self.agent_disposal_suggestion is not None:
             result['AgentDisposalSuggestion'] = self.agent_disposal_suggestion
@@ -256,6 +317,9 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentAnalysisReason') is not None:
+            self.agent_analysis_reason = m.get('AgentAnalysisReason')
+
         if m.get('AgentConfidence') is not None:
             self.agent_confidence = m.get('AgentConfidence')
 
@@ -264,6 +328,9 @@ class ListEntitiesResponseBodyDataResponseData(DaraModel):
 
         if m.get('AgentDisposalPlaybookUuid') is not None:
             self.agent_disposal_playbook_uuid = m.get('AgentDisposalPlaybookUuid')
+
+        if m.get('AgentDisposalReason') is not None:
+            self.agent_disposal_reason = m.get('AgentDisposalReason')
 
         if m.get('AgentDisposalSuggestion') is not None:
             self.agent_disposal_suggestion = m.get('AgentDisposalSuggestion')
@@ -338,9 +405,13 @@ class ListEntitiesResponseBodyDataResponseDataAgentDisposes(DaraModel):
         self,
         agent_disposal_method: str = None,
         agent_disposal_playbook_uuid: str = None,
+        agent_disposal_reason: str = None,
     ):
+        # The disposal suggestion recommended by the agent.
         self.agent_disposal_method = agent_disposal_method
+        # The UUID of the playbook recommended by the agent for disposal.
         self.agent_disposal_playbook_uuid = agent_disposal_playbook_uuid
+        self.agent_disposal_reason = agent_disposal_reason
 
     def validate(self):
         pass
@@ -356,6 +427,9 @@ class ListEntitiesResponseBodyDataResponseDataAgentDisposes(DaraModel):
         if self.agent_disposal_playbook_uuid is not None:
             result['AgentDisposalPlaybookUuid'] = self.agent_disposal_playbook_uuid
 
+        if self.agent_disposal_reason is not None:
+            result['AgentDisposalReason'] = self.agent_disposal_reason
+
         return result
 
     def from_map(self, m: dict = None):
@@ -366,6 +440,9 @@ class ListEntitiesResponseBodyDataResponseDataAgentDisposes(DaraModel):
         if m.get('AgentDisposalPlaybookUuid') is not None:
             self.agent_disposal_playbook_uuid = m.get('AgentDisposalPlaybookUuid')
 
+        if m.get('AgentDisposalReason') is not None:
+            self.agent_disposal_reason = m.get('AgentDisposalReason')
+
         return self
 
 class ListEntitiesResponseBodyDataPageInfo(DaraModel):
@@ -375,8 +452,11 @@ class ListEntitiesResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the current page.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

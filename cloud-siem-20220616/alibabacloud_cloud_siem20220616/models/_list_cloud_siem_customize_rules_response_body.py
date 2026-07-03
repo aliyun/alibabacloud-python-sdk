@@ -26,8 +26,9 @@ class ListCloudSiemCustomizeRulesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -152,30 +153,34 @@ class ListCloudSiemCustomizeRulesResponseBodyDataResponseData(DaraModel):
         status: int = None,
         threat_level: str = None,
     ):
-        # The type of the risk.
+        # The threat type.
         self.alert_type = alert_type
-        # The internal code of the risk type.
+        # The Medusa code of the threat type.
         self.alert_type_mds = alert_type_mds
-        # The ID of the Alibaba Cloud account in SIEM.
+        # The ID of the Alibaba Cloud account.
         self.aliuid = aliuid
-        # The alert additional field for ATT\\&CK.
+        # The ATT\\&CK attack technique.
         self.att_ck = att_ck
-        # The type of the view. Valid values:
+        # The view type.
         # 
-        # 0: view of the current Alibaba Cloud account. 1: view of all accounts for the enterprise.
+        # 0: the view of the current Alibaba Cloud account.
+        # 1: the view of all members in the enterprise.
         self.data_type = data_type
-        # The extended information about event generation. If the value of **eventTransferType** is **allToSingle**, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+        # The extended information for event generation. This parameter is returned only when **EventTransferType** is set to **allToSingle**. The value is a JSON-formatted string that indicates the window length and unit for alert aggregation. You must unescape the HTML escape characters in the string.
         self.event_transfer_ext = event_transfer_ext
-        # Indicates whether the system generates an event for the alert. Valid values:
+        # Indicates whether to convert alerts into events. Valid values:
         # 
-        # *   **0**: no.
-        # *   **1**: yes.
+        # - **0**: no
+        # 
+        # - **1**: yes
         self.event_transfer_switch = event_transfer_switch
-        # The method that is used to generate an event. Valid values:
+        # The event generation method. Valid values:
         # 
-        # *   **default**: built-in method.
-        # *   **singleToSingle**: The system generates an event for each alert.
-        # *   **allToSingle**: The system generates an event for alerts within a period of time.
+        # - **default**: the default method
+        # 
+        # - **singleToSingle**: An event is generated for each alert.
+        # 
+        # - **allToSingle**: An event is generated for all alerts within a period.
         self.event_transfer_type = event_transfer_type
         # The time when the custom rule was created.
         self.gmt_create = gmt_create
@@ -183,44 +188,51 @@ class ListCloudSiemCustomizeRulesResponseBodyDataResponseData(DaraModel):
         self.gmt_modified = gmt_modified
         # The ID of the custom rule.
         self.id = id
-        # The log source of the rule.
+        # The log source that is associated with the rule.
         self.log_source = log_source
-        # The internal code of the log source.
+        # The Medusa code of the log source that is associated with the rule.
         self.log_source_mds = log_source_mds
-        # The log type of the rule.
+        # The log type that is associated with the rule.
         self.log_type = log_type
-        # The internal code of the log type.
+        # The Medusa code of the log type that is associated with the rule.
         self.log_type_mds = log_type_mds
-        # The window length of the rule. The HTML escape characters are reversed.
+        # The window length of the rule, which is a JSON-formatted string. You must unescape the HTML escape characters in the string.
         self.query_cycle = query_cycle
-        # The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+        # The query condition of the rule, which is a JSON-formatted string that represents an array. You must unescape the HTML escape characters in the string.
         self.rule_condition = rule_condition
         # The description of the rule.
         self.rule_desc = rule_desc
-        # The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
+        # The aggregation field of the log, which is a JSON-formatted string that represents an array. You must unescape the HTML escape characters in the string.
         self.rule_group = rule_group
         # The name of the rule.
         self.rule_name = rule_name
-        # The threshold configurations of the rule in the JSON format. The HTML escape characters are reversed.
+        # The threshold of the rule, which is a JSON-formatted string. You must unescape the HTML escape characters in the string.
         self.rule_threshold = rule_threshold
         # The type of the rule. Valid values:
         # 
-        # *   **predefine**
-        # *   **customize**
+        # - **predefine**: predefined
+        # 
+        # - **customize**: custom
         self.rule_type = rule_type
         # The status of the rule. Valid values:
         # 
-        # *   **0**: The rule is in the initial state.
-        # *   **10**: The simulation data is tested.
-        # *   **15**: The business data is being tested.
-        # *   **20**: The business data test is complete.
-        # *   **100**: The rule is in effect.
-        self.status = status
-        # The risk level. Valid values:
+        # - **0**: initial
         # 
-        # *   **serious**: high-risk.
-        # *   **suspicious**: medium-risk.
-        # *   **remind**: low-risk.
+        # - **10**: testing with simulated data
+        # 
+        # - **15**: testing with business data
+        # 
+        # - **20**: testing with business data is complete
+        # 
+        # - **100**: published
+        self.status = status
+        # The threat level. Valid values:
+        # 
+        # - **serious**: high
+        # 
+        # - **suspicious**: medium
+        # 
+        # - **remind**: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -388,11 +400,11 @@ class ListCloudSiemCustomizeRulesResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # The page number.
         self.current_page = current_page
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

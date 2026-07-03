@@ -26,8 +26,9 @@ class ListCloudSiemPredefinedRulesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -142,44 +143,49 @@ class ListCloudSiemPredefinedRulesResponseBodyDataResponseData(DaraModel):
         status: int = None,
         threat_level: str = None,
     ):
-        # The type of the risk.
+        # The threat type.
         self.alert_type = alert_type
-        # The alert additional field for ATT\\&CK.
+        # The ATT\\&CK technique.
         self.att_ck = att_ck
-        # The method that is used to generate an event. Valid values:
+        # The event generation method. Valid values:
         # 
-        # *   default: built-in method.
-        # *   singleToSingle: The system generates an event for each alert.
-        # *   allToSingle: The system generates an event for alerts within a period of time.
+        # - default: the default built-in method
+        # 
+        # - singleToSingle: An event is generated for each alert.
+        # 
+        # - allToSingle: An event is generated for all alerts in an epoch.
         self.event_transfer_type = event_transfer_type
         # The time when the rule was created.
         self.gmt_create = gmt_create
-        # The time when the rule was modified.
+        # The time when the rule was last modified.
         self.gmt_modified = gmt_modified
         # The ID of the predefined rule.
         self.id = id
-        # The internal code of the rule description.
+        # The Medusa code of the rule description.
         self.rule_desc_mds = rule_desc_mds
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The rule name in Chinese.
+        # The Chinese name of the rule.
         self.rule_name_cn = rule_name_cn
-        # The rule name in English.
+        # The English name of the rule.
         self.rule_name_en = rule_name_en
-        # The internal code of the rule name.
+        # The Medusa code of the rule name.
         self.rule_name_mds = rule_name_mds
         # The log source of the rule.
         self.source = source
         # The status of the predefined rule. Valid values:
         # 
-        # *   0: The rule is in the initial state.
-        # *   100: The rule takes effect.
-        self.status = status
-        # The risk level. Valid values:
+        # - 0: initial
         # 
-        # *   serious: high.
-        # *   suspicious: medium.
-        # *   remind: low.
+        # - 100: published
+        self.status = status
+        # The threat level. Valid values:
+        # 
+        # - serious: high
+        # 
+        # - suspicious: medium
+        # 
+        # - remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -287,11 +293,11 @@ class ListCloudSiemPredefinedRulesResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # The page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

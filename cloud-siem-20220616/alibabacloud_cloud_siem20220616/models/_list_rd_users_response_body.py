@@ -62,20 +62,21 @@ class ListRdUsersResponseBodyData(DaraModel):
         sub_user_id: int = None,
         sub_user_name: str = None,
     ):
-        # Indicates whether the account can be used to view the logs and alerts within the account.
+        # Indicates whether the account is delegated to view its own resources.
         self.delegated_or_not = delegated_or_not
-        # Indicates whether the account is added to the threat analysis feature for centralized management. Valid values:
+        # Indicates whether the account is managed by the multi-account control feature of Threat Analysis. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The account is managed.
+        # 
+        # - false: The account is not managed.
         self.joined = joined
-        # The time when the account was added to the threat analysis feature.
+        # The time when the account was added.
         self.joined_time = joined_time
-        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The ID of the Alibaba Cloud account that purchased Threat Analysis.
         self.main_user_id = main_user_id
-        # The ID of the Alibaba Cloud account that is used to perform operations supported by the threat analysis feature.
+        # The ID of the member Alibaba Cloud account.
         self.sub_user_id = sub_user_id
-        # The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+        # The name of the member Alibaba Cloud account.
         self.sub_user_name = sub_user_name
 
     def validate(self):

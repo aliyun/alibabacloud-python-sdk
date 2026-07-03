@@ -24,8 +24,9 @@ class PostCustomizeRuleResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -102,28 +103,31 @@ class PostCustomizeRuleResponseBodyData(DaraModel):
         status: int = None,
         threat_level: str = None,
     ):
-        # The risk type.
+        # The threat type.
         self.alert_type = alert_type
-        # The internal code of the risk type.
+        # The Medusa code of the threat type.
         self.alert_type_mds = alert_type_mds
-        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
         self.aliuid = aliuid
-        # 告警附加字段attck
+        # The ATT\\&CK attack technique.
         self.att_ck = att_ck
-        # 自动化响应规则条件字段数据类型。
+        # The data type of the condition field in the automated response rule.
         self.data_type = data_type
-        # The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
+        # The extended information for event generation. This parameter is returned only when EventTransferType is set to allToSingle. The value indicates the length and unit of the alert aggregation window. You must unescape the HTML escape characters.
         self.event_transfer_ext = event_transfer_ext
-        # Indicates whether the system generates an event for the alert. Valid values:
+        # Indicates whether alerts are converted into events. Valid values:
         # 
-        # *   0: no
-        # *   1: yes
+        # - 0: no
+        # 
+        # - 1: yes
         self.event_transfer_switch = event_transfer_switch
         # The event generation method. Valid values:
         # 
-        # *   default: The default method is used.
-        # *   singleToSingle: The system generates an event for each alert.
-        # *   allToSingle: The system generates an event for alerts within a period of time.
+        # - default: the default method
+        # 
+        # - singleToSingle: An event is generated for each alert.
+        # 
+        # - allToSingle: An event is generated for all alerts in a period.
         self.event_transfer_type = event_transfer_type
         # The time when the custom rule was created.
         self.gmt_create = gmt_create
@@ -133,42 +137,49 @@ class PostCustomizeRuleResponseBodyData(DaraModel):
         self.id = id
         # The log source of the rule.
         self.log_source = log_source
-        # The internal code of the log source.
+        # The Medusa code of the log source.
         self.log_source_mds = log_source_mds
         # The log type of the rule.
         self.log_type = log_type
-        # The internal code of the log type.
+        # The Medusa code of the log type.
         self.log_type_mds = log_type_mds
-        # The window length of the rule. The HTML escape characters are reversed.
+        # The length of the rule window. You must unescape the HTML escape characters.
         self.query_cycle = query_cycle
-        # The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+        # The query condition of the rule in the JSON format. You must unescape the HTML escape characters.
         self.rule_condition = rule_condition
         # The description of the rule.
         self.rule_desc = rule_desc
-        # The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
+        # The fields that are used to group logs. The value is a JSON array. You must unescape the HTML escape characters.
         self.rule_group = rule_group
         # The name of the rule.
         self.rule_name = rule_name
-        # The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
+        # The threshold configuration of the rule in the JSON format. You must unescape the HTML escape characters.
         self.rule_threshold = rule_threshold
-        # The type of the rule. Valid values:
+        # The rule type. Valid values:
         # 
-        # *   predefine
-        # *   customize
+        # - predefine: predefined
+        # 
+        # - customize: custom
         self.rule_type = rule_type
-        # The rule status. Valid values:
+        # The status of the rule. Valid values:
         # 
-        # *   0: The rule is in the initial state.
-        # *   10: The simulation data is tested.
-        # *   15: The business data is being tested.
-        # *   20: The business data test ends.
-        # *   100: The rule takes effect.
+        # - 0: initial
+        # 
+        # - 10: testing with simulated data
+        # 
+        # - 15: testing with business data
+        # 
+        # - 20: test with business data ends
+        # 
+        # - 100: published
         self.status = status
-        # The risk level. Valid values:
+        # The threat level. Valid values:
         # 
-        # *   serious: high
-        # *   suspicious: medium
-        # *   remind: low
+        # - serious: high
+        # 
+        # - suspicious: medium
+        # 
+        # - remind: low
         self.threat_level = threat_level
 
     def validate(self):

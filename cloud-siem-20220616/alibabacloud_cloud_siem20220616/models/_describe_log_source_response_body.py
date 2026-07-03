@@ -16,18 +16,19 @@ class DescribeLogSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The request status code.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -90,7 +91,7 @@ class DescribeLogSourceResponseBodyData(DaraModel):
     ):
         # The log source of the rule.
         self.log_source = log_source
-        # The internal code of the log source.
+        # The Medusa code of the log source for the rule.
         self.log_source_name = log_source_name
 
     def validate(self):

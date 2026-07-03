@@ -15,7 +15,7 @@ class ListDataSourceLogsResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,23 +57,25 @@ class ListDataSourceLogsResponseBodyData(DaraModel):
         data_source_instance_remark: str = None,
         sub_user_id: int = None,
     ):
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The code that is used for multi-cloud environments. Valid values:
+        # The code for the cloud service provider. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud
         self.cloud_code = cloud_code
-        # The ID of the data source. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+        # The ID of the data source. This ID is an MD5 hash value that is calculated by threat analysis based on specific parameters.
         self.data_source_instance_id = data_source_instance_id
-        # The logs of the data source.
+        # The list of logs for the data source.
         self.data_source_instance_logs = data_source_instance_logs
         # The name of the data source.
         self.data_source_instance_name = data_source_instance_name
-        # The remarks of the data source.
+        # The remarks on the data source.
         self.data_source_instance_remark = data_source_instance_remark
-        # The ID of the Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account to which the log belongs.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -151,16 +153,17 @@ class ListDataSourceLogsResponseBodyDataDataSourceInstanceLogs(DaraModel):
     ):
         # The code of the log.
         self.log_code = log_code
-        # The ID of the log. The value is obtained after the threat analysis feature calculates the MD5 hash value of a parameter.
+        # The ID of the log. This ID is an MD5 hash value that is calculated by threat analysis based on specific parameters.
         self.log_instance_id = log_instance_id
         # The display code of the log.
         self.log_mds_code = log_mds_code
-        # The parameters of the log.
+        # The detailed parameters for the log.
         self.log_params = log_params
-        # Indicates whether the task for which logs are collected is enabled. Valid values:
+        # The status of the log collection task. Valid values:
         # 
-        # *   1: yes
-        # *   0: no
+        # - 1: collected.
+        # 
+        # - 0: not collected.
         self.task_status = task_status
 
     def validate(self):
@@ -221,9 +224,9 @@ class ListDataSourceLogsResponseBodyDataDataSourceInstanceLogsLogParams(DaraMode
         para_code: str = None,
         para_value: str = None,
     ):
-        # The parameter code of the log.
+        # The code of the log parameter.
         self.para_code = para_code
-        # The parameter value of the log.
+        # The value of the log parameter.
         self.para_value = para_value
 
     def validate(self):

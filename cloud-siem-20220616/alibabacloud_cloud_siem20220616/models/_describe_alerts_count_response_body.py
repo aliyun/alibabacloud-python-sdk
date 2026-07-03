@@ -16,18 +16,19 @@ class DescribeAlertsCountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The HTTP status code returned.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -88,6 +89,7 @@ class DescribeAlertsCountResponseBodyData(DaraModel):
     ):
         # The total number of alerts.
         self.all = all
+        # The number of alerts for each severity level.
         self.count_map = count_map
         # The number of high-risk alerts.
         self.high = high
@@ -95,7 +97,7 @@ class DescribeAlertsCountResponseBodyData(DaraModel):
         self.low = low
         # The number of medium-risk alerts.
         self.medium = medium
-        # The number of connected services.
+        # The number of connected products.
         self.product_num = product_num
 
     def validate(self):

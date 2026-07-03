@@ -11,16 +11,19 @@ class GetCapacityRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # Region where the Data Management Center for threat analysis is located. Choose a region based on where your assets are located.
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Select this if your assets are in the Chinese mainland or Hong Kong (China).
+        # 
+        # - ap-southeast-1: Select this if your assets are outside China.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # User ID of the member whose view the administrator switches to.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # View type.
+        # 
+        # - 0: View for the current Alibaba Cloud account.
+        # 
+        # - 1: View for all accounts under your enterprise.
         self.role_type = role_type
 
     def validate(self):

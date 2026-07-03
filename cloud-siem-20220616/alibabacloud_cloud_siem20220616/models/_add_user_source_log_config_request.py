@@ -15,27 +15,29 @@ class AddUserSourceLogConfigRequest(DaraModel):
         source_prod_code: str = None,
         sub_user_id: int = None,
     ):
-        # Specifies whether to add logs or delete added logs. Valid values:
+        # Specifies whether to add or delete the log collection task. Valid values:
         # 
-        # *   \\-1: deletes added logs.
-        # *   0: adds logs.
+        # - -1: Deletes the task.
+        # 
+        # - 0: Adds the task.
         self.deleted = deleted
-        # The display details of the Logstore.
+        # The detailed information about the SLS log to be collected.
         self.dis_play_line = dis_play_line
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management center of Threat Analysis is located. Select a region based on the region where your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
+        # 
+        # - ap-southeast-1: Your assets are in regions outside China.
         self.region_id = region_id
-        # The log code.
+        # The code of the log.
         self.source_log_code = source_log_code
-        # The details of the Logstore that you want to use in the JSON string format.
+        # The detailed information about the Simple Log Service (SLS) log to be collected. The value is a JSON string.
         # 
         # This parameter is required.
         self.source_log_info = source_log_info
-        # The code of the cloud service.
+        # The code of the product.
         self.source_prod_code = source_prod_code
-        # The ID of the Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account for which you want to collect logs.
         # 
         # This parameter is required.
         self.sub_user_id = sub_user_id

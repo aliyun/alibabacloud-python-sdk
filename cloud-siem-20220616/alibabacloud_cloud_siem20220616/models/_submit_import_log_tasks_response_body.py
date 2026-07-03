@@ -49,7 +49,7 @@ class SubmitImportLogTasksResponseBodyData(DaraModel):
         self,
         count: int = None,
     ):
-        # The number of log collection tasks that are submitted.
+        # The number of log ingestion tasks that are successfully submitted.
         self.count = count
 
     def validate(self):

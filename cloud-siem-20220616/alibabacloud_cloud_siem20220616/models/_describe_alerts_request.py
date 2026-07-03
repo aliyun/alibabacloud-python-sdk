@@ -31,55 +31,81 @@ class DescribeAlertsRequest(DaraModel):
         start_time: int = None,
         sub_user_id: str = None,
     ):
+        # The name of the alert.
         self.alert_name = alert_name
+        # The status of the alert.
         self.alert_status = alert_status
         # The title of the alert.
         self.alert_title = alert_title
+        # The type of the alert.
         self.alert_type = alert_type
-        # The UUID of the alert.
+        # The unique ID of the alert.
         self.alert_uuid = alert_uuid
+        # The ID of the asset.
         self.asset_id = asset_id
+        # The name of the asset.
         self.asset_name = asset_name
-        # The page number. Pages start from page 1.
+        # The page number. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end of the time range to query. Unit: milliseconds.
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The name of the entity.
         self.entity_name = entity_name
-        # Specifies whether an attack is defended. Valid values:
+        # Specifies whether the threat is defended. Valid values:
         # 
-        # *   0: detected.
-        # *   1: blocked.
+        # - `0`: detected
+        # 
+        # - `1`: blocked
         self.is_defend = is_defend
-        self.label_type = label_type
-        # The risk level. The value is a JSON array. Valid values:
+        # The alert type. Valid values:
         # 
-        # *   serious: high
-        # *   suspicious: medium
-        # *   remind: low
+        # - `system`: An alert generated from aggregated analysis
+        # 
+        # - `custom`: An alert generated from custom analysis
+        # 
+        # - `cfw`: firewall
+        # 
+        # - `waf`: web application firewall
+        # 
+        # - `edr`: endpoint detection and response
+        # 
+        # - `other`: other
+        self.label_type = label_type
+        # The threat levels. This parameter is a JSON array. Valid values:
+        # 
+        # - `serious`: high
+        # 
+        # - `suspicious`: medium
+        # 
+        # - `remind`: low
         self.level = level
         # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the data management center of the threat analysis feature resides. You are required to specify this parameter based on the region where your assets reside. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - `cn-hangzhou`: Your assets reside in the Chinese mainland or Hong Kong (China).
+        # 
+        # - `ap-southeast-1`: Your assets reside outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The ID of the user who is used to switch the account to view the data of the member.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The view type of the alert. Valid values:
+        # 
+        # - `0`: current account
+        # 
+        # - `1`: all accounts
         self.role_type = role_type
         # The source of the alert.
         self.source = source
-        # The beginning of the time range to query. Unit: milliseconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
-        # The ID of the Alibaba Cloud account within which the alert is generated.
+        # The ID of the Alibaba Cloud account that is associated with the alert.
         self.sub_user_id = sub_user_id
 
     def validate(self):

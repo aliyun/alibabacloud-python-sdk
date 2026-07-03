@@ -10,10 +10,11 @@ class OpenDeliveryResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the log delivery feature is enabled. Valid values:
+        # Indicates whether log delivery is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enabled
+        # 
+        # - false: Failed
         self.data = data
         # The request ID.
         self.request_id = request_id

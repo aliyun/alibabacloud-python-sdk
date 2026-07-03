@@ -4,72 +4,58 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ListEntitiesRequest(DaraModel):
+class GetEntitiyStatRequest(DaraModel):
     def __init__(
         self,
-        current_page: int = None,
+        asset_name: str = None,
+        asset_uuid: str = None,
         entity_name: str = None,
         entity_type: str = None,
         entity_uuid: str = None,
-        entity_uuids: str = None,
         incident_uuid: str = None,
+        is_asset: str = None,
         is_malware_entity: str = None,
-        malware_type: str = None,
-        page_size: int = None,
         region_id: str = None,
         role_for: int = None,
         role_type: int = None,
         tags: str = None,
     ):
-        # The page number of the current page. The value must be greater than or equal to 1.
-        # 
-        # This parameter is required.
-        self.current_page = current_page
-        # The entity name.
+        # The asset ID associated with the incident.
+        self.asset_name = asset_name
+        # The asset ID associated with the incident.
+        self.asset_uuid = asset_uuid
+        # The asset ID associated with the incident.
         self.entity_name = entity_name
-        # The entity type. Valid values:
-        # - ip: IP address
-        # - domain: domain name
-        # - url: URL
-        # - process: process
-        # - file: file
-        # - host: host
-        # - cloud_account: cloud account
-        # - container: container
-        # - bucket: Object Storage Service (OSS) bucket.
+        # The asset ID associated with the incident.
         self.entity_type = entity_type
-        # The entity UUID.
+        # The asset ID associated with the incident.
         self.entity_uuid = entity_uuid
-        # The list of entity UUIDs.
-        self.entity_uuids = entity_uuids
         # The incident ID.
         # 
         # This parameter is required.
         self.incident_uuid = incident_uuid
-        # Specifies whether the entity is malicious. Valid values:
-        # - 0: No.
-        # - 1: Yes.
-        self.is_malware_entity = is_malware_entity
-        # The malicious entity type.
-        self.malware_type = malware_type
-        # The number of entries per page. Maximum value: 100.
+        # The asset ID associated with the incident.
+        self.is_asset = is_asset
+        # The sort order of the incident list. Valid values:
         # 
-        # This parameter is required.
-        self.page_size = page_size
-        # The region in which the data management center of the threat analysis feature resides. Select the region based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: the assets reside in the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: the assets reside in regions outside China.
+        # - desc: descending order.
+        # - asc: ascending order.
+        self.is_malware_entity = is_malware_entity
+        # The region where the threat detection and response data management center resides. Select the management center based on the region of your assets. Valid values:
+        # 
+        # - cn-hangzhou: the asset belongs to the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: the asset belongs to a region outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
         # The view type. Valid values:
         # 
-        # - 0: the view of the current Alibaba Cloud account.
-        # - 1: the view of all accounts in the enterprise.
+        # - 0: single-account logon.
+        # - 1: global view.
+        # - 2: switched view.
+        # - 3: partial view.
         self.role_type = role_type
-        # The entity tags. The value is a JSON array string:
-        # 
-        # `"[{"tagKey1":"tagValue1"},{"tagKey2":"tagValue2"}]"`.
+        # The entity tags. The value is a JSON array string in the following format: \\"[{\\"tagKey1\\":\\"tagValue1\\"},{\\"tagKey2\\":\\"tagValue2\\"}]\\"
         self.tags = tags
 
     def validate(self):
@@ -80,8 +66,11 @@ class ListEntitiesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.current_page is not None:
-            result['CurrentPage'] = self.current_page
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+
+        if self.asset_uuid is not None:
+            result['AssetUuid'] = self.asset_uuid
 
         if self.entity_name is not None:
             result['EntityName'] = self.entity_name
@@ -92,20 +81,14 @@ class ListEntitiesRequest(DaraModel):
         if self.entity_uuid is not None:
             result['EntityUuid'] = self.entity_uuid
 
-        if self.entity_uuids is not None:
-            result['EntityUuids'] = self.entity_uuids
-
         if self.incident_uuid is not None:
             result['IncidentUuid'] = self.incident_uuid
 
+        if self.is_asset is not None:
+            result['IsAsset'] = self.is_asset
+
         if self.is_malware_entity is not None:
             result['IsMalwareEntity'] = self.is_malware_entity
-
-        if self.malware_type is not None:
-            result['MalwareType'] = self.malware_type
-
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -123,8 +106,11 @@ class ListEntitiesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CurrentPage') is not None:
-            self.current_page = m.get('CurrentPage')
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+
+        if m.get('AssetUuid') is not None:
+            self.asset_uuid = m.get('AssetUuid')
 
         if m.get('EntityName') is not None:
             self.entity_name = m.get('EntityName')
@@ -135,20 +121,14 @@ class ListEntitiesRequest(DaraModel):
         if m.get('EntityUuid') is not None:
             self.entity_uuid = m.get('EntityUuid')
 
-        if m.get('EntityUuids') is not None:
-            self.entity_uuids = m.get('EntityUuids')
-
         if m.get('IncidentUuid') is not None:
             self.incident_uuid = m.get('IncidentUuid')
 
+        if m.get('IsAsset') is not None:
+            self.is_asset = m.get('IsAsset')
+
         if m.get('IsMalwareEntity') is not None:
             self.is_malware_entity = m.get('IsMalwareEntity')
-
-        if m.get('MalwareType') is not None:
-            self.malware_type = m.get('MalwareType')
-
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

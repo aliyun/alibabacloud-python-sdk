@@ -14,18 +14,19 @@ class DescribeCustomizeRuleCountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -90,29 +91,29 @@ class DescribeCustomizeRuleCountResponseBodyData(DaraModel):
         total_rule_num: int = None,
         un_event_rule_num: int = None,
     ):
-        # 同类聚合规则数。
+        # The number of rules for intra-class aggregation.
         self.aggregation_rule_num = aggregation_rule_num
-        # 自定义规则数。
+        # The number of custom rules.
         self.customize_rule_num = customize_rule_num
-        # 专家规则数。
+        # The number of expert rules.
         self.expert_rule_num = expert_rule_num
-        # 图计算规则数。
+        # The number of graph computing rules.
         self.graph_computing_rule_num = graph_computing_rule_num
-        # The number of rules that are used to identify high-risk threats.
+        # The number of high-risk rules.
         self.high_rule_num = high_rule_num
-        # The total number of rules.
+        # The number of rules in use.
         self.in_use_rule_num = in_use_rule_num
-        # The number of rules that are used to identify low-risk threats.
+        # The number of low-risk rules.
         self.low_rule_num = low_rule_num
-        # The number of rules that are used to identify medium-risk threats.
+        # The number of medium-risk rules.
         self.medium_rule_num = medium_rule_num
-        # 预定义规则数。
+        # The number of predefined rules.
         self.predefined_rule_num = predefined_rule_num
-        # 告警透传规则数。
+        # The number of alert pass-through rules.
         self.single_alert_rule_num = single_alert_rule_num
-        # 总规则数。
+        # The total number of rules.
         self.total_rule_num = total_rule_num
-        # 不产生事件规则数。
+        # The number of rules that do not generate events.
         self.un_event_rule_num = un_event_rule_num
 
     def validate(self):
