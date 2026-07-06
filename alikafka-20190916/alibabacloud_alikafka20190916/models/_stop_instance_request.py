@@ -10,11 +10,11 @@ class StopInstanceRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the instance resides.
+        # Region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id

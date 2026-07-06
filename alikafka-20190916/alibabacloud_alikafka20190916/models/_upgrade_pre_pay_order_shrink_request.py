@@ -20,65 +20,103 @@ class UpgradePrePayOrderShrinkRequest(DaraModel):
         spec_type: str = None,
         topic_quota: int = None,
     ):
+        # Configurations for the Confluent components.
         self.confluent_config_shrink = confluent_config_shrink
-        # The size of the disk.
+        # The disk capacity.
         # 
-        # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+        # - The specified disk capacity must be greater than or equal to the current disk capacity of the instance.
+        # 
+        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is required for subscription instances but not for Confluent-series instances.
         self.disk_size = disk_size
-        # The Internet traffic for the instance.
+        # The maximum Internet traffic bandwidth.
         # 
-        # *   The Internet traffic volume that you specify must be greater than or equal to the current Internet traffic volume of the instance.
-        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
-        # > - If the **EipModel** parameter is set to **true**, set the **EipMax** parameter to a value that is greater than 0.
-        # > - If the **EipModel** parameter is set to **false**, set the **EipMax** parameter to **0**.
+        # - The specified Internet traffic bandwidth must be greater than or equal to the current Internet traffic bandwidth of the instance.
+        # 
+        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > * If **EipModel** is set to **true**, **EipMax** must be greater than 0.
+        # >
+        # > * If **EipModel** is set to **false**, **EipMax** must be set to **0**.
         self.eip_max = eip_max
-        # Specifies whether to enable Internet access for the instance. Valid values:
+        # Specifies whether to enable Internet access. Valid values:
         # 
-        # *   true: enables Internet access.
-        # *   false: disables Internet access.
+        # - `true`: enables Internet access.
+        # 
+        # - `false`: disables Internet access.
+        # 
+        # > This parameter is required for subscription instances but not for Confluent-series instances.
         self.eip_model = eip_model
         # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum traffic for the instance. We recommend that you do not configure this parameter.
+        # The traffic peak (not recommended).
         # 
-        # *   The maximum traffic volume that you specify must be greater than or equal to the current maximum traffic volume of the instance.
-        # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+        # - The specified traffic peak must be greater than or equal to the current traffic peak of the instance.
+        # 
+        # - You must specify either this parameter or `IoMaxSpec`. If you specify both, `IoMaxSpec` takes precedence. We recommend that you specify only `IoMaxSpec`.
+        # 
+        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.io_max = io_max
-        # The traffic specification of the instance. We recommend that you configure this parameter.
+        # The traffic specification (recommended).
         # 
-        # *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
-        # *   You must configure at least one of the IoMax and IoMaxSpec parameters. If you configure both parameters, the value of the IoMaxSpec parameter takes effect. We recommend that you configure only the IoMaxSpec parameter.
-        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+        # - The specified traffic specification must be greater than or equal to the current traffic specification of the instance.
+        # 
+        # - You must specify either this parameter or `IoMax`. If you specify both, this parameter takes precedence. We recommend that you specify only this parameter.
+        # 
+        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is required for subscription instances but not for Confluent-series instances.
         self.io_max_spec = io_max_spec
-        self.paid_type = paid_type
-        # The number of partitions. We recommend that you configure this parameter.
+        # The billing method. Valid values:
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+        # - **0**: subscription
+        # 
+        # - **4**: subscription for Confluent instances
+        self.paid_type = paid_type
+        # The number of partitions (recommended).
+        # 
+        # - You must specify either this parameter or `TopicQuota`. We recommend that you specify only this parameter.
+        # 
+        # - If you specify both `PartitionNum` and `TopicQuota`, the system checks if their values are equivalent under the previous topic pricing model. A mismatch causes the request to fail. If they match, the system uses `PartitionNum` to process the purchase.
+        # 
+        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is required for subscription instances but not for Confluent-series instances.
         self.partition_num = partition_num
-        # The region ID of the instance.
+        # The ID of the region where the instance is located.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The edition of the instance. Valid values:
+        # The specification type.
         # 
-        # *   **normal**: Standard Edition (High Write)
-        # *   **professional**: Professional Edition (High Write)
-        # *   **professionalForHighRead**: Professional Edition (High Read)
+        # Valid values for ApsaraMQ for Kafka instances:
         # 
-        # You cannot downgrade an instance from the Professional Edition to the Standard Edition. For more information about these instance editions, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+        # - **normal**: Standard Edition (high write)
+        # 
+        # - **professional**: Professional Edition (high write)
+        # 
+        # - **professionalForHighRead**: Professional Edition (high read)
+        # 
+        # Valid values for Confluent instances:
+        # 
+        # - **professional**: Professional Edition
+        # 
+        # - **enterprise**: Enterprise Edition
+        # 
+        # You cannot downgrade an instance from Professional Edition to Standard Edition. For more information about these specification types, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
-        # The number of topics. We recommend that you do not configure this parameter.
+        # The number of topics (not recommended).
         # 
-        # *   You must specify at least one of the PartitionNum and TopicQuota parameters. We recommend that you configure only the PartitionNum parameter.
-        # *   If you specify both parameters, the topic-based sales model is used to check whether the PartitionNum value and the TopicQuota value are the same. If they are not the same, a failure response is returned. If they are the same, the order is placed based on the PartitionNum value.
-        # *   The default value of the TopicQuota parameter varies based on the value of the IoMaxSpec parameter. If the number of topics that you consume exceeds the default value, you are charged additional fees.
-        # *   For more information about the valid values, see [Billing overview](https://help.aliyun.com/document_detail/84737.html).
+        # - You must specify either this parameter or `PartitionNum`. We recommend that you specify only `PartitionNum`.
+        # 
+        # - If you specify both `TopicQuota` and `PartitionNum`, the system checks if their values are equivalent under the previous topic pricing model. A mismatch causes the request to fail. If they match, the system uses `PartitionNum` to process the purchase.
+        # 
+        # - The default value of this parameter varies based on the traffic specification. You are charged additional fees if the specified value exceeds the default value.
+        # 
+        # - For the valid values, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.topic_quota = topic_quota
 
     def validate(self):

@@ -15,10 +15,11 @@ class ModifyInstanceNameRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The instance name. Valid values:
+        # The name of the instance. The value must meet the following requirements:
         # 
-        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
-        # *   The name must be 3 to 64 characters in length. A name that contains more than 64 characters is automatically truncated.
+        # - The name can contain only letters, digits, underscores (_), and hyphens (-).
+        # 
+        # - The name must be 3 to 64 characters in length. If the name contains more than 64 characters, the name is automatically truncated.
         # 
         # This parameter is required.
         self.instance_name = instance_name

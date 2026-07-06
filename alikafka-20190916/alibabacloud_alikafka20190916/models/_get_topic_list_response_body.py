@@ -19,20 +19,20 @@ class GetTopicListResponseBody(DaraModel):
         topic_list: main_models.GetTopicListResponseBodyTopicList = None,
         total: int = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The return code. A value of 200 indicates that the call was successful.
         self.code = code
-        # The page number of the returned page.
+        # The number of the page returned.
         self.current_page = current_page
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The number of entries returned on each page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
         self.topic_list = topic_list
-        # The number of topics.
+        # The total number of topics.
         self.total = total
 
     def validate(self):

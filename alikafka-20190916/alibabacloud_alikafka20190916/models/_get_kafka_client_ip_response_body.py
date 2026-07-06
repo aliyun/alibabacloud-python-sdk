@@ -16,13 +16,13 @@ class GetKafkaClientIpResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned status code. The status code 200 indicates that the request was successful.
+        # Return code. A value of 200 indicates success.
         self.code = code
-        # The data returned.
+        # The returned result.
         self.data = data
-        # The message returned.
+        # The prompt message for the result.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -83,22 +83,22 @@ class GetKafkaClientIpResponseBodyData(DaraModel):
         start_date: int = None,
         time_limit_day: int = None,
     ):
-        # The value true indicates that the broker is not of the latest minor version.
+        # If this value is true, it indicates that the minor version is not the latest version.
         # 
-        # >  If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
+        # > If your server minor version is not the latest version, the sampling logs may not be accurate enough, resulting in less precise IP information statistics. Therefore, it is recommended that you upgrade the server minor version as soon as possible.
         self.alert = alert
         self.data = data
-        # The end of the date range within which data is queried.
+        # End time
         self.end_date = end_date
-        # The time range within which the client IP addresses are queried.
+        # The time range for querying client IPs.
         # 
-        # >  The valid value is 1 hour. If the beginning of the time range to query and the end of the time range to query exceeds 1 hour, only data within 1 hour is returned.
+        # > This range is 1 hour. If the start time and end time you enter exceed 1 hour, only data within 1 hour will be queried.
         self.search_time_range = search_time_range
-        # The beginning of the date range within which data is queried.
+        # Start time.
         self.start_date = start_date
-        # The date range within which the client IP addresses are queried.
+        # The date range for querying client IPs.
         # 
-        # >  The valid value is 7 days. If the beginning of the date range to query and the end of the date range to query exceeds 7 days, only data within 7 days is returned.
+        # > This range is 7 days. If the start time and end time you enter exceed 7 days, only data within 7 days will be queried.
         self.time_limit_day = time_limit_day
 
     def validate(self):

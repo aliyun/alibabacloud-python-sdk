@@ -17,45 +17,61 @@ class DescribeAclsRequest(DaraModel):
         region_id: str = None,
         username: str = None,
     ):
-        # The types of operations allowed by the ACL. Separate multiple operation types with commas (,).
-        # - Valid values:
-        # - Write
-        # - Read
-        # - Describe: reads of transactional IDs.
-        # - IdempotentWrite: idempotent data writes to clusters.
-        # - IDEMPOTENT_WRITE: idempotent data writes to clusters. This value is available only for ApsaraMQ for Kafka V3 instances.
-        # - DESCRIBE_CONFIGS: queries of configurations. This value is available only for ApsaraMQ for Kafka V3 instances.
-        # > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # The operation type. Valid values:
+        # 
+        # - **Write**
+        # 
+        # - **Read**
+        # 
+        # - **Describe**: reads a transactional ID.
+        # 
+        # - **IdempotentWrite**: performs an idempotent write to a cluster. This value is not supported by Serverless instances. For Serverless instances, use IDEMPOTENT_WRITE.
+        # 
+        # - **IDEMPOTENT_WRITE**: performs an idempotent write to a cluster. This value is available only for Serverless instances.
+        # 
+        # - **DESCRIBE_CONFIGS**: queries configurations. This value is available only for Serverless instances.
         self.acl_operation_type = acl_operation_type
         # The authorization method. Valid values:
+        # 
         # - DENY
+        # 
         # - ALLOW
-        # > This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # 
+        # > This parameter is available only for Serverless instances.
         self.acl_permission_type = acl_permission_type
-        # The resource name.
+        # The name of the resource.
         # 
-        # *   The value can be the name of a topic or consumer group.
-        # *   You can use an asterisk (\\*) to specify the names of all topics or consumer groups.
+        # - The name can be a topic name or a group name.
         # 
-        # > You can query the resources on which permissions are granted only after you grant the user the required permissions on all resources.
+        # - You can use an asterisk (\\*) to represent all topic names or group names.
+        # 
+        # > * You can use an asterisk (\\*) only after you grant permissions to all resources.
         # 
         # This parameter is required.
         self.acl_resource_name = acl_resource_name
         # The match mode. Valid values:
         # 
-        # *   LITERAL: full-name match
-        # *   PREFIXED: prefix match
-        self.acl_resource_pattern_type = acl_resource_pattern_type
-        # The resource type. Valid values:
+        # - LITERAL: an exact match
         # 
-        # *   **Topic**
-        # *   **Group**
+        # - PREFIXED: a prefix match
+        self.acl_resource_pattern_type = acl_resource_pattern_type
+        # The type of the resource. Valid values:
+        # 
+        # - **Topic**
+        # 
+        # - **Group**
+        # 
+        # - **Cluster**
+        # 
+        # - **TransactionalId**
         # 
         # This parameter is required.
         self.acl_resource_type = acl_resource_type
         # The source IP address.
-        # >-  You can specify only a specific IP address or use the asterisk (*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
-        # > - This parameter is available only for ApsaraMQ for Kafka V3 serverless instances.
+        # 
+        # > - You can set this parameter to a specific IP address or an asterisk (\\*). An asterisk (\\*) indicates all IP addresses. CIDR blocks are not supported.
+        # >
+        # > - This parameter is available only for Serverless instances.
         self.host = host
         # The ID of the instance.
         # 
@@ -67,9 +83,9 @@ class DescribeAclsRequest(DaraModel):
         self.region_id = region_id
         # The username.
         # 
-        # *   You can use an asterisk (\\*) to specify all users.
+        # - An asterisk (\\*) can be used to represent all users.
         # 
-        # > You can use an asterisk (\\*) to query the authorized users only after you grant the required permissions to all users.
+        # > * A query with an asterisk (\\*) returns authorizations only if authorization has been granted to all users.
         # 
         # This parameter is required.
         self.username = username

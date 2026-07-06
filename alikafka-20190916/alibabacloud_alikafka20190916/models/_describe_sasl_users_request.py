@@ -10,11 +10,11 @@ class DescribeSaslUsersRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the instance.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region.
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

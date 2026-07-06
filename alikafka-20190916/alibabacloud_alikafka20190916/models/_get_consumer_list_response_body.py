@@ -19,20 +19,20 @@ class GetConsumerListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The return code. A value of 200 indicates that the call is successful.
         self.code = code
         self.consumer_list = consumer_list
-        # The number of the page to return. Pages start from page 1.
+        # The page number of the returned page. The minimum value is 1.
         self.current_page = current_page
         # The returned message.
         self.message = message
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

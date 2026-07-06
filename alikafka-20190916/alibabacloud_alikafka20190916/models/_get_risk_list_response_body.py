@@ -16,10 +16,15 @@ class GetRiskListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code. A value of 200 indicates that the call is successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -74,7 +79,9 @@ class GetRiskListResponseBodyData(DaraModel):
         risk_list: List[main_models.GetRiskListResponseBodyDataRiskList] = None,
         total: int = None,
     ):
+        # The list of threat items for the instance.
         self.risk_list = risk_list
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -131,21 +138,96 @@ class GetRiskListResponseBodyDataRiskList(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The timestamp when the threat was created. Unit: milliseconds.
         self.create_time = create_time
+        # The metric rating. Valid values:
+        # 
+        # - A: Healthy.
+        # 
+        # - B: Suboptimal.
+        # 
+        # - F: Poor.
         self.grade_type = grade_type
+        # Indicates whether the instance is healthy.
+        # This is a Boolean parameter. Valid values:
+        # 
+        # - true: The instance is healthy.
+        # 
+        # - false: The instance is unhealthy.
         self.health = health
+        # The list of instance IDs.
         self.instance_id = instance_id
+        # The timestamp of the last alert. Unit: milliseconds.
         self.last_alarm_time = last_alarm_time
+        # The risk level. Valid values:
+        # 
+        # - 0: Urgent.
+        # 
+        # - 1: Important.
+        # 
+        # - 2: Normal.
         self.level_type = level_type
+        # The timestamp when the threat was last modified. Unit: milliseconds.
         self.modified_time = modified_time
+        # The name of the threat item.
+        # 
+        # > There are 24 types of names.
+        # >
+        # > - For more information, see the supplementary notes at the end of this document.
         self.name = name
+        # The ID of the owner.
         self.owner = owner
+        # A cascading structure. The system determines whether to nest another layer of report data based on the values of outer fields.
         self.relation_list = relation_list
+        # The recommended fix.
         self.report_tips = report_tips
+        # The report type of the threat item. Valid values:
+        # 
+        # - topic: Optimization is required for a specific topic.
+        # 
+        # - group: Optimization is required for a specific group.
+        # 
+        # - doc: Optimization must be performed based on a document.
+        # 
+        # - commonBuy: An upgrade or a similar operation is required for the returned threat item.
+        # 
+        # - mdsKey: You only need to fix the threat based on the suggestions in ReportTips.
         self.report_type = report_type
+        # The value of the report.
+        # 
+        # > - If ReportType is doc, ReportValue returns the document ID. You can construct the URL to the document by replacing the ${reportValue} variable in the following URL with the returned value: <props="china">https\\://help.aliyun.com/document_detail/${reportValue}.html<props="intl">https\\://www\\.alibabacloud.com/help/document_detail/${reportValue}.html
+        # >
+        # > - If ReportType is commonBuy, an upgrade or a similar operation is required.
+        # >
+        # > - If ReportType is topic, the value of ReportValue is the name of the topic that needs to be fixed.
+        # >
+        # > - If ReportType is group, the value of ReportValue is the name of the group that needs to be fixed.
+        # >
+        # > - If ReportType is mdsKey, you only need to fix the threat based on the suggestions in ReportTips.
         self.report_value = report_value
+        # The status of the threat item. This parameter indicates whether the threat has been fixed. Valid values:
+        # 
+        # - 0: To be fixed.
+        # 
+        # - -1: Ignored.
+        # 
+        # - 1: Fixed.
         self.status = status
+        # The type of the threat item.
+        # 
+        # > There are 24 types of threats.
+        # >
+        # > - For more information, see the supplementary notes at the end of this document.
         self.type = type
+        # The value calculated by the system.
+        # 
+        # > If ReportType is doc, check the relationList and value fields. The value field returns a number that indicates the number of topics or groups in the `relationList` field that require optimization.
+        # >
+        # > - When ReportType is commonBuy, check the value of Value. The value is a percentage.
+        # >
+        # > - When ReportType is topic, check the value of Value. The value identifies the Topic that needs to be fixed.
+        # >
+        # > - When ReportType is group, check the value of Value. The value identifies the Group that needs to be fixed.
         self.value = value
 
     def validate(self):

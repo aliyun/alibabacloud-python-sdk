@@ -16,18 +16,19 @@ class QueryMessageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned HTTP status code. If the request is successful, 200 is returned.
+        # The return code. A value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # The return message.
         self.message = message
-        # The messages.
+        # The query message results.
         self.message_list = message_list
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call was successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -100,33 +101,33 @@ class QueryMessageResponseBodyMessageList(DaraModel):
         value: str = None,
         value_truncated: bool = None,
     ):
-        # The check value of the chaincode.
+        # The chaincode checksum.
         self.checksum = checksum
         # The message key.
         self.key = key
         # Indicates whether the key is truncated.
         self.key_truncated = key_truncated
-        # The consumer offset of the partition.
+        # The partition offset.
         self.offset = offset
         # The partition ID.
         self.partition = partition
-        # The size of the key after serialization. Unit: bytes.
+        # The size of the serialized key. Unit: bytes.
         self.serialized_key_size = serialized_key_size
-        # The size of the value after serialization. Unit: bytes.
+        # The size of the serialized value. Unit: bytes.
         self.serialized_value_size = serialized_value_size
-        # The time when the message was created. The value of this parameter is a UNIX timestamp in milliseconds.
+        # The message creation time. Represented as a UNIX timestamp. Unit: milliseconds.
         self.timestamp = timestamp
-        # The time type.
+        # The timestamp type.
         self.timestamp_type = timestamp_type
         # The topic name.
         self.topic = topic
-        # The truncated size of the message key. Unit: bytes.
+        # The size of the truncated key message. Value: bytes.
         # 
-        # >  A maximum of 1 KB of content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/document_detail/113172.html).
+        # > Each queried message displays up to 1 KB of content; content exceeding this limit will be automatically truncated. [Learn more](https://help.aliyun.com/document_detail/113172.html).
         self.truncated_key_size = truncated_key_size
-        # The truncated size of the message value. Unit: bytes.
+        # The size of the truncated value message. Unit: bytes.
         # 
-        # >  A maximum of 1 KB of content can be displayed for each message. Content that exceeds 1 KB is automatically truncated. For more information, see [Query messages](https://help.aliyun.com/document_detail/113172.html).
+        # > Each queried message displays up to 1 KB of content; content exceeding this limit will be automatically truncated. [Learn more](https://help.aliyun.com/document_detail/113172.html).
         self.truncated_value_size = truncated_value_size
         # The message value.
         self.value = value

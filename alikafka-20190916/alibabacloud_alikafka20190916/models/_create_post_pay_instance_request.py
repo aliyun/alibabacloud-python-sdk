@@ -23,19 +23,85 @@ class CreatePostPayInstanceRequest(DaraModel):
         spec_type: str = None,
         tag: List[main_models.CreatePostPayInstanceRequestTag] = None,
     ):
+        # The deployment type. Valid values:
+        # 
+        # - **4**: instance that is accessible over the internet and a VPC
+        # 
+        # - **5**: instance that is accessible only over a VPC
+        # 
         # This parameter is required.
         self.deploy_type = deploy_type
+        # The disk capacity.
+        # 
+        # For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is not required when you create a Serverless instance.
         self.disk_size = disk_size
+        # The disk type. Valid values:
+        # 
+        # - **0**: ultra disk
+        # 
+        # - **1**: SSD
+        # 
+        # > This parameter is not required when you create a Serverless instance.
         self.disk_type = disk_type
+        # The Internet traffic.
+        # 
+        # - This parameter is required if you set **DeployType** to **4**.
+        # 
+        # - For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is not required when you create a Serverless instance.
         self.eip_max = eip_max
+        # The traffic specification.
+        # 
+        # - For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is not required when you create a Serverless instance.
         self.io_max_spec = io_max_spec
+        # The billing method. Valid values:
+        # 
+        # - 1 (default): pay-as-you-go for reserved instances.
+        # 
+        # - 3: pay-as-you-go for reserved capacity and elastic scaling of Serverless instances.
         self.paid_type = paid_type
+        # The number of partitions.
+        # 
+        # - For more information about the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is not required if the instance is a Serverless instance.
         self.partition_num = partition_num
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        # 
+        # If you do not specify this parameter, the instance is added to the default resource group. You can view the resource group ID in the Resource Group console.
         self.resource_group_id = resource_group_id
+        # The settings of the Serverless instance. This parameter is required when you create a Serverless instance.
         self.serverless_config = serverless_config
+        # The edition of the instance.
+        # 
+        # If you set the PaidType parameter to 1 (pay-as-you-go for reserved instances), valid values are:
+        # 
+        # - normal: Standard Edition (High-write)
+        # 
+        # - professional: Professional Edition (High-write)
+        # 
+        # - professionalForHighRead: Professional Edition (High-read)
+        # 
+        # If you set the PaidType parameter to 3 (pay-as-you-go for reserved capacity and elastic scaling of Serverless instances), valid values are:
+        # 
+        # - basic: Serverless Basic Edition
+        # 
+        # - normal: Serverless Standard Edition
+        # 
+        # - professional: Serverless Professional Edition
+        # 
+        # For more information about these instance editions, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -141,8 +207,23 @@ class CreatePostPayInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource.
+        # 
+        # - The value of N can be from 1 to 20.
+        # 
+        # - If this parameter is left empty, all tag keys are matched.
+        # 
+        # - The tag key can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value of the resource.
+        # 
+        # - The value of N can be from 1 to 20.
+        # 
+        # - If the tag key is empty, this parameter must also be empty. If this parameter is empty, all tag values are matched.
+        # 
+        # - The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http\\:// or https\\://.
         self.value = value
 
     def validate(self):
@@ -177,7 +258,13 @@ class CreatePostPayInstanceRequestServerlessConfig(DaraModel):
         reserved_publish_capacity: int = None,
         reserved_subscribe_capacity: int = None,
     ):
+        # The reserved publish traffic. The value must be an integer. Minimum value: 60. This parameter is required for Serverless instances.
+        # 
+        # > The actual upper limit is subject to the inventory in the current region. For more information, see the value range on the buy page.
         self.reserved_publish_capacity = reserved_publish_capacity
+        # The reserved subscribe traffic. The value must be an integer. Minimum value: 20. This parameter is required for Serverless instances.
+        # 
+        # > The actual upper limit is subject to the inventory in the current region. For more information, see the value range on the buy page.
         self.reserved_subscribe_capacity = reserved_subscribe_capacity
 
     def validate(self):

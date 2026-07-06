@@ -16,15 +16,15 @@ class GetConsumerProgressResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned HTTP status code. If the request is successful, 200 is returned.
+        # The status code. A value of 200 indicates that the request is successful.
         self.code = code
-        # The consumer progress of the consumer group.
+        # The consumption status.
         self.consumer_progress = consumer_progress
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -82,12 +82,29 @@ class GetConsumerProgressResponseBodyConsumerProgress(DaraModel):
         total_diff: int = None,
         state: str = None,
     ):
-        # The time when the last message consumed by the consumer group was generated.
+        # The latest time when a message was stored. This time is calculated based on the consumer offsets of all topics in the consumer group.
+        # 
+        # > - This parameter is not supported for topics on Serverless instances or topics that use local storage on provisioned instances. In these cases, -1 is returned.
+        # >
+        # > - For topics that use cloud storage on provisioned instances, this parameter returns the message creation timestamp. This happens only after you submit the consumer offset for a consumer group that was created in the console or by an API call. If the message has no creation timestamp, -1 is returned.
         self.last_timestamp = last_timestamp
         self.rebalance_info_list = rebalance_info_list
         self.topic_list = topic_list
-        # The total number of unconsumed messages in all topics to which the consumer group subscribes.
+        # The total number of unconsumed messages in all topics. This value is the message accumulation.
         self.total_diff = total_diff
+        # The status of the consumer group:
+        # 
+        # - UNKNOWN
+        # 
+        # - PREPARING_REBALANCE
+        # 
+        # - COMPLETING_REBALANCE
+        # 
+        # - STABLE
+        # 
+        # - DEAD
+        # 
+        # - EMPTY
         self.state = state
 
     def validate(self):

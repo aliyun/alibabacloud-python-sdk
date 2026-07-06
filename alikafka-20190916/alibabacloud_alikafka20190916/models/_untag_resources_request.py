@@ -15,27 +15,29 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to detach all tags from the resource. This parameter only takes effect when the TagKey.N parameter is not configured. Default value: **false**.
+        # Specifies whether to detach all tags from the resource. This parameter takes effect when TagKey.N is empty. The default value is **false**.
         self.all = all
-        # The ID of the region in which the resource is deployed.
+        # The region ID of the resource.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources from which you want to detach tags.
+        # The IDs of resources from which you want to detach tags.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resources. Valid values:
+        # The resource type. Enumeration type, currently supported resource types:
         # 
-        # *   **INSTANCE**
-        # *   **TOPIC**
-        # *   **CONSUMERGROUP**
+        # - **INSTANCE**
         # 
-        # >  The value of this parameter is not case-sensitive.
+        # - **TOPIC**
+        # 
+        # - **CONSUMERGROUP**
+        # 
+        # > Case-insensitive.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The key of the resource tag.
+        # The tag keys of the resource.
         self.tag_key = tag_key
 
     def validate(self):

@@ -12,7 +12,7 @@ class ModifyTopicRemarkRequest(DaraModel):
         remark: str = None,
         topic: str = None,
     ):
-        # The ID of the instance.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -20,7 +20,7 @@ class ModifyTopicRemarkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The description of the topic.
+        # Remark.
         self.remark = remark
         # The name of the topic.
         # 

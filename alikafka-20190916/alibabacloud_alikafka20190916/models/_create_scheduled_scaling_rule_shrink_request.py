@@ -20,22 +20,26 @@ class CreateScheduledScalingRuleShrinkRequest(DaraModel):
         time_zone: str = None,
         weekly_types_shrink: str = None,
     ):
-        # The duration of each scheduled scaling task. Unit: minutes.
+        # The duration (unit: minutes) of a scheduled elastic task.
         # 
-        # >  The value of this parameter must be greater than or equal to 15.
+        # > The parameter value must be at least 15 minutes.
         # 
         # This parameter is required.
         self.duration_minutes = duration_minutes
-        # Specifies whether to enable the scheduled scaling rule. Valid values:
+        # Enables or disables the scheduled task policy. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enables the policy.
+        # - **false**: Disables the policy.
         self.enable = enable
-        # The time when the scheduled scaling task is executed.
+        # The time when the scheduled policy starts to execute.
         # 
-        # If you set ScheduleType to at, make sure that the value of this parameter is at least 30 minutes later than the current point in time.
+        # For a one-time scheduling policy type, the start execution time must be more than 30 minutes later than the current time.
         # 
-        # >Notice: To prevent the broker from repeatedly executing instance upgrade and downgrade tasks, make sure that the interval between two consecutive scheduled scaling tasks is at least 60 minutes.
+        # >Notice: 
+        # 
+        # To avoid the service from continuously executing upgrade and downgrade tasks, the time interval between different scheduled tasks must be at least 60 minutes.
+        # 
+        # </notice>
         # 
         # This parameter is required.
         self.first_scheduled_time = first_scheduled_time
@@ -43,46 +47,46 @@ class CreateScheduledScalingRuleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the instance resides.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The frequency to execute the scheduled scaling task. This parameter is required only if you set ScheduleType to repeat. Valid values:
+        # When ScheduleType is set to repeat, you need to fill in this parameter. Enumeration values are:
         # 
-        # *   Daily: The scheduled scaling task is executed every day.
+        # - Daily: Daily scheduled task.
         # 
-        # *   Weekly: The scheduled scaling task is executed every week.
+        # - Weekly: Weekly scheduled task.
         self.repeat_type = repeat_type
-        # The reserved production capacity for scheduled scaling. Unit: MB/s.
+        # The scheduled elastic reserved production specification (unit: MB/s).
         # 
-        # >  You must specify a higher value than the instance specification for at least one of ReservedPubFlow and ReservedSubFlow.
+        # > At least one of the ReservedPubFlow and ReservedSubFlow parameters must be higher than the current specification.
         # 
         # This parameter is required.
         self.reserved_pub_flow = reserved_pub_flow
-        # The reserved consumption capacity for scheduled scaling. Unit: MB/s.
+        # The scheduled elastic reserved consumption specification (unit: MB/s).
         # 
-        # >  You must specify a higher value than the instance specification for at least one of ReservedPubFlow and ReservedSubFlow.
+        # > At least one of the ReservedSubFlow and ReservedPubFlow parameters must be higher than the current specification.
         # 
         # This parameter is required.
         self.reserved_sub_flow = reserved_sub_flow
-        # The name of the scheduled scaling rule.
+        # The name of the scheduled policy rule.
         # 
-        # >  The name of the scheduled scaling rule cannot be the same as the names of other rules for the instance.
+        # > The name cannot be the same as other rule names for the same instance.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The type of the scheduled scaling task. Valid values:
+        # The schedule type. Valid values:
         # 
-        # *   at: The scheduled scaling task is executed only once.
-        # *   repeat: The scheduled scaling task is repeatedly executed.
+        # - at: Scheduled only once.
+        # - repeat: Scheduled repeatedly.
         # 
         # This parameter is required.
         self.schedule_type = schedule_type
-        # The time zone in Coordinated Universal Time (UTC).
+        # The time zone (Coordinated Universal Time).
         # 
         # This parameter is required.
         self.time_zone = time_zone
-        # The day on which the scheduled scaling task is executed every week. You can specify multiple days.
+        # The weekly types. Supports execution on multiple days.
         self.weekly_types_shrink = weekly_types_shrink
 
     def validate(self):

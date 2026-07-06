@@ -14,13 +14,13 @@ class GetQuotaTipResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # Status code. A value of 200 indicates success.
         self.code = code
-        # The additional message. This message is typically used to describe API call failures for troubleshooting.
+        # Additional information. In typical scenarios, it provides a brief description of failed calls to help the caller locate the problem
         self.message = message
-        # The quota.
+        # Quota information.
         self.quota_data = quota_data
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -86,30 +86,31 @@ class GetQuotaTipResponseBodyQuotaData(DaraModel):
         topic_quota: int = None,
         topic_used: int = None,
     ):
-        # The number of available groups.
+        # Remaining Group quota.
         self.group_left = group_left
-        # The number of used groups.
+        # Used Group quota.
         self.group_used = group_used
-        # The method that you use to purchase partitions. Valid values:
+        # Partition purchase method distinction, with the following values:
         # 
-        # *   0: indicates that the instance is purchased based on topics.
-        # *   1: indicates that the instance is purchased based on partitions.
+        # - 0: indicates that the instance uses the topic model for purchase.
+        # 
+        # - 1: indicates partition model purchase.
         self.is_partition_buy = is_partition_buy
-        # The number of available partitions.
+        # Remaining partition quota.
         self.partition_left = partition_left
-        # The number of purchased partitions.
+        # Number of purchased partitions.
         self.partition_num_of_buy = partition_num_of_buy
-        # The quota of partitions.
+        # Partition quota.
         self.partition_quota = partition_quota
-        # The number of used partitions.
+        # Used partition quota.
         self.partition_used = partition_used
-        # The number of available topics.
+        # Remaining topic quota.
         self.topic_left = topic_left
-        # The number of purchased topics.
+        # Number of purchased topics.
         self.topic_num_of_buy = topic_num_of_buy
-        # The quota of topics.
+        # Topic quota.
         self.topic_quota = topic_quota
-        # The number of used topics.
+        # Used topic quota.
         self.topic_used = topic_used
 
     def validate(self):

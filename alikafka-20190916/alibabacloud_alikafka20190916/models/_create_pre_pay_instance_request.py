@@ -24,19 +24,91 @@ class CreatePrePayInstanceRequest(DaraModel):
         spec_type: str = None,
         tag: List[main_models.CreatePrePayInstanceRequestTag] = None,
     ):
+        # The configurations of the Confluent components.
+        # 
+        # > This parameter is required if you create a Confluent instance.
         self.confluent_config = confluent_config
+        # The deployment type. Valid values:
+        # 
+        # - **4**: an instance accessible from the internet and a VPC
+        # 
+        # - **5**: an instance accessible from a VPC only
+        # 
+        # > If you create a Confluent instance, you cannot specify the deployment type and must set this parameter to 5. After the instance is created, you can configure internet access for each component.
         self.deploy_type = deploy_type
+        # The disk capacity, in GB.
+        # 
+        # For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is not required if you create a Confluent instance.
         self.disk_size = disk_size
+        # The disk type. Valid values:
+        # 
+        # - **0**: ultra disk
+        # 
+        # - **1**: SSD
+        # 
+        # > This parameter is not required if you create a Confluent instance.
         self.disk_type = disk_type
+        # The subscription duration, in months. Default value: 1. Valid values:
+        # 
+        # - Confluent instances: **1** and **12**
+        # 
+        # - Kafka instances: **1**
         self.duration = duration
+        # The peak internet bandwidth.
+        # 
+        # - This parameter is required if you set **DeployType** to **4**.
+        # 
+        # - For the value range, see [pay-as-you-go](https://help.aliyun.com/document_detail/72142.html).
+        # 
+        # > This parameter is not required if you create a Confluent instance.
         self.eip_max = eip_max
+        # The I/O specification.
+        # 
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is not required if you create a Confluent instance.
         self.io_max_spec = io_max_spec
+        # The billing method. Valid values:
+        # 
+        # - **0**: subscription
+        # 
+        # - **4**: subscription for Confluent instances
         self.paid_type = paid_type
+        # The number of partitions.
+        # 
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > This parameter is not required if you create a Confluent instance.
         self.partition_num = partition_num
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group.
+        # 
+        # If you do not specify this parameter, the instance is placed in the default resource group. You can find the resource group ID in the Resource Group console.
         self.resource_group_id = resource_group_id
+        # The specification type.
+        # 
+        # Valid values for Kafka instances:
+        # 
+        # - **normal**: Standard Edition (High-write)
+        # 
+        # - **professional**: Professional Edition (High-write)
+        # 
+        # - **professionalForHighRead**: Professional Edition (High-read)
+        # 
+        # Valid values for Confluent instances:
+        # 
+        # - **professional**: Professional Edition
+        # 
+        # - **enterprise**: Enterprise Edition
+        # 
+        # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
+        # The tags to attach to the instance. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -148,8 +220,23 @@ class CreatePrePayInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # -
+        # 
+        # -
+        # 
+        # - The key must be 1 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
+        # 
         # This parameter is required.
         self.key = key
+        # The tag value.
+        # 
+        # -
+        # 
+        # -
+        # 
+        # - The value can be 0 to 128 characters long. It cannot start with aliyun or acs:, nor can it contain http\\:// or https\\://.
         self.value = value
 
     def validate(self):
@@ -201,24 +288,42 @@ class CreatePrePayInstanceRequestConfluentConfig(DaraModel):
         zoo_keeper_replica: int = None,
         zoo_keeper_storage: int = None,
     ):
+        # The number of CPU cores for Connect.
         self.connect_cu = connect_cu
+        # The number of replicas for Connect.
         self.connect_replica = connect_replica
+        # The number of CPU cores for Control Center.
         self.control_center_cu = control_center_cu
+        # The number of replicas for Control Center.
         self.control_center_replica = control_center_replica
+        # The disk capacity for Control Center, in GB.
         self.control_center_storage = control_center_storage
+        # The number of CPU cores for the Kafka broker.
         self.kafka_cu = kafka_cu
+        # The number of replicas for the Kafka broker.
         self.kafka_replica = kafka_replica
+        # The number of CPU cores for Kafka REST Proxy.
         self.kafka_rest_proxy_cu = kafka_rest_proxy_cu
+        # The number of replicas for Kafka REST Proxy.
         self.kafka_rest_proxy_replica = kafka_rest_proxy_replica
+        # The disk capacity for the Kafka broker, in GB.
         self.kafka_storage = kafka_storage
+        # The number of CPU cores for ksqlDB.
         self.ksql_cu = ksql_cu
         self.ksql_list = ksql_list
+        # The number of replicas for ksqlDB.
         self.ksql_replica = ksql_replica
+        # The disk capacity for ksqlDB, in GB.
         self.ksql_storage = ksql_storage
+        # The number of CPU cores for Schema Registry.
         self.schema_registry_cu = schema_registry_cu
+        # The number of replicas for Schema Registry.
         self.schema_registry_replica = schema_registry_replica
+        # The number of CPU cores for ZooKeeper.
         self.zoo_keeper_cu = zoo_keeper_cu
+        # The number of replicas for ZooKeeper.
         self.zoo_keeper_replica = zoo_keeper_replica
+        # The disk capacity for ZooKeeper, in GB.
         self.zoo_keeper_storage = zoo_keeper_storage
 
     def validate(self):

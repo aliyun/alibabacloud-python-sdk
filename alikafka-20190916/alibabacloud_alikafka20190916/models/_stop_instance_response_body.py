@@ -12,13 +12,13 @@ class StopInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned status code. If the request is successful, 200 is returned.
+        # Status code. A return value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # Return message.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

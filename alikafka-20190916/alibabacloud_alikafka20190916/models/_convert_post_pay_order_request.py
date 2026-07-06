@@ -12,16 +12,23 @@ class ConvertPostPayOrderRequest(DaraModel):
         paid_type: int = None,
         region_id: str = None,
     ):
-        # The subscription duration. Unit: months. Valid values:
+        # The subscription duration in months. The default value is 1. Valid values:
         # 
-        # *   **1~12**
-        # *   **24**
-        # *   **36**
+        # - 1 to **12**
+        # 
+        # - **24**
+        # 
+        # - **36**
         self.duration = duration
         # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The billing method. Valid values:
+        # 
+        # - **0**: subscription
+        # 
+        # - **4**: Confluent series subscription
         self.paid_type = paid_type
         # The region ID of the instance.
         # 

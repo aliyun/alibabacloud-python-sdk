@@ -16,10 +16,14 @@ class ListRebalanceInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code. A return code of 200 indicates that the request was successful.
         self.code = code
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

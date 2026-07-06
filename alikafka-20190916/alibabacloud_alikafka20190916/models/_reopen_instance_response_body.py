@@ -12,13 +12,13 @@ class ReopenInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned HTTP status code. If the request is successful, 200 is returned.
+        # The return code. A return code of 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

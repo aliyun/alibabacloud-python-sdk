@@ -16,13 +16,13 @@ class GetAllowedIpListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The IP address whitelist.
+        # The allowlist.
         self.allowed_list = allowed_list
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The return code. A value of 200 indicates that the request is successful.
         self.code = code
-        # The message returned.
+        # The return message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -80,16 +80,17 @@ class GetAllowedIpListResponseBodyAllowedList(DaraModel):
         internet_list: List[main_models.GetAllowedIpListResponseBodyAllowedListInternetList] = None,
         vpc_list: List[main_models.GetAllowedIpListResponseBodyAllowedListVpcList] = None,
     ):
-        # The deployment mode of the instance. Valid values:
+        # The deployment type. Valid values:
         # 
-        # *   **4**: allows access from the Internet and a virtual private cloud (VPC).
-        # *   **5**: allows access from a VPC.
+        # - **4**: Internet/VPC
         # 
-        # >  Only integrators need to concern themselves with the value of this parameter.
+        # - **5**: VPC
+        # 
+        # > This field is not relevant for regular users and is intended for integration partners.
         self.deploy_type = deploy_type
-        # The whitelist for access from the Internet.
+        # The Internet allowlists.
         self.internet_list = internet_list
-        # The whitelist for access from a virtual private cloud (VPC).
+        # The VPC allowlists.
         self.vpc_list = vpc_list
 
     def validate(self):
@@ -152,17 +153,21 @@ class GetAllowedIpListResponseBodyAllowedListVpcList(DaraModel):
         security_group_id: str = None,
         user_defined_shared_security_group: bool = None,
     ):
-        # The group to which the IP address whitelist belongs.
+        # The IP address allowlist group.
         self.allowed_ip_group = allowed_ip_group
-        # The information about the IP address whitelist.
+        # The IP address allowlists.
         self.allowed_ip_list = allowed_ip_list
+        # The IP address blocklists.
         self.black_iplist = black_iplist
+        # The IP address blocklist group.
         self.black_ipmap = black_ipmap
-        # The port range. Valid value:
+        # The port range. Valid values:
         # 
         # **9092/9092**.
         self.port_range = port_range
+        # The security group ID.
         self.security_group_id = security_group_id
+        # Indicates whether it is a shared security group.
         self.user_defined_shared_security_group = user_defined_shared_security_group
 
     def validate(self):
@@ -232,17 +237,21 @@ class GetAllowedIpListResponseBodyAllowedListInternetList(DaraModel):
         security_group_id: str = None,
         user_defined_shared_security_group: bool = None,
     ):
-        # The group to which the IP address whitelist belongs.
+        # The Internet IP address allowlist group.
         self.allowed_ip_group = allowed_ip_group
-        # The information about the IP address whitelist.
+        # The Internet IP address allowlists.
         self.allowed_ip_list = allowed_ip_list
+        # The Internet IP address blocklists.
         self.black_iplist = black_iplist
+        # The Internet IP address blocklist group.
         self.black_ipmap = black_ipmap
-        # The port range. Valid value:
+        # The port range. Valid values:
         # 
         # **9093/9093**.
         self.port_range = port_range
+        # The security group ID.
         self.security_group_id = security_group_id
+        # Indicates whether it is a shared security group.
         self.user_defined_shared_security_group = user_defined_shared_security_group
 
     def validate(self):

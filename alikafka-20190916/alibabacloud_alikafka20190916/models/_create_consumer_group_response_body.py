@@ -12,13 +12,13 @@ class CreateConsumerGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # Status code. A return value of 200 indicates success.
         self.code = code
-        # The message returned.
+        # Return message.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
