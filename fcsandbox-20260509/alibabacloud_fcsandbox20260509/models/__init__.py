@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 from ._api_key import ApiKey
+from ._cert_config import CertConfig
 from ._create_api_key_input import CreateApiKeyInput
+from ._create_custom_domain_input import CreateCustomDomainInput
+from ._custom_domain_resp import CustomDomainResp
 from ._e2blifecycle import E2BLifecycle
 from ._e2blisted_sandbox import E2BListedSandbox
 from ._e2blisted_template import E2BListedTemplate
@@ -15,7 +18,9 @@ from ._e2btemplate_tag import E2BTemplateTag
 from ._e2bvolume_mount import E2BVolumeMount
 from ._log_configuration import LogConfiguration
 from ._quota import Quota
+from ._tlsconfig import TLSConfig
 from ._update_api_key_input import UpdateApiKeyInput
+from ._update_custom_domain_input import UpdateCustomDomainInput
 from ._update_template_input import UpdateTemplateInput
 from ._delete_quota_request import DeleteQuotaRequest
 from ._delete_quota_response_body import DeleteQuotaResponseBody
@@ -32,7 +37,10 @@ from ._update_quota_response import UpdateQuotaResponse
 
 __all__ = [
     ApiKey,
+    CertConfig,
     CreateApiKeyInput,
+    CreateCustomDomainInput,
+    CustomDomainResp,
     E2BLifecycle,
     E2BListedSandbox,
     E2BListedTemplate,
@@ -44,7 +52,9 @@ __all__ = [
     E2BVolumeMount,
     LogConfiguration,
     Quota,
+    TLSConfig,
     UpdateApiKeyInput,
+    UpdateCustomDomainInput,
     UpdateTemplateInput,
     DeleteQuotaRequest,
     DeleteQuotaResponseBody,
