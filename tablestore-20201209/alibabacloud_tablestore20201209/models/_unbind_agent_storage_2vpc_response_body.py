@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteAgentStorageResponseBody(DaraModel):
+class UnbindAgentStorage2VpcResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,

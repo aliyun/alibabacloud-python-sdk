@@ -19,23 +19,33 @@ class CreateAgentStorageRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.CreateAgentStorageRequestTags] = None,
     ):
-        # agent storage description
+        # The description of the agent storage. The description must be 3 to 256 characters in length.
         self.agent_storage_description = agent_storage_description
-        # agent storage name
+        # The name of the agent storage. The naming conventions are as follows:
+        # - The name can contain only letters, digits, and hyphens (-).
+        # - The name must start with a letter.
+        # - The name cannot end with a hyphen (-).
+        # - The name is case-insensitive.
+        # - The name must be 3 to 16 characters in length.
+        # - The name cannot contain the following words: ali, ay, ots, taobao, or admin.
         # 
         # This parameter is required.
         self.agent_storage_name = agent_storage_name
-        # （已弃用）智能体存储网络类型。NORMAL, VPC_CONSOLE。默认为NORMAL。
+        # (Deprecated) The network type of the agent storage. Valid values: NORMAL and VPC_CONSOLE. Default value: NORMAL.
         self.network = network
-        # The list of network sources allowed for the agent storage instance. By default, all network sources are allowed. Valid values: TRUST_PROXY: console.
+        # The list of allowed network sources for the agent storage. All sources are allowed by default. Valid values:
+        # - TRUST_PROXY: console.
         self.network_source_acl = network_source_acl
-        # The list of network types allowed for the agent storage instance. By default, all network types are allowed. Valid values: CLASSIC: classic network. INTERNET: Internet. VPC: VPC.
+        # The list of allowed network types for the agent storage. All types are allowed by default. Valid values:
+        # - CLASSIC: classic network.
+        # - INTERNET: public network.
+        # - VPC: VPC network.
         self.network_type_acl = network_type_acl
-        # The access control policy of the agent storage instance in JSON format. For the policy syntax, see https://www.alibabacloud.com/help/en/ram/user-guide/policy-structure-and-syntax.
+        # The access control policy for the agent storage in JSON format. For the syntax, see https://www.alibabacloud.com/help/en/ram/user-guide/policy-structure-and-syntax.
         self.policy = policy
-        # resource group id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # tag
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -116,13 +126,11 @@ class CreateAgentStorageRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
-        # The key can be up to 64 characters in length.
+        # The key of the tag. The key can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the tag.
-        # The value can be up to 64 characters in length.
+        # The value of the tag. The value can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.value = value

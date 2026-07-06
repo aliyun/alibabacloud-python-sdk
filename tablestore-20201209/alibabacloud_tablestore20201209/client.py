@@ -68,6 +68,94 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def bind_agent_storage_2vpc_with_options(
+        self,
+        request: main_models.BindAgentStorage2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BindAgentStorage2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.agent_storage_vpc_name):
+            body['AgentStorageVpcName'] = request.agent_storage_vpc_name
+        if not DaraCore.is_null(request.virtual_switch_id):
+            body['VirtualSwitchId'] = request.virtual_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindAgentStorage2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/bindagentstorage2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindAgentStorage2VpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_agent_storage_2vpc_with_options_async(
+        self,
+        request: main_models.BindAgentStorage2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BindAgentStorage2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.agent_storage_vpc_name):
+            body['AgentStorageVpcName'] = request.agent_storage_vpc_name
+        if not DaraCore.is_null(request.virtual_switch_id):
+            body['VirtualSwitchId'] = request.virtual_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindAgentStorage2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/bindagentstorage2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindAgentStorage2VpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_agent_storage_2vpc(
+        self,
+        request: main_models.BindAgentStorage2VpcRequest,
+    ) -> main_models.BindAgentStorage2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.bind_agent_storage_2vpc_with_options(request, headers, runtime)
+
+    async def bind_agent_storage_2vpc_async(
+        self,
+        request: main_models.BindAgentStorage2VpcRequest,
+    ) -> main_models.BindAgentStorage2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.bind_agent_storage_2vpc_with_options_async(request, headers, runtime)
+
     def bind_instance_2vpc_with_options(
         self,
         request: main_models.BindInstance2VpcRequest,
@@ -235,6 +323,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
+
+    def check_agent_storage_policy_with_options(
+        self,
+        request: main_models.CheckAgentStoragePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAgentStoragePolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.policy):
+            body['Policy'] = request.policy
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAgentStoragePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/checkagentstoragepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAgentStoragePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_agent_storage_policy_with_options_async(
+        self,
+        request: main_models.CheckAgentStoragePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAgentStoragePolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.policy):
+            body['Policy'] = request.policy
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckAgentStoragePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/checkagentstoragepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckAgentStoragePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_agent_storage_policy(
+        self,
+        request: main_models.CheckAgentStoragePolicyRequest,
+    ) -> main_models.CheckAgentStoragePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.check_agent_storage_policy_with_options(request, headers, runtime)
+
+    async def check_agent_storage_policy_async(
+        self,
+        request: main_models.CheckAgentStoragePolicyRequest,
+    ) -> main_models.CheckAgentStoragePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.check_agent_storage_policy_with_options_async(request, headers, runtime)
 
     def check_instance_policy_with_options(
         self,
@@ -723,6 +891,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_agent_storage_with_options_async(request, headers, runtime)
+
+    def delete_agent_storage_policy_with_options(
+        self,
+        request: main_models.DeleteAgentStoragePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentStoragePolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.policy_version):
+            body['PolicyVersion'] = request.policy_version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentStoragePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deleteagentstoragepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentStoragePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_agent_storage_policy_with_options_async(
+        self,
+        request: main_models.DeleteAgentStoragePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAgentStoragePolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.policy_version):
+            body['PolicyVersion'] = request.policy_version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAgentStoragePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deleteagentstoragepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAgentStoragePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_agent_storage_policy(
+        self,
+        request: main_models.DeleteAgentStoragePolicyRequest,
+    ) -> main_models.DeleteAgentStoragePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_agent_storage_policy_with_options(request, headers, runtime)
+
+    async def delete_agent_storage_policy_async(
+        self,
+        request: main_models.DeleteAgentStoragePolicyRequest,
+    ) -> main_models.DeleteAgentStoragePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_agent_storage_policy_with_options_async(request, headers, runtime)
 
     def delete_instance_with_options(
         self,
@@ -1570,6 +1818,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
+    def list_vpc_info_by_agent_storage_with_options(
+        self,
+        request: main_models.ListVpcInfoByAgentStorageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcInfoByAgentStorageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            query['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVpcInfoByAgentStorage',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listvpcinfobyagentstorage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVpcInfoByAgentStorageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vpc_info_by_agent_storage_with_options_async(
+        self,
+        request: main_models.ListVpcInfoByAgentStorageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcInfoByAgentStorageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            query['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVpcInfoByAgentStorage',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listvpcinfobyagentstorage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVpcInfoByAgentStorageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vpc_info_by_agent_storage(
+        self,
+        request: main_models.ListVpcInfoByAgentStorageRequest,
+    ) -> main_models.ListVpcInfoByAgentStorageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_vpc_info_by_agent_storage_with_options(request, headers, runtime)
+
+    async def list_vpc_info_by_agent_storage_async(
+        self,
+        request: main_models.ListVpcInfoByAgentStorageRequest,
+    ) -> main_models.ListVpcInfoByAgentStorageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_vpc_info_by_agent_storage_with_options_async(request, headers, runtime)
+
     def list_vpc_info_by_instance_with_options(
         self,
         request: main_models.ListVpcInfoByInstanceRequest,
@@ -1821,6 +2153,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
+
+    def unbind_agent_storage_2vpc_with_options(
+        self,
+        request: main_models.UnbindAgentStorage2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindAgentStorage2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.agent_storage_vpc_name):
+            body['AgentStorageVpcName'] = request.agent_storage_vpc_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindAgentStorage2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/unbindagentstorage2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindAgentStorage2VpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_agent_storage_2vpc_with_options_async(
+        self,
+        request: main_models.UnbindAgentStorage2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindAgentStorage2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.agent_storage_vpc_name):
+            body['AgentStorageVpcName'] = request.agent_storage_vpc_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindAgentStorage2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/unbindagentstorage2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindAgentStorage2VpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_agent_storage_2vpc(
+        self,
+        request: main_models.UnbindAgentStorage2VpcRequest,
+    ) -> main_models.UnbindAgentStorage2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.unbind_agent_storage_2vpc_with_options(request, headers, runtime)
+
+    async def unbind_agent_storage_2vpc_async(
+        self,
+        request: main_models.UnbindAgentStorage2VpcRequest,
+    ) -> main_models.UnbindAgentStorage2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.unbind_agent_storage_2vpc_with_options_async(request, headers, runtime)
 
     def unbind_instance_2vpc_with_options(
         self,
@@ -2085,6 +2497,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_agent_storage_with_options_async(request, headers, runtime)
+
+    def update_agent_storage_policy_with_options(
+        self,
+        request: main_models.UpdateAgentStoragePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentStoragePolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.policy):
+            body['Policy'] = request.policy
+        if not DaraCore.is_null(request.policy_version):
+            body['PolicyVersion'] = request.policy_version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentStoragePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateagentstoragepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentStoragePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_agent_storage_policy_with_options_async(
+        self,
+        request: main_models.UpdateAgentStoragePolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAgentStoragePolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_storage_name):
+            body['AgentStorageName'] = request.agent_storage_name
+        if not DaraCore.is_null(request.policy):
+            body['Policy'] = request.policy
+        if not DaraCore.is_null(request.policy_version):
+            body['PolicyVersion'] = request.policy_version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAgentStoragePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateagentstoragepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAgentStoragePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_agent_storage_policy(
+        self,
+        request: main_models.UpdateAgentStoragePolicyRequest,
+    ) -> main_models.UpdateAgentStoragePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_agent_storage_policy_with_options(request, headers, runtime)
+
+    async def update_agent_storage_policy_async(
+        self,
+        request: main_models.UpdateAgentStoragePolicyRequest,
+    ) -> main_models.UpdateAgentStoragePolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_agent_storage_policy_with_options_async(request, headers, runtime)
 
     def update_instance_with_options(
         self,

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateAgentStorageResponseBody(DaraModel):
+class UpdateAgentStoragePolicyResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
@@ -33,7 +33,7 @@ class CreateAgentStorageResponseBody(DaraModel):
             result['Message'] = self.message
 
         if self.request_id is not None:
-            result['RequestId'] = self.request_id
+            result['requestId'] = self.request_id
 
         return result
 
@@ -45,8 +45,8 @@ class CreateAgentStorageResponseBody(DaraModel):
         if m.get('Message') is not None:
             self.message = m.get('Message')
 
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
 
         return self
 

@@ -26,11 +26,11 @@ class GetAgentStorageResponseBody(DaraModel):
         tags: List[main_models.GetAgentStorageResponseBodyTags] = None,
         user_id: str = None,
     ):
-        # agent storage description
+        # The description of the agent storage.
         self.agent_storage_description = agent_storage_description
-        # agent storage name
+        # The name of the agent storage.
         self.agent_storage_name = agent_storage_name
-        # The specification of the agent storage.
+        # The specifications of the agent storage.
         self.agent_storage_specification = agent_storage_specification
         # The status of the agent storage. Valid values:
         # - normal: Normal.
@@ -43,15 +43,15 @@ class GetAgentStorageResponseBody(DaraModel):
         self.create_time = create_time
         # The list of network sources allowed for the agent storage. TRUST_PROXY: console.
         self.network_source_acl = network_source_acl
-        # The list of network types allowed for the agent storage. CLASSIC: classic network. INTERNET: Internet. VPC: VPC network.
+        # The list of network types allowed for the agent storage. CLASSIC: classic network. INTERNET: public network. VPC: VPC network.
         self.network_type_acl = network_type_acl
         # The access control policy of the agent storage.
         self.policy = policy
-        # The version of the agent storage policy.
+        # The version of the access control policy for the agent storage.
         self.policy_version = policy_version
         # The region ID of the agent storage.
         self.region_id = region_id
-        # Id of the request
+        # The request ID, which can be used for troubleshooting.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id

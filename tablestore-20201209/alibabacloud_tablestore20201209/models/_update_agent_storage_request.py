@@ -16,9 +16,9 @@ class UpdateAgentStorageRequest(DaraModel):
         network_source_acl: List[str] = None,
         network_type_acl: List[str] = None,
     ):
-        # agent storage description
+        # The description of the agent storage.
         self.agent_storage_description = agent_storage_description
-        # agent storage name
+        # The name of the agent storage.
         # 
         # This parameter is required.
         self.agent_storage_name = agent_storage_name
@@ -26,10 +26,9 @@ class UpdateAgentStorageRequest(DaraModel):
         self.alias_name = alias_name
         # (Deprecated) The network type of the agent storage. Valid values: NORMAL and VPC_CONSOLE. Default value: NORMAL.
         self.network = network
-        # The list of network sources allowed for the agent storage. All sources are allowed by default. Valid values:
-        # - TRUST_PROXY: console.
+        # The list of allowed network sources for the agent storage. All sources are allowed by default. Must be used with TRUST_PROXY (console).
         self.network_source_acl = network_source_acl
-        # The list of network types allowed for the agent storage. All types are allowed by default. Valid values:
+        # The list of allowed network types for the agent storage. All types are allowed by default. Valid values:
         # - CLASSIC: classic network.
         # - INTERNET: public network.
         # - VPC: VPC network.

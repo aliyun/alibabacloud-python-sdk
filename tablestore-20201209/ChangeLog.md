@@ -1,3 +1,12 @@
+2026-07-06 Version: 3.2.0
+- Support API BindAgentStorage2Vpc.
+- Support API CheckAgentStoragePolicy.
+- Support API DeleteAgentStoragePolicy.
+- Support API ListVpcInfoByAgentStorage.
+- Support API UnbindAgentStorage2Vpc.
+- Support API UpdateAgentStoragePolicy.
+
+
 2026-06-29 Version: 3.1.0
 - Support API CreateAgentStorage.
 - Support API DeleteAgentStorage.

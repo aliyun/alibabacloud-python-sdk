@@ -9,7 +9,7 @@ class DeleteAgentStorageRequest(DaraModel):
         self,
         agent_storage_name: str = None,
     ):
-        # agent storage name
+        # The name of the agent storage.
         # 
         # This parameter is required.
         self.agent_storage_name = agent_storage_name

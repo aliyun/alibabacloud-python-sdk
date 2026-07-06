@@ -17,9 +17,9 @@ class ListAgentStoragesResponseBody(DaraModel):
     ):
         # The list of agent storage information.
         self.agent_storages = agent_storages
-        # The token used to retrieve the next page of results when the total number of tag resources exceeds the value of MaxResults. This parameter has a value only when not all tag resources are returned.
+        # The pagination token for querying subsequent pages. This parameter has a value only when not all tag resources are returned. If the total number of expected tag resources exceeds the MaxResults value, use this token to retrieve the next page.
         self.next_token = next_token
-        # Id of the request
+        # The request ID, which can be used for troubleshooting.
         self.request_id = request_id
         # The total number of agent storages returned.
         self.total_count = total_count
@@ -83,11 +83,11 @@ class ListAgentStoragesResponseBodyAgentStorages(DaraModel):
         resource_group_id: str = None,
         user_id: str = None,
     ):
-        # agent storage description
+        # The description of the agent storage.
         self.agent_storage_description = agent_storage_description
-        # The agent storage name, which is a unique key.
+        # The name of the agent storage, which is a unique key.
         self.agent_storage_name = agent_storage_name
-        # The specifications of the agent storage.
+        # The specification of the agent storage.
         self.agent_storage_specification = agent_storage_specification
         # The status of the agent storage. Valid values:
         # - normal: Normal.
@@ -96,7 +96,7 @@ class ListAgentStoragesResponseBodyAgentStorages(DaraModel):
         self.agent_storage_status = agent_storage_status
         # The alias of the agent storage.
         self.alias_name = alias_name
-        # The creation time of the agent storage.
+        # The time when the agent storage was created.
         self.create_time = create_time
         # The region ID of the agent storage.
         self.region_id = region_id

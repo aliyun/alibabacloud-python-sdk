@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_tablestore20201209.
 
-Created on 29/06/2026
+Created on 06/07/2026
 
 @author: Alibaba Cloud SDK
 """
