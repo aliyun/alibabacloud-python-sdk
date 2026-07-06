@@ -13,20 +13,21 @@ class ListNamespaceRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # The instance ID.
+        # The ID of the Container Registry (ACR) instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The namespace name.
+        # The name of the namespace.
         self.namespace_name = namespace_name
         # The status of the namespace. Valid values:
         # 
-        # *   `NORMAL`
-        # *   `DELETING`
+        # - `NORMAL`: The namespace is normal.
+        # 
+        # - `DELETING`: The namespace is being deleted.
         self.namespace_status = namespace_status
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
 
     def validate(self):

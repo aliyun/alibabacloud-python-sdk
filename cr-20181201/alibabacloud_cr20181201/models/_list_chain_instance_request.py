@@ -13,17 +13,17 @@ class ListChainInstanceRequest(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The operation that you want to perform. Set this parameter to **ListChainInstance**.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The time when the delivery chain started.
+        # The page number.
         self.page_no = page_no
-        # The name of the image repository.
+        # The page size.
         self.page_size = page_size
-        # The time when the delivery chain is completed.
+        # The image repository name.
         self.repo_name = repo_name
-        # The name of the delivery chain.
+        # The namespace name.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):

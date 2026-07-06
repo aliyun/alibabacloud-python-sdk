@@ -18,22 +18,23 @@ class ListRepoBuildRuleResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of image building rules.
+        # The build rules.
         self.build_rules = build_rules
-        # The return value.
+        # The response code. A value of `success` indicates that the request was successful.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.is_success = is_success
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of build rules.
         self.total_count = total_count
 
     def validate(self):
@@ -114,22 +115,24 @@ class ListRepoBuildRuleResponseBodyBuildRules(DaraModel):
         push_type: str = None,
     ):
         self.build_args = build_args
-        # The ID of the image building rule.
+        # The ID of the build rule.
         self.build_rule_id = build_rule_id
         self.dest_artifact_type = dest_artifact_type
         # The directory of the Dockerfile.
         self.dockerfile_location = dockerfile_location
-        # The name of the Dockerfile.
+        # Dockerfile name
         self.dockerfile_name = dockerfile_name
-        # The tag of the image.
+        # Image Tag
         self.image_tag = image_tag
+        # Image operating system and platform
         self.platforms = platforms
-        # The name of the push that triggers the building rule.
+        # Code push-triggered build name
         self.push_name = push_name
-        # The type of the push that triggers the image building rule. Valid values:
+        # The type of the event that triggers the build rule. Valid values:
         # 
-        # *   GIT_BRANCH: branch push
-        # *   GIT_TAG: tag push
+        # - `GIT_BRANCH`: A code branch is pushed.
+        # 
+        # - GIT_TAG: Push source code from a tag.
         self.push_type = push_type
 
     def validate(self):

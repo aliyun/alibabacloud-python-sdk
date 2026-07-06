@@ -12,15 +12,17 @@ class GetInstanceCountResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # Return value
+        # The return value.
         self.code = code
-        # Number of instances
+        # The number of instances.
         self.count = count
-        # Indicates whether the API call was successful. Values:
-        # - `true`: The API call was successful. 
-        # - `false`: The API call failed.
+        # Indicates whether the API call is successful. Valid values:
+        # 
+        # - `true`: The API call is successful.
+        # 
+        # - `false`: The API call fails.
         self.is_success = is_success
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

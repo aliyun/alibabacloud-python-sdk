@@ -26,6 +26,15 @@ class ListRepositoryRequest(DaraModel):
         self.repo_name = repo_name
         # The name of the namespace to which the repository belongs.
         self.repo_namespace_name = repo_namespace_name
+        # Repository status. Valid values:
+        # 
+        # - `NORMAL`: Normal.
+        # 
+        # - `DELETING`: Deleting.
+        # 
+        # - `DELETED`: Deleted.
+        # 
+        # - `ALL`: All repository statuses.
         self.repo_status = repo_status
 
     def validate(self):

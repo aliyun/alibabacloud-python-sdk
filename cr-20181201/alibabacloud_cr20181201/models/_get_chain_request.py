@@ -10,8 +10,12 @@ class GetChainRequest(DaraModel):
         chain_id: str = None,
         instance_id: str = None,
     ):
+        # Delivery chain ID
+        # 
         # This parameter is required.
         self.chain_id = chain_id
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

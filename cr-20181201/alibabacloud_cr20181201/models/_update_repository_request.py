@@ -16,16 +16,35 @@ class UpdateRepositoryRequest(DaraModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
+        # The repository description.
         self.detail = detail
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The repository ID.
         self.repo_id = repo_id
+        # The repository name.
         self.repo_name = repo_name
+        # The name of the repository namespace.
         self.repo_namespace_name = repo_namespace_name
+        # The repository type. Valid values:
+        # 
+        # - `PUBLIC`: public repository
+        # 
+        # - `PRIVATE`: private repository.
+        # 
         # This parameter is required.
         self.repo_type = repo_type
+        # The summary.
+        # 
         # This parameter is required.
         self.summary = summary
+        # Specifies whether image tag immutability is enabled. Valid values:
+        # 
+        # - `true`: enabled
+        # 
+        # - `false`: disabled.
         self.tag_immutability = tag_immutability
 
     def validate(self):

@@ -2,16 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_cr20181201 import models as main_models
 from darabonba.model import DaraModel
 
-class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
+class DeleteInstanceEndpointAclPolicyShrinkRequest(DaraModel):
     def __init__(
         self,
         endpoint_type: str = None,
-        entries: List[main_models.AccessControlEntry] = None,
+        entries_shrink: str = None,
         entry: str = None,
         instance_id: str = None,
         module_name: str = None,
@@ -20,7 +17,7 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
-        self.entries = entries
+        self.entries_shrink = entries_shrink
         # The IP CIDR block.
         self.entry = entry
         # The instance ID.
@@ -35,10 +32,7 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
         self.module_name = module_name
 
     def validate(self):
-        if self.entries:
-            for v1 in self.entries:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -48,10 +42,8 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
 
-        result['Entries'] = []
-        if self.entries is not None:
-            for k1 in self.entries:
-                result['Entries'].append(k1.to_map() if k1 else None)
+        if self.entries_shrink is not None:
+            result['Entries'] = self.entries_shrink
 
         if self.entry is not None:
             result['Entry'] = self.entry
@@ -69,11 +61,8 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
 
-        self.entries = []
         if m.get('Entries') is not None:
-            for k1 in m.get('Entries'):
-                temp_model = main_models.AccessControlEntry()
-                self.entries.append(temp_model.from_map(k1))
+            self.entries_shrink = m.get('Entries')
 
         if m.get('Entry') is not None:
             self.entry = m.get('Entry')

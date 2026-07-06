@@ -18,20 +18,21 @@ class ListArtifactLifecycleRuleResponseBody(DaraModel):
         rules: List[main_models.ListArtifactLifecycleRuleResponseBodyRules] = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The request succeeded.
+        # 
+        # - `false`: The request failed.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # _
+        # The list of lifecycle management rules.
         self.rules = rules
         # The total number of entries returned.
         self.total_count = total_count
@@ -118,32 +119,32 @@ class ListArtifactLifecycleRuleResponseBodyRules(DaraModel):
         scope: str = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether the lifecycle management rule is automatically executed.
+        # Indicates whether the rule runs automatically.
         self.auto = auto
-        # The time when the lifecycle management rule was created.
+        # The creation time of the rule.
         self.create_time = create_time
-        # Indicates whether lifecycle management is enabled for the artifact.
+        # Indicates whether the rule is configured to delete tags.
         self.enable_delete_tag = enable_delete_tag
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the lifecycle management rule was last modified.
+        # The last modification time of the rule.
         self.modified_time = modified_time
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The time when the lifecycle management rule is next executed.
+        # The next execution time.
         self.next_time = next_time
         self.policies = policies
-        # The name of the image repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The number of retained images.
+        # The number of image tags to retain.
         self.retention_tag_count = retention_tag_count
         # The rule ID.
         self.rule_id = rule_id
-        # The execution cycle of the lifecycle management rule.
+        # The execution schedule.
         self.schedule_time = schedule_time
-        # The deletion scope of artifacts.
+        # The scope of the rule.
         self.scope = scope
-        # The regular expression that indicates which image tags are retained.
+        # The regular expression that matches image tags to retain.
         self.tag_regexp = tag_regexp
 
     def validate(self):

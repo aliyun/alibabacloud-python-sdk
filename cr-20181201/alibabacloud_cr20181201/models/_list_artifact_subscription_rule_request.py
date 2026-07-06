@@ -15,9 +15,9 @@ class ListArtifactSubscriptionRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number.
+        # The current page number.
         self.page_no = page_no
-        # The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+        # The number of entries to return on each page. The maximum value is 100. If you specify a value greater than 100, the system either caps the page size at 100 or returns a parameter error.
         self.page_size = page_size
 
     def validate(self):

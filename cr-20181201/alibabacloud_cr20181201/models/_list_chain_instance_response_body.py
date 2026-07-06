@@ -19,21 +19,21 @@ class ListChainInstanceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries to return on each page.
+        # The list of delivery chain execution records.
         self.chain_instances = chain_instances
-        # The version of the delivery chain.
+        # The return value.
         self.code = code
-        # The page number of the page to return.
+        # The instance ID.
         self.instance_id = instance_id
-        # The execution record of the delivery chain.
+        # Indicates whether the request is successful.
         self.is_success = is_success
-        # 30
+        # The page number.
         self.page_no = page_no
-        # Indicates whether the operation is successful.
+        # The page size.
         self.page_size = page_size
-        # The ID of the Container Registry instance.
+        # The request ID.
         self.request_id = request_id
-        # The name of the repository.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -118,31 +118,31 @@ class ListChainInstanceResponseBodyChainInstances(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The name of the namespace.
+        # The delivery chain execution record.
         self.chain = chain
-        # 1
+        # The delivery chain instance ID.
         self.chain_instance_id = chain_instance_id
-        # The ID of the Container Registry instance.
+        # The end time.
         self.end_time = end_time
-        # The ID of the delivery chain.
+        # The repository name.
         self.repo_name = repo_name
+        # The namespace.
+        self.repo_namespace_name = repo_namespace_name
         # The execution result of the delivery chain. Valid values:
         # 
-        # *   `SUCCESS`
-        # *   `FAILED`
-        # *   `CANCELED`
-        # *   `DENIED`
-        self.repo_namespace_name = repo_namespace_name
-        # The list of the execution records of delivery chains.
+        # - `SUCCESS`: Succeeded.
+        # - `FAILED`: Failed.
+        # - `CANCELED`: Canceled.
+        # - `DENIED`: Denied.
         self.result = result
-        # test-repo
+        # The start time.
         self.start_time = start_time
-        # The status of the delivery chain. Valid values:
+        # The execution status of the delivery chain. Valid values:
         # 
-        # *   `RUNNING`
-        # *   `COMPLETE`
-        # *   `CANCELING`
-        # *   `CANCELED`
+        # - `RUNNING`: Running.
+        # - `COMPLETE`: Complete.
+        # - `CANCELING`: Canceling.
+        # - `CANCELED`: Canceled.
         self.status = status
 
     def validate(self):
@@ -216,11 +216,11 @@ class ListChainInstanceResponseBodyChainInstancesChain(DaraModel):
         chain_name: str = None,
         version: int = None,
     ):
-        # The name of the namespace.
+        # The delivery chain ID.
         self.chain_id = chain_id
-        # The number of entries returned on each page.
+        # The delivery chain name.
         self.chain_name = chain_name
-        # The ID of the request.
+        # The delivery chain version.
         self.version = version
 
     def validate(self):

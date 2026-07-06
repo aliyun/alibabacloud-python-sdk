@@ -23,6 +23,9 @@ class GetArtifactBuildRuleResponseBody(DaraModel):
         self.artifact_type = artifact_type
         # The ID of the artifact building rule.
         self.build_rule_id = build_rule_id
+        # The API return code:
+        # - **200**: Indicates success.
+        # - Others: Indicate error codes.
         self.code = code
         # Indicates whether the API request is successful. Valid values:
         # 

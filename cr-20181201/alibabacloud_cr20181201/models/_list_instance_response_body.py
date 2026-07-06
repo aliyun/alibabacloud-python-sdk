@@ -20,17 +20,17 @@ class ListInstanceResponseBody(DaraModel):
     ):
         # The return value.
         self.code = code
-        # The queried instances.
+        # The instance information.
         self.instances = instances
-        # Indicates whether the request is successful.
+        # Indicates whether the operation is successful.
         self.is_success = is_success
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 30.
+        # The page size. Default value: 30.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -111,23 +111,23 @@ class ListInstanceResponseBodyInstances(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.ListInstanceResponseBodyInstancesTags] = None,
     ):
-        # The time when the instance was created.
+        # The creation time.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The issue occurs on the instance.
+        # The instance issue.
         self.instance_issue = instance_issue
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The edition of the Container Registry Enterprise Edition instance.
+        # The Enterprise Edition specification.
         self.instance_specification = instance_specification
-        # The status of the instance.
+        # The instance status.
         self.instance_status = instance_status
-        # The time when the instance was last modified.
+        # The last modification time.
         self.modified_time = modified_time
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The tags of the instance.
         self.tags = tags

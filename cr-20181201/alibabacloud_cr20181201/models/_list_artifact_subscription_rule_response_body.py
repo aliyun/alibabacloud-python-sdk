@@ -18,22 +18,23 @@ class ListArtifactSubscriptionRuleResponseBody(DaraModel):
         rules: List[main_models.ListArtifactSubscriptionRuleResponseBodyRules] = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The response code.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`
-        # *   `false`
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried artifact subscription rules.
+        # The subscription rules.
         self.rules = rules
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -119,40 +120,34 @@ class ListArtifactSubscriptionRuleResponseBodyRules(DaraModel):
         tag_count: int = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+        # Indicates whether to enable the accelerated subscription channel. This feature is in public preview. Based on an optimized scheduling policy and network link, the speed of image subscription is improved.
         self.accelerate = accelerate
-        # The time when the subscription rule was created.
+        # The time when the rule was created.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the subscription rule was modified.
+        # The time when the rule was last modified.
         self.modified_time = modified_time
-        # The name of the source namespace.
+        # The name of the namespace.
         self.namespace_name = namespace_name
-        # Indicates whether the original image is overwritten.
+        # Indicates whether to overwrite the image.
         self.override = override
-        # The operating system and architecture. If the source repository contains a multi-arch image, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+        # The operating system and architecture. If the source repository contains a multi-architecture image, only images that have a specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
         self.platform = platform
-        # The name of the source repository.
+        # The name of the repository.
         self.repo_name = repo_name
         # The rule ID.
         self.rule_id = rule_id
         self.source_domain = source_domain
         # The source namespace.
         self.source_namespace_name = source_namespace_name
-        # The source of the artifact.
-        # 
-        # Valid values:
-        # 
-        # *   DOCKER_HUB: Docker Hub
-        # *   GCR: GCR
-        # *   QUAY: Quay.io
+        # The source of the artifact. Valid values:
         self.source_provider = source_provider
         # The source repository.
         self.source_repo_name = source_repo_name
         # The number of subscribed images.
         self.tag_count = tag_count
-        # The image tag in the subscription source repository. Regular expressions are supported.
+        # The regular expression that is used to subscribe to the source repository.
         self.tag_regexp = tag_regexp
 
     def validate(self):

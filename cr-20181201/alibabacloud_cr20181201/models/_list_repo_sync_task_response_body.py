@@ -18,19 +18,19 @@ class ListRepoSyncTaskResponseBody(DaraModel):
         sync_tasks: List[main_models.ListRepoSyncTaskResponseBodySyncTasks] = None,
         total_count: str = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful.
+        # Whether the request was successful.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried synchronization tasks.
+        # A list of sync tasks.
         self.sync_tasks = sync_tasks
-        # The total number of the queried synchronization tasks.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -116,56 +116,51 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         task_status: str = None,
         task_trigger: str = None,
     ):
-        # The time when the synchronization task was created.
+        # The creation time of the task.
         self.create_time = create_time
-        # Indicates whether the synchronization task is performed across Alibaba Cloud accounts. Valid values:
+        # Whether the image is synchronized across accounts. Valid values:
         # 
-        # *   `true`: The image synchronization task is performed across accounts.
-        # *   `false`: The image synchronization task is performed within the same account.
+        # - `true`: The image is synchronized across accounts.
         # 
-        # Default value: `false`.
+        # - `false`: The image is synchronized within the same account.
+        # 
+        # Default value: `false`
         self.cross_user = cross_user
-        # Indicates whether a custom synchronization link is used.
+        # Whether a custom sync link is used.
         self.custom_link = custom_link
-        # The information about the source image.
+        # The source image.
         self.image_from = image_from
-        # The information about the destination image.
+        # The destination image.
         self.image_to = image_to
+        # The ID of the custom sync link.
         self.link_id = link_id
-        # The time when the synchronization task was last modified.
+        # This parameter is deprecated due to a typo. Use `ModifiedTime` instead.
         self.modifed_time = modifed_time
+        # The modification time of the task.
         self.modified_time = modified_time
-        # The ID of the image synchronization batch tasks, which is the same as the value of SyncRecordId in the request.
+        # The ID of the batch sync task. This ID is the same as the sync record ID (`SyncRecordId`).
         # 
-        # >  If an image meets multiple synchronization rules and multiple synchronization tasks are generated for the image, these synchronization tasks use the same SyncBatchTaskId.
+        # > If an image matches multiple sync rules, multiple sync tasks are generated. These tasks share the same `SyncBatchTaskId`.
         self.sync_batch_task_id = sync_batch_task_id
-        # The ID of the synchronization rule.
+        # The ID of the sync rule.
         self.sync_rule_id = sync_rule_id
-        # The ID of the synchronization task.
+        # The ID of the sync task.
         self.sync_task_id = sync_task_id
-        # Indicates whether the synchronization transfer acceleration feature is enabled for the synchronization task.
+        # Whether transfer acceleration is enabled for the sync task.
         self.sync_trans_accelerate = sync_trans_accelerate
-        # The error message that is returned if the synchronization task fails.
+        # The task failure information.
         # 
-        # >  The system uses this parameter to return an error message if the synchronization task fails.
-        # 
-        # Valid value:
-        # 
-        # *   OSS_POLICY_UNAUTHORIZED: Container Registry is not granted permissions to access Object Storage Service (OSS).
-        # *   TAG_CONFLICT: The destination repository contains an image that has the same tag as the source image, and image tag immutability is enabled for the destination repository.
-        # *   UNSUPPORTED_FORMAT: The manifest or config format of the image to be synchronized is not supported.
-        # *   INTERNAL_ERROR: The synchronization task failed due to internal issues on the server.
-        # *   NETWORK_ERROR: The synchronization task failed due to unstable network connection.
-        # *   DATA_LENGTH_EXCEEDED: The manifest or config of the image is oversized.
+        # > If the sync task fails, this field returns details about the failure.
         self.task_issue = task_issue
-        # The status of the synchronization task.
+        # The task status.
         self.task_status = task_status
-        # The policy that is configured to trigger the synchronization task. Valid values:
+        # The trigger policy. Valid values:
         # 
-        # *   `PASSIVE`: automatically triggers the synchronization task.
-        # *   `INITIATIVE`: manually triggers the synchronization task.
+        # - `PASSIVE`: The sync task is automatically triggered.
         # 
-        # Default value: `PASSIVE`.
+        # - `INITIATIVE`: The sync task is manually triggered.
+        # 
+        # Default value: `PASSIVE`
         self.task_trigger = task_trigger
 
     def validate(self):
@@ -288,13 +283,13 @@ class ListRepoSyncTaskResponseBodySyncTasksImageTo(DaraModel):
     ):
         # The image tag.
         self.image_tag = image_tag
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
         # The repository name.
         self.repo_name = repo_name
-        # The namespace to which the repository belongs.
+        # The repository namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):
@@ -352,13 +347,13 @@ class ListRepoSyncTaskResponseBodySyncTasksImageFrom(DaraModel):
     ):
         # The image tag.
         self.image_tag = image_tag
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
         # The repository name.
         self.repo_name = repo_name
-        # The namespace to which the repository belongs.
+        # The repository namespace.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):

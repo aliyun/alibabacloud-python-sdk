@@ -18,7 +18,7 @@ class ListRepoSyncRuleResponseBody(DaraModel):
         sync_rules: List[main_models.ListRepoSyncRuleResponseBodySyncRules] = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The response code.
         self.code = code
         # Indicates whether the request is successful.
         self.is_success = is_success
@@ -28,9 +28,9 @@ class ListRepoSyncRuleResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried synchronization rules.
+        # The list of synchronization rules.
         self.sync_rules = sync_rules
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -120,12 +120,13 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         target_region_id: str = None,
         target_repo_name: str = None,
     ):
-        # The time when the synchronization rule was created.
+        # The time when the synchronization rule was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # Indicates whether the synchronization is performed across Alibaba Cloud accounts. Valid values:
+        # Indicates whether images are synchronized across different Alibaba Cloud accounts. Valid values:
         # 
-        # *   `true`: Images are synchronized across Alibaba Cloud accounts.
-        # *   `false`: Images are synchronized within the same Alibaba Cloud account.
+        # - `true`
+        # 
+        # - `false`
         # 
         # Default value: `false`.
         self.cross_user = cross_user
@@ -138,16 +139,17 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         self.local_region_id = local_region_id
         # The name of the repository in the source instance.
         self.local_repo_name = local_repo_name
-        # The time when the synchronization rule was last modified.
+        # The time when the synchronization rule was last modified. This value is a UNIX timestamp. Unit: milliseconds.
         self.modified_time = modified_time
         # The regular expression that is used to filter repositories.
         # 
-        # >  This parameter is valid only when SyncScope is set to `NAMESPACE`.
+        # > This parameter is valid only when `SyncScope` is set to `NAMESPACE`.
         self.repo_name_filter = repo_name_filter
         # The synchronization direction. Valid values:
         # 
-        # *   `FROM`: Images are synchronized from the source instance to the destination instance.
-        # *   `TO`: Images are synchronized from the destination instance to the source instance.
+        # - `FROM`: from the source instance to the target instance.
+        # 
+        # - `TO`: from the target instance to the source instance.
         self.sync_direction = sync_direction
         # The ID of the synchronization rule.
         self.sync_rule_id = sync_rule_id
@@ -155,23 +157,25 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         self.sync_rule_name = sync_rule_name
         # The synchronization scope. Valid values:
         # 
-        # *   `NAMESPACE`: synchronizes the image tags in a namespace that meet the synchronization rule.
-        # *   `REPO`: synchronizes the image tags in an image repository that meet the synchronization rule.
-        self.sync_scope = sync_scope
-        # The policy that is applied to trigger the synchronization rule. Valid values:
+        # - `NAMESPACE`: Synchronizes resources by namespace.
         # 
-        # *   `INITIATIVE`: The synchronization rule is positively triggered.
-        # *   `PASSIVE`: The synchronization rule is passively triggered.
+        # - `REPO`: Synchronizes resources by repository.
+        self.sync_scope = sync_scope
+        # The trigger policy. Valid values:
+        # 
+        # - `INITIATIVE`: The synchronization is actively triggered.
+        # 
+        # - `PASSIVE`: The synchronization is passively triggered.
         self.sync_trigger = sync_trigger
-        # The regular expression that is used to filter image tags.
+        # The regular expression that is used to filter tags.
         self.tag_filter = tag_filter
-        # The ID of the destination instance.
+        # The ID of the target instance.
         self.target_instance_id = target_instance_id
-        # The name of the namespace in the destination instance.
+        # The name of the namespace in the target instance.
         self.target_namespace_name = target_namespace_name
-        # The region ID of the destination instance.
+        # The region ID of the target instance.
         self.target_region_id = target_region_id
-        # The name of the repository in the destination instance.
+        # The name of the repository in the target instance.
         self.target_repo_name = target_repo_name
 
     def validate(self):

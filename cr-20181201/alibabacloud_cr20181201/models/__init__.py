@@ -2,7 +2,10 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._access_control_entry import AccessControlEntry
 from ._artifact_lifecycle_policy import ArtifactLifecyclePolicy
+from ._diagnosis_issue import DiagnosisIssue
+from ._diagnosis_target import DiagnosisTarget
 from ._repo_configuration import RepoConfiguration
 from ._route_item import RouteItem
 from ._cancel_artifact_build_task_request import CancelArtifactBuildTaskRequest
@@ -46,6 +49,7 @@ from ._create_chart_repository_request import CreateChartRepositoryRequest
 from ._create_chart_repository_response_body import CreateChartRepositoryResponseBody
 from ._create_chart_repository_response import CreateChartRepositoryResponse
 from ._create_instance_endpoint_acl_policy_request import CreateInstanceEndpointAclPolicyRequest
+from ._create_instance_endpoint_acl_policy_shrink_request import CreateInstanceEndpointAclPolicyShrinkRequest
 from ._create_instance_endpoint_acl_policy_response_body import CreateInstanceEndpointAclPolicyResponseBody
 from ._create_instance_endpoint_acl_policy_response import CreateInstanceEndpointAclPolicyResponse
 from ._create_instance_vpc_endpoint_linked_vpc_request import CreateInstanceVpcEndpointLinkedVpcRequest
@@ -112,6 +116,7 @@ from ._delete_event_center_rule_request import DeleteEventCenterRuleRequest
 from ._delete_event_center_rule_response_body import DeleteEventCenterRuleResponseBody
 from ._delete_event_center_rule_response import DeleteEventCenterRuleResponse
 from ._delete_instance_endpoint_acl_policy_request import DeleteInstanceEndpointAclPolicyRequest
+from ._delete_instance_endpoint_acl_policy_shrink_request import DeleteInstanceEndpointAclPolicyShrinkRequest
 from ._delete_instance_endpoint_acl_policy_response_body import DeleteInstanceEndpointAclPolicyResponseBody
 from ._delete_instance_endpoint_acl_policy_response import DeleteInstanceEndpointAclPolicyResponse
 from ._delete_instance_vpc_endpoint_linked_vpc_request import DeleteInstanceVpcEndpointLinkedVpcRequest
@@ -427,7 +432,10 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._tag_resources_request import TagResourcesRequestTag
 
 __all__ = [
+    AccessControlEntry,
     ArtifactLifecyclePolicy,
+    DiagnosisIssue,
+    DiagnosisTarget,
     RepoConfiguration,
     RouteItem,
     CancelArtifactBuildTaskRequest,
@@ -471,6 +479,7 @@ __all__ = [
     CreateChartRepositoryResponseBody,
     CreateChartRepositoryResponse,
     CreateInstanceEndpointAclPolicyRequest,
+    CreateInstanceEndpointAclPolicyShrinkRequest,
     CreateInstanceEndpointAclPolicyResponseBody,
     CreateInstanceEndpointAclPolicyResponse,
     CreateInstanceVpcEndpointLinkedVpcRequest,
@@ -537,6 +546,7 @@ __all__ = [
     DeleteEventCenterRuleResponseBody,
     DeleteEventCenterRuleResponse,
     DeleteInstanceEndpointAclPolicyRequest,
+    DeleteInstanceEndpointAclPolicyShrinkRequest,
     DeleteInstanceEndpointAclPolicyResponseBody,
     DeleteInstanceEndpointAclPolicyResponse,
     DeleteInstanceVpcEndpointLinkedVpcRequest,

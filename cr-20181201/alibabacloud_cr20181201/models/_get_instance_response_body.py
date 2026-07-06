@@ -23,6 +23,7 @@ class GetInstanceResponseBody(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.GetInstanceResponseBodyTags] = None,
     ):
+        # Return value
         self.code = code
         # The time when the instance was created.
         self.create_time = create_time

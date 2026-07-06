@@ -13,26 +13,31 @@ class GetRepoTagScanStatusResponseBody(DaraModel):
         scan_service: str = None,
         status: str = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Specifies whether the request was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id
-        # The type of the scanning engine.
+        # The scan engine type. Valid values:
         # 
-        # *   `ACR_SCAN_SERVICE`: Trivy scan engine provided by Container Registry
-        # *   `SAS_SCAN_SERVICE`: Security Center scan engine
+        # - `ACR_SCAN_SERVICE`: the ACR Trivy scan engine.
+        # 
+        # - `SAS_SCAN_SERVICE`: the Cloud Security scan engine.
         self.scan_service = scan_service
-        # The scanning status of the image tag. Valid values:
+        # The scan status of the image. Valid values:
         # 
-        # *   `SCANNING`: The image tag is being scanned.
-        # *   `COMPLETE`: The scanning of the image tag is complete.
-        # *   `FAILED`: The image tag failed to be scanned.
-        # *   `RETRYING`: The system is retrying to scan the image tag.
+        # - `SCANNING`: The image is being scanned.
+        # 
+        # - `COMPLETE`: The scan is complete.
+        # 
+        # - `FAILED`: The scan failed.
+        # 
+        # - `RETRYING`: The scan is being retried.
         self.status = status
 
     def validate(self):

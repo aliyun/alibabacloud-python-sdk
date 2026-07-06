@@ -24,6 +24,7 @@ class GetRepoTagResponseBody(DaraModel):
         self.digest = digest
         # crr-tquyps22md8p****
         self.image_create = image_create
+        # Image ID
         self.image_id = image_id
         # The number of milliseconds that have elapsed since the image was last updated.
         self.image_size = image_size

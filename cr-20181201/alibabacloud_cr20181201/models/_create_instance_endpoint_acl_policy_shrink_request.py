@@ -2,56 +2,54 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_cr20181201 import models as main_models
 from darabonba.model import DaraModel
 
-class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
+class CreateInstanceEndpointAclPolicyShrinkRequest(DaraModel):
     def __init__(
         self,
+        comment: str = None,
         endpoint_type: str = None,
-        entries: List[main_models.AccessControlEntry] = None,
+        entries_shrink: str = None,
         entry: str = None,
         instance_id: str = None,
         module_name: str = None,
     ):
+        # The description.
+        self.comment = comment
         # The endpoint type. Only Internet is supported.
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
-        self.entries = entries
-        # The IP CIDR block.
+        self.entries_shrink = entries_shrink
+        # The IP address range that is allowed to access the instance.
         self.entry = entry
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The module for which the access policy is set. Valid values:
+        # The module for which you want to set the access policy. Valid values:
         # 
-        # - `Registry`: access to the image repository
+        # - `Registry`: access the image repository
         # 
-        # - `Chart`: access to Helm Chart
+        # - `Chart`: access Helm Chart
         self.module_name = module_name
 
     def validate(self):
-        if self.entries:
-            for v1 in self.entries:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.comment is not None:
+            result['Comment'] = self.comment
+
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
 
-        result['Entries'] = []
-        if self.entries is not None:
-            for k1 in self.entries:
-                result['Entries'].append(k1.to_map() if k1 else None)
+        if self.entries_shrink is not None:
+            result['Entries'] = self.entries_shrink
 
         if self.entry is not None:
             result['Entry'] = self.entry
@@ -66,14 +64,14 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
 
-        self.entries = []
         if m.get('Entries') is not None:
-            for k1 in m.get('Entries'):
-                temp_model = main_models.AccessControlEntry()
-                self.entries.append(temp_model.from_map(k1))
+            self.entries_shrink = m.get('Entries')
 
         if m.get('Entry') is not None:
             self.entry = m.get('Entry')

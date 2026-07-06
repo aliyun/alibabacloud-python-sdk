@@ -21,6 +21,51 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'cr.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'cr.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'cr.us-east-1.aliyuncs.com',
+            'na-south-1': 'cr.na-south-1.aliyuncs.com',
+            'me-east-1': 'cr.me-east-1.aliyuncs.com',
+            'me-central-1': 'cr.me-central-1.aliyuncs.com',
+            'eu-west-2': 'cr.eu-west-2.aliyuncs.com',
+            'eu-west-1': 'cr.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'cr.eu-central-1.aliyuncs.com',
+            'cn-zhongwei': 'cr.cn-zhongwei.aliyuncs.com',
+            'cn-zhengzhou-jva': 'cr.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'cr.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'cr.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-wulanchabu': 'cr.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'cr.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cr.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'cr.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cr.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'cr.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'cr.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'cr.cn-north-2-gov-1.aliyuncs.com',
+            'cn-nanjing': 'cr.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'cr.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'cr.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'cr.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-heyuan': 'cr.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou-finance': 'cr.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'cr.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'cr.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'cr.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'cr.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'cr.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'cr.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'cr.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'cr.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'cr.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'cr.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'cr.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'cr.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'cr.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'cr.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'cr.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'cr.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cr', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1144,15 +1189,21 @@ class Client(OpenApiClient):
 
     def create_instance_endpoint_acl_policy_with_options(
         self,
-        request: main_models.CreateInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.CreateInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.comment):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):
@@ -1180,15 +1231,21 @@ class Client(OpenApiClient):
 
     async def create_instance_endpoint_acl_policy_with_options_async(
         self,
-        request: main_models.CreateInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.CreateInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.comment):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):
@@ -3006,13 +3063,19 @@ class Client(OpenApiClient):
 
     def delete_instance_endpoint_acl_policy_with_options(
         self,
-        request: main_models.DeleteInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.DeleteInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DeleteInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):
@@ -3040,13 +3103,19 @@ class Client(OpenApiClient):
 
     async def delete_instance_endpoint_acl_policy_with_options_async(
         self,
-        request: main_models.DeleteInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.DeleteInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DeleteInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):

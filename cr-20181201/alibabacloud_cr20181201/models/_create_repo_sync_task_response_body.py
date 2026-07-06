@@ -12,9 +12,17 @@ class CreateRepoSyncTaskResponseBody(DaraModel):
         request_id: str = None,
         sync_task_id: str = None,
     ):
+        # Return value
         self.code = code
+        # Indicates whether the invocation succeeded. Valid values:
+        # 
+        # - `true`: The invocation succeeded.
+        # 
+        # - `false`: Failed to invoke.
         self.is_success = is_success
+        # Request ID
         self.request_id = request_id
+        # Sync task ID
         self.sync_task_id = sync_task_id
 
     def validate(self):

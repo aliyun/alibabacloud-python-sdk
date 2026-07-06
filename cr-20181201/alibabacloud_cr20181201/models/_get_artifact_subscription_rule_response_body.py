@@ -28,49 +28,45 @@ class GetArtifactSubscriptionRuleResponseBody(DaraModel):
         tag_count: int = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+        # Indicates whether to enable the accelerated data transfer feature. This feature is in public preview. It optimizes scheduling policies and network paths to improve the speed of artifact subscription.
         self.accelerate = accelerate
-        # The return value.
+        # The return code.
         self.code = code
-        # The time when the subscription rule was created.
+        # The time when the rule was created.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the API request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The request succeeded.
+        # 
+        # - `false`: The request failed.
         self.is_success = is_success
-        # The time when the subscription rule was modified.
+        # The time when the rule was last modified.
         self.modified_time = modified_time
-        # The name of the Container Registry namespace.
+        # The destination ACR namespace.
         self.namespace_name = namespace_name
-        # Indicates whether the original image is overwritten.
+        # Indicates whether to overwrite the existing images that have the same tag in the destination repository.
         self.override = override
-        # The operating system and architecture. If the source repository contains multi-arch images, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+        # The operating systems and architectures. If a source repository contains multi-architecture images, only images that match the specified platforms are synchronized to the destination repository of the Enterprise Edition instance.
         self.platform = platform
-        # The name of the Container Registry repository.
+        # The destination ACR repository.
         self.repo_name = repo_name
         # The request ID.
         self.request_id = request_id
         # The rule ID.
         self.rule_id = rule_id
+        # The domain name of the artifact source.
         self.source_domain = source_domain
-        # The name of the source namespace.
+        # The source namespace.
         self.source_namespace_name = source_namespace_name
-        # The source of the artifact.
-        # 
-        # Valid values:
-        # 
-        # *   DOCKER_HUB: Docker Hub
-        # *   GCR: GCR
-        # *   QUAY: Quay.io
+        # The artifact source.
         self.source_provider = source_provider
         # The source repository.
         self.source_repo_name = source_repo_name
-        # The number of subscribed images.
+        # The number of images to subscribe to.
         self.tag_count = tag_count
-        # The image tag in the subscription source repository. Regular expressions are supported.
+        # The regular expression that is used to match the tags of images in the source repository for subscription.
         self.tag_regexp = tag_regexp
 
     def validate(self):

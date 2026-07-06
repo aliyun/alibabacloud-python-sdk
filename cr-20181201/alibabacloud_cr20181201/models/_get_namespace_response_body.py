@@ -20,32 +20,34 @@ class GetNamespaceResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # Indicates whether a repository is automatically created when an image is pushed to the namespace.
+        # Indicates whether automatic repository creation is enabled.
         self.auto_create_repo = auto_create_repo
-        # The return value.
+        # The response code.
         self.code = code
         self.default_repo_configuration = default_repo_configuration
-        # The default type of repositories in the namespace. Valid values:
+        # The default repository type. Valid values:
         # 
-        # *   PUBLIC: public repositories.
-        # *   PRIVATE: private repositories.
+        # - `PUBLIC`: a public repository
+        # 
+        # - `PRIVATE`: a private repository
         self.default_repo_type = default_repo_type
-        # The ID of the Container Registry instance.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request succeeded.
         self.is_success = is_success
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The name of the namespace.
         self.namespace_name = namespace_name
-        # The status of the namespace.
+        # The status of the namespace. Valid values:
         # 
-        # *   NORMAL
-        # *   DELETING
+        # - `NORMAL`: The namespace is running as expected.
+        # 
+        # - `DELETING`: The namespace is being deleted.
         self.namespace_status = namespace_status
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the namespace belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -18,22 +18,23 @@ class ListNamespaceResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The request is successful.
+        # 
+        # - `false`: The request fails.
         self.is_success = is_success
-        # The queried namespaces.
+        # The list of namespaces.
         self.namespaces = namespaces
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of the queried namespaces.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -112,26 +113,28 @@ class ListNamespaceResponseBodyNamespaces(DaraModel):
         namespace_status: str = None,
         resource_group_id: str = None,
     ):
-        # Indicates whether the automatically creating repositories feature is enabled for the namespace.
+        # Indicates whether a repository is automatically created when an image is pushed to the namespace.
         self.auto_create_repo = auto_create_repo
         self.default_repo_configuration = default_repo_configuration
-        # The default type of repositories in the namespace. Valid values:
+        # The default type of the repository. Valid values:
         # 
-        # *   `PUBLIC`: public repositories.
-        # *   `PRIVATE`: private repositories.
+        # - `PUBLIC`: public
+        # 
+        # - `PRIVATE`: private
         self.default_repo_type = default_repo_type
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The namespace ID.
+        # The ID of the namespace.
         self.namespace_id = namespace_id
-        # The namespace name.
+        # The name of the namespace.
         self.namespace_name = namespace_name
         # The status of the namespace. Valid values:
         # 
-        # *   `NORMAL`: The namespace is normal.
-        # *   `DELETING`: The namespace is being deleted.
+        # - `NORMAL`: The namespace is normal.
+        # 
+        # - `DELETING`: The namespace is being deleted.
         self.namespace_status = namespace_status
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
