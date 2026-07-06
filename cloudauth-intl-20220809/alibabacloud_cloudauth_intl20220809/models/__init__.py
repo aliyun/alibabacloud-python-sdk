@@ -53,6 +53,9 @@ from ._delete_face_group_response import DeleteFaceGroupResponse
 from ._delete_face_record_request import DeleteFaceRecordRequest
 from ._delete_face_record_response_body import DeleteFaceRecordResponseBody
 from ._delete_face_record_response import DeleteFaceRecordResponse
+from ._delete_face_record_v2request import DeleteFaceRecordV2Request
+from ._delete_face_record_v2response_body import DeleteFaceRecordV2ResponseBody
+from ._delete_face_record_v2response import DeleteFaceRecordV2Response
 from ._delete_verify_result_request import DeleteVerifyResultRequest
 from ._delete_verify_result_response_body import DeleteVerifyResultResponseBody
 from ._delete_verify_result_response import DeleteVerifyResultResponse
@@ -169,6 +172,7 @@ from ._credential_submit_intl_response_body import CredentialSubmitIntlResponseB
 from ._credential_verify_intl_response_body import CredentialVerifyIntlResponseBodyResultObject
 from ._deepfake_detect_intl_response_body import DeepfakeDetectIntlResponseBodyResultObject
 from ._deepfake_detect_intl_stream_response_body import DeepfakeDetectIntlStreamResponseBodyResultObject
+from ._delete_face_record_v2response_body import DeleteFaceRecordV2ResponseBodyResult
 from ._delete_verify_result_response_body import DeleteVerifyResultResponseBodyResult
 from ._doc_ocr_response_body import DocOcrResponseBodyResult
 from ._doc_ocr_max_response_body import DocOcrMaxResponseBodyResult
@@ -256,6 +260,9 @@ __all__ = [
     DeleteFaceRecordRequest,
     DeleteFaceRecordResponseBody,
     DeleteFaceRecordResponse,
+    DeleteFaceRecordV2Request,
+    DeleteFaceRecordV2ResponseBody,
+    DeleteFaceRecordV2Response,
     DeleteVerifyResultRequest,
     DeleteVerifyResultResponseBody,
     DeleteVerifyResultResponse,
@@ -372,6 +379,7 @@ __all__ = [
     CredentialVerifyIntlResponseBodyResultObject,
     DeepfakeDetectIntlResponseBodyResultObject,
     DeepfakeDetectIntlStreamResponseBodyResultObject,
+    DeleteFaceRecordV2ResponseBodyResult,
     DeleteVerifyResultResponseBodyResult,
     DocOcrResponseBodyResult,
     DocOcrMaxResponseBodyResult,

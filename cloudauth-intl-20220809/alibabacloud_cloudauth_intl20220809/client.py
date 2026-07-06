@@ -2125,6 +2125,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_face_record_with_options_async(request, runtime)
 
+    def delete_face_record_v2with_options(
+        self,
+        request: main_models.DeleteFaceRecordV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFaceRecordV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.face_group_code):
+            query['FaceGroupCode'] = request.face_group_code
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFaceRecordV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFaceRecordV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_face_record_v2with_options_async(
+        self,
+        request: main_models.DeleteFaceRecordV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFaceRecordV2Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.face_group_code):
+            query['FaceGroupCode'] = request.face_group_code
+        if not DaraCore.is_null(request.merchant_user_id):
+            query['MerchantUserId'] = request.merchant_user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFaceRecordV2',
+            version = '2022-08-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFaceRecordV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_face_record_v2(
+        self,
+        request: main_models.DeleteFaceRecordV2Request,
+    ) -> main_models.DeleteFaceRecordV2Response:
+        runtime = RuntimeOptions()
+        return self.delete_face_record_v2with_options(request, runtime)
+
+    async def delete_face_record_v2_async(
+        self,
+        request: main_models.DeleteFaceRecordV2Request,
+    ) -> main_models.DeleteFaceRecordV2Response:
+        runtime = RuntimeOptions()
+        return await self.delete_face_record_v2with_options_async(request, runtime)
+
     def delete_verify_result_with_options(
         self,
         request: main_models.DeleteVerifyResultRequest,
