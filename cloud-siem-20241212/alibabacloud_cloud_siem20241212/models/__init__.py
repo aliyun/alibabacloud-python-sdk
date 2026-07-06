@@ -137,6 +137,10 @@ from ._list_auto_dispose_entities_request import ListAutoDisposeEntitiesRequest
 from ._list_auto_dispose_entities_shrink_request import ListAutoDisposeEntitiesShrinkRequest
 from ._list_auto_dispose_entities_response_body import ListAutoDisposeEntitiesResponseBody
 from ._list_auto_dispose_entities_response import ListAutoDisposeEntitiesResponse
+from ._list_data_connectors_request import ListDataConnectorsRequest
+from ._list_data_connectors_shrink_request import ListDataConnectorsShrinkRequest
+from ._list_data_connectors_response_body import ListDataConnectorsResponseBody
+from ._list_data_connectors_response import ListDataConnectorsResponse
 from ._list_data_ingestion_templates_request import ListDataIngestionTemplatesRequest
 from ._list_data_ingestion_templates_response_body import ListDataIngestionTemplatesResponseBody
 from ._list_data_ingestion_templates_response import ListDataIngestionTemplatesResponse
@@ -235,6 +239,9 @@ from ._reset_data_storage_response import ResetDataStorageResponse
 from ._set_default_normalization_rule_version_request import SetDefaultNormalizationRuleVersionRequest
 from ._set_default_normalization_rule_version_response_body import SetDefaultNormalizationRuleVersionResponseBody
 from ._set_default_normalization_rule_version_response import SetDefaultNormalizationRuleVersionResponse
+from ._update_alert_request import UpdateAlertRequest
+from ._update_alert_response_body import UpdateAlertResponseBody
+from ._update_alert_response import UpdateAlertResponse
 from ._update_auto_dispose_config_request import UpdateAutoDisposeConfigRequest
 from ._update_auto_dispose_config_response_body import UpdateAutoDisposeConfigResponseBody
 from ._update_auto_dispose_config_response import UpdateAutoDisposeConfigResponse
@@ -329,6 +336,7 @@ from ._get_response_rule_statistic_response_body import GetResponseRuleStatistic
 from ._get_user_config_response_body import GetUserConfigResponseBodyUser
 from ._list_alerts_response_body import ListAlertsResponseBodyAlerts
 from ._list_auto_dispose_entities_response_body import ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities
+from ._list_data_connectors_response_body import ListDataConnectorsResponseBodyDataConnector
 from ._list_data_ingestion_templates_response_body import ListDataIngestionTemplatesResponseBodyDataIngestionTemplates
 from ._list_data_ingestions_response_body import ListDataIngestionsResponseBodyDataIngestions
 from ._list_data_set_records_response_body import ListDataSetRecordsResponseBodyDataSetRecords
@@ -508,6 +516,10 @@ __all__ = [
     ListAutoDisposeEntitiesShrinkRequest,
     ListAutoDisposeEntitiesResponseBody,
     ListAutoDisposeEntitiesResponse,
+    ListDataConnectorsRequest,
+    ListDataConnectorsShrinkRequest,
+    ListDataConnectorsResponseBody,
+    ListDataConnectorsResponse,
     ListDataIngestionTemplatesRequest,
     ListDataIngestionTemplatesResponseBody,
     ListDataIngestionTemplatesResponse,
@@ -606,6 +618,9 @@ __all__ = [
     SetDefaultNormalizationRuleVersionRequest,
     SetDefaultNormalizationRuleVersionResponseBody,
     SetDefaultNormalizationRuleVersionResponse,
+    UpdateAlertRequest,
+    UpdateAlertResponseBody,
+    UpdateAlertResponse,
     UpdateAutoDisposeConfigRequest,
     UpdateAutoDisposeConfigResponseBody,
     UpdateAutoDisposeConfigResponse,
@@ -700,6 +715,7 @@ __all__ = [
     GetUserConfigResponseBodyUser,
     ListAlertsResponseBodyAlerts,
     ListAutoDisposeEntitiesResponseBodyAutoDecisionEntities,
+    ListDataConnectorsResponseBodyDataConnector,
     ListDataIngestionTemplatesResponseBodyDataIngestionTemplates,
     ListDataIngestionsResponseBodyDataIngestions,
     ListDataSetRecordsResponseBodyDataSetRecords,

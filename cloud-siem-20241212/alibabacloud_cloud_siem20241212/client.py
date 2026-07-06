@@ -4209,6 +4209,144 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_auto_dispose_entities_with_options_async(request, runtime)
 
+    def list_data_connectors_with_options(
+        self,
+        tmp_req: main_models.ListDataConnectorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataConnectorsResponse:
+        tmp_req.validate()
+        request = main_models.ListDataConnectorsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_connector_ids):
+            request.data_connector_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_connector_ids, 'DataConnectorIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_connector_ids_shrink):
+            body['DataConnectorIds'] = request.data_connector_ids_shrink
+        if not DaraCore.is_null(request.data_connector_name):
+            body['DataConnectorName'] = request.data_connector_name
+        if not DaraCore.is_null(request.data_connector_status):
+            body['DataConnectorStatus'] = request.data_connector_status
+        if not DaraCore.is_null(request.data_connector_type):
+            body['DataConnectorType'] = request.data_connector_type
+        if not DaraCore.is_null(request.dest_data_source_id):
+            body['DestDataSourceId'] = request.dest_data_source_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_field):
+            body['OrderField'] = request.order_field
+        if not DaraCore.is_null(request.order_type):
+            body['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.sls_ingestion_job_name):
+            body['SlsIngestionJobName'] = request.sls_ingestion_job_name
+        if not DaraCore.is_null(request.src_data_type):
+            body['SrcDataType'] = request.src_data_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataConnectors',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataConnectorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_connectors_with_options_async(
+        self,
+        tmp_req: main_models.ListDataConnectorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataConnectorsResponse:
+        tmp_req.validate()
+        request = main_models.ListDataConnectorsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_connector_ids):
+            request.data_connector_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_connector_ids, 'DataConnectorIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_connector_ids_shrink):
+            body['DataConnectorIds'] = request.data_connector_ids_shrink
+        if not DaraCore.is_null(request.data_connector_name):
+            body['DataConnectorName'] = request.data_connector_name
+        if not DaraCore.is_null(request.data_connector_status):
+            body['DataConnectorStatus'] = request.data_connector_status
+        if not DaraCore.is_null(request.data_connector_type):
+            body['DataConnectorType'] = request.data_connector_type
+        if not DaraCore.is_null(request.dest_data_source_id):
+            body['DestDataSourceId'] = request.dest_data_source_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_field):
+            body['OrderField'] = request.order_field
+        if not DaraCore.is_null(request.order_type):
+            body['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.sls_ingestion_job_name):
+            body['SlsIngestionJobName'] = request.sls_ingestion_job_name
+        if not DaraCore.is_null(request.src_data_type):
+            body['SrcDataType'] = request.src_data_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataConnectors',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataConnectorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_connectors(
+        self,
+        request: main_models.ListDataConnectorsRequest,
+    ) -> main_models.ListDataConnectorsResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_connectors_with_options(request, runtime)
+
+    async def list_data_connectors_async(
+        self,
+        request: main_models.ListDataConnectorsRequest,
+    ) -> main_models.ListDataConnectorsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_connectors_with_options_async(request, runtime)
+
     def list_data_ingestion_templates_with_options(
         self,
         request: main_models.ListDataIngestionTemplatesRequest,
@@ -7294,6 +7432,96 @@ class Client(OpenApiClient):
     ) -> main_models.SetDefaultNormalizationRuleVersionResponse:
         runtime = RuntimeOptions()
         return await self.set_default_normalization_rule_version_with_options_async(request, runtime)
+
+    def update_alert_with_options(
+        self,
+        request: main_models.UpdateAlertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_status):
+            body['AlertStatus'] = request.alert_status
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlert',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_with_options_async(
+        self,
+        request: main_models.UpdateAlertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_status):
+            body['AlertStatus'] = request.alert_status
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlert',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert(
+        self,
+        request: main_models.UpdateAlertRequest,
+    ) -> main_models.UpdateAlertResponse:
+        runtime = RuntimeOptions()
+        return self.update_alert_with_options(request, runtime)
+
+    async def update_alert_async(
+        self,
+        request: main_models.UpdateAlertRequest,
+    ) -> main_models.UpdateAlertResponse:
+        runtime = RuntimeOptions()
+        return await self.update_alert_with_options_async(request, runtime)
 
     def update_auto_dispose_config_with_options(
         self,

@@ -1,3 +1,8 @@
+2026-07-06 Version: 2.4.0
+- Support API ListDataConnectors.
+- Support API UpdateAlert.
+
+
 2026-07-03 Version: 2.3.0
 - Support API GetAlert.
 - Support API GetResponseRuleStatistic.
