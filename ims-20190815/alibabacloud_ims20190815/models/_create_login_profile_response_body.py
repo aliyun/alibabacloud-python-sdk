@@ -11,7 +11,7 @@ class CreateLoginProfileResponseBody(DaraModel):
         login_profile: main_models.CreateLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
-        # The logon information.
+        # The console logon settings of the RAM user.
         self.login_profile = login_profile
         # The request ID.
         self.request_id = request_id
@@ -54,14 +54,23 @@ class CreateLoginProfileResponseBodyLoginProfile(DaraModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
-        # Indicates whether to forcefully enable MFA for the RAM user.
+        # Indicates whether the RAM user is required to enable MFA.
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user is required to reset the password upon the next logon.
+        # Indicates whether the RAM user must reset the password at the next logon.
         self.password_reset_required = password_reset_required
+        # The status of the initial password. This password is set when a logon configuration is created or when console logon is re-enabled.
+        # 
+        # Valid values
+        # 
+        # - "NotInitial": The password is not an initial password.
+        # 
+        # - "InitialValid": The initial password is valid.
+        # 
+        # - "InitialExpired": The initial password has expired.
         self.password_status = password_status
-        # Indicates whether to enable password-based logons to the console.
+        # Indicates whether password-based logon for the console is enabled or disabled.
         self.status = status
-        # The update time.
+        # The time when the logon configuration was last updated.
         self.update_date = update_date
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name

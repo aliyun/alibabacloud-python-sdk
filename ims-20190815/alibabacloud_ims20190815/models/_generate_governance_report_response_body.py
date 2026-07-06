@@ -14,9 +14,11 @@ class GenerateGovernanceReportResponseBody(DaraModel):
         self.request_id = request_id
         # The report generation status. Valid values:
         # 
-        # *   Started: The system starts to generate a governance report.
-        # *   Progressing: The system is generating a governance report.
-        # *   Completed: A governance report is generated.
+        # - Started: The system starts to generate a governance report.
+        # 
+        # - Progressing: The system is generating a governance report.
+        # 
+        # - Completed: A governance report is generated.
         self.state = state
 
     def validate(self):

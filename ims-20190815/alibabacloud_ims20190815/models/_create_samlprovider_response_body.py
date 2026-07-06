@@ -56,14 +56,19 @@ class CreateSAMLProviderResponseBodySAMLProvider(DaraModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the IdP.
         self.arn = arn
+        # The supported signature algorithm. Valid values:
+        # 
+        # - rsa-sha256
+        # 
+        # - rsa-sha1 (default)
         self.authn_sign_algo = authn_sign_algo
-        # The creation time. The time is displayed in UTC.
+        # The time when the information was created. It is displayed in UTC.
         self.create_date = create_date
-        # The description.
+        # The IdP description.
         self.description = description
-        # The name of the IdP.
+        # The IdP name.
         self.samlprovider_name = samlprovider_name
-        # The update time. The time is displayed in UTC.
+        # The time when the information was last updated. It is displayed in UTC.
         self.update_date = update_date
 
     def validate(self):

@@ -38,6 +38,9 @@ from ._create_oidcprovider_response import CreateOIDCProviderResponse
 from ._create_samlprovider_request import CreateSAMLProviderRequest
 from ._create_samlprovider_response_body import CreateSAMLProviderResponseBody
 from ._create_samlprovider_response import CreateSAMLProviderResponse
+from ._create_service_credential_request import CreateServiceCredentialRequest
+from ._create_service_credential_response_body import CreateServiceCredentialResponseBody
+from ._create_service_credential_response import CreateServiceCredentialResponse
 from ._create_user_request import CreateUserRequest
 from ._create_user_response_body import CreateUserResponseBody
 from ._create_user_response import CreateUserResponse
@@ -71,6 +74,9 @@ from ._delete_passkey_response import DeletePasskeyResponse
 from ._delete_samlprovider_request import DeleteSAMLProviderRequest
 from ._delete_samlprovider_response_body import DeleteSAMLProviderResponseBody
 from ._delete_samlprovider_response import DeleteSAMLProviderResponse
+from ._delete_service_credential_request import DeleteServiceCredentialRequest
+from ._delete_service_credential_response_body import DeleteServiceCredentialResponseBody
+from ._delete_service_credential_response import DeleteServiceCredentialResponse
 from ._delete_user_request import DeleteUserRequest
 from ._delete_user_response_body import DeleteUserResponseBody
 from ._delete_user_response import DeleteUserResponse
@@ -99,6 +105,9 @@ from ._get_access_key_info_in_recycle_bin_response import GetAccessKeyInfoInRecy
 from ._get_access_key_last_used_request import GetAccessKeyLastUsedRequest
 from ._get_access_key_last_used_response_body import GetAccessKeyLastUsedResponseBody
 from ._get_access_key_last_used_response import GetAccessKeyLastUsedResponse
+from ._get_access_key_policy_request import GetAccessKeyPolicyRequest
+from ._get_access_key_policy_response_body import GetAccessKeyPolicyResponseBody
+from ._get_access_key_policy_response import GetAccessKeyPolicyResponse
 from ._get_account_mfainfo_response_body import GetAccountMFAInfoResponseBody
 from ._get_account_mfainfo_response import GetAccountMFAInfoResponse
 from ._get_account_security_practice_report_response_body import GetAccountSecurityPracticeReportResponseBody
@@ -143,6 +152,9 @@ from ._get_samlprovider_response_body import GetSAMLProviderResponseBody
 from ._get_samlprovider_response import GetSAMLProviderResponse
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBody
 from ._get_security_preference_response import GetSecurityPreferenceResponse
+from ._get_service_credential_request import GetServiceCredentialRequest
+from ._get_service_credential_response_body import GetServiceCredentialResponseBody
+from ._get_service_credential_response import GetServiceCredentialResponse
 from ._get_user_request import GetUserRequest
 from ._get_user_response_body import GetUserResponseBody
 from ._get_user_response import GetUserResponse
@@ -193,6 +205,9 @@ from ._list_recent_governance_metrics_response import ListRecentGovernanceMetric
 from ._list_samlproviders_request import ListSAMLProvidersRequest
 from ._list_samlproviders_response_body import ListSAMLProvidersResponseBody
 from ._list_samlproviders_response import ListSAMLProvidersResponse
+from ._list_service_credentials_request import ListServiceCredentialsRequest
+from ._list_service_credentials_response_body import ListServiceCredentialsResponseBody
+from ._list_service_credentials_response import ListServiceCredentialsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -232,6 +247,9 @@ from ._restore_access_key_from_recycle_bin_response import RestoreAccessKeyFromR
 from ._restore_user_from_recycle_bin_request import RestoreUserFromRecycleBinRequest
 from ._restore_user_from_recycle_bin_response_body import RestoreUserFromRecycleBinResponseBody
 from ._restore_user_from_recycle_bin_response import RestoreUserFromRecycleBinResponse
+from ._set_access_key_policy_request import SetAccessKeyPolicyRequest
+from ._set_access_key_policy_response_body import SetAccessKeyPolicyResponseBody
+from ._set_access_key_policy_response import SetAccessKeyPolicyResponse
 from ._set_default_domain_request import SetDefaultDomainRequest
 from ._set_default_domain_response_body import SetDefaultDomainResponseBody
 from ._set_default_domain_response import SetDefaultDomainResponse
@@ -281,6 +299,9 @@ from ._update_passkey_response import UpdatePasskeyResponse
 from ._update_samlprovider_request import UpdateSAMLProviderRequest
 from ._update_samlprovider_response_body import UpdateSAMLProviderResponseBody
 from ._update_samlprovider_response import UpdateSAMLProviderResponse
+from ._update_service_credential_request import UpdateServiceCredentialRequest
+from ._update_service_credential_response_body import UpdateServiceCredentialResponseBody
+from ._update_service_credential_response import UpdateServiceCredentialResponse
 from ._update_user_request import UpdateUserRequest
 from ._update_user_response_body import UpdateUserResponseBody
 from ._update_user_response import UpdateUserResponse
@@ -297,6 +318,7 @@ from ._create_group_response_body import CreateGroupResponseBodyGroup
 from ._create_login_profile_response_body import CreateLoginProfileResponseBodyLoginProfile
 from ._create_oidcprovider_response_body import CreateOIDCProviderResponseBodyOIDCProvider
 from ._create_samlprovider_response_body import CreateSAMLProviderResponseBodySAMLProvider
+from ._create_service_credential_response_body import CreateServiceCredentialResponseBodyServiceCredential
 from ._create_user_request import CreateUserRequestTag
 from ._create_user_response_body import CreateUserResponseBodyUserTagsTag
 from ._create_user_response_body import CreateUserResponseBodyUserTags
@@ -339,6 +361,7 @@ from ._get_security_preference_response_body import GetSecurityPreferenceRespons
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference
 from ._get_security_preference_response_body import GetSecurityPreferenceResponseBodySecurityPreference
+from ._get_service_credential_response_body import GetServiceCredentialResponseBodyServiceCredential
 from ._get_user_response_body import GetUserResponseBodyUserTagsTag
 from ._get_user_response_body import GetUserResponseBodyUserTags
 from ._get_user_response_body import GetUserResponseBodyUser
@@ -382,6 +405,7 @@ from ._list_recent_governance_metrics_response_body import ListRecentGovernanceM
 from ._list_recent_governance_metrics_response_body import ListRecentGovernanceMetricsResponseBodyGovernanceMetrics
 from ._list_samlproviders_response_body import ListSAMLProvidersResponseBodySAMLProvidersSAMLProvider
 from ._list_samlproviders_response_body import ListSAMLProvidersResponseBodySAMLProviders
+from ._list_service_credentials_response_body import ListServiceCredentialsResponseBodyServiceCredentials
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -469,6 +493,9 @@ __all__ = [
     CreateSAMLProviderRequest,
     CreateSAMLProviderResponseBody,
     CreateSAMLProviderResponse,
+    CreateServiceCredentialRequest,
+    CreateServiceCredentialResponseBody,
+    CreateServiceCredentialResponse,
     CreateUserRequest,
     CreateUserResponseBody,
     CreateUserResponse,
@@ -502,6 +529,9 @@ __all__ = [
     DeleteSAMLProviderRequest,
     DeleteSAMLProviderResponseBody,
     DeleteSAMLProviderResponse,
+    DeleteServiceCredentialRequest,
+    DeleteServiceCredentialResponseBody,
+    DeleteServiceCredentialResponse,
     DeleteUserRequest,
     DeleteUserResponseBody,
     DeleteUserResponse,
@@ -530,6 +560,9 @@ __all__ = [
     GetAccessKeyLastUsedRequest,
     GetAccessKeyLastUsedResponseBody,
     GetAccessKeyLastUsedResponse,
+    GetAccessKeyPolicyRequest,
+    GetAccessKeyPolicyResponseBody,
+    GetAccessKeyPolicyResponse,
     GetAccountMFAInfoResponseBody,
     GetAccountMFAInfoResponse,
     GetAccountSecurityPracticeReportResponseBody,
@@ -574,6 +607,9 @@ __all__ = [
     GetSAMLProviderResponse,
     GetSecurityPreferenceResponseBody,
     GetSecurityPreferenceResponse,
+    GetServiceCredentialRequest,
+    GetServiceCredentialResponseBody,
+    GetServiceCredentialResponse,
     GetUserRequest,
     GetUserResponseBody,
     GetUserResponse,
@@ -624,6 +660,9 @@ __all__ = [
     ListSAMLProvidersRequest,
     ListSAMLProvidersResponseBody,
     ListSAMLProvidersResponse,
+    ListServiceCredentialsRequest,
+    ListServiceCredentialsResponseBody,
+    ListServiceCredentialsResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -663,6 +702,9 @@ __all__ = [
     RestoreUserFromRecycleBinRequest,
     RestoreUserFromRecycleBinResponseBody,
     RestoreUserFromRecycleBinResponse,
+    SetAccessKeyPolicyRequest,
+    SetAccessKeyPolicyResponseBody,
+    SetAccessKeyPolicyResponse,
     SetDefaultDomainRequest,
     SetDefaultDomainResponseBody,
     SetDefaultDomainResponse,
@@ -712,6 +754,9 @@ __all__ = [
     UpdateSAMLProviderRequest,
     UpdateSAMLProviderResponseBody,
     UpdateSAMLProviderResponse,
+    UpdateServiceCredentialRequest,
+    UpdateServiceCredentialResponseBody,
+    UpdateServiceCredentialResponse,
     UpdateUserRequest,
     UpdateUserResponseBody,
     UpdateUserResponse,
@@ -728,6 +773,7 @@ __all__ = [
     CreateLoginProfileResponseBodyLoginProfile,
     CreateOIDCProviderResponseBodyOIDCProvider,
     CreateSAMLProviderResponseBodySAMLProvider,
+    CreateServiceCredentialResponseBodyServiceCredential,
     CreateUserRequestTag,
     CreateUserResponseBodyUserTagsTag,
     CreateUserResponseBodyUserTags,
@@ -770,6 +816,7 @@ __all__ = [
     GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference,
     GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference,
     GetSecurityPreferenceResponseBodySecurityPreference,
+    GetServiceCredentialResponseBodyServiceCredential,
     GetUserResponseBodyUserTagsTag,
     GetUserResponseBodyUserTags,
     GetUserResponseBodyUser,
@@ -813,6 +860,7 @@ __all__ = [
     ListRecentGovernanceMetricsResponseBodyGovernanceMetrics,
     ListSAMLProvidersResponseBodySAMLProvidersSAMLProvider,
     ListSAMLProvidersResponseBodySAMLProviders,
+    ListServiceCredentialsResponseBodyServiceCredentials,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,

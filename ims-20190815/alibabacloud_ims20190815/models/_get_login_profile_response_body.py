@@ -11,9 +11,9 @@ class GetLoginProfileResponseBody(DaraModel):
         login_profile: main_models.GetLoginProfileResponseBodyLoginProfile = None,
         request_id: str = None,
     ):
-        # The console logon configurations.
+        # The console logon settings for the RAM user.
         self.login_profile = login_profile
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,27 +56,39 @@ class GetLoginProfileResponseBodyLoginProfile(DaraModel):
         update_date: str = None,
         user_principal_name: str = None,
     ):
-        # Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
+        # Indicates whether console logon is automatically disabled if the user is inactive. This feature is enabled by default and cannot be disabled.
         self.auto_disable_login_status = auto_disable_login_status
-        # The time of the most recent logon. The time is displayed in UTC.
+        # The time when the RAM user last logged on to the console. The time is displayed in UTC.
         self.last_login_time = last_login_time
-        # Indicates whether multi-factor authentication (MFA) must be enabled. Valid values:
+        # Indicates whether multi-factor authentication (MFA) is required for the user. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false
+        # 
+        # - true
         self.mfabind_required = mfabind_required
-        # Indicates whether the RAM user is required to reset the password upon the next logon. Valid values:
+        # Indicates whether the RAM user must reset the password at the next logon. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false.
+        # 
+        # - true
         self.password_reset_required = password_reset_required
-        self.password_status = password_status
-        # Indicates whether console logon is enabled. Valid values:
+        # The status of the initial password. An initial password is the password that is configured when you create a logon profile or re-enable console logon.
         # 
-        # *   Active: enabled.
-        # *   Inactive: disabled.
+        # Valid values
+        # 
+        # - "NotInitial": The password is not an initial password.
+        # 
+        # - "InitialValid": The initial password is valid.
+        # 
+        # - "InitialExpired": The initial password has expired.
+        self.password_status = password_status
+        # The status of console logon. Valid values:
+        # 
+        # - Active: Console logon is enabled.
+        # 
+        # - Inactive: Console logon is disabled.
         self.status = status
-        # The modification time. The time is displayed in UTC.
+        # The time when the logon settings were last updated. The time is displayed in UTC.
         self.update_date = update_date
         # The logon name of the RAM user.
         self.user_principal_name = user_principal_name

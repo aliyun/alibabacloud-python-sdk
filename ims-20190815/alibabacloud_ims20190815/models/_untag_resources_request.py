@@ -17,8 +17,9 @@ class UntagResourcesRequest(DaraModel):
     ):
         # Specifies whether to remove all tags from the resource. Valid values:
         # 
-        # *   true: remove all tags from the resources.
-        # *   false (default): does not remove all tags from the resources.
+        # - true: remove all tags from the resources.
+        # 
+        # - false (default): does not remove all tags from the resources.
         # 
         # > This parameter takes effect only when TagKey.N is not set in the request.
         self.all = all
@@ -36,7 +37,7 @@ class UntagResourcesRequest(DaraModel):
         self.resource_principal_name = resource_principal_name
         # The type of the resource. Valid value:
         # 
-        # *   user: a RAM user
+        # - user: a RAM user
         self.resource_type = resource_type
         # The tag keys of resources.
         # 

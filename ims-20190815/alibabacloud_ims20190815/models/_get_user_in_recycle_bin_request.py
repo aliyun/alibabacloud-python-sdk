@@ -12,11 +12,11 @@ class GetUserInRecycleBinRequest(DaraModel):
     ):
         # The AccessKey ID of the RAM user.
         # 
-        # >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+        # > You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
         self.user_access_key_id = user_access_key_id
         # The ID of the RAM user.
         # 
-        # >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+        # > You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
         self.user_id = user_id
 
     def validate(self):

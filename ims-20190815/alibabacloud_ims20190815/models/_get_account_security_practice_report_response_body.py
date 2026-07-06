@@ -98,8 +98,9 @@ class GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAcc
     ):
         # Indicates whether multi-factor authentication (MFA) is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.bind_mfa = bind_mfa
         # The number of old AccessKey pairs for the Alibaba Cloud account.
         self.old_ak_num = old_ak_num
@@ -111,9 +112,11 @@ class GetAccountSecurityPracticeReportResponseBodyAccountSecurityPracticeInfoAcc
         self.sub_user_bind_mfa = sub_user_bind_mfa
         # The complexity level of the password for the RAM user. Valid values:
         # 
-        # *   low
-        # *   mid
-        # *   high
+        # - low
+        # 
+        # - mid
+        # 
+        # - high
         self.sub_user_pwd_level = sub_user_pwd_level
         # The number of RAM users that use the old AccessKey pairs.
         self.sub_user_with_old_access_key = sub_user_with_old_access_key

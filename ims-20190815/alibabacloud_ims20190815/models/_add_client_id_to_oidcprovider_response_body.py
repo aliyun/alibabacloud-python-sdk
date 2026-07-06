@@ -63,21 +63,21 @@ class AddClientIdToOIDCProviderResponseBodyOIDCProvider(DaraModel):
     ):
         # The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
         self.arn = arn
-        # The ID of the client. If multiple client IDs are returned, the client IDs are separated by commas (,).
+        # The client IDs. Multiple client IDs are separated by commas (,).
         self.client_ids = client_ids
         # The time when the OIDC IdP was created. The time is displayed in UTC.
         self.create_date = create_date
         # The description of the OIDC IdP.
         self.description = description
-        # The fingerprint of the HTTPS certificate. If multiple fingerprints are returned, the fingerprints are separated by commas (,).
+        # The verification fingerprints of the HTTPS CA certificate. Multiple fingerprints are separated by commas (,).
         self.fingerprints = fingerprints
-        # The timestamp when the OIDC IdP was created.
+        # The time when the OIDC IdP was created. The value is a UNIX timestamp.
         self.gmt_create = gmt_create
-        # The timestamp when the OIDC IdP was modified.
+        # The time when the OIDC IdP was modified. The value is a UNIX timestamp.
         self.gmt_modified = gmt_modified
-        # The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
+        # The earliest time when an external IdP is allowed to issue an ID token. If the value of the iat field in the ID token is greater than the current time by more than this value, the request is rejected. Unit: hours. Valid values: 1 to 168.
         self.issuance_limit_time = issuance_limit_time
-        # The URL of the issuer.
+        # The issuer URL.
         self.issuer_url = issuer_url
         # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name

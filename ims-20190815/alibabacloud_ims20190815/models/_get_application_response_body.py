@@ -15,7 +15,7 @@ class GetApplicationResponseBody(DaraModel):
     ):
         # The information about the application.
         self.application = application
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,17 +68,19 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.access_token_validity = access_token_validity
         # The ID of the Alibaba Cloud account to which the application belongs.
         self.account_id = account_id
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The type of the application. Valid values:
+        # The application type. Valid values:
         # 
-        # *   WebApp: a web application.
-        # *   NativeApp: a native application that runs on an operating system, such as a desktop or mobile operating system.
-        # *   ServerApp: an application that can access Alibaba Cloud services without the need for user logon. Only applications that synchronize user information based on the System for Cross-domain Identity Management (SCIM) protocol are supported.
+        # - WebApp: a web application that is based on browser interaction.
+        # 
+        # - NativeApp: a native application that runs on an operating system, such as a desktop or mobile operating system.
+        # 
+        # - ServerApp: an application that directly accesses Alibaba Cloud services without user logon. Currently, only applications that use the System for Cross-domain Identity Management (SCIM) protocol for user synchronization are supported.
         self.app_type = app_type
-        # The creation time.
+        # The time when the application was created.
         self.create_date = create_date
         # The information about the permissions that are granted on the application.
         self.delegated_scope = delegated_scope
@@ -86,13 +88,19 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
+        # The OAuth protocol version of the application. Valid values:
+        # 
+        # - `2.0`: OAuth 2.0
+        # 
+        # - `2.1`: OAuth 2.1
         self.protocol_version = protocol_version
+        # The redirect URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
         self.refresh_token_validity = refresh_token_validity
         # Indicates whether a secret is required.
         self.secret_required = secret_required
-        # The update time.
+        # The time when the application was last updated.
         self.update_date = update_date
 
     def validate(self):
@@ -230,6 +238,7 @@ class GetApplicationResponseBodyApplicationDelegatedScope(DaraModel):
         self,
         predefined_scopes: main_models.GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopes = None,
     ):
+        # The information about the permissions that are granted on the application.
         self.predefined_scopes = predefined_scopes
 
     def validate(self):
