@@ -2,15 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_tea_openapi import websocketUtils_models as web_socket_utils_models
 from darabonba.model import DaraModel
 
 class MultiModalGuardWsResponse(DaraModel):
     def __init__(
         self,
-        web_socket_client: web_socket_utils_models.WebSocketClient = None,
     ):
-        self.web_socket_client = web_socket_client
+        pass
 
     def validate(self):
         pass
@@ -20,16 +18,9 @@ class MultiModalGuardWsResponse(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.web_socket_client is not None:
-            result['webSocketClient'] = self.web_socket_client.to_map()
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('webSocketClient') is not None:
-            temp_model = web_socket_utils_models.WebSocketClient()
-            self.web_socket_client = temp_model.from_map(m.get('webSocketClient'))
-
         return self
 
