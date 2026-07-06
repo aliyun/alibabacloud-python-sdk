@@ -9,18 +9,20 @@ class GetTableRequest(DaraModel):
         self,
         id: str = None,
         include_business_metadata: bool = None,
+        include_extended_properties: bool = None,
     ):
-        # The ID. You can refer to the response of the ListTables operation and the [concepts related to metadata entities.](https://help.aliyun.com/document_detail/2880092.html)
+        # The ID. You can obtain this value from the response of the ListTables operation. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The format: `${EntityType}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Table name}`. Use empty strings as placeholders for levels that do not exist.
         # 
-        # > For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID.
+        # The format is `${EntityType}:${InstanceID or encoded URL}:${DataCatalogIdentifier}:${DatabaseName}:${SchemaName}:${TableName}`. Use an empty string as a placeholder for levels that do not exist.
         # 
-        # > The catalog identifier of the StarRocks is the catalog name, and the catalog identifier of the DLF type is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
+        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID.
         # 
-        # > For MaxCompute, the database name refers to the MaxCompute project name. If the project has schema enabled, you must specify the schema name. Otherwise, use an empty string as the placeholder for the schema name.
+        # > For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
         # 
-        # Examples of common ID formats
+        # > For MaxCompute, the database name is the MaxCompute project name. Projects with the three-layer model enabled require a schema name. For projects without the three-layer model enabled, use an empty string as a placeholder for the schema name.
+        # 
+        # The following examples show the ID formats for common types:
         # 
         # `maxcompute-table:::project_name:[schema_name]:table_name`
         # 
@@ -32,18 +34,20 @@ class GetTableRequest(DaraModel):
         # 
         # `mysql-table:(instance_id|encoded_jdbc_url)::database_name::table_name`
         # 
-        # > <br>`instance_id`: The instance ID, required when the data source is registered in instance mode.<br>
-        # > `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.<br>
-        # > `catalog_id`: The DLF catalog ID.<br>
-        # > `project_name`: The MaxCompute project name.<br>
-        # > `database_name`: The database name.<br>
-        # > `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema. Otherwise, use an empty string as a placeholder.<br>
-        # > `table_name`: The table name.
+        # > Where  
+        # `instance_id`: The instance ID. This is required when the data source is registered in instance mode.  
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. This is required when the data source is registered using a connection string.   
+        # `catalog_id`: The DLF catalog ID.   
+        # `project_name`: The MaxCompute project name.   
+        # `database_name`: The database name.   
+        # `schema_name`: The schema name. For MaxCompute, this is required only when the three-layer model is enabled for the project. Use an empty string as a placeholder if the three-layer model is not enabled.   
+        # `table_name`: The table name.
         # 
         # This parameter is required.
         self.id = id
-        # Specifies whether to include metadata. Default: false.
+        # Specifies whether to include business metadata. Default value: false.
         self.include_business_metadata = include_business_metadata
+        self.include_extended_properties = include_extended_properties
 
     def validate(self):
         pass
@@ -59,6 +63,9 @@ class GetTableRequest(DaraModel):
         if self.include_business_metadata is not None:
             result['IncludeBusinessMetadata'] = self.include_business_metadata
 
+        if self.include_extended_properties is not None:
+            result['IncludeExtendedProperties'] = self.include_extended_properties
+
         return result
 
     def from_map(self, m: dict = None):
@@ -68,6 +75,9 @@ class GetTableRequest(DaraModel):
 
         if m.get('IncludeBusinessMetadata') is not None:
             self.include_business_metadata = m.get('IncludeBusinessMetadata')
+
+        if m.get('IncludeExtendedProperties') is not None:
+            self.include_extended_properties = m.get('IncludeExtendedProperties')
 
         return self
 

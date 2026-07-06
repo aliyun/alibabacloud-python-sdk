@@ -1,3 +1,12 @@
+2026-07-06 Version: 8.8.4
+- Update API CreatePipelineRun: add request parameters AutoRunUntilStage.
+- Update API CreatePipelineRun: add request parameters RunMode.
+- Update API GetTable: add request parameters IncludeExtendedProperties.
+- Update API ImportWorkflowDefinition: add request parameters DryRun.
+- Update API ListColumns: add request parameters IncludeExtendedProperties.
+- Update API ListTables: add request parameters IncludeExtendedProperties.
+
+
 2026-06-26 Version: 8.8.3
 - Update API RerunTaskInstances: add request parameters UseLatestConfig.
 

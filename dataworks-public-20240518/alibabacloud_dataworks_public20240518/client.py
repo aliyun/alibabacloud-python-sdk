@@ -4541,12 +4541,16 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.object_ids):
             request.object_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.auto_run_until_stage):
+            body['AutoRunUntilStage'] = request.auto_run_until_stage
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.object_ids_shrink):
             body['ObjectIds'] = request.object_ids_shrink
         if not DaraCore.is_null(request.project_id):
             body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.run_mode):
+            body['RunMode'] = request.run_mode
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -4579,12 +4583,16 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.object_ids):
             request.object_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.object_ids, 'ObjectIds', 'json')
         body = {}
+        if not DaraCore.is_null(request.auto_run_until_stage):
+            body['AutoRunUntilStage'] = request.auto_run_until_stage
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.object_ids_shrink):
             body['ObjectIds'] = request.object_ids_shrink
         if not DaraCore.is_null(request.project_id):
             body['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.run_mode):
+            body['RunMode'] = request.run_mode
         if not DaraCore.is_null(request.type):
             body['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -15005,6 +15013,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImportWorkflowDefinitionResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.project_id):
             body['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.spec):
@@ -15035,6 +15045,8 @@ class Client(OpenApiClient):
     ) -> main_models.ImportWorkflowDefinitionResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.project_id):
             body['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.spec):

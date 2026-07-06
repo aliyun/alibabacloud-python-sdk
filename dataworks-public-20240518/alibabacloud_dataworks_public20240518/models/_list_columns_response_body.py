@@ -14,7 +14,7 @@ class ListColumnsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The pagination information.
+        # The paging result.
         self.paging_info = paging_info
         # The request ID.
         self.request_id = request_id
@@ -63,11 +63,11 @@ class ListColumnsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The table columns.
+        # The list of columns.
         self.columns = columns
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of records.
         self.total_count = total_count

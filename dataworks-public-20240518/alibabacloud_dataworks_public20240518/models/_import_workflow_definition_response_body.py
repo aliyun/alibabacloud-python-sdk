@@ -11,9 +11,9 @@ class ImportWorkflowDefinitionResponseBody(DaraModel):
         async_job: main_models.ImportWorkflowDefinitionResponseBodyAsyncJob = None,
         request_id: str = None,
     ):
-        # The status information of the asynchronous task.
+        # The asynchronous task status information.
         self.async_job = async_job
-        # The request ID.
+        # The request ID. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,37 +58,33 @@ class ImportWorkflowDefinitionResponseBodyAsyncJob(DaraModel):
     ):
         # Indicates whether the asynchronous task is complete.
         self.completed = completed
-        # The time when the asynchronous task was created. This value is a UNIX timestamp.
+        # The timestamp when the asynchronous task was created.
         self.create_time = create_time
-        # The error message returned if the asynchronous task fails.
+        # The error message returned when the asynchronous task fails.
         self.error = error
         # The ID of the asynchronous task.
         self.id = id
         # The progress of the asynchronous task. Valid values: 0 to 100.
         self.progress = progress
-        # The response.
+        # The content that the asynchronous task is expected to return.
         # 
-        # > The workflow ID is returned.
+        # > This field currently contains the ID of the workflow created by the asynchronous task.
         self.response = response
         # The status of the asynchronous task.
         # 
         # Valid values:
         # 
-        # - Running: The asynchronous task is running.
-        # 
-        # - Success: The asynchronous task is complete.
-        # 
-        # - Fail: The asynchronous task fails.
-        # 
-        # - Cancel: The asynchronous task is canceled.
+        # - Running: The task is running.
+        # - Success: The task succeeded.
+        # - Fail: The task failed.
+        # - Cancel: The task was canceled.
         self.status = status
-        # The type of the asynchronous task.
+        # The operation type of the asynchronous task.
         # 
         # Valid values:
         # 
-        # - Create: The asynchronous task is used to create an object.
-        # 
-        # - Cancel: The asynchronous task is used to cancel an operation.
+        # - Create: creates a resource. 
+        # - Cancel: cancels a creation job.
         self.type = type
 
     def validate(self):

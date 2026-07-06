@@ -14,9 +14,9 @@ class GetTableResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
-        # Detailed information about the table.
+        # The details of the data table.
         self.table = table
 
     def validate(self):
