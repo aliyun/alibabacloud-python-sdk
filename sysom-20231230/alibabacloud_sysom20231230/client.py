@@ -6005,6 +6005,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.uninstall_agent_for_cluster_with_options_async(request, headers, runtime)
 
+    def uninstall_agent_with_type_with_options(
+        self,
+        request: main_models.UninstallAgentWithTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAgentWithTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            body['agentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallAgentWithType',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/uninstallAgent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallAgentWithTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_agent_with_type_with_options_async(
+        self,
+        request: main_models.UninstallAgentWithTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAgentWithTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            body['agentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UninstallAgentWithType',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/uninstallAgent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UninstallAgentWithTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_agent_with_type(
+        self,
+        request: main_models.UninstallAgentWithTypeRequest,
+    ) -> main_models.UninstallAgentWithTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.uninstall_agent_with_type_with_options(request, headers, runtime)
+
+    async def uninstall_agent_with_type_async(
+        self,
+        request: main_models.UninstallAgentWithTypeRequest,
+    ) -> main_models.UninstallAgentWithTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.uninstall_agent_with_type_with_options_async(request, headers, runtime)
+
     def update_alert_destination_with_options(
         self,
         request: main_models.UpdateAlertDestinationRequest,
@@ -6612,3 +6700,91 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.upgrade_agent_for_cluster_with_options_async(request, headers, runtime)
+
+    def upgrade_agent_with_type_with_options(
+        self,
+        request: main_models.UpgradeAgentWithTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeAgentWithTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            body['agentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeAgentWithType',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/upgradeAgent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeAgentWithTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_agent_with_type_with_options_async(
+        self,
+        request: main_models.UpgradeAgentWithTypeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeAgentWithTypeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            body['agentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.instance_type):
+            body['instanceType'] = request.instance_type
+        if not DaraCore.is_null(request.instances):
+            body['instances'] = request.instances
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeAgentWithType',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/upgradeAgent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeAgentWithTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_agent_with_type(
+        self,
+        request: main_models.UpgradeAgentWithTypeRequest,
+    ) -> main_models.UpgradeAgentWithTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.upgrade_agent_with_type_with_options(request, headers, runtime)
+
+    async def upgrade_agent_with_type_async(
+        self,
+        request: main_models.UpgradeAgentWithTypeRequest,
+    ) -> main_models.UpgradeAgentWithTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.upgrade_agent_with_type_with_options_async(request, headers, runtime)

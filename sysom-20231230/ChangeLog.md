@@ -1,3 +1,8 @@
+2026-07-06 Version: 1.20.0
+- Support API UninstallAgentWithType.
+- Support API UpgradeAgentWithType.
+
+
 2026-07-02 Version: 1.19.0
 - Support API InstallAgentWithType.
 

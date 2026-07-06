@@ -200,6 +200,9 @@ from ._uninstall_agent_response import UninstallAgentResponse
 from ._uninstall_agent_for_cluster_request import UninstallAgentForClusterRequest
 from ._uninstall_agent_for_cluster_response_body import UninstallAgentForClusterResponseBody
 from ._uninstall_agent_for_cluster_response import UninstallAgentForClusterResponse
+from ._uninstall_agent_with_type_request import UninstallAgentWithTypeRequest
+from ._uninstall_agent_with_type_response_body import UninstallAgentWithTypeResponseBody
+from ._uninstall_agent_with_type_response import UninstallAgentWithTypeResponse
 from ._update_alert_destination_request import UpdateAlertDestinationRequest
 from ._update_alert_destination_response_body import UpdateAlertDestinationResponseBody
 from ._update_alert_destination_response import UpdateAlertDestinationResponse
@@ -222,6 +225,9 @@ from ._upgrade_agent_response import UpgradeAgentResponse
 from ._upgrade_agent_for_cluster_request import UpgradeAgentForClusterRequest
 from ._upgrade_agent_for_cluster_response_body import UpgradeAgentForClusterResponseBody
 from ._upgrade_agent_for_cluster_response import UpgradeAgentForClusterResponse
+from ._upgrade_agent_with_type_request import UpgradeAgentWithTypeRequest
+from ._upgrade_agent_with_type_response_body import UpgradeAgentWithTypeResponseBody
+from ._upgrade_agent_with_type_response import UpgradeAgentWithTypeResponse
 from ._auth_diagnosis_request import AuthDiagnosisRequestInstances
 from ._check_instance_support_response_body import CheckInstanceSupportResponseBodyData
 from ._create_alert_destination_request import CreateAlertDestinationRequestParams
@@ -301,6 +307,8 @@ from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequestTask2
 from ._uninstall_agent_request import UninstallAgentRequestInstances
 from ._uninstall_agent_response_body import UninstallAgentResponseBodyData
 from ._uninstall_agent_for_cluster_response_body import UninstallAgentForClusterResponseBodyData
+from ._uninstall_agent_with_type_request import UninstallAgentWithTypeRequestInstances
+from ._uninstall_agent_with_type_response_body import UninstallAgentWithTypeResponseBodyData
 from ._update_alert_destination_request import UpdateAlertDestinationRequestParams
 from ._update_alert_strategy_request import UpdateAlertStrategyRequestStrategy
 from ._update_events_attention_response_body import UpdateEventsAttentionResponseBodyData
@@ -310,6 +318,8 @@ from ._update_func_switch_record_response_body import UpdateFuncSwitchRecordResp
 from ._upgrade_agent_request import UpgradeAgentRequestInstances
 from ._upgrade_agent_response_body import UpgradeAgentResponseBodyData
 from ._upgrade_agent_for_cluster_response_body import UpgradeAgentForClusterResponseBodyData
+from ._upgrade_agent_with_type_request import UpgradeAgentWithTypeRequestInstances
+from ._upgrade_agent_with_type_response_body import UpgradeAgentWithTypeResponseBodyData
 
 __all__ = [
     AuthDiagnosisRequest,
@@ -510,6 +520,9 @@ __all__ = [
     UninstallAgentForClusterRequest,
     UninstallAgentForClusterResponseBody,
     UninstallAgentForClusterResponse,
+    UninstallAgentWithTypeRequest,
+    UninstallAgentWithTypeResponseBody,
+    UninstallAgentWithTypeResponse,
     UpdateAlertDestinationRequest,
     UpdateAlertDestinationResponseBody,
     UpdateAlertDestinationResponse,
@@ -532,6 +545,9 @@ __all__ = [
     UpgradeAgentForClusterRequest,
     UpgradeAgentForClusterResponseBody,
     UpgradeAgentForClusterResponse,
+    UpgradeAgentWithTypeRequest,
+    UpgradeAgentWithTypeResponseBody,
+    UpgradeAgentWithTypeResponse,
     AuthDiagnosisRequestInstances,
     CheckInstanceSupportResponseBodyData,
     CreateAlertDestinationRequestParams,
@@ -611,6 +627,8 @@ __all__ = [
     UninstallAgentRequestInstances,
     UninstallAgentResponseBodyData,
     UninstallAgentForClusterResponseBodyData,
+    UninstallAgentWithTypeRequestInstances,
+    UninstallAgentWithTypeResponseBodyData,
     UpdateAlertDestinationRequestParams,
     UpdateAlertStrategyRequestStrategy,
     UpdateEventsAttentionResponseBodyData,
@@ -619,5 +637,7 @@ __all__ = [
     UpdateFuncSwitchRecordResponseBodyData,
     UpgradeAgentRequestInstances,
     UpgradeAgentResponseBodyData,
-    UpgradeAgentForClusterResponseBodyData
+    UpgradeAgentForClusterResponseBodyData,
+    UpgradeAgentWithTypeRequestInstances,
+    UpgradeAgentWithTypeResponseBodyData
 ]
