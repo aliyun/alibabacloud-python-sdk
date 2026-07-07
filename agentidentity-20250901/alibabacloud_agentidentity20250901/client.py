@@ -467,6 +467,8 @@ class Client(OpenApiClient):
             body['OAuth2CredentialProviderName'] = request.oauth2_credential_provider_name
         if not DaraCore.is_null(request.oauth2_provider_config_shrink):
             body['OAuth2ProviderConfig'] = request.oauth2_provider_config_shrink
+        if not DaraCore.is_null(request.oauth_type):
+            body['OAuthType'] = request.oauth_type
         if not DaraCore.is_null(request.token_vault_name):
             body['TokenVaultName'] = request.token_vault_name
         req = open_api_util_models.OpenApiRequest(
@@ -509,6 +511,8 @@ class Client(OpenApiClient):
             body['OAuth2CredentialProviderName'] = request.oauth2_credential_provider_name
         if not DaraCore.is_null(request.oauth2_provider_config_shrink):
             body['OAuth2ProviderConfig'] = request.oauth2_provider_config_shrink
+        if not DaraCore.is_null(request.oauth_type):
+            body['OAuthType'] = request.oauth_type
         if not DaraCore.is_null(request.token_vault_name):
             body['TokenVaultName'] = request.token_vault_name
         req = open_api_util_models.OpenApiRequest(
@@ -3315,8 +3319,12 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.user_id):
+            body['UserId'] = request.user_id
         if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_id):
+            body['UserPoolId'] = request.user_pool_id
         if not DaraCore.is_null(request.user_pool_name):
             body['UserPoolName'] = request.user_pool_name
         req = open_api_util_models.OpenApiRequest(
@@ -3345,8 +3353,12 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.user_id):
+            body['UserId'] = request.user_id
         if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
+        if not DaraCore.is_null(request.user_pool_id):
+            body['UserPoolId'] = request.user_pool_id
         if not DaraCore.is_null(request.user_pool_name):
             body['UserPoolName'] = request.user_pool_name
         req = open_api_util_models.OpenApiRequest(

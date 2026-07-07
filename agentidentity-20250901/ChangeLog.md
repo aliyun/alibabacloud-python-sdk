@@ -1,3 +1,12 @@
+2026-07-07 Version: 1.2.1
+- Update API CreateOAuth2CredentialProvider: add request parameters OAuthType.
+- Update API CreateOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.OAuthType.
+- Update API GetOAuth2CredentialProvider: add response parameters Body.OAuth2CredentialProvider.OAuthType.
+- Update API GetUser: add request parameters UserId.
+- Update API GetUser: add request parameters UserPoolId.
+- Update API ListOAuth2CredentialProviders: add response parameters Body.OAuth2CredentialProviders.$.OAuthType.
+
+
 2026-06-26 Version: 1.2.0
 - Support API CreateUser.
 - Support API GetLoginPreference.
