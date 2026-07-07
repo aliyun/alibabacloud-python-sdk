@@ -1,3 +1,6 @@
+2026-07-07 Version: 3.4.1
+- Generated python 2019-08-15 for Ims.
+
 2026-07-06 Version: 3.4.0
 - Support API CreateServiceCredential.
 - Support API DeleteServiceCredential.
