@@ -1,3 +1,13 @@
+2026-07-07 Version: 2.31.2
+- Update API BindAppDomain: add response parameters Body.Module.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.Migration.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Migration.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Ownership.RootDomain.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Verification.VerificationStatusCode.
+
+
 2026-06-30 Version: 2.31.1
 - Update API GrantPromotionOfferForPartner: add request parameters ActivityCode.
 

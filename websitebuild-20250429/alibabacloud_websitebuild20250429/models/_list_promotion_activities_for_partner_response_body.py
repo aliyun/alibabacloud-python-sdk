@@ -24,7 +24,7 @@ class ListPromotionActivitiesForPartnerResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The access denied detail.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
@@ -155,7 +155,7 @@ class ListPromotionActivitiesForPartnerResponseBodyModule(DaraModel):
     ):
         # The list of promotional activities.
         self.activities = activities
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -224,13 +224,13 @@ class ListPromotionActivitiesForPartnerResponseBodyModuleActivities(DaraModel):
         self.consumed_quota = consumed_quota
         # The creation time.
         self.create_time = create_time
-        # The creator.
+        # The user who created the activity.
         self.created_by = created_by
-        # The eligibility configuration (JSON).
+        # The eligibility configuration in JSON format.
         self.eligibility_config = eligibility_config
         # The end date.
         self.end_date = end_date
-        # The offer configuration (JSON).
+        # The offer configuration in JSON format.
         self.offer_config = offer_config
         # The offer configuration summary.
         self.offer_config_summary = offer_config_summary
@@ -242,7 +242,7 @@ class ListPromotionActivitiesForPartnerResponseBodyModuleActivities(DaraModel):
         self.status = status
         # The total quota.
         self.total_quota = total_quota
-        # The touchpoint configuration (JSON).
+        # The touchpoint configuration in JSON format.
         self.touchpoint_config = touchpoint_config
         # The update time.
         self.update_time = update_time

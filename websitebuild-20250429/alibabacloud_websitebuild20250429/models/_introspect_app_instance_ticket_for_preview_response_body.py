@@ -22,28 +22,28 @@ class IntrospectAppInstanceTicketForPreviewResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access deny.
+        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name.
+        # App Name.
         self.app_name = app_name
-        # The dynamic fault code.
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic fault message, which is used to replace the `%s` variable in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
+        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The fault parameters.
+        # Returned error parameters
         self.error_args = error_args
-        # The response object.
+        # Returned object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # The fault code.
+        # Error code
         self.root_error_code = root_error_code
-        # The root fault message.
+        # Abnormal message
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -144,29 +144,29 @@ class IntrospectAppInstanceTicketForPreviewResponseBodyModule(DaraModel):
         refresh_token_value: str = None,
         uuid: str = None,
     ):
-        # The time when the access token expires.
+        # Access token time-to-live (TTL)
         self.access_token_expires_at = access_token_expires_at
-        # The time when the access token was issued.
+        # Access token issue Time
         self.access_token_issued_at = access_token_issued_at
-        # The access token value.
+        # Access token value
         self.access_token_value = access_token_value
         # aliyunPk
         self.aliyun_pk = aliyun_pk
-        # The extension properties.
+        # Extension property
         self.attributes = attributes
-        # The authorization code type.
+        # Authorization code Type
         self.authorization_grant_type = authorization_grant_type
         # bid
         self.bid = bid
-        # The parent Alibaba Cloud account ID.
+        # Parent Alibaba Cloud PK
         self.parent_pk = parent_pk
-        # The time when the refresh token expires.
+        # Time-to-live (TTL) of the refresh token
         self.refresh_token_expires_at = refresh_token_expires_at
-        # The time when the refresh token was issued.
+        # Refresh token issue Time
         self.refresh_token_issued_at = refresh_token_issued_at
-        # The refresh token value.
+        # Refresh token value
         self.refresh_token_value = refresh_token_value
-        # The external unique identifier.
+        # Externally Unique
         self.uuid = uuid
 
     def validate(self):

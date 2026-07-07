@@ -19,15 +19,15 @@ class ListAppInstanceDomainsRequest(DaraModel):
         # The business ID.
         self.biz_id = biz_id
         self.domain_keyword = domain_keyword
-        # The maximum number of entries to return per query.
+        # The maximum number of entries per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if there are no more results.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The field used for sorting.
         self.order_column = order_column
-        # The sort order. Valid values: ASC and DESC.
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num

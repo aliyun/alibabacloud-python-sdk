@@ -24,32 +24,32 @@ class ListAppInstanceDomainsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The details about the access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The error parameters returned.
         self.error_args = error_args
-        # The maximum number of entries to return per query.
+        # The maximum number of entries per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
         # The response data.
         self.module = module
-        # The token for the next query. This parameter is empty if there are no more results.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The error message.
+        # The exception message.
         self.root_error_msg = root_error_msg
         # A reserved parameter.
         self.synchro = synchro
@@ -163,7 +163,7 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The query results.
+        # The request results.
         self.data = data
         # The decision weight.
         self.next = next
@@ -173,7 +173,7 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # In addition to pagination limits, the server processes up to 1,000 recent records per query. If the results exceed 1,000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # The server processes up to 1000 recent records beyond the pagination limit. If the results exceed 1000 entries, **ResultLimit** is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -264,19 +264,23 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         self,
         certificate: main_models.ListAppInstanceDomainsResponseBodyModuleNextCertificate = None,
         create_time: str = None,
+        dns_conflict: main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflict = None,
         domain_name: str = None,
+        migration: main_models.ListAppInstanceDomainsResponseBodyModuleNextMigration = None,
         overall_status: str = None,
         ownership: main_models.ListAppInstanceDomainsResponseBodyModuleNextOwnership = None,
         qualification: main_models.ListAppInstanceDomainsResponseBodyModuleNextQualification = None,
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleNextResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleNextVerification = None,
     ):
-        # The SSL certificate information of the domain name.
+        # The domain name SSL certificate information.
         self.certificate = certificate
-        # The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
+        # The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
+        self.dns_conflict = dns_conflict
         # The domain name.
         self.domain_name = domain_name
+        self.migration = migration
         # The overall binding status.
         self.overall_status = overall_status
         # The domain name ownership information.
@@ -291,6 +295,10 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
     def validate(self):
         if self.certificate:
             self.certificate.validate()
+        if self.dns_conflict:
+            self.dns_conflict.validate()
+        if self.migration:
+            self.migration.validate()
         if self.ownership:
             self.ownership.validate()
         if self.qualification:
@@ -311,8 +319,14 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.dns_conflict is not None:
+            result['DnsConflict'] = self.dns_conflict.to_map()
+
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+
+        if self.migration is not None:
+            result['Migration'] = self.migration.to_map()
 
         if self.overall_status is not None:
             result['OverallStatus'] = self.overall_status
@@ -340,8 +354,16 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('DnsConflict') is not None:
+            temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflict()
+            self.dns_conflict = temp_model.from_map(m.get('DnsConflict'))
+
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('Migration') is not None:
+            temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextMigration()
+            self.migration = temp_model.from_map(m.get('Migration'))
 
         if m.get('OverallStatus') is not None:
             self.overall_status = m.get('OverallStatus')
@@ -370,6 +392,7 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerification(DaraModel):
         dns_record: main_models.ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord = None,
         error_msg: str = None,
         verification_status: str = None,
+        verification_status_code: str = None,
     ):
         # The DNS record that the user needs to configure.
         self.dns_record = dns_record
@@ -377,6 +400,7 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerification(DaraModel):
         self.error_msg = error_msg
         # The ownership verification status.
         self.verification_status = verification_status
+        self.verification_status_code = verification_status_code
 
     def validate(self):
         if self.dns_record:
@@ -396,6 +420,9 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerification(DaraModel):
         if self.verification_status is not None:
             result['VerificationStatus'] = self.verification_status
 
+        if self.verification_status_code is not None:
+            result['VerificationStatusCode'] = self.verification_status_code
+
         return result
 
     def from_map(self, m: dict = None):
@@ -409,6 +436,9 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerification(DaraModel):
 
         if m.get('VerificationStatus') is not None:
             self.verification_status = m.get('VerificationStatus')
+
+        if m.get('VerificationStatusCode') is not None:
+            self.verification_status_code = m.get('VerificationStatusCode')
 
         return self
 
@@ -603,11 +633,13 @@ class ListAppInstanceDomainsResponseBodyModuleNextOwnership(DaraModel):
         self,
         account: str = None,
         provider: str = None,
+        root_domain: str = None,
     ):
         # The account owner type. Valid values: CURRENT and OTHER.
         self.account = account
         # The registrar type. Valid values: ALIYUN and OTHER.
         self.provider = provider
+        self.root_domain = root_domain
 
     def validate(self):
         pass
@@ -623,6 +655,9 @@ class ListAppInstanceDomainsResponseBodyModuleNextOwnership(DaraModel):
         if self.provider is not None:
             result['Provider'] = self.provider
 
+        if self.root_domain is not None:
+            result['RootDomain'] = self.root_domain
+
         return result
 
     def from_map(self, m: dict = None):
@@ -632,6 +667,146 @@ class ListAppInstanceDomainsResponseBodyModuleNextOwnership(DaraModel):
 
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+
+        if m.get('RootDomain') is not None:
+            self.root_domain = m.get('RootDomain')
+
+        return self
+
+class ListAppInstanceDomainsResponseBodyModuleNextMigration(DaraModel):
+    def __init__(
+        self,
+        migration_status: str = None,
+        previous_domain: Any = None,
+    ):
+        self.migration_status = migration_status
+        self.previous_domain = previous_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.migration_status is not None:
+            result['MigrationStatus'] = self.migration_status
+
+        if self.previous_domain is not None:
+            result['PreviousDomain'] = self.previous_domain
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MigrationStatus') is not None:
+            self.migration_status = m.get('MigrationStatus')
+
+        if m.get('PreviousDomain') is not None:
+            self.previous_domain = m.get('PreviousDomain')
+
+        return self
+
+class ListAppInstanceDomainsResponseBodyModuleNextDnsConflict(DaraModel):
+    def __init__(
+        self,
+        can_auto_resolve: bool = None,
+        has_conflict: bool = None,
+        message: str = None,
+        records: List[main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords] = None,
+    ):
+        self.can_auto_resolve = can_auto_resolve
+        self.has_conflict = has_conflict
+        self.message = message
+        self.records = records
+
+    def validate(self):
+        if self.records:
+            for v1 in self.records:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.can_auto_resolve is not None:
+            result['CanAutoResolve'] = self.can_auto_resolve
+
+        if self.has_conflict is not None:
+            result['HasConflict'] = self.has_conflict
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        result['Records'] = []
+        if self.records is not None:
+            for k1 in self.records:
+                result['Records'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanAutoResolve') is not None:
+            self.can_auto_resolve = m.get('CanAutoResolve')
+
+        if m.get('HasConflict') is not None:
+            self.has_conflict = m.get('HasConflict')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        self.records = []
+        if m.get('Records') is not None:
+            for k1 in m.get('Records'):
+                temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords()
+                self.records.append(temp_model.from_map(k1))
+
+        return self
+
+class ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords(DaraModel):
+    def __init__(
+        self,
+        host: str = None,
+        record_type: str = None,
+        value: str = None,
+    ):
+        self.host = host
+        self.record_type = record_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.host is not None:
+            result['Host'] = self.host
+
+        if self.record_type is not None:
+            result['RecordType'] = self.record_type
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+
+        if m.get('RecordType') is not None:
+            self.record_type = m.get('RecordType')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 
@@ -643,11 +818,11 @@ class ListAppInstanceDomainsResponseBodyModuleNextCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The certificate name.
+        # The name of the certificate.
         self.certificate_name = certificate_name
-        # The certificate status.
+        # The status of the certificate.
         self.certificate_status = certificate_status
-        # The certificate type.
+        # The type of the certificate.
         self.certificate_type = certificate_type
         # The expiration date of the certificate.
         self.end_time = end_time
@@ -695,19 +870,23 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         self,
         certificate: main_models.ListAppInstanceDomainsResponseBodyModuleDataCertificate = None,
         create_time: str = None,
+        dns_conflict: main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflict = None,
         domain_name: str = None,
+        migration: main_models.ListAppInstanceDomainsResponseBodyModuleDataMigration = None,
         overall_status: str = None,
         ownership: main_models.ListAppInstanceDomainsResponseBodyModuleDataOwnership = None,
         qualification: main_models.ListAppInstanceDomainsResponseBodyModuleDataQualification = None,
         resolution: main_models.ListAppInstanceDomainsResponseBodyModuleDataResolution = None,
         verification: main_models.ListAppInstanceDomainsResponseBodyModuleDataVerification = None,
     ):
-        # The SSL certificate information of the domain name.
+        # The domain name SSL certificate information.
         self.certificate = certificate
-        # The time when the instance was created. Format: yyyy-MM-dd HH:mm:ss.
+        # The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
+        self.dns_conflict = dns_conflict
         # The domain name.
         self.domain_name = domain_name
+        self.migration = migration
         # The overall binding status.
         self.overall_status = overall_status
         # The domain name ownership information.
@@ -722,6 +901,10 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
     def validate(self):
         if self.certificate:
             self.certificate.validate()
+        if self.dns_conflict:
+            self.dns_conflict.validate()
+        if self.migration:
+            self.migration.validate()
         if self.ownership:
             self.ownership.validate()
         if self.qualification:
@@ -742,8 +925,14 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
+        if self.dns_conflict is not None:
+            result['DnsConflict'] = self.dns_conflict.to_map()
+
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+
+        if self.migration is not None:
+            result['Migration'] = self.migration.to_map()
 
         if self.overall_status is not None:
             result['OverallStatus'] = self.overall_status
@@ -771,8 +960,16 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
+        if m.get('DnsConflict') is not None:
+            temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflict()
+            self.dns_conflict = temp_model.from_map(m.get('DnsConflict'))
+
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('Migration') is not None:
+            temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataMigration()
+            self.migration = temp_model.from_map(m.get('Migration'))
 
         if m.get('OverallStatus') is not None:
             self.overall_status = m.get('OverallStatus')
@@ -1084,6 +1281,151 @@ class ListAppInstanceDomainsResponseBodyModuleDataOwnership(DaraModel):
 
         return self
 
+class ListAppInstanceDomainsResponseBodyModuleDataMigration(DaraModel):
+    def __init__(
+        self,
+        migration_status: str = None,
+        previous_domain: Any = None,
+    ):
+        self.migration_status = migration_status
+        self.previous_domain = previous_domain
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.migration_status is not None:
+            result['MigrationStatus'] = self.migration_status
+
+        if self.previous_domain is not None:
+            result['PreviousDomain'] = self.previous_domain
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MigrationStatus') is not None:
+            self.migration_status = m.get('MigrationStatus')
+
+        if m.get('PreviousDomain') is not None:
+            self.previous_domain = m.get('PreviousDomain')
+
+        return self
+
+class ListAppInstanceDomainsResponseBodyModuleDataDnsConflict(DaraModel):
+    def __init__(
+        self,
+        can_auto_resolve: bool = None,
+        has_conflict: bool = None,
+        message: str = None,
+        records: List[main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords] = None,
+    ):
+        self.can_auto_resolve = can_auto_resolve
+        self.has_conflict = has_conflict
+        self.message = message
+        self.records = records
+
+    def validate(self):
+        if self.records:
+            for v1 in self.records:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.can_auto_resolve is not None:
+            result['CanAutoResolve'] = self.can_auto_resolve
+
+        if self.has_conflict is not None:
+            result['HasConflict'] = self.has_conflict
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        result['Records'] = []
+        if self.records is not None:
+            for k1 in self.records:
+                result['Records'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanAutoResolve') is not None:
+            self.can_auto_resolve = m.get('CanAutoResolve')
+
+        if m.get('HasConflict') is not None:
+            self.has_conflict = m.get('HasConflict')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        self.records = []
+        if m.get('Records') is not None:
+            for k1 in m.get('Records'):
+                temp_model = main_models.ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords()
+                self.records.append(temp_model.from_map(k1))
+
+        return self
+
+class ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords(DaraModel):
+    def __init__(
+        self,
+        host: str = None,
+        record_type: str = None,
+        status: str = None,
+        value: str = None,
+    ):
+        self.host = host
+        self.record_type = record_type
+        self.status = status
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.host is not None:
+            result['Host'] = self.host
+
+        if self.record_type is not None:
+            result['RecordType'] = self.record_type
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+
+        if m.get('RecordType') is not None:
+            self.record_type = m.get('RecordType')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
 class ListAppInstanceDomainsResponseBodyModuleDataCertificate(DaraModel):
     def __init__(
         self,
@@ -1092,11 +1434,11 @@ class ListAppInstanceDomainsResponseBodyModuleDataCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The certificate name.
+        # The name of the certificate.
         self.certificate_name = certificate_name
-        # The certificate status.
+        # The status of the certificate.
         self.certificate_status = certificate_status
-        # The certificate type.
+        # The type of the certificate.
         self.certificate_type = certificate_type
         # The expiration date of the certificate.
         self.end_time = end_time
