@@ -11,20 +11,22 @@ class ListClustersResponseBody(DaraModel):
     def __init__(
         self,
         clusters: List[main_models.ListClustersResponseBodyClusters] = None,
+        ehpc_version_statistics: main_models.ListClustersResponseBodyEhpcVersionStatistics = None,
         page_number: str = None,
         page_size: int = None,
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of clusters.
+        # The cluster details.
         self.clusters = clusters
-        # The page number of the returned page.
+        self.ehpc_version_statistics = ehpc_version_statistics
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries on the current page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -32,6 +34,8 @@ class ListClustersResponseBody(DaraModel):
             for v1 in self.clusters:
                  if v1:
                     v1.validate()
+        if self.ehpc_version_statistics:
+            self.ehpc_version_statistics.validate()
 
     def to_map(self):
         result = dict()
@@ -42,6 +46,9 @@ class ListClustersResponseBody(DaraModel):
         if self.clusters is not None:
             for k1 in self.clusters:
                 result['Clusters'].append(k1.to_map() if k1 else None)
+
+        if self.ehpc_version_statistics is not None:
+            result['EhpcVersionStatistics'] = self.ehpc_version_statistics.to_map()
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -65,6 +72,10 @@ class ListClustersResponseBody(DaraModel):
                 temp_model = main_models.ListClustersResponseBodyClusters()
                 self.clusters.append(temp_model.from_map(k1))
 
+        if m.get('EhpcVersionStatistics') is not None:
+            temp_model = main_models.ListClustersResponseBodyEhpcVersionStatistics()
+            self.ehpc_version_statistics = temp_model.from_map(m.get('EhpcVersionStatistics'))
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
@@ -76,6 +87,41 @@ class ListClustersResponseBody(DaraModel):
 
         if m.get('TotalCount') is not None:
             self.total_count = m.get('TotalCount')
+
+        return self
+
+class ListClustersResponseBodyEhpcVersionStatistics(DaraModel):
+    def __init__(
+        self,
+        v_1count: int = None,
+        v_2count: int = None,
+    ):
+        self.v_1count = v_1count
+        self.v_2count = v_2count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.v_1count is not None:
+            result['V1Count'] = self.v_1count
+
+        if self.v_2count is not None:
+            result['V2Count'] = self.v_2count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('V1Count') is not None:
+            self.v_1count = m.get('V1Count')
+
+        if m.get('V2Count') is not None:
+            self.v_2count = m.get('V2Count')
 
         return self
 
@@ -107,21 +153,21 @@ class ListClustersResponseBodyClusters(DaraModel):
         security_group_id: str = None,
         users: main_models.ListClustersResponseBodyClustersUsers = None,
     ):
-        # The information about installed software in the cluster.
+        # The software installed on the cluster.
         self.additional_packages = additional_packages
-        # The information about the addons in the cluster.
+        # The custom service component information of the cluster.
         self.addons = addons
-        # The cluster type. Valid values:
+        # The cluster edition. Valid values:
+        # - Standard
         # 
-        # *   Standard
-        # *   Serverless
+        # - Serverless
         self.cluster_category = cluster_category
-        # The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The time when the cluster was created. The time is displayed in UTC+0 in the ISO 8601 standard format of yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.cluster_create_time = cluster_create_time
-        # The logon credential type of the cluster. Valid values:
+        # The logon credential types of the cluster. Valid values:
         # 
-        # *   password: requires passwords for logons.
-        # *   keypair: requires key pairs for logons.
+        # - password: uses a password to log on to the cluster.
+        # - keypair: uses a key pair to log on to the cluster.
         self.cluster_credentials = cluster_credentials
         # The post-processing script used by the cluster.
         self.cluster_custom_configuration = cluster_custom_configuration
@@ -130,51 +176,50 @@ class ListClustersResponseBodyClusters(DaraModel):
         # The cluster ID.
         self.cluster_id = cluster_id
         # The deployment type of the cluster. Valid values:
-        # 
-        # *   Integrated: public cloud
-        # *   Hybrid: hybrid cloud
-        # *   Custom: a custom cluster
+        # - Integrated: public cloud
+        # - Hybrid: hybrid cloud
+        # - Custom: custom cluster
         self.cluster_mode = cluster_mode
-        # The time when the cluster was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The time when the cluster was last modified. The time is displayed in UTC+0 in the ISO 8601 standard format of yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.cluster_modify_time = cluster_modify_time
         # The cluster name.
         self.cluster_name = cluster_name
-        # The cluster state. Valid values:
+        # The cluster status. Valid values:
         # 
-        # *   uninit: The cluster is being installed.
-        # *   creating: The cluster is being created.
-        # *   initing: The cluster is being initialized.
-        # *   running: The cluster is running.
-        # *   Releasing: The cluster is being released.
-        # *   stopping: The cluster is being stopped.
-        # *   stopped: The cluster is stopped.
-        # *   exception: The cluster has run into an exception.
-        # *   pending: The cluster is waiting to be configured.
+        # - uninit: installing.
+        # - creating: being created.
+        # - initing: being initialized.
+        # - running: running.
+        # - releasing: being released.
+        # - stopping: being stopped.
+        # - stopped: stopped.
+        # - exception: abnormal.
+        # - pending: pending configuration.
         self.cluster_status = cluster_status
-        # The vCPU-hour usage of the cluster.
+        # The core-hours consumed by the cluster.
         self.cluster_used_core_time = cluster_used_core_time
-        # The ID of the vSwitch used by the cluster.
+        # The vSwitch ID used by the cluster.
         self.cluster_vswitch_id = cluster_vswitch_id
-        # The ID of the virtual private cloud (VPC) used by the cluster.
+        # The VPC ID used by the cluster.
         self.cluster_vpc_id = cluster_vpc_id
         # Indicates whether deletion protection is enabled for the cluster. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Deletion protection is enabled.
+        # - false: Deletion protection is not enabled.
         self.deletion_protection = deletion_protection
-        # The Elastic High Performance Computing (E-HPC) version.
+        # The version of the E-HPC cluster.
         self.ehpc_version = ehpc_version
-        # The configurations of the cluster management node.
+        # The management node configuration of the cluster.
         self.manager = manager
-        # The maximum total number of vCPUs used by the compute nodes that can be managed by the cluster.
+        # The maximum total number of vCPUs of compute nodes that the cluster can manage.
         self.max_core_count = max_core_count
-        # The maximum number of compute nodes that can be managed by the cluster.
+        # The maximum number of compute nodes that the cluster can manage.
         self.max_count = max_count
-        # The node statistics of the cluster.
+        # The node count information of the cluster.
         self.nodes = nodes
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the security group used by the cluster.
+        # The security group ID used by the cluster.
         self.security_group_id = security_group_id
         # The user attribute information of the cluster.
         self.users = users
@@ -372,9 +417,9 @@ class ListClustersResponseBodyClustersUsers(DaraModel):
         normal_counts: int = None,
         sudo_counts: int = None,
     ):
-        # The number of ordinary users.
+        # The number of regular users.
         self.normal_counts = normal_counts
-        # The number of administrators.
+        # The number of sudo users.
         self.sudo_counts = sudo_counts
 
     def validate(self):
@@ -410,9 +455,9 @@ class ListClustersResponseBodyClustersNodes(DaraModel):
         creating_counts: int = None,
         running_counts: int = None,
     ):
-        # The number of malfunctioning compute nodes.
+        # The number of abnormal compute nodes.
         self.abnormal_counts = abnormal_counts
-        # The number of compute nodes that are being created.
+        # The number of compute nodes being created.
         self.creating_counts = creating_counts
         # The number of running compute nodes.
         self.running_counts = running_counts
@@ -456,11 +501,11 @@ class ListClustersResponseBodyClustersManager(DaraModel):
         directory_service: main_models.ListClustersResponseBodyClustersManagerDirectoryService = None,
         scheduler: main_models.ListClustersResponseBodyClustersManagerScheduler = None,
     ):
-        # The configurations of the domain name resolution service.
+        # The domain name resolution service configuration.
         self.dns = dns
-        # The configurations of the directory service.
+        # The domain account service configuration.
         self.directory_service = directory_service
-        # The configurations of the scheduler service.
+        # The scheduler service configuration.
         self.scheduler = scheduler
 
     def validate(self):
@@ -546,9 +591,9 @@ class ListClustersResponseBodyClustersManagerDirectoryService(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The type of the domain account.
+        # The domain account type.
         self.type = type
-        # The version of the domain account service.
+        # The domain account version.
         self.version = version
 
     def validate(self):
@@ -583,9 +628,9 @@ class ListClustersResponseBodyClustersManagerDNS(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The resolution type.
+        # The domain name resolution type.
         self.type = type
-        # The version of the domain name resolution service.
+        # The domain name resolution version.
         self.version = version
 
     def validate(self):
@@ -620,9 +665,9 @@ class ListClustersResponseBodyClustersClusterCustomConfiguration(DaraModel):
         args: str = None,
         script: str = None,
     ):
-        # The parameters of the post-processing script.
+        # The parameters of the cluster post-processing script.
         self.args = args
-        # The link to the post-processing script.
+        # The URL of the cluster post-processing script.
         self.script = script
 
     def validate(self):
@@ -663,23 +708,23 @@ class ListClustersResponseBodyClustersAddons(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The addon ID.
+        # The ID of the custom service component.
         self.addon_id = addon_id
-        # The addon description.
+        # The description of the custom service component.
         self.description = description
-        # The addon label.
+        # The label of the custom service component.
         self.label = label
-        # The addon name.
+        # The name of the custom service component.
         # 
         # This parameter is required.
         self.name = name
-        # The resource configurations of the addon.
+        # The resource configuration of the component.
         self.resources_spec = resources_spec
-        # The information about the addon services.
+        # The service configuration of the component.
         self.services_spec = services_spec
-        # The addon state.
+        # The status of the custom service component.
         self.status = status
-        # The addon version.
+        # The version of the custom service component.
         # 
         # This parameter is required.
         self.version = version
@@ -811,9 +856,9 @@ class ListClustersResponseBodyClustersAddonsResourcesSpec(DaraModel):
         ecs_instance_id: str = None,
         eip_instance_id: str = None,
     ):
-        # The instance ID.
+        # The component instance ID.
         self.ecs_instance_id = ecs_instance_id
-        # The Elastic IP Address (EIP) ID.
+        # The elastic IP address (EIP) ID.
         self.eip_instance_id = eip_instance_id
 
     def validate(self):

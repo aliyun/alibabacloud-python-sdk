@@ -14,21 +14,19 @@ class ListJobsShrinkRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+        # You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to query the cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
         # The job filter information.
         self.job_filter_shrink = job_filter_shrink
-        # The page number of the page to return.
-        # 
-        # *   Pages start from page 1.
-        # *   Default value: 1
+        # The page number of the list.
+        # - Minimum value: 1.
+        # - Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
-        # 
-        # *   Maximum value: 50.
-        # *   Default value: 10
+        # The number of entries per page when using paged query. Paging is applied to the results.
+        # - Maximum value: 50.
+        # - Default value: 10.
         self.page_size = page_size
 
     def validate(self):

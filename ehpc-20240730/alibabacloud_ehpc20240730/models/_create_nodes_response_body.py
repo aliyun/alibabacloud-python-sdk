@@ -13,15 +13,13 @@ class CreateNodesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # A list of instance IDs for the created compute nodes.
+        # The list of compute nodes to be created.
         self.instance_ids = instance_ids
         # The request ID.
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
-        # 
-        # - true: The operation was successful.
-        # 
-        # - false: The operation failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

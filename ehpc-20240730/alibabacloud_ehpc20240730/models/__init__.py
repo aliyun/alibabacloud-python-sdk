@@ -230,6 +230,7 @@ from ._list_clusters_response_body import ListClustersResponseBodyClustersManage
 from ._list_clusters_response_body import ListClustersResponseBodyClustersNodes
 from ._list_clusters_response_body import ListClustersResponseBodyClustersUsers
 from ._list_clusters_response_body import ListClustersResponseBodyClusters
+from ._list_clusters_response_body import ListClustersResponseBodyEhpcVersionStatistics
 from ._list_common_logs_response_body import ListCommonLogsResponseBodyLogs
 from ._list_installed_softwares_response_body import ListInstalledSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos
 from ._list_installed_softwares_response_body import ListInstalledSoftwaresResponseBodyAdditionalPackages
@@ -492,6 +493,7 @@ __all__ = [
     ListClustersResponseBodyClustersNodes,
     ListClustersResponseBodyClustersUsers,
     ListClustersResponseBodyClusters,
+    ListClustersResponseBodyEhpcVersionStatistics,
     ListCommonLogsResponseBodyLogs,
     ListInstalledSoftwaresResponseBodyAdditionalPackagesAdditionalPackageInfos,
     ListInstalledSoftwaresResponseBodyAdditionalPackages,

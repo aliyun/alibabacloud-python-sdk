@@ -17,18 +17,17 @@ class ListJobsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The jobs.
+        # The job list.
         self.jobs = jobs
-        # The page number. Default value: 1
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10
+        # The number of entries per page set for the paged query. Paging settings apply. Default value: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # Indicates whether the command was run and the result was obtained. Valid values:
+        # - true: Succeeded.
+        # - false: Failed.
         self.success = success
         # The total number of entries returned.
         self.total_count = total_count
@@ -99,7 +98,7 @@ class ListJobsResponseBodyJobs(DaraModel):
     ):
         # The job name.
         self.job_name = job_name
-        # The job configurations.
+        # The job configuration.
         self.job_spec = job_spec
 
     def validate(self):
@@ -154,47 +153,45 @@ class ListJobsResponseBodyJobsJobSpec(DaraModel):
     ):
         # The array job ID.
         self.array_job_id = array_job_id
-        # The ID of the job in the array.
+        # The array sub-job ID.
         self.array_job_sub_id = array_job_sub_id
-        # The queue format of the job.
-        # 
-        # *   If the job is not in a queue, the output is empty.
-        # *   The format is X-Y:Z. X indicates the first index, Y indicates the final index, and Z indicates the step size. For example, 2-7:2 indicates three sub-jobs numbered 2, 4, and 6.
+        # The array job format.
+        # - If the job is not an array job, the output is empty.
+        # - The format is X-Y:Z, where X is the first index, Y is the last index, and Z is the step size. For example, 2-7:2 indicates that the array job contains three sub-jobs numbered 2, 4, and 6.
         self.array_request = array_request
         # The job description.
         self.comment = comment
         # The job ID.
         self.id = id
-        # The queue name.
+        # The name of the queue that runs the job.
         self.job_queue = job_queue
-        # The time when the job was last updated.
+        # The last update time of the job.
         self.last_modify_time = last_modify_time
-        # The compute nodes that were used to run the job.
+        # The list of compute nodes that run the job.
         self.node_list = node_list
-        # The job priority. Valid values: 0 to 9. A larger value indicates a higher priority.
+        # The priority of the job. Valid values: 0 to 9. A larger value indicates a higher priority.
         self.priority = priority
-        # The information about the resources required to run the job.
+        # The resource information required to run the job.
         self.resources = resources
-        # Actual resource usage of the job program
+        # The resources actually occupied by the job.
         self.resources_actual_occupied = resources_actual_occupied
-        # The user that ran the job.
+        # The username of the user who runs the job.
         self.runas_user = runas_user
-        # Job start time.
+        # The start time of the job.
         self.start_time = start_time
-        # The job state. Valid values: (PBS cluster and Slurm cluster)
-        # 
-        # *   FINISHED/Completed
-        # *   RUNNING/Running
-        # *   QUEUED/Pending
-        # *   FAILED/Failed
+        # The job status. Valid values: (PBS cluster/Slurm cluster)
+        # - FINISHED/Completed: completed.
+        # - RUNNING/Running: running.
+        # - QUEUED/Pending: queued and waiting.
+        # - FAILED/Failed: failed.
         self.state = state
-        # The error output path.
+        # The standard error output path.
         self.stderr_path = stderr_path
         # The standard output path.
         self.stdout_path = stdout_path
-        # The time when the job was submitted.
+        # The submission time of the job.
         self.submit_time = submit_time
-        # The variables of the job.
+        # The list of job variables.
         self.variables = variables
 
     def validate(self):
@@ -332,13 +329,13 @@ class ListJobsResponseBodyJobsJobSpecResourcesActualOccupied(DaraModel):
         memory: str = None,
         nodes: str = None,
     ):
-        # Number of CPU cores.
+        # The number of CPU cores.
         self.cores = cores
-        # Number of CPUs
+        # The number of GPUs.
         self.gpus = gpus
-        # Number of memory.
+        # The memory size.
         self.memory = memory
-        # Number of compute nodes.
+        # The number of compute nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -387,13 +384,13 @@ class ListJobsResponseBodyJobsJobSpecResources(DaraModel):
         memory: str = None,
         nodes: str = None,
     ):
-        # The number of vCPUs that were used to run the job.
+        # The number of CPU cores used to run the job.
         self.cores = cores
-        # The number of GPUs that were used to run the job.
+        # The number of GPUs used to run the job.
         self.gpus = gpus
-        # The size of memory that was used to run the job.
+        # The memory size used to run the job.
         self.memory = memory
-        # The number of compute nodes that were used to run the job.
+        # The number of compute nodes that run the job.
         self.nodes = nodes
 
     def validate(self):
