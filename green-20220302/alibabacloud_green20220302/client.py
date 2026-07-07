@@ -8,6 +8,7 @@ from alibabacloud_green20220302 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
+from alibabacloud_tea_openapi.websocketUtils import Client as WebSocketUtilsClient
 from darabonba.core import DaraCore as DaraCore
 from darabonba.runtime import RuntimeOptions
 
@@ -1455,6 +1456,75 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.multi_modal_guard_for_base_64with_options_async(request, runtime)
 
+    def multi_modal_guard_ws_with_options(
+        self,
+        request: main_models.MultiModalGuardWsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardWsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardWs',
+            version = '2022-03-02',
+            protocol = 'wss',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json',
+            websocket_sub_protocol = 'awap'
+        )
+        res = main_models.MultiModalGuardWsResponse()
+        tmp = self.call_api(params, req, runtime)
+        if not DaraCore.is_null(tmp.get('webSocketClient')):
+            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+        return res
+
+    async def multi_modal_guard_ws_with_options_async(
+        self,
+        request: main_models.MultiModalGuardWsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardWsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardWs',
+            version = '2022-03-02',
+            protocol = 'wss',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json',
+            websocket_sub_protocol = 'awap'
+        )
+        res = main_models.MultiModalGuardWsResponse()
+        tmp = await self.call_api_async(params, req, runtime)
+        if not DaraCore.is_null(tmp.get('webSocketClient')):
+            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+        return res
+
+    def multi_modal_guard_ws(
+        self,
+        request: main_models.MultiModalGuardWsRequest,
+    ) -> main_models.MultiModalGuardWsResponse:
+        runtime = RuntimeOptions()
+        return self.multi_modal_guard_ws_with_options(request, runtime)
+
+    async def multi_modal_guard_ws_async(
+        self,
+        request: main_models.MultiModalGuardWsRequest,
+    ) -> main_models.MultiModalGuardWsResponse:
+        runtime = RuntimeOptions()
+        return await self.multi_modal_guard_ws_with_options_async(request, runtime)
 
     def multimodal_async_moderation_with_options(
         self,

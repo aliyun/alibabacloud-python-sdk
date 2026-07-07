@@ -15,11 +15,11 @@ class VideoModerationResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. A value of 200 indicates success.
+        # The return code. A value of 200 indicates success.
         self.code = code
         # The moderation result data.
         self.data = data
-        # The response message.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -274,7 +274,7 @@ class VideoModerationResultResponseBodyDataFrameResultFrames(DaraModel):
         # 
         # - none: No risk detected.
         self.risk_level = risk_level
-        # The temporary URL of the captured frame image.
+        # The temporary access URL of the captured frame image.
         self.temp_url = temp_url
         # The absolute timestamp. Unit: milliseconds.
         self.timestamp = timestamp
@@ -342,19 +342,19 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResults(DaraModel):
         text_in_image: Dict[str, Any] = None,
         vl_content: main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent = None,
     ):
-        # The custom image library information that is hit. This field is returned only when a custom image library is hit.
+        # The custom image library information returned when a custom image library is hit.
         self.custom_image = custom_image
-        # The logo information returned when the video contains a logo.
+        # The logo information returned when a logo is detected in the video.
         self.logo_data = logo_data
-        # The recognized public figure codes returned when the video contains specific public figures.
+        # The identified public figure codes returned when the video contains specific public figures.
         self.public_figure = public_figure
         # The hit result details.
         self.result = result
         # The image moderation service type.
         self.service = service
-        # The text information in the image that is hit.
+        # The text information detected in the hit image.
         self.text_in_image = text_in_image
-        # The foundation model result.
+        # The large model result.
         self.vl_content = vl_content
 
     def validate(self):
@@ -456,7 +456,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsVlContent(Dar
         self,
         output_text: str = None,
     ):
-        # The output text from the foundation model.
+        # The output text from the large model.
         self.output_text = output_text
 
     def validate(self):
@@ -532,11 +532,11 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure(
         figure_name: str = None,
         location: List[main_models.VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigureLocation] = None,
     ):
-        # The code of the recognized public figure.
+        # The code of the identified public figure.
         self.figure_id = figure_id
-        # The name of the recognized public figure.
+        # The name of the identified public figure.
         self.figure_name = figure_name
-        # The location of the recognized public figure.
+        # The location of the identified public figure.
         self.location = location
 
     def validate(self):
@@ -642,7 +642,7 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsLogoData(Dara
     ):
         # The text line and coordinate information.
         self.location = location
-        # The logo identification information.
+        # The logo information.
         self.logo = logo
 
     def validate(self):
@@ -789,9 +789,9 @@ class VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage(D
         image_id: str = None,
         lib_id: str = None,
     ):
-        # The ID of the custom image that is hit.
+        # The ID of the hit custom image.
         self.image_id = image_id
-        # The ID of the custom image library that is hit.
+        # The ID of the hit custom image library.
         self.lib_id = lib_id
 
     def validate(self):
@@ -831,7 +831,7 @@ class VideoModerationResultResponseBodyDataFrameResultFrameSummarys(DaraModel):
         self.description = description
         # The video frame label.
         self.label = label
-        # The number of times the label appears.
+        # The number of times the label was detected.
         self.label_sum = label_sum
 
     def validate(self):
@@ -948,27 +948,27 @@ class VideoModerationResultResponseBodyDataExtAigcDataAIGC(DaraModel):
     ):
         # The code or name of the service provider, used to identify the content producer.
         self.content_producer = content_producer
-        # The name, ID, or code of the propagation platform. For services that provide artificial intelligence-generated content, this value can be the same as ContentProducer.
+        # The name, code, or identifier of the propagation platform. For services that provide artificial intelligence-generated content, this value can be the same as ContentProducer.
         self.content_propagator = content_propagator
         # Indicates whether the content is generated by artificial intelligence (AI). Valid values:
         # 
-        # - 1: The content is generated through artificial intelligence content generation.
+        # - 1: The content is AI-generated content (AIGC).
         # 
-        # - 2: (Propagation platforms only) The content may be generated through artificial intelligence content generation.
+        # - 2: (Propagation platforms only) The content may be AI-generated content generation.
         # 
-        # - 3: (Propagation platforms only) The content is suspected to be generated through artificial intelligence content generation.
+        # - 3: (Propagation platforms only) The content is suspected to be AI-generated content generation.
         self.label = label
-        # The content production ID, which is the unique identifier used by the production platform to trace synthesized content.
+        # The content production ID, a unique identifier used by the production platform to trace synthesized content.
         self.produce_id = produce_id
-        # The content propagation ID, which is the unique identifier assigned by the propagation platform to the propagated AI-generated content.
+        # The content propagation ID, a unique identifier assigned by the propagation platform to the distributed AI-generated content.
         self.propagate_id = propagate_id
-        # The reserved field.
+        # A reserved field.
         # 
-        # This field can store information used by the content generation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
+        # This field can store information used by the content generation service provider for self-initiated security protection and content/identifier integrity assurance. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
         self.reserved_code_1 = reserved_code_1
-        # The reserved field.
+        # A reserved field.
         # 
-        # This field can be used by the content propagation service provider for self-initiated security protection to safeguard content and identifier integrity. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
+        # This field can be used by the content propagation service provider for self-initiated security protection and content/identifier integrity assurance. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify critical information.
         self.reserved_code_2 = reserved_code_2
 
     def validate(self):
@@ -1124,8 +1124,9 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(DaraModel):
         self.end_timestamp = end_timestamp
         # The extended field.
         self.extend = extend
-        # The violation labels that are hit.
+        # The violated labels that were hit.
         self.labels = labels
+        # The text detection result.
         self.result = result
         # The risk level, returned based on the configured high and low risk score thresholds. Valid values:
         # 
@@ -1139,7 +1140,7 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetails(DaraModel):
         self.risk_level = risk_level
         # The details of the hit risk.
         self.risk_tips = risk_tips
-        # The risk keywords that are hit.
+        # The risk keywords that were hit.
         self.risk_words = risk_words
         # The risk score. Default range: 0 to 99.
         self.score = score
@@ -1269,12 +1270,19 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetailsResult(DaraMod
         risk_positions: List[main_models.VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPositions] = None,
         risk_words: str = None,
     ):
+        # The confidence level.
         self.confidence = confidence
+        # The list of hit custom libraries.
         self.customized_hit = customized_hit
+        # The description.
         self.description = description
+        # The label.
         self.label = label
+        # The risk level.
         self.risk_level = risk_level
+        # The list of risk positions.
         self.risk_positions = risk_positions
+        # The hit risk content.
         self.risk_words = risk_words
 
     def validate(self):
@@ -1357,8 +1365,11 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultRiskPosi
         risk_word: str = None,
         start_pos: int = None,
     ):
+        # The end position.
         self.end_pos = end_pos
+        # The detected sensitive word.
         self.risk_word = risk_word
+        # The start position.
         self.start_pos = start_pos
 
     def validate(self):
@@ -1399,7 +1410,9 @@ class VideoModerationResultResponseBodyDataAudioResultSliceDetailsResultCustomiz
         key_words: str = None,
         lib_name: str = None,
     ):
+        # The custom keywords.
         self.key_words = key_words
+        # The name of the custom library.
         self.lib_name = lib_name
 
     def validate(self):
@@ -1439,7 +1452,7 @@ class VideoModerationResultResponseBodyDataAudioResultAudioSummarys(DaraModel):
         self.description = description
         # The video audio label.
         self.label = label
-        # The number of times the label appears.
+        # The number of times the label was detected.
         self.label_sum = label_sum
 
     def validate(self):

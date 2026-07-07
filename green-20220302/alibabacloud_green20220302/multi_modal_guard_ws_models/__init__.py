@@ -11,11 +11,11 @@ from ._response_message_event import ResponseMessageEventData
 from ._ack_message_event import AckMessageEventData
 
 __all__ = [
-    'ModelRequestMessageEvent',
-    'ResponseMessageEvent',
-    'AckMessageEvent',
-    'ResponseMessageEventDataDetailResult',
-    'ResponseMessageEventDataDetail',
-    'ResponseMessageEventData',
-    'AckMessageEventData'
+    ModelRequestMessageEvent,
+    ResponseMessageEvent,
+    AckMessageEvent,
+    ResponseMessageEventDataDetailResult,
+    ResponseMessageEventDataDetail,
+    ResponseMessageEventData,
+    AckMessageEventData
 ]

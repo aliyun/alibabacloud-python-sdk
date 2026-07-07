@@ -1,3 +1,6 @@
+2026-07-07 Version: 3.4.1
+- Generated python 2022-03-02 for Green.
+
 2026-06-30 Version: 3.4.0
 - Support API MultiModalGuardWs.
 - Update API ManualModerationResult: add response parameters Body.Data.ReviewCount.
