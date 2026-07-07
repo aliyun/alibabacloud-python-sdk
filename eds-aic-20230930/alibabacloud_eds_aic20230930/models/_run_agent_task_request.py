@@ -23,12 +23,15 @@ class RunAgentTaskRequest(DaraModel):
         self.biz_region_id = biz_region_id
         # The list of Mobile node IDs. A maximum of 100 nodes are supported per request.
         self.instance_ids = instance_ids
-        # The maximum number of execution steps for the task to prevent infinite loops. Valid values: 30 to 1000. Default value: 1000.
+        # The maximum number of execution steps for the task. This prevents infinite loops. Valid values: 30 to 1000. Default value: 1000.
         self.max_steps = max_steps
+        # The scheduling plan ID. When specified, execution records are associated with the corresponding scheduled node, which facilitates aggregation query by scheduling dimension.
         self.schedule_id = schedule_id
+        # The array of target objects. Each element contains an InstanceId and a SessionId.
         self.targets = targets
+        # The task configuration ID used to trigger a task with the specified configuration.
         self.task_config_id = task_config_id
-        # The task timeout period in seconds. Valid values: 300 to 3600. Default value: 3600.
+        # The timeout period of the task, in seconds. Valid values: 300 to 3600. Default value: 3600.
         self.timeout_seconds = timeout_seconds
         # The user instruction in natural language. The Agent performs operations based on this instruction.
         self.user_prompt = user_prompt
@@ -109,7 +112,9 @@ class RunAgentTaskRequestTargets(DaraModel):
         instance_id: str = None,
         session_id: str = None,
     ):
+        # The Mobile node ID, such as acp-xxx.
         self.instance_id = instance_id
+        # The session ID. Tasks with the same session ID share context, such as ses-260702-21b****.
         self.session_id = session_id
 
     def validate(self):

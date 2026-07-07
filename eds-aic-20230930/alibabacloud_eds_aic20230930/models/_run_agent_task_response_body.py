@@ -91,16 +91,35 @@ class RunAgentTaskResponseBodyTasks(DaraModel):
     ):
         # The current status of the task. Valid values:
         # 
-        # - PENDING: The task is being created.
-        # - RUNNING: The task is running.
-        # - COMPLETED: The task is completed.
-        # - FAILED: The task failed.
-        # - TIMEOUT: The task execution timed out.
+        # PENDING: The task is being created.
+        # 
+        # RUNNING: The task is running.
+        # 
+        # COMPLETED: The task is completed.
+        # 
+        # FAILED: The task failed.
+        # 
+        # TIMEOUT: The task timed out.
+        # 
+        # CALL_FOR_USER: The task is waiting for user action.
+        # 
+        # PAUSING: The task is being paused.
+        # 
+        # PAUSED: The task is paused.
+        # 
+        # CANCELLING: The task is being canceled.
+        # 
+        # CANCELED: The task is canceled.
+        # 
+        # STOPPED: The task is stopped.
+        # 
+        # TIMEOUT: The task timed out.
         self.current_status = current_status
         # The Mobile node ID.
         self.instance_id = instance_id
         # The time when the task was created, in ISO 8601 format.
         self.running_at = running_at
+        # The session ID. Tasks with the same session ID share context.
         self.session_id = session_id
         # The task ID, which is globally unique.
         self.task_id = task_id

@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 from ._data_image_region_distribute_map_value import DataImageRegionDistributeMapValue
+from ._activate_edge_mobile_agent_request import ActivateEdgeMobileAgentRequest
+from ._activate_edge_mobile_agent_response_body import ActivateEdgeMobileAgentResponseBody
+from ._activate_edge_mobile_agent_response import ActivateEdgeMobileAgentResponse
 from ._attach_key_pair_request import AttachKeyPairRequest
 from ._attach_key_pair_response_body import AttachKeyPairResponseBody
 from ._attach_key_pair_response import AttachKeyPairResponse
@@ -48,6 +51,9 @@ from ._create_credit_package_response import CreateCreditPackageResponse
 from ._create_custom_image_request import CreateCustomImageRequest
 from ._create_custom_image_response_body import CreateCustomImageResponseBody
 from ._create_custom_image_response import CreateCustomImageResponse
+from ._create_edge_mobile_agent_package_request import CreateEdgeMobileAgentPackageRequest
+from ._create_edge_mobile_agent_package_response_body import CreateEdgeMobileAgentPackageResponseBody
+from ._create_edge_mobile_agent_package_response import CreateEdgeMobileAgentPackageResponse
 from ._create_key_pair_request import CreateKeyPairRequest
 from ._create_key_pair_response_body import CreateKeyPairResponseBody
 from ._create_key_pair_response import CreateKeyPairResponse
@@ -123,6 +129,9 @@ from ._describe_credit_package_response import DescribeCreditPackageResponse
 from ._describe_display_config_request import DescribeDisplayConfigRequest
 from ._describe_display_config_response_body import DescribeDisplayConfigResponseBody
 from ._describe_display_config_response import DescribeDisplayConfigResponse
+from ._describe_edge_mobile_agent_packages_request import DescribeEdgeMobileAgentPackagesRequest
+from ._describe_edge_mobile_agent_packages_response_body import DescribeEdgeMobileAgentPackagesResponseBody
+from ._describe_edge_mobile_agent_packages_response import DescribeEdgeMobileAgentPackagesResponse
 from ._describe_image_list_request import DescribeImageListRequest
 from ._describe_image_list_response_body import DescribeImageListResponseBody
 from ._describe_image_list_response import DescribeImageListResponse
@@ -267,6 +276,9 @@ from ._recover_app_response import RecoverAppResponse
 from ._recovery_file_request import RecoveryFileRequest
 from ._recovery_file_response_body import RecoveryFileResponseBody
 from ._recovery_file_response import RecoveryFileResponse
+from ._refresh_auth_tokens_request import RefreshAuthTokensRequest
+from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBody
+from ._refresh_auth_tokens_response import RefreshAuthTokensResponse
 from ._renew_android_instance_groups_request import RenewAndroidInstanceGroupsRequest
 from ._renew_android_instance_groups_response_body import RenewAndroidInstanceGroupsResponseBody
 from ._renew_android_instance_groups_response import RenewAndroidInstanceGroupsResponse
@@ -339,6 +351,7 @@ from ._update_instance_image_response import UpdateInstanceImageResponse
 from ._upgrade_android_instance_group_request import UpgradeAndroidInstanceGroupRequest
 from ._upgrade_android_instance_group_response_body import UpgradeAndroidInstanceGroupResponseBody
 from ._upgrade_android_instance_group_response import UpgradeAndroidInstanceGroupResponse
+from ._activate_edge_mobile_agent_response_body import ActivateEdgeMobileAgentResponseBodyData
 from ._attach_key_pair_response_body import AttachKeyPairResponseBodyData
 from ._backup_android_instance_response_body import BackupAndroidInstanceResponseBodyData
 from ._backup_app_response_body import BackupAppResponseBodyData
@@ -399,6 +412,7 @@ from ._describe_credit_detail_response_body import DescribeCreditDetailResponseB
 from ._describe_credit_detail_response_body import DescribeCreditDetailResponseBodyData
 from ._describe_credit_package_response_body import DescribeCreditPackageResponseBodyCreditsPackageInfos
 from ._describe_display_config_response_body import DescribeDisplayConfigResponseBodyDisplayConfigModel
+from ._describe_edge_mobile_agent_packages_response_body import DescribeEdgeMobileAgentPackagesResponseBodyPackages
 from ._describe_image_list_request import DescribeImageListRequestImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyDataImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyData
@@ -453,6 +467,8 @@ from ._reboot_android_instances_in_group_response_body import RebootAndroidInsta
 from ._recover_android_instance_response_body import RecoverAndroidInstanceResponseBodyData
 from ._recover_app_response_body import RecoverAppResponseBodyData
 from ._recovery_file_response_body import RecoveryFileResponseBodyData
+from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyDataTokens
+from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyData
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
 from ._resume_agent_task_response_body import ResumeAgentTaskResponseBodyTasks
@@ -469,6 +485,9 @@ from ._update_instance_image_response_body import UpdateInstanceImageResponseBod
 
 __all__ = [
     DataImageRegionDistributeMapValue,
+    ActivateEdgeMobileAgentRequest,
+    ActivateEdgeMobileAgentResponseBody,
+    ActivateEdgeMobileAgentResponse,
     AttachKeyPairRequest,
     AttachKeyPairResponseBody,
     AttachKeyPairResponse,
@@ -514,6 +533,9 @@ __all__ = [
     CreateCustomImageRequest,
     CreateCustomImageResponseBody,
     CreateCustomImageResponse,
+    CreateEdgeMobileAgentPackageRequest,
+    CreateEdgeMobileAgentPackageResponseBody,
+    CreateEdgeMobileAgentPackageResponse,
     CreateKeyPairRequest,
     CreateKeyPairResponseBody,
     CreateKeyPairResponse,
@@ -589,6 +611,9 @@ __all__ = [
     DescribeDisplayConfigRequest,
     DescribeDisplayConfigResponseBody,
     DescribeDisplayConfigResponse,
+    DescribeEdgeMobileAgentPackagesRequest,
+    DescribeEdgeMobileAgentPackagesResponseBody,
+    DescribeEdgeMobileAgentPackagesResponse,
     DescribeImageListRequest,
     DescribeImageListResponseBody,
     DescribeImageListResponse,
@@ -733,6 +758,9 @@ __all__ = [
     RecoveryFileRequest,
     RecoveryFileResponseBody,
     RecoveryFileResponse,
+    RefreshAuthTokensRequest,
+    RefreshAuthTokensResponseBody,
+    RefreshAuthTokensResponse,
     RenewAndroidInstanceGroupsRequest,
     RenewAndroidInstanceGroupsResponseBody,
     RenewAndroidInstanceGroupsResponse,
@@ -805,6 +833,7 @@ __all__ = [
     UpgradeAndroidInstanceGroupRequest,
     UpgradeAndroidInstanceGroupResponseBody,
     UpgradeAndroidInstanceGroupResponse,
+    ActivateEdgeMobileAgentResponseBodyData,
     AttachKeyPairResponseBodyData,
     BackupAndroidInstanceResponseBodyData,
     BackupAppResponseBodyData,
@@ -865,6 +894,7 @@ __all__ = [
     DescribeCreditDetailResponseBodyData,
     DescribeCreditPackageResponseBodyCreditsPackageInfos,
     DescribeDisplayConfigResponseBodyDisplayConfigModel,
+    DescribeEdgeMobileAgentPackagesResponseBodyPackages,
     DescribeImageListRequestImageBizTags,
     DescribeImageListResponseBodyDataImageBizTags,
     DescribeImageListResponseBodyData,
@@ -919,6 +949,8 @@ __all__ = [
     RecoverAndroidInstanceResponseBodyData,
     RecoverAppResponseBodyData,
     RecoveryFileResponseBodyData,
+    RefreshAuthTokensResponseBodyDataTokens,
+    RefreshAuthTokensResponseBodyData,
     ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
     ResetAndroidInstancesInGroupResponseBodyTasks,
     ResumeAgentTaskResponseBodyTasks,

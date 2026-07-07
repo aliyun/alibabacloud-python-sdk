@@ -44,6 +44,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def activate_edge_mobile_agent_with_options(
+        self,
+        request: main_models.ActivateEdgeMobileAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ActivateEdgeMobileAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_class):
+            query['DeviceClass'] = request.device_class
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.device_meta):
+            query['DeviceMeta'] = request.device_meta
+        if not DaraCore.is_null(request.license_key):
+            query['LicenseKey'] = request.license_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ActivateEdgeMobileAgent',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActivateEdgeMobileAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def activate_edge_mobile_agent_with_options_async(
+        self,
+        request: main_models.ActivateEdgeMobileAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ActivateEdgeMobileAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_class):
+            query['DeviceClass'] = request.device_class
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.device_meta):
+            query['DeviceMeta'] = request.device_meta
+        if not DaraCore.is_null(request.license_key):
+            query['LicenseKey'] = request.license_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ActivateEdgeMobileAgent',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ActivateEdgeMobileAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def activate_edge_mobile_agent(
+        self,
+        request: main_models.ActivateEdgeMobileAgentRequest,
+    ) -> main_models.ActivateEdgeMobileAgentResponse:
+        runtime = RuntimeOptions()
+        return self.activate_edge_mobile_agent_with_options(request, runtime)
+
+    async def activate_edge_mobile_agent_async(
+        self,
+        request: main_models.ActivateEdgeMobileAgentRequest,
+    ) -> main_models.ActivateEdgeMobileAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.activate_edge_mobile_agent_with_options_async(request, runtime)
+
     def attach_key_pair_with_options(
         self,
         request: main_models.AttachKeyPairRequest,
@@ -1515,6 +1597,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCustomImageResponse:
         runtime = RuntimeOptions()
         return await self.create_custom_image_with_options_async(request, runtime)
+
+    def create_edge_mobile_agent_package_with_options(
+        self,
+        request: main_models.CreateEdgeMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEdgeMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.device_class):
+            query['DeviceClass'] = request.device_class
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEdgeMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEdgeMobileAgentPackageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_edge_mobile_agent_package_with_options_async(
+        self,
+        request: main_models.CreateEdgeMobileAgentPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEdgeMobileAgentPackageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.biz_region_id):
+            query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.device_class):
+            query['DeviceClass'] = request.device_class
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.period_unit):
+            query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.quantity):
+            query['Quantity'] = request.quantity
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEdgeMobileAgentPackage',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEdgeMobileAgentPackageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_edge_mobile_agent_package(
+        self,
+        request: main_models.CreateEdgeMobileAgentPackageRequest,
+    ) -> main_models.CreateEdgeMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return self.create_edge_mobile_agent_package_with_options(request, runtime)
+
+    async def create_edge_mobile_agent_package_async(
+        self,
+        request: main_models.CreateEdgeMobileAgentPackageRequest,
+    ) -> main_models.CreateEdgeMobileAgentPackageResponse:
+        runtime = RuntimeOptions()
+        return await self.create_edge_mobile_agent_package_with_options_async(request, runtime)
 
     def create_key_pair_with_options(
         self,
@@ -3619,6 +3803,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDisplayConfigResponse:
         runtime = RuntimeOptions()
         return await self.describe_display_config_with_options_async(request, runtime)
+
+    def describe_edge_mobile_agent_packages_with_options(
+        self,
+        request: main_models.DescribeEdgeMobileAgentPackagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEdgeMobileAgentPackagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_class):
+            query['DeviceClass'] = request.device_class
+        if not DaraCore.is_null(request.license_keys):
+            query['LicenseKeys'] = request.license_keys
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEdgeMobileAgentPackages',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEdgeMobileAgentPackagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_edge_mobile_agent_packages_with_options_async(
+        self,
+        request: main_models.DescribeEdgeMobileAgentPackagesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeEdgeMobileAgentPackagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_class):
+            query['DeviceClass'] = request.device_class
+        if not DaraCore.is_null(request.license_keys):
+            query['LicenseKeys'] = request.license_keys
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.package_ids):
+            query['PackageIds'] = request.package_ids
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeEdgeMobileAgentPackages',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeEdgeMobileAgentPackagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_edge_mobile_agent_packages(
+        self,
+        request: main_models.DescribeEdgeMobileAgentPackagesRequest,
+    ) -> main_models.DescribeEdgeMobileAgentPackagesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_edge_mobile_agent_packages_with_options(request, runtime)
+
+    async def describe_edge_mobile_agent_packages_async(
+        self,
+        request: main_models.DescribeEdgeMobileAgentPackagesRequest,
+    ) -> main_models.DescribeEdgeMobileAgentPackagesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_edge_mobile_agent_packages_with_options_async(request, runtime)
 
     def describe_image_list_with_options(
         self,
@@ -7621,6 +7895,84 @@ class Client(OpenApiClient):
     ) -> main_models.RecoveryFileResponse:
         runtime = RuntimeOptions()
         return await self.recovery_file_with_options_async(request, runtime)
+
+    def refresh_auth_tokens_with_options(
+        self,
+        request: main_models.RefreshAuthTokensRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshAuthTokensResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.expire_seconds):
+            query['ExpireSeconds'] = request.expire_seconds
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.license_keys):
+            query['LicenseKeys'] = request.license_keys
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshAuthTokens',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshAuthTokensResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_auth_tokens_with_options_async(
+        self,
+        request: main_models.RefreshAuthTokensRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshAuthTokensResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.expire_seconds):
+            query['ExpireSeconds'] = request.expire_seconds
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.license_keys):
+            query['LicenseKeys'] = request.license_keys
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshAuthTokens',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshAuthTokensResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_auth_tokens(
+        self,
+        request: main_models.RefreshAuthTokensRequest,
+    ) -> main_models.RefreshAuthTokensResponse:
+        runtime = RuntimeOptions()
+        return self.refresh_auth_tokens_with_options(request, runtime)
+
+    async def refresh_auth_tokens_async(
+        self,
+        request: main_models.RefreshAuthTokensRequest,
+    ) -> main_models.RefreshAuthTokensResponse:
+        runtime = RuntimeOptions()
+        return await self.refresh_auth_tokens_with_options_async(request, runtime)
 
     def renew_android_instance_groups_with_options(
         self,
