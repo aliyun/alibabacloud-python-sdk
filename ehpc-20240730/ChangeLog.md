@@ -2,6 +2,10 @@
 - Update API ListClusters: add response parameters Body.EhpcVersionStatistics.
 
 
+2026-07-07 Version: 2.3.2
+- Update API ListClusters: add response parameters Body.EhpcVersionStatistics.
+
+
 2026-06-10 Version: 2.3.1
 - Update API CreateCluster: add request parameters GrowInterval.
 - Update API CreateCluster: add request parameters IdleInterval.
