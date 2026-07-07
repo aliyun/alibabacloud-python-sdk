@@ -31,27 +31,70 @@ class RefundResult(DaraModel):
         seller_refuse_agreement_message: str = None,
         seller_refuse_reason: str = None,
     ):
+        # Current buyer\\"s refund request description
         self.apply_dispute_desc = apply_dispute_desc
+        # Request reason
         self.apply_reason = apply_reason
+        # Order return method  
+        # 1 – identity indicates refund only  
+        # 3 – identity indicates return and refund
         self.biz_claim_type = biz_claim_type
+        # Dispute creation time
         self.dispute_create_time = dispute_create_time
+        # Reverse request description
         self.dispute_desc = dispute_desc
+        # Reverse process end time
         self.dispute_end_time = dispute_end_time
+        # Reverse order ID
         self.dispute_id = dispute_id
+        # Reverse order status  
+        # 1 – Return pending  
+        # 2 – Awaiting buyer return  
+        # 3 – Awaiting merchant receipt  
+        # 4 – Refund shutdown  
+        # 5 – Refund succeeded  
+        # 6 – Refund denied  
+        # 17 – Canceling refund
         self.dispute_status = dispute_status
+        # Main order ID
         self.order_id = order_id
+        # Sub-order ID
         self.order_line_id = order_line_id
+        # Order logistics status  
+        # 1 – Not shipped → Awaiting seller shipment  
+        # 2 – Shipped → Awaiting buyer confirmation of receipt  
+        # 3 – Received → Transaction succeeded  
+        # 6 – Partially shipping  
+        # 8 – Logistics order not yet created
         self.order_logistics_status = order_logistics_status
+        # Refund amount
         self.refund_fee = refund_fee
+        # Refund period
         self.refund_fee_data = refund_fee_data
+        # Merchant return address (available when disputeStatus=2, indicating the status is pending buyer return; save the return address during this status if needed)
         self.refunder_address = refunder_address
+        # Return recipient name
         self.refunder_name = refunder_name
+        # Return contact information
         self.refunder_tel = refunder_tel
+        # Return address ZIP code
         self.refunder_zip_code = refunder_zip_code
+        # Request ID
         self.request_id = request_id
+        # Return logistics status  
+        # 0 – Return not initiated  
+        # 1 – Awaiting pickup  
+        # 2 – Package picked up  
+        # 3 – In transit  
+        # 4 – Out for delivery  
+        # 5 – Delivered  
+        # 6 – Delivery failed
         self.return_good_logistics_status = return_good_logistics_status
+        # Seller’s return approval message
         self.seller_agree_msg = seller_agree_msg
+        # Merchant\\"s message explaining the denial
         self.seller_refuse_agreement_message = seller_refuse_agreement_message
+        # Merchant denial reason
         self.seller_refuse_reason = seller_refuse_reason
 
     def validate(self):

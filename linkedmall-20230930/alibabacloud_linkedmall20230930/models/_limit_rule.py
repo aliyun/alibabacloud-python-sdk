@@ -13,10 +13,23 @@ class LimitRule(DaraModel):
         limit_num: int = None,
         rule_type: str = None,
     ):
+        # Start time of validity
+        # 
+        # > UNIX timestamp in milliseconds
         self.begin_time = begin_time
+        # Period condition
+        # 
+        # > This field applies only when ruleType is UpperNumberPerUserPeriod.
         self.condcase = condcase
+        # End time of validity
+        # 
+        # > UNIX timestamp in milliseconds
         self.end_time = end_time
+        # Purchase limit quantity
+        # 
+        # > If multiple purchase limit rules are active at the same time, the final limit is the minimum value.
         self.limit_num = limit_num
+        # Purchase limit type
         self.rule_type = rule_type
 
     def validate(self):

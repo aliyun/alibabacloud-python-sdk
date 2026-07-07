@@ -12,7 +12,9 @@ class CategoryListQuery(DaraModel):
         category_ids: List[int] = None,
         parent_category_id: int = None,
     ):
+        # Collection of category IDs
         self.category_ids = category_ids
+        # Parent category ID
         self.parent_category_id = parent_category_id
 
     def validate(self):

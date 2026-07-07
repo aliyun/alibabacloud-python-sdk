@@ -10,7 +10,9 @@ class ConfirmDisburseResult(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # API Request requestId
         self.request_id = request_id
+        # Return Result of Confirm Delivery
         self.result = result
 
     def validate(self):

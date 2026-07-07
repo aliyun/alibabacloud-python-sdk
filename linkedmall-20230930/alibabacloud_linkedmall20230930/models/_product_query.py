@@ -10,8 +10,11 @@ class ProductQuery(DaraModel):
         distributor_shop_id: str = None,
         division_code: str = None,
     ):
+        # Distributor shop ID
+        # 
         # This parameter is required.
         self.distributor_shop_id = distributor_shop_id
+        # Area code
         self.division_code = division_code
 
     def validate(self):

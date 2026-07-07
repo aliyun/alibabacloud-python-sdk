@@ -13,10 +13,15 @@ class Category(DaraModel):
         name: str = None,
         parent_id: int = None,
     ):
+        # The ID of the category.
         self.category_id = category_id
+        # Indicates whether the category is a leaf category.
         self.is_leaf = is_leaf
+        # The level of the category.
         self.level = level
+        # The name of the category.
         self.name = name
+        # The ID of the parent category.
         self.parent_id = parent_id
 
     def validate(self):

@@ -23,18 +23,29 @@ class OrderLineResult(DaraModel):
         sku_id: str = None,
         sku_title: str = None,
     ):
+        # A list of electronic vouchers.
         self.eticket_infos = eticket_infos
+        # The logistics status of the order line.
         self.logistics_status = logistics_status
+        # The number of items.
         self.number = number
+        # The unique ID of the main order.
         self.order_id = order_id
+        # The unique ID of the order line.
         self.order_line_id = order_line_id
+        # The status of the order line.
         self.order_line_status = order_line_status
+        # The payable amount for the order line.
         self.pay_fee = pay_fee
+        # The unique ID of the product.
         self.product_id = product_id
+        # The URL of the product image.
         self.product_pic = product_pic
+        # The product name.
         self.product_title = product_title
-        # skuId
+        # The unique ID of the SKU.
         self.sku_id = sku_id
+        # The SKU name.
         self.sku_title = sku_title
 
     def validate(self):

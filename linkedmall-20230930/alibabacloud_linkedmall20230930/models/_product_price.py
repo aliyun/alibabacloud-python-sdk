@@ -9,6 +9,7 @@ class ProductPrice(DaraModel):
         self,
         fund_amount_money: str = None,
     ):
+        # Amount payable
         self.fund_amount_money = fund_amount_money
 
     def validate(self):

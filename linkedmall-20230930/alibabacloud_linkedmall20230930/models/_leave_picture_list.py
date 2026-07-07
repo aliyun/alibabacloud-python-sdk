@@ -10,7 +10,9 @@ class LeavePictureList(DaraModel):
         desc: str = None,
         picture: str = None,
     ):
+        # Description>Notice: If the after-sales order rendering API returns that a message description is required, this field is mandatory.</notice>
         self.desc = desc
+        # Image of the after-sales Credential>Notice: If the after-sales order rendering API returns that an after-sales image is required, this field is mandatory.</notice>
         self.picture = picture
 
     def validate(self):

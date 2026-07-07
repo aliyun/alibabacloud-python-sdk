@@ -20,14 +20,23 @@ class OrderResult(DaraModel):
         order_status: str = None,
         request_id: str = None,
     ):
+        # The order creation time.
         self.create_date = create_date
+        # The distributor ID.
         self.distributor_id = distributor_id
+        # The logistics status. Valid values: 1 (Awaiting Seller\\"s Shipment), 2 (Awaiting Buyer\\"s Confirmation), 3 (Received), 4 (Returned), 5 (Partially Received), 6 (Partially Shipped), and 8 (Logistics Order Not Created).
         self.logistics_status = logistics_status
+        # The order amount, in cents.
         self.order_amount = order_amount
+        # The reason the order was closed.
         self.order_closed_reason = order_closed_reason
+        # The ID of the main order.
         self.order_id = order_id
+        # The list of sub-orders.
         self.order_line_list = order_line_list
+        # The order status. Valid values: 1 (Pending Payment), 2 (Paid), 4 (Closed with Refund), 6 (Transaction Successful), and 8 (Closed).
         self.order_status = order_status
+        # The unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

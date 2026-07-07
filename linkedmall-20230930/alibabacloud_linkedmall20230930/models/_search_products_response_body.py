@@ -13,7 +13,9 @@ class SearchProductsResponseBody(DaraModel):
         products: List[main_models.SearchProductsResponseBodyProducts] = None,
         total: int = None,
     ):
+        # Product collection
         self.products = products
+        # Total quantity
         self.total = total
 
     def validate(self):
@@ -80,31 +82,57 @@ class SearchProductsResponseBodyProducts(DaraModel):
         tax_rate: int = None,
         trade_mode: str = None,
     ):
+        # Brand name
         self.band_name = band_name
+        # Reason for unsellable status
         self.can_not_sell_reason = can_not_sell_reason
+        # Whether the product is sellable (calculated value)
         self.can_sell = can_sell
+        # Category
         self.category_chain = category_chain
+        # Billing cycle
         self.credit = credit
+        # Price difference range
         self.diff_price = diff_price
+        # Distribution purchase price range
         self.distribution_price = distribution_price
+        # Distribution premium rate range
         self.distribution_price_ratio = distribution_price_ratio
+        # Source platform
         self.external_platform_type = external_platform_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Last modified time.
         self.gmt_modified = gmt_modified
+        # Whether the product is in inventory
         self.in_group = in_group
+        # Inventory time
         self.in_group_time = in_group_time
+        # Inventory risk level
         self.inventory_risk_level = inventory_risk_level
+        # Invoice type
         self.invoice_type = invoice_type
+        # LM product ID
         self.lm_item_id = lm_item_id
+        # Product main image URL
         self.pic_url = pic_url
+        # Suggested retail price range
         self.platform_price = platform_price
+        # Strikethrough price range
         self.platform_reserve_price = platform_reserve_price
+        # Product ID
         self.product_id = product_id
+        # Product name
         self.product_name = product_name
+        # Channel store name
         self.shop_name = shop_name
+        # Accumulated sales volume
         self.sold_quantity = sold_quantity
+        # Tax code
         self.tax_code = tax_code
+        # Tax rate
         self.tax_rate = tax_rate
+        # Sales pattern
         self.trade_mode = trade_mode
 
     def validate(self):
@@ -294,10 +322,15 @@ class SearchProductsResponseBodyProductsCategoryChain(DaraModel):
         name: str = None,
         parent_id: int = None,
     ):
+        # Category ID
         self.category_id = category_id
+        # Is leaf node
         self.is_leaf = is_leaf
+        # Level
         self.level = level
+        # Category name
         self.name = name
+        # Parent class ID
         self.parent_id = parent_id
 
     def validate(self):

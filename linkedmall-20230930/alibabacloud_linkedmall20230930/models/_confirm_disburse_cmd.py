@@ -7,10 +7,14 @@ from darabonba.model import DaraModel
 class ConfirmDisburseCmd(DaraModel):
     def __init__(
         self,
+        dispute_id: str = None,
         order_id: str = None,
         purchase_order_id: str = None,
     ):
+        self.dispute_id = dispute_id
+        # The primary distribution order ID.
         self.order_id = order_id
+        # The distribution transaction ID.
         self.purchase_order_id = purchase_order_id
 
     def validate(self):
@@ -21,6 +25,9 @@ class ConfirmDisburseCmd(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dispute_id is not None:
+            result['disputeId'] = self.dispute_id
+
         if self.order_id is not None:
             result['orderId'] = self.order_id
 
@@ -31,6 +38,9 @@ class ConfirmDisburseCmd(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disputeId') is not None:
+            self.dispute_id = m.get('disputeId')
+
         if m.get('orderId') is not None:
             self.order_id = m.get('orderId')
 

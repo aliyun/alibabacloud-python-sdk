@@ -11,8 +11,11 @@ class ProductSpecValue(DaraModel):
         value_alias: str = None,
         value_id: int = None,
     ):
+        # Specification value
         self.value = value
+        # Specification value alias
         self.value_alias = value_alias
+        # Rule value ID
         self.value_id = value_id
 
     def validate(self):

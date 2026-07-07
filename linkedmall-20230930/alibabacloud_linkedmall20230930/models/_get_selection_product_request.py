@@ -10,7 +10,10 @@ class GetSelectionProductRequest(DaraModel):
         division_code: str = None,
         purchaser_id: str = None,
     ):
+        # Region code (use a five-level township or subdistrict address code)
         self.division_code = division_code
+        # Purchaser ID
+        # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
 

@@ -11,10 +11,16 @@ class ListSelectionProductsRequest(DaraModel):
         page_size: int = None,
         purchaser_id: str = None,
     ):
+        # The page number. The value must be 1 or greater.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the purchaser.
+        # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
 

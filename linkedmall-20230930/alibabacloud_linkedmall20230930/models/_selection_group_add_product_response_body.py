@@ -11,6 +11,7 @@ class SelectionGroupAddProductResponseBody(DaraModel):
         self,
         product_ids: List[str] = None,
     ):
+        # List of product IDs successfully added
         self.product_ids = product_ids
 
     def validate(self):

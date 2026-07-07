@@ -16,12 +16,20 @@ class ProductPageResult(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Current page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Collection of products
         self.products = products
+        # Request ID for the API call
         self.request_id = request_id
+        # Total count
+        # 
         # This parameter is required.
         self.total = total
 

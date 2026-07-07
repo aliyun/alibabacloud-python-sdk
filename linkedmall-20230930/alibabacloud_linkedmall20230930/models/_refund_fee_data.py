@@ -10,7 +10,9 @@ class RefundFeeData(DaraModel):
         max_refund_fee: int = None,
         min_refund_fee: int = None,
     ):
+        # Maximum amount (cents)
         self.max_refund_fee = max_refund_fee
+        # Minimum amount (cents)
         self.min_refund_fee = min_refund_fee
 
     def validate(self):

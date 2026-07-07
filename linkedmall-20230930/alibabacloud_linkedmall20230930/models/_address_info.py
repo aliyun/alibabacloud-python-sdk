@@ -14,14 +14,23 @@ class AddressInfo(DaraModel):
         receiver_phone: str = None,
         town_division_code: str = None,
     ):
+        # The detailed shipping address. Enter the full address in the format of province, city, district/county, street, and community.
+        # 
         # This parameter is required.
         self.address_detail = address_detail
+        # The address ID.
         self.address_id = address_id
+        # The level-4 address code for the district or county. This parameter is recommended.
         self.division_code = division_code
+        # The recipient.
+        # 
         # This parameter is required.
         self.receiver = receiver
+        # The phone number of the recipient.
+        # 
         # This parameter is required.
         self.receiver_phone = receiver_phone
+        # The level-5 address code for the town or street. This parameter is required.
         self.town_division_code = town_division_code
 
     def validate(self):

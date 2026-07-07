@@ -13,10 +13,15 @@ class Good(DaraModel):
         sku_id: str = None,
         sku_title: str = None,
     ):
+        # Product name
         self.good_name = good_name
+        # Product ID
         self.product_id = product_id
+        # Quantity
         self.quantity = quantity
+        # SKU ID
         self.sku_id = sku_id
+        # SKU title
         self.sku_title = sku_title
 
     def validate(self):

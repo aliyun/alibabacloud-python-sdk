@@ -11,10 +11,16 @@ class GoodsShippingNoticeCreateCmd(DaraModel):
         dispute_id: str = None,
         logistics_no: str = None,
     ):
+        # Company code
+        # 
         # This parameter is required.
         self.cp_code = cp_code
+        # Dispute ID
+        # 
         # This parameter is required.
         self.dispute_id = dispute_id
+        # Logistics tracking number
+        # 
         # This parameter is required.
         self.logistics_no = logistics_no
 

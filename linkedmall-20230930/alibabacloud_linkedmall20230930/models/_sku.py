@@ -31,27 +31,45 @@ class Sku(DaraModel):
         suggested_retail_price: int = None,
         title: str = None,
     ):
+        # 69 barcode
         self.barcode = barcode
+        # Indicates whether the SKU is available for sale
         self.can_sell = can_sell
+        # Reserved field
         self.discount_retail_price = discount_retail_price
+        # Region code
         self.division_code = division_code
+        # Fuzzy inventory availability
         self.fuzzy_quantity = fuzzy_quantity
+        # Strikethrough price, in cents
         self.mark_price = mark_price
+        # SKU image URL
         self.pic_url = pic_url
+        # Suggested retail price, in cents
         self.platform_price = platform_price
+        # Distributor purchase price, in cents
         self.price = price
+        # Product ID
         self.product_id = product_id
+        # Available inventory. Note: This field is currently set to -1 for all SKUs and has no practical meaning.
         self.quantity = quantity
+        # SKU sort order
         self.rank_value = rank_value
+        # Shop ID
         self.shop_id = shop_id
+        # SKU note
         self.sku_alias = sku_alias
-        # skuId
+        # SKU ID
         self.sku_id = sku_id
-        # sku
+        # SKU specifications
         self.sku_specs = sku_specs
+        # SKU sales specification code. Used by the frontend to filter SKUs
         self.sku_specs_code = sku_specs_code
+        # SKU control status
         self.sku_status = sku_status
+        # Reserved field
         self.suggested_retail_price = suggested_retail_price
+        # SKU title. Note: We recommend that distributors build the customer-facing SKU title by concatenating the value or valueAlias field from the SkuSpec struct (use `valueAlias` if it is present). Do not use this field directly as the customer-facing SKU title.
         self.title = title
 
     def validate(self):

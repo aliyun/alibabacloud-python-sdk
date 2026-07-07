@@ -13,7 +13,9 @@ class LogisticsOrderListResult(DaraModel):
         logistics_order_list: List[main_models.LogisticsOrderResult] = None,
         request_id: str = None,
     ):
+        # Collection of logistics orders
         self.logistics_order_list = logistics_order_list
+        # Request ID for the API call
         self.request_id = request_id
 
     def validate(self):

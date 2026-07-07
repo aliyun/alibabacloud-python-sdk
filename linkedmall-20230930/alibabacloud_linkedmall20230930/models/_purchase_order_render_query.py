@@ -15,11 +15,20 @@ class PurchaseOrderRenderQuery(DaraModel):
         ext_info: Dict[str, Any] = None,
         product_list: List[main_models.OrderRenderProductDTO] = None,
     ):
+        # The ID of the end buyer.>Notice: Assign a unique ID to each buyer.
+        # 
         # This parameter is required.
         self.buyer_id = buyer_id
+        # Delivery address information.
+        # 
         # This parameter is required.
         self.delivery_address = delivery_address
+        # Extended information.
         self.ext_info = ext_info
+        # A collection of products.
+        # 
+        # > A single purchase order can contain a maximum of 20 SKUs.
+        # 
         # This parameter is required.
         self.product_list = product_list
 

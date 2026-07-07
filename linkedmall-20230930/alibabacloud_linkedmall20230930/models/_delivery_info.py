@@ -12,8 +12,11 @@ class DeliveryInfo(DaraModel):
         post_fee: int = None,
         service_type: int = None,
     ):
+        # Display name
         self.display_name = display_name
+        # Unique ID
         self.id = id
+        # Shipping fee amount
         self.post_fee = post_fee
         # serviceType
         self.service_type = service_type

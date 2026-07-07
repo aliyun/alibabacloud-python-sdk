@@ -18,12 +18,19 @@ class PurchaseOrderRenderResult(DaraModel):
         request_id: str = None,
         unsellable_order_list: List[main_models.OrderRenderResult] = None,
     ):
+        # A collection of addresses.
         self.address_list = address_list
+        # Indicates whether the item can be sold.
         self.can_sell = can_sell
+        # Extended information.
         self.ext_info = ext_info
+        # The reason why the item cannot be sold.
         self.message = message
+        # A collection of sellable main orders.
         self.order_list = order_list
+        # The ID of the request.
         self.request_id = request_id
+        # A collection of unsellable main orders.
         self.unsellable_order_list = unsellable_order_list
 
     def validate(self):

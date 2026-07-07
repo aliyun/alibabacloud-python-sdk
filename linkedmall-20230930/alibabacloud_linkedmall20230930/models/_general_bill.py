@@ -21,14 +21,23 @@ class GeneralBill(DaraModel):
         start_time: str = None,
         total_amount: main_models.Money = None,
     ):
+        # bill ID
         self.bill_id = bill_id
+        # billing cycle
         self.bill_period = bill_period
+        # download URL for details
         self.download_url = download_url
+        # billing cycle End Time
         self.end_time = end_time
+        # bill Creation Time
         self.gmt_create = gmt_create
+        # bill Updated At
         self.gmt_modified = gmt_modified
+        # shop ID
         self.shop_id = shop_id
+        # shop Name
         self.shop_name = shop_name
+        # billing cycle Start Time
         self.start_time = start_time
         self.total_amount = total_amount
 

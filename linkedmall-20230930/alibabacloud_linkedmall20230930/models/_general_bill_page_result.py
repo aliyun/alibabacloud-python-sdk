@@ -16,10 +16,15 @@ class GeneralBillPageResult(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # List of bills.
         self.general_bills = general_bills
+        # Current page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # API request ID.
         self.request_id = request_id
+        # Total count.
         self.total = total
 
     def validate(self):

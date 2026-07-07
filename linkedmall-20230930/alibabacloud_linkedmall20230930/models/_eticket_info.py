@@ -17,14 +17,37 @@ class EticketInfo(DaraModel):
         use_time: str = None,
         used_num: int = None,
     ):
+        # The number of available units.
         self.available_num = available_num
+        # The unique code for the e-ticket.
         self.code = code
+        # The status of the e-ticket.
+        # 
+        # > Valid enum values:
+        # >
+        # > - 1: valid
+        # >
+        # > - -1: redeemed
+        # >
+        # > - -2: expired
+        # >
+        # > - -5: expired
+        # >
+        # > - -8: expired
         self.code_status = code_status
+        # The end time of the e-ticket validity period.
         self.end_time = end_time
+        # The number of locked units.
         self.lock_num = lock_num
+        # The URL of the QR code image for the e-ticket.
+        # 
+        # > This field is not currently populated. Distributors must generate the QR code using the `code` field.
         self.qrcode_url = qrcode_url
+        # The start time of the e-ticket validity period.
         self.start_time = start_time
+        # The time the e-ticket was redeemed.
         self.use_time = use_time
+        # The number of redeemed units.
         self.used_num = used_num
 
     def validate(self):
