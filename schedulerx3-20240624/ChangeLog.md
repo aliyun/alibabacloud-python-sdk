@@ -1,3 +1,12 @@
+2026-07-07 Version: 1.8.0
+- Support API CreateContact.
+- Support API DeleteContact.
+- Support API ListContacts.
+- Support API UpdateContact.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.CurrentJobs.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.MaxJobs.
+
+
 2026-06-25 Version: 1.7.2
 - Update API CreateCluster: add request parameters Source.
 - Update API GetCluster: add response parameters Body.Data.Source.

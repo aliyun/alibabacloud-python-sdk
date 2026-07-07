@@ -360,6 +360,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
+    def create_contact_with_options(
+        self,
+        request: main_models.CreateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_contact_with_options_async(
+        self,
+        request: main_models.CreateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_contact(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        return self.create_contact_with_options(request, runtime)
+
+    async def create_contact_async(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        return await self.create_contact_with_options_async(request, runtime)
+
     def create_datasource_with_options(
         self,
         request: main_models.CreateDatasourceRequest,
@@ -1175,6 +1253,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteClusterResponse:
         runtime = RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
+
+    def delete_contact_with_options(
+        self,
+        request: main_models.DeleteContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_contact_with_options_async(
+        self,
+        request: main_models.DeleteContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_contact(
+        self,
+        request: main_models.DeleteContactRequest,
+    ) -> main_models.DeleteContactResponse:
+        runtime = RuntimeOptions()
+        return self.delete_contact_with_options(request, runtime)
+
+    async def delete_contact_async(
+        self,
+        request: main_models.DeleteContactRequest,
+    ) -> main_models.DeleteContactResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_contact_with_options_async(request, runtime)
 
     def delete_datasource_with_options(
         self,
@@ -3557,6 +3705,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListClustersResponse:
         runtime = RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
+
+    def list_contacts_with_options(
+        self,
+        request: main_models.ListContactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContacts',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_contacts_with_options_async(
+        self,
+        request: main_models.ListContactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContacts',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_contacts(
+        self,
+        request: main_models.ListContactsRequest,
+    ) -> main_models.ListContactsResponse:
+        runtime = RuntimeOptions()
+        return self.list_contacts_with_options(request, runtime)
+
+    async def list_contacts_async(
+        self,
+        request: main_models.ListContactsRequest,
+    ) -> main_models.ListContactsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_contacts_with_options_async(request, runtime)
 
     def list_datasources_with_options(
         self,
@@ -6999,6 +7225,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateClusterResponse:
         runtime = RuntimeOptions()
         return await self.update_cluster_with_options_async(request, runtime)
+
+    def update_contact_with_options(
+        self,
+        request: main_models.UpdateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_contact_with_options_async(
+        self,
+        request: main_models.UpdateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_contact(
+        self,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        return self.update_contact_with_options(request, runtime)
+
+    async def update_contact_async(
+        self,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        return await self.update_contact_with_options_async(request, runtime)
 
     def update_datasource_with_options(
         self,

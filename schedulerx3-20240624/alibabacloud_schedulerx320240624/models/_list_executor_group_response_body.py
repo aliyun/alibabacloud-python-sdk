@@ -152,8 +152,10 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         auto_scale: bool = None,
         cite_list: List[main_models.ListExecutorGroupResponseBodyDataRecordsCiteList] = None,
         cms_workspace_id: str = None,
+        current_jobs: int = None,
         description: str = None,
         integration_type: str = None,
+        max_jobs: int = None,
         name: str = None,
         network: str = None,
         protocol: str = None,
@@ -168,8 +170,10 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         self.auto_scale = auto_scale
         self.cite_list = cite_list
         self.cms_workspace_id = cms_workspace_id
+        self.current_jobs = current_jobs
         self.description = description
         self.integration_type = integration_type
+        self.max_jobs = max_jobs
         self.name = name
         self.network = network
         self.protocol = protocol
@@ -207,11 +211,17 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         if self.cms_workspace_id is not None:
             result['CmsWorkspaceId'] = self.cms_workspace_id
 
+        if self.current_jobs is not None:
+            result['CurrentJobs'] = self.current_jobs
+
         if self.description is not None:
             result['Description'] = self.description
 
         if self.integration_type is not None:
             result['IntegrationType'] = self.integration_type
+
+        if self.max_jobs is not None:
+            result['MaxJobs'] = self.max_jobs
 
         if self.name is not None:
             result['Name'] = self.name
@@ -259,11 +269,17 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         if m.get('CmsWorkspaceId') is not None:
             self.cms_workspace_id = m.get('CmsWorkspaceId')
 
+        if m.get('CurrentJobs') is not None:
+            self.current_jobs = m.get('CurrentJobs')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
         if m.get('IntegrationType') is not None:
             self.integration_type = m.get('IntegrationType')
+
+        if m.get('MaxJobs') is not None:
+            self.max_jobs = m.get('MaxJobs')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

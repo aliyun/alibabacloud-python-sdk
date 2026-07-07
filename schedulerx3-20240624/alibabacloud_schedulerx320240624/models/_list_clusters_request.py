@@ -24,7 +24,7 @@ class ListClustersRequest(DaraModel):
         self.cluster_type = cluster_type
         # The page number.
         self.page_num = page_num
-        # The number of entries per page for paginated queries.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
         self.tag = tag
 

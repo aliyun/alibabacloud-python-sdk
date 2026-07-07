@@ -5,26 +5,19 @@ from __future__ import annotations
 from alibabacloud_schedulerx320240624 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateJobResponseBody(DaraModel):
+class CreateContactResponseBody(DaraModel):
     def __init__(
         self,
         code: int = None,
-        data: main_models.CreateJobResponseBodyData = None,
+        data: main_models.CreateContactResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
         self.code = code
-        # -
         self.data = data
-        # The error message.
         self.message = message
-        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - true: The call was successful.
-        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -59,7 +52,7 @@ class CreateJobResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.CreateJobResponseBodyData()
+            temp_model = main_models.CreateContactResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -73,13 +66,13 @@ class CreateJobResponseBody(DaraModel):
 
         return self
 
-class CreateJobResponseBodyData(DaraModel):
+class CreateContactResponseBodyData(DaraModel):
     def __init__(
         self,
-        job_id: int = None,
+        contact_id: int = None,
     ):
-        # The node ID.
-        self.job_id = job_id
+        # 新建联系人的 id，后续 Update/Delete 时使用
+        self.contact_id = contact_id
 
     def validate(self):
         pass
@@ -89,15 +82,15 @@ class CreateJobResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.job_id is not None:
-            result['JobId'] = self.job_id
+        if self.contact_id is not None:
+            result['ContactId'] = self.contact_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('JobId') is not None:
-            self.job_id = m.get('JobId')
+        if m.get('ContactId') is not None:
+            self.contact_id = m.get('ContactId')
 
         return self
 
