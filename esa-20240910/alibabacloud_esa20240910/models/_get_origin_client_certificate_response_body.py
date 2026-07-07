@@ -17,17 +17,17 @@ class GetOriginClientCertificateResponseBody(DaraModel):
         site_name: str = None,
         status: str = None,
     ):
-        # The content of the certificate.
+        # The certificate content.
         self.certificate = certificate
-        # The unique ID for the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the certificate.
+        # The certificate information.
         self.result = result
-        # The ID of the site. Call the [ListSites](~~ListSites~~) operation to obtain this ID.
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
-        # The name of the site.
+        # The site name.
         self.site_name = site_name
-        # The status of the certificate.
+        # The certificate status.
         self.status = status
 
     def validate(self):
@@ -104,35 +104,35 @@ class GetOriginClientCertificateResponseBodyResult(DaraModel):
     ):
         # The common name of the certificate.
         self.common_name = common_name
-        # The date and time when the certificate was created.
+        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # A list of bound hostnames.
+        # The list of associated domain names.
         self.hostnames = hostnames
-        # The ID of the certificate.
+        # The certificate ID.
         self.id = id
-        # The issuer of the certificate.
+        # The certificate issue authority.
         self.issuer = issuer
-        # The name of the certificate.
+        # The certificate name.
         self.name = name
-        # The date and time when the certificate expires.
+        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_after = not_after
-        # The date and time when the certificate becomes valid.
+        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
-        # The Subject Alternative Names (SANs) of the certificate.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
-        # The status of the certificate.
+        # The certificate status.
         self.status = status
-        # The type of the certificate.
+        # The certificate type.
         self.type = type
-        # The date and time when the certificate was last updated.
+        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

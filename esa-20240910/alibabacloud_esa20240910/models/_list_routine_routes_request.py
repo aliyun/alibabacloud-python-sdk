@@ -11,9 +11,9 @@ class ListRoutineRoutesRequest(DaraModel):
         page_size: int = None,
         routine_name: str = None,
     ):
-        # The page number for a paging query. The value must be greater than or equal to 1.
+        # The page number for a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page for a paging query. Valid values: 1 to 500.
+        # The number of entries per page for a paged query. Valid values: 1 to 500.
         self.page_size = page_size
         # The name of the Edge Routine.
         # 

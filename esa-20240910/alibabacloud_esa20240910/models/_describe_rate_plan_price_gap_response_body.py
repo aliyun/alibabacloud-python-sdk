@@ -62,7 +62,7 @@ class DescribeRatePlanPriceGapResponseBodyPriceModel(DaraModel):
         # - USD: US Dollar.
         # - CNY: Chinese Yuan.
         self.currency = currency
-        # The order discount amount.
+        # The discount amount of the order.
         self.discount_price = discount_price
         # The instance ID.
         self.instance_id = instance_id

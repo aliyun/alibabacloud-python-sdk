@@ -18,19 +18,19 @@ class ListCertificatesResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the data to return.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of records per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # A list of certificate details.
+        # The result array.
         self.result = result
-        # The ID of the site.
+        # The site ID.
         self.site_id = site_id
-        # The name of the site.
+        # The site name.
         self.site_name = site_name
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -123,71 +123,60 @@ class ListCertificatesResponseBodyResult(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The error code returned when a certificate application fails.
+        # The error code for the certificate application.
         self.apply_code = apply_code
-        # The error message returned when a certificate application fails.
+        # The error message for the certificate application.
         self.apply_message = apply_message
-        # The ID of the cloud certificate.
+        # The cloud certificate ID.
         self.cas_id = cas_id
         # The common name of the certificate.
         self.common_name = common_name
-        # The time when the certificate was created.
+        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
         self.create_time = create_time
-        # The domain control validation (DCV) information.
+        # The Domain Control Validation (DCV) information.
         self.dcv = dcv
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # The ID of the certificate.
+        # The certificate ID.
         self.id = id
-        # The issuer of the certificate.
+        # The certificate issuer.
         self.issuer = issuer
         # The common name of the certificate issuer.
         self.issuer_cn = issuer_cn
-        # The ID of the keyless server. This parameter is valid only when `Type` is set to `keyless`.
+        # The Keyless server ID. This parameter is valid only when Type is set to keyless.
         self.key_server_id = key_server_id
-        # The name of the certificate.
+        # The certificate name.
         self.name = name
-        # The time when the certificate expires.
+        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
         self.not_after = not_after
-        # The time when the certificate becomes valid.
+        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
-        # The region.
+        # The region information.
         self.region = region
-        # The subject alternative name (SAN) of the certificate.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.sig_alg = sig_alg
-        # The status of the certificate. Valid values:
-        # 
-        # - `OK`: The certificate is valid.
-        # 
-        # - `Expired`: The certificate has expired.
-        # 
-        # - `Expiring`: The certificate is due to expire within 30 days.
-        # 
-        # - `Issued`: The free certificate has been issued.
-        # 
-        # - `Applying`: The free certificate application is in progress.
-        # 
-        # - `ApplyFailed`: The free certificate application has failed.
-        # 
-        # - `Canceled`: The free certificate application has been canceled.
+        # The certificate status. Valid values:
+        # - OK: Normal.
+        # - Expired: The certificate has expired.
+        # - Expiring: The certificate is about to expire (within 30 days).
+        # - Issued: Free certificate - issued.
+        # - Applying: Free certificate - applying.
+        # - ApplyFailed: Free certificate - application failed.
+        # - Canceled: Free certificate - canceled.
         self.status = status
-        # The type of the certificate. Valid values:
-        # 
-        # - `cas`: An Alibaba Cloud certificate.
-        # 
-        # - `upload`: A user-uploaded certificate.
-        # 
-        # - `free`: A free certificate.
-        # 
-        # - `keyless`: A keyless certificate.
+        # The certificate type. Valid values:
+        # - cas: SSL Certificates Service certificate.
+        # - upload: Custom uploaded certificate.
+        # - free: Free certificate.
+        # - keyless: Keyless certificate.
         self.type = type
-        # The time when the certificate was last updated.
+        # The update time. Format: YYYY-MM-DD HH:MM:SS, in UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):
@@ -353,15 +342,15 @@ class ListCertificatesResponseBodyResultDCV(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The ID of the DCV record.
+        # DCV ID。
         self.id = id
-        # The DCV key. For the `DNS` method, this is the name of the TXT record. For the `HTTP` method, this is the URL.
+        # The DCV name. For the DNS type, this is the TXT record name. For the HTTP type, this is the URL.
         self.key = key
         # The validation status.
         self.status = status
-        # The DCV method. Valid values: `DNS` and `HTTP`.
+        # The DCV type. Valid values: DNS and HTTP.
         self.type = type
-        # The DCV value.
+        # The DCV content.
         self.value = value
 
     def validate(self):

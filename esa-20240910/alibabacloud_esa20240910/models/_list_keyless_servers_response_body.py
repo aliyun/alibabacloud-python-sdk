@@ -24,13 +24,13 @@ class ListKeylessServersResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # A list of keyless server configurations.
+        # The result array.
         self.result = result
         # The site ID.
         self.site_id = site_id
         # The site name.
         self.site_name = site_name
-        # The total count.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -111,25 +111,25 @@ class ListKeylessServersResponseBodyResult(DaraModel):
         update_time: str = None,
         verify: bool = None,
     ):
-        # The CA certificate used to verify the server certificate of the keyless server. This parameter applies only when `Verify` is set to `true`.
+        # The CA certificate used to verify the Keyless server certificate. This parameter takes effect only when Verify is set to true.
         self.ca_certificate = ca_certificate
-        # The client certificate. This parameter must be provided with `ClientPrivateKey`.
+        # The client certificate. This parameter must be used together with the client private key.
         self.client_certificate = client_certificate
-        # The client private key. This parameter must be provided with `ClientCertificate`.
+        # The client private key. This parameter must be used together with the client certificate.
         self.client_private_key = client_private_key
-        # The creation time.
+        # The creation time. The time follows the format YYYY-MM-DDTHH:MM:SS+08:00 in the UTC/GMT time zone.
         self.create_time = create_time
-        # The keyless server host name.
+        # The Keyless server hostname.
         self.host = host
-        # The keyless server ID.
+        # Keyless server ID。
         self.id = id
-        # The keyless server name.
+        # The Keyless server name.
         self.name = name
-        # The keyless server port. Valid values: 1 to 65535.
+        # The Keyless server port. Valid values: 1 to 65535.
         self.port = port
-        # The update time.
+        # The update time. The time follows the format YYYY-MM-DDTHH:MM:SS+08:00 in the UTC/GMT time zone.
         self.update_time = update_time
-        # Specifies whether to verify the server certificate of the keyless server. Defaults to false.
+        # Indicates whether to verify the Keyless server certificate. Default value: false.
         self.verify = verify
 
     def validate(self):

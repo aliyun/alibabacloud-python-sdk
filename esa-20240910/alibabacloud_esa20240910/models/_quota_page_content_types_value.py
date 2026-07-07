@@ -11,9 +11,9 @@ class QuotaPageContentTypesValue(DaraModel):
         enable: bool = None,
         content_length: main_models.WafQuotaInteger = None,
     ):
-        # Whether the Content-Type is enabled.
+        # Indicates whether the corresponding Content-Type for custom response pages is enabled.
         self.enable = enable
-        # The maximum content length for this Content-Type.
+        # The content length quota for the corresponding Content-Type in custom response pages.
         self.content_length = content_length
 
     def validate(self):

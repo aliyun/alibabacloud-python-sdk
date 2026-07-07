@@ -16,39 +16,31 @@ class ListWafRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The number of the page to return.
+        # The page number for pagination.
         self.page_number = page_number
-        # The number of items to return per page.
+        # The page size for pagination.
         self.page_size = page_size
-        # The WAF rule execution phase. Valid values are:
-        # 
-        # - `http_whitelist`: whitelist rule
-        # 
-        # - `http_custom`: custom rule
-        # 
-        # - `http_managed`: managed rule
-        # 
-        # - `http_anti_scan`: scan protection rule
-        # 
-        # - `http_ratelimit`: rate limiting rule
-        # 
-        # - `ip_access_rule`: IP access rule
-        # 
-        # - `http_bot`: Advanced bots
-        # 
-        # - `http_security_level_rule`: security rule
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rule
+        # - http_custom: custom rule
+        # - http_managed: managed rule
+        # - http_anti_scan: scan protection rule
+        # - http_ratelimit: frequency control rule
+        # - ip_access_rule: IP access rule
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rule
         # 
         # This parameter is required.
         self.phase = phase
-        # Query filters.
+        # The query filter conditions.
         self.query_args = query_args
-        # The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
         self.ruleset_id = ruleset_id
-        # The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The site configuration version. For sites with configuration version management enabled, this parameter specifies the version to use. Defaults to 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):
@@ -120,19 +112,19 @@ class ListWafRulesRequestQueryArgs(DaraModel):
         order_by: str = None,
         status: str = None,
     ):
-        # Performs a partial-match search for a value in an IP access control rule.
+        # The value in IP access control for fuzzy match.
         self.config_value_like = config_value_like
-        # Specifies whether to sort the results in descending order.
+        # Specifies whether to reverse the sort order.
         self.desc = desc
-        # Filters results by the exact WAF rule ID.
+        # The WAF rule ID for exact match.
         self.id = id
-        # Performs a partial-match search on the WAF rule ID or name.
+        # The WAF rule ID or name for fuzzy match.
         self.id_name_like = id_name_like
-        # Performs a partial-match search on the WAF rule name.
+        # The WAF rule name for fuzzy match.
         self.name_like = name_like
-        # Sorts the results by the specified field.
+        # Sorts the returned list by a specified column.
         self.order_by = order_by
-        # Filters results by the exact WAF rule status.
+        # The WAF rule status for exact match.
         self.status = status
 
     def validate(self):

@@ -19,11 +19,11 @@ class GetListResponseBody(DaraModel):
     ):
         # The description of the custom list.
         self.description = description
-        # The ID of the custom list.[](~~2850217~~)
+        # The ID of the custom list. You can obtain the ID by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
         self.id = id
-        # The items in the custom list, which are displayed as an array.
+        # The items of the custom list, displayed as an array.
         self.items = items
-        # The type of the custom list.
+        # The kind of the custom list.
         self.kind = kind
         # The name of the custom list.
         # 
@@ -31,7 +31,11 @@ class GetListResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The time when the custom list was last modified.
+        # The last update time of the custom list.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

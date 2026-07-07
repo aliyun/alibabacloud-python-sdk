@@ -10,11 +10,11 @@ class GetClientCertificateRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The ID of the certificate.
+        # The certificate ID.
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the site.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

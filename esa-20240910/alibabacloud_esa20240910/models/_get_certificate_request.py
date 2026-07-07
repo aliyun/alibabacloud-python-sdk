@@ -14,7 +14,7 @@ class GetCertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The site ID. You can get this ID by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

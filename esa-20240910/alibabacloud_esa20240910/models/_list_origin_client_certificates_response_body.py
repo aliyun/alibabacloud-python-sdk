@@ -18,7 +18,7 @@ class ListOriginClientCertificatesResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
-        # The page number. The default value is **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
@@ -26,9 +26,9 @@ class ListOriginClientCertificatesResponseBody(DaraModel):
         self.request_id = request_id
         # The list of certificate information.
         self.result = result
-        # The ID of the site.
+        # The site ID.
         self.site_id = site_id
-        # The name of the site.
+        # The site name.
         self.site_name = site_name
         # The total number of entries.
         self.total_count = total_count
@@ -119,35 +119,35 @@ class ListOriginClientCertificatesResponseBodyResult(DaraModel):
     ):
         # The common name of the certificate.
         self.common_name = common_name
-        # The time when the certificate was created.
+        # The creation time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # The hostnames bound to the certificate.
+        # The list of associated domain names.
         self.hostnames = hostnames
-        # The ID of the certificate.
+        # The certificate ID.
         self.id = id
-        # The issuer of the certificate.
+        # The certification authority.
         self.issuer = issuer
-        # The name of the certificate.
+        # The certificate name.
         self.name = name
-        # The expiration date and time of the certificate.
+        # The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.not_after = not_after
-        # The beginning of the certificate\\"s validity period.
+        # The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
         # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
-        # The status of the certificate.
+        # The certificate status.
         self.status = status
-        # The type of the certificate.
+        # The certificate type.
         self.type = type
-        # The time when the certificate was last updated.
+        # The update time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

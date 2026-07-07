@@ -13,11 +13,11 @@ class BatchCreateWafRulesResponseBody(DaraModel):
         request_id: str = None,
         ruleset_id: int = None,
     ):
-        # An array of IDs for the newly created WAF rules. You can call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation to obtain the details of a specific rule.
+        # The IDs of the WAF rules. You can call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation to obtain the rule IDs.
         self.ids = ids
         # The request ID.
         self.request_id = request_id
-        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain this ID.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
         self.ruleset_id = ruleset_id
 
     def validate(self):

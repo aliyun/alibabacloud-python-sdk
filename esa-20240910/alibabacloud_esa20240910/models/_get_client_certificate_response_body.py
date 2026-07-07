@@ -19,7 +19,7 @@ class GetClientCertificateResponseBody(DaraModel):
         self.certificate = certificate
         # The request ID.
         self.request_id = request_id
-        # Detailed certificate information.
+        # The certificate information.
         self.result = result
         # The site ID.
         self.site_id = site_id
@@ -102,35 +102,35 @@ class GetClientCertificateResponseBodyResult(DaraModel):
     ):
         # The CA certificate ID.
         self.cacertificate_id = cacertificate_id
-        # The certificate\\"s common name.
+        # The common name of the certificate.
         self.common_name = common_name
-        # The time the certificate was created.
+        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.create_time = create_time
-        # The certificate\\"s SHA-256 fingerprint.
+        # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
         # The certificate ID.
         self.id = id
-        # The certificate\\"s issuer.
+        # The certification authority that issued the certificate.
         self.issuer = issuer
         # The certificate name.
         self.name = name
-        # The time the certificate expires.
+        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_after = not_after
-        # The time the certificate becomes valid.
+        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_before = not_before
-        # The certificate\\"s public key algorithm.
+        # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
-        # The certificate\\"s subject alternative name.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The certificate\\"s serial number.
+        # The certificate serial number.
         self.serial_number = serial_number
-        # The certificate\\"s signature algorithm.
+        # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
         # The certificate status.
         self.status = status
         # The certificate type.
         self.type = type
-        # The time the certificate was last updated.
+        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

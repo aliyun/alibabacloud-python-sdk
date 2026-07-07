@@ -17,17 +17,17 @@ class ListUrlObservationsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The configurations of the feature.
+        # The configuration data.
         self.configs = configs
-        # The number of the returned page.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -97,10 +97,10 @@ class ListUrlObservationsResponseBodyConfigs(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # SDK integration. Valid values:
+        # The SDK integration method. Valid values:
         # 
-        # *   **automatic**
-        # *   **manual**
+        # - **automatic**: Automatic integration.
+        # - **manual**: Manual integration.
         self.sdk_type = sdk_type
         # The URL of the web page to monitor.
         self.url = url

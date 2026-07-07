@@ -488,12 +488,23 @@ from ._describe_site_top_data_request import DescribeSiteTopDataRequest
 from ._describe_site_top_data_shrink_request import DescribeSiteTopDataShrinkRequest
 from ._describe_site_top_data_response_body import DescribeSiteTopDataResponseBody
 from ._describe_site_top_data_response import DescribeSiteTopDataResponse
+from ._describe_site_waf_time_series_data_request import DescribeSiteWafTimeSeriesDataRequest
+from ._describe_site_waf_time_series_data_shrink_request import DescribeSiteWafTimeSeriesDataShrinkRequest
+from ._describe_site_waf_time_series_data_response_body import DescribeSiteWafTimeSeriesDataResponseBody
+from ._describe_site_waf_time_series_data_response import DescribeSiteWafTimeSeriesDataResponse
+from ._describe_site_waf_top_data_request import DescribeSiteWafTopDataRequest
+from ._describe_site_waf_top_data_shrink_request import DescribeSiteWafTopDataShrinkRequest
+from ._describe_site_waf_top_data_response_body import DescribeSiteWafTopDataResponseBody
+from ._describe_site_waf_top_data_response import DescribeSiteWafTopDataResponse
 from ._describe_trace_diagnose_report_request import DescribeTraceDiagnoseReportRequest
 from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBody
 from ._describe_trace_diagnose_report_response import DescribeTraceDiagnoseReportResponse
 from ._describe_url_observation_data_request import DescribeUrlObservationDataRequest
 from ._describe_url_observation_data_response_body import DescribeUrlObservationDataResponseBody
 from ._describe_url_observation_data_response import DescribeUrlObservationDataResponse
+from ._describe_waf_usage_data_request import DescribeWafUsageDataRequest
+from ._describe_waf_usage_data_response_body import DescribeWafUsageDataResponseBody
+from ._describe_waf_usage_data_response import DescribeWafUsageDataResponse
 from ._disable_custom_scene_policy_request import DisableCustomScenePolicyRequest
 from ._disable_custom_scene_policy_response_body import DisableCustomScenePolicyResponseBody
 from ._disable_custom_scene_policy_response import DisableCustomScenePolicyResponse
@@ -1032,6 +1043,9 @@ from ._publish_edge_container_app_version_response import PublishEdgeContainerAp
 from ._publish_routine_code_version_request import PublishRoutineCodeVersionRequest
 from ._publish_routine_code_version_response_body import PublishRoutineCodeVersionResponseBody
 from ._publish_routine_code_version_response import PublishRoutineCodeVersionResponse
+from ._purchase_bot_instance_request import PurchaseBotInstanceRequest
+from ._purchase_bot_instance_response_body import PurchaseBotInstanceResponseBody
+from ._purchase_bot_instance_response import PurchaseBotInstanceResponse
 from ._purchase_cache_reserve_request import PurchaseCacheReserveRequest
 from ._purchase_cache_reserve_response_body import PurchaseCacheReserveResponseBody
 from ._purchase_cache_reserve_response import PurchaseCacheReserveResponse
@@ -1450,9 +1464,17 @@ from ._describe_site_time_series_data_response_body import DescribeSiteTimeSerie
 from ._describe_site_top_data_request import DescribeSiteTopDataRequestFields
 from ._describe_site_top_data_response_body import DescribeSiteTopDataResponseBodyDataDetailData
 from ._describe_site_top_data_response_body import DescribeSiteTopDataResponseBodyData
+from ._describe_site_waf_time_series_data_request import DescribeSiteWafTimeSeriesDataRequestFields
+from ._describe_site_waf_time_series_data_response_body import DescribeSiteWafTimeSeriesDataResponseBodyDataDetailData
+from ._describe_site_waf_time_series_data_response_body import DescribeSiteWafTimeSeriesDataResponseBodyData
+from ._describe_site_waf_time_series_data_response_body import DescribeSiteWafTimeSeriesDataResponseBodySummarizedData
+from ._describe_site_waf_top_data_request import DescribeSiteWafTopDataRequestFields
+from ._describe_site_waf_top_data_response_body import DescribeSiteWafTopDataResponseBodyDataDetailData
+from ._describe_site_waf_top_data_response_body import DescribeSiteWafTopDataResponseBodyData
 from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBodyClientInfo
 from ._describe_trace_diagnose_report_response_body import DescribeTraceDiagnoseReportResponseBodyReport
 from ._describe_url_observation_data_response_body import DescribeUrlObservationDataResponseBodyUrlDetailData
+from ._describe_waf_usage_data_response_body import DescribeWafUsageDataResponseBodyUsageData
 from ._get_api_schema_usage_response_body import GetApiSchemaUsageResponseBodyUsages
 from ._get_certificate_response_body import GetCertificateResponseBodyResultDCV
 from ._get_certificate_response_body import GetCertificateResponseBodyResult
@@ -2163,12 +2185,23 @@ __all__ = [
     DescribeSiteTopDataShrinkRequest,
     DescribeSiteTopDataResponseBody,
     DescribeSiteTopDataResponse,
+    DescribeSiteWafTimeSeriesDataRequest,
+    DescribeSiteWafTimeSeriesDataShrinkRequest,
+    DescribeSiteWafTimeSeriesDataResponseBody,
+    DescribeSiteWafTimeSeriesDataResponse,
+    DescribeSiteWafTopDataRequest,
+    DescribeSiteWafTopDataShrinkRequest,
+    DescribeSiteWafTopDataResponseBody,
+    DescribeSiteWafTopDataResponse,
     DescribeTraceDiagnoseReportRequest,
     DescribeTraceDiagnoseReportResponseBody,
     DescribeTraceDiagnoseReportResponse,
     DescribeUrlObservationDataRequest,
     DescribeUrlObservationDataResponseBody,
     DescribeUrlObservationDataResponse,
+    DescribeWafUsageDataRequest,
+    DescribeWafUsageDataResponseBody,
+    DescribeWafUsageDataResponse,
     DisableCustomScenePolicyRequest,
     DisableCustomScenePolicyResponseBody,
     DisableCustomScenePolicyResponse,
@@ -2707,6 +2740,9 @@ __all__ = [
     PublishRoutineCodeVersionRequest,
     PublishRoutineCodeVersionResponseBody,
     PublishRoutineCodeVersionResponse,
+    PurchaseBotInstanceRequest,
+    PurchaseBotInstanceResponseBody,
+    PurchaseBotInstanceResponse,
     PurchaseCacheReserveRequest,
     PurchaseCacheReserveResponseBody,
     PurchaseCacheReserveResponse,
@@ -3125,9 +3161,17 @@ __all__ = [
     DescribeSiteTopDataRequestFields,
     DescribeSiteTopDataResponseBodyDataDetailData,
     DescribeSiteTopDataResponseBodyData,
+    DescribeSiteWafTimeSeriesDataRequestFields,
+    DescribeSiteWafTimeSeriesDataResponseBodyDataDetailData,
+    DescribeSiteWafTimeSeriesDataResponseBodyData,
+    DescribeSiteWafTimeSeriesDataResponseBodySummarizedData,
+    DescribeSiteWafTopDataRequestFields,
+    DescribeSiteWafTopDataResponseBodyDataDetailData,
+    DescribeSiteWafTopDataResponseBodyData,
     DescribeTraceDiagnoseReportResponseBodyClientInfo,
     DescribeTraceDiagnoseReportResponseBodyReport,
     DescribeUrlObservationDataResponseBodyUrlDetailData,
+    DescribeWafUsageDataResponseBodyUsageData,
     GetApiSchemaUsageResponseBodyUsages,
     GetCertificateResponseBodyResultDCV,
     GetCertificateResponseBodyResult,

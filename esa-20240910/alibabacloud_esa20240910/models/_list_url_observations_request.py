@@ -12,13 +12,13 @@ class ListUrlObservationsRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # The configuration ID,
+        # The configuration ID.
         self.config_id = config_id
-        # The page number. Page starts from page 1. Default value: 1
+        # The page number for a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**. Valid values: **1 to 500**.
+        # The number of entries per page for a paged query. Valid values: 1 to 500.
         self.page_size = page_size
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can obtain this value by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -17,35 +17,38 @@ class BatchUpdateWafRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # A list of configurations for individual rules.
+        # The list of rule configurations. Specifies the detailed configuration for each rule.
+        # 
+        # **Required subfields for each phase** (applicable only to the two phases supported by this batch operation):
+        # 
+        # - `http_anti_scan`: You must provide `Type` and at least one of `ManagedList` or `RateLimit`.
+        # - `http_bot`: You must provide the advanced mode bots configuration. The subfields are defined in the `WafRuleConfig` data structure.
+        # 
+        # > Note: Other phases such as `http_custom` and `http_whitelist` cannot use this batch operation. Use the single-rule operation `UpdateWafRule` instead. The subfield constraints for those phases are described in the single-rule operation documentation.
+        # 
+        # > Important: If `Configs` is missing or subfields are incomplete, the server returns `InvalidParameter(400)` or `Rule.Config.Malformed`.
         self.configs = configs
-        # The WAF rule runtime phase.
+        # The WAF rule execution phase. This **batch operation supports only** the following two phases. For other phases, use the single-rule operation `UpdateWafRule`:
+        # - `http_anti_scan`: scan protection rules
+        # - `http_bot`: advanced mode bots
         # 
-        # - `http_whitelist`: whitelist rule
+        # > Note: The `http_anti_scan` and `http_bot` phases **support only batch updates**. The single-rule operation `UpdateWafRule` does not accept these two values. Conversely, other phases such as `http_custom` and `http_whitelist` can be updated only by using the single-rule operation, not this batch operation.
         # 
-        # - `http_custom`: custom rule
-        # 
-        # - `http_managed`: managed rule
-        # 
-        # - `http_anti_scan`: scan protection rule
-        # 
-        # - `http_ratelimit`: rate limiting rule
-        # 
-        # - `ip_access_rule`: IP access rule
-        # 
-        # - `http_bot`: advanced bot rule
-        # 
-        # - `http_security_level_rule`: security rule
+        # **Required constraint**: Although this parameter is marked as optional (required: false) in the specification, it is **required** when you call this batch operation. The server cannot determine the target ruleset without the Phase parameter and returns `InvalidParameter(400)` if it is not provided.
         self.phase = phase
-        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain this ID.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
         self.ruleset_id = ruleset_id
-        # The configuration properties that are shared by all rules in this batch update.
+        # The shared configuration for multiple rules. Specifies the common properties shared across multiple rules.
+        # 
+        # **Conditionally required**: Although this parameter is marked as optional (required: false) in the specification, it is **required** when `Phase=http_anti_scan`. The server returns `InvalidParameter(400)` if it is not provided.
+        # 
+        # **Subfield requirements**: When the phase is `http_anti_scan`, Shared must include the `Name` (rule name), `Expression` (match expression), and `Action` (rule action) shared fields. For other phases, the required subfields of Shared vary depending on the specific phase.
         self.shared = shared
-        # The ID of the site. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version of the site configuration. For sites that have configuration version management enabled, this parameter specifies the version to which the configuration applies. The default value is 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

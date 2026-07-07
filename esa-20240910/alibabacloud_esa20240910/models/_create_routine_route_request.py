@@ -19,15 +19,15 @@ class CreateRoutineRouteRequest(DaraModel):
     ):
         # The bypass mode. Valid values:
         # - on: enabled
-        # - off: disabled.
+        # - off: disabled
         self.bypass = bypass
-        # The fallback-to-origin switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin server. Valid values:
+        # The back-to-origin on exception switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request falls back to the origin server. Valid values:
         # - on: Enabled.
         # - off: Disabled.
         self.fallback = fallback
         # The route switch. Valid values:
         # - on: enabled
-        # - off: disabled.
+        # - off: disabled
         # 
         # This parameter is required.
         self.route_enable = route_enable
@@ -49,7 +49,7 @@ class CreateRoutineRouteRequest(DaraModel):
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The Edge Routine timeout period. Valid values: 5 to 60.
+        # The Edge Routine timeout period. Valid values: 5 to 60. Unit: seconds.
         self.timeout = timeout
 
     def validate(self):

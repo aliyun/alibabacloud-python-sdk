@@ -13,7 +13,7 @@ class CommitRoutineStagingCodeRequest(DaraModel):
     ):
         # The description of the code version.
         self.code_description = code_description
-        # The deployment environment whose environment variable configuration is used. If you do not specify this parameter, environment variables are not used.
+        # The deployment environment. The environment variable configuration of the specified environment is used. If you do not specify this parameter, environment variables are not used.
         self.deploy_env = deploy_env
         # The name of the Edge Routine.
         # 

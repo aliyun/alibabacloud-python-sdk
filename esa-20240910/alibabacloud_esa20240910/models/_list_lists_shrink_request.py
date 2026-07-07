@@ -11,11 +11,11 @@ class ListListsShrinkRequest(DaraModel):
         page_size: int = None,
         query_args_shrink: str = None,
     ):
-        # Specifies the page number for paginated results.
+        # The page number for paging.
         self.page_number = page_number
-        # Specifies the number of results to return per page.
+        # The number of entries per page for paging.
         self.page_size = page_size
-        # A JSON object containing query parameters to filter the results.
+        # The query parameters passed in JSON format, which contain various filter conditions.
         self.query_args_shrink = query_args_shrink
 
     def validate(self):

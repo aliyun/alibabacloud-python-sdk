@@ -10,11 +10,11 @@ class GetOriginCaCertificateRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The ID of the certificate.
+        # The certificate ID.
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to get this value.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

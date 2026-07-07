@@ -14,7 +14,7 @@ class GetOriginClientCertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the site. You can retrieve it by calling the [ListSites](~~ListSites~~) API.
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id

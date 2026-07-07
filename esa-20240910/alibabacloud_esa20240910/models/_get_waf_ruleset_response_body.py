@@ -19,29 +19,21 @@ class GetWafRulesetResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ID.
         self.id = id
         # The ruleset name.
         # 
         # This parameter is required.
         self.name = name
-        # The execution phase of the WAF ruleset. Valid values:
-        # 
-        # - `http_whitelist`: A whitelist rule
-        # 
-        # - `http_custom`: A custom rule
-        # 
-        # - `http_managed`: A managed rule
-        # 
-        # - `http_anti_scan`: A scan protection rule
-        # 
-        # - `http_ratelimit`: A rate limit rule
-        # 
-        # - `ip_access_rule`: An IP access rule
-        # 
-        # - `http_bot`: A bot rule
-        # 
-        # - `http_security_level_rule`: A security rule
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: rate limiting rules
+        # - ip_access_rule: IP access rules
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rules
         # 
         # This parameter is required.
         self.phase = phase
@@ -49,11 +41,15 @@ class GetWafRulesetResponseBody(DaraModel):
         self.request_id = request_id
         # The list of rule configurations in the ruleset.
         self.rules = rules
-        # The shared configuration for rules within the ruleset.
+        # The shared configuration of rules in the ruleset.
         self.shared = shared
         # The ruleset status.
         self.status = status
-        # The time when the ruleset was last updated.
+        # The last modification time of the ruleset.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

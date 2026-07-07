@@ -18,9 +18,9 @@ class ListSiteOriginClientCertificatesResponseBody(DaraModel):
         site_name: str = None,
         total_count: int = None,
     ):
-        # The page number. The default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -118,7 +118,7 @@ class ListSiteOriginClientCertificatesResponseBodyResult(DaraModel):
     ):
         # The common name of the certificate.
         self.common_name = common_name
-        # The time when the certificate was created.
+        # The creation time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
@@ -128,15 +128,15 @@ class ListSiteOriginClientCertificatesResponseBodyResult(DaraModel):
         self.issuer = issuer
         # The certificate name.
         self.name = name
-        # The end time of the certificate validity period.
+        # The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.not_after = not_after
-        # The start time of the certificate validity period.
+        # The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.not_before = not_before
-        # The public-key algorithm of the certificate.
+        # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
-        # The subject alternative name (SAN) of the certificate.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The certificate serial number.
+        # The sequence number of the certificate.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
@@ -144,7 +144,7 @@ class ListSiteOriginClientCertificatesResponseBodyResult(DaraModel):
         self.status = status
         # The certificate type.
         self.type = type
-        # The time when the certificate was last updated.
+        # The update time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

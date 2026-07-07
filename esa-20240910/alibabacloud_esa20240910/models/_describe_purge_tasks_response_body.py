@@ -92,19 +92,19 @@ class DescribePurgeTasksResponseBodyTasks(DaraModel):
     ):
         # The refresh object.
         self.content = content
-        # The creation time, in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
+        # The creation time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
         self.create_time = create_time
         # The error description returned when the refresh task fails.
         self.description = description
         # The task completion progress in percentage.
         self.process = process
-        # The task status. Valid values:
+        # The status. Valid values:
         # 
-        # - **Complete**: The task is complete.
+        # - **Complete**: Completed.
         # 
-        # - **Refreshing**: The task is in progress.
+        # - **Refreshing**: Refreshing.
         # 
-        # - **Failed**: The task failed.
+        # - **Failed**: Refresh failed.
         self.status = status
         # The task ID.
         self.task_id = task_id
@@ -112,9 +112,9 @@ class DescribePurgeTasksResponseBodyTasks(DaraModel):
         # - **file** (default): file refresh.
         # - **cachetag**: cache tag refresh.
         # - **directory**: directory refresh.
-        # - **ignoreParams**: parameter-stripped refresh.
+        # - **ignoreParams**: ignore parameters refresh.
         # - **hostname**: hostname refresh.
-        # - **purgeall**: refresh all cached content of the site.
+        # - **purgeall**: purge all cache under the site.
         self.type = type
 
     def validate(self):

@@ -19,7 +19,7 @@ class GetSiteOriginClientCertificateResponseBody(DaraModel):
         self.certificate = certificate
         # The request ID.
         self.request_id = request_id
-        # The certificate details.
+        # The certificate information.
         self.result = result
         # The site ID.
         self.site_id = site_id
@@ -101,25 +101,25 @@ class GetSiteOriginClientCertificateResponseBodyResult(DaraModel):
     ):
         # The common name of the certificate.
         self.common_name = common_name
-        # The time when the certificate record was created.
+        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
         # The certificate ID.
         self.id = id
-        # The issuer of the certificate.
+        # The certification authority that issued the certificate.
         self.issuer = issuer
         # The certificate name.
         self.name = name
-        # The time after which the certificate is not valid.
+        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_after = not_after
-        # The time before which the certificate is not valid.
+        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
-        # The subject alternative name (SAN) of the certificate.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
@@ -127,7 +127,7 @@ class GetSiteOriginClientCertificateResponseBodyResult(DaraModel):
         self.status = status
         # The certificate type.
         self.type = type
-        # The time when the certificate record was last updated.
+        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

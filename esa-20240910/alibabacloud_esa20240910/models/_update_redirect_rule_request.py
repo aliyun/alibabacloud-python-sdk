@@ -18,55 +18,44 @@ class UpdateRedirectRuleRequest(DaraModel):
         target_url: str = None,
         type: str = None,
     ):
-        # The ID of the configuration. To get this ID, call the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) operation.
+        # The configuration ID. You can call the [ListRedirectRules](https://help.aliyun.com/document_detail/2867474.html) operation to obtain the configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Specifies whether to preserve the query string of the original request. Valid values:
-        # 
-        # - `on`: Preserves the query string.
-        # 
-        # - `off`: Does not preserve the query string.
+        # Specifies whether to preserve the query string. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.reserve_query_string = reserve_query_string
-        # The conditional expression that matches user requests. This parameter is not required for a global configuration. Two scenarios are supported:
-        # 
-        # - To match all requests, set the value to `true`.
-        # 
-        # - To match specific requests, use a custom expression, such as `(http.host eq "video.example.com")`.
+        # The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Specifies whether to enable the rule. This parameter is not required for a global configuration. Valid values:
-        # 
-        # - `on`: Enables the rule.
-        # 
-        # - `off`: Disables the rule.
+        # Specifies whether to enable the rule. This parameter is not required when you add a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The name of the rule. This parameter is not required for a global configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
-        # The execution order of the rule. A lower value indicates a higher priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The ID of the site. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The response status code that the edge node returns to the client for the redirect. Valid values:
+        # The HTTP status code used when the node responds to the client with the redirect address. Valid values:
         # 
         # - 301
-        # 
         # - 302
-        # 
         # - 303
-        # 
         # - 307
-        # 
         # - 308
         self.status_code = status_code
-        # The URL to which requests are redirected.
+        # The target URL after the redirect.
         self.target_url = target_url
-        # The redirection type. Valid values:
+        # The redirect type. Valid values:
         # 
-        # - `static`: Static mode.
-        # 
-        # - `dynamic`: Dynamic mode.
+        # - static: static pattern.
+        # - dynamic: dynamic pattern.
         self.type = type
 
     def validate(self):

@@ -16,7 +16,7 @@ class ListPagesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The query filters, specified as a JSON object.
+        # The query parameters passed in JSON format, which contain various filter conditions.
         self.query_args = query_args
 
     def validate(self):
@@ -59,9 +59,11 @@ class ListPagesRequestQueryArgs(DaraModel):
         content_type: str = None,
         name_description_like: str = None,
     ):
-        # Filters the custom response pages by content type.
+        # The Content-Type field in the HTTP header. Example values:
+        # * text/html
+        # * application/json
         self.content_type = content_type
-        # A keyword for a fuzzy search on the name or description of custom response pages.
+        # The keyword used for fuzzy matching against the name or description of custom pages.
         self.name_description_like = name_description_like
 
     def validate(self):

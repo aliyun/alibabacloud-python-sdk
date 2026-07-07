@@ -18,9 +18,7 @@ class DescribeRatePlanPriceGapRequest(DaraModel):
         # - DOWNGRADE: downgrade.
         # - UPGRADE: upgrade.
         self.order_type = order_type
-        # The specification change type. Valid values:
-        # - DOWNGRADE: downgrade.
-        # - UPGRADE: upgrade.
+        # The code of the target plan for the specification change.
         self.target_plan_code = target_plan_code
         # The name of the target plan for the specification change.
         self.target_plan_name = target_plan_name

@@ -13009,6 +13009,198 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_site_top_data_with_options_async(request, runtime)
 
+    def describe_site_waf_time_series_data_with_options(
+        self,
+        tmp_req: main_models.DescribeSiteWafTimeSeriesDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSiteWafTimeSeriesDataResponse:
+        tmp_req.validate()
+        request = main_models.DescribeSiteWafTimeSeriesDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.fields):
+            request.fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSiteWafTimeSeriesData',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSiteWafTimeSeriesDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_site_waf_time_series_data_with_options_async(
+        self,
+        tmp_req: main_models.DescribeSiteWafTimeSeriesDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSiteWafTimeSeriesDataResponse:
+        tmp_req.validate()
+        request = main_models.DescribeSiteWafTimeSeriesDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.fields):
+            request.fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSiteWafTimeSeriesData',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSiteWafTimeSeriesDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_site_waf_time_series_data(
+        self,
+        request: main_models.DescribeSiteWafTimeSeriesDataRequest,
+    ) -> main_models.DescribeSiteWafTimeSeriesDataResponse:
+        runtime = RuntimeOptions()
+        return self.describe_site_waf_time_series_data_with_options(request, runtime)
+
+    async def describe_site_waf_time_series_data_async(
+        self,
+        request: main_models.DescribeSiteWafTimeSeriesDataRequest,
+    ) -> main_models.DescribeSiteWafTimeSeriesDataResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_site_waf_time_series_data_with_options_async(request, runtime)
+
+    def describe_site_waf_top_data_with_options(
+        self,
+        tmp_req: main_models.DescribeSiteWafTopDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSiteWafTopDataResponse:
+        tmp_req.validate()
+        request = main_models.DescribeSiteWafTopDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.fields):
+            request.fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSiteWafTopData',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSiteWafTopDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_site_waf_top_data_with_options_async(
+        self,
+        tmp_req: main_models.DescribeSiteWafTopDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSiteWafTopDataResponse:
+        tmp_req.validate()
+        request = main_models.DescribeSiteWafTopDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.fields):
+            request.fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.fields_shrink):
+            query['Fields'] = request.fields_shrink
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSiteWafTopData',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSiteWafTopDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_site_waf_top_data(
+        self,
+        request: main_models.DescribeSiteWafTopDataRequest,
+    ) -> main_models.DescribeSiteWafTopDataResponse:
+        runtime = RuntimeOptions()
+        return self.describe_site_waf_top_data_with_options(request, runtime)
+
+    async def describe_site_waf_top_data_async(
+        self,
+        request: main_models.DescribeSiteWafTopDataRequest,
+    ) -> main_models.DescribeSiteWafTopDataResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_site_waf_top_data_with_options_async(request, runtime)
+
     def describe_trace_diagnose_report_with_options(
         self,
         request: main_models.DescribeTraceDiagnoseReportRequest,
@@ -13172,6 +13364,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeUrlObservationDataResponse:
         runtime = RuntimeOptions()
         return await self.describe_url_observation_data_with_options_async(request, runtime)
+
+    def describe_waf_usage_data_with_options(
+        self,
+        request: main_models.DescribeWafUsageDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWafUsageDataResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.record_name):
+            query['RecordName'] = request.record_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.split_by):
+            query['SplitBy'] = request.split_by
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWafUsageData',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWafUsageDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_waf_usage_data_with_options_async(
+        self,
+        request: main_models.DescribeWafUsageDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWafUsageDataResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.record_name):
+            query['RecordName'] = request.record_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.split_by):
+            query['SplitBy'] = request.split_by
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWafUsageData',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWafUsageDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_waf_usage_data(
+        self,
+        request: main_models.DescribeWafUsageDataRequest,
+    ) -> main_models.DescribeWafUsageDataResponse:
+        runtime = RuntimeOptions()
+        return self.describe_waf_usage_data_with_options(request, runtime)
+
+    async def describe_waf_usage_data_async(
+        self,
+        request: main_models.DescribeWafUsageDataRequest,
+    ) -> main_models.DescribeWafUsageDataResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_waf_usage_data_with_options_async(request, runtime)
 
     def disable_custom_scene_policy_with_options(
         self,
@@ -25772,6 +26054,80 @@ class Client(OpenApiClient):
     ) -> main_models.PublishRoutineCodeVersionResponse:
         runtime = RuntimeOptions()
         return await self.publish_routine_code_version_with_options_async(request, runtime)
+
+    def purchase_bot_instance_with_options(
+        self,
+        request: main_models.PurchaseBotInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PurchaseBotInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bot_instance_level):
+            query['BotInstanceLevel'] = request.bot_instance_level
+        if not DaraCore.is_null(request.site_instance_id):
+            query['SiteInstanceId'] = request.site_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PurchaseBotInstance',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PurchaseBotInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def purchase_bot_instance_with_options_async(
+        self,
+        request: main_models.PurchaseBotInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PurchaseBotInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bot_instance_level):
+            query['BotInstanceLevel'] = request.bot_instance_level
+        if not DaraCore.is_null(request.site_instance_id):
+            query['SiteInstanceId'] = request.site_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PurchaseBotInstance',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PurchaseBotInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def purchase_bot_instance(
+        self,
+        request: main_models.PurchaseBotInstanceRequest,
+    ) -> main_models.PurchaseBotInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.purchase_bot_instance_with_options(request, runtime)
+
+    async def purchase_bot_instance_async(
+        self,
+        request: main_models.PurchaseBotInstanceRequest,
+    ) -> main_models.PurchaseBotInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.purchase_bot_instance_with_options_async(request, runtime)
 
     def purchase_cache_reserve_with_options(
         self,

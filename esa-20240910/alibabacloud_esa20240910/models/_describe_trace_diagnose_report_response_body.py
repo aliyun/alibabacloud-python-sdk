@@ -27,50 +27,50 @@ class DescribeTraceDiagnoseReportResponseBody(DaraModel):
         trace_display_link: str = None,
         trace_id: str = None,
     ):
-        # IP address of the local DNS server.
+        # The IP address of the local DNS server.
         self.client_addr = client_addr
-        # Client information.
+        # The client information.
         self.client_info = client_info
-        # Client IP.
+        # The client IP address.
         self.client_ip = client_ip
-        # Creation time. Format: yyyy-MM-dd HH:mm:ss. Time zone: +08:00.
+        # The creation time. Format: yyyy-MM-dd HH:mm:ss. Time zone: UTC+8.
         self.create_time = create_time
-        # Diagnostic ID.
+        # The diagnostic ID.
         self.diagnose_id = diagnose_id
-        # Diagnostic report link.
+        # The diagnostic report link.
         self.diagnose_report_link = diagnose_report_link
-        # Diagnostic link.
+        # The diagnostic link.
         self.diagnose_url = diagnose_url
         # The diagnosed domain name.
         self.domain = domain
-        # Expiration time. Timestamp in seconds.
+        # The expiration time. Unit: seconds. The value is a UNIX timestamp.
         self.expire_time = expire_time
-        # Remaining available diagnostic attempts.
+        # The remaining number of available diagnostic attempts.
         self.remain_diagnose_times = remain_diagnose_times
-        # Diagnostic report details.
+        # The diagnostic report details.
         self.report = report
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Report generation status.
+        # The report generation status. Valid values:
         # 
-        # 0: Successful.
-        # 1: Failed.
-        # 2: Timed out.
-        # 3: Running.
-        # 4: Waiting.
+        # 0: succeeded.
+        # 1: failed.
+        # 2: timed out.
+        # 3: running.
+        # 4: waiting.
         self.state = state
-        # Status of the diagnostic link.
+        # The status of the diagnostic link. Valid values:
         # 
-        # 1: Active.
-        # 0: Expired.
+        # 1: active.
+        # 0: expired.
         self.status = status
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Time consumed for report generation, in seconds.
+        # The time consumed to generate the report. Unit: seconds.
         self.time_consuming = time_consuming
-        # Trace display link.
+        # The trace display link.
         self.trace_display_link = trace_display_link
-        # Diagnostic trace ID.
+        # The diagnostic trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -208,13 +208,13 @@ class DescribeTraceDiagnoseReportResponseBodyReport(DaraModel):
         response_header: str = None,
         static_html: str = None,
     ):
-        # Client information.
+        # The client information.
         self.client_info = client_info
-        # Diagnostic result.
+        # The diagnostic result.
         self.diagnose_result = diagnose_result
-        # Client request response header.
+        # The response header of the client request.
         self.response_header = response_header
-        # Static snapshot page.
+        # The static snapshot page.
         self.static_html = static_html
 
     def validate(self):
@@ -262,11 +262,11 @@ class DescribeTraceDiagnoseReportResponseBodyClientInfo(DaraModel):
         os: str = None,
         ua_string: str = None,
     ):
-        # Browser.
+        # The browser.
         self.browser_info = browser_info
-        # Operating system name.
+        # The operating system name.
         self.os = os
-        # Version.
+        # The version.
         self.ua_string = ua_string
 
     def validate(self):

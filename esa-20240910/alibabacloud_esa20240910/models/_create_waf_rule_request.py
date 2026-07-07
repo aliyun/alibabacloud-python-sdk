@@ -14,35 +14,34 @@ class CreateWafRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The detailed configuration of the WAF rule.
+        # The specific configuration of the WAF rule (`WafRuleConfig` data structure). The required fields vary depending on the Phase value:
+        # 
+        # - `http_custom`: `Expression` (match expression) and `Action` (action upon match) are required. Setting `Name` is recommended for easier identification.
+        # - `http_whitelist`: `Expression` is required. Matched requests are allowed directly (no Action).
+        # - `http_ratelimit`: `Expression` and `RateLimit` (rate limiting parameters) are required.
+        # - `ip_access_rule`: `Expression` (containing IP match) and `Action` are required.
+        # 
+        # > The complete field definitions are based on the `WafRuleConfig` data structure. If required fields are missing, the service returns `InvalidParameter(400)` / `Rule.Config.Malformed`.
         self.config = config
-        # The phase in which the WAF rule runs.
-        # 
+        # The WAF rule execution phase. This **single-creation operation** supports the following phases (it does not support `http_anti_scan` or `http_bot`. For these two phases, use the batch operation `BatchCreateWafRules`):
         # - `http_whitelist`: whitelist rule
-        # 
         # - `http_custom`: custom rule
-        # 
         # - `http_managed`: managed rule
-        # 
-        # - `http_anti_scan`: anti-scan rule
-        # 
-        # - `http_ratelimit`: rate limit rule
-        # 
+        # - `http_ratelimit`: rate limiting rule
         # - `ip_access_rule`: IP access rule
+        # - `http_security_level_rule`: security rule
         # 
-        # - `http_bot`: Advanced Mode Bots
-        # 
-        # - `http_security_level_rule`: Security Rule
+        # > Note: `http_anti_scan` and `http_bot` can only be created through the batch operation. Passing these two values to this operation returns an error.
         # 
         # This parameter is required.
         self.phase = phase
-        # The ID of the WAF ruleset. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
         self.ruleset_id = ruleset_id
-        # The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # If version management is enabled for the site, use this parameter to specify the version to which the configuration applies. The default is 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

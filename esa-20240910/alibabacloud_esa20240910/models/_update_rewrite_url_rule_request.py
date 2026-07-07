@@ -18,45 +18,37 @@ class UpdateRewriteUrlRuleRequest(DaraModel):
         site_id: int = None,
         uri: str = None,
     ):
-        # The configuration ID. You can get this ID by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) API.
+        # The configuration ID. You can call the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) operation to obtain the configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The query string after the rewrite.
+        # The query string after rewriting.
         self.query_string = query_string
-        # The query string rewrite type. Valid values:
-        # 
-        # - static: Static Mode.
-        # 
-        # - dynamic: Dynamic Mode.
+        # The query character string rewrite type. Valid values:
+        # - static: static pattern.
+        # - dynamic: dynamic pattern.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # The URI rewrite type. Valid values:
-        # 
-        # - static: Static Mode.
-        # 
-        # - dynamic: Dynamic Mode.
+        # The path rewrite type. Valid values:
+        # - static: static pattern.
+        # - dynamic: dynamic pattern.
         self.rewrite_uri_type = rewrite_uri_type
-        # The content of the rule, a conditional expression that matches user requests. This parameter is not required for a Global Configuration. Two use cases are supported:
-        # 
-        # - To match all incoming requests, set the value to true.
-        # 
-        # - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
+        # The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Specifies whether the rule is enabled. This parameter is not required for a Global Configuration. Valid values:
-        # 
-        # - on: The rule is enabled.
-        # 
-        # - off: The rule is disabled.
+        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name. This parameter is not required for a Global Configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
-        # The execution priority of the rule. A smaller value indicates a higher priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The site ID. You can get this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The destination URI after the rewrite.
+        # The target URI after rewriting.
         self.uri = uri
 
     def validate(self):

@@ -26,11 +26,11 @@ class GetRoutineCodeVersionInfoResponseBody(DaraModel):
         self.code_version = code_version
         # The list of configuration items for the code version.
         self.conf_options = conf_options
-        # The time when the code version was created.
+        # The time when the code version was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.create_time = create_time
-        # The additional information about the code version. The value is in JSON string format.
+        # The extra information of the code version. The value is in JSON string format.
         self.extra_info = extra_info
-        # Indicates whether the code version contains asset files.
+        # Indicates whether the code version contains Assets files.
         self.has_assets = has_assets
         # The request ID.
         self.request_id = request_id

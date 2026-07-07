@@ -15,7 +15,7 @@ class GetUserWafRulesetResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The WAF rule set.
+        # The WAF ruleset.
         self.ruleset = ruleset
 
     def validate(self):
@@ -59,39 +59,28 @@ class GetUserWafRulesetResponseBodyRuleset(DaraModel):
         shared: main_models.WafBatchRuleShared = None,
         status: str = None,
     ):
-        # The description of the WAF rule set.
+        # The description of the WAF ruleset.
         self.description = description
-        # The expression of the WAF rule set.
+        # The expression of the WAF ruleset.
         self.expression = expression
-        # The ID of the WAF rule set.
+        # The WAF ruleset ID.
         self.id = id
-        # The name of the WAF rule set.
+        # The name of the WAF ruleset.
         self.name = name
-        # The evaluation phase of the WAF rule set. Valid values:
-        # 
-        # - `http_whitelist`: A whitelist rule.
-        # 
-        # - `http_custom`: A custom rule.
-        # 
-        # - `http_managed`: A managed rule.
-        # 
-        # - `http_anti_scan`: A scan protection rule.
-        # 
-        # - `http_ratelimit`: A rate limiting rule.
-        # 
-        # - `ip_access_rule`: An IP access rule.
-        # 
-        # - `http_bot`: A bot management rule.
-        # 
-        # - `http_security_level_rule`: A security level rule.
+        # The phase in which the WAF rule runs. Valid values:
+        # - http_whitelist: whitelist rule
+        # - http_custom: custom rule
+        # - http_managed: managed rule
+        # - http_anti_scan: scan protection rule
+        # - http_ratelimit: frequency control rule
         self.phase = phase
-        # The position of the WAF rule set.
+        # The position of the WAF ruleset.
         self.position = position
-        # A list of rules in the WAF rule set.
+        # The list of rule configurations in the WAF ruleset.
         self.rules = rules
-        # The shared configuration of the WAF rule set.
+        # The shared configuration of the WAF ruleset.
         self.shared = shared
-        # The status of the WAF rule set.
+        # The status of the WAF ruleset.
         self.status = status
 
     def validate(self):
@@ -191,57 +180,46 @@ class GetUserWafRulesetResponseBodyRulesetRules(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The action for the rule. Valid values:
-        # 
-        # - `deny`: Blocks the request.
-        # 
-        # - `monitor`: Monitors the request.
-        # 
-        # - `js`: Triggers a JS challenge.
-        # 
-        # - `captcha`: Triggers a CAPTCHA challenge.
+        # The action of the rule. Valid values:
+        # - deny: Block.
+        # - monitor: Monitor.
+        # - js: JavaScript Challenge.
+        # - captcha: Slider challenge.
         self.action = action
-        # A list of WAF rule statistics fields.
+        # The list of statistics fields for the WAF rule.
         self.characteristics_fields = characteristics_fields
-        # The WAF rule configuration.
+        # The configuration of the WAF rule.
         self.config = config
-        # A list of WAF rule match fields.
+        # The list of match fields for the WAF rule.
         self.fields = fields
-        # The ID of the WAF rule.
+        # The WAF rule ID.
         self.id = id
         # The name of the WAF rule.
         self.name = name
-        # The evaluation phase of the WAF rule. Valid values:
-        # 
-        # - `http_whitelist`: A whitelist rule.
-        # 
-        # - `http_custom`: A custom rule.
-        # 
-        # - `http_managed`: A managed rule.
-        # 
-        # - `http_anti_scan`: A scan protection rule.
-        # 
-        # - `http_ratelimit`: A rate limiting rule.
-        # 
-        # - `ip_access_rule`: An IP access rule.
-        # 
-        # - `http_bot`: A bot management rule.
-        # 
-        # - `http_security_level_rule`: A security level rule.
+        # The phase in which the WAF rule runs. Valid values:
+        # - http_whitelist: whitelist rule
+        # - http_custom: custom rule
+        # - http_managed: managed rule
+        # - http_anti_scan: scan protection rule
+        # - http_ratelimit: frequency control rule
         self.phase = phase
         # The position of the WAF rule.
         self.position = position
-        # The ID of the WAF rule set.
+        # The WAF ruleset ID.
         self.ruleset_id = ruleset_id
-        # The skip mode for the WAF rule.
+        # The skip mode of the WAF rule.
         self.skip = skip
         # The status of the WAF rule.
         self.status = status
-        # The phases that the rule skips.
+        # The list of phases to skip for the WAF rule.
         self.tags = tags
         # The type of the WAF rule.
         self.type = type
-        # The time the WAF rule was last updated.
+        # The time when the WAF rule was last updated.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2025-07-07T15:00:00Z
         self.update_time = update_time
 
     def validate(self):

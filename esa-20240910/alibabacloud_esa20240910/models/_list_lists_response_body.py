@@ -18,19 +18,19 @@ class ListListsResponseBody(DaraModel):
         total_count: int = None,
         usage: int = None,
     ):
-        # The total number of items across all lists.
+        # The total item usage.
         self.items_usage = items_usage
-        # A paginated array of lists.
+        # The array of list information, which contains the paginated list data.
         self.lists = lists
         # The current page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of filtered records.
+        # The total number of records after filtering.
         self.total_count = total_count
-        # The number of lists used by the account.
+        # The amount of usage consumed by the user.
         self.usage = usage
 
     def validate(self):
@@ -107,17 +107,21 @@ class ListListsResponseBodyLists(DaraModel):
         name: str = None,
         update_time: str = None,
     ):
-        # The description of the list.
+        # The list description.
         self.description = description
-        # The ID of the custom list. To get this ID, call the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
+        # The ID of the custom list. You can obtain the ID by calling the [ListLists](https://help.aliyun.com/document_detail/2850217.html) operation.
         self.id = id
         # The kind of the list.
         self.kind = kind
-        # The number of items in the list.
+        # The length of the list content array, which indicates the number of items in the list.
         self.length = length
-        # The name of the list.
+        # The list name.
         self.name = name
-        # The time when the list was last updated.
+        # The time when the list was last modified.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

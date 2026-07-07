@@ -18,19 +18,19 @@ class ListWafRulesResponseBody(DaraModel):
         site_usage: int = None,
         total_count: int = None,
     ):
-        # The number of rules used in this WAF phase for the site\\"s instance.
+        # The number of rules used in the WAF phase for the instance associated with the site.
         self.instance_usage = instance_usage
         # The page number.
         self.page_number = page_number
-        # The number of items per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # An array of rule objects.
+        # The list of rules returned.
         self.rules = rules
-        # The number of rules used by the site.
+        # The site usage.
         self.site_usage = site_usage
-        # The total number of filtered rules.
+        # The total number of rules after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -116,59 +116,51 @@ class ListWafRulesResponseBodyRules(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The action to take when a rule matches.
-        # 
-        # - `deny`: Block the request.
-        # 
-        # - `monitor`: Log the request without blocking it.
-        # 
-        # - `js`: Issue a JS challenge.
-        # 
-        # - `captcha`: Issue a CAPTCHA challenge.
+        # The action associated with the rule. Valid values:
+        # - deny: Block.
+        # - monitor: Monitor.
+        # - js: JavaScript Challenge.
+        # - captcha: Slider challenge.
         self.action = action
-        # A list of tracking characteristics for rate limit rules.
+        # The list of statistical objects for frequency control rules.
         self.characteristics_fields = characteristics_fields
-        # The rule configuration object.
+        # The rule configuration.
         self.config = config
-        # An array of match fields for the rule.
+        # The list of matching fields for the rule.
         self.fields = fields
-        # The ID of the rule.
+        # The rule ID.
         self.id = id
-        # The name of the rule.
+        # The rule name.
         self.name = name
-        # The WAF rule\\"s execution phase.
-        # 
-        # - `http_whitelist`: Whitelist rule.
-        # 
-        # - `http_custom`: Custom rule.
-        # 
-        # - `http_managed`: Managed rule.
-        # 
-        # - `http_anti_scan`: Scan protection rule.
-        # 
-        # - `http_ratelimit`: Rate limit rule.
-        # 
-        # - `ip_access_rule`: IP access rule.
-        # 
-        # - `http_bot`: Advanced bot management rule.
-        # 
-        # - `http_security_level_rule`: Security level rule.
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rule
+        # - http_custom: custom rule
+        # - http_managed: managed rule
+        # - http_anti_scan: scan protection rule
+        # - http_ratelimit: frequency control rule
+        # - ip_access_rule: IP access rule
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rule
         self.phase = phase
-        # The position of the rule within the ruleset.
+        # The position of the rule in the corresponding ruleset.
         self.position = position
-        # The ID of the ruleset.
+        # The ruleset ID.
         self.ruleset_id = ruleset_id
-        # The skip behavior for whitelist rules.
+        # The skip property for whitelist rules.
         self.skip = skip
-        # The status of the rule.
+        # The rule status.
         self.status = status
-        # An array of WAF phases to skip when the whitelist rule matches.
+        # The list of WAF phases to skip for whitelist rules.
         self.tags = tags
-        # The effective time configuration for the rule.
+        # The effective period configuration of the rule.
         self.timer = timer
-        # The type of the rule.
+        # The rule type.
         self.type = type
-        # When the rule was last updated.
+        # The last modification time of the rule.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

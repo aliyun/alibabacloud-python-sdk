@@ -18,13 +18,13 @@ class ListCertificatesByRecordResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # An array of record details.
+        # The result array.
         self.result = result
         # The site ID.
         self.site_id = site_id
         # The site name.
         self.site_name = site_name
-        # The total number of records.
+        # The total number of entries, which is the same as the number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -88,15 +88,19 @@ class ListCertificatesByRecordResponseBodyResult(DaraModel):
         record_name: str = None,
         status: str = None,
     ):
-        # The number of certificate requests in progress.
+        # The number of certificates being applied for.
         self.applyling_count = applyling_count
-        # A list of certificates matching the record.
+        # The list of certificates that match the record.
         self.certificates = certificates
-        # The number of certificates matching the record.
+        # The number of certificates that match the record.
         self.count = count
         # The record name.
         self.record_name = record_name
-        # The certificate configuration status for the record. Valid values:
+        # The certificate configuration status of the record. Valid values:
+        # - none: Not configured.
+        # - configured: Configured.
+        # - applying: Being applied for.
+        # - failed: Application failed.
         self.status = status
 
     def validate(self):
@@ -174,43 +178,43 @@ class ListCertificatesByRecordResponseBodyResultCertificates(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The ID of the Alibaba Cloud certificate.
+        # The cloud certificate ID.
         self.cas_id = cas_id
         # The common name of the certificate.
         self.common_name = common_name
-        # The time when the certificate was created.
+        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
-        # The ID of the certificate.
+        # The certificate ID.
         self.id = id
-        # The issuer of the certificate.
+        # The certificate issuer.
         self.issuer = issuer
         # The common name of the certificate issuer.
         self.issuer_cn = issuer_cn
-        # The Keyless server ID. This parameter is valid only when `Type` is set to `keyless`.
+        # The Keyless server ID. This parameter is valid only when Type is set to keyless.
         self.key_server_id = key_server_id
-        # The name of the certificate.
+        # The certificate name.
         self.name = name
-        # The date and time when the certificate expires.
+        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_after = not_after
-        # The date and time when the certificate becomes valid.
+        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_before = not_before
         # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
-        # The region where the certificate is stored.
+        # The certificate store area.
         self.region = region
-        # The Subject Alternative Names (SANs) of the certificate.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
         # The signature algorithm of the certificate.
         self.sig_alg = sig_alg
-        # The status of the certificate.
+        # The certificate status.
         self.status = status
-        # The type of the certificate. Valid values:
+        # The certificate type.
         self.type = type
-        # The time when the certificate was last updated.
+        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

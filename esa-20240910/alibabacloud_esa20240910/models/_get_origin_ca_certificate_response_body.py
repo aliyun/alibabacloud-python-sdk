@@ -99,35 +99,35 @@ class GetOriginCaCertificateResponseBodyResult(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The common name.
+        # The common name of the certificate.
         self.common_name = common_name
-        # The time when the certificate was created.
+        # The creation time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.create_time = create_time
         # The SHA-256 fingerprint of the certificate.
         self.fingerprint_sha_256 = fingerprint_sha_256
         # The certificate ID.
         self.id = id
-        # The issuer of the certificate.
+        # The certificate issuer.
         self.issuer = issuer
         # The certificate name.
         self.name = name
-        # The time when the certificate expires.
+        # The end time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_after = not_after
-        # The time when the certificate becomes valid.
+        # The start time of the certificate validity period. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.not_before = not_before
-        # The algorithm used for the certificate\\"s public key.
+        # The public key algorithm of the certificate.
         self.pubkey_algorithm = pubkey_algorithm
-        # The Subject Alternative Name (SAN), which lists the host names protected by the certificate.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
-        # The algorithm used to sign the certificate.
+        # The signature algorithm of the certificate.
         self.signature_algorithm = signature_algorithm
         # The certificate status.
         self.status = status
         # The certificate type.
         self.type = type
-        # The time when the certificate was last updated.
+        # The update time. Format: YYYY-MM-DD HH:MM:SS, in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):

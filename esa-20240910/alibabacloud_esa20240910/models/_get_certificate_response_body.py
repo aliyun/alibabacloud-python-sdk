@@ -17,11 +17,11 @@ class GetCertificateResponseBody(DaraModel):
         site_name: str = None,
         status: str = None,
     ):
-        # The certificate content in PEM format.
+        # The certificate content.
         self.certificate = certificate
-        # The unique ID for the request.
+        # The request ID.
         self.request_id = request_id
-        # Detailed certificate information.
+        # The certificate information.
         self.result = result
         # The site ID.
         self.site_id = site_id
@@ -108,15 +108,15 @@ class GetCertificateResponseBodyResult(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The error code for the certificate application process.
+        # The error code of the certificate application.
         self.apply_code = apply_code
-        # The error message for the certificate application process.
+        # The error message of the certificate application.
         self.apply_message = apply_message
-        # The ID of the CAS certificate.
+        # The cloud certificate ID.
         self.cas_id = cas_id
         # The Common Name (CN) field of the certificate.
         self.common_name = common_name
-        # The time when the certificate record was created.
+        # The creation time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.create_time = create_time
         # The Domain Control Validation (DCV) information.
         self.dcv = dcv
@@ -126,31 +126,31 @@ class GetCertificateResponseBodyResult(DaraModel):
         self.id = id
         # The certificate issuer.
         self.issuer = issuer
-        # The issuer\\"s Common Name (CN).
+        # The certification authority.
         self.issuer_cn = issuer_cn
-        # The Keyless server ID. This parameter is returned only when the value of `Type` is `keyless`.
+        # The Keyless server ID. This parameter is valid only when Type is set to keyless.
         self.key_server_id = key_server_id
         # The certificate name.
         self.name = name
-        # The end of the certificate\\"s validity period.
+        # The end time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.not_after = not_after
-        # The start of the certificate\\"s validity period.
+        # The start time of the certificate validity period. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.not_before = not_before
-        # The algorithm of the certificate\\"s public key.
+        # The public key algorithm of the certificate.
         self.pub_alg = pub_alg
-        # The region where the certificate is stored.
+        # The region.
         self.region = region
-        # The Subject Alternative Name (SAN) field, which specifies the host names covered by the certificate.
+        # The Subject Alternative Name (SAN) of the certificate.
         self.san = san
-        # The unique serial number assigned to the certificate by the issuer.
+        # The certificate serial number.
         self.serial_number = serial_number
-        # The algorithm used to sign the certificate.
+        # The signature algorithm of the certificate.
         self.sig_alg = sig_alg
         # The certificate status.
         self.status = status
         # The certificate type.
         self.type = type
-        # The time when the certificate record was last updated.
+        # The update time. The time is in the YYYY-MM-DD HH:MM:SS format in the UTC/GMT time zone.
         self.update_time = update_time
 
     def validate(self):
@@ -316,15 +316,15 @@ class GetCertificateResponseBodyResultDCV(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The DCV ID.
+        # DCV ID。
         self.id = id
-        # The DCV name. For DNS, this is the TXT record name. For HTTP, this is the URL.
+        # The DCV name. For the DNS type, this is the TXT record name. For the HTTP type, this is the URL.
         self.key = key
-        # The status of the DCV check.
+        # The validation status.
         self.status = status
-        # The DCV type. Valid values: `DNS` and `HTTP`.
+        # The DCV type. Valid values: DNS and HTTP.
         self.type = type
-        # The value required for the DCV check. For a DNS check, this is the TXT record value. For an HTTP check, this is the content of the validation file.
+        # The DCV content.
         self.value = value
 
     def validate(self):

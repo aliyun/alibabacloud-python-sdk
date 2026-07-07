@@ -11,9 +11,9 @@ class ListSiteOriginClientCertificatesRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
-        # The page number. The default value is **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The site ID.
         # 

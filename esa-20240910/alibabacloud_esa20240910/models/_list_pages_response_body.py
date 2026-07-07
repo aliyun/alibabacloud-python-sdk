@@ -19,15 +19,15 @@ class ListPagesResponseBody(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries per page.
         self.page_size = page_size
-        # A list of custom response pages.
+        # The array of custom response pages. Each object in the array contains the details of a page.
         self.pages = pages
         # The request ID.
         self.request_id = request_id
-        # The total number of custom response pages that match the filter criteria.
+        # The number of custom response pages after filtering.
         self.total_count = total_count
-        # The number of custom response pages that you have created.
+        # The number of custom response pages created by the user.
         self.usage = usage
 
     def validate(self):
@@ -99,23 +99,27 @@ class ListPagesResponseBodyPages(DaraModel):
         name: str = None,
         update_time: str = None,
     ):
-        # The Base64-encoded content of the custom response page.
+        # The Base64-encoded response page content corresponding to the Content-Type.
         # 
         # This parameter is required.
         self.content = content
-        # The value of the Content-Type header in the HTTP response.
+        # The Content-Type field in the HTTP header.
         # 
         # This parameter is required.
         self.content_type = content_type
-        # A custom description for the response page.
+        # The description of the custom response page.
         self.description = description
-        # The ID of the custom response page.[](~~2850223~~)
+        # The ID of the custom response page. You can call the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation to obtain the ID.
         self.id = id
         # The type of the custom response page.
         self.kind = kind
         # The name of the custom response page.
         self.name = name
-        # The time the custom response page was last updated.
+        # The time when the custom response page was last modified.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):
