@@ -16,16 +16,28 @@ class BatchTranslateShrinkRequest(DaraModel):
         text_shrink: str = None,
         workspace_id: str = None,
     ):
+        # The name of the calling application.
         self.app_name = app_name
+        # The extended parameters that control translation features.
         self.ext_shrink = ext_shrink
+        # The translation format.
         self.format = format
+        # The translation model.
         self.scene = scene
+        # The source language.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # The target language.
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # A map of texts to translate, in which the key is a custom identifier and the value is the source text.
+        # 
         # This parameter is required.
         self.text_shrink = text_shrink
+        # The ID of the Model Studio workspace used for this request.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

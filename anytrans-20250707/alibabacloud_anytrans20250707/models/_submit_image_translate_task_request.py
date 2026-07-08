@@ -18,16 +18,28 @@ class SubmitImageTranslateTaskRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extended parameters to control translation features.
         self.ext = ext
+        # The translation format.
         self.format = format
+        # Specifies the translation model.
+        # 
         # This parameter is required.
         self.scene = scene
+        # The source language.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # A list of target languages.
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # The URL of the image to translate.
+        # 
         # This parameter is required.
         self.text = text
+        # The ID of the Model Studio workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -100,12 +112,19 @@ class SubmitImageTranslateTaskRequestExt(DaraModel):
         text_transform: main_models.SubmitImageTranslateTaskRequestExtTextTransform = None,
         tracking_data: str = None,
     ):
+        # An English string that guides the translation style of the large language model (LLM).
         self.domain_hint = domain_hint
+        # A list of translation examples.
         self.examples = examples
+        # Parameters for isolating terminology to prevent interference between different users or business scenarios. Use `bizUserId` for user-level isolation and `bizType` for scenario-level isolation.
         self.param_map = param_map
+        # A list of sensitive words.
         self.sensitives = sensitives
+        # A list of custom term pairs to apply to the translation.
         self.terminologies = terminologies
+        # Specifies case conversion for the translated text.
         self.text_transform = text_transform
+        # User-defined pass-through data that the service returns unmodified in the response. This is typically used for analytics tracking.
         self.tracking_data = tracking_data
 
     def validate(self):
@@ -191,8 +210,11 @@ class SubmitImageTranslateTaskRequestExtTextTransform(DaraModel):
         to_title: bool = None,
         to_upper: bool = None,
     ):
+        # Set to `true` to convert the entire translated text to lowercase.
         self.to_lower = to_lower
+        # Set to `true` to convert the entire translated text to title case.
         self.to_title = to_title
+        # Set to `true` to convert the entire translated text to uppercase.
         self.to_upper = to_upper
 
     def validate(self):
@@ -233,7 +255,9 @@ class SubmitImageTranslateTaskRequestExtTerminologies(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text.
         self.src = src
+        # The custom translation for the source text.
         self.tgt = tgt
 
     def validate(self):
@@ -268,7 +292,9 @@ class SubmitImageTranslateTaskRequestExtExamples(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text.
         self.src = src
+        # The target text.
         self.tgt = tgt
 
     def validate(self):

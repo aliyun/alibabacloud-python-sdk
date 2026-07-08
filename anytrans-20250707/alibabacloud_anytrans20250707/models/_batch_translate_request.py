@@ -19,16 +19,28 @@ class BatchTranslateRequest(DaraModel):
         text: Dict[str, Any] = None,
         workspace_id: str = None,
     ):
+        # The name of the calling application.
         self.app_name = app_name
+        # The extended parameters that control translation features.
         self.ext = ext
+        # The translation format.
         self.format = format
+        # The translation model.
         self.scene = scene
+        # The source language.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # The target language.
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # A map of texts to translate, in which the key is a custom identifier and the value is the source text.
+        # 
         # This parameter is required.
         self.text = text
+        # The ID of the Model Studio workspace used for this request.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -108,13 +120,21 @@ class BatchTranslateRequestExt(DaraModel):
         terminologies: List[main_models.BatchTranslateRequestExtTerminologies] = None,
         text_transform: main_models.BatchTranslateRequestExtTextTransform = None,
     ):
+        # Controls the translation behavior.
         self.config = config
+        # A natural language instruction in English that guides the model\\"s translation style.
         self.domain_hint = domain_hint
+        # A list of translation examples.
         self.examples = examples
+        # Specifies whether to enable automatic detection of the source language. If set to true, the `sourceLanguage` parameter is ignored.
         self.lang_detect = lang_detect
+        # Extended parameters for applying custom terminology that is isolated by user or business scenario.
         self.param_map = param_map
+        # A list of sensitive terms.
         self.sensitives = sensitives
+        # A list of custom terminology for overriding translations.
         self.terminologies = terminologies
+        # Specifies case transformations for the translated text.
         self.text_transform = text_transform
 
     def validate(self):
@@ -209,8 +229,11 @@ class BatchTranslateRequestExtTextTransform(DaraModel):
         to_title: bool = None,
         to_upper: bool = None,
     ):
+        # Specifies whether to convert the entire translated text to lowercase.
         self.to_lower = to_lower
+        # Specifies whether to convert the entire translated text to title case.
         self.to_title = to_title
+        # Specifies whether to convert the entire translated text to uppercase.
         self.to_upper = to_upper
 
     def validate(self):
@@ -251,7 +274,9 @@ class BatchTranslateRequestExtTerminologies(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text to be overridden.
         self.src = src
+        # The target text to use for the override.
         self.tgt = tgt
 
     def validate(self):
@@ -286,7 +311,9 @@ class BatchTranslateRequestExtExamples(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text.
         self.src = src
+        # The target text.
         self.tgt = tgt
 
     def validate(self):
@@ -322,6 +349,7 @@ class BatchTranslateRequestExtConfig(DaraModel):
         self,
         skip_csi_check: bool = None,
     ):
+        # Specifies whether to skip the Content Moderation check. To set this to true, you must first complete the required process to disable Content Moderation.
         self.skip_csi_check = skip_csi_check
 
     def validate(self):

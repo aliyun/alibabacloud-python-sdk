@@ -10,7 +10,10 @@ class GetLongTextTranslateTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the long-text translation task.
         self.task_id = task_id
+        # The ID of the Model Studio workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -15,12 +15,20 @@ class SubmitHtmlTranslateTaskShrinkRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extended parameters to control translation behavior.
         self.ext_shrink = ext_shrink
+        # The format of the input text.
         self.format = format
+        # The translation model.
         self.scene = scene
+        # The source language.
         self.source_language = source_language
+        # The target language.
         self.target_language = target_language
+        # The HTML content to be translated.
         self.text = text
+        # The ID of the Model Studio workspace used for this request.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

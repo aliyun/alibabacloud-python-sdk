@@ -18,12 +18,19 @@ class GetImageTranslateTaskResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # A JSON object that contains the returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID, used to trace the API call.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
+        # Indicates whether the request is synchronous.
         self.synchro = synchro
 
     def validate(self):
@@ -90,7 +97,9 @@ class GetImageTranslateTaskResponseBodyData(DaraModel):
         trace_id: str = None,
         translation: main_models.GetImageTranslateTaskResponseBodyDataTranslation = None,
     ):
+        # The trace ID.
         self.trace_id = trace_id
+        # An object containing the translation result.
         self.translation = translation
 
     def validate(self):
@@ -133,13 +142,21 @@ class GetImageTranslateTaskResponseBodyDataTranslation(DaraModel):
         table_infos: List[main_models.GetImageTranslateTaskResponseBodyDataTranslationTableInfos] = None,
         width: int = None,
     ):
+        # The rotation angle of the image in degrees.
         self.angle = angle
+        # An array of detected bounding boxes.
         self.bounding_boxes = bounding_boxes
+        # The number of detected bounding boxes.
         self.boxes_count = boxes_count
+        # The height of the image after rotation, in pixels.
         self.height = height
+        # The height of the original image, in pixels.
         self.org_height = org_height
+        # The width of the original image, in pixels.
         self.org_width = org_width
+        # Information about tables detected in the image.
         self.table_infos = table_infos
+        # The width of the image after rotation, in pixels.
         self.width = width
 
     def validate(self):
@@ -229,9 +246,13 @@ class GetImageTranslateTaskResponseBodyDataTranslationTableInfos(DaraModel):
         x_cell_size: int = None,
         y_cell_size: int = None,
     ):
+        # Information about the cells within the table.
         self.cell_infos = cell_infos
+        # The ID of the table.
         self.table_id = table_id
+        # The number of columns in the table.
         self.x_cell_size = x_cell_size
+        # The number of rows in the table.
         self.y_cell_size = y_cell_size
 
     def validate(self):
@@ -291,12 +312,19 @@ class GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfos(DaraMo
         yec: int = None,
         ysc: int = None,
     ):
+        # An array of coordinates defining the cell\\"s bounding box.
         self.pos = pos
+        # The cell ID.
         self.table_cell_id = table_cell_id
+        # The text content of the cell.
         self.text = text
+        # The ending column index of the cell. The index starts from 1.
         self.xec = xec
+        # The starting column index of the cell. The index starts from 1.
         self.xsc = xsc
+        # The ending row index of the cell. The index starts from 1.
         self.yec = yec
+        # The starting row index of the cell. The index starts from 1.
         self.ysc = ysc
 
     def validate(self):
@@ -369,7 +397,9 @@ class GetImageTranslateTaskResponseBodyDataTranslationTableInfosCellInfosPos(Dar
         x: int = None,
         y: int = None,
     ):
+        # The x-coordinate.
         self.x = x
+        # The y-coordinate.
         self.y = y
 
     def validate(self):
@@ -412,15 +442,25 @@ class GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxes(DaraModel):
         up_left: main_models.GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft = None,
         up_right: main_models.GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight = None,
     ):
+        # The confidence score for the recognized text. The value ranges from 0 (lowest confidence) to 1 (highest confidence).
         self.confidence = confidence
+        # The text direction. Valid values: `0` (horizontal) and `1` (vertical).
         self.direction = direction
+        # The coordinates of the lower-left corner of the bounding box.
         self.down_left = down_left
+        # The coordinates of the lower-right corner of the bounding box.
         self.down_right = down_right
+        # The cell ID of the bounding box. If the bounding box is not part of a table, the value is `-1`.
         self.table_cell_id = table_cell_id
+        # The ID of the table that contains the bounding box. If the bounding box is not part of a table, the value is `-1`.
         self.table_id = table_id
+        # The source-language text within the bounding box.
         self.text = text
+        # An object containing the translated text, keyed by the target language code.
         self.translation = translation
+        # The coordinates of the upper-left corner of the bounding box.
         self.up_left = up_left
+        # The coordinates of the upper-right corner of the bounding box.
         self.up_right = up_right
 
     def validate(self):
@@ -514,7 +554,9 @@ class GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpRight(DaraM
         x: int = None,
         y: int = None,
     ):
+        # The x-coordinate.
         self.x = x
+        # The y-coordinate.
         self.y = y
 
     def validate(self):
@@ -549,7 +591,9 @@ class GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesUpLeft(DaraMo
         x: int = None,
         y: int = None,
     ):
+        # The x-coordinate.
         self.x = x
+        # The y-coordinate.
         self.y = y
 
     def validate(self):
@@ -584,7 +628,9 @@ class GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownRight(Dar
         x: int = None,
         y: int = None,
     ):
+        # The x-coordinate.
         self.x = x
+        # The y-coordinate.
         self.y = y
 
     def validate(self):
@@ -619,7 +665,9 @@ class GetImageTranslateTaskResponseBodyDataTranslationBoundingBoxesDownLeft(Dara
         x: int = None,
         y: int = None,
     ):
+        # The x-coordinate.
         self.x = x
+        # The y-coordinate.
         self.y = y
 
     def validate(self):

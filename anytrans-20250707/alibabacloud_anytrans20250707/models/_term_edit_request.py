@@ -17,16 +17,28 @@ class TermEditRequest(DaraModel):
         target_language: str = None,
         workspace_id: str = None,
     ):
+        # The action type.
+        # 
         # This parameter is required.
         self.action = action
+        # The extended parameters.
+        # 
         # This parameter is required.
         self.ext = ext
+        # The model type.
+        # 
         # This parameter is required.
         self.scene = scene
+        # The source language. The value must be a valid BCP-47 language code.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # The target language. The value must be a valid BCP-47 language code.
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # The ID of the Model Studio workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -88,7 +100,10 @@ class TermEditRequestExt(DaraModel):
         param_map: Any = None,
         terms: List[main_models.TermEditRequestExtTerms] = None,
     ):
+        # The extended parameter configuration.
         self.param_map = param_map
+        # The intervention term list.
+        # 
         # This parameter is required.
         self.terms = terms
 
@@ -133,9 +148,14 @@ class TermEditRequestExtTerms(DaraModel):
         term_id: str = None,
         tgt: str = None,
     ):
+        # The source text.
+        # 
         # This parameter is required.
         self.src = src
+        # The intervention term ID.
         self.term_id = term_id
+        # The post-intervention translation.
+        # 
         # This parameter is required.
         self.tgt = tgt
 

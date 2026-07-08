@@ -17,11 +17,17 @@ class BatchTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code for the overall API call.
         self.code = code
+        # The response payload that contains the translation results.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The unique identifier for the request. Use this ID for tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class BatchTranslateResponseBodyData(DaraModel):
         self,
         translation_list: List[main_models.BatchTranslateResponseBodyDataTranslationList] = None,
     ):
+        # An array of translation results, one for each text provided in the request.
         self.translation_list = translation_list
 
     def validate(self):
@@ -121,11 +128,17 @@ class BatchTranslateResponseBodyDataTranslationList(DaraModel):
         translation: str = None,
         usage: main_models.BatchTranslateResponseBodyDataTranslationListUsage = None,
     ):
+        # The status code for the individual translation within the batch.
         self.code = code
+        # The language code of the detected source language.
         self.detected_lang = detected_lang
+        # The zero-based index of this result, which corresponds to the order of the source text in the original request.
         self.index = index
+        # The status message for the individual translation.
         self.message = message
+        # The translated text.
         self.translation = translation
+        # An object detailing the token usage for this translation.
         self.usage = usage
 
     def validate(self):
@@ -187,8 +200,11 @@ class BatchTranslateResponseBodyDataTranslationListUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of tokens in the source text.
         self.input_tokens = input_tokens
+        # The number of tokens in the generated translation.
         self.output_tokens = output_tokens
+        # The total number of tokens processed for the translation (the sum of `inputTokens` and `outputTokens`).
         self.total_tokens = total_tokens
 
     def validate(self):

@@ -15,16 +15,28 @@ class SubmitImageTranslateTaskShrinkRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extended parameters to control translation features.
         self.ext_shrink = ext_shrink
+        # The translation format.
         self.format = format
+        # Specifies the translation model.
+        # 
         # This parameter is required.
         self.scene = scene
+        # The source language.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # A list of target languages.
+        # 
         # This parameter is required.
         self.target_language_shrink = target_language_shrink
+        # The URL of the image to translate.
+        # 
         # This parameter is required.
         self.text = text
+        # The ID of the Model Studio workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

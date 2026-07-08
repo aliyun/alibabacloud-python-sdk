@@ -18,12 +18,20 @@ class SubmitHtmlTranslateTaskRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extended parameters to control translation behavior.
         self.ext = ext
+        # The format of the input text.
         self.format = format
+        # The translation model.
         self.scene = scene
+        # The source language.
         self.source_language = source_language
+        # The target language.
         self.target_language = target_language
+        # The HTML content to be translated.
         self.text = text
+        # The ID of the Model Studio workspace used for this request.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -97,13 +105,21 @@ class SubmitHtmlTranslateTaskRequestExt(DaraModel):
         text_transform: main_models.SubmitHtmlTranslateTaskRequestExtTextTransform = None,
         tracking_data: str = None,
     ):
+        # Provides specific configuration settings for the translation task.
         self.config = config
+        # A natural language prompt in English to guide the model\\"s translation style.
         self.domain_hint = domain_hint
+        # A list of translation examples.
         self.examples = examples
+        # Provides extended parameter configuration. The `bizUserId` key specifies the business user ID to isolate custom terminology enforcement by user. The `bizType` key specifies the business scenario type to isolate custom terminology enforcement by scenario.
         self.param_map = param_map
+        # A list of sensitive words to filter from the translation.
         self.sensitives = sensitives
+        # A list of custom terminology pairs to apply to the translation.
         self.terminologies = terminologies
+        # Specifies case transformations for the translated text.
         self.text_transform = text_transform
+        # Custom passthrough data that the service returns unprocessed in the response. Useful for tasks such as event tracking.
         self.tracking_data = tracking_data
 
     def validate(self):
@@ -198,8 +214,11 @@ class SubmitHtmlTranslateTaskRequestExtTextTransform(DaraModel):
         to_title: bool = None,
         to_upper: bool = None,
     ):
+        # Converts the entire translated text to lowercase.
         self.to_lower = to_lower
+        # Converts the translated text to title case.
         self.to_title = to_title
+        # Converts the entire translated text to uppercase.
         self.to_upper = to_upper
 
     def validate(self):
@@ -240,7 +259,9 @@ class SubmitHtmlTranslateTaskRequestExtTerminologies(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text for the terminology pair.
         self.src = src
+        # The target text for the terminology pair.
         self.tgt = tgt
 
     def validate(self):
@@ -275,7 +296,9 @@ class SubmitHtmlTranslateTaskRequestExtExamples(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text in the example.
         self.src = src
+        # The target text in the example.
         self.tgt = tgt
 
     def validate(self):
@@ -310,7 +333,9 @@ class SubmitHtmlTranslateTaskRequestExtConfig(DaraModel):
         callback_url: str = None,
         skip_csi_check: bool = None,
     ):
+        # The callback URL for receiving translation results.
         self.callback_url = callback_url
+        # Specifies whether to skip the Content Moderation check. To skip this check, you must first complete the Content Moderation disablement process before calling the API.
         self.skip_csi_check = skip_csi_check
 
     def validate(self):

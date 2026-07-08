@@ -18,12 +18,20 @@ class SubmitLongTextTranslateTaskRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # A container for extended parameters that control translation features.
         self.ext = ext
+        # The format of the source text.
         self.format = format
+        # The translation model.
         self.scene = scene
+        # The language code of the source language.
         self.source_language = source_language
+        # The language code of the target language.
         self.target_language = target_language
+        # The long source text to translate.
         self.text = text
+        # The ID of the Model Studio workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -97,13 +105,21 @@ class SubmitLongTextTranslateTaskRequestExt(DaraModel):
         text_transform: main_models.SubmitLongTextTranslateTaskRequestExtTextTransform = None,
         tracking_data: str = None,
     ):
+        # Translation Behavior Control
         self.config = config
+        # A natural language string in English that guides the model toward a specific translation style.
         self.domain_hint = domain_hint
+        # A list of translation examples to provide context to the model.
         self.examples = examples
+        # Extended parameter configuration (bizUserId: A user ID at the business level, used to differentiate between business users and apply terminology interventions that are isolated on a per-user basis. bizType: A business scenario type or identifier, used to differentiate between scenarios and apply terminology interventions that are isolated on a per-scenario basis.)
         self.param_map = param_map
+        # A list of sensitive words to filter from the translation result.
         self.sensitives = sensitives
+        # A list of term pairs to customize the translation.
         self.terminologies = terminologies
+        # Specifies case conversion rules for the target text.
         self.text_transform = text_transform
+        # User-defined passthrough data is not processed by the translation service and is returned as is for use in scenarios such as tracking.
         self.tracking_data = tracking_data
 
     def validate(self):
@@ -198,8 +214,11 @@ class SubmitLongTextTranslateTaskRequestExtTextTransform(DaraModel):
         to_title: bool = None,
         to_upper: bool = None,
     ):
+        # Specifies whether to convert the target text to lowercase.
         self.to_lower = to_lower
+        # Specifies whether to convert the target text to title case.
         self.to_title = to_title
+        # Specifies whether to convert the target text to uppercase.
         self.to_upper = to_upper
 
     def validate(self):
@@ -240,7 +259,9 @@ class SubmitLongTextTranslateTaskRequestExtTerminologies(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text of the term pair.
         self.src = src
+        # The custom target text.
         self.tgt = tgt
 
     def validate(self):
@@ -275,7 +296,9 @@ class SubmitLongTextTranslateTaskRequestExtExamples(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text in the example.
         self.src = src
+        # The target text in the example.
         self.tgt = tgt
 
     def validate(self):
@@ -309,6 +332,7 @@ class SubmitLongTextTranslateTaskRequestExtConfig(DaraModel):
         self,
         skip_csi_check: bool = None,
     ):
+        # Specifies whether to skip the Content Moderation check. (To skip the check, you must first complete the process to disable Content Moderation and then call the operation.)
         self.skip_csi_check = skip_csi_check
 
     def validate(self):
