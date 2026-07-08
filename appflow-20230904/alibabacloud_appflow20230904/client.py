@@ -22,7 +22,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hangzhou': 'appflow.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('appflow', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1121,6 +1124,88 @@ class Client(OpenApiClient):
     ) -> main_models.LaunchFlowResponse:
         runtime = RuntimeOptions()
         return await self.launch_flow_with_options_async(request, runtime)
+
+    def list_flows_with_options(
+        self,
+        request: main_models.ListFlowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlows',
+            version = '2023-09-04',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flows_with_options_async(
+        self,
+        request: main_models.ListFlowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFlowsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListFlows',
+            version = '2023-09-04',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListFlowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flows(
+        self,
+        request: main_models.ListFlowsRequest,
+    ) -> main_models.ListFlowsResponse:
+        runtime = RuntimeOptions()
+        return self.list_flows_with_options(request, runtime)
+
+    async def list_flows_async(
+        self,
+        request: main_models.ListFlowsRequest,
+    ) -> main_models.ListFlowsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_flows_with_options_async(request, runtime)
 
     def list_user_auth_configs_with_options(
         self,

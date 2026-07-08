@@ -10,8 +10,9 @@ class UpdateFlowResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The data returned by the operation.
         self.data = data
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

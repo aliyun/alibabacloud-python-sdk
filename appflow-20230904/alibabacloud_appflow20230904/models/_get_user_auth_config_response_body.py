@@ -11,8 +11,9 @@ class GetUserAuthConfigResponseBody(DaraModel):
         request_id: str = None,
         user_auth_config: main_models.GetUserAuthConfigResponseBodyUserAuthConfig = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Contains the credential details.
         self.user_auth_config = user_auth_config
 
     def validate(self):
@@ -53,11 +54,17 @@ class GetUserAuthConfigResponseBodyUserAuthConfig(DaraModel):
         connector_id: str = None,
         connector_version: str = None,
     ):
+        # The auth config, specified as a JSON string.
         self.auth_config = auth_config
+        # The credential ID.
         self.auth_config_id = auth_config_id
+        # The credential name.
         self.auth_config_name = auth_config_name
+        # The authentication type.
         self.auth_type = auth_type
+        # The connector ID.
         self.connector_id = connector_id
+        # The connector version.
         self.connector_version = connector_version
 
     def validate(self):

@@ -10,8 +10,11 @@ class DeleteFlowRequest(DaraModel):
         flow_id: str = None,
         flow_version: int = None,
     ):
+        # The flow ID.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
+        # The flow version.
         self.flow_version = flow_version
 
     def validate(self):

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_appflow20230904.
 
-Created on 02/06/2026
+Created on 08/07/2026
 
 @author: Alibaba Cloud SDK
 """

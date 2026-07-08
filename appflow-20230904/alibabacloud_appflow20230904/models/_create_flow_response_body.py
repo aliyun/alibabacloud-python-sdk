@@ -10,8 +10,9 @@ class CreateFlowResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The information of the newly created product returned when the call succeeds.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

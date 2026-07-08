@@ -13,11 +13,17 @@ class LaunchFlowRequest(DaraModel):
         flow_template: str = None,
         flow_version: int = None,
     ):
+        # The description of the flow.
         self.flow_desc = flow_desc
+        # The ID of the flow.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
+        # The name of the flow.
         self.flow_name = flow_name
+        # The template of the flow.
         self.flow_template = flow_template
+        # The version of the flow.
         self.flow_version = flow_version
 
     def validate(self):

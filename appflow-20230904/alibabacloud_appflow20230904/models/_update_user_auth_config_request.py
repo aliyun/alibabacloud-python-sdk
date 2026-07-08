@@ -13,12 +13,19 @@ class UpdateUserAuthConfigRequest(DaraModel):
         connector_id: str = None,
         connector_version: str = None,
     ):
+        # The user authentication credential, provided as a JSON string.
         self.auth_config = auth_config
+        # The ID of the credential.
+        # 
         # This parameter is required.
         self.auth_config_id = auth_config_id
+        # The name of the credential.
         self.auth_config_name = auth_config_name
+        # The ID of the connector.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
+        # The connector version.
         self.connector_version = connector_version
 
     def validate(self):

@@ -13,8 +13,9 @@ class GetFlowResponseBody(DaraModel):
         flow: main_models.GetFlowResponseBodyFlow = None,
         request_id: str = None,
     ):
+        # The flow object.
         self.flow = flow
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,16 +61,27 @@ class GetFlowResponseBodyFlow(DaraModel):
         gmt_modified: str = None,
         tags: List[main_models.GetFlowResponseBodyFlowTags] = None,
     ):
+        # Indicates whether the flow is enabled.
         self.enabled = enabled
+        # The flow description.
         self.flow_desc = flow_desc
+        # The flow ID.
         self.flow_id = flow_id
+        # The flow name.
         self.flow_name = flow_name
+        # The list of nodes.
         self.flow_nodes = flow_nodes
+        # The flow template content.
         self.flow_template = flow_template
+        # The flow version.
         self.flow_version = flow_version
+        # The flow version status.
         self.flow_version_status = flow_version_status
+        # The creation time.
         self.gmt_create = gmt_create
+        # The last modification time.
         self.gmt_modified = gmt_modified
+        # A list of tags.
         self.tags = tags
 
     def validate(self):
@@ -175,7 +187,9 @@ class GetFlowResponseBodyFlowTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The value can be up to 64 characters in length.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -222,19 +236,33 @@ class GetFlowResponseBodyFlowFlowNodes(DaraModel):
         ref_version: str = None,
         webhook_url: str = None,
     ):
+        # The authentication credentials of the node.
         self.auth_metadata = auth_metadata
+        # The connector ID.
         self.connector_id = connector_id
+        # The connector version.
         self.connector_version = connector_version
+        # The flow ID.
         self.flow_id = flow_id
+        # The flow version.
         self.flow_version = flow_version
+        # The metadata of the node.
         self.input_schema = input_schema
+        # The node ID.
         self.node_id = node_id
+        # The node key.
         self.node_key = node_key
+        # The node name.
         self.node_name = node_name
+        # The node type.
         self.node_type = node_type
+        # The ID of the previous node.
         self.prev_node_id = prev_node_id
+        # The ID of the trigger or action.
         self.ref_id = ref_id
+        # The trigger or action version.
         self.ref_version = ref_version
+        # The webhook URL.
         self.webhook_url = webhook_url
 
     def validate(self):

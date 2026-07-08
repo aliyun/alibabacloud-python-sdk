@@ -1,3 +1,7 @@
+2026-07-08 Version: 1.3.0
+- Support API ListFlows.
+
+
 2026-06-02 Version: 1.2.0
 - Support API CreateFlow.
 - Support API CreateUserAuthConfig.

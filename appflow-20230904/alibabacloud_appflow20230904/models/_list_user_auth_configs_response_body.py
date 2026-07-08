@@ -16,11 +16,15 @@ class ListUserAuthConfigsResponseBody(DaraModel):
         total_count: int = None,
         user_auth_configs: List[main_models.ListUserAuthConfigsResponseBodyUserAuthConfigs] = None,
     ):
+        # The page size.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The user authentication credentials.
         self.user_auth_configs = user_auth_configs
 
     def validate(self):
@@ -87,13 +91,21 @@ class ListUserAuthConfigsResponseBodyUserAuthConfigs(DaraModel):
         gmt_create: str = None,
         gmt_modified: str = None,
     ):
+        # The credential ID.
         self.auth_config_id = auth_config_id
+        # The credential name.
         self.auth_config_name = auth_config_name
+        # The authentication type.
         self.auth_type = auth_type
+        # The ID of the connector.
         self.connector_id = connector_id
+        # The version of the connector.
         self.connector_version = connector_version
+        # The number of connection flows that use this credential.
         self.flow_count = flow_count
+        # The creation time.
         self.gmt_create = gmt_create
+        # The last modification time.
         self.gmt_modified = gmt_modified
 
     def validate(self):

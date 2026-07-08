@@ -11,10 +11,15 @@ class GetUserAuthConfigRequest(DaraModel):
         connector_id: str = None,
         connector_version: str = None,
     ):
+        # The credential ID.
+        # 
         # This parameter is required.
         self.auth_config_id = auth_config_id
+        # The connector ID.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
+        # The connector version.
         self.connector_version = connector_version
 
     def validate(self):

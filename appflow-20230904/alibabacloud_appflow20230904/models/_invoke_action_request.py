@@ -21,17 +21,29 @@ class InvokeActionRequest(DaraModel):
         query: Dict[str, str] = None,
         stream: bool = None,
     ):
+        # The action ID.
+        # 
         # This parameter is required.
         self.action_id = action_id
+        # The action version.
         self.action_version = action_version
+        # The authentication information for the action.
         self.auth_config = auth_config
+        # The request body for the action.
         self.body = body
+        # The connector ID.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
+        # The connector version.
         self.connector_version = connector_version
+        # The request header parameters for the action.
         self.headers = headers
+        # The path parameters for the action.
         self.path = path
+        # The query parameters for the action.
         self.query = query
+        # Specifies whether to use streaming output.
         self.stream = stream
 
     def validate(self):
@@ -116,7 +128,9 @@ class InvokeActionRequestAuthConfig(DaraModel):
         type: str = None,
         value: Any = None,
     ):
+        # The type of authentication information.
         self.type = type
+        # The authentication content. Its value is a raw JSON object or a credential ID, as determined by the `Type` parameter.
         self.value = value
 
     def validate(self):

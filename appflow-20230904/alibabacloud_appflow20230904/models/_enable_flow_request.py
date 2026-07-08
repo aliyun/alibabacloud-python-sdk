@@ -10,8 +10,11 @@ class EnableFlowRequest(DaraModel):
         flow_id: str = None,
         flow_version: int = None,
     ):
+        # The ID of the flow.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
+        # The version of the flow.
         self.flow_version = flow_version
 
     def validate(self):

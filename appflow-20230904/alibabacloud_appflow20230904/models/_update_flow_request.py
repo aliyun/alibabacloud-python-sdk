@@ -14,12 +14,19 @@ class UpdateFlowRequest(DaraModel):
         flow_template: str = None,
         flow_version: str = None,
     ):
+        # Specifies whether the connection flow is enabled.
         self.enabled = enabled
+        # The description of the connection flow.
         self.flow_desc = flow_desc
+        # The ID of the connection flow.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
+        # The name of the connection flow.
         self.flow_name = flow_name
+        # The template of the connection flow.
         self.flow_template = flow_template
+        # The version of the connection flow.
         self.flow_version = flow_version
 
     def validate(self):

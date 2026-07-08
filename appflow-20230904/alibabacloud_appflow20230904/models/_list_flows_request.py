@@ -7,34 +7,30 @@ from typing import List
 from alibabacloud_appflow20230904 import models as main_models
 from darabonba.model import DaraModel
 
-class ListUserAuthConfigsRequest(DaraModel):
+class ListFlowsRequest(DaraModel):
     def __init__(
         self,
-        auth_type: str = None,
-        connector_id: str = None,
-        connector_version: str = None,
-        filter: List[main_models.ListUserAuthConfigsRequestFilter] = None,
+        filter: List[main_models.ListFlowsRequestFilter] = None,
         max_results: str = None,
         next_token: str = None,
+        tag: List[main_models.ListFlowsRequestTag] = None,
     ):
-        # The authentication type.
-        self.auth_type = auth_type
-        # The ID of the connector.
-        # 
-        # This parameter is required.
-        self.connector_id = connector_id
-        # The version of the connector.
-        self.connector_version = connector_version
-        # The query conditions.
+        # The filter conditions.
         self.filter = filter
-        # The maximum number of entries.
+        # The maximum number of entries to return.
         self.max_results = max_results
-        # The pagination token for the request.
+        # The pagination token for the next page.
         self.next_token = next_token
+        # Specifies the object tags to which the rule applies. You can specify multiple tags.
+        self.tag = tag
 
     def validate(self):
         if self.filter:
             for v1 in self.filter:
+                 if v1:
+                    v1.validate()
+        if self.tag:
+            for v1 in self.tag:
                  if v1:
                     v1.validate()
 
@@ -43,15 +39,6 @@ class ListUserAuthConfigsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.auth_type is not None:
-            result['AuthType'] = self.auth_type
-
-        if self.connector_id is not None:
-            result['ConnectorId'] = self.connector_id
-
-        if self.connector_version is not None:
-            result['ConnectorVersion'] = self.connector_version
-
         result['Filter'] = []
         if self.filter is not None:
             for k1 in self.filter:
@@ -63,23 +50,19 @@ class ListUserAuthConfigsRequest(DaraModel):
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
+        result['Tag'] = []
+        if self.tag is not None:
+            for k1 in self.tag:
+                result['Tag'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuthType') is not None:
-            self.auth_type = m.get('AuthType')
-
-        if m.get('ConnectorId') is not None:
-            self.connector_id = m.get('ConnectorId')
-
-        if m.get('ConnectorVersion') is not None:
-            self.connector_version = m.get('ConnectorVersion')
-
         self.filter = []
         if m.get('Filter') is not None:
             for k1 in m.get('Filter'):
-                temp_model = main_models.ListUserAuthConfigsRequestFilter()
+                temp_model = main_models.ListFlowsRequestFilter()
                 self.filter.append(temp_model.from_map(k1))
 
         if m.get('MaxResults') is not None:
@@ -88,9 +71,54 @@ class ListUserAuthConfigsRequest(DaraModel):
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
 
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k1 in m.get('Tag'):
+                temp_model = main_models.ListFlowsRequestTag()
+                self.tag.append(temp_model.from_map(k1))
+
         return self
 
-class ListUserAuthConfigsRequestFilter(DaraModel):
+class ListFlowsRequestTag(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The numeric value n for each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.N.Key corresponds to Tag.N.Value.
+        # 
+        # > The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        self.key = key
+        # The authentication content.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
+class ListFlowsRequestFilter(DaraModel):
     def __init__(
         self,
         name: str = None,
@@ -98,7 +126,7 @@ class ListUserAuthConfigsRequestFilter(DaraModel):
     ):
         # The name of the filter field.
         self.name = name
-        # The list of filter values. The valid range for N is 1 to 10.
+        # The filter values.
         self.values = values
 
     def validate(self):

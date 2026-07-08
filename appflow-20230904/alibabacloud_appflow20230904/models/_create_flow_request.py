@@ -19,14 +19,27 @@ class CreateFlowRequest(DaraModel):
         tag: List[main_models.CreateFlowRequestTag] = None,
         template_id: str = None,
     ):
+        # The description of the flow.
         self.flow_desc = flow_desc
+        # The ID of the flow. This parameter is required when you update a flow or create a new flow version.
         self.flow_id = flow_id
+        # The name of the flow.
+        # 
         # This parameter is required.
         self.flow_name = flow_name
+        # The content of the template.
         self.flow_template = flow_template
+        # The publication status of the flow: True for published, False for unpublished.
         self.launch_status = launch_status
+        # The parameters for the template.
+        # 
+        # You can specify up to 200 parameters.
+        # 
+        # > This parameter is optional. If you use this parameter, you must specify both ParameterKey and ParameterValue for each entry.
         self.parameters = parameters
+        # The object tags to which the rule applies. You can specify multiple tags.
         self.tag = tag
+        # The ID of the template. Specify this parameter when you create a flow from a template in the Template Center.
         self.template_id = template_id
 
     def validate(self):
@@ -114,7 +127,11 @@ class CreateFlowRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number N in each tag pair must be unique and a consecutive integer starting from 1. The value corresponding to `Tag.N.Key` is `Tag.N.Value`.
+        # 
+        # > The tag key can be up to 64 characters long and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.key = key
+        # The authentication content.
         self.value = value
 
     def validate(self):
@@ -151,7 +168,14 @@ class CreateFlowRequestParameters(DaraModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
+        # The name of a parameter defined in the template. If no parameter name or value is specified, ROS uses the default value defined in the template.
+        # 
+        # The maximum value of N is 200.<br>
+        # The name must be 1 to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # 
+        # > Parameters is optional. If you specify Parameters, you must specify both Parameters.N.ParameterKey and Parameters.N.ParameterValue.
         self.parameter_key = parameter_key
+        # The value for the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
