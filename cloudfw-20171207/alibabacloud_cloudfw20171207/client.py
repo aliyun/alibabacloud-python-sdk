@@ -19390,6 +19390,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_vpc_firewall_traffic_asset_list_with_options_async(request, runtime)
 
+    def describe_vpc_firewall_traffic_trend_with_options(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not DaraCore.is_null(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcFirewallTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_traffic_trend_with_options_async(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not DaraCore.is_null(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcFirewallTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_traffic_trend(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return self.describe_vpc_firewall_traffic_trend_with_options(request, runtime)
+
+    async def describe_vpc_firewall_traffic_trend_async(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_vpc_firewall_traffic_trend_with_options_async(request, runtime)
+
     def describe_vpc_firewall_zone_with_options(
         self,
         request: main_models.DescribeVpcFirewallZoneRequest,

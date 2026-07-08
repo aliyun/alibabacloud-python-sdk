@@ -1,3 +1,7 @@
+2026-07-08 Version: 9.3.0
+- Support API DescribeVpcFirewallTrafficTrend.
+
+
 2026-07-08 Version: 9.2.1
 - Update API AddAddressBook: add request parameters AssetMemberUids.
 - Update API AddAddressBook: add request parameters AssetRegionResourceTypes.
