@@ -16,9 +16,9 @@ class DescribeSecurityEventTimeSeriesMetricResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The time series data returned. This operation can return time series for multiple metrics.
+        # The returned time series data. The operation can return time series data for multiple values.
         self.security_event_time_series = security_event_time_series
-        # The metadata of the time series data returned.
+        # The metadata of the returned data.
         self.time_series_meta_data = time_series_meta_data
 
     def validate(self):
@@ -71,11 +71,11 @@ class DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData(DaraMo
         date_range: main_models.DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange = None,
         units: str = None,
     ):
-        # The time granularity of data points in the time series data returned. For example, a value of 15m indicates that data points are collected at 15-minute intervals. For more information about time granularities, see the **Time granularities of data points in time series** section below.
+        # The time granularity of each data point in the returned time series data. For example, "15m" indicates that each returned data point represents statistics for a 15-minute interval. For more information about the time granularity of the returned data, see the Time granularity of time series data points section.
         self.aggregate_interval = aggregate_interval
-        # The time range that is used for the query.
+        # The time range used for the query.
         self.date_range = date_range
-        # The unit of the statistics returned. It is fixed as requests.
+        # The unit of the returned statistical data.
         self.units = units
 
     def validate(self):
@@ -118,9 +118,9 @@ class DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRan
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of EndDate in the request parameters.
+        # The end time of the query. This is a UNIX timestamp. Unit: seconds. This value is the same as the \\`EndDate\\` request parameter.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds. This value is the same as the value of StartDate in the request parameters.
+        # The start time of the query. This is a UNIX timestamp. Unit: seconds. This value is the same as the \\`StartDate\\` request parameter.
         self.start_date = start_date
 
     def validate(self):
@@ -156,11 +156,11 @@ class DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries(D
         timestamps: List[str] = None,
         values: List[int] = None,
     ):
-        # The metric. This value is the same as the value of Metric in the request parameters.
+        # The content of the returned data. This is consistent with the \\`Metric\\` request parameter.
         self.metric = metric
-        # The time points. Each point represents a time range.
+        # The time series. Each point represents the start time of a time range.
         self.timestamps = timestamps
-        # The data points. Each point represents a count for a time range.
+        # The data series. Each point represents the statistical count within a specific time range.
         self.values = values
 
     def validate(self):

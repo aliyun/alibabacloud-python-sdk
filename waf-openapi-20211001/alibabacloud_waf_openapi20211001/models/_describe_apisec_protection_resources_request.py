@@ -15,22 +15,23 @@ class DescribeApisecProtectionResourcesRequest(DaraModel):
         resource: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The switch of the API security module.
+        # The global switch for API security.
         self.apisec_status = apisec_status
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The page number to return when you perform a paged query. Default value: **1**, which indicates the first page. For more information about paging, see the API reference.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page when you perform a paged query. Default value: **10**, which indicates 10 entries per page. For more information about paging, see the API reference.
         self.page_size = page_size
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region in which the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The name of the protected object.
         self.resource = resource

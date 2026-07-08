@@ -14,11 +14,11 @@ class DescribeRuleGroupsResponseBody(DaraModel):
         rule_groups: List[main_models.DescribeRuleGroupsResponseBodyRuleGroups] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array of regular expression rule groups.
+        # The list of regular expression rule groups.
         self.rule_groups = rule_groups
-        # The total number of entries that are returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -71,25 +71,29 @@ class DescribeRuleGroupsResponseBodyRuleGroups(DaraModel):
         rule_group_name: str = None,
         rule_total_count: int = None,
     ):
-        # The most recent time when the rule group was modified.
+        # The time when the rule group was last updated.
         self.gmt_modified = gmt_modified
-        # Indicates whether the automatic update feature is enabled for the rule group.
+        # The automatic update status of the rule group.
         # 
-        # *   1: The automatic update feature is enabled for the rule group.
-        # *   2: The automatic update feature is disabled for the rule group.
+        # - 1: Automatic updates are enabled.
+        # 
+        # - 2: Automatic updates are disabled.
         self.is_subscribe = is_subscribe
-        # The ID of the rule group.
+        # The ID of the rule group that the current rule group inherits.
         # 
-        # *   0: The rule group is created from scratch.
-        # *   1011: The rule group is a strict rule group.
-        # *   1012: The rule group is a medium rule group.
-        # *   1013: The rue group is a loose rule group.
+        # - 0: The rule group is created from scratch and does not inherit from another rule group.
+        # 
+        # - 1011: The Strict rule group.
+        # 
+        # - 1012: The Medium rule group.
+        # 
+        # - 1013: The Loose rule group.
         self.parent_rule_group_id = parent_rule_group_id
-        # The ID of the regular expression rule group.
+        # The ID of the rule group.
         self.rule_group_id = rule_group_id
         # The name of the rule group.
         self.rule_group_name = rule_group_name
-        # The number of built-in rules in the rule group.
+        # The number of built-in rules.
         self.rule_total_count = rule_total_count
 
     def validate(self):

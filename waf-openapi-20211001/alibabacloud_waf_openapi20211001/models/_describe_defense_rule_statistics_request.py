@@ -16,16 +16,33 @@ class DescribeDefenseRuleStatisticsRequest(DaraModel):
         template_id: int = None,
         third_key: str = None,
     ):
+        # The quaternary query condition. The value cannot be the same as the primary, secondary, or tertiary query condition.
         self.fourth_key = fourth_key
+        # The ID of the WAF instance.
+        # 
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The primary query condition.
+        # 
         # This parameter is required.
         self.primary_key = primary_key
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The secondary query condition. The value cannot be the same as the primary query condition.
         self.secondary_key = secondary_key
+        # The ID of the protection template to query.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The tertiary query condition. The value cannot be the same as the primary or secondary query condition.
         self.third_key = third_key
 
     def validate(self):

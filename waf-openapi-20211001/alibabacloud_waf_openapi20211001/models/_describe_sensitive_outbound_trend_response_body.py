@@ -14,7 +14,7 @@ class DescribeSensitiveOutboundTrendResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information records involved in cross-border data transfer.
+        # The list of cross-border data transfer information.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -71,11 +71,11 @@ class DescribeSensitiveOutboundTrendResponseBodyData(DaraModel):
     ):
         # The total number of personal information records.
         self.info_count = info_count
-        # The total number of personal information records involved in cross-border data transfer.
+        # The total number of personal information records transferred cross-border.
         self.info_outbound_count = info_outbound_count
-        # The total number of sensitive information records involved in cross-border data transfer.
+        # The total number of sensitive information records transferred cross-border.
         self.sensitive_outbound_count = sensitive_outbound_count
-        # The time of cross-border data transfer. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time of the cross-border data transfer. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.timestamp = timestamp
 
     def validate(self):

@@ -23,19 +23,19 @@ class ModifyHybridCloudGroupShrinkServerRequest(DaraModel):
         # This parameter is required.
         self.group_id = group_id
         # The ID of the WAF instance.
-        # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the node.
+        # The node ID.
         # 
         # This parameter is required.
         self.mids = mids
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

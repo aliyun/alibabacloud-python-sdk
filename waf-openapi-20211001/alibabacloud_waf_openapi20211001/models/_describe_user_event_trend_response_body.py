@@ -15,7 +15,7 @@ class DescribeUserEventTrendResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The trends of attacks.
+        # The attack trend list.
         self.trend = trend
 
     def validate(self):
@@ -67,10 +67,10 @@ class DescribeUserEventTrendResponseBodyTrend(DaraModel):
         self.event_low = event_low
         # The number of medium-risk events.
         self.event_medium = event_medium
-        # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
-        # >Notice: The parameter has been deprecated, it is recommended to use the Timestamp parameter.
+        # The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
+        # >Notice: This parameter is deprecated. Use the Timestamp parameter instead.
         self.time_stamp = time_stamp
-        # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The statistics time, in UNIX timestamp format (UTC). Unit: seconds.
         self.timestamp = timestamp
 
     def validate(self):

@@ -10,9 +10,9 @@ class DescribeHybridCloudProtectableCountResponseBody(DaraModel):
         protectable_count: int = None,
         request_id: str = None,
     ):
-        # The number of protection nodes that can be added to the hybrid cloud cluster.
+        # The number of protectable nodes that can be added to the cluster.
         self.protectable_count = protectable_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -17,40 +17,45 @@ class DescribeNetworkFlowTopNMetricRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # An array of filter conditions. Multiple filter parameters use AND logic.
+        # The filter conditions for the query. If you specify multiple filter conditions, all conditions must be met (logical AND).
         # 
         # This parameter is required.
         self.filter = filter
-        # The Web Application Firewall (WAF) instance ID.
+        # The ID of the WAF instance.
         # 
-        # >  Call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to retrieve the WAF instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Returns up to 10 data entries, sorted in descending order.
+        # The maximum number of entries to return. Results are sorted in descending order. Maximum value: 10.
         # 
         # This parameter is required.
         self.limit = limit
-        # Specifies the data type to be returned. Valid values:
+        # The metric by which to query and rank data. Valid values:
         # 
-        # *   real_client_ip: The top N requests, sorted in descending order by source IP address, aggregated from all the current user\\"s WAF requests.
-        # *   request_path: The top N requests, sorted in descending order by user-agent, aggregated from all the current user\\"s WAF requests.
-        # *   request_path: The top N requests, sorted in descending order by request URL, aggregated from all the current user\\"s WAF requests.
-        # *   matched_host_by_total_requests: The top N protected objects and their request counts for the current user.
-        # *   matched_host_by_qps: The top N protected objects and their queries per second (QPS) values.
-        # *   matched_host_by_status: When using it, you must specify status in the Conditions field of the Filter parameter. If the HTTP response code returned by WAF matches the status specified in the Conditions, then the top N data is returned, sorted in descending order by protected objects. The format for specifying the status is as follows:\\
-        #     {"Key":"status","OpValue":"eq","Values":"200"}
-        # *   matched_host_by_upstream_status: When using it, you must specify upstream_status in the Conditions field of the Filter parameter. If the HTTP response code returned by the origin server matches the upstream_status specified, the top N data is returned, sorted in descending order by protected objects. The format for specifying the upstream_status is as follows:\\
-        #     {"Key":"upstream_status","OpValue":"eq","Values":"200"}
+        # - real_client_ip: Returns the top N source IP addresses of requests that are sent to WAF. The data is aggregated by source IP address and sorted in descending order.
+        # 
+        # - http_user_agent: Returns the top N user agents of requests that are sent to WAF. The data is aggregated by user agent and sorted in descending order.
+        # 
+        # - request_path: Returns the top N request URLs. The data is aggregated by URL and sorted in descending order.
+        # 
+        # - matched_host_by_total_requests: Returns the top N protected objects by total number of requests received.
+        # 
+        # - matched_host_by_qps: Returns the top N protected objects by queries per second (QPS).
+        # 
+        # - matched_host_by_status: Returns the top N protected objects based on a specific WAF-returned HTTP status code. The data is aggregated by protected object and sorted in descending order. If you set Metric to this value, you must specify the status field in the Conditions parameter of Filter. The format is as follows:<br> {"Key":"status","OpValue":"eq","Values":"200"}<br>
+        # 
+        # - matched_host_by_upstream_status: Returns the top N protected objects based on a specific origin server-returned HTTP status code. The data is aggregated by protected object and sorted in descending order. If you set Metric to this value, you must specify the upstream_status field in the Conditions parameter of Filter. The format is as follows:<br> {"Key":"upstream_status","OpValue":"eq","Values":"200"}<br>
         # 
         # This parameter is required.
         self.metric = metric
-        # The region ID of the WAF instance. Valid values:
+        # The region in which the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: The Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -111,9 +116,9 @@ class DescribeNetworkFlowTopNMetricRequestFilter(DaraModel):
         conditions: List[main_models.DescribeNetworkFlowTopNMetricRequestFilterConditions] = None,
         date_range: main_models.DescribeNetworkFlowTopNMetricRequestFilterDateRange = None,
     ):
-        # The list of filter conditions. Each node describes a filter condition.
+        # The list of filter conditions.
         self.conditions = conditions
-        # Specifies the date range for the query.
+        # The time range to query.
         # 
         # This parameter is required.
         self.date_range = date_range
@@ -161,11 +166,13 @@ class DescribeNetworkFlowTopNMetricRequestFilterDateRange(DaraModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # End time of the query range (Unix timestamp, seconds).
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Start time of the query range (Unix timestamp, seconds).
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds. The time range cannot exceed the last 30 days.
+        # 
+        # > The start time must be later than 30 days before the current time.
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -203,17 +210,15 @@ class DescribeNetworkFlowTopNMetricRequestFilterConditions(DaraModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The filter fields. Valid values:
+        # The field name to use for filtering. Valid values:
         # 
-        # *   matched_host
-        # *   cluster
+        # - matched_host
         # 
-        # For details, see the **Filter fields (Key)** section below.
+        # - cluster
         self.key = key
-        # The filter operator.
-        # For details, see the **Filter operators (OpValue)** section below.
+        # The operator that is used for the filter condition. For more information about supported operators, see the **Additional information about request parameters** section.
         self.op_value = op_value
-        # The filter content.
+        # The value to use for the filter condition. The value format depends on the Key and OpValue that you specify.
         self.values = values
 
     def validate(self):

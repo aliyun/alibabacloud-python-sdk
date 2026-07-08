@@ -13,9 +13,9 @@ class DescribeRuleHitsTopUaResponseBody(DaraModel):
         request_id: str = None,
         rule_hits_top_ua: List[main_models.DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The array of the top 10 user agents that are used to initiate attacks.
+        # The top 10 User-Agents ranked by attack count.
         self.rule_hits_top_ua = rule_hits_top_ua
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeRuleHitsTopUaResponseBodyRuleHitsTopUa(DaraModel):
         count: int = None,
         ua: str = None,
     ):
-        # The number of attacks that are initiated from the IP address.
+        # The number of attack requests.
         self.count = count
-        # The user agent.
+        # The User-Agent name.
         self.ua = ua
 
     def validate(self):

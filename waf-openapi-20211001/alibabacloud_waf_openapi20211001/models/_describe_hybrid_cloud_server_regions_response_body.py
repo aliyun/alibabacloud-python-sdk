@@ -13,7 +13,7 @@ class DescribeHybridCloudServerRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeHybridCloudServerRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The information about the regions.
+        # The regions.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id

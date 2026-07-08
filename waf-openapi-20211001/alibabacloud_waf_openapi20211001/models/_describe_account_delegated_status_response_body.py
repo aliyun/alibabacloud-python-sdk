@@ -12,14 +12,15 @@ class DescribeAccountDelegatedStatusResponseBody(DaraModel):
         delegated_status: bool = None,
         request_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.account_id = account_id
-        # The name of the Alibaba Cloud account. This parameter is returned only if the account is the delegated administrator account.
+        # The Alibaba Cloud account name. This parameter is returned only when the account is a delegated administrator.
         self.account_name = account_name
-        # Indicates whether the Alibaba Cloud account is the delegated administrator account of the WAF instance.
+        # Indicates whether the user is a delegated administrator of WAF. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The user is a delegated administrator of WAF.
+        # 
+        # - **false**: The user is not a delegated administrator of WAF.
         self.delegated_status = delegated_status
         # The request ID.
         self.request_id = request_id

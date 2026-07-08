@@ -20,32 +20,35 @@ class ModifyTemplateResourcesRequest(DaraModel):
         unbind_resource_groups: List[str] = None,
         unbind_resources: List[str] = None,
     ):
+        # The IDs of the protected assets to attach. The value is in the [**"XX1","XX2",...**] format.
         self.bind_assets = bind_assets
-        # The protected object groups that you want to associate with the template. Specify the value in the [**"group1","group2",...**] format.
+        # The protected object groups to attach. The value is in the [**"group1","group2",...**] format.
         self.bind_resource_groups = bind_resource_groups
-        # The protected objects that you want to associate with the template. Specify the value in the [**"XX1","XX2",...**] format.
+        # The protected objects to attach. The value is in the [**"XX1","XX2",...**] format.
         self.bind_resources = bind_resources
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the protection rule template.
+        # The ID of the protection template.
         # 
         # This parameter is required.
         self.template_id = template_id
+        # The IDs of the protected assets to detach. The value is in the [**"XX1","XX2",...**] format.
         self.unbind_assets = unbind_assets
-        # The protected object groups that you want to disassociate from the template. Specify the value in the [**"group1","group2",...**] format.
+        # The protected object groups to detach. The value is in the [**"group1","group2",...**] format.
         self.unbind_resource_groups = unbind_resource_groups
-        # The protected objects that you want to disassociate from the template. Specify the value in the [**"XX1","XX2",...**] format.
+        # The protected objects to detach. The value is in the [**"XX1","XX2",...**] format.
         self.unbind_resources = unbind_resources
 
     def validate(self):

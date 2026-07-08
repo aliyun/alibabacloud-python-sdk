@@ -14,7 +14,7 @@ class DescribeSensitiveRequestsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The tracing results of the data.
+        # The list of data tracing results.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -74,26 +74,25 @@ class DescribeSensitiveRequestsResponseBodyData(DaraModel):
         matched_host: str = None,
         sensitive_list: List[str] = None,
     ):
-        # The number of risks in the previous 30 days.
+        # The number of risks in the last 30 days.
         self.abnormal_count = abnormal_count
-        # The API.
+        # The API operation.
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
         # The IP address.
         self.client_ip = client_ip
-        # The evaluation result. Valid values:
-        # 
-        # *   **leak**: Data leaks may occur.
-        # *   **none**: No data leak can occur.
+        # The assessment result. Valid values:
+        # - **leak**: a leak risk exists.
+        # - **none**: no leak risk exists.
         self.detection_result = detection_result
-        # The number of events in the previous 30 days.
+        # The number of events in the last 30 days.
         self.event_count = event_count
-        # The statistics of the sensitive data.
+        # The list of sensitive data statistics.
         self.info_count = info_count
-        # The domain name of the API.
+        # The domain name to which the API operation belongs.
         self.matched_host = matched_host
-        # The sensitive data.
+        # The list of sensitive data.
         self.sensitive_list = sensitive_list
 
     def validate(self):
@@ -178,7 +177,7 @@ class DescribeSensitiveRequestsResponseBodyDataInfoCount(DaraModel):
         code: str = None,
         count: int = None,
     ):
-        # The type of the sensitive data.
+        # The type of sensitive data.
         self.code = code
         # The number of sensitive data entries.
         self.count = count

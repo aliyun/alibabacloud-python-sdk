@@ -15,27 +15,31 @@ class DescribeLogDeliveryConfigsRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The name of the log delivery configuration. Fuzzy queries are supported.
+        # The name of the log delivery configuration that you want to query. Fuzzy match is supported.
         self.delivery_name_like = delivery_name_like
         # The type of the log delivery configuration that you want to query. Valid values:
         # 
-        # *   **syslog**: Logs are delivered to a syslog service.
-        # *   **kafka**: Logs are delivered to a Kafka service.
-        self.delivery_type = delivery_type
-        # The ID of the Web Application Firewall (WAF) instance.
+        # - **syslog**: Log delivery to a syslog server.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # - **kafka**: Log delivery to a Kafka cluster.
+        self.delivery_type = delivery_type
+        # The ID of the WAF instance.
+        # 
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum number of entries per page. Valid values: 1 to 50. Default value: 20.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Set this parameter to the value of **NextToken** returned in the previous call. You do not need to specify this parameter for the first request.
         self.next_token = next_token
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: the Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the Alibaba Cloud resource group to which the WAF instance belongs.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

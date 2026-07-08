@@ -14,8 +14,11 @@ class DescribeHybridCloudClusterRulesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The response data.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of cloud native mode entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +71,41 @@ class DescribeHybridCloudClusterRulesResponseBodyData(DaraModel):
         status: str = None,
         version: int = None,
     ):
+        # The ID of the hybrid cloud cluster.
         self.cluster_id = cluster_id
+        # The resource ID of the cluster rule.
         self.cluster_rule_resource_id = cluster_rule_resource_id
+        # The configuration of the traffic redirection rule:
+        # 
+        # - **check_mode**
+        # 
+        #   : the mode. Valid values:
+        # 
+        #   - **all**: redirects all traffic.
+        # 
+        #   - **part**: redirects a portion of traffic.
+        # 
+        # - **type**
+        # 
+        #   : the match type of the rule. Valid values:
+        # 
+        #   - **exact**: exact match.
+        # 
+        #   - **regex**: regular expression match.
+        # 
+        # - **substance**: the value of the rule.
         self.rule_config = rule_config
+        # The type of the rule. Valid value:
+        # 
+        # - **pullin**: traffic redirection
         self.rule_type = rule_type
+        # The status of the rule. Valid values:
+        # 
+        # - **1**: enabled.
+        # 
+        # - **0**: disabled.
         self.status = status
+        # The version number.
         self.version = version
 
     def validate(self):

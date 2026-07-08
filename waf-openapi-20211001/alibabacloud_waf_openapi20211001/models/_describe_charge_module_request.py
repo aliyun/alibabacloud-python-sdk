@@ -11,9 +11,19 @@ class DescribeChargeModuleRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
+        # The billing method of the instance. Valid values:
+        # 
+        # - **POSTPAY**: a pay-as-you-go WAF instance.
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

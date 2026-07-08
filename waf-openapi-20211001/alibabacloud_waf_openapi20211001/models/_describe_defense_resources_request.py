@@ -18,26 +18,27 @@ class DescribeDefenseResourcesRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         tag: List[main_models.DescribeDefenseResourcesRequestTag] = None,
     ):
-        # The ID of the Web Application Firewall (WAF) instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         self.instance_id = instance_id
-        # The page number of the paginated results Default value: **1**.
+        # The page number to return when paging is used. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of results per page. Default value: **10**.
+        # The number of entries per page when paging is used. Default value: **10**, which indicates that 10 entries are returned on each page.
         self.page_size = page_size
-        # The query conditions. Specify the value of this parameter as a string in the JSON format.
+        # The query conditions. The value is a JSON string.
         # 
-        # >  The results vary based on the query condition. For more information, see the "**Query parameters**" section in this topic.
+        # > The query results vary based on the query conditions. For more information, see **Query parameter description**.
         self.query = query
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: The Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The tag of the resource. You can specify up to 20 tags.
+        # The list of resource tags. A maximum of 20 tags can be specified.
         self.tag = tag
 
     def validate(self):

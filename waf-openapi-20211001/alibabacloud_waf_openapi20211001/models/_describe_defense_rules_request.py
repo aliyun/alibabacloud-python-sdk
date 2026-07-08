@@ -16,32 +16,43 @@ class DescribeDefenseRulesRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         rule_type: str = None,
     ):
+        # The type of the protection rule. Valid values:
+        # 
+        # - **template** (default): template protection rules.
+        # 
+        # - **resource**: rules for protected objects.
+        # 
+        # - **global**: global rules.
         self.defense_type = defense_type
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
-        # The query conditions. Specify a string that contains multiple parameters in the JSON format.
+        # The query conditions. Specify this parameter as a JSON string.
         # 
-        # >  The results vary based on the query conditions. For more information, see the "**Query parameters**" section in this topic.
+        # > The query results for protection rules vary based on the query conditions. For more information, see **Query parameter details**.
         self.query = query
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of protection rule that you want to query. Valid values:
+        # The type of the protection rule. Valid values:
         # 
-        # *   **whitelist:** whitelist rule.
-        # *   **defense:** defense rule. This is the default value.
+        # - **whitelist**: a whitelist rule
+        # 
+        # - **defense** (default): a protection rule
+        # 
+        # > This parameter is required only when **DefenseType** is set to **template**.
         self.rule_type = rule_type
 
     def validate(self):

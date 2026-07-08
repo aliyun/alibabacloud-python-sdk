@@ -13,9 +13,9 @@ class DescribeMemberAccountsResponseBody(DaraModel):
         account_infos: List[main_models.DescribeMemberAccountsResponseBodyAccountInfos] = None,
         request_id: str = None,
     ):
-        # The information about the member.
+        # The information about the member accounts.
         self.account_infos = account_infos
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,19 +61,21 @@ class DescribeMemberAccountsResponseBodyAccountInfos(DaraModel):
         description: str = None,
         gmt_create: int = None,
     ):
-        # The ID of the member.
+        # The ID of the member account.
         self.account_id = account_id
-        # The name of the member.
+        # The name of the member account.
         self.account_name = account_name
-        # The status of the member.
+        # The status of the member account. Valid values:
         # 
-        # *   **enabled**: managed.
-        # *   **disabled**: not managed.
-        # *   **disabling**: being deleted.
+        # - **enabled**: The member account is being managed.
+        # 
+        # - **disabled**: The member account is not being managed.
+        # 
+        # - **disabling**: The member account is being removed from management.
         self.account_status = account_status
-        # The description of the member.
+        # The description of the member account.
         self.description = description
-        # The time when the member was added.
+        # The time when the member account was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.gmt_create = gmt_create
 
     def validate(self):

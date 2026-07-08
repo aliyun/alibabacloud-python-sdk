@@ -16,14 +16,33 @@ class DescribePostpayBillsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         start_time: int = None,
     ):
+        # The end time. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.end_time = end_time
+        # Instance ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page for a paged query.
         self.max_results = max_results
+        # The pagination token for the next page. If a next page exists, this field has a return value.
+        # 
+        # > If this parameter has a return value, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
+        # The epoch type for billing information. Valid values:
+        # 
+        # - **hour**: Billing information is calculated on an hourly basis.
         self.period_type = period_type
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The start time. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

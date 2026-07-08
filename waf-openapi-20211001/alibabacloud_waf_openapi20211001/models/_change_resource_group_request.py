@@ -13,22 +13,23 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the new resource group. You can view the available resource groups in the Resource Management console.
+        # The ID of the new resource group. You can view available resource groups in the resource group console.
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the protected object that you want to manage.
+        # The ID of the WAF resource to operate on.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The resource type. Set the value to defenseresource.
+        # The resource type. Fixed value: defenseresource.
         # 
         # This parameter is required.
         self.resource_type = resource_type

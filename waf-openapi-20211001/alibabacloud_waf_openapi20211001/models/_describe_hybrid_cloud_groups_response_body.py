@@ -14,11 +14,11 @@ class DescribeHybridCloudGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The node groups.
+        # The list of hybrid cloud node groups.
         self.groups = groups
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of hybrid cloud node groups returned.
         self.total_count = total_count
 
     def validate(self):
@@ -76,40 +76,43 @@ class DescribeHybridCloudGroupsResponseBodyGroups(DaraModel):
         region_code_value: int = None,
         remark: str = None,
     ):
-        # The back-to-origin mark of the protected cluster. The value is in the {ISP name}-{Continent name}-{City name}-{Back-to-origin identifier} format. The back-to-origin identifier is optional.
+        # The back-to-origin mark of the protection cluster. The value is in the **{CarrierTag}-{ContinentTag}-{CityTag}-{Identifier}** format. The identifier is optional.
         # 
-        # >  For more information about ISP names, continent names, city names, and back-to-origin identifiers, see the following sections.
+        # > For a list of valid values, see Additional information about response parameters.
         self.back_source_mark = back_source_mark
-        # The continent code of the protected cluster.
+        # The continent code of the protection cluster.
         # 
-        # >  For more information about continent codes, see Continent codes in this topic.
+        # > For a list of valid codes, see Additional information about response parameters.
         self.continents_value = continents_value
-        # The ID of the node group.
+        # The ID of the hybrid cloud node group.
         self.group_id = group_id
-        # The name of the node group.
+        # The name of the hybrid cloud node group.
         self.group_name = group_name
-        # The type of the node group. Valid values:
+        # The type of the hybrid cloud node group. Valid values:
         # 
-        # *   **protect**
-        # *   **control**
-        # *   **storage**
-        # *   **controlStorage**
+        # - **protect**: protection node group.
+        # 
+        # - **control**: control node group.
+        # 
+        # - **storage**: storage node group.
+        # 
+        # - **controlStorage**: control and storage node group.
         self.group_type = group_type
-        # The IP address of the server used for load balancing.
+        # The IP address of the load balancer that is associated with the hybrid cloud node group.
         self.load_balance_ip = load_balance_ip
         # The ID of the protection node.
         self.location_id = location_id
-        # The ISP code of the protected cluster.
+        # The carrier code of the protection cluster.
         # 
-        # >  For more information about ISP codes, see ISP codes in this topic.
+        # > For a list of valid codes, see Additional information about response parameters.
         self.operator_value = operator_value
-        # The port that is used by the hybrid cloud cluster. The value of this parameter is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+        # The ports that are used by the hybrid cloud cluster. Multiple ports are separated by commas (,).
         self.ports = ports
-        # The city code of the protected cluster.
+        # The city code of the protection cluster.
         # 
-        # >  For more information about city codes, see City codes in this topic.
+        # > For a list of valid codes, see Additional information about response parameters.
         self.region_code_value = region_code_value
-        # The description of the node group.
+        # The description of the hybrid cloud node group.
         self.remark = remark
 
     def validate(self):

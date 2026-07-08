@@ -17,16 +17,42 @@ class DescribeHybridCloudClusterRulesRequest(DaraModel):
         rule_match_type: str = None,
         rule_type: str = None,
     ):
+        # The ID of the hybrid cloud cluster.
+        # 
+        # > This parameter is available only for hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about hybrid cloud clusters.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The prefix of the rule value to match.
         self.rule_content = rule_content
+        # The matching logic. Valid values:
+        # 
+        # - exact: exact match
+        # 
+        # - regex: regular expression match
         self.rule_match_type = rule_match_type
+        # The type of the rule. Valid value:
+        # 
+        # - **pullin**: traffic redirection
+        # 
         # This parameter is required.
         self.rule_type = rule_type
 

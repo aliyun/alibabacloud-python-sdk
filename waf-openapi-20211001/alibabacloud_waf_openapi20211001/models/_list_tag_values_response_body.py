@@ -13,11 +13,11 @@ class ListTagValuesResponseBody(DaraModel):
         request_id: str = None,
         values: List[str] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The tag values.
+        # The list of tag values.
         self.values = values
 
     def validate(self):

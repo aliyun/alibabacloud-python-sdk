@@ -10,10 +10,11 @@ class DescribePauseProtectionStatusResponseBody(DaraModel):
         pause_status: int = None,
         request_id: str = None,
     ):
-        # Indicates whether WAF protection is paused.
+        # Indicates whether WAF protection is paused for the instance. Valid values:
         # 
-        # *   **0**: indicates that WAF protection is not paused. This is the default value.
-        # *   **1**: indicates that WAF protection is paused.
+        # - **0** (default): Protection is not paused.
+        # 
+        # - **1**: Protection is paused.
         self.pause_status = pause_status
         # The ID of the request.
         self.request_id = request_id

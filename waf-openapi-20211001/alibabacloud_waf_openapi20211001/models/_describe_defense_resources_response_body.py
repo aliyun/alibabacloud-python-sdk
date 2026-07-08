@@ -16,9 +16,9 @@ class DescribeDefenseResourcesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The protected objects.
+        # The list of protected objects.
         self.resources = resources
-        # The total number of entries that are returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -80,52 +80,65 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         resource_group: str = None,
         resource_manager_resource_group_id: str = None,
         resource_origin: str = None,
+        resource_status: str = None,
         response_headers: List[main_models.DescribeDefenseResourcesResponseBodyResourcesResponseHeaders] = None,
         xff_status: int = None,
     ):
         # The status of the tracking cookie.
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled. This is the default value.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.acw_cookie_status = acw_cookie_status
-        # The status of the secure attribute of the tracking cookie.
+        # The status of the secure attribute for the tracking cookie.
         # 
-        # *   **0**: disabled. This is the default value.
-        # *   **1**: enabled.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.acw_secure_status = acw_secure_status
-        # The status of the secure attribute of the slider CAPTCHA cookie.
+        # The status of the secure attribute for the slider cookie.
         # 
-        # *   **0**: disabled. This is the default value.
-        # *   **1**: enabled.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.acw_v3secure_status = acw_v3secure_status
-        # The custom header fields that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP addresses in the XFF header fields are used as the originating IP addresses of clients.
+        # The custom XFF headers used to obtain the originating IP address of the client. If XFF is set to 1 and this field is empty, the first IP address in the XFF header is used as the originating IP address of the client.
         self.custom_headers = custom_headers
-        # The description of the protected object.
+        # The description.
         self.description = description
-        # The description of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
+        # The detailed description of the protected object. Different key-value pairs in the map represent different attributes of the protected object.
         self.detail = detail
-        # The creation time of the protected object. Unit: seconds.
+        # The time when the protected object was created. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The most recent modification time of the protected object. Unit: seconds.
+        # The time when the protected object was last modified. Unit: milliseconds.
         self.gmt_modified = gmt_modified
+        # The instance ID of the WAF instance.
         self.instance_id = instance_id
-        # The Alibaba Cloud account to which the protected object belongs. You can specify this parameter to query protected objects that belong to a specific Alibaba Cloud account. Exact match is supported.
+        # The Alibaba Cloud account to which the protected object asset belongs in a multi-account management feature scenario.
         self.owner_user_id = owner_user_id
-        # The protection pattern.
+        # The protection mode of the protected object.
         self.pattern = pattern
         # The name of the cloud service.
         self.product = product
         # The name of the protected object.
         self.resource = resource
-        # The name of the protected object group to which the protected object belongs.
+        # The name of the protection group to which the protected object is added.
         self.resource_group = resource_group
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The origin of the protected object.
         self.resource_origin = resource_origin
-        # The response header.
+        # The status of the protected object. Valid values:
+        # 
+        # - **initializing**: Default protection is being initialized.
+        # 
+        # - **active**: Running normally.
+        # 
+        # - **init_failed**: Default protection initialization failed.
+        self.resource_status = resource_status
+        # The response header parameters.
         self.response_headers = response_headers
-        # Indicates whether the X-Forwarded-For (XFF) header is used.
+        # Indicates whether XFF proxy is enabled for the protected object.
         self.xff_status = xff_status
 
     def validate(self):
@@ -187,6 +200,9 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         if self.resource_origin is not None:
             result['ResourceOrigin'] = self.resource_origin
 
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status
+
         result['ResponseHeaders'] = []
         if self.response_headers is not None:
             for k1 in self.response_headers:
@@ -247,6 +263,9 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         if m.get('ResourceOrigin') is not None:
             self.resource_origin = m.get('ResourceOrigin')
 
+        if m.get('ResourceStatus') is not None:
+            self.resource_status = m.get('ResourceStatus')
+
         self.response_headers = []
         if m.get('ResponseHeaders') is not None:
             for k1 in m.get('ResponseHeaders'):
@@ -264,9 +283,9 @@ class DescribeDefenseResourcesResponseBodyResourcesResponseHeaders(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Specifies the key for a custom response header.
+        # The key of the custom response header.
         self.key = key
-        # Specifies the value for a custom response header.
+        # The value of the custom response header.
         self.value = value
 
     def validate(self):

@@ -19,26 +19,36 @@ class DescribeUserEventTypeRequest(DaraModel):
         user_status_list: List[str] = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
-        self.cluster_id = cluster_id
-        # The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
-        self.end_time = end_time
-        self.event_scope = event_scope
-        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > This parameter applies only to hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain information about hybrid cloud clusters.
+        self.cluster_id = cluster_id
+        # The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
+        self.end_time = end_time
+        # The dimension of the security event. Valid values:
+        # 
+        # - **ip** (default): IP security events.
+        # 
+        # - **account**: account security events.
+        self.event_scope = event_scope
+        # The ID of the WAF instance.
+        # 
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: regions outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_time = start_time
+        # A list of security event statuses.
+        # 
+        # > By default, statistics are collected for security events in the **toBeConfirmed**, **confirmed**, and **actioned** states.
         self.user_status_list = user_status_list
 
     def validate(self):

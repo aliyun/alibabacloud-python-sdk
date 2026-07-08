@@ -12,7 +12,7 @@ class DescribePunishedDomainsResponseBody(DaraModel):
         punished_domains: List[str] = None,
         request_id: str = None,
     ):
-        # The domain names that are penalized for failing to obtain an ICP filing.
+        # The list of domain names penalized for not having an ICP filing.
         self.punished_domains = punished_domains
         # The request ID.
         self.request_id = request_id

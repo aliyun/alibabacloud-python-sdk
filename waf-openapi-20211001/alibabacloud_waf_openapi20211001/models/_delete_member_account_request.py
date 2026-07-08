@@ -15,22 +15,23 @@ class DeleteMemberAccountRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The Alibaba Cloud account ID of the managed member.
+        # The ID of the member account that you want to delete from WAF.
         # 
         # This parameter is required.
         self.member_account_id = member_account_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region in which the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The ID of the resource group to which the WAF instance belongs.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The source IP address of the request. The system automatically obtains the value of this parameter.
+        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
         self.source_ip = source_ip
 
     def validate(self):

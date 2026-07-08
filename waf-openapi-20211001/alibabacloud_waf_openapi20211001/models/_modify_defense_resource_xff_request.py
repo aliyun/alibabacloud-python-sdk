@@ -23,33 +23,37 @@ class ModifyDefenseResourceXffRequest(DaraModel):
     ):
         # The status of the tracking cookie.
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled. This is the default value.
+        # - **0**: Disabled.
+        # 
+        # - **1 (default)**: Enabled.
         self.acw_cookie_status = acw_cookie_status
         # The status of the secure attribute of the tracking cookie.
         # 
-        # *   **0**: disabled. This is the default value.
-        # *   **1**: enabled.
+        # - **0 (default)**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.acw_secure_status = acw_secure_status
         # The status of the secure attribute of the slider CAPTCHA cookie.
         # 
-        # *   **0**: disabled. This is the default value.
-        # *   **1**: enabled.
+        # - **0 (default)**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.acw_v3secure_status = acw_v3secure_status
         # The custom header fields.
         # 
-        # >  The first IP address in the specified custom header field is used as the originating IP address of the client to prevent X-Forwarded-For forgery. If you specify multiple header fields, WAF reads the values of the header fields in sequence until the originating IP address is obtained. If the originating IP address cannot be obtained, the first IP address in the X-Forwarded-For header is used as the originating IP address of the client.
+        # > The first IP address in the specified header field is used as the client source IP address to prevent X-Forwarded-For (XFF) spoofing. If multiple headers are specified, they are tried in sequence to obtain the source IP address. If the first header does not contain an IP address, the system tries the second header, and so on. If no IP address is found in any of the specified headers, the system uses the first IP address in the X-Forwarded-For header.
         self.custom_headers = custom_headers
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: The Chinese mainland.
+        # 
+        # - **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
         # The name of the protected object.
         # 
@@ -57,12 +61,13 @@ class ModifyDefenseResourceXffRequest(DaraModel):
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The response header.
+        # The response header parameters.
         self.response_headers = response_headers
         # Specifies whether a Layer 7 proxy is deployed in front of WAF. Layer 7 proxies include Anti-DDoS Proxy and Alibaba Cloud CDN. Valid values:
         # 
-        # *   **0**: No Layer 7 proxies are deployed. This is the default value.
-        # *   **1**: A Layer 7 proxy is deployed.
+        # - **0 (default)**: No.
+        # 
+        # - **1**: Yes.
         # 
         # This parameter is required.
         self.xff_status = xff_status

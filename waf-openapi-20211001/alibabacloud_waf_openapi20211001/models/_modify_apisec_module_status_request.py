@@ -17,30 +17,29 @@ class ModifyApisecModuleStatusRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The status of the compliance check feature. Valid values:
-        # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # The compliance review status. Valid values: 
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.report_status = report_status
-        # The name of the protected object group to which the protected object belongs.
+        # The name of the protected object group to which the protected object is added.
         self.resource_groups = resource_groups
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The name of the protected object.
         self.resources = resources
-        # The status of the tracing and auditing feature. Valid values:
-        # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # The tracing audit status. Valid values: 
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.trace_status = trace_status
 
     def validate(self):

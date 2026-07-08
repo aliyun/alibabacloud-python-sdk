@@ -14,8 +14,11 @@ class DescribeChargeResultResponseBody(DaraModel):
         request_id: str = None,
         total_se_cu: float = None,
     ):
+        # The billing calculation results for each module.
         self.module_details = module_details
+        # The request ID.
         self.request_id = request_id
+        # The total number of calculated Security Capacity Units (SeCUs).
         self.total_se_cu = total_se_cu
 
     def validate(self):
@@ -64,7 +67,9 @@ class DescribeChargeResultResponseBodyModuleDetails(DaraModel):
         module_code: str = None,
         se_cu: float = None,
     ):
+        # The ID of the billing module.
         self.module_code = module_code
+        # The number of SeCUs for the billing module.
         self.se_cu = se_cu
 
     def validate(self):

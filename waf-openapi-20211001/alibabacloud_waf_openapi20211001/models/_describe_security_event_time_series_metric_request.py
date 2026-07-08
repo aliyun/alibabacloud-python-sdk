@@ -16,29 +16,33 @@ class DescribeSecurityEventTimeSeriesMetricRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple filter conditions have a logical AND relationship.
         # 
         # This parameter is required.
         self.filter = filter
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The metric whose time series data you want to return. The following metrics are supported:
+        # Specifies the content of the returned data. Different metrics correspond to different data content. This operation supports the following metrics:
         # 
-        # *   mitigated_requests: The system returns the time series data of requests that are blocked.
-        # *   monitored_requests: The system returns the time series data of requests that match Monitor protection rules.
-        # *   mitigated_requests_group_by_defense_scene: The system returns the number of requests that match each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can match multiple protection modules. Therefore, the total number of matched requests is inconsistent with the total number of requests.
-        # *   mitigated_requests_group_by_block_defense_scene: The system returns the number of requests that are blocked by each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can be blocked by only one protection module. Therefore, the total number of blocked requests is consistent with the total number of requests.
+        # - mitigated_requests: Returns the time series statistics of blocked requests.
+        # 
+        # - monitored_requests: Returns the time series statistics of requests that hit only observation-type rules.
+        # 
+        # - mitigated_requests_group_by_defense_scene: Returns data grouped by module. It records a time series graph of the hit count for each module. A single request may hit multiple modules. Therefore, the hit count returned by this metric may not be consistent with the number of requests.
+        # 
+        # - mitigated_requests_group_by_block_defense_scene: Returns data grouped by module. It records a time series graph of the number of blocked requests for each module. A single request is blocked by only one module. Therefore, the count returned by this metric is consistent with the number of requests.
         # 
         # This parameter is required.
         self.metric = metric
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: The Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -95,9 +99,9 @@ class DescribeSecurityEventTimeSeriesMetricRequestFilter(DaraModel):
         conditions: List[main_models.DescribeSecurityEventTimeSeriesMetricRequestFilterConditions] = None,
         date_range: main_models.DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange = None,
     ):
-        # The filter conditions. Each object describes a filter condition.
+        # A list of filter conditions. Each node describes one filter condition.
         self.conditions = conditions
-        # The time range for the query.
+        # The time range to query.
         # 
         # This parameter is required.
         self.date_range = date_range
@@ -145,11 +149,13 @@ class DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange(DaraModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds.
+        # The end time of the query. This is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds.
+        # You can query data from the last 30 days. The start time of the query. This is a UNIX timestamp. Unit: seconds.
+        # 
+        # > ## The start time must be within the last 30 days.
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -187,11 +193,11 @@ class DescribeSecurityEventTimeSeriesMetricRequestFilterConditions(DaraModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The field name. This operation supports all fields. For details, see the **Supported field names** section below.
+        # The name of the field to filter. This operation supports all fields.
         self.key = key
-        # The operator. For details, see the **Supported operators** section below.
+        # The operator.
         self.op_value = op_value
-        # The field content.
+        # The filter value.
         self.values = values
 
     def validate(self):

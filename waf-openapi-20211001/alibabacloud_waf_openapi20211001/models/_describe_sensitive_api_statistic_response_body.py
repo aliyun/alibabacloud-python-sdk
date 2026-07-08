@@ -14,7 +14,7 @@ class DescribeSensitiveApiStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The statistics.
+        # The statistics list.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -69,13 +69,15 @@ class DescribeSensitiveApiStatisticResponseBodyData(DaraModel):
         matched_host: str = None,
         sensitive_outbound_count: int = None,
     ):
-        # The number of personal information records involved in cross-border data transfer by domain name.
+        # The number of outbound personal information entries at the domain name level.
         self.info_outbound_count = info_outbound_count
-        # The domain name-related APIs.
+        # The list of API operation statistics information under the domain name.
+        # 
+        # > This field is returned only when the **Type** parameter is set to **apiFormat**, which represents the API dimension statistics information.
         self.list = list
         # The domain name or IP address.
         self.matched_host = matched_host
-        # The number of sensitive personal information records involved in cross-border data transfer by domain name.
+        # The number of outbound sensitive personal information items at the domain name level.
         self.sensitive_outbound_count = sensitive_outbound_count
 
     def validate(self):
@@ -133,15 +135,15 @@ class DescribeSensitiveApiStatisticResponseBodyDataList(DaraModel):
         sensitive_code: List[str] = None,
         sensitive_count: int = None,
     ):
-        # The API.
+        # The API operation.
         self.api_format = api_format
-        # The ID of the API.
+        # The ID of the API operation.
         self.api_id = api_id
-        # The number of personal information records involved in cross-border data transfer by API.
+        # The number of outbound personal information entries at the API level.
         self.info_count = info_count
-        # The types of sensitive data.
+        # The list of sensitive data types.
         self.sensitive_code = sensitive_code
-        # The number of sensitive personal information records involved in cross-border data transfer by API.
+        # The number of outbound sensitive personal information items at the API level.
         self.sensitive_count = sensitive_count
 
     def validate(self):

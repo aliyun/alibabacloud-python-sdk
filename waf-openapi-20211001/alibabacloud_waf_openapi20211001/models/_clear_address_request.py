@@ -11,9 +11,16 @@ class ClearAddressRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         rule_id: int = None,
     ):
+        # Instance ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The ID of the address book.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

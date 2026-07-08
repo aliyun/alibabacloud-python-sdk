@@ -13,7 +13,9 @@ class DescribeHybridCloudResourceDetailResponseBody(DaraModel):
         domain: main_models.DescribeHybridCloudResourceDetailResponseBodyDomain = None,
         request_id: str = None,
     ):
+        # The domain name information.
         self.domain = domain
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,13 +60,19 @@ class DescribeHybridCloudResourceDetailResponseBodyDomain(DaraModel):
     ):
         # CNAME
         self.cname = cname
+        # The domain name.
         self.domain = domain
         # id
         self.id = id
+        # The listening information.
         self.listen = listen
+        # The rules for returning response header values.
         self.redirect = redirect
+        # The resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The resource status.
         self.status = status
+        # The user ID.
         self.uid = uid
 
     def validate(self):
@@ -155,22 +163,73 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(DaraModel):
         sni_host: str = None,
         write_timeout: int = None,
     ):
+        # The custom port configuration. By default, this is the same as the listening port.
         self.backend_ports = backend_ports
+        # The IP address of the origin server or the domain name used for back-to-origin.
         self.backends = backends
+        # Specifies whether to enable public cloud disaster recovery. Valid values:
+        # 
+        # - **true**: Public cloud disaster recovery is enabled.
+        # 
+        # - **false**: Public cloud disaster recovery is disabled.
         self.cname_enabled = cname_enabled
+        # The connection timeout period. Unit: milliseconds.
         self.connect_timeout = connect_timeout
+        # Indicates whether forced HTTP back-to-origin is enabled. Valid values:
+        # 
+        # - **true**: Forced HTTP back-to-origin is enabled.
+        # 
+        # - **false**: Forced HTTP back-to-origin is disabled.
         self.focus_http_backend = focus_http_backend
+        # Indicates whether persistent connections are enabled. Valid values:
+        # 
+        # - **true** (default): Persistent connections are enabled.
+        # 
+        # - **false**: Persistent connections are disabled.
         self.keepalive = keepalive
+        # The number of requests that reuse persistent connections. Valid values: 60 to 1000.
+        # 
+        # > This specifies how many persistent connections are reused after persistent connections are enabled.
         self.keepalive_requests = keepalive_requests
+        # The idle timeout period of persistent connections.
         self.keepalive_timeout = keepalive_timeout
+        # The load balancing algorithm used for back-to-origin. Valid values:
+        # 
+        # - **iphash**: IP hash algorithm.
+        # 
+        # - **roundRobin**: round-robin algorithm.
+        # 
+        # - **leastTime**: least-time back-to-origin algorithm.
         self.loadbalance = loadbalance
+        # Indicates whether the client source IP preservation feature is enabled.
+        # 
+        # - true: The client source IP preservation feature is enabled. After this feature is enabled, the backend service can view the originating IP address of the client.
+        # - false: The client source IP preservation feature is disabled.
         self.proxy_protocol = proxy_protocol
+        # The read timeout period of the request.
         self.read_timeout = read_timeout
+        # The HTTP request headers.
         self.request_headers = request_headers
+        # Indicates whether WAF retries when back-to-origin fails. Valid values:
+        # 
+        # - **true**: WAF retries.
+        # 
+        # - **false**: WAF does not retry.
         self.retry = retry
+        # The hybrid cloud forwarding rules, expressed as a string converted from a JSON array. Each element in the JSON array is a structure that contains the following field:
+        # - **rs**: Array type.
         self.routing_rules = routing_rules
+        # Indicates whether back-to-origin Server Name Indication (SNI) is enabled. Valid values:
+        # 
+        # - **true**: Back-to-origin SNI is enabled.
+        # 
+        # - **false**: Back-to-origin SNI is disabled.
         self.sni_enabled = sni_enabled
+        # The custom value of the SNI extension field. If the value is empty, the SNI value is not customized, and the value of the **Host** field in the request header is used as the value of the SNI extension field by default.
+        # 
+        # > This parameter is returned only when **SniStatus** is set to **1**, which indicates that back-to-origin SNI is enabled.
         self.sni_host = sni_host
+        # The write timeout period. Unit: milliseconds.
         self.write_timeout = write_timeout
 
     def validate(self):
@@ -312,7 +371,9 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders(
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value.
         self.value = value
 
     def validate(self):
@@ -348,8 +409,14 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts(Da
         listen_port: int = None,
         protocol: str = None,
     ):
+        # The back-to-origin port.
         self.backend_port = backend_port
+        # The listening port.
         self.listen_port = listen_port
+        # The protocol type of the listening port. Valid values:
+        # 
+        # - http: HTTP protocol.
+        # - https: HTTPS protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -402,19 +469,76 @@ class DescribeHybridCloudResourceDetailResponseBodyDomainListen(DaraModel):
         xff_header_mode: int = None,
         xff_headers: List[str] = None,
     ):
+        # The certificate ID.
         self.cert_id = cert_id
+        # The type of cipher suite. Valid values:
+        # 
+        # - **1**: all cipher suites.
+        # 
+        # - **2**: strong cipher suites.
+        # 
+        # - **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
+        # The custom cipher suites.
         self.custom_ciphers = custom_ciphers
+        # Indicates whether TLS 1.3 is supported. Valid values:
+        # 
+        # - **true**: TLS 1.3 is supported.
+        # 
+        # - **false**: TLS 1.3 is not supported.
         self.enable_tlsv_3 = enable_tlsv_3
+        # Indicates whether an exclusive IP address is supported. Valid values:
+        # - **true**: Supported.
+        # 
+        # - **false**: Not supported.
         self.exclusive_ip = exclusive_ip
+        # Indicates whether HTTPS forced redirect is enabled. Valid values:
+        # 
+        # - **true**: HTTPS forced redirect is enabled.
+        # 
+        # - **false**: HTTPS forced redirect is disabled.
         self.focus_https = focus_https
+        # Indicates whether HTTP/2 is enabled. Valid values:
+        # 
+        # - **true**: HTTP/2 is enabled.
+        # 
+        # - **false**: HTTP/2 is disabled.
         self.http_2enabled = http_2enabled
+        # The list of available ports for the HTTP protocol. The value is a string. When multiple ports are available, they are returned in the format of **port1,port2,port3**.
         self.http_ports = http_ports
+        # The ports for the HTTPS protocol.
         self.https_ports = https_ports
+        # Indicates whether IPv6 is enabled. Valid values:
+        # 
+        # - **true**: IPv6 is enabled.
+        # 
+        # - **false**: IPv6 is disabled.
         self.ipv_6enabled = ipv_6enabled
+        # The type of protection resource to use. Valid values:
+        # 
+        # - **share**: shared cluster.
+        # 
+        # - **gslb**: shared cluster with intelligent load balancing.
         self.protection_resource = protection_resource
+        # The TLS version. Valid values:
+        # 
+        # - **tlsv1**
+        # 
+        # - **tlsv1.1**
+        # 
+        # - **tlsv1.2**
         self.tlsversion = tlsversion
+        # The method that WAF uses to obtain the actual client IP address. Valid values:
+        # 
+        # - **0**: No Layer 7 proxy is deployed in front of WAF.
+        # 
+        # - **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the client IP address.
+        # 
+        # - **2**: WAF reads the value of a custom header field that you specify as the client IP address.
         self.xff_header_mode = xff_header_mode
+        # The custom header fields used to obtain the client IP address, in the format of [**"header1","header2",……**].
+        # 
+        # > This parameter is required only when **XffHeaderMode** is set to 2, which indicates that WAF reads the value of a custom header field that you specify in the request header as the client IP address.
         self.xff_headers = xff_headers
 
     def validate(self):

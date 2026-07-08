@@ -14,10 +14,11 @@ class DescribeHybridCloudBasicMonitorResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The basic metrics.
+        # The list of basic monitoring metrics.
         self.basic_monitors = basic_monitors
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # > This parameter is deprecated. No meaningful data is returned.
         self.total_count = total_count
 
     def validate(self):
@@ -67,14 +68,21 @@ class DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors(DaraModel):
         monitor_name: str = None,
         use_ratio: int = None,
     ):
+        # The status. Valid values:
+        # 
+        # - **normal**: Normal.
+        # 
+        # - \\*\\*\\*\\*: Abnormal.
         self.levle = levle
         # The metric. Valid values:
         # 
-        # *   **basic_monitor_cpu_usage**: the CPU.
-        # *   **basic_monitor_memory_usage**: the memory.
-        # *   **basic_monitor_disk_usage**: the disk.
+        # - **basic_monitor_cpu_usage**: CPU.
+        # 
+        # - **basic_monitor_memory_usage**: memory.
+        # 
+        # - **basic_monitor_disk_usage**: disk.
         self.monitor_name = monitor_name
-        # The resource usage.
+        # The usage percentage.
         self.use_ratio = use_ratio
 
     def validate(self):

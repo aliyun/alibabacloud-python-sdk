@@ -16,40 +16,40 @@ class CreateApiExportRequest(DaraModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # The hybrid cloud cluster ID.
+        # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The extended parameters of the data export task. The parameter value is in the JSON format. The following keys are supported:
-        # 
-        # *   **instanceId**: the instance ID
-        # *   **clusterId**: the ID of the hybrid cloud cluster
-        # *   **orderKey**: the name of the field used to sort exported data
-        # *   **orderWay**: the sorting method of the exported data
+        # The extended parameters of the export task. You can filter the exported content by specifying conditions. The value is a JSON string constructed from a series of parameters.
+        # > The specific parameters vary depending on the specified **export task type** (**Type**). For more information, refer to **Export task parameter description**.
         self.param = param
-        # Language type. Valid values:
-        # - **cn**: Chinese.
+        # The language type. Valid values:
+        # 
+        # - **cn** (default): Chinese.
         # - **en**: English.
         self.region = region
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of the data export task. Valid values:
+        # The type of the export task. Valid values:
         # 
-        # *   **apisec_api**: API tasks
-        # *   **apisec_abnormal**: API risk tasks
-        # *   **apisec_event**: API security event tasks
+        # - **apisec_api** (default): API asset task.
+        # 
+        # - **apisec_abnormal**: API risk task.
+        # 
+        # - **apisec_event**: API security event task.
         self.type = type
-        # The ID of the time zone.
+        # The time zone ID.
         self.zone_id = zone_id
 
     def validate(self):

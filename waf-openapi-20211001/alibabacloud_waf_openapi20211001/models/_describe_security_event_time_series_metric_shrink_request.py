@@ -13,29 +13,33 @@ class DescribeSecurityEventTimeSeriesMetricShrinkRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
+        # The filter conditions for the query. Multiple filter conditions have a logical AND relationship.
         # 
         # This parameter is required.
         self.filter_shrink = filter_shrink
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The metric whose time series data you want to return. The following metrics are supported:
+        # Specifies the content of the returned data. Different metrics correspond to different data content. This operation supports the following metrics:
         # 
-        # *   mitigated_requests: The system returns the time series data of requests that are blocked.
-        # *   monitored_requests: The system returns the time series data of requests that match Monitor protection rules.
-        # *   mitigated_requests_group_by_defense_scene: The system returns the number of requests that match each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can match multiple protection modules. Therefore, the total number of matched requests is inconsistent with the total number of requests.
-        # *   mitigated_requests_group_by_block_defense_scene: The system returns the number of requests that are blocked by each protection module. The returned results are grouped by protection module and can be used to generate time series charts. A request can be blocked by only one protection module. Therefore, the total number of blocked requests is consistent with the total number of requests.
+        # - mitigated_requests: Returns the time series statistics of blocked requests.
+        # 
+        # - monitored_requests: Returns the time series statistics of requests that hit only observation-type rules.
+        # 
+        # - mitigated_requests_group_by_defense_scene: Returns data grouped by module. It records a time series graph of the hit count for each module. A single request may hit multiple modules. Therefore, the hit count returned by this metric may not be consistent with the number of requests.
+        # 
+        # - mitigated_requests_group_by_block_defense_scene: Returns data grouped by module. It records a time series graph of the number of blocked requests for each module. A single request is blocked by only one module. Therefore, the count returned by this metric is consistent with the number of requests.
         # 
         # This parameter is required.
         self.metric = metric
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: The Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

@@ -15,23 +15,25 @@ class DescribeApisecAssetTrendRequest(DaraModel):
         start_time: int = None,
     ):
         # The ID of the hybrid cloud cluster.
+        # > This parameter is available only in hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+        # The end of the time range to query. The value is a UNIX timestamp (UTC). Unit: milliseconds.
         self.end_time = end_time
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+        # The beginning of the time range to query. The value is a UNIX timestamp (UTC). Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

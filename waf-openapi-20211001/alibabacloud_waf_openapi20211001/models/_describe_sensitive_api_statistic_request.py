@@ -19,35 +19,42 @@ class DescribeSensitiveApiStatisticRequest(DaraModel):
         type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The end of the time range to query. The value is a UNIX timestamp (UTC) in seconds.
         # 
-        # >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+        # > Compliance review currently supports querying data only for the last 1 month, last 3 months, last 6 months, last 12 months, or from January 1 of the previous year to the present. Make sure the time range is valid.
         self.end_time = end_time
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The domain name or IP address of the API.
+        # The domain name or IP address to which the API operation belongs.
         self.matched_host = matched_host
-        # The page number. Default value: **1**.
+        # The page number to return in a paged query. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page in a paged query. Default value: **10**, which indicates 10 entries per page.
         self.page_size = page_size
-        # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
-        # 
-        # >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
+        # The beginning of the time range to query. The value is a UNIX timestamp (UTC) in seconds.
+        # > Compliance review currently supports querying data only for the last 1 month, last 3 months, last 6 months, last 12 months, or from January 1 of the previous year to the present. Make sure the time range is valid.
         self.start_time = start_time
+        # The dimension for statistics. Valid values:
+        # 
+        # - **matchedHost** (default): statistics by domain name.
+        # 
+        # - **apiFormat**: statistics by API operation.
+        # 
+        # > When the **apiFormat** dimension is used, specify the corresponding domain name in the **MatchedHost** parameter.
         self.type = type
 
     def validate(self):

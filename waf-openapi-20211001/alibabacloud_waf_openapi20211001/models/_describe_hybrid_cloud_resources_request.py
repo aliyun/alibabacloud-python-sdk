@@ -16,31 +16,32 @@ class DescribeHybridCloudResourcesRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The back-to-origin IP address or domain name.
+        # The IP address or domain name of the origin server that corresponds to the domain name.
         self.backend = backend
-        # Specifies whether the public cloud disaster recovery feature is enabled for the domain name. Valid values:
+        # Specifies whether to enable public cloud disaster recovery. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.cname_enabled = cname_enabled
-        # The domain name that you want to query.
+        # The domain name to query.
         self.domain = domain
         # The ID of the WAF instance.
-        # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The page number to return when paging is used. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page when paging is used. Default value: **10**, which indicates 10 entries per page.
         self.page_size = page_size
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

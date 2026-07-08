@@ -10,7 +10,7 @@ class CreateHybridCloudClusterResponseBody(DaraModel):
         data: int = None,
         request_id: str = None,
     ):
-        # The ID of the cluster.
+        # The ID of the hybrid cloud cluster.
         self.data = data
         # The ID of the request.
         self.request_id = request_id

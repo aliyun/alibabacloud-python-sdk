@@ -11,9 +11,9 @@ class DescribeHybridCloudUserResponseBody(DaraModel):
         request_id: str = None,
         user_info: main_models.DescribeHybridCloudUserResponseBodyUserInfo = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the ports that can be used by a hybrid cloud cluster.
+        # The information about the available HTTP and HTTPS port ranges for hybrid cloud access.
         self.user_info = user_info
 
     def validate(self):
@@ -50,9 +50,9 @@ class DescribeHybridCloudUserResponseBodyUserInfo(DaraModel):
         http_ports: str = None,
         https_ports: str = None,
     ):
-        # The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+        # The available HTTP ports. The value is a string. If multiple ports are returned, they are separated by commas (,). Example: **port1,port2,port3**.
         self.http_ports = http_ports
-        # The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+        # The available HTTPS ports. The value is a string. If multiple ports are returned, they are separated by commas (,). Example: **port1,port2,port3**.
         self.https_ports = https_ports
 
     def validate(self):

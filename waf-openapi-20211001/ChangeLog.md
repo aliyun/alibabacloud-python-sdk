@@ -1,3 +1,10 @@
+2026-07-08 Version: 7.8.2
+- Update API DescribeDefenseResource: add response parameters Body.Resource.ResourceStatus.
+- Update API DescribeDefenseResources: add response parameters Body.Resources.$.ResourceStatus.
+- Update API DescribePrepayDailyBills: add response parameters Body.Bills.$.ExtensionPlugin.
+- Update API DescribePrepayDailyBills: add response parameters Body.Bills.$.ExtensionPluginRequest.
+
+
 2026-05-29 Version: 7.8.1
 - Update API CreateCloudResource: add request parameters Listen.Domain.
 - Update API DescribeCloudResourceList: add request parameters ResourceDomain.

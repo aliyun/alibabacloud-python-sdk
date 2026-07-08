@@ -13,7 +13,7 @@ class DescribeSensitiveDetectionResultResponseBody(DaraModel):
         data: main_models.DescribeSensitiveDetectionResultResponseBodyData = None,
         request_id: str = None,
     ):
-        # The compliance check results.
+        # The compliance detection results.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -51,7 +51,7 @@ class DescribeSensitiveDetectionResultResponseBodyData(DaraModel):
         self,
         result: List[main_models.DescribeSensitiveDetectionResultResponseBodyDataResult] = None,
     ):
-        # The compliance checks.
+        # The compliance detection list.
         self.result = result
 
     def validate(self):
@@ -89,14 +89,13 @@ class DescribeSensitiveDetectionResultResponseBodyDataResult(DaraModel):
         list: List[main_models.DescribeSensitiveDetectionResultResponseBodyDataResultList] = None,
         max: main_models.DescribeSensitiveDetectionResultResponseBodyDataResultMax = None,
     ):
-        # The compliance check results. Valid values:
-        # 
-        # *   **report**: Risks exist in cross-border data transfer.
-        # *   **none**: No risks exist in cross-border data transfer.
+        # The compliance detection result. Valid values: 
+        # - **report**: A data cross-border transfer risk exists.
+        # - **none**: No data cross-border transfer risk exists.
         self.detection_result = detection_result
-        # The sensitive information check results by sensitive data type.
+        # The detection list of sensitive data types.
         self.list = list
-        # The maximum values in the statistics of sensitive data types.
+        # The maximum values of sensitive data type statistics.
         self.max = max
 
     def validate(self):
@@ -149,11 +148,11 @@ class DescribeSensitiveDetectionResultResponseBodyDataResultMax(DaraModel):
         outbound_count: int = None,
         sensitive_code: int = None,
     ):
-        # The number of sensitive personal information records that are of the most frequent sensitive data type.
+        # The number of personal information records corresponding to the sensitive data type with the highest count.
         self.info_count = info_count
-        # The number of sensitive personal information records that are of the most frequent sensitive data type and are involved in cross-border data transfer.
+        # The number of cross-border personal information records corresponding to the sensitive data type with the highest count.
         self.outbound_count = outbound_count
-        # The most frequent sensitive data type.
+        # The sensitive data type with the highest count.
         self.sensitive_code = sensitive_code
 
     def validate(self):
@@ -197,7 +196,7 @@ class DescribeSensitiveDetectionResultResponseBodyDataResultList(DaraModel):
     ):
         # The number of personal information records.
         self.info_count = info_count
-        # The number of sensitive personal information records that are involved in cross-border data transfer.
+        # The number of cross-border personal information records.
         self.outbound_count = outbound_count
         # The sensitive data type.
         self.sensitive_code = sensitive_code

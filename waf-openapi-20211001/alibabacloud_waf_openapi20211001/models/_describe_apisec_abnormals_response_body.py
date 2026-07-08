@@ -14,7 +14,7 @@ class DescribeApisecAbnormalsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The risks.
+        # The list of risks.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -85,70 +85,67 @@ class DescribeApisecAbnormalsResponseBodyData(DaraModel):
         origin: str = None,
         user_status: str = None,
     ):
-        # The number of risk-related security events.
+        # The number of events associated with the risk.
         self.abnormal_event_number = abnormal_event_number
-        # The ID of the risk.
+        # The risk ID.
         self.abnormal_id = abnormal_id
-        # The details of the risk. The value is a string that consists of multiple parameters in the JSON format. Valid values:
-        # 
-        # * **rule**: risk-related rule
-        # * **data_type**: sensitive data type
-        # * **custom_rule_name**: custom rule name
-        # * **rule_name**: built-in rule name
+        # The detailed risk information, which is a JSON string constructed from a series of parameters. The parameters include:
+        # - **rule**: the rule associated with the risk.
+        # - **data_type**: the sensitive data type.
+        # - **custom_rule_name**: the custom rule name.
+        # - **rule_name**: the built-in rule name.
         self.abnormal_info = abnormal_info
-        # The level of the risk. Valid values:
-        # 
-        # * **high**
-        # * **medium**
-        # * **low**
+        # The risk level. Valid values:
+        # - **high**: high risk.
+        # - **medium**: medium risk.
+        # - **low**: low risk.
         self.abnormal_level = abnormal_level
-        # The type of the risk.
+        # The risk type.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of risks.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported risk types.
         self.abnormal_tag = abnormal_tag
-        # The status of the risk.
+        # The risk status.
         self.abnromal_status = abnromal_status
-        # The risk-related API.
+        # The API operation associated with the risk.
         self.api_format = api_format
-        # The ID of the risk-related API.
+        # The ID of the API associated with the risk.
         self.api_id = api_id
         # The business purpose of the API.
-        # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the business purposes of APIs.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
         self.api_tag = api_tag
-        # The time at which the risk was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time when the risk was first detected. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.discover_time = discover_time
-        # The risk-related samples.
+        # The list of examples associated with the risk.
         self.examples = examples
-        # The time at which the API was first detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time when the API asset was first discovered. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.first_time = first_time
-        # Indicates whether the API is followed. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**(default): no
+        # Indicates whether the risk is followed. Valid values:
+        # - **1**: followed.
+        # - **0**: not followed. This is the default value.
         self.follow = follow
-        # The time at which the risk was marked as ignored. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time when the user marked the risk as ignored. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.ignore_time = ignore_time
-        # The time at which the API was last accessed. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The most recent access time of the API asset. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.lastest_time = lastest_time
-        # The time at which the risk was last detected. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time when the risk was most recently detected. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.latest_discover_time = latest_discover_time
-        # The domain name or IP address of the API.
+        # The domain name or IP address to which the API operation belongs.
         self.matched_host = matched_host
         # The remarks.
         self.note = note
         # The source of the risk type. Valid values:
-        # 
-        # *   **custom**
-        # *   **default**
+        # - **custom**: custom.
+        # - **default**: built-in.
         self.origin = origin
-        # The status of the risk. Valid values:
-        # 
-        # * **toBeConfirmed**
-        # * **confirmed**
-        # * **toBeFixed**
-        # * **fixed**
-        # * **ignored**
+        # The risk status. Valid values:
+        # - **toBeConfirmed**: to be confirmed.
+        # - **confirmed**: confirmed.
+        # - **toBeFixed**: to be fixed.
+        # - **fixed**: fixed (manually verified).
+        # - **ignored**: ignored.
+        # - ** toBeVerified**: to be verified by the system.
+        # - ** notFixed**: not fixed after verification.
+        # - ** systemFixed**: fixed (verified by the system).
         self.user_status = user_status
 
     def validate(self):

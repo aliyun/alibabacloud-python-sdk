@@ -12,7 +12,7 @@ class CreateLogDeliveryConfigResponseBody(DaraModel):
     ):
         # The name of the log delivery configuration.
         self.delivery_name = delivery_name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
