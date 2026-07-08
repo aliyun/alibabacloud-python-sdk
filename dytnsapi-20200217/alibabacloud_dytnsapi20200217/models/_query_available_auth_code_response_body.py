@@ -15,18 +15,19 @@ class QueryAvailableAuthCodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. **OK** indicates that the request is successful.
+        # The status code returned. **OK** indicates that the request was successful.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
-        # The returned message.
+        # The description of the status code returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
 
     def validate(self):

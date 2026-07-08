@@ -14,10 +14,17 @@ class UAIDVerificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # 
+        # - **OK**: The request is successful.
         self.code = code
+        # The returned result.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,6 +78,7 @@ class UAIDVerificationResponseBodyData(DaraModel):
         self,
         uaid: str = None,
     ):
+        # The obtained UAID value.
         self.uaid = uaid
 
     def validate(self):

@@ -15,23 +15,32 @@ class InvalidPhoneNumberFilterResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. Valid values:
+        # The status code of the request. Valid values:
         # 
-        # *   **OK**: The request is successful.
-        # *   **MobileNumberIllegal**: The phone number is invalid.
-        # *   **EncyrptTypeIllegal**: The encryption type is invalid.
-        # *   **MobileNumberTypeNotMatch**: The phone number does not match the encryption type.
-        # *   **CarrierIllegal**: The carrier type is invalid.
-        # *   **AuthCodeNotExist**: The authorization code does not exist.
-        # *   **PortabilityNumberNotSupported**: Mobile number portability is not supported.
-        # *   **Unknown**: An unknown exception occurred.
-        # *   **AuthCodeAndApiNotMatch**: A system exception occurred.
-        # *   **AuthCodeAndApiNotMatch**: The authorization code does not match the API operation.
-        # *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+        # - **OK**: The request is successful.
+        # 
+        # - **MobileNumberIllegal**: The mobile number is invalid.
+        # 
+        # - **EncyrptTypeIllegal**: The encryption type is invalid.
+        # 
+        # - **MobileNumberTypeNotMatch**: The mobile number does not match the encryption type.
+        # 
+        # - **CarrierIllegal**: The carrier type is invalid.
+        # 
+        # - **AuthCodeNotExist**: The authorization code does not exist.
+        # 
+        # - **PortabilityNumberNotSupported**: Mobile number portability is not supported.
+        # 
+        # - **Unknown**: An unknown exception occurred.
+        # 
+        # - **AuthCodeAndApiNotMatch**: A system exception occurred.
+        # 
+        # - **AuthCodeAndApiNotMatch**: The AuthCode does not match the API operation.
+        # - **RequestFrequencyLimit**: Due to carrier restrictions, repeated high-frequency queries against the same phone number within a short period of time are prohibited. If this error code is returned, try again later.
         self.code = code
-        # Details about the returned entries.
+        # The array of returned data.
         self.data = data
-        # The returned message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -90,14 +99,15 @@ class InvalidPhoneNumberFilterResponseBodyData(DaraModel):
         expire_time: str = None,
         original_number: str = None,
     ):
-        # The returned filter results.
+        # The filtering result.
         # 
-        # *   **YES**: the valid phone number. The mappings are returned.
-        # *   **NO**: the invalid phone number. No mappings are returned.
+        # - **YES**: A valid phone number. The mapping relationship is returned.
+        # 
+        # - **NO**: An invalid phone number. The mapping relationship is not returned.
         self.code = code
         # The encrypted phone number.
         self.encrypted_number = encrypted_number
-        # The time when the phone number expires.
+        # The expiration time of the phone number.
         self.expire_time = expire_time
         # The original phone number.
         self.original_number = original_number

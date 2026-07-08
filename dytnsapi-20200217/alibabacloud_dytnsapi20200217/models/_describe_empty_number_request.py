@@ -16,21 +16,24 @@ class DescribeEmptyNumberRequest(DaraModel):
     ):
         # The authorization code.
         # 
-        # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # > On the **My Applications** page of the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), obtain the authorization ID, which is the authorization code.
         # 
         # This parameter is required.
         self.auth_code = auth_code
-        # The phone number to be queried.
+        # The phone number to query.
         # 
-        # >  You can query only one phone number a time.
+        # 
+        # > Only single-number queries are supported.
         # 
         # This parameter is required.
         self.input_number = input_number
-        # The encryption method of the phone number. Valid values:
+        # The encryption method for the phone number. Valid values:
         # 
-        # *   **NORMAL**: The phone number is not encrypted.
-        # *   **MD5**
-        # *   **SHA256**
+        # - **NORMAL**: no encryption.
+        # 
+        # - **MD5**
+        # 
+        # - **SHA256**.
         # 
         # This parameter is required.
         self.mask = mask

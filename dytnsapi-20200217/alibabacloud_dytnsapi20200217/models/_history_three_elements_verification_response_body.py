@@ -14,10 +14,21 @@ class HistoryThreeElementsVerificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Details about why access is denied.
+        # 
+        # > This parameter is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The status code of the request.
+        # 
+        # - A value of `OK` indicates the request was successful.
+        # 
+        # - For other values, see the Error Codes section.
         self.code = code
+        # The query results.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +83,19 @@ class HistoryThreeElementsVerificationResponseBodyData(DaraModel):
         is_consistent: int = None,
         request_carrier: str = None,
     ):
+        # The consistency of the verification result. Valid values:
+        # 
+        # - `0`: No record found.
+        # 
+        # - `1`: The phone number, ID number, and name match the carrier\\"s records.
+        # 
+        # - `2`: The phone number and ID number match the carrier\\"s records, but the name does not.
+        # 
+        # - `3`: The phone number and name match the carrier\\"s records, but the ID number does not.
+        # 
+        # - `4`: The phone number matches the carrier\\"s records, but the name and ID number do not.
         self.is_consistent = is_consistent
+        # The carrier to which the request was routed.
         self.request_carrier = request_carrier
 
     def validate(self):

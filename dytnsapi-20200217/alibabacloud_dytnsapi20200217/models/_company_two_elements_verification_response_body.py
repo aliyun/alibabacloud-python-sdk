@@ -16,15 +16,15 @@ class CompanyTwoElementsVerificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The request status code.
         self.code = code
-        # The response parameters.
+        # The struct.
         self.data = data
-        # The returned message.
+        # The description of the returned status code.
         self.message = message
-        # The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+        # The common parameter. Each request returns a unique ID, which can be used to troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):
@@ -81,21 +81,25 @@ class CompanyTwoElementsVerificationResponseBodyData(DaraModel):
         reason_code: str = None,
         verify_result: str = None,
     ):
-        # The information about the enterprise.
-        self.detail_info = detail_info
-        # The fields to be verified.
-        self.inconsistent_data = inconsistent_data
-        # The code of the verification result. Valid values:
+        # Enterprise details.
         # 
-        # *   0: The two elements belong to the same enterprise.
-        # *   1: The two elements belong to the same enterprise, but the business status of the enterprise is abnormal.
-        # *   3: The two elements do not belong to the same enterprise.
-        # *   4: No information about the enterprise is found.
+        # > This field is not returned for public institutions or civil groups.
+        self.detail_info = detail_info
+        # The fields that are inconsistent in the verification.
+        self.inconsistent_data = inconsistent_data
+        # The verification result code. Valid values:
+        # 
+        # - 0: Verification consistent
+        # - 1: Verification consistent, the enterprise is not in normal operation
+        # - 3: The two enterprise elements failed verification
+        # - 4: No such enterprise found
         self.reason_code = reason_code
         # The verification result. Valid values:
         # 
-        # *   true: The two elements belong to the same enterprise and the business status of the enterprise is Active.
-        # *   false: The two elements do not belong to the same enterprise.
+        # - true: The information is verified to be consistent, and the enterprise is operating normally.
+        # - false: The verification failed.
+        # 
+        # > The operating status verification is not supported for public institutions or civil groups. Only the consistency between the enterprise name and the enterprise certificate number is verified.
         self.verify_result = verify_result
 
     def validate(self):
@@ -144,7 +148,7 @@ class CompanyTwoElementsVerificationResponseBodyDataDetailInfo(DaraModel):
         enterprise_status: str = None,
         open_time: str = None,
     ):
-        # The business status of the enterprise.
+        # The operating status of the enterprise.
         self.enterprise_status = enterprise_status
         # The business term of the enterprise.
         self.open_time = open_time

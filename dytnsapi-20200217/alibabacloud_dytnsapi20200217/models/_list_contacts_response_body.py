@@ -15,9 +15,13 @@ class ListContactsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code. `OK` indicates a successful request.
         self.code = code
+        # An array of contact information objects.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -79,14 +83,39 @@ class ListContactsResponseBodyData(DaraModel):
         opent_attribution_warning: bool = None,
         phone_status: int = None,
     ):
+        # The contact email.
         self.contact_email = contact_email
+        # The contact ID.
         self.contact_id = contact_id
+        # The contact name.
         self.contact_name = contact_name
+        # The contact mobile number.
         self.contact_phone = contact_phone
+        # The email status.
+        # 
+        # - 1: Normal
+        # 
+        # - 0: Abnormal
         self.mail_status = mail_status
+        # The calling number.
         self.main = main
+        # Specifies whether the number status warning is enabled.
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.open_status_warning = open_status_warning
+        # Specifies whether the number attribution query warning is enabled.
+        # 
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.opent_attribution_warning = opent_attribution_warning
+        # The number status.
+        # 
+        # - 1: Normal
+        # 
+        # - 0: Abnormal
         self.phone_status = phone_status
 
     def validate(self):

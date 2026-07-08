@@ -16,18 +16,19 @@ class QueryTagInfoBySelectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. **OK** indicates that the request is successful.
+        # The request status code. The value **OK** indicates that the request was successful.
         self.code = code
-        # The returned data.
+        # The data returned.
         self.data = data
-        # The returned message.
+        # The description of the returned status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -102,12 +103,13 @@ class QueryTagInfoBySelectionResponseBodyData(DaraModel):
     ):
         # The list of available authorization codes.
         self.auth_code_list = auth_code_list
+        # The tag type.
         self.complexity_type = complexity_type
-        # The URL for the API demo.
+        # The link to the API demo.
         self.demo_address = demo_address
-        # The URL for the API documentation.
+        # The link to the API documentation.
         self.doc_address = doc_address
-        # The URL for the definitions of the enumerated values.
+        # The link to the enumerated value definition.
         self.enum_definition_address = enum_definition_address
         # The flow name.
         self.flow_name = flow_name
@@ -117,6 +119,7 @@ class QueryTagInfoBySelectionResponseBodyData(DaraModel):
         self.industry_name = industry_name
         # The list of tag parameters.
         self.param_list = param_list
+        # The rich text description. This field is available only for complex tags.
         self.rich_text_description = rich_text_description
         # The scene ID.
         self.scene_id = scene_id
@@ -251,9 +254,9 @@ class QueryTagInfoBySelectionResponseBodyDataParamList(DaraModel):
         self.must = must
         # The Chinese name of the parameter.
         self.name = name
-        # The type. The code that corresponds to EnumUIWidgetTypes.
+        # The code corresponding to the type EnumUIWidgetTypes.
         self.type = type
-        # The definitions of the enumerated values such as Code or Desc.
+        # The definition of an enumerated value, in the format of code:desc.
         self.value_dict = value_dict
 
     def validate(self):

@@ -13,15 +13,15 @@ class ThreeElementsVerificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The request status code.
         # 
-        # *   **OK**: The request is successful.
-        # *   For more information, see Error codes in this documentation.
-        # *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+        # - **OK**: The request was successful.
+        # - For other error codes, see the error code table in this chapter.
+        # - **RequestFrequencyLimit**: Due to carrier restrictions, repeated high-frequency queries on the same number within a short period are prohibited. If this error code is returned, try again later.
         self.code = code
-        # The response parameters.
+        # The data returned.
         self.data = data
-        # The returned message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -74,23 +74,25 @@ class ThreeElementsVerificationResponseBodyData(DaraModel):
     ):
         # The basic carrier. Valid values:
         # 
-        # *   **China Mobile**
-        # *   **China Unicom**
-        # *   **China Telecom**
+        # - **China Mobile**.
+        # 
+        # - **China Unicom**.
+        # 
+        # - **China Telecom**.
         self.basic_carrier = basic_carrier
-        # Indicates whether the specified name, phone number, and ID card number belong to the same user. Valid values:
+        # Indicates whether the verification results are consistent. Returned values:
         # 
-        # * **1**: The specified name, phone number, and ID card number belong to the same user.
-        # * **0**: The specified name, phone number, and ID card number do not belong to the same user.
-        # * **2**: The specified name, phone number, and ID card number cannot be found.
+        # - **1**: Consistent
+        # - **0**: Inconsistent
+        # - **2**: Not found
+        # >The data update timeliness varies by carrier and city, and is typically between T+1 and T+3.
+        # The verification results for mobile phone numbers of different carriers in different states are as follows: 
         # 
-        # **Note** The phone number registration data of a user is usually updated one or three days after registration. The registration data can be queried only after the update. The following table shows the verification results under different phone number states.
-        # 
-        # |Carrier/Phone number state|Out-of-service|Nonexistent|Canceled|
-        # |---|---|---|---|
-        # |China Mobile|Verifications can be carried out normally.|The specified name, phone number, and ID card number cannot be found.|The specified name, phone number, and ID card number cannot be found.|
-        # |China Unicom|Verifications can be carried out normally.|The specified name, phone number, and ID card number do not belong to the same user.|The specified name, phone number, and ID card number do not belong to the same user.|
-        # |China Telecom|Verifications can be carried out normally.|The specified name, phone number, and ID card number cannot be found.|The specified name, phone number, and ID card number cannot be found.|
+        # |Carrier/Mobile Phone Number Status|Suspended|Empty Number|Deregistered|
+        # |--|--|--|--|
+        # |China Mobile|Normal verification|Not found|Not found|
+        # |China Unicom|Normal verification|Inconsistent|Inconsistent|
+        # |China Telecom|Normal verification|Not found|Not found|
         self.is_consistent = is_consistent
 
     def validate(self):

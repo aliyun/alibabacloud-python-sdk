@@ -13,18 +13,9 @@ class DescribePhoneNumberAttributeResponseBody(DaraModel):
         phone_number_attribute: main_models.DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute = None,
         request_id: str = None,
     ):
-        # The response code. Valid values:
-        # 
-        # *   **OK**: The request is successful.
-        # *   **InvalidParameter**: The specified phone number is invalid or the parameter format is invalid.
-        # *   **PhoneNumberNotfound**: No attribute information can be found for the specified phone number.
-        # *   **isp.UNKNOWN**: An unknown exception occurred.
         self.code = code
-        # The returned message.
         self.message = message
-        # The attribute information about the phone number.
         self.phone_number_attribute = phone_number_attribute
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77,24 +68,11 @@ class DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute(DaraModel):
         number_segment: int = None,
         province: str = None,
     ):
-        # The basic carrier. Valid values:
-        # 
-        # *   **China Mobile**
-        # *   **China Unicom**
-        # *   **China Telecom**
         self.basic_carrier = basic_carrier
-        # The actual carrier, including the virtual network operator (VNO). If the phone number involves mobile number portability, the value of this parameter is the carrier after mobile number portability.
         self.carrier = carrier
-        # The city where the phone number is registered.
         self.city = city
-        # Indicates whether the phone number involves mobile number portability. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_number_portability = is_number_portability
-        # The number segment to which the phone number belongs.
         self.number_segment = number_segment
-        # The province where the phone number is registered.
         self.province = province
 
     def validate(self):

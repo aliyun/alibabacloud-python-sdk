@@ -14,10 +14,18 @@ class CertNoTwoElementVerificationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The authorization code.
+        # 
+        # > In **Cell Phone Number Service** -> [**Tag Marketplace**](https://dytns.console.aliyun.com/analysis/square), select a tag and submit an application for use. After the application is approved, you will obtain the authorization code.
+        # 
         # This parameter is required.
         self.auth_code = auth_code
+        # The name to be verified.
+        # 
         # This parameter is required.
         self.cert_name = cert_name
+        # The ID card number to be verified.
+        # 
         # This parameter is required.
         self.cert_no = cert_no
         self.owner_id = owner_id

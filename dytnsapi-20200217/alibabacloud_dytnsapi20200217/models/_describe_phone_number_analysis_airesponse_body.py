@@ -14,14 +14,14 @@ class DescribePhoneNumberAnalysisAIResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. Valid values:
-        # 
-        # *   OK: The request is successful.
+        # The request status code. Valid values:
+        # - OK: success
         self.code = code
-        # The response parameters.
+        # The returned result.
         self.data = data
-        # The returned message.
+        # The description of the returned status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -78,13 +78,13 @@ class DescribePhoneNumberAnalysisAIResponseBodyData(DaraModel):
         code: str = None,
         number: str = None,
     ):
-        # The returned code.
+        # The returned result code.
         # 
-        # *   YES: The specified phone number is valid.
-        # *   NO: The specified phone number is invalid.
-        # *   UNKNOWN: The specified phone number is unknown
+        # - YES: valid
+        # - NO: invalid
+        # - UNKNOWN: unknown
         self.code = code
-        # The specified phone number.
+        # The phone number that was passed in.
         self.number = number
 
     def validate(self):

@@ -13,15 +13,16 @@ class TwoElementsVerificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. Valid values:
+        # The request status code.
         # 
-        # *   **OK**: The request is successful.
-        # *   For more information, see Error codes in this documentation.
-        # *   **RequestFrequencyLimit**: Repeated queries for the same phone number or name at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+        # - **OK**: The request was successful.
+        # 
+        # - For other error codes, see the error code table in this chapter.
+        # - **RequestFrequencyLimit**: Due to operator restrictions, repeated high-frequency queries against the same number or name in a short period are prohibited. If this error code is returned, try again later.
         self.code = code
-        # The response parameters.
+        # The structure.
         self.data = data
-        # The returned message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -72,29 +73,32 @@ class TwoElementsVerificationResponseBodyData(DaraModel):
         basic_carrier: str = None,
         is_consistent: int = None,
     ):
-        # The basic carriers. Valid values:
+        # The basic operator. Valid values:
         # 
-        # *   **China Mobile**
-        # *   **China Unicom**
-        # *   **China Telecom**
+        # - **China Mobile**.
         # 
-        # >  You are not allowed to verify numbers assigned by China Broadnet.
+        # - **China Unicom**.
+        # 
+        # - **China Telecom**.
+        # 
+        # >Notice: China Broadcasting Network numbers are not currently supported.
         self.basic_carrier = basic_carrier
-        # Indicates whether the specified name and phone number belong to the same user. Valid values:
+        # Indicates whether the verification result is consistent. Returns:
         # 
-        # * **1**: The specified name and phone number belong to the same user.
+        # - **1**: Consistent.
         # 
-        # * **0**: The specified name and phone number do not belong to the same user.
+        # - **0**: Inconsistent.
         # 
-        # * **2**: The specified name and phone number cannot be found.
+        # - **2**: Not found.
         # 
-        # The phone number registration data of a user is usually updated one or three days after registration. The registration data can be queried only after the update. The following table shows the verification results under different phone number states.
+        # The data update timeliness for different operators and cities is typically T+1 to T+3.
+        # The verification results for different operator phone numbers in different states are as follows: 
         # 
-        # |Carrier/Phone number state|Out-of-service|Nonexistent|Canceled|
-        # |---|---|---|---|
-        # |China Mobile|Verifications can be carried out normally.|The specified name and phone number cannot be found.|The specified name and phone number cannot be found.|
-        # |China Unicom|Verifications can be carried out normally.|The specified name and phone number do not belong to the same user.|The specified name and phone number do not belong to the same user.|
-        # |China Telecom|Verifications can be carried out normally.|The specified name and phone number cannot be found.|The specified name and phone number cannot be found.|
+        # |Operator/Phone Number Status|Suspended|Empty Number|Cancelled|
+        # |--|--|--|--|
+        # |China Mobile|Normal verification|Not found|Not found|
+        # |China Unicom|Normal verification|Inconsistent|Inconsistent|
+        # |China Telecom|Normal verification|Not found|Not found|
         self.is_consistent = is_consistent
 
     def validate(self):

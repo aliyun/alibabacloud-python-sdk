@@ -15,17 +15,52 @@ class HistoryThreeElementsVerificationRequest(DaraModel):
         name: str = None,
         verification_time: str = None,
     ):
+        # The authorization code. You can obtain it from the following sources:
+        # 
+        # - On the [Tag Plaza](https://dytns.console.aliyun.com/analysis/square) page in the Phone Number Intelligence console, select the **three-element ID verification** tag and submit an application. You will receive an authorization code after the application is approved.
+        # 
+        # - On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page in the Phone Number Intelligence console, find the authorization ID for your approved **three-element ID verification** service.
+        # 
         # This parameter is required.
         self.auth_code = auth_code
+        # The carrier to query. By default, the system queries the number\\"s carrier of record. Specify this parameter to route the query to a specific carrier.
+        # 
+        # Valid values:
+        # 
+        # - `CMCC`: China Mobile
+        # 
+        # - `CUCC`: China Unicom
+        # 
+        # - `CTCC`: China Telecom
+        # 
+        # > Due to number portability, a ported number\\"s historical carrier may be unknown. Use this parameter to explicitly query a specific carrier. If omitted, the query defaults to the number\\"s current carrier of record.
+        # >
+        # > **Important** Specifying China Broadcasting Network is not supported and results in an HTTP 400 error.
         self.carrier = carrier
+        # The ID number to verify.
+        # 
+        # - If `Mask` is set to `NORMAL`, the value of this parameter is in plaintext.
+        # 
         # This parameter is required.
         self.cert_code = cert_code
+        # The phone number to query.
+        # 
+        # - If `Mask` is set to `NORMAL`, this parameter must be an 11-digit mobile phone number.
+        # 
         # This parameter is required.
         self.input_number = input_number
+        # The encryption method. Valid value:
+        # 
+        # - **NORMAL**: The phone number is not encrypted.
+        # 
         # This parameter is required.
         self.mask = mask
+        # The name to verify.
+        # 
         # This parameter is required.
         self.name = name
+        # The historical point in time to verify, in `yyyyMMddHHmmss` format. If the specific time of day is unknown, set the `HHmmss` portion to `000000`. For example, `20230615000000` verifies ownership as of June 15, 2023.
+        # 
         # This parameter is required.
         self.verification_time = verification_time
 

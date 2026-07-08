@@ -19,15 +19,24 @@ class SaveContactsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business type. Set the value to **contact**.
         self.biz_type = biz_type
+        # The contact email.
         self.contact_email = contact_email
+        # The contact name.
+        # 
         # This parameter is required.
         self.contact_name = contact_name
+        # The contact phone number.
         self.contact_phone = contact_phone
+        # Specifies whether to enable email alerts. Valid values:
         self.mail_status = mail_status
+        # Specifies whether to enable status warnings. Valid values:
         self.open_status_warning = open_status_warning
+        # Specifies whether to enable attribution warnings. Valid values:
         self.opent_attribution_warning = opent_attribution_warning
         self.owner_id = owner_id
+        # Specifies whether to enable phone alerts. Valid values:
         self.phone_status = phone_status
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

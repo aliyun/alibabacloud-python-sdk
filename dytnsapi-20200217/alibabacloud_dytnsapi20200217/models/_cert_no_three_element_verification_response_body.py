@@ -14,10 +14,17 @@ class CertNoThreeElementVerificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about why access was denied.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # - OK: The request is successful.
+        # - For other error codes, see the error code list below.
         self.code = code
+        # The returned result.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,6 +80,19 @@ class CertNoThreeElementVerificationResponseBodyData(DaraModel):
         self,
         is_consistent: str = None,
     ):
+        # Indicates whether the verification result is consistent. Returned values:
+        # 
+        # - 0: The name matches the ID card number, but they are recognized as not the same person.
+        # 
+        # - 1: The name matches the ID card number, and they are recognized as the same person.
+        # 
+        # - 2: The name matches the ID card number, and they are suspected to be the same person.
+        # 
+        # - 3: The name matches the ID card number, but no portrait information is found in the database.
+        # 
+        # - 4: Invalid identity information (the name does not match the ID card number).
+        # 
+        # - 5: The photo quality is unqualified.
         self.is_consistent = is_consistent
 
     def validate(self):

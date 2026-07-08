@@ -16,10 +16,17 @@ class DescribePhoneNumberAnalysisResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial. This parameter is returned only if RAM verification fails.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # 
+        #  **OK**: The request was successful.
         self.code = code
+        # The information about the phone number analysis result.
         self.data = data
+        # The description of the phone number status.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,6 +80,7 @@ class DescribePhoneNumberAnalysisResponseBodyData(DaraModel):
         self,
         list: List[main_models.DescribePhoneNumberAnalysisResponseBodyDataList] = None,
     ):
+        # The data list.
         self.list = list
 
     def validate(self):
@@ -109,7 +117,12 @@ class DescribePhoneNumberAnalysisResponseBodyDataList(DaraModel):
         code: str = None,
         number: str = None,
     ):
+        # The result code returned.
+        # - YES: valid
+        # - NO: invalid
+        # - UNKNOWN: unknown
         self.code = code
+        # The mobile phone number that is passed in.
         self.number = number
 
     def validate(self):

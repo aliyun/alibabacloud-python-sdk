@@ -144,6 +144,9 @@ from ._uaidverification_response import UAIDVerificationResponse
 from ._update_contacts_request import UpdateContactsRequest
 from ._update_contacts_response_body import UpdateContactsResponseBody
 from ._update_contacts_response import UpdateContactsResponse
+from ._virtual_three_elements_verification_request import VirtualThreeElementsVerificationRequest
+from ._virtual_three_elements_verification_response_body import VirtualThreeElementsVerificationResponseBody
+from ._virtual_three_elements_verification_response import VirtualThreeElementsVerificationResponse
 from ._cert_no_three_element_verification_response_body import CertNoThreeElementVerificationResponseBodyData
 from ._cert_no_two_element_verification_response_body import CertNoTwoElementVerificationResponseBodyData
 from ._company_four_elements_verification_response_body import CompanyFourElementsVerificationResponseBodyDataDetailInfo
@@ -192,6 +195,7 @@ from ._two_elements_verification_response_body import TwoElementsVerificationRes
 from ._uaidcollection_response_body import UAIDCollectionResponseBodyModel
 from ._uaidconversion_response_body import UAIDConversionResponseBodyModel
 from ._uaidverification_response_body import UAIDVerificationResponseBodyData
+from ._virtual_three_elements_verification_response_body import VirtualThreeElementsVerificationResponseBodyData
 
 __all__ = [
     CertNoThreeElementVerificationRequest,
@@ -336,6 +340,9 @@ __all__ = [
     UpdateContactsRequest,
     UpdateContactsResponseBody,
     UpdateContactsResponse,
+    VirtualThreeElementsVerificationRequest,
+    VirtualThreeElementsVerificationResponseBody,
+    VirtualThreeElementsVerificationResponse,
     CertNoThreeElementVerificationResponseBodyData,
     CertNoTwoElementVerificationResponseBodyData,
     CompanyFourElementsVerificationResponseBodyDataDetailInfo,
@@ -383,5 +390,6 @@ __all__ = [
     TwoElementsVerificationResponseBodyData,
     UAIDCollectionResponseBodyModel,
     UAIDConversionResponseBodyModel,
-    UAIDVerificationResponseBodyData
+    UAIDVerificationResponseBodyData,
+    VirtualThreeElementsVerificationResponseBodyData
 ]

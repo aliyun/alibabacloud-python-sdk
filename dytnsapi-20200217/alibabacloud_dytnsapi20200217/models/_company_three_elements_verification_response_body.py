@@ -18,13 +18,13 @@ class CompanyThreeElementsVerificationResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The request status code.
         self.code = code
-        # The response parameters.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The description of the returned status code.
         self.message = message
-        # The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+        # The common parameter. Each request returns a unique ID, which can be used to troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):
@@ -81,23 +81,23 @@ class CompanyThreeElementsVerificationResponseBodyData(DaraModel):
         reason_code: int = None,
         verify_result: str = None,
     ):
-        # The information about the enterprise.
+        # The company details.
         self.detail_info = detail_info
-        # The fields to be verified.
+        # The fields whose verification results are inconsistent.
         self.inconsistent_data = inconsistent_data
-        # The code of the verification result. Valid values:
+        # The verification result code. Valid values:
         # 
-        # *   0: The three elements belong to the same enterprise.
-        # *   1: The three elements belong to the same enterprise, and the business status of the enterprise is abnormal.
-        # *   2: The legal representative information cannot match the enterprise information.
-        # *   3: The three elements do not belong to the same enterprise.
-        # *   4: No information about the enterprise is found.
-        # *   5: No information about the legal representative is found.
+        # - 0: The verification is consistent.
+        # - 1: The verification is consistent, but the company is not operating normally.
+        # - 2: The person-company verification is inconsistent.
+        # - 3: The two-element company verification failed.
+        # - 4: The company is not found.
+        # - 5: The person does not exist in the database.
         self.reason_code = reason_code
         # The verification result. Valid values:
         # 
-        # *   true: The three elements belong to the same enterprise and the business status of the enterprise is Active.
-        # *   false: The three elements do not belong to the same enterprise.
+        # - true: The information is consistent and the company is operating normally.
+        # - false: The verification failed.
         self.verify_result = verify_result
 
     def validate(self):
@@ -146,9 +146,9 @@ class CompanyThreeElementsVerificationResponseBodyDataDetailInfo(DaraModel):
         enterprise_status: str = None,
         open_time: str = None,
     ):
-        # The business status of the enterprise.
+        # The operating status of the company.
         self.enterprise_status = enterprise_status
-        # The business term of the enterprise.
+        # The business term of the company.
         self.open_time = open_time
 
     def validate(self):

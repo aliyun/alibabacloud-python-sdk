@@ -15,7 +15,7 @@ class QueryAvailableAuthCodeRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag ID.
+        # The tag ID. You can call the [QueryTagListPage](~~QueryTagListPage~~) operation to query tag IDs.
         self.tag_id = tag_id
 
     def validate(self):

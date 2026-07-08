@@ -15,10 +15,23 @@ class QueryPackageTypeInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
+        # - OK indicates that the request is successful.
+        # 
+        # - For other error codes, see the [error code list](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

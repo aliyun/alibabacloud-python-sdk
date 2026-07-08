@@ -1,3 +1,7 @@
+2026-07-08 Version: 3.4.0
+- Support API VirtualThreeElementsVerification.
+
+
 2026-05-26 Version: 3.3.0
 - Support API HistoryThreeElementsVerification.
 

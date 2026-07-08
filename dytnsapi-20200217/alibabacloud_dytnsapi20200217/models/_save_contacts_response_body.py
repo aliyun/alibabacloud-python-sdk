@@ -12,9 +12,13 @@ class SaveContactsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code. A value of `OK` indicates that the request was successful. For more information about other error codes, see the [error code list](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
+        # The data returned by the operation.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -16,25 +16,35 @@ class PhoneNumberStatusForSmsRequest(DaraModel):
     ):
         # The authorization code.
         # 
-        # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # > On the **My Applications** page in the [Phone Number Pedia console](https://dytns.console.aliyun.com/analysis/apply), obtain the authorization ID and use it as the value for this parameter.
         # 
         # This parameter is required.
         self.auth_code = auth_code
-        # The phone number to be queried.
+        # The phone number to query.
         # 
-        # *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
-        # *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
-        # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+        # - If `Mask` is set to `NORMAL`, specify an 11-digit phone number.
         # 
-        # >  Letters in the encrypted strings are not case-sensitive.
+        # - If `Mask` is set to `MD5`, specify a 32-character encrypted string.
+        # 
+        # - If `Mask` is set to `SHA256`, specify a 64-character encrypted string.
+        # 
+        # - If `Mask` is set to `SM3`, specify a 64-character encrypted string.
+        # 
+        # >Notice: 
+        # 
+        # The encrypted string is not case-sensitive.
         # 
         # This parameter is required.
         self.input_number = input_number
-        # The encryption method of the phone number. Valid values:
+        # The encryption method for the phone number. Valid values:
         # 
-        # *   **NORMAL**: plaintext
-        # *   **MD5**
-        # *   **SHA256**
+        # - **NORMAL**: The number is not encrypted.
+        # 
+        # - **MD5**
+        # 
+        # - **SHA256**
+        # 
+        # - **SM3**
         # 
         # This parameter is required.
         self.mask = mask

@@ -16,18 +16,17 @@ class QueryUsageStatisticsByTagIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. **OK** indicates that the request is successful.
+        # 请求状态码。 **OK**为成功。
         self.code = code
-        # The returned data.
+        # 返回的数据内容。
         self.data = data
-        # The returned message.
+        # 返回状态码描述。
         self.message = message
-        # The request ID.
+        # 请求ID。
         self.request_id = request_id
-        # Indicates whether the call is successful.
-        # 
-        # *   true
-        # *   false
+        # 表示是否调用成功。
+        # - true：调用成功。             
+        #  - false：调用失败。
         self.success = success
 
     def validate(self):
@@ -97,27 +96,27 @@ class QueryUsageStatisticsByTagIdResponseBodyData(DaraModel):
         tag_name: str = None,
         total: int = None,
     ):
-        # The authorization code.
+        # 授权码。
         self.authorization_code = authorization_code
-        # The numbers for which the query failed.
+        # 查询失败号码数。
         self.fail_total = fail_total
-        # The creation time.
+        # 创建时间。
         self.gmt_date_str = gmt_date_str
-        # The ID of the authorization code usage record.
+        # 授权码使用记录ID。
         self.id = id
-        # The industry name.
+        # 行业名称。
         self.industry_name = industry_name
-        # The customer product ID (PID).
+        # 客户pid。
         self.partner_id = partner_id
-        # The scene name.
+        # 场景名称。
         self.scene_name = scene_name
-        # The numbers for which the query succeeded.
+        # 查询成功号码数。
         self.success_total = success_total
-        # The tag name.
+        # 标签名称。
         self.tag_id = tag_id
-        # The tag name.
+        # 标签名称。
         self.tag_name = tag_name
-        # The total quantity of numbers that are involved in the query.
+        # 查询总号码数。
         self.total = total
 
     def validate(self):

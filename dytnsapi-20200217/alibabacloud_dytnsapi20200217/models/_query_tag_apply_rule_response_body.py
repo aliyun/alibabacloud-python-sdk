@@ -14,18 +14,19 @@ class QueryTagApplyRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. **OK** indicates that the request is successful.
+        # The request status code. **OK** indicates success.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The description of the returned status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -84,17 +85,29 @@ class QueryTagApplyRuleResponseBodyData(DaraModel):
         need_apply_material: int = None,
         sla_link: str = None,
     ):
-        # The requirements for application materials.
+        # The application material requirements. This parameter is returned when NeedApplyMaterial=1.
         self.apply_material_desc = apply_material_desc
-        # Indicates whether the application is automatically approved.
+        # Indicates whether to automatically approve. Valid values:
+        # 
+        # - 0: do not automatically approve.
+        # 
+        # - 1: automatically approve.
         self.auto_audit = auto_audit
-        # The URL for the billing documentation.
+        # The billing standard description link.
         self.charging_standard_link = charging_standard_link
-        # indicates whether encrypted queries are supported.
+        # Indicates whether encrypted query is supported. Valid values:
+        # 
+        # - 0: not supported.
+        # 
+        # - 1: supported.
         self.encrypted_query = encrypted_query
-        # Indicates whether application materials are required.
+        # Indicates whether application materials need to be provided. Valid values:
+        # 
+        # - 0: not required.
+        # 
+        # - 1: required.
         self.need_apply_material = need_apply_material
-        # The URL for the service agreement.
+        # The service agreement link.
         self.sla_link = sla_link
 
     def validate(self):

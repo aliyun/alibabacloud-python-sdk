@@ -12,9 +12,17 @@ class DeleteContactsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. `OK` indicates a successful request.
         self.code = code
+        # Indicates whether the operation succeeded. Valid values:
+        # 
+        # - true
+        # 
+        # - false
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

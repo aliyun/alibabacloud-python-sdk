@@ -13,7 +13,9 @@ class ListContactsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business type. Set the value to `dytns`.
         self.biz_type = biz_type
+        # The contact ID.
         self.contact_id = contact_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

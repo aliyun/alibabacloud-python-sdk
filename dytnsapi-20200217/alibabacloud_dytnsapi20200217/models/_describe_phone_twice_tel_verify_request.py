@@ -17,38 +17,42 @@ class DescribePhoneTwiceTelVerifyRequest(DaraModel):
     ):
         # The authorization code.
         # 
-        # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # > On the **My Applications** page in the [Phone Number Verification Service console](https://dytns.console.aliyun.com/analysis/apply), get the Authorization ID. This ID is your authorization code.
         # 
         # This parameter is required.
         self.auth_code = auth_code
-        # The phone number to be queried.
+        # The phone number to be queried. The number can be a mobile phone number or an encrypted string.
         # 
-        # *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
-        # *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
-        # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+        # - If the value of **Mask** is **NORMAL**, **InputNumber** is an 11-digit mobile phone number.
         # 
-        # >  Letters in the encrypted strings are not case-sensitive.
+        # - If the value of **Mask** is **MD5**, **InputNumber** is a 32-bit encrypted string.
+        # 
+        # - If the value of **Mask** is **SHA256**, **InputNumber** is a 64-bit encrypted string.
+        # 
+        # >Notice: 
+        # 
+        # The encrypted string is not case-sensitive.
         # 
         # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
-        # *   **NORMAL**: The phone number is not encrypted.
-        # *   **MD5**
-        # *   **SHA256**
+        # - **NORMAL**: The phone number is not encrypted.
+        # 
+        # - **MD5**
+        # 
+        # - **SHA256**
         # 
         # This parameter is required.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The registration time. Specify the time in the yyyy-MM-dd HH:mm:ss format. This time is the service registration time of the mobile phone user. If the service registration time is later than the time when the phone number is assigned by a carrier, it indicates that the phone number is not a reassigned number. Otherwise, the phone number is a reassigned number.
+        # The registration time of a phone number. The time must be in the `yyyy-MM-dd HH:mm:ss` format. The value of this parameter is the registration time of a mobile phone user in your business. If the registration time is later than the time when a carrier assigns a number, the number is not a recycled number. Otherwise, the number is a recycled number.
         # 
-        # > 
-        # 
-        # *   If a carrier allocates a single number multiple times, the system will determine whether the phone number is a reassigned number based on the time when the carrier last allocated the phone number.
-        # 
-        # *   The service registration time must be later than 00:00:00 on January 1, 1970.
+        # > - If a phone number is assigned for multiple times, the system uses the last assignment time as the criterion.
+        # >
+        # > - The registration time must be later than `1970-01-01 00:00:00`.
         # 
         # This parameter is required.
         self.start_time = start_time

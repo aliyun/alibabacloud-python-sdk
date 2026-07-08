@@ -16,34 +16,33 @@ class DescribePhoneNumberOnlineTimeRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The authorization code.
-        # 
-        # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # > Log on to the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), go to the **My Applications** page, and obtain the authorization ID, which is the authorization code.
         # 
         # This parameter is required.
         self.auth_code = auth_code
-        # The carrier. Valid values:
+        # The external carrier. Valid values:
         # 
-        # *   **MOBILE**: China Mobile
-        # *   **UNICOM**: China Unicom
-        # *   **TELECOM**: China Telecom
+        # - **MOBILE**: China Mobile.
+        # - **UNICOM**: China Unicom.
+        # - **TELECOM**: China Telecom.
         # 
-        # >  Alibaba Cloud automatically determines the carrier based on the carrier who assigns the phone number. Therefore, the value of this field does not affect the query result.
+        # >Notice: This parameter is optional. Alibaba Cloud automatically determines the carrier type based on the phone number. The value of this field has no impact on the query result.
         self.carrier = carrier
         # The phone number to be queried.
         # 
-        # *   If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
-        # *   If the value of Mask is MD5, specify a 32-bit string that is encrypted by using MD5.
-        # *   If the value of Mask is SHA256, specify a 64-bit string that is encrypted by using SHA256.
+        # - If Mask is set to NORMAL, this field is an 11-digit phone number.
+        # - If Mask is set to MD5, this field is a 32-character encrypted string.
+        # - If Mask is set to SHA256, this field is a 64-character encrypted string.
         # 
-        # >  Letters in the encrypted strings are not case-sensitive.
+        # >Notice: Letters in the encrypted string are case-insensitive.
         # 
         # This parameter is required.
         self.input_number = input_number
         # The encryption method of the phone number. Valid values:
         # 
-        # *   **NORMAL**: The phone number is not encrypted.
-        # *   **MD5**
-        # *   **SHA256**
+        # - **NORMAL**: no encryption
+        # - **MD5**
+        # - **SHA256**
         # 
         # This parameter is required.
         self.mask = mask
