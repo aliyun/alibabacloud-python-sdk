@@ -10,7 +10,7 @@ class SubmitYikeStoryboardJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

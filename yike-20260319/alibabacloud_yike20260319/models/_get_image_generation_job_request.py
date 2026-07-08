@@ -9,6 +9,7 @@ class GetImageGenerationJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
+        # The task ID.
         self.job_id = job_id
 
     def validate(self):

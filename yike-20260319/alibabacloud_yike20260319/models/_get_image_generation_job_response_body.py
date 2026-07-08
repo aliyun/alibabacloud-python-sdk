@@ -11,7 +11,9 @@ class GetImageGenerationJobResponseBody(DaraModel):
         image_generation_job: main_models.GetImageGenerationJobResponseBodyImageGenerationJob = None,
         request_id: str = None,
     ):
+        # The image generation task.
         self.image_generation_job = image_generation_job
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -59,18 +61,39 @@ class GetImageGenerationJobResponseBodyImageGenerationJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The video aspect ratio.
         self.aspect_ratio = aspect_ratio
+        # The error message. This parameter is of the String type and is returned when the task is in the Failed state.
         self.error_message = error_message
+        # The task input.
         self.input = input
+        # The task ID.
         self.job_id = job_id
+        # The task feature configuration. No configuration is required at this time.
         self.job_parameters = job_parameters
+        # The task type.
         self.job_type = job_type
+        # The model name.
         self.model = model
+        # The number of generated images.
         self.n = n
+        # The generation result in JSON string format. Fields:
+        # - Medias: a list of media information (Media objects). Fields of a Media object:
+        #   - MediaId: String. The media asset ID.
+        #   - OutputUrl: String. The media URL (with authentication string).
         self.output = output
+        # The resolution of the generated video.
         self.resolution = resolution
+        # The scenario type. Currently only `general` is supported.
         self.scene = scene
+        # The task status. Valid values:
+        # - Created: The task is created.
+        # - Queuing: The task is queuing.
+        # - Executing: The task is being executed.
+        # - Finished: The task is completed.
+        # - Failed: The task failed.
         self.status = status
+        # The custom business information.
         self.user_data = user_data
 
     def validate(self):

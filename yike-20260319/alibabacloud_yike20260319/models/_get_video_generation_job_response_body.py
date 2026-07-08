@@ -11,7 +11,9 @@ class GetVideoGenerationJobResponseBody(DaraModel):
         request_id: str = None,
         video_generation_job: main_models.GetVideoGenerationJobResponseBodyVideoGenerationJob = None,
     ):
+        # Id of the request
         self.request_id = request_id
+        # The video generation task.
         self.video_generation_job = video_generation_job
 
     def validate(self):
@@ -60,19 +62,42 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
+        # The aspect ratio.
         self.aspect_ratio = aspect_ratio
+        # The video duration. Unit: seconds.
         self.duration = duration
+        # The error message. This parameter is returned when the task is in the Failed state.
         self.error_message = error_message
+        # The task input.
         self.input = input
+        # The task ID.
         self.job_id = job_id
+        # The task feature configuration. This parameter does not need to be set.
         self.job_parameters = job_parameters
+        # The task type.
         self.job_type = job_type
+        # The model name.
         self.model = model
+        # The number of generated videos.
         self.n = n
+        # The output result in JsonString format. The following fields are included:
+        # 
+        # Medias: a list of media information (Media objects). The Media object contains the following fields:
+        # MediaId: String. The media asset ID.
+        # OutputUrl: String. The media URL (with the authentication string).
         self.output = output
+        # The resolution.
         self.resolution = resolution
+        # The scene type. Currently, only general is supported.
         self.scene = scene
+        # The task status. Valid values:
+        # - Created: The task is created.
+        # - Queuing: The task is queuing.
+        # - Executing: The task is being executed.
+        # - Finished: The task is completed.
+        # - Failed: The task failed.
         self.status = status
+        # The user business information.
         self.user_data = user_data
 
     def validate(self):

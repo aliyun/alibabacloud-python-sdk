@@ -2714,8 +2714,12 @@ class Client(OpenApiClient):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):
             query['NarrationVoiceId'] = request.narration_voice_id
+        if not DaraCore.is_null(request.need_caption):
+            query['NeedCaption'] = request.need_caption
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.shot_prompt_lang):
+            query['ShotPromptLang'] = request.shot_prompt_lang
         if not DaraCore.is_null(request.shot_prompt_mode):
             query['ShotPromptMode'] = request.shot_prompt_mode
         if not DaraCore.is_null(request.skip_failure_shot):
@@ -2772,8 +2776,12 @@ class Client(OpenApiClient):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):
             query['NarrationVoiceId'] = request.narration_voice_id
+        if not DaraCore.is_null(request.need_caption):
+            query['NeedCaption'] = request.need_caption
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.shot_prompt_lang):
+            query['ShotPromptLang'] = request.shot_prompt_lang
         if not DaraCore.is_null(request.shot_prompt_mode):
             query['ShotPromptMode'] = request.shot_prompt_mode
         if not DaraCore.is_null(request.skip_failure_shot):

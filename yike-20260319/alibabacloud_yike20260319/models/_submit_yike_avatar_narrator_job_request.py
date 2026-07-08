@@ -10,31 +10,30 @@ class SubmitYikeAvatarNarratorJobRequest(DaraModel):
         job_params: str = None,
         user_data: str = None,
     ):
-        # The node request content. JSON string. This parameter contains the following fields:
+        # The task request content. The value is a JSON string that contains the following parameters:
         # 
-        # - SceneType: string. The common scenario type. Valid values: `creator-talk`: knowledge sharing, applicable to influencer sharing and explanation scenarios in industries such as finance and education.
-        # - TextType: int. The text type. Valid values: 1: raw script (product or news information, which the system automatically converts to an oral broadcast script). 2: oral broadcast script.
-        # - TextContent: string. The text content. Maximum length: 10000 characters.
-        # - UserMaterials: Array\\<Object\\>. The list of user materials. Fields: MediaId: the media asset ID (image or video uploaded to Wanjing Yike).
-        # - AvatarData: object. The digital human information. AvatarPortrait: required, string, the URL of the portrait image. AvatarVoice: optional, string, the audio URL (used as a reference for voice cloning) or a voice ID from the library (see the Wanjing Yike voice library. The system selects automatically).
-        # - VoiceDuration: int. The expected oral broadcast duration. Settings for this field apply when TextType is 1. Unit: seconds. Default value: 60. The final video duration is slightly shorter than the expected duration.
-        # - AspectRatio: string. The video dimensions. Valid values: 16:9, 9:16, 4:3, 3:4.
-        # - Resolution: string. The video resolution. Valid values: 720P, 1080P.
-        # - OutputLanguages: Array. The output video languages. Multiple values are supported. Currently, only Chinese is supported. Valid values: CN: Chinese (default). EN: English. YUE: Cantonese.
-        # - WithSubtitles: bool. Specifies whether to include subtitles. Valid values: true: include subtitles (default). false: do not include subtitles.
-        # 
-        # -- The following parameters are for the vertical screen packaging template and are valid only for the creator-talk type. --
-        # - TargetAspectRatio: string. The dimensions adapted for vertical screen. Valid values: `16:9`, `9:16`, `4:3`, `3:4`.
-        # - Title: string. The main title displayed in the template.
-        # - SubHeading: string. The subtitle displayed in the template.
-        # - Date: string. The date displayed in the template.
-        # - Watermark: object. The watermark displayed in the template. Fields: Text: the watermark text.
-        # - EnabledAICover: bool. Specifies whether to use AI to generate a cover image.
-        # - IPCharacter: Object. Specifies whether the AI-generated cover image includes an IP character. Fields: MediaId: the media asset ID. MediaUrl: a publicly accessible URL.
+        # - SceneType: string. The common scenario type. Valid values:
+        #   - creator-talk: knowledge explanation. Applicable to scenarios such as news, popular science, and financial explanation.
+        #   - avatar-broadcast: digital human broadcasting. A fixed single-shot scenario.
+        # - TextType: int. The text type. Valid values:
+        #   - 1: raw script. The system automatically converts product or news information into an oral broadcast script. This value is not supported for avatar-broadcast.
+        #   - 2: oral broadcast script.
+        # - TextContent: string. The text content. Maximum length: 10,000 characters.
+        # - UserMaterials: Array\\<Object\\>. The list of user materials. This parameter is not supported for avatar-broadcast. Fields:
+        #   - MediaId: the media asset ID. The ID of an image or video uploaded to Wanjing Yike.
+        # - AvatarData: object. The digital human information.
+        #   - AvatarPortrait: required. String. The URL of the portrait image.
+        #   - AvatarVoice: optional. String. The URL of an audio file for voice cloning reference, or a voice ID from the built-in voice library. For more information, see the Wanjing Yike voice library. If this parameter is not specified, the system automatically selects a voice.
+        # - VoiceDuration: int. The expected oral broadcast duration. Set this parameter when TextType is set to 1. Unit: seconds. Default value: 60. The final video duration is slightly shorter than the expected duration.
+        # - AspectRatio: string. The video dimensions. Valid values: 16:9, 9:16, 4:3, and 3:4.
+        # - Resolution: string. The video resolution. Valid values: 720P and 1080P.
+        # - WithSubtitles: bool. Specifies whether to add subtitles. Valid values:
+        #   - true (default): Add subtitles.
+        #   - false: Do not add subtitles.
         # 
         # This parameter is required.
         self.job_params = job_params
-        # The custom user parameter. JSON string. This parameter is returned as-is in the callback result (for example, newsKey).
+        # The custom user parameter. The value is a JSON string that is returned as-is in the callback result, for example, newsKey.
         # 
         # The system reserved field NotifyAddress specifies the callback URL. The system sends a callback to this URL after the task is complete. Example: {"NotifyAddress": "http://xxx.callback.url"}.
         self.user_data = user_data

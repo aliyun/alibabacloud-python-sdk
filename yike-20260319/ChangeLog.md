@@ -1,3 +1,8 @@
+2026-07-08 Version: 1.9.1
+- Update API SubmitYikeStoryboardJob: add request parameters NeedCaption.
+- Update API SubmitYikeStoryboardJob: add request parameters ShotPromptLang.
+
+
 2026-07-02 Version: 1.9.0
 - Support API GetImageGenerationJob.
 - Support API GetVideoGenerationJob.
