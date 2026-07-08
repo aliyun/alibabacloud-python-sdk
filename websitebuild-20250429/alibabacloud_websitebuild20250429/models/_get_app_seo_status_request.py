@@ -11,11 +11,11 @@ class GetAppSeoStatusRequest(DaraModel):
         domain: str = None,
         se_type: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Domain name
+        # The domain name.
         self.domain = domain
-        # Search engine type
+        # The search engine type.
         self.se_type = se_type
 
     def validate(self):

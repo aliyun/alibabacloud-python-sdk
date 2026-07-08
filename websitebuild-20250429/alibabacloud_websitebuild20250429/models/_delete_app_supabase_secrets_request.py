@@ -10,9 +10,9 @@ class DeleteAppSupabaseSecretsRequest(DaraModel):
         biz_id: str = None,
         keys_json: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # JSON list of keys to be deleted
+        # The JSON list of keys to be deleted.
         self.keys_json = keys_json
 
     def validate(self):

@@ -10,9 +10,9 @@ class GetAppConversationRequest(DaraModel):
         bot_id: str = None,
         conversation_id: str = None,
     ):
-        # Bot ID
+        # The bot ID.
         self.bot_id = bot_id
-        # Session ID
+        # The conversation ID.
         self.conversation_id = conversation_id
 
     def validate(self):

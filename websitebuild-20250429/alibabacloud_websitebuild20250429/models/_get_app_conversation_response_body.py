@@ -22,28 +22,28 @@ class GetAppConversationResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # access denied details
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # response Data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # is processed synchronously
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -143,31 +143,31 @@ class GetAppConversationResponseBodyModule(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
-        # User ID
+        # The user ID.
         self.aliyun_pk = aliyun_pk
-        # bot ID
+        # The bot ID.
         self.bot_id = bot_id
-        # Chat record
+        # The chat records.
         self.chat_num = chat_num
-        # session id
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Creation Time.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # Update Time.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
-        # Extension information (in JSON string format)
+        # The extended information in JSON string format.
         self.meta_data = meta_data
-        # Section ID of the checklist item.
+        # The section ID of the check item.
         self.section_id = section_id
-        # site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         self.site_id = site_id
-        # Current point, equivalent to news title
+        # The current viewpoint, which is equivalent to the news title.
         self.title = title
-        # User ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -24,33 +24,33 @@ class ListAppConversationsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Queries the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Error message
+        # The error message.
         self.dynamic_message = dynamic_message
-        # Faulty parameters.
+        # The error parameters.
         self.error_args = error_args
-        # Number of results per query.  
+        # The maximum number of entries to return per query.
         # 
-        # Value range: 10 to 100. Default value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Response data
+        # The response data.
         self.module = module
-        # Token indicating the start of the next query. This field is empty if there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -155,13 +155,13 @@ class ListAppConversationsResponseBodyModule(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # Request result.
+        # The request result.
         self.data = data
-        # Page number. The default value is 1.
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # Paging size.
+        # The page size.
         self.page_size = page_size
-        # Resource count that matches the filter condition.
+        # The resource count that matches the conditional filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -227,29 +227,29 @@ class ListAppConversationsResponseBodyModuleData(DaraModel):
     ):
         # aliyun_pk
         self.aliyun_pk = aliyun_pk
-        # Bot ID
+        # The bot ID.
         self.bot_id = bot_id
-        # Chat records
+        # The number of chat records.
         self.chat_num = chat_num
-        # Session ID
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Creation Time
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # Update Time.
+        # The modification time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
-        # Extension information (in JSON string format)
+        # The extended information in JSON string format.
         self.meta_data = meta_data
-        # Section ID of the checklist item.
+        # The section ID of the check item.
         self.section_id = section_id
-        # Site ID. You can obtain it by invoking the [ListSites](~~ListSites~~) API.
+        # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
-        # Current viewpoint, equivalent to the news title.
+        # The current viewpoint, which is equivalent to the news title.
         self.title = title
-        # User ID
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

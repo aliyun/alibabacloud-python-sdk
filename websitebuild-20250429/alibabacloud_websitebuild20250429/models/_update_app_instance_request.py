@@ -24,31 +24,31 @@ class UpdateAppInstanceRequest(DaraModel):
         tags: List[main_models.UpdateAppInstanceRequestTags] = None,
         thumbnail_url: str = None,
     ):
-        # Application type
+        # The application type.
         self.application_type = application_type
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Ensures the idempotence of the request. Generate a unique value from your client for this parameter to guarantee uniqueness across different requests. ClientToken supports only ASCII characters and must not exceed 64 characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Deployment area
+        # The deployment region.
         self.deploy_area = deploy_area
-        # Application description
+        # The application description.
         self.description = description
-        # Extension information
+        # The extended information.
         self.extend = extend
-        # Application icon
+        # The application icon URL.
         self.icon_url = icon_url
-        # Application name
+        # The application name.
         self.name = name
-        # Payment type
+        # The payment type.
         self.payment_type = payment_type
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # Website version
+        # The website version.
         self.site_version = site_version
-        # Tags.
+        # The tags.
         self.tags = tags
-        # Application thumbnail
+        # The application thumbnail URL.
         self.thumbnail_url = thumbnail_url
 
     def validate(self):
@@ -157,13 +157,13 @@ class UpdateAppInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance. Valid values for N: **1** to **20**. If you specify this parameter, it cannot be an empty string.
+        # The tag key of the instance. Valid values of N: **1** to **20**. The tag key cannot be an empty string.
         # 
-        # It can contain up to 64 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The tag value of the instance. Valid values for N: **1** to **20**. If you specify this parameter, it can be an empty string.
+        # The tag value of the instance. Valid values of N: **1** to **20**. The tag value can be an empty string.
         # 
-        # It can contain up to 128 characters, must not start with `aliyun` or `acs:`, and must not contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):

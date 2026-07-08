@@ -30,18 +30,18 @@ class GetAppRecommendedCommoditiesResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
         # The data table module. Valid values:
         # 
-        # - ABTest: the experiment data table.
+        # - ABTest: experiment data table
         # 
-        # - ExperimentTool: the experiment tool table.
+        # - ExperimentTool: experiment tool table
         # 
-        # - DataDiagnosis: data modeling diagnostics.
+        # - DataDiagnosis: data modeling diagnostics
         self.module = module
         # Id of the request
         self.request_id = request_id
@@ -139,7 +139,7 @@ class GetAppRecommendedCommoditiesResponseBodyModule(DaraModel):
         self,
         commodities: List[main_models.GetAppRecommendedCommoditiesResponseBodyModuleCommodities] = None,
     ):
-        # The list of promotional commodities.
+        # The list of marketing commodities.
         self.commodities = commodities
 
     def validate(self):
@@ -186,21 +186,21 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         title: str = None,
     ):
         self.action_type = action_type
-        # The commodity code. This code applies to both resource plans and promotional commodities.
+        # The commodity code. Applicable to both resource plans and marketing commodities.
         self.commodity_code = commodity_code
         self.description = description
-        # The extension field, such as unsupportedReason.
+        # The extension fields, such as unsupportedReason.
         self.extend = extend
         # The order type. Valid values:
         # - BUY: purchase.
         # - UPGRADE: upgrade.
         self.order_type = order_type
-        # The sorting priority. A smaller value indicates a higher priority.
+        # The sort priority. A smaller value indicates a higher priority.
         self.priority = priority
-        # The promotional commodity ID. This parameter is returned only for new purchases.
+        # The marketing commodity ID. Returned only for new purchases.
         self.promotion_commodity_id = promotion_commodity_id
         self.recommend_type = recommend_type
-        # The redirect URL. This parameter is returned when a redirect is required, such as during an upgrade.
+        # The redirect URL. Returned when redirection is required, such as for upgrades.
         self.redirect_url = redirect_url
         # The commodity status.
         self.status = status

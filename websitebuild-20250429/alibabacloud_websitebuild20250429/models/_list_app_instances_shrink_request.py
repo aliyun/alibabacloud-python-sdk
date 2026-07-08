@@ -30,11 +30,11 @@ class ListAppInstancesShrinkRequest(DaraModel):
         self.end_time_end = end_time_end
         # The extended information.
         self.extend = extend
-        # The number of entries per query.
+        # The maximum number of results per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # The token for the next query. This parameter is empty if no more results are available.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # The field used for sorting.
         self.order_column = order_column

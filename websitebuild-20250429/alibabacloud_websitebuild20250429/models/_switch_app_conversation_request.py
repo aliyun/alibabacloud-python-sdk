@@ -11,8 +11,11 @@ class SwitchAppConversationRequest(DaraModel):
         bot_id: str = None,
         task_type: str = None,
     ):
+        # The business ID of the agent task.
         self.biz_id = biz_id
+        # The bot ID.
         self.bot_id = bot_id
+        # The type of the agent task.
         self.task_type = task_type
 
     def validate(self):

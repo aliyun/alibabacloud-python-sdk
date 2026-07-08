@@ -10,9 +10,9 @@ class GetAppSupabaseSecretsRequest(DaraModel):
         biz_id: str = None,
         keyword: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Search keyword
+        # The search keyword.
         self.keyword = keyword
 
     def validate(self):

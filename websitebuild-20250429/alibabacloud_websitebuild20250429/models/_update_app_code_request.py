@@ -10,9 +10,9 @@ class UpdateAppCodeRequest(DaraModel):
         content: str = None,
         conversation_id: str = None,
     ):
-        # Edit operation Content (JSON)
+        # The edit operation content in JSON format.
         self.content = content
-        # session ID
+        # The session ID.
         self.conversation_id = conversation_id
 
     def validate(self):

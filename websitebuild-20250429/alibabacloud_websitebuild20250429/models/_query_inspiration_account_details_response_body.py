@@ -25,8 +25,8 @@ class QueryInspirationAccountDetailsResponseBody(DaraModel):
         # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
         # Indicates whether a retry is allowed. Valid values:
-        # - false: A retry is not allowed.
-        # - true: A retry is allowed.
+        # - false: Not allowed.
+        # - true: Allowed.
         self.allow_retry = allow_retry
         # The application name. The application with this name is queried.
         self.app_name = app_name
@@ -34,7 +34,7 @@ class QueryInspirationAccountDetailsResponseBody(DaraModel):
         self.dynamic_code = dynamic_code
         # The dynamic message.
         self.dynamic_message = dynamic_message
-        # The error parameters.
+        # The error parameters returned.
         self.error_args = error_args
         # The response data.
         self.module = module
@@ -154,7 +154,7 @@ class QueryInspirationAccountDetailsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server processes up to 1000 recent records for the current query. If the results exceed 1000 records, **ResultLimit** is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # Indicates whether the result set exceeds the server-side limit of 1,000 records (excluding pagination). If the results exceed 1,000 records, **ResultLimit** is **true**. Narrow the time range and search again. If the results do not exceed 1,000 records, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -255,17 +255,17 @@ class QueryInspirationAccountDetailsResponseBodyModuleNext(DaraModel):
     ):
         # The time when the inspiration points were acquired.
         self.acquisition_time = acquisition_time
-        # The remaining balance (InitQuota minus used).
+        # The remaining balance (initQuota - used).
         self.balance = balance
         self.balance_str = balance_str
-        # The expiration time of the quota.
+        # The time when the quota expires.
         self.end_date = end_date
-        # Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
+        # Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
         self.expired = expired
-        # The acquired quantity (initial quota).
+        # The quantity acquired (initial quota).
         self.init_quota = init_quota
         self.init_quota_str = init_quota_str
-        # The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+        # The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
         self.source_type = source_type
         # The display name of the source type.
         self.source_type_name = source_type_name
@@ -354,17 +354,17 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
     ):
         # The time when the inspiration points were acquired.
         self.acquisition_time = acquisition_time
-        # The remaining balance (InitQuota minus used).
+        # The remaining balance (initQuota - used).
         self.balance = balance
         self.balance_str = balance_str
-        # The expiration time of the quota.
+        # The time when the quota expires.
         self.end_date = end_date
-        # Indicates whether the quota has expired (EndDate is earlier than the current time). The frontend grays out expired entries based on this value.
+        # Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
         self.expired = expired
-        # The acquired quantity (initial quota).
+        # The quantity acquired (initial quota).
         self.init_quota = init_quota
         self.init_quota_str = init_quota_str
-        # The source type code. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+        # The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
         self.source_type = source_type
         # The display name of the source type.
         self.source_type_name = source_type_name

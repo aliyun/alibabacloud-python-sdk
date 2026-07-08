@@ -40,6 +40,7 @@ class AppInstanceAggregate(DaraModel):
         status: str = None,
         status_text: str = None,
         tags: List[main_models.AppInstanceAggregateTags] = None,
+        template_record: main_models.TemplateRecord = None,
         thumbnail_url: str = None,
         user_id: str = None,
         version: str = None,
@@ -71,10 +72,11 @@ class AppInstanceAggregate(DaraModel):
         self.slug = slug
         self.source_type = source_type
         self.start_time = start_time
-        # trial,draft,live,refunded,expired,released
+        # Valid values: trial, draft, live, refunded, expired, released.
         self.status = status
         self.status_text = status_text
         self.tags = tags
+        self.template_record = template_record
         self.thumbnail_url = thumbnail_url
         self.user_id = user_id
         self.version = version
@@ -98,6 +100,8 @@ class AppInstanceAggregate(DaraModel):
             for v1 in self.tags:
                  if v1:
                     v1.validate()
+        if self.template_record:
+            self.template_record.validate()
 
     def to_map(self):
         result = dict()
@@ -199,6 +203,9 @@ class AppInstanceAggregate(DaraModel):
         if self.tags is not None:
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
+
+        if self.template_record is not None:
+            result['TemplateRecord'] = self.template_record.to_map()
 
         if self.thumbnail_url is not None:
             result['ThumbnailUrl'] = self.thumbnail_url
@@ -314,6 +321,10 @@ class AppInstanceAggregate(DaraModel):
             for k1 in m.get('Tags'):
                 temp_model = main_models.AppInstanceAggregateTags()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('TemplateRecord') is not None:
+            temp_model = main_models.TemplateRecord()
+            self.template_record = temp_model.from_map(m.get('TemplateRecord'))
 
         if m.get('ThumbnailUrl') is not None:
             self.thumbnail_url = m.get('ThumbnailUrl')

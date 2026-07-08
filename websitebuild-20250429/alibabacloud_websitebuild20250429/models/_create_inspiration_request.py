@@ -15,7 +15,7 @@ class CreateInspirationRequest(DaraModel):
         pricing_cycle: str = None,
         quantity: int = None,
     ):
-        # The resource plan specification.
+        # The specification of the resource plan.
         self.amountspec = amountspec
         # The idempotency token.
         self.client_token = client_token
@@ -25,13 +25,13 @@ class CreateInspirationRequest(DaraModel):
         self.extend = extend
         # The payment type.
         self.payment_type = payment_type
-        # The unit of the subscription duration. Valid values:
-        # - Year: year.
-        # - Month: month.
-        # - Day: day.
-        # - Hour: hour.
+        # The unit of the subscription cycle. Valid values:
+        # - Year: year
+        # - Month: month
+        # - Day: day
+        # - Hour: hour
         self.pricing_cycle = pricing_cycle
-        # The number of instances to purchase.
+        # The number of instances to subscribe to.
         self.quantity = quantity
 
     def validate(self):

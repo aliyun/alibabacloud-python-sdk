@@ -13,17 +13,17 @@ class ListAppChatMessagesRequest(DaraModel):
         next_token: str = None,
         section_id: str = None,
     ):
-        # Chat ID
+        # The chat ID.
         self.chat_id = chat_id
-        # Session ID
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Number of results per query.  
+        # The number of entries per query.
         # 
-        # Valid range: 10 to 100. Default Value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Token indicating the start of the next query. This value is empty if there is no subsequent query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # Segment ID
+        # The section ID.
         self.section_id = section_id
 
     def validate(self):

@@ -30,7 +30,7 @@ class CheckAppVerifyCodeResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the %s variable in the ErrMessage response element.
+        # The dynamic error message, which is used to replace the %s variable in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args

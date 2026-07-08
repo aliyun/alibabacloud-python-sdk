@@ -21,27 +21,27 @@ class UploadAppSiteValidationFileResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # access denied details
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # application name. Query the application with this name.
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # dynamic code, currently unused. Ignore it.
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # dynamic error message.
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # indicates whether the deletion succeeded
+        # Indicates whether the deletion was successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

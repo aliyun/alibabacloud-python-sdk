@@ -24,7 +24,7 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
     ):
         # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
@@ -42,7 +42,7 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The error message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is synchronously processed.
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -170,17 +170,17 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         self.extra = extra
         # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
-        # The instance creation status.
+        # The creation status of the instance.
         self.instance_create_status = instance_create_status
         # The deletion flag.
         self.is_deleted = is_deleted
-        # The password for accessing the ApsaraDB RDS database.
+        # The password used to access the ApsaraDB RDS database.
         self.rds_database_password = rds_database_password
         # The service key.
         self.service_key = service_key
         # The instance status. Valid values:
         # - 0: paused
-        # - 1: running.
+        # - 1: running
         self.status = status
         # The password for the Supabase Dashboard.
         self.supabase_dashboard_password = supabase_dashboard_password

@@ -11,11 +11,11 @@ class GetAppPublishStatusRequest(DaraModel):
         deploy_order_id: int = None,
         website_domain: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Deployment ticket ID
+        # The deployment order ID.
         self.deploy_order_id = deploy_order_id
-        # Website domain name
+        # The website domain name.
         self.website_domain = website_domain
 
     def validate(self):

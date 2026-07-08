@@ -10,9 +10,9 @@ class OperateAppTemplateLikeRequest(DaraModel):
         liked: bool = None,
         template_id: str = None,
     ):
-        # Indicates whether the item is collected
+        # Specifies whether the template is favorited.
         self.liked = liked
-        # Template ID
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

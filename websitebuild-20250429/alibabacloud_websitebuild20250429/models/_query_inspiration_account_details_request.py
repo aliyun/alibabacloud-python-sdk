@@ -20,14 +20,14 @@ class QueryInspirationAccountDetailsRequest(DaraModel):
         # The field by which to sort the results.
         self.order_column = order_column
         # The sort order. Valid values:
-        # - ASC: ascending order.
-        # - DESC: descending order.
+        # - ASC: ascending order
+        # - DESC: descending order
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The source type used to filter results. Valid values: FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, and PURCHASED.
+        # The source type used to filter results, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
         self.source_type = source_type
         # The start time of the query.
         self.start_time = start_time

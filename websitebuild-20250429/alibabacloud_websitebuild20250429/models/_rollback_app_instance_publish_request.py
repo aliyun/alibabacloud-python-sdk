@@ -12,13 +12,13 @@ class RollbackAppInstancePublishRequest(DaraModel):
         publish_number: str = None,
         quick_rollback: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Deployment channel
+        # The deployment channel.
         self.deploy_channel = deploy_channel
-        # Publish number
+        # The publish number.
         self.publish_number = publish_number
-        # Quick rollback.
+        # Specifies whether to perform a quick rollback.
         self.quick_rollback = quick_rollback
 
     def validate(self):

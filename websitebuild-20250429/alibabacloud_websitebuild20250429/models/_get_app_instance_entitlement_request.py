@@ -9,7 +9,7 @@ class GetAppInstanceEntitlementRequest(DaraModel):
         self,
         biz_id: str = None,
     ):
-        # Application instance business ID
+        # The business ID of the application instance.
         self.biz_id = biz_id
 
     def validate(self):

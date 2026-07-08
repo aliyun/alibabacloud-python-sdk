@@ -9,6 +9,7 @@ class GetOssUploadPolicyRequest(DaraModel):
         self,
         scenario: str = None,
     ):
+        # The scenario, such as knowledge.
         self.scenario = scenario
 
     def validate(self):

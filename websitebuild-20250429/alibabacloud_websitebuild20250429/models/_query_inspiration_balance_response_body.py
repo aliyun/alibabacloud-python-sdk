@@ -22,28 +22,28 @@ class QueryInspirationBalanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed.
+        # Indicates whether the request can be retried.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name. The system queries the application with this name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace `%s` in the **ErrMessage** error message of the response parameters.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Error parameters.
+        # The error parameters.
         self.error_args = error_args
-        # Response data.
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code.
+        # The error code.
         self.root_error_code = root_error_code
-        # Exception message.
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether to process synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -138,13 +138,13 @@ class QueryInspirationBalanceResponseBodyModule(DaraModel):
         total_used: int = None,
         total_used_str: str = None,
     ):
-        # Remaining (totalQuota - totalUsed).
+        # The remaining amount, calculated as totalQuota minus totalUsed.
         self.remaining = remaining
         self.remaining_str = remaining_str
-        # Total quota (sum of initQuota for all active accounts).
+        # The total quota, which is the sum of initQuota values across all valid accounts.
         self.total_quota = total_quota
         self.total_quota_str = total_quota_str
-        # Total used (sum of used for all active accounts).
+        # The total consumed amount, which is the sum of used values across all valid accounts.
         self.total_used = total_used
         self.total_used_str = total_used_str
 

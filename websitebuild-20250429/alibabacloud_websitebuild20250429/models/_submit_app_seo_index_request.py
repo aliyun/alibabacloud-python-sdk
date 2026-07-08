@@ -12,9 +12,13 @@ class SubmitAppSeoIndexRequest(DaraModel):
         se_type: str = None,
         submit_later: bool = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The domain name.
         self.domain = domain
+        # The search engine type.
         self.se_type = se_type
+        # Specifies whether to delay the submission.
         self.submit_later = submit_later
 
     def validate(self):

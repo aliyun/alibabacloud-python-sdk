@@ -11,9 +11,9 @@ class GetMiniAppAuthUrlResponseBody(DaraModel):
         data: main_models.GetMiniAppAuthUrlResponseBodyData = None,
         request_id: str = None,
     ):
-        # Result of the request.
+        # The request result.
         self.data = data
-        # request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class GetMiniAppAuthUrlResponseBodyData(DaraModel):
         self,
         auth_url: str = None,
     ):
-        # authorized address
+        # The authorization URL.
         self.auth_url = auth_url
 
     def validate(self):

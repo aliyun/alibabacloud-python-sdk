@@ -21,27 +21,27 @@ class UpdateAppCodeResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # permission denied information
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # application Name; query the application with this Name
+        # The application name. The application with this name is queried.
         self.app_name = app_name
-        # dynamic code; currently unused, please ignore
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # dynamic error message used to replace the %s placeholder in the ErrMessage error message in the response.
+        # The dynamic error message. This message is used to replace the %s variable in the ErrMessage response parameter.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

@@ -22,16 +22,29 @@ class GetOssUploadPolicyResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether a retry is allowed. Valid values:
+        # - false: No retry is allowed.
+        # - true: A retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # The task object.
         self.module = module
+        # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -128,13 +141,21 @@ class GetOssUploadPolicyResponseBodyModule(DaraModel):
         xoss_credential: str = None,
         xoss_date: str = None,
     ):
+        # The upload directory path.
         self.dir = dir
+        # The OSS bucket host address.
         self.host = host
+        # The Base64-encoded policy.
         self.policy = policy
+        # The Security Token Service (STS) token. This parameter is null in non-STS scenarios.
         self.security_token = security_token
+        # The calculated signature.
         self.signature = signature
+        # The signature version, such as OSS4-HMAC-SHA256.
         self.version = version
+        # x-oss-credential
         self.xoss_credential = xoss_credential
+        # x-oss-date
         self.xoss_date = xoss_date
 
     def validate(self):

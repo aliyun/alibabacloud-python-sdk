@@ -11,11 +11,11 @@ class GetMiniAppBindingShrinkRequest(DaraModel):
         channel: str = None,
         setting_keys_shrink: str = None,
     ):
-        # Site ID
+        # The site ID.
         self.biz_id = biz_id
-        # Channel
+        # The channel.
         self.channel = channel
-        # List of extension information keys
+        # The list of extension information keys.
         self.setting_keys_shrink = setting_keys_shrink
 
     def validate(self):

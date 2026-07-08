@@ -24,34 +24,34 @@ class ListAppPluginsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Query the application with this name.
+        # The application name to query.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the DtsJobId request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error arguments.
         self.error_args = error_args
-        # Number of results per query.  
+        # The number of entries per query.
         # 
-        # Value range: 10 to 100. Default value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Returned object.
+        # The response object.
         self.module = module
-        # Token for starting the next query. It is empty if there is no next query.
+        # The token for the next query. This parameter is empty if no more results are available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -173,46 +173,46 @@ class ListAppPluginsResponseBodyModule(DaraModel):
         skill_header: str = None,
         tags: str = None,
     ):
-        # plugin code
+        # The plug-in code.
         self.code = code
-        # Configuration form in React JSON Schema format
+        # The configuration form in React JSON Schema format.
         self.config_items = config_items
-        # plugin Description
+        # The plug-in description.
         self.desc = desc
-        # Image display. Valid values:  
+        # The image display mode. Valid values:
         # 
-        # - **0** (None): Do not display.  
-        # - **1** (Always): Always display.
+        # - **0** (None): Not displayed.
+        # - **1** (Always): Always displayed.
         self.display = display
-        # Indicates whether scheduled delivery of resource snapshots is enabled.  
+        # Specifies whether scheduled delivery of resource snapshots is enabled.
         # 
-        # Valid values:  
-        # - true: Enabled.  
-        # - false: Shutdown.
+        # Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.enabled = enabled
-        # environment
+        # The environment.
         self.env = env
-        # Creation Time
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # Updated At
+        # The modification time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
-        # hook definitions
+        # The hook definitions.
         self.hooks = hooks
-        # plugin Description
+        # The plug-in description.
         self.icon = icon
-        # primary key
+        # The primary key.
         self.id = id
-        # Indicates whether the item has been deleted: 0—No, 1—Yes
+        # Indicates whether the entry is deleted. Valid values: 0 (no) and 1 (yes).
         self.is_deleted = is_deleted
-        # plugin Name
+        # The plug-in name.
         self.name = name
-        # skill header, used by the model for selection
+        # The skill header information for model selection.
         self.skill_header = skill_header
-        # Categorization label
+        # The category labels.
         self.tags = tags
 
     def validate(self):

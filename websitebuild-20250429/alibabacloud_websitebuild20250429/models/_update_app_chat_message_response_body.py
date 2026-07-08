@@ -22,28 +22,28 @@ class UpdateAppChatMessageResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # dynamic code; not currently used. Please ignore.
+        # The dynamic code. This parameter is not currently used. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # faulty parameters
+        # The error arguments.
         self.error_args = error_args
-        # The returned object.
+        # The response object.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # is processed synchronously
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -147,50 +147,50 @@ class UpdateAppChatMessageResponseBodyModule(DaraModel):
         site_id: str = None,
         type: str = None,
     ):
-        # Bot ID
+        # The bot ID.
         self.bot_id = bot_id
-        # The ID of the chat.
+        # The chat ID.
         self.chat_id = chat_id
-        # Current conversation status
+        # The current conversation status.
         self.chat_status = chat_status
-        # The ID of the data class API being invoked.
+        # The ID of the data API operation that is called.
         self.content = content
-        # Content type.
+        # The content type.
         self.content_type = content_type
-        # Session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Creation Time
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # Updated At.
+        # The modification time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
-        # Message ID
+        # The message ID.
         self.message_id = message_id
-        # Business extension metadata (in Map format, must be a JSON string)
+        # The business extension metadata in Map format. The value must be a JSON string.
         self.meta_data = meta_data
-        # The probability of not wearing a mask, not wearing a uniform, or not wearing a hat.
+        # The probability of not wearing a mask, not wearing work clothes, or not wearing a hat.
         self.no = no
-        # Indicates the role of a conversation participant. Valid values include:
+        # The role of the conversation participant. Valid values:
         # 
-        # - user: User
+        # - user: user
         # 
-        # - assistant: Assistant
+        # - assistant: assistant
         # 
-        # - system: System
-        # - function: Function
+        # - system: system
+        # - function: function
         # 
-        # - plugin: Plugin
+        # - plugin: plug-in
         # 
-        # - tool: Tool
+        # - tool: tool
         self.role = role
-        # Section ID of the checklist item.
+        # The section ID of the check item.
         self.section_id = section_id
-        # Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+        # The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
-        # File type
+        # The file type.
         self.type = type
 
     def validate(self):

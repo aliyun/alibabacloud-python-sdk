@@ -26,7 +26,7 @@ class GetAppInstanceForAdminResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # The application name that was queried.
+        # The application name to query.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code

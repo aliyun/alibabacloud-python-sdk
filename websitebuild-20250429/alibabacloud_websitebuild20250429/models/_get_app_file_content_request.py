@@ -10,7 +10,9 @@ class GetAppFileContentRequest(DaraModel):
         conversation_id: str = None,
         file_path: str = None,
     ):
+        # The conversation ID.
         self.conversation_id = conversation_id
+        # The file path.
         self.file_path = file_path
 
     def validate(self):

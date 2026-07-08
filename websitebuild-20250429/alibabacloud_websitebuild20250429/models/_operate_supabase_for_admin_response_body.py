@@ -23,9 +23,9 @@ class OperateSupabaseForAdminResponseBody(DaraModel):
     ):
         # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed. Valid values:
-        # - false: A retry is not allowed.
-        # - true: A retry is allowed.
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name

@@ -43,7 +43,7 @@ class GetLlmProxyConfigForAdminResponseBody(DaraModel):
         self.request_id = request_id
         # The error code.
         self.root_error_code = root_error_code
-        # The exception message.
+        # The error message.
         self.root_error_msg = root_error_msg
         # Indicates whether the request is synchronously processed.
         self.synchro = synchro
@@ -150,13 +150,13 @@ class GetLlmProxyConfigForAdminResponseBodyModule(DaraModel):
         status: int = None,
         suspend_reason: str = None,
     ):
-        # The list of allowed models.
+        # The list of supported models.
         self.allowed_models = allowed_models
         # The business ID of the application instance.
         self.biz_id = biz_id
         # The list of blocked models.
         self.blocked_models = blocked_models
-        # The specific permissions granted to processes in the container. Only NET_ADMIN and NET_RAW are supported.
+        # Grants specific permissions to processes in the container. Only NET_ADMIN and NET_RAW are supported.
         # 
         # > NET_RAW is not supported by default. Submit a ticket to apply for this permission.
         self.capability = capability
@@ -164,7 +164,7 @@ class GetLlmProxyConfigForAdminResponseBodyModule(DaraModel):
         self.daily_limit = daily_limit
         # The maximum number of tokens per day.
         self.daily_token_limit = daily_token_limit
-        # Specifies whether scheduled delivery of resource snapshots is enabled.
+        # Indicates whether scheduled delivery of resource snapshots is enabled.
         # 
         # Valid values:
         # - true: Enabled.

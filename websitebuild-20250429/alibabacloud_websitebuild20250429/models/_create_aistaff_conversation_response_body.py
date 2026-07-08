@@ -145,7 +145,7 @@ class CreateAIStaffConversationResponseBodyModule(DaraModel):
         self.conversation_id = conversation_id
         # The section ID of the check item.
         self.section_id = section_id
-        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+        # The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
         # The current viewpoint, equivalent to the news title.
         self.title = title

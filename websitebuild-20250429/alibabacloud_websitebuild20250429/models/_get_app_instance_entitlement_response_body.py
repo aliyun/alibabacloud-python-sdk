@@ -22,28 +22,28 @@ class GetAppInstanceEntitlementResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Permission denied information
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace `%s` in the **ErrMessage** error message.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error arguments.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The root error message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -134,9 +134,9 @@ class GetAppInstanceEntitlementResponseBodyModule(DaraModel):
         biz_id: str = None,
         items: List[main_models.GetAppInstanceEntitlementResponseBodyModuleItems] = None,
     ):
-        # BizId of the associated application instance
+        # The business ID of the application instance.
         self.biz_id = biz_id
-        # All entitlements
+        # The list of all entitlement items.
         self.items = items
 
     def validate(self):
@@ -194,39 +194,39 @@ class GetAppInstanceEntitlementResponseBodyModuleItems(DaraModel):
         usage_percent: int = None,
         used: int = None,
     ):
-        # Indicates whether an instance has been assigned
+        # Indicates whether an instance is allocated.
         self.allocated = allocated
-        # Is this item currently active?
+        # Indicates whether this entitlement item is currently available.
         self.available = available
-        # Authorization item identity
+        # The code of the entitlement item.
         self.code = code
-        # Indicates whether configuration has been completed
+        # Indicates whether the configuration is complete.
         self.configured = configured
-        # Is this item entitled in the version?
+        # Indicates whether the edition grants this entitlement item.
         self.entitled = entitled
-        # Feature source type (PLUGIN/SKILL/CHANNEL/SYSTEM)
+        # The feature source type. Valid values: PLUGIN, SKILL, CHANNEL, and SYSTEM.
         self.feature_type = feature_type
-        # Runtime instance ID
+        # The runtime instance ID.
         self.instance_id = instance_id
-        # Authorization item Name
+        # The name of the entitlement item.
         self.name = name
-        # Plugin ID
+        # The plug-in ID.
         self.plugin_id = plugin_id
-        # Total quota
+        # The total quota.
         self.quota = quota
-        # Remaining quantity
+        # The remaining amount.
         self.remaining = remaining
-        # Resource domain association identity
+        # The association code of the resource domain.
         self.resource_code = resource_code
-        # Resource type (QUOTA/LIMIT)
+        # The resource type. Valid values: QUOTA and LIMIT.
         self.resource_type = resource_type
-        # Is it running?
+        # Indicates whether the instance is running.
         self.running = running
-        # Authorization Type (FEATURE / RESOURCE / RUNTIME)
+        # The entitlement type. Valid values: FEATURE, RESOURCE, and RUNTIME.
         self.type = type
-        # Usage percentage
+        # The usage percentage.
         self.usage_percent = usage_percent
-        # Usage
+        # The used amount.
         self.used = used
 
     def validate(self):

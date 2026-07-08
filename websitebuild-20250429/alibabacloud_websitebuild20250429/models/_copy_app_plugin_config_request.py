@@ -10,7 +10,9 @@ class CopyAppPluginConfigRequest(DaraModel):
         source_biz_id: str = None,
         target_biz_id: str = None,
     ):
+        # The source business ID.
         self.source_biz_id = source_biz_id
+        # The target business ID.
         self.target_biz_id = target_biz_id
 
     def validate(self):

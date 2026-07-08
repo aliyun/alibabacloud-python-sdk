@@ -24,34 +24,34 @@ class ListAppChatMessagesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # permission denied information
+        # The access denied detail.
         self.access_denied_detail = access_denied_detail
-        # is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # dynamic error message used to replace `%s` in the **ErrMessage** error message.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # returned error parameters
+        # The error arguments.
         self.error_args = error_args
-        # Number of results per query.
+        # The number of entries per query.
         # 
-        # Value range: 10 to 100. Default Value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Response data
+        # The response data.
         self.module = module
-        # Token for starting the next query. It is empty when there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -173,50 +173,50 @@ class ListAppChatMessagesResponseBodyModule(DaraModel):
         site_id: str = None,
         type: str = None,
     ):
-        # Bot ID
+        # The bot ID.
         self.bot_id = bot_id
-        # Unique ID of a single message
+        # The unique ID of a single message.
         self.chat_id = chat_id
-        # Current chat status
+        # The current chat status.
         self.chat_status = chat_status
-        # ID of the data class API being invoked.
+        # The ID of the data API operation that is called.
         self.content = content
-        # Content type
+        # The content type.
         self.content_type = content_type
-        # Session ID
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Creation Time
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_create_time = gmt_create_time
-        # Updated At
+        # The modification time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_modified_time = gmt_modified_time
-        # Message ID
+        # The message ID.
         self.message_id = message_id
-        # Business extension metadata (in Map format, must be a JSON string)
+        # The business extension metadata in Map format. The value must be a JSON string.
         self.meta_data = meta_data
-        # Region ordinal number. This parameter is deprecated.
+        # The region sequence number. This parameter is deprecated.
         self.no = no
-        # Indicates the role of the participant in the conversation. Valid values include:
+        # The role of the conversation participant. Valid values:
         # 
-        # - user: User
+        # - user: user
         # 
-        # - assistant: Assistant
+        # - assistant: assistant
         # 
-        # - system: System
-        # - function: Function
+        # - system: system
+        # - function: function
         # 
-        # - plugin: Plugin
+        # - plugin: plug-in
         # 
-        # - tool: Tool
+        # - tool: tool
         self.role = role
-        # Section ID of the checklist item.
+        # The section ID of the check item.
         self.section_id = section_id
-        # Site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+        # The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
-        # File type
+        # The file type.
         self.type = type
 
     def validate(self):

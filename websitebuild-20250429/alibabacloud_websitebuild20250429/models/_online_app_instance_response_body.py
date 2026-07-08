@@ -21,7 +21,7 @@ class OnlineAppInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # The authentication failure details.
+        # The details of the authentication failure.
         self.access_denied_detail = access_denied_detail
         # Indicates whether retries are allowed.
         self.allow_retry = allow_retry
@@ -41,7 +41,7 @@ class OnlineAppInstanceResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the request is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):

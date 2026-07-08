@@ -16,6 +16,7 @@ from ._app_service_aggregate import AppServiceAggregate
 from ._app_service_group import AppServiceGroup
 from ._app_service_profile import AppServiceProfile
 from ._promotion_activity import PromotionActivity
+from ._template_record import TemplateRecord
 from ._tree_node import TreeNode
 from ._module_results_value import ModuleResultsValue
 from ._module_versions_value import ModuleVersionsValue
@@ -667,6 +668,7 @@ __all__ = [
     AppServiceGroup,
     AppServiceProfile,
     PromotionActivity,
+    TemplateRecord,
     TreeNode,
     ModuleResultsValue,
     ModuleVersionsValue,

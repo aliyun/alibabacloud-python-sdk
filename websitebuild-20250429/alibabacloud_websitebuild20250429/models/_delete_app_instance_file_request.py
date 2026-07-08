@@ -10,9 +10,9 @@ class DeleteAppInstanceFileRequest(DaraModel):
         conversation_id: str = None,
         file_path: str = None,
     ):
-        # Session ID
+        # The session ID.
         self.conversation_id = conversation_id
-        # File Path
+        # The file path.
         self.file_path = file_path
 
     def validate(self):

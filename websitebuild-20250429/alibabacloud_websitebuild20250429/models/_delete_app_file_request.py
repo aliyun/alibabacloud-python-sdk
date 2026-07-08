@@ -10,7 +10,9 @@ class DeleteAppFileRequest(DaraModel):
         conversation_id: str = None,
         file_path: str = None,
     ):
+        # The session ID.
         self.conversation_id = conversation_id
+        # The file path. The path is restricted to the ./public/ directory.
         self.file_path = file_path
 
     def validate(self):

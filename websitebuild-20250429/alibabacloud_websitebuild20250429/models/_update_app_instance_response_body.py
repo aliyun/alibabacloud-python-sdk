@@ -22,27 +22,27 @@ class UpdateAppInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Application name
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message. Not currently used. Please ignore.
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -135,13 +135,13 @@ class UpdateAppInstanceResponseBodyModule(DaraModel):
         order_id: str = None,
         thumbnail_url: str = None,
     ):
-        # BizId of the associated application instance
+        # The business ID of the associated application instance.
         self.biz_id = biz_id
-        # Application icon
+        # The application icon URL.
         self.icon_url = icon_url
-        # Order ID
+        # The order ID.
         self.order_id = order_id
-        # Application thumbnail
+        # The application thumbnail URL.
         self.thumbnail_url = thumbnail_url
 
     def validate(self):

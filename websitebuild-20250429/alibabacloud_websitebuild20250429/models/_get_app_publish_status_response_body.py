@@ -22,27 +22,27 @@ class GetAppPublishStatusResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Is retry allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -149,39 +149,39 @@ class GetAppPublishStatusResponseBodyModule(DaraModel):
     ):
         # Indicates whether quick rollback is supported.
         self.can_quick_revert = can_quick_revert
-        # Current operation step of the job.
+        # The current step of the task.
         self.current_step = current_step
-        # Deployment channel
+        # The deployment channel.
         self.deploy_channel = deploy_channel
-        # Application description
+        # The application description.
         self.description = description
-        # Publishing procedure
+        # The publish process.
         self.error_step = error_step
-        # Indicates whether the job is finished.
+        # Indicates whether the task is complete.
         self.is_finish = is_finish
-        # Indicates whether the invocation succeeded. Valid values:
+        # Indicates whether the call is successful. Valid values:
         # 
-        # - `true`: The invocation succeeded.
+        # - `true`: The call is successful.
         # 
-        # - `false`: Failed to invoke.
+        # - `false`: The call failed.
         self.is_success = is_success
-        # Additional description information.
+        # The additional description.
         self.msg = msg
-        # Sorting type: ASC or DESC.
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
-        # Job completion percentage.
+        # The task completion percentage.
         self.percent = percent
-        # Publish number
+        # The publish number.
         self.publish_number = publish_number
-        # Publish order ID
+        # The publish order ID.
         self.publish_order_id = publish_order_id
-        # Scheduled publish time
+        # The scheduled publish time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.publish_time = publish_time
-        # The site ID, which can be obtained by invoking the [ListSites](~~ListSites~~) API.
+        # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
         self.site_id = site_id
-        # Error Level, including FATAL, ERROR, WARNING, and CRITICAL.
+        # The error level. Valid values: FATAL, ERROR, WARNING, and CRITICAL.
         self.steps = steps
         self.subchannel = subchannel
 

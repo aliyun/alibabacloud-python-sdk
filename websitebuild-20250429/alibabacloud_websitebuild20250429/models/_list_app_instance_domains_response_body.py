@@ -32,12 +32,12 @@ class ListAppInstanceDomainsResponseBody(DaraModel):
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** return parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which replaces the `%s` placeholder in the **ErrMessage** return parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # The error parameters returned.
+        # The error parameters.
         self.error_args = error_args
-        # The maximum number of entries per query.
+        # The number of entries per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
@@ -51,7 +51,7 @@ class ListAppInstanceDomainsResponseBody(DaraModel):
         self.root_error_code = root_error_code
         # The exception message.
         self.root_error_msg = root_error_msg
-        # A reserved parameter.
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -163,7 +163,7 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
     ):
         # The current page number.
         self.current_page_num = current_page_num
-        # The request results.
+        # The request result.
         self.data = data
         # The decision weight.
         self.next = next
@@ -173,7 +173,7 @@ class ListAppInstanceDomainsResponseBodyModule(DaraModel):
         self.page_size = page_size
         # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # The server processes up to 1000 recent records beyond the pagination limit. If the results exceed 1000 entries, **ResultLimit** is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
+        # In addition to pagination limits, the server processes up to 1,000 recent records per query. If the result exceeds 1,000 records, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
         # The total number of entries.
         self.total_item_num = total_item_num
@@ -275,7 +275,7 @@ class ListAppInstanceDomainsResponseBodyModuleNext(DaraModel):
     ):
         # The domain name SSL certificate information.
         self.certificate = certificate
-        # The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
+        # The instance creation time. This parameter is required. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
         self.dns_conflict = dns_conflict
         # The domain name.
@@ -394,7 +394,7 @@ class ListAppInstanceDomainsResponseBodyModuleNextVerification(DaraModel):
         verification_status: str = None,
         verification_status_code: str = None,
     ):
-        # The DNS record that the user needs to configure.
+        # The DNS record configuration guide for the user.
         self.dns_record = dns_record
         # The error message.
         self.error_msg = error_msg
@@ -818,13 +818,13 @@ class ListAppInstanceDomainsResponseBodyModuleNextCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The name of the certificate.
+        # The certificate name.
         self.certificate_name = certificate_name
-        # The status of the certificate.
+        # The certificate status.
         self.certificate_status = certificate_status
-        # The type of the certificate.
+        # The certificate type.
         self.certificate_type = certificate_type
-        # The expiration date of the certificate.
+        # The certificate expiration date.
         self.end_time = end_time
 
     def validate(self):
@@ -881,7 +881,7 @@ class ListAppInstanceDomainsResponseBodyModuleData(DaraModel):
     ):
         # The domain name SSL certificate information.
         self.certificate = certificate
-        # The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
+        # The instance creation time. This parameter is required. Format: yyyy-MM-dd HH:mm:ss.
         self.create_time = create_time
         self.dns_conflict = dns_conflict
         # The domain name.
@@ -1000,13 +1000,13 @@ class ListAppInstanceDomainsResponseBodyModuleDataVerification(DaraModel):
         verification_status: str = None,
         verification_status_code: str = None,
     ):
-        # The DNS record that the user needs to configure.
+        # The DNS record configuration guide for the user.
         self.dns_record = dns_record
         # The error message.
         self.error_msg = error_msg
         # The ownership verification status.
         self.verification_status = verification_status
-        # The ownership verification status code.
+        # The ownership verification status.
         self.verification_status_code = verification_status_code
 
     def validate(self):
@@ -1434,13 +1434,13 @@ class ListAppInstanceDomainsResponseBodyModuleDataCertificate(DaraModel):
         certificate_type: str = None,
         end_time: str = None,
     ):
-        # The name of the certificate.
+        # The certificate name.
         self.certificate_name = certificate_name
-        # The status of the certificate.
+        # The certificate status.
         self.certificate_status = certificate_status
-        # The type of the certificate.
+        # The certificate type.
         self.certificate_type = certificate_type
-        # The expiration date of the certificate.
+        # The certificate expiration date.
         self.end_time = end_time
 
     def validate(self):

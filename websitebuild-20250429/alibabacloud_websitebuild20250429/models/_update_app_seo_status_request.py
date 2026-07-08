@@ -12,12 +12,12 @@ class UpdateAppSeoStatusRequest(DaraModel):
         se_auth_info: str = None,
         se_type: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Domain Name
+        # The domain name.
         self.domain = domain
         self.se_auth_info = se_auth_info
-        # Search Engine Type
+        # The search engine type.
         self.se_type = se_type
 
     def validate(self):

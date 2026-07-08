@@ -12,13 +12,13 @@ class UpdateAppChatMessageRequest(DaraModel):
         conversation_id: str = None,
         message_id: str = None,
     ):
-        # Appended message metadata (JSON format)
+        # The appended message metadata in JSON format.
         self.added_meta_data = added_meta_data
-        # Message content
+        # The message content.
         self.content = content
-        # Session ID
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # Message ID
+        # The message ID.
         self.message_id = message_id
 
     def validate(self):

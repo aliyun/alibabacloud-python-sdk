@@ -22,30 +22,30 @@ class GetAppSupabaseSecretsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether retry is allowed. Valid values:  
-        # - false: Retry is not allowed.  
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
         # - true: Retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace the `%s` placeholder in the **ErrMessage** error message.  
-        # > For example, if **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the provided request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Returned object.
+        # The response object.
         self.module = module
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Abnormal message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Indicates whether the operation is processed synchronously.
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -135,7 +135,7 @@ class GetAppSupabaseSecretsResponseBodyModule(DaraModel):
         self,
         secrets: List[main_models.GetAppSupabaseSecretsResponseBodyModuleSecrets] = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.secrets = secrets
 
     def validate(self):
@@ -174,19 +174,19 @@ class GetAppSupabaseSecretsResponseBodyModuleSecrets(DaraModel):
         secret_type: str = None,
         value: str = None,
     ):
-        # Tag key
+        # The tag key.
         self.key = key
-        # Application name
+        # The application name.
         self.name = name
-        # The credential type. Valid values:  
-        # - Generic: generic secret.  
-        # - Rds: RDS credential.  
-        # - Redis: Redis/Tair credential.  
+        # The credential type. Valid values:
+        # - Generic: generic credential.  
+        # - Rds: ApsaraDB RDS credential.  
+        # - Redis: Redis/Tair credential.
         # - RAMCredentials: RAM credential.  
-        # - ECS: ECS credential.  
+        # - ECS: ECS credential.
         # - PolarDB: PolarDB credential.
         self.secret_type = secret_type
-        # Record value
+        # The record value.
         self.value = value
 
     def validate(self):
