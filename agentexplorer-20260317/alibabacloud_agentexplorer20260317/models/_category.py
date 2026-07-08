@@ -14,8 +14,11 @@ class Category(DaraModel):
         code: str = None,
         name: str = None,
     ):
+        # Sub-categories
         self.children = children
+        # Level 1 Category Code
         self.code = code
+        # Level 1 Category Name
         self.name = name
 
     def validate(self):
@@ -66,7 +69,9 @@ class CategoryChildren(DaraModel):
         code: str = None,
         name: str = None,
     ):
+        # Level 2 Category Code
         self.code = code
+        # Level 2 Category Name
         self.name = name
 
     def validate(self):

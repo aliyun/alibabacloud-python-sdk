@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'public': 'agentexplorer.aliyuncs.com',
+            'cn-hangzhou': 'agentexplorer.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentexplorer', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -197,6 +201,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_mode):
+            query['searchMode'] = request.search_mode
         if not DaraCore.is_null(request.skip):
             query['skip'] = request.skip
         req = open_api_util_models.OpenApiRequest(
@@ -235,6 +241,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.search_mode):
+            query['searchMode'] = request.search_mode
         if not DaraCore.is_null(request.skip):
             query['skip'] = request.skip
         req = open_api_util_models.OpenApiRequest(

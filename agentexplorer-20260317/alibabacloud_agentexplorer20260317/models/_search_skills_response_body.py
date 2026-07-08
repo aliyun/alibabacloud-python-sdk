@@ -16,11 +16,15 @@ class SearchSkillsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of skills returned.
         self.data = data
+        # The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The NextToken value, which is used to retrieve more results.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

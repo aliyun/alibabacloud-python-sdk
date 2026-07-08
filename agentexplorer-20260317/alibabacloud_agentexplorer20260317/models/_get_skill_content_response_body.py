@@ -10,6 +10,7 @@ class GetSkillContentResponseBody(DaraModel):
         content: str = None,
         request_id: str = None,
     ):
+        # SKILL.md file content
         self.content = content
         # Id of the request
         self.request_id = request_id

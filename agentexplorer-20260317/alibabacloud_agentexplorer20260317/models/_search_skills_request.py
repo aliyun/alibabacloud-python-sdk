@@ -11,12 +11,19 @@ class SearchSkillsRequest(DaraModel):
         keyword: str = None,
         max_results: int = None,
         next_token: str = None,
+        search_mode: str = None,
         skip: int = None,
     ):
+        # The skill category code. Separate multiple codes with commas. For a second-level category, use the format: first-level category.second-level category.
         self.category_code = category_code
+        # The search keyword.
         self.keyword = keyword
+        # The maximum number of entries per page for a paged query. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The token for the next query. Set this to the NextToken value returned by the previous API call.
         self.next_token = next_token
+        self.search_mode = search_mode
+        # The number of entries to skip for pagination.
         self.skip = skip
 
     def validate(self):
@@ -39,6 +46,9 @@ class SearchSkillsRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.search_mode is not None:
+            result['searchMode'] = self.search_mode
+
         if self.skip is not None:
             result['skip'] = self.skip
 
@@ -57,6 +67,9 @@ class SearchSkillsRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('searchMode') is not None:
+            self.search_mode = m.get('searchMode')
 
         if m.get('skip') is not None:
             self.skip = m.get('skip')

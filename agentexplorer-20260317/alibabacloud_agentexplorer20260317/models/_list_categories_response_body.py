@@ -14,8 +14,11 @@ class ListCategoriesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The returned category list
         self.data = data
+        # Response message
         self.message = message
+        # request ID
         self.request_id = request_id
 
     def validate(self):
