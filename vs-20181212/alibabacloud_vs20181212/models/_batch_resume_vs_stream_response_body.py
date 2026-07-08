@@ -13,6 +13,7 @@ class BatchResumeVsStreamResponseBody(DaraModel):
         request_id: str = None,
         resume_result: main_models.BatchResumeVsStreamResponseBodyResumeResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
         self.resume_result = resume_result
 

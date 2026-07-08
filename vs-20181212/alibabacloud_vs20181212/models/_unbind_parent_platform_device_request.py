@@ -11,9 +11,13 @@ class UnbindParentPlatformDeviceRequest(DaraModel):
         owner_id: int = None,
         parent_platform_id: str = None,
     ):
+        # The ID of the device.
+        # 
         # This parameter is required.
         self.device_id = device_id
         self.owner_id = owner_id
+        # The ID of the parent platform.
+        # 
         # This parameter is required.
         self.parent_platform_id = parent_platform_id
 

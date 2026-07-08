@@ -11,8 +11,11 @@ class DescribeComfyUserDatasRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The name of the file to query, or the folder to query. For a folder, provide the path ending with a forward slash (/).
         self.file_name = file_name
+        # The page number of the list to query.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

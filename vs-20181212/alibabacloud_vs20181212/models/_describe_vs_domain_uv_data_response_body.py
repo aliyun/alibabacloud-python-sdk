@@ -17,10 +17,15 @@ class DescribeVsDomainUvDataResponseBody(DaraModel):
         start_time: str = None,
         uv_data_interval: main_models.DescribeVsDomainUvDataResponseBodyUvDataInterval = None,
     ):
+        # The time interval between data records. Unit: seconds. This is a static field with a value of 3600, which indicates 1 hour.
         self.data_interval = data_interval
+        # The domain name of Visual Edge Computing Service.
         self.domain_name = domain_name
+        # The end of the time range.
         self.end_time = end_time
+        # The ID of the request.
         self.request_id = request_id
+        # The beginning of the time range.
         self.start_time = start_time
         self.uv_data_interval = uv_data_interval
 

@@ -12,7 +12,10 @@ class ResetRenderingInstanceRequest(DaraModel):
         rendering_instance_id: str = None,
     ):
         self.action_name = action_name
+        # Data baseline ID
         self.data_package_id = data_package_id
+        # Service instance ID
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

@@ -13,7 +13,9 @@ class DescribeStreamVodListResponseBody(DaraModel):
         records: List[main_models.DescribeStreamVodListResponseBodyRecords] = None,
         request_id: str = None,
     ):
+        # VOD record list
         self.records = records
+        # Request ID of this task.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeStreamVodListResponseBodyRecords(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # VOD record end time (unix timestamp, unit: seconds)
         self.end_time = end_time
+        # VOD record start time (unix timestamp, unit: seconds)
         self.start_time = start_time
 
     def validate(self):

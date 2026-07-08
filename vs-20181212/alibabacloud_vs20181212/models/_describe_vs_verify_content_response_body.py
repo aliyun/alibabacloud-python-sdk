@@ -10,7 +10,9 @@ class DescribeVsVerifyContentResponseBody(DaraModel):
         content: str = None,
         request_id: str = None,
     ):
+        # 校验内容。
         self.content = content
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):

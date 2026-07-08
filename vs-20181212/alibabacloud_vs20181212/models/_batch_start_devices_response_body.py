@@ -13,7 +13,9 @@ class BatchStartDevicesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchStartDevicesResponseBodyResults] = None,
     ):
+        # The request ID of this task.
         self.request_id = request_id
+        # List of results.
         self.results = results
 
     def validate(self):
@@ -56,7 +58,9 @@ class BatchStartDevicesResponseBodyResults(DaraModel):
         id: str = None,
         streams: List[main_models.BatchStartDevicesResponseBodyResultsStreams] = None,
     ):
+        # Device ID.
         self.id = id
+        # List of device streams.
         self.streams = streams
 
     def validate(self):
@@ -100,8 +104,11 @@ class BatchStartDevicesResponseBodyResultsStreams(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # Error message for the stream. This field appears only when an error occurs.
         self.error = error
+        # Stream ID.
         self.id = id
+        # Stream name.
         self.name = name
 
     def validate(self):

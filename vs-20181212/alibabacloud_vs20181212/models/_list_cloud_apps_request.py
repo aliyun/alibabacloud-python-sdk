@@ -19,16 +19,48 @@ class ListCloudAppsRequest(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The ID of the cloud application. This ID corresponds to a unique application package.
         self.app_id = app_id
+        # Application name.
         self.app_name = app_name
+        # Application version.
         self.app_version = app_version
+        # The time range filter parameter. Express it in ISO8601 standard format, using UTC time: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # Return only the latest submitted version of the application. Default value: false.
         self.latest_version_only = latest_version_only
+        # The page number for the query list. The starting value is 1. Default value: 1.
         self.page_number = page_number
+        # The number of rows per page for paged queries. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # Valid values:
+        # 
+        # 1. Valid values:
+        #    a. hot
+        #    b. game
+        #    c. app
+        # 
+        # 2. Special case:a. To list applications that have no tags, enter NULL.
         self.pkg_label = pkg_label
+        # The package type. Valid values:
+        # 
+        # 1. android
+        # 
+        # 2. win
+        # 
+        # 3. android_appmarket
         self.pkg_type = pkg_type
+        # The time range filter parameter. Express it in ISO8601 standard format, using UTC time: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
+        # The application upload status. Valid values:
+        # 
+        # 1. Success: The desired state, indicating success.
+        # 
+        # 2. Failed: The desired state, indicating failure.
+        # 
+        # 3. Created
+        # 
+        # 4. Doing
         self.status = status
 
     def validate(self):

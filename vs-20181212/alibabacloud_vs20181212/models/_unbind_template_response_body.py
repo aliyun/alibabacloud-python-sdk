@@ -13,10 +13,15 @@ class UnbindTemplateResponseBody(DaraModel):
         template_id: str = None,
         template_type: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The type of the instance.
         self.instance_type = instance_type
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the template.
         self.template_id = template_id
+        # The type of the template.
         self.template_type = template_type
 
     def validate(self):

@@ -19,16 +19,40 @@ class DescribeGroupsRequest(DaraModel):
         sort_direction: str = None,
         status: str = None,
     ):
+        # The space ID.
         self.id = id
+        # Ingest protocol used by the group. Valid values:
+        # 
+        # - gb28181
+        # 
+        # - rtmp
         self.in_protocol = in_protocol
+        # Whether to return device statistics for the group. Default: false.
         self.include_stats = include_stats
+        # Space name.
         self.name = name
         self.owner_id = owner_id
+        # Page number. Default: 1.
         self.page_num = page_num
+        # Number of entries per page.
         self.page_size = page_size
+        # The service region where the group is located.
         self.region = region
+        # Field to sort by. Valid values:
+        # 
+        # - Id (default)
         self.sort_by = sort_by
+        # Sort order. Valid values:
+        # 
+        # - asc (ascending, default)
+        # 
+        # - desc (descending)
         self.sort_direction = sort_direction
+        # Group status. Valid values:
+        # 
+        # - on (enabled)
+        # 
+        # - off (disabled)
         self.status = status
 
     def validate(self):

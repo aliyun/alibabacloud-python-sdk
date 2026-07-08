@@ -16,10 +16,15 @@ class ListCloudAppInstallationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of installation records.
         self.installation_infos = installation_infos
+        # Page number of the returned list.
         self.page_number = page_number
+        # Number of entries per page for paged queries.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of installation records.
         self.total_count = total_count
 
     def validate(self):
@@ -87,14 +92,27 @@ class ListCloudAppInstallationsResponseBodyInstallationInfos(DaraModel):
         status_description: str = None,
         update_time: str = None,
     ):
+        # Application ID.
         self.app_id = app_id
+        # Application name.
         self.app_name = app_name
+        # Application version.
         self.app_version = app_version
+        # Installation time.
         self.installation_time = installation_time
+        # Patch package ID.
         self.patch_id = patch_id
+        # Cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
+        # Cloud application installation status. Valid values:
+        # 
+        # 1. Intermediate states: install-init, installing
+        # 
+        # 2. Final states: installed, install-failed
         self.status = status
+        # Status description.
         self.status_description = status_description
+        # Time when the status was last updated.
         self.update_time = update_time
 
     def validate(self):

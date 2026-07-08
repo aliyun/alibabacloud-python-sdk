@@ -10,7 +10,9 @@ class UploadCloudAppResponseBody(DaraModel):
         app_id: str = None,
         request_id: str = None,
     ):
+        # The cloud application ID, which uniquely identifies the application package.
         self.app_id = app_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

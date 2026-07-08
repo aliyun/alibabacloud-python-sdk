@@ -15,12 +15,20 @@ class DescribeParentPlatformsRequest(DaraModel):
         sort_direction: str = None,
         status: str = None,
     ):
+        # Query by the GB ID of the parent platform.
         self.gb_id = gb_id
         self.owner_id = owner_id
+        # Page number. Default value is 1.
         self.page_num = page_num
+        # Page size. Default value is 20.
         self.page_size = page_size
+        # Sort by the specified field. Sorted by id by default.
         self.sort_by = sort_by
+        # Sort order. Ascending by default. Valid values:
+        # - asc (ascending)
+        # - desc (descending)
         self.sort_direction = sort_direction
+        # Query by the status of the parent platform.
         self.status = status
 
     def validate(self):

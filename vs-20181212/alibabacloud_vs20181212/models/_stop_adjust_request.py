@@ -12,9 +12,13 @@ class StopAdjustRequest(DaraModel):
         iris: bool = None,
         owner_id: int = None,
     ):
+        # Stop adjusting the zoom. Default is false.
         self.focus = focus
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Stop adjusting the aperture. Default is false.
         self.iris = iris
         self.owner_id = owner_id
 

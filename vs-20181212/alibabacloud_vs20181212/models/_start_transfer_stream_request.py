@@ -12,10 +12,15 @@ class StartTransferStreamRequest(DaraModel):
         transcode: str = None,
         url: str = None,
     ):
+        # Stream ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # The name of the transcoding rule (a transcoding template must be bound first).
         self.transcode = transcode
+        # The destination address for stream forwarding.
+        # 
         # This parameter is required.
         self.url = url
 

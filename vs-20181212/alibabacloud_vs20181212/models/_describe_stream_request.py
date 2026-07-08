@@ -10,6 +10,8 @@ class DescribeStreamRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # The stream ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id

@@ -10,6 +10,7 @@ class ModifyRenderingChargeTypeResponseBody(DaraModel):
         rendering_instance_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the Graphic Computing Service instance
         self.rendering_instance_id = rendering_instance_id
         # Id of the request
         self.request_id = request_id

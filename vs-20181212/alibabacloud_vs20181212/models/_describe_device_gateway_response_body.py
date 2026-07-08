@@ -13,10 +13,15 @@ class DescribeDeviceGatewayResponseBody(DaraModel):
         request_id: str = None,
         token: str = None,
     ):
+        # Alibaba Cloud service endpoint.
         self.host = host
+        # Port number.
         self.port = port
+        # Device registration protocol.
         self.protocol = protocol
+        # Request ID for this task.
         self.request_id = request_id
+        # Token code.
         self.token = token
 
     def validate(self):

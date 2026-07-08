@@ -20,17 +20,48 @@ class DescribeStreamsRequest(DaraModel):
         sort_by: str = None,
         sort_direction: str = None,
     ):
+        # Filter by application.
         self.app = app
+        # Filter by device ID.
         self.device_id = device_id
+        # Filter by domain name.
         self.domain = domain
+        # The ID of the space to query.
         self.group_id = group_id
+        # Stream ID.
+        # 
+        # > Enter multiple IDs separated by commas (,).
         self.id = id
+        # Filter by stream name.
+        # 
+        # > Enter multiple names separated by commas (,).
         self.name = name
         self.owner_id = owner_id
+        # Page number. Default value: 1.
         self.page_num = page_num
+        # Number of items per page. Default value: 20.
         self.page_size = page_size
+        # Parent device ID of the device that hosts this stream.
         self.parent_id = parent_id
+        # Sort results by a field. Valid values:
+        # 
+        # - Id (default)
+        # 
+        # - GroupId
+        # 
+        # - Name
+        # 
+        # - DeviceId
+        # 
+        # - Protocol
+        # 
+        # > You can specify only one field.
         self.sort_by = sort_by
+        # Sort order. Valid values:
+        # 
+        # - asc (ascending, default)
+        # 
+        # - desc (descending)
         self.sort_direction = sort_direction
 
     def validate(self):

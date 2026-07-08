@@ -18,12 +18,19 @@ class DescribeComfyWorkflowsResponseBody(DaraModel):
         total_count: int = None,
         workflows: List[main_models.DescribeComfyWorkflowsResponseBodyWorkflows] = None,
     ):
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # The current page number.
         self.page_number = page_number
+        # The number of workflows on the current page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of workflows that match the query.
         self.total_count = total_count
+        # A list of Comfy workflows.
         self.workflows = workflows
 
     def validate(self):
@@ -99,10 +106,15 @@ class DescribeComfyWorkflowsResponseBodyWorkflows(DaraModel):
         updated_time: str = None,
         workflow_id: str = None,
     ):
+        # The time when the workflow was created.
         self.creation_time = creation_time
+        # The workflow description.
         self.description = description
+        # The workflow name.
         self.name = name
+        # The time when the workflow was last updated.
         self.updated_time = updated_time
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

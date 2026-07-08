@@ -12,12 +12,20 @@ class DescribeComfyUserDataUploadUrlRequest(DaraModel):
         file_name: str = None,
         file_size_bytes: int = None,
     ):
+        # The content type of the file.
+        # 
         # This parameter is required.
         self.content_type = content_type
+        # The MD5 hash of the file to be uploaded. This value must be the file\\"s actual MD5 hash. The file size is also verified during the upload.
+        # 
         # This parameter is required.
         self.file_md_5 = file_md_5
+        # The name of the file to upload. The filename can be a single file, such as \\`1.jpg\\`, or include a path, such as \\`directory1/1.jpg\\`.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The actual size of the file in bytes. This value must be the exact size of the file. The file size is verified when you use the upload URL.
+        # 
         # This parameter is required.
         self.file_size_bytes = file_size_bytes
 

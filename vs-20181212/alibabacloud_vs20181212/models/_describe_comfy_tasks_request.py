@@ -12,9 +12,13 @@ class DescribeComfyTasksRequest(DaraModel):
         task_state: str = None,
         workflow_id: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of tasks per page.
         self.page_size = page_size
+        # The task state. If specified, the operation returns only tasks in that state.
         self.task_state = task_state
+        # If you specify this parameter, the operation returns only tasks for the specified workflow.
         self.workflow_id = workflow_id
 
     def validate(self):

@@ -21,6 +21,12 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shenzhen': 'vs.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'vs.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'vs.cn-qingdao.aliyuncs.com',
+            'cn-beijing': 'vs.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -723,6 +729,88 @@ class Client(OpenApiClient):
     ) -> main_models.BatchBindTemplatesResponse:
         runtime = RuntimeOptions()
         return await self.batch_bind_templates_with_options_async(request, runtime)
+
+    def batch_capture_rendering_instance_screenshot_with_options(
+        self,
+        tmp_req: main_models.BatchCaptureRenderingInstanceScreenshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCaptureRenderingInstanceScreenshotResponse:
+        tmp_req.validate()
+        request = main_models.BatchCaptureRenderingInstanceScreenshotShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.quality):
+            query['Quality'] = request.quality
+        if not DaraCore.is_null(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCaptureRenderingInstanceScreenshot',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCaptureRenderingInstanceScreenshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_capture_rendering_instance_screenshot_with_options_async(
+        self,
+        tmp_req: main_models.BatchCaptureRenderingInstanceScreenshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchCaptureRenderingInstanceScreenshotResponse:
+        tmp_req.validate()
+        request = main_models.BatchCaptureRenderingInstanceScreenshotShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rendering_instance_ids):
+            request.rendering_instance_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.rendering_instance_ids, 'RenderingInstanceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.quality):
+            query['Quality'] = request.quality
+        if not DaraCore.is_null(request.rendering_instance_ids_shrink):
+            query['RenderingInstanceIds'] = request.rendering_instance_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchCaptureRenderingInstanceScreenshot',
+            version = '2018-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchCaptureRenderingInstanceScreenshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_capture_rendering_instance_screenshot(
+        self,
+        request: main_models.BatchCaptureRenderingInstanceScreenshotRequest,
+    ) -> main_models.BatchCaptureRenderingInstanceScreenshotResponse:
+        runtime = RuntimeOptions()
+        return self.batch_capture_rendering_instance_screenshot_with_options(request, runtime)
+
+    async def batch_capture_rendering_instance_screenshot_async(
+        self,
+        request: main_models.BatchCaptureRenderingInstanceScreenshotRequest,
+    ) -> main_models.BatchCaptureRenderingInstanceScreenshotResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_capture_rendering_instance_screenshot_with_options_async(request, runtime)
 
     def batch_delete_devices_with_options(
         self,

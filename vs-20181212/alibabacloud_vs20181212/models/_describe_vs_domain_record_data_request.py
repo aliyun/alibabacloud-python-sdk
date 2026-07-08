@@ -13,10 +13,14 @@ class DescribeVsDomainRecordDataRequest(DaraModel):
         region: str = None,
         start_time: str = None,
     ):
+        # Visual Edge Computing Service domain name.
         self.domain_name = domain_name
+        # End time of the data range. Must be later than StartTime. Use ISO 8601 notation in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
         self.owner_id = owner_id
+        # Region information
         self.region = region
+        # Start time of the data range. Use ISO 8601 notation in UTC. Format: YYYY-MM-DDThh:mm:ssZ. Minimum data granularity is 5 minutes. If you omit this parameter, the API returns data from the last 24 hours.
         self.start_time = start_time
 
     def validate(self):

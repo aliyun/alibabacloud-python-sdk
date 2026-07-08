@@ -10,8 +10,12 @@ class UpdateFileInfoRequest(DaraModel):
         description: str = None,
         file_id: str = None,
     ):
+        # The file description.
+        # 
         # This parameter is required.
         self.description = description
+        # The ID of the file. Each file has a unique ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
 

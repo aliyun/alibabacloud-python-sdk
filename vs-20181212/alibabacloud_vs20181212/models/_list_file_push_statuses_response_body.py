@@ -16,10 +16,15 @@ class ListFilePushStatusesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned results.
         self.page_number = page_number
+        # The number of entries per page in a paged query.
         self.page_size = page_size
+        # The list of file push status records.
         self.push_statuses = push_statuses
+        # The request ID.
         self.request_id = request_id
+        # The total number of matching file push records.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,27 @@ class ListFilePushStatusesResponseBodyPushStatuses(DaraModel):
         status_description: str = None,
         update_time: str = None,
     ):
+        # The file ID.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The scheduled push start time.
         self.push_time = push_time
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
+        # The file push status. Valid values:
+        # 
+        # 1. Created
+        # 
+        # 2. Doing
+        # 
+        # 3. Success: desired state
+        # 
+        # 4. Failed: desired state
         self.status = status
+        # The status description.
         self.status_description = status_description
+        # The latest update time of the status.
         self.update_time = update_time
 
     def validate(self):

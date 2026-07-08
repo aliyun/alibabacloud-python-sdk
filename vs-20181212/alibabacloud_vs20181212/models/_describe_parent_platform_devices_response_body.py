@@ -17,11 +17,17 @@ class DescribeParentPlatformDevicesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of devices.
         self.devices = devices
+        # The total number of pages.
         self.page_count = page_count
+        # The page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of devices.
         self.total_count = total_count
 
     def validate(self):
@@ -91,10 +97,15 @@ class DescribeParentPlatformDevicesResponseBodyDevices(DaraModel):
         name: str = None,
         parent_id: str = None,
     ):
+        # The GB ID of the device.
         self.gb_id = gb_id
+        # The ID of the space to which the device belongs.
         self.group_id = group_id
+        # The device ID.
         self.id = id
+        # The name of the device.
         self.name = name
+        # The parent device ID.
         self.parent_id = parent_id
 
     def validate(self):

@@ -17,10 +17,15 @@ class DescribeVsDomainRegionDataResponseBody(DaraModel):
         start_time: str = None,
         value: main_models.DescribeVsDomainRegionDataResponseBodyValue = None,
     ):
+        # Time interval, in seconds.
         self.data_interval = data_interval
+        # The domain name that is accelerated by Visual Edge Computing Service.
         self.domain_name = domain_name
+        # End time.
         self.end_time = end_time
+        # Request ID.
         self.request_id = request_id
+        # Start time.
         self.start_time = start_time
         self.value = value
 

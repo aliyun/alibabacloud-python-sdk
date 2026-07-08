@@ -29,27 +29,73 @@ class CreateTemplateRequest(DaraModel):
         trigger: str = None,
         type: str = None,
     ):
+        # Callback URL to be invoked after template execution.  
+        # 
+        # > Note: Templates triggered on demand do not support callback parameters.
         self.callback = callback
+        # Template description.
         self.description = description
+        # Storage file format. Multiple values are separated by commas. Valid values:
+        # - mp4
+        # - flv
+        # - hls
+        # > The Qingdao ingest endpoint does not support recording in FLV or MP4 formats.
         self.file_format = file_format
+        # Storage path for FLV files. For the format, see the description for Mp4.
         self.flv = flv
+        # Storage path for HLS m3u8 files. For the format, see the description for Mp4.
         self.hls_m3u_8 = hls_m3u_8
+        # Storage path for HLS .ts files.
+        # - Variables can be used in the path. Supported variables include {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.
+        # - The variables {UnixTimestamp} and {Sequence} must both be included.
         self.hls_ts = hls_ts
+        # Operation epoch, in seconds.
         self.interval = interval
+        # Storage path for on-demand JPG screenshots.
+        # - Only JPG images are currently supported.
+        # - Variables can be used in the path. Supported variables include {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.
+        # - Either {UnixTimestamp} or {Sequence} must be included.
         self.jpg_on_demand = jpg_on_demand
+        # Storage path for JPG files used in overwrite snapshots.  
+        # - Only JPG images are currently supported.  
+        # - Supports variable substitution with {AppName} and {StreamName}.
         self.jpg_overwrite = jpg_overwrite
+        # Storage path for JPG files used in sequential snapshots.  
+        # - Only JPG images are currently supported.  
+        # - Supports variable substitution with {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.  
+        # - Either {UnixTimestamp} or {Sequence} is required.
         self.jpg_sequence = jpg_sequence
+        # Storage path for MP4 files.  
+        # - The path supports variable substitution. Available variables include {AppName}, {StreamName}, {Sequence}, {EscapedStartTime}, and {EscapedEndTime}.  
+        # - {EscapedStartTime} and {EscapedEndTime} are required.
         self.mp_4 = mp_4
+        # Template Name.
+        # 
         # This parameter is required.
         self.name = name
+        # OSS bucket.
         self.oss_bucket = oss_bucket
+        # Domain name of OSS.
         self.oss_endpoint = oss_endpoint
+        # OSS file prefix.
         self.oss_file_prefix = oss_file_prefix
         self.owner_id = owner_id
+        # Region where the OSS bucket resides, that is, the service center.
         self.region = region
+        # Time-shift retention period, in days.
         self.retention = retention
+        # An array of TransConfig-type transcoding configurations, formatted as a JSON string.
         self.trans_configs_json = trans_configs_json
+        # Template trigger type. Default value: auto. Valid values:  
+        # - auto (automatic)  
+        # - ondemand (on-demand)
         self.trigger = trigger
+        # Template type. Valid values:  
+        # - record (recording)  
+        # - snapshot (snapshot)  
+        # - transcode (transcoding)  
+        # - timeshift (time shifting)
+        # 
         # This parameter is required.
         self.type = type
 

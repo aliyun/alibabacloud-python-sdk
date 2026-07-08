@@ -12,11 +12,17 @@ class BatchBindPurchasedDevicesRequest(DaraModel):
         owner_id: int = None,
         region: str = None,
     ):
+        # The ID of the device.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # The ID of the device group.
+        # 
         # This parameter is required.
         self.group_id = group_id
         self.owner_id = owner_id
+        # The region.
+        # 
         # This parameter is required.
         self.region = region
 

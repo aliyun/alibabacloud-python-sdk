@@ -34,28 +34,83 @@ class DescribeTemplateResponseBody(DaraModel):
         trigger: str = None,
         type: str = None,
     ):
+        # Callback URL triggered after template execution.
         self.callback = callback
+        # Template creation time.
         self.created_time = created_time
+        # Template description.
         self.description = description
+        # Storage file format. Separate multiple values with commas. Valid values: mp4, flv, hls, jpg
         self.file_format = file_format
+        # Storage path for FLV files.
+        # 
+        # > Applies only to recording templates.
         self.flv = flv
+        # Storage path for HLS .m3u8 files.
+        # 
+        # > Applies only to recording templates.
         self.hls_m3u_8 = hls_m3u_8
+        # Storage path for HLS .ts files.
+        # 
+        # > Applies only to recording templates.
         self.hls_ts = hls_ts
+        # Template ID.
         self.id = id
+        # Operation interval, in seconds.
         self.interval = interval
+        # Storage path for JPG files used for on-demand snapshots.
+        # 
+        # > Applies only to snapshot templates.
         self.jpg_on_demand = jpg_on_demand
+        # Storage path for JPG files used to overwrite snapshots.
+        # 
+        # > Applies only to snapshot templates.
         self.jpg_overwrite = jpg_overwrite
+        # Storage path for JPG files used for sequential snapshots.
+        # 
+        # > Applies only to snapshot templates.
         self.jpg_sequence = jpg_sequence
+        # Storage path for MP4 files.
+        # 
+        # > Applies only to recording templates.
         self.mp_4 = mp_4
+        # Template name.
         self.name = name
+        # OSS bucket.
         self.oss_bucket = oss_bucket
+        # OSS domain name.
         self.oss_endpoint = oss_endpoint
+        # OSS file prefix.
         self.oss_file_prefix = oss_file_prefix
+        # OSS region, which is the service center.
         self.region = region
+        # Request ID.
         self.request_id = request_id
+        # Timeshift retention period, in days.
+        # 
+        # > Applies only to timeshift templates.
         self.retention = retention
+        # List of transcoding configurations.
+        # 
+        # > Applies only to transcoding templates.
         self.trans_configs = trans_configs
+        # Template trigger type. Valid values:
+        # 
+        # - auto
+        # 
+        # - ondemand
+        # 
+        # > Applies only to recording templates.
         self.trigger = trigger
+        # Template type. Valid values:
+        # 
+        # - record
+        # 
+        # - snapshot
+        # 
+        # - transcode
+        # 
+        # - timeshift
         self.type = type
 
     def validate(self):
@@ -230,13 +285,21 @@ class DescribeTemplateResponseBodyTransConfigs(DaraModel):
         video_codec: str = None,
         width: int = None,
     ):
+        # Video frame rate, in fps.
         self.fps = fps
+        # Video GOP, in frames.
         self.gop = gop
+        # Video height.
         self.height = height
+        # Transcoding configuration ID.
         self.id = id
+        # Transcoding rule name. The name appears as a suffix in the transcoded stream. We recommend using recognizable suffixes such as sd or 200k. Only letters and digits are supported.
         self.name = name
+        # Video bitrate, in kbps.
         self.video_bitrate = video_bitrate
+        # Video encoding.
         self.video_codec = video_codec
+        # Video width.
         self.width = width
 
     def validate(self):

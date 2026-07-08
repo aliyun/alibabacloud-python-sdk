@@ -16,17 +16,79 @@ class UploadCloudAppShrinkRequest(DaraModel):
         pkg_labels_shrink: str = None,
         pkg_type: str = None,
     ):
+        # The application name. For Android apps, use the package name, such as com.aaa.bbb.
+        # 
+        # Value requirements:
+        # 
+        # 1. Length: 4–50 characters
+        # 
+        # 2. Allowed characters: lowercase letters, digits, underscores (_), hyphens (-), and dots (.)
+        # 
+        # 3. The first and last characters must be a letter or digit
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # Value requirements:
+        # 
+        # 1. Length: 1–50 characters
+        # 
+        # 2. Allowed characters: lowercase letters, digits, underscores (_), hyphens (-), and dots (.)
+        # 
+        # 3. The first and last characters must be a letter or digit
+        # 
         # This parameter is required.
         self.app_version = app_version
+        # A description of the application.
         self.description = description
+        # The download URL of the application package.
+        # 
         # This parameter is required.
         self.download_url = download_url
+        # The MD5 hash of the application package, used to verify package integrity.
+        # 
         # This parameter is required.
         self.md_5 = md_5
+        # The package format. By default, this is inferred from the file extension in the DownloadUrl. Valid values:
+        # 
+        # 1. apk
+        # 
+        # 2. tar.gz
+        # 
+        # 3. tar
+        # 
+        # 4. zip
+        # 
+        # 5. rar
         self.pkg_format = pkg_format
+        # Cloud application labels. You can select multiple. Valid values:
+        # 
+        # 1. hot
+        # 
+        # 2. game
+        # 
+        # 3. app
         self.pkg_labels_shrink = pkg_labels_shrink
+        # The package type.
+        # 
+        # ## Valid values:
+        # 
+        # 1. android
+        # 
+        # 2. win
+        # 
+        # 3. android_appmarket: for Android app marketplace scenarios. This scenario enforces real APK PackageName restrictions:
+        #    a. PackageNames must be unique across different AppNames.
+        #    b. The same AppName with different AppVersions can map to different PackageNames.
+        # 
+        # ## Default behavior:
+        # 
+        # If not specified, the system automatically maps the package type based on PkgFormat (or infers PkgFormat from the DownloadUrl file extension). The default mapping is:
+        # 
+        # 1. android: apk
+        # 
+        # 2. win: tar.gz, tar, zip, rar
+        # 
+        # 3. android_appmarket: apk
         self.pkg_type = pkg_type
 
     def validate(self):

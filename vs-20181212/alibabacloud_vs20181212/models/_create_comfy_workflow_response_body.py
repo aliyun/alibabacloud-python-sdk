@@ -16,11 +16,17 @@ class CreateComfyWorkflowResponseBody(DaraModel):
         status: str = None,
         workflow_id: str = None,
     ):
+        # The internal error code.
         self.code = code
+        # The returned message. If `Status` is `Failed`, this parameter provides the reason for the failure.
         self.message = message
+        # A list of missing nodes.
         self.missing_nodes = missing_nodes
+        # The request ID.
         self.request_id = request_id
+        # The workflow status.
         self.status = status
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

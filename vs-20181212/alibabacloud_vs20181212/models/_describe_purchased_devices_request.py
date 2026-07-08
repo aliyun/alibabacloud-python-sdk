@@ -19,16 +19,44 @@ class DescribePurchasedDevicesRequest(DaraModel):
         type: str = None,
         vendor: str = None,
     ):
+        # Queries by the ID of the group to which the device belongs.
         self.group_id = group_id
+        # Queries by device ID.
         self.id = id
+        # Queries by device name.
         self.name = name
         self.owner_id = owner_id
+        # The page number. The default is 1.
         self.page_num = page_num
+        # The number of entries per page. The default is 20.
         self.page_size = page_size
+        # The field to sort by. Valid value:
+        # 
+        # - id (default)
         self.sort_by = sort_by
+        # The sorting order. The default is ascending. Valid values:
+        # 
+        # - asc (ascending)
+        # 
+        # - desc (descending)
         self.sort_direction = sort_direction
+        # Queries by device subtype. Valid values:
+        # 
+        # - bullet (bullet camera)
+        # 
+        # - dome (dome camera)
+        # 
+        # - ptz (PTZ camera)
         self.sub_type = sub_type
+        # Queries by device type. Valid values:
+        # 
+        # - ipc (camera)
+        # 
+        # - platform (platform)
+        # 
+        # - ied (intelligent edge device)
         self.type = type
+        # Queries by device vendor.
         self.vendor = vendor
 
     def validate(self):

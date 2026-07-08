@@ -12,9 +12,13 @@ class ModifyDirectoryRequest(DaraModel):
         name: str = None,
         owner_id: int = None,
     ):
+        # The description of the directory.
         self.description = description
+        # The ID of the directory.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the directory.
         self.name = name
         self.owner_id = owner_id
 

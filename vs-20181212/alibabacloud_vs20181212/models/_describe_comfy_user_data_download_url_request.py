@@ -9,6 +9,8 @@ class DescribeComfyUserDataDownloadUrlRequest(DaraModel):
         self,
         file_name: str = None,
     ):
+        # The name of the file to download.
+        # 
         # This parameter is required.
         self.file_name = file_name
 

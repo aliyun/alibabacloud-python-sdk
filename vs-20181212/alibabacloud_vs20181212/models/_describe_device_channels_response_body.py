@@ -17,11 +17,17 @@ class DescribeDeviceChannelsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of channels.
         self.channels = channels
+        # The total number of pages.
         self.page_count = page_count
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of channels.
         self.total_count = total_count
 
     def validate(self):
@@ -94,13 +100,21 @@ class DescribeDeviceChannelsResponseBodyChannels(DaraModel):
         stream_id: str = None,
         stream_status: str = None,
     ):
+        # The channel ID.
         self.channel_id = channel_id
+        # The device ID.
         self.device_id = device_id
+        # The status of the device.
         self.device_status = device_status
+        # The GB ID.
         self.gb_id = gb_id
+        # The name of the channel.
         self.name = name
+        # Other configurations of the device.
         self.params = params
+        # The stream ID.
         self.stream_id = stream_id
+        # The status of the stream.
         self.stream_status = stream_status
 
     def validate(self):

@@ -19,17 +19,32 @@ class ModifyParentPlatformRequest(DaraModel):
         owner_id: int = None,
         port: int = None,
     ):
+        # Specifies whether to automatically enable the platform. Valid values:
+        # - true
+        # - false (default)
         self.auto_start = auto_start
+        # Specifies whether to enable local authentication. Valid values:
+        # - true (default)
+        # - false
         self.client_auth = client_auth
+        # The local password.
         self.client_password = client_password
+        # The local username.
         self.client_username = client_username
+        # The description of the parent platform.
         self.description = description
+        # The GB ID of the parent platform.
         self.gb_id = gb_id
+        # The ID of the parent platform.
+        # 
         # This parameter is required.
         self.id = id
+        # The SIP service IP of the parent platform.
         self.ip = ip
+        # The name of the parent platform.
         self.name = name
         self.owner_id = owner_id
+        # The SIP service port of the parent platform.
         self.port = port
 
     def validate(self):

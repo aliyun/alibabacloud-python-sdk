@@ -12,10 +12,14 @@ class DescribeDeviceChannelsRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # Query by device ID
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # The page number. The default value is 1.
         self.page_num = page_num
+        # The number of entries per page. The default value is 20.
         self.page_size = page_size
 
     def validate(self):

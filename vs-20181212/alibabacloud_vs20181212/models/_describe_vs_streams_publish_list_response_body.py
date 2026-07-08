@@ -17,11 +17,16 @@ class DescribeVsStreamsPublishListResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
         self.publish_info = publish_info
+        # The request ID.
         self.request_id = request_id
+        # The total number of matching entries.
         self.total_num = total_num
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):

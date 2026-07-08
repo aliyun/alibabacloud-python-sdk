@@ -12,10 +12,14 @@ class StartStreamRequest(DaraModel):
         owner_id: int = None,
         start_time: int = None,
     ):
+        # For an NVR historical stream, the End Time (UNIX timestamp, in seconds).
         self.end_time = end_time
+        # Stream ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # For an NVR historical stream, the Start Time (UNIX timestamp, in seconds).
         self.start_time = start_time
 
     def validate(self):

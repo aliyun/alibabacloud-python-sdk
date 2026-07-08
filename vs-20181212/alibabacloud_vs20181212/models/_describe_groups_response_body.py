@@ -17,11 +17,17 @@ class DescribeGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of groups.
         self.groups = groups
+        # Total number of pages.
         self.page_count = page_count
+        # Page number.
         self.page_num = page_num
+        # Number of entries per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of groups.
         self.total_count = total_count
 
     def validate(self):
@@ -107,26 +113,55 @@ class DescribeGroupsResponseBodyGroups(DaraModel):
         stats: main_models.DescribeGroupsResponseBodyGroupsStats = None,
         status: str = None,
     ):
+        # Alias for the group ID.
         self.alias_id = alias_id
+        # Application name used by the group.
         self.app = app
+        # Callback URL for device status updates in the group.
         self.callback = callback
+        # Time when the group was created.
         self.created_time = created_time
+        # Group description.
         self.description = description
+        # Whether the group is enabled.
         self.enabled = enabled
+        # GB ID provided by the group.
+        # 
+        # > This applies only to groups that use the GB protocol.
         self.gb_id = gb_id
+        # GB signaling server IP address provided by the group.
+        # 
+        # > This applies only to groups that use the GB protocol.
         self.gb_ip = gb_ip
+        # GB signaling server port associated with the group.
+        # 
+        # > This applies only to groups that use the GB protocol.
         self.gb_port = gb_port
         self.gb_tcp_ports = gb_tcp_ports
         self.gb_udp_ports = gb_udp_ports
+        # Group ID.
         self.id = id
+        # Ingest protocol used by the group.
         self.in_protocol = in_protocol
+        # Whether on-demand stream pulling is enabled.
         self.lazy_pull = lazy_pull
+        # Group name.
         self.name = name
+        # Playback protocol used by the group.
         self.out_protocol = out_protocol
+        # Streaming domain used by the group.
         self.play_domain = play_domain
+        # Ingest domain used by the group.
         self.push_domain = push_domain
+        # The region where the space is located. This region serves as the service center.
         self.region = region
+        # Device statistics for the group.
         self.stats = stats
+        # Group status. Valid values:
+        # 
+        # - on (enabled)
+        # 
+        # - off (disabled)
         self.status = status
 
     def validate(self):
@@ -279,9 +314,13 @@ class DescribeGroupsResponseBodyGroupsStats(DaraModel):
         ipc_num: int = None,
         platform_num: int = None,
     ):
+        # Total number of devices in the group.
         self.device_num = device_num
+        # Number of intelligent devices in the group.
         self.ied_num = ied_num
+        # Number of cameras in the group.
         self.ipc_num = ipc_num
+        # Number of platforms in the group.
         self.platform_num = platform_num
 
     def validate(self):

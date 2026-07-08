@@ -11,7 +11,9 @@ class DescribeVsStreamsNotifyUrlConfigResponseBody(DaraModel):
         live_streams_notify_config: main_models.DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig = None,
         request_id: str = None,
     ):
+        # Configuration information.
         self.live_streams_notify_config = live_streams_notify_config
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,7 +54,9 @@ class DescribeVsStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig(DaraMo
     ):
         self.auth_key = auth_key
         self.auth_type = auth_type
+        # Your ingest domain.
         self.domain_name = domain_name
+        # Webhook address.
         self.notify_url = notify_url
 
     def validate(self):

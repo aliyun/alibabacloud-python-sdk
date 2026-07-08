@@ -16,10 +16,15 @@ class ListCloudAppsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of cloud application information.
         self.cloud_apps = cloud_apps
+        # Page number of the query list.
         self.page_number = page_number
+        # Number of rows per page for paged queries.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of matching cloud application entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,16 +94,35 @@ class ListCloudAppsResponseBodyCloudApps(DaraModel):
         update_time: str = None,
         upload_time: str = None,
     ):
+        # Application ID.
         self.app_id = app_id
+        # Application name.
         self.app_name = app_name
+        # Application version.
         self.app_version = app_version
+        # Application description.
         self.description = description
+        # Package format.
         self.pkg_format = pkg_format
+        # Package type: android/win.
         self.pkg_type = pkg_type
+        # Stable patch package ID.
         self.stable_patch_id = stable_patch_id
+        # The application upload status. Valid values:
+        # 
+        # 1. Created
+        # 
+        # 2. Doing
+        # 
+        # 3. Success: The desired state.
+        # 
+        # 4. Failed: The desired state.
         self.status = status
+        # Status description.
         self.status_description = status_description
+        # Latest status update time.
         self.update_time = update_time
+        # Application upload time.
         self.upload_time = upload_time
 
     def validate(self):

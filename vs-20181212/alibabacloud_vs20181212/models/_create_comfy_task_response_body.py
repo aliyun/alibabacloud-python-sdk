@@ -12,10 +12,13 @@ class CreateComfyTaskResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The response code. A value of 0 indicates a successful request. For a list of other values, see Error Codes.
         self.code = code
+        # The returned message. It provides more details about the request status.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the asynchronous task. You can use this ID to query the task status on the Task Query tab in the Intelligent Media Management console.
         self.task_id = task_id
 
     def validate(self):

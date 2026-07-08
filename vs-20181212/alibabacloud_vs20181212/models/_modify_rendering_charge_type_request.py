@@ -13,11 +13,54 @@ class ModifyRenderingChargeTypeRequest(DaraModel):
         period: str = None,
         rendering_instance_id: str = None,
     ):
+        # > This value is valid only when `InstanceChargeType` is `PrePaid` (subscription).
+        # 
+        # Enable or disable auto-renewal. Valid values:
+        # 
+        # - **true**: Enable.
+        # 
+        # - **false**: Disable.
         self.auto_renew = auto_renew
+        # > This value is valid only when `InstanceChargeType` is `PostPaid` (pay-as-you-go).
+        # 
+        # Billing type. Valid values:
+        # 
+        # - Hour: Hourly.
         self.instance_billing_cycle = instance_billing_cycle
+        # The target billing method for the instance. Valid values:
+        # 
+        # - PrePaid (default): Subscription.
+        # 
+        # - PostPaid: Pay-as-you-go.
+        # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
+        # > This value is valid only when `InstanceChargeType` is `PrePaid` (subscription).
+        # 
+        # The duration for subscription. Valid values (Note: If you select 12, it converts to one year; other values are in months):
+        # 
+        # - 1 (default)
+        # 
+        # - 2
+        # 
+        # - 3
+        # 
+        # - 4
+        # 
+        # - 5
+        # 
+        # - 6
+        # 
+        # - 7
+        # 
+        # - 8
+        # 
+        # - 9
+        # 
+        # - 12
         self.period = period
+        # The ID of the Graphic Computing Service instance.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

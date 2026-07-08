@@ -16,13 +16,21 @@ class ModifyComfyWorkflowResponseBody(DaraModel):
         updated_time: str = None,
         workflow_id: str = None,
     ):
+        # The error code. This parameter is returned only if the request fails.
         self.code = code
+        # The creation time.
         self.creation_time = creation_time
+        # The workflow description.
         self.description = description
+        # The returned message. This parameter provides error details if the request fails.
         self.message = message
+        # The workflow name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The update time.
         self.updated_time = updated_time
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

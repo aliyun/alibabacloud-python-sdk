@@ -31,29 +31,69 @@ class ModifyDeviceRequest(DaraModel):
         username: str = None,
         vendor: str = None,
     ):
+        # GB-compliant alarm method to subscribe to. Valid values:
+        # 
+        # - 0 (all)
+        # 
+        # - 5 (video alarm)
+        # 
+        # - 7 (other alarms)
+        # 
+        # > * An empty value means no subscription.
+        # >
+        # > * Multiple values are supported. Separate them with commas.
         self.alarm_method = alarm_method
         self.auto_directory = auto_directory
+        # Whether to enable location subscription for the device. Default value: false.
         self.auto_pos = auto_pos
+        # Whether to automatically start the stream. Default value: false.
         self.auto_start = auto_start
+        # Device description.
         self.description = description
+        # Directory ID for the device.
         self.directory_id = directory_id
+        # GB-compliant device ID.
+        # 
+        # > This parameter applies only to GB-compliant protocols.
         self.gb_id = gb_id
+        # Space ID.
         self.group_id = group_id
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
+        # IP address of the device.
         self.ip = ip
+        # The device dimension.
         self.latitude = latitude
+        # Longitude of the device.
         self.longitude = longitude
+        # Device name.
         self.name = name
         self.owner_id = owner_id
+        # Additional device parameters, formatted as a JSON-serialized string.
         self.params = params
+        # Parent device ID.
         self.parent_id = parent_id
+        # Password for the device.
         self.password = password
+        # Port number of the device.
         self.port = port
+        # Location subscription interval, in seconds.
         self.pos_interval = pos_interval
+        # Device type. Valid values:
+        # 
+        # - ipc (camera)
+        # 
+        # - platform (platform)
+        # 
+        # - ied (intelligent device)
         self.type = type
+        # Stream URL on the device.
         self.url = url
+        # Username for the device.
         self.username = username
+        # Device vendor.
         self.vendor = vendor
 
     def validate(self):

@@ -15,12 +15,25 @@ class ListPublicKeysRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # A parameter for filtering by time range. The time must be in UTC and follow the ISO 8601 standard. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # The name of the public key group.
         self.key_group = key_group
+        # The name of the public key.
         self.key_name = key_name
+        # The type of the public key. Valid values:
+        # 
+        # - **adb**: ADB key
+        # 
+        # - **ssh**: SSH key
         self.key_type = key_type
+        # The page number of the list to query. The value starts from 1.
+        # Default value: 1
         self.page_number = page_number
+        # The number of entries to return on each page for a paged query. Valid values: 1 to 100.
+        # Default value: 10
         self.page_size = page_size
+        # A parameter for filtering by time range. The time must be in UTC and follow the ISO 8601 standard. The format is yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

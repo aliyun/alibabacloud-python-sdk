@@ -19,20 +19,39 @@ class CreateParentPlatformRequest(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
+        # Specifies whether to automatically enable the parent platform. Valid values:
+        # - false (default)
+        # - true.
         self.auto_start = auto_start
+        # Specifies whether to enable local authentication. Valid values:
+        # - true (default)
+        # - false.
         self.client_auth = client_auth
+        # The local password.
         self.client_password = client_password
+        # The local username.
         self.client_username = client_username
+        # The description of the parent platform.
         self.description = description
+        # The national standard ID of the parent platform.
+        # 
         # This parameter is required.
         self.gb_id = gb_id
+        # The SIP service IP address of the parent platform.
+        # 
         # This parameter is required.
         self.ip = ip
+        # The name of the parent platform.
+        # 
         # This parameter is required.
         self.name = name
         self.owner_id = owner_id
+        # The SIP service port of the parent platform.
+        # 
         # This parameter is required.
         self.port = port
+        # The protocol of the parent platform. Valid values:
+        # - gb28181: Chinese National Standard (GB28181).
         self.protocol = protocol
 
     def validate(self):

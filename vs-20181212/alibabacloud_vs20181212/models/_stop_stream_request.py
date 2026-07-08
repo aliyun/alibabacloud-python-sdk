@@ -12,10 +12,14 @@ class StopStreamRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # The ID of the stream.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the stream.
         self.name = name
         self.owner_id = owner_id
+        # The time to restart the stream.
         self.start_time = start_time
 
     def validate(self):

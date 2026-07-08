@@ -13,7 +13,9 @@ class DescribeVsCertificateListResponseBody(DaraModel):
         certificate_list_model: main_models.DescribeVsCertificateListResponseBodyCertificateListModel = None,
         request_id: str = None,
     ):
+        # Certificate ID.
         self.certificate_list_model = certificate_list_model
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,7 +52,9 @@ class DescribeVsCertificateListResponseBodyCertificateListModel(DaraModel):
         cert_list: List[main_models.DescribeVsCertificateListResponseBodyCertificateListModelCertList] = None,
         count: int = None,
     ):
+        # List of certificates.
         self.cert_list = cert_list
+        # Number of certificates.
         self.count = count
 
     def validate(self):
@@ -97,11 +101,17 @@ class DescribeVsCertificateListResponseBodyCertificateListModelCertList(DaraMode
         issuer: str = None,
         last_time: int = None,
     ):
+        # ID of the certificate.
         self.cert_id = cert_id
+        # Name of the certificate.
         self.cert_name = cert_name
+        # Common Name (CN) field in the certificate. Usually a domain name.
         self.common = common
+        # Fingerprint of the certificate.
         self.fingerprint = fingerprint
+        # Issuer of the certificate.
         self.issuer = issuer
+        # Timestamp.
         self.last_time = last_time
 
     def validate(self):

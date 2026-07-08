@@ -16,10 +16,15 @@ class AddHiveEdgeWorkersResponseBody(DaraModel):
         success_instance_count: int = None,
         success_instances: List[main_models.AddHiveEdgeWorkersResponseBodySuccessInstances] = None,
     ):
+        # The number of instances that failed to be added.
         self.failed_instance_count = failed_instance_count
+        # A list of instances that failed to be added.
         self.failed_instances = failed_instances
+        # The request ID.
         self.request_id = request_id
+        # The number of instances that were successfully added.
         self.success_instance_count = success_instance_count
+        # A list of successfully added instances.
         self.success_instances = success_instances
 
     def validate(self):
@@ -89,7 +94,9 @@ class AddHiveEdgeWorkersResponseBodySuccessInstances(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # A message indicating the result of the operation.
         self.message = message
 
     def validate(self):
@@ -126,7 +133,9 @@ class AddHiveEdgeWorkersResponseBodyFailedInstances(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The error message.
         self.message = message
 
     def validate(self):

@@ -88,7 +88,6 @@ class ListSpecificationsResponseBodyItems(DaraModel):
         self.cores = cores
         self.memory = memory
         self.shard = shard
-        # `RenderingSpec`
         self.specification = specification
         self.storage = storage
 

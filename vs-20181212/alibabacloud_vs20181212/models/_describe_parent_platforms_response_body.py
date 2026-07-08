@@ -17,11 +17,17 @@ class DescribeParentPlatformsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Total number of pages.
         self.page_count = page_count
+        # Page number.
         self.page_num = page_num
+        # Page size.
         self.page_size = page_size
+        # List of parent platforms.
         self.platforms = platforms
+        # Request ID.
         self.request_id = request_id
+        # Total number of parent platforms.
         self.total_count = total_count
 
     def validate(self):
@@ -102,21 +108,45 @@ class DescribeParentPlatformsResponseBodyPlatforms(DaraModel):
         protocol: str = None,
         status: str = None,
     ):
+        # Whether to enable automatically. Valid values:
+        # - false (default)
+        # - true
         self.auto_start = auto_start
+        # Whether to enable local authentication. Valid values:
+        # - true (default)
+        # - false
         self.client_auth = client_auth
+        # Local GB ID.
         self.client_gb_id = client_gb_id
+        # Local SIP service IP.
         self.client_ip = client_ip
+        # Local password.
         self.client_password = client_password
+        # Local SIP service port.
         self.client_port = client_port
+        # Local username.
         self.client_username = client_username
+        # Parent platform creation time.
         self.created_time = created_time
+        # Parent platform description.
         self.description = description
+        # Parent platform GB ID.
         self.gb_id = gb_id
+        # Parent platform ID.
         self.id = id
+        # Parent platform SIP service IP.
         self.ip = ip
+        # Parent platform name.
         self.name = name
+        # Parent platform SIP service port.
         self.port = port
+        # Parent platform protocol. Valid values:
+        # - gb28181 (GB standard)
         self.protocol = protocol
+        # Parent platform status. Valid values:
+        # - on (online)
+        # - off (offline)
+        # - failed (failed)
         self.status = status
 
     def validate(self):

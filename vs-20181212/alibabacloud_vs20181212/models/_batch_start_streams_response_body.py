@@ -13,7 +13,9 @@ class BatchStartStreamsResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchStartStreamsResponseBodyResults] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Results list.
         self.results = results
 
     def validate(self):
@@ -57,8 +59,13 @@ class BatchStartStreamsResponseBodyResults(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # Error message for the stream.
+        # 
+        # > This field appears only if the stream fails.
         self.error = error
+        # Stream ID.
         self.id = id
+        # Stream name.
         self.name = name
 
     def validate(self):

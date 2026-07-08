@@ -18,13 +18,19 @@ class DescribeComfyProductionsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The error code.
         self.code = code
+        # The response message.
         self.message = message
+        # The current page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_size = page_size
+        # A list of productions.
         self.productions = productions
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total count of productions.
         self.total = total
 
     def validate(self):
@@ -101,11 +107,17 @@ class DescribeComfyProductionsResponseBodyProductions(DaraModel):
         state: str = None,
         updated_time: str = None,
     ):
+        # The ID of the Comfy task.
         self.comfy_task_id = comfy_task_id
+        # The creation time of the production, in ISO 8601 format.
         self.creation_time = creation_time
+        # The file name of the production.
         self.file_name = file_name
+        # The ID of the production.
         self.production_id = production_id
+        # The state of the production.
         self.state = state
+        # The last modification time of the production, as a Unix timestamp.
         self.updated_time = updated_time
 
     def validate(self):

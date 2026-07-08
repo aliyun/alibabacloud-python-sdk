@@ -16,11 +16,15 @@ class ListCloudAppPatchesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The list of cloud application patches.
         self.patches = patches
         # Id of the request
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -85,11 +89,29 @@ class ListCloudAppPatchesResponseBodyPatches(DaraModel):
         update_time: str = None,
         upload_time: str = None,
     ):
+        # The ID of the patch package.
         self.patch_id = patch_id
+        # The name of the patch package.
         self.patch_name = patch_name
+        # The upload status of the application. Valid values:
+        # 
+        # 1. Created
+        # 
+        # 2. Doing
+        # 
+        # 3. Success: A final state.
+        # 
+        # 4. Failed: A final state.
+        # 
+        # 5. Deleting
+        # 
+        # 6. DeleteFailed: A final state.
         self.status = status
+        # The description of the status.
         self.status_description = status_description
+        # The time when the status was last updated.
         self.update_time = update_time
+        # The time when the patch was uploaded.
         self.upload_time = upload_time
 
     def validate(self):

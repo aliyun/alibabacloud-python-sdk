@@ -15,15 +15,32 @@ class BatchBindTemplatesRequest(DaraModel):
         template_id: str = None,
         template_type: str = None,
     ):
+        # Specifies whether to apply the template to all streams in the scope. The default value is false.
         self.apply_all = apply_all
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The instance type. Valid values:
+        # 
+        # - group
+        # 
+        # - stream
+        # 
         # This parameter is required.
         self.instance_type = instance_type
         self.owner_id = owner_id
+        # Specifies whether to replace existing bindings. The default value is false.
         self.replace = replace
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The template type. Valid values:
+        # 
+        # - record (recording)
+        # 
+        # - snapshot (snapshotting)
         self.template_type = template_type
 
     def validate(self):

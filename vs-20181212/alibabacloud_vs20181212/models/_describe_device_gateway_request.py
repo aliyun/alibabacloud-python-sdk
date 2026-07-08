@@ -12,8 +12,12 @@ class DescribeDeviceGatewayRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # Client IP address.
         self.client_ip = client_ip
+        # Time-to-live (TTL).
         self.expire = expire
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id

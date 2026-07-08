@@ -15,13 +15,35 @@ class InstallCloudAppShrinkRequest(DaraModel):
         rendering_instance_id: str = None,
         rendering_instance_ids_shrink: str = None,
     ):
+        # Cloud application ID
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Page number for paged queries of instance associations under the project. Paged queries default to reverse order by instance association time. This applies only when ProjectId is not empty. It limits the maximum number of instances for actions within the project, controlling the impact scope. Default is 1.
+        # 
+        # 1. PageNumber value range:
+        #    a. Method one (recommended): Calculate the upper limit using the total number of instances associated with the project. The ListRenderingProjectInstances interface provides this count.
+        #    b. Method two: Determine if PageNumber reaches the project\\"s upper limit by checking the interface return value. This avoids calculating the range. PageNumber reaches the upper limit if the interface returns any of these conditions:
+        #    ⅰ. A 403 status code and error code 200301.
+        #    ⅱ. The sum of \\`SuccessInstanceCount\\` and \\`FailedInstanceCount\\` is less than \\`PageSize\\`.
+        # 
+        # 2. Scenario examples:
+        #    a. Full installation for project instances: If the number of project instances exceeds \\`PageSize\\` (default 100), invoke Install multiple times. Increment PageNumber by 1 for each call to complete the full installation. Get project instance installation progress using the ListCloudAppInstallations interface.
+        #    b. New instance installation for a project: Start with \\`PageNumber=1\\`. Paged queries default to reverse order by instance association time. The \\`PageNumber=1\\` page shows the latest new instances.
         self.page_number = page_number
+        # Maximum number of instances selected for the project. This applies only when ProjectId is not empty. It limits the maximum number of instances for actions within the project, controlling the impact scope. Default is 100. The value range is 1-100.
         self.page_size = page_size
+        # Patch package ID to install. This is only for Windows scenarios.
+        # 
+        # 1. Install \\`StablePatchId\\` by default.
+        # 
+        # 2. Enter \\`origin\\` to install the original version.
         self.patch_id = patch_id
+        # Project ID
         self.project_id = project_id
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
+        # List of cloud application service instance IDs
         self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
 
     def validate(self):

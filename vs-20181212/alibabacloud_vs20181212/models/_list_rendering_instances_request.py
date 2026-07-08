@@ -15,12 +15,19 @@ class ListRenderingInstancesRequest(DaraModel):
         start_time: str = None,
         storage_size: int = None,
     ):
+        # The time range for filtering. The time must be in UTC and specified in the ISO 8601 format yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # Page number for the paged query. Minimum value: 1. Default value: 1
         self.page_number = page_number
+        # Number of entries per page for the paged query. Valid values: 1 to 100. Default value: 10
         self.page_size = page_size
+        # ID of the cloud application service instance
         self.rendering_instance_id = rendering_instance_id
+        # Instance type of the cloud application service
         self.rendering_spec = rendering_spec
+        # Start time of the time range filter. Specify the time in ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ
         self.start_time = start_time
+        # Storage capacity of the cloud application service instance
         self.storage_size = storage_size
 
     def validate(self):

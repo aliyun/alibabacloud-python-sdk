@@ -11,8 +11,16 @@ class RenewRenderingInstanceRequest(DaraModel):
         period: str = None,
         rendering_instance_id: str = None,
     ):
+        # Enable or disable auto-renewal. Valid values:
+        # 
+        # - **true**: Enable.
+        # 
+        # - **false**: Disable.
         self.auto_renew = auto_renew
+        # The duration of the subscription. Valid values are 1 (default), 2, 3, 4, 5, 6, 7, 8, 9, 12. A value of 12 is converted to one year; other values are in months.
         self.period = period
+        # Cloud application service instance ID.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

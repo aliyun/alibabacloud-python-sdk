@@ -9,6 +9,7 @@ class DeleteComfyProductionRequest(DaraModel):
         self,
         production_id: str = None,
     ):
+        # The ID of the production.
         self.production_id = production_id
 
     def validate(self):

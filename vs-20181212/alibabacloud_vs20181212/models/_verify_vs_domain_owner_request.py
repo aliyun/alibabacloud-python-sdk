@@ -11,9 +11,16 @@ class VerifyVsDomainOwnerRequest(DaraModel):
         owner_id: int = None,
         verify_type: str = None,
     ):
+        # The domain name of Visual Edge Computing Service.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The verification method. Valid values:
+        # 
+        # - **dnsCheck**: DNS verification.
+        # - **fileCheck**: File verification.
+        # 
         # This parameter is required.
         self.verify_type = verify_type
 

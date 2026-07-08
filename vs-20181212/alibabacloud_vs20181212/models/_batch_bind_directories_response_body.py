@@ -13,7 +13,9 @@ class BatchBindDirectoriesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchBindDirectoriesResponseBodyResults] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Results list.
         self.results = results
 
     def validate(self):
@@ -57,8 +59,13 @@ class BatchBindDirectoriesResponseBodyResults(DaraModel):
         directory_id: str = None,
         error: str = None,
     ):
+        # Device ID.
         self.device_id = device_id
+        # Directory ID.
         self.directory_id = directory_id
+        # Error message for the binding.
+        # 
+        # > Appears only if an error occurs.
         self.error = error
 
     def validate(self):

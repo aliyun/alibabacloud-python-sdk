@@ -11,8 +11,11 @@ class SendRenderingInstanceCommandsResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The unique ID of the command request. The ID is valid for one day by default. In asynchronous scenarios, if you need the result, query it promptly within the validity period, preferably before the command times out.
         self.cmd_id = cmd_id
+        # The request ID.
         self.request_id = request_id
+        # The result of the command response.
         self.result = result
 
     def validate(self):

@@ -25,22 +25,47 @@ class DescribeParentPlatformResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # Specifies whether to enable the parent platform automatically. Valid values:
+        # - false (default)
+        # - true
         self.auto_start = auto_start
+        # Specifies whether to enable local authentication. Valid values:
+        # - true (default)
+        # - false
         self.client_auth = client_auth
+        # The local GB ID.
         self.client_gb_id = client_gb_id
+        # The local SIP service IP address.
         self.client_ip = client_ip
+        # The local password.
         self.client_password = client_password
+        # The local SIP service port.
         self.client_port = client_port
+        # The local username.
         self.client_username = client_username
+        # The time when the parent platform was created.
         self.created_time = created_time
+        # The description of the parent platform.
         self.description = description
+        # The GB ID of the parent platform.
         self.gb_id = gb_id
+        # The ID of the parent platform.
         self.id = id
+        # The SIP service IP address of the parent platform.
         self.ip = ip
+        # The name of the parent platform.
         self.name = name
+        # The SIP service port of the parent platform.
         self.port = port
+        # The protocol of the parent platform. Valid values:
+        # - gb28181 (GB standard)
         self.protocol = protocol
+        # The request ID.
         self.request_id = request_id
+        # The status of the parent platform. Valid values:
+        # - on (online)
+        # - off (offline)
+        # - failed (failed)
         self.status = status
 
     def validate(self):

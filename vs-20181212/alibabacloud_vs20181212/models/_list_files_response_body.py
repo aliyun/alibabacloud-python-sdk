@@ -16,10 +16,15 @@ class ListFilesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of file information.
         self.files = files
+        # Page number of the list.
         self.page_number = page_number
+        # Number of entries per page for paged queries.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of matching file records.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,29 @@ class ListFilesResponseBodyFiles(DaraModel):
         update_time: str = None,
         upload_time: str = None,
     ):
+        # File description.
         self.description = description
+        # File ID.
         self.file_id = file_id
+        # File name.
         self.file_name = file_name
+        # Upload status. Valid values:
+        # 
+        # 1. Created
+        # 
+        # 2. Doing
+        # 
+        # 3. Success (desired state)
+        # 
+        # 4. Failed (desired state)
         self.status = status
+        # Status description.
         self.status_description = status_description
+        # Destination path for pushing the file to the service instance.
         self.target_path = target_path
+        # Most recent status update time.
         self.update_time = update_time
+        # Upload start time.
         self.upload_time = upload_time
 
     def validate(self):

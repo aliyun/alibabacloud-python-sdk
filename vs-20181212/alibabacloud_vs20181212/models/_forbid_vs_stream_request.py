@@ -16,16 +16,26 @@ class ForbidVsStreamRequest(DaraModel):
         resume_time: str = None,
         stream_name: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
         self.control_stream_action = control_stream_action
+        # The accelerated domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Only "publisher" is supported.
+        # 
         # This parameter is required.
         self.live_stream_type = live_stream_type
+        # Specifies whether to only interrupt the stream without adding it to the blacklist. A value of \\`yes\\` indicates that the stream is only interrupted.
         self.oneshot = oneshot
         self.owner_id = owner_id
+        # The time to resume the stream. The time is in UTC format.
         self.resume_time = resume_time
+        # The stream name.
+        # 
         # This parameter is required.
         self.stream_name = stream_name
 

@@ -17,16 +17,38 @@ class SetVsDomainCertificateRequest(DaraModel):
         sslprotocol: str = None,
         sslpub: str = None,
     ):
+        # The certificate name.
         self.cert_name = cert_name
+        # The certificate type.
+        # 
+        # - upload: Upload certificate
+        # 
+        # - cas: Alibaba Cloud Security certificate
+        # 
+        # - free: Personal test certificate (Free Edition)
         self.cert_type = cert_type
+        # The accelerated domain name to which the certificate belongs.
+        # 
+        # > The domain must use HTTPS acceleration.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Set to 1 to skip the certificate name duplication check and overwrite an existing certificate with the same name.
         self.force_set = force_set
         self.owner_id = owner_id
+        # The region.
         self.region = region
+        # The private key content. Omit this parameter if you disable the certificate. Provide the private key content if you configure a certificate.
         self.sslpri = sslpri
+        # Whether to enable the HTTPS certificate. Valid values:
+        # 
+        # - **on**: Enable.
+        # 
+        # - **off** (default): Disable.
+        # 
         # This parameter is required.
         self.sslprotocol = sslprotocol
+        # The public certificate content. Omit this parameter if you disable the certificate. Provide the certificate content if you configure a certificate.
         self.sslpub = sslpub
 
     def validate(self):

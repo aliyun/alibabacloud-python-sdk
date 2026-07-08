@@ -15,15 +15,32 @@ class BindTemplateRequest(DaraModel):
         template_id: str = None,
         template_type: str = None,
     ):
+        # Whether to apply the template to all streams in the scope. Default value: false.
         self.apply_all = apply_all
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The type of the instance. Valid values:
+        # 
+        # - group
+        # 
+        # - stream
+        # 
         # This parameter is required.
         self.instance_type = instance_type
         self.owner_id = owner_id
+        # Whether to replace an existing binding. Default value: false.
         self.replace = replace
+        # The ID of the template.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The type of the template. Valid values:
+        # 
+        # - record
+        # 
+        # - snapshot
         self.template_type = template_type
 
     def validate(self):

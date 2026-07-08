@@ -10,7 +10,9 @@ class StopStreamResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the stream.
         self.id = id
+        # The request ID of this operation.
         self.request_id = request_id
 
     def validate(self):

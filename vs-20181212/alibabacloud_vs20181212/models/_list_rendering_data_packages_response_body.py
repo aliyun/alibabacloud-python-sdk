@@ -14,9 +14,11 @@ class ListRenderingDataPackagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of data packages for the cloud application service.
         self.data_packages = data_packages
         # Id of the request
         self.request_id = request_id
+        # The total number of Graphic Computing Service instances.
         self.total_count = total_count
 
     def validate(self):
@@ -71,13 +73,29 @@ class ListRenderingDataPackagesResponseBodyDataPackages(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The category. Valid values:
+        # 
+        # - Package
+        # 
+        # - Baseline
         self.category = category
+        # The creation time of the Graphic Computing Service instance.
         self.creation_time = creation_time
+        # The ID of the data pack.
         self.data_package_id = data_package_id
+        # Remarks.
         self.description = description
+        # The ID of the Graphic Computing Service instance.
         self.rendering_instance_id = rendering_instance_id
+        # The size of the data pack.
         self.size = size
+        # The status of the data pack. Valid values:
+        # available
+        # packing
+        # failed
+        # bonded
         self.status = status
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

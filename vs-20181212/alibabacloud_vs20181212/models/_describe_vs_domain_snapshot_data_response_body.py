@@ -13,6 +13,7 @@ class DescribeVsDomainSnapshotDataResponseBody(DaraModel):
         request_id: str = None,
         snapshot_data_per_interval: main_models.DescribeVsDomainSnapshotDataResponseBodySnapshotDataPerInterval = None,
     ):
+        # ID of the request.
         self.request_id = request_id
         self.snapshot_data_per_interval = snapshot_data_per_interval
 

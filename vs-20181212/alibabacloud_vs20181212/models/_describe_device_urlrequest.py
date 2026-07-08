@@ -17,13 +17,33 @@ class DescribeDeviceURLRequest(DaraModel):
         type: str = None,
     ):
         self.auth = auth
+        # Authentication validity period, in seconds.
         self.expire = expire
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Stream mode. Valid values:
+        # 
+        # - play
+        # 
+        # - push
         self.mode = mode
+        # Stream protocol. Valid values:
+        # 
+        # - rtmp
+        # 
+        # - flv
+        # 
+        # - hls
+        # 
+        # > When Mode is set to push, only rtmp is supported.
+        # 
         # This parameter is required.
         self.out_protocol = out_protocol
         self.owner_id = owner_id
+        # Stream name.
+        # 
         # This parameter is required.
         self.stream = stream
         self.type = type

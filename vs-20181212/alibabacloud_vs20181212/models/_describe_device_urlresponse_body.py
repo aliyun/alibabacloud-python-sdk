@@ -11,8 +11,12 @@ class DescribeDeviceURLResponseBody(DaraModel):
         request_id: str = None,
         url: str = None,
     ):
+        # URL expiration time.<br>
+        # UNIX timestamp, in seconds.<br>
         self.expire_time = expire_time
+        # Request ID.
         self.request_id = request_id
+        # Stream URL.
         self.url = url
 
     def validate(self):

@@ -10,7 +10,9 @@ class ModifyTemplateResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the template.
         self.id = id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

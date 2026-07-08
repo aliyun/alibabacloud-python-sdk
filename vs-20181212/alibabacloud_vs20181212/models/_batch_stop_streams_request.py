@@ -11,9 +11,12 @@ class BatchStopStreamsRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # The stream IDs. To specify multiple IDs, separate them with commas.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # The time to stop the streams. You can specify a future time to stop the streams.
         self.start_time = start_time
 
     def validate(self):

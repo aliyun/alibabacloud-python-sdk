@@ -9,6 +9,7 @@ class DeleteComfyUserDataRequest(DaraModel):
         self,
         file_name: str = None,
     ):
+        # The file or directory to delete. To specify a directory, provide a path that ends with a forward slash (/).
         self.file_name = file_name
 
     def validate(self):

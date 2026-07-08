@@ -12,9 +12,13 @@ class ContinuousAdjustRequest(DaraModel):
         iris: str = None,
         owner_id: int = None,
     ):
+        # Zoom speed parameter. A positive value increases the focal length.<br>Value range: -1.0 to 1.0<br>
         self.focus = focus
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Aperture speed parameter. A positive value increases the aperture.<br>Value range: -1.0 to 1.0<br>
         self.iris = iris
         self.owner_id = owner_id
 

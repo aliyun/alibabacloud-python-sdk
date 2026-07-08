@@ -11,8 +11,15 @@ class CreateStreamSnapshotRequest(DaraModel):
         location: str = None,
         owner_id: int = None,
     ):
+        # Stream ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Screenshot method. Valid values:
+        # 
+        # - center (cloud screenshot) (default)
+        # 
+        # - device (device screenshot)
         self.location = location
         self.owner_id = owner_id
 

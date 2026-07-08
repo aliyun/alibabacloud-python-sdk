@@ -13,10 +13,20 @@ class ModifyDeviceChannelsRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # An array of channels in a JSON-formatted string.
+        # 
         # This parameter is required.
         self.channels = channels
+        # The status of the device. Valid values:
+        # 
+        # - on: online
+        # 
+        # - off: offline
         self.device_status = device_status
+        # The device serial number.
         self.dsn = dsn
+        # The device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id

@@ -14,11 +14,17 @@ class GetRenderingInstanceStreamingInfoResponseBody(DaraModel):
         rendering_instance_id: str = None,
         request_id: str = None,
     ):
+        # Token for this connection
         self.flow_id = flow_id
+        # Domain name of the cloud application service instance streaming gateway
         self.gateway = gateway
+        # Hostname or IP address of the cloud application service instance stream
         self.hostname = hostname
+        # Streaming connection port
         self.port = port
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

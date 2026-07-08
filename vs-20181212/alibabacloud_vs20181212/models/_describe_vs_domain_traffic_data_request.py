@@ -15,12 +15,18 @@ class DescribeVsDomainTrafficDataRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # The domain name of the Visual Edge Computing Service.
         self.domain_name = domain_name
+        # The end time must be later than the start time. Use ISO8601 notation for the date format and UTC time.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>
         self.end_time = end_time
+        # The time granularity for querying data. Supported values are 300, 3600, and 86400 seconds. If this parameter is not provided or an unsupported value is passed, the default value of 300 seconds is used.
         self.interval = interval
+        # The English name of the ISP. Obtain this value through the DescribeCdnRegionAndIsp interface. If this parameter is not provided, the system queries all ISPs.
         self.isp_name_en = isp_name_en
+        # The English name of the region. Obtain this value through the DescribeCdnRegionAndIsp interface. If this parameter is not provided, the system queries all regions.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
+        # The start time for data retrieval. Use ISO8601 notation for the date format and UTC time.<br>Format: YYYY-MM-DDThh:mm:ssZ<br> The minimum data granularity is 5 minutes.<br> If not specified, the system reads data from the past 24 hours by default.<br><br><br>
         self.start_time = start_time
 
     def validate(self):

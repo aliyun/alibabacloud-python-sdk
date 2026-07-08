@@ -11,9 +11,12 @@ class StopTransferStreamRequest(DaraModel):
         owner_id: int = None,
         transcode: str = None,
     ):
+        # The stream ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # The name of the transcoding rule. You must bind a transcoding template first.
         self.transcode = transcode
 
     def validate(self):

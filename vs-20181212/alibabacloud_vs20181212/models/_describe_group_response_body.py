@@ -33,27 +33,71 @@ class DescribeGroupResponseBody(DaraModel):
         stats: main_models.DescribeGroupResponseBodyStats = None,
         status: str = None,
     ):
+        # Alias for the space ID.
         self.alias_id = alias_id
+        # The name of the application used by the group.
         self.app = app
+        # The callback URL that is used to receive device status updates in the group.
         self.callback = callback
+        # The time when the group was created.
         self.created_time = created_time
+        # A description of the group.
         self.description = description
+        # Indicates whether the group is enabled.
         self.enabled = enabled
+        # The GB/T 28181 ID that is associated with the group.
+        # 
+        # > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
         self.gb_id = gb_id
+        # The IP address of the GB/T 28181 signaling server that is associated with the group.
+        # 
+        # > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
         self.gb_ip = gb_ip
+        # The port of the GB/T 28181 signaling server that is associated with the group.
+        # 
+        # > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
         self.gb_port = gb_port
+        # The TCP ports of the GB/T 28181 signaling server that are provided by the group.
+        # 
+        # > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
         self.gb_tcp_ports = gb_tcp_ports
+        # The UDP ports of the GB/T 28181 signaling server that are provided by the group.
+        # 
+        # > This parameter is returned only for groups that use the GB/T 28181 protocol for stream ingest.
         self.gb_udp_ports = gb_udp_ports
+        # The ID of the space.
         self.id = id
+        # The ingest protocol used by the group. Valid values:
+        # 
+        # - gb28181
+        # 
+        # - rtmp
         self.in_protocol = in_protocol
+        # Indicates whether on-demand stream pulling is enabled.
         self.lazy_pull = lazy_pull
+        # The name of the space.
         self.name = name
+        # The streaming protocol used by the group. Valid values:
+        # 
+        # - flv
+        # 
+        # - hls
+        # 
+        # - rtmp
+        # 
+        # > You can specify multiple protocols. Separate them with commas (,).
         self.out_protocol = out_protocol
+        # The streaming domain used by the group.
         self.play_domain = play_domain
+        # The ingest domain used by the group.
         self.push_domain = push_domain
+        # The region where the space is located, which is the service center.
         self.region = region
+        # The request ID.
         self.request_id = request_id
+        # The statistics of devices in the group.
         self.stats = stats
+        # The status of the group.
         self.status = status
 
     def validate(self):
@@ -212,9 +256,13 @@ class DescribeGroupResponseBodyStats(DaraModel):
         ipc_num: int = None,
         platform_num: int = None,
     ):
+        # The total number of devices in the group.
         self.device_num = device_num
+        # The number of intelligent electronic devices (IEDs) in the group.
         self.ied_num = ied_num
+        # The number of cameras in the group.
         self.ipc_num = ipc_num
+        # The number of platforms in the group.
         self.platform_num = platform_num
 
     def validate(self):

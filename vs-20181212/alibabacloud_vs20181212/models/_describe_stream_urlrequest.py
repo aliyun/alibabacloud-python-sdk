@@ -18,17 +18,46 @@ class DescribeStreamURLRequest(DaraModel):
         transcode: str = None,
         type: str = None,
     ):
+        # Specifies whether to generate a signed URL. Valid values:
+        # 
+        # - true
+        # 
+        # - false
         self.auth = auth
+        # The primary key associated with the playback domain name. This key is used to generate the authentication URL.
+        # 
+        # > Call the [DescribeVsDomainConfigs](https://next.api.aliyun.com/document/vs/2018-12-12/DescribeVsDomainConfigs) operation to query the \\`AuthKey\\` information.
         self.auth_key = auth_key
+        # The end time. This parameter applies to \\`vod\\` streams.<br>
+        # A UNIX timestamp. Unit: seconds.<br>
         self.end_time = end_time
+        # The time-to-live (TTL) of the URL. Unit: seconds.
         self.expire = expire
+        # The stream ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The playback protocol for the stream. Valid values:
+        # 
+        # - rtmp
+        # 
+        # - flv
+        # 
+        # - hls
+        # 
         # This parameter is required.
         self.out_protocol = out_protocol
         self.owner_id = owner_id
+        # The start time. This parameter applies to \\`vod\\` streams.<br>
+        # A UNIX timestamp. Unit: seconds.<br>
         self.start_time = start_time
+        # The name of the transcoding rule. This parameter is valid only after a transcoding template is attached.
         self.transcode = transcode
+        # The type of the stream. The default value is \\`live\\`. Valid values:
+        # 
+        # - \\`live\\`: a live stream.
+        # 
+        # - \\`vod\\`: a video-on-demand (VOD) stream, such as a historical stream from a Network Video Recorder (NVR).
         self.type = type
 
     def validate(self):

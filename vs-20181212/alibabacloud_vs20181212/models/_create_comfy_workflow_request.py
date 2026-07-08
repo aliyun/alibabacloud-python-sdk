@@ -11,9 +11,14 @@ class CreateComfyWorkflowRequest(DaraModel):
         name: str = None,
         workflow: str = None,
     ):
+        # The workflow description.
         self.description = description
+        # The workflow name.
+        # 
         # This parameter is required.
         self.name = name
+        # The JSON definition of the workflow.
+        # 
         # This parameter is required.
         self.workflow = workflow
 

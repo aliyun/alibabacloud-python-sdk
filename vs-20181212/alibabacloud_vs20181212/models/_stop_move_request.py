@@ -13,11 +13,16 @@ class StopMoveRequest(DaraModel):
         tilt: bool = None,
         zoom: bool = None,
     ):
+        # The device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # Specifies whether to stop panning. The default value is false.
         self.pan = pan
+        # Specifies whether to stop tilting. The default value is false.
         self.tilt = tilt
+        # Specifies whether to stop zooming. The default value is false.
         self.zoom = zoom
 
     def validate(self):

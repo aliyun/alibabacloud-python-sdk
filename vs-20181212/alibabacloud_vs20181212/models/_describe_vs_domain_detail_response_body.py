@@ -11,7 +11,9 @@ class DescribeVsDomainDetailResponseBody(DaraModel):
         domain_config: main_models.DescribeVsDomainDetailResponseBodyDomainConfig = None,
         request_id: str = None,
     ):
+        # Domain configuration details.
         self.domain_config = domain_config
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,15 +58,43 @@ class DescribeVsDomainDetailResponseBodyDomainConfig(DaraModel):
         sslprotocol: str = None,
         scope: str = None,
     ):
+        # The CNAME assigned to the Visual Edge Computing Service domain. You must configure your DNS provider to point your domain to this CNAME.
         self.cname = cname
+        # The domain description.
         self.description = description
+        # The Visual Edge Computing Service domain name.
         self.domain_name = domain_name
+        # The status of the Visual Edge Computing Service accelerated domain. Valid values:
+        # 
+        # - **online**: Enabled.
+        # 
+        # - **offline**: Disabled.
+        # 
+        # - **configuring**: Being configured.
         self.domain_status = domain_status
+        # The domain type.
+        # 
+        # > Static value: vs
         self.domain_type = domain_type
+        # The creation time.
         self.gmt_created = gmt_created
+        # The most recent modification time.
         self.gmt_modified = gmt_modified
+        # The region where the domain is located.
         self.region = region
+        # Indicates whether HTTPS is enabled. Valid values:
+        # 
+        # - **on**: Enabled.
+        # 
+        # - **off** (default): Disabled.
         self.sslprotocol = sslprotocol
+        # The acceleration region. Valid values:
+        # 
+        # - **domestic**
+        # 
+        # - **overseas**
+        # 
+        # - **global**
         self.scope = scope
 
     def validate(self):

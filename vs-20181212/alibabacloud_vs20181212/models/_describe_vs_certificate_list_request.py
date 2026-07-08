@@ -10,6 +10,7 @@ class DescribeVsCertificateListRequest(DaraModel):
         domain_name: str = None,
         owner_id: int = None,
     ):
+        # Domain name.
         self.domain_name = domain_name
         self.owner_id = owner_id
 

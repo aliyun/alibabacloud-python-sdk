@@ -9,6 +9,8 @@ class GetRenderingInstanceStreamingInfoRequest(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
+        # Cloud application service instance ID
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

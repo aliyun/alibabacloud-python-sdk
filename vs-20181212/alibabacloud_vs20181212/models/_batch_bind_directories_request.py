@@ -11,8 +11,12 @@ class BatchBindDirectoriesRequest(DaraModel):
         directory_id: str = None,
         owner_id: int = None,
     ):
+        # Device ID. Separate multiple values with commas.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # Directory ID.
+        # 
         # This parameter is required.
         self.directory_id = directory_id
         self.owner_id = owner_id

@@ -13,7 +13,9 @@ class UpdateRenderingInstanceSettingsRequest(DaraModel):
         rendering_instance_id: str = None,
         settings: List[main_models.UpdateRenderingInstanceSettingsRequestSettings] = None,
     ):
+        # ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
+        # List of instance settings.
         self.settings = settings
 
     def validate(self):
@@ -56,7 +58,9 @@ class UpdateRenderingInstanceSettingsRequestSettings(DaraModel):
         attribute_name: str = None,
         attribute_value: str = None,
     ):
+        # Name of the instance setting.
         self.attribute_name = attribute_name
+        # Value of the instance setting.
         self.attribute_value = attribute_value
 
     def validate(self):

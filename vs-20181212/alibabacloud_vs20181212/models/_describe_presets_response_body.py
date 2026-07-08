@@ -14,8 +14,11 @@ class DescribePresetsResponseBody(DaraModel):
         presets: List[main_models.DescribePresetsResponseBodyPresets] = None,
         request_id: str = None,
     ):
+        # Device ID.
         self.id = id
+        # List of presets.
         self.presets = presets
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +67,9 @@ class DescribePresetsResponseBodyPresets(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # Preset ID.
         self.id = id
+        # Preset name.
         self.name = name
 
     def validate(self):

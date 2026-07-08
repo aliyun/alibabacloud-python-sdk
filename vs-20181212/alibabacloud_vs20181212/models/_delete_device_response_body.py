@@ -9,6 +9,7 @@ class DeleteDeviceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # Request ID of this operation.
         self.request_id = request_id
 
     def validate(self):

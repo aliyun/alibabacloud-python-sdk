@@ -16,10 +16,15 @@ class MoveHiveEdgeWorkersResponseBody(DaraModel):
         success_instance_count: int = None,
         success_instances: List[main_models.MoveHiveEdgeWorkersResponseBodySuccessInstances] = None,
     ):
+        # The number of instances that failed to move.
         self.failed_instance_count = failed_instance_count
+        # Details of the instances that failed to move.
         self.failed_instances = failed_instances
+        # The request ID.
         self.request_id = request_id
+        # The number of successfully moved instances.
         self.success_instance_count = success_instance_count
+        # Details of the successfully moved instances.
         self.success_instances = success_instances
 
     def validate(self):
@@ -89,7 +94,9 @@ class MoveHiveEdgeWorkersResponseBodySuccessInstances(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The result message. For a successful operation, the value is typically `SUCCESS`.
         self.message = message
 
     def validate(self):
@@ -124,7 +131,9 @@ class MoveHiveEdgeWorkersResponseBodyFailedInstances(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The error message.
         self.message = message
 
     def validate(self):

@@ -15,15 +15,37 @@ class BatchForbidVsStreamRequest(DaraModel):
         owner_id: int = None,
         resume_time: str = None,
     ):
+        # The stream name.
+        # 
+        # > - Format: AppName/StreamName.
+        # >
+        # > - Specify multiple names, separated by commas (,).
+        # 
         # This parameter is required.
         self.channel = channel
         self.control_stream_action = control_stream_action
+        # Your accelerated domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Specifies whether the operation applies to stream ingest by a streamer or stream pulling by a client. Valid values:
+        # 
+        # - publisher (streamer ingest)
+        # 
+        # > Only publisher is supported.
+        # 
         # This parameter is required.
         self.live_stream_type = live_stream_type
+        # Specifies whether to stop ingest without adding the stream to the blacklist. Valid values:
+        # 
+        # - yes
+        # 
+        # - no
         self.oneshot = oneshot
         self.owner_id = owner_id
+        # The time to resume ingest.
+        # 
+        # > Use UTC format. Example: 2015-12-01T17:37:00Z
         self.resume_time = resume_time
 
     def validate(self):

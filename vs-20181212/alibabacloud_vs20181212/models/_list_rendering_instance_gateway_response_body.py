@@ -16,10 +16,15 @@ class ListRenderingInstanceGatewayResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # A list of custom gateway information.
         self.gateway_configuration_infos = gateway_configuration_infos
+        # The page number of the query results list
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -83,10 +88,19 @@ class ListRenderingInstanceGatewayResponseBodyGatewayConfigurationInfos(DaraMode
         status: str = None,
         update_time: str = None,
     ):
+        # The time when the cloud application service instance was created.
         self.creation_time = creation_time
+        # The ID of the custom gateway instance.
         self.gateway_instance_id = gateway_instance_id
+        # The ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
+        # The status of the custom gateway. Valid values:
+        # 
+        # 1. Transitional states: creating, deleting
+        # 
+        # 2. Desired states: available, failed
         self.status = status
+        # The time when the information was last updated.
         self.update_time = update_time
 
     def validate(self):

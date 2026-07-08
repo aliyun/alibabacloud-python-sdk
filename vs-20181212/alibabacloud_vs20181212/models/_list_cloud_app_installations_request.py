@@ -18,15 +18,27 @@ class ListCloudAppInstallationsRequest(DaraModel):
         rendering_instance_id: str = None,
         start_time: str = None,
     ):
+        # Cloud application ID. Each ID maps to a unique application package.
         self.app_id = app_id
+        # Application name.
         self.app_name = app_name
+        # Application version.
         self.app_version = app_version
+        # Time range filter. Use ISO 8601 format and UTC time, such as yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # Page number of the returned list. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # Number of entries per page for paged queries. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # Patch package ID. Supported only in Windows scenarios.
+        # 
+        # 1. Set to origin to return only original versions.
         self.patch_id = patch_id
+        # Project ID.
         self.project_id = project_id
+        # Cloud application service instance ID. Use this to list installations on a specific instance.
         self.rendering_instance_id = rendering_instance_id
+        # Start time of the time range filter. Specify in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

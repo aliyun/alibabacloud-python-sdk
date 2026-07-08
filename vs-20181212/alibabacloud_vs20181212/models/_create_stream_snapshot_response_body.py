@@ -18,15 +18,25 @@ class CreateStreamSnapshotResponseBody(DaraModel):
         url: str = None,
         width: int = None,
     ):
+        # Image format.
         self.format = format
+        # Image height.
         self.height = height
+        # Stream ID.
         self.id = id
+        # The OSS bucket of the snapshot file.
         self.oss_bucket = oss_bucket
+        # The OSS endpoint of the snapshot file.
         self.oss_endpoint = oss_endpoint
+        # The OSS object of the snapshot file.
         self.oss_object = oss_object
+        # The request ID.
         self.request_id = request_id
+        # The snapshot timestamp.
         self.timestamp = timestamp
+        # The URL of the snapshot file.
         self.url = url
+        # Image width.
         self.width = width
 
     def validate(self):

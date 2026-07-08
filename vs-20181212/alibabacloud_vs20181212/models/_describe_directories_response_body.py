@@ -17,11 +17,17 @@ class DescribeDirectoriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of directories.
         self.directories = directories
+        # Total number of pages.
         self.page_count = page_count
+        # Page number.
         self.page_num = page_num
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # The total number of directories.
         self.total_count = total_count
 
     def validate(self):
@@ -92,11 +98,17 @@ class DescribeDirectoriesResponseBodyDirectories(DaraModel):
         name: str = None,
         parent_id: str = None,
     ):
+        # Directory creation time.
         self.created_time = created_time
+        # Directory description.
         self.description = description
+        # ID of the group to which the directory belongs.
         self.group_id = group_id
+        # Directory ID.
         self.id = id
+        # Directory name.
         self.name = name
+        # Parent directory ID.
         self.parent_id = parent_id
 
     def validate(self):

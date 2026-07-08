@@ -11,8 +11,11 @@ class DescribeGroupRequest(DaraModel):
         include_stats: bool = None,
         owner_id: int = None,
     ):
+        # Space ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Specifies whether to return the statistics of devices in the group. The default value is false.
         self.include_stats = include_stats
         self.owner_id = owner_id
 

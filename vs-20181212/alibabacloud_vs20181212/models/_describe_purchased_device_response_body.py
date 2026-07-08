@@ -21,18 +21,43 @@ class DescribePurchasedDeviceResponseBody(DaraModel):
         type: str = None,
         vendor: str = None,
     ):
+        # Device creation time.
         self.created_time = created_time
+        # Device description.
         self.description = description
+        # Space ID.
         self.group_id = group_id
+        # Space name.
         self.group_name = group_name
+        # Device ID.
         self.id = id
+        # Device name.
         self.name = name
+        # Order ID.
         self.order_id = order_id
+        # Region where the space belongs, also known as the service center.
         self.region = region
+        # Device registration code.
         self.register_code = register_code
+        # Request ID.
         self.request_id = request_id
+        # Device child type. Valid values:
+        # 
+        # - bullet (bullet camera)
+        # 
+        # - dome (dome camera)
+        # 
+        # - ptz (PTZ)
         self.sub_type = sub_type
+        # Device type. Valid values:
+        # 
+        # - ipc (camera)
+        # 
+        # - platform
+        # 
+        # - ied (intelligent device)
         self.type = type
+        # Device vendor.
         self.vendor = vendor
 
     def validate(self):

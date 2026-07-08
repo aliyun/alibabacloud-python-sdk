@@ -11,9 +11,12 @@ class StopDeviceRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # Time to restart the stream.
         self.start_time = start_time
 
     def validate(self):

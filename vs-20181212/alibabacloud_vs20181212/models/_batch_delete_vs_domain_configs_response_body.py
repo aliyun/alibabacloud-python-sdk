@@ -9,6 +9,7 @@ class BatchDeleteVsDomainConfigsResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The request ID of this operation.
         self.request_id = request_id
 
     def validate(self):

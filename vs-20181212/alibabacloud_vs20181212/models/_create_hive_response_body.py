@@ -10,7 +10,9 @@ class CreateHiveResponseBody(DaraModel):
         hive_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.hive_id = hive_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

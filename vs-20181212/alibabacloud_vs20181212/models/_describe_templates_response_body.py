@@ -17,11 +17,17 @@ class DescribeTemplatesResponseBody(DaraModel):
         templates: List[main_models.DescribeTemplatesResponseBodyTemplates] = None,
         total_count: int = None,
     ):
+        # Total number of pages.
         self.page_count = page_count
+        # Page number.
         self.page_num = page_num
+        # Number of entries per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Template list.
         self.templates = templates
+        # Total number of templates.
         self.total_count = total_count
 
     def validate(self):
@@ -108,27 +114,81 @@ class DescribeTemplatesResponseBodyTemplates(DaraModel):
         trigger: str = None,
         type: str = None,
     ):
+        # Callback URL after template execution.
         self.callback = callback
+        # Template creation time.
         self.created_time = created_time
+        # Template description.
         self.description = description
+        # Storage file format. Separate multiple values with commas. Valid values: mp4, flv, hls, jpg.
         self.file_format = file_format
+        # FLV storage path.
+        # 
+        # > This applies only to recording templates.
         self.flv = flv
+        # HLS storage path for M3U8 files.
+        # 
+        # > This applies only to recording templates.
         self.hls_m3u_8 = hls_m3u_8
+        # HLS storage path for TS files.
+        # 
+        # > This applies only to recording templates.
         self.hls_ts = hls_ts
+        # Template ID.
         self.id = id
+        # Operation interval in seconds.
         self.interval = interval
+        # JPG storage path for on-demand snapshots.
+        # 
+        # > This applies only to snapshot templates.
         self.jpg_on_demand = jpg_on_demand
+        # JPG storage path for overwrite snapshots.
+        # 
+        # > This applies only to snapshot templates.
         self.jpg_overwrite = jpg_overwrite
+        # JPG storage path for sequential snapshots.
+        # 
+        # > This applies only to snapshot templates.
         self.jpg_sequence = jpg_sequence
+        # MP4 storage path.
+        # 
+        # > This applies only to recording templates.
         self.mp_4 = mp_4
+        # Template name.
         self.name = name
+        # The OSS bucket.
         self.oss_bucket = oss_bucket
+        # OSS domain name.
         self.oss_endpoint = oss_endpoint
+        # OSS file prefix.
         self.oss_file_prefix = oss_file_prefix
+        # OSS region, also known as service center.
         self.region = region
+        # Time-shifting retention period in days.
+        # 
+        # > This applies only to time-shifting templates.
         self.retention = retention
+        # Transcoding configuration list.
+        # 
+        # > This applies only to transcoding templates.
         self.trans_configs = trans_configs
+        # Template trigger type. Valid values:
+        # 
+        # - auto (automatic)
+        # 
+        # - ondemand (on demand)
+        # 
+        # > This applies only to recording templates.
         self.trigger = trigger
+        # Template type. Valid values:
+        # 
+        # - record (recording)
+        # 
+        # - snapshot (snapshot)
+        # 
+        # - transcode (transcoding)
+        # 
+        # - timeshift (time shifting)
         self.type = type
 
     def validate(self):
@@ -297,13 +357,21 @@ class DescribeTemplatesResponseBodyTemplatesTransConfigs(DaraModel):
         width: int = None,
         id: str = None,
     ):
+        # Video frame rate in fps.
         self.fps = fps
+        # Video GOP in frames.
         self.gop = gop
+        # Video height.
         self.height = height
+        # Transcoding rule name. This name becomes the suffix of the transcoded stream. Use a descriptive suffix such as sd or 200k. Only letters and numbers are allowed.
         self.name = name
+        # Video bitrate in kbps.
         self.video_bitrate = video_bitrate
+        # Video encoding.
         self.video_codec = video_codec
+        # Video width.
         self.width = width
+        # Transcoding configuration ID.
         self.id = id
 
     def validate(self):

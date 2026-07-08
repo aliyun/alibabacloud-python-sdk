@@ -10,7 +10,12 @@ class VerifyVsDomainOwnerResponseBody(DaraModel):
         content: str = None,
         request_id: str = None,
     ):
+        # 校验内容。
+        # 
+        # > 
+        # 调用成功不返回该参数，调用失败返回校验内容。
         self.content = content
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):

@@ -14,11 +14,17 @@ class ListFilesRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
+        # This parameter filters data by time range. It must conform to the ISO 8601 standard and use UTC time in the format yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # File ID. Each ID corresponds to a unique active file.
         self.file_id = file_id
+        # File name.
         self.file_name = file_name
+        # The page number to retrieve. Page numbering starts at 1.Default value: 1.
         self.page_number = page_number
+        # The number of rows per page for a paged query. The value must be in the range of 1 to 100. The default is 10.
         self.page_size = page_size
+        # Start time of the time range filter. Specify in ISO 8601 format using UTC time. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

@@ -10,7 +10,10 @@ class DeleteRenderingInstanceConfigurationShrinkRequest(DaraModel):
         configuration_shrink: str = None,
         rendering_instance_id: str = None,
     ):
+        # Configuration content. Purge all configured modules by default.
         self.configuration_shrink = configuration_shrink
+        # Cloud application service instance ID.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

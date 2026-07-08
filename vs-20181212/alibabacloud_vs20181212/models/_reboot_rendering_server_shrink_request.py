@@ -9,6 +9,8 @@ class RebootRenderingServerShrinkRequest(DaraModel):
         self,
         rendering_instance_ids_shrink: str = None,
     ):
+        # List of cloud application service instance IDs
+        # 
         # This parameter is required.
         self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
 

@@ -10,7 +10,9 @@ class UpdateRenderingInstanceSettingsShrinkRequest(DaraModel):
         rendering_instance_id: str = None,
         settings_shrink: str = None,
     ):
+        # ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
+        # List of instance settings.
         self.settings_shrink = settings_shrink
 
     def validate(self):

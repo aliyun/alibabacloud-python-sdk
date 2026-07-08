@@ -15,12 +15,19 @@ class DescribeDirectoryResponseBody(DaraModel):
         parent_id: str = None,
         request_id: str = None,
     ):
+        # The time when the directory was created.
         self.created_time = created_time
+        # The directory description.
         self.description = description
+        # The ID of the group that owns the folder.
         self.group_id = group_id
+        # The directory ID.
         self.id = id
+        # The directory name.
         self.name = name
+        # The parent directory ID.
         self.parent_id = parent_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

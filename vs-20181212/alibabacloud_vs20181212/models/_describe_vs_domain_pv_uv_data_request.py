@@ -12,10 +12,14 @@ class DescribeVsDomainPvUvDataRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # Visual Edge Computing Service domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # End time in UTC format. For example: 2016-06-30T19:00:00Z
         self.end_time = end_time
         self.owner_id = owner_id
+        # Start time in UTC format. For example: 2016-06-29T19:00:00Z
         self.start_time = start_time
 
     def validate(self):

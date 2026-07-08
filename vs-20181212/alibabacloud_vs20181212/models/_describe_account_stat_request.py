@@ -10,6 +10,7 @@ class DescribeAccountStatRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # Alibaba Cloud account ID.
         self.id = id
         self.owner_id = owner_id
 
