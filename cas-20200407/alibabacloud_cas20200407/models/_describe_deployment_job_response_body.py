@@ -36,16 +36,19 @@ class DescribeDeploymentJobResponseBody(DaraModel):
         self.cert_domain = cert_domain
         # The type of the certificate. Valid values:
         # 
-        # *   **upload**: uploaded certificate
-        # *   **buy**: purchased certificate
-        # *   **free**: free certificate available only on the China site (aliyun.com)
+        # - **upload**: uploaded certificate
+        # 
+        # - **buy**: purchased certificate
+        # 
+        # - **free**: free certificate available only on the China site (aliyun.com)
         self.cert_type = cert_type
         # The configurations of the deployment task.
         self.config = config
         # Indicates whether the deployment job was deleted. Valid values:
         # 
-        # *   **0**: not deleted
-        # *   **1**: deleted
+        # - **0**: not deleted
+        # 
+        # - **1**: deleted
         self.del_ = del_
         # The end time of the deployment job. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
@@ -59,9 +62,11 @@ class DescribeDeploymentJobResponseBody(DaraModel):
         self.instance_id = instance_id
         # The type of the deployment job. Valid values:
         # 
-        # *   **cloud**: multi-cloud deployment job.
-        # *   **trustee**: hosted deployment job available only on the China site (aliyun.com).
-        # *   **user**: cloud service deployment job. The cloud server is not included.
+        # - **cloud**: multi-cloud deployment job.
+        # 
+        # - **trustee**: hosted deployment job available only on the China site (aliyun.com).
+        # 
+        # - **user**: cloud service deployment job. The cloud server is not included.
         self.job_type = job_type
         # The name of the deployment task.
         self.name = name
@@ -71,8 +76,9 @@ class DescribeDeploymentJobResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the deployment job includes the rollback worker. For example, if a cloud service in a deployment job has been rolled back, **1** is returned. Valid values:
         # 
-        # *   **0**: The rollback worker is not included.
-        # *   **1**: The rollback worker is included.
+        # - **0**: The rollback worker is not included.
+        # 
+        # - **1**: The rollback worker is included.
         self.rollback = rollback
         # The time when the deployment job was scheduled. The value is a UNIX timestamp. Unit: seconds.
         self.schedule_time = schedule_time
@@ -80,12 +86,17 @@ class DescribeDeploymentJobResponseBody(DaraModel):
         self.start_time = start_time
         # The status of the deployment job. Valid values:
         # 
-        # *   **pending**
-        # *   **editing**
-        # *   **scheduling**
-        # *   **processing**
-        # *   **error**
-        # *   **success**
+        # - **pending**
+        # 
+        # - **editing**
+        # 
+        # - **scheduling**
+        # 
+        # - **processing**
+        # 
+        # - **error**
+        # 
+        # - **success**
         self.status = status
         # The ID of the Alibaba Cloud account in which the deployment job is created.
         self.user_id = user_id

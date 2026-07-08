@@ -17,6 +17,7 @@ class GetInstanceDetailResponseBody(DaraModel):
         certificate_id: int = None,
         certificate_name: str = None,
         certificate_not_after: int = None,
+        certificate_not_before: int = None,
         certificate_revoke_time: int = None,
         certificate_status: str = None,
         certificate_type: str = None,
@@ -48,42 +49,113 @@ class GetInstanceDetailResponseBody(DaraModel):
         validation_method: str = None,
         wildcard_domain_count: int = None,
     ):
+        # Specifies whether automatic managed renewal is enabled. Valid values:
+        # - enable: Enabled.
+        # - disable: Disabled.
         self.auto_reissue = auto_reissue
+        # The average waiting time for issuing a certificate of this specification. Unit: seconds.
         self.average_waiting_time = average_waiting_time
+        # The CA brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
         self.brand = brand
+        # The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+        #   --For the China site, the format is certificate ID + "-cn-hangzhou".
+        # For the China site, the format is certificate ID + "-ap-southeast-1".
+        # For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
         self.cert_identifier = cert_identifier
+        # The certificate ID.
         self.certificate_id = certificate_id
+        # The name of the instance. When a certificate is issued, this name is used as the default certificate name.
         self.certificate_name = certificate_name
+        # The end time of the latest certificate. The value is a UNIX timestamp. This field is empty if no certificate has been issued.
         self.certificate_not_after = certificate_not_after
+        self.certificate_not_before = certificate_not_before
+        # The revocation time of the latest certificate. The value is a UNIX timestamp.
         self.certificate_revoke_time = certificate_revoke_time
+        # The status of the certificate. Valid values:
+        # - **issued**: issued.
+        # - **revoked**: revoked.
+        # - **willExpire**: about to expire.
+        # - **expired**: expired.
         self.certificate_status = certificate_status
+        # The type of the certificate. Valid values: DV, OV, and EV.
         self.certificate_type = certificate_type
+        # The city where the company or organization of the certificate purchaser is located. This field is required when generating a certificate signing request. Default value: Beijing.
         self.city = city
+        # The company information ID.
         self.company_id = company_id
+        # The list of contact IDs.
         self.contact_id_list = contact_id_list
+        # The code of the country or region where the certificate organization is located. For example, CN indicates China, and US indicates the United States. This field is required when generating a certificate signing request. Default value: CN.
         self.country_code = country_code
+        # The certificate signing request in PEM format.
         self.csr = csr
+        # The list of associated expert service DingTalk groups.
         self.ding_group_list = ding_group_list
+        # The domain name bound to the certificate.
         self.domain = domain
+        # The list of domain names to be validated.
         self.domain_validation_list = domain_validation_list
+        # The number of exact-match domain names.
         self.full_domain_count = full_domain_count
+        # The CSR generation method. Valid values:
+        # - online: system-generated. The Csr field is ignored.
+        # - upload: user-uploaded. The Csr field is required.
         self.generate_csr_method = generate_csr_method
+        # The expiration time of the instance. The value is a UNIX timestamp. If no certificate has been issued, this field is empty.
         self.instance_end_time = instance_end_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The start time of the instance. The value is a UNIX timestamp. If no certificate has been issued, this field is empty.
         self.instance_start_time = instance_start_time
+        # The instance type. Valid values:
+        # - **BUY**: formal certificate.
+        # - **TEST**: test certificate.
         self.instance_type = instance_type
+        # The certificate algorithm. Valid values:
+        # - **RSA_2048**
+        # - **RSA_3072**
+        # - **RSA_4096**
+        # - **ECC_256**
+        # - **SM2**.
         self.key_algorithm = key_algorithm
+        # The end time of the instance purchase. The value is a UNIX timestamp. You can use this value to determine the purchase duration of the instance.
         self.order_end_time = order_end_time
+        # The start time of the instance purchase. The value is a UNIX timestamp. You can use this value to determine the refund time limit.
         self.order_start_time = order_start_time
+        # The result returned by the certification authority (CA) during the last certificate operation.
         self.pending_result = pending_result
+        # The province or region where the company is located. This field is required when generating a certificate signing request. Default value: Beijing.
         self.province = province
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The purchased instance specification.
         self.spec = spec
+        # The instance status. Valid values:
+        # - **inactive**: pending use.
+        # - **pending**: under review. The latest certificate is being reviewed.
+        # - **willExpire**: the instance is about to expire.
+        # - **expired**: the instance has expired.
+        # - **refund**: refunded.
+        # - **normal**: normal.
+        # - **closed**: closed and unavailable.
         self.status = status
+        # The list of tags.
         self.tags = tags
+        # The upgrade status of the instance. Valid values:
+        # 
+        # - none: the instance has not been upgraded.
+        # 
+        # - payed: the instance upgrade has been paid.
+        # 
+        # - issued: the latest certificate has been issued after the instance upgrade.
         self.upgrade_status = upgrade_status
+        # The validation method for the certificate application. Valid values:
+        # - DNS: DNS validation, using TXT or CNAME.
+        # - HTTP: file-based validation.
         self.validation_method = validation_method
+        # The number of wildcard domain names.
         self.wildcard_domain_count = wildcard_domain_count
 
     def validate(self):
@@ -125,6 +197,9 @@ class GetInstanceDetailResponseBody(DaraModel):
 
         if self.certificate_not_after is not None:
             result['CertificateNotAfter'] = self.certificate_not_after
+
+        if self.certificate_not_before is not None:
+            result['CertificateNotBefore'] = self.certificate_not_before
 
         if self.certificate_revoke_time is not None:
             result['CertificateRevokeTime'] = self.certificate_revoke_time
@@ -247,6 +322,9 @@ class GetInstanceDetailResponseBody(DaraModel):
         if m.get('CertificateNotAfter') is not None:
             self.certificate_not_after = m.get('CertificateNotAfter')
 
+        if m.get('CertificateNotBefore') is not None:
+            self.certificate_not_before = m.get('CertificateNotBefore')
+
         if m.get('CertificateRevokeTime') is not None:
             self.certificate_revoke_time = m.get('CertificateRevokeTime')
 
@@ -354,7 +432,9 @@ class GetInstanceDetailResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -394,12 +474,19 @@ class GetInstanceDetailResponseBodyDomainValidationList(DaraModel):
         validation_type: str = None,
         validation_value: str = None,
     ):
+        # The CNAME record value for verification-free authorization. This field may be empty.
         self.cname = cname
+        # The prefix for CNAME validation.
         self.cname_key = cname_key
+        # The domain name to be validated.
         self.domain = domain
+        # The root domain name.
         self.root_domain = root_domain
+        # The host record.
         self.validation_key = validation_key
+        # The validation type. Valid values: TXT, HTTP, and CNAME.
         self.validation_type = validation_type
+        # The host record value for validation.
         self.validation_value = validation_value
 
     def validate(self):
@@ -466,9 +553,15 @@ class GetInstanceDetailResponseBodyDingGroupList(DaraModel):
         ding_group_type: str = None,
         ding_group_url: str = None,
     ):
+        # The instance ID of the expert service DingTalk group.
         self.ding_group_instance_id = ding_group_instance_id
+        # The name of the expert service DingTalk group.
         self.ding_group_name = ding_group_name
+        # The type of the expert service DingTalk group. Valid values:
+        # - expedite: application assistance.
+        # - remote: offline deployment.
         self.ding_group_type = ding_group_type
+        # The link to join the expert service DingTalk group.
         self.ding_group_url = ding_group_url
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListCertificatesResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
+        # The list of certificates.
         self.certificate_list = certificate_list
+        # The current page number. Default value: 1.
         self.current_page = current_page
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
+        # The number of entries returned on each page.
         self.show_size = show_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -96,23 +101,75 @@ class ListCertificatesResponseBodyCertificateList(DaraModel):
         subject_alternative_names: List[str] = None,
         using_product_list: List[str] = None,
     ):
+        # The encryption algorithm of the certificate. Valid values:
+        # 
+        # - **RSA**
+        # 
+        # - **ECC**
+        # 
+        # - **SM2**
         self.algorithm = algorithm
+        # The global ID of the certificate. This ID is used across Alibaba Cloud services and is in the `Certificate ID-Region ID` format. For example, if a certificate ID is `123`, the `CertIdentifier` is `123-cn-hangzhou` for the Alibaba Cloud China site and `123-ap-southeast-1` for the Alibaba Cloud International site (www\\.alibabacloud.com).
+        # 
+        # - For the Alibaba Cloud China website, the format is certificate ID + "-cn-hangzhou".
+        # 
+        # - For the Alibaba Cloud International website (www\\.alibabacloud.com), the format is certificate ID + "-ap-southeast-1".
+        # 
+        # For example, if the certificate ID is 123, the CertIdentifier is "123-cn-hangzhou" for the China site and "123-ap-southeast-1" for the International site.
         self.cert_identifier = cert_identifier
+        # The ID of the certificate.
         self.certificate_id = certificate_id
+        # The name of the certificate.
         self.certificate_name = certificate_name
+        # The source of the certificate.
+        # 
+        # - BUY: A purchased certificate.
+        # 
+        # - TEST: A test certificate.
+        # 
+        # - UPLOAD: An uploaded certificate.
         self.certificate_source = certificate_source
+        # The status of the certificate.
+        # 
+        # - **issued**: The certificate is issued.
+        # 
+        # - **revoked**: The certificate is revoked.
+        # 
+        # - **willExpire**: The certificate is about to expire.
+        # 
+        # - **expired**: The certificate has expired.
         self.certificate_status = certificate_status
+        # The common name of the certificate.
         self.common_name = common_name
+        # The domain names that are bound to the certificate. Multiple domain names are separated by commas.
         self.domain = domain
+        # Indicates whether a private key is available. Valid values:
+        # 
+        # - **true**: A private key is available.
+        # 
+        # - **false**: A private key is not available.
         self.exist_private_key = exist_private_key
+        # The fingerprint of the public key.
         self.finger_print = finger_print
+        # The ID of the certificate instance.
         self.instance_id = instance_id
+        # The certification authority.
         self.issuer = issuer
+        # The key size, in bits.
+        # 
+        # - For RSA keys, typical sizes are 2048, 3072, or 4096.
+        # 
+        # - For ECC or SM2 keys, the typical size is 256.
         self.key_size = key_size
+        # The end of the certificate validity period.
         self.not_after = not_after
+        # The beginning of the certificate validity period.
         self.not_before = not_before
+        # The serial number of the certificate.
         self.serial = serial
+        # An array that contains the alternative domain names of the certificate. This parameter corresponds to the `Subject Alternative Name` field of the certificate.
         self.subject_alternative_names = subject_alternative_names
+        # The list of Alibaba Cloud products in which the certificate is deployed.
         self.using_product_list = using_product_list
 
     def validate(self):

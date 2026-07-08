@@ -15,7 +15,7 @@ class UploadUserCertificateResponseBody(DaraModel):
         self.cert_id = cert_id
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the resource.
+        # The ID of the certificate instance.
         self.resource_id = resource_id
 
     def validate(self):

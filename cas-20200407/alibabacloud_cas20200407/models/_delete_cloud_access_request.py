@@ -9,6 +9,7 @@ class DeleteCloudAccessRequest(DaraModel):
         self,
         access_id: str = None,
     ):
+        # The ID of the access key.
         self.access_id = access_id
 
     def validate(self):

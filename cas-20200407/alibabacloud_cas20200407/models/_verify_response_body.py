@@ -10,12 +10,13 @@ class VerifyResponseBody(DaraModel):
         request_id: str = None,
         signature_valid: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the signature is valid. Valid values:
+        # The result of the signature verification. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.signature_valid = signature_valid
 
     def validate(self):

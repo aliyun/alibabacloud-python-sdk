@@ -9,6 +9,8 @@ class GetCertificateDetailRequest(DaraModel):
         self,
         certificate_id: int = None,
     ):
+        # The certificate ID.
+        # 
         # This parameter is required.
         self.certificate_id = certificate_id
 

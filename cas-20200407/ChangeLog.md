@@ -1,3 +1,9 @@
+2026-07-08 Version: 3.5.2
+- Update API GetInstanceDetail: add response parameters Body.CertificateNotBefore.
+- Update API ListInstances: add response parameters Body.InstanceList.$.CertificateNotBefore.
+- Update API RevokeCertificate: add request parameters CertificateId.
+
+
 2026-06-02 Version: 3.5.1
 - Update API GetCertificateDetail: add response parameters Body.Csr.
 - Update API GetInstanceDetail: add response parameters Body.UpgradeStatus.

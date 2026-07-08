@@ -13,9 +13,9 @@ class DecryptResponseBody(DaraModel):
     ):
         # The unique identifier of the certificate.
         self.cert_identifier = cert_identifier
-        # The data after decryption.
+        # The decrypted data.
         self.plaintext = plaintext
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

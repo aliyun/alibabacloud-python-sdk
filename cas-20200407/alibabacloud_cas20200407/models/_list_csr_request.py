@@ -14,9 +14,9 @@ class ListCsrRequest(DaraModel):
     ):
         # The algorithm. Valid values: RSA, ECC, and SM2.
         self.algorithm = algorithm
-        # The page number.
+        # The page number. Default value: 1.
         self.current_page = current_page
-        # The keyword.
+        # The keyword for fuzzy search. For example, you can specify a domain name.
         self.key_word = key_word
         # The number of entries per page. Default value: 50.
         self.show_size = show_size

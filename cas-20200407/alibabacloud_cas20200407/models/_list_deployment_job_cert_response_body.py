@@ -80,9 +80,11 @@ class ListDeploymentJobCertResponseBodyData(DaraModel):
         self.cert_name = cert_name
         # The type of the certificate order. Valid values:
         # 
-        # *   **upload**: uploaded certificate.
-        # *   **buy**: purchased certificate.
-        # *   **free**: free certificate. This value is available only on the China site (aliyun.com).
+        # - **upload**: uploaded certificate.
+        # 
+        # - **buy**: purchased certificate.
+        # 
+        # - **free**: free certificate. This value is available only on the China site (aliyun.com).
         self.cert_order_type = cert_order_type
         # The type of the certificate.
         self.cert_type = cert_type
@@ -90,8 +92,9 @@ class ListDeploymentJobCertResponseBodyData(DaraModel):
         self.common_name = common_name
         # Indicates whether the certificate is hosted. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_trustee = is_trustee
         # The month in which the certificate is applied for.
         self.month = month
@@ -101,25 +104,37 @@ class ListDeploymentJobCertResponseBodyData(DaraModel):
         self.not_before_time = not_before_time
         # The ID of the certificate order.
         # 
-        # >  If CertId is returned, this parameter is not returned.
+        # > If CertId is returned, this parameter is not returned.
         self.order_id = order_id
         # The subject alternative name (SAN) extensions of the certificate.
         self.sans = sans
         # The status code of the certificate. Valid values:
         # 
-        # *   **payed**: paid and pending application
-        # *   **checking**: being validated
-        # *   **checkedFail**: validation failed
-        # *   **revoked**: revoked
-        # *   **revokeChecking**: revocation request being validated
-        # *   **issued**: issued (excluding hosted certificates that are issued, certificates that are about to expire, expired certificates, and uploaded certificates)
-        # *   **trustee**: hosted and issued
-        # *   **upload**: uploaded (excluding certificates that are about to expire and expired certificates)
-        # *   **willExpired**: about to expire (including certificates issued by using the Certificate Management Service console and uploaded certificates)
-        # *   **expired**: expired (including certificates issued by using the Certificate Management Service console and uploaded certificates)
-        # *   **validity**: valid (including certificates that are not expired or revoked)
-        # *   **refund**: refunded
-        # *   **closed**: closed
+        # - **payed**: paid and pending application
+        # 
+        # - **checking**: being validated
+        # 
+        # - **checkedFail**: validation failed
+        # 
+        # - **revoked**: revoked
+        # 
+        # - **revokeChecking**: revocation request being validated
+        # 
+        # - **issued**: issued (excluding hosted certificates that are issued, certificates that are about to expire, expired certificates, and uploaded certificates)
+        # 
+        # - **trustee**: hosted and issued
+        # 
+        # - **upload**: uploaded (excluding certificates that are about to expire and expired certificates)
+        # 
+        # - **willExpired**: about to expire (including certificates issued by using the Certificate Management Service (CAS) console and uploaded certificates)
+        # 
+        # - **expired**: expired (including certificates issued by using the CAS console and uploaded certificates)
+        # 
+        # - **validity**: valid (including certificates that are not expired or revoked)
+        # 
+        # - **refund**: refunded
+        # 
+        # - **closed**: closed
         self.status_code = status_code
 
     def validate(self):

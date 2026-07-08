@@ -35,29 +35,80 @@ class GetCertificateDetailResponseBody(DaraModel):
         tags: List[main_models.GetCertificateDetailResponseBodyTags] = None,
         using_product_list: List[str] = None,
     ):
+        # The certificate algorithm. Valid values:
+        # 
+        # - **RSA**: The RSA algorithm.
+        # 
+        # - **ECC**: The ECC algorithm.
+        # 
+        # - **SM2**: The SM2 algorithm.
         self.algorithm = algorithm
+        # The global ID of the certificate, which is used in various Alibaba Cloud services. The format of the ID is `<Certificate ID>-<Region ID>`. The region ID is `cn-hangzhou` for the China site and `ap-southeast-1` for the International site. For example, if a certificate ID is `123`, its `CertIdentifier` is `123-cn-hangzhou` for the China site and `123-ap-southeast-1` for the International site.
         self.cert_identifier = cert_identifier
+        # The information about the certificate chain.
         self.certificate_chain_list = certificate_chain_list
+        # The certificate ID.
         self.certificate_id = certificate_id
+        # The certificate name.
         self.certificate_name = certificate_name
+        # The source of the certificate. Valid values:
+        # 
+        # - **BUY**: a purchased certificate.
+        # 
+        # - **TEST**: a test certificate.
+        # 
+        # - Upload the certificate.
         self.certificate_source = certificate_source
+        # The status of the certificate. Valid values:
+        # 
+        # - **issued**: The certificate is issued.
+        # 
+        # - **revoked**: The certificate is revoked.
+        # 
+        # - **willExpire**: The certificate is about to expire.
+        # 
+        # - **expired**: The certificate has expired.
         self.certificate_status = certificate_status
+        # The common name.
         self.common_name = common_name
+        # The ID of the company profile that is associated with the certificate application. This parameter is empty for DV certificates.
         self.company_id = company_id
+        # The ID of the contact.
         self.contact_id = contact_id
         self.csr = csr
+        # The domain names that are bound to the certificate. Multiple domain names are separated by commas (,).
         self.domain = domain
+        # Indicates whether a private key is available. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.exist_private_key = exist_private_key
+        # The fingerprint of the public key.
         self.finger_print = finger_print
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The issuer of the certificate.
         self.issuer = issuer
+        # The key size.
+        # 
+        # - For RSA algorithms, the key size is typically 2,048, 3,072, or 4,096 bits.
+        # 
+        # - For ECC and SM2 algorithms, the key size is typically 256 bits.
         self.key_size = key_size
+        # The end of the validity period of the certificate.
         self.not_after = not_after
+        # The beginning of the validity period of the certificate.
         self.not_before = not_before
+        # The ID of the request.
         self.request_id = request_id
+        # The serial number of the certificate.
         self.serial = serial
+        # The subject alternative names (SANs) of the certificate.
         self.subject_alternative_names = subject_alternative_names
+        # The list of tags.
         self.tags = tags
+        # The list of cloud services in which the certificate is deployed.
         self.using_product_list = using_product_list
 
     def validate(self):
@@ -241,7 +292,11 @@ class GetCertificateDetailResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the instance. You can specify 1 to 20 tag keys. The value cannot be an empty string.
+        # 
+        # The value can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -279,10 +334,15 @@ class GetCertificateDetailResponseBodyCertificateChainList(DaraModel):
         remain_day: int = None,
         subject: str = None,
     ):
+        # The issuer of the certificate chain.
         self.issuer = issuer
+        # The end of the validity period.
         self.not_after = not_after
+        # The beginning of the validity period.
         self.not_before = not_before
+        # The remaining validity period of the certificate chain.
         self.remain_day = remain_day
+        # The common name of the certificate chain.
         self.subject = subject
 
     def validate(self):

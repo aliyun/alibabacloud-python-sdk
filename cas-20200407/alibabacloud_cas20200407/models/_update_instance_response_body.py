@@ -9,6 +9,7 @@ class UpdateInstanceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request to help troubleshoot and locate issues.
         self.request_id = request_id
 
     def validate(self):

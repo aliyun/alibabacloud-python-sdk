@@ -14,36 +14,47 @@ class SignRequest(DaraModel):
         signing_algorithm: str = None,
         warehouse_id: int = None,
     ):
-        # The unique identifier of the certificate. You can call the [ListCert](https://help.aliyun.com/document_detail/455806.html) operation to obtain the identifier.
+        # The unique identifier of the certificate. You can get this value by calling the [ListCert](https://help.aliyun.com/document_detail/455806.html) operation.
         # 
-        # *   If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
-        # *   If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
+        # - The identifier of an SSL certificate is typically in the format \\"{Certificate ID}-cn-hangzhou\\".
+        # 
+        # - For a PCA certificate, this is the Identifier from the corresponding private certificate.
         self.cert_identifier = cert_identifier
+        # A unique, user-defined identifier.
         self.custom_identifier = custom_identifier
-        # The data to sign. The value must be encoded in Base64.\\
-        # For example, if the hexadecimal data that you want to sign is [0x31, 0x32, 0x33, 0x34], set the parameter to the Base64-encoded value MTIzNA==. If you set MessageType to RAW, the size of the data must be less than 4 KB. If the size of the data is greater than 4 KB, you can set MessageType to DIGEST and set Message to the digest of the data. The digest is a hash value. You can compute the digest of the data on an on-premises machine. The certificate application repository uses the digest that you compute in your own certificate application system. The message digest algorithm that you use must match the specified signature algorithm. The following items describe the details:
-        # 
-        # *   If the signature algorithm is SHA256withRSA, SHA256withRSA/PSS, or SHA256withECDSA, the message digest algorithm must be SHA-256.
-        # *   If the signature algorithm is SM3withSM2, the message digest algorithm must be SM3.
+        # The data to sign. The MessageType parameter determines the format of this data. If MessageType is set to RAW, Message is the raw data. If MessageType is set to BASE64, Message is the Base64-encoded raw data. If MessageType is set to DIGEST, Message is the message digest (hash value). If MessageType is set to BLIND, Message is the Base64-encoded blinded message.
         # 
         # This parameter is required.
         self.message = message
-        # The value type of the Message parameter. Valid values:
+        # The message type. Valid values:
         # 
-        # *   RAW: the raw data. This is the default value.
-        # *   DIGEST: the message digest (hash value) of the raw data.
+        # - `RAW` (default): The raw data.
+        # 
+        # - `DIGEST`: The message digest (hash value) of the raw data.
+        # 
+        # - `BASE64`: The Base64-encoded raw data.
+        # 
+        # - `BLIND`: Enables blind signing. This is supported only for certificates that use an RSA algorithm.
         # 
         # This parameter is required.
         self.message_type = message_type
         # The signature algorithm. Valid values:
         # 
-        # *   SHA256withRSA
-        # *   SHA256withRSA/PSS
-        # *   SHA256withECDSA
-        # *   SM3withSM2
+        # - `SHA256withRSA`
+        # 
+        # - `SHA256withRSA/PSS`
+        # 
+        # - `SHA256withECDSA`
+        # 
+        # - `SM3withSM2`
+        # 
+        # - `SHA256withRSA/P7`
         # 
         # This parameter is required.
         self.signing_algorithm = signing_algorithm
+        # The repository ID.
+        # 
+        # > You can get this ID by calling the [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) operation.
         self.warehouse_id = warehouse_id
 
     def validate(self):

@@ -27,15 +27,23 @@ class ListWorkerResourceRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   rollback
-        # *   rollback_error
-        # *   success
-        # *   rollback_success
-        # *   pending
-        # *   scheduling
-        # *   processing
-        # *   error
-        # *   editing
+        # - rollback
+        # 
+        # - rollback_error
+        # 
+        # - success
+        # 
+        # - rollback_success
+        # 
+        # - pending
+        # 
+        # - scheduling
+        # 
+        # - processing
+        # 
+        # - error
+        # 
+        # - editing
         self.status = status
 
     def validate(self):

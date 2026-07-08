@@ -9,9 +9,9 @@ class CancelCertificateForPackageRequestRequest(DaraModel):
         self,
         order_id: int = None,
     ):
-        # The order ID.
+        # The ID of the order.
         # 
-        # >  You can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) operation to obtain the ID.
+        # > Call [ListUserCertificateOrder](https://help.aliyun.com/document_detail/455804.html) to obtain this ID.
         # 
         # This parameter is required.
         self.order_id = order_id

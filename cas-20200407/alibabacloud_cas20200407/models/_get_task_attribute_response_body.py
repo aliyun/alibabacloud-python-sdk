@@ -11,8 +11,17 @@ class GetTaskAttributeResponseBody(DaraModel):
         task_message: str = None,
         task_status: str = None,
     ):
+        # The unique ID of the request. Alibaba Cloud generates this ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The error message.
         self.task_message = task_message
+        # The result of the task.
+        # 
+        # - success: The submission is successful.
+        # 
+        # - processing: The submission is in progress.
+        # 
+        # - failed: The submission failed.
         self.task_status = task_status
 
     def validate(self):

@@ -20,27 +20,27 @@ class UploadUserCertificateRequest(DaraModel):
         sign_private_key: str = None,
         tags: List[main_models.UploadUserCertificateRequestTags] = None,
     ):
-        # The content of the certificate in the PEM format.
+        # The content of a non-SM certificate in PEM format.
         self.cert = cert
-        # The content of the encryption certificate in PEM format.
+        # The content of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
         self.encrypt_cert = encrypt_cert
-        # The private key of the encryption certificate in the PEM format.
+        # The content of the private key of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
         self.encrypt_private_key = encrypt_private_key
-        # The private key of the certificate in the PEM format.
+        # The private key of a non-SM certificate in PEM format.
         self.key = key
-        # The name of the certificate. The name can be up to 64 characters in length, and can contain all types of characters, such as letters, digits, and underscores (_).
+        # The custom name of the certificate. The name can be up to 63 characters long and can contain letters, digits, and underscores (_).
         # 
-        # >  The name must be unique within an Alibaba Cloud account.
+        # > Certificate names must be unique for each user.
         # 
         # This parameter is required.
         self.name = name
-        # the resource group id.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The content of the signing certificate in the PEM format.
+        # The content of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
         self.sign_cert = sign_cert
-        # The private key of the signing certificate in the PEM format.
+        # The content of the private key of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
         self.sign_private_key = sign_private_key
-        # The tags.
+        # A list of tags.
         self.tags = tags
 
     def validate(self):

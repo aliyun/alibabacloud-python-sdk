@@ -13,13 +13,15 @@ class GetCertWarehouseQuotaResponseBody(DaraModel):
         total_quota: int = None,
         use_count: int = None,
     ):
+        # The total quota for the certificate application service. This includes both complimentary and purchased quotas.
         self.app_total_quota = app_total_quota
+        # The used quota for the certificate application service.
         self.app_use_count = app_use_count
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The total quota for certificate repositories, including the free quota and purchased quota.
+        # The total quota for the electronic contract signing service. This includes both complimentary and purchased quotas.
         self.total_quota = total_quota
-        # The used quota.
+        # The used quota for the electronic contract signing service.
         self.use_count = use_count
 
     def validate(self):

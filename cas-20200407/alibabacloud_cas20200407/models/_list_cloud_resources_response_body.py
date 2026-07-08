@@ -114,16 +114,19 @@ class ListCloudResourcesResponseBodyData(DaraModel):
         self.cert_start_time = cert_start_time
         # The AccessKey ID that is used to access cloud resources.
         # 
-        # >  This parameter is returned only when you deploy certificates to cloud services of third-party clouds.
+        # > This parameter is returned only when you deploy certificates to cloud services of third-party clouds.
         self.cloud_access_id = cloud_access_id
         # The cloud service provider.
         # 
         # Valid values:
         # 
-        # *   Tencent
-        # *   Huawei
-        # *   Aws
-        # *   aliyun
+        # - Tencent
+        # 
+        # - Huawei
+        # 
+        # - Aws
+        # 
+        # - aliyun
         self.cloud_name = cloud_name
         # The cloud service.
         self.cloud_product = cloud_product
@@ -131,17 +134,19 @@ class ListCloudResourcesResponseBodyData(DaraModel):
         self.cloud_region = cloud_region
         # Indicates whether the cloud resource is the default resource. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: yes
         # 
-        # >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+        # - **0**: no
+        # 
+        # > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
         self.default_resource = default_resource
         # The domain name bound to the cloud resource.
         self.domain = domain
         # Indicates whether HTTPS is enabled for the cloud resource. Valid values:
         # 
-        # *   **1**: yes.
-        # *   **0**: no.
+        # - **1**: yes.
+        # 
+        # - **0**: no.
         self.enable_https = enable_https
         # The time when the cloud resource was created. The time is a timestamp in seconds.
         self.gmt_create = gmt_create
@@ -151,15 +156,15 @@ class ListCloudResourcesResponseBodyData(DaraModel):
         self.id = id
         # The instance ID of the cloud resource.
         # 
-        # >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+        # > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
         self.instance_id = instance_id
         # The listener ID of the cloud resource.
         # 
-        # >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+        # > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
         self.listener_id = listener_id
         # The listening port of the cloud resource.
         # 
-        # >  This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
+        # > This parameter is returned only when the value of CloudProduct is SLB, NLB, ALB, or GA.
         self.listener_port = listener_port
         # The region ID of the cloud resource.
         self.region_id = region_id
@@ -167,10 +172,11 @@ class ListCloudResourcesResponseBodyData(DaraModel):
         self.status = status
         # Indicates whether an Alibaba Cloud SSL certificate is used. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: yes
         # 
-        # >  This parameter is required only when you deploy certificates to services of multiple clouds.
+        # - **0**: no
+        # 
+        # > This parameter is required only when you deploy certificates to services of multiple clouds.
         self.use_ssl = use_ssl
         # The ID of the Alibaba Cloud account.
         self.user_id = user_id

@@ -97,8 +97,9 @@ class ListCertWarehouseResponseBodyCertWarehouseList(DaraModel):
         self.instance_id = instance_id
         # Indicates whether the certificate application repository has expired. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_expired = is_expired
         # The name of the certificate application repository.
         self.name = name
@@ -108,11 +109,15 @@ class ListCertWarehouseResponseBodyCertWarehouseList(DaraModel):
         self.qps = qps
         # The type of the certificate application repository. Valid values:
         # 
-        # *   **ssl**: certificate application repository of SSL certificates
-        # *   **uploadPCA**: certificate application repository of uploaded private certificates
-        # *   **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
-        # *   **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud Private Certificate Authority (PCA), available only on the China site (aliyun.com)
-        # *   **disable**: disabled certificate application repository
+        # - **ssl**: certificate application repository of SSL certificates
+        # 
+        # - **uploadPCA**: certificate application repository of uploaded private certificates
+        # 
+        # - **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
+        # 
+        # - **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud PCA, available only on the China site (aliyun.com)
+        # 
+        # - **disable**: disabled certificate application repository
         self.type = type
         # The ID of the certificate application repository.
         self.wh_id = wh_id

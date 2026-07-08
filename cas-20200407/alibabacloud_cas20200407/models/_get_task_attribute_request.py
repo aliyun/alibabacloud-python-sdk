@@ -10,8 +10,11 @@ class GetTaskAttributeRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The type of the asynchronous task. The default value is ApplyCertificate, which specifies a query for the result of a certificate application.
         self.task_type = task_type
 
     def validate(self):

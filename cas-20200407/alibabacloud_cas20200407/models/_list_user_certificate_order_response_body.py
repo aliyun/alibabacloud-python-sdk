@@ -16,15 +16,15 @@ class ListUserCertificateOrderResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # The certificates and orders.
+        # The list of certificates and orders.
         self.certificate_order_list = certificate_order_list
-        # The page number of the returned page.
+        # The page number.
         self.current_page = current_page
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. This ID is unique to each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of entries returned per page.
+        # The number of entries on the current page.
         self.show_size = show_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -119,102 +119,119 @@ class ListUserCertificateOrderResponseBodyCertificateOrderList(DaraModel):
         upload: bool = None,
         wild_domain_count: int = None,
     ):
-        # The algorithm. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The algorithm. This parameter is returned when OrderType is set to CPACK or BUY.
         self.algorithm = algorithm
-        # The ID of the Alibaba Cloud order. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The ID of the Alibaba Cloud order. This parameter is returned when OrderType is set to CPACK or BUY.
         self.aliyun_order_id = aliyun_order_id
-        # The time at which the order was placed. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The purchase time. The value is a UNIX timestamp. Unit: milliseconds. This parameter is returned when OrderType is set to CPACK or BUY.
         self.buy_date = buy_date
-        # The time at which the certificate expires. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The expiration time of the certificate. The value is a UNIX timestamp. Unit: milliseconds. This parameter is returned when OrderType is set to CPACK or BUY.
         self.cert_end_time = cert_end_time
-        # The time at which the certificate starts to take effect. Unit: milliseconds. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The start time of the certificate. The value is a UNIX timestamp. Unit: milliseconds. This parameter is returned when OrderType is set to CPACK or BUY.
         self.cert_start_time = cert_start_time
-        # The type of the certificate. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+        # The certificate type. This parameter is returned when OrderType is set to CPACK or BUY. Valid values:
         # 
-        # *   **DV**: domain validated (DV) certificate
-        # *   **EV**: extended validation (EV) certificate
-        # *   **OV**: organization validated (OV) certificate **FREE**: free certificate, available only on the China site (aliyun.com)
+        # - **DV**: A DV certificate.
+        # 
+        # - **EV**: An EV certificate.
+        # 
+        # - **OV**: An OV certificate.
+        # 
+        # - **FREE**: A free certificate for personal trial. This value is supported only on the Alibaba Cloud China website (www\\.aliyun.com).
         self.cert_type = cert_type
-        # The ID of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The certificate ID. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.certificate_id = certificate_id
-        # The city in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The city. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.city = city
-        # The parent domain name of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The primary domain name of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.common_name = common_name
-        # The code of the country in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The country code. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.country = country
-        # The domain name. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The domain name. This parameter is returned when OrderType is set to CPACK or BUY.
         self.domain = domain
-        # The total number of domain names that can be bound to the certificate. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The number of domain names that you purchased. This parameter is returned when OrderType is set to CPACK or BUY.
         self.domain_count = domain_count
-        # The type of the domain name. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+        # The domain name type. This parameter is returned when OrderType is set to CPACK or BUY. Valid values:
         # 
-        # *   **ONE**: single domain name
-        # *   **MULTIPLE**: multiple domain names
-        # *   **WILDCARD**: single wildcard domain name
-        # *   **M_WILDCARD**: multiple wildcard domain names
-        # *   **MIX**: hybrid domain name
+        # - **ONE**: A single domain name.
+        # 
+        # - **MULTIPLE**: Multiple domain names.
+        # 
+        # - **WILDCARD**: A single wildcard domain name.
+        # 
+        # - **M_WILDCARD**: Multiple wildcard domain names.
+        # 
+        # - **MIX**: A hybrid domain name.
         self.domain_type = domain_type
-        # The time at which the certificate expires. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The end date of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.end_date = end_date
-        # Indicates whether the certificate expires. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # Indicates whether the certificate has expired. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.expired = expired
-        # The fingerprint of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The certificate fingerprint. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.fingerprint = fingerprint
-        # The ID of the resource.
+        # The resource ID.
         self.instance_id = instance_id
-        # The issuer of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The issuer of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.issuer = issuer
-        # The name of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The certificate name. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.name = name
-        # The order ID. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The order ID. This parameter is returned when OrderType is set to CPACK or BUY.
         self.order_id = order_id
-        # The name of the organization that is associated with the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The name of the organization that is associated with the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.org_name = org_name
-        # The ID of the third-party certificate authority (CA) order. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The ID of the third-party certificate authority (CA) order. This parameter is returned when OrderType is set to CPACK or BUY.
         self.partner_order_id = partner_order_id
-        # The specification ID of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The code for the product specifications. This parameter is returned when OrderType is set to CPACK or BUY.
         self.product_code = product_code
-        # The specification name of the order. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The name of the product specifications. This parameter is returned when OrderType is set to CPACK or BUY.
         self.product_name = product_name
-        # The province or autonomous region in which the organization is located. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The province or autonomous region. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.province = province
-        # The ID of the resource group. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The ID of the resource group. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.resource_group_id = resource_group_id
-        # The brand of the certificate. Valid values: WoSign, CFCA, DigiCert, and vTrus. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The brand, such as WoSign, CFCA, DigiCert, and vTrus. This parameter is returned when OrderType is set to CPACK or BUY.
         self.root_brand = root_brand
-        # All domain names that are bound to the certificate. Multiple domain names are separated by commas (,). This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The domain names that are bound to the certificate. Multiple domain names are separated by commas (,). This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.sans = sans
-        # The serial number of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The certificate serial number. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.serial_no = serial_no
-        # The SHA-2 value of the certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The SHA-2 value of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.sha_2 = sha_2
-        # The type of the order. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+        # The order type. This parameter is returned when OrderType is set to CPACK or BUY.
         # 
-        # *   **cpack**: virtual resource order
-        # *   **buy**: purchase order
+        # - **cpack**: An order for a resource plan.
+        # 
+        # - **buy**: A direct purchase.
         self.source_type = source_type
-        # The time at which the certificate starts to take effect. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # The start date of the certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.start_date = start_date
-        # The certificate status of the order. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+        # The status of the order or certificate. This parameter is returned when OrderType is set to CPACK or BUY.
         # 
-        # *   **PAYED**: pending application
-        # *   **CHECKING**: reviewing
-        # *   **CHECKED_FAIL**: review failed
-        # *   **ISSUED**: issued
-        # *   **WILLEXPIRED**: about to expire
-        # *   **EXPIRED**: expired
-        # *   **NOTACTIVATED**: not activated
-        # *   **REVOKED**: revoked
+        # - **PAYED**: The certificate is pending application.
+        # 
+        # - **CHECKING**: The certificate is under review.
+        # 
+        # - **CHECKED_FAIL**: The review failed.
+        # 
+        # - **ISSUED**: The certificate is issued.
+        # 
+        # - **WILLEXPIRED**: The certificate is about to expire.
+        # 
+        # - **EXPIRED**: The certificate has expired.
+        # 
+        # - **NOTACTIVATED**: The certificate is not activated.
+        # 
+        # - **REVOKED**: The certificate is revoked.
         self.status = status
-        # The hosting status of the certificate. This parameter is returned only if OrderType is set to CPACK or BUY. Valid values:
+        # The hosting status. This parameter is returned when OrderType is set to CPACK or BUY.
         # 
-        # *   **unTrustee**: not hosted
-        # *   **trustee**: hosted
+        # - **unTrustee**: Not hosted.
+        # 
+        # - **trustee**: Hosted.
         self.trustee_status = trustee_status
-        # Indicates whether the certificate is an uploaded certificate. This parameter is returned only if OrderType is set to CERT or UPLOAD.
+        # Indicates whether the certificate is an uploaded certificate. This parameter is returned when OrderType is set to CERT or UPLOAD.
         self.upload = upload
-        # The number of wildcard domain names that can be bound to the certificate. This parameter is returned only if OrderType is set to CPACK or BUY.
+        # The number of wildcard domain names that you purchased. This parameter is returned when OrderType is set to CPACK or BUY.
         self.wild_domain_count = wild_domain_count
 
     def validate(self):

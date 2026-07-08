@@ -15,11 +15,11 @@ class UpdateWorkerResourceStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The desired status.
+        # The desired status of the worker resource.
         # 
         # Valid values:
         # 
-        # *   rollback
+        # - rollback
         # 
         # This parameter is required.
         self.status = status

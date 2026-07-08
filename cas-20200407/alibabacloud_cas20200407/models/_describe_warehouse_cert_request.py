@@ -9,6 +9,7 @@ class DescribeWarehouseCertRequest(DaraModel):
         self,
         cert_identifier: str = None,
     ):
+        # The unique identifier of the certificate.
         self.cert_identifier = cert_identifier
 
     def validate(self):

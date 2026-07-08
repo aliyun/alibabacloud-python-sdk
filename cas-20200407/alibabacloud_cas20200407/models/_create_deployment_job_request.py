@@ -26,8 +26,9 @@ class CreateDeploymentJobRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   cloud: multi-cloud deployment task.
-        # *   user: cloud service deployment task. This type of task does not support cloud servers.
+        # - cloud: multi-cloud deployment task.
+        # 
+        # - user: cloud service deployment task. This type of task does not support cloud servers.
         # 
         # This parameter is required.
         self.job_type = job_type

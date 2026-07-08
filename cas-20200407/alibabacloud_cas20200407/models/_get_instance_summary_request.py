@@ -9,6 +9,7 @@ class GetInstanceSummaryRequest(DaraModel):
         self,
         instance_type: str = None,
     ):
+        # The instance type. Valid values: BUY: a paid certificate. TEST: a test certificate.
         self.instance_type = instance_type
 
     def validate(self):

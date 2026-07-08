@@ -10,7 +10,7 @@ class UploadCsrResponseBody(DaraModel):
         csr_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the CSR.
+        # The unique ID of the CSR. You can use this ID to obtain the content of the CSR. For more information, see [GetCsrDetail](https://help.aliyun.com/document_detail/2709720.html).
         self.csr_id = csr_id
         # The ID of the request.
         self.request_id = request_id

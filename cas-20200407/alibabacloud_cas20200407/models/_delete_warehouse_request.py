@@ -9,6 +9,7 @@ class DeleteWarehouseRequest(DaraModel):
         self,
         warehouse_instance_id: str = None,
     ):
+        # The certificate warehouse instance ID.
         self.warehouse_instance_id = warehouse_instance_id
 
     def validate(self):

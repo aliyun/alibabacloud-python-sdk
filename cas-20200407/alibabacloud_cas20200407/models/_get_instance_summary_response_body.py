@@ -14,11 +14,17 @@ class GetInstanceSummaryResponseBody(DaraModel):
         total_count: int = None,
         will_expire_count: int = None,
     ):
+        # The remaining quota for automatic reissue.
         self.auto_reissue_count = auto_reissue_count
+        # The remaining certificate quota.
         self.certificate_count = certificate_count
+        # The total number of inactive instances.
         self.inactive_count = inactive_count
+        # The unique ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # The total number of instances.
         self.total_count = total_count
+        # The total number of instances that are about to expire.
         self.will_expire_count = will_expire_count
 
     def validate(self):

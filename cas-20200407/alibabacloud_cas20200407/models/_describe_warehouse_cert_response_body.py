@@ -20,17 +20,29 @@ class DescribeWarehouseCertResponseBody(DaraModel):
         request_id: str = None,
         warehouse_instance_id: str = None,
     ):
+        # The unique identifier of the certificate.
         self.cert_identifier = cert_identifier
+        # The status of the certificate.
         self.cert_status = cert_status
+        # The type of the certificate.
         self.cert_type = cert_type
+        # The common name of the certificate subject. This field is empty if the certificate subject does not include a common name (CN).
         self.common_name = common_name
+        # The content of the certificate, including the certificate chain.
         self.content = content
+        # The fingerprint of the certificate content.
         self.fingerprint = fingerprint
+        # The common name (or organization name) of the issuer.
         self.issuer = issuer
+        # The unique identifier of the issuer certificate.
         self.issuer_identifier = issuer_identifier
+        # The instance ID of the private CA instance associated with the certificate.
         self.private_ca_instance_id = private_ca_instance_id
+        # The region ID of the private CA instance associated with the certificate.
         self.private_ca_region_id = private_ca_region_id
+        # The ID of the request.
         self.request_id = request_id
+        # The instance ID of the certificate warehouse.
         self.warehouse_instance_id = warehouse_instance_id
 
     def validate(self):
