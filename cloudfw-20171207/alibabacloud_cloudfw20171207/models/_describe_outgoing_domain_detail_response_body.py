@@ -135,7 +135,7 @@ class DescribeOutgoingDomainDetailResponseBodyAssetList(DaraModel):
         self.tag_list = tag_list
         # The total traffic.
         self.total_bytes = total_bytes
-        # The instance ID of the VPC.
+        # The VPC instance ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -297,7 +297,11 @@ class DescribeOutgoingDomainDetailResponseBodyAssetListTagList(DaraModel):
     ):
         # The risk category ID.
         self.class_id = class_id
-        # The risk level.
+        # The risk level. Valid values:
+        # - **0**: no risk.
+        # - **1**: low risk.
+        # - **2**: medium risk.
+        # - **3**: high risk.
         self.risk_level = risk_level
         # The tag description.
         self.tag_describe = tag_describe

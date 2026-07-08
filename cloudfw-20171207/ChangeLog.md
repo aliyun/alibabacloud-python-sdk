@@ -1,3 +1,13 @@
+2026-07-08 Version: 9.2.1
+- Update API AddAddressBook: add request parameters AssetMemberUids.
+- Update API AddAddressBook: add request parameters AssetRegionResourceTypes.
+- Update API DescribeAddressBook: add request parameters AssetMemberUids.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AssetMemberUids.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AssetRegionResourceTypes.
+- Update API ModifyAddressBook: add request parameters AssetMemberUids.
+- Update API ModifyAddressBook: add request parameters AssetRegionResourceTypes.
+
+
 2026-07-02 Version: 9.2.0
 - Support API DescribeFirewallDropTrend.
 - Support API DescribeFirewallTrafficTrend.

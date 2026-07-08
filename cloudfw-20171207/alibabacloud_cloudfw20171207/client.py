@@ -152,10 +152,16 @@ class Client(OpenApiClient):
 
     def add_address_book_with_options(
         self,
-        request: main_models.AddAddressBookRequest,
+        tmp_req: main_models.AddAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AddAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AddAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_cluster_connector_id):
             query['AckClusterConnectorId'] = request.ack_cluster_connector_id
@@ -165,6 +171,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):
@@ -202,10 +212,16 @@ class Client(OpenApiClient):
 
     async def add_address_book_with_options_async(
         self,
-        request: main_models.AddAddressBookRequest,
+        tmp_req: main_models.AddAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AddAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AddAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_cluster_connector_id):
             query['AckClusterConnectorId'] = request.ack_cluster_connector_id
@@ -215,6 +231,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):
@@ -5830,11 +5850,17 @@ class Client(OpenApiClient):
 
     def describe_address_book_with_options(
         self,
-        request: main_models.DescribeAddressBookRequest,
+        tmp_req: main_models.DescribeAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribeAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
         query = {}
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
         if not DaraCore.is_null(request.contain_port):
             query['ContainPort'] = request.contain_port
         if not DaraCore.is_null(request.current_page):
@@ -5870,11 +5896,17 @@ class Client(OpenApiClient):
 
     async def describe_address_book_with_options_async(
         self,
-        request: main_models.DescribeAddressBookRequest,
+        tmp_req: main_models.DescribeAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribeAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
         query = {}
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
         if not DaraCore.is_null(request.contain_port):
             query['ContainPort'] = request.contain_port
         if not DaraCore.is_null(request.current_page):
@@ -20060,10 +20092,16 @@ class Client(OpenApiClient):
 
     def modify_address_book_with_options(
         self,
-        request: main_models.ModifyAddressBookRequest,
+        tmp_req: main_models.ModifyAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_labels):
             query['AckLabels'] = request.ack_labels
@@ -20071,6 +20109,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):
@@ -20110,10 +20152,16 @@ class Client(OpenApiClient):
 
     async def modify_address_book_with_options_async(
         self,
-        request: main_models.ModifyAddressBookRequest,
+        tmp_req: main_models.ModifyAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_labels):
             query['AckLabels'] = request.ack_labels
@@ -20121,6 +20169,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):

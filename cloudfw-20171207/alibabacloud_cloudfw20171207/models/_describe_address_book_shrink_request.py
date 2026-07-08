@@ -2,14 +2,12 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class DescribeAddressBookRequest(DaraModel):
+class DescribeAddressBookShrinkRequest(DaraModel):
     def __init__(
         self,
-        asset_member_uids: List[int] = None,
+        asset_member_uids_shrink: str = None,
         contain_port: str = None,
         current_page: str = None,
         group_type: str = None,
@@ -19,7 +17,7 @@ class DescribeAddressBookRequest(DaraModel):
         query: str = None,
     ):
         # The list of member accounts for the asset address book.
-        self.asset_member_uids = asset_member_uids
+        self.asset_member_uids_shrink = asset_member_uids_shrink
         # Queries address books that contain the specified port. This parameter takes effect only when the **GroupType** parameter is set to **port**.
         self.contain_port = contain_port
         # The page number in a paged query.
@@ -51,8 +49,8 @@ class DescribeAddressBookRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.asset_member_uids is not None:
-            result['AssetMemberUids'] = self.asset_member_uids
+        if self.asset_member_uids_shrink is not None:
+            result['AssetMemberUids'] = self.asset_member_uids_shrink
 
         if self.contain_port is not None:
             result['ContainPort'] = self.contain_port
@@ -80,7 +78,7 @@ class DescribeAddressBookRequest(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AssetMemberUids') is not None:
-            self.asset_member_uids = m.get('AssetMemberUids')
+            self.asset_member_uids_shrink = m.get('AssetMemberUids')
 
         if m.get('ContainPort') is not None:
             self.contain_port = m.get('ContainPort')

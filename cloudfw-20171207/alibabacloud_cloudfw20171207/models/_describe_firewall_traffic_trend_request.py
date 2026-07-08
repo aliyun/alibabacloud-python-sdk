@@ -11,8 +11,14 @@ class DescribeFirewallTrafficTrendRequest(DaraModel):
         lang: str = None,
         start_time: int = None,
     ):
+        # The end time of the query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # - **en**: English
         self.lang = lang
+        # The start time of the query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

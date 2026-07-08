@@ -6,6 +6,7 @@ from ._add_acl_backup_data_request import AddAclBackupDataRequest
 from ._add_acl_backup_data_response_body import AddAclBackupDataResponseBody
 from ._add_acl_backup_data_response import AddAclBackupDataResponse
 from ._add_address_book_request import AddAddressBookRequest
+from ._add_address_book_shrink_request import AddAddressBookShrinkRequest
 from ._add_address_book_response_body import AddAddressBookResponseBody
 from ._add_address_book_response import AddAddressBookResponse
 from ._add_control_policy_request import AddControlPolicyRequest
@@ -207,6 +208,7 @@ from ._describe_acl_whitelist_request import DescribeAclWhitelistRequest
 from ._describe_acl_whitelist_response_body import DescribeAclWhitelistResponseBody
 from ._describe_acl_whitelist_response import DescribeAclWhitelistResponse
 from ._describe_address_book_request import DescribeAddressBookRequest
+from ._describe_address_book_shrink_request import DescribeAddressBookShrinkRequest
 from ._describe_address_book_response_body import DescribeAddressBookResponseBody
 from ._describe_address_book_response import DescribeAddressBookResponse
 from ._describe_asset_list_request import DescribeAssetListRequest
@@ -673,6 +675,7 @@ from ._list_tls_inspect_cacertificates_request import ListTlsInspectCACertificat
 from ._list_tls_inspect_cacertificates_response_body import ListTlsInspectCACertificatesResponseBody
 from ._list_tls_inspect_cacertificates_response import ListTlsInspectCACertificatesResponse
 from ._modify_address_book_request import ModifyAddressBookRequest
+from ._modify_address_book_shrink_request import ModifyAddressBookShrinkRequest
 from ._modify_address_book_response_body import ModifyAddressBookResponseBody
 from ._modify_address_book_response import ModifyAddressBookResponse
 from ._modify_cfw_instance_request import ModifyCfwInstanceRequest
@@ -834,7 +837,13 @@ from ._use_acl_backup_data_request import UseAclBackupDataRequest
 from ._use_acl_backup_data_response_body import UseAclBackupDataResponseBody
 from ._use_acl_backup_data_response import UseAclBackupDataResponse
 from ._add_address_book_request import AddAddressBookRequestAckLabels
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypesResourceType
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypes
 from ._add_address_book_request import AddAddressBookRequestTagList
+from ._add_address_book_shrink_request import AddAddressBookShrinkRequestAckLabels
+from ._add_address_book_shrink_request import AddAddressBookShrinkRequestTagList
 from ._add_instance_members_request import AddInstanceMembersRequestMembers
 from ._create_ack_cluster_connector_response_body import CreateAckClusterConnectorResponseBodyAckClusterConnector
 from ._create_security_proxy_request import CreateSecurityProxyRequestNatRouteEntryList
@@ -862,6 +871,10 @@ from ._describe_acl_checks_response_body import DescribeAclChecksResponseBodyChe
 from ._describe_acl_checks_response_body import DescribeAclChecksResponseBodyCheckRecords
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAckLabels
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAddresses
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv4
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv6
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceType
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypes
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsTagList
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAcls
 from ._describe_asset_list_response_body import DescribeAssetListResponseBodyAssets
@@ -1070,7 +1083,13 @@ from ._describe_vulnerability_protected_list_response_body import DescribeVulner
 from ._describe_vulnerability_protected_list_response_body import DescribeVulnerabilityProtectedListResponseBodyVulnList
 from ._list_tls_inspect_cacertificates_response_body import ListTlsInspectCACertificatesResponseBodyCertificates
 from ._modify_address_book_request import ModifyAddressBookRequestAckLabels
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceType
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypes
 from ._modify_address_book_request import ModifyAddressBookRequestTagList
+from ._modify_address_book_shrink_request import ModifyAddressBookShrinkRequestAckLabels
+from ._modify_address_book_shrink_request import ModifyAddressBookShrinkRequestTagList
 from ._modify_cfw_instance_request import ModifyCfwInstanceRequestUpdateList
 from ._modify_instance_member_attributes_request import ModifyInstanceMemberAttributesRequestMembers
 from ._modify_threat_intelligence_switch_request import ModifyThreatIntelligenceSwitchRequestCategoryList
@@ -1091,6 +1110,7 @@ __all__ = [
     AddAclBackupDataResponseBody,
     AddAclBackupDataResponse,
     AddAddressBookRequest,
+    AddAddressBookShrinkRequest,
     AddAddressBookResponseBody,
     AddAddressBookResponse,
     AddControlPolicyRequest,
@@ -1292,6 +1312,7 @@ __all__ = [
     DescribeAclWhitelistResponseBody,
     DescribeAclWhitelistResponse,
     DescribeAddressBookRequest,
+    DescribeAddressBookShrinkRequest,
     DescribeAddressBookResponseBody,
     DescribeAddressBookResponse,
     DescribeAssetListRequest,
@@ -1758,6 +1779,7 @@ __all__ = [
     ListTlsInspectCACertificatesResponseBody,
     ListTlsInspectCACertificatesResponse,
     ModifyAddressBookRequest,
+    ModifyAddressBookShrinkRequest,
     ModifyAddressBookResponseBody,
     ModifyAddressBookResponse,
     ModifyCfwInstanceRequest,
@@ -1919,7 +1941,13 @@ __all__ = [
     UseAclBackupDataResponseBody,
     UseAclBackupDataResponse,
     AddAddressBookRequestAckLabels,
+    AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4,
+    AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6,
+    AddAddressBookRequestAssetRegionResourceTypesResourceType,
+    AddAddressBookRequestAssetRegionResourceTypes,
     AddAddressBookRequestTagList,
+    AddAddressBookShrinkRequestAckLabels,
+    AddAddressBookShrinkRequestTagList,
     AddInstanceMembersRequestMembers,
     CreateAckClusterConnectorResponseBodyAckClusterConnector,
     CreateSecurityProxyRequestNatRouteEntryList,
@@ -1947,6 +1975,10 @@ __all__ = [
     DescribeAclChecksResponseBodyCheckRecords,
     DescribeAddressBookResponseBodyAclsAckLabels,
     DescribeAddressBookResponseBodyAclsAddresses,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv4,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv6,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceType,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypes,
     DescribeAddressBookResponseBodyAclsTagList,
     DescribeAddressBookResponseBodyAcls,
     DescribeAssetListResponseBodyAssets,
@@ -2155,7 +2187,13 @@ __all__ = [
     DescribeVulnerabilityProtectedListResponseBodyVulnList,
     ListTlsInspectCACertificatesResponseBodyCertificates,
     ModifyAddressBookRequestAckLabels,
+    ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4,
+    ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6,
+    ModifyAddressBookRequestAssetRegionResourceTypesResourceType,
+    ModifyAddressBookRequestAssetRegionResourceTypes,
     ModifyAddressBookRequestTagList,
+    ModifyAddressBookShrinkRequestAckLabels,
+    ModifyAddressBookShrinkRequestTagList,
     ModifyCfwInstanceRequestUpdateList,
     ModifyInstanceMemberAttributesRequestMembers,
     ModifyThreatIntelligenceSwitchRequestCategoryList,

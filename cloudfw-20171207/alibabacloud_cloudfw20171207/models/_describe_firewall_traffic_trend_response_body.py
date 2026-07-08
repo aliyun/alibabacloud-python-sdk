@@ -15,9 +15,13 @@ class DescribeFirewallTrafficTrendResponseBody(DaraModel):
         max_bandwidth_time_bps: main_models.DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps = None,
         request_id: str = None,
     ):
+        # The returned data list.
         self.data_list = data_list
+        # The timestamp when the peak total traffic occurred. The value is a UNIX timestamp. Unit: seconds.
         self.max_bandwidth_time = max_bandwidth_time
+        # The traffic distribution at the time of peak total traffic.
         self.max_bandwidth_time_bps = max_bandwidth_time_bps
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77,9 +81,13 @@ class DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps(DaraModel):
         total_bps: int = None,
         vpc_bps: int = None,
     ):
+        # The Internet firewall traffic at the time of peak total traffic.
         self.internet_bps = internet_bps
+        # The NAT firewall traffic at the time of peak total traffic.
         self.nat_bps = nat_bps
+        # The peak total traffic.
         self.total_bps = total_bps
+        # The VPC firewall traffic at the time of peak total traffic.
         self.vpc_bps = vpc_bps
 
     def validate(self):
@@ -129,10 +137,17 @@ class DescribeFirewallTrafficTrendResponseBodyDataList(DaraModel):
         total_bps: int = None,
         vpc_bps: int = None,
     ):
+        # The Internet firewall traffic.
         self.internet_bps = internet_bps
+        # The NAT firewall traffic.
         self.nat_bps = nat_bps
+        # The time when the traffic occurred. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # If the data at this point in time has not been processed, the values of all other fields are -1.
         self.time = time
+        # The total firewall traffic.
         self.total_bps = total_bps
+        # The VPC firewall traffic.
         self.vpc_bps = vpc_bps
 
     def validate(self):
