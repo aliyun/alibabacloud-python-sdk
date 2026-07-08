@@ -18,11 +18,15 @@ class E2BListedSandbox(DaraModel):
         envd_version: str = None,
         memory_mb: int = None,
         metadata: Dict[str, str] = None,
+        resource_group_id: str = None,
         sandbox_id: str = None,
         started_at: str = None,
         state: str = None,
+        team_id: str = None,
+        team_name: str = None,
         template_id: str = None,
         template_name: str = None,
+        user_id: str = None,
         volume_mounts: List[main_models.E2BVolumeMount] = None,
     ):
         self.alias = alias
@@ -33,11 +37,15 @@ class E2BListedSandbox(DaraModel):
         self.envd_version = envd_version
         self.memory_mb = memory_mb
         self.metadata = metadata
+        self.resource_group_id = resource_group_id
         self.sandbox_id = sandbox_id
         self.started_at = started_at
         self.state = state
+        self.team_id = team_id
+        self.team_name = team_name
         self.template_id = template_id
         self.template_name = template_name
+        self.user_id = user_id
         self.volume_mounts = volume_mounts
 
     def validate(self):
@@ -75,6 +83,9 @@ class E2BListedSandbox(DaraModel):
         if self.metadata is not None:
             result['metadata'] = self.metadata
 
+        if self.resource_group_id is not None:
+            result['resourceGroupID'] = self.resource_group_id
+
         if self.sandbox_id is not None:
             result['sandboxID'] = self.sandbox_id
 
@@ -84,11 +95,20 @@ class E2BListedSandbox(DaraModel):
         if self.state is not None:
             result['state'] = self.state
 
+        if self.team_id is not None:
+            result['teamID'] = self.team_id
+
+        if self.team_name is not None:
+            result['teamName'] = self.team_name
+
         if self.template_id is not None:
             result['templateID'] = self.template_id
 
         if self.template_name is not None:
             result['templateName'] = self.template_name
+
+        if self.user_id is not None:
+            result['userID'] = self.user_id
 
         result['volumeMounts'] = []
         if self.volume_mounts is not None:
@@ -123,6 +143,9 @@ class E2BListedSandbox(DaraModel):
         if m.get('metadata') is not None:
             self.metadata = m.get('metadata')
 
+        if m.get('resourceGroupID') is not None:
+            self.resource_group_id = m.get('resourceGroupID')
+
         if m.get('sandboxID') is not None:
             self.sandbox_id = m.get('sandboxID')
 
@@ -132,11 +155,20 @@ class E2BListedSandbox(DaraModel):
         if m.get('state') is not None:
             self.state = m.get('state')
 
+        if m.get('teamID') is not None:
+            self.team_id = m.get('teamID')
+
+        if m.get('teamName') is not None:
+            self.team_name = m.get('teamName')
+
         if m.get('templateID') is not None:
             self.template_id = m.get('templateID')
 
         if m.get('templateName') is not None:
             self.template_name = m.get('templateName')
+
+        if m.get('userID') is not None:
+            self.user_id = m.get('userID')
 
         self.volume_mounts = []
         if m.get('volumeMounts') is not None:

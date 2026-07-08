@@ -11,12 +11,14 @@ class ListQuotaResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
+        max_results: int = None,
         message: str = None,
         next_token: str = None,
         quotas: List[main_models.Quota] = None,
         request_id: str = None,
     ):
         self.code = code
+        self.max_results = max_results
         self.message = message
         self.next_token = next_token
         self.quotas = quotas
@@ -35,6 +37,9 @@ class ListQuotaResponseBody(DaraModel):
             result = _map
         if self.code is not None:
             result['code'] = self.code
+
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
 
         if self.message is not None:
             result['message'] = self.message
@@ -56,6 +61,9 @@ class ListQuotaResponseBody(DaraModel):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
+
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
 
         if m.get('message') is not None:
             self.message = m.get('message')

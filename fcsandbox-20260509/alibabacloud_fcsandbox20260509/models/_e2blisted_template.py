@@ -12,33 +12,45 @@ class E2BListedTemplate(DaraModel):
         self,
         aliases: List[str] = None,
         build_status: str = None,
+        category: str = None,
         cpu_count: int = None,
         created_at: str = None,
+        function_name: str = None,
         last_spawned_at: str = None,
         log_configuration: main_models.LogConfiguration = None,
         memory_mb: int = None,
         names: List[str] = None,
         public: bool = None,
-        spawn_count: str = None,
+        resource_group_id: str = None,
+        spawn_count: int = None,
         status_reason: str = None,
         tags: List[main_models.E2BTemplateTag] = None,
+        team_id: str = None,
+        team_name: str = None,
         template_id: str = None,
         updated_at: str = None,
+        user_id: str = None,
     ):
         self.aliases = aliases
         self.build_status = build_status
+        self.category = category
         self.cpu_count = cpu_count
         self.created_at = created_at
+        self.function_name = function_name
         self.last_spawned_at = last_spawned_at
         self.log_configuration = log_configuration
         self.memory_mb = memory_mb
         self.names = names
         self.public = public
+        self.resource_group_id = resource_group_id
         self.spawn_count = spawn_count
         self.status_reason = status_reason
         self.tags = tags
+        self.team_id = team_id
+        self.team_name = team_name
         self.template_id = template_id
         self.updated_at = updated_at
+        self.user_id = user_id
 
     def validate(self):
         if self.log_configuration:
@@ -59,11 +71,17 @@ class E2BListedTemplate(DaraModel):
         if self.build_status is not None:
             result['buildStatus'] = self.build_status
 
+        if self.category is not None:
+            result['category'] = self.category
+
         if self.cpu_count is not None:
             result['cpuCount'] = self.cpu_count
 
         if self.created_at is not None:
             result['createdAt'] = self.created_at
+
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
 
         if self.last_spawned_at is not None:
             result['lastSpawnedAt'] = self.last_spawned_at
@@ -80,6 +98,9 @@ class E2BListedTemplate(DaraModel):
         if self.public is not None:
             result['public'] = self.public
 
+        if self.resource_group_id is not None:
+            result['resourceGroupID'] = self.resource_group_id
+
         if self.spawn_count is not None:
             result['spawnCount'] = self.spawn_count
 
@@ -91,11 +112,20 @@ class E2BListedTemplate(DaraModel):
             for k1 in self.tags:
                 result['tags'].append(k1.to_map() if k1 else None)
 
+        if self.team_id is not None:
+            result['teamID'] = self.team_id
+
+        if self.team_name is not None:
+            result['teamName'] = self.team_name
+
         if self.template_id is not None:
             result['templateID'] = self.template_id
 
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
+
+        if self.user_id is not None:
+            result['userID'] = self.user_id
 
         return result
 
@@ -107,11 +137,17 @@ class E2BListedTemplate(DaraModel):
         if m.get('buildStatus') is not None:
             self.build_status = m.get('buildStatus')
 
+        if m.get('category') is not None:
+            self.category = m.get('category')
+
         if m.get('cpuCount') is not None:
             self.cpu_count = m.get('cpuCount')
 
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
+
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
 
         if m.get('lastSpawnedAt') is not None:
             self.last_spawned_at = m.get('lastSpawnedAt')
@@ -129,6 +165,9 @@ class E2BListedTemplate(DaraModel):
         if m.get('public') is not None:
             self.public = m.get('public')
 
+        if m.get('resourceGroupID') is not None:
+            self.resource_group_id = m.get('resourceGroupID')
+
         if m.get('spawnCount') is not None:
             self.spawn_count = m.get('spawnCount')
 
@@ -141,11 +180,20 @@ class E2BListedTemplate(DaraModel):
                 temp_model = main_models.E2BTemplateTag()
                 self.tags.append(temp_model.from_map(k1))
 
+        if m.get('teamID') is not None:
+            self.team_id = m.get('teamID')
+
+        if m.get('teamName') is not None:
+            self.team_name = m.get('teamName')
+
         if m.get('templateID') is not None:
             self.template_id = m.get('templateID')
 
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
+
+        if m.get('userID') is not None:
+            self.user_id = m.get('userID')
 
         return self
 

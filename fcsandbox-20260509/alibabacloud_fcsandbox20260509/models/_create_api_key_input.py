@@ -9,9 +9,11 @@ class CreateApiKeyInput(DaraModel):
         self,
         api_key_name: str = None,
         expire_time: str = None,
+        team_id: str = None,
     ):
         self.api_key_name = api_key_name
         self.expire_time = expire_time
+        self.team_id = team_id
 
     def validate(self):
         pass
@@ -27,6 +29,9 @@ class CreateApiKeyInput(DaraModel):
         if self.expire_time is not None:
             result['expireTime'] = self.expire_time
 
+        if self.team_id is not None:
+            result['teamID'] = self.team_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -36,6 +41,9 @@ class CreateApiKeyInput(DaraModel):
 
         if m.get('expireTime') is not None:
             self.expire_time = m.get('expireTime')
+
+        if m.get('teamID') is not None:
+            self.team_id = m.get('teamID')
 
         return self
 
