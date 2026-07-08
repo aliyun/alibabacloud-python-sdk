@@ -11,8 +11,13 @@ class GetStsTokenRequest(DaraModel):
         expiration: int = None,
         external_id: str = None,
     ):
+        # The Elastic Desktop Service (EDS) username.
+        # 
+        # > Either EndUserId or ExternalId is required.
         self.end_user_id = end_user_id
+        # The validity period of the token, in seconds. The maximum period is two days.
         self.expiration = expiration
+        # The ID of the external user.
         self.external_id = external_id
 
     def validate(self):
