@@ -15,11 +15,17 @@ class GetInterveneTemplateFileUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class GetInterveneTemplateFileUrlResponseBodyData(DaraModel):
         file_url: str = None,
     ):
         self.code = code
+        # The URL of the template file.
         self.file_url = file_url
 
     def validate(self):

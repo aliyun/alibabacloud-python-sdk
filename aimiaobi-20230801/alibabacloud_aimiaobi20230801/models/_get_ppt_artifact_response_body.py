@@ -15,12 +15,17 @@ class GetPptArtifactResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The task response object.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,11 +90,17 @@ class GetPptArtifactResponseBodyData(DaraModel):
         title: str = None,
         update_time: str = None,
     ):
+        # The time when the resource was last updated.
         self.create_time = create_time
+        # The file properties.
         self.file_attr = file_attr
+        # The storage path of the file in the backend.
         self.file_key = file_key
+        # The unique ID of the artifact.
         self.id = id
+        # The title.
         self.title = title
+        # The time when the artifact was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -152,9 +163,13 @@ class GetPptArtifactResponseBodyDataFileAttr(DaraModel):
         tmp_url: str = None,
         width: int = None,
     ):
+        # The file name.
         self.file_name = file_name
+        # The height.
         self.height = height
+        # The temporary access URL for the file. The URL expires in one hour.
         self.tmp_url = tmp_url
+        # The width.
         self.width = width
 
     def validate(self):

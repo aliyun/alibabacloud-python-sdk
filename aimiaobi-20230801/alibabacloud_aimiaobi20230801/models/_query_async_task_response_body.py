@@ -15,11 +15,17 @@ class QueryAsyncTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request ID
         self.request_id = request_id
+        # Success status: true for success, false for failure.
         self.success = success
 
     def validate(self):
@@ -92,19 +98,33 @@ class QueryAsyncTaskResponseBodyData(DaraModel):
         update_time: str = None,
         update_user: str = None,
     ):
+        # Creation date
         self.create_time = create_time
+        # Creator
         self.create_user = create_user
+        # Task ID, indicates the specific task.
         self.task_code = task_code
+        # Task execution error message
         self.task_error_message = task_error_message
+        # Unique task ID
         self.task_id = task_id
+        # Intermediate task execution result. When a task has multiple steps, save the output of each step here. When resuming from a pause, read the intermediate result and continue from there.
         self.task_intermediate_result = task_intermediate_result
+        # Task name
         self.task_name = task_name
+        # Task execution input parameters, JSON format
         self.task_param = task_param
+        # Task execution progress message
         self.task_progress_message = task_progress_message
+        # Task execution result message
         self.task_result = task_result
+        # Number of task retries
         self.task_retry_count = task_retry_count
+        # Task execution status: 0-Pending, 1-Executing, 2-Execution successful, 3-Paused, 4-Execution failed (retryable), 5-Execution failed (not retryable), 6-Task canceled.
         self.task_status = task_status
+        # Update date
         self.update_time = update_time
+        # Updater
         self.update_user = update_user
 
     def validate(self):

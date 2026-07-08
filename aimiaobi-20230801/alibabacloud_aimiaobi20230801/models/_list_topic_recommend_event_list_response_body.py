@@ -19,14 +19,23 @@ class ListTopicRecommendEventListResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # List of hot spot events
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of records returned
         self.max_results = max_results
+        # Error description
         self.message = message
+        # Next page token
         self.next_token = next_token
+        # Unique request identifier
         self.request_id = request_id
+        # Whether the request was successful: true for success, false for failure
         self.success = success
+        # Total number of records
         self.total_count = total_count
 
     def validate(self):

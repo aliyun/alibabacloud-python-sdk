@@ -22,7 +22,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'aimiaobi.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aimiaobi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -245,6 +248,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.stickers):
             request.stickers_shrink = Utils.array_to_string_with_specified_style(tmp_req.stickers, 'Stickers', 'json')
         body = {}
+        if not DaraCore.is_null(request.adapt_mode):
+            body['AdaptMode'] = request.adapt_mode
+        if not DaraCore.is_null(request.alignment):
+            body['Alignment'] = request.alignment
         if not DaraCore.is_null(request.close_music):
             body['CloseMusic'] = request.close_music
         if not DaraCore.is_null(request.close_subtitle):
@@ -283,6 +290,8 @@ class Client(OpenApiClient):
             body['SubtitleFontSize'] = request.subtitle_font_size
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.text_width):
+            body['TextWidth'] = request.text_width
         if not DaraCore.is_null(request.voice_style):
             body['VoiceStyle'] = request.voice_style
         if not DaraCore.is_null(request.voice_volume):
@@ -325,6 +334,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.stickers):
             request.stickers_shrink = Utils.array_to_string_with_specified_style(tmp_req.stickers, 'Stickers', 'json')
         body = {}
+        if not DaraCore.is_null(request.adapt_mode):
+            body['AdaptMode'] = request.adapt_mode
+        if not DaraCore.is_null(request.alignment):
+            body['Alignment'] = request.alignment
         if not DaraCore.is_null(request.close_music):
             body['CloseMusic'] = request.close_music
         if not DaraCore.is_null(request.close_subtitle):
@@ -363,6 +376,8 @@ class Client(OpenApiClient):
             body['SubtitleFontSize'] = request.subtitle_font_size
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.text_width):
+            body['TextWidth'] = request.text_width
         if not DaraCore.is_null(request.voice_style):
             body['VoiceStyle'] = request.voice_style
         if not DaraCore.is_null(request.voice_volume):

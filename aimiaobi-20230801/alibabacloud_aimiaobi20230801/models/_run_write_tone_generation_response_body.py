@@ -12,8 +12,11 @@ class RunWriteToneGenerationResponseBody(DaraModel):
         payload: main_models.RunWriteToneGenerationResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response headers.
         self.header = header
+        # Response body.
         self.payload = payload
+        # Unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,7 +62,9 @@ class RunWriteToneGenerationResponseBodyPayload(DaraModel):
         output: main_models.RunWriteToneGenerationResponseBodyPayloadOutput = None,
         usage: main_models.RunWriteToneGenerationResponseBodyPayloadUsage = None,
     ):
+        # Output data.
         self.output = output
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -100,8 +105,11 @@ class RunWriteToneGenerationResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens used.
         self.input_tokens = input_tokens
+        # Number of output tokens used.
         self.output_tokens = output_tokens
+        # Total number of tokens used in this call.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -141,6 +149,7 @@ class RunWriteToneGenerationResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Generated text.
         self.text = text
 
     def validate(self):
@@ -173,11 +182,17 @@ class RunWriteToneGenerationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message returned when the call fails.
         self.error_message = error_message
+        # Server-sent event (SSE).
         self.event = event
+        # Session ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
+        # End-to-end trace ID.
         self.trace_id = trace_id
 
     def validate(self):

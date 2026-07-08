@@ -12,8 +12,12 @@ class RunPptOutlineGenerationRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.external_user_id = external_user_id
+        # The user\\"s prompt.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

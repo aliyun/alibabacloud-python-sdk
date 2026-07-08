@@ -20,22 +20,68 @@ class RunCommentGenerationShrinkRequest(DaraModel):
         type_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Set to true to allow emoji in comments. Default is false.
         self.allow_emoji = allow_emoji
+        # Additional instructions.
         self.extra_info = extra_info
+        # Length of each comment in characters.
         self.length = length
+        # Length distribution.
+        # 
+        # Valid keys:
+        # 
+        # - short (up to 20 characters)
+        # 
+        # - medium (20–50 characters)
+        # 
+        # - long (50–100 characters)
+        # 
         # This parameter is required.
         self.length_range_shrink = length_range_shrink
+        # ID of the model to use.
         self.model_id = model_id
+        # Number of comments to generate.
+        # 
         # This parameter is required.
         self.num_comments = num_comments
+        # Sentiment distribution.
+        # 
+        # Valid keys:
+        # 
+        # - positive
+        # 
+        # - neutral
+        # 
+        # - negative
+        # 
         # This parameter is required.
         self.sentiment_shrink = sentiment_shrink
+        # Session ID.
         self.session_id = session_id
+        # Article to comment on.
+        # 
         # This parameter is required.
         self.source_material = source_material
+        # Tone of the comments.
         self.style = style
+        # Comment type.
+        # 
+        # Valid keys:
+        # 
+        # - emotion (expresses emotion)
+        # 
+        # - opinion (states an opinion)
+        # 
+        # - interaction (encourages interaction)
+        # 
+        # - experience (shares experience)
+        # 
+        # - humor (uses humor)
+        # 
         # This parameter is required.
         self.type_shrink = type_shrink
+        # Path parameter. The unique identifier of your Alibaba Cloud Model Studio workspace. To get this ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

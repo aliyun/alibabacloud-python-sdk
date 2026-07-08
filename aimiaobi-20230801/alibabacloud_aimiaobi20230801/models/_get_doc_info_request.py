@@ -11,9 +11,14 @@ class GetDocInfoRequest(DaraModel):
         doc_id: str = None,
         workspace_id: str = None,
     ):
+        # The category where the document is stored.
         self.category_id = category_id
+        # The document ID.
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # The unique identifier of the workspace in Alibaba Cloud Model Studio. For instructions on how to obtain a workspace ID, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

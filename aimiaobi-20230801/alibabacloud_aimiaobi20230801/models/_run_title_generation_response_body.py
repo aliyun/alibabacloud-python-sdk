@@ -16,12 +16,19 @@ class RunTitleGenerationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Response header.
         self.header = header
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error description.
         self.message = message
+        # Response body.
         self.payload = payload
+        # Unique request identifier.
         self.request_id = request_id
+        # Whether the operation was successful: true for success, false for failure.
         self.success = success
 
     def validate(self):
@@ -91,7 +98,9 @@ class RunTitleGenerationResponseBodyPayload(DaraModel):
         output: main_models.RunTitleGenerationResponseBodyPayloadOutput = None,
         usage: main_models.RunTitleGenerationResponseBodyPayloadUsage = None,
     ):
+        # Outputs.
         self.output = output
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -132,8 +141,11 @@ class RunTitleGenerationResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of tokens used for input.
         self.input_tokens = input_tokens
+        # Number of tokens used for output.
         self.output_tokens = output_tokens
+        # Total number of tokens used for this call.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -173,6 +185,7 @@ class RunTitleGenerationResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Article title.
         self.text = text
 
     def validate(self):
@@ -206,12 +219,19 @@ class RunTitleGenerationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error code message.
         self.error_message = error_message
+        # SSE event.
         self.event = event
+        # Session ID.
         self.session_id = session_id
+        # Status code.
         self.status_code = status_code
+        # Task ID.
         self.task_id = task_id
+        # Full link ID.
         self.trace_id = trace_id
 
     def validate(self):

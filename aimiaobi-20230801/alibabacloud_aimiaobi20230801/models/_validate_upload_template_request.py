@@ -12,11 +12,18 @@ class ValidateUploadTemplateRequest(DaraModel):
         template_type: str = None,
         workspace_id: str = None,
     ):
+        # File key.
+        # 
         # This parameter is required.
         self.file_key = file_key
+        # Task type. Valid values: lightAppSass (SaaS page call) or sdkBatchTask (SDK batch task).
         self.task_type = task_type
+        # Template type. Valid values: Content (content asset template) or PositiveSample (positive sample template).
+        # 
         # This parameter is required.
         self.template_type = template_type
+        # Unique identifier of your Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

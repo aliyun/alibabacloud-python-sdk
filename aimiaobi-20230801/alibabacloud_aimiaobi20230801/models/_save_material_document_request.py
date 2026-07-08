@@ -24,21 +24,37 @@ class SaveMaterialDocumentRequest(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Author
         self.author = author
+        # Is the material saved to both the private library and the shared library?
         self.both_save_private_and_share = both_save_private_and_share
+        # Document tags used for classification, etc.
         self.doc_keywords = doc_keywords
+        # Document type (html: web page, plainText: plain text, image: image, pdf: pdf, word: word, excel: excel, csv: csv, jsonLine: jsonLine)
+        # 
         # This parameter is required.
         self.doc_type = doc_type
+        # URL uploaded by external customers, used only for record keeping
         self.external_url = external_url
+        # Formatted content
         self.html_content = html_content
+        # Publication time, format: yyyy-MM-dd HH:mm:ss
         self.pub_time = pub_time
+        # Sharing attribute: 0: private, 1: shared within the workspace
         self.share_attr = share_attr
+        # Document source (UserUpload: User Upload, IntellijSearch: Intelligent Search, HotViewPoint: Hot Viewpoint)
         self.src_from = src_from
+        # Summary
         self.summary = summary
+        # Parsed text content, empty for images
         self.text_content = text_content
+        # Document title
         self.title = title
+        # URL of the material
         self.url = url
 
     def validate(self):

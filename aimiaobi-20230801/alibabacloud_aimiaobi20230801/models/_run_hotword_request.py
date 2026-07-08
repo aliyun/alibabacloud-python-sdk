@@ -14,11 +14,18 @@ class RunHotwordRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
+        # Document ID.
         self.doc_id = doc_id
+        # Name of the custom model.
         self.model_name = model_name
+        # Prompt.
         self.prompt = prompt
+        # Document content to extract hotwords from. If not empty, extract hotwords from this content. If empty, extract hotwords using the DocId.
         self.reference_content = reference_content
+        # Session ID.
         self.session_id = session_id
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

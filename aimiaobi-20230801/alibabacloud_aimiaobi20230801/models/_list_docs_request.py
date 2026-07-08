@@ -18,13 +18,22 @@ class ListDocsRequest(DaraModel):
         statuses: List[int] = None,
         workspace_id: str = None,
     ):
+        # Document folder.
         self.category_id = category_id
+        # Document name.
         self.doc_name = doc_name
+        # Document type.
         self.doc_type = doc_type
+        # Maximum number of results returned.
         self.max_results = max_results
+        # Next page token.
         self.next_token = next_token
+        # Skip n records for paging.
         self.skip = skip
+        # Document status list.
         self.statuses = statuses
+        # Alibaba Cloud Model Studio workspace ID. For more information, see [How to Use Workspaces](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

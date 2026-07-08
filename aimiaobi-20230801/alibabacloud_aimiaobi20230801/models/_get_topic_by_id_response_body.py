@@ -17,11 +17,17 @@ class GetTopicByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates whether the operation succeeded: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -92,17 +98,41 @@ class GetTopicByIdResponseBodyData(DaraModel):
         topic_source: str = None,
         version: str = None,
     ):
+        # Asynchronous task ID (used in custom topic scenarios)
         self.async_task_id = async_task_id
+        # Creator user ID (used in custom topic scenarios)
         self.create_user = create_user
+        # Hotness value
         self.hot_value = hot_value
+        # Hot topic ID
         self.id = id
+        # Asynchronous task status (used in custom event scenarios) (PENDING: pending, RUNNING: running, SUCCESSED: succeeded, SUSPENDED: suspended, FAILED: failed, CANCELED: canceled)
         self.status = status
+        # List of structured topic summaries
         self.structure_summary = structure_summary
+        # Hot topic summary
         self.summary = summary
+        # Error message for asynchronous task failure
         self.task_error_message = task_error_message
+        # Asynchronous task status. 0: pending, 1: running, 2: succeeded, 3: suspended (not used), 4: failed, 6: canceled (used in custom event scenarios).
         self.task_status = task_status
+        # Unique topic name
         self.topic = topic
+        # Hot topic source. Supported sources:
+        # 
+        # - Toutiao: Toutiao
+        # 
+        # - Quark: Quark
+        # 
+        # - Baidu: Baidu
+        # 
+        # - Sina: Sina
+        # 
+        # - Custom: Custom
+        # 
+        # - Aggregation: Hot Topic List
         self.topic_source = topic_source
+        # Data version
         self.version = version
 
     def validate(self):
@@ -206,8 +236,11 @@ class GetTopicByIdResponseBodyDataStructureSummary(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # Articles referenced to generate the title summary
         self.doc_list = doc_list
+        # Summary
         self.summary = summary
+        # Title
         self.title = title
 
     def validate(self):
@@ -257,8 +290,11 @@ class GetTopicByIdResponseBodyDataStructureSummaryDocList(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Article source
         self.source = source
+        # Article title
         self.title = title
+        # Article URL
         self.url = url
 
     def validate(self):

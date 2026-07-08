@@ -15,11 +15,17 @@ class SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequest(DaraModel):
         prompt: str = None,
         topic: str = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The list of documents to be analyzed.
         self.documents = documents
+        # The input prompt for custom perspectives.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The name of the topic to be analyzed.
         self.topic = topic
 
     def validate(self):
@@ -79,13 +85,21 @@ class SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments(DaraMode
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
+        # 
         # This parameter is required.
         self.content = content
+        # The publication time. Format: YYYY-MM-dd HH:mm:ss
         self.pub_time = pub_time
+        # The source of the article.
         self.source = source
+        # The summary.
         self.summary = summary
+        # The title.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):

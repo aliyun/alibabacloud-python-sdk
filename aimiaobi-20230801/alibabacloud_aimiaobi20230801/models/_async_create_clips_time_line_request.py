@@ -20,15 +20,23 @@ class AsyncCreateClipsTimeLineRequest(DaraModel):
         timeline_scene: int = None,
         workspace_id: str = None,
     ):
+        # Supplementary material information to help generate the voiceover script
         self.additional_content = additional_content
+        # Custom voiceover content
         self.custom_content = custom_content
         self.high_light_config = high_light_config
+        # Enable mimicry capability
         self.no_ref_video = no_ref_video
+        # Prompt for processing
         self.process_prompt = process_prompt
         self.recommend_audio = recommend_audio
+        # Unique task ID
+        # 
         # This parameter is required.
         self.task_id = task_id
         self.timeline_scene = timeline_scene
+        # [Model Studio workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

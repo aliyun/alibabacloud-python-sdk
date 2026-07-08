@@ -18,14 +18,25 @@ class RunWritingRequest(DaraModel):
         workspace_id: str = None,
         writing_config: main_models.RunWritingRequestWritingConfig = None,
     ):
+        # The ID of the original conversation to use for regeneration.
         self.origin_session_id = origin_session_id
+        # The prompt.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The reference article data for writing.
         self.reference_data = reference_data
+        # The ID of a single-turn conversation.
         self.session_id = session_id
+        # The ID of the task. You can reuse the same task ID in a multi-turn conversation.
+        # 
+        # > You do not need to specify TaskId. The system generates one automatically. If you use the same TaskId for multiple tasks, they are grouped into a single conversation.
         self.task_id = task_id
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The writing configuration.
         self.writing_config = writing_config
 
     def validate(self):
@@ -97,9 +108,19 @@ class RunWritingRequestWritingConfig(DaraModel):
         tags: List[main_models.RunWritingRequestWritingConfigTags] = None,
         use_search: bool = None,
     ):
+        # The writing domain.
+        # 
+        # - media: Media
+        # 
+        # - government: Government
+        # 
+        # - market: Marketing
         self.domain = domain
+        # The prompt assistant.
         self.prompt_tag = prompt_tag
+        # Control parameters for writing, such as the style, length, and output language.
         self.tags = tags
+        # Specifies whether to automatically add reference materials.
         self.use_search = use_search
 
     def validate(self):
@@ -157,7 +178,9 @@ class RunWritingRequestWritingConfigTags(DaraModel):
         keyword: str = None,
         tag: str = None,
     ):
+        # The value of the option.
         self.keyword = keyword
+        # The tag of the option. Example: gcNumberSizeTag=10.
         self.tag = tag
 
     def validate(self):
@@ -194,9 +217,13 @@ class RunWritingRequestWritingConfigPromptTag(DaraModel):
         reverse_words: str = None,
         theme: str = None,
     ):
+        # Necessary tips.
         self.necessary_tips = necessary_tips
+        # The stance.
         self.position = position
+        # Negative keywords.
         self.reverse_words = reverse_words
+        # The theme.
         self.theme = theme
 
     def validate(self):
@@ -242,6 +269,7 @@ class RunWritingRequestReferenceData(DaraModel):
         self,
         articles: List[main_models.RunWritingRequestReferenceDataArticles] = None,
     ):
+        # The reference article data for writing.
         self.articles = articles
 
     def validate(self):
@@ -286,15 +314,25 @@ class RunWritingRequestReferenceDataArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
         self.content = content
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # The internal unique ID of the document.
         self.doc_uuid = doc_uuid
+        # The publication time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The tag.
         self.tag = tag
+        # The title.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):

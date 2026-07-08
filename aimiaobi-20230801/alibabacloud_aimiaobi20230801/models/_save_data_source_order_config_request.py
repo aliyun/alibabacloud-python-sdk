@@ -15,11 +15,28 @@ class SaveDataSourceOrderConfigRequest(DaraModel):
         product_code: str = None,
         user_config_data_source_list: List[main_models.SaveDataSourceOrderConfigRequestUserConfigDataSourceList] = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The generation technology for Miaosou. This parameter is valid only when \\`ProductCode\\` is set to \\`miaosou\\`.
+        # 
+        # Valid values:
+        # 
+        # - copilotPrecise
+        # 
+        # - copilotReference
         self.generate_technology = generate_technology
+        # The product type. Valid values:
+        # 
+        # - miaobi
+        # 
+        # - miaosou
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # The data source configuration.
+        # 
         # This parameter is required.
         self.user_config_data_source_list = user_config_data_source_list
 
@@ -78,12 +95,20 @@ class SaveDataSourceOrderConfigRequestUserConfigDataSourceList(DaraModel):
         number: int = None,
         type: str = None,
     ):
+        # Code description
+        # 
         # This parameter is required.
         self.code = code
+        # Specifies whether to enable the data source.
         self.enable = enable
+        # The display name.
         self.name = name
+        # Quantity
+        # 
         # This parameter is required.
         self.number = number
+        # The type of the data source.
+        # 
         # This parameter is required.
         self.type = type
 

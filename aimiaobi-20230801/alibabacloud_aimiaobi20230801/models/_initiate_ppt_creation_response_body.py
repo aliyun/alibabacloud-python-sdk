@@ -15,12 +15,17 @@ class InitiatePptCreationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,9 +86,9 @@ class InitiatePptCreationResponseBodyData(DaraModel):
         app_key: str = None,
         code: str = None,
     ):
-        # AppKey
+        # The AppKey.
         self.app_key = app_key
-        # Code
+        # The code.
         self.code = code
 
     def validate(self):

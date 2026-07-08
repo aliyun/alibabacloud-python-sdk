@@ -15,12 +15,17 @@ class GetAvailableAuditNotesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -84,10 +89,15 @@ class GetAvailableAuditNotesResponseBodyData(DaraModel):
         note_name: str = None,
         update_time: str = None,
     ):
+        # Rule library file size in bytes.
         self.file_size = file_size
+        # Primary ID of the rule library storage.
         self.id = id
+        # Rule library ID.
         self.note_id = note_id
+        # Parsed rule library name.
         self.note_name = note_name
+        # Rule library update time.
         self.update_time = update_time
 
     def validate(self):

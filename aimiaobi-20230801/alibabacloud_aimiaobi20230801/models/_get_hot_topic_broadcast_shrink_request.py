@@ -20,17 +20,30 @@ class GetHotTopicBroadcastShrinkRequest(DaraModel):
         topics_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Whether to compute the total token count
         self.calc_total_token = calc_total_token
+        # categorization Filter
         self.category = category
+        # Current page number
         self.current = current
+        # hot spot Version
         self.hot_topic_version = hot_topic_version
+        # Full-text index for hot spot Regions (when this parameter is present, current does not take effect)
         self.location_query = location_query
+        # List of Regions for news retrieval (keyword filtering)
         self.locations_shrink = locations_shrink
+        # Full-text index (full-text retrieval for title, hot spot summary, and Region) (when this parameter is present, current does not take effect)
         self.query = query
+        # Page size
         self.size = size
+        # Custom output style configuration
         self.step_for_custom_summary_style_config_shrink = step_for_custom_summary_style_config_shrink
+        # Hot Spot News Broadcast Content Configuration
         self.step_for_news_broadcast_content_config_shrink = step_for_news_broadcast_content_config_shrink
+        # topic Filter
         self.topics_shrink = topics_shrink
+        # UUID of the Alibaba Cloud Model Studio workspace: obtain the [Workspace ID](https://help.aliyun.com/document_detail/2587495.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

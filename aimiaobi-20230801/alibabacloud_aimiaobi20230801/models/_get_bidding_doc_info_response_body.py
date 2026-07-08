@@ -15,12 +15,17 @@ class GetBiddingDocInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful
         self.success = success
 
     def validate(self):
@@ -87,13 +92,21 @@ class GetBiddingDocInfoResponseBodyData(DaraModel):
         tender_doc_url: str = None,
         tender_file_type: str = None,
     ):
+        # Bidding document content
         self.content = content
+        # Format
         self.content_format = content_format
+        # File type.
         self.content_type = content_type
+        # Task status
         self.status = status
+        # Current status
         self.step = step
+        # Task ID
         self.task_id = task_id
+        # Tender document URL
         self.tender_doc_url = tender_doc_url
+        # Tender document file type
         self.tender_file_type = tender_file_type
 
     def validate(self):

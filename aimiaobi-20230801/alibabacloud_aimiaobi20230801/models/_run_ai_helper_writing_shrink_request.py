@@ -15,18 +15,25 @@ class RunAiHelperWritingShrinkRequest(DaraModel):
         writing_scene: str = None,
         writing_style: str = None,
     ):
+        # Specifies whether to generate the text step by step.
         self.distribute_writing = distribute_writing
+        # The prompt, which specifies the subject for the AI to write about.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The prompt pattern. For example, PE indicates the advanced pattern and Template indicates the template pattern.
         self.prompt_mode = prompt_mode
+        # The [workspace](https://help.aliyun.com/document_detail/2782167.html) ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The writing parameters from the previous form, specified as key-value pairs.
         self.writing_params_shrink = writing_params_shrink
-        # 写作场景：government(政务)、media(传媒)、market(营销)、office(办公)、custom(自定义)
+        # The writing scenario. Valid values: government, media, market, office, and custom.
         # 
         # This parameter is required.
         self.writing_scene = writing_scene
-        # 写作文体唯一标识KEY，可通过ListWritingStyles接口获取对应写作场景下的文体列表
+        # The unique key for the writing style. Call the [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html) operation to get a list of styles for the specified scenario.
         # 
         # This parameter is required.
         self.writing_style = writing_style

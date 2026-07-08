@@ -10,7 +10,9 @@ class GetSmartAuditResultRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The task ID.
         self.task_id = task_id
+        # The [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
         self.workspace_id = workspace_id
 
     def validate(self):

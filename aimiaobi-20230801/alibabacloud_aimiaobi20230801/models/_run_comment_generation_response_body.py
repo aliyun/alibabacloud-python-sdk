@@ -13,10 +13,13 @@ class RunCommentGenerationResponseBody(DaraModel):
         payload: main_models.RunCommentGenerationResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Indicates whether the response is complete.
         self.end = end
+        # Response header.
         self.header = header
+        # Response body.
         self.payload = payload
-        # Id of the request
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,7 +71,9 @@ class RunCommentGenerationResponseBodyPayload(DaraModel):
         output: main_models.RunCommentGenerationResponseBodyPayloadOutput = None,
         usage: main_models.RunCommentGenerationResponseBodyPayloadUsage = None,
     ):
+        # Output data.
         self.output = output
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -109,8 +114,11 @@ class RunCommentGenerationResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens used.
         self.input_tokens = input_tokens
+        # Number of output tokens used.
         self.output_tokens = output_tokens
+        # Total number of tokens used.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -150,6 +158,7 @@ class RunCommentGenerationResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Generated comment text.
         self.text = text
 
     def validate(self):
@@ -182,11 +191,17 @@ class RunCommentGenerationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Event name.
         self.event = event
+        # Event description.
         self.event_info = event_info
+        # Request ID.
         self.request_id = request_id
+        # Session ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
+        # Trace ID.
         self.trace_id = trace_id
 
     def validate(self):

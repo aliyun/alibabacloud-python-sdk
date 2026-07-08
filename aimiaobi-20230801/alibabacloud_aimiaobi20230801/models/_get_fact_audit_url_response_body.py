@@ -16,13 +16,19 @@ class GetFactAuditUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # List of source URLs currently used for factuality audit. If the list is empty, the retrieval source is the entire network. If URLs are present, information is retrieved only from the configured URLs. To delete unnecessary source URLs, use the URLs from the response parameter as input for the DeleteFactAuditUrl API.
+        # 
         # This parameter is required.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error description.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Whether this request was successful.
         self.success = success
 
     def validate(self):

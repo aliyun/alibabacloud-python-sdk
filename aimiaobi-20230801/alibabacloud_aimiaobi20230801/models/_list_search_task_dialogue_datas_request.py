@@ -19,17 +19,32 @@ class ListSearchTaskDialogueDatasRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Indicates whether to include the main content.
         self.include_content = include_content
+        # The type of data to search.
         self.multimodal_search_type = multimodal_search_type
+        # The unique identifier of the historical dialogue. This is the source of all original materials.
         self.original_session_id = original_session_id
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page. The default value is 10.
         self.page_size = page_size
+        # The query conditions.
         self.query = query
+        # The type of search agent.
         self.search_model = search_model
+        # The data under the search agent classification.
         self.search_model_data_value = search_model_data_value
+        # The unique identifier of the historical dialogue. This is the source of reference materials.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The unique identifier of the task.
+        # 
+        # > You do not need to specify this parameter. The system automatically generates a task ID. If you specify the same task ID for multiple tasks, the tasks are considered part of the same dialogue group.
         self.task_id = task_id
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

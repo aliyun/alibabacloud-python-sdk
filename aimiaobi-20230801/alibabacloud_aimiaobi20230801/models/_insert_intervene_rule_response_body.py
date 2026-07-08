@@ -15,11 +15,17 @@ class InsertInterveneRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class InsertInterveneRuleResponseBodyData(DaraModel):
         code: int = None,
         rule_id: int = None,
     ):
+        # Status code returned by the intervention service
         self.code = code
+        # Rule ID
         self.rule_id = rule_id
 
     def validate(self):

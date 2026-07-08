@@ -17,17 +17,30 @@ class RunDocQaShrinkRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
+        # Array of folder IDs for filtering. This parameter takes effect only when SearchSource is set to fromIndexLib.
         self.category_ids_shrink = category_ids_shrink
+        # Array of historical context content
         self.conversation_contexts_shrink = conversation_contexts_shrink
+        # Array of multiple document IDs
         self.doc_ids_shrink = doc_ids_shrink
+        # Custom model name defined by the User
         self.model_name = model_name
+        # Question
+        # 
         # This parameter is required.
         self.query = query
+        # Associated content actively provided by the questioner
         self.reference_content = reference_content
+        # Search source
+        # 
         # This parameter is required.
         self.search_source = search_source
+        # Conversation ID
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Alibaba Cloud Model Studio workspace ID. For details on how to obtain it, see [How to Use Workspaces](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

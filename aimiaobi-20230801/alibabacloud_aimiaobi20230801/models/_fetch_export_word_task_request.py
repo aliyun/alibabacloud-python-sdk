@@ -10,8 +10,11 @@ class FetchExportWordTaskRequest(DaraModel):
         agent_key: str = None,
         task_id: str = None,
     ):
+        # The unique identifier of the workspace.
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

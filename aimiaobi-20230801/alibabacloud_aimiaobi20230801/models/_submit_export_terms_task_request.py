@@ -10,7 +10,10 @@ class SubmitExportTermsTaskRequest(DaraModel):
         terms_name: str = None,
         workspace_id: str = None,
     ):
+        # Name of the dictionary. Optional. If you do not specify a value, the default name is used.
         self.terms_name = terms_name
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

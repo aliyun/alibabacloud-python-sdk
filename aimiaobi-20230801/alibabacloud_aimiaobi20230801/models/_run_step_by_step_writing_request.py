@@ -18,14 +18,25 @@ class RunStepByStepWritingRequest(DaraModel):
         workspace_id: str = None,
         writing_config: main_models.RunStepByStepWritingRequestWritingConfig = None,
     ):
+        # The ID of the original conversation when regenerating content.
         self.origin_session_id = origin_session_id
+        # The prompt.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The reference article data for writing.
         self.reference_data = reference_data
+        # The ID of a single-turn conversation.
         self.session_id = session_id
+        # The task ID. You can reuse the same task ID for a multi-turn conversation.
+        # 
+        # > By default, you do not need to specify this parameter. The system automatically generates a task ID. If you specify the same TaskId for subsequent tasks, the tasks are considered part of the same conversation group.
         self.task_id = task_id
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The writing configuration.
         self.writing_config = writing_config
 
     def validate(self):
@@ -101,13 +112,50 @@ class RunStepByStepWritingRequestWritingConfig(DaraModel):
         tags: List[main_models.RunStepByStepWritingRequestWritingConfigTags] = None,
         use_search: bool = None,
     ):
+        # The writing domain.
+        # 
+        # - media (default): Media writing.
+        # 
+        # - government: Official document writing.
         self.domain = domain
+        # The keywords. This affects article retrieval.
         self.keywords = keywords
+        # The prompt assistant.
         self.prompt_tag = prompt_tag
+        # The step-by-step writing scenario.
+        # 
+        # - Scenarios supported for media writing: News Writing (default), News Commentary, and General Style.
+        # 
+        # - Scenarios supported for official document writing: Notification (default), Announcement, Bulletin, Request for Instruction, Decision, Letter, and General Style.
         self.scene = scene
+        # The writing step.
+        # 
+        # - Generate outline: OutlineGenerate
+        # 
+        # - Generate summary: MiniDocSummary
+        # 
+        # - Writing (default): Generate article
         self.step = step
+        # The return type of the summary result.<br>
+        # 
+        # - Structure:
+        #   Returns a JSON string in payload.output.text. Example format: `{"event":"{outline}","message":"{message}"}`
+        # 
+        # - Content: Returns only the plain text summary content in payload.output.text. Example format:
+        #   `Outline: {outline}
+        # 
+        # {message}
+        # 
+        # 
+        #  Outline: {outline}
+        # 
+        # {message}`
+        # 
+        # - Event: Returns only the outline content itself in payload.output.text each time an outline is completed. Typically, six describes are returned.
         self.summary_return_type = summary_return_type
+        # Control parameters for writing, such as style, length, and output language.
         self.tags = tags
+        # Specifies whether to automatically supplement materials.
         self.use_search = use_search
 
     def validate(self):
@@ -189,7 +237,9 @@ class RunStepByStepWritingRequestWritingConfigTags(DaraModel):
         keyword: str = None,
         tag: str = None,
     ):
+        # The value of the option.
         self.keyword = keyword
+        # The tag of the option. For example, gcNumberSizeTag=10.
         self.tag = tag
 
     def validate(self):
@@ -226,9 +276,13 @@ class RunStepByStepWritingRequestWritingConfigPromptTag(DaraModel):
         reverse_words: str = None,
         theme: str = None,
     ):
+        # Necessary tips.
         self.necessary_tips = necessary_tips
+        # The position or stance.
         self.position = position
+        # Reverse the words.
         self.reverse_words = reverse_words
+        # The theme.
         self.theme = theme
 
     def validate(self):
@@ -277,9 +331,13 @@ class RunStepByStepWritingRequestReferenceData(DaraModel):
         outlines: List[main_models.RunStepByStepWritingRequestReferenceDataOutlines] = None,
         summarization: List[str] = None,
     ):
+        # The reference article data for writing.
         self.articles = articles
+        # The ranked article segments for subsequent model generation.
         self.mini_doc = mini_doc
+        # The outline. You can specify a data source to generate the outline.
         self.outlines = outlines
+        # The summary result from the Large Language Model (LLM).
         self.summarization = summarization
 
     def validate(self):
@@ -343,7 +401,9 @@ class RunStepByStepWritingRequestReferenceDataOutlines(DaraModel):
         articles: List[main_models.RunStepByStepWritingRequestReferenceDataOutlinesArticles] = None,
         outline: str = None,
     ):
+        # The specified data source for the outline.
         self.articles = articles
+        # The outline.
         self.outline = outline
 
     def validate(self):
@@ -387,8 +447,11 @@ class RunStepByStepWritingRequestReferenceDataOutlinesArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The article content.
         self.content = content
+        # The article title.
         self.title = title
+        # The article URL.
         self.url = url
 
     def validate(self):
@@ -438,16 +501,27 @@ class RunStepByStepWritingRequestReferenceDataArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
         self.content = content
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # The internal unique ID of the document.
         self.doc_uuid = doc_uuid
+        # The URL of the original material.
         self.media_url = media_url
+        # The publication time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The tag.
         self.tag = tag
+        # The title.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):

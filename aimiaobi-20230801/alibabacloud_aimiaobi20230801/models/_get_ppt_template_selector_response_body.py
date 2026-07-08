@@ -17,12 +17,17 @@ class GetPptTemplateSelectorResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response object.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,9 +90,13 @@ class GetPptTemplateSelectorResponseBodyData(DaraModel):
         suit_scene: List[main_models.GetPptTemplateSelectorResponseBodyDataSuitScene] = None,
         suit_style: List[main_models.GetPptTemplateSelectorResponseBodyDataSuitStyle] = None,
     ):
+        # The careers.
         self.career = career
+        # The colors.
         self.colour = colour
+        # The scenarios.
         self.suit_scene = suit_scene
+        # The styles.
         self.suit_style = suit_style
 
     def validate(self):
@@ -169,7 +178,9 @@ class GetPptTemplateSelectorResponseBodyDataSuitStyle(DaraModel):
         id: int = None,
         title: str = None,
     ):
+        # The style ID.
         self.id = id
+        # The style name.
         self.title = title
 
     def validate(self):
@@ -204,7 +215,9 @@ class GetPptTemplateSelectorResponseBodyDataSuitScene(DaraModel):
         id: int = None,
         title: str = None,
     ):
+        # The scenario ID.
         self.id = id
+        # The scenario name.
         self.title = title
 
     def validate(self):
@@ -240,8 +253,11 @@ class GetPptTemplateSelectorResponseBodyDataColour(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The color value.
         self.code = code
+        # The color ID.
         self.id = id
+        # The color name.
         self.name = name
 
     def validate(self):
@@ -283,8 +299,11 @@ class GetPptTemplateSelectorResponseBodyDataCareer(DaraModel):
         is_hot: int = None,
         name: str = None,
     ):
+        # The career ID.
         self.id = id
+        # Indicates whether the career is popular.
         self.is_hot = is_hot
+        # The career name.
         self.name = name
 
     def validate(self):

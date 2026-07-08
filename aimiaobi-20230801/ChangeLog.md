@@ -1,3 +1,9 @@
+2026-07-08 Version: 1.45.2
+- Update API AsyncCreateClipsTask: add request parameters AdaptMode.
+- Update API AsyncCreateClipsTask: add request parameters Alignment.
+- Update API AsyncCreateClipsTask: add request parameters TextWidth.
+
+
 2026-06-06 Version: 1.45.1
 - Update API ListHotTopics: add request parameters CreateTimeEnd.
 - Update API ListHotTopics: add request parameters CreateTimeStart.

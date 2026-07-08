@@ -13,10 +13,15 @@ class EditBiddingDocRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The text content.
         self.content = content
+        # The format.
         self.content_format = content_format
+        # The content type.
         self.content_type = content_type
+        # The task ID.
         self.task_id = task_id
+        # [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

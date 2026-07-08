@@ -15,9 +15,13 @@ class HottopicNews(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # List of news comments
         self.comments = comments
+        # News content
         self.content = content
+        # News title
         self.title = title
+        # News URL link
         self.url = url
 
     def validate(self):
@@ -71,6 +75,7 @@ class HottopicNewsComments(DaraModel):
         self,
         text: str = None,
     ):
+        # News comment content
         self.text = text
 
     def validate(self):

@@ -17,15 +17,28 @@ class InitiatePptCreationV2Request(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the external user.
         self.external_user_id = external_user_id
+        # Specifies whether the request originates from a mobile client.
         self.is_mobile = is_mobile
+        # The presentation outline, formatted in Markdown.
         self.outline = outline
+        # The ID of the PPT template.
         self.ppt_template_id = ppt_template_id
+        # The template type. The default value is `1`. Valid values: `1` (system template) and `2` (enterprise template).
         self.ppt_template_type = ppt_template_type
         self.ppt_title = ppt_title
+        # The type of process to initiate. Valid values:<br>
+        # `0`: Generates only a signature to initialize the front-end SDK for the full creation process.<br>
+        # `1`: Generates a signature and a process ID. Use this option if you have a custom front-end page for templates before you initialize the SDK.<br>
+        # `2`: Generates an artifact ID, which allows for direct editing of the artifact.<br>
+        # `3`: Generates an export task ID. You can poll this ID to retrieve the export result.<br><br><br><br>
         self.process_type = process_type
+        # The ID of the task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

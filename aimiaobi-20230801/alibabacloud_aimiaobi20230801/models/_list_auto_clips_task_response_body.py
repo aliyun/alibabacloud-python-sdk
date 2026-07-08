@@ -23,18 +23,29 @@ class ListAutoClipsTaskResponseBody(DaraModel):
         total: int = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Page number
         self.current = current
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Deprecated
         self.max_results = max_results
+        # Error message
         self.message = message
+        # Deprecated
         self.next_token = next_token
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Number of items per page
         self.size = size
+        # Indicates whether the request succeeded. true means success. false means failure.
         self.success = success
+        # Total number of records
         self.total = total
+        # Deprecated
         self.total_count = total_count
 
     def validate(self):
@@ -141,12 +152,17 @@ class ListAutoClipsTaskResponseBodyData(DaraModel):
         task_step: str = None,
         task_type: str = None,
     ):
+        # Start time of task creation
         self.create_time_start = create_time_start
+        # Task ID
         self.task_id = task_id
+        # Task name
         self.task_name = task_name
+        # Task status
         self.task_status = task_status
         # upload
         self.task_step = task_step
+        # Task type
         self.task_type = task_type
 
     def validate(self):

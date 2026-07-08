@@ -22,18 +22,32 @@ class SubmitEnterpriseVocAnalysisTaskRequest(DaraModel):
         task_type: str = None,
         workspace_id: str = None,
     ):
+        # The API key for integration access. For more information, see [Get an API key](https://help.aliyun.com/zh/model-studio/get-api-key?spm=a2c4g.11186623.help-menu-2400256.d_2_0_0.1cbdb0a8lsT1n3).
         self.api_key = api_key
+        # The content tags.
+        # 
         # This parameter is required.
         self.content_tags = content_tags
+        # The material content to be mined.
         self.contents = contents
+        # The key of the file.
         self.file_key = file_key
+        # The filter tags.
         self.filter_tags = filter_tags
+        # The material type. Valid values: \\`shortContent\\` (long or short comments, or tickets) and \\`dialogue\\` (dialogues).
         self.material_type = material_type
+        # The ID of the model.
+        # 
         # This parameter is required.
         self.model_id = model_id
+        # The content of the positive sample.
         self.positive_sample = positive_sample
+        # The key of the positive sample file.
         self.positive_sample_file_key = positive_sample_file_key
+        # The task type. Valid values: \\`lightAppSass\\` (invoked from a Software as a Service (SaaS) page) and \\`sdkBatchTask\\` (SDK batch task).
         self.task_type = task_type
+        # The ID of the Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -151,9 +165,13 @@ class SubmitEnterpriseVocAnalysisTaskRequestFilterTags(DaraModel):
         tag_type: str = None,
         tag_value_define_prompt: str = None,
     ):
+        # The tag definition.
         self.tag_define_prompt = tag_define_prompt
+        # The tag name.
         self.tag_name = tag_name
+        # The type of the tag mining task. Valid values: \\`singleTagValue\\` (single tag), \\`multiTagValues\\` (multiple tags), \\`summaryAndOverview\\` (summarization and overview), and \\`filter\\` (filtering).
         self.tag_type = tag_type
+        # The definition of the tag value. For a tag mining task, this is a comma-separated list of enumerated values. For a summarization task, this is the summarization prompt.
         self.tag_value_define_prompt = tag_value_define_prompt
 
     def validate(self):
@@ -200,7 +218,9 @@ class SubmitEnterpriseVocAnalysisTaskRequestContents(DaraModel):
         extra_info: str = None,
         text: str = None,
     ):
+        # Additional information provided directly to the large language model (LLM).
         self.extra_info = extra_info
+        # The material to be mined.
         self.text = text
 
     def validate(self):
@@ -237,9 +257,13 @@ class SubmitEnterpriseVocAnalysisTaskRequestContentTags(DaraModel):
         tag_task_type: str = None,
         tag_value_define_prompt: str = None,
     ):
+        # The tag definition.
         self.tag_define_prompt = tag_define_prompt
+        # The tag name.
         self.tag_name = tag_name
+        # The type of the tag mining task. Valid values: \\`singleTagValue\\` (single tag), \\`multiTagValues\\` (multiple tags), \\`summaryAndOverview\\` (summarization and overview), and \\`filter\\` (filtering).
         self.tag_task_type = tag_task_type
+        # The definition of the tag value. For a tag mining task, this is a comma-separated list of enumerated values. For a summarization task, this is the summarization prompt.
         self.tag_value_define_prompt = tag_value_define_prompt
 
     def validate(self):

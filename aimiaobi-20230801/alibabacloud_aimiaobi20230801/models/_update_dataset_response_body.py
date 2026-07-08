@@ -17,11 +17,17 @@ class UpdateDatasetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -88,13 +94,21 @@ class UpdateDatasetResponseBodyData(DaraModel):
         news_article_results: List[main_models.UpdateDatasetResponseBodyDataNewsArticleResults] = None,
         search_dataset_enable: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.create_user = create_user
+        # The display name of the dataset.
         self.dataset_description = dataset_description
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The dataset type.
         self.dataset_type = dataset_type
+        # The list of articles.
         self.news_article_results = news_article_results
+        # Indicates whether search is enabled for the dataset.
         self.search_dataset_enable = search_dataset_enable
 
     def validate(self):
@@ -177,11 +191,17 @@ class UpdateDatasetResponseBodyDataNewsArticleResults(DaraModel):
         size: int = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The current page number.
         self.current = current
+        # The list of articles.
         self.data = data
+        # The error message.
         self.message = message
+        # The number of records per page.
         self.size = size
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -252,11 +272,17 @@ class UpdateDatasetResponseBodyDataNewsArticleResultsData(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The content.
         self.content = content
+        # The publishing time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The title.
         self.title = title
+        # The article URL.
         self.url = url
 
     def validate(self):

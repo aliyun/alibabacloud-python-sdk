@@ -16,13 +16,19 @@ class AddAuditTermsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data (whether the update succeeded). This field is deprecated. Use DataV1 to get the primary key ID instead.
         self.data = data
+        # ID of the added dictionary term
         self.data_v1 = data_v1
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Whether the request succeeded
         self.success = success
 
     def validate(self):
@@ -88,6 +94,7 @@ class AddAuditTermsResponseBodyDataV1(DaraModel):
         self,
         id: int = None,
     ):
+        # ID
         self.id = id
 
     def validate(self):

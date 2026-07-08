@@ -16,11 +16,18 @@ class SubmitSmartClipTaskRequest(DaraModel):
         output_config: main_models.SubmitSmartClipTaskRequestOutputConfig = None,
         workspace_id: str = None,
     ):
+        # Video editing configuration.
         self.editing_config = editing_config
+        # Additional extended parameters. These parameters merge with InputConfig, OutputConfig, and EditingConfig.
         self.extend_param = extend_param
+        # Input configuration.
+        # 
         # This parameter is required.
         self.input_config = input_config
+        # Output configuration.
         self.output_config = output_config
+        # Alibaba Cloud Model Studio workspace ID. For more information, see [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -86,11 +93,17 @@ class SubmitSmartClipTaskRequestOutputConfig(DaraModel):
         save_to_generated_content: bool = None,
         width: int = None,
     ):
+        # Number of output videos.
         self.count = count
+        # Output file name. Must include {index}.
         self.file_name = file_name
+        # Output video height.
         self.height = height
+        # Maximum duration of the output video, in seconds.
         self.max_duration = max_duration
+        # Save to Content Management.
         self.save_to_generated_content = save_to_generated_content
+        # Output video width.
         self.width = width
 
     def validate(self):
@@ -152,10 +165,16 @@ class SubmitSmartClipTaskRequestInputConfig(DaraModel):
         titles: List[str] = None,
         video_ids: List[main_models.SubmitSmartClipTaskRequestInputConfigVideoIds] = None,
     ):
+        # List of background music IDs.
         self.background_musics = background_musics
+        # List of voiceover script texts.
         self.speech_texts = speech_texts
+        # List of stickers.
         self.stickers = stickers
+        # List of titles.
         self.titles = titles
+        # List of video material ID objects.
+        # 
         # This parameter is required.
         self.video_ids = video_ids
 
@@ -235,8 +254,15 @@ class SubmitSmartClipTaskRequestInputConfigVideoIds(DaraModel):
         id: str = None,
         type: str = None,
     ):
+        # Material ID.
+        # 
         # This parameter is required.
         self.id = id
+        # ID type:
+        # materialId: Material Library reference ID
+        # fileKey: FileKey in Alibaba Cloud Model Studio
+        # url: Publicly accessible URL
+        # 
         # This parameter is required.
         self.type = type
 
@@ -275,14 +301,24 @@ class SubmitSmartClipTaskRequestInputConfigStickers(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Height of the sticker.
+        # 
         # This parameter is required.
         self.height = height
+        # Sticker ID.
+        # 
         # This parameter is required.
         self.sticker_id = sticker_id
+        # Width of the sticker.
+        # 
         # This parameter is required.
         self.width = width
+        # X coordinate of the top-left corner of the sticker.
+        # 
         # This parameter is required.
         self.x = x
+        # Y coordinate of the top-left corner of the sticker.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -338,8 +374,15 @@ class SubmitSmartClipTaskRequestInputConfigStickersStickerId(DaraModel):
         id: str = None,
         type: str = None,
     ):
+        # Sticker ID.
+        # 
         # This parameter is required.
         self.id = id
+        # ID type:
+        # materialId: Material Library reference ID
+        # fileKey: FileKey in Alibaba Cloud Model Studio
+        # url: Publicly accessible URL
+        # 
         # This parameter is required.
         self.type = type
 
@@ -375,8 +418,15 @@ class SubmitSmartClipTaskRequestInputConfigBackgroundMusics(DaraModel):
         id: str = None,
         type: str = None,
     ):
+        # Background music ID.
+        # 
         # This parameter is required.
         self.id = id
+        # ID type:
+        # materialId: Material Library reference ID
+        # fileKey: FileKey in Alibaba Cloud Model Studio
+        # url: Publicly accessible URL
+        # 
         # This parameter is required.
         self.type = type
 
@@ -414,9 +464,13 @@ class SubmitSmartClipTaskRequestEditingConfig(DaraModel):
         speech_config: main_models.SubmitSmartClipTaskRequestEditingConfigSpeechConfig = None,
         title_config: main_models.SubmitSmartClipTaskRequestEditingConfigTitleConfig = None,
     ):
+        # Background music configuration.
         self.background_music_config = background_music_config
+        # Media configuration.
         self.media_config = media_config
+        # Voiceover configuration.
         self.speech_config = speech_config
+        # Title configuration.
         self.title_config = title_config
 
     def validate(self):
@@ -477,10 +531,23 @@ class SubmitSmartClipTaskRequestEditingConfigTitleConfig(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # TopLeft: Top-left corner of the video.
+        # TopCenter: Top center of the vertical axis of the video.
+        # TopRight: Top-right corner of the video.
+        # CenterLeft: Left side of the horizontal center line of the video.
+        # CenterCenter: Center of the video.
+        # CenterRight: Right side of the horizontal center line of the video.
+        # BottomLeft: Bottom-left corner of the video.
+        # BottomCenter: Bottom center of the vertical axis of the video.
+        # BottomRight: Bottom-right corner of the video.
         self.alignment = alignment
+        # Time when the title appears.
         self.timeline_in = timeline_in
+        # Time when the title disappears.
         self.timeline_out = timeline_out
+        # Horizontal distance from the top-left corner of the banner text to the top-left corner of the output video. You can specify this value as a percentage or in pixels. If the value is between 0 and 0.9999, it represents a percentage of the output video width. If the value is an integer greater than or equal to 2, it represents an absolute pixel value. Default value: 0. This coordinate scales based on the source material size and the final output size.
         self.x = x
+        # Vertical distance from the top-left corner of the banner text to the top-left corner of the output video. You can specify this value as a percentage or in pixels. If the value is between 0 and 0.9999, it represents a percentage of the output video height. If the value is an integer greater than or equal to 2, it represents an absolute pixel value. Default value: 0. This coordinate scales based on the source material size and the final output size.
         self.y = y
 
     def validate(self):
@@ -536,10 +603,33 @@ class SubmitSmartClipTaskRequestEditingConfigSpeechConfig(DaraModel):
         voice: str = None,
         volume: float = None,
     ):
+        # Caption parameter configuration.
         self.asr_config = asr_config
+        # Speech rate of the voiceover script.
+        # Valid values: -500 to 500. Default value: 0.
+        # The corresponding playback speed multipliers for [-500, 0, 500] are [0.5, 1.0, 2.0].
+        # Calculation method:
+        # For 0.8× speed: (1 - 1/0.8) / 0.002 = -125
+        # For 1.2× speed: (1 - 1/1.2) / 0.001 = 166
+        # Use coefficient 0.002 for speeds less than 1×.
+        # Use coefficient 0.001 for speeds greater than 1×.
+        # Round the result to the nearest integer.
+        # 
+        # The calculation method is as follows:<br>
+        # 0.8× speed: (1 − 1/0.8)/0.002 = −125<br>
+        # 1.2× speed: (1 − 1/1.2)/0.001 = 166<br>
+        # When the speed is less than 1×, use a coefficient of 0.002.<br>
+        # When the speed is greater than 1×, use a coefficient of 0.001.<br>
+        # The actual algorithm result is approximated.<br><br><br><br><br>
         self.speech_rate = speech_rate
+        # Voiceover style. Default value: empty. If both Voice and Style are specified, Voice takes precedence.
+        # Gentle: Gentle
+        # Serious: Serious
+        # Entertainment: Entertainment
         self.style = style
+        # Specify one or more voice styles for the voiceover, separated by commas. When multiple voices are specified, one is randomly selected for synthesis. For available voice styles, see [Smart Voice Effect Examples](https://help.aliyun.com/zh/ims/developer-reference/smart-voice-effect-example?spm=a2c4g.11186623.0.0.13091ee6Pw4Jqz). Example: "zhimiao_emo,zhilun".
         self.voice = voice
+        # Volume of the voiceover audio. Default value: 1. Valid values: 0 to 10.0. Decimal values are supported. Example: 0.5.
         self.volume = volume
 
     def validate(self):
@@ -599,12 +689,28 @@ class SubmitSmartClipTaskRequestEditingConfigSpeechConfigAsrConfig(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Caption alignment.
+        # TopLeft: Top-left corner of the video.
+        # TopCenter: Top center of the vertical axis of the video.
+        # TopRight: Top-right corner of the video.
+        # CenterLeft: Left side of the horizontal center line of the video.
+        # CenterCenter: Center of the video.
+        # CenterRight: Right side of the horizontal center line of the video.
+        # BottomLeft: Bottom-left corner of the video.
+        # BottomCenter: Bottom center of the vertical axis of the video.
+        # BottomRight: Bottom-right corner of the video.
         self.alignment = alignment
+        # Font of the caption text. For supported fonts, see the font list. Default font: SimSun.
         self.font = font
+        # Color of the caption text. Format: # followed by a hexadecimal value. Example: #ffffff.
         self.font_color = font_color
+        # Font size of the caption text. This size scales based on the source material size and the final output size. Default value: 0. Maximum value: 5000.
         self.font_size = font_size
+        # Letter spacing of the caption text, in pixels.
         self.spacing = spacing
+        # Horizontal distance from the top-left corner of the caption text to the top-left corner of the output video. You can specify this value as a percentage or in pixels. If the value is between 0 and 0.9999, it represents a percentage of the output video width. If the value is an integer greater than or equal to 2, it represents an absolute pixel value. Default value: 0. This coordinate scales based on the source material size and the final output size.
         self.x = x
+        # Vertical distance from the top-left corner of the caption text to the top-left corner of the output video. You can specify this value as a percentage or in pixels. If the value is between 0 and 0.9999, it represents a percentage of the output video height. If the value is an integer greater than or equal to 2, it represents an absolute pixel value. Default value: 0. This coordinate scales based on the source material size and the final output size.
         self.y = y
 
     def validate(self):
@@ -668,6 +774,7 @@ class SubmitSmartClipTaskRequestEditingConfigMediaConfig(DaraModel):
         self,
         volume: float = None,
     ):
+        # Volume of the video material. 0 means mute.
         self.volume = volume
 
     def validate(self):
@@ -696,7 +803,18 @@ class SubmitSmartClipTaskRequestEditingConfigBackgroundMusicConfig(DaraModel):
         style: str = None,
         volume: float = None,
     ):
+        # Background music style. Default value: empty. If background music is already configured in InputConfig, this field does not take effect.
+        # Valid values:
+        # bgm-beauty: Fashion
+        # bgm-chinese-style: Chinese style
+        # bgm-cuisine: Food
+        # bgm-dynamic: Dynamic
+        # bgm-quirky: Quirky
+        # bgm-relaxing: Relaxing
+        # bgm-romantic: Romantic
+        # bgm-upbeat: Upbeat
         self.style = style
+        # Volume of the background music. Valid values: 0 to 10.0.
         self.volume = volume
 
     def validate(self):

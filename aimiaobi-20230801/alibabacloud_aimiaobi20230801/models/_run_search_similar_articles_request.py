@@ -16,11 +16,18 @@ class RunSearchSimilarArticlesRequest(DaraModel):
         url: str = None,
         workspace_id: str = None,
     ):
+        # Communication configuration parameters.
         self.chat_config = chat_config
+        # Document type.
         self.doc_type = doc_type
+        # Article title.
         self.title = title
+        # Article URL.
+        # 
         # This parameter is required.
         self.url = url
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -75,6 +82,7 @@ class RunSearchSimilarArticlesRequestChatConfig(DaraModel):
         self,
         search_param: main_models.RunSearchSimilarArticlesRequestChatConfigSearchParam = None,
     ):
+        # Search configuration parameters.
         self.search_param = search_param
 
     def validate(self):
@@ -116,18 +124,31 @@ class RunSearchSimilarArticlesRequestChatConfigSearchParam(DaraModel):
         start_time: int = None,
         tags: List[str] = None,
     ):
+        # Category UUID
         self.category_uuids = category_uuids
+        # Creation Time cutoff, in UNIX timestamp format.
         self.create_time_end = create_time_end
+        # Start Creation Time.
         self.create_time_start = create_time_start
+        # Document ID
         self.doc_ids = doc_ids
+        # Document types: text, image, video, audio, pdf, word, ppt, etc.
         self.doc_types = doc_types
+        # Document UUID
         self.doc_uuids = doc_uuids
+        # End Time
         self.end_time = end_time
+        # Extension Field 1
         self.extend_1 = extend_1
+        # Extension Field 2
         self.extend_2 = extend_2
+        # Extension Field 3
         self.extend_3 = extend_3
+        # Search sources.
         self.search_sources = search_sources
+        # Start Time
         self.start_time = start_time
+        # Tag Name
         self.tags = tags
 
     def validate(self):
@@ -237,8 +258,17 @@ class RunSearchSimilarArticlesRequestChatConfigSearchParamSearchSources(DaraMode
         dataset_name: str = None,
         name: str = None,
     ):
+        # Search source type:
+        # 
+        # - SystemSearch: Built-in system search.
+        # 
+        # - CustomSemanticSearch: Custom semantic index search.
+        # 
+        # - ThirdSearch: Third-party API search.
         self.code = code
+        # Unique identifier of the search source.
         self.dataset_name = dataset_name
+        # Search source name (optional).
         self.name = name
 
     def validate(self):

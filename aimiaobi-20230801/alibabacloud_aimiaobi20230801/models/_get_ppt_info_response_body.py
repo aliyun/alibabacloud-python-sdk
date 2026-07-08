@@ -17,12 +17,17 @@ class GetPptInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,12 +93,19 @@ class GetPptInfoResponseBodyData(DaraModel):
         query: str = None,
         task_id: str = None,
     ):
+        # Download links for the exported files.
         self.export_file_link = export_file_link
+        # The ID of the export task.
         self.export_task_id = export_task_id
+        # The URL of the cover image for the PPT artifact.
         self.ppt_artifact_cover = ppt_artifact_cover
+        # The ID of the PPT artifact.
         self.ppt_artifact_id = ppt_artifact_id
+        # The ID of the PPT process.
         self.ppt_process_id = ppt_process_id
+        # The query for the PPT task.
         self.query = query
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

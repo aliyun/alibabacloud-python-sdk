@@ -17,11 +17,17 @@ class ListIntervenesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. True for success, false for failure.
         self.success = success
 
     def validate(self):
@@ -86,9 +92,13 @@ class ListIntervenesResponseBodyData(DaraModel):
         total_size: int = None,
     ):
         self.code = code
+        # The list of intervention items.
         self.intervene_list = intervene_list
+        # The page number.
         self.page_index = page_index
+        # The page size.
         self.page_size = page_size
+        # The total number of pages.
         self.total_size = total_size
 
     def validate(self):
@@ -149,8 +159,9 @@ class ListIntervenesResponseBodyDataInterveneList(DaraModel):
         id: str = None,
         query: str = None,
     ):
-        # id
+        # The ID.
         self.id = id
+        # The intervention query.
         self.query = query
 
     def validate(self):

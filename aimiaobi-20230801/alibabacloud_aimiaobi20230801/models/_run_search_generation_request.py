@@ -19,13 +19,28 @@ class RunSearchGenerationRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Context.
         self.agent_context = agent_context
+        # Session configuration.
         self.chat_config = chat_config
+        # Image URL. Used for image search and hybrid text-and-image (prompt) search generation.
         self.file_url = file_url
+        # Model ID:
+        # 
+        # - quanmiao-max: Quanmiao-Max
+        # 
+        # - quanmiao-plus: Quanmiao-Plus
         self.model_id = model_id
+        # Original session identifier. Usually empty. When non-empty, it indicates that the current conversation is based on the referenced session. The system loads parameters and search results from that session and replaces the generated result. Use this for re-generation, changing data sources, or adding new agents.
         self.original_session_id = original_session_id
+        # Search query.
         self.prompt = prompt
+        # Unique identifier for the session task.
+        # 
+        # > By default, you do not need to provide a TaskId. The system generates one automatically. If you specify the same TaskId in subsequent requests, those tasks are grouped into the same conversation.
         self.task_id = task_id
+        # ID of the Alibaba Cloud Model Studio workspace. To learn how to obtain this ID, see [How to use workspaces](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -108,13 +123,76 @@ class RunSearchGenerationRequestChatConfig(DaraModel):
         search_models: List[str] = None,
         search_param: main_models.RunSearchGenerationRequestChatConfigSearchParam = None,
     ):
+        # Enable deep thinking.
         self.enable_thinking = enable_thinking
+        # List of generation options to skip.
         self.exclude_generate_options = exclude_generate_options
+        # Detailedness of the response:
+        # 
+        # - concise: Concise (default)
+        # 
+        # - enhance: Enhanced
+        # 
+        # - free: Free-form
+        # 
+        # - deepResearch: Research-level
         self.generate_level = generate_level
+        # Generation technology:
+        # 
+        # - copilotReference: Q\\&A-style search
+        # 
+        # - copilotPrecise: Pure search
         self.generate_technology = generate_technology
+        # Plain-text prompt template for Q\\&A-style search and summary generation. Must include variables {query} and {content}. Example:
+        # 
+        # ```text
+        # # Role
+        # You are an expert article retrieval and Q&A assistant.
+        # 
+        # # Goal
+        # Answer or explain the user\\"s question "{query}" using the retrieved articles.
+        # 
+        # # Constraints
+        # - Filter by knowledge date if the question mentions a specific date.
+        # - Structure responses clearly.
+        # - Keep responses concise.
+        # - Do not use external data or fabricate answers.
+        # - If unable to answer, respond in the appropriate language:
+        #   - Chinese: "Unable to answer based on known information."
+        #   - English: "Unable to answer based on the known information."
+        # 
+        # # Input
+        # ## Retrieved articles
+        # {content}
+        # ```
         self.model_custom_prompt_template = model_custom_prompt_template
+        # Plain-text prompt template for Q\\&A-style search and summary generation. Must include variables {query} and {content}. Example:
+        # 
+        # ```text
+        # # Role
+        # You are an expert article retrieval and Q&A assistant.
+        # 
+        # # Goal
+        # Answer or explain the user\\"s question "{query}" using the retrieved articles and images.
+        # 
+        # # Constraints
+        # - Filter by knowledge date if the question mentions a specific date.
+        # - Structure responses clearly.
+        # - Keep responses concise.
+        # - Ignore article content if image content fully answers the question.
+        # - Do not use external data or fabricate answers.
+        # - If unable to answer, respond in the appropriate language:
+        #     - Chinese: "Unable to answer based on known information."
+        #     - English: "Unable to answer based on the known information."
+        # 
+        # # Input
+        # ## Retrieved articles
+        # {content}
+        # ```
         self.model_custom_vl_prompt_template = model_custom_vl_prompt_template
+        # List of search types.
         self.search_models = search_models
+        # Search parameters.
         self.search_param = search_param
 
     def validate(self):
@@ -202,22 +280,39 @@ class RunSearchGenerationRequestChatConfigSearchParam(DaraModel):
         start_time: int = None,
         tags: List[str] = None,
     ):
+        # Unique category identifier.
         self.category_uuids = category_uuids
+        # End creation time, in UNIX timestamp format.
         self.create_time_end = create_time_end
+        # Start creation time, in UNIX timestamp format.
         self.create_time_start = create_time_start
+        # Array of document IDs.
         self.doc_ids = doc_ids
+        # Unique document identifier.
         self.doc_uuids = doc_uuids
+        # End time.
         self.end_time = end_time
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Search scope list.
         self.multimodal_search_types = multimodal_search_types
+        # Voice search threshold: Applies only to custom data sources (range: 0 to 1).
         self.search_audio_min_score = search_audio_min_score
+        # Image search threshold: Applies only to custom data sources (range: 0 to 1).
         self.search_image_min_score = search_image_min_score
+        # List of search sources.
         self.search_sources = search_sources
+        # Text search threshold: Applies only to custom data sources (range: 0 to 1).
         self.search_text_min_score = search_text_min_score
+        # Video search threshold: Applies only to custom data sources (range: 0 to 1).
         self.search_video_min_score = search_video_min_score
+        # Start time.
         self.start_time = start_time
+        # Tags.
         self.tags = tags
 
     def validate(self):
@@ -350,7 +445,15 @@ class RunSearchGenerationRequestChatConfigSearchParamSearchSources(DaraModel):
         code: str = None,
         dataset_name: str = None,
     ):
+        # Search source type:
+        # 
+        # - SystemSearch: Built-in system search
+        # 
+        # - CustomSemanticSearch: Custom semantic index search
+        # 
+        # - ThirdSearch: Third-party API search
         self.code = code
+        # Unique identifier for the search source: matches the dataset name shown in the console, such as 4cb0eda3fad841758262dbe8d61191.
         self.dataset_name = dataset_name
 
     def validate(self):
@@ -384,6 +487,7 @@ class RunSearchGenerationRequestAgentContext(DaraModel):
         self,
         biz_context: main_models.RunSearchGenerationRequestAgentContextBizContext = None,
     ):
+        # Business context.
         self.biz_context = biz_context
 
     def validate(self):
@@ -422,15 +526,25 @@ class RunSearchGenerationRequestAgentContextBizContext(DaraModel):
         user_back: str = None,
         user_back_keywords: List[str] = None,
     ):
+        # Follow-up question.
         self.ask_user = ask_user
+        # List of recommended keywords for follow-up questions.
         self.ask_user_keywords = ask_user_keywords
+        # Current step.
         self.current_step = current_step
+        # User-provided or selected multimodal data.
         self.multimodal_media_selection = multimodal_media_selection
+        # Next step.
         self.next_step = next_step
+        # Skip follow-up questions.
         self.skip_current_supplement = skip_current_supplement
+        # Data type needed for reasoning: searchQuery.
         self.supplement_data_type = supplement_data_type
+        # Specifies whether supplementation is required.
         self.supplement_enable = supplement_enable
+        # User feedback to follow-up questions.
         self.user_back = user_back
+        # List of keywords from user feedback to follow-up questions.
         self.user_back_keywords = user_back_keywords
 
     def validate(self):
@@ -519,11 +633,17 @@ class RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection(D
         session_id: str = None,
         text_search_result: main_models.RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResult = None,
     ):
+        # Unique identifier for the original session. Used to retrieve full results from that session. Required only for media asset search.
         self.original_session_id = original_session_id
+        # Used only for clustering. Pass ClusterGenerate when performing secondary clustering on cluster subtopics.
         self.search_model = search_model
+        # When SearchModel = ClusterGenerate, enter the topic name for the subtopic. Include quotation marks if the original value has them.
         self.search_model_data_value = search_model_data_value
+        # The type of referenced data source. Valid values: ‒ all: Retrieves the full data from historical sessions. This value is supported only in clustering scenarios. ‒ selected: Retrieves data from textSearchResult during generation.
         self.selection_type = selection_type
+        # Unique identifier for the session used as reference during generation. Used for clustering in media asset search.
         self.session_id = session_id
+        # Text search results.
         self.text_search_result = text_search_result
 
     def validate(self):
@@ -583,6 +703,7 @@ class RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTe
         self,
         search_result: List[main_models.RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTextSearchResultSearchResult] = None,
     ):
+        # List of text search results.
         self.search_result = search_result
 
     def validate(self):
@@ -630,18 +751,31 @@ class RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelectionTe
         title: str = None,
         url: str = None,
     ):
+        # Relevant chunks.
         self.chunks = chunks
+        # Content.
         self.content = content
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Publication time.
         self.pub_time = pub_time
+        # Relevance score.
         self.score = score
+        # Unique identifier for the search source. Same as searchSource.datasetName.
         self.search_source = search_source
+        # Name of the search source.
         self.search_source_name = search_source_name
+        # Search source type. Same as searchSource.code.
         self.search_source_type = search_source_type
+        # Source.
         self.source = source
+        # Article summary.
         self.summary = summary
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):

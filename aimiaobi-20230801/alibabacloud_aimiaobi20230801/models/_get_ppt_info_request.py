@@ -12,7 +12,9 @@ class GetPptInfoRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.external_user_id = external_user_id
+        # The ID of the task.
         self.task_id = task_id
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

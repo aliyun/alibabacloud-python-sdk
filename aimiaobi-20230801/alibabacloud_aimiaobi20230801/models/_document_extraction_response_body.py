@@ -17,11 +17,17 @@ class DocumentExtractionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -96,15 +102,25 @@ class DocumentExtractionResponseBodyData(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Author
         self.author = author
+        # Content
         self.content = content
+        # Custom unique ID for the document
         self.doc_id = doc_id
+        # Internal unique identifier for the document
         self.doc_uuid = doc_uuid
+        # Publication time
         self.pub_time = pub_time
+        # Source
         self.source = source
+        # Article summary
         self.summary = summary
+        # Tag
         self.tag = tag
+        # Title
         self.title = title
+        # Article URL
         self.url = url
 
     def validate(self):

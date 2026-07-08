@@ -19,14 +19,21 @@ class ListWritingStylesResponseBody(DaraModel):
         success: str = None,
         total_count: int = None,
     ):
+        # The error code.
         self.code = code
+        # The list of writing styles.
         self.data = data
+        # The maximum number of results returned.
         self.max_results = max_results
+        # The error message.
         self.message = message
+        # The next token.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -111,13 +118,21 @@ class ListWritingStylesResponseBodyData(DaraModel):
         style_name: str = None,
         template_define: main_models.WritingStyleTemplateDefine = None,
     ):
+        # The template definition for step-by-step writing.
         self.distribute_step_template_define = distribute_step_template_define
+        # Indicates whether step-by-step writing is supported.
         self.distribute_writing = distribute_writing
+        # The icon for the writing style, represented by a character.
         self.emoji = emoji
+        # The description of the writing style.
         self.style_description = style_description
+        # The image for the writing style.
         self.style_image = style_image
+        # The unique key of the writing style.
         self.style_key = style_key
+        # The name of the writing style.
         self.style_name = style_name
+        # The template definition for the writing style.
         self.template_define = template_define
 
     def validate(self):

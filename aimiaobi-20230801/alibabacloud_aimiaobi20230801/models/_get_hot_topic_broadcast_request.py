@@ -23,17 +23,30 @@ class GetHotTopicBroadcastRequest(DaraModel):
         topics: List[str] = None,
         workspace_id: str = None,
     ):
+        # Whether to compute the total token count
         self.calc_total_token = calc_total_token
+        # categorization Filter
         self.category = category
+        # Current page number
         self.current = current
+        # hot spot Version
         self.hot_topic_version = hot_topic_version
+        # Full-text index for hot spot Regions (when this parameter is present, current does not take effect)
         self.location_query = location_query
+        # List of Regions for news retrieval (keyword filtering)
         self.locations = locations
+        # Full-text index (full-text retrieval for title, hot spot summary, and Region) (when this parameter is present, current does not take effect)
         self.query = query
+        # Page size
         self.size = size
+        # Custom output style configuration
         self.step_for_custom_summary_style_config = step_for_custom_summary_style_config
+        # Hot Spot News Broadcast Content Configuration
         self.step_for_news_broadcast_content_config = step_for_news_broadcast_content_config
+        # topic Filter
         self.topics = topics
+        # UUID of the Alibaba Cloud Model Studio workspace: obtain the [Workspace ID](https://help.aliyun.com/document_detail/2587495.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -135,8 +148,11 @@ class GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig(DaraModel):
         custom_hot_value_weights: List[main_models.GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights] = None,
         topic_count: int = None,
     ):
+        # List of selected channels
         self.categories = categories
+        # Custom hot spot weight
         self.custom_hot_value_weights = custom_hot_value_weights
+        # topic Quantity
         self.topic_count = topic_count
 
     def validate(self):
@@ -185,7 +201,9 @@ class GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValue
         dimension: str = None,
         weight: int = None,
     ):
+        # Dimension key
         self.dimension = dimension
+        # weight
         self.weight = weight
 
     def validate(self):
@@ -221,8 +239,11 @@ class GetHotTopicBroadcastRequestStepForCustomSummaryStyleConfig(DaraModel):
         summary_model: str = None,
         summary_prompt: str = None,
     ):
+        # Summary – number of images
         self.summary_image_count = summary_image_count
+        # Summary model
         self.summary_model = summary_model
+        # Summary - Custom Prompt
         self.summary_prompt = summary_prompt
 
     def validate(self):

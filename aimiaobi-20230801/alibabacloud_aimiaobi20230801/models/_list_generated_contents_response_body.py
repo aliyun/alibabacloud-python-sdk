@@ -20,14 +20,23 @@ class ListGeneratedContentsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # Status code
         self.code = code
+        # Page number
         self.current = current
+        # Document list
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Number of items per page
         self.size = size
+        # Operation status: true means success. false means failure.
         self.success = success
+        # Total number of items
         self.total = total
 
     def validate(self):
@@ -127,22 +136,51 @@ class ListGeneratedContentsResponseBodyData(DaraModel):
         update_user: str = None,
         uuid: str = None,
     ):
+        # Content: rich text
         self.content = content
+        # Content domain (content category)
+        # 
+        # - media: Media writing
+        # 
+        # - government: Government document writing
+        # 
+        # - office: Office writing
+        # 
+        # - market: Marketing writing
+        # 
+        # - custom: Custom writing
+        # 
+        # - commentGenerate: Opinion generation
         self.content_domain = content_domain
+        # Content: plain text
         self.content_text = content_text
+        # Creation time
         self.create_time = create_time
+        # Creator
         self.create_user = create_user
+        # Device ID
         self.device_id = device_id
+        # File attributes
         self.file_attr = file_attr
+        # File ID
         self.file_key = file_key
+        # Document ID
         self.id = id
+        # Keywords
         self.keyword_list = keyword_list
+        # Keywords (string)
         self.keywords = keywords
+        # Last prompt used to generate this document
         self.prompt = prompt
+        # Conversation task ID
         self.task_id = task_id
+        # Title
         self.title = title
+        # Update time
         self.update_time = update_time
+        # Updater
         self.update_user = update_user
+        # UUID traceability ID
         self.uuid = uuid
 
     def validate(self):
@@ -271,9 +309,13 @@ class ListGeneratedContentsResponseBodyDataFileAttr(DaraModel):
         tmp_url: str = None,
         width: int = None,
     ):
+        # File name
         self.file_name = file_name
+        # Video height
         self.height = height
+        # Temporary URL for video file access. Expires in one hour.
         self.tmp_url = tmp_url
+        # Video width
         self.width = width
 
     def validate(self):

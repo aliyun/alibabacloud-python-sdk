@@ -15,12 +15,17 @@ class GetBiddingRemainLimitNumResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Fault message
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Is successful: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class GetBiddingRemainLimitNumResponseBodyData(DaraModel):
         self,
         remain_num: int = None,
     ):
+        # Remaining quantity
         self.remain_num = remain_num
 
     def validate(self):

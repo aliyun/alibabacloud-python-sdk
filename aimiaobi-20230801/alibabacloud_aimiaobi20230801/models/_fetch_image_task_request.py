@@ -13,10 +13,16 @@ class FetchImageTaskRequest(DaraModel):
         article_task_id: str = None,
         task_id_list: List[str] = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Article task ID
+        # 
         # This parameter is required.
         self.article_task_id = article_task_id
+        # List of task IDs
+        # 
         # This parameter is required.
         self.task_id_list = task_id_list
 

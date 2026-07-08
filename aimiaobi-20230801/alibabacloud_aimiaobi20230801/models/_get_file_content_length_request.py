@@ -11,8 +11,12 @@ class GetFileContentLengthRequest(DaraModel):
         file_url: str = None,
         workspace_id: str = None,
     ):
+        # Document name
         self.doc_name = doc_name
+        # File URL
         self.file_url = file_url
+        # The unique identifier of an Alibaba Cloud Model Studio workspace. Get your [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

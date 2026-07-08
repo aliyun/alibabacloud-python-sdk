@@ -17,12 +17,17 @@ class FetchParseDocumentLayoutTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class FetchParseDocumentLayoutTaskResponseBodyData(DaraModel):
         layout_result: main_models.FetchParseDocumentLayoutTaskResponseBodyDataLayoutResult = None,
         task_stats: str = None,
     ):
+        # Structured content after formatting
         self.layout_result = layout_result
+        # Task status
         self.task_stats = task_stats
 
     def validate(self):
@@ -119,6 +126,7 @@ class FetchParseDocumentLayoutTaskResponseBodyDataLayoutResult(DaraModel):
         self,
         elements: List[main_models.FetchParseDocumentLayoutTaskResponseBodyDataLayoutResultElements] = None,
     ):
+        # Returned element data
         self.elements = elements
 
     def validate(self):
@@ -157,9 +165,13 @@ class FetchParseDocumentLayoutTaskResponseBodyDataLayoutResultElements(DaraModel
         index: float = None,
         type: str = None,
     ):
+        # Content
         self.content = content
+        # For headings, content with heading numbers removed
         self.format_content = format_content
+        # Index order of each element
         self.index = index
+        # Type
         self.type = type
 
     def validate(self):

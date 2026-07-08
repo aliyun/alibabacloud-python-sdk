@@ -15,10 +15,18 @@ class RunKeywordsExtractionGenerationRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Custom prompt.
         self.prompt = prompt
+        # Data required for generation.
+        # 
         # This parameter is required.
         self.reference_data = reference_data
+        # The unique identifier for the associated creation article.
+        # 
+        # > TaskId is not required by default; the system automatically generates it. If subsequent tasks use the same TaskId, they belong to the same conversation group.
         self.task_id = task_id
+        # The unique identifier for the Alibaba Cloud Model Studio workspace. Obtain the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -67,6 +75,8 @@ class RunKeywordsExtractionGenerationRequestReferenceData(DaraModel):
         self,
         contents: List[str] = None,
     ):
+        # List of content.
+        # 
         # This parameter is required.
         self.contents = contents
 

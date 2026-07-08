@@ -15,14 +15,25 @@ class RunWritingShrinkRequest(DaraModel):
         workspace_id: str = None,
         writing_config_shrink: str = None,
     ):
+        # The ID of the original conversation to use for regeneration.
         self.origin_session_id = origin_session_id
+        # The prompt.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The reference article data for writing.
         self.reference_data_shrink = reference_data_shrink
+        # The ID of a single-turn conversation.
         self.session_id = session_id
+        # The ID of the task. You can reuse the same task ID in a multi-turn conversation.
+        # 
+        # > You do not need to specify TaskId. The system generates one automatically. If you use the same TaskId for multiple tasks, they are grouped into a single conversation.
         self.task_id = task_id
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The writing configuration.
         self.writing_config_shrink = writing_config_shrink
 
     def validate(self):

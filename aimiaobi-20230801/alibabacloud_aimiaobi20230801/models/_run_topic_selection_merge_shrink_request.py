@@ -11,9 +11,14 @@ class RunTopicSelectionMergeShrinkRequest(DaraModel):
         topics_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Custom merge prompt
         self.prompt = prompt
+        # List of topic perspectives to merge
+        # 
         # This parameter is required.
         self.topics_shrink = topics_shrink
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

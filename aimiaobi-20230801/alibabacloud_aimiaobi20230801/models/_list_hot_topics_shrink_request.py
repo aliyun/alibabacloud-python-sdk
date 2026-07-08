@@ -20,18 +20,33 @@ class ListHotTopicsShrinkRequest(DaraModel):
         topics_shrink: str = None,
         with_news: bool = None,
     ):
+        # The unique identifier of the business space.
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The end of the creation time filter range (inclusive). The value must be in the `yyyy-MM-dd HH:mm:ss` format.
         self.create_time_end = create_time_end
+        # The start of the creation time filter range (inclusive). The value must be in the `yyyy-MM-dd HH:mm:ss` format.
         self.create_time_start = create_time_start
+        # Filters the results by a custom business field. The service performs an exact keyword match on this field. The value can be up to 255 characters long.
         self.custom_field = custom_field
+        # The maximum number of results to return for a single request. If this parameter is not specified, the service uses a default value.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. If you do not specify this parameter, the service returns the first page of results. You can get this token from the `NextToken` response parameter of the previous request.
         self.next_token = next_token
+        # A list of topic IDs.
         self.topic_ids_shrink = topic_ids_shrink
+        # The keywords for a full-text search on hot topics.
         self.topic_query = topic_query
+        # Filters the results by hot topic source. For a list of supported hot topic sources, call the `ListHotSources` operation.
+        # 
+        # `Aggregation`: represents the aggregated list of national hot topics.
         self.topic_source = topic_source
+        # Filters the results by data version.
         self.topic_version = topic_version
+        # Filters the results by hot topic.
         self.topics_shrink = topics_shrink
+        # Specifies whether to include news in the response.
         self.with_news = with_news
 
     def validate(self):

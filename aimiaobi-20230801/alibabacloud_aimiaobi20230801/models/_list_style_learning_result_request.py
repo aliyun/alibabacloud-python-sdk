@@ -11,9 +11,13 @@ class ListStyleLearningResultRequest(DaraModel):
         current: int = None,
         size: int = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Page number
         self.current = current
+        # Number of items per page. Default is 10.
         self.size = size
 
     def validate(self):

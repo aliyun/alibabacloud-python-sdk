@@ -17,11 +17,17 @@ class ListInterveneCntResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -85,10 +91,15 @@ class ListInterveneCntResponseBodyData(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # List of count information
         self.cnt_list = cnt_list
+        # Intervention service status code
         self.code = code
+        # Total number of pages
         self.page_cnt = page_cnt
+        # Page number
         self.page_index = page_index
+        # Page size
         self.page_size = page_size
 
     def validate(self):

@@ -14,12 +14,18 @@ class ExportPptArtifactRequest(DaraModel):
         workspace_id: str = None,
         zip: bool = None,
     ):
+        # Indicates if the exported artifact is editable.
         self.edit = edit
+        # The export file type.
         self.export_file_type = export_file_type
         self.external_user_id = external_user_id
+        # The ID of the PPT artifact.
+        # 
         # This parameter is required.
         self.ppt_artifact_id = ppt_artifact_id
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # Indicates if the exported file is compressed into a ZIP package.
         self.zip = zip
 
     def validate(self):

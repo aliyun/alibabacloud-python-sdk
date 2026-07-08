@@ -20,14 +20,23 @@ class ListWebReviewPointsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Business Data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of return results
         self.max_results = max_results
+        # Fault description
         self.message = message
+        # Token for the next page
         self.next_token = next_token
+        # Request UUID
         self.request_id = request_id
+        # Indicates whether the operation succeeded: true for success, false for failure
         self.success = success
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -115,10 +124,15 @@ class ListWebReviewPointsResponseBodyData(DaraModel):
         ratio: str = None,
         view_points: List[main_models.ListWebReviewPointsResponseBodyDataViewPoints] = None,
     ):
+        # Current viewpoint
         self.attitude = attitude
+        # Viewpoint type
         self.attitude_type = attitude_type
+        # List of user opinions
         self.comments = comments
+        # Proportion of the current opinion
         self.ratio = ratio
+        # List of topic perspectives
         self.view_points = view_points
 
     def validate(self):
@@ -189,8 +203,11 @@ class ListWebReviewPointsResponseBodyDataViewPoints(DaraModel):
         point: str = None,
         summary: str = None,
     ):
+        # Outline
         self.outlines = outlines
+        # Generated point
         self.point = point
+        # Summary
         self.summary = summary
 
     def validate(self):
@@ -239,7 +256,9 @@ class ListWebReviewPointsResponseBodyDataViewPointsOutlines(DaraModel):
         outline: str = None,
         summary: str = None,
     ):
+        # Outline
         self.outline = outline
+        # Outline summary
         self.summary = summary
 
     def validate(self):
@@ -277,10 +296,15 @@ class ListWebReviewPointsResponseBodyDataComments(DaraModel):
         url: str = None,
         username: str = None,
     ):
+        # Source
         self.source = source
+        # Content
         self.text = text
+        # title
         self.title = title
+        # Current URL
         self.url = url
+        # username
         self.username = username
 
     def validate(self):

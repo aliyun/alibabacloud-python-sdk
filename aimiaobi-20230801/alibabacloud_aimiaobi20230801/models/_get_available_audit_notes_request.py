@@ -10,7 +10,10 @@ class GetAvailableAuditNotesRequest(DaraModel):
         note_id: str = None,
         workspace_id: str = None,
     ):
+        # The rule library ID. If not specified, defaults to Default.
         self.note_id = note_id
+        # The unique identifier of your Alibaba Cloud Model Studio workspace. Get your [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

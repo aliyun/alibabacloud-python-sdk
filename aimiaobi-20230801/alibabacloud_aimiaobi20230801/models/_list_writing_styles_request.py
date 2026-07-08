@@ -12,10 +12,16 @@ class ListWritingStylesRequest(DaraModel):
         scene: str = None,
         workspace_id: str = None,
     ):
+        # The maximum number of results to return.
         self.max_results = max_results
+        # Pagination token
         self.next_token = next_token
+        # Filters by writing scenario.
+        # 
         # This parameter is required.
         self.scene = scene
+        # [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

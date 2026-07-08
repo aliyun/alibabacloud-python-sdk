@@ -20,15 +20,23 @@ class ListAuditContentErrorTypesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Error code
         self.code = code
+        # List of audit dimensions
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of records returned in this response
         self.max_results = max_results
+        # Error message
         self.message = message
+        # Token for the next page
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
+        # Total number of records
         self.total_count = total_count
 
     def validate(self):
@@ -114,8 +122,11 @@ class ListAuditContentErrorTypesResponseBodyData(DaraModel):
         major_class_name: str = None,
         sub_classes: List[main_models.ListAuditContentErrorTypesResponseBodyDataSubClasses] = None,
     ):
+        # Main audit dimension code
         self.major_class_code = major_class_code
+        # Sub-audit dimension name
         self.major_class_name = major_class_name
+        # List of sub-audit dimensions
         self.sub_classes = sub_classes
 
     def validate(self):
@@ -164,7 +175,9 @@ class ListAuditContentErrorTypesResponseBodyDataSubClasses(DaraModel):
         class_code: str = None,
         class_name: str = None,
     ):
+        # Sub-audit dimension code
         self.class_code = class_code
+        # Sub-audit dimension name
         self.class_name = class_name
 
     def validate(self):

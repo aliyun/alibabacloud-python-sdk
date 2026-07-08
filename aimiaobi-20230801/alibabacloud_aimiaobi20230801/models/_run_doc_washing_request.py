@@ -17,16 +17,27 @@ class RunDocWashingRequest(DaraModel):
         writing_type_name: str = None,
         writing_type_ref_doc: str = None,
     ):
+        # Model ID
         self.model_id = model_id
+        # Additional prompt requirements
         self.prompt = prompt
+        # The article to rewrite
+        # 
         # This parameter is required.
         self.reference_content = reference_content
+        # Channel ID
         self.session_id = session_id
+        # Topic of the rewritten article
         self.topic = topic
+        # Required word count after rewriting
         self.word_number = word_number
+        # Unique identifier for Alibaba Cloud Model Studio workspace: Get [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # Writing style type name
         self.writing_type_name = writing_type_name
+        # Example article for writing style
         self.writing_type_ref_doc = writing_type_ref_doc
 
     def validate(self):

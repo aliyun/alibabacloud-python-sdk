@@ -17,11 +17,17 @@ class GetDatasetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request fails.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -91,14 +97,23 @@ class GetDatasetResponseBodyData(DaraModel):
         search_dataset_enable: int = None,
     ):
         self.access_level = access_level
+        # The time when the dataset was created.
         self.create_time = create_time
+        # The user who created the dataset.
         self.create_user = create_user
+        # The search configuration of the dataset.
         self.dataset_config = dataset_config
+        # The display name of the dataset.
         self.dataset_description = dataset_description
+        # The ID of the dataset.
         self.dataset_id = dataset_id
+        # The name of the dataset.
         self.dataset_name = dataset_name
+        # The type of the dataset.
         self.dataset_type = dataset_type
+        # The document processing configuration.
         self.document_handle_config = document_handle_config
+        # The switch that enables or disables search for the dataset.
         self.search_dataset_enable = search_dataset_enable
 
     def validate(self):
@@ -185,6 +200,7 @@ class GetDatasetResponseBodyDataDocumentHandleConfig(DaraModel):
         self,
         disable_handle_multimodal_media: bool = None,
     ):
+        # Specifies whether to disable the processing logic for multimedia files. Default value: false.
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
 
     def validate(self):
@@ -213,7 +229,9 @@ class GetDatasetResponseBodyDataDatasetConfig(DaraModel):
         search_source_config: main_models.GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig = None,
         search_source_configs: List[main_models.GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs] = None,
     ):
+        # The configuration items for the dataset.
         self.search_source_config = search_source_config
+        # Third-party search: API definition.
         self.search_source_configs = search_source_configs
 
     def validate(self):
@@ -261,9 +279,13 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs(DaraModel):
         search_source_response_config: main_models.GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfig = None,
         size: int = None,
     ):
+        # A sample query keyword. This keyword is used to test whether the search source is available.
         self.demo_query = demo_query
+        # The API request configuration.
         self.search_source_request_config = search_source_request_config
+        # The API response configuration.
         self.search_source_response_config = search_source_response_config
+        # The default number of data entries for requests and responses.
         self.size = size
 
     def validate(self):
@@ -314,6 +336,7 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResp
         self,
         jq_nodes: List[main_models.GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes] = None,
     ):
+        # The node configurations.
         self.jq_nodes = jq_nodes
 
     def validate(self):
@@ -352,9 +375,13 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResp
         path: str = None,
         type: str = None,
     ):
+        # The child node configurations.
         self.jq_nodes = jq_nodes
+        # The key of the node.
         self.key = key
+        # The path of the node.
         self.path = path
+        # The data type of the node. Valid values: string, number, list, object, and base.
         self.type = type
 
     def validate(self):
@@ -411,9 +438,13 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResp
         path: str = None,
         type: str = None,
     ):
+        # The child node configurations.
         self.jq_nodes = jq_nodes
+        # The key of the node.
         self.key = key
+        # The path of the node.
         self.path = path
+        # The data type of the node. Valid values: string, number, list, object, and base.
         self.type = type
 
     def validate(self):
@@ -469,8 +500,11 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceResp
         path: str = None,
         type: str = None,
     ):
+        # The key of the node.
         self.key = key
+        # The path of the node.
         self.path = path
+        # The data type of the node. Valid values: string, number, list, object, and base.
         self.type = type
 
     def validate(self):
@@ -517,13 +551,21 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequ
         socket_timeout: int = None,
         url: str = None,
     ):
+        # The request body.
         self.body = body
+        # The connection timeout period.
         self.connect_timeout = connect_timeout
+        # The HTTP request headers.
         self.headers = headers
+        # The request method.
         self.method = method
+        # The request path parameters.
         self.params = params
+        # Specifies whether to enable path parameters.
         self.path_params_enable = path_params_enable
+        # The read timeout period.
         self.socket_timeout = socket_timeout
+        # The API URL.
         self.url = url
 
     def validate(self):
@@ -613,9 +655,13 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequ
         value_format: str = None,
         value_type: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
+        # This parameter is valid only when \\`ValueType\\` is set to \\`time\\`.
         self.value_format = value_format
+        # The data type of the parameter value. Default value: string.
         self.value_type = value_type
 
     def validate(self):
@@ -664,9 +710,13 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequ
         value_format: str = None,
         value_type: str = None,
     ):
+        # The name of the parameter.
         self.name = name
+        # The value of the parameter.
         self.value = value
+        # This parameter is valid only when \\`ValueType\\` is set to \\`time\\`.
         self.value_format = value_format
+        # The data type of the parameter value. Default value: string.
         self.value_type = value_type
 
     def validate(self):
@@ -715,9 +765,13 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig(DaraModel):
         tag_generate_enable: str = None,
         tag_search_enable: str = None,
     ):
+        # Specifies whether to include the key-value pairs of metadata in the generation. Default value: true.
         self.metadata_key_value_generate_enable = metadata_key_value_generate_enable
+        # Specifies whether to include the key-value pairs of metadata in the search. Default value: true.
         self.metadata_key_value_search_enable = metadata_key_value_search_enable
+        # Specifies whether to include tags in the generation. Default value: true.
         self.tag_generate_enable = tag_generate_enable
+        # Specifies whether to include tags in the search. Default value: true.
         self.tag_search_enable = tag_search_enable
 
     def validate(self):

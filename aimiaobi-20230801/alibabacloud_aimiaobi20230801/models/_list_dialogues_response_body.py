@@ -20,14 +20,23 @@ class ListDialoguesResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # Status code.
         self.code = code
+        # Page number of the current page.
         self.current = current
+        # List of generation history records.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Unique identifier for the request.
         self.request_id = request_id
+        # Number of items per page.
         self.size = size
+        # Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -116,11 +125,17 @@ class ListDialoguesResponseBodyData(DaraModel):
         task_id: str = None,
         user: str = None,
     ):
+        # Model output.
         self.bot = bot
+        # Creation time.
         self.create_time = create_time
+        # Creator.
         self.create_user = create_user
+        # Generation type. Valid values: 1 (creation) and 2 (intelligent search). Default value: 2.
         self.dialogue_type = dialogue_type
+        # Task ID.
         self.task_id = task_id
+        # User input.
         self.user = user
 
     def validate(self):

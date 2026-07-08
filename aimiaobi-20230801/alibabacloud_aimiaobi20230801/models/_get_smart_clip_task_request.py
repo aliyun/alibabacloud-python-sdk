@@ -10,8 +10,14 @@ class GetSmartClipTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Unique identifier of the task.
+        # 
+        # > You do not need to specify TaskId. The system generates it automatically. If you use the same TaskId for multiple tasks, those tasks belong to the same conversation group.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Unique identifier of your Alibaba Cloud Model Studio workspace. To get the workspace ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

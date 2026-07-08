@@ -16,11 +16,18 @@ class RunQuickWritingRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Referenced articles
         self.articles = articles
+        # Other writing parameters. Choose either prompt or writingParams.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # Use the specified search source list.
         self.search_sources = search_sources
+        # Task ID. Reuse the same task ID for multi-turn conversations.
         self.task_id = task_id
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -91,7 +98,9 @@ class RunQuickWritingRequestSearchSources(DaraModel):
         code: str = None,
         dataset_name: str = None,
     ):
+        # SystemSearch: system-built-in search. CustomSemanticSearch: custom semantic index search. ThirdSearch: third-party API search.
         self.code = code
+        # Unique identifier of the data source
         self.dataset_name = dataset_name
 
     def validate(self):
@@ -127,8 +136,11 @@ class RunQuickWritingRequestArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Article content
         self.content = content
+        # Article title
         self.title = title
+        # Article URL
         self.url = url
 
     def validate(self):

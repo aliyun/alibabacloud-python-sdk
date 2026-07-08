@@ -19,16 +19,27 @@ class ListAutoClipsTaskRequest(DaraModel):
         task_type: str = None,
         workspace_id: str = None,
     ):
+        # The task end time.
         self.create_time_end = create_time_end
+        # The start time of the task.
         self.create_time_start = create_time_start
+        # Page number
         self.current = current
+        # Deprecated
         self.max_results = max_results
+        # Deprecated
         self.next_token = next_token
+        # Number of items per page. Default is 10.
         self.size = size
+        # Deprecated
         self.skip = skip
+        # Task name
         self.task_name = task_name
+        # Task status
         self.task_status = task_status
+        # Task type
         self.task_type = task_type
+        # Model Studio workspace
         self.workspace_id = workspace_id
 
     def validate(self):

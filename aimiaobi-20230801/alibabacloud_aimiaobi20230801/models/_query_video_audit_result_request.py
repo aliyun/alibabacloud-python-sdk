@@ -10,10 +10,12 @@ class QueryVideoAuditResultRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
-        # 视频审校任务的唯一标识，长度固定32位
+        # Task ID
         # 
         # This parameter is required.
         self.task_id = task_id
+        # Workspace ID
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -13,8 +13,11 @@ class InsertInterveneRuleRequest(DaraModel):
         agent_key: str = None,
         intervene_rule_config: main_models.InsertInterveneRuleRequestInterveneRuleConfig = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Intervention rule configuration
         self.intervene_rule_config = intervene_rule_config
 
     def validate(self):
@@ -56,12 +59,19 @@ class InsertInterveneRuleRequestInterveneRuleConfig(DaraModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # Answer configuration
         self.answer_config = answer_config
+        # Activation configuration
         self.effect_config = effect_config
+        # Intervention configuration list
         self.intervene_config_list = intervene_config_list
+        # Intervention type
         self.intervene_type = intervene_type
+        # Namespace list
         self.namespace_list = namespace_list
+        # Rule ID
         self.rule_id = rule_id
+        # Rule name
         self.rule_name = rule_name
 
     def validate(self):
@@ -147,9 +157,11 @@ class InsertInterveneRuleRequestInterveneRuleConfigInterveneConfigList(DaraModel
         operation_type: int = None,
         query: str = None,
     ):
-        # id
+        # ID
         self.id = id
+        # Operation type
         self.operation_type = operation_type
+        # Intervention query configuration
         self.query = query
 
     def validate(self):
@@ -191,8 +203,11 @@ class InsertInterveneRuleRequestInterveneRuleConfigEffectConfig(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # Activation type
         self.effect_type = effect_type
+        # End time
         self.end_time = end_time
+        # Start time
         self.start_time = start_time
 
     def validate(self):
@@ -234,8 +249,11 @@ class InsertInterveneRuleRequestInterveneRuleConfigAnswerConfig(DaraModel):
         message: str = None,
         namespace: str = None,
     ):
+        # Answer type
         self.answer_type = answer_type
+        # Answer content
         self.message = message
+        # Namespace
         self.namespace = namespace
 
     def validate(self):

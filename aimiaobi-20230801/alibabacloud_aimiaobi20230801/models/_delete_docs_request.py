@@ -12,8 +12,12 @@ class DeleteDocsRequest(DaraModel):
         doc_ids: List[str] = None,
         workspace_id: str = None,
     ):
+        # Document ID array.
+        # 
         # This parameter is required.
         self.doc_ids = doc_ids
+        # Unique identifier for the Alibaba Cloud Model Studio workspace. Get the [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

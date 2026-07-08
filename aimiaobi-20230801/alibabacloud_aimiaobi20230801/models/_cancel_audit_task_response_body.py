@@ -14,12 +14,17 @@ class CancelAuditTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code
         self.code = code
+        # Indicates whether the audit task was canceled successfully
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
-        # Id of the request
+        # The ID of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):

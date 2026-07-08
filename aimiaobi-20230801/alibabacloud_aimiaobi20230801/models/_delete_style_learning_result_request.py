@@ -10,8 +10,12 @@ class DeleteStyleLearningResultRequest(DaraModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # Unique identity of the workspace: AgentKey
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Style learning ID
+        # 
         # This parameter is required.
         self.id = id
 

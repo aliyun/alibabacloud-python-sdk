@@ -14,8 +14,11 @@ class RunCustomHotTopicAnalysisResponseBody(DaraModel):
         payload: main_models.RunCustomHotTopicAnalysisResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # The response header.
         self.header = header
+        # The response body.
         self.payload = payload
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,7 +64,9 @@ class RunCustomHotTopicAnalysisResponseBodyPayload(DaraModel):
         output: main_models.RunCustomHotTopicAnalysisResponseBodyPayloadOutput = None,
         usage: main_models.RunCustomHotTopicAnalysisResponseBodyPayloadUsage = None,
     ):
+        # The output.
         self.output = output
+        # The token usage.
         self.usage = usage
 
     def validate(self):
@@ -102,8 +107,11 @@ class RunCustomHotTopicAnalysisResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of tokens used for the input.
         self.input_tokens = input_tokens
+        # The number of tokens for the output.
         self.output_tokens = output_tokens
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -149,12 +157,19 @@ class RunCustomHotTopicAnalysisResponseBodyPayloadOutput(DaraModel):
         text: str = None,
         topic_id: str = None,
     ):
+        # The reference articles.
         self.articles = articles
+        # The list of follow-up questions.
         self.ask_user = ask_user
+        # The ID of the asynchronous task.
         self.async_task_id = async_task_id
+        # The custom perspective for topic selection.
         self.attitude = attitude
+        # The rewritten query.
         self.search_query = search_query
+        # The text generation result.
         self.text = text
+        # The topic ID.
         self.topic_id = topic_id
 
     def validate(self):
@@ -235,15 +250,25 @@ class RunCustomHotTopicAnalysisResponseBodyPayloadOutputArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
         self.content = content
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # The internal unique ID of the document.
         self.doc_uuid = doc_uuid
+        # The publication time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The tag.
         self.tag = tag
+        # The title.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):
@@ -331,12 +356,19 @@ class RunCustomHotTopicAnalysisResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The Server-Sent Events (SSE) event. Valid values: task-started: The task starts. task-finished: The task is complete. task-failed: The task failed.
         self.event = event
+        # The parent session ID.
         self.origin_session_id = origin_session_id
+        # The session ID.
         self.session_id = session_id
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

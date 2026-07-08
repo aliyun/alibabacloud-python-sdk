@@ -11,10 +11,32 @@ class UpdateGeneralConfigRequest(DaraModel):
         config_value: str = None,
         workspace_id: str = None,
     ):
+        # The unique identifier of the configuration item. The following configurations are supported:
+        # 
+        # - Text search threshold for data sources (double): \\`searchGenerate.searchTextMinScore\\`
+        # 
+        # - Image search threshold for data sources (double): \\`searchGenerate.searchImageMinScore\\`
+        # 
+        # - Video search threshold for data sources (double): \\`searchGenerate.searchVideoMinScore\\`
+        # 
+        # - Audio search threshold for data sources (double): \\`searchGenerate.searchAudioMinScore\\`
+        # 
+        # - Plain text prompt template for answer summarization in general Q\\&A search (string): \\`searchGenerate.sumQaAgentPrompt\\`
+        # 
+        # - Text and image prompt template for answer summarization in general Q\\&A search (string): \\`searchGenerate.sumQaAgentVlPrompt\\`
+        # 
+        # - Plain text prompt template for answer summarization in enhanced Q\\&A search (string): \\`searchGenerate.sumQaEnhanceAgentPrompt\\`
+        # 
+        # - Text and image prompt template for answer summarization in enhanced Q\\&A search (string): \\`searchGenerate.sumQaEnhanceAgentVlPrompt\\`
+        # 
         # This parameter is required.
         self.config_key = config_key
+        # The value of the configuration item.
+        # 
         # This parameter is required.
         self.config_value = config_value
+        # The unique identifier of the Model Studio workspace. For more information, see [Get a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -19,13 +19,27 @@ class SubmitCustomSourceTopicAnalysisRequest(DaraModel):
         topics_file_url: str = None,
         workspace_id: str = None,
     ):
+        # The types of analysis for hot topic selection. Multiple values are supported. If you omit this parameter, the service analyzes all types by default. If you pass an empty array, the service performs only clustering and skips the analysis of hot topics for selection.
+        # `HotViewPoints`: Analyzes perspectives on hot topics.
+        # `WebReviewPoints`: Analyzes user viewpoints. This requires comments.
+        # `TimedViewPoints`: Analyzes perspectives on timeliness.
+        # `FreshViewPoints`: Analyzes novel perspectives.
+        # `TopicSummary`: Summarizes news content.
         self.analysis_types = analysis_types
+        # The file type. Valid values: `json` (JSON array) and `jsonLine` (JSON Lines).
         self.file_type = file_type
+        # The file URL. You must specify either `FileUrl` or `News`. For details on the file structure, see the description of the `News` parameter.
         self.file_url = file_url
+        # The maximum number of topics to analyze. By default, the service sorts clustered news by count in descending order and analyzes the top 50 topics. The maximum value is 200.
         self.max_topic_size = max_topic_size
+        # A list of news articles. You must specify either `News` or `FileUrl`.
         self.news = news
+        # A list of topics.
         self.topics = topics
+        # The URL of the file that contains the topic list. The file must be in JSON Lines format, with each line representing a single JSON object.
         self.topics_file_url = topics_file_url
+        # [The Model Studio workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -116,9 +130,13 @@ class SubmitCustomSourceTopicAnalysisRequestTopics(DaraModel):
         topic: str = None,
         topic_url: str = None,
     ):
+        # A custom field. You can use this field to filter results when you call the `ListHotTopics` operation.
         self.custom_field = custom_field
+        # A list of news articles.
         self.news = news
+        # The topic name.
         self.topic = topic
+        # The URL of the topic. This value is passed through to the `ListHotTopics` response without being processed.
         self.topic_url = topic_url
 
     def validate(self):
@@ -177,11 +195,17 @@ class SubmitCustomSourceTopicAnalysisRequestNews(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # A list of comments.
         self.comments = comments
+        # The content of the news article.
         self.content = content
+        # The publication time. The format must be `YYYY-MM-dd HH:mm:ss`.
         self.pub_time = pub_time
+        # The source of the news article.
         self.source = source
+        # The title of the news article.
         self.title = title
+        # The URL of the news article.
         self.url = url
 
     def validate(self):
@@ -247,6 +271,7 @@ class SubmitCustomSourceTopicAnalysisRequestNewsComments(DaraModel):
         self,
         text: str = None,
     ):
+        # The comment text.
         self.text = text
 
     def validate(self):

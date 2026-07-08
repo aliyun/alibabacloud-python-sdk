@@ -15,10 +15,16 @@ class SubmitCustomHotTopicBroadcastJobRequest(DaraModel):
         topics: List[str] = None,
         workspace_id: str = None,
     ):
+        # The configuration for the news broadcast job.
+        # 
         # This parameter is required.
         self.hot_topic_broadcast_config = hot_topic_broadcast_config
+        # The version of the hot topic.
         self.hot_topic_version = hot_topic_version
+        # The topic filter.
         self.topics = topics
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -68,8 +74,12 @@ class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig(DaraModel):
         step_for_custom_summary_style_config: main_models.SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCustomSummaryStyleConfig = None,
         step_for_news_broadcast_content_config: main_models.SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfig = None,
     ):
+        # The configuration for the custom output style.
+        # 
         # This parameter is required.
         self.step_for_custom_summary_style_config = step_for_custom_summary_style_config
+        # The configuration for the broadcast content.
+        # 
         # This parameter is required.
         self.step_for_news_broadcast_content_config = step_for_news_broadcast_content_config
 
@@ -111,8 +121,11 @@ class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsB
         custom_hot_value_weights: List[main_models.SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsBroadcastContentConfigCustomHotValueWeights] = None,
         topic_count: int = None,
     ):
+        # The list of selected channels.
         self.categories = categories
+        # The custom weights for hot topics.
         self.custom_hot_value_weights = custom_hot_value_weights
+        # The number of topics.
         self.topic_count = topic_count
 
     def validate(self):
@@ -162,8 +175,11 @@ class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForNewsB
         dimension_name: str = None,
         weight: int = None,
     ):
+        # The key of the dimension.
         self.dimension = dimension
+        # The name of the dimension.
         self.dimension_name = dimension_name
+        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -205,8 +221,11 @@ class SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfigStepForCusto
         summary_model: str = None,
         summary_prompt: str = None,
     ):
+        # The number of images in the summary.
         self.summary_image_count = summary_image_count
+        # The summary model.
         self.summary_model = summary_model
+        # The custom prompt for the summary.
         self.summary_prompt = summary_prompt
 
     def validate(self):

@@ -16,12 +16,19 @@ class RunPptOutlineGenerationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The response header.
         self.header = header
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message.
         self.message = message
+        # The response body.
         self.payload = payload
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\`: The request failed.
         self.success = success
 
     def validate(self):
@@ -90,6 +97,7 @@ class RunPptOutlineGenerationResponseBodyPayload(DaraModel):
         self,
         output: main_models.RunPptOutlineGenerationResponseBodyPayloadOutput = None,
     ):
+        # The output.
         self.output = output
 
     def validate(self):
@@ -119,6 +127,7 @@ class RunPptOutlineGenerationResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # The output content.
         self.text = text
 
     def validate(self):
@@ -152,12 +161,19 @@ class RunPptOutlineGenerationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The SSE event. \\`task-started\\`: The task starts. \\`task-finished\\`: The task is complete. \\`task-failed\\`: The task failed.
         self.event = event
+        # The session ID.
         self.session_id = session_id
+        # The status code.
         self.status_code = status_code
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

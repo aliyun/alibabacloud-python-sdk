@@ -19,18 +19,33 @@ class CreateGeneratedContentRequest(DaraModel):
         title: str = None,
         uuid: str = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The body of the content, in rich text format.
+        # 
         # This parameter is required.
         self.content = content
+        # The domain for content generation.
         self.content_domain = content_domain
+        # The body of the content, in plain text format.
         self.content_text = content_text
+        # The keywords.
         self.keywords = keywords
+        # The last generated prompt.
         self.prompt = prompt
+        # The unique identifier of the task.
+        # 
+        # > The system automatically generates a task ID. You do not need to specify this parameter. If you specify the same task ID for multiple tasks, they are grouped into a single conversation.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The title.
+        # 
         # This parameter is required.
         self.title = title
+        # The traceability UUID.
         self.uuid = uuid
 
     def validate(self):

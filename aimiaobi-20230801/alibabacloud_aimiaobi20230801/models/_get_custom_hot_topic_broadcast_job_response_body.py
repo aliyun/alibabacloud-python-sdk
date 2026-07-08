@@ -15,11 +15,17 @@ class GetCustomHotTopicBroadcastJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):
@@ -81,8 +87,23 @@ class GetCustomHotTopicBroadcastJobResponseBodyData(DaraModel):
         hot_topic_version: str = None,
         status: str = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The version number of the hot topic.
         self.hot_topic_version = hot_topic_version
+        # The status of the task.
+        # 
+        # - PENDING: The task is pending.
+        # 
+        # - RUNNING: The task is running.
+        # 
+        # - SUCCESSED: The task is successful.
+        # 
+        # - SUSPENDED: The task is paused.
+        # 
+        # - FAILED: The task failed.
+        # 
+        # - CANCELED: The task is canceled.
         self.status = status
 
     def validate(self):

@@ -11,9 +11,14 @@ class RunSummaryGenerateRequest(DaraModel):
         prompt: str = None,
         workspace_id: str = None,
     ):
+        # Content to summarize.
+        # 
         # This parameter is required.
         self.content = content
+        # Custom prompt for summary generation.
         self.prompt = prompt
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

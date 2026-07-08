@@ -10,8 +10,12 @@ class GetCustomSourceTopicAnalysisTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The unique identifier of the workspace. It is the AgentKey.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

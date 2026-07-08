@@ -14,8 +14,11 @@ class RunDocIntroductionResponseBody(DaraModel):
         payload: main_models.RunDocIntroductionResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # response header
         self.header = header
+        # response body
         self.payload = payload
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -61,7 +64,9 @@ class RunDocIntroductionResponseBodyPayload(DaraModel):
         output: main_models.RunDocIntroductionResponseBodyPayloadOutput = None,
         usage: main_models.RunDocIntroductionResponseBodyPayloadUsage = None,
     ):
+        # Outputs
         self.output = output
+        # token usage
         self.usage = usage
 
     def validate(self):
@@ -102,8 +107,11 @@ class RunDocIntroductionResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Input token quantity
         self.input_tokens = input_tokens
+        # Output token quantity
         self.output_tokens = output_tokens
+        # Total token quantity
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -145,8 +153,11 @@ class RunDocIntroductionResponseBodyPayloadOutput(DaraModel):
         key_point: str = None,
         summary: str = None,
     ):
+        # Array of segment introductions
         self.introductions = introductions
+        # Key point content
         self.key_point = key_point
+        # Outline summary
         self.summary = summary
 
     def validate(self):
@@ -197,9 +208,13 @@ class RunDocIntroductionResponseBodyPayloadOutputIntroductions(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # Array of position information
         self.blocks = blocks
+        # Starting page number of multiple text blocks
         self.start_page_id = start_page_id
+        # Summary of this segment
         self.summary = summary
+        # Title of this segment
         self.title = title
 
     def validate(self):
@@ -259,12 +274,19 @@ class RunDocIntroductionResponseBodyPayloadOutputIntroductionsBlocks(DaraModel):
         x: int = None,
         y: int = None,
     ):
+        # Start Time of the segment
         self.begin_time = begin_time
+        # End Time of the segment
         self.end_time = end_time
+        # Height of the text block
         self.height = height
+        # Page number where the text block is located
         self.page_id = page_id
+        # Width of the text block
         self.width = width
+        # X coordinate of the top-left corner of the block
         self.x = x
+        # Y coordinate of the top-left corner of the block
         self.y = y
 
     def validate(self):
@@ -334,12 +356,19 @@ class RunDocIntroductionResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # error code
         self.error_code = error_code
+        # error message.
         self.error_message = error_message
+        # Type of management event
         self.event = event
+        # Description of the management event
         self.event_info = event_info
+        # session ID
         self.session_id = session_id
+        # Job ID
         self.task_id = task_id
+        # End-to-end trace ID
         self.trace_id = trace_id
 
     def validate(self):

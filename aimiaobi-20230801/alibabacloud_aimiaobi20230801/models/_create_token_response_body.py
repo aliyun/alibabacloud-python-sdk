@@ -15,11 +15,17 @@ class CreateTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success and \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class CreateTokenResponseBodyData(DaraModel):
         expired_time: int = None,
         token: str = None,
     ):
+        # The expiration time.
         self.expired_time = expired_time
+        # The access token.
         self.token = token
 
     def validate(self):

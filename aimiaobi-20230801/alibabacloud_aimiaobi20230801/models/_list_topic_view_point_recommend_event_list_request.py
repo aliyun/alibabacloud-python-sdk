@@ -12,10 +12,15 @@ class ListTopicViewPointRecommendEventListRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Hot spot event ID.
         self.id = id
+        # Maximum number of results to return. Defaults to 5.
         self.max_results = max_results
+        # Token for the next page.
         self.next_token = next_token
 
     def validate(self):

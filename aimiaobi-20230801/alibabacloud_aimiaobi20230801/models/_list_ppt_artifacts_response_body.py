@@ -22,16 +22,27 @@ class ListPptArtifactsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The current page.
         self.current = current
+        # Indicates whether the deletion succeeded.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The number of entries returned in this response.
         self.max_results = max_results
+        # The error message.
         self.message = message
+        # The token for the next page.
         self.next_token = next_token
+        # The unique ID of the request.
         self.request_id = request_id
+        # The number of entries per page. The default is 10.
         self.size = size
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -132,11 +143,17 @@ class ListPptArtifactsResponseBodyData(DaraModel):
         title: str = None,
         update_time: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The properties of the work file.
         self.file_attr = file_attr
+        # The preview image of the work file.
         self.file_key = file_key
+        # The unique ID of the document.
         self.id = id
+        # The title.
         self.title = title
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -199,9 +216,13 @@ class ListPptArtifactsResponseBodyDataFileAttr(DaraModel):
         tmp_url: str = None,
         width: int = None,
     ):
+        # The file name.
         self.file_name = file_name
+        # The height.
         self.height = height
+        # The preview image of the work file.
         self.tmp_url = tmp_url
+        # The width of the video.
         self.width = width
 
     def validate(self):

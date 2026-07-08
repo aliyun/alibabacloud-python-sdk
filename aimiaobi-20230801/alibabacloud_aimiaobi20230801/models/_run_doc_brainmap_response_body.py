@@ -12,8 +12,11 @@ class RunDocBrainmapResponseBody(DaraModel):
         payload: main_models.RunDocBrainmapResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header.
         self.header = header
+        # Response payload.
         self.payload = payload
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,7 +62,9 @@ class RunDocBrainmapResponseBodyPayload(DaraModel):
         output: main_models.RunDocBrainmapResponseBodyPayloadOutput = None,
         usage: main_models.RunDocBrainmapResponseBodyPayloadUsage = None,
     ):
+        # Output data.
         self.output = output
+        # Token usage statistics.
         self.usage = usage
 
     def validate(self):
@@ -100,8 +105,11 @@ class RunDocBrainmapResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens.
         self.input_tokens = input_tokens
+        # Number of output tokens.
         self.output_tokens = output_tokens
+        # Total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -141,6 +149,7 @@ class RunDocBrainmapResponseBodyPayloadOutput(DaraModel):
         self,
         content: str = None,
     ):
+        # Mind map content in JSON format.
         self.content = content
 
     def validate(self):
@@ -174,12 +183,19 @@ class RunDocBrainmapResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Event type.
         self.event = event
+        # Event description.
         self.event_info = event_info
+        # Session ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
+        # Trace ID.
         self.trace_id = trace_id
 
     def validate(self):

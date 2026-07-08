@@ -12,8 +12,12 @@ class DocumentExtractionRequest(DaraModel):
         agent_key: str = None,
         urls: List[str] = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # List of URLs to extract.
+        # 
         # This parameter is required.
         self.urls = urls
 

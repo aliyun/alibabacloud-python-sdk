@@ -20,14 +20,23 @@ class ListCustomViewPointsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of results returned.
         self.max_results = max_results
+        # The error description.
         self.message = message
+        # The token for the next page of results.
         self.next_token = next_token
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\`: The request failed.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -119,14 +128,23 @@ class ListCustomViewPointsResponseBodyData(DaraModel):
         task_status: int = None,
         view_points: List[main_models.ListCustomViewPointsResponseBodyDataViewPoints] = None,
     ):
+        # The ID of the asynchronous task that analyzes the custom viewpoint.
         self.async_task_id = async_task_id
+        # The viewpoint.
         self.attitude = attitude
+        # The time when the viewpoint was created.
         self.create_time = create_time
+        # The ID of the user who created the viewpoint.
         self.create_user = create_user
+        # The ID of the custom viewpoint.
         self.id = id
+        # The task execution status. Valid values: PENDING, RUNNING, SUCCEEDED, SUSPENDED, FAILED, and CANCELED.
         self.status = status
+        # The error message for the task execution.
         self.task_error_message = task_error_message
+        # The task execution status. 0: PENDING, 1: RUNNING, 2: SUCCEEDED, 3: PAUSED, 4: FAILED (retriable), 5: FAILED (non-retriable), 6: CANCELED.
         self.task_status = task_status
+        # A list of topic selection viewpoints.
         self.view_points = view_points
 
     def validate(self):
@@ -212,8 +230,11 @@ class ListCustomViewPointsResponseBodyDataViewPoints(DaraModel):
         point: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outlines = outlines
+        # The generated viewpoint.
         self.point = point
+        # The summary.
         self.summary = summary
 
     def validate(self):
@@ -262,7 +283,9 @@ class ListCustomViewPointsResponseBodyDataViewPointsOutlines(DaraModel):
         outline: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outline = outline
+        # The summary of the outline.
         self.summary = summary
 
     def validate(self):

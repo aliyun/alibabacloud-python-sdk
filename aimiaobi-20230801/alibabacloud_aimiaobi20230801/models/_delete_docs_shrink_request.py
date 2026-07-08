@@ -10,8 +10,12 @@ class DeleteDocsShrinkRequest(DaraModel):
         doc_ids_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Document ID array.
+        # 
         # This parameter is required.
         self.doc_ids_shrink = doc_ids_shrink
+        # Unique identifier for the Alibaba Cloud Model Studio workspace. Get the [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

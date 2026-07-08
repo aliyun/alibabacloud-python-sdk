@@ -17,13 +17,24 @@ class ListAnalysisTagDetailByTaskIdRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # A list of categories for filtering.
         self.categories = categories
+        # The current page number.
         self.current = current
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # The token for the next page of results.
         self.next_token = next_token
+        # The number of records to request.
         self.size = size
+        # The unique ID of the task.
+        # 
+        # > This parameter is optional. The system automatically generates a task ID. If you specify the same TaskId for multiple tasks, the tasks are considered part of the same conversation.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

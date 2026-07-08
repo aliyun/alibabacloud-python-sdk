@@ -15,17 +15,17 @@ class SubmitVideoAuditResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 业务处理结果状态码
+        # Business status code
         self.code = code
-        # 视频审校任务提交后的返回数据
+        # Submitted task result data
         self.data = data
-        # HTTP响应状态码
+        # HTTP status code
         self.http_status_code = http_status_code
-        # 业务处理结果描述信息
+        # Return message
         self.message = message
-        # 本次API请求的唯一标识
+        # Request ID
         self.request_id = request_id
-        # 请求是否处理成功
+        # Is successful
         self.success = success
 
     def validate(self):
@@ -85,7 +85,7 @@ class SubmitVideoAuditResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # 视频审校任务的唯一标识，可用于后续查询任务状态和结果
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

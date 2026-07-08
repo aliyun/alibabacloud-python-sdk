@@ -11,9 +11,14 @@ class RunAbbreviationContentRequest(DaraModel):
         prompt: str = None,
         workspace_id: str = None,
     ):
+        # Content to abbreviate.
+        # 
         # This parameter is required.
         self.content = content
+        # Custom prompt.
         self.prompt = prompt
+        # Unique identifier for the Alibaba Cloud Model Studio workspace. Obtain the[ Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

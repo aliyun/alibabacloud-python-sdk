@@ -10,8 +10,12 @@ class FetchParseDocumentLayoutTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Content to be formatted
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Unique identifier of the Alibaba Cloud Model Studio workspace: [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -13,8 +13,11 @@ class InsertInterveneGlobalReplyRequest(DaraModel):
         agent_key: str = None,
         reply_messag_list: List[main_models.InsertInterveneGlobalReplyRequestReplyMessagList] = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # List of reply content
         self.reply_messag_list = reply_messag_list
 
     def validate(self):
@@ -57,7 +60,9 @@ class InsertInterveneGlobalReplyRequestReplyMessagList(DaraModel):
         message: str = None,
         reply_type: str = None,
     ):
+        # Reply content
         self.message = message
+        # Reply type
         self.reply_type = reply_type
 
     def validate(self):

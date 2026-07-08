@@ -12,8 +12,12 @@ class DeleteDataPermissionsRequest(DaraModel):
         ids: List[int] = None,
         workspace_id: str = None,
     ):
+        # The permission IDs.
+        # 
         # This parameter is required.
         self.ids = ids
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

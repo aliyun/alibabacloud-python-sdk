@@ -17,11 +17,17 @@ class GetEnterpriseVocAnalysisTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The result of the enterprise VOC analysis.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class GetEnterpriseVocAnalysisTaskResponseBodyData(DaraModel):
         status: str = None,
         usage: main_models.GetEnterpriseVocAnalysisTaskResponseBodyDataUsage = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The statistics overview.
         self.statistics_overview = statistics_overview
+        # The status of the task. Valid values: \\`PENDING\\` (pending), \\`RUNNING\\` (running), \\`SUCCESSED\\` (successful), \\`FAILED\\` (failed), and \\`CANCELED\\` (canceled).
         self.status = status
+        # The usage statistics.
         self.usage = usage
 
     def validate(self):
@@ -138,7 +148,9 @@ class GetEnterpriseVocAnalysisTaskResponseBodyDataUsage(DaraModel):
         input_tokens: int = None,
         output_tokens: int = None,
     ):
+        # The number of input tokens.
         self.input_tokens = input_tokens
+        # The number of output tokens.
         self.output_tokens = output_tokens
 
     def validate(self):
@@ -174,8 +186,11 @@ class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview(DaraModel):
         filter_dimension_statistics: main_models.GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics = None,
         tag_dimension_statistics: main_models.GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics = None,
     ):
+        # The total number of analyzed data entries.
         self.count = count
+        # The statistics of filter tags.
         self.filter_dimension_statistics = filter_dimension_statistics
+        # The statistics of content tags.
         self.tag_dimension_statistics = tag_dimension_statistics
 
     def validate(self):
@@ -220,6 +235,7 @@ class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimension
         self,
         tag_value_count_statistic: List[main_models.GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic] = None,
     ):
+        # The statistics of tag value counts.
         self.tag_value_count_statistic = tag_value_count_statistic
 
     def validate(self):
@@ -257,8 +273,11 @@ class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimension
         tag_task_type: str = None,
         value_count: int = None,
     ):
+        # The tag name.
         self.tag_name = tag_name
+        # The type of the tag mining task. Valid values: \\`singleTagValue\\` (single tag), \\`multiTagValues\\` (multiple tags), and \\`summaryAndOverview\\` (summary and overview).
         self.tag_task_type = tag_task_type
+        # The number of tag values.
         self.value_count = value_count
 
     def validate(self):
@@ -298,6 +317,7 @@ class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimens
         self,
         tag_value_count_statistic: List[main_models.GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic] = None,
     ):
+        # The statistics of tag value counts.
         self.tag_value_count_statistic = tag_value_count_statistic
 
     def validate(self):
@@ -335,8 +355,11 @@ class GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimens
         tag_task_type: str = None,
         value_count: int = None,
     ):
+        # The tag name.
         self.tag_name = tag_name
+        # The type of the tag mining task. Valid values: \\`singleTagValue\\` (single tag), \\`multiTagValues\\` (multiple tags), and \\`summaryAndOverview\\` (summary and overview).
         self.tag_task_type = tag_task_type
+        # The number of tag values.
         self.value_count = value_count
 
     def validate(self):

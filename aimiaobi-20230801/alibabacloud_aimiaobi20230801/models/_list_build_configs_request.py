@@ -11,9 +11,12 @@ class ListBuildConfigsRequest(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
         self.region_id = region_id
+        # Content category. Valid values: media or government.
         self.type = type
 
     def validate(self):

@@ -13,10 +13,15 @@ class SubmitAuditTaskRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the article to be audited.
         self.article_id = article_id
+        # The content to be audited.
         self.content = content
+        # The content to be audited, in HTML format.
         self.html_content = html_content
+        # The title of the article to be audited.
         self.title = title
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class GetCustomSourceTopicAnalysisTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success and \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -88,13 +94,22 @@ class GetCustomSourceTopicAnalysisTaskResponseBodyData(DaraModel):
         rt: int = None,
         usages: Dict[str, int] = None,
     ):
+        # The number of documents after clustering.
         self.cluster_count = cluster_count
+        # A list of news aggregation results.
         self.cluster_results = cluster_results
+        # The error message.
         self.error_message = error_message
+        # The maximum number of news articles in a cluster after aggregation.
         self.max_clustered_topic_news_size = max_clustered_topic_news_size
+        # The number of news articles after the file is parsed.
         self.parsed_news_size = parsed_news_size
+        # The status of the task. Valid values: \\`PENDING\\`, \\`RUNNING\\`, \\`SUCCESSED\\`, \\`FAILED\\`, and \\`CANCELED\\`.
         self.status = status
+        # The total runtime in milliseconds.
         self.rt = rt
+        # The token usage. The possible billable items are:
+        # quanmiaoMax, quanmiaoPlus
         self.usages = usages
 
     def validate(self):
@@ -173,7 +188,9 @@ class GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults(DaraModel):
         cluster_news: List[main_models.GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews] = None,
         topic: str = None,
     ):
+        # A list of aggregated news articles. The body text is not included.
         self.cluster_news = cluster_news
+        # The name of the aggregated topic.
         self.topic = topic
 
     def validate(self):
@@ -216,7 +233,9 @@ class GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews(
         title: str = None,
         url: str = None,
     ):
+        # The title of the news article.
         self.title = title
+        # The URL of the news article.
         self.url = url
 
     def validate(self):

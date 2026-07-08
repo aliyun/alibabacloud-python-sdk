@@ -15,11 +15,17 @@ class SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request ID
         self.request_id = request_id
+        # Success or failure: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # Unique task ID
         self.task_id = task_id
+        # Task name
         self.task_name = task_name
 
     def validate(self):

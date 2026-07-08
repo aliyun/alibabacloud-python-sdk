@@ -15,11 +15,17 @@ class AddDatasetDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -83,10 +89,25 @@ class AddDatasetDocumentResponseBodyData(DaraModel):
         error_message: str = None,
         status: int = None,
     ):
+        # The unique business ID of the document.
         self.doc_id = doc_id
+        # The unique system ID of the document.
         self.doc_uuid = doc_uuid
+        # The error code for the exception.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The status.
+        # 
+        # - 1: created
+        # 
+        # - 2: text index built
+        # 
+        # - 3: multimodal index built
+        # 
+        # - 100: full build completed
+        # 
+        # - 0: failed
         self.status = status
 
     def validate(self):

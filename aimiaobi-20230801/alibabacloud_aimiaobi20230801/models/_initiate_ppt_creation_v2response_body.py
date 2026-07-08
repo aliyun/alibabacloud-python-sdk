@@ -15,12 +15,17 @@ class InitiatePptCreationV2ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -86,12 +91,19 @@ class InitiatePptCreationV2ResponseBodyData(DaraModel):
         ppt_process_id: str = None,
         signature: str = None,
     ):
+        # An alert message related to service usage or status.
         self.alert = alert
+        # The AppKey for initializing the front-end component.
         self.app_key = app_key
+        # The ID of the export task.
         self.export_task_id = export_task_id
+        # The URL of the artifact cover.
         self.ppt_artifact_cover = ppt_artifact_cover
+        # The artifact ID. Use this ID to edit the artifact.
         self.ppt_artifact_id = ppt_artifact_id
+        # The process ID for creating the PPT, used to initialize the front-end component for artifact creation.
         self.ppt_process_id = ppt_process_id
+        # The signature for initializing the front-end component.
         self.signature = signature
 
     def validate(self):

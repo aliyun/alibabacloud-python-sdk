@@ -17,11 +17,17 @@ class ListVersionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -98,17 +104,29 @@ class ListVersionsResponseBodyData(DaraModel):
         version_name: str = None,
         version_status: int = None,
     ):
+        # Concurrency
         self.concurrent_count = concurrent_count
+        # Service expiration time
         self.end_time = end_time
+        # Number of instances
         self.instance_count = instance_count
+        # Instance ID
         self.instance_id = instance_id
+        # Order ID
         self.order_id = order_id
+        # Version type (TRIAL: trial edition, STANDARD: Standard Edition, CUSTOMIZE: custom edition)
         self.product_type = product_type
+        # Trial edition quota
         self.quota = quota
+        # Service start time
         self.start_time = start_time
+        # Trial edition usage count
         self.use_quota = use_quota
+        # Version details
         self.version_detail = version_detail
+        # Version
         self.version_name = version_name
+        # Validity status: 0 indicates active, 1 indicates expired (go to the renewal page), and 2 indicates unavailable (go to the purchase page)
         self.version_status = version_status
 
     def validate(self):

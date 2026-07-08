@@ -20,18 +20,32 @@ class AsyncUploadVideoShrinkRequest(DaraModel):
         video_shot_face_identity_count: int = None,
         workspace_id: str = None,
     ):
+        # Shot segmentation threshold. A smaller value increases sensitivity. Valid range is 1 to 10. Default value is 3.
         self.adaptive_threshold = adaptive_threshold
+        # The prompt for video understanding.
         self.anlysis_prompt = anlysis_prompt
+        # The similarity threshold for character recognition.
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
+        # Information about the reference video.
         self.reference_video_shrink = reference_video_shrink
+        # Removes captions from the material.
         self.remove_subtitle = remove_subtitle
+        # The structure of the video editing materials.
+        # 
         # This parameter is required.
         self.source_videos_shrink = source_videos_shrink
+        # The time interval for video understanding shots.
         self.split_interval = split_interval
+        # Job name
         self.task_name = task_name
+        # Task Type
         self.task_type = task_type
+        # Face information of the roles.
         self.video_roles_shrink = video_roles_shrink
+        # The number of frames sampled from a single shot for character matching.
         self.video_shot_face_identity_count = video_shot_face_identity_count
+        # [The ID of the Alibaba Cloud Model Studio workspace.](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

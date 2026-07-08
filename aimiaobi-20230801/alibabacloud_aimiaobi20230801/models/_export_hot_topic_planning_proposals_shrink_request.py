@@ -15,15 +15,39 @@ class ExportHotTopicPlanningProposalsShrinkRequest(DaraModel):
         topic_source: str = None,
         view_point_type: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Custom viewpoint ID. Use this parameter for custom viewpoint topic planning.
         self.custom_view_point_ids_shrink = custom_view_point_ids_shrink
+        # Document export format
+        # 
+        # - word: Export as a Word document
+        # 
+        # - xmind: Export as an XMind file
         self.export_type = export_type
+        # Filter topic planning documents by title
         self.titles_shrink = titles_shrink
+        # Hot list topic
+        # 
         # This parameter is required.
         self.topic = topic
+        # Hot list source
+        # 
         # This parameter is required.
         self.topic_source = topic_source
+        # Topic planning type
+        # 
+        # - CustomViewPoints: Custom viewpoint
+        # 
+        # - HotViewPoints: Popular viewpoint
+        # 
+        # - TimedViewPoints: Time-sensitive viewpoint
+        # 
+        # - WebReviewPoints: Public viewpoint
+        # 
+        # - FreshViewPoints: Fresh viewpoint
         self.view_point_type = view_point_type
 
     def validate(self):

@@ -17,11 +17,17 @@ class UpdateDatasetDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Business data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -88,13 +94,21 @@ class UpdateDatasetDocumentResponseBodyData(DaraModel):
         tags: List[str] = None,
         title: str = None,
     ):
+        # Category UUID
         self.category_uuid = category_uuid
+        # User-defined unique ID for the document.
         self.doc_id = doc_id
+        # Internal unique ID of the document.
         self.doc_uuid = doc_uuid
+        # Extension field 1
         self.extend_1 = extend_1
+        # Extension field 2
         self.extend_2 = extend_2
+        # Extension field 3
         self.extend_3 = extend_3
+        # Tags.
         self.tags = tags
+        # Document title.
         self.title = title
 
     def validate(self):

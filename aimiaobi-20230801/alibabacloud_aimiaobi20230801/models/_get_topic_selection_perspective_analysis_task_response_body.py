@@ -17,11 +17,17 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -88,13 +94,21 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyData(DaraModel):
         topic_summary_result: main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult = None,
         web_review_points_result: main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResult = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The analysis result of novel topic selection perspectives.
         self.fresh_view_points_result = fresh_view_points_result
+        # The analysis result of hot topic selection perspectives.
         self.hot_view_points_result = hot_view_points_result
+        # The status of the task. Valid values: PENDING, RUNNING, SUCCESSED, SUSPENDED, FAILED, and CANCELED.
         self.status = status
+        # The analysis result of time-sensitive topic selection perspectives.
         self.timed_view_points_result = timed_view_points_result
+        # The hot spot topic event.
         self.topic = topic
+        # The summary of the hot spot topic event.
         self.topic_summary_result = topic_summary_result
+        # The analysis result of online review topic selection perspectives.
         self.web_review_points_result = web_review_points_result
 
     def validate(self):
@@ -178,6 +192,7 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsRes
         self,
         attitudes: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudes] = None,
     ):
+        # A list of viewpoints from online reviews for topic selection.
         self.attitudes = attitudes
 
     def validate(self):
@@ -217,10 +232,15 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsRes
         ratio: str = None,
         view_points: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsResultAttitudesViewPoints] = None,
     ):
+        # The current viewpoint.
         self.attitude = attitude
+        # The type of the viewpoint.
         self.attitude_type = attitude_type
+        # A list of user comments.
         self.comments = comments
+        # The proportion of the current viewpoint.
         self.ratio = ratio
+        # A list of topic selection perspectives.
         self.view_points = view_points
 
     def validate(self):
@@ -291,8 +311,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsRes
         point: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outlines = outlines
+        # The generated perspective.
         self.point = point
+        # The summary.
         self.summary = summary
 
     def validate(self):
@@ -341,7 +364,9 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsRes
         outline: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outline = outline
+        # The summary of the outline.
         self.summary = summary
 
     def validate(self):
@@ -379,10 +404,15 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataWebReviewPointsRes
         url: str = None,
         username: str = None,
     ):
+        # The source.
         self.source = source
+        # The content.
         self.text = text
+        # The title.
         self.title = title
+        # The URL where the comment is located.
         self.url = url
+        # The username.
         self.username = username
 
     def validate(self):
@@ -434,6 +464,7 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult
         self,
         summaries: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResultSummaries] = None,
     ):
+        # A list of summaries.
         self.summaries = summaries
 
     def validate(self):
@@ -471,8 +502,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult
         summary: str = None,
         title: str = None,
     ):
+        # The articles referenced to generate the summary for this title.
         self.doc_list = doc_list
+        # The summary.
         self.summary = summary
+        # The title.
         self.title = title
 
     def validate(self):
@@ -522,8 +556,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTopicSummaryResult
         title: str = None,
         url: str = None,
     ):
+        # The source of the article.
         self.source = source
+        # The title of the article.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):
@@ -563,6 +600,7 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsRes
         self,
         attitudes: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudes] = None,
     ):
+        # A list of viewpoints for time-sensitive topic selection perspectives.
         self.attitudes = attitudes
 
     def validate(self):
@@ -605,13 +643,21 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsRes
         url: str = None,
         view_points: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsResultAttitudesViewPoints] = None,
     ):
+        # The current viewpoint.
         self.attitude = attitude
+        # The type of the viewpoint.
         self.attitude_type = attitude_type
+        # The time when the viewpoint was published.
         self.pub_time = pub_time
+        # The proportion of the current viewpoint.
         self.ratio = ratio
+        # The source of the news.
         self.source = source
+        # The current viewpoint. This is the same as the news title.
         self.title = title
+        # The URL of the news.
         self.url = url
+        # A list of topic selection perspectives.
         self.view_points = view_points
 
     def validate(self):
@@ -691,8 +737,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsRes
         point: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outlines = outlines
+        # The generated perspective.
         self.point = point
+        # The summary.
         self.summary = summary
 
     def validate(self):
@@ -741,7 +790,9 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataTimedViewPointsRes
         outline: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outline = outline
+        # The summary of the outline.
         self.summary = summary
 
     def validate(self):
@@ -775,6 +826,7 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         self,
         attitudes: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudes] = None,
     ):
+        # A list of viewpoints for hot topic selection perspectives.
         self.attitudes = attitudes
 
     def validate(self):
@@ -814,10 +866,15 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         ratio: str = None,
         view_points: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResultAttitudesViewPoints] = None,
     ):
+        # The current viewpoint.
         self.attitude = attitude
+        # The type of the viewpoint.
         self.attitude_type = attitude_type
+        # A list of related news.
         self.news = news
+        # The proportion of the current viewpoint.
         self.ratio = ratio
+        # A list of topic selection perspectives.
         self.view_points = view_points
 
     def validate(self):
@@ -888,8 +945,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         point: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outlines = outlines
+        # The generated perspective.
         self.point = point
+        # The summary.
         self.summary = summary
 
     def validate(self):
@@ -938,7 +998,9 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         outline: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outline = outline
+        # The summary of the outline.
         self.summary = summary
 
     def validate(self):
@@ -983,17 +1045,29 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataHotViewPointsResul
         topic: str = None,
         url: str = None,
     ):
+        # The news content.
         self.content = content
+        # The time when the article was created.
         self.create_time = create_time
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # The unique ID of the article.
         self.doc_uuid = doc_uuid
+        # The URLs of the images in the article.
         self.image_urls = image_urls
+        # The time when the article was published.
         self.pub_time = pub_time
+        # The source of the news.
         self.source = source
+        # The summary of the news.
         self.summary = summary
+        # The tags.
         self.tags = tags
+        # The title of the news.
         self.title = title
+        # The topic of the article.
         self.topic = topic
+        # The URL of the news.
         self.url = url
 
     def validate(self):
@@ -1087,6 +1161,7 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsRes
         self,
         attitudes: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudes] = None,
     ):
+        # A list of viewpoints for novel topic selection perspectives.
         self.attitudes = attitudes
 
     def validate(self):
@@ -1125,9 +1200,13 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsRes
         ratio: str = None,
         view_points: List[main_models.GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsResultAttitudesViewPoints] = None,
     ):
+        # The current viewpoint.
         self.attitude = attitude
+        # The type of the viewpoint.
         self.attitude_type = attitude_type
+        # The proportion of the current viewpoint.
         self.ratio = ratio
+        # A list of topic selection perspectives.
         self.view_points = view_points
 
     def validate(self):
@@ -1183,8 +1262,11 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsRes
         point: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outlines = outlines
+        # The generated perspective.
         self.point = point
+        # The summary.
         self.summary = summary
 
     def validate(self):
@@ -1233,7 +1315,9 @@ class GetTopicSelectionPerspectiveAnalysisTaskResponseBodyDataFreshViewPointsRes
         outline: str = None,
         summary: str = None,
     ):
+        # The outline.
         self.outline = outline
+        # The summary of the outline.
         self.summary = summary
 
     def validate(self):

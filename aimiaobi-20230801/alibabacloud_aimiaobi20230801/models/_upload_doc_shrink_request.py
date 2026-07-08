@@ -11,9 +11,14 @@ class UploadDocShrinkRequest(DaraModel):
         docs_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Folder where the document resides. If no value is provided, it defaults to "default".
         self.category_id = category_id
+        # Document
+        # 
         # This parameter is required.
         self.docs_shrink = docs_shrink
+        # Unique identifier (UUID) of the Alibaba Cloud Model Studio workspace: obtain the [Workspace ID](https://help.aliyun.com/document_detail/2587495.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

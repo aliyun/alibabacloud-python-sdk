@@ -11,8 +11,12 @@ class ListGeneralConfigsRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
+        # The current page number. The default value is 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The unique identifier of the Model Studio workspace. For more information, see [Get a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -14,9 +14,13 @@ class ListPptArtifactsRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.external_user_id = external_user_id
+        # The number of data entries to query in this request (deprecated).
         self.max_results = max_results
+        # The token for the next page.
         self.next_token = next_token
+        # The search keyword for the work name.
         self.query = query
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

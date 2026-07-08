@@ -10,8 +10,12 @@ class DeleteDatasetRequest(DaraModel):
         dataset_id: int = None,
         workspace_id: str = None,
     ):
+        # Unique identifier of the dataset
+        # 
         # This parameter is required.
         self.dataset_id = dataset_id
+        # Unique identifier of Alibaba Cloud Model Studio workspace: [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

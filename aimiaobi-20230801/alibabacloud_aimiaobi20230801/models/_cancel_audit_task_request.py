@@ -11,8 +11,11 @@ class CancelAuditTaskRequest(DaraModel):
         content_audit_task_id: str = None,
         workspace_id: str = None,
     ):
+        # Article ID. Specify either this parameter or ContentAuditTaskId.
         self.article_id = article_id
+        # Audit task ID. Specify either this parameter or ArticleId.
         self.content_audit_task_id = content_audit_task_id
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

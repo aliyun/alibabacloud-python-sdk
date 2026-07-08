@@ -18,10 +18,16 @@ class UpdateDatasetRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.access_level = access_level
+        # The configurations for a third-party search dataset.
         self.dataset_config = dataset_config
+        # The description of the dataset.
         self.dataset_description = dataset_description
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # Specifies whether to enable search for the dataset.
         self.search_dataset_enable = search_dataset_enable
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspaceId]().
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -83,7 +89,9 @@ class UpdateDatasetRequestDatasetConfig(DaraModel):
         search_source_config: main_models.UpdateDatasetRequestDatasetConfigSearchSourceConfig = None,
         search_source_configs: List[main_models.UpdateDatasetRequestDatasetConfigSearchSourceConfigs] = None,
     ):
+        # The dataset configuration items.
         self.search_source_config = search_source_config
+        # Third-party search: API definition.
         self.search_source_configs = search_source_configs
 
     def validate(self):
@@ -131,9 +139,13 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigs(DaraModel):
         search_source_response_config: main_models.UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig = None,
         size: int = None,
     ):
+        # A searchable keyword used to verify availability.
         self.demo_query = demo_query
+        # The API request configuration.
         self.search_source_request_config = search_source_request_config
+        # The API response configuration.
         self.search_source_response_config = search_source_response_config
+        # The default number of data entries for requests and responses.
         self.size = size
 
     def validate(self):
@@ -184,6 +196,7 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         self,
         jq_nodes: List[main_models.UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes] = None,
     ):
+        # The node configuration.
         self.jq_nodes = jq_nodes
 
     def validate(self):
@@ -222,9 +235,13 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         path: str = None,
         type: str = None,
     ):
+        # The child node configuration.
         self.jq_nodes = jq_nodes
+        # The node key.
         self.key = key
+        # The node path.
         self.path = path
+        # The data type of the node. Valid values: string, number, list, object, and base.
         self.type = type
 
     def validate(self):
@@ -281,9 +298,13 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         path: str = None,
         type: str = None,
     ):
+        # The child node configuration.
         self.jq_nodes = jq_nodes
+        # The node key.
         self.key = key
+        # The node path.
         self.path = path
+        # The type.
         self.type = type
 
     def validate(self):
@@ -339,8 +360,11 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         path: str = None,
         type: str = None,
     ):
+        # The node key.
         self.key = key
+        # The node path.
         self.path = path
+        # The type.
         self.type = type
 
     def validate(self):
@@ -387,13 +411,21 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestCon
         socket_timeout: int = None,
         url: str = None,
     ):
+        # The request body.
         self.body = body
+        # The connection timeout period, in milliseconds.
         self.connect_timeout = connect_timeout
+        # The HTTP request headers.
         self.headers = headers
+        # The request method.
         self.method = method
+        # The request path parameters.
         self.params = params
+        # Specifies whether to enable path parameters.
         self.path_params_enable = path_params_enable
+        # The read timeout period, in milliseconds.
         self.socket_timeout = socket_timeout
+        # The API URL.
         self.url = url
 
     def validate(self):
@@ -483,9 +515,13 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestCon
         value_format: str = None,
         value_type: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The parameter value.
         self.value = value
+        # This parameter is valid only when ValueType is set to time.
         self.value_format = value_format
+        # The data type of the parameter value. Default: string.
         self.value_type = value_type
 
     def validate(self):
@@ -534,9 +570,13 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestCon
         value_format: str = None,
         value_type: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The parameter value.
         self.value = value
+        # This parameter is valid only when ValueType is set to time.
         self.value_format = value_format
+        # The data type of the parameter value. Default: string.
         self.value_type = value_type
 
     def validate(self):
@@ -585,9 +625,13 @@ class UpdateDatasetRequestDatasetConfigSearchSourceConfig(DaraModel):
         tag_generate_enable: bool = None,
         tag_search_enable: bool = None,
     ):
+        # Specifies whether the key-value pairs in metadata are used for generation. Default: true.
         self.metadata_key_value_generate_enable = metadata_key_value_generate_enable
+        # Specifies whether the key-value pairs in metadata are included in searches. Default: true.
         self.metadata_key_value_search_enable = metadata_key_value_search_enable
+        # Specifies whether tags are used for generation. Default: true.
         self.tag_generate_enable = tag_generate_enable
+        # Specifies whether tags are included in searches. Default: true.
         self.tag_search_enable = tag_search_enable
 
     def validate(self):

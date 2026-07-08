@@ -14,11 +14,17 @@ class ExportHotTopicPlanningProposalsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Publicly accessible URL. Expires in one hour.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Operation status. Set to true for success or false for failure.
         self.success = success
 
     def validate(self):

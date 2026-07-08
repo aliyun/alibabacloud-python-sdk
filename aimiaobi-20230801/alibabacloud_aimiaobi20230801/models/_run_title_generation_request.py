@@ -16,11 +16,20 @@ class RunTitleGenerationRequest(DaraModel):
         title_count: str = None,
         workspace_id: str = None,
     ):
+        # A collection of titles to deduplicate against the newly generated titles. The total character count for all titles must not exceed 5K.
         self.deduplicated_titles = deduplicated_titles
+        # Data for title generation.
+        # 
         # This parameter is required.
         self.reference_data = reference_data
+        # The unique identifier for the associated creative article.
+        # 
+        # > The system automatically generates the TaskId by default. You do not need to specify it. If subsequent tasks use the same TaskId, they belong to the same conversation group.
         self.task_id = task_id
+        # Number of titles to generate, maximum 10.
         self.title_count = title_count
+        # The unique identifier for the Alibaba Cloud Model Studio workspace. For more information, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -75,6 +84,8 @@ class RunTitleGenerationRequestReferenceData(DaraModel):
         self,
         contents: List[str] = None,
     ):
+        # List of main content.
+        # 
         # This parameter is required.
         self.contents = contents
 

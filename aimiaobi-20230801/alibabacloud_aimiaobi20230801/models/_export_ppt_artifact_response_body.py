@@ -15,12 +15,17 @@ class ExportPptArtifactResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The export task details.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class ExportPptArtifactResponseBodyData(DaraModel):
         self,
         export_task_id: str = None,
     ):
+        # The ID of the export task.
         self.export_task_id = export_task_id
 
     def validate(self):

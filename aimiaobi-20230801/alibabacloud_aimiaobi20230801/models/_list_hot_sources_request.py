@@ -11,9 +11,13 @@ class ListHotSourcesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # UUID of the workspace: AgentKey
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Maximum number of returned results
         self.max_results = max_results
+        # Token for the next page
         self.next_token = next_token
 
     def validate(self):

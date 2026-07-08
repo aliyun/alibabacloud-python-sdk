@@ -11,8 +11,11 @@ class AsyncUploadTenderDocRequest(DaraModel):
         tender_doc_name: str = None,
         workspace_id: str = None,
     ):
+        # File OSS key
         self.file_key = file_key
+        # Tender document name
         self.tender_doc_name = tender_doc_name
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
         self.workspace_id = workspace_id
 
     def validate(self):

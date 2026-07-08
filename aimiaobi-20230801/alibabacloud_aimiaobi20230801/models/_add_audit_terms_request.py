@@ -16,11 +16,18 @@ class AddAuditTermsRequest(DaraModel):
         terms_name: str = None,
         workspace_id: str = None,
     ):
+        # Exception phrase
         self.exception_word = exception_word
+        # Keyword
         self.keyword = keyword
+        # Suggested word
         self.suggest_word = suggest_word
+        # Audit basis
         self.terms_desc = terms_desc
+        # Name of the dictionary. Optional. If not specified, defaults to Default.
         self.terms_name = terms_name
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

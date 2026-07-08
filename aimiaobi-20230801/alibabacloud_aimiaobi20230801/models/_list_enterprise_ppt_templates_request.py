@@ -12,9 +12,13 @@ class ListEnterprisePptTemplatesRequest(DaraModel):
         skip: int = None,
         workspace_id: str = None,
     ):
+        # The maximum number of results to return per page. Note: This parameter is not yet in effect.
         self.max_results = max_results
+        # The token for the next page of results. Note: This parameter is not yet in effect.
         self.next_token = next_token
+        # The number of entries to skip (the \\"offset\\"). Note: This parameter is not yet in effect.
         self.skip = skip
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

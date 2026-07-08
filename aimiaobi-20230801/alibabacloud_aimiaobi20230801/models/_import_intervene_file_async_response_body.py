@@ -17,11 +17,17 @@ class ImportInterveneFileAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates whether the operation succeeded. true means success. false means failure.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class ImportInterveneFileAsyncResponseBodyData(DaraModel):
         fail_id_list: List[str] = None,
         task_id: str = None,
     ):
+        # Status code returned by the intervention service
         self.code = code
+        # List of failed index IDs
         self.fail_id_list = fail_id_list
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

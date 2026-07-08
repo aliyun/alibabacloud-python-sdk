@@ -15,9 +15,13 @@ class RunWritingResponseBody(DaraModel):
         payload: main_models.RunWritingResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Indicates whether the current request is complete.
         self.end = end
+        # The response header.
         self.header = header
+        # The response body.
         self.payload = payload
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,7 +73,9 @@ class RunWritingResponseBodyPayload(DaraModel):
         output: main_models.RunWritingResponseBodyPayloadOutput = None,
         usage: main_models.RunWritingResponseBodyPayloadUsage = None,
     ):
+        # The output.
         self.output = output
+        # The token usage.
         self.usage = usage
 
     def validate(self):
@@ -111,9 +117,13 @@ class RunWritingResponseBodyPayloadUsage(DaraModel):
         token_map: Dict[str, int] = None,
         total_tokens: int = None,
     ):
+        # The number of tokens used for the input.
         self.input_tokens = input_tokens
+        # The number of tokens used for the output.
         self.output_tokens = output_tokens
+        # The detailed token usage.
         self.token_map = token_map
+        # The total number of tokens used in the current call.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -162,9 +172,13 @@ class RunWritingResponseBodyPayloadOutput(DaraModel):
         search_query: str = None,
         text: str = None,
     ):
+        # The reference articles.
         self.articles = articles
+        # A list of refined segments from the article.
         self.mini_doc = mini_doc
+        # The rewritten query.
         self.search_query = search_query
+        # The generated text.
         self.text = text
 
     def validate(self):
@@ -227,15 +241,25 @@ class RunWritingResponseBodyPayloadOutputArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
         self.content = content
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # The internal unique ID of the document.
         self.doc_uuid = doc_uuid
+        # The publication time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The tag.
         self.tag = tag
+        # The title.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):
@@ -324,13 +348,21 @@ class RunWritingResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The Server-Sent Events (SSE) event. Valid values: task-started (the task starts), task-finished (the task is complete), and task-failed (the task failed).
         self.event = event
+        # The parent session ID.
         self.origin_session_id = origin_session_id
+        # The session ID.
         self.session_id = session_id
+        # The HTTP status code.
         self.status_code = status_code
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

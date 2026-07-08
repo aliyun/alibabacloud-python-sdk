@@ -20,14 +20,23 @@ class ListAnalysisTagDetailByTaskIdResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # A list of classification details from the tag mining task.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of entries returned on each page.
         self.max_results = max_results
+        # The error message.
         self.message = message
+        # The token for the next page of results.
         self.next_token = next_token
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -115,10 +124,15 @@ class ListAnalysisTagDetailByTaskIdResponseBodyData(DaraModel):
         tag_task_type: str = None,
         task_id: str = None,
     ):
+        # The content of the tag.
         self.content = content
+        # A list of tags applied to the content.
         self.content_tags = content_tags
+        # The primary key ID of the data.
         self.id = id
+        # The type of the tag mining task. Valid values: \\`singleTagValue\\`, \\`multiTagValues\\`, and \\`summaryAndOverview\\`.
         self.tag_task_type = tag_task_type
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -180,8 +194,11 @@ class ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags(DaraModel):
         tag_name: str = None,
         tags: List[str] = None,
     ):
+        # The summary.
         self.summary_overview = summary_overview
+        # The name of the tag.
         self.tag_name = tag_name
+        # A list of tag values.
         self.tags = tags
 
     def validate(self):

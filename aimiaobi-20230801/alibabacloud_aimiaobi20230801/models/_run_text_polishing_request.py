@@ -13,11 +13,18 @@ class RunTextPolishingRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Text content.
+        # 
         # This parameter is required.
         self.content = content
+        # Original article.
         self.origin_content = origin_content
+        # Custom polishing requirements.
         self.prompt = prompt
+        # The task ID. The same task ID shares a session. The task timeout is 12 hours.
         self.task_id = task_id
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. Obtain the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

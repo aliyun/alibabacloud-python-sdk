@@ -15,12 +15,17 @@ class QueryAuditTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # error code
         self.code = code
+        # Asynchronous task object
         self.data = data
+        # HTTP error code
         self.http_status_code = http_status_code
+        # error message
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -86,12 +91,19 @@ class QueryAuditTaskResponseBodyData(DaraModel):
         task_status: int = None,
         title: str = None,
     ):
+        # Audit time.
         self.audit_time = audit_time
+        # Original text at the time of audit.
         self.content = content
+        # Formatted content at the time of audit.
         self.html_content = html_content
+        # Audit results.
         self.response = response
+        # Task execution status: PENDING: pending, RUNNING: running, SUCCESSED: successful, SUSPENDED: paused, FAILED: failed, CANCELLED: canceled
         self.status = status
+        # Task execution status: 0: pending, 1: running, 2: successful, 3: paused, 4: failed, 6: canceled
         self.task_status = task_status
+        # Content title
         self.title = title
 
     def validate(self):
@@ -158,7 +170,9 @@ class QueryAuditTaskResponseBodyDataResponse(DaraModel):
         header: main_models.QueryAuditTaskResponseBodyDataResponseHeader = None,
         payload: main_models.QueryAuditTaskResponseBodyDataResponsePayload = None,
     ):
+        # Audit response header
         self.header = header
+        # response body
         self.payload = payload
 
     def validate(self):
@@ -198,7 +212,9 @@ class QueryAuditTaskResponseBodyDataResponsePayload(DaraModel):
         output: main_models.QueryAuditTaskResponseBodyDataResponsePayloadOutput = None,
         usage: main_models.QueryAuditTaskResponseBodyDataResponsePayloadUsage = None,
     ):
+        # response body
         self.output = output
+        # usage
         self.usage = usage
 
     def validate(self):
@@ -239,8 +255,11 @@ class QueryAuditTaskResponseBodyDataResponsePayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Input tokens.
         self.input_tokens = input_tokens
+        # Output tokens.
         self.output_tokens = output_tokens
+        # Total tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -280,6 +299,7 @@ class QueryAuditTaskResponseBodyDataResponsePayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Final response result (JSON array structure)
         self.text = text
 
     def validate(self):
@@ -311,10 +331,15 @@ class QueryAuditTaskResponseBodyDataResponseHeader(DaraModel):
         session_id: str = None,
         task_id: str = None,
     ):
+        # error code
         self.error_code = error_code
+        # error message
         self.error_message = error_message
+        # Event
         self.event = event
+        # Unique conversation ID.
         self.session_id = session_id
+        # Unique multi-turn conversation ID.
         self.task_id = task_id
 
     def validate(self):

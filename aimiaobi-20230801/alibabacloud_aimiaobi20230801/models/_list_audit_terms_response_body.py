@@ -20,15 +20,23 @@ class ListAuditTermsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of results returned
         self.max_results = max_results
+        # Error description
         self.message = message
+        # Token for the next page
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -117,11 +125,17 @@ class ListAuditTermsResponseBodyData(DaraModel):
         terms_desc: str = None,
         terms_name: str = None,
     ):
+        # Exception statements
         self.exception_word = exception_word
+        # Task primary key ID
         self.id = id
+        # Keyword
         self.keyword = keyword
+        # Suggested word
         self.suggest_word = suggest_word
+        # Audit basis
         self.terms_desc = terms_desc
+        # Dictionary name
         self.terms_name = terms_name
 
     def validate(self):

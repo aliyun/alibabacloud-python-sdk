@@ -14,9 +14,11 @@ class RunBookIntroductionResponseBody(DaraModel):
         payload: main_models.RunBookIntroductionResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # The response header.
         self.header = header
+        # The payload.
         self.payload = payload
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,7 +64,9 @@ class RunBookIntroductionResponseBodyPayload(DaraModel):
         output: main_models.RunBookIntroductionResponseBodyPayloadOutput = None,
         usage: main_models.RunBookIntroductionResponseBodyPayloadUsage = None,
     ):
+        # The generated content.
         self.output = output
+        # Token usage details for the request.
         self.usage = usage
 
     def validate(self):
@@ -103,8 +107,11 @@ class RunBookIntroductionResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of input tokens.
         self.input_tokens = input_tokens
+        # The number of output tokens.
         self.output_tokens = output_tokens
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -146,8 +153,11 @@ class RunBookIntroductionResponseBodyPayloadOutput(DaraModel):
         key_point: str = None,
         summary: str = None,
     ):
+        # A list of generated introductions for each part of the book.
         self.introductions = introductions
+        # The book\\"s key points.
         self.key_point = key_point
+        # The book summary.
         self.summary = summary
 
     def validate(self):
@@ -197,8 +207,11 @@ class RunBookIntroductionResponseBodyPayloadOutputIntroductions(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # A list of content blocks within this section.
         self.blocks = blocks
+        # A summary of this section.
         self.summary = summary
+        # The title of this section.
         self.title = title
 
     def validate(self):
@@ -252,12 +265,19 @@ class RunBookIntroductionResponseBodyPayloadOutputIntroductionsBlocks(DaraModel)
         x: int = None,
         y: int = None,
     ):
+        # The start timestamp of the content block.
         self.begin_time = begin_time
+        # The end timestamp of the content block.
         self.end_time = end_time
+        # The height of the content block.
         self.height = height
+        # The ID of the page where the content block is located.
         self.page_id = page_id
+        # The width of the content block.
         self.width = width
+        # The x-coordinate of the content block\\"s top-left corner on the page.
         self.x = x
+        # The y-coordinate of the content block\\"s top-left corner on the page.
         self.y = y
 
     def validate(self):
@@ -327,12 +347,19 @@ class RunBookIntroductionResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The event type.
         self.event = event
+        # The event description.
         self.event_info = event_info
+        # The session ID.
         self.session_id = session_id
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

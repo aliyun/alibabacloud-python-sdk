@@ -13,14 +13,24 @@ class GenerateImageTaskShrinkRequest(DaraModel):
         size: str = None,
         style: str = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The task ID of the article. If you do not have one, you can assign a universally unique identifier (UUID).
+        # 
         # This parameter is required.
         self.article_task_id = article_task_id
+        # The content of the paragraphs.
+        # 
         # This parameter is required.
         self.paragraph_list_shrink = paragraph_list_shrink
+        # The size of the image to generate.
+        # 
         # This parameter is required.
         self.size = size
+        # The style.
+        # 
         # This parameter is required.
         self.style = style
 

@@ -30,28 +30,75 @@ class RunWritingV2ShrinkRequest(DaraModel):
         writing_scene: str = None,
         writing_style: str = None,
     ):
+        # A list of articles to use as references. **Note:** When you provide this parameter, web search is disabled, overriding the `UseSearch` and `SearchSources` parameters.
         self.articles_shrink = articles_shrink
+        # Specifies whether to enable step-by-step writing. For more information, see the `Step` parameter description.
         self.distribute_writing = distribute_writing
+        # The number of articles to write. If you request multiple articles, the system returns them concurrently, each with a unique session ID.
         self.gc_number_size = gc_number_size
+        # A string that specifies the desired article length. Examples: "about 300 words", "about 600 words", "about 1,000 words", or "about 2,000 words".
         self.gc_number_size_tag = gc_number_size_tag
+        # A list of keywords used for both search and writing.
         self.keywords_shrink = keywords_shrink
+        # The output language for the article.
+        # 
+        # - `en`: English
+        # 
+        # - `zh`: Chinese
+        # 
+        # - Other languages or specific style requirements can also be specified.
         self.language = language
+        # A list of article snippets.
         self.mini_docs_shrink = mini_docs_shrink
+        # A list of outlines for step-by-step writing.
         self.outline_list_shrink = outline_list_shrink
+        # A list of outlines for step-by-step writing. This parameter is deprecated. Use `OutlineList` instead.
         self.outlines_shrink = outlines_shrink
+        # The writing prompt. You must provide either `Prompt` or `WritingParams`. For more information, see the description of the `PromptMode` parameter.
         self.prompt = prompt
+        # The prompt mode. Valid values: `Template` (template mode) and `PE` (advanced PE mode).
+        # 
+        # 1. If this parameter is omitted, you must provide the `Prompt` parameter. We recommend that the prompt includes the topic, length, requirements, and prohibitions.
+        # 
+        # 2. If `PromptMode` is set to `Template`, you must provide `WritingParams`, which is a dictionary of string key-value pairs. For the required schema, see the `.Data.TemplateDefine[].Fields` field in the response of the [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html) operation.
+        # 
+        # 3. If `PromptMode` is set to `PE`, you must pass `WritingParams` with the following two fields:
+        # 
+        #    1. `topic`: Required. The topic to write about.
+        # 
+        #    2. `prompt`: Optional. Any additional custom prompts or writing requirements.
         self.prompt_mode = prompt_mode
+        # A list of specified search sources to use.
         self.search_sources_shrink = search_sources_shrink
+        # The ID of a single-turn conversation. This parameter is deprecated and its use is discouraged.
         self.session_id = session_id
+        # The source tracing method. Currently, only `modelSourceTrace` is supported. If set to `modelSourceTrace`, the model adds citation markers (for example, `[[1]]`) to the end of each cited snippet in the generated text. The citation index starts at 1.
         self.source_trace_method = source_trace_method
+        # The step for step-by-step writing. Valid values:
+        # 
+        # - `OutlineGenerate`: Outline generation
+        # 
+        # - `Writing`: Article writing
+        # 
+        # When `DistributeWriting` is `true`, the default flow for step-by-step writing is to first generate an outline and then write the content based on it.
         self.step = step
+        # A list of summarization objects, used for step-by-step writing.
         self.summarization_shrink = summarization_shrink
+        # The unique ID of the task. You can reuse the same task ID for a multi-turn conversation.
+        # 
+        # > The system automatically generates a `TaskId` if you do not specify one. Reusing the same `TaskId` for subsequent requests groups them into a single conversation.
         self.task_id = task_id
+        # Specifies whether to enable web search. If `true`, the system uses its built-in web search feature. Default: `false`.
         self.use_search = use_search
+        # The unique ID of the Model Studio workspace. For more information, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # The parameters for template-based writing, provided as a dictionary of string key-value pairs. You must provide either `Prompt` or `WritingParams`. For more information, see the description of the `PromptMode` parameter.
         self.writing_params_shrink = writing_params_shrink
+        # The writing scene. Valid values: `government` (government affairs), `media`, `market` (marketing), `office`, and `custom`.
         self.writing_scene = writing_scene
+        # The writing style. For a list of supported styles, see [ListWritingStyles](https://help.aliyun.com/document_detail/2922609.html).
         self.writing_style = writing_style
 
     def validate(self):

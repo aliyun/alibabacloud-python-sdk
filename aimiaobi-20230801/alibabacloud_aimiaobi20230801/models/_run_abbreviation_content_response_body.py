@@ -13,9 +13,13 @@ class RunAbbreviationContentResponseBody(DaraModel):
         payload: main_models.RunAbbreviationContentResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Indicates whether the output is complete. True means it is complete.
         self.end = end
+        # The streaming output header, which contains general return information.
         self.header = header
+        # Result payload, JSON structure
         self.payload = payload
+        # Unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +71,9 @@ class RunAbbreviationContentResponseBodyPayload(DaraModel):
         output: main_models.RunAbbreviationContentResponseBodyPayloadOutput = None,
         usage: main_models.RunAbbreviationContentResponseBodyPayloadUsage = None,
     ):
+        # Output content object.
         self.output = output
+        # Large Language Model (LLM) token usage information.
         self.usage = usage
 
     def validate(self):
@@ -108,8 +114,11 @@ class RunAbbreviationContentResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens.
         self.input_tokens = input_tokens
+        # Number of output tokens.
         self.output_tokens = output_tokens
+        # Total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -149,6 +158,7 @@ class RunAbbreviationContentResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Output content.
         self.text = text
 
     def validate(self):
@@ -182,12 +192,19 @@ class RunAbbreviationContentResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Event type.
         self.event = event
+        # Event description.
         self.event_info = event_info
+        # The session ID for a single session.
         self.session_id = session_id
+        # The task ID for a single generation task.
         self.task_id = task_id
+        # Trace ID for the request chain.
         self.trace_id = trace_id
 
     def validate(self):

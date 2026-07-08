@@ -13,12 +13,19 @@ class SubmitAsyncTaskRequest(DaraModel):
         task_name: str = None,
         task_param: str = None,
     ):
+        # The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # For details on the task definition, see the task definition table.
+        # 
         # This parameter is required.
         self.task_code = task_code
+        # The time to run the task. By default, the task runs immediately. Format: YYYY-MM-DD HH:mm:ss
         self.task_execute_time = task_execute_time
+        # The name of the task.
         self.task_name = task_name
+        # The task parameters.
         self.task_param = task_param
 
     def validate(self):

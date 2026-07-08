@@ -21,17 +21,29 @@ class ListAsyncTasksRequest(DaraModel):
         task_type: str = None,
         task_type_list: List[str] = None,
     ):
+        # The unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The end of the time range to query task creation times. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time_end = create_time_end
+        # The start of the time range to query task creation times. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time_start = create_time_start
+        # The current page number.
         self.current = current
+        # The number of entries per page. Default value: 10.
         self.size = size
+        # A term query for the task code.
         self.task_code = task_code
+        # A term query for the task name.
         self.task_name = task_name
+        # A term query for the task status. Valid values: 0 (Pending), 1 (Running), 2 (Succeeded), 3 (Paused), 4 (Failed and retriable), 5 (Failed and not retriable), and 6 (Canceled).
         self.task_status = task_status
+        # A term query for a list of task statuses. Valid values: 0 (Pending), 1 (Running), 2 (Succeeded), 3 (Paused), 4 (Failed and retriable), 5 (Failed and not retriable), and 6 (Canceled).
         self.task_status_list = task_status_list
+        # A term query for the task type.
         self.task_type = task_type
+        # A term query for a list of task types.
         self.task_type_list = task_type_list
 
     def validate(self):

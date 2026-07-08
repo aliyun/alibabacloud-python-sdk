@@ -12,9 +12,13 @@ class AsyncWritingBiddingDocRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The name of the bidding company.
         self.company_keyword = company_keyword
+        # The prompt.
         self.prompt = prompt
+        # The unique ID of the task.
         self.task_id = task_id
+        # [The ID of the workspace.](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

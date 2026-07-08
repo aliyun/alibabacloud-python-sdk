@@ -18,14 +18,40 @@ class CreateDatasetShrinkRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.access_level = access_level
+        # The dataset search configuration.
         self.dataset_config_shrink = dataset_config_shrink
+        # The description of the dataset. This is the display name in the console. Use a human-readable name.
         self.dataset_description = dataset_description
+        # The name of the dataset. The name must be globally unique.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The type of the dataset. Valid values:
+        # 
+        # - CustomSemanticSearch: A custom semantic index. This is the default value. Upload documents to build the dataset.
+        # 
+        # - ThirdSearch: A third-party search source (API). Configure your own search API.
         self.dataset_type = dataset_type
+        # Dataset index configuration.
         self.document_handle_config_shrink = document_handle_config_shrink
+        # The invocation method. Currently, only portal is supported, which indicates an invocation from the console.
+        # 
+        # - If left empty: When DatasetType is ThirdSearch, datasetConfig.SearchSourceConfigs (third-party API definition) is required.
+        # 
+        # - If set to portal: When DatasetType is ThirdSearch, the system initializes a SearchSourceConfigs (third-party API demo) example by default for your reference.
         self.invoke_type = invoke_type
+        # The dataset search switch. Valid values:
+        # 
+        # - 0: Disabled for all.
+        # 
+        # - 1: Visible only to Miao Search.
+        # 
+        # - 2: Visible only to Miao Bi.
+        # 
+        # - 3: Visible to both Miao Search and Miao Bi. This is the default value.
         self.search_dataset_enable = search_dataset_enable
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

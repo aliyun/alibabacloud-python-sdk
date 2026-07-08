@@ -10,8 +10,12 @@ class DeleteCustomTopicByTopicRequest(DaraModel):
         agent_key: str = None,
         topic: str = None,
     ):
+        # Workspace unique identifier: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Custom topic
+        # 
         # This parameter is required.
         self.topic = topic
 

@@ -34,29 +34,80 @@ class ListDatasetDocumentsRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # The unique IDs of the categories.
         self.category_uuids = category_uuids
+        # The end of the creation time range, specified as a Unix timestamp in milliseconds.
         self.create_time_end = create_time_end
+        # The start of the creation time range, specified as a Unix timestamp in milliseconds.
         self.create_time_start = create_time_start
+        # Deprecated.
         self.dataset_description = dataset_description
+        # The unique ID of the dataset. You must specify either this parameter or `DatasetName`.
         self.dataset_id = dataset_id
+        # The name of the dataset.
         self.dataset_name = dataset_name
+        # An array of document IDs.
         self.doc_ids = doc_ids
+        # The type of the document. Valid values:
+        # 
+        # - `plainText`: Plain text.
+        # 
+        # - `richText`: Rich text.
+        # 
+        # - `text`: A text file.
+        # 
+        # - `pdf`: A PDF file.
+        # 
+        # - `word`: A Word file.
+        # 
+        # - `image`: An image file.
+        # 
+        # - `video`: A video file.
         self.doc_type = doc_type
+        # The unique IDs of the documents.
         self.doc_uuids = doc_uuids
+        # The end time, specified as a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # The fields to exclude from the response. Valid value:
+        # 
+        # - `content`: The document content.
         self.exclude_fields = exclude_fields
+        # A custom extension field.
         self.extend_1 = extend_1
+        # A custom extension field.
         self.extend_2 = extend_2
+        # A custom extension field.
         self.extend_3 = extend_3
+        # The fields to include in the response.
         self.include_fields = include_fields
+        # A token to retrieve the next page of results. This parameter is required when you retrieve more than 10,000 entries.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The search query.
         self.query = query
+        # The start time, specified as a Unix timestamp in milliseconds.
         self.start_time = start_time
+        # The status of the document. Valid values:
+        # 
+        # - `1`: Document created.
+        # 
+        # - `2`: Text index built.
+        # 
+        # - `3`: Multimodal index built.
+        # 
+        # - `100`: Full build complete.
+        # 
+        # - `0`: Build failed.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The title.
         self.title = title
+        # The unique ID of the Model Studio workspace. For more information, see [Get workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

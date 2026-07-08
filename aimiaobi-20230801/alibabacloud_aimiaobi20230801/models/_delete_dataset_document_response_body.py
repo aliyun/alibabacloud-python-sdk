@@ -16,11 +16,17 @@ class DeleteDatasetDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Is successful: true for successful, false for failed.
         self.success = success
 
     def validate(self):

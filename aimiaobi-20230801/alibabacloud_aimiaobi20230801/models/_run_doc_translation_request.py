@@ -15,13 +15,22 @@ class RunDocTranslationRequest(DaraModel):
         trans_type: str = None,
         workspace_id: str = None,
     ):
+        # Clear the current cache?
         self.clean_cache = clean_cache
+        # Document ID
         self.doc_id = doc_id
+        # User-defined model name
         self.model_name = model_name
+        # Content to be translated
         self.recommend_content = recommend_content
+        # Session ID
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Translation type
         self.trans_type = trans_type
+        # Alibaba Cloud Model Studio workspace unique identifier. For more information, see [Get the Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

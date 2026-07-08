@@ -12,8 +12,11 @@ class RunTranslateGenerationResponseBody(DaraModel):
         payload: main_models.RunTranslateGenerationResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header
         self.header = header
+        # Response body
         self.payload = payload
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,7 +62,9 @@ class RunTranslateGenerationResponseBodyPayload(DaraModel):
         output: main_models.RunTranslateGenerationResponseBodyPayloadOutput = None,
         usage: main_models.RunTranslateGenerationResponseBodyPayloadUsage = None,
     ):
+        # Output data
         self.output = output
+        # Token usage information
         self.usage = usage
 
     def validate(self):
@@ -100,8 +105,11 @@ class RunTranslateGenerationResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of tokens used for the input.
         self.input_tokens = input_tokens
+        # The number of tokens used for the output.
         self.output_tokens = output_tokens
+        # The total number of tokens used in the call.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -141,6 +149,7 @@ class RunTranslateGenerationResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # The text generation result.
         self.text = text
 
     def validate(self):
@@ -173,11 +182,17 @@ class RunTranslateGenerationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The Server-Sent Events (SSE) event.
         self.event = event
+        # The session ID.
         self.session_id = session_id
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

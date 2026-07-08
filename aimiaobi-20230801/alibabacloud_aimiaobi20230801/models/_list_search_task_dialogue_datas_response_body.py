@@ -25,19 +25,33 @@ class ListSearchTaskDialogueDatasResponseBody(DaraModel):
         total_count: int = None,
         videos: List[main_models.ListSearchTaskDialogueDatasResponseBodyVideos] = None,
     ):
+        # The list of articles.
         self.articles = articles
+        # The list of audio files.
         self.audios = audios
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The list of images.
         self.images = images
+        # The error description.
         self.message = message
+        # The current page number.
         self.page_number = page_number
+        # The number of records on each page.
         self.page_size = page_size
+        # Indicates whether real-time search is enabled.
         self.realtime_search = realtime_search
+        # The unique identifier of the request.
         self.request_id = request_id
+        # The search type.
         self.search_type = search_type
+        # Indicates whether the request was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
+        # The total number of records.
         self.total_count = total_count
+        # The list of videos.
         self.videos = videos
 
     def validate(self):
@@ -180,8 +194,11 @@ class ListSearchTaskDialogueDatasResponseBodyVideos(DaraModel):
         media_id: str = None,
         media_type: str = None,
     ):
+        # The URL of the image or video file.
         self.file_url = file_url
+        # The unique identifier of the multi-modal data.
         self.media_id = media_id
+        # The type of the multi-modal data.
         self.media_type = media_type
 
     def validate(self):
@@ -223,8 +240,11 @@ class ListSearchTaskDialogueDatasResponseBodyImages(DaraModel):
         media_id: str = None,
         media_type: str = None,
     ):
+        # The URL of the image or video file.
         self.file_url = file_url
+        # The unique identifier of the multi-modal data.
         self.media_id = media_id
+        # The type of the multi-modal data.
         self.media_type = media_type
 
     def validate(self):
@@ -265,7 +285,9 @@ class ListSearchTaskDialogueDatasResponseBodyAudios(DaraModel):
         file_url: str = None,
         media_id: str = None,
     ):
+        # The URL of the image or video file.
         self.file_url = file_url
+        # The unique identifier of the multi-modal data.
         self.media_id = media_id
 
     def validate(self):
@@ -313,20 +335,35 @@ class ListSearchTaskDialogueDatasResponseBodyArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The unique identifier of the category.
         self.category_uuid = category_uuid
+        # The content.
         self.content = content
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # The document type.
         self.doc_type = doc_type
+        # The internal unique identifier of the document.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # The multi-modal information.
         self.multimodal_medias = multimodal_medias
+        # The publication time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The summary of the article.
         self.summary = summary
+        # The title.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):
@@ -448,8 +485,11 @@ class ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias(DaraModel)
         media_id: str = None,
         media_type: str = None,
     ):
+        # The URL of the image or video file.
         self.file_url = file_url
+        # The unique identifier of the multi-modal data.
         self.media_id = media_id
+        # The type of the multi-modal data.
         self.media_type = media_type
 
     def validate(self):

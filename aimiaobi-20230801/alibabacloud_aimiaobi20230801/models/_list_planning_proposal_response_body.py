@@ -20,14 +20,23 @@ class ListPlanningProposalResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code.
         self.code = code
+        # Business data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Maximum number of returned results.
         self.max_results = max_results
+        # Fault description.
         self.message = message
+        # Token for the next page.
         self.next_token = next_token
+        # Unique request identity.
         self.request_id = request_id
+        # Is successful: true for success, false for failure.
         self.success = success
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -113,8 +122,11 @@ class ListPlanningProposalResponseBodyData(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # Outline list.
         self.outlines = outlines
+        # Summary.
         self.summary = summary
+        # Title.
         self.title = title
 
     def validate(self):
@@ -163,7 +175,9 @@ class ListPlanningProposalResponseBodyDataOutlines(DaraModel):
         outline: str = None,
         summary: str = None,
     ):
+        # Outline.
         self.outline = outline
+        # Outline summary.
         self.summary = summary
 
     def validate(self):

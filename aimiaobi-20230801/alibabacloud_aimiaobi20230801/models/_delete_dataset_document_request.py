@@ -13,10 +13,16 @@ class DeleteDatasetDocumentRequest(DaraModel):
         doc_uuid: str = None,
         workspace_id: str = None,
     ):
+        # The unique identifier of the dataset. Choose either DatasetId or DatasetName.
         self.dataset_id = dataset_id
+        # Dataset name
         self.dataset_name = dataset_name
+        # The user-specified unique ID of the document.
         self.doc_id = doc_id
+        # The internal unique identifier of the document.
         self.doc_uuid = doc_uuid
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

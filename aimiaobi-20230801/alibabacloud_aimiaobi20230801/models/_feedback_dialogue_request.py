@@ -18,15 +18,25 @@ class FeedbackDialogueRequest(DaraModel):
         session_id: str = None,
         task_id: str = None,
     ):
+        # The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The feedback.
         self.customer_response = customer_response
+        # The generated content that is considered good.
         self.good_text = good_text
+        # The modified generated result.
         self.modified_response = modified_response
+        # thumbsDown: Dislike, thumbsUp: Like
         self.rating = rating
+        # The tags.
         self.rating_tags = rating_tags
+        # The ID of a single-turn conversation.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The ID of the page.
         self.task_id = task_id
 
     def validate(self):

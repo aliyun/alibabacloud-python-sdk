@@ -15,12 +15,19 @@ class ListPptTemplatesRequest(DaraModel):
         style_id: int = None,
         workspace_id: str = None,
     ):
+        # The career ID.
         self.career_id = career_id
+        # The color ID.
         self.colour_id = colour_id
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
+        # The template scenario ID.
         self.scene_id = scene_id
+        # The style ID.
         self.style_id = style_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

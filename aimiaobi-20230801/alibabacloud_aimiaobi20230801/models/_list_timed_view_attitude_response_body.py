@@ -20,14 +20,23 @@ class ListTimedViewAttitudeResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status Code
         self.code = code
+        # Business Data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of return results
         self.max_results = max_results
+        # Fault description
         self.message = message
+        # Token for the next page
         self.next_token = next_token
+        # Request UUID
         self.request_id = request_id
+        # Indicates whether the operation succeeded: true for success, false for failure
         self.success = success
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -118,13 +127,21 @@ class ListTimedViewAttitudeResponseBodyData(DaraModel):
         url: str = None,
         view_points: List[main_models.ListTimedViewAttitudeResponseBodyDataViewPoints] = None,
     ):
+        # current attitude
         self.attitude = attitude
+        # Attitude Type
         self.attitude_type = attitude_type
+        # Published At
         self.pub_time = pub_time
+        # Proportion of the current attitude
         self.ratio = ratio
+        # News Source
         self.source = source
+        # Current attitude, equivalent to the news title
         self.title = title
+        # News URL
         self.url = url
+        # List of topic perspectives
         self.view_points = view_points
 
     def validate(self):
@@ -204,8 +221,11 @@ class ListTimedViewAttitudeResponseBodyDataViewPoints(DaraModel):
         point: str = None,
         summary: str = None,
     ):
+        # outlines
         self.outlines = outlines
+        # generated point
         self.point = point
+        # Summary
         self.summary = summary
 
     def validate(self):
@@ -254,7 +274,9 @@ class ListTimedViewAttitudeResponseBodyDataViewPointsOutlines(DaraModel):
         outline: str = None,
         summary: str = None,
     ):
+        # outline
         self.outline = outline
+        # outline summary
         self.summary = summary
 
     def validate(self):

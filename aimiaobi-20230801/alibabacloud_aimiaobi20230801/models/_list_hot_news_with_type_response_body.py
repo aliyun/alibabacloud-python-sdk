@@ -17,11 +17,19 @@ class ListHotNewsWithTypeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -90,9 +98,16 @@ class ListHotNewsWithTypeResponseBodyData(DaraModel):
         news_type_name: str = None,
         total_pages: int = None,
     ):
+        # The news list.
         self.news = news
+        # The news category. Valid values:
+        # - society: social current affairs.
+        # - person: people news.
+        # - government: government affairs.
         self.news_type = news_type
+        # The news category name.
         self.news_type_name = news_type_name
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -158,18 +173,31 @@ class ListHotNewsWithTypeResponseBodyDataNews(DaraModel):
         update_time: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
         self.content = content
+        # The unique identifier of the internal document.
         self.doc_uuid = doc_uuid
+        # The image URLs.
         self.image_urls = image_urls
+        # The publish time.
         self.pub_time = pub_time
+        # The search source.
         self.search_source = search_source
+        # The search source name.
         self.search_source_name = search_source_name
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The tag.
         self.tag = tag
+        # The title.
         self.title = title
+        # The system update time.
         self.update_time = update_time
+        # The article URL.
         self.url = url
 
     def validate(self):

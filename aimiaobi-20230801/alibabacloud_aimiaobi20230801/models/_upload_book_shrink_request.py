@@ -11,9 +11,14 @@ class UploadBookShrinkRequest(DaraModel):
         docs_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Folder ID
         self.category_id = category_id
+        # Documents
+        # 
         # This parameter is required.
         self.docs_shrink = docs_shrink
+        # Unique identifier of your Alibaba Cloud Model Studio workspace. [Get your workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

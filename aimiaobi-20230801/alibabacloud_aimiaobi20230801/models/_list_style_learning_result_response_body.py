@@ -20,14 +20,23 @@ class ListStyleLearningResultResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # Status code
         self.code = code
+        # Page number
         self.current = current
+        # List of style learning analysis results
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request ID
         self.request_id = request_id
+        # Number of items per page
         self.size = size
+        # Indicates success. Returns true on success and false on failure.
         self.success = success
+        # Total number of items
         self.total = total
 
     def validate(self):
@@ -115,10 +124,15 @@ class ListStyleLearningResultResponseBodyData(DaraModel):
         style_name: str = None,
         task_id: str = None,
     ):
+        # AIGC-generated content
         self.aigc_result = aigc_result
+        # ID of the style learning analysis result
         self.id = id
+        # Revised content
         self.rewrite_result = rewrite_result
+        # Style name
         self.style_name = style_name
+        # Task ID used for style analysis
         self.task_id = task_id
 
     def validate(self):

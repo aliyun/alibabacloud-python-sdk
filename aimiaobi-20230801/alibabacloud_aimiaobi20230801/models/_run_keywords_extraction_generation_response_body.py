@@ -12,8 +12,11 @@ class RunKeywordsExtractionGenerationResponseBody(DaraModel):
         payload: main_models.RunKeywordsExtractionGenerationResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header.
         self.header = header
+        # Response body.
         self.payload = payload
+        # Unique request identifier.
         self.request_id = request_id
 
     def validate(self):
@@ -59,7 +62,9 @@ class RunKeywordsExtractionGenerationResponseBodyPayload(DaraModel):
         output: main_models.RunKeywordsExtractionGenerationResponseBodyPayloadOutput = None,
         usage: main_models.RunKeywordsExtractionGenerationResponseBodyPayloadUsage = None,
     ):
+        # Outputs.
         self.output = output
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -100,8 +105,11 @@ class RunKeywordsExtractionGenerationResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens used.
         self.input_tokens = input_tokens
+        # Number of output tokens used.
         self.output_tokens = output_tokens
+        # Total number of tokens used in this call.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -141,6 +149,7 @@ class RunKeywordsExtractionGenerationResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Text generation result.
         self.text = text
 
     def validate(self):
@@ -173,11 +182,17 @@ class RunKeywordsExtractionGenerationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # SSE event.
         self.event = event
+        # Session ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
+        # Trace ID.
         self.trace_id = trace_id
 
     def validate(self):

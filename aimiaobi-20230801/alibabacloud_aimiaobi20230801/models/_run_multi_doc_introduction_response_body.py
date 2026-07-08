@@ -14,9 +14,11 @@ class RunMultiDocIntroductionResponseBody(DaraModel):
         payload: main_models.RunMultiDocIntroductionResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header.
         self.header = header
+        # Response body.
         self.payload = payload
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -62,7 +64,9 @@ class RunMultiDocIntroductionResponseBodyPayload(DaraModel):
         output: main_models.RunMultiDocIntroductionResponseBodyPayloadOutput = None,
         usage: main_models.RunMultiDocIntroductionResponseBodyPayloadUsage = None,
     ):
+        # Output data.
         self.output = output
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -103,8 +107,11 @@ class RunMultiDocIntroductionResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens.
         self.input_tokens = input_tokens
+        # Number of output tokens.
         self.output_tokens = output_tokens
+        # Total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -145,7 +152,9 @@ class RunMultiDocIntroductionResponseBodyPayloadOutput(DaraModel):
         key_points: List[main_models.RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints] = None,
         summary: str = None,
     ):
+        # Key point information.
         self.key_points = key_points
+        # Outline-style summary.
         self.summary = summary
 
     def validate(self):
@@ -188,7 +197,9 @@ class RunMultiDocIntroductionResponseBodyPayloadOutputKeyPoints(DaraModel):
         key_point: str = None,
         source: str = None,
     ):
+        # Key point.
         self.key_point = key_point
+        # Source of the information.
         self.source = source
 
     def validate(self):
@@ -228,12 +239,19 @@ class RunMultiDocIntroductionResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Server-sent event (SSE) type.
         self.event = event
+        # Event description.
         self.event_info = event_info
+        # Session ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
+        # End-to-end trace ID.
         self.trace_id = trace_id
 
     def validate(self):

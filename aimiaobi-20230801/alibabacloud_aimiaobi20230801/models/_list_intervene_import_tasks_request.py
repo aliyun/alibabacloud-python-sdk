@@ -11,9 +11,13 @@ class ListInterveneImportTasksRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Page number
         self.page_index = page_index
+        # Page size
         self.page_size = page_size
 
     def validate(self):

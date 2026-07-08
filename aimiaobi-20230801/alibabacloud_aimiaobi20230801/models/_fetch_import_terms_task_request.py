@@ -10,8 +10,12 @@ class FetchImportTermsTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The FileKey of the file.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

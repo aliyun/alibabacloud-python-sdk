@@ -17,11 +17,17 @@ class GetCategoriesByTaskIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # A list of classification objects.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: \\`true\\` and \\`false\\`.
         self.success = success
 
     def validate(self):
@@ -89,8 +95,11 @@ class GetCategoriesByTaskIdResponseBodyData(DaraModel):
         children: List[main_models.GetCategoriesByTaskIdResponseBodyDataChildren] = None,
         count: int = None,
     ):
+        # The name of the classification.
         self.category = category
+        # A list of sub-classifications.
         self.children = children
+        # The number of Voice of the Customer (VOC) entries in this classification.
         self.count = count
 
     def validate(self):
@@ -138,6 +147,7 @@ class GetCategoriesByTaskIdResponseBodyDataChildren(DaraModel):
         self,
         category: str = None,
     ):
+        # The name of the sub-classification.
         self.category = category
 
     def validate(self):

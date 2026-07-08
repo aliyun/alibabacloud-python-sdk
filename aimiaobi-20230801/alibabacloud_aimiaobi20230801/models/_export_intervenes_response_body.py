@@ -15,11 +15,17 @@ class ExportIntervenesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Success status: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class ExportIntervenesResponseBodyData(DaraModel):
         file_url: str = None,
     ):
         self.code = code
+        # File URL
         self.file_url = file_url
 
     def validate(self):

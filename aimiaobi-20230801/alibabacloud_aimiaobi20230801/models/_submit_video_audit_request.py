@@ -13,14 +13,16 @@ class SubmitVideoAuditRequest(DaraModel):
         url: str = None,
         workspace_id: str = None,
     ):
-        # 扩展参数JSON字符串
+        # Extension parameters
         self.ext = ext
-        # OSS文件Key，与url参数二选一
+        # Unique file identity within the Miaobi system (choose either FileKey or URL)
         self.file_key = file_key
-        # 抽帧间隔时间（秒）
+        # Snapshot interval
         self.snapshot_interval = snapshot_interval
-        # 视频URL地址，与fileKey参数二选一
+        # Video URL (choose either FileKey or URL)
         self.url = url
+        # Workspace ID
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

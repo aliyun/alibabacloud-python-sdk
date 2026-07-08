@@ -14,8 +14,11 @@ class RunSearchSimilarArticlesResponseBody(DaraModel):
         payload: main_models.RunSearchSimilarArticlesResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header.
         self.header = header
+        # Response body.
         self.payload = payload
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,7 +64,11 @@ class RunSearchSimilarArticlesResponseBodyPayload(DaraModel):
         output: main_models.RunSearchSimilarArticlesResponseBodyPayloadOutput = None,
         usage: main_models.RunSearchSimilarArticlesResponseBodyPayloadUsage = None,
     ):
+        # Output.
         self.output = output
+        # instance: The image is running and used by an ECS instance.
+        # 
+        # none: The image is idle and not used by any ECS instance.
         self.usage = usage
 
     def validate(self):
@@ -102,8 +109,11 @@ class RunSearchSimilarArticlesResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens.
         self.input_tokens = input_tokens
+        # Number of output tokens.
         self.output_tokens = output_tokens
+        # Total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -144,7 +154,9 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutput(DaraModel):
         articles: List[main_models.RunSearchSimilarArticlesResponseBodyPayloadOutputArticles] = None,
         text: str = None,
     ):
+        # Article list.
         self.articles = articles
+        # Text generation result.
         self.text = text
 
     def validate(self):
@@ -201,21 +213,44 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # UUID of the category
         self.category_uuid = category_uuid
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Document Type:  
+        # - plainText: plain text; content is required  
+        # - richText: rich text in HTML format; content is required  
+        # - text: text file; url is required  
+        # - pdf: url is required  
+        # - word: url is required  
+        # - image: Image; url is required. Supports most common image formats such as GIF, PNG, JPG, and JPEG  
+        # - video: Video; url is required. Supports most common video formats such as MP4, AVI, WMV, and MOV
         self.doc_type = doc_type
+        # Article ID.
         self.doc_uuid = doc_uuid
+        # Extension field 1
         self.extend_1 = extend_1
+        # Extension field 2
         self.extend_2 = extend_2
+        # Extension field 3
         self.extend_3 = extend_3
+        # Publication time.
         self.pub_time = pub_time
+        # Search source
         self.search_source = search_source
+        # Search source name.
         self.search_source_name = search_source_name
+        # Type of dataset
         self.search_source_type = search_source_type
+        # Source website.
         self.source = source
+        # Summary.
         self.summary = summary
+        # label
         self.tags = tags
+        # Title.
         self.title = title
+        # URL.
         self.url = url
 
     def validate(self):
@@ -338,11 +373,16 @@ class RunSearchSimilarArticlesResponseBodyHeader(DaraModel):
         session_id: str = None,
         task_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Server-sent event. Valid values: task-started, task-finished, and task-failed.
         self.event = event
         self.event_info = event_info
+        # Session ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -17,11 +17,17 @@ class GenerateImageTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. true: The request was successful. false: The request failed.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class GenerateImageTaskResponseBodyData(DaraModel):
         self,
         task_list: List[main_models.GenerateImageTaskResponseBodyDataTaskList] = None,
     ):
+        # The information about the paragraph tasks. The tasks are associated based on the input paragraph IDs.
         self.task_list = task_list
 
     def validate(self):
@@ -119,9 +126,13 @@ class GenerateImageTaskResponseBodyDataTaskList(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
+        # The content of the paragraph.
         self.content = content
+        # The paragraph ID.
         self.id = id
+        # The unique ID of the task.
         self.task_id = task_id
+        # The current status of the task. Valid values: SUCCEEDED, FAILED, CANCELED, PENDING, SUSPENDED, and RUNNING.
         self.task_status = task_status
 
     def validate(self):

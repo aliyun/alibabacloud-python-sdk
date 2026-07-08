@@ -10,8 +10,11 @@ class GenerateViewPointShrinkRequest(DaraModel):
         agent_key: str = None,
         reference_data_shrink: str = None,
     ):
+        # The unique identifier of the workspace.
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The context data.
         self.reference_data_shrink = reference_data_shrink
 
     def validate(self):

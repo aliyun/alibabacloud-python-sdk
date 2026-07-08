@@ -17,11 +17,17 @@ class ListBuildConfigsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded. true indicates success. false indicates failure.
         self.success = success
 
     def validate(self):
@@ -96,15 +102,25 @@ class ListBuildConfigsResponseBodyData(DaraModel):
         update_time: str = None,
         update_user: str = None,
     ):
+        # Indicates whether the preset is built-in
         self.build_in = build_in
+        # Creation time
         self.create_time = create_time
+        # Creator
         self.create_user = create_user
+        # Primary key ID
         self.id = id
+        # List of available values for the tag
         self.keywords = keywords
+        # Tag key
         self.tag = tag
+        # Tag description
         self.tag_description = tag_description
+        # Content category. Valid values: media or government.
         self.type = type
+        # Last update time
         self.update_time = update_time
+        # Last updater
         self.update_user = update_user
 
     def validate(self):
@@ -195,7 +211,9 @@ class ListBuildConfigsResponseBodyDataKeywords(DaraModel):
         description: str = None,
         key: str = None,
     ):
+        # Description of the preset tag
         self.description = description
+        # Key of the preset tag
         self.key = key
 
     def validate(self):

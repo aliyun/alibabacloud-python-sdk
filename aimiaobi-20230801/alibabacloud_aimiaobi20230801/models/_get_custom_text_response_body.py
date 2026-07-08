@@ -15,11 +15,17 @@ class GetCustomTextResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Fault description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Is successful: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -85,12 +91,19 @@ class GetCustomTextResponseBodyData(DaraModel):
         update_time: str = None,
         update_user: str = None,
     ):
+        # Content
         self.content = content
+        # Creation time
         self.create_time = create_time
+        # Created by
         self.create_user = create_user
+        # Primary key ID
         self.id = id
+        # Title
         self.title = title
+        # Update time
         self.update_time = update_time
+        # Update user
         self.update_user = update_user
 
     def validate(self):

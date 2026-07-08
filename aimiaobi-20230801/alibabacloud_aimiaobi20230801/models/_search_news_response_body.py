@@ -20,14 +20,23 @@ class SearchNewsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The current page number.
         self.current = current
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The number of records on each page.
         self.size = size
+        # Indicates whether the request was successful. A value of \\`true\\` indicates success and a value of \\`false\\` indicates failure.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -123,18 +132,31 @@ class SearchNewsResponseBodyData(DaraModel):
         update_time: str = None,
         url: str = None,
     ):
+        # The author of the article. This parameter may not be returned for some articles.
         self.author = author
+        # The content of the article. This parameter is always returned.
         self.content = content
+        # The unique ID of the internal document. This parameter is always returned.
         self.doc_uuid = doc_uuid
+        # The URLs of the images. This parameter is deprecated and is no longer returned. Do not use it.
         self.image_urls = image_urls
+        # The time when the article was published. This parameter is always returned.
         self.pub_time = pub_time
+        # The ID of the internal search source. This parameter is always returned.
         self.search_source = search_source
+        # The name of the internal search source. This parameter is always returned.
         self.search_source_name = search_source_name
+        # The source of the article. This parameter may not be returned for some articles.
         self.source = source
+        # The summary of the article. This parameter may not be returned for some articles.
         self.summary = summary
+        # The tag of the article. This parameter may not be returned for some articles.
         self.tag = tag
+        # The title of the article. This parameter is always returned.
         self.title = title
+        # The time when the system was updated. This parameter is deprecated and is no longer returned. Do not use it.
         self.update_time = update_time
+        # The URL of the article. This parameter is always returned.
         self.url = url
 
     def validate(self):

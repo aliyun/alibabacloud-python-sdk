@@ -14,9 +14,14 @@ class UploadDocRequest(DaraModel):
         docs: List[main_models.UploadDocRequestDocs] = None,
         workspace_id: str = None,
     ):
+        # Folder where the document resides. If no value is provided, it defaults to "default".
         self.category_id = category_id
+        # Document
+        # 
         # This parameter is required.
         self.docs = docs
+        # Unique identifier (UUID) of the Alibaba Cloud Model Studio workspace: obtain the [Workspace ID](https://help.aliyun.com/document_detail/2587495.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -66,8 +71,12 @@ class UploadDocRequestDocs(DaraModel):
         doc_name: str = None,
         file_url: str = None,
     ):
+        # document Name
+        # 
         # This parameter is required.
         self.doc_name = doc_name
+        # file URL
+        # 
         # This parameter is required.
         self.file_url = file_url
 

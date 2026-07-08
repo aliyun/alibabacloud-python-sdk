@@ -11,6 +11,7 @@ class GetPptConfigRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.external_user_id = external_user_id
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

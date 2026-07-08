@@ -14,11 +14,18 @@ class GetDatasetDocumentShrinkRequest(DaraModel):
         include_fields_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Unique identifier of the dataset.
         self.dataset_id = dataset_id
+        # Name of the dataset.
         self.dataset_name = dataset_name
+        # User-defined unique ID of the document.
         self.doc_id = doc_id
+        # Internal unique identifier of the document.
         self.doc_uuid = doc_uuid
+        # List of fields to include in the response.
         self.include_fields_shrink = include_fields_shrink
+        # Unique identifier of your Alibaba Cloud Model Studio workspace. [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

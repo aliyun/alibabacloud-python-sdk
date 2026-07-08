@@ -13,11 +13,18 @@ class RunQuickWritingShrinkRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Referenced articles
         self.articles_shrink = articles_shrink
+        # Other writing parameters. Choose either prompt or writingParams.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # Use the specified search source list.
         self.search_sources_shrink = search_sources_shrink
+        # Task ID. Reuse the same task ID for multi-turn conversations.
         self.task_id = task_id
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -15,11 +15,17 @@ class GetInterveneImportTaskInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of \\`true\\` indicates success, and a value of \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class GetInterveneImportTaskInfoResponseBodyData(DaraModel):
         status: main_models.GetInterveneImportTaskInfoResponseBodyDataStatus = None,
     ):
         self.code = code
+        # The status information of the task.
         self.status = status
 
     def validate(self):
@@ -120,10 +127,15 @@ class GetInterveneImportTaskInfoResponseBodyDataStatus(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # The information about the task.
         self.msg = msg
+        # The completion percentage.
         self.percentage = percentage
+        # The status of the task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

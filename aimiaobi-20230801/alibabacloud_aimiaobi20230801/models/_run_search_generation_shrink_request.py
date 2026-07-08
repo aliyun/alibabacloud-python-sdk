@@ -16,13 +16,28 @@ class RunSearchGenerationShrinkRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Context.
         self.agent_context_shrink = agent_context_shrink
+        # Session configuration.
         self.chat_config_shrink = chat_config_shrink
+        # Image URL. Used for image search and hybrid text-and-image (prompt) search generation.
         self.file_url = file_url
+        # Model ID:
+        # 
+        # - quanmiao-max: Quanmiao-Max
+        # 
+        # - quanmiao-plus: Quanmiao-Plus
         self.model_id = model_id
+        # Original session identifier. Usually empty. When non-empty, it indicates that the current conversation is based on the referenced session. The system loads parameters and search results from that session and replaces the generated result. Use this for re-generation, changing data sources, or adding new agents.
         self.original_session_id = original_session_id
+        # Search query.
         self.prompt = prompt
+        # Unique identifier for the session task.
+        # 
+        # > By default, you do not need to provide a TaskId. The system generates one automatically. If you specify the same TaskId in subsequent requests, those tasks are grouped into the same conversation.
         self.task_id = task_id
+        # ID of the Alibaba Cloud Model Studio workspace. To learn how to obtain this ID, see [How to use workspaces](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

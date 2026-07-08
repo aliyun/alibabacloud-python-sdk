@@ -15,12 +15,17 @@ class SaveOrUpdateOssConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -82,8 +87,11 @@ class SaveOrUpdateOssConfigResponseBodyData(DaraModel):
         enable: str = None,
         endpoint: str = None,
     ):
+        # The name of the OSS bucket.
         self.bucket_name = bucket_name
+        # Indicates whether the OSS configuration is active. \\`1\\`: The configuration is active. \\`0\\`: The configuration is inactive.
         self.enable = enable
+        # The endpoint of OSS.
         self.endpoint = endpoint
 
     def validate(self):

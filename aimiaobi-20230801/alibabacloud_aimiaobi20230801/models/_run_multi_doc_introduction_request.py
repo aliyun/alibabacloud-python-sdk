@@ -16,13 +16,22 @@ class RunMultiDocIntroductionRequest(DaraModel):
         summary_prompt: str = None,
         workspace_id: str = None,
     ):
+        # Array of document IDs.
+        # 
         # This parameter is required.
         self.doc_ids = doc_ids
+        # Custom prompt for key points.
         self.key_point_prompt = key_point_prompt
+        # Name of the custom model to use.
         self.model_name = model_name
+        # Session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Custom prompt for the summary.
         self.summary_prompt = summary_prompt
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -9,6 +9,8 @@ class GetPropertiesRequest(DaraModel):
         self,
         agent_key: str = None,
     ):
+        # Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
 

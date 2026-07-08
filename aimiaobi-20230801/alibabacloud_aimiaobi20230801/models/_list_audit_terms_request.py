@@ -12,9 +12,14 @@ class ListAuditTermsRequest(DaraModel):
         terms_name: str = None,
         workspace_id: str = None,
     ):
+        # Maximum number of records to return.
         self.max_results = max_results
+        # Token for the next page.
         self.next_token = next_token
+        # Dictionary name. Optional. Defaults to Default if not specified.
         self.terms_name = terms_name
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. Get your [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -12,10 +12,16 @@ class AddDatasetDocumentShrinkRequest(DaraModel):
         document_shrink: str = None,
         workspace_id: str = None,
     ):
+        # The unique identifier of the dataset.
         self.dataset_id = dataset_id
+        # The name of the dataset.
         self.dataset_name = dataset_name
+        # The document.
+        # 
         # This parameter is required.
         self.document_shrink = document_shrink
+        # The unique identifier of the Model Studio workspace. For more information, see [Obtain a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

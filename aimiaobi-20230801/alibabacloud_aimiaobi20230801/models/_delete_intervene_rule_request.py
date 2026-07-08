@@ -10,8 +10,11 @@ class DeleteInterveneRuleRequest(DaraModel):
         agent_key: str = None,
         rule_id: int = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Rule ID
         self.rule_id = rule_id
 
     def validate(self):

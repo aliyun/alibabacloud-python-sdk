@@ -15,12 +15,17 @@ class BindPptArtifactResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response object of the task.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class BindPptArtifactResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

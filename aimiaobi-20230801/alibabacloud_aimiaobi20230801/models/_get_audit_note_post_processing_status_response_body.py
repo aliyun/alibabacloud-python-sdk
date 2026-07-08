@@ -15,16 +15,24 @@ class GetAuditNotePostProcessingStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
+        # 
         # This parameter is required.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details.
+        # 
         # This parameter is required.
         self.message = message
         # Id of the request
         # 
         # This parameter is required.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
         # This parameter is required.
         self.success = success
 
@@ -91,12 +99,19 @@ class GetAuditNotePostProcessingStatusResponseBodyData(DaraModel):
         status: str = None,
         total_lines: int = None,
     ):
+        # The time when the post-processing task was completed. The format is YYYY-MM-DD HH:mm:ss.
         self.completion_time = completion_time
+        # The time when the post-processing task was created. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
+        # The error message. This is returned only when the post-processing task fails.
         self.error_message = error_message
+        # The ID of the rule library. The default value in the current version is "Default".
         self.note_id = note_id
+        # The number of lines that have been post-processed.
         self.processed_lines = processed_lines
+        # The status of the post-processing task. Valid values: PENDING, RUNNING, SUCCEEDED, and FAILED.
         self.status = status
+        # The total number of lines in the structured rule library.
         self.total_lines = total_lines
 
     def validate(self):

@@ -22,16 +22,27 @@ class ListEnterprisePptTemplatesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # The current page number.
         self.current = current
+        # An array of enterprise-specific PPT template objects.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of results per page, as specified in the request. Note: This parameter is not yet in effect.
         self.max_results = max_results
+        # The response message.
         self.message = message
+        # The token for the next page of results. An empty value indicates that no more data is available. Note: This parameter is not yet in effect.
         self.next_token = next_token
+        # The unique request ID. Provide this ID when you contact technical support.
         self.request_id = request_id
+        # The number of entries returned on the current page (the \\"page size\\").
         self.size = size
+        # Indicates whether the request succeeded. `true` indicates success, and `false` indicates failure.
         self.success = success
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -128,8 +139,9 @@ class ListEnterprisePptTemplatesResponseBodyData(DaraModel):
         cover_img: str = None,
         id: int = None,
     ):
+        # The URL of the cover image.
         self.cover_img = cover_img
-        # ID
+        # The ID of the template.
         self.id = id
 
     def validate(self):

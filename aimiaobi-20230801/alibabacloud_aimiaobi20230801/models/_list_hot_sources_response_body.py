@@ -20,14 +20,23 @@ class ListHotSourcesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Third-party source list
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of results returned
         self.max_results = max_results
+        # Fault description
         self.message = message
+        # Next page token
         self.next_token = next_token
+        # Request UUID
         self.request_id = request_id
+        # Indicates whether the operation succeeded: true for success, false for failure
         self.success = success
+        # Total number of records
         self.total_count = total_count
 
     def validate(self):
@@ -114,9 +123,13 @@ class ListHotSourcesResponseBodyData(DaraModel):
         sort: int = None,
         source: str = None,
     ):
+        # Hot ranking source description
         self.description = description
+        # Whether to display in the console
         self.show = show
+        # Sorting value
         self.sort = sort
+        # Hot ranking source identity
         self.source = source
 
     def validate(self):
