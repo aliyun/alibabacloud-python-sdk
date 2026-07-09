@@ -11,7 +11,10 @@ class GetOrderDetailRequest(DaraModel):
         order_id: str = None,
         owner_id: int = None,
     ):
+        # The UID of the enterprise multi-account member managed by the current account. Leave this parameter empty if this scenario does not apply.
         self.member_uid = member_uid
+        # The order ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
         self.owner_id = owner_id

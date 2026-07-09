@@ -17,11 +17,17 @@ class QueryCostCenterResourceRequest(DaraModel):
         next_token: str = None,
         owner_account_id: int = None,
     ):
+        # The ID of the cost center.
         self.cost_center_id = cost_center_id
+        # The list of enterprises and accounts. An empty value indicates querying the current account.
         self.ec_id_account_ids = ec_id_account_ids
+        # The maximum number of records per query.
         self.max_results = max_results
+        # The first-level marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # The token for the next query. An empty NextToken indicates that there are no more results.
         self.next_token = next_token
+        # The owner user ID of the cost center.
         self.owner_account_id = owner_account_id
 
     def validate(self):
@@ -88,7 +94,10 @@ class QueryCostCenterResourceRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The list of accessed accounts. An empty value indicates that all accounts under the current entity ID are selected.
         self.account_ids = account_ids
+        # The enterprise entity ID.
+        # 
         # This parameter is required.
         self.ec_id = ec_id
 

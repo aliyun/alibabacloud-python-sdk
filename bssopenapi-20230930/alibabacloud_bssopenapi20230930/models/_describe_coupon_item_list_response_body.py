@@ -16,10 +16,15 @@ class DescribeCouponItemListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The data list.
         self.data = data
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -80,7 +85,9 @@ class DescribeCouponItemListResponseBodyData(DaraModel):
         code: str = None,
         name: str = None,
     ):
+        # The product code.
         self.code = code
+        # The product name.
         self.name = name
 
     def validate(self):

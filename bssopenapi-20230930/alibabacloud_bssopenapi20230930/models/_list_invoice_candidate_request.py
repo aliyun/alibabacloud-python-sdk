@@ -22,16 +22,27 @@ class ListInvoiceCandidateRequest(DaraModel):
         status: List[int] = None,
         types: List[int] = None,
     ):
+        # List of billing cycles.
         self.billing_cycles = billing_cycles
+        # List of business document numbers.
         self.business_ids = business_ids
+        # The current page number.
         self.current_page = current_page
+        # List of enterprises and accounts. If empty, the current account itself is queried.
         self.ec_id_account_ids = ec_id_account_ids
+        # The end time. Format: yyyy-mm-dd hh:mm:ss.
         self.end_time = end_time
+        # List of invoice issuers.
         self.invoice_issuers = invoice_issuers
+        # Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # The number of entries per page.
         self.page_size = page_size
+        # The start time. Format: yyyy-mm-dd hh:mm:ss.
         self.start_time = start_time
+        # List of invoice candidate statuses.
         self.status = status
+        # List of invoice candidate types.
         self.types = types
 
     def validate(self):
@@ -128,7 +139,9 @@ class ListInvoiceCandidateRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # List of accounts to access. If empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
+        # Enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):

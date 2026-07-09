@@ -13,8 +13,11 @@ class CreateCostCenterRuleResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
+        # Financial unit allocation rule ID
         self.data = data
+        # Response structure metadata
         self.metadata = metadata
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

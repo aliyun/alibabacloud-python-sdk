@@ -17,11 +17,17 @@ class ListFundAccountPayRelationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The data list.
         self.data = data
+        # The response metadata.
         self.metadata = metadata
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -100,19 +106,40 @@ class ListFundAccountPayRelationResponseBodyData(DaraModel):
         site: str = None,
         status: str = None,
     ):
+        # The account ID of the user associated with the payment relationship, that is, the account that uses this account for payment.
         self.account_id = account_id
+        # The user name.
         self.account_name = account_name
+        # The enterprise entity ID of the user associated with the payment relationship.
         self.ecid = ecid
+        # The time when the payment relationship takes effect.
         self.effective_time = effective_time
+        # The account ID.
         self.fund_account_id = fund_account_id
+        # The Alibaba Cloud account ID of the account owner.
         self.fund_account_owner_account_id = fund_account_owner_account_id
+        # The time when the payment relationship expires.
         self.ineffective_time = ineffective_time
+        # The primary marketplace.
         self.nbid = nbid
+        # The operator name.
+        # When the operator type is aliyun_pk, the operator name is the Alibaba Cloud nickname.
+        # When the operator type is system, the operator name is "Alibaba Cloud assistant".
         self.operator_name = operator_name
+        # The authorized operator.
+        # When the operator type is aliyun_pk, operatorNo is the Alibaba Cloud account ID.
         self.operator_no = operator_no
+        # The type of the authorized operator.
+        # aliyun_pk: user.
+        # system: Alibaba Cloud system.
         self.operator_type = operator_type
+        # The relationship type, which can be collection relationship or payment relationship.
         self.relation_type = relation_type
+        # The site.
         self.site = site
+        # The relationship status.
+        # valid: valid.
+        # expired: invalid.
         self.status = status
 
     def validate(self):

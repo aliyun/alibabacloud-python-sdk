@@ -11,6 +11,7 @@ class UpdateBudgetResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.budget_name = budget_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

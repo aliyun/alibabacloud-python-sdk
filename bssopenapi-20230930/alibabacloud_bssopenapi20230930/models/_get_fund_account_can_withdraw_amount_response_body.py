@@ -21,16 +21,27 @@ class GetFundAccountCanWithdrawAmountResponseBody(DaraModel):
         request_id: str = None,
         transfer_amount: str = None,
     ):
+        # Amount withdrawable via original payment method
         self.can_original_withdraw_amount = can_original_withdraw_amount
+        # Withdrawable amount = Cash balance - Transfer ledger amount - (Outstanding invoice amount + Historical months unsettled amount + Current month unsettled amount - Transfer ledger amount) - Pay-as-you-go reserved amount
         self.can_withdraw_amount = can_withdraw_amount
+        # Amount not withdrawable via original payment method
         self.cannot_original_withdraw_amount = cannot_original_withdraw_amount
+        # Cash balance
         self.cash_amount = cash_amount
+        # Outstanding invoice amount
         self.credit_memo_amount = credit_memo_amount
+        # Current month unsettled amount
         self.current_month_uncleared_amount = current_month_uncleared_amount
+        # Historical months unsettled amount
         self.history_month_uncleared_amount = history_month_uncleared_amount
+        # Response structure metadata
         self.metadata = metadata
+        # Pay-as-you-go reserved amount
         self.pay_as_you_go_reversed_amount = pay_as_you_go_reversed_amount
+        # Request ID
         self.request_id = request_id
+        # Transfer amount
         self.transfer_amount = transfer_amount
 
     def validate(self):

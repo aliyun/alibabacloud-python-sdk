@@ -16,10 +16,15 @@ class DescribeBudgetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The data list.
         self.data = data
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -92,19 +97,33 @@ class DescribeBudgetsResponseBodyData(DaraModel):
         quota_type: str = None,
         warn_confs: List[main_models.DescribeBudgetsResponseBodyDataWarnConfs] = None,
     ):
+        # The budget name.
         self.budget_name = budget_name
+        # The budget type.
         self.budget_type = budget_type
+        # The remarks.
         self.comment = comment
+        # The end period.
         self.cycle_end_period = cycle_end_period
+        # The specified quota per cycle.
         self.cycle_quota = cycle_quota
+        # The start period.
         self.cycle_start_period = cycle_start_period
+        # The cycle type.
         self.cycle_type = cycle_type
+        # The enterprise multi-account filter conditions.
         self.ec_id_account_ids_filter = ec_id_account_ids_filter
+        # The expiration status.
         self.expire_status = expire_status
+        # The budget metric.
         self.metric = metric
+        # The filter conditions.
         self.query_filter = query_filter
+        # The fixed quota value.
         self.quota = quota
+        # The quota type.
         self.quota_type = quota_type
+        # The alert configurations.
         self.warn_confs = warn_confs
 
     def validate(self):
@@ -247,14 +266,23 @@ class DescribeBudgetsResponseBodyDataWarnConfs(DaraModel):
         threshold_value: str = None,
         warn_target: str = None,
     ):
+        # The remarks.
         self.comment = comment
+        # Indicates whether EventBridge is enabled.
         self.event_bridge = event_bridge
+        # The list of message center notification channels.
         self.msc_channels = msc_channels
+        # The list of message center contacts.
         self.msc_contacts = msc_contacts
+        # The alert name. This parameter is user-defined and optional. If not specified, the backend automatically generates a name.
         self.name = name
+        # The sort sequence number. This parameter is present only in responses. Alerts are numbered in ascending order by alert ID, starting from 1.
         self.sequence = sequence
+        # The threshold type.
         self.threshold_type = threshold_type
+        # The threshold value.
         self.threshold_value = threshold_value
+        # The alert target.
         self.warn_target = warn_target
 
     def validate(self):
@@ -332,8 +360,11 @@ class DescribeBudgetsResponseBodyDataQueryFilter(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # The parameter code.
         self.code = code
+        # The selection mode.
         self.select_type = select_type
+        # The filter value list.
         self.values = values
 
     def validate(self):
@@ -374,7 +405,9 @@ class DescribeBudgetsResponseBodyDataEcIdAccountIdsFilter(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The member account IDs.
         self.account_ids = account_ids
+        # The enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):
@@ -409,7 +442,9 @@ class DescribeBudgetsResponseBodyDataCycleQuota(DaraModel):
         cycle_period: str = None,
         quota: str = None,
     ):
+        # The cycle period.
         self.cycle_period = cycle_period
+        # The quota.
         self.quota = quota
 
     def validate(self):

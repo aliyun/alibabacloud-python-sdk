@@ -10,8 +10,11 @@ class CreateCostCenterShrinkRequest(DaraModel):
         cost_center_entity_list_shrink: str = None,
         nbid: str = None,
     ):
+        # Cost center entity list
+        # 
         # This parameter is required.
         self.cost_center_entity_list_shrink = cost_center_entity_list_shrink
+        # Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):

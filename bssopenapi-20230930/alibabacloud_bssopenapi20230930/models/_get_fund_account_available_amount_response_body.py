@@ -33,27 +33,51 @@ class GetFundAccountAvailableAmountResponseBody(DaraModel):
         request_id: str = None,
         uncleared_amount: str = None,
     ):
+        # Available amount
         self.available_amount = available_amount
+        # Available credit amount
         self.available_credit_amount = available_credit_amount
+        # Bank acceptance bill amount
         self.bank_acceptance_amount = bank_acceptance_amount
+        # Cash balance
         self.cash_amount = cash_amount
+        # Credit quota
         self.credit_amount = credit_amount
+        # Credit refund balance
         self.credit_refund_amount = credit_refund_amount
+        # Indicates whether credit control is enabled
         self.credit_user = credit_user
+        # Currency
         self.currency = currency
+        # Current month uncleared amount
         self.current_month_uncleared_amount = current_month_uncleared_amount
+        # Extended ledger list
         self.extend_ledger_list = extend_ledger_list
+        # Account ID
         self.fund_account_id = fund_account_id
+        # Account ID of the fund account owner
         self.fund_account_owner_account_id = fund_account_owner_account_id
+        # Account status
         self.fund_account_status = fund_account_status
+        # Fund account type. Valid values:
+        # DIRECT_USER: Alibaba Cloud direct customer account.
+        # RESELLER_QUOTA: ecosystem account.
         self.fund_account_type = fund_account_type
+        # Historical months uncleared amount
         self.history_month_uncleared_amount = history_month_uncleared_amount
+        # Response metadata
         self.metadata = metadata
+        # Negative bill amount
         self.negative_bill_amount = negative_bill_amount
+        # Original cash ledger list. International site users may have cash ledgers in multiple currencies.
         self.original_cash_amount_list = original_cash_amount_list
+        # Ecosystem end customer quota
         self.quota_amount = quota_amount
+        # Consumed quota of ecosystem end customer
         self.quota_consumed_amount = quota_consumed_amount
+        # Request ID
         self.request_id = request_id
+        # Uncleared amount (current month uncleared + historical months uncleared)
         self.uncleared_amount = uncleared_amount
 
     def validate(self):
@@ -225,7 +249,9 @@ class GetFundAccountAvailableAmountResponseBodyOriginalCashAmountList(DaraModel)
         amount: str = None,
         currency: str = None,
     ):
+        # Amount
         self.amount = amount
+        # Currency
         self.currency = currency
 
     def validate(self):
@@ -261,8 +287,11 @@ class GetFundAccountAvailableAmountResponseBodyExtendLedgerList(DaraModel):
         ledger_name: str = None,
         original_amount: str = None,
     ):
+        # Currency of the ledger amount, such as CNY and USD.
         self.currency = currency
+        # Ledger name
         self.ledger_name = ledger_name
+        # Ledger balance
         self.original_amount = original_amount
 
     def validate(self):

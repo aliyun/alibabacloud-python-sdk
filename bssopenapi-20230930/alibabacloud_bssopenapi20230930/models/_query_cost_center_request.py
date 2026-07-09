@@ -17,14 +17,24 @@ class QueryCostCenterRequest(DaraModel):
         page_size: int = None,
         parent_cost_center_id: int = None,
     ):
+        # The current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
+        # The ID of the primary sales channel. If this parameter is left empty, the sales channel ID of the current user is used by default.
         self.nbid = nbid
+        # The ID of the user who owns the financial unit.
+        # 
         # This parameter is required.
         self.owner_account_id = owner_account_id
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The ID of the parent financial unit. A value of -1 indicates the root financial unit.
+        # 
         # This parameter is required.
         self.parent_cost_center_id = parent_cost_center_id
 
@@ -92,7 +102,10 @@ class QueryCostCenterRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
+        # The ID of the enterprise entity.
+        # 
         # This parameter is required.
         self.ec_id = ec_id
 

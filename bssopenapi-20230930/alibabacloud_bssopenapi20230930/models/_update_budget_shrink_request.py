@@ -23,28 +23,51 @@ class UpdateBudgetShrinkRequest(DaraModel):
         quota_type: str = None,
         warn_confs_shrink: str = None,
     ):
+        # The budget name.
+        # 
         # This parameter is required.
         self.budget_name = budget_name
+        # The budget type.
+        # 
         # This parameter is required.
         self.budget_type = budget_type
+        # The comment.
         self.comment = comment
+        # The end period of the cycle.
+        # 
         # This parameter is required.
         self.cycle_end_period = cycle_end_period
+        # The quota specified for each cycle.
         self.cycle_quota_shrink = cycle_quota_shrink
+        # The start period of the cycle.
+        # 
         # This parameter is required.
         self.cycle_start_period = cycle_start_period
+        # The cycle type.
+        # 
         # This parameter is required.
         self.cycle_type = cycle_type
+        # The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        # The budget metric.
+        # 
         # This parameter is required.
         self.metric = metric
+        # The primary sales channel ID. If this parameter is left empty, the sales channel ID of the current user is used by default.
         self.nbid = nbid
+        # The original budget name.
+        # 
         # This parameter is required.
         self.original_budget_name = original_budget_name
+        # The filter conditions.
         self.query_filter_shrink = query_filter_shrink
+        # The fixed quota value.
         self.quota = quota
+        # The quota type.
+        # 
         # This parameter is required.
         self.quota_type = quota_type
+        # The alert configurations.
         self.warn_confs_shrink = warn_confs_shrink
 
     def validate(self):

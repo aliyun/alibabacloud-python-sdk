@@ -10,7 +10,10 @@ class SetFundAccountLowAvailableAmountAlarmRequest(DaraModel):
         fund_account_id: int = None,
         threshold_amount: str = None,
     ):
+        # Fund account ID. If not specified, the account ID owned by the current account (owner) is used by default.
         self.fund_account_id = fund_account_id
+        # Low balance alert threshold.
+        # 
         # This parameter is required.
         self.threshold_amount = threshold_amount
 

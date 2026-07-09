@@ -15,9 +15,13 @@ class ModifyCostCenterRuleRequest(DaraModel):
         nbid: str = None,
         owner_account_id: int = None,
     ):
+        # Financial unit ID
         self.cost_center_id = cost_center_id
+        # Rule expression
         self.filter_expression = filter_expression
+        # Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # Owner of the financial unit (deprecated)
         self.owner_account_id = owner_account_id
 
     def validate(self):
@@ -69,10 +73,15 @@ class ModifyCostCenterRuleRequestFilterExpression(DaraModel):
         operands: List[Any] = None,
         operator_type: str = None,
     ):
+        # Operation type
         self.expression_type = expression_type
+        # Sub-condition filter
         self.filter_values = filter_values
+        # Filter condition (deprecated)
         self.operand = operand
+        # Condition expression
         self.operands = operands
+        # Relational expression
         self.operator_type = operator_type
 
     def validate(self):
@@ -129,9 +138,13 @@ class ModifyCostCenterRuleRequestFilterExpressionFilterValues(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # Condition filter key
         self.code = code
+        # Condition filter key name (deprecated)
         self.code_name = code_name
+        # Association between code and value
         self.select_type = select_type
+        # Condition filter value list
         self.values = values
 
     def validate(self):

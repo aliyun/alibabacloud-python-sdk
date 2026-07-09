@@ -15,10 +15,15 @@ class DeleteCostCenterResponseBody(DaraModel):
         owner_account_id: int = None,
         request_id: str = None,
     ):
+        # Cost center ID.
         self.cost_center_id = cost_center_id
+        # Indicates whether the operation is successful.
         self.is_success = is_success
+        # Response metadata.
         self.metadata = metadata
+        # User ID of the cost center owner.
         self.owner_account_id = owner_account_id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

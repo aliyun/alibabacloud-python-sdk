@@ -13,8 +13,11 @@ class SetFundAccountLowAvailableAmountAlarmResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The response metadata.
         self.metadata = metadata
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

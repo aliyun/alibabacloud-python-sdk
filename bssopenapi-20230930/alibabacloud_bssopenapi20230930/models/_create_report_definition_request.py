@@ -21,19 +21,38 @@ class CreateReportDefinitionRequest(DaraModel):
         send_with_attach: str = None,
         split_file_on_user_id: str = None,
     ):
+        # The start billing cycle for push. After the subscription succeeds, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions, and historical data will not be re-pushed. You can push data within the last year.
         self.begin_billing_cycle = begin_billing_cycle
+        # The email subscription configuration that specifies whether to include multi-account members of the organization in bills.
         self.include_members = include_members
+        # The name of the MaxCompute project.
         self.mc_project = mc_project
+        # The name of the MaxCompute subscription table.
         self.mc_table_name = mc_table_name
+        # The first-level site ID. If this parameter is left empty, the site ID of the current user is used by default.
         self.nbid = nbid
+        # The email subscription configuration that specifies whether to skip sending emails when no bills are available.
         self.not_send_on_no_data = not_send_on_no_data
+        # The name of the OSS bucket for file storage.
         self.oss_bucket_name = oss_bucket_name
+        # The UID of the OSS bucket owner that stores the files. If this is a Bid/Reseller subscription and you need to push data to a sub-account\\"s OSS, specify this parameter. The account must be a sub-account of the calling account, and the AliyunConsumeDump2OSSRole permission must be granted to this account. Regular users do not need to specify this parameter. The default value is the calling account.
         self.oss_bucket_owner_account_id = oss_bucket_owner_account_id
+        # The storage path of the OSS bucket.
         self.oss_bucket_path = oss_bucket_path
+        # The subscription source. Valid values: OSS, MC, and MSC_EMAIL.
         self.report_source_type = report_source_type
+        # The subscription type. Valid values:
+        # - consumeDetailBillV2: consumption details. This value is supported only by OSS/MC subscriptions.
+        # - splitDetailBillV2: split details. This value is supported only by OSS/MC subscriptions.
+        # - costDetailBillV2: cost details. This value is supported only by OSS/MC subscriptions.
+        # - monthBillOverview: monthly bill overview. This value is supported only by OSS/MSC_EMAIL subscriptions.
+        # - focus: FOCUS bill. This value is supported only by OSS/MC subscriptions.
+        # 
         # This parameter is required.
         self.report_type = report_type
+        # The email subscription configuration that specifies whether to send emails with bill attachments.
         self.send_with_attach = send_with_attach
+        # The email subscription configuration that specifies whether to split attachments by user ID.
         self.split_file_on_user_id = split_file_on_user_id
 
     def validate(self):

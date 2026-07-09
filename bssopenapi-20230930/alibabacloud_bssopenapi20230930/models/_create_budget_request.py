@@ -25,26 +25,47 @@ class CreateBudgetRequest(DaraModel):
         quota_type: str = None,
         warn_confs: List[main_models.CreateBudgetRequestWarnConfs] = None,
     ):
+        # The budget name.
+        # 
         # This parameter is required.
         self.budget_name = budget_name
+        # The budget type.
+        # 
         # This parameter is required.
         self.budget_type = budget_type
+        # The remarks.
         self.comment = comment
+        # The end cycle.
+        # 
         # This parameter is required.
         self.cycle_end_period = cycle_end_period
+        # The per-cycle specified quota. This parameter is required when QuotaType is set to `SPECIFY`.
         self.cycle_quota = cycle_quota
+        # The start cycle.
+        # 
         # This parameter is required.
         self.cycle_start_period = cycle_start_period
+        # The cycle type.
+        # 
         # This parameter is required.
         self.cycle_type = cycle_type
+        # The list of enterprises and accounts. An empty value indicates the current account.
         self.ec_id_account_ids = ec_id_account_ids
+        # The budget metric.
+        # 
         # This parameter is required.
         self.metric = metric
+        # The level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # The filter conditions.
         self.query_filter = query_filter
+        # The fixed quota value. If the type is quota, the unit is percentage.
         self.quota = quota
+        # The quota type.
+        # 
         # This parameter is required.
         self.quota_type = quota_type
+        # The alert configurations.
         self.warn_confs = warn_confs
 
     def validate(self):
@@ -192,13 +213,21 @@ class CreateBudgetRequestWarnConfs(DaraModel):
         threshold_value: str = None,
         warn_target: str = None,
     ):
+        # The remarks.
         self.comment = comment
+        # Specifies whether to enable EventBridge.
         self.event_bridge = event_bridge
+        # The list of Message Center notification channels.
         self.msc_channels = msc_channels
+        # The list of Message Center contacts.
         self.msc_contacts = msc_contacts
+        # The alert name. This is a user-defined optional field. If not specified, the backend automatically generates a name.
         self.name = name
+        # The threshold type.
         self.threshold_type = threshold_type
+        # The threshold value.
         self.threshold_value = threshold_value
+        # The alert target.
         self.warn_target = warn_target
 
     def validate(self):
@@ -270,8 +299,11 @@ class CreateBudgetRequestQueryFilter(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # The parameter code.
         self.code = code
+        # The selection mode.
         self.select_type = select_type
+        # The list of filter values.
         self.values = values
 
     def validate(self):
@@ -312,7 +344,9 @@ class CreateBudgetRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The list of accounts to access. An empty value indicates all accounts under the current entity ID.
         self.account_ids = account_ids
+        # The enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):
@@ -347,7 +381,9 @@ class CreateBudgetRequestCycleQuota(DaraModel):
         cycle_period: str = None,
         quota: str = None,
     ):
+        # The cycle.
         self.cycle_period = cycle_period
+        # The quota.
         self.quota = quota
 
     def validate(self):

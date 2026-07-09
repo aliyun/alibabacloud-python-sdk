@@ -11,8 +11,11 @@ class CheckBudgetNameExistsResponseBody(DaraModel):
         exists: bool = None,
         request_id: str = None,
     ):
+        # The budget name.
         self.budget_name = budget_name
+        # Indicates whether the budget name already exists.
         self.exists = exists
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

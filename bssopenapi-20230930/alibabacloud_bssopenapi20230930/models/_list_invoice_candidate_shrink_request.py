@@ -19,16 +19,27 @@ class ListInvoiceCandidateShrinkRequest(DaraModel):
         status_shrink: str = None,
         types_shrink: str = None,
     ):
+        # List of billing cycles.
         self.billing_cycles_shrink = billing_cycles_shrink
+        # List of business document numbers.
         self.business_ids_shrink = business_ids_shrink
+        # The current page number.
         self.current_page = current_page
+        # List of enterprises and accounts. If empty, the current account itself is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        # The end time. Format: yyyy-mm-dd hh:mm:ss.
         self.end_time = end_time
+        # List of invoice issuers.
         self.invoice_issuers_shrink = invoice_issuers_shrink
+        # Primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # The number of entries per page.
         self.page_size = page_size
+        # The start time. Format: yyyy-mm-dd hh:mm:ss.
         self.start_time = start_time
+        # List of invoice candidate statuses.
         self.status_shrink = status_shrink
+        # List of invoice candidate types.
         self.types_shrink = types_shrink
 
     def validate(self):

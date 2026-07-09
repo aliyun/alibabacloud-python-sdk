@@ -26,20 +26,35 @@ class DescribeBudgetResponseBody(DaraModel):
         request_id: str = None,
         warn_confs: List[main_models.DescribeBudgetResponseBodyWarnConfs] = None,
     ):
+        # Budget name.
         self.budget_name = budget_name
+        # Budget type.
         self.budget_type = budget_type
+        # Remarks.
         self.comment = comment
+        # End cycle period.
         self.cycle_end_period = cycle_end_period
+        # Quota specified per cycle.
         self.cycle_quota = cycle_quota
+        # Start cycle period.
         self.cycle_start_period = cycle_start_period
+        # Cycle type.
         self.cycle_type = cycle_type
+        # Enterprise multi-account filter conditions.
         self.ec_id_account_ids_filter = ec_id_account_ids_filter
+        # Response structure metadata.
         self.metadata = metadata
+        # Budget metric.
         self.metric = metric
+        # Filter conditions.
         self.query_filter = query_filter
+        # Fixed quota value.
         self.quota = quota
+        # Quota type.
         self.quota_type = quota_type
+        # Request ID.
         self.request_id = request_id
+        # Alert configurations.
         self.warn_confs = warn_confs
 
     def validate(self):
@@ -188,14 +203,23 @@ class DescribeBudgetResponseBodyWarnConfs(DaraModel):
         threshold_value: str = None,
         warn_target: str = None,
     ):
+        # Remarks.
         self.comment = comment
+        # Specifies whether to enable EventBridge.
         self.event_bridge = event_bridge
+        # Message center notification channel list.
         self.msc_channels = msc_channels
+        # Message center contact list.
         self.msc_contacts = msc_contacts
+        # Alert name. User-defined and optional. If not specified, the backend automatically generates a name.
         self.name = name
+        # Sequence number. Only present in responses. Alerts are numbered in ascending order of alert ID, starting from 1.
         self.sequence = sequence
+        # Threshold type.
         self.threshold_type = threshold_type
+        # Threshold value.
         self.threshold_value = threshold_value
+        # Alert target.
         self.warn_target = warn_target
 
     def validate(self):
@@ -273,8 +297,11 @@ class DescribeBudgetResponseBodyQueryFilter(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # Parameter code.
         self.code = code
+        # Selection mode.
         self.select_type = select_type
+        # Filter value list.
         self.values = values
 
     def validate(self):
@@ -315,7 +342,9 @@ class DescribeBudgetResponseBodyEcIdAccountIdsFilter(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # Member account IDs.
         self.account_ids = account_ids
+        # Enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):
@@ -350,7 +379,9 @@ class DescribeBudgetResponseBodyCycleQuota(DaraModel):
         cycle_period: str = None,
         quota: str = None,
     ):
+        # Cycle period.
         self.cycle_period = cycle_period
+        # Quota.
         self.quota = quota
 
     def validate(self):

@@ -13,8 +13,11 @@ class ModifyCostCenterRequest(DaraModel):
         cost_center_entity_list: List[main_models.ModifyCostCenterRequestCostCenterEntityList] = None,
         nbid: str = None,
     ):
+        # The list of cost center entities.
+        # 
         # This parameter is required.
         self.cost_center_entity_list = cost_center_entity_list
+        # The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):
@@ -58,10 +61,16 @@ class ModifyCostCenterRequestCostCenterEntityList(DaraModel):
         cost_center_name: str = None,
         owner_account_id: int = None,
     ):
+        # The ID of the cost center.
+        # 
         # This parameter is required.
         self.cost_center_id = cost_center_id
+        # The new name of the cost center. The name must be unique within the same account.
+        # 
         # This parameter is required.
         self.cost_center_name = cost_center_name
+        # The ID of the owner to which the cost center belongs.
+        # 
         # This parameter is required.
         self.owner_account_id = owner_account_id
 

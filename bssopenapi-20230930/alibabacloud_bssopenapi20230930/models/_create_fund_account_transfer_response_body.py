@@ -12,7 +12,9 @@ class CreateFundAccountTransferResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
+        # The metadata of the response struct.
         self.metadata = metadata
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

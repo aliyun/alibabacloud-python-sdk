@@ -18,12 +18,19 @@ class GetFundAccountCanRecycleAmountResponseBody(DaraModel):
         request_id: str = None,
         transfer_amount: str = None,
     ):
+        # The available balance of the account from which funds are reclaimed.
         self.available_amount = available_amount
+        # The currency.
         self.currency = currency
+        # The metadata of the response struct.
         self.metadata = metadata
+        # The ID of the source account from which funds are reclaimed.
         self.recycle_from_fund_account_id = recycle_from_fund_account_id
+        # The list of accounts to which funds can be reclaimed.
         self.recycle_to_fund_account_list = recycle_to_fund_account_list
+        # The request ID.
         self.request_id = request_id
+        # The transfer ledger balance.
         self.transfer_amount = transfer_amount
 
     def validate(self):
@@ -99,10 +106,15 @@ class GetFundAccountCanRecycleAmountResponseBodyRecycleToFundAccountList(DaraMod
         max_recyclable_amount: str = None,
         original_transfer_remain_amount: str = None,
     ):
+        # The ID of the target account to which funds can be reclaimed.
         self.fund_account_id = fund_account_id
+        # The name of the target account to which funds can be reclaimed.
         self.fund_account_name = fund_account_name
+        # The account ID that owns the target account to which funds can be reclaimed.
         self.fund_account_owner_account_id = fund_account_owner_account_id
+        # The maximum reclaimable amount.
         self.max_recyclable_amount = max_recyclable_amount
+        # The remaining transfer amount that can be reclaimed through the original transfer path.
         self.original_transfer_remain_amount = original_transfer_remain_amount
 
     def validate(self):

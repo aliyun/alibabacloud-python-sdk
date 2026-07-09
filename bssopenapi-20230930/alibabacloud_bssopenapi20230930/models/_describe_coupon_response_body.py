@@ -16,10 +16,15 @@ class DescribeCouponResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The data list.
         self.data = data
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -103,30 +108,54 @@ class DescribeCouponResponseBodyData(DaraModel):
         universal_type: str = None,
         yh_order_types: List[str] = None,
     ):
+        # The face value.
         self.amount = amount
         self.certain_amount = certain_amount
+        # The coupon ID.
         self.coupon_id = coupon_id
+        # The coupon code.
         self.coupon_no = coupon_no
+        # The coupon type.
         self.coupon_type = coupon_type
+        # The coupon type name.
         self.coupon_type_name = coupon_type_name
+        # The currency.
         self.currency = currency
+        # The end time.
         self.end_time = end_time
+        # Indicates whether there is a first purchase restriction.
         self.first_buy = first_buy
+        # The coupon issuance time.
         self.gmt_create = gmt_create
+        # The product code list.
         self.item_names = item_names
+        # The amount limit.
         self.money_limit = money_limit
+        # The order duration limit rule.
         self.order_time_rule = order_time_rule
+        # The remaining amount.
         self.remain_amount = remain_amount
+        # The remarks.
         self.remark = remark
+        # The shared account list.
         self.share_uid_list = share_uid_list
+        # Indicates whether to display the tag deduction button.
         self.show_set_deduct_tag_button = show_set_deduct_tag_button
+        # The site.
         self.site = site
+        # The site name.
         self.site_name = site_name
+        # The start time.
         self.start_time = start_time
+        # The status.
         self.status = status
+        # The applicable account.
         self.suit_account = suit_account
+        # The applicable product type. Valid values: all, which indicates that the coupon is applicable to all products. white, which indicates that the coupon is applicable to specified products. black, which indicates that the coupon is not applicable to specified products.
         self.suit_item_type = suit_item_type
+        # The coupon applicable scope.
         self.universal_type = universal_type
+        # The list of order types applicable to the coupon.
         self.yh_order_types = yh_order_types
 
     def validate(self):
@@ -307,7 +336,9 @@ class DescribeCouponResponseBodyDataShareUidList(DaraModel):
         uid: str = None,
         user_nick: str = None,
     ):
+        # The Alibaba Cloud UID.
         self.uid = uid
+        # The Alibaba Cloud account.
         self.user_nick = user_nick
 
     def validate(self):

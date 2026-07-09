@@ -82,6 +82,14 @@ from ._describe_coupon_item_list_request import DescribeCouponItemListRequest
 from ._describe_coupon_item_list_shrink_request import DescribeCouponItemListShrinkRequest
 from ._describe_coupon_item_list_response_body import DescribeCouponItemListResponseBody
 from ._describe_coupon_item_list_response import DescribeCouponItemListResponse
+from ._describe_deduct_logs_request import DescribeDeductLogsRequest
+from ._describe_deduct_logs_shrink_request import DescribeDeductLogsShrinkRequest
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBody
+from ._describe_deduct_logs_response import DescribeDeductLogsResponse
+from ._describe_fr_instances_request import DescribeFrInstancesRequest
+from ._describe_fr_instances_shrink_request import DescribeFrInstancesShrinkRequest
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBody
+from ._describe_fr_instances_response import DescribeFrInstancesResponse
 from ._describe_user_spn_summary_info_request import DescribeUserSpnSummaryInfoRequest
 from ._describe_user_spn_summary_info_shrink_request import DescribeUserSpnSummaryInfoShrinkRequest
 from ._describe_user_spn_summary_info_response_body import DescribeUserSpnSummaryInfoResponseBody
@@ -233,6 +241,24 @@ from ._describe_coupon_response_body import DescribeCouponResponseBodyDataShareU
 from ._describe_coupon_response_body import DescribeCouponResponseBodyData
 from ._describe_coupon_item_list_request import DescribeCouponItemListRequestEcIdAccountIds
 from ._describe_coupon_item_list_response_body import DescribeCouponItemListResponseBodyData
+from ._describe_deduct_logs_request import DescribeDeductLogsRequestEcIdAccountIds
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataBillingCommodity
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataBillingPriceField
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataCapacityType
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataCommodity
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataCycleType
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataProduct
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyDataTemplate
+from ._describe_deduct_logs_response_body import DescribeDeductLogsResponseBodyData
+from ._describe_fr_instances_request import DescribeFrInstancesRequestEcIdAccountIds
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataCapacityType
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataCommodity
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataCycleType
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataDeductRegions
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataProduct
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataStatus
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyDataTemplate
+from ._describe_fr_instances_response_body import DescribeFrInstancesResponseBodyData
 from ._describe_user_spn_summary_info_request import DescribeUserSpnSummaryInfoRequestEcIdAccountIds
 from ._describe_user_spn_summary_info_response_body import DescribeUserSpnSummaryInfoResponseBodyRegionList
 from ._describe_user_spn_summary_info_response_body import DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList
@@ -387,6 +413,14 @@ __all__ = [
     DescribeCouponItemListShrinkRequest,
     DescribeCouponItemListResponseBody,
     DescribeCouponItemListResponse,
+    DescribeDeductLogsRequest,
+    DescribeDeductLogsShrinkRequest,
+    DescribeDeductLogsResponseBody,
+    DescribeDeductLogsResponse,
+    DescribeFrInstancesRequest,
+    DescribeFrInstancesShrinkRequest,
+    DescribeFrInstancesResponseBody,
+    DescribeFrInstancesResponse,
     DescribeUserSpnSummaryInfoRequest,
     DescribeUserSpnSummaryInfoShrinkRequest,
     DescribeUserSpnSummaryInfoResponseBody,
@@ -538,6 +572,24 @@ __all__ = [
     DescribeCouponResponseBodyData,
     DescribeCouponItemListRequestEcIdAccountIds,
     DescribeCouponItemListResponseBodyData,
+    DescribeDeductLogsRequestEcIdAccountIds,
+    DescribeDeductLogsResponseBodyDataBillingCommodity,
+    DescribeDeductLogsResponseBodyDataBillingPriceField,
+    DescribeDeductLogsResponseBodyDataCapacityType,
+    DescribeDeductLogsResponseBodyDataCommodity,
+    DescribeDeductLogsResponseBodyDataCycleType,
+    DescribeDeductLogsResponseBodyDataProduct,
+    DescribeDeductLogsResponseBodyDataTemplate,
+    DescribeDeductLogsResponseBodyData,
+    DescribeFrInstancesRequestEcIdAccountIds,
+    DescribeFrInstancesResponseBodyDataCapacityType,
+    DescribeFrInstancesResponseBodyDataCommodity,
+    DescribeFrInstancesResponseBodyDataCycleType,
+    DescribeFrInstancesResponseBodyDataDeductRegions,
+    DescribeFrInstancesResponseBodyDataProduct,
+    DescribeFrInstancesResponseBodyDataStatus,
+    DescribeFrInstancesResponseBodyDataTemplate,
+    DescribeFrInstancesResponseBodyData,
     DescribeUserSpnSummaryInfoRequestEcIdAccountIds,
     DescribeUserSpnSummaryInfoResponseBodyRegionList,
     DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList,

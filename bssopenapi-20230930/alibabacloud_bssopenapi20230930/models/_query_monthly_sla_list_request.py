@@ -19,13 +19,21 @@ class QueryMonthlySlaListRequest(DaraModel):
         pay_statuses: List[int] = None,
         product_codes: List[str] = None,
     ):
+        # The current page number. Default value: 1, which indicates the first page.
         self.current_page = current_page
+        # The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
+        # Optional. Filter by instance ID.
         self.instance_ids = instance_ids
+        # Optional. Month list in yyyyMM format.
         self.months = months
+        # The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # Optional. Filter by compensation status. Valid values: 0 and 1.
         self.pay_statuses = pay_statuses
+        # Optional. Filter by product code.
         self.product_codes = product_codes
 
     def validate(self):
@@ -104,7 +112,9 @@ class QueryMonthlySlaListRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The list of accounts to query. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
+        # The enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):

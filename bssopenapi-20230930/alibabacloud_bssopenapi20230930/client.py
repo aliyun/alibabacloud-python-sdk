@@ -2098,6 +2098,286 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_coupon_item_list_with_options_async(request, runtime)
 
+    def describe_deduct_logs_with_options(
+        self,
+        tmp_req: main_models.DescribeDeductLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeductLogsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeDeductLogsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.relation_account_ids):
+            request.relation_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.relation_account_ids, 'RelationAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bill_instance_id):
+            query['BillInstanceId'] = request.bill_instance_id
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.billing_commodity_code):
+            body['BillingCommodityCode'] = request.billing_commodity_code
+        if not DaraCore.is_null(request.billing_end_time):
+            body['BillingEndTime'] = request.billing_end_time
+        if not DaraCore.is_null(request.billing_start_time):
+            body['BillingStartTime'] = request.billing_start_time
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relation_account_ids_shrink):
+            body['RelationAccountIds'] = request.relation_account_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDeductLogs',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDeductLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_deduct_logs_with_options_async(
+        self,
+        tmp_req: main_models.DescribeDeductLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeductLogsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeDeductLogsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.relation_account_ids):
+            request.relation_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.relation_account_ids, 'RelationAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bill_instance_id):
+            query['BillInstanceId'] = request.bill_instance_id
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.billing_commodity_code):
+            body['BillingCommodityCode'] = request.billing_commodity_code
+        if not DaraCore.is_null(request.billing_end_time):
+            body['BillingEndTime'] = request.billing_end_time
+        if not DaraCore.is_null(request.billing_start_time):
+            body['BillingStartTime'] = request.billing_start_time
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relation_account_ids_shrink):
+            body['RelationAccountIds'] = request.relation_account_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDeductLogs',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDeductLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_deduct_logs(
+        self,
+        request: main_models.DescribeDeductLogsRequest,
+    ) -> main_models.DescribeDeductLogsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_deduct_logs_with_options(request, runtime)
+
+    async def describe_deduct_logs_async(
+        self,
+        request: main_models.DescribeDeductLogsRequest,
+    ) -> main_models.DescribeDeductLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_deduct_logs_with_options_async(request, runtime)
+
+    def describe_fr_instances_with_options(
+        self,
+        tmp_req: main_models.DescribeFrInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFrInstancesResponse:
+        tmp_req.validate()
+        request = main_models.DescribeFrInstancesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.instance_tag):
+            query['InstanceTag'] = request.instance_tag
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.capacity_type):
+            body['CapacityType'] = request.capacity_type
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_rule):
+            body['SortRule'] = request.sort_rule
+        if not DaraCore.is_null(request.spec):
+            body['Spec'] = request.spec
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFrInstances',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFrInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fr_instances_with_options_async(
+        self,
+        tmp_req: main_models.DescribeFrInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFrInstancesResponse:
+        tmp_req.validate()
+        request = main_models.DescribeFrInstancesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.instance_tag):
+            query['InstanceTag'] = request.instance_tag
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.capacity_type):
+            body['CapacityType'] = request.capacity_type
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_rule):
+            body['SortRule'] = request.sort_rule
+        if not DaraCore.is_null(request.spec):
+            body['Spec'] = request.spec
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFrInstances',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFrInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fr_instances(
+        self,
+        request: main_models.DescribeFrInstancesRequest,
+    ) -> main_models.DescribeFrInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_fr_instances_with_options(request, runtime)
+
+    async def describe_fr_instances_async(
+        self,
+        request: main_models.DescribeFrInstancesRequest,
+    ) -> main_models.DescribeFrInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_fr_instances_with_options_async(request, runtime)
+
     def describe_user_spn_summary_info_with_options(
         self,
         tmp_req: main_models.DescribeUserSpnSummaryInfoRequest,

@@ -19,16 +19,45 @@ class GetOrdersRequest(DaraModel):
         product_type: str = None,
         subscription_type: str = None,
     ):
+        # The end of the order creation time range. If not specified, orders created within the most recent hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
         self.create_time_end = create_time_end
+        # The start of the order creation time range. If not specified, orders created within the most recent hour are queried. Format: YYYY-MM-ddTHH:mm:ssZ. Time zone: UTC.
         self.create_time_start = create_time_start
+        # The UID of a member account in an enterprise with multiple member accounts. Leave this parameter empty if this scenario does not apply.
         self.member_uid = member_uid
+        # The order type. Valid values:
+        # - New: new purchase.
+        # - Renew: renewal.
+        # - Upgrade: upgrade.
+        # - TempUpgrade: temporary upgrade.
+        # - Downgrade: downgrade.
+        # - Refund: refund.
+        # - Convert: billing method conversion.
+        # - ResizeDisk: cloud disk resizing.
+        # - CompensatoryRenew: compensatory renewal.
+        # - IncreaseUpgrade: bandwidth upgrade.
+        # - Exchange: exchange.
+        # - ChangeOperatingSystem: operating system change.
         self.order_type = order_type
         self.owner_id = owner_id
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The payment status. For non-refund orders, valid values:
+        # - Unpaid: unpaid.
+        # - Paid: paid.
+        # - Cancelled: canceled.
+        # 
+        # > For refund orders, set this parameter to NULL.
         self.payment_status = payment_status
+        # The product code.
         self.product_code = product_code
+        # The product type.
         self.product_type = product_type
+        # The subscription type. Valid values:
+        # - Subscription: upfront.
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

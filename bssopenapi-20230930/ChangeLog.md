@@ -1,3 +1,9 @@
+2026-07-09 Version: 1.11.0
+- Support API DescribeDeductLogs.
+- Support API DescribeFrInstances.
+- Update API QueryCostCenter: add response parameters Body.CostCenterDtoList.$.Priority.
+
+
 2026-05-21 Version: 1.10.0
 - Support API QueryMonthlySlaList.
 - Support API SubmitSlaCouponApply.
