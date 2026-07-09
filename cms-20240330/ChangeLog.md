@@ -1,3 +1,10 @@
+2026-07-09 Version: 10.0.1
+- Update API CreatePrometheusInstance: add request parameters body.resourceGroupId.
+- Update API ListAlertRobots: add response parameters Body.robots.$.robotSignKey.
+- Update API ListPrometheusInstances: add response parameters Body.prometheusInstances.$.resourceGroupId.
+- Update API ListPrometheusViews: add response parameters Body.prometheusViews.$.resourceGroupId.
+
+
 2026-06-11 Version: 10.0.0
 - Support API OpenCmsService.
 - Update API DescribeRegions: add request parameters RegionId.

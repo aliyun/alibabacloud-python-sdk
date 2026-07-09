@@ -21,45 +21,32 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         enabled: bool = None,
         labels: Dict[str, str] = None,
         notify_config: main_models.NotifyConfigUnified = None,
+        observe_resource_instance_id: str = None,
+        observe_resource_type: str = None,
         query_config: main_models.QueryConfigUnified = None,
         schedule_config: main_models.ScheduleConfigUnified = None,
         uuid: str = None,
         uuid_list: List[str] = None,
         workspace: str = None,
     ):
-        # The action to perform on the alert rule. For example, `create` or `update`.
-        # 
         # This parameter is required.
         self.action = action
-        # The action integration configuration for triggering automated workflows or actions in external systems.
         self.action_integration_config = action_integration_config
-        # A collection of key-value pairs attached to the alert as annotations. Use annotations to provide additional, non-identifying information, such as descriptions or runbook links.
         self.annotations = annotations
-        # Configuration for integrating with Application Real-Time Monitoring Service (ARMS).
         self.arms_integration_config = arms_integration_config
-        # The condition configuration that specifies the trigger criteria for the alert.
         self.condition_config = condition_config
-        # The content template for the alert notification. You can use variables to customize the message.
         self.content_template = content_template
-        # The data source configuration for the alert rule.
         self.datasource_config = datasource_config
-        # The display name of the alert rule, as shown in the console.
         self.display_name = display_name
-        # Specifies whether the alert rule is enabled. A value of `true` indicates the rule is active, and `false` indicates it is inactive. Default: `true`.
         self.enabled = enabled
-        # A collection of key-value pairs attached to the alert rule as labels. Use labels for categorization and filtering.
         self.labels = labels
-        # The notification configuration that specifies how and where to send alert notifications.
         self.notify_config = notify_config
-        # The query configuration that defines the data for rule evaluation.
+        self.observe_resource_instance_id = observe_resource_instance_id
+        self.observe_resource_type = observe_resource_type
         self.query_config = query_config
-        # The schedule configuration that determines how often the system evaluates the rule.
         self.schedule_config = schedule_config
-        # The unique identifier (UUID) of the alert rule. This parameter is required when you update or delete an existing rule.
         self.uuid = uuid
-        # A list of UUIDs. Use this parameter to perform bulk actions on multiple rules, such as batch deletion.
         self.uuid_list = uuid_list
-        # The ID of the workspace that contains the alert rule.
         self.workspace = workspace
 
     def validate(self):
@@ -115,6 +102,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
 
         if self.notify_config is not None:
             result['notifyConfig'] = self.notify_config.to_map()
+
+        if self.observe_resource_instance_id is not None:
+            result['observeResourceInstanceId'] = self.observe_resource_instance_id
+
+        if self.observe_resource_type is not None:
+            result['observeResourceType'] = self.observe_resource_type
 
         if self.query_config is not None:
             result['queryConfig'] = self.query_config.to_map()
@@ -172,6 +165,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         if m.get('notifyConfig') is not None:
             temp_model = main_models.NotifyConfigUnified()
             self.notify_config = temp_model.from_map(m.get('notifyConfig'))
+
+        if m.get('observeResourceInstanceId') is not None:
+            self.observe_resource_instance_id = m.get('observeResourceInstanceId')
+
+        if m.get('observeResourceType') is not None:
+            self.observe_resource_type = m.get('observeResourceType')
 
         if m.get('queryConfig') is not None:
             temp_model = main_models.QueryConfigUnified()

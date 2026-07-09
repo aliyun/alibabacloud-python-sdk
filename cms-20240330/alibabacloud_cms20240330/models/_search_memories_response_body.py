@@ -14,11 +14,11 @@ class SearchMemoriesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.SearchMemoriesResponseBodyResults] = None,
     ):
-        # A list of relationships.
+        # The relations.
         self.relations = relations
         # The request ID.
         self.request_id = request_id
-        # A list of search results.
+        # The returned results.
         self.results = results
 
     def validate(self):
@@ -100,7 +100,7 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         self.memory = memory
         # The metadata.
         self.metadata = metadata
-        # The sender\\"s role.
+        # The role that initiated the message.
         self.role = role
         # The run ID.
         self.run_id = run_id
@@ -206,7 +206,7 @@ class SearchMemoriesResponseBodyRelations(DaraModel):
     ):
         # The destination.
         self.destination = destination
-        # The relationship.
+        # The relations.
         self.relationship = relationship
         # The source.
         self.source = source

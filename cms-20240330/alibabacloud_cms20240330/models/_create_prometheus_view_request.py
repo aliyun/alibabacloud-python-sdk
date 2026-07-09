@@ -21,33 +21,33 @@ class CreatePrometheusViewRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # This parameter is not in use.
+        # Not in use.
         self.auth_free_read_policy = auth_free_read_policy
-        # Specifies whether to enable password-free read access.
+        # Specifies whether anonymous read is supported.
         self.enable_auth_free_read = enable_auth_free_read
-        # Specifies whether to enable an authentication token.
+        # Specifies whether authToken is supported.
         self.enable_auth_token = enable_auth_token
         # The list of Prometheus instances.
         # 
         # This parameter is required.
         self.prometheus_instances = prometheus_instances
-        # The name of the Prometheus view.
+        # The Prometheus view name.
         # 
         # This parameter is required.
         self.prometheus_view_name = prometheus_view_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # This parameter is not in use.
+        # Not in use.
         self.status = status
-        # Specifies the operation to execute.
+        # The tags.
         self.tags = tags
-        # - V1: The old version.
-        # 
-        # - V2: The new version.
+        # Valid values:
+        # - V1: legacy version
+        # - V2: new version.
         # 
         # This parameter is required.
         self.version = version
-        # The default value is default-cms-{userId}-{regionId}.
+        # Default value: default-cms-{userId}-{regionId}.
         self.workspace = workspace
 
     def validate(self):
@@ -147,9 +147,9 @@ class CreatePrometheusViewRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

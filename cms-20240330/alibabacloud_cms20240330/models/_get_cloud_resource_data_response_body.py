@@ -15,12 +15,13 @@ class GetCloudResourceDataResponseBody(DaraModel):
         request_id: str = None,
         response_status: main_models.GetCloudResourceDataResponseBodyResponseStatus = None,
     ):
-        # The returned data.
+        # The total list of returned data.
         self.data = data
-        # The list of column headers.
+        # The list of headers.
         self.header = header
         # The request ID.
         self.request_id = request_id
+        # The result status.
         self.response_status = response_status
 
     def validate(self):
@@ -72,10 +73,15 @@ class GetCloudResourceDataResponseBodyResponseStatus(DaraModel):
         retry_policy: str = None,
         status_item: List[main_models.GetCloudResourceDataResponseBodyResponseStatusStatusItem] = None,
     ):
+        # The information during execution.
         self.execution_states = execution_states
+        # The status level.
         self.level = level
+        # The execution result.
         self.result = result
+        # The retry policy.
         self.retry_policy = retry_policy
+        # The detailed status information.
         self.status_item = status_item
 
     def validate(self):
@@ -138,9 +144,13 @@ class GetCloudResourceDataResponseBodyResponseStatusStatusItem(DaraModel):
         message: str = None,
         suggestion: str = None,
     ):
+        # The status code.
         self.code = code
+        # The status level.
         self.level = level
+        # The message content.
         self.message = message
+        # The suggestion when an execution error occurs.
         self.suggestion = suggestion
 
     def validate(self):

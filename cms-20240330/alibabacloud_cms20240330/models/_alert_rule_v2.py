@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -15,7 +15,6 @@ class AlertRuleV2(DaraModel):
         arms_integration_config: main_models.ArmsIntegrationConfig = None,
         condition_config: main_models.ConditionConfigUnified = None,
         content_template: str = None,
-        covered_severity_levels: str = None,
         created_at: str = None,
         datasource_config: main_models.DatasourceConfigUnified = None,
         datasource_type: str = None,
@@ -23,11 +22,14 @@ class AlertRuleV2(DaraModel):
         enabled: bool = None,
         labels: Dict[str, str] = None,
         notify_config: main_models.NotifyConfigUnified = None,
+        notify_strategy_id: str = None,
         observe_resource_global_scope: bool = None,
-        observe_resource_list: str = None,
+        observe_resource_list: List[str] = None,
         observe_resource_type: str = None,
+        partition_key: str = None,
         query_config: main_models.QueryConfigUnified = None,
         schedule_config: main_models.ScheduleConfigUnified = None,
+        severity_levels: str = None,
         status: str = None,
         updated_at: str = None,
         uuid: str = None,
@@ -43,7 +45,6 @@ class AlertRuleV2(DaraModel):
         self.condition_config = condition_config
         # The template for the alert notification content.
         self.content_template = content_template
-        self.covered_severity_levels = covered_severity_levels
         # The time the alert rule was created.
         self.created_at = created_at
         # The configuration for the data source to be evaluated.
@@ -58,16 +59,22 @@ class AlertRuleV2(DaraModel):
         self.labels = labels
         # The configuration for sending notifications when an alert is triggered.
         self.notify_config = notify_config
+        # The ID of the notification strategy to use for this alert rule.
+        self.notify_strategy_id = notify_strategy_id
         # Indicates whether the alert rule monitors all resources of the specified type. If `true`, the rule applies globally within the workspace.
         self.observe_resource_global_scope = observe_resource_global_scope
         # A list of specific resource IDs to monitor, used only when `observeResourceGlobalScope` is `false`.
         self.observe_resource_list = observe_resource_list
         # The type of resource that the alert rule monitors.
         self.observe_resource_type = observe_resource_type
+        # The partition key used to group alerts. Alerts with the same partition key are treated as a single incident.
+        self.partition_key = partition_key
         # The configuration for querying and processing data from the data source.
         self.query_config = query_config
         # The configuration for how often the alert rule is evaluated.
         self.schedule_config = schedule_config
+        # The severity level of the alert. Examples: `critical`, `warning`.
+        self.severity_levels = severity_levels
         # The current status of the alert rule. Examples: `RUNNING`, `STOPPED`.
         self.status = status
         # The time the alert rule was last updated.
@@ -113,9 +120,6 @@ class AlertRuleV2(DaraModel):
         if self.content_template is not None:
             result['contentTemplate'] = self.content_template
 
-        if self.covered_severity_levels is not None:
-            result['coveredSeverityLevels'] = self.covered_severity_levels
-
         if self.created_at is not None:
             result['createdAt'] = self.created_at
 
@@ -137,6 +141,9 @@ class AlertRuleV2(DaraModel):
         if self.notify_config is not None:
             result['notifyConfig'] = self.notify_config.to_map()
 
+        if self.notify_strategy_id is not None:
+            result['notifyStrategyId'] = self.notify_strategy_id
+
         if self.observe_resource_global_scope is not None:
             result['observeResourceGlobalScope'] = self.observe_resource_global_scope
 
@@ -146,11 +153,17 @@ class AlertRuleV2(DaraModel):
         if self.observe_resource_type is not None:
             result['observeResourceType'] = self.observe_resource_type
 
+        if self.partition_key is not None:
+            result['partitionKey'] = self.partition_key
+
         if self.query_config is not None:
             result['queryConfig'] = self.query_config.to_map()
 
         if self.schedule_config is not None:
             result['scheduleConfig'] = self.schedule_config.to_map()
+
+        if self.severity_levels is not None:
+            result['severityLevels'] = self.severity_levels
 
         if self.status is not None:
             result['status'] = self.status
@@ -186,9 +199,6 @@ class AlertRuleV2(DaraModel):
         if m.get('contentTemplate') is not None:
             self.content_template = m.get('contentTemplate')
 
-        if m.get('coveredSeverityLevels') is not None:
-            self.covered_severity_levels = m.get('coveredSeverityLevels')
-
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
 
@@ -212,6 +222,9 @@ class AlertRuleV2(DaraModel):
             temp_model = main_models.NotifyConfigUnified()
             self.notify_config = temp_model.from_map(m.get('notifyConfig'))
 
+        if m.get('notifyStrategyId') is not None:
+            self.notify_strategy_id = m.get('notifyStrategyId')
+
         if m.get('observeResourceGlobalScope') is not None:
             self.observe_resource_global_scope = m.get('observeResourceGlobalScope')
 
@@ -221,6 +234,9 @@ class AlertRuleV2(DaraModel):
         if m.get('observeResourceType') is not None:
             self.observe_resource_type = m.get('observeResourceType')
 
+        if m.get('partitionKey') is not None:
+            self.partition_key = m.get('partitionKey')
+
         if m.get('queryConfig') is not None:
             temp_model = main_models.QueryConfigUnified()
             self.query_config = temp_model.from_map(m.get('queryConfig'))
@@ -228,6 +244,9 @@ class AlertRuleV2(DaraModel):
         if m.get('scheduleConfig') is not None:
             temp_model = main_models.ScheduleConfigUnified()
             self.schedule_config = temp_model.from_map(m.get('scheduleConfig'))
+
+        if m.get('severityLevels') is not None:
+            self.severity_levels = m.get('severityLevels')
 
         if m.get('status') is not None:
             self.status = m.get('status')

@@ -9,6 +9,8 @@ class AlertRuleTemplate(DaraModel):
         self,
         alert_type: str = None,
         apply_count: int = None,
+        biz_type: str = None,
+        datasource: str = None,
         description: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
@@ -16,39 +18,33 @@ class AlertRuleTemplate(DaraModel):
         is_system: int = None,
         labels: str = None,
         rule_configs: str = None,
+        scenes: str = None,
+        schema_version: str = None,
+        source_type: str = None,
         status: int = None,
         sub_type: str = None,
         template_name: str = None,
         user_id: str = None,
         uuid: str = None,
     ):
-        # The type of the alert.
         self.alert_type = alert_type
-        # The number of alert rules created from this template.
         self.apply_count = apply_count
-        # The description of the template.
+        self.biz_type = biz_type
+        self.datasource = datasource
         self.description = description
-        # The creation time of the template, as a UNIX timestamp.
         self.gmt_create = gmt_create
-        # The time the template was last modified, as a UNIX timestamp.
         self.gmt_modified = gmt_modified
-        # The ID of the alert rule template.
         self.id = id
-        # Indicates whether the template is system-defined. Valid values: `0` (user-defined) and `1` (system-defined).
         self.is_system = is_system
-        # The labels associated with the template, formatted as a JSON string.
         self.labels = labels
-        # The rule configuration, formatted as a JSON string.
         self.rule_configs = rule_configs
-        # The status of the template.
+        self.scenes = scenes
+        self.schema_version = schema_version
+        self.source_type = source_type
         self.status = status
-        # The subtype of the alert.
         self.sub_type = sub_type
-        # The name of the alert rule template.
         self.template_name = template_name
-        # The ID of the user who owns the template.
         self.user_id = user_id
-        # The universally unique identifier (UUID) of the template.
         self.uuid = uuid
 
     def validate(self):
@@ -64,6 +60,12 @@ class AlertRuleTemplate(DaraModel):
 
         if self.apply_count is not None:
             result['applyCount'] = self.apply_count
+
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+
+        if self.datasource is not None:
+            result['datasource'] = self.datasource
 
         if self.description is not None:
             result['description'] = self.description
@@ -85,6 +87,15 @@ class AlertRuleTemplate(DaraModel):
 
         if self.rule_configs is not None:
             result['ruleConfigs'] = self.rule_configs
+
+        if self.scenes is not None:
+            result['scenes'] = self.scenes
+
+        if self.schema_version is not None:
+            result['schemaVersion'] = self.schema_version
+
+        if self.source_type is not None:
+            result['sourceType'] = self.source_type
 
         if self.status is not None:
             result['status'] = self.status
@@ -111,6 +122,12 @@ class AlertRuleTemplate(DaraModel):
         if m.get('applyCount') is not None:
             self.apply_count = m.get('applyCount')
 
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+
+        if m.get('datasource') is not None:
+            self.datasource = m.get('datasource')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -131,6 +148,15 @@ class AlertRuleTemplate(DaraModel):
 
         if m.get('ruleConfigs') is not None:
             self.rule_configs = m.get('ruleConfigs')
+
+        if m.get('scenes') is not None:
+            self.scenes = m.get('scenes')
+
+        if m.get('schemaVersion') is not None:
+            self.schema_version = m.get('schemaVersion')
+
+        if m.get('sourceType') is not None:
+            self.source_type = m.get('sourceType')
 
         if m.get('status') is not None:
             self.status = m.get('status')

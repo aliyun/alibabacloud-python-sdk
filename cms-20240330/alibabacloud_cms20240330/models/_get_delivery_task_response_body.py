@@ -13,7 +13,7 @@ class GetDeliveryTaskResponseBody(DaraModel):
         delivery_task: main_models.GetDeliveryTaskResponseBodyDeliveryTask = None,
         request_id: str = None,
     ):
-        # The delivery task details.
+        # The details of the delivery task.
         self.delivery_task = delivery_task
         # The request ID.
         self.request_id = request_id
@@ -64,35 +64,35 @@ class GetDeliveryTaskResponseBodyDeliveryTask(DaraModel):
         task_name: str = None,
         update_time: str = None,
     ):
-        # The creation time.
+        # The time when the task was created.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The data source ID (the Prometheus instance ID).
+        # The data source ID (Managed Service for Prometheus instance ID).
         self.data_source_id = data_source_id
-        # A map of key-value pairs to add as external labels to all delivered metrics.
+        # The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
         self.external_labels = external_labels
-        # The extra information.
+        # The extended information.
         self.extra_info = extra_info
-        # The label filters, used with `labelFiltersType`. In each filter, the key is the metric label and the value is the value to match.
+        # The metric filter conditions. Used together with labelFiltersType. The key is the metric label name, and the value is the match value.
         self.label_filters = label_filters
-        # The label filter type.
+        # The metric filtering mode.
         self.label_filters_type = label_filters_type
         # The region ID.
         self.region_id = region_id
-        # An array of sink configurations.
+        # The list of delivery targets.
         self.sink_list = sink_list
-        # The task status.
+        # The current status of the task.
         self.status = status
-        # The tags attached to the task.
+        # The resource tags.
         self.tags = tags
         # The task description.
         self.task_description = task_description
-        # The task ID.
+        # The delivery task ID.
         self.task_id = task_id
         # The task name.
         self.task_name = task_name
-        # The update time.
+        # The time when the task was last updated.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -258,9 +258,9 @@ class GetDeliveryTaskResponseBodyDeliveryTaskSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The sink configuration. The structure of this object depends on the value of `sinkType`. For details, see CreateDeliveryTask.
+        # The detailed configuration of the delivery target. The meaning of key/value pairs varies depending on the sinkType. For more information, see [CreateDeliveryTask](~~CreateDeliveryTask~~).
         self.sink_configs = sink_configs
-        # The sink type.
+        # The type of the delivery target.
         self.sink_type = sink_type
 
     def validate(self):
@@ -294,7 +294,7 @@ class GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo(DaraModel):
         self,
         task_name_list: List[str] = None,
     ):
-        # The names of the associated EventBridge tasks.
+        # The list of EventBridge tasks.
         self.task_name_list = task_name_list
 
     def validate(self):

@@ -10,9 +10,9 @@ class UpdatePrometheusInstanceResponseBody(DaraModel):
         prometheus_instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -19,25 +19,31 @@ class UpdatePrometheusInstanceRequest(DaraModel):
         storage_duration: int = None,
         workspace: str = None,
     ):
-        # The number of days to store archived data after the storage duration expires. A value of 0 disables archiving. For V1 instances, the valid values are 1 to 365. This is supported only for the pay-by-data-write billing method. For V2 instances, the valid values are 1 to 3650. A value of 3650 indicates permanent storage.
+        # The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving. Valid values for archiving days:
+        # V1: 1 to 365 days. Supported only for billing by metric write volume.
+        # V2: 1 to 3650 days (3650 indicates permanent retention).
         self.archive_duration = archive_duration
-        # The policy for password-free read access. The policy supports IP address segments and VPC IDs.
+        # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
-        # The policy for password-free write access. The policy supports IP address segments and VPC IDs.
+        # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_write_policy = auth_free_write_policy
-        # Specifies whether to enable password-free read access.
+        # Specifies whether to enable authentication-free read.
         self.enable_auth_free_read = enable_auth_free_read
-        # Specifies whether to enable password-free write access.
+        # Specifies whether to enable authentication-free write.
         self.enable_auth_free_write = enable_auth_free_write
-        # Specifies whether to enable authentication with an access token.
+        # Specifies whether to enable access token authentication.
         self.enable_auth_token = enable_auth_token
-        # The billing method. You can change the billing method only once during the instance lifecycle. Valid values: \\`POSTPAY\\` (pay-as-you-go based on reported metrics) and \\`POSTPAY_GB\\` (pay-as-you-go based on data writes).
+        # The billing method. This parameter can be modified only once during the instance lifetime. Valid values:
+        # - POSTPAY: pay-as-you-go by metric reporting volume.
+        # - POSTPAY_GB: pay-as-you-go by metric write volume.
         self.payment_type = payment_type
-        # The name of the instance.
+        # The instance name.
         self.prometheus_instance_name = prometheus_instance_name
-        # The status of the instance storage database. Only RUNNING is supported. If this parameter is left empty, the status of the storage database is not changed.
+        # Instance storage database status of the instance. Only RUNNING is supported. If this parameter is left empty, instance storage database status remains unchanged.
         self.status = status
-        # The storage duration in days. If the instance is billed by data writes, valid values are 90 and 180. If the instance is billed by reported metrics, valid values are 15, 30, 60, 90, and 180.
+        # The storage duration (days):
+        # By write volume: 90 or 180.
+        # By metric reporting volume: 15, 30, 60, 90, or 180.
         self.storage_duration = storage_duration
         # The workspace to which the instance belongs.
         self.workspace = workspace

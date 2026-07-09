@@ -28,46 +28,46 @@ class CreateAggTaskGroupRequest(DaraModel):
         to_time: int = None,
         override_if_exists: bool = None,
     ):
-        # The configuration of the aggregation task group.
-        # Only the \\`RecordingRuleYaml\\` format is supported. The configuration must follow the format of RecordingRule for open source Prometheus.
+        # Aggregation task group configuration.
+        # Currently only the "RecordingRuleYaml" format is supported, which must conform to the RecordingRule format requirements of open-source Prometheus.
         # 
         # This parameter is required.
         self.agg_task_group_config = agg_task_group_config
-        # The type of the aggregation task group configuration. The default value is \\`RecordingRuleYaml\\`. This is the format of RecordingRule for open source Prometheus.
+        # Aggregation task group configuration type. Default: "RecordingRuleYaml" (open-source Prometheus RecordingRule format).
         self.agg_task_group_config_type = agg_task_group_config_type
-        # The name of the aggregation task group.
+        # Aggregation task group name.
         # 
         # This parameter is required.
         self.agg_task_group_name = agg_task_group_name
-        # The cron expression for scheduling when \\`scheduleMode\\` is set to \\`Cron\\`. For example, \\`0/1 \\* \\* \\* \\*\\` indicates that the task is scheduled every minute, starting from minute 0.
+        # The specific scheduling expression when the scheduling mode is set to "Cron". For example, "0/1 * * * *" means scheduling every 1 minute starting from minute 0.
         self.cron_expr = cron_expr
-        # The fixed delay for scheduling. Unit: seconds. The default value is 30.
+        # Fixed delay time for scheduling. Unit: seconds. Default: 30.
         self.delay = delay
-        # The description of the aggregation task group.
+        # Aggregation task group description.
         self.description = description
-        # The UNIX timestamp for the scheduling start time. Unit: seconds.
+        # Second-level timestamp corresponding to the scheduling start time.
         self.from_time = from_time
-        # The maximum number of retries for an aggregation task. The default value is 20.
+        # Maximum number of retries for executing aggregation tasks. Default: 20.
         self.max_retries = max_retries
-        # The maximum retry time for an aggregation task. Unit: seconds. The default value is 600.
+        # Maximum retry duration for executing aggregation tasks. Unit: seconds. Default: 600.
         self.max_run_time_in_seconds = max_run_time_in_seconds
-        # The dry run configuration. This parameter is not configured by default. The input string must be a parsable JSON string.
+        # Pre-check configuration. Not configured by default. The input string must be valid JSON.
         self.precheck_string = precheck_string
-        # The scheduling mode. Valid values: \\`Cron\\` and \\`FixedRate\\`. The default value is \\`FixedRate\\`.
+        # Scheduling mode. "Cron" or "FixedRate". Default: "FixedRate".
         self.schedule_mode = schedule_mode
-        # The scheduling time expression. The recommended values are \\`@s\\` and \\`@m\\`. This expression specifies the granularity to which the time window is snapped. The default value is \\`@m\\`.
+        # Scheduling time expression. "@s" or "@m" is recommended, indicating the granularity of scheduling time window alignment. Default: "@m".
         self.schedule_time_expr = schedule_time_expr
-        # The status of the aggregation task group. Valid values: \\`Running\\` and \\`Stopped\\`. The default value is \\`Running\\`.
+        # Aggregation task group status. "Running" or "Stopped". Default: Running.
         self.status = status
-        # The tags of the resource group.
+        # Resource group tags.
         self.tags = tags
-        # The ID of the target Prometheus instance for the aggregation task group.
+        # Target Prometheus instance ID of the aggregation task group.
         # 
         # This parameter is required.
         self.target_prometheus_id = target_prometheus_id
-        # The UNIX timestamp for the scheduling end time. Unit: seconds. A value of 0 means that scheduling does not stop.
+        # Second-level timestamp corresponding to the scheduling end time. 0 means scheduling will not stop.
         self.to_time = to_time
-        # Specifies whether to overwrite an existing resource with the same name.
+        # Whether to override and update when a resource with the same name exists during aggregation task group creation.
         self.override_if_exists = override_if_exists
 
     def validate(self):
@@ -200,9 +200,9 @@ class CreateAggTaskGroupRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the resource group tag.
+        # Key of the resource group tag.
         self.key = key
-        # The value of the resource group tag.
+        # Value of the resource group tag.
         self.value = value
 
     def validate(self):

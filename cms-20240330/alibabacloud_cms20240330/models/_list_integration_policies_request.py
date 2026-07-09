@@ -25,31 +25,31 @@ class ListIntegrationPoliciesRequest(DaraModel):
         tag: List[main_models.ListIntegrationPoliciesRequestTag] = None,
         workspace: str = None,
     ):
-        # The add-on name.
+        # The addon name.
         self.addon_name = addon_name
-        # The ID of the attached resource.
+        # The ID of the bound resource.
         self.bind_resource_id = bind_resource_id
-        # The IDs of the entity groups to filter by. Separate multiple IDs with commas.
+        # The entity IDs used for filtering, separated by commas.
         self.entity_group_ids = entity_group_ids
-        # The IDs of the regions to query. Separate multiple region IDs with commas.
+        # The region IDs used for filtering, separated by commas.
         self.filter_region_ids = filter_region_ids
-        # The maximum number of entries to return on each page. The default value is 30. The maximum value is 100.
+        # The maximum number of results to return. Default value: 30. Maximum value: 100.
         self.max_results = max_results
-        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first request. You can obtain the token from the response to the previous request.
+        # The token used to retrieve more results. You do not need to specify this parameter for the first request. Use the token returned from the previous query for subsequent requests.
         self.next_token = next_token
         # The policy ID.
         self.policy_id = policy_id
-        # The policy name.
+        # The rule name.
         self.policy_name = policy_name
         # The policy type.
         self.policy_type = policy_type
         # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # A general-purpose query string.
+        # The keyword used for general queries.
         self.query = query
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # The tags.
         self.tag = tag
         # The workspace.
         self.workspace = workspace

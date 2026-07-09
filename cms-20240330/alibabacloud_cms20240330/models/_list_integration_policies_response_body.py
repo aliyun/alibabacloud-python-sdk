@@ -16,13 +16,17 @@ class ListIntegrationPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned per page. Default value: 50 Maximum value: 50
+        # The page size.
+        # Default value:
+        # 	50
+        # Maximum value:
+        # 	50.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # A list of integration policies.
+        # The list of access policies.
         self.policies = policies
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -96,21 +100,21 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # The information about the attached resource.
+        # The bound resource information.
         self.bind_resource = bind_resource
-        # The installation status of umodel in the container environment.
+        # The umodel installation status in the container environment.
         self.cs_umodel_status = cs_umodel_status
         # The entity group.
         self.entity_group = entity_group
         # The billing type.
         self.fee_package = fee_package
-        # The network management information of the policy.
+        # The policy network management information.
         self.managed_info = managed_info
         # The policy ID.
         self.policy_id = policy_id
-        # The policy name.
+        # The rule name.
         self.policy_name = policy_name
-        # The type of the Integration Center policy.
+        # The access center policy type.
         self.policy_type = policy_type
         # The region ID.
         self.region_id = region_id
@@ -234,7 +238,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease(DaraModel):
     ):
         # The number of ready sub-releases.
         self.ready = ready
-        # The number of rules.
+        # The total number of rules.
         self.total = total
 
     def validate(self):
@@ -270,7 +274,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesManagedInfo(DaraModel):
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
-        # The ID of the elastic network interface (ENI) for the managed probe. For example, eni-xxxx.
+        # The ENI ID of the managed probe. Example: eni-xxxx.
         self.eni_id = eni_id
         # The security group ID.
         self.security_group_id = security_group_id
@@ -329,7 +333,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroup(DaraModel):
         self.entity_group_name = entity_group_name
         # The entity group.
         self.entity_rules = entity_rules
-        # The search keyword. You can search by entity group name and description.
+        # The search keyword. Document library names and descriptions are supported.
         self.query = query
         # The region ID.
         self.region_id = region_id
@@ -417,21 +421,21 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRules(DaraMode
     ):
         # The annotations.
         self.annotations = annotations
-        # A list of entity types.
+        # The list of entity types.
         self.entity_types = entity_types
         # The field rules.
         self.field_rules = field_rules
         # The instance IDs.
         self.instance_ids = instance_ids
-        # The IP address matching rule.
+        # The IP match rule.
         self.ip_match_rule = ip_match_rule
         # The labels.
         self.labels = labels
-        # A list of region IDs.
+        # The list of region IDs.
         self.region_ids = region_ids
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the instance.
+        # The tag information of the instance.
         self.tags = tags
 
     def validate(self):
@@ -638,9 +642,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesIpMatchRu
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
-        # The IP address CIDR block.
+        # The IP CIDR block.
         self.ip_cidr = ip_cidr
-        # The key of the IP address field.
+        # The key of the IP field.
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -678,7 +682,7 @@ class ListIntegrationPoliciesResponseBodyPoliciesEntityGroupEntityRulesFieldRule
     ):
         # The unique identifier of the field.
         self.field_key = field_key
-        # The content of the field. Separate multiple values with commas.
+        # The field values. Multiple values are separated by commas.
         self.field_values = field_values
         # The operation to perform.
         self.op = op
@@ -773,9 +777,9 @@ class ListIntegrationPoliciesResponseBodyPoliciesBindResource(DaraModel):
         self.cluster_id = cluster_id
         # The cluster type.
         self.cluster_type = cluster_type
-        # The CIDR block of the VPC.
+        # The VPC CIDR block.
         self.vpc_cidr = vpc_cidr
-        # The ID of the virtual private cloud (VPC).
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):

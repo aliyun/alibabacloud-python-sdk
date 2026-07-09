@@ -14,27 +14,19 @@ class NotifyConfigUnified(DaraModel):
         active_end_time: str = None,
         active_start_time: str = None,
         channels: List[main_models.DirectNotifyChannel] = None,
+        notify_strategies: List[str] = None,
         silence_time_secs: int = None,
         type: str = None,
         utc_offset: str = None,
     ):
-        # The active days of the week.
         self.active_days = active_days
-        # The end of the daily active time window. On active days, the system sends notifications only before this time. Format: `HH:mm`.
         self.active_end_time = active_end_time
-        # The start of the daily active time window. On active days, the system sends notifications only after this time. Format: `HH:mm`.
         self.active_start_time = active_start_time
-        # The notification channels that receive alerts.
-        # 
-        # This parameter is required.
         self.channels = channels
-        # The silence time in seconds. After sending a notification, the system suppresses new notifications for the same alert for this duration.
+        self.notify_strategies = notify_strategies
         self.silence_time_secs = silence_time_secs
-        # The type of the notification configuration.
-        # 
         # This parameter is required.
         self.type = type
-        # The UTC offset for `activeStartTime` and `activeEndTime`. The format is `[+/-]HH:mm`. For example, `+08:00` represents the UTC+8 time zone.
         self.utc_offset = utc_offset
 
     def validate(self):
@@ -61,6 +53,9 @@ class NotifyConfigUnified(DaraModel):
         if self.channels is not None:
             for k1 in self.channels:
                 result['channels'].append(k1.to_map() if k1 else None)
+
+        if self.notify_strategies is not None:
+            result['notifyStrategies'] = self.notify_strategies
 
         if self.silence_time_secs is not None:
             result['silenceTimeSecs'] = self.silence_time_secs
@@ -89,6 +84,9 @@ class NotifyConfigUnified(DaraModel):
             for k1 in m.get('channels'):
                 temp_model = main_models.DirectNotifyChannel()
                 self.channels.append(temp_model.from_map(k1))
+
+        if m.get('notifyStrategies') is not None:
+            self.notify_strategies = m.get('notifyStrategies')
 
         if m.get('silenceTimeSecs') is not None:
             self.silence_time_secs = m.get('silenceTimeSecs')

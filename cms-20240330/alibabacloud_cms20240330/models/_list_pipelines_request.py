@@ -11,11 +11,11 @@ class ListPipelinesRequest(DaraModel):
         next_token: str = None,
         pipeline_name: str = None,
     ):
-        # The maximum number of results to return. The service may return fewer results than the specified value.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The pagination token. If this parameter is not empty, use it in a subsequent request to get the next page of results.
+        # The pagination token.
         self.next_token = next_token
-        # The pipeline name.
+        # The name of the pipeline.
         self.pipeline_name = pipeline_name
 
     def validate(self):

@@ -15,11 +15,11 @@ class UpdateContextStoreRequest(DaraModel):
         dataset: main_models.UpdateContextStoreRequestDataset = None,
         description: str = None,
     ):
-        # The configuration.
+        # The configuration information.
         self.config = config
         # The context type.
         self.context_type = context_type
-        # The dataset.
+        # The dataset information.
         self.dataset = dataset
         # The description.
         self.description = description
@@ -72,7 +72,7 @@ class UpdateContextStoreRequestDataset(DaraModel):
         self,
         name: str = None,
     ):
-        # The dataset name.
+        # The name of the dataset.
         self.name = name
 
     def validate(self):
@@ -103,7 +103,7 @@ class UpdateContextStoreRequestConfig(DaraModel):
     ):
         # The metadata field.
         self.metadata_field = metadata_field
-        # The data source.
+        # The reference path.
         self.source = source
 
     def validate(self):
@@ -141,9 +141,9 @@ class UpdateContextStoreRequestConfigSource(DaraModel):
         project: str = None,
         start_time: str = None,
     ):
-        # The Log Service Logstore name.
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
-        # The Log Service Project name.
+        # The name of the Simple Log Service project.
         self.project = project
         # The start time.
         self.start_time = start_time

@@ -20,23 +20,23 @@ class UpdateDeliveryTaskRequest(DaraModel):
         task_description: str = None,
         task_name: str = None,
     ):
-        # The data source ID (Prometheus instance ID).
+        # The data source ID, which is the Managed Service for Prometheus instance ID.
         self.data_source_id = data_source_id
-        # Additional labels to attach to all delivered metrics, specified as key-value pairs.
+        # The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
         self.external_labels = external_labels
-        # The labels for filtering metrics. This operation replaces the entire existing filter; incremental updates are not supported.
+        # The metric filter conditions. The entire value is replaced rather than incrementally merged.
         self.label_filters = label_filters
         # The metric filtering mode.
         self.label_filters_type = label_filters_type
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The list of sinks.
+        # The list of delivery targets.
         self.sink_list = sink_list
-        # The status of the delivery task.
+        # The task status. This parameter is used to enable or disable the task.
         self.status = status
         # The task description.
         self.task_description = task_description
-        # The name of the delivery task. The name can include Chinese characters, English letters, underscores (_), and hyphens (-).
+        # The task name. The name can contain letters, digits, underscores (_), and hyphens (-).
         self.task_name = task_name
 
     def validate(self):
@@ -121,9 +121,9 @@ class UpdateDeliveryTaskRequestSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The detailed configuration of the sink. The meaning of the key-value pairs depends on the specified sinkType.
+        # The detailed configuration of the delivery target. The meanings of keys and values vary depending on the sinkType.
         self.sink_configs = sink_configs
-        # The sink type.
+        # The delivery target type.
         self.sink_type = sink_type
 
     def validate(self):

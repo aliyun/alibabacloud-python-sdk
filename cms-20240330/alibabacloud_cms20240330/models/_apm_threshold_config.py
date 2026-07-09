@@ -7,16 +7,15 @@ from darabonba.model import DaraModel
 class ApmThresholdConfig(DaraModel):
     def __init__(
         self,
+        max: float = None,
+        min: float = None,
         severity: str = None,
         threshold: float = None,
     ):
-        # The severity of the alert.
-        # 
+        self.max = max
+        self.min = min
         # This parameter is required.
         self.severity = severity
-        # The metric value that triggers the alert.
-        # 
-        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -27,6 +26,12 @@ class ApmThresholdConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.max is not None:
+            result['max'] = self.max
+
+        if self.min is not None:
+            result['min'] = self.min
+
         if self.severity is not None:
             result['severity'] = self.severity
 
@@ -37,6 +42,12 @@ class ApmThresholdConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('max') is not None:
+            self.max = m.get('max')
+
+        if m.get('min') is not None:
+            self.min = m.get('min')
+
         if m.get('severity') is not None:
             self.severity = m.get('severity')
 

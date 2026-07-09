@@ -23,14 +23,15 @@ class SearchMemoriesRequest(DaraModel):
     ):
         # The agent ID.
         self.agent_id = agent_id
-        # The app ID assigned by the merchant.
+        # The app key of the project assigned by the merchant.
         self.app_id = app_id
         # The filter conditions.
         self.filters = filters
-        # The query text.
+        # The query content.
         self.query = query
-        # Specifies whether to rerank the search results.
+        # Specifies whether to enable reranking.
         self.rerank = rerank
+        # The retrieval option.
         self.retrieval_option = retrieval_option
         # The run ID.
         self.run_id = run_id
@@ -38,7 +39,7 @@ class SearchMemoriesRequest(DaraModel):
         self.search_type = search_type
         # The similarity threshold.
         self.threshold = threshold
-        # The number of top-K results to return.
+        # The top-K entries to return in the results.
         self.top_k = top_k
         # The user ID.
         self.user_id = user_id

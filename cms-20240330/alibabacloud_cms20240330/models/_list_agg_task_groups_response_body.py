@@ -16,15 +16,15 @@ class ListAggTaskGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of aggregation task groups.
+        # The list of aggregation task groups.
         self.agg_task_groups = agg_task_groups
-        # The maximum number of entries returned.
+        # The maximum number of records to return.
         self.max_results = max_results
-        # The token to use to retrieve the next page of results. This value is empty when there are no more results to return.
+        # The token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -101,41 +101,41 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
         to_time: int = None,
         update_time: str = None,
     ):
-        # The summary of the aggregation task group configuration.
+        # The hash of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
         # The ID of the aggregation task group.
         self.agg_task_group_id = agg_task_group_id
         # The name of the aggregation task group.
         self.agg_task_group_name = agg_task_group_name
-        # The scheduling expression for the aggregation task group when the scheduling mode is \\`Cron\\`.
+        # The cron expression of the aggregation task group when the scheduling mode is set to Cron.
         self.cron_expr = cron_expr
-        # The fixed delay for scheduling, in seconds.
+        # The fixed scheduling delay, in seconds.
         self.delay = delay
         # The description of the aggregation task group.
         self.description = description
-        # The UNIX timestamp that indicates the scheduling start time.
+        # The UNIX timestamp that indicates the scheduling start time, in seconds.
         self.from_time = from_time
         # The scheduling interval.
         self.interval = interval
-        # The maximum number of retries for an aggregation task.
+        # The maximum number of retries for executing the aggregation task.
         self.max_retries = max_retries
-        # The maximum retry duration for an aggregation task, in seconds.
+        # The maximum retry time for executing the aggregation task, in seconds.
         self.max_run_time_in_seconds = max_run_time_in_seconds
         # The region ID.
         self.region_id = region_id
         # The scheduling mode.
         self.schedule_mode = schedule_mode
-        # The scheduling time expression.
+        # The schedule time expression.
         self.schedule_time_expr = schedule_time_expr
-        # The ID of the source Prometheus instance for the aggregation task group.
+        # The instance ID of the source Managed Service for Prometheus instance for the aggregation node group.
         self.source_prometheus_id = source_prometheus_id
         # The status of the aggregation task group.
         self.status = status
-        # The ID of the target Prometheus instance for the aggregation task group.
+        # The instance ID of the target Managed Service for Prometheus instance for the aggregation node group.
         self.target_prometheus_id = target_prometheus_id
-        # The UNIX timestamp that indicates the scheduling end time.
+        # The UNIX timestamp that indicates the scheduling end time, in seconds.
         self.to_time = to_time
-        # The time when the aggregation task group was updated.
+        # The time when the aggregation task group was last updated, in UNIX timestamp format.
         self.update_time = update_time
 
     def validate(self):

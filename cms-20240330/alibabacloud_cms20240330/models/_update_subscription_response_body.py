@@ -10,7 +10,7 @@ class UpdateSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         subscription_id: str = None,
     ):
-        # The unique ID of the request.
+        # The unique request ID.
         self.request_id = request_id
         # The subscription ID.
         self.subscription_id = subscription_id

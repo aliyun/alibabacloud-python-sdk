@@ -8,14 +8,17 @@ from darabonba.model import DaraModel
 class QueryAlertRulesFilter(DaraModel):
     def __init__(
         self,
-        datasource_type: str = None,
+        datasource_type: main_models.DatasourceTypeFilter = None,
         display_name: main_models.DisplayNameFilter = None,
         enabled: main_models.EnabledFilter = None,
         labels: main_models.LabelsFilter = None,
-        observe_resource_global_scope: bool = None,
+        notify_strategy_id: main_models.NotifyStrategyIdFilter = None,
+        observe_resource_global_scope: main_models.ObserveResourceGlobalScopeFilter = None,
         observe_resource_instance_id: str = None,
-        observe_resource_type: str = None,
-        severity_levels: str = None,
+        observe_resource_list: main_models.ObserveResourceListFilter = None,
+        observe_resource_type: main_models.ObserveResourceTypeFilter = None,
+        partition_key: main_models.PartitionKeyFilter = None,
+        severity_levels: main_models.SeverityLevelsFilter = None,
         status: main_models.StatusFilter = None,
         uuid: main_models.UuidFilter = None,
     ):
@@ -26,9 +29,12 @@ class QueryAlertRulesFilter(DaraModel):
         self.enabled = enabled
         # Filters alert rules by label.
         self.labels = labels
+        self.notify_strategy_id = notify_strategy_id
         self.observe_resource_global_scope = observe_resource_global_scope
         self.observe_resource_instance_id = observe_resource_instance_id
+        self.observe_resource_list = observe_resource_list
         self.observe_resource_type = observe_resource_type
+        self.partition_key = partition_key
         self.severity_levels = severity_levels
         # Filters alert rules by status.
         self.status = status
@@ -36,12 +42,26 @@ class QueryAlertRulesFilter(DaraModel):
         self.uuid = uuid
 
     def validate(self):
+        if self.datasource_type:
+            self.datasource_type.validate()
         if self.display_name:
             self.display_name.validate()
         if self.enabled:
             self.enabled.validate()
         if self.labels:
             self.labels.validate()
+        if self.notify_strategy_id:
+            self.notify_strategy_id.validate()
+        if self.observe_resource_global_scope:
+            self.observe_resource_global_scope.validate()
+        if self.observe_resource_list:
+            self.observe_resource_list.validate()
+        if self.observe_resource_type:
+            self.observe_resource_type.validate()
+        if self.partition_key:
+            self.partition_key.validate()
+        if self.severity_levels:
+            self.severity_levels.validate()
         if self.status:
             self.status.validate()
         if self.uuid:
@@ -53,7 +73,7 @@ class QueryAlertRulesFilter(DaraModel):
         if _map is not None:
             result = _map
         if self.datasource_type is not None:
-            result['datasourceType'] = self.datasource_type
+            result['datasourceType'] = self.datasource_type.to_map()
 
         if self.display_name is not None:
             result['displayName'] = self.display_name.to_map()
@@ -64,17 +84,26 @@ class QueryAlertRulesFilter(DaraModel):
         if self.labels is not None:
             result['labels'] = self.labels.to_map()
 
+        if self.notify_strategy_id is not None:
+            result['notifyStrategyId'] = self.notify_strategy_id.to_map()
+
         if self.observe_resource_global_scope is not None:
-            result['observeResourceGlobalScope'] = self.observe_resource_global_scope
+            result['observeResourceGlobalScope'] = self.observe_resource_global_scope.to_map()
 
         if self.observe_resource_instance_id is not None:
             result['observeResourceInstanceId'] = self.observe_resource_instance_id
 
+        if self.observe_resource_list is not None:
+            result['observeResourceList'] = self.observe_resource_list.to_map()
+
         if self.observe_resource_type is not None:
-            result['observeResourceType'] = self.observe_resource_type
+            result['observeResourceType'] = self.observe_resource_type.to_map()
+
+        if self.partition_key is not None:
+            result['partitionKey'] = self.partition_key.to_map()
 
         if self.severity_levels is not None:
-            result['severityLevels'] = self.severity_levels
+            result['severityLevels'] = self.severity_levels.to_map()
 
         if self.status is not None:
             result['status'] = self.status.to_map()
@@ -87,7 +116,8 @@ class QueryAlertRulesFilter(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('datasourceType') is not None:
-            self.datasource_type = m.get('datasourceType')
+            temp_model = main_models.DatasourceTypeFilter()
+            self.datasource_type = temp_model.from_map(m.get('datasourceType'))
 
         if m.get('displayName') is not None:
             temp_model = main_models.DisplayNameFilter()
@@ -101,17 +131,32 @@ class QueryAlertRulesFilter(DaraModel):
             temp_model = main_models.LabelsFilter()
             self.labels = temp_model.from_map(m.get('labels'))
 
+        if m.get('notifyStrategyId') is not None:
+            temp_model = main_models.NotifyStrategyIdFilter()
+            self.notify_strategy_id = temp_model.from_map(m.get('notifyStrategyId'))
+
         if m.get('observeResourceGlobalScope') is not None:
-            self.observe_resource_global_scope = m.get('observeResourceGlobalScope')
+            temp_model = main_models.ObserveResourceGlobalScopeFilter()
+            self.observe_resource_global_scope = temp_model.from_map(m.get('observeResourceGlobalScope'))
 
         if m.get('observeResourceInstanceId') is not None:
             self.observe_resource_instance_id = m.get('observeResourceInstanceId')
 
+        if m.get('observeResourceList') is not None:
+            temp_model = main_models.ObserveResourceListFilter()
+            self.observe_resource_list = temp_model.from_map(m.get('observeResourceList'))
+
         if m.get('observeResourceType') is not None:
-            self.observe_resource_type = m.get('observeResourceType')
+            temp_model = main_models.ObserveResourceTypeFilter()
+            self.observe_resource_type = temp_model.from_map(m.get('observeResourceType'))
+
+        if m.get('partitionKey') is not None:
+            temp_model = main_models.PartitionKeyFilter()
+            self.partition_key = temp_model.from_map(m.get('partitionKey'))
 
         if m.get('severityLevels') is not None:
-            self.severity_levels = m.get('severityLevels')
+            temp_model = main_models.SeverityLevelsFilter()
+            self.severity_levels = temp_model.from_map(m.get('severityLevels'))
 
         if m.get('status') is not None:
             temp_model = main_models.StatusFilter()

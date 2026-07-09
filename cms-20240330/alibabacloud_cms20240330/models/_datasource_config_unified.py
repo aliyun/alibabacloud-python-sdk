@@ -8,11 +8,20 @@ class DatasourceConfigUnified(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        legacy_raw: str = None,
+        legacy_type: str = None,
+        product_category: str = None,
         region_id: str = None,
         type: str = None,
     ):
         # The unique instance ID.
         self.instance_id = instance_id
+        # The raw string value of the legacy configuration, used for backward compatibility.
+        self.legacy_raw = legacy_raw
+        # The legacy type of the data source, used for backward compatibility.
+        self.legacy_type = legacy_type
+        # The product category of the data source.
+        self.product_category = product_category
         # The region ID.
         self.region_id = region_id
         # The type of the data source.
@@ -31,6 +40,15 @@ class DatasourceConfigUnified(DaraModel):
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
 
+        if self.legacy_raw is not None:
+            result['legacyRaw'] = self.legacy_raw
+
+        if self.legacy_type is not None:
+            result['legacyType'] = self.legacy_type
+
+        if self.product_category is not None:
+            result['productCategory'] = self.product_category
+
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
@@ -43,6 +61,15 @@ class DatasourceConfigUnified(DaraModel):
         m = m or dict()
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+
+        if m.get('legacyRaw') is not None:
+            self.legacy_raw = m.get('legacyRaw')
+
+        if m.get('legacyType') is not None:
+            self.legacy_type = m.get('legacyType')
+
+        if m.get('productCategory') is not None:
+            self.product_category = m.get('productCategory')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')

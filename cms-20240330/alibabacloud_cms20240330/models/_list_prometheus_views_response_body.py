@@ -16,13 +16,13 @@ class ListPrometheusViewsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned.
+        # The maximum number of records to return.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
         # The list of Prometheus view instances.
         self.prometheus_views = prometheus_views
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # The total number of instances.
         self.total_count = total_count
@@ -90,31 +90,36 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         prometheus_view_id: str = None,
         prometheus_view_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_type: str = None,
         status: str = None,
         user_id: str = None,
         version: str = None,
         workspace: str = None,
     ):
-        # The time when the instance was created. The time is in UTC and in the \\`yyyy-MM-ddTHH:mmZ\\` format.
+        # The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
         self.create_time = create_time
-        # The instance type. Valid values are \\`prom-view\\` for a new-version aggregation view and \\`global-view\\` for an old-version aggregation view.
+        # The instance type:
+        # prom-view: aggregated view of the new version.
+        # global-view: aggregated view of the legacy version.
         self.instance_type = instance_type
-        # The billing method. The value is fixed to \\`FREE\\`.
+        # The billing type. Currently, the fixed value is FREE.
         self.payment_type = payment_type
-        # The product to which the Prometheus instance belongs. Valid values: \\`arms\\` and \\`cms\\`.
+        # The product to which the Prometheus instance belongs (arms or cms).
         self.product = product
-        # The number of Prometheus instances in the view.
+        # The number of Prometheus instances included in the view.
         self.prometheus_instance_count = prometheus_instance_count
         # The Prometheus view ID.
         self.prometheus_view_id = prometheus_view_id
-        # The name of the Prometheus view.
+        # The Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
         # The region ID.
         self.region_id = region_id
-        # The resource type. The value is fixed to \\`PrometheusView\\`.
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The fixed value: PrometheusView.
         self.resource_type = resource_type
-        # The status of the backend data storage.
+        # The backend data storage status.
         self.status = status
         # The user ID.
         self.user_id = user_id
@@ -154,6 +159,9 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
 
         if self.resource_type is not None:
             result['resourceType'] = self.resource_type
@@ -197,6 +205,9 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('resourceType') is not None:
             self.resource_type = m.get('resourceType')

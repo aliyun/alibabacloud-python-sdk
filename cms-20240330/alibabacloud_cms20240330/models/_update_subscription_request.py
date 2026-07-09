@@ -13,7 +13,7 @@ class UpdateSubscriptionRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The name of the workspace.
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):

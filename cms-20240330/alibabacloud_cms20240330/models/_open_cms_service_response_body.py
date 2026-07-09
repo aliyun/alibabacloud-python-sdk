@@ -10,9 +10,9 @@ class OpenCmsServiceResponseBody(DaraModel):
         enabled: bool = None,
         request_id: str = None,
     ):
-        # Whether the specified monitoring services are enabled.
+        # Indicates whether the service or commodity is activated.
         self.enabled = enabled
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

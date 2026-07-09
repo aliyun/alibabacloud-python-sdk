@@ -15,19 +15,24 @@ class SubscriptionForModify(DaraModel):
         filter_setting: main_models.FilterSetting = None,
         notify_strategy_id: str = None,
         pushing_setting: main_models.SubscriptionForModifyPushingSetting = None,
+        subscribe_legacy_event: bool = None,
         subscription_name: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
         self.agent_config = agent_config
-        # Description.
+        # The description.
         self.description = description
-        # Filter settings.
+        # The filter settings.
         self.filter_setting = filter_setting
-        # Notification policy UUID.
+        # The UUID of the notification policy.
         self.notify_strategy_id = notify_strategy_id
-        # Push settings.
+        # The push settings.
         self.pushing_setting = pushing_setting
-        # Name.
+        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
+        # - true: Subscribe.
+        # - false or null: Do not subscribe.
+        self.subscribe_legacy_event = subscribe_legacy_event
+        # The name.
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
@@ -63,6 +68,9 @@ class SubscriptionForModify(DaraModel):
         if self.pushing_setting is not None:
             result['pushingSetting'] = self.pushing_setting.to_map()
 
+        if self.subscribe_legacy_event is not None:
+            result['subscribeLegacyEvent'] = self.subscribe_legacy_event
+
         if self.subscription_name is not None:
             result['subscriptionName'] = self.subscription_name
 
@@ -91,6 +99,9 @@ class SubscriptionForModify(DaraModel):
             temp_model = main_models.SubscriptionForModifyPushingSetting()
             self.pushing_setting = temp_model.from_map(m.get('pushingSetting'))
 
+        if m.get('subscribeLegacyEvent') is not None:
+            self.subscribe_legacy_event = m.get('subscribeLegacyEvent')
+
         if m.get('subscriptionName') is not None:
             self.subscription_name = m.get('subscriptionName')
 
@@ -108,13 +119,13 @@ class SubscriptionForModifyPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # A list of alert push action plan IDs.
+        # The list of action plan IDs for alert pushing.
         self.alert_action_ids = alert_action_ids
-        # Action plan ID.
+        # The action plan ID.
         self.response_plan_id = response_plan_id
-        # A list of action integration plan IDs.
+        # The list of action integration plan IDs for recovery pushing.
         self.restore_action_ids = restore_action_ids
-        # Template UUID.
+        # The UUID of the template.
         self.template_uuid = template_uuid
 
     def validate(self):
