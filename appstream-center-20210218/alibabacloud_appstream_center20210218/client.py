@@ -140,6 +140,8 @@ class Client(OpenApiClient):
             body['AccountType'] = request.account_type
         if not DaraCore.is_null(request.ad_domain):
             body['AdDomain'] = request.ad_domain
+        if not DaraCore.is_null(request.ad_password):
+            body['AdPassword'] = request.ad_password
         if not DaraCore.is_null(request.auto_create_user):
             body['AutoCreateUser'] = request.auto_create_user
         if not DaraCore.is_null(request.end_user_id):
@@ -182,6 +184,8 @@ class Client(OpenApiClient):
             body['AccountType'] = request.account_type
         if not DaraCore.is_null(request.ad_domain):
             body['AdDomain'] = request.ad_domain
+        if not DaraCore.is_null(request.ad_password):
+            body['AdPassword'] = request.ad_password
         if not DaraCore.is_null(request.auto_create_user):
             body['AutoCreateUser'] = request.auto_create_user
         if not DaraCore.is_null(request.end_user_id):

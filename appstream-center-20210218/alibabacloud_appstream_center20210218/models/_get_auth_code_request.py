@@ -9,6 +9,7 @@ class GetAuthCodeRequest(DaraModel):
         self,
         account_type: str = None,
         ad_domain: str = None,
+        ad_password: str = None,
         auto_create_user: bool = None,
         end_user_id: str = None,
         external_user_id: str = None,
@@ -17,13 +18,14 @@ class GetAuthCodeRequest(DaraModel):
     ):
         self.account_type = account_type
         self.ad_domain = ad_domain
-        # Specifies whether to synchronously create an EndUserId based on `ExternalUserId`. This parameter takes effect only when `EndUserId` is empty.
+        self.ad_password = ad_password
+        # Specifies whether to synchronously create an EndUserId based on ExternalUserId. This parameter takes effect only when EndUserId is empty.
         self.auto_create_user = auto_create_user
-        # The username of the China Desktop Service (China Desktop Service) convenience account, which is unique within an Alibaba Cloud account. This parameter and `ExternalUserId` cannot both be empty.
+        # The username of the China Desktop Service (China Desktop Service) convenience account. The username must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot both be empty.
         self.end_user_id = end_user_id
-        # The external user ID. This ID is defined by the caller and must be unique within an Alibaba Cloud account. This parameter and `EndUserId` cannot both be empty.
+        # The external user ID. This ID is defined by the caller and must be unique within an Alibaba Cloud account. This parameter and EndUserId cannot both be empty.
         self.external_user_id = external_user_id
-        # The access policy that restricts the access permissions of the authorization code. An empty value indicates no restrictions.
+        # The access policy that restricts the access permissions of the authorization code. If this parameter is left empty, no restrictions are applied.
         # 
         # Syntax:
         # 
@@ -59,6 +61,9 @@ class GetAuthCodeRequest(DaraModel):
         if self.ad_domain is not None:
             result['AdDomain'] = self.ad_domain
 
+        if self.ad_password is not None:
+            result['AdPassword'] = self.ad_password
+
         if self.auto_create_user is not None:
             result['AutoCreateUser'] = self.auto_create_user
 
@@ -83,6 +88,9 @@ class GetAuthCodeRequest(DaraModel):
 
         if m.get('AdDomain') is not None:
             self.ad_domain = m.get('AdDomain')
+
+        if m.get('AdPassword') is not None:
+            self.ad_password = m.get('AdPassword')
 
         if m.get('AutoCreateUser') is not None:
             self.auto_create_user = m.get('AutoCreateUser')

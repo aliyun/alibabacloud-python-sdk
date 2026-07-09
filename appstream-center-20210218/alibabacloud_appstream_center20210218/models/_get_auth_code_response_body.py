@@ -53,7 +53,7 @@ class GetAuthCodeResponseBodyAuthModel(DaraModel):
         end_user_id: str = None,
         expire_time: str = None,
     ):
-        # The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. When multiple authorization codes are generated for a user, only the last generated code is valid.
+        # The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated authorization code is valid.
         self.auth_code = auth_code
         # The username of the China Desktop Service convenience account.
         self.end_user_id = end_user_id
