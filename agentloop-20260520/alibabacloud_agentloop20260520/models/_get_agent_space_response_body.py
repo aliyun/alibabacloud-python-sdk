@@ -19,16 +19,28 @@ class GetAgentSpaceResponseBody(DaraModel):
         sls_project: str = None,
         update_time: str = None,
     ):
+        # The name of the AgentSpace.
         self.agent_space = agent_space
+        # The CloudMonitor workspace.
         self.cms_workspace = cms_workspace
+        # The binding type of the CloudMonitor 2.0 workspace.
         self.cms_workspace_bind_type = cms_workspace_bind_type
+        # The time when the AgentSpace was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The Microservices Engine (MSE) namespace.
         self.mse_namespace = mse_namespace
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The name of the Simple Log Service project.
         self.sls_project = sls_project
+        # The time when the AgentSpace was last updated.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 
@@ -114,7 +126,9 @@ class GetAgentSpaceResponseBodyMseNamespace(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        # The ID of the MSE namespace.
         self.namespace_id = namespace_id
+        # The name of the MSE namespace.
         self.namespace_name = namespace_name
 
     def validate(self):

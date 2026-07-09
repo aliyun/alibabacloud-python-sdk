@@ -15,9 +15,13 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
+        # The maximum number of entries returned per request.
         self.max_results = max_results
+        # The pagination token. If no more pages are available, this parameter is empty.
         self.next_token = next_token
+        # The region information.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,9 +78,13 @@ class DescribeRegionsResponseBodyRegions(DaraModel):
         region_id: str = None,
         vpc_endpoint: str = None,
     ):
+        # The public endpoint.
         self.internet_endpoint = internet_endpoint
+        # The region name.
         self.local_name = local_name
+        # The region ID.
         self.region_id = region_id
+        # The internal endpoint.
         self.vpc_endpoint = vpc_endpoint
 
     def validate(self):

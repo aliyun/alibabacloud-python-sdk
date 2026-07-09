@@ -16,12 +16,19 @@ class SearchContextRequest(DaraModel):
         retrieval_option: str = None,
         threshold: float = None,
     ):
+        # The structured filter conditions. The key is the field name, and the value is the expected matching value.
         self.filter = filter
+        # Specifies whether to apply structured formatting to the returned results.
         self.formatted = formatted
+        # The maximum number of returned results (similarity Top-N).
         self.limit = limit
+        # The retrieval query text. Natural language is supported.
+        # 
         # This parameter is required.
         self.query = query
+        # The retrieval options that control the retrieval strategy.
         self.retrieval_option = retrieval_option
+        # The similarity threshold. Results with a similarity score lower than this value are filtered out. Valid values: 0 to 1.
         self.threshold = threshold
 
     def validate(self):

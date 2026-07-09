@@ -10,10 +10,15 @@ class ListAgentSpacesRequest(DaraModel):
         agent_space: str = None,
         max_results: int = None,
         next_token: str = None,
+        region_id: str = None,
     ):
+        # The AgentSpace name.
         self.agent_space = agent_space
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -32,6 +37,9 @@ class ListAgentSpacesRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -44,6 +52,9 @@ class ListAgentSpacesRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
 
         return self
 

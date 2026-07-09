@@ -21,16 +21,31 @@ class GetContextStoreResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The name of the AgentSpace to which the context store belongs.
         self.agent_space = agent_space
+        # The configuration of the context store.
         self.config = config
+        # The context store name.
         self.context_store_name = context_store_name
+        # The type of the context store, such as experience or memory.
         self.context_type = context_type
+        # The time when the context store was created, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the context store.
         self.description = description
+        # The region ID of the context store.
         self.region_id = region_id
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The status of the context store. Valid values:
+        # - ACTIVE
+        # - INITIALIZING
+        # - FAILED
         self.status = status
+        # The time when the context store was last updated, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 
@@ -118,9 +133,13 @@ class GetContextStoreResponseBodyConfig(DaraModel):
         service_names: List[str] = None,
         source: main_models.GetContextStoreResponseBodyConfigSource = None,
     ):
+        # The metadata field mapping. The key is the business field and the value is the storage field.
         self.metadata_field = metadata_field
+        # The experience mining interval. Valid values: 1h, 6h, 12h, and 1d. Default value: 1d.
         self.mining_interval = mining_interval
+        # The list of service names. This works together with source.agentSpace to locate the trace data source. This value cannot be changed in the current version.
         self.service_names = service_names
+        # The datasource config passed in by the user. This serves only as the root identifier of the data source.
         self.source = source
 
     def validate(self):
@@ -169,7 +188,10 @@ class GetContextStoreResponseBodyConfigSource(DaraModel):
         agent_space: str = None,
         start_time: str = None,
     ):
+        # The AgentSpace where the trace data source resides. This is the same as the AgentSpace specified during creation.
         self.agent_space = agent_space
+        # The start time for data backfill, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.start_time = start_time
 

@@ -11,8 +11,11 @@ class DeleteAgentSpaceRequest(DaraModel):
         delete_mse_namespace: bool = None,
         delete_sls_project: bool = None,
     ):
+        # Specifies whether to delete the associated Hybrid Cloud Monitoring workspace.
         self.delete_cms_workspace = delete_cms_workspace
+        # Specifies whether to delete the associated MSE namespace.
         self.delete_mse_namespace = delete_mse_namespace
+        # Specifies whether to delete the associated SLS project.
         self.delete_sls_project = delete_sls_project
 
     def validate(self):

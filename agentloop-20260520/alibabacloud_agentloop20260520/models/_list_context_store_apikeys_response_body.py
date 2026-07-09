@@ -16,10 +16,15 @@ class ListContextStoreAPIKeysResponseBody(DaraModel):
         results: List[main_models.ListContextStoreAPIKeysResponseBodyResults] = None,
         total: int = None,
     ):
+        # The maximum number of entries per page that was specified in the request. This value is echoed back.
         self.max_results = max_results
+        # The token for the next page. An empty string indicates that the current page is the last page.
         self.next_token = next_token
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
+        # The list of API keys.
         self.results = results
+        # The total number of API keys that match the query conditions.
         self.total = total
 
     def validate(self):
@@ -83,11 +88,17 @@ class ListContextStoreAPIKeysResponseBodyResults(DaraModel):
         create_time: str = None,
         name: str = None,
     ):
+        # The name of the AgentSpace to which the API key belongs.
         self.agent_space = agent_space
+        # The full value of the API key. The plaintext value is returned only when the API key is created. In list scenarios, the value is masked based on business rules.
         self.api_key = api_key
+        # The name of the context store to which the API key belongs.
         self.context_store_name = context_store_name
+        # The time when the API key was created, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The display name of the API key.
         self.name = name
 
     def validate(self):

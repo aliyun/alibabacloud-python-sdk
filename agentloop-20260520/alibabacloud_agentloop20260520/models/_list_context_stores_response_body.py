@@ -16,10 +16,15 @@ class ListContextStoresResponseBody(DaraModel):
         results: List[main_models.ListContextStoresResponseBodyResults] = None,
         total: int = None,
     ):
+        # The maximum number of entries per page that was specified in the request. This value is echoed back.
         self.max_results = max_results
+        # The token for the next page. An empty string indicates that the current page is the last page.
         self.next_token = next_token
+        # The request ID. You can use this ID to locate and troubleshoot issues.
         self.request_id = request_id
+        # The list of context stores.
         self.results = results
+        # The total number of context stores that match the query conditions.
         self.total = total
 
     def validate(self):
@@ -87,15 +92,26 @@ class ListContextStoresResponseBodyResults(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The name of the AgentSpace to which the context store belongs.
         self.agent_space = agent_space
+        # The name of the context store.
         self.context_store_name = context_store_name
+        # The type of the context store, such as experience or memory.
         self.context_type = context_type
+        # The time when the context store was created, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description of the context store.
         self.description = description
+        # The region ID of the context store.
         self.region_id = region_id
+        # The list of service names. This parameter has a value only for context stores of the experience type. The service names are used together with the data source AgentSpace to locate trace data sources.
         self.service_names = service_names
+        # The status of the context store. Valid values: ACTIVE, INITIALIZING, and FAILED.
         self.status = status
+        # The time when the context store was last updated, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 

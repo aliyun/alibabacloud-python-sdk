@@ -16,10 +16,15 @@ class ListAgentSpacesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The AgentSpaces information.
         self.agent_spaces = agent_spaces
+        # The maximum number of results returned.
         self.max_results = max_results
+        # The pagination token. This parameter is empty if no more pages are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -86,14 +91,24 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
         sls_project: str = None,
         update_time: str = None,
     ):
+        # The AgentSpace name.
         self.agent_space = agent_space
+        # The CMS workspace.
         self.cms_workspace = cms_workspace
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The MSE namespace.
         self.mse_namespace = mse_namespace
+        # The region ID.
         self.region_id = region_id
+        # The Simple Log Service project name.
         self.sls_project = sls_project
+        # The update time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 
@@ -167,7 +182,9 @@ class ListAgentSpacesResponseBodyAgentSpacesMseNamespace(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
+        # The MSE namespace ID.
         self.namespace_id = namespace_id
+        # The MSE namespace name.
         self.namespace_name = namespace_name
 
     def validate(self):

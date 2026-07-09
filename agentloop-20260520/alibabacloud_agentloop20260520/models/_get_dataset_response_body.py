@@ -19,14 +19,24 @@ class GetDatasetResponseBody(DaraModel):
         schema: Dict[str, main_models.IndexKey] = None,
         update_time: str = None,
     ):
+        # The agent space name.
         self.agent_space = agent_space
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The dataset description.
         self.description = description
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The table schema of the dataset.
         self.schema = schema
+        # The update time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 

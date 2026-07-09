@@ -16,10 +16,17 @@ class ListDatasetsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The result set.
         self.datasets = datasets
+        # The maximum number of results specified in this request.
         self.max_results = max_results
+        # The pagination token for the next page of results.
+        # 
+        # If the total number of results exceeds the maxResults limit, the results are truncated. You can use this token to query the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -84,12 +91,20 @@ class ListDatasetsResponseBodyDatasets(DaraModel):
         region_id: str = None,
         update_time: str = None,
     ):
+        # The name of the agent space.
         self.agent_space = agent_space
+        # The time when the dataset was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The name of the dataset.
         self.dataset_name = dataset_name
+        # The description of the dataset.
         self.description = description
+        # The region ID.
         self.region_id = region_id
+        # The time when the dataset was last updated.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 

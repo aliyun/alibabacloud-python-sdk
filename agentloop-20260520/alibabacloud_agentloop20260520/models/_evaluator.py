@@ -18,13 +18,21 @@ class Evaluator(DaraModel):
         type: str = None,
         variable_mapping: Dict[str, str] = None,
     ):
+        # The evaluator runtime configuration. For inline LLM evaluators, this must include configurations such as prompt. When referencing an existing evaluator, this parameter is typically not required and is only specified when runtime parameters such as version need to be set.
         self.config = config
+        # The reference name of a registered evaluator. When specified, the evaluator definition is loaded by this reference with higher priority. Both built-in evaluators and custom evaluators are supported.
         self.evaluator_ref = evaluator_ref
+        # The evaluator-level data filter conditions. These take effect together with the task-level dataFilter.query.
         self.filters = filters
+        # The evaluator name. Required for inline evaluators when evaluatorRef is not specified. The evaluatorRef or name must be unique within the same task.
         self.name = name
+        # The field name for the evaluation result. Required for inline evaluators. When referencing an existing evaluator, the metricName defined in the evaluator definition is used if this parameter is not specified.
         self.result_name = result_name
+        # The evaluation result type. Required for inline evaluators. Defaults to score when referencing an existing evaluator and this parameter is not specified.
         self.result_type = result_type
+        # The evaluator type. Defaults to LLM if not specified. Inline CODE evaluators are currently not supported. For CODE type evaluators, reference a previously created evaluator by using evaluatorRef.
         self.type = type
+        # The variable mapping that maps evaluator variables to evaluation data fields. Required for LLM/AGENT inline evaluators. When referencing an existing evaluator, the variable names must exist in the evaluator definition.
         self.variable_mapping = variable_mapping
 
     def validate(self):

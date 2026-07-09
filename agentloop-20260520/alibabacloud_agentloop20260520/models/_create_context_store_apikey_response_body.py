@@ -11,8 +11,11 @@ class CreateContextStoreAPIKeyResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
+        # The complete API key value.
         self.api_key = api_key
+        # The name of the API key.
         self.name = name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

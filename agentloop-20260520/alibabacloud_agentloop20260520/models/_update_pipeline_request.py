@@ -17,10 +17,15 @@ class UpdatePipelineRequest(DaraModel):
         source: main_models.UpdatePipelineRequestSource = None,
         client_token: str = None,
     ):
+        # The description of the pipeline, which helps users understand its purpose.
         self.description = description
+        # The execution policy. If specified, the existing execution policy is entirely overwritten.
         self.execute_policy = execute_policy
+        # The pipeline configuration (node orchestration). If specified, the existing pipeline configuration is entirely overwritten.
         self.pipeline = pipeline
+        # The pipeline sink (data write destination). If specified, the existing sink configuration is entirely overwritten.
         self.sink = sink
+        # The pipeline data source. If specified, the existing source configuration is entirely overwritten.
         self.source = source
         self.client_token = client_token
 
@@ -91,7 +96,9 @@ class UpdatePipelineRequestSource(DaraModel):
         logstore: main_models.UpdatePipelineRequestSourceLogstore = None,
         type: str = None,
     ):
+        # The SLS Logstore datasource config.
         self.logstore = logstore
+        # The data source type, such as SLS.
         self.type = type
 
     def validate(self):
@@ -128,7 +135,9 @@ class UpdatePipelineRequestSourceLogstore(DaraModel):
         logstore: str = None,
         query: str = None,
     ):
+        # The name of the SLS Logstore.
         self.logstore = logstore
+        # The data filtered query statement in SLS query/analysis syntax.
         self.query = query
 
     def validate(self):
@@ -163,7 +172,9 @@ class UpdatePipelineRequestSink(DaraModel):
         dataset: main_models.UpdatePipelineRequestSinkDataset = None,
         type: str = None,
     ):
+        # The destination dataset configuration.
         self.dataset = dataset
+        # The sink type, such as Dataset.
         self.type = type
 
     def validate(self):
@@ -201,6 +212,7 @@ class UpdatePipelineRequestSinkDataset(DaraModel):
         dataset: str = None,
     ):
         self.agent_space = agent_space
+        # The name of the destination dataset.
         self.dataset = dataset
 
     def validate(self):
@@ -234,6 +246,7 @@ class UpdatePipelineRequestPipeline(DaraModel):
         self,
         nodes: List[main_models.UpdatePipelineRequestPipelineNodes] = None,
     ):
+        # The list of nodes.
         self.nodes = nodes
 
     def validate(self):
@@ -271,8 +284,11 @@ class UpdatePipelineRequestPipelineNodes(DaraModel):
         parameters: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The node ID.
         self.id = id
+        # The node parameters in key-value format. The parameters vary by node type.
         self.parameters = parameters
+        # The node type.
         self.type = type
 
     def validate(self):
@@ -314,8 +330,11 @@ class UpdatePipelineRequestExecutePolicy(DaraModel):
         run_once: main_models.UpdatePipelineRequestExecutePolicyRunOnce = None,
         scheduled: main_models.UpdatePipelineRequestExecutePolicyScheduled = None,
     ):
+        # The scheduling mode, such as Scheduled (timed scheduling) or RunOnce (one-time execution).
         self.mode = mode
+        # The configuration for one-time execution.
         self.run_once = run_once
+        # The timed scheduling configuration.
         self.scheduled = scheduled
 
     def validate(self):
@@ -361,7 +380,9 @@ class UpdatePipelineRequestExecutePolicyScheduled(DaraModel):
         from_time: int = None,
         interval: str = None,
     ):
+        # The scheduling start time, in UNIX millisecond timestamp.
         self.from_time = from_time
+        # The scheduling interval, such as 1h.
         self.interval = interval
 
     def validate(self):
@@ -396,7 +417,9 @@ class UpdatePipelineRequestExecutePolicyRunOnce(DaraModel):
         from_time: int = None,
         to_time: int = None,
     ):
+        # The data processing start time, in UNIX millisecond timestamp.
         self.from_time = from_time
+        # The data processing end time, in UNIX millisecond timestamp.
         self.to_time = to_time
 
     def validate(self):

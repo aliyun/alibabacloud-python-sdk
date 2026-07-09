@@ -10,7 +10,9 @@ class AddDatasetDataResponseBody(DaraModel):
         affected_rows: int = None,
         request_id: str = None,
     ):
+        # The number of log rows scanned or processed.
         self.affected_rows = affected_rows
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -15,13 +15,21 @@ class GetContextStoreAPIKeyResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
+        # The name of the AgentSpace to which the API key belongs.
         self.agent_space = agent_space
+        # The masked prefix of the API key (for example, sk-abcd****). For security purposes, the full plaintext is not returned.
         self.api_key = api_key
+        # The name of the context store to which the API key belongs.
         self.context_store_name = context_store_name
+        # The creation time of the API key, in ISO 8601 UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The display name of the API key.
         self.name = name
+        # The region ID of the API key.
         self.region_id = region_id
+        # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

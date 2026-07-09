@@ -11,9 +11,15 @@ class DescribeRegionsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The language. Valid values:
+        # - zh: Chinese
+        # - en: English
+        # 
         # This parameter is required.
         self.language = language
+        # The maximum number of entries to return in a single request.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
 
     def validate(self):

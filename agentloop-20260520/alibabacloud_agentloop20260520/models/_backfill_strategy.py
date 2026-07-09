@@ -9,12 +9,13 @@ class BackfillStrategy(DaraModel):
         self,
         enabled: bool = None,
         end_time: int = None,
-        immediate: bool = None,
         start_time: int = None,
     ):
+        # Specifies whether the backfill policy is enabled. If this parameter is not specified or is set to true, the policy is enabled. If this parameter is set to false, the policy is disabled but the configuration is retained.
         self.enabled = enabled
+        # The end of the backfill time range, in UNIX millisecond timestamp. Provide a complete time range when you need to manually start a backfill.
         self.end_time = end_time
-        self.immediate = immediate
+        # The start of the backfill time range, in UNIX millisecond timestamp. Provide a complete time range when you need to manually start a backfill.
         self.start_time = start_time
 
     def validate(self):
@@ -31,9 +32,6 @@ class BackfillStrategy(DaraModel):
         if self.end_time is not None:
             result['endTime'] = self.end_time
 
-        if self.immediate is not None:
-            result['immediate'] = self.immediate
-
         if self.start_time is not None:
             result['startTime'] = self.start_time
 
@@ -46,9 +44,6 @@ class BackfillStrategy(DaraModel):
 
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
-
-        if m.get('immediate') is not None:
-            self.immediate = m.get('immediate')
 
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')

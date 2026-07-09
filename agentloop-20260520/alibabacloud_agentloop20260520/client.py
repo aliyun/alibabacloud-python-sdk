@@ -24,10 +24,14 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-zhangjiakou': 'agentloop.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'agentloop.cn-shenzhen.aliyuncs.com',
             'cn-shanghai': 'agentloop.cn-shanghai.aliyuncs.com',
             'cn-hongkong': 'agentloop.cn-hongkong.aliyuncs.com',
             'cn-hangzhou': 'agentloop.cn-hangzhou.aliyuncs.com',
-            'cn-beijing': 'agentloop.cn-beijing.aliyuncs.com'
+            'cn-guangzhou': 'agentloop.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'agentloop.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'agentloop.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'agentloop.ap-southeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentloop', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -140,6 +144,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.add_dataset_data_with_options_async(agent_space, dataset_name, request, headers, runtime)
 
+    def cancel_pipeline_run_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.CancelPipelineRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelPipelineRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelPipelineRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/runs/{DaraURL.percent_encode(run_id)}/cancel',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_pipeline_run_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.CancelPipelineRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelPipelineRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelPipelineRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/runs/{DaraURL.percent_encode(run_id)}/cancel',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_pipeline_run(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.CancelPipelineRunRequest,
+    ) -> main_models.CancelPipelineRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.cancel_pipeline_run_with_options(agent_space, pipeline_name, run_id, request, headers, runtime)
+
+    async def cancel_pipeline_run_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.CancelPipelineRunRequest,
+    ) -> main_models.CancelPipelineRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.cancel_pipeline_run_with_options_async(agent_space, pipeline_name, run_id, request, headers, runtime)
+
     def create_agent_space_with_options(
         self,
         request: main_models.CreateAgentSpaceRequest,
@@ -157,6 +241,8 @@ class Client(OpenApiClient):
             body['cmsWorkspace'] = request.cms_workspace
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.trajectory_store_enabled):
+            body['trajectoryStoreEnabled'] = request.trajectory_store_enabled
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -195,6 +281,8 @@ class Client(OpenApiClient):
             body['cmsWorkspace'] = request.cms_workspace
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.trajectory_store_enabled):
+            body['trajectoryStoreEnabled'] = request.trajectory_store_enabled
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -520,6 +608,362 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_dataset_with_options_async(agent_space, request, headers, runtime)
 
+    def create_evaluation_task_with_options(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEvaluationTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.channel):
+            body['channel'] = request.channel
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.data_filter):
+            body['dataFilter'] = request.data_filter
+        if not DaraCore.is_null(request.data_type):
+            body['dataType'] = request.data_type
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.run_strategies):
+            body['runStrategies'] = request.run_strategies
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        if not DaraCore.is_null(request.task_mode):
+            body['taskMode'] = request.task_mode
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_evaluation_task_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEvaluationTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.channel):
+            body['channel'] = request.channel
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.data_filter):
+            body['dataFilter'] = request.data_filter
+        if not DaraCore.is_null(request.data_type):
+            body['dataType'] = request.data_type
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.run_strategies):
+            body['runStrategies'] = request.run_strategies
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        if not DaraCore.is_null(request.task_mode):
+            body['taskMode'] = request.task_mode
+        if not DaraCore.is_null(request.task_name):
+            body['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_evaluation_task(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluationTaskRequest,
+    ) -> main_models.CreateEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_evaluation_task_with_options(agent_space, request, headers, runtime)
+
+    async def create_evaluation_task_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluationTaskRequest,
+    ) -> main_models.CreateEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_evaluation_task_with_options_async(agent_space, request, headers, runtime)
+
+    def create_evaluator_with_options(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.annotations):
+            body['annotations'] = request.annotations
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.metric_name):
+            body['metricName'] = request.metric_name
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.properties):
+            body['properties'] = request.properties
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEvaluatorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_evaluator_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.annotations):
+            body['annotations'] = request.annotations
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.metric_name):
+            body['metricName'] = request.metric_name
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.properties):
+            body['properties'] = request.properties
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEvaluatorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_evaluator(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluatorRequest,
+    ) -> main_models.CreateEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_evaluator_with_options(agent_space, request, headers, runtime)
+
+    async def create_evaluator_async(
+        self,
+        agent_space: str,
+        request: main_models.CreateEvaluatorRequest,
+    ) -> main_models.CreateEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_evaluator_with_options_async(agent_space, request, headers, runtime)
+
+    def create_evaluator_skill_with_options(
+        self,
+        name: str,
+        request: main_models.CreateEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        if not DaraCore.is_null(request.skill_name):
+            body['skillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEvaluatorSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_evaluator_skill_with_options_async(
+        self,
+        name: str,
+        request: main_models.CreateEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        if not DaraCore.is_null(request.skill_name):
+            body['skillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateEvaluatorSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_evaluator_skill(
+        self,
+        name: str,
+        request: main_models.CreateEvaluatorSkillRequest,
+    ) -> main_models.CreateEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_evaluator_skill_with_options(name, request, headers, runtime)
+
+    async def create_evaluator_skill_async(
+        self,
+        name: str,
+        request: main_models.CreateEvaluatorSkillRequest,
+    ) -> main_models.CreateEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_evaluator_skill_with_options_async(name, request, headers, runtime)
+
     def delete_agent_space_with_options(
         self,
         agent_space: str,
@@ -840,6 +1284,330 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_dataset_with_options_async(agent_space, dataset_name, request, headers, runtime)
 
+    def delete_evaluation_run_with_options(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.DeleteEvaluationRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluationRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluationRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/run/{DaraURL.percent_encode(run_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluationRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_evaluation_run_with_options_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.DeleteEvaluationRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluationRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluationRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/run/{DaraURL.percent_encode(run_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluationRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_evaluation_run(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.DeleteEvaluationRunRequest,
+    ) -> main_models.DeleteEvaluationRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_evaluation_run_with_options(agent_space, task_id, run_id, request, headers, runtime)
+
+    async def delete_evaluation_run_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.DeleteEvaluationRunRequest,
+    ) -> main_models.DeleteEvaluationRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_evaluation_run_with_options_async(agent_space, task_id, run_id, request, headers, runtime)
+
+    def delete_evaluation_task_with_options(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.DeleteEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_evaluation_task_with_options_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.DeleteEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_evaluation_task(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.DeleteEvaluationTaskRequest,
+    ) -> main_models.DeleteEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_evaluation_task_with_options(agent_space, task_id, request, headers, runtime)
+
+    async def delete_evaluation_task_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.DeleteEvaluationTaskRequest,
+    ) -> main_models.DeleteEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_evaluation_task_with_options_async(agent_space, task_id, request, headers, runtime)
+
+    def delete_evaluator_with_options(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.DeleteEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluatorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_evaluator_with_options_async(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.DeleteEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluatorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_evaluator(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.DeleteEvaluatorRequest,
+    ) -> main_models.DeleteEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_evaluator_with_options(agent_space, name, request, headers, runtime)
+
+    async def delete_evaluator_async(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.DeleteEvaluatorRequest,
+    ) -> main_models.DeleteEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_evaluator_with_options_async(agent_space, name, request, headers, runtime)
+
+    def delete_evaluator_skill_with_options(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.DeleteEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluatorSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_evaluator_skill_with_options_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.DeleteEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEvaluatorSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_evaluator_skill(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.DeleteEvaluatorSkillRequest,
+    ) -> main_models.DeleteEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_evaluator_skill_with_options(name, skill_name, request, headers, runtime)
+
+    async def delete_evaluator_skill_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.DeleteEvaluatorSkillRequest,
+    ) -> main_models.DeleteEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_evaluator_skill_with_options_async(name, skill_name, request, headers, runtime)
+
     def delete_pipeline_with_options(
         self,
         agent_space: str,
@@ -1010,8 +1778,18 @@ class Client(OpenApiClient):
     ) -> main_models.ExecuteQueryResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.length):
+            body['length'] = request.length
+        if not DaraCore.is_null(request.max_output_length):
+            body['maxOutputLength'] = request.max_output_length
+        if not DaraCore.is_null(request.offset):
+            body['offset'] = request.offset
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -1044,8 +1822,18 @@ class Client(OpenApiClient):
     ) -> main_models.ExecuteQueryResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.from_):
+            body['from'] = request.from_
+        if not DaraCore.is_null(request.length):
+            body['length'] = request.length
+        if not DaraCore.is_null(request.max_output_length):
+            body['maxOutputLength'] = request.max_output_length
+        if not DaraCore.is_null(request.offset):
+            body['offset'] = request.offset
         if not DaraCore.is_null(request.query):
             body['query'] = request.query
+        if not DaraCore.is_null(request.to):
+            body['to'] = request.to
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -1392,6 +2180,334 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_dataset_with_options_async(agent_space, dataset_name, request, headers, runtime)
 
+    def get_evaluation_run_with_options(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.GetEvaluationRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluationRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluationRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/run/{DaraURL.percent_encode(run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluationRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_evaluation_run_with_options_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.GetEvaluationRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluationRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluationRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/run/{DaraURL.percent_encode(run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluationRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_evaluation_run(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.GetEvaluationRunRequest,
+    ) -> main_models.GetEvaluationRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_evaluation_run_with_options(agent_space, task_id, run_id, request, headers, runtime)
+
+    async def get_evaluation_run_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.GetEvaluationRunRequest,
+    ) -> main_models.GetEvaluationRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_evaluation_run_with_options_async(agent_space, task_id, run_id, request, headers, runtime)
+
+    def get_evaluation_task_with_options(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.GetEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_evaluation_task_with_options_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.GetEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluationTaskResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_evaluation_task(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.GetEvaluationTaskRequest,
+    ) -> main_models.GetEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_evaluation_task_with_options(agent_space, task_id, request, headers, runtime)
+
+    async def get_evaluation_task_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.GetEvaluationTaskRequest,
+    ) -> main_models.GetEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_evaluation_task_with_options_async(agent_space, task_id, request, headers, runtime)
+
+    def get_evaluator_with_options(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.GetEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluatorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_evaluator_with_options_async(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.GetEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluatorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_evaluator(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.GetEvaluatorRequest,
+    ) -> main_models.GetEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_evaluator_with_options(agent_space, name, request, headers, runtime)
+
+    async def get_evaluator_async(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.GetEvaluatorRequest,
+    ) -> main_models.GetEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_evaluator_with_options_async(agent_space, name, request, headers, runtime)
+
+    def get_evaluator_skill_with_options(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluatorSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_evaluator_skill_with_options_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEvaluatorSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_evaluator_skill(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetEvaluatorSkillRequest,
+    ) -> main_models.GetEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_evaluator_skill_with_options(name, skill_name, request, headers, runtime)
+
+    async def get_evaluator_skill_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetEvaluatorSkillRequest,
+    ) -> main_models.GetEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_evaluator_skill_with_options_async(name, skill_name, request, headers, runtime)
+
     def get_pipeline_with_options(
         self,
         agent_space: str,
@@ -1468,6 +2584,178 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
 
+    def get_pipeline_run_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.GetPipelineRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPipelineRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPipelineRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/runs/{DaraURL.percent_encode(run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pipeline_run_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.GetPipelineRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPipelineRunResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPipelineRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/runs/{DaraURL.percent_encode(run_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pipeline_run(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.GetPipelineRunRequest,
+    ) -> main_models.GetPipelineRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_pipeline_run_with_options(agent_space, pipeline_name, run_id, request, headers, runtime)
+
+    async def get_pipeline_run_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        run_id: str,
+        request: main_models.GetPipelineRunRequest,
+    ) -> main_models.GetPipelineRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_pipeline_run_with_options_async(agent_space, pipeline_name, run_id, request, headers, runtime)
+
+    def get_pipeline_stats_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineStatsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPipelineStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPipelineStats',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/stats',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPipelineStatsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_pipeline_stats_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineStatsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPipelineStatsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPipelineStats',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/stats',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPipelineStatsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_pipeline_stats(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineStatsRequest,
+    ) -> main_models.GetPipelineStatsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_pipeline_stats_with_options(agent_space, pipeline_name, request, headers, runtime)
+
+    async def get_pipeline_stats_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.GetPipelineStatsRequest,
+    ) -> main_models.GetPipelineStatsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_pipeline_stats_with_options_async(agent_space, pipeline_name, request, headers, runtime)
+
     def list_agent_spaces_with_options(
         self,
         request: main_models.ListAgentSpacesRequest,
@@ -1482,6 +2770,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1516,6 +2806,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1820,6 +3112,494 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_datasets_with_options_async(agent_space, request, headers, runtime)
 
+    def list_evaluation_runs_with_options(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.ListEvaluationRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluationRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.run_type):
+            query['runType'] = request.run_type
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluationRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluationRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluation_runs_with_options_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.ListEvaluationRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluationRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.run_type):
+            query['runType'] = request.run_type
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluationRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluationRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluation_runs(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.ListEvaluationRunsRequest,
+    ) -> main_models.ListEvaluationRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_evaluation_runs_with_options(agent_space, task_id, request, headers, runtime)
+
+    async def list_evaluation_runs_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.ListEvaluationRunsRequest,
+    ) -> main_models.ListEvaluationRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_evaluation_runs_with_options_async(agent_space, task_id, request, headers, runtime)
+
+    def list_evaluation_tasks_with_options(
+        self,
+        request: main_models.ListEvaluationTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluationTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
+        if not DaraCore.is_null(request.data_type):
+            query['dataType'] = request.data_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.task_mode):
+            query['taskMode'] = request.task_mode
+        if not DaraCore.is_null(request.task_name):
+            query['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluationTasks',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluationTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluation_tasks_with_options_async(
+        self,
+        request: main_models.ListEvaluationTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluationTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
+        if not DaraCore.is_null(request.data_type):
+            query['dataType'] = request.data_type
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.task_mode):
+            query['taskMode'] = request.task_mode
+        if not DaraCore.is_null(request.task_name):
+            query['taskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluationTasks',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluationTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluation_tasks(
+        self,
+        request: main_models.ListEvaluationTasksRequest,
+    ) -> main_models.ListEvaluationTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_evaluation_tasks_with_options(request, headers, runtime)
+
+    async def list_evaluation_tasks_async(
+        self,
+        request: main_models.ListEvaluationTasksRequest,
+    ) -> main_models.ListEvaluationTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_evaluation_tasks_with_options_async(request, headers, runtime)
+
+    def list_evaluator_skills_with_options(
+        self,
+        name: str,
+        request: main_models.ListEvaluatorSkillsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluatorSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluatorSkills',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skills',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluatorSkillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluator_skills_with_options_async(
+        self,
+        name: str,
+        request: main_models.ListEvaluatorSkillsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluatorSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluatorSkills',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skills',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluatorSkillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluator_skills(
+        self,
+        name: str,
+        request: main_models.ListEvaluatorSkillsRequest,
+    ) -> main_models.ListEvaluatorSkillsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_evaluator_skills_with_options(name, request, headers, runtime)
+
+    async def list_evaluator_skills_async(
+        self,
+        name: str,
+        request: main_models.ListEvaluatorSkillsRequest,
+    ) -> main_models.ListEvaluatorSkillsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_evaluator_skills_with_options_async(name, request, headers, runtime)
+
+    def list_evaluators_with_options(
+        self,
+        request: main_models.ListEvaluatorsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluatorsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluators',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluatorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_evaluators_with_options_async(
+        self,
+        request: main_models.ListEvaluatorsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListEvaluatorsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListEvaluators',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListEvaluatorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_evaluators(
+        self,
+        request: main_models.ListEvaluatorsRequest,
+    ) -> main_models.ListEvaluatorsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_evaluators_with_options(request, headers, runtime)
+
+    async def list_evaluators_async(
+        self,
+        request: main_models.ListEvaluatorsRequest,
+    ) -> main_models.ListEvaluatorsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_evaluators_with_options_async(request, headers, runtime)
+
+    def list_pipeline_runs_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ListPipelineRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPipelineRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.trigger_type):
+            query['triggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPipelineRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPipelineRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipeline_runs_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ListPipelineRunsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPipelineRunsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.trigger_type):
+            query['triggerType'] = request.trigger_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPipelineRuns',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/runs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPipelineRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipeline_runs(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ListPipelineRunsRequest,
+    ) -> main_models.ListPipelineRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_pipeline_runs_with_options(agent_space, pipeline_name, request, headers, runtime)
+
+    async def list_pipeline_runs_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ListPipelineRunsRequest,
+    ) -> main_models.ListPipelineRunsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_pipeline_runs_with_options_async(agent_space, pipeline_name, request, headers, runtime)
+
     def list_pipelines_with_options(
         self,
         agent_space: str,
@@ -1835,6 +3615,10 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.pipeline_name):
             query['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.schedule_status):
+            query['scheduleStatus'] = request.schedule_status
+        if not DaraCore.is_null(request.schedule_type):
+            query['scheduleType'] = request.schedule_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1870,6 +3654,10 @@ class Client(OpenApiClient):
             query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.pipeline_name):
             query['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.schedule_status):
+            query['scheduleStatus'] = request.schedule_status
+        if not DaraCore.is_null(request.schedule_type):
+            query['scheduleType'] = request.schedule_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1907,6 +3695,258 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_pipelines_with_options_async(agent_space, request, headers, runtime)
+
+    def pause_pipeline_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.PausePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PausePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PausePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/pause',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PausePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_pipeline_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.PausePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PausePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PausePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/pause',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PausePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_pipeline(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.PausePipelineRequest,
+    ) -> main_models.PausePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.pause_pipeline_with_options(agent_space, pipeline_name, request, headers, runtime)
+
+    async def pause_pipeline_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.PausePipelineRequest,
+    ) -> main_models.PausePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.pause_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
+
+    def resume_pipeline_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ResumePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumePipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/resume',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_pipeline_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ResumePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ResumePipelineResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ResumePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/resume',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResumePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_pipeline(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ResumePipelineRequest,
+    ) -> main_models.ResumePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.resume_pipeline_with_options(agent_space, pipeline_name, request, headers, runtime)
+
+    async def resume_pipeline_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.ResumePipelineRequest,
+    ) -> main_models.ResumePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.resume_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
+
+    def run_pipeline_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.RunPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.from_time):
+            body['fromTime'] = request.from_time
+        if not DaraCore.is_null(request.output):
+            body['output'] = request.output
+        if not DaraCore.is_null(request.to_time):
+            body['toTime'] = request.to_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunPipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/run',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_pipeline_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.RunPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.from_time):
+            body['fromTime'] = request.from_time
+        if not DaraCore.is_null(request.output):
+            body['output'] = request.output
+        if not DaraCore.is_null(request.to_time):
+            body['toTime'] = request.to_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunPipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/run',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_pipeline(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.RunPipelineRequest,
+    ) -> main_models.RunPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.run_pipeline_with_options(agent_space, pipeline_name, request, headers, runtime)
+
+    async def run_pipeline_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.RunPipelineRequest,
+    ) -> main_models.RunPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.run_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
 
     def search_context_with_options(
         self,
@@ -2011,6 +4051,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.search_context_with_options_async(agent_space, context_store_name, request, headers, runtime)
+
+    def terminate_pipeline_with_options(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.TerminatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TerminatePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TerminatePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/terminate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TerminatePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def terminate_pipeline_with_options_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.TerminatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TerminatePipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.reason):
+            body['reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TerminatePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/{DaraURL.percent_encode(pipeline_name)}/terminate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TerminatePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def terminate_pipeline(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.TerminatePipelineRequest,
+    ) -> main_models.TerminatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.terminate_pipeline_with_options(agent_space, pipeline_name, request, headers, runtime)
+
+    async def terminate_pipeline_async(
+        self,
+        agent_space: str,
+        pipeline_name: str,
+        request: main_models.TerminatePipelineRequest,
+    ) -> main_models.TerminatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.terminate_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
 
     def update_agent_space_with_options(
         self,
@@ -2299,6 +4423,434 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_dataset_with_options_async(agent_space, dataset_name, request, headers, runtime)
+
+    def update_evaluation_run_with_options(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.UpdateEvaluationRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluationRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluationRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/run/{DaraURL.percent_encode(run_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluationRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_evaluation_run_with_options_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.UpdateEvaluationRunRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluationRunResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluationRun',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}/run/{DaraURL.percent_encode(run_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluationRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_evaluation_run(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.UpdateEvaluationRunRequest,
+    ) -> main_models.UpdateEvaluationRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_evaluation_run_with_options(agent_space, task_id, run_id, request, headers, runtime)
+
+    async def update_evaluation_run_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        run_id: str,
+        request: main_models.UpdateEvaluationRunRequest,
+    ) -> main_models.UpdateEvaluationRunResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_evaluation_run_with_options_async(agent_space, task_id, run_id, request, headers, runtime)
+
+    def update_evaluation_task_with_options(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.UpdateEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluationTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.data_filter):
+            body['dataFilter'] = request.data_filter
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.run_strategies):
+            body['runStrategies'] = request.run_strategies
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluationTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_evaluation_task_with_options_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.UpdateEvaluationTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluationTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.data_filter):
+            body['dataFilter'] = request.data_filter
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.evaluators):
+            body['evaluators'] = request.evaluators
+        if not DaraCore.is_null(request.run_strategies):
+            body['runStrategies'] = request.run_strategies
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluationTask',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluation-task/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(task_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluationTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_evaluation_task(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.UpdateEvaluationTaskRequest,
+    ) -> main_models.UpdateEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_evaluation_task_with_options(agent_space, task_id, request, headers, runtime)
+
+    async def update_evaluation_task_async(
+        self,
+        agent_space: str,
+        task_id: str,
+        request: main_models.UpdateEvaluationTaskRequest,
+    ) -> main_models.UpdateEvaluationTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_evaluation_task_with_options_async(agent_space, task_id, request, headers, runtime)
+
+    def update_evaluator_with_options(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.UpdateEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.annotations):
+            body['annotations'] = request.annotations
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.properties):
+            body['properties'] = request.properties
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluatorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_evaluator_with_options_async(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.UpdateEvaluatorRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluatorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.annotations):
+            body['annotations'] = request.annotations
+        if not DaraCore.is_null(request.config):
+            body['config'] = request.config
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.properties):
+            body['properties'] = request.properties
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
+        if not DaraCore.is_null(request.version_description):
+            body['versionDescription'] = request.version_description
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluator',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluators/{DaraURL.percent_encode(agent_space)}/{DaraURL.percent_encode(name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluatorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_evaluator(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.UpdateEvaluatorRequest,
+    ) -> main_models.UpdateEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_evaluator_with_options(agent_space, name, request, headers, runtime)
+
+    async def update_evaluator_async(
+        self,
+        agent_space: str,
+        name: str,
+        request: main_models.UpdateEvaluatorRequest,
+    ) -> main_models.UpdateEvaluatorResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_evaluator_with_options_async(agent_space, name, request, headers, runtime)
+
+    def update_evaluator_skill_with_options(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluatorSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_evaluator_skill_with_options_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateEvaluatorSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEvaluatorSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_space):
+            query['agentSpace'] = request.agent_space
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateEvaluatorSkill',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/evaluator/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateEvaluatorSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_evaluator_skill(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateEvaluatorSkillRequest,
+    ) -> main_models.UpdateEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_evaluator_skill_with_options(name, skill_name, request, headers, runtime)
+
+    async def update_evaluator_skill_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateEvaluatorSkillRequest,
+    ) -> main_models.UpdateEvaluatorSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_evaluator_skill_with_options_async(name, skill_name, request, headers, runtime)
 
     def update_pipeline_with_options(
         self,

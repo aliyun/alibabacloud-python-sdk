@@ -11,8 +11,10 @@ class ExperimentPlanData(DaraModel):
         dataset_id: str = None,
         description: str = None,
         experiment_count: int = None,
+        experiment_type: str = None,
         plan_id: str = None,
         plan_name: str = None,
+        query_sql: str = None,
         status: str = None,
         updated_at: int = None,
     ):
@@ -20,8 +22,10 @@ class ExperimentPlanData(DaraModel):
         self.dataset_id = dataset_id
         self.description = description
         self.experiment_count = experiment_count
+        self.experiment_type = experiment_type
         self.plan_id = plan_id
         self.plan_name = plan_name
+        self.query_sql = query_sql
         self.status = status
         self.updated_at = updated_at
 
@@ -45,11 +49,17 @@ class ExperimentPlanData(DaraModel):
         if self.experiment_count is not None:
             result['experimentCount'] = self.experiment_count
 
+        if self.experiment_type is not None:
+            result['experimentType'] = self.experiment_type
+
         if self.plan_id is not None:
             result['planId'] = self.plan_id
 
         if self.plan_name is not None:
             result['planName'] = self.plan_name
+
+        if self.query_sql is not None:
+            result['querySql'] = self.query_sql
 
         if self.status is not None:
             result['status'] = self.status
@@ -73,11 +83,17 @@ class ExperimentPlanData(DaraModel):
         if m.get('experimentCount') is not None:
             self.experiment_count = m.get('experimentCount')
 
+        if m.get('experimentType') is not None:
+            self.experiment_type = m.get('experimentType')
+
         if m.get('planId') is not None:
             self.plan_id = m.get('planId')
 
         if m.get('planName') is not None:
             self.plan_name = m.get('planName')
+
+        if m.get('querySql') is not None:
+            self.query_sql = m.get('querySql')
 
         if m.get('status') is not None:
             self.status = m.get('status')

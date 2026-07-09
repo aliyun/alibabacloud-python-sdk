@@ -16,10 +16,15 @@ class ExecuteQueryResponseBody(DaraModel):
         request_id: str = None,
         rows: List[List[Any]] = None,
     ):
+        # The result column types.
         self.column_types = column_types
+        # The result column information.
         self.columns = columns
+        # The metadata of the returned data.
         self.meta = meta
+        # The request ID.
         self.request_id = request_id
+        # The result rows.
         self.rows = rows
 
     def validate(self):
@@ -75,14 +80,21 @@ class ExecuteQueryResponseBodyMeta(DaraModel):
         count: int = None,
         elapsed_millisecond: int = None,
         progress: str = None,
+        truncation: main_models.ExecuteQueryResponseBodyMetaTruncation = None,
     ):
+        # The number of log rows scanned or processed.
         self.affected_rows = affected_rows
+        # The number of log rows returned by this query request.
         self.count = count
+        # The time consumed by this execution, in milliseconds.
         self.elapsed_millisecond = elapsed_millisecond
+        # Indicates whether the query result is complete.
         self.progress = progress
+        self.truncation = truncation
 
     def validate(self):
-        pass
+        if self.truncation:
+            self.truncation.validate()
 
     def to_map(self):
         result = dict()
@@ -101,6 +113,9 @@ class ExecuteQueryResponseBodyMeta(DaraModel):
         if self.progress is not None:
             result['progress'] = self.progress
 
+        if self.truncation is not None:
+            result['truncation'] = self.truncation.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -116,6 +131,45 @@ class ExecuteQueryResponseBodyMeta(DaraModel):
 
         if m.get('progress') is not None:
             self.progress = m.get('progress')
+
+        if m.get('truncation') is not None:
+            temp_model = main_models.ExecuteQueryResponseBodyMetaTruncation()
+            self.truncation = temp_model.from_map(m.get('truncation'))
+
+        return self
+
+class ExecuteQueryResponseBodyMetaTruncation(DaraModel):
+    def __init__(
+        self,
+        truncated: bool = None,
+        truncated_column_indexes: List[List[int]] = None,
+    ):
+        self.truncated = truncated
+        self.truncated_column_indexes = truncated_column_indexes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.truncated is not None:
+            result['truncated'] = self.truncated
+
+        if self.truncated_column_indexes is not None:
+            result['truncatedColumnIndexes'] = self.truncated_column_indexes
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('truncated') is not None:
+            self.truncated = m.get('truncated')
+
+        if m.get('truncatedColumnIndexes') is not None:
+            self.truncated_column_indexes = m.get('truncatedColumnIndexes')
 
         return self
 

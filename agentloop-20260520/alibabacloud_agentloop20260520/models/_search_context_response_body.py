@@ -12,7 +12,9 @@ class SearchContextResponseBody(DaraModel):
         request_id: str = None,
         results: List[Dict[str, Any]] = None,
     ):
+        # The request ID. You can use this ID to locate and troubleshoot issues.
         self.request_id = request_id
+        # The list of retrieval results, sorted by similarity in descending order.
         self.results = results
 
     def validate(self):

@@ -10,26 +10,32 @@ from darabonba.model import DaraModel
 class GetPipelineResponseBody(DaraModel):
     def __init__(
         self,
+        committed_watermark: int = None,
         create_time: str = None,
         description: str = None,
         execute_policy: main_models.GetPipelineResponseBodyExecutePolicy = None,
+        next_trigger_time: int = None,
         pipeline: main_models.GetPipelineResponseBodyPipeline = None,
         pipeline_name: str = None,
         region_id: str = None,
         request_id: str = None,
+        schedule_status: str = None,
         sink: main_models.GetPipelineResponseBodySink = None,
         source: main_models.GetPipelineResponseBodySource = None,
         update_time: str = None,
         workspace: str = None,
     ):
+        self.committed_watermark = committed_watermark
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
         self.description = description
         self.execute_policy = execute_policy
+        self.next_trigger_time = next_trigger_time
         self.pipeline = pipeline
         self.pipeline_name = pipeline_name
         self.region_id = region_id
         self.request_id = request_id
+        self.schedule_status = schedule_status
         self.sink = sink
         self.source = source
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -51,6 +57,9 @@ class GetPipelineResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.committed_watermark is not None:
+            result['committedWatermark'] = self.committed_watermark
+
         if self.create_time is not None:
             result['createTime'] = self.create_time
 
@@ -59,6 +68,9 @@ class GetPipelineResponseBody(DaraModel):
 
         if self.execute_policy is not None:
             result['executePolicy'] = self.execute_policy.to_map()
+
+        if self.next_trigger_time is not None:
+            result['nextTriggerTime'] = self.next_trigger_time
 
         if self.pipeline is not None:
             result['pipeline'] = self.pipeline.to_map()
@@ -71,6 +83,9 @@ class GetPipelineResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
+
+        if self.schedule_status is not None:
+            result['scheduleStatus'] = self.schedule_status
 
         if self.sink is not None:
             result['sink'] = self.sink.to_map()
@@ -88,6 +103,9 @@ class GetPipelineResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('committedWatermark') is not None:
+            self.committed_watermark = m.get('committedWatermark')
+
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
 
@@ -97,6 +115,9 @@ class GetPipelineResponseBody(DaraModel):
         if m.get('executePolicy') is not None:
             temp_model = main_models.GetPipelineResponseBodyExecutePolicy()
             self.execute_policy = temp_model.from_map(m.get('executePolicy'))
+
+        if m.get('nextTriggerTime') is not None:
+            self.next_trigger_time = m.get('nextTriggerTime')
 
         if m.get('pipeline') is not None:
             temp_model = main_models.GetPipelineResponseBodyPipeline()
@@ -110,6 +131,9 @@ class GetPipelineResponseBody(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('scheduleStatus') is not None:
+            self.schedule_status = m.get('scheduleStatus')
 
         if m.get('sink') is not None:
             temp_model = main_models.GetPipelineResponseBodySink()
