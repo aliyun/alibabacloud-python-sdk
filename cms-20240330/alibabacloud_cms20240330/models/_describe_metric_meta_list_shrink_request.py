@@ -17,7 +17,7 @@ class DescribeMetricMetaListShrinkRequest(DaraModel):
     ):
         # The keyword.
         self.keywords = keywords
-        # Filters resources by label. The following labels are supported:
+        # Filters resources by label. The following labels are available:
         # - metricCategory: the metric category description.
         # - alertEnable: specifies whether alerting is required.
         # - alertUnit: the recommended alert unit.
@@ -27,7 +27,7 @@ class DescribeMetricMetaListShrinkRequest(DaraModel):
         self.labels_shrink = labels_shrink
         # The metadata source. Valid values:
         # - CMS: CloudMonitor Basic monitoring metrics.
-        # - PROM_BASIC: Managed Service for Prometheus monitoring metrics.
+        # - PROM_BASIC: Prometheus CloudMonitor basic monitoring metrics.
         self.meta_format = meta_format
         # The metric name.
         self.metric_name = metric_name

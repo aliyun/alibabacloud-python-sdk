@@ -212,6 +212,9 @@ from ._create_service_response import CreateServiceResponse
 from ._create_service_observability_request import CreateServiceObservabilityRequest
 from ._create_service_observability_response_body import CreateServiceObservabilityResponseBody
 from ._create_service_observability_response import CreateServiceObservabilityResponse
+from ._create_service_record_request import CreateServiceRecordRequest
+from ._create_service_record_response_body import CreateServiceRecordResponseBody
+from ._create_service_record_response import CreateServiceRecordResponse
 from ._create_ticket_request import CreateTicketRequest
 from ._create_ticket_response_body import CreateTicketResponseBody
 from ._create_ticket_response import CreateTicketResponse
@@ -281,6 +284,9 @@ from ._delete_prometheus_virtual_instance_response import DeletePrometheusVirtua
 from ._delete_service_request import DeleteServiceRequest
 from ._delete_service_response_body import DeleteServiceResponseBody
 from ._delete_service_response import DeleteServiceResponse
+from ._delete_service_record_request import DeleteServiceRecordRequest
+from ._delete_service_record_response_body import DeleteServiceRecordResponseBody
+from ._delete_service_record_response import DeleteServiceRecordResponse
 from ._delete_umodel_request import DeleteUmodelRequest
 from ._delete_umodel_response_body import DeleteUmodelResponseBody
 from ._delete_umodel_response import DeleteUmodelResponse
@@ -383,6 +389,9 @@ from ._get_service_response import GetServiceResponse
 from ._get_service_observability_request import GetServiceObservabilityRequest
 from ._get_service_observability_response_body import GetServiceObservabilityResponseBody
 from ._get_service_observability_response import GetServiceObservabilityResponse
+from ._get_service_record_request import GetServiceRecordRequest
+from ._get_service_record_response_body import GetServiceRecordResponseBody
+from ._get_service_record_response import GetServiceRecordResponse
 from ._get_umodel_request import GetUmodelRequest
 from ._get_umodel_response_body import GetUmodelResponseBody
 from ._get_umodel_response import GetUmodelResponse
@@ -486,6 +495,9 @@ from ._list_prometheus_views_response import ListPrometheusViewsResponse
 from ._list_prometheus_virtual_instances_request import ListPrometheusVirtualInstancesRequest
 from ._list_prometheus_virtual_instances_response_body import ListPrometheusVirtualInstancesResponseBody
 from ._list_prometheus_virtual_instances_response import ListPrometheusVirtualInstancesResponse
+from ._list_service_records_request import ListServiceRecordsRequest
+from ._list_service_records_response_body import ListServiceRecordsResponseBody
+from ._list_service_records_response import ListServiceRecordsResponse
 from ._list_services_request import ListServicesRequest
 from ._list_services_shrink_request import ListServicesShrinkRequest
 from ._list_services_response_body import ListServicesResponseBody
@@ -576,6 +588,9 @@ from ._update_prometheus_view_response import UpdatePrometheusViewResponse
 from ._update_service_request import UpdateServiceRequest
 from ._update_service_response_body import UpdateServiceResponseBody
 from ._update_service_response import UpdateServiceResponse
+from ._update_service_record_request import UpdateServiceRecordRequest
+from ._update_service_record_response_body import UpdateServiceRecordResponseBody
+from ._update_service_record_response import UpdateServiceRecordResponse
 from ._update_subscription_request import UpdateSubscriptionRequest
 from ._update_subscription_response_body import UpdateSubscriptionResponseBody
 from ._update_subscription_response import UpdateSubscriptionResponse
@@ -777,6 +792,7 @@ from ._get_prometheus_view_response_body import GetPrometheusViewResponseBodyPro
 from ._get_service_response_body import GetServiceResponseBodyServiceTags
 from ._get_service_response_body import GetServiceResponseBodyService
 from ._get_service_observability_response_body import GetServiceObservabilityResponseBodyEntryPointInfo
+from ._get_service_record_response_body import GetServiceRecordResponseBodyRecord
 from ._get_umodel_response_body import GetUmodelResponseBodyCommonSchemaRef
 from ._get_umodel_common_schema_ref_response_body import GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef
 from ._get_umodel_data_response_body import GetUmodelDataResponseBodyErrors
@@ -856,6 +872,7 @@ from ._list_prometheus_instances_response_body import ListPrometheusInstancesRes
 from ._list_prometheus_views_request import ListPrometheusViewsRequestTag
 from ._list_prometheus_views_response_body import ListPrometheusViewsResponseBodyPrometheusViews
 from ._list_prometheus_virtual_instances_response_body import ListPrometheusVirtualInstancesResponseBodyInstances
+from ._list_service_records_response_body import ListServiceRecordsResponseBodyRecords
 from ._list_services_request import ListServicesRequestTags
 from ._list_services_response_body import ListServicesResponseBodyServices
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -1090,6 +1107,9 @@ __all__ = [
     CreateServiceObservabilityRequest,
     CreateServiceObservabilityResponseBody,
     CreateServiceObservabilityResponse,
+    CreateServiceRecordRequest,
+    CreateServiceRecordResponseBody,
+    CreateServiceRecordResponse,
     CreateTicketRequest,
     CreateTicketResponseBody,
     CreateTicketResponse,
@@ -1159,6 +1179,9 @@ __all__ = [
     DeleteServiceRequest,
     DeleteServiceResponseBody,
     DeleteServiceResponse,
+    DeleteServiceRecordRequest,
+    DeleteServiceRecordResponseBody,
+    DeleteServiceRecordResponse,
     DeleteUmodelRequest,
     DeleteUmodelResponseBody,
     DeleteUmodelResponse,
@@ -1261,6 +1284,9 @@ __all__ = [
     GetServiceObservabilityRequest,
     GetServiceObservabilityResponseBody,
     GetServiceObservabilityResponse,
+    GetServiceRecordRequest,
+    GetServiceRecordResponseBody,
+    GetServiceRecordResponse,
     GetUmodelRequest,
     GetUmodelResponseBody,
     GetUmodelResponse,
@@ -1364,6 +1390,9 @@ __all__ = [
     ListPrometheusVirtualInstancesRequest,
     ListPrometheusVirtualInstancesResponseBody,
     ListPrometheusVirtualInstancesResponse,
+    ListServiceRecordsRequest,
+    ListServiceRecordsResponseBody,
+    ListServiceRecordsResponse,
     ListServicesRequest,
     ListServicesShrinkRequest,
     ListServicesResponseBody,
@@ -1454,6 +1483,9 @@ __all__ = [
     UpdateServiceRequest,
     UpdateServiceResponseBody,
     UpdateServiceResponse,
+    UpdateServiceRecordRequest,
+    UpdateServiceRecordResponseBody,
+    UpdateServiceRecordResponse,
     UpdateSubscriptionRequest,
     UpdateSubscriptionResponseBody,
     UpdateSubscriptionResponse,
@@ -1655,6 +1687,7 @@ __all__ = [
     GetServiceResponseBodyServiceTags,
     GetServiceResponseBodyService,
     GetServiceObservabilityResponseBodyEntryPointInfo,
+    GetServiceRecordResponseBodyRecord,
     GetUmodelResponseBodyCommonSchemaRef,
     GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef,
     GetUmodelDataResponseBodyErrors,
@@ -1734,6 +1767,7 @@ __all__ = [
     ListPrometheusViewsRequestTag,
     ListPrometheusViewsResponseBodyPrometheusViews,
     ListPrometheusVirtualInstancesResponseBodyInstances,
+    ListServiceRecordsResponseBodyRecords,
     ListServicesRequestTags,
     ListServicesResponseBodyServices,
     ListTagResourcesResponseBodyTagResources,

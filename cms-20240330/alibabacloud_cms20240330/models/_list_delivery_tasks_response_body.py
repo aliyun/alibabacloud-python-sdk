@@ -97,7 +97,7 @@ class ListDeliveryTasksResponseBodyDeliveryTasks(DaraModel):
         task_name: str = None,
         update_time: str = None,
     ):
-        # The time when the task was created.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
@@ -125,7 +125,7 @@ class ListDeliveryTasksResponseBodyDeliveryTasks(DaraModel):
         self.task_id = task_id
         # The task name.
         self.task_name = task_name
-        # The time when the task was last updated.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -291,7 +291,7 @@ class ListDeliveryTasksResponseBodyDeliveryTasksSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The detailed configuration of the delivery target. The meanings of the key/value pairs vary depending on the sinkType.
+        # The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType.
         self.sink_configs = sink_configs
         # The type of the delivery target.
         self.sink_type = sink_type

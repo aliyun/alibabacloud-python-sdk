@@ -2152,6 +2152,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_observability_with_options_async(workspace, type, request, headers, runtime)
 
+    def create_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+    ) -> main_models.CreateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def create_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+    ) -> main_models.CreateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_service_record_with_options_async(workspace, service_id, request, headers, runtime)
+
     def create_ticket_with_options(
         self,
         request: main_models.CreateTicketRequest,
@@ -3933,6 +4021,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_service_with_options_async(workspace, service_id, request, headers, runtime)
+
+    def delete_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+    ) -> main_models.DeleteServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def delete_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+    ) -> main_models.DeleteServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_service_record_with_options_async(workspace, service_id, request, headers, runtime)
 
     def delete_umodel_with_options(
         self,
@@ -6673,6 +6845,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_service_observability_with_options_async(workspace, type, request, headers, runtime)
+
+    def get_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+    ) -> main_models.GetServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def get_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+    ) -> main_models.GetServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_service_record_with_options_async(workspace, service_id, request, headers, runtime)
 
     def get_umodel_with_options(
         self,
@@ -9574,6 +9830,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_prometheus_virtual_instances_with_options_async(request, headers, runtime)
 
+    def list_service_records_with_options(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServiceRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServiceRecords',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service-records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServiceRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_records_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServiceRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServiceRecords',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service-records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServiceRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_records(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+    ) -> main_models.ListServiceRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_service_records_with_options(workspace, request, headers, runtime)
+
+    async def list_service_records_async(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+    ) -> main_models.ListServiceRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_service_records_with_options_async(workspace, request, headers, runtime)
+
     def list_services_with_options(
         self,
         workspace: str,
@@ -12411,6 +12759,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_service_with_options_async(workspace, service_id, request, headers, runtime)
+
+    def update_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+    ) -> main_models.UpdateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def update_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+    ) -> main_models.UpdateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_service_record_with_options_async(workspace, service_id, request, headers, runtime)
 
     def update_subscription_with_options(
         self,

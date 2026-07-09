@@ -13,7 +13,7 @@ class GetDeliveryTaskResponseBody(DaraModel):
         delivery_task: main_models.GetDeliveryTaskResponseBodyDeliveryTask = None,
         request_id: str = None,
     ):
-        # The details of the delivery task.
+        # The delivery task details.
         self.delivery_task = delivery_task
         # The request ID.
         self.request_id = request_id
@@ -64,7 +64,7 @@ class GetDeliveryTaskResponseBodyDeliveryTask(DaraModel):
         task_name: str = None,
         update_time: str = None,
     ):
-        # The time when the task was created.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
@@ -84,7 +84,7 @@ class GetDeliveryTaskResponseBodyDeliveryTask(DaraModel):
         self.sink_list = sink_list
         # The current status of the task.
         self.status = status
-        # The resource tags.
+        # The resource group tags.
         self.tags = tags
         # The task description.
         self.task_description = task_description
@@ -92,7 +92,7 @@ class GetDeliveryTaskResponseBodyDeliveryTask(DaraModel):
         self.task_id = task_id
         # The task name.
         self.task_name = task_name
-        # The time when the task was last updated.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -221,9 +221,9 @@ class GetDeliveryTaskResponseBodyDeliveryTaskTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource group.
         self.key = key
-        # The tag value.
+        # The tag value of the resource group.
         self.value = value
 
     def validate(self):
@@ -258,9 +258,9 @@ class GetDeliveryTaskResponseBodyDeliveryTaskSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
-        # The detailed configuration of the delivery target. The meaning of key/value pairs varies depending on the sinkType. For more information, see [CreateDeliveryTask](~~CreateDeliveryTask~~).
+        # The detailed configuration of the delivery target. The meanings of key/value pairs vary depending on the sinkType. For more information, see CreateDeliveryTask.
         self.sink_configs = sink_configs
-        # The type of the delivery target.
+        # The delivery target type.
         self.sink_type = sink_type
 
     def validate(self):
@@ -294,7 +294,7 @@ class GetDeliveryTaskResponseBodyDeliveryTaskExtraInfo(DaraModel):
         self,
         task_name_list: List[str] = None,
     ):
-        # The list of EventBridge tasks.
+        # The EventBridge task list.
         self.task_name_list = task_name_list
 
     def validate(self):

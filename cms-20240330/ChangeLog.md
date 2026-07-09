@@ -1,3 +1,11 @@
+2026-07-09 Version: 10.1.0
+- Support API CreateServiceRecord.
+- Support API DeleteServiceRecord.
+- Support API GetServiceRecord.
+- Support API ListServiceRecords.
+- Support API UpdateServiceRecord.
+
+
 2026-07-09 Version: 10.0.1
 - Update API CreatePrometheusInstance: add request parameters body.resourceGroupId.
 - Update API ListAlertRobots: add response parameters Body.robots.$.robotSignKey.
