@@ -48,6 +48,9 @@ from ._create_chart_namespace_response import CreateChartNamespaceResponse
 from ._create_chart_repository_request import CreateChartRepositoryRequest
 from ._create_chart_repository_response_body import CreateChartRepositoryResponseBody
 from ._create_chart_repository_response import CreateChartRepositoryResponse
+from ._create_instance_customized_domain_request import CreateInstanceCustomizedDomainRequest
+from ._create_instance_customized_domain_response_body import CreateInstanceCustomizedDomainResponseBody
+from ._create_instance_customized_domain_response import CreateInstanceCustomizedDomainResponse
 from ._create_instance_endpoint_acl_policy_request import CreateInstanceEndpointAclPolicyRequest
 from ._create_instance_endpoint_acl_policy_shrink_request import CreateInstanceEndpointAclPolicyShrinkRequest
 from ._create_instance_endpoint_acl_policy_response_body import CreateInstanceEndpointAclPolicyResponseBody
@@ -115,6 +118,9 @@ from ._delete_chart_repository_response import DeleteChartRepositoryResponse
 from ._delete_event_center_rule_request import DeleteEventCenterRuleRequest
 from ._delete_event_center_rule_response_body import DeleteEventCenterRuleResponseBody
 from ._delete_event_center_rule_response import DeleteEventCenterRuleResponse
+from ._delete_instance_customized_domain_request import DeleteInstanceCustomizedDomainRequest
+from ._delete_instance_customized_domain_response_body import DeleteInstanceCustomizedDomainResponseBody
+from ._delete_instance_customized_domain_response import DeleteInstanceCustomizedDomainResponse
 from ._delete_instance_endpoint_acl_policy_request import DeleteInstanceEndpointAclPolicyRequest
 from ._delete_instance_endpoint_acl_policy_shrink_request import DeleteInstanceEndpointAclPolicyShrinkRequest
 from ._delete_instance_endpoint_acl_policy_response_body import DeleteInstanceEndpointAclPolicyResponseBody
@@ -181,6 +187,9 @@ from ._get_instance_response_body import GetInstanceResponseBody
 from ._get_instance_response import GetInstanceResponse
 from ._get_instance_count_response_body import GetInstanceCountResponseBody
 from ._get_instance_count_response import GetInstanceCountResponse
+from ._get_instance_customized_domain_request import GetInstanceCustomizedDomainRequest
+from ._get_instance_customized_domain_response_body import GetInstanceCustomizedDomainResponseBody
+from ._get_instance_customized_domain_response import GetInstanceCustomizedDomainResponse
 from ._get_instance_endpoint_request import GetInstanceEndpointRequest
 from ._get_instance_endpoint_response_body import GetInstanceEndpointResponseBody
 from ._get_instance_endpoint_response import GetInstanceEndpointResponse
@@ -335,6 +344,9 @@ from ._update_event_center_rule_request import UpdateEventCenterRuleRequest
 from ._update_event_center_rule_shrink_request import UpdateEventCenterRuleShrinkRequest
 from ._update_event_center_rule_response_body import UpdateEventCenterRuleResponseBody
 from ._update_event_center_rule_response import UpdateEventCenterRuleResponse
+from ._update_instance_customized_domain_request import UpdateInstanceCustomizedDomainRequest
+from ._update_instance_customized_domain_response_body import UpdateInstanceCustomizedDomainResponseBody
+from ._update_instance_customized_domain_response import UpdateInstanceCustomizedDomainResponse
 from ._update_instance_endpoint_status_request import UpdateInstanceEndpointStatusRequest
 from ._update_instance_endpoint_status_response_body import UpdateInstanceEndpointStatusResponseBody
 from ._update_instance_endpoint_status_response import UpdateInstanceEndpointStatusResponse
@@ -478,6 +490,9 @@ __all__ = [
     CreateChartRepositoryRequest,
     CreateChartRepositoryResponseBody,
     CreateChartRepositoryResponse,
+    CreateInstanceCustomizedDomainRequest,
+    CreateInstanceCustomizedDomainResponseBody,
+    CreateInstanceCustomizedDomainResponse,
     CreateInstanceEndpointAclPolicyRequest,
     CreateInstanceEndpointAclPolicyShrinkRequest,
     CreateInstanceEndpointAclPolicyResponseBody,
@@ -545,6 +560,9 @@ __all__ = [
     DeleteEventCenterRuleRequest,
     DeleteEventCenterRuleResponseBody,
     DeleteEventCenterRuleResponse,
+    DeleteInstanceCustomizedDomainRequest,
+    DeleteInstanceCustomizedDomainResponseBody,
+    DeleteInstanceCustomizedDomainResponse,
     DeleteInstanceEndpointAclPolicyRequest,
     DeleteInstanceEndpointAclPolicyShrinkRequest,
     DeleteInstanceEndpointAclPolicyResponseBody,
@@ -611,6 +629,9 @@ __all__ = [
     GetInstanceResponse,
     GetInstanceCountResponseBody,
     GetInstanceCountResponse,
+    GetInstanceCustomizedDomainRequest,
+    GetInstanceCustomizedDomainResponseBody,
+    GetInstanceCustomizedDomainResponse,
     GetInstanceEndpointRequest,
     GetInstanceEndpointResponseBody,
     GetInstanceEndpointResponse,
@@ -765,6 +786,9 @@ __all__ = [
     UpdateEventCenterRuleShrinkRequest,
     UpdateEventCenterRuleResponseBody,
     UpdateEventCenterRuleResponse,
+    UpdateInstanceCustomizedDomainRequest,
+    UpdateInstanceCustomizedDomainResponseBody,
+    UpdateInstanceCustomizedDomainResponse,
     UpdateInstanceEndpointStatusRequest,
     UpdateInstanceEndpointStatusResponseBody,
     UpdateInstanceEndpointStatusResponse,
