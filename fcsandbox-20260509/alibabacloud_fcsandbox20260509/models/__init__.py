@@ -62,6 +62,9 @@ from ._list_teams_response import ListTeamsResponse
 from ._reset_api_key_request import ResetApiKeyRequest
 from ._reset_api_key_response_body import ResetApiKeyResponseBody
 from ._reset_api_key_response import ResetApiKeyResponse
+from ._update_api_key_request import UpdateApiKeyRequest
+from ._update_api_key_response_body import UpdateApiKeyResponseBody
+from ._update_api_key_response import UpdateApiKeyResponse
 from ._update_quota_request import UpdateQuotaRequest
 from ._update_quota_response_body import UpdateQuotaResponseBody
 from ._update_quota_response import UpdateQuotaResponse
@@ -130,6 +133,9 @@ __all__ = [
     ResetApiKeyRequest,
     ResetApiKeyResponseBody,
     ResetApiKeyResponse,
+    UpdateApiKeyRequest,
+    UpdateApiKeyResponseBody,
+    UpdateApiKeyResponse,
     UpdateQuotaRequest,
     UpdateQuotaResponseBody,
     UpdateQuotaResponse,

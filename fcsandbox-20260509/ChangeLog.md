@@ -1,3 +1,7 @@
+2026-07-10 Version: 1.2.0
+- Support API UpdateApiKey.
+
+
 2026-07-10 Version: 1.1.0
 - Support API CreateApiKey.
 - Support API CreateTeam.

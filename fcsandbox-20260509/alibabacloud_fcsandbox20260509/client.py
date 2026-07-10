@@ -961,6 +961,80 @@ class Client(OpenApiClient):
         headers = {}
         return await self.reset_api_key_with_options_async(api_key_id, request, headers, runtime)
 
+    def update_api_key_with_options(
+        self,
+        api_key_id: str,
+        request: main_models.UpdateApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApiKey',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/api-keys/{DaraURL.percent_encode(api_key_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_api_key_with_options_async(
+        self,
+        api_key_id: str,
+        request: main_models.UpdateApiKeyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApiKeyResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApiKey',
+            version = '2026-05-09',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-05-09/api-keys/{DaraURL.percent_encode(api_key_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_api_key(
+        self,
+        api_key_id: str,
+        request: main_models.UpdateApiKeyRequest,
+    ) -> main_models.UpdateApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_api_key_with_options(api_key_id, request, headers, runtime)
+
+    async def update_api_key_async(
+        self,
+        api_key_id: str,
+        request: main_models.UpdateApiKeyRequest,
+    ) -> main_models.UpdateApiKeyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_api_key_with_options_async(api_key_id, request, headers, runtime)
+
     def update_quota_with_options(
         self,
         request: main_models.UpdateQuotaRequest,
