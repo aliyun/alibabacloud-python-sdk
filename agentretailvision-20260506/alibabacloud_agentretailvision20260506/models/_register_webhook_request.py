@@ -10,7 +10,9 @@ class RegisterWebhookRequest(DaraModel):
         callback_secret: str = None,
         callback_url: str = None,
     ):
+        # The key used for callback signature verification.
         self.callback_secret = callback_secret
+        # The default callback URL. A public HTTPS URL is required.
         self.callback_url = callback_url
 
     def validate(self):

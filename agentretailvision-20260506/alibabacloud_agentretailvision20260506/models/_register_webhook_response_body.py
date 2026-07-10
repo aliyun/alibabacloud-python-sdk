@@ -12,10 +12,15 @@ class RegisterWebhookResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

@@ -17,11 +17,17 @@ class ImportProductsRequest(DaraModel):
         main_image: List[str] = None,
         multi_view_images: List[main_models.ImportProductsRequestMultiViewImages] = None,
     ):
+        # The device ID. This ID is used to establish an association between the device and product vectors.
         self.device_id = device_id
+        # The list of additional image URLs that can be provided.
         self.extra_images = extra_images
+        # The product title.
         self.image_title = image_title
+        # The product ID assigned by the business party. This ID must be unique within the same business party.
         self.item_unique_id = item_unique_id
+        # The list of main product image URLs. At least one URL is required.
         self.main_image = main_image
+        # The list of multi-angle product images.
         self.multi_view_images = multi_view_images
 
     def validate(self):
@@ -82,15 +88,21 @@ class ImportProductsRequest(DaraModel):
 
         return self
 
-
-
 class ImportProductsRequestMultiViewImages(DaraModel):
     def __init__(
         self,
         angle: str = None,
         url: str = None,
     ):
+        # The digital human angle. Valid values:
+        # 
+        # - 0: front view, which is the default angle
+        # - 1: left side at 30 degrees
+        # - 2: right side at 30 degrees
+        # 
+        # For a preview of each angle, refer to [3D Digital Human Video Synthesis User Guide](https://help.aliyun.com/document_detail/447834.html#a989eb5075t9y).
         self.angle = angle
+        # The task URL.
         self.url = url
 
     def validate(self):

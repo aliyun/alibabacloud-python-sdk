@@ -14,11 +14,17 @@ class UpdateProductResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter is not returned if the call is successful.
         self.code = code
+        # The item information.
         self.data = data
+        # The error message. This parameter is not returned if the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the call is successful. Valid values:
+        # - true: The call is successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -73,7 +79,9 @@ class UpdateProductResponseBodyData(DaraModel):
         item_unique_id: str = None,
         platform_item_id: str = None,
     ):
+        # The business-side item ID, which is unique within the same business party.
         self.item_unique_id = item_unique_id
+        # The platform item ID, which is globally unique.
         self.platform_item_id = platform_item_id
 
     def validate(self):

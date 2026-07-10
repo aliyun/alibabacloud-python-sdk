@@ -14,11 +14,15 @@ class RecognizeOrderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. This parameter is not returned during a normal call.
         self.code = code
+        # Recognition task information
         self.data = data
+        # Error message. This parameter is not returned during a normal call.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the call is successful. true: The call is successful. false: The call has failed.
         self.success = success
 
     def validate(self):
@@ -74,8 +78,11 @@ class RecognizeOrderResponseBodyData(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
+        # Unique idempotent ID of the business party
         self.order_unique_id = order_unique_id
+        # Platform task ID
         self.task_id = task_id
+        # Task status
         self.task_status = task_status
 
     def validate(self):

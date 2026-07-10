@@ -20,7 +20,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-beijing': 'agentretailvision.cn-beijing.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentretailvision', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -39,6 +42,100 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def generate_group_image_with_options(
+        self,
+        tmp_req: main_models.GenerateGroupImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateGroupImageResponse:
+        tmp_req.validate()
+        request = main_models.GenerateGroupImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.platform_item_id_list):
+            request.platform_item_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.platform_item_id_list, 'PlatformItemIdList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.callback_secret):
+            query['CallbackSecret'] = request.callback_secret
+        if not DaraCore.is_null(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.group_type):
+            query['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.platform_item_id_list_shrink):
+            query['PlatformItemIdList'] = request.platform_item_id_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateGroupImage',
+            version = '2026-05-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateGroupImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_group_image_with_options_async(
+        self,
+        tmp_req: main_models.GenerateGroupImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateGroupImageResponse:
+        tmp_req.validate()
+        request = main_models.GenerateGroupImageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.platform_item_id_list):
+            request.platform_item_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.platform_item_id_list, 'PlatformItemIdList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.callback_secret):
+            query['CallbackSecret'] = request.callback_secret
+        if not DaraCore.is_null(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.group_type):
+            query['GroupType'] = request.group_type
+        if not DaraCore.is_null(request.platform_item_id_list_shrink):
+            query['PlatformItemIdList'] = request.platform_item_id_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateGroupImage',
+            version = '2026-05-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GenerateGroupImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_group_image(
+        self,
+        request: main_models.GenerateGroupImageRequest,
+    ) -> main_models.GenerateGroupImageResponse:
+        runtime = RuntimeOptions()
+        return self.generate_group_image_with_options(request, runtime)
+
+    async def generate_group_image_async(
+        self,
+        request: main_models.GenerateGroupImageRequest,
+    ) -> main_models.GenerateGroupImageResponse:
+        runtime = RuntimeOptions()
+        return await self.generate_group_image_with_options_async(request, runtime)
 
     def import_products_with_options(
         self,

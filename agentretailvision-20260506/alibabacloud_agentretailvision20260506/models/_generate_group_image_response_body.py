@@ -5,18 +5,18 @@ from __future__ import annotations
 from alibabacloud_agentretailvision20260506 import models as main_models
 from darabonba.model import DaraModel
 
-class ImportProductsResponseBody(DaraModel):
+class GenerateGroupImageResponseBody(DaraModel):
     def __init__(
         self,
         code: str = None,
-        data: main_models.ImportProductsResponseBodyData = None,
+        data: main_models.GenerateGroupImageResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
         # The error code. This parameter is not returned if the call is successful.
         self.code = code
-        # The product information.
+        # The composite image generation result.
         self.data = data
         # The error message. This parameter is not returned if the call is successful.
         self.message = message
@@ -59,7 +59,7 @@ class ImportProductsResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.ImportProductsResponseBodyData()
+            temp_model = main_models.GenerateGroupImageResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -73,16 +73,15 @@ class ImportProductsResponseBody(DaraModel):
 
         return self
 
-class ImportProductsResponseBodyData(DaraModel):
+
+
+class GenerateGroupImageResponseBodyData(DaraModel):
     def __init__(
         self,
-        item_unique_id: str = None,
-        platform_item_id: str = None,
+        group_id: str = None,
     ):
-        # The product ID assigned by the business party. This ID must be unique within the same business party.
-        self.item_unique_id = item_unique_id
-        # The platform product ID, which is globally unique.
-        self.platform_item_id = platform_item_id
+        # The composite image request ID.
+        self.group_id = group_id
 
     def validate(self):
         pass
@@ -92,21 +91,15 @@ class ImportProductsResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.item_unique_id is not None:
-            result['ItemUniqueId'] = self.item_unique_id
-
-        if self.platform_item_id is not None:
-            result['PlatformItemId'] = self.platform_item_id
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ItemUniqueId') is not None:
-            self.item_unique_id = m.get('ItemUniqueId')
-
-        if m.get('PlatformItemId') is not None:
-            self.platform_item_id = m.get('PlatformItemId')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
 
         return self
 

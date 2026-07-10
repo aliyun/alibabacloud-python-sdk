@@ -15,12 +15,19 @@ class UpdateProductShrinkRequest(DaraModel):
         multi_view_images_shrink: str = None,
         platform_item_id: str = None,
     ):
+        # The device ID, which is used to establish the vector association between the device and the item.
         self.device_id = device_id
+        # The list of additional image URLs that can be provided.
         self.extra_images_shrink = extra_images_shrink
+        # The title of the item.
         self.image_title = image_title
+        # The business-side item ID, which is unique within the same business party.
         self.item_unique_id = item_unique_id
+        # The list of main image URLs for the item. At least one image is required.
         self.main_image_shrink = main_image_shrink
+        # The list of multi-angle images for the item.
         self.multi_view_images_shrink = multi_view_images_shrink
+        # The platform item ID, which is globally unique.
         self.platform_item_id = platform_item_id
 
     def validate(self):

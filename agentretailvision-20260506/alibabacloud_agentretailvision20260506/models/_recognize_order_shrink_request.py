@@ -13,10 +13,15 @@ class RecognizeOrderShrinkRequest(DaraModel):
         order_unique_id: str = None,
         video_urls_shrink: str = None,
     ):
+        # Callback URL for this task. If not provided, the registered default address is used.
         self.callback_url = callback_url
+        # List of candidate items. It is recommended to pass platform_item_id.
         self.candidate_items_shrink = candidate_items_shrink
+        # Device ID
         self.device_id = device_id
+        # Unique idempotent ID of the business party, unique within the same business party
         self.order_unique_id = order_unique_id
+        # List of shopping video OSS addresses (currently only one is supported)
         self.video_urls_shrink = video_urls_shrink
 
     def validate(self):

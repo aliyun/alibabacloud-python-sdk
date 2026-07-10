@@ -16,11 +16,15 @@ class QueryRecognitionResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. This parameter is not returned for a successful call.
         self.code = code
+        # Task details
         self.data = data
+        # Error message. This parameter is not returned for a successful call.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the call was successful. true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -77,9 +81,13 @@ class QueryRecognitionResultResponseBodyData(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
+        # Business unique idempotent ID
         self.order_unique_id = order_unique_id
+        # Recognition result
         self.result = result
+        # Platform Task ID
         self.task_id = task_id
+        # Task status
         self.task_status = task_status
 
     def validate(self):
@@ -128,7 +136,9 @@ class QueryRecognitionResultResponseBodyDataResult(DaraModel):
         checkout_info: main_models.QueryRecognitionResultResponseBodyDataResultCheckoutInfo = None,
         items: List[main_models.QueryRecognitionResultResponseBodyDataResultItems] = None,
     ):
+        # Checkout information
         self.checkout_info = checkout_info
+        # List of recognized items
         self.items = items
 
     def validate(self):
@@ -175,8 +185,11 @@ class QueryRecognitionResultResponseBodyDataResultItems(DaraModel):
         platform_item_id: str = None,
         quantity: int = None,
     ):
+        # Business Item ID
         self.item_unique_id = item_unique_id
+        # Platform Item ID
         self.platform_item_id = platform_item_id
+        # Item quantity
         self.quantity = quantity
 
     def validate(self):
@@ -216,6 +229,7 @@ class QueryRecognitionResultResponseBodyDataResultCheckoutInfo(DaraModel):
         self,
         checkout_status: str = None,
     ):
+        # Checkout status
         self.checkout_status = checkout_status
 
     def validate(self):

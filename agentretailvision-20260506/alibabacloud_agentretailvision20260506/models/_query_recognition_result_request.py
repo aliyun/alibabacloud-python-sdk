@@ -10,7 +10,9 @@ class QueryRecognitionResultRequest(DaraModel):
         order_unique_id: str = None,
         task_id: str = None,
     ):
+        # Business idempotent request ID
         self.order_unique_id = order_unique_id
+        # Platform Task ID
         self.task_id = task_id
 
     def validate(self):

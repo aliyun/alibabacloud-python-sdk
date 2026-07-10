@@ -14,11 +14,17 @@ class ImportProductsShrinkRequest(DaraModel):
         main_image_shrink: str = None,
         multi_view_images_shrink: str = None,
     ):
+        # The device ID. This ID is used to establish an association between the device and product vectors.
         self.device_id = device_id
+        # The list of additional image URLs that can be provided.
         self.extra_images_shrink = extra_images_shrink
+        # The product title.
         self.image_title = image_title
+        # The product ID assigned by the business party. This ID must be unique within the same business party.
         self.item_unique_id = item_unique_id
+        # The list of main product image URLs. At least one URL is required.
         self.main_image_shrink = main_image_shrink
+        # The list of multi-angle product images.
         self.multi_view_images_shrink = multi_view_images_shrink
 
     def validate(self):
