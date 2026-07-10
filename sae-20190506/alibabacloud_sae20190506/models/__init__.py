@@ -647,6 +647,7 @@ from ._batch_stop_applications_response_body import BatchStopApplicationsRespons
 from ._bind_nlb_response_body import BindNlbResponseBodyData
 from ._bind_slb_response_body import BindSlbResponseBodyData
 from ._confirm_pipeline_batch_response_body import ConfirmPipelineBatchResponseBodyData
+from ._create_application_request import CreateApplicationRequestRaspConfig
 from ._create_application_response_body import CreateApplicationResponseBodyData
 from ._create_application_scaling_rule_response_body import CreateApplicationScalingRuleResponseBodyDataMetricMetrics
 from ._create_application_scaling_rule_response_body import CreateApplicationScalingRuleResponseBodyDataMetric
@@ -672,6 +673,7 @@ from ._delete_grey_tag_route_response_body import DeleteGreyTagRouteResponseBody
 from ._delete_ingress_response_body import DeleteIngressResponseBodyData
 from ._delete_instances_response_body import DeleteInstancesResponseBodyData
 from ._delete_secret_response_body import DeleteSecretResponseBodyData
+from ._deploy_application_request import DeployApplicationRequestRaspConfig
 from ._deploy_application_response_body import DeployApplicationResponseBodyData
 from ._describe_app_service_detail_response_body import DescribeAppServiceDetailResponseBodyDataMethodsParameterDefinitions
 from ._describe_app_service_detail_response_body import DescribeAppServiceDetailResponseBodyDataMethods
@@ -684,6 +686,7 @@ from ._describe_application_config_response_body import DescribeApplicationConfi
 from ._describe_application_config_response_body import DescribeApplicationConfigResponseBodyDataInitContainersConfig
 from ._describe_application_config_response_body import DescribeApplicationConfigResponseBodyDataMountDesc
 from ._describe_application_config_response_body import DescribeApplicationConfigResponseBodyDataOssMountDescs
+from ._describe_application_config_response_body import DescribeApplicationConfigResponseBodyDataRaspConfig
 from ._describe_application_config_response_body import DescribeApplicationConfigResponseBodyDataSecretMountDesc
 from ._describe_application_config_response_body import DescribeApplicationConfigResponseBodyDataSidecarContainersConfigConfigMapMountDesc
 from ._describe_application_config_response_body import DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDirDesc
@@ -1537,6 +1540,7 @@ __all__ = [
     BindNlbResponseBodyData,
     BindSlbResponseBodyData,
     ConfirmPipelineBatchResponseBodyData,
+    CreateApplicationRequestRaspConfig,
     CreateApplicationResponseBodyData,
     CreateApplicationScalingRuleResponseBodyDataMetricMetrics,
     CreateApplicationScalingRuleResponseBodyDataMetric,
@@ -1562,6 +1566,7 @@ __all__ = [
     DeleteIngressResponseBodyData,
     DeleteInstancesResponseBodyData,
     DeleteSecretResponseBodyData,
+    DeployApplicationRequestRaspConfig,
     DeployApplicationResponseBodyData,
     DescribeAppServiceDetailResponseBodyDataMethodsParameterDefinitions,
     DescribeAppServiceDetailResponseBodyDataMethods,
@@ -1574,6 +1579,7 @@ __all__ = [
     DescribeApplicationConfigResponseBodyDataInitContainersConfig,
     DescribeApplicationConfigResponseBodyDataMountDesc,
     DescribeApplicationConfigResponseBodyDataOssMountDescs,
+    DescribeApplicationConfigResponseBodyDataRaspConfig,
     DescribeApplicationConfigResponseBodyDataSecretMountDesc,
     DescribeApplicationConfigResponseBodyDataSidecarContainersConfigConfigMapMountDesc,
     DescribeApplicationConfigResponseBodyDataSidecarContainersConfigEmptyDirDesc,

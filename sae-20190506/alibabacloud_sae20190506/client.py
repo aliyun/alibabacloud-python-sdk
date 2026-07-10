@@ -747,6 +747,8 @@ class Client(OpenApiClient):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        if not DaraCore.is_null(tmp_req.rasp_config):
+            request.rasp_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rasp_config, 'RaspConfig', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -862,6 +864,8 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not DaraCore.is_null(request.python_modules):
             query['PythonModules'] = request.python_modules
+        if not DaraCore.is_null(request.rasp_config_shrink):
+            query['RaspConfig'] = request.rasp_config_shrink
         if not DaraCore.is_null(request.readiness):
             query['Readiness'] = request.readiness
         if not DaraCore.is_null(request.replicas):
@@ -959,6 +963,8 @@ class Client(OpenApiClient):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        if not DaraCore.is_null(tmp_req.rasp_config):
+            request.rasp_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rasp_config, 'RaspConfig', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -1074,6 +1080,8 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not DaraCore.is_null(request.python_modules):
             query['PythonModules'] = request.python_modules
+        if not DaraCore.is_null(request.rasp_config_shrink):
+            query['RaspConfig'] = request.rasp_config_shrink
         if not DaraCore.is_null(request.readiness):
             query['Readiness'] = request.readiness
         if not DaraCore.is_null(request.replicas):
@@ -3627,6 +3635,8 @@ class Client(OpenApiClient):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        if not DaraCore.is_null(tmp_req.rasp_config):
+            request.rasp_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rasp_config, 'RaspConfig', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -3742,6 +3752,8 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not DaraCore.is_null(request.python_modules):
             query['PythonModules'] = request.python_modules
+        if not DaraCore.is_null(request.rasp_config_shrink):
+            query['RaspConfig'] = request.rasp_config_shrink
         if not DaraCore.is_null(request.readiness):
             query['Readiness'] = request.readiness
         if not DaraCore.is_null(request.replicas):
@@ -3835,6 +3847,8 @@ class Client(OpenApiClient):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
         if not DaraCore.is_null(tmp_req.labels):
             request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
+        if not DaraCore.is_null(tmp_req.rasp_config):
+            request.rasp_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.rasp_config, 'RaspConfig', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -3950,6 +3964,8 @@ class Client(OpenApiClient):
             query['Python'] = request.python
         if not DaraCore.is_null(request.python_modules):
             query['PythonModules'] = request.python_modules
+        if not DaraCore.is_null(request.rasp_config_shrink):
+            query['RaspConfig'] = request.rasp_config_shrink
         if not DaraCore.is_null(request.readiness):
             query['Readiness'] = request.readiness
         if not DaraCore.is_null(request.replicas):
@@ -8880,6 +8896,8 @@ class Client(OpenApiClient):
             query['OrderBy'] = request.order_by
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.programming_language):
+            query['ProgrammingLanguage'] = request.programming_language
         if not DaraCore.is_null(request.reverse):
             query['Reverse'] = request.reverse
         if not DaraCore.is_null(request.tags):
@@ -8932,6 +8950,8 @@ class Client(OpenApiClient):
             query['OrderBy'] = request.order_by
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.programming_language):
+            query['ProgrammingLanguage'] = request.programming_language
         if not DaraCore.is_null(request.reverse):
             query['Reverse'] = request.reverse
         if not DaraCore.is_null(request.tags):

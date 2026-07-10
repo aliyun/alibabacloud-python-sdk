@@ -1,3 +1,11 @@
+2026-07-10 Version: 2.11.2
+- Update API CreateApplication: add request parameters RaspConfig.
+- Update API DeployApplication: add request parameters RaspConfig.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.RaspConfig.
+- Update API ListApplications: add request parameters ProgrammingLanguage.
+- Update API ListApplications: add response parameters Body.Data.Applications.$.RaspEnabled.
+
+
 2026-06-25 Version: 2.11.1
 - Generated python 2019-05-06 for sae.
 
