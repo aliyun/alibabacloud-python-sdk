@@ -18,11 +18,11 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
     ):
         # The containerd runtime configuration.
         self.containerd_config = containerd_config
-        # The kubelet parameter configuration.
+        # The kubelet parameter settings.
         self.kubelet_config = kubelet_config
-        # The list of specified nodes to upgrade.
+        # The list of nodes to upgrade.
         self.node_names = node_names
-        # The operating system parameter configuration.
+        # The operating system parameter settings.
         self.os_config = os_config
         # The rolling update configuration.
         self.rolling_policy = rolling_policy
@@ -120,9 +120,9 @@ class ModifyNodePoolNodeConfigRequestOsConfig(DaraModel):
         hugepage: main_models.Hugepage = None,
         sysctl: Dict[str, Any] = None,
     ):
-        # The Hugepage configuration.
+        # The hugepage configuration.
         self.hugepage = hugepage
-        # The custom sysctl parameter configuration.
+        # The custom sysctl parameter settings.
         self.sysctl = sysctl
 
     def validate(self):

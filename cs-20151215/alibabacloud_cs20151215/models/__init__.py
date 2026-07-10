@@ -599,6 +599,7 @@ from ._modify_cluster_request import ModifyClusterRequestOperationPolicyClusterA
 from ._modify_cluster_request import ModifyClusterRequestOperationPolicy
 from ._modify_cluster_request import ModifyClusterRequestSystemEventsLogging
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestAutoScaling
+from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestEfloNodeGroup
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestKubernetesConfig
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestManagementAutoRepairPolicy
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestManagementAutoUpgradePolicy
@@ -1221,6 +1222,7 @@ __all__ = [
     ModifyClusterRequestOperationPolicy,
     ModifyClusterRequestSystemEventsLogging,
     ModifyClusterNodePoolRequestAutoScaling,
+    ModifyClusterNodePoolRequestEfloNodeGroup,
     ModifyClusterNodePoolRequestKubernetesConfig,
     ModifyClusterNodePoolRequestManagementAutoRepairPolicy,
     ModifyClusterNodePoolRequestManagementAutoUpgradePolicy,

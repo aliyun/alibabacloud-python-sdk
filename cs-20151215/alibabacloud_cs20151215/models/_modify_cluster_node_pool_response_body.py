@@ -11,11 +11,11 @@ class ModifyClusterNodePoolResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Node pool ID.
+        # The node pool ID.
         self.nodepool_id = nodepool_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

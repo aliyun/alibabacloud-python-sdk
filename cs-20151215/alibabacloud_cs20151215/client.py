@@ -9065,6 +9065,8 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not DaraCore.is_null(request.concurrency):
             body['concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.eflo_node_group):
+            body['eflo_node_group'] = request.eflo_node_group
         if not DaraCore.is_null(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not DaraCore.is_null(request.management):
@@ -9111,6 +9113,8 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not DaraCore.is_null(request.concurrency):
             body['concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.eflo_node_group):
+            body['eflo_node_group'] = request.eflo_node_group
         if not DaraCore.is_null(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not DaraCore.is_null(request.management):

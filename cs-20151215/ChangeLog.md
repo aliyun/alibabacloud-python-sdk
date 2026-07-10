@@ -1,3 +1,15 @@
+2026-07-10 Version: 7.0.2
+- Update API CreateClusterNodePool: add request parameters body.eflo_node_group.auto_attach_enabled.
+- Update API CreateClusterNodePool: add request parameters body.eflo_node_group.worker_ram_role_name.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.eflo_node_group.auto_attach_enabled.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.eflo_node_group.worker_ram_role_name.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.node_components.$.config_revision.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.eflo_node_group.auto_attach_enabled.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.eflo_node_group.worker_ram_role_name.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.node_components.$.config_revision.
+- Update API ModifyClusterNodePool: add request parameters body.eflo_node_group.
+
+
 2026-06-25 Version: 7.0.1
 - Update API UpgradeClusterNodepool: add request parameters body.ignore_warning_check.
 
