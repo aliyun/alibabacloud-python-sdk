@@ -13,7 +13,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceAttributeResponseBodyData = None,
         request_id: str = None,
     ):
-        # The result returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -90,81 +90,92 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         web_uisnat_status: str = None,
         zone_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
         # The channel ID.
         self.bid = bid
+        # The edition of the cluster. Valid value:
+        # 
+        # - `enterprise`: enterprise edition
         self.category = category
-        # The billing method. Enterprise Edition clusters use the pay-as-you-go billing method.
+        # The billing method of the cluster.
+        # enterprise edition clusters are billed on a pay-as-you-go basis.
         self.charge_type = charge_type
+        # The status of the ClickObserve service.
         self.click_observe_service_status = click_observe_service_status
-        # The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The creation time of the cluster, in `YYYY-MM-DDTHH:mm:ssZ` format.
         self.create_time = create_time
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
-        # Indicates whether the release protection feature is enabled for the cluster.
+        # Whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
-        # The deployment mode of the cluster. Valid values: single_az and multi_az.
+        # The deployment architecture of the cluster. Valid values: `single_az` and `multi_az`.
         # 
-        # *   single_az: indicates that the server nodes are deployed in the primary zone. The ID of the primary zone is specified by the ZoneID parameter.
-        # *   multi_az: indicates that the server nodes are deployed in multiple zones. The information about the zones is specified by the MultiZones parameter.
+        # - `single_az`: The nodes are deployed in the primary zone specified by `ZoneId`.
         # 
-        # The keeper nodes are deployed in multiple zones.
+        # - `multi_az`: The nodes are deployed across the zones specified in `MultiZones`.
+        # 
+        # Keeper nodes are always deployed across the zones specified in `MultiZones`.
         self.deploy_schema = deploy_schema
         # The cluster description.
         self.description = description
-        # The disabled database ports. Multiple database ports are separated by commas (,).
+        # A comma-separated list of disabled database ports.
         self.disabled_ports = disabled_ports
-        # The engine type.
+        # The engine.
         self.engine = engine
-        # The minor engine version of the cluster.
+        # The minor version of the cluster engine.
         self.engine_minor_version = engine_minor_version
         # The engine version.
         self.engine_version = engine_version
-        # The time when the cluster expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The expiration time of the cluster, in `YYYY-MM-DDTHH:mm:ssZ` format.
         # 
-        # >  Pay-as-you-go clusters never expire. If the cluster is a pay-as-you-go cluster, an empty string is returned for this parameter.
+        # > Pay-as-you-go clusters do not expire. An empty string is returned.
         self.expire_time = expire_time
+        # A list of Langfuse instance IDs.
         self.langfuse_instance_ids = langfuse_instance_ids
-        # The latest minor engine version.
+        # The latest minor version of the cluster engine.
         self.latest_engine_minor_version = latest_engine_minor_version
         # The lock mode of the cluster.
         self.lock_mode = lock_mode
-        # The reason why the cluster was locked.
+        # The reason for the lock.
         self.lock_reason = lock_reason
         # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
-        # The information about the zones.
+        # The zones for a multi-zone deployment.
         self.multi_zones = multi_zones
+        # The number of nodes.
         self.node_count = node_count
+        # The maximum number of nodes for auto scaling of a serverless cluster.
         self.node_scale_max = node_scale_max
+        # The minimum number of nodes for auto scaling of a serverless cluster.
         self.node_scale_min = node_scale_min
-        # The nodes.
+        # The cluster nodes.
         self.nodes = nodes
-        # The size of the object storage space.
+        # The storage capacity of Object Storage Service (OSS).
         self.object_store_size = object_store_size
         # The region ID.
         self.region_id = region_id
-        # The resource ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The maximum capacity for elastic scaling.
+        # The maximum value for serverless auto scaling.
         self.scale_max = scale_max
-        # The minimum capacity for elastic scaling.
+        # The minimum value for serverless auto scaling.
         self.scale_min = scale_min
-        # The cluster status.
+        # The status of the instance.
         self.status = status
+        # The provisioned storage, in GB.
         self.storage_quota = storage_quota
-        # The size of the storage space. Unit: GB.
+        # The storage space, in GB.
         self.storage_size = storage_size
         # The storage type.
         self.storage_type = storage_type
-        # The details of the tags.
+        # The cluster tags.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         self.web_uisnat_status = web_uisnat_status
         # The zone ID.
@@ -456,9 +467,9 @@ class DescribeDBInstanceAttributeResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -493,7 +504,7 @@ class DescribeDBInstanceAttributeResponseBodyDataNodes(DaraModel):
         node_status: str = None,
         zone_id: str = None,
     ):
-        # The node status.
+        # The status of the node.
         self.node_status = node_status
         # The zone ID.
         self.zone_id = zone_id
@@ -530,7 +541,7 @@ class DescribeDBInstanceAttributeResponseBodyDataMultiZones(DaraModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
-        # The vSwitch IDs.
+        # An array of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
         # The zone ID.
         self.zone_id = zone_id

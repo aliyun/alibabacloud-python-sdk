@@ -13,7 +13,7 @@ class DescribeAccountAuthorityResponseBody(DaraModel):
         data: main_models.DescribeAccountAuthorityResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,24 +60,27 @@ class DescribeAccountAuthorityResponseBodyData(DaraModel):
     ):
         # The name of the database account.
         self.account = account
-        # The databases on which permissions are granted.
+        # A list of authorized databases.
         self.allow_databases = allow_databases
-        # The dictionaries on which permissions are granted.
+        # A list of authorized dictionaries.
         self.allow_dictionaries = allow_dictionaries
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
-        # Indicates whether the DDL permissions are granted to the database account. Valid values:
+        # Indicates whether DDL permissions are granted to the database account. Valid values:
         # 
-        # *   **true**: The account has the permissions to execute DDL statements.
-        # *   **false**: The account does not have the permissions to execute DDL statements.
+        # - **true**: DDL operations are allowed.
+        # 
+        # - **false**: DDL operations are prohibited.
         self.ddl_authority = ddl_authority
-        # Indicates whether the DML permissions are granted to the database account. Valid values:
+        # The DML permissions that are granted to the database account. Valid values:
         # 
-        # *   0: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
-        # *   1: The account only has the permissions to read data from the database.
-        # *   2: The account only has the permissions to read data from the database and modify the settings of the database.
+        # - 0: Read, write, and change settings queries are allowed.
+        # 
+        # - 1: Only read data queries are allowed.
+        # 
+        # - 2: Read data and change settings queries are allowed.
         self.dml_authority = dml_authority
-        # All databases.
+        # A list of all databases.
         self.total_databases = total_databases
         # The database.
         self.total_dictionaries = total_dictionaries

@@ -12,12 +12,15 @@ class ListWhitelistTemplatesRequest(DaraModel):
         region_id: str = None,
         template_name: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # RegionId
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The whitelist template name. Fuzzy search is supported.
         self.template_name = template_name
 
     def validate(self):

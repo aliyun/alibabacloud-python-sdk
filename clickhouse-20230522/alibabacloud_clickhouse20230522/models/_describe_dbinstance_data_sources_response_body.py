@@ -127,8 +127,9 @@ class DescribeDBInstanceDataSourcesResponseBodyDataColumns(DaraModel):
         self.dbname = dbname
         # Indicates whether the column is the primary key of the table. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.primary_key = primary_key
         # The table name.
         self.table_name = table_name

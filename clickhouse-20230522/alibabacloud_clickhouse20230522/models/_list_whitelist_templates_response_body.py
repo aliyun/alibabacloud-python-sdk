@@ -13,8 +13,9 @@ class ListWhitelistTemplatesResponseBody(DaraModel):
         data: main_models.ListWhitelistTemplatesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The query results.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,12 +57,19 @@ class ListWhitelistTemplatesResponseBodyData(DaraModel):
         total_count: int = None,
         total_page_numbers: int = None,
     ):
+        # The current page number.
         self.curr_page_numbers = curr_page_numbers
+        # Whether a next page exists.
         self.has_next = has_next
+        # Whether a previous page exists.
         self.has_prev = has_prev
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of whitelist templates.
         self.templates = templates
+        # The total number of templates.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page_numbers = total_page_numbers
 
     def validate(self):
@@ -136,9 +144,13 @@ class ListWhitelistTemplatesResponseBodyDataTemplates(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # The list of associated instances.
         self.db_instances = db_instances
+        # The IP address whitelist.
         self.security_iplist = security_iplist
+        # The whitelist template ID.
         self.template_id = template_id
+        # The whitelist template name.
         self.template_name = template_name
 
     def validate(self):
@@ -192,6 +204,7 @@ class ListWhitelistTemplatesResponseBodyDataTemplatesDbInstances(DaraModel):
         self,
         dbinstance_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):

@@ -11,7 +11,7 @@ class ModifyDBInstanceConnectionStringResponseBody(DaraModel):
         data: main_models.ModifyDBInstanceConnectionStringResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -52,7 +52,7 @@ class ModifyDBInstanceConnectionStringResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         disabled_ports: str = None,
     ):
-        # The endpoint of the cluster.
+        # The connection string.
         self.connection_string = connection_string
         # The cluster ID.
         self.dbinstance_id = dbinstance_id

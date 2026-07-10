@@ -11,9 +11,14 @@ class ModifyDBInstanceConfigRequest(DaraModel):
         parameters: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The API data parameter settings in JSON format.
         self.parameters = parameters
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

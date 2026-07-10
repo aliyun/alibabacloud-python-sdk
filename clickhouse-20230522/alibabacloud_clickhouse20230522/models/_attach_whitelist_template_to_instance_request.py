@@ -11,12 +11,16 @@ class AttachWhitelistTemplateToInstanceRequest(DaraModel):
         region_id: str = None,
         template_id: str = None,
     ):
+        # The ClickHouse instance ID. Separate multiple instance IDs with commas. A maximum of 20 instances can be attached at a time.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # RegionId
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the whitelist template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

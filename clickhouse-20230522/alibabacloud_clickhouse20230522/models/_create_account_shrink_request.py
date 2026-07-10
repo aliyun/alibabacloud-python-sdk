@@ -22,8 +22,9 @@ class CreateAccountShrinkRequest(DaraModel):
         self.account = account
         # The type of the database account. Valid values:
         # 
-        # *   **NormalAccount**: standard account
-        # *   **SuperAccount**: privileged account
+        # - **NormalAccount**: standard account
+        # 
+        # - **SuperAccount**: privileged account
         # 
         # This parameter is required.
         self.account_type = account_type
@@ -38,7 +39,9 @@ class CreateAccountShrinkRequest(DaraModel):
         # The password of the database account. The password must meet the following requirements:
         # 
         # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # - The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - =
+        # 
+        # - The following special characters are supported: ! @ # $ % ^ & \\* ( ) _ + - =
+        # 
         # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.

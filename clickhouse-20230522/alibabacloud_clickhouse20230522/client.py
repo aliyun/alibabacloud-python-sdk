@@ -65,7 +65,19 @@ class Client(OpenApiClient):
             'me-east-1': 'clickhouse.aliyuncs.com',
             'rus-west-1-pop': 'clickhouse.aliyuncs.com',
             'us-east-1': 'clickhouse.aliyuncs.com',
-            'us-west-1': 'clickhouse.aliyuncs.com'
+            'us-west-1': 'clickhouse.aliyuncs.com',
+            'me-central-1': 'clickhouse.me-central-1.aliyuncs.com',
+            'eu-west-1': 'clickhouse.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'clickhouse.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'clickhouse.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'clickhouse.aliyuncs.com',
+            'cn-huhehaote': 'clickhouse.cn-huhehaote.aliyuncs.com',
+            'cn-guangzhou': 'clickhouse.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'clickhouse.cn-chengdu.aliyuncs.com',
+            'ap-southeast-6': 'clickhouse.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'clickhouse.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'clickhouse.aliyuncs.com',
+            'ap-northeast-1': 'clickhouse.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('clickhouse', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -772,6 +784,350 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_endpoint_with_options_async(request, runtime)
 
+    def create_langfuse_org_with_options(
+        self,
+        request: main_models.CreateLangfuseOrgRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseOrgResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_email):
+            query['OwnerEmail'] = request.owner_email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseOrg',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseOrgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_langfuse_org_with_options_async(
+        self,
+        request: main_models.CreateLangfuseOrgRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseOrgResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.owner_email):
+            query['OwnerEmail'] = request.owner_email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseOrg',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseOrgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_langfuse_org(
+        self,
+        request: main_models.CreateLangfuseOrgRequest,
+    ) -> main_models.CreateLangfuseOrgResponse:
+        runtime = RuntimeOptions()
+        return self.create_langfuse_org_with_options(request, runtime)
+
+    async def create_langfuse_org_async(
+        self,
+        request: main_models.CreateLangfuseOrgRequest,
+    ) -> main_models.CreateLangfuseOrgResponse:
+        runtime = RuntimeOptions()
+        return await self.create_langfuse_org_with_options_async(request, runtime)
+
+    def create_langfuse_org_member_with_options(
+        self,
+        request: main_models.CreateLangfuseOrgMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseOrgMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseOrgMember',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseOrgMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_langfuse_org_member_with_options_async(
+        self,
+        request: main_models.CreateLangfuseOrgMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseOrgMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseOrgMember',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseOrgMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_langfuse_org_member(
+        self,
+        request: main_models.CreateLangfuseOrgMemberRequest,
+    ) -> main_models.CreateLangfuseOrgMemberResponse:
+        runtime = RuntimeOptions()
+        return self.create_langfuse_org_member_with_options(request, runtime)
+
+    async def create_langfuse_org_member_async(
+        self,
+        request: main_models.CreateLangfuseOrgMemberRequest,
+    ) -> main_models.CreateLangfuseOrgMemberResponse:
+        runtime = RuntimeOptions()
+        return await self.create_langfuse_org_member_with_options_async(request, runtime)
+
+    def create_langfuse_project_with_options(
+        self,
+        request: main_models.CreateLangfuseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseProject',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_langfuse_project_with_options_async(
+        self,
+        request: main_models.CreateLangfuseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseProject',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_langfuse_project(
+        self,
+        request: main_models.CreateLangfuseProjectRequest,
+    ) -> main_models.CreateLangfuseProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_langfuse_project_with_options(request, runtime)
+
+    async def create_langfuse_project_async(
+        self,
+        request: main_models.CreateLangfuseProjectRequest,
+    ) -> main_models.CreateLangfuseProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_langfuse_project_with_options_async(request, runtime)
+
+    def create_langfuse_user_with_options(
+        self,
+        request: main_models.CreateLangfuseUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.org_role):
+            query['OrgRole'] = request.org_role
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseUser',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_langfuse_user_with_options_async(
+        self,
+        request: main_models.CreateLangfuseUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateLangfuseUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.org_role):
+            query['OrgRole'] = request.org_role
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateLangfuseUser',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateLangfuseUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_langfuse_user(
+        self,
+        request: main_models.CreateLangfuseUserRequest,
+    ) -> main_models.CreateLangfuseUserResponse:
+        runtime = RuntimeOptions()
+        return self.create_langfuse_user_with_options(request, runtime)
+
+    async def create_langfuse_user_async(
+        self,
+        request: main_models.CreateLangfuseUserRequest,
+    ) -> main_models.CreateLangfuseUserResponse:
+        runtime = RuntimeOptions()
+        return await self.create_langfuse_user_with_options_async(request, runtime)
+
     def create_whitelist_template_with_options(
         self,
         request: main_models.CreateWhitelistTemplateRequest,
@@ -1247,6 +1603,400 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteEndpointResponse:
         runtime = RuntimeOptions()
         return await self.delete_endpoint_with_options_async(request, runtime)
+
+    def delete_langfuse_instance_with_options(
+        self,
+        request: main_models.DeleteLangfuseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_langfuse_instance_with_options_async(
+        self,
+        request: main_models.DeleteLangfuseInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseInstance',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_langfuse_instance(
+        self,
+        request: main_models.DeleteLangfuseInstanceRequest,
+    ) -> main_models.DeleteLangfuseInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_langfuse_instance_with_options(request, runtime)
+
+    async def delete_langfuse_instance_async(
+        self,
+        request: main_models.DeleteLangfuseInstanceRequest,
+    ) -> main_models.DeleteLangfuseInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_langfuse_instance_with_options_async(request, runtime)
+
+    def delete_langfuse_org_with_options(
+        self,
+        request: main_models.DeleteLangfuseOrgRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseOrgResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseOrg',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseOrgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_langfuse_org_with_options_async(
+        self,
+        request: main_models.DeleteLangfuseOrgRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseOrgResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseOrg',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseOrgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_langfuse_org(
+        self,
+        request: main_models.DeleteLangfuseOrgRequest,
+    ) -> main_models.DeleteLangfuseOrgResponse:
+        runtime = RuntimeOptions()
+        return self.delete_langfuse_org_with_options(request, runtime)
+
+    async def delete_langfuse_org_async(
+        self,
+        request: main_models.DeleteLangfuseOrgRequest,
+    ) -> main_models.DeleteLangfuseOrgResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_langfuse_org_with_options_async(request, runtime)
+
+    def delete_langfuse_org_membership_with_options(
+        self,
+        request: main_models.DeleteLangfuseOrgMembershipRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseOrgMembershipResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseOrgMembership',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseOrgMembershipResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_langfuse_org_membership_with_options_async(
+        self,
+        request: main_models.DeleteLangfuseOrgMembershipRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseOrgMembershipResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseOrgMembership',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseOrgMembershipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_langfuse_org_membership(
+        self,
+        request: main_models.DeleteLangfuseOrgMembershipRequest,
+    ) -> main_models.DeleteLangfuseOrgMembershipResponse:
+        runtime = RuntimeOptions()
+        return self.delete_langfuse_org_membership_with_options(request, runtime)
+
+    async def delete_langfuse_org_membership_async(
+        self,
+        request: main_models.DeleteLangfuseOrgMembershipRequest,
+    ) -> main_models.DeleteLangfuseOrgMembershipResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_langfuse_org_membership_with_options_async(request, runtime)
+
+    def delete_langfuse_project_with_options(
+        self,
+        request: main_models.DeleteLangfuseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseProject',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_langfuse_project_with_options_async(
+        self,
+        request: main_models.DeleteLangfuseProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseProject',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_langfuse_project(
+        self,
+        request: main_models.DeleteLangfuseProjectRequest,
+    ) -> main_models.DeleteLangfuseProjectResponse:
+        runtime = RuntimeOptions()
+        return self.delete_langfuse_project_with_options(request, runtime)
+
+    async def delete_langfuse_project_async(
+        self,
+        request: main_models.DeleteLangfuseProjectRequest,
+    ) -> main_models.DeleteLangfuseProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_langfuse_project_with_options_async(request, runtime)
+
+    def delete_langfuse_user_with_options(
+        self,
+        request: main_models.DeleteLangfuseUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseUser',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_langfuse_user_with_options_async(
+        self,
+        request: main_models.DeleteLangfuseUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteLangfuseUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteLangfuseUser',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteLangfuseUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_langfuse_user(
+        self,
+        request: main_models.DeleteLangfuseUserRequest,
+    ) -> main_models.DeleteLangfuseUserResponse:
+        runtime = RuntimeOptions()
+        return self.delete_langfuse_user_with_options(request, runtime)
+
+    async def delete_langfuse_user_async(
+        self,
+        request: main_models.DeleteLangfuseUserRequest,
+    ) -> main_models.DeleteLangfuseUserResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_langfuse_user_with_options_async(request, runtime)
 
     def delete_whitelist_template_with_options(
         self,
@@ -2125,6 +2875,658 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeEndpointsResponse:
         runtime = RuntimeOptions()
         return await self.describe_endpoints_with_options_async(request, runtime)
+
+    def describe_langfuse_endpoints_with_options(
+        self,
+        request: main_models.DescribeLangfuseEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseEndpoints',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_endpoints_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseEndpoints',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_endpoints(
+        self,
+        request: main_models.DescribeLangfuseEndpointsRequest,
+    ) -> main_models.DescribeLangfuseEndpointsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_endpoints_with_options(request, runtime)
+
+    async def describe_langfuse_endpoints_async(
+        self,
+        request: main_models.DescribeLangfuseEndpointsRequest,
+    ) -> main_models.DescribeLangfuseEndpointsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_endpoints_with_options_async(request, runtime)
+
+    def describe_langfuse_org_memberships_with_options(
+        self,
+        request: main_models.DescribeLangfuseOrgMembershipsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseOrgMembershipsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseOrgMemberships',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseOrgMembershipsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_org_memberships_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseOrgMembershipsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseOrgMembershipsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseOrgMemberships',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseOrgMembershipsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_org_memberships(
+        self,
+        request: main_models.DescribeLangfuseOrgMembershipsRequest,
+    ) -> main_models.DescribeLangfuseOrgMembershipsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_org_memberships_with_options(request, runtime)
+
+    async def describe_langfuse_org_memberships_async(
+        self,
+        request: main_models.DescribeLangfuseOrgMembershipsRequest,
+    ) -> main_models.DescribeLangfuseOrgMembershipsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_org_memberships_with_options_async(request, runtime)
+
+    def describe_langfuse_orgs_with_options(
+        self,
+        request: main_models.DescribeLangfuseOrgsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseOrgsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseOrgs',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseOrgsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_orgs_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseOrgsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseOrgsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseOrgs',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseOrgsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_orgs(
+        self,
+        request: main_models.DescribeLangfuseOrgsRequest,
+    ) -> main_models.DescribeLangfuseOrgsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_orgs_with_options(request, runtime)
+
+    async def describe_langfuse_orgs_async(
+        self,
+        request: main_models.DescribeLangfuseOrgsRequest,
+    ) -> main_models.DescribeLangfuseOrgsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_orgs_with_options_async(request, runtime)
+
+    def describe_langfuse_project_memberships_with_options(
+        self,
+        request: main_models.DescribeLangfuseProjectMembershipsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseProjectMembershipsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseProjectMemberships',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseProjectMembershipsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_project_memberships_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseProjectMembershipsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseProjectMembershipsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseProjectMemberships',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseProjectMembershipsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_project_memberships(
+        self,
+        request: main_models.DescribeLangfuseProjectMembershipsRequest,
+    ) -> main_models.DescribeLangfuseProjectMembershipsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_project_memberships_with_options(request, runtime)
+
+    async def describe_langfuse_project_memberships_async(
+        self,
+        request: main_models.DescribeLangfuseProjectMembershipsRequest,
+    ) -> main_models.DescribeLangfuseProjectMembershipsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_project_memberships_with_options_async(request, runtime)
+
+    def describe_langfuse_projects_with_options(
+        self,
+        request: main_models.DescribeLangfuseProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseProjects',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_projects_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseProjects',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_projects(
+        self,
+        request: main_models.DescribeLangfuseProjectsRequest,
+    ) -> main_models.DescribeLangfuseProjectsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_projects_with_options(request, runtime)
+
+    async def describe_langfuse_projects_async(
+        self,
+        request: main_models.DescribeLangfuseProjectsRequest,
+    ) -> main_models.DescribeLangfuseProjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_projects_with_options_async(request, runtime)
+
+    def describe_langfuse_security_iplist_with_options(
+        self,
+        request: main_models.DescribeLangfuseSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseSecurityIPListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseSecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseSecurityIPListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_security_iplist_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseSecurityIPListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseSecurityIPListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseSecurityIPList',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseSecurityIPListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_security_iplist(
+        self,
+        request: main_models.DescribeLangfuseSecurityIPListRequest,
+    ) -> main_models.DescribeLangfuseSecurityIPListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_security_iplist_with_options(request, runtime)
+
+    async def describe_langfuse_security_iplist_async(
+        self,
+        request: main_models.DescribeLangfuseSecurityIPListRequest,
+    ) -> main_models.DescribeLangfuseSecurityIPListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_security_iplist_with_options_async(request, runtime)
+
+    def describe_langfuse_user_with_options(
+        self,
+        request: main_models.DescribeLangfuseUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseUser',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_user_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseUser',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_user(
+        self,
+        request: main_models.DescribeLangfuseUserRequest,
+    ) -> main_models.DescribeLangfuseUserResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_user_with_options(request, runtime)
+
+    async def describe_langfuse_user_async(
+        self,
+        request: main_models.DescribeLangfuseUserRequest,
+    ) -> main_models.DescribeLangfuseUserResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_user_with_options_async(request, runtime)
+
+    def describe_langfuse_users_with_options(
+        self,
+        request: main_models.DescribeLangfuseUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseUsers',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_langfuse_users_with_options_async(
+        self,
+        request: main_models.DescribeLangfuseUsersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLangfuseUsersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLangfuseUsers',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLangfuseUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_langfuse_users(
+        self,
+        request: main_models.DescribeLangfuseUsersRequest,
+    ) -> main_models.DescribeLangfuseUsersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_langfuse_users_with_options(request, runtime)
+
+    async def describe_langfuse_users_async(
+        self,
+        request: main_models.DescribeLangfuseUsersRequest,
+    ) -> main_models.DescribeLangfuseUsersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_langfuse_users_with_options_async(request, runtime)
 
     def describe_process_list_with_options(
         self,
@@ -3358,11 +4760,17 @@ class Client(OpenApiClient):
 
     def modify_dbinstance_class_with_options(
         self,
-        request: main_models.ModifyDBInstanceClassRequest,
+        tmp_req: main_models.ModifyDBInstanceClassRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyDBInstanceClassResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyDBInstanceClassShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.auto_scale_config):
+            request.auto_scale_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.auto_scale_config, 'AutoScaleConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.auto_scale_config_shrink):
+            query['AutoScaleConfig'] = request.auto_scale_config_shrink
         if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
         if not DaraCore.is_null(request.dbinstance_id):
@@ -3404,11 +4812,17 @@ class Client(OpenApiClient):
 
     async def modify_dbinstance_class_with_options_async(
         self,
-        request: main_models.ModifyDBInstanceClassRequest,
+        tmp_req: main_models.ModifyDBInstanceClassRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyDBInstanceClassResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyDBInstanceClassShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.auto_scale_config):
+            request.auto_scale_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.auto_scale_config, 'AutoScaleConfig', 'json')
         query = {}
+        if not DaraCore.is_null(request.auto_scale_config_shrink):
+            query['AutoScaleConfig'] = request.auto_scale_config_shrink
         if not DaraCore.is_null(request.computing_group_id):
             query['ComputingGroupId'] = request.computing_group_id
         if not DaraCore.is_null(request.dbinstance_id):
@@ -3634,6 +5048,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
 
+    def modify_langfuse_org_membership_with_options(
+        self,
+        request: main_models.ModifyLangfuseOrgMembershipRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseOrgMembershipResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseOrgMembership',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseOrgMembershipResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_langfuse_org_membership_with_options_async(
+        self,
+        request: main_models.ModifyLangfuseOrgMembershipRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseOrgMembershipResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseOrgMembership',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseOrgMembershipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_langfuse_org_membership(
+        self,
+        request: main_models.ModifyLangfuseOrgMembershipRequest,
+    ) -> main_models.ModifyLangfuseOrgMembershipResponse:
+        runtime = RuntimeOptions()
+        return self.modify_langfuse_org_membership_with_options(request, runtime)
+
+    async def modify_langfuse_org_membership_async(
+        self,
+        request: main_models.ModifyLangfuseOrgMembershipRequest,
+    ) -> main_models.ModifyLangfuseOrgMembershipResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_langfuse_org_membership_with_options_async(request, runtime)
+
+    def modify_langfuse_project_membership_with_options(
+        self,
+        request: main_models.ModifyLangfuseProjectMembershipRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseProjectMembershipResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseProjectMembership',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseProjectMembershipResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_langfuse_project_membership_with_options_async(
+        self,
+        request: main_models.ModifyLangfuseProjectMembershipRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseProjectMembershipResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.organization_id):
+            query['OrganizationId'] = request.organization_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseProjectMembership',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseProjectMembershipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_langfuse_project_membership(
+        self,
+        request: main_models.ModifyLangfuseProjectMembershipRequest,
+    ) -> main_models.ModifyLangfuseProjectMembershipResponse:
+        runtime = RuntimeOptions()
+        return self.modify_langfuse_project_membership_with_options(request, runtime)
+
+    async def modify_langfuse_project_membership_async(
+        self,
+        request: main_models.ModifyLangfuseProjectMembershipRequest,
+    ) -> main_models.ModifyLangfuseProjectMembershipResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_langfuse_project_membership_with_options_async(request, runtime)
+
     def modify_security_iplist_with_options(
         self,
         request: main_models.ModifySecurityIPListRequest,
@@ -3805,6 +5395,88 @@ class Client(OpenApiClient):
     ) -> main_models.ResetAccountPasswordResponse:
         runtime = RuntimeOptions()
         return await self.reset_account_password_with_options_async(request, runtime)
+
+    def reset_langfuse_user_password_with_options(
+        self,
+        request: main_models.ResetLangfuseUserPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetLangfuseUserPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetLangfuseUserPassword',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetLangfuseUserPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_langfuse_user_password_with_options_async(
+        self,
+        request: main_models.ResetLangfuseUserPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetLangfuseUserPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.new_password):
+            query['NewPassword'] = request.new_password
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetLangfuseUserPassword',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetLangfuseUserPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_langfuse_user_password(
+        self,
+        request: main_models.ResetLangfuseUserPasswordRequest,
+    ) -> main_models.ResetLangfuseUserPasswordResponse:
+        runtime = RuntimeOptions()
+        return self.reset_langfuse_user_password_with_options(request, runtime)
+
+    async def reset_langfuse_user_password_async(
+        self,
+        request: main_models.ResetLangfuseUserPasswordRequest,
+    ) -> main_models.ResetLangfuseUserPasswordResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_langfuse_user_password_with_options_async(request, runtime)
 
     def restart_dbinstance_with_options(
         self,

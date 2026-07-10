@@ -11,7 +11,7 @@ class ModifyDBInstanceClassResponseBody(DaraModel):
         data: main_models.ModifyDBInstanceClassResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,14 +54,15 @@ class ModifyDBInstanceClassResponseBodyData(DaraModel):
         scale_min: int = None,
         task_id: int = None,
     ):
+        # The compute group ID.
         self.computing_group_id = computing_group_id
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The maximum capacity for elastic scaling.
+        # The maximum capacity for serverless autoscaling.
         self.scale_max = scale_max
-        # The minimum capacity for elastic scaling.
+        # The minimum capacity for serverless autoscaling.
         self.scale_min = scale_min
         # The task ID.
         self.task_id = task_id

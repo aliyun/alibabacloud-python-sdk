@@ -25,6 +25,18 @@ from ._create_dbinstance_response import CreateDBInstanceResponse
 from ._create_endpoint_request import CreateEndpointRequest
 from ._create_endpoint_response_body import CreateEndpointResponseBody
 from ._create_endpoint_response import CreateEndpointResponse
+from ._create_langfuse_org_request import CreateLangfuseOrgRequest
+from ._create_langfuse_org_response_body import CreateLangfuseOrgResponseBody
+from ._create_langfuse_org_response import CreateLangfuseOrgResponse
+from ._create_langfuse_org_member_request import CreateLangfuseOrgMemberRequest
+from ._create_langfuse_org_member_response_body import CreateLangfuseOrgMemberResponseBody
+from ._create_langfuse_org_member_response import CreateLangfuseOrgMemberResponse
+from ._create_langfuse_project_request import CreateLangfuseProjectRequest
+from ._create_langfuse_project_response_body import CreateLangfuseProjectResponseBody
+from ._create_langfuse_project_response import CreateLangfuseProjectResponse
+from ._create_langfuse_user_request import CreateLangfuseUserRequest
+from ._create_langfuse_user_response_body import CreateLangfuseUserResponseBody
+from ._create_langfuse_user_response import CreateLangfuseUserResponse
 from ._create_whitelist_template_request import CreateWhitelistTemplateRequest
 from ._create_whitelist_template_response_body import CreateWhitelistTemplateResponseBody
 from ._create_whitelist_template_response import CreateWhitelistTemplateResponse
@@ -43,6 +55,21 @@ from ._delete_dbinstance_response import DeleteDBInstanceResponse
 from ._delete_endpoint_request import DeleteEndpointRequest
 from ._delete_endpoint_response_body import DeleteEndpointResponseBody
 from ._delete_endpoint_response import DeleteEndpointResponse
+from ._delete_langfuse_instance_request import DeleteLangfuseInstanceRequest
+from ._delete_langfuse_instance_response_body import DeleteLangfuseInstanceResponseBody
+from ._delete_langfuse_instance_response import DeleteLangfuseInstanceResponse
+from ._delete_langfuse_org_request import DeleteLangfuseOrgRequest
+from ._delete_langfuse_org_response_body import DeleteLangfuseOrgResponseBody
+from ._delete_langfuse_org_response import DeleteLangfuseOrgResponse
+from ._delete_langfuse_org_membership_request import DeleteLangfuseOrgMembershipRequest
+from ._delete_langfuse_org_membership_response_body import DeleteLangfuseOrgMembershipResponseBody
+from ._delete_langfuse_org_membership_response import DeleteLangfuseOrgMembershipResponse
+from ._delete_langfuse_project_request import DeleteLangfuseProjectRequest
+from ._delete_langfuse_project_response_body import DeleteLangfuseProjectResponseBody
+from ._delete_langfuse_project_response import DeleteLangfuseProjectResponse
+from ._delete_langfuse_user_request import DeleteLangfuseUserRequest
+from ._delete_langfuse_user_response_body import DeleteLangfuseUserResponseBody
+from ._delete_langfuse_user_response import DeleteLangfuseUserResponse
 from ._delete_whitelist_template_request import DeleteWhitelistTemplateRequest
 from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBody
 from ._delete_whitelist_template_response import DeleteWhitelistTemplateResponse
@@ -76,6 +103,30 @@ from ._describe_dbinstances_response import DescribeDBInstancesResponse
 from ._describe_endpoints_request import DescribeEndpointsRequest
 from ._describe_endpoints_response_body import DescribeEndpointsResponseBody
 from ._describe_endpoints_response import DescribeEndpointsResponse
+from ._describe_langfuse_endpoints_request import DescribeLangfuseEndpointsRequest
+from ._describe_langfuse_endpoints_response_body import DescribeLangfuseEndpointsResponseBody
+from ._describe_langfuse_endpoints_response import DescribeLangfuseEndpointsResponse
+from ._describe_langfuse_org_memberships_request import DescribeLangfuseOrgMembershipsRequest
+from ._describe_langfuse_org_memberships_response_body import DescribeLangfuseOrgMembershipsResponseBody
+from ._describe_langfuse_org_memberships_response import DescribeLangfuseOrgMembershipsResponse
+from ._describe_langfuse_orgs_request import DescribeLangfuseOrgsRequest
+from ._describe_langfuse_orgs_response_body import DescribeLangfuseOrgsResponseBody
+from ._describe_langfuse_orgs_response import DescribeLangfuseOrgsResponse
+from ._describe_langfuse_project_memberships_request import DescribeLangfuseProjectMembershipsRequest
+from ._describe_langfuse_project_memberships_response_body import DescribeLangfuseProjectMembershipsResponseBody
+from ._describe_langfuse_project_memberships_response import DescribeLangfuseProjectMembershipsResponse
+from ._describe_langfuse_projects_request import DescribeLangfuseProjectsRequest
+from ._describe_langfuse_projects_response_body import DescribeLangfuseProjectsResponseBody
+from ._describe_langfuse_projects_response import DescribeLangfuseProjectsResponse
+from ._describe_langfuse_security_iplist_request import DescribeLangfuseSecurityIPListRequest
+from ._describe_langfuse_security_iplist_response_body import DescribeLangfuseSecurityIPListResponseBody
+from ._describe_langfuse_security_iplist_response import DescribeLangfuseSecurityIPListResponse
+from ._describe_langfuse_user_request import DescribeLangfuseUserRequest
+from ._describe_langfuse_user_response_body import DescribeLangfuseUserResponseBody
+from ._describe_langfuse_user_response import DescribeLangfuseUserResponse
+from ._describe_langfuse_users_request import DescribeLangfuseUsersRequest
+from ._describe_langfuse_users_response_body import DescribeLangfuseUsersResponseBody
+from ._describe_langfuse_users_response import DescribeLangfuseUsersResponse
 from ._describe_process_list_request import DescribeProcessListRequest
 from ._describe_process_list_response_body import DescribeProcessListResponseBody
 from ._describe_process_list_response import DescribeProcessListResponse
@@ -122,6 +173,7 @@ from ._modify_dbinstance_attribute_request import ModifyDBInstanceAttributeReque
 from ._modify_dbinstance_attribute_response_body import ModifyDBInstanceAttributeResponseBody
 from ._modify_dbinstance_attribute_response import ModifyDBInstanceAttributeResponse
 from ._modify_dbinstance_class_request import ModifyDBInstanceClassRequest
+from ._modify_dbinstance_class_shrink_request import ModifyDBInstanceClassShrinkRequest
 from ._modify_dbinstance_class_response_body import ModifyDBInstanceClassResponseBody
 from ._modify_dbinstance_class_response import ModifyDBInstanceClassResponse
 from ._modify_dbinstance_config_request import ModifyDBInstanceConfigRequest
@@ -130,12 +182,21 @@ from ._modify_dbinstance_config_response import ModifyDBInstanceConfigResponse
 from ._modify_dbinstance_connection_string_request import ModifyDBInstanceConnectionStringRequest
 from ._modify_dbinstance_connection_string_response_body import ModifyDBInstanceConnectionStringResponseBody
 from ._modify_dbinstance_connection_string_response import ModifyDBInstanceConnectionStringResponse
+from ._modify_langfuse_org_membership_request import ModifyLangfuseOrgMembershipRequest
+from ._modify_langfuse_org_membership_response_body import ModifyLangfuseOrgMembershipResponseBody
+from ._modify_langfuse_org_membership_response import ModifyLangfuseOrgMembershipResponse
+from ._modify_langfuse_project_membership_request import ModifyLangfuseProjectMembershipRequest
+from ._modify_langfuse_project_membership_response_body import ModifyLangfuseProjectMembershipResponseBody
+from ._modify_langfuse_project_membership_response import ModifyLangfuseProjectMembershipResponse
 from ._modify_security_iplist_request import ModifySecurityIPListRequest
 from ._modify_security_iplist_response_body import ModifySecurityIPListResponseBody
 from ._modify_security_iplist_response import ModifySecurityIPListResponse
 from ._reset_account_password_request import ResetAccountPasswordRequest
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
 from ._reset_account_password_response import ResetAccountPasswordResponse
+from ._reset_langfuse_user_password_request import ResetLangfuseUserPasswordRequest
+from ._reset_langfuse_user_password_response_body import ResetLangfuseUserPasswordResponseBody
+from ._reset_langfuse_user_password_response import ResetLangfuseUserPasswordResponse
 from ._restart_dbinstance_request import RestartDBInstanceRequest
 from ._restart_dbinstance_response_body import RestartDBInstanceResponseBody
 from ._restart_dbinstance_response import RestartDBInstanceResponse
@@ -163,11 +224,20 @@ from ._create_dbinstance_request import CreateDBInstanceRequestMultiZone
 from ._create_dbinstance_request import CreateDBInstanceRequestTags
 from ._create_dbinstance_shrink_request import CreateDBInstanceShrinkRequestTags
 from ._create_dbinstance_response_body import CreateDBInstanceResponseBodyData
+from ._create_langfuse_org_response_body import CreateLangfuseOrgResponseBodyData
+from ._create_langfuse_org_member_response_body import CreateLangfuseOrgMemberResponseBodyData
+from ._create_langfuse_project_response_body import CreateLangfuseProjectResponseBodyData
+from ._create_langfuse_user_response_body import CreateLangfuseUserResponseBodyDataMembership
+from ._create_langfuse_user_response_body import CreateLangfuseUserResponseBodyData
 from ._create_whitelist_template_response_body import CreateWhitelistTemplateResponseBodyDataTemplates
 from ._create_whitelist_template_response_body import CreateWhitelistTemplateResponseBodyData
 from ._delete_account_response_body import DeleteAccountResponseBodyData
 from ._delete_dbresponse_body import DeleteDBResponseBodyData
 from ._delete_dbinstance_response_body import DeleteDBInstanceResponseBodyData
+from ._delete_langfuse_instance_response_body import DeleteLangfuseInstanceResponseBodyData
+from ._delete_langfuse_org_response_body import DeleteLangfuseOrgResponseBodyData
+from ._delete_langfuse_org_membership_response_body import DeleteLangfuseOrgMembershipResponseBodyData
+from ._delete_langfuse_user_response_body import DeleteLangfuseUserResponseBodyData
 from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances
 from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBodyDataTemplates
 from ._delete_whitelist_template_response_body import DeleteWhitelistTemplateResponseBodyData
@@ -192,6 +262,24 @@ from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBody
 from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyDataEndpointsPorts
 from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyDataEndpoints
 from ._describe_endpoints_response_body import DescribeEndpointsResponseBodyData
+from ._describe_langfuse_endpoints_response_body import DescribeLangfuseEndpointsResponseBodyDataEndpointsPorts
+from ._describe_langfuse_endpoints_response_body import DescribeLangfuseEndpointsResponseBodyDataEndpoints
+from ._describe_langfuse_endpoints_response_body import DescribeLangfuseEndpointsResponseBodyData
+from ._describe_langfuse_org_memberships_response_body import DescribeLangfuseOrgMembershipsResponseBodyDataMemberships
+from ._describe_langfuse_org_memberships_response_body import DescribeLangfuseOrgMembershipsResponseBodyData
+from ._describe_langfuse_orgs_response_body import DescribeLangfuseOrgsResponseBodyDataOrganizations
+from ._describe_langfuse_orgs_response_body import DescribeLangfuseOrgsResponseBodyData
+from ._describe_langfuse_project_memberships_response_body import DescribeLangfuseProjectMembershipsResponseBodyDataMemberships
+from ._describe_langfuse_project_memberships_response_body import DescribeLangfuseProjectMembershipsResponseBodyData
+from ._describe_langfuse_projects_response_body import DescribeLangfuseProjectsResponseBodyDataProjects
+from ._describe_langfuse_projects_response_body import DescribeLangfuseProjectsResponseBodyData
+from ._describe_langfuse_security_iplist_response_body import DescribeLangfuseSecurityIPListResponseBodyDataGroupItems
+from ._describe_langfuse_security_iplist_response_body import DescribeLangfuseSecurityIPListResponseBodyData
+from ._describe_langfuse_user_response_body import DescribeLangfuseUserResponseBodyDataMembershipsProjects
+from ._describe_langfuse_user_response_body import DescribeLangfuseUserResponseBodyDataMemberships
+from ._describe_langfuse_user_response_body import DescribeLangfuseUserResponseBodyData
+from ._describe_langfuse_users_response_body import DescribeLangfuseUsersResponseBodyDataUsers
+from ._describe_langfuse_users_response_body import DescribeLangfuseUsersResponseBodyData
 from ._describe_process_list_response_body import DescribeProcessListResponseBodyDataResultSet
 from ._describe_process_list_response_body import DescribeProcessListResponseBodyData
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegionZonesZone
@@ -222,11 +310,16 @@ from ._list_whitelist_templates_response_body import ListWhitelistTemplatesRespo
 from ._modify_account_authority_request import ModifyAccountAuthorityRequestDmlAuthSetting
 from ._modify_account_authority_response_body import ModifyAccountAuthorityResponseBodyData
 from ._modify_account_description_response_body import ModifyAccountDescriptionResponseBodyData
+from ._modify_dbinstance_class_request import ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos
+from ._modify_dbinstance_class_request import ModifyDBInstanceClassRequestAutoScaleConfig
 from ._modify_dbinstance_class_response_body import ModifyDBInstanceClassResponseBodyData
 from ._modify_dbinstance_config_response_body import ModifyDBInstanceConfigResponseBodyData
 from ._modify_dbinstance_connection_string_response_body import ModifyDBInstanceConnectionStringResponseBodyData
+from ._modify_langfuse_org_membership_response_body import ModifyLangfuseOrgMembershipResponseBodyData
+from ._modify_langfuse_project_membership_response_body import ModifyLangfuseProjectMembershipResponseBodyData
 from ._modify_security_iplist_response_body import ModifySecurityIPListResponseBodyData
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBodyData
+from ._reset_langfuse_user_password_response_body import ResetLangfuseUserPasswordResponseBodyData
 from ._restart_dbinstance_response_body import RestartDBInstanceResponseBodyData
 from ._start_dbinstance_response_body import StartDBInstanceResponseBodyData
 from ._stop_dbinstance_response_body import StopDBInstanceResponseBodyData
@@ -259,6 +352,18 @@ __all__ = [
     CreateEndpointRequest,
     CreateEndpointResponseBody,
     CreateEndpointResponse,
+    CreateLangfuseOrgRequest,
+    CreateLangfuseOrgResponseBody,
+    CreateLangfuseOrgResponse,
+    CreateLangfuseOrgMemberRequest,
+    CreateLangfuseOrgMemberResponseBody,
+    CreateLangfuseOrgMemberResponse,
+    CreateLangfuseProjectRequest,
+    CreateLangfuseProjectResponseBody,
+    CreateLangfuseProjectResponse,
+    CreateLangfuseUserRequest,
+    CreateLangfuseUserResponseBody,
+    CreateLangfuseUserResponse,
     CreateWhitelistTemplateRequest,
     CreateWhitelistTemplateResponseBody,
     CreateWhitelistTemplateResponse,
@@ -277,6 +382,21 @@ __all__ = [
     DeleteEndpointRequest,
     DeleteEndpointResponseBody,
     DeleteEndpointResponse,
+    DeleteLangfuseInstanceRequest,
+    DeleteLangfuseInstanceResponseBody,
+    DeleteLangfuseInstanceResponse,
+    DeleteLangfuseOrgRequest,
+    DeleteLangfuseOrgResponseBody,
+    DeleteLangfuseOrgResponse,
+    DeleteLangfuseOrgMembershipRequest,
+    DeleteLangfuseOrgMembershipResponseBody,
+    DeleteLangfuseOrgMembershipResponse,
+    DeleteLangfuseProjectRequest,
+    DeleteLangfuseProjectResponseBody,
+    DeleteLangfuseProjectResponse,
+    DeleteLangfuseUserRequest,
+    DeleteLangfuseUserResponseBody,
+    DeleteLangfuseUserResponse,
     DeleteWhitelistTemplateRequest,
     DeleteWhitelistTemplateResponseBody,
     DeleteWhitelistTemplateResponse,
@@ -310,6 +430,30 @@ __all__ = [
     DescribeEndpointsRequest,
     DescribeEndpointsResponseBody,
     DescribeEndpointsResponse,
+    DescribeLangfuseEndpointsRequest,
+    DescribeLangfuseEndpointsResponseBody,
+    DescribeLangfuseEndpointsResponse,
+    DescribeLangfuseOrgMembershipsRequest,
+    DescribeLangfuseOrgMembershipsResponseBody,
+    DescribeLangfuseOrgMembershipsResponse,
+    DescribeLangfuseOrgsRequest,
+    DescribeLangfuseOrgsResponseBody,
+    DescribeLangfuseOrgsResponse,
+    DescribeLangfuseProjectMembershipsRequest,
+    DescribeLangfuseProjectMembershipsResponseBody,
+    DescribeLangfuseProjectMembershipsResponse,
+    DescribeLangfuseProjectsRequest,
+    DescribeLangfuseProjectsResponseBody,
+    DescribeLangfuseProjectsResponse,
+    DescribeLangfuseSecurityIPListRequest,
+    DescribeLangfuseSecurityIPListResponseBody,
+    DescribeLangfuseSecurityIPListResponse,
+    DescribeLangfuseUserRequest,
+    DescribeLangfuseUserResponseBody,
+    DescribeLangfuseUserResponse,
+    DescribeLangfuseUsersRequest,
+    DescribeLangfuseUsersResponseBody,
+    DescribeLangfuseUsersResponse,
     DescribeProcessListRequest,
     DescribeProcessListResponseBody,
     DescribeProcessListResponse,
@@ -356,6 +500,7 @@ __all__ = [
     ModifyDBInstanceAttributeResponseBody,
     ModifyDBInstanceAttributeResponse,
     ModifyDBInstanceClassRequest,
+    ModifyDBInstanceClassShrinkRequest,
     ModifyDBInstanceClassResponseBody,
     ModifyDBInstanceClassResponse,
     ModifyDBInstanceConfigRequest,
@@ -364,12 +509,21 @@ __all__ = [
     ModifyDBInstanceConnectionStringRequest,
     ModifyDBInstanceConnectionStringResponseBody,
     ModifyDBInstanceConnectionStringResponse,
+    ModifyLangfuseOrgMembershipRequest,
+    ModifyLangfuseOrgMembershipResponseBody,
+    ModifyLangfuseOrgMembershipResponse,
+    ModifyLangfuseProjectMembershipRequest,
+    ModifyLangfuseProjectMembershipResponseBody,
+    ModifyLangfuseProjectMembershipResponse,
     ModifySecurityIPListRequest,
     ModifySecurityIPListResponseBody,
     ModifySecurityIPListResponse,
     ResetAccountPasswordRequest,
     ResetAccountPasswordResponseBody,
     ResetAccountPasswordResponse,
+    ResetLangfuseUserPasswordRequest,
+    ResetLangfuseUserPasswordResponseBody,
+    ResetLangfuseUserPasswordResponse,
     RestartDBInstanceRequest,
     RestartDBInstanceResponseBody,
     RestartDBInstanceResponse,
@@ -397,11 +551,20 @@ __all__ = [
     CreateDBInstanceRequestTags,
     CreateDBInstanceShrinkRequestTags,
     CreateDBInstanceResponseBodyData,
+    CreateLangfuseOrgResponseBodyData,
+    CreateLangfuseOrgMemberResponseBodyData,
+    CreateLangfuseProjectResponseBodyData,
+    CreateLangfuseUserResponseBodyDataMembership,
+    CreateLangfuseUserResponseBodyData,
     CreateWhitelistTemplateResponseBodyDataTemplates,
     CreateWhitelistTemplateResponseBodyData,
     DeleteAccountResponseBodyData,
     DeleteDBResponseBodyData,
     DeleteDBInstanceResponseBodyData,
+    DeleteLangfuseInstanceResponseBodyData,
+    DeleteLangfuseOrgResponseBodyData,
+    DeleteLangfuseOrgMembershipResponseBodyData,
+    DeleteLangfuseUserResponseBodyData,
     DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances,
     DeleteWhitelistTemplateResponseBodyDataTemplates,
     DeleteWhitelistTemplateResponseBodyData,
@@ -426,6 +589,24 @@ __all__ = [
     DescribeEndpointsResponseBodyDataEndpointsPorts,
     DescribeEndpointsResponseBodyDataEndpoints,
     DescribeEndpointsResponseBodyData,
+    DescribeLangfuseEndpointsResponseBodyDataEndpointsPorts,
+    DescribeLangfuseEndpointsResponseBodyDataEndpoints,
+    DescribeLangfuseEndpointsResponseBodyData,
+    DescribeLangfuseOrgMembershipsResponseBodyDataMemberships,
+    DescribeLangfuseOrgMembershipsResponseBodyData,
+    DescribeLangfuseOrgsResponseBodyDataOrganizations,
+    DescribeLangfuseOrgsResponseBodyData,
+    DescribeLangfuseProjectMembershipsResponseBodyDataMemberships,
+    DescribeLangfuseProjectMembershipsResponseBodyData,
+    DescribeLangfuseProjectsResponseBodyDataProjects,
+    DescribeLangfuseProjectsResponseBodyData,
+    DescribeLangfuseSecurityIPListResponseBodyDataGroupItems,
+    DescribeLangfuseSecurityIPListResponseBodyData,
+    DescribeLangfuseUserResponseBodyDataMembershipsProjects,
+    DescribeLangfuseUserResponseBodyDataMemberships,
+    DescribeLangfuseUserResponseBodyData,
+    DescribeLangfuseUsersResponseBodyDataUsers,
+    DescribeLangfuseUsersResponseBodyData,
     DescribeProcessListResponseBodyDataResultSet,
     DescribeProcessListResponseBodyData,
     DescribeRegionsResponseBodyRegionsRegionZonesZone,
@@ -456,11 +637,16 @@ __all__ = [
     ModifyAccountAuthorityRequestDmlAuthSetting,
     ModifyAccountAuthorityResponseBodyData,
     ModifyAccountDescriptionResponseBodyData,
+    ModifyDBInstanceClassRequestAutoScaleConfigVSwitchInfos,
+    ModifyDBInstanceClassRequestAutoScaleConfig,
     ModifyDBInstanceClassResponseBodyData,
     ModifyDBInstanceConfigResponseBodyData,
     ModifyDBInstanceConnectionStringResponseBodyData,
+    ModifyLangfuseOrgMembershipResponseBodyData,
+    ModifyLangfuseProjectMembershipResponseBodyData,
     ModifySecurityIPListResponseBodyData,
     ResetAccountPasswordResponseBodyData,
+    ResetLangfuseUserPasswordResponseBodyData,
     RestartDBInstanceResponseBodyData,
     StartDBInstanceResponseBodyData,
     StopDBInstanceResponseBodyData,

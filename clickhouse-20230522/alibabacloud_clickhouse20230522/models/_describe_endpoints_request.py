@@ -11,6 +11,7 @@ class DescribeEndpointsRequest(DaraModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The computing group ID.
         self.computing_group_id = computing_group_id
         # The cluster ID.
         # 

@@ -13,17 +13,17 @@ class CreateBackupPolicyRequest(DaraModel):
         preferred_backup_time: str = None,
         region_id: str = None,
     ):
-        # The number of days for which you can retain the backup data.
+        # The number of days to retain backups.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The backup cycle, which indicates the day of the week when the system regularly backs up data. Separate multiple dates with commas (`,`).
+        # The backup cycle. Specify the days of the week for backups. Separate multiple days with commas (`,`).
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The backup time window within which the backup task is performed. The time is displayed in `UTC`. For example, `12:00Z-13:00Z` indicates that the backup time window ranges from `12:00` (UTC) to `13:00` `(UTC)`.
+        # The UTC time range to perform the backup. For example, `12:00Z-13:00Z` means that the backup starts between 12:00 and 13:00 UTC.
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time

@@ -19,7 +19,7 @@ class DescribeAccountAuthorityRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region ID
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

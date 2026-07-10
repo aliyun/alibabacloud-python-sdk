@@ -15,7 +15,7 @@ class DeleteDBRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The name of the destination database.
+        # The name of the target database.
         # 
         # This parameter is required.
         self.dbname = dbname

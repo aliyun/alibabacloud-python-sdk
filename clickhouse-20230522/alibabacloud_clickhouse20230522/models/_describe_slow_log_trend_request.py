@@ -15,20 +15,21 @@ class DescribeSlowLogTrendRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The computing group ID.
         self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+        # The end of the time range to query. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
         self.end_time = end_time
-        # The code of the cloud service.
+        # The product code.
         self.product = product
-        # The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+        # The minimum execution duration of a slow SQL query, in milliseconds. The minimum value is **1000**.
         self.query_duration_ms = query_duration_ms
         # The region ID.
         self.region_id = region_id
-        # The start of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+        # The start of the time range to query. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

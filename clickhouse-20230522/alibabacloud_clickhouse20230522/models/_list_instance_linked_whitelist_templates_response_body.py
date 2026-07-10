@@ -13,8 +13,9 @@ class ListInstanceLinkedWhitelistTemplatesResponseBody(DaraModel):
         data: main_models.ListInstanceLinkedWhitelistTemplatesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The response data.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,6 +51,7 @@ class ListInstanceLinkedWhitelistTemplatesResponseBodyData(DaraModel):
         self,
         templates: List[main_models.ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates] = None,
     ):
+        # A list of IP address whitelist templates.
         self.templates = templates
 
     def validate(self):
@@ -87,8 +89,11 @@ class ListInstanceLinkedWhitelistTemplatesResponseBodyDataTemplates(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # The comma-separated IP addresses in the whitelist.
         self.security_iplist = security_iplist
+        # The IP address whitelist template ID.
         self.template_id = template_id
+        # The IP address whitelist template name.
         self.template_name = template_name
 
     def validate(self):

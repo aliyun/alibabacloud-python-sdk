@@ -11,10 +11,16 @@ class DetachWhitelistTemplateToInstanceRequest(DaraModel):
         region_id: str = None,
         template_id: str = None,
     ):
+        # The IDs of the ClickHouse instances, separated by commas. You can specify up to 20 IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The whitelist template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

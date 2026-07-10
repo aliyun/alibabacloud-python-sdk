@@ -13,15 +13,21 @@ class DeleteEndpointRequest(DaraModel):
         dbinstance_net_type: str = None,
         region_id: str = None,
     ):
+        # The ID of the computing group.
         self.computing_group_id = computing_group_id
-        # The prefix of the endpoint, which indicates the prefix of the value of the ConnectionString parameter.
+        # The connection string of the public endpoint to delete.
         self.connection_string = connection_string
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The network type of the endpoint. Valid values:
+        # 
+        # - VPC: a virtual private cloud (VPC) network.
+        # 
+        # - Public: a public network.
         self.dbinstance_net_type = dbinstance_net_type
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

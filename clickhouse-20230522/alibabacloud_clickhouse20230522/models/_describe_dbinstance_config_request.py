@@ -10,8 +10,12 @@ class DescribeDBInstanceConfigRequest(DaraModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -14,11 +14,7 @@ class DescribeDBInstanceAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region ID.
-        # 
-        # Valid values:
-        # 
-        # *   cn-beijing
+        # The region ID. You can call the [~~DescribeRegions~~](cdb.doc.dita#doc-api-clickhouse-DescribeRegions) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

@@ -25,8 +25,9 @@ class CreateAccountRequest(DaraModel):
         self.account = account
         # The type of the database account. Valid values:
         # 
-        # *   **NormalAccount**: standard account
-        # *   **SuperAccount**: privileged account
+        # - **NormalAccount**: standard account
+        # 
+        # - **SuperAccount**: privileged account
         # 
         # This parameter is required.
         self.account_type = account_type
@@ -41,7 +42,9 @@ class CreateAccountRequest(DaraModel):
         # The password of the database account. The password must meet the following requirements:
         # 
         # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # - The following special characters are supported: ! @ # $ % ^ & * ( ) _ + - =
+        # 
+        # - The following special characters are supported: ! @ # $ % ^ & \\* ( ) _ + - =
+        # 
         # - The password must be 8 to 32 characters in length.
         # 
         # This parameter is required.
@@ -131,14 +134,17 @@ class CreateAccountRequestDmlAuthSetting(DaraModel):
         self.allow_dictionaries = allow_dictionaries
         # Specifies whether to grant the DDL permissions to the database account. Valid values:
         # 
-        # *   **true**: The account has the permissions to execute DDL statements.
-        # *   **false**: The account does not have the permissions to execute DDL statements.
+        # - **true**: The account has the permissions to execute DDL statements.
+        # 
+        # - **false**: The account does not have the permissions to execute DDL statements.
         self.ddl_authority = ddl_authority
         # Specifies whether to grant the DML permissions to the database account. Valid values:
         # 
-        # *   **0**: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
-        # *   **1**: The account only has the permissions to read data from the database.
-        # *   **2**: The account only has the permissions to read data from the database and modify the settings of the database.
+        # - **0**: The account has the permissions to read data from the database, write data to the database, and modify the settings of the database.
+        # 
+        # - **1**: The account only has the permissions to read data from the database.
+        # 
+        # - **2**: The account only has the permissions to read data from the database and modify the settings of the database.
         self.dml_authority = dml_authority
 
     def validate(self):

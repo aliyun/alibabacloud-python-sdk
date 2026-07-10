@@ -1,3 +1,26 @@
+2026-07-10 Version: 2.6.0
+- Support API CreateLangfuseOrg.
+- Support API CreateLangfuseOrgMember.
+- Support API CreateLangfuseProject.
+- Support API CreateLangfuseUser.
+- Support API DeleteLangfuseInstance.
+- Support API DeleteLangfuseOrg.
+- Support API DeleteLangfuseOrgMembership.
+- Support API DeleteLangfuseProject.
+- Support API DeleteLangfuseUser.
+- Support API DescribeLangfuseEndpoints.
+- Support API DescribeLangfuseOrgMemberships.
+- Support API DescribeLangfuseOrgs.
+- Support API DescribeLangfuseProjectMemberships.
+- Support API DescribeLangfuseProjects.
+- Support API DescribeLangfuseSecurityIPList.
+- Support API DescribeLangfuseUser.
+- Support API DescribeLangfuseUsers.
+- Support API ModifyLangfuseOrgMembership.
+- Support API ModifyLangfuseProjectMembership.
+- Support API ResetLangfuseUserPassword.
+
+
 2026-04-24 Version: 2.5.2
 - Update API DescribeDBInstanceAttribute: add response parameters Body.Data.WebUISnatStatus.
 

@@ -11,7 +11,7 @@ class DeleteDBInstanceResponseBody(DaraModel):
         data: main_models.DeleteDBInstanceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id

@@ -20,11 +20,11 @@ class DescribeDBInstancesRequest(DaraModel):
         tags: List[main_models.DescribeDBInstancesRequestTags] = None,
         vpc_ids: str = None,
     ):
-        # The cluster IDs. Separate multiple cluster IDs with commas (,).
+        # A comma-separated list of instance IDs.
         self.dbinstance_ids = dbinstance_ids
-        # The cluster status.
+        # The instance status.
         self.dbinstance_status = dbinstance_status
-        # The cluster description.
+        # The instance description.
         self.description = description
         # The page number.
         self.page_number = page_number
@@ -34,7 +34,9 @@ class DescribeDBInstancesRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tags for filtering instances.
         self.tags = tags
+        # A comma-separated list of VPC IDs.
         self.vpc_ids = vpc_ids
 
     def validate(self):
@@ -119,7 +121,9 @@ class DescribeDBInstancesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
