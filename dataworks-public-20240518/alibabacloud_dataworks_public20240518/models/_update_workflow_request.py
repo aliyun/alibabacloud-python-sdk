@@ -24,29 +24,26 @@ class UpdateWorkflowRequest(DaraModel):
         tasks: List[main_models.UpdateWorkflowRequestTasks] = None,
         trigger: main_models.UpdateWorkflowRequestTrigger = None,
     ):
-        # The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
+        # The client unique code of the workflow, used for asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. If this parameter is specified during update or deletion, it must be consistent with the client unique code used during creation.
         self.client_unique_code = client_unique_code
         # The dependency information.
         self.dependencies = dependencies
         # The description.
         self.description = description
-        # The project environment.
-        # 
-        # - Prod
-        # 
-        # - Dev
+        # The project environment. Valid values:
+        # - Prod: production
+        # - Dev: development
         self.env_type = env_type
         # The workflow ID.
         # 
         # This parameter is required.
         self.id = id
-        # The instance generation mode.
+        # The instance generation mode. Valid values:
         # 
-        # - T+1: the next day
-        # 
-        # - Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
+        # - T+1: Instances are generated the next day.
+        # - Immediately: Instances are generated immediately. Periodic instances are generated only if the scheduled time of the workflow is at least 10 minutes after the workflow is published. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish workflows during this period, but instances are not regenerated after submission.
         self.instance_mode = instance_mode
-        # The name of the workflow.
+        # The name.
         # 
         # This parameter is required.
         self.name = name
@@ -56,13 +53,13 @@ class UpdateWorkflowRequest(DaraModel):
         # 
         # This parameter is required.
         self.owner = owner
-        # The parameters.
+        # The parameter list.
         self.parameters = parameters
-        # The tags.
+        # The list of workflow tags.
         self.tags = tags
-        # Details about tasks.
+        # The node list.
         self.tasks = tasks
-        # The trigger method.
+        # The trigger configuration.
         # 
         # This parameter is required.
         self.trigger = trigger
@@ -199,17 +196,15 @@ class UpdateWorkflowRequestTrigger(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The Cron expression. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The cron expression. This parameter takes effect only when type is set to Scheduler.
         self.cron = cron
-        # The expiration time of periodic triggering. Takes effect only when type is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
+        # The time when the periodic trigger expires. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
         self.end_time = end_time
-        # The time when periodic triggering takes effect. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
+        # The effective period of the epoch trigger. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
         self.start_time = start_time
         # The trigger type. Valid values:
-        # 
-        # - Scheduler: periodically triggered
-        # 
-        # - Manual
+        # - Scheduler: triggered by a scheduling cycle
+        # - Manual: manually triggered
         # 
         # This parameter is required.
         self.type = type
@@ -278,63 +273,58 @@ class UpdateWorkflowRequestTasks(DaraModel):
     ):
         # The baseline ID.
         self.base_line_id = base_line_id
-        # The client-side unique token for the task, used to ensure asynchronous processing and idempotency. If not specified during creation, the system will automatically generate one. This token is uniquely associated with the resource ID. If provided when updating or deleting resources, this parameter must match the client token used during creation.
+        # The client unique code of the node, used for asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. If this parameter is specified during update or deletion, it must be consistent with the client unique code used during creation.
         self.client_unique_code = client_unique_code
-        # The information about the associated data source.
+        # The associated data source information.
         self.data_source = data_source
-        # The dependency information. Note: If this parameter is left empty or set to an empty array, all dependency configurations will be deleted.
+        # The dependency information. If this field is not specified or is an empty array, all Dependencies configurations are deleted by default.
         self.dependencies = dependencies
-        # The description of the task.
+        # The description.
         self.description = description
-        # The project environment.
-        # 
-        # - Prod
-        # 
-        # - Dev
+        # The project environment. Valid values:
+        # - Prod: production
+        # - Dev: development
         self.env_type = env_type
-        # The ID of the task. Specifying this field triggers a full update for the corresponding task. If left unspecified, a new task will be created.
+        # The node ID. If this field is specified, the corresponding node is fully updated. If this field is not specified, a new node is created.
         self.id = id
-        # The input information. By default, all input information is deleted if this parameter is set to null.
+        # The input information. If this field is empty, all Inputs configurations are deleted by default.
         self.inputs = inputs
-        # The name of the task.
+        # The name of the node.
         # 
         # This parameter is required.
         self.name = name
-        # The output information. By default, all output information is deleted if this parameter is set to null.
+        # The output information. If this field is empty, all Outputs configurations are deleted by default.
         self.outputs = outputs
         # The account ID of the owner.
         # 
         # This parameter is required.
         self.owner = owner
-        # The retry interval in seconds.
+        # The retry time interval, in seconds.
         self.rerun_interval = rerun_interval
-        # Configuration for whether the task can be rerun.
-        # 
-        # - AllDenied: The task cannot be rerun.
-        # 
-        # - FailureAllowed: The task can be rerun only after it fails.
-        # 
-        # - AllAllowed: The task can always be rerun.
+        # Specifies whether the node can be rerun. Valid values:
+        # - AllDenied: cannot be rerun regardless of success or failure
+        # - FailureAllowed: can be rerun only upon failure
+        # - AllAllowed: can be rerun regardless of success or failure
         # 
         # This parameter is required.
         self.rerun_mode = rerun_mode
-        # The number of retry attempts. Takes effect when the task is configured to allow reruns.
+        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
         self.rerun_times = rerun_times
-        # Runtime environment configurations, such as resource group information.
+        # The runtime environment configuration, such as resource group information.
         # 
         # This parameter is required.
         self.runtime_resource = runtime_resource
-        # The run script information.
+        # The script information.
         self.script = script
-        # The list of task tags. Note: If this field is unspecified or set to an empty array, all existing Tag configurations will be deleted by default.
+        # The list of node tags. If this field is not specified or is an empty array, all Tags configurations are deleted by default.
         self.tags = tags
-        # The task execution timeout in seconds.
+        # The timeout period for node execution, in seconds.
         self.timeout = timeout
-        # The trigger method.
+        # The trigger configuration of the node.
         # 
         # This parameter is required.
         self.trigger = trigger
-        # The type of the task.
+        # The node type.
         # 
         # This parameter is required.
         self.type = type
@@ -514,21 +504,16 @@ class UpdateWorkflowRequestTasksTrigger(DaraModel):
         recurrence: str = None,
         type: str = None,
     ):
-        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
-        # 
-        # - Pause
-        # 
-        # - Skip
-        # 
-        # - Normal
+        # The run mode when triggered. This parameter takes effect only when type is set to Scheduler. Valid values:
+        # - Pause: paused
+        # - Skip: dry run
+        # - Normal: normal execution
         # 
         # This parameter is required.
         self.recurrence = recurrence
         # The trigger type. Valid values:
-        # 
-        # - Scheduler: periodically triggered
-        # 
-        # - Manual
+        # - Scheduler: triggered by a scheduling cycle
+        # - Manual: manually triggered
         self.type = type
 
     def validate(self):
@@ -563,11 +548,11 @@ class UpdateWorkflowRequestTasksTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag.
+        # The tag key.
         # 
         # This parameter is required.
         self.key = key
-        # The value of a tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -604,7 +589,7 @@ class UpdateWorkflowRequestTasksScript(DaraModel):
     ):
         # The script content.
         self.content = content
-        # The script parameter list.
+        # The list of script parameters.
         self.parameters = parameters
 
     def validate(self):
@@ -640,11 +625,11 @@ class UpdateWorkflowRequestTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The CU consumption configured for the node.
         self.cu = cu
-        # The image ID used in the task runtime configuration.
+        # The image ID configured for the node.
         self.image = image
-        # The identifier of the scheduling resource group used in the task runtime configuration.
+        # The identifier of the schedule resource group configured for the node.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
@@ -687,9 +672,9 @@ class UpdateWorkflowRequestTasksOutputs(DaraModel):
         task_outputs: List[main_models.UpdateWorkflowRequestTasksOutputsTaskOutputs] = None,
         variables: List[main_models.UpdateWorkflowRequestTasksOutputsVariables] = None,
     ):
-        # The task outputs. By default, all task output information is deleted if this parameter is set to null or not specified.
+        # The list of node output definitions. If this field is not specified or is an empty array, all TaskOutputs configurations are deleted by default.
         self.task_outputs = task_outputs
-        # The variables. Note: The settings of all output variables are deleted if this parameter is set to null or not specified.
+        # The list of variable definitions. If this field is not specified or is an empty array, all Outputs.Variables configurations are deleted by default.
         self.variables = variables
 
     def validate(self):
@@ -742,21 +727,17 @@ class UpdateWorkflowRequestTasksOutputsVariables(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the variable.
+        # The variable name.
         self.name = name
         # The type. Valid values:
-        # 
-        # - Constant: constant value.
-        # 
-        # - PassThrough: node output.
-        # 
-        # - System: variable.
-        # 
-        # - NodeOutput: script output.
+        # - Constant: constant
+        # - PassThrough: output of a parameter node
+        # - System: variable
+        # - NodeOutput: script output
         # 
         # This parameter is required.
         self.type = type
-        # The value of the variable.
+        # The variable value.
         self.value = value
 
     def validate(self):
@@ -796,7 +777,7 @@ class UpdateWorkflowRequestTasksOutputsTaskOutputs(DaraModel):
         self,
         output: str = None,
     ):
-        # The identifier of the output.
+        # The output identifier.
         self.output = output
 
     def validate(self):
@@ -824,7 +805,7 @@ class UpdateWorkflowRequestTasksInputs(DaraModel):
         self,
         variables: List[main_models.UpdateWorkflowRequestTasksInputsVariables] = None,
     ):
-        # The variables. By default, the settings of all input variables are deleted if this parameter is set to null or not specified.
+        # The list of variable definitions. If this field is not specified or is an empty array, all Inputs.Variables configurations are deleted by default.
         self.variables = variables
 
     def validate(self):
@@ -862,21 +843,17 @@ class UpdateWorkflowRequestTasksInputsVariables(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The name of the variable.
+        # The variable name.
         self.name = name
         # The type. Valid values:
-        # 
-        # - Constant: constant value.
-        # 
-        # - PassThrough: node output.
-        # 
-        # - System: variable.
-        # 
-        # - NodeOutput: script output.
+        # - Constant: constant
+        # - PassThrough: output of a parameter node
+        # - System: variable
+        # - NodeOutput: script output
         # 
         # This parameter is required.
         self.type = type
-        # The value of the variable.
+        # The variable value.
         self.value = value
 
     def validate(self):
@@ -919,20 +896,16 @@ class UpdateWorkflowRequestTasksDependencies(DaraModel):
         upstream_task_id: int = None,
     ):
         # The dependency type. Valid values:
-        # 
-        # - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
-        # 
-        # - CrossCycleDependsOnSelf: Depends on itself across cycles.
-        # 
-        # - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
-        # 
-        # - Normal: Depends on nodes in the same cycle.
+        # - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes
+        # - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # - Normal: same-cycle dependency
         # 
         # This parameter is required.
         self.type = type
-        # The output identifier of the upstream task. (This parameter is returned only if `Normal` is set and the node input is configured.)
+        # The output identifier of the upstream node. This field is returned when the dependency type is `same-cycle dependency` and input content is specified.
         self.upstream_output = upstream_output
-        # The ID of the upstream task. (This parameter is returned only if `Normal` or `CrossCycleDependsOnOtherNode` is set and the node input is not configured.)
+        # The ID of the upstream node. This field is returned when the dependency type is `cross-cycle dependency on other nodes` or `same-cycle dependency` without input content specified. It is not returned in other cases.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):
@@ -1039,7 +1012,7 @@ class UpdateWorkflowRequestOutputs(DaraModel):
         self,
         task_outputs: List[main_models.UpdateWorkflowRequestOutputsTaskOutputs] = None,
     ):
-        # The task outputs.
+        # The list of workflow node output definitions.
         self.task_outputs = task_outputs
 
     def validate(self):
@@ -1075,7 +1048,7 @@ class UpdateWorkflowRequestOutputsTaskOutputs(DaraModel):
         self,
         output: str = None,
     ):
-        # The identifier of the output.
+        # The output identifier.
         self.output = output
 
     def validate(self):
@@ -1106,20 +1079,16 @@ class UpdateWorkflowRequestDependencies(DaraModel):
         upstream_task_id: int = None,
     ):
         # The dependency type. Valid values:
-        # 
-        # - CrossCycleDependsOnChildren: Depends on level-1 downstream nodes across cycles
-        # 
-        # - CrossCycleDependsOnSelf: Depends on itself across cycles.
-        # 
-        # - CrossCycleDependsOnOtherNode: Depends on other nodes across cycles.
-        # 
-        # - Normal: Depends on nodes in the same cycle.
+        # - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes
+        # - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # - Normal: same-cycle dependency
         # 
         # This parameter is required.
         self.type = type
-        # The output identifier of the upstream task. (This parameter is returned only if `Normal` is set and the node input is configured.)
+        # The output identifier of the upstream node. This field is returned when the dependency type is `same-cycle dependency` and input content is specified.
         self.upstream_output = upstream_output
-        # The ID of the upstream task. (This parameter is returned only if `Normal` or `CrossCycleDependsOnOtherNode` is set and the node input is not configured.)
+        # The ID of the upstream node. This field is returned when the dependency type is `cross-cycle dependency on other nodes` or `same-cycle dependency` without input content specified. It is not returned in other cases.
         self.upstream_task_id = upstream_task_id
 
     def validate(self):

@@ -1612,6 +1612,7 @@ from ._list_dijobs_response_body import ListDIJobsResponseBodyPagingInfo
 from ._list_data_asset_tags_response_body import ListDataAssetTagsResponseBodyPagingInfoDataAssetTags
 from ._list_data_asset_tags_response_body import ListDataAssetTagsResponseBodyPagingInfo
 from ._list_data_assets_request import ListDataAssetsRequestTags
+from ._list_data_assets_response_body import ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories
 from ._list_data_assets_response_body import ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings
 from ._list_data_assets_response_body import ListDataAssetsResponseBodyPagingInfoDataAssets
 from ._list_data_assets_response_body import ListDataAssetsResponseBodyPagingInfo
@@ -3625,6 +3626,7 @@ __all__ = [
     ListDataAssetTagsResponseBodyPagingInfoDataAssetTags,
     ListDataAssetTagsResponseBodyPagingInfo,
     ListDataAssetsRequestTags,
+    ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories,
     ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings,
     ListDataAssetsResponseBodyPagingInfoDataAssets,
     ListDataAssetsResponseBodyPagingInfo,

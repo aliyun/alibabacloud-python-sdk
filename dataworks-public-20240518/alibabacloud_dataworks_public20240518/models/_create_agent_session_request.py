@@ -143,9 +143,13 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
         self,
         execution_lane: str = None,
         mode: str = None,
+        resource_group_id: str = None,
+        skills: str = None,
     ):
         self.execution_lane = execution_lane
         self.mode = mode
+        self.resource_group_id = resource_group_id
+        self.skills = skills
 
     def validate(self):
         pass
@@ -161,6 +165,12 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
         if self.mode is not None:
             result['Mode'] = self.mode
 
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
+        if self.skills is not None:
+            result['Skills'] = self.skills
+
         return result
 
     def from_map(self, m: dict = None):
@@ -170,6 +180,12 @@ class CreateAgentSessionRequestParamsMetaInitialConfigOptions(DaraModel):
 
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('Skills') is not None:
+            self.skills = m.get('Skills')
 
         return self
 

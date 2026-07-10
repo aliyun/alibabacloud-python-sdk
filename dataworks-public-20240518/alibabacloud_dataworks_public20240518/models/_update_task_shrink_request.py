@@ -27,59 +27,52 @@ class UpdateTaskShrinkRequest(DaraModel):
         timeout: int = None,
         trigger_shrink: str = None,
     ):
-        # The unique code of the client. This code uniquely identifies a task. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
+        # The client unique code of the node, used to uniquely identify a node. This code is used to implement asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. When updating or deleting a resource, if this parameter is specified, it must be consistent with the client unique code used during creation.
         self.client_unique_code = client_unique_code
-        # The information about the associated data source.
+        # The associated data source information.
         self.data_source_shrink = data_source_shrink
         # The dependency information.
         self.dependencies_shrink = dependencies_shrink
-        # The description of the task.
+        # The description.
         self.description = description
-        # The project environment.
-        # 
-        # - Prod
-        # 
-        # - Dev
+        # The project environment. Valid values:
+        # - Prod: production.
+        # - Dev: development.
         self.env_type = env_type
-        # The task ID.
+        # The node ID.
         # 
         # This parameter is required.
         self.id = id
         # The input information.
         self.inputs_shrink = inputs_shrink
-        # The instance generation mode.
-        # 
-        # - T+1: the next day
-        # 
-        # - Immediately Note: Scheduled instances are generated only if the scheduled time is at least 10 minutes after the publish time. Real-time instance generation is unavailable during the global instance generation period (23:30 to 24:00). You can publish nodes during this period, but instances for the new nodes will not be generated automatically.
+        # The instance generation mode. Valid values:
+        # - T+1: The instance is generated the next day.
+        # - Immediately: The instance is generated immediately. Note: Only periodic instances whose scheduled time is at least ten minutes after the node publish time are generated normally. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and publish nodes, but new nodes do not automatically generate instances.
         self.instance_mode = instance_mode
-        # Name.
+        # The name.
         self.name = name
         # The output information.
         self.outputs_shrink = outputs_shrink
-        # The account ID of the task owner.
+        # The account ID of the node owner.
         self.owner = owner
-        # The rerun interval. Unit: milliseconds. Must not exceed 1800000.
+        # The retry time interval, in milliseconds. The value cannot exceed 1800000.
         self.rerun_interval = rerun_interval
-        # The rerun mode. Valid values:
-        # 
-        # - AllDenied: The task cannot be rerun.
-        # 
-        # - FailureAllowed: The task can be rerun only after it fails.
-        # 
-        # - AllAllowed: The task can always be rerun.
+        # Specifies whether the node can be rerun. Valid values:
+        # - AllDenied: The node cannot be rerun regardless of whether it succeeds or fails.
+        # - FailureAllowed: The node can be rerun only when it fails.
+        # - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
         self.rerun_mode = rerun_mode
-        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+        # The number of retries. This parameter takes effect when the node is configured to allow reruns.
         self.rerun_times = rerun_times
-        # Runtime environment configurations, such as resource group information.
+        # The environment configuration, such as resource group information.
         self.runtime_resource_shrink = runtime_resource_shrink
-        # The run script information.
+        # The script information.
         self.script_shrink = script_shrink
-        # The tags.
+        # The list of node tags.
         self.tags_shrink = tags_shrink
-        # Task execution timeout in seconds. Must be greater than 3600.
+        # The node execution timeout period, in seconds. The value must be greater than 3600.
         self.timeout = timeout
-        # The triggering method.
+        # The node trigger method.
         self.trigger_shrink = trigger_shrink
 
     def validate(self):

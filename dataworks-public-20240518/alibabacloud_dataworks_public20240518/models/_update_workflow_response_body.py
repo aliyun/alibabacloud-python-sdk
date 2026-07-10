@@ -10,9 +10,9 @@ class UpdateWorkflowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

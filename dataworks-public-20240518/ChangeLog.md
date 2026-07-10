@@ -1,3 +1,12 @@
+2026-07-10 Version: 8.8.5
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.ResourceGroupId.
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.Skills.
+- Update API ListDataAssets: add request parameters AssetDomainId.
+- Update API ListDataAssets: add request parameters CategoryUuid.
+- Update API ListDataAssets: add request parameters Name.
+- Update API ListDataAssets: add response parameters Body.PagingInfo.DataAssets.$.AssetCategories.
+
+
 2026-07-06 Version: 8.8.4
 - Update API CreatePipelineRun: add request parameters AutoRunUntilStage.
 - Update API CreatePipelineRun: add request parameters RunMode.

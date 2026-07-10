@@ -15,7 +15,7 @@ class ListDataAssetsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataAssetsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The data assets.
+        # The list of data assets.
         self.data_assets = data_assets
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -112,6 +112,7 @@ class ListDataAssetsResponseBodyPagingInfo(DaraModel):
 class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
     def __init__(
         self,
+        asset_categories: List[main_models.ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories] = None,
         data_asset_tag_mappings: List[main_models.ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings] = None,
         env_type: str = None,
         id: str = None,
@@ -119,13 +120,12 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
         project_id: int = None,
         type: str = None,
     ):
-        # The mappings between data assets and tags.
+        self.asset_categories = asset_categories
+        # The list of tags associated with the data asset.
         self.data_asset_tag_mappings = data_asset_tag_mappings
-        # The environment of the workspace to which the data asset belongs. Valid values:
-        # 
-        # - Dev: development environment
-        # 
-        # - Prod: production environment
+        # The workspace environment to which the data asset belongs. Valid values:
+        # - Dev: development environment.
+        # - Prod: production environment.
         self.env_type = env_type
         # The data asset ID.
         self.id = id
@@ -133,14 +133,18 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
         self.name = name
         # The DataWorks workspace ID.
         self.project_id = project_id
-        # The type of the data asset. Valid values:
+        # The Asset Type of the data asset. Valid values:
         # 
-        # - ACS::DataWorks::Table
+        # - ACS::DataWorks::Table: table.
         # 
-        # - ACS::DataWorks::Task
+        # - ACS::DataWorks::Task: scheduling node.
         self.type = type
 
     def validate(self):
+        if self.asset_categories:
+            for v1 in self.asset_categories:
+                 if v1:
+                    v1.validate()
         if self.data_asset_tag_mappings:
             for v1 in self.data_asset_tag_mappings:
                  if v1:
@@ -151,6 +155,11 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['AssetCategories'] = []
+        if self.asset_categories is not None:
+            for k1 in self.asset_categories:
+                result['AssetCategories'].append(k1.to_map() if k1 else None)
+
         result['DataAssetTagMappings'] = []
         if self.data_asset_tag_mappings is not None:
             for k1 in self.data_asset_tag_mappings:
@@ -175,6 +184,12 @@ class ListDataAssetsResponseBodyPagingInfoDataAssets(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.asset_categories = []
+        if m.get('AssetCategories') is not None:
+            for k1 in m.get('AssetCategories'):
+                temp_model = main_models.ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories()
+                self.asset_categories.append(temp_model.from_map(k1))
+
         self.data_asset_tag_mappings = []
         if m.get('DataAssetTagMappings') is not None:
             for k1 in m.get('DataAssetTagMappings'):
@@ -208,7 +223,7 @@ class ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings(DaraMod
         tag_source: str = None,
         value: str = None,
     ):
-        # Indicates whether the lineage-based automatic backtrack feature is enabled for the mapping.
+        # Indicates whether automatic lineage tracing is enabled.
         self.auto_trace_enabled = auto_trace_enabled
         # The creator of the mapping between the data asset and the tag.
         self.creator = creator
@@ -216,11 +231,10 @@ class ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings(DaraMod
         self.data_asset_id = data_asset_id
         # The tag key.
         self.key = key
-        # The way in which the mapping between the data asset and the tag is created. Valid values:
+        # The source of the mapping between the data asset and the tag. Valid values:
         # 
-        # - System
-        # 
-        # - UserDefined
+        # - System: The mapping is created by the data asset governance system.
+        # - UserDefined: The mapping is manually created by a user.
         self.tag_source = tag_source
         # The tag value.
         self.value = value
@@ -272,6 +286,49 @@ class ListDataAssetsResponseBodyPagingInfoDataAssetsDataAssetTagMappings(DaraMod
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class ListDataAssetsResponseBodyPagingInfoDataAssetsAssetCategories(DaraModel):
+    def __init__(
+        self,
+        asset_domain_id: str = None,
+        id: str = None,
+        name: str = None,
+    ):
+        self.asset_domain_id = asset_domain_id
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.asset_domain_id is not None:
+            result['AssetDomainId'] = self.asset_domain_id
+
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetDomainId') is not None:
+            self.asset_domain_id = m.get('AssetDomainId')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         return self
 
