@@ -1,3 +1,16 @@
+2026-07-10 Version: 1.1.0
+- Support API CreateApiKey.
+- Support API CreateTeam.
+- Support API DeleteApiKey.
+- Support API DeleteTeam.
+- Support API DescribeApiKey.
+- Support API GetTeam.
+- Support API ListApiKeys.
+- Support API ListTeams.
+- Support API ResetApiKey.
+- Support API UpdateTeam.
+
+
 2026-07-08 Version: 1.0.2
 - Update API ListQuota: add response parameters Body.maxResults.
 

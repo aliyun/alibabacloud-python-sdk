@@ -10,17 +10,16 @@ from darabonba.model import DaraModel
 class E2BTemplate(DaraModel):
     def __init__(
         self,
-        aliases: List[str] = None,
         build_status: str = None,
+        category: str = None,
         cpu_count: int = None,
         created_at: str = None,
-        last_spawned_at: str = None,
         log_configuration: main_models.LogConfiguration = None,
         memory_mb: int = None,
         names: List[str] = None,
+        network_configuration: main_models.NetworkConfiguration = None,
         public: bool = None,
         resource_group_id: str = None,
-        spawn_count: int = None,
         status_reason: str = None,
         tags: List[main_models.E2BTemplateTag] = None,
         team_id: str = None,
@@ -29,17 +28,16 @@ class E2BTemplate(DaraModel):
         updated_at: str = None,
         user_id: str = None,
     ):
-        self.aliases = aliases
         self.build_status = build_status
+        self.category = category
         self.cpu_count = cpu_count
         self.created_at = created_at
-        self.last_spawned_at = last_spawned_at
         self.log_configuration = log_configuration
         self.memory_mb = memory_mb
         self.names = names
+        self.network_configuration = network_configuration
         self.public = public
         self.resource_group_id = resource_group_id
-        self.spawn_count = spawn_count
         self.status_reason = status_reason
         self.tags = tags
         self.team_id = team_id
@@ -51,6 +49,8 @@ class E2BTemplate(DaraModel):
     def validate(self):
         if self.log_configuration:
             self.log_configuration.validate()
+        if self.network_configuration:
+            self.network_configuration.validate()
         if self.tags:
             for v1 in self.tags:
                  if v1:
@@ -61,20 +61,17 @@ class E2BTemplate(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.aliases is not None:
-            result['aliases'] = self.aliases
-
         if self.build_status is not None:
             result['buildStatus'] = self.build_status
+
+        if self.category is not None:
+            result['category'] = self.category
 
         if self.cpu_count is not None:
             result['cpuCount'] = self.cpu_count
 
         if self.created_at is not None:
             result['createdAt'] = self.created_at
-
-        if self.last_spawned_at is not None:
-            result['lastSpawnedAt'] = self.last_spawned_at
 
         if self.log_configuration is not None:
             result['logConfiguration'] = self.log_configuration.to_map()
@@ -85,14 +82,14 @@ class E2BTemplate(DaraModel):
         if self.names is not None:
             result['names'] = self.names
 
+        if self.network_configuration is not None:
+            result['networkConfiguration'] = self.network_configuration.to_map()
+
         if self.public is not None:
             result['public'] = self.public
 
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
-
-        if self.spawn_count is not None:
-            result['spawnCount'] = self.spawn_count
 
         if self.status_reason is not None:
             result['statusReason'] = self.status_reason
@@ -121,20 +118,17 @@ class E2BTemplate(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('aliases') is not None:
-            self.aliases = m.get('aliases')
-
         if m.get('buildStatus') is not None:
             self.build_status = m.get('buildStatus')
+
+        if m.get('category') is not None:
+            self.category = m.get('category')
 
         if m.get('cpuCount') is not None:
             self.cpu_count = m.get('cpuCount')
 
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
-
-        if m.get('lastSpawnedAt') is not None:
-            self.last_spawned_at = m.get('lastSpawnedAt')
 
         if m.get('logConfiguration') is not None:
             temp_model = main_models.LogConfiguration()
@@ -146,14 +140,15 @@ class E2BTemplate(DaraModel):
         if m.get('names') is not None:
             self.names = m.get('names')
 
+        if m.get('networkConfiguration') is not None:
+            temp_model = main_models.NetworkConfiguration()
+            self.network_configuration = temp_model.from_map(m.get('networkConfiguration'))
+
         if m.get('public') is not None:
             self.public = m.get('public')
 
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')
-
-        if m.get('spawnCount') is not None:
-            self.spawn_count = m.get('spawnCount')
 
         if m.get('statusReason') is not None:
             self.status_reason = m.get('statusReason')

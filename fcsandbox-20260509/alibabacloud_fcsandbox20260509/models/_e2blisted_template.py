@@ -10,19 +10,16 @@ from darabonba.model import DaraModel
 class E2BListedTemplate(DaraModel):
     def __init__(
         self,
-        aliases: List[str] = None,
         build_status: str = None,
         category: str = None,
         cpu_count: int = None,
         created_at: str = None,
         function_name: str = None,
-        last_spawned_at: str = None,
         log_configuration: main_models.LogConfiguration = None,
         memory_mb: int = None,
         names: List[str] = None,
         public: bool = None,
         resource_group_id: str = None,
-        spawn_count: int = None,
         status_reason: str = None,
         tags: List[main_models.E2BTemplateTag] = None,
         team_id: str = None,
@@ -31,19 +28,16 @@ class E2BListedTemplate(DaraModel):
         updated_at: str = None,
         user_id: str = None,
     ):
-        self.aliases = aliases
         self.build_status = build_status
         self.category = category
         self.cpu_count = cpu_count
         self.created_at = created_at
         self.function_name = function_name
-        self.last_spawned_at = last_spawned_at
         self.log_configuration = log_configuration
         self.memory_mb = memory_mb
         self.names = names
         self.public = public
         self.resource_group_id = resource_group_id
-        self.spawn_count = spawn_count
         self.status_reason = status_reason
         self.tags = tags
         self.team_id = team_id
@@ -65,9 +59,6 @@ class E2BListedTemplate(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.aliases is not None:
-            result['aliases'] = self.aliases
-
         if self.build_status is not None:
             result['buildStatus'] = self.build_status
 
@@ -83,9 +74,6 @@ class E2BListedTemplate(DaraModel):
         if self.function_name is not None:
             result['functionName'] = self.function_name
 
-        if self.last_spawned_at is not None:
-            result['lastSpawnedAt'] = self.last_spawned_at
-
         if self.log_configuration is not None:
             result['logConfiguration'] = self.log_configuration.to_map()
 
@@ -100,9 +88,6 @@ class E2BListedTemplate(DaraModel):
 
         if self.resource_group_id is not None:
             result['resourceGroupID'] = self.resource_group_id
-
-        if self.spawn_count is not None:
-            result['spawnCount'] = self.spawn_count
 
         if self.status_reason is not None:
             result['statusReason'] = self.status_reason
@@ -131,9 +116,6 @@ class E2BListedTemplate(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('aliases') is not None:
-            self.aliases = m.get('aliases')
-
         if m.get('buildStatus') is not None:
             self.build_status = m.get('buildStatus')
 
@@ -148,9 +130,6 @@ class E2BListedTemplate(DaraModel):
 
         if m.get('functionName') is not None:
             self.function_name = m.get('functionName')
-
-        if m.get('lastSpawnedAt') is not None:
-            self.last_spawned_at = m.get('lastSpawnedAt')
 
         if m.get('logConfiguration') is not None:
             temp_model = main_models.LogConfiguration()
@@ -167,9 +146,6 @@ class E2BListedTemplate(DaraModel):
 
         if m.get('resourceGroupID') is not None:
             self.resource_group_id = m.get('resourceGroupID')
-
-        if m.get('spawnCount') is not None:
-            self.spawn_count = m.get('spawnCount')
 
         if m.get('statusReason') is not None:
             self.status_reason = m.get('statusReason')
