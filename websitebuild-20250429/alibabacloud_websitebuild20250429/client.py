@@ -139,6 +139,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.allocate_supabase_for_admin_with_options_async(request, runtime)
 
+    def authorize_app_proxy_ops_with_options(
+        self,
+        request: main_models.AuthorizeAppProxyOpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeAppProxyOpsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeAppProxyOps',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeAppProxyOpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def authorize_app_proxy_ops_with_options_async(
+        self,
+        request: main_models.AuthorizeAppProxyOpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthorizeAppProxyOpsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.conversation_id):
+            body['ConversationId'] = request.conversation_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AuthorizeAppProxyOps',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AuthorizeAppProxyOpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def authorize_app_proxy_ops(
+        self,
+        request: main_models.AuthorizeAppProxyOpsRequest,
+    ) -> main_models.AuthorizeAppProxyOpsResponse:
+        runtime = RuntimeOptions()
+        return self.authorize_app_proxy_ops_with_options(request, runtime)
+
+    async def authorize_app_proxy_ops_async(
+        self,
+        request: main_models.AuthorizeAppProxyOpsRequest,
+    ) -> main_models.AuthorizeAppProxyOpsResponse:
+        runtime = RuntimeOptions()
+        return await self.authorize_app_proxy_ops_with_options_async(request, runtime)
+
     def batch_check_resource_measure_with_options(
         self,
         request: main_models.BatchCheckResourceMeasureRequest,

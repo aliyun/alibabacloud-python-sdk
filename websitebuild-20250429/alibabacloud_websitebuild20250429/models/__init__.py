@@ -31,6 +31,9 @@ from ._module_next_components_value_properties_value import ModuleNextComponents
 from ._allocate_supabase_for_admin_request import AllocateSupabaseForAdminRequest
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBody
 from ._allocate_supabase_for_admin_response import AllocateSupabaseForAdminResponse
+from ._authorize_app_proxy_ops_request import AuthorizeAppProxyOpsRequest
+from ._authorize_app_proxy_ops_response_body import AuthorizeAppProxyOpsResponseBody
+from ._authorize_app_proxy_ops_response import AuthorizeAppProxyOpsResponse
 from ._batch_check_resource_measure_request import BatchCheckResourceMeasureRequest
 from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasureResponseBody
 from ._batch_check_resource_measure_response import BatchCheckResourceMeasureResponse
@@ -480,6 +483,7 @@ from ._module_versions_value_components_value_properties_value import ModuleVers
 from ._module_data_components_value_properties_value import ModuleDataComponentsValuePropertiesValueValues
 from ._module_next_components_value_properties_value import ModuleNextComponentsValuePropertiesValueValues
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBodyModule
+from ._authorize_app_proxy_ops_response_body import AuthorizeAppProxyOpsResponseBodyModule
 from ._batch_check_resource_measure_response_body import BatchCheckResourceMeasureResponseBodyModule
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModuleDnsConflictRecords
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModuleDnsConflict
@@ -683,6 +687,9 @@ __all__ = [
     AllocateSupabaseForAdminRequest,
     AllocateSupabaseForAdminResponseBody,
     AllocateSupabaseForAdminResponse,
+    AuthorizeAppProxyOpsRequest,
+    AuthorizeAppProxyOpsResponseBody,
+    AuthorizeAppProxyOpsResponse,
     BatchCheckResourceMeasureRequest,
     BatchCheckResourceMeasureResponseBody,
     BatchCheckResourceMeasureResponse,
@@ -1132,6 +1139,7 @@ __all__ = [
     ModuleDataComponentsValuePropertiesValueValues,
     ModuleNextComponentsValuePropertiesValueValues,
     AllocateSupabaseForAdminResponseBodyModule,
+    AuthorizeAppProxyOpsResponseBodyModule,
     BatchCheckResourceMeasureResponseBodyModule,
     BindAppDomainResponseBodyModuleDnsConflictRecords,
     BindAppDomainResponseBodyModuleDnsConflict,

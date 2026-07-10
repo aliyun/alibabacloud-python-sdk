@@ -1,3 +1,7 @@
+2026-07-10 Version: 2.32.0
+- Support API AuthorizeAppProxyOps.
+
+
 2026-07-08 Version: 2.31.3
 - Generated python 2025-04-29 for WebsiteBuild.
 
