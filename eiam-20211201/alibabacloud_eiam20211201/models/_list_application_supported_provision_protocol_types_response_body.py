@@ -13,7 +13,7 @@ class ListApplicationSupportedProvisionProtocolTypesResponseBody(DaraModel):
         application_supported_provision_protocol_type: main_models.ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType = None,
         request_id: str = None,
     ):
-        # The supported synchronization protocols for the application.
+        # The list of synchronization types supported by the application.
         self.application_supported_provision_protocol_type = application_supported_provision_protocol_type
         # The request ID.
         self.request_id = request_id
@@ -51,11 +51,9 @@ class ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSuppo
         self,
         provision_protocol_type: List[str] = None,
     ):
-        # The account synchronization protocols that the application supports. Valid values:
-        # 
-        # - idaas_callback: event callback.
-        # 
-        # - scim2: System for Cross-domain Identity Management (SCIM) protocol.
+        # The account synchronization type supported by the application. Valid values:
+        # - idaas_callback: Event callback type.
+        # - scim2: System for Cross-domain Identity Management protocol type.
         self.provision_protocol_type = provision_protocol_type
 
     def validate(self):

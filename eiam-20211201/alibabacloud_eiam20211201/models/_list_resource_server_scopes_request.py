@@ -20,29 +20,29 @@ class ListResourceServerScopesRequest(DaraModel):
         resource_server_scope_type: str = None,
         resource_server_scope_value: str = None,
     ):
-        # Application ID.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Authorization type.
+        # The authorization type.
         self.authorization_type = authorization_type
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Number of rows per page in paginated queries.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # Token for the next page query. Set this to the NextToken value returned by the previous API call. Leave empty for the first query.
+        # The pagination token (NextToken) used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
         self.next_token = next_token
-        # Token for the previous page query. Set this to the PreviousToken value returned by the previous API call.
+        # The pagination token for the previous page. Set this parameter to the PreviousToken value returned in the previous API call.
         self.previous_token = previous_token
-        # List of Scope permission IDs.
+        # The list of scope permission IDs.
         self.resource_server_scope_ids = resource_server_scope_ids
-        # Scope permission name.
+        # The scope permission name.
         self.resource_server_scope_name = resource_server_scope_name
-        # Scope permission type.
+        # The scope permission type.
         self.resource_server_scope_type = resource_server_scope_type
-        # Scope permission value.
+        # The scope permission value.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

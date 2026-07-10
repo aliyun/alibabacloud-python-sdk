@@ -22,7 +22,7 @@ class ListApplicationAccountsRequest(DaraModel):
         self.instance_id = instance_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

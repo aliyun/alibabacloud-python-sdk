@@ -63,17 +63,17 @@ class ObtainApplicationTokenResponseBodyApplicationToken(DaraModel):
         self.application_token = application_token
         # The application token ID.
         self.application_token_id = application_token_id
-        # The type of the application token.
+        # The application token type.
         self.application_token_type = application_token_type
         # The time when the application token was created.
         self.create_time = create_time
         # The expiration time.
         self.expiration_time = expiration_time
-        # The ID of the IDaaS EIAM instance.
+        # The IDaaS EIAM instance ID.
         self.instance_id = instance_id
-        # The time when the token was last used.
+        # The last used time.
         self.last_used_time = last_used_time
-        # The status.
+        # The enabling status.
         self.status = status
 
     def validate(self):

@@ -26,9 +26,9 @@ class UpdateApplicationInfoRequest(DaraModel):
         # The application name.
         self.application_name = application_name
         self.application_owner = application_owner
-        # The collection of application visibility settings.
+        # The application visibility settings.
         self.application_visibility = application_visibility
-        # The idempotent token.
+        # The idempotence token.
         self.client_token = client_token
         self.custom_fields = custom_fields
         # The instance ID.

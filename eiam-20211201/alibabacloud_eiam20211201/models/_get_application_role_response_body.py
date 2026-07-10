@@ -11,9 +11,9 @@ class GetApplicationRoleResponseBody(DaraModel):
         application_role: main_models.GetApplicationRoleResponseBodyApplicationRole = None,
         request_id: str = None,
     ):
-        # The details of the application role.
+        # The application role information.
         self.application_role = application_role
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,17 +54,17 @@ class GetApplicationRoleResponseBodyApplicationRole(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
-        # The ID of the application role.
+        # The application role ID.
         self.application_role_id = application_role_id
-        # The name of the application role.
+        # The application role name.
         self.application_role_name = application_role_name
-        # The value of the application role.
+        # The application role value.
         self.application_role_value = application_role_value
-        # The description of the application role.
+        # The application role description.
         self.description = description
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

@@ -22,7 +22,7 @@ class UpdateApplicationAdvancedConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The advanced configuration of the SCIM server.
+        # The SCIM server advanced configuration.
         self.scim_server_advanced_config = scim_server_advanced_config
 
     def validate(self):
@@ -65,9 +65,9 @@ class UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig(DaraModel):
         supported_user_custom_field_ids: List[str] = None,
         user_custom_field_namespace: str = None,
     ):
-        # A list of IDs of supported custom user fields.
+        # The list of supported user custom field IDs.
         self.supported_user_custom_field_ids = supported_user_custom_field_ids
-        # The namespace of the user extension fields.
+        # The namespace of user extended fields.
         self.user_custom_field_namespace = user_custom_field_namespace
 
     def validate(self):

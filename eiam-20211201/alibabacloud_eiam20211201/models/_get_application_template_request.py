@@ -9,7 +9,7 @@ class GetApplicationTemplateRequest(DaraModel):
         self,
         application_template_id: str = None,
     ):
-        # The ID of the application template.
+        # The application template ID.
         # 
         # This parameter is required.
         self.application_template_id = application_template_id

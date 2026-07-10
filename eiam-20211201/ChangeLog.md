@@ -1,3 +1,24 @@
+2026-07-10 Version: 2.17.2
+- Update API CreateApplicationFederatedCredential: add request parameters OidcVerificationConfig.
+- Update API CreateApplicationFederatedCredential: add request parameters Pkcs7VerificationConfig.
+- Update API CreateApplicationFederatedCredential: add request parameters VerificationMode.
+- Update API GetApplicationFederatedCredential: add response parameters Body.ApplicationFederatedCredential.OidcVerificationConfig.
+- Update API GetApplicationFederatedCredential: add response parameters Body.ApplicationFederatedCredential.Pkcs7VerificationConfig.
+- Update API GetApplicationFederatedCredential: add response parameters Body.ApplicationFederatedCredential.VerificationMode.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.OidcVerificationConfig.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.Pkcs7VerificationConfig.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.VerificationCondition.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.VerificationMode.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.OidcVerificationConfig.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.Pkcs7VerificationConfig.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.VerificationCondition.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.VerificationMode.
+- Update API ListApplications: add request parameters ManagedServiceCode.
+- Update API ListApplications: add request parameters ServiceManaged.
+- Update API UpdateApplicationFederatedCredential: add request parameters OidcVerificationConfig.
+- Update API UpdateApplicationFederatedCredential: add request parameters Pkcs7VerificationConfig.
+
+
 2026-07-02 Version: 2.17.1
 - Update API GetCloudAccount: add response parameters Body.CloudAccount.CloudAccountSite.
 - Update API ListCloudAccounts: add response parameters Body.CloudAccounts.$.CloudAccountSite.

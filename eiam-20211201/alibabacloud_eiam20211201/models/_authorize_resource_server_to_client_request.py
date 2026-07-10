@@ -11,7 +11,7 @@ class AuthorizeResourceServerToClientRequest(DaraModel):
         instance_id: str = None,
         resource_server_application_id: str = None,
     ):
-        # The unique ID of the client application.
+        # The unique identifier of the Client application.
         # 
         # This parameter is required.
         self.client_application_id = client_application_id
@@ -19,7 +19,7 @@ class AuthorizeResourceServerToClientRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the resource server application.
+        # The ID of the ResourceServer application.
         # 
         # This parameter is required.
         self.resource_server_application_id = resource_server_application_id

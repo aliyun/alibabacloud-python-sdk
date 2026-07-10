@@ -14,7 +14,7 @@ class RevokeResourceServerScopesFromOrganizationalUnitRequest(DaraModel):
         organizational_unit_id: str = None,
         resource_server_scope_ids: List[str] = None,
     ):
-        # The ID of the ResourceServer application.
+        # The ResourceServer application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
@@ -22,11 +22,11 @@ class RevokeResourceServerScopesFromOrganizationalUnitRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The organization ID.
+        # The organizational unit ID.
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
-        # A list of scope permission IDs for the resource server.
+        # The list of Scope permission IDs under the ResourceServer.
         # 
         # This parameter is required.
         self.resource_server_scope_ids = resource_server_scope_ids

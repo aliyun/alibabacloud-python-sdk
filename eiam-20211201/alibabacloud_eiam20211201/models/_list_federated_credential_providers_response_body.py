@@ -17,17 +17,17 @@ class ListFederatedCredentialProvidersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of federated credential providers.
+        # The list of federated trust sources.
         self.federated_credential_providers = federated_credential_providers
-        # The number of entries per page.
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The token to retrieve the next page of results. This parameter is empty if all results have been returned.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The token for the previous page of results.
+        # The pagination token returned by this call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -106,29 +106,29 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProviders(D
         update_time: int = None,
     ):
         self.cloud_id_pprovider_config = cloud_id_pprovider_config
-        # The provider\\"s creation time.
+        # The creation time.
         self.create_time = create_time
-        # The provider\\"s description.
+        # The description.
         self.description = description
-        # The ID of the federated credential provider.
+        # The federated trust source ID.
         self.federated_credential_provider_id = federated_credential_provider_id
-        # The name of the federated credential provider.
+        # The name of the federated trust source.
         self.federated_credential_provider_name = federated_credential_provider_name
-        # The type of the federated credential provider.
+        # The type of the federated trust source.
         self.federated_credential_provider_type = federated_credential_provider_type
         # The instance ID.
         self.instance_id = instance_id
-        # The ID of the network access endpoint.
+        # The network access endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The OpenID Connect (OIDC) configuration.
+        # The OIDC configuration.
         self.oidc_provider_config = oidc_provider_config
         # The PKCS7 configuration.
         self.pkcs_7provider_config = pkcs_7provider_config
         # The private CA configuration.
         self.private_ca_provider_config = private_ca_provider_config
-        # The provider\\"s status.
+        # The status.
         self.status = status
-        # The provider\\"s last update time.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -241,9 +241,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPr
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # A list of root certificates.
+        # The root certificates.
         self.certificates = certificates
-        # The method for obtaining the root certificate.
+        # The method used to retrieve the root certificate.
         self.trust_anchor_source = trust_anchor_source
         # The trust condition.
         self.trust_condition = trust_condition
@@ -295,11 +295,11 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPr
         content: str = None,
         fingerprint: str = None,
     ):
-        # The metadata of the certificate.
+        # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # The content of the root certificate.
+        # The root certificate content.
         self.content = content
-        # The fingerprint of the root certificate.
+        # The root certificate fingerprint.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -342,9 +342,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPr
         not_after: int = None,
         not_before: int = None,
     ):
-        # The expiration time.
+        # The time when the certificate expires.
         self.not_after = not_after
-        # The validity start time.
+        # The effective period of the certificate.
         self.not_before = not_before
 
     def validate(self):
@@ -383,15 +383,15 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPk
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # A list of PKCS7 certificates.
+        # The list of PKCS7 certificates.
         self.certificates = certificates
-        # The Cryptographic Message Syntax (CMS) verification mode.
+        # The CMS verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # The validity period of the signature.
+        # The signature effective time.
         self.signature_effective_time = signature_effective_time
-        # The expression used to obtain the signing time.
+        # The expression used to retrieve the signing time.
         self.signing_time_value_expression = signing_time_value_expression
-        # The source of the certificate trust anchor.
+        # The certificate trust anchor source.
         self.trust_anchor_source = trust_anchor_source
         # The trust condition.
         self.trust_condition = trust_condition
@@ -461,9 +461,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPk
         content: str = None,
         fingerprint: str = None,
     ):
-        # The metadata of the certificate.
+        # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # The content of the certificate.
+        # The certificate content.
         self.content = content
         # The certificate fingerprint.
         self.fingerprint = fingerprint
@@ -508,9 +508,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPk
         not_after: int = None,
         not_before: int = None,
     ):
-        # The expiration time.
+        # The time when the certificate expires.
         self.not_after = not_after
-        # The validity start time.
+        # The effective period of the certificate.
         self.not_before = not_before
 
     def validate(self):
@@ -555,13 +555,13 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOi
         self.audiences = audiences
         # The dynamically obtained JWKS.
         self.dynamic_jwks = dynamic_jwks
-        # The issuer.
+        # Issuer
         self.issuer = issuer
-        # The timestamp of the last JWKS retrieval.
+        # The time when the JWKS was last obtained.
         self.jwks_last_obtained_time = jwks_last_obtained_time
         # The JWKS source.
         self.jwks_source = jwks_source
-        # The JSON Web Key Set (JWKS) endpoint.
+        # The JWKS endpoint.
         self.jwks_uri = jwks_uri
         # The statically obtained JWKS.
         self.static_jwks = static_jwks

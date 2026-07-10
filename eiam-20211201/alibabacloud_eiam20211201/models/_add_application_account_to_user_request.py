@@ -16,7 +16,7 @@ class AddApplicationAccountToUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The name of the application account.
+        # The application account name.
         # 
         # This parameter is required.
         self.application_username = application_username

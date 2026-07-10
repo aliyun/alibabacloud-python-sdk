@@ -10,11 +10,11 @@ class GetCredentialProviderRequest(DaraModel):
         credential_provider_id: str = None,
         instance_id: str = None,
     ):
-        # Credential provider ID.
+        # The credential provider ID.
         # 
         # This parameter is required.
         self.credential_provider_id = credential_provider_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

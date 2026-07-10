@@ -13,7 +13,7 @@ class GetApplicationTemplateResponseBody(DaraModel):
         application_template: main_models.GetApplicationTemplateResponseBodyApplicationTemplate = None,
         request_id: str = None,
     ):
-        # The details of the application template.
+        # The application template information.
         self.application_template = application_template
         # The request ID.
         self.request_id = request_id
@@ -62,27 +62,27 @@ class GetApplicationTemplateResponseBodyApplicationTemplate(DaraModel):
         sso_types: List[str] = None,
         update_time: int = None,
     ):
-        # The ID of the application template.
+        # The application template ID.
         self.application_template_id = application_template_id
-        # The name of the application template.
+        # The application template name.
         self.application_template_name = application_template_name
         # The time when the application template was created.
         self.create_time = create_time
-        # The description of the application template.
+        # The application template description.
         self.description = description
-        # The URL of the help document for the application template.
+        # The help document URL of the application template.
         self.help_document_url = help_document_url
-        # The URL of the logo for the application template.
+        # The logo URL of the application template.
         self.logo_url = logo_url
         # The service code of the Alibaba Cloud service that manages the application template.
         self.managed_service_code = managed_service_code
-        # The sales information about the application template.
+        # The sale information of the application template.
         self.sale_info = sale_info
-        # The URL of the console for the Alibaba Cloud service that manages the application template.
+        # The console URL of the Alibaba Cloud service that manages the application template.
         self.service_console_url = service_console_url
         # Indicates whether the application template is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
-        # The supported Single Sign-On (SSO) protocols.
+        # The supported SSO protocols.
         self.sso_types = sso_types
         # The time when the application template was last updated.
         self.update_time = update_time
@@ -180,7 +180,7 @@ class GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo(DaraModel):
         self,
         always_free: bool = None,
     ):
-        # Indicates whether the application template is permanently free.
+        # Indicates whether the application template is always free.
         self.always_free = always_free
 
     def validate(self):

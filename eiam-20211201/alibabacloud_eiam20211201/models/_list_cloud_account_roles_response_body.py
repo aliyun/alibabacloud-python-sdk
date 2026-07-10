@@ -18,13 +18,13 @@ class ListCloudAccountRolesResponseBody(DaraModel):
     ):
         # The list of cloud roles.
         self.cloud_account_roles = cloud_account_roles
-        # The number of entries returned per page.
+        # The number of rows per page in the paging query.
         self.max_results = max_results
-        # The query token returned in this call.
+        # The pagination token returned in this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -96,47 +96,40 @@ class ListCloudAccountRolesResponseBodyCloudAccountRoles(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The cloud account ID.
         self.cloud_account_id = cloud_account_id
-        # The external ID for the cloud role.
+        # The cloud role identifier.
         self.cloud_account_role_external_id = cloud_account_role_external_id
         # The health status of the cloud role. Valid values:
-        # 
-        # - healthy: The role is healthy.
-        # 
-        # - unhealthy: The role is unhealthy.
-        # 
-        # - unknown: The health status is unknown.
+        # - healthy: healthy.
+        # - unhealthy: unhealthy.
+        # - unknown: unknown.
         self.cloud_account_role_health = cloud_account_role_health
-        # The result of the health check for the cloud role.
+        # The health check result of the cloud role.
         self.cloud_account_role_health_check_result = cloud_account_role_health_check_result
-        # The ID of the cloud role.
+        # The cloud role ID.
         self.cloud_account_role_id = cloud_account_role_id
-        # The name of the cloud role.
+        # The cloud role name.
         self.cloud_account_role_name = cloud_account_role_name
-        # The type of the cloud role. The format of the role type varies based on the type of the cloud account. The following value is supported:
+        # The cloud role type. The specific format depends on the cloud account type. Valid values:
         # 
-        # - role: This value applies to Alibaba Cloud accounts.
+        # - role: applicable to Alibaba Cloud accounts.
         self.cloud_account_role_type = cloud_account_role_type
         # The usage type of the cloud role. Valid values:
-        # 
-        # - system: The role is used by the system.
-        # 
-        # - user: The role is used by a user.
+        # - system: system.
+        # - user: user.
         self.cloud_account_role_usage_type = cloud_account_role_usage_type
-        # The time when the role was created. This is a UNIX timestamp. Unit: milliseconds.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The description of the cloud role.
+        # The cloud role description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The status of the cloud role. Valid values:
-        # 
-        # - enabled: The role is enabled.
-        # 
-        # - disabled: The role is disabled.
+        # The cloud role status. Valid values:
+        # - enabled: enabled.
+        # - disable: disabled.
         self.status = status
-        # The time when the role was last updated. This is a UNIX timestamp. Unit: milliseconds.
+        # The last update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -240,15 +233,13 @@ class ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCh
         last_check_time: int = None,
         result: str = None,
     ):
-        # The reason for the error. This parameter is returned when the health check status is unhealthy.
+        # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
-        # The time of the last health check. This is a UNIX timestamp. Unit: milliseconds.
+        # The last check time, in UNIX timestamp format. Unit: milliseconds.
         self.last_check_time = last_check_time
-        # The result of the health check. Valid values:
-        # 
-        # - success: The health check was successful.
-        # 
-        # - failed: The health check failed.
+        # The health check result of the cloud role. Valid values:
+        # - success: succeeded.
+        # - failed: failed.
         self.result = result
 
     def validate(self):
@@ -293,7 +284,7 @@ class ListCloudAccountRolesResponseBodyCloudAccountRolesCloudAccountRoleHealthCh
     ):
         # The error code.
         self.error_code = error_code
-        # The error message.
+        # The error description.
         self.error_message = error_message
 
     def validate(self):

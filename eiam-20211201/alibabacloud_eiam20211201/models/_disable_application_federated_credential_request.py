@@ -11,7 +11,7 @@ class DisableApplicationFederatedCredentialRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the federated credential for the application.
+        # The application federated identity credential ID.
         # 
         # This parameter is required.
         self.application_federated_credential_id = application_federated_credential_id

@@ -21,13 +21,13 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
         private_ca_provider_config: main_models.CreateFederatedCredentialProviderRequestPrivateCaProviderConfig = None,
     ):
         self.cloud_id_pprovider_config = cloud_id_pprovider_config
-        # The description of the federated credential provider.
+        # The description of the federated trust source.
         self.description = description
-        # The name of the federated credential provider.
+        # The name of the federated trust source.
         # 
         # This parameter is required.
         self.federated_credential_provider_name = federated_credential_provider_name
-        # The type of the federated credential provider.
+        # The type of the federated trust source.
         # 
         # This parameter is required.
         self.federated_credential_provider_type = federated_credential_provider_type
@@ -35,13 +35,13 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The network access endpoint ID.
+        # The ID of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The configuration for an OIDC-based provider.
+        # The OIDC configuration.
         self.oidc_provider_config = oidc_provider_config
-        # The configuration for a PKCS7-based provider.
+        # The PKCS7 configuration.
         self.pkcs_7provider_config = pkcs_7provider_config
-        # The configuration for a private CA-based provider.
+        # The private CA configuration.
         self.private_ca_provider_config = private_ca_provider_config
 
     def validate(self):
@@ -130,11 +130,11 @@ class CreateFederatedCredentialProviderRequestPrivateCaProviderConfig(DaraModel)
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # The root certificates that form the trust anchor.
+        # The list of root certificates.
         self.certificates = certificates
-        # The source of the trust anchor.
+        # The method used to retrieve the root certificate.
         self.trust_anchor_source = trust_anchor_source
-        # The condition for trusting the root certificate.
+        # The trust condition for the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -182,7 +182,7 @@ class CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificate
         self,
         content: str = None,
     ):
-        # The content of the PEM-encoded certificate.
+        # The content of the root certificate.
         self.content = content
 
     def validate(self):
@@ -215,17 +215,17 @@ class CreateFederatedCredentialProviderRequestPkcs7ProviderConfig(DaraModel):
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # The certificates for verifying the PKCS7 signature.
+        # The list of PKCS7 certificates.
         self.certificates = certificates
-        # The Cryptographic Message Syntax (CMS) verification mode.
+        # The CMS verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # The validity period of the signature, in seconds.
+        # The validity period of the signature.
         self.signature_effective_time = signature_effective_time
-        # The expression to extract the signing time from the signature.
+        # The expression used to retrieve the signing time.
         self.signing_time_value_expression = signing_time_value_expression
-        # The source of the trust anchor.
+        # The source of the certificate trust anchor.
         self.trust_anchor_source = trust_anchor_source
-        # The condition that the signature data must meet to be trusted.
+        # The trust condition.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -291,7 +291,7 @@ class CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates(Da
         self,
         content: str = None,
     ):
-        # The content of the PEM-encoded certificate.
+        # The content of the root certificate.
         self.content = content
 
     def validate(self):
@@ -324,17 +324,17 @@ class CreateFederatedCredentialProviderRequestOidcProviderConfig(DaraModel):
         static_jwks: str = None,
         trust_condition: str = None,
     ):
-        # A list of audiences. The `aud` claim in the OIDC token must match a value from this list.
+        # The list of audiences.
         self.audiences = audiences
-        # The issuer identifier for the OIDC provider. This value must match the `iss` claim in the token.
+        # Issuer
         self.issuer = issuer
-        # The source of the JSON Web Key Set (JWKS).
+        # The source of the JWKS.
         self.jwks_source = jwks_source
-        # The URI of the JWKS endpoint.
+        # The JWKS endpoint.
         self.jwks_uri = jwks_uri
-        # The static JWKS content in JSON format.
+        # The statically retrieved JWKS.
         self.static_jwks = static_jwks
-        # The condition the OIDC token must meet to be trusted.
+        # The trust condition.
         self.trust_condition = trust_condition
 
     def validate(self):

@@ -30,21 +30,17 @@ class SetApplicationProvisioningConfigRequest(DaraModel):
         self.instance_id = instance_id
         # The network endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # Indicates whether to synchronize passwords for IDaaS user event callbacks. Valid values:
-        # 
-        # - true: Synchronize passwords.
-        # 
-        # - false: Do not synchronize passwords.
+        # Specifies whether IDaaS user event callbacks synchronize passwords. Valid values:
+        # - true: Passwords are synchronized.
+        # - false: Passwords are not synchronized.
         self.provision_password = provision_password
-        # The account synchronization protocol. Valid values:
-        # 
-        # - idaas_callback: IDaaS custom event callback for account synchronization.
-        # 
-        # - scim2: System for Cross-domain Identity Management (SCIM) protocol for synchronization.
+        # The account synchronization protocol type. Valid values:
+        # - idaas_callback: IDaaS custom event callback-based account synchronization.
+        # - scim2: System for Cross-domain Identity Management protocol-based synchronization.
         # 
         # This parameter is required.
         self.provision_protocol_type = provision_protocol_type
-        # The IDaaS SCIM protocol synchronization configuration parameters. This parameter is required when ProvisionProtocolType is set to scim2.
+        # The IDaaS System for Cross-domain Identity Management protocol synchronization configuration parameters. This parameter is required when ProvisionProtocolType is set to scim2.
         self.scim_provisioning_config = scim_provisioning_config
 
     def validate(self):
@@ -116,21 +112,17 @@ class SetApplicationProvisioningConfigRequestScimProvisioningConfig(DaraModel):
         provisioning_actions: List[str] = None,
         scim_base_url: str = None,
     ):
-        # The configuration parameters for SCIM protocol synchronization.
+        # The System for Cross-domain Identity Management protocol synchronization configuration parameters.
         self.authn_configuration = authn_configuration
-        # The scope of a full push for the SCIM protocol. Valid values:
-        # 
-        # - urn:alibaba:idaas:app:scim:User:PUSH: Full synchronization of users.
+        # The System for Cross-domain Identity Management protocol full push scope. Valid values:
+        # - urn:alibaba:idaas:app:scim:User:PUSH: Full user synchronization.
         self.full_push_scopes = full_push_scopes
-        # The operations on the target resource for the SCIM protocol. Valid values:
-        # 
-        # - urn:alibaba:idaas:app:scim:User:CREATE: Create an account.
-        # 
-        # - urn:alibaba:idaas:app:scim:User:UPDATE: Update an account.
-        # 
-        # - urn:alibaba:idaas:app:scim:User:DELETE: Delete an account.
+        # The System for Cross-domain Identity Management protocol target resource operation actions. Valid values:
+        # - urn:alibaba:idaas:app:scim:User:CREATE: Account creation.
+        # - urn:alibaba:idaas:app:scim:User:UPDATE: Account update.
+        # - urn:alibaba:idaas:app:scim:User:DELETE: Account deletion.
         self.provisioning_actions = provisioning_actions
-        # The base URL where the application accepts IDaaS SCIM protocol synchronization.
+        # The base URL where the application accepts IDaaS synchronization requests based on the System for Cross-domain Identity Management protocol.
         self.scim_base_url = scim_base_url
 
     def validate(self):
@@ -180,21 +172,16 @@ class SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigur
         authn_param: main_models.SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigurationAuthnParam = None,
         grant_type: str = None,
     ):
-        # The authorization mode for the SCIM protocol interface. Valid values:
-        # 
-        # - oauth2: OAuth2 mode.
+        # The authorization pattern for the System for Cross-domain Identity Management protocol API. Valid values:
+        # - oauth2: OAuth2 pattern.
         self.authn_mode = authn_mode
-        # The authorization configuration parameters. The usage is as follows:
-        # 
+        # The authorization configuration parameters. Usage:
         # - If GrantType is set to client_credentials, you can update ClientId, ClientSecret, and AuthnMethod.
-        # 
         # - If GrantType is set to bearer_token, you can update AccessToken.
         self.authn_param = authn_param
-        # The authorization grant type for the SCIM protocol. Valid values:
-        # 
-        # - client_credentials: Client credentials mode.
-        # 
-        # - bearer_token: Bearer token mode.
+        # The System for Cross-domain Identity Management protocol authorization pattern. Valid values:
+        # - client_credentials: Client credentials pattern.
+        # - bearer_token: Bearer token pattern.
         self.grant_type = grant_type
 
     def validate(self):
@@ -240,13 +227,11 @@ class SetApplicationProvisioningConfigRequestScimProvisioningConfigAuthnConfigur
         client_secret: str = None,
         token_endpoint: str = None,
     ):
-        # The access token. You can update this field when the grant type is bearer_token.
+        # The access token. This field can be updated when GrantType is set to bearer_token.
         self.access_token = access_token
-        # The authentication method for the SCIM protocol. Valid values:
-        # 
-        # - client_secret_basic: The key is passed in the request header.
-        # 
-        # - client_secret_post: The key is passed in the request body.
+        # The System for Cross-domain Identity Management protocol authentication pattern. Valid values:
+        # - client_secret_basic: Passes the secret through the request header.
+        # - client_secret_post: Passes the secret through the request body.
         self.authn_method = authn_method
         # The client ID of the application.
         self.client_id = client_id
@@ -307,17 +292,15 @@ class SetApplicationProvisioningConfigRequestCallbackProvisioningConfig(DaraMode
         encrypt_required: bool = None,
         listen_event_scopes: List[str] = None,
     ):
-        # The destination address where the application accepts IDaaS event callbacks.
+        # The destination URL where the application receives IDaaS event callbacks.
         self.callback_url = callback_url
-        # The symmetric key for encrypting and decrypting IDaaS event callbacks. The key uses the AES-256 algorithm and is in hexadecimal format.
+        # The symmetric encryption and decryption key for IDaaS event callbacks. The key uses the AES256 algorithm and is in hexadecimal encoding format.
         self.encrypt_key = encrypt_key
-        # Indicates whether to encrypt IDaaS event callback messages. Valid values:
-        # 
-        # - true: Encrypt the messages.
-        # 
-        # - false: Do not encrypt the messages. The messages are transmitted in plaintext.
+        # Specifies whether IDaaS event callback messages are encrypted. Valid values:
+        # - true: Encrypted.
+        # - false: Not encrypted. Messages are transmitted in plaintext.
         self.encrypt_required = encrypt_required
-        # The list of message types for the IDaaS event callback listener.
+        # The list of IDaaS event callback message types to listen for.
         self.listen_event_scopes = listen_event_scopes
 
     def validate(self):

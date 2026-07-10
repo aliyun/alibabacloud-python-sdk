@@ -26,7 +26,7 @@ class GenerateOauthTokenRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The scope of permissions.
+        # The permission scopes.
         # 
         # This parameter is required.
         self.scope_values = scope_values

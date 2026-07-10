@@ -51,7 +51,7 @@ class CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponseBodyCheck
         application_id: str = None,
         instance_id: str = None,
     ):
-        # Indicates if the authorization is granted.
+        # Indicates whether authorization is allowed.
         self.allow_authorization = allow_authorization
         # The application ID.
         self.application_id = application_id

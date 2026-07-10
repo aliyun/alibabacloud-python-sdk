@@ -15,7 +15,7 @@ class DisableApplicationTokenRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the application token.
+        # The application token ID.
         # 
         # This parameter is required.
         self.application_token_id = application_token_id

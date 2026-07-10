@@ -10,7 +10,7 @@ class CreateCredentialProviderResponseBody(DaraModel):
         credential_provider_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the credential provider.
+        # The credential provider ID.
         self.credential_provider_id = credential_provider_id
         # The request ID.
         self.request_id = request_id

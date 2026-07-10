@@ -10,7 +10,7 @@ class CreateApplicationFederatedCredentialResponseBody(DaraModel):
         application_federated_credential_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the application federated credential.
+        # The application federated identity credential ID.
         self.application_federated_credential_id = application_federated_credential_id
         # The request ID.
         self.request_id = request_id

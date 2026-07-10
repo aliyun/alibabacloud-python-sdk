@@ -89,7 +89,7 @@ class GetCloudAccountResponseBodyCloudAccount(DaraModel):
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The most recent update time. The value is a UNIX timestamp in milliseconds.
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

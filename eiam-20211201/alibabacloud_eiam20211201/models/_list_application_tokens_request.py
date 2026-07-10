@@ -15,7 +15,7 @@ class ListApplicationTokensRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The type of the application token.
+        # The application token type.
         # 
         # This parameter is required.
         self.application_token_type = application_token_type

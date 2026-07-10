@@ -11,7 +11,7 @@ class ObtainApplicationClientSecretResponseBody(DaraModel):
         application_client_secret: main_models.ObtainApplicationClientSecretResponseBodyApplicationClientSecret = None,
         request_id: str = None,
     ):
-        # The secret information.
+        # The client secret information.
         self.application_client_secret = application_client_secret
         # The request ID.
         self.request_id = request_id
@@ -62,19 +62,17 @@ class ObtainApplicationClientSecretResponseBodyApplicationClientSecret(DaraModel
         self.client_id = client_id
         # The client secret of the application.
         self.client_secret = client_secret
-        # The expiration time of the client secret. This is a UNIX timestamp. Unit: milliseconds.
+        # The expiration time of the client secret. The value is a UNIX timestamp. Unit: milliseconds.
         self.expiration_time = expiration_time
         # The instance ID.
         self.instance_id = instance_id
-        # The last time the client secret was used. This is a UNIX timestamp. Unit: milliseconds.
+        # The time when the client secret was last used. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_used_time = last_used_time
         # The client secret ID of the application.
         self.secret_id = secret_id
         # The status of the client secret. Valid values:
-        # 
-        # - enabled: The secret is enabled.
-        # 
-        # - disabled: The secret is disabled.
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
 
     def validate(self):

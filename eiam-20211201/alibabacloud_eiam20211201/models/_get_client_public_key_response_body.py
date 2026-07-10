@@ -11,7 +11,7 @@ class GetClientPublicKeyResponseBody(DaraModel):
         client_public_key: main_models.GetClientPublicKeyResponseBodyClientPublicKey = None,
         request_id: str = None,
     ):
-        # Information about the application\\"s ClientPublicKey.
+        # The application ClientPublicKey information.
         self.client_public_key = client_public_key
         # The request ID.
         self.request_id = request_id
@@ -61,15 +61,15 @@ class GetClientPublicKeyResponseBodyClientPublicKey(DaraModel):
         self.algorithm_type = algorithm_type
         # The application ID.
         self.application_id = application_id
-        # The ID of the application\\"s ClientPublicKey.
+        # The ID of the application ClientPublicKey.
         self.client_public_key_id = client_public_key_id
-        # The time when the public key was created.
+        # The creation time.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the key was last used.
+        # The last time the key pair was used.
         self.last_used_time = last_used_time
-        # Indicates whether this is the primary key.
+        # Indicates whether the key pair is used with priority.
         self.primary = primary
         # The public key.
         self.public_key = public_key

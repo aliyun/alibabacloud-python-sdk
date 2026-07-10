@@ -21,7 +21,7 @@ class CreateClientPublicKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # A client token used to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The ClientToken value can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -29,7 +29,7 @@ class CreateClientPublicKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The public key in the Subject Public Key Info (SPKI) type of the Privacy-Enhanced Mail (PEM) format. The key must start with -----BEGIN PUBLIC KEY----- and end with -----END PUBLIC KEY-----.
+        # The public key in PEM format. The key must be of the SPKI type, starting with "-----BEGIN PUBLIC KEY-----" and ending with "-----END PUBLIC KEY-----".
         # 
         # This parameter is required.
         self.public_key = public_key

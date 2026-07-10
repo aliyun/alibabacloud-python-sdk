@@ -16,9 +16,9 @@ class ListResourceServersForUserResponseBody(DaraModel):
         resource_servers: List[main_models.ListResourceServersForUserResponseBodyResourceServers] = None,
         total_count: int = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The pagination token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -87,13 +87,13 @@ class ListResourceServersForUserResponseBodyResourceServers(DaraModel):
         resource_server_identifier: str = None,
         resource_server_scopes: List[main_models.ListResourceServersForUserResponseBodyResourceServersResourceServerScopes] = None,
     ):
-        # The ID of the ResourceServer application.
+        # The ResourceServer application ID.
         self.application_id = application_id
         # The instance ID.
         self.instance_id = instance_id
         # The unique identifier of the ResourceServer.
         self.resource_server_identifier = resource_server_identifier
-        # The list of granted Scope permissions.
+        # The list of authorized Scope permissions.
         self.resource_server_scopes = resource_server_scopes
 
     def validate(self):
@@ -150,13 +150,15 @@ class ListResourceServersForUserResponseBodyResourceServersResourceServerScopes(
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # Indicates whether a direct authorization exists.
+        # Indicates whether direct authorization exists. Valid values:
+        # - true: Direct authorization exists.
+        # - false: Direct authorization does not exist.
         self.has_direct_authorization = has_direct_authorization
-        # Indicates whether an inherited permission exists.
+        # Indicates whether inherited authorization exists.
         self.has_inherit_authorization = has_inherit_authorization
-        # The ID of the Scope permission.
+        # The Scope permission ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # The name of the Scope permission.
+        # The Scope permission name.
         self.resource_server_scope_name = resource_server_scope_name
 
     def validate(self):

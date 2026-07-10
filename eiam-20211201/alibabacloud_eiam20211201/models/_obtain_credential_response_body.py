@@ -11,7 +11,7 @@ class ObtainCredentialResponseBody(DaraModel):
         credential: main_models.ObtainCredentialResponseBodyCredential = None,
         request_id: str = None,
     ):
-        # The credential details.
+        # The credential information.
         self.credential = credential
         # The request ID.
         self.request_id = request_id
@@ -65,15 +65,13 @@ class ObtainCredentialResponseBodyCredential(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The time when the credential was created. This value is a Unix timestamp in milliseconds.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The credential content.
         self.credential_content = credential_content
-        # The credential creation type. Valid values:
-        # 
-        # - `system_init`: The system created the credential.
-        # 
-        # - `user_custom`: A user created the credential.
+        # The creation type of the credential. Valid values:
+        # - system_init: Created by the system.
+        # - user_custom: Created by the user.
         self.credential_creation_type = credential_creation_type
         self.credential_external_id = credential_external_id
         # The credential ID.
@@ -82,37 +80,30 @@ class ObtainCredentialResponseBodyCredential(DaraModel):
         self.credential_identifier = credential_identifier
         # The credential name.
         self.credential_name = credential_name
-        # The credential scenario label. Valid values:
-        # 
-        # - `llm`: The credential is used for an LLM.
-        # 
-        # - `saas`: The credential is used for a SaaS application.
+        # The scenarios label of the credential. Valid values:
+        # - llm: large language model.
+        # - saas: third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
         self.credential_sharing_scope = credential_sharing_scope
-        # The credential subject ID.
+        # The ID of the subject to which the credential belongs.
         self.credential_subject_id = credential_subject_id
-        # The credential subject type. Valid value:
-        # 
-        # - `authentication_token_provider`: The credential subject is an authentication token provider.
+        # The type of the subject to which the credential belongs. Valid values:
+        # - authentication_token_provider: authentication token provider.
         self.credential_subject_type = credential_subject_type
         # The credential type. Valid values:
-        # 
-        # - `api_key`: An API key.
-        # 
-        # - `oauth_client`: An OAuth 2.0 client credential.
+        # - api_key: API key authentication credential.
+        # - oauth_client: OAuth client authentication credential.
         self.credential_type = credential_type
-        # The description.
+        # The credential description.
         self.description = description
         self.exclusive_user_id = exclusive_user_id
         # The instance ID.
         self.instance_id = instance_id
-        # The status. Valid values:
-        # 
-        # - `enabled`: The credential can be used.
-        # 
-        # - `disabled`: The credential cannot be used.
+        # The credential status. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
-        # The time when the credential was last updated. This value is a Unix timestamp in milliseconds.
+        # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -239,9 +230,9 @@ class ObtainCredentialResponseBodyCredentialCredentialContent(DaraModel):
         api_key_content: main_models.ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent = None,
         oauth_client_content: main_models.ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent = None,
     ):
-        # The details of the API key credential.
+        # The credential content of the API key credential type.
         self.api_key_content = api_key_content
-        # The details of the OAuth 2.0 client credential.
+        # The credential content of the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -281,9 +272,9 @@ class ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent(
         client_id: str = None,
         client_secret: str = None,
     ):
-        # The client ID.
+        # The client_id of the OAuth protocol.
         self.client_id = client_id
-        # The client secret.
+        # The client_secret of the OAuth protocol.
         self.client_secret = client_secret
 
     def validate(self):
@@ -317,7 +308,7 @@ class ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent(DaraM
         self,
         api_key: str = None,
     ):
-        # The API key.
+        # The API key content.
         self.api_key = api_key
 
     def validate(self):

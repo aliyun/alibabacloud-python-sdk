@@ -1827,8 +1827,14 @@ class Client(OpenApiClient):
             query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.oidc_verification_config):
+            query['OidcVerificationConfig'] = request.oidc_verification_config
+        if not DaraCore.is_null(request.pkcs_7verification_config):
+            query['Pkcs7VerificationConfig'] = request.pkcs_7verification_config
         if not DaraCore.is_null(request.verification_condition):
             query['VerificationCondition'] = request.verification_condition
+        if not DaraCore.is_null(request.verification_mode):
+            query['VerificationMode'] = request.verification_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1869,8 +1875,14 @@ class Client(OpenApiClient):
             query['FederatedCredentialProviderId'] = request.federated_credential_provider_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.oidc_verification_config):
+            query['OidcVerificationConfig'] = request.oidc_verification_config
+        if not DaraCore.is_null(request.pkcs_7verification_config):
+            query['Pkcs7VerificationConfig'] = request.pkcs_7verification_config
         if not DaraCore.is_null(request.verification_condition):
             query['VerificationCondition'] = request.verification_condition
+        if not DaraCore.is_null(request.verification_mode):
+            query['VerificationMode'] = request.verification_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -15701,12 +15713,16 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.m_2mclient_status):
             query['M2MClientStatus'] = request.m_2mclient_status
+        if not DaraCore.is_null(request.managed_service_code):
+            query['ManagedServiceCode'] = request.managed_service_code
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_server_status):
             query['ResourceServerStatus'] = request.resource_server_status
+        if not DaraCore.is_null(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not DaraCore.is_null(request.sso_type):
             query['SsoType'] = request.sso_type
         if not DaraCore.is_null(request.status):
@@ -15753,12 +15769,16 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.m_2mclient_status):
             query['M2MClientStatus'] = request.m_2mclient_status
+        if not DaraCore.is_null(request.managed_service_code):
+            query['ManagedServiceCode'] = request.managed_service_code
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_server_status):
             query['ResourceServerStatus'] = request.resource_server_status
+        if not DaraCore.is_null(request.service_managed):
+            query['ServiceManaged'] = request.service_managed
         if not DaraCore.is_null(request.sso_type):
             query['SsoType'] = request.sso_type
         if not DaraCore.is_null(request.status):
@@ -24599,6 +24619,10 @@ class Client(OpenApiClient):
             query['AttributeMappings'] = request.attribute_mappings
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.oidc_verification_config):
+            query['OidcVerificationConfig'] = request.oidc_verification_config
+        if not DaraCore.is_null(request.pkcs_7verification_config):
+            query['Pkcs7VerificationConfig'] = request.pkcs_7verification_config
         if not DaraCore.is_null(request.verification_condition):
             query['VerificationCondition'] = request.verification_condition
         req = open_api_util_models.OpenApiRequest(
@@ -24635,6 +24659,10 @@ class Client(OpenApiClient):
             query['AttributeMappings'] = request.attribute_mappings
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.oidc_verification_config):
+            query['OidcVerificationConfig'] = request.oidc_verification_config
+        if not DaraCore.is_null(request.pkcs_7verification_config):
+            query['Pkcs7VerificationConfig'] = request.pkcs_7verification_config
         if not DaraCore.is_null(request.verification_condition):
             query['VerificationCondition'] = request.verification_condition
         req = open_api_util_models.OpenApiRequest(

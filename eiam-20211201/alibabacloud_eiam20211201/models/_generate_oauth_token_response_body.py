@@ -52,13 +52,13 @@ class GenerateOauthTokenResponseBodyTokenResponse(DaraModel):
         expires_in: int = None,
         token_type: str = None,
     ):
-        # The access token.
+        # Access Token。
         self.access_token = access_token
-        # The expiration time, in Unix timestamp format (seconds since epoch).
+        # The expiration time, in UNIX timestamp format. Unit: seconds.
         self.expires_at = expires_at
         # The validity period, in seconds.
         self.expires_in = expires_in
-        # The token type. Only Bearer is supported.
+        # The token type. Currently, only Bearer is supported.
         self.token_type = token_type
 
     def validate(self):

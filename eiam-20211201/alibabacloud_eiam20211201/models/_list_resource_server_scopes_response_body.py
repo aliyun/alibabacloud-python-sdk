@@ -17,17 +17,17 @@ class ListResourceServerScopesResponseBody(DaraModel):
         resource_server_scopes: List[main_models.ListResourceServerScopesResponseBodyResourceServerScopes] = None,
         total_count: int = None,
     ):
-        # Number of rows per page in paginated queries.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # Token for the next page query.
+        # The pagination token for the next page.
         self.next_token = next_token
-        # Token for the previous page query.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of Scope permissions under the ResourceServer.
+        # The list of scope permissions under the ResourceServer.
         self.resource_server_scopes = resource_server_scopes
-        # Total number of items in the list.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -99,19 +99,19 @@ class ListResourceServerScopesResponseBodyResourceServerScopes(DaraModel):
         resource_server_scope_type: str = None,
         resource_server_scope_value: str = None,
     ):
-        # Application ID.
+        # The application ID.
         self.application_id = application_id
-        # Authorization type.
+        # The authorization type.
         self.authorization_type = authorization_type
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Scope permission ID.
+        # The scope permission ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # Scope permission name.
+        # The scope permission name.
         self.resource_server_scope_name = resource_server_scope_name
-        # Scope permission type.
+        # The scope permission type.
         self.resource_server_scope_type = resource_server_scope_type
-        # Scope permission value.
+        # The scope permission value.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

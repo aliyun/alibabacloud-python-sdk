@@ -18,9 +18,9 @@ class ListCloudAccountsResponseBody(DaraModel):
     ):
         # The list of cloud accounts.
         self.cloud_accounts = cloud_accounts
-        # The number of rows per page for paging.
+        # The number of rows per page when paging is used.
         self.max_results = max_results
-        # The token returned for the current call.
+        # The token returned for the current call to indicate the starting position of the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -224,8 +224,8 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult(Da
         # The time of the last health check. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
         # The health check result of the cloud account. Valid values:
-        # - success: Succeeded.
-        # - failed: Failed.
+        # - success: The health check succeeded.
+        # - failed: The health check failed.
         self.result = result
 
     def validate(self):

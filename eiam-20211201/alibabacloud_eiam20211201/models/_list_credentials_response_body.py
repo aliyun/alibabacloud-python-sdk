@@ -16,15 +16,15 @@ class ListCredentialsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of credentials.
+        # The list of credentials.
         self.credentials = credentials
-        # The maximum number of entries to return per page.
+        # The maximum number of entries per page for paging.
         self.max_results = max_results
-        # The token used to retrieve the next page of results. If this parameter is not returned, it indicates all results have been returned.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -100,54 +100,45 @@ class ListCredentialsResponseBodyCredentials(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The time the credential was created, provided as a Unix timestamp in milliseconds.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The content of the credential.
+        # The credential content.
         self.credential_content = credential_content
         # The creation type of the credential. Valid values:
-        # 
-        # - `system_init`: Created by the system.
-        # 
-        # - `user_custom`: Created by a user.
+        # - system_init: Created by the system.
+        # - user_custom: Created by the user.
         self.credential_creation_type = credential_creation_type
         self.credential_external_id = credential_external_id
-        # The ID of the credential.
+        # The credential ID.
         self.credential_id = credential_id
-        # The identifier of the credential.
+        # The credential identifier.
         self.credential_identifier = credential_identifier
-        # The name of the credential.
+        # The credential name.
         self.credential_name = credential_name
-        # The use case label for the credential. Valid values:
-        # 
-        # - `llm`: A large language model.
-        # 
-        # - `saas`: A third-party SaaS service.
+        # The scenarios label of the credential. Valid values:
+        # - llm: large language model.
+        # - saas: third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
         self.credential_sharing_scope = credential_sharing_scope
-        # The ID of the credential\\"s subject.
+        # The subject ID to which the credential belongs.
         self.credential_subject_id = credential_subject_id
-        # The type of the credential\\"s subject. Valid value:
-        # 
-        # - `authentication_token_provider`: An authentication token provider.
+        # The subject type to which the credential belongs. Valid values:
+        # - authentication_token_provider: authentication token provider.
         self.credential_subject_type = credential_subject_type
-        # The type of the credential. Valid values:
-        # 
-        # - `api_key`: An API key.
-        # 
-        # - `oauth_client`: An OAuth client.
+        # The credential type. Valid values:
+        # - api_key: API key authentication credential.
+        # - oauth_client: OAuth client authentication credential.
         self.credential_type = credential_type
-        # The description of the credential.
+        # The credential description.
         self.description = description
         self.exclusive_user_id = exclusive_user_id
-        # The ID of the EIAM instance.
+        # The EIAM instance ID.
         self.instance_id = instance_id
-        # The status of the credential. Valid values:
-        # 
-        # - `enabled`: The credential is enabled.
-        # 
-        # - `disabled`: The credential is disabled.
+        # The credential status. Valid values:
+        # - enabled: Enabled.
+        # - diasbled: Disabled.
         self.status = status
-        # The time the credential was last updated, provided as a Unix timestamp in milliseconds.
+        # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -273,7 +264,7 @@ class ListCredentialsResponseBodyCredentialsCredentialContent(DaraModel):
         self,
         oauth_client_content: main_models.ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent = None,
     ):
-        # The content of an OAuth client credential.
+        # The credential content of the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -303,7 +294,7 @@ class ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent(
         self,
         client_id: str = None,
     ):
-        # The client ID of the OAuth client.
+        # The client_id of the OAuth protocol.
         self.client_id = client_id
 
     def validate(self):

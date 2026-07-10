@@ -21,7 +21,7 @@ class ListCredentialsRequest(DaraModel):
         statuses: List[str] = None,
     ):
         self.credential_external_ids = credential_external_ids
-        # The credential IDs.
+        # The list of credential IDs.
         self.credential_ids = credential_ids
         self.credential_sharing_scopes = credential_sharing_scopes
         self.credential_types = credential_types
@@ -31,15 +31,13 @@ class ListCredentialsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page.
-        # 
+        # The maximum number of entries per page.
         # - Default value: 20.
-        # 
         # - Maximum value: 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token.
         self.next_token = next_token
-        # The credential statuses.
+        # The list of credential statuses.
         self.statuses = statuses
 
     def validate(self):
@@ -124,11 +122,10 @@ class ListCredentialsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The field to filter on. Valid value:
-        # 
-        # - `CredentialIdentifier`: the credential identifier.
+        # The name of the filter field. Valid values:
+        # - CredentialIdentifier: the credential identifier.
         self.name = name
-        # The values for the specified filter field.
+        # The list of filter field values.
         self.value = value
 
     def validate(self):

@@ -14,7 +14,7 @@ class ListApplicationFederatedCredentialsRequest(DaraModel):
         next_token: str = None,
         previous_token: str = None,
     ):
-        # The type of the application federated credential.
+        # The type of the application federated credential provider.
         self.application_federated_credential_type = application_federated_credential_type
         # The application ID.
         # 
@@ -24,11 +24,11 @@ class ListApplicationFederatedCredentialsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page.
+        # The number of entries per page in a paged query. This parameter is used for paging.
         self.max_results = max_results
-        # The query token.
+        # The pagination token used to retrieve the next page of results.
         self.next_token = next_token
-        # The token to retrieve the previous page of results.
+        # The pagination token used to retrieve the previous page of results.
         self.previous_token = previous_token
 
     def validate(self):

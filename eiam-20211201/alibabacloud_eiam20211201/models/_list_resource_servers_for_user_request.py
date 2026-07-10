@@ -22,9 +22,9 @@ class ListResourceServersForUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # The token for the next page of results. Set this to the NextToken value from the previous API call.
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The account ID.
         # 

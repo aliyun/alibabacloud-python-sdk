@@ -18,13 +18,13 @@ class RevokeApplicationFromUsersRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID。
+        # The application role ID.
         self.application_role_id = application_role_id
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # A list of account IDs. A single operation supports up to 100 account IDs.
+        # The list of account IDs. A maximum of 100 account IDs are supported in a single operation.
         # 
         # This parameter is required.
         self.user_ids = user_ids

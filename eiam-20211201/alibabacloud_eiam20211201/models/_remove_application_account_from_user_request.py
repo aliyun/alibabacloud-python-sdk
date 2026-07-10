@@ -12,19 +12,19 @@ class RemoveApplicationAccountFromUserRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the application account.
+        # The application account ID.
         # 
         # This parameter is required.
         self.application_account_id = application_account_id
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the user.
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id
