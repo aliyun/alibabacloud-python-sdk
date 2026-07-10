@@ -11,11 +11,11 @@ class CreateLaunchTemplateResponseBody(DaraModel):
         launch_template_version_number: int = None,
         request_id: str = None,
     ):
-        # The ID of the launch template.
+        # The launch template ID.
         self.launch_template_id = launch_template_id
-        # The version number of the launch template.
+        # The launch template version number.
         self.launch_template_version_number = launch_template_version_number
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

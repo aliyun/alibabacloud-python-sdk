@@ -38,145 +38,122 @@ class DescribeImagesRequest(DaraModel):
         tag: List[main_models.DescribeImagesRequestTag] = None,
         usage: str = None,
     ):
-        # The scenario in which the image will be used. Valid values:
+        # The scenario in which the image is used. Valid values:
         # 
-        # - CreateEcs (default): Create an instance.
-        # 
-        # - ChangeOS: Replace the system disk or change the operating system.
+        # - CreateEcs (default): instance creation.
+        # - ChangeOS: replacement of the system disk or operating system.
         self.action_type = action_type
         # The architecture of the image. Valid values:
         # 
-        # - i386
-        # 
-        # - x86_64
-        # 
-        # - arm64
+        # - i386.
+        # - x86_64.
+        # - arm64.
         self.architecture = architecture
-        # Specifies whether to perform a dry run of the request.
-        # 
-        # - true: Sends a dry run request without querying resource status. The system checks whether the AccessKey is valid, whether the Resource Access Management (RAM) user is authorized, and whether all required parameters are specified. If the check fails, an error is returned. If the check passes, the error code DryRunOperation is returned.
-        # 
-        # - false: Sends a normal request. After the check passes, an HTTP 2XX status code is returned and the resource status is queried directly.
+        # Specifies whether to perform only a dry run.
+        #          
+        # - true: Sends a dry run request without querying resource status. The system checks whether your AccessKey pair is valid, whether Resource Access Management (RAM) user authorization is granted, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.  
+        # - false: Sends a normal request. After the check succeeds, a 2XX HTTP status code is returned and the resource status is queried. 
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # A list of filter conditions for querying resources.
+        # The list of filter conditions for querying resources.
         self.filter = filter
-        # The name of the image family. When querying images, you can use this parameter to filter images belonging to the specified image family.
+        # The name of the image family. You can set this parameter to filter images that belong to the specified image family.
         # 
         # Default value: empty.
-        # 
-        # > For information about image families associated with official Alibaba Cloud images, see [Overview of public images](https://help.aliyun.com/document_detail/108393.html).
+        # > For information about image families associated with Alibaba Cloud official images, see [Overview of public images](https://help.aliyun.com/document_detail/108393.html).
         self.image_family = image_family
         # The image ID.
         # 
         # <details>
+        # <summary>Naming conventions for image IDs</summary>
         # 
-        # <summary>
+        # - Public images: Named by operating system version, architecture, language, and release date. For example, the image ID for Windows Server 2008 R2 Enterprise Edition, 64-bit English system is win2008r2_64_ent_sp1_en-us_40G_alibase_20190318.vhd.
         # 
-        # Naming convention for image IDs
-        # 
-        # </summary>
-        # 
-        # - Public images: Named based on the operating system version, architecture, language, and published date. For example, the image ID for Windows Server 2008 R2 Enterprise Edition, 64-bit English system is `win2008r2_64_ent_sp1_en-us_40G_alibase_20190318.vhd`.
-        # 
-        # - Custom images, shared images, Alibaba Cloud Marketplace images, and community images: Start with the letter `m`.
+        # - Custom images, shared images, Alibaba Cloud Marketplace images, and community images: Start with m.
         # 
         # </details>
         self.image_id = image_id
-        # The name of the image. Fuzzy search is supported.
+        # The image name. Fuzzy search is supported.
         self.image_name = image_name
         # The source of the image. Valid values:
         # 
-        # - system: Images provided by Alibaba Cloud that are not published on Alibaba Cloud Marketplace. This differs from the "public image" concept in the console.
-        # 
-        # - self: Your custom images.
-        # 
-        # - others: Includes shared images (images directly shared with you by other Alibaba Cloud users) and community images (custom images fully publicly shared by any Alibaba Cloud user). Note the following:
-        # 
-        #   - To find community images, IsPublic must be true.
-        # 
-        #   - To find shared images, IsPublic must be set to false or omitted.
-        # 
-        # - marketplace: Images published on Alibaba Cloud Marketplace by Alibaba Cloud or third-party ISVs, which must be purchased together with ECS instances. Please review the pricing details of Alibaba Cloud Marketplace images yourself.
+        # - system: Public images provided by Alibaba Cloud that are not published through Alibaba Cloud Marketplace. This is different from the concept of "public images" in the console.
+        # - self: Custom images that you created.
+        # - others: Includes shared images (images directly shared by other Alibaba Cloud users) and community images (custom images that are fully shared by any Alibaba Cloud user). Note the following:
+        #     - To query community images, IsPublic must be set to true.
+        #     - To query shared images, IsPublic must be set to false or left empty.
+        # - marketplace: Images published by Alibaba Cloud or third-party independent software vendors (ISVs) in Alibaba Cloud Marketplace. These images must be purchased together with ECS. Check the billing details of Alibaba Cloud Marketplace images.
         # 
         # Default value: empty.
         # 
-        # > An empty value returns results with ImageOwnerAlias values of system, self, and others.
+        # > An empty value indicates that images with the system, self, and others values are returned.
         self.image_owner_alias = image_owner_alias
-        # The Alibaba Cloud account ID to which the image belongs. This parameter takes effect only when you query shared images and community images.
+        # The Alibaba Cloud account ID of the image owner. This parameter takes effect only when you query shared images or community images.
         self.image_owner_id = image_owner_id
-        # Queries images that can be used with the specified instance type.
+        # The instance type for which you want to query available images.
         self.instance_type = instance_type
         # Specifies whether to query published community images. Valid values:
         # 
-        # - true: Queries published community images. When this parameter is set to true, ImageOwnerAlias must be set to others.
+        # - true: Queries published community images. When you set this parameter to true, ImageOwnerAlias must be set to others.
+        # - false: Queries image types other than community images. The specific types depend on the ImageOwnerAlias parameter value.
         # 
-        # - false: Queries other image types excluding community images, depending on the value of the ImageOwnerAlias parameter.
-        # 
-        # Default Value: false.
+        # Default value: false.
         self.is_public = is_public
-        # Indicates whether the image supports cloud-init.
+        # Specifies whether the image supports cloud-init.
         self.is_support_cloudinit = is_support_cloudinit
-        # Indicates whether the image can run on I/O optimized instances.
+        # Specifies whether the image can run on I/O optimized instances.
         self.is_support_io_optimized = is_support_io_optimized
         # The operating system type of the image. Valid values:
         # 
-        # - windows
-        # 
-        # - linux
+        # - windows.
+        # - linux.
         self.ostype = ostype
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the image resource list.
+        # The page number of the resources.
         # 
-        # Starting value: 1.
+        # Start value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The number of entries per page for paging.
         # 
         # Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID to which the image belongs. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
+        # The region ID of the image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the enterprise resource group to which the custom image belongs. When using this parameter to filter resources, the number of resources cannot exceed 1,000.
+        # The ID of the resource group to which the custom image belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
         # 
         # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Indicates whether subscription-based images have exceeded their usage period.
+        # Specifies whether the subscription image has expired.
         self.show_expired = show_expired
-        # The custom image created from a specific snapshot ID.
+        # The ID of the snapshot used to create the custom image.
         self.snapshot_id = snapshot_id
-        # Queries images in the specified status. If this parameter is not configured, only images in the Available status are returned by default. Valid values:
+        # The status of the image. If you do not specify this parameter, only images in the Available state are returned by default. Valid values:
         # 
         # - Creating: The image is being created.
+        # - Waiting: The image is waiting in a multi-task queue.
+        # - Available (default): The image is available for use.
+        # - UnAvailable: The image is unavailable.
+        # - CreateFailed: The image failed to be created.
+        # - Deprecated: The image is deprecated.
         # 
-        # - Waiting: The image is queued for multitasking.
-        # 
-        # - Available (default): The image is available for your use.
-        # 
-        # - UnAvailable: The image is unavailable for your use.
-        # 
-        # - CreateFailed: The image creation failed.
-        # 
-        # - Deprecated: The image has been deprecated.
-        # 
-        # Default value: Available. This parameter supports multiple values separated by commas (,).
+        # Default value: Available. This parameter supports multiple values at the same time, separated by commas (,).
         self.status = status
         # The list of tags.
         self.tag = tag
-        # Indicates whether the image is already running on an ECS instance. Valid values:
+        # Specifies whether the image is running on ECS instances. Valid values:
         # 
-        # - instance: The image is in use by one or more ECS instances.
-        # 
-        # - none: The image is idle and not used by any ECS instance.
+        # - instance: The image is in use. ECS instances are created from this image.
+        # - none: The image is idle. No ECS instances are created from this image.
         self.usage = usage
 
     def validate(self):
@@ -380,7 +357,7 @@ class DescribeImagesRequestTag(DaraModel):
     ):
         # The tag key of the image. Valid values of N: 1 to 20.
         # 
-        # When you use one tag to filter resources, the number of resources retrieved under this tag cannot exceed 1,000. When you use multiple tags to filter resources, the number of resources that are attached with all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) API to query the resources.
+        # When you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. When you use multiple tags to filter resources, the resource count of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation.
         self.key = key
         # The tag value of the image. Valid values of N: 1 to 20.
         self.value = value
@@ -417,27 +394,22 @@ class DescribeImagesRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter key used when querying resources. Valid values:
+        # The filter key for querying resources. Valid values:
         # 
-        # - If this parameter is set to `CreationStartTime`, you can query resources created after the specified time point (`Filter.N.Value`).
+        # - When this parameter is set to `CreationStartTime`, you can query resources created after the specified time point (`Filter.N.Value`).
+        # - When this parameter is set to `CreationEndTime`, you can query resources created before the specified time point (`Filter.N.Value`).
+        # - When this parameter is set to `NetworkType`, you can query resources of the specified network type.
+        # - When this parameter is set to any of `CpuOnlineUpgrade`, `CpuOnlineDowngrade`, `MemoryOnlineUpgrade`, or `MemoryOnlineDowngrade`, you can query the CPU or memory hot-plugging support of the specified image.
         # 
-        # - If this parameter is set to `CreationEndTime`, you can query resources created before the specified time point (`Filter.N.Value`).
-        # 
-        # - If this parameter is set to `NetworkType`, you can query resources of the specified network type.
-        # 
-        # - If this parameter is set to any of `CpuOnlineUpgrade`, `CpuOnlineDowngrade`, `MemoryOnlineUpgrade`, or `MemoryOnlineDowngrade`, you can query the hot-swapping support status of CPU or memory for the specified image.
-        # 
-        # Default Value: null.
+        # Default value: null.
         self.key = key
-        # The filter value used when querying resources.
+        # The filter value for querying resources.
+        # - When `Filter.N.Key` is set to `CreationStartTime` or `CreationEndTime`, the format is `yyyy-MM-ddTHH:mmZ`, using the UTC+0 time zone.
+        # - When `Filter.N.Key` is set to `NetworkType`, valid network type values include `vpc` and `classic`.
         # 
-        # - When (`Filter.N.Key`) is `CreationStartTime` or `CreationEndTime`, the format is `yyyy-MM-ddTHH:mmZ` in UTC+0 time zone.
+        # - When `Filter.N.Key` is set to `CpuOnlineUpgrade`, `CpuOnlineDowngrade`, `MemoryOnlineUpgrade`, or `MemoryOnlineDowngrade`, the value can be `supported` or `unsupported`.
         # 
-        # - When (`Filter.N.Key`) is `NetworkType`, valid values include `vpc`, `classic`, etc.
-        # 
-        # - When (`Filter.N.Key`) is `CpuOnlineUpgrade`, `CpuOnlineDowngrade`, `MemoryOnlineUpgrade`, or `MemoryOnlineDowngrade`, the value can be `supported` or `unsupported`.
-        # 
-        # Default Value: null.
+        # Default value: null.
         self.value = value
 
     def validate(self):
