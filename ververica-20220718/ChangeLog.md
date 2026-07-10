@@ -1,3 +1,7 @@
+2026-07-10 Version: 1.11.0
+- Support API StartSqlExecution.
+
+
 2026-07-01 Version: 1.10.3
 - Generated python 2022-07-18 for ververica.
 

@@ -6625,6 +6625,90 @@ class Client(OpenApiClient):
         headers = main_models.StartSessionClusterHeaders()
         return await self.start_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
 
+    def start_sql_execution_with_options(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+        headers: main_models.StartSqlExecutionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartSqlExecutionResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartSqlExecution',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartSqlExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_sql_execution_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+        headers: main_models.StartSqlExecutionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartSqlExecutionResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartSqlExecution',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartSqlExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_sql_execution(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+    ) -> main_models.StartSqlExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.StartSqlExecutionHeaders()
+        return self.start_sql_execution_with_options(namespace, request, headers, runtime)
+
+    async def start_sql_execution_async(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+    ) -> main_models.StartSqlExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.StartSqlExecutionHeaders()
+        return await self.start_sql_execution_with_options_async(namespace, request, headers, runtime)
+
     def stop_apply_scheduled_plan_with_options(
         self,
         namespace: str,

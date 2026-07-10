@@ -10,7 +10,9 @@ class ResourceSpec(DaraModel):
         cpu: float = None,
         memory: str = None,
     ):
+        # The CPU size.
         self.cpu = cpu
+        # The memory size.
         self.memory = memory
 
     def validate(self):
