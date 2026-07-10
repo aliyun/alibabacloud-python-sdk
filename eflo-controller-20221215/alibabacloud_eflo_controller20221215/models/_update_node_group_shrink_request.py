@@ -2,10 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_eflo_controller20221215 import models as main_models
 from darabonba.model import DaraModel
 
-class UpdateNodeGroupRequest(DaraModel):
+class UpdateNodeGroupShrinkRequest(DaraModel):
     def __init__(
         self,
         file_system_mount_enabled: bool = None,
@@ -15,7 +14,7 @@ class UpdateNodeGroupRequest(DaraModel):
         new_node_group_name: str = None,
         node_group_id: str = None,
         ram_role_name: str = None,
-        system_disk: main_models.UpdateNodeGroupRequestSystemDisk = None,
+        system_disk_shrink: str = None,
         user_data: str = None,
     ):
         # Specifies whether file storage mounting is supported.
@@ -33,13 +32,12 @@ class UpdateNodeGroupRequest(DaraModel):
         # The RAM role name of the node. You can call the RAM API ListRoles to query the node RAM roles that you have created. The trusted entity of the role must be set to Lingjun AI Computing Service.
         # Note: Clearing an existing role is not supported.
         self.ram_role_name = ram_role_name
-        self.system_disk = system_disk
+        self.system_disk_shrink = system_disk_shrink
         # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
 
     def validate(self):
-        if self.system_disk:
-            self.system_disk.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -67,8 +65,8 @@ class UpdateNodeGroupRequest(DaraModel):
         if self.ram_role_name is not None:
             result['RamRoleName'] = self.ram_role_name
 
-        if self.system_disk is not None:
-            result['SystemDisk'] = self.system_disk.to_map()
+        if self.system_disk_shrink is not None:
+            result['SystemDisk'] = self.system_disk_shrink
 
         if self.user_data is not None:
             result['UserData'] = self.user_data
@@ -99,38 +97,10 @@ class UpdateNodeGroupRequest(DaraModel):
             self.ram_role_name = m.get('RamRoleName')
 
         if m.get('SystemDisk') is not None:
-            temp_model = main_models.UpdateNodeGroupRequestSystemDisk()
-            self.system_disk = temp_model.from_map(m.get('SystemDisk'))
+            self.system_disk_shrink = m.get('SystemDisk')
 
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
-
-        return self
-
-class UpdateNodeGroupRequestSystemDisk(DaraModel):
-    def __init__(
-        self,
-        performance_level: str = None,
-    ):
-        self.performance_level = performance_level
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.performance_level is not None:
-            result['PerformanceLevel'] = self.performance_level
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('PerformanceLevel') is not None:
-            self.performance_level = m.get('PerformanceLevel')
 
         return self
 

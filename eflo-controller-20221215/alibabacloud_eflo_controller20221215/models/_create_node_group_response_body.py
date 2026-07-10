@@ -11,11 +11,11 @@ class CreateNodeGroupResponseBody(DaraModel):
         node_group_name: str = None,
         request_id: str = None,
     ):
-        # The ID of the node group.
+        # The node group ID.
         self.node_group_id = node_group_id
-        # The name of the node group.
+        # The node group name.
         self.node_group_name = node_group_name
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

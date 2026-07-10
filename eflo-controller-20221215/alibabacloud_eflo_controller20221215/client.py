@@ -4822,10 +4822,14 @@ class Client(OpenApiClient):
 
     def update_node_group_with_options(
         self,
-        request: main_models.UpdateNodeGroupRequest,
+        tmp_req: main_models.UpdateNodeGroupRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateNodeGroupResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateNodeGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.system_disk):
+            request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         body = {}
         if not DaraCore.is_null(request.file_system_mount_enabled):
             body['FileSystemMountEnabled'] = request.file_system_mount_enabled
@@ -4841,6 +4845,8 @@ class Client(OpenApiClient):
             body['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.ram_role_name):
             body['RamRoleName'] = request.ram_role_name
+        if not DaraCore.is_null(request.system_disk_shrink):
+            body['SystemDisk'] = request.system_disk_shrink
         if not DaraCore.is_null(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(
@@ -4864,10 +4870,14 @@ class Client(OpenApiClient):
 
     async def update_node_group_with_options_async(
         self,
-        request: main_models.UpdateNodeGroupRequest,
+        tmp_req: main_models.UpdateNodeGroupRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateNodeGroupResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateNodeGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.system_disk):
+            request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         body = {}
         if not DaraCore.is_null(request.file_system_mount_enabled):
             body['FileSystemMountEnabled'] = request.file_system_mount_enabled
@@ -4883,6 +4893,8 @@ class Client(OpenApiClient):
             body['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.ram_role_name):
             body['RamRoleName'] = request.ram_role_name
+        if not DaraCore.is_null(request.system_disk_shrink):
+            body['SystemDisk'] = request.system_disk_shrink
         if not DaraCore.is_null(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(

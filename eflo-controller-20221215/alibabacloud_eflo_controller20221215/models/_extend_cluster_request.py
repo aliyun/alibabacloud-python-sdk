@@ -17,17 +17,17 @@ class ExtendClusterRequest(DaraModel):
         v_switch_zone_id: str = None,
         vpd_subnets: List[str] = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed nodes. Default value: False.
+        # Specifies whether to skip failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Combined policy for IP allocation. Each policy can only select one policy type, and multiple policies can be combined.
+        # The combined IP allocation policy. Each policy can use only one policy type, and multiple policies can be combined.
         self.ip_allocation_policy = ip_allocation_policy
-        # Node groups.
+        # The node groups.
         self.node_groups = node_groups
-        # vSwitch zone ID.
+        # The zone ID of the vSwitch.
         self.v_switch_zone_id = v_switch_zone_id
-        # Cluster subnet list.
+        # The list of cluster subnets.
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -116,34 +116,35 @@ class ExtendClusterRequestNodeGroups(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The number of nodes to purchase. Valid values: 0 to 500. If the Amount parameter is set to 0, no nodes are purchased and existing nodes are used for scale-out. If the Amount parameter is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0.
+        # The number of nodes to purchase. Valid values: 0 to 500. If Amount is set to 0, no nodes are purchased and existing nodes are used for scale-out. If Amount is set to a value from 1 to 500, the specified number of nodes are purchased and used for scale-out. Default value: 0
         self.amount = amount
-        # Whether to enable auto-renewal for the purchased nodes. This parameter takes effect when the Amount parameter is not 0 and ChargeType is set to PREPAY or POSTPAY. Valid values: True: enable auto-renewal. False: disable auto-renewal. Default value: False.
+        # Specifies whether to enable auto-renewal for the purchased nodes. This parameter takes effect when Amount is not 0 and ChargeType is set to PREPAY or POSTPAY. Valid values: True: Enable auto-renewal. False: Disable auto-renewal. Default value: False.
         self.auto_renew = auto_renew
-        # The billing method of nodes. This parameter does not take effect when the Amount parameter is set to 0. Valid values: PREPAY: subscription. POSTPAY: pay-as-you-go. Default value: PREPAY.
+        # The billing method of the nodes. This parameter does not take effect when Amount is set to 0. Valid values: PREPAY: subscription. POSTPAY: pay-as-you-go. Default value: PREPAY.
         self.charge_type = charge_type
-        # The hostnames set for the purchased nodes. This parameter does not take effect when the Amount parameter is set to 0.
+        # The hostnames of the purchased nodes. This parameter does not take effect when Amount is set to 0.
         self.hostnames = hostnames
-        # HyperNode list.
+        # The list of hyper nodes.
         self.hyper_nodes = hyper_nodes
-        # The login password set for the purchased nodes. This parameter does not take effect when the Amount parameter is set to 0.
+        # The logon password of the purchased nodes. This parameter does not take effect when Amount is set to 0.
         self.login_password = login_password
-        # Node group ID.
+        # The node group ID.
         self.node_group_id = node_group_id
-        # Node tags.
+        # The node tags.
         self.node_tag = node_tag
-        # Node list.
+        # The node list.
         self.nodes = nodes
-        # The subscription duration of nodes (unit: month). Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect when the Amount parameter is not 0 and ChargeType is set to PREPAY.
+        # The subscription duration of the purchased nodes. Unit: months. Valid values: 1, 6, 12, 24, 36, and 48. This parameter takes effect when Amount is not 0 and ChargeType is set to PREPAY.
         self.period = period
+        # The savings plan ID.
         self.savings_plan_id = savings_plan_id
-        # Custom data.
+        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
-        # vSwitch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # Zone ID.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -287,19 +288,19 @@ class ExtendClusterRequestNodeGroupsNodes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Data disk specifications.
+        # The data cloud disk specifications.
         self.data_disk = data_disk
-        # Hostname.
+        # The hostname.
         self.hostname = hostname
-        # Login password.
+        # The logon password.
         self.login_password = login_password
-        # Node ID.
+        # The node ID.
         self.node_id = node_id
-        # Security group ID.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # vSwitch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -376,17 +377,17 @@ class ExtendClusterRequestNodeGroupsNodesDataDisk(DaraModel):
         provisioned_iops: int = None,
         size: int = None,
     ):
-        # Whether to enable burst (performance bursting).
+        # Specifies whether to enable burst (I/O burst).
         self.bursting_enabled = bursting_enabled
-        # Disk type.
+        # The type.
         self.category = category
-        # Whether the data disk is deleted when the node is unsubscribed.
+        # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
         self.delete_with_node = delete_with_node
-        # Data disk performance level.
+        # The performance metric of the data cloud disk.
         self.performance_level = performance_level
-        # Provisioned performance (IOPS). Valid values: 0 to 50000.
+        # The provisioned performance (IOPS). Valid values: 0 to 50000.
         self.provisioned_iops = provisioned_iops
-        # Disk size.
+        # The cloud disk size.
         self.size = size
 
     def validate(self):
@@ -445,9 +446,9 @@ class ExtendClusterRequestNodeGroupsNodeTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Node tag key.
+        # The tag key of the node.
         self.key = key
-        # Node tag value.
+        # The tag value of the node.
         self.value = value
 
     def validate(self):
@@ -487,19 +488,19 @@ class ExtendClusterRequestNodeGroupsHyperNodes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Disk information list.
+        # The list of cloud disk information.
         self.data_disk = data_disk
-        # Hostname.
+        # The hostname.
         self.hostname = hostname
-        # HyperNode ID.
+        # The hyper node ID.
         self.hyper_node_id = hyper_node_id
-        # Login password.
+        # The logon password.
         self.login_password = login_password
-        # Security group ID.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # vSwitch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -576,21 +577,21 @@ class ExtendClusterRequestNodeGroupsHyperNodesDataDisk(DaraModel):
         provisioned_iops: int = None,
         size: int = None,
     ):
-        # Whether to enable burst (performance bursting).
+        # Specifies whether to enable burst (I/O burst).
         self.bursting_enabled = bursting_enabled
-        # Disk type. Valid values:
+        # The cloud disk type. Valid values:
         # 
-        #  - cloud_essd: ESSD cloud disk.
+        #  - cloud_essd: ESSD.
         self.category = category
-        # Whether the data disk is deleted when the node is unsubscribed.
+        # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
         self.delete_with_node = delete_with_node
-        # The performance level of the ESSD cloud disk used as the system disk. Valid values:
-        # - PL0: maximum random read/write IOPS of 10,000 per disk.
-        # - PL1: maximum random read/write IOPS of 50,000 per disk.
+        # The performance level (PL) when an ESSD is used as a system cloud disk. Valid values:
+        # - PL0: a maximum of 10,000 random read/write IOPS per disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per disk.
         self.performance_level = performance_level
-        # Provisioned read/write IOPS of the ESSD AutoPL cloud disk (per disk).
+        # The provisioned performance (read/write IOPS) of a single ESSD AutoPL cloud disk.
         self.provisioned_iops = provisioned_iops
-        # Disk size, in GiB.
+        # The cloud disk size. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -652,9 +653,9 @@ class ExtendClusterRequestIpAllocationPolicy(DaraModel):
     ):
         # Specifies the cluster subnet ID based on the bond name.
         self.bond_policy = bond_policy
-        # Machine type allocation policy.
+        # The machine type allocation policy.
         self.machine_type_policy = machine_type_policy
-        # Node allocation policy.
+        # The node allocation policy.
         self.node_policy = node_policy
 
     def validate(self):
@@ -716,11 +717,11 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicy(DaraModel):
         hostname: str = None,
         node_id: str = None,
     ):
-        # Bond information.
+        # The bond information.
         self.bonds = bonds
-        # Hostname.
+        # The hostname.
         self.hostname = hostname
-        # Node ID.
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -769,9 +770,9 @@ class ExtendClusterRequestIpAllocationPolicyNodePolicyBonds(DaraModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name.
+        # The bond name.
         self.name = name
-        # IP source cluster subnet.
+        # The cluster subnet from which the IP address is allocated.
         self.subnet = subnet
 
     def validate(self):
@@ -806,9 +807,9 @@ class ExtendClusterRequestIpAllocationPolicyMachineTypePolicy(DaraModel):
         bonds: List[main_models.ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds] = None,
         machine_type: str = None,
     ):
-        # Bond information.
+        # The bond information.
         self.bonds = bonds
-        # Machine type.
+        # The machine type.
         self.machine_type = machine_type
 
     def validate(self):
@@ -851,9 +852,9 @@ class ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds(DaraModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name.
+        # The bond name.
         self.name = name
-        # IP source cluster subnet.
+        # The cluster subnet from which the IP address is allocated.
         self.subnet = subnet
 
     def validate(self):
@@ -888,9 +889,9 @@ class ExtendClusterRequestIpAllocationPolicyBondPolicy(DaraModel):
         bond_default_subnet: str = None,
         bonds: List[main_models.ExtendClusterRequestIpAllocationPolicyBondPolicyBonds] = None,
     ):
-        # Default bond cluster subnet.
+        # The default bond cluster subnet.
         self.bond_default_subnet = bond_default_subnet
-        # Bond information.
+        # The bond information.
         self.bonds = bonds
 
     def validate(self):
@@ -933,9 +934,9 @@ class ExtendClusterRequestIpAllocationPolicyBondPolicyBonds(DaraModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name.
+        # The bond name.
         self.name = name
-        # IP source cluster subnet.
+        # The cluster subnet from which the IP address is allocated.
         self.subnet = subnet
 
     def validate(self):

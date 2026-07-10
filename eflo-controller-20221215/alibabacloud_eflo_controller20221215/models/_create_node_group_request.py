@@ -14,15 +14,15 @@ class CreateNodeGroupRequest(DaraModel):
         node_group: main_models.CreateNodeGroupRequestNodeGroup = None,
         node_unit: Dict[str, Any] = None,
     ):
-        # The ID of the cluster to which the node group belongs.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The configurations of the node group.
+        # The node ID.
         # 
         # This parameter is required.
         self.node_group = node_group
-        # The configuration of the node unit.
+        # The node information.
         self.node_unit = node_unit
 
     def validate(self):
@@ -75,37 +75,38 @@ class CreateNodeGroupRequestNodeGroup(DaraModel):
         user_data: str = None,
         virtual_gpu_enabled: bool = None,
     ):
-        # The availability zone of the node group.
+        # The zone.
         # 
         # This parameter is required.
         self.az = az
-        # Specifies whether to enable file system mounting.
+        # Specifies whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The image ID for the nodes.
+        # The image ID.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The name of the key pair for SSH login.
+        # The key pair name.
         self.key_pair_name = key_pair_name
-        # The password to log in to the nodes.
+        # The logon password.
         self.login_password = login_password
-        # The machine type for the nodes.
+        # The machine type.
         # 
         # This parameter is required.
         self.machine_type = machine_type
-        # The description of the node group.
+        # The node group description.
         self.node_group_description = node_group_description
-        # The name of the node group.
+        # The node group name.
         # 
         # This parameter is required.
         self.node_group_name = node_group_name
-        # The name of the RAM role to attach to the nodes. You can call the RAM API `ListRoles` operation to query the RAM roles that you have created. The trust entity of the specified role must be Intelligent Computing Lingjun.<br>**Note:** You cannot detach an existing role by clearing this parameter.<br>
+        # The RAM role name of the node. You can call the RAM API ListRoles to query the RAM roles you have created. The trusted entity of the role must be set to Lingjun AI Computing Service.
+        # > Note: Clearing an existing role is not currently supported.
         self.ram_role_name = ram_role_name
-        # The system disk configuration for the nodes.
+        # The system disk configuration of the node.
         self.system_disk = system_disk
-        # The user data passed to the nodes at launch.
+        # A custom executable shell script that must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
-        # Specifies whether to enable GPU virtualization.
+        # Specifies whether GPU virtualization splitting is enabled.
         self.virtual_gpu_enabled = virtual_gpu_enabled
 
     def validate(self):
@@ -203,17 +204,15 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The type of the system disk. Valid values:
+        # The cloud disk type. Valid values:
         # 
-        # - `cloud_essd`: ESSD.
+        #  - cloud_essd: Enterprise SSD (ESSD) cloud disk.
         self.category = category
-        # The performance level of the ESSD system disk. Valid values:
-        # 
-        # - `PL0`: A single disk delivers up to 10,000 random read/write IOPS.
-        # 
-        # - `PL1`: A single disk delivers up to 50,000 random read/write IOPS.
+        # The performance level (PL) of the ESSD cloud disk used as the system disk. Valid values:
+        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
         self.performance_level = performance_level
-        # The size of the system disk, in GB.
+        # The disk size. Unit: GB.
         self.size = size
 
     def validate(self):

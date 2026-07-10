@@ -17,11 +17,11 @@ class ReimageNodesRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # Specifies whether to skip failed nodes. The default value is False.
+        # Specifies whether to skip failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         # The list of nodes.
         self.nodes = nodes
-        # The custom data.
+        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
 
     def validate(self):
@@ -80,7 +80,7 @@ class ReimageNodesRequestNodes(DaraModel):
     ):
         # The hostname.
         self.hostname = hostname
-        # The OS image ID.
+        # The system image ID.
         self.image_id = image_id
         # The logon password.
         self.login_password = login_password

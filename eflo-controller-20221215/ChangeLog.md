@@ -1,3 +1,7 @@
+2026-07-10 Version: 3.0.8
+- Update API UpdateNodeGroup: add request parameters SystemDisk.
+
+
 2026-06-18 Version: 3.0.7
 - Update API DescribeNode: add response parameters Body.SavingsPlanId.
 - Update API ExtendCluster: add request parameters NodeGroups.$.SavingsPlanId.
