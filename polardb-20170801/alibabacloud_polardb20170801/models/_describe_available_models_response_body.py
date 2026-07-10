@@ -17,11 +17,11 @@ class DescribeAvailableModelsResponseBody(DaraModel):
     ):
         # The database engine.
         self.engine = engine
-        # The engine version.
+        # The database engine version.
         self.engine_version = engine_version
         # The list of models.
         self.items = items
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -79,12 +79,13 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         model_name: str = None,
         model_series: str = None,
         supported_gpu_models: List[str] = None,
+        tune_arch: str = None,
     ):
-        # The required GPU configurations.
+        # The supported GPU types.
         self.gpu_required = gpu_required
-        # The minimum number of CPU cores required.
+        # The minimum number of CPUs.
         self.minimum_cpu = minimum_cpu
-        # The minimum memory required, in MiB.
+        # The minimum memory size.
         self.minimum_memory = minimum_memory
         # The model name.
         self.model_name = model_name
@@ -92,6 +93,7 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         self.model_series = model_series
         # The supported GPU models.
         self.supported_gpu_models = supported_gpu_models
+        self.tune_arch = tune_arch
 
     def validate(self):
         if self.gpu_required:
@@ -124,6 +126,9 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         if self.supported_gpu_models is not None:
             result['SupportedGpuModels'] = self.supported_gpu_models
 
+        if self.tune_arch is not None:
+            result['TuneArch'] = self.tune_arch
+
         return result
 
     def from_map(self, m: dict = None):
@@ -149,6 +154,9 @@ class DescribeAvailableModelsResponseBodyItems(DaraModel):
         if m.get('SupportedGpuModels') is not None:
             self.supported_gpu_models = m.get('SupportedGpuModels')
 
+        if m.get('TuneArch') is not None:
+            self.tune_arch = m.get('TuneArch')
+
         return self
 
 class DescribeAvailableModelsResponseBodyItemsGpuRequired(DaraModel):
@@ -157,7 +165,7 @@ class DescribeAvailableModelsResponseBodyItemsGpuRequired(DaraModel):
         gpu_min_count: str = None,
         gpu_model: str = None,
     ):
-        # The minimum number of GPUs required.
+        # The minimum number of GPUs.
         self.gpu_min_count = gpu_min_count
         # The GPU model.
         self.gpu_model = gpu_model

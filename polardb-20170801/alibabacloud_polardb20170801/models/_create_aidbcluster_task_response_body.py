@@ -11,11 +11,11 @@ class CreateAIDBClusterTaskResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the model operator instance.
+        # The instance ID of the generated model service.
         self.dbcluster_id = dbcluster_id
         # The order ID.
         self.order_id = order_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

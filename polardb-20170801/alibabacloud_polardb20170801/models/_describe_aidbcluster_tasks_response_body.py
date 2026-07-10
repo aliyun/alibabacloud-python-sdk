@@ -17,15 +17,15 @@ class DescribeAIDBClusterTasksResponseBody(DaraModel):
         request_id: str = None,
         task_type: str = None,
     ):
-        # The engine.
+        # The cluster engine.
         self.engine = engine
-        # The engine version.
+        # The database engine version.
         self.engine_version = engine_version
-        # A list of model operators.
+        # The cluster endpoint details.
         self.items = items
-        # The PolarDB cluster ID.
+        # The ID of the PolarDB cluster.
         self.relative_dbcluster_id = relative_dbcluster_id
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The task type.
         self.task_type = task_type
@@ -107,39 +107,41 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         start_time: str = None,
         train_mode: str = None,
         train_type: str = None,
+        tune_arch: str = None,
     ):
-        # The completion time.
+        # The task completion time.
         self.completed_time = completed_time
         # The creation time.
         self.creation_time = creation_time
         # The node description.
         self.dbnode_description = dbnode_description
-        # The model operator instance ID.
+        # The instance ID of the model operator.
         self.dbnode_id = dbnode_id
-        # The instance status. This parameter is not always returned.
+        # The instance status. This parameter may not be returned.
         self.dbnode_status = dbnode_status
-        # The description of the instance status.
+        # The instance status.
         self.dbnode_status_desc = dbnode_status_desc
-        # The availability zone.
+        # The zone.
         self.data_zone_id = data_zone_id
-        # The engine.
+        # The cluster engine.
         self.engine = engine
-        # The engine version.
+        # The database engine version.
         self.engine_version = engine_version
         # The model name.
         self.model_name = model_name
-        # The model path.
+        # The path.
         self.model_path = model_path
         # The model source.
         self.model_source = model_source
-        # The runtime parameters.
+        # The running parameters.
         self.running_times = running_times
-        # The start time.
+        # The task start time.
         self.start_time = start_time
-        # The training mode.
+        # The mode.
         self.train_mode = train_mode
-        # The training type.
+        # The type.
         self.train_type = train_type
+        self.tune_arch = tune_arch
 
     def validate(self):
         pass
@@ -197,6 +199,9 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
         if self.train_type is not None:
             result['TrainType'] = self.train_type
 
+        if self.tune_arch is not None:
+            result['TuneArch'] = self.tune_arch
+
         return result
 
     def from_map(self, m: dict = None):
@@ -248,6 +253,9 @@ class DescribeAIDBClusterTasksResponseBodyItems(DaraModel):
 
         if m.get('TrainType') is not None:
             self.train_type = m.get('TrainType')
+
+        if m.get('TuneArch') is not None:
+            self.tune_arch = m.get('TuneArch')
 
         return self
 

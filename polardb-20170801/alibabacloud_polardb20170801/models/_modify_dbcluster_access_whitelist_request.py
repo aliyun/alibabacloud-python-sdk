@@ -13,69 +13,61 @@ class ModifyDBClusterAccessWhitelistRequest(DaraModel):
         modify_mode: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        pfs_instance_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_group_ids: str = None,
         security_ips: str = None,
         white_list_type: str = None,
     ):
-        # The attribute of the IP address whitelist group. If you set this parameter to \\`hidden\\`, the whitelist group is not visible in the console.
+        # The attribute of the IP whitelist group. If this parameter is set to **hidden**, the group is not displayed in the console.
         # 
-        # > - You cannot hide an IP address whitelist group that is already visible in the console.
-        # >
-        # > - This parameter is available only when **WhiteListType** is set to **IP**.
+        # > - IP whitelist groups that are already displayed in the console cannot be hidden.
+        # > - This parameter takes effect only when **WhiteListType** is set to **IP**.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the IP address whitelist group. The name must be 2 to 120 characters in length. It must consist of lowercase letters and digits. The name must start with a letter and end with a letter or a digit.
+        # The name of the IP whitelist group. The name must be 2 to 120 characters in length and can contain lowercase letters and digits. The name must start with a letter and end with a letter or digit.
         # 
         # - If the specified whitelist group name does not exist, a new whitelist group is created.
-        # 
         # - If the specified whitelist group name already exists, the whitelist group is modified.
+        # - If this parameter is not specified, the default group is modified. 
         # 
-        # - If you do not specify this parameter, the \\`default\\` group is modified.
-        # 
-        # > * A cluster can have up to 50 IP address whitelist groups.
-        # >
-        # > * This parameter is available only when **WhiteListType** is set to **IP**.
+        # > - A maximum of 50 IP whitelist groups are supported for a cluster.
+        # > - This parameter takes effect only when **WhiteListType** is set to **IP**.
         self.dbcluster_iparray_name = dbcluster_iparray_name
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The method used to modify the IP address whitelist. Valid values:
+        # The method used to modify the IP whitelist. Valid values:
+        # - **Cover**: overwrites the original IP whitelist (default value).
+        # - **Append**: appends IP addresses to the whitelist.
+        # - **Delete**: removes IP addresses from the whitelist.
         # 
-        # - **Cover**: Overwrites the original IP address whitelist. This is the default value.
-        # 
-        # - **Append**: Appends IP addresses to the whitelist.
-        # 
-        # - **Delete**: Deletes IP addresses from the whitelist.
-        # 
-        # > This parameter is available only when **WhiteListType** is set to **IP**.
+        # > This parameter takes effect only when **WhiteListType** is set to **IP**.
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.pfs_instance_id = pfs_instance_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The security group ID. Separate multiple security group IDs with commas (,).
+        # The security group IDs. Separate multiple security group IDs with commas (,).
         # 
-        # > - A cluster can be associated with up to three security groups.
-        # >
-        # > - This parameter is available only when **WhiteListType** is set to **SecurityGroup**.
+        # > - A maximum of 3 security groups are supported for a cluster.
+        # > - This parameter takes effect only when **WhiteListType** is set to **SecurityGroup**.
         self.security_group_ids = security_group_ids
-        # The IP addresses or CIDR blocks in the IP address whitelist group. All IP address whitelist groups can contain a total of 1,000 IP addresses or CIDR blocks. Separate multiple IP addresses with commas (,). The following formats are supported:
+        # The IP addresses or CIDR blocks in the IP whitelist group. A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported: 
         # 
-        # - IP address format. For example: 10.23.12.24.
+        # - IP address format, such as 10.23.12.24.
+        # - CIDR format, such as 10.23.12.24/24, where 24 indicates the prefix length of the CIDR block. The prefix length ranges from 1 to 32.
         # 
-        # - CIDR format. For example: 10.23.12.24/24. The number 24 indicates the prefix length of the IP address. The prefix length can range from 1 to 32.
-        # 
-        # > This parameter is available only when **WhiteListType** is set to **IP**.
+        # > This parameter takes effect only when **WhiteListType** is set to **IP**.
         self.security_ips = security_ips
         # The type of the whitelist. Valid values:
         # 
-        # - **IP**: IP address whitelist group.
+        # - **IP**: IP whitelist group.
+        # - **SecurityGroup**: security group.
         # 
-        # - **SecurityGroup**: Security group.
-        # 
-        # The default value is **IP**.
+        # Default value: **IP**.
         self.white_list_type = white_list_type
 
     def validate(self):
@@ -103,6 +95,9 @@ class ModifyDBClusterAccessWhitelistRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.pfs_instance_id is not None:
+            result['PfsInstanceId'] = self.pfs_instance_id
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -140,6 +135,9 @@ class ModifyDBClusterAccessWhitelistRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PfsInstanceId') is not None:
+            self.pfs_instance_id = m.get('PfsInstanceId')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

@@ -21,12 +21,17 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         create_time: str = None,
         custom_bucket_path: str = None,
         custom_bucket_path_list: List[main_models.DescribePolarFsAttributeResponseBodyCustomBucketPathList] = None,
+        dbendpoint_id: str = None,
         dbtype: str = None,
+        endpoint_items: List[main_models.DescribePolarFsAttributeResponseBodyEndpointItems] = None,
         expire_time: str = None,
         expired: str = None,
         file_system_id: str = None,
         lock_mode: str = None,
+        maxscale_endpoint_id: str = None,
+        meta_conn_string: str = None,
         meta_instance_name: str = None,
+        meta_mxs_conn_string: str = None,
         meta_url: str = None,
         minor_version: str = None,
         mount_info: main_models.DescribePolarFsAttributeResponseBodyMountInfo = None,
@@ -44,23 +49,25 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         storage_space: float = None,
         storage_type: str = None,
         storage_used: float = None,
+        user_default_acc_name: str = None,
+        user_default_acc_sk: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
     ):
         # The acceleration type.
         self.accelerate_type = accelerate_type
-        # The acceleration storage space, in GB.
+        # The acceleration storage space. Unit: GB.
         self.accelerated_storage_space = accelerated_storage_space
-        # Indicates whether the acceleration cache is enabled. Valid values:
-        # - **ON**: enabled.
-        # - **OFF**: disabled.
+        # Specifies whether the acceleration cache is enabled. Valid values:
+        # - **ON**: Enabled.
+        # - **OFF**: Disabled.
         self.accelerating_enable = accelerating_enable
-        # The bandwidth, in MB/s.
+        # The bandwidth. Unit: MB/s.
         self.bandwidth = bandwidth
-        # The bandwidth baseline, in MB/s/TiB.
+        # The bandwidth baseline. Unit: MB/s/TiB.
         self.bandwidth_base_line = bandwidth_base_line
-        # The storage bucket ID.
+        # The bucket ID.
         self.bucket_id = bucket_id
         # The PolarLakebase edition. Valid values:
         # 
@@ -78,27 +85,32 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.custom_bucket_path = custom_bucket_path
         # The list of custom storage paths.
         self.custom_bucket_path_list = custom_bucket_path_list
+        self.dbendpoint_id = dbendpoint_id
         # The database ecosystem type. Valid values: 
         # * **MySQL**
-        # * **PostgreSQL**.
+        # * **PostgreSQL**
         self.dbtype = dbtype
+        self.endpoint_items = endpoint_items
         # The expiration time of the cluster.
         # 
-        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
+        # > This parameter is returned only for clusters that use the **Prepaid** (subscription) billing method. An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired.
-        # > This parameter is returned only for clusters whose billing method is **Prepaid** (subscription).
+        # > This parameter is returned only for clusters that use the **Prepaid** (subscription) billing method.
         self.expired = expired
         # The file system ID.
         self.file_system_id = file_system_id
         # The lock mode. Valid values: 
         # 
-        # - **Unlock**: not locked.
-        # - **ManualLock**: manually locked. 
-        # - **LockByExpiration**: automatically locked due to cluster expiration.
+        # - **Unlock**: Not locked.
+        # - **ManualLock**: Manually locked. 
+        # - **LockByExpiration**: Automatically locked due to cluster expiration.
         self.lock_mode = lock_mode
+        self.maxscale_endpoint_id = maxscale_endpoint_id
+        self.meta_conn_string = meta_conn_string
         self.meta_instance_name = meta_instance_name
-        # The metadata URL for Fuse mounting (encrypted).
+        self.meta_mxs_conn_string = meta_mxs_conn_string
+        # The encrypted metadata URL for Fuse mounting.
         self.meta_url = meta_url
         # The minor version of the instance.
         self.minor_version = minor_version
@@ -116,7 +128,7 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         # The PolarLakebase instance status.
         self.polar_fs_status = polar_fs_status
         # The instance version. Valid values:
-        # - **PolarFS 2.0**: 2.0
+        # - **PolarFS 2.0**: 2.0.
         # - **PolarFS 1.0**: 1.0.
         self.polar_fs_type = polar_fs_type
         # The version.
@@ -131,17 +143,19 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The managed security group ID.
         self.security_group_id = security_group_id
-        # The storage space, in GB.
+        # The storage space. Unit: GB.
         self.storage_space = storage_space
-        # Valid values for the High-performance Edition storage type:
+        # The storage type for the High-performance Edition. Valid values:
         # * **ESSDPL1**
         # * **ESSDPL0**
         # 
-        # Valid values for the Basic Edition storage type:
+        # The storage type for the Basic Edition. Valid values:
         # * **city_redundancy**: zone-redundant storage.
         self.storage_type = storage_type
-        # The used storage space, in bytes.
+        # The used storage space. Unit: bytes.
         self.storage_used = storage_used
+        self.user_default_acc_name = user_default_acc_name
+        self.user_default_acc_sk = user_default_acc_sk
         # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
@@ -152,6 +166,10 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
     def validate(self):
         if self.custom_bucket_path_list:
             for v1 in self.custom_bucket_path_list:
+                 if v1:
+                    v1.validate()
+        if self.endpoint_items:
+            for v1 in self.endpoint_items:
                  if v1:
                     v1.validate()
         if self.mount_info:
@@ -197,8 +215,16 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
             for k1 in self.custom_bucket_path_list:
                 result['CustomBucketPathList'].append(k1.to_map() if k1 else None)
 
+        if self.dbendpoint_id is not None:
+            result['DBEndpointId'] = self.dbendpoint_id
+
         if self.dbtype is not None:
             result['DBType'] = self.dbtype
+
+        result['EndpointItems'] = []
+        if self.endpoint_items is not None:
+            for k1 in self.endpoint_items:
+                result['EndpointItems'].append(k1.to_map() if k1 else None)
 
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
@@ -212,8 +238,17 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
 
+        if self.maxscale_endpoint_id is not None:
+            result['MaxscaleEndpointId'] = self.maxscale_endpoint_id
+
+        if self.meta_conn_string is not None:
+            result['MetaConnString'] = self.meta_conn_string
+
         if self.meta_instance_name is not None:
             result['MetaInstanceName'] = self.meta_instance_name
+
+        if self.meta_mxs_conn_string is not None:
+            result['MetaMxsConnString'] = self.meta_mxs_conn_string
 
         if self.meta_url is not None:
             result['MetaUrl'] = self.meta_url
@@ -266,6 +301,12 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         if self.storage_used is not None:
             result['StorageUsed'] = self.storage_used
 
+        if self.user_default_acc_name is not None:
+            result['UserDefaultAccName'] = self.user_default_acc_name
+
+        if self.user_default_acc_sk is not None:
+            result['UserDefaultAccSk'] = self.user_default_acc_sk
+
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
 
@@ -315,8 +356,17 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
                 temp_model = main_models.DescribePolarFsAttributeResponseBodyCustomBucketPathList()
                 self.custom_bucket_path_list.append(temp_model.from_map(k1))
 
+        if m.get('DBEndpointId') is not None:
+            self.dbendpoint_id = m.get('DBEndpointId')
+
         if m.get('DBType') is not None:
             self.dbtype = m.get('DBType')
+
+        self.endpoint_items = []
+        if m.get('EndpointItems') is not None:
+            for k1 in m.get('EndpointItems'):
+                temp_model = main_models.DescribePolarFsAttributeResponseBodyEndpointItems()
+                self.endpoint_items.append(temp_model.from_map(k1))
 
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
@@ -330,8 +380,17 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
 
+        if m.get('MaxscaleEndpointId') is not None:
+            self.maxscale_endpoint_id = m.get('MaxscaleEndpointId')
+
+        if m.get('MetaConnString') is not None:
+            self.meta_conn_string = m.get('MetaConnString')
+
         if m.get('MetaInstanceName') is not None:
             self.meta_instance_name = m.get('MetaInstanceName')
+
+        if m.get('MetaMxsConnString') is not None:
+            self.meta_mxs_conn_string = m.get('MetaMxsConnString')
 
         if m.get('MetaUrl') is not None:
             self.meta_url = m.get('MetaUrl')
@@ -384,6 +443,12 @@ class DescribePolarFsAttributeResponseBody(DaraModel):
 
         if m.get('StorageUsed') is not None:
             self.storage_used = m.get('StorageUsed')
+
+        if m.get('UserDefaultAccName') is not None:
+            self.user_default_acc_name = m.get('UserDefaultAccName')
+
+        if m.get('UserDefaultAccSk') is not None:
+            self.user_default_acc_sk = m.get('UserDefaultAccSk')
 
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')
@@ -439,6 +504,124 @@ class DescribePolarFsAttributeResponseBodyMountInfo(DaraModel):
 
         if m.get('Token') is not None:
             self.token = m.get('Token')
+
+        return self
+
+class DescribePolarFsAttributeResponseBodyEndpointItems(DaraModel):
+    def __init__(
+        self,
+        address_items: List[main_models.DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems] = None,
+        dbendpoint_id: str = None,
+        endpoint_type: str = None,
+    ):
+        self.address_items = address_items
+        self.dbendpoint_id = dbendpoint_id
+        self.endpoint_type = endpoint_type
+
+    def validate(self):
+        if self.address_items:
+            for v1 in self.address_items:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['AddressItems'] = []
+        if self.address_items is not None:
+            for k1 in self.address_items:
+                result['AddressItems'].append(k1.to_map() if k1 else None)
+
+        if self.dbendpoint_id is not None:
+            result['DBEndpointId'] = self.dbendpoint_id
+
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address_items = []
+        if m.get('AddressItems') is not None:
+            for k1 in m.get('AddressItems'):
+                temp_model = main_models.DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems()
+                self.address_items.append(temp_model.from_map(k1))
+
+        if m.get('DBEndpointId') is not None:
+            self.dbendpoint_id = m.get('DBEndpointId')
+
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+
+        return self
+
+class DescribePolarFsAttributeResponseBodyEndpointItemsAddressItems(DaraModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        ipaddress: str = None,
+        net_type: str = None,
+        port: str = None,
+        vpcid: str = None,
+        v_switch_id: str = None,
+    ):
+        self.connection_string = connection_string
+        self.ipaddress = ipaddress
+        self.net_type = net_type
+        self.port = port
+        self.vpcid = vpcid
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+
+        if self.ipaddress is not None:
+            result['IPAddress'] = self.ipaddress
+
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+
+        if self.port is not None:
+            result['Port'] = self.port
+
+        if self.vpcid is not None:
+            result['VPCId'] = self.vpcid
+
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+
+        if m.get('IPAddress') is not None:
+            self.ipaddress = m.get('IPAddress')
+
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+
+        if m.get('VPCId') is not None:
+            self.vpcid = m.get('VPCId')
+
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
 
         return self
 

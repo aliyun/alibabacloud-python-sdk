@@ -24,13 +24,10 @@ class DescribeBackupsResponseBody(DaraModel):
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
-        # The total size of level-2 backups in the specified region, in bytes.
-        # 
-        # > - Supported only for storage classes PSL4 and PSL5.
-        # >
-        # > - Supported only for clusters with the level-2 backup feature enabled.
-        # >
-        # > - If this field is not returned, the level-2 backup size is 0.
+        # The total size of level-2 backups in the specified region. Unit: bytes.
+        # > - Only PSL4 and PSL5 storage types are supported.
+        # > - Only clusters with the level-2 backup feature enabled are supported.
+        # > - If this parameter is not returned, the level-2 backup size is 0.
         self.total_level_2backup_size = total_level_2backup_size
         # The total number of records.
         self.total_record_count = total_record_count
@@ -134,6 +131,7 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         backup_status: str = None,
         backup_type: str = None,
         backups_level: str = None,
+        comment: str = None,
         consistent_time: str = None,
         dbcluster_id: str = None,
         expect_expire_time: str = None,
@@ -150,6 +148,7 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         self.backup_status = backup_status
         self.backup_type = backup_type
         self.backups_level = backups_level
+        self.comment = comment
         self.consistent_time = consistent_time
         self.dbcluster_id = dbcluster_id
         self.expect_expire_time = expect_expire_time
@@ -191,6 +190,9 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
 
         if self.backups_level is not None:
             result['BackupsLevel'] = self.backups_level
+
+        if self.comment is not None:
+            result['Comment'] = self.comment
 
         if self.consistent_time is not None:
             result['ConsistentTime'] = self.consistent_time
@@ -240,6 +242,9 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
 
         if m.get('BackupsLevel') is not None:
             self.backups_level = m.get('BackupsLevel')
+
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
 
         if m.get('ConsistentTime') is not None:
             self.consistent_time = m.get('ConsistentTime')

@@ -28,66 +28,63 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
         model_path: str = None,
         request_id: str = None,
         task_info: List[main_models.DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo] = None,
+        tune_arch: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The access information for the model in a test deployment.
+        # The access information of the model in the test deployment scenario.
         self.access_info = access_info
-        # The cluster network type.
+        # The network type of the cluster.
         self.cluster_network_type = cluster_network_type
-        # The task creation time.
+        # The creation time.
         self.create_time = create_time
-        # The cluster description.
+        # The task name.
         self.dbcluster_description = dbcluster_description
-        # The cluster ID.
+        # The task ID.
         self.dbcluster_id = dbcluster_id
         # The training status. Valid values:
         # 
-        # - **ACTIVATION**: Training in progress.
-        # 
-        # - **COMPLETED**: Training successful.
-        # 
-        # - **FAILED**: Training failed.
+        # * **ACTIVATION**: Training in progress.
+        # * **COMPLETED**: Training succeeded.
+        # * **FAILED**: Training failed.
         self.dbcluster_status = dbcluster_status
-        # The training status description. Valid values:
+        # The training status. Valid values:
         # 
-        # - **ACTIVATION**: Training in progress.
-        # 
-        # - **COMPLETED**: Training successful.
-        # 
-        # - **FAILED**: Training failed.
+        # * **ACTIVATION**: Training in progress.
+        # * **COMPLETED**: Training succeeded.
+        # * **FAILED**: Training failed.
         self.dbcluster_status_desc = dbcluster_status_desc
         # The engine type.
         self.dbtype = dbtype
-        # The version. Valid value:
+        # The version. Valid values:
         # 
-        # - **3.1**: Model operator tuning.
+        # * **3.1**: model operator tuning.
         self.dbversion = dbversion
-        # The datasets used for the task.
+        # The datasets.
         self.data_sets = data_sets
-        # A list of objects containing additional information about the task.
+        # The additional information, including runtime parameters.
         self.extra_info = extra_info
-        # The instance type. Valid value:
+        # The type of the instance. Valid values:
         # 
         # - **18**.
         self.kind_code = kind_code
         # The lock mode. Valid values:
         # 
-        # - **0**: Locked.
-        # 
-        # - **1**: Unlocked.
+        # * **0**: Locked.
+        # * **1**: Unlocked.
         self.lock_mode = lock_mode
         # The maintenance end time.
         self.maintain_end_time = maintain_end_time
         # The maintenance start time.
         self.maintain_start_time = maintain_start_time
-        # A comma-separated list of output model paths from the model fine-tuning task.
+        # The list of output model paths in the model fine-tuning scenario.
         self.model_path = model_path
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # A list of objects containing information about each training task.
+        # The task information.
         self.task_info = task_info
-        # The VPC ID.
+        self.tune_arch = tune_arch
+        # The virtual private cloud (VPC) ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -165,6 +162,9 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
             for k1 in self.task_info:
                 result['TaskInfo'].append(k1.to_map() if k1 else None)
 
+        if self.tune_arch is not None:
+            result['TuneArch'] = self.tune_arch
+
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
 
@@ -235,6 +235,9 @@ class DescribeAIDBClusterTaskAttributeResponseBody(DaraModel):
                 temp_model = main_models.DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo()
                 self.task_info.append(temp_model.from_map(k1))
 
+        if m.get('TuneArch') is not None:
+            self.tune_arch = m.get('TuneArch')
+
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')
 
@@ -257,15 +260,14 @@ class DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo(DaraModel):
     ):
         # The task completion time.
         self.completed_time = completed_time
-        # The base model.
+        # The foundation model.
         self.model_name = model_name
-        # The path to the custom model.
+        # The path of the custom model.
         self.model_path = model_path
-        # The source of the model. Valid values:
+        # The model source. Valid values:
         # 
-        # - **public**: A pre-built model.
-        # 
-        # - **custom**: A custom model.
+        # * **public**: pre-trained model.
+        # * **custom**: custom model.
         self.model_source = model_source
         # The runtime parameters.
         self.running_times = running_times
@@ -273,15 +275,13 @@ class DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo(DaraModel):
         self.start_time = start_time
         # The task type. Valid values:
         # 
-        # - **sft**: Supervised Fine-tuning.
-        # 
-        # - **grpo**: Reinforcement learning.
+        # * **sft**: SFT-efficient training.
+        # * **grpo**: GRPO-reinforcement learning.
         self.train_mode = train_mode
         # The training method. Valid values:
         # 
-        # - **lora**: Low-Rank Adaptation (LoRA) training.
-        # 
-        # - **full**: Full training.
+        # * **lora**
+        # * **full**: full-parameter training.
         self.train_type = train_type
 
     def validate(self):
@@ -358,13 +358,12 @@ class DescribeAIDBClusterTaskAttributeResponseBodyDataSets(DaraModel):
         self.dataset_name = dataset_name
         # The dataset path.
         self.path = path
-        # The proportion of the training set reserved for validation.
+        # The ratio of data split from the training set.
         self.split_dataset_ratio = split_dataset_ratio
-        # The type of the dataset. Valid values:
+        # The type. Valid values:
         # 
-        # - **train**: The training set.
-        # 
-        # - **eval**: The validation set.
+        # * **train**: training set.
+        # * **eval**: validation set.
         self.type = type
 
     def validate(self):

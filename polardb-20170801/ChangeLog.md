@@ -1,3 +1,31 @@
+2026-07-10 Version: 7.5.0
+- Support API DescribeDBClusterPrice.
+- Update API CreateAIDBClusterTask: add request parameters TuneArch.
+- Update API CreateBackup: add request parameters Comment.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.TimeSlicesInfo.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.TimeSlicesType.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.VnodeKubernetesConfig.
+- Update API DescribeAIDBClusterTaskAttribute: add response parameters Body.TuneArch.
+- Update API DescribeAIDBClusterTasks: add response parameters Body.Items.$.TuneArch.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.TuneArch.
+- Update API DescribeBackups: add response parameters Body.Items.$.Comment.
+- Update API DescribeBudgetPolicies: add request parameters ScopeRefName.
+- Update API DescribeConsumers: add request parameters ConsumerName.
+- Update API DescribeConsumers: add request parameters ConsumerNameList.
+- Update API DescribeDBClusterAccessWhitelist: add request parameters PfsInstanceId.
+- Update API DescribeDBClusterSSL: add request parameters PfsInstanceId.
+- Update API DescribePolarFsAttribute: add response parameters Body.DBEndpointId.
+- Update API DescribePolarFsAttribute: add response parameters Body.EndpointItems.
+- Update API DescribePolarFsAttribute: add response parameters Body.MaxscaleEndpointId.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaConnString.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaMxsConnString.
+- Update API DescribePolarFsAttribute: add response parameters Body.UserDefaultAccName.
+- Update API DescribePolarFsAttribute: add response parameters Body.UserDefaultAccSk.
+- Update API ModifyDBClusterAccessWhitelist: add request parameters PfsInstanceId.
+- Update API ModifyDBClusterSSL: add request parameters ConnectionString.
+- Update API ModifyDBClusterSSL: add request parameters PfsInstanceId.
+
+
 2026-07-02 Version: 7.4.0
 - Support API DescribePolarFs.
 

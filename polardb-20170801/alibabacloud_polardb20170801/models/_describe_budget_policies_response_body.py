@@ -17,17 +17,17 @@ class DescribeBudgetPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # A list of budget policies.
+        # The list of budget policies.
         self.items = items
         # The page number.
         self.page_number = page_number
         # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The number of records to return on each page. Valid values: **30**, **50**, and **100**.
-        # 
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
+        #                               
         # Default value: **30**.
         self.page_size = page_size
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The total number of records.
         self.total_record_count = total_record_count
@@ -108,45 +108,41 @@ class DescribeBudgetPoliciesResponseBodyItems(DaraModel):
         status: str = None,
         used_points: int = None,
     ):
-        # The alert threshold, as a percentage (0 to 100).
+        # The alert threshold percentage. Valid values: 0 to 100.
         self.alert_threshold_pct = alert_threshold_pct
-        # Indicates whether the alert threshold was triggered.
+        # Indicates whether the alert threshold has been triggered.
         self.alert_triggered = alert_triggered
-        # The ID of the dimension object. This parameter is required when `BudgetDimensionType` is set to `ConsumerGroup` or `Consumer`.
+        # The dimension object ID. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
         self.budget_dimension_ref_id = budget_dimension_ref_id
-        # The dimension of the budget policy. Valid values:
+        # The policy type. Valid values:
         # 
-        # - **ConsumerGroup**: consumer group
-        # 
-        # - **Consumer**: consumer
+        # - **ConsumerGroup**: total budget for a user group
+        # - **Consumer**: total budget for a user
         self.budget_dimension_type = budget_dimension_type
-        # The number of budget points.
+        # The budget points.
         self.budget_points = budget_points
         # The budget policy ID.
         self.budget_policy_id = budget_policy_id
         # The budget type. Valid values:
         # 
-        # - **GlobalTotal**: Global budget
-        # 
-        # - **ConsumerTotal**: Consumer budget
-        # 
-        # - **ConsumerGroupTotal**: Consumer group budget
+        # - **GlobalTotal**: global total budget
+        # - **ConsumerTotal**: total budget for a user
+        # - **ConsumerGroupTotal**: total budget for a user group
         self.budget_type = budget_type
-        # Indicates whether the budget was exceeded.
+        # Indicates whether the quota has been exceeded.
         self.exceeded = exceeded
         # The time when the policy was created.
         self.gmt_created = gmt_created
         # The time when the policy was last modified.
         self.gmt_modified = gmt_modified
-        # The gateway cluster ID.
+        # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The day of the month (1 to 28) on which the budget is reset.
+        # The day of the month on which the budget resets. Valid values: 1 to 28.
         self.reset_day_of_month = reset_day_of_month
-        # The status of the policy. Valid values:
+        # The policy status. Valid values:
         # 
         # - **Enabled**: enabled
-        # 
-        # - **Disabled**: disabled
+        # - **Disenabled**: disabled
         self.status = status
         # The number of used points.
         self.used_points = used_points

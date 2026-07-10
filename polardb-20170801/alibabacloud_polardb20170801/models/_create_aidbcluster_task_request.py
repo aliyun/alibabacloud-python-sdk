@@ -23,6 +23,7 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         running_parameter: str = None,
         security_group_id: str = None,
         task_name: str = None,
+        tune_arch: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
         zone_id: str = None,
@@ -33,33 +34,28 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The instance type.
         self.dbinstance_class = dbinstance_class
-        # The ID of the training dataset. This parameter is required for fine-tuning.
+        # The training dataset ID. This parameter is required for fine-tuning.
         self.dataset_path = dataset_path
-        # The ID of the validation dataset. This parameter is required for evaluation.
+        # The validation dataset ID. This parameter is required for evaluation.
         self.eval_dataset_path = eval_dataset_path
-        # The type of model service. Valid values:
-        # 
-        # - **aitrain**: For model operator tuning.
+        # The model service type. Valid values:
+        #  * **aitrain**: model operator tuning
         # 
         # This parameter is required.
         self.kube_type = kube_type
         # The model name.
-        # 
-        # - For a **preset model**, specify the model name.
-        # 
-        # - For a **custom model**, specify the path to the model. This option is for models trained in a cold storage edition instance.
+        # * **For a preset model, specify the name of the selected model.**
+        # * **For a custom model, specify the path where the model is stored (the model trained in a cold storage instance).**
         # 
         # This parameter is required.
         self.model_name = model_name
         # The model source. Valid values:
-        # 
-        # - **public**: A preset model.
-        # 
-        # - **custom**: A custom model.
+        # * **public**: preset model
+        # * **custom**: custom model
         # 
         # This parameter is required.
         self.model_source = model_source
-        # The type of the custom model.
+        # The custom model type.
         self.model_type = model_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -67,15 +63,16 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The runtime parameters, specified as a JSON string.
+        # The running parameters in JSON string format.
         # 
         # This parameter is required.
         self.running_parameter = running_parameter
         # The security group ID.
         self.security_group_id = security_group_id
-        # The name of the task.
+        # The description of the model service.
         self.task_name = task_name
-        # The VPC ID.
+        self.tune_arch = tune_arch
+        # The virtual private cloud (VPC) ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -138,6 +135,9 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         if self.task_name is not None:
             result['TaskName'] = self.task_name
 
+        if self.tune_arch is not None:
+            result['TuneArch'] = self.tune_arch
+
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
 
@@ -198,6 +198,9 @@ class CreateAIDBClusterTaskRequest(DaraModel):
 
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
+
+        if m.get('TuneArch') is not None:
+            self.tune_arch = m.get('TuneArch')
 
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')

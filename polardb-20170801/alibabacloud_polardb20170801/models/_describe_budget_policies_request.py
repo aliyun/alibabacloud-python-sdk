@@ -14,15 +14,15 @@ class DescribeBudgetPoliciesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        scope_ref_name: str = None,
         status: str = None,
     ):
-        # The ID of the consumer group or user. This parameter is required if BudgetDimensionType is set to ConsumerGroup or Consumer.
+        # The dimension object ID. This parameter is required when BudgetDimensionType is set to ConsumerGroup or Consumer.
         self.budget_dimension_ref_id = budget_dimension_ref_id
         # The policy type. Valid values:
         # 
-        # - **ConsumerGroup**: The policy applies to a consumer group.
-        # 
-        # - **Consumer**: The policy applies to a user.
+        # - **ConsumerGroup**: total budget for a user group
+        # - **Consumer**: total budget for a user
         self.budget_dimension_type = budget_dimension_type
         # The budget policy ID.
         self.budget_policy_id = budget_policy_id
@@ -32,23 +32,20 @@ class DescribeBudgetPoliciesRequest(DaraModel):
         self.gw_cluster_id = gw_cluster_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries per page. Valid values: 
+        # * **30**
+        # * **50**
+        # * **100**
         # 
-        # - **30**
-        # 
-        # - **50**
-        # 
-        # - **100**
-        # 
-        # The default value is **30**.
+        # Default value: **30**.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
+        self.scope_ref_name = scope_ref_name
         # The policy status. Valid values:
         # 
-        # - **Enabled**
-        # 
-        # - **Disabled**
+        # - **Enabled**: enabled
+        # - **Disenabled**: disabled
         self.status = status
 
     def validate(self):
@@ -80,6 +77,9 @@ class DescribeBudgetPoliciesRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.scope_ref_name is not None:
+            result['ScopeRefName'] = self.scope_ref_name
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -107,6 +107,9 @@ class DescribeBudgetPoliciesRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ScopeRefName') is not None:
+            self.scope_ref_name = m.get('ScopeRefName')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

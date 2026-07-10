@@ -2831,6 +2831,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.task_name):
             query['TaskName'] = request.task_name
+        if not DaraCore.is_null(request.tune_arch):
+            query['TuneArch'] = request.tune_arch
         if not DaraCore.is_null(request.vpcid):
             query['VPCId'] = request.vpcid
         if not DaraCore.is_null(request.v_switch_id):
@@ -2895,6 +2897,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.task_name):
             query['TaskName'] = request.task_name
+        if not DaraCore.is_null(request.tune_arch):
+            query['TuneArch'] = request.tune_arch
         if not DaraCore.is_null(request.vpcid):
             query['VPCId'] = request.vpcid
         if not DaraCore.is_null(request.v_switch_id):
@@ -4039,6 +4043,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.owner_account):
@@ -4077,6 +4083,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.owner_account):
@@ -15751,6 +15759,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_ref_name):
+            query['ScopeRefName'] = request.scope_ref_name
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -15793,6 +15803,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope_ref_name):
+            query['ScopeRefName'] = request.scope_ref_name
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         req = open_api_util_models.OpenApiRequest(
@@ -16243,6 +16255,10 @@ class Client(OpenApiClient):
             query['ConsumerGroupId'] = request.consumer_group_id
         if not DaraCore.is_null(request.consumer_id):
             query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.consumer_name):
+            query['ConsumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.consumer_name_list):
+            query['ConsumerNameList'] = request.consumer_name_list
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.page_number):
@@ -16281,6 +16297,10 @@ class Client(OpenApiClient):
             query['ConsumerGroupId'] = request.consumer_group_id
         if not DaraCore.is_null(request.consumer_id):
             query['ConsumerId'] = request.consumer_id
+        if not DaraCore.is_null(request.consumer_name):
+            query['ConsumerName'] = request.consumer_name
+        if not DaraCore.is_null(request.consumer_name_list):
+            query['ConsumerNameList'] = request.consumer_name_list
         if not DaraCore.is_null(request.gw_cluster_id):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.page_number):
@@ -16765,6 +16785,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -16801,6 +16823,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -17930,6 +17954,164 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
 
+    def describe_dbcluster_price_with_options(
+        self,
+        tmp_req: main_models.DescribeDBClusterPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBClusterPriceResponse:
+        tmp_req.validate()
+        request = main_models.DescribeDBClusterPriceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dbnodes):
+            request.dbnodes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbnodes, 'DBNodes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.creation_category):
+            query['CreationCategory'] = request.creation_category
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not DaraCore.is_null(request.dbnode_num):
+            query['DBNodeNum'] = request.dbnode_num
+        if not DaraCore.is_null(request.dbnodes_shrink):
+            query['DBNodes'] = request.dbnodes_shrink
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not DaraCore.is_null(request.hot_standby_cluster):
+            query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.serverless_type):
+            query['ServerlessType'] = request.serverless_type
+        if not DaraCore.is_null(request.storage_charge_type):
+            query['StorageChargeType'] = request.storage_charge_type
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBClusterPrice',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBClusterPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_price_with_options_async(
+        self,
+        tmp_req: main_models.DescribeDBClusterPriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBClusterPriceResponse:
+        tmp_req.validate()
+        request = main_models.DescribeDBClusterPriceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dbnodes):
+            request.dbnodes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbnodes, 'DBNodes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.creation_category):
+            query['CreationCategory'] = request.creation_category
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbnode_class):
+            query['DBNodeClass'] = request.dbnode_class
+        if not DaraCore.is_null(request.dbnode_ids):
+            query['DBNodeIds'] = request.dbnode_ids
+        if not DaraCore.is_null(request.dbnode_num):
+            query['DBNodeNum'] = request.dbnode_num
+        if not DaraCore.is_null(request.dbnodes_shrink):
+            query['DBNodes'] = request.dbnodes_shrink
+        if not DaraCore.is_null(request.dbtype):
+            query['DBType'] = request.dbtype
+        if not DaraCore.is_null(request.dbversion):
+            query['DBVersion'] = request.dbversion
+        if not DaraCore.is_null(request.hot_standby_cluster):
+            query['HotStandbyCluster'] = request.hot_standby_cluster
+        if not DaraCore.is_null(request.modify_type):
+            query['ModifyType'] = request.modify_type
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.provisioned_iops):
+            query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.serverless_type):
+            query['ServerlessType'] = request.serverless_type
+        if not DaraCore.is_null(request.storage_charge_type):
+            query['StorageChargeType'] = request.storage_charge_type
+        if not DaraCore.is_null(request.storage_space):
+            query['StorageSpace'] = request.storage_space
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBClusterPrice',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBClusterPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_price(
+        self,
+        request: main_models.DescribeDBClusterPriceRequest,
+    ) -> main_models.DescribeDBClusterPriceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_dbcluster_price_with_options(request, runtime)
+
+    async def describe_dbcluster_price_async(
+        self,
+        request: main_models.DescribeDBClusterPriceRequest,
+    ) -> main_models.DescribeDBClusterPriceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_dbcluster_price_with_options_async(request, runtime)
+
     def describe_dbcluster_proxy_with_options(
         self,
         request: main_models.DescribeDBClusterProxyRequest,
@@ -18037,6 +18219,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -18073,6 +18257,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -31405,6 +31591,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -31453,6 +31641,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -33021,6 +33211,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbendpoint_id):
@@ -33031,6 +33223,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -33065,6 +33259,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterSSLResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.connection_string):
+            query['ConnectionString'] = request.connection_string
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbendpoint_id):
@@ -33075,6 +33271,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.pfs_instance_id):
+            query['PfsInstanceId'] = request.pfs_instance_id
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):

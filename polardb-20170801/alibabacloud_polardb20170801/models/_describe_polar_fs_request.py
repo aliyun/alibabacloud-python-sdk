@@ -20,15 +20,31 @@ class DescribePolarFsRequest(DaraModel):
         relative_db_cluster_id: str = None,
         tag: List[main_models.DescribePolarFsRequestTag] = None,
     ):
+        # The instance ID of the PolarDB instance on which the application depends.
         self.dbcluster_id = dbcluster_id
+        # The page number. The value must be an integer greater than 0 and not exceeding the maximum value of Integer.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
+        # The description of the PolarFS instance.
         self.polar_fs_instance_description = polar_fs_instance_description
+        # The list of PolarFS instance IDs, separated by commas (,).
         self.polar_fs_instance_ids = polar_fs_instance_ids
+        # The PolarFS type.
         self.polar_fs_type = polar_fs_type
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the associated PolarDB cluster.
         self.relative_db_cluster_id = relative_db_cluster_id
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -113,7 +129,9 @@ class DescribePolarFsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

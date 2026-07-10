@@ -14,15 +14,15 @@ class DescribeDBClusterSSLResponseBody(DaraModel):
         request_id: str = None,
         sslauto_rotate: str = None,
     ):
-        # A list of SSL connection information.
+        # The list of SSL connection information.
         self.items = items
         # The request ID.
         self.request_id = request_id
-        # Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
+        # Indicates whether automatic SSL certificate rotation is enabled. Valid values:
         # 
-        # - **Enable**: enabled
+        # - **Enable**: Enabled.
         # 
-        # - **Disable**: disabled
+        # - **Disable**: Disabled.
         # 
         # > This parameter is supported only for PolarDB for MySQL.
         self.sslauto_rotate = sslauto_rotate
@@ -78,23 +78,22 @@ class DescribeDBClusterSSLResponseBodyItems(DaraModel):
     ):
         # The cluster endpoint ID.
         self.dbendpoint_id = dbendpoint_id
-        # Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
+        # Indicates whether automatic SSL certificate rotation is enabled. Valid values:
         # 
-        # - **Enable**: enabled
+        # - **Enable**: Enabled.
         # 
-        # - **Disable**: disabled
+        # - **Disable**: Disabled.
         # 
-        # > This parameter is supported only when the database engine is compatible with PostgreSQL or Oracle syntax.
+        # > This parameter is supported only when the database engine is PostgreSQL-compatible or Oracle-syntax-compatible.
         self.sslauto_rotate = sslauto_rotate
-        # The SSL connection endpoint.
+        # The SSL connection address.
         self.sslconnection_string = sslconnection_string
-        # Indicates whether SSL encryption is enabled. Valid values:
+        # Indicates whether Secure Sockets Layer (SSL) encryption is enabled. Valid values:
         # 
-        # - **Enabled**: enabled.
-        # 
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Shutdown.
         self.sslenabled = sslenabled
-        # The certificate validity period. Format: `yyyy-MM-ddTHH:mm:ssZ` (UTC time).
+        # The expiration time of the SSL certificate. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
         self.sslexpire_time = sslexpire_time
 
     def validate(self):
