@@ -15,8 +15,6 @@ class HotelOrderPayRequest(DaraModel):
         third_trade_no: str = None,
         total_price: int = None,
     ):
-        # 供应商订单号（取自创单返回的订单号）
-        # 
         # This parameter is required.
         self.btrip_order_id = btrip_order_id
         # This parameter is required.

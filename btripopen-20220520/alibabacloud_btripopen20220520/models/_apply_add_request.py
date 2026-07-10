@@ -58,7 +58,6 @@ class ApplyAddRequest(DaraModel):
         self.default_standard = default_standard
         self.depart_id = depart_id
         self.depart_name = depart_name
-        # 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
         self.extend_field = extend_field
         self.external_traveler_list = external_traveler_list
         self.external_traveler_standard = external_traveler_standard
@@ -412,6 +411,7 @@ class ApplyAddRequestTravelerStandard(DaraModel):
         self,
         business_discount: int = None,
         car_city_set: List[main_models.ApplyAddRequestTravelerStandardCarCitySet] = None,
+        car_standard: main_models.ApplyAddRequestTravelerStandardCarStandard = None,
         economy_discount: int = None,
         first_discount: int = None,
         flight_cabins: str = None,
@@ -430,6 +430,7 @@ class ApplyAddRequestTravelerStandard(DaraModel):
     ):
         self.business_discount = business_discount
         self.car_city_set = car_city_set
+        self.car_standard = car_standard
         self.economy_discount = economy_discount
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
@@ -451,6 +452,8 @@ class ApplyAddRequestTravelerStandard(DaraModel):
             for v1 in self.car_city_set:
                  if v1:
                     v1.validate()
+        if self.car_standard:
+            self.car_standard.validate()
         if self.hotel_citys:
             for v1 in self.hotel_citys:
                  if v1:
@@ -472,6 +475,9 @@ class ApplyAddRequestTravelerStandard(DaraModel):
         if self.car_city_set is not None:
             for k1 in self.car_city_set:
                 result['car_city_set'].append(k1.to_map() if k1 else None)
+
+        if self.car_standard is not None:
+            result['car_standard'] = self.car_standard.to_map()
 
         if self.economy_discount is not None:
             result['economy_discount'] = self.economy_discount
@@ -534,6 +540,10 @@ class ApplyAddRequestTravelerStandard(DaraModel):
             for k1 in m.get('car_city_set'):
                 temp_model = main_models.ApplyAddRequestTravelerStandardCarCitySet()
                 self.car_city_set.append(temp_model.from_map(k1))
+
+        if m.get('car_standard') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandard()
+            self.car_standard = temp_model.from_map(m.get('car_standard'))
 
         if m.get('economy_discount') is not None:
             self.economy_discount = m.get('economy_discount')
@@ -671,6 +681,672 @@ class ApplyAddRequestTravelerStandardHotelCitys(DaraModel):
 
         if m.get('fee') is not None:
             self.fee = m.get('fee')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandard(DaraModel):
+    def __init__(
+        self,
+        book_allow_info: main_models.ApplyAddRequestTravelerStandardCarStandardBookAllowInfo = None,
+        car_helper: main_models.ApplyAddRequestTravelerStandardCarStandardCarHelper = None,
+        car_time_control: main_models.ApplyAddRequestTravelerStandardCarStandardCarTimeControl = None,
+        city_control_info: main_models.ApplyAddRequestTravelerStandardCarStandardCityControlInfo = None,
+        cross_city_info: main_models.ApplyAddRequestTravelerStandardCarStandardCrossCityInfo = None,
+        electronic_fence_info: main_models.ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo = None,
+        level_codes: str = None,
+        modify_destination_info: main_models.ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo = None,
+        times_total: int = None,
+        times_type: int = None,
+    ):
+        self.book_allow_info = book_allow_info
+        self.car_helper = car_helper
+        self.car_time_control = car_time_control
+        self.city_control_info = city_control_info
+        self.cross_city_info = cross_city_info
+        self.electronic_fence_info = electronic_fence_info
+        self.level_codes = level_codes
+        self.modify_destination_info = modify_destination_info
+        self.times_total = times_total
+        self.times_type = times_type
+
+    def validate(self):
+        if self.book_allow_info:
+            self.book_allow_info.validate()
+        if self.car_helper:
+            self.car_helper.validate()
+        if self.car_time_control:
+            self.car_time_control.validate()
+        if self.city_control_info:
+            self.city_control_info.validate()
+        if self.cross_city_info:
+            self.cross_city_info.validate()
+        if self.electronic_fence_info:
+            self.electronic_fence_info.validate()
+        if self.modify_destination_info:
+            self.modify_destination_info.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.book_allow_info is not None:
+            result['book_allow_info'] = self.book_allow_info.to_map()
+
+        if self.car_helper is not None:
+            result['car_helper'] = self.car_helper.to_map()
+
+        if self.car_time_control is not None:
+            result['car_time_control'] = self.car_time_control.to_map()
+
+        if self.city_control_info is not None:
+            result['city_control_info'] = self.city_control_info.to_map()
+
+        if self.cross_city_info is not None:
+            result['cross_city_info'] = self.cross_city_info.to_map()
+
+        if self.electronic_fence_info is not None:
+            result['electronic_fence_info'] = self.electronic_fence_info.to_map()
+
+        if self.level_codes is not None:
+            result['level_codes'] = self.level_codes
+
+        if self.modify_destination_info is not None:
+            result['modify_destination_info'] = self.modify_destination_info.to_map()
+
+        if self.times_total is not None:
+            result['times_total'] = self.times_total
+
+        if self.times_type is not None:
+            result['times_type'] = self.times_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('book_allow_info') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardBookAllowInfo()
+            self.book_allow_info = temp_model.from_map(m.get('book_allow_info'))
+
+        if m.get('car_helper') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardCarHelper()
+            self.car_helper = temp_model.from_map(m.get('car_helper'))
+
+        if m.get('car_time_control') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardCarTimeControl()
+            self.car_time_control = temp_model.from_map(m.get('car_time_control'))
+
+        if m.get('city_control_info') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardCityControlInfo()
+            self.city_control_info = temp_model.from_map(m.get('city_control_info'))
+
+        if m.get('cross_city_info') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardCrossCityInfo()
+            self.cross_city_info = temp_model.from_map(m.get('cross_city_info'))
+
+        if m.get('electronic_fence_info') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo()
+            self.electronic_fence_info = temp_model.from_map(m.get('electronic_fence_info'))
+
+        if m.get('level_codes') is not None:
+            self.level_codes = m.get('level_codes')
+
+        if m.get('modify_destination_info') is not None:
+            temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo()
+            self.modify_destination_info = temp_model.from_map(m.get('modify_destination_info'))
+
+        if m.get('times_total') is not None:
+            self.times_total = m.get('times_total')
+
+        if m.get('times_type') is not None:
+            self.times_type = m.get('times_type')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo(DaraModel):
+    def __init__(
+        self,
+        modify_destination: bool = None,
+    ):
+        # This parameter is required.
+        self.modify_destination = modify_destination
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.modify_destination is not None:
+            result['modify_destination'] = self.modify_destination
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('modify_destination') is not None:
+            self.modify_destination = m.get('modify_destination')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo(DaraModel):
+    def __init__(
+        self,
+        electronic_fence_locations_from: List[main_models.ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom] = None,
+        electronic_fence_locations_to: List[main_models.ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo] = None,
+        electronic_fence_type: int = None,
+    ):
+        # This parameter is required.
+        self.electronic_fence_locations_from = electronic_fence_locations_from
+        # This parameter is required.
+        self.electronic_fence_locations_to = electronic_fence_locations_to
+        # This parameter is required.
+        self.electronic_fence_type = electronic_fence_type
+
+    def validate(self):
+        if self.electronic_fence_locations_from:
+            for v1 in self.electronic_fence_locations_from:
+                 if v1:
+                    v1.validate()
+        if self.electronic_fence_locations_to:
+            for v1 in self.electronic_fence_locations_to:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['electronic_fence_locations_from'] = []
+        if self.electronic_fence_locations_from is not None:
+            for k1 in self.electronic_fence_locations_from:
+                result['electronic_fence_locations_from'].append(k1.to_map() if k1 else None)
+
+        result['electronic_fence_locations_to'] = []
+        if self.electronic_fence_locations_to is not None:
+            for k1 in self.electronic_fence_locations_to:
+                result['electronic_fence_locations_to'].append(k1.to_map() if k1 else None)
+
+        if self.electronic_fence_type is not None:
+            result['electronic_fence_type'] = self.electronic_fence_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.electronic_fence_locations_from = []
+        if m.get('electronic_fence_locations_from') is not None:
+            for k1 in m.get('electronic_fence_locations_from'):
+                temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom()
+                self.electronic_fence_locations_from.append(temp_model.from_map(k1))
+
+        self.electronic_fence_locations_to = []
+        if m.get('electronic_fence_locations_to') is not None:
+            for k1 in m.get('electronic_fence_locations_to'):
+                temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo()
+                self.electronic_fence_locations_to.append(temp_model.from_map(k1))
+
+        if m.get('electronic_fence_type') is not None:
+            self.electronic_fence_type = m.get('electronic_fence_type')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo(DaraModel):
+    def __init__(
+        self,
+        address: str = None,
+        latitude: str = None,
+        longitude: str = None,
+        radius: int = None,
+    ):
+        # This parameter is required.
+        self.address = address
+        # This parameter is required.
+        self.latitude = latitude
+        # This parameter is required.
+        self.longitude = longitude
+        # This parameter is required.
+        self.radius = radius
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.address is not None:
+            result['address'] = self.address
+
+        if self.latitude is not None:
+            result['latitude'] = self.latitude
+
+        if self.longitude is not None:
+            result['longitude'] = self.longitude
+
+        if self.radius is not None:
+            result['radius'] = self.radius
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+
+        if m.get('latitude') is not None:
+            self.latitude = m.get('latitude')
+
+        if m.get('longitude') is not None:
+            self.longitude = m.get('longitude')
+
+        if m.get('radius') is not None:
+            self.radius = m.get('radius')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom(DaraModel):
+    def __init__(
+        self,
+        address: str = None,
+        latitude: str = None,
+        longitude: str = None,
+        radius: int = None,
+    ):
+        # This parameter is required.
+        self.address = address
+        # This parameter is required.
+        self.latitude = latitude
+        # This parameter is required.
+        self.longitude = longitude
+        # This parameter is required.
+        self.radius = radius
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.address is not None:
+            result['address'] = self.address
+
+        if self.latitude is not None:
+            result['latitude'] = self.latitude
+
+        if self.longitude is not None:
+            result['longitude'] = self.longitude
+
+        if self.radius is not None:
+            result['radius'] = self.radius
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('address') is not None:
+            self.address = m.get('address')
+
+        if m.get('latitude') is not None:
+            self.latitude = m.get('latitude')
+
+        if m.get('longitude') is not None:
+            self.longitude = m.get('longitude')
+
+        if m.get('radius') is not None:
+            self.radius = m.get('radius')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardCrossCityInfo(DaraModel):
+    def __init__(
+        self,
+        cross_city_list: List[main_models.ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList] = None,
+        cross_city_type: int = None,
+    ):
+        self.cross_city_list = cross_city_list
+        # This parameter is required.
+        self.cross_city_type = cross_city_type
+
+    def validate(self):
+        if self.cross_city_list:
+            for v1 in self.cross_city_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['cross_city_list'] = []
+        if self.cross_city_list is not None:
+            for k1 in self.cross_city_list:
+                result['cross_city_list'].append(k1.to_map() if k1 else None)
+
+        if self.cross_city_type is not None:
+            result['cross_city_type'] = self.cross_city_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cross_city_list = []
+        if m.get('cross_city_list') is not None:
+            for k1 in m.get('cross_city_list'):
+                temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList()
+                self.cross_city_list.append(temp_model.from_map(k1))
+
+        if m.get('cross_city_type') is not None:
+            self.cross_city_type = m.get('cross_city_type')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList(DaraModel):
+    def __init__(
+        self,
+        from_adcode: str = None,
+        from_city_code: str = None,
+        from_city_name: str = None,
+        to_adcode: str = None,
+        to_city_code: str = None,
+        to_city_name: str = None,
+    ):
+        # This parameter is required.
+        self.from_adcode = from_adcode
+        # This parameter is required.
+        self.from_city_code = from_city_code
+        # This parameter is required.
+        self.from_city_name = from_city_name
+        # This parameter is required.
+        self.to_adcode = to_adcode
+        # This parameter is required.
+        self.to_city_code = to_city_code
+        # This parameter is required.
+        self.to_city_name = to_city_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.from_adcode is not None:
+            result['from_adcode'] = self.from_adcode
+
+        if self.from_city_code is not None:
+            result['from_city_code'] = self.from_city_code
+
+        if self.from_city_name is not None:
+            result['from_city_name'] = self.from_city_name
+
+        if self.to_adcode is not None:
+            result['to_adcode'] = self.to_adcode
+
+        if self.to_city_code is not None:
+            result['to_city_code'] = self.to_city_code
+
+        if self.to_city_name is not None:
+            result['to_city_name'] = self.to_city_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('from_adcode') is not None:
+            self.from_adcode = m.get('from_adcode')
+
+        if m.get('from_city_code') is not None:
+            self.from_city_code = m.get('from_city_code')
+
+        if m.get('from_city_name') is not None:
+            self.from_city_name = m.get('from_city_name')
+
+        if m.get('to_adcode') is not None:
+            self.to_adcode = m.get('to_adcode')
+
+        if m.get('to_city_code') is not None:
+            self.to_city_code = m.get('to_city_code')
+
+        if m.get('to_city_name') is not None:
+            self.to_city_name = m.get('to_city_name')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardCityControlInfo(DaraModel):
+    def __init__(
+        self,
+        city_control_type: int = None,
+        city_infos: List[main_models.ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos] = None,
+    ):
+        # This parameter is required.
+        self.city_control_type = city_control_type
+        # This parameter is required.
+        self.city_infos = city_infos
+
+    def validate(self):
+        if self.city_infos:
+            for v1 in self.city_infos:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.city_control_type is not None:
+            result['city_control_type'] = self.city_control_type
+
+        result['city_infos'] = []
+        if self.city_infos is not None:
+            for k1 in self.city_infos:
+                result['city_infos'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_control_type') is not None:
+            self.city_control_type = m.get('city_control_type')
+
+        self.city_infos = []
+        if m.get('city_infos') is not None:
+            for k1 in m.get('city_infos'):
+                temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos()
+                self.city_infos.append(temp_model.from_map(k1))
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos(DaraModel):
+    def __init__(
+        self,
+        adcode: str = None,
+        city_code: str = None,
+        city_name: str = None,
+    ):
+        # This parameter is required.
+        self.adcode = adcode
+        # This parameter is required.
+        self.city_code = city_code
+        # This parameter is required.
+        self.city_name = city_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.adcode is not None:
+            result['adcode'] = self.adcode
+
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('adcode') is not None:
+            self.adcode = m.get('adcode')
+
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardCarTimeControl(DaraModel):
+    def __init__(
+        self,
+        time_limit: List[main_models.ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit] = None,
+        time_switch: bool = None,
+    ):
+        # This parameter is required.
+        self.time_limit = time_limit
+        # This parameter is required.
+        self.time_switch = time_switch
+
+    def validate(self):
+        if self.time_limit:
+            for v1 in self.time_limit:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['time_limit'] = []
+        if self.time_limit is not None:
+            for k1 in self.time_limit:
+                result['time_limit'].append(k1.to_map() if k1 else None)
+
+        if self.time_switch is not None:
+            result['time_switch'] = self.time_switch
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.time_limit = []
+        if m.get('time_limit') is not None:
+            for k1 in m.get('time_limit'):
+                temp_model = main_models.ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit()
+                self.time_limit.append(temp_model.from_map(k1))
+
+        if m.get('time_switch') is not None:
+            self.time_switch = m.get('time_switch')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit(DaraModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_time is not None:
+            result['end_time'] = self.end_time
+
+        if self.start_time is not None:
+            result['start_time'] = self.start_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end_time') is not None:
+            self.end_time = m.get('end_time')
+
+        if m.get('start_time') is not None:
+            self.start_time = m.get('start_time')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardCarHelper(DaraModel):
+    def __init__(
+        self,
+        car_helper_type: str = None,
+    ):
+        # This parameter is required.
+        self.car_helper_type = car_helper_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.car_helper_type is not None:
+            result['car_helper_type'] = self.car_helper_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('car_helper_type') is not None:
+            self.car_helper_type = m.get('car_helper_type')
+
+        return self
+
+class ApplyAddRequestTravelerStandardCarStandardBookAllowInfo(DaraModel):
+    def __init__(
+        self,
+        book_allow: bool = None,
+    ):
+        # This parameter is required.
+        self.book_allow = book_allow
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.book_allow is not None:
+            result['book_allow'] = self.book_allow
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('book_allow') is not None:
+            self.book_allow = m.get('book_allow')
 
         return self
 

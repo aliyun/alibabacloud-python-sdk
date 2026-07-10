@@ -1059,7 +1059,6 @@ class FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRule
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -1399,7 +1398,6 @@ class FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRule
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -1771,7 +1769,6 @@ class FlightSearchListResponseBodyModuleFlightListTransferInfoTransferFlightRule
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.title = title
 
@@ -2602,7 +2599,6 @@ class FlightSearchListResponseBodyModuleFlightListFlightRuleListRefundRuleItemRe
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -2942,7 +2938,6 @@ class FlightSearchListResponseBodyModuleFlightListFlightRuleListChangeRuleItemRe
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -3314,7 +3309,6 @@ class FlightSearchListResponseBodyModuleFlightListFlightRuleListBaggageItemBagga
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.title = title
 
@@ -4270,7 +4264,6 @@ class FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListRef
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -4610,7 +4603,6 @@ class FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListCha
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -4982,7 +4974,6 @@ class FlightSearchListResponseBodyModuleFlightListCabinInfoListFlightRuleListBag
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.title = title
 

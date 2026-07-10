@@ -19,12 +19,9 @@ class FlightOtaItemDetailResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # module
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -192,7 +189,6 @@ class FlightOtaItemDetailResponseBodyModuleRefundRule(DaraModel):
         self.index = index
         self.level = level
         self.refund_sub_items = refund_sub_items
-        # subTableHead
         self.sub_table_head = sub_table_head
         self.table_head = table_head
         self.title = title
@@ -446,7 +442,6 @@ class FlightOtaItemDetailResponseBodyModuleChangeRule(DaraModel):
         self.index = index
         self.level = level
         self.refund_sub_items = refund_sub_items
-        # subTableHead
         self.sub_table_head = sub_table_head
         self.table_head = table_head
         self.title = title
@@ -878,7 +873,6 @@ class FlightOtaItemDetailResponseBodyModuleBaggageRuleBaggageSubItemsBaggageSubC
         is_highlight: bool = None,
         sub_title: str = None,
     ):
-        # baggage_desc
         self.baggage_desc = baggage_desc
         self.baggage_sub_content_type = baggage_sub_content_type
         self.description = description

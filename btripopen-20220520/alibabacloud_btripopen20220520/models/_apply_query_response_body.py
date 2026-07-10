@@ -101,6 +101,7 @@ class ApplyQueryResponseBodyModule(DaraModel):
         itinerary_list: List[main_models.ApplyQueryResponseBodyModuleItineraryList] = None,
         itinerary_rule: int = None,
         itinerary_set_list: List[main_models.ApplyQueryResponseBodyModuleItinerarySetList] = None,
+        job_no: str = None,
         limit_traveler: int = None,
         meal_budget: int = None,
         payment_department_id: str = None,
@@ -130,7 +131,6 @@ class ApplyQueryResponseBodyModule(DaraModel):
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
-        # 补充描述，账单中将会体现此字段的值。可以用于企业的统计和对账
         self.extend_field = extend_field
         self.external_traveler_list = external_traveler_list
         self.flight_budget = flight_budget
@@ -144,6 +144,7 @@ class ApplyQueryResponseBodyModule(DaraModel):
         self.itinerary_list = itinerary_list
         self.itinerary_rule = itinerary_rule
         self.itinerary_set_list = itinerary_set_list
+        self.job_no = job_no
         self.limit_traveler = limit_traveler
         self.meal_budget = meal_budget
         self.payment_department_id = payment_department_id
@@ -268,6 +269,9 @@ class ApplyQueryResponseBodyModule(DaraModel):
         if self.itinerary_set_list is not None:
             for k1 in self.itinerary_set_list:
                 result['itinerary_set_list'].append(k1.to_map() if k1 else None)
+
+        if self.job_no is not None:
+            result['job_no'] = self.job_no
 
         if self.limit_traveler is not None:
             result['limit_traveler'] = self.limit_traveler
@@ -411,6 +415,9 @@ class ApplyQueryResponseBodyModule(DaraModel):
             for k1 in m.get('itinerary_set_list'):
                 temp_model = main_models.ApplyQueryResponseBodyModuleItinerarySetList()
                 self.itinerary_set_list.append(temp_model.from_map(k1))
+
+        if m.get('job_no') is not None:
+            self.job_no = m.get('job_no')
 
         if m.get('limit_traveler') is not None:
             self.limit_traveler = m.get('limit_traveler')
@@ -869,12 +876,14 @@ class ApplyQueryResponseBodyModuleItinerarySetList(DaraModel):
         self,
         arr_date: str = None,
         attribute: str = None,
+        can_order_type_list: List[str] = None,
         city_code_set: str = None,
         city_set: str = None,
         cost_center_name: str = None,
         dep_date: str = None,
         invoice_name: str = None,
         itinerary_id: str = None,
+        itinerary_no: str = None,
         itinerary_travel_standard: main_models.ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard = None,
         project_code: str = None,
         project_title: str = None,
@@ -885,12 +894,14 @@ class ApplyQueryResponseBodyModuleItinerarySetList(DaraModel):
     ):
         self.arr_date = arr_date
         self.attribute = attribute
+        self.can_order_type_list = can_order_type_list
         self.city_code_set = city_code_set
         self.city_set = city_set
         self.cost_center_name = cost_center_name
         self.dep_date = dep_date
         self.invoice_name = invoice_name
         self.itinerary_id = itinerary_id
+        self.itinerary_no = itinerary_no
         self.itinerary_travel_standard = itinerary_travel_standard
         self.project_code = project_code
         self.project_title = project_title
@@ -914,6 +925,9 @@ class ApplyQueryResponseBodyModuleItinerarySetList(DaraModel):
         if self.attribute is not None:
             result['attribute'] = self.attribute
 
+        if self.can_order_type_list is not None:
+            result['can_order_type_list'] = self.can_order_type_list
+
         if self.city_code_set is not None:
             result['city_code_set'] = self.city_code_set
 
@@ -931,6 +945,9 @@ class ApplyQueryResponseBodyModuleItinerarySetList(DaraModel):
 
         if self.itinerary_id is not None:
             result['itinerary_id'] = self.itinerary_id
+
+        if self.itinerary_no is not None:
+            result['itinerary_no'] = self.itinerary_no
 
         if self.itinerary_travel_standard is not None:
             result['itinerary_travel_standard'] = self.itinerary_travel_standard.to_map()
@@ -963,6 +980,9 @@ class ApplyQueryResponseBodyModuleItinerarySetList(DaraModel):
         if m.get('attribute') is not None:
             self.attribute = m.get('attribute')
 
+        if m.get('can_order_type_list') is not None:
+            self.can_order_type_list = m.get('can_order_type_list')
+
         if m.get('city_code_set') is not None:
             self.city_code_set = m.get('city_code_set')
 
@@ -980,6 +1000,9 @@ class ApplyQueryResponseBodyModuleItinerarySetList(DaraModel):
 
         if m.get('itinerary_id') is not None:
             self.itinerary_id = m.get('itinerary_id')
+
+        if m.get('itinerary_no') is not None:
+            self.itinerary_no = m.get('itinerary_no')
 
         if m.get('itinerary_travel_standard') is not None:
             temp_model = main_models.ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard()
@@ -1039,12 +1062,14 @@ class ApplyQueryResponseBodyModuleItineraryList(DaraModel):
         arr_city_code: str = None,
         arr_date: str = None,
         attribute: str = None,
+        can_order_type_list: List[str] = None,
         cost_center_name: str = None,
         dep_city: str = None,
         dep_city_code: str = None,
         dep_date: str = None,
         invoice_name: str = None,
         itinerary_id: str = None,
+        itinerary_no: str = None,
         itinerary_travel_standard: main_models.ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard = None,
         project_code: str = None,
         project_title: str = None,
@@ -1058,12 +1083,14 @@ class ApplyQueryResponseBodyModuleItineraryList(DaraModel):
         self.arr_city_code = arr_city_code
         self.arr_date = arr_date
         self.attribute = attribute
+        self.can_order_type_list = can_order_type_list
         self.cost_center_name = cost_center_name
         self.dep_city = dep_city
         self.dep_city_code = dep_city_code
         self.dep_date = dep_date
         self.invoice_name = invoice_name
         self.itinerary_id = itinerary_id
+        self.itinerary_no = itinerary_no
         self.itinerary_travel_standard = itinerary_travel_standard
         self.project_code = project_code
         self.project_title = project_title
@@ -1094,6 +1121,9 @@ class ApplyQueryResponseBodyModuleItineraryList(DaraModel):
         if self.attribute is not None:
             result['attribute'] = self.attribute
 
+        if self.can_order_type_list is not None:
+            result['can_order_type_list'] = self.can_order_type_list
+
         if self.cost_center_name is not None:
             result['cost_center_name'] = self.cost_center_name
 
@@ -1111,6 +1141,9 @@ class ApplyQueryResponseBodyModuleItineraryList(DaraModel):
 
         if self.itinerary_id is not None:
             result['itinerary_id'] = self.itinerary_id
+
+        if self.itinerary_no is not None:
+            result['itinerary_no'] = self.itinerary_no
 
         if self.itinerary_travel_standard is not None:
             result['itinerary_travel_standard'] = self.itinerary_travel_standard.to_map()
@@ -1152,6 +1185,9 @@ class ApplyQueryResponseBodyModuleItineraryList(DaraModel):
         if m.get('attribute') is not None:
             self.attribute = m.get('attribute')
 
+        if m.get('can_order_type_list') is not None:
+            self.can_order_type_list = m.get('can_order_type_list')
+
         if m.get('cost_center_name') is not None:
             self.cost_center_name = m.get('cost_center_name')
 
@@ -1169,6 +1205,9 @@ class ApplyQueryResponseBodyModuleItineraryList(DaraModel):
 
         if m.get('itinerary_id') is not None:
             self.itinerary_id = m.get('itinerary_id')
+
+        if m.get('itinerary_no') is not None:
+            self.itinerary_no = m.get('itinerary_no')
 
         if m.get('itinerary_travel_standard') is not None:
             temp_model = main_models.ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard()

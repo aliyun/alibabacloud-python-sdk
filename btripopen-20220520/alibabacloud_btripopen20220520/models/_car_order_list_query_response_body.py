@@ -24,7 +24,6 @@ class CarOrderListQueryResponseBody(DaraModel):
         self.page_info = page_info
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):

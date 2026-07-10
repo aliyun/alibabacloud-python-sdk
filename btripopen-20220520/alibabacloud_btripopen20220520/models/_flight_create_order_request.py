@@ -225,9 +225,7 @@ class FlightCreateOrderRequestTravelerInfoList(DaraModel):
         self.cert_valid_date = cert_valid_date
         # This parameter is required.
         self.name = name
-        # 国籍
         self.nationality = nationality
-        # 国籍二字码
         self.nationality_code = nationality_code
         # This parameter is required.
         self.out_user_id = out_user_id

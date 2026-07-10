@@ -20,7 +20,6 @@ class MealOrderDetailQueryResponseBody(DaraModel):
         self.module = module
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -93,6 +92,7 @@ class MealOrderDetailQueryResponseBodyModule(DaraModel):
         pay_type: int = None,
         person_pay_amount: int = None,
         person_refund_amount: int = None,
+        receipt_image_urls: str = None,
         refund_amount: int = None,
         scene_name: str = None,
         settle_time: str = None,
@@ -115,6 +115,7 @@ class MealOrderDetailQueryResponseBodyModule(DaraModel):
         self.pay_type = pay_type
         self.person_pay_amount = person_pay_amount
         self.person_refund_amount = person_refund_amount
+        self.receipt_image_urls = receipt_image_urls
         self.refund_amount = refund_amount
         self.scene_name = scene_name
         self.settle_time = settle_time
@@ -174,6 +175,9 @@ class MealOrderDetailQueryResponseBodyModule(DaraModel):
 
         if self.person_refund_amount is not None:
             result['person_refund_amount'] = self.person_refund_amount
+
+        if self.receipt_image_urls is not None:
+            result['receipt_image_urls'] = self.receipt_image_urls
 
         if self.refund_amount is not None:
             result['refund_amount'] = self.refund_amount
@@ -241,6 +245,9 @@ class MealOrderDetailQueryResponseBodyModule(DaraModel):
 
         if m.get('person_refund_amount') is not None:
             self.person_refund_amount = m.get('person_refund_amount')
+
+        if m.get('receipt_image_urls') is not None:
+            self.receipt_image_urls = m.get('receipt_image_urls')
 
         if m.get('refund_amount') is not None:
             self.refund_amount = m.get('refund_amount')

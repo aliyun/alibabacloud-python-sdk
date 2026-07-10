@@ -9,11 +9,13 @@ class HotelIndexInfoRequest(DaraModel):
         self,
         city_code: str = None,
         hotel_status: int = None,
+        internation: bool = None,
         page_size: int = None,
         page_token: str = None,
     ):
         self.city_code = city_code
         self.hotel_status = hotel_status
+        self.internation = internation
         # This parameter is required.
         self.page_size = page_size
         self.page_token = page_token
@@ -32,6 +34,9 @@ class HotelIndexInfoRequest(DaraModel):
         if self.hotel_status is not None:
             result['hotel_status'] = self.hotel_status
 
+        if self.internation is not None:
+            result['internation'] = self.internation
+
         if self.page_size is not None:
             result['page_size'] = self.page_size
 
@@ -47,6 +52,9 @@ class HotelIndexInfoRequest(DaraModel):
 
         if m.get('hotel_status') is not None:
             self.hotel_status = m.get('hotel_status')
+
+        if m.get('internation') is not None:
+            self.internation = m.get('internation')
 
         if m.get('page_size') is not None:
             self.page_size = m.get('page_size')

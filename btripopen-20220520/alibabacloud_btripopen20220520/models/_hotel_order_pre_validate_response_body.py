@@ -20,7 +20,6 @@ class HotelOrderPreValidateResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
         self.trace_id = trace_id
@@ -184,12 +183,14 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(DaraModel):
         btrip_hotel_cancel_policy_dto: main_models.HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO = None,
         cert_type_list: List[str] = None,
         earliest_check_in_time: str = None,
+        hour_item_arrival_time_info: main_models.HotelOrderPreValidateResponseBodyModuleRatePlanInfoHourItemArrivalTimeInfo = None,
         latest_check_out_time: str = None,
         max_booking_num: int = None,
         max_occupancy_num: int = None,
         need_certificate: bool = None,
         need_email: bool = None,
         need_english_name: bool = None,
+        rp_type: int = None,
         total_order_price: int = None,
         total_room_price: int = None,
     ):
@@ -197,18 +198,22 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(DaraModel):
         self.btrip_hotel_cancel_policy_dto = btrip_hotel_cancel_policy_dto
         self.cert_type_list = cert_type_list
         self.earliest_check_in_time = earliest_check_in_time
+        self.hour_item_arrival_time_info = hour_item_arrival_time_info
         self.latest_check_out_time = latest_check_out_time
         self.max_booking_num = max_booking_num
         self.max_occupancy_num = max_occupancy_num
         self.need_certificate = need_certificate
         self.need_email = need_email
         self.need_english_name = need_english_name
+        self.rp_type = rp_type
         self.total_order_price = total_order_price
         self.total_room_price = total_room_price
 
     def validate(self):
         if self.btrip_hotel_cancel_policy_dto:
             self.btrip_hotel_cancel_policy_dto.validate()
+        if self.hour_item_arrival_time_info:
+            self.hour_item_arrival_time_info.validate()
 
     def to_map(self):
         result = dict()
@@ -227,6 +232,9 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(DaraModel):
         if self.earliest_check_in_time is not None:
             result['earliest_check_in_time'] = self.earliest_check_in_time
 
+        if self.hour_item_arrival_time_info is not None:
+            result['hour_item_arrival_time_info'] = self.hour_item_arrival_time_info.to_map()
+
         if self.latest_check_out_time is not None:
             result['latest_check_out_time'] = self.latest_check_out_time
 
@@ -244,6 +252,9 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(DaraModel):
 
         if self.need_english_name is not None:
             result['need_english_name'] = self.need_english_name
+
+        if self.rp_type is not None:
+            result['rp_type'] = self.rp_type
 
         if self.total_order_price is not None:
             result['total_order_price'] = self.total_order_price
@@ -268,6 +279,10 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(DaraModel):
         if m.get('earliest_check_in_time') is not None:
             self.earliest_check_in_time = m.get('earliest_check_in_time')
 
+        if m.get('hour_item_arrival_time_info') is not None:
+            temp_model = main_models.HotelOrderPreValidateResponseBodyModuleRatePlanInfoHourItemArrivalTimeInfo()
+            self.hour_item_arrival_time_info = temp_model.from_map(m.get('hour_item_arrival_time_info'))
+
         if m.get('latest_check_out_time') is not None:
             self.latest_check_out_time = m.get('latest_check_out_time')
 
@@ -286,11 +301,73 @@ class HotelOrderPreValidateResponseBodyModuleRatePlanInfo(DaraModel):
         if m.get('need_english_name') is not None:
             self.need_english_name = m.get('need_english_name')
 
+        if m.get('rp_type') is not None:
+            self.rp_type = m.get('rp_type')
+
         if m.get('total_order_price') is not None:
             self.total_order_price = m.get('total_order_price')
 
         if m.get('total_room_price') is not None:
             self.total_room_price = m.get('total_room_price')
+
+        return self
+
+class HotelOrderPreValidateResponseBodyModuleRatePlanInfoHourItemArrivalTimeInfo(DaraModel):
+    def __init__(
+        self,
+        actual_live_hour: str = None,
+        earliest_check_in_time: str = None,
+        latest_check_in_time: str = None,
+        latest_check_out_time: str = None,
+        live_hour: str = None,
+    ):
+        self.actual_live_hour = actual_live_hour
+        self.earliest_check_in_time = earliest_check_in_time
+        self.latest_check_in_time = latest_check_in_time
+        self.latest_check_out_time = latest_check_out_time
+        self.live_hour = live_hour
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.actual_live_hour is not None:
+            result['actual_live_hour'] = self.actual_live_hour
+
+        if self.earliest_check_in_time is not None:
+            result['earliest_check_in_time'] = self.earliest_check_in_time
+
+        if self.latest_check_in_time is not None:
+            result['latest_check_in_time'] = self.latest_check_in_time
+
+        if self.latest_check_out_time is not None:
+            result['latest_check_out_time'] = self.latest_check_out_time
+
+        if self.live_hour is not None:
+            result['live_hour'] = self.live_hour
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actual_live_hour') is not None:
+            self.actual_live_hour = m.get('actual_live_hour')
+
+        if m.get('earliest_check_in_time') is not None:
+            self.earliest_check_in_time = m.get('earliest_check_in_time')
+
+        if m.get('latest_check_in_time') is not None:
+            self.latest_check_in_time = m.get('latest_check_in_time')
+
+        if m.get('latest_check_out_time') is not None:
+            self.latest_check_out_time = m.get('latest_check_out_time')
+
+        if m.get('live_hour') is not None:
+            self.live_hour = m.get('live_hour')
 
         return self
 

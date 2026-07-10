@@ -17,7 +17,6 @@ class TravelStandardRelateAddResponseBody(DaraModel):
         self.request_id = request_id
         self.result_code = result_code
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):

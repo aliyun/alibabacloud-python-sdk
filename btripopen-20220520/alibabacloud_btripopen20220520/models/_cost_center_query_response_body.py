@@ -24,7 +24,6 @@ class CostCenterQueryResponseBody(DaraModel):
         self.more_page = more_page
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -111,7 +110,6 @@ class CostCenterQueryResponseBodyModule(DaraModel):
         self.entity_dos = entity_dos
         self.id = id
         self.number = number
-        # rule code
         self.rule_code = rule_code
         self.scope = scope
         self.thirdpart_id = thirdpart_id

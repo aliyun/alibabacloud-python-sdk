@@ -18,6 +18,7 @@ class HotelOrderPreValidateShrinkRequest(DaraModel):
         rate_plan_id: int = None,
         room_id: int = None,
         room_num: int = None,
+        rp_type: int = None,
         search_room_price: int = None,
         seller_id: int = None,
         shid: int = None,
@@ -41,6 +42,7 @@ class HotelOrderPreValidateShrinkRequest(DaraModel):
         self.room_id = room_id
         # This parameter is required.
         self.room_num = room_num
+        self.rp_type = rp_type
         # This parameter is required.
         self.search_room_price = search_room_price
         # This parameter is required.
@@ -89,6 +91,9 @@ class HotelOrderPreValidateShrinkRequest(DaraModel):
         if self.room_num is not None:
             result['room_num'] = self.room_num
 
+        if self.rp_type is not None:
+            result['rp_type'] = self.rp_type
+
         if self.search_room_price is not None:
             result['search_room_price'] = self.search_room_price
 
@@ -134,6 +139,9 @@ class HotelOrderPreValidateShrinkRequest(DaraModel):
 
         if m.get('room_num') is not None:
             self.room_num = m.get('room_num')
+
+        if m.get('rp_type') is not None:
+            self.rp_type = m.get('rp_type')
 
         if m.get('search_room_price') is not None:
             self.search_room_price = m.get('search_room_price')

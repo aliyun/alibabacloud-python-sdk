@@ -19,11 +19,9 @@ class TrainOrderDetailQueryResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # module
         self.module = module
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -204,7 +202,6 @@ class TrainOrderDetailQueryResponseBodyModuleRefundInfos(DaraModel):
         self.fail_code = fail_code
         self.fail_msg = fail_msg
         self.out_refund_id = out_refund_id
-        # String
         self.refund_id = refund_id
         self.refund_train_info = refund_train_info
         self.status = status

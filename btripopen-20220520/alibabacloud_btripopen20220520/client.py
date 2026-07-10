@@ -21,7 +21,7 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('btripopen', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -620,6 +620,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.AddInvoiceEntityHeaders()
         return await self.add_invoice_entity_with_options_async(request, headers, runtime)
+
+    def add_project_manager_with_options(
+        self,
+        tmp_req: main_models.AddProjectManagerRequest,
+        headers: main_models.AddProjectManagerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddProjectManagerResponse:
+        tmp_req.validate()
+        request = main_models.AddProjectManagerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.org_entities):
+            request.org_entities_shrink = Utils.array_to_string_with_specified_style(tmp_req.org_entities, 'org_entities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.org_entities_shrink):
+            body['org_entities'] = request.org_entities_shrink
+        if not DaraCore.is_null(request.out_project_id):
+            body['out_project_id'] = request.out_project_id
+        if not DaraCore.is_null(request.project_id):
+            body['project_id'] = request.project_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddProjectManager',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/cost/v1/project/manager/add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddProjectManagerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_project_manager_with_options_async(
+        self,
+        tmp_req: main_models.AddProjectManagerRequest,
+        headers: main_models.AddProjectManagerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddProjectManagerResponse:
+        tmp_req.validate()
+        request = main_models.AddProjectManagerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.org_entities):
+            request.org_entities_shrink = Utils.array_to_string_with_specified_style(tmp_req.org_entities, 'org_entities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.org_entities_shrink):
+            body['org_entities'] = request.org_entities_shrink
+        if not DaraCore.is_null(request.out_project_id):
+            body['out_project_id'] = request.out_project_id
+        if not DaraCore.is_null(request.project_id):
+            body['project_id'] = request.project_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddProjectManager',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/cost/v1/project/manager/add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddProjectManagerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_project_manager(
+        self,
+        request: main_models.AddProjectManagerRequest,
+    ) -> main_models.AddProjectManagerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.AddProjectManagerHeaders()
+        return self.add_project_manager_with_options(request, headers, runtime)
+
+    async def add_project_manager_async(
+        self,
+        request: main_models.AddProjectManagerRequest,
+    ) -> main_models.AddProjectManagerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.AddProjectManagerHeaders()
+        return await self.add_project_manager_with_options_async(request, headers, runtime)
 
     def address_get_with_options(
         self,
@@ -2231,6 +2333,214 @@ class Client(OpenApiClient):
         headers = main_models.BaseCityInfoSearchHeaders()
         return await self.base_city_info_search_with_options_async(request, headers, runtime)
 
+    def batch_query_department_with_options(
+        self,
+        request: main_models.BatchQueryDepartmentRequest,
+        headers: main_models.BatchQueryDepartmentHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryDepartmentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.modified_time_greater_or_equal_than):
+            body['modified_time_greater_or_equal_than'] = request.modified_time_greater_or_equal_than
+        if not DaraCore.is_null(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        if not DaraCore.is_null(request.page_size):
+            body['page_size'] = request.page_size
+        if not DaraCore.is_null(request.page_token):
+            body['page_token'] = request.page_token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryDepartment',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/department/v2/batch_query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryDepartmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_query_department_with_options_async(
+        self,
+        request: main_models.BatchQueryDepartmentRequest,
+        headers: main_models.BatchQueryDepartmentHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryDepartmentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.modified_time_greater_or_equal_than):
+            body['modified_time_greater_or_equal_than'] = request.modified_time_greater_or_equal_than
+        if not DaraCore.is_null(request.out_dept_id):
+            body['out_dept_id'] = request.out_dept_id
+        if not DaraCore.is_null(request.page_size):
+            body['page_size'] = request.page_size
+        if not DaraCore.is_null(request.page_token):
+            body['page_token'] = request.page_token
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchQueryDepartment',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/department/v2/batch_query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchQueryDepartmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_query_department(
+        self,
+        request: main_models.BatchQueryDepartmentRequest,
+    ) -> main_models.BatchQueryDepartmentResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchQueryDepartmentHeaders()
+        return self.batch_query_department_with_options(request, headers, runtime)
+
+    async def batch_query_department_async(
+        self,
+        request: main_models.BatchQueryDepartmentRequest,
+    ) -> main_models.BatchQueryDepartmentResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchQueryDepartmentHeaders()
+        return await self.batch_query_department_with_options_async(request, headers, runtime)
+
+    def batch_submit_pre_bill_with_options(
+        self,
+        tmp_req: main_models.BatchSubmitPreBillRequest,
+        headers: main_models.BatchSubmitPreBillHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchSubmitPreBillResponse:
+        tmp_req.validate()
+        request = main_models.BatchSubmitPreBillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.values):
+            request.values_shrink = Utils.array_to_string_with_specified_style(tmp_req.values, 'values', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_ip):
+            query['app_ip'] = request.app_ip
+        if not DaraCore.is_null(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not DaraCore.is_null(request.customer_decision):
+            query['customer_decision'] = request.customer_decision
+        if not DaraCore.is_null(request.dimension):
+            query['dimension'] = request.dimension
+        if not DaraCore.is_null(request.values_shrink):
+            query['values'] = request.values_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchSubmitPreBill',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/prebill/v1/batchSubmit',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchSubmitPreBillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_submit_pre_bill_with_options_async(
+        self,
+        tmp_req: main_models.BatchSubmitPreBillRequest,
+        headers: main_models.BatchSubmitPreBillHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchSubmitPreBillResponse:
+        tmp_req.validate()
+        request = main_models.BatchSubmitPreBillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.values):
+            request.values_shrink = Utils.array_to_string_with_specified_style(tmp_req.values, 'values', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_ip):
+            query['app_ip'] = request.app_ip
+        if not DaraCore.is_null(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not DaraCore.is_null(request.customer_decision):
+            query['customer_decision'] = request.customer_decision
+        if not DaraCore.is_null(request.dimension):
+            query['dimension'] = request.dimension
+        if not DaraCore.is_null(request.values_shrink):
+            query['values'] = request.values_shrink
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchSubmitPreBill',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/prebill/v1/batchSubmit',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchSubmitPreBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_submit_pre_bill(
+        self,
+        request: main_models.BatchSubmitPreBillRequest,
+    ) -> main_models.BatchSubmitPreBillResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchSubmitPreBillHeaders()
+        return self.batch_submit_pre_bill_with_options(request, headers, runtime)
+
+    async def batch_submit_pre_bill_async(
+        self,
+        request: main_models.BatchSubmitPreBillRequest,
+    ) -> main_models.BatchSubmitPreBillResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.BatchSubmitPreBillHeaders()
+        return await self.batch_submit_pre_bill_with_options_async(request, headers, runtime)
+
     def btrip_bill_info_adjust_with_options(
         self,
         request: main_models.BtripBillInfoAdjustRequest,
@@ -2346,6 +2656,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CarApplyAddShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.itinerary_list):
+            request.itinerary_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
         if not DaraCore.is_null(tmp_req.traveler_standard):
             request.traveler_standard_shrink = Utils.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
         body = {}
@@ -2359,6 +2671,8 @@ class Client(OpenApiClient):
             body['date'] = request.date
         if not DaraCore.is_null(request.finished_date):
             body['finished_date'] = request.finished_date
+        if not DaraCore.is_null(request.itinerary_list_shrink):
+            body['itinerary_list'] = request.itinerary_list_shrink
         if not DaraCore.is_null(request.project_code):
             body['project_code'] = request.project_code
         if not DaraCore.is_null(request.project_name):
@@ -2417,6 +2731,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CarApplyAddShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.itinerary_list):
+            request.itinerary_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
         if not DaraCore.is_null(tmp_req.traveler_standard):
             request.traveler_standard_shrink = Utils.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
         body = {}
@@ -2430,6 +2746,8 @@ class Client(OpenApiClient):
             body['date'] = request.date
         if not DaraCore.is_null(request.finished_date):
             body['finished_date'] = request.finished_date
+        if not DaraCore.is_null(request.itinerary_list_shrink):
+            body['itinerary_list'] = request.itinerary_list_shrink
         if not DaraCore.is_null(request.project_code):
             body['project_code'] = request.project_code
         if not DaraCore.is_null(request.project_name):
@@ -2711,6 +3029,8 @@ class Client(OpenApiClient):
     ) -> main_models.CarBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -2764,6 +3084,8 @@ class Client(OpenApiClient):
     ) -> main_models.CarBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -3117,14 +3439,24 @@ class Client(OpenApiClient):
     ) -> main_models.ChannelCorpCreateResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.administrator_email):
+            body['administrator_email'] = request.administrator_email
         if not DaraCore.is_null(request.administrator_name):
             body['administrator_name'] = request.administrator_name
         if not DaraCore.is_null(request.administrator_phone):
             body['administrator_phone'] = request.administrator_phone
+        if not DaraCore.is_null(request.base_currency):
+            body['base_currency'] = request.base_currency
+        if not DaraCore.is_null(request.btrip_region):
+            body['btrip_region'] = request.btrip_region
         if not DaraCore.is_null(request.city):
             body['city'] = request.city
         if not DaraCore.is_null(request.corp_name):
             body['corp_name'] = request.corp_name
+        if not DaraCore.is_null(request.corp_name_en):
+            body['corp_name_en'] = request.corp_name_en
+        if not DaraCore.is_null(request.extend_field):
+            body['extend_field'] = request.extend_field
         if not DaraCore.is_null(request.province):
             body['province'] = request.province
         if not DaraCore.is_null(request.scope):
@@ -3166,14 +3498,24 @@ class Client(OpenApiClient):
     ) -> main_models.ChannelCorpCreateResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.administrator_email):
+            body['administrator_email'] = request.administrator_email
         if not DaraCore.is_null(request.administrator_name):
             body['administrator_name'] = request.administrator_name
         if not DaraCore.is_null(request.administrator_phone):
             body['administrator_phone'] = request.administrator_phone
+        if not DaraCore.is_null(request.base_currency):
+            body['base_currency'] = request.base_currency
+        if not DaraCore.is_null(request.btrip_region):
+            body['btrip_region'] = request.btrip_region
         if not DaraCore.is_null(request.city):
             body['city'] = request.city
         if not DaraCore.is_null(request.corp_name):
             body['corp_name'] = request.corp_name
+        if not DaraCore.is_null(request.corp_name_en):
+            body['corp_name_en'] = request.corp_name_en
+        if not DaraCore.is_null(request.extend_field):
+            body['extend_field'] = request.extend_field
         if not DaraCore.is_null(request.province):
             body['province'] = request.province
         if not DaraCore.is_null(request.scope):
@@ -3513,6 +3855,92 @@ class Client(OpenApiClient):
         headers = main_models.CommonApplySyncHeaders()
         return await self.common_apply_sync_with_options_async(request, headers, runtime)
 
+    def confirm_pre_bill_with_options(
+        self,
+        request: main_models.ConfirmPreBillRequest,
+        headers: main_models.ConfirmPreBillHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfirmPreBillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfirmPreBill',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/prebill/v1/confirm',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfirmPreBillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_pre_bill_with_options_async(
+        self,
+        request: main_models.ConfirmPreBillRequest,
+        headers: main_models.ConfirmPreBillHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ConfirmPreBillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConfirmPreBill',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/prebill/v1/confirm',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConfirmPreBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_pre_bill(
+        self,
+        request: main_models.ConfirmPreBillRequest,
+    ) -> main_models.ConfirmPreBillResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ConfirmPreBillHeaders()
+        return self.confirm_pre_bill_with_options(request, headers, runtime)
+
+    async def confirm_pre_bill_async(
+        self,
+        request: main_models.ConfirmPreBillRequest,
+    ) -> main_models.ConfirmPreBillResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ConfirmPreBillHeaders()
+        return await self.confirm_pre_bill_with_options_async(request, headers, runtime)
+
     def cooperator_flight_bill_settlement_query_with_options(
         self,
         request: main_models.CooperatorFlightBillSettlementQueryRequest,
@@ -3521,6 +3949,8 @@ class Client(OpenApiClient):
     ) -> main_models.CooperatorFlightBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -3576,6 +4006,8 @@ class Client(OpenApiClient):
     ) -> main_models.CooperatorFlightBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -3647,6 +4079,8 @@ class Client(OpenApiClient):
     ) -> main_models.CooperatorHotelBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -3702,6 +4136,8 @@ class Client(OpenApiClient):
     ) -> main_models.CooperatorHotelBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -6285,6 +6721,8 @@ class Client(OpenApiClient):
     ) -> main_models.FlightBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -6338,6 +6776,8 @@ class Client(OpenApiClient):
     ) -> main_models.FlightBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -10025,6 +10465,8 @@ class Client(OpenApiClient):
     ) -> main_models.FuPointBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -10080,6 +10522,8 @@ class Client(OpenApiClient):
     ) -> main_models.FuPointBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -10635,6 +11079,8 @@ class Client(OpenApiClient):
     ) -> main_models.HotelBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -10688,6 +11134,8 @@ class Client(OpenApiClient):
     ) -> main_models.HotelBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -11067,6 +11515,8 @@ class Client(OpenApiClient):
             query['city_code'] = request.city_code
         if not DaraCore.is_null(request.hotel_status):
             query['hotel_status'] = request.hotel_status
+        if not DaraCore.is_null(request.internation):
+            query['internation'] = request.internation
         if not DaraCore.is_null(request.page_size):
             query['page_size'] = request.page_size
         if not DaraCore.is_null(request.page_token):
@@ -11108,6 +11558,8 @@ class Client(OpenApiClient):
             query['city_code'] = request.city_code
         if not DaraCore.is_null(request.hotel_status):
             query['hotel_status'] = request.hotel_status
+        if not DaraCore.is_null(request.internation):
+            query['internation'] = request.internation
         if not DaraCore.is_null(request.page_size):
             query['page_size'] = request.page_size
         if not DaraCore.is_null(request.page_token):
@@ -11469,6 +11921,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.promotion_info):
             request.promotion_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.promotion_info, 'promotion_info', 'json')
         body = {}
+        if not DaraCore.is_null(request.arrival_time):
+            body['arrival_time'] = request.arrival_time
         if not DaraCore.is_null(request.btrip_user_id):
             body['btrip_user_id'] = request.btrip_user_id
         if not DaraCore.is_null(request.check_in):
@@ -11493,6 +11947,8 @@ class Client(OpenApiClient):
             body['item_id'] = request.item_id
         if not DaraCore.is_null(request.itinerary_no):
             body['itinerary_no'] = request.itinerary_no
+        if not DaraCore.is_null(request.leave_time):
+            body['leave_time'] = request.leave_time
         if not DaraCore.is_null(request.member_info_shrink):
             body['member_info'] = request.member_info_shrink
         if not DaraCore.is_null(request.occupant_info_list_shrink):
@@ -11507,6 +11963,8 @@ class Client(OpenApiClient):
             body['room_id'] = request.room_id
         if not DaraCore.is_null(request.room_num):
             body['room_num'] = request.room_num
+        if not DaraCore.is_null(request.rp_type):
+            body['rp_type'] = request.rp_type
         if not DaraCore.is_null(request.seller_id):
             body['seller_id'] = request.seller_id
         if not DaraCore.is_null(request.shid):
@@ -11558,6 +12016,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.promotion_info):
             request.promotion_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.promotion_info, 'promotion_info', 'json')
         body = {}
+        if not DaraCore.is_null(request.arrival_time):
+            body['arrival_time'] = request.arrival_time
         if not DaraCore.is_null(request.btrip_user_id):
             body['btrip_user_id'] = request.btrip_user_id
         if not DaraCore.is_null(request.check_in):
@@ -11582,6 +12042,8 @@ class Client(OpenApiClient):
             body['item_id'] = request.item_id
         if not DaraCore.is_null(request.itinerary_no):
             body['itinerary_no'] = request.itinerary_no
+        if not DaraCore.is_null(request.leave_time):
+            body['leave_time'] = request.leave_time
         if not DaraCore.is_null(request.member_info_shrink):
             body['member_info'] = request.member_info_shrink
         if not DaraCore.is_null(request.occupant_info_list_shrink):
@@ -11596,6 +12058,8 @@ class Client(OpenApiClient):
             body['room_id'] = request.room_id
         if not DaraCore.is_null(request.room_num):
             body['room_num'] = request.room_num
+        if not DaraCore.is_null(request.rp_type):
+            body['rp_type'] = request.rp_type
         if not DaraCore.is_null(request.seller_id):
             body['seller_id'] = request.seller_id
         if not DaraCore.is_null(request.shid):
@@ -12087,6 +12551,8 @@ class Client(OpenApiClient):
             query['room_id'] = request.room_id
         if not DaraCore.is_null(request.room_num):
             query['room_num'] = request.room_num
+        if not DaraCore.is_null(request.rp_type):
+            query['rp_type'] = request.rp_type
         if not DaraCore.is_null(request.search_room_price):
             query['search_room_price'] = request.search_room_price
         if not DaraCore.is_null(request.seller_id):
@@ -12154,6 +12620,8 @@ class Client(OpenApiClient):
             query['room_id'] = request.room_id
         if not DaraCore.is_null(request.room_num):
             query['room_num'] = request.room_num
+        if not DaraCore.is_null(request.rp_type):
+            query['rp_type'] = request.rp_type
         if not DaraCore.is_null(request.search_room_price):
             query['search_room_price'] = request.search_room_price
         if not DaraCore.is_null(request.seller_id):
@@ -12547,6 +13015,8 @@ class Client(OpenApiClient):
             query['pay_over_type'] = request.pay_over_type
         if not DaraCore.is_null(request.payment_type):
             query['payment_type'] = request.payment_type
+        if not DaraCore.is_null(request.poi):
+            query['poi'] = request.poi
         if not DaraCore.is_null(request.shids_shrink):
             query['shids'] = request.shids_shrink
         if not DaraCore.is_null(request.sort_code):
@@ -12630,6 +13100,8 @@ class Client(OpenApiClient):
             query['pay_over_type'] = request.pay_over_type
         if not DaraCore.is_null(request.payment_type):
             query['payment_type'] = request.payment_type
+        if not DaraCore.is_null(request.poi):
+            query['poi'] = request.poi
         if not DaraCore.is_null(request.shids_shrink):
             query['shids'] = request.shids_shrink
         if not DaraCore.is_null(request.sort_code):
@@ -13105,6 +13577,8 @@ class Client(OpenApiClient):
     ) -> main_models.IeCarBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -13158,6 +13632,8 @@ class Client(OpenApiClient):
     ) -> main_models.IeCarBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -13227,6 +13703,8 @@ class Client(OpenApiClient):
     ) -> main_models.IeFlightBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -13280,6 +13758,8 @@ class Client(OpenApiClient):
     ) -> main_models.IeFlightBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -13349,6 +13829,8 @@ class Client(OpenApiClient):
     ) -> main_models.IeHotelBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -13404,6 +13886,8 @@ class Client(OpenApiClient):
     ) -> main_models.IeHotelBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -17593,6 +18077,152 @@ class Client(OpenApiClient):
         headers = main_models.MealApplyApproveHeaders()
         return await self.meal_apply_approve_with_options_async(request, headers, runtime)
 
+    def meal_apply_modify_with_options(
+        self,
+        tmp_req: main_models.MealApplyModifyRequest,
+        headers: main_models.MealApplyModifyHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MealApplyModifyResponse:
+        tmp_req.validate()
+        request = main_models.MealApplyModifyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.apply_user):
+            request.apply_user_shrink = Utils.array_to_string_with_specified_style(tmp_req.apply_user, 'apply_user', 'json')
+        if not DaraCore.is_null(tmp_req.itinerary_list):
+            request.itinerary_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
+        body = {}
+        if not DaraCore.is_null(request.apply_user_shrink):
+            body['apply_user'] = request.apply_user_shrink
+        if not DaraCore.is_null(request.cost_center_id):
+            body['cost_center_id'] = request.cost_center_id
+        if not DaraCore.is_null(request.extend_field):
+            body['extend_field'] = request.extend_field
+        if not DaraCore.is_null(request.invoice_id):
+            body['invoice_id'] = request.invoice_id
+        if not DaraCore.is_null(request.itinerary_list_shrink):
+            body['itinerary_list'] = request.itinerary_list_shrink
+        if not DaraCore.is_null(request.meal_amount):
+            body['meal_amount'] = request.meal_amount
+        if not DaraCore.is_null(request.meal_cause):
+            body['meal_cause'] = request.meal_cause
+        if not DaraCore.is_null(request.project_code):
+            body['project_code'] = request.project_code
+        if not DaraCore.is_null(request.project_title):
+            body['project_title'] = request.project_title
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.third_part_apply_id):
+            body['third_part_apply_id'] = request.third_part_apply_id
+        if not DaraCore.is_null(request.third_part_cost_center_id):
+            body['third_part_cost_center_id'] = request.third_part_cost_center_id
+        if not DaraCore.is_null(request.third_part_invoice_id):
+            body['third_part_invoice_id'] = request.third_part_invoice_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MealApplyModify',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/apply/v1/meal/modify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MealApplyModifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def meal_apply_modify_with_options_async(
+        self,
+        tmp_req: main_models.MealApplyModifyRequest,
+        headers: main_models.MealApplyModifyHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MealApplyModifyResponse:
+        tmp_req.validate()
+        request = main_models.MealApplyModifyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.apply_user):
+            request.apply_user_shrink = Utils.array_to_string_with_specified_style(tmp_req.apply_user, 'apply_user', 'json')
+        if not DaraCore.is_null(tmp_req.itinerary_list):
+            request.itinerary_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.itinerary_list, 'itinerary_list', 'json')
+        body = {}
+        if not DaraCore.is_null(request.apply_user_shrink):
+            body['apply_user'] = request.apply_user_shrink
+        if not DaraCore.is_null(request.cost_center_id):
+            body['cost_center_id'] = request.cost_center_id
+        if not DaraCore.is_null(request.extend_field):
+            body['extend_field'] = request.extend_field
+        if not DaraCore.is_null(request.invoice_id):
+            body['invoice_id'] = request.invoice_id
+        if not DaraCore.is_null(request.itinerary_list_shrink):
+            body['itinerary_list'] = request.itinerary_list_shrink
+        if not DaraCore.is_null(request.meal_amount):
+            body['meal_amount'] = request.meal_amount
+        if not DaraCore.is_null(request.meal_cause):
+            body['meal_cause'] = request.meal_cause
+        if not DaraCore.is_null(request.project_code):
+            body['project_code'] = request.project_code
+        if not DaraCore.is_null(request.project_title):
+            body['project_title'] = request.project_title
+        if not DaraCore.is_null(request.status):
+            body['status'] = request.status
+        if not DaraCore.is_null(request.third_part_apply_id):
+            body['third_part_apply_id'] = request.third_part_apply_id
+        if not DaraCore.is_null(request.third_part_cost_center_id):
+            body['third_part_cost_center_id'] = request.third_part_cost_center_id
+        if not DaraCore.is_null(request.third_part_invoice_id):
+            body['third_part_invoice_id'] = request.third_part_invoice_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MealApplyModify',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/apply/v1/meal/modify',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MealApplyModifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def meal_apply_modify(
+        self,
+        request: main_models.MealApplyModifyRequest,
+    ) -> main_models.MealApplyModifyResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MealApplyModifyHeaders()
+        return self.meal_apply_modify_with_options(request, headers, runtime)
+
+    async def meal_apply_modify_async(
+        self,
+        request: main_models.MealApplyModifyRequest,
+    ) -> main_models.MealApplyModifyResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MealApplyModifyHeaders()
+        return await self.meal_apply_modify_with_options_async(request, headers, runtime)
+
     def meal_apply_query_with_options(
         self,
         request: main_models.MealApplyQueryRequest,
@@ -17687,6 +18317,8 @@ class Client(OpenApiClient):
     ) -> main_models.MealBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -17740,6 +18372,8 @@ class Client(OpenApiClient):
     ) -> main_models.MealBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -18263,6 +18897,96 @@ class Client(OpenApiClient):
         headers = main_models.MonthBillSplitGetHeaders()
         return await self.month_bill_split_get_with_options_async(request, headers, runtime)
 
+    def month_pre_bill_get_with_options(
+        self,
+        request: main_models.MonthPreBillGetRequest,
+        headers: main_models.MonthPreBillGetHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MonthPreBillGetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not DaraCore.is_null(request.bill_month):
+            query['bill_month'] = request.bill_month
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MonthPreBillGet',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/open/v1/month-pre-bill',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MonthPreBillGetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def month_pre_bill_get_with_options_async(
+        self,
+        request: main_models.MonthPreBillGetRequest,
+        headers: main_models.MonthPreBillGetHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.MonthPreBillGetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_batch):
+            query['bill_batch'] = request.bill_batch
+        if not DaraCore.is_null(request.bill_month):
+            query['bill_month'] = request.bill_month
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_so_corp_token):
+            real_headers['x-acs-btrip-so-corp-token'] = str(headers.x_acs_btrip_so_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MonthPreBillGet',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/open/v1/month-pre-bill',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MonthPreBillGetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def month_pre_bill_get(
+        self,
+        request: main_models.MonthPreBillGetRequest,
+    ) -> main_models.MonthPreBillGetResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MonthPreBillGetHeaders()
+        return self.month_pre_bill_get_with_options(request, headers, runtime)
+
+    async def month_pre_bill_get_async(
+        self,
+        request: main_models.MonthPreBillGetRequest,
+    ) -> main_models.MonthPreBillGetResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.MonthPreBillGetHeaders()
+        return await self.month_pre_bill_get_with_options_async(request, headers, runtime)
+
     def order_refund_detail_query_with_options(
         self,
         request: main_models.OrderRefundDetailQueryRequest,
@@ -18363,6 +19087,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.code):
             body['code'] = request.code
+        if not DaraCore.is_null(request.has_manager):
+            body['has_manager'] = request.has_manager
         if not DaraCore.is_null(request.project_name):
             body['project_name'] = request.project_name
         if not DaraCore.is_null(request.third_part_cost_center_id):
@@ -18406,6 +19132,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.code):
             body['code'] = request.code
+        if not DaraCore.is_null(request.has_manager):
+            body['has_manager'] = request.has_manager
         if not DaraCore.is_null(request.project_name):
             body['project_name'] = request.project_name
         if not DaraCore.is_null(request.third_part_cost_center_id):
@@ -18551,6 +19279,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.code):
             body['code'] = request.code
+        if not DaraCore.is_null(request.has_manager):
+            body['has_manager'] = request.has_manager
         if not DaraCore.is_null(request.project_name):
             body['project_name'] = request.project_name
         if not DaraCore.is_null(request.third_part_cost_center_id):
@@ -18594,6 +19324,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.code):
             body['code'] = request.code
+        if not DaraCore.is_null(request.has_manager):
+            body['has_manager'] = request.has_manager
         if not DaraCore.is_null(request.project_name):
             body['project_name'] = request.project_name
         if not DaraCore.is_null(request.third_part_cost_center_id):
@@ -19092,6 +19824,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.QueryReimbursementOrderHeaders()
         return await self.query_reimbursement_order_with_options_async(request, headers, runtime)
+
+    def remove_project_manager_with_options(
+        self,
+        tmp_req: main_models.RemoveProjectManagerRequest,
+        headers: main_models.RemoveProjectManagerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveProjectManagerResponse:
+        tmp_req.validate()
+        request = main_models.RemoveProjectManagerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.org_entities):
+            request.org_entities_shrink = Utils.array_to_string_with_specified_style(tmp_req.org_entities, 'org_entities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.org_entities_shrink):
+            body['org_entities'] = request.org_entities_shrink
+        if not DaraCore.is_null(request.out_project_id):
+            body['out_project_id'] = request.out_project_id
+        if not DaraCore.is_null(request.project_id):
+            body['project_id'] = request.project_id
+        if not DaraCore.is_null(request.remove_all):
+            body['remove_all'] = request.remove_all
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveProjectManager',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/cost/v1/project/manager/remove',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveProjectManagerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_project_manager_with_options_async(
+        self,
+        tmp_req: main_models.RemoveProjectManagerRequest,
+        headers: main_models.RemoveProjectManagerHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveProjectManagerResponse:
+        tmp_req.validate()
+        request = main_models.RemoveProjectManagerShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.org_entities):
+            request.org_entities_shrink = Utils.array_to_string_with_specified_style(tmp_req.org_entities, 'org_entities', 'json')
+        body = {}
+        if not DaraCore.is_null(request.org_entities_shrink):
+            body['org_entities'] = request.org_entities_shrink
+        if not DaraCore.is_null(request.out_project_id):
+            body['out_project_id'] = request.out_project_id
+        if not DaraCore.is_null(request.project_id):
+            body['project_id'] = request.project_id
+        if not DaraCore.is_null(request.remove_all):
+            body['remove_all'] = request.remove_all
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = str(headers.x_acs_btrip_corp_token)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveProjectManager',
+            version = '2022-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/cost/v1/project/manager/remove',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveProjectManagerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_project_manager(
+        self,
+        request: main_models.RemoveProjectManagerRequest,
+    ) -> main_models.RemoveProjectManagerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.RemoveProjectManagerHeaders()
+        return self.remove_project_manager_with_options(request, headers, runtime)
+
+    async def remove_project_manager_async(
+        self,
+        request: main_models.RemoveProjectManagerRequest,
+    ) -> main_models.RemoveProjectManagerResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.RemoveProjectManagerHeaders()
+        return await self.remove_project_manager_with_options_async(request, headers, runtime)
 
     def sync_single_user_with_options(
         self,
@@ -20353,6 +21191,8 @@ class Client(OpenApiClient):
     ) -> main_models.TrainBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -20406,6 +21246,8 @@ class Client(OpenApiClient):
     ) -> main_models.TrainBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -23591,6 +24433,8 @@ class Client(OpenApiClient):
     ) -> main_models.VasBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):
@@ -23646,6 +24490,8 @@ class Client(OpenApiClient):
     ) -> main_models.VasBillSettlementQueryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.apply_id):
+            query['apply_id'] = request.apply_id
         if not DaraCore.is_null(request.bill_batch):
             query['bill_batch'] = request.bill_batch
         if not DaraCore.is_null(request.bill_record_time_end):

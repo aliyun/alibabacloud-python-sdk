@@ -28,7 +28,6 @@ class FlightModifyApplyV2ShrinkRequest(DaraModel):
         self.out_sub_order_id = out_sub_order_id
         self.passenger_segment_relations_shrink = passenger_segment_relations_shrink
         self.reason = reason
-        # sessionId
         self.session_id = session_id
         self.voluntary = voluntary
 

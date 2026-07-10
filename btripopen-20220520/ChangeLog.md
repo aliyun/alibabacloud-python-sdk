@@ -1,3 +1,69 @@
+2026-07-10 Version: 5.2.0
+- Support API AddProjectManager.
+- Support API BatchQueryDepartment.
+- Support API BatchSubmitPreBill.
+- Support API ConfirmPreBill.
+- Support API MealApplyModify.
+- Support API MonthPreBillGet.
+- Support API RemoveProjectManager.
+- Update API ApplyAdd: add request parameters traveler_standard.$.car_standard.
+- Update API ApplyModify: add request parameters default_standard.international_flight_cabins.
+- Update API ApplyModify: add request parameters external_traveler_standard.international_flight_cabins.
+- Update API ApplyModify: add request parameters traveler_standard.$.car_standard.
+- Update API ApplyModify: add request parameters traveler_standard.$.international_flight_cabins.
+- Update API ApplyQuery: add response parameters Body.module.job_no.
+- Update API ApplyQuery: add response parameters Body.module.itinerary_list.$.can_order_type_list.
+- Update API ApplyQuery: add response parameters Body.module.itinerary_list.$.itinerary_no.
+- Update API ApplyQuery: add response parameters Body.module.itinerary_set_list.$.can_order_type_list.
+- Update API ApplyQuery: add response parameters Body.module.itinerary_set_list.$.itinerary_no.
+- Update API CarApplyAdd: add request parameters itinerary_list.
+- Update API CarBillSettlementQuery: add request parameters apply_id.
+- Update API ChannelCorpCreate: add request parameters administrator_email.
+- Update API ChannelCorpCreate: add request parameters base_currency.
+- Update API ChannelCorpCreate: add request parameters btrip_region.
+- Update API ChannelCorpCreate: add request parameters corp_name_en.
+- Update API ChannelCorpCreate: add request parameters extend_field.
+- Update API CooperatorFlightBillSettlementQuery: add request parameters apply_id.
+- Update API CooperatorHotelBillSettlementQuery: add request parameters apply_id.
+- Update API FlightBillSettlementQuery: add request parameters apply_id.
+- Update API FlightListingSearchV2: add response parameters Body.module.flight_item_list.$.best_price_item.code_type.
+- Update API FlightListingSearchV2: add response parameters Body.module.flight_item_list.$.item_list.$.code_type.
+- Update API FlightOtaSearchV2: add response parameters Body.module.item_list.$.code_type.
+- Update API FuPointBillSettlementQuery: add request parameters apply_id.
+- Update API HotelBillSettlementQuery: add request parameters apply_id.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.budget_number.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.business_reason.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.custom_apply_id.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.external_person_type.
+- Update API HotelGoodsQuery: add response parameters Body.module.rooms.$.rates.$.hotel_onsite_price_detail.
+- Update API HotelGoodsQuery: add response parameters Body.module.rooms.$.rates.$.tax_fee_desc.
+- Update API HotelIndexInfo: add request parameters internation.
+- Update API HotelOrderCreate: add request parameters arrival_time.
+- Update API HotelOrderCreate: add request parameters leave_time.
+- Update API HotelOrderCreate: add request parameters rp_type.
+- Update API HotelOrderDetailInfo: add response parameters Body.module.hotel_on_site_price_detail.
+- Update API HotelOrderPreValidate: add request parameters rp_type.
+- Update API HotelOrderPreValidate: add response parameters Body.module.rate_plan_info.hour_item_arrival_time_info.
+- Update API HotelOrderPreValidate: add response parameters Body.module.rate_plan_info.rp_type.
+- Update API HotelSearch: add request parameters poi.
+- Update API IFlightOrderDetailQuery: add response parameters Body.module.flight_sale_order.itinerary_id.
+- Update API IFlightOrderDetailQuery: add response parameters Body.module.flight_sale_order.thirdpart_itinerary_id.
+- Update API IFlightOrderListQuery: add response parameters Body.module.$.flight_sale_order.itinerary_id.
+- Update API IFlightOrderListQuery: add response parameters Body.module.$.flight_sale_order.thirdpart_itinerary_id.
+- Update API IeCarBillSettlementQuery: add request parameters apply_id.
+- Update API IeFlightBillSettlementQuery: add request parameters apply_id.
+- Update API IeHotelBillSettlementQuery: add request parameters apply_id.
+- Update API MealBillSettlementQuery: add request parameters apply_id.
+- Update API MealOrderDetailQuery: add response parameters Body.module.receipt_image_urls.
+- Update API MonthBillGet: add response parameters Body.module.$.monthAccountBillDetail.metroAmount.
+- Update API ProjectAdd: add request parameters has_manager.
+- Update API ProjectModify: add request parameters has_manager.
+- Update API QueryReimbursementOrder: add response parameters Body.module.payment_infos.$.cnaps_code.
+- Update API TrainBillSettlementQuery: add request parameters apply_id.
+- Update API TripBusinessInstanceQuery: add response parameters Body.module.business_form_data.
+- Update API VasBillSettlementQuery: add request parameters apply_id.
+
+
 2026-03-13 Version: 5.1.0
 - Support API IeCarBillSettlementQuery.
 - Support API QueryCompenInfosForOp.

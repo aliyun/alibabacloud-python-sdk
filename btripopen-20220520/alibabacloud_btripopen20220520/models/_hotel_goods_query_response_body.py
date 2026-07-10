@@ -451,6 +451,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
         end_time_daily: str = None,
         hotel_detail_rate_price_dto: List[main_models.HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO] = None,
         hotel_member_benefit: Dict[str, str] = None,
+        hotel_onsite_price_detail: main_models.HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail = None,
         instant_confirm: bool = None,
         inventory_desc: str = None,
         inventory_price: str = None,
@@ -479,6 +480,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
         supplier_code: str = None,
         supplier_name: str = None,
         support_special_invoice: bool = None,
+        tax_fee_desc: str = None,
         unrounding_daily_price_format_yuan: str = None,
     ):
         self.bed_desc = bed_desc
@@ -499,6 +501,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
         self.end_time_daily = end_time_daily
         self.hotel_detail_rate_price_dto = hotel_detail_rate_price_dto
         self.hotel_member_benefit = hotel_member_benefit
+        self.hotel_onsite_price_detail = hotel_onsite_price_detail
         self.instant_confirm = instant_confirm
         self.inventory_desc = inventory_desc
         self.inventory_price = inventory_price
@@ -527,6 +530,7 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
         self.supplier_code = supplier_code
         self.supplier_name = supplier_name
         self.support_special_invoice = support_special_invoice
+        self.tax_fee_desc = tax_fee_desc
         self.unrounding_daily_price_format_yuan = unrounding_daily_price_format_yuan
 
     def validate(self):
@@ -542,6 +546,8 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
             for v1 in self.hotel_detail_rate_price_dto:
                  if v1:
                     v1.validate()
+        if self.hotel_onsite_price_detail:
+            self.hotel_onsite_price_detail.validate()
 
     def to_map(self):
         result = dict()
@@ -605,6 +611,9 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
 
         if self.hotel_member_benefit is not None:
             result['hotel_member_benefit'] = self.hotel_member_benefit
+
+        if self.hotel_onsite_price_detail is not None:
+            result['hotel_onsite_price_detail'] = self.hotel_onsite_price_detail.to_map()
 
         if self.instant_confirm is not None:
             result['instant_confirm'] = self.instant_confirm
@@ -690,6 +699,9 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
         if self.support_special_invoice is not None:
             result['support_special_invoice'] = self.support_special_invoice
 
+        if self.tax_fee_desc is not None:
+            result['tax_fee_desc'] = self.tax_fee_desc
+
         if self.unrounding_daily_price_format_yuan is not None:
             result['unrounding_daily_price_format_yuan'] = self.unrounding_daily_price_format_yuan
 
@@ -758,6 +770,10 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
 
         if m.get('hotel_member_benefit') is not None:
             self.hotel_member_benefit = m.get('hotel_member_benefit')
+
+        if m.get('hotel_onsite_price_detail') is not None:
+            temp_model = main_models.HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail()
+            self.hotel_onsite_price_detail = temp_model.from_map(m.get('hotel_onsite_price_detail'))
 
         if m.get('instant_confirm') is not None:
             self.instant_confirm = m.get('instant_confirm')
@@ -843,8 +859,167 @@ class HotelGoodsQueryResponseBodyModuleRoomsRates(DaraModel):
         if m.get('support_special_invoice') is not None:
             self.support_special_invoice = m.get('support_special_invoice')
 
+        if m.get('tax_fee_desc') is not None:
+            self.tax_fee_desc = m.get('tax_fee_desc')
+
         if m.get('unrounding_daily_price_format_yuan') is not None:
             self.unrounding_daily_price_format_yuan = m.get('unrounding_daily_price_format_yuan')
+
+        return self
+
+class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail(DaraModel):
+    def __init__(
+        self,
+        avg_onsite_price: main_models.HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOnsitePrice = None,
+        daily_onsite_price: List[main_models.HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyOnsitePrice] = None,
+    ):
+        self.avg_onsite_price = avg_onsite_price
+        self.daily_onsite_price = daily_onsite_price
+
+    def validate(self):
+        if self.avg_onsite_price:
+            self.avg_onsite_price.validate()
+        if self.daily_onsite_price:
+            for v1 in self.daily_onsite_price:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.avg_onsite_price is not None:
+            result['avg_onsite_price'] = self.avg_onsite_price.to_map()
+
+        result['daily_onsite_price'] = []
+        if self.daily_onsite_price is not None:
+            for k1 in self.daily_onsite_price:
+                result['daily_onsite_price'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('avg_onsite_price') is not None:
+            temp_model = main_models.HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOnsitePrice()
+            self.avg_onsite_price = temp_model.from_map(m.get('avg_onsite_price'))
+
+        self.daily_onsite_price = []
+        if m.get('daily_onsite_price') is not None:
+            for k1 in m.get('daily_onsite_price'):
+                temp_model = main_models.HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyOnsitePrice()
+                self.daily_onsite_price.append(temp_model.from_map(k1))
+
+        return self
+
+class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyOnsitePrice(DaraModel):
+    def __init__(
+        self,
+        currency: str = None,
+        day: str = None,
+        foreign_currency: str = None,
+        foreign_price_cent: int = None,
+        price_cent: int = None,
+    ):
+        self.currency = currency
+        self.day = day
+        self.foreign_currency = foreign_currency
+        self.foreign_price_cent = foreign_price_cent
+        self.price_cent = price_cent
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.currency is not None:
+            result['currency'] = self.currency
+
+        if self.day is not None:
+            result['day'] = self.day
+
+        if self.foreign_currency is not None:
+            result['foreign_currency'] = self.foreign_currency
+
+        if self.foreign_price_cent is not None:
+            result['foreign_price_cent'] = self.foreign_price_cent
+
+        if self.price_cent is not None:
+            result['price_cent'] = self.price_cent
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currency') is not None:
+            self.currency = m.get('currency')
+
+        if m.get('day') is not None:
+            self.day = m.get('day')
+
+        if m.get('foreign_currency') is not None:
+            self.foreign_currency = m.get('foreign_currency')
+
+        if m.get('foreign_price_cent') is not None:
+            self.foreign_price_cent = m.get('foreign_price_cent')
+
+        if m.get('price_cent') is not None:
+            self.price_cent = m.get('price_cent')
+
+        return self
+
+class HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOnsitePrice(DaraModel):
+    def __init__(
+        self,
+        currency: str = None,
+        foreign_currency: str = None,
+        foreign_price_cent: int = None,
+        price_cent: int = None,
+    ):
+        self.currency = currency
+        self.foreign_currency = foreign_currency
+        self.foreign_price_cent = foreign_price_cent
+        self.price_cent = price_cent
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.currency is not None:
+            result['currency'] = self.currency
+
+        if self.foreign_currency is not None:
+            result['foreign_currency'] = self.foreign_currency
+
+        if self.foreign_price_cent is not None:
+            result['foreign_price_cent'] = self.foreign_price_cent
+
+        if self.price_cent is not None:
+            result['price_cent'] = self.price_cent
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currency') is not None:
+            self.currency = m.get('currency')
+
+        if m.get('foreign_currency') is not None:
+            self.foreign_currency = m.get('foreign_currency')
+
+        if m.get('foreign_price_cent') is not None:
+            self.foreign_price_cent = m.get('foreign_price_cent')
+
+        if m.get('price_cent') is not None:
+            self.price_cent = m.get('price_cent')
 
         return self
 

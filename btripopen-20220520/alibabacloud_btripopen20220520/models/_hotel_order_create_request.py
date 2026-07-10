@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class HotelOrderCreateRequest(DaraModel):
     def __init__(
         self,
+        arrival_time: str = None,
         btrip_user_id: str = None,
         check_in: str = None,
         check_out: str = None,
@@ -22,6 +23,7 @@ class HotelOrderCreateRequest(DaraModel):
         invoice_info: main_models.HotelOrderCreateRequestInvoiceInfo = None,
         item_id: int = None,
         itinerary_no: str = None,
+        leave_time: str = None,
         member_info: main_models.HotelOrderCreateRequestMemberInfo = None,
         occupant_info_list: List[main_models.HotelOrderCreateRequestOccupantInfoList] = None,
         person_pay_price: int = None,
@@ -29,11 +31,13 @@ class HotelOrderCreateRequest(DaraModel):
         rate_plan_id: int = None,
         room_id: int = None,
         room_num: int = None,
+        rp_type: int = None,
         seller_id: int = None,
         shid: int = None,
         total_order_price: int = None,
         validate_res_key: str = None,
     ):
+        self.arrival_time = arrival_time
         # This parameter is required.
         self.btrip_user_id = btrip_user_id
         # This parameter is required.
@@ -54,6 +58,7 @@ class HotelOrderCreateRequest(DaraModel):
         self.item_id = item_id
         # This parameter is required.
         self.itinerary_no = itinerary_no
+        self.leave_time = leave_time
         self.member_info = member_info
         # This parameter is required.
         self.occupant_info_list = occupant_info_list
@@ -66,6 +71,7 @@ class HotelOrderCreateRequest(DaraModel):
         self.room_id = room_id
         # This parameter is required.
         self.room_num = room_num
+        self.rp_type = rp_type
         # This parameter is required.
         self.seller_id = seller_id
         # This parameter is required.
@@ -92,6 +98,9 @@ class HotelOrderCreateRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.arrival_time is not None:
+            result['arrival_time'] = self.arrival_time
+
         if self.btrip_user_id is not None:
             result['btrip_user_id'] = self.btrip_user_id
 
@@ -128,6 +137,9 @@ class HotelOrderCreateRequest(DaraModel):
         if self.itinerary_no is not None:
             result['itinerary_no'] = self.itinerary_no
 
+        if self.leave_time is not None:
+            result['leave_time'] = self.leave_time
+
         if self.member_info is not None:
             result['member_info'] = self.member_info.to_map()
 
@@ -151,6 +163,9 @@ class HotelOrderCreateRequest(DaraModel):
         if self.room_num is not None:
             result['room_num'] = self.room_num
 
+        if self.rp_type is not None:
+            result['rp_type'] = self.rp_type
+
         if self.seller_id is not None:
             result['seller_id'] = self.seller_id
 
@@ -167,6 +182,9 @@ class HotelOrderCreateRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('arrival_time') is not None:
+            self.arrival_time = m.get('arrival_time')
+
         if m.get('btrip_user_id') is not None:
             self.btrip_user_id = m.get('btrip_user_id')
 
@@ -204,6 +222,9 @@ class HotelOrderCreateRequest(DaraModel):
         if m.get('itinerary_no') is not None:
             self.itinerary_no = m.get('itinerary_no')
 
+        if m.get('leave_time') is not None:
+            self.leave_time = m.get('leave_time')
+
         if m.get('member_info') is not None:
             temp_model = main_models.HotelOrderCreateRequestMemberInfo()
             self.member_info = temp_model.from_map(m.get('member_info'))
@@ -229,6 +250,9 @@ class HotelOrderCreateRequest(DaraModel):
 
         if m.get('room_num') is not None:
             self.room_num = m.get('room_num')
+
+        if m.get('rp_type') is not None:
+            self.rp_type = m.get('rp_type')
 
         if m.get('seller_id') is not None:
             self.seller_id = m.get('seller_id')

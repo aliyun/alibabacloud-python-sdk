@@ -20,10 +20,8 @@ class VatInvoiceScanQueryResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -200,7 +198,6 @@ class VatInvoiceScanQueryResponseBodyModuleItems(DaraModel):
         self.invoice_sub_task_id = invoice_sub_task_id
         self.invoice_type = invoice_type
         self.invoice_type_desc = invoice_type_desc
-        # 机器码
         self.machine_code = machine_code
         self.ofd_oss_url = ofd_oss_url
         self.oss_url = oss_url
@@ -475,7 +472,6 @@ class VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails(DaraModel):
         unit_price: str = None,
     ):
         self.amount = amount
-        # 行号
         self.index = index
         self.item_name = item_name
         self.quantity = quantity

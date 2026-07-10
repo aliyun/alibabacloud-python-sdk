@@ -22,7 +22,6 @@ class IeCarBillSettlementQueryResponseBody(DaraModel):
         self.module = module
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -353,7 +352,6 @@ class IeCarBillSettlementQueryResponseBodyModuleItems(DaraModel):
         self.invoice_title = invoice_title
         self.last_department = last_department
         self.level_name = level_name
-        # Location
         self.location = location
         self.main_apply_id = main_apply_id
         self.mapping_company_code = mapping_company_code
@@ -389,7 +387,6 @@ class IeCarBillSettlementQueryResponseBodyModuleItems(DaraModel):
         self.settlement_time = settlement_time
         self.settlement_type = settlement_type
         self.show_sub_order_id = show_sub_order_id
-        # SIO
         self.sio = sio
         self.special_order = special_order
         self.special_reason = special_reason
