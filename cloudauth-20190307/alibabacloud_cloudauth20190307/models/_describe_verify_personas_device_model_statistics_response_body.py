@@ -13,9 +13,9 @@ class DescribeVerifyPersonasDeviceModelStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Query result.
+        # The query result.
         self.result_object = result_object
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObject(DaraMo
         all_device_cnt: int = None,
         items: List[main_models.DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems] = None,
     ):
-        # Total number of devices.
+        # The total number of devices.
         self.all_device_cnt = all_device_cnt
-        # List of data for different phone models.
+        # The list of data for different phone models.
         self.items = items
 
     def validate(self):
@@ -98,11 +98,11 @@ class DescribeVerifyPersonasDeviceModelStatisticsResponseBodyResultObjectItems(D
         device_model: str = None,
         device_rate: str = None,
     ):
-        # Number of devices.
+        # The number of devices.
         self.device_cnt = device_cnt
-        # Device model
+        # The device model.
         self.device_model = device_model
-        # The ratio of this device model to the total number of devices.
+        # The ratio of devices of this model to the total number of devices.
         self.device_rate = device_rate
 
     def validate(self):

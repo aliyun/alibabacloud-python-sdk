@@ -13,9 +13,9 @@ class DescribeVerifyStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyStatisticsResponseBodyResultObject = None,
     ):
-        # ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Statistical results
+        # The statistics result.
         self.result_object = result_object
 
     def validate(self):
@@ -65,35 +65,35 @@ class DescribeVerifyStatisticsResponseBodyResultObject(DaraModel):
         verify_device_success: int = None,
         verify_device_success_passed: int = None,
     ):
-        # Number of client initializations.
+        # The number of client-side initializations.
         self.init_device = init_device
-        # Number of identity deduplication client initializations.
+        # The number of client-side initializations for identity deduplication.
         self.init_device_id = init_device_id
-        # Number of successful identity deduplication client initializations.
+        # The number of successful client-side initializations for identity deduplication.
         self.init_device_id_success = init_device_id_success
-        # Number of client initialization calls.
+        # The number of successful client-side initialization calls.
         self.init_device_success = init_device_success
-        # Number of service-side initializations.
+        # The number of server-side initializations.
         self.init_service = init_service
-        # Total number of identity deduplication server initialization requests.
+        # The total number of server-side initialization requests for identity deduplication.
         self.init_service_id = init_service_id
-        # Number of successful identity deduplication server initializations.
+        # The number of successful server-side initializations for identity deduplication.
         self.init_service_id_success = init_service_id_success
-        # Number of successful service-side initialization authentications.
+        # The number of successful server-side initialization authentications.
         self.init_service_success = init_service_success
-        # Daily pass/conversion rate (PV).
+        # The daily pass/conversion rates (PV).
         self.items = items
-        # Number of client verifications.
+        # The number of client-side verifications.
         self.verify_device = verify_device
-        # Number of identity deduplication client authentications.
+        # The number of client-side authentication attempts for identity deduplication.
         self.verify_device_id = verify_device_id
-        # Number of successful identity deduplication client verifications.
+        # The number of successful client-side verifications for identity deduplication.
         self.verify_device_id_success = verify_device_id_success
-        # Number of successful identity deduplication client authentications.
+        # The number of successful client-side authentications for identity deduplication.
         self.verify_device_id_success_passed = verify_device_id_success_passed
-        # Number of successful client authentications.
+        # The number of successful client-side authentications.
         self.verify_device_success = verify_device_success
-        # Number of successful client authentications.
+        # The number of successful client-side authentications.
         self.verify_device_success_passed = verify_device_success_passed
 
     def validate(self):
@@ -218,17 +218,17 @@ class DescribeVerifyStatisticsResponseBodyResultObjectItems(DaraModel):
         init_service_pass_rate: str = None,
         pass_rate: str = None,
     ):
-        # Date.
+        # The date.
         self.date = date
-        # Client initialization pass rate.
+        # The client-side initialization pass rate.
         self.init_device_pass_rate = init_device_pass_rate
-        # Number of server initializations.
+        # The number of server-side initializations.
         self.init_service = init_service
-        # Server initialization conversion rate.
+        # The server-side initialization conversion rate.
         self.init_service_conversion_rate = init_service_conversion_rate
-        # Server initialization pass rate.
+        # The server-side initialization pass rate.
         self.init_service_pass_rate = init_service_pass_rate
-        # Pass rate.
+        # The pass rate.
         self.pass_rate = pass_rate
 
     def validate(self):

@@ -1,3 +1,10 @@
+2026-07-10 Version: 3.13.4
+- Update API CreateWhitelistSetting: add request parameters WhitelistType.
+- Update API DescribeWhitelistSetting: add request parameters WhitelistType.
+- Update API DescribeWhitelistSetting: add response parameters Body.Items.$.WhitelistType.
+- Update API Id3MetaVerify: add response parameters Body.ResultObject.SubCode.
+
+
 2026-06-08 Version: 3.13.3
 - Update API Id3MetaVerify: add request parameters FacePicture.
 - Update API InitFaceVerify: add request parameters EnableBeauty.

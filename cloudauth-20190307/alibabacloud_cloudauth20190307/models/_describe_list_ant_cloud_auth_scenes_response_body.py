@@ -13,9 +13,9 @@ class DescribeListAntCloudAuthScenesResponseBody(DaraModel):
         request_id: str = None,
         scenes: List[main_models.DescribeListAntCloudAuthScenesResponseBodyScenes] = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # List of scenarios.
+        # The list of scenes.
         self.scenes = scenes
 
     def validate(self):
@@ -72,44 +72,46 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         store_image: str = None,
         update_time: str = None,
     ):
-        # Application ID.
+        # The application ID.
         self.app_id = app_id
-        # Whether to enable binding to a mini program:
-        # - **Y**: Enabled
-        # - **N (default)**: Not enabled
+        # Specifies whether to enable mini program binding. Valid values:
+        # - **Y**: Enabled.
+        # - **N (default)**: Disabled.
         self.bind_mini_program = bind_mini_program
-        # Creation time.
+        # The creation time.
         self.create_time = create_time
-        # Creator.
+        # The creator.
         self.creator = creator
-        # Enhanced device detection capability: - **Y**: Enable - **N**: Disable
+        # Specifies whether to enable enhanced device risk detection. Valid values:
+        # - **Y**: Enabled.
+        # - **N**: Disabled.
         self.device_risk_plus = device_risk_plus
-        # Bound domain.
+        # The bound domain name.
         self.domain = domain
-        # Mini program name.
+        # The mini program name.
         self.mini_program_name = mini_program_name
-        # Modifier.
+        # The modifier.
         self.modifier = modifier
-        # Bound mini program platform:
+        # The mini program platform. Valid values:
         # - **WECHAT**: WeChat
         # - **ALIPAY**: Alipay
-        # - **TIKTOK**: TikTok
+        # - **TIKTOK**: TikTok.
         self.platform = platform
-        # Number of face photos stored (1-5).
+        # The number of evidence face photos (1 to 5).
         self.return_pic_count = return_pic_count
-        # Duration of the stored video (in seconds).
+        # The duration of the evidence video, in seconds.
         self.return_video_length = return_video_length
-        # Scenario ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Scenario name.
+        # The scene name.
         self.scene_name = scene_name
-        # Whether it is enabled, with a value of 1 indicating enabled.
+        # Indicates whether the scene is enabled. The value 1 indicates enabled.
         self.status = status
-        # Whether to deliver the files generated from the authentication to the customer\\"s OSS:
-        # - **Y**: Enabled
-        # - **N**: Disabled
+        # Specifies whether to deliver files generated during authentication to the customer\\"s OSS. Valid values:
+        # - **Y**: Enabled.
+        # - **N**: Disabled.
         self.store_image = store_image
-        # The last update time of the instance.
+        # The time when the instance was last updated.
         self.update_time = update_time
 
     def validate(self):

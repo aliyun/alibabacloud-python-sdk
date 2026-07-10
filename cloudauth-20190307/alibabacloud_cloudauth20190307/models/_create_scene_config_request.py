@@ -11,15 +11,15 @@ class CreateSceneConfigRequest(DaraModel):
         scene_id: int = None,
         type: str = None,
     ):
-        # Intention authentication configuration, as a JSON string.
+        # The willingness authentication configuration, in JSON string format.
         # 
         # This parameter is required.
         self.config = config
-        # Scene ID.
+        # The scenario ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id
-        # Configuration type.
+        # The configuration type.
         # 
         # This parameter is required.
         self.type = type

@@ -10,11 +10,11 @@ class CreateWhitelistSettingResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Return result, whether the creation was successful:
-        # - true: Success
-        # - false: Failure
+        # The returned result that indicates whether the whitelist is created. Valid values:
+        # - true: Succeeded.
+        # - false: Failed.
         self.result_object = result_object
 
     def validate(self):

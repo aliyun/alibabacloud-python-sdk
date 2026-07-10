@@ -15,13 +15,13 @@ class QueryBlackListStrategyResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.QueryBlackListStrategyResponseBodyResultObject] = None,
     ):
-        # Return code, **200** indicates successful API response.
+        # The return code. **200** indicates that the request was successful.
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Returned result information.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -81,28 +81,28 @@ class QueryBlackListStrategyResponseBodyResultObject(DaraModel):
         status: str = None,
         user_id: int = None,
     ):
-        # Blacklist string, separated by **commas**.
+        # The blacklist string. Multiple blacklist entries are separated by **commas**.
         self.biz_content = biz_content
-        # List type:
-        # - mobile: Phone number blacklist
+        # The blacklist type. Valid values:
+        # - mobile: phone number blacklist
         # - ip: IP blacklist
-        # - identifyNum: ID number blacklist
-        # - bankCard: Bank card blacklist
+        # - identifyNum: ID card blacklist
+        # - bankCard: bank card blacklist.
         self.biz_key = biz_key
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Rule ID.
+        # The rule ID.
         self.id = id
-        # Product name:
-        # - id2meta: ID number two-factor verification
-        # - mobile3Meta: Phone number factor verification
-        # - bankcardMeta: Bank card factor verification
+        # The product name. Valid values:
+        # - id2meta: ID card two-factor verification.
+        # - mobile3Meta: Phone number factor verification.
+        # - bankcardMeta: Bank card factor verification.
         self.product_name = product_name
-        # Status:
-        # - **disabled**: Disabled
-        # - **normal**: Enabled
+        # The status. Valid values:
+        # - **disabled**: Disabled.
+        # - **normal**: Enabled.
         self.status = status
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

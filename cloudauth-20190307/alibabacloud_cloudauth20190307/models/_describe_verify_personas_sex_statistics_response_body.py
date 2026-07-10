@@ -11,9 +11,9 @@ class DescribeVerifyPersonasSexStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyPersonasSexStatisticsResponseBodyResultObject = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Returned data.
+        # The returned data.
         self.result_object = result_object
 
     def validate(self):
@@ -63,35 +63,35 @@ class DescribeVerifyPersonasSexStatisticsResponseBodyResultObject(DaraModel):
         male_cnt: int = None,
         male_rate: str = None,
     ):
-        # Number of users under 14 years old.
+        # The number of authenticated users aged 14 and under.
         self.age_0to_14cnt = age_0to_14cnt
-        # Proportion of users under 14 years old.
+        # The proportion of authenticated users aged 14 and under.
         self.age_0to_14rate = age_0to_14rate
-        # Number of users between 14 and 18 years old.
+        # The number of authenticated users aged 14 to 18.
         self.age_14to_18cnt = age_14to_18cnt
-        # Proportion of users between 14 and 18 years old.
+        # The proportion of authenticated users aged 14 to 18.
         self.age_14to_18rate = age_14to_18rate
-        # Number of authenticated users between 18 and 35 years old.
+        # The number of authenticated users aged 18 to 35.
         self.age_18to_35cnt = age_18to_35cnt
-        # Proportion of authenticated users between 18 and 35 years old.
+        # The proportion of authenticated users aged 18 to 35.
         self.age_18to_35rate = age_18to_35rate
-        # Number of authenticated users between 35 and 50 years old.
+        # The number of authenticated users aged 35 to 50.
         self.age_35to_50cnt = age_35to_50cnt
-        # Proportion of users between 35 and 50 years old.
+        # The proportion of authenticated users aged 35 to 50.
         self.age_35to_50rate = age_35to_50rate
-        # Number of authenticated users over 50 years old.
+        # The number of authenticated users aged 50 and over.
         self.age_50to_999cnt = age_50to_999cnt
-        # Proportion of authenticated users over 50 years old.
+        # The number of authenticated users aged 50 and over.
         self.age_50to_999rate = age_50to_999rate
-        # Total number of authenticated users.
+        # The total number of authenticated users.
         self.all_user_cnt = all_user_cnt
-        # Number of female users.
+        # The number of female authenticated users.
         self.female_cnt = female_cnt
-        # Proportion of female authenticated users.
+        # The proportion of female authenticated users.
         self.female_rate = female_rate
-        # Number of male users.
+        # The number of male authenticated users.
         self.male_cnt = male_cnt
-        # Proportion of male users.
+        # The proportion of male authenticated users.
         self.male_rate = male_rate
 
     def validate(self):

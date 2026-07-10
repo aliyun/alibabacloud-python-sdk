@@ -9,7 +9,7 @@ class DeleteSceneConfigRequest(DaraModel):
         self,
         scene_config_id: int = None,
     ):
-        # ID of the intent authentication configuration.
+        # The ID of the ID Verification scenario configuration.
         # 
         # This parameter is required.
         self.scene_config_id = scene_config_id

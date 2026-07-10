@@ -13,16 +13,16 @@ class Id3MetaVerifyWithOCRResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.Id3MetaVerifyWithOCRResponseBodyResultObject = None,
     ):
-        # Return code: 200 indicates success, any other value indicates failure. **Important**
+        # The response code. 200 indicates success. Other values indicate failure. **Important**
         # 
-        # - This parameter indicates whether the interface was called correctly. For a detailed explanation of return codes, please refer to the error codes.
-        # - The business verification result can be viewed through the fields in ResultObject.
+        # - This parameter indicates only whether the API call was made correctly. For more information about return codes, see error codes.
+        # - Check the fields in ResultObject for the business verification result.
         self.code = code
-        # Interface call return message. **Important** This parameter only indicates whether there was an exception with the interface.
+        # The response message of the API call. This parameter indicates only whether an exception occurred during the API call.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Result object.
+        # The result object.
         self.result_object = result_object
 
     def validate(self):
@@ -72,15 +72,15 @@ class Id3MetaVerifyWithOCRResponseBodyResultObject(DaraModel):
         card_info: str = None,
         face_detail: str = None,
     ):
-        # Identity verification result:
+        # The identity verification result. Valid values:
         # 
-        # - 1: Consistent
-        # - 2: Inconsistent
-        # - 3: No record found
+        # - 1: consistent.
+        # - 2: inconsistent.
+        # - 3: no record found.
         self.biz_code = biz_code
-        # Card ocr result.
+        # {"address":"浙江省杭州市余*****","birthDate":"19901226","certName":"张三","certNo":"1234561990122*****","nationality":"汉","authority":"xxx公安局","startDate":"20201130","endDate":"20301130"}.
         self.card_info = card_info
-        # Face comparison score.
+        # The face comparison score.
         self.face_detail = face_detail
 
     def validate(self):

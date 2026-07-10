@@ -11,9 +11,9 @@ class DescribeVerifyPersonasOsStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyPersonasOsStatisticsResponseBodyResultObject = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Processing result.
+        # The processing result.
         self.result_object = result_object
 
     def validate(self):
@@ -53,15 +53,15 @@ class DescribeVerifyPersonasOsStatisticsResponseBodyResultObject(DaraModel):
         device_ios_cnt: int = None,
         device_ios_rate: str = None,
     ):
-        # Total number of authenticated devices.
+        # The total number of devices used for ID Verification.
         self.all_device_cnt = all_device_cnt
-        # Number of authenticated Android devices.
+        # The number of Android devices used for ID Verification.
         self.device_android_cnt = device_android_cnt
-        # Proportion of Android devices.
+        # The proportion of Android devices.
         self.device_android_rate = device_android_rate
-        # Number of authenticated iOS devices.
+        # The number of iOS devices used for ID Verification.
         self.device_ios_cnt = device_ios_cnt
-        # Proportion of iOS devices.
+        # The proportion of iOS devices.
         self.device_ios_rate = device_ios_rate
 
     def validate(self):

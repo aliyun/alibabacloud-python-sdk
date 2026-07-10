@@ -22,37 +22,37 @@ class LivenessFaceVerifyRequest(DaraModel):
         scene_id: int = None,
         user_id: str = None,
     ):
-        # Unique identifier for real-person authentication.
+        # The unique identity of the ID Verification request.
         self.certify_id = certify_id
-        # Whether to allow cropping of the face image:
+        # Specifies whether to allow trim of the face image. Valid values:
         # 
-        # - T: Allow cropping
+        # - T: Trim is allowed.
         # 
-        # - F (default): Do not allow cropping.
+        # - F (default): Trim is not allowed.
         self.crop = crop
-        # Device token, used for risk identification.
+        # The device token, which is used for risk identification.
         self.device_token = device_token
-        # Base64 encoded photo.
+        # The Base64 encoding of the photo.
         self.face_contrast_picture = face_contrast_picture
-        # Image URL.
+        # The URL of the image.
         self.face_contrast_picture_url = face_contrast_picture_url
-        # User\\"s network IP address.
+        # The IP address of the user network.
         self.ip = ip
-        # User\\"s mobile phone number.
+        # The mobile phone number of the user.
         self.mobile = mobile
-        # Liveness detection parameters.
+        # The liveness detection parameter.
         self.model = model
-        # Authorized OSS bucket name.
+        # The bucket name of the authorization-granted OSS bucket.
         self.oss_bucket_name = oss_bucket_name
-        # Authorized OSS file name.
+        # The file name in the authorization-granted OSS bucket.
         self.oss_object_name = oss_object_name
-        # A unique business identifier defined by the client side, used for subsequent troubleshooting. The value should be a combination of letters and numbers up to 32 characters long, ensuring uniqueness.
+        # The custom business unique identity on the client side, which is used for subsequent troubleshooting. The value can contain up to 32 alphanumeric characters. Make sure the value is unique.
         self.outer_order_no = outer_order_no
         # Fixed value: LR_FR_MIN.
         self.product_code = product_code
-        # Authentication scenario ID. This ID is automatically generated after creating an authentication scenario in the console.
+        # The ID of the authentication scenario. This ID is automatically generated after you create an authentication scenario in the console.
         self.scene_id = scene_id
-        # Your custom user ID (up to 100 characters), please ensure it is unique.
+        # The custom user ID (up to 100 characters). Make sure the value is unique.
         self.user_id = user_id
 
     def validate(self):

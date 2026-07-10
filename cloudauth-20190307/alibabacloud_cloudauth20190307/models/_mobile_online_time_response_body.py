@@ -13,13 +13,13 @@ class MobileOnlineTimeResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.MobileOnlineTimeResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned result information
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -69,22 +69,23 @@ class MobileOnlineTimeResponseBodyResultObject(DaraModel):
         isp_name: str = None,
         time_code: str = None,
     ):
-        # Verification result code.
-        # - 1: Verification consistent
-        # - 2: Verification inconsistent
-        # - 3: No record found
+        # The verification result code. Valid values:
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
-        # Operator name
+        # The name of the telecommunications service provider. Valid values:
         # 
-        # - CMCC: China Mobile 
-        # - CUCC: China Unicom 
-        # - CTCC: China Telecom
+        # - CMCC: China Mobile. 
+        # - CUCC: China Unicom. 
+        # - CTCC: China Telecom.
         self.isp_name = isp_name
-        # - 1: [0,3) indicates the online duration is 0~3 months 
-        # - 2: [3,6) indicates the online duration is 3~6 months 
-        # - 3: [6,12) indicates the online duration is 6~12 months 
-        # - 4: [12,24) indicates the online duration is 12~24 months 
-        # - 5: [24,+) indicates the online duration is more than 24 months
+        # The network duration code. Valid values:
+        # - 1: [0,3) indicates a network duration of 0 to 3 months.
+        # - 2: [3,6) indicates a network duration of 3 to 6 months.
+        # - 3: [6,12) indicates a network duration of 6 to 12 months.
+        # - 4: [12,24) indicates a network duration of 12 to 24 months.
+        # - 5: [24,+) indicates a network duration of more than 24 months.
         self.time_code = time_code
 
     def validate(self):

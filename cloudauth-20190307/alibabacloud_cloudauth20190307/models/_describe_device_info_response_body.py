@@ -16,14 +16,14 @@ class DescribeDeviceInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The current page number being queried.
+        # The current page number.
         self.current_page = current_page
         self.device_info_list = device_info_list
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

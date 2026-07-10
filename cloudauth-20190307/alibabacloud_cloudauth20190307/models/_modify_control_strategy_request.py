@@ -14,11 +14,11 @@ class ModifyControlStrategyRequest(DaraModel):
         product_type: str = None,
         region_id: str = None,
     ):
-        # List of security alarm rules.
+        # The list of security alert rules.
         self.control_strategy_list = control_strategy_list
-        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others are phased out.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types have been discontinued.
         self.product_type = product_type
-        # Region ID of the intelligent access gateway instance.
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
 
     def validate(self):
@@ -70,24 +70,24 @@ class ModifyControlStrategyRequestControlStrategyList(DaraModel):
         status: str = None,
         threshold: float = None,
     ):
-        # API name, same as **ProductCode**.
+        # The API name, which is the same as **ProductCode**.
         self.api_name = api_name
-        # Rule configuration type:
+        # The rule configuration type. Valid values:
         # - **QPS**: QPS greater than
-        # - **SUCCESS_RATE_5_MIN**: Success rate in the last 5 minutes less than
-        # - **RESP_TIME_5_MIN**: Average response time in the last 5 minutes greater than
-        # - **AMOUNT_RISE**: Call volume growth ratio greater than
-        # - **AMOUNT_FALL**: Call volume decline ratio less than
-        # - **PASSED_RATE_1_HOUR**: Verification consistency rate in the last hour less than
-        # - **PARAM_ERROR_RATE_1_HOUR**: Parameter error rate in the last hour greater than
+        # - **SUCCESS_RATE_5_MIN**: success rate in the last 5 minutes less than
+        # - **RESP_TIME_5_MIN**: average response time in the last 5 minutes greater than
+        # - **AMOUNT_RISE**: call volume increase compared to the previous period greater than
+        # - **AMOUNT_FALL**: call volume decrease compared to the previous period less than
+        # - **PASSED_RATE_1_HOUR**: verification consistency rate in the last hour less than
+        # - **PARAM_ERROR_RATE_1_HOUR**: parameter error rate in the last hour greater than.
         self.biz_type = biz_type
-        # Rule ID.
+        # The rule ID.
         self.id = id
-        # Status:
-        # - **disabled**: Disabled
-        # - **normal**: Enabled
+        # The status. Valid values:
+        # - **disabled**: Disabled.
+        # - **normal**: Enabled.
         self.status = status
-        # Alarm threshold for the rule.
+        # The alert threshold of the rule.
         self.threshold = threshold
 
     def validate(self):

@@ -11,11 +11,11 @@ class DescribeFaceVerifyRequest(DaraModel):
         picture_return_type: str = None,
         scene_id: int = None,
     ):
-        # Unique identifier for real-person authentication.
+        # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # Image return type.
+        # The image return type.
         self.picture_return_type = picture_return_type
-        # Authentication scene ID.
+        # The ID of the verification scenario.
         self.scene_id = scene_id
 
     def validate(self):

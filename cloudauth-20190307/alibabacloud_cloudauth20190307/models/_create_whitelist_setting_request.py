@@ -15,29 +15,31 @@ class CreateWhitelistSettingRequest(DaraModel):
         service_code: str = None,
         source_ip: str = None,
         valid_day: int = None,
+        whitelist_type: str = None,
     ):
-        # ID number to be whitelisted.
+        # The ID card number to add to the whitelist.
         self.cert_no = cert_no
-        # Certificate ID, used for whitelisting this specific authenticated user.
+        # The certificate ID. The user associated with this authentication is added to the whitelist.
         self.certify_id = certify_id
-        # User language.
+        # The user language.
         self.lang = lang
-        # Whitelist remarks.
+        # The remarks for the whitelist.
         self.remark = remark
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Service type:
-        # - **antcloudauth**: Financial-grade real-person authentication.
-        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # The service type. Valid values:
+        # - **antcloudauth**: Financial-grade ID Verification.
+        # - **cloudauthst** (discontinued): ID Verification Enhanced Edition.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # Visitor\\"s source IP address. No need to fill in, the system will automatically obtain it.
+        # The source IP address of the visitor. You do not need to specify this parameter. The system automatically obtains the value.
         self.source_ip = source_ip
-        # Number of valid days after creating the whitelist.
+        # The number of valid days after the whitelist is created.
         # 
         # This parameter is required.
         self.valid_day = valid_day
+        self.whitelist_type = whitelist_type
 
     def validate(self):
         pass
@@ -71,6 +73,9 @@ class CreateWhitelistSettingRequest(DaraModel):
         if self.valid_day is not None:
             result['ValidDay'] = self.valid_day
 
+        if self.whitelist_type is not None:
+            result['WhitelistType'] = self.whitelist_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -98,6 +103,9 @@ class CreateWhitelistSettingRequest(DaraModel):
 
         if m.get('ValidDay') is not None:
             self.valid_day = m.get('ValidDay')
+
+        if m.get('WhitelistType') is not None:
+            self.whitelist_type = m.get('WhitelistType')
 
         return self
 

@@ -13,13 +13,13 @@ class Mobile3MetaSimpleStandardVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.Mobile3MetaSimpleStandardVerifyResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Returned result information
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -68,18 +68,18 @@ class Mobile3MetaSimpleStandardVerifyResponseBodyResultObject(DaraModel):
         biz_code: str = None,
         isp_name: str = None,
     ):
-        # Verification result:
+        # The verification result. Valid values:
         # 
-        # - 1: Consistent (billable)
-        # - 2: Inconsistent (billable)
-        # - 3: No record found (non-billable)
+        # - 1: Consistent (billable).
+        # - 2: Inconsistent (billable).
+        # - 3: No record found (not billable).
         self.biz_code = biz_code
-        # Operator name:
+        # The carrier name. Valid values:
         # 
         # - **CMCC**: China Mobile.
         # - **CUCC**: China Unicom.
         # - **CTCC**: China Telecom.
-        # - **CBCC**: China Broadcasting Network.
+        # - **CBCC**: China Broadnet.
         self.isp_name = isp_name
 
     def validate(self):

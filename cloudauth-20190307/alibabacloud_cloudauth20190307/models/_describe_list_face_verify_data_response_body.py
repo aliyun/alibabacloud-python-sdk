@@ -13,9 +13,9 @@ class DescribeListFaceVerifyDataResponseBody(DaraModel):
         monitor_data: main_models.DescribeListFaceVerifyDataResponseBodyMonitorData = None,
         request_id: str = None,
     ):
-        # Returned data.
+        # The returned data.
         self.monitor_data = monitor_data
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class DescribeListFaceVerifyDataResponseBodyMonitorData(DaraModel):
         self,
         face_verify_data: List[main_models.DescribeListFaceVerifyDataResponseBodyMonitorDataFaceVerifyData] = None,
     ):
-        # Face verification data.
+        # The facial recognition data.
         self.face_verify_data = face_verify_data
 
     def validate(self):
@@ -92,17 +92,17 @@ class DescribeListFaceVerifyDataResponseBodyMonitorDataFaceVerifyData(DaraModel)
         succ_cnt: str = None,
         total_cnt: str = None,
     ):
-        # Verification statistics time.
+        # The authentication statistics time.
         self.con_date = con_date
-        # Number of failed verifications.
+        # The number of authentication-failed transactions.
         self.fail_cnt = fail_cnt
-        # Verification scheme.
+        # The authentication solution.
         self.name = name
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Number of successful verifications.
+        # The number of authentication-passed transactions.
         self.succ_cnt = succ_cnt
-        # Total number of verifications.
+        # The total number of authentication requests.
         self.total_cnt = total_cnt
 
     def validate(self):

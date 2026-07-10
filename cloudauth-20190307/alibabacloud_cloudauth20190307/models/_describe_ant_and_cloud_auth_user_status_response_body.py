@@ -13,23 +13,23 @@ class DescribeAntAndCloudAuthUserStatusResponseBody(DaraModel):
         inforverify_enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether financial-grade real-person authentication is activated. Values:
-        # - **true**: Activated
-        # - **false**: Not activated
+        # Indicates whether financial-grade ID Verification is activated. Valid values:
+        # - **true**: Activated.
+        # - **false**: Not activated.
         self.antcloudauth_enabled = antcloudauth_enabled
-        # Indicates whether real-person authentication is activated. Values:
-        # - **true**: Activated
-        # - **false**: Not activated
+        # Indicates whether ID Verification is activated. Valid values:
+        # - **true**: Activated.
+        # - **false**: Not activated.
         self.cloudauth_enabled = cloudauth_enabled
-        # Indicates whether the enhanced version of real-person authentication is activated. Values:
-        # - **true**: Activated
-        # - **false**: Not activated
+        # Indicates whether enhanced ID Verification is activated. Valid values:
+        # - **true**: Activated.
+        # - **false**: Not activated.
         self.cloudauthst_enabled = cloudauthst_enabled
-        # Indicates whether information verification is activated. Values:
-        # - **true**: Activated
-        # - **false**: Not activated
+        # Indicates whether information verification is activated. Valid values:
+        # - **true**: Activated.
+        # - **false**: Not activated.
         self.inforverify_enabled = inforverify_enabled
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

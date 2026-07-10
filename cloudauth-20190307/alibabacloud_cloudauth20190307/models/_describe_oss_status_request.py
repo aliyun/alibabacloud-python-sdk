@@ -9,9 +9,9 @@ class DescribeOssStatusRequest(DaraModel):
         self,
         service_code: str = None,
     ):
-        # Service code:
-        # - antcloudauth: Financial-grade real-person authentication
-        # - cloudauthst (discontinued): Enhanced real-person authentication
+        # The service code. Valid values:
+        # - antcloudauth: Chinese financial-grade ID Verification.
+        # - cloudauthst (discontinued): ID Verification Enhanced Edition.
         self.service_code = service_code
 
     def validate(self):

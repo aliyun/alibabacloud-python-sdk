@@ -10,9 +10,9 @@ class CreateCloudauthstSceneResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # ID of this request
+        # The request ID.
         self.request_id = request_id
-        # The result, indicating whether the operation was successful.
+        # The returned result that indicates whether the operation is successful.
         self.result_object = result_object
 
     def validate(self):

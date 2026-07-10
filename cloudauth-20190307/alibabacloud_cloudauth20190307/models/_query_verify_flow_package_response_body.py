@@ -17,17 +17,17 @@ class QueryVerifyFlowPackageResponseBody(DaraModel):
         success: bool = None,
         total_count: str = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # List of returned data.
+        # The list of returned data.
         self.items = items
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the response was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # Total count.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -98,17 +98,17 @@ class QueryVerifyFlowPackageResponseBodyItems(DaraModel):
         total_capacity: float = None,
         used_capacity: float = None,
     ):
-        # Name of the resource package.
+        # The name of the resource plan.
         self.commodity_name = commodity_name
-        # Current available capacity.
+        # The current remaining available capacity.
         self.curr_capacity = curr_capacity
-        # Proportion of current remaining capacity to total capacity.
+        # The ratio of the current remaining capacity to the total capacity.
         self.curr_proportion = curr_proportion
-        # Details of the flow package.
+        # The data transfer plan details.
         self.flow_details = flow_details
-        # Total quota.
+        # The total quota.
         self.total_capacity = total_capacity
-        # Used capacity.
+        # The used capacity.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -181,21 +181,21 @@ class QueryVerifyFlowPackageResponseBodyItemsFlowDetails(DaraModel):
         status: str = None,
         take_effect_date: str = None,
     ):
-        # Total amount.
+        # The total capacity.
         self.capacity = capacity
-        # Name of the flow package.
+        # The name of the data transfer plan.
         self.commodity_name = commodity_name
-        # Remaining amount.
+        # The remaining capacity.
         self.curr_capacity = curr_capacity
-        # Proportion of remaining amount.
+        # The ratio of the remaining capacity to the total capacity.
         self.curr_proportion = curr_proportion
-        # Expiration date.
+        # The expiration time.
         self.expire_date = expire_date
-        # Instance name
+        # The instance name.
         self.instance_name = instance_name
-        # Status.
+        # The status.
         self.status = status
-        # Effective date.
+        # The effective period.
         self.take_effect_date = take_effect_date
 
     def validate(self):

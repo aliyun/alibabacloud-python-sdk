@@ -10,9 +10,9 @@ class DeleteWhitelistSettingResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):

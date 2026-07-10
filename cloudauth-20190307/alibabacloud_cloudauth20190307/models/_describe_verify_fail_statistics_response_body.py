@@ -13,9 +13,9 @@ class DescribeVerifyFailStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyFailStatisticsResponseBodyResultObject = None,
     ):
-        # ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Authentication result.
+        # The authentication result.
         self.result_object = result_object
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeVerifyFailStatisticsResponseBodyResultObject(DaraModel):
         column: main_models.DescribeVerifyFailStatisticsResponseBodyResultObjectColumn = None,
         line: main_models.DescribeVerifyFailStatisticsResponseBodyResultObjectLine = None,
     ):
-        # Line chart of failure reasons.
+        # The line chart of failure reasons.
         self.column = column
-        # Bar chart of failure reasons.
+        # The bar chart of failure reasons.
         self.line = line
 
     def validate(self):
@@ -94,9 +94,9 @@ class DescribeVerifyFailStatisticsResponseBodyResultObjectLine(DaraModel):
         items: List[main_models.DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems] = None,
         total_count: int = None,
     ):
-        # Column information.
+        # The column information.
         self.items = items
-        # Total count.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -139,9 +139,9 @@ class DescribeVerifyFailStatisticsResponseBodyResultObjectLineItems(DaraModel):
         code: str = None,
         data: List[main_models.DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData] = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Returned quantity data.
+        # The returned count data.
         self.data = data
 
     def validate(self):
@@ -185,11 +185,11 @@ class DescribeVerifyFailStatisticsResponseBodyResultObjectLineItemsData(DaraMode
         count: int = None,
         date: str = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Count.
+        # The count.
         self.count = count
-        # Date.
+        # The date.
         self.date = date
 
     def validate(self):
@@ -230,9 +230,9 @@ class DescribeVerifyFailStatisticsResponseBodyResultObjectColumn(DaraModel):
         items: List[main_models.DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems] = None,
         total_count: int = None,
     ):
-        # Column information.
+        # The column information.
         self.items = items
-        # Total count.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -276,11 +276,11 @@ class DescribeVerifyFailStatisticsResponseBodyResultObjectColumnItems(DaraModel)
         count: int = None,
         rate: str = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # Failure count.
+        # The number of failures.
         self.count = count
-        # Date: Date
+        # Date: the date.
         self.rate = rate
 
     def validate(self):

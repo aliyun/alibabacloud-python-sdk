@@ -20,41 +20,41 @@ class UpdateAntCloudAuthSceneRequest(DaraModel):
         status: int = None,
         store_image: str = None,
     ):
-        # Update Ant Blockchain Transaction Scenario
+        # Specifies whether to bind a mini program. Valid values:
+        # - **Y**: enabled.
+        # - **N (default)**: disabled.
+        # >Notice: If you enable mini program binding, make sure that you specify all parameters related to the mini program binding..
         self.bind_mini_program = bind_mini_program
-        # Whether to enable binding with a mini program:
-        # - **Y**: Enable
-        # - **N (default)**: Disable
-        # >Notice: If you enable binding with a mini program, please ensure that all parameters for the mini program are passed.
+        # The content of the uploaded verification file.
         self.check_file_body = check_file_body
-        # Scenario name.
+        # The name of the uploaded verification file.
         self.check_file_name = check_file_name
-        # Name of the uploaded verification file.
+        # Specifies whether to enable enhanced device risk detection. Valid values:
+        # - **Y**: enabled.
+        # - **N**: disabled.
         self.device_risk_plus = device_risk_plus
-        # System-defined parameter. Value: **UpdateAntCloudAuthScene**.
+        # The name of the mini program.
         self.mini_program_name = mini_program_name
-        # Currently meaningless, can be omitted.
-        self.platform = platform
-        # Mini program name.
-        self.return_pic_count = return_pic_count
-        # Platform for binding the mini program:
+        # The mini program platform. Valid values:
         # - **WECHAT**: WeChat
         # - **ALIPAY**: Alipay
-        # - **TIKTOK**: TikTok
+        # - **TIKTOK**: TikTok.
+        self.platform = platform
+        # The number of returned photos (1 to 5). This parameter takes effect only after StoreImage is enabled for certification file retention.
+        self.return_pic_count = return_pic_count
+        # The duration of the returned video (1 to 2 seconds). This parameter takes effect only after StoreImage is enabled.
         self.return_video_length = return_video_length
-        # Update Financial-Level Authentication Scenario
+        # The scenario ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id
-        # Update the information of a financial-level authentication scenario based on the scenario ID.
-        # - Service address: cloudauth.aliyuncs.com.
-        # - Request method: HTTPS POST.
+        # The scenario name.
         self.scene_name = scene_name
-        # Update Ant Blockchain Transaction Scenario
+        # This parameter is not used. You do not need to specify this parameter.
         self.status = status
-        # Update the information of a financial-level authentication scenario based on the scenario ID.
-        # - Service address: cloudauth.aliyuncs.com.
-        # - Request method: HTTPS POST.
+        # Specifies whether to deliver certification files generated during the certification process to the user\\"s OSS bucket. Valid values:
+        # - **Y**: enabled.
+        # - **N (default)**: disabled.
         self.store_image = store_image
 
     def validate(self):

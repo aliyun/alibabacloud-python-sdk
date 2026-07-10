@@ -13,15 +13,15 @@ class InsertWhiteListSettingResponseBody(DaraModel):
         result_object: bool = None,
         success: bool = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID
+        # Id of the request
         self.request_id = request_id
-        # Returned result
+        # The returned result.
         self.result_object = result_object
-        # Indicates whether the response was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

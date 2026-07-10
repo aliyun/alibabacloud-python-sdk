@@ -10,9 +10,9 @@ class RemoveWhiteListSettingShrinkRequest(DaraModel):
         ids_shrink: str = None,
         service_code: str = None,
     ):
-        # IDs of the whitelist to be deleted in bulk.
+        # The IDs of the whitelists to delete in batch.
         self.ids_shrink = ids_shrink
-        # ServiceCode for the real person cloud product, only value: **antcloudauth**.
+        # The ServiceCode of the ID Verification service. Set this parameter to **antcloudauth**.
         self.service_code = service_code
 
     def validate(self):

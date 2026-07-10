@@ -10,9 +10,9 @@ class DescribeVerifySDKResponseBody(DaraModel):
         request_id: str = None,
         sdk_url: str = None,
     ):
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # The SDK download URL. When not empty, it indicates that the generation is complete.
+        # The download URL of the SDK. A non-empty value indicates that the SDK has been generated.
         self.sdk_url = sdk_url
 
     def validate(self):

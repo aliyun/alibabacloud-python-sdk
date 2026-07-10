@@ -10,42 +10,42 @@ class DownloadVerifyRecordsRequest(DaraModel):
         biz_param: str = None,
         product_type: str = None,
     ):
-        # Query condition in JSON string format, specifically including fields:
-        # - **DownloadMode (String)**: Download mode,
-        #   - Example value: sync
-        # - **InvokeType (String)**: Product plan, corresponding to **ProductType**
-        # - **SceneIdList (List<Long>)**: List of scene IDs
-        # - **StatisticsType (String)**: Statistics type
+        # The query conditions in JSON string format. The following fields are included:
+        # - **DownloadMode (String)**: the download mode.
+        #   - Example: sync
+        # - **InvokeType (String)**: the product plan, which corresponds to **ProductType**.
+        # - **SceneIdList (List<Long>)**: the list of scene IDs.
+        # - **StatisticsType (String)**: the statistics type. Valid values:
         #   - day
         #   - month
-        # - **StartDate (String)**: Start date of the query
-        #   - Example value: 2025-09-17 00:00:00 +0800
-        # - **EndDate (String)**: End date of the query
-        #   - Example value: 2025-10-16 23:59:59 +0800
-        # - **ProductProgramList**: List of product codes under the queried product plan
-        #   - Example value: ["FINANCE_FACE_VERIFY","MFVC"]
-        # - **Code (Information Verification API)**:
+        # - **StartDate (String)**: the query start time.
+        #   - Example: 2025-09-17 00:00:00 +0800
+        # - **EndDate (String)**: the query end time.
+        #   - Example: 2025-10-16 23:59:59 +0800
+        # - **ProductProgramList**: the list of product codes under the product plan to query.
+        #   - Example: ["FINANCE_FACE_VERIFY","MFVC"]
+        # - **Code (information verification API)**: Valid values:
         #   - **ID_CARD_2_META**: ID card two-factor verification
-        #   - **ID_PERIOD**: Validity period of ID card verification
-        #   - **MOBILE_ONLINE_LENGTH**: Mobile online duration
-        #   - **MOBILE_ONLINE_STATUS**: Mobile online status
-        #   - **MOBILE_3_META_SIMPLE**: Simplified mobile three-factor verification
-        #   - **MOBILE_3_META**: Detailed mobile three-factor verification
-        #   - **MOBILE_2_META**: Mobile two-factor verification
-        #   - **BANK_CARD_N_META**: Detailed bank card verification
-        #   - **MOBILE_DETECT**: Number detection 
-        #   - **VEHICLE_N_META**: Enhanced vehicle factor verification
-        #   - **VEHICLE_PENTA_INFO**: Vehicle five-item information recognition
-        #   - **VEHICLE_LICENSE_INFO**: Vehicle information recognition
-        #   - **VEHICLE_INSURE_DATE**: Vehicle insurance date inquiry
-        #   - **VEHICLE_CHECK**: Vehicle factor verification
-        # - **ProductCode** (Information Verification): Same as Code
+        #   - **ID_PERIOD**: ID card validity period verification
+        #   - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+        #   - **MOBILE_ONLINE_STATUS**: mobile number online status
+        #   - **MOBILE_3_META_SIMPLE**: mobile number three-factor verification (basic)
+        #   - **MOBILE_3_META**: mobile number three-factor verification (detailed)
+        #   - **MOBILE_2_META**: mobile number two-factor verification
+        #   - **BANK_CARD_N_META**: bank card verification (detailed)
+        #   - **MOBILE_DETECT**: phone number detection 
+        #   - **VEHICLE_N_META**: vehicle element verification (enhanced)
+        #   - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+        #   - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+        #   - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+        #   - **VEHICLE_CHECK**: vehicle element verification
+        # - **ProductCode (information verification)**: same as Code.
         self.biz_param = biz_param
-        # Product type:
-        # - **FINANCE_VERIFY**: Financial-level real-person authentication
-        # - **SMART_VERIFY**: Enhanced real-person authentication (discontinued)
-        # - **FACE_VERIFY**: Real-person authentication (discontinued)
-        # - **INFO_CHECK_STATISTICS**: Information verification
+        # The product type. Valid values:
+        # - **FINANCE_VERIFY**: financial-grade ID Verification
+        # - **SMART_VERIFY**: enhanced ID Verification (discontinued)
+        # - **FACE_VERIFY**: ID Verification (discontinued)
+        # - **INFO_CHECK_STATISTICS**: information verification.
         self.product_type = product_type
 
     def validate(self):

@@ -13,9 +13,9 @@ class QuerySceneConfigsResponseBody(DaraModel):
         request_id: str = None,
         scene_configs: List[main_models.QuerySceneConfigsResponseBodySceneConfigs] = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Willingness configuration list.
+        # The list of intent verification configurations.
         self.scene_configs = scene_configs
 
     def validate(self):
@@ -63,19 +63,19 @@ class QuerySceneConfigsResponseBodySceneConfigs(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # Specific configuration content, in JSON string format.
+        # The specific configuration content, in JSON string format.
         self.config = config
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Configuration ID.
+        # The configuration ID.
         self.id = id
-        # Scene ID.
+        # The scenario ID.
         self.scene_id = scene_id
-        # Configuration type.
+        # The configuration type.
         self.type = type
-        # Scene configuration version number.
+        # The version number of the scenario configuration.
         self.version = version
 
     def validate(self):

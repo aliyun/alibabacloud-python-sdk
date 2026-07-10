@@ -13,24 +13,24 @@ class DescribeVerifyStatisticsRequest(DaraModel):
         service_code: str = None,
         start_date: int = None,
     ):
-        # Whether the age is over 14 years old:
-        # - **T**: Over
-        # - **F**: Under
+        # Specifies whether the age is older than 14. Valid values:
+        # - **T**: older than 14
+        # - **F**: younger than 14.
         self.age_gt = age_gt
-        # End date of the query.
+        # The end time of the query.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Product Code.
+        # The product code.
         self.product_code = product_code
-        # Service type:
-        # - **antcloudauth**: Financial-grade real-person authentication.
-        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
-        # - **cloudauth** (discontinued): Real-person authentication.
+        # The service type. Valid values:
+        # - **antcloudauth**: financial-grade ID Verification.
+        # - **cloudauthst** (discontinued): enhanced ID Verification.
+        # - **cloudauth** (discontinued): ID Verification.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # Start date of the query.
+        # The start time of the query.
         # 
         # This parameter is required.
         self.start_date = start_date

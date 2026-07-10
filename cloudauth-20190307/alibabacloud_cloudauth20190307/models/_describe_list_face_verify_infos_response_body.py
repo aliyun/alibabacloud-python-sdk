@@ -17,17 +17,17 @@ class DescribeListFaceVerifyInfosResponseBody(DaraModel):
         total_count: int = None,
         total_pages: int = None,
     ):
-        # List of face verification records.
+        # The list of facial recognition authentication records.
         self.face_verify_infos = face_verify_infos
-        # Number of items per page.
+        # The specified page number returned.
         self.items_per_page = items_per_page
-        # Pagination parameter: current page number.
+        # The current page number for pagination.
         self.page_number = page_number
-        # ID of the current request.
+        # The request ID.
         self.request_id = request_id
-        # Total number of verifications.
+        # The total number of authentication records.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -99,21 +99,21 @@ class DescribeListFaceVerifyInfosResponseBodyFaceVerifyInfos(DaraModel):
         scene_id: int = None,
         status: int = None,
     ):
-        # Business code.
+        # The business code.
         self.biz_code = biz_code
-        # Name.
+        # The name.
         self.cert_name = cert_name
-        # ID number.
+        # The certificate number.
         self.cert_no = cert_no
-        # ID of the certificate.
+        # The certificate ID.
         self.certify_id = certify_id
-        # Creation time of the face recognition record.
+        # The creation time of the facial recognition record.
         self.create_time = create_time
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Verification status:
-        # - **1**: Verification passed.
-        # - **2**: Verification failed.
+        # The authentication status. Valid values:
+        # - **1**: Authentication passed.
+        # - **2**: Authentication failed.
         self.status = status
 
     def validate(self):

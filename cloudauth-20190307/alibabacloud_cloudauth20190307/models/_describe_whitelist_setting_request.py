@@ -18,42 +18,44 @@ class DescribeWhitelistSettingRequest(DaraModel):
         status: str = None,
         valid_end_date: int = None,
         valid_start_date: int = None,
+        whitelist_type: str = None,
     ):
-        # ID Number
+        # The ID card number.
         self.cert_no = cert_no
-        # Certification ID
+        # The certification ID.
         self.certify_id = certify_id
-        # Pagination parameter: current page number, default value is 1.
+        # The current page number. Default value: 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Specify the language to query. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the query result. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Number of items per page for pagination.
+        # The number of entries per page in a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Service Code:
-        # - **Enhanced Financial Grade**: cloudauthst
-        # - **Financial Grade**: antcloudauth
+        # The service code. Valid values:
+        # - **cloudauthst**: enhanced financial-grade edition.
+        # - **antcloudauth**: financial-grade edition.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # Visitor\\"s source IP address.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
-        # Whitelist status:
-        # - **VALID**: Valid
-        # - **INVALID**: Invalid
-        # - **DELETED**: Deleted
+        # The whitelist status. Valid values:
+        # - **VALID**: valid.
+        # - **INVALID**: invalid.
+        # - **DELETED**: deleted.
         self.status = status
-        # Expiration date.
+        # The end time of the validity period.
         self.valid_end_date = valid_end_date
-        # Effective start time (in seconds timestamp).
+        # The start time of the validity period. The value is a UNIX timestamp in seconds.
         self.valid_start_date = valid_start_date
+        self.whitelist_type = whitelist_type
 
     def validate(self):
         pass
@@ -96,6 +98,9 @@ class DescribeWhitelistSettingRequest(DaraModel):
         if self.valid_start_date is not None:
             result['ValidStartDate'] = self.valid_start_date
 
+        if self.whitelist_type is not None:
+            result['WhitelistType'] = self.whitelist_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -132,6 +137,9 @@ class DescribeWhitelistSettingRequest(DaraModel):
 
         if m.get('ValidStartDate') is not None:
             self.valid_start_date = m.get('ValidStartDate')
+
+        if m.get('WhitelistType') is not None:
+            self.whitelist_type = m.get('WhitelistType')
 
         return self
 

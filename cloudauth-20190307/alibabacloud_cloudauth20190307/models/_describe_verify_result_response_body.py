@@ -17,35 +17,46 @@ class DescribeVerifyResultResponseBody(DaraModel):
         request_id: str = None,
         verify_status: int = None,
     ):
-        # The comparison score between the face photo submitted during the authentication process and the authoritative data, with a value range of **0** to **100**.
-        # Confidence threshold references:
-        # - When the false acceptance rate is 0.001%, the corresponding threshold is 95. - When the false acceptance rate is 0.01%, the corresponding threshold is 90. - When the false acceptance rate is 0.1%, the corresponding threshold is 80. - When the false acceptance rate is 1%, the corresponding threshold is 60.
-        # > This field only indicates the comparison result between the face and the authoritative data, for your reference only. It is generally not recommended to use this value alone as the standard for whether the authentication passes. For a comprehensive authentication result, please refer to the **VerifyStatus** field. The **VerifyStatus** result integrates the comparison of the face with the authoritative data and various other strategies, which can enhance security levels.
+        # The comparison score between the face photo submitted during verification and the authoritative data. Value range: **0** to **100**.
+        # 
+        # Confidence threshold reference:
+        # 
+        # - When the false acceptance rate is 0.001%, the corresponding threshold is 95.
+        # - When the false acceptance rate is 0.01%, the corresponding threshold is 90.
+        # - When the false acceptance rate is 0.1%, the corresponding threshold is 80.
+        # - When the false acceptance rate is 1%, the corresponding threshold is 60.
+        # 
+        # > This field only indicates the comparison result between the face and the authoritative data and is for reference only. Do not use this value alone as the criterion for determining whether the verification is passed. For the comprehensive verification result, refer to the **VerifyStatus** field. The **VerifyStatus** result combines the face-to-authoritative-data comparison with multiple other strategies to improve security.
         self.authority_comparision_score = authority_comparision_score
-        # The comparison score between the face photo submitted during the authentication process and the face in the retained face image. The value range is **0**~**100**.
+        # The comparison score between the face photo submitted during verification and the face in the retained face image. Value range: **0** to **100**.
+        # 
         # 
         # Confidence threshold reference:
         # 
-        # - When the false recognition rate is 0.001%, the corresponding threshold is 95.
-        # - When the false recognition rate is 0.01%, the corresponding threshold is 90.
-        # - When the false recognition rate is 0.1%, the corresponding threshold is 80.
-        # - When the false recognition rate is 1%, the corresponding threshold is 60.
+        # - When the false acceptance rate is 0.001%, the corresponding threshold is 95.
+        # - When the false acceptance rate is 0.01%, the corresponding threshold is 90.
+        # - When the false acceptance rate is 0.1%, the corresponding threshold is 80.
+        # - When the false acceptance rate is 1%, the corresponding threshold is 60.
         self.face_comparison_score = face_comparison_score
-        # The comparison score between the face photo submitted during the authentication process and the face on the ID card\\"s face side. The value range is **0**~**100**.
+        # The comparison score between the face photo submitted during verification and the face on the ID card photo. Value range: **0** to **100**.
+        # 
         # 
         # Confidence threshold reference:
         # 
-        # - When the false recognition rate is 0.001%, the corresponding threshold is 95.
-        # - When the false recognition rate is 0.01%, the corresponding threshold is 90.
-        # - When the false recognition rate is 0.1%, the corresponding threshold is 80.
-        # - When the false recognition rate is 1%, the corresponding threshold is 60.
+        # - When the false acceptance rate is 0.001%, the corresponding threshold is 95.
+        # - When the false acceptance rate is 0.01%, the corresponding threshold is 90.
+        # - When the false acceptance rate is 0.1%, the corresponding threshold is 80.
+        # - When the false acceptance rate is 1%, the corresponding threshold is 60.
         self.id_card_face_comparison_score = id_card_face_comparison_score
-        # Authentication materials.
+        # The verification materials.
         self.material = material
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Authentication status, values:
-        # - **-1**: Not authenticated - **1**: Authentication passed - **2** to **n**: Authentication failed for various reasons. For detailed descriptions, see the authentication status explanation.
+        # The verification status. Valid values:
+        # 
+        # - **-1**: not verified.
+        # - **1**: verification passed.
+        # - **2** to **n**: verification failed due to various reasons. For more information, see the verification status description.
         self.verify_status = verify_status
 
     def validate(self):
@@ -112,31 +123,31 @@ class DescribeVerifyResultResponseBodyMaterial(DaraModel):
         id_card_number: str = None,
         video_urls: List[str] = None,
     ):
-        # The global camera image captured by the real-person authentication SDK.
+        # The global camera image captured by the ID Verification SDK.
         # 
-        # > This parameter will only take effect after configuration. If you need to use this parameter, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
+        # > This parameter takes effect only after configuration. If you need to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us.
         self.face_global_url = face_global_url
-        # The HTTP or HTTPS link to the frontal face image. The link is valid for 5 minutes, and it is recommended to store it elsewhere to avoid any impact on usage.
-        # > If the HTTP or HTTPS link to the frontal face image expires, you can call [DescribeVerifyResult](https://help.aliyun.com/document_detail/154606.html) again to get the link.
+        # The HTTP or HTTPS URL of the face photo. The URL is valid for 5 minutes. Save the image to avoid access issues.
+        # > If the HTTP or HTTPS URL of the face photo has expired, call [DescribeVerifyResult](https://help.aliyun.com/document_detail/154606.html) again to obtain a new URL.
         self.face_image_url = face_image_url
-        # Whether the face is wearing a mask. Values:
-        # - **true**: Wearing a mask
-        # - **false**: Not wearing a mask
+        # Indicates whether the face is wearing a mask. Valid values:
+        # - **true**: A mask is detected.
+        # - **false**: No mask is detected.
         self.face_mask = face_mask
-        # The quality of the frontal face image. Values:
-        # - **UNQUALIFIED**: Poor quality
-        # - **LOW**: Low
-        # - **NORMAL**: Normal
-        # - **HIGH**: High
+        # The quality of the face photo. Valid values:
+        # - **UNQUALIFIED**: poor quality.
+        # - **LOW**: low quality.
+        # - **NORMAL**: moderate quality.
+        # - **HIGH**: high quality.
         self.face_quality = face_quality
-        # OCR results of the ID card information.
-        # > If there is no front and back information of the ID card during the authentication process, the real-person authentication service will not return the OCR results of the ID card. Even if there is front and back information of the ID card during the authentication process, the real-person authentication service does not guarantee to return all the information on the ID card. Due to issues with ID card photography, the OCR may fail to recognize some information, resulting in incomplete OCR information. It is recommended that your business does not strongly rely on the ID card OCR information.
+        # The OCR result of the ID card information.
+        # > If no front or back image of the ID card is provided during verification, the ID Verification service does not return the OCR result. Even if front and back images are provided, the service does not guarantee that all information on the ID card will be returned. OCR information may be incomplete when the ID card photo is blurry or has lighting issues that prevent character recognition. Do not create a strong dependency on the ID card OCR information in your business logic.
         self.id_card_info = id_card_info
-        # Name.
+        # The name on the ID card.
         self.id_card_name = id_card_name
-        # ID number.
+        # The ID card number.
         self.id_card_number = id_card_number
-        # The URL addresses of the recorded videos returned by the historical RPH5BioOnly solution.
+        # The URL of the recorded video returned by the legacy RPH5BioOnly solution.
         self.video_urls = video_urls
 
     def validate(self):
@@ -217,27 +228,27 @@ class DescribeVerifyResultResponseBodyMaterialIdCardInfo(DaraModel):
         number: str = None,
         start_date: str = None,
     ):
-        # Address.
+        # The address.
         self.address = address
-        # Issuing authority.
+        # The issuing authority.
         self.authority = authority
-        # HTTP/HTTPS link to the image of the back side (national emblem side) of the ID card. The link is valid for 5 minutes, and it is recommended to store it for business use to avoid any impact.
-        # > If the HTTP/HTTPS link to the front-facing portrait image expires, you can call DescribeVerifyResult again to get the link.
+        # The HTTP or HTTPS URL of the national emblem side of the ID card. The URL is valid for 5 minutes. Save the image to avoid access issues.
+        # > If the HTTP or HTTPS URL has expired, call DescribeVerifyResult again to obtain a new URL.
         self.back_image_url = back_image_url
-        # Date of birth.
+        # The date of birth.
         self.birth = birth
-        # The end date of the document\\"s validity period. Format: yyyymmdd.
+        # The expiration date of the ID card. Format: yyyymmdd.
         self.end_date = end_date
-        # HTTP/HTTPS link to the image of the front side (portrait side) of the ID card. The link is valid for 5 minutes, and it is recommended to store it for business use to avoid any impact.
-        # > If the HTTP/HTTPS link to the front-facing portrait image expires, you can call DescribeVerifyResult again to get the link.
+        # The HTTP or HTTPS URL of the portrait side of the ID card. The URL is valid for 5 minutes. Save the image to avoid access issues.
+        # > If the HTTP or HTTPS URL has expired, call DescribeVerifyResult again to obtain a new URL.
         self.front_image_url = front_image_url
-        # Name.
+        # The name on the ID card.
         self.name = name
-        # Nationality.
+        # The ethnicity.
         self.nationality = nationality
-        # ID card number.
+        # The ID card number.
         self.number = number
-        # Start date of the document\\"s validity. Format: yyyymmdd.
+        # The start date of the ID card validity period. Format: yyyymmdd.
         self.start_date = start_date
 
     def validate(self):

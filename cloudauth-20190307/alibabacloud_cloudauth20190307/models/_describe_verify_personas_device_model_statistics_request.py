@@ -12,17 +12,17 @@ class DescribeVerifyPersonasDeviceModelStatisticsRequest(DaraModel):
         service_code: str = None,
         time_range: str = None,
     ):
-        # Product Code.
+        # The product code.
         self.product_code = product_code
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Service type:
-        # - **antcloudauth**: Financial-grade real-person authentication.
-        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # The service type. Valid values:
+        # - **antcloudauth**: financial-grade ID Verification.
+        # - **cloudauthst** (discontinued): enhanced ID Verification.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # Time range for the query, indicating how many days back.
+        # The time range for the query, specified as the number of preceding days.
         # 
         # This parameter is required.
         self.time_range = time_range

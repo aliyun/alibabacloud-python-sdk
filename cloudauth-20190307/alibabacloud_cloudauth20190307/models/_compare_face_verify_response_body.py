@@ -13,13 +13,13 @@ class CompareFaceVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CompareFaceVerifyResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, other values indicate failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Face comparison result information.
+        # The face comparison result.
         self.result_object = result_object
 
     def validate(self):
@@ -69,11 +69,11 @@ class CompareFaceVerifyResponseBodyResultObject(DaraModel):
         passed: str = None,
         verify_score: float = None,
     ):
-        # Unique identifier for the real-person authentication request.
+        # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # Whether the verification passed, T for pass, F for fail.
+        # Indicates whether the verification passed. A value of T indicates passed. A value of F indicates not passed.
         self.passed = passed
-        # Face comparison score.
+        # The face comparison score.
         self.verify_score = verify_score
 
     def validate(self):

@@ -18,31 +18,36 @@ class CreateAntCloudAuthSceneRequest(DaraModel):
         scene_name: str = None,
         store_image: str = None,
     ):
-        # Whether to enable binding of the mini program:
-        # - **Y**: Enable
-        # - **N (default)**: Not enabled
+        # Specifies whether to enable mini program binding. Valid values:
+        # - **Y**: enabled
+        # - **N (default)**: disabled.
         self.bind_mini_program = bind_mini_program
-        # Content of the uploaded verification file.
+        # The content of the uploaded verification file.
         self.check_file_body = check_file_body
-        # Name of the uploaded verification file.
+        # The name of the uploaded verification file.
         self.check_file_name = check_file_name
+        # Specifies whether to enable enhanced device risk detection. Valid values:
+        # - **Y**: enabled
+        # - **N**: disabled.
         self.device_risk_plus = device_risk_plus
-        # Mini program name.
+        # The mini program name.
         self.mini_program_name = mini_program_name
-        # Binding platform for the mini program:
+        # The mini program platform to bind. Valid values:
         # - **WECHAT**: WeChat
         # - **ALIPAY**: Alipay
-        # - **TIKTOK**: TikTok
+        # - **TIKTOK**: TikTok.
         self.platform = platform
+        # The number of face photos for evidence storage (1-5).
         self.return_pic_count = return_pic_count
+        # The duration of the evidence storage video, in seconds.
         self.return_video_length = return_video_length
-        # Scene name.
+        # The scenario name.
         # 
         # This parameter is required.
         self.scene_name = scene_name
-        # Whether to deliver the files generated from the authentication to the customer\\"s OSS:
-        # - **Y**: Yes
-        # - **N**: No
+        # Specifies whether to deliver the files generated during authentication to the customer\\"s OSS. Valid values:
+        # - **Y**: Yes.
+        # - **N**: No.
         self.store_image = store_image
 
     def validate(self):

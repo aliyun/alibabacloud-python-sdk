@@ -11,11 +11,11 @@ class ModifyControlStrategyShrinkRequest(DaraModel):
         product_type: str = None,
         region_id: str = None,
     ):
-        # List of security alarm rules.
+        # The list of security alert rules.
         self.control_strategy_list_shrink = control_strategy_list_shrink
-        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others are phased out.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types have been discontinued.
         self.product_type = product_type
-        # Region ID of the intelligent access gateway instance.
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
 
     def validate(self):

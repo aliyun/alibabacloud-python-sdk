@@ -17,17 +17,17 @@ class DescribeVerifySearchPageListResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Paged list data.
+        # The paginated list data.
         self.items = items
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of the current request.
+        # The request ID.
         self.request_id = request_id
-        # Total number of pages.
+        # The total number of entries.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -111,55 +111,55 @@ class DescribeVerifySearchPageListResponseBodyItems(DaraModel):
         user_id: str = None,
         virtual_video: int = None,
     ):
-        # Desensitized ID card number.
+        # The desensitized ID card number.
         self.cert_no = cert_no
-        # Authentication ID.
+        # The certification ID.
         self.certify_id = certify_id
-        # Extended information.
+        # The extended information.
         self.ext_info = ext_info
-        # Verification time for this authentication.
+        # The verification time of this authentication record.
         self.gmt_verify = gmt_verify
-        # Liveness detection scheme.
+        # The liveness detection scheme.
         self.model = model
-        # Unique identifier for the customer request.
+        # The unique identifier for the customer request.
         self.outer_order_no = outer_order_no
-        # Whether the authentication passed. Values:
+        # Specifies whether the authentication passed. Valid values:
         # - **T**: Passed.
-        # - **F**: Not passed.
+        # - **F**: Failed.
         self.passed = passed
-        # Product code.
+        # The product code.
         self.product_code = product_code
-        # Business scenario risk:
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The business scenario risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_biz_scenario = risk_biz_scenario
-        # Device risk:
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The device risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_device = risk_device
-        # DeviceToken risk:
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The DeviceToken risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_device_token = risk_device_token
-        # General risk:
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The generic risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_generic = risk_generic
-        # Large model mining risk:
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The large model mining risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_model_mining = risk_model_mining
-        # Whether it is root (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
+        # Specifies whether the device is rooted. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the identity tag risk type.
         self.root = root
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Whether it is a simulator (pass 1 if selected, otherwise do not pass; corresponds to device label risk type).
+        # Specifies whether the device is a simulator. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the device tag risk type.
         self.simulator = simulator
-        # System returned error code.
+        # The error code returned by the system.
         self.sub_code = sub_code
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Whether it is virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
+        # Specifies whether virtual video is used. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the behavior tag risk type.
         self.virtual_video = virtual_video
 
     def validate(self):
@@ -311,37 +311,37 @@ class DescribeVerifySearchPageListResponseBodyItemsExtInfo(DaraModel):
         screen_video_object_names: List[str] = None,
         voice_object_names: List[str] = None,
     ):
-        # Desensitized name.
+        # The desensitized name.
         self.cert_name = cert_name
-        # Facial bodyguard label.
+        # The Face Guard tags.
         self.device_risk = device_risk
-        # 是否是人脸攻击：
-        # - **T**：是
-        # - **F**：否
+        # Specifies whether a face attack is detected:
+        # - **T**: Yes.
+        # - **F**: No.
         self.face_attack = face_attack
-        # Face attack score, ranging from 0 to 1, with values closer to 1 indicating a higher likelihood of an attack.
+        # The face attack score. The value ranges from 0 to 1. A value closer to 1 indicates a higher likelihood of an attack.
         self.face_attack_score = face_attack_score
-        # Whether the face is occluded. T if occluded, otherwise F.
+        # Specifies whether the face is occluded. T indicates occlusion detected. F indicates no occlusion.
         self.face_occlusion = face_occlusion
-        # Face-to-ID card comparison score.
+        # The face-to-ID card comparison score.
         self.id_card_verify_score = id_card_verify_score
-        # Photo OSS bucket.
+        # The OSS bucket for photos.
         self.oss_bucket_name = oss_bucket_name
-        # OCR ID card face file name.
+        # The file name of the OCR ID card face image.
         self.oss_id_face_object_name = oss_id_face_object_name
-        # OCR ID card national emblem file name.
+        # The file name of the OCR ID card national emblem image.
         self.oss_id_national_emblem_object_name = oss_id_national_emblem_object_name
-        # Storage object name.
+        # The storage object name.
         self.oss_object_name = oss_object_name
-        # Liveness face quality score.
+        # The liveness face quality score.
         self.quality_score = quality_score
-        # Face comparison score.
+        # The face comparison score.
         self.verify_score = verify_score
-        # ASR text list.
+        # The list of ASR texts.
         self.asr_texts = asr_texts
-        # Screen recording file OSS name list.
+        # The list of screen recording file OSS object names.
         self.screen_video_object_names = screen_video_object_names
-        # Audio file OSS name list.
+        # The list of audio file OSS object names.
         self.voice_object_names = voice_object_names
 
     def validate(self):

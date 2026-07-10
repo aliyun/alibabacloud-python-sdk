@@ -11,9 +11,9 @@ class DescribeOssStatusResponseBody(DaraModel):
         data: main_models.DescribeOssStatusResponseBodyData = None,
         request_id: str = None,
     ):
-        # Returned data.
+        # The returned data.
         self.data = data
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +50,9 @@ class DescribeOssStatusResponseBodyData(DaraModel):
         bucket_name: str = None,
         user_status: str = None,
     ):
-        # The name of the OSS bucket for delivering authentication information.
+        # The name of the OSS bucket to which verification information is delivered.
         self.bucket_name = bucket_name
-        # User activation status, SUCCESS indicates activated.
+        # The activation status of the user. A value of SUCCESS indicates that the service is activated.
         self.user_status = user_status
 
     def validate(self):

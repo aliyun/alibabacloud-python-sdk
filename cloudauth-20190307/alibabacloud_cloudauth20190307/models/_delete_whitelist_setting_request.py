@@ -12,17 +12,19 @@ class DeleteWhitelistSettingRequest(DaraModel):
         service_code: str = None,
         source_ip: str = None,
     ):
-        # List of rule IDs to be deleted.
+        # The list of rule IDs to delete.
         # 
         # This parameter is required.
         self.ids = ids
-        # Specify the language of the user information to be deleted. Values: -**zh**: Chinese. -**en**: English.
+        # The language of the user information to delete. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # ServiceCode for the real-person cloud product, only takes the value: **antcloudauth**.
+        # The service code of the ID Verification product. Set the value to **antcloudauth**.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # Set the source IP address of the visitor. Supports IP addresses in CIDR and IPv4 formats. Example: 10.0.3.0/24.
+        # The source IP address of the visitor. CIDR format and IPv4 format are supported. Example: 10.0.3.0/24.
         self.source_ip = source_ip
 
     def validate(self):

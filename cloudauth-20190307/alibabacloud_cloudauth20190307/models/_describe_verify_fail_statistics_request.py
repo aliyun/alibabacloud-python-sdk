@@ -15,38 +15,38 @@ class DescribeVerifyFailStatisticsRequest(DaraModel):
         service_code: str = None,
         start_date: int = None,
     ):
-        # Age greater than 14 years old:
-        # - **T**: Greater than
-        # - **F**: Less than
+        # Specifies whether the age is greater than 14. Valid values:
+        # - **T**: greater than 14.
+        # - **F**: less than 14.
         self.age_gt = age_gt
-        # API code:
-        # - **INIT_SERVICE**: Server-side initialization failure
-        # - **INIT_DEVICE**: Client-side failure
-        # - **VERIFY_DEVICE**: Authentication failed
+        # The API code. Valid values:
+        # - **INIT_SERVICE**: server-side initialization failure.
+        # - **INIT_DEVICE**: client-side failure.
+        # - **VERIFY_DEVICE**: authentication not passed.
         # 
         # This parameter is required.
         self.api = api
-        # Device type.
+        # The device type. Valid values:
         # - ios
         # - android
-        # - websdk
+        # - websdk.
         self.device_type = device_type
-        # End time of the query.
+        # The end time of the query.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Product code.
+        # The product code.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # Service type:
-        # - **antcloudauth**: Financial-grade real-person authentication.
-        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
-        # - **cloudauth** (discontinued): Real-person authentication.
+        # The service type. Valid values:
+        # - **antcloudauth**: financial-grade ID Verification.
+        # - **cloudauthst** (discontinued): ID Verification Enhanced Edition.
+        # - **cloudauth** (discontinued): ID Verification.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # Start time of the query.
+        # The start time of the query.
         # 
         # This parameter is required.
         self.start_date = start_date

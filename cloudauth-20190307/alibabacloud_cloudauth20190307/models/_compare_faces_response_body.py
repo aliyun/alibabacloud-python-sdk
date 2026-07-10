@@ -14,15 +14,15 @@ class CompareFacesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # HTTP status code.
+        # The HTTP status code.
         self.code = code
-        # Result of the face comparison.
+        # The face comparison result.
         self.data = data
-        # Error code.
+        # The error code.
         self.message = message
-        # ID of the current request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the response was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -77,20 +77,20 @@ class CompareFacesResponseBodyData(DaraModel):
         confidence_thresholds: str = None,
         similarity_score: float = None,
     ):
-        # Confidence thresholds for face comparison. The returned content is a JSON Object, with the specific structure being `"key":"value"`.
+        # The confidence thresholds for face comparison. The returned content is a JSON object with the structure `"key":"value"`.
         # 
-        # - `key` represents the false acceptance rate, which is the probability of misidentifying someone else as the specified person.
+        # - `key` is the false acceptance rate (FAR), which is the probability of incorrectly identifying another person as the specified person.
         # - `value` is the corresponding threshold.
         # 
         # 
-        # > Regarding the confidence thresholds (confidenceThresholds) in the example:
-        # - `"0.0001": "90.07"` indicates that the threshold is 90.07 when the false acceptance rate is 0.01%.
-        # - `"0.001": "80.01"` indicates that the threshold is 80.01 when the false acceptance rate is 0.1%.
-        # - `"0.01": "70.02"` indicates that the threshold is 70.02 when the false acceptance rate is 1%.
+        # > About the confidence thresholds (confidenceThresholds) in the example:
+        # - `"0.0001": "90.07"` indicates that the corresponding threshold is 90.07 when the FAR is 0.01%.
+        # - `"0.001": "80.01"` indicates that the corresponding threshold is 80.01 when the FAR is 0.1%.
+        # - `"0.01": "70.02"` indicates that the corresponding threshold is 70.02 when the FAR is 1%.
         # 
-        # Confidence thresholds are dynamically provided based on different images and algorithms, so do not persist these thresholds.
+        # The confidence thresholds are dynamically generated based on different images and algorithms. Do not persist the confidence thresholds.
         self.confidence_thresholds = confidence_thresholds
-        # The degree of similarity between the faces in the two images. The value range is [0, 100], with higher values indicating greater similarity.
+        # The similarity score between the faces in the two images. Valid values: [0, 100]. A higher value indicates a greater similarity.
         self.similarity_score = similarity_score
 
     def validate(self):

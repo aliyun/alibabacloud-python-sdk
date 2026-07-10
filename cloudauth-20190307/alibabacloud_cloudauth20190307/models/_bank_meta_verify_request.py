@@ -16,42 +16,42 @@ class BankMetaVerifyRequest(DaraModel):
         user_name: str = None,
         verify_mode: str = None,
     ):
-        # Bank card number.
+        # The bank card number.
         # 
-        # - When `paramType` is `normal`, enter the plain text bank card number.
-        # - When `paramType` is `md5`, enter the part of the card number except the last 6 digits in plain text + the last 6 digits encrypted with MD5 (32 lowercase).
+        # - If paramType is set to normal, enter the bank card number in plaintext.
+        # - If paramType is set to md5, enter the card number excluding the last 6 digits in plaintext + the MD5 hash (32-bit lowercase) of the last 6 digits.
         self.bank_card = bank_card
-        # ID number.
+        # The ID card number.
         # 
-        # - When `ProductType` is `BANK_CARD_3_META`, this field is required.
-        # - When `paramType` is `normal`, enter the plain text ID number.
-        # - When `paramType` is `md5`, enter the first 6 digits of the ID number in plain text + the birth date encrypted with MD5 (32 lowercase MD5) + the last 4 digits of the ID number.
+        # - This parameter is required if ProductType is set to BANK_CARD_3_META.
+        # - If paramType is set to normal, enter the ID card number in plaintext.
+        # - If paramType is set to md5, enter the first 6 digits of the ID card number in plaintext + the MD5 hash (32-bit lowercase) of the date of birth + the last 4 digits of the ID card number.
         self.identify_num = identify_num
-        # Identity type.
+        # The identity document type.
         self.identity_type = identity_type
-        # Mobile phone number.
+        # The phone number.
         # 
-        # - When `ProductType` is `BANK_CARD_4_META`, this field is required.
-        # - When `paramType` is `normal`, enter the plain text mobile phone number.
-        # - When `paramType` is `md5`, enter the mobile phone number (32 lowercase MD5).
+        # - This parameter is required if ProductType is set to BANK_CARD_4_META.
+        # - If paramType is set to normal, enter the phone number in plaintext.
+        # - If paramType is set to md5, enter the MD5 hash (32-bit lowercase) of the phone number.
         self.mobile = mobile
-        # Parameter type:
+        # The parameter type. Valid values:
         # 
-        # - normal: Unencrypted.
-        # - md5: MD5 encrypted.
+        # - normal: not encrypted.
+        # - md5: MD5-encrypted.
         self.param_type = param_type
-        # Product type to call:
+        # The product type. Valid values:
         # 
-        # - BANK_CARD_2_META: Bank card number + name verification.
-        # - BANK_CARD_3_META: Bank card number + name + ID number verification.
-        # - BANK_CARD_4_META: Bank card number + name + ID number + mobile phone number verification.
+        # - BANK_CARD_2_META: bank card number + name verification.
+        # - BANK_CARD_3_META: bank card number + name + ID card number verification.
+        # - BANK_CARD_4_META: bank card number + name + ID card number + phone number verification.
         self.product_type = product_type
-        # Name.
+        # The name.
         # 
-        # - When `paramType` is `normal`, enter the plain text name.
-        # - When `paramType` is `md5`, encrypt the first character of the name with MD5 (32 lowercase MD5) + the rest of the name in plain text.
+        # - If paramType is set to normal, enter the name in plaintext.
+        # - If paramType is set to md5, enter the MD5 hash (32-bit lowercase) of the first character of the name + the remaining characters of the name in plaintext.
         self.user_name = user_name
-        # VERIFY_BANK_CARD: Bank card authentication mode. It indicates whether the provided bank card number matches the user\\"s real name, ID number, and mobile phone number.
+        # VERIFY_BANK_CARD: bank card verification mode. Specifies whether the provided bank card number matches the real name, ID card number, and phone number of the user.
         self.verify_mode = verify_mode
 
     def validate(self):

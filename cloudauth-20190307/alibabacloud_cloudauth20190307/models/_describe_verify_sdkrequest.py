@@ -9,7 +9,7 @@ class DescribeVerifySDKRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID for generating the SDK.
+        # The ID of the SDK generation task.
         # 
         # This parameter is required.
         self.task_id = task_id

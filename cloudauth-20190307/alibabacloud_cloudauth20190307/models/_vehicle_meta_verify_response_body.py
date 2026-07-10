@@ -13,13 +13,13 @@ class VehicleMetaVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.VehicleMetaVerifyResponseBodyResultObject = None,
     ):
-        # Response code, **200** indicates that the API response was successful.
+        # The return code. **200** indicates that the request was successful.
         self.code = code
-        # Response message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Returned result information.
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -67,11 +67,11 @@ class VehicleMetaVerifyResponseBodyResultObject(DaraModel):
         self,
         biz_code: str = None,
     ):
-        # Verification result.
+        # The verification result. Valid values:
         # 
-        # - 1: Consistent (billable)
-        # - 2: Inconsistent (billable)
-        # - 3: No record found (non-billable)
+        # - 1: Consistent (billable).
+        # - 2: Inconsistent (billable).
+        # - 3: No record found (not billable).
         self.biz_code = biz_code
 
     def validate(self):

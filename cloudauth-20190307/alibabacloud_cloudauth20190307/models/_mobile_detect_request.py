@@ -10,11 +10,11 @@ class MobileDetectRequest(DaraModel):
         mobiles: str = None,
         param_type: str = None,
     ):
-        # List of phone numbers.
+        # The list of phone numbers.
         self.mobiles = mobiles
-        # Encryption method:
-        # - normal: plaintext, no encryption
-        # - md5: MD5 encryption
+        # The encryption method. Valid values:
+        # - normal: plaintext without encryption
+        # - md5: MD5 encryption.
         self.param_type = param_type
 
     def validate(self):

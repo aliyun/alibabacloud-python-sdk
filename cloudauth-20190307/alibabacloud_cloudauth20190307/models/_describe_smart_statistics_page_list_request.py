@@ -14,25 +14,25 @@ class DescribeSmartStatisticsPageListRequest(DaraModel):
         service_code: str = None,
         start_date: str = None,
     ):
-        # Current page number.
+        # The current page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # End time, using UTC format, in the form of yyyy-MM-ddTHH:mm:ssZ.
+        # The end time in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # Number of items per page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Scene ID.
+        # The scene ID.
         # 
         # This parameter is required.
         self.scene_id = scene_id
-        # ServiceCode for the real person cloud product, only value: **cloudauthst**.
+        # The ServiceCode of the ID Verification product. The value can only be **cloudauthst**.
         self.service_code = service_code
-        # Start time, using UTC format, in the form of yyyy-MM-ddTHH:mm:ssZ.
+        # The start time in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         # 
         # This parameter is required.
         self.start_date = start_date

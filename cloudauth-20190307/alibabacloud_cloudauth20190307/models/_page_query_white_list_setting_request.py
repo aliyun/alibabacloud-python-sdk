@@ -17,27 +17,27 @@ class PageQueryWhiteListSettingRequest(DaraModel):
         valid_end_date: str = None,
         valid_start_date: str = None,
     ):
-        # ID number.
+        # The certificate number.
         self.cert_no = cert_no
-        # Unique identifier for real person authentication.
+        # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # Current page number, default is 1.
+        # The current page number. Default value: 1.
         self.current_page = current_page
-        # Number of items per page, default is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Authentication scene ID. This ID is automatically generated after creating an authentication scene in the console. For how to create an authentication scene, see Adding an Authentication Scene.
+        # The verification scenario ID. This ID is automatically generated after you create a verification scenario in the console. For more information about how to create a verification scenario, refer to Add a verification scenario.
         self.scene_id = scene_id
-        # ServiceCode of the real person cloud product, value: **antcloudauth**.
+        # The ServiceCode of the ID Verification cloud service. Value: **antcloudauth**.
         self.service_code = service_code
-        # Status:
+        # The status. Valid values:
         # 
-        # - DELETE: Deleted
-        # - VALID: Not deleted and within the validity period, valid
-        # - INVALID: Not deleted but outside the validity period, invalid
+        # - DELETE: Deleted.
+        # - VALID: Not deleted and within the validity period (valid).
+        # - INVALID: Not deleted but outside the validity period (invalid).
         self.status = status
-        # End date of validity (timestamp in milliseconds)
+        # The end date of the validity period (timestamp in milliseconds).
         self.valid_end_date = valid_end_date
-        # Start date of validity (timestamp in milliseconds)
+        # The start date of the validity period (timestamp in milliseconds).
         self.valid_start_date = valid_start_date
 
     def validate(self):

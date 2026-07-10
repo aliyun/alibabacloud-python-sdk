@@ -11,21 +11,20 @@ class Id2MetaStandardVerifyRequest(DaraModel):
         param_type: str = None,
         user_name: str = None,
     ):
-        # ID number:
+        # The ID card number.
         # 
-        # - When `paramType` is normal: enter the plain text of the ID number.
-        # - When `paramType` is md5:
-        # The first 6 digits (plain text) + date of birth (encrypted) + last 4 digits (plain text).
+        # - If ParamType is set to normal, enter the ID card number in plaintext.
+        # - If ParamType is set to md5, the format is: first 6 digits of the ID card number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID card number (plaintext).
         self.identify_num = identify_num
-        # Parameter type:
+        # The parameter type. Valid values:
         # 
-        # - normal: unencrypted.
-        # - md5: md5 encrypted.
+        # - normal: not encrypted.
+        # - md5: MD5-encrypted.
         self.param_type = param_type
-        # Name:
+        # The name.
         # 
-        # - When `paramType` is normal: enter the plain text of the name.
-        # - When `paramType` is md5: the first character of the name (encrypted) + the rest of the name (plain text).
+        # - If ParamType is set to normal, enter the name in plaintext.
+        # - If ParamType is set to md5, the format is: first character of the name (ciphertext) + remaining characters of the name (plaintext).
         self.user_name = user_name
 
     def validate(self):

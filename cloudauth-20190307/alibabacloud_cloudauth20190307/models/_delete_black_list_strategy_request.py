@@ -11,14 +11,14 @@ class DeleteBlackListStrategyRequest(DaraModel):
         product_name: str = None,
         region_id: str = None,
     ):
-        # Rule ID.
+        # The rule ID.
         self.id = id
-        # Product Name:
-        # - **id2meta**: ID card two-factor verification
-        # - **mobile3Meta**: Mobile phone number factor verification
-        # - **bankcardMeta**: Bank card factor verification
+        # The product name. Valid values:
+        # - **id2meta**: ID card two-element verification.
+        # - **mobile3Meta**: Mobile number element verification.
+        # - **bankcardMeta**: Bank card element verification.
         self.product_name = product_name
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
