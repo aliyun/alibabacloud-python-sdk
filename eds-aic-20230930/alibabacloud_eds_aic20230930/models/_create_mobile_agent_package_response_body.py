@@ -13,7 +13,7 @@ class CreateMobileAgentPackageResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # A list of package IDs.
+        # The list of resource plan IDs.
         self.mobile_agent_package_ids = mobile_agent_package_ids
         # The order ID.
         self.order_id = order_id

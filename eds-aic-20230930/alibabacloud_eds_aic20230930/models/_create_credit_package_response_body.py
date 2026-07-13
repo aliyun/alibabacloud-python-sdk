@@ -2,22 +2,26 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class CreateCreditPackageResponseBody(DaraModel):
     def __init__(
         self,
         credit_package_id: str = None,
+        credit_package_ids: List[str] = None,
         effective_time: str = None,
         expired_time: str = None,
         order_id: str = None,
         request_id: str = None,
     ):
-        # The credit package ID.
+        # The ID of the credit booster pack.
         self.credit_package_id = credit_package_id
-        # The time when the credit package takes effect.
+        self.credit_package_ids = credit_package_ids
+        # The effective period of the credit booster pack.
         self.effective_time = effective_time
-        # The time when the credit package expires.
+        # The time when the credit booster pack expires.
         self.expired_time = expired_time
         # The order ID.
         self.order_id = order_id
@@ -34,6 +38,9 @@ class CreateCreditPackageResponseBody(DaraModel):
             result = _map
         if self.credit_package_id is not None:
             result['CreditPackageId'] = self.credit_package_id
+
+        if self.credit_package_ids is not None:
+            result['CreditPackageIds'] = self.credit_package_ids
 
         if self.effective_time is not None:
             result['EffectiveTime'] = self.effective_time
@@ -53,6 +60,9 @@ class CreateCreditPackageResponseBody(DaraModel):
         m = m or dict()
         if m.get('CreditPackageId') is not None:
             self.credit_package_id = m.get('CreditPackageId')
+
+        if m.get('CreditPackageIds') is not None:
+            self.credit_package_ids = m.get('CreditPackageIds')
 
         if m.get('EffectiveTime') is not None:
             self.effective_time = m.get('EffectiveTime')

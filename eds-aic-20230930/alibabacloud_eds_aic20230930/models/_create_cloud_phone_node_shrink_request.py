@@ -15,6 +15,7 @@ class CreateCloudPhoneNodeShrinkRequest(DaraModel):
         bandwidth_package_id: str = None,
         bandwidth_package_type: str = None,
         biz_region_id: str = None,
+        channel_cookie: str = None,
         charge_type: str = None,
         count: str = None,
         display_config_shrink: str = None,
@@ -47,7 +48,7 @@ class CreateCloudPhoneNodeShrinkRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # The ID of the Shared Bandwidth instance.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
         # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
@@ -55,65 +56,64 @@ class CreateCloudPhoneNodeShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
-        # The billing method. Only the subscription billing method is supported.
+        self.channel_cookie = channel_cookie
+        # The billing type. Only subscription is supported.
         self.charge_type = charge_type
-        # The number of Cloud Phone matrices to purchase.
+        # The number of cloud phone matrices to purchase.
         self.count = count
         # The display settings.
         self.display_config_shrink = display_config_shrink
-        # The downstream bandwidth limit, in Mbit/s.
+        # The downstream bandwidth throttling. Unit: Mbit/s.
         self.down_bandwidth_limit = down_bandwidth_limit
         # The image ID.
         self.image_id = image_id
         # The instance type.
-        # 
         # > To purchase more instance types, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
         self.instance_type = instance_type
         self.is_single_img_disk = is_single_img_disk
         # The office network ID.
         self.network_id = network_id
-        # The network settings for the instance.
+        # The network mapping information of the instance.
         self.network_info_shrink = network_info_shrink
         # The network type of the instance.
         self.network_type = network_type
-        # The name of the Cloud Phone matrix.
+        # The name of the cloud phone matrix.
         self.node_name = node_name
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration. The unit is specified by the `PeriodUnit` parameter.
+        # The subscription duration. The unit is specified by PeriodUnit.
         # 
-        # - If `PeriodUnit` is set to **Year**, this parameter can only be set to 1.
-        # 
-        # - If `PeriodUnit` is set to **Month**, valid values are 1, 2, 3, and 6.
+        # - If PeriodUnit is set to **year**, the value can only be 1.
+        # - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
         self.period = period
         # The unit of the subscription duration.
         self.period_unit = period_unit
-        # The number of Cloud Phone instances to create in a single Cloud Phone matrix.
+        # The number of cloud phone instances to create in a single matrix.
         self.phone_count = phone_count
-        # The size of the independent internal storage, in GiB.
+        # The size of the independent device storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
         self.promotion_id = promotion_id
-        # The vertical resolution, in pixels.
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
-        # The horizontal resolution, in pixels.
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
-        # The size of the shared internal storage, in GiB.
+        # The size of the shared device storage. Unit: GiB.
         # 
-        # > The size must exceed 10 GiB per instance in the matrix.
+        # > The minimum value of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
         self.server_share_data_volume = server_share_data_volume
-        # The server type.
+        # The specifications of the cloud phone matrix.
         # 
         # This parameter is required.
         self.server_type = server_type
-        # The streaming mode for instances in the Cloud Phone matrix. Defaults to preemption mode.
+        # The streaming mode for instances in the cloud phone matrix. If this parameter is not specified, the default value is preemptive mode.
         self.stream_mode = stream_mode
         self.swap_size = swap_size
-        # The resource tags.
+        # The tags of the resource.
         self.tag = tag
-        # The upstream bandwidth limit, in Mbit/s.
+        # The upstream bandwidth throttling. Unit: Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit
-        # The template for instance creation. Set this parameter to `Random` to use a random template, or specify a template ID to use a specific template.
+        # Specifies whether to use a template during creation. Set this parameter to `Random` to use a random template from the template list. Alternatively, specify a template ID to use that template.
         self.use_template = use_template
-        # The VSwitch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -141,6 +141,9 @@ class CreateCloudPhoneNodeShrinkRequest(DaraModel):
 
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
@@ -243,6 +246,9 @@ class CreateCloudPhoneNodeShrinkRequest(DaraModel):
 
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')

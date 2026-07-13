@@ -16,6 +16,7 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         bandwidth_package_id: str = None,
         bandwidth_package_type: str = None,
         biz_region_id: str = None,
+        channel_cookie: str = None,
         charge_type: str = None,
         client_token: str = None,
         enable_ipv_6: bool = None,
@@ -40,72 +41,73 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
         tag: List[main_models.CreateAndroidInstanceGroupShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
-        # The number of instance groups to create. Valid values: 1 to 100. Default value: 1.
+        # The number of instance groups. Default value: 1. Maximum value: 100.
         self.amount = amount
         # Specifies whether to enable automatic payment. Default value: false.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for subscription resources. Default value: false.
+        # Specifies whether to enable auto-renewal. Default value: false.
         self.auto_renew = auto_renew
         self.bandwidth_package_id = bandwidth_package_id
         self.bandwidth_package_type = bandwidth_package_type
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions where Cloud Phone instances are available.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions where cloud phone instances can be purchased.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
-        # The billing method.
+        self.channel_cookie = channel_cookie
+        # The billing type.
         self.charge_type = charge_type
-        # A client-generated token to ensure request idempotence. This parameter prevents duplicate requests. The token can be up to 100 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent repeated submissions. The value cannot exceed 100 characters in length.
         self.client_token = client_token
         # > This parameter is not publicly available.
         self.enable_ipv_6 = enable_ipv_6
         # Specifies whether to enable GPU acceleration.
         self.gpu_acceleration = gpu_acceleration
-        # The image ID. You can call the [DescribeImageList](~~DescribeImageList~~) operation to query available images for Cloud Phone instances.
+        # The image ID. You can call [DescribeImageList](~~DescribeImageList~~) to query the list of cloud phone images.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The name of the instance group.
+        # The instance group name.
         # 
-        # > The name can be up to 30 characters in length. It must start with an uppercase or lowercase letter or a Chinese character, and cannot start with `http://` or `https://`. The name can contain only Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # > The instance group name cannot exceed 30 characters in length. It must start with an uppercase letter, lowercase letter, or Chinese character. It cannot start with `http://` or `https://`. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.instance_group_name = instance_group_name
-        # The instance group specification. You can call the [DescribeSpec](~~DescribeSpec~~) operation to query the specifications that are available for Cloud Phone instances.
+        # The instance group specification. You can call [DescribeSpec](~~DescribeSpec~~) to query the specifications available for cloud phone instances.
         # 
         # This parameter is required.
         self.instance_group_spec = instance_group_spec
         self.instance_version = instance_version
         # > This parameter is not publicly available.
         self.ipv_6bandwidth = ipv_6bandwidth
-        # The key pair ID. If you specify a valid key pair ID when you create the instance group, the system attaches the key pair to all successfully created instances. No separate API call is required to attach the key pair.
+        # The key pair ID. If you specify a valid key pair ID when creating an instance group, the key pair is bound to all instances that are successfully created, without the need to call the bindng operation again.
         # 
-        # > Attaching a key pair during a scale-out operation is not supported.
+        # > Binding a key pair during scale-out is not supported.
         self.key_pair_id = key_pair_id
         self.network_info_shrink = network_info_shrink
         self.network_type = network_type
-        # The number of instances in the instance group. The maximum value is 100.
+        # The number of instances in the instance group. Maximum value: 100.
         self.number_of_instances = number_of_instances
         # The network ID.
         # 
-        # - To create instances in a Shared Network: This parameter is optional. Specify the ID of a **Shared Network**. You can find the ID on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no Shared Network is available in the console, you can omit this parameter. The system automatically creates a Shared Network when you create the instance group.
+        # - To create a shared network instance: the network ID is optional. Specify the network ID of the **Shared Network** type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no shared network exists in the console, you can leave this parameter empty. A shared network is automatically created when the instance group is created.
         # 
-        # - To create instances in a VPC: This parameter is required. Specify the ID of a **VPC**. You can find the ID on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC is available in the console, you must create one first.
+        # - To create a VPC network instance: the network ID is required. Specify the network ID of the **VPC Network** type on the [Cloud Phone console > Network](https://wya.wuying.aliyun.com/network) page. If no VPC network exists in the console, create a network first.
         self.office_site_id = office_site_id
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration. The PeriodUnit parameter specifies the unit.
+        # The subscription duration of the resource. The unit is specified by PeriodUnit.
         self.period = period
         # The unit of the subscription duration.
         self.period_unit = period_unit
-        # The policy ID. You can call the [ListPolicyGroups](~~ListPolicyGroups~~) operation to query available policies.
+        # The policy ID. You can call [ListPolicyGroups](~~ListPolicyGroups~~) to query the list of policies.
         self.policy_group_id = policy_group_id
         self.promotion_id = promotion_id
         self.sale_mode = sale_mode
         self.stream_mode = stream_mode
-        # The resource tags.
+        # The tags of the resource.
         self.tag = tag
-        # The vSwitch ID. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query available vSwitches.
+        # The vSwitch ID. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) to query the list of vSwitches.
         # 
-        # - If you create instances in a Shared Network, omit this parameter.
+        # - To create a shared network instance: leave this parameter empty.
         # 
-        # - If you create instances in a VPC, this parameter is required. The system creates the instances in the specified vSwitch.
+        # - To create a VPC network instance: the vSwitch ID is required. The specified vSwitch is used to create the instance.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -136,6 +138,9 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
 
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
@@ -229,6 +234,9 @@ class CreateAndroidInstanceGroupShrinkRequest(DaraModel):
 
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')

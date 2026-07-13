@@ -939,6 +939,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageType'] = request.bandwidth_package_type
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.client_token):
@@ -1027,6 +1029,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageType'] = request.bandwidth_package_type
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.client_token):
@@ -1243,6 +1247,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageType'] = request.bandwidth_package_type
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.count):
@@ -1341,6 +1347,8 @@ class Client(OpenApiClient):
             query['BandwidthPackageType'] = request.bandwidth_package_type
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.count):
@@ -1439,8 +1447,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.credit_amount):
             query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.package_amount):
+            query['PackageAmount'] = request.package_amount
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -1475,8 +1487,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.credit_amount):
             query['CreditAmount'] = request.credit_amount
+        if not DaraCore.is_null(request.package_amount):
+            query['PackageAmount'] = request.package_amount
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -1785,6 +1801,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.credit_amount):
             query['CreditAmount'] = request.credit_amount
         if not DaraCore.is_null(request.credit_config):
@@ -1839,6 +1857,8 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.credit_amount):
             query['CreditAmount'] = request.credit_amount
         if not DaraCore.is_null(request.credit_config):
@@ -8347,8 +8367,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.additional_prompt):
             query['AdditionalPrompt'] = request.additional_prompt
+        if not DaraCore.is_null(request.clarification_answers):
+            query['ClarificationAnswers'] = request.clarification_answers
         if not DaraCore.is_null(request.task_ids):
             query['TaskIds'] = request.task_ids
+        if not DaraCore.is_null(request.tool_call_id):
+            query['ToolCallId'] = request.tool_call_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8377,8 +8401,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.additional_prompt):
             query['AdditionalPrompt'] = request.additional_prompt
+        if not DaraCore.is_null(request.clarification_answers):
+            query['ClarificationAnswers'] = request.clarification_answers
         if not DaraCore.is_null(request.task_ids):
             query['TaskIds'] = request.task_ids
+        if not DaraCore.is_null(request.tool_call_id):
+            query['ToolCallId'] = request.tool_call_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -11,6 +11,7 @@ class CreateMobileAgentPackageRequest(DaraModel):
         auto_pay: bool = None,
         auto_renew: bool = None,
         biz_region_id: str = None,
+        channel_cookie: str = None,
         credit_amount: str = None,
         credit_config: str = None,
         image_id: str = None,
@@ -22,46 +23,48 @@ class CreateMobileAgentPackageRequest(DaraModel):
         period_unit: str = None,
         promotion_id: str = None,
     ):
-        # The number of packages.
+        # The number of resource plans.
         self.amount = amount
-        # Specifies whether to enable auto-payment. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: Enables auto-payment. You must ensure that your account balance is sufficient.
+        # - **true**: enables automatic payment. Make sure that your account balance is sufficient.
+        # - **false** (default): generates an order without charging the account.
         # 
-        # - **false** (default): An unpaid order is generated. Your account is not charged.
         # 
-        # > If your account balance is insufficient, you can set this parameter to `false` to generate an unpaid order. Then, you can log in to the Wuying Cloud Phone management console to pay for the order.
+        # 
+        # 
+        # > If your payment method has an insufficient balance, set this parameter to false. An unpaid order is generated. You can log on to the CloudPhone console to complete the payment.
+        # >
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # - **true**: Enables auto-renewal.
-        # 
-        # - **false** (default): Disables auto-renewal.
+        # * **true**: enables auto-renewal.
+        # * **false** (default): disables auto-renewal.
         self.auto_renew = auto_renew
-        # The region where the instance is located. Currently, only `cn-hangzhou` is supported.
+        # The region in which the instance resides. Currently, only cn-hangzhou is supported.
         self.biz_region_id = biz_region_id
-        # The credit amount.
+        self.channel_cookie = channel_cookie
+        # The credit quota.
         self.credit_amount = credit_amount
         # The credit limit configuration.
         self.credit_config = credit_config
         self.image_id = image_id
-        # The instance name.
+        # The name of the node instance.
         self.instance_name = instance_name
-        # The package specification.
+        # The resource plan specification.
         self.mobile_agent_package_spec = mobile_agent_package_spec
         self.package_spec_id = package_spec_id
-        # The callback URL to which the user is redirected after a successful payment.
+        # The redirect URL after a successful payment.
         self.paid_callback_url = paid_callback_url
-        # The subscription period. The unit of the period is specified by the `PeriodUnit` parameter.
+        # The duration for which you want to purchase the resource. The unit is specified by `PeriodUnit`.
         self.period = period
-        # The unit of the subscription period.
+        # The unit of the duration for which you want to purchase the resource.
+        # 
         # Valid values:
-        # 
-        # - **Month**
-        # 
-        # - **Year**
+        # - **Month**: month.
+        # - **Year**: year.
         self.period_unit = period_unit
-        # The promotion ID.
+        # The ID of the promotional campaign.
         self.promotion_id = promotion_id
 
     def validate(self):
@@ -83,6 +86,9 @@ class CreateMobileAgentPackageRequest(DaraModel):
 
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
 
         if self.credit_amount is not None:
             result['CreditAmount'] = self.credit_amount
@@ -129,6 +135,9 @@ class CreateMobileAgentPackageRequest(DaraModel):
 
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
 
         if m.get('CreditAmount') is not None:
             self.credit_amount = m.get('CreditAmount')

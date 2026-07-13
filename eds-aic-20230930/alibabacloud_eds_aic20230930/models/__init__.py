@@ -472,6 +472,7 @@ from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyDat
 from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyData
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
+from ._resume_agent_task_request import ResumeAgentTaskRequestClarificationAnswers
 from ._resume_agent_task_response_body import ResumeAgentTaskResponseBodyTasks
 from ._run_agent_task_request import RunAgentTaskRequestTargets
 from ._run_agent_task_response_body import RunAgentTaskResponseBodyTasks
@@ -955,6 +956,7 @@ __all__ = [
     RefreshAuthTokensResponseBodyData,
     ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
     ResetAndroidInstancesInGroupResponseBodyTasks,
+    ResumeAgentTaskRequestClarificationAnswers,
     ResumeAgentTaskResponseBodyTasks,
     RunAgentTaskRequestTargets,
     RunAgentTaskResponseBodyTasks,

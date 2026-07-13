@@ -17,17 +17,17 @@ class DescribeCreditPackageResponseBody(DaraModel):
         total_count: int = None,
         total_exhausted_credit: str = None,
     ):
-        # An array of credit package details.
+        # The credit booster package information.
         self.credits_package_infos = credits_package_infos
-        # Indicates whether this is your first purchase.
+        # Indicates whether this is the first purchase.
         self.is_first_purchase = is_first_purchase
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of available credits.
         self.total_available_credits = total_available_credits
         # The total number of entries.
         self.total_count = total_count
-        # The total number of exhausted credits.
+        # The total number of consumed credits.
         self.total_exhausted_credit = total_exhausted_credit
 
     def validate(self):
@@ -92,6 +92,7 @@ class DescribeCreditPackageResponseBodyCreditsPackageInfos(DaraModel):
     def __init__(
         self,
         available_credits: str = None,
+        create_time: str = None,
         credit_package_id: str = None,
         credit_package_status: str = None,
         effective_time: str = None,
@@ -99,19 +100,20 @@ class DescribeCreditPackageResponseBodyCreditsPackageInfos(DaraModel):
         expired_time: str = None,
         total_credits: str = None,
     ):
-        # The number of available credits in the credit package.
+        # The number of available credits in the current credit booster package.
         self.available_credits = available_credits
-        # The ID of the credit package.
+        self.create_time = create_time
+        # The ID of the credit booster package.
         self.credit_package_id = credit_package_id
-        # The status of the credit package.
+        # The status of the credit booster package.
         self.credit_package_status = credit_package_status
-        # The time when the credit package becomes effective.
+        # The effective period of the credit booster package.
         self.effective_time = effective_time
-        # The number of exhausted credits in the credit package.
+        # The number of consumed credits in the current credit booster package.
         self.exhausted_credits = exhausted_credits
-        # The time when the credit package expires.
+        # The expiration time of the credit booster package.
         self.expired_time = expired_time
-        # The total number of credits in the credit package.
+        # The total number of credits in the current credit booster package.
         self.total_credits = total_credits
 
     def validate(self):
@@ -124,6 +126,9 @@ class DescribeCreditPackageResponseBodyCreditsPackageInfos(DaraModel):
             result = _map
         if self.available_credits is not None:
             result['AvailableCredits'] = self.available_credits
+
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
 
         if self.credit_package_id is not None:
             result['CreditPackageId'] = self.credit_package_id
@@ -149,6 +154,9 @@ class DescribeCreditPackageResponseBodyCreditsPackageInfos(DaraModel):
         m = m or dict()
         if m.get('AvailableCredits') is not None:
             self.available_credits = m.get('AvailableCredits')
+
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
 
         if m.get('CreditPackageId') is not None:
             self.credit_package_id = m.get('CreditPackageId')

@@ -1,3 +1,18 @@
+2026-07-13 Version: 4.31.2
+- Update API CreateAndroidInstanceGroup: add request parameters ChannelCookie.
+- Update API CreateCloudPhoneNode: add request parameters ChannelCookie.
+- Update API CreateCreditPackage: add request parameters ChannelCookie.
+- Update API CreateCreditPackage: add request parameters PackageAmount.
+- Update API CreateCreditPackage: add response parameters Body.CreditPackageIds.
+- Update API CreateMobileAgentPackage: add request parameters ChannelCookie.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.DigestSource.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.Reason.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.TaskDigest.
+- Update API DescribeCreditPackage: add response parameters Body.CreditsPackageInfos.$.CreateTime.
+- Update API ResumeAgentTask: add request parameters ClarificationAnswers.
+- Update API ResumeAgentTask: add request parameters ToolCallId.
+
+
 2026-07-09 Version: 4.31.1
 - Update API ListPolicyGroups: add response parameters Body.PolicyGroupModel.$.AccessPolicies.
 
