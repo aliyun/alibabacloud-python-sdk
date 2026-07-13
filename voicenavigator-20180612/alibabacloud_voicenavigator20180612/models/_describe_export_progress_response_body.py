@@ -11,11 +11,11 @@ class DescribeExportProgressResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The URL of the file.
+        # The file URL.
         self.file_http_url = file_http_url
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the export task.
+        # The status.
         self.status = status
 
     def validate(self):

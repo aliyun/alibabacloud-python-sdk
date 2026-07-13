@@ -11,7 +11,7 @@ class DescribeRecordingRequest(DaraModel):
         instance_id: str = None,
         need_voice_slice_recording: bool = None,
     ):
-        # The conversation ID.
+        # The session ID.
         # 
         # This parameter is required.
         self.conversation_id = conversation_id

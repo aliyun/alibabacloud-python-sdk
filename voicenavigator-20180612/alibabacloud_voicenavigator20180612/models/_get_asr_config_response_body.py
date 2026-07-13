@@ -93,22 +93,22 @@ class GetAsrConfigResponseBodyData(DaraModel):
         engine_xufei: str = None,
         nls_service_type: str = None,
     ):
-        # The application key.
+        # The engine.
         self.app_key = app_key
-        # The acoustic model ID.
+        # The ASR acoustic model ID.
         self.asr_acoustic_model_id = asr_acoustic_model_id
-        # The ASR class vocabulary ID.
+        # The ASR hotword ID.
         self.asr_class_vocabulary_id = asr_class_vocabulary_id
-        # The customization ID.
+        # The ASR dataset ID.
         self.asr_customization_id = asr_customization_id
         self.asr_overrides = asr_overrides
-        # The vocabulary ID. You can view the ID on the [ASR Vocabulary Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+        # The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
         self.asr_vocabulary_id = asr_vocabulary_id
         # The speech engine.
         self.engine = engine
-        # Parameters for the iFLYTEK engine.
+        # The iFLYTEK engine parameters.
         self.engine_xufei = engine_xufei
-        # The NLS service type.
+        # NluServiceType
         self.nls_service_type = nls_service_type
 
     def validate(self):

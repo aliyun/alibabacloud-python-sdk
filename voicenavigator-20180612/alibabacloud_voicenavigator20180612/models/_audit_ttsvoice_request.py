@@ -19,21 +19,26 @@ class AuditTTSVoiceRequest(DaraModel):
         voice: str = None,
         volume: str = None,
     ):
+        # The AccessKey ID of the namespace.
         self.access_key = access_key
+        # The AppKey of the third-party voice configuration.
         self.app_key = app_key
+        # The TTS engine.
         self.engine = engine
+        # The extended parameters.
         self.ext_params = ext_params
-        # The instance ID of the navigation instance.
+        # The navigation instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.pitch_rate = pitch_rate
+        # The AccessKey secret.
         self.secret_key = secret_key
         # The speech rate.
         # 
         # This parameter is required.
         self.speech_rate = speech_rate
-        # The text to preview.
+        # The preview text.
         # 
         # This parameter is required.
         self.text = text

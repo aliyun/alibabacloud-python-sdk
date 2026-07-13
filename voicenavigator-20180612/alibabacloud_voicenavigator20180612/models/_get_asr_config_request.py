@@ -10,9 +10,13 @@ class GetAsrConfigRequest(DaraModel):
         config_level: int = None,
         entry_id: str = None,
     ):
-        # The configuration level. Valid values: `0` (system), `1` (tenant), and `2` (instance).
+        # The policy level. Valid values:
+        # 
+        # - 0: system
+        # - 1: tenant
+        # - 2: instance
         self.config_level = config_level
-        # The ID of the entry at the level specified by `ConfigLevel`.
+        # The entity ID corresponding to config_level.
         self.entry_id = entry_id
 
     def validate(self):

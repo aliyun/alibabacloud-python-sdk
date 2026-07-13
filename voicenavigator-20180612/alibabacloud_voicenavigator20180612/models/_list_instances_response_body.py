@@ -16,15 +16,15 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of instances.
+        # The array of instances.
         self.instances = instances
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -96,35 +96,36 @@ class ListInstancesResponseBodyInstances(DaraModel):
         union_instance_id: str = None,
         union_source: str = None,
     ):
-        # A list of applicable operations.
+        # The list of applicable operations for the instance.
         self.applicable_operations = applicable_operations
-        # The maximum number of concurrent calls.
+        # The concurrency.
         self.concurrency = concurrency
-        # The time when the instance was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The creation time.
         self.create_time = create_time
-        # The description of the instance.
+        # The description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the instance was last modified. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The modification time.
         self.modify_time = modify_time
-        # The user who last modified the instance.
+        # The operator who performed the operation.
         self.modify_user_name = modify_user_name
-        # The name of the instance.
+        # The name.
         self.name = name
-        # The parameters of the NLU service in the JSON format.
+        # The large language model service parameters in JSON format.
         self.nlu_service_params_json = nlu_service_params_json
         # The list of inbound numbers.
         self.numbers = numbers
-        # The status of the instance.
+        # The instance status.
         self.status = status
-        # The instance ID from the source system.
+        # The instance ID.
         # 
-        # > If UnionSource is CCC, this parameter indicates the instance ID of the Cloud Communication Center instance.
+        # 
+        # > When UnionSource is set to CCC, UnionInstanceId is set to the instance ID of Cloud Call Center.
         self.union_instance_id = union_instance_id
-        # The source of the instance.
+        # The source.
         # 
-        # - `CCC`: Cloud Communication Center
+        # - CCC: Cloud Call Center.
         self.union_source = union_source
 
     def validate(self):

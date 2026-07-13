@@ -23,28 +23,28 @@ class DescribeInstanceResponseBody(DaraModel):
         union_instance_id: str = None,
         union_source: str = None,
     ):
-        # The capability type of the instance.<br>
-        # DEFAULT: Full capabilities.<br>
-        # VOICE_ONLY: Voice-only capabilities, which do not include conversation intervention.<br><br>
+        # The instance ability type.<br>
+        # DEFAULT: full abilities.<br>
+        # VOICE_ONLY: only voice abilities, without dialog intervention.
         self.ability_type = ability_type
-        # Applicable operations.
+        # The list of applicable operations.
         self.applicable_operations = applicable_operations
-        # The concurrency of the instance.
+        # The instance concurrency.
         self.concurrency = concurrency
-        # The description of the instance.
+        # The description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The last modification time of the instance.
+        # The update time.
         self.modify_time = modify_time
-        # The user who last modified the instance.
+        # The user who last updated the instance.
         self.modify_user_name = modify_user_name
         # The instance name.
         self.name = name
         self.nlu_service_params_json = nlu_service_params_json
         # The request ID.
         self.request_id = request_id
-        # The status of the instance.
+        # The status.
         self.status = status
         self.union_instance_id = union_instance_id
         self.union_source = union_source

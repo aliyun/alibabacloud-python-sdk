@@ -1751,6 +1751,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExportConversationDetailsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ab_test_id):
+            query['AbTestId'] = request.ab_test_id
         if not DaraCore.is_null(request.begin_time_left_range):
             query['BeginTimeLeftRange'] = request.begin_time_left_range
         if not DaraCore.is_null(request.begin_time_right_range):
@@ -1795,6 +1797,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExportConversationDetailsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ab_test_id):
+            query['AbTestId'] = request.ab_test_id
         if not DaraCore.is_null(request.begin_time_left_range):
             query['BeginTimeLeftRange'] = request.begin_time_left_range
         if not DaraCore.is_null(request.begin_time_right_range):

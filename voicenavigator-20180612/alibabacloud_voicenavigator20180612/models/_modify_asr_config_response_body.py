@@ -17,7 +17,7 @@ class ModifyAsrConfigResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The result of the modification.
+        # The modification result.
         self.data = data
         # The error message.
         self.error_msg = error_msg

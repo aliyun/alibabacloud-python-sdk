@@ -12,7 +12,7 @@ class ExportConversationDetailsResponseBody(DaraModel):
     ):
         # The ID of the asynchronous export task.
         self.export_task_id = export_task_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,11 +10,11 @@ class ListDownloadTasksRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number of the results to return.
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size

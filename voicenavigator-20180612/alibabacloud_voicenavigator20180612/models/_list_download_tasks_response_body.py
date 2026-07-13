@@ -90,13 +90,13 @@ class ListDownloadTasksResponseBodyDownloadTasks(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # A list of download tasks.
+        # The list of download tasks.
         self.list = list
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The page size.
         self.page_size = page_size
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -154,15 +154,15 @@ class ListDownloadTasksResponseBodyDownloadTasksList(DaraModel):
         task_id: str = None,
         title: str = None,
     ):
-        # A list of download task files.
+        # The list of download task files.
         self.download_task_files = download_task_files
         # The expiration time.
         self.expire_time = expire_time
-        # The status of the task.
+        # The status.
         self.status = status
         # The task ID.
         self.task_id = task_id
-        # The title of the task.
+        # The title.
         self.title = title
 
     def validate(self):
@@ -227,11 +227,11 @@ class ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles(DaraModel)
     ):
         # The file ID.
         self.file_id = file_id
-        # The progress of the file download.
+        # The completion progress of the download task.
         self.progress = progress
-        # The status of the file.
+        # The status.
         self.status = status
-        # The title of the file.
+        # The title.
         self.title = title
 
     def validate(self):

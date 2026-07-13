@@ -14,7 +14,7 @@ class CreateDownloadUrlRequest(DaraModel):
         # 
         # This parameter is required.
         self.download_task_id = download_task_id
-        # The file ID. Call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to obtain it.
+        # The ID of the file. You can call the [ListFiles](https://help.aliyun.com/document_detail/173942.html) operation to query the file ID.
         # 
         # This parameter is required.
         self.file_id = file_id

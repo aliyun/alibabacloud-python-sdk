@@ -12,7 +12,7 @@ class EnableInstanceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The status of the operation.
+        # The result status.
         self.status = status
 
     def validate(self):

@@ -1,3 +1,9 @@
+2026-07-13 Version: 2.0.3
+- Update API ExportConversationDetails: add request parameters AbTestId.
+- Update API ListConversations: add request parameters AbTestId.
+- Update API ListConversations: add response parameters Body.Conversations.$.AbTestName.
+
+
 2026-06-26 Version: 2.0.2
 - Update API AuditTTSVoice: add request parameters ExtParams.
 - Update API DescribeTTSConfig: add response parameters Body.ExtParams.

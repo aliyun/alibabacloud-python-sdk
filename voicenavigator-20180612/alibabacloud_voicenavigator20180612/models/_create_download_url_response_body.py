@@ -20,7 +20,7 @@ class CreateDownloadUrlResponseBody(DaraModel):
         self.file_http_url = file_http_url
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
