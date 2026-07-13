@@ -1,3 +1,42 @@
+2026-07-13 Version: 1.3.4
+- Update API CreateQueue: add request parameters EnableSSE.
+- Update API CreateQueue: add request parameters KmsKeyId.
+- Update API CreateQueue: add request parameters SseAlgorithm.
+- Update API CreateQueue: add request parameters SseType.
+- Update API CreateTopic: add request parameters EnableSSE.
+- Update API CreateTopic: add request parameters KmsKeyId.
+- Update API CreateTopic: add request parameters SseAlgorithm.
+- Update API CreateTopic: add request parameters SseType.
+- Update API GetQueueAttributes: add response parameters Body.Data.EnableSSE.
+- Update API GetQueueAttributes: add response parameters Body.Data.EncryptionEnabled.
+- Update API GetQueueAttributes: add response parameters Body.Data.KmsKeyId.
+- Update API GetQueueAttributes: add response parameters Body.Data.SseAlgorithm.
+- Update API GetQueueAttributes: add response parameters Body.Data.SseType.
+- Update API GetTopicAttributes: add response parameters Body.Data.EnableSSE.
+- Update API GetTopicAttributes: add response parameters Body.Data.EncryptionEnabled.
+- Update API GetTopicAttributes: add response parameters Body.Data.KmsKeyId.
+- Update API GetTopicAttributes: add response parameters Body.Data.SseAlgorithm.
+- Update API GetTopicAttributes: add response parameters Body.Data.SseType.
+- Update API ListQueue: add response parameters Body.Data.PageData.$.EnableSSE.
+- Update API ListQueue: add response parameters Body.Data.PageData.$.EncryptionEnabled.
+- Update API ListQueue: add response parameters Body.Data.PageData.$.KmsKeyId.
+- Update API ListQueue: add response parameters Body.Data.PageData.$.SseAlgorithm.
+- Update API ListQueue: add response parameters Body.Data.PageData.$.SseType.
+- Update API ListTopic: add response parameters Body.Data.PageData.$.EnableSSE.
+- Update API ListTopic: add response parameters Body.Data.PageData.$.EncryptionEnabled.
+- Update API ListTopic: add response parameters Body.Data.PageData.$.KmsKeyId.
+- Update API ListTopic: add response parameters Body.Data.PageData.$.SseAlgorithm.
+- Update API ListTopic: add response parameters Body.Data.PageData.$.SseType.
+- Update API SetQueueAttributes: add request parameters EnableSSE.
+- Update API SetQueueAttributes: add request parameters KmsKeyId.
+- Update API SetQueueAttributes: add request parameters SseAlgorithm.
+- Update API SetQueueAttributes: add request parameters SseType.
+- Update API SetTopicAttributes: add request parameters EnableSSE.
+- Update API SetTopicAttributes: add request parameters KmsKeyId.
+- Update API SetTopicAttributes: add request parameters SseAlgorithm.
+- Update API SetTopicAttributes: add request parameters SseType.
+
+
 2025-11-05 Version: 1.3.3
 - Update API GetTopicAttributes: add response parameters Body.Data.TopicInnerUrl.
 - Update API GetTopicAttributes: add response parameters Body.Data.TopicUrl.
