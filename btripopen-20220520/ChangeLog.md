@@ -1,3 +1,7 @@
+2026-07-13 Version: 5.2.1
+- Update API VatInvoiceScanQuery: add response parameters Body.module.items.$.changed.
+
+
 2026-07-10 Version: 5.2.0
 - Support API AddProjectManager.
 - Support API BatchQueryDepartment.

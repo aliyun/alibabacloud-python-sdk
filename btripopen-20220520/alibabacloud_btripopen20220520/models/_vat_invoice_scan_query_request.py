@@ -13,11 +13,19 @@ class VatInvoiceScanQueryRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The billing date.
+        # 
         # This parameter is required.
         self.bill_date = bill_date
+        # The bill ID.
+        # > Deprecated
         self.bill_id = bill_id
+        # The invoice subtask ID.
+        # > Deprecated
         self.invoice_sub_task_id = invoice_sub_task_id
+        # The page number, starting from 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
