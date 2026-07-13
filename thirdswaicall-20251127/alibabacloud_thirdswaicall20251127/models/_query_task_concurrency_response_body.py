@@ -22,7 +22,6 @@ class QueryTaskConcurrencyResponseBody(DaraModel):
         self.request_id = request_id
         self.success = success
         self.timestamp = timestamp
-        # Trace ID。
         self.trace_id = trace_id
 
     def validate(self):

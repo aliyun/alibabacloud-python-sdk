@@ -117,6 +117,7 @@ class ReadOutboundTaskCallListResponseBody(DaraModel):
 class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
     def __init__(
         self,
+        billing_duration: int = None,
         call_end_time: str = None,
         call_id: str = None,
         call_start_time: str = None,
@@ -136,6 +137,7 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         label_tags: List[str] = None,
         record_detail_ready: bool = None,
         record_url: str = None,
+        remark: str = None,
         retry_count: int = None,
         scene_id: str = None,
         status: str = None,
@@ -145,6 +147,7 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         tts_voice_desc: str = None,
         user_id: str = None,
     ):
+        self.billing_duration = billing_duration
         self.call_end_time = call_end_time
         self.call_id = call_id
         self.call_start_time = call_start_time
@@ -164,6 +167,7 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         self.label_tags = label_tags
         self.record_detail_ready = record_detail_ready
         self.record_url = record_url
+        self.remark = remark
         self.retry_count = retry_count
         self.scene_id = scene_id
         self.status = status
@@ -184,6 +188,9 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.billing_duration is not None:
+            result['BillingDuration'] = self.billing_duration
+
         if self.call_end_time is not None:
             result['CallEndTime'] = self.call_end_time
 
@@ -243,6 +250,9 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         if self.record_url is not None:
             result['RecordUrl'] = self.record_url
 
+        if self.remark is not None:
+            result['Remark'] = self.remark
+
         if self.retry_count is not None:
             result['RetryCount'] = self.retry_count
 
@@ -271,6 +281,9 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BillingDuration') is not None:
+            self.billing_duration = m.get('BillingDuration')
+
         if m.get('CallEndTime') is not None:
             self.call_end_time = m.get('CallEndTime')
 
@@ -330,6 +343,9 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
 
         if m.get('RecordUrl') is not None:
             self.record_url = m.get('RecordUrl')
+
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
 
         if m.get('RetryCount') is not None:
             self.retry_count = m.get('RetryCount')
