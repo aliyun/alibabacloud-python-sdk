@@ -1,0 +1,277 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._check_rules_request import CheckRulesRequest
+from ._check_rules_response_body import CheckRulesResponseBody
+from ._check_rules_response import CheckRulesResponse
+from ._close_bdrc_service_response_body import CloseBdrcServiceResponseBody
+from ._close_bdrc_service_response import CloseBdrcServiceResponse
+from ._create_protection_policy_request import CreateProtectionPolicyRequest
+from ._create_protection_policy_shrink_request import CreateProtectionPolicyShrinkRequest
+from ._create_protection_policy_response_body import CreateProtectionPolicyResponseBody
+from ._create_protection_policy_response import CreateProtectionPolicyResponse
+from ._create_resource_category_request import CreateResourceCategoryRequest
+from ._create_resource_category_response_body import CreateResourceCategoryResponseBody
+from ._create_resource_category_response import CreateResourceCategoryResponse
+from ._delete_protection_policy_request import DeleteProtectionPolicyRequest
+from ._delete_protection_policy_response_body import DeleteProtectionPolicyResponseBody
+from ._delete_protection_policy_response import DeleteProtectionPolicyResponse
+from ._delete_resource_category_request import DeleteResourceCategoryRequest
+from ._delete_resource_category_response_body import DeleteResourceCategoryResponseBody
+from ._delete_resource_category_response import DeleteResourceCategoryResponse
+from ._describe_check_details_request import DescribeCheckDetailsRequest
+from ._describe_check_details_response_body import DescribeCheckDetailsResponseBody
+from ._describe_check_details_response import DescribeCheckDetailsResponse
+from ._describe_product_data_redundancy_type_stat_request import DescribeProductDataRedundancyTypeStatRequest
+from ._describe_product_data_redundancy_type_stat_shrink_request import DescribeProductDataRedundancyTypeStatShrinkRequest
+from ._describe_product_data_redundancy_type_stat_response_body import DescribeProductDataRedundancyTypeStatResponseBody
+from ._describe_product_data_redundancy_type_stat_response import DescribeProductDataRedundancyTypeStatResponse
+from ._describe_products_request import DescribeProductsRequest
+from ._describe_products_shrink_request import DescribeProductsShrinkRequest
+from ._describe_products_response_body import DescribeProductsResponseBody
+from ._describe_products_response import DescribeProductsResponse
+from ._describe_resources_request import DescribeResourcesRequest
+from ._describe_resources_shrink_request import DescribeResourcesShrinkRequest
+from ._describe_resources_response_body import DescribeResourcesResponseBody
+from ._describe_resources_response import DescribeResourcesResponse
+from ._describe_rules_request import DescribeRulesRequest
+from ._describe_rules_shrink_request import DescribeRulesShrinkRequest
+from ._describe_rules_response_body import DescribeRulesResponseBody
+from ._describe_rules_response import DescribeRulesResponse
+from ._describe_task_response_body import DescribeTaskResponseBody
+from ._describe_task_response import DescribeTaskResponse
+from ._describe_tasks_request import DescribeTasksRequest
+from ._describe_tasks_response_body import DescribeTasksResponseBody
+from ._describe_tasks_response import DescribeTasksResponse
+from ._describe_top_risky_resources_request import DescribeTopRiskyResourcesRequest
+from ._describe_top_risky_resources_shrink_request import DescribeTopRiskyResourcesShrinkRequest
+from ._describe_top_risky_resources_response_body import DescribeTopRiskyResourcesResponseBody
+from ._describe_top_risky_resources_response import DescribeTopRiskyResourcesResponse
+from ._disable_check_product_request import DisableCheckProductRequest
+from ._disable_check_product_response_body import DisableCheckProductResponseBody
+from ._disable_check_product_response import DisableCheckProductResponse
+from ._disable_check_resource_request import DisableCheckResourceRequest
+from ._disable_check_resource_response_body import DisableCheckResourceResponseBody
+from ._disable_check_resource_response import DisableCheckResourceResponse
+from ._enable_check_product_request import EnableCheckProductRequest
+from ._enable_check_product_response_body import EnableCheckProductResponseBody
+from ._enable_check_product_response import EnableCheckProductResponse
+from ._enable_check_resource_request import EnableCheckResourceRequest
+from ._enable_check_resource_response_body import EnableCheckResourceResponseBody
+from ._enable_check_resource_response import EnableCheckResourceResponse
+from ._get_bdrc_service_response_body import GetBdrcServiceResponseBody
+from ._get_bdrc_service_response import GetBdrcServiceResponse
+from ._get_message_request import GetMessageRequest
+from ._get_message_response_body import GetMessageResponseBody
+from ._get_message_response import GetMessageResponse
+from ._get_protection_policy_request import GetProtectionPolicyRequest
+from ._get_protection_policy_response_body import GetProtectionPolicyResponseBody
+from ._get_protection_policy_response import GetProtectionPolicyResponse
+from ._get_resource_category_request import GetResourceCategoryRequest
+from ._get_resource_category_response_body import GetResourceCategoryResponseBody
+from ._get_resource_category_response import GetResourceCategoryResponse
+from ._list_messages_request import ListMessagesRequest
+from ._list_messages_response_body import ListMessagesResponseBody
+from ._list_messages_response import ListMessagesResponse
+from ._list_protection_policies_request import ListProtectionPoliciesRequest
+from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBody
+from ._list_protection_policies_response import ListProtectionPoliciesResponse
+from ._list_protection_policy_applications_request import ListProtectionPolicyApplicationsRequest
+from ._list_protection_policy_applications_response_body import ListProtectionPolicyApplicationsResponseBody
+from ._list_protection_policy_applications_response import ListProtectionPolicyApplicationsResponse
+from ._list_resource_categories_request import ListResourceCategoriesRequest
+from ._list_resource_categories_response_body import ListResourceCategoriesResponseBody
+from ._list_resource_categories_response import ListResourceCategoriesResponse
+from ._open_bdrc_service_response_body import OpenBdrcServiceResponseBody
+from ._open_bdrc_service_response import OpenBdrcServiceResponse
+from ._update_protection_policy_request import UpdateProtectionPolicyRequest
+from ._update_protection_policy_shrink_request import UpdateProtectionPolicyShrinkRequest
+from ._update_protection_policy_response_body import UpdateProtectionPolicyResponseBody
+from ._update_protection_policy_response import UpdateProtectionPolicyResponse
+from ._update_resource_category_request import UpdateResourceCategoryRequest
+from ._update_resource_category_response_body import UpdateResourceCategoryResponseBody
+from ._update_resource_category_response import UpdateResourceCategoryResponse
+from ._update_resources_request import UpdateResourcesRequest
+from ._update_resources_response_body import UpdateResourcesResponseBody
+from ._update_resources_response import UpdateResourcesResponse
+from ._check_rules_response_body import CheckRulesResponseBodyData
+from ._create_protection_policy_request import CreateProtectionPolicyRequestSubProtectionPolicies
+from ._create_protection_policy_response_body import CreateProtectionPolicyResponseBodyData
+from ._create_resource_category_response_body import CreateResourceCategoryResponseBodyData
+from ._describe_check_details_response_body import DescribeCheckDetailsResponseBodyDataContent
+from ._describe_check_details_response_body import DescribeCheckDetailsResponseBodyData
+from ._describe_product_data_redundancy_type_stat_response_body import DescribeProductDataRedundancyTypeStatResponseBodyDataContent
+from ._describe_product_data_redundancy_type_stat_response_body import DescribeProductDataRedundancyTypeStatResponseBodyData
+from ._describe_products_response_body import DescribeProductsResponseBodyDataContentProtectionScoreDistributionRange
+from ._describe_products_response_body import DescribeProductsResponseBodyDataContentProtectionScoreDistribution
+from ._describe_products_response_body import DescribeProductsResponseBodyDataContent
+from ._describe_products_response_body import DescribeProductsResponseBodyData
+from ._describe_resources_response_body import DescribeResourcesResponseBodyDataContent
+from ._describe_resources_response_body import DescribeResourcesResponseBodyData
+from ._describe_rules_response_body import DescribeRulesResponseBodyDataContent
+from ._describe_rules_response_body import DescribeRulesResponseBodyData
+from ._describe_task_response_body import DescribeTaskResponseBodyData
+from ._describe_tasks_response_body import DescribeTasksResponseBodyDataContent
+from ._describe_tasks_response_body import DescribeTasksResponseBodyData
+from ._describe_top_risky_resources_response_body import DescribeTopRiskyResourcesResponseBodyDataContent
+from ._describe_top_risky_resources_response_body import DescribeTopRiskyResourcesResponseBodyData
+from ._get_bdrc_service_response_body import GetBdrcServiceResponseBodyData
+from ._get_message_response_body import GetMessageResponseBodyData
+from ._get_protection_policy_response_body import GetProtectionPolicyResponseBodyDataSubProtectionPolicies
+from ._get_protection_policy_response_body import GetProtectionPolicyResponseBodyData
+from ._get_resource_category_response_body import GetResourceCategoryResponseBodyDataResourceCount
+from ._get_resource_category_response_body import GetResourceCategoryResponseBodyData
+from ._list_messages_response_body import ListMessagesResponseBodyDataContent
+from ._list_messages_response_body import ListMessagesResponseBodyData
+from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBodyDataContentLatestApplySummaryApplyStatusCount
+from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBodyDataContentLatestApplySummaryResourceCount
+from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBodyDataContentLatestApplySummary
+from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBodyDataContentSubProtectionPolicies
+from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBodyDataContent
+from ._list_protection_policies_response_body import ListProtectionPoliciesResponseBodyData
+from ._list_protection_policy_applications_response_body import ListProtectionPolicyApplicationsResponseBodyDataContent
+from ._list_protection_policy_applications_response_body import ListProtectionPolicyApplicationsResponseBodyData
+from ._list_resource_categories_response_body import ListResourceCategoriesResponseBodyDataContentResourceCount
+from ._list_resource_categories_response_body import ListResourceCategoriesResponseBodyDataContent
+from ._list_resource_categories_response_body import ListResourceCategoriesResponseBodyData
+from ._update_protection_policy_request import UpdateProtectionPolicyRequestSubProtectionPolicies
+from ._update_resources_response_body import UpdateResourcesResponseBodyData
+
+__all__ = [
+    CheckRulesRequest,
+    CheckRulesResponseBody,
+    CheckRulesResponse,
+    CloseBdrcServiceResponseBody,
+    CloseBdrcServiceResponse,
+    CreateProtectionPolicyRequest,
+    CreateProtectionPolicyShrinkRequest,
+    CreateProtectionPolicyResponseBody,
+    CreateProtectionPolicyResponse,
+    CreateResourceCategoryRequest,
+    CreateResourceCategoryResponseBody,
+    CreateResourceCategoryResponse,
+    DeleteProtectionPolicyRequest,
+    DeleteProtectionPolicyResponseBody,
+    DeleteProtectionPolicyResponse,
+    DeleteResourceCategoryRequest,
+    DeleteResourceCategoryResponseBody,
+    DeleteResourceCategoryResponse,
+    DescribeCheckDetailsRequest,
+    DescribeCheckDetailsResponseBody,
+    DescribeCheckDetailsResponse,
+    DescribeProductDataRedundancyTypeStatRequest,
+    DescribeProductDataRedundancyTypeStatShrinkRequest,
+    DescribeProductDataRedundancyTypeStatResponseBody,
+    DescribeProductDataRedundancyTypeStatResponse,
+    DescribeProductsRequest,
+    DescribeProductsShrinkRequest,
+    DescribeProductsResponseBody,
+    DescribeProductsResponse,
+    DescribeResourcesRequest,
+    DescribeResourcesShrinkRequest,
+    DescribeResourcesResponseBody,
+    DescribeResourcesResponse,
+    DescribeRulesRequest,
+    DescribeRulesShrinkRequest,
+    DescribeRulesResponseBody,
+    DescribeRulesResponse,
+    DescribeTaskResponseBody,
+    DescribeTaskResponse,
+    DescribeTasksRequest,
+    DescribeTasksResponseBody,
+    DescribeTasksResponse,
+    DescribeTopRiskyResourcesRequest,
+    DescribeTopRiskyResourcesShrinkRequest,
+    DescribeTopRiskyResourcesResponseBody,
+    DescribeTopRiskyResourcesResponse,
+    DisableCheckProductRequest,
+    DisableCheckProductResponseBody,
+    DisableCheckProductResponse,
+    DisableCheckResourceRequest,
+    DisableCheckResourceResponseBody,
+    DisableCheckResourceResponse,
+    EnableCheckProductRequest,
+    EnableCheckProductResponseBody,
+    EnableCheckProductResponse,
+    EnableCheckResourceRequest,
+    EnableCheckResourceResponseBody,
+    EnableCheckResourceResponse,
+    GetBdrcServiceResponseBody,
+    GetBdrcServiceResponse,
+    GetMessageRequest,
+    GetMessageResponseBody,
+    GetMessageResponse,
+    GetProtectionPolicyRequest,
+    GetProtectionPolicyResponseBody,
+    GetProtectionPolicyResponse,
+    GetResourceCategoryRequest,
+    GetResourceCategoryResponseBody,
+    GetResourceCategoryResponse,
+    ListMessagesRequest,
+    ListMessagesResponseBody,
+    ListMessagesResponse,
+    ListProtectionPoliciesRequest,
+    ListProtectionPoliciesResponseBody,
+    ListProtectionPoliciesResponse,
+    ListProtectionPolicyApplicationsRequest,
+    ListProtectionPolicyApplicationsResponseBody,
+    ListProtectionPolicyApplicationsResponse,
+    ListResourceCategoriesRequest,
+    ListResourceCategoriesResponseBody,
+    ListResourceCategoriesResponse,
+    OpenBdrcServiceResponseBody,
+    OpenBdrcServiceResponse,
+    UpdateProtectionPolicyRequest,
+    UpdateProtectionPolicyShrinkRequest,
+    UpdateProtectionPolicyResponseBody,
+    UpdateProtectionPolicyResponse,
+    UpdateResourceCategoryRequest,
+    UpdateResourceCategoryResponseBody,
+    UpdateResourceCategoryResponse,
+    UpdateResourcesRequest,
+    UpdateResourcesResponseBody,
+    UpdateResourcesResponse,
+    CheckRulesResponseBodyData,
+    CreateProtectionPolicyRequestSubProtectionPolicies,
+    CreateProtectionPolicyResponseBodyData,
+    CreateResourceCategoryResponseBodyData,
+    DescribeCheckDetailsResponseBodyDataContent,
+    DescribeCheckDetailsResponseBodyData,
+    DescribeProductDataRedundancyTypeStatResponseBodyDataContent,
+    DescribeProductDataRedundancyTypeStatResponseBodyData,
+    DescribeProductsResponseBodyDataContentProtectionScoreDistributionRange,
+    DescribeProductsResponseBodyDataContentProtectionScoreDistribution,
+    DescribeProductsResponseBodyDataContent,
+    DescribeProductsResponseBodyData,
+    DescribeResourcesResponseBodyDataContent,
+    DescribeResourcesResponseBodyData,
+    DescribeRulesResponseBodyDataContent,
+    DescribeRulesResponseBodyData,
+    DescribeTaskResponseBodyData,
+    DescribeTasksResponseBodyDataContent,
+    DescribeTasksResponseBodyData,
+    DescribeTopRiskyResourcesResponseBodyDataContent,
+    DescribeTopRiskyResourcesResponseBodyData,
+    GetBdrcServiceResponseBodyData,
+    GetMessageResponseBodyData,
+    GetProtectionPolicyResponseBodyDataSubProtectionPolicies,
+    GetProtectionPolicyResponseBodyData,
+    GetResourceCategoryResponseBodyDataResourceCount,
+    GetResourceCategoryResponseBodyData,
+    ListMessagesResponseBodyDataContent,
+    ListMessagesResponseBodyData,
+    ListProtectionPoliciesResponseBodyDataContentLatestApplySummaryApplyStatusCount,
+    ListProtectionPoliciesResponseBodyDataContentLatestApplySummaryResourceCount,
+    ListProtectionPoliciesResponseBodyDataContentLatestApplySummary,
+    ListProtectionPoliciesResponseBodyDataContentSubProtectionPolicies,
+    ListProtectionPoliciesResponseBodyDataContent,
+    ListProtectionPoliciesResponseBodyData,
+    ListProtectionPolicyApplicationsResponseBodyDataContent,
+    ListProtectionPolicyApplicationsResponseBodyData,
+    ListResourceCategoriesResponseBodyDataContentResourceCount,
+    ListResourceCategoriesResponseBodyDataContent,
+    ListResourceCategoriesResponseBodyData,
+    UpdateProtectionPolicyRequestSubProtectionPolicies,
+    UpdateResourcesResponseBodyData
+]
