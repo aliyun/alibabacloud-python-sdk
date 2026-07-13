@@ -4666,6 +4666,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_capacity_with_options_async(request, runtime)
 
+    def get_data_storage_with_options(
+        self,
+        request: main_models.GetDataStorageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataStorageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataStorage',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataStorageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_storage_with_options_async(
+        self,
+        request: main_models.GetDataStorageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataStorageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataStorage',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataStorageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_storage(
+        self,
+        request: main_models.GetDataStorageRequest,
+    ) -> main_models.GetDataStorageResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_storage_with_options(request, runtime)
+
+    async def get_data_storage_async(
+        self,
+        request: main_models.GetDataStorageRequest,
+    ) -> main_models.GetDataStorageResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_storage_with_options_async(request, runtime)
+
     def get_entitiy_stat_with_options(
         self,
         request: main_models.GetEntitiyStatRequest,

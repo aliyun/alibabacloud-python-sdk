@@ -16,35 +16,29 @@ class DescribeDisposeAndPlaybookRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # 列表当前页号， 大于等于 1。
+        # The page number. The value must be greater than or equal to 1.
         self.current_page = current_page
         # The entity type. Valid values:
-        # 
-        # - `ip`: IP address
-        # 
-        # - `process`: process
-        # 
-        # - `file`: file
+        # - ip: IP address
+        # - process: process
+        # - file: file
         self.entity_type = entity_type
-        # 实体 uuid。
+        # The entity UUID.
         self.entity_uuid = entity_uuid
-        # The incident UUID.
+        # The event UUID.
         self.incident_uuid = incident_uuid
-        # 列表每页条数， 最大不超过 100。
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
-        # 威胁分析的数据管理中心所在地。您需要根据资产所在地域，选择管理中心所在地。取值：
-        # 
-        # - cn-hangzhou：资产属于中国内地与中国香港
-        # 
-        # - ap-southeast-1：资产属于海外地域
+        # The region in which the data management center of the threat analysis feature resides. Select the data management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
         self.region_id = region_id
-        # 管理员切换成其他成员视角的用户 ID。
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
-        # 视图类型。
+        # The view type. Valid values:
         # 
-        # - 0：当前阿里云账号视图。
-        # 
-        # - 1：企业下所有账号的视图。
+        # - 0: the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):
