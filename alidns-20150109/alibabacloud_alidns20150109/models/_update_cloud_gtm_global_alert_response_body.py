@@ -12,10 +12,11 @@ class UpdateCloudGtmGlobalAlertResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the global alert configuration was successfully updated. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The update was successful.
+        # 
+        # - `false`: The update failed.
         self.success = success
 
     def validate(self):

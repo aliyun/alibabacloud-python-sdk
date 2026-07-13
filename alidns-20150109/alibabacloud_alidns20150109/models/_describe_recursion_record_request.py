@@ -9,6 +9,8 @@ class DescribeRecursionRecordRequest(DaraModel):
         self,
         record_id: str = None,
     ):
+        # The unique ID of the DNS record.
+        # 
         # This parameter is required.
         self.record_id = record_id
 

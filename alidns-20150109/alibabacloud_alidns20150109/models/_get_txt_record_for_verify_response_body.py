@@ -15,17 +15,17 @@ class GetTxtRecordForVerifyResponseBody(DaraModel):
     ):
         # The domain name.
         # 
-        # >  If you do not specify this parameter, it is not returned.
+        # > This parameter is not returned if no value is specified for the DomainName parameter in the request.
         self.domain_name = domain_name
-        # The top-level domain name.
+        # The top-level domain (TLD).
         self.parent_domain_name = parent_domain_name
-        # The hostname.
+        # The host record.
         self.rr = rr
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # The record value.
         # 
-        # >  The validity period is three days.
+        # > The value is valid for three days.
         self.value = value
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeGtmAvailableAlertGroupRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language used by the user.
+        # The language.
         self.lang = lang
 
     def validate(self):

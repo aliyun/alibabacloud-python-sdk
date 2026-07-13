@@ -10,9 +10,9 @@ class DescribeGtmAccessStrategyRequest(DaraModel):
         lang: str = None,
         strategy_id: str = None,
     ):
-        # The language used by the user.
+        # The language.
         self.lang = lang
-        # The ID of the access policy that you want to query.
+        # The ID of the access policy.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id

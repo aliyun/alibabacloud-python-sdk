@@ -25,45 +25,52 @@ class DescribeGtmMonitorConfigResponseBody(DaraModel):
     ):
         # The time when the health check configuration was created.
         self.create_time = create_time
-        # The timestamp that indicates the time when the health check configuration was created.
+        # The UNIX timestamp that indicates when the health check configuration was created.
         self.create_timestamp = create_timestamp
-        # The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+        # The number of consecutive health checks.
         self.evaluation_count = evaluation_count
         # The health check interval. Unit: seconds. The value is 60.
         self.interval = interval
         self.isp_city_nodes = isp_city_nodes
         # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
-        # The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
+        # The extended information. The parameters vary based on the protocol.
         # 
-        # HTTP or HTTPS:
+        # For HTTP and HTTPS:
         # 
-        # *   port: the port to check.
-        # *   failureRate: the failure rate.
-        # *   code: the status code threshold. If the returned status code is greater than the specified threshold, the application service is deemed abnormal. Valid values: 400 and 500.
-        # *   host: the host configuration.
-        # *   path: the health check URL.
+        # - port: The health check port.
         # 
-        # PING:
+        # - failureRate: The failure rate.
         # 
-        # *   packetNum: the number of ping packets.
-        # *   packetLossRate: the loss rate of ping packets.
-        # *   failureRate: the failure rate.
+        # - code: The return code. A response is considered abnormal if its status code is greater than the specified value. Valid values: 400 and 500.
         # 
-        # TCP:
+        # - host: The Host header of the request.
         # 
-        # *   port: the port to check.
-        # *   failureRate: the failure rate.
+        # - path: The path of the URL.
+        # 
+        # For PING:
+        # 
+        # - packetNum: The number of ping packets.
+        # 
+        # - packetLossRate: The packet loss rate.
+        # 
+        # - failureRate: The failure rate.
+        # 
+        # For TCP:
+        # 
+        # - port: The health check port.
+        # 
+        # - failureRate: The failure rate.
         self.monitor_extend_info = monitor_extend_info
         # The protocol used for the health check.
         self.protocol_type = protocol_type
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+        # The timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
         self.timeout = timeout
         # The time when the health check configuration was last updated.
         self.update_time = update_time
-        # The timestamp that indicates the time when the health check configuration was last updated.
+        # The UNIX timestamp that indicates when the health check configuration was last updated.
         self.update_timestamp = update_timestamp
 
     def validate(self):

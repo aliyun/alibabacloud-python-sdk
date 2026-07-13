@@ -20,65 +20,80 @@ class UpdateCloudGtmMonitorTemplateShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese
+        # 
+        # - en-US (default): English
         self.accept_language = accept_language
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that is used to ensure the idempotence of the request. Make sure that the token is unique for each request. The token can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The number of retries. The system will only judge the application service as abnormal after consecutive monitoring failures to prevent inaccurate monitoring results due to momentary network fluctuations or other reasons. Available retry options are:
-        # - 1 
-        # - 2 
+        # The number of consecutive health check failures that must occur before an application service is considered abnormal. This helps prevent false alarms caused by transient issues such as network jitter. Valid values:
+        # 
+        # - 1
+        # 
+        # - 2
+        # 
         # - 3
         self.evaluation_count = evaluation_count
-        # The extended information. The value of this parameter is a JSON string. The required parameters vary based on the health check protocol.
+        # The extended information in a JSON string. The parameters vary based on the health check protocol.
         # 
-        # *   HTTP or HTTPS:
+        # - HTTP and HTTPS:
         # 
-        #     host: the Host field of an HTTP or HTTPS request header during an HTTP or HTTPS health check. The parameter value indicates the HTTP website that you want to visit. By default, the value is the primary domain name. You can change the value based on your business requirements.
+        #   host: When you perform an HTTP or HTTPS health check, this parameter specifies the Host field in the HTTP request header. It identifies the target website. The default value is the primary domain name. If the target website has specific requirements for the Host field, modify this parameter as needed.
         # 
-        #     path: the URL for HTTP or HTTPS health checks. Default value: /.
+        #   path: The path for the HTTP or HTTPS health check. The default value is /.
         # 
-        #     code: the alert threshold. During an HTTP or HTTPS health check, the system checks whether a web server functions as expected based on the status code that is returned from the web server. If the returned status code is greater than the specified threshold, the corresponding application service address is deemed abnormal. Valid values:
+        #   code: When you perform an HTTP or HTTPS health check, the system uses the return code from the web server to determine its status. If the return code exceeds the specified threshold, the application service is considered abnormal.
         # 
-        #     *   400: specifies an invalid request. If an HTTP or HTTPS request contains invalid request parameters, a web server returns a status code that is greater than 400. You must set path to an exact URL if you set code to 400.
-        #     *   500: specifies a server error. If some exceptions occur on a web server, the web server returns a status code that is greater than 500. This value is used by default.
+        #   - 400: Bad Request. If an HTTP or HTTPS request contains invalid parameters, the web server returns a code greater than 400. If you set the threshold to 400, make sure that you specify the exact URL path.
         # 
-        #     sni: specifies whether to enable Server Name Indication (SNI). This parameter is used only when the health check protocol is HTTPS. SNI is an extension to the Transport Layer Security (TLS) protocol, which allows a client to specify the host to be connected when the client sends a TLS handshake request. TLS handshakes occur before any data of HTTP requests is sent. Therefore, SNI enables servers to identify the services that clients are attempting to access before certificates are sent. This allows the servers to present correct certificates to the clients. Valid values:
+        #   - 500: Server Error. If the web server encounters an error, it returns a code greater than 500. The default threshold is 500.
         # 
-        #     *   true: enables SNI.
-        #     *   false: disables SNI.
+        #   sni: Specifies whether to enable Server Name Indication (SNI). This parameter is used only for HTTPS health checks. SNI is an extension to the Transport Layer Security (TLS) protocol. It allows a client to specify the hostname it is trying to connect to at the start of the TLS handshake. Because the TLS handshake occurs before any HTTP data is sent, SNI allows the server to know which service the client is trying to access before sending the certificate. This enables the server to present the correct certificate to the client.
         # 
-        #     followRedirect: specifies whether to follow 3XX redirects. Valid values:
+        #   - true: Enable SNI.
         # 
-        #     *   true: follows 3XX redirects. You are redirected to the destination address if a 3XX status code such as 301, 302, 303, 307, or 308 is returned.
-        #     *   false: does not follow 3XX redirects.
+        #   - false: Disable SNI.
         # 
-        # *   ping:
+        #   followRedirect: Specifies whether to follow 3xx redirections.
         # 
-        #     packetNum: the total number of Internet Control Message Protocol (ICMP) packets that are sent to the address for each ping-based health check. Valid values: 20, 50, and 100.
+        #   - true: Follow the redirection if the detection point receives a 3xx status code (301, 302, 303, 307, or 308).
         # 
-        #     packetLossRate: the ICMP packet loss rate for each ping-based health check. The packet loss rate in a health check can be calculated by using the following formula: Packet loss rate in a health check = (Number of lost packets/Total number of sent ICMP packets) × 100%. If the packet loss rate reaches the threshold, an alert is triggered. Valid values: 10, 30, 40, 80, 90, and 100.
+        #   - false: Do not follow the redirection.
+        # 
+        # - Ping:
+        # 
+        #   packetNum: The number of ICMP packets to send for each ping health check. Valid values: 20, 50, and 100.
+        # 
+        #   packetLossRate: The packet loss rate that triggers an alarm. For each ping health check, the system calculates the packet loss rate. Packet loss rate = (Number of lost packets / Total number of sent ICMP packets) × 100%. An alarm is triggered if the packet loss rate reaches this threshold. Valid values: 10, 30, 40, 80, 90, and 100.
         self.extend_info = extend_info
-        # Percentage of selected node probe failures (%), that is, the percentage of abnormal detection points among the total detection points. When the failure ratio exceeds the set threshold, the service address is judged as abnormal. The available failure ratio thresholds are:
+        # The percentage of failed detection points. An endpoint is considered abnormal if the percentage of detection points that fail the health check exceeds this threshold. Valid values:
+        # 
         # - 20
+        # 
         # - 50
+        # 
         # - 80
+        # 
         # - 100
         self.failure_rate = failure_rate
-        # The time interval (in seconds) for each health check probe. By default, it probes every 60 seconds. The minimum supported interval for health checks is 15 seconds, available for flagship edition instances.
+        # The interval between health checks in seconds. The default value is 60. The minimum interval is 15 seconds. This feature is available only for Ultimate Edition instances.
         self.interval = interval
-        # The health check nodes. You can call the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797327.html) operation to obtain the health check nodes.
+        # The list of detection points. Call [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797327.html) to obtain the information.
         self.isp_city_nodes_shrink = isp_city_nodes_shrink
-        # The name of the health check probe template, which is generally recommended to be distinguishable and memorable for configuration personnel, ideally indicating the health check protocol for easier identification.
+        # The name of the health check template. For easy identification, name the template based on its health check protocol.
         self.name = name
-        # The ID of the health check template that you want to modify. This ID uniquely identifies the health check template.
+        # The unique ID of the health check template that you want to modify.
         # 
         # This parameter is required.
         self.template_id = template_id
-        # Probe timeout (in milliseconds), data packets not returned within the timeout period are considered as health check timeouts:
+        # The timeout period for a health check in milliseconds. If a packet is not returned within the specified timeout period, the health check fails. Valid values:
+        # 
         # - 2000
+        # 
         # - 3000
+        # 
         # - 5000
+        # 
         # - 10000
         self.timeout = timeout
 

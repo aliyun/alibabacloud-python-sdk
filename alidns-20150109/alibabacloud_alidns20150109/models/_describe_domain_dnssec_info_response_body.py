@@ -26,20 +26,21 @@ class DescribeDomainDnssecInfoResponseBody(DaraModel):
         self.digest_type = digest_type
         # The domain name.
         self.domain_name = domain_name
-        # The delegation signer (DS) record. This parameter is returned if DNSSEC is enabled.
+        # The Delegation Signer (DS) record. This parameter is returned if DNSSEC is enabled.
         self.ds_record = ds_record
-        # The flag. This parameter is returned if DNSSEC is enabled.
+        # The flags. This parameter is returned if DNSSEC is enabled.
         self.flags = flags
         # The key tag. This parameter is returned if DNSSEC is enabled.
         self.key_tag = key_tag
         # The public key. This parameter is returned if DNSSEC is enabled.
         self.public_key = public_key
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The state of the DNSSEC. Valid values:
+        # The status of DNSSEC. Valid values:
         # 
-        # *   ON
-        # *   OFF
+        # - ON: Enabled
+        # 
+        # - OFF: Disabled
         self.status = status
 
     def validate(self):

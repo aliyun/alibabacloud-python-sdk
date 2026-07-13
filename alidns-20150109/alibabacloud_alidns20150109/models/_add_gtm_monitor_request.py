@@ -23,53 +23,63 @@ class AddGtmMonitorRequest(DaraModel):
         # 
         # This parameter is required.
         self.addr_pool_id = addr_pool_id
-        # The number of consecutive failures.
+        # The number of consecutive failed health checks.
         # 
         # This parameter is required.
         self.evaluation_count = evaluation_count
-        # The health check interval. Unit: seconds. Set the value to 60.
+        # The health check interval. Unit: seconds. The value must be 60.
         # 
         # This parameter is required.
         self.interval = interval
-        # The nodes for monitoring.
+        # The list of monitoring nodes.
         # 
         # This parameter is required.
         self.isp_city_node = isp_city_node
         # The language.
         self.lang = lang
-        # The extended information. The required parameters vary based on the health check protocol.
+        # The extended information. You must pass parameters based on the value of ProtocolType:
         # 
-        # HTTP or HTTPS
+        # For HTTP and HTTPS:
         # 
-        # *   port: the port that you want to check
-        # *   failureRate: the failure rate
-        # *   code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value. Valid values: 400 and 500.
-        # *   host: the host settings
-        # *   path: the URL path
+        # - port: The health check port.
         # 
-        # PING
+        # - failureRate: The failure rate.
         # 
-        # *   packetNum: the number of ping packets
-        # *   packetLossRate: the packet loss rate
-        # *   failureRate: the failure rate
+        # - code: The return code. A response with a status code greater than this value is considered abnormal. Valid values: 400 and 500.
         # 
-        # TCP
+        # - host: The host settings.
         # 
-        # *   port: the port that you want to check
-        # *   failureRate: the failure rate
+        # - path: The URL path.
+        # 
+        # For PING:
+        # 
+        # - packetNum: The number of ping packets.
+        # 
+        # - packetLossRate: The packet loss rate.
+        # 
+        # - failureRate: The failure rate.
+        # 
+        # For TCP:
+        # 
+        # - port: The health check port.
+        # 
+        # - failureRate: The failure rate.
         # 
         # This parameter is required.
         self.monitor_extend_info = monitor_extend_info
-        # The protocol used for the health check. Valid values:
+        # The health check protocol. Valid values:
         # 
-        # *   HTTP
-        # *   HTTPS
-        # *   PING
-        # *   TCP
+        # - HTTP
+        # 
+        # - HTTPS
+        # 
+        # - PING
+        # 
+        # - TCP
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
-        # The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+        # The timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
         # 
         # This parameter is required.
         self.timeout = timeout
@@ -152,12 +162,13 @@ class AddGtmMonitorRequestIspCityNode(DaraModel):
     ):
         # The city code.
         # 
-        # Specify the parameter according to the value of CityCode returned by the DescribeGtmMonitorAvailableConfig operation.
+        # For more information about the valid values, see the response of the DescribeGtmMonitorAvailableConfig operation.
         self.city_code = city_code
-        # The Internet service provider (ISP) node. Specify the parameter according to the value of IspCode returned by the DescribeGtmMonitorAvailableConfig operation.
+        # For more information about the valid values, see the response of the DescribeGtmMonitorAvailableConfig operation.
         # 
-        # *   If the return value of GroupType for the DescribeGtmMonitorAvailableConfig operation is BGP or Overseas, IspCode is not required and is set to 465 by default.
-        # *   If the return value of GroupType for the DescribeGtmMonitorAvailableConfig operation is not BGP or Overseas, IspCode is required. When IspCode is specified, CityCode is required.
+        # - If GroupType is set to Border Gateway Protocol (BGP) or Overseas, you do not need to specify IspCityNode.N.IspCode. The default value is 465.
+        # 
+        # - If GroupType is not set to BGP or Overseas, you must specify IspCityNode.N.IspCode. The value of IspCityNode.N.IspCode must be consistent with the value of IspCityNode.N.CityCode.
         self.isp_code = isp_code
 
     def validate(self):

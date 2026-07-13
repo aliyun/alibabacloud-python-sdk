@@ -14,23 +14,27 @@ class OperateBatchDomainRequest(DaraModel):
         lang: str = None,
         type: str = None,
     ):
-        # The DNS records. You can submit up to 1,000 DNS records.
+        # The data for the batch operation.
         # 
         # This parameter is required.
         self.domain_record_info = domain_record_info
-        # The language of the response. Valid values:
+        # The response language. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         # 
         # Default value: zh
         self.lang = lang
-        # The type of the batch operation. Valid values:
+        # The batch operation type. Valid values:
         # 
-        # *   **DOMAIN_ADD**: adds domain names in batches.
-        # *   **DOMAIN_DEL**: deletes domain names in batches.
-        # *   **RR_ADD**: adds DNS records in batches.
-        # *   **RR_DEL**: deletes DNS records in batches. This operation deletes the DNS records with the specified hostname or record value. If you do not specify the Rr and Value parameters, this operation deletes the DNS records that are added for the specified domain names.
+        # - **DOMAIN_ADD**: adds domain names in batches.
+        # 
+        # - **DOMAIN_DEL**: deletes domain names in batches.
+        # 
+        # - **RR_ADD**: adds DNS records in batches.
+        # 
+        # - **RR_DEL**: deletes DNS records in batches. This operation deletes DNS records that match the conditions specified by `Rr`, `Value`, or both. If you do not specify `Rr` and `Value`, all DNS records for the specified domain name are deleted.
         # 
         # This parameter is required.
         self.type = type
@@ -91,35 +95,35 @@ class OperateBatchDomainRequestDomainRecordInfo(DaraModel):
     ):
         # The domain name.
         # 
-        # >  You can submit 1 to 1,000 domain names. Due to the limit on the length of HTTP request headers, excessive domain names are ignored. Do not enter more than 1,000 domain names.
+        # > A single request can contain up to 200 entries. Exceeding this limit may cause the request to fail due to the HTTP request header size limit.
         # 
         # This parameter is required.
         self.domain = domain
-        # The DNS request source. Default value: default.
+        # The resolution line. Default value: default.
         self.line = line
-        # The new hostname (used only for modification operations, not for external users).
+        # The new host record. This parameter is used only for modification operations and is for internal use only.
         self.new_rr = new_rr
-        # The new type of the DNS record (used only for modification operations, not for external users).
+        # The new record type. This parameter is used only for modification operations and is for internal use only.
         self.new_type = new_type
-        # The new value of the DNS record (used only for modification operations, not for external users).
+        # The new record value. This parameter is used only for modification operations and is for internal use only.
         self.new_value = new_value
-        # The priority of the mail exchanger (MX) record.
+        # The MX priority.
         # 
-        # This parameter is required if the type of the DNS record is MX. Default value: 10.
+        # This parameter is required if the record type is MX. Default value: 10.
         self.priority = priority
-        # The hostname.
+        # The host record.
         # 
-        # >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
+        # > This parameter is required when `Type` is **RR_ADD** or **RR_DEL**.
         self.rr = rr
-        # The time-to-live (TTL) value of the cached DNS record. Unit: seconds. Default value: ***600***.
+        # The TTL, in seconds. Default value: ***600***.
         self.ttl = ttl
-        # The type of the DNS record. Valid values: A, AAAA, TXT, MX, and CNAME.
+        # The record type. Examples: A, AAAA, TXT, MX, and CNAME.
         # 
-        # >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
+        # > This parameter is required when `Type` is **RR_ADD** or **RR_DEL**.
         self.type = type
-        # The value of the DNS record.
+        # The record value.
         # 
-        # >  This parameter is required if you set Type to **RR_ADD** or **RR_DEL**.
+        # > This parameter is required when `Type` is **RR_ADD** or **RR_DEL**.
         self.value = value
 
     def validate(self):

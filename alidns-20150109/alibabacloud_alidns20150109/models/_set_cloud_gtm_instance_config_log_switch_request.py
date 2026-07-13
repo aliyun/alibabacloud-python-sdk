@@ -12,10 +12,22 @@ class SetCloudGtmInstanceConfigLogSwitchRequest(DaraModel):
         instance_id: str = None,
         status: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value for this parameter. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId of each API request may be different.
         self.client_token = client_token
+        # The ID of the instance configuration. A and AAAA records can be configured for the same connected domain name and GTM instance. In this case, the GTM instance has two instance configurations. ConfigId uniquely identifies an instance configuration. To find the ConfigId for a domain name instance, call the [ListCloudGtmInstanceConfigs](https://help.aliyun.com/document_detail/2797349.html) operation.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
+        # The status of the network traffic analysis feature:
+        # 
+        # - enable
+        # 
+        # - disable
+        # 
         # This parameter is required.
         self.status = status
 

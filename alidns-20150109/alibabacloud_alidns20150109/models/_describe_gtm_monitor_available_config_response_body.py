@@ -14,7 +14,7 @@ class DescribeGtmMonitorAvailableConfigResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.isp_city_nodes = isp_city_nodes
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

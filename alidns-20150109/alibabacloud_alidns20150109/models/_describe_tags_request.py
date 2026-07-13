@@ -12,15 +12,15 @@ class DescribeTagsRequest(DaraModel):
         page_size: int = None,
         resource_type: str = None,
     ):
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Default: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. Pages start from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Default value: 200.
+        # The number of entries per page. Default value: 200.
         self.page_size = page_size
-        # The type of the resource. Valid values:
+        # The resource type. Valid value:
         # 
-        # *   **DOMAIN**: domain name
+        # - **DOMAIN**: domain name
         # 
         # This parameter is required.
         self.resource_type = resource_type

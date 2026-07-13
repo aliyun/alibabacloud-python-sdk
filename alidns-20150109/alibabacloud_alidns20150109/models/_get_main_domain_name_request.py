@@ -10,11 +10,17 @@ class GetMainDomainNameRequest(DaraModel):
         input_string: str = None,
         lang: str = None,
     ):
-        # The string. The string can be up to 128 characters in length.
+        # The domain name.
         # 
         # This parameter is required.
         self.input_string = input_string
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # - zh: Chinese
+        # 
+        # - en: English
+        # 
+        # Default: zh
         self.lang = lang
 
     def validate(self):

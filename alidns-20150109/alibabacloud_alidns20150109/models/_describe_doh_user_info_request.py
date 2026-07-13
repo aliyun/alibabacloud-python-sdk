@@ -11,15 +11,15 @@ class DescribeDohUserInfoRequest(DaraModel):
         lang: str = None,
         start_date: str = None,
     ):
-        # The end time for the query. Format: YYYY-MM-DD
+        # The end date of the query. Use the \\`YYYY-MM-DD\\` format.
         # 
-        # If you do not specify this parameter, the default value is the time when you perform the query.
+        # If you do not specify this parameter, the current date is used.
         self.end_date = end_date
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+        # The language.
         self.lang = lang
-        # The start time for the query. Format: YYYY-MM-DD
+        # The start date of the query. Use the \\`YYYY-MM-DD\\` format.
         # 
-        # You can query the user information of the last 90 days only. `Set the parameter to a value no earlier than 90 days from the current time`.
+        # You can query data from the last 90 days. The date must be within the last 90 days.
         self.start_date = start_date
 
     def validate(self):

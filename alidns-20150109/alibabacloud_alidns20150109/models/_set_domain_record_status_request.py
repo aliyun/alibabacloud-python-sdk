@@ -12,19 +12,21 @@ class SetDomainRecordStatusRequest(DaraModel):
         status: str = None,
         user_client_ip: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+        # The ID of the DNS record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain this ID.
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The state of the DNS record. Valid values:
+        # The status of the DNS record. Valid values:
         # 
-        # *   **Enable**: enables the DNS record.
-        # *   **Disable**: disables the DNS record.
+        # - **Enable**: Enables parsing.
+        # 
+        # - **Disable**: Pauses parsing.
         # 
         # This parameter is required.
         self.status = status

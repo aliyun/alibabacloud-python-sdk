@@ -10,11 +10,13 @@ class UpdateCloudGtmMonitorTemplateRemarkResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Modify the health check template remark operation status:
-        # - true: Operation successful
-        # - false: Operation failed
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

@@ -14,8 +14,12 @@ class UpdateRecursionZoneEffectiveScopeRequest(DaraModel):
         effective_scopes: List[main_models.UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes] = None,
         zone_id: str = None,
     ):
+        # A client-generated token to ensure request idempotence. The token must be unique for each request. It can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
+        # A list of effective scopes.
         self.effective_scopes = effective_scopes
+        # The unique ID of the zone.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 
@@ -65,7 +69,9 @@ class UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes(DaraModel):
         effective_type: str = None,
         scope: List[str] = None,
     ):
+        # The type of the effective scope. Valid value: *account*.
         self.effective_type = effective_type
+        # The values for the scope, which depend on the value of `EffectiveType`. If `EffectiveType` is set to `account`, this parameter is a list of account IDs.
         self.scope = scope
 
     def validate(self):

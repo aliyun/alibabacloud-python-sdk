@@ -36,7 +36,7 @@ class DescribeDomainInfoResponseBody(DaraModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # Indicates whether the domain name was registered in Alibaba Cloud.
+        # Indicates whether the domain name was registered with Alibaba Cloud.
         self.ali_domain = ali_domain
         self.available_ttls = available_ttls
         # The time when the domain name was created.
@@ -44,7 +44,7 @@ class DescribeDomainInfoResponseBody(DaraModel):
         self.dns_servers = dns_servers
         # The ID of the domain name.
         self.domain_id = domain_id
-        # Indicates whether the DNS traffic analysis feature is enabled. Valid values:
+        # The status of the logging feature.
         self.domain_logging_switch_status = domain_logging_switch_status
         # The domain name.
         self.domain_name = domain_name
@@ -52,39 +52,46 @@ class DescribeDomainInfoResponseBody(DaraModel):
         self.group_id = group_id
         # The name of the domain name group.
         self.group_name = group_name
-        # Indicates whether blackhole filtering was triggered.
+        # Indicates whether blackhole filtering is activated for the domain name.
         self.in_black_hole = in_black_hole
-        # Indicates whether traffic scrubbing was in progress.
+        # Indicates whether the domain name is being scrubbed.
         self.in_clean = in_clean
         # The ID of the Alibaba Cloud DNS instance.
         self.instance_id = instance_id
-        # The type of the DNS request line.
+        # The type of the DNS request source line.
         self.line_type = line_type
-        # The minimum TTL value.
+        # The minimum TTL.
         self.min_ttl = min_ttl
-        # The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+        # The Punycode for the Chinese domain name.
         self.puny_code = puny_code
-        # The tree-structure DNS request lines.
+        # The list of DNS request source lines in a tree structure.
         self.record_line_tree_json = record_line_tree_json
         self.record_lines = record_lines
-        # Indicates whether the DNS request lines are regional lines.
+        # Indicates whether the line is a regional line.
         self.region_lines = region_lines
-        # The description.
+        # The remarks.
         self.remark = remark
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Indicates whether secondary DNS is supported.
         self.slave_dns = slave_dns
-        # Indicates whether the queried domain name is a hosted subdomain name. Valid values:
+        # Indicates whether the queried domain is a hosted subdomain. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.sub_domain = sub_domain
-        # The version ID of Alibaba Cloud DNS.
+        # The edition ID of Alibaba Cloud DNS. Valid values:
+        # 
+        # - version_enterprise_advanced: Ultimate Edition
+        # 
+        # - version_personal: Personal Edition
+        # 
+        # - mianfei: Free Edition
         self.version_code = version_code
-        # The edition of Alibaba Cloud DNS.
+        # The name of the Alibaba Cloud DNS edition.
         self.version_name = version_name
 
     def validate(self):

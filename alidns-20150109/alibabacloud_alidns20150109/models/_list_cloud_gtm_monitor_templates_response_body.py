@@ -17,16 +17,16 @@ class ListCloudGtmMonitorTemplatesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # Current page number, starting from 1, default is 1.
+        # The number of the returned page. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # The number of entries returned on each page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
-        # Unique request identification code.
+        # The unique request ID.
         self.request_id = request_id
         self.templates = templates
-        # Total number of health check template entries retrieved.
+        # The total number of health check templates.
         self.total_items = total_items
-        # Total number of pages after data pagination.
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):

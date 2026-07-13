@@ -10,11 +10,11 @@ class DescribeDnsGtmInstanceStatusRequest(DaraModel):
         instance_id: str = None,
         lang: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the instance. For more information, see [DescribeDnsGtmInstances](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstances).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
 
     def validate(self):

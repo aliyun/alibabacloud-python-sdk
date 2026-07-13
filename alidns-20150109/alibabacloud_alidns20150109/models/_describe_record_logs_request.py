@@ -16,23 +16,27 @@ class DescribeRecordLogsRequest(DaraModel):
         user_client_ip: str = None,
         end_date: str = None,
     ):
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+        # The domain name.<props="china">You can call the [DescribeDomains](https://help.aliyun.com/document_detail/29751.html) operation to obtain the domain name.<props="intl">You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
+        # The keyword. The system searches for the keyword in the "%KeyWord%" pattern. The search is not case-sensitive.
         self.key_word = key_word
-        # The language.
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries to return on each page. The maximum value is **100**. Default value: **20**.
         self.page_size = page_size
-        # The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
+        # The start of the time range to query. The format is **YYYY-MM-DD**.
         self.start_date = start_date
-        # The IP address of the client.
+        # The client IP address.
         self.user_client_ip = user_client_ip
-        # The end date of the query. Specify the end date in the **YYYY-MM-DD** format.
+        # The end of the time range to query. The format is **YYYY-MM-DD**.
         self.end_date = end_date
 
     def validate(self):

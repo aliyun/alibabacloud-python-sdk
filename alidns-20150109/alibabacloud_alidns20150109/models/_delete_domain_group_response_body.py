@@ -12,7 +12,7 @@ class DeleteDomainGroupResponseBody(DaraModel):
     ):
         # The name of the domain name group.
         self.group_name = group_name
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

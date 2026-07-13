@@ -17,17 +17,17 @@ class DescribeInstanceDomainsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The domain names that are bound to the DNS instance.
+        # A list of domain names attached to the instance.
         self.instance_domains = instance_domains
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. Default: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries per page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries returned on all pages.
+        # The total number of entries.
         self.total_items = total_items
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -95,9 +95,9 @@ class DescribeInstanceDomainsResponseBodyInstanceDomains(DaraModel):
         create_timestamp: int = None,
         domain_name: str = None,
     ):
-        # The time when the instance was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The time when the instance was created.
         self.create_time = create_time
-        # The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The UNIX timestamp that indicates when the instance was created.
         self.create_timestamp = create_timestamp
         # The domain name.
         self.domain_name = domain_name

@@ -14,30 +14,35 @@ class UpdateCloudGtmInstanceConfigLbStrategyRequest(DaraModel):
         instance_id: str = None,
         sequence_lb_strategy_mode: str = None,
     ):
-        # The language in which the returned results are displayed. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US** (default): English
+        # - **zh-CN**: Chinese.
+        # 
+        # - **en-US**: English. This is the default value.
         self.accept_language = accept_language
-        # The new policy for load balancing between address pools. Valid values:
+        # The load balancing policy for the address pools. Valid values:
         # 
-        # *   round_robin: All address pools are returned for Domain Name System (DNS) requests from any source. All address pools are sorted in round-robin mode each time they are returned.
-        # *   sequence: The address pool with the smallest sequence number is preferentially returned for DNS requests from any source. The sequence number indicates the priority for returning the address pool. A smaller sequence number indicates a higher priority. If the address pool with the smallest sequence number is unavailable, the address pool with the second smallest sequence number is returned.
-        # *   weight: You can set a different weight value for each address pool. This way, address pools are returned based on the weight values.
-        # *   source_nearest: GTM returns different address pools based on the sources of DNS requests. This way, users can access nearby address pools.
+        # - round_robin: Returns all address pools for any DNS request. The address pools are rotated for each request.
+        # 
+        # - sequence: Returns the address pool with the smallest ordinal number. The smaller the ordinal number, the higher the priority. If the primary address pool is unavailable, the next address pool in the sequence is used.
+        # 
+        # - weight: Distributes DNS requests to address pools based on their configured weights.
+        # 
+        # - source_nearest: Returns an address pool based on the proximity of the DNS request source. This implements intelligent DNS resolution and directs users to the nearest access point.
         self.address_pool_lb_strategy = address_pool_lb_strategy
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that is used to ensure the idempotence of the request. The token must be unique among different requests. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # The ID of the instance configuration. A GTM instance can have multiple configurations for the same domain name, such as one for A records and another for AAAA records. The ConfigId uniquely identifies the configuration that you want to modify.
         # 
-        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the desired access domain name.
+        # For more information, see [ListCloudGtmInstanceConfigs](https://help.aliyun.com/document_detail/2797349.html).
         self.config_id = config_id
-        # The ID of the GTM 3.0 instance for which you want to modify the load balancing policy.
+        # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
-        # The mode used if the address pool with the smallest sequence number is recovered. This parameter is required when AddressPoolLbStrategy is set to sequence. Valid values:
+        # The recovery mode for a primary address pool when the load balancing policy is set to sequence. Valid values:
         # 
-        # *   preemptive: The address pool with the smallest sequence number is preferentially used if this address pool is recovered.
-        # *   non_preemptive: The current address pool is still used even if the address pool with the smallest sequence number is recovered.
+        # - preemptive: The system switches back to the primary address pool as soon as it recovers.
+        # 
+        # - non_preemptive: The system continues to use the current address pool even after the primary address pool recovers.
         self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
 
     def validate(self):

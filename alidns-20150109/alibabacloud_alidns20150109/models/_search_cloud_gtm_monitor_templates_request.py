@@ -16,19 +16,35 @@ class SearchCloudGtmMonitorTemplatesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
-        self.accept_language = accept_language
-        # The IP address type of health check nodes. An exact search is performed based on the IP address type. Valid values:
+        # - zh-CN: Chinese
         # 
-        # *   IPv4: applicable when the destination address of health checks is an IPv4 address
-        # *   IPv6: applicable when the destination address of health checks is an IPv6 address
+        # - en-US (default): English
+        self.accept_language = accept_language
+        # The IP version of the detection points. An exact search is performed. Valid values:
+        # 
+        # - IPv4: This version is applicable when the target address is an IPv4 address.
+        # 
+        # - IPv6: This version is applicable when the target address is an IPv6 address.
         self.ip_version = ip_version
+        # The name of the health check template. A fuzzy search is performed based on the keyword that you enter.
         self.name = name
+        # The current page number. The value starts from 1. The default value is 1.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page for a paged query. The maximum value is **100**. The default value is **20**.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The protocol used for detection. An exact search is performed. Valid values:
+        # 
+        # - ping
+        # 
+        # - tcp
+        # 
+        # - http
+        # 
+        # - https
         self.protocol = protocol
 
     def validate(self):

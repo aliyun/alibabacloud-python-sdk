@@ -15,18 +15,19 @@ class UpdateCustomLineRequest(DaraModel):
         line_id: int = None,
         line_name: str = None,
     ):
-        # The CIDR blocks. Separate IP addresses with a hyphen (-). Enter a CIDR block in each row. You can enter 1 to 50 CIDR blocks at a time. If a CIDR block contains only one IP address, enter the IP address in the format of IP1-IP1. Different CIDR blocks cannot be overlapped.
+        # The list of IP ranges. Use a hyphen (-) to separate the start and end IP addresses. Specify one IP segment per line. You can specify 1 to 50 IP ranges. To specify a single IP address, use the format IP1-IP1. The IP ranges cannot overlap.
         self.ip_segment = ip_segment
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The unique ID of the custom line. You can call the [DescribeCustomLines](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describecustomlines?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the unique ID.
+        # The unique ID of the custom line. You can call [DescribeCustomLines](https://help.aliyun.com/document_detail/2355671.html) to obtain this ID.
         # 
         # This parameter is required.
         self.line_id = line_id
-        # The name of the custom line. The name must be 1 to 20 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The name of the custom line. The name must be 1 to 20 characters long and can contain Chinese characters, letters, digits, hyphens (-), and underscores (_).
         self.line_name = line_name
 
     def validate(self):
@@ -81,9 +82,9 @@ class UpdateCustomLineRequestIpSegment(DaraModel):
         end_ip: str = None,
         start_ip: str = None,
     ):
-        # The end IP address of the CIDR block.
+        # The end IP address of the IP range.
         self.end_ip = end_ip
-        # The start IP address of the CIDR block.
+        # The start IP address of the IP range.
         self.start_ip = start_ip
 
     def validate(self):

@@ -19,80 +19,87 @@ class UpdateDnsGtmMonitorRequest(DaraModel):
         protocol_type: str = None,
         timeout: int = None,
     ):
-        # The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+        # The number of consecutive health checks.
         self.evaluation_count = evaluation_count
         # The health check interval. Unit: seconds.
         self.interval = interval
-        # The monitored nodes.
+        # The list of city nodes for health checks.
         # 
         # This parameter is required.
         self.isp_city_node = isp_city_node
-        # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The ID of the health check configuration.
+        # The ID of the health check configuration. You can call the [DescribeDnsGtmInstanceAddressPool](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstanceaddresspool) operation to obtain the ID.
         # 
         # This parameter is required.
         self.monitor_config_id = monitor_config_id
         # The extended information. The required parameters vary based on the health check protocol.
         # 
-        # *   HTTP or HTTPS
+        # - HTTP(S):
         # 
-        #     *   port: the port that you want to check
+        #   - port: The port for the health check.
         # 
-        #     *   host: the host settings
+        #   - host: The Host header.
         # 
-        #     *   path: the URL path
+        #   - path: The URL path.
         # 
-        #     *   code: the return code. If the return value of code is greater than the specified value, the health check result is deemed abnormal. For example, if code is set to 400 and the code 404 is returned, the health check result is deemed abnormal.
+        #   - code: The health check is considered abnormal if the returned status code is greater than the specified value. For example, if you set this parameter to 400, a returned status code of 404 is considered abnormal.
         # 
-        #     *   failureRate: the failure rate
+        #   - failureRate: The failure rate.
         # 
-        #     *   sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
+        #   - sni: Specifies whether to enable Server Name Indication (SNI). This parameter is available only for the HTTPS protocol.
         # 
-        #         *   true: enables SNI.
-        #         *   false: disables SNI.
+        #     - true: Enable SNI.
         # 
-        #     *   nodeType: the type of the monitoring node when the address pool type is domain name. Valid values:
+        #     - false: Disable SNI.
         # 
-        #         *   IPV4
-        #         *   IPV6
+        #   - nodeType: The type of the node for health checks when the address pool type is DOMAIN.
         # 
-        # *   PING
+        #     - IPV4
         # 
-        #     *   failureRate: the failure rate
+        #     - IPV6
         # 
-        #     *   packetNum: the number of ping packets
+        # - PING:
         # 
-        #     *   packetLossRate: the loss rate of ping packets
+        #   - failureRate: The failure rate.
         # 
-        #     *   nodeType: the type of the monitoring node when the address pool type is domain name. Valid values:
+        #   - packetNum: The number of ping packets.
         # 
-        #         *   IPV4
-        #         *   IPV6
+        #   - packetLossRate: The packet loss rate.
         # 
-        # *   TCP
+        #   - nodeType: The type of the node for health checks when the address pool type is DOMAIN.
         # 
-        #     *   port: the port that you want to check
+        #     - IPV4
         # 
-        #     *   failureRate: the failure rate
+        #     - IPV6
         # 
-        #     *   nodeType: the type of the monitoring node when the address pool type is domain name. Valid values:
+        # - TCP:
         # 
-        #         *   IPV4
-        #         *   IPV6
+        #   - port: The port for the health check.
+        # 
+        #   - failureRate: The failure rate.
+        # 
+        #   - nodeType: The type of the node for health checks when the address pool type is DOMAIN.
+        # 
+        #     - IPV4
+        # 
+        #     - IPV6
         # 
         # This parameter is required.
         self.monitor_extend_info = monitor_extend_info
-        # The protocol used for the health check. Valid values:
+        # The health check protocol. Valid values:
         # 
-        # *   HTTP
-        # *   HTTPS
-        # *   PING
-        # *   TCP
+        # - HTTP
+        # 
+        # - HTTPS
+        # 
+        # - PING
+        # 
+        # - TCP
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
-        # The timeout period. Unit: milliseconds.
+        # The timeout period for a health check. Unit: milliseconds.
         self.timeout = timeout
 
     def validate(self):
@@ -171,9 +178,9 @@ class UpdateDnsGtmMonitorRequestIspCityNode(DaraModel):
         city_code: str = None,
         isp_code: str = None,
     ):
-        # The code of the city where the monitored node is deployed.
+        # The city code of the health check node.
         self.city_code = city_code
-        # The code of the Internet service provider (ISP) to which the monitored node belongs.
+        # The carrier code of the health check node.
         self.isp_code = isp_code
 
     def validate(self):

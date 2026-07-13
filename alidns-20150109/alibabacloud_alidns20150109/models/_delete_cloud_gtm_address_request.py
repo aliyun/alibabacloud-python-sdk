@@ -13,14 +13,15 @@ class DeleteCloudGtmAddressRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US (default): English.
         self.accept_language = accept_language
-        # The address ID. This ID uniquely identifies the address.
+        # The unique ID of the address.
         # 
         # This parameter is required.
         self.address_id = address_id
-        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token that ensures the idempotence of the request. The token must be unique among different requests. The token can be up to 64 ASCII characters long.
         self.client_token = client_token
 
     def validate(self):

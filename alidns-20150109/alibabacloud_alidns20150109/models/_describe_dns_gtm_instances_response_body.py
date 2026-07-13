@@ -17,17 +17,17 @@ class DescribeDnsGtmInstancesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The Global Traffic Manager (GTM) instances.
+        # The list of Global Traffic Manager (GTM) instances.
         self.gtm_instances = gtm_instances
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The number of the page returned. The value starts from **1**. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_items = total_items
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -104,27 +104,27 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstances(DaraModel):
         used_quota: main_models.DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota = None,
         version_code: str = None,
     ):
-        # The configurations of the instance.
+        # The configuration of the instance.
         self.config = config
-        # The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the instance was created.
         self.create_time = create_time
-        # The time when the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the instance was created.
         self.create_timestamp = create_timestamp
-        # The time when the instance expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the instance expires.
         self.expire_time = expire_time
-        # The time when the instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the instance expires.
         self.expire_timestamp = expire_timestamp
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The billing method of the GTM instance. Valid value:
+        # The billing method. Valid value:
         # 
-        # *   Subscription.
+        # - Subscription
         self.payment_type = payment_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The total number of Short Message Service (SMS) notifications.
+        # The total quota of text message notifications.
         self.sms_quota = sms_quota
-        # The total number of detection tasks.
+        # The total number of health check tasks.
         self.task_quota = task_quota
         # The used quota.
         self.used_quota = used_quota
@@ -230,13 +230,13 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesUsedQuota(DaraModel):
         sms_used_count: int = None,
         task_used_count: int = None,
     ):
-        # The total number of sent DingTalk notifications.
+        # The total number of DingTalk messages that were sent.
         self.dingtalk_used_count = dingtalk_used_count
-        # The total number of sent email notifications.
+        # The total number of emails that were sent.
         self.email_used_count = email_used_count
-        # The total number of sent SMS notifications.
+        # The total number of text messages that were sent.
         self.sms_used_count = sms_used_count
-        # The number of created detection tasks.
+        # The number of health check tasks that were created.
         self.task_used_count = task_used_count
 
     def validate(self):
@@ -291,33 +291,35 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfig(DaraModel):
         strategy_mode: str = None,
         ttl: int = None,
     ):
-        # The alert notification method.
+        # The alert notification methods.
         self.alert_config = alert_config
-        # The alert contact groups. The value is in the JSON format.
+        # The alert contact group. The value is a JSON-formatted list of strings.
         self.alert_group = alert_group
-        # The type of the CNAME. Valid value:
+        # The type of the CNAME domain name used for access. Valid value:
         # 
-        # *   PUBLIC
+        # - PUBLIC: for Internet access
         self.cname_type = cname_type
         # The name of the instance.
         self.instance_name = instance_name
-        # Specifies whether to use a custom CNAME or a system-assigned CNAME to access GTM over the Internet. Valid values:
+        # The method to access the instance over the Internet using a CNAME record. Valid values:
         # 
-        # *   CUSTOM: a custom CNAME
-        # *   SYSTEM_ASSIGN: a system-assigned CNAME. You cannot set PublicCnameMode to this value.
+        # - CUSTOM: custom
+        # 
+        # - SYSTEM_ASSIGN: system-assigned (This feature is disabled.)
         self.public_cname_mode = public_cname_mode
-        # The hostname of the domain name that is used to access GTM over the Internet.
+        # The hostname for Internet access.
         self.public_rr = public_rr
-        # The domain name that is used to access GTM over the Internet.
+        # The user\\"s service domain name that is accessible over the Internet.
         self.public_user_domain_name = public_user_domain_name
-        # The canonical name (CNAME) that is used to access GTM over the Internet.
+        # The domain name used for Internet access.
         self.public_zone_name = public_zone_name
-        # The type of the access policy. Valid values:
+        # The mode of the access policy. Valid values:
         # 
-        # *   LATENCY: latency-based access policy
-        # *   GEO: geographical location-based access policy
+        # - LATENCY: latency-based
+        # 
+        # - GEO: geography-based
         self.strategy_mode = strategy_mode
-        # The global time to live (TTL).
+        # The global TTL.
         self.ttl = ttl
 
     def validate(self):
@@ -410,28 +412,35 @@ class DescribeDnsGtmInstancesResponseBodyGtmInstancesConfigAlertConfig(DaraModel
         notice_type: str = None,
         sms_notice: str = None,
     ):
-        # Indicates whether DingTalk alert notifications are configured. Valid values:
+        # Indicates whether DingTalk notifications are configured. Valid values:
         # 
-        # *   true
-        # *   false | null
+        # - true: configured
+        # 
+        # - false or null: not configured
         self.dingtalk_notice = dingtalk_notice
         # Indicates whether email notifications are configured. Valid values:
         # 
-        # *   true
-        # *   false | null
+        # - true: configured
+        # 
+        # - false or null: not configured
         self.email_notice = email_notice
         # The type of the alert event. Valid values:
         # 
-        # *   ADDR_ALERT: The address is unavailable.
-        # *   ADDR_RESUME: The address becomes available.
-        # *   ADDR_POOL_GROUP_UNAVAILABLE: The address pool set is unavailable.
-        # *   ADDR_POOL_GROUP_AVAILABLE: The address pool set becomes available.
-        # *   ACCESS_STRATEGY_POOL_GROUP_SWITCH: Switchover is triggered between the primary and secondary address pools.
-        self.notice_type = notice_type
-        # Indicates whether SMS notifications are configured. Valid values:
+        # - ADDR_ALERT: The address is unavailable.
         # 
-        # *   true
-        # *   false | null
+        # - ADDR_RESUME: The address is restored.
+        # 
+        # - ADDR_POOL_GROUP_UNAVAILABLE: The address pool collection is unavailable.
+        # 
+        # - ADDR_POOL_GROUP_AVAILABLE: The address pool collection is restored.
+        # 
+        # - ACCESS_STRATEGY_POOL_GROUP_SWITCH: A switchover occurs between the primary and secondary address pools.
+        self.notice_type = notice_type
+        # Indicates whether text message notifications are configured. Valid values:
+        # 
+        # - true: configured
+        # 
+        # - false or null: not configured
         self.sms_notice = sms_notice
 
     def validate(self):

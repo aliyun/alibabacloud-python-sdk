@@ -17,19 +17,25 @@ class UpdateGtmAddressPoolRequest(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The list of addresses in the address pool.
+        # 
         # This parameter is required.
         self.addr = addr
-        # The ID of the address pool that you want to modify.
+        # The ID of the address pool.
         # 
         # This parameter is required.
         self.addr_pool_id = addr_pool_id
-        # The language used by the user.
+        # The language.
         self.lang = lang
-        # The minimum number of available addresses in the address pool.
+        # The minimum number of active addresses in the address pool.
         self.min_available_addr_num = min_available_addr_num
-        # The name of the address pool that you want to modify.
+        # The name of the address pool.
         self.name = name
-        # The type of the address pool that you want to modify.
+        # The type of the address pool. Valid values:
+        # 
+        # - IP: IPv4 addresses
+        # 
+        # - DOMAIN: Domain names
         # 
         # This parameter is required.
         self.type = type
@@ -99,15 +105,17 @@ class UpdateGtmAddressPoolRequestAddr(DaraModel):
         mode: str = None,
         value: str = None,
     ):
-        # The weight of the address pool that you want to modify.
+        # The weight of the address.
         self.lba_weight = lba_weight
-        # The mode of the address pool that you want to modify.
+        # The mode. Valid values:
         # 
-        # *   **SMART**: Intelligent return
-        # *   **ONLINE**: Always online
-        # *   **OFFLINE**: Always offline
+        # - **SMART**: Intelligent return
+        # 
+        # - **ONLINE**: Always online
+        # 
+        # - **OFFLINE**: Always offline
         self.mode = mode
-        # The addresses in the address pool.
+        # The address.
         self.value = value
 
     def validate(self):

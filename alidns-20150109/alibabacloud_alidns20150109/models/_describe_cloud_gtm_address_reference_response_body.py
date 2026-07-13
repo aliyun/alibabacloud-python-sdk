@@ -16,14 +16,14 @@ class DescribeCloudGtmAddressReferenceResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
-        # IP address or domain name.
+        # The IP address or domain name.
         self.address = address
-        # The address ID. This ID uniquely identifies the address.
+        # The unique ID of the address.
         self.address_id = address_id
         self.address_pools = address_pools
-        # Address name.
+        # The name of the address.
         self.name = name
-        # Unique request identification code.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

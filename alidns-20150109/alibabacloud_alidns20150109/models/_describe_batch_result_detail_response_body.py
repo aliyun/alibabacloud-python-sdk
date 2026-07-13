@@ -17,13 +17,13 @@ class DescribeBatchResultDetailResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.batch_result_details = batch_result_details
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

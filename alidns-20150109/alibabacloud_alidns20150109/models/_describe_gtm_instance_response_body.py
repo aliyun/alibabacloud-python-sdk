@@ -25,43 +25,45 @@ class DescribeGtmInstanceResponseBody(DaraModel):
         user_domain_name: str = None,
         version_code: str = None,
     ):
-        # The number of access policies of the GTM instance.
+        # The number of access policies.
         self.access_strategy_num = access_strategy_num
-        # The number of address pools of the GTM instance.
+        # The number of address pools.
         self.address_pool_num = address_pool_num
-        # The alert group of the GTM instance.
+        # The alert contact group.
         self.alert_group = alert_group
-        # The domain name of the GTM instance to which the service domain name is mapped by using a CNAME record.
+        # The CNAME access domain name.
         self.cname = cname
-        # Indicates whether the CNAME is a custom domain name or is assigned by the system. Valid values:
+        # The CNAME access mode. Valid values:
         # 
-        # *   **SYSTEM_ASSIGN**
-        # *   **CUSTOM**
+        # - **SYSTEM_ASSIGN**: The system assigns a domain name.
+        # 
+        # - **CUSTOM**: You use a custom domain name.
         self.cname_mode = cname_mode
-        # The time when the GTM instance was created.
+        # The time when the instance was created.
         self.create_time = create_time
-        # The timestamp that indicates the time when the GTM instance was created.
+        # The time when the instance was created. This is a UNIX timestamp.
         self.create_timestamp = create_timestamp
-        # The time when the GTM instance expires.
+        # The time when the instance expires.
         self.expire_time = expire_time
-        # The timestamp that indicates the time when the GTM instance expires.
+        # The expiration time of the instance. This is a UNIX timestamp.
         self.expire_timestamp = expire_timestamp
         # The ID of the GTM instance.
         self.instance_id = instance_id
-        # The name of the GTM instance.
+        # The name of the instance.
         self.instance_name = instance_name
-        # The load balancing policy. Valid values:
+        # The load balancing policy.
         # 
-        # *   **ALL_RR**: round robin
-        # *   **RATIO**: weighted round-robin
+        # - **ALL_RR**: round-robin
+        # 
+        # - **RATIO**: weighted round-robin
         self.lba_strategy = lba_strategy
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The global time to live (TTL).
+        # The global TTL.
         self.ttl = ttl
-        # The domain name of the application.
+        # The custom domain name.
         self.user_domain_name = user_domain_name
         # The version code.
         self.version_code = version_code

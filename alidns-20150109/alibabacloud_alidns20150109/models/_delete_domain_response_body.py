@@ -12,7 +12,7 @@ class DeleteDomainResponseBody(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

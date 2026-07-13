@@ -15,9 +15,9 @@ class DescribeGtmInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language of the values of specific response parameters.
+        # The language.
         self.lang = lang
-        # Specifies whether additional information is required. Default value: **false**. If the value is **true**, the AccessStrategyNum and AddressPoolNum parameters are returned.
+        # Specifies whether to return additional information. The default value is **false**. If you set this parameter to **true**, the response includes AccessStrategyNum (the number of access policies) and AddressPoolNum (the number of address pools).
         self.need_detail_attributes = need_detail_attributes
 
     def validate(self):

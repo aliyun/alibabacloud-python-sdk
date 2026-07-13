@@ -24,29 +24,29 @@ class DescribeDnsGtmInstanceResponseBody(DaraModel):
         used_quota: main_models.DescribeDnsGtmInstanceResponseBodyUsedQuota = None,
         version_code: str = None,
     ):
-        # The configurations of the instance.
+        # The instance configuration.
         self.config = config
         # The time when the instance was created.
         self.create_time = create_time
-        # The UNIX timestamp that indicates when the instance was created.
+        # The UNIX timestamp when the instance was created.
         self.create_timestamp = create_timestamp
-        # The time when the instance expires.
+        # The expiration date.
         self.expire_time = expire_time
-        # The UNIX timestamp that indicates when the instance expires.
+        # The UNIX timestamp when the instance expires.
         self.expire_timestamp = expire_timestamp
         # The ID of the instance.
         self.instance_id = instance_id
-        # The billing method. Valid value:
+        # The billing method.
         # 
-        # *   Subscription: You can pay in advance for the use of resources.
+        # - Subscription: subscription
         self.payment_type = payment_type
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the instance belongs.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The total number of SMS notifications.
+        # The quota on the number of text message notifications.
         self.sms_quota = sms_quota
-        # The total number of detection tasks.
+        # The quota on the number of health check tasks.
         self.task_quota = task_quota
         # The used quota.
         self.used_quota = used_quota
@@ -158,12 +158,13 @@ class DescribeDnsGtmInstanceResponseBodyUsedQuota(DaraModel):
         sms_used_count: int = None,
         task_used_count: int = None,
     ):
+        # The number of DingTalk notifications that were sent.
         self.dingtalk_used_count = dingtalk_used_count
-        # The total number of emails that were sent.
+        # The number of email notifications that were sent.
         self.email_used_count = email_used_count
-        # The total number of short messages that were sent.
+        # The number of text messages that were sent.
         self.sms_used_count = sms_used_count
-        # The number of detection tasks that were created.
+        # The number of health check tasks that were created.
         self.task_used_count = task_used_count
 
     def validate(self):
@@ -219,31 +220,33 @@ class DescribeDnsGtmInstanceResponseBodyConfig(DaraModel):
         ttl: int = None,
     ):
         self.alert_config = alert_config
-        # The name of the alert group.
+        # The alert contact group. The value is a \\`List\\<string>\\` in JSON format.
         self.alert_group = alert_group
-        # The type of the CNAME domain name that is used to access the instance. Valid value:
+        # The type of the CNAME domain name used for access.
         # 
-        # *   PUBLIC: The CNAME domain name is used to access the instance over the Internet.
+        # - PUBLIC: Internet-facing
         self.cname_type = cname_type
         # The name of the instance.
         self.instance_name = instance_name
-        # The domain name that is used to access the instance over the Internet.
+        # The public access domain name.
         self.pubic_zone_name = pubic_zone_name
-        # Indicates whether a custom CNAME domain name or a CNAME domain name assigned by the system is used to access the instance over the Internet. Valid values:
+        # The access method for the public CNAME.
         # 
-        # *   CUSTOM: A custom CNAME domain name is used.
-        # *   SYSTEM_ASSIGN: A CNAME domain name assigned by the system is used.
+        # - CUSTOM: custom
+        # 
+        # - SYSTEM_ASSIGN: system-assigned. This feature is disabled.
         self.public_cname_mode = public_cname_mode
-        # The hostname corresponding to the CNAME domain name that is used to access the instance over the Internet.
+        # The hostname for public access.
         self.public_rr = public_rr
-        # The service domain name that is used over the Internet.
+        # The user\\"s public service domain name.
         self.public_user_domain_name = public_user_domain_name
-        # The type of the access policy. Valid values:
+        # The access policy mode.
         # 
-        # *   LATENCY: Latency-based
-        # *   GEO: Geographical location-based
+        # - LATENCY: latency-based
+        # 
+        # - GEO: geography-based
         self.strategy_mode = strategy_mode
-        # The global time to live (TTL).
+        # The global TTL.
         self.ttl = ttl
 
     def validate(self):

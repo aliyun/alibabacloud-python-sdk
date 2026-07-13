@@ -12,22 +12,23 @@ class UpdateCloudGtmAddressEnableStatusRequest(DaraModel):
         client_token: str = None,
         enable_status: str = None,
     ):
-        # The language of the returned results. Valid values:
+        # The language of the response. Valid values:
         # 
         # - zh-CN: Chinese
         # 
         # - en-US: English
         self.accept_language = accept_language
-        # The ID of the address. This ID uniquely identifies the address.
+        # The unique ID of the address.
         # 
         # This parameter is required.
         self.address_id = address_id
-        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that is used to ensure the idempotence of the request. Make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The enabling state of the address. Valid values:
+        # The enabled status of the address:
         # 
-        # *   enable: The address is enabled and the address can be used for Domain Name System (DNS) resolution if the address passes health checks.
-        # *   disable: The address is disabled and the address cannot be used for DNS resolution regardless of whether the address passes health checks or not.
+        # - enable: The address can be used for DNS resolution if its health check is normal.
+        # 
+        # - disable: The address cannot be used for DNS resolution, regardless of its health check status.
         # 
         # This parameter is required.
         self.enable_status = enable_status

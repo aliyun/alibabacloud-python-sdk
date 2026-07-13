@@ -9,12 +9,13 @@ class DescribeGtmRecoveryPlanAvailableConfigRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language in which the returned results are displayed. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
         # 
-        # Default value: en.
+        # - en: English
+        # 
+        # Default: en
         self.lang = lang
 
     def validate(self):

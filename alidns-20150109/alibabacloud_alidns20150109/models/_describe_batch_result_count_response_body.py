@@ -20,22 +20,25 @@ class DescribeBatchResultCountResponseBody(DaraModel):
         self.batch_type = batch_type
         # The total number of domain names or DNS records that failed to be processed.
         self.failed_count = failed_count
-        # The cause of the execution failure.
+        # The reason why the task failed.
         self.reason = reason
         # The request ID.
         self.request_id = request_id
-        # The state of the task. Valid values:
+        # The status of the task. Valid values:
         # 
-        # *   **-1**: No task for importing domain names or DNS records is submitted.
-        # *   **0**: The task is being processed.
-        # *   **1**: The task is complete.
-        # *   **2**: The task failed.
+        # - **-1**: No task was submitted to import domain names or DNS records.
+        # 
+        # - **0**: Processing
+        # 
+        # - **1**: Completed
+        # 
+        # - **2**: Failed
         self.status = status
-        # The total number of domain names or DNS records that were processed.
+        # The total number of domain names or DNS records that were successfully processed.
         self.success_count = success_count
         # The ID of the last task.
         self.task_id = task_id
-        # The total number of DNS records that were processed in batches.
+        # The total number of records that are processed in batches.
         self.total_count = total_count
 
     def validate(self):

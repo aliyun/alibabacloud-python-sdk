@@ -13,9 +13,9 @@ class DescribePdnsRequestStatisticResponseBody(DaraModel):
         data: List[main_models.DescribePdnsRequestStatisticResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The statistics on the DNS requests.
+        # A list of request statistics.
         self.data = data
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,31 +69,31 @@ class DescribePdnsRequestStatisticResponseBodyData(DaraModel):
         v_6http_count: int = None,
         v_6https_count: int = None,
     ):
-        # The total number of DoH requests, including HTTP and HTTPS requests.
+        # The total number of DNS-over-HTTPS (DoH) requests. This value includes both HTTP and HTTPS requests.
         self.doh_total_count = doh_total_count
         # The number of HTTP requests.
         self.http_count = http_count
-        # The number of HTTPS requests. On the Traffic Analysis tab of the Public DNS console, the value of this parameter includes the number of DNS over HTTPs (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
+        # The number of HTTPS requests. On the Traffic Analysis tab of the Public DNS console, this parameter includes the number of DNS-over-HTTPS (DoH) requests. Therefore, DoH requests are not displayed separately in the console.
         self.https_count = https_count
         # The number of source IP addresses.
         self.ip_count = ip_count
-        # The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp of the statistics. Unit: milliseconds.
         self.timestamp = timestamp
         # The total number of requests.
         self.total_count = total_count
         # The total number of UDP requests.
         self.udp_total_count = udp_total_count
-        # The number of IPv4-based requests.
+        # The number of IPv4 requests.
         self.v_4count = v_4count
-        # The number of IPv4-based HTTP requests.
+        # The number of IPv4 HTTP requests.
         self.v_4http_count = v_4http_count
-        # The number of IPv4-based HTTPS requests.
+        # The number of IPv4 HTTPS requests.
         self.v_4https_count = v_4https_count
-        # The number of IPv6-based requests.
+        # The number of IPv6 requests.
         self.v_6count = v_6count
-        # The number of IPv6-based HTTP requests.
+        # The number of IPv6 HTTP requests.
         self.v_6http_count = v_6http_count
-        # The number of IPv6-based HTTPS requests.
+        # The number of IPv6 HTTPS requests.
         self.v_6https_count = v_6https_count
 
     def validate(self):

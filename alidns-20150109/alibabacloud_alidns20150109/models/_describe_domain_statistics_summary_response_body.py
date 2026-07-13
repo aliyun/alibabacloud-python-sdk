@@ -19,14 +19,14 @@ class DescribeDomainStatisticsSummaryResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
         self.statistics = statistics
-        # The total number of data records.
+        # The total number of entries.
         self.total_items = total_items
-        # The total number of returned pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

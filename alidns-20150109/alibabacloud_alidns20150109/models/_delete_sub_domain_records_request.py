@@ -13,24 +13,26 @@ class DeleteSubDomainRecordsRequest(DaraModel):
         type: str = None,
         user_client_ip: str = None,
     ):
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+        # The domain name.<props="china">You can call [DescribeDomains](https://help.aliyun.com/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) to obtain the domain name.
+        # <props="intl">You can call [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The hostname field in the DNS record.
+        # The host record.
         # 
-        # For example, if you want to resolve @.example.com, you must set this parameter to an at sign (@) instead of leaving it empty.
+        # To resolve @.example.com, set the host record to \\"@\\" instead of leaving it empty.
         # 
         # This parameter is required.
         self.rr = rr
-        # The type of DNS records. If you do not specify this parameter, all types of DNS records corresponding to the subdomain are returned.
+        # The type of the DNS record. If you do not specify this parameter, all types of DNS records for the subdomain are deleted.
         # 
-        # Valid values: **A, MX, CNAME, TXT, REDIRECT_URL, FORWORD_URL, NS, AAAA, and SRV**. The value is not case-sensitive.
+        # Valid values (case-insensitive): A, MX, CNAME, TXT, REDIRECT_URL, FORWARD_URL, NS, AAAA, and **SRV**.
         self.type = type
         # The IP address of the client.
         self.user_client_ip = user_client_ip

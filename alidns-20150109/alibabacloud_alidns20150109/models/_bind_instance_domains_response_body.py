@@ -11,11 +11,11 @@ class BindInstanceDomainsResponseBody(DaraModel):
         request_id: str = None,
         success_count: int = None,
     ):
-        # The number of domain names that failed to be bound to the instance.
+        # The number of domain names that failed to be bound.
         self.failed_count = failed_count
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The number of domain names that are bound to the instance.
+        # The number of domain names that were successfully bound.
         self.success_count = success_count
 
     def validate(self):

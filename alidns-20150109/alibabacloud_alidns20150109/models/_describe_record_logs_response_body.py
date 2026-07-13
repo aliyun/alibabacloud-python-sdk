@@ -16,14 +16,14 @@ class DescribeRecordLogsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of logs returned on the current page.
         self.page_size = page_size
         self.record_logs = record_logs
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of logs.
         self.total_count = total_count
 
     def validate(self):

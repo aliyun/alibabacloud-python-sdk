@@ -16,15 +16,15 @@ class DescribeDnsCacheDomainsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The domain names.
+        # The list of domain names returned.
         self.domains = domains
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries per page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of domain names.
         self.total_count = total_count
 
     def validate(self):
@@ -99,37 +99,37 @@ class DescribeDnsCacheDomainsResponseBodyDomains(DaraModel):
         update_timestamp: int = None,
         version_code: str = None,
     ):
-        # The maximum time-to-live (TTL) period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
+        # The maximum Time to Live (TTL) for cached data retrieved from the origin server. The value ranges from 30 to 86400.
         self.cache_ttl_max = cache_ttl_max
-        # The minimum TTL period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
+        # The minimum TTL for cached data retrieved from the origin server. The value ranges from 30 to 86400.
         self.cache_ttl_min = cache_ttl_min
-        # The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The time when the domain name was added.
         self.create_time = create_time
-        # The time when the domain name was added. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the domain name was added.
         self.create_timestamp = create_timestamp
-        # The ID of the cache-accelerated domain name.
+        # The ID of the authoritative proxy domain.
         self.domain_id = domain_id
-        # The cache-accelerated domain name.
+        # The name of the authoritative proxy domain.
         self.domain_name = domain_name
-        # The time when the instance expires. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The expiration time of the instance.
         self.expire_time = expire_time
-        # The time when the instance expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the instance expires.
         self.expire_timestamp = expire_timestamp
-        # The instance ID of the cache-accelerated domain name.
+        # The ID of the authoritative proxy domain instance.
         self.instance_id = instance_id
-        # The description of the domain name.
+        # The remarks.
         self.remark = remark
-        # The origin DNS servers.
+        # The list of origin DNS servers.
         self.source_dns_servers = source_dns_servers
-        # Specifies whether the origin Domain Name System (DNS) server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
+        # Indicates whether the origin server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
         self.source_edns = source_edns
-        # The origin protocol policy. Valid values: TCP and UDP. Default value: UDP.
+        # The origin protocol. Valid values: TCP and UDP. The default value is UDP.
         self.source_protocol = source_protocol
-        # The time when the configurations of the domain name were updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The time when the domain name was last updated.
         self.update_time = update_time
-        # The time when the configurations of the domain name were updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the domain name was last updated.
         self.update_timestamp = update_timestamp
-        # The edition code of Alibaba Cloud DNS.
+        # The version code of Alibaba Cloud DNS.
         self.version_code = version_code
 
     def validate(self):
@@ -256,7 +256,7 @@ class DescribeDnsCacheDomainsResponseBodyDomainsSourceDnsServers(DaraModel):
         host: str = None,
         port: str = None,
     ):
-        # The domain name or IP address of the origin DNS server.
+        # The domain name or IP address of the origin server.
         self.host = host
         # The port of the origin DNS server.
         self.port = port

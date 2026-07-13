@@ -15,18 +15,19 @@ class ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
-        self.accept_language = accept_language
-        # The address pools.
-        self.address_pools_shrink = address_pools_shrink
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # - zh-CN: Chinese
         # 
-        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the configuration ID of the access domain name.
+        # - en-US (default): English
+        self.accept_language = accept_language
+        # A list of address pools.
+        self.address_pools_shrink = address_pools_shrink
+        # A client-generated token that you use to ensure the idempotence of the request. Make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
+        self.client_token = client_token
+        # The ID of the instance configuration. For the same access domain name and GTM instance, you can configure both A and AAAA records. In this case, the GTM instance has two instance configurations. The ConfigId parameter uniquely identifies an instance configuration.
+        # 
+        # Call the [ListCloudGtmInstanceConfigs](https://help.aliyun.com/document_detail/2797349.html) operation to query the ConfigId of the instance configuration.
         self.config_id = config_id
-        # The ID of the GTM 3.0 instance for which you want to change address pools.
+        # The ID of the GTM 3.0 instance for which you want to replace address pools.
         self.instance_id = instance_id
 
     def validate(self):

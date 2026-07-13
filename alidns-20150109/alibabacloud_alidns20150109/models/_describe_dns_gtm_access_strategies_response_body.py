@@ -17,14 +17,14 @@ class DescribeDnsGtmAccessStrategiesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the returned page. The value starts from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned per page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
         self.strategies = strategies
-        # The total number of entries returned on all pages.
+        # The total number of entries returned.
         self.total_items = total_items
         # The total number of pages returned.
         self.total_pages = total_pages

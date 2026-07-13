@@ -11,10 +11,16 @@ class AddRspDomainServerHoldStatusForGatewayRequest(DaraModel):
         domain_name: str = None,
         status_msg: str = None,
     ):
+        # An idempotency parameter.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # The domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The status description.
+        # 
         # This parameter is required.
         self.status_msg = status_msg
 

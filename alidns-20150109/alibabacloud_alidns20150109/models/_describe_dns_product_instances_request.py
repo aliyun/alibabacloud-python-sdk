@@ -16,35 +16,39 @@ class DescribeDnsProductInstancesRequest(DaraModel):
         user_client_ip: str = None,
         version_code: str = None,
     ):
-        # The order in which you want to sort returned entries. Valid values:
+        # The sorting order. Valid values:
         # 
-        # *   DESC: Returned entries are sorted in descending order. If this parameter is left empty, returned entries are sorted in descending order by default.
-        # *   ASC: Returned entries are sorted in ascending order.
+        # - DESC: Descending order. This is the default value.
+        # 
+        # - ASC: Ascending order.
         self.direction = direction
-        # The type of the domain name. Valid values:
+        # The type of the domain name. This parameter is not case-sensitive. Valid values:
         # 
-        # *   PUBLIC (default): hosted public domain name
-        # *   CACHE: cached public domain name
+        # - PUBLIC: authoritative domain name (default)
+        # 
+        # - CACHE: authoritative proxy domain name
         self.domain_type = domain_type
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         # 
         # Default value: en
         self.lang = lang
-        # The method that is used to sort returned entries. Valid values:
+        # The field to sort the results by. Valid values:
         # 
-        # *   createDate: sorts returned entries by creation time. If this parameter is left empty, returned entries are sorted by creation time by default.
-        # *   expireDate: sorts returned entries by expiration time.
+        # - createDate: Sorts the results by creation time. This is the default value.
+        # 
+        # - expireDate: Sorts the results by expiration time.
         self.order_by = order_by
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number. Pages start from **1**. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
-        # The IP address of the client.
+        # The client\\"s IP address.
         self.user_client_ip = user_client_ip
-        # The version code of the Alibaba Cloud DNS instance.
+        # The edition code of the Alibaba Cloud DNS instance.
         self.version_code = version_code
 
     def validate(self):

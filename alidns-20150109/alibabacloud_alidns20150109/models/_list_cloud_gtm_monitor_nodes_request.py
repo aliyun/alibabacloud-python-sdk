@@ -12,8 +12,9 @@ class ListCloudGtmMonitorNodesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US** (default): English
+        # - **zh-CN**: Chinese
+        # 
+        # - **en-US** (default): English
         self.accept_language = accept_language
         self.show_disabled_nodes = show_disabled_nodes
 

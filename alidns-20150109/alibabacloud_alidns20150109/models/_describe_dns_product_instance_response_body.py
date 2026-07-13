@@ -47,117 +47,136 @@ class DescribeDnsProductInstanceResponseBody(DaraModel):
         version_code: str = None,
         version_name: str = None,
     ):
-        # Indicates whether auto-renewal was enabled. Valid values:
+        # Indicates whether auto-renewal is enabled for the instance.
         # 
-        # *   true: Auto-renewal was enabled.
-        # *   false: Auto-renewal was not enabled.
+        # - true: Auto-renewal is enabled.
+        # 
+        # - false: Auto-renewal is disabled.
         self.auto_renewal = auto_renewal
-        # The number of times that you can change the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
+        # The number of times the domain name can be changed for the paid DNS instance. This parameter is available for the Custom Edition.
         self.bind_count = bind_count
-        # The number of domain names that can be bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
+        # The number of domain names that can be attached to the paid DNS instance. This parameter is available for the Personal and Ultimate editions.
         self.bind_domain_count = bind_domain_count
-        # The number of domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
+        # The number of domain names that are attached to the paid DNS instance. This parameter is available for the Personal and Ultimate editions.
         self.bind_domain_used_count = bind_domain_used_count
-        # The number of times that you have changed the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
+        # The number of times the domain name has been changed for the paid DNS instance. This parameter is available for the Custom Edition.
         self.bind_used_count = bind_used_count
-        # The DDoS protection traffic. Unit: GB.
+        # The DDoS protection bandwidth. Unit: Gbit/s.
         self.ddos_defend_flow = ddos_defend_flow
-        # The DDoS protection frequency. Unit: 10,000 QPS. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
+        # The DDoS protection capacity in queries per second (QPS). The unit is 10,000 QPS. This parameter is available for the Custom Edition.
         self.ddos_defend_query = ddos_defend_query
-        # The maximum number of IP addresses that are used for load balancing in a single line of a domain name.
+        # The Server Load Balancer (SLB) capacity. This is the number of IP addresses that can be configured for a domain name on a single line.
         self.dns_slbcount = dns_slbcount
-        # The level of DNS protection. Valid values:
+        # The DNS security level. Valid values:
         # 
-        # *   no: No DNS protection is provided.
-        # *   basic: Basic DNS protection is provided.
-        # *   advanced: Advanced DNS protection is provided.
+        # - no: Not required
+        # 
+        # - basic: Basic DNS attack protection
+        # 
+        # - advanced: Advanced DNS attack protection
         self.dns_security = dns_security
         self.dns_servers = dns_servers
-        # The domain name that is bound to the paid instance.
+        # The attached domain name.
         # 
-        # If no value is returned for this parameter, no domain name is bound to the paid instance.
+        # If this parameter is empty, no domain name is attached.
         self.domain = domain
-        # The type of the instance. Valid values:
+        # The type of the instance:
         # 
-        # *   PUBLIC: authoritative domain name
-        # *   CACHE: cache-accelerated domain name
+        # - PUBLIC: An instance for an authoritative domain name.
+        # 
+        # - CACHE: An instance for a recursive DNS proxy.
         self.domain_type = domain_type
-        # The time when the instance expired. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the instance expires.
         self.end_time = end_time
-        # The time when the instance expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the instance expires. This is a UNIX timestamp.
         self.end_timestamp = end_timestamp
-        # Indicates whether global server load balancing (GSLB) is supported. Valid values:
+        # Indicates whether Global Server Load Balancer (GSLB) is allowed.
         # 
-        # *   true: GSLB is supported.
-        # *   false: GSLB is not supported.
+        # - true: Allowed
+        # 
+        # - false: Not allowed
         self.gslb = gslb
-        # The ISP resolution lines. Valid values:
+        # The carrier line from which the DNS request was initiated. Valid values:
         # 
-        # *   China Telecom
-        # *   China Mobile
-        # *   China Unicom
-        # *   China Education and Research Network (CERNET)
-        # *   China Broadcasting Network (CBN)
-        # *   Dr Peng Telecom & Media Group
+        # - China Telecom
+        # 
+        # - China Mobile
+        # 
+        # - China Unicom
+        # 
+        # - China Education and Research Network
+        # 
+        # - China Broadcasting Network
+        # 
+        # - Dr. Peng Group
         self.isplines = isplines
-        # The regional ISP resolution lines. Valid values:
+        # The carrier line and province from which the DNS request was initiated. Valid values:
         # 
-        # *   China Telecom (province)
-        # *   China Mobile (province)
-        # *   China Unicom (province)
-        # *   CERNET (province)
+        # - China Telecom (by province)
+        # 
+        # - China Mobile (by province)
+        # 
+        # - China Unicom (by province)
+        # 
+        # - China Education and Research Network (by province)
         self.ispregion_lines = ispregion_lines
-        # Indicates whether the Domain Name System (DNS) servers stopped responding to all DNS requests. Valid values:
+        # Indicates whether the domain name is in a blackhole filtering status.
         # 
-        # *   true: The DNS servers stopped responding to all DNS requests.
-        # *   false: The DNS servers did not stop responding to all DNS requests.
+        # - true: The domain name is in a blackhole filtering status.
+        # 
+        # - false: The domain name is not in a blackhole filtering status.
         self.in_black_hole = in_black_hole
-        # Indicates whether the DNS servers stopped responding to abnormal requests sent to the domain names.
+        # Indicates whether the domain name is undergoing traffic scrubbing.
         # 
-        # *   true: The DNS servers stopped responding to abnormal requests sent to the domain names.
-        # *   false: The DNS servers did not stop responding to abnormal requests sent to the domain names.
+        # - true: Traffic scrubbing is in progress.
+        # 
+        # - false: Traffic scrubbing is not in progress.
         self.in_clean = in_clean
         # The ID of the Alibaba Cloud DNS instance.
         self.instance_id = instance_id
-        # The interval at which the instance is monitored. Unit: minutes.
+        # The monitoring frequency. Unit: minutes.
         self.monitor_frequency = monitor_frequency
         # The number of monitoring nodes.
         self.monitor_node_count = monitor_node_count
-        # The number of monitoring tasks.
+        # The number of monitoring jobs.
         self.monitor_task_count = monitor_task_count
-        # The DDoS protection traffic outside the Chinese mainland. Unit: GB.
+        # The DDoS protection bandwidth for regions outside China. Unit: Gbit/s.
         self.oversea_ddos_defend_flow = oversea_ddos_defend_flow
-        # The line outside the Chinese mainland.
+        # The line for regions outside China.
         self.oversea_line = oversea_line
         # The billing method.
         self.payment_type = payment_type
-        # Indicates whether the DNS request lines are regional lines. Valid values:
+        # Indicates whether regional lines are used.
         # 
-        # *   true: The DNS request lines are regional lines.
-        # *   false: The DNS request lines are not regional lines.
+        # - true: Regional lines are used.
+        # 
+        # - false: Regional lines are not used.
         self.region_lines = region_lines
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The search engine resolution lines. Valid values:
+        # The search engine line. Valid values:
         # 
-        # *   Google
-        # *   Baidu
-        # *   Bing
-        # *   Youdao
+        # - Google
+        # 
+        # - Baidu
+        # 
+        # - Bing
+        # 
+        # - Youdao
         self.search_engine_lines = search_engine_lines
-        # The time when the instance was purchased. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the instance was purchased.
         self.start_time = start_time
-        # The time when the instance was purchased. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the instance was purchased. This is a UNIX timestamp.
         self.start_timestamp = start_timestamp
-        # The number of subdomain name levels.
+        # The number of subdomain levels.
         self.sub_domain_level = sub_domain_level
-        # The minimum time-to-live (TTL) period. Unit: seconds.
+        # The minimum Time to Live (TTL) value. Unit: seconds.
         self.ttlmin_value = ttlmin_value
-        # The number of the forwarded URLs.
+        # The number of URL forwards.
         self.urlforward_count = urlforward_count
-        # The version code of Alibaba Cloud DNS.
+        # The code of the Alibaba Cloud DNS edition.
         self.version_code = version_code
-        # The edition of Alibaba Cloud DNS.
+        # The name of the Alibaba Cloud DNS edition.
         self.version_name = version_name
 
     def validate(self):

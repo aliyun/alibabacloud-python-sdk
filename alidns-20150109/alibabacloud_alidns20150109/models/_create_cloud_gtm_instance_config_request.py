@@ -21,37 +21,47 @@ class CreateCloudGtmInstanceConfigRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US: English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English.
         self.accept_language = accept_language
+        # The billing method for the instance configuration:
+        # 
+        # - prepay: Subscription. This is the default value.
+        # 
+        # - postpay: Pay-as-you-go.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can specify a custom value, but you must make sure that the value is unique among different requests. The token can contain up to 64 ASCII characters.
         self.client_token = client_token
-        # The enabling state of the access domain name. Valid values:
+        # The status of the domain name instance:
         # 
-        # *   enable: The access domain name is enabled and the intelligent scheduling policy of the corresponding GTM instance takes effect.
-        # *   disable: The access domain name is disabled and the intelligent scheduling policy of the corresponding GTM instance is unavailable.
+        # - enable: Enabled. The intelligent scheduling policy of the GTM instance is active.
+        # 
+        # - disable: Disabled. The intelligent scheduling policy of the GTM instance is unavailable.
         self.enable_status = enable_status
-        # The ID of the Global Traffic Manager (GTM) 3.0 instance. This ID uniquely identifies a GTM 3.0 instance.
+        # The unique ID of the GTM 3.0 instance.
         self.instance_id = instance_id
-        # The description of the access domain name.
+        # The remark.
         self.remark = remark
-        # The hostname of the access domain name.
+        # The host record of the GTM access domain name.
         self.schedule_hostname = schedule_hostname
-        # The type of the Domain Name System (DNS) record configured for the access domain name. Valid values:
+        # The DNS record type of the access domain name:
         # 
-        # *   A: IPv4 address
-        # *   AAAA: IPv6 address
-        # *   CNAME: domain name
+        # - A: IPv4 address
+        # 
+        # - AAAA: IPv6 address
+        # 
+        # - CNAME: Canonical name
         self.schedule_rr_type = schedule_rr_type
-        # The configuration mode of the access domain name. Valid values:
+        # The configuration mode for the access domain name:
         # 
-        # *   sys_assign: system allocation. This mode is not supported.
-        # *   custom: custom allocation. You must select a zone within the account to which the instance belongs and enter a hostname to generate an access domain name.
+        # - sys_assign: The system assigns a domain name. This mode is no longer supported.
+        # 
+        # - custom: Custom mode. Select a domain name under the account that owns the instance and enter a host record to generate the access domain name.
         self.schedule_zone_mode = schedule_zone_mode
-        # The name of the parent zone for the access domain name configured in GTM. In most cases, the value of this parameter is the name of a zone hosted by Alibaba Cloud DNS. This zone belongs to the account to which the GTM instance belongs. You can specify the name of a zone or subzone.
+        # The zone name, which is the parent zone of the GTM access domain name. This is typically a domain name hosted in the Alibaba Cloud DNS console under the account that owns the GTM instance. Primary domains and subdomains are supported.
         self.schedule_zone_name = schedule_zone_name
-        # The global time to live (TTL) period. Unit: seconds. The global TTL period affects how long the DNS records that map the access domain name to the addresses in the address pools are cached in the local DNS servers of Internet service providers (ISPs). You can specify a custom value.
+        # The global Time to Live (TTL) in seconds. This is the TTL for the access domain name that resolves to an address in an address pool. This value affects how long the DNS record is cached on a carrier\\"s local DNS server. You can specify a custom TTL.
         self.ttl = ttl
 
     def validate(self):

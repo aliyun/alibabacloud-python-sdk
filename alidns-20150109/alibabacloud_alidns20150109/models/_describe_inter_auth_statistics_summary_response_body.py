@@ -17,12 +17,17 @@ class DescribeInterAuthStatisticsSummaryResponseBody(DaraModel):
         total_page: int = None,
         total_size: int = None,
     ):
+        # The current page number.
         self.cur_page = cur_page
+        # The paginated data.
         self.page_data = page_data
+        # The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # The total number of pages.
         self.total_page = total_page
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -101,19 +106,37 @@ class DescribeInterAuthStatisticsSummaryResponseBodyPageData(DaraModel):
         source_region: str = None,
         zone_name: str = None,
     ):
+        # The start time of the current period (the 0th second of the minute).
         self.aggr_timestamp = aggr_timestamp
+        # The number of requests.
         self.count = count
+        # The domain name. Queries the transfer records of the specified domain name.
         self.domain_name = domain_name
+        # The fluctuation rate.
         self.fluctuation_value = fluctuation_value
+        # The resolution line.
         self.line = line
+        # The value of the previous period.
         self.previous_count = previous_count
+        # The protocol type of the DNS resolution query request. Valid values:
+        # 
+        # - UDP
+        # 
+        # - TCP.
         self.protocol = protocol
+        # The request record type.
         self.qtype = qtype
+        # The success rate or proportion.
         self.ratio = ratio
+        # The DNS response code.
         self.rcode = rcode
+        # The source IP address.
         self.source_ip = source_ip
+        # The ISP of the request source.
         self.source_isp = source_isp
+        # The source region for copying the image. If not specified, a random region is selected.
         self.source_region = source_region
+        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):

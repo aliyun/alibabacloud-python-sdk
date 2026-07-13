@@ -11,11 +11,13 @@ class UpdateRecursionRecordRemarkRequest(DaraModel):
         record_id: str = None,
         remark: str = None,
     ):
+        # A client token used to ensure the idempotence of the request. Generate a unique value for this parameter from your client. The value can contain only ASCII characters and must be no more than 64 characters long.
         self.client_token = client_token
-        # record id
+        # The ID of the record.
         # 
         # This parameter is required.
         self.record_id = record_id
+        # The remarks.
         self.remark = remark
 
     def validate(self):

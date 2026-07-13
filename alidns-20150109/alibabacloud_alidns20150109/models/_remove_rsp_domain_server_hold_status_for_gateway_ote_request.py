@@ -11,10 +11,15 @@ class RemoveRspDomainServerHoldStatusForGatewayOteRequest(DaraModel):
         domain_name: str = None,
         status_msg: str = None,
     ):
+        # Idempotency token
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # Domain name
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # Description of the status change
         self.status_msg = status_msg
 
     def validate(self):

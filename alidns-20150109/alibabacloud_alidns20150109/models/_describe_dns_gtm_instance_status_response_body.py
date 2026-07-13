@@ -14,17 +14,17 @@ class DescribeDnsGtmInstanceStatusResponseBody(DaraModel):
         strategy_not_available_num: int = None,
         switch_to_failover_strategy_num: int = None,
     ):
-        # The number of available addresses.
+        # The number of healthy addresses.
         self.addr_available_num = addr_available_num
-        # The number of unavailable addresses.
+        # The number of unhealthy addresses.
         self.addr_not_available_num = addr_not_available_num
         # The number of unavailable address pool groups.
         self.addr_pool_group_not_available_num = addr_pool_group_not_available_num
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The number of access policies that are unavailable in the current active address pool group.
+        # The number of unavailable access policies for the active address pool group.
         self.strategy_not_available_num = strategy_not_available_num
-        # The number of access policies switched to the secondary address pool group.
+        # The number of access policies that are switched to the failover address pool group.
         self.switch_to_failover_strategy_num = switch_to_failover_strategy_num
 
     def validate(self):

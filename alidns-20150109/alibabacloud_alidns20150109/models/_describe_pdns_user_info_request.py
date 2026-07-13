@@ -9,10 +9,11 @@ class DescribePdnsUserInfoRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid value:
+        # The language of the request and response. The default value is **zh**. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

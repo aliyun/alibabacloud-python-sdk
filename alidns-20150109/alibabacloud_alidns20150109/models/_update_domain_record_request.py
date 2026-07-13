@@ -17,48 +17,44 @@ class UpdateDomainRecordRequest(DaraModel):
         user_client_ip: str = None,
         value: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The resolution line. Default value: **default**.
-        # 
+        # The resolution line. The default value is **default**.
         # For more information, see
-        # 
-        # [DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+        # <props="china">[Enumeration of resolution lines](https://help.aliyun.com/document_detail/29807.html).
+        # <props="intl">[Enumeration of resolution lines](https://www.alibabacloud.com/help/en/doc-detail/29807.htm).
         self.line = line
-        # The priority of the mail exchanger (MX) record. Valid values: `1 to 50`.
+        # The priority of the MX record. Valid values: `[1, 50]`.
         # 
-        # This parameter is required if the type of the DNS record is MX.
+        # This parameter is required if the record type is MX.
         self.priority = priority
-        # The hostname.
-        # 
-        # For example, if you want to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it empty.
+        # The host record.
+        # To resolve the root domain, such as example.com, set the host record to the at sign (@).
         # 
         # This parameter is required.
         self.rr = rr
-        # The ID of the Domain Name System (DNS) record.
-        # 
-        # You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+        # The ID of the DNS record. To obtain the ID, call the [DescribeDomainRecords](https://help.aliyun.com/document_detail/2357159.html) operation.
         # 
         # This parameter is required.
         self.record_id = record_id
-        # The time to live (TTL) period of the Alibaba Cloud DNS (DNS) record. Default value: 600. Unit: seconds.
-        # 
+        # The time to live (TTL). The default value is 600 seconds (10 minutes).
         # For more information, see
-        # 
-        # [TTL definition](https://www.alibabacloud.com/help/zh/doc-detail/29806.htm).
+        # <props="china">[TTL definition](https://help.aliyun.com/document_detail/29806.html).
+        # <props="intl">[TTL definition](https://www.alibabacloud.com/help/en/doc-detail/29806.htm).
         self.ttl = ttl
         # The type of the DNS record. For more information, see
-        # 
-        # [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
+        # <props="china">[DNS record types](https://help.aliyun.com/document_detail/29805.html).
+        # <props="intl">[DNS record types](https://www.alibabacloud.com/help/en/doc-detail/29805.htm).
         # 
         # This parameter is required.
         self.type = type
-        # The IP address of the client.
+        # The client IP address.
         self.user_client_ip = user_client_ip
-        # The value of the DNS record.
+        # The record value.
         # 
         # This parameter is required.
         self.value = value

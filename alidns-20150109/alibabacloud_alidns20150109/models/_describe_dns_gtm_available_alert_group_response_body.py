@@ -10,9 +10,9 @@ class DescribeDnsGtmAvailableAlertGroupResponseBody(DaraModel):
         available_alert_group: str = None,
         request_id: str = None,
     ):
-        # The returned available alert groups.
+        # The available alert contact groups.
         self.available_alert_group = available_alert_group
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class DescribeGtmMonitorConfigRequest(DaraModel):
         lang: str = None,
         monitor_config_id: str = None,
     ):
-        # The language of the values of specific response parameters.
+        # The language.
         self.lang = lang
         # The ID of the health check configuration.
         # 

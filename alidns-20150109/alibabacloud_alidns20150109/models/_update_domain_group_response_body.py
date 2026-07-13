@@ -15,7 +15,7 @@ class UpdateDomainGroupResponseBody(DaraModel):
         self.group_id = group_id
         # The new name of the domain name group.
         self.group_name = group_name
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

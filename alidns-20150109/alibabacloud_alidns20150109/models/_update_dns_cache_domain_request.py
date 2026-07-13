@@ -19,26 +19,33 @@ class UpdateDnsCacheDomainRequest(DaraModel):
         source_edns: str = None,
         source_protocol: str = None,
     ):
-        # The maximum TTL period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
+        # The maximum TTL for cached data retrieved from the origin server. The value ranges from 30 to 86400.
         self.cache_ttl_max = cache_ttl_max
-        # The minimum time-to-live (TTL) period of the cached data retrieved from the origin Domain Name System (DNS) server. Unit: seconds. Valid values: 30 to 86400.
+        # The minimum time-to-live (TTL) for cached data retrieved from the origin server. The value ranges from 30 to 86400.
         self.cache_ttl_min = cache_ttl_min
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtian the domain name.
+        # The domain name.<props="china"> To query the domain name, call [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+        # <props="intl">To query the domain name, call [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0).
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The instance ID of the cache-accelerated domain name. You can call the [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+        # The ID of the authoritative proxy domain name instance.<props="china"> To query the instance ID, call [ListCloudGtmInstances](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+        # <props="intl">To query the instance ID, call [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0).
         self.instance_id = instance_id
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English Default: **zh**
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        # 
+        # **zh**
         self.lang = lang
-        # The origin DNS servers. A maximum of 10 origin DNS servers are supported.
+        # A list of origin DNS servers. You can add up to 10 servers.
         self.source_dns_server = source_dns_server
-        # Specifies whether the origin DNS server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
+        # Specifies whether the origin server supports Extension Mechanisms for DNS (EDNS).
+        # SUPPORT: The origin server supports EDNS.
+        # NOT_SUPPORT: The origin server does not support EDNS.
         self.source_edns = source_edns
-        # The origin protocol policy. Valid values: TCP and UDP. Default value: UDP.
+        # The origin protocol. Valid values: TCP and UDP. Default value: UDP.
         self.source_protocol = source_protocol
 
     def validate(self):
@@ -117,7 +124,7 @@ class UpdateDnsCacheDomainRequestSourceDnsServer(DaraModel):
         host: str = None,
         port: str = None,
     ):
-        # The domain name or IP address of the origin DNS server.
+        # The domain name or IP address of the origin server.
         self.host = host
         # The port of the origin DNS server.
         self.port = port

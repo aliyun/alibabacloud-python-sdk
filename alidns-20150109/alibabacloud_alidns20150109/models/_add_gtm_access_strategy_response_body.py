@@ -10,9 +10,9 @@ class AddGtmAccessStrategyResponseBody(DaraModel):
         request_id: str = None,
         strategy_id: str = None,
     ):
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The ID of the access policy created.
+        # The policy ID.
         self.strategy_id = strategy_id
 
     def validate(self):

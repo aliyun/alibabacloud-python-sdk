@@ -24,51 +24,59 @@ class AddGtmAddressPoolRequest(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # The address pools.
+        # The list of addresses in the address pool.
         # 
         # This parameter is required.
         self.addr = addr
-        # The number of consecutive failures.
+        # The number of consecutive failed health checks.
         self.evaluation_count = evaluation_count
-        # The ID of the GTM instance for which you want to create an address pool.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The health check interval. Unit: seconds. Set the value to 60.
+        # The health check interval. Unit: seconds. The value must be 60.
         self.interval = interval
-        # The monitored nodes.
+        # The list of city nodes for monitoring.
         self.isp_city_node = isp_city_node
-        # The language of the values of specific response parameters.
+        # The response language.
         self.lang = lang
-        # The minimum number of available addresses in the address pool.
+        # The minimum number of available addresses.
         # 
         # This parameter is required.
         self.min_available_addr_num = min_available_addr_num
-        # The extended information. The required parameters vary based on the value of ProtocolType.
+        # The extended information. The parameters that you must configure vary based on the health check protocol.
         # 
-        # When ProtocolType is set to HTTP or HTTPS:
+        # HTTP and HTTPS:
         # 
-        # *   port: the port that you want to check
-        # *   failureRate: the failure rate
-        # *   code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value. Valid values: 400 and 500.
-        # *   host: the host settings
-        # *   path: the URL path
+        # - port: The health check port.
         # 
-        # When ProtocolType is set to PING:
+        # - failureRate: The failure rate.
         # 
-        # *   packetNum: the number of ping packets
-        # *   packetLossRate: the packet loss rate
-        # *   failureRate: the failure rate
+        # - code: The return code. A response with a return code greater than the specified value is considered abnormal. Valid values: 400 and 500.
         # 
-        # When ProtocolType is set to TCP:
+        # - host: The host setting.
         # 
-        # *   port: the port that you want to check
-        # *   failureRate: the failure rate
+        # - path: The URL path.
+        # 
+        # PING:
+        # 
+        # - packetNum: The number of ping packets.
+        # 
+        # - packetLossRate: The packet loss rate.
+        # 
+        # - failureRate: The failure rate.
+        # 
+        # TCP:
+        # 
+        # - port: The health check port.
+        # 
+        # - failureRate: The failure rate.
         self.monitor_extend_info = monitor_extend_info
-        # Specifies whether to enable the health check. Valid values:
+        # The status of the health check. Valid values:
         # 
-        # *   **OPEN**: enables the health check.
-        # *   **CLOSE**: disables the health check. This is the default value.
+        # - **OPEN**: enabled
+        # 
+        # - **CLOSE** (default): disabled
         self.monitor_status = monitor_status
         # The name of the address pool.
         # 
@@ -76,17 +84,21 @@ class AddGtmAddressPoolRequest(DaraModel):
         self.name = name
         # The health check protocol. Valid values:
         # 
-        # *   HTTP
-        # *   HTTPS
-        # *   Ping
-        # *   TCP
+        # - HTTP
+        # 
+        # - HTTPS
+        # 
+        # - Ping
+        # 
+        # - TCP
         self.protocol_type = protocol_type
         # The timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
         self.timeout = timeout
         # The type of the address pool. Valid values:
         # 
-        # *   **IP**: IPv4 address
-        # *   **DOMAIN**: domain name
+        # - **IP**: IPv4 address
+        # 
+        # - **DOMAIN**: domain name
         # 
         # This parameter is required.
         self.type = type
@@ -206,11 +218,13 @@ class AddGtmAddressPoolRequestIspCityNode(DaraModel):
         city_code: str = None,
         isp_code: str = None,
     ):
-        # The code of the city where the monitored node is deployed. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
+        # The city code of the monitoring node. For information about valid values, see the response of DescribeGtmMonitorAvailableConfig.
         self.city_code = city_code
-        # *   The code of the Internet service provider (ISP) to which the monitored node belongs. For more information about specific values, see the response parameters of DescribeGtmMonitorAvailableConfig.
-        # *   If the value of the GroupType parameter is BGP or OVERSEAS, IspCode is optional. The default value is 465.
-        # *   If the value of the GroupType parameter is not BGP or OVERSEAS, IspCode is required and is used together with CityCode.
+        # - For information about valid values, see the response of DescribeGtmMonitorAvailableConfig.
+        # 
+        # - If GroupType is set to Border Gateway Protocol (BGP) or Overseas, IspCityNode.N.IspCode is optional. The default value is 465.
+        # 
+        # - If GroupType is not set to BGP or Overseas, IspCityNode.N.IspCode is required and must be used with IspCityNode.N.CityCode.
         self.isp_code = isp_code
 
     def validate(self):
@@ -246,15 +260,17 @@ class AddGtmAddressPoolRequestAddr(DaraModel):
         mode: str = None,
         value: str = None,
     ):
-        # The weight of the address pool.
+        # The weight of the address.
         self.lba_weight = lba_weight
-        # The mode of the address pool. Valid values:
+        # The mode of the address. Valid values:
         # 
-        # *   **SMART**: smart return
-        # *   **ONLINE**: always online
-        # *   **OFFLINE**: always offline
+        # - **SMART**: smart return
+        # 
+        # - **ONLINE**: always online
+        # 
+        # - **OFFLINE**: always offline
         self.mode = mode
-        # The address in the address pool.
+        # The address.
         self.value = value
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeDohDomainStatisticsSummaryResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The page number of the returned page.
+        # The number of the returned page. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The statistics list.
+        # A list of statistics.
         self.statistics = statistics
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_items = total_items
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -111,13 +111,13 @@ class DescribeDohDomainStatisticsSummaryResponseBodyStatistics(DaraModel):
         self.ip_count = ip_count
         # The total number of requests.
         self.total_count = total_count
-        # The number of IPv4-based HTTP requests.
+        # The number of IPv4 HTTP requests.
         self.v_4http_count = v_4http_count
-        # The number of IPv4-based HTTPS requests.
+        # The number of IPv4 HTTPS requests.
         self.v_4https_count = v_4https_count
-        # The number of IPv6-based HTTP requests.
+        # The number of IPv6 HTTP requests.
         self.v_6http_count = v_6http_count
-        # The number of IPv6-based HTTPS requests.
+        # The number of IPv6 HTTPS requests.
         self.v_6https_count = v_6https_count
 
     def validate(self):

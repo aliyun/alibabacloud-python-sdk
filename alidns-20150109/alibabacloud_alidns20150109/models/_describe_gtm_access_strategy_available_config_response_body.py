@@ -17,9 +17,9 @@ class DescribeGtmAccessStrategyAvailableConfigResponseBody(DaraModel):
     ):
         self.addr_pools = addr_pools
         self.lines = lines
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the global line is recommended.
+        # Indicates whether a global line is suggested.
         self.suggest_set_default_line = suggest_set_default_line
 
     def validate(self):

@@ -10,16 +10,18 @@ class DeleteDomainGroupRequest(DaraModel):
         group_id: str = None,
         lang: str = None,
     ):
-        # The ID of the domain name group. You can call the [DescribeDomainGroups](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+        # The ID of the domain name group.<props="china">Call the [DescribeDomainGroups](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c4g.11186623.help-menu-search-29697.d_0) operation to obtain the ID.
+        # <props="intl">Call the [DescribeDomainGroups](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
         # 
         # This parameter is required.
         self.group_id = group_id
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
         # 
-        # Default value: en.
+        # - en: English
+        # 
+        # Default value: en
         self.lang = lang
 
     def validate(self):

@@ -10,12 +10,13 @@ class UpdateCloudGtmInstanceConfigAlertResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The operation was successful.
+        # 
+        # - **false**: The operation failed.
         self.success = success
 
     def validate(self):

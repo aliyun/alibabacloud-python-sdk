@@ -10,9 +10,9 @@ class DeleteDnsGtmAccessStrategyRequest(DaraModel):
         lang: str = None,
         strategy_id: str = None,
     ):
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The ID of the access policy.
+        # The ID of the access policy. Call [DescribeDnsGtmAccessStrategies](https://help.aliyun.com/document_detail/2357191.html) to obtain the policy ID.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id

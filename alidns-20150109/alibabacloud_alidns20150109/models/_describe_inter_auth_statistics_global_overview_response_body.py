@@ -11,8 +11,9 @@ class DescribeInterAuthStatisticsGlobalOverviewResponseBody(DaraModel):
         data: main_models.DescribeInterAuthStatisticsGlobalOverviewResponseBodyData = None,
         request_id: str = None,
     ):
+        # The statistical data.
         self.data = data
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51,9 +52,13 @@ class DescribeInterAuthStatisticsGlobalOverviewResponseBodyData(DaraModel):
         total_resolve_count: int = None,
         total_resolve_count_trend: int = None,
     ):
+        # The average success ratio.
         self.avg_success_ratio = avg_success_ratio
+        # The change in the average success ratio compared to the previous statistical period.
         self.avg_success_ratio_trend = avg_success_ratio_trend
+        # The total resolve count.
         self.total_resolve_count = total_resolve_count
+        # The change in the total resolve count compared to the previous statistical period.
         self.total_resolve_count_trend = total_resolve_count_trend
 
     def validate(self):

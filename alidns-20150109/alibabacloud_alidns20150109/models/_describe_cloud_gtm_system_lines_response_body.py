@@ -14,10 +14,10 @@ class DescribeCloudGtmSystemLinesResponseBody(DaraModel):
         system_lines: main_models.DescribeCloudGtmSystemLinesResponseBodySystemLines = None,
         system_lines_tree: str = None,
     ):
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         self.system_lines = system_lines
-        # The system lines, which are in a tree structure. Only a system line is listed in this example.
+        # The data of the system lines in a tree structure. The complete data is not listed due to its large size.
         self.system_lines_tree = system_lines_tree
 
     def validate(self):

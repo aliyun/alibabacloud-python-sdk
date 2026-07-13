@@ -10,11 +10,11 @@ class DeleteDnsGtmAddressPoolRequest(DaraModel):
         addr_pool_id: str = None,
         lang: str = None,
     ):
-        # The ID of the address pool.
+        # The ID of the address pool. To obtain the ID, call [DescribeDnsGtmInstanceAddressPools](https://www.alibabacloud.com/help/en/dns/latest/api-alidns-2015-01-09-describednsgtminstanceaddresspools).
         # 
         # This parameter is required.
         self.addr_pool_id = addr_pool_id
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language for some returned parameters. Default: en. Valid values: en, zh, and ja.
         self.lang = lang
 
     def validate(self):

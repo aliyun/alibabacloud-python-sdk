@@ -12,13 +12,13 @@ class GetMainDomainNameResponseBody(DaraModel):
         rr: str = None,
         request_id: str = None,
     ):
-        # The level of the entered domain name.
+        # The level of the input domain name.
         self.domain_level = domain_level
         # The domain name.
         self.domain_name = domain_name
-        # The hostname.
+        # The host record.
         self.rr = rr
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

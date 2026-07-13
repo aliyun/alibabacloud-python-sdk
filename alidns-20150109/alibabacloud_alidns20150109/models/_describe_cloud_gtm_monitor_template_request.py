@@ -12,10 +12,11 @@ class DescribeCloudGtmMonitorTemplateRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US** (default): English
+        # - **zh-CN**: Chinese.
+        # 
+        # - **en-US** (default): English.
         self.accept_language = accept_language
-        # The ID of the health check template that you want to query. This ID uniquely identifies the health check template.
+        # The unique ID of the health check template.
         # 
         # This parameter is required.
         self.template_id = template_id

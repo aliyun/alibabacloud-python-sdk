@@ -11,8 +11,9 @@ class DescribeInterAuthStatisticsZoneOverviewResponseBody(DaraModel):
         data: main_models.DescribeInterAuthStatisticsZoneOverviewResponseBodyData = None,
         request_id: str = None,
     ):
+        # The overview data for the zone.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,8 +51,11 @@ class DescribeInterAuthStatisticsZoneOverviewResponseBodyData(DaraModel):
         sudden_drop_domain_count: int = None,
         sudden_increase_domain_count: int = None,
     ):
+        # The number of domain names with refused responses.
         self.refused_domain_count = refused_domain_count
+        # The number of domain names with a sudden drop in QPS.
         self.sudden_drop_domain_count = sudden_drop_domain_count
+        # The number of domain names with a sudden increase in QPS.
         self.sudden_increase_domain_count = sudden_increase_domain_count
 
     def validate(self):

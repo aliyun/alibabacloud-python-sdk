@@ -16,15 +16,15 @@ class DescribeTagsResponseBody(DaraModel):
         tags: List[main_models.DescribeTagsResponseBodyTags] = None,
         total_count: int = None,
     ):
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. Pages start from **1**. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: 200.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The tags added to the resource.
+        # The list of tags.
         self.tags = tags
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,9 +85,9 @@ class DescribeTagsResponseBodyTags(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of tag N added to the resource.
+        # The tag key.
         self.key = key
-        # The values of tags added to the resource.
+        # A list of tag values.
         self.values = values
 
     def validate(self):

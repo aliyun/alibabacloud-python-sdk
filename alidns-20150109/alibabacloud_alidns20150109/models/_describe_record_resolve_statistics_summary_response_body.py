@@ -17,13 +17,13 @@ class DescribeRecordResolveStatisticsSummaryResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
+        # The number of entries returned per page. The maximum value is **500**. The default value is **20**.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The statistics.
+        # The list of statistics.
         self.statistics = statistics
         # The total number of entries returned.
         self.total_items = total_items
@@ -96,14 +96,15 @@ class DescribeRecordResolveStatisticsSummaryResponseBodyStatistics(DaraModel):
         domain_type: str = None,
         sub_domain: str = None,
     ):
-        # The number of DNS requests.
+        # The number of requests.
         self.count = count
-        # The subdomain name.
+        # The subdomain.
         self.domain_name = domain_name
-        # The type of the domain name. The parameter value is not case-sensitive. Valid values:
+        # The type of the domain name. This parameter is not case-sensitive. Valid values:
         # 
-        # *   PUBLIC (default): hosted public domain name
-        # *   CACHE: cache-accelerated domain name
+        # - PUBLIC: an authoritative domain name (default)
+        # 
+        # - CACHE: an authoritative proxy domain name
         self.domain_type = domain_type
         # The subdomain.
         self.sub_domain = sub_domain

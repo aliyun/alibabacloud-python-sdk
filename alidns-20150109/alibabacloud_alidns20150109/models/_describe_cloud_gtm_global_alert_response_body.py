@@ -14,7 +14,9 @@ class DescribeCloudGtmGlobalAlertResponseBody(DaraModel):
         alert_group: main_models.DescribeCloudGtmGlobalAlertResponseBodyAlertGroup = None,
         request_id: str = None,
     ):
+        # The alert configurations.
         self.alert_config = alert_config
+        # The alert notification groups.
         self.alert_group = alert_group
         # The request ID.
         self.request_id = request_id

@@ -22,19 +22,46 @@ class DescribeInterAuthStatisticsSummaryRequest(DaraModel):
         statistical_type: str = None,
         zone_name: str = None,
     ):
+        # The sort direction. Valid values:
+        # 
+        # - DESC (default): descending order
+        # 
+        # - ASC: ascending order.
         self.direction = direction
+        # The domain name.
         self.domain_name = domain_name
+        # The end time of the query. The value is a UNIX timestamp in milliseconds.
+        # >Warning: If the query time range is large and the domain name has an excessive volume of resolution logs, the query may time out or return inaccurate results..
         self.end_timestamp = end_timestamp
+        # Used for the report of subdomain names with sudden increases or decreases in request volume.
         self.grow_type = grow_type
+        # The sort parameter. Valid values:
+        # - createDate: sorts by creation time (default if left empty)
+        # - expireDate: sorts by expiration time.
         self.order_by = order_by
+        # The page number. The value starts from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page in a paged query. Maximum value: 100. Default value: 20.
         self.page_size = page_size
+        # The sampling period. Valid values:
+        # 
+        # - DAY: day
+        # 
+        # - WEEK: week
+        # 
+        # - MONTH: month.
         self.period = period
+        # The DNS response code.
         self.rcode = rcode
+        # The region of the resolution cluster.
         self.server_region = server_region
+        # The route type. Valid values: cloud: cloud route. local: on-premises route.
         self.source_type = source_type
+        # The start time of the query. The value is a UNIX timestamp in milliseconds.
         self.start_timestamp = start_timestamp
+        # The type of statistical metric.
         self.statistical_type = statistical_type
+        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):

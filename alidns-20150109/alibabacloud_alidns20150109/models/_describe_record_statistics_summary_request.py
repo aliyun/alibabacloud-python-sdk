@@ -22,35 +22,49 @@ class DescribeRecordStatisticsSummaryRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The type of the domain name. The parameter value is not case-sensitive. Valid values:
+        # The type of the domain name. This parameter is not case-sensitive. Valid values:
         # 
-        # *   PUBLIC (default): hosted public domain name
-        # *   CACHE: cache-accelerated domain name
+        # - PUBLIC: authoritative domain name (default)
+        # 
+        # - CACHE: proxy domain name
         self.domain_type = domain_type
-        # The end date of the query. Specify the start date in the **YYYY-MM-DD** format.
+        # The end date of the query. The format is **YYYY-MM-DD**.
         # 
-        # The default value is the day when you query the data.
+        # The default value is the current day.
         self.end_date = end_date
-        # The keyword for searches in %KeyWord% mode. The value is not case-sensitive.
+        # The keyword. The search is performed in the %KeyWord% format and is not case-sensitive.
         self.keyword = keyword
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # - zh: Chinese
+        # 
+        # - en: English
+        # 
+        # The default value is en.
         self.lang = lang
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries to return on each page. The maximum value is **100**, the minimum value is **1**, and the default value is **20**.
         self.page_size = page_size
-        # The search mode of the keyword. Valid values:
+        # The search mode for the keyword. Valid values:
         # 
-        # *   **LIKE** (default): fuzzy search
-        # *   **EXACT**: exact search
+        # - **LIKE**: fuzzy search (default)
+        # 
+        # - **EXACT**: exact match
         self.search_mode = search_mode
-        # The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
+        # The start date of the query. The format is **YYYY-MM-DD**.
         # 
-        # You can only query the DNS records within the last 90 days.``
+        # You can query data only from the last 90 days. The value of `StartDate` must be greater than or equal to the current date minus 90 days.
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The maximum number of DNS requests that you can obtain. You can obtain data about a domain name with DNS request volume less than or equal to the maximum number. For example, if you set this parameter to 100, you can query domain names with less than 100 DNS requests.
+        # The threshold for the number of DNS requests. This operation returns data for subdomains whose request count is less than or equal to this value.
+        # 
+        # - If you set this parameter to 100, subdomains with a request count from 1 to 100 are returned.
+        # 
+        # - If you leave this parameter empty, all subdomains that have DNS requests are returned.
+        # 
+        # - If you set this parameter to 0, subdomains with no DNS requests are returned. If a domain name is added on the current day and has no requests, you can query its data on the next day.
         self.threshold = threshold
 
     def validate(self):

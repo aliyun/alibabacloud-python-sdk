@@ -18,13 +18,13 @@ class DescribeGtmInstanceAddressPoolsResponseBody(DaraModel):
         total_pages: int = None,
     ):
         self.addr_pools = addr_pools
-        # The number of the page returned.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries returned on all pages.
+        # The total number of entries returned.
         self.total_items = total_items
         # The total number of pages returned.
         self.total_pages = total_pages

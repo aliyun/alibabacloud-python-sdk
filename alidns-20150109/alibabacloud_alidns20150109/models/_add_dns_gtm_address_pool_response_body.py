@@ -15,7 +15,7 @@ class AddDnsGtmAddressPoolResponseBody(DaraModel):
         self.addr_pool_id = addr_pool_id
         # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,9 +10,9 @@ class DeleteGtmAccessStrategyRequest(DaraModel):
         lang: str = None,
         strategy_id: str = None,
     ):
-        # The language used by the user.
+        # The language.
         self.lang = lang
-        # The ID of the access policy that you want to delete.
+        # The policy ID.
         self.strategy_id = strategy_id
 
     def validate(self):

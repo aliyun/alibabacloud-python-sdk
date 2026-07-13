@@ -11,7 +11,7 @@ class MoveDomainResourceGroupRequest(DaraModel):
         new_resource_group_id: str = None,
         resource_id: str = None,
     ):
-        # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. The default value is en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the new resource group.
         # 

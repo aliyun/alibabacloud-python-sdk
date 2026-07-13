@@ -17,11 +17,16 @@ class SearchCloudGtmMonitorTemplatesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The current page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
+        # The number of entries returned on each page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
+        # The unique request ID.
         self.request_id = request_id
         self.templates = templates
+        # The total number of health check templates that are found.
         self.total_items = total_items
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

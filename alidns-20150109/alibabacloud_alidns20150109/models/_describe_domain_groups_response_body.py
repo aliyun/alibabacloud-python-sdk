@@ -17,13 +17,13 @@ class DescribeDomainGroupsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.domain_groups = domain_groups
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The start value is **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of domain name groups.
         self.total_count = total_count
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeDohAccountStatisticsResponseBody(DaraModel):
         request_id: str = None,
         statistics: List[main_models.DescribeDohAccountStatisticsResponseBodyStatistics] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The statistics list.
+        # The list of statistics.
         self.statistics = statistics
 
     def validate(self):
@@ -62,17 +62,17 @@ class DescribeDohAccountStatisticsResponseBodyStatistics(DaraModel):
         v_6http_count: int = None,
         v_6https_count: int = None,
     ):
-        # The timestamp.
+        # The timestamp of the statistics. Unit: milliseconds.
         self.timestamp = timestamp
         # The total number of requests.
         self.total_count = total_count
-        # The number of IPv4-based HTTP requests.
+        # The number of IPv4 HTTP requests.
         self.v_4http_count = v_4http_count
-        # The number of IPv4-based HTTPS requests.
+        # The number of IPv4 HTTPS requests.
         self.v_4https_count = v_4https_count
-        # The number of IPv6-based HTTP requests.
+        # The number of IPv6 HTTP requests.
         self.v_6http_count = v_6http_count
-        # The number of IPv6-based HTTPS requests.
+        # The number of IPv6 HTTPS requests.
         self.v_6https_count = v_6https_count
 
     def validate(self):

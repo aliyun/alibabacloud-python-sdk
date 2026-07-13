@@ -20,16 +20,17 @@ class DescribeDnsProductInstancesResponseBody(DaraModel):
         self.dns_products = dns_products
         # The type of the domain name. Valid values:
         # 
-        # *   PUBLIC (default): hosted public domain name
-        # *   CACHE: cached public domain name
+        # - PUBLIC: authoritative domain name (default)
+        # 
+        # - CACHE: authoritative proxy domain name
         self.domain_type = domain_type
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries on the current page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of domain names.
+        # The total number of instances that match the query.
         self.total_count = total_count
 
     def validate(self):

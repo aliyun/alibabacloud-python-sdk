@@ -17,39 +17,41 @@ class DescribeDomainResolveStatisticsSummaryRequest(DaraModel):
         start_date: str = None,
         threshold: int = None,
     ):
-        # The order in which you want to sort the returned entries. Valid values:
+        # The sort direction. Valid values:
         # 
-        # *   DESC: the descending order
-        # *   ASC: the ascending order
+        # - DESC: descending
+        # 
+        # - ASC: ascending
         self.direction = direction
-        # The end time in the yyyy-MM-dd format, for example, 2023-03-13.
+        # The end date. The format is yyyy-MM-dd. For example, 2023-03-13.
         self.end_date = end_date
-        # The keyword. The Keyword parameter is used together with the SearchMode parameter.
+        # The keyword. This parameter is used with SearchMode.
         self.keyword = keyword
         # The language. Valid values: zh, en, and ja.
         self.lang = lang
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 1000.
+        # The number of entries to return on each page for a paged query. The maximum value is 1000. The minimum value is 1.
         self.page_size = page_size
         # The search mode of the keyword. Valid values:
         # 
-        # *   LIKE (default): fuzzy search
-        # *   EXACT: exact search
+        # - LIKE: fuzzy search (default)
+        # 
+        # - EXACT: exact match
         self.search_mode = search_mode
-        # The start time in the yyyy-MM-dd format, for example, 2023-03-01.
+        # The start date. The format is yyyy-MM-dd. For example, 2023-03-01.
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The threshold for the number of Domain Name System (DNS) requests. You can query the domain names at the specified quantity level of DNS requests and query the number of DNS requests for each domain name.
+        # The threshold for the number of DNS queries. This parameter filters domain names by query volume.
         # 
-        # If you do not specify this parameter, the data about the domain names that have DNS requests is obtained.
+        # If you do not specify this parameter, the operation returns domain names with more than zero queries.
         # 
-        # If you set this parameter to a value less than 0, the data about all domain names is obtained.
+        # If you specify a value less than 0, the operation returns all domain names.
         # 
-        # If you set this parameter to 0, the data about the domain names that do not have DNS requests is obtained.
+        # If you specify 0, the operation returns domain names with zero queries.
         # 
-        # If you set this parameter to a value greater than 0, the data about the domain names whose number of DNS requests is less than or equal to the value of this parameter is obtained.
+        # If you specify a value greater than 0, the operation returns domain names with a query volume up to this value.
         self.threshold = threshold
 
     def validate(self):

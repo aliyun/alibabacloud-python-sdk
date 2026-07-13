@@ -14,10 +14,15 @@ class RemoveRspDomainServerHoldStatusForGatewayOteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Detailed information about access denial. This field appears only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # List of returned data items.
         self.data = data
+        # Indicates whether you can retry the request after failure. `true`: retry is allowed. `false`: retry is not allowed.
         self.recoverable_error = recoverable_error
+        # Unique ID of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded. `true`: succeeded. `false`: failed.
         self.success = success
 
     def validate(self):
@@ -74,6 +79,7 @@ class RemoveRspDomainServerHoldStatusForGatewayOteResponseBodyData(DaraModel):
         self,
         domain_name: str = None,
     ):
+        # Domain name
         self.domain_name = domain_name
 
     def validate(self):
@@ -107,12 +113,23 @@ class RemoveRspDomainServerHoldStatusForGatewayOteResponseBodyAccessDeniedDetail
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The unauthorized operation that was attempted.
         self.auth_action = auth_action
+        # Display name of the authenticated entity
         self.auth_principal_display_name = auth_principal_display_name
+        # ID of the owner of the authenticated entity
         self.auth_principal_owner_id = auth_principal_owner_id
+        # Type of identity
         self.auth_principal_type = auth_principal_type
+        # Encrypted diagnostic message
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # Reason for authentication failure. Valid values:
+        # 
+        # - ExplicitDeny: explicit denial
+        # 
+        # - ImplicitDeny: implicit denial
         self.no_permission_type = no_permission_type
+        # Type of policy
         self.policy_type = policy_type
 
     def validate(self):

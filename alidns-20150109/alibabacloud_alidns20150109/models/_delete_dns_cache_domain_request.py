@@ -10,14 +10,17 @@ class DeleteDnsCacheDomainRequest(DaraModel):
         domain_name: str = None,
         lang: str = None,
     ):
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the name.
+        # The domain name.<props="china"> Call [DescribeDomains](https://help.aliyun.com/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) to obtain this value.
+        # <props="intl">Call [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain this value.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English Default: **zh**
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        #   The default value is **zh**.
         self.lang = lang
 
     def validate(self):

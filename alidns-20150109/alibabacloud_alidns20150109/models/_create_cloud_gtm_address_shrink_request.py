@@ -22,56 +22,68 @@ class CreateCloudGtmAddressShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US (default): English.
         self.accept_language = accept_language
-        # IP address or domain name.
+        # The IP address or domain name.
         # 
         # This parameter is required.
         self.address = address
-        # Address ownership information.
+        # The attribution information of the address.
         self.attribute_info = attribute_info
-        # The failover mode that is used when address exceptions are identified. Valid values:
+        # The switchover mode for the address when a health check is abnormal. Valid values:
         # 
-        # *   auto: the automatic mode. The system determines whether to return an address based on the health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # - auto: The system automatically manages the address status based on health check results. If an address is unhealthy, DNS resolution for it stops. If the address becomes healthy, DNS resolution resumes.
+        # 
+        # - manual: You manually manage the address status. If you set an address to abnormal, DNS resolution for it stops. It does not resume even if the address becomes healthy. If you set an address to normal, DNS resolution for it resumes. If a healthy address becomes unhealthy, the system sends an alert but does not stop DNS resolution.
         # 
         # This parameter is required.
         self.available_mode = available_mode
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Make sure that the token is unique for each request. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # Indicates the current enabled status of the address:
-        # - enable: Enabled status 
-        # - disable: Disabled status
+        # The status of the address. Valid values:
+        # 
+        # - enable: The address is enabled.
+        # 
+        # - disable: The address is disabled.
         # 
         # This parameter is required.
         self.enable_status = enable_status
-        # The condition for determining the health status of the address. This parameter is required when HealthTasks is specified. Valid values:
+        # The condition for determining the health of the address. This parameter is required if you specify HealthTasks. Valid values:
         # 
-        # *   any_ok: The health check results of at least one health check template are normal.
-        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
-        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
-        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
-        # *   all_ok: The health check results of all health check templates are normal.
+        # - any_ok: At least one health check is successful.
+        # 
+        # - p30_ok: At least 30% of health checks are successful.
+        # 
+        # - p50_ok: At least 50% of health checks are successful.
+        # 
+        # - p70_ok: At least 70% of health checks are successful.
+        # 
+        # - all_ok: All health checks are successful.
         # 
         # This parameter is required.
         self.health_judgement = health_judgement
-        # The health check tasks associated with the address.
+        # The health check tasks for the address.
         self.health_tasks_shrink = health_tasks_shrink
-        # The availability state of the address. This parameter is required when AvailableMode is set to **manual**. Valid values:
+        # The availability status of the address when the health check-based switchover mode is set to **manual**. Valid values:
         # 
-        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+        # - available: The address is available. In this state, DNS resolution for the address is normal. If a health check is abnormal, the system only sends an alert and does not stop DNS resolution.
+        # 
+        # - unavailable: The address is unavailable. In this state, DNS resolution for the address is stopped. DNS resolution is not resumed even if a health check is normal.
         self.manual_available_status = manual_available_status
-        # Address name.
+        # The name of the address.
         # 
         # This parameter is required.
         self.name = name
-        # Remarks.
+        # The remarks about the address.
         self.remark = remark
-        # Address type:
+        # The type of the address. Valid values:
+        # 
         # - IPv4
+        # 
         # - IPv6
+        # 
         # - domain
         # 
         # This parameter is required.

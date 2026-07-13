@@ -14,15 +14,15 @@ class UpdateGtmAccessStrategyRequest(DaraModel):
         strategy_id: str = None,
         strategy_name: str = None,
     ):
-        # The line codes of access regions.
+        # The source of the DNS requests.
         self.access_lines = access_lines
-        # The ID of the default address pool.
+        # The ID of the primary address pool collection.
         self.default_addr_pool_id = default_addr_pool_id
-        # The ID of the failover address pool.
+        # The ID of the failover address pool collection.
         self.failover_addr_pool_id = failover_addr_pool_id
-        # The language used by the user.
+        # The language.
         self.lang = lang
-        # The ID of the access policy that you want to query for the GTM instance.
+        # The ID of the access policy.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id

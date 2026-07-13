@@ -19,37 +19,48 @@ class DescribeInternetDnsLogsRequest(DaraModel):
         recursion_protocol_type: str = None,
         start_timestamp: int = None,
     ):
-        # The account ID displayed on the Recursive Resolution (Public DNS) page after you activate Alibaba Cloud Public DNS.
+        # The ID of the Public DNS configuration.
         self.account_id = account_id
         # The domain name.
         self.domain_name = domain_name
-        # The end time of the query (timestamp, unit: milliseconds). >Warning: If the query time span is too large and the amount of resolution logs for the queried domain is excessive, it may lead to a query timeout or inaccurate query results.
+        # The end of the time range to query. This is a UNIX timestamp in milliseconds.
+        # >Warning: If you specify a wide time range, many logs may be returned. This can cause a query timeout or inaccurate results.
         self.end_timestamp = end_timestamp
-        # Return value language, options: 
-        # - zh: Chinese 
+        # The language of the response. Valid values:
+        # 
+        # - zh: Chinese
+        # 
         # - en: English
         # 
-        # Default: en
+        # Default value: en.
         self.lang = lang
-        # Module type 
-        # - AUTHORITY (default): Public Authoritative DNS 
-        # - RECURSION: Public Recursive DNS
+        # The module type.
+        # 
+        # - AUTHORITY (default): public authoritative DNS
+        # 
+        # - RECURSION: public recursive DNS
         self.module = module
-        # Page number, default value is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # Page size for query.
+        # The number of entries to return on each page.
         self.page_size = page_size
         self.precise_sort = precise_sort
-        # Query parameters 
-        # - sourceIp: Source IP address 
-        # - queryNameFuzzy: Domain name (fuzzy value) 
-        # - queryType: Record type 
-        # - value: Resolution result 
-        # - status: Status 
-        # - serverIp: Resolution server IP
+        # The query parameters.
+        # 
+        # - sourceIp: the source IP address
+        # 
+        # - queryNameFuzzy: the domain name (fuzzy match)
+        # 
+        # - queryType: the record type
+        # 
+        # - value: the resolution result
+        # 
+        # - status: the status
+        # 
+        # - serverIp: the IP address of the resolution server
         self.query_condition = query_condition
         self.recursion_protocol_type = recursion_protocol_type
-        # The start time of the query (timestamp, unit: milliseconds).
+        # The start of the time range to query. This is a UNIX timestamp in milliseconds.
         self.start_timestamp = start_timestamp
 
     def validate(self):

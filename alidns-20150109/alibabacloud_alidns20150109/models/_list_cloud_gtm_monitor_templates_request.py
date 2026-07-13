@@ -16,28 +16,34 @@ class ListCloudGtmMonitorTemplatesRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
-        self.accept_language = accept_language
-        # The IP address type of health check nodes. Valid values:
+        # - zh-CN: Chinese.
         # 
-        # *   IPv4: applicable when health checks are performed on IPv4 addresses.
-        # *   IPv6: applicable when health checks are performed on IPv6 addresses.
+        # - en-US (default): English.
+        self.accept_language = accept_language
+        # The IP version of the detection points.
+        # 
+        # - IPv4: The destination address is an IPv4 address.
+        # 
+        # - IPv6: The destination address is an IPv6 address.
         self.ip_version = ip_version
-        # The name of the health check probe template, which is recommended to be distinguishable for configuration personnel to differentiate and remember, ideally indicating the health check protocol.
+        # The name of the health check template. Name the template in a way that helps you distinguish between different health check protocols.
         self.name = name
-        # Current page number, starting from **1**, default is **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Protocol types for initiating probes to the target IP address:
+        # The protocol used for the health check.
+        # 
         # - ping
+        # 
         # - tcp
+        # 
         # - http
+        # 
         # - https
         self.protocol = protocol
 

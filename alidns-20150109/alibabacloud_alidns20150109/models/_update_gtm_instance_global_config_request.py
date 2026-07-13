@@ -17,39 +17,41 @@ class UpdateGtmInstanceGlobalConfigRequest(DaraModel):
         ttl: int = None,
         user_domain_name: str = None,
     ):
-        # The alert group. Only one alert group is supported.
+        # The alert contact group. Only one alert contact group is supported.
         # 
-        # >  This parameter is required only for the first modification.
+        # > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
         self.alert_group = alert_group
-        # If you set **CnameMode** to **CUSTOM**, you must specify the CnameCustomDomainName parameter, which must be set to a primary domain name.
+        # This parameter is required when you set **CnameMode** to **CUSTOM**. The value must be the primary domain name.
         self.cname_custom_domain_name = cname_custom_domain_name
-        # Specifies whether to use a system-assigned canonical name (CNAME) or a custom CNAME to access GTM. Valid values:
+        # The connection type. Valid values:
         # 
-        # *   **SYSTEM_ASSIGN**: system-assigned CNAME
-        # *   **CUSTOM**: custom CNAME
+        # - **SYSTEM_ASSIGN**: system-assigned
+        # 
+        # - **CUSTOM**: custom
         self.cname_mode = cname_mode
         # The ID of the GTM instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the GTM instance.
+        # The name of the instance.
         # 
-        # >  This parameter is required only for the first modification.
+        # > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
         self.instance_name = instance_name
         # The language.
         self.lang = lang
-        # The balancing policy. Valid values:
+        # The load balancing policy. Valid values:
         # 
-        # *   **ALL_RR**: load balancing
-        # *   **RATIO**: weighted round-robin
+        # - **ALL_RR**: round-robin
         # 
-        # >  This parameter is required only for the first modification.
+        # - **RATIO**: weighted round-robin
+        # 
+        # > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
         self.lba_strategy = lba_strategy
-        # The global time-to-live (TTL).
+        # The global Time to Live (TTL).
         self.ttl = ttl
         # The primary domain name.
         # 
-        # >  This parameter is required only for the first modification.
+        # > This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
         self.user_domain_name = user_domain_name
 
     def validate(self):

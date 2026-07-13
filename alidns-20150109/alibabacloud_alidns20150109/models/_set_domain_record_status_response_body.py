@@ -15,7 +15,7 @@ class SetDomainRecordStatusResponseBody(DaraModel):
         self.record_id = record_id
         # The request ID.
         self.request_id = request_id
-        # The status of the DNS record.
+        # The current status of the DNS record.
         self.status = status
 
     def validate(self):

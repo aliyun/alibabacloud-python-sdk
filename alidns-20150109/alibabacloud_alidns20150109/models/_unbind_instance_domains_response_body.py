@@ -11,11 +11,11 @@ class UnbindInstanceDomainsResponseBody(DaraModel):
         request_id: str = None,
         success_count: int = None,
     ):
-        # The number of domain names that failed to be unbound from the instance.
+        # The number of domain names that failed to be detached.
         self.failed_count = failed_count
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The number of domain names that are unbound from the instance.
+        # The number of domain names that were successfully detached.
         self.success_count = success_count
 
     def validate(self):

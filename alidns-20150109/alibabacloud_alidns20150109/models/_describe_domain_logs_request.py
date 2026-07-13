@@ -16,24 +16,33 @@ class DescribeDomainLogsRequest(DaraModel):
         type: str = None,
         end_date: str = None,
     ):
-        # The ID of the domain name group.
+        # The ID of the domain name group. If you do not specify this parameter, all groups are queried.
         self.group_id = group_id
-        # The keyword for the query in "%KeyWord%" mode. The keyword is not case-sensitive.
+        # The keyword for the query. A case-insensitive \\`contains\\` search is performed.
         self.key_word = key_word
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
-        self.lang = lang
-        # The page number to return. The page number starts from **1**. Default value: **1**.
-        self.page_number = page_number
-        # The number of entries to return per page. Maximum value: **100**. Default value: **20**.
-        self.page_size = page_size
-        # The start time for the query. Format: **YYYY-MM-DD**
-        self.start_date = start_date
-        # The type of object of which you want to query operation logs. Valid values:
+        # The language of the request and response.
         # 
-        # *   domain: domain name
-        # *   slavedns: secondary Domain Name System (DNS)
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        # 
+        # The default value is **zh**.
+        self.lang = lang
+        # The number of the page to return. The value starts from **1**. The default value is **1**.
+        self.page_number = page_number
+        # The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
+        self.page_size = page_size
+        # The start date. The format is **YYYY-MM-DD**.
+        self.start_date = start_date
+        # The type of content to query.
+        # 
+        # - domain: domain name
+        # 
+        # - slavedns: secondary DNS
+        # 
+        # If you do not specify this parameter, all types are queried.
         self.type = type
-        # The end time for the query. Format: **YYYY-MM-DD**
+        # The end date. The format is **YYYY-MM-DD**.
         self.end_date = end_date
 
     def validate(self):

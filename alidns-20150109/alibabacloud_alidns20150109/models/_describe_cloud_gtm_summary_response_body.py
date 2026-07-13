@@ -12,13 +12,13 @@ class DescribeCloudGtmSummaryResponseBody(DaraModel):
         monitor_task_total_quota: int = None,
         request_id: str = None,
     ):
-        # The total number of instances within the current account.
+        # The total number of instances in your account.
         self.instance_total_count = instance_total_count
         # The total number of configured health check tasks.
         self.monitor_task_total_count = monitor_task_total_count
         # The quota on the number of health check tasks.
         self.monitor_task_total_quota = monitor_task_total_quota
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

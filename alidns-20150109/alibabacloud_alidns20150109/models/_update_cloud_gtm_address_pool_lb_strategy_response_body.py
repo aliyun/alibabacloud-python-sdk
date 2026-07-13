@@ -11,13 +11,15 @@ class UpdateCloudGtmAddressPoolLbStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID of the address pool. This ID uniquely identifies the address pool.
+        # The unique ID of the address pool.
         self.address_pool_id = address_pool_id
-        # Unique request identification code.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the modification operation was successful:
-        # - true: Operation successful
-        # - false: Operation failed
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

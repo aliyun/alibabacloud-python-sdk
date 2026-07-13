@@ -10,10 +10,12 @@ class UpdateCloudGtmInstanceConfigBasicResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Unique request identification code.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful: 
-        # - **true**: The call succeeded. 
+        # Indicates whether the operation was successful:
+        # 
+        # - **true**: The call was successful.
+        # 
         # - **false**: The call failed.
         self.success = success
 

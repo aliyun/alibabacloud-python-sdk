@@ -14,10 +14,15 @@ class AddRspDomainServerHoldStatusForGatewayOteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Detailed access-denied information. This field appears only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # List of returned data
         self.data = data
+        # Indicates whether you can retry the request. `true`: retry allowed. `false`: retry not allowed
         self.recoverable_error = recoverable_error
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates whether the request succeeded. `true`: succeeded. `false`: failed
         self.success = success
 
     def validate(self):
@@ -74,6 +79,7 @@ class AddRspDomainServerHoldStatusForGatewayOteResponseBodyData(DaraModel):
         self,
         domain_name: str = None,
     ):
+        # Domain name
         self.domain_name = domain_name
 
     def validate(self):
@@ -107,12 +113,23 @@ class AddRspDomainServerHoldStatusForGatewayOteResponseBodyAccessDeniedDetail(Da
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # Unauthorized operation attempted
         self.auth_action = auth_action
+        # Display name of the authenticated entity
         self.auth_principal_display_name = auth_principal_display_name
+        # Owner ID of the authenticated entity
         self.auth_principal_owner_id = auth_principal_owner_id
+        # Identity type
         self.auth_principal_type = auth_principal_type
+        # Encrypted diagnostic message
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # Reason for authentication failure. Valid values:
+        # 
+        # - ExplicitDeny: explicit deny
+        # 
+        # - ImplicitDeny: implicit deny
         self.no_permission_type = no_permission_type
+        # Policy type
         self.policy_type = policy_type
 
     def validate(self):

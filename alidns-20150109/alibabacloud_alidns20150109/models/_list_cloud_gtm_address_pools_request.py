@@ -18,33 +18,37 @@ class ListCloudGtmAddressPoolsRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English. This is the default value.
         self.accept_language = accept_language
-        # Address pool name.
+        # The name of the address pool.
         self.address_pool_name = address_pool_name
         # The type of the address pool. Valid values:
         # 
-        # *   IPv4: indicates that the service address to be resolved is an IPv4 address.
-        # *   IPv6: indicates that the service address to be resolved is an IPv6 address.
-        # *   domain: indicates that the service address to be resolved is a domain name.
-        self.address_pool_type = address_pool_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # The enabling state of the address pool. Valid values:
+        # - IPv4: The address pool contains IPv4 addresses.
         # 
-        # *   enable: The address pool is enabled.
-        # *   disable: The address pool is disabled.
+        # - IPv6: The address pool contains IPv6 addresses.
+        # 
+        # - domain: The address pool contains domain names.
+        self.address_pool_type = address_pool_type
+        # A client-generated token that is used to ensure the idempotence of the request. Make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
+        self.client_token = client_token
+        # The status of the address pool. Valid values:
+        # 
+        # - enable: The address pool is enabled.
+        # 
+        # - disable: The address pool is disabled.
         self.enable_status = enable_status
-        # Current page number, starting at **1**, default is **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+        # The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The additional description of the address pool.
+        # The remarks for the address pool.
         self.remark = remark
 
     def validate(self):

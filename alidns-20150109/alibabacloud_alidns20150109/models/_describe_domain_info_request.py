@@ -11,15 +11,27 @@ class DescribeDomainInfoRequest(DaraModel):
         lang: str = None,
         need_detail_attributes: bool = None,
     ):
-        # The domain name.
+        # The domain name. Call [DescribeDomains](https://help.aliyun.com/document_detail/2357286.html) to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language type.
-        self.lang = lang
-        # Specifies whether detailed attributes are required. Default value: **false**, which indicates that detailed attributes are not returned.
+        # The language of the response. Valid values:
         # 
-        # If you set this parameter to **true**, the values of the following parameters are returned: LineType, MinTtl, RecordLineTreeJson, RecordLines, LineCode, LineDisplayName, LineName, RegionLines, and SlaveDns.
+        # - zh: Chinese
+        # 
+        # - en: English
+        # 
+        # Default value: en.
+        self.lang = lang
+        # Specifies whether to return detailed attributes of the domain name. Valid values:
+        # 
+        # - true
+        # 
+        # - false
+        # 
+        # The default value is false.
+        # 
+        # If you set this parameter to **true**, the response includes the following parameters: lineType, minTtl, recordLineTreeJson, recordLines, lineCode, lineDisplayName, lineName, regionLines, and slaveDns.
         self.need_detail_attributes = need_detail_attributes
 
     def validate(self):

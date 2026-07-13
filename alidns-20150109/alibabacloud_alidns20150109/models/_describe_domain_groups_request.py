@@ -12,13 +12,19 @@ class DescribeDomainGroupsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The keyword of the domain name group for searches in %KeyWord% mode. The value is not case-sensitive.
+        # The keyword for the group name. The search uses the %KeyWord% pattern and is case-insensitive.
         self.key_word = key_word
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # - zh: Chinese
+        # 
+        # - en: English
+        # 
+        # Default value: zh
         self.lang = lang
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The start value is **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
 
     def validate(self):
