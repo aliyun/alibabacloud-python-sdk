@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
+from alibabacloud_smqproxy20260409 import models as main_models
 from darabonba.model import DaraModel
 
 class SendMessageRequest(DaraModel):
@@ -11,7 +14,7 @@ class SendMessageRequest(DaraModel):
         message_body: str = None,
         message_group_id: str = None,
         priority: int = None,
-        user_properties: str = None,
+        user_properties: Dict[str, main_models.UserPropertiesValue] = None,
     ):
         self.delay_seconds = delay_seconds
         self.message_body = message_body
@@ -20,7 +23,10 @@ class SendMessageRequest(DaraModel):
         self.user_properties = user_properties
 
     def validate(self):
-        pass
+        if self.user_properties:
+            for v1 in self.user_properties.values():
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -39,8 +45,10 @@ class SendMessageRequest(DaraModel):
         if self.priority is not None:
             result['Priority'] = self.priority
 
+        result['UserProperties'] = {}
         if self.user_properties is not None:
-            result['UserProperties'] = self.user_properties
+            for k1, v1 in self.user_properties.items():
+                result['UserProperties'][k1] = v1.to_map() if v1 else None
 
         return result
 
@@ -58,8 +66,11 @@ class SendMessageRequest(DaraModel):
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
 
+        self.user_properties = {}
         if m.get('UserProperties') is not None:
-            self.user_properties = m.get('UserProperties')
+            for k1, v1 in m.get('UserProperties').items():
+                temp_model = main_models.UserPropertiesValue()
+                self.user_properties[k1] = temp_model.from_map(v1)
 
         return self
 

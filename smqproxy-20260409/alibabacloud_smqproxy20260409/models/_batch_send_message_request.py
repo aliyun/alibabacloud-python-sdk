@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_smqproxy20260409 import models as main_models
 from darabonba.model import DaraModel
@@ -49,14 +49,19 @@ class BatchSendMessageRequestMessages(DaraModel):
         message_body: str = None,
         message_group_id: str = None,
         priority: int = None,
+        user_properties: Dict[str, main_models.MessagesUserPropertiesValue] = None,
     ):
         self.delay_seconds = delay_seconds
         self.message_body = message_body
         self.message_group_id = message_group_id
         self.priority = priority
+        self.user_properties = user_properties
 
     def validate(self):
-        pass
+        if self.user_properties:
+            for v1 in self.user_properties.values():
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -75,6 +80,11 @@ class BatchSendMessageRequestMessages(DaraModel):
         if self.priority is not None:
             result['Priority'] = self.priority
 
+        result['UserProperties'] = {}
+        if self.user_properties is not None:
+            for k1, v1 in self.user_properties.items():
+                result['UserProperties'][k1] = v1.to_map() if v1 else None
+
         return result
 
     def from_map(self, m: dict = None):
@@ -90,6 +100,12 @@ class BatchSendMessageRequestMessages(DaraModel):
 
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
+
+        self.user_properties = {}
+        if m.get('UserProperties') is not None:
+            for k1, v1 in m.get('UserProperties').items():
+                temp_model = main_models.MessagesUserPropertiesValue()
+                self.user_properties[k1] = temp_model.from_map(v1)
 
         return self
 

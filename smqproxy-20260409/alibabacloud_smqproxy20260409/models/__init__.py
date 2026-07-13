@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._messages_user_properties_value import MessagesUserPropertiesValue
+from ._user_properties_value import UserPropertiesValue
 from ._batch_delete_message_request import BatchDeleteMessageRequest
 from ._batch_delete_message_response import BatchDeleteMessageResponse
 from ._batch_peek_message_request import BatchPeekMessageRequest
@@ -37,6 +39,8 @@ from ._batch_send_message_response_body import BatchSendMessageResponseBodyMessa
 from ._publish_message_request import PublishMessageRequestMessageAttributes
 
 __all__ = [
+    MessagesUserPropertiesValue,
+    UserPropertiesValue,
     BatchDeleteMessageRequest,
     BatchDeleteMessageResponse,
     BatchPeekMessageRequest,

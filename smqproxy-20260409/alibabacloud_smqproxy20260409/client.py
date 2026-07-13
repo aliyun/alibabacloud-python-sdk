@@ -25,9 +25,6 @@ class Client(OpenApiClient):
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-hangzhou': 'mns.cn-hangzhou.aliyuncs.com'
-        }
 
     def batch_delete_message_with_options(
         self,
@@ -614,6 +611,8 @@ class Client(OpenApiClient):
             body['MessageAttributes'] = request.message_attributes
         if not DaraCore.is_null(request.message_body):
             body['MessageBody'] = request.message_body
+        if not DaraCore.is_null(request.message_group_id):
+            body['MessageGroupId'] = request.message_group_id
         if not DaraCore.is_null(request.message_tag):
             body['MessageTag'] = request.message_tag
         req = open_api_util_models.OpenApiRequest(
@@ -649,6 +648,8 @@ class Client(OpenApiClient):
             body['MessageAttributes'] = request.message_attributes
         if not DaraCore.is_null(request.message_body):
             body['MessageBody'] = request.message_body
+        if not DaraCore.is_null(request.message_group_id):
+            body['MessageGroupId'] = request.message_group_id
         if not DaraCore.is_null(request.message_tag):
             body['MessageTag'] = request.message_tag
         req = open_api_util_models.OpenApiRequest(

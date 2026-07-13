@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_smqproxy20260409.
 
-Created on 23/06/2026
+Created on 13/07/2026
 
 @author: Alibaba Cloud SDK
 """
@@ -38,7 +38,7 @@ URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
     "darabonba-core>=1.0.0, <2.0.0",
-    "alibabacloud_gateway_mns>=0.0.1, <1.0.0",
+    "alibabacloud_gateway_mns>=0.0.2, <1.0.0",
     "alibabacloud_tea_openapi>=0.4.4, <1.0.0"
 ]
 

@@ -10,10 +10,12 @@ class PublishMessageRequest(DaraModel):
         self,
         message_attributes: main_models.PublishMessageRequestMessageAttributes = None,
         message_body: str = None,
+        message_group_id: str = None,
         message_tag: str = None,
     ):
         self.message_attributes = message_attributes
         self.message_body = message_body
+        self.message_group_id = message_group_id
         self.message_tag = message_tag
 
     def validate(self):
@@ -31,6 +33,9 @@ class PublishMessageRequest(DaraModel):
         if self.message_body is not None:
             result['MessageBody'] = self.message_body
 
+        if self.message_group_id is not None:
+            result['MessageGroupId'] = self.message_group_id
+
         if self.message_tag is not None:
             result['MessageTag'] = self.message_tag
 
@@ -44,6 +49,9 @@ class PublishMessageRequest(DaraModel):
 
         if m.get('MessageBody') is not None:
             self.message_body = m.get('MessageBody')
+
+        if m.get('MessageGroupId') is not None:
+            self.message_group_id = m.get('MessageGroupId')
 
         if m.get('MessageTag') is not None:
             self.message_tag = m.get('MessageTag')

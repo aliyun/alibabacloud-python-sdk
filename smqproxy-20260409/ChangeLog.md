@@ -1,3 +1,8 @@
+2026-07-13 Version: 1.0.2
+- Update API BatchSendMessage: add request parameters body.Messages.$.UserProperties.
+- Update API PublishMessage: add request parameters body.MessageGroupId.
+
+
 2026-06-23 Version: 1.0.1
 - Update API BatchSendMessage: add response parameters Body.
 - Update API PublishMessage: add response parameters Body.
