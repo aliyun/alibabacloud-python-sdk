@@ -9,11 +9,13 @@ class CreateAppInstanceTicketRequest(DaraModel):
         self,
         biz_id: str = None,
         client_id: str = None,
+        role: str = None,
     ):
-        # The business ID of the customer.
+        # The customer business ID.
         self.biz_id = biz_id
-        # The client ID of the device whose access credentials need to be revoked.
+        # The Client ID of the device for which you want to revoke the access credential.
         self.client_id = client_id
+        self.role = role
 
     def validate(self):
         pass
@@ -29,6 +31,9 @@ class CreateAppInstanceTicketRequest(DaraModel):
         if self.client_id is not None:
             result['ClientId'] = self.client_id
 
+        if self.role is not None:
+            result['Role'] = self.role
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +43,9 @@ class CreateAppInstanceTicketRequest(DaraModel):
 
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
 
         return self
 

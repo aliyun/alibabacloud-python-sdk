@@ -24,14 +24,14 @@ class CreateAppInstanceTicketResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether a retry is allowed.
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
         # The application name.
         self.app_name = app_name
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** parameter.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
         # The error parameters.
         self.error_args = error_args
@@ -166,7 +166,7 @@ class CreateAppInstanceTicketResponseBodyModule(DaraModel):
         self.refresh_token_issued_at = refresh_token_issued_at
         # The refresh token value.
         self.refresh_token_value = refresh_token_value
-        # The external unique identifier.
+        # The external unique ID.
         self.uuid = uuid
 
     def validate(self):

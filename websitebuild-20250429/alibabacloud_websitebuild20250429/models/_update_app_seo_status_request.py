@@ -10,6 +10,7 @@ class UpdateAppSeoStatusRequest(DaraModel):
         biz_id: str = None,
         domain: str = None,
         se_auth_info: str = None,
+        se_index_status: int = None,
         se_type: str = None,
     ):
         # The business ID.
@@ -17,6 +18,7 @@ class UpdateAppSeoStatusRequest(DaraModel):
         # The domain name.
         self.domain = domain
         self.se_auth_info = se_auth_info
+        self.se_index_status = se_index_status
         # The search engine type.
         self.se_type = se_type
 
@@ -37,6 +39,9 @@ class UpdateAppSeoStatusRequest(DaraModel):
         if self.se_auth_info is not None:
             result['SeAuthInfo'] = self.se_auth_info
 
+        if self.se_index_status is not None:
+            result['SeIndexStatus'] = self.se_index_status
+
         if self.se_type is not None:
             result['SeType'] = self.se_type
 
@@ -52,6 +57,9 @@ class UpdateAppSeoStatusRequest(DaraModel):
 
         if m.get('SeAuthInfo') is not None:
             self.se_auth_info = m.get('SeAuthInfo')
+
+        if m.get('SeIndexStatus') is not None:
+            self.se_index_status = m.get('SeIndexStatus')
 
         if m.get('SeType') is not None:
             self.se_type = m.get('SeType')

@@ -19,7 +19,7 @@ class ListAppInstanceDomainsRequest(DaraModel):
         # The business ID.
         self.biz_id = biz_id
         self.domain_keyword = domain_keyword
-        # The number of entries per query.
+        # The maximum number of entries per query.
         # 
         # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results

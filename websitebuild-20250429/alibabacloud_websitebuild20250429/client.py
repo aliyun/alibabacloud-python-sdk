@@ -1484,6 +1484,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.client_id):
             query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1514,6 +1516,8 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.client_id):
             query['ClientId'] = request.client_id
+        if not DaraCore.is_null(request.role):
+            query['Role'] = request.role
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11646,6 +11650,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not DaraCore.is_null(request.se_auth_info):
             query['SeAuthInfo'] = request.se_auth_info
+        if not DaraCore.is_null(request.se_index_status):
+            query['SeIndexStatus'] = request.se_index_status
         if not DaraCore.is_null(request.se_type):
             query['SeType'] = request.se_type
         req = open_api_util_models.OpenApiRequest(
@@ -11680,6 +11686,8 @@ class Client(OpenApiClient):
             query['Domain'] = request.domain
         if not DaraCore.is_null(request.se_auth_info):
             query['SeAuthInfo'] = request.se_auth_info
+        if not DaraCore.is_null(request.se_index_status):
+            query['SeIndexStatus'] = request.se_index_status
         if not DaraCore.is_null(request.se_type):
             query['SeType'] = request.se_type
         req = open_api_util_models.OpenApiRequest(

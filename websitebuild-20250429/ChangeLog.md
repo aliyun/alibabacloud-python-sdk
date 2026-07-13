@@ -1,3 +1,8 @@
+2026-07-13 Version: 2.32.1
+- Update API CreateAppInstanceTicket: add request parameters Role.
+- Update API UpdateAppSeoStatus: add request parameters SeIndexStatus.
+
+
 2026-07-10 Version: 2.32.0
 - Support API AuthorizeAppProxyOps.
 
