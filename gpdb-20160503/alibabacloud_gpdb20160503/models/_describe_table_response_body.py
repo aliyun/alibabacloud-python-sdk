@@ -16,14 +16,13 @@ class DescribeTableResponseBody(DaraModel):
         status: str = None,
     ):
         self.column_list = column_list
-        # The returned message.
+        # The detailed information returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The execution was successful.
+        # - **fail**: The execution failed.
         self.status = status
 
     def validate(self):

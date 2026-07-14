@@ -19,37 +19,37 @@ class CreateModelServiceShrinkRequest(DaraModel):
         resource_group_id: str = None,
         security_iplist: str = None,
     ):
-        # A list of AINodes on which to deploy the model.
+        # The list of AI nodes used for model deployment.
         # 
         # This parameter is required.
         self.ai_nodes_shrink = ai_nodes_shrink
-        # A token to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
+        # The idempotency check. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
         self.client_token = client_token
-        # The ID of the instance.
+        # The instance ID.
         # 
         # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The description of the model service.
+        # The description.
         self.description = description
-        # Specifies whether to enable a public network connection.
+        # Specifies whether to enable public network access.
         self.enable_public_connection = enable_public_connection
         # The inference engine. Currently, only vllm is supported.
         self.inference_engine = inference_engine
-        # The name of the model.
+        # The model name.
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The model parameters. This parameter is not yet supported.
+        # The model parameters. This parameter is not supported.
         self.model_params_shrink = model_params_shrink
         # The number of model service replicas.
         self.replicas = replicas
-        # The ID of the resource group to which the instance belongs. For more information about how to obtain the ID of a resource group, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         # The IP whitelist.
         # 
-        # Set this parameter to `127.0.0.1` to deny access from all external IP addresses. After the model service is created, you can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP whitelist.
+        # The value 127.0.0.1 indicates that no external IP addresses are allowed to access the instance. After the instance is created, you can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP whitelist.
         self.security_iplist = security_iplist
 
     def validate(self):

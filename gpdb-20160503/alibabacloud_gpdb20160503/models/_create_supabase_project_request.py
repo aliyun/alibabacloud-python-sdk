@@ -34,9 +34,9 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_password = account_password
-        # Specifies whether to enable auto start/stop. If this parameter is not specified, the default value is false.
+        # Specifies whether to enable auto start/stop. If this parameter is not specified, the default value false is used.
         self.auto_scale = auto_scale
-        # The idempotency token. This token ensures that duplicate requests do not trigger the same operation more than once.
+        # The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
         self.client_token = client_token
         # The performance level (PL) of the cloud disk. If this parameter is not specified, the default value PL0 is used.
         # 
@@ -45,14 +45,14 @@ class CreateSupabaseProjectRequest(DaraModel):
         # - PL0
         # - PL1
         # - PL2
-        # - PL3.
+        # - PL3
         self.disk_performance_level = disk_performance_level
-        # The DPI engine version. If this parameter is not specified, the default value PG15 is used.
+        # The DPI engine version. If this parameter is not specified, the default value PG15 is used. PG17 and later versions support the data sandbox (branch) feature.
         # 
         # Valid values:
         # 
         # - PG15: PostgreSQL 15.
-        # - PG17: PostgreSQL 17.
+        # - PG17: PostgreSQL 17, which supports the data sandbox feature.
         self.engine_version = engine_version
         # The billing method. If this parameter is not specified, the default value Free is used.
         # 
@@ -79,7 +79,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The specifications of the Supabase project. The Free billing type uses free-tier specifications. For paid billing types, the specifications must match those available on the console.
+        # The specifications of the Supabase project. The Free billing type uses free-tier specifications. For paid billing types, the specifications must match those available in the console.
         # 
         # This parameter is required.
         self.project_spec = project_spec
@@ -91,7 +91,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         self.security_iplist = security_iplist
         # The storage size. Unit: GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
         self.storage_size = storage_size
-        # The subscription duration of the resource. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
+        # The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
         self.used_time = used_time
         # The vSwitch ID. This parameter is required. The zone of the vSwitch must be the same as the value of ZoneId.
         # 
@@ -101,7 +101,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as the value of this parameter.
+        # The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as this parameter value.
         # 
         # This parameter is required.
         self.zone_id = zone_id

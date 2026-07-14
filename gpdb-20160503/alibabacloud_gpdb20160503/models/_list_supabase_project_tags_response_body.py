@@ -14,11 +14,11 @@ class ListSupabaseProjectTagsResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListSupabaseProjectTagsResponseBodyTagResources] = None,
     ):
-        # The pagination token for the next page of results. This parameter is not returned if no more results are available.
+        # The token for the next query.
         self.next_token = next_token
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # A list of tagged resources.
+        # The details.
         self.tag_resources = tag_resources
 
     def validate(self):

@@ -23,7 +23,7 @@ class CreateSaasServiceRequest(DaraModel):
         # - **Postpaid**: pay-as-you-go.
         # - **Prepaid**: subscription.
         # 
-        # > - If you leave this parameter empty, a Free service is created by default.
+        # > - If you leave this parameter empty, a Free type is created by default.
         # > - The subscription billing method offers discounts for purchases of one year or longer. Select a billing method as needed.
         self.pay_type = pay_type
         # The unit of the duration for which you want to purchase the resource. Valid values:
@@ -39,7 +39,7 @@ class CreateSaasServiceRequest(DaraModel):
         # The service type. Valid values:
         # 
         # - **memroy**
-        # - **drama**.
+        # - **drama**
         # 
         # This parameter is required.
         self.service_type = service_type

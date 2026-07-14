@@ -14,11 +14,17 @@ class DescribeModelOperatorApiKeyResponseBody(DaraModel):
         endpoint: str = None,
         request_id: str = None,
     ):
+        # The API key content.
         self.api_key = api_key
+        # API KEY ID。
         self.api_key_id = api_key_id
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The endpoint.
         self.endpoint = endpoint
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

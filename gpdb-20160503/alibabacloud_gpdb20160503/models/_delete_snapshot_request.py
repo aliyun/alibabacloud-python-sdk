@@ -11,10 +11,15 @@ class DeleteSnapshotRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # The LSN of the snapshot to delete.
+        # 
         # This parameter is required.
         self.lsn = lsn
+        # The Supabase project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID. Specifies the region in which to query or perform the operation.
         self.region_id = region_id
 
     def validate(self):

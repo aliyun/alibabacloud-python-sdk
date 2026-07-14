@@ -18,7 +18,7 @@ class CreateSnapshotResponseBody(DaraModel):
         self.lsn = lsn
         # The request ID.
         self.request_id = request_id
-        # The actual point in time that corresponds to the created snapshot.
+        # The actual point in time corresponding to the created snapshot.
         self.timestamp = timestamp
 
     def validate(self):

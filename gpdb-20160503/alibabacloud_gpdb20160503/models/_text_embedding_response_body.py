@@ -16,15 +16,14 @@ class TextEmbeddingResponseBody(DaraModel):
         status: str = None,
         text_tokens: int = None,
     ):
-        # The returned message.
+        # The message details.
         self.message = message
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.results = results
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The API execution status. Valid values:
+        # - **success**: The execution is successful.
+        # - **fail**: The execution failed.
         self.status = status
         # The total number of tokens consumed.
         self.text_tokens = text_tokens

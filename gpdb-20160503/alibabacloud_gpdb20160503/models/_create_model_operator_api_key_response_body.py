@@ -10,7 +10,9 @@ class CreateModelOperatorApiKeyResponseBody(DaraModel):
         api_key_id: int = None,
         request_id: str = None,
     ):
+        # API KEY ID。
         self.api_key_id = api_key_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

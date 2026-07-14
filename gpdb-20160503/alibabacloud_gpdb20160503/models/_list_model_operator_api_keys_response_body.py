@@ -16,10 +16,15 @@ class ListModelOperatorApiKeysResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of API keys.
         self.api_keys = api_keys
+        # The current page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -82,9 +87,13 @@ class ListModelOperatorApiKeysResponseBodyApiKeys(DaraModel):
         description: str = None,
         endpoint: str = None,
     ):
+        # API KEY ID。
         self.api_key_id = api_key_id
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The endpoint.
         self.endpoint = endpoint
 
     def validate(self):

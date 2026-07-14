@@ -15,7 +15,7 @@ class RestoreSnapshotRequest(DaraModel):
         restored_lsn: str = None,
         target_branch_id: str = None,
     ):
-        # The idempotence token. Ensures that repeated requests do not execute the same operation more than once.
+        # The idempotency token. Ensures that repeated requests do not execute the same operation more than once.
         self.client_token = client_token
         # Specifies whether to complete the restoration immediately. Default value: false.
         self.finalize_restore = finalize_restore

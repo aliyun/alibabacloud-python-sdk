@@ -10,7 +10,7 @@ class CreateModelServiceResponseBody(DaraModel):
         model_service_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the model service.
+        # The model service ID.
         self.model_service_id = model_service_id
         # The request ID.
         self.request_id = request_id

@@ -28,23 +28,21 @@ class UploadDocumentAsyncAdvanceRequest(DaraModel):
         vl_enhance: bool = None,
         zh_title_enhance: bool = None,
     ):
-        # The size of data that is overlapped between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
-        # 
-        # >  This parameter is used to prevent context missing that may occur due to data truncation. For example, when you upload a long text, you can retain specific overlapped text content between consecutive chunks to better understand the context.
+        # The size of overlapping data between consecutive chunks. The maximum value of this parameter cannot be greater than the value of the ChunkSize parameter.
+        # >  This parameter prevents context loss caused by data truncation. For example, when you upload long text, you can retain specific overlapping text content between consecutive chunks for better context understanding.
         self.chunk_overlap = chunk_overlap
-        # Strategy for processing large data: the size of each chunk when the data is split into smaller parts. Maximum value is 2048.
+        # The strategy for processing large data: the size of each chunk when data is split into smaller parts. Maximum value: 2048.
         self.chunk_size = chunk_size
-        # The name of the document library. 
-        # > Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) API. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) API to view the document libraries that have already been created.
+        # The name of the document collection.
+        # >Created by the [CreateDocumentCollection](https://help.aliyun.com/document_detail/2618448.html) operation. You can call the [ListDocumentCollections](https://help.aliyun.com/document_detail/2618452.html) operation to query the created document collections.
         # 
         # This parameter is required.
         self.collection = collection
-        # Instance ID with vector engine optimization acceleration enabled. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
+        # The ID of the instance that has vector engine optimization enabled. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the target region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies the document loader to use for processing the file. If this parameter is omitted, the system automatically selects a loader based on the file\\"s extension.Valid Values:[List of valid loader names would go here] Valid values:
-        # 
+        # The name of the document loader. If you do not specify this parameter, the system automatically selects the corresponding document loader based on the file name extension in the following order. Valid values:
         # *   UnstructuredHTMLLoader: .html
         # *   UnstructuredMarkdownLoader: .md
         # *   PyMuPDFLoader: .pdf
@@ -55,34 +53,34 @@ class UploadDocumentAsyncAdvanceRequest(DaraModel):
         # *   CSVLoader: .csv
         # *   RapidOCRLoader: .png, .jpg, .jpeg, and .bmp
         # *   UnstructuredFileLoader: .eml, .msg, .rst, .txt, .docx, .epub, .odt, .pptx, and .tsv
-        # *   ADBPGLoader (free of charge for the first 3,000 pages): .pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .xlsm, .csv, .txt, .jpg, .jpeg, .png, .bmp, .gif, .md, .html, .epub, .mobi, and .rtf
+        # *   ADBPGLoader (paid, first 3,000 pages free): .pdf, .doc, .docx, .ppt, .pptx, .xls, .xlsx, .xlsm, .csv, .txt, .jpg, .jpeg, .png, .bmp, .gif, .md, .html, .epub, .mobi, and .rtf
         self.document_loader_name = document_loader_name
-        # Specifies whether to perform only document understanding and chunking, but not vectorization and storage. Default value: false.
+        # Specifies whether to perform only document understanding and chunking without vectorization and storage. Default value: false.
         # 
-        # >  You can set this parameter to true, check the chunking effect, and then perform optimization if needed.
+        # >  You can set this parameter to true to check the chunking results and then optimize as needed.
         self.dry_run = dry_run
-        # The name of the file being uploaded.
+        # The file name of the document.
         # 
-        # > 
-        # 
-        # *   File name: .json, .md, and .pdf.
-        # 
-        # *   Images: .bmp,. jpg,. jpeg,. png, and. tiff.
-        # 
-        # *   Compressed packages. The package file name must contain an extension: .tar, .gz, and .zip.
+        # >* The file name must include file name extension, such as .json, .md, or .pdf.
+        # >* Supported image file extensions include .bmp, .jpg, .jpeg, .png, and .tiff.
+        # >* You can upload images by using an archive. The archive file name must include file name extension. Supported archive extensions include .tar, .gz, and .zip.
         # 
         # This parameter is required.
         self.file_name = file_name
-        # The URL of the publicly accessible document.
-        # >  > - It is recommended to call this interface using the SDK, which provides a method called UploadDocumentAsyncAdvance for directly uploading local files. > - If the URL points to an image archive, the number of images in the archive should not exceed 100.
+        # The publicly accessible URL of the document.
+        # > Use the SDK to call this operation. The SDK provides a method named UploadDocumentAsyncAdvance that allows you to directly upload local files.
+        # If the URL points to an image archive, the number of images in the archive cannot exceed 100.
+        # 
+        # >Notice: 
+        # The maximum size of an image uploaded by using multimodal-embedding-v1 is 3 MB.
         # 
         # This parameter is required.
         self.file_url_object = file_url_object
-        # The metadata. The value of this parameter must be the same as the Metadata parameter that is specified when you call the CreateDocumentCollection operation.
+        # The metadata. The value of this parameter must be the same as the Metadata parameter specified when you call the CreateDocumentCollection operation.
         self.metadata = metadata
-        # Namespace, default is public. You can create one through the CreateNamespace interface and view the list via the ListNamespaces interface.
+        # The namespace. Default value: public. You can call the CreateNamespace operation to create a namespace and call the ListNamespaces operation to query the list of namespaces.
         self.namespace = namespace
-        # The password corresponding to the namespace.  > This value is specified by the CreateNamespace interface.
+        # The password of the namespace. The value is specified by the CreateNamespace operation.
         # 
         # This parameter is required.
         self.namespace_password = namespace_password
@@ -91,39 +89,49 @@ class UploadDocumentAsyncAdvanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The separators that are used to split large amounts of data.
-        # 
-        # > 
-        # 
-        # *   This is an important parameter that determines the chunking effect. This parameter is related to the splitter that is specified by the TextSplitterName parameter.
-        # 
-        # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
+        # The separators used to split large data.
+        # > *   This is an important parameter that determines the effectiveness of data chunking. This parameter is related to the splitter specified by the TextSplitterName parameter.
+        # >*  In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators = separators
-        # When DocumentLoaderName is set to ADBPGLoader and TextSplitterName is set to LLMSplitter, you can specify the splitting model. Default Value: qwen3-8b.
-        # 
-        # >  Supported splitting models: qwq-plus, qwq-plus-latest, qwen-max, qwen-max-latest, qwen-plus, qwen-plus-latest, qwen-turbo, qwen-turbo-latest, qwen3-235b-a22b, qwen3-32b,qwen3-30b-a3b, qwen3-14b, qwen3-8b, qwen3-4b, qwen3-1.7b, qwen3-0.6b, qwq-32b qwen2.5-14b-instruct-1m, qwen2.5-7b-instruct-1m, qwen2.5-72b-Instruct, qwen2.5-32b-Instruct, qwen2.5-14b-Instruct, qwen2.5-7b-Instruct, qwen2.5-3b-instruct, qwen2.5-1.5b-instruct, qwen2.5-0.5b-instruct.
+        # The splitting model to use when DocumentLoaderName is set to ADBPGLoader and TextSplitterName is set to LLMSplitter. Default value: qwen3-8b.
+        # > 
+        # > Currently supported splitting models:
+        # > qwq-plus, qwq-plus-latest,
+        # > qwen-max, qwen-max-latest,
+        # > qwen-plus, qwen-plus-latest,
+        # > qwen-turbo, qwen-turbo-latest,
+        # > qwen3-235b-a22b, qwen3-32b, qwen3-30b-a3b,
+        # > qwen3-14b, qwen3-8b, qwen3-4b, qwen3-1.7b, qwen3-0.6b,
+        # > qwq-32b
+        # > qwen2.5-14b-instruct-1m, qwen2.5-7b-instruct-1m
+        # > qwen2.5-72b-instruct, qwen2.5-32b-instruct,
+        # > qwen2.5-14b-instruct, qwen2.5-7b-instruct,
+        # > qwen2.5-3b-instruct, qwen2.5-1.5b-instruct, qwen2.5-0.5b-instruct
         self.splitter_model = splitter_model
-        # The name of the separator. Valid values:
+        # The name of the text splitter. Valid values:
+        # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter and uses `["
         # 
-        # *   **ChineseRecursiveTextSplitter**: Inherits from RecursiveCharacterTextSplitter and, by default, uses the delimiters` ["\\n\\n","\\n", "。 |! |?", "\\.\\s|\\! \\s|\\?\\s", ";|;\\s", ",|,\\s"]  `, employing regular expressions to match text.
-        # *   **RecursiveCharacterTextSplitter**: Uses the delimiters `["\\n\\n", "\\n", " ", ""]` by default. The splitter supports splitting code in languages such as C++, Go, Java, JS, PHP, Proto, Python, RST, Ruby, Rust, Scala, Swift, Markdown, LaTeX, HTML, Sol, and C Sharp.
-        # *   **SpacyTextSplitter**: Uses the delimiters `\\n\\n` by default and leverages the spaCy en_core_web_sm model. The splitter can achieve better text splitting performance.
-        # *   **MarkdownHeaderTextSplitter**: Splits text in the [("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4") format. This splitter works well with Markdown text.
-        # *   **LLMSplitter**: Use LLM to split text. The default model is qwen3-8b. Currently, this splitter works only when ADBPGLoader is selected.
+        # ","
+        # ", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as the default separators with regular expression matching.
+        # *   **RecursiveCharacterTextSplitter**: uses `["
+        # 
+        # ", "
+        # ", " ", ""]` as the default separators. This splitter supports splitting code in languages such as C++, Go, Java, JS, PHP, Proto, Python, RST, Ruby, Rust, Scala, Swift, Markdown, LaTeX, HTML, Sol, and C Sharp.
+        # *   **SpacyTextSplitter**: uses `
+        # 
+        # ` as the default separator and the spaCy en_core_web_sm model. This splitter provides better splitting results.
+        # *   **MarkdownHeaderTextSplitter**: splits text in the format of [("#", "head1"), ("##", "head2"), ("###", "head3"), ("####", "head4")]. This splitter is suitable for Markdown text.
+        # *   **LLMSplitter**: uses an LLM to split text. The default model is qwen3-8b. This splitter takes effect only when ADBPGLoader is selected as the document loader.
         self.text_splitter_name = text_splitter_name
         # Specifies whether to enable VL-enhanced content recognition for complex documents. Default value: false.
         # 
         # > 
-        # 
-        # *   For complex documents with confusing typesetting and formatting, we recommend that you enable VL-enhanced content recognition.
-        # 
-        # *   Document processing time is longer after VL-enhanced content recognition is enabled.
-        # 
-        # *   After VL-enhanced content recognition is enabled, images in documents cannot be stored or recalled.
+        # > - For complex documents with disorganized layouts and formats, enable VL-enhanced content recognition.
+        # > - After VL-enhanced content recognition is enabled, document processing takes longer.
+        # > - After VL-enhanced content recognition is enabled, images in the document cannot be stored or recalled.
         self.vl_enhance = vl_enhance
         # Specifies whether to enable title enhancement.
-        # 
-        # >  You can determine the title text, mark the text in the metadata, and then combine the text with the upper-level title to implement text enhancement.
+        # >You can identify the title text, mark the text in the metadata, and then combine the text with the upper-level title for text enhancement.
         self.zh_title_enhance = zh_title_enhance
 
     def validate(self):

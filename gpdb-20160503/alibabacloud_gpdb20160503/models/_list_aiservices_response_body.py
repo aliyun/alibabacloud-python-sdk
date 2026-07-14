@@ -16,13 +16,13 @@ class ListAIServicesResponseBody(DaraModel):
         services: List[main_models.ListAIServicesResponseBodyServices] = None,
         total_record_count: str = None,
     ):
-        # The page number of the current page.
+        # The current page number.
         self.page_number = page_number
         # The number of entries on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of AI services.
+        # The list of services.
         self.services = services
         # The total number of entries.
         self.total_record_count = total_record_count
@@ -93,29 +93,27 @@ class ListAIServicesResponseBodyServices(DaraModel):
         service_id: str = None,
         status: str = None,
     ):
-        # The time when the AI service was created.
+        # The creation time.
         self.create_time = create_time
-        # The description of the AI service.
+        # The description.
         self.description = description
-        # The private endpoint for API debugging.
+        # The internal endpoint for API debugging.
         self.private_api_dev_url = private_api_dev_url
-        # The private endpoint of the Workbench.
+        # The internal endpoint of the workbench.
         self.private_workbench_url = private_workbench_url
         # The public endpoint for API debugging.
         self.public_api_dev_url = public_api_dev_url
-        # The public endpoint of the Workbench.
+        # The public endpoint of the workbench.
         self.public_workbench_url = public_workbench_url
-        # The list of IP addresses in the IP address whitelist group. Separate multiple IP addresses with commas.
+        # The list of IP addresses in the IP address whitelist group, separated by commas.
         self.security_ip_list = security_ip_list
         # The service account.
         self.service_account = service_account
-        # The ID of the AI service.
+        # The service ID.
         self.service_id = service_id
-        # The status of the AI service. Valid values:
-        # 
-        # - deploying
-        # 
-        # - active
+        # The service status. Valid values:
+        # - deploying: being deployed
+        # - active: running
         self.status = status
 
     def validate(self):

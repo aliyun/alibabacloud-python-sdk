@@ -16,11 +16,11 @@ class ListSaasServiceResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of service details.
+        # The list of instance details.
         self.items = items
-        # The maximum number of entries returned in this request. Default value: 10.
+        # The maximum number of entries to return. Default value: 10.
         self.max_results = max_results
-        # The token for the next query to begin with.
+        # The pagination token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -94,14 +94,14 @@ class ListSaasServiceResponseBodyItems(DaraModel):
     ):
         # The creation time.
         self.create_time = create_time
-        # The computing resources.
+        # The compute resource.
         self.cu = cu
         # The expiration time.
         self.expire_time = expire_time
         # The billing type. Valid values:
         # 
-        # - **POSTPAY**: pay-as-you-go.
-        # - **PREPAY**: subscription.
+        # - **POSTPAY**: Pay-as-you-go.
+        # - **PREPAY**: Subscription.
         self.pay_type = pay_type
         # [Deprecated]
         self.plan = plan
@@ -109,15 +109,15 @@ class ListSaasServiceResponseBodyItems(DaraModel):
         self.service_id = service_id
         # The service name.
         self.service_name = service_name
-        # The service type:
+        # The service type. Valid values:
         # 
         # - **memory**
         # - **drama**
         self.service_type = service_type
-        # The service status:
+        # The service status. Valid values:
         # 
-        # - active: Running
-        # - creating: Being created
+        # - active: Running.
+        # - creating: Being created.
         self.status = status
 
     def validate(self):

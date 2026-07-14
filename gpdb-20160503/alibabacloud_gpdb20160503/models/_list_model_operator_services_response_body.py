@@ -16,10 +16,15 @@ class ListModelOperatorServicesResponseBody(DaraModel):
         services: List[main_models.ListModelOperatorServicesResponseBodyServices] = None,
         total_record_count: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The list of services.
         self.services = services
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -79,6 +84,7 @@ class ListModelOperatorServicesResponseBodyServices(DaraModel):
         self,
         service_id: str = None,
     ):
+        # The service ID.
         self.service_id = service_id
 
     def validate(self):

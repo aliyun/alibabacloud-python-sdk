@@ -15,10 +15,8 @@ class CreateDocumentCollectionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # - **success**: The operation succeeded.
-        # 
+        # The API execution status. Valid values:
+        # - **success**: The operation was successful.
         # - **fail**: The operation failed.
         self.status = status
 

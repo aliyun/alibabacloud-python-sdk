@@ -16,10 +16,15 @@ class DescribeModelOperatorUsageResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The end time of the query. The time is in the <i>YYYY-MM-DDThh:mmZ</i> format (UTC).
         self.end_time = end_time
+        # The list of metric values.
         self.keys = keys
+        # The actual bucket size used, in seconds.
         self.period = period
+        # The request ID.
         self.request_id = request_id
+        # The start time of the query. The time is in the <i>YYYY-MM-DDThh:mmZ</i> format (UTC).
         self.start_time = start_time
 
     def validate(self):
@@ -81,8 +86,15 @@ class DescribeModelOperatorUsageResponseBodyKeys(DaraModel):
         series: List[main_models.DescribeModelOperatorUsageResponseBodyKeysSeries] = None,
         unit: str = None,
     ):
+        # The metric name.
         self.name = name
+        # The collection of metric values.
         self.series = series
+        # The unit. Valid values:
+        # 
+        # - requests
+        # - tokens
+        # - %
         self.unit = unit
 
     def validate(self):
@@ -133,9 +145,13 @@ class DescribeModelOperatorUsageResponseBodyKeysSeries(DaraModel):
         role: str = None,
         values: List[main_models.DescribeModelOperatorUsageResponseBodyKeysSeriesValues] = None,
     ):
+        # The API key ID. This value is returned only when GroupBy contains api_key.
         self.api_key_id = api_key_id
+        # The model name when GroupBy contains model. The api_key_id string when GroupBy contains only api_key.
         self.name = name
+        # The normalized GroupBy value: model, api_key, or model,api_key.
         self.role = role
+        # The list of metric values. Each value corresponds to a collection time point.
         self.values = values
 
     def validate(self):
@@ -189,6 +205,7 @@ class DescribeModelOperatorUsageResponseBodyKeysSeriesValues(DaraModel):
         self,
         point: List[str] = None,
     ):
+        # The specific metric information, consisting of a timestamp and a metric value.
         self.point = point
 
     def validate(self):

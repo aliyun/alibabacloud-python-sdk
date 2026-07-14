@@ -9,6 +9,7 @@ class DescribeModelOperatorApiKeyRequest(DaraModel):
         self,
         api_key_id: int = None,
     ):
+        # API KEY ID。
         self.api_key_id = api_key_id
 
     def validate(self):

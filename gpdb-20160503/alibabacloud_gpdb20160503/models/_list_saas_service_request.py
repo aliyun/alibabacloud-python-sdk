@@ -13,9 +13,9 @@ class ListSaasServiceRequest(DaraModel):
         service_type: str = None,
         workspace_id: str = None,
     ):
-        # The maximum number of entries to return in this request. Default value: 10.
+        # The maximum number of entries to return. Default value: 10.
         self.max_results = max_results
-        # The token for the next query to begin with during a paginated query.
+        # The token for the next query when paging. Use this token to start the next query.
         self.next_token = next_token
         # The region ID of the workspace.
         self.region_id = region_id

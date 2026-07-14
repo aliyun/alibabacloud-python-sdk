@@ -13,7 +13,7 @@ class DescribeBranchResponseBody(DaraModel):
         branch: main_models.DescribeBranchResponseBodyBranch = None,
         request_id: str = None,
     ):
-        # The branch list. Each element represents a Supabase branch.
+        # The branch information. Each element represents a Supabase branch.
         self.branch = branch
         # The request ID.
         self.request_id = request_id
@@ -77,7 +77,7 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         self.create_time = create_time
         # The branch description.
         self.description = description
-        # The time when the branch expires and is automatically deleted, in ISO 8601 UTC format.
+        # The time when the branch automatically expires and is deleted, in ISO 8601 UTC format.
         self.expires_at = expires_at
         # The initialization source of the branch.
         # 
@@ -85,13 +85,13 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         # - ParentData: Copies the schema and data from the parent branch. This is the default value.
         # - SchemaOnly: Copies only the schema structure.
         self.init_source = init_source
-        # Indicates whether this is the default branch.
+        # Indicates whether the branch is the default branch.
         self.is_default = is_default
-        # The parent branch ID, which specifies the parent branch of a new branch or a query condition.
+        # The parent branch ID, which specifies the parent branch for a new branch or a query condition.
         self.parent_branch_id = parent_branch_id
         # The parent branch name. This value is empty or displayed as - for the primary branch.
         self.parent_branch_name = parent_branch_name
-        # The Log Sequence Number (LSN) of the parent branch at the time this branch was created.
+        # The LSN of the parent branch at the time this branch was created.
         self.parent_lsn = parent_lsn
         # The data synchronization point in time selected from the parent branch when this branch was created, in ISO 8601 UTC format.
         # 
@@ -99,7 +99,7 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         # - For child branches, this value indicates the point in time of the parent branch selected during creation.
         # - If no parent branch exists, the value 1970-01-01T00:00:00.000Z is returned.
         self.parent_timestamp = parent_timestamp
-        # The Supabase project ID that corresponds to the primary branch.
+        # The Supabase project ID associated with the primary branch.
         self.project_id = project_id
         # Indicates whether branch protection is enabled. A value of true indicates that branch protection is enabled. A value of false indicates that branch protection is disabled.
         self.protected = protected
@@ -111,7 +111,7 @@ class DescribeBranchResponseBodyBranch(DaraModel):
         self.service_type = service_type
         # The branch status.
         self.status = status
-        # The list of branch tags.
+        # The branch tag list.
         self.tags = tags
 
     def validate(self):

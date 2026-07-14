@@ -208,7 +208,7 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
         # > - If this parameter is not specified, the default value is pay-as-you-go.
         # > - In subscription billing mode, a discount is available when you purchase a duration of one year or longer. Select the billing type as needed.
         self.pay_type = pay_type
-        # [Deprecated].
+        # [Deprecated]
         self.plan = plan
         # The service ID.
         self.service_id = service_id
@@ -217,7 +217,7 @@ class ListWorkspacesResponseBodyItemsServices(DaraModel):
         # The service type. Valid values:
         # 
         # - memory
-        # - drama.
+        # - drama
         self.service_type = service_type
         # The service status. Valid values:
         # 
@@ -385,7 +385,7 @@ class ListWorkspacesResponseBodyItemsApikeysAuthServices(DaraModel):
         # The service type. Valid values:
         # 
         # - memory
-        # - drama.
+        # - drama
         self.service_type = service_type
 
     def validate(self):

@@ -30,7 +30,7 @@ class QueryKnowledgeBasesContentShrinkRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The method used to merge results from multiple knowledge bases. Default value: RRF. Valid values:
         # - RRF
-        # - Weight.
+        # - Weight
         self.merge_method = merge_method
         # The parameters for the merge method of each SourceCollection.
         self.merge_method_args_shrink = merge_method_args_shrink

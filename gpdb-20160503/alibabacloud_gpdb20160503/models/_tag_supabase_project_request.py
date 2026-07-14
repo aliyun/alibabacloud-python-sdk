@@ -17,11 +17,11 @@ class TagSupabaseProjectRequest(DaraModel):
     ):
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
-        # The IDs of the instances. You can specify up to 50 instance IDs.
+        # The Nth instance. Valid values of N: 1 to 50.
         self.resource_id = resource_id
-        # The resource type. Set this parameter to `instance`.
+        # The resource type. Set the value to `instance`.
         self.resource_type = resource_type
-        # The tags to add. You can specify up to 20 tags.
+        # The Nth tag. Valid values of N: 1 to 20.
         self.tag = tag
 
     def validate(self):
@@ -76,9 +76,9 @@ class TagSupabaseProjectRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The key cannot be empty and can be up to 64 characters long. It cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # The tag key. This parameter cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. The value can be empty or up to 128 characters long. It cannot contain `http://` or `https://`.
+        # The tag value. This parameter can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

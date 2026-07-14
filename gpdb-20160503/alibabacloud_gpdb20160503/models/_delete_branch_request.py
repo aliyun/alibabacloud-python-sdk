@@ -10,7 +10,7 @@ class DeleteBranchRequest(DaraModel):
         branch_id: str = None,
         region_id: str = None,
     ):
-        # The branch ID that uniquely identifies a Supabase branch.
+        # The branch ID, which uniquely identifies a Supabase branch.
         # 
         # This parameter is required.
         self.branch_id = branch_id

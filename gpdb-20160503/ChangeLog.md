@@ -1,3 +1,11 @@
+2026-07-14 Version: 5.9.0
+- Support API CreateApiKey.
+- Support API DeleteApiKey.
+- Support API GetApiKey.
+- Support API GetWorkspace.
+- Support API ListApiKeys.
+
+
 2026-06-30 Version: 5.8.0
 - Support API CreateModelOperatorApiKey.
 - Support API DescribeModelOperatorApiKey.

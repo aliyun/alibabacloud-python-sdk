@@ -13,7 +13,7 @@ class ListAINodePoolsResponseBody(DaraModel):
         ainode_pool_infos: List[main_models.ListAINodePoolsResponseBodyAINodePoolInfos] = None,
         request_id: str = None,
     ):
-        # The details of the AINode resource pools.
+        # The details of the AI node resource pools.
         self.ainode_pool_infos = ainode_pool_infos
         # The request ID.
         self.request_id = request_id
@@ -59,9 +59,9 @@ class ListAINodePoolsResponseBodyAINodePoolInfos(DaraModel):
         ainode_pool_id: str = None,
         node_num: str = None,
     ):
-        # The details of AINodes.
+        # The detailed information about the AI nodes.
         self.ainode_infos = ainode_infos
-        # The ID of the AINode resource pool.
+        # The ID of the resource pool to which the AI node belongs.
         self.ainode_pool_id = ainode_pool_id
         # The number of nodes.
         self.node_num = node_num
@@ -118,21 +118,19 @@ class ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos(DaraModel):
         update_time: str = None,
         zone_id: str = None,
     ):
-        # The type of the bound object.
+        # The type of the object to which the AI node is bound.
         self.bind_object = bind_object
-        # The binding status.
-        # 
-        # - `unbound`: The node is not bound.
-        # 
-        # - `bound`: The node is bound.
+        # The status of the AI node. Valid values:
+        # - unbound: The AI node is not bound.
+        # - bound: The AI node is bound.
         self.bind_status = bind_status
-        # The creation time.
+        # The time when the AI node was created.
         self.create_time = create_time
         # The namespace.
         self.namespace = namespace
-        # The name of the AINode.
+        # The name of the AI node.
         self.node_name = node_name
-        # The AINode specification. The following specifications are supported:
+        # The node specifications of the AI node. The following specifications are supported:
         # 
         # ```
         # ADB.AIMedium.1
@@ -164,7 +162,7 @@ class ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos(DaraModel):
         # ADB.AI2XLarge.8
         # ```
         self.node_spec = node_spec
-        # The update time.
+        # The time when the AI node was last updated.
         self.update_time = update_time
         # The zone ID.
         self.zone_id = zone_id

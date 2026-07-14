@@ -12,36 +12,30 @@ class ModifyDBInstanceDeploymentModeRequest(DaraModel):
         standby_vswitch_id: str = None,
         standby_zone_id: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The deployment mode. Valid values:
-        # 
-        # *   multiple: Multi-zone development.
-        # *   single: Single-zone deployment.
+        # - multiple: multi-zone deployment.
+        # - single: single-zone deployment.
         # 
         # This parameter is required.
         self.deploy_mode = deploy_mode
-        # The vSwitch ID of the secondary zone.
+        # The vSwitch ID in the secondary zone.
         # 
         # > 
-        # 
-        # *   This parameter must be specified only when DeployMode is set to multiple.
-        # 
-        # *   The vSwitch must be deployed in the zone that is specified by the StandbyZoneId parameter.
+        # > - This parameter is required only for multi-zone deployment.
+        # > - The zone of the vSwitch specified by this parameter must be the same as the zone specified by StandbyZoneId.
         self.standby_vswitch_id = standby_vswitch_id
-        # The ID of the secondary zone.
+        # The secondary zone ID.
         # 
         # > 
-        # 
-        # *   This parameter must be specified only when DeployMode is set to multiple.
-        # 
-        # *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available zone list.
-        # 
-        # *   The ID of the secondary zone must be different from the ID of the primary zone.
+        # > - This parameter is required only for multi-zone deployment.
+        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available zone IDs.
+        # > - The secondary zone ID must be different from the primary zone ID.
         self.standby_zone_id = standby_zone_id
 
     def validate(self):

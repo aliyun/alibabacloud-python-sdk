@@ -29,9 +29,9 @@ class CreateBranchRequest(DaraModel):
         self.branch_name = branch_name
         # The client idempotency token. This token ensures the idempotence of retry requests.
         self.client_token = client_token
-        # The branch description.
+        # The description of the branch.
         self.description = description
-        # The time at which the branch automatically expires and is deleted. The value is in ISO 8601 UTC format.
+        # The time when the branch automatically expires and is deleted. The value is in the ISO 8601 UTC format.
         self.expires_at = expires_at
         # The initialization source of the branch.
         # 
@@ -39,17 +39,17 @@ class CreateBranchRequest(DaraModel):
         # - ParentData: copies the schema and data from the parent branch. This is the default value.
         # - SchemaOnly: copies only the schema structure.
         self.init_source = init_source
-        # The parent branch ID. This parameter specifies the parent branch for the new branch or query condition.
+        # The ID of the parent branch. This parameter specifies the parent branch for the new branch or query condition.
         # 
         # This parameter is required.
         self.parent_branch_id = parent_branch_id
-        # The log sequence number (LSN) from the parent branch at which the branch is created.
+        # The log sequence number (LSN) selected when creating a branch from the parent branch.
         self.parent_lsn = parent_lsn
-        # The point in time for data synchronization from the parent branch when creating the branch. The value is in ISO 8601 UTC format.
+        # The point in time for data synchronization when creating a branch from the parent branch. The value is in the ISO 8601 UTC format.
         # 
         # Default value: the current time.
         self.parent_timestamp = parent_timestamp
-        # The Supabase project ID that corresponds to the primary branch.
+        # The ID of the Supabase project that corresponds to the primary branch.
         # 
         # This parameter is required.
         self.project_id = project_id

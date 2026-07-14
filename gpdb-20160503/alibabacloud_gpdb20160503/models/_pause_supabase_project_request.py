@@ -16,7 +16,7 @@ class PauseSupabaseProjectRequest(DaraModel):
         self.project_id = project_id
         # The region ID.
         # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
 
     def validate(self):

@@ -1697,6 +1697,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_account_with_options_async(request, runtime)
 
+    def create_api_key_with_options(
+        self,
+        tmp_req: main_models.CreateApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApiKeyResponse:
+        tmp_req.validate()
+        request = main_models.CreateApiKeyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.service_ids):
+            request.service_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.service_ids, 'ServiceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_ids_shrink):
+            query['ServiceIds'] = request.service_ids_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_api_key_with_options_async(
+        self,
+        tmp_req: main_models.CreateApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApiKeyResponse:
+        tmp_req.validate()
+        request = main_models.CreateApiKeyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.service_ids):
+            request.service_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.service_ids, 'ServiceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.service_ids_shrink):
+            query['ServiceIds'] = request.service_ids_shrink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_api_key(
+        self,
+        request: main_models.CreateApiKeyRequest,
+    ) -> main_models.CreateApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.create_api_key_with_options(request, runtime)
+
+    async def create_api_key_async(
+        self,
+        request: main_models.CreateApiKeyRequest,
+    ) -> main_models.CreateApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.create_api_key_with_options_async(request, runtime)
+
     def create_backup_with_options(
         self,
         request: main_models.CreateBackupRequest,
@@ -5112,6 +5206,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAccountResponse:
         runtime = RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
+
+    def delete_api_key_with_options(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_api_key_with_options_async(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_api_key(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+    ) -> main_models.DeleteApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.delete_api_key_with_options(request, runtime)
+
+    async def delete_api_key_async(
+        self,
+        request: main_models.DeleteApiKeyRequest,
+    ) -> main_models.DeleteApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_api_key_with_options_async(request, runtime)
 
     def delete_backup_with_options(
         self,
@@ -14849,6 +15017,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_account_with_options_async(request, runtime)
 
+    def get_api_key_with_options(
+        self,
+        request: main_models.GetApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApiKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_api_key_with_options_async(
+        self,
+        request: main_models.GetApiKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApiKeyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_id):
+            query['KeyId'] = request.key_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApiKey',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApiKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_api_key(
+        self,
+        request: main_models.GetApiKeyRequest,
+    ) -> main_models.GetApiKeyResponse:
+        runtime = RuntimeOptions()
+        return self.get_api_key_with_options(request, runtime)
+
+    async def get_api_key_async(
+        self,
+        request: main_models.GetApiKeyRequest,
+    ) -> main_models.GetApiKeyResponse:
+        runtime = RuntimeOptions()
+        return await self.get_api_key_with_options_async(request, runtime)
+
     def get_branch_schema_with_options(
         self,
         request: main_models.GetBranchSchemaRequest,
@@ -15775,6 +16017,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_upsert_collection_data_job_with_options_async(request, runtime)
 
+    def get_workspace_with_options(
+        self,
+        request: main_models.GetWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_with_options_async(
+        self,
+        request: main_models.GetWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspace',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace(
+        self,
+        request: main_models.GetWorkspaceRequest,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.get_workspace_with_options(request, runtime)
+
+    async def get_workspace_async(
+        self,
+        request: main_models.GetWorkspaceRequest,
+    ) -> main_models.GetWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workspace_with_options_async(request, runtime)
+
     def grant_collection_with_options(
         self,
         request: main_models.GrantCollectionRequest,
@@ -16200,6 +16516,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListAIServicesResponse:
         runtime = RuntimeOptions()
         return await self.list_aiservices_with_options_async(request, runtime)
+
+    def list_api_keys_with_options(
+        self,
+        request: main_models.ListApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiKeys',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_api_keys_with_options_async(
+        self,
+        request: main_models.ListApiKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApiKeysResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.key_name):
+            query['KeyName'] = request.key_name
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApiKeys',
+            version = '2016-05-03',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApiKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_api_keys(
+        self,
+        request: main_models.ListApiKeysRequest,
+    ) -> main_models.ListApiKeysResponse:
+        runtime = RuntimeOptions()
+        return self.list_api_keys_with_options(request, runtime)
+
+    async def list_api_keys_async(
+        self,
+        request: main_models.ListApiKeysRequest,
+    ) -> main_models.ListApiKeysResponse:
+        runtime = RuntimeOptions()
+        return await self.list_api_keys_with_options_async(request, runtime)
 
     def list_backup_jobs_with_options(
         self,

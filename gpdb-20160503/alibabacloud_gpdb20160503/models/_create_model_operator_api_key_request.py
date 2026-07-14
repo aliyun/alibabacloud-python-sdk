@@ -9,6 +9,8 @@ class CreateModelOperatorApiKeyRequest(DaraModel):
         self,
         description: str = None,
     ):
+        # The description. Spaces are not allowed, and the value cannot exceed 256 characters.
+        # 
         # This parameter is required.
         self.description = description
 

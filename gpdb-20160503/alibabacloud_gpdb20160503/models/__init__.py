@@ -53,6 +53,10 @@ from ._create_aiservice_response import CreateAIServiceResponse
 from ._create_account_request import CreateAccountRequest
 from ._create_account_response_body import CreateAccountResponseBody
 from ._create_account_response import CreateAccountResponse
+from ._create_api_key_request import CreateApiKeyRequest
+from ._create_api_key_shrink_request import CreateApiKeyShrinkRequest
+from ._create_api_key_response_body import CreateApiKeyResponseBody
+from ._create_api_key_response import CreateApiKeyResponse
 from ._create_backup_request import CreateBackupRequest
 from ._create_backup_response_body import CreateBackupResponseBody
 from ._create_backup_response import CreateBackupResponse
@@ -154,6 +158,9 @@ from ._delete_aiservice_response import DeleteAIServiceResponse
 from ._delete_account_request import DeleteAccountRequest
 from ._delete_account_response_body import DeleteAccountResponseBody
 from ._delete_account_response import DeleteAccountResponse
+from ._delete_api_key_request import DeleteApiKeyRequest
+from ._delete_api_key_response_body import DeleteApiKeyResponseBody
+from ._delete_api_key_response import DeleteApiKeyResponse
 from ._delete_backup_request import DeleteBackupRequest
 from ._delete_backup_response_body import DeleteBackupResponseBody
 from ._delete_backup_response import DeleteBackupResponse
@@ -501,6 +508,9 @@ from ._execute_statement_response import ExecuteStatementResponse
 from ._get_account_request import GetAccountRequest
 from ._get_account_response_body import GetAccountResponseBody
 from ._get_account_response import GetAccountResponse
+from ._get_api_key_request import GetApiKeyRequest
+from ._get_api_key_response_body import GetApiKeyResponseBody
+from ._get_api_key_response import GetApiKeyResponse
 from ._get_branch_schema_request import GetBranchSchemaRequest
 from ._get_branch_schema_response_body import GetBranchSchemaResponseBody
 from ._get_branch_schema_response import GetBranchSchemaResponse
@@ -534,6 +544,9 @@ from ._get_upload_document_job_response import GetUploadDocumentJobResponse
 from ._get_upsert_collection_data_job_request import GetUpsertCollectionDataJobRequest
 from ._get_upsert_collection_data_job_response_body import GetUpsertCollectionDataJobResponseBody
 from ._get_upsert_collection_data_job_response import GetUpsertCollectionDataJobResponse
+from ._get_workspace_request import GetWorkspaceRequest
+from ._get_workspace_response_body import GetWorkspaceResponseBody
+from ._get_workspace_response import GetWorkspaceResponse
 from ._grant_collection_request import GrantCollectionRequest
 from ._grant_collection_response_body import GrantCollectionResponseBody
 from ._grant_collection_response import GrantCollectionResponse
@@ -549,6 +562,9 @@ from ._list_ainode_pools_response import ListAINodePoolsResponse
 from ._list_aiservices_request import ListAIServicesRequest
 from ._list_aiservices_response_body import ListAIServicesResponseBody
 from ._list_aiservices_response import ListAIServicesResponse
+from ._list_api_keys_request import ListApiKeysRequest
+from ._list_api_keys_response_body import ListApiKeysResponseBody
+from ._list_api_keys_response import ListApiKeysResponse
 from ._list_backup_jobs_request import ListBackupJobsRequest
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBody
 from ._list_backup_jobs_response import ListBackupJobsResponse
@@ -1035,6 +1051,7 @@ from ._execute_statement_response_body import ExecuteStatementResponseBodyDataCo
 from ._execute_statement_response_body import ExecuteStatementResponseBodyDataRecordsRecords
 from ._execute_statement_response_body import ExecuteStatementResponseBodyDataRecords
 from ._execute_statement_response_body import ExecuteStatementResponseBodyData
+from ._get_api_key_response_body import GetApiKeyResponseBodyAuthServices
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyJob
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyUsage
 from ._get_statement_result_response_body import GetStatementResultResponseBodyDataColumnMetadata
@@ -1046,10 +1063,15 @@ from ._get_upload_document_job_response_body import GetUploadDocumentJobResponse
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBodyJob
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBodyUsage
 from ._get_upsert_collection_data_job_response_body import GetUpsertCollectionDataJobResponseBodyJob
+from ._get_workspace_response_body import GetWorkspaceResponseBodyApikeysAuthServices
+from ._get_workspace_response_body import GetWorkspaceResponseBodyApikeys
+from ._get_workspace_response_body import GetWorkspaceResponseBodyServices
 from ._handle_active_sqlrecord_response_body import HandleActiveSQLRecordResponseBodyResults
 from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos
 from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodePoolInfos
 from ._list_aiservices_response_body import ListAIServicesResponseBodyServices
+from ._list_api_keys_response_body import ListApiKeysResponseBodyItemsAuthServices
+from ._list_api_keys_response_body import ListApiKeysResponseBodyItems
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItemsBackupJob
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItems
 from ._list_branches_response_body import ListBranchesResponseBodyBranchesBranchTagsTag
@@ -1203,6 +1225,10 @@ __all__ = [
     CreateAccountRequest,
     CreateAccountResponseBody,
     CreateAccountResponse,
+    CreateApiKeyRequest,
+    CreateApiKeyShrinkRequest,
+    CreateApiKeyResponseBody,
+    CreateApiKeyResponse,
     CreateBackupRequest,
     CreateBackupResponseBody,
     CreateBackupResponse,
@@ -1304,6 +1330,9 @@ __all__ = [
     DeleteAccountRequest,
     DeleteAccountResponseBody,
     DeleteAccountResponse,
+    DeleteApiKeyRequest,
+    DeleteApiKeyResponseBody,
+    DeleteApiKeyResponse,
     DeleteBackupRequest,
     DeleteBackupResponseBody,
     DeleteBackupResponse,
@@ -1651,6 +1680,9 @@ __all__ = [
     GetAccountRequest,
     GetAccountResponseBody,
     GetAccountResponse,
+    GetApiKeyRequest,
+    GetApiKeyResponseBody,
+    GetApiKeyResponse,
     GetBranchSchemaRequest,
     GetBranchSchemaResponseBody,
     GetBranchSchemaResponse,
@@ -1684,6 +1716,9 @@ __all__ = [
     GetUpsertCollectionDataJobRequest,
     GetUpsertCollectionDataJobResponseBody,
     GetUpsertCollectionDataJobResponse,
+    GetWorkspaceRequest,
+    GetWorkspaceResponseBody,
+    GetWorkspaceResponse,
     GrantCollectionRequest,
     GrantCollectionResponseBody,
     GrantCollectionResponse,
@@ -1699,6 +1734,9 @@ __all__ = [
     ListAIServicesRequest,
     ListAIServicesResponseBody,
     ListAIServicesResponse,
+    ListApiKeysRequest,
+    ListApiKeysResponseBody,
+    ListApiKeysResponse,
     ListBackupJobsRequest,
     ListBackupJobsResponseBody,
     ListBackupJobsResponse,
@@ -2185,6 +2223,7 @@ __all__ = [
     ExecuteStatementResponseBodyDataRecordsRecords,
     ExecuteStatementResponseBodyDataRecords,
     ExecuteStatementResponseBodyData,
+    GetApiKeyResponseBodyAuthServices,
     GetGraphRAGJobResponseBodyJob,
     GetGraphRAGJobResponseBodyUsage,
     GetStatementResultResponseBodyDataColumnMetadata,
@@ -2196,10 +2235,15 @@ __all__ = [
     GetUploadDocumentJobResponseBodyJob,
     GetUploadDocumentJobResponseBodyUsage,
     GetUpsertCollectionDataJobResponseBodyJob,
+    GetWorkspaceResponseBodyApikeysAuthServices,
+    GetWorkspaceResponseBodyApikeys,
+    GetWorkspaceResponseBodyServices,
     HandleActiveSQLRecordResponseBodyResults,
     ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos,
     ListAINodePoolsResponseBodyAINodePoolInfos,
     ListAIServicesResponseBodyServices,
+    ListApiKeysResponseBodyItemsAuthServices,
+    ListApiKeysResponseBodyItems,
     ListBackupJobsResponseBodyItemsBackupJob,
     ListBackupJobsResponseBodyItems,
     ListBranchesResponseBodyBranchesBranchTagsTag,

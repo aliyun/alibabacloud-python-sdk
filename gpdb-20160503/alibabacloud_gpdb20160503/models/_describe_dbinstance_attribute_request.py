@@ -11,14 +11,14 @@ class DescribeDBInstanceAttributeRequest(DaraModel):
         owner_id: int = None,
         resource_group_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
-        # > You can invoke the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view the instance IDs of all AnalyticDB for PostgreSQL instances in the destination region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the instance IDs of all AnalyticDB for PostgreSQL instances in a region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # This parameter is deprecated and does not need to be specified.
+        # This parameter is deprecated. You do not need to specify this parameter.
         self.resource_group_id = resource_group_id
 
     def validate(self):
