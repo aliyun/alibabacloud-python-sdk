@@ -14,6 +14,7 @@ class ExecuteQueryRequest(DaraModel):
         query: str = None,
         to: int = None,
         type: str = None,
+        version: str = None,
     ):
         self.from_ = from_
         self.length = length
@@ -28,6 +29,7 @@ class ExecuteQueryRequest(DaraModel):
         # 
         # This parameter is required.
         self.type = type
+        self.version = version
 
     def validate(self):
         pass
@@ -58,6 +60,9 @@ class ExecuteQueryRequest(DaraModel):
         if self.type is not None:
             result['type'] = self.type
 
+        if self.version is not None:
+            result['version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -82,6 +87,9 @@ class ExecuteQueryRequest(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 

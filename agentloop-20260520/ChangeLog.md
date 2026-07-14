@@ -1,3 +1,9 @@
+2026-07-14 Version: 2.2.0
+- Support API CreatePipeline.
+- Support API PreviewPipeline.
+- Update API ExecuteQuery: add request parameters body.version.
+
+
 2026-07-09 Version: 2.1.0
 - Support API CancelPipelineRun.
 - Support API CreateEvaluationTask.

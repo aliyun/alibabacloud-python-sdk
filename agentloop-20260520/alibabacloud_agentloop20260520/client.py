@@ -964,6 +964,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_evaluator_skill_with_options_async(name, request, headers, runtime)
 
+    def create_pipeline_with_options(
+        self,
+        agent_space: str,
+        request: main_models.CreatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePipelineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_policy):
+            body['executePolicy'] = request.execute_policy
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.sink):
+            body['sink'] = request.sink
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_pipeline_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.CreatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePipelineResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.execute_policy):
+            body['executePolicy'] = request.execute_policy
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.pipeline_name):
+            body['pipelineName'] = request.pipeline_name
+        if not DaraCore.is_null(request.sink):
+            body['sink'] = request.sink
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_pipeline(
+        self,
+        agent_space: str,
+        request: main_models.CreatePipelineRequest,
+    ) -> main_models.CreatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_pipeline_with_options(agent_space, request, headers, runtime)
+
+    async def create_pipeline_async(
+        self,
+        agent_space: str,
+        request: main_models.CreatePipelineRequest,
+    ) -> main_models.CreatePipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_pipeline_with_options_async(agent_space, request, headers, runtime)
+
     def delete_agent_space_with_options(
         self,
         agent_space: str,
@@ -1792,6 +1900,8 @@ class Client(OpenApiClient):
             body['to'] = request.to
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1836,6 +1946,8 @@ class Client(OpenApiClient):
             body['to'] = request.to
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
+        if not DaraCore.is_null(request.version):
+            body['version'] = request.version
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -3779,6 +3891,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.pause_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
+
+    def preview_pipeline_with_options(
+        self,
+        agent_space: str,
+        request: main_models.PreviewPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.from_time):
+            body['fromTime'] = request.from_time
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.to_time):
+            body['toTime'] = request.to_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewPipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/preview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewPipelineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_pipeline_with_options_async(
+        self,
+        agent_space: str,
+        request: main_models.PreviewPipelineRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewPipelineResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.from_time):
+            body['fromTime'] = request.from_time
+        if not DaraCore.is_null(request.pipeline):
+            body['pipeline'] = request.pipeline
+        if not DaraCore.is_null(request.source):
+            body['source'] = request.source
+        if not DaraCore.is_null(request.to_time):
+            body['toTime'] = request.to_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewPipeline',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/agentspace/{DaraURL.percent_encode(agent_space)}/pipeline/preview',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewPipelineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_pipeline(
+        self,
+        agent_space: str,
+        request: main_models.PreviewPipelineRequest,
+    ) -> main_models.PreviewPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.preview_pipeline_with_options(agent_space, request, headers, runtime)
+
+    async def preview_pipeline_async(
+        self,
+        agent_space: str,
+        request: main_models.PreviewPipelineRequest,
+    ) -> main_models.PreviewPipelineResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.preview_pipeline_with_options_async(agent_space, request, headers, runtime)
 
     def resume_pipeline_with_options(
         self,
