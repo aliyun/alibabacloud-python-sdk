@@ -27,37 +27,21 @@ class NotifyStrategyForSNSView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # The creation time of the notification strategy.
         self.create_time = create_time
-        # The list of custom templates.
         self.custom_template_entries = custom_template_entries
-        # The description of the notification strategy.
         self.description = description
-        # Specifies whether to enable the notification strategy. Valid values: true, false.
         self.enable = enable
-        # Specifies whether to enable incident management. Valid values: true, false.
         self.enable_incident_management = enable_incident_management
-        # The settings for alert grouping.
         self.grouping_setting = grouping_setting
-        # Specifies whether to ignore notifications for restored alerts. Valid values: true, false.
         self.ignore_restored_notification = ignore_restored_notification
-        # The ID of the incident response plan.
         self.incident_response_plan_id = incident_response_plan_id
-        # The mode of the notification strategy.
         self.mode = mode
-        # The ID of the notification strategy.
         self.notify_strategy_id = notify_strategy_id
-        # The name of the notification strategy.
         self.notify_strategy_name = notify_strategy_name
-        # The list of notification routes.
         self.routes = routes
-        # The source from which the strategy is synchronized.
         self.sync_from_type = sync_from_type
-        # The last update time of the notification strategy.
         self.update_time = update_time
-        # The user ID.
         self.user_id = user_id
-        # The workspace to which the notification strategy belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -200,17 +184,11 @@ class NotifyStrategyForSNSViewRoutes(DaraModel):
         filter_setting: main_models.FilterSetting = None,
         severities: List[str] = None,
     ):
-        # The notification channels for the route.
         self.channels = channels
-        # The name of the digital employee assigned to this route.
         self.digital_employee_name = digital_employee_name
-        # The time range during which the notification route is active.
         self.effect_time_range = effect_time_range
-        # Specifies whether to enable root cause analysis (RCA) for alerts that match this route. Valid values: true, false.
         self.enable_rca = enable_rca
-        # The filter settings for the route.
         self.filter_setting = filter_setting
-        # The alert severities that trigger this route.
         self.severities = severities
 
     def validate(self):
@@ -285,13 +263,9 @@ class NotifyStrategyForSNSViewRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The days of the week when the route is active.
         self.day_in_week = day_in_week
-        # The end time of the active period, specified in minutes from 00:00.
         self.end_time_in_minute = end_time_in_minute
-        # The start time of the active period, specified in minutes from 00:00.
         self.start_time_in_minute = start_time_in_minute
-        # The time zone for the active period. For example, \\"Asia/Shanghai\\".
         self.time_zone = time_zone
 
     def validate(self):
@@ -339,11 +313,8 @@ class NotifyStrategyForSNSViewRoutesChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # The type of the notification channel, such as \\"sms\\" or \\"email\\".
         self.channel_type = channel_type
-        # The enabled sub-channels.
         self.enabled_sub_channels = enabled_sub_channels
-        # The list of receivers for the channel.
         self.receivers = receivers
 
     def validate(self):
@@ -386,13 +357,9 @@ class NotifyStrategyForSNSViewGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
-        # The keys for grouping alerts.
         self.grouping_keys = grouping_keys
-        # The time window in minutes for grouping alerts.
         self.period_min = period_min
-        # The silence period in seconds after a notification is sent for a group.
         self.silence_sec = silence_sec
-        # The number of times to send notifications for a group.
         self.times = times
 
     def validate(self):
@@ -439,9 +406,7 @@ class NotifyStrategyForSNSViewCustomTemplateEntries(DaraModel):
         target_type: str = None,
         template_uuid: str = None,
     ):
-        # The target type for the custom template.
         self.target_type = target_type
-        # The unique identifier (UUID) of the template.
         self.template_uuid = template_uuid
 
     def validate(self):

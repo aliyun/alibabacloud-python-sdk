@@ -14,18 +14,11 @@ class DatasourceConfigUnified(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The unique instance ID.
         self.instance_id = instance_id
-        # The raw string value of the legacy configuration, used for backward compatibility.
         self.legacy_raw = legacy_raw
-        # The legacy type of the data source, used for backward compatibility.
         self.legacy_type = legacy_type
-        # The product category of the data source.
         self.product_category = product_category
-        # The region ID.
         self.region_id = region_id
-        # The type of the data source.
-        # 
         # This parameter is required.
         self.type = type
 

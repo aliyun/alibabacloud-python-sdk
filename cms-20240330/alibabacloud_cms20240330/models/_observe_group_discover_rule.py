@@ -27,27 +27,27 @@ class ObserveGroupDiscoverRule(DaraModel):
     ):
         # Indicates whether the rule is enabled. If set to false, the data plane skips this rule and does not perform matching, tagging, or delivery.
         self.enabled = enabled
-        # The entity type (legacy). This parameter is retained for backward compatibility. Use entityTypes instead.
+        # The entity type (legacy). Retained for backward compatibility. Use entityTypes instead.
         self.entity_type = entity_type
-        # The list of entity types. A single rule can match across multiple types, such as acs.ecs.instance, acs.rds.instance, and acs.arms.service.
+        # The list of entity types. A single rule can match multiple types, such as acs.ecs.instance, acs.rds.instance, and acs.arms.service.
         self.entity_types = entity_types
         # The time when the rule was created, in UNIX millisecond timestamp format. This value is used for display in the console.
         self.gmt_create = gmt_create
-        # The list of manually specified instance IDs. This is an enumeration type and includes instances synchronized manually in version 1.0.
+        # The list of manually specified instance IDs in enumeration mode, including instances synchronized manually in version 1.0.
         self.instance_ids = instance_ids
         # The name matching rules.
         self.name_rules = name_rules
-        # The list of region IDs used for region-based filtering.
+        # The list of region IDs used for filtering by region.
         self.region_ids = region_ids
         # The resource group ID used for filtering.
         self.resource_group_id = resource_group_id
-        # The stable ID of the rule, used as an anchor for editing, deleting, and enabling or disabling operations. Format: dr-<16-character hash>.
+        # The stable rule ID used as an anchor for editing, deleting, and enabling or disabling operations. Format: dr-<16-character hash>.
         self.rule_id = rule_id
         # The matching method. Valid values: byTag, byResourceGroup, byInstanceName, byManual, and bySpl.
         self.rule_type = rule_type
         # The applicable scope. Valid values: all (all entity types, exclusive) and entity (specified entity types).
         self.scope = scope
-        # The complete SPL expression for advanced configuration. If this parameter is not empty, it takes precedence over other filter fields.
+        # The full SPL expression for advanced configuration. If this parameter is not empty, it takes precedence over other filter fields.
         self.spl = spl
         # The tag matching rules.
         self.tag_rules = tag_rules
@@ -66,94 +66,94 @@ class ObserveGroupDiscoverRule(DaraModel):
         if _map is not None:
             result = _map
         if self.enabled is not None:
-            result['Enabled'] = self.enabled
+            result['enabled'] = self.enabled
 
         if self.entity_type is not None:
-            result['EntityType'] = self.entity_type
+            result['entityType'] = self.entity_type
 
         if self.entity_types is not None:
-            result['EntityTypes'] = self.entity_types
+            result['entityTypes'] = self.entity_types
 
         if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
+            result['gmtCreate'] = self.gmt_create
 
         if self.instance_ids is not None:
-            result['InstanceIds'] = self.instance_ids
+            result['instanceIds'] = self.instance_ids
 
         if self.name_rules is not None:
-            result['NameRules'] = self.name_rules.to_map()
+            result['nameRules'] = self.name_rules.to_map()
 
         if self.region_ids is not None:
-            result['RegionIds'] = self.region_ids
+            result['regionIds'] = self.region_ids
 
         if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
+            result['resourceGroupId'] = self.resource_group_id
 
         if self.rule_id is not None:
-            result['RuleId'] = self.rule_id
+            result['ruleId'] = self.rule_id
 
         if self.rule_type is not None:
-            result['RuleType'] = self.rule_type
+            result['ruleType'] = self.rule_type
 
         if self.scope is not None:
-            result['Scope'] = self.scope
+            result['scope'] = self.scope
 
         if self.spl is not None:
-            result['Spl'] = self.spl
+            result['spl'] = self.spl
 
         if self.tag_rules is not None:
-            result['TagRules'] = self.tag_rules.to_map()
+            result['tagRules'] = self.tag_rules.to_map()
 
         if self.user_id is not None:
-            result['UserId'] = self.user_id
+            result['userId'] = self.user_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Enabled') is not None:
-            self.enabled = m.get('Enabled')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
 
-        if m.get('EntityType') is not None:
-            self.entity_type = m.get('EntityType')
+        if m.get('entityType') is not None:
+            self.entity_type = m.get('entityType')
 
-        if m.get('EntityTypes') is not None:
-            self.entity_types = m.get('EntityTypes')
+        if m.get('entityTypes') is not None:
+            self.entity_types = m.get('entityTypes')
 
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
 
-        if m.get('InstanceIds') is not None:
-            self.instance_ids = m.get('InstanceIds')
+        if m.get('instanceIds') is not None:
+            self.instance_ids = m.get('instanceIds')
 
-        if m.get('NameRules') is not None:
+        if m.get('nameRules') is not None:
             temp_model = main_models.ObserveGroupDiscoverRuleNameRules()
-            self.name_rules = temp_model.from_map(m.get('NameRules'))
+            self.name_rules = temp_model.from_map(m.get('nameRules'))
 
-        if m.get('RegionIds') is not None:
-            self.region_ids = m.get('RegionIds')
+        if m.get('regionIds') is not None:
+            self.region_ids = m.get('regionIds')
 
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
-        if m.get('RuleId') is not None:
-            self.rule_id = m.get('RuleId')
+        if m.get('ruleId') is not None:
+            self.rule_id = m.get('ruleId')
 
-        if m.get('RuleType') is not None:
-            self.rule_type = m.get('RuleType')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
 
-        if m.get('Scope') is not None:
-            self.scope = m.get('Scope')
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
 
-        if m.get('Spl') is not None:
-            self.spl = m.get('Spl')
+        if m.get('spl') is not None:
+            self.spl = m.get('spl')
 
-        if m.get('TagRules') is not None:
+        if m.get('tagRules') is not None:
             temp_model = main_models.ObserveGroupDiscoverRuleTagRules()
-            self.tag_rules = temp_model.from_map(m.get('TagRules'))
+            self.tag_rules = temp_model.from_map(m.get('tagRules'))
 
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
 
         return self
 
@@ -165,7 +165,7 @@ class ObserveGroupDiscoverRuleTagRules(DaraModel):
     ):
         # The tag matching logic.
         self.op = op
-        # The list of tag conditions.
+        # The tag condition list.
         self.tags = tags
 
     def validate(self):
@@ -180,23 +180,23 @@ class ObserveGroupDiscoverRuleTagRules(DaraModel):
         if _map is not None:
             result = _map
         if self.op is not None:
-            result['Op'] = self.op
+            result['op'] = self.op
 
-        result['Tags'] = []
+        result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
-                result['Tags'].append(k1.to_map() if k1 else None)
+                result['tags'].append(k1.to_map() if k1 else None)
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Op') is not None:
-            self.op = m.get('Op')
+        if m.get('op') is not None:
+            self.op = m.get('op')
 
         self.tags = []
-        if m.get('Tags') is not None:
-            for k1 in m.get('Tags'):
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
                 temp_model = main_models.ObserveGroupDiscoverRuleTagRulesTags()
                 self.tags.append(temp_model.from_map(k1))
 
@@ -213,7 +213,7 @@ class ObserveGroupDiscoverRuleTagRulesTags(DaraModel):
         self.op = op
         # The tag key.
         self.tag_key = tag_key
-        # The list of tag values.
+        # The tag value list.
         self.tag_values = tag_values
 
     def validate(self):
@@ -225,26 +225,26 @@ class ObserveGroupDiscoverRuleTagRulesTags(DaraModel):
         if _map is not None:
             result = _map
         if self.op is not None:
-            result['Op'] = self.op
+            result['op'] = self.op
 
         if self.tag_key is not None:
-            result['TagKey'] = self.tag_key
+            result['tagKey'] = self.tag_key
 
         if self.tag_values is not None:
-            result['TagValues'] = self.tag_values
+            result['tagValues'] = self.tag_values
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Op') is not None:
-            self.op = m.get('Op')
+        if m.get('op') is not None:
+            self.op = m.get('op')
 
-        if m.get('TagKey') is not None:
-            self.tag_key = m.get('TagKey')
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
 
-        if m.get('TagValues') is not None:
-            self.tag_values = m.get('TagValues')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
 
         return self
 
@@ -256,7 +256,7 @@ class ObserveGroupDiscoverRuleNameRules(DaraModel):
     ):
         # The name matching logic.
         self.op = op
-        # The list of name conditions.
+        # The name condition list.
         self.tags = tags
 
     def validate(self):
@@ -271,23 +271,23 @@ class ObserveGroupDiscoverRuleNameRules(DaraModel):
         if _map is not None:
             result = _map
         if self.op is not None:
-            result['Op'] = self.op
+            result['op'] = self.op
 
-        result['Tags'] = []
+        result['tags'] = []
         if self.tags is not None:
             for k1 in self.tags:
-                result['Tags'].append(k1.to_map() if k1 else None)
+                result['tags'].append(k1.to_map() if k1 else None)
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Op') is not None:
-            self.op = m.get('Op')
+        if m.get('op') is not None:
+            self.op = m.get('op')
 
         self.tags = []
-        if m.get('Tags') is not None:
-            for k1 in m.get('Tags'):
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
                 temp_model = main_models.ObserveGroupDiscoverRuleNameRulesTags()
                 self.tags.append(temp_model.from_map(k1))
 
@@ -301,7 +301,7 @@ class ObserveGroupDiscoverRuleNameRulesTags(DaraModel):
     ):
         # The matching operation.
         self.op = op
-        # The list of matching values.
+        # The matching value list.
         self.tag_values = tag_values
 
     def validate(self):
@@ -313,20 +313,20 @@ class ObserveGroupDiscoverRuleNameRulesTags(DaraModel):
         if _map is not None:
             result = _map
         if self.op is not None:
-            result['Op'] = self.op
+            result['op'] = self.op
 
         if self.tag_values is not None:
-            result['TagValues'] = self.tag_values
+            result['tagValues'] = self.tag_values
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Op') is not None:
-            self.op = m.get('Op')
+        if m.get('op') is not None:
+            self.op = m.get('op')
 
-        if m.get('TagValues') is not None:
-            self.tag_values = m.get('TagValues')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
 
         return self
 

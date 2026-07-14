@@ -5,18 +5,20 @@ from __future__ import annotations
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
-class SubscriptionForSNSModify(DaraModel):
+class SubscriptionConfig(DaraModel):
     def __init__(
         self,
         filter_setting: main_models.FilterSetting = None,
         subscribe_legacy_event: bool = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        # The event content filtering conditions.
         self.filter_setting = filter_setting
-        # Specifies whether to subscribe to legacy product events (CMS 1.0 / ARMS / SLS events where workspace=null). Valid values:
+        # Specifies whether to subscribe to legacy product events (events with an empty workspace from CMS 1.0, ARMS, or SLS). Valid values:
         # - true: Subscribe.
-        # - false or null: Do not subscribe.
+        # - false/null: Do not subscribe.
         self.subscribe_legacy_event = subscribe_legacy_event
+        # The cross-workspace event routing (global subscription) settings.
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):

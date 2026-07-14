@@ -13,7 +13,7 @@ class ObserveGroupDetail(DaraModel):
         ali_uid: str = None,
         create_time: str = None,
         description: str = None,
-        discover_rules: str = None,
+        discover_rules: List[main_models.ObserveGroupDiscoverRule] = None,
         entity_summaries: List[main_models.ObserveGroupDetailEntitySummaries] = None,
         extra_info: str = None,
         favorited: bool = None,
@@ -21,10 +21,13 @@ class ObserveGroupDetail(DaraModel):
         group_name: str = None,
         group_type: str = None,
         modify_time: str = None,
+        og_entity_info_enabled: bool = None,
+        og_entity_info_prom_instances: List[main_models.ObserveGroupPromInstance] = None,
         origin_group_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         source_origin: str = None,
+        tags: List[main_models.ObserveGroupDetailTags] = None,
         workspace_id: str = None,
     ):
         # The UID of the Alibaba Cloud account to which the group belongs.
@@ -35,20 +38,24 @@ class ObserveGroupDetail(DaraModel):
         self.description = description
         # The list of entity discovery rules that define which entities the group automatically matches.
         self.discover_rules = discover_rules
-        # The statistics of entities in the group, grouped by entity type.
+        # The statistics of entities in the group, categorized by entity type.
         self.entity_summaries = entity_summaries
-        # The extended information in JSON string format, which carries alert templates, alert contact groups, pause policies, and other configurations.
+        # The extended information in JSON string format, which carries alert templates, alert contact groups, suspension policies, and other configurations.
         self.extra_info = extra_info
-        # Indicates whether the current user has favorited the group.
+        # Indicates whether the current user has followed the group.
         self.favorited = favorited
         self.group_id = group_id
-        # The name of the observability group. The name must be unique within the workspace.
+        # The name of the observability group. The name must be unique within the same workspace.
         self.group_name = group_name
         # The type of the observability group.
         self.group_type = group_type
         # The time when the group was last modified, in UTC format (yyyy-MM-ddTHH:mm:ssZ). This value is automatically updated when any property of the resource changes.
         self.modify_time = modify_time
-        # The ID of the version 1.0 application group (product_group.id). This parameter is valid only when sourceOrigin is set to synced_from_1_0.
+        # Specifies whether to enable the og_entity_info metric output. When enabled, the data plane writes the group ownership information to the target Prometheus instance.
+        self.og_entity_info_enabled = og_entity_info_enabled
+        # The set of Prometheus instances to which og_entity_info is written. This includes two source types: system (automatically identified by the system) and custom (user-defined).
+        self.og_entity_info_prom_instances = og_entity_info_prom_instances
+        # The product_group.id of the version 1.0 application group. This parameter is valid only when sourceOrigin is set to synced_from_1_0.
         self.origin_group_id = origin_group_id
         # The region ID of the group.
         self.region_id = region_id
@@ -58,12 +65,26 @@ class ObserveGroupDetail(DaraModel):
         # - native_2_0: created natively in version 2.0.
         # - synced_from_1_0: synchronized from a version 1.0 application group.
         self.source_origin = source_origin
+        # The resource tags (Alibaba Cloud standard tags), represented as an array of key-value pairs.
+        self.tags = tags
         # The workspace ID to which the group belongs. This value is set at the workspace level and cannot be changed after the group is created.
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.discover_rules:
+            for v1 in self.discover_rules:
+                 if v1:
+                    v1.validate()
         if self.entity_summaries:
             for v1 in self.entity_summaries:
+                 if v1:
+                    v1.validate()
+        if self.og_entity_info_prom_instances:
+            for v1 in self.og_entity_info_prom_instances:
+                 if v1:
+                    v1.validate()
+        if self.tags:
+            for v1 in self.tags:
                  if v1:
                     v1.validate()
 
@@ -81,8 +102,10 @@ class ObserveGroupDetail(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        result['discoverRules'] = []
         if self.discover_rules is not None:
-            result['discoverRules'] = self.discover_rules
+            for k1 in self.discover_rules:
+                result['discoverRules'].append(k1.to_map() if k1 else None)
 
         result['entitySummaries'] = []
         if self.entity_summaries is not None:
@@ -107,6 +130,14 @@ class ObserveGroupDetail(DaraModel):
         if self.modify_time is not None:
             result['modifyTime'] = self.modify_time
 
+        if self.og_entity_info_enabled is not None:
+            result['ogEntityInfoEnabled'] = self.og_entity_info_enabled
+
+        result['ogEntityInfoPromInstances'] = []
+        if self.og_entity_info_prom_instances is not None:
+            for k1 in self.og_entity_info_prom_instances:
+                result['ogEntityInfoPromInstances'].append(k1.to_map() if k1 else None)
+
         if self.origin_group_id is not None:
             result['originGroupId'] = self.origin_group_id
 
@@ -118,6 +149,11 @@ class ObserveGroupDetail(DaraModel):
 
         if self.source_origin is not None:
             result['sourceOrigin'] = self.source_origin
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
@@ -135,8 +171,11 @@ class ObserveGroupDetail(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        self.discover_rules = []
         if m.get('discoverRules') is not None:
-            self.discover_rules = m.get('discoverRules')
+            for k1 in m.get('discoverRules'):
+                temp_model = main_models.ObserveGroupDiscoverRule()
+                self.discover_rules.append(temp_model.from_map(k1))
 
         self.entity_summaries = []
         if m.get('entitySummaries') is not None:
@@ -162,6 +201,15 @@ class ObserveGroupDetail(DaraModel):
         if m.get('modifyTime') is not None:
             self.modify_time = m.get('modifyTime')
 
+        if m.get('ogEntityInfoEnabled') is not None:
+            self.og_entity_info_enabled = m.get('ogEntityInfoEnabled')
+
+        self.og_entity_info_prom_instances = []
+        if m.get('ogEntityInfoPromInstances') is not None:
+            for k1 in m.get('ogEntityInfoPromInstances'):
+                temp_model = main_models.ObserveGroupPromInstance()
+                self.og_entity_info_prom_instances.append(temp_model.from_map(k1))
+
         if m.get('originGroupId') is not None:
             self.origin_group_id = m.get('originGroupId')
 
@@ -174,8 +222,51 @@ class ObserveGroupDetail(DaraModel):
         if m.get('sourceOrigin') is not None:
             self.source_origin = m.get('sourceOrigin')
 
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.ObserveGroupDetailTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class ObserveGroupDetailTags(DaraModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        # The tag key.
+        self.tag_key = tag_key
+        # The tag value.
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
 
         return self
 
@@ -189,7 +280,7 @@ class ObserveGroupDetailEntitySummaries(DaraModel):
     ):
         # The entity category.
         self.entity_category = entity_category
-        # The entity count.
+        # The number of entities.
         self.entity_count = entity_count
         # The entity domain.
         self.entity_domain = entity_domain

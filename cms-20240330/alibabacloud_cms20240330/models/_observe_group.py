@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List, Dict
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -13,7 +13,7 @@ class ObserveGroup(DaraModel):
         ali_uid: str = None,
         create_time: str = None,
         description: str = None,
-        discover_rules: str = None,
+        discover_rules: List[main_models.ObserveGroupDiscoverRule] = None,
         entity_counts: Dict[str, int] = None,
         extra_info: str = None,
         favorited: bool = None,
@@ -22,6 +22,8 @@ class ObserveGroup(DaraModel):
         group_type: str = None,
         health: int = None,
         modify_time: str = None,
+        og_entity_info_enabled: bool = None,
+        og_entity_info_prom_instances: List[main_models.ObserveGroupPromInstance] = None,
         origin_group_id: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -31,21 +33,21 @@ class ObserveGroup(DaraModel):
     ):
         # The UID of the Alibaba Cloud account to which the group belongs.
         self.ali_uid = ali_uid
-        # The time when the group was created, in UTC format (yyyy-MM-ddTHH:mm:ssZ).
+        # The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The description of the observability group, which describes the business purpose.
+        # The description of the observability group, which explains its business purpose.
         self.description = description
         # The list of entity discovery rules that define which entities the group automatically matches.
         self.discover_rules = discover_rules
-        # The number of entities in each category. The key is the category domain (such as acs for Alibaba Cloud services, apm, or rum, which is extensible). The value is the number of entities in that category that belong to this group. This parameter is returned only when withEntityCount is set to true.
+        # The number of entities in each category. The key is the category domain (acs for cloud services, apm, or rum, which is extensible). The value is the number of entities in that category that belong to this group. Returned only when withEntityCount is set to true.
         self.entity_counts = entity_counts
-        # The extended information, which is a JSON string that contains alert templates, alert contact groups, pause policies, and other settings.
+        # The extended information as a JSON string, which carries alert templates, alert contact groups, and suspension policies.
         self.extra_info = extra_info
-        # Indicates whether the current user has favorited this group. This value is used as the filter criterion for the My Favorites feature.
+        # Indicates whether the current user has followed this group. This value is used as the filter criterion for the My Favorites feature.
         self.favorited = favorited
-        # The globally unique ID of the observability group, in the format of og-<16-character hash>. This ID is used across metrics, alerts, and the console.
+        # The globally unique ID of the observability group. Format: og-<16-character hash>. Used uniformly across metrics, alerts, and consoles.
         self.group_id = group_id
-        # The name of the observability group. The name must be unique within the workspace.
+        # The name of the observability group. Must be unique within the same workspace.
         self.group_name = group_name
         # The type of the observability group.
         self.group_type = group_type
@@ -54,11 +56,15 @@ class ObserveGroup(DaraModel):
         # - 1: healthy.
         # - 0: unhealthy.
         self.health = health
-        # The time when the group was last modified, in UTC format (yyyy-MM-ddTHH:mm:ssZ). This value is automatically updated when any property of the resource changes.
+        # The last modification time in UTC format: yyyy-MM-ddTHH:mm:ssZ. Automatically updated when any resource attribute changes.
         self.modify_time = modify_time
-        # The product_group.id of the version 1.0 application group. This parameter is returned only when sourceOrigin is set to synced_from_1_0.
+        # Specifies whether og_entity_info metric output is enabled. When enabled, the data plane writes the group membership information to the target Prometheus instance.
+        self.og_entity_info_enabled = og_entity_info_enabled
+        # The set of Prometheus instances to which og_entity_info is written. Includes two source types: system (automatically identified by the system) and custom (user-defined).
+        self.og_entity_info_prom_instances = og_entity_info_prom_instances
+        # The product_group.id of the version 1.0 application group. This parameter is valid only when sourceOrigin is set to synced_from_1_0.
         self.origin_group_id = origin_group_id
-        # The region ID of the group.
+        # The region ID to which the group belongs.
         self.region_id = region_id
         # The Alibaba Cloud resource group ID.
         self.resource_group_id = resource_group_id
@@ -66,12 +72,20 @@ class ObserveGroup(DaraModel):
         # - native_2_0: created natively in version 2.0.
         # - synced_from_1_0: synchronized from a version 1.0 application group.
         self.source_origin = source_origin
-        # The resource tags (Alibaba Cloud standard tags), which are an array of key-value pairs.
+        # The resource tags (Alibaba Cloud standard tags) as an array of key-value pairs.
         self.tags = tags
-        # The workspace ID to which the group belongs. This value is set at the workspace level and cannot be changed after the group is created.
+        # The workspace ID to which the group belongs. This value is set at the workspace level and cannot be changed after creation.
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.discover_rules:
+            for v1 in self.discover_rules:
+                 if v1:
+                    v1.validate()
+        if self.og_entity_info_prom_instances:
+            for v1 in self.og_entity_info_prom_instances:
+                 if v1:
+                    v1.validate()
         if self.tags:
             for v1 in self.tags:
                  if v1:
@@ -91,8 +105,10 @@ class ObserveGroup(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        result['discoverRules'] = []
         if self.discover_rules is not None:
-            result['discoverRules'] = self.discover_rules
+            for k1 in self.discover_rules:
+                result['discoverRules'].append(k1.to_map() if k1 else None)
 
         if self.entity_counts is not None:
             result['entityCounts'] = self.entity_counts
@@ -117,6 +133,14 @@ class ObserveGroup(DaraModel):
 
         if self.modify_time is not None:
             result['modifyTime'] = self.modify_time
+
+        if self.og_entity_info_enabled is not None:
+            result['ogEntityInfoEnabled'] = self.og_entity_info_enabled
+
+        result['ogEntityInfoPromInstances'] = []
+        if self.og_entity_info_prom_instances is not None:
+            for k1 in self.og_entity_info_prom_instances:
+                result['ogEntityInfoPromInstances'].append(k1.to_map() if k1 else None)
 
         if self.origin_group_id is not None:
             result['originGroupId'] = self.origin_group_id
@@ -151,8 +175,11 @@ class ObserveGroup(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        self.discover_rules = []
         if m.get('discoverRules') is not None:
-            self.discover_rules = m.get('discoverRules')
+            for k1 in m.get('discoverRules'):
+                temp_model = main_models.ObserveGroupDiscoverRule()
+                self.discover_rules.append(temp_model.from_map(k1))
 
         if m.get('entityCounts') is not None:
             self.entity_counts = m.get('entityCounts')
@@ -177,6 +204,15 @@ class ObserveGroup(DaraModel):
 
         if m.get('modifyTime') is not None:
             self.modify_time = m.get('modifyTime')
+
+        if m.get('ogEntityInfoEnabled') is not None:
+            self.og_entity_info_enabled = m.get('ogEntityInfoEnabled')
+
+        self.og_entity_info_prom_instances = []
+        if m.get('ogEntityInfoPromInstances') is not None:
+            for k1 in m.get('ogEntityInfoPromInstances'):
+                temp_model = main_models.ObserveGroupPromInstance()
+                self.og_entity_info_prom_instances.append(temp_model.from_map(k1))
 
         if m.get('originGroupId') is not None:
             self.origin_group_id = m.get('originGroupId')

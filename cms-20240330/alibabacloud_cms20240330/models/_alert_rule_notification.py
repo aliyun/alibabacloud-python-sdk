@@ -18,35 +18,43 @@ class AlertRuleNotification(DaraModel):
         groups: List[str] = None,
         notify_time: main_models.AlertRuleTimeSpan = None,
         qwencloud_contacts: Dict[str, dict] = None,
+        send_ok: bool = None,
+        severity_notifications: Dict[str, main_models.SeverityNotifyConfig] = None,
         silence_time: int = None,
         slack_webhooks: List[str] = None,
         wx_webhooks: List[str] = None,
     ):
-        # A list of contact IDs.
+        # The list of contact IDs.
         self.contacts = contacts
-        # A list of custom webhook notification object IDs.
+        # The list of custom webhook Notification Recipient IDs.
         self.custom_webhooks = custom_webhooks
-        # A list of DingTalk Cool App webhook notification object IDs.
+        # The list of DingTalk Cool App webhook Notification Recipient IDs.
         self.ding_cool_app_webhooks = ding_cool_app_webhooks
-        # A list of DingTalk webhook notification object IDs.
+        # The list of DingTalk webhook Notification Recipient IDs.
         self.ding_webhooks = ding_webhooks
-        # A list of Lark webhook notification object IDs.
+        # The list of Lark webhook Notification Recipient IDs.
         self.fs_webhooks = fs_webhooks
-        # A list of contact group IDs.
+        # The list of contact group IDs.
         self.groups = groups
-        # The notification period. Notifications are sent only within this period.
+        # The notification time period. Notifications are sent only during this time period.
         self.notify_time = notify_time
         self.qwencloud_contacts = qwencloud_contacts
-        # The notification silence period. Unit: seconds.
+        self.send_ok = send_ok
+        self.severity_notifications = severity_notifications
+        # The notification mute duration, in seconds.
         self.silence_time = silence_time
-        # A list of Slack webhook notification object IDs.
+        # The list of Slack webhook Notification Recipient IDs.
         self.slack_webhooks = slack_webhooks
-        # A list of WeChat webhook notification object IDs.
+        # The list of WeChat webhook Notification Recipient IDs.
         self.wx_webhooks = wx_webhooks
 
     def validate(self):
         if self.notify_time:
             self.notify_time.validate()
+        if self.severity_notifications:
+            for v1 in self.severity_notifications.values():
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -76,6 +84,14 @@ class AlertRuleNotification(DaraModel):
 
         if self.qwencloud_contacts is not None:
             result['qwencloudContacts'] = self.qwencloud_contacts
+
+        if self.send_ok is not None:
+            result['sendOk'] = self.send_ok
+
+        result['severityNotifications'] = {}
+        if self.severity_notifications is not None:
+            for k1, v1 in self.severity_notifications.items():
+                result['severityNotifications'][k1] = v1.to_map() if v1 else None
 
         if self.silence_time is not None:
             result['silenceTime'] = self.silence_time
@@ -114,6 +130,15 @@ class AlertRuleNotification(DaraModel):
 
         if m.get('qwencloudContacts') is not None:
             self.qwencloud_contacts = m.get('qwencloudContacts')
+
+        if m.get('sendOk') is not None:
+            self.send_ok = m.get('sendOk')
+
+        self.severity_notifications = {}
+        if m.get('severityNotifications') is not None:
+            for k1, v1 in m.get('severityNotifications').items():
+                temp_model = main_models.SeverityNotifyConfig()
+                self.severity_notifications[k1] = temp_model.from_map(v1)
 
         if m.get('silenceTime') is not None:
             self.silence_time = m.get('silenceTime')

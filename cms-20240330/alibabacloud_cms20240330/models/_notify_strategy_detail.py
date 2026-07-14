@@ -7,23 +7,24 @@ from typing import List
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
-class NotifyStrategyForSNSModify(DaraModel):
+class NotifyStrategyDetail(DaraModel):
     def __init__(
         self,
-        custom_template_entries: List[main_models.NotifyStrategyForSNSModifyCustomTemplateEntries] = None,
+        custom_template_entries: List[main_models.NotifyStrategyDetailCustomTemplateEntries] = None,
         description: str = None,
-        enable_incident_management: bool = None,
-        grouping_setting: main_models.NotifyStrategyForSNSModifyGroupingSetting = None,
+        grouping_setting: main_models.NotifyStrategyDetailGroupingSetting = None,
         ignore_restored_notification: bool = None,
-        routes: List[main_models.NotifyStrategyForSNSModifyRoutes] = None,
+        routes: List[main_models.NotifyStrategyDetailRoutes] = None,
     ):
+        # The list of custom notification templates.
         self.custom_template_entries = custom_template_entries
+        # The description of the notification policy.
         self.description = description
-        self.enable_incident_management = enable_incident_management
-        # This parameter is required.
+        # The grouping and merging settings.
         self.grouping_setting = grouping_setting
+        # Specifies whether to ignore notifications for recovery events. A value of true indicates that recovery notifications are not sent.
         self.ignore_restored_notification = ignore_restored_notification
-        # This parameter is required.
+        # The list of notification channel routing settings.
         self.routes = routes
 
     def validate(self):
@@ -51,9 +52,6 @@ class NotifyStrategyForSNSModify(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
-        if self.enable_incident_management is not None:
-            result['enableIncidentManagement'] = self.enable_incident_management
-
         if self.grouping_setting is not None:
             result['groupingSetting'] = self.grouping_setting.to_map()
 
@@ -72,17 +70,14 @@ class NotifyStrategyForSNSModify(DaraModel):
         self.custom_template_entries = []
         if m.get('customTemplateEntries') is not None:
             for k1 in m.get('customTemplateEntries'):
-                temp_model = main_models.NotifyStrategyForSNSModifyCustomTemplateEntries()
+                temp_model = main_models.NotifyStrategyDetailCustomTemplateEntries()
                 self.custom_template_entries.append(temp_model.from_map(k1))
 
         if m.get('description') is not None:
             self.description = m.get('description')
 
-        if m.get('enableIncidentManagement') is not None:
-            self.enable_incident_management = m.get('enableIncidentManagement')
-
         if m.get('groupingSetting') is not None:
-            temp_model = main_models.NotifyStrategyForSNSModifyGroupingSetting()
+            temp_model = main_models.NotifyStrategyDetailGroupingSetting()
             self.grouping_setting = temp_model.from_map(m.get('groupingSetting'))
 
         if m.get('ignoreRestoredNotification') is not None:
@@ -91,28 +86,30 @@ class NotifyStrategyForSNSModify(DaraModel):
         self.routes = []
         if m.get('routes') is not None:
             for k1 in m.get('routes'):
-                temp_model = main_models.NotifyStrategyForSNSModifyRoutes()
+                temp_model = main_models.NotifyStrategyDetailRoutes()
                 self.routes.append(temp_model.from_map(k1))
 
         return self
 
-class NotifyStrategyForSNSModifyRoutes(DaraModel):
+class NotifyStrategyDetailRoutes(DaraModel):
     def __init__(
         self,
-        channels: List[main_models.NotifyStrategyForSNSModifyRoutesChannels] = None,
+        channels: List[main_models.NotifyStrategyDetailRoutesChannels] = None,
         digital_employee_name: str = None,
-        effect_time_range: main_models.NotifyStrategyForSNSModifyRoutesEffectTimeRange = None,
+        effect_time_range: main_models.NotifyStrategyDetailRoutesEffectTimeRange = None,
         enable_rca: bool = None,
-        filter_setting: main_models.NotifyStrategyForSNSModifyRoutesFilterSetting = None,
-        severities: List[str] = None,
+        filter_setting: main_models.FilterSetting = None,
     ):
+        # The list of notification channels.
         self.channels = channels
+        # The digital employee name. This parameter is required when enableRca is set to true.
         self.digital_employee_name = digital_employee_name
-        # The effective period settings for notifications. Defines on which days and during which time range the system sends notifications.
+        # The effective time range.
         self.effect_time_range = effect_time_range
+        # Specifies whether to enable root cause analysis (RCA).
         self.enable_rca = enable_rca
+        # The route-level event filter conditions.
         self.filter_setting = filter_setting
-        self.severities = severities
 
     def validate(self):
         if self.channels:
@@ -146,9 +143,6 @@ class NotifyStrategyForSNSModifyRoutes(DaraModel):
         if self.filter_setting is not None:
             result['filterSetting'] = self.filter_setting.to_map()
 
-        if self.severities is not None:
-            result['severities'] = self.severities
-
         return result
 
     def from_map(self, m: dict = None):
@@ -156,123 +150,26 @@ class NotifyStrategyForSNSModifyRoutes(DaraModel):
         self.channels = []
         if m.get('channels') is not None:
             for k1 in m.get('channels'):
-                temp_model = main_models.NotifyStrategyForSNSModifyRoutesChannels()
+                temp_model = main_models.NotifyStrategyDetailRoutesChannels()
                 self.channels.append(temp_model.from_map(k1))
 
         if m.get('digitalEmployeeName') is not None:
             self.digital_employee_name = m.get('digitalEmployeeName')
 
         if m.get('effectTimeRange') is not None:
-            temp_model = main_models.NotifyStrategyForSNSModifyRoutesEffectTimeRange()
+            temp_model = main_models.NotifyStrategyDetailRoutesEffectTimeRange()
             self.effect_time_range = temp_model.from_map(m.get('effectTimeRange'))
 
         if m.get('enableRca') is not None:
             self.enable_rca = m.get('enableRca')
 
         if m.get('filterSetting') is not None:
-            temp_model = main_models.NotifyStrategyForSNSModifyRoutesFilterSetting()
+            temp_model = main_models.FilterSetting()
             self.filter_setting = temp_model.from_map(m.get('filterSetting'))
 
-        if m.get('severities') is not None:
-            self.severities = m.get('severities')
-
         return self
 
-class NotifyStrategyForSNSModifyRoutesFilterSetting(DaraModel):
-    def __init__(
-        self,
-        conditions: List[main_models.NotifyStrategyForSNSModifyRoutesFilterSettingConditions] = None,
-        expression: str = None,
-        relation: str = None,
-    ):
-        self.conditions = conditions
-        self.expression = expression
-        self.relation = relation
-
-    def validate(self):
-        if self.conditions:
-            for v1 in self.conditions:
-                 if v1:
-                    v1.validate()
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        result['conditions'] = []
-        if self.conditions is not None:
-            for k1 in self.conditions:
-                result['conditions'].append(k1.to_map() if k1 else None)
-
-        if self.expression is not None:
-            result['expression'] = self.expression
-
-        if self.relation is not None:
-            result['relation'] = self.relation
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.conditions = []
-        if m.get('conditions') is not None:
-            for k1 in m.get('conditions'):
-                temp_model = main_models.NotifyStrategyForSNSModifyRoutesFilterSettingConditions()
-                self.conditions.append(temp_model.from_map(k1))
-
-        if m.get('expression') is not None:
-            self.expression = m.get('expression')
-
-        if m.get('relation') is not None:
-            self.relation = m.get('relation')
-
-        return self
-
-class NotifyStrategyForSNSModifyRoutesFilterSettingConditions(DaraModel):
-    def __init__(
-        self,
-        field: str = None,
-        op: str = None,
-        value: str = None,
-    ):
-        self.field = field
-        self.op = op
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.field is not None:
-            result['field'] = self.field
-
-        if self.op is not None:
-            result['op'] = self.op
-
-        if self.value is not None:
-            result['value'] = self.value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('field') is not None:
-            self.field = m.get('field')
-
-        if m.get('op') is not None:
-            self.op = m.get('op')
-
-        if m.get('value') is not None:
-            self.value = m.get('value')
-
-        return self
-
-class NotifyStrategyForSNSModifyRoutesEffectTimeRange(DaraModel):
+class NotifyStrategyDetailRoutesEffectTimeRange(DaraModel):
     def __init__(
         self,
         day_in_week: List[int] = None,
@@ -280,13 +177,13 @@ class NotifyStrategyForSNSModifyRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The days of the week on which the setting takes effect. Array element values range from 0 to 6 (0 = Sunday, 1 = Monday, 2 = Tuesday, ... 6 = Saturday). Note: The value 7 is not supported. The maximum value is 6. Example for all days: [0,1,2,3,4,5,6]. Example for weekdays only: [1,2,3,4,5].
+        # The effective days of the week. Valid values: 0 to 6 (0 = Sunday, 6 = Saturday). The value 7 is not supported.
         self.day_in_week = day_in_week
-        # The end time of the day, expressed as the number of minutes from 00:00. Valid values: 0 to 1439 (23 × 60 + 59 = 1439, which represents 23:59).
+        # The end time of the day in minutes. Valid values: 0 to 1439.
         self.end_time_in_minute = end_time_in_minute
-        # The start time of the day, expressed as the number of minutes from 00:00. Valid values: 0 to 1439 (0 represents 00:00).
+        # The start time of the day in minutes. Valid values: 0 to 1438.
         self.start_time_in_minute = start_time_in_minute
-        # The IANA time zone identifier, such as Asia/Shanghai or America/Los_Angeles.
+        # The IANA time zone identifier.
         self.time_zone = time_zone
 
     def validate(self):
@@ -327,22 +224,18 @@ class NotifyStrategyForSNSModifyRoutesEffectTimeRange(DaraModel):
 
         return self
 
-class NotifyStrategyForSNSModifyRoutesChannels(DaraModel):
+class NotifyStrategyDetailRoutesChannels(DaraModel):
     def __init__(
         self,
         channel_type: str = None,
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # The notification channel type. The value must be one of the following uppercase enum values: DING (DingTalk chatbot), WEIXIN (WeCom chatbot), FEISHU (Lark chatbot), SLACK, TEAMS, WEBHOOK (custom webhook), CONTACT (contact, requires enabledSubChannels to specify sub-channels), GROUP (contact group), DUTY (on-call schedule), or DING_COOL_APP (DingTalk Cool App). Note: Lowercase values such as EMAIL or SMS are not supported. To send email, text message, or voice notifications, set channelType to CONTACT and specify EMAIL, SMS, or VOICE in enabledSubChannels.
-        # 
-        # This parameter is required.
+        # The channel type. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP.
         self.channel_type = channel_type
-        # Required only when channelType is CONTACT, GROUP, or DUTY. Valid values: EMAIL (email), SMS (text message), VOICE (voice call), DING (DingTalk work notification), WEIXIN (WeCom message), FEISHU (Lark message), and WEBHOOK. For example, to notify a contact by email and text message, set channelType to CONTACT and enabledSubChannels to ["EMAIL","SMS"]. This field is not required for other channelType values such as WEBHOOK or DING.
+        # The enabled sub-channels. Valid values: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK.
         self.enabled_sub_channels = enabled_sub_channels
-        # The list of receiver identifiers. For the WEBHOOK type, specify the webhook UUID. For DING, WEIXIN, or FEISHU, specify the chatbot UUID. For CONTACT, specify the contact ID. For GROUP, specify the contact group ID. For DUTY, specify the on-call schedule UUID. At least one element is required.
-        # 
-        # This parameter is required.
+        # The list of receiver identifiers.
         self.receivers = receivers
 
     def validate(self):
@@ -377,7 +270,7 @@ class NotifyStrategyForSNSModifyRoutesChannels(DaraModel):
 
         return self
 
-class NotifyStrategyForSNSModifyGroupingSetting(DaraModel):
+class NotifyStrategyDetailGroupingSetting(DaraModel):
     def __init__(
         self,
         grouping_keys: List[str] = None,
@@ -385,9 +278,13 @@ class NotifyStrategyForSNSModifyGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
+        # The event fields by which events are grouped for noise reduction. Events in the same group are merged into a single notification. An empty array indicates no grouping.
         self.grouping_keys = grouping_keys
+        # The check period in minutes.
         self.period_min = period_min
+        # The silence duration in seconds.
         self.silence_sec = silence_sec
+        # The number of trigger times.
         self.times = times
 
     def validate(self):
@@ -428,13 +325,12 @@ class NotifyStrategyForSNSModifyGroupingSetting(DaraModel):
 
         return self
 
-class NotifyStrategyForSNSModifyCustomTemplateEntries(DaraModel):
+class NotifyStrategyDetailCustomTemplateEntries(DaraModel):
     def __init__(
         self,
-        target_type: str = None,
         template_uuid: str = None,
     ):
-        self.target_type = target_type
+        # The UUID of the notification template.
         self.template_uuid = template_uuid
 
     def validate(self):
@@ -445,9 +341,6 @@ class NotifyStrategyForSNSModifyCustomTemplateEntries(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.target_type is not None:
-            result['targetType'] = self.target_type
-
         if self.template_uuid is not None:
             result['templateUuid'] = self.template_uuid
 
@@ -455,9 +348,6 @@ class NotifyStrategyForSNSModifyCustomTemplateEntries(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('targetType') is not None:
-            self.target_type = m.get('targetType')
-
         if m.get('templateUuid') is not None:
             self.template_uuid = m.get('templateUuid')
 

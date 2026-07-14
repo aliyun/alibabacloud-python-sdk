@@ -15,6 +15,7 @@ class SubscriptionForSNSView(DaraModel):
         name: str = None,
         notify_strategy_uuid: str = None,
         region_id: str = None,
+        subscribe_legacy_event: bool = None,
         subscription_type: str = None,
         sync_from_type: str = None,
         update_time: str = None,
@@ -30,6 +31,8 @@ class SubscriptionForSNSView(DaraModel):
         self.name = name
         self.notify_strategy_uuid = notify_strategy_uuid
         self.region_id = region_id
+        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace=null). Valid values: true: subscribed. false or null: not subscribed.
+        self.subscribe_legacy_event = subscribe_legacy_event
         self.subscription_type = subscription_type
         self.sync_from_type = sync_from_type
         self.update_time = update_time
@@ -69,6 +72,9 @@ class SubscriptionForSNSView(DaraModel):
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        if self.subscribe_legacy_event is not None:
+            result['subscribeLegacyEvent'] = self.subscribe_legacy_event
 
         if self.subscription_type is not None:
             result['subscriptionType'] = self.subscription_type
@@ -116,6 +122,9 @@ class SubscriptionForSNSView(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('subscribeLegacyEvent') is not None:
+            self.subscribe_legacy_event = m.get('subscribeLegacyEvent')
 
         if m.get('subscriptionType') is not None:
             self.subscription_type = m.get('subscriptionType')

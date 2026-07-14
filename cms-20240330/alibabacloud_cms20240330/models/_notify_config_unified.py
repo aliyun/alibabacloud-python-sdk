@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -15,6 +15,8 @@ class NotifyConfigUnified(DaraModel):
         active_start_time: str = None,
         channels: List[main_models.DirectNotifyChannel] = None,
         notify_strategies: List[str] = None,
+        send_recover_notification: bool = None,
+        severity_channels: Dict[str, main_models.SeverityNotifyConfig] = None,
         silence_time_secs: int = None,
         type: str = None,
         utc_offset: str = None,
@@ -24,6 +26,8 @@ class NotifyConfigUnified(DaraModel):
         self.active_start_time = active_start_time
         self.channels = channels
         self.notify_strategies = notify_strategies
+        self.send_recover_notification = send_recover_notification
+        self.severity_channels = severity_channels
         self.silence_time_secs = silence_time_secs
         # This parameter is required.
         self.type = type
@@ -32,6 +36,10 @@ class NotifyConfigUnified(DaraModel):
     def validate(self):
         if self.channels:
             for v1 in self.channels:
+                 if v1:
+                    v1.validate()
+        if self.severity_channels:
+            for v1 in self.severity_channels.values():
                  if v1:
                     v1.validate()
 
@@ -56,6 +64,14 @@ class NotifyConfigUnified(DaraModel):
 
         if self.notify_strategies is not None:
             result['notifyStrategies'] = self.notify_strategies
+
+        if self.send_recover_notification is not None:
+            result['sendRecoverNotification'] = self.send_recover_notification
+
+        result['severityChannels'] = {}
+        if self.severity_channels is not None:
+            for k1, v1 in self.severity_channels.items():
+                result['severityChannels'][k1] = v1.to_map() if v1 else None
 
         if self.silence_time_secs is not None:
             result['silenceTimeSecs'] = self.silence_time_secs
@@ -87,6 +103,15 @@ class NotifyConfigUnified(DaraModel):
 
         if m.get('notifyStrategies') is not None:
             self.notify_strategies = m.get('notifyStrategies')
+
+        if m.get('sendRecoverNotification') is not None:
+            self.send_recover_notification = m.get('sendRecoverNotification')
+
+        self.severity_channels = {}
+        if m.get('severityChannels') is not None:
+            for k1, v1 in m.get('severityChannels').items():
+                temp_model = main_models.SeverityNotifyConfig()
+                self.severity_channels[k1] = temp_model.from_map(v1)
 
         if m.get('silenceTimeSecs') is not None:
             self.silence_time_secs = m.get('silenceTimeSecs')

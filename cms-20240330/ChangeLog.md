@@ -1,3 +1,13 @@
+2026-07-14 Version: 10.2.0
+- Support API CreateNotifyPolicy.
+- Support API DeleteNotifyPolicy.
+- Support API DisableNotifyPolicy.
+- Support API EnableNotifyPolicy.
+- Support API GetNotifyPolicy.
+- Support API ListNotifyPolicies.
+- Support API UpdateNotifyPolicy.
+
+
 2026-07-09 Version: 10.1.0
 - Support API CreateServiceRecord.
 - Support API DeleteServiceRecord.

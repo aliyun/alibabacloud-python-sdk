@@ -6,16 +6,16 @@ from typing import List
 
 from darabonba.model import DaraModel
 
-class DirectNotifyChannel(DaraModel):
+class DirectNotifyReceiver(DaraModel):
     def __init__(
         self,
+        channels: List[str] = None,
         identifiers: List[str] = None,
-        type: str = None,
+        target_type: str = None,
     ):
-        # This parameter is required.
+        self.channels = channels
         self.identifiers = identifiers
-        # This parameter is required.
-        self.type = type
+        self.target_type = target_type
 
     def validate(self):
         pass
@@ -25,21 +25,27 @@ class DirectNotifyChannel(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.channels is not None:
+            result['channels'] = self.channels
+
         if self.identifiers is not None:
             result['identifiers'] = self.identifiers
 
-        if self.type is not None:
-            result['type'] = self.type
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('channels') is not None:
+            self.channels = m.get('channels')
+
         if m.get('identifiers') is not None:
             self.identifiers = m.get('identifiers')
 
-        if m.get('type') is not None:
-            self.type = m.get('type')
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
 
         return self
 
