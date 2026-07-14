@@ -25,18 +25,19 @@ class DescribeCenterPolicyListRequest(DaraModel):
         # This parameter is required.
         self.business_type = business_type
         self.model_library = model_library
-        # The page number to return in a paged query.<br>Default value: 1.
+        # The page number of the current page in a paged query. Paging starts from page 1.    
+        # Default value: 1.
         self.page_number = page_number
-        # The maximum number of entries per page in a paged query.
+        # The maximum number of entries per page in a paged query. Paging is used to return results in batches.
         self.page_size = page_size
-        # The list of Cloud Desktop policy IDs.
+        # The list of cloud desktop policy IDs.
         self.policy_group_id = policy_group_id
         self.port_proxy = port_proxy
         # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The scope where the Cloud Desktop policy takes effect.
+        # The effective scope of the cloud desktop policy.
         self.scope = scope
 
     def validate(self):

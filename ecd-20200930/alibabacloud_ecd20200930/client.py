@@ -22,6 +22,32 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'ecd.us-west-1.aliyuncs.com',
+            'us-east-1': 'ecd.us-east-1.aliyuncs.com',
+            'me-east-1': 'ecd.me-east-1.aliyuncs.com',
+            'me-central-1': 'ecd.me-central-1.aliyuncs.com',
+            'eu-west-1': 'ecd.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'ecd.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'ecd.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'ecd.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'ecd.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'ecd.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'ecd.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'ecd.cn-qingdao.aliyuncs.com',
+            'cn-nanjing': 'ecd.cn-nanjing.aliyuncs.com',
+            'cn-hongkong': 'ecd.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou-finance': 'ecd.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'ecd.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'ecd.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'ecd.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'ecd.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'ecd.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'ecd.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'ecd.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'ecd.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'ecd.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4874,6 +4900,8 @@ class Client(OpenApiClient):
             query['MonthDesktopSetting'] = request.month_desktop_setting
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.ou_path):
+            query['OuPath'] = request.ou_path
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -4896,6 +4924,8 @@ class Client(OpenApiClient):
             query['SavingPlanId'] = request.saving_plan_id
         if not DaraCore.is_null(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not DaraCore.is_null(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         if not DaraCore.is_null(request.subnet_id):
             query['SubnetId'] = request.subnet_id
         if not DaraCore.is_null(request.tag):
@@ -4986,6 +5016,8 @@ class Client(OpenApiClient):
             query['MonthDesktopSetting'] = request.month_desktop_setting
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.ou_path):
+            query['OuPath'] = request.ou_path
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -5008,6 +5040,8 @@ class Client(OpenApiClient):
             query['SavingPlanId'] = request.saving_plan_id
         if not DaraCore.is_null(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not DaraCore.is_null(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         if not DaraCore.is_null(request.subnet_id):
             query['SubnetId'] = request.subnet_id
         if not DaraCore.is_null(request.tag):
@@ -5728,6 +5762,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5778,6 +5814,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12495,96 +12533,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_flow_metric_with_options_async(request, runtime)
 
-    def describe_flow_statistic_with_options(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.desktop_id):
-            query['DesktopId'] = request.desktop_id
-        if not DaraCore.is_null(request.office_site_id):
-            query['OfficeSiteId'] = request.office_site_id
-        if not DaraCore.is_null(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeFlowStatistic',
-            version = '2020-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeFlowStatisticResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_flow_statistic_with_options_async(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.desktop_id):
-            query['DesktopId'] = request.desktop_id
-        if not DaraCore.is_null(request.office_site_id):
-            query['OfficeSiteId'] = request.office_site_id
-        if not DaraCore.is_null(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeFlowStatistic',
-            version = '2020-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeFlowStatisticResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_flow_statistic(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        runtime = RuntimeOptions()
-        return self.describe_flow_statistic_with_options(request, runtime)
-
-    async def describe_flow_statistic_async(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        runtime = RuntimeOptions()
-        return await self.describe_flow_statistic_with_options_async(request, runtime)
-
     def describe_forward_table_entries_with_options(
         self,
         request: main_models.DescribeForwardTableEntriesRequest,
@@ -14158,6 +14106,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14194,6 +14144,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

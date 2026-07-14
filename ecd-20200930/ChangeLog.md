@@ -1,3 +1,17 @@
+2026-07-14 Version: 5.0.0
+- Delete API DescribeFlowStatistic.
+- Update API CreateDesktops: add request parameters OuPath.
+- Update API CreateDesktops: add request parameters SubPayType.
+- Update API CreateNetworkPackage: add request parameters Tag.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AutoReconnect.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.DeviceConnectHint.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileMigrate.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ResetDesktop.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.WuyingKeeper.
+- Update API DescribeNetworkPackages: add request parameters Tag.
+- Update API DescribeNetworkPackages: add response parameters Body.NetworkPackages.$.Tags.
+
+
 2026-06-10 Version: 4.26.5
 - Update API AddUserToDesktopGroup: add request parameters OrgId.
 - Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.IpSegments.

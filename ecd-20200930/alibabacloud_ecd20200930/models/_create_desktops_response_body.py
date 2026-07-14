@@ -13,11 +13,10 @@ class CreateDesktopsResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # An array of cloud desktop IDs. An ID is returned for each cloud desktop created in the call.
+        # The list of cloud desktop IDs. If multiple cloud desktops are created in a single call, multiple cloud desktop IDs are returned.
         self.desktop_id = desktop_id
         # The order ID.
-        # 
-        # > This parameter is returned only when the `ChargeType` request parameter is set to `PrePaid`.
+        # > This parameter is returned only when the request parameter ChargeType is set to PrePaid.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

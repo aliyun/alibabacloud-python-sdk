@@ -20,27 +20,27 @@ class DescribeTemplatesRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # Region filter for template queries.
+        # The region filter condition for the template query. 
         # 
-        # > If you set this parameter, results exclude configurations for other regions.
+        # > If this parameter is specified, region-specific configurations that do not match are excluded from the query results.
         self.biz_region_id = biz_region_id
-        # > This parameter is not available for public use.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # Cloud Desktop image ID. You can find this ID on the Image Management page. Supported image types include OS images and custom images.
+        # The cloud computer image ID. You can obtain the ID from the image management page. System images, custom images, and other image types are supported.
         self.image_id = image_id
-        # Keyword for fuzzy search. Searches template IDs and template names.
+        # The keyword. Fuzzy match is supported for the template ID and template name fields.
         self.keyword = keyword
-        # Page number for paged queries.
+        # The page number of the current page in a paged query. This parameter is used for paging.
         self.page_number = page_number
-        # Maximum number of entries per page for paged queries.
+        # The maximum number of rows per page in a paged query. This parameter is used for paging.
         self.page_size = page_size
-        # Product type. Set this parameter to `CloudDesktop`.
+        # The product type. Set this parameter to `CloudDesktop`.
         self.product_type = product_type
-        # List of template IDs to query.
+        # The list of template IDs to query.
         self.template_ids = template_ids
-        # Query by template name.
+        # The template name used for the query.
         self.template_name = template_name
-        # Template type to query. If you omit this parameter, the system returns all template types.
+        # The templatetype to query. If this parameter is not specified, templates of all types are queried.
         self.template_type = template_type
 
     def validate(self):

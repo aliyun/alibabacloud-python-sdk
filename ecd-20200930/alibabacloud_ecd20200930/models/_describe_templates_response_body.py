@@ -20,23 +20,23 @@ class DescribeTemplatesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # Operation result. Returns `success` if successful. Otherwise, returns an error message.
+        # The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # List of template information.
+        # The list of queried template information.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message. This parameter is not returned when Code is `success`.
+        # The error message. This parameter is not returned when Code is `success`.
         self.message = message
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Entries per page.
+        # The number of rows per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation succeeded.
+        # Indicates whether the operation was successful.
         self.success = success
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -149,48 +149,48 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.charge_type = charge_type
-        # Data disk size and specification configuration.
+        # The size and specification configurations of data cloud disks.
         self.data_disk_list = data_disk_list
-        # Default startup language for the template.
+        # The default startup language configured in the template.
         self.default_language = default_language
-        # Template description.
+        # The template description.
         self.description = description
-        # Template creation time in UTC.
+        # The creation time of the template (UTC).
         self.gmt_create = gmt_create
-        # Template modification time in UTC.
+        # The last modification time of the template (UTC).
         self.gmt_modified = gmt_modified
-        # Image ID.
+        # The image ID.
         self.image_id = image_id
-        # Image type.
+        # The image type.
         self.image_type = image_type
         self.period = period
         self.period_unit = period_unit
-        # Policy ID.
+        # The policy group ID.
         self.policy_group_id = policy_group_id
         self.post_paid_after_used_up = post_paid_after_used_up
-        # Product type.
+        # The product type.
         self.product_type = product_type
-        # Region-specific configuration parameters.
+        # The region-specific configuration parameters.
         self.region_config_list = region_config_list
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Cloud Desktop tags in key-value format.
+        # The cloud computer tags in key-value format.
         self.resource_tag_list = resource_tag_list
-        # Site configuration management.
+        # The site configuration management.
         self.site_config_list = site_config_list
-        # System disk type.
+        # The system cloud disk type.
         self.system_disk_performance_level = system_disk_performance_level
-        # System disk size in GiB.
+        # The system cloud disk size. Unit: GiB.
         self.system_disk_size = system_disk_size
-        # Template ID.
+        # The template ID.
         self.template_id = template_id
-        # Template name.
+        # The template name.
         self.template_name = template_name
-        # Template type.
+        # The templatetype.
         self.template_type = template_type
-        # Scheduled task group ID.
+        # The scheduled task group ID.
         self.timer_group_id = timer_group_id
         self.user_duration = user_duration
 
@@ -411,9 +411,9 @@ class DescribeTemplatesResponseBodyDataSiteConfigList(DaraModel):
         app_rule_id: str = None,
         site_id: str = None,
     ):
-        # Application control policy ID.
+        # The application control policy ID.
         self.app_rule_id = app_rule_id
-        # Site name.
+        # The site name.
         self.site_id = site_id
 
     def validate(self):
@@ -448,9 +448,9 @@ class DescribeTemplatesResponseBodyDataResourceTagList(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -493,25 +493,25 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
-        # Number of vCPUs in the Cloud Desktop instance type.
+        # The number of vCPUs included in the cloud computer instance type.
         self.cpu_count = cpu_count
-        # GPU memory size. This field appears only for graphics instance types.
+        # The GPU memory information. This field is displayed only when the instance type is a graphics-accelerated type.
         self.gpu_spec = gpu_spec
-        # Memory size in MiB.
+        # The memory size. Unit: MiB.
         self.memory_size = memory_size
-        # Office site ID.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Cloud Desktop instance type ID.
+        # The cloud computer instance type ID.
         self.resource_instance_type = resource_instance_type
-        # Snapshot policy ID.
+        # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
-        # Subnet ID.
+        # The subnet ID.
         self.subnet_id = subnet_id
-        # Whether disk encryption is enabled.
+        # Indicates whether disk encryption is enabled.
         self.volume_encryption_enable = volume_encryption_enable
-        # KMS key ID used when disk encryption is enabled.
+        # The KMS key ID used when disk encryption is enabled.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -594,9 +594,9 @@ class DescribeTemplatesResponseBodyDataDataDiskList(DaraModel):
         performance_level: str = None,
         size: str = None,
     ):
-        # Data disk performance level.
+        # The performance level of the data cloud disk.
         self.performance_level = performance_level
-        # Data disk size in GiB.
+        # The data cloud disk size. Unit: GiB.
         self.size = size
 
     def validate(self):
