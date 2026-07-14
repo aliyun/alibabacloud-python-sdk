@@ -14,13 +14,13 @@ class DeleteChatGroupResponseBody(DaraModel):
         result: int = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # The request status code. Valid values:
+        # The response code. Valid values:
         # 
         # - OK: The request was successful.
         # 
-        # - For information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
@@ -29,9 +29,7 @@ class DeleteChatGroupResponseBody(DaraModel):
         # The number of affected rows.
         self.result = result
         # Indicates whether the call was successful. Valid values:
-        # 
         # - **true**: The call was successful.
-        # 
         # - **false**: The call failed.
         self.success = success
 

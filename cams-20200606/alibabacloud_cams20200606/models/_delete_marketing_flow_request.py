@@ -13,7 +13,9 @@ class DeleteMarketingFlowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The activity code. You can use the system-generated code or modify it to use a custom code.
         self.activity_code = activity_code
+        # The activity ID (deprecated).
         self.activity_id = activity_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

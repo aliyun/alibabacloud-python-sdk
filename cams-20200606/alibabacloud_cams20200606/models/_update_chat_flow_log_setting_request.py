@@ -14,11 +14,19 @@ class UpdateChatFlowLogSettingRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
+        # The flow code. You can view the flow code in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         self.flow_code = flow_code
+        # The unique ID of the setting. You can obtain this ID by calling the [ReadChatFlowLogSetting](https://help.aliyun.com/document_detail/2937212.html) operation.
         self.id = id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The log enabling status. Valid values:
+        # - ENABLED: Enables log writing.
+        # 
+        # - DISABLED: Disables log writing but retains the Simple Log Service log instance.
+        # 
+        # - DELETED: Disables log writing and deletes the Simple Log Service log instance.
         self.status = status
 
     def validate(self):

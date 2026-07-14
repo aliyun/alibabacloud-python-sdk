@@ -14,7 +14,7 @@ class DeleteChatGroupInviteLinkResponseBody(DaraModel):
         result: int = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The response code. Valid values:
         # 
@@ -28,11 +28,9 @@ class DeleteChatGroupInviteLinkResponseBody(DaraModel):
         self.request_id = request_id
         # The number of affected rows.
         self.result = result
-        # Indicates if the request was successful. Valid values:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

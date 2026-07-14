@@ -15,12 +15,16 @@ class ListDmAccountRequest(DaraModel):
         resource_owner_id: int = None,
         send_type: str = None,
     ):
+        # The search keyword.
         self.keyword = keyword
         self.owner_id = owner_id
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The sending type.
         self.send_type = send_type
 
     def validate(self):

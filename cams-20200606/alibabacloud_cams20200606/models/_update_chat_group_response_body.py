@@ -14,9 +14,9 @@ class UpdateChatGroupResponseBody(DaraModel):
         result: int = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The request status code. Valid values:
+        # The response code. Valid values:
         # 
         # - OK: The request was successful.
         # 
@@ -29,9 +29,7 @@ class UpdateChatGroupResponseBody(DaraModel):
         # The number of affected rows.
         self.result = result
         # Indicates whether the call was successful. Valid values:
-        # 
         # - **true**: The call was successful.
-        # 
         # - **false**: The call failed.
         self.success = success
 

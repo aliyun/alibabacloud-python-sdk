@@ -15,7 +15,7 @@ class ChatappBindWabaRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The WABA ID.
+        # waba Id。
         # 
         # This parameter is required.
         self.waba_id = waba_id

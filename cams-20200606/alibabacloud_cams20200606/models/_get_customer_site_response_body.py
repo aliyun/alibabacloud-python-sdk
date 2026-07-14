@@ -13,10 +13,19 @@ class GetCustomerSiteResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

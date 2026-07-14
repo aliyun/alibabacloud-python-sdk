@@ -16,11 +16,21 @@ class ReadChatFlowLogSettingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # - true: The operation is successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

@@ -14,11 +14,16 @@ class BindInstagramPageRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The page ID of the instance.
+        # 
         # This parameter is required.
         self.page_id = page_id
+        # The region of the instance.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -12,6 +12,8 @@ class GeneratePresignedUrlRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The OSS path.
+        # 
         # This parameter is required.
         self.file_path = file_path
         self.owner_id = owner_id

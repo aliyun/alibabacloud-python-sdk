@@ -17,26 +17,24 @@ class GetChatappPhoneNumberMetricRequest(DaraModel):
         resource_owner_id: int = None,
         start: int = None,
     ):
-        # The Space ID or instance ID of the ISV sub-customer. This is the channel ID. View the channel ID on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+        # The SpaceId or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the <props="china">[Channels Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channels Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
         self.cust_space_id = cust_space_id
-        # The end of the time range to query. This is a UNIX timestamp in milliseconds.
+        # The query end time. This value is a timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end = end
-        # The granularity of the metrics. Valid values:
-        # 
-        # - DAILY: Metrics are collected by day.
-        # 
-        # - HALF_HOUR: Metrics are collected every half an hour.
+        # The metric granularity. Valid values:
+        # - DAILY: collects metrics on a daily basis.
+        # - HALF_HOUR: collects metrics every half hour.
         self.granularity = granularity
-        # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV.
+        # The ISV verification code, which is used to verify whether the RAM user is authorized by the ISV.
         self.isv_code = isv_code
         self.owner_id = owner_id
-        # The business phone number. This is the phone number used to send messages. You can view the phone number in the ChatApp console by choosing <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **WABA Management** > **Phone Number Management**.
+        # The business phone number. This is the number used to send messages, which can be viewed on the <props="china">[**Channels Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channels Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **WABA Management** > **Phone Number Management** page.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The start of the time range to query. This is a UNIX timestamp in milliseconds.
+        # The query start time. This value is a timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start = start

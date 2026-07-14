@@ -16,8 +16,9 @@ class CreateFlowResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. A value of OK indicates that the request was successful.
+        # The response code. OK indicates success.
         self.code = code
         # The returned data.
         self.data = data
@@ -81,9 +82,9 @@ class CreateFlowResponseBodyData(DaraModel):
     ):
         # The list of categories.
         self.categories = categories
-        # The flow ID.
+        # Flow ID。
         self.flow_id = flow_id
-        # The name of the flow.
+        # The name of the Flow.
         self.flow_name = flow_name
 
     def validate(self):

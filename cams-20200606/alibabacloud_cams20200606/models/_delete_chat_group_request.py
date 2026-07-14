@@ -19,15 +19,13 @@ class DeleteChatGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.business_number = business_number
-        # The type. Valid value:
+        # The channel type. Valid values:
         # 
         # - **WHATSAPP**
         # 
-        # > Only the WhatsApp channel is supported.
+        # > Only the WhatsApp channel type is supported.
         self.channel_type = channel_type
-        # The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
-        # 
-        # <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+        # The space ID or instance ID of the ISV sub-customer, which is the channel ID. You can view it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id

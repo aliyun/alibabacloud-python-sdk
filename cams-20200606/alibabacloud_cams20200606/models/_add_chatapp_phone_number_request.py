@@ -20,7 +20,7 @@ class AddChatappPhoneNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.cc = cc
-        # The Space ID of the Independent Software Vendor (ISV) sub-customer.
+        # The space ID of the ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
@@ -29,13 +29,12 @@ class AddChatappPhoneNumberRequest(DaraModel):
         # 
         # This parameter is required.
         self.phone_number = phone_number
-        # The pre-verified phone number.
-        # 
+        # The pre-validated phone number.
         # > This parameter is deprecated.
         self.pre_validate_id = pre_validate_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the phone number.
+        # The display name of the phone number.
         # 
         # This parameter is required.
         self.verified_name = verified_name

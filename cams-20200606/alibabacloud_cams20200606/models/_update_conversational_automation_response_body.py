@@ -17,19 +17,17 @@ class UpdateConversationalAutomationResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The response code.
         # 
-        # - The value OK indicates that the request was successful.
+        # - OK indicates that the request was successful.
         # 
-        # - For more information about other response codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The error message.
+        # The prompt message. This parameter is returned when an exception occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**
-        # 
-        # - **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

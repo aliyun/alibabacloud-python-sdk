@@ -17,12 +17,23 @@ class CreateChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data object.
         self.data = data
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The response data.
         self.response = response
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

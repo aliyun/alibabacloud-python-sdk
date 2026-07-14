@@ -15,7 +15,7 @@ class GetMigrationVerifyCodeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The Space ID of the Independent Software Vendor (ISV) sub-customer.
+        # The space ID of the ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
@@ -23,7 +23,7 @@ class GetMigrationVerifyCodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.locale = locale
-        # The verification method.
+        # The verification code delivery method.
         # 
         # This parameter is required.
         self.method = method

@@ -17,11 +17,21 @@ class GetChatFlowTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -81,6 +91,7 @@ class GetChatFlowTemplateResponseBodyData(DaraModel):
         self,
         response: Dict[str, Any] = None,
     ):
+        # The content of the returned data.
         self.response = response
 
     def validate(self):

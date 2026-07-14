@@ -17,11 +17,23 @@ class ListChatappMessageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
+        # The response code.
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The list of returned data objects.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -112,31 +124,65 @@ class ListChatappMessageResponseBodyData(DaraModel):
         unique_message_id: str = None,
         user_number: str = None,
     ):
+        # The business phone number.
         self.business_number = business_number
+        # The channel type.
         self.channel_type = channel_type
+        # The name of the message receiving status.
         self.client_accept_status_name = client_accept_status_name
+        # The message read status.
         self.client_read_status = client_read_status
+        # The message read status name.
         self.client_read_status_name = client_read_status_name
+        # The conversation ID.
         self.conversation_id = conversation_id
+        # The inbound or outbound message type.
         self.event_action = event_action
+        # The name of the inbound or outbound message type. Valid values:
+        # 
+        # - DOWN: outbound message.
+        # 
+        # - UP: inbound message.
         self.event_action_name = event_action_name
+        # The fallback content.
         self.fail_back_content = fail_back_content
+        # Indicates whether the message falls back to SMS. Valid values:
+        # 
+        # - Y: Yes.
+        # 
+        # - N: No.
         self.fail_back_flag = fail_back_flag
+        # The reason for the sending failure.
         self.fail_reason = fail_reason
+        # The template language. For more languages, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language_code = language_code
+        # The message content.
         self.message = message
+        # The message ID.
         self.message_id = message_id
+        # The message source.
         self.message_source = message_source
+        # The message status.
         self.message_status = message_status
+        # The message status name.
         self.message_status_name = message_status_name
+        # The message type.
         self.message_type = message_type
+        # The message type name.
         self.message_type_name = message_type_name
+        # The month of the message.
         self.month = month
+        # The sending time.
         self.send_time = send_time
+        # The template code.
         self.template_code = template_code
+        # The template name.
         self.template_name = template_name
+        # The type.
         self.type = type
+        # The unique message ID.
         self.unique_message_id = unique_message_id
+        # The user phone number.
         self.user_number = user_number
 
     def validate(self):

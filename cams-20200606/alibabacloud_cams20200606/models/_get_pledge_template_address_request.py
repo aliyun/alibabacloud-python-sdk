@@ -13,7 +13,9 @@ class GetPledgeTemplateAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) interface.
         self.cust_space_id = cust_space_id
+        # The industry type.
         self.industry_type = industry_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

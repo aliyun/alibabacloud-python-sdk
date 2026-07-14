@@ -12,10 +12,11 @@ class DeleteFlowResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # A value of OK indicates that the request was successful.
+        # The result. OK indicates success.
         self.code = code
-        # The error message.
+        # The error description.
         self.message = message
         # The request ID.
         self.request_id = request_id

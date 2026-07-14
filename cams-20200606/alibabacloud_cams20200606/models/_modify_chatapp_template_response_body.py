@@ -14,11 +14,11 @@ class ModifyChatappTemplateResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Details about the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The request status code.
         # 
-        # - A value of OK indicates a successful request.
+        # - OK indicates the request was successful.
         # 
         # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code

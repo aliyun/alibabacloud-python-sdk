@@ -14,9 +14,14 @@ class UpdateFlowJSONAssetRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
+        # The file path.
+        # 
         # This parameter is required.
         self.file_path = file_path
+        # The flow ID.
+        # 
         # This parameter is required.
         self.flow_id = flow_id
         self.owner_id = owner_id

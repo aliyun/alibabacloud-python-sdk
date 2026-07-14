@@ -12,18 +12,16 @@ class CheckDirectSendMessageSampleShrinkRequest(DaraModel):
         text_shrink: str = None,
         type: str = None,
     ):
-        # The SpaceId of an ISV sub-customer or the instance ID of a direct customer.
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The body of an interactive message.
+        # The message body of the interactive type.
         self.interactive_shrink = interactive_shrink
-        # The body of a text message.
+        # The message body of the text content.
         self.text_shrink = text_shrink
-        # The type of the direct message content. Valid values:
-        # 
+        # The direct-send content type. Valid values:
         # - interactive
-        # 
         # - text
         # 
         # This parameter is required.

@@ -15,13 +15,19 @@ class CopyTemplateRequest(DaraModel):
         scene_template_code: str = None,
         scene_template_name: str = None,
     ):
+        # The space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
+        # The language.
         self.language = language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The template code.
+        # 
         # This parameter is required.
         self.scene_template_code = scene_template_code
+        # The template name.
+        # 
         # This parameter is required.
         self.scene_template_name = scene_template_name
 

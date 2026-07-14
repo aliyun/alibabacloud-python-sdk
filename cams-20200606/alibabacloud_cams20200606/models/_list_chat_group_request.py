@@ -20,15 +20,15 @@ class ListChatGroupRequest(DaraModel):
         resource_owner_id: int = None,
         subject: str = None,
     ):
-        # The business number.
+        # The business phone number.
         # 
         # This parameter is required.
         self.business_number = business_number
-        # The channel type. Valid value: **WHATSAPP**.
+        # The channel type. Valid values: **WHATSAPP**.
         # 
-        # > Only the WhatsApp channel is supported.
+        # > Only the WhatsApp channel type is supported.
         self.channel_type = channel_type
-        # The instance ID (or SpaceId) of an ISV sub-customer, which also serves as the channel ID. You can find it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # The SpaceId or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
@@ -51,13 +51,13 @@ class ListChatGroupRequest(DaraModel):
         # The Telegram group type.
         self.group_type = group_type
         self.owner_id = owner_id
-        # The paging information.
+        # The pagination information.
         # 
         # This parameter is required.
         self.page = page
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The group title.
+        # The group subject.
         self.subject = subject
 
     def validate(self):

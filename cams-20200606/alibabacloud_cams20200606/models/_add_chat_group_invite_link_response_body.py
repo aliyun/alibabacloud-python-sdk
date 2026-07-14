@@ -14,9 +14,9 @@ class AddChatGroupInviteLinkResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The request status code. Valid values:
+        # The response code. Valid values:
         # 
         # - OK: The request was successful.
         # 
@@ -29,9 +29,7 @@ class AddChatGroupInviteLinkResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
-        # 
         # - **true**: The call was successful.
-        # 
         # - **false**: The call failed.
         self.success = success
 

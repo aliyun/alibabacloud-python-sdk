@@ -13,8 +13,11 @@ class ListPhoneMessageQrdlRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the ISV sub-customer, or the instance ID of the direct customer.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account

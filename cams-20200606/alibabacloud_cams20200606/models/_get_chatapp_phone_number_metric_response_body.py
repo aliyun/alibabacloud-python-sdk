@@ -16,15 +16,15 @@ class GetChatappPhoneNumberMetricResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Details about the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The status code of the request. Valid values:
+        # The request status code. Valid values:
         # 
         # - OK: The request was successful.
         # 
-        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - For other error codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The returned data.
+        # The list of returned data.
         self.data = data
         # The error message.
         self.message = message
@@ -95,15 +95,15 @@ class GetChatappPhoneNumberMetricResponseBodyData(DaraModel):
     ):
         # The number of delivered messages.
         self.delivered_count = delivered_count
-        # The end time of metric collection. This is a UNIX timestamp in milliseconds.
+        # The end time of the metric collection period. This value is a timestamp in milliseconds.
         self.end = end
-        # The granularity of the metrics.
+        # The metric granularity.
         self.granularity = granularity
         # The business phone number.
         self.phone_number = phone_number
         # The number of sent messages.
         self.sent_count = sent_count
-        # The start time of metric collection. This is a UNIX timestamp in milliseconds.
+        # The start time of the metric collection period. This value is a timestamp in milliseconds.
         self.start = start
 
     def validate(self):

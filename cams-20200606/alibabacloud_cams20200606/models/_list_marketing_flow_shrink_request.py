@@ -20,15 +20,24 @@ class ListMarketingFlowShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The campaign code. You can use the system code or modify it to use a custom code.
         self.activity_code = activity_code
+        # The name of the node task instance.
         self.activity_name = activity_name
+        # The campaign status.
         self.activity_status = activity_status
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: "{}".
         self.biz_extend_shrink = biz_extend_shrink
         self.owner_id = owner_id
+        # The current page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the associated flow.
         self.related_flow_code = related_flow_code
+        # The ID of the associated group.
         self.related_group_id = related_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

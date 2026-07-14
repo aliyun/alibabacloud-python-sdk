@@ -16,15 +16,15 @@ class IsvGetAppIdResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The app ID.
+        # The App ID.
         self.app_id = app_id
-        # The status code of the request.
+        # The request status code.
         # 
-        # - A value of OK indicates that the request was successful.
+        # - OK indicates that the request was successful.
         # 
-        # - For information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The configuration ID.
+        # The configuration item ID.
         self.config_id = config_id
         # The error message.
         self.message = message

@@ -15,21 +15,21 @@ class AddChatGroupInviteLinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The business phone number. To obtain this number, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+        # The business phone number. You can view the business phone number by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
         # 
         # This parameter is required.
         self.business_number = business_number
-        # The type. Valid value:
+        # The channel type. Valid values:
         # 
-        # - **WHATSAPP**.
+        # - **WHATSAPP**
         # 
-        # > Currently, only the WhatsApp channel type is supported.
+        # > Only the WhatsApp channel type is supported.
         self.channel_type = channel_type
-        # The SpaceId or instance ID of the ISV sub-customer. This is the channel ID. View the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # The space ID or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The group ID. To obtain this ID, call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+        # The group ID. You can view the group ID by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
         # 
         # This parameter is required.
         self.group_id = group_id

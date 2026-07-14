@@ -13,15 +13,15 @@ class SendChatappMassMessageResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The request status code.
         # 
-        # - A value of OK indicates that the request was successful.
+        # - OK indicates that the request was successful.
         # 
         # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The bulk message ID.
+        # The batch message ID.
         self.group_message_id = group_message_id
         # The error message.
         self.message = message

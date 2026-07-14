@@ -15,25 +15,25 @@ class CheckDirectSendMessageSampleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The status code of the request.
+        # The request status code.
         # 
-        # - `OK` indicates that the request was successful.
+        # - A value of OK indicates that the request is successful.
         # 
         # - For other error codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The response message.
         self.message = message
-        # The request ID. Use this ID to trace logs and troubleshoot issues.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Whether the request was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The request was successful.
+        # - true: Successful.
         # 
-        # - false: The request failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -94,17 +94,17 @@ class CheckDirectSendMessageSampleResponseBodyData(DaraModel):
         category: str = None,
         success: bool = None,
     ):
-        # The category of the WhatsApp template. Valid values:
+        # The WhatsApp template category. Valid values:
         # 
-        # - **UTILITY**: A template related to a specific, agreed-upon transaction.
+        # - **UTILITY**: transaction-related.
         # 
-        # - **MARKETING**: A template for promotional or marketing purposes.
+        # - **MARKETING**: marketing template.
         self.category = category
-        # Whether the validation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The validation succeeded.
+        # - true: Successful.
         # 
-        # - false: The validation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

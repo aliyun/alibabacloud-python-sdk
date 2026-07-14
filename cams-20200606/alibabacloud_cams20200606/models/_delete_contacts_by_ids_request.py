@@ -12,6 +12,8 @@ class DeleteContactsByIdsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The list of contact codes, separated by commas (,).
+        # 
         # This parameter is required.
         self.contacts = contacts
         self.owner_id = owner_id

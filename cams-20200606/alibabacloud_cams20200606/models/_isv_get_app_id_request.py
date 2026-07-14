@@ -14,11 +14,17 @@ class IsvGetAppIdRequest(DaraModel):
         resource_owner_id: int = None,
         type: str = None,
     ):
+        # The version.
         self.intl_version = intl_version
         self.owner_id = owner_id
+        # The permissions.
         self.permissions = permissions
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The channel type. Valid values:
+        # 
+        # - whatsapp: WhatsApp.
+        # 
         # This parameter is required.
         self.type = type
 

@@ -26,22 +26,36 @@ class UpdateMarketingFLowRequest(DaraModel):
         resource_owner_id: int = None,
         start_date: str = None,
     ):
+        # The code of the campaign to modify.
         self.activity_code = activity_code
+        # The campaign description.
         self.activity_desc = activity_desc
+        # The ID of the campaign to modify.
         self.activity_id = activity_id
+        # The campaign name.
         self.activity_name = activity_name
+        # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
+        # The end time.
         self.end_date = end_date
+        # The execution method. Set this parameter to 1 (cron).
+        # 
         # This parameter is required.
         self.execution_type = execution_type
         self.owner_id = owner_id
+        # Specifies whether to use custom pass-through parameters.
         self.param_flag = param_flag
+        # The custom pass-through parameters.
         self.params = params
+        # The code of the associated flow.
         self.related_flow_code = related_flow_code
+        # The name of the associated flow.
         self.related_flow_name = related_flow_name
+        # The ID of the associated group.
         self.related_group_id = related_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start time.
         self.start_date = start_date
 
     def validate(self):

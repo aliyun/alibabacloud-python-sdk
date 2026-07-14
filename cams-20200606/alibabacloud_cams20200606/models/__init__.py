@@ -35,6 +35,10 @@ from ._add_marketing_flow_request import AddMarketingFlowRequest
 from ._add_marketing_flow_shrink_request import AddMarketingFlowShrinkRequest
 from ._add_marketing_flow_response_body import AddMarketingFlowResponseBody
 from ._add_marketing_flow_response import AddMarketingFlowResponse
+from ._archive_chatapp_template_request import ArchiveChatappTemplateRequest
+from ._archive_chatapp_template_shrink_request import ArchiveChatappTemplateShrinkRequest
+from ._archive_chatapp_template_response_body import ArchiveChatappTemplateResponseBody
+from ._archive_chatapp_template_response import ArchiveChatappTemplateResponse
 from ._bind_dm_account_request import BindDmAccountRequest
 from ._bind_dm_account_shrink_request import BindDmAccountShrinkRequest
 from ._bind_dm_account_response_body import BindDmAccountResponseBody
@@ -174,6 +178,9 @@ from ._delete_messenger_page_response import DeleteMessengerPageResponse
 from ._delete_phone_message_qrdl_request import DeletePhoneMessageQrdlRequest
 from ._delete_phone_message_qrdl_response_body import DeletePhoneMessageQrdlResponseBody
 from ._delete_phone_message_qrdl_response import DeletePhoneMessageQrdlResponse
+from ._delete_whatsapp_user_name_request import DeleteWhatsappUserNameRequest
+from ._delete_whatsapp_user_name_response_body import DeleteWhatsappUserNameResponseBody
+from ._delete_whatsapp_user_name_response import DeleteWhatsappUserNameResponse
 from ._deprecate_flow_request import DeprecateFlowRequest
 from ._deprecate_flow_response_body import DeprecateFlowResponseBody
 from ._deprecate_flow_response import DeprecateFlowResponse
@@ -298,6 +305,12 @@ from ._get_whatsapp_conversion_api_response import GetWhatsappConversionApiRespo
 from ._get_whatsapp_health_status_request import GetWhatsappHealthStatusRequest
 from ._get_whatsapp_health_status_response_body import GetWhatsappHealthStatusResponseBody
 from ._get_whatsapp_health_status_response import GetWhatsappHealthStatusResponse
+from ._get_whatsapp_user_name_request import GetWhatsappUserNameRequest
+from ._get_whatsapp_user_name_response_body import GetWhatsappUserNameResponseBody
+from ._get_whatsapp_user_name_response import GetWhatsappUserNameResponse
+from ._get_whatsapp_user_name_suggestions_request import GetWhatsappUserNameSuggestionsRequest
+from ._get_whatsapp_user_name_suggestions_response_body import GetWhatsappUserNameSuggestionsResponseBody
+from ._get_whatsapp_user_name_suggestions_response import GetWhatsappUserNameSuggestionsResponse
 from ._isv_get_app_id_request import IsvGetAppIdRequest
 from ._isv_get_app_id_response_body import IsvGetAppIdResponseBody
 from ._isv_get_app_id_response import IsvGetAppIdResponse
@@ -558,6 +571,9 @@ from ._update_phone_webhook_response import UpdatePhoneWebhookResponse
 from ._update_waba_mml_status_request import UpdateWabaMmlStatusRequest
 from ._update_waba_mml_status_response_body import UpdateWabaMmlStatusResponseBody
 from ._update_waba_mml_status_response import UpdateWabaMmlStatusResponse
+from ._update_whatsapp_user_name_request import UpdateWhatsappUserNameRequest
+from ._update_whatsapp_user_name_response_body import UpdateWhatsappUserNameResponseBody
+from ._update_whatsapp_user_name_response import UpdateWhatsappUserNameResponse
 from ._whatsapp_call_request import WhatsappCallRequest
 from ._whatsapp_call_shrink_request import WhatsappCallShrinkRequest
 from ._whatsapp_call_response_body import WhatsappCallResponseBody
@@ -567,6 +583,8 @@ from ._add_audit_viber_open_request import AddAuditViberOpenRequestAuditRecordCo
 from ._add_audit_viber_open_request import AddAuditViberOpenRequestAuditRecordCompanyTel
 from ._add_audit_viber_open_request import AddAuditViberOpenRequestAuditRecord
 from ._add_custom_audience_user_request import AddCustomAudienceUserRequestUsers
+from ._archive_chatapp_template_request import ArchiveChatappTemplateRequestTemplateList
+from ._archive_chatapp_template_response_body import ArchiveChatappTemplateResponseBodyData
 from ._bind_dm_account_request import BindDmAccountRequestExtendAttr
 from ._bind_instagram_page_response_body import BindInstagramPageResponseBodyData
 from ._bind_messenger_page_response_body import BindMessengerPageResponseBodyData
@@ -633,6 +651,7 @@ from ._get_whatsapp_conversion_api_response_body import GetWhatsappConversionApi
 from ._get_whatsapp_health_status_response_body import GetWhatsappHealthStatusResponseBodyDataEntitiesErrors
 from ._get_whatsapp_health_status_response_body import GetWhatsappHealthStatusResponseBodyDataEntities
 from ._get_whatsapp_health_status_response_body import GetWhatsappHealthStatusResponseBodyData
+from ._get_whatsapp_user_name_response_body import GetWhatsappUserNameResponseBodyData
 from ._list_all_groups_response_body import ListAllGroupsResponseBodyData
 from ._list_bind_dm_account_response_body import ListBindDmAccountResponseBodyDataExtendAttr
 from ._list_bind_dm_account_response_body import ListBindDmAccountResponseBodyData
@@ -712,6 +731,7 @@ from ._update_conversational_automation_request import UpdateConversationalAutom
 from ._update_flow_jsonasset_response_body import UpdateFlowJSONAssetResponseBodyData
 from ._update_instance_response_body import UpdateInstanceResponseBodyData
 from ._update_phone_message_qrdl_response_body import UpdatePhoneMessageQrdlResponseBodyData
+from ._update_whatsapp_user_name_response_body import UpdateWhatsappUserNameResponseBodyData
 from ._whatsapp_call_request import WhatsappCallRequestSession
 from ._whatsapp_call_response_body import WhatsappCallResponseBodyModel
 
@@ -749,6 +769,10 @@ __all__ = [
     AddMarketingFlowShrinkRequest,
     AddMarketingFlowResponseBody,
     AddMarketingFlowResponse,
+    ArchiveChatappTemplateRequest,
+    ArchiveChatappTemplateShrinkRequest,
+    ArchiveChatappTemplateResponseBody,
+    ArchiveChatappTemplateResponse,
     BindDmAccountRequest,
     BindDmAccountShrinkRequest,
     BindDmAccountResponseBody,
@@ -888,6 +912,9 @@ __all__ = [
     DeletePhoneMessageQrdlRequest,
     DeletePhoneMessageQrdlResponseBody,
     DeletePhoneMessageQrdlResponse,
+    DeleteWhatsappUserNameRequest,
+    DeleteWhatsappUserNameResponseBody,
+    DeleteWhatsappUserNameResponse,
     DeprecateFlowRequest,
     DeprecateFlowResponseBody,
     DeprecateFlowResponse,
@@ -1012,6 +1039,12 @@ __all__ = [
     GetWhatsappHealthStatusRequest,
     GetWhatsappHealthStatusResponseBody,
     GetWhatsappHealthStatusResponse,
+    GetWhatsappUserNameRequest,
+    GetWhatsappUserNameResponseBody,
+    GetWhatsappUserNameResponse,
+    GetWhatsappUserNameSuggestionsRequest,
+    GetWhatsappUserNameSuggestionsResponseBody,
+    GetWhatsappUserNameSuggestionsResponse,
     IsvGetAppIdRequest,
     IsvGetAppIdResponseBody,
     IsvGetAppIdResponse,
@@ -1272,6 +1305,9 @@ __all__ = [
     UpdateWabaMmlStatusRequest,
     UpdateWabaMmlStatusResponseBody,
     UpdateWabaMmlStatusResponse,
+    UpdateWhatsappUserNameRequest,
+    UpdateWhatsappUserNameResponseBody,
+    UpdateWhatsappUserNameResponse,
     WhatsappCallRequest,
     WhatsappCallShrinkRequest,
     WhatsappCallResponseBody,
@@ -1281,6 +1317,8 @@ __all__ = [
     AddAuditViberOpenRequestAuditRecordCompanyTel,
     AddAuditViberOpenRequestAuditRecord,
     AddCustomAudienceUserRequestUsers,
+    ArchiveChatappTemplateRequestTemplateList,
+    ArchiveChatappTemplateResponseBodyData,
     BindDmAccountRequestExtendAttr,
     BindInstagramPageResponseBodyData,
     BindMessengerPageResponseBodyData,
@@ -1347,6 +1385,7 @@ __all__ = [
     GetWhatsappHealthStatusResponseBodyDataEntitiesErrors,
     GetWhatsappHealthStatusResponseBodyDataEntities,
     GetWhatsappHealthStatusResponseBodyData,
+    GetWhatsappUserNameResponseBodyData,
     ListAllGroupsResponseBodyData,
     ListBindDmAccountResponseBodyDataExtendAttr,
     ListBindDmAccountResponseBodyData,
@@ -1426,6 +1465,7 @@ __all__ = [
     UpdateFlowJSONAssetResponseBodyData,
     UpdateInstanceResponseBodyData,
     UpdatePhoneMessageQrdlResponseBodyData,
+    UpdateWhatsappUserNameResponseBodyData,
     WhatsappCallRequestSession,
     WhatsappCallResponseBodyModel
 ]

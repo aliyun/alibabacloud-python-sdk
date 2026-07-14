@@ -14,11 +14,23 @@ class AddGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The prompt message. This parameter has a value when an exception is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

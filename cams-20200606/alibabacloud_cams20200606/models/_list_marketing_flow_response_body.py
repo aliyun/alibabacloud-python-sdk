@@ -18,12 +18,26 @@ class ListMarketingFlowResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The message returned for the request.
         self.message = message
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - true: The call was successful.                                 
+        # - false: The call failed.
         self.success = success
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -115,26 +129,49 @@ class ListMarketingFlowResponseBodyData(DaraModel):
         start_date: str = None,
         tenant_code: str = None,
     ):
+        # The campaign code.
         self.activity_code = activity_code
+        # The campaign description.
         self.activity_desc = activity_desc
+        # The campaign name.
         self.activity_name = activity_name
+        # The campaign status.
         self.activity_status = activity_status
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: "{}".
         self.biz_extend = biz_extend
+        # The upgrade start time. The upgrade start time is specified as a cron expression.
+        # 
+        # For example, `0 0 4 1/1 * ?` indicates that the upgrade starts at 4:00 on the first day of each month and is performed at 4:00 every day.
         self.cron_expression = cron_expression
+        # The end time.
         self.end_date = end_date
+        # The execution method.
         self.execution_type = execution_type
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time (deprecated).
         self.gmt_modifier = gmt_modifier
+        # The operational activity ID.
         self.id = id
+        # Indicates whether custom parameters are enabled.
         self.param_flag = param_flag
+        # The custom user parameters.
         self.params = params
+        # The associated flow code.
         self.related_flow_code = related_flow_code
+        # The name of the associated flow.
         self.related_flow_name = related_flow_name
+        # The ID of the associated group.
         self.related_group_id = related_group_id
+        # The name of the associated group.
         self.related_group_name = related_group_name
+        # The specific time. This parameter is valid when the execution method is set to 2.
         self.specific_time = specific_time
+        # The start time.
         self.start_date = start_date
+        # The tenant.
         self.tenant_code = tenant_code
 
     def validate(self):

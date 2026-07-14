@@ -15,14 +15,14 @@ class SyncMessengerSubscriptionTokenRequest(DaraModel):
         resource_owner_id: int = None,
         token_type: str = None,
     ):
-        # The Space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of the direct customer.
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         # The custom audience ID.
         self.custom_audience_id = custom_audience_id
         self.owner_id = owner_id
-        # The Page ID.
+        # The PageId of Messenger.
         # 
         # This parameter is required.
         self.page_id = page_id

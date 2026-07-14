@@ -21,16 +21,33 @@ class ListChatFlowRequest(DaraModel):
         return_with_online_version: bool = None,
         status: str = None,
     ):
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
+        # The flow trigger type. Valid values:
+        # - TriggeredManually
+        # - TriggeredByWhatsApp
+        # - TriggeredByInstagram
+        # - TriggeredByViber
+        # - TriggeredByMessenger
         self.flow_trigger_type = flow_trigger_type
+        # The search keyword. This parameter is used for fuzzy match of flow names.
         self.keyword = keyword
         self.owner_id = owner_id
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to return the online status. Valid values:
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.return_with_online_version = return_with_online_version
+        # The flow status. Default value: NORMAL.
         self.status = status
 
     def validate(self):

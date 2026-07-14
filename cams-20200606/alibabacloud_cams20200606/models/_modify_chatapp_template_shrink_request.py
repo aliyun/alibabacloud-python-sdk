@@ -20,40 +20,39 @@ class ModifyChatappTemplateShrinkRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The templatetype is immutable.
+        # The templatetype cannot be modified.
         self.category = category
+        # Specifies whether to pause sending when a Utility template is changed to Marketing type.
         self.category_change_paused = category_change_paused
-        # A list of message template components.
+        # The list of message template components.
         # 
-        # > When Category is AUTHENTICATION, Components cannot contain a node with Type set to HEADER. If Type is BODY or FOOTER, the Text content is empty and is automatically generated.
+        # > When Category is set to AUTHENTICATION, Components cannot contain a node with Type set to HEADER. When Type is set to BODY or FOOTER and the Text content is empty, the content is automatically generated.
         # 
         # This parameter is required.
         self.components_shrink = components_shrink
-        # The Space ID of the ISV sub-customer, or the instance ID of a direct customer.
+        # The SpaceId of the ISV sub-customer or the instance ID of a direct customer.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business Account (WABA) ID of the independent software vendor (ISV) customer.
+        # The ISV customer WabaId.
         # 
-        # > This parameter is deprecated. Use CustSpaceId instead.
+        # > Deprecated parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The template example.
+        # The examples for creating the template.
         self.example_shrink = example_shrink
-        # The ISV verification code. This code is used to verify that the RAM user is authorized by the ISV.
+        # The ISV verification code used to verify whether the RAM user is authorized by the ISV.
         self.isv_code = isv_code
-        # The template language. For a list of language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The template language. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         # 
         # This parameter is required.
         self.language = language
-        # The time-to-live (TTL) of the template message in seconds.
-        # 
-        # - For AUTHENTICATION templates, the value ranges from 30 to 900.
-        # 
-        # - For UTILITY templates, the value ranges from 30 to 43,200.
+        # The validity period for sending template messages in WhatsApp.
+        # - AUTHENTICATION: valid values are 30 to 900. 
+        # - UTILITY: valid values are 30 to 43200.
         self.message_send_ttl_seconds = message_send_ttl_seconds
         # The message template code.
         self.template_code = template_code
         # The template name.
         self.template_name = template_name
-        # The template type.
+        # The templatetype.
         # 
         # - **WHATSAPP**
         self.template_type = template_type

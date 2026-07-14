@@ -16,6 +16,7 @@ class ListFlowResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # A value of OK indicates that the request was successful.
         self.code = code

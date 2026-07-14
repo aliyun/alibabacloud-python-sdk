@@ -15,11 +15,11 @@ class ChatappBindWabaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details about the access denial.
+        # The access denied detail.
         self.access_denied_detail = access_denied_detail
         # The request status code.
         # 
-        # - A value of OK indicates that the request was successful.
+        # - OK indicates that the request was successful.
         # 
         # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -30,10 +30,8 @@ class ChatappBindWabaResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful.
-        # 
-        # - **true**: successful.
-        # 
-        # - **false**: failed.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -94,9 +92,9 @@ class ChatappBindWabaResponseBodyData(DaraModel):
         cust_space_id: str = None,
         waba_id: str = None,
     ):
-        # The customer\\"s Space ID.
+        # The customer space ID.
         self.cust_space_id = cust_space_id
-        # The WABA ID.
+        # waba Id。
         self.waba_id = waba_id
 
     def validate(self):

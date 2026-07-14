@@ -23,40 +23,39 @@ class ModifyChatappTemplateRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The templatetype is immutable.
+        # The templatetype cannot be modified.
         self.category = category
+        # Specifies whether to pause sending when a Utility template is changed to Marketing type.
         self.category_change_paused = category_change_paused
-        # A list of message template components.
+        # The list of message template components.
         # 
-        # > When Category is AUTHENTICATION, Components cannot contain a node with Type set to HEADER. If Type is BODY or FOOTER, the Text content is empty and is automatically generated.
+        # > When Category is set to AUTHENTICATION, Components cannot contain a node with Type set to HEADER. When Type is set to BODY or FOOTER and the Text content is empty, the content is automatically generated.
         # 
         # This parameter is required.
         self.components = components
-        # The Space ID of the ISV sub-customer, or the instance ID of a direct customer.
+        # The SpaceId of the ISV sub-customer or the instance ID of a direct customer.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business Account (WABA) ID of the independent software vendor (ISV) customer.
+        # The ISV customer WabaId.
         # 
-        # > This parameter is deprecated. Use CustSpaceId instead.
+        # > Deprecated parameter. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The template example.
+        # The examples for creating the template.
         self.example = example
-        # The ISV verification code. This code is used to verify that the RAM user is authorized by the ISV.
+        # The ISV verification code used to verify whether the RAM user is authorized by the ISV.
         self.isv_code = isv_code
-        # The template language. For a list of language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The template language. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         # 
         # This parameter is required.
         self.language = language
-        # The time-to-live (TTL) of the template message in seconds.
-        # 
-        # - For AUTHENTICATION templates, the value ranges from 30 to 900.
-        # 
-        # - For UTILITY templates, the value ranges from 30 to 43,200.
+        # The validity period for sending template messages in WhatsApp.
+        # - AUTHENTICATION: valid values are 30 to 900. 
+        # - UTILITY: valid values are 30 to 43200.
         self.message_send_ttl_seconds = message_send_ttl_seconds
         # The message template code.
         self.template_code = template_code
         # The template name.
         self.template_name = template_name
-        # The template type.
+        # The templatetype.
         # 
         # - **WHATSAPP**
         self.template_type = template_type
@@ -173,55 +172,49 @@ class ModifyChatappTemplateRequestComponents(DaraModel):
         type: str = None,
         url: str = None,
     ):
-        # For WhatsApp templates, this is valid when Category is AUTHENTICATION and Component Type is Body. It indicates that a message is displayed above the body, advising users not to share the verification code.
+        # Valid for WhatsApp templates when Category is AUTHENTICATION and Component Type is Body. Displays a message in the Body section advising not to share the verification code with others.
         self.add_secret_recommendation = add_secret_recommendation
-        # A list of buttons. This applies only to the `BUTTONS` component.
+        # The button list. This parameter applies only to the **BUTTONS** component.
         # 
-        # > Number of buttons for WhatsApp:
-        # >
-        # > - For MARKETING or UTILITY templates, WhatsApp allows a maximum of 10 buttons.
-        # >
-        # > - Only one button of the PHONE_NUMBER type is allowed.
-        # >
-        # > - A maximum of two buttons of the URL type are allowed.
-        # >
-        # > - QUICK_REPLY buttons cannot be mixed with PHONE_NUMBER or URL buttons.
+        # > WhatsApp button limits:
+        # > - For WhatsApp templates with Category set to MARKETING or UTILITY, a maximum of 10 buttons are allowed.
+        # > - Only one PHONE_NUMBER button is allowed.
+        # > - A maximum of two URL buttons are allowed.
+        # > - QUICK_REPLY buttons cannot be mixed in random order with PHONE_NUMBER or URL buttons.
         self.buttons = buttons
         # The description.
-        # 
-        # > You can add a description when Type is HEADER and Format is IMAGE, `DOCUMENT`, or `VIDEO`.
+        # > A description can be added when Type is set to **HEADER** and Format is set to **IMAGE/DOCUMENT/VIDEO**.
         self.caption = caption
-        # A list of cards for the Carousel template.
+        # The list of Carousel template cards.
         self.cards = cards
-        # The validity period of the verification code for a WhatsApp AUTHENTICATION template, in minutes. This is valid only for WhatsApp messages when Category is AUTHENTICATION and Component Type is Footer. This information is displayed in the footer.
+        # The validity period (in minutes) of the verification code in WhatsApp AUTHENTICATION templates. Valid only for WhatsApp messages when Category is AUTHENTICATION and Component Type is Footer. This information is displayed in the Footer section.
         self.code_expiration_minutes = code_expiration_minutes
-        # This field is invalid.
+        # Invalid field.
         self.duration = duration
         # The file name.
-        # 
-        # > Specify the file name when Type is HEADER and `Format` is `DOCUMENT`.
+        # > A file name can be specified when Type is set to **HEADER** and Format is set to **DOCUMENT**.
         self.file_name = file_name
-        # This field is invalid.
+        # Invalid field.
         self.file_type = file_type
         # The media resource type.
         # 
-        # - **TEXT**: Text
+        # - **TEXT**: text 
         # 
-        # - **IMAGE**: Image
+        # - **IMAGE**: image 
         # 
-        # - **DOCUMENT**: Document
+        # - **DOCUMENT**: document 
         # 
-        # - **VIDEO**: Video
+        # - **VIDEO**: video
         self.format = format
-        # Indicates whether the coupon code has an expiration time. Used when type is LIMITED_TIME_OFFER.
+        # Specifies whether the coupon code has an expiration time. Used when type is set to LIMITED_TIME_OFFER.
         self.has_expiration = has_expiration
-        # The text of the message.
+        # The text of the message to be sent.
         # 
-        # > If Category is AUTHENTICATION, this property is empty.
+        # > When Category is set to AUTHENTICATION, this property value is empty.
         self.text = text
-        # This field is invalid.
+        # Invalid field.
         self.thumb_url = thumb_url
-        # The component type:
+        # The component type.
         # 
         # - **BODY**
         # 
@@ -229,17 +222,17 @@ class ModifyChatappTemplateRequestComponents(DaraModel):
         # 
         # - **FOOTER**
         # 
-        # - **BUTTONS**
+        #  - **BUTTONS**
         # 
         # - **CAROUSEL**
         # 
         # - **LIMITED_TIME_OFFER**
         # 
-        # > * For WhatsApp templates, the `BODY` component cannot exceed 1,024 characters. The `HEADER` and `FOOTER` components cannot exceed 60 characters.
+        # > - For WhatsApp templates, the character length of the **BODY** component cannot exceed 1024 characters. The character length of the **HEADER** and **FOOTER** components cannot exceed 60 characters.
         # 
         # This parameter is required.
         self.type = type
-        # The URL of the media asset.
+        # The material path.
         self.url = url
 
     def validate(self):
@@ -362,7 +355,7 @@ class ModifyChatappTemplateRequestComponentsCards(DaraModel):
         self,
         card_components: List[main_models.ModifyChatappTemplateRequestComponentsCardsCardComponents] = None,
     ):
-        # A list of controls in the Carousel card.
+        # The list of components in the Carousel card.
         # 
         # This parameter is required.
         self.card_components = card_components
@@ -404,15 +397,15 @@ class ModifyChatappTemplateRequestComponentsCardsCardComponents(DaraModel):
         type: str = None,
         url: str = None,
     ):
-        # A list of buttons. This applies only to the BUTTONS component. Each Carousel card can have a maximum of two buttons.
+        # The button list. This parameter applies only to the BUTTONS component. Each Carousel card can have a maximum of two buttons.
         self.buttons = buttons
-        # The media resource type. This is valid when Type is HEADER.
+        # The media resource type. Valid when Type is set to HEADER.
         # 
-        # - **IMAGE**
+        # - **IMAGE**: image 
         # 
-        # - **VIDEO**
+        # - **VIDEO**: video
         self.format = format
-        # The content of the BODY in the Carousel card.
+        # The BODY content in the Carousel card.
         self.text = text
         # The component type. Valid values:
         # 
@@ -424,7 +417,7 @@ class ModifyChatappTemplateRequestComponentsCardsCardComponents(DaraModel):
         # 
         # This parameter is required.
         self.type = type
-        # The URL of the media asset.
+        # The material path.
         self.url = url
 
     def validate(self):
@@ -494,11 +487,11 @@ class ModifyChatappTemplateRequestComponentsCardsCardComponentsButtons(DaraModel
         self.text = text
         # The button type.
         # 
-        # - **PHONE_NUMBER**: Call button
+        # - **PHONE_NUMBER**: phone call button
         # 
-        # - **URL**: URL button
+        # - **URL**: web button
         # 
-        # - **QUICK_REPLY**: Quick reply button
+        # - **QUICK_REPLY**: quick reply button
         # 
         # This parameter is required.
         self.type = type
@@ -506,9 +499,9 @@ class ModifyChatappTemplateRequestComponentsCardsCardComponentsButtons(DaraModel
         self.url = url
         # The URL type.
         # 
-        # - **static**
+        # - **static**: static
         # 
-        # - **dynamic**
+        # - **dynamic**: dynamic
         self.url_type = url_type
 
     def validate(self):
@@ -573,53 +566,53 @@ class ModifyChatappTemplateRequestComponentsButtons(DaraModel):
         url: str = None,
         url_type: str = None,
     ):
-        # Required for WhatsApp templates when Category is AUTHENTICATION and Button Type is ONE_TAP or ZERO_TAP. This is the button text for the WhatsApp Autofill action.
+        # Required when the WhatsApp template Category is AUTHENTICATION and Button Type is ONE_TAP or ZERO_TAP. The button text for the WhatsApp autofill operation.
         self.autofill_text = autofill_text
-        # The coupon code. It supports only letters and numbers. You can pass a variable, such as \\`$(couponCode)\\`, and provide the actual coupon code at the time of sending.
+        # The coupon code value. Only letters and numbers are supported. You can pass in a variable such as $(couponCode) and provide the actual coupon code when sending the message.
         self.coupon_code = coupon_code
-        # The Flow data event type. Valid values:
+        # The flow data event type. Valid values:
         # 
-        # - DATA_EXCHANGE: Data exchange.
+        # - DATA_EXCHANGE: data exchange.
         # 
-        # - NAVIGATE: Navigation.
+        # - NAVIGATE: navigation.
         self.flow_action = flow_action
-        # The Flow ID.
+        # Flow ID。
         self.flow_id = flow_id
-        # For WhatsApp templates, this is valid when Category is Marketing and Button type is QUICK_REPLY. It indicates that the button is a marketing opt-out button. If a customer clicks this button and a sending control action is configured in ChatApp, subsequent marketing messages are not sent to the customer.
+        # Valid when the WhatsApp template Category is Marketing and Button type is QUICK_REPLY. Indicates the button is a marketing opt-out button. If the customer clicks this button and the send control operation is configured in ChatApp, subsequent Marketing messages will not be sent to the customer.
         self.is_opt_out = is_opt_out
-        # The screen to navigate to. This is required when FlowAction is NAVIGATE.
+        # The navigate screen. Required when FlowAction is set to NAVIGATE.
         self.navigate_screen = navigate_screen
-        # Use the properties under SupportedApps.
+        # Use the properties under SupportedApps instead.
         self.package_name = package_name
         # The phone number.
         self.phone_number = phone_number
-        # Use the properties under SupportedApps.
+        # Use the properties under SupportedApps instead.
         self.signature_hash = signature_hash
-        # A list of supported apps.
+        # The list of supported applications.
         self.supported_apps = supported_apps
         # The button text.
         self.text = text
         # The button type.
         # 
-        # - **PHONE_NUMBER**: Call button
+        # - **PHONE_NUMBER**: phone call button
         # 
-        # - **URL**: URL button
+        # - **URL**: web button
         # 
-        # - **QUICK_REPLY**: Quick reply button
+        # - **QUICK_REPLY**: quick reply button
         # 
-        # - **COPY_CODE**: Copy verification code or coupon code
+        # - **COPY_CODE**: copy verification code or coupon code
         # 
-        # - **ONE_TAP**: Backfill button for AUTHENTICATION templates
+        # - **ONE_TAP**: autofill button for AUTHENTICATION templates
         # 
-        # - **ZERO_TAP**: Backfill button for AUTHENTICATION templates
+        # - **ZERO_TAP**: autofill button for AUTHENTICATION templates
         # 
-        # - **MPM**: Multi-product message
+        # - **MPM**: multi-product catalog
         # 
-        # - **CATALOG**: Catalog
+        # - **CATALOG**: catalog
         # 
-        # - **FLOW**: Open WhatsApp flow
+        # - **FLOW**: open a WhatsApp flow
         # 
-        # > * For WhatsApp templates where Category is AUTHENTICATION, only one button is allowed, and its type must be COPY_CODE or ONE_TAP. If the type is COPY_CODE, Text is required. If the type is ONE_TAP, the Text (the name of the copy code button, displayed when the target application is not installed), SignatureHash, PackageName, and AutofillText properties are required.
+        # > - For WhatsApp templates with Category set to AUTHENTICATION, only one button is allowed, and the type can only be COPY_CODE or ONE_TAP. When the type is COPY_CODE, Text is required. When the type is ONE_TAP, Text (displayed when the target application is not installed on the device, indicating the name of the copy verification code button) is required, and SignatureHash, PackageName, and AutofillText are required.
         # 
         # This parameter is required.
         self.type = type
@@ -627,9 +620,9 @@ class ModifyChatappTemplateRequestComponentsButtons(DaraModel):
         self.url = url
         # The URL type.
         # 
-        # - **static**
+        # - **static**: static
         # 
-        # - **dynamic**
+        # - **dynamic**: dynamic
         self.url_type = url_type
 
     def validate(self):
@@ -744,9 +737,9 @@ class ModifyChatappTemplateRequestComponentsButtonsSupportedApps(DaraModel):
         package_name: str = None,
         signature_hash: str = None,
     ):
-        # Required for WhatsApp templates when Category is AUTHENTICATION and Button Type is ONE_TAP or ZERO_TAP. This is the package name of the application launched by WhatsApp.
+        # Required when the WhatsApp template Category is AUTHENTICATION and Button Type is ONE_TAP or ZERO_TAP. The package name for WhatsApp to launch the application.
         self.package_name = package_name
-        # Required for WhatsApp templates when Category is AUTHENTICATION and Button Type is ONE_TAP or ZERO_TAP. This is the signature hash of the application launched by WhatsApp.
+        # Required when the WhatsApp template Category is AUTHENTICATION and Button Type is ONE_TAP or ZERO_TAP. The signature hash value for WhatsApp to launch the application.
         self.signature_hash = signature_hash
 
     def validate(self):

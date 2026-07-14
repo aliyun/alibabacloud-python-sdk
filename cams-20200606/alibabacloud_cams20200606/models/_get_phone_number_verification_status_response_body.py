@@ -14,6 +14,7 @@ class GetPhoneNumberVerificationStatusResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The request status code.
         # 

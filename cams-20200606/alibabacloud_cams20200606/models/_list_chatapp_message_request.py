@@ -26,26 +26,52 @@ class ListChatappMessageRequest(DaraModel):
         template_code: str = None,
         user_number: str = None,
     ):
+        # The business phone number.
+        # 
+        # - For WhatsApp channels, view the business phone number in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management** > **WABA Management** > **Phone Number Management** console.
+        # 
+        # <props="intl">- For Viber channels, view the Service ID in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management** > **Service Account Management** console.
+        # 
         # This parameter is required.
         self.business_number = business_number
+        # The channel type. Valid values:
+        # 
+        # - **whatsapp**
+        # 
+        # - **viber**
+        # 
         # This parameter is required.
         self.channel_type = channel_type
+        # The message receiving status of the user.
         self.client_accept_status = client_accept_status
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer. View the Space ID in the [Channel Management](https://chatapp.console.aliyun.com/CustomerList) console.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The end time. This value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         self.end_time_str = end_time_str
+        # The message type. Valid values:
+        # - DOWN: outbound message.
+        # - UP: inbound message.
         self.event_action = event_action
+        # The bulk message ID. View the bulk message ID in the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management** > **Message List** > **Bulk Sending List** console.
         self.group_message_id = group_message_id
+        # The message status.
         self.message_status = message_status
         self.owner_id = owner_id
+        # The pagination object.
+        # 
         # This parameter is required.
         self.page = page
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start time. This value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         self.start_time_str = start_time_str
+        # The template code. View the template code in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management** > **Template Design** console.
         self.template_code = template_code
+        # The user phone number. This is the phone number that you imported when sending messages in the [**Channel Management**](https://chatapp.console.aliyun.com/CustomerList) > **Management** > **Message Sending** console.
         self.user_number = user_number
 
     def validate(self):
@@ -172,8 +198,12 @@ class ListChatappMessageRequestPage(DaraModel):
         index: int = None,
         size: int = None,
     ):
+        # The page number.
+        # 
         # This parameter is required.
         self.index = index
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.size = size
 

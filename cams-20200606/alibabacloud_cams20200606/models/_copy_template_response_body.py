@@ -15,11 +15,19 @@ class CopyTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -81,8 +89,11 @@ class CopyTemplateResponseBodyData(DaraModel):
         scene_template_name: str = None,
         whatsapp_catagory: str = None,
     ):
+        # The template code.
         self.scene_template_code = scene_template_code
+        # The template name.
         self.scene_template_name = scene_template_name
+        # The WhatsApp category.
         self.whatsapp_catagory = whatsapp_catagory
 
     def validate(self):

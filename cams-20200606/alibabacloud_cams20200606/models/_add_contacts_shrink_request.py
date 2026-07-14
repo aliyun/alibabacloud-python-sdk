@@ -21,18 +21,33 @@ class AddContactsShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business code.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
+        # The description of the contact.
         self.contact_details = contact_details
+        # The name of the contact.
         self.contact_name = contact_name
+        # The country.
         self.country = country
+        # The email address.
         self.email = email
+        # The file path.
         self.file_path = file_path
+        # The user group information.
+        # 
         # This parameter is required.
         self.groups = groups
+        # Indicates whether the back-to-origin IP address whitelist needs to be updated. This parameter returns true when the current back-to-origin IP address whitelist differs from the latest back-to-origin IP address whitelist.
+        # 
+        # - true: The whitelist needs to be updated.
+        # - false: The whitelist does not need to be updated.
+        # 
         # This parameter is required.
         self.need_update = need_update
         self.owner_id = owner_id
+        # The remarks.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

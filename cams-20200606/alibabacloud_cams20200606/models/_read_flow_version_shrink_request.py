@@ -16,13 +16,22 @@ class ReadFlowVersionShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
+        # The flow code. You can view the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.flow_code = flow_code
+        # The flow version. You can click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the canvas orchestration page and view the flow version, or call [ListFlowVersion](https://help.aliyun.com/document_detail/2937202.html) to retrieve the flow version.
         self.flow_version = flow_version
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The flow version status. Valid values:
+        # - DRAFT: draft.
+        # - DELETED: deleted.
+        # - ONLINE: online.
+        # - OFFLINE: offline.
         self.status = status
 
     def validate(self):

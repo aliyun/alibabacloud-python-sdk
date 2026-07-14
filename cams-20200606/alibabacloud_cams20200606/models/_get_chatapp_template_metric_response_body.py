@@ -18,7 +18,7 @@ class GetChatappTemplateMetricResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The status code of the request. Valid values:
+        # The request status code. Valid values:
         # 
         # - OK: The request was successful.
         # 
@@ -95,19 +95,19 @@ class GetChatappTemplateMetricResponseBodyData(DaraModel):
         start: int = None,
         template_code: str = None,
     ):
-        # The statistics about button clicks.
+        # The list of button click statistics.
         self.cliented = cliented
         # The number of delivered messages.
         self.delivered_count = delivered_count
-        # The end time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
+        # The end time of the metric collection period. This value is a timestamp in milliseconds.
         self.end = end
-        # The language of the template.
+        # The template language.
         self.language = language
         # The number of read messages.
         self.read_count = read_count
         # The number of sent messages.
         self.sent_count = sent_count
-        # The start time for metric collection. This is a UNIX timestamp. Unit: milliseconds.
+        # The start time of the metric collection period. This value is a timestamp in milliseconds.
         self.start = start
         # The template code.
         self.template_code = template_code
@@ -194,12 +194,9 @@ class GetChatappTemplateMetricResponseBodyDataCliented(DaraModel):
         # The number of clicks.
         self.count = count
         # The button type. Valid values:
-        # 
-        # - phone_number_button: The call button.
-        # 
-        # - url_button: The URL button.
-        # 
-        # - quick_reply_button: The auto-reply button.
+        # - phone_number_button: a phone call button.
+        # - url_button: a URL button.
+        # - quick_relpy_button: a quick reply button.
         self.type = type
 
     def validate(self):

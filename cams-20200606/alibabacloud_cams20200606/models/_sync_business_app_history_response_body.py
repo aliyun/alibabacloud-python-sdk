@@ -13,11 +13,11 @@ class SyncBusinessAppHistoryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The access denied detail.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The status code.
+        # The request status code. Valid values:
         # 
-        # - `OK`: The request was successful.
+        # - OK: The request was successful.
         # 
         # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -25,11 +25,9 @@ class SyncBusinessAppHistoryResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful:
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

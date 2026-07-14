@@ -19,23 +19,21 @@ class ListProductCatalogResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The request status code.
         # 
-        # - The value OK indicates that the request was successful.
+        # - OK indicates that the request was successful.
         # 
-        # - Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
-        # The returned data.
+        # The returned result.
         self.model = model
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - **true**
-        # 
-        # - **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -96,7 +94,7 @@ class ListProductCatalogResponseBodyModel(DaraModel):
         data: List[Dict[str, Any]] = None,
         paging: main_models.ListProductCatalogResponseBodyModelPaging = None,
     ):
-        # The returned data.
+        # The returned data object.
         self.data = data
         # The pagination details.
         self.paging = paging
@@ -134,7 +132,7 @@ class ListProductCatalogResponseBodyModelPaging(DaraModel):
         self,
         cursors: main_models.ListProductCatalogResponseBodyModelPagingCursors = None,
     ):
-        # The cursors for pagination.
+        # The cursor position for pagination.
         self.cursors = cursors
 
     def validate(self):
@@ -165,9 +163,9 @@ class ListProductCatalogResponseBodyModelPagingCursors(DaraModel):
         after: str = None,
         before: str = None,
     ):
-        # The cursor that points to the end of the page of the returned data.
+        # The position of the next record.
         self.after = after
-        # The cursor that points to the beginning of the page of the returned data.
+        # The position of the previous record.
         self.before = before
 
     def validate(self):

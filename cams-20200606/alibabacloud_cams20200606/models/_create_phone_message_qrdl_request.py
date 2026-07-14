@@ -15,12 +15,28 @@ class CreatePhoneMessageQrdlRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer. You can view the Space ID on the
+        # <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)
+        # <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)
+        # page.
         self.cust_space_id = cust_space_id
+        # The type of the generated image. Valid values:
+        # 
+        # - PNG
+        # 
+        #  - SVG
+        # 
         # This parameter is required.
         self.generate_qr_image = generate_qr_image
         self.owner_id = owner_id
+        # The phone number. You can view the phone number on the
+        # <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)
+        # <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)> **Manage** > **WABA Management** > **Number Management** page.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
+        # The message content.
+        # 
         # This parameter is required.
         self.prefilled_message = prefilled_message
         self.resource_owner_account = resource_owner_account

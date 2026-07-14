@@ -14,10 +14,14 @@ class GetPermissionByCodeShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The authorization code.
+        # 
         # This parameter is required.
         self.code = code
+        # The space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The permissions.
         self.permissions_shrink = permissions_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

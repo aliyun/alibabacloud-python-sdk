@@ -17,10 +17,16 @@ class CreateFlowRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The categories.
+        # 
         # This parameter is required.
         self.categories = categories
+        # The space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
+        # The URL of the WA Flow Endpoint
         self.endpoint_uri = endpoint_uri
+        # The name of the Flow.
+        # 
         # This parameter is required.
         self.flow_name = flow_name
         self.owner_id = owner_id

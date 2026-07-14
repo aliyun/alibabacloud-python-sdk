@@ -14,11 +14,11 @@ class ChatappMigrationVerifiedResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Details about the access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code.
+        # The request status code.
         # 
-        # - A value of OK indicates that the request was successful.
+        # - OK indicates that the request was successful.
         # 
         # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
@@ -81,7 +81,7 @@ class ChatappMigrationVerifiedResponseBodyData(DaraModel):
         id: str = None,
         phone_number: str = None,
     ):
-        # The ID of the phone number.
+        # The phone number ID.
         self.id = id
         # The phone number.
         self.phone_number = phone_number

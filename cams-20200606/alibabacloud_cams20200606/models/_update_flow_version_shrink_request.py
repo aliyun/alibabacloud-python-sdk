@@ -17,12 +17,18 @@ class UpdateFlowVersionShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
+        # The extended business information. The default value is an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
+        # The code of the flow. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         self.flow_code = flow_code
+        # The version of the flow. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to open the canvas and view the flow version.
         self.flow_version = flow_version
+        # The DSL data of the flow version, in JSON format. To obtain this data, orchestrate the components on the canvas in the Flow Editor. After you save the flow, click **Settings** > **Export** in the upper-right corner of the canvas to export the flow as a JSON data file.
         self.flow_view_model = flow_view_model
         self.owner_id = owner_id
+        # The remarks for the version.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

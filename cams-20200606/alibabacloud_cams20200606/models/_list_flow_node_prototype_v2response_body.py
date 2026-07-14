@@ -17,11 +17,21 @@ class ListFlowNodePrototypeV2ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - true: The call was successful.
+        # 
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -81,6 +91,7 @@ class ListFlowNodePrototypeV2ResponseBodyData(DaraModel):
         self,
         model: List[main_models.ListFlowNodePrototypeV2ResponseBodyDataModel] = None,
     ):
+        # A list of the returned data.
         self.model = model
 
     def validate(self):
@@ -119,9 +130,31 @@ class ListFlowNodePrototypeV2ResponseBodyDataModel(DaraModel):
         public_extend: str = None,
         status: str = None,
     ):
+        # The code of the component prototype.
         self.code = code
+        # The code of the component group.
         self.group_code = group_code
+        # The public extension information. This is a JSON string that contains extension information for the frontend to display the flow component. The fields are described as follows:
+        # 
+        # - en: The English information about the flow component.
+        # 
+        # - zh: The Chinese information about the flow component.
+        # 
+        # - name: The name of the flow component.
+        # 
+        # - remark: The remarks on the flow component.
+        # 
+        # - order: The display order of the flow component.
+        # 
+        # - style: The style of the flow component.
+        # 
+        # - svg: The URL of the flow component icon.
+        # 
+        # - icon: This field is deprecated.
+        # 
+        # - bgcolor: The background color of the icon.
         self.public_extend = public_extend
+        # The status of the component prototype. The default value is NORMAL.
         self.status = status
 
     def validate(self):

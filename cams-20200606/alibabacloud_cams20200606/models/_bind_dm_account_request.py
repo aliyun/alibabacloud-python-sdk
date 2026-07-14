@@ -15,10 +15,16 @@ class BindDmAccountRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account code.
+        # 
         # This parameter is required.
         self.account_code = account_code
+        # The SpaceId of the ISV sub-customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The extended attributes.
+        # 
         # This parameter is required.
         self.extend_attr = extend_attr
         self.owner_id = owner_id
@@ -83,8 +89,12 @@ class BindDmAccountRequestExtendAttr(DaraModel):
         account_name: str = None,
         send_type: str = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The send type.
+        # 
         # This parameter is required.
         self.send_type = send_type
 
