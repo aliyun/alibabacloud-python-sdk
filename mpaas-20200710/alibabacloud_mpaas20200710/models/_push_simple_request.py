@@ -37,6 +37,7 @@ class PushSimpleRequest(DaraModel):
         transparent_message_payload: Any = None,
         transparent_message_urgency: str = None,
         uri: str = None,
+        vendor_template: str = None,
         workspace_id: str = None,
     ):
         self.activity_content_state = activity_content_state
@@ -73,6 +74,7 @@ class PushSimpleRequest(DaraModel):
         self.transparent_message_payload = transparent_message_payload
         self.transparent_message_urgency = transparent_message_urgency
         self.uri = uri
+        self.vendor_template = vendor_template
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -168,6 +170,9 @@ class PushSimpleRequest(DaraModel):
         if self.uri is not None:
             result['Uri'] = self.uri
 
+        if self.vendor_template is not None:
+            result['VendorTemplate'] = self.vendor_template
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -258,6 +263,9 @@ class PushSimpleRequest(DaraModel):
 
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
+
+        if m.get('VendorTemplate') is not None:
+            self.vendor_template = m.get('VendorTemplate')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

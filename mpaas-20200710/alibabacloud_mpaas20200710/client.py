@@ -4277,6 +4277,8 @@ class Client(OpenApiClient):
             body['UnBindPeriod'] = request.un_bind_period
         if not DaraCore.is_null(request.un_bind_start_time):
             body['UnBindStartTime'] = request.un_bind_start_time
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4369,6 +4371,8 @@ class Client(OpenApiClient):
             body['UnBindPeriod'] = request.un_bind_period
         if not DaraCore.is_null(request.un_bind_start_time):
             body['UnBindStartTime'] = request.un_bind_start_time
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4463,6 +4467,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4543,6 +4549,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4733,6 +4741,8 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4823,6 +4833,8 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4919,6 +4931,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -5001,6 +5015,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
