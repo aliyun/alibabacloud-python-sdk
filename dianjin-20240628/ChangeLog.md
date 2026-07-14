@@ -1,3 +1,9 @@
+2026-07-14 Version: 1.21.1
+- Update API CommercializeFetch: add request parameters body.encryptType.
+- Update API CommercializeFetch: add request parameters body.env.
+- Update API CommercializeFetch: add request parameters body.signType.
+
+
 2026-06-23 Version: 1.21.0
 - Support API CommercializeFetch.
 - Support API GetReportResponse.

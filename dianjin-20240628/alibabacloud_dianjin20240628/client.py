@@ -227,6 +227,10 @@ class Client(OpenApiClient):
             body['channelId'] = request.channel_id
         if not DaraCore.is_null(request.data):
             body['data'] = request.data
+        if not DaraCore.is_null(request.encrypt_type):
+            body['encryptType'] = request.encrypt_type
+        if not DaraCore.is_null(request.env):
+            body['env'] = request.env
         if not DaraCore.is_null(request.product_id):
             body['productId'] = request.product_id
         if not DaraCore.is_null(request.request_id):
@@ -235,6 +239,8 @@ class Client(OpenApiClient):
             body['secretKey'] = request.secret_key
         if not DaraCore.is_null(request.sign):
             body['sign'] = request.sign
+        if not DaraCore.is_null(request.sign_type):
+            body['signType'] = request.sign_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -270,6 +276,10 @@ class Client(OpenApiClient):
             body['channelId'] = request.channel_id
         if not DaraCore.is_null(request.data):
             body['data'] = request.data
+        if not DaraCore.is_null(request.encrypt_type):
+            body['encryptType'] = request.encrypt_type
+        if not DaraCore.is_null(request.env):
+            body['env'] = request.env
         if not DaraCore.is_null(request.product_id):
             body['productId'] = request.product_id
         if not DaraCore.is_null(request.request_id):
@@ -278,6 +288,8 @@ class Client(OpenApiClient):
             body['secretKey'] = request.secret_key
         if not DaraCore.is_null(request.sign):
             body['sign'] = request.sign
+        if not DaraCore.is_null(request.sign_type):
+            body['signType'] = request.sign_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

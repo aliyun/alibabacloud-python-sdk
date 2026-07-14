@@ -9,15 +9,20 @@ class CommercializeFetchRequest(DaraModel):
         self,
         channel_id: str = None,
         data: str = None,
+        encrypt_type: str = None,
+        env: str = None,
         product_id: str = None,
         request_id: str = None,
         secret_key: str = None,
         sign: str = None,
+        sign_type: str = None,
     ):
         # This parameter is required.
         self.channel_id = channel_id
         # This parameter is required.
         self.data = data
+        self.encrypt_type = encrypt_type
+        self.env = env
         # This parameter is required.
         self.product_id = product_id
         # This parameter is required.
@@ -26,6 +31,7 @@ class CommercializeFetchRequest(DaraModel):
         self.secret_key = secret_key
         # This parameter is required.
         self.sign = sign
+        self.sign_type = sign_type
 
     def validate(self):
         pass
@@ -41,6 +47,12 @@ class CommercializeFetchRequest(DaraModel):
         if self.data is not None:
             result['data'] = self.data
 
+        if self.encrypt_type is not None:
+            result['encryptType'] = self.encrypt_type
+
+        if self.env is not None:
+            result['env'] = self.env
+
         if self.product_id is not None:
             result['productId'] = self.product_id
 
@@ -53,6 +65,9 @@ class CommercializeFetchRequest(DaraModel):
         if self.sign is not None:
             result['sign'] = self.sign
 
+        if self.sign_type is not None:
+            result['signType'] = self.sign_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -62,6 +77,12 @@ class CommercializeFetchRequest(DaraModel):
 
         if m.get('data') is not None:
             self.data = m.get('data')
+
+        if m.get('encryptType') is not None:
+            self.encrypt_type = m.get('encryptType')
+
+        if m.get('env') is not None:
+            self.env = m.get('env')
 
         if m.get('productId') is not None:
             self.product_id = m.get('productId')
@@ -74,6 +95,9 @@ class CommercializeFetchRequest(DaraModel):
 
         if m.get('sign') is not None:
             self.sign = m.get('sign')
+
+        if m.get('signType') is not None:
+            self.sign_type = m.get('signType')
 
         return self
 
