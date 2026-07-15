@@ -9,26 +9,30 @@ from darabonba.model import DaraModel
 class TextTranslateRequest(DaraModel):
     def __init__(
         self,
+        biz_name: str = None,
         format_type: str = None,
         glossary: str = None,
         source_language: str = None,
         source_text_list: List[str] = None,
         target_language: str = None,
+        translate_scene: str = None,
     ):
-        # The format type of the source text. Optional. Valid values: text (plain text format) and html (web page format that preserves HTML tags).
+        self.biz_name = biz_name
+        # The format type of the source text. This parameter is optional. Valid values: text (plain text format) and html (web page format that preserves HTML tags).
         self.format_type = format_type
-        # The intervention glossary ID. Optional. Create the glossary in the console and provide its ID. If the glossary ID is empty, the translation results are not modified.
+        # The intervention glossary ID. This parameter is optional. The glossary must be created separately in the console and its ID provided here. If the glossary ID is empty, the translation result is not modified.
         self.glossary = glossary
-        # The source language code. Optional. If not specified, the language is automatically detected. Set to auto for automatic language detection.
+        # The source language code. This parameter is optional. If not specified, the language is automatically detected. You can pass auto for language detection.
         self.source_language = source_language
-        # The list of texts to translate. Required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
+        # The list of texts to translate. This parameter is required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
         # 
         # This parameter is required.
         self.source_text_list = source_text_list
-        # The target language code. Required. More than 100 language directions are supported. For details, refer to the supported language directions list.
+        # The target language code. This parameter is required. More than 100 language directions are supported. For details, refer to the supported language directions list.
         # 
         # This parameter is required.
         self.target_language = target_language
+        self.translate_scene = translate_scene
 
     def validate(self):
         pass
@@ -38,6 +42,9 @@ class TextTranslateRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_name is not None:
+            result['BizName'] = self.biz_name
+
         if self.format_type is not None:
             result['FormatType'] = self.format_type
 
@@ -53,10 +60,16 @@ class TextTranslateRequest(DaraModel):
         if self.target_language is not None:
             result['TargetLanguage'] = self.target_language
 
+        if self.translate_scene is not None:
+            result['TranslateScene'] = self.translate_scene
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizName') is not None:
+            self.biz_name = m.get('BizName')
+
         if m.get('FormatType') is not None:
             self.format_type = m.get('FormatType')
 
@@ -71,6 +84,9 @@ class TextTranslateRequest(DaraModel):
 
         if m.get('TargetLanguage') is not None:
             self.target_language = m.get('TargetLanguage')
+
+        if m.get('TranslateScene') is not None:
+            self.translate_scene = m.get('TranslateScene')
 
         return self
 

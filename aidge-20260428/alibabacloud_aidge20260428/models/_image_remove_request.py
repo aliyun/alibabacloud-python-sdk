@@ -14,17 +14,27 @@ class ImageRemoveRequest(DaraModel):
         non_object_remove_elements: List[int] = None,
         object_remove_elements: List[int] = None,
     ):
-        # URL of the image to be processed (mutually exclusive with ImageBase64)
+        # The URL of the image to process. This parameter is mutually exclusive with ImageBase64. You must specify one of them.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specific removal area in RLE format. If provided, this takes priority and the remove parameters are ignored
+        # The specific erasure region in RLE format. If this parameter is specified, it takes priority and the remove parameters are ignored.
         self.mask = mask
-        # Elements to remove from the non-subject area of the image (1=transparent text blocks; 2=specific names; 3=text; 4=blemishes). Multiple selections allowed
-        self.non_object_remove_elements = non_object_remove_elements
-        # Elements to remove from the image subject (1=transparent text blocks; 2=specific names; 3=text; 4=blemishes). Multiple selections allowed
+        # The elements to remove from the non-subject area of the image. Valid values:
+        # - 1: transparent text block
+        # - 2: specific name
+        # - 3: text
+        # - 4: image blemish
         # 
-        # This parameter is required.
+        # You can specify multiple values.
+        self.non_object_remove_elements = non_object_remove_elements
+        # The elements to remove from the image subject area. Valid values:
+        # - 1: transparent text block
+        # - 2: specific name
+        # - 3: text
+        # - 4: image blemish
+        # 
+        # You can specify multiple values.
         self.object_remove_elements = object_remove_elements
 
     def validate(self):

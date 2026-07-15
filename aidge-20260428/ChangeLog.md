@@ -1,3 +1,10 @@
+2026-07-15 Version: 3.0.0
+- Support API ImageRemovalPro.
+- Delete API ImageTranslationPlus.
+- Update API TextTranslate: add request parameters BizName.
+- Update API TextTranslate: add request parameters TranslateScene.
+
+
 2026-06-29 Version: 2.0.0
 - Support API ImageTranslationPlus.
 - Support API MaterialInspection.

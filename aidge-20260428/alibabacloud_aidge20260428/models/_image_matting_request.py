@@ -13,21 +13,21 @@ class ImageMattingRequest(DaraModel):
         target_height: int = None,
         target_width: int = None,
     ):
-        # The URL of the image to process.
+        # Specifies the background type of the returned image. Valid values:
+        # - WHITE_BACKGROUND: white background image.
+        # - TRANSPARENT: transparent background image.
         # 
         # This parameter is required.
         self.back_ground_type = back_ground_type
-        # The target image height in pixels.
+        # BGColor
         self.bg_color = bg_color
-        # The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 3000 × 3000 pixels. The file size cannot exceed 10 MB.<br>**Example**: `"https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg"`.
+        # The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256 × 256 and 3000 × 3000 pixels. The file size cannot exceed 10 MB.<br>**Example**: `"https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg"`
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The target image width in pixels.
+        # The target image height in pixels.
         self.target_height = target_height
-        # The background type of the returned image. Valid values:
-        # - WHITE_BACKGROUND: white background.
-        # - TRANSPARENT: transparent background.
+        # The target image width in pixels.
         self.target_width = target_width
 
     def validate(self):

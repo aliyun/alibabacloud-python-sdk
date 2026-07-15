@@ -16,15 +16,15 @@ class TextTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value "success" is returned for a successful call.
+        # The response code. Returns "success" for successful calls.
         self.code = code
-        # The translation result data, which contains the translation list and usage information.
+        # The translation result data, including the translation list and usage information.
         self.data = data
-        # The error message. The value "Success" is returned for a successful call. For a failed call, a specific error message is returned, such as "The parameters contain sensitive information. Try other input.".
+        # The error message. Returns "Success" for successful calls. Returns specific error information for exceptions, such as "The parameters contain sensitive information. Try other input."
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The request ID, used to identify a unique request call.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true and false.
+        # Indicates whether the call is successful. true indicates success. false indicates failure.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class TextTranslateResponseBodyData(DaraModel):
         translations: List[main_models.TextTranslateResponseBodyDataTranslations] = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The list of translation results. Each element corresponds to a translation result for an entry in the input text list.
+        # The translation result list. Each element corresponds to a translation result for an entry in the input text list.
         self.translations = translations
-        # The usage information, including the number of input characters.
+        # The usage information, including the input character count.
         self.usage_map = usage_map
 
     def validate(self):

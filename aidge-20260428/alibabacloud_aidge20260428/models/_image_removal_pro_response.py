@@ -7,12 +7,12 @@ from typing import Dict
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
 
-class ImageTranslationPlusResponse(DaraModel):
+class ImageRemovalProResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: main_models.ImageTranslationPlusResponseBody = None,
+        body: main_models.ImageRemovalProResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -47,7 +47,7 @@ class ImageTranslationPlusResponse(DaraModel):
             self.status_code = m.get('statusCode')
 
         if m.get('body') is not None:
-            temp_model = main_models.ImageTranslationPlusResponseBody()
+            temp_model = main_models.ImageRemovalProResponseBody()
             self.body = temp_model.from_map(m.get('body'))
 
         return self

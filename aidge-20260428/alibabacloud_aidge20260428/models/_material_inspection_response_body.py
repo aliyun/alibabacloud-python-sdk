@@ -16,10 +16,15 @@ class MaterialInspectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter is not returned for successful calls.
         self.code = code
+        # The material display detection result.
         self.data = data
+        # The error message. This parameter is not returned for successful calls.
         self.message = message
+        # Id of the request
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -74,7 +79,9 @@ class MaterialInspectionResponseBodyData(DaraModel):
         result: main_models.MaterialInspectionResponseBodyDataResult = None,
         usage_map: Dict[str, int] = None,
     ):
+        # The inspection result.
         self.result = result
+        # The usage information. The key is the usage metric name and the value is the count.
         self.usage_map = usage_map
 
     def validate(self):
@@ -114,10 +121,15 @@ class MaterialInspectionResponseBodyDataResult(DaraModel):
         steps: List[main_models.MaterialInspectionResponseBodyDataResultSteps] = None,
         type: str = None,
     ):
+        # The natural language summary, such as "1 rule: 1 PASS, all inspection items are compliant."
         self.evidence = evidence
+        # The overall result. Valid values: PASS and FAIL.
         self.overall_result = overall_result
+        # The request ID returned as-is from the input.
         self.req_id = req_id
+        # The list of detection steps.
         self.steps = steps
+        # The detection type.
         self.type = type
 
     def validate(self):
@@ -178,7 +190,9 @@ class MaterialInspectionResponseBodyDataResultSteps(DaraModel):
         result: str = None,
         step_id: str = None,
     ):
+        # The step result. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
         self.result = result
+        # The step ID.
         self.step_id = step_id
 
     def validate(self):

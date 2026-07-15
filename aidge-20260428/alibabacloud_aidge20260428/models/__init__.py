@@ -29,13 +29,13 @@ from ._image_recognition_request import ImageRecognitionRequest
 from ._image_recognition_shrink_request import ImageRecognitionShrinkRequest
 from ._image_recognition_response_body import ImageRecognitionResponseBody
 from ._image_recognition_response import ImageRecognitionResponse
+from ._image_removal_pro_request import ImageRemovalProRequest
+from ._image_removal_pro_response_body import ImageRemovalProResponseBody
+from ._image_removal_pro_response import ImageRemovalProResponse
 from ._image_remove_request import ImageRemoveRequest
 from ._image_remove_shrink_request import ImageRemoveShrinkRequest
 from ._image_remove_response_body import ImageRemoveResponseBody
 from ._image_remove_response import ImageRemoveResponse
-from ._image_translation_plus_request import ImageTranslationPlusRequest
-from ._image_translation_plus_response_body import ImageTranslationPlusResponseBody
-from ._image_translation_plus_response import ImageTranslationPlusResponse
 from ._image_translation_pro_request import ImageTranslationProRequest
 from ._image_translation_pro_response_body import ImageTranslationProResponseBody
 from ._image_translation_pro_response import ImageTranslationProResponse
@@ -82,8 +82,8 @@ from ._document_translate_response_body import DocumentTranslateResponseBodyData
 from ._image_cropping_response_body import ImageCroppingResponseBodyData
 from ._image_matting_response_body import ImageMattingResponseBodyData
 from ._image_recognition_response_body import ImageRecognitionResponseBodyData
+from ._image_removal_pro_response_body import ImageRemovalProResponseBodyData
 from ._image_remove_response_body import ImageRemoveResponseBodyData
-from ._image_translation_plus_response_body import ImageTranslationPlusResponseBodyData
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect
 from ._image_translation_pro_response_body import ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect
@@ -136,13 +136,13 @@ __all__ = [
     ImageRecognitionShrinkRequest,
     ImageRecognitionResponseBody,
     ImageRecognitionResponse,
+    ImageRemovalProRequest,
+    ImageRemovalProResponseBody,
+    ImageRemovalProResponse,
     ImageRemoveRequest,
     ImageRemoveShrinkRequest,
     ImageRemoveResponseBody,
     ImageRemoveResponse,
-    ImageTranslationPlusRequest,
-    ImageTranslationPlusResponseBody,
-    ImageTranslationPlusResponse,
     ImageTranslationProRequest,
     ImageTranslationProResponseBody,
     ImageTranslationProResponse,
@@ -189,8 +189,8 @@ __all__ = [
     ImageCroppingResponseBodyData,
     ImageMattingResponseBodyData,
     ImageRecognitionResponseBodyData,
+    ImageRemovalProResponseBodyData,
     ImageRemoveResponseBodyData,
-    ImageTranslationPlusResponseBodyData,
     ImageTranslationProResponseBodyDataGenFilesEditInfoGoodsRects,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsImageRect,
     ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect,

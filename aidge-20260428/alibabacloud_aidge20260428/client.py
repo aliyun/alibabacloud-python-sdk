@@ -823,6 +823,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.image_recognition_with_options_async(request, runtime)
 
+    def image_removal_pro_with_options(
+        self,
+        request: main_models.ImageRemovalProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRemovalProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.async_):
+            query['Async'] = request.async_
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRemovalPro',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRemovalProResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_removal_pro_with_options_async(
+        self,
+        request: main_models.ImageRemovalProRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageRemovalProResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.async_):
+            query['Async'] = request.async_
+        if not DaraCore.is_null(request.image_url):
+            query['ImageUrl'] = request.image_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImageRemovalPro',
+            version = '2026-04-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImageRemovalProResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_removal_pro(
+        self,
+        request: main_models.ImageRemovalProRequest,
+    ) -> main_models.ImageRemovalProResponse:
+        runtime = RuntimeOptions()
+        return self.image_removal_pro_with_options(request, runtime)
+
+    async def image_removal_pro_async(
+        self,
+        request: main_models.ImageRemovalProRequest,
+    ) -> main_models.ImageRemovalProResponse:
+        runtime = RuntimeOptions()
+        return await self.image_removal_pro_with_options_async(request, runtime)
+
     def image_remove_with_options(
         self,
         tmp_req: main_models.ImageRemoveRequest,
@@ -916,100 +990,6 @@ class Client(OpenApiClient):
     ) -> main_models.ImageRemoveResponse:
         runtime = RuntimeOptions()
         return await self.image_remove_with_options_async(request, runtime)
-
-    def image_translation_plus_with_options(
-        self,
-        request: main_models.ImageTranslationPlusRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ImageTranslationPlusResponse:
-        request.validate()
-        body = {}
-        if not DaraCore.is_null(request.glossary):
-            body['Glossary'] = request.glossary
-        if not DaraCore.is_null(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not DaraCore.is_null(request.including_product_area):
-            body['IncludingProductArea'] = request.including_product_area
-        if not DaraCore.is_null(request.source_language):
-            body['SourceLanguage'] = request.source_language
-        if not DaraCore.is_null(request.target_language):
-            body['TargetLanguage'] = request.target_language
-        if not DaraCore.is_null(request.translating_brand_in_the_product):
-            body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
-        if not DaraCore.is_null(request.use_image_editor):
-            body['UseImageEditor'] = request.use_image_editor
-        req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'ImageTranslationPlus',
-            version = '2026-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ImageTranslationPlusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def image_translation_plus_with_options_async(
-        self,
-        request: main_models.ImageTranslationPlusRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ImageTranslationPlusResponse:
-        request.validate()
-        body = {}
-        if not DaraCore.is_null(request.glossary):
-            body['Glossary'] = request.glossary
-        if not DaraCore.is_null(request.image_url):
-            body['ImageUrl'] = request.image_url
-        if not DaraCore.is_null(request.including_product_area):
-            body['IncludingProductArea'] = request.including_product_area
-        if not DaraCore.is_null(request.source_language):
-            body['SourceLanguage'] = request.source_language
-        if not DaraCore.is_null(request.target_language):
-            body['TargetLanguage'] = request.target_language
-        if not DaraCore.is_null(request.translating_brand_in_the_product):
-            body['TranslatingBrandInTheProduct'] = request.translating_brand_in_the_product
-        if not DaraCore.is_null(request.use_image_editor):
-            body['UseImageEditor'] = request.use_image_editor
-        req = open_api_util_models.OpenApiRequest(
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'ImageTranslationPlus',
-            version = '2026-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ImageTranslationPlusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def image_translation_plus(
-        self,
-        request: main_models.ImageTranslationPlusRequest,
-    ) -> main_models.ImageTranslationPlusResponse:
-        runtime = RuntimeOptions()
-        return self.image_translation_plus_with_options(request, runtime)
-
-    async def image_translation_plus_async(
-        self,
-        request: main_models.ImageTranslationPlusRequest,
-    ) -> main_models.ImageTranslationPlusResponse:
-        runtime = RuntimeOptions()
-        return await self.image_translation_plus_with_options_async(request, runtime)
 
     def image_translation_pro_with_options(
         self,
@@ -1744,6 +1724,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.source_text_list):
             request.source_text_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_text_list, 'SourceTextList', 'json')
         body = {}
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
         if not DaraCore.is_null(request.format_type):
             body['FormatType'] = request.format_type
         if not DaraCore.is_null(request.glossary):
@@ -1754,6 +1736,8 @@ class Client(OpenApiClient):
             body['SourceTextList'] = request.source_text_list_shrink
         if not DaraCore.is_null(request.target_language):
             body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translate_scene):
+            body['TranslateScene'] = request.translate_scene
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1784,6 +1768,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.source_text_list):
             request.source_text_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_text_list, 'SourceTextList', 'json')
         body = {}
+        if not DaraCore.is_null(request.biz_name):
+            body['BizName'] = request.biz_name
         if not DaraCore.is_null(request.format_type):
             body['FormatType'] = request.format_type
         if not DaraCore.is_null(request.glossary):
@@ -1794,6 +1780,8 @@ class Client(OpenApiClient):
             body['SourceTextList'] = request.source_text_list_shrink
         if not DaraCore.is_null(request.target_language):
             body['TargetLanguage'] = request.target_language
+        if not DaraCore.is_null(request.translate_scene):
+            body['TranslateScene'] = request.translate_scene
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
