@@ -42,8 +42,6 @@ class GetMediaComprehensionJobResponseBody(DaraModel):
 
         return self
 
-
-
 class GetMediaComprehensionJobResponseBodyMediaComprehensionJob(DaraModel):
     def __init__(
         self,
