@@ -1628,6 +1628,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_auto_snapshot_policy_with_options_async(request, runtime)
 
+    def create_cpfs_access_point_with_options(
+        self,
+        request: main_models.CreateCpfsAccessPointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCpfsAccessPointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCpfsAccessPoint',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCpfsAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cpfs_access_point_with_options_async(
+        self,
+        request: main_models.CreateCpfsAccessPointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCpfsAccessPointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.root_directory):
+            query['RootDirectory'] = request.root_directory
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCpfsAccessPoint',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCpfsAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cpfs_access_point(
+        self,
+        request: main_models.CreateCpfsAccessPointRequest,
+    ) -> main_models.CreateCpfsAccessPointResponse:
+        runtime = RuntimeOptions()
+        return self.create_cpfs_access_point_with_options(request, runtime)
+
+    async def create_cpfs_access_point_async(
+        self,
+        request: main_models.CreateCpfsAccessPointRequest,
+    ) -> main_models.CreateCpfsAccessPointResponse:
+        runtime = RuntimeOptions()
+        return await self.create_cpfs_access_point_with_options_async(request, runtime)
+
     def create_data_flow_with_options(
         self,
         request: main_models.CreateDataFlowRequest,
@@ -3624,6 +3706,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_auto_snapshot_policy_with_options_async(request, runtime)
 
+    def delete_cpfs_access_point_with_options(
+        self,
+        request: main_models.DeleteCpfsAccessPointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCpfsAccessPointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCpfsAccessPoint',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCpfsAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cpfs_access_point_with_options_async(
+        self,
+        request: main_models.DeleteCpfsAccessPointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCpfsAccessPointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCpfsAccessPoint',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCpfsAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cpfs_access_point(
+        self,
+        request: main_models.DeleteCpfsAccessPointRequest,
+    ) -> main_models.DeleteCpfsAccessPointResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cpfs_access_point_with_options(request, runtime)
+
+    async def delete_cpfs_access_point_async(
+        self,
+        request: main_models.DeleteCpfsAccessPointRequest,
+    ) -> main_models.DeleteCpfsAccessPointResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cpfs_access_point_with_options_async(request, runtime)
+
     def delete_data_flow_with_options(
         self,
         request: main_models.DeleteDataFlowRequest,
@@ -5052,6 +5212,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_black_list_clients_with_options_async(request, runtime)
 
+    def describe_cpfs_access_point_mounted_clients_with_options(
+        self,
+        request: main_models.DescribeCpfsAccessPointMountedClientsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCpfsAccessPointMountedClientsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCpfsAccessPointMountedClients',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCpfsAccessPointMountedClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cpfs_access_point_mounted_clients_with_options_async(
+        self,
+        request: main_models.DescribeCpfsAccessPointMountedClientsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCpfsAccessPointMountedClientsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCpfsAccessPointMountedClients',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCpfsAccessPointMountedClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cpfs_access_point_mounted_clients(
+        self,
+        request: main_models.DescribeCpfsAccessPointMountedClientsRequest,
+    ) -> main_models.DescribeCpfsAccessPointMountedClientsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cpfs_access_point_mounted_clients_with_options(request, runtime)
+
+    async def describe_cpfs_access_point_mounted_clients_async(
+        self,
+        request: main_models.DescribeCpfsAccessPointMountedClientsRequest,
+    ) -> main_models.DescribeCpfsAccessPointMountedClientsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cpfs_access_point_mounted_clients_with_options_async(request, runtime)
+
+    def describe_cpfs_access_points_with_options(
+        self,
+        request: main_models.DescribeCpfsAccessPointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCpfsAccessPointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCpfsAccessPoints',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCpfsAccessPointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cpfs_access_points_with_options_async(
+        self,
+        request: main_models.DescribeCpfsAccessPointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCpfsAccessPointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCpfsAccessPoints',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCpfsAccessPointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cpfs_access_points(
+        self,
+        request: main_models.DescribeCpfsAccessPointsRequest,
+    ) -> main_models.DescribeCpfsAccessPointsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cpfs_access_points_with_options(request, runtime)
+
+    async def describe_cpfs_access_points_async(
+        self,
+        request: main_models.DescribeCpfsAccessPointsRequest,
+    ) -> main_models.DescribeCpfsAccessPointsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cpfs_access_points_with_options_async(request, runtime)
+
     def describe_data_flow_sub_tasks_with_options(
         self,
         request: main_models.DescribeDataFlowSubTasksRequest,
@@ -5475,6 +5807,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.vpc_id):
@@ -5515,6 +5849,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.vpc_id):
@@ -8723,6 +9059,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyAutoSnapshotPolicyResponse:
         runtime = RuntimeOptions()
         return await self.modify_auto_snapshot_policy_with_options_async(request, runtime)
+
+    def modify_cpfs_access_point_with_options(
+        self,
+        request: main_models.ModifyCpfsAccessPointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCpfsAccessPointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCpfsAccessPoint',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCpfsAccessPointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cpfs_access_point_with_options_async(
+        self,
+        request: main_models.ModifyCpfsAccessPointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCpfsAccessPointResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.access_point_id):
+            query['AccessPointId'] = request.access_point_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.file_system_id):
+            query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCpfsAccessPoint',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCpfsAccessPointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cpfs_access_point(
+        self,
+        request: main_models.ModifyCpfsAccessPointRequest,
+    ) -> main_models.ModifyCpfsAccessPointResponse:
+        runtime = RuntimeOptions()
+        return self.modify_cpfs_access_point_with_options(request, runtime)
+
+    async def modify_cpfs_access_point_async(
+        self,
+        request: main_models.ModifyCpfsAccessPointRequest,
+    ) -> main_models.ModifyCpfsAccessPointResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_cpfs_access_point_with_options_async(request, runtime)
 
     def modify_data_flow_with_options(
         self,

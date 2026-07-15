@@ -4,15 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CreateAgenticSpaceResponseBody(DaraModel):
+class CreateCpfsAccessPointResponseBody(DaraModel):
     def __init__(
         self,
-        agentic_space_id: str = None,
+        access_point_id: str = None,
         request_id: str = None,
     ):
-        # The AgenticSpace ID. This is a globally unique identifier assigned by the system after the AgenticSpace (an independent workspace allocated to a single Agent end user in AgenticFS) is created.
-        self.agentic_space_id = agentic_space_id
-        # The request ID.
+        self.access_point_id = access_point_id
         self.request_id = request_id
 
     def validate(self):
@@ -23,8 +21,8 @@ class CreateAgenticSpaceResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.agentic_space_id is not None:
-            result['AgenticSpaceId'] = self.agentic_space_id
+        if self.access_point_id is not None:
+            result['AccessPointId'] = self.access_point_id
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -33,8 +31,8 @@ class CreateAgenticSpaceResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AgenticSpaceId') is not None:
-            self.agentic_space_id = m.get('AgenticSpaceId')
+        if m.get('AccessPointId') is not None:
+            self.access_point_id = m.get('AccessPointId')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

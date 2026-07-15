@@ -4,31 +4,22 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DescribeRegionsRequest(DaraModel):
+class DescribeCpfsAccessPointsRequest(DaraModel):
     def __init__(
         self,
-        file_system_type: str = None,
+        access_point_id: str = None,
+        file_system_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
     ):
-        # The file system type.
-        # 
-        # Valid values:
-        # - all: all types.
-        # - standard (default): General-purpose NAS.
-        # - extreme: Extreme NAS.
-        # - cpfs: CPFS.
-        self.file_system_type = file_system_type
-        # The page number of the list.
-        # 
-        # Start value (default value): 1.
+        self.access_point_id = access_point_id
+        # This parameter is required.
+        self.file_system_id = file_system_id
         self.page_number = page_number
-        # The number of regions on each page during a paged query.
-        # 
-        # Valid values: 1 to 100.
-        # 
-        # Default value: 10.
         self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -38,8 +29,11 @@ class DescribeRegionsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.file_system_type is not None:
-            result['FileSystemType'] = self.file_system_type
+        if self.access_point_id is not None:
+            result['AccessPointId'] = self.access_point_id
+
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -47,18 +41,27 @@ class DescribeRegionsRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('FileSystemType') is not None:
-            self.file_system_type = m.get('FileSystemType')
+        if m.get('AccessPointId') is not None:
+            self.access_point_id = m.get('AccessPointId')
+
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
 
         return self
 

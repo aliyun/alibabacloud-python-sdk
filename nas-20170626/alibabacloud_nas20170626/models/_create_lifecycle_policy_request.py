@@ -23,65 +23,59 @@ class CreateLifecyclePolicyRequest(DaraModel):
     ):
         # The description of the lifecycle policy.
         # 
-        # Format: The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
-        # 
-        # >  Only CPFS for Lingjun supports this parameter.
+        # Format:
+        # The description must be 3 to 64 characters in length, start with a letter, and can contain letters, digits, underscores (_), or hyphens (-).
+        # >Only CPFS for Lingjun is supported.
         self.description = description
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The name of the lifecycle policy. The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+        # The Policy Name of the lifecycle management policy. The name must be 3 to 64 characters in length, start with an uppercase letter or lowercase letter, and can contain letters, digits, underscores (_), or hyphens (-).
         # 
-        # >  Required for General-purpose NAS.
+        # >This parameter is required for General-purpose NAS but not required for CPFS for Lingjun.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The policy type.
-        # 
-        # *   Auto (default): The job is automatically triggered.
-        # *   OnDemand: On-demand execution.
+        # - Auto (default): automatic execution.
+        # - OnDemand: on-demand execution.
         self.lifecycle_policy_type = lifecycle_policy_type
-        # The management rule associated with the lifecycle policy. Only General-purpose NAS supports this parameter.
+        # The management rule associated with the lifecycle management policy. Only General-purpose NAS is supported.
         # 
         # Valid values:
         # 
-        # *   DEFAULT_ATIME_14: Files not accessed for 14 days.
-        # *   DEFAULT_ATIME_30: Files not accessed for 30 days.
-        # *   DEFAULT_ATIME_60: Files not accessed for 60 days.
-        # *   DEFAULT_ATIME_90: Files not accessed for 90 days.
-        # *   DEFAULT_ATIME_180: Files not accessed for 180 days. DEFAULT_ATIME_180 is supported only when the StorageType parameter is set to Archive.
-        # 
-        # > 
-        # 
-        # *   If an IA policy already exists for the directory, the new archive policy must have a longer transition period.
-        # 
-        # *   Only General-purpose NAS supports this parameter.
+        # - DEFAULT_ATIME_14: files that have not been accessed for 14 days.
+        # - DEFAULT_ATIME_30: files that have not been accessed for 30 days.
+        # - DEFAULT_ATIME_60: files that have not been accessed for 60 days.
+        # - DEFAULT_ATIME_90: files that have not been accessed for 90 days.
+        # - DEFAULT_ATIME_180: files that have not been accessed for 180 days. DEFAULT_ATIME_180 is supported only when StorageType is set to Archive.
+        # >- If an IA storage class policy has already been configured for the directory, the archive policy duration must be longer than the IA storage class policy duration.
+        # > - Only General-purpose NAS supports this parameter.
         self.lifecycle_rule_name = lifecycle_rule_name
-        # The absolute path of the directory associated with the lifecycle policy. Only General-purpose NAS supports this parameter.
+        # The absolute path of the directory associated with the lifecycle management policy. Only General-purpose NAS is supported.
         # 
-        # *   Single value only. The path must start with a forward slash (/) and must be a path that exists in the mount target.
+        # - General-purpose NAS supports associating only a single directory. The path must start with a forward slash (/) and must be an existing path in the mount target.
         # 
-        # >  We recommend configuring the Paths.N parameter so that you can associate the policy with multiple directories at a time.
-        # 
-        # *   Path and Paths are mutually exclusive. You must specify one.
+        # > Only General-purpose NAS is supported. For General-purpose NAS, use Paths.N to associate multiple directories at the same time.
+        # >- Only one of Path and Paths can be specified.
         self.path = path
-        # The absolute paths of the directories associated with the lifecycle policy.
+        # The absolute paths of directories associated with the lifecycle management policy.
         self.paths = paths
-        # The file data retrieval rule. Only one rule can be configured.
+        # The file data retrieval rules. A maximum of one rule can be configured.
+        # >Only CPFS for Lingjun file systems are supported.
         # 
-        # >  Only CPFS for Lingjun supports this parameter.
+        # >When LifecyclePolicyType is set to OnDemand, at least one of TransitRules or RetrieveRules must be specified.
         self.retrieve_rules = retrieve_rules
-        # The storage class.
+        # The storage type.
+        # - InfrequentAccess: IA storage class.
+        # - Archive: Archive storage.
         # 
-        # *   InfrequentAccess: the Infrequent Access (IA) storage class.
-        # *   Archive: the Archive storage class.
-        # 
-        # >  General-purpose NAS supports InfrequentAccess and Archive. CPFS for Lingjun only supports InfrequentAccess.
+        # >General-purpose NAS supports InfrequentAccess and Archive. CPFS for Lingjun supports only InfrequentAccess.
         # 
         # This parameter is required.
         self.storage_type = storage_type
-        # The data transition rule. Only one rule can be configured.
+        # The file data transit rules. A maximum of one rule can be configured.
         # 
-        # >  Supported only for CPFS for Lingjun file systems with LifecyclePolicyType set to Auto.
+        # >Supported only when LifecyclePolicyType is set to Auto for CPFS for Lingjun file systems.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -181,17 +175,15 @@ class CreateLifecyclePolicyRequestTransitRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
-        # Attribute of the rule.
+        # The rule attribute.
         # 
         # Valid values:
-        # 
-        # *   Atime: the access time of the file.
+        # - Atime: the access time of the file.
         self.attribute = attribute
-        # Threshold for the rule.
+        # The rule threshold.
         # 
         # Valid values:
-        # 
-        # *   If Attribute is set to Atime, this value represents the number of days since the file was last accessed. Valid values: [1, 365].
+        # - When Attribute is set to Atime, the value indicates the number of days since the file was last accessed. Valid values: 0 to 365.
         self.threshold = threshold
 
     def validate(self):
@@ -226,16 +218,13 @@ class CreateLifecyclePolicyRequestRetrieveRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
-        # The attribute of the rule. Valid value:
-        # 
-        # *   RetrieveType: the retrieval method.
+        # The rule attribute. Valid values:
+        # - RetrieveType: the retrieval method.
         self.attribute = attribute
-        # The threshold of the rule. Valid values:
-        # 
-        # *   RetrieveType
-        # 
-        #     *   AfterVisit: Supported when LifecyclePolicyType is Auto. Represents a best-effort recall on access.
-        #     *   All: Supported when LifecyclePolicyType is OnDemand. Represents retrieving all data.
+        # The rule threshold. Valid values:
+        # - RetrieveType
+        #     - AfterVisit: supported when LifecyclePolicyType is set to Auto. Indicates best-effort recall on visit.
+        #     - All: supported when LifecyclePolicyType is set to OnDemand. Indicates retrieving all data.
         self.threshold = threshold
 
     def validate(self):

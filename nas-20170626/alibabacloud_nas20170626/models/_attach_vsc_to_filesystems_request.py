@@ -20,10 +20,12 @@ class AttachVscToFilesystemsRequest(DaraModel):
         # 
         # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
-        # The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
+        # The ID information of file systems and Virtual Storage Channels. A maximum of 10 entries can be specified per batch.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
+        # The role chain.
+        # > This parameter is required only for cross-account scenarios.
         self.role_chain = role_chain
 
     def validate(self):
@@ -82,8 +84,11 @@ class AttachVscToFilesystemsRequestRoleChain(DaraModel):
         role_arn: str = None,
         role_type: str = None,
     ):
+        # The UID of the Alibaba Cloud account on whose behalf the service assumes the role.
         self.assume_role_for = assume_role_for
+        # The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
+        # The role type. Valid values: service and user.
         self.role_type = role_type
 
     def validate(self):
@@ -126,7 +131,7 @@ class AttachVscToFilesystemsRequestResourceIds(DaraModel):
     ):
         # The file system ID.
         self.file_system_id = file_system_id
-        # The virtual storage channel ID.
+        # The Virtual Storage Channel ID.
         self.vsc_id = vsc_id
 
     def validate(self):

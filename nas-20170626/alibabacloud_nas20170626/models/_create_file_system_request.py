@@ -35,143 +35,151 @@ class CreateFileSystemRequest(DaraModel):
         # 
         # Unit: MB/s.
         # 
-        # Specify a value based on the specifications on the buy page.
+        # For available specification values, see the actual specifications on the buy page.
         # 
-        # [CPFS (Pay-as-you-go)](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui\\&commodityCode=nas_cpfspost_public_intl#/buy)
+        # <props="china">
+        # 
+        # [Parallel file system CPFS pay-as-you-go buy page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # [Parallel file system CPFS pay-as-you-go buy page](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui&commodityCode=nas_cpfspost_public_intl#/buy)
         self.bandwidth = bandwidth
-        # Specify the capacity of the file system. Unit: GiB. This parameter is required and valid when FileSystemType is set to extreme, cpfs, or cpfsse.
+        # The capacity of the file system. Unit: GiB.
+        # This parameter is required and takes effect only when FileSystemType is set to extreme, cpfs, or cpfsse.
         # 
-        # Specify a value based on the specifications on the following buy page:
+        # For available values, see the actual specifications on the buy page:
         # 
-        # *   [Extreme NAS (Pay-as-you-go)](https://common-buy-intl.alibabacloud.com/?commodityCode=nas_extpost_public_intl#/buy)
-        # *   [CPFS (Pay-as-you-go)](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui\\&commodityCode=nas_cpfspost_public_intl#/buy)
+        # <props="china">
+        # 
+        # -  [Extreme NAS pay-as-you-go buy page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+        # - [Parallel file system CPFS pay-as-you-go buy page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - [Extreme NAS pay-as-you-go buy page](https://common-buy-intl.alibabacloud.com/?commodityCode=nas_extpost_public_intl#/buy)
+        # 
+        # - [Parallel file system CPFS pay-as-you-go buy page](https://common-buy-intl.alibabacloud.com/?spm=5176.nas_overview.0.0.7ea01dbft0dTui&commodityCode=nas_cpfspost_public_intl#/buy)
         self.capacity = capacity
         # The billing method.
         # 
         # Valid values:
         # 
-        # *   PayAsYouGo (default): pay-as-you-go
-        # *   Subscription
+        # - PayAsYouGo (default): Pay-as-you-go.
+        # - Subscription: Subscription.
         self.charge_type = charge_type
-        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. ClientToken only supports ASCII characters and cannot exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # Ensures the idempotence of the request. Generate a unique parameter value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
         self.client_token = client_token
         # The description of the file system.
         # 
         # Limits:
         # 
-        # *   Must be 2 to 128 characters in length.
-        # *   Must start with a letter but cannot start with `http://` or `https://`.
-        # *   Can contain digits, colons (:), underscores (_), and hyphens (-).
+        # - The description must be 2 to 128 characters in length.
+        # - The description must start with a letter and cannot start with `http://` or `https://`.
+        # - The description can contain digits, colons (:), underscores (_), and hyphens (-).
         self.description = description
-        # Whether to precheck the creation request.
+        # Specifies whether to perform a dry run for this request.
         # 
-        # The precheck operation helps you check the validity of parameters and verify inventory. It does not actually create instances and does not incur fees.
+        # A dry run checks parameter validity and resource availability without actually creating the instance or incurring charges.
         # 
-        # Valid values:
-        # 
-        # *   true: Checks the request without creating an instance. The system checks the required parameters, request syntax, service limits, and available NAS resources. If the request fails to pass the check, an error message is returned. If the request passes the check, the HTTP status code 200 is returned. No value is returned for the FileSystemId parameter.
-        # *   false (default): Sends the request. If the request passes the check, the instance is created.
+        # Valid values:  
+        # - true: Sends a dry run request without creating the instance. The check items include required parameters, request format, service limits, and NAS inventory. If the check fails, the corresponding error is returned. If the check succeeds, HTTP status code 200 is returned, but FileSystemId is empty.  
+        # - false (default): Sends a normal request. After the check succeeds, the instance is created.
         self.dry_run = dry_run
         # The subscription duration.
         # 
-        # This parameter is valid and required if ChargeType is set to Subscription. Unit: months.
+        # Unit: months. This parameter is required and takes effect only when ChargeType is set to Subscription.
         # 
-        # If you do not renew a subscription file system when the file system expires, the file system is automatically released.
+        # If a subscription instance is not renewed upon expiration, the instance is automatically released.
         self.duration = duration
-        # Specifies whether to encrypt data in the file system.
+        # Specifies whether to encrypt the file system.
         # 
-        # You can use the keys that are managed by Key Management Service (KMS) to encrypt data in a file system. When you read and write the encrypted data, the data is automatically decrypted.
+        # Uses keys managed by Key Management Service (KMS) to encrypt data stored on the file system. No decryption is required when reading or writing encrypted data.
         # 
         # Valid values:
         # 
-        # *   0 (default): The data in the file system is not encrypted.
-        # *   1: A NAS-managed key is used to encrypt the data in the file system. This value is valid if FileSystemType is set to standard or extreme.
-        # *   2: A KMS-managed key is used to encrypt the data in the file system. This value is valid if the FileSystemType parameter is set to standard or extreme.
+        # - 0 (default): Not encrypted.
+        # - 1: NAS-managed key. Supported when FileSystemType is set to standard or extreme.
+        # - 2: Custom Key (KMS). Supported when FileSystemType is set to standard or extreme.
         # 
-        # > 
-        # 
-        # *   Extreme NAS: All regions except China East 1 Finance support KMS-managed keys.
-        # 
-        # *   General-purpose NAS: All regions support KMS-managed keys.
+        # > - Extreme NAS: The Custom Key (KMS) feature is supported in all regions except China (Hangzhou) Finance Cloud.
+        # > - General-purpose NAS: The Custom Key (KMS) feature is supported in all regions.
         self.encrypt_type = encrypt_type
         # The type of the file system.
         # 
         # Valid values:
-        # 
-        # *   standard: General-purpose NAS
-        # *   extreme: Extreme NAS
-        # *   cpfs: CPFS (locally redundant storage)
-        # *   cpfsse: CPFS SE (zone-redundant storage)
+        # - standard (default): General-purpose NAS file system.
+        # - extreme: Extreme NAS file system.
+        # - cpfs: Cloud Parallel File Storage (CPFS) (locally redundant).
+        # - cpfsse: Cloud Parallel File Storage (CPFS) SE (zone-redundant).
         self.file_system_type = file_system_type
-        # The ID of the KMS key.
+        # The KMS key ID.
         # 
-        # This parameter is required if EncryptType is set to 2.
+        # This parameter is required only when EncryptType is set to 2.
         self.kms_key_id = kms_key_id
-        # Specify the protocol type.
+        # The file transfer protocol type.
         # 
-        # *   If FileSystemType is set to standard, set this parameter to NFS or SMB.
-        # *   If FileSystemType is set to extreme, set this parameter to NFS.
-        # *   If FileSystemType is set to cpfs, set this parameter to cpfs.
-        # *   If FileSystemType is set to cpfsse, set this parameter to cpfs.
+        # - If FileSystemType is set to standard, valid values: NFS and SMB.
+        # - If FileSystemType is set to extreme, valid values: NFS.
+        # - If FileSystemType is set to cpfs, valid values: cpfs.
+        # - If FileSystemType is set to cpfsse, valid values: cpfs.
         # 
         # This parameter is required.
         self.protocol_type = protocol_type
-        # Storage redundancy type. Only available for CPFS SE.
-        # 
-        # Valid values:
-        # 
-        # *   ZRS
+        # The storage redundancy type. This parameter takes effect only for CPFS SE.
+        # Valid values: ZRS.
         self.redundancy_type = redundancy_type
-        # A list of IDs for the zone-redundant vSwitches. This parameter is required if RedundancyType is set to ZRS. You must enter three vSwitch IDs from three different zones.
+        # The list of zone-redundant vSwitch IDs.
+        # If RedundancyType is set to ZRS, this parameter is required. You must specify three vSwitch IDs, each from a different zone.
         self.redundancy_vswitch_ids = redundancy_vswitch_ids
         # The resource group ID.
         # 
-        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+        # You can view resource group IDs in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
         self.resource_group_id = resource_group_id
         # The snapshot ID.
         # 
-        # This parameter is available only for advanced Extreme NAS file systems.
-        # 
-        # > You can create a file system from a snapshot. The version of the file system is the same as that of the source file system. For example, the source file system of the snapshot uses version 1. To create a file system of version 2, create File System A from the snapshot and create File System B of version 2. Then copy the data and migrate your business from File System A to File System B.
+        # This parameter is supported only for Extreme NAS file systems with the Advanced storage type.
+        # > A file system created from a snapshot has the same version as the source file system of the snapshot. For example, if the source file system version is 1 and you want to create a version 2 file system, first create file system A from the snapshot, then create file system B that meets the version 2 configuration. Copy the data from file system A to file system B, and migrate your workloads to file system B after the copy is complete.
         self.snapshot_id = snapshot_id
         # The storage type.
         # 
-        # *   If FileSystemType is set to standard, set this parameter to Performance, Capacity, or Premium.
-        # *   If FileSystemType is set to extreme, set this parameter to standard or advance.
-        # *   If FileSystemType is set to cpfs, set this parameter to advance_100 (100 MB/s/TiB Baseline), advance_200 (200 MB/s/TiB Baseline), or economic.
-        # *   If FileSystemType is set to cpfsse, set this parameter to advance_100 (100 MB/s/TiB Baseline).
+        # - If FileSystemType is set to standard, valid values: Performance, Capacity, and Premium.
+        # - If FileSystemType is set to extreme, valid values: standard and advance.
+        # - If FileSystemType is set to cpfs, valid values: advance_100 (100 MB/s/TiB baseline), advance_200 (200 MB/s/TiB baseline), and economic.
+        # - If FileSystemType is set to cpfsse, valid values: advance_100 (100 MB/s/TiB baseline).
         # 
         # This parameter is required.
         self.storage_type = storage_type
-        # An array of tags.
+        # The tags.
         # 
-        # You can specify up to 20 tags. If you specify multiple tags, each tag key must be unique.
+        # Array length: 1 to 20. If the array contains multiple tag objects, the tag key (Key) must be unique.
         self.tag = tag
         # The vSwitch ID.
         # 
-        # *   This parameter is required if FileSystemType is set to cpfs.
-        # *   If FileSystemType is not set to cpfs, this parameter is reserved and not required.
+        # - If FileSystemType is set to cpfs, this parameter is required.
+        # - If FileSystemType is not set to cpfs, this parameter is reserved and does not take effect. You do not need to configure it.
         self.v_switch_id = v_switch_id
         # The VPC ID.
         # 
-        # *   This parameter is required if FileSystemType is set to cpfs or cpfsse.
-        # *   This parameter is reserved and not required if FileSystemType is set to standard or extreme.
+        # - If FileSystemType is set to cpfs or cpfsse, this parameter is required.
+        # - If FileSystemType is set to standard or extreme, this parameter is reserved and does not take effect. You do not need to configure it.
         self.vpc_id = vpc_id
-        # The ID of the zone.
+        # The zone ID.
         # 
-        # Each region has multiple isolated locations known as zones. Each zone has its own independent power supply and network.
+        # A zone is an independent physical area within a region that has its own power supply and network.
         # 
-        # This parameter is not required if FileSystemType is set to standard. By default, a random zone is selected based on the protocol type and storage type.
+        # If FileSystemType is set to standard, this parameter is optional. By default, an active zone that matches the conditional ProtocolType and StorageType is randomly selected.
         # 
-        # This parameter is required if FileSystemType is set to extreme or cpfs.
+        # If FileSystemType is set to extreme or cpfs, this parameter is required.
         # 
-        # > 
-        # 
-        # *   An Elastic Compute Service (ECS) instance and a file system that reside in different zones of the same region can access each other.
-        # 
-        # *   We recommend that you select the zone where the ECS instance resides. This prevents cross-zone latency between the file system and the ECS instance.
+        # >  - File systems and Elastic Computing Service (ECS) instances in different zones of the same region can communicate with each other.
+        # >  - Place the file system and the ECS server in the same zone to avoid cross-zone latency.
         self.zone_id = zone_id
 
     def validate(self):
@@ -326,18 +334,17 @@ class CreateFileSystemRequestTag(DaraModel):
         # 
         # Limits:
         # 
-        # *   Cannot be null or an empty string.
-        # *   Can be up to 128 characters in length.
-        # *   Cannot start with `aliyun` or `acs:`.
-        # *   Cannot contain `http://` or `https://`.
+        # - The tag key cannot be empty.
+        # - The tag key can be up to 128 characters in length.
+        # - The tag key cannot start with `aliyun` or `acs:`.
+        # - The tag key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
         # Limits:
-        # 
-        # *   Cannot be null or an empty string.
-        # *   Can be up to 128 characters in length.
-        # *   Cannot contain `http://` or `https://`.
+        # - The tag value cannot be empty.
+        # - The tag value can be up to 128 characters in length.
+        # - The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

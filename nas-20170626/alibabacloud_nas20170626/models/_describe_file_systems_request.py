@@ -15,14 +15,15 @@ class DescribeFileSystemsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
+        storage_type: str = None,
         tag: List[main_models.DescribeFileSystemsRequestTag] = None,
         vpc_id: str = None,
     ):
         # The file system ID.
         # - General-purpose NAS: 31a8e4****.
-        # - Extreme NAS: Must start with extreme-, such as extreme-0015****.
-        # - CPFS (locally redundant): Must start with cpfs-, such as cpfs-125487****.
-        # - CPFS SE (zone-redundant): Must start with cpfsse-, such as cpfsse-022c71b134****.
+        # - Extreme NAS: must start with extreme-, such as extreme-0015****.
+        # - Cloud Parallel File Storage (CPFS) (locally redundant): must start with cpfs-, such as cpfs-125487****.
+        # - CPFS SE (zone-redundant): must start with cpfsse-, such as cpfsse-022c71b134****.
         self.file_system_id = file_system_id
         # The file system type.
         # 
@@ -40,7 +41,7 @@ class DescribeFileSystemsRequest(DaraModel):
         # 
         # Start value (default value): 1.
         self.page_number = page_number
-        # The number of file systems on each page in a paging query.
+        # The number of file systems on each page during a paged query.
         # 
         # Valid values: 1 to 100.
         # 
@@ -50,6 +51,7 @@ class DescribeFileSystemsRequest(DaraModel):
         # 
         # You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
         self.resource_group_id = resource_group_id
+        self.storage_type = storage_type
         # The tag information.
         self.tag = tag
         # The virtual private cloud (VPC) ID.
@@ -83,6 +85,9 @@ class DescribeFileSystemsRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -109,6 +114,9 @@ class DescribeFileSystemsRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
 
         self.tag = []
         if m.get('Tag') is not None:

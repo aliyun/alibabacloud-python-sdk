@@ -10,7 +10,7 @@ class CreateDataFlowResponseBody(DaraModel):
         data_flow_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the dataflow.
+        # The data flow ID.
         self.data_flow_id = data_flow_id
         # The request ID.
         self.request_id = request_id

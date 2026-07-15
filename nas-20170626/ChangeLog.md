@@ -1,3 +1,12 @@
+2026-07-15 Version: 3.6.0
+- Support API CreateCpfsAccessPoint.
+- Support API DeleteCpfsAccessPoint.
+- Support API DescribeCpfsAccessPointMountedClients.
+- Support API DescribeCpfsAccessPoints.
+- Support API ModifyCpfsAccessPoint.
+- Update API DescribeFileSystems: add request parameters StorageType.
+
+
 2026-06-29 Version: 3.5.0
 - Support API CreateAgenticSpace.
 - Support API DeleteAgenticSpace.

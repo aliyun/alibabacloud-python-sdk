@@ -56,6 +56,9 @@ from ._create_agentic_space_response import CreateAgenticSpaceResponse
 from ._create_auto_snapshot_policy_request import CreateAutoSnapshotPolicyRequest
 from ._create_auto_snapshot_policy_response_body import CreateAutoSnapshotPolicyResponseBody
 from ._create_auto_snapshot_policy_response import CreateAutoSnapshotPolicyResponse
+from ._create_cpfs_access_point_request import CreateCpfsAccessPointRequest
+from ._create_cpfs_access_point_response_body import CreateCpfsAccessPointResponseBody
+from ._create_cpfs_access_point_response import CreateCpfsAccessPointResponse
 from ._create_data_flow_request import CreateDataFlowRequest
 from ._create_data_flow_response_body import CreateDataFlowResponseBody
 from ._create_data_flow_response import CreateDataFlowResponse
@@ -122,6 +125,9 @@ from ._delete_agentic_space_response import DeleteAgenticSpaceResponse
 from ._delete_auto_snapshot_policy_request import DeleteAutoSnapshotPolicyRequest
 from ._delete_auto_snapshot_policy_response_body import DeleteAutoSnapshotPolicyResponseBody
 from ._delete_auto_snapshot_policy_response import DeleteAutoSnapshotPolicyResponse
+from ._delete_cpfs_access_point_request import DeleteCpfsAccessPointRequest
+from ._delete_cpfs_access_point_response_body import DeleteCpfsAccessPointResponseBody
+from ._delete_cpfs_access_point_response import DeleteCpfsAccessPointResponse
 from ._delete_data_flow_request import DeleteDataFlowRequest
 from ._delete_data_flow_response_body import DeleteDataFlowResponseBody
 from ._delete_data_flow_response import DeleteDataFlowResponse
@@ -176,6 +182,12 @@ from ._describe_auto_snapshot_tasks_response import DescribeAutoSnapshotTasksRes
 from ._describe_black_list_clients_request import DescribeBlackListClientsRequest
 from ._describe_black_list_clients_response_body import DescribeBlackListClientsResponseBody
 from ._describe_black_list_clients_response import DescribeBlackListClientsResponse
+from ._describe_cpfs_access_point_mounted_clients_request import DescribeCpfsAccessPointMountedClientsRequest
+from ._describe_cpfs_access_point_mounted_clients_response_body import DescribeCpfsAccessPointMountedClientsResponseBody
+from ._describe_cpfs_access_point_mounted_clients_response import DescribeCpfsAccessPointMountedClientsResponse
+from ._describe_cpfs_access_points_request import DescribeCpfsAccessPointsRequest
+from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBody
+from ._describe_cpfs_access_points_response import DescribeCpfsAccessPointsResponse
 from ._describe_data_flow_sub_tasks_request import DescribeDataFlowSubTasksRequest
 from ._describe_data_flow_sub_tasks_response_body import DescribeDataFlowSubTasksResponseBody
 from ._describe_data_flow_sub_tasks_response import DescribeDataFlowSubTasksResponse
@@ -315,6 +327,9 @@ from ._modify_agentic_space_response import ModifyAgenticSpaceResponse
 from ._modify_auto_snapshot_policy_request import ModifyAutoSnapshotPolicyRequest
 from ._modify_auto_snapshot_policy_response_body import ModifyAutoSnapshotPolicyResponseBody
 from ._modify_auto_snapshot_policy_response import ModifyAutoSnapshotPolicyResponse
+from ._modify_cpfs_access_point_request import ModifyCpfsAccessPointRequest
+from ._modify_cpfs_access_point_response_body import ModifyCpfsAccessPointResponseBody
+from ._modify_cpfs_access_point_response import ModifyCpfsAccessPointResponse
 from ._modify_data_flow_request import ModifyDataFlowRequest
 from ._modify_data_flow_response_body import ModifyDataFlowResponseBody
 from ._modify_data_flow_response import ModifyDataFlowResponse
@@ -399,6 +414,7 @@ from ._attach_vsc_to_filesystems_request import AttachVscToFilesystemsRequestRol
 from ._create_access_point_request import CreateAccessPointRequestTag
 from ._create_access_point_response_body import CreateAccessPointResponseBodyAccessPoint
 from ._create_agentic_space_request import CreateAgenticSpaceRequestQuota
+from ._create_cpfs_access_point_request import CreateCpfsAccessPointRequestRootDirectory
 from ._create_data_flow_request import CreateDataFlowRequestAutoRefreshs
 from ._create_data_flow_sub_task_request import CreateDataFlowSubTaskRequestCondition
 from ._create_file_system_request import CreateFileSystemRequestTag
@@ -427,6 +443,9 @@ from ._describe_auto_snapshot_policies_response_body import DescribeAutoSnapshot
 from ._describe_auto_snapshot_policies_response_body import DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPolicies
 from ._describe_auto_snapshot_tasks_response_body import DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask
 from ._describe_auto_snapshot_tasks_response_body import DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks
+from ._describe_cpfs_access_point_mounted_clients_response_body import DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient
+from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory
+from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBodyAccessPoints
 from ._describe_data_flow_sub_tasks_request import DescribeDataFlowSubTasksRequestFilters
 from ._describe_data_flow_sub_tasks_response_body import DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail
 from ._describe_data_flow_sub_tasks_response_body import DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats
@@ -595,6 +614,9 @@ __all__ = [
     CreateAutoSnapshotPolicyRequest,
     CreateAutoSnapshotPolicyResponseBody,
     CreateAutoSnapshotPolicyResponse,
+    CreateCpfsAccessPointRequest,
+    CreateCpfsAccessPointResponseBody,
+    CreateCpfsAccessPointResponse,
     CreateDataFlowRequest,
     CreateDataFlowResponseBody,
     CreateDataFlowResponse,
@@ -661,6 +683,9 @@ __all__ = [
     DeleteAutoSnapshotPolicyRequest,
     DeleteAutoSnapshotPolicyResponseBody,
     DeleteAutoSnapshotPolicyResponse,
+    DeleteCpfsAccessPointRequest,
+    DeleteCpfsAccessPointResponseBody,
+    DeleteCpfsAccessPointResponse,
     DeleteDataFlowRequest,
     DeleteDataFlowResponseBody,
     DeleteDataFlowResponse,
@@ -715,6 +740,12 @@ __all__ = [
     DescribeBlackListClientsRequest,
     DescribeBlackListClientsResponseBody,
     DescribeBlackListClientsResponse,
+    DescribeCpfsAccessPointMountedClientsRequest,
+    DescribeCpfsAccessPointMountedClientsResponseBody,
+    DescribeCpfsAccessPointMountedClientsResponse,
+    DescribeCpfsAccessPointsRequest,
+    DescribeCpfsAccessPointsResponseBody,
+    DescribeCpfsAccessPointsResponse,
     DescribeDataFlowSubTasksRequest,
     DescribeDataFlowSubTasksResponseBody,
     DescribeDataFlowSubTasksResponse,
@@ -854,6 +885,9 @@ __all__ = [
     ModifyAutoSnapshotPolicyRequest,
     ModifyAutoSnapshotPolicyResponseBody,
     ModifyAutoSnapshotPolicyResponse,
+    ModifyCpfsAccessPointRequest,
+    ModifyCpfsAccessPointResponseBody,
+    ModifyCpfsAccessPointResponse,
     ModifyDataFlowRequest,
     ModifyDataFlowResponseBody,
     ModifyDataFlowResponse,
@@ -938,6 +972,7 @@ __all__ = [
     CreateAccessPointRequestTag,
     CreateAccessPointResponseBodyAccessPoint,
     CreateAgenticSpaceRequestQuota,
+    CreateCpfsAccessPointRequestRootDirectory,
     CreateDataFlowRequestAutoRefreshs,
     CreateDataFlowSubTaskRequestCondition,
     CreateFileSystemRequestTag,
@@ -966,6 +1001,9 @@ __all__ = [
     DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPolicies,
     DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask,
     DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks,
+    DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient,
+    DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory,
+    DescribeCpfsAccessPointsResponseBodyAccessPoints,
     DescribeDataFlowSubTasksRequestFilters,
     DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail,
     DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats,

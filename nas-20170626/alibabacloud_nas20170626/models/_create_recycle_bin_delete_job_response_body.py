@@ -10,7 +10,7 @@ class CreateRecycleBinDeleteJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The job ID.
+        # The task ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

@@ -14,9 +14,9 @@ class DescribeProtocolMountTargetResponseBody(DaraModel):
         protocol_mount_targets: List[main_models.DescribeProtocolMountTargetResponseBodyProtocolMountTargets] = None,
         request_id: str = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The marker used to retrieve the remaining export directories in subsequent queries.
         self.next_token = next_token
-        # The export directories of the protocol service.
+        # The collection of protocol service export directories.
         self.protocol_mount_targets = protocol_mount_targets
         # The request ID.
         self.request_id = request_id
@@ -78,31 +78,31 @@ class DescribeProtocolMountTargetResponseBodyProtocolMountTargets(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
-        # The permission group that is associated with the export directory of the protocol service.
+        # The permission group associated with the protocol service export directory.
         self.access_group_name = access_group_name
-        # The time when the export directory of the protocol service was created.
+        # The time when the protocol service export directory was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
-        # The description of the export directory for the protocol service.
+        # The description of the protocol service export directory.
         self.description = description
-        # The ID of the export directory for the protocol service.
+        # The ID of the protocol service export directory.
         self.export_id = export_id
-        # The fileset ID of the export directory for the protocol service.
+        # The fileset ID of the protocol service export directory.
         self.fset_id = fset_id
-        # The export directory of the protocol service.
+        # The exported directory of the protocol service.
         self.path = path
-        # The domain name of the export directory for the protocol service.
+        # The domain name of the protocol service export directory.
         self.protocol_mount_target_domain = protocol_mount_target_domain
-        # The ID of the protocol service.
+        # The protocol service ID.
         self.protocol_service_id = protocol_service_id
         # The protocol type supported by the protocol service.
         self.protocol_type = protocol_type
-        # The status of the mount target.
+        # The mount target status.
         self.status = status
-        # The vSwitch ID of the export directory for the protocol service.
+        # The vSwitch ID of the protocol service export directory.
         self.v_switch_id = v_switch_id
-        # A list of IDs for the zone-redundant vSwitches.
+        # The list of zone-redundant vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID of the export directory for the protocol service.
+        # The VPC ID of the protocol service export directory.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -11,7 +11,9 @@ class GetAgenticSpaceResponseBody(DaraModel):
         agentic_space: main_models.GetAgenticSpaceResponseBodyAgenticSpace = None,
         request_id: str = None,
     ):
+        # The AgenticSpace information.
         self.agentic_space = agentic_space
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,16 +59,28 @@ class GetAgenticSpaceResponseBodyAgenticSpace(DaraModel):
         status: str = None,
         update_time_utc: str = None,
     ):
+        # AgenticSpace Id。
         self.agentic_space_id = agentic_space_id
+        # The zone ID.
         self.azone = azone
+        # The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time_utc = create_time_utc
+        # AgenticSpace Description。
         self.description = description
+        # The number of files used.
         self.file_count_usage = file_count_usage
+        # The file system ID.
         self.file_system_id = file_system_id
+        # The absolute path of the file.
         self.file_system_path = file_system_path
+        # The quota information.
         self.quota = quota
+        # The capacity usage. Unit: bytes.
         self.space_usage = space_usage
+        # The status of the AgenticSpace. Valid values:
+        # - Running
         self.status = status
+        # The time when the AgenticSpace was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.update_time_utc = update_time_utc
 
     def validate(self):
@@ -157,7 +171,19 @@ class GetAgenticSpaceResponseBodyAgenticSpaceQuota(DaraModel):
         file_count_limit: int = None,
         size_limit: int = None,
     ):
+        # The file count limit of the quota. Valid values:
+        # 
+        # - Minimum value: 10,000.
+        # 
+        # - Maximum value: 100,000,000.
         self.file_count_limit = file_count_limit
+        # The total capacity limit of the quota. Unit: bytes.
+        # 
+        # Valid values:
+        # 
+        # - Minimum value: 10,737,418,240 (10 GiB).
+        # - Maximum value: 1,099,511,627,776,000 (1024000 GiB).
+        # - Step: 1,073,741,824 (1 GiB).
         self.size_limit = size_limit
 
     def validate(self):

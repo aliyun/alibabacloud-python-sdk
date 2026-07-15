@@ -18,15 +18,15 @@ class DescribeSnapshotsRequest(DaraModel):
     ):
         # The ID of the file system.
         self.file_system_id = file_system_id
-        # The type of the file system.
+        # The file system type.
         # 
-        # Valid value: extreme, which indicates Extreme File Storage NAS (NAS) file systems.
+        # Valid values: extreme (Extreme NAS file system)
         self.file_system_type = file_system_type
-        # The page number.
+        # The page number of the snapshot list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query. Settings for the number of rows per page in paging.
         # 
         # Valid values: 1 to 100.
         # 
@@ -34,26 +34,25 @@ class DescribeSnapshotsRequest(DaraModel):
         self.page_size = page_size
         # The snapshot IDs.
         # 
-        # You can specify a maximum of 100 snapshot IDs. You must separate snapshot IDs with commas (,).
+        # You can specify multiple snapshot IDs separated by commas (,). A maximum of 100 IDs are supported.
         self.snapshot_ids = snapshot_ids
         # The snapshot name.
         self.snapshot_name = snapshot_name
-        # The type of the snapshot.
+        # The snapshot type.
         # 
         # Valid values:
-        # 
-        # *   auto: auto snapshot
-        # *   user: manual snapshot
-        # *   all (default): all snapshot types
+        # - auto: automatic snapshot
+        # - user: manually created snapshot
+        # - all (default): all snapshot types
         self.snapshot_type = snapshot_type
-        # The status of the snapshot.
+        # The snapshot status.
         # 
         # Valid values:
         # 
-        # *   progressing: The snapshot is being created.
-        # *   accomplished: The snapshot is created.
-        # *   failed: The snapshot fails to be created.
-        # *   all (default): all snapshot states.
+        # - progressing: The snapshot is being created.
+        # - accomplished: The snapshot is created.
+        # - failed: The snapshot failed to be created.
+        # - all (default): all snapshot statuses
         self.status = status
 
     def validate(self):

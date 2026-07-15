@@ -10,8 +10,12 @@ class GetAgenticSpaceRequest(DaraModel):
         agentic_space_id: str = None,
         file_system_id: str = None,
     ):
+        # AgenticSpace Id。
+        # 
         # This parameter is required.
         self.agentic_space_id = agentic_space_id
+        # The file system ID.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
 

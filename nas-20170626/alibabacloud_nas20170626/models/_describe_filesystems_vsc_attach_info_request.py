@@ -26,6 +26,8 @@ class DescribeFilesystemsVscAttachInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
+        # The role chain.
+        # >Required only for cross-account scenarios.
         self.role_chain = role_chain
 
     def validate(self):
@@ -90,8 +92,11 @@ class DescribeFilesystemsVscAttachInfoRequestRoleChain(DaraModel):
         role_arn: str = None,
         role_type: str = None,
     ):
+        # The UID of the Alibaba Cloud account, which specifies the account on whose behalf the service assumes the role.
         self.assume_role_for = assume_role_for
+        # The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
         self.role_arn = role_arn
+        # The role type. Valid values: service and user.
         self.role_type = role_type
 
     def validate(self):
